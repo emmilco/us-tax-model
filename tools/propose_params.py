@@ -60,6 +60,25 @@ Nothing is guessed: a parameter whose text cannot be placed is reported, not fil
 value is read from the document the citation names; a value superseded by a later law
 that document does not reflect is read as that document prints it.
 
+Two kinds of parameter are derived by a rule rather than read at their citation, and their
+records carry `derived` (the rule) beside the status:
+  moves_with_year: N   a Count declared so in the parameter file (a year of birth) is the
+                       from-year value plus N for each year between the two tax years. When
+                       the citation can also be read in the to-year edition, the reading must
+                       agree, or the parameter is declined.
+  Tax Computation Worksheet
+                       tcw.<status>.b<k>.upper, .rate and .subtract are the to-year's rate
+                       table row (section 1(j)(2), the revenue procedure of the year's
+                       inflation adjustments, read by extract_printed_tables.rate_schedule)
+                       at the worksheet row's rate: its upper limit, its rate, and the rate on
+                       its lower limit less its base. The rule is first checked on the from-year
+                       (each from-year value must equal the rule applied to the from-year's
+                       schedule) and a status whose from-year values do not follow it is
+                       declined. A to-year schedule with a different number of rows over the
+                       Tax Table boundary (ordinary.table_boundary, its from-year value) than the
+                       from-year's is noted on each of that status's records: the worksheet
+                       section then needs a row the from-year form lacks.
+
 --write writes reports/<to>/params_proposal_from_<from>.yaml (per parameter: status, the
 from-year and proposed values, and the evidence: how the place was found, how it matched,
 the to-year document and pages, the from-year text and the to-year text read) and .md (the
@@ -544,6 +563,116 @@ def propose_one(entry, A, B, shift, docs_to, to_year):
     return rec
 
 
+# ---------- values derived by a rule ----------
+
+def moved_with_year(entry, shift, read):
+    """The record of a Count declared `moves_with_year: N`: the from-year value plus N a year.
+    `read` is the record of the ordinary reading of its citation, which must not contradict it."""
+    n = entry["moves_with_year"]
+    if not (isinstance(n, int) and isinstance(entry["value"], int) and entry["type"] == "Count"):
+        return {"type": entry["type"], "from_value": entry["value"], "status": "not found",
+                "reason": "moves_with_year is declared on a value that is not a Count"}
+    value = entry["value"] + n * shift
+    rec = {"type": entry["type"], "from_value": entry["value"],
+           "status": "unchanged" if value == entry["value"] else "changed", "value": value,
+           "derived": f"moves_with_year: {n} (the from-year value plus {n} a tax year)"}
+    if read.get("status") in ("changed", "unchanged"):
+        if read["value"] != value:
+            return {"type": entry["type"], "from_value": entry["value"], "status": "not found",
+                    "reason": f"the citation reads {read['value']} in the to-year edition, the year moved gives {value}"}
+        rec["evidence"] = read["evidence"]
+    return rec
+
+
+TCW = re.compile(r"tcw\.(single|mfj|mfs|hoh)\.b(\d+)\.(upper|rate|subtract)$")
+
+
+def tcw_rows(rows, boundary):
+    """The rows of a rate schedule a Tax Computation Worksheet section has: those over the boundary."""
+    return [r for r in rows if r["upper"] is None or r["upper"] > boundary]
+
+
+def tcw_cell(row, field):
+    if field == "upper":
+        return row["upper"]
+    if field == "rate":
+        return {"num": row["rate"]["num"], "den": row["rate"]["den"]}
+    sub = Fraction(row["rate"]["num"], row["rate"]["den"]) * row["over"] - row["base"]
+    return int(sub) if sub.denominator == 1 else None
+
+
+def tcw_records(values, schedules, from_year, to_year):
+    """{pid: record} of every tcw.* parameter of the from-year file, derived from the to-year schedule.
+    `schedules` is (from-year table, to-year table, to-year document id, draft) as written by
+    extract_printed_tables.rate_schedule."""
+    pids = [p for p in values if TCW.match(p)]
+    if not pids:
+        return {}
+    (sa, sb, doc, draft), out = schedules, {}
+    boundary = (values.get("ordinary.table_boundary") or {}).get("value")
+    for pid in pids:
+        status, k, field = TCW.match(pid).groups()
+        entry = values[pid]
+        rec = {"type": entry["type"], "from_value": entry["value"]}
+        out[pid] = rec
+        if not isinstance(boundary, int):
+            rec.update(status="not found", reason="ordinary.table_boundary has no from-year amount")
+            continue
+        ra, rb = tcw_rows(sa["schedules"][status], boundary), tcw_rows(sb["schedules"][status], boundary)
+        mine = sorted(int(TCW.match(p).group(2)) for p in pids if p.startswith(f"tcw.{status}."))
+        # The rule on the from-year: worksheet rows, numbered from the lowest (b1, or b0 for a row added before
+        # it), are the schedule's rows over the boundary in order.
+        first = mine[0]
+        bad = [p for p in pids if p.startswith(f"tcw.{status}.")
+               and (int(TCW.match(p).group(2)) - first >= len(ra)
+                    or tcw_cell(ra[int(TCW.match(p).group(2)) - first], TCW.match(p).group(3)) != values[p]["value"])]
+        if bad or max(mine) - first + 1 != len(ra):
+            rec.update(status="not found", reason=f"the {from_year} worksheet rows for {status} do not follow the rule "
+                       f"(the {from_year} schedule's rows over ${boundary // 100:,}): " + ", ".join(bad or ["the row count"]))
+            continue
+        rate = ra[int(k) - first]["rate"]
+        row = next((r for r in rb if Fraction(r["rate"]["num"], r["rate"]["den"]) == Fraction(rate["num"], rate["den"])), None)
+        if row is None:
+            rec.update(status="not found", reason=f"the {to_year} schedule for {status} has no row at "
+                       f"{rate['num']}/{rate['den']} over ${boundary // 100:,}")
+            continue
+        value = tcw_cell(row, field)
+        if value is None:
+            rec.update(status="not found", reason=f"the {to_year} subtraction amount is not a whole number of cents")
+            continue
+        lo = "the boundary" if row["over"] <= boundary else f"${row['over'] / 100:,.2f}"
+        rec.update(status="unchanged" if value == entry["value"] else "changed", value=value,
+                   derived=f"the {to_year} rate table row at the worksheet row's rate (upper limit; rate; rate x lower limit "
+                           "less base)",
+                   evidence=[{"how": "derived", "doc": doc, "draft": draft, "table": f"rate_schedule {status}",
+                              "row": {"over": row["over"], "upper": row["upper"], "base": row["base"], "rate": row["rate"]},
+                              "read": f"over {lo}" + (f" but not over ${row['upper'] / 100:,.2f}" if row["upper"] else "")
+                                      + f": ${row['base'] / 100:,.2f} plus {row['rate']['num']}%"}])
+        if len(rb) != len(ra):
+            extra = [r for r in rb if not any(r["rate"] == x["rate"] for x in ra)]
+            rec["notes"] = [f"the {to_year} {status} schedule has {len(rb)} rows over ${boundary // 100:,}, the {from_year} "
+                            f"{len(ra)}: the worksheet section needs a row the {from_year} form lacks ("
+                            + "; ".join(f"{r['rate']['num']}% to ${r['upper'] / 100:,.0f}" for r in extra) + ")",
+                            f"the boundary is the {from_year} value of ordinary.table_boundary"]
+    return out
+
+
+def rate_schedules(from_year, to_year):
+    """(from-year table, to-year table, to-year document, draft) of the rate schedules, or None when
+    either year's revenue procedure is not archived."""
+    import extract_printed_tables as E
+    try:
+        tables = []
+        for y in (from_year, to_year):
+            arch = E.Archive(y)
+            tables.append((E.rate_schedule(arch)[0], arch))
+    except (E.Missing, ValueError):
+        return None
+    (sa, _), (sb, arch_b) = tables
+    doc = sb["cite"]["doc"]
+    return sa, sb, doc, bool(arch_b.docs.get(doc, {}).get("draft"))
+
+
 # ---------- the run ----------
 
 def doc_map(from_year, to_year):
@@ -552,19 +681,30 @@ def doc_map(from_year, to_year):
     return lambda d: rename.get(d, d)
 
 
-def propose(from_year, to_year, params_file=None, archives=None):
+def propose(from_year, to_year, params_file=None, archives=None, schedules=None):
+    """{pid: record}. `schedules` (tests) stands in for the two years' rate schedules (rate_schedules)."""
     params_file = params_file or ROOT / "params" / f"{from_year}.yaml"
     values = yaml.safe_load(Path(params_file).read_text(encoding="utf-8"))["params"]["values"]
     A, B = archives or (C.Archive(str(from_year)), C.Archive(str(to_year)))
     shift = int(to_year) - int(from_year)
     docs_to = doc_map(int(from_year), int(to_year))
+    if any(TCW.match(p) for p in values):
+        schedules = schedules or rate_schedules(int(from_year), int(to_year))
+    derived = tcw_records(values, schedules, from_year, to_year) if schedules else {}
     out = {}
     for pid, entry in values.items():
+        if pid in derived:
+            out[pid] = rec = derived[pid]
+            if rec.get("evidence") and rec["evidence"][0]["draft"]:
+                rec["draft"] = True
+            continue
         if entry.get("value") is None or not entry.get("cite"):
             out[pid] = {"type": entry.get("type"), "from_value": entry.get("value"),
                         "status": "not found", "reason": "no from-year value or citation"}
             continue
         rec = propose_one(entry, A, B, shift, docs_to, to_year)
+        if "moves_with_year" in entry:
+            rec = moved_with_year(entry, shift, rec)
         for ev in rec.get("evidence", []):
             ev["draft"] = bool(B.docs.get(ev["doc"], {}).get("draft"))
         if rec.get("evidence") and any(ev["draft"] for ev in rec["evidence"]):
@@ -631,7 +771,9 @@ def write(from_year, to_year, proposal, compare_out=None):
              f"`params_proposal_from_{from_year}.yaml`.", "",
              f"- {len(proposal)} parameters: {c['unchanged']} found and unchanged, {c['changed']} found and changed, "
              f"{c['not found']} not found",
-             f"- {drafts} of the found values are read from an IRS draft (a proposal to re-verify against the final)", "",
+             f"- {drafts} of the found values are read from an IRS draft (a proposal to re-verify against the final)",
+             f"- {sum(1 for r in proposal.values() if r.get('derived'))} of the found values are derived by a rule "
+             "(`derived`: a year of birth moved with the year, a Tax Computation Worksheet row from the rate tables)", "",
              "## Not found, by reason", ""]
     lines += [f"- {n} {r}" for r, n in reasons.most_common()]
     if compare_out:
@@ -640,7 +782,11 @@ def write(from_year, to_year, proposal, compare_out=None):
         lines += [f"- DIFFERENT `{p}`: proposed {json.dumps(a)}, reference {json.dumps(b)}" for p, a, b in wrong]
     lines += ["", "## Changed", ""]
     lines += [f"- `{p}`: {json.dumps(r['from_value'])} -> {json.dumps(r['value'])}"
-              + (" (draft)" if r.get("draft") else "") for p, r in proposal.items() if r["status"] == "changed"]
+              + (" (draft)" if r.get("draft") else "") + (" (derived)" if r.get("derived") else "")
+              for p, r in proposal.items() if r["status"] == "changed"]
+    noted = [(p, n) for p, r in proposal.items() if r.get("derived") for n in r.get("notes", [])[:1]]
+    if noted:
+        lines += ["", "## Derived values with a note", ""] + [f"- `{p}`: {n}" for p, n in noted]
     lines += ["", "## Not found", ""]
     lines += [f"- `{p}`: {r['reason']}" for p, r in proposal.items() if r["status"] == "not found"]
     stem.with_suffix(".md").write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -663,7 +809,7 @@ def main():
     proposal = propose(a.from_year, a.to_year, a.params)
     c, drafts, reasons = summary(proposal)
     print(f"{len(proposal)} parameters: {c['unchanged']} unchanged, {c['changed']} changed, {c['not found']} not found; "
-          f"{drafts} read from drafts")
+          f"{drafts} read from drafts; {sum(1 for r in proposal.values() if r.get('derived'))} derived")
     for r, n in reasons.most_common():
         print(f"  not found: {n} {r}")
     cmp = None
@@ -749,16 +895,44 @@ def self_test():
                     ("changed", 4040000)),
         "no.edition": ("NonNegDollars", 250000, cite("gone", 'p. 1, "The maximum deduction is $2,500 for the year"'), ("not found", None)),
         "flag": ("Bool", True, cite("tst", "p. 1, Line 3 Limitation Chart"), ("not found", None)),
+        # moves_with_year: no to-year edition to read, so the year moved alone; a reading that contradicts it declines
+        "born.moved": ("Count", 2007, cite("gone", 'p. 1, "The maximum deduction is $2,500 for the year"'), ("changed", 2008)),
+        "born.contradicted": ("Count", 19, cite("tst", 'p. 4, "Under age 19 at the end of 2025 and younger than you"'),
+                              ("not found", None)),
+        # Tax Computation Worksheet rows from the rate schedules (planted below)
+        "ordinary.table_boundary": ("Dollars", 10000000, cite("gone", "p. 1"), ("not found", None)),
+        "tcw.single.b1.upper": ("Dollars", 20000000, cite("gone", "p. 1"), ("changed", 21000000)),
+        "tcw.single.b1.rate": ("Rate", {"num": 20, "den": 100}, cite("gone", "p. 1"), ("unchanged", {"num": 20, "den": 100})),
+        "tcw.single.b1.subtract": ("Dollars", 500000, cite("gone", "p. 1"), ("changed", 1050000)),
+        "tcw.single.b2.rate": ("Rate", {"num": 30, "den": 100}, cite("gone", "p. 1"), ("unchanged", {"num": 30, "den": 100})),
+        "tcw.single.b2.subtract": ("Dollars", 2500000, cite("gone", "p. 1"), ("changed", 3150000)),
+        "tcw.mfj.b1.upper": ("Dollars", 20000000, cite("gone", "p. 1"), ("not found", None)),
+        "tcw.mfj.b1.rate": ("Rate", {"num": 20, "den": 100}, cite("gone", "p. 1"), ("not found", None)),
+        "tcw.mfj.b1.subtract": ("Dollars", 500001, cite("gone", "p. 1"), ("not found", None)),
+        "tcw.mfj.b2.rate": ("Rate", {"num": 30, "den": 100}, cite("gone", "p. 1"), ("not found", None)),
+        "tcw.mfj.b2.subtract": ("Dollars", 2500000, cite("gone", "p. 1"), ("not found", None)),
+        # rows numbered from b0 (a row added before row 1)
+        "tcw.hoh.b0.rate": ("Rate", {"num": 10, "den": 100}, cite("gone", "p. 1"), ("unchanged", {"num": 10, "den": 100})),
+        "tcw.hoh.b0.subtract": ("Dollars", 0, cite("gone", "p. 1"), ("unchanged", 0)),
+        "tcw.hoh.b1.rate": ("Rate", {"num": 20, "den": 100}, cite("gone", "p. 1"), ("unchanged", {"num": 20, "den": 100})),
+        "tcw.hoh.b2.rate": ("Rate", {"num": 30, "den": 100}, cite("gone", "p. 1"), ("unchanged", {"num": 30, "den": 100})),
     }
+    moves = {"born.moved", "born.contradicted"}
+    row = lambda upper, base, rate, over: {"upper": upper, "base": base, "rate": {"num": rate, "den": 100}, "over": over}
+    old = [row(5000000, 0, 10, 0), row(20000000, 500000, 20, 5000000), row(None, 3500000, 30, 20000000)]
+    new = [row(10500000, 0, 10, 0), row(21000000, 1050000, 20, 10500000), row(None, 3150000, 30, 21000000)]
+    schedules = ({"schedules": {"single": old, "mfj": old, "hoh": new}}, {"schedules": {"single": new, "mfj": new, "hoh": new}},
+                 "rp-tst", False)
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         _plant(tmp / "from", SELF_TEST_FROM)
         _plant(tmp / "to", SELF_TEST_TO)
         pfile = tmp / "params.yaml"
         pfile.write_text(yaml.safe_dump({"params": {"tax_year": 2025, "values": {
-            pid: {"type": t, "value": v, "cite": c} for pid, (t, v, c, _e) in params.items()}}}), encoding="utf-8")
+            pid: {"type": t, "value": v, "cite": c, **({"moves_with_year": 1} if pid in moves else {})}
+            for pid, (t, v, c, _e) in params.items()}}}), encoding="utf-8")
         archives = (C.Archive("2025", sources=tmp / "from"), C.Archive("2026", sources=tmp / "to"))
-        proposal = propose(2025, 2026, pfile, archives)
+        proposal = propose(2025, 2026, pfile, archives, schedules)
     bad = []
     for pid, (_t, _v, _c, (status, value)) in params.items():
         rec = proposal[pid]
@@ -767,6 +941,12 @@ def self_test():
                        f"{json.dumps(rec.get('value'))} {rec.get('reason', '')}")
     if proposal["row"].get("evidence", [{}])[0].get("matched") != "in order":
         bad.append("row: expected the reading in order")
+    if not proposal["born.moved"].get("derived") or not proposal["tcw.single.b1.upper"].get("derived"):
+        bad.append("born.moved, tcw.single.b1.upper: expected marked derived")
+    if "10% to $105,000" not in " ".join(proposal["tcw.single.b2.rate"].get("notes", [])):
+        bad.append("tcw.single.b2.rate: expected the note of the to-year row over the boundary that the from-year lacks")
+    if "follow the rule" not in proposal["tcw.mfj.b2.rate"].get("reason", ""):
+        bad.append("tcw.mfj.b2.rate: expected declined, the from-year values not following the rule")
     print(f"propose_params self-test: {len(params) - len(bad)} of {len(params)} planted parameters as expected")
     for b in bad:
         print("  FAIL", b)

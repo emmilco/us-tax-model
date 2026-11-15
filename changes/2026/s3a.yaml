@@ -190,3 +190,5 @@ changes:
         after: f1040.line36
         entry:
           order: 20
+        default: false
+        reason: 'Closed: the circumstance this question asks about does not apply unless the scenario says so.'

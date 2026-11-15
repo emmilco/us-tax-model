@@ -8,12 +8,20 @@ operations on line ids:
 
     add_line {after, line}            set {line, field, from, to}        add_form {form}
     remove_line {line}                set_form {field, from, to}
-    add_question {input, like | after, entry, profiles}
+    add_question {input, like | after, entry, profiles, default, reason}
     remove_question {input}           set_question {input, field, from, to}
+    add_ambiguity {entry, after?}     set_ambiguity {id, field, from, to}   remove_ambiguity {id}
+    set_interview {file, field, from, to, list?, item?}                   add_interview_file {file, data}
+    add_interview_item {file, list, item, after?}   remove_interview_item {file, list, item}   remove_interview_file {file}
 
 `field` is a path of mapping keys (`printed`, `expr.take`, `cite.locator`); `from: null` means absent and
 `to: null` removes the field. `add_question` places the new bank entry after `like` or `after`; `like` also lends
-its order number and its place in every profile, never its wording. An entry may list lines it `awaits`
+its order number and its place in every profile, never its wording; a question for an input line carries the input's
+test-data `default` and its one-line `reason`, which fixtures_year.py writes to fixtures/<year>/defaults.json. The
+ambiguity operations act on the register (ambiguities/<year>.yaml) by entry id; after them every line's `ambiguity`
+must name an entry, and an added entry must be linked by a line or say why not (`unlinked`). The interview operations
+act on the other files of interview/<year>/ (profiles' targets, coverage rows and sets, personas, gate frequencies,
+the bank's groups) by file and path: `list` is a path to a list, whose `item` is an entry's id or a plain value. An entry may list lines it `awaits`
 ({line, change}): lines another change, not yet written as operations, is to add; reading one is reported, not
 failed, until adoption, which refuses while one is missing. An entry's `note` is free text. The operations of year N+1 are applied, in memory, to the forms, question bank and
 profiles of year N; an operation fails, named with its file, change, position, kind and line, when its line, form
@@ -51,10 +59,20 @@ from jurisdiction import ypath  # noqa: E402
 
 _Loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 
-KINDS = ("add_line", "remove_line", "set", "add_form", "set_form", "add_question", "remove_question", "set_question")
+KINDS = ("add_line", "remove_line", "set", "add_form", "set_form", "add_question", "remove_question", "set_question",
+         "add_ambiguity", "set_ambiguity", "remove_ambiguity")
 REQUIRED = {"add_line": ("after", "line"), "remove_line": ("line",), "set": ("line", "field", "from", "to"),
             "add_form": ("form",), "set_form": ("field", "from", "to"), "add_question": ("input",),
-            "remove_question": ("input",), "set_question": ("input", "field", "from", "to")}
+            "remove_question": ("input",), "set_question": ("input", "field", "from", "to"),
+            "add_ambiguity": ("entry",), "set_ambiguity": ("id", "field", "from", "to"), "remove_ambiguity": ("id",)}
+AMB_KINDS = ("add_ambiguity", "set_ambiguity", "remove_ambiguity")
+IV_KINDS = ("set_interview", "add_interview_item", "remove_interview_item", "add_interview_file", "remove_interview_file")
+KINDS += IV_KINDS
+REQUIRED.update({"set_interview": ("file", "field", "from", "to"), "add_interview_item": ("file", "list", "item"),
+                 "remove_interview_item": ("file", "list", "item"), "add_interview_file": ("file", "data"),
+                 "remove_interview_file": ("file",)})
+BANK_FILE = "questions.yaml"
+REGISTER_REQUIRED = ("id", "text_at_issue", "readings", "chosen", "reason", "cite")  # schema/data.schema.json registerEntry
 NOT_REFS = {"cite", "source", "label", "op", "ref", "def", "line", "note"}  # as engine/src/gates.ts refsOf
 REF = re.compile(r"^([A-Za-z0-9_$]+)(?:\[[^\]]*\])?\.([A-Za-z0-9_.]+)$")
 
@@ -73,7 +91,7 @@ def short(value, n=160):
 class Tree:
     """One year's forms, question bank, profiles, other interview files and parameter ids."""
 
-    def __init__(self, forms_dir, interview_dir, params_file):
+    def __init__(self, forms_dir, interview_dir, params_file, register_file=None):
         self.forms_dir, self.interview_dir = Path(forms_dir), Path(interview_dir)
         self.forms = {}  # id -> {"path", "key", "doc", "text"}
         for p in sorted(self.forms_dir.glob("*.yaml")):
@@ -84,7 +102,7 @@ class Tree:
         self.bank_path = self.interview_dir / "questions.yaml"
         self.bank_text = self.bank_path.read_text(encoding="utf-8") if self.bank_path.exists() else ""
         self.bank = (load_yaml(self.bank_text) or {}).get("bank", {"questions": []}) if self.bank_text else {"questions": []}
-        self.profiles, self.others = {}, {}
+        self.profiles, self.others, self.other_texts = {}, {}, {}
         for p in sorted(self.interview_dir.rglob("*.yaml")) if self.interview_dir.is_dir() else []:
             if p == self.bank_path:
                 continue
@@ -94,17 +112,24 @@ class Tree:
             if isinstance(iv, dict) and isinstance(iv.get("questions"), list):
                 self.profiles[p.relative_to(self.interview_dir).as_posix()] = {"path": p, "text": text, "data": data}
             self.others[p.relative_to(self.interview_dir).as_posix()] = data
+            self.other_texts[p.relative_to(self.interview_dir).as_posix()] = text
         params = load_yaml(Path(params_file).read_text(encoding="utf-8")) if Path(params_file).exists() else {}
         self.params = set(((params or {}).get("params") or {}).get("values") or {})
+        self.enums = {k: (v or {}).get("values") or [] for k, v in (((params or {}).get("params") or {}).get("enums") or {}).items()}
+        self.register_path = Path(register_file) if register_file else None
+        self.register_text = self.register_path.read_text(encoding="utf-8") if self.register_path and self.register_path.exists() else ""
+        self.register = ((load_yaml(self.register_text) or {}).get("register") or {}).get("entries") or [] if self.register_text else []
 
 
 def year_tree(year, root=None):
     """The tree of `year` in this checkout, or in the checkout or export at `root`."""
     if root is None:
-        return Tree(ypath("forms", year), jurisdiction.interview_dir(year), jurisdiction.params_file(year))
+        return Tree(ypath("forms", year), jurisdiction.interview_dir(year), jurisdiction.params_file(year),
+                    jurisdiction.register_file(year))
     root = Path(root)
     rel = lambda p: root / Path(p).relative_to(ROOT)  # noqa: E731
-    return Tree(rel(ypath("forms", year)), rel(jurisdiction.interview_dir(year)), rel(jurisdiction.params_file(year)))
+    return Tree(rel(ypath("forms", year)), rel(jurisdiction.interview_dir(year)), rel(jurisdiction.params_file(year)),
+                rel(jurisdiction.register_file(year)))
 
 
 # ---------------------------------------------------------------- the operations
@@ -123,19 +148,29 @@ class Op:
             return (doc.get("form") or doc.get("def") or {}).get("id", "?")
         if self.kind in ("set_form",):
             return f"{self.entry['form']} {b.get('field')}"
-        if self.kind in ("set", "set_question"):
-            return f"{b.get('line') or b.get('input')} {b.get('field')}"
-        return str(b.get("line") or b.get("input"))
+        if self.kind in ("set", "set_question", "set_ambiguity"):
+            return f"{b.get('line') or b.get('input') or b.get('id')} {b.get('field')}"
+        if self.kind == "add_ambiguity":
+            return str((b.get("entry") or {}).get("id", "?"))
+        if self.kind in IV_KINDS:
+            item = b.get("item")
+            item = item.get("id", "?") if isinstance(item, dict) else item
+            return " ".join(str(x) for x in (b.get("file"), b.get("list"), item, b.get("field")) if x is not None)
+        return str(b.get("line") or b.get("input") or b.get("id"))
 
     def __str__(self):
         return f"{self.file} {self.change} op {self.n} ({self.kind} {self.target})"
 
 
 def load_changes(directory):
-    """(entries, ops, problems): every entry of every file of a changes directory, in file order."""
+    """(entries, ops, problems): every entry of every file of a changes directory, in file order: by the form part of
+    the name, a form's own file `<form>.yaml` before its split files `<form>.<topic>.yaml` (sorted), so a split file
+    may build on what the form's own file adds. A file's form is its `form:` field, not its name."""
     entries, ops, problems = [], [], []
     directory = Path(directory)
-    for p in sorted(directory.glob("*.yaml")) if directory.is_dir() else []:
+    files = sorted(directory.glob("*.yaml"), key=lambda p: (p.name.split(".")[0], p.name.count(".") > 1, p.name)) \
+        if directory.is_dir() else []
+    for p in files:
         data = load_yaml(p.read_text(encoding="utf-8")) or {}
         head = data.get("changes")
         if not isinstance(head, dict) or "form" not in head or not isinstance(head.get("entries"), list):
@@ -157,6 +192,8 @@ def load_changes(directory):
                 missing = [f for f in REQUIRED[op.kind] if f not in op.body]
                 if op.kind == "add_question" and not ("like" in op.body or "after" in op.body):
                     missing.append("like or after")
+                if op.kind == "add_ambiguity" and isinstance(op.body.get("entry"), dict):
+                    missing += [f"entry.{f}" for f in REGISTER_REQUIRED if f not in op.body["entry"]]
                 if missing:
                     problems.append(f"{op}: malformed, missing {', '.join(missing)}")
                     continue
@@ -256,6 +293,9 @@ class State:
             self.forms[fid] = {"key": f["key"], "doc": doc, "lines": doc.get("lines") or []}
         self.bank = copy.deepcopy(tree.bank.get("questions") or [])
         self.profiles = {name: list(p["data"]["interview"]["questions"]) for name, p in tree.profiles.items()}
+        self.register = copy.deepcopy(tree.register)
+        self.others = copy.deepcopy(tree.others)  # every interview file but the bank, by its path under interview/<year>
+        self.bank_meta = {k: copy.deepcopy(v) for k, v in tree.bank.items() if k != "questions"}
 
     def line_index(self):
         return {l["id"]: (fid, i) for fid, f in self.forms.items() for i, l in enumerate(f["lines"])}
@@ -270,6 +310,9 @@ class State:
     def bank_index(self, inp):
         return next((i for i, q in enumerate(self.bank) if q.get("input") == inp), None)
 
+    def register_index(self, aid):
+        return next((i for i, e in enumerate(self.register) if e.get("id") == aid), None)
+
 
 class Result:
     def __init__(self):
@@ -279,6 +322,10 @@ class Result:
         self.touched = {}  # line id -> the last op that added or changed it
         self.removed = {}  # line id -> the op that removed it
         self.new_params = {}  # parameter id -> [op]
+        self.amb_touched = {}  # register id -> the last op that added or changed it
+        self.amb_removed = {}  # register id -> the op that removed it
+        self.iv_touched = {}  # interview file -> [(op, path of keys and "#item" steps)]
+        self.iv_removed_names = {}  # (file, an item id or mapping key removed) -> op
 
     def fail(self, op, msg):
         self.failures.append((op, msg))
@@ -353,6 +400,12 @@ def apply(tree, ops, strict=True, adopting=False):
                 continue
             if compare(op, get_path(st.forms[fid]["doc"], path)):
                 set_path(st.forms[fid]["doc"], path, b["to"])
+            continue
+        if op.kind in AMB_KINDS:
+            apply_ambiguity(op, st, r, tree, overlaps, compare)
+            continue
+        if op.kind in IV_KINDS:
+            apply_interview(op, st, r, overlaps, compare)
             continue
         if op.kind in ("add_question", "remove_question", "set_question"):
             inp = b["input"]
@@ -454,6 +507,149 @@ def apply(tree, ops, strict=True, adopting=False):
     return r
 
 
+def apply_ambiguity(op, st, r, tree, overlaps, compare):
+    """An operation on the ambiguity register, keyed by entry id."""
+    b = op.body
+    aid = (b.get("entry") or {}).get("id") if op.kind == "add_ambiguity" else b.get("id")
+    if aid in r.amb_removed:
+        r.fail(op, f"collision: {r.amb_removed[aid]} removes {aid}")
+        return
+    at = st.register_index(aid)
+    if op.kind == "add_ambiguity":
+        if at is not None:
+            same = any(e == b["entry"] for e in tree.register)
+            r.fail(op, "already applied: the register has the entry as written" if same
+                   else f"collision: the register has an entry {aid}"
+                   + (f" ({r.amb_touched[aid]} adds it)" if aid in r.amb_touched else ""))
+            return
+        entry = copy.deepcopy(b["entry"])
+        if b.get("after") is not None:
+            k = st.register_index(b["after"])
+            if k is None:
+                r.fail(op, f"gone: anchor {b['after']} is not a register entry"
+                           + suggest(b["after"], [e.get("id", "") for e in st.register]))
+                return
+            st.register.insert(k + 1, entry)
+        else:
+            st.register.append(entry)
+        r.amb_touched[aid] = op
+        return
+    if at is None:
+        r.fail(op, f"gone: no register entry {aid}{suggest(aid, [e.get('id', '') for e in st.register])}")
+        return
+    if op.kind == "remove_ambiguity":
+        if aid in r.amb_touched:
+            r.fail(op, f"collision: {r.amb_touched[aid]} adds or changes {aid}")
+            return
+        del st.register[at]
+        r.amb_removed[aid] = op
+        return
+    path = str(b["field"]).split(".")
+    if path[0] == "id":
+        r.fail(op, "malformed: register ids are kept; a new reading is a new entry (add_ambiguity)")
+        return
+    if overlaps(("ambiguity", aid), path, op):
+        return
+    if compare(op, get_path(st.register[at], path)):
+        set_path(st.register[at], path, b["to"])
+        r.amb_touched[aid] = op
+
+
+def item_key(x):
+    return x.get("id") if isinstance(x, dict) else x
+
+
+def apply_interview(op, st, r, overlaps, compare):
+    """An operation on an interview file other than through the question operations, by file and path."""
+    b = op.body
+    name = str(b["file"])
+    if op.kind == "add_interview_file":
+        if name in st.others or name == BANK_FILE:
+            r.fail(op, "already applied: the file exists as written" if st.others.get(name) == b["data"]
+                   else f"collision: interview/{name} exists")
+            return
+        if overlaps(("interview", name), [], op):
+            return
+        st.others[name] = copy.deepcopy(b["data"])
+        r.iv_touched.setdefault(name, []).append((op, []))
+        return
+    if name == BANK_FILE:
+        data = {"bank": st.bank_meta}
+    elif name in st.others:
+        data = st.others[name]
+    else:
+        r.fail(op, f"gone: no interview file {name}" + suggest(name, list(st.others) + [BANK_FILE]))
+        return
+    if op.kind == "remove_interview_file":
+        if name == BANK_FILE or name in st.profiles:
+            r.fail(op, "malformed: the bank and the profiles are not removed by an operation")
+            return
+        if overlaps(("interview", name), [], op):
+            return
+        del st.others[name]
+        r.iv_touched.setdefault(name, []).append((op, []))
+        return
+    lpath = str(b["list"]).split(".") if b.get("list") is not None else []
+    guarded = ["bank", "questions"] if name == BANK_FILE else (["interview", "questions"] if name in st.profiles else None)
+    if guarded and (lpath or str(b.get("field", "")).split("."))[:2] == guarded:
+        r.fail(op, "malformed: questions are changed by the question operations")
+        return
+    if op.kind == "set_interview" and "item" not in b:
+        path = str(b["field"]).split(".")
+        if overlaps(("interview", name), path, op):
+            return
+        if compare(op, get_path(data, path)):
+            set_path(data, path, b["to"])
+            r.iv_touched.setdefault(name, []).append((op, path))
+            if b["to"] is None:
+                r.iv_removed_names[(name, path[-1])] = op
+        return
+    seq = get_path(data, lpath)
+    if not isinstance(seq, list):
+        r.fail(op, f"gone: interview/{name} has no list {b.get('list')}")
+        return
+    want = item_key(b["item"])
+    at = next((i for i, x in enumerate(seq) if item_key(x) == want), None)
+    step = lpath + [f"#{want}"]
+    if op.kind == "add_interview_item":
+        if at is not None:
+            r.fail(op, "already applied: the item exists as written" if seq[at] == b["item"]
+                   else f"collision: {b['list']} of interview/{name} has an item {want}")
+            return
+        if overlaps(("interview", name), step, op):
+            return
+        k = len(seq) - 1
+        if b.get("after") is not None:
+            k = next((i for i, x in enumerate(seq) if item_key(x) == b["after"]), None)
+            if k is None:
+                r.fail(op, f"gone: anchor {b['after']} is not an item of {b['list']} in interview/{name}")
+                return
+        seq.insert(k + 1, copy.deepcopy(b["item"]))
+        r.iv_touched.setdefault(name, []).append((op, step))
+        return
+    if at is None:
+        r.fail(op, f"gone: {b['list']} of interview/{name} has no item {want}"
+                   + suggest(str(want), [str(item_key(x)) for x in seq]))
+        return
+    if op.kind == "remove_interview_item":
+        if overlaps(("interview", name), step, op):
+            return
+        if isinstance(seq[at], dict):  # an entry with an id: what still names the id dangles
+            r.iv_removed_names[(name, want)] = op
+        del seq[at]
+        r.iv_touched.setdefault(name, []).append((op, step))
+        return
+    path = str(b["field"]).split(".")
+    if not isinstance(seq[at], dict) or path[0] == "id":
+        r.fail(op, "malformed: set_interview with an item sets a field of an entry with an id, never the id")
+        return
+    if overlaps(("interview", name), step + path, op):
+        return
+    if compare(op, get_path(seq[at], path)):
+        set_path(seq[at], path, b["to"])
+        r.iv_touched.setdefault(name, []).append((op, step + path))
+
+
 def tree_line(tree, lid):
     for f in tree.forms.values():
         for l in f["doc"].get("lines") or []:
@@ -514,12 +710,7 @@ def finish(tree, st, r, added_inputs):
         for rid, op in r.removed.items():
             if rid in bank_inputs:
                 r.fail(op, f"question left: the bank still asks the removed input {rid} (remove_question)")
-        for name, data in sorted(tree.others.items()):
-            if name in st.profiles:
-                data = {k: v for k, v in data["interview"].items() if k != "questions"}
-                strings = all_strings(data) | set(st.profiles[name])
-            else:
-                strings = all_strings(data)
+        for name, strings in interview_strings(st):
             for rid, op in r.removed.items():
                 if rid in strings and rid not in bank_inputs:
                     r.fail(op, f"dangling: interview/{name} still names the removed {rid}")
@@ -545,6 +736,139 @@ def finish(tree, st, r, added_inputs):
         if lid in lines and not is_input(lines[lid]) and lid in bank_inputs and lid in {
                 l for l in base_inputs(tree)}:
             r.fail(op, f"question left: {lid} is no longer an input but the bank still asks it (remove_question)")
+    for inp, op in added_inputs.items():
+        if inp in lines and inp in asked and is_input(lines[inp]):
+            for msg in default_problems(lines[inp], op.body, tree):
+                r.fail(op, f"default: {inp} {msg}")
+    finish_register(tree, st, r, lines)
+    finish_interview(tree, st, r, lines, line_like, norm)
+
+
+def interview_strings(st):
+    """(file, every string it holds) of each interview file as the operations leave it; a profile's questions are
+    its list in the state."""
+    for name, data in sorted(st.others.items()):
+        if name in st.profiles:
+            data = {k: v for k, v in data["interview"].items() if k != "questions"}
+            yield name, all_strings(data) | set(st.profiles[name])
+        else:
+            yield name, all_strings(data)
+    yield BANK_FILE, all_strings(st.bank_meta)
+
+
+def values_of(node, out=None):
+    """The strings of a node that are values, not mapping keys."""
+    out = set() if out is None else out
+    if isinstance(node, str):
+        out.add(node)
+    elif isinstance(node, list):
+        for v in node:
+            values_of(v, out)
+    elif isinstance(node, dict):
+        for v in node.values():
+            values_of(v, out)
+    return out
+
+
+def finish_interview(tree, st, r, lines, line_like, norm):
+    """The interview files the operations leave: what an interview operation writes names lines that exist; an item
+    or key it removes is not still named in its file; every tick-box group of the bank is named by a question and
+    every question's group is declared (engine/src/tick-groups.ts)."""
+    for name, touched in sorted(r.iv_touched.items()):
+        for op, path in touched:
+            new = op.body.get("to") if op.kind == "set_interview" else op.body.get("item", op.body.get("data"))
+            if op.kind in ("remove_interview_item", "remove_interview_file"):
+                continue
+            for s in sorted(all_strings(new)):
+                if line_like(s) and norm(s) not in lines and s not in tree.params and norm(s) not in r.removed:
+                    r.fail(op, f"dangling: interview/{name} would name {s}, which is not a line" + suggest(norm(s), lines))
+    named = {}
+    for name, data in st.others.items():
+        named[name] = values_of(data)
+    for (name, gone), op in sorted(r.iv_removed_names.items(), key=str):
+        if name in named and gone in named[name]:
+            r.fail(op, f"dangling: interview/{name} still names {gone}, which {op} removes")
+    declared = [g.get("id") for g in st.bank_meta.get("groups") or [] if isinstance(g, dict)]
+    members = {q.get("group") for q in st.bank if q.get("group")}
+    base_members = {}
+    for q in tree.bank.get("questions") or []:
+        if q.get("group"):
+            base_members.setdefault(q["group"], []).append(q.get("input"))
+    removing = {op.body["input"]: op for op in r.ops if op.kind == "remove_question"}
+    for g in declared:
+        if g not in members:
+            op = next((removing[i] for i in base_members.get(g, []) if i in removing), None)
+            r.fail(op, f"group left: tick-box group {g} of the bank: no question names it (remove_interview_item "
+                       "{file: questions.yaml, list: bank.groups})")
+    for q in st.bank:
+        if q.get("group") and q["group"] not in declared:
+            op = r.iv_removed_names.get((BANK_FILE, q["group"]))
+            r.fail(op, f"dangling: question {q.get('input')} names the tick-box group {q['group']}, which the bank "
+                       "does not declare")
+
+
+def default_problems(line, body, tree):
+    """A new input's test-data default as add_question states it (engine/src/fixture-inputs.ts defaultsProblems):
+    a value the input accepts and a one-line reason."""
+    if "default" not in body or "reason" not in body:
+        return ["has no test-data default (add_question: default and reason, for fixtures/<year>/defaults.json)"]
+    v, reason, t = body["default"], body["reason"], str(line.get("type", ""))
+    out = []
+    if not isinstance(reason, str) or not reason.strip() or "\n" in reason.strip():
+        out.append("needs a one-line reason for its default")
+    if t == "Bool":
+        ok = isinstance(v, bool)
+    elif t.startswith("Enum("):
+        ok = isinstance(v, str) and v in tree.enums.get(t[5:-1], [v])  # an enum the from-year lacks: the parameter lane's
+    else:
+        ok = isinstance(v, int) and not isinstance(v, bool) and (t == "Dollars" or v >= 0)
+    if not ok:
+        out.append(f"default {short(v)} is not a value of {t}")
+    return out
+
+
+def finish_register(tree, st, r, lines):
+    """The register the operations leave: every line's ambiguity names an entry; an added entry is linked or says why
+    not; an entry whose last linking line goes is removed or says why it stands unlinked (engine/src/check.ts)."""
+    if tree.register_path is None or not tree.register_path.exists():
+        return
+    ids = {e.get("id"): e for e in st.register}
+    linked = {}
+    for lid, line in lines.items():
+        if isinstance(line.get("ambiguity"), str):
+            linked.setdefault(line["ambiguity"], []).append(lid)
+    for aid, lids in sorted(linked.items()):
+        if aid in ids:
+            continue
+        if aid in r.amb_removed:
+            r.fail(r.amb_removed[aid], f"dangling: {', '.join(lids)} still links the removed ambiguity {aid}")
+            continue
+        for lid in lids:
+            if lid in r.touched:
+                r.fail(r.touched[lid], f"dangling: {lid} links the ambiguity {aid}, which the register does not hold "
+                                       "(add_ambiguity)")
+    for aid, op in r.amb_removed.items():
+        for name, data in sorted(tree.others.items()):
+            if aid in all_strings(data):
+                r.fail(op, f"dangling: interview/{name} still names the removed ambiguity {aid}")
+    base_linked = {}
+    for f in tree.forms.values():
+        for l in f["doc"].get("lines") or []:
+            if isinstance(l.get("ambiguity"), str):
+                base_linked.setdefault(l["ambiguity"], []).append(l["id"])
+    for aid, e in ids.items():
+        if aid in linked or (isinstance(e.get("unlinked"), str) and e["unlinked"].strip()):
+            continue
+        if aid in r.amb_touched and r.amb_touched[aid].kind == "add_ambiguity":
+            r.fail(r.amb_touched[aid], f"unlinked: no line links the added ambiguity {aid} (link it with ambiguity:, "
+                                       "or say why it stands unlinked in unlinked:)")
+        elif aid in base_linked:
+            op = next((r.removed.get(l) or r.touched.get(l) for l in base_linked[aid] if l in r.removed or l in r.touched), None)
+            r.fail(op, f"unlinked: no line links {aid} once the operations apply (it was linked by "
+                       f"{', '.join(base_linked[aid])}); remove_ambiguity, or set_ambiguity its unlinked reason")
+    for aid, e in ids.items():
+        if aid in linked and "unlinked" in e and aid in r.amb_touched:
+            r.fail(r.amb_touched[aid], f"unlinked: {aid} carries an unlinked reason, but {', '.join(linked[aid])} links it")
 
 
 def base_inputs(tree):
@@ -606,6 +930,13 @@ def check(year, against=None, quiet=False, adopting=False):
         r.fail(None, p)
     if entries:
         check_evidence(entries, C.Archive(to), r)
+    if r.state is not None:  # code and tool data kept for every year that name what goes
+        import year_shared_refs
+        refs = year_shared_refs.references(tree, r)
+        if refs:
+            r.notes.append(f"{len(refs)} reference(s) in {len({x[0] for x in refs})} year-shared file(s) (code and tool "
+                           "data) name ids these operations remove or gates they retire: tools/year_shared_refs.py "
+                           f"--year {year} lists them, as adoption does in {ypath('reports', to).relative_to(ROOT)}/")
     where = f"{against}/" if against else ""
     rel_dir = directory.relative_to(ROOT)
     head = (f"year changes {to}: {len(entries)} entries, {len(ops)} operations in {rel_dir} "
@@ -618,7 +949,8 @@ def check(year, against=None, quiet=False, adopting=False):
             print(f"  note: parameters the operations read that {where}params/{year}.yaml does not define "
                   f"(the {to} parameters must): {', '.join(sorted(r.new_params))}")
         if getattr(r, "new_inputs", None):
-            print(f"  note: new inputs, each needing a test-data default at adoption: {', '.join(r.new_inputs)}")
+            print(f"  note: new inputs (their add_question defaults go to fixtures/{to}/defaults.json at adoption, "
+                  f"tools/fixtures_year.py): {', '.join(r.new_inputs)}")
         drafts = sum(1 for e in entries if e["verified"] == "draft")
         if entries:
             print(f"  note: {drafts} of {len(entries)} entries rest on IRS drafts (verified: draft)")
@@ -630,10 +962,11 @@ def check(year, against=None, quiet=False, adopting=False):
 # ---------------------------------------------------------------- writing an adopted year
 
 class Dumper(yaml.SafeDumper):
-    pass
+    def ignore_aliases(self, data):  # a rewritten block stands alone: no anchor or alias another block could depend on
+        return True
 
 
-class IndentedDumper(yaml.SafeDumper):
+class IndentedDumper(Dumper):
     def increase_indent(self, flow=False, indentless=False):
         return super().increase_indent(flow, False)
 
@@ -687,6 +1020,17 @@ def rewrite_list(text, list_key, item_key, final, changed):
     text block, a changed or new one is dumped in the file's style."""
     head, items, tail, ind, indented = list_blocks(text, list_key, item_key)
     blocks = dict(items)
+    # A rewritten block loses its YAML anchors, so a kept block that aliases one of them is rewritten too (its alias
+    # expanded), until no kept block names an anchor of a rewritten one.
+    changed = set(changed)
+    final_keys = {obj[item_key] for obj in final}
+    while True:
+        lost = {a for k, t in blocks.items() if k in changed or k not in final_keys for a in re.findall(r"&([\w-]+)", t)}
+        more = {k for k, t in blocks.items() if k not in changed and k in final_keys
+                and any(re.search(rf"\*{re.escape(a)}\b", t) for a in lost)}
+        if not more:
+            break
+        changed |= more
     out = []
     for obj in final:
         key = obj[item_key]
@@ -770,13 +1114,180 @@ def write_state(tree, r):
         if text != orig["text"]:
             orig["path"].write_text(text, encoding="utf-8")
     old_bank = tree.bank.get("questions") or []
+    bank_text = tree.bank_text
     if st.bank != old_bank:
         old = {q.get("input"): q for q in old_bank}
         changed = {q.get("input") for q in st.bank if old.get(q.get("input")) != q}
-        tree.bank_path.write_text(rewrite_list(tree.bank_text, "questions", "input", st.bank, changed), encoding="utf-8")
+        bank_text = rewrite_list(bank_text, "questions", "input", st.bank, changed)
+    if BANK_FILE in r.iv_touched:
+        bank_text = write_interview_edits(bank_text, {"bank": {**st.bank_meta, "questions": st.bank}},
+                                          r.iv_touched[BANK_FILE], BANK_FILE)
+    if bank_text != tree.bank_text:
+        tree.bank_path.write_text(bank_text, encoding="utf-8")
+    texts = {}
     for name, p in tree.profiles.items():
         if st.profiles[name] != p["data"]["interview"]["questions"]:
-            p["path"].write_text(rewrite_profile(p["text"], st.profiles[name]), encoding="utf-8")
+            texts[name] = rewrite_profile(p["text"], st.profiles[name])
+    for name, touched in r.iv_touched.items():
+        if name == BANK_FILE:
+            continue
+        path = tree.interview_dir / name
+        if name not in st.others:
+            path.unlink()
+            continue
+        if name not in tree.other_texts:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            texts[name] = dump(st.others[name], False)
+            continue
+        data = st.others[name]
+        if name in st.profiles:
+            data = copy.deepcopy(data)
+            data["interview"]["questions"] = st.profiles[name]
+        texts[name] = write_interview_edits(texts.get(name, tree.other_texts[name]), data, touched, name)
+    for name, text in texts.items():
+        (tree.interview_dir / name).write_text(text, encoding="utf-8")
+    if st.register != tree.register:
+        old = {e.get("id"): e for e in tree.register}
+        changed = {e.get("id") for e in st.register if old.get(e.get("id")) != e}
+        tree.register_path.write_text(rewrite_list(tree.register_text, "entries", "id", st.register, changed),
+                                      encoding="utf-8")
+
+
+def write_interview_edits(text, final, touched, name):
+    """An interview file's text with the paths the operations touched rewritten to their final values, block by
+    block: an item of a list of entries with ids keeps or takes its own block; any other path is rewritten whole at
+    its key. The result must load as the applied data."""
+    done = set()
+    for _, path in touched:
+        k = next((i for i, p in enumerate(path) if p.startswith("#")), None)
+        steps = path if k is None else path[:k]
+        seq = get_path(final, steps) if k is not None else None
+        if (k is not None and isinstance(seq, list) and seq and all(isinstance(x, dict) and "id" in x for x in seq)
+                and len(re.findall(rf"(?m)^\s*{re.escape(steps[-1])}:\s*$", text)) == 1):
+            if ("list", tuple(steps)) in done:
+                continue
+            done.add(("list", tuple(steps)))
+            changed = {p2[k][1:] for _, p2 in touched if p2[:k] == steps and len(p2) > k}
+            text = rewrite_list(text, steps[-1], "id", seq, changed)
+            continue
+        if ("path", tuple(steps)) in done:
+            continue
+        done.add(("path", tuple(steps)))
+        value = get_path(final, steps)
+        if k is not None and isinstance(value, list) and all(isinstance(x, (str, int, float)) for x in value):
+            kept = rewrite_scalar_list(text, steps, value)
+            if kept is not None:
+                text = kept
+                continue
+        text = rewrite_path(text, steps, value, steps_present(final, steps))
+    got = load_yaml(text)
+    if got != final:
+        raise SystemExit(f"year changes: writing interview/{name} block by block did not give the applied data")
+    return text
+
+
+def rewrite_scalar_list(text, path, final):
+    """`text` with the block list of plain values at `path` edited line by line to `final`: an item no longer in it
+    loses its line, a new one takes a line after the item before it; comments and the other items keep their lines.
+    None when the list is not a block list of one-line items (rewrite_path then rewrites it whole)."""
+    lines = text.splitlines(True)
+    at, end = locate(lines, path)
+    if at is None or lines[at].split(":", 1)[1].strip():
+        return None
+    item = re.compile(r"^( *)- (.+?)\s*$")
+    have, ind = {}, None
+    for i in range(at + 1, end):
+        m = item.match(lines[i])
+        if m:
+            have[load_yaml(m.group(2))] = i
+            ind = m.group(1)
+        elif lines[i].strip() and not lines[i].lstrip().startswith("#"):
+            return None
+    if ind is None:
+        return None
+    drop = {i for v, i in have.items() if v not in final}
+    add = {}  # line index after which -> [new item lines]
+    prev = at
+    for v in final:
+        if v in have:
+            prev = have[v]
+        else:
+            add.setdefault(prev, []).append(f"{ind}- {yaml.dump(v, Dumper=Dumper, width=100000).strip().removesuffix(chr(10) + '...')}\n")
+    out = []
+    for i, l in enumerate(lines):
+        if i not in drop:
+            out.append(l)
+        out += add.get(i, [])
+    return "".join(out)
+
+
+def locate(lines, path):
+    """(the line of the key at `path`, the end of its block) in a file's lines; (None, None) if it is not there."""
+    lo, hi, parent, at = 0, len(lines), -1, None
+    content = lambda l: l.strip() and not l.lstrip().startswith("#")  # noqa: E731
+    for k in path:
+        child = next((indent_of(lines[i]) for i in range(lo, hi) if content(lines[i])), None)
+        if child is None or child <= parent:
+            return None, None
+        pat = re.compile(rf"^ {{{child}}}{re.escape(k)}:(\s|$)")
+        at = next((i for i in range(lo, hi) if pat.match(lines[i])), None)
+        if at is None:
+            return None, None
+        end = next((i for i in range(at + 1, hi) if content(lines[i]) and (indent_of(lines[i]) < child or (
+            indent_of(lines[i]) == child and not lines[i].lstrip().startswith("- ")))), hi)
+        while end > at + 1 and not content(lines[end - 1]):
+            end -= 1
+        lo, hi, parent = at + 1, end, child
+    return at, hi
+
+
+def steps_present(node, path):
+    for k in path:
+        if not isinstance(node, dict) or k not in node:
+            return False
+        node = node[k]
+    return True
+
+
+def rewrite_path(text, path, value, present):
+    """`text` with the mapping key at `path` (keys from the top) rewritten to `value`, in the style the key had (a
+    one-line [list] or {map} stays one line); `present` False removes the key; a key not there yet is added at the
+    end of its parent's block."""
+    lines = text.splitlines(True)
+    lo, hi, parent = 0, len(lines), -1
+    content = lambda l: l.strip() and not l.lstrip().startswith("#")  # noqa: E731
+    at = None
+    for depth, k in enumerate(path):
+        child = next((indent_of(lines[i]) for i in range(lo, hi) if content(lines[i])), None)
+        if child is None or child <= parent:
+            child = parent + 2
+        pat = re.compile(rf"^ {{{child}}}{re.escape(k)}:(\s|$)")
+        at = next((i for i in range(lo, hi) if pat.match(lines[i])), None)
+        if at is None:
+            if depth != len(path) - 1:
+                raise SystemExit(f"year changes: no key {'.'.join(path[:depth + 1])} to write")
+            if not present:
+                return text
+            new = "".join(" " * child + l for l in dump({k: value}, False).splitlines(True))
+            end = hi
+            while end > lo and not content(lines[end - 1]):
+                end -= 1
+            return "".join(lines[:end]) + new + "".join(lines[end:])
+        end = next((i for i in range(at + 1, hi) if content(lines[i]) and (indent_of(lines[i]) < child or (
+            indent_of(lines[i]) == child and not lines[i].lstrip().startswith("- ")))), hi)  # an indentless list
+        while end > at + 1 and not content(lines[end - 1]):
+            end -= 1
+        lo, hi, parent = at + 1, end, child
+    head = lines[at]
+    ind = indent_of(head)
+    if not present:
+        new = ""
+    elif re.match(rf"^ *{re.escape(path[-1])}:\s*[\[{{]", head) and isinstance(value, (list, dict)):
+        flow = yaml.dump(value, Dumper=Dumper, default_flow_style=True, allow_unicode=True, width=100000).strip()
+        new = f"{' ' * ind}{path[-1]}: {flow}\n"
+    else:
+        new = "".join(" " * ind + l for l in dump({path[-1]: value}, False).splitlines(True))
+    return "".join(lines[:at]) + new + "".join(lines[hi:])
 
 
 # ---------------------------------------------------------------- recording operations from an edited copy
@@ -901,6 +1412,7 @@ SELF_FORMS = {
       cite:
         doc: fx
         locator: p. 2, Line 2
+      ambiguity: amb.2025.bonus
 """,
 }
 SELF_BANK = """bank:
@@ -923,6 +1435,32 @@ SELF_PROFILE = """interview:
   - fa.bonus
 """
 SELF_PARAMS = "params:\n  tax_year: 2025\n  values:\n    fa.false: {type: Bool, value: false}\n"
+SELF_REGISTER = """register:
+  tax_year: 2025
+  entries:
+    - id: amb.2025.bonus
+      text_at_issue: Whether a bonus is wages.
+      readings:
+        - It is.
+        - It is not.
+      chosen: It is.
+      reason: The form adds it.
+      cite:
+        doc: fx
+        locator: p. 2, Line 2
+      status: Applied.
+    # a comment kept with the entry before it
+    - id: amb.2025.old
+      text_at_issue: An old question.
+      readings:
+        - One reading.
+      chosen: One reading.
+      reason: Only one.
+      cite:
+        doc: fx
+        locator: p. 2
+      unlinked: Superseded.
+"""
 SELF_PAGES = ["The draft you are looking for begins on the next page", "Line 1 Wages. Line 2 Add line 1 and the bonus.",
               "Line 3 Add lines 2 and 2b. Line 2b Tips."]
 GOOD = """changes:
@@ -943,10 +1481,84 @@ GOOD = """changes:
           type: Dollars
           expr: {op: input, source: Tips}
           cite: {doc: fx, locator: p. 3, Line 2b}
-    - add_question: {input: fa.tips, like: fa.bonus, entry: {help: Tips you were paid.}}
+          ambiguity: amb.2026.tips
+    - add_question: {input: fa.tips, like: fa.bonus, entry: {help: Tips you were paid.}, default: 0,
+                     reason: "Closed: no amount unless the scenario states one."}
     - set: {line: fa.line2, field: printed, from: "2", to: "3"}
     - set: {line: fa.line2, field: expr.of, from: [fa.wages, fa.bonus], to: [fa.wages, fa.bonus, fa.tips]}
     - set_question: {input: fa.flag, field: help, from: Answer yes if flagged., to: Answer yes if you are flagged.}
+    - add_ambiguity:
+        entry:
+          id: amb.2026.tips
+          text_at_issue: Whether tips include service charges.
+          readings: [They do., They do not.]
+          chosen: They do not.
+          reason: Line 2b says tips.
+          cite: {doc: fx, locator: p. 3, Line 2b}
+    - set_ambiguity: {id: amb.2025.bonus, field: status, from: Applied., to: Applied; recheck in 2026.}
+"""
+SELF_BANK_GROUPS = SELF_BANK.replace("  questions:\n", "  groups:\n  - id: g1\n    heading: Any of these?\n  questions:\n").replace(
+    "    help: Answer yes if flagged.\n", "    help: Answer yes if flagged.\n    group: g1\n")
+SELF_PROFILE_IV = SELF_PROFILE.replace("  - fa.line2\n", "  # the form's result\n  - fa.line2\n  - fa.wages\n")
+SELF_IV = {
+    "coverage/fa.yaml": """# Coverage rows of form A.
+tax_year: 2025
+sets:
+  earner:
+    says: A person with wages.
+    answers:
+      fa.wages: 100
+rows:
+- id: r1
+  situation: Wages only.
+  uses: [earner]
+  answers:
+    fa.bonus: 0
+  expect:
+    proceeds:
+      fa.wages: 100
+# a comment kept with r1
+- id: r2
+  situation: A bonus.
+  answers:
+    fa.bonus: 5
+  expect:
+    proceeds:
+      fa.bonus: 5
+""",
+    "freq.yaml": """# Gate frequencies.
+situations:
+  s1:
+    label: Wages
+    refs: [fa.wages]
+    share: 0.5
+  s2:
+    label: Bonus
+    refs: [fa.bonus]
+    share: 0.1
+""",
+    "personas/p1.yaml": "name: p1\nwho: A person with a bonus.\nanswers:\n  fa.bonus: 5\n",
+}
+GOOD_IV = GOOD + """    - add_interview_item: {file: basic.yaml, list: interview.targets, item: fa.tips}
+    - remove_interview_item: {file: basic.yaml, list: interview.targets, item: fa.wages}
+    - set_interview: {file: coverage/fa.yaml, list: rows, item: r1, field: answers, from: {fa.bonus: 0},
+                      to: {fa.bonus: 0, fa.tips: 0}}
+    - remove_interview_item: {file: coverage/fa.yaml, list: rows, item: r2}
+    - add_interview_item: {file: freq.yaml, list: situations.s2.refs, item: fa.tips}
+    - set_interview: {file: freq.yaml, field: situations.s1.share, from: 0.5, to: 0.6}
+    - remove_interview_file: {file: personas/p1.yaml}
+    - add_interview_file: {file: personas/p2.yaml, data: {name: p2, who: A person with tips., answers: {fa.tips: 7}}}
+"""
+SPLIT = """changes:
+  tax_year: 2026
+  form: fa
+  entries:
+  - change: C-3
+    evidence:
+    - {doc: fx, page: 3, quote: "Line 2b Tips"}
+    verified: draft
+    operations:
+    - set: {line: fa.wages, field: label, from: Wages, to: Wages and salaries}
 """
 
 
@@ -954,8 +1566,11 @@ def self_test():
     import citations as C
     status = 0
 
-    def make(tmp, forms=None, bank=SELF_BANK, profile=SELF_PROFILE, changes=GOOD):
+    def make(tmp, forms=None, bank=SELF_BANK, profile=SELF_PROFILE, changes=GOOD, register=SELF_REGISTER, split=None,
+             iv=None):
+        import shutil
         tmp = Path(tmp)
+        shutil.rmtree(tmp / "interview", ignore_errors=True)
         (tmp / "forms").mkdir(parents=True, exist_ok=True)
         (tmp / "interview").mkdir(exist_ok=True)
         (tmp / "changes").mkdir(exist_ok=True)
@@ -964,16 +1579,22 @@ def self_test():
             (tmp / "forms" / f"{name}.yaml").write_text(text, encoding="utf-8")
         (tmp / "interview" / "questions.yaml").write_text(bank, encoding="utf-8")
         (tmp / "interview" / "basic.yaml").write_text(profile, encoding="utf-8")
+        for name, text in (iv or {}).items():
+            (tmp / "interview" / name).parent.mkdir(parents=True, exist_ok=True)
+            (tmp / "interview" / name).write_text(text, encoding="utf-8")
         (tmp / "params.yaml").write_text(SELF_PARAMS, encoding="utf-8")
         for p in (tmp / "changes").glob("*.yaml"):
             p.unlink()
         if changes is not None:
             (tmp / "changes" / "fa.yaml").write_text(changes, encoding="utf-8")
+        if split is not None:  # a split file: changes/<form>.<topic>.yaml, keyed by its form: field
+            (tmp / "changes" / "fa.more.yaml").write_text(split, encoding="utf-8")
+        (tmp / "register.yaml").write_text(register, encoding="utf-8")
         planted = tmp / "sources"  # the synthetic archive's one text layer, written for the evidence check
         (planted / "fx.txt").write_text("\f".join(SELF_PAGES), encoding="utf-8")
         (tmp / "sources" / "manifest.json").write_text(json.dumps({"documents": [
             {"id": "fx", "file": "fx.pdf", "text_file": "fx.txt", "draft": True}]}), encoding="utf-8")
-        return Tree(tmp / "forms", tmp / "interview", tmp / "params.yaml")
+        return Tree(tmp / "forms", tmp / "interview", tmp / "params.yaml", tmp / "register.yaml")
 
     def run(tmp, adopting=False, **kw):
         tree = make(tmp, **kw)
@@ -986,7 +1607,7 @@ def self_test():
 
     def expect(name, r, needle):
         nonlocal status
-        hit = [m for _, m in r.failures if needle in m]
+        hit = [m for _, m in r.failures if needle and needle in m]
         ok = bool(hit) if needle else not r.failures
         status = status or (0 if ok else 1)
         got = "; ".join(f"{o}: {m}" for o, m in r.failures) or "none"
@@ -1030,7 +1651,8 @@ def self_test():
              {"changes": GOOD.replace("to: [fa.wages, fa.bonus, fa.tips]", "to: [fa.wages, fa.flag, fa.tips]")},
              "gated read: fa.line2 reads fa.flag"),
             ("a new input with no question", {"changes": GOOD.replace(
-                "    - add_question: {input: fa.tips, like: fa.bonus, entry: {help: Tips you were paid.}}\n", "")},
+                "    - add_question: {input: fa.tips, like: fa.bonus, entry: {help: Tips you were paid.}, default: 0,\n"
+                "                     reason: \"Closed: no amount unless the scenario states one.\"}\n", "")},
              "input without question: fa.tips"),
             ("a question whose anchor is gone", {"changes": GOOD.replace("like: fa.bonus", "like: fa.bonuz")},
              "gone: no bank question for fa.bonuz"),
@@ -1047,6 +1669,49 @@ def self_test():
              {"bank": SELF_BANK.replace("    order: 3\n", "    order: 3\n    seq: 1\n"),
               "changes": GOOD.replace("entry: {help: Tips you were paid.}", "entry: {help: Tips you were paid., seq: 1}")},
              "collision: question fa.tips takes order 3 seq 1, the place of fa.bonus"),
+            # a new input's test-data default (add_question default and reason)
+            ("a new input with no default", {"changes": GOOD.replace(" default: 0,", "")},
+             "default: fa.tips has no test-data default"),
+            ("a new input's default of the wrong type", {"changes": GOOD.replace(" default: 0,", " default: true,")},
+             "default: fa.tips default true is not a value of Dollars"),
+            ("a new input's default with no one-line reason",
+             {"changes": GOOD.replace('"Closed: no amount unless the scenario states one."', '""')},
+             "default: fa.tips needs a one-line reason"),
+            # the ambiguity register
+            ("an added ambiguity whose id the register holds",
+             {"changes": GOOD.replace("id: amb.2026.tips", "id: amb.2025.old")}, "collision: the register has an entry amb.2025.old"),
+            ("an added ambiguity missing a field", {"changes": GOOD.replace("          chosen: They do not.\n", "")},
+             "malformed, missing entry.chosen"),
+            ("an added ambiguity no line links", {"changes": GOOD.replace("          ambiguity: amb.2026.tips\n", "")},
+             "unlinked: no line links the added ambiguity amb.2026.tips"),
+            ("a line links an ambiguity the register does not hold",
+             {"changes": GOOD.replace("          ambiguity: amb.2026.tips\n", "          ambiguity: amb.2026.tipz\n")},
+             "dangling: fa.tips links the ambiguity amb.2026.tipz"),
+            ("an ambiguity an operation sets is gone", {"changes": GOOD.replace("{id: amb.2025.bonus,", "{id: amb.2025.bonuz,")},
+             "gone: no register entry amb.2025.bonuz (closest: amb.2025.bonus"),
+            ("a register text an operation expects has changed",
+             {"register": SELF_REGISTER.replace("status: Applied.", "status: Applied to 2025.")},
+             "stale: expected 'Applied.', found 'Applied to 2025.'"),
+            ("a register id set", {"changes": GOOD + "    - set_ambiguity: {id: amb.2025.old, field: id, from: amb.2025.old, to: x}\n"},
+             "malformed: register ids are kept"),
+            ("an ambiguity removed after an operation changed it",
+             {"changes": GOOD + "    - remove_ambiguity: {id: amb.2025.bonus}\n"},
+             "collision: fa.yaml C-1 op 7 (set_ambiguity amb.2025.bonus status) adds or changes amb.2025.bonus"),
+            ("a removed ambiguity a line still links", {"changes": GOOD.replace(
+                "    - set_ambiguity: {id: amb.2025.bonus, field: status, from: Applied., to: Applied; recheck in 2026.}\n",
+                "    - remove_ambiguity: {id: amb.2025.bonus}\n")},
+             "dangling: fa.bonus still links the removed ambiguity amb.2025.bonus"),
+            ("an operation on an ambiguity another removes", {"changes": GOOD.replace(
+                "    - set_ambiguity:", "    - remove_ambiguity: {id: amb.2025.bonus}\n    - set_ambiguity:")},
+             "collision: fa.yaml C-1 op 7 (remove_ambiguity amb.2025.bonus) removes amb.2025.bonus"),
+            ("an entry left with no line linking it", {"changes": GOOD + "    - set: {line: fa.bonus, field: ambiguity, "
+                                                        "from: amb.2025.bonus, to: null}\n"},
+             "unlinked: no line links amb.2025.bonus once the operations apply"),
+            # split files: changes/<form>.<topic>.yaml, applied in file order, collisions across files
+            ("two files set the same field",
+             {"split": SPLIT.replace("field: label, from: Wages, to: Wages and salaries",
+                                     "field: printed, from: \"2\", to: \"4\"").replace("fa.wages", "fa.line2")},
+             "collision: fa.yaml C-1 op 3 (set fa.line2 printed) also sets printed"),
         ]
         for name, kw, needle in cases:
             r, _ = run(tmp, **kw)
@@ -1060,17 +1725,26 @@ def self_test():
         print("year-changes self-test: an awaited line read while preparing: " + ("a note, as expected" if ok else "WRONG"))
         r, _ = run(tmp, changes=awaiting, adopting=True)
         expect("an awaited line still missing at adoption", r, "dangling: fa.line2 reads fa.later")
+        # A split file for the same form applies after fa.yaml, as one list.
+        r, _ = run(tmp, split=SPLIT)
+        ok = (not r.failures and len(r.ops) == len(load_changes(Path(tmp) / "changes")[1])
+              and r.state.line("fa.wages")["label"] == "Wages and salaries")
+        status = status or (0 if ok else 1)
+        print("year-changes self-test: a split file changes/fa.more.yaml (form: fa) applies with fa.yaml: "
+              + ("as expected" if ok else f"WRONG ({r.failures})"))
 
         # Writing: the files edited block by block equal the data applied in memory, and every untouched line
         # block keeps its text.
         r, tree = run(tmp)
         before = {p.name: p.read_text() for p in (Path(tmp) / "forms").glob("*.yaml")}
         bank_before = (Path(tmp) / "interview" / "questions.yaml").read_text()
+        register_before = (Path(tmp) / "register.yaml").read_text()
         write_state(tree, r)
-        after = Tree(Path(tmp) / "forms", Path(tmp) / "interview", Path(tmp) / "params.yaml")
+        after = Tree(Path(tmp) / "forms", Path(tmp) / "interview", Path(tmp) / "params.yaml", Path(tmp) / "register.yaml")
         same = (after.forms["fa"]["doc"]["lines"] == r.state.forms["fa"]["lines"]
                 and after.bank["questions"] == r.state.bank
-                and after.profiles["basic.yaml"]["data"]["interview"]["questions"] == r.state.profiles["basic.yaml"])
+                and after.profiles["basic.yaml"]["data"]["interview"]["questions"] == r.state.profiles["basic.yaml"]
+                and after.register == r.state.register)
         _, old_items, _, _, _ = list_blocks(before["fa.yaml"], "lines", "id")
         _, new_items, _, _, _ = list_blocks(after.forms["fa"]["text"], "lines", "id")
         new_items = dict(new_items)
@@ -1079,10 +1753,94 @@ def self_test():
         _, new_q, _, _, _ = list_blocks(after.bank_text, "questions", "input")
         kept_q = all(dict(new_q).get(i) == t for i, t in old_q if i != "fa.flag")
         styled = "        of:\n          - fa.wages\n          - fa.bonus\n          - fa.tips\n" in after.forms["fa"]["text"]
-        ok = same and kept and kept_q and styled and "# a comment kept" in after.forms["fa"]["text"]
+        _, old_a, _, _, _ = list_blocks(register_before, "entries", "id")
+        _, new_a, _, _, _ = list_blocks(after.register_text, "entries", "id")
+        kept_a = all(dict(new_a).get(i) == t for i, t in old_a if i not in r.amb_touched)
+        ok = same and kept and kept_q and kept_a and styled and "# a comment kept" in after.forms["fa"]["text"]
         status = status or (0 if ok else 1)
         print("year-changes self-test: written files equal the applied data, untouched blocks byte-for-byte: "
-              + ("as expected" if ok else f"WRONG (data {same}, lines kept {kept}, questions kept {kept_q})"))
+              + ("as expected" if ok else f"WRONG (data {same}, lines kept {kept}, questions kept {kept_q}, "
+                                          f"register kept {kept_a})"))
+        # A YAML anchor in a rewritten line that a kept line aliases: the kept line is rewritten with the alias
+        # expanded, so the written file loads (the writer drops the anchor of a block it rewrites).
+        anchored = SELF_FORMS["fa"].replace(
+            '        locator: p. 2, Line 2, "Add line 1 and the bonus"\n',
+            '        locator: p. 2, Line 2, "Add line 1 and the bonus"\n      refuses: &r1\n        - when: fa.wages\n'
+            '          form: Form Z\n').replace(
+            "      ambiguity: amb.2025.bonus\n", "      ambiguity: amb.2025.bonus\n      refuses: *r1\n")
+        r, tree = run(tmp, forms={"fa": anchored})
+        write_state(tree, r)
+        try:
+            after = Tree(Path(tmp) / "forms", Path(tmp) / "interview", Path(tmp) / "params.yaml", Path(tmp) / "register.yaml")
+            ok = (not r.failures and "*r1" in anchored and after.forms["fa"]["doc"]["lines"] == r.state.forms["fa"]["lines"]
+                  and "*r1" not in after.forms["fa"]["text"])
+        except yaml.YAMLError as e:
+            ok = f"does not load: {e}"
+        status = status or (0 if ok is True else 1)
+        print("year-changes self-test: a kept line aliasing an anchor of a rewritten line is written expanded: "
+              + ("as expected" if ok is True else f"WRONG ({ok or r.failures})"))
+        # The interview operations: profiles' targets, coverage rows and sets, gate frequencies, personas, groups.
+        ivkw = {"iv": SELF_IV, "bank": SELF_BANK_GROUPS, "profile": SELF_PROFILE_IV, "changes": GOOD_IV}
+        r, _ = run(tmp, **ivkw)
+        expect("the planted interview operations apply", r, None)
+        iv_cases = [
+            ("an interview file that is gone", {"changes": GOOD_IV.replace("file: freq.yaml, list", "file: freqs.yaml, list")},
+             "gone: no interview file freqs.yaml (closest: freq.yaml)"),
+            ("an item that is gone", {"changes": GOOD_IV.replace("list: rows, item: r2", "list: rows, item: r3")},
+             "gone: rows of interview/coverage/fa.yaml has no item r3"),
+            ("an interview value an operation expects has changed",
+             {"iv": {**SELF_IV, "freq.yaml": SELF_IV["freq.yaml"].replace("share: 0.5", "share: 0.4")}},
+             "stale: expected 0.5, found 0.4"),
+            ("an interview item already there", {"profile": SELF_PROFILE_IV.replace("  - fa.wages\n", "  - fa.wages\n  - fa.tips\n")},
+             "already applied: the item exists as written"),
+            ("two operations on one interview item", {"changes": GOOD_IV + "    - remove_interview_item: {file: coverage/fa.yaml, "
+                                                      "list: rows, item: r1}\n"}, "collision"),
+            ("an operation on an interview file another removes",
+             {"changes": GOOD_IV + "    - set_interview: {file: personas/p1.yaml, field: who, from: x, to: y}\n"},
+             "gone: no interview file personas/p1.yaml"),
+            ("an interview operation writes a line that does not exist",
+             {"changes": GOOD_IV.replace("to: {fa.bonus: 0, fa.tips: 0}", "to: {fa.bonus: 0, fa.tipz: 0}")},
+             "dangling: interview/coverage/fa.yaml would name fa.tipz"),
+            ("a removed line still named by a coverage row, a persona, a gate frequency",
+             {"changes": GOOD_IV.replace("    - remove_interview_file: {file: personas/p1.yaml}\n", "")
+              + "    - remove_line: {line: fa.bonus}\n    - remove_question: {input: fa.bonus}\n"},
+             "dangling: interview/personas/p1.yaml still names the removed fa.bonus"),
+            ("a coverage set removed while a row uses it",
+             {"changes": GOOD_IV + "    - set_interview: {file: coverage/fa.yaml, field: sets.earner, "
+                                   "from: {says: A person with wages., answers: {fa.wages: 100}}, to: null}\n"},
+             "dangling: interview/coverage/fa.yaml still names earner"),
+            ("a group removed while a question names it",
+             {"changes": GOOD_IV + "    - remove_interview_item: {file: questions.yaml, list: bank.groups, item: g1}\n"},
+             "dangling: question fa.flag names the tick-box group g1"),
+            ("a profile's questions set by an interview operation",
+             {"changes": GOOD_IV + "    - set_interview: {file: basic.yaml, field: interview.questions, from: [], to: []}\n"},
+             "malformed: questions are changed by the question operations"),
+        ]
+        for name, kw, needle in iv_cases:
+            r, _ = run(tmp, **{**ivkw, **kw})
+            expect(name, r, needle)
+        # The last question of a group goes: its group is left with no member.
+        r, _ = run(tmp, **{**ivkw, "changes": GOOD_IV.replace(
+            "    - set_question: {input: fa.flag, field: help, from: Answer yes if flagged., to: Answer yes if you are flagged.}\n",
+            "    - set_question: {input: fa.flag, field: group, from: g1, to: null}\n")})
+        expect("a tick-box group no question names", r, "group left: tick-box group g1")
+        # Writing the interview files: equal to the applied data; comments and untouched blocks kept.
+        r, tree = run(tmp, **ivkw)
+        cov_before = (Path(tmp) / "interview" / "coverage" / "fa.yaml").read_text()
+        write_state(tree, r)
+        after = Tree(Path(tmp) / "forms", Path(tmp) / "interview", Path(tmp) / "params.yaml", Path(tmp) / "register.yaml")
+        want = {k: v for k, v in r.state.others.items()}
+        want["basic.yaml"] = {**want["basic.yaml"], "interview": {**want["basic.yaml"]["interview"],
+                                                                  "questions": r.state.profiles["basic.yaml"]}}
+        ftext = (Path(tmp) / "interview" / "freq.yaml").read_text()
+        ok = (after.others == want and "personas/p1.yaml" not in after.others
+              and "  # the form's result\n" in after.other_texts["basic.yaml"]
+              and "    refs: [fa.bonus, fa.tips]\n" in ftext and "# Gate frequencies." in ftext
+              and cov_before.split("# a comment kept with r1")[0].split("- id: r1")[0] in after.other_texts["coverage/fa.yaml"]
+              and [g["id"] for g in after.bank["groups"]] == ["g1"])
+        status = status or (0 if ok else 1)
+        print("year-changes self-test: interview files written equal the applied data, comments kept: "
+              + ("as expected" if ok else "WRONG"))
         # Recording: the operations recorded from an edited copy reproduce it.
         tree = make(tmp)
         edited = copy.deepcopy(tree.forms["fa"]["doc"])

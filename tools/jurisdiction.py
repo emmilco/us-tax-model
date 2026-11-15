@@ -22,10 +22,21 @@ New York data. In New York mode a year qualifies if it has New York definitions 
 a New York catalog (tools/sources/ny/<year>.json): require_year() exits naming what is missing, and is
 called on import for the year taxyear resolved when taxyear was imported first. A New York-only tool
 calls ny_only(), which makes New York its jurisdiction without the flag and refuses --jurisdiction us.
+
+Whether check-all checks New York for a year is a separate matter: New York has adopted the year when
+years.json lists it under `ny_adopted`, which requires its definitions (forms/ny/<year>/). For any other
+year check-all skips its New York steps and says so, so a federal year can be adopted before New York
+publishes (plan decision D1). ny_status() answers; from the shell:
+
+    jurisdiction.py --ny-status [--year N]   prints whether check-all checks New York for the year:
+                                             exit 0 checked, 3 skipped (the reason printed), 2 a bad list
+    jurisdiction.py --self-test
 """
 
+import json
 import os
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -73,6 +84,27 @@ def require_year(year, tool=None):
     """In New York mode, exit unless New York has data for the year (federally, nothing to check)."""
     if NY and not has_year(year):
         sys.exit(no_year(year, tool))
+
+
+def ny_status(year, root=ROOT):
+    """(checked, reason) for a tax year: checked is True when years.json lists the year under `ny_adopted`,
+    and reason is then ''; otherwise reason says why check-all skips New York. Exits when the list names a
+    year with no New York definitions, or is missing or malformed."""
+    data = json.loads((Path(root) / "years.json").read_text())
+    listed = data.get("ny_adopted")
+    if not isinstance(listed, list) or not all(isinstance(y, int) and 1900 <= y <= 2099 for y in listed):
+        sys.exit(f"years.json: 'ny_adopted' must be a list of four-digit years, got {listed!r}")
+    has_forms = (Path(root) / "forms" / "ny" / str(year)).is_dir()
+    if int(year) in listed:
+        if not has_forms:
+            sys.exit(f"years.json lists {year} under ny_adopted, but forms/ny/{year}/ does not exist: "
+                     f"New York is adopted with its definitions")
+        return True, ""
+    shown = ", ".join(str(y) for y in sorted(listed)) or "none"
+    reason = f"New York has not adopted {year} (years.json ny_adopted: {shown})"
+    if has_forms:
+        reason += f"; forms/ny/{year}/ exists, so add {year} to ny_adopted to check it"
+    return False, reason
 
 
 def ny_only(tool):
@@ -165,3 +197,60 @@ def preface(prompt):
 def system(text):
     """A review's system prompt for the jurisdiction: unchanged federally; NY_SYSTEM added in New York mode."""
     return f"{text} {NY_SYSTEM}" if NY else text
+
+
+def _self_test():
+    bad = []
+
+    def expect(what, got, want):
+        if got != want:
+            bad.append(f"{what}: got {got!r}, expected {want!r}")
+
+    def status(listed, forms, year):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / "years.json").write_text(json.dumps({"adopted": [2025, 2026], "ny_adopted": listed}))
+            for y in forms:
+                (root / "forms" / "ny" / str(y)).mkdir(parents=True)
+            try:
+                return ny_status(year, root)
+            except SystemExit as e:
+                return ("exit", str(e))
+
+    expect("an adopted year", status([2025], [2025], 2025), (True, ""))
+    expect("a year New York has not adopted",
+           status([2025], [2025], 2026), (False, "New York has not adopted 2026 (years.json ny_adopted: 2025)"))
+    got = status([2025], [2025, 2026], 2026)
+    expect("a year with New York definitions, not listed, is skipped and told to add it",
+           (got[0], "add 2026 to ny_adopted" in got[1]), (False, True))
+    got = status([2025, 2026], [2025], 2026)
+    expect("a listed year with no New York definitions exits",
+           (got[0], "forms/ny/2026/ does not exist" in got[1]), ("exit", True))
+    expect("an empty list", status([], [], 2025), (False, "New York has not adopted 2025 (years.json ny_adopted: none)"))
+    got = status(None, [2025], 2025)
+    expect("a missing list exits", (got[0], "'ny_adopted' must be a list" in got[1]), ("exit", True))
+    got = status(["2025"], [2025], 2025)
+    expect("a year written as a string exits", got[0], "exit")
+    if bad:
+        print("jurisdiction self-test FAILED:\n  " + "\n  ".join(bad), file=sys.stderr)
+        return 1
+    print("jurisdiction self-test OK: 7 cases of ny_status (adopted, not adopted, data not listed, listed without "
+          "data, empty, missing and malformed lists)")
+    return 0
+
+
+def _main():
+    sys.path.insert(0, str(ROOT / "tools"))
+    import taxyear  # removes --year from sys.argv
+    argv = sys.argv[1:]
+    if argv == ["--self-test"]:
+        return _self_test()
+    if argv != ["--ny-status"]:
+        sys.exit(f"jurisdiction.py: expected --ny-status [--year N] or --self-test, got {' '.join(argv) or 'nothing'}")
+    checked, reason = ny_status(taxyear.YEAR)
+    print(f"New York {taxyear.Y}: adopted, checked" if checked else reason)
+    return 0 if checked else 3
+
+
+if __name__ == "__main__":
+    sys.exit(_main())

@@ -2,9 +2,10 @@
 // CLI is: each request replays a return's answer log with the `ny` profile (federal and New York) and answers go
 // through `applyAnswer`. It serves the page in ui/ and a JSON API, on 127.0.0.1 only.
 //
-//   GET  /api/returns                 the return logs in the returns directory, and each source document's title
+//   GET  /api/returns                 the tax year served (`tax_year`), the return logs in the returns directory, and each
+//                                     source document's title
 //   POST /api/returns {name}          starts a log <name>.jsonl (mode 0600; an existing name is refused)
-//   GET  /api/returns/:name           the return's state; question text and line labels are as shown to the filer (the
+//   GET  /api/returns/:name           the return's state (with its `tax_year`); question text and line labels are as shown to the filer (the
 //                                     spouse phrase reworded for the filing status answered); each question carries `forms`, the forms its prompt and
 //                                     help name that the catalogs hold, with designation, title and purpose; and
 //                                     `conflicts`, each refusal whose gate is a consistency check
@@ -224,7 +225,7 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
     const { sheet, ...rest } = view;
     const isNy = (s: SheetSection) => s.doc.startsWith("ny_");
     return {
-      name, ...rest,
+      name, tax_year: config.tax_year, ...rest,
       pending: view.pending.map((q) => ({ ...q, ...inputMeta(data, q.input), forms: formsFor(q.input) })),
       // The tick-box screen the next question is shown in, each box's question as a pending question is served.
       group: view.group ? { ...view.group, members: view.group.members.map((q) => ({ ...q, ...inputMeta(data, q.input), forms: formsFor(q.input) })) } : null,
@@ -250,7 +251,7 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
     if (parts.length === 0) {
       if (method === "GET") {
         return [200, { returns: readdirSync(dir).filter((f) => f.endsWith(".jsonl")).map((f) => f.slice(0, -6)).filter((n) => NAME.test(n)).sort(),
-          scope: blank.scope, notices: blank.notices, standingNotices: standingNotices(), docTitles: names.titles, docDesignations: names.designations }];
+          tax_year: config.tax_year, scope: blank.scope, notices: blank.notices, standingNotices: standingNotices(), docTitles: names.titles, docDesignations: names.designations }];
       }
       if (method === "POST") {
         const name = (body as { name?: unknown } | null)?.name;

@@ -5,7 +5,7 @@ and both status columns, the credit at the band's midpoint is the smaller of the
 credit / earned income amount) and the maximum credit, less (maximum credit / (completed phaseout amount -
 threshold phaseout amount)) times the excess of the midpoint over the threshold phaseout amount, not below
 zero, rounded half-up to whole dollars. The four amounts per child count and status are the year parameters
-`eic.earned_amount*`, `eic.maximum*` (Rev. Proc. 2024-40 section 3.06(1)) and `eic.ws_threshold*`, `eic.limit*`
+`eic.earned_amount*`, `eic.maximum*` (Rev. Proc. 2024-40 section 2.06(1)) and `eic.ws_threshold*`, `eic.limit*`
 (the instructions' Worksheet A line 5 and Step 1 amounts, which equal the Rev. Proc.'s threshold and completed
 phaseout amounts). The rates are those the Rev. Proc. amounts imply; the statutory percentages are not archived,
 so a difference of $1 is expected where an implied rate is rounded. A larger difference would mean a misread

@@ -34,12 +34,16 @@ for with its dollar sign only). Tables are reported by their pages; their cells 
 re-extraction.
 Nothing is changed: the report points, a person decides.
 
---adopt lists every line of the copied definitions that still names the from-year
-outside a citation (a year constant such as "y2025"), or names an id that bears a year
-(a year-specific question such as person.born_before_2001 or f2441.paid_2026), on the
-worklist, and copies
+--adopt lists every line of the copied definitions that names a year outside a citation
+(a locator or quote, its continuation lines included), on the worklist, each year classed
+(literal_scan, LITERAL_CLASSES): the from-year, an id that bears a year (person.born_before_2001,
+amb.2025.x), a year of birth beside a year-moving age parameter, a year next to the from-year,
+a document number, or another year; with the line's moving years moved, as a candidate. It
+lists, too, the year-shared code and tool data that name an id the operations remove
+(tools/year_shared_refs.py). It copies
 the from-year's definitions (forms, tables, parameters, register,
-interview, and the citation rulings, marked "carried" for review) to the to-year
+interview, the citation rulings, marked "carried" for review, the rulings and baselines
+of the source-coverage checks, the twin declarations, and the input and adapter contract banks) to the to-year
 with tax_year and the year in file names and in
 "(<year>)" form citations replaced, relocates their page numbers against the
 to-year's archive (tools/citations.py --relocate --from <from-year>, which lists
@@ -49,7 +53,10 @@ applies the year-change operations of changes/<to-year>/ to the copy
 replace relocated values and are not relocated), and then reports with the
 to-year as the data year. It refuses to overwrite an existing year, and refuses to
 adopt when an operation does not apply to the from-year's definitions or reads a
-line it awaits that no operation has added.
+line it awaits that no operation has added. An enum declared `extends_with_year: true`
+in the parameters (placed_year) gains the value y<to-year>, and the recovery_year table
+is re-derived for the to-year (each row to-year less the year placed in service, plus 1,
+after checking that every from-year row follows that rule) with a row for y<to-year>.
 """
 
 import argparse
@@ -403,8 +410,19 @@ def write_report(r):
     literals_file = ypath("reports", str(r["to"])) / f"year_literals_from_{r['from']}.json"
     if r["data"] == r["to"] and literals_file.exists():
         literals = json.loads(literals_file.read_text())
-        lines += [f"### Definitions that still name {r['from']} ({len(literals)})", ""]
-        lines += [f"- `{p}:{n}`: {text[:160]}" for p, n, text in literals] + [""]
+        lines += [f"### Definitions that name a year outside citations ({len(literals)})", ""]
+        for c, what in LITERAL_CLASSES.items():  # a line is listed under the first class it holds
+            recs = [x for x in literals if next(iter(x["classes"]), None) == c]
+            if not recs:
+                continue
+            lines += [f"#### {c} ({len(recs)}): {what}", ""]
+            for x in recs:
+                also = ", ".join(f"{k} {', '.join(map(str, v))}" for k, v in x["classes"].items())
+                lines.append(f"- `{x['file']}:{x['line']}` ({also}"
+                             + (f"; beside {', '.join(x['age_params'])}" if x.get("age_params") else "") + f"): {x['text'][:160]}")
+                if x.get("moved"):
+                    lines.append(f"  - moved: {x['moved'][:160]}")
+            lines.append("")
     for e in work:
         lines.append(f"### {e['kind']} `{e['id']}` ({e['file']})")
         lines.append("")
@@ -465,15 +483,189 @@ the {r['data']} sentence beside its {r['other']} counterpart.</p>
 
 # ---------- adoption ----------
 
-YEAR_ID = re.compile(r"[A-Za-z_](?:19|20)\d\d(?!\d)")  # a year inside an id or constant: is2025, born_before_2001, y2019
+YEAR_ID = re.compile(r"[A-Za-z_]\.?(?:19|20)\d\d(?!\d)")  # a year inside an id or constant: is2025, born_before_2001, y2019, amb.2025.x
 
 
-def year_literal(line, from_year):
-    """Whether a line of the copied definitions, outside a citation, names the from-year or an id
-    that bears a year: what may have to move with the year, for a person to decide."""
-    if re.search(r"\b(locator|quote):", line):
-        return False
-    return bool(re.search(rf"(?<!\d){from_year}(?!\d)", line) or YEAR_ID.search(line))
+# A year as text: not part of a longer number, an amount ($2,024) or a decimal; "2024-40" (a Rev. Proc. or Notice
+# number) is matched and classed as a fixed reference.
+YEAR_TEXT = re.compile(r"(?<![\d$,])(?<!\d\.)(?<![A-Za-z_])((?:19|20)\d\d)(?!\d|[,.]\d)(-\d{1,3}(?!\d))?")
+BIRTH = re.compile(r"\b(?:born|birth|birthday|births)\b", re.I)
+KEY_LINE = re.compile(r"^(\s*)(?:- )?([\w.$\[\]]+):(?:\s|$)")
+CITATION_KEYS = {"locator", "quote"}
+# The classes of a year literal, in report order, with what each usually asks of the adoption lane.
+LITERAL_CLASSES = {
+    "from_year": "names the from-year: moves when it means the tax year",
+    "year_id": "an id or constant bearing a year: kept (ids are stable) or renamed by an operation",
+    "birth_cutoff": "a year of birth beside a year-moving age parameter: moves with the year, as the parameter does",
+    "adjacent_year": "a year next to the from-year (prior returns, carryovers, testing periods, the next year): "
+                     "moves when it is relative to the tax year, stays when it is a statutory date",
+    "fixed_reference": "a document number (Rev. Proc. 2024-40, Notice 2025-69): stays",
+    "other_year": "another year (a statutory or historical date): usually stays",
+}
+
+
+def birth_cutoffs(params_file):
+    """The year-of-birth parameters that move with the year: {name: (value, step)}. A parameter declares
+    `moves_with_year: N`; an `age.*` Count is taken to move by 1 where nothing is declared."""
+    data = yaml.safe_load(Path(params_file).read_text(encoding="utf-8")) if Path(params_file).exists() else {}
+    out = {}
+    for name, e in (((data or {}).get("params") or {}).get("values") or {}).items():
+        if not isinstance(e, dict) or not isinstance(e.get("value"), int):
+            continue
+        step = e.get("moves_with_year", 1 if name.startswith("age.") and e.get("type") == "Count" else None)
+        if isinstance(step, int) and step:
+            out[name] = (e["value"], step)
+    return out
+
+
+def literal_scan(text, from_year, cutoffs=None, shift=1):
+    """Every line of one copied definitions file that names a year outside a citation, classed. A citation is a
+    `locator:` or `quote:` scalar with its continuation lines (relocation moves those). A year of birth is recognised
+    by a word of birth on its line or the line before it, within the same scalar. Returns [(line number, line, {class:
+    [years]}, [age parameters a year of birth sits beside], the line with each year of a moving class shifted by
+    `shift`)]: the from-year, the adjacent years and the years of birth move; ids, document numbers and other years
+    are kept. The moved line is a candidate for a person to accept, not an edit."""
+    f = int(from_year)
+    cutoffs = cutoffs or {}
+    lines = text.split("\n")
+    scalars = []  # [first line index, last line index, key, the key's column, whether the key line holds a value]
+    for i, line in enumerate(lines):
+        if not line.strip():
+            continue
+        indent = len(line) - len(line.lstrip())
+        stripped = line.lstrip()
+        if scalars and scalars[-1][4] and indent > scalars[-1][3] and not stripped.startswith("#"):
+            scalars[-1][1] = i  # a continuation line of a scalar (plain, quoted or block)
+            continue
+        m = KEY_LINE.match(line)
+        if m:
+            column = indent + (2 if stripped.startswith("- ") else 0)
+            scalars.append([i, i, m.group(2), column, bool(line[m.end():].strip())])
+        elif stripped.startswith("#"):
+            scalars.append([i, i, "#", indent, False])
+        else:  # a list item's scalar, or a stray line
+            scalars.append([i, i, "-", indent + (2 if stripped.startswith("- ") else 0) - 1, True])
+    out = []
+    for first, last, key, _, _ in scalars:
+        if key.split(".")[-1] in CITATION_KEYS:
+            continue
+        for i in range(first, last + 1):
+            line = lines[i]
+            born = bool(BIRTH.search(" ".join(lines[max(first, i - 1):i + 1])))  # this line and the one before
+            classes, near, moved, at = {}, [], [], 0
+            ids = [m.span() for m in YEAR_ID.finditer(line)]
+            if ids:
+                classes["year_id"] = sorted({int(m.group(0)[-4:]) for m in YEAR_ID.finditer(line)})
+            for m in YEAR_TEXT.finditer(line):
+                if any(a <= m.start(1) < b for a, b in ids):
+                    continue  # the year of an id (amb.2025.x) is the id's
+                y = int(m.group(1))
+                # a cut-off year is printed as itself (born before January 2, 1961) or the year before (born after
+                # December 31, 1960); the bounds that sit at the tax year (age.birth_year_latest) are not cut-offs
+                beside = [n for n, (v, _) in sorted(cutoffs.items()) if y in (v, v - 1) and f - v >= 10]
+                if m.group(2):
+                    c = "fixed_reference"
+                elif y == f:
+                    c = "from_year"
+                elif beside and (born or (key == "value" and any(cutoffs[n][0] == y for n in beside))):
+                    c = "birth_cutoff"  # (a parameter's own value: propose_params.py moves it)
+                    near += [n for n in beside if n not in near]
+                elif f - 3 <= y <= f + 2:
+                    c = "adjacent_year"
+                else:
+                    c = "other_year"
+                classes.setdefault(c, [])
+                if y not in classes[c]:
+                    classes[c].append(y)
+                if c in ("from_year", "birth_cutoff", "adjacent_year"):
+                    moved += [line[at:m.start(1)], str(y + shift)]
+                    at = m.end(1)
+            if classes:
+                out.append((i + 1, line, classes, near, "".join(moved) + line[at:]))
+    return out
+
+
+def year_literal_report(files, from_year, to_year, params_file):
+    """The year-literal list of an adoption: one record per line of the from-year definitions that names a year
+    outside a citation, reported at its line of the copy (the copy keeps the lines). `files` is [(from-year file,
+    its copy)]. A line the copy already carries with every moving year moved (tax_year, by the copy's conversion) is
+    not listed."""
+    cutoffs = birth_cutoffs(params_file)
+    shift = int(to_year) - int(from_year)
+    out = []
+    for src, dst in files:
+        copied = dst.read_text(encoding="utf-8").split("\n") if dst.exists() else []
+        for n, line, classes, near, moved in literal_scan(src.read_text(encoding="utf-8"), from_year, cutoffs, shift):
+            now = copied[n - 1] if n <= len(copied) else line
+            if now != line and now == moved:
+                continue
+            rec = {"file": str(dst.relative_to(ROOT)) if dst.is_relative_to(ROOT) else str(dst), "line": n, "text": now.strip(),
+                   "classes": {c: classes[c] for c in LITERAL_CLASSES if c in classes}}
+            if near:
+                rec["age_params"] = near
+            if moved.strip() != now.strip():
+                rec["moved"] = moved.strip()
+            out.append(rec)
+    return out
+
+
+RECOVERY_TABLE = "recovery_year"
+
+
+def extend_year_enums(text, f, t):
+    """A parameters file's text with every enum declared `extends_with_year: true` given the value y<t> after y<f>
+    (its values a flow list), and the names extended. An enum already holding y<t> is left; one lacking y<f> is an
+    error: the year values must run to the from-year."""
+    enums = ((yaml.safe_load(text) or {}).get("params") or {}).get("enums") or {}
+    lines = text.split("\n")
+    start = next((i for i, l in enumerate(lines) if re.match(r"^\s+enums:\s*$", l)), None)
+    done = []
+    for name, e in enums.items():
+        if not (isinstance(e, dict) and e.get("extends_with_year") is True) or f"y{t}" in e.get("values", []):
+            continue
+        if f"y{f}" not in e.get("values", []):
+            raise ValueError(f"enum {name} extends with the year but does not list y{f}")
+        i = next(i for i in range(start + 1, len(lines)) if re.match(rf"^\s+{re.escape(name)}:\s*$", lines[i]))
+        j = next(j for j in range(i + 1, len(lines)) if re.match(r"^\s+values:", lines[j]))
+        m = re.match(r"^(\s+values:\s*\[.*?)\s*\]\s*$", lines[j])
+        if not m:
+            raise ValueError(f"enum {name}: its values are not a one-line [list]")
+        lines[j] = f"{m.group(1)}, y{t}]"
+        done.append(name)
+    out = "\n".join(lines)
+    for name in done:  # the edit is the declared one: the values gain y<t> and nothing else changes
+        before, after = enums[name]["values"], yaml.safe_load(out)["params"]["enums"][name]["values"]
+        assert after == before + [f"y{t}"], (name, after)
+    return out, done
+
+
+def extend_recovery_year(text, f, t):
+    """The recovery_year table's text re-derived for year t: each row's value is t less the year placed in service,
+    plus 1 (year 1 is the year placed in service), a row for y<t> is added before the first, and the year in the
+    title and the leading comment moves to t. Every from-year row is checked against the same rule first."""
+    f, t = int(f), int(t)
+    row = re.compile(r"^(\s*- \{ keys: \[y(\d{4})\], value: )(\d+)( \}\s*)$")
+    lines = text.split("\n")
+    first = None
+    for i, l in enumerate(lines):
+        m = row.match(l)
+        if not m:
+            if re.match(r"^\s*title:", l) or (first is None and l.startswith("#")):
+                lines[i] = re.sub(rf"(?<!\d){f}(?!\d)", str(t), l)
+            continue
+        placed, value = int(m.group(2)), int(m.group(3))
+        if value != f - placed + 1:
+            raise ValueError(f"{RECOVERY_TABLE}: the row for y{placed} reads {value}, not {f} - {placed} + 1")
+        if placed == t:
+            raise ValueError(f"{RECOVERY_TABLE}: a row for y{t} exists")
+        if first is None:
+            first = (i, m.group(1)[:m.group(1).index("[") + 1])
+        lines[i] = f"{m.group(1)}{t - placed + 1}{m.group(4)}"
+    if first is None:
+        raise ValueError(f"{RECOVERY_TABLE}: no row of the form '- {{ keys: [yNNNN], value: N }}'")
+    lines.insert(first[0], f"{first[1]}y{t}], value: 1 }}")
+    return "\n".join(lines)
+
 
 def adopt(from_year, to_year):
     """Copy the from-year definitions to the to-year (refusing to overwrite), with the
@@ -504,25 +696,31 @@ def adopt(from_year, to_year):
                 (dst / p.name).write_text(convert(p.read_text(encoding="utf-8")), encoding="utf-8")
         elif src.exists():
             dst.write_text(convert(src.read_text(encoding="utf-8")), encoding="utf-8")
-    rulings = ypath("reviews", f) / "citations.json"
-    if rulings.exists() and not (ypath("reviews", t) / "citations.json").exists():
-        data = json.loads(rulings.read_text())
-        for r in data.get("anchors", []) + data.get("quotes", []):
-            r["status"] = f"carried from {f}"
-        (ypath("reviews", t)).mkdir(parents=True, exist_ok=True)
-        (ypath("reviews", t) / "citations.json").write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
-    literals = []
-    for _, dst in pairs:
-        for p in (sorted(dst.glob("*.yaml")) if dst.is_dir() else [dst]):
-            for n, line in enumerate(p.read_text(encoding="utf-8").split("\n"), 1):
-                if year_literal(line, f):
-                    literals.append((str(p.relative_to(ROOT)), n, line.strip()))
+    # Year-valued enums and the table derived from them move by rule, not by judgment.
+    params_t = jurisdiction.params_file(t)
+    if params_t.exists():
+        text, extended = extend_year_enums(params_t.read_text(encoding="utf-8"), f, t)
+        params_t.write_text(text, encoding="utf-8")
+        if extended:
+            print(f"adopt: enums extended by y{t}: {', '.join(extended)}")
+    recovery = ypath("tables", t) / f"{RECOVERY_TABLE}.yaml"
+    if recovery.exists():
+        recovery.write_text(extend_recovery_year(recovery.read_text(encoding="utf-8"), f, t), encoding="utf-8")
+        print(f"adopt: {RECOVERY_TABLE} re-derived for {t}, with a row for y{t}")
+    carried = carry_reviews(f, t) + carry_contracts(f, t)
+    files = [(p, dst / p.name) for src, dst in pairs if src.is_dir() for p in sorted(src.glob("*.yaml"))]
+    files += [(src, dst) for src, dst in pairs if src.is_file()]
+    literals = year_literal_report(files, f, t, jurisdiction.params_file(f))
     (ypath("reports", t)).mkdir(parents=True, exist_ok=True)
-    (ypath("reports", t) / f"year_literals_from_{f}.json").write_text(json.dumps(literals, indent=1) + "\n")
-    print(f"adopt: {len(literals)} line(s) of the {t} definitions still name {f} outside citations "
-          f"({(ypath('reports', t) / f'year_literals_from_{f}.json').relative_to(ROOT)}); each is on the worklist")
+    (ypath("reports", t) / f"year_literals_from_{f}.json").write_text(json.dumps(literals, indent=1, ensure_ascii=False) + "\n")
+    by_class = collections.Counter(c for rec in literals for c in rec["classes"])
+    print(f"adopt: {len(literals)} line(s) of the {t} definitions name a year outside citations "
+          f"({(ypath('reports', t) / f'year_literals_from_{f}.json').relative_to(ROOT)}; "
+          + ", ".join(f"{c} {by_class[c]}" for c in LITERAL_CLASSES if by_class[c]) + "); each is on the worklist")
     print(f"adopt: copied the {f} definitions (and citation rulings, to be reviewed again) to {t}; "
           f"relocating page numbers against the {t} archive")
+    for line in carried:
+        print("adopt: " + line)
     subprocess.run([sys.executable, str(ROOT / "tools" / "citations.py"), "--relocate", "--from", f, "--year", t, *jurisdiction.J_ARGS], check=True)
     r = year_changes.write(t)
     print(f"adopt: applied the {len(r.ops)} operations of {ypath('changes', t).relative_to(ROOT)} to the {t} "
@@ -530,6 +728,137 @@ def adopt(from_year, to_year):
           f"for {t}'s text and were not relocated")
     if r.new_params:
         print(f"adopt: the operations read parameters params/{t}.yaml does not define: {', '.join(sorted(r.new_params))}")
+    import year_shared_refs  # code and tool data kept for every year that name what the operations remove
+    refs = year_shared_refs.references(year_changes.year_tree(f), r)
+    stem = year_shared_refs.write_report(refs, f, t, ypath("reports", t))
+    print(f"adopt: {len(refs)} reference(s) in year-shared files name ids the {t} operations remove or gates they "
+          f"retire ({stem.relative_to(ROOT)}.md); each shared file is to be made to serve both years")
+
+
+COVERAGE = ("operands", "consumers", "limits", "instruction_cites", "signs")  # tools/baseline_check.py
+KEYED_BY_YEAR = ("input_quotes",)  # tools/citations.py: a parameter's finding is keyed "<year>:<parameter>"
+DECLARED = ("twins",)  # tools/check_twins.py: the year's twin blocks and their intended differences
+CONTRACT_BANKS = ("input_contracts", "adapter_contracts")  # under tools/transcription/
+
+
+def carry_reviews(f, t):
+    """Copy the from-year's review files that adoption keeps to the to-year, never over an existing file:
+    the citation rulings, each marked "carried from <f>" to be reviewed again, and the rulings and baselines
+    of the source-coverage checks (COVERAGE) and the twin declarations (DECLARED), byte for byte, and those of
+    the input-quote check (KEYED_BY_YEAR), with the year in a parameter's key moved to the to-year. A coverage
+    ruling is keyed by its finding and a baseline entry holds only while its finding's subject hashes as recorded
+    (baseline_check.py), so a carried entry comes due where the to-year changed what it rests on; a declared
+    twin difference the year's operations changed is reported by check_twins.py, to be restated. Returns a
+    line per file copied."""
+    f, t = str(f), str(t)
+    out = []
+    src, dst = ypath("reviews", f), ypath("reviews", t)
+    for name in ("citations",) + COVERAGE + KEYED_BY_YEAR + DECLARED:
+        if not (src / f"{name}.json").exists() or (dst / f"{name}.json").exists():
+            continue
+        dst.mkdir(parents=True, exist_ok=True)
+        if name == "citations":
+            data = json.loads((src / f"{name}.json").read_text(encoding="utf-8"))
+            for r in data.get("anchors", []) + data.get("quotes", []):
+                r["status"] = f"carried from {f}"
+            (dst / f"{name}.json").write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
+        elif name in KEYED_BY_YEAR:
+            data = json.loads((src / f"{name}.json").read_text(encoding="utf-8"))
+            moved = lambda k: re.sub(rf"^([\w-]+:){f}:", rf"\g<1>{t}:", k)
+            for part in ("rulings", "baseline"):
+                data[part] = {moved(k): v for k, v in (data.get(part) or {}).items()}
+            (dst / f"{name}.json").write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8")
+        else:
+            shutil.copyfile(src / f"{name}.json", dst / f"{name}.json")
+        out.append(f"carried {(dst / f'{name}.json').relative_to(ROOT)} from {f}")
+    return out
+
+
+def carry_contracts(f, t):
+    """Copy the from-year's input and adapter contract banks (CONTRACT_BANKS) to the to-year, with their
+    tax_year moved, never over an existing file. An input bank keeps its source snapshot (each cited
+    document's text_sha256): a to-year edition whose text differs makes the bank's loader refuse it as stale,
+    which asks for the cases to be reviewed against the new text. Returns a line per bank copied."""
+    f, t = str(f), str(t)
+    out = []
+    for bank in CONTRACT_BANKS:
+        top = ROOT / "tools" / "transcription" / bank / ("ny" if jurisdiction.NY else "")
+        for p in sorted((top / f).glob("*.json")):
+            q = top / t / p.name
+            if q.exists():
+                continue
+            data = json.loads(p.read_text(encoding="utf-8"))
+            if data.get("tax_year") != int(f):
+                sys.exit(f"adopt: {p.relative_to(ROOT)} names tax_year {data.get('tax_year')}, not {f}")
+            data["tax_year"] = int(t)
+            q.parent.mkdir(parents=True, exist_ok=True)
+            q.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            out.append(f"carried {q.relative_to(ROOT)} from {f}"
+                       + (f" (its source snapshot is checked against the {t} archive)" if data.get("sources") else ""))
+    return out
+
+
+def carry_self_test():
+    """carry_reviews and carry_contracts in a scratch tree: each file is copied, the citation rulings marked,
+    a coverage file byte for byte, a bank's tax_year moved; nothing is copied over an existing file. Exits 1
+    otherwise."""
+    import tempfile
+    global ROOT, ypath
+    saved = ROOT, ypath
+    bad = []
+    with tempfile.TemporaryDirectory() as tmp:
+        ROOT = Path(tmp)
+        ypath = lambda top, year, *rest: ROOT.joinpath(top, *(["ny"] if jurisdiction.NY else []), str(year), *rest)
+        try:
+            (ypath("reviews", 2025)).mkdir(parents=True)
+            (ypath("reviews", 2025) / "citations.json").write_text(json.dumps({"anchors": [{"id": "a"}], "quotes": []}))
+            coverage = '{\n  "rulings": {"operands:x": "why"},\n  "baseline": {"operands:y": "0123456789abcdef"}\n}\n'
+            (ypath("reviews", 2025) / "operands.json").write_text(coverage)
+            (ypath("reviews", 2025) / "twins.json").write_text('{"sides": ["person", "dependent"]}\n')
+            (ypath("reviews", 2025) / "input_quotes.json").write_text(json.dumps(
+                {"rulings": {}, "baseline": {"input-quote:2025:p.x d \u201cq\u201d": "h", "input-quote:t:t d \u201c2025\u201d": "g"}}))
+            bank = ROOT / "tools" / "transcription" / "input_contracts" / ("ny" if jurisdiction.NY else "") / "2025"
+            bank.mkdir(parents=True)
+            (bank / "x.json").write_text(json.dumps({"form": "x", "tax_year": 2025, "sources": [{"doc": "d", "text_sha256": "s"}]}))
+            lines = carry_reviews(2025, 2026) + carry_contracts(2025, 2026)
+            cit = json.loads((ypath("reviews", 2026) / "citations.json").read_text())
+            if cit["anchors"][0].get("status") != "carried from 2025":
+                bad.append("citation ruling not marked carried")
+            if (ypath("reviews", 2026) / "operands.json").read_text() != coverage:
+                bad.append("coverage rulings and baseline not copied byte for byte")
+            if not (ypath("reviews", 2026) / "twins.json").exists():
+                bad.append("twin declarations not carried")
+            quotes = json.loads((ypath("reviews", 2026) / "input_quotes.json").read_text())["baseline"]
+            if quotes != {"input-quote:2026:p.x d \u201cq\u201d": "h", "input-quote:t:t d \u201c2025\u201d": "g"}:
+                bad.append(f"input-quote baseline carried as {quotes}")
+            moved = json.loads((bank.parent / "2026" / "x.json").read_text())
+            if moved["tax_year"] != 2026 or moved["sources"] != [{"doc": "d", "text_sha256": "s"}]:
+                bad.append(f"contract bank not carried with its year moved and its snapshot kept: {moved}")
+            if len(lines) != 5:
+                bad.append(f"{len(lines)} files reported carried, not 5")
+            (ypath("reviews", 2026) / "operands.json").write_text("{}")
+            if carry_reviews(2025, 2026) + carry_contracts(2025, 2026) or (ypath("reviews", 2026) / "operands.json").read_text() != "{}":
+                bad.append("copied over an existing to-year file")
+        finally:
+            ROOT, ypath = saved
+        # A carried baseline entry holds where adoption only moved the year's marks, and comes due on any other change.
+        import baseline_check as B
+        line = lambda year, text: {"id": "x.l", "cite": {"tax_year": year, "locator": f"Form X ({year}), line 1"}, "text": text}
+        finding = lambda year, text: {"kind": "k", "line": "x.l", "form": "x", "detail": "d", "subject": B.line_subject(line(year, text))}
+        rulings = Path(tmp) / "baseline" / "2026" / "k.json"
+        rulings.parent.mkdir(parents=True)
+        rulings.write_text(json.dumps({"rulings": {}, "baseline": {"k:x.l": B.subject_hash(finding(2025, "a"), {})}}))
+        import contextlib, io
+        with contextlib.redirect_stdout(io.StringIO()):
+            held = B.run("k", [], [finding(2026, "a")], rulings, Path(tmp) / "r.md", "t", "l")
+            due = B.run("k", [], [finding(2026, "b")], rulings, Path(tmp) / "r.md", "t", "l")
+            twice = B.run("k", [], [finding(2027, "a")], rulings, Path(tmp) / "r.md", "t", "l")
+        if (held, due, twice) != (0, 1, 1):
+            bad.append(f"carried baseline entry: year marks moved {held}, text changed {due}, two years moved {twice} "
+                       "(want 0, 1, 1)")
+    print("year-diff self-test: adoption carries review rulings, baselines, twin declarations and contract banks: "
+          + ("as expected" if not bad else "WRONG: " + "; ".join(bad)))
+    return 1 if bad else 0
 
 
 # ---------- self-test ----------
@@ -608,13 +937,10 @@ def self_test(year):
     status = status or (1 if bad else 0)
     print("year-diff self-test: small amounts read only with their dollar sign: "
           + ("as expected" if not bad else f"WRONG for {bad}"))
-    # The adoption worklist names the from-year and ids that bear a year, outside citations.
-    lines = [("tax_year: 2025", True), ("- id: person.born_before_2001", True), ("when: f2441.paid_2026", True),
-             ("value: y2019", True), ("- id: f1040.line16", False), ("amount: 2001", False),
-             ('locator: "p. 3, born before January 2, 1961 (2025)"', False), ("- id: f2441.line2", False)]
-    bad = [line for line, want in lines if year_literal(line, "2025") != want]
-    status = status or (1 if bad else 0)
-    print("year-diff self-test: adoption literals (the year, ids bearing a year): " + ("as expected" if not bad else f"WRONG for {bad}"))
+    # The classed year-literal list: every year outside a citation, years of birth beside the age parameters.
+    status = self_test_literals() or status
+    # Adoption extends the year-valued enums and re-derives recovery_year, by rule.
+    status = status or self_test_year_rules()
     # An abbreviation's period does not end a sentence: the text is compared lower-cased.
     split = C.split_sentences(C.norm("See Pub. 946 and Rev. Proc. 2024-40; a U.S. person, Form No. 15. Is it? No. Stop."),
                               ends=".!?:;")
@@ -642,6 +968,99 @@ def self_test(year):
     return status
 
 
+def self_test_literals():
+    """Plant each class of year literal in a copied form and its parameters, and check the classed list."""
+    import tempfile
+    params = ("params:\n  tax_year: 2025\n  values:\n    age.cut_65:\n      type: Count\n      value: 1961\n"
+              "    age.cut_50:\n      type: Count\n      value: 1976\n      moves_with_year: 1\n"
+              "    age.birth_year_latest:\n      type: Count\n      value: 2025\n"
+              "    sa.rate:\n      type: Count\n      value: 1936\n")
+    form = "\n".join([
+        "form:",
+        "  id: fx",
+        "  tax_year: 2025",                                                         # 3 converted by the copy: not listed
+        "  lines:",
+        "  - id: fx.old",
+        "    label: Born before January 2, 1961",                                   # 6 birth_cutoff (age.cut_65)
+        "    cite:",
+        "      doc: i1040gi",
+        "      locator: 'p. 33, Line 12d, \"born before January 2, 1961, or were blind at the end",
+        "        of 2025, check the box\"'",                                       # 10 a citation's continuation: not listed
+        "  - id: fx.prior",
+        "    label: Was more put into your HSA for 2024, or will be in 2026?",      # 12 adjacent_year 2024, 2026
+        "  - id: fx.young",
+        "    label: Number of people born after December 31, 1960, and before",
+        "      January 2, 2001, on the return",                                      # 15 continuation, other_year (no param)
+        "  - id: fx.lump",
+        "    label: Born before January 2, 1936?",                                  # 17 other_year: a fixed birth date
+        "  - id: fx.gift",
+        "    help: For a gift after 1976, add the gift tax paid.",                  # 19 other_year: 1976 without a birth
+        "  - id: fx.otjob",
+        "    note: figured by the methods of Notice 2025-69 and amb.2025.otjob for $2,024.",  # 21 fixed_reference, year_id
+        "  - id: fx.cutline",
+        "    source: |-",
+        "      Were you born in 1976?",                                              # 24 block scalar: birth_cutoff (cut_50)
+        "      - The child was born in 2024 (a child born in 2025 counts).",         # 25 adjacent (2024 not a cut-off)
+        "  - id: fx.died_2025",                                                     # 26 year_id
+        ""])
+    with tempfile.TemporaryDirectory() as tmp:
+        src, dst, pf = Path(tmp) / "fx.yaml", Path(tmp) / "fx.2026.yaml", Path(tmp) / "params.yaml"
+        src.write_text(form, encoding="utf-8")
+        dst.write_text(form.replace("tax_year: 2025", "tax_year: 2026"), encoding="utf-8")
+        pf.write_text(params, encoding="utf-8")
+        recs = {x["line"]: x for x in year_literal_report([(src, dst)], 2025, 2026, pf)}
+        own = {x["text"]: x["classes"] for x in year_literal_report([(pf, pf)], 2025, 2026, pf)}
+    want = {6: ({"birth_cutoff": [1961]}, "label: Born before January 2, 1962"),
+            12: ({"adjacent_year": [2024, 2026]}, "label: Was more put into your HSA for 2025, or will be in 2027?"),
+            14: ({"birth_cutoff": [1960]}, "label: Number of people born after December 31, 1961, and before"),
+            15: ({"other_year": [2001]}, None),
+            17: ({"other_year": [1936]}, None),
+            19: ({"other_year": [1976]}, None),
+            21: ({"year_id": [2025], "fixed_reference": [2025]}, None),
+            24: ({"birth_cutoff": [1976]}, "Were you born in 1977?"),
+            25: ({"from_year": [2025], "adjacent_year": [2024]}, "- The child was born in 2025 (a child born in 2026 counts)."),
+            26: ({"year_id": [2025]}, None)}
+    got = {n: (x["classes"], x.get("moved")) for n, x in recs.items()}
+    # the age parameters' own values are years of birth; another parameter's value that looks like a year is not
+    ok = own.get("value: 1961") == {"birth_cutoff": [1961]} and own.get("value: 1936") == {"other_year": [1936]}
+    ok = ok and got == want and recs[6].get("age_params") == ["age.cut_65"] and recs[24]["age_params"] == ["age.cut_50"]
+    print("year-diff self-test: the classed year-literal list (a copied tax_year and a citation's continuation not "
+          "listed; adjacent years, years of birth beside the age parameters, fixed birth dates, document numbers and "
+          "ids classed; candidates moved; the age parameters' own values): " + ("as expected" if ok else f"WRONG {own}\n" + "\n".join(
+              f"  line {n}: got {got.get(n)}, want {want.get(n)}" for n in sorted(set(got) | set(want)) if got.get(n) != want.get(n))))
+    return 0 if ok else 1
+
+
+def self_test_year_rules():
+    params = ("params:\n  tax_year: 2025\n  values: {}\n  enums:\n    placed_year:\n      values: [y2024, y2025]\n"
+              "      extends_with_year: true\n      cite: {doc: p946, locator: p. 39}\n"
+              "    quarter:\n      values: [q1, y2025]\n      cite: {doc: p946, locator: p. 41}\n")
+    text, done = extend_year_enums(params, 2025, 2026)
+    e = yaml.safe_load(text)["params"]["enums"]
+    ok = done == ["placed_year"] and e["placed_year"]["values"] == ["y2024", "y2025", "y2026"] and e["quarter"]["values"] == ["q1", "y2025"]
+    ok = ok and extend_year_enums(text, 2025, 2026)[1] == []  # already extended: left
+    try:
+        extend_year_enums(params.replace("[y2024, y2025]", "[y2023, y2024]"), 2025, 2026)
+        ok = False
+    except ValueError:
+        pass
+    table = ("# The 2025 year of recovery, each row 2025 less the year placed in service, plus 1.\ntable:\n  id: recovery_year\n"
+             "  title: \"Year of recovery in 2025\"\n  cite:\n    locator: \"p. 39, sold March 2, 2025\"\n  rows:\n"
+             "    - { keys: [y2025], value: 1 }\n    - { keys: [y2024], value: 2 }\n")
+    out = extend_recovery_year(table, 2025, 2026)
+    t = yaml.safe_load(out)["table"]
+    ok = ok and [(r["keys"][0], r["value"]) for r in t["rows"]] == [("y2026", 1), ("y2025", 2), ("y2024", 3)]
+    ok = ok and t["title"] == "Year of recovery in 2026" and "sold March 2, 2025" in out and out.startswith("# The 2026 year")
+    try:
+        extend_recovery_year(table.replace("[y2024], value: 2", "[y2024], value: 3"), 2025, 2026)
+        ok = False
+    except ValueError:
+        pass
+    print("year-diff self-test: adoption extends enums declared extends_with_year and re-derives recovery_year "
+          "(a from-year row off the rule refused): " + ("as expected" if ok else f"WRONG\n{text}\n{out}"))
+    return 0 if ok else 1
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--from", dest="from_year", type=int)
@@ -651,7 +1070,7 @@ def main():
     ap.add_argument("--self-test", action="store_true", help="the synthetic check run by check-all (uses --to's archive)")
     a = ap.parse_args()
     if a.self_test:
-        sys.exit(self_test(a.to_year or int(C.Y)))
+        sys.exit(max(self_test(a.to_year or int(C.Y)), carry_self_test()))
     if a.from_year is None or a.to_year is None:
         ap.error("--from and --to are required")
     data = a.data_year or a.from_year

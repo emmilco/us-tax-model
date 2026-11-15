@@ -12,7 +12,11 @@ predictor alone, which reads no New York encoding. Refusal cases assert the refu
 The two official tax-table examples (taxable income $38,275, married filing jointly: State tax $1,773, City tax
 $1,292) are class A: a married-filing-jointly return whose New York taxable income is $38,275.
 
-    ny_fixtures.py [--year N]     write the fixtures (runs the federal evaluation through the CLI)
+    ny_fixtures.py [--year N] --out PATH   write the fixtures to PATH (runs the federal evaluation through the CLI)
+    ny_fixtures.py --self-test
+
+The committed fixtures are asserted values and review inputs: the tool refuses to overwrite a file git tracks, and
+without --out it names the committed path and refuses when that file exists. Write elsewhere with --out and compare.
 
 The year is taxyear.py's; the predictor knows one year's printing (tools/ny_predict.py, PRINTED) and exits for any
 other.
@@ -284,7 +288,57 @@ def wages_for_taxable(status, target_ti, extra=0):
     return max(probe + (target_ti * 100 - ti) + extra, 0)
 
 
-def main():
+def tracked(path):
+    """Whether git tracks `path` (a committed fixture file)."""
+    r = subprocess.run(["git", "ls-files", "--error-unmatch", str(path)], cwd=ROOT, capture_output=True, text=True)
+    return r.returncode == 0
+
+
+def refusal(target, explicit, is_tracked=tracked):
+    """Why `target` must not be written, or None. A tracked file is never overwritten; the default path is not
+    overwritten when it exists (it is where the committed fixtures live)."""
+    if target.exists() and is_tracked(target):
+        return f"{target} is a committed fixture file; write elsewhere with --out PATH"
+    if not explicit and target.exists():
+        return f"{target} exists; the committed fixtures are not overwritten: pass --out PATH to write a new file"
+    return None
+
+
+def out_path(argv):
+    """(path, explicit) from `--out PATH` in argv, else the default path."""
+    if "--out" in argv:
+        i = argv.index("--out")
+        if i + 1 >= len(argv):
+            sys.exit("--out: expected a path")
+        return Path(argv[i + 1]).resolve(), True
+    return OUT, False
+
+
+def self_test():
+    bad = []
+    with tempfile.TemporaryDirectory() as d:
+        t = Path(d) / "it201.json"
+        if refusal(t, True, lambda p: True) is not None or refusal(t, False, lambda p: True) is not None:
+            bad.append("a missing target was refused")
+        t.write_text("x")
+        if refusal(t, True, lambda p: True) is None:
+            bad.append("a tracked file was overwritable")
+        if refusal(t, False, lambda p: False) is None:
+            bad.append("an existing default path was overwritable")
+        if refusal(t, True, lambda p: False) is not None:
+            bad.append("an untracked --out target was refused")
+        if out_path(["x", "--out", str(t)]) != (t.resolve(), True) or out_path(["x"]) != (OUT, False):
+            bad.append("out_path")
+    if OUT.exists() and tracked(OUT) and refusal(OUT, True) is None:
+        bad.append("the committed fixtures are overwritable")
+    print("ny_fixtures self-test: " + ("ok" if not bad else f"FAILED: {bad}"))
+    return 1 if bad else 0
+
+
+def main(out, explicit):
+    why = refusal(out, explicit)
+    if why:
+        sys.exit(why)
     cases = []
     # class A: the official tax-table examples ($38,275, married filing jointly)
     w = wages_for_taxable("mfj", 38275)
@@ -403,12 +457,14 @@ def main():
                            ans={"est_late": True}, refuse=("gate.estimated_penalty", "line81"),
                            note="an estimated installment paid late or short, even with a refund."))
     cases = [c for c in cases if c]
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({"tax_year": YEAR, "cases": cases}, indent=1) + "\n")
-    print(f"wrote {OUT.relative_to(ROOT)}: {len(cases)} cases")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps({"tax_year": YEAR, "cases": cases}, indent=1) + "\n")
+    print(f"wrote {out}: {len(cases)} cases")
 
 
 if __name__ == "__main__":
+    if "--self-test" in sys.argv:
+        sys.exit(self_test())
     jurisdiction.ny_only("ny_fixtures")
     ny_predict.require_printed()
-    main()
+    main(*out_path(sys.argv))

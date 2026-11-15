@@ -1,0 +1,213 @@
+changes:
+  tax_year: 2026
+  form: f5695
+  entries:
+  - change: C-CRED-01
+    evidence:
+    - doc: i5695
+      page: 2
+      quote: Termination of credits. You can’t claim residential clean energy credits for expenditures made after December
+        31, 2025.
+    - doc: i5695
+      page: 2
+      quote: You can’t claim energy efficient home improvement credits for expenditures or property placed in service after
+        December 31, 2025.
+    verified: draft
+    note: 'The interview side of C-CRED-01 to C-CRED-08 (changes/2026/f5695.yaml): the target, gate-frequency refs, coverage
+      rows and set, persona and tick-box groups that name the removed Form 5695 lines. The 2025 installer persona is removed,
+      not restated: in 2026 such a filer has at most a carryforward, which the restated coverage row l8b.energy_carryforward
+      covers. The Part II situation of the gate frequencies is removed (no 2026 credit); the Part I situation now refers to
+      the carryforward question f5695.carry.'
+    operations:
+    - remove_interview_item:
+        file: full.yaml
+        list: interview.targets
+        item: f5695.line32b
+    - remove_interview_item:
+        file: gate_frequencies.yaml
+        list: situations.home_energy.refs
+        item: f5695.any
+    - remove_interview_item:
+        file: gate_frequencies.yaml
+        list: situations.clean_energy_part1.refs
+        item: f5695.any
+    - add_interview_item:
+        file: gate_frequencies.yaml
+        list: situations.clean_energy_part1.refs
+        item: f5695.carry
+    - set_interview:
+        file: gate_frequencies.yaml
+        field: situations.home_improvement_part2
+        from:
+          label: Energy efficient home improvements (Form 5695 Part II)
+          theme: home_vehicle
+          refs:
+          - f5695.any
+          share: 0.016
+          range:
+          - 0.016
+          - 0.025
+          source:
+            kind: soi
+            combine: single
+            cells:
+            - file: soi-23in33ar
+              table: Table 3.3
+              column: 16
+              header: Energy efficient home improvement credit
+              returns: 2570561
+        to: null
+    - remove_interview_file:
+        file: personas/10_homeowner_solar_heat_pump.yaml
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_none
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_solar
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_heat_pump
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_fuel_cell
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_business_use
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_construction_later
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_joint_occupancy
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_new_home_insulation
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_new_home_heat_pump
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_door_no_qmid
+    - remove_interview_item:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_rented_home_insulation
+    - set_interview:
+        file: coverage/education_energy.yaml
+        field: sets.work_done
+        from:
+          says: Something was installed at home in 2025; each kind not named by the row was not installed.
+          answers:
+            f5695.any: true
+            f5695.solar: false
+            f5695.solar_water: false
+            f5695.wind: false
+            f5695.geothermal: false
+            f5695.line5a: false
+            f5695.line7a: false
+            f5695.insulation: false
+            f5695.doors: false
+            f5695.windows: false
+            f5695.panel: false
+            f5695.audit: false
+            f5695.heat_pump: false
+            f5695.hp_water_heater: false
+            f5695.central_ac: false
+            f5695.water_heater: false
+            f5695.furnace: false
+            f5695.biomass: false
+        to: null
+    - set_interview:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_carryforward
+        field: design
+        from: lane 8b notes, home energy (a carryforward from 2024 and nothing installed in 2025)
+        to: lane 8b notes, home energy (a carryforward from 2025; 2026 expenditures earn no credit)
+    - set_interview:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_carryforward
+        field: situation
+        from: A person installed nothing in 2025 but has $1,500 of clean energy credit carried forward on line 16 of the 2024
+          Form 5695.
+        to: A person installed nothing in 2026 but has $1,500 of clean energy credit carried forward on line 16 of the 2025
+          Form 5695.
+    - set_interview:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_carryforward
+        field: answers
+        from:
+          f5695.any: false
+          s3.prior_other_forms: true
+          s3.prior_amt: false
+          s3.prior_forms: false
+          ftc.carryover: false
+          f5695.carry: true
+          f5695.line12: 150000
+        to:
+          s3.prior_other_forms: true
+          s3.prior_amt: false
+          s3.prior_forms: false
+          ftc.carryover: false
+          f5695.carry: true
+          f5695.line12: 150000
+    - set_interview:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_carryforward
+        field: expect.not_asked
+        from:
+        - f5695.solar
+        - f5695.business_use
+        - f5695.construction_later
+        - f5695.line7a
+        to: null
+    - set_interview:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_no_prior_form
+        field: answers
+        from:
+          f5695.any: false
+          s3.prior_other_forms: false
+        to:
+          s3.prior_other_forms: false
+    - set_interview:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_no_prior_form
+        field: situation
+        from: A person whose 2024 return had no separate form is not asked about a carryforward.
+        to: A person whose 2025 return had no separate form is not asked about a carryforward.
+    - set_interview:
+        file: coverage/education_energy.yaml
+        list: rows
+        item: l8b.energy_no_prior_form
+        field: design
+        from: lane 8b notes, home energy (no separate form in the 2024 return)
+        to: lane 8b notes, home energy (no separate form in the 2025 return)
+    - remove_interview_item:
+        file: questions.yaml
+        list: bank.groups
+        item: energy_power
+    - remove_interview_item:
+        file: questions.yaml
+        list: bank.groups
+        item: energy_shell
+    - remove_interview_item:
+        file: questions.yaml
+        list: bank.groups
+        item: energy_heating

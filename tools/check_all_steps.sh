@@ -27,6 +27,11 @@
 # A check that runs for both jurisdictions is declared once, with jstep: its New York
 # run is the step ny_<name>, the same command with the New York flag.
 #
+# New York publishes after the IRS, so a year may be adopted federally before New York has adopted it
+# (years.json, ny_adopted; tools/jurisdiction.py --ny-status). For such a year every step named ny_* is
+# skipped: it is listed in its wave as "== ny_<name>" with the reason, and the run says how many it skipped
+# at its start and its end. The New York render runs when the year has New York definitions (forms/ny/<year>/).
+#
 # --tier full|fast|docs selects the steps (default full: every step except release_steps, which only a
 # release runs: tools/release.sh sets CHECK_ALL_RELEASE=1). release_steps rewrite a report and check nothing
 # another step does not. fast skips slow_steps: the
@@ -50,6 +55,16 @@ while [ "$#" -gt 0 ]; do
 done
 set -- ${args[@]+"${args[@]}"}
 run_args=("$@")
+year="$(python3 -I -c 'import sys; sys.path.insert(0, "tools"); import taxyear; print(taxyear.Y)' "$@")"
+# ny_skip: empty when New York has adopted the year; otherwise why its steps are skipped.
+ny_skip=""
+ny_rc=0
+ny_status="$(python3 tools/jurisdiction.py --ny-status "$@")" || ny_rc=$?
+case "$ny_rc" in
+  0) ;;
+  3) ny_skip="$ny_status" ;;
+  *) echo "check-all: tools/jurisdiction.py --ny-status failed" >&2; exit 2 ;;
+esac
 slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate interview_length "
 docs_steps=" compile build check_bug_inventory check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree "
 case "$tier" in
@@ -80,13 +95,21 @@ finish() {
 trap finish EXIT
 names=()
 pids=()
+skipped=()
 stage_t0=0
 
 # step NAME COMMAND...: start COMMAND in the background, logging to its own file, when NAME is in the tier.
+# A New York step (ny_*) for a year New York has not adopted is not started: its log is the reason, and its
+# wave lists it with an empty pid, as skipped.
 step() {
   local name="$1"; shift
   in_tier "$name" || return 0
   [ "${#pids[@]}" -gt 0 ] || stage_t0=$(date +%s)
+  if [ -n "$ny_skip" ] && [[ "$name" == ny_* ]]; then
+    echo "skipped: $ny_skip" > "$logs/$name.log"
+    names+=("$name"); pids+=(""); skipped+=("$name")
+    return 0
+  fi
   ( t0=$(date +%s); rc=0; "$@" > "$logs/$name.log" 2>&1 || rc=$?
     echo "$(( $(date +%s) - t0 )) $name" >> "$times"; exit "$rc" ) &
   names+=("$name"); pids+=("$!")
@@ -108,6 +131,7 @@ wave() {
   local i failed=() passed=() label="$1" joined lacking
   [ "${#pids[@]}" -gt 0 ] || return 0
   for i in "${!pids[@]}"; do
+    [ -n "${pids[$i]}" ] || continue
     if wait "${pids[$i]}"; then passed+=("${names[$i]}"); else failed+=("${names[$i]}"); fi
   done
   joined="${names[*]}"
@@ -133,7 +157,12 @@ wave() {
 # Chained with && because set -e does not apply inside a command whose status is tested. The build
 # writes both jurisdictions' canonical data; the New York documents render to rendered/ny/<year>/.
 build_and_render() {
-  "${node[@]}" build "$@" && "${node[@]}" render "$@" && "${node[@]}" render --ny "$@"
+  "${node[@]}" build "$@" && "${node[@]}" render "$@" || return 1
+  if [ -d "forms/ny/$year" ]; then
+    "${node[@]}" render --ny "$@"
+  else
+    echo "render --ny skipped: no forms/ny/$year/"
+  fi
 }
 
 lean_build() {
@@ -147,6 +176,9 @@ review_packets() {
     "${node[@]}" review-stage5 "$@"
 }
 
+if [ -n "$ny_skip" ]; then
+  echo "check-all: New York steps skipped for $year: $ny_skip"
+fi
 step compile npm run compile --silent
 wave compile
 
@@ -245,3 +277,6 @@ fi
 step evidence "${node[@]}" evidence ${evidence_args[@]+"${evidence_args[@]}"} "$@"
 step review_packets review_packets "$@"
 wave wave3
+if [ "${#skipped[@]}" -gt 0 ]; then
+  echo "check-all: ${#skipped[@]} New York steps skipped for $year (${skipped[*]}): $ny_skip"
+fi

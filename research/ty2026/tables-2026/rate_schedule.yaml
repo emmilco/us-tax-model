@@ -1,0 +1,46 @@
+# 2026 tax rate schedules (section 1(j)(2)) from the revenue procedure of the year's inflation adjustments. Each
+# row: upper (cents, null for the top row), base, rate, over; tax is base + rate x (amount - over).
+# Written by tools/extract_printed_tables.py from sources/2026/rp-25-32.pdf (sha256 e9ada115fb43); checked by its --check (check-all).
+table:
+  id: "rate_schedule"
+  kind: "bracket_schedule"
+  title: "2026 Tax Rate Schedules (section 1(j)(2))"
+  tax_year: 2026
+  cite:
+    doc: "rp-25-32"
+    locator: "section 4.01, Tables 1-4"
+    quote: "For taxable years beginning in 2026, the tax rate tables under § 1 are as follows"
+  status_alias: { qss: mfj }
+  schedules:
+    single:
+      - { upper: 1240000, base: 0, rate: { num: 10, den: 100 }, over: 0 }
+      - { upper: 5040000, base: 124000, rate: { num: 12, den: 100 }, over: 1240000 }
+      - { upper: 10570000, base: 580000, rate: { num: 22, den: 100 }, over: 5040000 }
+      - { upper: 20177500, base: 1796600, rate: { num: 24, den: 100 }, over: 10570000 }
+      - { upper: 25622500, base: 4102400, rate: { num: 32, den: 100 }, over: 20177500 }
+      - { upper: 64060000, base: 5844800, rate: { num: 35, den: 100 }, over: 25622500 }
+      - { upper: null, base: 19297925, rate: { num: 37, den: 100 }, over: 64060000 }
+    mfj:
+      - { upper: 2480000, base: 0, rate: { num: 10, den: 100 }, over: 0 }
+      - { upper: 10080000, base: 248000, rate: { num: 12, den: 100 }, over: 2480000 }
+      - { upper: 21140000, base: 1160000, rate: { num: 22, den: 100 }, over: 10080000 }
+      - { upper: 40355000, base: 3593200, rate: { num: 24, den: 100 }, over: 21140000 }
+      - { upper: 51245000, base: 8204800, rate: { num: 32, den: 100 }, over: 40355000 }
+      - { upper: 76870000, base: 11689600, rate: { num: 35, den: 100 }, over: 51245000 }
+      - { upper: null, base: 20658350, rate: { num: 37, den: 100 }, over: 76870000 }
+    mfs:
+      - { upper: 1240000, base: 0, rate: { num: 10, den: 100 }, over: 0 }
+      - { upper: 5040000, base: 124000, rate: { num: 12, den: 100 }, over: 1240000 }
+      - { upper: 10570000, base: 580000, rate: { num: 22, den: 100 }, over: 5040000 }
+      - { upper: 20177500, base: 1796600, rate: { num: 24, den: 100 }, over: 10570000 }
+      - { upper: 25622500, base: 4102400, rate: { num: 32, den: 100 }, over: 20177500 }
+      - { upper: 38435000, base: 5844800, rate: { num: 35, den: 100 }, over: 25622500 }
+      - { upper: null, base: 10329175, rate: { num: 37, den: 100 }, over: 38435000 }
+    hoh:
+      - { upper: 1770000, base: 0, rate: { num: 10, den: 100 }, over: 0 }
+      - { upper: 6745000, base: 177000, rate: { num: 12, den: 100 }, over: 1770000 }
+      - { upper: 10570000, base: 774000, rate: { num: 22, den: 100 }, over: 6745000 }
+      - { upper: 20175000, base: 1615500, rate: { num: 24, den: 100 }, over: 10570000 }
+      - { upper: 25620000, base: 3920700, rate: { num: 32, den: 100 }, over: 20175000 }
+      - { upper: 64060000, base: 5663100, rate: { num: 35, den: 100 }, over: 25620000 }
+      - { upper: null, base: 19117100, rate: { num: 37, den: 100 }, over: 64060000 }

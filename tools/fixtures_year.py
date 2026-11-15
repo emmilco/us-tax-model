@@ -21,7 +21,13 @@ Copies fixtures/<from>/ to fixtures/<to>/ (refusing to overwrite) and re-derives
   - a case whose inputs the new year's data rejects (a year value its definitions do
     not list yet) is marked "not evaluated" and listed;
   - class M hand-work (tools/transcription/classm.py, paid model calls) runs for the
-    documents with a line on the worklist, unless --no-hand-work.
+    documents with a line on the worklist, unless --no-hand-work;
+  - the test-data defaults (defaults.json) follow the year's operations (changes/<to>/,
+    tools/year_changes.py): each new input takes the default and reason its add_question
+    states, placed after the default of the question it is placed after; the default of an
+    input the operations remove (remove_line, remove_question) is dropped, and a case that
+    still states a removed input is marked "not evaluated" and listed. The cases resolve
+    against the carried defaults.
 
 Writes reports/<to>/fixtures_from_<from>.md.
 
@@ -112,7 +118,43 @@ def self_test():
             refused.append("input k refers to " in str(e) and "not a dollar amount" in str(e))
     print("fixtures-year self-test: parameter-relative inputs " + ("resolve, and those naming no dollar amount are refused"
           if ok and all(refused) else f"WRONG (resolved {good}; refused {refused})"))
-    return 0 if ok and all(refused) else 1
+    # The defaults follow the operations: a new input's default after its anchor's, a removed input's dropped.
+    import year_changes
+    Op = year_changes.Op
+    ops = [Op("x", "C", 1, "add_question", {"input": "f.new", "like": "f.a", "default": 0, "reason": "r"}, {}),
+           Op("x", "C", 2, "add_question", {"input": "f.newer", "after": "f.new", "default": False, "reason": "s"}, {}),
+           Op("x", "C", 3, "add_question", {"input": "f.nodefault", "after": "f.a"}, {}),
+           Op("x", "C", 4, "remove_question", {"input": "f.b"}, {}),
+           Op("x", "C", 5, "remove_line", {"line": "f.c"}, {})]
+    d = {"defaults": [{"input": i, "value": 0, "reason": "x"} for i in ("f.a", "f.b", "f.c", "f.d")]}
+    added, dropped, _ = carry_defaults(d, ops)
+    got = [(x["input"], x["value"], x["reason"]) for x in d["defaults"]]
+    ok2 = (got == [("f.a", 0, "x"), ("f.new", 0, "r"), ("f.newer", False, "s"), ("f.d", 0, "x")]
+           and added == ["f.new", "f.newer"] and dropped == ["f.b", "f.c"])
+    print("fixtures-year self-test: defaults follow the operations (new inputs added after their anchors, removed ones "
+          "dropped): " + ("as expected" if ok2 else f"WRONG ({got}; added {added}; dropped {dropped})"))
+    return 0 if ok and all(refused) and ok2 else 1
+
+
+def carry_defaults(d, ops):
+    """The defaults document `d` with the operations' new inputs added (add_question `default`, `reason`) and the
+    inputs they remove dropped. Returns (added, dropped, removed), `removed` every input id the operations remove."""
+    removed = {op.body["line"] for op in ops if op.kind == "remove_line"} | \
+        {op.body["input"] for op in ops if op.kind == "remove_question"}
+    defaults = [x for x in d.get("defaults", []) if x.get("input") not in removed]
+    dropped = sorted({x["input"] for x in d.get("defaults", [])} - {x["input"] for x in defaults})
+    added = []
+    for op in ops:
+        b = op.body
+        if op.kind != "add_question" or "default" not in b or any(x["input"] == b["input"] for x in defaults):
+            continue
+        entry = {"input": b["input"], "value": b["default"], "reason": b.get("reason", "")}
+        anchor = b.get("like") or b.get("after")
+        at = next((i for i, x in enumerate(defaults) if x["input"] == anchor), None)
+        defaults.insert(len(defaults) if at is None else at + 1, entry)
+        added.append(b["input"])
+    d["defaults"] = defaults
+    return added, dropped, removed
 
 
 def comparable(value):
@@ -188,8 +230,24 @@ def main():
         indent = 1 if path.name == "classm.json" else 2
         files[path.name] = (data, indent)
 
+    # The defaults follow the year's operations: new inputs' defaults added, removed inputs' dropped. The carried
+    # file is the one the cases resolve against.
+    import year_changes
+    _, ops, problems = year_changes.load_changes(ypath("changes", str(t)))
+    if problems:
+        sys.exit("fixtures: the year changes do not load: " + "; ".join(problems))
+    d = json.loads((src / "defaults.json").read_text(encoding="utf-8")) if (src / "defaults.json").exists() else None
+    new_defaults, dropped_defaults, removed_inputs = carry_defaults(d, ops) if d else ([], [], set())
+    carried = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+    if d:
+        d["tax_year"] = t
+        json.dump(d, carried)
+    carried.close()
+    defaults = ([p for p in [ROOT / "fixtures" / str(y) / "defaults.json" for y in (t, f)] if p.exists()][:1]
+                if jurisdiction.J == "ny" else []) + ([Path(carried.name)] if d else [])
+
     dropped, kept, rerecorded, reasons = [], 0, 0, collections.Counter()
-    all_cases = []
+    all_cases, stating = [], []
     for name, (data, _) in files.items():
         data["tax_year"] = t
         cases = []
@@ -198,14 +256,24 @@ def main():
                 dropped.append((name, c["id"]))
                 continue
             c["inputs"] = {k: shift_year(k, v, t - f) for k, v in c["inputs"].items()}
-            c["file"] = name
             cases.append(c)
+            gone = sorted(k for k in c["inputs"] if template(k) in removed_inputs)
+            if gone:  # an answer to an input the year removes: not evaluated until it is moved to its successor
+                stating += [(name, c["id"], k) for k in gone]
+                c["evidence_note"] = (f"Carried from {f}: was \u201c{c.get('evidence')}\u201d; states "
+                                      f"{', '.join(gone)}, which the {t} operations remove. Earlier note: "
+                                      f"{c.get('evidence_note', '')}").strip()
+                c["evidence"] = f"not evaluated in {t}"
+                continue
+            c["file"] = name
             all_cases.append(c)
         data["cases"] = cases
     try:
-        resolved = resolve_cases(all_cases, t, jurisdiction.J == "ny", defaults_files(f))
+        resolved = resolve_cases(all_cases, t, jurisdiction.J == "ny", defaults)
     except ValueError as e:
         sys.exit(f"fixtures {f} -> {t}: {e}")
+    finally:
+        Path(carried.name).unlink()
     for c in all_cases:
         c["resolved"] = resolved[c["id"]]
     results = evaluate(all_cases, t)
@@ -251,9 +319,7 @@ def main():
     dst.mkdir(parents=True)
     for name, (data, indent) in files.items():
         (dst / name).write_text(json.dumps(data, indent=indent, ensure_ascii=False) + "\n", encoding="utf-8")
-    if (src / "defaults.json").exists():
-        d = json.loads((src / "defaults.json").read_text(encoding="utf-8"))
-        d["tax_year"] = t
+    if d:
         # A consistency rule's open list names cases; one that names a dropped case would be refused by the build.
         gone = {cid for _, cid in dropped}
         for rule in d.get("consistency", []):
@@ -281,6 +347,14 @@ def main():
         out += [f"- `{cid}`: {err}" for cid, err in failed] + [""]
     if dropped:
         out += ["## Official examples to find for the new year", ""] + [f"- `{n}`: `{cid}`" for n, cid in dropped] + [""]
+    out += ["## Test-data defaults", "",
+            f"Added from the year's operations (add_question default): {', '.join(f'`{i}`' for i in new_defaults) or 'none'}. "
+            f"Dropped with their inputs: {', '.join(f'`{i}`' for i in dropped_defaults) or 'none'}.", ""]
+    if stating:
+        out += [f"Answers to an input the operations remove ({len(stating)}): their cases are marked not evaluated, "
+                "until the answer is moved to the input that replaces it or the case is re-derived:", ""]
+        out += [f"- `{n}` `{cid}`: `{k}`" for n, cid, k in stating[:200]] + ([f"- and {len(stating) - 200} more"]
+                                                                              if len(stating) > 200 else []) + [""]
     out += ["## Class M hand-work", ""]
     if not docs:
         out.append("No line of the definitions is on the year-diff worklist.")
@@ -291,6 +365,8 @@ def main():
     report = ypath("reports", str(t)) / f"fixtures_from_{f}.md"
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text("\n".join(out) + "\n", encoding="utf-8")
+    print(f"fixtures {f} -> {t}: defaults {len(new_defaults)} added, {len(dropped_defaults)} dropped "
+          f"({len(stating)} case answers name a removed input)")
     print(f"fixtures {f} -> {t}: {kept} kept, {rerecorded} re-recorded, {len(failed)} not evaluated, {len(dropped)} official examples dropped; "
           f"hand-work: {'skipped' if a.no_hand_work else len(hand)} document(s); report: {report.relative_to(ROOT)}")
 

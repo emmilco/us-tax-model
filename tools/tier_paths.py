@@ -43,6 +43,9 @@ TIERS = ("docs", "fast", "full")
 _COMMENT = ("none", "a comment or docstring citing the document")
 _KEY = ("none", "a dictionary key named docs, not a path")
 READERS = {
+    ("engine/src/draft-walk.ts", "docs/*"): ("none", "its default --out for walk transcripts, docs/provisional/walks/; its self-test (draft_walk_self_test) writes to a temporary directory and no step reads the transcripts"),
+    ("engine/src/tick-groups.ts", "docs/*"): _COMMENT,
+    ("engine/src/tick-groups-check.ts", "docs/*"): ("none", "a problem message names docs/provisional/lanes/tick.md; the file is not read"),
     ("tools/extract_ny_household_tables.py", "docs/*"): ("none", "a table header it writes names docs/ny/DECISIONS.md; the file is not read"),
     ("tools/check_bug_inventory.py", "BUG_INVENTORY.md"): ("docs", ["check_bug_inventory"]),
     ("tools/check_bug_inventory.py", "bug_pending/*"): ("docs", ["check_bug_inventory"]),
@@ -95,6 +98,7 @@ READERS = {
 
 # (file, idiom) -> why the enumeration stays inside named, non-allowlisted directories.
 WALKERS = {
+    ("tools/ny_fixtures.py", "ls-files"): "git ls-files --error-unmatch on its one output path, to refuse overwriting a tracked file; not a walk",
     ("tools/engines/engine_cache.py", ".rglob("): "hashes tools/engines, the installed engines under .engines/ and its own cache; reads no docs-tier path",
     ("tools/transcription/rename_carry.py", "os.walk("): "puts ids back in a scratch copy of forms/, rendered/, canonical/, interview/ and ambiguities/; run by hand, not a check-all step",
     ("tools/transcription/rename_carry.py", "ls-tree"): "lists sources/ at the --from revision; run by hand",

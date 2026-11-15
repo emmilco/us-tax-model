@@ -1,0 +1,180 @@
+# Year change operations for the Tax Computation Worksheet (def tcw), 2026.
+changes:
+  tax_year: 2026
+  form: tcw
+  entries:
+  - change: BUG-0647
+    evidence:
+    - doc: rp-25-32
+      page: 10
+      quote: Over $24,800 but not over $100,800
+    - doc: rp-25-32
+      page: 10
+      quote: $2,480 plus 12% of the excess over $24,800
+    verified: final
+    operations:
+    - add_line:
+        after: single.result
+        line:
+          id: mfj.row0.product
+          printed: (c)
+          label: Multiply line (a) by 12% (0.12)
+          type: NonNegDollars
+          expr:
+            op: multiply_rate
+            amount: amount
+            rate:
+              param: tcw.mfj.b0.rate
+          cite:
+            doc: rp-25-32
+            locator: 'p. 10, section 4.01, Table 1 (married individuals filing joint returns and surviving spouses), "Over
+              $24,800 but not over $100,800", "plus 12% of the excess over $24,800" (the 2026 Tax Computation Worksheet, Form
+              1040 instructions, not posted: the row covers $100,000 to $100,800)'
+    - add_line:
+        after: mfj.row0.product
+        line:
+          id: mfj.row0.tax
+          printed: Tax
+          label: Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16.
+          type: Dollars
+          expr:
+            op: subtract
+            from: mfj.row0.product
+            take:
+              param: tcw.mfj.b0.subtract
+          cite:
+            doc: rp-25-32
+            locator: 'p. 10, section 4.01, Table 1, "Over $24,800 but not over $100,800", "$2,480 plus 12% of the excess over
+              $24,800" (subtraction amount: 12% of $24,800 less $2,480)'
+    - set:
+        line: mfj.result
+        field: expr.alternatives
+        from:
+        - guard:
+            op: test
+            all:
+            - op: test
+              ge:
+              - amount
+              - param: ordinary.table_boundary
+            - op: test
+              le:
+              - amount
+              - param: tcw.mfj.b1.upper
+          then: mfj.row1.tax
+        - guard:
+            op: test
+            all:
+            - op: test
+              gt:
+              - amount
+              - param: tcw.mfj.b1.upper
+            - op: test
+              le:
+              - amount
+              - param: tcw.mfj.b2.upper
+          then: mfj.row2.tax
+        - guard:
+            op: test
+            all:
+            - op: test
+              gt:
+              - amount
+              - param: tcw.mfj.b2.upper
+            - op: test
+              le:
+              - amount
+              - param: tcw.mfj.b3.upper
+          then: mfj.row3.tax
+        - guard:
+            op: test
+            all:
+            - op: test
+              gt:
+              - amount
+              - param: tcw.mfj.b3.upper
+            - op: test
+              le:
+              - amount
+              - param: tcw.mfj.b4.upper
+          then: mfj.row4.tax
+        - guard:
+            op: test
+            gt:
+            - amount
+            - param: tcw.mfj.b4.upper
+          then: mfj.row5.tax
+        to:
+        - guard:
+            op: test
+            all:
+            - op: test
+              ge:
+              - amount
+              - param: ordinary.table_boundary
+            - op: test
+              le:
+              - amount
+              - param: tcw.mfj.b0.upper
+          then: mfj.row0.tax
+        - guard:
+            op: test
+            all:
+            - op: test
+              gt:
+              - amount
+              - param: tcw.mfj.b0.upper
+            - op: test
+              le:
+              - amount
+              - param: tcw.mfj.b1.upper
+          then: mfj.row1.tax
+        - guard:
+            op: test
+            all:
+            - op: test
+              gt:
+              - amount
+              - param: tcw.mfj.b1.upper
+            - op: test
+              le:
+              - amount
+              - param: tcw.mfj.b2.upper
+          then: mfj.row2.tax
+        - guard:
+            op: test
+            all:
+            - op: test
+              gt:
+              - amount
+              - param: tcw.mfj.b2.upper
+            - op: test
+              le:
+              - amount
+              - param: tcw.mfj.b3.upper
+          then: mfj.row3.tax
+        - guard:
+            op: test
+            all:
+            - op: test
+              gt:
+              - amount
+              - param: tcw.mfj.b3.upper
+            - op: test
+              le:
+              - amount
+              - param: tcw.mfj.b4.upper
+          then: mfj.row4.tax
+        - guard:
+            op: test
+            gt:
+            - amount
+            - param: tcw.mfj.b4.upper
+          then: mfj.row5.tax
+    note: 'Not in the change map. In 2026 the joint 12% bracket ends at $100,800, above the Tax Table boundary (ordinary.table_boundary,
+      $100,000), so Section B needs a 12% row for $100,000 to $100,800 before the 22% row. Its parameters tcw.mfj.b0.upper
+      ($100,800), .rate (12%) and .subtract ($496 = 12% x $24,800 - $2,480) are staged in research/ty2026/params-2026.proposed.yaml
+      (tools/propose_params.py D8 rule). The row ids (row0, b0) leave rows 1 to 5 as they are; whether the 2026 worksheet
+      prints it as row 1 is to be checked when the Form 1040 instructions post (their cites, i1040gi 2025, are relocated then).
+      The other sections need no row: the 12% bracket ends below $100,000 for single and separate ($50,400) and head of household
+      ($67,450).'

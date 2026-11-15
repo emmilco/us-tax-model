@@ -1301,6 +1301,11 @@
         },
         "cite": {
           "$ref": "#/$defs/cite"
+        },
+        "moves_with_year": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "A Count that moves by this much each tax year (a year of birth): tools/propose_params.py fills the next year's value by the offset, marked derived."
         }
       }
     },
@@ -1335,6 +1340,10 @@
               },
               "cite": {
                 "$ref": "#/$defs/cite"
+              },
+              "extends_with_year": {
+                "const": true,
+                "description": "The values are years (y<year>): tools/year_diff.py --adopt adds the new year's value."
               }
             }
           }

@@ -379,8 +379,14 @@ page whose heading starts a line. The log records which pages were used.
 `year_carry.py`, run from the TY+1 tree with `--year <TY+1>` and `--from <TY tree>`, lists for each
 transcription, render and class M review which compared lines carry to TY+1 and which need a review, and
 with `--write` writes the carried entries into TY+1's indexes (same record, status and ruling, each marked
-`carried: {from, year_key}`; a form's `__rest__` is set to TY+1's only when the document's own fields
-carry). A line carries only when its year-carry key is equal in both years: its subject with foreign
+`carried: {from, year_key}`, or `year_carried` on a line shown from a renamed record section, which keeps its rename
+carry; a form's `__rest__` is set to TY+1's only when the document's own fields
+carry), and each such form's TY+1 rulings sidecar: the TY sidecar's entries (key, ruling, context and
+stamps unchanged) for the rulings the carried log shows, so each ruling in the log is in the sidecar
+(`rulings.check`). A render index with no line subjects answers the whole rendering, which names the tax year:
+when every line carries and the renderings are equal once the header's own tax year (TY to TY+1, which adoption
+writes; also normalized in a transcription document's own fields) and any other year where the cited sources moved it are normalized,
+`--write` records the new rendering's subject as `subject_carried` (`by: year`). A line carries only when its year-carry key is equal in both years: its subject with foreign
 interfaces, the values of the parameters, enums and tables its reach reads (a table's data: not its title,
 citation or tax year), the cited source text at
 anchor-section granularity over its reach and the foreign lines it names (never only the quoted words; a
@@ -392,7 +398,7 @@ project wrongly incremented, a rolling year the project failed to move, and a bi
 a review. The report lists every carried line for spot review and separates the lines that wait only on
 a TY+1 source not yet archived or a TY+1 parameter not yet set. `--self-test` (in check-all) runs
 near-miss pairs: a paragraph added under the same heading, a changed parameter value, an incremented
-fixed date, a rolling year not moved, a moved birth year. With `--jurisdiction ny` it carries New York's
+fixed date, a rolling year not moved, a moved birth year; and the sidecar written from a carried log. With `--jurisdiction ny` it carries New York's
 reviews (`reviews/ny/<year>/`), reading each tree across both jurisdictions as the New York review tools
 do: federal and New York forms, both parameter files and table directories, and each document's sources
 and rendering in its own jurisdiction's directory; it refuses a TY+1 with no New York data.

@@ -1,0 +1,74 @@
+changes:
+  tax_year: 2026
+  form: person
+  entries:
+  - change: C-CRED-18+C-PEOP-16
+    evidence:
+    - doc: i8863
+      page: 2
+      quote: If you are filing a joint return, only one spouse must have a valid SSN.
+    verified: draft
+    note: Lane O5's operations drop the only links to this entry (edu_aoc_tin reads household.any_work_ssn); the 2026
+      text settles the question the entry recorded.
+    operations:
+    - remove_ambiguity:
+        id: amb.2025.edu_filer_tin
+  - change: C-CRED-20
+    evidence:
+    - doc: i8863
+      page: 2
+      quote: After February 1, 2027 (January 31 falls on a Sunday), but before you file the return
+    verified: draft
+    note: Lane O5's operations drop the only links to this entry; the 2026 instructions print the weekend shift
+      themselves.
+    operations:
+    - remove_ambiguity:
+        id: amb.2025.edu_1098t_date
+  - change: C-CRED-16
+    evidence:
+    - doc: f8880
+      page: 3
+      quote: Don’t include your spouse’s distributions with yours when entering an amount on line 4 if you and your spouse
+        didn’t file a joint return for the year the distribution was received
+    verified: draft
+    note: The entry stays linked (f8880.prior_joint, person.sav_prior_joint); its text moves by a year. The id is kept.
+    operations:
+    - set_ambiguity:
+        id: amb.2025.savers_2026_joint
+        field: text_at_issue
+        from: 'Form 8880, Line 4: "Exception. Don’t include your spouse’s distributions with yours when entering an amount
+          on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received." A distribution
+          received in 2026, before the due date of the 2025 return, is received in a year whose return is not yet filed.'
+        to: 'Form 8880, Line 4: "Exception. Don’t include your spouse’s distributions with yours when entering an amount
+          on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received." A distribution
+          received in 2027, before the due date of the 2026 return, is received in a year whose return is not yet filed.'
+    - set_ambiguity:
+        id: amb.2025.savers_2026_joint
+        field: readings
+        from:
+        - A 2026 distribution counts as from a year filed jointly when the 2025 return is joint (both columns).
+        - A 2026 distribution counts as from a year filed jointly only if the spouses expect to file jointly for 2026.
+        - A 2026 distribution goes in the column of the spouse who received it only.
+        to:
+        - A 2027 distribution counts as from a year filed jointly when the 2026 return is joint (both columns).
+        - A 2027 distribution counts as from a year filed jointly only if the spouses expect to file jointly for 2027.
+        - A 2027 distribution goes in the column of the spouse who received it only.
+    - set_ambiguity:
+        id: amb.2025.savers_2026_joint
+        field: chosen
+        from: The first (person.sav_prior_joint includes 2026; f8880.prior_joint).
+        to: The first (person.sav_prior_joint includes 2027; f8880.prior_joint).
+    - set_ambiguity:
+        id: amb.2025.savers_2026_joint
+        field: reason
+        from: The owner's decision (Stage 15 premise map, decision 4). The 2026 return cannot be known when the 2025 return
+          is prepared, and the 2025 return's filing status is the one fact available.
+        to: The owner's decision (Stage 15 premise map, decision 4). The 2027 return cannot be known when the 2026 return
+          is prepared, and the 2026 return's filing status is the one fact available.
+    - set_ambiguity:
+        id: amb.2025.savers_2026_joint
+        field: cite.locator
+        from: 'p. 2, Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount on
+          line 4 if you and your spouse didn’t file a joint return for the year the distribution was received"'
+        to: 'p. 3 (draft), Line 4, "Exception. Don’t include your spouse’s distributions with yours when entering an amount
+          on line 4 if you and your spouse didn’t file a joint return for the year the distribution was received"'

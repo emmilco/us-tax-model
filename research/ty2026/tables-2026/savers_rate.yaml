@@ -1,0 +1,27 @@
+# The saver's credit rate (Form 8880, line 9) by line 8 and filing status, as printed. Columns as printed:
+# married filing jointly; head of household; single, married filing separately or qualifying surviving spouse.
+# Written by tools/extract_printed_tables.py from sources/2026/f8880.pdf (sha256 97a6b5b3df44); checked by its --check (check-all).
+table:
+  id: "savers_rate"
+  kind: "rate_bands"
+  title: "Saver's credit decimal amount (Form 8880, line 9)"
+  tax_year: 2026
+  cite:
+    doc: "f8880"
+    locator: "Form 8880 (2026), line 9"
+    quote: "Enter the applicable decimal amount from the table below."
+  columns:
+    - { key: mfj, statuses: [mfj] }
+    - { key: hoh, statuses: [hoh] }
+    - { key: other, statuses: [single, mfs, qss] }
+  rate_bands:
+    - { over: null, not_over: 2425000, rates: [{ num: 5, den: 10 }, { num: 5, den: 10 }, { num: 5, den: 10 }] }
+    - { over: 2425000, not_over: 2625000, rates: [{ num: 5, den: 10 }, { num: 5, den: 10 }, { num: 2, den: 10 }] }
+    - { over: 2625000, not_over: 3637500, rates: [{ num: 5, den: 10 }, { num: 5, den: 10 }, { num: 1, den: 10 }] }
+    - { over: 3637500, not_over: 3937500, rates: [{ num: 5, den: 10 }, { num: 2, den: 10 }, { num: 1, den: 10 }] }
+    - { over: 3937500, not_over: 4025000, rates: [{ num: 5, den: 10 }, { num: 1, den: 10 }, { num: 1, den: 10 }] }
+    - { over: 4025000, not_over: 4850000, rates: [{ num: 5, den: 10 }, { num: 1, den: 10 }, { num: 0, den: 10 }] }
+    - { over: 4850000, not_over: 5250000, rates: [{ num: 2, den: 10 }, { num: 1, den: 10 }, { num: 0, den: 10 }] }
+    - { over: 5250000, not_over: 6037500, rates: [{ num: 1, den: 10 }, { num: 1, den: 10 }, { num: 0, den: 10 }] }
+    - { over: 6037500, not_over: 8050000, rates: [{ num: 1, den: 10 }, { num: 0, den: 10 }, { num: 0, den: 10 }] }
+    - { over: 8050000, not_over: null, rates: [{ num: 0, den: 10 }, { num: 0, den: 10 }, { num: 0, den: 10 }] }

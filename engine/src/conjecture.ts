@@ -60,7 +60,7 @@ export function runConjecture(): void {
   report.push(`# Tax Table midpoint conjecture — result for ${YEAR}`);
   report.push("");
   report.push("Method: for every band of `tax_table` and every filing-status column, compute the");
-  report.push("exact rate-schedule tax (`rate_schedule`, Rev. Proc. 2024-40 section 3.01, with");
+  report.push("exact rate-schedule tax (`rate_schedule`, Rev. Proc. 2024-40 section 2.01, with");
   report.push("qualifying surviving spouses aliased to the joint schedule) at the band's midpoint");
   report.push("(at_least + less_than) / 2, then round to whole dollars half-up. Compare with the");
   report.push("printed cell. This is the conjecture from `spec/spec.md` section 6.3, tested, not");
@@ -93,7 +93,7 @@ export function runConjecture(): void {
   console.log(`report: reports/${YEAR}/tax_table_conjecture.md`);
 }
 
-// The EIC Table against Rev. Proc. 2024-40 section 3.06(1): for each child
+// The EIC Table against Rev. Proc. 2024-40 section 2.06(1): for each child
 // count and status column, the credit at a band's midpoint m is the smaller of
 // m x (maximum / earned income amount) and the maximum, less
 // (maximum / (completed phaseout - threshold phaseout)) x (m - threshold), not
@@ -163,7 +163,7 @@ export function runEicConjecture(): void {
     "credit / earned income amount) and the maximum credit, less (maximum credit / (completed phaseout amount -",
     "threshold phaseout amount)) times the excess of the midpoint over the threshold phaseout amount, not below",
     "zero, rounded half-up to whole dollars. The four amounts per child count and status are the year parameters",
-    "`eic.earned_amount*`, `eic.maximum*` (Rev. Proc. 2024-40 section 3.06(1)) and `eic.ws_threshold*`, `eic.limit*`",
+    "`eic.earned_amount*`, `eic.maximum*` (Rev. Proc. 2024-40 section 2.06(1)) and `eic.ws_threshold*`, `eic.limit*`",
     "(the instructions' Worksheet A line 5 and Step 1 amounts, which equal the Rev. Proc.'s threshold and completed",
     "phaseout amounts). The rates are those the Rev. Proc. amounts imply; the statutory percentages are not archived,",
     "so a difference of $1 is expected where an implied rate is rounded. A larger difference would mean a misread",

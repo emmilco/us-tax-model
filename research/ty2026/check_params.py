@@ -32,10 +32,13 @@ def rate_forms(r):
 
 def main():
     data = yaml.safe_load((ROOT / "research/ty2026/params-2026.proposed.yaml").read_text())["params"]["values"]
-    fails, structural, ok = [], [], 0
+    fails, structural, derived, ok = [], [], [], 0
     for pid, e in data.items():
         if e["source"] == "none":
             continue
+        if e["source"] == "derived":
+            # moved with the year from the 2025 value: no 2026 document to check against
+            derived.append(pid); continue
         c = e["cite"]
         m = re.match(r"p\. ([0-9]+)", c["locator"])
         page = int(m.group(1)) if m else None
@@ -47,6 +50,9 @@ def main():
             continue
         q = norm(c["quote"])
         v, t = e["value"], e["type"]
+        if e.get("derived"):
+            # figured from the printed row the quote names (a Tax Computation Worksheet subtraction amount)
+            derived.append(pid); continue
         if t.startswith("Enum"):
             structural.append(pid); continue
         if t == "Rate":
@@ -63,6 +69,8 @@ def main():
                 fails.append(f"{pid}: quote does not print {', '.join(missing)}"); continue
         ok += 1
     print(f"{ok} amounts printed in their quotes; {len(structural)} structural (no printed figure): {', '.join(structural)}")
+    print(f"{len(derived)} derived by a rule (`derived`; a year of birth with no 2026 quote, or a quote naming the row "
+          f"the value is figured from)")
     for f in fails:
         print("FAIL", f)
     sys.exit(1 if fails else 0)

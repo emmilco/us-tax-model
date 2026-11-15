@@ -44,8 +44,12 @@ changes:
         like: w2.box12_userra
         entry:
           help: The code TP amount in box 12, zero if none.
+        default: 0
+        reason: 'Closed: no amount unless the scenario states one.'
     - add_question:
         input: w2.box12_tt
         like: w2.box12_tp
         entry:
           help: The code TT amount in box 12, zero if none.
+        default: 0
+        reason: 'Closed: no amount unless the scenario states one.'

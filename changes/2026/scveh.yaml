@@ -175,8 +175,12 @@ changes:
     - add_question:
         input: scveh.miles_business_h1
         like: scveh.miles_business
+        default: 0
+        reason: 'Closed: none unless the scenario states a count.'
     - add_question:
         input: scveh.miles_business_h2
         like: scveh.miles_business_h1
+        default: 0
+        reason: 'Closed: none unless the scenario states a count.'
     - remove_question:
         input: scveh.miles_business

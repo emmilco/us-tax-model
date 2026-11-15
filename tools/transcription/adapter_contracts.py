@@ -11,14 +11,20 @@ import subprocess
 
 DIRECTORY = Path(__file__).resolve().parent / "adapter_contracts"
 POLICY = "internal-adapters-v1"
-REQUIRED = {"2025": {"div", "f4952"}}
+# The first year each bank is required: a required bank is required in every later year too, so that a
+# year whose bank was not carried (year_diff.py --adopt) is refused rather than silently checked against none.
+REQUIRED = {"div": 2025, "f4952": 2025}
+
+
+def required(year):
+    return {form for form, since in REQUIRED.items() if int(year) >= since}
 
 
 def load(form, year):
     # A New York document's bank (id ny_) would sit under <directory>/ny/<year>/.
     path = DIRECTORY / ("ny" if str(form).startswith("ny_") else "") / str(year) / f"{form}.json"
     if not path.exists():
-        if form in REQUIRED.get(str(year), set()):
+        if form in required(year):
             raise FileNotFoundError("required adapter contract is missing: " + str(path))
         return None
     bank = json.loads(path.read_text())
@@ -103,7 +109,7 @@ def assess(form, year, context):
 
 def main():
     import transcribe as T
-    for form in sorted(REQUIRED.get(str(T.Y), set())):
+    for form in sorted(required(T.Y)):
         result = assess(form, T.Y, T.model_type_context())
         if result["state"] != "pass":
             print(json.dumps(result, indent=2))

@@ -40,8 +40,12 @@ mended (each entry concerned says so in its `note`):
 
 The operations read five parameters the 2025 file does not define (`sa.gambling_rate`, `sa.gift_floor_rate`,
 `sa.limit_screen`, `sc.mileage_rate_h1`, `sc.mileage_rate_h2`): the 2026 parameters must define them. The ambiguity
-`amb.2026.gift_floor_base` that `sa.gift_floor` and `sa.line13_ws` name has no register entry yet (no operation
-writes the register). New inputs need test-data defaults at adoption.
+`amb.2026.gift_floor_base` that `sa.gift_floor` and `sa.line13_ws` name is added to the register by an
+`add_ambiguity` operation in `sa.yaml` (C-PRI-15). Each new input's `add_question` carries its test-data `default`
+and `reason`, which `tools/fixtures_year.py` writes to `fixtures/2026/defaults.json` at adoption.
+
+A form several lanes change may take split files, `<form>.<topic>.yaml`, each with `form: <form>`; they apply after
+the form's own file (`tools/README.md`, "Year changes as operations").
 
 ## The 135 change-map entries by operation kind
 

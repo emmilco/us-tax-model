@@ -198,6 +198,7 @@ export async function serveChecks(): Promise<void> {
     // The CLI and the server give the same state on the same log.
     const data = loadCanonical();
     const config = loadInterview("ny");
+    ok(listing.tax_year === config.tax_year && (await get("/api/returns/synthetic")).body.tax_year === config.tax_year, "the listing and the return's state carry the tax year the page shows");
     // Every document a question cites has a title for the page to show as its source.
     const untitled = [...new Set(config.questions.map((q) => q.cite.doc))].filter((doc) => typeof listing.docTitles?.[doc] !== "string");
     ok(untitled.length === 0, `every cited document has a title in the source catalogs; missing: ${untitled.join(", ")}`);

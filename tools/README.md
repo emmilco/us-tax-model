@@ -398,13 +398,22 @@ exits naming both and the New York years that exist. `fetch_sources.py` and `che
 flag themselves, refuse the same way; a tool reading an archive that has no `manifest.json` exits naming it
 (`archive_text.py`).
 
+A federal year can be adopted before New York's. `years.json` lists New York's adopted years apart
+(`ny_adopted`), each of which needs its `forms/ny/<year>/`; `jurisdiction.py --ny-status [--year N]` says whether
+check-all checks New York for a year. For a year not listed, check-all skips every `ny_*` step, listing each in its
+wave as skipped with the reason and counting them at the run's start and end, and the New York render runs only
+when `forms/ny/<year>/` exists. Without `forms/ny/<year>/` the build skips, with a note in its output, every
+conflict check (`interview/<year>/conflict_checks.yaml`) that names a New York gate. Adopting New York for a year
+is adding it to `ny_adopted`.
+
 - The New York-only tools (`ny_predict.py`, `ny_fixtures.py`, `extract_ny_tax_table.py`,
   `extract_ny_household_tables.py`, `engines/ny_policyengine.py`) are in New York mode without the flag and refuse
   `--jurisdiction us`.
 - `ny_predict.py` holds the amounts of one printing (`PRINTED`): `predict()` exits for any other year, so
   `ny_fixtures.py` does too, until the year's amounts are read from its IT-201-I and tax tables and added. Its
   `--self-test` checks the `PRINTED` examples whatever the year.
-- `ny_fixtures.py` writes `fixtures/ny/<year>/it201.json` whole. It reproduces neither the cases added to that file
+- `ny_fixtures.py` writes the file named by `--out PATH` whole, and refuses to overwrite a file git tracks or the
+  default `fixtures/ny/<year>/it201.json` when it exists (`--self-test`). It reproduces neither the cases added to that file
   by hand since it was generated nor the files' reliance on `defaults.json`; carry New York fixtures to a new year with
   `fixtures_year.py --jurisdiction ny`, not with this script.
 - The year tools work for New York with `--jurisdiction ny`: `year_diff.py` (and `--adopt`, which copies
@@ -434,6 +443,15 @@ printed figure). How a place is read: the citation's quote that prints the value
 narrowest window of printed words around it that names the value alone in the 2025 edition,
 confirmed by the next wider window; line and item numbers are free, years move with the tax
 year, and a text printed the same number of times in both editions is read in order.
+
+Two kinds of parameter are derived by a rule, and their records carry `derived` (the rule). A Count
+declared `moves_with_year: N` in the parameter file (the `age.*` years of birth) is the prior value plus
+N a year; a reading of its citation, where the next edition can be read, must agree. The Tax
+Computation Worksheet rows (`tcw.<status>.b<k>.upper`, `.rate`, `.subtract`) are the next year's
+rate-table row at the row's rate (read by `extract_printed_tables.rate_schedule` from the revenue
+procedure): its upper limit, its rate, and the rate on its lower limit less its base. The rule is
+checked on the prior year first, and a schedule with a different number of rows over the Tax Table
+boundary is noted on each of that status's records (the worksheet section needs a row the form lacks).
 
 `--compare FILE` scores a proposal against a parameter file taken as the truth. Two runs check
 the reader: `--from 2025 --to 2025 --compare params/2025.yaml` (how many 2025 values it reads
@@ -580,7 +598,8 @@ plants each malformed condition and each kind of violation. A commit that change
 its withholding condition needs one line per default in its message, `Fixture-default-changed: <input> (<n> cases)`,
 with the number of cases whose inputs change as `tools/defaults_guard.mjs` counts them (`tools/hooks/commit-msg`); a
 default for a new input needs none. `tools/fixtures_year.py` carries the defaults file to a new year with its
-conditions and rules, less the open entries of cases it drops.
+conditions and rules, less the open entries of cases it drops, with the defaults the year's operations give new
+inputs added and those of removed inputs dropped ("Year changes as operations").
 
 ## Year changes as operations
 
@@ -604,29 +623,98 @@ changes:
 
 Operations: `add_line {after, line}`, `remove_line {line}`, `set {line, field, from, to}` (`field` a path of keys such
 as `expr.take` or `cite.locator`; `from: null` is absent, `to: null` removes), `add_form {form}`, `set_form {field,
-from, to}`, `add_question {input, like | after, entry, profiles}` (`like` lends its order number and its place in the
-profiles, never its wording), `remove_question {input}`, `set_question {input, field, from, to}`. An entry may list
-the lines it `awaits` (`{line, change}`), lines another change not yet written is to add, and a free-text `note`.
+from, to}`, `add_question {input, like | after, entry, profiles, default, reason}` (`like` lends its order number and
+its place in the profiles, never its wording), `remove_question {input}`, `set_question {input, field, from, to}`,
+and on the ambiguity register (`ambiguities/<year>.yaml`, by entry id) `add_ambiguity {entry, after}` (`entry` a whole
+register entry; appended, or placed after the entry `after`), `set_ambiguity {id, field, from, to}` and
+`remove_ambiguity {id}`. An entry may list the lines it `awaits` (`{line, change}`), lines another change not yet
+written is to add, and a free-text `note`.
+
+**Split files.** Several lanes may write operations on one form: besides `changes/<year>/<form>.yaml`, a file
+`changes/<year>/<form>.<topic>.yaml` holds its own entries, with `form: <form>` (the loader keys on that field, not
+the name). Files apply grouped by the name's form part, the form's own file before its split files (sorted), so a
+split file may build on lines the form's own file adds; collisions are found across files.
+
+**New inputs' defaults.** An `add_question` for an input line carries the input's test-data `default` (a value its
+type accepts: a Bool, an integer, non-negative unless `Dollars`, or a value of its enum) and a one-line `reason`, as
+`fixtures/<year>/defaults.json` holds them ("Test-data defaults"). The check fails a new input without them;
+`fixtures_year.py` writes them into the new year's `defaults.json`, after the default of the question the new one is
+placed after, drops the defaults of inputs the operations remove, resolves the cases against the result, and marks
+"not evaluated" (and lists) the cases that still state a removed input.
+
+**The register.** After the operations, every line's `ambiguity` names a register entry, an added entry is linked by
+a line or says why not (`unlinked`), an entry whose last linking line goes is removed or given an `unlinked` reason,
+and no line or interview file names a removed entry (the build's rules, `engine/src/check.ts`). Adoption writes the
+register entry by entry, as it writes lines.
+
+**Interview files.** The other files of `interview/<year>/` (profiles' targets, coverage rows and sets, personas,
+gate frequencies, the bank's tick-box `groups`) are changed by file and path: `set_interview {file, field, from, to}`
+(`field` a path of keys; with `list` and `item`, a field of the list entry with that id),
+`add_interview_item {file, list, item, after}` and `remove_interview_item {file, list, item}` (`list` a path to a
+list; `item` an entry with an `id`, named by its id, or a plain value such as a target), `add_interview_file {file,
+data}` and `remove_interview_file {file}`. They fail as the line operations do (gone, stale, already applied,
+collision); a profile's `questions` and the bank's questions stay with the question operations, and profiles and the
+bank are not removed. After them, what an interview operation writes must name lines that exist, an entry id or key
+it removes must not still be named in its file, every group must be named by a question and every question's group
+declared. Adoption writes these files block by block (an entry of an id-keyed list, the item lines of a plain list),
+keeping comments, and refuses if the written text does not load as the applied data.
+
+**Year-valued enums.** An enum whose values are years declares `extends_with_year: true` in the parameters
+(`placed_year`); `year_diff.py --adopt` adds `y<to-year>` to it, and re-derives the `recovery_year` table (each row
+the to-year less the year placed in service, plus 1, after checking every from-year row follows that rule; a row for
+`y<to-year>`). Tables keyed by such an enum whose cells are printed amounts (`auto_limit`,
+`auto_limit_first_nobonus`) get their new rows from the new year's Pub. 946, not by rule.
 
 - `year_changes.py --check` (check-all step `year_changes`, with `ny_year_changes`) fails, naming the file, change,
   position, kind and line, when an operation's line, form or anchor is gone (the closest ids suggested), the value it
   expects is not there (stale), it is already applied, two operations collide, a reference is left dangling, a gated
-  input is read outside its gate, a new input has no question or a question outlives its input, a new question takes
-  another's order and seq, or the evidence is not printed on its page (or is marked final on a draft). It notes the
+  input is read outside its gate, a new input has no question or a question outlives its input, a new input has no
+  valid default, a new question takes another's order and seq, the register is left inconsistent with the lines'
+  `ambiguity` links, or the evidence is not printed on its page (or is marked final on a draft). It notes the
   parameters the operations read that the year does not define, awaited lines, and entries whose documents are all
   final now. `--against DIR` checks another tree's `forms/`, `interview/` and `params/` read-only (an exported branch).
+  It also notes how many references in year-shared files name a line the operations remove, or a refusal gate no
+  refusal uses after them (below).
+- `year_shared_refs.py [--year N]` lists those references: code and tool data kept for every year (under `tools/`
+  and `engine/src/`, not under a year directory) that name such an id: the id itself (also inside a key such as a
+  mutation pin's), an instance id (`dependent[{k}].x`), the local name as a quoted string in a file that builds the
+  form's ids from names (`f"f5695.{k}"`: a weaker match), and a coverage-tree `"gate"` placement of a retired gate.
+  It changes nothing: each shared file serves the old year too, so whether it branches by year, skips or drops the
+  id is the adoption lane's judgment. `--adopt` writes the list to `reports/<to>/shared_refs_from_<from>.{json,md}`.
+  `--self-test` (in check-all) plants each kind of reference and each non-reference.
 - `year_changes.py --record EDITED.yaml` prints the operations that turn the year's form into an edited copy of it,
   as an entry to complete with its change and evidence.
 - `year_diff.py --adopt` refuses to adopt when an operation does not apply or an awaited line is missing, then
   applies the operations to the relocated copy, block by block: every line, bank entry and profile line no operation
-  touches keeps the copy's text.
+  touches keeps the copy's text. It lists, in `reports/<to>/year_literals_from_<from>.json` (and in the year-diff
+  report), every line of the copy that names a year outside a citation (a `locator:` or `quote:` scalar, its
+  continuation lines included), each year classed: `from_year`; `year_id` (an id or constant bearing a year,
+  `amb.2025.x` included); `birth_cutoff` (a year of birth, in a scalar that speaks of birth, equal to a year-moving
+  age parameter's value or the year before it: the parameter is named); `adjacent_year` (three years before to two
+  after: prior returns, carryovers, the next year; moves when relative to the tax year, stays when a statutory
+  date); `fixed_reference` (a document number such as Notice 2025-69); `other_year`. A line whose moving years (the
+  from-year, the adjacent years and the years of birth) can be moved carries the moved text as a candidate; nothing
+  is edited. A year-moving age parameter declares `moves_with_year: N`; an `age.*` Count without it counts as moving
+  by 1.
+- `year_diff.py --adopt` also carries, never over an existing file, the from-year's review files adoption keeps:
+  the citation rulings (marked "carried from <year>", to be reviewed again), the rulings and baselines of the
+  source-coverage checks (`operands`, `consumers`, `limits`, `instruction_cites`, `signs`: copied byte for byte) and of
+  the input-quote check (`input_quotes`, with the year in a parameter's key moved), the twin declarations
+  (`twins.json`, byte for byte: a declared difference the year's operations changed is reported by `check_twins.py`,
+  to be restated), and the input and adapter contract banks (`transcription/{input,adapter}_contracts/<year>/`, with `tax_year` moved; an input bank
+  keeps its source snapshot, so a new edition whose text differs is refused as stale until the cases are reviewed).
+  A bank required in one year is required in every later year. A ruling is keyed by its finding; a baseline entry
+  holds while its subject hashes as recorded, or as recorded once the two marks adoption moves (a citation's
+  `tax_year`, a "(<year>)" edition) are moved back one year (`baseline_check.year_back`), so a carried entry comes
+  due where the new year changed anything else.
 - `--self-test` (in check-all) plants each failure in a synthetic tree, and checks that writing equals applying in
   memory and keeps untouched blocks byte for byte.
 
 ## Process hooks
 
 - **Fresh build** (`tools/build_fresh.py`): the completeness, screen, false-no and question checks and triage refuse to run when
-  canonical/ is older than a model source or engine/dist older than engine/src (rebuild first).
+  canonical/<year>/ is older than a model source of that year (the year's forms, tables, params and ambiguities, and
+  the schema; another year's files do not count) or engine/dist older than engine/src (rebuild first).
 - **Fresh rendered text** (`tools/build_fresh.py`, `require(rendered=True)` or `--rendered`): `npm run build` writes
   `canonical/` and not the tracked `rendered/` files; `npm run render` (and `node engine/dist/main.js render --ny`
   for New York) and check-all write those. Every tool that reads `rendered/` for a review refuses to run, dry

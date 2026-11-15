@@ -1,7 +1,7 @@
 # 2025 Tax Rate Schedules (section 1(j)(2))
 
 - Table: `rate_schedule` (bracket_schedule)
-- Cite: [rp-2024-40] section 3.01, Tables 1-4 (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b)
+- Cite: [rp-2024-40] section 2.01, Tables 1-4 (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; sha256 4de9db6b)
 
 ## hoh
 

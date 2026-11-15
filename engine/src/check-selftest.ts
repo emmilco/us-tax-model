@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import { checkExpressionTypes, registerLinkProblems, tableBandMonoProblems } from "./check.js";
 import { entrySyntax } from "./interview.js";
 import { gateProblems } from "./gates.js";
+import { dropNyConflicts } from "./build.js";
 import { evaluate } from "./eval.js";
 import type { CanonicalData, Line, RegisterEntry, TableDoc } from "./types.js";
 import { flatText, indentRest, parseStructured, textSummary } from "./text.js";
@@ -336,6 +337,12 @@ export function runCheckSelfTest(): void {
   ];
   for (const [text, re] of bad) assert.match(parseStructured(text).problems.join("\n"), re, `not flagged: ${JSON.stringify(text)}`);
   assert.deepEqual(parseStructured("Q?\n\n- employer_reported, an enum value").problems, []);
+  // Conflict checks naming a New York gate are dropped only when the year has no New York definitions.
+  const conflicts = { "w2.g_bad": "a", "ny_it201.gate.x": "b" };
+  assert.deepEqual(dropNyConflicts(conflicts, true), []);
+  assert.deepEqual(Object.keys(conflicts), ["w2.g_bad", "ny_it201.gate.x"]);
+  assert.deepEqual(dropNyConflicts(conflicts, false), ["ny_it201.gate.x"]);
+  assert.deepEqual(conflicts, { "w2.g_bad": "a" });
   console.log(`defaults self-test: ${defaultsSelfTest()} cases passed (conditional withholding, condition and rule validation, consistency violations)`);
-  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + typedCount + 10 + bad.length} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, Bool and enum choose, structured text)`);
+  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + typedCount + 10 + bad.length + 2} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, Bool and enum choose, structured text, New York conflict checks without New York definitions)`);
 }

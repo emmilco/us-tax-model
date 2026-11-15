@@ -217,6 +217,8 @@ changes:
           seq: 29
           help: Private mortgage insurance (PMI), or a funding fee or premium for a VA, FHA or Rural Housing Service loan. A return
             that deducts mortgage insurance premiums is outside what this tool prepares; a Yes ends the interview here.
+        default: false
+        reason: 'Closed: the circumstance this question asks about does not apply unless the scenario says so.'
     - set_question:
         input: sd.casualty
         field: help
@@ -313,6 +315,30 @@ changes:
               regard to this subparagraph) as a deduction under this section shall be allowed only to the extent that the
               aggregate of such contributions exceeds 0.5 percent of the taxpayer’s contribution base"
           ambiguity: amb.2026.gift_floor_base
+    - add_ambiguity:
+        entry:
+          id: amb.2026.gift_floor_base
+          text_at_issue: Section 170(b)(1)(I) allows charitable contributions only to the extent they exceed 0.5 percent
+            of the contribution base. The archived text does not define the contribution base, nor say how the floor is
+            rounded or whether a carryover from a prior year is reduced by it.
+          readings:
+            - The contribution base is Form 1040 line 11b, not less than zero; the floor is rounded half-up to the cent;
+              the carryover is outside the floor.
+            - The contribution base is adjusted gross income figured without any net operating loss carryback, which
+              the tool does not compute.
+            - The floor applies to the contributions and the carryover together.
+          chosen: The contribution base is Form 1040 line 11b, not less than zero; the floor is rounded half-up to the
+            cent (amb.2025.multiplication_subcent); the carryover (Schedule A line 14) is outside the floor.
+          reason: Publication 526 states the percentage limits against adjusted gross income, and sa.agi_floor already
+            takes line 11b not less than zero for the medical floor. The draft Schedule A adds the carryover on line 15
+            after line 13, the line the floor reduces. An income limit or a carryover is refused through
+            sa.charity_limited, so the statute's order of application matters for no return the tool prepares.
+          cite:
+            doc: plaw-119-21
+            locator: p. 165, section 70425, section 170(b)(1)(I), "shall be allowed only to the extent that the aggregate
+              of such contributions exceeds 0.5 percent of the taxpayer’s contribution base"
+          status: Encoded from the statute (final); to be rechecked against the 2026 Schedule A instructions when they
+            are published.
     - set:
         line: sa.line13
         field: printed

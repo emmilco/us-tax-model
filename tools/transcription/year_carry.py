@@ -3,7 +3,8 @@
 
 Given the tree of tax year TY (its reviews committed as records and indexes, review_store.py) and the tree
 of TY+1, list which compared lines of each review carry to TY+1 and which need a review, and with --write
-write the carried entries into TY+1's indexes. Run it from the TY+1 tree; --from names the TY tree.
+write the carried entries into TY+1's indexes and the rulings they show into TY+1's rulings sidecars. Run it
+from the TY+1 tree; --from names the TY tree.
 
 A line carries only when its year-carry key is equal in both years. The key hashes four things:
 
@@ -492,7 +493,8 @@ def plan(kind, old, new):
 
 def rest_carries(old, new, doc_old, doc_new):
     """Whether the document's own fields (outside every compared line: subjects.REST_KEY) are equal in
-    both years, a moved year normalized where the document's cited source moved it."""
+    both years, its own tax_year normalized (own_year) and any other moved year where the document's cited
+    source moved it."""
     import subjects
     view = lambda d: json.dumps(subjects._without_cites(subjects._unworded({k: v for k, v in d.items() if k != "lines"})),
                                 sort_keys=True, ensure_ascii=False, indent=0)
@@ -500,14 +502,15 @@ def rest_carries(old, new, doc_old, doc_new):
     for la, lb in zip(doc_old["lines"], doc_new["lines"]):
         for (_, ta), (_, tb) in zip(section_texts(old, la), section_texts(new, lb)):
             evidence |= shifts(ta, tb, old.year)[2]
-    a, b = project_pair(view(doc_old), view(doc_new), old.year, evidence)
+    a, b = project_pair(*own_year("rest", view(doc_old), view(doc_new), old.year), old.year, evidence)
     return a == b
 
 
 def write(kind, old, new_year, result):
     """Write each form's carried lines into its TY+1 index: the TY entries of the lines that carry (same
-    record, status and ruling), each with `carried` {from, year_key}, and the TY+1 line subjects, rest and
-    foreign interfaces of the lines written; a form with no carried line gets no index."""
+    record, status and ruling), each marked (year_marked), and the TY+1 line subjects, rest and
+    foreign interfaces of the lines written, then its rulings sidecar (write_sidecar); a form with no carried
+    line gets neither."""
     import subjects
     import review_store
     import rulings
@@ -517,7 +520,7 @@ def write(kind, old, new_year, result):
             continue
         index = json.loads(old.read(*old.dir("reviews"), kind, fid + ".index.json"))
         carried = {k: key for k, _, key in rec["carry"]}
-        lines = [{**l, "carried": {"from": old.year, "year_key": carried[l["key"]]}} for l in index["lines"] if l["key"] in carried]
+        lines = [year_marked(l, old.year, carried[l["key"]]) for l in index["lines"] if l["key"] in carried]
         out = {**index, "lines": lines, "carried_from": old.year}
         if kind != "classm" and index.get("subjects") is not None:
             cur, rest = subjects.current_line_subjects(kind, fid, new_year)
@@ -529,13 +532,100 @@ def write(kind, old, new_year, result):
                 out["foreign"] = {k: v for k, v in fo.items() if k in carried}
             for l in lines:
                 l["subject_key"] = review_store.subject_key(out["subjects"].get(l["key"]), (out.get("foreign") or {}).get(l["key"]))
+        moved = whole_carried(kind, old, new_year, fid, index, rec)
+        if moved:
+            out["subject_carried"] = moved
         path = os.path.join(rulings.REVIEWS, kind, fid + ".index.json")
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as f:
             json.dump(out, f, indent=1, ensure_ascii=False)
             f.write("\n")
         written.append(path)
+        side = write_sidecar(kind, old, fid)
+        if side:
+            written.append(side)
     return written
+
+
+def whole_carried(kind, old, new_year, fid, index, rec):
+    """The whole-form subject a render index with no line subjects carries to TY+1 (`subject_carried`, which
+    review_store.recorded_subject reads), else None. Such an index answers the whole rendering, which names the
+    tax year. It carries only when every compared line carries, the TY index answered the TY rendering, and
+    the two renderings (citations left out, as subjects.of_rendered) are equal once a year is normalized in
+    lockstep where the document's cited sources moved it (project_pair, as rest_carries)."""
+    import review_store
+    import subjects
+    if kind != "render" or index.get("subjects") is not None or rec["review"] or not rec["carry"]:
+        return None
+    was = review_store.recorded_subject(kind, index)
+    text_old = old.read(*old.dir("rendered", fid), fid + ".md")
+    new = Tree(ROOT, new_year)
+    text_new = new.read(*new.dir("rendered", fid), fid + ".md")
+    if not was or text_old is None or text_new is None or subjects.of_rendered(text_old) != was:
+        return None
+    doc_old, doc_new = old.docs().get(fid), new.docs().get(fid)
+    evidence = set()
+    for la, lb in zip(doc_old["lines"], doc_new["lines"]):
+        for (_, ta), (_, tb) in zip(section_texts(old, la), section_texts(new, lb)):
+            evidence |= shifts(ta, tb, old.year)[2]
+    if not renderings_carry(text_old, text_new, old.year, evidence):
+        return None
+    header = review_store.recorded_subject(kind, {k: v for k, v in index.items() if k != "subject_carried"})
+    return {"subject": subjects.of_rendered(text_new), "was": header,
+            "carried": {"by": "year", "from": old.year, **({"after": index["subject_carried"]["carried"]}
+                                                           if index.get("subject_carried") else {})}}
+
+
+# The document's own tax year, which adoption writes (year_diff.py --adopt): the rendered header line and the
+# `tax_year` field of a document's own fields. It is normalized without source evidence, from TY to TY+1 only.
+OWN_YEAR = {"render": re.compile(r"(?m)^(- Document: `[^`]+` \([^,()]+, tax year )(\d{4})(\))$"),
+            "rest": re.compile(r'("tax_year": )(\d{4})(?!\d)()')}
+
+
+def own_year(kind, text_old, text_new, ty):
+    """Both texts with the document's own tax year (OWN_YEAR) replaced by {Y} where it is TY in the old text and
+    TY+1 in the new; any other year there is left as it is."""
+    pat, ty = OWN_YEAR[kind], int(ty)
+    mark = lambda year: lambda m: m.group(1) + ("{Y}" if int(m.group(2)) == year else m.group(2)) + m.group(3)
+    return pat.sub(mark(ty), text_old), pat.sub(mark(ty + 1), text_new)
+
+
+def renderings_carry(text_old, text_new, ty, evidence):
+    """Whether two years' renderings of a document are equal, citations left out (subjects.of_rendered), once the
+    header's own tax year is normalized (own_year) and any other year in lockstep where the cited sources moved it
+    (`evidence`, as shifts returns it)."""
+    import subjects
+    a, b = own_year("render", subjects.CITE_TEXT.sub("[cite]", text_old), subjects.CITE_TEXT.sub("[cite]", text_new), ty)
+    a, b = project_pair(a, b, ty, evidence)
+    return a == b
+
+
+def year_marked(line, from_year, year_key):
+    """An index line as carried to TY+1: marked `carried` {from, year_key}; a line shown from a renamed record
+    section (`section`) keeps the rename carry that maps that section to its key (review_store.check) and is
+    marked `year_carried` instead."""
+    mark = {"from": from_year, "year_key": year_key}
+    return {**line, "year_carried": mark} if line.get("section") else {**line, "carried": mark}
+
+
+def write_sidecar(kind, old, fid):
+    """Write a form's TY+1 rulings sidecar from its TY one, after its TY+1 index is written: the TY entries
+    (same key, ruling, context and stamps) of the rulings the carried log shows, so that each ruling in the
+    log is in the sidecar (rulings.check). Returns its path, or None when the TY form has no sidecar."""
+    import rulings
+    src = old.path(*old.dir("reviews"), kind, fid + ".rulings.json")
+    if not os.path.exists(src):
+        return None
+    data = json.load(open(src, encoding="utf-8"))
+    text = rulings.read_log(kind, fid)
+    shown = {rulings.stored_key(kind, k) for k, line in rulings.log_sections(kind, text or "") if line != rulings.OPEN}
+    fields = rulings.stored_fields(kind)
+    rows = [r for r in (rulings.compact_row(kind, r) for r in data["rulings"]) if tuple(r[f] for f in fields) in shown]
+    path = rulings.sidecar_path(kind, fid)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump({"kind": kind, "form": fid, "carried_from": old.year, "rulings": rows}, f, indent=1, ensure_ascii=False)
+        f.write("\n")
+    return path
 
 
 def report(kind, result, from_year, to_year, verbose=False):
@@ -631,11 +721,75 @@ def self_test():
     for name, want, other in tables:
         if (table_value(table) == table_value(other)) != want:
             bad.append(f"{name}: equal={not want}")
+    n = len(cases) + len(tables)
+    head = "# Form X\n\n- Document: `x` (form, tax year {y})\n\n## Line 1\n\nEnter the amount{extra}.\n"
+    moved = shifts("Enter your 2025 amounts.", "Enter your 2026 amounts.", "2025")[2]
+    kept = shifts("Enter your 2025 amounts. For tax year 2025, see Pub. 1.", "Enter your 2026 amounts. For tax year 2025, see Pub. 1.", "2025")[2]
+    none = shifts("Enter it.", "Enter it.", "2025")[2]
+    renders = [("a rendering whose header year moved where the sources moved the year", True, moved, 2026, ""),
+               ("only the header year moved, the sources printing no year", True, none, 2026, ""),
+               ("only the header year moved, the sources keeping it in the same words", True, kept, 2026, ""),
+               ("the header year moved by two", False, moved, 2027, ""),
+               ("the header year moved and a sentence changed", False, none, 2026, " shown on Form W-2"),
+               ("the header year moved and a year in the text moved, the sources moving no year", False, none, 2026,
+                " paid in 2026")]
+    for name, want, evidence, y, extra in renders:
+        new_text = head.format(y=y, extra=extra)
+        old_text = head.format(y=2025, extra=" paid in 2025" if "paid in" in extra else "")
+        if renderings_carry(old_text, new_text, "2025", evidence) != want:
+            bad.append(f"{name}: carried={not want}")
+    rest = lambda y, title: json.dumps({"id": "x", "tax_year": y, "title": title}, sort_keys=True, indent=0)
+    rests = [("a document's own fields with only tax_year moved, the sources printing no year", True, rest(2026, "X")),
+             ("tax_year moved and the title changed", False, rest(2026, "Y")),
+             ("tax_year moved by two", False, rest(2027, "X"))]
+    for name, want, new_text in rests:
+        a, b = project_pair(*own_year("rest", rest(2025, "X"), new_text, "2025"), "2025", none)
+        if (a == b) != want:
+            bad.append(f"{name}: carried={not want}")
+    n += len(renders) + len(rests)
     for b in bad:
         print("year-carry self-test: WRONG", b, file=sys.stderr)
-    n = len(cases) + len(tables)
     print(f"year-carry self-test: {n - len(bad)}/{n} near-miss pairs as expected")
-    return 1 if bad else 0
+    side = sidecar_self_test()
+    print("year-carry self-test: rulings sidecar and line marks written with the carried index: "
+          + ("as expected" if not side else "WRONG: " + "; ".join(side)))
+    return 1 if bad or side else 0
+
+
+def sidecar_self_test():
+    """write_sidecar in a scratch tree: of a TY sidecar's entries, those whose ruling the carried log shows
+    are written to TY+1, as stored (key, ruling, context, stamps); an entry for a line the log does not show,
+    and an open section, are not. Returns what went wrong."""
+    import tempfile
+    import rulings
+    section = lambda printed, project, ruling: (f"\n### {printed} — x\nStatus: **DISAGREE**\n\nProject:\n\n```json\n"
+                                                f"{project}\n```\n\nSecond:\n\n```json\n2\n```\n\n{ruling}\n")
+    log = "# Log\n\n## Lines\n" + section("1", "1", "Ruling: representation") + section("3", "3", rulings.OPEN)
+    row = lambda printed, project, ruling: {"printed": printed, "project_expr_sha256": rulings._sha_text(project),
+                                            "second_expr_sha256": rulings._sha_text("2"), "ruling": ruling,
+                                            "context": "c", "date": "2025-12-01"}
+    old_rows = [row("1", "1", "Ruling: representation"), row("2", "2", "Ruling: equivalent"),
+                row("3", "3", "Ruling: equivalent")]
+    saved = rulings.read_log, rulings.sidecar_path
+    with tempfile.TemporaryDirectory() as tmp:
+        old = Tree(os.path.join(tmp, "old"), "2025")
+        os.makedirs(old.path(*old.dir("reviews"), "transcription"))
+        with open(old.path(*old.dir("reviews"), "transcription", "fx.rulings.json"), "w") as f:
+            json.dump({"kind": "transcription", "form": "fx", "rulings": old_rows}, f)
+        rulings.read_log = lambda kind, form, family=None: log
+        rulings.sidecar_path = lambda kind, form, family=None: os.path.join(tmp, "fx.rulings.json")
+        try:
+            path = write_sidecar("transcription", old, "fx")
+            got = json.load(open(path))
+        finally:
+            rulings.read_log, rulings.sidecar_path = saved
+    bad = [] if got["rulings"] == old_rows[:1] and got.get("carried_from") == "2025" else [f"rulings sidecar carried as {got}"]
+    renamed = year_marked({"key": "k", "section": "s", "carried": {"by": "rename", "keys": {"s": "k"}}}, "2025", "h")
+    plain = year_marked({"key": "k", "carried": {"by": "rename"}}, "2025", "h")
+    if renamed["carried"].get("by") != "rename" or renamed.get("year_carried") != {"from": "2025", "year_key": "h"} \
+            or plain["carried"] != {"from": "2025", "year_key": "h"}:
+        bad.append(f"index lines marked as {renamed} and {plain}")
+    return bad
 
 
 def main(argv=None):
@@ -643,7 +797,7 @@ def main(argv=None):
     ap.add_argument("--from", dest="origin", help="the tree of tax year TY (default: none; required unless --self-test)")
     ap.add_argument("--from-year", help="TY (default: the year before this tree's)")
     ap.add_argument("--kind", choices=("transcription", "render", "classm"), action="append")
-    ap.add_argument("--write", action="store_true", help="write the carried entries into this tree's indexes")
+    ap.add_argument("--write", action="store_true", help="write the carried entries into this tree's indexes and rulings sidecars")
     ap.add_argument("--report", help="write the report here (default: print it)")
     ap.add_argument("--verbose", action="store_true", help="list every line to review with its reasons in the report")
     ap.add_argument("--self-test", action="store_true")
@@ -663,7 +817,9 @@ def main(argv=None):
         texts.append(text)
         print(text.split("\n")[2])
         if a.write:
-            print(f"{kind}: wrote {len(write(kind, old, new.year, result))} indexes")
+            paths = write(kind, old, new.year, result)
+            sides = sum(p.endswith(".rulings.json") for p in paths)
+            print(f"{kind}: wrote {len(paths) - sides} indexes and {sides} rulings sidecars")
     if a.report:
         with open(a.report, "w", encoding="utf-8") as f:
             f.write("\n".join(texts))

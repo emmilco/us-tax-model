@@ -16,7 +16,8 @@
     "title": "2025 Form IT-201-I, Instructions for Form IT-201, Full-Year Resident Income Tax Return",
     "designation": "Form IT-201-I",
     "url": "https://www.tax.ny.gov/forms/current-forms/it/it201i.htm",
-    "format": "html"
+    "format": "html",
+    "edition_marker": "{year} Form IT-201-I"
   },
   {
     "id": "ny_it201_tax_tables",
@@ -55,7 +56,8 @@
   {
     "id": "ny_tax_law_601",
     "title": "§ 601. Imposition of tax.",
-    "url": "https://legislation.nysenate.gov/pdf/laws/TAX601/"
+    "url": "https://legislation.nysenate.gov/pdf/laws/TAX601/",
+    "edition_marker": "§ 601. Imposition of tax."
   },
   {
     "id": "ny_it112r",
@@ -270,12 +272,14 @@
       "text": "You may use Form ST-141, Individual Purchaser’s Periodic Report of Sales and Use Tax, if you are an individual, estate, or trust: • that is not registered or required to be registered for New York State sales tax and is a New York State resident for sales tax and use tax; or • operating a business in New York State as a sole proprietor that is not registered or required to be registered for New York State sales tax.",
       "doc": "ny_st141i",
       "page": 1
-    }
+    },
+    "edition_marker": "(10/24)"
   },
   {
     "id": "ny_st141i",
     "title": "Instructions for Form ST-141",
     "designation": "Instructions for Form ST-141",
-    "url": "https://www.tax.ny.gov/pdf/current_forms/st/st141i.pdf"
+    "url": "https://www.tax.ny.gov/pdf/current_forms/st/st141i.pdf",
+    "edition_marker": "(10/24)"
   }
 ]

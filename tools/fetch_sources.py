@@ -43,6 +43,7 @@ import datetime
 import hashlib
 from html.parser import HTMLParser
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -144,6 +145,32 @@ def check_draft_marking(item):
         raise ValueError(f"{item['id']}: a draft needs draft_edition and draft_posted")
 
 
+def year_free(url):
+    """Whether an address names no year: it is a current-edition address, which serves whatever edition is current
+    when it is fetched."""
+    return not re.search(r"(?<!\d)(19|20)\d\d(?!\d)", urlparse(url).path)
+
+
+def check_edition_marking(item, jurisdiction):
+    """A New York address without a year needs an `edition_marker` in its catalog row: a string (`{year}` stands for
+    the catalog's year) that the fetched text must print, so a current-edition address that has moved on to another
+    edition is refused rather than archived as this year's."""
+    if jurisdiction == "ny" and year_free(item["url"]) and not str(item.get("edition_marker") or "").strip():
+        raise ValueError(f"{item['id']}: a New York address with no year needs an \"edition_marker\" (text the "
+                         "fetched document prints for the edition archived)")
+
+
+def check_edition(item, text, year):
+    """Refuse a fetched document that does not print the catalog row's edition marker."""
+    marker = item.get("edition_marker")
+    if not marker:
+        return
+    want = " ".join(marker.replace("{year}", str(year)).split())
+    if want not in " ".join(text.split()):
+        raise ValueError(f"{item['id']}: the fetched document does not print its edition marker {want!r}; the address "
+                         "may now serve another edition, so it is not archived as the " + str(year) + " one")
+
+
 def adopted_years():
     return json.loads((ROOT / "years.json").read_text())["adopted"]
 
@@ -164,6 +191,27 @@ def self_test():
             continue
         raise SystemExit(f"fetch_sources self-test: accepted a mis-marked row {bad}")
     print("fetch_sources self-test: draft marking checks pass")
+    ny_free = {"id": "a", "url": "https://www.tax.ny.gov/pdf/current_forms/st/st141.pdf"}
+    if not year_free(ny_free["url"]) or year_free("https://www.tax.ny.gov/pdf/2025/inc/it201i_2025.pdf"):
+        raise SystemExit("fetch_sources self-test: year_free misjudges an address")
+    check_edition_marking({**ny_free, "edition_marker": "(10/24)"}, "ny")
+    check_edition_marking(ny_free, "us")
+    check_edition_marking({"id": "b", "url": "https://www.tax.ny.gov/pdf/2025/inc/it201i_2025.pdf"}, "ny")
+    for bad in (ny_free, {**ny_free, "edition_marker": " "}):
+        try:
+            check_edition_marking(bad, "ny")
+        except ValueError:
+            continue
+        raise SystemExit(f"fetch_sources self-test: accepted a year-free New York address with no marker {bad}")
+    check_edition({**ny_free, "edition_marker": "{year} Form"}, "x\n2026  Form IT", 2026)
+    check_edition(ny_free, "anything", 2026)
+    try:
+        check_edition({**ny_free, "edition_marker": "(10/24)"}, "ST-141 (10/25)", 2026)
+    except ValueError:
+        pass
+    else:
+        raise SystemExit("fetch_sources self-test: accepted a document that does not print the edition marker")
+    print("fetch_sources self-test: edition checks pass")
     us, ny = JURISDICTIONS["us"], JURISDICTIONS["ny"]
     accepted = [(us, "https://www.irs.gov/pub/irs-pdf/f1040.pdf"),
                 (us, "https://www.govinfo.gov/content/pkg/FR-2024-01-01/pdf/x.pdf"),
@@ -244,6 +292,7 @@ def main():
     catalog = json.loads(CATALOG.read_text())
     for item in catalog:
         check_draft_marking(item)
+        check_edition_marking(item, args.jurisdiction)
         check_address(item["url"], HOSTS, PATHS)
     manifest_path = ARCHIVE / "manifest.json"
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"tax_year": YEAR, "documents": []}
@@ -327,6 +376,8 @@ def main():
                 parser = ReadableHTML()
                 parser.feed(html)
                 txt.write_text(parser.text(), encoding="utf-8")
+            if kind != "xls":
+                check_edition(item, txt.read_text(encoding="utf-8", errors="replace"), YEAR)
             entry = dict(item)
             entry.update({
                 "resolved_url": result.stdout,

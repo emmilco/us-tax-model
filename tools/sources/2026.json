@@ -130,10 +130,8 @@
   },
   {
     "id": "f1040s8812",
-    "url": "https://www.irs.gov/pub/irs-dft/f1040s8--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-05-19"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040s8.pdf",
+    "description": "Final 2026 edition (checked 2026-11-14); supersedes the IRS draft (2026 edition, posted 2026-05-19)"
   },
   {
     "id": "i1040s8812",
@@ -260,10 +258,8 @@
   },
   {
     "id": "f8606",
-    "url": "https://www.irs.gov/pub/irs-dft/f8606--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-07-16"
+    "url": "https://www.irs.gov/pub/irs-pdf/f8606.pdf",
+    "description": "Final 2026 edition (checked 2026-11-14); supersedes the IRS draft (2026 edition, posted 2026-07-16)"
   },
   {
     "id": "i8606",
@@ -342,10 +338,8 @@
   },
   {
     "id": "i1095a",
-    "url": "https://www.irs.gov/pub/irs-dft/i1095a--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-10-13"
+    "url": "https://www.irs.gov/pub/irs-pdf/i1095a.pdf",
+    "description": "Final 2026 edition (checked 2026-11-14); supersedes the IRS draft (2026 edition, posted 2026-10-13)"
   },
   {
     "id": "f8863",
@@ -373,7 +367,8 @@
     "url": "https://www.irs.gov/pub/irs-dft/i5329--dft.pdf",
     "draft": true,
     "draft_edition": "2026",
-    "draft_posted": "2026-09-08"
+    "draft_posted": "2026-11-09",
+    "description": "Draft reposted by the IRS on 2026-11-09; replaces the draft posted 2026-09-08"
   },
   {
     "id": "p4681",
@@ -394,7 +389,8 @@
     "url": "https://www.irs.gov/pub/irs-dft/p590b--dft.pdf",
     "draft": true,
     "draft_edition": "2026",
-    "draft_posted": "2026-11-03"
+    "draft_posted": "2026-11-09",
+    "description": "Draft reposted by the IRS on 2026-11-09; replaces the draft posted 2026-11-03"
   },
   {
     "id": "p575",
@@ -576,5 +572,41 @@
     "draft_edition": "Dec 2026",
     "draft_posted": "2026-04-14",
     "description": "Instructions for Form 1062: new, the instructions behind the 2026 Form 1040 draft, line 24b"
+  },
+  {
+    "id": "i8962",
+    "url": "https://www.irs.gov/pub/irs-dft/i8962--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-11-05"
+  },
+  {
+    "id": "i8582",
+    "url": "https://www.irs.gov/pub/irs-dft/i8582--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-11-05"
+  },
+  {
+    "id": "p525",
+    "url": "https://www.irs.gov/pub/irs-dft/p525--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-11-06"
+  },
+  {
+    "id": "p925",
+    "url": "https://www.irs.gov/pub/irs-dft/p925--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-11-06"
+  },
+  {
+    "id": "p590a",
+    "url": "https://www.irs.gov/pub/irs-dft/p590a--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-11-10",
+    "description": "Draft page lists edition \"2025\"; the document prints 2026 (What's New for 2026, Publication 590-A (2026), Nov 9, 2026)"
   }
 ]

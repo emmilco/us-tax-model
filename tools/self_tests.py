@@ -64,7 +64,10 @@ TESTS = [
     ("layouts_self_test", "code", False, ["python3", "tools/layouts.py", "--self-test"]),
     ("fixtures_year_self_test", "code", False, ["python3", "tools/fixtures_year.py", "--self-test"]),
     ("year_changes_self_test", "code", False, ["python3", "tools/year_changes.py", "--self-test"]),
+    ("year_shared_refs_self_test", "code", False, ["python3", "tools/year_shared_refs.py", "--self-test"]),
     ("year_ids_self_test", "code", False, ["python3", "tools/check_year_ids.py", "--self-test"]),
+    ("jurisdiction_self_test", "code", False, ["python3", "tools/jurisdiction.py", "--self-test"]),
+    ("check_all_ny_skip_self_test", "code", False, ["bash", "tools/test_check_all_ny_skip.sh"]),
     ("coverage_tree_self_test", "code", True, ["python3", "tools/coverage/tree.py", "--self-test"]),
     ("instruction_cites_self_test", "code", True, ["python3", "tools/check_instruction_cites.py", "--self-test"]),
     ("operands_self_test", "code", True, ["python3", "tools/check_operands.py", "--self-test"]),
@@ -86,6 +89,7 @@ TESTS = [
     ("bug_inventory_self_test", "bookkeeping", False, ["python3", "tools/check_bug_inventory.py", "--self-test"]),
     ("docs_conventions_self_test", "bookkeeping", False, ["python3", "tools/check_docs_conventions.py", "--self-test"]),
     ("build_fresh_self_test", "code", False, ["python3", "tools/build_fresh.py", "--self-test"]),
+    ("ny_fixtures_self_test", "code", False, ["python3", "tools/ny_fixtures.py", "--self-test"]),
     ("claude_hooks_self_test", "bookkeeping", False, ["bash", "-c", "python3 tools/claude_hooks/bash_guard.py --self-test && python3 tools/claude_hooks/agents.py --self-test"]),
 ]
 GROUPS = ("bookkeeping", "code")

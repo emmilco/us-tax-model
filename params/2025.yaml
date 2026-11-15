@@ -220,6 +220,7 @@ params:
         locator: 'p. 11, Column (e)—Convention, half-year convention and mid-quarter convention by quarter placed in service'
     placed_year:
       values: [y2005, y2006, y2007, y2008, y2009, y2010, y2011, y2012, y2013, y2014, y2015, y2016, y2017, y2018, y2019, y2020, y2021, y2022, y2023, y2024, y2025]
+      extends_with_year: true
       cite:
         doc: p946
         locator: 'p. 39, Using the MACRS Percentage Tables; the example of property placed in service on July 2, 2023, for which 2025 is "the third recovery year"'
@@ -269,6 +270,7 @@ params:
     # born before it is N or older, a person born after it is younger. Each moves by one with the tax year.
     age.birth_year_latest:
       type: Count
+      moves_with_year: 1
       value: 2025
       cite:
         doc: i1040gi
@@ -277,6 +279,7 @@ params:
           person on a return for the tax year: the tax year itself; a consistency bound)'
     age.birth_year_earliest:
       type: Count
+      moves_with_year: 1
       value: 1900
       cite:
         doc: i1040gi
@@ -285,6 +288,7 @@ params:
           accepted: 125 years before the tax year; a consistency bound, not a rule of the instructions)'
     age.cut_65:
       type: Count
+      moves_with_year: 1
       value: 1961
       cite:
         doc: i1040gi
@@ -292,6 +296,7 @@ params:
           January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"'
     age.turning_65:
       type: Count
+      moves_with_year: 1
       value: 1960
       cite:
         doc: i1040gi
@@ -301,6 +306,7 @@ params:
           birthday falls in the tax year)'
     age.cut_25:
       type: Count
+      moves_with_year: 1
       value: 2001
       cite:
         doc: i1040gi
@@ -308,12 +314,14 @@ params:
           2001"
     age.cut_24:
       type: Count
+      moves_with_year: 1
       value: 2002
       cite:
         doc: i8863
         locator: p. 7, Line 7, "1. Were you under age 24 at the end of 2025?"
     age.cut_19:
       type: Count
+      moves_with_year: 1
       value: 2007
       cite:
         doc: i8863
@@ -321,6 +329,7 @@ params:
           your support (defined later), or" (over age 18 is 19 or older)
     age.cut_18:
       type: Count
+      moves_with_year: 1
       value: 2008
       cite:
         doc: f8880
@@ -328,18 +337,21 @@ params:
           born after January 1, 2008"'
     age.cut_16:
       type: Count
+      moves_with_year: 1
       value: 2010
       cite:
         doc: i1040gi
         locator: 'p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025"'
     age.cut_50:
       type: Count
+      moves_with_year: 1
       value: 1976
       cite:
         doc: i1040gi
         locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "$8,000 if age 50 or older at the end of 2025"'
     age.cut_55:
       type: Count
+      moves_with_year: 1
       value: 1971
       cite:
         doc: i8889
@@ -347,12 +359,14 @@ params:
           you were age 55 or older at the end of 2025"
     age.cut_60:
       type: Count
+      moves_with_year: 1
       value: 1966
       cite:
         doc: p560
         locator: p. 16, chapter 3, Catch-up contributions, "in a tax year in which they attain age 60, 61, 62, or 63"
     age.cut_64:
       type: Count
+      moves_with_year: 1
       value: 1962
       cite:
         doc: p560
@@ -360,6 +374,7 @@ params:
           64 leaves the band)
     age.cut_73:
       type: Count
+      moves_with_year: 1
       value: 1953
       cite:
         doc: i5329
@@ -863,7 +878,7 @@ params:
       cite:
         doc: f1040s8812
         locator: Schedule 8812 (2025), line 19, "Is the amount on line 18a more than $2,500?"
-    # Earned income credit (i1040gi pp. 40-60; Rev. Proc. 2024-40 section 3.06).
+    # Earned income credit (i1040gi pp. 40-60; Rev. Proc. 2024-40 section 2.06).
     eic.limit0.other:
       type: NonNegDollars
       value: 1910400
@@ -953,49 +968,49 @@ params:
       value: 849000
       cite:
         doc: rp-2024-40
-        locator: 'section 3.06(1), Earned Income Amount, none'
+        locator: 'section 2.06(1), Earned Income Amount, none'
     eic.maximum0:
       type: NonNegDollars
       value: 64900
       cite:
         doc: rp-2024-40
-        locator: 'section 3.06(1), Maximum Amount of Credit, none'
+        locator: 'section 2.06(1), Maximum Amount of Credit, none'
     eic.earned_amount1:
       type: NonNegDollars
       value: 1273000
       cite:
         doc: rp-2024-40
-        locator: 'section 3.06(1), Earned Income Amount, one qualifying child'
+        locator: 'section 2.06(1), Earned Income Amount, one qualifying child'
     eic.maximum1:
       type: NonNegDollars
       value: 432800
       cite:
         doc: rp-2024-40
-        locator: 'section 3.06(1), Maximum Amount of Credit, one qualifying child'
+        locator: 'section 2.06(1), Maximum Amount of Credit, one qualifying child'
     eic.earned_amount2:
       type: NonNegDollars
       value: 1788000
       cite:
         doc: rp-2024-40
-        locator: 'section 3.06(1), Earned Income Amount, two qualifying children'
+        locator: 'section 2.06(1), Earned Income Amount, two qualifying children'
     eic.maximum2:
       type: NonNegDollars
       value: 715200
       cite:
         doc: rp-2024-40
-        locator: 'section 3.06(1), Maximum Amount of Credit, two qualifying children'
+        locator: 'section 2.06(1), Maximum Amount of Credit, two qualifying children'
     eic.earned_amount3:
       type: NonNegDollars
       value: 1788000
       cite:
         doc: rp-2024-40
-        locator: 'section 3.06(1), Earned Income Amount, three or more qualifying children'
+        locator: 'section 2.06(1), Earned Income Amount, three or more qualifying children'
     eic.maximum3:
       type: NonNegDollars
       value: 804600
       cite:
         doc: rp-2024-40
-        locator: 'section 3.06(1), Maximum Amount of Credit, three or more qualifying children'
+        locator: 'section 2.06(1), Maximum Amount of Credit, three or more qualifying children'
     # Simplified Method Worksheet (i1040gi p. 29) and Social Security Benefits Worksheet (p. 32).
     smw.table1_360:
       type: Rate
@@ -2253,7 +2268,7 @@ params:
         qss: 31300000
       cite:
         doc: rp-2024-40
-        locator: 'section 3.32, Threshold for Excess Business Loss, "the amount under § 461(l)(3)(A)(ii)(II) is $313,000 ($626,000 for joint returns)"'
+        locator: 'section 2.32, Threshold for Excess Business Loss, "the amount under § 461(l)(3)(A)(ii)(II) is $313,000 ($626,000 for joint returns)"'
     # Residential energy credits (Form 5695 and its instructions).
     f5695.rce_rate:
       type: Rate

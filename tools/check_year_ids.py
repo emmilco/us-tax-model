@@ -91,8 +91,12 @@ def carriers(ids, tax_year):
 
 def collect(canonical):
     """{id: kind} for every id the canonical build in `canonical` defines, and the problems met reading it.
-    An id defined as more than one kind has them joined in the order of KINDS: "computed+param"."""
+    An id defined as more than one kind has them joined in the order of KINDS: "computed+param". A directory
+    that is missing or holds no document is a problem: there is no build of the year to judge."""
     kinds, problems = {}, []
+    if not Path(canonical).is_dir():
+        return {}, [f"  {Path(canonical).name}: no canonical build of this year ({canonical} does not exist); "
+                    f"build it first: node engine/dist/main.js build --year {Path(canonical).name}"]
 
     def add(i, kind):
         kinds.setdefault(i, set()).add(kind)
@@ -117,6 +121,9 @@ def collect(canonical):
                             f"tools/check_year_ids.py whether it defines ids")
     for path in sorted((Path(canonical) / "tables").glob("*.json")):
         add(path.stem, "table")
+    if "document" not in {k for ks in kinds.values() for k in ks}:
+        problems.append(f"  {Path(canonical).name}: the canonical build holds no document; rebuild it: "
+                        f"node engine/dist/main.js build --year {Path(canonical).name}")
     return {i: "+".join(k for k in KINDS if k in ks) for i, ks in kinds.items()}, problems
 
 
@@ -283,12 +290,21 @@ def self_test():
                ["ctc.amount_2026", "limit_2026", "rate.tax_2025", "wks26", "wks26.paid_2026"])
         write("profiles.json", {"profiles": {"single_2025": {}}})
         expect("a file of an unknown kind is reported", len(collect(root)[1]), 1)
+    # a year with no build is refused, not passed on zero ids: no directory, or one with no document
+    with tempfile.TemporaryDirectory() as d:
+        got, trouble = collect(Path(d) / "2026")
+        expect("a missing build", (got, len(trouble), "no canonical build" in "".join(trouble)), ({}, 1, True))
+        (Path(d) / "2026").mkdir()
+        (Path(d) / "2026" / "params.json").write_text(json.dumps({"params": {"values": {}, "enums": {}}}))
+        got, trouble = collect(Path(d) / "2026")
+        expect("a build with no document", (len(trouble), "holds no document" in "".join(trouble)), (1, True))
 
     if bad:
         print("year ids self-test FAILED:\n  " + "\n  ".join(bad), file=sys.stderr)
         return 1
     print(f"year ids self-test OK: {len(year_bearing)} planted ids found, {len(look_alikes)} look-alikes passed, "
-          f"new, gone, misclassed and look-alike entries each judged, a planted build read")
+          f"new, gone, misclassed and look-alike entries each judged, a planted build read, a missing and an "
+          f"empty build refused")
     return 0
 
 

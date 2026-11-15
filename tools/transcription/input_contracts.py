@@ -12,7 +12,13 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[2]
 DIRECTORY = Path(__file__).resolve().parent / "input_contracts"
 POLICY = "source-partial-inputs-v1"
-REQUIRED = {"2025": {"dependent", "f8889"}}
+# The first year each bank is required: a required bank is required in every later year too, so that a
+# year whose bank was not carried (year_diff.py --adopt) is refused rather than silently checked against none.
+REQUIRED = {"dependent": 2025, "f8889": 2025}
+
+
+def required(year):
+    return {form for form, since in REQUIRED.items() if int(year) >= since}
 
 
 def encoded(value):
@@ -23,7 +29,7 @@ def load(form, year):
     # A New York document's bank (id ny_) would sit under <directory>/ny/<year>/.
     path = DIRECTORY / ("ny" if str(form).startswith("ny_") else "") / str(year) / f"{form}.json"
     if not path.exists():
-        if form in REQUIRED.get(str(year), set()):
+        if form in required(year):
             raise FileNotFoundError("required source input-contract bank is missing: " + str(path))
         return None
     bank = json.loads(path.read_text())

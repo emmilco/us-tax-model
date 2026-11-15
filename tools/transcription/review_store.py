@@ -22,7 +22,8 @@ A verdict carried across a proven rename of line ids (rename_carry.py) is marked
 ({"by": "rename", "map", "from", ...}). When the rename changed the line's log key, the line also names the
 record section it was judged under (`section`, the old key); the view shows that section under the new key.
 A whole-form subject carried the same way is `subject_carried` ({"subject", "was", "carried"}): state() reads
-`subject` in place of the base record's header subject only while `was` is that header's. ingest() keeps a
+`subject` in place of the base record's header subject only while `was` is that header's; year_carry.py writes one
+(`carried` {"by": "year"}) for a render index with no line subjects whose rendering moved only the year. ingest() keeps a
 line's `carried` and `section` while the line's verdict still comes from the same record.
 
 The per-form log is a view, generated, not committed: view() assembles it from the index and the records it
@@ -437,8 +438,8 @@ def state(kind, form, family, year):
 
 def recorded_subject(kind, index):
     """The whole-form subject an index answers: its base record's header subject, or the subject carried
-    across a proven rename (`subject_carried`) while that carry names the header's subject as the one it
-    was proven from."""
+    across a proven rename or a tax-year change (`subject_carried`, by "rename" or "year": year_carry.py)
+    while that carry names the header's subject as the one it was proven from."""
     _, base = load_record(kind, index["base"])
     m = re.search(r"^\| subject sha256 \| ([0-9a-f]{64}) \|$", base["head"], re.M)
     header = m.group(1) if m else None
@@ -647,8 +648,8 @@ def check():
                     problems.append(f"{tag}: line {l['key']} is shown from record section {l['section']} without a "
                                     "rename carry that maps that key to it")
             sc = index.get("subject_carried")
-            if sc is not None and (sc.get("carried") or {}).get("by") != "rename":
-                problems.append(f"{tag}: subject_carried without a rename carry")
+            if sc is not None and (sc.get("carried") or {}).get("by") not in ("rename", "year"):
+                problems.append(f"{tag}: subject_carried without a rename or year carry")
             for sha in {index["base"]} | {l["record"] for l in index["lines"]}:
                 used.add((kind, sha))
                 try:

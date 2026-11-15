@@ -34,7 +34,7 @@ interface Section { doc: string; title: string; entry: string | null; lines: She
 /** A refusal whose gate is a consistency check: answers that contradict each other, not an unsupported case. */
 interface Conflict { gate: string; explanation: string; answers: Question[]; figures: { line: string; printed: string; label: string; value: Value }[] }
 interface State {
-  name: string; status: "incomplete" | "complete" | "refused"; refusal: (Value & { kind: "refusal" }) | null; refusalFinal: boolean;
+  name: string; tax_year: number; status: "incomplete" | "complete" | "refused"; refusal: (Value & { kind: "refusal" }) | null; refusalFinal: boolean;
   /** What the interview adds to the refusal: what the filer can do next. */
   refusalNote: string | null;
   conflicts: Conflict[];
@@ -42,7 +42,7 @@ interface State {
   values: Record<string, Derivation>; sheets: { federal: Section[]; newYork: Section[] }; changed: string[];
   entryLabels: Record<string, string>;
 }
-interface Listing { returns: string[]; scope: string; notices: string; standingNotices: string[]; docTitles: Record<string, string>; docDesignations: Record<string, string> }
+interface Listing { tax_year: number; returns: string[]; scope: string; notices: string; standingNotices: string[]; docTitles: Record<string, string>; docDesignations: Record<string, string> }
 type View = "question" | "answered" | "return" | "about";
 
 const KEY = /^[a-zA-Z0-9_-]+$/;
@@ -279,8 +279,15 @@ function tabKeys(list: HTMLElement, activate: (tab: HTMLElement) => void): void 
 
 // ---- the returns ----
 
+/** The tax year in the page's heading, title and new-return placeholder, as the server reports it. */
+function showYear(year: number): void {
+  $("return-year").textContent = String(year);
+  $<HTMLInputElement>("new-name").placeholder = `New, e.g. final-${year}`;
+  document.title = `${year} return: federal and New York`;
+}
 async function loadListing(selected: string | null): Promise<void> {
   const listing = await api<Listing>("GET", "/api/returns");
+  showYear(listing.tax_year);
   docTitles = listing.docTitles ?? {};
   docDesignations = listing.docDesignations ?? {};
   renderNotices(listing.scope, listing.notices, listing.standingNotices);
@@ -305,7 +312,8 @@ function renderNotices(scope: string, notices: string, standing: string[]): void
 function render(): void {
   if (!state) return;
   $("return-name").textContent = state.name;
-  document.title = `${state.name}: 2025 return`;
+  showYear(state.tax_year);
+  document.title = `${state.name}: ${state.tax_year} return`;
   renderNotices(state.scope, state.notices, state.standingNotices);
   lineIndex = new Map();
   for (const section of [...state.sheets.federal, ...state.sheets.newYork]) for (const line of section.lines) lineIndex.set(line.key, { line, section });

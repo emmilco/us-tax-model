@@ -58,6 +58,15 @@ interface ManifestEntry {
   revision_status?: string;
 }
 
+// Without New York definitions for the year, removes from `conflicts` every key naming a New York gate (`ny_`)
+// and returns those keys; with them, changes nothing and returns none.
+export function dropNyConflicts(conflicts: Record<string, string>, nyPresent: boolean): string[] {
+  if (nyPresent) return [];
+  const skipped = Object.keys(conflicts).filter((gate) => gate.startsWith("ny_"));
+  for (const gate of skipped) delete conflicts[gate];
+  return skipped;
+}
+
 export function runBuild(): { data: CanonicalData | null; errors: string[]; stats: string[] } {
   const errors: string[] = [];
   const stats: string[] = [];
@@ -391,10 +400,16 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   const nyInterview = existsSync(NY_PROFILE) ? loadProfile(NY_PROFILE, "New York interview") : null;
   // The refusal gates that are consistency checks, each with the explanation the web UI shows for its conflict
   // (presentation only). Every key must be a gate line: a line that some line's `refuses` names in `when`.
+  // A key naming a New York gate (`ny_`) is skipped, with a note, while the year has no New York definitions
+  // (forms/ny/<year>/), so a federal year builds before New York publishes; it is neither checked nor written.
   const CONFLICTS = join(INTERVIEW, "conflict_checks.yaml");
   const conflictChecks = existsSync(CONFLICTS)
     ? parseYaml(readFileSync(CONFLICTS, "utf8")) as { tax_year: number; conflicts: Record<string, string> }
     : null;
+  if (conflictChecks?.conflicts && typeof conflictChecks.conflicts === "object") {
+    const skipped = dropNyConflicts(conflictChecks.conflicts, existsSync(NY_FORMS_DIR));
+    if (skipped.length > 0) stats.push(`conflict checks: ${skipped.length} naming a New York gate skipped (${skipped.join(", ")}): no forms/ny/${YEAR}/`);
+  }
   if (conflictChecks) {
     const gateLines = new Set([...forms, ...defs].flatMap((d) => d.lines.flatMap((l) => (l.refuses ?? []).map((r) => r.when))));
     if (!conflictChecks.conflicts || typeof conflictChecks.conflicts !== "object") errors.push(`interview/${YEAR}/conflict_checks.yaml: no conflicts map`);

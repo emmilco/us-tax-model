@@ -1,0 +1,20 @@
+# The limit on qualified long-term care premiums for each person covered, by age at the end of 2026.
+# Written by tools/extract_printed_tables.py from sources/2026/f7206.pdf (sha256 66d95039b0ee); checked by its --check (check-all).
+table:
+  id: "ltc_limit"
+  kind: "keyed"
+  title: "Qualified long-term care premium limit by age (Form 7206, line 2(b))"
+  tax_year: 2026
+  cite:
+    doc: "f7206"
+    locator: "Form 7206 (2026), line 2(b)"
+    quote: "$500— if that person is age 40 or younger $930— if age 41 to 50 $1,860— if age 51 to 60 $4,960— if age 61 to 70 $6,200— if age 71 or older"
+  keys:
+    - { name: age, type: "Enum(ltc_age)" }
+  cell: "NonNegDollars"
+  rows:
+    - { keys: [to40], value: 50000 }
+    - { keys: [to50], value: 93000 }
+    - { keys: [to60], value: 186000 }
+    - { keys: [to70], value: 496000 }
+    - { keys: [over70], value: 620000 }
