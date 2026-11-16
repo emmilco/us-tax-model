@@ -77,6 +77,16 @@
    "subject_key": "0018851c156cedbd82f43227ead337e268672ec1e92f61e0f5dbdebd8a7b5c48"
   },
   {
+   "printed": "disaster_distribution",
+   "restated": "Input — Did you (or, on a joint return, your spouse) take money from a retirement plan in 2023 or 2024 because of a disaster, and spread its tax over three years or pay any of it back in 2025?",
+   "model": "The question covers only 2023 and 2024 distributions. The Form 8915-F instructions also require the form for 'A qualified disaster distribution ... that was made to you this year' (2025), so a 2025 disaster distribution would not be caught.",
+   "ruling": "Ruling: refusal located elsewhere; a qualified disaster distribution made in 2025 is reported on its 2025 Form 1099-R, and each Form 1099-R record asks retirement.disaster ('Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?'), an operand of retirement.special, which refuses the return (forms/2025/retirement.yaml). scope.disaster_distribution covers only what has no 2025 Form 1099-R: a 2023 or 2024 distribution whose tax is spread into 2025 or that is repaid in 2025 (i8915f, qualified 2021 or later disasters). No 2025 distribution goes unrefused; no wording change.",
+   "context": "a1cd21b9905bf3bcc419cd491e84ef6b49d85e63e6326d7c7291b49553e62025",
+   "date": "2026-11-15",
+   "run": "04fccfb8e48f62a0a16750cc76323381860bcfaa7c7f197bf4e7583a61bed8ad",
+   "subject_key": "0018851c156cedbd82f43227ead337e268672ec1e92f61e0f5dbdebd8a7b5c48"
+  },
+  {
    "printed": "other_income",
    "restated": "Input — Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?",
    "model": "This fits the Form 1040 income lines shown: 1b–1d and 1f–1h are screened, and 1e is left to Form 2441 ('Taxable dependent care benefits from Form 2441, line 26'). Nonresident alien status and passive-activity rules aren't in the text given. Line 1i, 'Nontaxable combat pay election', isn't named and is covered only by the general phrase 'other … return treatment'.",
@@ -146,6 +156,16 @@
    "context": "d070e5c2357c8c329e0a3614af3b68a641f1c1ed8398857e2c54b66de507ebdb",
    "date": "2026-11-14",
    "run": "d757e4dd502203def03c50be44cc54571618eb1edb1bee17dabf1c96cccb7f3b",
+   "subject_key": "f3b915b60e88e19c56a8cadaeedb539320072cf889f4db0abd7682e6fcb8a385"
+  },
+  {
+   "printed": "reforestation",
+   "restated": "Input — Do you (or, on a joint return, your spouse) own or lease timber land on which you paid to plant or replant trees, in 2025 or in the seven years before?",
+   "model": "Schedule 1 line 24d says only 'Enter reforestation amortization and expenses (see the Instructions for Form 4562)'. The 'seven years before' window is not in the text provided.",
+   "ruling": "Ruling: scope; the question screens out Schedule 1 line 24d (reforestation amortization and expenses, outside this tool). Its window is the section 194 amortization: i4562 (2025) p. 18, Qualified forestation and reforestation costs (section 194), 'You can elect to amortize the qualifying costs that are not deducted currently over an 84-month period', so costs paid in 2025 or in the seven years before can still give a 2025 deduction. The reviewer had only Schedule 1's text; the rendered question is supported by the source and refuses every return it should.",
+   "context": "a1cd21b9905bf3bcc419cd491e84ef6b49d85e63e6326d7c7291b49553e62025",
+   "date": "2026-11-15",
+   "run": "04fccfb8e48f62a0a16750cc76323381860bcfaa7c7f197bf4e7583a61bed8ad",
    "subject_key": "f3b915b60e88e19c56a8cadaeedb539320072cf889f4db0abd7682e6fcb8a385"
   },
   {

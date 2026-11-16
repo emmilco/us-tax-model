@@ -103,12 +103,12 @@ changes:
     - set:
         line: f8863.paid
         field: expr.source
-        from: Did anyone pay qualified education expenses in 2025 for you, your spouse if filing jointly, or a dependent you
-          claim, at a college, university, vocational school or other postsecondary school (for tuition, required fees or
-          course materials)?
-        to: Did anyone pay qualified education expenses in 2026 for you, your spouse if filing jointly, or a dependent you
-          claim, at a college, university, vocational school or other postsecondary school (for tuition, required fees or
-          course materials)?
+        from: Did anyone pay qualified education expenses in 2025 for you, your spouse if filing jointly, or a dependent you claim,
+          as a student at a college, university, vocational school or other postsecondary school (tuition and required fees, or books,
+          supplies and equipment needed for a course of study, wherever bought)?
+        to: Did anyone pay qualified education expenses in 2026 for you, your spouse if filing jointly, or a dependent you claim,
+          as a student at a college, university, vocational school or other postsecondary school (tuition and required fees, or books,
+          supplies and equipment needed for a course of study, wherever bought)?
     - set:
         line: f8863.paid
         field: cite.locator

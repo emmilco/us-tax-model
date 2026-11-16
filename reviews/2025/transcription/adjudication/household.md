@@ -659,3 +659,14 @@ Lane land3-adj7 (claude-opus-5-5, judgment). Open lines of the Claude render log
 Counts: claude render: scope 2.
 
 Findings: none. No line left open.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-d (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the B1 integration worktree (nx-b1, uncommitted). Open lines of the Claude transcription log (pass de16cc0a21be), ruled on `.transcription/triage/2025/household.json` (which predates this reply: its passes end at 219699d4eb98, so both lines are ruled by reading), the reply, the archived sources and `forms/2025/household.yaml`. Rulings `/tmp/b1-adj-d/household.json`, applied with rule.py; full text in the log and sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | household.marriage_possible | representation | by reading | Pub. 501 Marital Status; i1040gi p. 13, Single | Same value; the reply reads household.ever_married raw under a married status. |
+| claude | transcription | household.hoh_fails | representation | by reading | i1040gi p. 14, Head of Household; Pub. 501 p. 6 | The project's tests; a 2025 widow(er) is refused by the project at the same status line through household.widowed_this_year. |
+
+Counts: representation 2. Findings: none.

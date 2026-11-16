@@ -69,6 +69,16 @@
   {
    "printed": "15",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 15 is forced to zero, and no refusal asks about or excludes casualty and theft losses. The IRS text says: \"Casualty and theft loss(es) from a federally declared disaster ... Attach Form 4684 and enter the amount from line 18 of that form.\"",
+   "ruling": "Ruling: scope; refusal located elsewhere. i1040sca p. 11, Line 15, 'Complete and attach Form 4684 to figure the amount of your loss. Only enter the amount from Form 4684, line 18, on line 15'. The line's citation says where the case goes: 'zero here: a casualty or theft loss is refused by sd.casualty through sd.other_forms'. sd.casualty ('was your ... property damaged, destroyed or stolen, leaving a loss that insurance did not cover ...') is asked of everyone and refuses Schedule D and the return. The stale Form 4684 refusal name of BUG-0639 is gone from the line. Project stands.",
+   "context": "1895474afe4707c9aaabb939ebe405978b2d1cb0a3d2c225d83f4001b0ef80c4",
+   "date": "2026-11-15",
+   "run": "e675147531c33062e611c7a68429c71211a057a25e5ba3947203544d2ae158b1",
+   "subject_key": "34feb5d12993f707d812134b6e5974f9fd609dde19e29f128f3240b78e24cfeb"
+  },
+  {
+   "printed": "15",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "Line 15 says 'Casualty and theft loss(es) from a federally declared disaster ... Attach Form 4684 and enter the amount from line 18 of that form.' The program always enters $0, and none of its refusals (charity, sa.unsupported, excluded income) covers a federally declared disaster casualty loss.",
    "ruling": "Ruling: scope; i1040sca p. 11, Line 15, 'Complete and attach Form 4684 to figure the amount of your loss'. A casualty or theft is refused before Schedule A: sd.casualty (asked of every filer, 'was your ... property damaged, destroyed or stolen, leaving a loss that insurance did not cover') feeds sd.other_forms, refused on sd.count (fixture mutation.json, gate sd.other_forms). The line's citation now names that refusal (fix for BUG-0639); the reviewer read only the refusals listed on the line.",
    "context": "fdc61669fae4f40410800c3bae27383ca623e4687d6e30960cf1300b89bfd941",
@@ -96,6 +106,16 @@
    "date": "2026-11-14",
    "run": "4b948fe4e820036b9ef4549b55e40d952c80ab2f8313256f8f040449fe645449",
    "subject_key": "16389dfe7a243defc578bbef12604ad4f169605ff7dd08d4f36161ee78853778"
+  },
+  {
+   "printed": "16",
+   "restated": "Choose — [s1 helper \"Any gambling winnings\" = true → helper \"Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b\"] [s1 helper \"Any gambling winnings\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Gambling losses capped at Schedule 1, line 8b winnings are correct, but several listed items are neither computed nor refused. The IRS list includes \"Casualty and theft losses of income-producing property ... from Form 4684, lines 32 and 38b, or Form 4797, line 18a\", \"Deduction for repayment of amounts under a claim of right if over $3,000\", and the \"Net Qualified Disaster Loss\" from Form 4684, line 15.",
+   "ruling": "Ruling: scope; refusal located elsewhere, as ruled in pass 4bc7a200f1c1 and the landing round. i1040sca p. 11, Line 16 list: casualty and theft losses of income-producing property (Form 4684 lines 32 and 38b, Form 4797 line 18a) and a net qualified disaster loss (Form 4684 line 15) are refused by sd.casualty and sd.business_property through sd.other_forms; the claim-of-right repayment over $3,000 by s3.repaid_income ('repay more than $3,000 in total that you had included in income in an earlier year'; fixture redesign.credits.refuse.repaid_income); estate tax on income in respect of a decedent, bond premium, debt-instrument loss, unrecovered pension investment and impairment work expenses by sa.unsupported. The gambling limit matches, as the reviewer says. Project stands.",
+   "context": "1895474afe4707c9aaabb939ebe405978b2d1cb0a3d2c225d83f4001b0ef80c4",
+   "date": "2026-11-15",
+   "run": "e675147531c33062e611c7a68429c71211a057a25e5ba3947203544d2ae158b1",
+   "subject_key": "f4030bc6a1b5bb5237c045ff3126e5b54a5af24de5594c1f1295efe9271edef1"
   },
   {
    "printed": "16",
@@ -154,6 +174,16 @@
   {
    "printed": "6",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 6 is forced to zero, and the only line 6 item refused is the foreign income tax deduction. Generation-skipping tax is neither computed nor refused. The IRS text says: \"Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.\"",
+   "ruling": "Ruling: scope; refusal located elsewhere, as ruled in the landing round. i1040sca p. 7, Other Taxes, 'Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.' The foreign tax deduction is refused by sa.unsupported (sa.foreign_tax_deduct_if_tax). The GST deduction is for tax on income distributions from a trust, which reach the beneficiary on a Schedule K-1 (Form 1041); scope.k1 ('income or a loss from ... an estate or a trust? A paper called Schedule K-1 reports it.') asks it of everyone and refuses Form 1040 line 8 through scope.schedule1, so no computed return has a GST deduction. Project stands on the value.",
+   "context": "1895474afe4707c9aaabb939ebe405978b2d1cb0a3d2c225d83f4001b0ef80c4",
+   "date": "2026-11-15",
+   "run": "e675147531c33062e611c7a68429c71211a057a25e5ba3947203544d2ae158b1",
+   "subject_key": "d3acfdf06a733ea0d60da49e95cd602281515c9f5737e9b2346de2f10823d28d"
+  },
+  {
+   "printed": "6",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "The instructions say 'Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.' Foreign income taxes are refused through sa.unsupported, but no refusal covers GST. A filer with GST would get $0.",
    "ruling": "Ruling: scope; as ruled in pass 4bc7a200f1c1. i1040sca Line 6, 'generation-skipping tax (GST) imposed on certain income distributions': the GST deduction belongs to a distributee of a trust's income, which reaches the filer on a Schedule K-1 (Form 1041); scope.k1 ('income or a loss from ... an estate or a trust? A paper called Schedule K-1 reports it') refuses through scope.schedule1. Foreign income tax is refused by sa.unsupported (sa.foreign_tax_deduct_if_tax).",
    "context": "fdc61669fae4f40410800c3bae27383ca623e4687d6e30960cf1300b89bfd941",
@@ -181,6 +211,16 @@
    "run": "4b948fe4e820036b9ef4549b55e40d952c80ab2f8313256f8f040449fe645449",
    "severity": "low",
    "subject_key": "f9c2a7a99e6627f76b4862df389d2f263b50cfac903d184b3f380551b3b969db"
+  },
+  {
+   "printed": "8a",
+   "restated": "Choose — [helper \"You owned a home or other real estate, or paid interest on a loan secured by a home\" = true → helper \"Home mortgage interest and points reported to you on Form 1098 for a loan secured by your main home or second home (only your share of a loan shared with someone other than your spouse; not reduced by a refund of overpaid interest)\"] [helper \"You owned a home or other real estate, or paid interest on a loan secured by a home\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The restatement enters Form 1098 interest and points and never subtracts the mortgage interest credit, and no refusal covers that case. The IRS text says: \"If you are claiming the mortgage interest credit ... subtract the amount shown on Form 8396, line 3, from the total deductible interest you paid on your home mortgage. Enter the result on line 8a.\"",
+   "ruling": "Ruling: scope; refusal located elsewhere. i1040sca p. 8, Line 8a, 'subtract the amount shown on Form 8396, line 3, from the total deductible interest'. A mortgage credit certificate is asked by s3.mcc when mortgage interest is entered and refuses Schedule 3 line 7 and the return through s3.mcc_if_interest (Form 8396), so no computed return reaches line 8a with the credit (fixture redesign.credits.refuse.mcc). The shared-interest point of the earlier round is now in the input's label ('only your share of a loan shared with someone other than your spouse'). Project stands on the English.",
+   "context": "1895474afe4707c9aaabb939ebe405978b2d1cb0a3d2c225d83f4001b0ef80c4",
+   "date": "2026-11-15",
+   "run": "e675147531c33062e611c7a68429c71211a057a25e5ba3947203544d2ae158b1",
+   "subject_key": "f8f28d515d9de0ea6f5a7d12d5da30e88a36993ad34462ce70befa02037aff3d"
   },
   {
    "printed": "9",

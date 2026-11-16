@@ -5,8 +5,9 @@ form:
   tax_year: 2025
   note: The worksheet in the Form 1040 instructions, for a 2025 refund of 2024 state or local income tax deducted on the
     2024 Schedule A. None of a refund is taxable when you did not itemize in 2024 or deducted general sales taxes instead of
-    income taxes. The Pub. 525 exceptions, Form 1099-G box 8 and other recoveries are refused (Pub. 525 Worksheet 2 is not
-    encoded).
+    income taxes. The Pub. 525 exceptions, Form 1099-G box 8, other recoveries, and on a joint return refunds of both
+    spouses' tax on separate 2024 returns either of which itemized with income taxes are refused (Pub. 525 Worksheet 2 is
+    not encoded).
   lines:
   - id: refund.zero
     printed: (helper)
@@ -123,6 +124,110 @@ form:
         for 2 or more years, "If you receive a refund or other recovery that is for amounts you paid in 2 or more separate
         years, you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it."
     ambiguity: amb.2025.refund_exceptions
+  - id: refund.no
+    printed: (helper)
+    label: Year parameter sa.no (no)
+    type: Bool
+    expr:
+      op: param
+      ref: sa.no
+    cite:
+      doc: i1040gi
+      locator: p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1
+  - id: refund.joint
+    printed: (helper)
+    label: Married filing jointly for 2025
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - f1040.status
+      - const: mfj
+    cite:
+      doc: i1040gi
+      locator: p. 89, Line 1, "9. You received a refund because of a jointly filed state or local income tax return, but you
+        aren’t filing a joint 2025 Form 1040 or 1040-SR with the same person"
+  - id: refund.two_returns
+    printed: (helper)
+    gated_by: refund.two_returns_if_joint
+    label: Were these refunds for 2024 tax of both of you, when each of you filed your own 2024 federal return (for example,
+      before you married, or as married filing separately)?
+    type: Bool
+    expr:
+      op: input
+      source: Were these refunds for 2024 tax of both of you, when each of you filed your own 2024 federal return (for example,
+        before you married, or as married filing separately)?
+    cite:
+      doc: i1040gi
+      locator: p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, "But don’t enter more than the
+        amount of your state and local income taxes shown on your 2024 Schedule A, line 5d", and line 4, "Enter your total
+        itemized deductions from your 2024 Schedule A, line 17" (the worksheet tests a refund against one 2024 return)
+    ambiguity: amb.2025.refund_two_returns
+  - id: refund.two_returns_if_joint
+    printed: (gate)
+    label: Asked only on a joint 2025 return (refund.two_returns)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - refund.joint
+          - const: true
+        then: refund.two_returns
+      - guard:
+          op: test
+          eq:
+          - refund.joint
+          - const: false
+        then: refund.no
+    cite:
+      doc: i1040gi
+      locator: p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 5, "Enter the amount shown below
+        for the filing status claimed on your 2024 Form 1040 or 1040-SR"
+    ambiguity: amb.2025.refund_two_returns
+  - id: refund.two_itemized
+    printed: (helper)
+    gated_by: refund.two_itemized_if_two
+    label: Did either of you itemize deductions on your own 2024 federal return and deduct state and local income taxes there
+      (not general sales taxes)?
+    type: Bool
+    expr:
+      op: input
+      source: Did either of you itemize deductions on your own 2024 federal return and deduct state and local income taxes
+        there (not general sales taxes)?
+    cite:
+      doc: i1040gi
+      locator: p. 88, Line 1, "None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn’t itemize
+        deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes"
+    ambiguity: amb.2025.refund_two_returns
+  - id: refund.two_itemized_if_two
+    printed: (gate)
+    label: Refunds of both spouses' 2024 tax, each on a separate 2024 return, and either return itemized with state and local
+      income taxes deducted
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - refund.two_returns_if_joint
+          - const: true
+        then: refund.two_itemized
+      - guard:
+          op: test
+          eq:
+          - refund.two_returns_if_joint
+          - const: false
+        then: refund.no
+    cite:
+      doc: i1040gi
+      locator: p. 88, Line 1, "If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on
+        your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet in these instructions to see if any of your
+        refund is taxable"
+    ambiguity: amb.2025.refund_two_returns
   - id: refund.itemized
     printed: (helper)
     label: Did you itemize deductions on Schedule A for 2024?
@@ -151,6 +256,31 @@ form:
         taxes"; p525 p. 24, State tax refund, "Because you didn’t choose to deduct the state income tax, you don’t include
         the state income tax refund in income"
   - id: refund.worksheet
+    printed: (helper)
+    label: The worksheet is used for one 2024 return on which you itemized deductions and deducted state and local income
+      taxes (not when the refunds are of both spouses' 2024 tax on separate 2024 returns)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - refund.two_returns_if_joint
+          - const: true
+        then: refund.no
+      - guard:
+          op: test
+          eq:
+          - refund.two_returns_if_joint
+          - const: false
+        then: refund.worksheet_one
+    cite:
+      doc: i1040gi
+      locator: p. 88, Line 1, "If the refund was for a tax you paid in 2024 and you deducted state and local income taxes
+        on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet"
+    ambiguity: amb.2025.refund_two_returns
+  - id: refund.worksheet_one
     printed: (helper)
     label: You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used
     type: Bool
@@ -957,3 +1087,14 @@ form:
           Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 1 and 5; p525 p.
           24, Recovery for 2 or more years, "you must allocate, on a pro rata basis, the recovered amount between the years
           in which you paid it"
+    - when: refund.two_itemized_if_two
+      form: Pub. 525, Itemized Deduction Recoveries (Worksheet 2)
+      remedy: Refunds of 2024 tax of both of you, when each filed a separate 2024 return and either of you itemized and
+        deducted state and local income taxes, are tested against each 2024 return in turn, and the Form 1040 worksheet
+        takes one; that is outside this tool.
+      cite:
+        doc: i1040gi
+        locator: p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, "But don’t enter more than
+          the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d"; p525 p. 24, Itemized
+          Deduction Recoveries, "how to determine the amount to include in your income from a recovery of an amount deducted
+          in an earlier year as an itemized deduction"

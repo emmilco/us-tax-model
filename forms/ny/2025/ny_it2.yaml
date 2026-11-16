@@ -15,13 +15,13 @@ form:
       printed: "17a"
       label: "NYS income tax withheld"
       type: NonNegDollars
-      expr: { op: input, source: "New York State income tax withheld on this Form W-2 (box 17 for New York State; 0 if none)" }
+      expr: { op: input, source: "New York State income tax withheld on this Form W-2 (box 17 for New York State; the corrected amount if you received a Form W-2c for it; 0 if none)" }
       cite: { doc: ny_it2, locator: 'p. 1, W-2 Record 1, "Box 17a NYS income tax withheld"' }
     - id: ny_it2.yonkers_withheld
       printed: "19 (Yonkers)"
       label: "Local income tax withheld for Yonkers"
       type: NonNegDollars
-      expr: { op: input, source: "Form W-2 box 19, local income tax withheld for Yonkers (0 if none)" }
+      expr: { op: input, source: "Form W-2 box 19, local income tax withheld for Yonkers (the corrected amount if you received a Form W-2c for it; 0 if none)" }
       cite: { doc: ny_it2, locator: 'p. 1, W-2 Record 1, "Box 19 Local income tax withheld"' }
     - id: ny_it2.yonkers_gate
       printed: "(gate)"
@@ -39,7 +39,7 @@ form:
       printed: "19"
       label: "Local income tax withheld (New York City)"
       type: NonNegDollars
-      expr: { op: input, source: "Form W-2 box 19, local income tax withheld for New York City (0 if none)" }
+      expr: { op: input, source: "Form W-2 box 19, local income tax withheld for New York City (the corrected amount if you received a Form W-2c for it; 0 if none)" }
       cite: { doc: ny_it2, locator: 'p. 1, W-2 Record 1, "Box 19 Local income tax withheld"' }
       refuses:
         - when: ny_it2.yonkers_gate

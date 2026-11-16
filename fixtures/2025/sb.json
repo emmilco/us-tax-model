@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.refuse.sb.unsupported",
-      "walk": "stage4",
       "covers": [
         "sb.unsupported"
       ],
@@ -25,7 +24,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sb.line4": {
@@ -84,7 +84,6 @@
     },
     {
       "id": "stage4.refuse.sb.fbar_required",
-      "walk": "stage4",
       "covers": [
         "sb.fbar_required"
       ],
@@ -101,7 +100,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sb.line4": {
@@ -160,7 +160,6 @@
     },
     {
       "id": "stage4.refuse.sb.form8938",
-      "walk": "stage4",
       "covers": [
         "sb.form8938"
       ],
@@ -177,7 +176,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sb.line4": {
@@ -236,7 +236,6 @@
     },
     {
       "id": "stage4.refuse.sb.line8",
-      "walk": "stage4",
       "covers": [
         "sb.line8"
       ],
@@ -254,7 +253,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sb.line4": {
@@ -313,13 +313,15 @@
     },
     {
       "id": "stage4.sb.foreign_no_filing",
-      "walk": "stage4",
       "covers": [
         "sb.foreign_no_filing"
       ],
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Explicitly calculated regression expectations; human review pending.",
       "inputs": {
+        "sb.account_any": true,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
         "sb.line7a": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -367,7 +369,6 @@
     },
     {
       "id": "stage4.refuse.sb.unsupported.simultaneous",
-      "walk": "stage4",
       "covers": [
         "sb.unsupported"
       ],
@@ -389,7 +390,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sb.line4": {

@@ -3,11 +3,12 @@ part: Children and other dependents
 profile: full
 sets:
   one_listed:
-    says: One person on the return, single, who lists one person as a child or other dependent.
+    says: One person on the return, single, who lists one person as a child or other dependent and did not pay more than half the cost of the home.
     answers:
       $person: [taxpayer]
       f1040.status: single
       $dependent: [kid]
+      household.home_cost: false
   young_child:
     says: The person listed is the filer's own child, aged 4, younger than the filer, who lived with the filer all year.
     answers:

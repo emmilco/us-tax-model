@@ -11,16 +11,13 @@ form:
       printed: (helper)
       type: NonNegDollars
       gated_by: ftc.taxes_if_asked
-      label: Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and
-        Form 1099-DIV box 7
+      label: "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7, less any tax that is not creditable (such as tax on a dividend that fails the holding period or must be paid over)"
       expr:
         op: input
-        source: Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and
-          Form 1099-DIV box 7
+        source: "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7, leaving out tax withheld on a dividend from stock held fewer than 16 days within the 31-day period that begins 15 days before the ex-dividend date, and tax on a dividend to the extent you have to make related payments"
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
-          regular tax
+        locator: "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 3, Foreign Taxes Not Eligible for a Credit, item 5, \"Foreign taxes withheld on a dividend from a corporation, if you haven’t held the stock for at least 16 days within the 31-day period that begins 15 days before the ex-dividend date\", and item 6, \"Foreign taxes withheld on a dividend to the extent that you have to make related payments on positions in substantially similar or related property\""
     - id: ftc.asked
       printed: (gate)
       type: Bool
@@ -126,16 +123,13 @@ form:
       printed: (helper)
       type: Bool
       gated_by: ftc.all_passive_if_tax
-      label: Was all foreign-source gross income passive category income under the small-tax election
-        rules?
+      label: "Was all foreign-source gross income passive category income under the small-tax election rules (counting high-taxed income and certain export financing interest as passive)?"
       expr:
         op: input
-        source: Was all foreign-source gross income passive category income under the small-tax election
-          rules?
+        source: "Was all foreign-source gross income passive category income under the small-tax election rules? For this purpose passive income also includes income subject to the special rule for high-taxed income and certain export financing interest."
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
-          regular tax
+        locator: "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 1, Election To Claim the Foreign Tax Credit Without Filing Form 1116, \"However, for this purpose, passive income also includes (a) income subject to the special rule for high-taxed income, described later; and (b) certain export financing interest.\""
     - id: ftc.statements
       printed: (helper)
       type: Bool
@@ -152,28 +146,24 @@ form:
       printed: (helper)
       type: Bool
       gated_by: ftc.eligible_if_tax
-      label: Have creditability, holding-period, related-payment and required foreign-tax reduction rules
-        been satisfied?
+      label: "Is all of the foreign tax entered creditable, after leaving out tax that fails the creditability, holding-period or related-payment rules and making the required foreign-tax reductions?"
       expr:
         op: input
-        source: Have creditability, holding-period, related-payment and required foreign-tax reduction rules
-          been satisfied?
+        source: "Is all of the foreign tax entered creditable? Tax that fails the creditability, holding-period or related-payment rules is left out of the amount entered, and the required foreign-tax reductions are made in it, before answering."
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
-          regular tax
+        locator: "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 2, \"You are still required to take into account the general rules for determining whether a tax is creditable\" and \"You are still required to reduce the taxes available for credit by any amount you would have entered on line 12 of Form 1116\""
     - id: ftc.elect
       printed: (helper)
       type: Bool
       gated_by: ftc.elect_if_tax
-      label: Elect the credit without Form 1116, with no carryover to or from this election year?
+      label: "Elect the credit without Form 1116, accepting that no foreign tax of 2025 is carried to or from another year?"
       expr:
         op: input
-        source: Elect the credit without Form 1116, with no carryover to or from this election year?
+        source: "Elect the credit without Form 1116, accepting that foreign tax paid or accrued in 2025 cannot be carried over to or from any other year?"
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
-          regular tax
+        locator: "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; pp. 1–2, \"You can’t carry over to or from any other year any foreign taxes paid or accrued\""
     - id: ftc.limit
       printed: (helper)
       type: NonNegDollars

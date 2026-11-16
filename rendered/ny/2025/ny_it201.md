@@ -6,17 +6,15 @@
 
 - **Authored helper label:** Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?
 
-  Answer No:
-  - if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B)
-  - if you were in active military service
-  - if your only New York residence was undergraduate student housing
+  Answer No if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B).
+
+  The 184-day test does not apply to a person in active military service, and undergraduate student housing is not a permanent place of abode for the student living in it; a person domiciled in New York State is a resident either way, unless Group A or B applies.
 - **Encoded (Bool):** Input — Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?
 
-  Answer No:
-  - if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B)
-  - if you were in active military service
-  - if your only New York residence was undergraduate student housing
-- Expr: `{"op":"input","source":"Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?\n\nAnswer No:\n- if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B)\n- if you were in active military service\n- if your only New York residence was undergraduate student housing"}`
+  Answer No if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B).
+
+  The 184-day test does not apply to a person in active military service, and undergraduate student housing is not a permanent place of abode for the student living in it; a person domiciled in New York State is a resident either way, unless Group A or B applies.
+- Expr: `{"op":"input","source":"Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?\n\nAnswer No if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B).\n\nThe 184-day test does not apply to a person in active military service, and undergraduate student housing is not a permanent place of abode for the student living in it; a person domiciled in New York State is a resident either way, unless Group A or B applies."}`
 - Cite: [ny_it201i] p. 30, Resident, "You maintain a permanent place of abode in New York State for substantially all of the tax year and spend 184 days or more in New York State during the tax year" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.city_resident`
@@ -35,9 +33,9 @@
 
 ## (question) — `ny_it201.ask.yonkers`
 
-- **Authored helper label:** Did you or your spouse maintain living quarters in Yonkers for any part of 2025, or work in Yonkers while not living there (item D2)?
-- **Encoded (Bool):** Input — Did you or your spouse maintain living quarters in Yonkers for any part of 2025, or work in Yonkers while not living there (item D2)?
-- Expr: `{"op":"input","source":"Did you or your spouse maintain living quarters in Yonkers for any part of 2025, or work in Yonkers while not living there (item D2)?"}`
+- **Authored helper label:** Did you or your spouse maintain or have the use of living quarters in Yonkers for any part of 2025, including quarters another person, a family member or an employer maintained for your primary use, or work in Yonkers while not living there (item D2)?
+- **Encoded (Bool):** Input — Did you or your spouse maintain or have the use of living quarters in Yonkers for any part of 2025, including quarters another person, a family member or an employer maintained for your primary use, or work in Yonkers while not living there (item D2)?
+- Expr: `{"op":"input","source":"Did you or your spouse maintain or have the use of living quarters in Yonkers for any part of 2025, including quarters another person, a family member or an employer maintained for your primary use, or work in Yonkers while not living there (item D2)?"}`
 - Cite: [ny_it201i] p. 5, Item D2, "All IT-201 filers must complete item D2." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.state_resident_if_not_city`
@@ -274,16 +272,16 @@
 
 ## (question) — `ny_it201.ask.owes_use_tax`
 
-- **Authored helper label:** Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?
-- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?
-- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?"}`
+- **Authored helper label:** Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return.
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return.
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return."}`
 - Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You owe sales or compensating use tax if you:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.use_tax_st141`
 
-- **Authored helper label:** Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?
-- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?
-- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?"}`
+- **Authored helper label:** Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?
+- **Encoded (Bool):** Input — Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?
+- Expr: `{"op":"input","source":"Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?"}`
 - Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.contributions`
@@ -330,9 +328,9 @@
 
 ## (question) — `ny_it201.ask.refund_529`
 
-- **Authored helper label:** Do you want part of a refund deposited into a New York 529 college savings account (Form IT-195)?
-- **Encoded (Bool):** Input — Do you want part of a refund deposited into a New York 529 college savings account (Form IT-195)?
-- Expr: `{"op":"input","source":"Do you want part of a refund deposited into a New York 529 college savings account (Form IT-195)?"}`
+- **Authored helper label:** Do you want all or part of a refund deposited into a New York 529 college savings account (Form IT-195)?
+- **Encoded (Bool):** Input — Do you want all or part of a refund deposited into a New York 529 college savings account (Form IT-195)?
+- Expr: `{"op":"input","source":"Do you want all or part of a refund deposited into a New York 529 college savings account (Form IT-195)?"}`
 - Cite: [ny_it201i] p. 23, Line 78a, "Enter on line 78a the amount from Form IT-195, line 4." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.late_penalty`
@@ -351,16 +349,16 @@
 
 ## (question) — `ny_it201.ask.abode_part_year`
 
-- **Authored helper label:** Did you maintain a permanent place of abode in New York State for only part of 2025 (for sales and use tax purposes)?
-- **Encoded (Bool):** Input — Did you maintain a permanent place of abode in New York State for only part of 2025 (for sales and use tax purposes)?
-- Expr: `{"op":"input","source":"Did you maintain a permanent place of abode in New York State for only part of 2025 (for sales and use tax purposes)?"}`
+- **Authored helper label:** Was there a month of 2025 in which you maintained a permanent place of abode in New York State (for sales and use tax purposes) for no more than half the month?
+- **Encoded (Bool):** Input — Was there a month of 2025 in which you maintained a permanent place of abode in New York State (for sales and use tax purposes) for no more than half the month?
+- Expr: `{"op":"input","source":"Was there a month of 2025 in which you maintained a permanent place of abode in New York State (for sales and use tax purposes) for no more than half the month?"}`
 - Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "If you maintained a permanent place of abode in New York State for sales and use tax purposes for only part of the year, multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.prior_full_year`
 
-- **Authored helper label:** Did you file a 2024 New York return covering a full 12 months?
-- **Encoded (Bool):** Input — Did you file a 2024 New York return covering a full 12 months?
-- Expr: `{"op":"input","source":"Did you file a 2024 New York return covering a full 12 months?"}`
+- **Authored helper label:** Did you file a 2024 New York return for a full 12-month tax year (a return as a 2024 part-year resident or nonresident counts)?
+- **Encoded (Bool):** Input — Did you file a 2024 New York return for a full 12-month tax year (a return as a 2024 part-year resident or nonresident counts)?
+- Expr: `{"op":"input","source":"Did you file a 2024 New York return for a full 12-month tax year (a return as a 2024 part-year resident or nonresident counts)?"}`
 - Cite: [ny_it201i] p. 23, Line 81, "In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax based on a 12-month return." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.est_late`
@@ -380,8 +378,8 @@
 ## (question) — `ny_it201.ask.prior_year_tax`
 
 - **Authored helper label:** Your 2024 New York income tax (based on a 12-month return)
-- **Encoded (NonNegDollars):** Input — What was your 2024 New York State and City income tax (the tax shown on your 2024 return, based on a 12-month return)?
-- Expr: `{"op":"input","source":"What was your 2024 New York State and City income tax (the tax shown on your 2024 return, based on a 12-month return)?"}`
+- **Encoded (NonNegDollars):** Input — What was your 2024 New York State, New York City, Yonkers and metropolitan commuter transportation mobility tax (the tax shown on your 2024 return, based on a 12-month return, before payments and refundable credits; not sales or use tax or voluntary contributions)?
+- Expr: `{"op":"input","source":"What was your 2024 New York State, New York City, Yonkers and metropolitan commuter transportation mobility tax (the tax shown on your 2024 return, based on a 12-month return, before payments and refundable credits; not sales or use tax or voluntary contributions)?"}`
 - Cite: [ny_it201i] p. 23, Line 81, "the amount of your 2024 New York income tax" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.part_year_state`
@@ -415,7 +413,7 @@
 ## (gate) — `ny_it201.gate.yonkers`
 
 - **Authored helper label:** Yonkers living quarters or Yonkers wages
-- **Encoded (Bool):** helper "Did you or your spouse maintain living quarters in Yonkers for any part of 2025, or work in Yonkers while not living there (item D2)?" = true
+- **Encoded (Bool):** helper "Did you or your spouse maintain or have the use of living quarters in Yonkers for any part of 2025, including quarters another person, a family member or an employer maintained for your primary use, or work in Yonkers while not living there (item D2)?" = true
 - Expr: `{"eq":["ny_it201.ask.yonkers",{"const":true}],"op":"test"}`
 - Cite: [ny_it201i] p. 5, Item D2, "If you or your spouse (if married filing jointly) maintained or had use of an apartment or living quarters in Yonkers during any part of 2025" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -468,7 +466,7 @@
 - **Refusal:** when ny_it201.gate.special_code is true, cannot complete Item G special condition codes. A special condition (for example Build America Bond interest, which changes the household credit income) is outside this tool. Cite: [ny_it201i] p. 13, Note 1, "if on Form IT-201 you entered special condition code A6 (for Build America Bond interest), your federal adjusted gross income is the line 19 amount minus any Build America Bond interest" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - Interpretation: amb.ny.2025.whole_dollars
 - Expr: `{"of":"f1040.line1z","op":"round","rule":"half_up","unit":100}`
-- Cite: [ny_it201] p. 2, Federal income and adjustments, "Wages, salaries, tips, etc." (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
+- Cite: [ny_it201i] p. 7, Lines 1 through 19, "The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## 2 — `ny_it201.line2`
 
@@ -1428,14 +1426,14 @@
 - **Authored helper label:** Married filing separately with federal AGI within the city credit rows (both returns' AGI and dependents are needed)
 - **Encoded (Bool):** f1040 line Filing Status = 'mfs' and helper "Is federal AGI within the city household credit tables' credit rows?" = true and line C = false
 - Expr: `{"all":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["ny_it201.hh_city_in_range",{"const":true}],"op":"test"},{"eq":["ny_it201.item_c",{"const":false}],"op":"test"}],"op":"test"}`
-- Cite: [ny_it201i] p. 13, Note 4, "If your spouse was not required to file a New York State return, use your spouse’s federal adjusted gross income as reported on their federal return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+- Cite: [ny_it201i] p. 14, Use these notes for New York City household credit tables 4 through 6, Note 4, "If your spouse was not required to file a New York State return, use your spouse’s federal adjusted gross income as reported on their federal return" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.hh_city_over7`
 
 - **Authored helper label:** More than 7 people for the city household credit with federal AGI within the credit rows
 - **Encoded (Bool):** f1040 line Filing Status ≠ 'single' and column (column) > 7 (ny.hh.max_people) and helper "Is federal AGI within the city household credit tables' credit rows?" = true and line C = false
 - Expr: `{"all":[{"ne":["f1040.status",{"const":"single"}],"op":"test"},{"gt":["ny_it201.hh_people",{"param":"ny.hh.max_people"}],"op":"test"},{"eq":["ny_it201.hh_city_in_range",{"const":true}],"op":"test"},{"eq":["ny_it201.item_c",{"const":false}],"op":"test"}],"op":"test"}`
-- Cite: [ny_it201i] p. 13, Use these notes for New York State household credit tables 1 through 3, "Note 3 For each individual over 7, add the amount in this column to the column 7 amount." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+- Cite: [ny_it201i] p. 14, Use these notes for New York City household credit tables 4 through 6, "Note 3 For each individual over 7, add the amount in this column to the column 7 amount." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (48) — `ny_it201.hh_city_by_status`
 
@@ -1789,7 +1787,7 @@
 ## (gate) — `ny_it201.gate.use_tax_abode`
 
 - **Authored helper label:** Use tax owed with a New York abode for only part of the year (the chart amount is prorated by months)
-- **Encoded (Bool):** Choose — [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?" = true → helper "Did you maintain a permanent place of abode in New York State for only part of 2025 (for sales and use tax purposes)?"] [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?" = false → helper "No"]
+- **Encoded (Bool):** Choose — [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return." = true → helper "Was there a month of 2025 in which you maintained a permanent place of abode in New York State (for sales and use tax purposes) for no more than half the month?"] [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return." = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.ask.owes_use_tax",{"const":true}],"op":"test"},"then":"ny_it201.ask.abode_part_year"},{"guard":{"eq":["ny_it201.ask.owes_use_tax",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -1803,21 +1801,21 @@
 ## (gate) — `ny_it201.use_tax_exact_if_small`
 
 - **Authored helper label:** The exact-amount wish (asked only after a No to the large or business purchase; otherwise no)
-- **Encoded (Bool):** Choose — [helper "Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?" = true → helper "No"] [helper "Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?" = false → helper "Wants the use tax figured exactly (Form ST-141) rather than from the chart"]
+- **Encoded (Bool):** Choose — [helper "Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?" = true → helper "No"] [helper "Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?" = false → helper "Wants the use tax figured exactly (Form ST-141) rather than from the chart"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.ask.use_tax_st141",{"const":true}],"op":"test"},"then":"ny_it201.no"},{"guard":{"eq":["ny_it201.ask.use_tax_st141",{"const":false}],"op":"test"},"then":"ny_it201.ask.use_tax_exact"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.use_tax_st141`
 
 - **Authored helper label:** Use tax that must be calculated on Form ST-141
-- **Encoded (Bool):** helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?" = true and (helper "Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?" = true or helper "The exact-amount wish (asked only after a No to the large or business purchase; otherwise no)" = true)
+- **Encoded (Bool):** helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return." = true and (helper "Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?" = true or helper "The exact-amount wish (asked only after a No to the large or business purchase; otherwise no)" = true)
 - Expr: `{"all":[{"eq":["ny_it201.ask.owes_use_tax",{"const":true}],"op":"test"},{"any":[{"eq":["ny_it201.ask.use_tax_st141",{"const":true}],"op":"test"},{"eq":["ny_it201.use_tax_exact_if_small",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## 59 — `ny_it201.line59`
 
 - **IRS:** Sales or use tax (do not leave blank)
-- **Encoded (NonNegDollars):** Choose — [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?" = false → helper "No sales or use tax owed"] [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?" = true → column (chart) (ny_it201.sut.chart)]
+- **Encoded (NonNegDollars):** Choose — [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return." = false → helper "No sales or use tax owed"] [helper "Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City's (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business's own sales tax return." = true → column (chart) (ny_it201.sut.chart)]
 - **Refusal:** when ny_it201.gate.use_tax_abode is true, cannot complete Line 59 for a part-year abode. The chart amount prorated by months of a New York abode is not computed by this tool. Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "Count any period you maintained the abode for more than one-half of a month as one month." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - **Refusal:** when ny_it201.gate.use_tax_st141 is true, cannot complete Form ST-141, Individual Purchaser's Periodic Report of Sales and Use Tax. An exact use tax calculation, an item of $1,000 or more, or business purchases are outside this tool (decision B3). Cite: [ny_it201i] p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.ask.owes_use_tax",{"const":false}],"op":"test"},"then":"ny_it201.zero_sut"},{"guard":{"eq":["ny_it201.ask.owes_use_tax",{"const":true}],"op":"test"},"then":"ny_it201.sut.chart"}],"op":"choose"}`
@@ -1883,7 +1881,7 @@
 
 ## (gate) — `ny_it201.federal_care`
 
-- **Authored helper label:** Did you (or your spouse) have care expenses for a qualifying person so you (and your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?
+- **Authored helper label:** Did you (or your spouse) have care expenses for a qualifying person so you (or, on a joint return, your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?
 - **Encoded (Bool):** (f2441 helper "Did you pay for the care of a qualifying person so you could work or look for work?" = true or f2441 helper "Did you receive dependent care benefits?" = true)
 - Note: The federal credit and the New York credit both need care expenses for a qualifying person so you could work or look for work (i2441 p. 2, Who Can Take the Credit or Exclude Dependent Care Benefits?, items 2 and 3). Dependent care benefits count too, since care paid through them is a care expense (Form IT-216 Worksheet 1).
 - Expr: `{"any":[{"eq":["f2441.care",{"const":true}],"op":"test"},{"eq":["f2441.benefits",{"const":true}],"op":"test"}],"op":"test"}`
@@ -1892,7 +1890,7 @@
 ## (gate) — `ny_it201.gate.dependent_care`
 
 - **Authored helper label:** The child and dependent care credit may apply
-- **Encoded (Bool):** Choose — [helper "Did you (or your spouse) have care expenses for a qualifying person so you (and your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?" = true → helper "Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you claimed it)?"] [helper "Did you (or your spouse) have care expenses for a qualifying person so you (and your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?" = false → helper "No"]
+- **Encoded (Bool):** Choose — [helper "Did you (or your spouse) have care expenses for a qualifying person so you (or, on a joint return, your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?" = true → helper "Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you claimed it)?"] [helper "Did you (or your spouse) have care expenses for a qualifying person so you (or, on a joint return, your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.federal_care",{"const":true}],"op":"test"},"then":"ny_it201.ask.dependent_care"},{"guard":{"eq":["ny_it201.federal_care",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 19, Line 64, "If Yes, complete Form IT-216, Claim for Child and Dependent Care Credit, to determine your New York State child and dependent care credit." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -2225,7 +2223,7 @@
 ## (helper) — `ny_it201.est_below_safe_harbor`
 
 - **Authored helper label:** Prepayments below the safe harbor, or no full-year 2024 return
-- **Encoded (Bool):** (column (81) (ny_it201.prepayments) < column (81) (ny_it201.safe_harbor) or helper "Did you file a 2024 New York return covering a full 12 months?" = false)
+- **Encoded (Bool):** (column (81) (ny_it201.prepayments) < column (81) (ny_it201.safe_harbor) or helper "Did you file a 2024 New York return for a full 12-month tax year (a return as a 2024 part-year resident or nonresident counts)?" = false)
 - Expr: `{"any":[{"lt":["ny_it201.prepayments","ny_it201.safe_harbor"],"op":"test"},{"eq":["ny_it201.ask.prior_full_year",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [ny_it201i] p. 23, Line 81: Penalty for underpaying your tax (estimated tax penalty), "You may owe an estimated tax penalty if you did not have enough tax withheld from your wages or did not make enough estimated tax payments on other income you earned during the year." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
@@ -2354,7 +2352,7 @@
 ## (gate) — `ny_it201.gate.refund_529`
 
 - **Authored helper label:** A refund deposit into a New York 529 account
-- **Encoded (Bool):** Choose — [helper "Is there an amount available for refund on line 78?" = true → helper "Do you want part of a refund deposited into a New York 529 college savings account (Form IT-195)?"] [helper "Is there an amount available for refund on line 78?" = false → helper "No"]
+- **Encoded (Bool):** Choose — [helper "Is there an amount available for refund on line 78?" = true → helper "Do you want all or part of a refund deposited into a New York 529 college savings account (Form IT-195)?"] [helper "Is there an amount available for refund on line 78?" = false → helper "No"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_refund",{"const":true}],"op":"test"},"then":"ny_it201.ask.refund_529"},{"guard":{"eq":["ny_it201.has_refund",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 23, Line 78a: NYS 529 account deposit, "You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 

@@ -147,7 +147,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -345,7 +344,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -494,7 +494,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -635,7 +634,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -782,7 +782,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -935,7 +934,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_city_rs#{\"amount\":\"ny_it201.line47\",\"status\":\"f1040.status\"}.tax": {
@@ -1100,7 +1100,6 @@
         "s1a.carloan": false,
         "s1a.overtime": false,
         "s1a.tips": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "s3.adoption_any": false,
@@ -1256,7 +1255,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -1298,7 +1298,6 @@
         "f8959.territory_w2": false,
         "ftc.taxes": 0,
         "qbi.dividends": 0,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "sa.mortgage_unreported": false,
@@ -1528,7 +1527,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -1678,7 +1678,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -1882,7 +1881,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_city_rs#{\"amount\":\"ny_it201.line47\",\"status\":\"f1040.status\"}.tax": {
@@ -2034,7 +2034,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -2185,7 +2184,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -2332,7 +2332,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -2483,7 +2482,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -2630,7 +2630,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -2780,7 +2779,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -2930,7 +2930,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -3128,7 +3127,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -3170,7 +3170,6 @@
         "f8959.territory_w2": false,
         "ftc.taxes": 0,
         "qbi.dividends": 0,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "sa.mortgage_unreported": false,
@@ -3400,7 +3399,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -3442,7 +3442,6 @@
         "f8959.territory_w2": false,
         "ftc.taxes": 0,
         "qbi.dividends": 0,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "sa.mortgage_unreported": false,
@@ -5422,7 +5421,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -5572,7 +5572,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -5776,7 +5775,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -5923,7 +5923,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -6076,7 +6075,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -6226,7 +6226,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -6424,7 +6423,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -6573,7 +6573,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -6714,7 +6713,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -6861,7 +6861,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -7014,7 +7013,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -7179,7 +7179,6 @@
         "s1a.carloan": false,
         "s1a.overtime": false,
         "s1a.tips": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "s3.adoption_any": false,
@@ -7335,7 +7334,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -7384,7 +7384,6 @@
         "f8960.refund": false,
         "ftc.taxes": 0,
         "qbi.dividends": 0,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "sa.mortgage_unreported": false,
@@ -7614,7 +7613,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -7769,7 +7769,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -7973,7 +7972,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -8128,7 +8128,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -8326,7 +8325,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -8473,7 +8473,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -8624,7 +8623,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -8775,7 +8775,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -8916,7 +8915,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -9067,7 +9067,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -9208,7 +9207,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -9359,7 +9359,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -9500,7 +9499,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -9651,7 +9651,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -9792,7 +9791,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -9949,7 +9949,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -10147,7 +10146,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -10299,7 +10299,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -10497,7 +10496,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -10649,7 +10649,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -10847,7 +10846,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -10994,7 +10994,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -11144,7 +11143,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -11298,7 +11298,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -11448,7 +11447,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -11597,7 +11597,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -11747,7 +11746,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -11896,7 +11896,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -12046,7 +12045,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -12193,7 +12193,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -12344,7 +12343,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -12391,7 +12391,6 @@
         "f8959.territory_w2": false,
         "ftc.taxes": 0,
         "qbi.dividends": 0,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "sa.mortgage_unreported": false,
@@ -14371,7 +14370,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -14413,7 +14413,6 @@
         "f8959.territory_w2": false,
         "ftc.taxes": 0,
         "qbi.dividends": 0,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "sa.mortgage_unreported": false,
@@ -16317,7 +16316,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -16359,7 +16359,6 @@
         "f8959.territory_w2": false,
         "ftc.taxes": 0,
         "qbi.dividends": 0,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "sa.mortgage_unreported": false,
@@ -18225,7 +18224,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -18375,7 +18375,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -19887,7 +19886,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -20034,7 +20034,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -21684,7 +21683,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -21836,7 +21836,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -22034,7 +22033,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -22183,7 +22183,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -22333,7 +22332,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -22483,7 +22483,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -22687,7 +22686,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -22834,7 +22834,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -22987,7 +22986,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {}
     },
@@ -23137,7 +23137,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -23313,7 +23312,8 @@
         "s1.inmate_wages": false,
         "s1.digital_income": false,
         "s1.olympic": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "sd.qof": false
       },
       "expect": {
         "ny_it2[w0].state_whole": {
@@ -23472,7 +23472,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -23670,7 +23669,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_tcw#{\"agi\":\"ny_it201.line33\",\"incremental\":{\"param\":\"ny.tcw.mfj.w2.incremental\"},\"recapture\":{\"param\":\"ny.tcw.mfj.w2.recapture\"},\"start\":{\"param\":\"ny.tcw.mfj.w2.start\"},\"status\":\"f1040.status\",\"ti\":\"ny_it201.line38\"}.line6": {
@@ -23834,7 +23834,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -23975,7 +23974,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_tcw#{\"agi\":\"ny_it201.line33\",\"incremental\":{\"param\":\"ny.tcw.mfj.w2.incremental\"},\"recapture\":{\"param\":\"ny.tcw.mfj.w2.recapture\"},\"start\":{\"param\":\"ny.tcw.mfj.w2.start\"},\"status\":\"f1040.status\",\"ti\":\"ny_it201.line38\"}.line6": {
@@ -24138,7 +24138,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -24336,7 +24335,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_tcw_first#{\"agi\":\"ny_it201.line33\",\"rate\":{\"param\":\"ny.tcw.first.rate\"},\"status\":\"f1040.status\",\"ti\":\"ny_it201.line38\"}.stop": {
@@ -24498,7 +24498,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -24639,7 +24638,8 @@
         "ny_it201.ask.public_job": false,
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
-        "ny_it201.ask.apply_any": false
+        "ny_it201.ask.apply_any": false,
+        "sd.qof": false
       },
       "expect": {
         "root|inst:ny_tcw_first#{\"agi\":\"ny_it201.line33\",\"rate\":{\"param\":\"ny.tcw.first.rate\"},\"status\":\"f1040.status\",\"ti\":\"ny_it201.line38\"}.stop": {
@@ -24797,7 +24797,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -24963,7 +24962,8 @@
         "ny_it201.ask.use_tax_exact": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "ny_it201.ask.est_any": false
+        "ny_it201.ask.est_any": false,
+        "sd.qof": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -25366,7 +25366,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -27090,7 +27089,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "ny_it201.ask.est_any": false
+        "ny_it201.ask.est_any": false,
+        "sd.qof": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -27508,7 +27508,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -27671,7 +27670,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "ny_it201.ask.est_any": false
+        "ny_it201.ask.est_any": false,
+        "sd.qof": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -28094,6 +28094,7 @@
         "ny_it2[w0].yonkers_withheld": 0,
         "ny_it201.line79_amount": 0,
         "sd.sold_other": false,
+        "sd.qof": false,
         "sd.sec1256": false,
         "sd.condemned": false,
         "sd.small_business_stock": false,
@@ -28614,7 +28615,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -28835,7 +28835,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "ny_it201.ask.est_any": false
+        "ny_it201.ask.est_any": false,
+        "sd.qof": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -29254,7 +29255,6 @@
         "f8959.territory_w2": false,
         "ftc.taxes": 0,
         "qbi.dividends": 0,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "sa.mortgage_unreported": false,
@@ -29507,7 +29507,8 @@
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "ny_it201.ask.est_any": false
+        "ny_it201.ask.est_any": false,
+        "sd.qof": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -29882,7 +29883,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -30103,7 +30103,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "ny_it201.ask.est_any": false
+        "ny_it201.ask.est_any": false,
+        "sd.qof": false
       },
       "expect": {
         "ny_it201.item_c": {

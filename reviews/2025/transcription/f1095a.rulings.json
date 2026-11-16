@@ -795,6 +795,16 @@
    }
   },
   {
+   "printed": "f1095a.annual_ok",
+   "project_expr_sha256": "b8e3436e7f950a9d01562e4286282470c9a3dfb7228418e39125491d0474452b",
+   "second_expr_sha256": "ac7c597cacb8c94545fd536bd63a9352162576939a00502c785b73f5b130eec5",
+   "ruling": "Ruling: model error; the reply's per-policy line 10 test treats column B as correct unless it is blank or zero, an unreported change, or another doubt, and so drops the first situation i8962 p. 14 names: 'If either of these two situations applies to you… you must determine the correct applicable SLCSP premium for every month. If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”… 1. No APTC was paid for your coverage… column B, of Form 1095-A may be wrong, left blank, or reported as -0-.' The project includes it (f1095a.no_aptc, line 33C zero, in f1095a.b_check) and then reads f1095a.b_fixed_same. The reply also returns false for every form not answered as the same every month, where the project tests the monthly entries (f1095a.months_uniform), which the line 10 conditions ('enrolled… for all 12 months', 'enrollment premium was the same for every month', 'SLCSP premium is the same for every month', i8962 p. 14) allow. Its mo_a > 0 test is covered by the f1095a.same_months question ('Answer No if any month is blank in column A'). Decided on the source and the form YAML (triage refuses the form for this pass). Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "c8d1f4ab7536fcc47fae221f1ee1f98875ea4970544811fd3bc6d8c457649d9f"
+  },
+  {
    "printed": "f1095a.b_apr",
    "project_expr_sha256": "391b7c4fe5dfb2bca0f7e926962e269a3dc0292cfffb84b27f321339354994e9",
    "second_expr_sha256": "13e4e3ec7a2c4f55e237bb723dab822519843a3893655a147e2b2d5e8bf383f1",
@@ -899,6 +909,16 @@
    }
   },
   {
+   "printed": "f1095a.b_apr",
+   "project_expr_sha256": "d095266a68aecd8ea480ce1fa5d6da9096517ee28a56c6521ae2c8396910d58b",
+   "second_expr_sha256": "981bd73ff9aa7eef4717e44a247edf7aee4eda8ac5b3817a7bbb9f29bf8a7cef",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_apr where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "d8693d2873949e0fb3c5740860d2eae33572ee00007dce419cd7863f483b5482"
+  },
+  {
    "printed": "f1095a.b_aug",
    "project_expr_sha256": "c64bc06a74f136c3a6443a030d7fd8039a08e7e2db356711b7905ad1248ebe05",
    "second_expr_sha256": "b09415e7b6812618c99c558994c086fe7e7192702cc1f718c6774ab58334a160",
@@ -962,6 +982,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "f1095a.b_aug",
+   "project_expr_sha256": "d27b35cc32cef43758e772a4e192c4477d6d43b12b02f6f3a0709868c3cc63a0",
+   "second_expr_sha256": "c38e47ff8c221f7fa3b3416c55ab60d9627c6c83c617a1b06ec1639d2b107fa8",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_aug where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "b17c31cb295450140b5d098b505a408dafab3752489697a819bddfa3f29336b5"
   },
   {
    "printed": "f1095a.b_aug",
@@ -1040,6 +1070,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "f1095a.b_dec",
+   "project_expr_sha256": "2009b251c0dadadaaf371df3165a6995ac828ef9073b953cbe769413f3ad3111",
+   "second_expr_sha256": "ae8cb9177c7d6202bba433dc91676803be17b4f4fc0099ed04c00bd803a1d47a",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_dec where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "9dce609b84d3c7673279d23811ef5af19e2b4defd1f8f11bc22f7cfcc6006892"
   },
   {
    "printed": "f1095a.b_dec",
@@ -1135,6 +1175,16 @@
   {
    "printed": "f1095a.b_feb",
    "project_expr_sha256": "64af12adcc7e30753aeaeb6050513cef3e31b7df2dc33076e73748979241f74f",
+   "second_expr_sha256": "8fa9416319430b1fe19d79057efdb9062f780d539ec40804036555d974d283ed",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_feb where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "81bcbd8c4d6083943e8a238d573cc6020622bff7ffebd3629f0cde16337d442e"
+  },
+  {
+   "printed": "f1095a.b_feb",
+   "project_expr_sha256": "64af12adcc7e30753aeaeb6050513cef3e31b7df2dc33076e73748979241f74f",
    "second_expr_sha256": "f4b4939fdd2898d06e753d35d98a7119d34502f4308c9bb479dc9316277ab873",
    "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
    "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
@@ -1209,6 +1259,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "f1095a.b_jan",
+   "project_expr_sha256": "17775f23cdcac0636f50bb6d8acdb071702a5c72824aa580b897fefa7504f2b4",
+   "second_expr_sha256": "0613f8cd85058ce6ed349fe6a54564dda25bb6fc2860811bc52c5fec90a5cbfd",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_jan where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "493411941ef1561c5d79ece9179adc8fa2cfa7aed6376cd3bf8e85ce6865ae68"
   },
   {
    "printed": "f1095a.b_jan",
@@ -1356,6 +1416,16 @@
   {
    "printed": "f1095a.b_jul",
    "project_expr_sha256": "2bc049c12f24588b86bf00521991d4d3436e4bdbc73befee9b793889414d136f",
+   "second_expr_sha256": "5935ce104c3e2265282993c585d81c29f5c20a42400bed96b657ec74f9f02db9",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_jul where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "025d5823cafb993f61046341a5bec324da706c74d2490c6b2385ae651c8dce1a"
+  },
+  {
+   "printed": "f1095a.b_jul",
+   "project_expr_sha256": "2bc049c12f24588b86bf00521991d4d3436e4bdbc73befee9b793889414d136f",
    "second_expr_sha256": "a114bc66e997d5a11bcdc7b966e14821f75c8a432f478dec576ee263a6bb09fa",
    "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
    "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
@@ -1485,6 +1555,16 @@
   },
   {
    "printed": "f1095a.b_jun",
+   "project_expr_sha256": "7bad4fb4b3a51c7f9406804a3bc85d61dd313b8658842658b5fd86b1ba25e8e7",
+   "second_expr_sha256": "ec5ef216571e54b36ae6425125363932990e038998c6b9fd8a7cbcdd3f17723b",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_jun where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "0cc73f66f605df3726d8a07c5c44ac1fc63046db91ba2fe29d6a436e1d41ffe9"
+  },
+  {
+   "printed": "f1095a.b_jun",
    "project_expr_sha256": "9392a70fde93fcb09173e7de1688a70c5fe86b844fac9b6245329651c695e17b",
    "second_expr_sha256": "13ea153145d51c1ee46627974d1ce9a5640afefc95c16c22dd39a71f738727da",
    "ruling": "Ruling: model error; the same deviation earlier rulings on this line decided: f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The line is this form's own column B; which form Form 8962 counts is decided there by f1095a.b_used (only form, or b_counted). The candidate zeroes column B when b_counted is not Yes (h_b_off), so it contradicts the form's printed amount on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it. The uniform branch is the project's, so the new uniform derivation produced no different reading. executable-triage-v2 (`.transcription/triage/2025/f1095a.json`, pass 76f2f43e33d3; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases, 1,841 partial records): 1,595 of 2,518 comparisons agree; kinds {\"candidate-unknown\": 727, \"project-unknown\": 14, \"value\": 182}; by return {\"completed\": {\"candidate-unknown\": 257, \"value\": 3}, \"incomplete\": {\"candidate-unknown\": 129, \"project-unknown\": 3}, \"refused\": {\"candidate-unknown\": 341, \"project-unknown\": 11, \"value\": 179}}. Completed: value on uncounted second forms (stage18.blind.p11 form_2 $500.00 vs $0.00; stage18.mut.two_forms_one_state_full_overlap / _monthly form_2 $500.00 vs $0.00); candidate-unknown b_counted on a single form (stage18.blind.p1 to p6). No Form 8962 amount differs, since every reader filters on b_used.",
@@ -1590,6 +1670,16 @@
   {
    "printed": "f1095a.b_mar",
    "project_expr_sha256": "a2a1058a5b1de453897fade4a9c6dfcd44b82c5354a7fb009a4a630d53c6e9f8",
+   "second_expr_sha256": "162b1085911bf81bfa2786dad39bed14ebe8dcea01a88898091bc169f9692cd0",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_mar where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "b3778144bb392e2e663dc3e15dd004c1d6395df95bf3a5384a9c2b4d54475997"
+  },
+  {
+   "printed": "f1095a.b_mar",
+   "project_expr_sha256": "a2a1058a5b1de453897fade4a9c6dfcd44b82c5354a7fb009a4a630d53c6e9f8",
    "second_expr_sha256": "fea32afdc90be3b1429135006b23eef6d7054dbebf3b6f67b26d12cf70c19410",
    "ruling": "Ruling: model error; the same deviation as the R2, Stage 18 and earlier landing-round rulings: the reply zeroes an uncounted form's own column B through f1095a.b_counted and needs b_counted even with one form. i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form\" is a rule for the Form 8962 entry, which the project applies there through f1095a.b_used; the form's own column B is kept. It also inherits the reply's f1095a.uniform, which drops the no-APTC limb (i8962 p. 14, situation 1) and so takes one mo_b where the corrected premium differs by month. Triage pass ea49629f14d1: completed witnesses stage18.blind.p1-p6 (candidate-unknown, b_counted with one form), stage18.blind.p11 and stage18.mut.two_forms_one_state_* form_2 ($500.00 vs $0.00), generated 20261026/442.",
    "context": "427364fbfbb50ab00ec3b2fccc5daf03dd6a0aaefc351d93bf45beb2c6361392",
@@ -1651,6 +1741,16 @@
    "ruling": "Ruling: representation — the candidate zeroes this entry's monthly column B unless f1095a.b_counted is true, moving the 'column B from only one Form 1095-A' filter from the consumer into the entry. The project keeps the form's monthly column B and filters when f8962 sums it (f8962.line12b to 23b sum only f1095a.b_used forms). Executable triage: 2571 comparisons; the 147 completed-return value differences are two-form same-state returns where the second form's b_counted is false, and the consumer total is the same on both sides; no completed-return difference reaches a printed tax amount. The candidate's single-form case omits the project's forms-equals-one short circuit, which is ruled on f1095a.b_used.",
    "context": "d8fe0d9e359489b841224bd859f14cee7712e876784fdbf074fba87dc9a17104",
    "subject_key": "acce5a3f34edbb18d927549f4e1873910a7ea13345c153f8ca69055ec8185b1b"
+  },
+  {
+   "printed": "f1095a.b_may",
+   "project_expr_sha256": "71f1ab108747f72fcd0e428f0c2032d5727ca2138c0fc1af880eab64513e622e",
+   "second_expr_sha256": "0b57d3be34defd7f751907c117abae31bf665a043310b37eccd97115f4ade9c4",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_may where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "02efe0b7e6517b179969dee6b8381ad5cfee098161284dd4734b03df9bc6de97"
   },
   {
    "printed": "f1095a.b_may",
@@ -1810,6 +1910,16 @@
   },
   {
    "printed": "f1095a.b_nov",
+   "project_expr_sha256": "7037b7a9141d33dcb4d2b14fa572ada03e033184099becdddbb2478432ce3f5b",
+   "second_expr_sha256": "20784cc386941cd8f22d342ff38a066257a3644dba30c270943c8c64d69df86d",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_nov where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "f92eef8967db816dbcc0f72fee4d056584d5368ec5537c748c19f0b1255f41e6"
+  },
+  {
+   "printed": "f1095a.b_nov",
    "project_expr_sha256": "b3bd47b4b60889ca4240846bb411887326298e1297bad01db8bc0375419077ea",
    "second_expr_sha256": "59b2695fb380a184b5889b4591c02265b4c1972a3f4c2422dcab5828bbc1e894",
    "ruling": "Ruling: model error — the same deviation the earlier ruling decided, in a regrouped choose: f1095a (2025) p. 2, Part III, column \"B. Monthly second lowest cost silver plan (SLCSP) premium\"; i8962 p. 16, Column (b): \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).\" The line is this form's November column B as printed on the Form 1095-A; which form's column B Form 8962 counts is decided there, by f1095a.b_used on lines 12 through 23 (b). The candidate zeroes the form's own column B when f1095a.b_counted is not Yes (its note: \"Here a form whose column B is not counted (b_counted false) contributes zero\"), so it contradicts the document on an uncounted form and needs f1095a.b_counted where the project does not ask it (a single Form 1095-A; i8962 p. 16, \"If you have more than one Form 1095-A showing coverage in a particular month\"). Its f1095a.uniform branch is the project's (mo_b when Yes, the month's entry when No), so the restructured f1095a.uniform question produced no different reading. Triage executable-triage-v2 of the pass reply composed with the project's other lines (scratch `/tmp/r2/adj/p_f1095a.json`, run 2026-11-07: 1,638 fixtures, 500 generated returns seed 20261026, 1,406 partial records from 40 bases; triage.py's own record `reviews/2025/transcription/triage/f1095a.json` evaluates the whole reply of the log header, not this pass): 1,885 of 2,053 comparisons agree; differences 66 candidate-unknown, 92 project-unknown, 10 value; on completed returns 21 candidate-unknown (f1095a.b_counted on the only form mkt_a, 20, or withheld on mkt_b, 1) and 6 project-unknown (the uncounted mkt_b form's own monthly column B withheld, which the project asks as an entry of the document); every completed-return witness listed (cap lifted). The value differences are on refused or incomplete returns only. No Form 8962 amount differs: f8962 sums column B only through f1095a.b_used. Project stands.",
@@ -1898,6 +2008,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "f1095a.b_oct",
+   "project_expr_sha256": "ae0c7c0fe8a3fdfd0df6ea36c916b6ad7e911068c18a29be85e794f3ca3d02bf",
+   "second_expr_sha256": "383c35f6cb9ca49b3871a876319266d0798fd9983a0402c9aa63fbcfefcf6d39",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_oct where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "e0a73d6afa730b5c529f689b69940137fad1f51e484faf1bb8f2e8703fdf1c34"
   },
   {
    "printed": "f1095a.b_oct",
@@ -2041,6 +2161,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "f1095a.b_sep",
+   "project_expr_sha256": "dab35a027adb59701106770a8e54e09a98c2f7e23be6ea5b9119dcd06e21b203",
+   "second_expr_sha256": "fc38fe43a4d11bdff1e8fb9aee0ed25de307a0cb1fe6de1cb717ae6e9de82287",
+   "ruling": "Ruling: model error; the same deviation the earlier model-error rulings on this line decided. f1095a p. 2, Part III, column B; i8962 p. 16, Column (b): 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. Enter this amount on Form 8962, lines 12 through 23, column (b).' The line is this form's own column B; which form Form 8962 counts is decided there, by f1095a.b_used (the only form, or b_counted) on f8962 lines 12(b)-23(b). The reply zeroes the form's column B when f1095a.b_counted is not Yes, so it contradicts the form on an uncounted form and needs b_counted on a single Form 1095-A, where the interview does not ask it (b_used is true by the form count). Its other differences are representation only: it zeroes a VOID or superseded form, which the project refuses (f8962.void_form; i8962 p. 2, 'Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A'), and it reads f1095a.in_b_sep where the interview asks f1095a.mo_b for a form answered as the same every month (f1095a.uniform). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform, no longer compared); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "73121ab79b00d27451be100d39d06baded9ce4eb19ccc99d80a3b39418f927bc"
   },
   {
    "printed": "f1095a.b_used",
@@ -2253,6 +2383,16 @@
     ],
     "policy": "executable-triage-v2"
    }
+  },
+  {
+   "printed": "f1095a.line33b",
+   "project_expr_sha256": "97e8d01ac04f75caf3145b06275b6391a9f670ba6d8b9e57024df873c6efbc6d",
+   "second_expr_sha256": "38d8ee4949512753c890598277f9a4591d345fe0eb1b20c7e2ff33bea75c7b1e",
+   "ruling": "Ruling: model error; inherits the column B deviation: the reply zeroes line 33B unless f1095a.b_counted is Yes, so a single Form 1095-A needs b_counted, which the interview does not ask (f1095a.b_used is true by the form count), and an uncounted form's own line 33B is zero, which contradicts i1095a p. 2, 'Total the amounts on lines 21 through 32 and enter on line 33.' The one-form rule belongs to Form 8962 line 11(b) (i8962 p. 15, 'Enter the amount from column B of only one Form 1095-A'), where the project applies it (sum over f1095a.b_used). The rest is representation: 12 x f1095a.mo_b equals the project's yr_b_uniform on the route the interview asks mo_b (f1095a.uniform), and elsewhere the project adds the asked monthly amounts; a VOID or superseded form is refused (f8962.void_form; i8962 p. 2). Triage could not be rerun for this pass (triage.py refuses the form: an older pass names f1095a.uniform); decided on the source and the form YAML. Project right.",
+   "context": "d85ffdd9dc3ee37e51b358b48c2ef13801ce705ebd413d0d1949d661bdcaeb67",
+   "date": "2026-11-15",
+   "run": "0baa1cc9b899328de2f5dfa9032a595fe47fca2ae641fd54a6294fbb16b549be",
+   "subject_key": "4745dbf6d72ea3bd3231b03b3aef0acd57d75bfa0908f9ffc858b29da09e563e"
   },
   {
    "printed": "f1095a.line33c",

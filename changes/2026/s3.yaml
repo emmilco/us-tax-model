@@ -160,6 +160,21 @@ changes:
               and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you
               are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared
               you had a right to the income"
+        - when: s3.business_credit_any
+          form: Form 3800 (elective payment amount, Schedule 3 line 13c)
+          remedy: A business credit (Form 3800) can give an elective payment amount on line 13c; this tool does not prepare
+            it.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13c, "Enter any net elective payment election amount from Form 3800, Part III, line 6, column
+              (j)"
+        - when: sd.f2439_if_dividends
+          form: Form 2439 (tax paid on undistributed capital gains, Schedule 3 line 13a)
+          remedy: Tax a fund or REIT paid on gains it kept (Form 2439, box 2) is a credit on line 13a; this tool does not
+            prepare it.
+          cite:
+            doc: f1040s3
+            locator: Schedule 3 (2025), line 13a, "Form 2439"
         to:
         - when: s3.section965_if_foreign
           form: Schedule 3 line 13d (net 965 tax liability)
@@ -207,6 +222,21 @@ changes:
               and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you
               are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared
               you had a right to the income"
+        - when: s3.business_credit_any
+          form: Form 3800 (elective payment amount, Schedule 3 line 13c)
+          remedy: A business credit (Form 3800) can give an elective payment amount on line 13c; this tool does not prepare
+            it.
+          cite:
+            doc: i1040gi
+            locator: p. 117, Line 13c, "Enter any net elective payment election amount from Form 3800, Part III, line 6, column
+              (j)"
+        - when: sd.f2439_if_dividends
+          form: Form 2439 (tax paid on undistributed capital gains, Schedule 3 line 13a)
+          remedy: Tax a fund or REIT paid on gains it kept (Form 2439, box 2) is a credit on line 13a; this tool does not
+            prepare it.
+          cite:
+            doc: f1040s3
+            locator: Schedule 3 (2025), line 13a, "Form 2439"
     - set:
         line: s3.farmland_deferral
         field: label

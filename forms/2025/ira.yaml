@@ -805,7 +805,7 @@ form:
     type: Bool
     expr:
       op: input
-      source: "Did you (or your spouse on a joint return) have income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC)?"
+      source: "Did you (or your spouse on a joint return) have income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan included in box 1 of your Form W-2 or box 1 of Form 1099-NEC (it should be shown in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC, but count it even if it is not)?"
     cite:
       doc: i1040gi
       locator: 'p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with

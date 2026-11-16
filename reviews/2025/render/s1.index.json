@@ -5,7 +5,7 @@
  "base": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
  "head_rows": {
   "match / mismatch / unclear / missing": "25 / 4 / 0 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -46,9 +46,9 @@
   },
   {
    "key": "8g",
-   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
+   "record": "2ac264028df9bfe15461822fdde4b705840e4480ea20f652e20c0ff20183b487",
    "status": "MATCH",
-   "subject_key": "9b0aae357a6b56a8f58b4a8cad1c2d663a8c02cf5e49b97f37b7dce51fcef1b1"
+   "subject_key": "faf27a096c474c658e0f3c8e9cb77988c986a85c1aff91e7f26c5f86b23054fd"
   },
   {
    "key": "8h",
@@ -58,9 +58,9 @@
   },
   {
    "key": "8i",
-   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
+   "record": "2ac264028df9bfe15461822fdde4b705840e4480ea20f652e20c0ff20183b487",
    "status": "MATCH",
-   "subject_key": "d6d3cd49dcc67f2a61ad405cbe07bbf51168a09690679b9238663c36e2f5ea01"
+   "subject_key": "97e6d794b1c6ac93625ec129dcee2129bf856a6da79399f18fe6d4cfcca9c000"
   },
   {
    "key": "8j",
@@ -70,9 +70,9 @@
   },
   {
    "key": "8r",
-   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
+   "record": "71d25f703164d8deaec91b6b5643bcdd08dfdaa382406f54fa8a7f1389b60b08",
    "status": "MATCH",
-   "subject_key": "2bd5a0fe386b588515188abdb1a385eff382e4e348b8ee75384108cf4d981a8d"
+   "subject_key": "a2a1e4b591a78e550a75f61f63739e0d2fc0a6db2d5c6c8892a8d6d2a9eb9a00"
   },
   {
    "key": "8z",
@@ -88,9 +88,9 @@
   },
   {
    "key": "8c",
-   "record": "4a36f529df5f31e8a16894d50e57979c65e6e5ae3fbfe6c79b5dddea5629fba9",
+   "record": "2ac264028df9bfe15461822fdde4b705840e4480ea20f652e20c0ff20183b487",
    "status": "MATCH",
-   "subject_key": "1297958823d38e913386d250cd299c4a812566d100b7030f7b0fc9826cae3a52"
+   "subject_key": "e6abc94673c7ff5b2e56743df81e527f3a198f969cbd0d0c6dfc1861a1ad10ae"
   },
   {
    "key": "8f",
@@ -194,14 +194,14 @@
   "7 (amount repaid)": "684c11973a74fbcaca801a35d11dedc198af1f3f9c8045e0b24173854c36a5a6",
   "3": "bc3ec168d14d2a8cd64d175e37c7e910d8a5af268c316d775da646c4dd01ddcd",
   "8b": "cc86673029995e183bbe1b99c0d9fab9a8e94421f7f4fa29ed2b1dcaeedb9ec8",
-  "8g": "37217f436fbec719189e075f3b1f2bf40747a59128014b3cba843179e39affb2",
+  "8g": "1565127f4954ac0df1c1dd4dfc11ed29f439a77d206ac1cab6b259c676adb9b3",
   "8h": "80b6c80b9281d97b3e5ed1441f830a5cd8349c82557cb07fc2b4d9d68b7781c5",
-  "8i": "7e9326f770fa266db83736018572ae0ee32dd616b1961edba521b03fbe2c43d9",
+  "8i": "a6573e9820a655fac65854a14fbd99a59c5c65e5bfeaada666cabba577c5c80e",
   "8j": "9080f3ad8698c5cdcb124d73834ba1fc736d2d01d330936ab03035c1048f70c0",
-  "8r": "2891dfe3bd4061bce6067a94240c460c252b4d257fab28e0e4e06bf52a9b7068",
+  "8r": "25bb17eeabc46e59f3b84ce777b6fbabe4bee372eebd99c2a6ae5e24ce3822e9",
   "8z": "716e4f6692a25b41948e6fdbe805ecff692e5452aeffbfaba8b32f5e0f42e407",
   "2a": "978f6fd9d84dccac3569cc51b677eb4899a483919ee31adc82908e98379c6d53",
-  "8c": "2b741fc0c23cd68a3f92c48bfb37bdf8d74eb3a87f4dfa280bccbffb0a93459c",
+  "8c": "a683b5e3a96931b8975920a5a908da75b5cf7b9741566a302efee18ae43a2b06",
   "8f": "61cd1ea00f9720c8fa0491e4eabe0184235cd502525725831f06f21d546abb4a",
   "9": "f63675713ebbe490de727504c380bd62e5779b9a012f6f06d741f26697986829",
   "10": "53fd48a2eea5f64b3a98f9a3829d6ee7aed1923efaa45a35c874183e146f740d",

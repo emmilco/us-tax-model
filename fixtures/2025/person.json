@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.mut.savers_claimed_dependent",
-      "walk": "stage4",
       "covers": [
         "f8880",
         "person"
@@ -1599,7 +1598,6 @@
         "s1.jury_pay": null,
         "sa.dependent": null,
         "s1a.carloan": null,
-        "s2.amt_owed": null,
         "sa.excluded_income": null,
         "f1040.tax_exempt_interest": null,
         "div.box12": null,

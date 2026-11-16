@@ -107,7 +107,7 @@
     {
       "input": "asset.bonus_same",
       "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+      "reason": "Not the ordinary answer: false is the rare circumstance (the special-allowance choice differs within the class), which refuses wherever an allowance is claimed; a scenario that claims one states this input."
     },
     {
       "input": "asset.class",
@@ -1574,9 +1574,14 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "f8889.inherited",
+      "input": "f8889.inherited_any",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8889.inherited_case",
+      "value": "other",
+      "reason": "The case that refuses: a scenario that states an inherited HSA but not whose it was is refused, and a scenario with a surviving spouse's HSA prepared as the spouse's own, or another person's from an earlier year, states it."
     },
     {
       "input": "f8889.ira_transfer",
@@ -1654,6 +1659,11 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "f8889.former_spouse_family",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "f8889.subject_part",
       "value": 0,
       "reason": "Closed: no amount unless the scenario states one."
@@ -1664,7 +1674,17 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
+      "input": "f8889.ira_gap",
+      "value": true,
+      "reason": "Yes: a transfer from an IRA in 2024 followed by a month of 2025 without coverage is taken to fail its testing period; a scenario whose testing period ended before the gap states it."
+    },
+    {
       "input": "f8889.testing_prior",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "f8889.disabled",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2443,6 +2463,16 @@
       "reason": "The enum's first value: no value is ordinary, so a scenario that reads this input states it."
     },
     {
+      "input": "refund.two_itemized",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "refund.two_returns",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
       "input": "refund.you_blind",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
@@ -2898,7 +2928,17 @@
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
     {
-      "input": "s2.amt_owed",
+      "input": "s2.amt_pab",
+      "value": 0,
+      "reason": "Closed: no private activity bond interest unless the scenario says so."
+    },
+    {
+      "input": "s2.amt_boat",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s2.amt_business",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },
@@ -2961,6 +3001,16 @@
       "input": "s3.adoption",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.adoption_final",
+      "value": true,
+      "reason": "true: a scenario that has an adoption or adoption expenses in 2025 has a final adoption unless it says otherwise, so the adoption credit refusal holds."
+    },
+    {
+      "input": "s3.adoption_stepchild",
+      "value": false,
+      "reason": "false: a child adopted is not a stepchild unless the scenario says so, so the adoption credit refusal holds."
     },
     {
       "input": "s3.adoption_any",
@@ -3056,6 +3106,11 @@
       "input": "s3.prior_amt",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "s3.prior_amt_deferral",
+      "value": true,
+      "reason": "true: a 2024 alternative minimum tax is taken to come from items that can give a credit unless the scenario says otherwise, so the Form 8801 refusal holds."
     },
     {
       "input": "s3.prior_forms",
@@ -3850,7 +3905,7 @@
     {
       "input": "scveh.bonus_same",
       "value": false,
-      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+      "reason": "Not the ordinary answer: false is the rare circumstance (the special-allowance choice differs within the class), which refuses wherever an allowance is claimed; a scenario that claims one states this input."
     },
     {
       "input": "scveh.cost",
@@ -4094,6 +4149,11 @@
     },
     {
       "input": "sd.like_kind",
+      "value": false,
+      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+    },
+    {
+      "input": "sd.qof",
       "value": false,
       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
     },

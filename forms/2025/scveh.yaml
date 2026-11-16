@@ -2025,11 +2025,13 @@ form:
       source: 'If it is not subject to those limits: is it a 4-wheeled vehicle mainly designed or used to carry passengers
         over public roads, rated at more than 6,000 and not more than 14,000 pounds gross vehicle weight, other than one seating
         more than nine behind the driver, one with a cargo area of at least 6 feet not readily accessible from the passenger
-        compartment, or one with no seating behind the driver and no body section more than 30 inches ahead of the windshield?'
+        compartment, or one with an integral enclosure fully enclosing the driver compartment and load carrying device, no
+        seating behind the driver and no body section more than 30 inches ahead of the windshield?'
     cite:
       doc: i4562
       locator: p. 16, Column (i)—Elected section 179 cost, "You cannot elect to expense more than $31,300 of the cost of any
-        SUVs and certain other vehicles"
+        SUVs and certain other vehicles" and "That has an integral enclosure fully enclosing the driver compartment and load
+        carrying device"
   - id: scveh.year
     printed: (helper)
     label: Year of recovery in 2025
@@ -2079,9 +2081,61 @@ form:
       doc: i4562
       locator: pp. 9-10, Lines 19a Through 19j, Column (a), "5-year property includes the following. Automobiles. Light general
         purpose trucks"
+  - id: scveh.part2_reached
+    printed: (helper)
+    label: 'Part II of the worksheet is reached: owned and on actual expenses, and for a passenger automobile line 10 is less
+      than line 9'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - scveh.is_actual_owned
+        - const: true
+      - op: test
+        any:
+        - op: test
+          eq:
+          - scveh.passenger
+          - const: false
+        - op: test
+          lt:
+          - scveh.line10
+          - scveh.line9w
+    cite:
+      doc: p946
+      locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, Note after line 10, "If line 10 is equal to line
+        9, stop here" and "If line 10 is less than line 9, complete Part II"
+  - id: scveh.part3_reached
+    printed: (helper)
+    label: 'Part III of the worksheet is reached: Part II is reached, and for a passenger automobile line 16 is less than line
+      11'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - scveh.part2_reached
+        - const: true
+      - op: test
+        any:
+        - op: test
+          eq:
+          - scveh.passenger
+          - const: false
+        - op: test
+          lt:
+          - scveh.line16
+          - scveh.line11
+    cite:
+      doc: p946
+      locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, Note after line 16, "If line 16 is equal to line
+        11, stop here" and "If line 16 is less than line 11, complete Part III"
   - id: scveh.bus_cost
     printed: '13'
-    shown_when: scveh.is_actual_owned
+    shown_when: scveh.part2_reached
     label: Business/investment cost (cost times business use)
     type: NonNegDollars
     expr:
@@ -2133,13 +2187,13 @@ form:
           - scveh.passenger
           - const: false
         - op: test
-          eq:
-          - scveh.suv
-          - const: true
-        - op: test
           gt:
           - scveh.s179_elect
           - scveh.suv_cap
+        - op: test
+          eq:
+          - scveh.suv
+          - const: true
     cite:
       doc: i4562
       locator: p. 16, Column (i)
@@ -2149,10 +2203,14 @@ form:
     type: Bool
     expr:
       op: input
-      source: Did you acquire this vehicle after January 19, 2025?
+      source: Did you acquire this vehicle after January 19, 2025? A vehicle acquired under a written binding contract is treated
+        as acquired no later than the date the contract was entered into, so answer No if you entered into a written binding
+        contract to acquire it before January 20, 2025, even if you received it later.
     cite:
       doc: i4562
-      locator: p. 13, Line 25, "certain qualified property acquired after January 19, 2025"
+      locator: p. 13, Line 25, "certain qualified property acquired after January 19, 2025"; plaw-119-21 sec. 70301(c)(4) (139
+        Stat. 190), "property shall not be treated as acquired after the date on which a written binding contract is entered
+        into for such acquisition"
   - id: scveh.bonus_choice
     printed: (helper)
     label: Special depreciation allowance for 5-year property
@@ -2409,7 +2467,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 14
   - id: scveh.line14
     printed: '14'
-    shown_when: scveh.is_actual_owned
+    shown_when: scveh.part2_reached
     label: Section 179 deduction claimed in the year you placed the car in service
     type: NonNegDollars
     expr:
@@ -2432,7 +2490,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 14
   - id: scveh.line15
     printed: '15'
-    shown_when: scveh.is_actual_owned
+    shown_when: scveh.part2_reached
     label: Tentative basis for depreciation (line 13 less line 14)
     type: NonNegDollars
     expr:
@@ -2529,7 +2587,7 @@ form:
       locator: pp. 5-7, Line 14
   - id: scveh.line16
     printed: '16'
-    shown_when: scveh.is_actual_owned
+    shown_when: scveh.part2_reached
     label: Special depreciation allowance
     type: NonNegDollars
     expr:
@@ -2580,7 +2638,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 17
   - id: scveh.line18
     printed: '18'
-    shown_when: scveh.is_actual_owned
+    shown_when: scveh.part3_reached
     label: Basis for depreciation (line 15 less line 16)
     type: NonNegDollars
     expr:
@@ -2719,7 +2777,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 19
   - id: scveh.line19
     printed: '19'
-    shown_when: scveh.is_actual_owned
+    shown_when: scveh.part3_reached
     label: Tentative MACRS depreciation deduction (line 18 times line 6)
     type: NonNegDollars
     expr:

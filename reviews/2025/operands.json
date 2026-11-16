@@ -11,6 +11,13 @@
   },
   "operands:f8880.clw2": {
    "reason": "Schedule 3 lines 6d (credit for the elderly or the disabled) and 6l (Form 8978) are not prepared: a return with either is refused by the questions of scope.ready (s3.elderly_credit_if_asked, s3.docs), so on every return the tool completes they are zero and the operands that remain are the whole line."
+  },
+  "operands:s1.line10": {
+   "reason": "Lines 4, 5 and 6 are not prepared, as the line's citation says: a gain or loss that belongs on line 4 (Form 4797) is refused by sd.other_forms on Schedule D, and Schedule E and F amounts (lines 5 and 6) by scope.schedule1 at Form 1040 line 8, through its screening questions scope.rental, scope.k1 and scope.farm; on every return the tool completes they are zero, so the operands that remain are the whole line. The refusals are declared on the lines that read this one, not on it."
+  },
+  "operands:s2.line21": {
+   "reason": "Lines 7, 9, 10, 13, 14, 15, 16 and 19 (tax on unreported tips and Form 8919 wages, household employment taxes, first-time homebuyer credit repayment, uncollected social security and Medicare tax, interest on installment sales and deferred tax, low-income housing credit recapture, section 965) are not prepared: any such amount answers yes to s2.other (\"Any amount on Schedule 2 other than\" self-employment tax, Additional Medicare Tax, Net Investment Income Tax and the Form 8889 line 17b additional tax), which this line refuses, so on every return the tool completes they are zero.",
+   "refusal": "s2.other"
   }
  },
  "baseline": {

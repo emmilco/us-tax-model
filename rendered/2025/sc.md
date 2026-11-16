@@ -48,10 +48,10 @@
 
 ## F — `sc.method_other`
 
-- **IRS:** Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 (Form 3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section 263A) because you are not a small business taxpayer, or is this business a tax shelter or does it have long-term contracts?
-- **Encoded (Bool):** Input — Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 (Form 3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section 263A) because your average annual gross receipts for the 3 prior years were more than $31 million, or is this business a tax shelter (as defined in section 448(d)(3)), or does it have long-term contracts (section 460)?
-- Expr: `{"op":"input","source":"Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 (Form 3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section 263A) because your average annual gross receipts for the 3 prior years were more than $31 million, or is this business a tax shelter (as defined in section 448(d)(3)), or does it have long-term contracts (section 460)?"}`
-- Cite: [i1040sc] p. 4, Line F, "Special rules apply to long-term contracts (see section 460 for details)"; p. 6, Part II, Capitalizing costs; p. 15, Part III, Small business taxpayer, "and (b) are not a tax shelter (as defined in section 448(d)(3))"; p538 p. 17, Uniform Capitalization Rules, "The uniform capitalization rules do not apply to the following" and "A small business taxpayer that meets the gross receipts test under section 448(c) and that is not a tax shelter" (2025; sha256 b5536db9)
+- **IRS:** Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 or any of the 3 years before it (Form 3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section 263A) because you are not a small business taxpayer, or is this business a tax shelter or does it have long-term contracts?
+- **Encoded (Bool):** Input — Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 or for any of the 3 years before it (Form 3115 or a section 481(a) adjustment, which is generally spread over 4 years), or must you capitalize costs under the uniform capitalization rules (section 263A) because your average annual gross receipts for the 3 prior years were more than $31 million, or is this business a tax shelter (as defined in section 448(d)(3)), or does it have long-term contracts (section 460)?
+- Expr: `{"op":"input","source":"Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 or for any of the 3 years before it (Form 3115 or a section 481(a) adjustment, which is generally spread over 4 years), or must you capitalize costs under the uniform capitalization rules (section 263A) because your average annual gross receipts for the 3 prior years were more than $31 million, or is this business a tax shelter (as defined in section 448(d)(3)), or does it have long-term contracts (section 460)?"}`
+- Cite: [i1040sc] p. 4, Line F, "Special rules apply to long-term contracts (see section 460 for details)" and "A net positive section 481(a) adjustment is generally taken into account over a period of 4 years"; p. 6, Part II, Capitalizing costs; p. 15, Part III, Small business taxpayer, "and (b) are not a tax shelter (as defined in section 448(d)(3))"; p538 p. 17, Uniform Capitalization Rules, "The uniform capitalization rules do not apply to the following" and "A small business taxpayer that meets the gross receipts test under section 448(c) and that is not a tax shelter" (2025; sha256 b5536db9)
 
 ## (screen) — `sc.special`
 
@@ -62,10 +62,8 @@
   - wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)
   - business interest limited by Form 8990
   - recapture of depreciation or section 179 on listed property, recapture of section 179 on other property no longer used more than 50% in the business, or an inclusion amount for leased property
-  - a chapter 11 bankruptcy case
   - extraterritorial income (Form 8873)
   - income you report under the installment method (including installment sales of timeshares or residential lots)
-  - nontaxable Medicaid waiver payments (Notice 2014-7)
   - research or experimental expenditures you elect to capitalize
   - a capital construction fund
   - contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)
@@ -84,10 +82,8 @@
   - wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)
   - business interest limited by Form 8990
   - recapture of depreciation or section 179 on listed property, recapture of section 179 on other property no longer used more than 50% in the business, or an inclusion amount for leased property
-  - a chapter 11 bankruptcy case
   - extraterritorial income (Form 8873)
   - income you report under the installment method (including installment sales of timeshares or residential lots)
-  - nontaxable Medicaid waiver payments (Notice 2014-7)
   - research or experimental expenditures you elect to capitalize
   - a capital construction fund
   - contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)
@@ -99,7 +95,7 @@
   - licenses or other costs you must amortize (for example, some liquor licenses)
   - travel by ocean liner, cruise ship or other luxury water transportation
   - a domestic LLC of which you are the sole member that elected to be treated as a corporation
-- Expr: `{"op":"input","source":"For this business, do you have any of these?\n\n- depletion (line 12)\n- the energy efficient commercial buildings deduction (Form 7205)\n- wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)\n- business interest limited by Form 8990\n- recapture of depreciation or section 179 on listed property, recapture of section 179 on other property no longer used more than 50% in the business, or an inclusion amount for leased property\n- a chapter 11 bankruptcy case\n- extraterritorial income (Form 8873)\n- income you report under the installment method (including installment sales of timeshares or residential lots)\n- nontaxable Medicaid waiver payments (Notice 2014-7)\n- research or experimental expenditures you elect to capitalize\n- a capital construction fund\n- contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)\n- qualified sound recording production costs you elect to deduct under section 181\n- prior year unallowed passive activity losses from this activity\n- services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee\n- Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income\n- an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)\n- licenses or other costs you must amortize (for example, some liquor licenses)\n- travel by ocean liner, cruise ship or other luxury water transportation\n- a domestic LLC of which you are the sole member that elected to be treated as a corporation"}`
+- Expr: `{"op":"input","source":"For this business, do you have any of these?\n\n- depletion (line 12)\n- the energy efficient commercial buildings deduction (Form 7205)\n- wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)\n- business interest limited by Form 8990\n- recapture of depreciation or section 179 on listed property, recapture of section 179 on other property no longer used more than 50% in the business, or an inclusion amount for leased property\n- extraterritorial income (Form 8873)\n- income you report under the installment method (including installment sales of timeshares or residential lots)\n- research or experimental expenditures you elect to capitalize\n- a capital construction fund\n- contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)\n- qualified sound recording production costs you elect to deduct under section 181\n- prior year unallowed passive activity losses from this activity\n- services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee\n- Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income\n- an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)\n- licenses or other costs you must amortize (for example, some liquor licenses)\n- travel by ocean liner, cruise ship or other luxury water transportation\n- a domestic LLC of which you are the sole member that elected to be treated as a corporation"}`
 - Cite: [i1040sc] p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I; p. 6, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you made contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III'); p. 8, Lines 16a and 16b; p. 9, Line 23; p. 10, Lines 26 and 27a; p. 1, Qualified sound recording productions; p. 2, "a sporadic activity, a not-for-profit activity, or a hobby does not qualify as a business" and "unless you have elected to treat the domestic LLC as a corporation"; p. 6, Line 6, recapture; p. 14, Line 31, "prior year unallowed passive activity losses"; p. 6, Installment sales, "If you use the installment method, attach a statement to your return"; p. 9, Line 23, "But some licenses, such as liquor licenses, may have to be amortized"; p. 9, Line 24a, "Other rules apply to luxury water travel"; p463 p. 12, Luxury Water Travel, "there is a daily limit on the amount you can deduct"; i4562 p. 4, "If the section 179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the property’s recovery period"; i8995 p. 2, "there is a presumption that you’re providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee", and p. 3, Determining if information reported on your Form 1099-PATR is included in QBI (2025; sha256 b5536db9)
 
 ## (helper) — `sc.business_credit`
@@ -490,9 +486,9 @@
 ## (screen) — `sc.ho_uses`
 
 - **Authored helper label:** Do you claim a deduction for business use of your home for this business?
-- **Encoded (Bool):** Input — Do you claim a deduction for the business use of your home for this business (a part of your home used regularly and exclusively for the business, or regularly for storing inventory or product samples)?
-- Expr: `{"op":"input","source":"Do you claim a deduction for the business use of your home for this business (a part of your home used regularly and exclusively for the business, or regularly for storing inventory or product samples)?"}`
-- Cite: [i1040sc] p. 10, Line 30, Business use of your home; Pub. 587 referenced (2025; sha256 b5536db9)
+- **Encoded (Bool):** Input — Do you claim a deduction for the business use of your home for this business (a part of your home used regularly and exclusively for the business, regularly for daycare, or, if your home is the sole fixed location of the business, regularly for storing inventory or product samples)?
+- Expr: `{"op":"input","source":"Do you claim a deduction for the business use of your home for this business (a part of your home used regularly and exclusively for the business, regularly for daycare, or, if your home is the sole fixed location of the business, regularly for storing inventory or product samples)?"}`
+- Cite: [i1040sc] p. 10, Line 30, Business use of your home; Simplified method, "used regularly and exclusively for business, regularly for daycare, or regularly for storage"; Pub. 587 referenced; p587 p. 3, Storage of inventory or product samples, "Your home is the only fixed location of your trade or business" (2025; sha256 b5536db9)
 
 ## (screen) — `sc.ho_other`
 
@@ -518,11 +514,11 @@
 ## 30(b) — `sc.ho_sqft`
 
 - **IRS:** The part of your home used for business (square feet)
-- **Encoded (Count):** Input — The square feet of your home used regularly and exclusively for this business (or regularly for storing inventory or product samples) throughout 2025
+- **Encoded (Count):** Input — The square feet of your home used regularly and exclusively for this business (or, if your home is the sole fixed location of the business, regularly for storing inventory or product samples) throughout 2025
 - **Refusal:** when sc.ho_multi is true, cannot complete The simplified method for more than one of your businesses in your home (300 square feet allocated among them). The 300 square feet apply to all the businesses you conduct in your home together and must be allocated among them; that is outside this tool. Cite: [i1040sc] p. 10, Simplified method, "You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home ... Allocate the actual square footage used (up to the maximum 300 square feet) among your qualified business uses" (2025; sha256 b5536db9)
 - **Refusal:** when sc.ho_screened is true, cannot complete Form 8829, or the simplified method with daycare, shared, part-year or multiple homes. The actual-expense method (Form 8829) and the special simplified-method cases are outside this tool. Cite: [i1040sc] pp. 10-13, Line 30, the Simplified Method Worksheet and its instructions (2025; sha256 b5536db9)
-- Expr: `{"op":"input","source":"The square feet of your home used regularly and exclusively for this business (or regularly for storing inventory or product samples) throughout 2025"}`
-- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method (2025; sha256 b5536db9)
+- Expr: `{"op":"input","source":"The square feet of your home used regularly and exclusively for this business (or, if your home is the sole fixed location of the business, regularly for storing inventory or product samples) throughout 2025"}`
+- Cite: [i1040sc] p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method; p587 p. 3, Storage of inventory or product samples, "Your home is the only fixed location of your trade or business" (2025; sha256 b5536db9)
 
 ## 30(a) — `sc.ho_home_sqft`
 
@@ -625,8 +621,8 @@
 ## (gate) — `sc.ho_both_limits`
 
 - **Authored helper label:** The gross income limitation could bind together with the section 179 business income limit
-- **Encoded (Bool):** helper "Line 4 is not more than the smallest line 29 any section 179 allocation could give" = false and helper "No section 179 deduction is possible for this business (no 2025 election and no carryover)" = false
-- Expr: `{"all":[{"eq":["sc.ho_unlimited",{"const":false}],"op":"test"},{"eq":["sc.ho_no179",{"const":false}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** helper "Do you claim a deduction for business use of your home for this business?" = true and helper "Line 4 is not more than the smallest line 29 any section 179 allocation could give" = false and helper "No section 179 deduction is possible for this business (no 2025 election and no carryover)" = false
+- Expr: `{"all":[{"eq":["sc.ho_uses",{"const":true}],"op":"test"},{"eq":["sc.ho_unlimited",{"const":false}],"op":"test"},{"eq":["sc.ho_no179",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [p946] p. 19, Business Income Limit, Two different taxable income limits, Steps 1 to 8 (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## (helper) — `sc.ho_both`

@@ -6,15 +6,15 @@
  "head_rows": {
   "printed lines compared": "29",
   "agree / disagree / missing": "9 / 20 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "s3.adoption_if_any",
-   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
+   "record": "0803422fc88fb1e3816ef3771b9b1c3c75f3c44aa83f5cfe75cd30ac337d21be",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: the reply's conjunction of s3.adoption_any and s3.adoption is the project's gated choose (false without an adoption or expenses; i8839 p. 1, \"You may be able to take this credit in 2025 if any of the following statements are true\"). Triage (pass fc3ac0eb0f5d): 3,078/3,089 agree; 11 project-unknown (incomplete/refused partial records); no value difference.",
-   "subject_key": "5e75610577abad167deca248a5a3879b91bc2676c37a813bba83dfce6fe37994"
+   "ruling": "Ruling: interface gap; i8839 p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"; p. 2, \"For the adoption of your spouse's child\". The prompt gives the id without its meaning. The reply makes s3.adoption_if_any the gate of the adoption questions (s3.adoption_any and s3.adoption) and puts the final-by-2025 and stepchild tests (BUG-0733 3b) in its own helper s3.h_adoption_now, which is the project's s3.adoption_if_any term for term (adoption_final true, adoption_stepchild false) and drives the reply's line 7 refusal. Triage (pass 1a67f25f3719): 3,167/3,178 agree; 11 project-unknown on incomplete or refused records; no value and no completed difference (no bank return answers an adoption not final or a stepchild adoption).",
+   "subject_key": "416e844949a54e6ae300937db076a0a4311a8999f8760a7c094cf242ee84b38e"
   },
   {
    "key": "s3.adoption_us_if_earlier",
@@ -95,10 +95,10 @@
   },
   {
    "key": "s3.prior_amt_if_forms",
-   "record": "1299f7526f6a8a71ac3714f8d229df1660d136525091159671a47096f5d4349e",
+   "record": "0803422fc88fb1e3816ef3771b9b1c3c75f3c44aa83f5cfe75cd30ac337d21be",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the page does not state this helper: it is the project's gate line, which gives the answer of a question asked only beneath another (`gates.ts`), written as a two-way choose on the question above so that the lower question is read only once the upper one is answered (the BUG-0471 convention; the same ruling as on the other gate lines of this form). The reply writes the same condition as an `all` of the two answers. executable-triage-v2 (`.transcription/triage/2025/s3.json`, pass bcb756ef462c; 1,854 fixtures, 500 generated returns seed 20261026, 616 partial records from 40 bases; 2,969 comparisons): 2,958 agree; 11 project-unknown, 7 on incomplete and 4 on refused returns, where the upper answer is withheld, the choose is unknown and the `all` is decided by the lower answer (spec 4.7.2); none on a completed return. Project stands.",
-   "subject_key": "7603166138bb644759a79ae015cdcc218023f682533b20a367da2b699aa28b01"
+   "ruling": "Ruling: interface gap; i8801 p. 1, Who Should File, \"An AMT liability and adjustments or preferences other than exclusion items\" and \"The minimum tax credit is allowed only for the AMT caused by deferral items\". The prompt gives the id without its meaning. The reply makes it the 2024 AMT question under s3.prior_other_forms and puts the deferral-item test (BUG-0733 3a, s3.prior_amt_deferral) in its own helper s3.h_prior_amt_credit, which equals the project's s3.prior_amt_if_forms and drives its line 7 refusal. Triage (pass 1a67f25f3719): 3,166/3,178 agree; 12 project-unknown on incomplete or refused records; no value or completed difference.",
+   "subject_key": "fe3840540512e1c425506d45801b11acb2d799432ef903895726b7323a79b493"
   },
   {
    "key": "s3.prior_forms_if_forms",
@@ -109,10 +109,10 @@
   },
   {
    "key": "s3.other_credit",
-   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
+   "record": "0803422fc88fb1e3816ef3771b9b1c3c75f3c44aa83f5cfe75cd30ac337d21be",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the project's gate (label: \"A credit or payment of Schedule 3 this tool does not prepare\") covers credits and payments; the reply's covers lines 6a to 6z only and refuses the payment and other items at its own lines 12 and 14 (Form 4136 kerosene, sections 965 and 960(c), Form 8689, Form 1062, claim of right) and the foreign tax carryover at line 1 (ftc.needs1116). Triage (pass fc3ac0eb0f5d): 2,813/3,089 agree; 9 value differences, all on refused returns and all project true / reply false on items the reply refuses elsewhere (e.g. ss.other.components: kerosene; redesign.credits.refuse.section965, .section960c, .virgin_islands, .farmland, .ftc_carryover); the rest project- or candidate-unknown on unasked gates (6 candidate-unknown on completed returns). The return-level refusal is the same.",
-   "subject_key": "66334558670f4721e44071770f057b2e03a03c84d65e787ae08ef4f031529d59"
+   "ruling": "Ruling: representation; f8396 p. 2, Line 1 (the credit is a share of the certified mortgage interest paid); i1040gi Lines 6a-6z. Completed differences are only the reply's raw read of s3.mcc, which the project asks only with home mortgage interest (s3.mcc_if_interest): 41 candidate-unknown, and 1 value at redesign.credits.mcc_not_asked (sa.mortgage_interest $0 with a stray s3.mcc Yes: no interest, no credit; project false is right). The 13 refused-record value differences are the reply reading the id as lines 6a-6z while the project's gate also covers payments and carryovers refused elsewhere (ftc carryover, farmland, section 960(c), Form 8978), as ruled in the landing round; the return is refused either way. Triage (pass 1a67f25f3719): 2,563/3,178 agree.",
+   "subject_key": "34184d62080628a6c3a0a190e16fb5ace7ca36103a1ad1adec117f560b410678"
   },
   {
    "key": "s3.mfs",
@@ -162,9 +162,9 @@
   },
   {
    "key": "7",
-   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
+   "record": "0803422fc88fb1e3816ef3771b9b1c3c75f3c44aa83f5cfe75cd30ac337d21be",
    "status": "AGREE",
-   "subject_key": "581e7cdf1ccc019c4a7304e0370f18c4d659eedef51ba6b99359c970633c6de6"
+   "subject_key": "524cc5ad7154b047362bd4f433aa64ff903b151bb4896ad7820a6aa50127764e"
   },
   {
    "key": "8",
@@ -187,15 +187,15 @@
   },
   {
    "key": "12",
-   "record": "97f3c2a27f16dbad3f2a178eb802c6e0bad425e1e07b2fa9d241b01c227b055d",
+   "record": "0803422fc88fb1e3816ef3771b9b1c3c75f3c44aa83f5cfe75cd30ac337d21be",
    "status": "AGREE",
-   "subject_key": "788628523ea3cbd99eb6c2618b5a03fdb56c264a7d16f6f00f14968922315b0e"
+   "subject_key": "aa57c5d9cd139bc5c61259af5df14e8359dc4853898201e03e9296ae9ccb2561"
   },
   {
    "key": "14",
-   "record": "6781d9fca6d439e80ba0b352f3ac10244ec500dc3c9635853c50fb97a3391d86",
+   "record": "0803422fc88fb1e3816ef3771b9b1c3c75f3c44aa83f5cfe75cd30ac337d21be",
    "status": "AGREE",
-   "subject_key": "f94a104a519cfc62de0f0f2969c1efa3b7211635e46617786fdd988a9c380ae7"
+   "subject_key": "680e8ce7823e90b08d54119fc9c570a0dbb134b5bbb84d5e46fab522d0d7a2ea"
   },
   {
    "key": "15",
@@ -205,7 +205,7 @@
   }
  ],
  "subjects": {
-  "s3.adoption_if_any": "917802f562006c6d70fda6cec3b54030261cc47e87b73a3e93bfa54019aff9ea",
+  "s3.adoption_if_any": "c612a9c484a696c2308da9acb491697300e00c5acef9aacdd7ef1c0bee366f02",
   "s3.adoption_us_if_earlier": "683b16994c987bc2d06219add30af7443939e74f3ddd9a4d6cd30f4006e60dc9",
   "s3.elderly_credit_if_asked": "31dedaf5d52894fa63db77f9467bfeaa301ee5fa4064904f41c125e01cb6f744",
   "s3.ev_dealer_if_ev": "4a1f3189d5b9a43c8adb19c55e6ea240ba9d6463ffdffb10db62150d1232a927",
@@ -217,9 +217,9 @@
   "s3.virgin_islands_if_foreign": "bf253e71fc422349a1cb361bd4eaabe55d2935eb9c961b49d862c6bb91ef7f45",
   "s3.kerosene_credit_if_kerosene": "b3dd8c1e1727f366bd787ce872125cdc42d4ea92403681337a8a03de2f4e8782",
   "s3.mcc_if_interest": "25b0e28308a16ad82ddd75a818327266054071c89ca370f43c07f64cbe1d7731",
-  "s3.prior_amt_if_forms": "8c3bb157b4d2de02970663cf2419d1a9d4a31e427c5a7be0a02bd09b53c5571e",
+  "s3.prior_amt_if_forms": "f4588d61943f96fcea825e7abf6a114adecfa9fad9743081cda2e80d5588ef73",
   "s3.prior_forms_if_forms": "2c74bedfad0be8508185b24b88f826443f9fa261b9b87a021b85fc9bce012011",
-  "s3.other_credit": "8f91d5d1d541908a0f5ebca723f4a238401da22d244f42c4cd62194a3ecb702c",
+  "s3.other_credit": "06d1808976032bd7af1bb1a1083e4f5c8cd8d4c77e7159a17104671d4f77e353",
   "s3.mfs": "6726f0b239d5632c25516cb419b9a78cdc2e311417aff2cbef8ada541e5e47b4",
   "1": "520111c959989188ce7d481be28a9b533f1facd077083a81cc2c4e457255b9fe",
   "2": "62e7115d0a806175d67b2a301449897878e49828445e6b95e4a18e054c8bda0c",
@@ -227,12 +227,12 @@
   "4": "03d8777671ca0033641c0177a039694b68d0ac164b316661d6b64dea351b5031",
   "5a": "d96673e713b85073ff55bf60e8b2b6053f6b040d3132603b472d87797ae11b91",
   "5b": "fddca36181beba97637b3e10759ac7f636e1f1f4871c33eba2ed26360f6fee10",
-  "7": "c0c0a5372a7fefee5874f2b83a1218ca6bdb7f9525fc508110122a1c8422b890",
+  "7": "eeffcc832c7c49529bee96dbfbfc19f1f35f6894bbe8198e6e0ef54051efeff1",
   "8": "85954f42c63184e45d1eee34850eb53f59288a43326d35af3a97d20699c595ce",
   "9": "0f0192bd5d1fe6b89e20cfa96309a4201ab5c9a91a3d9e80707572ac190e4d20",
   "11": "80dec3598cdd31a4a7a95f9edead1a30e8513ab488c9d1d3999b95bbabde0859",
-  "12": "ca47d620d34ee6b6d2727415d58c67af8ace61b0767e088babd0f60bb3f9892b",
-  "14": "f414ba90ba9cb208384574bb2c1246a07b0c46f6bb7dca222426e82500beac4f",
+  "12": "9d1093ee9ee965ec07ab794c630221c777eb97d2d9e5a09a4932cf47ebee66ae",
+  "14": "2ad09a9ee97f6c61d6705311bac7749672210e58b9429e6b7bbb3c3ba84ad6c6",
   "15": "0139308d9408fa0c602a3d55a75dad8cfd1aec5d92ec251520510ea0f4b93631"
  },
  "__rest__": "8c4455c31080bf1b56e8381468347998cd07ecbe53b3dadcaf427571c0240a42",
@@ -254,10 +254,10 @@
   "s3.other_credit": "b4cb72a13f2bc7767ce09d3d95ee40039636dcab7bb42558d0d2b391d492713c",
   "5a": "44145c9c17e80c02409fa95cd0f52adc10271be1967989b4354ff767f5b70bd6",
   "5b": "f31308964e4ab0eaf59e9fdec690c8a94688eee8fecb7e91bd2772510ba14bde",
-  "7": "f4cd049b50d95cc77bc369e9d0c7aa842e74fcf1e43042b2c3e544aed3c89f38",
+  "7": "69e0286cd23a6a5e7f33650a27d61737a6f8b3d5b027b25fd14a044fae9725a2",
   "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "12": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "14": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "12": "63b3d1408161573e977fb0185d8e08c9c98f7692eeed34783d826ac05e0fed67",
+  "14": "16f29213bc56c8be71f96551113d0bbec65a509e98c3634fa2d721ad3daadffa",
   "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
  }
 }

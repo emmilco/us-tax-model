@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "7",
   "agree / disagree / missing": "2 / 5 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,10 +17,10 @@
   },
   {
    "key": "qbi.eligible",
-   "record": "ca7bddff9ff4ce9fb991db10627b6a2e6fc9ee95fb651446ba07556a48780687",
+   "record": "229dca6b8aef4e4f5242aa5b28a7d3e59f1e82da44e125e328707e9c07032493",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1099div p. 5: \"Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A\". The project copies qbi.dividends_if_ordinary, asked only when ordinary dividends (box 1a) are above zero, and carries the qbi.unsupported refusal (REIT/PTP carryforward, suspended losses, cooperative patron; amb.2025.qbi_cooperative_patron); the reply copies qbi.dividends directly and leaves those cases to other screens. executable triage (.transcription/triage/2025/qbi.json, executable-triage-v2): 2,372 of 2,672 agree; 151 candidate-unknown (13 completed: box 5 not asked, project $0), 125 project-unknown and 24 project-refuses on incomplete or refused returns; no value difference. Project stands.",
-   "subject_key": "4dcb93b0b6b05ca3cd1cb753c9140006f38f5a47851174e750eb6e6ba22a3f9e"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/qbi.json (log sha matches): 2,193/2,716 agree; 501 candidate-unknown, 11 project-unknown, 5 candidate-refuses, 5 project-refuses, 1 value; completed: 36 candidate-unknown. The reply takes the smaller of qbi.dividends and the box 1a total; box 5 is a portion of box 1a (f1099div), and the project refuses a return whose box 5 exceeds box 1a, so the cap never binds where the project completes. The only value witness is stage4.refuse.div.components (box 5 $1.00, box 1a $0.50), a return the project refuses. All 36 completed-return differences are candidate-unknowns: the reply reads qbi.suspended and the other screens of its own refusal list without their parent gates (classm.f1040.1.deepseek: \"no input supplied for qbi.suspended\"). Same as the landing-round ruling.",
+   "subject_key": "d5a37e0bc7ee086623280eec1965978829b253057cada6ef21054bcdb2746d10"
   },
   {
    "key": "qbi.carryforward_if_prior_form",
@@ -52,19 +52,19 @@
   },
   {
    "key": "qbi.dividends_if_ordinary",
-   "record": "34aa68ea7c48f6994a99c017ce621acc944a207c9d802a2e45bac2d403af1b65",
+   "record": "229dca6b8aef4e4f5242aa5b28a7d3e59f1e82da44e125e328707e9c07032493",
    "status": "AGREE",
-   "subject_key": "6410d7995ef4a28b55fcbb11a6a9d21595e5d822621f0b483dfe5a2966942aa7"
+   "subject_key": "aa3966dcc24ac476d974a720d56a37893389d2c4c8d0f85a7a214d209b73e674"
   }
  ],
  "subjects": {
   "qbi.zero": "d351e905679017dd4f47fae49b296df613ed439c812435776e137e37960346b9",
-  "qbi.eligible": "f2062a771c880a8d39fc5fac29c16862fa47187ef394da12abad50f085818df8",
+  "qbi.eligible": "0f409248911bf9c1e034102fa0bfd9c8da70c4c712875e18de8906ebf62bf006",
   "qbi.carryforward_if_prior_form": "1ceb06b67e3225a6a1b9de6a11ad97967b49a75d25a28acdd682b11650f1254e",
   "qbi.taxable_before": "b83f0cad61a74d71f14d043cea5f54ced08d9f944f7c5fa4e5bb4d6b5a4302f0",
   "qbi.net_capital_gain": "7a116174b72815c5db82b7c6151c282b32fc369ff97504259084e21f7e00f4e4",
   "qbi.deduction": "2132cb147b2970dea95941ab4cff40fe3152bad7286a86450e5042e9bec680d3",
-  "qbi.dividends_if_ordinary": "6d42183163f2eea811b903beb9c5c3f876b45e26c0fac768ceb48a2618ac63d8"
+  "qbi.dividends_if_ordinary": "2ab19b6e5b9e0ff946a290b08d30f9559a4d352a41efa4cd0ade557fb6639111"
  },
  "__rest__": "3ecd850aa0c9743f71e02cf3a8fda571cbba92fac4295ed77a1231fbce2a3a92",
  "foreign": {

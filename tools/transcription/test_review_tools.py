@@ -97,6 +97,35 @@ class RulingContext(unittest.TestCase):
                              {"printed": "1", "project_expr_sha256": stored["project_expr_sha256"],
                               "second_expr_sha256": stored["second_expr_sha256"], "ruling": "Ruling: scope"})
 
+    def test_amend_rewrites_an_applied_ruling_of_the_same_class(self):
+        """rule.py --amend corrects an applied ruling's text in the log and its sidecar entry, keeping its
+        class, key and context; a change of class, an open section and a "*" key are refused."""
+        with tempfile.TemporaryDirectory() as temp, patch.object(rulings, "REVIEWS", temp), \
+                patch.object(T, "LOGS", temp), patch.object(T.subjects, "current", return_value="a" * 64):
+            Path(temp, "transcription").mkdir()
+            rows = [{"printed": str(i), "label": "Expenses", "status": "DISAGREE", "project": '{"input":"x.expenses"}',
+                     "second": '{"line":"%d"}' % (i + 1)} for i in (1, 2)]
+            T.write_log({"id": "x", "title": "Test form"}, "claude-opus-5-5", "p", [], rows, [], "lines: []", {})
+            rule.apply("x", {"1": "model error; 12 value records"})
+            before = rulings.load("transcription", "x")
+            self.assertEqual(rule.amend("x", {"1": "model error; 17 value records"}), ["1"])
+            text = rulings.read_log("transcription", "x")
+            self.assertIn("Ruling: model error; 17 value records", text)
+            self.assertNotIn("12 value records", text)
+            self.assertIn("Ruling: open", text)  # line 2 untouched
+            after = rulings.load("transcription", "x")
+            self.assertEqual(set(after), set(before))
+            entry = next(iter(after.values()))
+            self.assertEqual(entry["ruling"], "Ruling: model error; 17 value records")
+            self.assertEqual(entry["context"], next(iter(before.values()))["context"])
+            self.assertEqual(rulings.check(), 0)
+            for bad in ({"1": "finding; the project is wrong", "severity": "low"}, {"1": "scope; out of scope"},
+                        {"2": "model error; open section"}, {"*": "model error; all"}, {"3": "model error; no section"}):
+                bad = {k: v for k, v in bad.items() if k != "severity"}
+                with self.assertRaises(SystemExit):
+                    rule.amend("x", bad)
+            self.assertIn("17 value records", rulings.read_log("transcription", "x"))
+
     def test_legacy_rulings_are_preserved_but_not_automatically_reused(self):
         with tempfile.TemporaryDirectory() as temp, patch.object(rulings, "REVIEWS", temp):
             Path(temp, "render").mkdir()
@@ -1370,12 +1399,14 @@ class DefinitionInterfaces(unittest.TestCase):
             return result
         with patch.object(C, "parse_log", side_effect=legacy):
             transcription = C.compare("transcription", "dcprov", "deepseek")["quality"]
+            rendering = C.compare("render", "dcprov", "deepseek")["quality"]
         self.assertEqual(transcription["state"], "pending")
         self.assertFalse(any("BUG-0129" in b for b in transcription["blockers"]))
         self.assertTrue(any("unit-preserving comparison" in b for b in transcription["blockers"]))
-        rendering = C.compare("render", "dcprov", "deepseek")["quality"]
-        self.assertEqual(rendering["state"], "pass")
+        # The render logs are live data: a dormant family's log goes stale when the form changes, so only the
+        # legacy policy's own blockers are asserted absent, not that the comparison passes.
         self.assertFalse(any("BUG-0129" in b for b in rendering["blockers"]))
+        self.assertFalse(any("unit-preserving comparison" in b for b in rendering["blockers"]))
 
     def test_either_family_without_passing_types_blocks_transcription(self):
         parse = C.parse_log
@@ -1511,6 +1542,25 @@ class TriageWitnesses(unittest.TestCase):
                           "console.log(JSON.stringify([displayed(v, { kind: 'refusal', reason: 'r' }), displayed(v, { kind: 'unknown' }),"
                           "displayed(v, { kind: 'bool', value: false }), displayed(v, { kind: 'bool', value: true })]))")
         self.assertEqual(out, [{"kind": "refusal"}, {"kind": "unknown"}, {"kind": "hidden"}, {"kind": "money", "cents": 500}])
+
+    def test_a_line_the_reply_hides_compares_as_hidden(self):
+        """The reply's own shown_when (triage.mjs applies it as it applies the project's): a line it hides
+        agrees with the project's blank or hidden line and differs from an amount the project shows."""
+        out = node_module("import { same, difference } from './triage_rules.mjs';"
+                          "const h = { kind: 'hidden' }, v = { kind: 'money', cents: 500 }, z = { kind: 'money', cents: 0 };"
+                          "console.log(JSON.stringify([same(z, h), same(h, h), same(v, h), difference(v, h),"
+                          "difference({ kind: 'refusal' }, h), difference(h, v), same(h, z)]))")
+        self.assertEqual(out, [True, True, False, "candidate-hides-shown", "project-refuses", "candidate-shows-skipped", True])
+
+    def test_pairs_carry_the_reply_shown_when(self):
+        import triage
+        lines = [{"id": "x.g", "printed": "(gate)", "type": "Bool", "label": "g", "expr": {"op": "input", "source": "q"}},
+                 {"id": "x.l1", "printed": "1", "type": "Money", "label": "one", "expr": {"op": "input", "source": "a"}},
+                 {"id": "x.l2", "printed": "2", "type": "Money", "label": "two", "expr": {"op": "ref", "ref": "x.l1"}}]
+        second = [{"id": "x.s2", "printed": "2", "type": "Money", "expr": {"op": "ref", "ref": "x.l1"}, "shown_when": "x.g"}]
+        with patch.object(triage.T, "exported_lines", lambda d: []):
+            pairs = triage.pairs_for("x", lines, second, [("2", "DISAGREE", True)])
+        self.assertEqual((pairs[0]["shown_when"], pairs[0]["candidate_shown_when"]), (None, "x.g"))
 
     def test_completed_witnesses_are_sampled_apart_from_refused_ones(self):
         out = node_module("import { recordWitness } from './triage_rules.mjs';"
@@ -2953,6 +3003,46 @@ class ScreenLineKeys(unittest.TestCase):
     def stored(self):
         p = patch.object(rulings, "STORE_ELSEWHERE", True)
         p.start(); self.addCleanup(p.stop)
+
+    def test_the_catalog_leaves_out_an_interface_computed_from_a_line_under_review(self):
+        """An other-form line computed from a line the reply writes (div.has_capital_gain from
+        sd.distributions_if_dividends) is not offered as an operand, unless the reviewed form itself reads it."""
+        x = {"id": "x", "lines": [
+            {"id": "x.l1", "printed": "1", "type": "Money", "label": "one", "expr": {"op": "input", "source": "a"}},
+            {"id": "x.l2", "printed": "2", "type": "Money", "label": "two", "expr": {"op": "copy", "from": "x.l1"}},
+            {"id": "x.l3", "printed": "3", "type": "Money", "label": "three", "expr": {"op": "copy", "from": "y.read"}}]}
+        y = {"id": "y", "lines": [
+            {"id": "y.in", "printed": "A", "type": "Money", "label": "in", "expr": {"op": "input", "source": "b"}},
+            {"id": "y.circ", "printed": "(helper)", "type": "Bool", "label": "c", "expr": {"op": "test", "gt": ["y.mid", {"const": 0}]}},
+            {"id": "y.mid", "printed": "(helper)", "type": "Money", "label": "m", "expr": {"op": "copy", "from": "x.l2"}},
+            {"id": "y.read", "printed": "4", "type": "Money", "label": "r", "expr": {"op": "copy", "from": "x.l2"}},
+            {"id": "y.free", "printed": "5", "type": "Money", "label": "f", "expr": {"op": "copy", "from": "x.l1"}}]}
+        docs = {"x": x, "y": y}
+        lines = {l["id"]: (d["id"], l) for d in docs.values() for l in d["lines"]}
+        with patch.object(T, "form_files", return_value=[("x.yaml", ""), ("y.yaml", "")]), \
+                patch.object(T, "load_form", side_effect=docs.__getitem__), patch.object(T, "load_all_lines", return_value=lines):
+            whole = set(T.catalog_lines("x", {"y": "shared page"}))
+            scoped = set(T.catalog_lines("x", {"y": "shared page"}, under_review={"x.l2"}))
+            other = set(T.catalog_lines("x", {"y": "shared page"}, under_review={"x.l3"}))
+        self.assertEqual(whole, {"y.in", "y.circ", "y.mid", "y.read", "y.free"})
+        self.assertEqual(scoped, {"y.in", "y.read", "y.free"})  # y.read stays: x.l3 reads it
+        self.assertEqual(other, whole)
+
+    def test_a_reference_to_a_screening_input_compares_by_its_id(self):
+        """Two screening inputs share the bare `(screen)` key, but a line that reads one does not agree with a
+        reply that reads the other; a reply reading the same one agrees."""
+        q = lambda i: {"id": i, "printed": "(screen)", "type": "Bool", "label": i, "expr": {"op": "input", "source": i + "?"}}
+        line = lambda ref: {"id": "x.l1", "printed": "1", "type": "Bool", "label": "one",
+                            "expr": {"op": "test", "eq": [ref, {"const": True}]}}
+        project = [q("x.q1"), q("x.q2"), line("x.q1")]
+        compared = lambda reply: {r["printed"]: r["status"] for r in T.compare("x", project, reply)[0]}
+        with patch.object(T, "validate_model_types", return_value=[]), patch.object(T, "load_defs", return_value={}), \
+                patch.object(T, "year_params", return_value={"values": {}}):
+            self.assertEqual(compared([line("x.q1")]), {"1": "AGREE"})
+            self.assertEqual(compared([line("x.q2")]), {"1": "DISAGREE"})
+        inputs = {l["id"]: l for l in project[:2]}
+        e = T.Expander("x", project, {}, inputs=inputs)
+        self.assertEqual(e.ref("x.q2", 0), {"line": "(screen) (x.q2)"})
 
     def test_keys_are_qualified_only_among_computed_screen_lines(self):
         screen = lambda i, computed: {"id": i, "printed": "(screen)", "type": "Bool",

@@ -2300,8 +2300,9 @@ form:
       type: Bool
       expr:
         op: input
-        source: Did anyone pay qualified education expenses in 2025 for this dependent at an eligible educational institution
-          (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+        source: Did anyone pay qualified education expenses in 2025 for this dependent as a student at an eligible educational
+          institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid),
+          counting books, supplies and equipment needed for a course of study wherever they were bought?
       cite:
         doc: i8863
         locator: p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse, or
@@ -2312,12 +2313,12 @@ form:
       type: Bool
       expr:
         op: input
-        source: Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution
-          was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships
-          or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution
-          did not furnish it and, after February 2, 2026, but before you file, you or the student requested it, you fully
-          cooperated with the institution's efforts to gather the information needed to furnish it, and you can show the
-          enrollment and the payments.
+        source: Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also, if you can show
+          the enrollment and the payments, when the institution was not required to furnish one (for example a qualified nonresident
+          alien, expenses paid entirely with scholarships or under a formal billing arrangement, or only courses for which no
+          academic credit is awarded), or when the institution did not furnish it and, after February 2, 2026, but before you
+          file, you or the student requested it and you fully cooperated with the institution's efforts to gather the information
+          needed to furnish it.
       cite:
         doc: i8863
         locator: p. 1, Form 1098-T requirement, "To be eligible to claim the American opportunity credit or the lifetime learning
@@ -2430,7 +2431,7 @@ form:
           Qualified education expenses paid in 2025 for this student, by anyone, that had to be paid to the institution, for academic periods beginning in 2025 or in the first 3 months of 2026:
 
           - tuition
-          - required enrollment fees
+          - fees required for enrollment or attendance, including nonacademic fees (such as student activity or athletic fees) that must be paid to the institution as a condition of enrollment or attendance
           - books, supplies and equipment required to be paid to the institution as a condition of enrollment or attendance
 
           Use the amounts actually paid, which may differ from Form 1098-T box 1.
@@ -2460,8 +2461,11 @@ form:
       expr:
         op: input
         source: 'Other course materials paid for in 2025 for this student: books, supplies and equipment needed for a course of
-          study that did not have to be paid to the institution (they count for the American opportunity credit only); the same
-          exclusions as for the expenses paid to the institution; zero if none'
+          study that did not have to be paid to the institution (they count for the American opportunity credit only), paid
+          in 2025; do not include amounts paid in 2024 or 2026, expenses deducted elsewhere (for example on Schedule C), expenses
+          used for a tax-free distribution from a Coverdell ESA or qualified tuition program (529 plan), or materials for a course
+          involving sports, games or hobbies or a noncredit course that is not part of the student''s degree program; zero
+          if none'
       cite:
         doc: i8863
         locator: 'p. 4, Qualified Education Expenses, "American opportunity credit: Qualified education expenses include amounts
@@ -2473,15 +2477,22 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: 'Tax-free educational assistance received in 2025 for this student''s 2025 expenses: the tax-free part of scholarships
-          and fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance,
+        source: 'Tax-free educational assistance received in 2025 that is allocable to the academic periods of the expenses entered
+          for this student (periods beginning in 2025 or in the first 3 months of 2026): the tax-free part of scholarships and
+          fellowship grants (including Pell grants; Form 1098-T box 5 may help), tax-free employer-provided educational assistance,
           veterans'' educational assistance, and other tax-free educational assistance. Do not include wages, loans, gifts, inheritances,
           withdrawals from personal savings, emergency financial aid grants, or a scholarship the student includes in income (for
-          you or your spouse, the amount on Schedule 1 line 8r); zero if none'
+          you or your spouse, the amount on Schedule 1 line 8r); a scholarship or fellowship grant can be included in income only
+          if its terms allow it to be used for expenses other than qualified education expenses (such as room and board), and
+          never one provided by an Indian tribal government and excluded under the Tribal General Welfare Exclusion Act of 2014;
+          zero if none'
       cite:
         doc: i8863
         locator: p. 9, Adjusted Qualified Education Expenses Worksheet, "a. Tax-free educational assistance received in 2025 allocable
-          to the academic period"
+          to the academic period"; p. 5, Coordination with Pell grants and other scholarships or fellowship grants, "A student
+          cannot choose to include in income a scholarship or fellowship grant provided by an Indian tribal government that is
+          excluded from income under the Tribal General Welfare Exclusion Act of 2014" and "the scholarship or fellowship grant
+          must be one that may (by its terms) be used for expenses other than qualified education expenses (such as room and board)"
     - id: dependent.edu_a_next_year
       printed: (helper)
       label: Adjusted Qualified Education Expenses Worksheet, line 2b
@@ -2548,9 +2559,10 @@ form:
       gated_by: dependent.edu_over_if_adj
       expr:
         op: input
-        source: Was there an academic period for which the tax-free educational assistance and refunds allocable to it were more
-          than that period's qualified education expenses that had to be paid to the institution (tuition, required fees and course
-          materials required to be paid to the institution)?
+        source: Was there an academic period for which the tax-free educational assistance and refunds allocable to it (received
+          in 2025, or in 2026 before you file) were more than that period's qualified education expenses paid in 2025 (tuition
+          and required fees, and course materials, which for a student who can get the American opportunity credit are those
+          needed for a course of study wherever bought, and otherwise those required to be paid to the institution)?
       cite:
         doc: i8863
         locator: p. 4, Tax-free educational assistance, "For tax-free educational assistance received in 2025, reduce the qualified

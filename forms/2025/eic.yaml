@@ -124,8 +124,9 @@ form:
       expr:
         op: input
         source: Was your main home, and your spouse's if filing a joint return, in the United States (the 50 states and the
-          District of Columbia) for more than half of 2025? If you were on extended active military duty outside the United States, that time counts as a main home in
-          the United States.
+          District of Columbia) for more than half of 2025? If you (or, on a joint return, your spouse) were on extended active
+          military duty outside the United States (duty ordered for an indefinite period or for more than 90 days), that time
+          counts as a main home in the United States.
       cite:
         doc: i1040gi
         locator: p. 42, Step 4, question 3; p. 44, Members of the military; p. 45, United States
@@ -2017,7 +2018,8 @@ form:
     - id: eic.clergy
       printed: (helper)
       type: Bool
-      label: A member of the clergy filing Schedule SE with an amount also on Form 1040, line 1z (refused; Schedule SE is outside the tool)
+      label: An income or adjustment item outside the tool was answered on the Schedule 1 screens (among them a member of the clergy
+        filing Schedule SE, whose earned income line 27b reads; refused)
       expr:
         op: test
         eq:

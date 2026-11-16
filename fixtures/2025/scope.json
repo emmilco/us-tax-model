@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.refuse.scope.schedule1",
-      "walk": "stage4",
       "covers": [
         "scope.schedule1"
       ],
@@ -57,7 +56,6 @@
     },
     {
       "id": "scope.reg.nol_casualty_no_business",
-      "walk": "stage4",
       "covers": [
         "scope.schedule1"
       ],
@@ -111,7 +109,6 @@
     },
     {
       "id": "stage4.refuse.scope.credits",
-      "walk": "stage4",
       "covers": [
         "scope.credits"
       ],
@@ -153,7 +150,6 @@
     },
     {
       "id": "stage4.refuse.scope.other_income",
-      "walk": "stage4",
       "covers": [
         "scope.other_income"
       ],
@@ -202,7 +198,6 @@
     },
     {
       "id": "stage4.refuse.scope.other_line16",
-      "walk": "stage4",
       "covers": [
         "scope.other_line16"
       ],
@@ -249,7 +244,6 @@
     },
     {
       "id": "stage4.refuse.married",
-      "walk": "stage4",
       "covers": [
         "cross-form refusal"
       ],

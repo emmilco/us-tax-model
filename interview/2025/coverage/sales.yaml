@@ -142,8 +142,61 @@ rows:
       sales[a].reported_basis: 0
       sales[a].code: none
       sd.trader_election: false
+      sd.qof: false
     expect:
       refused: sales[a].special
+  - id: sales.extraordinary_dividend_loss
+    design: BUG-0488, sales.special (a loss after an extraordinary dividend is long-term to that extent)
+    situation: A person sold, at a loss, shares held eight months on which a qualified dividend of 12% of their cost was paid.
+    answers:
+      $sales: [a]
+      sales[a].box: A
+      sales[a].special: true
+      sd.route_each: false
+      sales[a].proceeds: 0
+      sales[a].reported_basis: 0
+      sales[a].code: none
+      sd.trader_election: false
+      sd.qof: false
+    expect:
+      refused: sales[a].special
+  - id: sales.constructive_ownership_gain
+    design: BUG-0488, sales.special (a constructive ownership gain may be ordinary income)
+    situation: A person closed, at a gain, a forward contract to buy shares of a real estate fund.
+    answers:
+      $sales: [a]
+      sales[a].box: D
+      sales[a].special: true
+      sd.route_each: false
+      sales[a].proceeds: 0
+      sales[a].reported_basis: 0
+      sales[a].code: none
+      sd.trader_election: false
+      sd.qof: false
+    expect:
+      refused: sales[a].special
+  - id: sales.nominee_sale
+    design: BUG-0436, sales.code other (code N, a sale reported to a nominee, is not prepared)
+    situation: A person's Form 1099-B shows a sale of shares that belong to their adult son, held in the person's name.
+    answers:
+      $sales: [a]
+      sales[a].box: A
+      sales[a].special: false
+      sd.route_each: false
+      sales[a].proceeds: 500000
+      sales[a].reported_basis: 400000
+      sales[a].code: other
+      sd.trader_election: false
+      sd.qof: false
+    expect:
+      refused: sales[a].bad_code
+  - id: sales.qof_held
+    design: BUG-0451, sd.qof through sd.other_forms (Form 8997 for a QOF investment held, or a gain deferred into one)
+    situation: A person holds shares of an opportunity zone fund bought in 2022 to put off tax on a gain, and sold nothing in 2025.
+    answers:
+      sd.qof: true
+    expect:
+      refused: sd.other_forms
   - id: sales.crypto_sold
     design: MAP 2.9, sales.box (digital asset boxes G to L)
     situation: A person lists a sale of crypto reported on a Form 1099-DA.
@@ -152,6 +205,7 @@ rows:
       sales[a].box: G
       sd.route_each: false
       sd.trader_election: false
+      sd.qof: false
     expect:
       refused: sales[a].digital
   - id: sales.added_to_total

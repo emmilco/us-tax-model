@@ -50,8 +50,8 @@
 ## (helper) — `eic.us_home`
 
 - **Authored helper label:** Was your main home, and your spouse's if filing a joint return, in the United States for more than half of 2025?
-- **Encoded (Bool):** Input — Was your main home, and your spouse's if filing a joint return, in the United States (the 50 states and the District of Columbia) for more than half of 2025? If you were on extended active military duty outside the United States, that time counts as a main home in the United States.
-- Expr: `{"op":"input","source":"Was your main home, and your spouse's if filing a joint return, in the United States (the 50 states and the District of Columbia) for more than half of 2025? If you were on extended active military duty outside the United States, that time counts as a main home in the United States."}`
+- **Encoded (Bool):** Input — Was your main home, and your spouse's if filing a joint return, in the United States (the 50 states and the District of Columbia) for more than half of 2025? If you (or, on a joint return, your spouse) were on extended active military duty outside the United States (duty ordered for an indefinite period or for more than 90 days), that time counts as a main home in the United States.
+- Expr: `{"op":"input","source":"Was your main home, and your spouse's if filing a joint return, in the United States (the 50 states and the District of Columbia) for more than half of 2025? If you (or, on a joint return, your spouse) were on extended active military duty outside the United States (duty ordered for an indefinite period or for more than 90 days), that time counts as a main home in the United States."}`
 - Cite: [i1040gi] p. 42, Step 4, question 3; p. 44, Members of the military; p. 45, United States (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.zero`
@@ -710,7 +710,7 @@
 
 ## (helper) — `eic.clergy`
 
-- **Authored helper label:** A member of the clergy filing Schedule SE with an amount also on Form 1040, line 1z (refused; Schedule SE is outside the tool)
+- **Authored helper label:** An income or adjustment item outside the tool was answered on the Schedule 1 screens (among them a member of the clergy filing Schedule SE, whose earned income line 27b reads; refused)
 - **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than the ones this tool computes (true when any of the Schedule 1 screening questions is answered Yes)" = true
 - **Refusal:** when scope.schedule1 is true, cannot complete Clergy filing Schedule SE (Form 1040, line 27b). Schedule SE is outside this tool. Cite: [i1040gi] p. 43, Line 27b, and Clergy (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"eq":["scope.schedule1",{"const":true}],"op":"test"}`

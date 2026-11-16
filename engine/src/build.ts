@@ -10,7 +10,7 @@ import type { ValidateFunction } from "ajv";
 import { isMarkedLine, stableStringify } from "./util.js";
 import { blockPlaces, entrySyntax, recordProblems, type InterviewData, type RosterChoice, type TickGroup } from "./interview.js";
 import { opensMap, tickGroupProblems } from "./tick-groups.js";
-import { checkInterview, checkSalesInterview } from "./interview-check.js";
+import { checkInterviewPaths } from "./interview-check.js";
 import { checkedCases, consistencyProblems, defaultsProblems, loadFixtureCases, walkedCases, yearDefaultsFiles } from "./fixture-inputs.js";
 import { runChecks } from "./check.js";
 import { isStructured, parseStructured, textSummary } from "./text.js";
@@ -393,9 +393,6 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       ...(builtGroups.some((g) => inputs.some((i) => bankByInput.get(i)?.group === g.id)) ? { groups: builtGroups.filter((g) => inputs.some((i) => bankByInput.get(i)?.group === g.id)) } : {}),
     };
   };
-  const interview = loadProfile(join(INTERVIEW, "social-security.yaml"), "interview");
-  const salesInterview = loadProfile(join(INTERVIEW, "sales.yaml"), "sales interview");
-  const stage4Interview = loadProfile(join(INTERVIEW, "stage4.yaml"), "Stage 4 interview");
   const fullInterview = loadProfile(join(INTERVIEW, "full.yaml"), "full interview");
   const nyInterview = existsSync(NY_PROFILE) ? loadProfile(NY_PROFILE, "New York interview") : null;
   // The refusal gates that are consistency checks, each with the explanation the web UI shows for its conflict
@@ -436,15 +433,14 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       else { const syntax = entrySyntax(text); if (syntax) errors.push(`${where}: the note states entry syntax (${syntax})`); for (const miss of spousePhraseNearMisses(text)) errors.push(`${where}: the note has a near-miss of the spouse phrase ("${miss}")`); }
     }
   }
-  for (const profile of [interview, salesInterview, stage4Interview, fullInterview, ...(nyInterview ? [nyInterview] : [])]) {
+  for (const profile of [fullInterview, ...(nyInterview ? [nyInterview] : [])]) {
     if (refusalNotes?.notes) profile.refusal_notes = refusalNotes.notes;
   }
   // Every document under the year's directories must state that year.
   const stated: [string, number][] = [
     ["sources manifest", (JSON.parse(readFileSync(MANIFEST_PATH, "utf-8")) as { tax_year: number }).tax_year],
     ["params", params.tax_year], ["ambiguity register", register.tax_year],
-    ["question bank", bank.tax_year], ["interview", interview.tax_year], ["sales interview", salesInterview.tax_year],
-    ["Stage 4 interview", stage4Interview.tax_year], ["full interview", fullInterview.tax_year],
+    ["question bank", bank.tax_year], ["full interview", fullInterview.tax_year],
     ...(nyInterview ? [["New York interview", nyInterview.tax_year] as [string, number]] : []),
     ...(conflictChecks ? [["conflict checks", conflictChecks.tax_year] as [string, number]] : []),
     ...(refusalNotes ? [["refusal notes", refusalNotes.tax_year] as [string, number]] : []),
@@ -482,9 +478,6 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       errors.push(`${what}: schema validation failed: ${ajv.errorsText(validator.errors).slice(0, 500)}`);
     }
   };
-  validate(validateWith("interview"), interview, "interview");
-  validate(validateWith("interview"), salesInterview, "sales interview");
-  validate(validateWith("interview"), stage4Interview, "Stage 4 interview");
   validate(validateWith("interview"), fullInterview, "full interview");
   if (nyInterview) validate(validateWith("interview"), nyInterview, "New York interview");
   for (const doc of forms) validate(formFileValidator, { form: doc }, `form ${doc.id}`);
@@ -514,7 +507,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       if (n && typeof n === "object") for (const [k, v] of Object.entries(n)) if (!["cite", "source", "label", "op", "ref"].includes(k)) walk(v);
     };
     for (const d of docs) for (const l of d.lines) { walk(l.expr); for (const r of l.refuses ?? []) read.add(r.when); if (l.shown_when) read.add(l.shown_when); }
-    const profiles = [interview, salesInterview, stage4Interview, fullInterview, ...(nyInterview ? [nyInterview] : [])];
+    const profiles = [fullInterview, ...(nyInterview ? [nyInterview] : [])];
     const targets = new Set(profiles.flatMap((i) => i.targets));
     const asked = new Set(profiles.flatMap((i) => i.questions.map((q) => q.input)));
     for (const d of data.forms) if (d.collection?.implicit && asked.has(`$${d.id}`)) errors.push(`${d.id}: an implicit collection's entry is never asked, but an interview asks $${d.id}`);
@@ -532,15 +525,15 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   // No case takes a default that its other answers contradict, by the rules the defaults files declare.
   if (errors.length === 0) errors.push(...consistencyProblems(data, yearDefaultsFiles(), checkedCases()));
   if (!existsSync(yearPath("fixtures"))) stats.push(`interview path checks skipped: no fixtures/${YEAR}/ yet`);
-  else if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview, walkedCases("sales", data)), ...checkSalesInterview(data, stage4Interview, walkedCases("stage4", data)), ...checkSalesInterview(data, fullInterview, walkedCases("full", data)));
+  else if (errors.length === 0) errors.push(...checkInterviewPaths(data, fullInterview, walkedCases("full", data)));
   // The New York profile walks the New York fixtures' paths (fixtures/ny/<year>/), once they exist.
   if (nyInterview && errors.length === 0 && existsSync(nyPath("fixtures"))) {
     // As federally (stages 3 to 5 only), the walk covers the hand-authored stage fixtures: class M cases keep only the
     // answers their route reads, and mutation cases exist to kill mutants, so neither is an interview path.
     const ny = loadFixtureCases("ny", data).filter((c) => !c.file.startsWith("classm") && c.file !== "mutation.json");
-    errors.push(...checkSalesInterview(data, nyInterview, ny, 600).map((e) => `New York interview: ${e}`));
+    errors.push(...checkInterviewPaths(data, nyInterview, ny, 600).map((e) => `New York interview: ${e}`));
   }
-  stats.push("interview: Stage 2 finite domains checked; Stage 3 fixture paths checked for reachability, termination and answer-order invariance (not exhaustive)");
+  stats.push("interview: fixture paths checked for reachability, termination and answer-order invariance (not exhaustive)");
 
   // Write canonical output.
   if (errors.length === 0) {
@@ -552,9 +545,6 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     for (const doc of defs) {
       writeFileSync(join(OUT_DIR, `${doc.id}.json`), stableStringify({ def: doc }));
     }
-    writeFileSync(join(OUT_DIR, "interview.json"), stableStringify(interview));
-    writeFileSync(join(OUT_DIR, "interview-sales.json"), stableStringify(salesInterview));
-    writeFileSync(join(OUT_DIR, "interview-stage4.json"), stableStringify(stage4Interview));
     writeFileSync(join(OUT_DIR, "interview-full.json"), stableStringify(fullInterview));
     if (nyInterview) writeFileSync(join(OUT_DIR, "interview-ny.json"), stableStringify(nyInterview));
     if (conflictChecks) writeFileSync(join(OUT_DIR, "conflicts.json"), stableStringify({ conflicts: conflictChecks.conflicts }));

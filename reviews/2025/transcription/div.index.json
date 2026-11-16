@@ -5,7 +5,7 @@
  "base": "3a15ed464ec0c4e2a869b1a15dfbe0440a3dd97a9abbf9ddcd4d29cf7f919dcf",
  "head_rows": {
   "agree / disagree / missing": "2 / 3 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -37,9 +37,9 @@
   },
   {
    "key": "div.box12_if_dividends",
-   "record": "40b03853341b69a6ae454c70e927278ca30bb5cc83fe3dc3ed0440ef4347c736",
+   "record": "82d5313d82f20f2113c1f454eda536d4f4f442649dc8c9a0308b0bdbb468bfe1",
    "status": "AGREE",
-   "subject_key": "457dcf3b50810377832c7bb768864ca2657cf473beed6e6a6c9d75e5d3febdf3"
+   "subject_key": "9d500db8f3756e174b41db8a0f3662fc02f025a29c658cb53f8cdc6b50182250"
   }
  ],
  "subjects": {
@@ -47,7 +47,7 @@
   "div.zero": "023fca92bb2ca85c42b5ddf6296460a606a9efbc6b93efb54dd6aa7da46b1887",
   "div.box2b_if_capital_gain": "eca821b6729cc9058f3361cc58d4c0ea5efdf0e57a676ba941d497e88901ad69",
   "div.box2d_if_capital_gain": "53077916f4780325880e3567c6417b96a009aa97d1296edfef326e411033a12a",
-  "div.box12_if_dividends": "523ea11eb5f7ac8867d66d74e8ad1867db1afad4c43f2816f64daf3fd6a1d6d0"
+  "div.box12_if_dividends": "907369ac765cea6c8f02a3615d6c58d64cbf9f6577e290e6c91a2ad6c0015b1b"
  },
  "__rest__": "ab9ea5065d1d3f1a23ab77de1d140198c1b1c4bc6363087c360e4f5384b11029",
  "foreign": {

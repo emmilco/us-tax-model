@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "5",
   "agree / disagree / missing": "1 / 4 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -18,9 +18,9 @@
   },
   {
    "key": "sales.one",
-   "record": "fbbf3af035124a92e8a427710066c75bd44b8978de88143d1f092fae4a1b945b",
+   "record": "11211e59444fa5ac2ee57f3c70bd5ee979c26d40e2c04a2ea32ecce5cd727045",
    "status": "AGREE",
-   "subject_key": "aa2c39c8e88c6889c4e4c6e0f0ac37405bdd67c7d3887fd7fbc379f70803f34c"
+   "subject_key": "2db6ad4d97247d1907cfae1c23d4cf4015440d171c0813aaa4e526e2921c91e9"
   },
   {
    "key": "(e)",
@@ -31,10 +31,10 @@
   },
   {
    "key": "(g)",
-   "record": "0ebe531deb8f1b067cf266a5379257131dd1d8b9b20484a02370c182ecc88d08",
+   "record": "11211e59444fa5ac2ee57f3c70bd5ee979c26d40e2c04a2ea32ecce5cd727045",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation and scope; same reply and project as the earlier rulings. i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\"; i8949 p. 10, code W. Values: reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW, as the project. The reply adds boxes G and J (refused with every digital-asset box by sales.digital at sales.one), a sales.route detail condition (a Schedule D aggregate transaction with any code is refused by sales.bad_aggregate, so the condition changes no supported return) and its own refusals for other codes and adjusted aggregates. executable-triage-v2 (.transcription/triage/2025/sales.json, pass 8c6004669339; 1,767 fixtures, 500 generated returns seed 20261026, 466 partial records): 1,698 of 1,833 agree; 9 candidate-refuses, 120 candidate-unknown, 6 project-unknown, all on refused or incomplete returns; no completed return differs. This round changed only the wording of sales.wash_loss (stock received as pay, a bonus award), not an expression. Project stands.",
-   "subject_key": "469470f324a5599f3d03a5942e5ef4422485666e877824bfd89fbaa6f3561fcd"
+   "ruling": "Ruling: model error; i8949 p. 8, code B, 'Correct the error by entering an adjustment in column (g)', and p. 10, code W, 'enter the amount of the nondeductible loss as a positive number in column (g)'. Values on the supported case are the project's (reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW); boxes G and J are refused with every digital-asset box (sales.digital) and codes other than B and W at sales.bad_code (scope). The reply's own consistency gate (sales.h_wash_excess) figures the loss from sales.correct_basis, which is $0 when the code is W alone, and so refuses completed returns the project computes: sales.adjust.A.W, sales.adjust.D.W, sales.adjust.A.W.equal_loss (project column (g) $500.00, $500.00, $200.00; e.g. A.W: proceeds $6,000, reported basis $7,000, wash loss $500). The project refuses only a wash-sale loss above the loss after any code B correction (sales.wash_bad). Triage executable-triage-v2 (`.transcription/triage/2025/sales.json`, pass b91cbaa4b1d2): 1,616 of 1,951 agree, no value differs; 316 candidate-unknown (the reply reads sales.route, asked only after sd.route_each), 6 candidate-refuses (the three above, and special or other-code sales refused by the project at sales.one), 13 project-unknown. Same reading as the earlier rounds. Project stands.",
+   "subject_key": "c268d829e3c1e7d1747a768ec914c6a4fd3f9e1bd5151c2258a61208d4fe392b"
   },
   {
    "key": "(h)",
@@ -46,9 +46,9 @@
  ],
  "subjects": {
   "sales.route_if_chosen": "315219a45c1f5c9aaac7ee892631f48376b2ea29797dc0d2a21b65e861d12985",
-  "sales.one": "ecd3b715c9867ce79ec8109e2c52f4169d5619dcf304e1850eb3247049065dda",
+  "sales.one": "ae1bfa8a700288ff3b983c64fac736ac08874671cfd43bf01c0b8650a309aafa",
   "(e)": "b7f290bb5c1dd9dbd25b593ae9a7e0244a1e684e986b47849a9572b164e73d0d",
-  "(g)": "8c5e7c4b6c15b66814b237d3abf17b798ce115d648da208cc89d28bca8ade4f7",
+  "(g)": "f05b6c9f9d43ef2d2892e3ad71d09c1714cc41d6f6b7dcb4b46783287700737e",
   "(h)": "99ee2a26d2615b358c59742db7fe5cb7211304df3fd2300bdc0b375bc504b241"
  },
  "__rest__": "d66e458afa5745f8eec417fb8e25dc768244f7e1dca0d2d0114dfbf47d7cba76",

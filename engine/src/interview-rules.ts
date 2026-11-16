@@ -4,8 +4,7 @@
 // check-all). Each check prints its wall time.
 //
 //   no-input-set      every value comes from an answer the filer gave. The interview data sets no input value: every
-//                     profile's `initial` is empty (the three single-filer slice profiles' fixed filer, pinned below,
-//                     excepted); each roster choice's label maps to exactly one value and one fixed set of recorded
+//                     profile's `initial` is empty; each roster choice's label maps to exactly one value and one fixed set of recorded
 //                     answers, and each enum value label to exactly one value of its enum; a choice records only
 //                     inputs of the entries it creates, or an input on the allow-list (RECORD_ALLOWED in interview.ts:
 //                     the filing status, as married filing jointly, by the couple's choice of the person roster), each
@@ -30,13 +29,23 @@
 //   minimal returns   per profile, a return answering every question with its closed answer (zero, false, an empty
 //                     roster, the first enum value; the other value where that one refuses), then the same with each
 //                     existence gate (an input a gate line's guard reads) opened alone. Each must complete without
-//                     asking an input gated by a closed gate
+//                     asking an input gated by a closed gate. Then, on the full profile, the closed return with each
+//                     roster it asks given one entry, alone (a roster nested under that entry one entry too), every
+//                     answer closed, gated ones included: each must complete, and is classed and answered in random
+//                     orders like a generated return
 //
 // Walks: the full profile over the whole-return fixtures (fixtures/<year>/returns.json) and generated returns (generate.ts), the New York profile over
-// the New York stage fixtures and generated returns with New York answers. A generated return whose walk reaches a
+// the New York stage fixtures and generated returns with New York answers. The generated returns of each profile are
+// drawn from a pool (POOL returns, seed SEED): the first GENERATED whatever their status, and further returns
+// until COMPLETE of those walked have stated answers that evaluate to a complete return, since only a complete return
+// is classed for reach and early completion. A generated return whose walk reaches a
 // question it does not answer is counted as not walkable, not failed (the generator does not answer every input). The
 // random traversals take every New York fixture of RANDOM_EVERY and every other case. On a refused return the
 // questions left open at the refusal are not leaks, so its random traversal checks only order.
+//
+// The seeded orders do not depend on the question set: a random traversal answers, of the open questions, the one whose
+// key has the least hash under its seed (stableRank), a shuffled replay sorts the answers so, and a random subset keeps an
+// answer by its own hash; adding, removing or renaming a question leaves the order among the others as it was.
 //
 // The walks are independent: each loop's iterations run on worker threads (pool.ts's size), each with its own copy of
 // the data and the seed the serial loop would give it, and their results are taken back in the loop's order, so the
@@ -61,12 +70,13 @@ import { loadFixtureCases, walkedCases } from "./fixture-inputs.js";
 import { YEAR } from "./year.js";
 import type { CanonicalData, Expr, Inputs, Line } from "./types.js";
 
-const PROFILES = ["social-security", "sales", "stage4", "full", "ny"] as const;
-/** Profiles allowed a non-empty `initial`, with exactly that value: slice profiles of Stages 2 to 4, whose scope is a
- * single filer. The full and New York profiles, the return a filer prepares, have none. */
-const SLICE_INITIAL = JSON.stringify({ $person: ["taxpayer"], "person[taxpayer].role": "taxpayer" });
-const INITIAL_ALLOWED: Record<string, string> = { "social-security": SLICE_INITIAL, sales: SLICE_INITIAL, stage4: SLICE_INITIAL };
+const PROFILES = ["full", "ny"] as const;
+/** The leading generated returns of the pool walked whatever their status (interview-length walks the same ones). */
 export const GENERATED = Number(process.env["INTERVIEW_RULES_RUNS"] ?? 12);
+/** Complete generated returns walked per profile, the leading ones included (fewer where the pool holds fewer). */
+const COMPLETE = Number(process.env["INTERVIEW_RULES_COMPLETE"] ?? 60);
+/** Generated returns drawn per profile to find them. */
+const POOL = Number(process.env["INTERVIEW_RULES_POOL"] ?? 2000);
 const RANDOM_EVERY = Number(process.env["INTERVIEW_RULES_RANDOM_EVERY"] ?? 3);
 /** Random traversals per chosen walk, each with its own seed. */
 const RANDOM_SEEDS = Number(process.env["INTERVIEW_RULES_SEEDS"] ?? 5);
@@ -75,7 +85,7 @@ const BASELINE = resolve(import.meta.dirname, "../..", "tools", "interview_rules
 const ROOT = resolve(import.meta.dirname, "../..");
 const PRUNING = resolve(ROOT, "reports", String(YEAR), "interview_pruning.md");
 /** The run check-all makes: the pruning report is compared only on it, since its counts follow the run's size. */
-const DEFAULT_RUN = ["INTERVIEW_RULES_RUNS", "INTERVIEW_RULES_RANDOM_EVERY", "INTERVIEW_RULES_SEEDS"].every((k) => process.env[k] === undefined);
+const DEFAULT_RUN = ["INTERVIEW_RULES_RUNS", "INTERVIEW_RULES_COMPLETE", "INTERVIEW_RULES_POOL", "INTERVIEW_RULES_RANDOM_EVERY", "INTERVIEW_RULES_SEEDS"].every((k) => process.env[k] === undefined);
 /** The held lists, each keyed by input template with a reason. */
 interface Baseline { early_completion: Record<string, string>; order_dependent_reach: Record<string, string>; walked_unused: Record<string, string> }
 
@@ -100,10 +110,20 @@ function rng(seed: number): () => number {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
-function shuffled<T>(xs: T[], rand: () => number): T[] {
-  const out = [...xs];
-  for (let i = out.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [out[i], out[j]] = [out[j]!, out[i]!]; }
-  return out;
+/** A key's rank in [0, 1) under a seed (FNV-1a, then mulberry32's finalizer): the same for a key whatever other keys
+ * exist, so an order taken by rank does not move when a question is added or removed. */
+export function stableRank(seed: number, key: string): number {
+  let h = 2166136261 >>> 0;
+  for (const c of `${seed}:${key}`) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0;
+  return rng(h)();
+}
+/** The open question a random traversal answers next: the least rank under its seed. */
+export function stablePick(seed: number): (open: string[]) => string {
+  return (open) => open.reduce((a, b) => (stableRank(seed, b) < stableRank(seed, a) ? b : a));
+}
+/** The answers in a seeded order that does not depend on which other answers there are. */
+function shuffled(events: Event[], seed: number): Event[] {
+  return [...events].sort((a, b) => stableRank(seed, a.input) - stableRank(seed, b.input));
 }
 
 export class Unanswered extends Error {}
@@ -248,7 +268,7 @@ export function staticProblems(data: CanonicalData, configs: Record<string, Inte
   const errors: string[] = [];
   for (const [p, c] of Object.entries(configs)) {
     const initial = JSON.stringify(c.initial);
-    if (Object.keys(c.initial).length && initial !== INITIAL_ALLOWED[p]) errors.push(`no-input-set: profile ${p}: initial ${initial} sets input values; the interview sets none`);
+    if (Object.keys(c.initial).length) errors.push(`no-input-set: profile ${p}: initial ${initial} sets input values; the interview sets none`);
     for (const q of c.questions) {
       if (q.value_labels) {
         const meta = inputMeta(data, q.input);
@@ -265,7 +285,7 @@ export function staticProblems(data: CanonicalData, configs: Record<string, Inte
       errors.push(...recordProblemsIn(data, q, `no-input-set: ${p} ${q.input}`));
     }
     // An entry input the choices record is never asked: it has no question, and no profile starts with it unanswered
-    // beside a listed entry (the slice profiles' fixed filer states its role).
+    // beside a listed entry.
     for (const [template, roster] of recordedTemplates(c)) {
       if (c.questions.some((q) => q.input === template)) errors.push(`no-input-set: ${p} ${template}: the choices of ${roster} record it, and the bank also asks it`);
     }
@@ -358,6 +378,32 @@ export function minimalAnswers(data: CanonicalData, config: InterviewData, profi
   return answers;
 }
 
+/** The entry key the one-entry minimal returns give a roster. */
+const ENTRY = "e1";
+
+/** The one entry a one-entry minimal return gives a roster: where the roster's question offers fixed choices, the
+ * first choice of one entry (its key), else ENTRY. */
+function entryKey(config: InterviewData, template: string): string {
+  const one = config.questions.find((q) => q.input === template)?.choices?.find((c) => c.value.length === 1);
+  return one ? one.value[0]! : ENTRY;
+}
+
+/** A one-entry minimal return's answers (full profile): `roster` (a roster template) and every roster nested under its
+ * entry get one entry, every other roster none (the taxpayer alone for `$person`), and every other input its closed
+ * answer, gated or not: the walk asks only what the interview reaches. */
+export function entryAnswers(data: CanonicalData, config: InterviewData, roster: string): Answers {
+  const own = entryKey(config, roster);
+  return (key, current) => {
+    if (key.startsWith("$")) {
+      const t = questionTemplate(key);
+      if (t === "$person") return { value: ["taxpayer"] };
+      const nested = key.includes(`.${roster.slice(1)}[${own}]`) || key.includes(`@${roster.slice(1)}[${own}]`);
+      return { value: t === roster || nested ? [entryKey(config, t)] : [] };
+    }
+    return { value: closedAnswer(data, config, key, current) };
+  };
+}
+
 /** One unit of the walks' work, done by a worker thread (interview-rules-worker.ts) on its own copy of the data. Each
  * kind is the body of one serial loop over cases or walks, for one case or walk; its seed comes from the main thread,
  * so the work is the same whichever thread does it. Leaks come back as lists of reachable inputs, in the order the
@@ -368,13 +414,16 @@ export type Task =
   | { kind: "order"; profile: "full" | "ny"; group: string; c: Case; w: Walk }
   | { kind: "random"; profile: "full" | "ny"; group: string; c: Case; w: Walk; seed: number }
   | { kind: "subsets"; profile: "full" | "ny"; w: Walk; seed: number }
-  | { kind: "minimal"; profile: "full" | "ny"; open: { input: string; value: unknown } | null };
+  | { kind: "minimal"; profile: "full" | "ny"; open: { input: string; value: unknown } | null }
+  | { kind: "entry"; profile: "full"; roster: string }
+  | { kind: "status"; profile: "full" | "ny"; inputs: Inputs };
 /** `reached` (random): the inputs a complete return's traversal reached that its bank-order walk never asked. */
 export type TaskResult =
   | { kind: "walked"; w: Walk; leaks: string[][]; bad: string | null; classes: Classes | null }
   | { kind: "unanswered"; input: string; leaks: string[][] }
   | { kind: "failed"; error: string; leaks: string[][] }
-  | { kind: "errors"; errors: string[]; leaks: string[][]; reached: string[] };
+  | { kind: "errors"; errors: string[]; leaks: string[][]; reached: string[] }
+  | { kind: "status"; status: string; leaks: string[][] };
 
 export interface Context { data: CanonicalData; configs: Record<(typeof PROFILES)[number], InterviewData> }
 
@@ -385,10 +434,12 @@ export function loadContext(): Context {
 export function runTask({ data, configs }: Context, task: Task): TaskResult {
   const leaks: string[][] = [];
   const config = configs[task.profile];
-  if (task.kind === "walk" || task.kind === "minimal") {
+  if (task.kind === "status") return { kind: "status", status: interviewStatus(data, config, task.inputs).status, leaks };
+  if (task.kind === "walk" || task.kind === "minimal" || task.kind === "entry") {
     try {
-      if (task.kind === "minimal") {
-        const w = minimalWalk(data, config, task.profile, task.open, (r) => leaks.push(r));
+      if (task.kind === "minimal" || task.kind === "entry") {
+        const w = task.kind === "entry" ? walk(data, config, entryAnswers(data, config, task.roster), bankOrder(config), 800, (r) => leaks.push(r))
+          : minimalWalk(data, config, task.profile, task.open, (r) => leaks.push(r));
         return { kind: "walked", w, leaks, bad: onlyGiven(config, w.events), classes: w.status === "complete" ? classify(data, config, replayed(config, w.events), w) : null };
       }
       const w = walk(data, config, fromInputs(task.c.inputs), bankOrder(config), 800, (r) => leaks.push(r));
@@ -402,8 +453,7 @@ export function runTask({ data, configs }: Context, task: Task): TaskResult {
   const { w } = task;
   if (task.kind === "order") {
     const { group, c } = task;
-    const rand = rng(SEED + w.events.length);
-    for (const [how, events] of [["reversed", w.events.toReversed()], ["shuffled", shuffled(w.events, rand)]] as const) {
+    for (const [how, events] of [["reversed", w.events.toReversed()], ["shuffled", shuffled(w.events, SEED)]] as const) {
       const inputs = replayed(config, events);
       const st = interviewStatus(data, config, inputs);
       if (st.status !== w.status || targetKey(data, config, inputs) !== w.valuesKey) errors.push(`order: ${group}: ${c.id}: the answers ${how} give a different ${st.status !== w.status ? `status (${st.status}, not ${w.status})` : "value"}`);
@@ -412,17 +462,15 @@ export function runTask({ data, configs }: Context, task: Task): TaskResult {
     }
   } else if (task.kind === "random") {
     const { group, c } = task;
-    const rand = rng(task.seed);
     try {
-      const r = walk(data, config, fromInputs(replayed(config, w.events)), (open) => open[Math.floor(rand() * open.length)]!, 800, (x) => leaks.push(x), (k) => { if (w.status === "complete") reached.add(k); });
+      const r = walk(data, config, fromInputs(replayed(config, w.events)), stablePick(task.seed), 800, (x) => leaks.push(x), (k) => { if (w.status === "complete") reached.add(k); });
       if (r.status !== w.status || r.valuesKey !== w.valuesKey) errors.push(`order: ${group}: ${c.id}: a random answering order gives a different ${r.status !== w.status ? `status (${r.status}, not ${w.status})` : "value"}`);
     } catch (e) {
       errors.push(`order: ${group}: ${c.id}: random answering order: ${String(e)}`);
     }
   } else {
-    const rand = rng(task.seed);
     for (let k = 0; k < 3; k++) {
-      const kept = w.events.filter(() => rand() < 0.5);
+      const kept = w.events.filter((e) => stableRank(task.seed + k, e.input) < 0.5);
       const st = interviewStatus(data, config, replayed(config, kept));
       if (st.status === "complete" && st.reachableInputs.length) leaks.push(st.reachableInputs);
     }
@@ -494,17 +542,39 @@ export async function interviewRules(args: string[] = []): Promise<number> {
   };
 
   // The walks: (profile, case) pairs from the fixtures and generated returns.
-  const groups: { name: string; profile: "full" | "ny"; cases: Case[]; generated: boolean }[] = await timed("generate returns", () => [
-    { name: "full: Stage 5 fixtures", profile: "full", cases: fixtureCases("full", data), generated: false },
-    { name: "ny: New York fixtures", profile: "ny", cases: fixtureCases("ny", data), generated: false },
-    { name: "full: generated returns", profile: "full", cases: sampleReturns(data, GENERATED, SEED).map((inputs, i) => ({ id: `generated.${i}`, inputs })), generated: true },
-    { name: "ny: generated returns", profile: "ny", cases: fc.sample(nyReturnArbitrary(data), { seed: SEED, numRuns: GENERATED }).map((inputs, i) => ({ id: `ny.generated.${i}`, inputs })), generated: true },
-  ]);
-
   // Each loop below sends its iterations to the workers and takes the results back in the loop's order.
   const limit = poolSize();
   const workers = new Workers(limit);
   try {
+    const selection: string[] = [];
+    /** The generated returns walked: of the pool, in order, the first GENERATED, and then those whose stated answers
+     * evaluate to a complete return until COMPLETE complete ones are walked. Statuses are taken a chunk at a time, until
+     * enough are found. */
+    const generatedCases = async (profile: "full" | "ny", prefix: string, pool: Inputs[]): Promise<Case[]> => {
+      const out: Case[] = [];
+      let complete = 0, looked = 0;
+      const chunk = Math.max(limit * 4, COMPLETE * 2, GENERATED);
+      for (let at = 0; at < pool.length && (complete < COMPLETE || at < GENERATED); at += chunk) {
+        const part = pool.slice(at, at + chunk);
+        const statuses = await mapPool(part, (inputs) => workers.run({ kind: "status", profile, inputs }), limit);
+        for (const [j, r] of statuses.entries()) {
+          const i = at + j;
+          const status = r.kind === "status" ? r.status : "";
+          const take = i < GENERATED || (status === "complete" && complete < COMPLETE);
+          if (status === "complete" && take) complete++;
+          if (take) out.push({ id: `${prefix}${i}`, inputs: part[j]! });
+          if (take) looked = i + 1;
+        }
+      }
+      selection.push(`${profile}: ${out.length} generated return(s) of the first ${looked} of a pool of ${pool.length} (seed ${SEED}): the first ${Math.min(GENERATED, pool.length)}, and complete ones to ${complete} complete`);
+      return out.sort((a, b) => Number(a.id.slice(prefix.length)) - Number(b.id.slice(prefix.length)));
+    };
+    const groups: { name: string; profile: "full" | "ny"; cases: Case[]; generated: boolean }[] = await timed("generate returns, and select the complete ones", async () => [
+      { name: "full: Stage 5 fixtures", profile: "full", cases: fixtureCases("full", data), generated: false },
+      { name: "ny: New York fixtures", profile: "ny", cases: fixtureCases("ny", data), generated: false },
+      { name: "full: generated returns", profile: "full", cases: await generatedCases("full", "generated.", sampleReturns(data, POOL, SEED)), generated: true },
+      { name: "ny: generated returns", profile: "ny", cases: await generatedCases("ny", "ny.generated.", fc.sample(nyReturnArbitrary(data), { seed: SEED, numRuns: POOL })), generated: true },
+    ]);
     const walks: { group: string; profile: "full" | "ny"; c: Case; w: Walk }[] = [];
     const counts: string[] = [];
     await timed("completion and no-input-set: walks in bank order", async () => {
@@ -585,8 +655,29 @@ export async function interviewRules(args: string[] = []): Promise<number> {
       const opened = await mapPool(tasks, ({ profile, open }) => workers.run({ kind: "minimal", profile, open }), limit);
       for (const [i, { profile, open }] of tasks.entries()) minimalResult(`${profile}: ${open.input} = ${JSON.stringify(open.value)} alone`, opened[i]!);
       minimal.push(`${tasks.length} return(s) with one existence gate opened`);
+      // One entry per roster: the rosters the closed full return asks (the person roster aside: its other choice is
+      // the couple, which the existence gates do not reach), each given one entry alone.
+      const full = closed[0]!;
+      const rosters = full.kind === "walked" ? [...new Set(full.w.events.map((e) => e.input).filter((k) => k.startsWith("$")).map(questionTemplate))].filter((t) => t !== "$person").sort() : [];
+      const entries = await mapPool(rosters, (roster) => workers.run({ kind: "entry", profile: "full", roster }), limit);
+      const chosen: { group: string; c: Case; w: Walk; seed: number }[] = [];
+      for (const [i, roster] of rosters.entries()) {
+        const name = `full: ${roster} with one entry`;
+        if (!minimalResult(name, entries[i]!)) continue;
+        const w = (entries[i] as Extract<TaskResult, { kind: "walked" }>).w;
+        for (let s = 0; s < RANDOM_SEEDS; s++) chosen.push({ group: "minimal", c: { id: name, inputs: w.inputs }, w, seed: SEED * 1000 + 900 + i + s * 100003 });
+      }
+      const random = await mapPool(chosen, ({ group, c, w, seed }) => workers.run({ kind: "random", profile: "full", group, c, w, seed }), limit);
+      for (const [k, r] of random.entries()) {
+        const { c } = chosen[k]!;
+        for (const reachable of r.leaks) leakIn(`minimal: ${c.id} (random order)`)(reachable);
+        if (r.kind !== "errors") continue;
+        errors.push(...r.errors);
+        for (const x of r.reached) if (!outOfOrder.has(questionTemplate(x))) outOfOrder.set(questionTemplate(x), `minimal: ${c.id}: ${x}, in a random order`);
+      }
+      minimal.push(`${rosters.length} return(s) with one entry in one roster (${rosters.join(", ")}), each answered in ${RANDOM_SEEDS} random orders`);
     });
-    return report(walks.length, traversals, counts, minimal);
+    return report(walks.length, traversals, [...selection, ...counts], minimal);
   } finally {
     await workers.close();
   }
@@ -660,7 +751,7 @@ function selfTest(): number {
   assert.deepEqual(staticProblems(data, configs), []);
   const planted = (edit: (c: Record<string, InterviewData>) => void) => { const c = structuredClone(configs); edit(c); return staticProblems(data, c).join("\n"); };
   assert.match(planted((c) => { c["full"]!.initial = { "s1.line7": 0 }; }), /profile full: initial .* sets input values/);
-  assert.match(planted((c) => { c["sales"]!.initial = { ...c["sales"]!.initial, "s1.line7": 0 }; }), /profile sales: initial/);
+  assert.match(planted((c) => { c["ny"]!.initial = { ...c["ny"]!.initial, "s1.line7": 0 }; }), /profile ny: initial/);
   const choices = (c: Record<string, InterviewData>) => c["full"]!.questions.find((q) => q.choices)!.choices!;
   assert.match(planted((c) => { const ch = choices(c); ch[1]!.label = ch[0]!.label; }), /two choices share a label/);
   assert.match(planted((c) => { const ch = choices(c); ch[1]!.value = [...ch[0]!.value]; ch[1]!.labels = { ...ch[0]!.labels }; }), /two choices give the same value/);
@@ -749,6 +840,19 @@ function selfTest(): number {
     const r = walked({ ...base, ...edit });
     assert.ok(r.kind === "failed" && /the interview cannot produce it/.test(r.error), `${what}: ${JSON.stringify(r.kind === "failed" ? r.error : r.kind)}`);
   }
+  // The seeded orders do not move with the question set: the pick among the other questions, and the replay order of
+  // the other answers, are the same with a question added or one removed.
+  const keys = config.questions.slice(0, 60).map((q) => q.input);
+  for (let seed = 0; seed < 30; seed++) {
+    const before = stablePick(seed)(keys);
+    const added = stablePick(seed)([...keys, "planted.added"]);
+    assert.ok(added === before || added === "planted.added", `seed ${seed}: an added question moves the pick from ${before} to ${added}`);
+    const gone = keys[seed % keys.length]!;
+    if (gone !== before) assert.equal(stablePick(seed)(keys.filter((k) => k !== gone)), before, `seed ${seed}: removing ${gone} moves the pick`);
+    const events = keys.map((input) => ({ input, value: true }));
+    const order = shuffled(events, seed).map((e) => e.input);
+    assert.deepEqual(shuffled([...events, { input: "planted.added", value: true }], seed).map((e) => e.input).filter((k) => k !== "planted.added"), order, `seed ${seed}: an added answer reorders the shuffled replay`);
+  }
   assert.deepEqual(leakProblems(new Map([["p.a", "case 1"]]), { "p.a": "held" }), []);
   assert.match(leakProblems(new Map([["p.a", "case 1"], ["p.b", "case 2"]]), { "p.a": "held" }).join("\n"), /case 2: reported complete while p\.b is reachable/);
   assert.match(leakProblems(new Map(), { "p.a": "held" }).join("\n"), /p\.a no longer leaks/);
@@ -783,7 +887,7 @@ function selfTest(): number {
   assert.equal(r.classes!.outOfOrder[pair.leaked], pair.decider);
   const withheld = runTask({ data: leaky, configs: context.configs }, { kind: "random", profile: "full", group: "self-test", c, w: r.w, seed: SEED });
   assert.ok(withheld.kind === "errors" && !withheld.errors.length, "the random traversal still agrees on the values");
-  console.log(`interview-rules self-test: passed (profile initial, roster choices, value labels and their entry hint, replay, early-completion baseline; what a choice records: ${limits.length} limits each flagged, a gated input, a nested roster, the answer event, a changed choice, replayed records against the bank, a log of the earlier questions, a return the interview cannot produce; minimal returns, ${gate.input} ungated and its gate inverted; a leak of leftover ${pair.leaked} behind ${pair.decider})`);
+  console.log(`interview-rules self-test: passed (profile initial, roster choices, value labels and their entry hint, replay, early-completion baseline; what a choice records: ${limits.length} limits each flagged, a gated input, a nested roster, the answer event, a changed choice, replayed records against the bank, a log of the earlier questions, a return the interview cannot produce; seeded orders unmoved by an added or removed question; minimal returns, ${gate.input} ungated and its gate inverted; a leak of leftover ${pair.leaked} behind ${pair.decider})`);
   return 0;
 }
 

@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.base",
-      "walk": "stage4",
       "covers": [
         "base"
       ],
@@ -54,7 +53,6 @@
     },
     {
       "id": "stage4.medicare.single.-1",
-      "walk": "stage4",
       "covers": [
         "medicare.single.-1"
       ],
@@ -85,7 +83,6 @@
     },
     {
       "id": "stage4.medicare.single.0",
-      "walk": "stage4",
       "covers": [
         "medicare.single.0"
       ],
@@ -116,7 +113,6 @@
     },
     {
       "id": "stage4.medicare.single.100000",
-      "walk": "stage4",
       "covers": [
         "medicare.single.100000"
       ],
@@ -143,7 +139,6 @@
     },
     {
       "id": "stage4.medicare.hoh.-1",
-      "walk": "stage4",
       "covers": [
         "medicare.hoh.-1"
       ],
@@ -185,7 +180,6 @@
     },
     {
       "id": "stage4.medicare.hoh.0",
-      "walk": "stage4",
       "covers": [
         "medicare.hoh.0"
       ],
@@ -227,7 +221,6 @@
     },
     {
       "id": "stage4.medicare.hoh.100000",
-      "walk": "stage4",
       "covers": [
         "medicare.hoh.100000"
       ],
@@ -265,7 +258,6 @@
     },
     {
       "id": "stage4.medicare.qss.-1",
-      "walk": "stage4",
       "covers": [
         "medicare.qss.-1"
       ],
@@ -298,7 +290,6 @@
     },
     {
       "id": "stage4.medicare.qss.0",
-      "walk": "stage4",
       "covers": [
         "medicare.qss.0"
       ],
@@ -331,7 +322,6 @@
     },
     {
       "id": "stage4.medicare.qss.100000",
-      "walk": "stage4",
       "covers": [
         "medicare.qss.100000"
       ],
@@ -360,7 +350,6 @@
     },
     {
       "id": "stage4.medicare.mfs.-1",
-      "walk": "stage4",
       "covers": [
         "medicare.mfs.-1"
       ],
@@ -395,7 +384,6 @@
     },
     {
       "id": "stage4.medicare.mfs.0",
-      "walk": "stage4",
       "covers": [
         "medicare.mfs.0"
       ],
@@ -430,7 +418,6 @@
     },
     {
       "id": "stage4.medicare.mfs.100000",
-      "walk": "stage4",
       "covers": [
         "medicare.mfs.100000"
       ],
@@ -461,7 +448,6 @@
     },
     {
       "id": "stage4.medicare.mfj.-1",
-      "walk": "stage4",
       "covers": [
         "medicare.mfj.-1"
       ],
@@ -501,7 +487,6 @@
     },
     {
       "id": "stage4.medicare.mfj.0",
-      "walk": "stage4",
       "covers": [
         "medicare.mfj.0"
       ],
@@ -541,7 +526,6 @@
     },
     {
       "id": "stage4.medicare.mfj.100000",
-      "walk": "stage4",
       "covers": [
         "medicare.mfj.100000"
       ],
@@ -577,7 +561,6 @@
     },
     {
       "id": "stage4.medicare.withholding",
-      "walk": "stage4",
       "covers": [
         "medicare.withholding"
       ],
@@ -692,7 +675,6 @@
     },
     {
       "id": "stage4.medicare.withholding_floor",
-      "walk": "stage4",
       "covers": [
         "medicare.withholding_floor"
       ],
@@ -715,7 +697,6 @@
     },
     {
       "id": "stage4.refuse.8959",
-      "walk": "stage4",
       "covers": [
         "f8959.unsupported"
       ],

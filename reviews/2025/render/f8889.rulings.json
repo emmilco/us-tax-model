@@ -5,6 +5,16 @@
   {
    "printed": "13",
    "restated": "Choose — [helper \"Any HSA contributions for 2025 (yours or your employer's)\" = true → helper \"Generally, enter the smaller of line 2 or line 12\"] [helper \"Any HSA contributions for 2025 (yours or your employer's)\" = false → helper \"The HSA deduction with no contributions for 2025 (zero)\"]",
+   "model": "The program has no case for prior-year excess contributions. The Form 5329 instructions say 'Also include on your 2025 Form 8889, line 13, the smaller of: Form 5329, line 43; or the excess, if any, of Form 5329, line 42, over Form 5329, line 44', so line 13 can exceed the smaller of lines 2 and 12, or be nonzero with no 2025 contributions. No refusal names this case.",
+   "ruling": "Ruling: scope; i5329 p. 8, Line 43 and Line 47 (prior-year excess HSA contributions). The rendered line 13 is the smaller of line 2 and line 12 with zero when there are no 2025 contributions, which matches i8889 p. 8, Line 13, \"Generally, enter the smaller of line 2 or line 12\". The prior-year-excess case the model names is outside the tool and refused on the return, not at line 13: person.x_hsa_prior_excess (\"Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 ...\") feeds person.x_other, which refuses Form 5329 (\"Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII\"). Checked by evaluation: redesign.hsa.married_spouse_no_family_plan with person[taxpayer].x_hsa_prior_excess true refuses f5329.l4, f5329.l49 and f5329.tax at person[taxpayer].x_other. No wording defect in line 13's rendering.",
+   "context": "be47abcbc3c39b9ab0ca3bdd6fb5fe40b01a35f1a20eeb7dfd25bfed4d66f378",
+   "date": "2026-11-15",
+   "run": "425a1848741fa73c5bb36a86ff86ace030a01a58cb56b69474d2c0e352440753",
+   "subject_key": "08b32a6a4a8df81a0fd3c70bab9b4536595da8c564d87827a590ba048f19e8fb"
+  },
+  {
+   "printed": "13",
+   "restated": "Choose — [helper \"Any HSA contributions for 2025 (yours or your employer's)\" = true → helper \"Generally, enter the smaller of line 2 or line 12\"] [helper \"Any HSA contributions for 2025 (yours or your employer's)\" = false → helper \"The HSA deduction with no contributions for 2025 (zero)\"]",
    "model": "The smaller of line 2 or line 12 follows the general rule, but nothing adds or refuses the prior-year excess contribution amount. The Form 5329 instructions say: 'Also include on your 2025 Form 8889, line 13, the smaller of: Form 5329, line 43; or the excess, if any, of Form 5329, line 42, over Form 5329, line 44.'",
    "ruling": "Ruling: scope; project retained. i8889 p. 8, Prior Year Excess Contributions; i5329 p. 8. A prior-year excess is refused, not added: person.x_other asks every person about 'excess HSA contributions from an earlier year that you had not removed or used up before 2025 ..., whether or not you have a Form 8889 for 2025' and refuses Form 5329 and the return (walked: coverage row hsa.prior_year_excess). The refusal is on that form, which this page does not show.",
    "context": "3a93600d12ff8f2c4091ab04cc1e7ae2c3130b3ede255873c368107ffac0c622",
@@ -167,6 +177,16 @@
    "model": "The worksheet counts only months in which 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month', but the program multiplies $1,000 by all eligible months, self-only months included. The line 3 note ('the additional contribution amount is figured on line 7 and is not included on line 3') is in tension with that worksheet wording.",
    "ruling": "Ruling: reading recorded (amb.2025.hsa_line7_months, owner accepted after Stage 13); project retained. The register entry takes every eligible month, because line 3 leaves out the additional contribution amount for every month once a married filer had family coverage at any time (i8889 p. 5, Note, \"the additional contribution amount is figured on line 7 and is not included on line 3\"), so counting only family months would drop it for the self-only months altogether, and \"If items (1) and (2) apply to all months during 2025, enter $1,000\" (p. 7). The tension the model names is the one the register records.",
    "subject_key": "ca5a401614b9dbb9a6365c1579664d0521a084ea5ccb1423c3b713370a660dd9"
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = true → helper \"Additional Contribution Amount Worksheet, line 2: divide line 1 by 12\"] [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The worksheet counts only months in which 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month.' The restatement multiplies $1,000 by all eligible months, including self-only months, when coverage is figured month by month.",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted: count every month treated as eligible; i8889 p. 7, worksheet line 1, \"$1,000 × number of months eligible\", and p. 5, Line 3, Note, which takes the additional amount off line 3 for a married filer with family coverage at any time). The rendered English (f8889.line7_total, marked Interpretation: amb.2025.hsa_line7_months) states the chosen reading: all twelve months when treated as having the December 1 coverage all year, else every eligible month. The model reads the recorded alternative (family-coverage months only). Same ruling as the landing round.",
+   "context": "be47abcbc3c39b9ab0ca3bdd6fb5fe40b01a35f1a20eeb7dfd25bfed4d66f378",
+   "date": "2026-11-15",
+   "run": "425a1848741fa73c5bb36a86ff86ace030a01a58cb56b69474d2c0e352440753",
+   "subject_key": "65616756eebcd7248a10a0ec356ac7a2168deea350015bd70f557456038197bc"
   },
   {
    "printed": "7",

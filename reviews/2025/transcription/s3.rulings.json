@@ -218,6 +218,31 @@
   },
   {
    "printed": "s3.adoption_if_any",
+   "project_expr_sha256": "97189f4fa40b1caf761a699ca847e37fe3b893b86f74437f1aa587c3e41def7e",
+   "second_expr_sha256": "9b589eed749a3ad9bdf9aea0526847c4d0246ae979ea0446752e4910e6a07dba",
+   "ruling": "Ruling: interface gap; i8839 p. 1, Purpose of Form, \"You may be able to take this credit in 2025 if any of the following statements are true\"; p. 2, \"For the adoption of your spouse's child\". The prompt gives the id without its meaning. The reply makes s3.adoption_if_any the gate of the adoption questions (s3.adoption_any and s3.adoption) and puts the final-by-2025 and stepchild tests (BUG-0733 3b) in its own helper s3.h_adoption_now, which is the project's s3.adoption_if_any term for term (adoption_final true, adoption_stepchild false) and drives the reply's line 7 refusal. Triage (pass 1a67f25f3719): 3,167/3,178 agree; 11 project-unknown on incomplete or refused records; no value and no completed difference (no bank return answers an adoption not final or a stepchild adoption).",
+   "context": "68cfb827b461ef32457f73602f696ca96d11fbc7a33335eec676d4c42f6f555e",
+   "date": "2026-11-15",
+   "run": "2498ccc6abe5235325578bcc5492354aefeb794935d9dba0ffd5848ba39e631a",
+   "subject_key": "da394bc8dfd78bf3f229a9071aebdbaa11bbd7fe81732e8c9f92b2c8eb7c0929",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.adoption_any@s3",
+     "partial:stage14.asset.bonus_100-s3.adoption_any@s3",
+     "partial:stage14.asset.prior_7yr-s3.adoption_any@s3",
+     "partial:stage14.asset.qip-s3.adoption_any@s3",
+     "partial:stage14.asset.done-s3.adoption_any@s3",
+     "partial:stage14.asset.refuse_class-s3.adoption_any@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.adoption_if_any",
    "project_expr_sha256": "a4423ffbd0280555dddf7a9ae2ba3eb91f2368743c0ab977ec67eec3e89aa7d0",
    "second_expr_sha256": "9b589eed749a3ad9bdf9aea0526847c4d0246ae979ea0446752e4910e6a07dba",
    "ruling": "Ruling: representation; equivalent: the reply's conjunction of s3.adoption_any and s3.adoption is the project's gated choose (false without an adoption or expenses; i8839 p. 1, \"You may be able to take this credit in 2025 if any of the following statements are true\"). Triage (pass fc3ac0eb0f5d): 3,078/3,089 agree; 11 project-unknown (incomplete/refused partial records); no value difference.",
@@ -509,6 +534,45 @@
   },
   {
    "printed": "s3.other_credit",
+   "project_expr_sha256": "1237e301b38e49d53d862e6fbd4cffe2451a88080d730785d05be86f8500465e",
+   "second_expr_sha256": "396a3e8d7d56375fed1a6a106c1f4bc338517f1370fb4bba8d3a6f225e738374",
+   "ruling": "Ruling: representation; f8396 p. 2, Line 1 (the credit is a share of the certified mortgage interest paid); i1040gi Lines 6a-6z. Completed differences are only the reply's raw read of s3.mcc, which the project asks only with home mortgage interest (s3.mcc_if_interest): 41 candidate-unknown, and 1 value at redesign.credits.mcc_not_asked (sa.mortgage_interest $0 with a stray s3.mcc Yes: no interest, no credit; project false is right). The 13 refused-record value differences are the reply reading the id as lines 6a-6z while the project's gate also covers payments and carryovers refused elsewhere (ftc carryover, farmland, section 960(c), Form 8978), as ruled in the landing round; the return is refused either way. Triage (pass 1a67f25f3719): 2,563/3,178 agree.",
+   "context": "68cfb827b461ef32457f73602f696ca96d11fbc7a33335eec676d4c42f6f555e",
+   "date": "2026-11-15",
+   "run": "2498ccc6abe5235325578bcc5492354aefeb794935d9dba0ffd5848ba39e631a",
+   "subject_key": "abdab97c68a2f045dedec6e8dd656812aa755bd3687ddce50bdee61ff80cd260",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s3",
+     "fixture:classm.f2441.2.deepseek@s3",
+     "fixture:classm.f2441.3.deepseek@s3",
+     "fixture:classm.f2441.4.deepseek@s3",
+     "fixture:classm.f2441.5.deepseek@s3",
+     "fixture:classm.f2441.6.deepseek@s3",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@s3",
+     "fixture:stage16.cleanup.refuse.f1040_line16@s3",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@s3",
+     "fixture:redesign.hsa.testing_kept_age_unanswered@s3",
+     "fixture:mutation.t2.mfj_no_overtime_part3@s3",
+     "fixture:mutation.t2.s1a.line13_magi_first@s3",
+     "fixture:mutation.m3.scope.l16_f8978@s3",
+     "fixture:ss.other.components@s3",
+     "fixture:redesign.credits.refuse.ev_dealer@s3",
+     "fixture:redesign.credits.refuse.farmland@s3",
+     "fixture:redesign.credits.refuse.ftc_carryover@s3",
+     "fixture:redesign.credits.refuse.section960c@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.other_credit",
    "project_expr_sha256": "39f2c83c4417a0ec47545862fd791cdc9677fc92f89dc56c47376f0e80bb551c",
    "second_expr_sha256": "2d83eccba78d0267762472eebac0ab5df831f42cb1e899a7b77cfd77e46bc58e",
    "ruling": "Ruling: representation; the project's gate (label: \"A credit or payment of Schedule 3 this tool does not prepare\") covers credits and payments; the reply's covers lines 6a to 6z only and refuses the payment and other items at its own lines 12 and 14 (Form 4136 kerosene, sections 965 and 960(c), Form 8689, Form 1062, claim of right) and the foreign tax carryover at line 1 (ftc.needs1116). Triage (pass fc3ac0eb0f5d): 2,813/3,089 agree; 9 value differences, all on refused returns and all project true / reply false on items the reply refuses elsewhere (e.g. ss.other.components: kerosene; redesign.credits.refuse.section965, .section960c, .virgin_islands, .farmland, .ftc_carryover); the rest project- or candidate-unknown on unasked gates (6 candidate-unknown on completed returns). The return-level refusal is the same.",
@@ -626,6 +690,31 @@
    "date": "2026-11-12",
    "run": "2c4e1d5dfbdbce3d833285cf1a29ae0ac6090643633061841120008cf86fd5a9",
    "subject_key": "ede5d9cd08f737118e41c0439db994a67d038bcd2e68c16b83334d5a92288a9d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:stage14.asset.hy_5yr-s3.prior_other_forms@s3",
+     "partial:stage14.asset.bonus_100-s3.prior_other_forms@s3",
+     "partial:stage14.asset.prior_7yr-s3.prior_other_forms@s3",
+     "partial:stage14.asset.qip-s3.prior_other_forms@s3",
+     "partial:stage14.asset.done-s3.prior_other_forms@s3",
+     "partial:stage14.asset.refuse_class-s3.prior_other_forms@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.prior_amt_if_forms",
+   "project_expr_sha256": "deab93c96ee71067ec9a51477d6660c8d49d30ee9d2f158f029952bd7ad365b8",
+   "second_expr_sha256": "85e053d998bdb95482087ec758ec4dc76575b971fdce406b19e704c7b8d5da45",
+   "ruling": "Ruling: interface gap; i8801 p. 1, Who Should File, \"An AMT liability and adjustments or preferences other than exclusion items\" and \"The minimum tax credit is allowed only for the AMT caused by deferral items\". The prompt gives the id without its meaning. The reply makes it the 2024 AMT question under s3.prior_other_forms and puts the deferral-item test (BUG-0733 3a, s3.prior_amt_deferral) in its own helper s3.h_prior_amt_credit, which equals the project's s3.prior_amt_if_forms and drives its line 7 refusal. Triage (pass 1a67f25f3719): 3,166/3,178 agree; 12 project-unknown on incomplete or refused records; no value or completed difference.",
+   "context": "68cfb827b461ef32457f73602f696ca96d11fbc7a33335eec676d4c42f6f555e",
+   "date": "2026-11-15",
+   "run": "2498ccc6abe5235325578bcc5492354aefeb794935d9dba0ffd5848ba39e631a",
+   "subject_key": "1f87394898d3933b50e9ea097849ff9dda19f890924719e78558222c2a4ced5b",
    "triage": {
     "verdict": "differs",
     "kinds": [

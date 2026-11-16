@@ -47,6 +47,36 @@
    }
   },
   {
+   "printed": "(screen) (ira.special)",
+   "project_expr_sha256": "eec0f0e3703ec6a313f6052d5b7bdceb23269c516688fb90b54a01d54b6791d9",
+   "second_expr_sha256": "56fab929d93bbd8793ab468c597635f0f4e15a8c8909a777c1fc0efc971ba5a9",
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/ira.json (log sha matches): 2,680/2,728 agree; 44 candidate-unknown, 4 value; completed: 16 candidate-unknown. As the landing-round ruling. The project screen is any(care_payments, deferred_comp, fellowship, reservist_repaid), as its label says (\"deferred compensation, a fellowship not on a Form W-2, a reservist repayment, difficulty of care payments\"). The reply drops ira.reservist_repaid (i1040gi p. 95 item 9, \"Don’t include any repayments of qualified reservist distributions. You can’t deduct them\") and folds in two cases the project handles on separate lines: the joint traditional-plus-Roth case of item 2 (\"don’t use the IRA Deduction Worksheet in these instructions\", the project's line at forms/2025/ira.yaml under item 2 reading ira.roth_total) and ira.se_capital (refused through ira.se_capital_gate on line 9). Differences are 44 candidate-unknowns (16 on completed returns: the reply reads ira.se_capital and the roth sums unasked) and 4 values, none on a completed return. The project line is right under the source.",
+   "context": "9813665dbae0cbdb9eebbb0aaf965d0545c0632a0cb9a3b8758c37d293239670",
+   "date": "2026-11-15",
+   "run": "5a74410d7ccfae384a0acc20b519704ddfd1846e4b5793f57215bad97f759649",
+   "subject_key": "e4c5f1e378f558de2e7f55d3e2b3fd8f71470cb43bdcba4b15599535d765a938",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.ira.2@ira",
+     "fixture:classm.person.2@ira",
+     "fixture:stage16.refuse.ira.both_kinds@ira",
+     "fixture:stage16.refuse.ira.se_capital@ira",
+     "fixture:mutation.m3.scope.oi_reservist_repaid@ira",
+     "fixture:mutation.m3.scope.l16_joint_unasked@ira",
+     "fixture:mutation.m1.ira.special_reservist@ira",
+     "generated:20261026.351@ira",
+     "partial:stage14.asset.hy_5yr-ira.se_capital@ira",
+     "partial:stage14.asset.bonus_100-ira.se_capital@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "11a",
    "project_expr_sha256": "ae21b408bd25d2919ea50c06940eebd41bddc26c19d913b45b1a3bf2622ff6f3",
    "second_expr_sha256": "fb47e52d91d839a5bb8c662936b41e6197415bf887bf403d5733f52d4e3373cd",

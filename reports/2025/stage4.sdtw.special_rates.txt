@@ -518,9 +518,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8995a] p. 2, Part IV, lines 27–40; i8995a p. 6, Part I, "If you don't have QBI, and only have REIT or PTP, skip Parts I through III and complete Part IV" (2025; created 2025-09-12; 3362db81)
 
 == Foreign tax credit — election without Form 1116 ==
-  (helper) Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7
+  (helper) Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7, less any tax that is not creditable (such as tax on a dividend that fails the holding period or must be paid over)
       = $0
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 3, Foreign Taxes Not Eligible for a Credit, item 5, "Foreign taxes withheld on a dividend from a corporation, if you haven’t held the stock for at least 16 days within the 31-day period that begins 15 days before the ex-dividend date", and item 6, "Foreign taxes withheld on a dividend to the extent that you have to make related payments on positions in substantially similar or related property" (2025; printed date 2025-12-23; 6998cf8c)
   (gate) Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter
       = true
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
@@ -609,6 +609,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
+  (helper) Not married at the end of 2025
+      = true
+      cite: [i1040gi] p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Unmarried, or considered unmarried under the head of household rules, at the end of 2025
+      = true
+      cite: [i1040gi] p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Have you ever been married?
       = true
       cite: [i1040gi] p. 13, Filing Status, Single, "You were never married" (2025; printed date 2026-02-25; 482e9c48)
@@ -632,6 +638,20 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Head of household checked without meeting its tests
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of people listed as dependents
+      = 0
+      cite: [i1040gi] p. 14, Head of Household, Test 2 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $dependent:
+  (helper) At least one person is listed as a dependent
+      = false
+      cite: [i1040gi] p. 14, Head of Household, Test 2 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Test 2 met on a single return: asked only when a dependent is listed (false with none)
+      = false
+      cite: [i1040gi] p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["household.dependents_any",{"const":false}],"op":"test"}
+  (gate) Single checked, though you were unmarried and Test 2 of head of household is met (Test 1, a parent's separate home, is not checked)
+      = false
+      cite: [i1040gi] p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Qualifying surviving spouse checked without meeting its tests
       = false
       cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "use joint return tax rates for 2025 if all of the following apply" (2025; printed date 2026-02-25; 482e9c48)
@@ -1165,7 +1185,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040sc] p. 1, Reminders, Excess business loss limitation (2025; b5536db9)
   (helper) Threshold for excess business loss
       = $313,000
-      cite: [rp-2024-40] p. 17, section 3.32, Threshold for Excess Business Loss, "$313,000 ($626,000 for joint returns)" (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; 4de9db6b)
+      cite: [rp-2024-40] p. 17, .32 Threshold for Excess Business Loss, "$313,000 ($626,000 for joint returns)" (Rev. Proc. 2024-40; 2025 adjusted items; released 2024-10; 4de9db6b)
   (gate) The Schedule C losses are more than the excess business loss threshold
       = false
       cite: [i1040sc] p. 1, Reminders, "If you report a loss on line 31 ... you may be subject to a business loss limitation ... use Form 461" (2025; b5536db9)
@@ -1185,7 +1205,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 104, Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet; p. 108, line 14b (2025; printed date 2026-02-25; 482e9c48)
   3   Business income or (loss). Attach Schedule C
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 3; i1040sc p. 14, Line 31, "include it on Schedule 1 (Form 1040), line 3" (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 3; i1040gi p. 89, Line 3, "If you operated a business or practiced your profession as a sole proprietor, report your income and expenses on Schedule C."; i1040sc p. 14, Line 31, "include it on Schedule 1 (Form 1040), line 3" (2025; created 2025-07-25; 8dafec71)
       note: confirmed roster $person: taxpayer
   (helper) Did you (or, on a joint return, your spouse) receive in 2025 payments under a long-term care insurance contract, or accelerated death benefits under a life insurance contract (Form 1099-LTC; Form 8853)?
       = false
@@ -1283,7 +1303,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["s1.alimony_if_any",{"const":false}],"op":"test"}; Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or paid after a change after 2018 that expressly applies the post-2018 rules (one that states that those rules apply, or that alimony isn't deductible by the payer or isn't included in the recipient's income), are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
   (gate) Was any of your debt canceled or forgiven in 2025?
       = false
-      cite: [p4681] p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies" (2025; d87305a0)
+      cite: [p4681] p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt as gross income on your tax return unless one of the exceptions or exclusions described later applies"; p. 4, Discounts and Loan Modifications, "If a lender discounts (reduces) the principal balance of a loan because you pay it off early, or agrees to a loan modification (a “workout”) that includes a reduction in the principal balance of a loan, the amount of the discount or the amount of principal reduction is canceled debt" (2025; d87305a0)
   8c  Cancellation of debt
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 8c; i1040gi p. 91, Line 8c, "Canceled debt may be shown in box 2 of Form 1099-C. However, part or all of your income from cancellation of debt may be nontaxable" (2025; created 2025-07-25; 8dafec71)
@@ -1294,10 +1314,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $person: taxpayer
   9   Total other income. Add lines 8a through 8z
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 9 (lines 8a, 8d, 8e, 8k to 8q and 8s to 8v are refused by s1.line8_other) (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 9 (lines 8e, 8k, 8m and 8t to 8v are refused by s1.line8_other, 8a by scope.nol and 8l by scope.rental through scope.schedule1, 8d by sa.excluded_income, 8n and 8o by scope.cfc, 8p by the excess business loss refusal of s1.line3, 8q by person.x_other and 8s by scope.medicaid_waiver) (2025; created 2025-07-25; 8dafec71)
   10  Combine lines 1 through 7 and 9. This is your additional income. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 8
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 10 (lines 4 to 6, and the parts of lines 2 and 8 this tool does not compute, are outside this tool and refused at Form 1040 line 8 by scope.schedule1 and the line 8 screen) (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 10 (line 4 is refused by sd.other_forms on Schedule D, lines 5 and 6 by scope.schedule1 at Form 1040 line 8, the parts of line 2a this tool does not compute by s1.alimony_unsupported, and those of line 8 as the line 9 citation says) (2025; created 2025-07-25; 8dafec71)
   11  Educator expenses
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 11; i1040gi p. 93, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; created 2025-07-25; 8dafec71)
@@ -1407,19 +1427,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) In 2025, did you (or, on a joint return, your spouse) exercise stock options from an employer?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  (gate) Incentive stock options exercised in 2025 with the stock not disposed of in 2025, asked only with stock options exercised (false without them)
-      = false
-      cite: [i6251] p. 1, Who Must File, "Attach Form 6251 to your return if any of the following statements are true"; p. 4, Line 2i—Exercise of Incentive Stock Options, "For the regular tax, no income is recognized when an incentive stock option (ISO), as defined in section 422(b), is exercised. However, this rule doesn’t apply for the AMT" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); b130e873)
-      note: taken: {"eq":["s2.options_any",{"const":false}],"op":"test"}
-  (helper) Did shares that you (or, on a joint return, your spouse) bought before 2025 with incentive stock options vest in 2025, that is, first become yours to sell or no longer able to be forfeited?
-      = false
-      cite: [i6251] p. 4, Line 2i—Exercise of Incentive Stock Options, "when your rights in the acquired stock first become transferable or when these rights are no longer subject to a substantial risk of forfeiture", "you may elect to include in AMT income the excess of the stock’s FMV (determined without regard to any lapse restriction) over the exercise price upon the transfer to you"; p. 1, Who Must File, "Attach Form 6251 to your return if any of the following statements are true" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); b130e873)
-  (helper) Are you (or, on a joint return, your spouse) required to file Form 6251, or do you have an alternative minimum tax adjustment requiring its review, other than from incentive stock options exercised in 2025?
-      = false
-      cite: [i6251] Who Must File, "Attach Form 6251 to your return if any of the following statements are true" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); b130e873)
-  (helper) Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
-      = false
-      cite: [i1040gi] p. 112, Line 2, "See the Instructions for Form 6251 to see if you must file the form"; i6251 p. 1, Who Must File, "Attach Form 6251 to your return if any of the following statements are true"; i6251 p. 4, Line 2i—Exercise of Incentive Stock Options, "For the regular tax, no income is recognized when an incentive stock option (ISO), as defined in section 422(b), is exercised. However, this rule doesn’t apply for the AMT" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Does any Form W-2 you (or, on a joint return, your spouse) received for 2025 show an amount in box 8 (allocated tips), or code A, B, K, M, N or Z in box 12?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 5, 13, 17h and 17k (2025; created 2025-05-08; 64d867b6)
@@ -1434,13 +1441,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [f1040s2] Schedule 2 (2025), line 9, "Household employment taxes. Attach Schedule H" (2025; created 2025-05-08; 64d867b6)
       note: taken: {"eq":["s2.household_help",{"const":false}],"op":"test"}
-  (helper) Home mortgage interest is entered on Schedule A line 8a
-      = false
-      cite: [i1040gi] i1040sca p. 8, Line 8a, "Enter on line 8a mortgage interest and points reported to you on Form 1098"; p. 113, Line 17b, "If you sold your home in 2025 and it was financed (in whole or in part) from the proceeds of any tax-exempt qualified mortgage bond or you claimed the mortgage interest credit, you may owe a recapture tax on the mortgage subsidy" (2025; printed date 2026-02-25; 482e9c48)
-  (gate) A home with a federally subsidized mortgage sold in 2025, asked only when home mortgage interest is entered (false otherwise)
+  (gate) A home with a federally subsidized mortgage sold in 2025, asked only of a person who owned a home or other real estate in 2025 or paid interest on a loan secured by a home (false otherwise)
       = false
       cite: [i1040gi] p. 113, Line 17b, "If you sold your home in 2025 and it was financed (in whole or in part) from the proceeds of any tax-exempt qualified mortgage bond or you claimed the mortgage interest credit, you may owe a recapture tax on the mortgage subsidy" (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["s2.has_mortgage_interest",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sa.home_asked",{"const":false}],"op":"test"}
   (helper) Did you (or, on a joint return, your spouse) put money into a health savings account for 2024 under the last-month rule, or move money into one from an IRA in 2024, and then stop being eligible for a health savings account before the end of the testing period, without having a health savings account in 2025 (Form 8889, Part III)?
       = false
       cite: [f1040s2] Schedule 2 (2025), line 17d (2025; created 2025-05-08; 64d867b6)
@@ -1520,6 +1524,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i8839] p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"; i1040gi p. 116, Lines 6a Through 6z, "You may be able to take the adoption credit if you paid expenses to adopt a child or you adopted a child with special needs and the adoption became final in 2025" (2025; 90dd5f4d)
       note: taken: {"eq":["s3.adoption_any",{"const":false}],"op":"test"}
+  (gate) Whether such an adoption was final by the end of 2025, asked only when an adoption became final in 2025 or expenses were paid in 2025 (false otherwise)
+      = false
+      cite: [i8839] p. 3, Domestic Adoption, "the year after the year of the payment" and "the year the adoption becomes final"; p. 3, Foreign child, "you can’t take the adoption credit or exclusion unless the adoption becomes final" (2025; 90dd5f4d)
+      note: taken: {"eq":["s3.adoption_asked_if_any",{"const":false}],"op":"test"}
+  (gate) An adoption that can give the adoption credit for 2025: an adoption final in 2025, or 2025 expenses for an adoption final by then, of a child other than your spouse's child or of a child with special needs (false otherwise)
+      = false
+      cite: [i8839] p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"; i1040gi p. 116, Lines 6a Through 6z, "You may be able to take the adoption credit if you paid expenses to adopt a child or you adopted a child with special needs and the adoption became final in 2025" (2025; 90dd5f4d)
   (gate) Whether expenses were paid in 2024 for an adoption not final at the end of 2024, asked only with an adoption or adoption expenses in 2024 or 2025 (false without one)
       = false
       cite: [i8839] p. 1, Purpose of Form, "2024 and the adoption wasn’t final at the end of 2024"; p. 3, Domestic Adoption, "any year before the year the adoption becomes final" (2025; 90dd5f4d)
@@ -1622,6 +1633,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i8801] p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"; f8801 p. 2, Part II, "Enter the amount from your 2024 Form 6251, line 11" (2025; cf99d034)
       note: taken: {"eq":["s3.prior_other_forms",{"const":false}],"op":"test"}
+  (gate) Whether the 2024 Form 6251 shows an item other than an exclusion item, asked only when the 2024 return shows an alternative minimum tax liability (false otherwise)
+      = false
+      cite: [i8801] p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items" (2025; cf99d034)
+      note: taken: {"eq":["s3.prior_amt_if_other_forms",{"const":false}],"op":"test"}
+  (gate) A 2024 alternative minimum tax liability with an item other than an exclusion item, which can give a credit for 2025 on Form 8801 (false when the 2024 return has no form besides Form 1040 and its schedules, no such liability, or only exclusion items)
+      = false
+      cite: [i8801] p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"; p. 1, "The minimum tax credit is allowed only for the AMT caused by deferral items" (2025; cf99d034)
   (gate) Whether the 2024 return includes a form that can carry a credit into 2025, asked only when the 2024 return includes a form besides Form 1040 and its schedules (false otherwise)
       = false
       cite: [i3800] p. 3, Carryback and Carryforward of Unused Credit, "unused general business credits may be carried back 1 year and carried forward 20 years"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, "you may have an unused credit to carry forward to the next 3 tax years"; i8801 p. 1, Who Should File, "A credit carryforward to 2025 (on 2024 Form 8801, line 26)"; f8834 p. 2, Line 1, "Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR"; i8839 p. 1, Purpose of Form, "You have a carryforward of an adoption credit from 2024"; f8859 p. 1, Purpose of Form, "to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024"; i8912 p. 3, Line 12, "you may carry the unused portion of the credit to the next tax year" (2025; 97e4570d)
@@ -1706,9 +1724,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) In 2025, was state or local income tax taken out of your (or, on a joint return, your spouse's) pay?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, or income tax of a U.S. territory?
+  (helper) In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, income tax of a U.S. territory, or a state or local tax credit you received for a gift to charity and applied to your tax?
       = false
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [i1040sca] p. 3, Line 5a, "State and local estimated tax payments made during 2025", "Mandatory contributions to state family leave programs", Safe harbor for certain charitable contributions made in exchange for a state or local tax credit, "to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate" (2025; printed date 2025-12-08; b0999b12)
   (helper) State and local income taxes withheld from pay (zero when none was withheld)
       = $0
       cite: [i1040sca] p. 3, Line 5a, "State and local income taxes withheld from your salary during 2025. Your Form(s) W-2 will show these amounts", "don't include on line 5a any withheld taxes you deducted on other forms, such as Schedule C, E, or F" (2025; printed date 2025-12-08; b0999b12)
@@ -2017,7 +2035,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
       note: taken: {"eq":["sb.bonds_any_if_income",{"const":false}],"op":"test"}
-  (helper) Schedule B special treatment, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise
+  (helper) Schedule B special treatment (any nominee income or special treatment of bond or loan interest, each asked only when taxable interest, ordinary dividends or capital gain distributions are above zero, so false otherwise)
       = false
       cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
   (helper) FinCEN Form 114 (FBAR) required, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise
@@ -2271,12 +2289,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) In 2025, was your (or, on a joint return, your spouse's) property damaged, destroyed or stolen, leaving a loss that insurance did not cover or an insurance payment above what the property cost?
       = false
       cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4684 to report involuntary conversions of property due to casualty or theft." (2025; printed date 2025-12-11; 650643a6)
-  (helper) Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
+  (gate) Did you (or, on a joint return, your spouse) own an investment in an opportunity zone fund (QOF) at any time in 2025, or put off tax on a 2025 gain by investing in one?
       = false
-      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following.", "The involuntary conversion (other than from casualty or theft) of property used in a trade or business", "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.", "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.", "Use Form 4684 to report involuntary conversions of property due to casualty or theft.", "Use Form 6781 to report gains and losses from section 1256 contracts and straddles.", "Use Form 8824 to report like-kind exchanges."; p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method"; p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439." (2025; printed date 2025-12-11; 650643a6)
-  (helper) Did line 21 of your 2024 Schedule D show a loss?
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 8997 to report each QOF investment you held at the beginning and end of the tax year and the deferred gains associated with each investment. Also, use Form 8997 to report any capital gains you are deferring by investing in a QOF during the tax year and any QOF investment you disposed of during the tax year."; i8949 p. 12, "you will need to complete a Form 8997 for each year you hold the investment"; i1040gi p. 31, Line 7a, Exception 1, "You don’t have to file Form 8949 or Schedule D if you aren’t deferring any capital gain by investing in a qualified opportunity fund" (2025; printed date 2025-12-11; 650643a6)
+  (helper) Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or an investment in a qualified opportunity fund (Form 8997)? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
       = false
-      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "Use this worksheet to figure your capital loss carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss", "Otherwise, you don’t have any carryovers" (2025; printed date 2025-12-11; 650643a6)
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 8997 to report each QOF investment you held at the beginning and end of the tax year", "Use Form 4797 to report the following.", "The involuntary conversion (other than from casualty or theft) of property used in a trade or business", "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.", "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.", "Use Form 4684 to report involuntary conversions of property due to casualty or theft.", "Use Form 6781 to report gains and losses from section 1256 contracts and straddles.", "Use Form 8824 to report like-kind exchanges."; p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method"; p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439." (2025; printed date 2025-12-11; 650643a6)
+  (helper) Did line 21 of your 2024 Schedule D show a loss, or would it have, on a correct 2024 return, if you filed none or left a loss off?
+      = false
+      cite: [i1040sd] p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "Use this worksheet to figure your capital loss carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss", "Otherwise, you don’t have any carryovers"; p550 p. 102, Capital loss carryover, "you must take the current year's allowable deduction into account, whether or not you claimed it and whether or not you filed a return for the current year" (2025; printed date 2025-12-11; 650643a6)
   (helper) Capital gain distributions, generally Form 1099-DIV box 2a
       = $100,000
       cite: [i1040sd] p. 11, line 13 (2025; printed date 2025-12-11; 650643a6)
@@ -2344,7 +2365,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   5   Line 5: zero only after unsupported source/carryover screening
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] Schedule D (2025), line 5, "Net short-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1" (zero: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1 at Form 1040 line 8) (2025; created 2025-10-06; 90564c8b)
   6   Short-term capital loss carryover, from line 8 of the Capital Loss Carryover Worksheet (a loss, negative)
       = $0
       cite: [f1040sd] p. 1, Part I, line 6, "Short-term capital loss carryover. Enter the amount, if any, from line 8 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; 90564c8b)
@@ -2354,7 +2375,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
   12  Line 12: zero only after unsupported source/carryover screening
       = $0
-      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+      cite: [f1040sd] Schedule D (2025), line 12, "Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1" (zero: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1 at Form 1040 line 8) (2025; created 2025-10-06; 90564c8b)
   14  Long-term capital loss carryover, from line 13 of the Capital Loss Carryover Worksheet (a loss, negative)
       = $0
       cite: [f1040sd] p. 1, Part II, line 14, "Long-term capital loss carryover. Enter the amount, if any, from line 13 of your Capital Loss Carryover Worksheet in the instructions" (2025; created 2025-10-06; 90564c8b)
@@ -2788,7 +2809,9 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   scope.f8978_if_business_before: chose false (guard 1)
       not taken: guard 0 = false
-  s3.adoption_if_any: chose false (guard 1)
+  s3.adoption_asked_if_any: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.adoption_final_if_adoption: chose false (guard 1)
       not taken: guard 0 = false
   s3.adoption_earlier_if_any: chose false (guard 1)
       not taken: guard 0 = false
@@ -2821,7 +2844,9 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s3.kerosene_credit_if_kerosene: chose false (guard 1)
       not taken: guard 0 = false
-  s3.prior_amt_if_forms: chose false (guard 1)
+  s3.prior_amt_if_other_forms: chose false (guard 1)
+      not taken: guard 0 = false
+  s3.prior_amt_deferral_if_amt: chose false (guard 1)
       not taken: guard 0 = false
   s3.prior_forms_if_forms: chose false (guard 1)
       not taken: guard 0 = false
@@ -2953,6 +2978,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   household.filing_status_conflict: chose false (guard 0)
   household.spouse_died_this_year_if_ever_married: chose false (guard 0)
   household.widowed_this_year: chose false (guard 0)
+  household.hoh_missed_test2: chose false (guard 1)
+      not taken: guard 0 = false
   sa.mfs_spouse_itemizes: chose false (guard 1)
       not taken: guard 0 = false
   sa.charity_limited_if_gifts: chose false (guard 1)
@@ -3062,8 +3089,6 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   root|inst:tax_on_amount#{"amount":"sdtw.line1","status":"f1040.status"}.tax: chose $74,547.25 (guard 1)
       not taken: guard 0 = false
   f1040.line16: chose $61,663 (guard 0)
-  s2.iso_if_options: chose false (guard 1)
-      not taken: guard 0 = false
   s2.w2_marks_if_w2: chose false (guard 0)
   s2.household_employee_if_help: chose false (guard 1)
       not taken: guard 0 = false
@@ -3144,7 +3169,9 @@ Derivations:
   scope.ready_other_line16: test(scope.other_line16 = false; true = true; true = true)
   s3.mfs: test(f1040.status = single; "mfs" = mfs)
   s3.no: param(#s3.no = false)
-  s3.adoption_if_any: choose(s3.adoption_any = false; true = true; s3.adoption_any = false; false = false; s3.no = false)
+  s3.adoption_asked_if_any: choose(s3.adoption_any = false; true = true; s3.adoption_any = false; false = false; s3.no = false)
+  s3.adoption_final_if_adoption: choose(s3.adoption_asked_if_any = false; true = true; s3.adoption_asked_if_any = false; false = false; s3.no = false)
+  s3.adoption_if_any: test(s3.adoption_final_if_adoption = false; true = true)
   s3.adoption_earlier_if_any: choose(s3.adoption_any = false; true = true; s3.adoption_any = false; false = false; s3.no = false)
   s3.adoption_us_if_earlier: choose(s3.adoption_earlier_if_any = false; true = true; s3.adoption_earlier_if_any = false; false = false; s3.no = false)
   person[taxpayer].age65: test(person[taxpayer].birth_year = 1980; #age.cut_65 = 1961; person[taxpayer].birth_year = 1980; #age.cut_65 = 1961)
@@ -3168,7 +3195,9 @@ Derivations:
   s3.section965_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
   s3.virgin_islands_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
   s3.kerosene_credit_if_kerosene: choose(s3.kerosene = false; true = true; s3.kerosene = false; false = false; s3.no = false)
-  s3.prior_amt_if_forms: choose(s3.prior_other_forms = false; true = true; s3.prior_other_forms = false; false = false; s3.no = false)
+  s3.prior_amt_if_other_forms: choose(s3.prior_other_forms = false; true = true; s3.prior_other_forms = false; false = false; s3.no = false)
+  s3.prior_amt_deferral_if_amt: choose(s3.prior_amt_if_other_forms = false; true = true; s3.prior_amt_if_other_forms = false; false = false; s3.no = false)
+  s3.prior_amt_if_forms: copy(s3.prior_amt_deferral_if_amt = false)
   s3.prior_forms_if_forms: choose(s3.prior_other_forms = false; true = true; s3.prior_other_forms = false; false = false; s3.no = false)
   sa.home_other_if_not_owner: choose(sa.home_owner = false; false = false; sa.home_other = false)
   sa.home_asked: test(sa.home_owner = false; true = true; sa.home_other_if_not_owner = false; true = true)
@@ -3183,7 +3212,7 @@ Derivations:
   sd.installment_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
   sd.like_kind_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
   sd.f2439_if_dividends: choose(div.any = true; true = true; sd.f2439 = false)
-  sd.other_forms: test(sd.business_property_if_sold = false; true = true; sd.installment_if_sold = false; true = true; sd.like_kind_if_sold = false; true = true; sd.sec1256 = false; true = true; sd.condemned = false; true = true; sd.small_business_stock = false; true = true; sd.trader_election = false; true = true; sd.f2439_if_dividends = false; true = true; sd.casualty = false; true = true)
+  sd.other_forms: test(sd.business_property_if_sold = false; true = true; sd.installment_if_sold = false; true = true; sd.like_kind_if_sold = false; true = true; sd.sec1256 = false; true = true; sd.condemned = false; true = true; sd.small_business_stock = false; true = true; sd.trader_election = false; true = true; sd.f2439_if_dividends = false; true = true; sd.casualty = false; true = true; sd.qof = false; true = true)
   sd.count: sum_over(sd.other_forms = false)
   sd.screen: test(sd.count = 0; 0 = 0)
   sd.line1a.h: sum_over(sd.screen = false)
@@ -3371,9 +3400,14 @@ Derivations:
   household.marriage_possible: choose(f1040.status = single; "single" = single; household.ever_married = true)
   household.married: choose(household.marriage_possible = true; true = true; household.married_dec31 = false)
   household.filing_status_conflict: choose(f1040.status = single; "single" = single; household.married = false)
-  household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   household.spouse_died_this_year_if_ever_married: choose(household.marriage_possible = true; true = true; household.spouse_died_this_year = false)
   household.widowed_this_year: choose(f1040.status = single; "single" = single; household.spouse_died_this_year_if_ever_married = false)
+  household.not_married: test(household.married = false; false = false)
+  household.unmarried: test(household.not_married = true; true = true)
+  household.dependents_any: test(household.dependents_listed = 0; 0 = 0)
+  household.hoh_missed_test2: choose(household.dependents_any = false; true = true; household.dependents_any = false; false = false; household.no = false)
+  household.hoh_missed: test(f1040.status = single; "single" = single; household.unmarried = true; true = true; household.hoh_missed_test2 = false; true = true)
+  household.hoh_fails: test(household.hoh_missed = false; f1040.status = single; "hoh" = hoh)
   household.qss_fails: test(f1040.status = single; "qss" = qss)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
   sa.no: param(#sa.no = false)
@@ -3450,7 +3484,7 @@ Derivations:
   sa.standard: choose(sa.dependent = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $0; sa.standard = $15,750)
   sa.deduction: choose(sa.dependent = false; sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
-  f1040.line12e: copy(household.filing_status_conflict = false; household.hoh_fails = false; household.widowed_this_year = false; household.qss_fails = false; sa.deduction = $15,750)
+  f1040.line12e: copy(household.filing_status_conflict = false; household.widowed_this_year = false; household.hoh_fails = false; household.qss_fails = false; sa.deduction = $15,750)
   s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
   s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
   s1a.zero: param(#sales.zero = $0)
@@ -3625,13 +3659,10 @@ Derivations:
   sdtw.line46: copy(instance)(bind amount = sdtw.line1 = $300,000; bind status = f1040.status = single)
   sdtw.line47: smaller_of(sdtw.line45 = $61,663; sdtw.line46 = $74,547.25)
   f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = true; true = true; sdtw.line47 = $61,663)
-  s2.no: param(#household.no = false)
-  s2.iso_if_options: choose(s2.options_any = false; true = true; s2.options_any = false; false = false; s2.no = false)
-  s2.amt: test(s2.iso_if_options = false; true = true; s2.iso_vested = false; true = true; s2.amt_owed = false; true = true)
   s2.w2_marks_if_w2: choose(scope.has_w2 = true; true = true; s2.w2_marks = false)
+  s2.no: param(#household.no = false)
   s2.household_employee_if_help: choose(s2.household_help = false; true = true; s2.household_help = false; false = false; s2.no = false)
-  s2.has_mortgage_interest: test(sa.line8a = $0; 0 = $0)
-  s2.mortgage_subsidy_if_interest: choose(s2.has_mortgage_interest = false; true = true; s2.has_mortgage_interest = false; false = false; s2.no = false)
+  s2.mortgage_subsidy_if_interest: choose(sa.home_asked = false; true = true; sa.home_asked = false; false = false; s2.no = false)
   s2.lookback_if_business: choose(s1.has_sc = false; true = true; s1.has_sc = false; false = false; s2.no = false)
   s2.other: test(s2.w2_marks_if_w2 = false; true = true; s2.household_employee_if_help = false; true = true; s2.mortgage_subsidy_if_interest = false; true = true; s2.hsa_testing = false; true = true; s2.credit_recapture = false; true = true; s2.lookback_if_business = false; true = true; s2.other_tax = false; true = true)
   person[taxpayer].se_line12: choose(person[taxpayer].se_rrta = false; person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
@@ -3738,7 +3769,7 @@ Derivations:
   s2.line12: copy(f8960.line17 = $3,800)
   s2.line17c: sum_over(person[taxpayer].hsa_addtax = $0)
   s2.line18: copy(s2.line17c = $0)
-  s2.line21: sum(s2.amt = false; s2.other = false; s2.line4 = $0; s2.line8 = $0; s2.line11 = $0; s2.line12 = $3,800; s2.line18 = $0)
+  s2.line21: sum(s2.other = false; s2.line4 = $0; s2.line8 = $0; s2.line11 = $0; s2.line12 = $3,800; s2.line18 = $0)
   person[taxpayer].medicare6: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[a].box6 = $2,900)
   f8959.line19: sum_over(f8959.unsupported = false; person[taxpayer].medicare6 = $2,900)
   f8959.line20: copy(f8959.line1 = $200,000)

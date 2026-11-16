@@ -71,6 +71,70 @@
    }
   },
   {
+   "printed": "22(ii)",
+   "project_expr_sha256": "906002942e9165616fe161c0490c20731194572c1728c5546a15c33097e7759d",
+   "second_expr_sha256": "d29d6380244d639e3c5abd0f9106611d69e5f743d5c67205e40188a20006f26e",
+   "ruling": "Ruling: model error; i1040gi p. 110, Schedule 1-A, line 22, column (ii), \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return\"; fr-2025-24154 p. 21, proposed § 1.163-16(d)(2)(iii)(A), \"payments of interest and principal are allocated ... on a pro rata basis\", (d)(4) (a refinancing, also pro rata), and p. 23, (g)(1), \"Independently deductible interest is limited to interest that is QPVLI\". The interest deducted on Schedule C is interest on the whole loan, so its QPVLI part is its pro rata share; the reply instead takes the smaller of the whole Schedule C interest and the loan's QPVLI (stage12.car.mixed_sc_interest_prorated: project $84.80, reply $106.00; classm.carloan.3 and classm.clcw.2: project $551.52, reply $2,149.00), and it counts a Schedule C amount on a return with no Schedule C, where the project enters $0 (classm.carloan.2: project $0, reply $1,268.00; candidate-unknown on returns without a Schedule C, where carloan.col_ii_input is not asked, e.g. stage12.car.basic). Same as the landing round. Triage executable-triage-v2 (pass 50b4293b54a4): 210/278 agree; 35 candidate-unknown, 33 value; on completed returns 4 candidate-unknown.",
+   "context": "7674d1e4188939b88ca8300e9663caf611e620f156d522e03bd74f27cd6610ed",
+   "date": "2026-11-15",
+   "run": "c3a5c65c8a1ce917c9be4e47bceb185e6dd351bbbdeac827fbae361db0fe5061",
+   "subject_key": "9592157b344fd36a978f0d2527ed271cc65b9a04ff293af1e43c2a31fbe18728",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@carloan[vin_1]",
+     "fixture:classm.clcw.2.deepseek@carloan[vin_1]",
+     "fixture:classm.s3.4.deepseek@carloan[vin_1]",
+     "fixture:classm.carloan.2@carloan[vin_1]",
+     "fixture:classm.carloan.3@carloan[vin_1]",
+     "fixture:classm.clcw.2@carloan[vin_1]",
+     "fixture:classm.s1a.3@carloan[VIN0]",
+     "fixture:classm.s1a.6@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN1]",
+     "fixture:mutation.t2.no_senior_part5@carloan[vin_1]",
+     "fixture:mutation.t2.eic.mfs_step1_agi_stop@carloan[vin_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "22(iii)",
+   "project_expr_sha256": "3c30859adb6ed36132e2cdacae4413acf92f2c983961df81909ee01038c63c72",
+   "second_expr_sha256": "061aada538fbc9e0511326335097682e067064d9f4f01a4e2ff6dc97bd3254ce",
+   "ruling": "Ruling: model error; i1040gi p. 110, Schedule 1-A, line 22, column (iii), \"enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)\". The QPVLI is the same on both sides (the loan's interest, prorated for a mixed or refinanced loan; the reply's nine-place ratio against the project's six, amb.2025.carloan_ratio_places, gives no difference on this sample); every difference follows the reply's column (ii), which does not prorate the Schedule C interest and counts it without a Schedule C (fr-2025-24154 p. 21, (d)(2)(iii)(A) and (d)(4), pro rata; stage12.car.mixed_sc_interest_prorated: project $254.40, reply $233.20; classm.carloan.3: project $1,654.54, reply $57.06; classm.carloan.2: project $5,073.00, reply $3,805.00), and its unknown where column (ii)'s input is not asked (stage12.car.basic). Triage executable-triage-v2 (pass 50b4293b54a4): 220/278 agree; 33 value, 25 candidate-unknown; on completed returns 4 candidate-unknown.",
+   "context": "7674d1e4188939b88ca8300e9663caf611e620f156d522e03bd74f27cd6610ed",
+   "date": "2026-11-15",
+   "run": "c3a5c65c8a1ce917c9be4e47bceb185e6dd351bbbdeac827fbae361db0fe5061",
+   "subject_key": "efb30bcffb6f68a31853d8d2a966bbaff9a7b6b5fb32f25ccdaea13942842eba",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@carloan[vin_1]",
+     "fixture:classm.clcw.2.deepseek@carloan[vin_1]",
+     "fixture:classm.s3.4.deepseek@carloan[vin_1]",
+     "fixture:classm.carloan.2@carloan[vin_1]",
+     "fixture:classm.carloan.3@carloan[vin_1]",
+     "fixture:classm.clcw.2@carloan[vin_1]",
+     "fixture:classm.s1a.3@carloan[VIN0]",
+     "fixture:classm.s1a.6@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN0]",
+     "fixture:classm.s1a.8@carloan[VIN1]",
+     "fixture:mutation.t2.no_senior_part5@carloan[vin_1]",
+     "fixture:mutation.t2.eic.mfs_step1_agi_stop@carloan[vin_1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "22(iii)",
    "project_expr_sha256": "3c30859adb6ed36132e2cdacae4413acf92f2c983961df81909ee01038c63c72",
    "second_expr_sha256": "13af0be3963b0ba03768dcc0dfdf3bf3a987e1fe1a71a26ef49955f35d9a02cf",

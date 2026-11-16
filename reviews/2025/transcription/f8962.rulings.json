@@ -176,6 +176,30 @@
    }
   },
   {
+   "printed": "10",
+   "project_expr_sha256": "9d743fe8444c022da26cb3dd9309d266a72d7cfc54749847eaa7af98029e5585",
+   "second_expr_sha256": "6148937923084ff44e8962a108ba6c47160860f77b1802c3056712fdd4381fa2",
+   "ruling": "Ruling: scope; the reply adds \"line 9 is No\" to the full-year test (Part IV or V completed means line 10 No), the project tests only the Form 1095-A full-year and no-change conditions; Part IV (f8962.alloc) and Part V (f8962.marriage) are refused at lines 24 and following, so a line 9 Yes is never on a computed return. Triage pass 827594184a6a: 2,930/2,934 agree; 1 value difference on a refused return (stage18.refuse.void_1095a), 3 candidate-unknown on incomplete returns (the reply asks f8962.shared_policy, divorced_enrolled, married_this_year).",
+   "context": "a490b22607ca1a64ce8d772aa3e5957734de6cd173af8ace36718c45e77be3e7",
+   "date": "2026-11-15",
+   "run": "03f4ef11c07b2abdae24bcd552856a5eefc41c0cb8678c2871b76d4a43de81a2",
+   "subject_key": "86fca4ad28e3537bddb306bc6daa0fc18a0b13029372cd51bfcaa2c5ec0044c2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage18.refuse.void_1095a@f8962",
+     "partial:classm.s2.2.deepseek-f8962.shared_policy@f8962",
+     "partial:classm.s2.2.deepseek-f8962.divorced_enrolled@f8962",
+     "partial:classm.s2.2.deepseek-f8962.married_this_year@f8962"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "11(a)",
    "project_expr_sha256": "862288cb21f3b0e2e47a093768d73aab2fa4eff697d5e0d95d29ca773f66b7ad",
    "second_expr_sha256": "36d71ac9d9c15d73b82fdc5aa64128ec09055785d8718e896fcb4e872b8ba6ab",
@@ -10227,6 +10251,80 @@
      "partial:classm.f8962.2.gpt-f8962.alloc@f8962",
      "partial:classm.f1095a.1.gpt-f8962.alloc@f8962",
      "partial:classm.f1095a.1.gpt-f8962.married_in_2025@f8962"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "24",
+   "project_expr_sha256": "72eda19bd354083af775fe1a5d68b8d533550e47121eb0f3a0a2439efd3af6da",
+   "second_expr_sha256": "bbeb08f057453148fa847f0cd107843d5c46d0df19919cd7babb4c79175fcbc8",
+   "ruling": "Ruling: ambiguity; the reply enters line 11(e) or the total of lines 12(e) to 23(e) for every filer (f8962 line 24, i8962 p. 17, Line 24) and relies on the columns for a filer who is not an applicable taxpayer; the project enters zero when f8962.applicable is false (household income below 100% of the poverty line without the Marketplace-estimate exception), the owner's reading of amb.2025.ptc_not_applicable (D7(a), 2026-10-28: i8962 p. 10 \"you are not an applicable taxpayer and you are not eligible to take the PTC ... skip lines 7 and 8, and go to line 9\", and no rule to enter -0- there unlike the MFS rule on p. 16). Triage: 2,820/2,934 agree; the value differences on completed returns (stage18.blind.p8 and one generated return: project $0.00, reply $5,160.00 and $3,066.42) are below-100% filers (explained witness: guard f8962.applicable = false taken, status single); the rest are unknowns and refusals on incomplete or refused returns. Married filing separately, the other -0- case, is refused for the whole return (scope.ready_credits, s3.mfs).",
+   "context": "a490b22607ca1a64ce8d772aa3e5957734de6cd173af8ace36718c45e77be3e7",
+   "date": "2026-11-15",
+   "run": "03f4ef11c07b2abdae24bcd552856a5eefc41c0cb8678c2871b76d4a43de81a2",
+   "subject_key": "97d2556fad6a01b39f0d178db560584306b3d2da97209efbb2fc899c133a9c4c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8962.3.deepseek@f8962",
+     "fixture:classm.f8962.1.gpt@f8962",
+     "fixture:classm.s2.2@f8962",
+     "fixture:classm.s3.8@f8962",
+     "fixture:stage18.blind.p8@f8962",
+     "fixture:stage18.refuse.allocation@f8962",
+     "fixture:stage18.refuse.other_coverage@f8962",
+     "fixture:stage18.refuse.other_mec_enrolled@f8962",
+     "fixture:stage18.refuse.void_1095a@f8962",
+     "fixture:stage18.refuse.premium_adjust@f8962",
+     "fixture:stage18.refuse.year_of_marriage@f8962",
+     "generated:20261026.107@f8962",
+     "generated:20261026.193@f8962",
+     "generated:20261026.272@f8962",
+     "partial:classm.s2.2.deepseek-f8962.other_coverage@f8962",
+     "partial:classm.s2.2.deepseek-f8962.hra@f8962",
+     "partial:classm.s2.2.deepseek-f8962.not_lawful@f8962",
+     "partial:classm.s2.2.deepseek-f8962.incarcerated@f8962",
+     "partial:classm.s2.2.deepseek-f8962.no_family@f8962",
+     "partial:classm.s2.2.deepseek-f8962.medicaid_reversed@f8962"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "25",
+   "project_expr_sha256": "04f0776f076d5abd29971c037ad45f53e1348acc6c2c78d89da531d86750bee2",
+   "second_expr_sha256": "7f6126a5c26877d79c0e57f3356cd0948ed7bc7e822e360a6a345f1ae51fd8e2",
+   "ruling": "Ruling: representation; the expressions differ only in writing line 5 as {\"line\": \"5\"} or {\"ref\": \"f8962.line5\"}, the same line, in the shown_when; the value (line 11(f) or lines 12(f) to 23(f)) is identical. Triage: 2,807/2,934 agree, no value differs; 97 project-unknown and 30 project-refuses, all on incomplete or refused returns (upstream answers such as div.any, scope.nol unanswered).",
+   "context": "a490b22607ca1a64ce8d772aa3e5957734de6cd173af8ace36718c45e77be3e7",
+   "date": "2026-11-15",
+   "run": "03f4ef11c07b2abdae24bcd552856a5eefc41c0cb8678c2871b76d4a43de81a2",
+   "subject_key": "8dd5fd981cd8f16a2fb0022fea7077d68b2c9834494002ba0165d309dcaba451",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.4.deepseek@f8962",
+     "fixture:classm.f8960.1@f8962",
+     "fixture:classm.scveh.2@f8962",
+     "fixture:classm.f1095a.2@f8962",
+     "fixture:classm.f1095a.5@f8962",
+     "fixture:stage18.refuse.allocation@f8962",
+     "fixture:stage18.refuse.other_coverage@f8962",
+     "fixture:stage18.refuse.other_mec_enrolled@f8962",
+     "fixture:stage18.refuse.void_1095a@f8962",
+     "fixture:stage18.refuse.premium_adjust@f8962",
+     "fixture:stage18.refuse.year_of_marriage@f8962",
+     "generated:20261026.22@f8962"
     ],
     "policy": "executable-triage-v2"
    }

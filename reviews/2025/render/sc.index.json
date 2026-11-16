@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
  "head_rows": {
-  "match / mismatch / unclear / missing": "71 / 4 / 0 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "70 / 5 / 0 / 0",
+  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -28,21 +28,21 @@
   },
   {
    "key": "F",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
    "status": "MATCH",
-   "subject_key": "4a17d93d4f95d47d2d6e793559744034eab7b008e7bc112ecc24052ff92568a9"
+   "subject_key": "6a0eea962d6612cb81ca97c6a857db8a618ade7e02983acbee1e3be11bf5726c"
   },
   {
    "key": "(screen) (sc.special)",
-   "record": "ccb6ef563298e14ff768e93e52ec436781c149378851d46f820d3336b20c9201",
+   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
    "status": "MATCH",
-   "subject_key": "6e3ce43edceb73d13a557e45b9e2d0d854fa59d767856bd5b53e0d4c3f379078"
+   "subject_key": "5edb55f2b96088b35ef625807e18960f6696bc622e32cf8a9037a47209258617"
   },
   {
    "key": "1 (sc.line1)",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
+   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
    "status": "MATCH",
-   "subject_key": "5725a5105848ead57af99e6688310de374b77a49d6c2d78fcdcf867b21a3a97c"
+   "subject_key": "293ac5289f9a2b1dff2a41ee428fe68cf41e7d4eeaad66d99022fa3d07a770b7"
   },
   {
    "key": "2 (sc.line2)",
@@ -256,9 +256,9 @@
   },
   {
    "key": "(screen) (sc.ho_uses)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
    "status": "MATCH",
-   "subject_key": "8f2a35de31ed6b2defc252fa319482eb87c5b554559ca25fb1fed31266284526"
+   "subject_key": "26f609b239cff2c3c3ec606ca6f2eb586bc7e8a8971c10a45706b23480ff5e5b"
   },
   {
    "key": "(screen) (sc.ho_other)",
@@ -268,9 +268,9 @@
   },
   {
    "key": "30(b)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
    "status": "MATCH",
-   "subject_key": "8e60f3656653f016b431b1e7520bed1b216883a6bd8652a9e439ba6beaf99953"
+   "subject_key": "07d4e775e0d437bb5cbc38e0e757e109ef1a7a21daae06bba230a705347096bf"
   },
   {
    "key": "30(a)",
@@ -286,9 +286,9 @@
   },
   {
    "key": "4 (sc.ho_line4)",
-   "record": "45b164cb1086a3b2116989115012cf057037af1fb59a79d557741f2eae97d841",
+   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
    "status": "MATCH",
-   "subject_key": "70cd9b5b16c231cfec9d9a2215abb9a15ce39eaf660a3c2e4a3da47bf6df3d26"
+   "subject_key": "6595ea87842a0e021ce4418d79f05292814ebcd3f5e0dfdb0c42f89a1378bcae"
   },
   {
    "key": "1 (sc.ho_line1)",
@@ -298,9 +298,10 @@
   },
   {
    "key": "5 (sc.ho_line5)",
-   "record": "a6ae22635d8707d882a097da7c0868bb3da324d2684cde399437f59c61f67cec",
-   "status": "MATCH",
-   "subject_key": "31a77fdc98be7f857a55be1e68e3bb5214bae4c79039c1e4976b779bef760933"
+   "record": "552706951b200ee1fe75ef104ebf7b6da88be4bb4515238af583c18064f60331",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i1040sc p. 11, Instructions for the Simplified Method Worksheet, Line 1: lines B and D are gains and losses \"shown on Form 8949 (and included on Schedule D) or Form 4797\", and \"If some of the income is from a place of business other than your home, you must first determine the part of your gross income ... from the business use of your home\". Both cases are refused before line 5 is reached: the home-office screen sc.ho_other asks whether \"some of this business's gross income is from a place of business other than your home; you have a gain or loss on Form 8949 or Form 4797 related to this business\", and a Yes sets sc.ho_screened, which refuses at sc.ho_sqft (line 30(b)), the input every simplified-method line reads (rendered/2025/sc.md, (screen) sc.ho_other). With B and D zero, line E equals line A, Schedule C line 29, which is what the English states (sc.ho_line1's cite says so). The restated line 5 is otherwise the worksheet's smaller of line 1 and line 4, with the Pub. 946 two-limit case refused (sc.ho_both_limits).",
+   "subject_key": "026baac5862e7772e979684eab3e9066afff00c1e00fd78565e8a34084b78484"
   },
   {
    "key": "30",
@@ -476,9 +477,9 @@
   "(screen) (sc.statutory)": "d2f688ee3fcd674f963ab54362478a207a821a94dbfefcc681cbe090a7e701ce",
   "G": "9336293c87a3010625acd5ec878f0a51d8d1235bfa2fce813a1742c7fecd6965",
   "(screen) (sc.spouse_owned)": "50e12d17c0ac2c9df9a2a093f8ecbf7b395ecf60a6ae926d89771d9bbbdd97ee",
-  "F": "64a4b664c7e9c5e00f93761d29f2348d5763768424d47ddb0889ba3785b68039",
-  "(screen) (sc.special)": "b6054cf6d08de1448607610ff7324be5e50a13132e292f5f5a5fc5dce25a1c89",
-  "1 (sc.line1)": "b011d6f2dea6db253295f4b550d33b6934b03caa2cdb67b1a55b45a57df521ce",
+  "F": "850c72afbafe568e811ab4c7885d487c620942d44aa76f069627a2cfd1fcb2df",
+  "(screen) (sc.special)": "5476ff4c20fe2c0da304ad04e9d1519eccb11f3b6c8295a1dd5e581685857501",
+  "1 (sc.line1)": "eeefbe45a31dc7155cc295f02d69f7710b67680e063f0721d6f162c987e3fe9b",
   "2 (sc.line2)": "a740eed3e32368c0a0975232c06d42726848f95d06bb1bddc037583ac496e10b",
   "3 (sc.line3)": "0863922faa22fdfa5a866e99ab59a4ed0e2e5d5f5d67b1d33ad7cdb1923b2d96",
   "4 (sc.line4)": "fec3ecac954b197db2dc0c0f6fd321aa1aef78111f175c70c704cd75ab399545",
@@ -512,14 +513,14 @@
   "27b": "6ae07cb4f45d196fb8d96b5f216a6b7ee44a2ca355fbdb1e3b6c2e12f395b42d",
   "28": "5538e5fcca4fb66ddbe7a586b13dfc85fcc77d86cf32eadd605e75b8ecdd0261",
   "29": "97f9fe0b04feec3e34580e385d8ea091b1654c99da49104efe9fb3ded527b9de",
-  "(screen) (sc.ho_uses)": "ef5c3e8372d70c514df195b4e4fa6991b5208e5280292707d1fc1b3e8a0c05bd",
+  "(screen) (sc.ho_uses)": "d96b0ee574ab6d8b2c080c5239d9de73002ae27f09ce9fbdf7a27ace46aa920d",
   "(screen) (sc.ho_other)": "f4b5d7242f56552080b3617765afc533d194fdc9ec282dc5eb90d8a356eeb249",
-  "30(b)": "8be6705f90cf2410bb97c9f40f3bcaba508b2b02aed286f6d9d25eb8b69a7a07",
+  "30(b)": "2b78231e4c782201dff067843328913e421a08cb07e81315a9d5350fb756e285",
   "30(a)": "13030153eb4fc7138847565a2dd0f31b86210da3fddf1871bf13337c2d2fc447",
   "3a": "f032c1aa616e675b295a4be9748270b4c92a3dca1786e32bc1cd1ed510b6c140",
-  "4 (sc.ho_line4)": "c16a11b8934124f13c7226b8945dc16407c6b35e3e0612405a2ad90352ed45cd",
+  "4 (sc.ho_line4)": "7e9951579efe53a35e1c23cd517ac609f473876af80dfdc43fb3fd5ee0e3db09",
   "1 (sc.ho_line1)": "93604a87acc0da5e391576b70009e23bb7c8d01a2bc4e755bdb9b477e0d452c3",
-  "5 (sc.ho_line5)": "93f1c1c59002990f8792919131ffbfa7a44bf3b59f436ac0c233a461fe12bb26",
+  "5 (sc.ho_line5)": "6742264016beb28cc52d19f4f456fb8d26fb99effca70b416fa5afb514c9e441",
   "30": "2b2454406fde06a52b62715df8f45ee04691af33384cb10429efa6adda93e364",
   "31": "1422a43a9afabd8d0b571ce73dc64eb53b2e044a0ae273a7ae4fa0bcf181f6ac",
   "32": "b25d38d7fe4a3729fd765e7af7fd4e8de7a41893f83623de88158cddf985c07b",

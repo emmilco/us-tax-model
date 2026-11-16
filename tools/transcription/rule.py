@@ -13,6 +13,13 @@ Each sidecar entry written is stamped (rulings.STAMPS) with the date, the identi
 reply it rules (`run`, which the cost ledger records for the call that returned it) and, for a
 finding, its severity: a finding is given as {"ruling": "Ruling: finding; ...", "severity":
 "high|medium|low"} and is refused without one.
+
+--amend rewrites the text of rulings already applied, for the sections the rulings file names
+(a key "*" is refused): a wrong count or citation in a ruling is corrected in the log and its
+sidecar entry without reopening the section. The amended ruling keeps the class of the one it
+replaces (compare_families.ruling_category), its drop flag and its context; it is stamped with
+today's date, and a finding keeps its severity unless a new one is given. Changing a ruling's
+class, or whether it drops a fixture line, is not an amendment and is refused.
 """
 import argparse, datetime, json, os, re, sys
 
@@ -44,6 +51,68 @@ def line_subject(kind, form, key, snap=None):
     working tree (or `snap`), else None."""
     import carry  # carry imports this module
     return carry.line_subject(kind, snap or carry.Snapshot(None), form, key[1] if kind == "classm" else key[0])
+
+
+def category(ruling):
+    """A ruling's class, its "Ruling: " prefix removed; a ruling headed "defect" is a finding (is_finding)."""
+    body = ruling[len("Ruling: "):] if ruling.startswith("Ruling: ") else ruling
+    return "finding" if is_finding(ruling) else compare_families.ruling_category(body)
+
+
+def amend(form, rulings, kind="transcription", family=families.DEFAULT):
+    """Rewrite the text of applied rulings (see the module docstring); returns the keys amended."""
+    if "*" in rulings:
+        raise SystemExit(f"{form}: --amend names each ruling it rewrites; a key \"*\" is not allowed")
+    text = sidecar.read_log(kind, form, family)
+    if text is None:
+        raise SystemExit(f"{families.stem(form, family)}: no {kind} log")
+    head, sep, rest = text.partition("\n## Lines\n")
+    body, sep2, tail = rest.partition("\n## Raw ")
+    parts = body.split("\n### ")
+    stored = sidecar.load(kind, form, family)
+    amended = []
+    for i in range(1, len(parts)):
+        title, _, content = parts[i].partition("\n")
+        found = sidecar.section_key(kind, title, content)
+        if found is None:
+            continue
+        key, line = found
+        printed = f"{key[0]} \u2014 {key[1]}" if kind == "classm" else key[0]
+        if printed not in rulings:
+            continue
+        if line == sidecar.OPEN:
+            raise SystemExit(f"{form}: the section at {printed} is open; rule it without --amend")
+        old_text, old_drop = sidecar.split_ruling(line)
+        given = rulings[printed]
+        new_text = (given["ruling"] if isinstance(given, dict) else given).rstrip()
+        if not new_text.startswith("Ruling:"):
+            new_text = "Ruling: " + new_text
+        if isinstance(given, dict) and "drop" in given and bool(given["drop"]) != old_drop:
+            raise SystemExit(f"{form}: the amendment at {printed} changes whether the line is dropped; not an amendment")
+        if category(new_text) != category(old_text):
+            raise SystemExit(f"{form}: the amendment at {printed} changes the ruling's class "
+                             f"({category(old_text)} to {category(new_text)}); not an amendment")
+        skey = sidecar.stored_key(kind, key)
+        entry = stored.get(skey)
+        if entry is None or entry["ruling"] != old_text:
+            raise SystemExit(f"{form}: the ruling at {printed} differs between the log and its sidecar; run rulings.py --check")
+        severity = given.get("severity") if isinstance(given, dict) else None
+        if severity is not None and severity not in sidecar.SEVERITIES:
+            raise SystemExit(f"{form}: severity at {printed} is not one of {', '.join(sidecar.SEVERITIES)}")
+        severity = severity or entry.get("severity")
+        if is_finding(new_text) and severity not in sidecar.SEVERITIES:
+            raise SystemExit(f"{form}: the finding at {printed} needs a severity")
+        stored[skey] = {**entry, "ruling": new_text, "date": today(), **({"severity": severity} if severity else {})}
+        new_line = new_text + (sidecar.DROPPED if old_drop else "")
+        parts[i] = title + "\n" + content.replace(line, new_line, 1)
+        amended.append(printed)
+    missing = sorted(set(rulings) - set(amended))
+    if missing:
+        raise SystemExit(f"{form}: no applied ruling at {', '.join(missing)}")
+    if amended:
+        sidecar.write_log(kind, form, head + sep + "\n### ".join(parts) + sep2 + tail, family)
+        sidecar.save(kind, form, stored, family)
+    return amended
 
 
 def apply(form, rulings, kind="transcription", family=families.DEFAULT):
@@ -132,7 +201,12 @@ if __name__ == "__main__":
     ap.add_argument("--rulings", required=True)
     ap.add_argument("--kind", default="transcription", choices=["transcription", "render", "classm"])
     ap.add_argument("--family", default=families.DEFAULT, help="the model family whose log is ruled")
+    ap.add_argument("--amend", action="store_true", help="rewrite the text of rulings already applied (same class)")
     a = ap.parse_args()
-    done = apply(a.form, json.load(open(a.rulings)), a.kind, a.family)
-    remaining = sidecar.read_log(a.kind, a.form, a.family).count("Ruling: open")
-    print(f"{a.form}: ruled {len(done)} line(s) {done}; open rulings remaining: {remaining}")
+    if a.amend:
+        done = amend(a.form, json.load(open(a.rulings)), a.kind, a.family)
+        print(f"{a.form}: amended {len(done)} ruling(s) {done}")
+    else:
+        done = apply(a.form, json.load(open(a.rulings)), a.kind, a.family)
+        remaining = sidecar.read_log(a.kind, a.form, a.family).count("Ruling: open")
+        print(f"{a.form}: ruled {len(done)} line(s) {done}; open rulings remaining: {remaining}")

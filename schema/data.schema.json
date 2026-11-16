@@ -822,30 +822,6 @@
           "type": "object",
           "required": [
             "op",
-            "table",
-            "key",
-            "status"
-          ],
-          "additionalProperties": false,
-          "properties": {
-            "op": {
-              "const": "bracket_schedule"
-            },
-            "table": {
-              "type": "string"
-            },
-            "key": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string"
-            }
-          }
-        },
-        {
-          "type": "object",
-          "required": [
-            "op",
             "collection",
             "field"
           ],

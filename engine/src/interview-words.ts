@@ -14,8 +14,7 @@
 // The report also lists the longest sentences of the question bank (a sentence is the text between sentence ends
 // within one line of a prompt; a list item is a line of its own).
 //
-// Returns: those interview-length walks (the Stage 5 whole returns, the generated returns, the minimal returns, and
-// each slice profile's walked fixtures).
+// Returns: those interview-length walks (the Stage 5 whole returns, the generated returns, the minimal returns).
 //
 //   interview-words [--write] [--self-test]
 //     --write       writes reports/<year>/interview_words.md

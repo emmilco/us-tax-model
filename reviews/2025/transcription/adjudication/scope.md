@@ -132,3 +132,15 @@ review of this round for scope. Claude transcription pass 2eb39b30c079 (line `sc
 | claude | transcription | scope.schedule1 | model error | 3,689/4,053; 59 value (refused returns, project true / reply false: scope.rental, scope.clergy_if_religious_work); 53 candidate-unknown (3 completed) | i1040se p. 1; i1040sf p. 2; i1040gi Line 24f | Third time: leaves rental, K-1, farm, clergy/church, W-2 marks out of the screen; its extra CFC term is refused by scope.other_line16 anyway. |
 
 1 line: 1 model error. Findings: none.
+
+## Goal-1 round (2026-11-15), render
+
+Claude render log, whole (forced: a review of scope logged after the fixes of BUG-0651, BUG-0675 and BUG-0733):
+match 71, mismatch 1, unclear 1. Both ruled; no finding.
+
+| family | kind | line | class | evidence | deciding source | reason |
+|---|---|---|---|---|---|---|
+| claude | render | disaster_distribution | refusal located elsewhere | MISMATCH: a 2025 qualified disaster distribution is not covered by the question | forms/2025/retirement.yaml retirement.disaster (operand of retirement.special); i8915f | A 2025 distribution has a 2025 Form 1099-R, whose record asks retirement.disaster and refuses; the scope question covers only 2023 and 2024 distributions spread into or repaid in 2025 |
+| claude | render | reforestation | scope | UNCLEAR: the seven-year window is not in Schedule 1's text | i4562 (2025) p. 18, Qualified forestation and reforestation costs (section 194), "over an 84-month period" | The window follows the 84-month amortization; the question screens out Schedule 1 line 24d |
+
+Counts: 2 ruled (refusal located elsewhere 1, scope 1); 0 findings.

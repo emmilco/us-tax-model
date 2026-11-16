@@ -5,6 +5,22 @@
   {
    "printed": "1(b)",
    "project_expr_sha256": "fedd988740ee33a468bfbca85587d911f6a7f348d64a5bcccb54fd8300c35bc4",
+   "second_expr_sha256": "187888c3927f4aa7e725f0107bd2918315da1463ec9deb13e998e10d8822fa67",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (218 values compared, none different or missing: 67 on 2028 fixture cases, 31 on 500 generated returns seed 20261026, 120 on 72 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "0d6d092da08e5dbc3bdca17d722906dcf3f99e30adac68930b9eecf28f70f9a2",
+   "date": "2026-11-15",
+   "run": "d73ea0f7481b9c27f7f4ea1ba2c6ed85edcaf987c80ca4e24e5e226bd5877000",
+   "subject_key": "8206977818797352f688f875d2b86d2ba812278240d9613313399b89e10dab14",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1(b)",
+   "project_expr_sha256": "fedd988740ee33a468bfbca85587d911f6a7f348d64a5bcccb54fd8300c35bc4",
    "second_expr_sha256": "9c3e50842d9d1f89a2dcb0233067daa8bfd063996d340ec24b7e8831003c6b25",
    "ruling": "Ruling: equivalent; project retained. i1040gi pp. 106-107 (Schedule 1-A, Part III, methods 1 to 4) and Notice 2025-69 section III.B.2, methods (A) to (D), give the employer-reported or premium amount as is and the one-third, one-half and one-quarter conversions. Both give zero when otjob.flsa is false, the statement amount for employer_reported and premium, the statement times s1a.ot_third for total_time_and_half, s1a.ot_half for premium_double and s1a.ot_quarter for total_double, and zero for other (refused by otjob.refused before the line is used). The second tests otjob.flsa inside each method guard instead of first; the guards cover the same cases with the same values. This round changed only the wording of otjob.method and otjob.statement (hours over 40 in a workweek), not an expression.",
    "context": "4bac8b90ea80c366bd59d37b7d088b72d62270d7ad47565d65f38ece9cb0ca1e",

@@ -215,8 +215,10 @@ def gen_case(rng, i):
                        f"{key}.own_money": False, f"{key}.self_support_view": "under_half", f"{key}.supported_view": "over_half", f"{key}.citizen_ssn": True})
     hoh = n_children > 0 and rng.random() < 0.5
     inputs["f1040.status"] = "hoh" if hoh else "single"
+    # A single filer with children did not pay over half the cost of keeping up the home (otherwise head of household
+    # fits, and the project refuses single).
     inputs.update({"person[taxpayer].tin": True, "person[taxpayer].work_ssn": True,
-                   "household.home_cost": True, "household.unmarried": True, "s8812.combat_pay": False, "s8812.puerto_rico": False})
+                   "household.home_cost": hoh or not n_children, "household.unmarried": True, "s8812.combat_pay": False, "s8812.puerto_rico": False})
     # Every generated child is a qualifying child for the EIC (under 19, or a full-time student under 24,
     # living with the filer in the United States all year, with an SSN).
     facts.update(children=ages, n24=sum(1 for a in ages if a < 17), hoh=hoh, eic_children=min(3, n_children))
@@ -260,7 +262,7 @@ def gen_case(rng, i):
     # The Form 8889 questions about the account are answered on every return: the form asks them whenever the account
     # exists, contributions or not, and an unanswered one leaves Schedule 1 and everything after it unknown.
     inputs.update({f"$f8889@{TAXPAYER}": ["hsa"], f"{HSA}.line2": contrib, f"{HSA}.line9": employer, f"{HSA}.line14a": 0,
-                   **{f"{HSA}.{k}": False for k in ("owner_died", "inherited", "archer", "ira_transfer", "excess_withdrawn",
+                   **{f"{HSA}.{k}": False for k in ("owner_died", "inherited_any", "archer", "ira_transfer", "excess_withdrawn",
                                                      "fsa", "spouse_family", "ira_prior", "testing_prior", "dist_code", "mistake_repaid",
                                                      "medical_all", "loan")},
                    f"{HSA}.clear_all_year": True}); facts["hsa_deduction"] = hsa_deduction
@@ -725,14 +727,14 @@ PERSON_NO = ("x_edu_account", "x_edu_taxable", "x_edu_excess", "x_archer_excess"
 # question beneath a parent answered No is not asked; its answer is then not read).
 SCREENS_NO = {
     "sd.other_forms": ("sd.sold_other", "sd.business_property", "sd.installment", "sd.like_kind", "sd.casualty", "sd.condemned",
-                       "sd.f2439", "sd.sec1256", "sd.small_business_stock", "sd.trader_election"),
+                       "sd.f2439", "sd.sec1256", "sd.small_business_stock", "sd.trader_election", "sd.qof"),
     "qbi.unsupported": ("qbi.coop_patron", "qbi.prior_form", "qbi.reit_loss", "qbi.suspended"),
     "f8959.unsupported": ("f8959.territory_w2",),
     "s1.line8_other": ("s1.digital_income", "s1.inmate_wages", "s1.ltc_payout", "s1.nqdc_pension", "s1.olympic", "s1.stock_options",
                        "s1.winnings_any"),
     "s1.line8g": ("s1.alaska_any",), "s1.line8h": ("s1.jury_any",), "s1.line8i": ("s1.winnings_any",),
     "s1.line8j": ("s1.hobby_any",), "s1.line8r": ("s1.scholarship_any",),
-    "s2.amt": ("s2.amt_owed", "s2.options_any", "s2.iso", "s2.iso_vested"),
+    "s2.amt": ("s2.amt_business", "s2.amt_boat", "s2.options_any", "s2.iso", "s2.iso_vested"),
     "s2.other": ("s2.credit_recapture", "s2.household_help", "s2.household_employee", "s2.hsa_testing", "s2.lookback",
                  "s2.mortgage_subsidy", "s2.other_tax", "s2.w2_marks"),
     "scope.schedule1": ("scope.archer_msa", "scope.armed_forces", "scope.artist_official", "scope.attorney_fees",
@@ -754,7 +756,7 @@ SCREENS_NO = {
     "f8962.premium_adjust": ("f8962.midmonth_start", "f8962.premium_refunded"),
 }
 # The amounts beneath those screens, zero (the old screen's line, now derived, was zero).
-SCREEN_AMOUNTS_ZERO = ("s1.alaska_dividend", "s1.jury_pay", "s1.prizes", "s1.hobby_income", "s1.scholarship_taxable")
+SCREEN_AMOUNTS_ZERO = ("s1.alaska_dividend", "s1.jury_pay", "s1.prizes", "s1.hobby_income", "s1.scholarship_taxable", "s2.amt_pab")
 # Form 5695's kinds of property (engine/src/generate.ts, F5695_PART1_KINDS and F5695_PART2_KINDS), each Yes when its cost
 # is drawn: the costs of each kind as the generator states them.
 F5695_KINDS = {"solar": ("line1",), "solar_water": ("line2",), "wind": ("line3",), "geothermal": ("line4",), "insulation": ("line18a",),
@@ -823,10 +825,12 @@ def redraft_answers(case):
     inputs["div.other_boxes"] = any(inputs.get(f"div.{b}", 0) for b in ("box2b", "box2c", "box2d", "box2e", "box2f", "box3",
                                                                         "box9", "box10", "box13"))
     # Foreign tax on a return with no dividends and no interest was paid to another country directly: the foreign
-    # question is Yes (and none of the Schedule 3 items beneath it applies), so the foreign tax is asked.
+    # question is Yes (and none of the Schedule 3 items beneath it applies, nor a carryover of unused foreign tax), so the
+    # foreign tax is asked.
     if inputs.get("ftc.taxes", 0) > 0 and not inputs.get("div.any") and not any(
             inputs.get(f"interest[{k}].amount", 0) for k in inputs.get("$interest", [])):
-        inputs.update({"s3.foreign_any": True, "s3.section965": False, "s3.section960c": False, "s3.virgin_islands": False})
+        inputs.update({"s3.foreign_any": True, "s3.section965": False, "s3.section960c": False, "s3.virgin_islands": False,
+                       "ftc.carryover": False})
     inputs["s1.uc_any"] =inputs.get("s1.uc_paid", 0) > 0 or inputs.get("s1.uc_repaid", 0) > 0
     inputs["sa.mortgage_other_use"] = False
     inputs.setdefault("$dcprov", [])

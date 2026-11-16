@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "e1a44a2536d3bae51af91657a5fda0a49f87f8e2b19343053288fc148bda4edd",
  "head_rows": {
-  "match / mismatch / unclear / missing": "11 / 3 / 0 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-14); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "13 / 1 / 0 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -34,9 +34,9 @@
   },
   {
    "key": "5a",
-   "record": "33db6fd1246321eea8cd4592454d22f76e6fc561ead51f3c9916f10e7c84c8e4",
+   "record": "0d25dd6193b6e9a0d6467bbeb544dbf1ddbb77f81f5a529bc40cd59d2566896f",
    "status": "MATCH",
-   "subject_key": "3d273be76fdba29d3c30cd72f0cb61912d17671cddb57afa3e915deedf8fbe37"
+   "subject_key": "3ad2925ea7b94463a8b7d87693df31920aeb72b69d82423396c685fb34154052"
   },
   {
    "key": "5b",
@@ -46,16 +46,16 @@
   },
   {
    "key": "7",
-   "record": "33db6fd1246321eea8cd4592454d22f76e6fc561ead51f3c9916f10e7c84c8e4",
+   "record": "0d25dd6193b6e9a0d6467bbeb544dbf1ddbb77f81f5a529bc40cd59d2566896f",
    "status": "MISMATCH",
-   "ruling": "Ruling: finding; f1040s3 p. 1, line 6a, \"General business credit. Attach Form 3800\", and line 6l, \"Amount on Form 8978, line 14\". As ruled before on this line: a current-year business credit is asked of each business (sc.business_credit) and refuses its Schedule C at line 1, and through it the return; a credit through a partnership, S corporation or rental by scope.k1 or scope.rental (scope.schedule1); a Form 8978 amount by scope.f8978 through scope.other_line16. Line 7 itself carries no refusal for them and shows $0 on that refused return. No completed return has a wrong value. Still BUG-0620 (6) (open): the line-level refusal waits for the next change to Schedule 3; the landing's Schedule 3 changes did not make it.",
-   "subject_key": "e2652681236a74e5d420fea2d3f89772b94d03a70e24863599009040fcd05967"
+   "ruling": "Ruling: finding; the reviewer is right that no refusal on line 7 names Form 8978 (f1040s3 line 6l, \"Amount on Form 8978, line 14\"); the return is refused at Form 1040 line 16 through scope.other_line16 (scope.f8978_if_business_before), so no value is wrong, but the line's refusal list and note (\"each situation that gives one is refused here\") omit line 6l. BUG-0620 item 6 (closed by BUG-0733) did not cover it. (BUG-0761)",
+   "subject_key": "b419e9a0a9188cc2edea4fef15e6acd486d655b769b848730156a5692960fd5c"
   },
   {
    "key": "8",
-   "record": "33db6fd1246321eea8cd4592454d22f76e6fc561ead51f3c9916f10e7c84c8e4",
+   "record": "0d25dd6193b6e9a0d6467bbeb544dbf1ddbb77f81f5a529bc40cd59d2566896f",
    "status": "MATCH",
-   "subject_key": "9228847447a684312d2b7edbf42a74ae304284ef000614d7f61c29ce90e935c9"
+   "subject_key": "ad54c9410e9059fac71b4f79fa453bdb5980c4cd7eab9d6926a4cc39b2e5a60d"
   },
   {
    "key": "9",
@@ -77,23 +77,21 @@
   },
   {
    "key": "12",
-   "record": "1fa5aab7c28fe8659306de40ac4acdcc2bbb30db8297df9d2dbabdc9a888fe14",
-   "status": "MISMATCH",
-   "ruling": "Ruling: finding; i1040gi p. 117, Line 12, \"Enter any credit for federal excise taxes paid on fuels that are ultimately used for a nontaxable purpose (for example, an off-highway business use)\". As line 7: a business's claim is asked of each business (sc.fuel_credit) and refuses its Schedule C at line 1, and the return through it; line 12 itself refuses only the claim for kerosene used at home and shows $0 on a return refused for a business's claim. No completed return has a wrong value. Recorded in BUG-0620 (open).",
-   "subject_key": "1e097b9a03ef6e6b6136dfd48c62c532d12453eb15c8242f0c42e564c9973776"
+   "record": "0d25dd6193b6e9a0d6467bbeb544dbf1ddbb77f81f5a529bc40cd59d2566896f",
+   "status": "MATCH",
+   "subject_key": "7421c97139596882b473a4fd2599af09bc61ec064ef01150348d000e4cdf5b4b"
   },
   {
    "key": "14",
-   "record": "33db6fd1246321eea8cd4592454d22f76e6fc561ead51f3c9916f10e7c84c8e4",
-   "status": "MISMATCH",
-   "ruling": "Ruling: finding; f1040s3 p. 1, line 13a, \"Form 2439\", and line 13c; i1040gi p. 117, Line 13c. As ruled before on this line: a Form 2439 is refused by sd.f2439 through sd.other_forms on Schedule D, and through it Form 1040 line 7a and the return; a net elective payment election amount is made with a business credit on Form 3800 (sc.business_credit, refused on Schedule C). Line 14 itself refuses only the 13b, 13d and 13z situations and shows $0 on a return refused for the other two. No completed return has a wrong value. Still BUG-0620 (6) (open): a refusal on line 14 for sd.other_forms.",
-   "subject_key": "47961ecb12ac36fe354ffcfbe95a82ac95bc97d86f35142e6043661737184a8d"
+   "record": "0d25dd6193b6e9a0d6467bbeb544dbf1ddbb77f81f5a529bc40cd59d2566896f",
+   "status": "MATCH",
+   "subject_key": "1fa86befb42384b575d0fb9fa624dd3b5d7879906f1bca5db4e6d3a8ce51a834"
   },
   {
    "key": "15",
-   "record": "33db6fd1246321eea8cd4592454d22f76e6fc561ead51f3c9916f10e7c84c8e4",
+   "record": "0d25dd6193b6e9a0d6467bbeb544dbf1ddbb77f81f5a529bc40cd59d2566896f",
    "status": "MATCH",
-   "subject_key": "1319887d79d102e73b83e087658aead5ad38f22e73317d50f5284bfc9f2ecc6a"
+   "subject_key": "16a56c182f876ea818f9485af7a8dc53802d501fc4d9c63ebec9e2729d2518bb"
   }
  ],
  "subjects": {
@@ -101,16 +99,16 @@
   "2": "c6c1a986f392158e972b3d3c504a77f107b56ffccb86a08d2a3da67af9d74b37",
   "3": "56a99ba96761c8684a9a02abb9be7b20e5dc55509f54fb7056bd6497647c170d",
   "4": "e5524e535715293c1d2815fe688423294c14e6dfb2295db127d82169eca12162",
-  "5a": "6c43d4edaa165fcb6b8802a9d047bb0e3332401aec70bebbb05093e973f37a7b",
+  "5a": "74c24b35ca399bf2d48a3c7da5e044edc0efe0cac88caf744d38b4d5f9ec86e6",
   "5b": "ac14661f2f1cbfd4236321b755fd3569967b952233b308360ddd6b2aca0b9abd",
-  "7": "6cbb1ed04ece6f34b65ddeba84a1fbff19800fa7cbd8470913d1f6712953d103",
-  "8": "99263c9f3fdf3645034544bb2232b491c140ede3f10f3fcde812a44f0d88dce6",
+  "7": "8f01022347073d9276f67b5f37a18c4f54ce64bdc2931e2bf3d480c6ff8aa453",
+  "8": "7d9debb2cc19c8c13bd845601134b4e4b331843915e4dadfeb42448879f0d6bc",
   "9": "26c3895c47ea7bcc8d11f9f873c430fa59e41ba5e05cd1f204526673ccb2e823",
   "10": "aecbee88b43d622e6b0866d81c7655a1c544ff5c8552eb15bd3f94f525ce0dc1",
   "11": "03eaa13bfa979a1356fd0bf0ca3bcf3467a54375cfd41232c56dc6ecb6ff1b01",
-  "12": "a68485d052614fadd19f42abf42c0f99a0746f113994c8671d50c4e7c0fc82a9",
-  "14": "8257ceacc840f9f4541992ce4813724734a2ce3e668a2420ee15ce4a0c48e513",
-  "15": "f81aee0482d38a732db8556a1ec5e9f8bb862e3a65cef5406764b31d44f2b33a"
+  "12": "07a06d52d42bf5d31810015b6249564d1419021fcd31992d6fcf71cc06ae029f",
+  "14": "698f15ce35c69c173e8c9374de615062777be30978363213b2082ebc47bcf88a",
+  "15": "7c6724d7566ed2922b0702d4187c8da136fc456d0152f93fcb3f64e2c388381f"
  },
  "__rest__": "4f4915bf092b42c942f2ca21caeb7e45842950ff4b4c9638c16a365751d795e1"
 }

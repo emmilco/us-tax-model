@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.interest.limited",
-      "walk": "stage4",
       "covers": [
         "interest.limited"
       ],
@@ -38,7 +37,6 @@
     },
     {
       "id": "stage4.interest.exception",
-      "walk": "stage4",
       "covers": [
         "interest.exception"
       ],
@@ -73,7 +71,6 @@
     },
     {
       "id": "stage4.interest.election",
-      "walk": "stage4",
       "covers": [
         "interest.election"
       ],
@@ -118,7 +115,6 @@
     },
     {
       "id": "stage4.4952.carryover_no_income",
-      "walk": "stage4",
       "covers": [
         "f4952.carryover",
         "f4952.prior_7"
@@ -161,7 +157,6 @@
     },
     {
       "id": "stage4.f4952.line4a_taxable_interest_and_dividends",
-      "walk": "stage4",
       "covers": [
         "f4952.line4a"
       ],
@@ -233,7 +228,6 @@
     },
     {
       "id": "stage4.refuse.4952.unsupported",
-      "walk": "stage4",
       "covers": [
         "f4952.unsupported"
       ],
@@ -317,7 +311,6 @@
     },
     {
       "id": "stage4.refuse.4952.alternative_allocation",
-      "walk": "stage4",
       "covers": [
         "f4952.alternative_allocation"
       ],
@@ -401,7 +394,6 @@
     },
     {
       "id": "stage4.refuse.4952.election",
-      "walk": "stage4",
       "covers": [
         "f4952.bad_election"
       ],
@@ -440,7 +432,6 @@
     },
     {
       "id": "stage4.refuse.4952.bad_dividends",
-      "walk": "stage4",
       "covers": [
         "f4952.bad_dividends"
       ],
@@ -482,7 +473,6 @@
     },
     {
       "id": "stage4.refuse.4952.unsupported_with_carryover",
-      "walk": "stage4",
       "covers": [
         "f4952.carryover"
       ],
@@ -566,7 +556,6 @@
     },
     {
       "id": "stage4.interest.short_term",
-      "walk": "stage4",
       "covers": [
         "base"
       ],
@@ -605,7 +594,6 @@
     },
     {
       "id": "stage4.f4952.unused_unsupported",
-      "walk": "stage4",
       "covers": [
         "f4952.unsupported",
         "f4952.used"
@@ -670,7 +658,6 @@
     },
     {
       "id": "stage4.f4952.unused_alternative_allocation",
-      "walk": "stage4",
       "covers": [
         "f4952.alternative_allocation",
         "f4952.used"

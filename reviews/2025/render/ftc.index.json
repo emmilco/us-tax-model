@@ -6,14 +6,14 @@
  "head_rows": {
   "lines judged": "22",
   "match / mismatch / unclear / missing": "20 / 2 / 0 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "taxes",
-   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MATCH",
-   "subject_key": "aba41d4eef1fa3043703291d0d54bef5ebfee58d5f006ccdb1c0c11f11543cc5"
+   "subject_key": "588bc9d4fd64bab0c340aaa9f326f672fff8f8744244e89d41594684802eda47"
   },
   {
    "key": "asked",
@@ -23,9 +23,9 @@
   },
   {
    "key": "taxes_if_asked",
-   "record": "5d6b113992b73901375d3b27cc98cc0ddea76257a01e95de153b5dc841e08c46",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MATCH",
-   "subject_key": "2792f7a304013c66c80a5756c9efb453adf33ad8f2703f53fef420c4246f0637"
+   "subject_key": "f405109b1f2c334d1815d0b34340c7b9156a9b25fd6e0ba7e8021ddd3f358595"
   },
   {
    "key": "carryover",
@@ -47,9 +47,9 @@
   },
   {
    "key": "all_passive",
-   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MATCH",
-   "subject_key": "39214ef11a56f24e7fd6ab8123501c311b1b14300f057f3a2becaa77bc655c73"
+   "subject_key": "7ded2646b4d92e09fea609f040fc7dc45d22ff68903a1d3586626af8f3644272"
   },
   {
    "key": "statements",
@@ -59,15 +59,15 @@
   },
   {
    "key": "eligible",
-   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MATCH",
-   "subject_key": "2c6a79075b97cc9c1512547cea47fd498066050aa8dcc1e21d1b66acba9c3aa1"
+   "subject_key": "795e49e28ba5b571f6664df22a6e3415f19e0bd213e865a72213a8dd46c0bea8"
   },
   {
    "key": "elect",
-   "record": "c769be94c0fb90adcf2770514fc74611c1d2c16928641f98dbae870c6ac61fe5",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MATCH",
-   "subject_key": "d820efe11fde4ec6a6fb148d65759bdadb190e2c5a54a15829f01133f4dbef99"
+   "subject_key": "8cbfa05c01bc85bc05fa97aa46f2c68152bf61ed77c1635a5deec3ab2e8bdbe6"
   },
   {
    "key": "limit",
@@ -83,9 +83,9 @@
   },
   {
    "key": "has_tax",
-   "record": "5d6b113992b73901375d3b27cc98cc0ddea76257a01e95de153b5dc841e08c46",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MATCH",
-   "subject_key": "37e4a46670a4098483f338fd21f2513795b94d3dcac27ea850fb74c7df661e49"
+   "subject_key": "3fef018a1b590464f3cf4c350175c93f2ee264c44a28d877df7b1c430c51d5b0"
   },
   {
    "key": "no",
@@ -95,9 +95,9 @@
   },
   {
    "key": "all_passive_if_tax",
-   "record": "5d6b113992b73901375d3b27cc98cc0ddea76257a01e95de153b5dc841e08c46",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MATCH",
-   "subject_key": "bf55a58c6ccff5c44038341241100c171d639a627c79f5e1d970bd2961056c34"
+   "subject_key": "837918c507c3f94f3389ada7fb4ab7897969578befd79cd77674349aed999715"
   },
   {
    "key": "statements_if_tax",
@@ -107,21 +107,21 @@
   },
   {
    "key": "eligible_if_tax",
-   "record": "5d6b113992b73901375d3b27cc98cc0ddea76257a01e95de153b5dc841e08c46",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MATCH",
-   "subject_key": "2cedc2f381886d4fb974131ed63ca5767c48542a44e676750b9d45eab512f300"
+   "subject_key": "25fbc574c1b85564962dcaa00122af34f07694d76610784ca5ad64eb204a86d6"
   },
   {
    "key": "elect_if_tax",
-   "record": "5d6b113992b73901375d3b27cc98cc0ddea76257a01e95de153b5dc841e08c46",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MATCH",
-   "subject_key": "c48626f05e00b7a3a112904a55a9cb4356d2a96138390becf921350e6e2cb2cc"
+   "subject_key": "e41f808bfdf0f4fe09f46b344e6f5205396d0db86dc9bbe4ff673c85d905491e"
   },
   {
    "key": "needs1116",
-   "record": "5d6b113992b73901375d3b27cc98cc0ddea76257a01e95de153b5dc841e08c46",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MATCH",
-   "subject_key": "1b641c07dfd1c958fc73bcead675a803c1b4f8f19dce4e6eae2434b8cb9c60a4"
+   "subject_key": "9aebaa5d8884d7be3625cda99a46637f84d24abfe96efd52094716fda8f1e65e"
   },
   {
    "key": "regular_tax",
@@ -132,10 +132,10 @@
   },
   {
    "key": "limited",
-   "record": "5d6b113992b73901375d3b27cc98cc0ddea76257a01e95de153b5dc841e08c46",
+   "record": "c13331c0bf1a9cda78fa8d362d5fee4d9ad809e618f39999502828bb9e4cbdae",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1116 p. 25, Line 20: \"Enter the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.\" Form 4972 tax is refused for the whole return: Form 1040 line 16 refuses on scope.other_line16 (\"Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture\", forms/2025/f1040.yaml), so no completed return has Form 4972 tax on line 16 and the subtraction is zero wherever the line is used. Project stands.",
-   "subject_key": "68fa874ef8ea68398aaf505a0817cd3cd737bd006d4723cb1901233257dfdd79"
+   "ruling": "Ruling: scope; i1116 p. 25, Line 20, \"less any tax included on line 16 from Form 4972\". Form 4972 tax on Form 1040 line 16 is refused at f1040.line16 through scope.other_line16, so on a completed return there is nothing to subtract and line 16 plus Schedule 2 line 1z is the regular tax. Same as the landing round.",
+   "subject_key": "f70b7caaf2b82c38c8ab9de8d9c837ca08daced80ead762e7c0963f99c7e17df"
   },
   {
    "key": "credit",
@@ -145,27 +145,27 @@
   }
  ],
  "subjects": {
-  "taxes": "e6d588a93b1ac6228df4a292cd466cb7ac8f603a98696488172beaf7a68c206f",
+  "taxes": "ba216783cd818c0a1f7ee958c04b10247c4fbe93661496f8b8f7d808f468e9ab",
   "asked": "ae76e86d67a720a51e4be56b576b8918aa0ccfaa8904611d15d0b200aa793fe3",
-  "taxes_if_asked": "79fcca84ac69fb8acee9f9b093175b872b57a92e3afe8a11baa5c88776fc13c6",
+  "taxes_if_asked": "9b4a4f201bd06c831e4e0976332c36dc115520a2e5f771d5fa7362621a23af39",
   "carryover": "2d980b83c9f2ed478da6edf67656a25e911da2e2f591d0e13973e54f21609ab1",
   "carryover_ask": "02d909e480d67daf1e14fb4a615c5452530bf4fd59f4bdeb69b358945bc5c842",
   "carryover_if_asked": "0a757969a856fb30aa988f1d30bf834ad3db1b4506d47c18307ca2d49d207829",
-  "all_passive": "e2f969fdb75a96cd6ab0bf2e64c8779c9492eff9ab622ef594f4aeae757074d9",
+  "all_passive": "2738bfac9981376703ee856e75c5a77946d4de3f800771c14dedd5a58eb9aa4c",
   "statements": "13e2d9df332aed24bbee5ced09955425f5ded1ba51316a040eaaa097f1b1208b",
-  "eligible": "95155ec3ba732e5389fb3b04b77f0689a110d034d5580dd7fb6c71b14a1de5e3",
-  "elect": "64f163b8eb270cad4bdb1d626aae9fb4f495c4b05d3619ba5850d464cdeca9ea",
+  "eligible": "2ff8e776481aaecbd46b4a3af6a13a3065a611d0c6ffb04840483f8d21d219ea",
+  "elect": "6fdf0d522077f75deb889930c12295e9c05860c25c0b16d7a17c61453327e355",
   "limit": "7861aa365730f3bb92cc3ff5d8db0fc99202ac69261abff8af27c50e712014da",
   "zero": "30aa8978e16f8afbd14b9a2dfdb3b46389696ea81c185d9b916e716410069191",
-  "has_tax": "f5235d027bd47b83057066e34894360590382c9b055154955e3b8d863b8d0680",
+  "has_tax": "204130f00431ae7a115d230f3734c7eae6309349d123cd3ca9e064fb3edbd25e",
   "no": "2533a78fa5244d11b339dafa15b212c92a4fa6cc6efe2cdbebfb4595cb511a00",
-  "all_passive_if_tax": "3737fd2fb7d102876c05596869e001da127d54ea7a4ecf88f6e6394fa3d48f52",
+  "all_passive_if_tax": "12df7db831fc4aee0c309745fd228fe4f488be6f45b0e26d4d689056d8981ccf",
   "statements_if_tax": "f52f6527e19122c10b5da7bde766fdbc31ddff96746bf3b7cf64c9829f9a87e9",
-  "eligible_if_tax": "e660e328c89ab91b15782e6e7a8e31befc5cc342c1e6ce3a6e94a9a827269f94",
-  "elect_if_tax": "5444585e5e38db6faad1d0e2021633c0d061824f725f5a1a9962cbc87c877ccf",
-  "needs1116": "2e7b9061da504ef03607fed19ee3e50b1e983f862db2a99b97015e1fe8e91fae",
+  "eligible_if_tax": "bf0d699e072c7ca051bf19adea2f6384d66d3d59cee326a1f3a36b1916440424",
+  "elect_if_tax": "5c9937129eda1b8ffea215ac76bcf9597e7206e7aa29b22fa146530eebccfa94",
+  "needs1116": "ce1877c918d81a0e8a7bc166972a8a562e5182410609379d95123b5c3b35984d",
   "regular_tax": "9708e41122ecdaf9ac692bbfdc199dc4e05b00233f3861a7c8094d89caed5945",
-  "limited": "4bbffaf4e2df08c59d96fa3707c38b15670f2621a10209d6f3f787bb41bacbd2",
+  "limited": "b2e74af5b9682a4aeef2f0226855242cf098442526b2e5edfb260d3296514681",
   "credit": "aa6515d3251d268bd32ffffa7f8d6049622aca7badc120b2af6743b285d9a296"
  },
  "__rest__": "8987249afe36e362d3bf00fb617ecae69dc7aac9d4ee3abd263aeae4d097b5db"

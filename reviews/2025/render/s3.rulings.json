@@ -147,6 +147,17 @@
   {
    "printed": "7",
    "restated": "Enter $0 (sales.zero).",
+   "model": "Line 7 says 'Add lines 6a through 6z', and the instructions say 'Line 6l. Enter the amount from Form 8978, line 14 (relating to partner's audit liability under section 6226).' None of the refusals, including the s3.other_credit chain, covers a Form 8978 amount, so a filer with one gets $0 instead of the 6l amount. The other 6a–6m credits are covered by refusals.",
+   "ruling": "Ruling: finding; the reviewer is right that no refusal on line 7 names Form 8978 (f1040s3 line 6l, \"Amount on Form 8978, line 14\"); the return is refused at Form 1040 line 16 through scope.other_line16 (scope.f8978_if_business_before), so no value is wrong, but the line's refusal list and note (\"each situation that gives one is refused here\") omit line 6l. BUG-0620 item 6 (closed by BUG-0733) did not cover it. (BUG-0761)",
+   "context": "5418157aedd3756ce5f7da2e1f0836310d95476972daf99816fde857f2ae1f94",
+   "date": "2026-11-15",
+   "run": "8ba8666cc5a22b7140b28b8772ee7f0428d89fad746b99dcea51e6fe173304ec",
+   "severity": "low",
+   "subject_key": "006cbffb7b9956e4caddeffee186909d58ff4abde535ad7f9710ee9ca4ad105c"
+  },
+  {
+   "printed": "7",
+   "restated": "Enter $0 (sales.zero).",
    "model": "The IRS line is \"Total other nonrefundable credits. Add lines 6a through 6z\", and 6a is \"General business credit. Attach Form 3800\" (credits that \"usually apply only to individuals who are partners, shareholders in an S corporation, self-employed, or who have rental property\"). The refusals cover 6b through 6m and carryovers shown by a 2024 Form 3800, but nothing refuses a current-year general business credit, so such a filer gets $0 with no refusal.",
    "ruling": "Ruling: finding; f1040s3 p. 1, line 6a, \"General business credit. Attach Form 3800\"; i1040gi p. 116, Lines 6a Through 6z. Line 7 is $0 behind one refusal per situation of lines 6b to 6m and for a credit carried from 2024, and has none for a current-year business credit: that is asked of each business (sc.business_credit) and refuses the business's Schedule C at line 1, and through it Schedule 1 line 3, adjusted gross income and the tax, so the return is refused; line 7 itself shows $0 on that refused return. A credit through a partnership, S corporation, rental or farm is refused whole by scope.schedule1. No completed return has a wrong value. Recorded in BUG-0620 (open): the line-level refusal for a business credit waits for the next change to Schedule 3.",
    "context": "f4b03c3ecc5ca1dba81007c0f897b3ebd0dcec87c7cc8495b93774efea77d813",

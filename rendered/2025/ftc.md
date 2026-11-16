@@ -5,10 +5,10 @@
 
 ## (helper) — `ftc.taxes`
 
-- **Authored helper label:** Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7
-- **Encoded (NonNegDollars):** Input — Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7
-- Expr: `{"op":"input","source":"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7"}`
-- Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
+- **Authored helper label:** Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7, less any tax that is not creditable (such as tax on a dividend that fails the holding period or must be paid over)
+- **Encoded (NonNegDollars):** Input — Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7, leaving out tax withheld on a dividend from stock held fewer than 16 days within the 31-day period that begins 15 days before the ex-dividend date, and tax on a dividend to the extent you have to make related payments
+- Expr: `{"op":"input","source":"Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7, leaving out tax withheld on a dividend from stock held fewer than 16 days within the 31-day period that begins 15 days before the ex-dividend date, and tax on a dividend to the extent you have to make related payments"}`
+- Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 3, Foreign Taxes Not Eligible for a Credit, item 5, "Foreign taxes withheld on a dividend from a corporation, if you haven’t held the stock for at least 16 days within the 31-day period that begins 15 days before the ex-dividend date", and item 6, "Foreign taxes withheld on a dividend to the extent that you have to make related payments on positions in substantially similar or related property" (2025; printed date 2025-12-23; sha256 6998cf8c)
 
 ## (gate) — `ftc.asked`
 
@@ -20,7 +20,7 @@
 ## (helper) — `ftc.taxes_if_asked`
 
 - **Authored helper label:** Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise
-- **Encoded (NonNegDollars):** Choose — [helper "Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter" = true → helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7"] [helper "Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter" = false → helper "Year parameter sales.zero"]
+- **Encoded (NonNegDollars):** Choose — [helper "Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter" = true → helper "Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7, less any tax that is not creditable (such as tax on a dividend that fails the holding period or must be paid over)"] [helper "Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ftc.asked",{"const":true}],"op":"test"},"then":"ftc.taxes"},{"guard":{"eq":["ftc.asked",{"const":false}],"op":"test"},"then":"ftc.zero"}],"op":"choose"}`
 - Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
 
@@ -47,10 +47,10 @@
 
 ## (helper) — `ftc.all_passive`
 
-- **Authored helper label:** Was all foreign-source gross income passive category income under the small-tax election rules?
-- **Encoded (Bool):** Input — Was all foreign-source gross income passive category income under the small-tax election rules?
-- Expr: `{"op":"input","source":"Was all foreign-source gross income passive category income under the small-tax election rules?"}`
-- Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
+- **Authored helper label:** Was all foreign-source gross income passive category income under the small-tax election rules (counting high-taxed income and certain export financing interest as passive)?
+- **Encoded (Bool):** Input — Was all foreign-source gross income passive category income under the small-tax election rules? For this purpose passive income also includes income subject to the special rule for high-taxed income and certain export financing interest.
+- Expr: `{"op":"input","source":"Was all foreign-source gross income passive category income under the small-tax election rules? For this purpose passive income also includes income subject to the special rule for high-taxed income and certain export financing interest."}`
+- Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 1, Election To Claim the Foreign Tax Credit Without Filing Form 1116, "However, for this purpose, passive income also includes (a) income subject to the special rule for high-taxed income, described later; and (b) certain export financing interest." (2025; printed date 2025-12-23; sha256 6998cf8c)
 
 ## (helper) — `ftc.statements`
 
@@ -61,17 +61,17 @@
 
 ## (helper) — `ftc.eligible`
 
-- **Authored helper label:** Have creditability, holding-period, related-payment and required foreign-tax reduction rules been satisfied?
-- **Encoded (Bool):** Input — Have creditability, holding-period, related-payment and required foreign-tax reduction rules been satisfied?
-- Expr: `{"op":"input","source":"Have creditability, holding-period, related-payment and required foreign-tax reduction rules been satisfied?"}`
-- Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
+- **Authored helper label:** Is all of the foreign tax entered creditable, after leaving out tax that fails the creditability, holding-period or related-payment rules and making the required foreign-tax reductions?
+- **Encoded (Bool):** Input — Is all of the foreign tax entered creditable? Tax that fails the creditability, holding-period or related-payment rules is left out of the amount entered, and the required foreign-tax reductions are made in it, before answering.
+- Expr: `{"op":"input","source":"Is all of the foreign tax entered creditable? Tax that fails the creditability, holding-period or related-payment rules is left out of the amount entered, and the required foreign-tax reductions are made in it, before answering."}`
+- Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 2, "You are still required to take into account the general rules for determining whether a tax is creditable" and "You are still required to reduce the taxes available for credit by any amount you would have entered on line 12 of Form 1116" (2025; printed date 2025-12-23; sha256 6998cf8c)
 
 ## (helper) — `ftc.elect`
 
-- **Authored helper label:** Elect the credit without Form 1116, with no carryover to or from this election year?
-- **Encoded (Bool):** Input — Elect the credit without Form 1116, with no carryover to or from this election year?
-- Expr: `{"op":"input","source":"Elect the credit without Form 1116, with no carryover to or from this election year?"}`
-- Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; sha256 6998cf8c)
+- **Authored helper label:** Elect the credit without Form 1116, accepting that no foreign tax of 2025 is carried to or from another year?
+- **Encoded (Bool):** Input — Elect the credit without Form 1116, accepting that foreign tax paid or accrued in 2025 cannot be carried over to or from any other year?
+- Expr: `{"op":"input","source":"Elect the credit without Form 1116, accepting that foreign tax paid or accrued in 2025 cannot be carried over to or from any other year?"}`
+- Cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; pp. 1–2, "You can’t carry over to or from any other year any foreign taxes paid or accrued" (2025; printed date 2025-12-23; sha256 6998cf8c)
 
 ## (helper) — `ftc.limit`
 
@@ -104,7 +104,7 @@
 ## (helper) — `ftc.all_passive_if_tax`
 
 - **Authored helper label:** Whether all foreign-source gross income was passive category income, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
-- **Encoded (Bool):** Choose — [helper "Positive foreign taxes" = true → helper "Was all foreign-source gross income passive category income under the small-tax election rules?"] [helper "Positive foreign taxes" = false → helper "Year parameter ftc.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Positive foreign taxes" = true → helper "Was all foreign-source gross income passive category income under the small-tax election rules (counting high-taxed income and certain export financing interest as passive)?"] [helper "Positive foreign taxes" = false → helper "Year parameter ftc.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"ftc.all_passive"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"ftc.no"}],"op":"choose"}`
 - Cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; sha256 6998cf8c)
 
@@ -118,14 +118,14 @@
 ## (helper) — `ftc.eligible_if_tax`
 
 - **Authored helper label:** Whether the creditability, holding-period, related-payment and reduction rules are met, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
-- **Encoded (Bool):** Choose — [helper "Positive foreign taxes" = true → helper "Have creditability, holding-period, related-payment and required foreign-tax reduction rules been satisfied?"] [helper "Positive foreign taxes" = false → helper "Year parameter ftc.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Positive foreign taxes" = true → helper "Is all of the foreign tax entered creditable, after leaving out tax that fails the creditability, holding-period or related-payment rules and making the required foreign-tax reductions?"] [helper "Positive foreign taxes" = false → helper "Year parameter ftc.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"ftc.eligible"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"ftc.no"}],"op":"choose"}`
 - Cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; sha256 6998cf8c)
 
 ## (helper) — `ftc.elect_if_tax`
 
 - **Authored helper label:** Whether the election without Form 1116 is made, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)
-- **Encoded (Bool):** Choose — [helper "Positive foreign taxes" = true → helper "Elect the credit without Form 1116, with no carryover to or from this election year?"] [helper "Positive foreign taxes" = false → helper "Year parameter ftc.no (false)"]
+- **Encoded (Bool):** Choose — [helper "Positive foreign taxes" = true → helper "Elect the credit without Form 1116, accepting that no foreign tax of 2025 is carried to or from another year?"] [helper "Positive foreign taxes" = false → helper "Year parameter ftc.no (false)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ftc.has_tax",{"const":true}],"op":"test"},"then":"ftc.elect"},{"guard":{"eq":["ftc.has_tax",{"const":false}],"op":"test"},"then":"ftc.no"}],"op":"choose"}`
 - Cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"; p. 1, "This election is available only if you meet all of the following conditions" (2025; printed date 2025-12-23; sha256 6998cf8c)
 

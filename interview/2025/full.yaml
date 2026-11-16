@@ -33,6 +33,9 @@ interview:
   # then open from the start, so the bank's order decides where each is asked.
   - sa.line17
   - s2.other
+  # Schedule B line 7a, printed in Part III and read by its notice: asked only after a Yes to one of the questions
+  # about things outside the United States.
+  - sb.line7a_if_foreign
   initial: {}
   cite:
     doc: f1040

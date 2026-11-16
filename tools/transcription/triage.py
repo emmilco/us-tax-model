@@ -9,7 +9,10 @@ equivalence on that sample, and each difference comes with witness inputs and bo
 `bank.return_states` counts the sample by return state; `kinds_by_return` counts only the differences,
 so it is not the size of the completed sample. A reply with invalid declarations is executed line by line
 (T-143): valid lines are compared, and a pair whose candidate line or dependency failed schema, type or
-reference validation is reported as `candidate-invalid` and listed in `invalid_lines`.
+reference validation is reported as `candidate-invalid` and listed in `invalid_lines`. Each side's line is
+compared as the filer sees it: a line hidden by its shown_when shows no amount, whether the shown_when is
+the project's or one the reply declares (`candidate_shown_when`); a line the reply hides where the project
+shows an amount differs as `candidate-hides-shown`.
 
 Each section is evaluated against the reply that judged it, as the committed review log records it, so
 triage runs in a checkout without the git-ignored review data. A section the log marks "Reviewed in: pass <id>"
@@ -187,7 +190,8 @@ def pairs_for(form, project_lines, second_lines, handles):
         if project is None:
             raise SystemExit(f"{form}: cannot map open section {handle!r} to a project line")
         out.append({"handle": handle, "status": status, "open_at_triage": is_open, "project": project,
-                    "candidate": second["id"] if second else None, "shown_when": shown.get(project)})
+                    "candidate": second["id"] if second else None, "shown_when": shown.get(project),
+                    "candidate_shown_when": (second.get("shown_when") if second else None) or None})
     return out
 
 
@@ -196,7 +200,7 @@ def evaluate(stem, form, doc, lines, pairs, generated, seed, partial_bases, max_
     evaluable = [p for p in pairs if p["candidate"]]
     if not evaluable:
         return {"state": "no candidate lines", "errors": [], "lines": []}
-    payload = {"context": T.model_type_context(), "form": form, "lines": lines, "pairs": [{k: p[k] for k in ("handle", "project", "candidate", "shown_when")} for p in evaluable],
+    payload = {"context": T.model_type_context(), "form": form, "lines": lines, "pairs": [{k: p[k] for k in ("handle", "project", "candidate", "shown_when", "candidate_shown_when")} for p in evaluable],
                "ownInputs": [l["id"] for l in doc["lines"] if l["expr"].get("op") == "input"],
                "generated": generated, "seed": seed, "partialBases": partial_bases, "maxWitnesses": max_witnesses}
     result = subprocess.run(["node", "--max-old-space-size=4096", os.path.join(ROOT, "tools", "transcription", "triage.mjs")],

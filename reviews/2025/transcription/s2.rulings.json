@@ -40,6 +40,52 @@
    "subject_key": "ac0ee0f511548b3bb1a66c0b02df35c6500d8f2762531987911ad7ea46ff56f3"
   },
   {
+   "printed": "2",
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "86d6a5c2f4a993017e735d49b7969d300974e39bd7559aa0b3663fce018ca1cc",
+   "ruling": "Ruling: scope; f1040s2 line 2 and i6251 Who Must File. The project does not figure the alternative minimum tax: line 2 is $0 and refuses (Form 6251) when the computed screen s2.amt may be true (docs/2026-11-15_amt_computed_screen.md); the reply computes Form 6251 inline with its own refusals. Triage (pass fbc614250ee5): 2,411/2,922 agree; no value difference; completed: 55 candidate-unknown (the reply reads s2.amt_business and s2.amt_boat, asked only under their parents) and 28 candidate-refuses (the reply's own scope, e.g. the AMT foreign tax credit, s2.h_has_ftc); the rest on incomplete or refused records. The screen itself is not ruled here.",
+   "context": "e7f6edb0bce47ea58ef489f1e5d009e45447c7050ff90044d3e1767ffd8018ed",
+   "date": "2026-11-15",
+   "run": "510dbab3049e019cd254b68b3bd567d51b1fb8ca084f32b32743ccce5ba5f2ef",
+   "subject_key": "eba3196e333d04cf30b4a0f7ce8ea9a9dddecfdd8eebca8a4e7c1b13940fa360",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@s2",
+     "fixture:classm.f2441.4.deepseek@s2",
+     "fixture:classm.f2441.5.deepseek@s2",
+     "fixture:classm.w2.1.deepseek@s2",
+     "fixture:classm.f8889.1.deepseek@s2",
+     "fixture:classm.f8889.3.deepseek@s2",
+     "fixture:classm.f8889.5.deepseek@s2",
+     "fixture:classm.f4952.3.deepseek@s2",
+     "fixture:classm.f4952.4.deepseek@s2",
+     "fixture:classm.s2.1.deepseek@s2",
+     "fixture:classm.s2.2.deepseek@s2",
+     "fixture:classm.s2.3.deepseek@s2",
+     "fixture:audit.dependent.listed_not_dependent_no_tin@s2",
+     "fixture:t091.absence.other_tests_unchanged@s2",
+     "fixture:stage8.mut.hoh_niece_17@s2",
+     "fixture:stage9.eic.mut.classm_f8995a_2_line2_zero@s2",
+     "fixture:stage18.refuse.allocation@s2",
+     "fixture:stage18.refuse.other_coverage@s2",
+     "fixture:stage18.refuse.other_mec_enrolled@s2",
+     "fixture:stage14.s179.refuse_orphan@s2",
+     "fixture:sales.loss.mfs.0@s2",
+     "partial:stage14.asset.hy_5yr-s2.iso_vested@s2",
+     "partial:stage14.asset.bonus_100-s2.iso_vested@s2",
+     "partial:stage14.asset.prior_7yr-s2.iso_vested@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "3",
    "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
    "second_expr_sha256": "182b441bc4a1347b3c594dfb643c92519039d031ece3239f28a56d53b37a46f5",
@@ -75,6 +121,38 @@
      "fixture:classm.eic.5@s2",
      "fixture:classm.eic.6@s2",
      "fixture:classm.eic.7@s2",
+     "partial:stage14.asset.hy_5yr-s2.household_help@s2",
+     "partial:stage14.asset.bonus_100-s2.household_help@s2",
+     "partial:stage14.asset.prior_7yr-s2.household_help@s2",
+     "partial:stage14.asset.qip-s2.household_help@s2",
+     "partial:stage14.asset.done-s2.household_help@s2",
+     "partial:stage14.asset.refuse_class-s2.household_help@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s2.other",
+   "project_expr_sha256": "d62506e2ff0574905727c3b934e8161ae16616c8ef4c13471f2ad0fb992bbe79",
+   "second_expr_sha256": "76b9ec2efa58bde3dd52f3a32eb5d47a21de8530c8a0edf9e1854a5f14fe24fa",
+   "ruling": "Ruling: model error; i1040gi p. 113, Lines 9 and 13 (household employment taxes; uncollected social security and Medicare tax on W-2 box 12 codes A, B, M, N). As in the landing round: the reply's screen for Schedule 2 amounts the tool does not figure leaves out s2.household_employee and s2.w2_marks (both in its input list), so the line other forms rely on (s8812 line 22, s1a, tipjob) would not refuse a Schedule H or uncollected-tax return. It also reads s2.mortgage_subsidy and s2.lookback raw (the project asks them only of a home owner and of a Schedule C filer). Triage (pass fbc614250ee5): 2,669/2,922 agree; no value in the bank; completed: 35 candidate-unknown (s2.mortgage_subsidy not asked); 218 candidate-/project-unknown on incomplete or refused records.",
+   "context": "e7f6edb0bce47ea58ef489f1e5d009e45447c7050ff90044d3e1767ffd8018ed",
+   "date": "2026-11-15",
+   "run": "510dbab3049e019cd254b68b3bd567d51b1fb8ca084f32b32743ccce5ba5f2ef",
+   "subject_key": "365e077b39ba6e8812b0fa4e44b03eeb78b8d13c08d36ecaaa6619fd77ba42fa",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1@s2",
+     "fixture:classm.f2441.2@s2",
+     "fixture:classm.f2441.3@s2",
+     "fixture:classm.f2441.4@s2",
+     "fixture:classm.f2441.5@s2",
+     "fixture:classm.f2441.6@s2",
      "partial:stage14.asset.hy_5yr-s2.household_help@s2",
      "partial:stage14.asset.bonus_100-s2.household_help@s2",
      "partial:stage14.asset.prior_7yr-s2.household_help@s2",

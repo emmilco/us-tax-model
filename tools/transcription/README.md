@@ -451,7 +451,12 @@ share is qualified by the line id in the log (`marker_keys`); `(screen)` is qual
 or more computed lines carry it (`(screen) (ira.special)`), and the request still shows it bare
 (`prompt_marker`), so a reply's `(screen)` line takes the key of the project line it names
 (`second_keys`). Two compared lines with one key are an error (`line_keys`), and the review store
-refuses a record with two parts of one name. In addition, helper lines
+refuses a record with two parts of one name. Within an expression, a reference to a screening input
+compares as `(screen)` with the input's id (`Expander.input_key`), so a line that reads one screening
+input does not agree with a reply that reads another. Logs compared before this rule saw every screening
+input as the bare `(screen)`; the comparison policy name was kept, since a new name would mark every
+existing log as predating unit-preserving comparison (`compare_families.py`), and the rule applies at
+each form's next review. In addition, helper lines
 that other forms read (for example `qbi.deduction`, `ftc.credit`, the
 per-person W-2 totals) and the result lines of the shared definitions
 (`tax_on_amount.tax`, `tcw.tax`) are listed in the prompt by id and compared
@@ -667,7 +672,12 @@ filer's own inputs, and the project's values for comparison, which the model
 never sees. Results of the shared tax computation (Tax Table or Tax
 Computation Worksheet) are given, not worked; that computation is covered by
 the Tax Table conjecture and the transcription and render logs of `tcw` and
-`tax_on_amount`.
+`tax_on_amount`. They are the document's lines that take a shared definition's
+result and its lookups in a printed tax table (`SHARED_TAX_TABLES` in
+`engine/src/classm.ts`: the federal Tax Table and the New York State and City
+Tax Tables, whose rows are not among the document's pages). A given line of the
+document itself is named by its printed number and wording, with its id where
+another given or requested line shares the number (BUG-0641).
 
 ```
 node engine/dist/main.js classm-jobs [--docs qdcg,sd]
@@ -785,7 +795,11 @@ targets and their helpers and inputs cite, and the source-derived catalog for th
 ("Form 1040") is listed whole only where the scoped lines' own citations name it; otherwise its input lines and the
 lines the excerpt names by form and line are listed (reason `named form, inputs and named lines: ...`), and a
 collection named only as a form only by its named lines. Definitions, shared pages, worksheets, named lines (a form feeding a line the excerpt names) and the
-screening list are as in a whole review. Each log records a
+screening list are as in a whole review, except that another form's computed line whose value is computed from a
+target line (through any lines, on any form) is left out unless the reviewed form reads it (`catalog_lines`
+`under_review`): it cannot be an operand of the line it is computed from, and a reply that used it would be
+circular (`div.has_capital_gain`, computed from `sd.distributions_if_dividends`). A whole review lists such lines
+still. Each log records a
 `## Line subjects` table; `check_logs.py` names exactly the stale lines and suggests `--lines auto`. Owner decision
 2026-11-04: a log goes stale only for the lines whose subject changed (a line no compared line reaches does not stale
 it). Forms with partial-input banks (dependent, f8889) are reviewed whole. `rerun_all.py` runs the transcription and

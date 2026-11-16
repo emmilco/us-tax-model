@@ -406,49 +406,40 @@ changes:
       page: 11
       quote: Space used for storage is allowed only if the residence is the sole fixed location of your business
     verified: draft
-    note: The tick-box label of sc.ho_uses is unchanged; the storage condition is in the question, the square-feet line and
-      the square-feet help, so a filer who stores stock at home but has another fixed place of business leaves the storage
-      space out of the square feet.
+    note: The storage condition (the home the sole fixed location of the business) is in the 2025 definitions too, cited there
+      to Pub. 587 (2025) p. 3, which the 2025 i1040sc refers to; for 2026 the instructions state it themselves (p. 11), so these
+      operations move the citations to the 2026 i1040sc and change the year. The tick-box label of sc.ho_uses and the
+      square-feet help are the same in both years.
     operations:
     - set:
         line: sc.ho_uses
-        field: expr.source
-        from: Do you claim a deduction for the business use of your home for this business (a part of your home used regularly
-          and exclusively for the business, or regularly for storing inventory or product samples)?
-        to: Do you claim a deduction for the business use of your home for this business (a part of your home used regularly
-          and exclusively for the business, or, if your home is the sole fixed location of the business, regularly for storing
-          inventory or product samples)?
-    - set:
-        line: sc.ho_uses
         field: cite.locator
-        from: p. 10, Line 30, Business use of your home; Pub. 587 referenced
+        from: p. 10, Line 30, Business use of your home; Simplified method, "used regularly and exclusively for business, regularly
+          for daycare, or regularly for storage"; Pub. 587 referenced; p587 p. 3, Storage of inventory or product samples, "Your
+          home is the only fixed location of your trade or business"
         to: p. 11, Line 30, Business use of your home; Simplified method, "Space used for storage is allowed only if the residence
           is the sole fixed location of your business"; Pub. 587 referenced
     - set:
         line: sc.ho_sqft
         field: expr.source
-        from: The square feet of your home used regularly and exclusively for this business (or regularly for storing inventory
-          or product samples) throughout 2025
+        from: The square feet of your home used regularly and exclusively for this business (or, if your home is the sole fixed
+          location of the business, regularly for storing inventory or product samples) throughout 2025
         to: The square feet of your home used regularly and exclusively for this business (or, if your home is the sole fixed
           location of the business, regularly for storing inventory or product samples) throughout 2026
     - set:
         line: sc.ho_sqft
         field: cite.locator
-        from: p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method
+        from: p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method; p587 p. 3, Storage
+          of inventory or product samples, "Your home is the only fixed location of your trade or business"
         to: p. 14, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 11, Simplified method, "Space used for
           storage is allowed only if the residence is the sole fixed location of your business"
     - set_question:
         input: sc.ho_uses
         field: prompt
-        from: In 2025, did you use part of your home regularly and only for this business (or regularly to store its stock
-          or samples), and do you want to deduct it?
-        to: In 2026, did you use part of your home regularly and only for this business (or, if your home is its only fixed
-          place of business, regularly to store its stock or samples), and do you want to deduct it?
-    - set_question:
-        input: sc.ho_sqft
-        field: help
-        from: null
-        to: Count space used only to store stock or samples only if your home is the only fixed place of this business.
+        from: In 2025, did you use part of your home regularly and only for this business, regularly as a daycare, or (if your
+          home is its only fixed place of business) regularly to store its stock or samples, and do you want to deduct it?
+        to: In 2026, did you use part of your home regularly and only for this business, regularly as a daycare, or (if your
+          home is its only fixed place of business) regularly to store its stock or samples, and do you want to deduct it?
   - change: C-BUS-11
     evidence:
     - doc: f4562

@@ -1011,7 +1011,8 @@ form:
         calculation for year of marriage? See instructions."
   - id: f8962.nonuniform
     printed: (helper)
-    label: Forms 1095-A without full-year coverage and unchanged columns A and B
+    label: Forms 1095-A that fail the line 10 test (not full-year coverage with the same column A and the same correct column
+      B every month)
     type: Count
     expr:
       op: sum_over
@@ -1020,7 +1021,7 @@ form:
       where:
         op: test
         eq:
-        - f1095a.uniform
+        - f1095a.annual_ok
         - const: false
     cite: &id001
       doc: i8962
@@ -2765,7 +2766,8 @@ form:
           month of marriage?"
     - when: f8962.other
       form: Form 8962 with coverage or eligibility outside this tool
-      remedy: Eligibility for other minimum essential coverage for any month (Medicare, Medicaid, CHIP, TRICARE, veterans'
+      remedy: Eligibility for other minimum essential coverage for any month of Marketplace coverage (Medicare, Medicaid,
+        CHIP, TRICARE, veterans'
         or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in
         including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates),
         a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information,

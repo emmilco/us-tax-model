@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.qbi.below",
-      "walk": "stage4",
       "covers": [
         "qbi.below"
       ],
@@ -41,7 +40,6 @@
     },
     {
       "id": "stage4.qbi.exact",
-      "walk": "stage4",
       "covers": [
         "qbi.exact"
       ],
@@ -79,7 +77,6 @@
     },
     {
       "id": "stage4.qbi.above",
-      "walk": "stage4",
       "covers": [
         "qbi.above"
       ],
@@ -117,7 +114,6 @@
     },
     {
       "id": "stage4.qbi.income_limit",
-      "walk": "stage4",
       "covers": [
         "qbi.income_limit"
       ],
@@ -155,7 +151,6 @@
     },
     {
       "id": "stage4.qbi.capital_limit",
-      "walk": "stage4",
       "covers": [
         "qbi.capital_limit"
       ],
@@ -190,7 +185,6 @@
     },
     {
       "id": "stage4.refuse.qbi",
-      "walk": "stage4",
       "covers": [
         "qbi.unsupported"
       ],
@@ -227,7 +221,6 @@
     },
     {
       "id": "stage4.qbi.zero_income",
-      "walk": "stage4",
       "covers": [
         "qbi.zero_income"
       ],

@@ -326,12 +326,14 @@ changes:
         from: What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible”
           or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by
           a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part
-          of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change.
+          of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change. A plan covering
+          more than one person does not count if its deductible for any one person on it is below $3,300.
         to: What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible”
           or “HDHP”, and a bronze or catastrophic plan counts too. If you were covered all year as a member of someone else's
           plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more
           than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the
-          same kind of plan is not a change.
+          same kind of plan is not a change. A plan covering more than one person does not count if its deductible for any
+          one person on it is below $3,400.
     - set:
         line: f8889.clear_all_year
         field: expr.source

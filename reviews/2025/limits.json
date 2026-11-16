@@ -157,6 +157,28 @@
   },
   "limit:i8582:p1:57da1db6": {
    "not_applicable": "Form 8582's exception for rental real estate activities with active participation (modified adjusted gross income not more than $100,000); the tool never figures Form 8582: a passive activity is refused at scope.other_income (scope.passive) and rental real estate at scope.schedule1 (scope.rental)."
+  },
+  "limit:i6251:p3:abe59e7a": {
+   "not_applicable": "the AMT limit on depletion (Form 6251 line 2d); depletion is refused by the Schedule C screen (sc.special, Schedule C line 12) and royalty or partnership depletion with Schedule E and K-1 income (scope.rental, scope.k1), so no completed return has a line 2d amount"
+  },
+  "limit:i6251:p3:217dad88": {
+   "not_applicable": "a rule of the alternative tax net operating loss deduction (Form 6251 lines 2e and 2f); a net operating loss carried into 2025 is refused (scope.nol), so no completed return has an ATNOLD"
+  },
+  "limit:i6251:p3:4dc0bc56": {
+   "not_applicable": "a rule of the alternative tax net operating loss deduction (Form 6251 lines 2e and 2f); a net operating loss carried into 2025 is refused (scope.nol), so no completed return has an ATNOLD"
+  },
+  "limit:i6251:p9:5506f3f8": {
+   "enforced_by": [
+    "s179.line11",
+    "s2.amt_rel"
+   ],
+   "reason": "the example of a related adjustment (Form 6251 line 3): the regular-tax section 179 deduction is limited to business income by s179.line11 (Form 4562 line 11, the business income limitation); the refigured AMT amount is not figured, but the AMT screen bounds every related adjustment by adding the whole section 179, SE health insurance, SE retirement and IRA deductions (s2.amt_rel) whenever depreciation may be refigured, so the AMT limit can only lower line 4 below the bound"
+  },
+  "limit:i8839:p2:75ca3d2a": {
+   "not_applicable": "an example of the adoption credit's per-child maximum reduced by credit claimed in an earlier year (Form 8839); the tool does not prepare Form 8839 and refuses an adoption or adoption expenses in 2025 or in 2024 toward a U.S. adoption not final by the end of 2024 (s3.adoption_if_any, s3.adoption_us_if_earlier)"
+  },
+  "limit:i8839:p2:13eb27b6": {
+   "not_applicable": "an example of the adoption credit's per-child maximum reduced by credit claimed in an earlier year (Form 8839); the tool does not prepare Form 8839 and refuses an adoption or adoption expenses in 2025 or in 2024 toward a U.S. adoption not final by the end of 2024 (s3.adoption_if_any, s3.adoption_us_if_earlier)"
   }
  },
  "baseline": {

@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "fcf25eb148a54b794b29ec94b05b000c0b9cba830d5fa7651f7b18afc1788d13",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -22,73 +22,73 @@
   },
   {
    "key": "retirement.has_rollover",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; The interview asks retirement.rollover only after retirement.rollover_any Yes and never for a direct rollover (code G), whose whole distribution the project treats as rolled over (retirement.rolled = box 1; f1099r p. 5, Box 2a, \"For a direct rollover ... zero should be shown and you must enter zero (-0-) on the 'Taxable amount' line\"; i1040gi p. 30, Rollovers, \"Use lines 5a and 5b to report a rollover, including a direct rollover\"). The candidate reads retirement.rollover raw, so on a code G entry it uses an amount the interview never asks; the sampled completed value witnesses are all code G fixtures carrying an unasked rollover of $0 (stage10.plan.direct_rollover, stage10.plan.direct_rollover_zero, mutation.m1.retirement.direct_rollover_put_back and its partials, classm.f1040.3 r2 and .deepseek). Where the rollover is asked the predicate is the project's. Completed candidate-unknowns are partials withholding a rollover the gate would not ask. Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,402 of 3,671 agree; on completed returns: 72 value, 15 candidate-unknown.",
-   "subject_key": "f19f0402a4046b669a259d23ed3975c4e071d1fdc27357a06e144ac0db5d31fc"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,576/2,459 agree; 509 project-unknown, 186 project-refuses, 119 value, 69 candidate-unknown; completed: 2 value, 1 candidate-unknown. The project counts a code G direct rollover through retirement.rolled/direct. For code G it takes box 1 as the amount rolled over and does not ask retirement.rollover_any. The reply reads only rollover_any/rollover. Completed values: stage10.plan.direct_rollover and stage10.plan.direct_rollover_zero (code G), project true, reply false. Under the reply's interface a code G filer would answer the rollover question; the difference is the gate. Same as the landing-round ruling.",
+   "subject_key": "14ef80c0a5ad07bbb35ec2e092376e0236bba3a051cf8ef35e9312793049efc7"
   },
   {
    "key": "retirement.taxable",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; The interview asks retirement.rollover only after retirement.rollover_any Yes and never for a direct rollover (code G), whose whole distribution the project treats as rolled over (retirement.rolled = box 1; f1099r p. 5, Box 2a, \"For a direct rollover ... zero should be shown and you must enter zero (-0-) on the 'Taxable amount' line\"; i1040gi p. 30, Rollovers, \"Use lines 5a and 5b to report a rollover, including a direct rollover\"). The candidate reads retirement.rollover raw, so on a code G entry it uses an amount the interview never asks; the sampled completed value witnesses are all code G fixtures carrying an unasked rollover of $0 (stage10.plan.direct_rollover, stage10.plan.direct_rollover_zero, mutation.m1.retirement.direct_rollover_put_back and its partials, classm.f1040.3 r2 and .deepseek). Representation for that part (and the raw retirement.annuity and refusal screens, asked only with their parents). But the candidate also refuses on stage10.smw.recovered_exceeds_cost (completed; project $12,000.00) through its h_recovered_over check, where the source gives an answer: i1040gi p. 28, \"Your payments are fully taxable if ... (b) you got your entire cost back tax free before 2025\". Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,358 of 3,671 agree; on completed returns: 207 candidate-unknown, 31 value, 1 candidate-refuses.",
-   "subject_key": "d9c8da4080f7cfdc710daccfae07bbce2c0c9023874bc69833a978b6d2764695"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,519/2,459 agree; 626 candidate-unknown, 149 value, 102 project-refuses, 39 project-unknown, 24 candidate-refuses; completed: 101 value, 30 candidate-unknown. Completed value witnesses fall into three patterns. (1) stage10.plan.box5 and stage10.mixed.ira_and_plan (pension $12,000.00, box 5 $1,200.00): project $10,800.00, reply $12,000.00. The reply treats a pension as fully taxable unless a cost answer is given, but box 5 is employee contributions \"that the employee may recover tax free this year\" (i1099r p. 5). (2) stage10.smw.recovered_exceeds_cost (box 1 $12,000.00, the whole cost recovered before 2025): project $12,000.00, fully taxable (\"you got your entire cost back tax free before 2025\", i1040gi p. 28); reply $21,000.00, more than the payment itself. (3) stage10.plan.direct_rollover: code G, as has_rollover (gate). Patterns 1 and 2 are errors.",
+   "subject_key": "dec139b49f90b0f58cdf3cb17a20cd78962b33303dec6069ca7422d084470c03"
   },
   {
    "key": "retirement.amount_a",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; The interview asks retirement.rollover only after retirement.rollover_any Yes and never for a direct rollover (code G), whose whole distribution the project treats as rolled over (retirement.rolled = box 1; f1099r p. 5, Box 2a, \"For a direct rollover ... zero should be shown and you must enter zero (-0-) on the 'Taxable amount' line\"; i1040gi p. 30, Rollovers, \"Use lines 5a and 5b to report a rollover, including a direct rollover\"). The candidate reads retirement.rollover raw, so on a code G entry it uses an amount the interview never asks; the sampled completed value witnesses are all code G fixtures carrying an unasked rollover of $0 (stage10.plan.direct_rollover, stage10.plan.direct_rollover_zero, mutation.m1.retirement.direct_rollover_put_back and its partials, classm.f1040.3 r2 and .deepseek). (a code G entry is fully taxable to the candidate, so it leaves line 4a/5a empty). As on retirement.taxable, it also refuses on stage10.smw.recovered_exceeds_cost (completed), which i1040gi p. 28 treats as fully taxable (\"enter the total ... on line 5b; don't make an entry on line 5a\"). Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,390 of 3,671 agree; on completed returns: 170 candidate-unknown, 31 value, 1 candidate-refuses.",
-   "subject_key": "2c7beb9017b3bb8f8dbe1bc3088599798ca90919c742396c372cf30148d71bce"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,519/2,459 agree; 614 candidate-unknown, 158 value, 102 project-refuses, 42 project-unknown, 24 candidate-refuses; completed: 109 value, 25 candidate-unknown. Completed value witnesses: stage10.plan.box5 and stage10.mixed.ira_and_plan, project $12,000.00 (partly taxable, box 5), reply $0. Also stage10.smw.cost_recovered, stage10.smw.recovered_exceeds_cost and stage10.smw.cost_recovered_box5, project $0 (fully taxable, no line 5a entry), reply $12,000.00. stage10.plan.direct_rollover is code G, as has_rollover. The first two patterns contradict i1040gi p. 28. Same pattern as retirement.taxable.",
+   "subject_key": "f3a1ec04d580086807dfa37dcaed95e8dd216ecfddfde32715f2c398d624eaff"
   },
   {
    "key": "retirement.sav_amount",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; The interview asks retirement.rollover only after retirement.rollover_any Yes and never for a direct rollover (code G), whose whole distribution the project treats as rolled over (retirement.rolled = box 1; f1099r p. 5, Box 2a, \"For a direct rollover ... zero should be shown and you must enter zero (-0-) on the 'Taxable amount' line\"; i1040gi p. 30, Rollovers, \"Use lines 5a and 5b to report a rollover, including a direct rollover\"). The candidate reads retirement.rollover raw, so on a code G entry it uses an amount the interview never asks; the sampled completed value witnesses are all code G fixtures carrying an unasked rollover of $0 (stage10.plan.direct_rollover, stage10.plan.direct_rollover_zero, mutation.m1.retirement.direct_rollover_put_back and its partials, classm.f1040.3 r2 and .deepseek). Its other completed differences are candidate-unknowns on retirement.ira_returned, which the interview asks only for an IRA (ira_returned_if_ira), read by its refusal screens on plan entries (classm.f1040.3 r1). f8880 p. 2, Line 4, \"Distributions not taxable as the result of a rollover or a trustee-to-trustee transfer\". Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,507 of 3,671 agree; on completed returns: 92 candidate-unknown, 34 value.",
-   "subject_key": "5eadf286490ee98c044d296945969a98ba0f237de1d3310f0d4caeb4982f8222"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,727/2,459 agree; 355 candidate-unknown, 147 project-refuses, 117 project-unknown, 68 value, 45 candidate-refuses; completed: 27 candidate-unknown, 1 value. The single completed value is stage10.plan.direct_rollover (code G): project $0 (rolled over), reply $20,000.00 (rollover not seen). This is the has_rollover gate pattern. The completed candidate-unknowns are screens read on partial records. Same as the landing-round ruling.",
+   "subject_key": "af0f08d27b39745475784d35b2f6b2457fa3ca89f91b771c719699ee450e1e05"
   },
   {
    "key": "retirement.l1",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the candidate reads retirement.early_screen, under59, code2_partial, not_beneficiary and sec457 raw; each is asked only with its code (early_screen with codes 1 and S, the others with codes 2, 4 and 7), so it is unknown on completed returns whose code does not ask them (classm.f1040.3 r1, stage10.ira.partial_rollover). It also computes line 1 for a code 2, 4 or 7 entry that does not fit, which the project refuses (code_screen); the one value difference is on a refused return. i5329 p. 3, Line 1. Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,558 of 3,671 agree; on completed returns: 88 candidate-unknown.",
-   "subject_key": "b313a223d7e1977b35fc8a61f6fd032c6fe76866cd3848c15c137a5543d3e808"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,971/2,459 agree; 485 candidate-unknown, 1 candidate-refuses, 1 project-refuses, 1 value; completed: 7 candidate-unknown. No value differs on a completed return. The candidate-unknowns are code-gated screens the reply reads on every entry (partial stage21.blind bases, classm.f1040, classm.s2). The single value and refusal records fall on refused returns.",
+   "subject_key": "5a4d21f98b551ee9a9ce1b5b1f2a05a4c210f98f1820b504d6bdeea09fc26555"
   },
   {
    "key": "retirement.l2",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; retirement.under59 is asked only with code 7 (under59_if_code7); for codes 1 and S the interview does not ask it, and the filer claims exception 12 through retirement.exception (i5329 p. 5, \"12 Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older\"). The candidate's h_auto12 reads the raw under59 (false when unasked) on codes 1 and S and applies exception 12 to the whole taxable amount; the sampled completed value witnesses are all code 1 or S entries where under59 was never asked. Examples: stage21.example.tom_jones, the p590b p. 29 example of a 35-year-old (Form 5329 line 2 \"-0-\" on p. 32; project $0.00, candidate $3,000.00), and stage21.blind.e1, e2, e3. Where the code asks the question, the candidate's exception amount and cap are the project's. Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,049 of 3,671 agree; on completed returns: 406 value, 96 candidate-unknown.",
-   "subject_key": "ccb6e135d17cf25d729c9f2255d4dc6f8ed9d5d97a8c945cc89a7e92979d63e8"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,725/2,459 agree; 373 value, 346 candidate-unknown, 14 project-unknown, 1 project-refuses; completed: 220 value, 11 candidate-unknown. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
+   "subject_key": "8a3f0465fc39938cc5918549ce4b616093c829912a10615be32eaa1eebaedad2"
   },
   {
    "key": "retirement.l2_e05",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; retirement.under59 is asked only with code 7 (under59_if_code7); for codes 1 and S the interview does not ask it, and the filer claims exception 12 through retirement.exception (i5329 p. 5, \"12 Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older\"). The candidate's h_auto12 reads the raw under59 (false when unasked) on codes 1 and S and applies exception 12 to the whole taxable amount; the sampled completed value witnesses are all code 1 or S entries where under59 was never asked. Here the candidate zeroes the exception 05 share (stage21.blind.e6, e7: project $9,000.00, $3,000.00, $5,000.00). Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,993 of 3,671 agree; on completed returns: 9 candidate-unknown, 3 value.",
-   "subject_key": "cbc3809154ef629b5e0174fe25590614fb14532fdeb2bdef5ded8d2dba6dd3bd"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,326/2,459 agree; 71 candidate-unknown, 45 value, 17 project-unknown; completed: 43 value, 1 candidate-unknown. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
+   "subject_key": "8921986bc99abd7199e9978a442a6bccb5e98fabf59771362de386c8794e72bf"
   },
   {
    "key": "retirement.l2_e09",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; retirement.under59 is asked only with code 7 (under59_if_code7); for codes 1 and S the interview does not ask it, and the filer claims exception 12 through retirement.exception (i5329 p. 5, \"12 Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older\"). The candidate's h_auto12 reads the raw under59 (false when unasked) on codes 1 and S and applies exception 12 to the whole taxable amount; the sampled completed value witnesses are all code 1 or S entries where under59 was never asked. Here the candidate zeroes the exception 09 share (stage21.blind.e4: project $7,000.00 and $4,500.00). Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,948 of 3,671 agree; on completed returns: 9 candidate-unknown, 2 value.",
-   "subject_key": "422c805a1bc46aa2c8d448e13a20deea4034be120921c9cddf754c2399779c62"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,330/2,459 agree; 119 candidate-unknown, 8 project-unknown, 2 value; completed: 2 value. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
+   "subject_key": "898d5ca4a15d4dca545b107f71fb5e05cae3d21f130357bb50f9a9f337bb79ab"
   },
   {
    "key": "retirement.l2_e19",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; retirement.under59 is asked only with code 7 (under59_if_code7); for codes 1 and S the interview does not ask it, and the filer claims exception 12 through retirement.exception (i5329 p. 5, \"12 Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older\"). The candidate's h_auto12 reads the raw under59 (false when unasked) on codes 1 and S and applies exception 12 to the whole taxable amount; the sampled completed value witnesses are all code 1 or S entries where under59 was never asked. Here the candidate zeroes the exception 19 share (stage21.blind.e4, stage21.mut.e19). Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,995 of 3,671 agree; on completed returns: 9 candidate-unknown, 3 value.",
-   "subject_key": "b991065c23d6aba1b21202e71a06832a45fa9834858648d15a11a998116446f6"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,327/2,459 agree; 72 candidate-unknown, 43 value, 17 project-unknown; completed: 43 value, 1 candidate-unknown. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
+   "subject_key": "2b52bece3ecca28304e3f2d2544707be938d94a3f8745b1cdcad62fa3c865ad4"
   },
   {
    "key": "retirement.l2_e22",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; retirement.under59 is asked only with code 7 (under59_if_code7); for codes 1 and S the interview does not ask it, and the filer claims exception 12 through retirement.exception (i5329 p. 5, \"12 Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older\"). The candidate's h_auto12 reads the raw under59 (false when unasked) on codes 1 and S and applies exception 12 to the whole taxable amount; the sampled completed value witnesses are all code 1 or S entries where under59 was never asked. Here the candidate zeroes the exception 22 share (stage21.blind.e5: project $6,000.00 and $5,500.00). Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,544 of 3,671 agree; on completed returns: 314 value, 11 candidate-unknown.",
-   "subject_key": "6270cb78866ee618223c301c927c99b03e9154df654de94e88d8a7a5aef90795"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,377/2,459 agree; 72 candidate-unknown, 8 project-unknown, 2 value; completed: 2 value. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
+   "subject_key": "73f8a8d80fba81a3c42a824ba89040b0afb4e0a014c6610f9c69d0a0fdc02aff"
   },
   {
    "key": "retirement.is_e23",
@@ -99,24 +99,24 @@
   },
   {
    "key": "retirement.l2_e23",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; retirement.under59 is asked only with code 7 (under59_if_code7); for codes 1 and S the interview does not ask it, and the filer claims exception 12 through retirement.exception (i5329 p. 5, \"12 Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older\"). The candidate's h_auto12 reads the raw under59 (false when unasked) on codes 1 and S and applies exception 12 to the whole taxable amount; the sampled completed value witnesses are all code 1 or S entries where under59 was never asked. Here the candidate zeroes the exception 23 share (stage21.blind.e5, stage21.mut.e23_over_cap, stage21.mut.simple_e23_within_cap). Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 2,685 of 3,671 agree; on completed returns: 159 value, 10 candidate-unknown.",
-   "subject_key": "87f9476b01f0416d10eff06d6ea26243247d7037d0289c6aa4588c5149b3fec8"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,323/2,459 agree; 72 candidate-unknown, 47 value, 17 project-unknown; completed: 3 value. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
+   "subject_key": "48837f8ad1cdb4f4a5a55af71457674c4d688984d96e80214b0c3a2d50419f74"
   },
   {
    "key": "retirement.l1_s",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the code S share of line 1 is the candidate's line 1 on a code S entry, as in the project; no completed-return difference. The differences are unknowns on records withholding a code-gated screen and refusals on refused returns (i5329 p. 3, Line 1; p. 5, Line 4). Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 3,589 of 3,671 agree; on completed returns: none.",
-   "subject_key": "49f4f56668395c045fda0951bf93822cb2fd532d7e6f35c3b1a7ec4716d9ca75"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,438/2,459 agree; 20 candidate-unknown, 1 project-refuses; completed: 1 candidate-unknown. No value differs on a completed return. The candidate-unknowns are code-gated screens the reply reads on every entry (partial stage21.blind bases, classm.f1040, classm.s2). The single value and refusal records fall on refused returns.",
+   "subject_key": "3ea70f559e14e3e4f1e6b9d7d2aed190d1019f68e90ee82d1b71f8498120b735"
   },
   {
    "key": "retirement.l2_s",
-   "record": "97755bf77226b32762ae7c47808e9e0b1db52187932946cb91e9a3ce738b23d6",
+   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; retirement.under59 is asked only with code 7 (under59_if_code7); for codes 1 and S the interview does not ask it, and the filer claims exception 12 through retirement.exception (i5329 p. 5, \"12 Distributions incorrectly indicated as early distributions by code 1, J, or S in box 7 of Form 1099-R. Include on line 2 the amount you received when you were age 59 1/2 or older\"). The candidate's h_auto12 reads the raw under59 (false when unasked) on codes 1 and S and applies exception 12 to the whole taxable amount; the sampled completed value witnesses are all code 1 or S entries where under59 was never asked. Here on code S (stage21.blind.e2: project $0.00, candidate $4,000.00; stage21.mut.simple_e23_within_cap: project $800.00, candidate $3,000.00). Triage executable-triage-v2 (`.transcription/triage/2025/retirement.json`, pass 678111d584cb; 1,986 fixtures, 500 generated returns seed 20261026, 1,851 partial records): 3,530 of 3,671 agree; on completed returns: 2 value.",
-   "subject_key": "10a72c5d352ae3b92bbffd2811deba1846030a15588d63ef7e1943b310cd60c9"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,280/2,459 agree; 136 value, 39 candidate-unknown, 4 project-unknown; completed: 84 value, 2 candidate-unknown. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
+   "subject_key": "e020dec41df19fa68193928b80828e8782daf57923a47a499d7c89be401dd17c"
   },
   {
    "key": "(SMW 1)",
@@ -192,20 +192,20 @@
  "subjects": {
   "retirement.one": "76b9f2cffa363962328538b47981396fbfe500bba0758d5db5018ea61d1d0a64",
   "retirement.is_ira": "346a3e8d9e9bd5fd570df6652d6d72eac3cf20ec1a8149eb316e81b972dcde84",
-  "retirement.has_rollover": "6f7a3d6c12d888e2d1f333814fdb2d78a87e744faa3ed9c66cef46b04b5c1d70",
-  "retirement.taxable": "3c93c517d345740e07ddc03108f5f99d5dd52ed5164b2883f49c480e527f3d64",
-  "retirement.amount_a": "67940f22262d141f1b6d9857fcd73b53e6365d05552b4c569a4b2a05f8e8c963",
-  "retirement.sav_amount": "addea5e354866a8d3b4eda04e42870636eb321329c119231b234777a478e6686",
-  "retirement.l1": "23508aac6acdbfb1c685b05b620736b29f28468e1fe9994938f93839347485b0",
-  "retirement.l2": "ca264be0793597f3a4237f5a5a43a1a0e230fa84b6eec09415211a49f59b80b7",
-  "retirement.l2_e05": "5939fa0da31bc2064f9654d86e0f6c2d39daf3e0c6228845d0f747140efafc99",
-  "retirement.l2_e09": "0e00adca7c323fa12ff5882fe4f6630fcfaab62db4802f432e4dfbbd00a2e323",
-  "retirement.l2_e19": "a2de81422115a403f6fb572087bcb2101ec6860ade8d226f685552ab65885e4d",
-  "retirement.l2_e22": "ef0c50ebaabd5e60aebda67e097114755737a99f3e6bd8986c3106008b4bb1e4",
+  "retirement.has_rollover": "4ea169d881d4756dfd32222a5a7a7cbf7d49007a528d1cbfa39aff32ade8b607",
+  "retirement.taxable": "e857d0c59195ef6ccbee3b31b8a81c3cc172046810ee78bcfe3b19a5850fc4c7",
+  "retirement.amount_a": "ced8eec7e9778b141c7c1b9b898e1d938d62e00c3f07a2117667d917a8b1aecb",
+  "retirement.sav_amount": "946f313719251b3290515b32dde865993ea45a8c2f3b6ee2b550ab40485d09ca",
+  "retirement.l1": "0cf2820a5a667137bcdcf41de1223b998c1cbb9c1c617e8b175c17d9f5c60d5e",
+  "retirement.l2": "1b36c326daa75a411fc8b63cf956ebff46aea2298ec5822dfd2a9d7bbf6bb891",
+  "retirement.l2_e05": "0c7fff04f88358b84d9fd46f074592d44904412172c949db7c7ed5902aaccb60",
+  "retirement.l2_e09": "531dde2d57e905db3eb2013c898d53282af82780a6cd6f2c47a08a8cba3aaee2",
+  "retirement.l2_e19": "7dbeab3bd1944effebbdc616cfd194b81ddb6956c3a456d6294e8a4d211a71b6",
+  "retirement.l2_e22": "c26f3471740559127e45e6fba3b3bf90a5c3267dc4ce412f89d5917c84345155",
   "retirement.is_e23": "d7026551843db7349d62b187ebdb7eb262f1ddd4f11baade3a052fa8c16388ff",
-  "retirement.l2_e23": "6612efb035d42782c94c35bda0a2e50b51e691e2a66a9c2099e3a6f3a0e26eee",
-  "retirement.l1_s": "5641be9d0df8b763485a1113bdd267300bcd19054364341c078106ef607c6d03",
-  "retirement.l2_s": "536d7b397c79a5d125a77db057639105802c6338de54e96117d36e5e39207af9",
+  "retirement.l2_e23": "c2c628e94b8a65405a1e009252368beab3c47a6335392c1d295e79269eda8fc2",
+  "retirement.l1_s": "1eed318e143ced9463373f06c39d2c146735c3a42572b803d1046d60746bed35",
+  "retirement.l2_s": "a9337b5f8d8d972dbed6c80a5f12f8982baf18453be1d0cac227fb8c341a8f2a",
   "(SMW 1)": "6cb93b92e8867cf90e78cb740ae19ccc1230fc61c1a98abbbd651d5549f07b82",
   "(SMW 2)": "db87ae5f86ff35815b8daee3e086d080c5c024071aff0254b4367df9cb2aa9c0",
   "(SMW 4)": "8784980b8e3f69dd647b676bb94b7e6d9d1357c614f923f963940b11defab806",

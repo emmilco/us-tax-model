@@ -5,7 +5,7 @@
  "base": "2aa18159549a41f9135273157b0a699abdfb3be6b4e06cf349973e6ddeef99de",
  "head_rows": {
   "match / mismatch / unclear / missing": "18 / 5 / 1 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,9 +17,9 @@
   },
   {
    "key": "5a",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MATCH",
-   "subject_key": "1802e3343594519c54bd7871f6449e63b93a9467fa1edab9741be2b7ea6a1f29"
+   "subject_key": "c3b07b7a6c13a69bb982876ac5d64a543efd6d490a0d0215d30b486bcab2040a"
   },
   {
    "key": "5b",
@@ -35,16 +35,16 @@
   },
   {
    "key": "8a",
-   "record": "dbcf102659e249cdb01b656eec8fc222c453ca99747614519895dce1289a904d",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MISMATCH",
-   "ruling": "Ruling: finding; i1040sca, Line 8a: \"If the shared interest was reported on the Form 1098 you received, deduct only your share of the interest on line 8a\" and \"subtract the amount shown on Form 8396, line 3, from the total deductible interest\". The Form 8396 case cannot reach line 8a: a mortgage credit certificate is asked by s3.mcc when interest is entered and refuses Schedule 3 line 7 and the return (s3.mcc_if_interest). The shared-interest case is real: the prompt asks to \"Add boxes 1 and 6 of each Form 1098\" and says nothing of a co-borrower's share, and nothing refuses it, so a co-borrower holding the Form 1098 enters the whole amount. Already recorded in BUG-0459 (open, low: the reductions of i1040sca p. 8, a co-borrower's share among them); not a new defect of the redraft.",
-   "subject_key": "43ffd64348a9fb880f7a94fd348c489058115a6f231911dad255dde01f816085"
+   "ruling": "Ruling: scope; refusal located elsewhere. i1040sca p. 8, Line 8a, 'subtract the amount shown on Form 8396, line 3, from the total deductible interest'. A mortgage credit certificate is asked by s3.mcc when mortgage interest is entered and refuses Schedule 3 line 7 and the return through s3.mcc_if_interest (Form 8396), so no computed return reaches line 8a with the credit (fixture redesign.credits.refuse.mcc). The shared-interest point of the earlier round is now in the input's label ('only your share of a loan shared with someone other than your spouse'). Project stands on the English.",
+   "subject_key": "dd2a0684499486e291cdc8b5dab970f7f2a99806875d3aba69c6e18c257bfa08"
   },
   {
    "key": "11",
-   "record": "dbcf102659e249cdb01b656eec8fc222c453ca99747614519895dce1289a904d",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MATCH",
-   "subject_key": "3b00ca27061db816d8c27e16504a6304fd7405c0442d603c637d58aa3d78198c"
+   "subject_key": "6170154ca939b65d44edda2d7b302b0a69395b5c49b79218fb64a0e733981858"
   },
   {
    "key": "2",
@@ -78,42 +78,42 @@
   },
   {
    "key": "6",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; as ruled in pass 4bc7a200f1c1. i1040sca Line 6, 'generation-skipping tax (GST) imposed on certain income distributions': the GST deduction belongs to a distributee of a trust's income, which reaches the filer on a Schedule K-1 (Form 1041); scope.k1 ('income or a loss from ... an estate or a trust? A paper called Schedule K-1 reports it') refuses through scope.schedule1. Foreign income tax is refused by sa.unsupported (sa.foreign_tax_deduct_if_tax).",
-   "subject_key": "cb4128f344cdb2c4441136f3da2530b97213a0138858058b85bd010b251a73a5"
+   "ruling": "Ruling: scope; refusal located elsewhere, as ruled in the landing round. i1040sca p. 7, Other Taxes, 'Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.' The foreign tax deduction is refused by sa.unsupported (sa.foreign_tax_deduct_if_tax). The GST deduction is for tax on income distributions from a trust, which reach the beneficiary on a Schedule K-1 (Form 1041); scope.k1 ('income or a loss from ... an estate or a trust? A paper called Schedule K-1 reports it.') asks it of everyone and refuses Form 1040 line 8 through scope.schedule1, so no computed return has a GST deduction. Project stands on the value.",
+   "subject_key": "ea4ddba929f70739e23ce26f24629c593768256a9fed34eff14437ee8908f3fc"
   },
   {
    "key": "8b",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MATCH",
-   "subject_key": "d49d95fa68fda02989434324744ce2787d0090bb8ecfa4b87be050a81f54f3a0"
+   "subject_key": "d9f2084889c4dfa24152c3d1a8505b9bafef62beb13915c96f7b167c8ab52f80"
   },
   {
    "key": "8c",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MATCH",
-   "subject_key": "8bc756ff1ce45de73e6451dee175511d76ca45c78f94ee6482eb9b0f7bd580a0"
+   "subject_key": "a4e093c9647917925543ef48e26f26648fbaf167882d0d5d47d41034963e8fc5"
   },
   {
    "key": "13",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MATCH",
-   "subject_key": "848ffb3c602818479497026c7f3befed826df68c10a1d308d7c6d64b3915406b"
+   "subject_key": "ac81ca345883da1f3d2088f41d34a16c6f7d9681e17d5cb3a16edd84a2d826cc"
   },
   {
    "key": "15",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i1040sca p. 11, Line 15, 'Complete and attach Form 4684 to figure the amount of your loss'. A casualty or theft is refused before Schedule A: sd.casualty (asked of every filer, 'was your ... property damaged, destroyed or stolen, leaving a loss that insurance did not cover') feeds sd.other_forms, refused on sd.count (fixture mutation.json, gate sd.other_forms). The line's citation now names that refusal (fix for BUG-0639); the reviewer read only the refusals listed on the line.",
-   "subject_key": "a678ea6e797a45402c7def3dce018b82dc9d3d729f581e769d69f5ada1bd3215"
+   "ruling": "Ruling: scope; refusal located elsewhere. i1040sca p. 11, Line 15, 'Complete and attach Form 4684 to figure the amount of your loss. Only enter the amount from Form 4684, line 18, on line 15'. The line's citation says where the case goes: 'zero here: a casualty or theft loss is refused by sd.casualty through sd.other_forms'. sd.casualty ('was your ... property damaged, destroyed or stolen, leaving a loss that insurance did not cover ...') is asked of everyone and refuses Schedule D and the return. The stale Form 4684 refusal name of BUG-0639 is gone from the line. Project stands.",
+   "subject_key": "d341038d8ee8403f2fcc7d03d60d0a0ae200cc892939c5969b3854b941a74ceb"
   },
   {
    "key": "16",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; as ruled in pass 4bc7a200f1c1. i1040sca p. 11, Line 16 list: casualty and theft losses of income-producing property (Form 4684 lines 32 and 38b, Form 4797 line 18a) and a net qualified disaster loss (Form 4684 line 15) are refused by sd.casualty and sd.business_property through sd.other_forms; the claim-of-right repayment over $3,000 by s3.repaid_income (Schedule 3 and scope refusals, citing p525 p. 36); the estate tax on IRD, bond premium, debt-instrument loss, unrecovered pension investment and impairment work expenses by sa.unsupported. The gambling limit matches, as the reviewer says.",
-   "subject_key": "820e31f4855e0b68a41d24035cde400449cfc1611d729d308c82acca029599c1"
+   "ruling": "Ruling: scope; refusal located elsewhere, as ruled in pass 4bc7a200f1c1 and the landing round. i1040sca p. 11, Line 16 list: casualty and theft losses of income-producing property (Form 4684 lines 32 and 38b, Form 4797 line 18a) and a net qualified disaster loss (Form 4684 line 15) are refused by sd.casualty and sd.business_property through sd.other_forms; the claim-of-right repayment over $3,000 by s3.repaid_income ('repay more than $3,000 in total that you had included in income in an earlier year'; fixture redesign.credits.refuse.repaid_income); estate tax on income in respect of a decedent, bond premium, debt-instrument loss, unrecovered pension investment and impairment work expenses by sa.unsupported. The gambling limit matches, as the reviewer says. Project stands.",
+   "subject_key": "1ba655ac98465a40a34c8fbca95f3ef605a420394c2af83bc36cd129bd997788"
   },
   {
    "key": "7",
@@ -123,9 +123,9 @@
   },
   {
    "key": "8e",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MATCH",
-   "subject_key": "0df77e0569f4711fae52cb9ad4d1cb73425e6f761a05e204e65531b707d624bb"
+   "subject_key": "19055a7fe52b5ca609499fc532ce7761a6283a3f69adb6798069d191c97117c6"
   },
   {
    "key": "9",
@@ -142,48 +142,48 @@
   },
   {
    "key": "12",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MATCH",
-   "subject_key": "547b8cb6d0702c4645ee209df70a56f287ff4a11abc43a43f81221cbb0eb7d6e"
+   "subject_key": "687c63385478f6af81a320112a821e06c29ecf1909c7406ca77e8724955af58c"
   },
   {
    "key": "14",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MATCH",
-   "subject_key": "6e2756f89c83943c99671033bf6fde8db65af44d9f2c236aa286a64d31e0d2d5"
+   "subject_key": "623bf9bfe6b7cf64fa0408538a2d9b7844956a692d6314413e3765a9db2fec5a"
   },
   {
    "key": "17",
-   "record": "59d1b66543e693baed07335546b727b57a95e7bf2f929f8f483ce5a36d67d5cb",
+   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
    "status": "MATCH",
-   "subject_key": "2b95fdd526c371bd129fdcae9bfae60c2e82885b63c9bce8c50ab093be9a4482"
+   "subject_key": "33aba5535dd93d9aa0814fc621a6529f46cc22aa1be2692a92e49da63c9b7a21"
   }
  ],
  "subjects": {
   "1": "c489d629af3fc95170d4680ceb61fac01cc6a732a57962367b2a3aeae59d8e9b",
-  "5a": "97d9db40fa811a1851925370c89a6043238329fb6ebd8ce9151dc711815b6631",
+  "5a": "fd56fa7bc183d0c8e2064b037e3f9ac35ac9e0c02d8a5f77fe210c8812110831",
   "5b": "bd23e371b7d19343483c22d9b56706392bcb9df2ed6bd8fade5ad8847e57a762",
   "5c": "9727f5441c3477fe0d2cb79a93b93266726e1b065e0c896692a71e3d730c6c80",
-  "8a": "db332069a03b6893058e3b64392ef764657e554c867db2ab1067df50afd0467d",
-  "11": "5c768c8c025593094460bfc24b5554eb273f71abda41cc135a67f38f7f887145",
+  "8a": "0e0e49979252859854e2cce3f047999eb1920aa7ffb6a2a8aa713df1364590ba",
+  "11": "60a99f7f9d1beea160e31cc5e679d3e3e27d6a926b25c3fe066dac8967ba326f",
   "2": "4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e",
   "3": "5e24c8422623eea02699f8e25a3375d4b4a5f93310c9c241875983aa685b0cf0",
   "4": "34a3a2646aecd729e7bf336bdc773357a5c509baf90d1a806a02cdbba74ebd00",
   "5d": "7f88fb40e2d2c4aa877c02c94fca39fe8e001739d17a0711bd09a5c9e3b7bdeb",
   "5e": "8c2bb6456a87bbb101ea5ef1eb4321d3d7e6760f4bab5581e92b6eb48c6ab7b4",
-  "6": "ec6613a318a45787fc12c1dd38145e66773f27ac6e6ae6821599c2f36b404ff3",
-  "8b": "ba184bcb66b02c8bfd1bc862699bc9ce6b6913150074f4a88a662c8c52518685",
-  "8c": "728ac16f69fb20d47bc958e6496f322adcf438f625a1a8a83affbb5302944d37",
-  "13": "51b98f42af37eee677c2a7ad97cdb43d11a516fe362bf2896416461628a54476",
-  "15": "ab9a78f1a3567c6d1a80dc4ed2d05747ef87503c5c1800d5e451f63210e5eb15",
-  "16": "a68107b359a005bc568b5ffb3caf26e8b7c2be744b89878872ec20ec493a5987",
+  "6": "29c4b0633fe00b5a25b819b84b8e0d70d0d32e11f27b06556c1e8e99a483f0cc",
+  "8b": "3cb6e5edaa7270e1f89f471edcdf3f550aaa6fee0f7d679ac668a84ec29f96e4",
+  "8c": "4265af522f13bf379e782ab5d9ea4c50f6f7b7de38f66e13002c450d327008e4",
+  "13": "399352ecd49f700369b75ff416764a4b851082b135d27867f5eb58f10898afd6",
+  "15": "32d073052ee0109abd232bba06a4cd57818c05d05fb9947f3a45116ffe344746",
+  "16": "a46e2f64b372f40d09269c177fb7babaa38074bcaf7745ca0db5309a514e67be",
   "7": "1d59e882ba98ae7a8dcf5a3c807217a18fd242122626f5a1ea0b0d30f7d3399e",
-  "8e": "80d7b0c7ba790a64ff1ec73cd483a44bfecda0ddbd40811cc7204e7017e9104a",
+  "8e": "a1c3eaa8769af3038750e36dd1ffbdb9801945aaeb0ae10a2eaf1b402c4fdf0c",
   "9": "59551c58e6058836eb81aa7e7079bae6d30cf931898c086363bac3d61c09d8af",
   "10": "92b522a02b3747cf7e857a9a1c388ed33e2503712bdf226862aea42adeee02e9",
-  "12": "ecca0de5319462a3e09aac15f0df8fa1c97f0aa03937460d4fd8423795660506",
-  "14": "7d1ea8d54ee66351dcb0e6afbbdc760b01ba6b2221de793b5ba48a8e7b01b61f",
-  "17": "551df809f723103ce76a22bbaa69f9934f9f5e011946bebd1b411fa30eaa6c21"
+  "12": "6c7b6c41285d5ded7878f1f488e0f420efe7ea55464439a87b4064a4e877cc4f",
+  "14": "09594ec9f531977fac4775eaa7aa8d0590d9a4c367feb9b34febdba4bbb296f8",
+  "17": "b87d2487ec3c5e8229114fd8d6deea9fd1d35e8b69c61e7c12e5ec84f7552e92"
  },
  "__rest__": "ac772d777e129a58b4d78fdc4d9997382ee870e6cbf12e65c65dde7b7e719585"
 }

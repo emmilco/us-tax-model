@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "ss.multi",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -38,7 +37,6 @@
     },
     {
       "id": "ss.base.below",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -73,7 +71,6 @@
     },
     {
       "id": "ss.base.exact",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -108,7 +105,6 @@
     },
     {
       "id": "ss.base.above",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -143,7 +139,6 @@
     },
     {
       "id": "ss.withheld.below",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -178,7 +173,6 @@
     },
     {
       "id": "ss.withheld.exact",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -213,7 +207,6 @@
     },
     {
       "id": "ss.withheld.above",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -248,7 +241,6 @@
     },
     {
       "id": "ss.single.exact",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -279,7 +271,6 @@
     },
     {
       "id": "ss.single.below",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -313,7 +304,6 @@
     },
     {
       "id": "ss.single.over",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -358,7 +348,6 @@
         "scope.pfic": null,
         "scope.cfc": null,
         "scope.f8978": null,
-        "s2.amt_owed": null,
         "person[taxpayer].w2[a].box1": null,
         "div.any": null,
         "sd.sold_other": null,
@@ -440,7 +429,6 @@
     },
     {
       "id": "ss.multi.over",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -487,7 +475,6 @@
         "scope.pfic": null,
         "scope.cfc": null,
         "scope.f8978": null,
-        "s2.amt_owed": null,
         "person[taxpayer].w2[a].box1": null,
         "person[taxpayer].w2[b].box1": null,
         "div.any": null,
@@ -571,7 +558,6 @@
     },
     {
       "id": "ss.tips",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -607,7 +593,6 @@
     },
     {
       "id": "ss.none",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -633,7 +618,6 @@
     },
     {
       "id": "ss.mfj",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -666,7 +650,6 @@
     },
     {
       "id": "ss.mfs",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -705,8 +688,7 @@
         "scope.pfic": null,
         "scope.cfc": null,
         "scope.f8978": null,
-        "s2.amt_owed": null,
-        "div.any": null,
+        "div.any": false,
         "sd.sold_other": null,
         "sd.sec1256": null,
         "sd.condemned": null,
@@ -787,7 +769,6 @@
     },
     {
       "id": "ss.rrta",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -826,8 +807,7 @@
         "scope.pfic": null,
         "scope.cfc": null,
         "scope.f8978": null,
-        "s2.amt_owed": null,
-        "div.any": null,
+        "div.any": false,
         "sd.sold_other": null,
         "sd.sec1256": null,
         "sd.condemned": null,
@@ -906,7 +886,6 @@
     },
     {
       "id": "ss.hoh",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -943,7 +922,6 @@
     },
     {
       "id": "ss.qss",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -980,7 +958,6 @@
     },
     {
       "id": "ss.other.components",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -1036,7 +1013,6 @@
     },
     {
       "id": "ss.person.separation",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -1075,7 +1051,6 @@
     },
     {
       "id": "ss.early.refusal",
-      "walk": "social-security",
       "covers": [
         "s3.line11",
         "s3.line15",
@@ -1121,7 +1096,6 @@
         "scope.pfic": null,
         "scope.cfc": null,
         "scope.f8978": null,
-        "s2.amt_owed": null,
         "person[taxpayer].w2[a].box1": null,
         "person[taxpayer].w2[b].box1": null,
         "div.any": null,
@@ -3839,6 +3813,213 @@
         "scope.ready": {
           "kind": "bool",
           "value": true
+        }
+      }
+    },
+    {
+      "id": "g1f9.s3.business_credit_lines",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "BUG-0620 item 6, predicted before recording: a business that claims a business credit (Form 3800) is refused on its Schedule C line 1, and Schedule 3 line 7 (line 6a) and line 14 (line 13c) carry that refusal instead of $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 6000000,
+        "person[taxpayer].sc[shop].business_credit": true
+      },
+      "expect": {
+        "s3.line7": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[shop].business_credit",
+          "form": "Form 3800 (general business credit)",
+          "remedy": "Business credits (Form 3800) are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 116, Lines 6a Through 6z, \"See Form 3800 or Pub. 334\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s3.line14": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[shop].business_credit",
+          "form": "Form 3800 (general business credit)",
+          "remedy": "Business credits (Form 3800) are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 116, Lines 6a Through 6z, \"See Form 3800 or Pub. 334\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "g1f9.s3.fuel_credit_line12",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "BUG-0620 item 6, predicted before recording: a business that claims the fuel tax credit (Form 4136) is refused on its Schedule C line 1, and Schedule 3 line 12 carries that refusal instead of $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 6000000,
+        "person[taxpayer].sc[shop].fuel_credit": true
+      },
+      "expect": {
+        "s3.line12": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[shop].fuel_credit",
+          "form": "Form 4136 (credit for federal tax paid on fuels)",
+          "remedy": "The credit for federal tax paid on fuels (Form 4136) is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 117, Line 12, \"Attach Form 4136\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "b1mutB.s3.adoption_not_final",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation lane b1-mutB (BUG-0656), predicted by hand before recording. Adoption expenses paid in 2025 toward an adoption not final at the end of 2025, and no 2024 expenses: i8839 p. 3, Domestic Adoption, a U.S. child's expenses are credited the year after the payment, and Foreign child, no credit unless the adoption becomes final; so the 2025 return has no adoption credit and the adoption refusal of Schedule 3 line 7 does not apply (s3.adoption_if_any false). Line 7 is $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.adoption_any": true,
+        "s3.adoption": true,
+        "s3.adoption_final": false,
+        "s3.adoption_earlier": false
+      },
+      "expect": {
+        "s3.adoption_if_any": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "b1mutB.s3.prior_amt_exclusion_items_only",
+      "covers": [
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation lane b1-mutB (BUG-0656), predicted by hand before recording. A 2024 return with Form 6251 and an alternative minimum tax liability, from exclusion items only (no amount on 2024 Form 6251 line 2e, 2f, 2i to 2t or 3): i8801 p. 1, Who Should File, a 2025 Form 8801 is filed for 'An AMT liability and adjustments or preferences other than exclusion items', and 'The minimum tax credit is allowed only for the AMT caused by deferral items'. No credit, so Schedule 3 line 7 is not refused at s3.prior_amt_if_forms and is $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "s3.prior_other_forms": true,
+        "ftc.carryover": false,
+        "s3.prior_amt": true,
+        "s3.prior_amt_deferral": false,
+        "s3.prior_forms": false
+      },
+      "expect": {
+        "s3.prior_amt_if_forms": {
+          "kind": "bool",
+          "value": false
+        },
+        "s3.line7": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "b1mutB.s3.form2439_line14",
+      "covers": [
+        "s3:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Mutation lane b1-mutB (BUG-0656), predicted by hand before recording. Dividends, and a Form 2439 from a fund (tax it paid on gains it kept): Schedule 3 (2025) line 13a is the credit for that tax ('Form 2439'), so line 14 refuses at sd.f2439_if_dividends, its seventh refusal (lane g1-f9 added it without a regression case). No other line 14 refusal applies (no foreign items, no repayment, no business). Line 15 carries line 14's refusal.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "div.any": true,
+        "sd.f2439": true
+      },
+      "expect": {
+        "s3.line14": {
+          "kind": "refusal",
+          "gate": "sd.f2439_if_dividends",
+          "form": "Form 2439 (tax paid on undistributed capital gains, Schedule 3 line 13a)",
+          "remedy": "Tax a fund or REIT paid on gains it kept (Form 2439, box 2) is a credit on line 13a; this tool does not prepare it.",
+          "cite": {
+            "doc": "f1040s3",
+            "locator": "Schedule 3 (2025), line 13a, \"Form 2439\"",
+            "revision": "2025; created 2025-11-17",
+            "snapshot": "008cfd3fe3ebd0860452069b90fd0a3d53dda6dd8a5d870278370aa899a63f82",
+            "tax_year": 2025
+          }
+        },
+        "s3.line15": {
+          "kind": "refusal",
+          "gate": "sd.f2439_if_dividends",
+          "form": "Form 2439 (tax paid on undistributed capital gains, Schedule 3 line 13a)",
+          "remedy": "Tax a fund or REIT paid on gains it kept (Form 2439, box 2) is a credit on line 13a; this tool does not prepare it.",
+          "cite": {
+            "doc": "f1040s3",
+            "locator": "Schedule 3 (2025), line 13a, \"Form 2439\"",
+            "revision": "2025; created 2025-11-17",
+            "snapshot": "008cfd3fe3ebd0860452069b90fd0a3d53dda6dd8a5d870278370aa899a63f82",
+            "tax_year": 2025
+          }
         }
       }
     }

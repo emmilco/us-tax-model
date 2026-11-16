@@ -81,7 +81,7 @@ register:
       reason: >
         Every column of the table is zero at the far end and rises from $2 to $11 in the first row, so the credit is
         built up from earned income; with no row for less than $1 the table grants nothing there, and the worksheet's
-        own instruction for a zero line 2 ends the computation. Rev. Proc. 2024-40 section 3.06(1) describes the
+        own instruction for a zero line 2 ends the computation. Rev. Proc. 2024-40 section 2.06(1) describes the
         credit as a percentage of earned income up to the earned income amount, which is zero at zero earned income.
       cite:
         doc: i1040gi
@@ -932,6 +932,35 @@ register:
           p. 33, Line 12d, "Don’t check any boxes for your spouse if your filing status is head of household"'
       status: Owner decision D6(c), Stage 16 (T-053); the timing of blindness and the statuses with spouse boxes are the agent's
         reading, for the owner's review.
+    - id: amb.2025.refund_two_returns
+      text_at_issue: 'i1040gi p. 90, State and Local Income Tax Refund Worksheet, lines 1, 2, 4 and 5 test a refund against
+        one 2024 return ("your 2024 Schedule A, line 5d", "line 5e", "line 17" and "the filing status claimed on your 2024
+        Form 1040 or 1040-SR"). A couple filing jointly for 2025 who each filed their own 2024 return (each single before
+        marrying, or married filing separately) can have refunds of tax deducted on two different 2024 returns. The
+        Exception (items 1 to 9, p. 89) does not name the case; item 9 covers only a refund from a joint state return when
+        the 2025 return is not joint with the same person.'
+      readings:
+      - On a joint 2025 return, ask whether the refunds are of both spouses' 2024 tax on separate 2024 returns. If so, none
+        is taxable when neither return itemized with state and local income taxes deducted, and otherwise the return is
+        refused. When only one spouse's refund is involved, the worksheet's 2024 figures are that spouse's own 2024
+        return's.
+      - Run the worksheet once for each spouse's refund against that spouse's 2024 return and add the two taxable parts.
+      - Run one worksheet on the combined refund against whichever 2024 return is entered.
+      chosen: The first (refund.two_returns, refund.two_itemized, refund.worksheet, and the refusal on
+        refund.taxable).
+      reason: The worksheet is written for one 2024 return, and a recovery is included only to the extent the deduction
+        reduced the tax of the year in which it was taken (Pub. 525 p. 24, Itemized Deduction Recoveries), so a refund
+        belongs with the return on which its tax was deducted. The instructions do not say how to combine two 2024
+        returns. The second reading is the likely method, but it is arithmetic the instructions do not print, and it
+        doubles the worksheet's questions for a rare case. The third can be wrong in either direction (BUG-0593). When
+        neither 2024 return deducted state and local income taxes, the TIP on p. 88 makes the answer zero whichever return
+        is meant, so it is not refused.
+      cite:
+        doc: i1040gi
+        locator: 'p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, "But don’t enter more than
+          the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d"; p. 88, Line 1, "None of
+          your refund is taxable if, in the year you paid the tax"'
+      status: Agent reading (lane g1-f4, BUG-0593), for the owner's review.
     - id: amb.2025.alimony_screen
       text_at_issue: 'Form 1040 instructions, Lines 2a and 2b and Line 19a: alimony under a divorce or separation agreement entered
         into on or before December 31, 2018 (and not changed to exclude it) is income to the recipient and deductible by the
@@ -1606,3 +1635,28 @@ register:
         doc: i1099div
         locator: p. 4, Box 2a, "Include all amounts shown in boxes 2b, 2c, 2d, and 2f"; Box 2b; Box 2c; Box 2d
       status: Session reading under the owner's standing delegation (2026-11-03); the encoding is unchanged.
+    - id: amb.2025.f5695_spouse_carryforward
+      text_at_issue: 'i5695 p. 1, Purpose of Form: "Also use Form 5695 to take any residential clean energy credit carryforward from
+        2024"; Form 5695 (2025), line 12: "Credit carryforward from 2024. Enter the amount, if any, from your 2024 Form 5695, line
+        16." The instructions do not say whether, on a joint 2025 return, line 12 takes a carryforward from a 2024 Form 5695 the
+        spouse filed on a return of their own (a couple who married in 2025, or who filed separately for 2024), or the total when
+        each spouse has one.'
+      readings:
+      - Count both spouses' carryforwards on a joint return (line 12 is the total of the line 16 amounts of every 2024 Form 5695
+        either spouse filed).
+      - Count only a carryforward from a 2024 Form 5695 filed on a return of the person who is the taxpayer on the 2025 return.
+      chosen: The first (f5695.carry and f5695.line12 ask about your or, on a joint return, your spouse's 2024 Form 5695, and line
+        12 takes the total).
+      reason: 'The general joint-return rule: "A married couple filing jointly report their combined income and deduct their
+        combined allowable expenses on one return" (i1040gi p. 13). The instructions give no exception for this credit, and their
+        joint-occupancy allocation "don''t apply to married individuals filing a joint return" (i5695 p. 2). The reading matters
+        only on a joint return where a spouse brings a carryforward from a separate 2024 return; were it wrong, line 12, line 15
+        and Schedule 3 line 5a would be overstated by that carryforward (BUG-0597).'
+      cite:
+        doc: i1040gi
+        locator: 'p. 13, Married Filing Jointly, "A married couple filing jointly report their combined income and deduct their
+          combined allowable expenses on one return"; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential
+          clean energy credit carryforward from 2024"; i5695 p. 2, Joint occupancy, "These rules don''t apply to married
+          individuals filing a joint return."'
+      status: Coordinator's decision D15 of the goal-1 round (2026-11-15), following the owner's reading of 2026-11-11; the
+        encoding is unchanged.

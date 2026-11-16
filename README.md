@@ -179,7 +179,7 @@ the instruction that requires it.
 | **Credits** | ✓ The child tax credit, the earned income credit, and the child and dependent care, education, saver's, home energy and premium tax credits | ✗ Other credits, such as the adoption, clean vehicle, elderly or disabled, or business credits: 0.9% of returns |
 | **Foreign** | ✓ Foreign tax on investment income, within the small-amount election | ✗ Foreign accounts or assets that require an FBAR or Form 8938: not measured |
 
-Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 193 situations the tool refuses, and says exactly what this table leaves out.
+Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 198 situations the tool refuses, and says exactly what this table leaves out.
 <!-- coverage-tree:end -->
 
 ### Exact arithmetic
@@ -236,8 +236,7 @@ question comes back marked as needing help, with its help text, and the answer n
 zero. Answers live
 in an append-only log, and the whole return is recomputed from it on every change.
 
-**What it earns.** The build walks the interview. For the Social Security credit slice it enumerates
-every yes/no and multiple-choice answer; for the full return it walks the five Stage 5 whole-return test
+**What it earns.** The build walks the interview. For the full return it walks the Stage 5 whole-return test
 cases, which is representative, not exhaustive. Each walk must end in a complete set of forms or a cited
 refusal, and must give the same values with the answers given in reverse order.
 

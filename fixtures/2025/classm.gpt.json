@@ -224,7 +224,6 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "s3.adoption_any": false,
@@ -386,7 +385,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].owner_died": false,
-        "person[taxpayer].f8889[hsa].inherited": false,
+        "person[taxpayer].f8889[hsa].inherited_any": false,
         "person[taxpayer].f8889[hsa].archer": false,
         "person[taxpayer].f8889[hsa].ira_transfer": false,
         "person[taxpayer].f8889[hsa].excess_withdrawn": false,
@@ -485,7 +484,7 @@
         "dependent[dep_a].eic_ssn": true,
         "dependent[dep_b].relationship": "parent",
         "dependent[dep_b].age": 81,
-        "dependent[dep_b].younger": true,
+        "dependent[dep_b].younger": false,
         "dependent[dep_b].student": false,
         "dependent[dep_b].disabled": false,
         "dependent[dep_b].months": 12,
@@ -743,7 +742,8 @@
         "ssb.any": false,
         "ssb.repaid_more": true,
         "ssb.ira_covered": false,
-        "ssb.prior_year_pay": false
+        "ssb.prior_year_pay": false,
+        "sd.qof": false
       },
       "expect": {
         "f8962.line1": {
@@ -968,7 +968,6 @@
         "scope.pfic": false,
         "scope.cfc": false,
         "scope.f8978": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "f1040.line25b": 0,
         "f1040.line25c_other": 0,
@@ -1241,7 +1240,8 @@
         "s1.inmate_wages": false,
         "s1.digital_income": false,
         "s1.olympic": false,
-        "ssb.any": false
+        "ssb.any": false,
+        "sd.qof": false
       },
       "expect": {
         "f8962.line1": {
@@ -1566,7 +1566,6 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "s3.adoption_any": false,
@@ -1728,7 +1727,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].owner_died": false,
-        "person[taxpayer].f8889[hsa].inherited": false,
+        "person[taxpayer].f8889[hsa].inherited_any": false,
         "person[taxpayer].f8889[hsa].archer": false,
         "person[taxpayer].f8889[hsa].ira_transfer": false,
         "person[taxpayer].f8889[hsa].excess_withdrawn": false,
@@ -2141,7 +2140,8 @@
         "ssb.any": true,
         "ssb.repaid_more": false,
         "ssb.ira_covered": false,
-        "ssb.prior_year_pay": false
+        "ssb.prior_year_pay": false,
+        "sd.qof": false
       },
       "expect": {
         "f8962.line1": {
@@ -2454,7 +2454,6 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "s3.adoption_any": false,
@@ -2617,7 +2616,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].owner_died": false,
-        "person[taxpayer].f8889[hsa].inherited": false,
+        "person[taxpayer].f8889[hsa].inherited_any": false,
         "person[taxpayer].f8889[hsa].archer": false,
         "person[taxpayer].f8889[hsa].ira_transfer": false,
         "person[taxpayer].f8889[hsa].excess_withdrawn": false,
@@ -2782,7 +2781,8 @@
         "ssb.any": false,
         "ssb.repaid_more": false,
         "ssb.ira_covered": false,
-        "ssb.prior_year_pay": false
+        "ssb.prior_year_pay": false,
+        "sd.qof": false
       },
       "expect": {
         "f8962.line1": {
@@ -3042,7 +3042,7 @@
         "ftc.eligible": true,
         "ftc.elect": true,
         "household.home_cost": true,
-        "household.considered_unmarried": true,
+        "household.considered_unmarried": false,
         "household.ever_married": true,
         "household.married_dec31": true,
         "household.community_property": false,
@@ -3100,7 +3100,6 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "s3.adoption_any": false,
@@ -3263,7 +3262,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].owner_died": false,
-        "person[taxpayer].f8889[hsa].inherited": false,
+        "person[taxpayer].f8889[hsa].inherited_any": false,
         "person[taxpayer].f8889[hsa].archer": false,
         "person[taxpayer].f8889[hsa].ira_transfer": false,
         "person[taxpayer].f8889[hsa].excess_withdrawn": false,
@@ -3598,7 +3597,7 @@
         "dependent[dep_a].eic_ssn": true,
         "dependent[dep_b].relationship": "child",
         "dependent[dep_b].age": 77,
-        "dependent[dep_b].younger": true,
+        "dependent[dep_b].younger": false,
         "dependent[dep_b].student": false,
         "dependent[dep_b].disabled": false,
         "dependent[dep_b].months": 12,
@@ -3915,7 +3914,8 @@
         "ssb.any": false,
         "ssb.repaid_more": false,
         "ssb.ira_covered": false,
-        "ssb.prior_year_pay": false
+        "ssb.prior_year_pay": false,
+        "sd.qof": false
       },
       "expect": {
         "f8962.line1": {
@@ -4232,7 +4232,6 @@
         "s1a.tips": false,
         "s1a.overtime": false,
         "s1a.carloan": false,
-        "s2.amt_owed": false,
         "s2.other_tax": false,
         "s3.line10": 0,
         "s3.adoption_any": false,
@@ -4395,7 +4394,7 @@
         "person[taxpayer].f8889[hsa].line2": 0,
         "person[taxpayer].f8889[hsa].line9": 0,
         "person[taxpayer].f8889[hsa].owner_died": false,
-        "person[taxpayer].f8889[hsa].inherited": false,
+        "person[taxpayer].f8889[hsa].inherited_any": false,
         "person[taxpayer].f8889[hsa].archer": false,
         "person[taxpayer].f8889[hsa].ira_transfer": false,
         "person[taxpayer].f8889[hsa].excess_withdrawn": false,
@@ -4649,7 +4648,8 @@
         "ssb.any": false,
         "ssb.repaid_more": false,
         "ssb.ira_covered": false,
-        "ssb.prior_year_pay": false
+        "ssb.prior_year_pay": false,
+        "sd.qof": false
       },
       "expect": {
         "f1095a[form_1].a_jan": {

@@ -87,6 +87,7 @@ TESTS = [
     ("check_agent_runs_self_test", "bookkeeping", False, ["python3", "tools/check_agent_runs.py", "--self-test"]),
     ("claims_self_test", "bookkeeping", False, ["python3", "tools/claims.py", "--self-test"]),
     ("bug_inventory_self_test", "bookkeeping", False, ["python3", "tools/check_bug_inventory.py", "--self-test"]),
+    ("bug_status_self_test", "bookkeeping", False, ["python3", "tools/bug_status.py", "--self-test"]),
     ("docs_conventions_self_test", "bookkeeping", False, ["python3", "tools/check_docs_conventions.py", "--self-test"]),
     ("build_fresh_self_test", "code", False, ["python3", "tools/build_fresh.py", "--self-test"]),
     ("ny_fixtures_self_test", "code", False, ["python3", "tools/ny_fixtures.py", "--self-test"]),

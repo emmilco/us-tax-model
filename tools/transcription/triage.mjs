@@ -4,7 +4,7 @@
 // No model-generated JavaScript, commands, tools, paths or network calls are executed.
 import { readFileSync } from 'node:fs';
 import { executableCandidate } from './candidate_runtime.mjs';
-import { displayed, recordWitness } from './triage_rules.mjs';
+import { difference, displayed, recordWitness, same } from './triage_rules.mjs';
 import { evaluate, allTargets } from '../../engine/dist/eval.js';
 import { loadCases } from '../../engine/dist/fixtures.js';
 import { sampleReturns } from '../../engine/dist/generate.js';
@@ -65,30 +65,13 @@ function collect(values, index) {
   return found;
 }
 
-const blank = v => v && ((v.kind === 'money' && v.cents === 0) || (v.kind === 'bool' && !v.value) || (v.kind === 'count' && v.value === 0));
-function shape(value) {
-  if (!value) return { kind: 'absent' };
-  if (value.kind === 'refusal') return { kind: 'refusal' };
-  if (value.kind === 'unknown') return { kind: 'unknown' };
-  return value;
-}
-
-const same = (a, b) => a?.kind === 'hidden' ? blank(b) || b?.kind === 'hidden' : JSON.stringify(shape(a)) === JSON.stringify(shape(b));
-// Kinds name the side that is narrower: a refusal outranks an unknown, as in the evaluator.
-const difference = (a, b) => {
-  if (a?.kind === 'hidden') return b?.kind === 'refusal' ? 'candidate-refuses' : b?.kind === 'unknown' ? 'candidate-unknown' : 'candidate-shows-skipped';
-  const [x, y] = [shape(a).kind, shape(b).kind];
-  if (x === 'refusal' || y === 'refusal') return x === 'refusal' && y === 'refusal' ? 'value' : x === 'refusal' ? 'project-refuses' : 'candidate-refuses';
-  if (x === 'unknown' || y === 'unknown') return x === 'unknown' ? 'project-unknown' : 'candidate-unknown';
-  return 'value';
-};
-
 function operands(derivations, key) {
   const d = derivations.get(key);
   return d ? d.operands.slice(0, 12).map(op => ({ ref: op.ref, value: op.value })) : [];
 }
 
 const stats = new Map(pairs.map(pair => [pair.handle, { handle: pair.handle, project: pair.project, candidate: pair.candidate, shown_when: pair.shown_when ?? null,
+  candidate_shown_when: pair.candidate_shown_when ?? null,
   compared: 0, agree: 0, differ: 0, absent: 0, invalid: 0, in_scope: 0, in_scope_agree: 0, kinds: {}, kinds_by_return: {}, sources: {}, witnesses: [], completed_witnesses: [] }]));
 const returnCounts = { completed: 0, refused: 0, incomplete: 0 };
 const known = value => value && !['refusal', 'unknown'].includes(value.kind);
@@ -110,6 +93,13 @@ function run(source, inputs) {
     const cond = stats.get(handle).shown_when;
     if (!cond) continue;
     p.set(key, displayed(value, project.values.get(`${prefix}.${localOf(cond)}`)));
+  }
+  // So is a reply's line hidden by the shown_when the reply declares for it.
+  for (const [key, value] of m) {
+    const [handle, prefix] = key.split('\u0000');
+    const cond = stats.get(handle).candidate_shown_when;
+    if (!cond) continue;
+    m.set(key, displayed(value, model.values.get(`${prefix}.${localOf(cond)}`)));
   }
   let reached = false;
   for (const key of new Set([...p.keys(), ...m.keys()])) {

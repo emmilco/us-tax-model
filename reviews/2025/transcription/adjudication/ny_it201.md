@@ -50,3 +50,34 @@ Counts: claude classm: interface gap 75, ambiguity 22.
 Findings: BUG-0641 (low; tool, not the engine): class M jobs give a New York form's rate-schedule results
 as unnamed "line (39)" / "(47a)" amounts and leave the Tax Table lookups to the model without the tables. No line left
 open.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-ny (claude-opus-5-5, judgment, tax year 2025, jurisdiction ny), in the B1 integration worktree. Open
+lines of the Claude transcription log `.transcription/logs/ny/2025/transcription/ny_it201.md` (line-scoped pass
+0d1ff4c91631). `carry.py --jurisdiction ny` carried nothing (each line, or what it reads, changed). The deepseek family
+is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | 1 | ambiguity | log; triage (3 value witnesses, all refused; other differences come from line 1's whole-return refusal gates, not the compared expression); form YAML | IT-201-I p. 2 and p. 7, Entering whole dollar amounts; `amb.ny.2025.whole_dollars` (C4) | The reply copies line 1z in cents; the project rounds half-up as entered, the chosen reading. As ruled 2026-11-04. |
+| claude | transcription | (81) safe_harbor_100 | ambiguity | log; triage (4,606 of 4,608 agree; 2 witnesses, refused) | IT-201-I p. 23, Line 81; `amb.ny.2025.whole_dollars` (C4) | The project rounds the rate product once to the dollar; the reply keeps cents. |
+| claude | transcription | (81) safe_harbor_110 | ambiguity | log; triage (4,606 of 4,608 agree; 2 witnesses, refused) | IT-201-I p. 23, Line 81; `amb.ny.2025.whole_dollars` (C4) | As safe_harbor_100; at most a 50-cent difference in the threshold. |
+
+Counts: claude transcription: ambiguity 3.
+
+Findings: none. No line left open.
+
+## Goal-1 round (2026-11-15), render
+
+Lane b1-adj-ny. Open line of the Claude render log `.transcription/logs/ny/2025/render/ny_it201.md` (pass
+f0a2b74716ce), ruled on `rendered/ny/2025/ny_it201.md`, the form YAML and the cited source.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | 48 | finding (low) | MISMATCH; form YAML (gate.hh_city_mfs, hh_city_in_range, hh_city_by_status) | IT-201-I web edition, NYC household credit table 6, "federal adjusted gross income (see Note 4) total from both returns"; Note 2, "could be 0 or a negative amount" | The MFS refusal tests only this return's line 19 against $22,500, and MFS otherwise gets zero; a spouse's negative AGI can bring the total within the rows, where a credit is allowed. Sibling line 40 (table 3, gate.hh_state_mfs, $32,000) has the same defect. |
+
+Counts: claude render: finding 1.
+
+Findings: BUG-0762 (low; amount-affecting in a rare case): the MFS household credit gates should
+also refuse when the spouse's federal AGI is negative. No line left open.

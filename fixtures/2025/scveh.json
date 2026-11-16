@@ -278,7 +278,25 @@
         "person[taxpayer].sc[r].scveh[car].owned": true,
         "person[taxpayer].sc[r].scveh[car].miles_business": 8000,
         "person[taxpayer].sc[r].scveh[car].miles_other": 2000,
-        "person[taxpayer].sc[r].scveh[car].records": true, "person[taxpayer].sc[r].scveh[car].got_other": false, "person[taxpayer].sc[r].scveh[car].acquired_before_bonus_date": false, "person[taxpayer].sc[r].scveh[car].used_before": false, "person[taxpayer].sc[r].scveh[car].bonus_excluded": false, "person[taxpayer].sc[r].scveh[car].prior_bonus": false, "person[taxpayer].sc[r].scveh[car].prior_smr": false, "person[taxpayer].sc[r].scveh[car].prior_low_use": false, "person[taxpayer].sc[r].scveh[car].converted": false, "person[taxpayer].sc[r].scveh[car].disposed": true, "person[taxpayer].sc[r].scveh[car].basis_changed": false, "person[taxpayer].sc[r].scveh[car].short_year": false, "person[taxpayer].sc[r].scveh[car].for_hire": false, "person[taxpayer].sc[r].scveh[car].investment": false, "person[taxpayer].sc[r].scveh[car].method_other": false, "person[taxpayer].sc[r].scveh[car].others_use": false, "person[taxpayer].sc[r].scveh[car].leasing": false, "person[taxpayer].sc[r].scveh[car].exempt_use": false, "person[taxpayer].sc[r].scveh[car].qbu_low": false,
+        "person[taxpayer].sc[r].scveh[car].records": true,
+        "person[taxpayer].sc[r].scveh[car].got_other": false,
+        "person[taxpayer].sc[r].scveh[car].acquired_before_bonus_date": false,
+        "person[taxpayer].sc[r].scveh[car].used_before": false,
+        "person[taxpayer].sc[r].scveh[car].bonus_excluded": false,
+        "person[taxpayer].sc[r].scveh[car].prior_bonus": false,
+        "person[taxpayer].sc[r].scveh[car].prior_smr": false,
+        "person[taxpayer].sc[r].scveh[car].prior_low_use": false,
+        "person[taxpayer].sc[r].scveh[car].converted": false,
+        "person[taxpayer].sc[r].scveh[car].disposed": true,
+        "person[taxpayer].sc[r].scveh[car].basis_changed": false,
+        "person[taxpayer].sc[r].scveh[car].short_year": false,
+        "person[taxpayer].sc[r].scveh[car].for_hire": false,
+        "person[taxpayer].sc[r].scveh[car].investment": false,
+        "person[taxpayer].sc[r].scveh[car].method_other": false,
+        "person[taxpayer].sc[r].scveh[car].others_use": false,
+        "person[taxpayer].sc[r].scveh[car].leasing": false,
+        "person[taxpayer].sc[r].scveh[car].exempt_use": false,
+        "person[taxpayer].sc[r].scveh[car].qbu_low": false,
         "person[taxpayer].sc[r].scveh[car].passenger": true,
         "person[taxpayer].sc[r].scveh[car].after_jan19": true,
         "person[taxpayer].sc[r].scveh[car].bonus_same": true,
@@ -320,7 +338,25 @@
         "person[taxpayer].sc[r].scveh[car].owned": true,
         "person[taxpayer].sc[r].scveh[car].miles_business": 8000,
         "person[taxpayer].sc[r].scveh[car].miles_other": 2000,
-        "person[taxpayer].sc[r].scveh[car].records": true, "person[taxpayer].sc[r].scveh[car].got_other": false, "person[taxpayer].sc[r].scveh[car].acquired_before_bonus_date": true, "person[taxpayer].sc[r].scveh[car].used_before": false, "person[taxpayer].sc[r].scveh[car].bonus_excluded": false, "person[taxpayer].sc[r].scveh[car].prior_bonus": false, "person[taxpayer].sc[r].scveh[car].prior_smr": false, "person[taxpayer].sc[r].scveh[car].prior_low_use": false, "person[taxpayer].sc[r].scveh[car].converted": false, "person[taxpayer].sc[r].scveh[car].disposed": false, "person[taxpayer].sc[r].scveh[car].basis_changed": false, "person[taxpayer].sc[r].scveh[car].short_year": false, "person[taxpayer].sc[r].scveh[car].for_hire": false, "person[taxpayer].sc[r].scveh[car].investment": false, "person[taxpayer].sc[r].scveh[car].method_other": false, "person[taxpayer].sc[r].scveh[car].others_use": false, "person[taxpayer].sc[r].scveh[car].leasing": false, "person[taxpayer].sc[r].scveh[car].exempt_use": false, "person[taxpayer].sc[r].scveh[car].qbu_low": false,
+        "person[taxpayer].sc[r].scveh[car].records": true,
+        "person[taxpayer].sc[r].scveh[car].got_other": false,
+        "person[taxpayer].sc[r].scveh[car].acquired_before_bonus_date": true,
+        "person[taxpayer].sc[r].scveh[car].used_before": false,
+        "person[taxpayer].sc[r].scveh[car].bonus_excluded": false,
+        "person[taxpayer].sc[r].scveh[car].prior_bonus": false,
+        "person[taxpayer].sc[r].scveh[car].prior_smr": false,
+        "person[taxpayer].sc[r].scveh[car].prior_low_use": false,
+        "person[taxpayer].sc[r].scveh[car].converted": false,
+        "person[taxpayer].sc[r].scveh[car].disposed": false,
+        "person[taxpayer].sc[r].scveh[car].basis_changed": false,
+        "person[taxpayer].sc[r].scveh[car].short_year": false,
+        "person[taxpayer].sc[r].scveh[car].for_hire": false,
+        "person[taxpayer].sc[r].scveh[car].investment": false,
+        "person[taxpayer].sc[r].scveh[car].method_other": false,
+        "person[taxpayer].sc[r].scveh[car].others_use": false,
+        "person[taxpayer].sc[r].scveh[car].leasing": false,
+        "person[taxpayer].sc[r].scveh[car].exempt_use": false,
+        "person[taxpayer].sc[r].scveh[car].qbu_low": false,
         "person[taxpayer].sc[r].scveh[car].passenger": true,
         "person[taxpayer].sc[r].scveh[car].after_jan19": true,
         "person[taxpayer].sc[r].scveh[car].bonus_same": true,
@@ -885,7 +921,9 @@
           "car"
         ],
         "person[taxpayer].sc[r].scveh[car].miles_business": 5000,
-        "person[taxpayer].sc[r].scveh[car].smr_always": true, "person[taxpayer].sc[r].scveh[car].smr_first": false, "person[taxpayer].sc[r].scveh[car].fleet": false
+        "person[taxpayer].sc[r].scveh[car].smr_always": true,
+        "person[taxpayer].sc[r].scveh[car].smr_first": false,
+        "person[taxpayer].sc[r].scveh[car].fleet": false
       },
       "expect": {
         "person[taxpayer].sc[r].scveh[car].line9": {
@@ -1142,6 +1180,152 @@
           "cents": 7780000
         },
         "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "bug0633.veh.stop_at_line10",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0633, predicted by hand from p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, Note after line 10 (\"If line 10 is equal to line 9, stop here\") before recording: the inputs of stage14.veh.2025_179_over_line9 (a $90,000 passenger automobile, 100% business, a $15,000 section 179 election, no special allowance). Line 10 is $12,200, equal to line 9, so the worksheet stops: Part II is not reached and neither is Part III (lines 13 to 16, 18 and 19 are not shown). The amounts are unchanged: line 15 is still figured, $77,800 (the mid-quarter bases read it), and line 20 is $0.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].s179_elect": 1500000,
+        "person[taxpayer].sc[r].scveh[car].bonus_choice": "none",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 9000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].part2_reached": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].sc[r].scveh[car].part3_reached": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].sc[r].scveh[car].line15": {
+          "kind": "money",
+          "cents": 7780000
+        },
+        "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "bug0633.veh.stop_at_line16",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0633, predicted by hand from p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, Note after line 16 (\"If line 16 is equal to line 11, stop here\"; line 16 is limited to line 11 as the allowance allowed) before recording: the inputs of stage14.veh.2025_forty with a cost of $90,000 (100% business, the 40% election, no section 179). Line 7 and line 9 $20,200; line 10 $0, less than line 9, so Part II is reached; line 11 $20,200; line 16 40% of $90,000 = $36,000, allowed $20,200 (line 11), so the worksheet stops after line 16 and Part III (lines 18 and 19) is not reached; line 17 $0 and line 20 $0.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].bonus_choice": "forty",
+        "person[taxpayer].sc[r].scveh[car].bonus_same": true,
+        "person[taxpayer].sc[r].scveh[car].quarter": "q2",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 9000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].part2_reached": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sc[r].scveh[car].part3_reached": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].sc[r].scveh[car].line11": {
+          "kind": "money",
+          "cents": 2020000
+        },
+        "person[taxpayer].sc[r].scveh[car].line16": {
+          "kind": "money",
+          "cents": 3600000
+        },
+        "person[taxpayer].sc[r].scveh[car].bonus_allowed": {
+          "kind": "money",
+          "cents": 2020000
+        },
+        "person[taxpayer].sc[r].scveh[car].line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[r].scveh[car].line20": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "b1mutB.veh.part3_reached",
+      "covers": [
+        "scveh"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation lane b1-mutB (BUG-0656), predicted by hand before recording. A $30,000 passenger automobile placed in service in 2025, 100% business, actual expenses, owned, no section 179 election and no special allowance (bonus_choice none). p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles: line 9 is the first-year limit without the special allowance, $12,200 (Rev. Proc. 2025-16, as stage14.veh.2025_179_over_line9 has it); line 10 $0 is less than line 9, so Part II is reached; line 11 $12,200; line 16 $0 is less than line 11, so Part III is reached (the Note after line 16, 'If line 16 is less than line 11, complete Part III'). The vehicle was placed in service in 2025, not 2019, so it is not in the year after its recovery period.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].sc[r].line1": 10000000,
+        "$scveh@person[taxpayer].sc[r]": [
+          "car"
+        ],
+        "person[taxpayer].sc[r].scveh[car].method": "actual",
+        "person[taxpayer].sc[r].scveh[car].owned": true,
+        "person[taxpayer].sc[r].scveh[car].miles_business": 10000,
+        "person[taxpayer].sc[r].scveh[car].passenger": true,
+        "person[taxpayer].sc[r].scveh[car].s179_elect": 0,
+        "person[taxpayer].sc[r].scveh[car].bonus_choice": "none",
+        "person[taxpayer].sc[r].scveh[car].placed": "y2025",
+        "person[taxpayer].sc[r].scveh[car].cost": 3000000
+      },
+      "expect": {
+        "person[taxpayer].sc[r].scveh[car].first_year_after_recovery": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].sc[r].scveh[car].part2_reached": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sc[r].scveh[car].part3_reached": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].sc[r].scveh[car].line11": {
+          "kind": "money",
+          "cents": 1220000
+        },
+        "person[taxpayer].sc[r].scveh[car].line16": {
           "kind": "money",
           "cents": 0
         }

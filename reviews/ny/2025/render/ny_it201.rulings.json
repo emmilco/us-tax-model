@@ -63,6 +63,17 @@
    "subject_key": "123ce07ce04e905a19ef0bfbe96a0fa704f3000318a7fa0c8d51c2be9acf9baf"
   },
   {
+   "printed": "48",
+   "restated": "Choose — [line C = true → helper \"Zero\"] [line C = false → column (48)]",
+   "model": "The item C Yes case gives zero ('you do not qualify for this credit'), and tables 4 and 5 are used otherwise, which is right. But for married filing separately, table 6 is keyed to 'federal adjusted gross income ... total from both returns'. The refusal gate tests only this return's line 19 against $22,500. If the spouse has a loss, the total from both returns can fall within the credit rows while this return's AGI does not. The program then enters $0 where a table 6 credit is allowed.",
+   "ruling": "Ruling: finding; IT-201-I web edition, New York City household credit table 6 (filing status 3): \"If your federal adjusted gross income (see Note 4) total from both returns is:\" ... \"22,500 ... No credit is allowed\"; Note 2, \"This amount could be 0 or a negative amount.\" The rendered refusal (ny_it201.gate.hh_city_mfs) tests only this return's line 19 against $22,500 (ny_it201.hh_city_in_range), and ny_it201.hh_city_by_status gives zero for married filing separately. When this return's AGI is above $22,500 and the spouse's federal AGI is negative enough to bring the total within the rows, a credit is allowed and the tool enters $0 without refusing. The reply is right. Sibling: line 40 (table 3, gate.hh_state_mfs, $32,000), same defect. (BUG-0762)",
+   "context": "9ab94f2897ba68b22be7be1c4040eaba85774cf0995b75657be49ed688cd2342",
+   "date": "2026-11-15",
+   "run": "6af8094fdb158badb9318b01445493a89cf1394771c052d88d67a74e94433c67",
+   "severity": "low",
+   "subject_key": "9d8264942d273e6389b4fcb10046c5a75e3b39066171644d88503bc078393731"
+  },
+  {
    "printed": "53",
    "restated": "Enter $0 (ny.zero).",
    "model": "The instructions ask \"Can you claim the New York City unincorporated business tax (UBT) credit, the New York City accumulation distribution credit, or the part-year resident ... credit?\" The program asks only when a Schedule C exists, so an accumulation distribution credit from a trust, which needs no Schedule C, would wrongly get $0.",

@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.official.medicare_example5",
-      "walk": "stage4",
       "covers": [
         "official.medicare_example5"
       ],
@@ -3046,6 +3045,217 @@
       }
     },
     {
+      "id": "stage18.reg.monthly_route_uniform_corrected",
+      "covers": [
+        "f8962",
+        "f1095a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0635 regression, predicted by hand from the source before evaluating: the facts of stage18.blind.p17 (column A $380 every month, no advance payments), but the printed column B differs by month ($400 January to June, $420 July to December), so Part III is not the same every month and the form is entered month by month; no column B is blank and no change went unreported. With no APTC column B \"may be wrong\" (i8962 p. 14, Missing or incorrect SLCSP premium, situation 1), and the Marketplace's tool gives a correct applicable SLCSP premium of $400 for every month, which the monthly column B questions take. The correct premium is the same every month and column A is the same in all 12 months, so line 10 is Yes and line 11 is used: (a) $4,560, (b) $4,800, (c) line 8a $588, (d) $4,212, (e) $4,212 (the smaller of (a) and (d)), (f) zero; line 24 $4,212, line 25 zero, line 26 $4,212, Schedule 3 line 9 $4,212.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$f1095a": [
+          "form_1"
+        ],
+        "f1095a[form_1].same_months": false,
+        "f1095a[form_1].b_blank": false,
+        "f1095a[form_1].b_changed": false,
+        "f1095a[form_1].in_a_jan": 38000,
+        "f1095a[form_1].in_b_jan": 40000,
+        "f1095a[form_1].in_c_jan": 0,
+        "f1095a[form_1].in_a_feb": 38000,
+        "f1095a[form_1].in_b_feb": 40000,
+        "f1095a[form_1].in_c_feb": 0,
+        "f1095a[form_1].in_a_mar": 38000,
+        "f1095a[form_1].in_b_mar": 40000,
+        "f1095a[form_1].in_c_mar": 0,
+        "f1095a[form_1].in_a_apr": 38000,
+        "f1095a[form_1].in_b_apr": 40000,
+        "f1095a[form_1].in_c_apr": 0,
+        "f1095a[form_1].in_a_may": 38000,
+        "f1095a[form_1].in_b_may": 40000,
+        "f1095a[form_1].in_c_may": 0,
+        "f1095a[form_1].in_a_jun": 38000,
+        "f1095a[form_1].in_b_jun": 40000,
+        "f1095a[form_1].in_c_jun": 0,
+        "f1095a[form_1].in_a_jul": 38000,
+        "f1095a[form_1].in_b_jul": 40000,
+        "f1095a[form_1].in_c_jul": 0,
+        "f1095a[form_1].in_a_aug": 38000,
+        "f1095a[form_1].in_b_aug": 40000,
+        "f1095a[form_1].in_c_aug": 0,
+        "f1095a[form_1].in_a_sep": 38000,
+        "f1095a[form_1].in_b_sep": 40000,
+        "f1095a[form_1].in_c_sep": 0,
+        "f1095a[form_1].in_a_oct": 38000,
+        "f1095a[form_1].in_b_oct": 40000,
+        "f1095a[form_1].in_c_oct": 0,
+        "f1095a[form_1].in_a_nov": 38000,
+        "f1095a[form_1].in_b_nov": 40000,
+        "f1095a[form_1].in_c_nov": 0,
+        "f1095a[form_1].in_a_dec": 38000,
+        "f1095a[form_1].in_b_dec": 40000,
+        "f1095a[form_1].in_c_dec": 0
+      },
+      "expect": {
+        "f8962.line10": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.line11a": {
+          "kind": "money",
+          "cents": 456000
+        },
+        "f8962.line11b": {
+          "kind": "money",
+          "cents": 480000
+        },
+        "f8962.line11c": {
+          "kind": "money",
+          "cents": 58800
+        },
+        "f8962.line11d": {
+          "kind": "money",
+          "cents": 421200
+        },
+        "f8962.line11e": {
+          "kind": "money",
+          "cents": 421200
+        },
+        "f8962.line11f": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8962.line24": {
+          "kind": "money",
+          "cents": 421200
+        },
+        "f8962.line25": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8962.line26": {
+          "kind": "money",
+          "cents": 421200
+        },
+        "s3.line9": {
+          "kind": "money",
+          "cents": 421200
+        }
+      }
+    },
+    {
+      "id": "stage18.reg.doubted_column_b_by_month",
+      "covers": [
+        "f8962",
+        "f1095a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0634 follow-up (the f1095a.b_doubt limb of f1095a.b_check, which no fixture reached), predicted by hand from the source before evaluating: the facts of stage18.blind.p17 (column A $380 every month; printed column B $400 every month), but with advance payments of $100 a month (line 33C $1,200), and the filer has another reason to believe column B wrong: the Marketplace's tool gives a correct applicable SLCSP premium of $400 for January to June and $300 for July to December (i8962 p. 14, \"if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month\"; \"If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”\"). Line 10 No; line 8b $49; columns (e) $351 for six months and $251 for six (as stage18.reg.no_aptc_slcsp_by_month), line 24 $3,612; column (f) $100 a month, line 25 $1,200; line 26 $2,412.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$f1095a": [
+          "form_1"
+        ],
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].b_blank": false,
+        "f1095a[form_1].b_changed": false,
+        "f1095a[form_1].b_doubt": true,
+        "f1095a[form_1].c_total": 120000,
+        "f1095a[form_1].b_fixed_same": false,
+        "f1095a[form_1].in_a_jan": 38000,
+        "f1095a[form_1].in_b_jan": 40000,
+        "f1095a[form_1].in_c_jan": 10000,
+        "f1095a[form_1].in_a_feb": 38000,
+        "f1095a[form_1].in_b_feb": 40000,
+        "f1095a[form_1].in_c_feb": 10000,
+        "f1095a[form_1].in_a_mar": 38000,
+        "f1095a[form_1].in_b_mar": 40000,
+        "f1095a[form_1].in_c_mar": 10000,
+        "f1095a[form_1].in_a_apr": 38000,
+        "f1095a[form_1].in_b_apr": 40000,
+        "f1095a[form_1].in_c_apr": 10000,
+        "f1095a[form_1].in_a_may": 38000,
+        "f1095a[form_1].in_b_may": 40000,
+        "f1095a[form_1].in_c_may": 10000,
+        "f1095a[form_1].in_a_jun": 38000,
+        "f1095a[form_1].in_b_jun": 40000,
+        "f1095a[form_1].in_c_jun": 10000,
+        "f1095a[form_1].in_a_jul": 38000,
+        "f1095a[form_1].in_b_jul": 30000,
+        "f1095a[form_1].in_c_jul": 10000,
+        "f1095a[form_1].in_a_aug": 38000,
+        "f1095a[form_1].in_b_aug": 30000,
+        "f1095a[form_1].in_c_aug": 10000,
+        "f1095a[form_1].in_a_sep": 38000,
+        "f1095a[form_1].in_b_sep": 30000,
+        "f1095a[form_1].in_c_sep": 10000,
+        "f1095a[form_1].in_a_oct": 38000,
+        "f1095a[form_1].in_b_oct": 30000,
+        "f1095a[form_1].in_c_oct": 10000,
+        "f1095a[form_1].in_a_nov": 38000,
+        "f1095a[form_1].in_b_nov": 30000,
+        "f1095a[form_1].in_c_nov": 10000,
+        "f1095a[form_1].in_a_dec": 38000,
+        "f1095a[form_1].in_b_dec": 30000,
+        "f1095a[form_1].in_c_dec": 10000
+      },
+      "expect": {
+        "f8962.line10": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.line12b": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "f8962.line12e": {
+          "kind": "money",
+          "cents": 35100
+        },
+        "f8962.line12f": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "f8962.line18b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "f8962.line18e": {
+          "kind": "money",
+          "cents": 25100
+        },
+        "f8962.line24": {
+          "kind": "money",
+          "cents": 361200
+        },
+        "f8962.line25": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "f8962.line26": {
+          "kind": "money",
+          "cents": 241200
+        },
+        "s3.line9": {
+          "kind": "money",
+          "cents": 241200
+        }
+      }
+    },
+    {
       "id": "stage18.blind.p18",
       "covers": [
         "f8962",
@@ -3495,7 +3705,7 @@
           "kind": "refusal",
           "gate": "f8962.other",
           "form": "Form 8962 with coverage or eligibility outside this tool",
-          "remedy": "Eligibility for other minimum essential coverage for any month (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
+          "remedy": "Eligibility for other minimum essential coverage for any month of Marketplace coverage (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
           "cite": {
             "doc": "i8962",
             "locator": "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"",
@@ -3508,7 +3718,7 @@
           "kind": "refusal",
           "gate": "f8962.other",
           "form": "Form 8962 with coverage or eligibility outside this tool",
-          "remedy": "Eligibility for other minimum essential coverage for any month (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
+          "remedy": "Eligibility for other minimum essential coverage for any month of Marketplace coverage (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
           "cite": {
             "doc": "i8962",
             "locator": "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"",
@@ -3521,7 +3731,7 @@
           "kind": "refusal",
           "gate": "f8962.other",
           "form": "Form 8962 with coverage or eligibility outside this tool",
-          "remedy": "Eligibility for other minimum essential coverage for any month (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
+          "remedy": "Eligibility for other minimum essential coverage for any month of Marketplace coverage (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
           "cite": {
             "doc": "i8962",
             "locator": "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"",
@@ -3559,7 +3769,7 @@
           "kind": "refusal",
           "gate": "f8962.other",
           "form": "Form 8962 with coverage or eligibility outside this tool",
-          "remedy": "Eligibility for other minimum essential coverage for any month (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
+          "remedy": "Eligibility for other minimum essential coverage for any month of Marketplace coverage (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
           "cite": {
             "doc": "i8962",
             "locator": "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"",
@@ -3572,7 +3782,7 @@
           "kind": "refusal",
           "gate": "f8962.other",
           "form": "Form 8962 with coverage or eligibility outside this tool",
-          "remedy": "Eligibility for other minimum essential coverage for any month (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
+          "remedy": "Eligibility for other minimum essential coverage for any month of Marketplace coverage (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
           "cite": {
             "doc": "i8962",
             "locator": "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"",
@@ -3585,7 +3795,7 @@
           "kind": "refusal",
           "gate": "f8962.other",
           "form": "Form 8962 with coverage or eligibility outside this tool",
-          "remedy": "Eligibility for other minimum essential coverage for any month (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
+          "remedy": "Eligibility for other minimum essential coverage for any month of Marketplace coverage (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.",
           "cite": {
             "doc": "i8962",
             "locator": "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"",

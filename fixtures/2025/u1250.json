@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.feeders.shortloss",
-      "walk": "stage4",
       "covers": [
         "feeders.shortloss"
       ],

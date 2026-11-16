@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "sales.select.sdtw.election",
-      "walk": "sales",
       "covers": [
         "f1040.gate.sdtw"
       ],
@@ -40,7 +39,6 @@
     },
     {
       "id": "stage4.sdtw.special_rates",
-      "walk": "stage4",
       "covers": [
         "sdtw.special_rates"
       ],
@@ -268,7 +266,6 @@
     },
     {
       "id": "stage4.sdtw.skip22",
-      "walk": "stage4",
       "covers": [
         "sdtw.skip22"
       ],
@@ -329,7 +326,6 @@
     },
     {
       "id": "stage4.sdtw.skip32",
-      "walk": "stage4",
       "covers": [
         "sdtw.skip32"
       ],
@@ -362,7 +358,6 @@
     },
     {
       "id": "stage4.sdtw.twenty_percent",
-      "walk": "stage4",
       "covers": [
         "sdtw.twenty_percent"
       ],
@@ -426,7 +421,6 @@
     },
     {
       "id": "stage4.sdtw.lower_bracket",
-      "walk": "stage4",
       "covers": [
         "sdtw.lower_bracket"
       ],
@@ -478,7 +472,6 @@
     },
     {
       "id": "stage4.sdtw.line12_takes_line9",
-      "walk": "stage4",
       "covers": [
         "sdtw.line12:line9"
       ],
@@ -531,7 +524,6 @@
     },
     {
       "id": "stage4.mut.sdtw_28pct_no_1250",
-      "walk": "stage4",
       "covers": [
         "sdtw",
         "sd",
@@ -568,7 +560,6 @@
     },
     {
       "id": "stage4.mut.sdtw_1250_line32_is_line1",
-      "walk": "stage4",
       "covers": [
         "sdtw",
         "sd",

@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "4a655ab703db7d320deaf879dc721983661d850c2c11d697ce75181736b8d049",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,15 +15,15 @@
   },
   {
    "key": "1(b)",
-   "record": "03296a1f0d7a60ffdfafe732774228ab28afce3d9a69a7e49a3447a1ae5e3e91",
+   "record": "62c61f13253dc2bbb15f3acf1a88f149f00058af7a93b60ab5b57d623a49b5f3",
    "status": "DISAGREE",
-   "ruling": "Ruling: equivalent; project retained. i1040gi pp. 106-107 (Schedule 1-A, Part III, methods 1 to 4) and Notice 2025-69 section III.B.2, methods (A) to (D), give the employer-reported or premium amount as is and the one-third, one-half and one-quarter conversions. Both give zero when otjob.flsa is false, the statement amount for employer_reported and premium, the statement times s1a.ot_third for total_time_and_half, s1a.ot_half for premium_double and s1a.ot_quarter for total_double, and zero for other (refused by otjob.refused before the line is used). The second tests otjob.flsa inside each method guard instead of first; the guards cover the same cases with the same values. This round changed only the wording of otjob.method and otjob.statement (hours over 40 in a workweek), not an expression.",
-   "subject_key": "28b624ea3ad7b0aa46c818a41a1630bc113baf0e8dd561842bc71671aebf56b0"
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (218 values compared, none different or missing: 67 on 2028 fixture cases, 31 on 500 generated returns seed 20261026, 120 on 72 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "74243aa424303244ef2ecbdfa9715e275a8b7b42c521c1472a9819f72cb7c5d5"
   }
  ],
  "subjects": {
   "otjob.one": "e7838e18a06ea1557e24647d8e8d5758f1dfb5aa7312dbe9c799c9bf240c2849",
-  "1(b)": "4a7dc30e871000fb46bb831f64006fa53c107ff125cbeefcd392013c330e8bb4"
+  "1(b)": "a031cd82d61c6250630dbdc4e15752734ab71e70a5d0e2775c4c323832cb9ee3"
  },
  "__rest__": "5f0e2ac2178da2fba490ba4af97d9a79fe7483433bb4466a6d27d9210dcf2cad",
  "foreign": {

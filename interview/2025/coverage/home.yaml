@@ -39,6 +39,7 @@ rows:
       sa.mortgage_interest: 0
       sa.line5b: 300000
       sa.property_tax_other_any: false
+      s2.mortgage_subsidy: false
     expect:
       proceeds:
         sa.line5b: 300000
@@ -114,6 +115,7 @@ rows:
       sa.line5b: 400000
       sa.property_tax_other_any: true
       sa.property_tax_leave_out: 30000
+      s2.mortgage_subsidy: false
     expect:
       proceeds:
         sa.property_tax_leave_out: 30000
@@ -174,6 +176,33 @@ rows:
       sa.charity_limited: true
     expect:
       refused: sa.charity_limited_if_gifts
+  - id: home.gift_worth_more_than_deduction
+    design: BUG-0506, gift.special (the $5,000 test is on the deduction after reductions, read by gift.section_b)
+    situation: A person gave a painting bought eight months earlier for $3,000 and worth $8,000, so the deduction is limited to $3,000.
+    answers:
+      sa.gifts: true
+      sa.line11: 0
+      $gift: [g]
+      gift[g].deduction: 300000
+      gift[g].special: false
+      sa.charity_limited: false
+    expect:
+      proceeds:
+        gift[g].deduction: 300000
+  - id: home.gift_restricted_shares
+    design: gift.public_securities (securities not free to be sold are not publicly traded; Section B)
+    situation: A person gave listed shares worth $8,000 that they were not yet allowed to sell.
+    answers:
+      sa.gifts: true
+      sa.line11: 0
+      $gift: [g]
+      gift[g].deduction: 800000
+      gift[g].public_securities: false
+      gift[g].special: false
+      sa.charity_limited: false
+      s3.foreign_any: false
+    expect:
+      refused: gift[g].section_b
   - id: home.no_medical
     design: provisional redraft, lane 7a (the medical parent and its guard)
     situation: A person with insurance through a job whose medical costs were small.
@@ -289,6 +318,52 @@ rows:
     expect:
       proceeds:
         refund.received: 300000
+  - id: home.refund_two_returns_standard
+    design: lane g1-f4, BUG-0593 (refunds of both spouses' tax on separate 2024 returns, neither itemized)
+    situation: A couple who married in 2025 file together; each filed their own 2024 return with the standard deduction and each got a 2024 state refund.
+    answers:
+      $person: [taxpayer, spouse]
+      household.married_dec31: true
+      refund.any: true
+      refund.box8: false
+      refund.other_year: false
+      refund.paid_other_time: false
+      refund.two_returns: true
+      refund.two_itemized: false
+    expect:
+      proceeds:
+        refund.two_itemized: false
+      not_asked: [refund.itemized, refund.received, refund.status]
+  - id: home.refund_two_returns_itemized
+    design: lane g1-f4, BUG-0593 (refunds of both spouses' tax on separate 2024 returns, one itemized)
+    situation: A couple who married in 2025 file together; each got a 2024 state refund, and one of them itemized for 2024 and deducted state income tax.
+    answers:
+      $person: [taxpayer, spouse]
+      household.married_dec31: true
+      refund.any: true
+      refund.box8: false
+      refund.other_year: false
+      refund.paid_other_time: false
+      refund.two_returns: true
+      refund.two_itemized: true
+    expect:
+      refused: refund.two_itemized_if_two
+  - id: home.refund_couple_one_return
+    design: lane g1-f4, BUG-0593 (a couple who filed one 2024 return goes on to the worksheet)
+    situation: A married couple filed one joint 2024 return with the standard deduction and got a state refund.
+    answers:
+      $person: [taxpayer, spouse]
+      household.married_dec31: true
+      refund.any: true
+      refund.box8: false
+      refund.other_year: false
+      refund.paid_other_time: false
+      refund.two_returns: false
+      refund.itemized: false
+    expect:
+      proceeds:
+        refund.itemized: false
+      not_asked: [refund.two_itemized, refund.received]
   - id: home.refund_exception
     design: provisional redraft, lane 7a (what refund.exc_tax covered)
     situation: A person itemized for 2024, got a refund, and owed alternative minimum tax for 2024.

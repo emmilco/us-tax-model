@@ -31,7 +31,7 @@
     "f1040.status": "single",
     "person[sample].role": "taxpayer",
     "person[sample].f8889[hsa].owner_died": false,
-    "person[sample].f8889[hsa].inherited": false,
+    "person[sample].f8889[hsa].inherited_any": false,
     "person[sample].f8889[hsa].archer": false,
     "person[sample].f8889[hsa].ira_transfer": false,
     "person[sample].f8889[hsa].excess_withdrawn": false,
@@ -348,7 +348,7 @@
       "id": "H12",
       "inputs": {
         "person[sample].f8889[hsa].line14a": 0,
-        "person[sample].f8889[hsa].inherited": null
+        "person[sample].f8889[hsa].inherited_any": null
       },
       "expect": {
         "person[sample].f8889[hsa].line16": {
@@ -364,7 +364,8 @@
       "id": "H13",
       "inputs": {
         "person[sample].f8889[hsa].line14a": 0,
-        "person[sample].f8889[hsa].inherited": true
+        "person[sample].f8889[hsa].inherited_any": true,
+        "person[sample].f8889[hsa].inherited_case": "other"
       },
       "expect": {
         "person[sample].f8889[hsa].line16": {
@@ -420,7 +421,7 @@
         "person[sample].role": "taxpayer",
         "person[spouse].role": "spouse",
         "person[sample].f8889[hsa].owner_died": false,
-        "person[sample].f8889[hsa].inherited": false,
+        "person[sample].f8889[hsa].inherited_any": false,
         "person[sample].f8889[hsa].archer": false,
         "person[sample].f8889[hsa].ira_transfer": false,
         "person[sample].f8889[hsa].excess_withdrawn": false,
@@ -443,7 +444,7 @@
         "person[sample].f8889[hsa].line2": 200000,
         "person[sample].f8889[hsa].line9": 0,
         "person[spouse].f8889[hsa].owner_died": false,
-        "person[spouse].f8889[hsa].inherited": false,
+        "person[spouse].f8889[hsa].inherited_any": false,
         "person[spouse].f8889[hsa].archer": false,
         "person[spouse].f8889[hsa].ira_transfer": false,
         "person[spouse].f8889[hsa].excess_withdrawn": false,
@@ -510,7 +511,7 @@
         "person[sample].role": "taxpayer",
         "person[spouse].role": "spouse",
         "person[sample].f8889[hsa].owner_died": false,
-        "person[sample].f8889[hsa].inherited": false,
+        "person[sample].f8889[hsa].inherited_any": false,
         "person[sample].f8889[hsa].archer": false,
         "person[sample].f8889[hsa].ira_transfer": false,
         "person[sample].f8889[hsa].excess_withdrawn": false,

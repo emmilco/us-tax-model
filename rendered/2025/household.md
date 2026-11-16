@@ -201,11 +201,11 @@
     - you paid over half the cost of keeping up your home for 2025
     - your home was the main home of your child, stepchild or foster child for more than half of 2025 (temporary absences by you or the child for special circumstances count as time lived in the home; a child born or who died in 2025 meets this if the child lived with you for more than half the part of the year the child was alive; a child adopted, lawfully placed with you for legal adoption or placed as an eligible foster child in 2025 meets it if your main home was the child's main home for more than half the time since)
     - you can claim this child as your dependent, or could except that the child's other parent can claim the child under the rule for children of divorced or separated parents
-  - Your spouse was a nonresident alien at any time during 2025 and you did not elect to treat your spouse as a resident alien.
+  - Your spouse was a nonresident alien at any time during 2025 and no election to treat your spouse as a resident alien is in effect for 2025 (an election made for an earlier year remains in effect until terminated).
 
   Your spouse counts as living in your home during a temporary absence for special circumstances, such as business, medical care, school or military service, if it was reasonable to assume your spouse would return and you kept up the home during the absence.
-- Expr: `{"op":"input","source":"Although you were married at the end of 2025, are you considered unmarried for head of household?\n\nYou are considered unmarried if either of these applies (if your spouse died in 2025, you are considered married for the whole year: answer No).\n\n- You lived apart from your spouse for the last 6 months of 2025, and all of these apply:\n  - you file a separate return from your spouse\n  - you paid over half the cost of keeping up your home for 2025\n  - your home was the main home of your child, stepchild or foster child for more than half of 2025 (temporary absences by you or the child for special circumstances count as time lived in the home; a child born or who died in 2025 meets this if the child lived with you for more than half the part of the year the child was alive; a child adopted, lawfully placed with you for legal adoption or placed as an eligible foster child in 2025 meets it if your main home was the child's main home for more than half the time since)\n  - you can claim this child as your dependent, or could except that the child's other parent can claim the child under the rule for children of divorced or separated parents\n- Your spouse was a nonresident alien at any time during 2025 and you did not elect to treat your spouse as a resident alien.\n\nYour spouse counts as living in your home during a temporary absence for special circumstances, such as business, medical care, school or military service, if it was reasonable to assume your spouse would return and you kept up the home during the absence."}`
-- Cite: [i1040gi] p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025; printed date 2026-02-25; sha256 482e9c48)
+- Expr: `{"op":"input","source":"Although you were married at the end of 2025, are you considered unmarried for head of household?\n\nYou are considered unmarried if either of these applies (if your spouse died in 2025, you are considered married for the whole year: answer No).\n\n- You lived apart from your spouse for the last 6 months of 2025, and all of these apply:\n  - you file a separate return from your spouse\n  - you paid over half the cost of keeping up your home for 2025\n  - your home was the main home of your child, stepchild or foster child for more than half of 2025 (temporary absences by you or the child for special circumstances count as time lived in the home; a child born or who died in 2025 meets this if the child lived with you for more than half the part of the year the child was alive; a child adopted, lawfully placed with you for legal adoption or placed as an eligible foster child in 2025 meets it if your main home was the child's main home for more than half the time since)\n  - you can claim this child as your dependent, or could except that the child's other parent can claim the child under the rule for children of divorced or separated parents\n- Your spouse was a nonresident alien at any time during 2025 and no election to treat your spouse as a resident alien is in effect for 2025 (an election made for an earlier year remains in effect until terminated).\n\nYour spouse counts as living in your home during a temporary absence for special circumstances, such as business, medical care, school or military service, if it was reasonable to assume your spouse would return and you kept up the home during the absence."}`
+- Cite: [i1040gi] p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."; i1040gi p. 13, Nonresident aliens and dual-status aliens, "This choice remains in effect in subsequent years until terminated" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.considered_unmarried_if_married`
 
@@ -452,8 +452,58 @@
 
 - **Authored helper label:** Head of household checked without meeting its tests
 - **Encoded (Bool):** f1040 line Filing Status = 'hoh' and helper "Unmarried or considered unmarried, and Test 1 or Test 2 applies" = false
+- **Refusal:** when household.hoh_missed is true, cannot complete Head of household filing status fits you. You chose single, but your answers meet the head of household tests (you were unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than single on the same income. Go back and choose head of household. Cite: [i1040gi] p. 13, Filing Status, "The ones that will usually give you the lowest tax are listed last"; p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"all":[{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},{"eq":["household.hoh_eligible",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.dependents_listed`
+
+- **Authored helper label:** Number of people listed as dependents
+- **Encoded (Count):** Add dependent.one over every confirmed dependent entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over"}`
+- Cite: [i1040gi] p. 14, Head of Household, Test 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.dependents_any`
+
+- **Authored helper label:** At least one person is listed as a dependent
+- **Encoded (Bool):** helper "Number of people listed as dependents" > 0 (a count)
+- Expr: `{"gt":["household.dependents_listed",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [i1040gi] p. 14, Head of Household, Test 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.hoh_missed_cost`
+
+- **Authored helper label:** You paid over half the cost of keeping up your home and a person who qualifies you under Test 2 lived with you (the home cost asked first, so the dependent tests are read only when it was paid)
+- **Encoded (Bool):** Choose — [helper "Did you pay over half the cost of keeping up your home for 2025?" = true → helper "A person qualifies you under Test 2: more persons lived with you than the ones who did only by counting an absence head of household does not count (the absence is asked only of a person who lived with you)"] [helper "Did you pay over half the cost of keeping up your home for 2025?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.home_cost",{"const":true}],"op":"test"},"then":"household.hoh_missed_person"},{"guard":{"eq":["household.home_cost",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.test2_lived_persons`
+
+- **Authored helper label:** Number of persons who would qualify you under Test 2, counting every absence you counted
+- **Encoded (Count):** Add dependent.one over every confirmed dependent entry for which helper "A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"dependent","field":"dependent.one","op":"sum_over","where":{"eq":["dependent.hoh_test2_lived",{"const":true}],"op":"test"}}`
+- Cite: [i1040gi] p. 14, Head of Household, Test 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.hoh_missed_person`
+
+- **Authored helper label:** A person qualifies you under Test 2: more persons lived with you than the ones who did only by counting an absence head of household does not count (the absence is asked only of a person who lived with you)
+- **Encoded (Bool):** helper "Number of persons who would qualify you under Test 2, counting every absence you counted" > helper "Number of persons who would qualify you under Test 2 only by counting an absence head of household does not count"
+- Expr: `{"gt":["household.test2_lived_persons","household.test2_absence_persons"],"op":"test"}`
+- Cite: [i1040gi] p. 14, Head of Household, Test 2; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.hoh_missed_test2`
+
+- **Authored helper label:** Test 2 met on a single return: asked only when a dependent is listed (false with none)
+- **Encoded (Bool):** Choose — [helper "At least one person is listed as a dependent" = true → helper "You paid over half the cost of keeping up your home and a person who qualifies you under Test 2 lived with you (the home cost asked first, so the dependent tests are read only when it was paid)"] [helper "At least one person is listed as a dependent" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.dependents_any",{"const":true}],"op":"test"},"then":"household.hoh_missed_cost"},{"guard":{"eq":["household.dependents_any",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `household.hoh_missed`
+
+- **Authored helper label:** Single checked, though you were unmarried and Test 2 of head of household is met (Test 1, a parent's separate home, is not checked)
+- **Encoded (Bool):** f1040 line Filing Status = 'single' and helper "Unmarried, or considered unmarried under the head of household rules, at the end of 2025" = true and helper "Test 2 met on a single return: asked only when a dependent is listed (false with none)" = true
+- Expr: `{"all":[{"eq":["f1040.status",{"const":"single"}],"op":"test"},{"eq":["household.unmarried",{"const":true}],"op":"test"},{"eq":["household.hoh_missed_test2",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.qss_eligible`
 

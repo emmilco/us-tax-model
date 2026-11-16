@@ -399,7 +399,7 @@ export function spouseWordingSelfTest(): number {
   // The built questions: no near-miss, and each reworded text is still well-formed structured text.
   let phrased = 0, framed = 0;
   const seen = new Set<string>();
-  for (const profile of ["social-security", "sales", "stage4", "full", "ny"]) {
+  for (const profile of ["full", "ny"]) {
     for (const q of loadInterview(profile).questions) {
       if (seen.has(q.input)) continue;
       seen.add(q.input);

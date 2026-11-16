@@ -129,6 +129,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
+  (helper) Not married at the end of 2025
+      = true
+      cite: [i1040gi] p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Unmarried, or considered unmarried under the head of household rules, at the end of 2025
+      = true
+      cite: [i1040gi] p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Have you ever been married?
       = true
       cite: [i1040gi] p. 13, Filing Status, Single, "You were never married" (2025; printed date 2026-02-25; 482e9c48)
@@ -152,6 +158,20 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Head of household checked without meeting its tests
       = false
       cite: [i1040gi] p. 14, Head of Household (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of people listed as dependents
+      = 0
+      cite: [i1040gi] p. 14, Head of Household, Test 2 (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $dependent:
+  (helper) At least one person is listed as a dependent
+      = false
+      cite: [i1040gi] p. 14, Head of Household, Test 2 (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Test 2 met on a single return: asked only when a dependent is listed (false with none)
+      = false
+      cite: [i1040gi] p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived for more than half of the year" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["household.dependents_any",{"const":false}],"op":"test"}
+  (gate) Single checked, though you were unmarried and Test 2 of head of household is met (Test 1, a parent's separate home, is not checked)
+      = false
+      cite: [i1040gi] p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Qualifying surviving spouse checked without meeting its tests
       = false
       cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "use joint return tax rates for 2025 if all of the following apply" (2025; printed date 2026-02-25; 482e9c48)
@@ -700,7 +720,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
       note: taken: {"eq":["sb.bonds_any_if_income",{"const":false}],"op":"test"}
-  (helper) Schedule B special treatment, when taxable interest, ordinary dividends or capital gain distributions are above zero; false otherwise
+  (helper) Schedule B special treatment (any nominee income or special treatment of bond or loan interest, each asked only when taxable interest, ordinary dividends or capital gain distributions are above zero, so false otherwise)
       = false
       cite: [i1040sb] p. 1, General Instructions, "Use Schedule B (Form 1040) if any of the following applies", "You received interest from a seller-financed mortgage", "You have accrued interest from a bond", "You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID", "You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium", "You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989", "You received interest or ordinary dividends as a nominee" (TY2025; printed April 23, 2025; b92f31ec)
   (helper) FinCEN Form 114 (FBAR) required, when you or your spouse had a foreign account, other foreign financial asset, foreign trust or foreign corporation; false otherwise
@@ -885,9 +905,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) In 2025, was your (or, on a joint return, your spouse's) property damaged, destroyed or stolen, leaving a loss that insurance did not cover or an insurance payment above what the property cost?
       = false
       cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4684 to report involuntary conversions of property due to casualty or theft." (2025; printed date 2025-12-11; 650643a6)
-  (helper) Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
+  (gate) Did you (or, on a joint return, your spouse) own an investment in an opportunity zone fund (QOF) at any time in 2025, or put off tax on a 2025 gain by investing in one?
       = false
-      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following.", "The involuntary conversion (other than from casualty or theft) of property used in a trade or business", "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.", "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.", "Use Form 4684 to report involuntary conversions of property due to casualty or theft.", "Use Form 6781 to report gains and losses from section 1256 contracts and straddles.", "Use Form 8824 to report like-kind exchanges."; p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method"; p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439." (2025; printed date 2025-12-11; 650643a6)
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 8997 to report each QOF investment you held at the beginning and end of the tax year and the deferred gains associated with each investment. Also, use Form 8997 to report any capital gains you are deferring by investing in a QOF during the tax year and any QOF investment you disposed of during the tax year."; i8949 p. 12, "you will need to complete a Form 8997 for each year you hold the investment"; i1040gi p. 31, Line 7a, Exception 1, "You don’t have to file Form 8949 or Schedule D if you aren’t deferring any capital gain by investing in a qualified opportunity fund" (2025; printed date 2025-12-11; 650643a6)
+  (helper) Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or an investment in a qualified opportunity fund (Form 8997)? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.
+      = false
+      cite: [i1040sd] p. 1, Other Forms You May Have To File, "Use Form 8997 to report each QOF investment you held at the beginning and end of the tax year", "Use Form 4797 to report the following.", "The involuntary conversion (other than from casualty or theft) of property used in a trade or business", "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.", "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.", "Use Form 4684 to report involuntary conversions of property due to casualty or theft.", "Use Form 6781 to report gains and losses from section 1256 contracts and straddles.", "Use Form 8824 to report like-kind exchanges."; p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method"; p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439." (2025; printed date 2025-12-11; 650643a6)
   (helper) Count screened transactions
       = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L)
       cite: [f1040sd] p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10" (2025; created 2025-10-06; 90564c8b)
@@ -1090,6 +1113,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   household.filing_status_conflict: chose false (guard 0)
   household.spouse_died_this_year_if_ever_married: chose false (guard 0)
   household.widowed_this_year: chose false (guard 0)
+  household.hoh_missed_test2: chose false (guard 1)
+      not taken: guard 0 = false
   sa.mfs_spouse_itemizes: chose false (guard 1)
       not taken: guard 0 = false
   sa.charity_limited_if_gifts: chose false (guard 1)
@@ -1125,7 +1150,7 @@ Derivations:
   sd.installment_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
   sd.like_kind_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
   sd.f2439_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; sd.no = false)
-  sd.other_forms: test(sd.business_property_if_sold = false; true = true; sd.installment_if_sold = false; true = true; sd.like_kind_if_sold = false; true = true; sd.sec1256 = false; true = true; sd.condemned = false; true = true; sd.small_business_stock = false; true = true; sd.trader_election = false; true = true; sd.f2439_if_dividends = false; true = true; sd.casualty = false; true = true)
+  sd.other_forms: test(sd.business_property_if_sold = false; true = true; sd.installment_if_sold = false; true = true; sd.like_kind_if_sold = false; true = true; sd.sec1256 = false; true = true; sd.condemned = false; true = true; sd.small_business_stock = false; true = true; sd.trader_election = false; true = true; sd.f2439_if_dividends = false; true = true; sd.casualty = false; true = true; sd.qof = false; true = true)
   sales[a].digital: test(sales[a].box = G; "G" = G)
   sales[a].one: gate(sales[a].digital = true)
   sd.count: sum_over(sd.other_forms = false; sales[a].one = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
@@ -1270,9 +1295,14 @@ Derivations:
   household.marriage_possible: choose(f1040.status = single; "single" = single; household.ever_married = true)
   household.married: choose(household.marriage_possible = true; true = true; household.married_dec31 = false)
   household.filing_status_conflict: choose(f1040.status = single; "single" = single; household.married = false)
-  household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   household.spouse_died_this_year_if_ever_married: choose(household.marriage_possible = true; true = true; household.spouse_died_this_year = false)
   household.widowed_this_year: choose(f1040.status = single; "single" = single; household.spouse_died_this_year_if_ever_married = false)
+  household.not_married: test(household.married = false; false = false)
+  household.unmarried: test(household.not_married = true; true = true)
+  household.dependents_any: test(household.dependents_listed = 0; 0 = 0)
+  household.hoh_missed_test2: choose(household.dependents_any = false; true = true; household.dependents_any = false; false = false; household.no = false)
+  household.hoh_missed: test(f1040.status = single; "single" = single; household.unmarried = true; true = true; household.hoh_missed_test2 = false; true = true)
+  household.hoh_fails: test(household.hoh_missed = false; f1040.status = single; "hoh" = hoh)
   household.qss_fails: test(f1040.status = single; "qss" = qss)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
   sa.no: param(#sa.no = false)
@@ -1314,7 +1344,7 @@ Derivations:
   sa.standard: choose(sa.dependent = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); sa.standard = $15,750)
   sa.deduction: choose(sa.dependent = false; sa.itemizes = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); true = true)
-  f1040.line12e: copy(household.filing_status_conflict = false; household.hoh_fails = false; household.widowed_this_year = false; household.qss_fails = false; sa.deduction = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
+  f1040.line12e: copy(household.filing_status_conflict = false; household.widowed_this_year = false; household.hoh_fails = false; household.qss_fails = false; sa.deduction = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   f1040.line14: sum(f1040.line12e = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   f1040.line15: subtract_floor0(f1040.line11b = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); f1040.line14 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L))
   f1040.gate.qdcg_applies: test(f1040.line15 = REFUSED: Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part. (trigger: sales[a].digital; f8949, Parts I and II, boxes G–L); 0 = $0)

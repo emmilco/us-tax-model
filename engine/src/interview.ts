@@ -137,9 +137,9 @@ export function entrySyntax(text: string): string | null {
   for (const [re, what] of patterns) if (re.test(text)) return what;
   return null;
 }
-export function loadInterview(profile = "social-security"): InterviewData {
-  if (!["social-security", "sales", "stage4", "full", "ny"].includes(profile)) throw new Error("unknown interview profile");
-  return JSON.parse(readFileSync(resolve(CANON_DIR, profile === "social-security" ? "interview.json" : `interview-${profile}.json`), "utf8")) as InterviewData;
+export function loadInterview(profile = "full"): InterviewData {
+  if (!["full", "ny"].includes(profile)) throw new Error("unknown interview profile");
+  return JSON.parse(readFileSync(resolve(CANON_DIR, `interview-${profile}.json`), "utf8")) as InterviewData;
 }
 /** The entries a question's key lies in, outermost first (`person[taxpayer]`, `w2[acme]` for a line of that W-2;
  * `person[taxpayer]` for the roster `$w2@person[taxpayer]`). */
@@ -581,8 +581,8 @@ export function runInterview(args: string[]): void {
   const path = arg("--log");
   if (!path) throw new Error("interview requires --log <file.jsonl>");
   const existing = action === "start" ? undefined : JSON.parse(readFileSync(path,"utf8").split("\n")[0]! ) as Event;
-  const profile = arg("--profile") ?? existing?.profile ?? "social-security";
-  if (existing && profile !== (existing.profile ?? "social-security")) throw new Error("interview profile does not match log");
+  const profile = arg("--profile") ?? existing?.profile ?? "full";
+  if (existing && profile !== (existing.profile ?? "full")) throw new Error("interview profile does not match log");
   const config = loadInterview(profile);
   const data = loadCanonical();
   if (action === "start") writeFileSync(path, JSON.stringify({version:1,tax_year:config.tax_year,profile}) + "\n", {flag:"wx", mode:0o600});

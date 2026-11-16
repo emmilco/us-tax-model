@@ -6,11 +6,43 @@
    "printed": "6",
    "project_expr_sha256": "11f5ed11b0255f98a513d209f38bf5d91f4487dc25b0371cbe556842471097b9",
    "second_expr_sha256": "815c91e5fa9ffe9c8a0d430f59dd0c8d103b54257fb348b2e4ab980887937f4d",
-   "ruling": "Ruling: model error; the candidate copies sb.ordinary_dividends whether or not the filer received dividends or other distributions (div.any), so it needs that answer where the source does not: i1040sb p. 2, Line 5, \"Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements\": a filer who received no dividends has none to report. The project copies the gate line sb.ordinary_dividends_if_dividends, which takes sb.ordinary_dividends when div.any holds and zero otherwise; the interview asks sb.ordinary_dividends only then (gated_by), so on every return the interview can produce the two agree. The line was rescoped because the wording of the foreign screens its refusal gates read changed (the spouse phrase); its expression is unchanged. Ruled by reading.",
-   "context": "966e807c0dd56e5039b83d279a53ffd6e116da6f9634c5909e1d0060e757968a",
-   "date": "2026-11-10",
-   "run": "fc4a7564c51cc8c57930b11b5162d5114d19e12bc054d19f5ac25cf759337521",
-   "subject_key": "f0d65804fe3d1ef5dda8091eb900bfc3a785f9afe0e1c376082bf229ffee602b"
+   "ruling": "Ruling: representation; equivalent: f1040sb Part II, line 6 (the line 5 total); i1040sb, Line 5. The reply reads sb.ordinary_dividends ungated; the project asks it only after div.any is Yes and gives $0 otherwise. Triage executable-triage-v2 (`.transcription/triage/2025/sb.json`, pass 602d75169f27): 2,548 of 3,063 agree and no value differs; 225 candidate-unknown (the reply reads sb.ordinary_dividends, or its sb.nominee gate, where div.any is No, e.g. classm.asset.1, project $0), 2 candidate-refuses (its sb.h_bond_adjust on generated returns, project $0, a refusal the project places on lines 2 and 4), 68 project-refuses (sb.fbar_required_if_foreign, sb.form8938_if_foreign) and 220 project-unknown (records withholding div.any). Project stands.",
+   "context": "e4e7a1885e12978b67736669008b94bedfdb1712a665500ef1aab618ef9f660d",
+   "date": "2026-11-15",
+   "run": "9dc36069369f8b59b98a6544baf7c7351bc0d583ba47da744a340c4ce1ced9a1",
+   "subject_key": "1cee02c4865b208965157f324916aea8a68f4ebbd2efad5ff3f9a542c3cb9327",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@sb",
+     "fixture:classm.w2.1.deepseek@sb",
+     "fixture:classm.f8889.1.deepseek@sb",
+     "fixture:classm.f8889.3.deepseek@sb",
+     "fixture:classm.f8889.4.deepseek@sb",
+     "fixture:classm.f8889.5.deepseek@sb",
+     "fixture:classm.dependent.1.deepseek@sb",
+     "fixture:classm.dependent.2.deepseek@sb",
+     "fixture:classm.sa.1.deepseek@sb",
+     "fixture:classm.sa.2.deepseek@sb",
+     "fixture:classm.sa.3.deepseek@sb",
+     "fixture:classm.sa.6.deepseek@sb",
+     "fixture:classm.asset.1@sb",
+     "fixture:classm.asset.2@sb",
+     "fixture:classm.dcprov.1@sb",
+     "fixture:classm.otjob.2@sb",
+     "fixture:classm.gift.1@sb",
+     "fixture:t264.eic.show5_agi_open_married_child@sb",
+     "generated:20261026.108@sb",
+     "generated:20261026.306@sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "sb.ordinary_dividends_if_dividends",

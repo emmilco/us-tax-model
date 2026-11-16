@@ -348,6 +348,17 @@
    "subject_key": "70436166ef6564b9e7c8b1288b6e48e711d923c22389d93223a281a3419d6e9f"
   },
   {
+   "printed": "8r",
+   "restated": "Choose — [helper \"Did you (or, on a joint return, your spouse) receive a scholarship or fellowship grant in 2025?\" = true → helper \"Scholarship and fellowship grants not reported on Form W-2\"] [helper \"Did you (or, on a joint return, your spouse) receive a scholarship or fellowship grant in 2025?\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The helper always adds any part that is payment for required teaching, research or other services. Pub. 525 says otherwise: 'You don't have to include in income the part of any scholarship or fellowship that represents payment for teaching, research, or other services if you receive the amount under: The National Health Services Corps Scholarship Program, The Armed Forces Health Professions Scholarship and Financial Assistance Program, or a comprehensive student work-learning-service program... operated by a work college.' There is no refusal for these exceptions, so the program would overstate line 8r for those recipients.",
+   "ruling": "Ruling: finding; p525 p. 35, Exceptions, 'You don’t have to include in income the part of any scholarship or fellowship that represents payment for teaching, research, or other services if you receive the amount under: The National Health Services Corps Scholarship Program, The Armed Forces Health Professions Scholarship and Financial Assistance Program, or A comprehensive student work-learning-service program ... operated by a work college'. The reviewer is right: s1.scholarship_taxable asks for 'any part that is payment for teaching, research or other services required as a condition for receiving the grant' (prompt: 'pay for teaching, research or other work the grant required'), and the service obligations of those programs are exactly 'other services required as a condition', so their recipients add excludable pay to line 8r; nothing refuses or excludes them. BUG-0716 left the exceptions out on the reading that the obligations are not teaching or research; the question's 'other services' reaches them. Medium (BUG-0758): name the three exceptions in the source and help.",
+   "context": "8c3ed2b2f21db5de7c2b4122aaad0e73b88ee9223dfd375968f1469b33003244",
+   "date": "2026-11-15",
+   "run": "9432c1031bca296eea7f69225edb3e6d0c7812f0a736f51dcfa75bba5c717236",
+   "severity": "medium",
+   "subject_key": "c86d3a0dd665badc5dc37945987e8d02e17596bb0df47b41593938225d2fb4a9"
+  },
+  {
    "printed": "8z",
    "restated": "Add oi8z.taxable over every confirmed oi8z entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The line sums oi8z.taxable over 'the supported line 8z items', but neither those items nor how their taxable amounts are figured is defined in the text given. Whether each matches 'any taxable income not reported elsewhere' cannot be judged.",

@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "168",
   "agree / disagree / missing": "86 / 82 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -25,10 +25,10 @@
   },
   {
    "key": "1",
-   "record": "5b4b6656d5b9d9a3b6e772d68e427cf2187402f258225f7742a4317dafcf7464",
+   "record": "49f1f34f0950245b1aef3221480cd91dc59d8894ce810fade0b711b2f89efe03",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4). The reply copies f1040.line1z in cents; the project rounds it half-up to the dollar as it is entered. IT-201-I p. 2, Entering whole dollar amounts: \"When you enter amounts on your return, enter whole dollar amounts only ... round cents to the nearest dollar ... Drop amounts that are less than 50 cents ... Increase amounts that are 50 cents or more to the next dollar\"; the register's chosen reading rounds each federal amount on lines 1 to 18 as it is entered, the reply takes the reading that federal amounts are already whole. The two differ only where line 1z carries cents (triage: 48 value witnesses, all on refused returns). Project retained.",
-   "subject_key": "683b10d9dd65fb7b76571fb8403b8965ec58da60e0ca620160133223c55da871"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The reply copies f1040.line1z in cents; the project rounds it half-up to the dollar as it is entered on lines 1 to 18, the register's chosen reading. Same reference otherwise; the line was rerun because its refusal gates changed, not its expression. Triage: 3 value witnesses, all on refused returns (cents only); the other differing witnesses are refusal or unknown differences (project-refuses 2,483, project-unknown 2,074, candidate-refuses 20) from the whole-return refusal gates the project attaches to line 1 (part-year, spouse nonresident, special accrual, Yonkers), which the reply's line does not carry and the compared expressions do not include; those gates are reviewed with the screens.",
+   "subject_key": "ce6bd9e3d897589ff2a4ec5e121f8ec50ab17aaafbc092fc0797c05040ed4dc7"
   },
   {
    "key": "2",
@@ -831,9 +831,9 @@
   },
   {
    "key": "59",
-   "record": "5b4b6656d5b9d9a3b6e772d68e427cf2187402f258225f7742a4317dafcf7464",
+   "record": "49f1f34f0950245b1aef3221480cd91dc59d8894ce810fade0b711b2f89efe03",
    "status": "AGREE",
-   "subject_key": "7a2e527766ecfd4ce1f1097336452c62f8857e6ed9f131a40a2af377ac11b611"
+   "subject_key": "7163478f762c937d0baed39a4e8327c34d49b5b12d6b901d6ea9afda2ea48abc"
   },
   {
    "key": "60",
@@ -863,9 +863,9 @@
   },
   {
    "key": "64",
-   "record": "0dd2a9647c478c680654a0ae8e67d8d13dd63c39abbee6818461a627844be45e",
+   "record": "49f1f34f0950245b1aef3221480cd91dc59d8894ce810fade0b711b2f89efe03",
    "status": "AGREE",
-   "subject_key": "b696dbf9502c4bdc8b798e940eedb85aaaa602d311992920844e48ea597dc3c7"
+   "subject_key": "562f0ffe74361361b7ebe82737193e6eca8eba6929afd19b9d912e4a750c9427"
   },
   {
    "key": "65",
@@ -887,9 +887,9 @@
   },
   {
    "key": "68",
-   "record": "5b4b6656d5b9d9a3b6e772d68e427cf2187402f258225f7742a4317dafcf7464",
+   "record": "49f1f34f0950245b1aef3221480cd91dc59d8894ce810fade0b711b2f89efe03",
    "status": "AGREE",
-   "subject_key": "240776617fb176fee9b063454669ae2b3cbbb4b3f7135ef82386bfa4e04aec3d"
+   "subject_key": "92941825db828a20478fa4cd20a8d68db45ba2b5d23c7b783ada98b2781baa35"
   },
   {
    "key": "(69) (ny_it201.stc_income)",
@@ -1022,17 +1022,17 @@
   },
   {
    "key": "(81) (ny_it201.safe_harbor_100)",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "49f1f34f0950245b1aef3221480cd91dc59d8894ce810fade0b711b2f89efe03",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds the product (100% of the typed 2024 tax; IT-201-I p. 23, \"the amount of your 2024 New York income tax\") once to the dollar; the reply keeps cents. At most a 50-cent difference in the safe-harbor threshold.",
-   "subject_key": "9bd02f1d12f75ac25f3af6cad6da6f317f8b87b36650b4fffe12b0054aa23af2"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds the product (100% of the typed 2024 tax; IT-201-I p. 23, Line 81, \"at least 100% of your 2024 New York income tax based on a 12-month return\") once to the dollar where it is computed; the reply keeps cents. Triage: 4,606 of 4,608 agree; the 2 value witnesses (generated 273 and 284, a 2024 tax typed with cents) are on refused returns. The 2024 tax comes from a whole-dollar 2024 return, so 100% of it is already whole.",
+   "subject_key": "eeb8fb981f4214911f720e0ca3094205cebe17b775f09c58a42ce65df15c70b8"
   },
   {
    "key": "(81) (ny_it201.safe_harbor_110)",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "49f1f34f0950245b1aef3221480cd91dc59d8894ce810fade0b711b2f89efe03",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds the product (110% of the typed 2024 tax; IT-201-I p. 23, \"the amount of your 2024 New York income tax\") once to the dollar; the reply keeps cents. At most a 50-cent difference in the safe-harbor threshold.",
-   "subject_key": "5694149687ef5319352430bedc34b51f0e2f8537341495f3ae48f4e23294226a"
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds the product (110% of the typed 2024 tax; IT-201-I p. 23, Line 81, \"at least 110% of your 2024 New York income tax based on a 12-month return\") once to the dollar where it is computed; the reply keeps cents. Triage: 4,606 of 4,608 agree; the 2 value witnesses (generated 273 and 284) are on refused returns. At most a 50-cent difference in the safe-harbor threshold.",
+   "subject_key": "8e093192ede4270070a4a35f3d12ab75144fe4ef2af8a329f2c7e9d6fddd95da"
   },
   {
    "key": "(81) (ny_it201.safe_harbor)",
@@ -1042,9 +1042,9 @@
   },
   {
    "key": "81",
-   "record": "5b4b6656d5b9d9a3b6e772d68e427cf2187402f258225f7742a4317dafcf7464",
+   "record": "49f1f34f0950245b1aef3221480cd91dc59d8894ce810fade0b711b2f89efe03",
    "status": "AGREE",
-   "subject_key": "b8f15fdb21d73579c687faaa22b55acd292b429559bed1f9cf6c419121d68fdc"
+   "subject_key": "d3309d2fc577a17bd9adde95c175d08571371cdcec293fbbbba650e0218bb5c9"
   },
   {
    "key": "82",
@@ -1081,9 +1081,9 @@
   },
   {
    "key": "78a",
-   "record": "8c3a4d6300a732c307a999d862499db70c254ac5289b52b1661aabde36909e74",
+   "record": "49f1f34f0950245b1aef3221480cd91dc59d8894ce810fade0b711b2f89efe03",
    "status": "AGREE",
-   "subject_key": "5c8cccd6aed2fc346f50070157858aabbd8093bf93d77065f7dfb4a678ca77e9"
+   "subject_key": "b67c61072e6ed61f1d1e3de77f3064390da5237fe3a30054b62132ae20124f3e"
   },
   {
    "key": "78b",
@@ -1103,7 +1103,7 @@
  "subjects": {
   "C": "6d30a98bb9aa0b6fd436a4a8e490ae176b89a0d1fd2cfc3fd57273b95d1f3357",
   "H (count)": "c775556cf6baebf885155f3e0e760fff74624401c1c24b030e770258031b62a5",
-  "1": "0f3a0879d0b700369f16b9fe0aedd7397bd5f48a946ea7ac32adab9c9d30ef2c",
+  "1": "89fd78d4afac30ad3a09eeb069802785a14bd0366b1254de4fbe425d510941fc",
   "2": "0ab699890c51786638b6f0c1b93f2c9a51e56b9ec03cfab26033df0c734de77c",
   "3": "69f377530fe78842ed6435d2451a374c955c9ac4c0f217290631c73ceb170a92",
   "4": "f5190222dc5ddab58aa5d89b74a4dc3d317370884faacfd2008a57428b329152",
@@ -1227,7 +1227,7 @@
   "(chart) (ny_it201.sut.cap)": "bc3867caeff5c2ce46a56af458bf69baf597cced77741c5a77da1d6cd50bfe65",
   "(chart) (ny_it201.sut.top)": "3f337836dcc9231409008d5ffa2d8fd4efd0f392d18987ef2eb91f6b587d3fc7",
   "(chart) (ny_it201.sut.chart)": "f490093538fc554603fa13fbad139b3e32a8a2596400e226d1e3bc28d80f8fbc",
-  "59": "7e3f09ec14bb46df0cc12519b6e27dc2a7aa912c0eecbe90cae6d3aa796f1ada",
+  "59": "00f8a84b4e46752ba9f2c7acd62f4ab9a09c7cdbae0ab14263d7d0734168f19c",
   "60": "178b3aea541212cd6e1b0cd15cbe019527381140b66487bac2fd04adfdd4a50b",
   "61": "0b1b43168dba06f33619b3fe34032977426efaeca1c9b52368dfb6046db94791",
   "62": "6f15d5a82c661c9f283180e613bb2b496ada9cadd3c892cb5f65dcbf5a2ca901",
@@ -1257,16 +1257,16 @@
   "76": "1f2d5edbf9b8bd837b49af39ff261c272840839f78c6fb5ae20379173f8815e6",
   "(80)": "bdbf0aa5bd8d503b9603c6662a6f544f1cf50b9cc2292d04c953b129682f884a",
   "(81) (ny_it201.prepayments)": "5a1a4b8d7425d6c65a446d44a306885cbb17c1256451a31ff09ff7b3195319f1",
-  "(81) (ny_it201.safe_harbor_100)": "a25a7da23d7538b98920566d546215ff1831b3bd6a6f8aca6e35bf48deb4e345",
-  "(81) (ny_it201.safe_harbor_110)": "d6ded2bcec460c0b15173c6b44480c051bf8456fde88f14f465a87bcaf0b0a0e",
+  "(81) (ny_it201.safe_harbor_100)": "0f8f66499ab7dede819e01f957bca7f2c44c00864dd4b35fda4d901a71ad380d",
+  "(81) (ny_it201.safe_harbor_110)": "041a2d1b5e64267e830e1ab4043fb50966eb1ed72e12f0968bc9c14ebb203404",
   "(81) (ny_it201.safe_harbor)": "ca4509b83345181872175ebfee780dd9deb2961fdebdf14cd66e9f9e9562be82",
-  "81": "d35e5f88e798a774595cae3a78a2cd48723fec39a0a93815d0545dca53770359",
+  "81": "3a2f4c55e3ea32205748831fe1032d55b1ca704f973015824cd5f3a9dfae6010",
   "82": "2770b65d515e92302f70c93fc335e9946b6af7f605d0655e1e0ca9f0bfe0e068",
   "(77)": "4375e1f0e0866c428c3d6d860b0d2ffb70bb1e712f017ae7680d9e995df42049",
   "77": "29fd7542de31bcd9346db1baf2ae8a85089faa1b107e02260b5e7fbe5a35dcea",
   "79": "60626d1440b7a5b5c0a70c457dc7ca4e784855e28c6b1cfdda4cd7e1fc7c13be",
   "78": "0d8a419b2badd40c527f68a3ce1f765d979d77e67c537e8c074a8cb4b6b8d9c6",
-  "78a": "b60d840810ba0accc5c6f818b2e4578d8abf62ce54bed1eb3d61198c9dc57dce",
+  "78a": "acc0f2111f2891096ca42d252966cd21a492d5d72b308a59963fbc9379d917bc",
   "78b": "952a2407b88a305131f59dbc5b01d3c958037b4dc8c3814213eaaef2b2a23517",
   "80": "69f908b3b7023775621c35f6979f28695581a441a69f7ab6f7ffae21196cc082"
  },
@@ -1403,11 +1403,11 @@
   "61": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "62": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "63": "ae083ca1e053beaf072d860c3f4538073c2ec04c5212631a92f5ddb1c98f9c68",
-  "64": "eda96be4f05bb395b875b5f7216847ba16d303084c487595b3b2726f079ae0f9",
+  "64": "b79f67fbc2b0c76634c5398f49ac4aceed9fb286aa3c4b1539e01f51ba049b69",
   "65": "dcd9172040fa80b96b5cfdea5d56ff709411c35bd1952db1164291b1e4a20b1b",
   "66": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "67": "6d41e4e13caaba2306b7554eeb9238e86ac64fbdd47dc4696d7e1414b37dd1d3",
-  "68": "97706aeb415a97370e67c4fbc99e74423ec77564502f017028dc1ff5fc7559a4",
+  "68": "b076d8c0a2ba0bed10bc3bc20be48154cc34568a6fdf6227a3e455e3e09999ec",
   "(69) (ny_it201.stc_income)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "(69) (ny_it201.stc_fixed_amount)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "69": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",

@@ -87,7 +87,7 @@ The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast
   `engine_differential.{md,json}` and `interview_length.md` as the last full run wrote them;
   `evidence.md` then says that its E column dates from the latest release.
 - **docs**: compile, the build, and the checks that read the bookkeeping paths in
-  `tools/docs_paths.txt` (`check_bug_inventory`, `check_agent_runs`, `siblings_check`,
+  `tools/docs_paths.txt` (`check_bug_inventory`, `bug_status`, `check_agent_runs`, `siblings_check`,
   `coverage_tree`, and `bookkeeping_self_tests`: the self-tests of the agent-run, siblings,
   bookkeeping and green-record tools),
   1 to 4 minutes in the recorded runs, nearly all of it the build.
@@ -247,7 +247,7 @@ over worker threads (`MUTATE_WORKERS`, default `defaultWorkers()` of `engine/src
 `MUTATE_WORKERS=1` runs it on one. `interview_length` spreads its returns, and `interview_coverage` the walks of
 its rows, over worker threads (`INTERVIEW_WORKERS`, default `defaultWorkers()`, as for mutate). Each worker builds
 the same list of returns or receives the row, and the results are taken back in list order, so the report, the problems and the exit code are the same for every count; `INTERVIEW_WORKERS=1` runs
-both on one thread. Each self-test checks this on a small set (the returns of the social-security profile; the
+both on one thread. Each self-test checks this on a small set (the first five generated returns; the
 planted rows and the smallest row file), on one thread and on two workers. Within a thread, both keep what they
 compute by state: interview-length the status and reachable inputs of each state its walks and probes meet, and
 interview-coverage each answer applied, by the answers given before it, since walks that have answered alike so far
@@ -763,6 +763,18 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   keeps is a parent's, changed only by the rewriting of assigned placeholders. `tools/siblings.py --check`
   reads pending entries too, measured from the commit that added the file, and an assigned entry from the
   merge that assigned it.
+- **Bug status** (`tools/bug_status.py`, step `bug_status`, docs tier). The inventory is append-only, so an
+  entry's status is derived, never edited in: from its own fields (`Status`, `Disposition`, a fix field), then
+  from later entries that close it (a `Closes:` field, or the title conventions older entries used, such as
+  "BUG-x is fixed: ..."), with the rules in the tool's docstring. To close an entry, record a closure entry:
+  `python3 tools/new_bug.py "Closure: BUG-x is fixed" --pending PREFIX --field "Closes=BUG-x"
+  --field "Closure=fixed" --field "Evidence=..."` (`Closure` is `fixed`, `won't fix`, `superseded`,
+  `duplicate`, `not a defect` or `disposed`; "in part" after the ids leaves the entry open; a `Reopens:` field
+  reopens). `reports/bug_status.md` lists every open entry with the `TASKS.md` rows that cover it (a row naming
+  the entry, or a task id named in the entry's status or fix), in two tables: covered by a row and covered by
+  none. `--check` fails when a closure names no entry or an unknown kind, or when the report is not current;
+  regenerate it with `--write` after changing the inventory, `bug_pending/` or the task registers. Assigning ids
+  keeps it current, since the report lists pending entries last, in the order `--assign` numbers them.
 - **Docs conventions** (`tools/check_docs_conventions.py`, docs tier): docs/ files are dated unless living, and
   HANDOFF-NEXT-SESSION.md keeps two entries.
 - **Year-free ids** (`tools/check_year_ids.py`, step `year_ids`; spec 4.3): reads every document, line, parameter,
@@ -835,6 +847,7 @@ that year's table from its archived source, and the check-all step named beside 
 | `coverage/roadmap.py` | `reports/roadmap.html` from the coverage estimate and the open rows of `TASKS.md` |
 | `ny_fixtures.py` | Writes the New York fixtures from `ny_predict.py`'s predictions, for the year the predictor was transcribed for (section "New York years") |
 | `new_bug.py`, `task_row.py` | Append a `BUG_INVENTORY.md` entry, record a pending one (`--pending`) or number the pending ones at a merge (`--assign`); add or update a `TASKS.md` row (tested by `test_bookkeeping_tools.py`) |
+| `bug_status.py` | Each bug entry's status (open, fixed, closed by a later entry, a closure record) and the open entries' task rows; writes `reports/bug_status.md` (`--write`); check-all step `bug_status` (`--check`) (section "Bug inventory and pending entries") |
 | `ocr_audit.py` | An image-grounded audit of the archived text layers (Tesseract), for a person to adjudicate; not a gate |
 | `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |
 | `transcription/question_review.py` | The question review (section "Sampled completeness, screen, false-no and question reviews"); also prices every question's prompt without a call (`--measure`) and lists which existing reviews judge each input's wording (`--coverage`) |

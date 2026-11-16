@@ -6,7 +6,7 @@
  "head_rows": {
   "lines judged": "25",
   "match / mismatch / unclear / missing": "20 / 4 / 1 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -105,9 +105,9 @@
   },
   {
    "key": "(screen) (ira.deferred_comp)",
-   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
+   "record": "2f9d506272fd62a4f526b4c34de8b026011e728a1974f994087e140c051c0d06",
    "status": "MATCH",
-   "subject_key": "03c92576ec7590211a3f07e18c552b7f466b087d9c22900d3c386fb0c1442360"
+   "subject_key": "2ff8801841f2e635dd2f58ac7c55f1cd92790a3209970052adb77afc8b63b103"
   },
   {
    "key": "(screen) (ira.fellowship)",
@@ -181,7 +181,7 @@
   "9": "e0c88b07f9e834cac611e12d20a888d42803b075c71f81601be2737a1b1696e1",
   "10": "05a8fb8f9ed2403f2f49ca8c5c2a96c9a0429a65574de08177339869980e4a03",
   "(screen) (ira.special)": "201538afb273929ab974776e52fc2e0e9382cff88ad2cc666dcefab249f37792",
-  "(screen) (ira.deferred_comp)": "6527b419ba8699a945b7b5912b93d87654df1cc567e0467f796668d611369b7f",
+  "(screen) (ira.deferred_comp)": "d3065a818a8986b0371d5cdb43fd4d96b557dd18b443c195ea3ee4f0e11db495",
   "(screen) (ira.fellowship)": "5fcbe6fa74bbcb5cf8a54a33d4a912b596e32008699aaf9155867a0673265600",
   "(screen) (ira.reservist_repaid)": "b98ee9d96240f9e2d5f8cc4e0dcf04a1f4bf9e3a8fb94fc85788923eb45daf6d",
   "(screen) (ira.care_payments)": "a675c5ccaa11e4cab0b1585e2d7aa7b1688ee59bd2d4c427ea875227ed9fb59c",

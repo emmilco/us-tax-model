@@ -146,39 +146,48 @@ bank:
   - input: div.box2b
     order: 272
     seq: 8
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
+      someone else's name, and any amount received without a form.
   - input: div.box2c
     order: 272
     seq: 9
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
+      someone else's name, and any amount received without a form.
   - input: div.box2d
     order: 272
     seq: 10
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
+      someone else's name, and any amount received without a form.
   - input: div.box2e
     order: 272
     seq: 11
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
+      someone else's name, and any amount received without a form.
   - input: div.box2f
     order: 272
     seq: 12
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
+      someone else's name, and any amount received without a form.
   - input: div.box3
     order: 272
     seq: 13
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
+      someone else's name, and any amount received without a form.
   - input: div.box9
     order: 272
     seq: 14
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
+      someone else's name, and any amount received without a form.
   - input: div.box10
     order: 272
     seq: 15
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
+      someone else's name, and any amount received without a form.
   - input: div.box13
     order: 272
     seq: 16
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
+      someone else's name, and any amount received without a form.
   - input: div.basis_reconciled
     order: 272
     seq: 17
@@ -238,12 +247,13 @@ bank:
   - input: f4952.carryover
     order: 276
     seq: 4
-    prompt: Does your 2024 return include Form 4952 with an amount on line 7 (investment interest you could not deduct in
-      2024)?
+    prompt: Does a 2024 Form 4952 of yours (or, on a joint return, of your spouse's), on a joint or a separate 2024 return,
+      show an amount on line 7 (investment interest that could not be deducted in 2024)?
   - input: f4952.prior_7
     order: 276
     seq: 6
-    help: The amount on line 7 of the Form 4952 you filed for 2024.
+    help: The amount on line 7 of the Form 4952 filed for 2024. If you and your spouse each filed one on a separate 2024
+      return, add the two amounts.
   - input: f4952.unsupported
     order: 276
     seq: 7
@@ -291,12 +301,12 @@ bank:
   - input: ftc.taxes
     order: 280
     seq: 1
-    help: "Count only income taxes, after any reduction the foreign tax credit rules require."
+    help: "Count only income taxes, after any reduction the credit rules require. Leave out tax on a dividend from shares held under 16 days in the month around the ex-dividend date, or that you must pay over to someone else."
     prompt: "How much foreign tax did you (or, on a joint return, your spouse) pay in 2025? Add up box 7 of your Forms 1099-DIV, box 6 of your Forms 1099-INT, and any income tax you paid to another country yourself. Zero if none."
   - input: ftc.all_passive
     order: 280
     seq: 2
-    help: "Interest and dividends that a bank, a broker or a fund reports are passive. Pay for work abroad and the income of a business are not."
+    help: "Interest and dividends that a bank, a broker or a fund reports are passive, even if taxed at a high foreign rate, and so is certain export financing interest. Pay for work abroad and the income of a business are not."
     prompt: "Was all of your (or, on a joint return, your spouse's) income from other countries investment income, such as interest and dividends (“passive category income”)?"
   - input: ftc.statements
     order: 280
@@ -306,8 +316,8 @@ bank:
   - input: ftc.eligible
     order: 280
     seq: 4
-    help: "The Form 1116 instructions list them under “Foreign Taxes Not Eligible for a Credit” and “Reduction of Foreign Taxes”."
-    prompt: "Does all of that foreign tax count for the credit: have the rules on how long you held the shares, on related payments and on reductions of foreign tax been met?"
+    help: "If part of it does not count, such as tax on shares held too briefly, leave that part out of the amount and answer Yes. The Form 1116 instructions list the rules under “Foreign Taxes Not Eligible for a Credit”."
+    prompt: "Is all of the foreign tax you entered tax that counts for the credit, under the rules on how long you held the shares, on related payments and on reductions of foreign tax?"
   - input: ftc.elect
     order: 280
     seq: 5
@@ -349,20 +359,17 @@ bank:
   - input: gift.public_securities
     order: 200
     seq: 44
-    help: Answer No for privately held stock, for a share of a partnership or LLC, and for stock that is neither listed on an
-      exchange nor regularly traded over the counter, even if it has a ticker symbol.
+    help: Answer No for privately held stock, a share of a partnership or LLC, stock neither listed on an exchange nor
+      regularly traded over the counter (even with a ticker symbol), and shares you were not free to sell.
     prompt: 'Is this group stocks, bonds or fund shares that are publicly traded: listed on a stock exchange, regularly traded
       over the counter, or mutual fund shares whose prices are published daily?'
   - input: gift.special
     order: 200
     seq: 45
-    help: Things are similar when they are of one general kind, such as books, clothing, jewelry, paintings or coins; add them
-      up over all the charities you gave them to. A gift with any of these needs an appraisal or special treatment and is outside
-      what this tool prepares; a Yes ends the interview here.
+    help: A gift with any of these needs an appraisal or special treatment and is outside what this tool prepares; a Yes ends
+      the interview here. A group whose deduction is over $5,000 is checked from the amount you entered.
     prompt: 'Is any of these true of this group?
     
-    
-      - it is worth more than $5,000 in all, or your deduction for it is more than $5,000, and it is not publicly traded securities
     
       - it reached you through a Schedule K-1
     
@@ -400,7 +407,8 @@ bank:
   - input: div.box12
     order: 272
     seq: 6
-    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined.
+    help: Enter the amounts of all your and your spouse's Forms 1099-DIV combined. Include your share of amounts paid in
+      someone else's name, and any amount received without a form.
   - input: person.rrta
     order: 140
     seq: 1
@@ -411,7 +419,7 @@ bank:
   - input: qbi.dividends
     order: 272
     seq: 5
-    help: "Box 5 is a part of box 1a, usually from real estate funds (REITs). Leave out an amount on shares you held for 45 days or less."
+    help: "Box 5 is a part of box 1a, usually from real estate funds (REITs). Leave out the part on shares you held for 45 days or less, or that you must pay over to someone else."
     prompt: "Add up box 5 (section 199A dividends) of the same forms. Zero if none."
   - input: s2.w2_marks
     order: 145
@@ -484,6 +492,10 @@ bank:
       a Yes ends the interview here.
     prompt: Did you (or, on a joint return, your spouse) finish a contract in 2025 that ran over more than one tax year,
       with its income reported as the work went on?
+  - input: s2.amt_business
+    order: 267
+    seq: 2
+    help: "These costs are figured differently for the alternative minimum tax (Form 6251). A Yes ends the interview here."
   - input: s2.credit_recapture
     order: 291
     seq: 1
@@ -491,13 +503,16 @@ bank:
     tick: A tax credit from an earlier year that must be paid back
     help: "It can happen when property a credit was claimed for is sold or put to another use within a few years. A return with this is outside what this tool prepares; a Yes ends the interview here."
     prompt: Do you (or, on a joint return, your spouse) have to pay back in 2025 a tax credit claimed in an earlier year?
-  - input: s2.amt_owed
+  - input: s2.amt_pab
     order: 291
-    seq: 2
-    group: other_taxes
-    tick: Alternative minimum tax
-    help: "A second way of figuring tax (Form 6251), for people with certain favored income or deductions; its instructions say who must file. A return with this is outside what this tool prepares; a Yes ends the interview here."
-    prompt: Do you (or, on a joint return, your spouse) owe alternative minimum tax for 2025, or have to file Form 6251 for it?
+    seq: 4
+    prompt: "How much of your (or, on a joint return, your spouse's) tax-exempt interest is from private activity bonds? Add up box 9 of your Forms 1099-INT. Zero if none."
+    help: "Box 9 is a part of box 8. This interest is taxed by the alternative minimum tax, which this tool checks from your answers."
+  - input: s2.amt_boat
+    order: 291
+    seq: 5
+    prompt: "Is any of the mortgage interest you (or, on a joint return, your spouse) deduct for a boat, a motor home or another recreational vehicle that was not your main home?"
+    help: "A house, an apartment, a condominium or a mobile home is not one of these. The alternative minimum tax (Form 6251) then has to be figured; a Yes ends the interview here."
   - input: s2.other_tax
     order: 291
     seq: 3
@@ -526,6 +541,18 @@ bank:
     help: Yes also if the costs paid in 2025 were for an adoption that is not finished.
     prompt: Did the adoption become final in 2025, or did you (or, on a joint return, your spouse) pay any of the costs in
       2025?
+  - input: s3.adoption_final
+    order: 126
+    seq: 7
+    help: Costs paid toward an adoption that is not final are claimed in a later year, so a No goes on without them.
+    prompt: Was that adoption final by the end of 2025? Yes also if it became final before 2025.
+  - input: s3.adoption_stepchild
+    order: 126
+    seq: 8
+    help: Adopting a stepchild gives no adoption credit, unless a state or tribal government found the child needs adoption
+      assistance to be placed (a child with special needs). If you are not sure, answer No.
+    prompt: Was each child whose adoption was final your husband's or wife's child (your stepchild), and none of them a child
+      with special needs?
   - input: s3.adoption_earlier
     order: 126
     seq: 4
@@ -544,7 +571,8 @@ bank:
     seq: 1
     group: rare_credits
     tick: Got a federal tax credit from a bond or a fund
-    help: Reported on Form 1097-BTC or by the bond’s issuer; a bond that only pays interest gives none.
+    help: Reported on Form 1097-BTC or by the bond’s issuer; a bond that only pays interest gives none, nor does a bond whose
+      issuer took the credit as a payment from the IRS.
     prompt: In 2025, did a bond you (or, on a joint return, your spouse) own, or a fund, give you a federal tax credit?
   - input: s3.disability_retired
     order: 118
@@ -662,9 +690,15 @@ bank:
     seq: 6
     help: If the return has no Schedule 2, the answer is No.
     prompt: Does that return show alternative minimum tax (an amount on Schedule 2, line 2)?
-  - input: s3.prior_forms
+  - input: s3.prior_amt_deferral
     order: 290
     seq: 7
+    help: Those lines hold items such as stock options (2i) or depreciation (2l), which can give a credit for 2025. Lines 2a
+      to 2d, 2g and 2h never do. If you are not sure, answer Yes; a Yes ends the interview here.
+    prompt: On that 2024 Form 6251, is there an amount on line 2e, 2f, any line from 2i to 2t, or line 3?
+  - input: s3.prior_forms
+    order: 290
+    seq: 8
     help: Each can leave a tax credit to carry into 2025 (business credits, a mortgage credit certificate, alternative minimum
       tax paid earlier, credits held back by the passive activity rules, an adoption, a first home in Washington, D.C., a
       tax credit bond). The form number is printed at the top left of each page.
@@ -754,7 +788,7 @@ bank:
     order: 112
     seq: 1
     prompt: "For this person (you, or your spouse on a joint return) — Were you blind on December 31, 2025? (Partly blind counts only if an eye doctor has certified it in writing; the help gives the limits.)"
-    help: "The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits."
+    help: "The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits. Lenses you can wear only briefly (pain, infection, ulcers) do not count."
   - input: sa.spouse_itemizes
     order: 200
     seq: 86
@@ -779,16 +813,17 @@ bank:
     order: 200
     seq: 20
     help: Form 1098 is the statement a mortgage lender sends in January. Box 1 is the interest; box 6 is points paid when you
-      bought the home. Zero if you had no mortgage or got no Form 1098.
+      bought the home. Count loans on your main home and one second home only. Do not subtract a refund of overpaid
+      interest (box 4).
     prompt: How much home mortgage interest did you (or, on a joint return, your spouse) pay in 2025? Add boxes 1 and 6 of each
-      Form 1098 from your lender.
+      Form 1098 from your lender; for a loan you share with someone other than your spouse, count only your share.
   - input: sa.mortgage_unreported
     order: 200
     seq: 21
     help: Interest paid to a bank or a mortgage company is on Form 1098. A return with this is outside what this tool prepares;
       a Yes ends the interview here.
-    prompt: Did you (or, on a joint return, your spouse) pay mortgage interest or points in 2025 that no Form 1098 shows, for
-      example to a person who sold you the home?
+    prompt: Did you (or, on a joint return, your spouse) pay mortgage interest or points in 2025 that no Form 1098 in your name
+      shows, for example to a person who sold you the home, or on a loan whose Form 1098 went to a co-borrower?
   - input: sa.mortgage_over_limit
     order: 200
     seq: 22
@@ -982,7 +1017,8 @@ bank:
     group: paid_2025
     tick: Paid other state or local income tax, or a state disability fund
     help: 'Count state tax taken out of a pension, unemployment pay or winnings; a state unemployment or workers'' compensation
-      fund taken from pay (box 14 or 19 of a W-2: SDI, SUI, FLI); and income tax of a U.S. territory.'
+      fund taken from pay (box 14 or 19 of a W-2: SDI, SUI, FLI); income tax of a U.S. territory; and a state tax credit for a
+      gift to charity that you applied to your tax.'
     prompt: In 2025, did you (or, on a joint return, your spouse) pay state or local income tax in another way, such as estimated
       payments or a payment with a state return, or pay into a state disability or family leave fund?
   - input: sa.line5c
@@ -1027,10 +1063,12 @@ bank:
   - input: sa.line11
     order: 200
     seq: 41
-    help: Zero if you gave only things. For a payment that got you something back, such as a dinner or an auction item, count
-      only what you paid above its value. Leave out the part of a gift that earned you a state or local tax credit.
+    help: For a payment that got you something back, such as a dinner, count only what you paid above its value. Leave out
+      tuition, club dues, gifts to people, money paid back to you, and a gift's part that earned a state tax credit. Count
+      only gifts you have a bank record or receipt for.
     prompt: 'How much money did you (or, on a joint return, your spouse) give to charity in 2025: cash, checks, card payments
-      and payroll deductions? Add what you spent out of pocket as a volunteer, such as mileage, parking and supplies.'
+      and payroll deductions? Add what you spent out of pocket as a volunteer, such as mileage, parking and supplies. Leave
+      out political gifts and raffle tickets.'
   - input: $sales
     order: 274
     seq: 1
@@ -1080,7 +1118,8 @@ bank:
       W: A wash sale, where part of the loss is not allowed (box 1g of Form 1099-B, or a rebuy within 30 days)
       B: The basis on the statement is wrong
       BW: Both, the basis is wrong and there is a wash sale
-      other: Something else, such as selling costs the statement leaves out, accrued market discount (box 1f) or the Ordinary box checked
+      other: Something else, such as selling costs the statement leaves out, accrued market discount (box 1f), the Ordinary box
+        checked, a sale reported to you that is really someone else's, or a loss on something you owned for personal use
   - input: sales.special
     order: 274
     seq: 5
@@ -1093,6 +1132,8 @@ bank:
       - small business stock on which you exclude part of the gain (section 1202)
       - real estate you once rented out or took a home office deduction for
       - your share of a partnership, an S corporation or a trust that owns collectibles or depreciated buildings
+      - a loss on shares owned a year or less that paid a qualified dividend of 10% or more of their cost (5% for preferred stock)
+      - a gain on a forward contract, swap or similar deal that gave you a fund's or partnership's return without owning it
       - an investment in an opportunity zone fund, or a gain you put off by investing in one
   - input: sales.aggregate_eligible
     order: 274
@@ -1119,8 +1160,8 @@ bank:
   - input: sales.wash_loss
     order: 274
     seq: 10
-    help: Enter the right amount even where the broker's differs or the broker reported none; it cannot be more than the
-      loss on this sale. Buying for your IRA, or a purchase by your spouse, also counts as buying again.
+    help: Enter the right amount even if the broker's differs or is missing. It cannot exceed this sale's loss, so enter
+      blocks sold the same day as separate sales. Buying for your IRA, or by your spouse, counts too.
     prompt: How much of the loss on this sale is not allowed as a wash sale (box 1g of Form 1099-B)? A wash sale is a sale at a
       loss with the same stock or security bought again within 30 days before or after.
   - input: sb.nominee
@@ -1182,6 +1223,8 @@ bank:
   - input: sb.line7a
     order: 285
     seq: 11
+    help: "Where the account is kept decides: a U.S. bank's branch abroad counts; Puerto Rico and the other U.S. territories count as inside the United States here. Count a cash-value insurance or annuity policy, fund shares, an employer's account you could sign for, and an account of a company you own more than half of."
+    prompt: "In 2025, did you (or, on a joint return, your spouse) own, or have the power to sign for, a financial account located outside the United States, even if no report of it is due?"
   - input: sb.fbar_required
     order: 285
     seq: 7
@@ -1195,7 +1238,7 @@ bank:
   - input: sb.line8
     order: 285
     seq: 9
-    help: "A trust is foreign if a court outside the 50 states and the District of Columbia supervises it (Puerto Rico and the other territories count as outside), or if any trustee or anyone who controls its main decisions is not a U.S. citizen or resident. What reached you through another person or company counts. If you are not sure, answer Yes. The reports a foreign trust needs (Form 3520) are outside what this tool prepares; a Yes ends the interview here."
+    help: "A trust is foreign unless a court in one of the 50 states or the District of Columbia can supervise it (Puerto Rico and the other territories count as outside) and U.S. citizens, residents or U.S. companies control all its main decisions, with no one else able to veto them. What reached you through another person or company counts. If you are not sure, answer Yes. The reports a foreign trust needs (Form 3520) are outside what this tool prepares; a Yes ends the interview here."
     prompt: "In 2025, did you (or, on a joint return, your spouse) receive anything from a foreign trust (money, property, a loan, or the free or cheap use of something it owns), or are you the person who set one up, or who at any time gave, sold or lent anything to one that still existed in 2025?"
   - input: scope.noncitizen
     order: 113
@@ -1452,8 +1495,15 @@ bank:
     tick: A loss from selling investments in 2024, or one carried into 2024
     help: If you sold no investments in 2024 and carried no loss into 2024, the answer is No. On a joint return, answer for
       your 2024 joint return, or for either spouse's separate 2024 return.
-    prompt: Did you (or, on a joint return, your spouse) have a net loss from selling investments in 2024, shown as a loss on
-      line 21 of the 2024 Schedule D?
+    prompt: Did you (or, on a joint return, your spouse) have a net loss from selling investments in 2024, counting any loss
+      carried into 2024? Answer Yes even if you filed no 2024 return or left the loss off it.
+  - input: sd.qof
+    order: 274
+    seq: 25
+    group: sales_rare
+    tick: Owned an opportunity zone fund (QOF), or put a gain into one
+    help: Count a 2025 gain you are putting off tax on by investing in one, even if you invest in 2026. A return with one is
+      outside what this tool prepares; a Yes ends the interview here.
   - input: clcw.spouse_screen
     order: 276
     seq: 10
@@ -1764,9 +1814,9 @@ bank:
     order: 155
     seq: 1
     group: "care_help"
-    tick: "Care for a child or a dependent, so that you could work"
-    help: "Day care, a nanny or sitter, preschool, after-school care and day camp all count, whoever paid the bill. A child who turned 13 during 2025 counts. If you are not sure, answer Yes."
-    prompt: "In 2025, did you (or, on a joint return, your spouse) use or pay for care for a child under 13, or for someone living with you who could not care for themselves, so that you could work or look for work?"
+    tick: "Care for a child or disabled adult, during work or job-search hours"
+    help: "Day care, a sitter, preschool, after-school care and day camp count, whoever paid. On a joint return, so does care that let one of you work while the other studied full time or could not care for themselves. A child who turned 13 during 2025 counts. If unsure, answer Yes."
+    prompt: "In 2025, did you (or, on a joint return, your spouse) use or pay for care for a child under 13, or for someone living with you who could not care for themselves, so that you (or, on a joint return, your spouse) could work or look for work?"
   - input: f2441.care_other
     order: 155
     seq: 6
@@ -1797,9 +1847,9 @@ bank:
     order: 155
     seq: 10
     group: "care_facts"
-    tick: "Your husband or wife died in 2025"
+    tick: "Your husband or wife on this return died in 2025"
     help: "A Yes ends the interview here."
-    prompt: "Did your husband or wife die in 2025?"
+    prompt: "Did the husband or wife you are filing this joint return with die in 2025?"
   - input: f2441.nondependent
     order: 155
     seq: 11
@@ -1877,7 +1927,7 @@ bank:
   - input: dcprov.paid
     order: 157
     seq: 2
-    prompt: "For this care provider — How much did you pay this provider in 2025? Count amounts your employer paid them for you, whichever year the care was given, and do not subtract any money you were paid back. Zero if your employer provided the care itself."
+    prompt: "For this care provider — How much did you pay this provider in 2025? Count amounts your employer paid them for you, whichever year the care was given, and do not subtract any money you were paid back. Zero if your employer provided the care itself, at your workplace or by hiring this provider."
   - input: dcprov.related
     order: 157
     seq: 5
@@ -1937,15 +1987,16 @@ bank:
   - input: eic.us_home
     order: 313
     seq: 4
-    help: "The United States means the 50 states and the District of Columbia. Time on extended active military duty outside the United States counts as time with your main home in the United States."
+    help: "The United States means the 50 states and the District of Columbia. Time you (or, on a joint return, your spouse) spent outside it on military duty ordered for more than 90 days, or with no end date, counts as time with a main home in the United States."
     prompt: "Was your main home, and your spouse's if filing a joint return, in the United States for more than half of 2025?"
   - input: household.married_dec31
     order: 101
     seq: 2
     prompt: Were you married on December 31, 2025?
     help: A divorce that was not yet final on December 31 means you were still married; a final decree of divorce,
-      legal separation or annulment means you were not. A registered domestic partnership or civil union is not a
-      marriage. If your husband or wife died in 2025, answer No.
+      legal separation or annulment means you were not, unless you divorced only to file as unmarried and married each
+      other again in 2026. A registered domestic partnership or civil union is not a marriage. If your husband or wife
+      died in 2025, answer No.
   - input: eic.lived_with_relative
     order: 313
     seq: 5
@@ -1968,7 +2019,7 @@ bank:
     prompt: Did your husband or wife die in 2025?
     help: For the year a husband or wife died, the survivor counts as married for the whole year. If you chose a
       line for an unmarried person, a Yes ends the interview here; go back and choose “together” to file one last
-      return for you both.
+      return for you both. If you chose “together”, a Yes lets you file together; a No ends the interview here.
   - input: household.cp_married
     order: 103
     seq: 3
@@ -1996,7 +2047,7 @@ bank:
       You said you were married on December 31, 2025. Does either of these fit you?
 
       - You lived apart from your husband or wife for the last six months of 2025, you paid more than half the cost of your home, it was the main home of your child, stepchild or foster child for more than half of 2025, and you can claim that child as a dependent (or only the child's other parent can, under the rule for parents who live apart).
-      - Your husband or wife was a nonresident alien at some time in 2025, and you have not chosen to treat him or her as a U.S. resident.
+      - Your husband or wife was a nonresident alien at some time in 2025, and no choice to treat him or her as a U.S. resident is in effect for 2025 (a choice made for an earlier year stays in effect until ended).
     help: Time away for school, work, medical care or military service counts as time in the home, for the child and for
       your husband or wife, when a return home was expected and you kept up the home. A child born, adopted, placed
       with you or who died in 2025 need only have lived with you more than half of the time since, or while alive. If
@@ -2014,8 +2065,9 @@ bank:
   - input: $f1095a
     order: 195
     seq: 1
-    help: Each plan has its own Form 1095-A, sent by the Marketplace and kept in your online account there. Count a corrected
-      form in place of the one it replaces, not a form marked VOID. With only a catastrophic or dental plan, answer No.
+    help: Each plan has its own Form 1095-A. Count a plan someone else signed up for too, even if its form went to them (ask
+      them for a copy). Count a corrected form in place of the one it replaces, not a VOID one. With only a catastrophic or
+      dental plan, answer No.
     prompt: In 2025, did you (or, on a joint return, your spouse), or anyone you claim as a dependent, have health insurance
       bought through HealthCare.gov or a state Marketplace?
     choices:
@@ -2128,7 +2180,7 @@ bank:
   - input: f1095a.mo_b
     order: 197
     seq: 11
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — The amount column B shows for each month. If it is blank or wrong, the correct monthly amount from HealthCare.gov/Tax-Tool."
   - input: f1095a.in_a_jan
     order: 197
@@ -2181,62 +2233,62 @@ bank:
   - input: f1095a.in_b_jan
     order: 197
     seq: 21
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — January, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for January."
   - input: f1095a.in_b_feb
     order: 197
     seq: 24
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — February, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for February."
   - input: f1095a.in_b_mar
     order: 197
     seq: 27
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — March, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for March."
   - input: f1095a.in_b_apr
     order: 197
     seq: 30
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — April, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for April."
   - input: f1095a.in_b_may
     order: 197
     seq: 33
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — May, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for May."
   - input: f1095a.in_b_jun
     order: 197
     seq: 36
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — June, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for June."
   - input: f1095a.in_b_jul
     order: 197
     seq: 39
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — July, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for July."
   - input: f1095a.in_b_aug
     order: 197
     seq: 42
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — August, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for August."
   - input: f1095a.in_b_sep
     order: 197
     seq: 45
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — September, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for September."
   - input: f1095a.in_b_oct
     order: 197
     seq: 48
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — October, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for October."
   - input: f1095a.in_b_nov
     order: 197
     seq: 51
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — November, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for November."
   - input: f1095a.in_b_dec
     order: 197
     seq: 54
-    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). A state Marketplace has a tool of its own for the correct amount."
+    help: "Column B is the monthly premium of the second lowest cost silver plan (SLCSP). With no advance payments (column C zero), it may be wrong even when filled in. A state Marketplace has a tool of its own for the correct amount."
     prompt: "On this Form 1095-A — December, column B. If it is blank or wrong, the correct amount from HealthCare.gov/Tax-Tool; zero if column A is blank for December."
   - input: f1095a.in_c_jan
     order: 197
@@ -2408,30 +2460,30 @@ bank:
     seq: 5
     group: home_school
     tick: Had college or trade school tuition paid, for you or a dependent
-    help: Count tuition paid by anyone, including with a loan or a scholarship, and a required fee or required course materials
-      even where no tuition was charged. Only education after high school counts.
+    help: Count tuition paid by anyone, including with a loan or a scholarship, and a required fee, or books, supplies or equipment
+      needed for a course wherever bought, even where no tuition was charged. Only education after high school counts.
     prompt: In 2025, was tuition paid for you (or, on a joint return, your spouse) or for a dependent you claim, at a college,
       university or trade school?
   - input: person.edu
     order: 241
     seq: 10
     help: The school must be one that can take part in federal student aid; nearly every accredited college, university and
-      trade school is.
+      trade school is. Answer Yes also if the only cost was books, supplies or equipment needed for a course.
     prompt: For this person (you, or your spouse on a joint return) — In 2025, was tuition or a required fee paid for this
       person as a student at a college, university or trade school?
   - input: person.edu_1098t
     order: 241
     seq: 20
-    help: Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses
-      gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to prepare
-      it, and the enrollment and the payments can be shown.
+    help: Answer Yes also, if the enrollment and the payments can be shown, when the school did not have to send one (for
+      example, scholarships paid everything, or the courses gave no academic credit), or when it was asked for after February
+      2, 2026 and the school was given what it needed to prepare it.
     prompt: For this person (you, or your spouse on a joint return) — Did the school send this person a Form 1098-T (Tuition
       Statement) for 2025?
   - input: person.edu_inst
     order: 241
     seq: 90
     help: |-
-      Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Books, supplies and equipment count here only if they had to be bought from the school.
+      Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Required fees include student activity, athletic or lab fees every student must pay the school. Books, supplies and equipment count here only if they had to be bought from the school.
   
       Leave out:
       - room and board, insurance, medical costs (student health fees too) and transportation
@@ -2443,15 +2495,16 @@ bank:
   - input: person.edu_mat
     order: 241
     seq: 100
-    help: 'Leave out what is left out of tuition: anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted
-      elsewhere on this return.'
+    help: Count only what was paid in 2025. Leave out anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted
+      elsewhere on this return, and materials for a sports, games, hobby or noncredit course outside the degree program.
     prompt: For this person (you, or your spouse on a joint return) — How much was spent in 2025 on books, supplies and equipment
       needed for this person's courses, bought anywhere but from the school?
   - input: person.edu_a_this_year
     order: 241
     seq: 110
-    help: Count only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, inheritances, savings, wages, emergency
-      financial aid grants, and any scholarship reported as income on a tax return.
+    help: Count help for the terms of the costs just entered, and only the tax-free part; a Pell grant is a grant. Leave out
+      loans, gifts, savings, wages, emergency aid grants, and a scholarship reported as income (allowed only for one whose
+      terms let it pay for room and board or other costs).
     prompt: 'For this person (you, or your spouse on a joint return) — How much tax-free help with these school costs came
       in during 2025: scholarships and grants (Form 1098-T box 5), an employer''s tuition assistance, veterans'' education
       benefits?'
@@ -2497,28 +2550,28 @@ bank:
   - input: person.edu_over
     order: 241
     seq: 140
-    help: With one term in the year, answer by that term alone. A Yes is outside what this tool prepares and ends the interview
-      here.
+    help: With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before
+      you file. A Yes is outside what this tool prepares and ends the interview here.
     prompt: For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help
-      and the refunds came to more than that term's tuition, required fees and required course materials?
+      and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?
   - input: dependent.edu
     order: 241
     seq: 210
     help: The school must be one that can take part in federal student aid; nearly every accredited college, university and
-      trade school is.
+      trade school is. Answer Yes also if the only cost was books, supplies or equipment needed for a course.
     prompt: In 2025, was tuition or a required fee paid for this person as a student at a college, university or trade school?
   - input: dependent.edu_1098t
     order: 241
     seq: 220
-    help: Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses
-      gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to prepare
-      it, and the enrollment and the payments can be shown.
+    help: Answer Yes also, if the enrollment and the payments can be shown, when the school did not have to send one (for
+      example, scholarships paid everything, or the courses gave no academic credit), or when it was asked for after February
+      2, 2026 and the school was given what it needed to prepare it.
     prompt: Did the school send this person a Form 1098-T (Tuition Statement) for 2025?
   - input: dependent.edu_inst
     order: 241
     seq: 290
     help: |-
-      Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Books, supplies and equipment count here only if they had to be bought from the school.
+      Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Required fees include student activity, athletic or lab fees every student must pay the school. Books, supplies and equipment count here only if they had to be bought from the school.
   
       Leave out:
       - room and board, insurance, medical costs (student health fees too) and transportation
@@ -2530,15 +2583,16 @@ bank:
   - input: dependent.edu_mat
     order: 241
     seq: 300
-    help: 'Leave out what is left out of tuition: anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted
-      elsewhere on this return.'
+    help: Count only what was paid in 2025. Leave out anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted
+      elsewhere on this return, and materials for a sports, games, hobby or noncredit course outside the degree program.
     prompt: How much was spent in 2025 on books, supplies and equipment needed for this person's courses, bought anywhere
       but from the school?
   - input: dependent.edu_a_this_year
     order: 241
     seq: 310
-    help: Count only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, inheritances, savings, wages, emergency
-      financial aid grants, and any scholarship reported as income on a tax return.
+    help: Count help for the terms of the costs just entered, and only the tax-free part; a Pell grant is a grant. Leave out
+      loans, gifts, savings, wages, emergency aid grants, and a scholarship reported as income (allowed only for one whose
+      terms let it pay for room and board or other costs).
     prompt: 'How much tax-free help with these school costs came in during 2025: scholarships and grants (Form 1098-T box
       5), an employer''s tuition assistance, veterans'' education benefits?'
   - input: dependent.edu_a_next_year
@@ -2586,16 +2640,16 @@ bank:
   - input: dependent.edu_over
     order: 241
     seq: 340
-    help: With one term in the year, answer by that term alone. A Yes is outside what this tool prepares and ends the interview
-      here.
-    prompt: Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required
-      fees and required course materials?
+    help: With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before
+      you file. A Yes is outside what this tool prepares and ends the interview here.
+    prompt: Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for
+      that term's tuition, required fees and course materials?
   - input: f8863.ban
     order: 242
     seq: 1
-    help: 'Answer No if you filed Form 8862 with your 2024 return and the credit was then allowed, or if a bar has run out:
-      it lasts 2 years after a finding of reckless or intentional disregard of the rules, 10 years after a finding of fraud.
-      A Yes is outside what this tool prepares and ends the interview here.'
+    help: 'Answer No if, after that, you filed Form 8862 with a later year''s return and the credit was then allowed, or if
+      a bar has run out: it lasts 2 years after a finding of reckless or intentional disregard of the rules, 10 years after
+      a finding of fraud. A Yes is outside what this tool prepares and ends the interview here.'
     prompt: Has the IRS ever denied or reduced an American opportunity credit you claimed, for more than a math error, or
       barred you from claiming it?
   - input: person.edu_fulltime
@@ -2609,7 +2663,8 @@ bank:
     order: 243
     seq: 3
     help: Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for
-      teaching or research. Support counts whoever paid for it; a scholarship is not support if you were a full-time student.
+      teaching or research. Support counts whoever paid for it, housing given at its rental value; a scholarship is not support
+      for a full-time student.
     prompt: For this person (you, or your spouse on a joint return) — In 2025, was your pay from work less than half of your
       support, meaning what your food, housing, clothing, medical care, education and the like cost?
   - input: person.edu_parent
@@ -2787,7 +2842,8 @@ bank:
     order: 170
     seq: 15
     help: 'Do not count a required minimum distribution, a hardship withdrawal, or one of a series of regular payments for your
-      life or for ten years or more: those cannot be rolled over. A later deposit counts only under an IRS waiver.'
+      life or for ten years or more: those cannot be rolled over. A later deposit counts only under an IRS waiver. Money put
+      into a SIMPLE IRA in your first two years in it counts only if it came from another SIMPLE IRA.'
     prompt: How much of this money did you put into a pension, a 401(k) or similar plan, or an IRA within 60 days of receiving
       it?
   - input: retirement.rollover_property
@@ -3040,8 +3096,9 @@ bank:
   - input: s1.prizes
     order: 160
     seq: 15
-    help: Goods and services count at what they would sell for. Leave out gambling winnings, pay from an employer, and a
-      prize you refused. Give 0 if none.
+    help: Goods and services count at what they would sell for. Leave out gambling winnings, pay from an employer, a prize
+      already counted in a business's income, and a prize you refused. Count prize points when you can use them. Give 0
+      if none.
     prompt: What was the value of the other prizes and awards you (or, on a joint return, your spouse) got in 2025, such
       as a contest or drawing prize?
   - input: s1.olympic
@@ -3060,8 +3117,10 @@ bank:
     order: 160
     seq: 17
     help: For a degree student only that part is income. A person not studying for a degree gives the whole amount. Leave
-      out pay for teaching or research that is on a W-2. Give 0 if none.
-    prompt: How much of it was for room, board, travel or anything other than tuition and required course costs?
+      out pay that is on a W-2. Leave out service pay under the National Health Service Corps or Armed Forces Health Professions
+      scholarship programs or a work college’s work-learning program. Give 0 if none.
+    prompt: How much of it was for room, board, travel or anything other than tuition and required course costs, or was
+      pay for teaching, research or other work the grant required?
   - input: s1.jury_any
     order: 160
     seq: 4
@@ -3083,6 +3142,7 @@ bank:
     order: 160
     seq: 20
     help: Give the full amount, before any energy relief payment is taken off. On a joint return, add both dividends.
+      Leave out a child's dividend, even one paid to you; it is the child's income.
     prompt: How much was the dividend, as shown on the paper Alaska sent with it?
   - input: s1.hobby_any
     order: 160
@@ -3163,9 +3223,19 @@ bank:
       figured with Publication 525, outside what this tool prepares; a Yes ends the interview here.
     prompt: 'Did you (or, on a joint return, your spouse) pay any of your 2024 state or local income tax outside 2024: in
       2025 (a January 2025 estimated payment, a payment with an extension, a balance due with the return) or before 2024?'
+  - input: refund.two_returns
+    order: 165
+    seq: 5
+    help: If only one of you got a refund, answer No; the questions that follow are then about that person's own 2024
+      return.
+  - input: refund.two_itemized
+    order: 165
+    seq: 6
+    help: If neither did, none of these refunds is taxed. The Form 1040 worksheet tests a refund against one 2024 return,
+      so a Yes is outside what this tool prepares and ends the interview here.
   - input: refund.received
     order: 165
-    seq: 7
+    seq: 9
     help: A refund of federal income tax is not included. Interest paid on a state or local refund is interest income, not
       part of this amount.
     prompt: How much state and local income tax was refunded in 2025? Add box 2 of each Form 1099-G and any refund with no
@@ -3179,17 +3249,17 @@ bank:
       on income from a business?
   - input: refund.itemized
     order: 165
-    seq: 5
+    seq: 7
     help: If you took the standard deduction for 2024, the answer is No, and none of the refund is taxed.
     prompt: Did you itemize deductions on your 2024 federal return? (A Schedule A was filed with it.)
   - input: refund.sales
     order: 165
-    seq: 6
+    seq: 8
     help: If you deducted general sales taxes instead of income taxes for 2024, none of your income tax refund is taxed.
     prompt: On that 2024 Schedule A, is the box on line 5a checked, meaning you deducted sales taxes instead of income taxes?
   - input: refund.exc_tax
     order: 165
-    seq: 8
+    seq: 10
     help: Any of these means the taxable part is figured with Pub. 525 (Itemized Deduction Recoveries, Worksheet 2) instead of
       the Form 1040 worksheet; that is outside this tool.
     prompt: |-
@@ -3201,7 +3271,7 @@ bank:
       - your 2024 state and local income tax refund is more than the state and local income tax you deducted for 2024, less the sales tax you could have deducted instead
   - input: refund.exc_who
     order: 165
-    seq: 9
+    seq: 11
     help: Any of these means the taxable part is figured with Pub. 525 (Itemized Deduction Recoveries) instead of the Form
       1040 worksheet; that is outside this tool.
     prompt: |-
@@ -3212,37 +3282,37 @@ bank:
       - the refund came from a state or local return filed jointly with a person you are not filing this 2025 return with
   - input: refund.line5d_prior_year
     order: 165
-    seq: 10
+    seq: 12
   - input: refund.line5e_prior_year
     order: 165
-    seq: 11
+    seq: 13
   - input: refund.line17_prior_year
     order: 165
-    seq: 12
+    seq: 14
   - input: refund.status
     order: 165
-    seq: 13
+    seq: 15
     help: 'One of single, mfj (married filing jointly), mfs (married filing separately), hoh (head of household) or qss (qualifying surviving spouse): the status on the return you filed for 2024, which may differ from your 2025 status.'
   - input: refund.mfs_spouse_itemized
     order: 165
-    seq: 14
+    seq: 16
   - input: refund.you_born
     order: 165
-    seq: 15
+    seq: 17
   - input: refund.you_blind
     order: 165
-    seq: 16
+    seq: 18
     help: 'Blind as defined for the standard deduction: totally blind, or with a certified statement from your eye doctor that
       you can''t see better than 20/200 in your better eye with glasses or contact lenses, or your field of vision is 20
       degrees or less.'
   - input: refund.spouse_born
     order: 165
-    seq: 17
+    seq: 19
     help: Asked only when your 2024 filing status was married filing jointly or married filing separately; the spouse is the
       one on your 2024 return, who may not be your spouse in 2025.
   - input: refund.spouse_blind
     order: 165
-    seq: 18
+    seq: 20
     help: Asked only when your 2024 filing status was married filing jointly or married filing separately; the spouse is the
       one on your 2024 return, who may not be your spouse in 2025.
   - input: s1.alimony
@@ -3274,13 +3344,14 @@ bank:
     seq: 2
     group: "money_b"
     tick: "A debt canceled or forgiven by a lender or card company"
-    help: The lender usually sends Form 1099-C. A debt you paid off in full is not a canceled debt.
+    help: The lender usually sends Form 1099-C. A debt you paid off in full is not canceled, but a discount for paying it
+      off early, or a cut in what you owe under a new loan agreement, is.
     prompt: In 2025, did a lender or card company cancel or forgive a debt you (or, on a joint return, your spouse) owed?
   - input: s1.cod_amount
     order: 161
     seq: 14
     help: A personal debt is one such as a credit card or a personal loan. Use the whole box 2 amount even if it includes
-      interest.
+      interest. A debt counts in the year it was actually canceled, whatever year a form shows.
     prompt: How much personal debt was canceled? Add box 2 of each Form 1099-C to any canceled personal debt with no form.
   - input: s1.cod_unsupported
     order: 161
@@ -3340,56 +3411,71 @@ bank:
     help: "The owner is the person these questions are about. Answer Yes on that person's final return, and for that
       person on a joint return filed with the surviving husband or wife."
     prompt: For this person (you, or your spouse on a joint return) — Did the owner of this HSA die in 2025?
-  - input: f8889.inherited
+  - input: f8889.inherited_any
     order: 190
     seq: 3
     help: For example, a parent, or a husband or wife who has died, named you as the beneficiary of their HSA. Answer Yes whatever year the owner
       died in.
     prompt: For this person (you, or your spouse on a joint return) — Did you get an HSA, or money from one, because its
       owner died?
-  - input: f8889.archer
+  - input: f8889.inherited_case
     order: 190
     seq: 4
-    help: "An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Answer Yes also if money was put into one for 2025 after the year ended. If you have
-      never heard of it, the answer is No."
-    prompt: For this person (you, or your spouse on a joint return) — Did you or your spouse have an Archer MSA in 2025?
-  - input: f8889.line9
+    help: An HSA left by a husband or wife now counts as your own, so include it in the answers that follow. Anyone
+      else's HSA stopped being an HSA when they died.
+    prompt: For this person (you, or your spouse on a joint return) — Whose HSA was it, and when did they die?
+    value_labels:
+      spouse_earlier: My husband's or wife's, and they died before 2025
+      other_earlier: Someone else's, who died before 2025, and nothing came to me from it in 2025
+      other: Anything else, or not sure
+  - input: f8889.archer
     order: 190
     seq: 5
-    help: Use the amount in box 12 of your Form W-2 next to the letter W. Take off any part of it that was for 2024, and
-      add anything your employer put in for 2025 after December 31, 2025. Zero if none.
+    help: "An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for
+      one, the box “Archer MSA” is checked. Count money put in for 2025 after the year ended, money moved from one into an
+      HSA, and an Archer MSA that came to you in 2025 because its owner died. If you have never heard of it, the answer is No."
+    prompt: For this person (you, or your spouse on a joint return) — For 2025, was money put into an Archer MSA of yours or
+      your spouse's, or did money come out of one of yours?
+  - input: f8889.line9
+    order: 190
+    seq: 6
+    help: Use the amount in box 12 of your Form W-2 next to the letter W, which includes money a health insurer put in for
+      your employer. Take off any part of it that was for 2024, and add anything your employer put in for 2025 after
+      December 31, 2025. Zero if none.
     prompt: For this person (you, or your spouse on a joint return) — How much did your employer put into your HSA for
       2025, including money taken out of your pay?
   - input: f8889.line2
     order: 190
-    seq: 6
+    seq: 7
     help: "Count deposits by you, or by anyone other than your employer, that were for 2025, made up to April 15, 2026
       (later if you served in a combat zone). Box 12 of your Form W-2 shows, next to the letter W, what your employer
       put in and what was taken out of your pay before tax; leave that out, and leave out pre-tax money taken from your
       pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your pay after tax counts
-      here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Zero if none."
+      here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Only money can be put in, not stock
+      or other property. Zero if none."
     prompt: For this person (you, or your spouse on a joint return) — How much did you put into your HSA for 2025
       yourself, not counting money in box 12 of your Form W-2?
   - input: f8889.ira_transfer
     order: 190
-    seq: 7
+    seq: 8
     help: "The IRA's custodian sends the money directly to the HSA. Money you took out of an IRA and deposited yourself
       does not count."
     prompt: For this person (you, or your spouse on a joint return) — Was any money moved into your HSA straight from an
       IRA in 2025?
   - input: f8889.excess_withdrawn
     order: 190
-    seq: 8
+    seq: 9
     help: This is called withdrawing excess contributions. It covers money put in by you, your employer or anyone else.
       Answer Yes also if you plan to do it before the filing deadline, extensions included.
     prompt: For this person (you, or your spouse on a joint return) — In 2025, or in 2026 before filing this return, did
       you take money back out of your HSA because too much had been put in?
   - input: f8889.coverage_year
     order: 190
-    seq: 9
+    seq: 10
     help: "What counts is the plan you had on the first day of each month; plan papers usually call such a plan
       “HSA-eligible” or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the
-      same kind of plan is not a change."
+      same kind of plan is not a change. A plan covering more than one person does not count if its deductible for any one
+      person on it is below $3,300."
     prompt: For this person (you, or your spouse on a joint return) — Was your health plan in 2025 a high-deductible plan
       that works with an HSA, and the same kind all year?
     value_labels:
@@ -3398,7 +3484,7 @@ bank:
       changed: 'No: it started, stopped or changed during 2025, or not sure'
   - input: f8889.clear_all_year
     order: 190
-    seq: 10
+    seq: 11
     help: "Other health coverage means a second plan that pays medical bills before the high deductible is met, such as your spouse's ordinary plan that also covers you. These do not count either: telehealth, workers'
       compensation, liability cover under a car or home policy, insurance for one named illness or a fixed amount per
       day in hospital, and VA care for a service-connected disability. Medicare counts from the month its coverage
@@ -3411,7 +3497,7 @@ bank:
       - nobody could claim you as a dependent
   - input: f8889.fsa
     order: 190
-    seq: 11
+    seq: 12
     help: "It counts as other health coverage for you and your spouse alike, even when only one person signed up for it.
       Answer No if it pays only dental and vision costs, or pays nothing until the minimum annual deductible for an
       HSA plan is met ($1,650 for a plan covering one person, $3,300 for more). Answer Yes if it was suspended for only
@@ -3421,13 +3507,20 @@ bank:
     prompt: For this person (you, or your spouse on a joint return) — Did you or your spouse have a health FSA or HRA at work in 2025 that pays ordinary medical bills?
   - input: f8889.spouse_family
     order: 190
-    seq: 12
+    seq: 13
     help: A plan covering more than one person includes one for an employee and a child. Answer Yes even if your spouse has no HSA and even if the plan did not cover you. In a month when both of you qualified to have an HSA, both of you are treated as having family coverage, and the limit is the family one, shared between you both.
     prompt: For this person (you, or your spouse on a joint return) — In any month of 2025, did your spouse have a
       high-deductible plan covering more than one person?
+  - input: f8889.former_spouse_family
+    order: 190
+    seq: 14
+    help: Answer No if you were not married at any time in 2025. A plan covering more than one person includes one for an
+      employee and a child, and counts even if it did not cover you. A Yes ends the interview here.
+    prompt: For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce
+      or death, while the other person had a high-deductible plan covering more than one person?
   - input: f8889.months_eligible
     order: 190
-    seq: 13
+    seq: 15
     help: Count a month only if everything held on its first day; December counts as one of the months. An FSA or HRA
       that pays only dental and vision costs, or nothing until the minimum annual deductible for an HSA plan is met
       ($1,650 for a plan covering one person, $3,300 for more), does not count against a
@@ -3441,7 +3534,7 @@ bank:
       - nobody could claim you as a dependent
   - input: f8889.months_family
     order: 190
-    seq: 14
+    seq: 16
     help: Count a month also if you were covered by someone else's family plan, or had a plan for only you and a family
       plan at once. Your spouse's plan counts for a month in which the three conditions held for your spouse as well, with or without an HSA, and whether or not the plan covered you. Zero if none.
     prompt: For this person (you, or your spouse on a joint return) — On the first day of how many of those months did
@@ -3449,7 +3542,7 @@ bank:
       one person?
   - input: f8889.dec_coverage
     order: 190
-    seq: 15
+    seq: 17
     help: Choose the first answer if on December 1 you were enrolled in Medicare, had other health coverage that pays
       medical bills, or could be claimed as a dependent. Choose the third if you were on someone else's HSA-qualifying family plan, if you had
       both kinds of plan at once, or if you were married, both of you qualified for an HSA that day, and either of you had a plan covering more than one person.
@@ -3460,7 +3553,7 @@ bank:
       family: An HSA-qualifying plan covering more than one person
   - input: f8889.last_month
     order: 190
-    seq: 16
+    seq: 18
     help: This is the “last-month rule”. It lets you put in the full yearly amount for the coverage you had on December 1
       although you were not covered that way all year. The condition is that you stay covered by an HSA-qualifying plan
       through December 31, 2026; if you do not, the extra amount becomes income, with a 10% additional tax. If no
@@ -3469,11 +3562,11 @@ bank:
       December 1 coverage for all of 2025?
   - input: person.age55_at_year_end
     order: 190
-    seq: 17
+    seq: 19
     prompt: For this person (you, or your spouse on a joint return) — Were you 55 or older on December 31, 2025?
   - input: f8889.allocation
     order: 190
-    seq: 18
+    seq: 20
     help: Give the same answer for both of you. The shared limit is the family amount for the months both of you are treated as having family coverage (Step 1 of the Form 8889 line 6 instructions).
     prompt: For this person (you, or your spouse on a joint return) — You both have HSAs and share one family limit. How
       is it split between you both?
@@ -3482,26 +3575,34 @@ bank:
       agreed: A different split we both agree on
   - input: f8889.allocated
     order: 190
-    seq: 19
+    seq: 21
     help: The shared limit is the family amount for the months both of you are treated as having family coverage ($8,550 for a full year). Your spouse's part is the rest; the two parts together may not be more than it.
     prompt: For this person (you, or your spouse on a joint return) — How much of the shared family limit is yours?
   - input: f8889.employer_in_box1
     order: 190
-    seq: 20
-    help: Box 1 is your taxable wages. Answer No if your employer has not added the extra to it.
+    seq: 22
+    help: Box 1 is your taxable wages. Answer No if your employer has added none of the extra to it, or only part.
     prompt: For this person (you, or your spouse on a joint return) — Your employer put more into your HSA than your
-      limit. Is the extra included in box 1 of your Form W-2?
+      limit. Is all of the extra included in box 1 of your Form W-2?
   - input: f8889.ira_prior
     order: 190
-    seq: 21
+    seq: 23
     help: The IRA's custodian sends the money directly to the HSA. It came with a
       condition, to stay able to have an HSA for the 12 months after the month of the transfer. Money you took out of an
       IRA and deposited yourself does not count.
     prompt: For this person (you, or your spouse on a joint return) — Was any money moved into your HSA straight from an
       IRA during 2024?
+  - input: f8889.ira_gap
+    order: 190
+    seq: 24
+    help: For a transfer on June 17, 2024, the months are June 2024 through June 2025. Answer Yes if on the first day of
+      any of them you had no HSA-qualifying plan, were enrolled in Medicare, had other health coverage that pays medical
+      bills, or could be claimed as a dependent.
+    prompt: For this person (you, or your spouse on a joint return) — From the month of that transfer until 12 months
+      after it, was there a month in which you could not have an HSA?
   - input: f8889.testing_prior
     order: 190
-    seq: 22
+    seq: 25
     help: "This is about the “last-month rule”. A person who could have an HSA on December 1, 2024 was allowed the full
       yearly amount for the plan held that day, on condition of staying able to have an HSA through December 31, 2025.
       Answer Yes if more went in for 2024 than your own months allowed, counting each month by the plan of that month.
@@ -3510,51 +3611,60 @@ bank:
       and your spouse's FSA); or if your plan, or a plan your spouse had, went from covering one person to covering more. Line 3 of
       your 2024 Form 8889 then shows the full yearly amount ($4,150 for a plan covering one person, $8,300 for more,
       before the extra $1,000 from age 55) although not every month of 2024 earned it. If you are not sure, answer Yes."
-    prompt: For this person (you, or your spouse on a joint return) — For 2024, was more put into your HSA, by you,
-      your employer or anyone else, than the months you could have an HSA, and the kind of plan you had in each, allowed?
+    prompt: For this person (you, or your spouse on a joint return) — Could you have an HSA on December 1, 2024, and was
+      more put into it for 2024, by you, your employer or anyone else, than the months you could have one, and the kind
+      of plan you had in each, allowed?
+  - input: f8889.disabled
+    order: 190
+    seq: 26
+    help: Losing it for any other reason, such as Medicare at 65 or a new job's ordinary health plan, means No.
+    prompt: For this person (you, or your spouse on a joint return) — Did you stop being able to have an HSA in 2025
+      because you became disabled?
   - input: person.x_hsa_value
     order: 190
-    seq: 23
-    help: Married filing separately and unsupported items are refused with citations.
+    seq: 27
+    help: Add the balances of all your HSAs on December 31, 2025 (box 5 of each 2025 Form 5498-SA, or the account
+      statements), and anything you put in during 2026 for 2025.
   - input: f8889.line14a
     order: 190
-    seq: 24
+    seq: 28
     help: Add box 1 of your 2025 Forms 1099-SA for HSAs (box 5 marks the kind of account). This includes payments made
       straight to a doctor or pharmacy with the HSA card. Do not count money the bank moved directly into another HSA
       of yours. If you have no form, use the account's statements. Zero if none.
     prompt: For this person (you, or your spouse on a joint return) — How much came out of your HSA in 2025 in total?
   - input: f8889.dist_code
     order: 190
-    seq: 25
+    seq: 29
     help: Box 3 is the “distribution code”. 1 is an ordinary payment and 3 a payment after disability. 2 means excess
       contributions taken back, 4 or 6 a payment after a death, and 5 a prohibited transaction.
     prompt: For this person (you, or your spouse on a joint return) — Does box 3 of any of your 2025 Forms 1099-SA for an HSA
       show a number other than 1 or 3?
   - input: f8889.rollover
     order: 190
-    seq: 26
+    seq: 30
     help: "An HSA can take in only one such deposit in any 12 months; do not count a second one, or money the bank moved
       directly (that is not part of the total). Zero if none."
     prompt: For this person (you, or your spouse on a joint return) — How much of the money that came out did you put
       into another HSA of your own within 60 days?
   - input: f8889.mistake_repaid
     order: 190
-    seq: 27
+    seq: 31
     help: For example, the HSA paid a bill that turned out not to be a medical cost, and you returned the money to the
       HSA. Answer Yes also if you plan to return it.
     prompt: For this person (you, or your spouse on a joint return) — Was any money paid out of your HSA by mistake and
       later put back?
   - input: f8889.medical_all
     order: 190
-    seq: 28
+    seq: 32
     help: Answer No if any of it paid for insurance premiums, for someone else (such as an adult child you do not
       claim), for costs from before you opened the HSA, or for costs that insurance or anyone else paid back to you. Money you put into another HSA within 60 days does not count against a Yes. These costs cannot also be deducted on Schedule A.
     prompt: For this person (you, or your spouse on a joint return) — Did all of the money that came out pay for doctor,
       dental, vision, hospital or pharmacy costs of you, your spouse, or your dependents?
   - input: f8889.medical
     order: 190
-    seq: 29
-    help: Nonprescription medicines and menstrual care products count. These costs cannot also be deducted on Schedule A.
+    seq: 33
+    help: Some costs count here that Schedule A does not take, among them nonprescription medicines, menstrual care
+      products, condoms, COVID-19 home tests, and masks and hand sanitizer bought to keep COVID-19 from spreading. These costs cannot also be deducted on Schedule A.
     prompt: |-
       For this person (you, or your spouse on a joint return) — How much of the money that came out paid for medical costs that count?
 
@@ -3575,7 +3685,7 @@ bank:
       Zero if none.
   - input: f8889.loan
     order: 190
-    seq: 30
+    seq: 34
     help: "It counts whether you did it yourself or through someone else. Renting property to or from the HSA, being paid
       by it for goods or services, and using or taking over something it owns count too. An HSA used only to save and
       to pay medical bills has none of these."
@@ -3583,14 +3693,14 @@ bank:
       loan, borrow from it, lend to it, or buy from or sell to it yourself?
   - input: f8889.line17a
     order: 190
-    seq: 31
+    seq: 35
     help: Answer No if all of it was taken out before you turned 65 or became disabled. Money taken out earlier carries an
       additional 20% tax.
     prompt: For this person (you, or your spouse on a joint return) — Was any of the money not spent on medical costs
       taken out after you turned 65 or became disabled?
   - input: f8889.subject_part
     order: 190
-    seq: 32
+    seq: 36
     help: This is the part that carries the additional 20% tax. Zero if all of it came out after.
     prompt: For this person (you, or your spouse on a joint return) — How much of the money not spent on medical costs
       came out before you turned 65 or became disabled?
@@ -3667,9 +3777,9 @@ bank:
     seq: 4
     group: "tip_kinds"
     tick: "Some were service charges, negotiated amounts, or tickets, meals or goods"
-    help: A tip the customer was free to leave or not, paid in cash or by check, card, gift card or app, is not one
-      of these. Tips from one employer that are partly of these kinds are outside what this tool prepares; a Yes ends
-      the interview here.
+    help: A tip the customer was free to leave or not, paid in cash, by check, card or app, or as a gift card or casino
+      chips, is not one of these. Tips from one employer that are partly of these kinds are outside what this tool
+      prepares; a Yes ends the interview here.
   - input: tipjob.unlawful
     order: 151
     seq: 5
@@ -3691,14 +3801,15 @@ bank:
     order: 153
     seq: 2
     help: This is the Fair Labor Standards Act (FLSA). If you are not sure whether you were an exempt employee, this
-      employer can tell you. Overtime from a job the law did not cover cannot be deducted.
-    prompt: Did the federal overtime law cover you at this job? It covers most hourly workers, but not salaried managers
-      and professionals who are "exempt".
+      employer can tell you. Overtime for a job, or a part of the year, that the law did not cover cannot be deducted.
+    prompt: Did the federal overtime law cover you at this job, for all or part of 2025? It covers most hourly workers,
+      but not salaried managers and professionals who are "exempt".
   - input: otjob.special_rule
     order: 153
     seq: 3
-    help: These are the special overtime rules of the federal law (for example its sections 7(k), 7(j) and 7(o)).
-      Overtime under one of them is outside what this tool prepares; a Yes ends the interview here.
+    help: Answer for your own pay. A hospital or police department that pays you for hours over 40 in a week is not
+      meant. These special rules (sections 7(j), 7(k) and 7(o) of the law) are outside what this tool prepares; a Yes
+      ends the interview here.
     prompt: Did this employer count your overtime other than by hours over 40 in a week? For example, a fire or police
       department's longer work period, a hospital's 14-day period, or time off instead of overtime pay.
   - input: otjob.method
@@ -3712,11 +3823,13 @@ bank:
       employer_reported: An amount of "qualified overtime" that the employer worked out, in box 14 of the W-2 or on a
         statement
       total_time_and_half: The total pay for overtime hours, paid at time-and-a-half
-      premium: Only the extra half on top of regular pay for overtime hours (the overtime "premium")
+      premium: Only the extra half on top of regular pay for overtime hours paid at time-and-a-half (the overtime
+        "premium")
       total_double: The total pay for overtime hours, paid at double time
-      premium_double: Only the extra pay on top of regular pay for overtime hours paid at double time
-      other: 'None of these: another rate, an estimate, or overtime for hours not over 40 in a week that I cannot
-        separate out'
+      premium_double: Only the extra pay on top of regular pay for overtime hours paid at double time, whatever the
+        statement calls it
+      other: 'None of these: another rate, overtime paid partly at time-and-a-half and partly at double time, an
+        estimate, or overtime for hours not over 40 in a week that I cannot separate out'
   - input: otjob.statement
     order: 153
     seq: 5
@@ -3731,10 +3844,12 @@ bank:
   - input: carloan.kind
     order: 221
     seq: 2
+    help: A loan that replaced one that had itself replaced another, or one taken over at a death, is a replacement too.
+      Interest on a loan you took over from a living borrower cannot be deducted; leave that loan off the list.
     prompt: How did you come to owe this loan?
     value_labels:
       original: I took it out after 2024 to buy the vehicle
-      refinanced: It replaced (refinanced) such a loan on the same vehicle
+      refinanced: It replaced (refinanced) an earlier loan on the same vehicle
       death: I took it over when the borrower died, for example by inheriting the vehicle
   - input: carloan.requirements
     order: 221
@@ -3751,7 +3866,8 @@ bank:
     seq: 3
     help: The label on the vehicle's window names the place of final assembly, and the VIN shows the plant. The loan
       papers treat a new vehicle as new.
-    prompt: Is the vehicle all of this? New, with you as its first owner. A car, minivan, van, SUV, pickup truck or
+    prompt: Is the vehicle all of this? New, with you as its first owner (for a loan taken over at a death, the
+      borrower who died). A car, minivan, van, SUV, pickup truck or
       motorcycle made for the road, rated under 14,000 pounds. Finally assembled in the United States.
   - input: carloan.interest
     order: 221
@@ -3763,7 +3879,8 @@ bank:
     order: 221
     seq: 6
     help: The usual add-ons are a service plan, an extended warranty, sales tax and vehicle fees. Answer Yes if the
-      loan also covered what was still owed on a trade-in, insurance, a trailer or other goods, or cash paid to you.
+      loan also covered what was still owed on a trade-in, insurance, a trailer or other goods or services, or cash paid
+      to you.
     prompt: Did this loan pay for anything besides the vehicle and its usual add-ons?
   - input: carloan.financed
     order: 221
@@ -3772,8 +3889,9 @@ bank:
   - input: carloan.nonqualifying
     order: 221
     seq: 8
-    prompt: How much of the purchase was for those other things (what was still owed on a trade-in, insurance, other
-      goods, cash paid to you), before any down payment?
+    prompt: How much of the purchase this loan paid for was for those other things (what was still owed on a trade-in,
+      insurance, other goods or services, cash paid to you), before any down payment? Leave out what you paid for
+      separately.
   - input: carloan.down
     order: 221
     seq: 9
@@ -3787,8 +3905,9 @@ bank:
   - input: carloan.refi_whole
     order: 221
     seq: 11
-    help: Answer No if any of it covered what was still owed on a trade-in, insurance, a trailer or other goods, or
-      cash paid to you, or if it was itself a loan that replaced another for more than was then owed.
+    help: Answer No if any of it covered what was still owed on a trade-in, insurance, other goods or services, or cash
+      paid to you. If it itself replaced a loan, answer for that loan too; paying it off counts, but not borrowing
+      more than was then owed.
     prompt: Was the whole of the earlier loan for the vehicle and its usual add-ons (a service plan, an extended
       warranty, sales tax and vehicle fees)?
   - input: $asset
@@ -3820,15 +3939,16 @@ bank:
     seq: 2
     group: biz_refused
     tick: Its income is from a “statutory employee” W-2 job, or notary fees
-    help: A Yes is outside what this tool prepares and ends the interview here.
+    help: Answer Yes also if only part of its income is notary fees. A Yes is outside what this tool prepares and ends the
+      interview here.
     prompt: Is this the income of a job where box 13 of your Form W-2 is marked “Statutory employee”, or fees you earned as
       a notary public?
   - input: sc.passive
     order: 251
     seq: 5
-    help: Yes also if you worked in it more than 100 hours and at least as much as anyone else, or meet another of the tests
-      of “material participation”, or own a working interest in an oil or gas well directly. A No is outside what this tool
-      prepares and ends the interview here.
+    help: Count your husband's or wife's work in it as yours. Yes also if you worked in it more than 100 hours and at least
+      as much as anyone else, or meet another of the tests of “material participation”, or own a working interest in an oil
+      or gas well directly. A No is outside what this tool prepares and ends the interview here.
     prompt: In 2025, did you yourself do all or most of the work of this business, or work in it more than 500 hours? Answer
       No for a business of renting out property.
   - input: sc.spouse_owned
@@ -3845,7 +3965,7 @@ bank:
     help: Most small businesses use the cash method (income counted when received, expenses when paid) and have none of these.
       A Yes is outside what this tool prepares and ends the interview here.
     prompt: 'Does any of these apply to how this business keeps its books: a method other than cash or accrual; a change of
-      method in 2025; long-term contracts; a tax shelter; or receipts averaging more than $31 million a year?'
+      method in 2025 or the 3 years before; long-term contracts; a tax shelter; or receipts averaging more than $31 million a year?'
   - input: sc.special
     order: 251
     seq: 7
@@ -3881,6 +4001,8 @@ bank:
   - input: sc.line2
     order: 250
     seq: 3
+    help: Count refunds for things customers returned and price cuts given after a sale. Leave out discounts already taken
+      off the price you counted, and refunds of money you did not count as income.
     prompt: How much of that did this business give back to customers in 2025 as refunds or price reductions?
   - input: sc.line6
     order: 250
@@ -3912,8 +4034,9 @@ bank:
   - input: sc.line15
     order: 252
     seq: 9
-    help: Leave out health insurance for yourself, insurance against lost earnings, money set aside to insure yourself, insurance
-      on a vehicle you list for this business, and insurance on your home.
+    help: Leave out health insurance (yours is asked later, your employees' with their benefits), insurance against lost
+      earnings, money set aside to insure yourself, insurance on a vehicle you list for this business, and insurance on your
+      home.
     prompt: How much did this business pay in 2025 for business insurance, such as liability or property insurance?
   - input: sc.line16a
     order: 252
@@ -3930,6 +4053,8 @@ bank:
   - input: sc.line17
     order: 252
     seq: 10
+    help: Include the cost of settling a tax dispute about the business. Leave out fees for buying property or starting the
+      business; they are part of what that cost.
     prompt: How much did this business pay accountants and lawyers in 2025 for work on the business, including preparing its
       tax forms?
   - input: sc.line18
@@ -3939,7 +4064,8 @@ bank:
   - input: sc.line19
     order: 252
     seq: 27
-    help: Not contributions for yourself; those are asked about later.
+    help: Only the amount you can deduct, within the plan's limits. Not contributions for yourself; those are asked about
+      later.
     prompt: How much did this business put into retirement plans for its employees in 2025, such as a pension, profit-sharing,
       SEP or SIMPLE plan?
   - input: sc.line20b
@@ -3955,15 +4081,16 @@ bank:
   - input: sc.line22
     order: 252
     seq: 5
-    help: Leave out things that last well beyond a year (they are entered as equipment) and materials that went into goods
-      you sell (asked about with those goods).
+    help: Leave out office supplies and postage (asked before), supplies you deducted in an earlier year, things that last
+      well beyond a year (they are entered as equipment) and materials that went into goods you sell.
     prompt: How much did this business spend in 2025 on supplies and small items it used up within a year, such as materials,
       tools and books?
   - input: sc.line23
     order: 252
     seq: 11
-    help: Leave out income tax, self-employment tax, sales tax on things you bought, property tax on your home, the license
-      plates of a vehicle you list for this business, and a license whose cost must be spread over several years.
+    help: Leave out income tax, self-employment tax, sales tax on things you bought, property tax on your home, charges for
+      improvements such as paving or sewers, the license plates of a vehicle you list here, and a license whose cost is spread
+      over several years.
     prompt: How much did this business pay in 2025 in business taxes and licenses, such as sales tax charged to you as the
       seller, property tax on business assets, yearly license fees, and payroll taxes you paid as an employer?
   - input: sc.travel_meals
@@ -4030,9 +4157,11 @@ bank:
     order: 252
     seq: 19
     group: biz_had
-    tick: Part of your home used only for it or storing its stock
-    prompt: In 2025, did you use part of your home regularly and only for this business (or regularly to store its stock or
-      samples), and do you want to deduct it?
+    tick: Home space used only for it, as a daycare, or for stock
+    help: A daycare counts even if your family also uses the space. Stock counts only if your home is the only fixed place
+      of this business.
+    prompt: In 2025, did you use part of your home regularly and only for this business, regularly as a daycare, or (if your
+      home is its only fixed place of business) regularly to store its stock or samples, and do you want to deduct it?
   - input: sc.ho_other
     order: 252
     seq: 35
@@ -4051,6 +4180,7 @@ bank:
   - input: sc.ho_sqft
     order: 252
     seq: 36
+    help: Count space used only to store stock or samples only if your home is the only fixed place of this business.
     prompt: How many square feet of your home did you use that way for this business throughout 2025?
   - input: sc.ho_home_sqft
     order: 252
@@ -4100,10 +4230,13 @@ bank:
   - input: sc.line39
     order: 252
     seq: 32
+    help: Leave out the purchases, labor, materials and supplies already entered for these goods, and any cost entered among
+      the expenses of this business.
     prompt: What other costs did this business have in 2025 in buying or producing the goods it sells?
   - input: sc.line41
     order: 252
     seq: 33
+    help: Value it at what the goods cost the business, not at the price you would sell them for.
     prompt: What was the inventory of this business worth at the end of 2025?
   - input: sc.rent_equipment
     order: 252
@@ -4282,14 +4415,14 @@ bank:
   - input: scveh.passenger
     order: 255
     seq: 34
-  - input: scveh.suv
-    order: 255
-    seq: 35
   - input: scveh.s179_elect
     order: 255
-    seq: 36
+    seq: 35
     prompt: For this vehicle — How much of its cost do you choose to deduct at once in 2025 under the section 179
       election? (Zero if none.)
+  - input: scveh.suv
+    order: 255
+    seq: 36
   - input: scveh.bonus_choice
     order: 255
     seq: 37
@@ -4302,6 +4435,8 @@ bank:
   - input: scveh.after_jan19
     order: 255
     seq: 38
+    prompt: For this vehicle — Did you acquire it after January 19, 2025? (Answer No if you signed a binding written contract
+      for it before January 20, 2025, even if you received it later.)
   - input: scveh.bonus_same
     order: 255
     seq: 39
@@ -4731,8 +4866,9 @@ bank:
     help: A Yes is outside what this tool prepares and ends the interview here.
     prompt: 'For this person (you, or your spouse on a joint return) — Does any of these apply: a SARSEP; a SEP rate that
       is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put
-      in for yourself to another plan too, such as a solo 401(k), or to a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE
-      contributions; or contributions above the most that can be deducted?'
+      in for yourself to another plan of your business too, such as a solo 401(k); with a SIMPLE IRA, pay you put into a
+      401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted,
+      including any carried over from an earlier year?'
   - input: person.sep_rate
     order: 260
     seq: 3
@@ -4747,7 +4883,8 @@ bank:
     order: 260
     seq: 5
     prompt: For this person (you, or your spouse on a joint return) — How much of your own earnings did you put into your
-      SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions)?
+      SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions your plan allows), counting
+      money paid in up to the due date of this return?
   - input: person.simple_age_at_year_end
     order: 260
     seq: 6
@@ -4951,7 +5088,7 @@ bank:
     tick: A stove or boiler burning wood, pellets or other plant fuel
   - input: f5695.carry
     order: 290
-    seq: 8
+    seq: 9
     help: Line 16 is the part of a solar or other clean energy credit that was more than the 2024 tax; it carries to 2025.
   - input: f5695.construction_later
     order: 230
@@ -4967,7 +5104,8 @@ bank:
     help: Leave out roof decking or rafters, and any part that heats a swimming pool or hot tub. Take off a rebate from the
       seller, maker or installer, a Department of Energy Home Energy Rebate, and a utility subsidy that was not taxed as income.
       Do not take off other state incentives or net metering credits. Leave out loan interest, fees and extended warranties.
-    prompt: What did the solar panels cost, with installation labor, after any rebate or utility subsidy?
+    prompt: What did the solar panels cost, with installation labor, after any rebate or utility subsidy? Count only a home
+      you (or, on a joint return, your spouse) lived in during 2025.
   - input: f5695.line2
     order: 230
     seq: 25
@@ -4976,21 +5114,24 @@ bank:
       from the seller, maker or installer, a Department of Energy Home Energy Rebate, and a utility subsidy that was not taxed
       as income. Do not take off other state incentives or net metering credits. Leave out loan interest, fees and extended
       warranties.
-    prompt: What did the solar water heater cost, with installation labor, after any rebate or utility subsidy?
+    prompt: What did the solar water heater cost, with installation labor, after any rebate or utility subsidy? Count only a home
+      you (or, on a joint return, your spouse) lived in during 2025.
   - input: f5695.line3
     order: 230
     seq: 26
     help: Take off a rebate from the seller, maker or installer, a Department of Energy Home Energy Rebate, and a utility
       subsidy that was not taxed as income. Do not take off other state incentives or net metering credits. Leave out loan
       interest, fees and extended warranties.
-    prompt: What did the wind turbine cost, with installation labor, after any rebate or utility subsidy?
+    prompt: What did the wind turbine cost, with installation labor, after any rebate or utility subsidy? Count only a home
+      you (or, on a joint return, your spouse) lived in during 2025.
   - input: f5695.line4
     order: 230
     seq: 27
     help: It counts only if it met the Energy Star requirements in effect when it was bought. Take off a rebate from the seller,
       maker or installer, a Department of Energy Home Energy Rebate, and a utility subsidy that was not taxed as income. Do
       not take off other state incentives or net metering credits. Leave out loan interest, fees and extended warranties.
-    prompt: What did the geothermal heat pump cost, with installation labor, after any rebate or utility subsidy?
+    prompt: What did the geothermal heat pump cost, with installation labor, after any rebate or utility subsidy? Count only a home
+      you (or, on a joint return, your spouse) lived in during 2025.
   - input: f5695.line5a
     order: 230
     seq: 6
@@ -5004,7 +5145,8 @@ bank:
     help: Take off a rebate from the seller, maker or installer, a Department of Energy Home Energy Rebate, and a utility
       subsidy that was not taxed as income. Do not take off other state incentives or net metering credits. Leave out loan
       interest, fees and extended warranties.
-    prompt: What did the battery cost, with installation labor, after any rebate or utility subsidy?
+    prompt: What did the battery cost, with installation labor, after any rebate or utility subsidy? Count only a home
+      you (or, on a joint return, your spouse) lived in during 2025.
   - input: f5695.line7a
     order: 230
     seq: 7
@@ -5015,7 +5157,7 @@ bank:
     prompt: Did that include a fuel cell at your (or, on a joint return, your spouse's) main home?
   - input: f5695.line12
     order: 290
-    seq: 9
+    seq: 10
     prompt: What is the amount on line 16 of your (or, on a joint return, your spouse's) 2024 Form 5695? Add the forms if there
       is more than one.
   - input: f5695.line17a
@@ -5335,17 +5477,18 @@ bank:
   - input: person.ira_trad
     order: 180
     seq: 11
-    help: Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024 return,
-      anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately, and SEP
-      or SIMPLE contributions.
+    help: Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, repayments of a reservist distribution,
+      money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return,
+      trustee's fees billed separately, and SEP or SIMPLE contributions.
     prompt: For this person (you, or your spouse on a joint return) — How much did you put into your traditional IRAs for 2025,
-      in 2025 or by April 15, 2026?
+      in 2025 or by the deadline for your 2025 return (April 15, 2026, for most people)?
   - input: person.ira_extra_left
     order: 180
     seq: 15
     help: The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or
-      your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside what this
-      tool prepares; a Yes ends the interview here.
+      your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth
+      IRA has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends
+      the interview here.
     prompt: For this person (you, or your spouse on a joint return) — Did you put more into your IRAs for 2025 than you were
       allowed, and was the extra still there after the deadline for your 2025 return?
   - input: person.ira_recharacterized
@@ -5378,24 +5521,27 @@ bank:
     order: 180
     seq: 18
     help: Your basis is the total of your nondeductible contributions to traditional IRAs, less any nontaxable distributions;
-      zero if this is the first year you file Form 8606.
+      zero if you made no nondeductible contributions before 2025.
   - input: person.ira_basis_adjusted
     order: 180
     seq: 19
-    help: Yes refuses the return (the Form 8606 line 2 adjustments are not prepared).
+    help: Count only what happened since the last Form 8606 you filed (or ever, if you have filed none). Yes refuses the
+      return (the Form 8606 line 2 adjustments are not prepared).
   - input: person.ira_dist
     order: 180
     seq: 20
-    help: Yes refuses the return (Form 8606 lines 4 to 13 are not prepared).
+    help: Paying back a 2025 disaster, birth or adoption, emergency, domestic abuse or terminal illness withdrawal counts
+      here too. Yes refuses the return (Form 8606 lines 4 to 13 are not prepared).
   - input: ira.deferred_comp
     order: 180
     seq: 30
     group: ira_pay
-    tick: Got deferred compensation (W-2 box 11, or box 12 code Z)
-    help: This is pay earned in an earlier year under a plan that put off paying it. It does not count as pay for the IRA limit.
-      A return with this is outside what this tool prepares; a Yes ends the interview here.
-    prompt: 'In 2025, were you (or, on a joint return, your spouse) paid money from a deferred compensation plan: an amount
-      in box 11 of a Form W-2, in box 12 with code Z, or in box 15 of a Form 1099-MISC?'
+    tick: Got pay from a deferred compensation plan (often W-2 box 11)
+    help: This is pay earned in an earlier year under a plan that put off paying it. It counts even if no box shows it. It
+      does not count as pay for the IRA limit. A Yes ends the interview here.
+    prompt: 'In 2025, were you (or, on a joint return, your spouse) paid money from a nonqualified deferred compensation plan
+      or a non-government section 457 plan? It is usually shown in box 11 of a Form W-2, in box 12 with code Z, or in box
+      15 of a Form 1099-MISC.'
   - input: ira.fellowship
     order: 180
     seq: 31
@@ -5433,8 +5579,8 @@ bank:
   - input: person.sav_roth
     order: 180
     seq: 12
-    help: A contribution that was later moved to a traditional IRA (recharacterized) is a traditional IRA contribution, not
-      a Roth one.
+    help: Leave out money you took back out with its earnings by the deadline, and paying back a disaster, birth or adoption,
+      or emergency withdrawal. A contribution later moved to a traditional IRA (recharacterized) is a traditional IRA contribution.
     prompt: For this person (you, or your spouse on a joint return) — How much did you put into a Roth IRA for 2025, in 2025
       or by the deadline for your 2025 return? Do not count rollovers or conversions.
   - input: person.sav_voluntary

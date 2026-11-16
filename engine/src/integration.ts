@@ -33,29 +33,30 @@ export async function integrationChecks(): Promise<void> {
   try {
     const fixture=loadCases().cases.find(c=>c.id==="ss.multi")!;
     const inputs=fixture.inputs;
+    // The whole return on the full profile, answered through the command-line interview with corrections.
     groups.push(async()=>{
+      const owed=loadCases().cases.find(c=>c.id==="stage5.return.owed")!.inputs;
       const log=join(dir,"answers.jsonl");
-      let state=await cli(["interview","start","--log",log]);
+      let state=await cli(["interview","start","--profile","full","--log",log]);
       const answer=(key:string,value:unknown)=>cli(["interview","answer","--log",log,"--input",key,"--value",JSON.stringify(value)]);
-      assert.equal(state.question.input,"f1040.status");
-      state=await answer("f1040.status",null);
+      assert.equal(state.question.input,"$person");
+      state=await answer("$person",null);
       assert.equal(state.status,"incomplete");assert.equal(state.question.helpRequested,true);
       let steps=0;
-      while(state.status==="incomplete"&&steps++<30){
-        const key=state.question.input;assert.ok(key in inputs,key);
-        state=await answer(key,inputs[key]);
+      while(state.status==="incomplete"&&steps++<200){
+        const key=state.question.input;assert.ok(key in owed,key);
+        state=await answer(key,owed[key]);
       }
       assert.equal(state.status,"complete");
-      assert.deepEqual(state.values["f1040.line31"].value,{kind:"money",cents:148180});
-      assert.match(state.sheet,/\$1,481\.80/);assert.match(state.sheet,/sha|482e9c|i1040gi/);
+      assert.deepEqual(state.values["f1040.line37"].value,{kind:"money",cents:150000});
       const before=readFileSync(log,"utf8");
-      state=await answer("person[taxpayer].w2[a].box4",1091821);
+      const box4=owed["person[taxpayer].w2[emp_a].box4"];
+      state=await answer("person[taxpayer].w2[emp_a].box4",1091821);
       assert.equal(state.status,"refused");assert.match(state.refusal.remedy,/Form 843/);
       assert.ok(readFileSync(log,"utf8").startsWith(before));
-      state=await answer("person[taxpayer].w2[a].box4",620000);assert.equal(state.status,"complete");
-      state=await answer("$w2@person[taxpayer]",["a"]);assert.equal(state.values["f1040.line31"].value.cents,0);
-      state=await answer("$w2@person[taxpayer]",["a","b"]);assert.equal(state.status,"complete");
-      await cli(["interview","start","--log",log],false); // never overwrite a log
+      state=await answer("person[taxpayer].w2[emp_a].box4",box4);assert.equal(state.status,"complete");
+      assert.equal(state.values["f1040.line37"].value.cents,150000);
+      await cli(["interview","start","--profile","full","--log",log],false); // never overwrite a log
     });
     groups.push(async()=>{
       const early={...inputs};delete early["person[taxpayer].w2[b].box4"];
@@ -160,30 +161,6 @@ export async function integrationChecks(): Promise<void> {
         badData(d=>{line(d,"w2.over").expr={op:"test",gt:["person.overcount",{const:0,type:"Count"}]};}),
       ]);
     });
-    // Sales profile: complete, corrected refusal, restored roster, and early digital refusal.
-    for (const id of ["sales.official.basis", "sales.official.two_aggregate", "sales.refuse.digital.G", "sales.select.sdtw.election"]) {
-      groups.push(async()=>{
-        const sales = loadCases().cases.find(c=>c.id===id)!;
-        const salesLog=join(dir,id+".jsonl");
-        let salesState=await cli(["interview","start","--profile","sales","--log",salesLog]);
-        let count=0;
-        while(salesState.status==="incomplete" && count++<150) {
-          const key=salesState.question.input;
-          assert.ok(key in sales.inputs, `missing sales input ${key}`);
-          salesState=await cli(["interview","answer","--log",salesLog,"--input",key,"--value",JSON.stringify(sales.inputs[key])]);
-        }
-        assert.equal(salesState.status, id.includes("refuse") ? "refused" : "complete");
-        if (id==="sales.official.basis") {
-          assert.equal(salesState.values["f1040.line7a"].value.cents,90000);
-          const correction=(input:string,value:unknown)=>cli(["interview","answer","--log",salesLog,"--input",input,"--value",JSON.stringify(value)]);
-          salesState=await correction("sales[a].box","G"); assert.equal(salesState.status,"refused");
-          salesState=await correction("sales[a].box","A"); assert.equal(salesState.status,"complete");
-          salesState=await correction("$sales",[]); assert.equal(salesState.values["f1040.line7a"].value.cents,0);
-          salesState=await correction("$sales",["a"]); assert.equal(salesState.values["f1040.line7a"].value.cents,90000);
-          await cli(["interview","advance","--profile","social-security","--log",salesLog],false);
-        }
-      });
-    }
     groups.push(async()=>{
       const sale=loadCases().cases.find(c=>c.id==="sales.official.basis")!.inputs;
       await evaluate({...sale,"$sales":["a","a"]},false,"f1040.line7a");
@@ -194,31 +171,6 @@ export async function integrationChecks(): Promise<void> {
     groups.push(async()=>{
       await badData(d=>{line(d,"sd.limited_loss").expr={op:"larger_of",of:["sd.limited_loss","sd.loss_limit"]};});
     });
-    for(const id of ["stage4.base","stage4.sdtw.special_rates","stage4.refuse.scope.schedule1"]) {
-      groups.push(async()=>{
-        const fixture=loadCases().cases.find(c=>c.id===id)!;
-        const path=join(dir,id+".jsonl");
-        let state=await cli(["interview","start","--profile","stage4","--log",path]);
-        for(let step=0;state.status==="incomplete"&&step<150;step++) {
-          const key=state.question.input;assert.ok(key in fixture.inputs,`missing ${key}`);
-          state=await cli(["interview","answer","--log",path,"--input",key,"--value",JSON.stringify(fixture.inputs[key])]);
-        }
-        assert.equal(state.status,id.includes("refuse")?"refused":"complete");
-        if(id==="stage4.sdtw.special_rates")assert.equal(state.values["f1040.line16"].value.cents,6166300);
-        if(id==="stage4.base") {
-          assert.equal(state.values["sa.deduction"].value.cents,1575000);
-          // A home owned opens the mortgage and property tax questions; each is answered as it is asked.
-          const home:Record<string,string>={"sa.mortgage_interest":"2000000","sa.mortgage_unreported":"false","sa.mortgage_over_limit":"false","sa.mortgage_other_use":"false","sa.line5b":"0","sa.property_tax_other_any":"false","s3.mcc":"false","s2.mortgage_subsidy":"false"};
-          state=await cli(["interview","answer","--log",path,"--input","sa.home_owner","--value","true"]);
-          for(let step=0;state.status==="incomplete"&&step<10;step++) {
-            const key=state.question.input;assert.ok(key in home,`missing ${key}`);
-            state=await cli(["interview","answer","--log",path,"--input",key,"--value",home[key]]);
-          }
-          assert.equal(state.values["sa.deduction"].value.cents,2000000);
-          await cli(["interview","answer","--log",path,"--input","f8959.line18","--value","1"],false);
-        }
-      });
-    }
     for(const id of ["stage5.return.owed","stage5.return.refund"]) {
       groups.push(async()=>{
         const fixture=loadCases().cases.find(c=>c.id===id)!;
@@ -229,6 +181,8 @@ export async function integrationChecks(): Promise<void> {
           state=await cli(["interview","answer","--log",path,"--input",key,"--value",JSON.stringify(fixture.inputs[key])]);
         }
         assert.equal(state.status,"complete");
+        // A log belongs to the profile that started it.
+        if(id==="stage5.return.owed")await cli(["interview","advance","--profile","ny","--log",path],false);
         if(id==="stage5.return.owed")assert.equal(state.values["f1040.line37"].value.cents,150000);
         if(id==="stage5.return.refund")assert.equal(state.values["f1040.line34"].value.cents,173300);
       });

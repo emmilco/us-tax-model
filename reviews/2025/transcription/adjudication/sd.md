@@ -177,3 +177,17 @@ rulings in `/tmp/land3-adj9/sd.json`, applied with rule.py.
 
 2 lines: 2 finding (low). Finding BUG-0638 (`bug_pending/land3-adj9-03.md`): drop the K-1 words from
 `sd.other_forms`'s label and name scope.k1 in the citations of lines 5 and 12. No value is wrong.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-a (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the B1 integration worktree. Open lines of the Claude transcription log (line-scoped pass 847822bf2d2b, after F6 added `sd.qof` to `sd.other_forms`; triage `.transcription/triage/2025/sd.json`, 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records) and render log (pass 2465ffb3826a). Full ruling text is in the logs and sidecars; rulings files `/tmp/b1-adj-a/<form>.json` (transcription) and `/tmp/b1-adj-a/render/<form>.json` (render), applied with rule.py. The deepseek family is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | 1a–10, columns (d)(e)(g)(h) (32 lines) | scope | 2,498–2,675 of 2,959 agree; 99–145 project-refuses, 185–316 project-unknown; no value | f1040sd p. 1, lines 1a–10; f8949 boxes G–L | Digital boxes G–L added; refused by sales.one (T-003). Route test dropped on 2, 3, 9, 10 is covered by sales.bad_aggregate. Unknowns withhold asked screen answers (div.any, sd.qof and the other sd.other_forms boxes). |
+| claude | transcription | sd.f2439_if_dividends | representation | 2,952/2,959 agree; 7 project-unknown (div.any withheld on refused records) | i1040sd, line 11 (Form 2439 from a fund or REIT) | The conjunction equals the gated choose. |
+| claude | transcription | sd.filed | model error | 2,702/2,959 agree; 2 value (completed: stage20.line21_at_both_bounds, stage20.mut.line21_below_limit; project false, reply true); refusals and unknowns are sd.other_forms screens | i1040gi p. 31, Line 7a, Exception 1; i1040sd p. 10 | Files whenever sd.carryover is Yes, though the worksheet can leave no carryover; the new sd.qof term is refused through sd.other_forms. |
+| claude | render | 5 | scope | MISMATCH; no K-1 gate | f1040sd line 5 | The line's cite now names scope.k1 through scope.schedule1 (BUG-0638 fixed). |
+| claude | render | 12 | scope | As line 5 | f1040sd line 12 | As line 5. |
+
+Counts: claude transcription: scope 32, representation 1, model error 1; claude render: scope 2. Findings: none. No line left open. Class M (sd) not ruled in this section: its rerun was held by the coordinator.

@@ -42,6 +42,16 @@
    "subject_key": "ace462d850b3cadae7a1ec14734afe9a56d597b5e47b6ed876b259a91efc3e40"
   },
   {
+   "printed": "12",
+   "restated": "Enter the amount from helper \"No amount on an inapplicable line\".",
+   "model": "The IRS line is 'Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. The program enters $0 with no question or refusal covering Schedule K-1 amounts.",
+   "ruling": "Ruling: scope; refusal located elsewhere; as line 5. f1040sd line 12, 'Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'; the line's citation names scope.k1 through scope.schedule1 at Form 1040 line 8. Project stands.",
+   "context": "7456169ad1d7d71ec58f87fc13241b0318d41104c1a3714d782911a2338ae7e8",
+   "date": "2026-11-15",
+   "run": "1a4a32a3e720b658bcffc341a3d385ae7c5be2abd5761ff15bdb47648799b297",
+   "subject_key": "afc7621308565829644e8d25546018dcf8d7ff48b66317110810a51a43b7eb02"
+  },
+  {
    "printed": "1a(d)",
    "restated": "Add sales.proceeds over every confirmed sales entry for which helper \"Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets\" = 'A' and helper \"Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals\" = 'aggregate', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Only classification 'A' is summed, but line 1a covers short-term transactions 'reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS'. The digital-asset counterpart (G) is left out, and no refusal names it.",
@@ -179,6 +189,16 @@
    "run": "cc4b398be898f0102277542231192e37e4911907ed0a149261d61f89fe549fcb",
    "severity": "low",
    "subject_key": "de1b0ecdcf6f0746a0d811449650fe5defadf0e9be96f4a636190838007dcd65"
+  },
+  {
+   "printed": "5",
+   "restated": "Enter the amount from helper \"No amount on an inapplicable line\".",
+   "model": "The IRS line is 'Net short-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. The program enters $0 without asking about Schedule K-1 amounts, and neither sd.other_forms nor any other gate refuses that case.",
+   "ruling": "Ruling: scope; refusal located elsewhere. f1040sd line 5, 'Net short-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1'. The line's citation now says where the case goes: 'zero: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1 at Form 1040 line 8'; scope.k1 is asked of everyone, so no computed return has a K-1 capital gain. BUG-0638 (the stale K-1 words in sd.other_forms' label) is fixed in this tree, and the reviewer's 'neither sd.other_forms nor any other gate' misses the cited scope.k1. Project stands.",
+   "context": "7456169ad1d7d71ec58f87fc13241b0318d41104c1a3714d782911a2338ae7e8",
+   "date": "2026-11-15",
+   "run": "1a4a32a3e720b658bcffc341a3d385ae7c5be2abd5761ff15bdb47648799b297",
+   "subject_key": "88a821b1de5a4dd954a9e2abda1f4c765976d2ab0325406c48fd16a740266927"
   },
   {
    "printed": "8a(d)",

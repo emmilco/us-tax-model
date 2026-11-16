@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.refuse.div.section1202",
-      "walk": "stage4",
       "covers": [
         "div.section1202"
       ],
@@ -43,7 +42,6 @@
     },
     {
       "id": "stage4.refuse.div.amt",
-      "walk": "stage4",
       "covers": [
         "div.amt"
       ],
@@ -82,7 +80,6 @@
     },
     {
       "id": "stage4.refuse.div.special",
-      "walk": "stage4",
       "covers": [
         "div.unsupported"
       ],
@@ -121,7 +118,6 @@
     },
     {
       "id": "stage4.refuse.div.inconsistent",
-      "walk": "stage4",
       "covers": [
         "div.bad_special"
       ],
@@ -162,7 +158,6 @@
     },
     {
       "id": "stage4.refuse.div.components",
-      "walk": "stage4",
       "covers": [
         "div.bad_components"
       ],
@@ -202,7 +197,6 @@
     },
     {
       "id": "stage4.refuse.div.overlapping",
-      "walk": "stage4",
       "covers": [
         "div.bad_special"
       ],
@@ -243,7 +237,6 @@
     },
     {
       "id": "stage4.refuse.div.basis",
-      "walk": "stage4",
       "covers": [
         "div.unsupported"
       ],
@@ -3712,7 +3705,6 @@
         "scope.pfic": null,
         "scope.cfc": null,
         "scope.f8978": null,
-        "s2.amt_owed": null,
         "f2441.benefits": null,
         "div.any": null,
         "ssb.benefits": null,

@@ -53,3 +53,15 @@ Lane land3-adj7 (claude-opus-5-5, judgment). Open lines of the Claude render log
 Counts: claude render: scope 1.
 
 Findings: none. No line left open.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-e (claude-opus-5-5, judgment; tax year 2025, us). Open lines of the Claude logs after the goal-1 fix lanes (merge worktree nx-b1), ruled on the triage record `.transcription/triage/2025/<form>.json` (executable-triage-v2; not rerun), the archived sources and the form YAML; render lines on the rendered English (`rendered/2025/<form>.md`). Rulings files `/tmp/b1-adj-e/<form>[.render].json`, applied with `rule.py`; full text in the log and sidecar. The deepseek logs are dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | ftc.has_tax | representation | 2,511/2,671; 149 candidate-unknown (32 completed), 11 project-unknown; no value | i1116 pp. 1-2 | Reads ftc.taxes without the ftc.asked parent. |
+| claude | transcription | ftc.credit | model error | 2,469/2,671; 151 candidate-unknown, 26 project-refuses, 23 project-unknown, 2 value (1 completed) | i1116 p. 25, Line 20 | Limit by Form 1040 line 16 alone, dropping Schedule 2 line 1z (stage18.ftc_limit_with_repayment $200 / $0). |
+| claude | render | limited | scope | MISMATCH; form YAML | i1116 p. 25, Line 20 | Form 4972 tax is refused at Form 1040 line 16 (scope.other_line16). |
+
+Counts: claude transcription model error 1, representation 1; claude render scope 1. Findings: none. Left open: none.

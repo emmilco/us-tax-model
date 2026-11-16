@@ -312,8 +312,8 @@
 ## (screen) — `ira.deferred_comp`
 
 - **Authored helper label:** Income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan
-- **Encoded (Bool):** Input — Did you (or your spouse on a joint return) have income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC)?
-- Expr: `{"op":"input","source":"Did you (or your spouse on a joint return) have income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (an amount in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC)?"}`
+- **Encoded (Bool):** Input — Did you (or your spouse on a joint return) have income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan included in box 1 of your Form W-2 or box 1 of Form 1099-NEC (it should be shown in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC, but count it even if it is not)?
+- Expr: `{"op":"input","source":"Did you (or your spouse on a joint return) have income from a nonqualified deferred compensation plan or a nongovernmental section 457 plan included in box 1 of your Form W-2 or box 1 of Form 1099-NEC (it should be shown in box 11 of your Form W-2, in box 12 with code Z, or in box 15 of Form 1099-MISC, but count it even if it is not)?"}`
 - Cite: [i1040gi] p. 95, Line 20, "The income should be shown in (a) box 11 of your Form W-2, (b) box 12 of your Form W-2 with code Z, or (c) box 15 of Form 1099-MISC" and "Don’t include any repayments of qualified reservist distributions"; p590a p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes"; p590a p. 16, Difficulty of care payments (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (screen) — `ira.fellowship`

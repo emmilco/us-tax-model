@@ -172,25 +172,29 @@ changes:
     - set:
         line: person.ira_extra_left
         field: label
-        from: Were your contributions for 2025 to traditional and Roth IRAs together more than you were allowed to contribute
-          (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a
-          Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date
-          of your return (including extensions)?
-        to: Were your contributions for 2026 to traditional and Roth IRAs together more than you were allowed to contribute
-          (more than $7,500, or $8,600 if age 50 or older at the end of 2026, or more than your taxable compensation, or a
-          Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date
-          of your return (including extensions)?
+        from: Were the contributions for 2025 to your traditional and Roth IRAs together (made by you, your spouse or an employer,
+          other than under a SEP or SIMPLE IRA plan, and any rollover that did not qualify) more than you were allowed to contribute
+          (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or, on a joint
+          return, the couple's taxable compensation less the other spouse's IRA contributions, or a Roth contribution above the limit
+          for your income), with the excess not withdrawn with its earnings by the due date of your return (including extensions)?
+        to: Were the contributions for 2026 to your traditional and Roth IRAs together (made by you, your spouse or an employer, other
+          than under a SEP or SIMPLE IRA plan, and any rollover that did not qualify) more than you were allowed to contribute (more
+          than $7,500, or $8,600 if age 50 or older at the end of 2026, or more than your taxable compensation, or, on a joint return,
+          the couple's taxable compensation less the other spouse's IRA contributions, or a Roth contribution above the limit for
+          your income), with the excess not withdrawn with its earnings by the due date of your return (including extensions)?
     - set:
         line: person.ira_extra_left
         field: expr.source
-        from: Were your contributions for 2025 to traditional and Roth IRAs together more than you were allowed to contribute
-          (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a
-          Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date
-          of your return (including extensions)?
-        to: Were your contributions for 2026 to traditional and Roth IRAs together more than you were allowed to contribute
-          (more than $7,500, or $8,600 if age 50 or older at the end of 2026, or more than your taxable compensation, or a
-          Roth contribution above the limit for your income), with the excess not withdrawn with its earnings by the due date
-          of your return (including extensions)?
+        from: Were the contributions for 2025 to your traditional and Roth IRAs together (made by you, your spouse or an employer,
+          other than under a SEP or SIMPLE IRA plan, and any rollover that did not qualify) more than you were allowed to contribute
+          (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or, on a joint
+          return, the couple's taxable compensation less the other spouse's IRA contributions, or a Roth contribution above the limit
+          for your income), with the excess not withdrawn with its earnings by the due date of your return (including extensions)?
+        to: Were the contributions for 2026 to your traditional and Roth IRAs together (made by you, your spouse or an employer, other
+          than under a SEP or SIMPLE IRA plan, and any rollover that did not qualify) more than you were allowed to contribute (more
+          than $7,500, or $8,600 if age 50 or older at the end of 2026, or more than your taxable compensation, or, on a joint return,
+          the couple's taxable compensation less the other spouse's IRA contributions, or a Roth contribution above the limit for
+          your income), with the excess not withdrawn with its earnings by the due date of your return (including extensions)?
     - set:
         line: person.ira_limit_under50
         field: label
@@ -354,12 +358,14 @@ changes:
     - set_question:
         input: person.ira_extra_left
         field: help
-        from: The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025),
-          or your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside
-          what this tool prepares; a Yes ends the interview here.
-        to: The limit for traditional and Roth IRAs together is $7,500 ($8,600 if you were 50 or older at the end of 2026),
-          or your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside
-          what this tool prepares; a Yes ends the interview here.
+        from: The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your
+          taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA
+          has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the
+          interview here.
+        to: The limit for traditional and Roth IRAs together is $7,500 ($8,600 if you were 50 or older at the end of 2026), or your
+          taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA
+          has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the
+          interview here.
     - set_question:
         input: person.age50_at_year_end
         field: help
@@ -382,16 +388,16 @@ changes:
     - set_question:
         input: person.ira_trad
         field: help
-        from: Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024
-          return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately,
-          and SEP or SIMPLE contributions.
-        to: Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024
-          return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately,
-          SEP or SIMPLE contributions, and money put into a Trump account.
+        from: Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, repayments of a reservist distribution,
+          money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return, trustee's
+          fees billed separately, and SEP or SIMPLE contributions.
+        to: Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, repayments of a reservist distribution,
+          money you deducted on your 2025 return, anything you took back out with its earnings by the deadline for your return, trustee's
+          fees billed separately, SEP or SIMPLE contributions, and money put into a Trump account.
     - set_question:
         input: person.ira_basis
         field: help
         from: Your basis is the total of your nondeductible contributions to traditional IRAs, less any nontaxable distributions;
-          zero if this is the first year you file Form 8606.
-        to: Your basis is the total of your nondeductible contributions to traditional IRAs (not Trump accounts), less any
-          nontaxable distributions; zero if this is the first year you file Form 8606.
+          zero if you made no nondeductible contributions before 2025.
+        to: Your basis is the total of your nondeductible contributions to traditional IRAs (not Trump accounts), less any nontaxable
+          distributions; zero if you made no nondeductible contributions before 2026.

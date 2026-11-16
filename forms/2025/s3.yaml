@@ -146,7 +146,7 @@ form:
     - id: s3.adoption
       printed: (helper)
       type: Bool
-      gated_by: s3.adoption_if_any
+      gated_by: s3.adoption_asked_if_any
       label: Did you (or, on a joint return, your spouse) adopt a child whose adoption became final in 2025, or pay expenses in 2025 in connection with adopting a child or trying to adopt one?
       expr:
         op: input
@@ -154,7 +154,7 @@ form:
       cite:
         doc: i8839
         locator: p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"; i1040gi p. 116, Lines 6a Through 6z, "You may be able to take the adoption credit if you paid expenses to adopt a child or you adopted a child with special needs and the adoption became final in 2025"
-    - id: s3.adoption_if_any
+    - id: s3.adoption_asked_if_any
       printed: (gate)
       type: Bool
       label: Whether an adoption became final in 2025 or adoption expenses were paid in 2025, asked only with an adoption or adoption expenses in 2024 or 2025 (false without one)
@@ -173,6 +173,103 @@ form:
             - s3.adoption_any
             - const: false
           then: s3.no
+      cite:
+        doc: i8839
+        locator: p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"; i1040gi p. 116, Lines 6a Through 6z, "You may be able to take the adoption credit if you paid expenses to adopt a child or you adopted a child with special needs and the adoption became final in 2025"
+    - id: s3.adoption_final
+      printed: (helper)
+      type: Bool
+      gated_by: s3.adoption_final_if_adoption
+      label: Was such an adoption final by the end of 2025?
+      expr:
+        op: input
+        source: Did that adoption (or, if more than one, any of them) become final in 2025 or an earlier year? (Expenses paid in
+          2025 toward an adoption not final at the end of 2025 give no credit for 2025; for a U.S. child they are credited the
+          year after the payment, and for a foreign child the year the adoption becomes final.)
+      cite:
+        doc: i8839
+        locator: p. 3, Domestic Adoption, "the year after the year of the payment" and
+          "the year the adoption becomes final"; p. 3, Foreign child, "you can’t take the adoption credit or exclusion unless the
+          adoption becomes final"
+    - id: s3.adoption_final_if_adoption
+      printed: (gate)
+      type: Bool
+      label: Whether such an adoption was final by the end of 2025, asked only when an adoption became final in 2025 or expenses were paid in 2025 (false otherwise)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - s3.adoption_asked_if_any
+            - const: true
+          then: s3.adoption_final
+        - guard:
+            op: test
+            eq:
+            - s3.adoption_asked_if_any
+            - const: false
+          then: s3.no
+      cite:
+        doc: i8839
+        locator: p. 3, Domestic Adoption, "the year after the year of the payment" and
+          "the year the adoption becomes final"; p. 3, Foreign child, "you can’t take the adoption credit or exclusion unless the
+          adoption becomes final"
+    - id: s3.adoption_stepchild
+      printed: (helper)
+      type: Bool
+      gated_by: s3.adoption_stepchild_if_final
+      label: Was every child of such an adoption your spouse's child, and none of them a child with special needs?
+      expr:
+        op: input
+        source: Was every child whose adoption was final by the end of 2025 your spouse's child (a stepchild), and was none of
+          them a U.S. child with special needs? (Expenses for the adoption of your spouse's child are not qualified adoption
+          expenses.)
+      cite:
+        doc: i8839
+        locator: p. 2, Qualified Adoption Expenses, "Qualified adoption expenses don’t include expenses" and "For the adoption of
+          your spouse’s child"; p. 3, Child with special needs, "If you adopt a U.S. child with special needs, you may be able to
+          exclude up to $17,280 and claim a credit"
+    - id: s3.adoption_stepchild_if_final
+      printed: (gate)
+      type: Bool
+      label: Whether every such child was a stepchild without special needs, asked only when such an adoption was final by the end of 2025 (false otherwise)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - s3.adoption_final_if_adoption
+            - const: true
+          then: s3.adoption_stepchild
+        - guard:
+            op: test
+            eq:
+            - s3.adoption_final_if_adoption
+            - const: false
+          then: s3.no
+      cite:
+        doc: i8839
+        locator: p. 2, Qualified Adoption Expenses, "Qualified adoption expenses don’t include expenses" and "For the adoption of
+          your spouse’s child"; p. 3, Child with special needs, "If you adopt a U.S. child with special needs, you may be able to
+          exclude up to $17,280 and claim a credit"
+    - id: s3.adoption_if_any
+      printed: (gate)
+      type: Bool
+      label: 'An adoption that can give the adoption credit for 2025: an adoption final in 2025, or 2025 expenses for an adoption
+        final by then, of a child other than your spouse''s child or of a child with special needs (false otherwise)'
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - s3.adoption_final_if_adoption
+          - const: true
+        - op: test
+          eq:
+          - s3.adoption_stepchild_if_final
+          - const: false
       cite:
         doc: i8839
         locator: p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"; i1040gi p. 116, Lines 6a Through 6z, "You may be able to take the adoption credit if you paid expenses to adopt a child or you adopted a child with special needs and the adoption became final in 2025"
@@ -792,7 +889,7 @@ form:
     - id: s3.prior_amt
       printed: (helper)
       type: Bool
-      gated_by: s3.prior_amt_if_forms
+      gated_by: s3.prior_amt_if_other_forms
       label: Did you (or, on a joint return, your spouse) have an alternative minimum tax liability for 2024 (2024 Form 6251, line 11)?
       expr:
         op: input
@@ -800,7 +897,7 @@ form:
       cite:
         doc: i8801
         locator: p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"; f8801 p. 2, Part II, "Enter the amount from your 2024 Form 6251, line 11"
-    - id: s3.prior_amt_if_forms
+    - id: s3.prior_amt_if_other_forms
       printed: (gate)
       type: Bool
       label: 'Whether the 2024 return shows an alternative minimum tax liability, asked only when the 2024 return includes a form besides Form 1040 and its schedules (false otherwise: the liability is figured on Form 6251)'
@@ -822,6 +919,60 @@ form:
       cite:
         doc: i8801
         locator: p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"; f8801 p. 2, Part II, "Enter the amount from your 2024 Form 6251, line 11"
+    - id: s3.prior_amt_deferral
+      printed: (helper)
+      type: Bool
+      gated_by: s3.prior_amt_deferral_if_amt
+      label: Does the 2024 Form 6251 show an adjustment or preference other than an exclusion item (an amount on line 2e, 2f, any
+        of lines 2i through 2t, or line 3)?
+      expr:
+        op: input
+        source: Does your (or, on a joint return, your spouse's) 2024 Form 6251 show an amount on line 2e, line 2f, any of lines
+          2i through 2t, or line 3? (Lines 2a through 2d, 2g and 2h hold the exclusion items, which give no credit for a later
+          year; answer Yes if an exclusion item was entered on any other line.)
+      cite:
+        doc: i8801
+        locator: p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"; p. 1,
+          "The minimum tax credit is allowed only for the AMT caused by deferral items"; p. 1, Line 2, "Exclusion items are only
+          the following AMT adjustments and preferences" and "Combine lines 2a, 2b, 2c, 2d, 2g, and 2h of your 2024 Form 6251";
+          p. 1, Exclusion items on other lines, "If you included any exclusion item on a line not listed above, include that item
+          in the amount you enter on line 2"
+    - id: s3.prior_amt_deferral_if_amt
+      printed: (gate)
+      type: Bool
+      label: 'Whether the 2024 Form 6251 shows an item other than an exclusion item, asked only when the 2024 return shows an
+        alternative minimum tax liability (false otherwise)'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - s3.prior_amt_if_other_forms
+            - const: true
+          then: s3.prior_amt_deferral
+        - guard:
+            op: test
+            eq:
+            - s3.prior_amt_if_other_forms
+            - const: false
+          then: s3.no
+      cite:
+        doc: i8801
+        locator: p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"
+    - id: s3.prior_amt_if_forms
+      printed: (gate)
+      type: Bool
+      label: 'A 2024 alternative minimum tax liability with an item other than an exclusion item, which can give a credit for
+        2025 on Form 8801 (false when the 2024 return has no form besides Form 1040 and its schedules, no such liability, or
+        only exclusion items)'
+      expr:
+        op: copy
+        from: s3.prior_amt_deferral_if_amt
+      cite:
+        doc: i8801
+        locator: p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"; p. 1,
+          "The minimum tax credit is allowed only for the AMT caused by deferral items"
     - id: s3.prior_forms
       printed: (helper)
       type: Bool
@@ -1217,6 +1368,54 @@ form:
       cite:
         doc: p525
         locator: p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right" and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income"
+    - id: s3.business_credit_count
+      printed: (helper)
+      type: Count
+      label: Number of Schedules C on the return that claim a general business credit (Form 3800)
+      expr:
+        op: sum_over
+        collection: person
+        field: person.sc_credit_count
+      cite:
+        doc: i1040gi
+        locator: p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
+    - id: s3.business_credit_any
+      printed: (gate)
+      type: Bool
+      label: A business on the return claims a general business credit (Form 3800), whose credit belongs on line 6a and whose elective payment amount on line 13c
+      expr:
+        op: test
+        gt:
+        - s3.business_credit_count
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
+    - id: s3.business_fuel_count
+      printed: (helper)
+      type: Count
+      label: Number of Schedules C on the return that claim the credit for federal tax paid on fuels (Form 4136)
+      expr:
+        op: sum_over
+        collection: person
+        field: person.sc_fuel_count
+      cite:
+        doc: i1040gi
+        locator: p. 117, Line 12, "Attach Form 4136"
+    - id: s3.business_fuel_any
+      printed: (gate)
+      type: Bool
+      label: A business on the return claims the credit for federal tax paid on fuels (Form 4136), which belongs on line 12
+      expr:
+        op: test
+        gt:
+        - s3.business_fuel_count
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 117, Line 12, "Attach Form 4136"
     - id: s3.line7
       printed: '7'
       type: NonNegDollars
@@ -1289,6 +1488,12 @@ form:
         cite:
           doc: i1040sr
           locator: p. 1, Qualified Individual, "You are a qualified individual for this credit if you are a U.S. citizen or resident alien"
+      - when: s3.business_credit_any
+        form: Form 3800 (general business credit)
+        remedy: A business credit (Form 3800) goes on line 6a; this tool does not prepare it.
+        cite:
+          doc: i1040gi
+          locator: p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
     - id: s3.line8
       printed: "8"
       type: Dollars
@@ -1395,6 +1600,12 @@ form:
         cite:
           doc: i4136
           locator: p. 2, Part I—Information About Your Business, "If you are claiming a credit for the tax on undyed kerosene you purchased (other than from a blocked pump) and used in your home during the tax period for heating, lighting, or cooking"
+      - when: s3.business_fuel_any
+        form: Form 4136 (credit for federal tax paid on fuels)
+        remedy: A business's credit for federal tax paid on fuels (Form 4136) goes on line 12; this tool does not prepare it.
+        cite:
+          doc: i1040gi
+          locator: p. 117, Line 12, "Attach Form 4136"
     - id: s3.line14
       printed: '14'
       label: Total other payments or refundable credits. Add lines 13a through 13z
@@ -1437,6 +1648,18 @@ form:
         cite:
           doc: p525
           locator: p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right" and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income"
+      - when: s3.business_credit_any
+        form: Form 3800 (elective payment amount, Schedule 3 line 13c)
+        remedy: A business credit (Form 3800) can give an elective payment amount on line 13c; this tool does not prepare it.
+        cite:
+          doc: i1040gi
+          locator: p. 117, Line 13c, "Enter any net elective payment election amount from Form 3800, Part III, line 6, column (j)"
+      - when: sd.f2439_if_dividends
+        form: Form 2439 (tax paid on undistributed capital gains, Schedule 3 line 13a)
+        remedy: Tax a fund or REIT paid on gains it kept (Form 2439, box 2) is a credit on line 13a; this tool does not prepare it.
+        cite:
+          doc: f1040s3
+          locator: Schedule 3 (2025), line 13a, "Form 2439"
     - id: s3.line15
       printed: "15"
       label: Add lines 9 through 12 and 14. Enter here and on Form 1040, line 31

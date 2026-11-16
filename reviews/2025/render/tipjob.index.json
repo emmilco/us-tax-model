@@ -4,14 +4,14 @@
  "family": "claude",
  "base": "dfef75dd53632f2aebba909ef4eba3c57259848229eab0282c063663130f6add",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1(b)",
-   "record": "aee6bf19c8f384673553d89b9d122b508fc3b5c117cba34fd291abee684bb5d6",
+   "record": "32cb73f6307bdcb06b1e73333dd133316e8890a7de763f255a256b89d2cbe3a1",
    "status": "MATCH",
-   "subject_key": "342dd4f91ab4cda548b7b31e192781af77ef32a302dd5f09633fd05b8f66158c"
+   "subject_key": "2fbf57eeb047d1ab23184fa43f02919702f3071df974d435e288d4851d2a3e1b"
   },
   {
    "key": "1(c)",
@@ -27,7 +27,7 @@
   }
  ],
  "subjects": {
-  "1(b)": "1dca4e3a1d0bd7d205535aa439cc0868403f76e6b6416eff50641dc7e2ec8dcf",
+  "1(b)": "31b125dfb90df6c4e7facf466dfaee50d4add7e9b689531a607e4774b7fc21bd",
   "1(c)": "dc81b1fdb2e434e71f49b139aec5466fef26bb4ba5c68d165e439ad08b6aa1e3",
   "1(d)": "90067ce0e979edaedb62fdd2b0a07c0fd0ec2c220b4125eef84ccaab99c20a25"
  },

@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "29aed0840712a4ca34448653ed8da8b97746531a1f715f6421ad92d801e2dd67",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-10); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,10 +16,10 @@
   },
   {
    "key": "(g)",
-   "record": "c6f96fe303de12e800d40c8dadc145a4747704d5e3bf52e3d5ee127bcc447a0a",
+   "record": "340b3e6d61414a1decba4b10e78ca30fdb8abfd400195d6aa428a7d76eacb03e",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". The code B part is gated on boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). The reply itself allows for this (\"unless G–L are refused on a line not shown\"). This round changed only the wording of sales.wash_loss. Project stands on the English.",
-   "subject_key": "a83548439bcee21b93fbf817295838e243bd90e7e04f42fbe6bd80146f587a58"
+   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J), plus other codes. i8949 p. 8, code B, 'Correct the error by entering an adjustment in column (g)'. Boxes G to L are refused at the transaction: sales.one refuses when sales.digital ('Form 8949 digital asset boxes G–L'), and the refusal reaches every Schedule D total and Form 1040 line 7a; codes other than B and W (E, D, L, O and the rest) are refused by sales.bad_code at sales.one ('Only applicable B and W adjustments are supported'), so the $0 the reviewer sees on those rows is never a computed column (g). The sum of the code B correction and the code W loss is the net adjustment the reviewer accepts. Project stands on the English.",
+   "subject_key": "f619c3c310a2f611db7353b27eb67cc8b0d6de33780f6d8b3955f2a4ffef9fdd"
   },
   {
    "key": "(h)",
@@ -30,7 +30,7 @@
  ],
  "subjects": {
   "(e)": "35b4dd45acfb89238962c5f6cf689bca4b8ca5756c6cb69685d5cb4d95ea73f6",
-  "(g)": "142c27a1c83ffc50cd8ab30672ec3e17ef3ba8ffd47c6d0b20ce3a94782ba207",
+  "(g)": "4f7c1bd4b1a74fb5f186d2ee634e76ec9056f4ebb5b8136ec94b530367f73d4d",
   "(h)": "2478528525171d6f13225a6f4ef4eec3f9b7fa92f6869221628e8b2282792bf9"
  },
  "__rest__": "173d9d26e48e7de243e42df8a66476933ccaf441a5d2d8dd3a5d3a9677bc158c"

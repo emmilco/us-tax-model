@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "ce620459cc556d041469f29727d04cdc79561880edb04933ff505533e5509a56",
  "head_rows": {
-  "lines judged": "75",
-  "match / mismatch / unclear / missing": "72 / 1 / 2 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-14); see Line-scoped reviews"
+  "lines judged": "82",
+  "match / mismatch / unclear / missing": "79 / 1 / 2 / 0",
+  "line-scoped reviews": "7 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -167,15 +167,15 @@
   },
   {
    "key": "considered_unmarried",
-   "record": "e04849ad906a7f3f9f7b6914a6419ab0c57976198a8db369831c824748a72b6a",
+   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
    "status": "MATCH",
-   "subject_key": "ec9f9b105edf1ea29160ce236a81a3bd96d886a3d2c0d4ec47da6310fc33b393"
+   "subject_key": "e7a99e85dd74dc3ce4bc89ef9bea4dc74de00fb826484284a0222b54a9408d48"
   },
   {
    "key": "considered_unmarried_if_married",
-   "record": "e04849ad906a7f3f9f7b6914a6419ab0c57976198a8db369831c824748a72b6a",
+   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
    "status": "MATCH",
-   "subject_key": "5fa317e881943866183ba8dc084c8ce3ee60698691649fa1a243d86151e3b87c"
+   "subject_key": "07d9a3e824e13f726f19741b1ea76707dfeeb5ee369db5d37556d7d7cccbebf8"
   },
   {
    "key": "not_married",
@@ -367,9 +367,51 @@
   },
   {
    "key": "hoh_fails",
-   "record": "e04849ad906a7f3f9f7b6914a6419ab0c57976198a8db369831c824748a72b6a",
+   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
    "status": "MATCH",
-   "subject_key": "0552030db838ddd1f45422cbdf36d0d20441ce232da1859930e412592276d155"
+   "subject_key": "d1b111da4ce30622d7d4f84a9432822c9b4d1b49a7e009435b931af1242edfe5"
+  },
+  {
+   "key": "dependents_listed",
+   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
+   "status": "MATCH",
+   "subject_key": "b2b0e116a27d2871eb7101c8dddb3f346254830dbb8d9823b4fa32971dc093ac"
+  },
+  {
+   "key": "dependents_any",
+   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
+   "status": "MATCH",
+   "subject_key": "ff6360e8ca6642fe6ff40371ba6b8636a4fa855cdf9e8b0020bcf8ce4a8f9340"
+  },
+  {
+   "key": "hoh_missed_cost",
+   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
+   "status": "MATCH",
+   "subject_key": "c3d8ceb9d7c0552eb0808c84aa1be7cdb7b4762d148105c891542163d56b50bd"
+  },
+  {
+   "key": "test2_lived_persons",
+   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
+   "status": "MATCH",
+   "subject_key": "dc9c975296ad121dcfaad9bfbeae38aed11d40d9b84a14abc9cb84f804a169f9"
+  },
+  {
+   "key": "hoh_missed_person",
+   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
+   "status": "MATCH",
+   "subject_key": "94461f716f4e6403ea1aa648d0d222aede67d57d1a214798325dabe4ad802984"
+  },
+  {
+   "key": "hoh_missed_test2",
+   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
+   "status": "MATCH",
+   "subject_key": "0c9fd8bfc39b89fc5a8040ca538e050e1b457b64256d10c3eb1f978dae50d90d"
+  },
+  {
+   "key": "hoh_missed",
+   "record": "71ccd318d912d2ae1aff66eae2f8b3a6d02f862864a4f13e9a627cd2ed009079",
+   "status": "MATCH",
+   "subject_key": "13821287aadf4a685128fd61872b9752096f72022a4c31338a0a263bf52d1156"
   },
   {
    "key": "qss_eligible",
@@ -490,8 +532,8 @@
   "taxpayer_work_ssn_count": "5068464ee7473e72ce4ced8b1fd28f82d248aced4e6d7af55067d91f3a3c274b",
   "taxpayer_work_ssn": "5068464ee7473e72ce4ced8b1fd28f82d248aced4e6d7af55067d91f3a3c274b",
   "home_cost": "eb66faee704155180e7a0405c09ffc7b275a7f6d24d4dbc5728c431b67db38e8",
-  "considered_unmarried": "ddf5d8965871bad4e2ba341d4f547b626bd6f00e544abadc779973a6cb38f014",
-  "considered_unmarried_if_married": "bc7591183255740bf425c37e06e974a1e88d02e8c7a3856120a436360132ba48",
+  "considered_unmarried": "6c7a4254b8c477231fab4babed567de654f7e93ef80f68bf7973673515e5af89",
+  "considered_unmarried_if_married": "942eec283040afb5b68606f55688173e8e06ae005cd5362c1608abb879ff49ba",
   "not_married": "271cb4d59111dc78fecb503da766d7e3ae28681361e823790ec2cfe7970ca4d5",
   "unmarried": "73b0c1f6c63abb4d1d40455c9a54559fc8a9a98d7ecb403a2d70077ea83fc0f8",
   "ever_married": "5ad2e8d2915ffa6df839b1e7c7504d04281d2603cb2de48c4eede242209af1aa",
@@ -523,7 +565,14 @@
   "any_test2_person": "baf0ec71040dd3145be45d60fed584bbf6631a035c14509b744e80468a26856a",
   "test2_met": "c881d6a2152f1c03d4cf7b315dbd05daf300764f4264101b12ba0a048c647ad7",
   "hoh_eligible": "eb1f368aecaad1ac0520e3a11707c3cee5079d8e585c54fbcd813e8c4ce422ad",
-  "hoh_fails": "2703c8176ef0653b8c02853ffda0ace889e959c9162387800c0178850211d681",
+  "hoh_fails": "0c63d32027808f1510219e32450541f01bf6c8563e5ccf63d70b4a50a7f10317",
+  "dependents_listed": "483582a5449233a18797fe6cc3b8b6a54518162c05e3ebd2405f2e4846b9da9c",
+  "dependents_any": "d735ea2863499e4e9966cf253403d3679101b2ded6546801a9d25ddf6f72b644",
+  "hoh_missed_cost": "b86ae46e0b8f682209f0ca909ce7b3be52a19e781b8aa9bc292a11858998ea5f",
+  "test2_lived_persons": "8a57c6b640256a5e15ec61d920e24ebbf38fc2a714b02f4573754c1541522f0c",
+  "hoh_missed_person": "c8f5ac66fecf3a3dd410e1afbf114ffc9dbe082fbb0cfd07412ab615e745b10e",
+  "hoh_missed_test2": "c1cb7aaaf5d5551368520b3b86b412fd74bfacb400d42d09abf0040d9af13228",
+  "hoh_missed": "272ea9dd0173725802d5bdd8d020b6d4765d02d12fca065bf4a93139d3c0bfcc",
   "qss_eligible": "a60fbc2d99325bfe450cb0a60b674633604e0387ca4b5c31aa53252d60ec8690",
   "qss_fails": "876bc8582890356064ee02a68759c1f5e14ac51780b4b94dc1a51c90085770cb",
   "rdp": "f5b3282a090b3ea7717369f71c18e431a3f483e60e79e3e3374419283293fa99",

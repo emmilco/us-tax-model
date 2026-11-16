@@ -5,10 +5,10 @@
 
 ## (helper) — `qbi.dividends`
 
-- **Authored helper label:** Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements
-- **Encoded (NonNegDollars):** Input — Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements
-- Expr: `{"op":"input","source":"Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements"}`
-- Cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4 (2025; created 2025-09-12; sha256 55380ad2)
+- **Authored helper label:** Qualified section 199A dividends from Form 1099-DIV box 5, leaving out the part on shares held 45 days or less or that you are obliged to pay to someone else
+- **Encoded (NonNegDollars):** Input — Qualified section 199A dividends from Form 1099-DIV box 5. Leave out the part paid on shares you held for 45 days or less, and the part you are obliged to pay to someone else; enter only the part that qualifies.
+- Expr: `{"op":"input","source":"Qualified section 199A dividends from Form 1099-DIV box 5. Leave out the part paid on shares you held for 45 days or less, and the part you are obliged to pay to someone else; enter only the part that qualifies."}`
+- Cite: [f8995] Form 8995 (2025), lines 1–17; i8995 pp. 3–4; i8995 p. 3, "Qualified REIT dividends include any dividends you received from a REIT held for more than 45 days and for which the payment isn’t obligated to someone else" (2025; created 2025-09-12; sha256 55380ad2)
 
 ## (helper) — `qbi.no`
 
@@ -156,6 +156,6 @@
 ## (helper) — `qbi.dividends_if_ordinary`
 
 - **Authored helper label:** Qualified section 199A dividends (Form 1099-DIV box 5), when ordinary dividends (box 1a) are above zero; zero otherwise
-- **Encoded (NonNegDollars):** Choose — [div helper "Ordinary dividends (box 1a) are above zero" = true → helper "Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and related-payment requirements"] [div helper "Ordinary dividends (box 1a) are above zero" = false → helper "Year parameter sales.zero"]
+- **Encoded (NonNegDollars):** Choose — [div helper "Ordinary dividends (box 1a) are above zero" = true → helper "Qualified section 199A dividends from Form 1099-DIV box 5, leaving out the part on shares held 45 days or less or that you are obliged to pay to someone else"] [div helper "Ordinary dividends (box 1a) are above zero" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["div.has_ordinary",{"const":true}],"op":"test"},"then":"qbi.dividends"},{"guard":{"eq":["div.has_ordinary",{"const":false}],"op":"test"},"then":"qbi.zero"}],"op":"choose"}`
 - Cite: [f1099div] p. 5, Instructions for Recipient, "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A" (January 2024 (continuous-use form); sha256 4ea1de80)

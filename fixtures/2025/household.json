@@ -1859,6 +1859,113 @@
           "cents": 2362500
         }
       }
+    },
+    {
+      "id": "b1mutB.household.single_child_hoh_missed",
+      "covers": [
+        "household:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Mutation lane b1-mutB (BUG-0656), predicted by hand before recording. A never-married filer takes single, lists a 4-year-old child who lived with them all 12 months, and paid over half the cost of the home: i1040gi p. 14, Head of Household, Test 2 (a qualifying child who lived with you more than half the year, and you paid over half the cost of keeping up the home) is met and the filer is unmarried, so head of household fits and single is refused at household.hoh_missed (T-304 item 1; the coverage row household.single_entitled_hoh). The refusal reaches Form 1040 line 12e through household.hoh_fails. One Test 2 person, none only by an absence head of household does not count.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "f1040.status": "single",
+        "household.ever_married": false,
+        "household.home_cost": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 4,
+        "dependent[kid].lived_all_year": true,
+        "dependent[kid].months": 12,
+        "dependent[kid].younger": true,
+        "dependent[kid].other_claimant": false,
+        "dependent[kid].parents_apart": false,
+        "dependent[kid].ever_married": false,
+        "dependent[kid].own_money": false,
+        "dependent[kid].citizen_ssn": true,
+        "dependent[kid].absence_no_return": false
+      },
+      "expect": {
+        "household.test2_lived_persons": {
+          "kind": "count",
+          "value": 1
+        },
+        "household.hoh_missed": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "household.hoh_missed",
+          "form": "Head of household filing status fits you",
+          "remedy": "You chose single, but your answers meet the head of household tests (you were unmarried, and you paid over half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than single on the same income. Go back and choose head of household.",
+          "cite": {
+            "doc": "i1040gi",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025,
+            "locator": "p. 13, Filing Status, \"The ones that will usually give you the lowest tax are listed last\"; p. 14, Head of Household, \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\""
+          }
+        }
+      }
+    },
+    {
+      "id": "b1mutB.household.single_member_not_test2",
+      "covers": [
+        "household"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation lane b1-mutB (BUG-0656), predicted by hand before recording. A never-married filer takes single, paid over half the cost of the home, and lists one dependent: an unrelated person, age 30, who lived with them all year as a member of the household and whom they supported (a qualifying relative). i1040gi p. 14, Head of Household, Test 2, and p501 Table 4: a qualifying relative who is related to you only by living with you all year as a member of your household does not qualify you for head of household. So no Test 2 person lived with the filer, single is right and is not refused, and Form 1040 line 12e is the 2025 single standard deduction, $15,750 (i1040gi, Standard Deduction Chart).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "f1040.status": "single",
+        "household.ever_married": false,
+        "household.home_cost": true,
+        "$dependent": [
+          "friend"
+        ],
+        "dependent[friend].relationship": "household_member",
+        "dependent[friend].age": 30,
+        "dependent[friend].qr_all_year": true,
+        "dependent[friend].months": 12,
+        "dependent[friend].supported": true
+      },
+      "expect": {
+        "household.dependents_listed": {
+          "kind": "count",
+          "value": 1
+        },
+        "household.test2_lived_persons": {
+          "kind": "count",
+          "value": 0
+        },
+        "household.hoh_missed": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        }
+      }
     }
   ]
 }

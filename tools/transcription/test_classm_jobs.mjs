@@ -70,13 +70,41 @@ try {
     assert.equal(typeof uniform, 'boolean', `${job.id} ${entry}: the route is computed`);
     const shown = new Set(fields.map(f => f.field.slice('f1095a.'.length)));
     const filled = job.fill.filter(l => l.entry === entry).map(l => l.id.slice(entry.length + 1));
-    const other = uniform ? ['in_a_jan', 'in_b_jan', 'in_c_jan'] : ['mo_a', 'mo_b', 'c_total'];
+    // A filer who said the months were the same answered the column C total before the route was settled
+    // (f1095a.no_aptc reads it to decide whether column B is checked), so a month-by-month entry may show it.
+    const sameMonths = fields.some(f => f.field === 'f1095a.same_months' && f.value.kind === 'bool' && f.value.value);
+    const other = uniform ? ['in_a_jan', 'in_b_jan', 'in_c_jan'] : ['mo_a', 'mo_b', ...(sameMonths ? [] : ['c_total'])];
     assert.ok(other.every(k => !shown.has(k)), `${job.id} ${entry}: the other route's answers are shown`);
     assert.ok(filled.every(k => !k.startsWith('yr_') || k.endsWith(uniform ? '_uniform' : '_monthly')), `${job.id} ${entry}: the other route's total is requested`);
     entries++;
   }
   assert.ok(entries > 0);
   console.log(`classm route: ${f1095aJobs.length} f1095a job(s), ${entries} entries shown only their own route`);
+  // A return the interview refuses earns no case: the interview refuses Form 8962 on a married filing
+  // separately return, so no Form 8962 case is one.
+  const f8962Out = join(temp, 'f8962-jobs.json');
+  const f8962 = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs', ...YEAR_ARGS,
+    '--docs', 'f8962', '--corpus', '300', '--include-fixtures', '--out', f8962Out],
+  { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
+  assert.equal(f8962.status, 0, f8962.stderr);
+  const f8962Jobs = JSON.parse(readFileSync(f8962Out, 'utf8')).jobs;
+  assert.ok(f8962Jobs.length > 0, 'Form 8962 must still be worked');
+  assert.ok(f8962Jobs.every(job => job.inputs['f1040.status'] !== 'mfs'), 'no case on a return the interview refuses');
+  console.log(`classm refused returns: ${f8962Jobs.length} f8962 job(s), none married filing separately`);
+  // The New York State and City Tax Table lookups are given with the rate-schedule results, not filled:
+  // their rows are not among the form's pages.
+  const nyOut = join(temp, 'ny-jobs.json');
+  const ny = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs', '--ny', ...YEAR_ARGS,
+    '--docs', 'ny_it201', '--corpus', '1', '--include-fixtures', '--out', nyOut],
+  { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
+  assert.equal(ny.status, 0, ny.stderr);
+  const nyJobs = JSON.parse(readFileSync(nyOut, 'utf8')).jobs;
+  assert.ok(nyJobs.length > 0, 'IT-201 must still be worked');
+  for (const id of ['ny_it201.tax_table', 'ny_it201.city_tax_table']) {
+    assert.ok(nyJobs.every(job => !job.fill.some(l => l.id === id)), `${id} is not filled`);
+    assert.ok(nyJobs.some(job => job.given.some(g => g.ref === id)), `${id} is given`);
+  }
+  console.log(`classm tax tables: ${nyJobs.length} ny_it201 job(s) given the Tax Table lookups`);
 } finally {
   rmSync(temp, { recursive: true, force: true });
 }

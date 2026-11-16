@@ -5,7 +5,7 @@
  "base": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
  "head_rows": {
   "agree / disagree / missing": "6 / 5 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,17 +16,17 @@
   },
   {
    "key": "refund.taxable",
-   "record": "e54b3076359d7ca0633bc5591560de3db7bea213880b72765b9535979936d364",
+   "record": "db9c397b6830a60d2ab59c4c984c01be0e265b754ddbd4be89429ce3a2059791",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; both are zero unless a refund was received, 2024 deductions were itemized and income taxes (not sales taxes) were deducted, and line 9 otherwise (i1040gi p. 88, Line 1, \"None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes\"); the project reads refund.worksheet and checks its box 8 and other-year refusals first, and Schedule 1 line 1 reads refund.taxable only when refund.has is true, which the reply folds in as refund.any. Triage executable-triage-v2 (.transcription/triage/2025/refund.json, pass 643525b6700d): 2,584 of 3,206 agree; no value difference; 620 project-unknown (66 on completed returns, e.g. classm.eic.1, where no refund was received and refund.box8 is not asked, so Schedule 1 line 1 takes zero without this line), 2 project-refuses on refused returns.",
-   "subject_key": "6e963ff92f4d885c261e719a9c52a5fa9fb14ec30c706a31270800f3b691db38"
+   "ruling": "Ruling: representation; both give zero unless the worksheet applies and line 9 otherwise (i1040gi p. 88, Line 1, \"None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes\"); the project also asks, on a joint return, whether the refunds are of both spouses' 2024 tax on separate 2024 returns (amb.2025.refund_two_returns, refused or zero) and refuses box 8 and the Pub. 525 exceptions 1 and 5 on this line. Triage pass 0e1ac073bd9b: 2,611/3,291 agree, no value differs; 100 project-unknown on completed returns are returns with no refund (refund.box8 or refund.two_returns unasked; s1.line1 reads refund.taxable only when refund.has), the rest unknowns or refusals on incomplete or refused returns, 9 candidate-unknown. As the landing round.",
+   "subject_key": "f8f9b37dd0f06fe0676f1fcca4817b4b85d0232b1c2182c36d7338b831384e80"
   },
   {
    "key": "1",
-   "record": "e54b3076359d7ca0633bc5591560de3db7bea213880b72765b9535979936d364",
+   "record": "db9c397b6830a60d2ab59c4c984c01be0e265b754ddbd4be89429ce3a2059791",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; both enter the refund capped at the 2024 Schedule A line 5d amount (i1040gi p. 90, worksheet line 1, \"But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"); the project reads the refund through its parent question (refund.received_if_worksheet: zero when the worksheet is not used) and refuses the Pub. 525 exceptions at this line, the reply reads refund.received directly and refuses box 8 here. Triage executable-triage-v2 (.transcription/triage/2025/refund.json, pass 643525b6700d): 3,002 of 3,206 agree; 2 value differences, both on the incomplete mutation mutation.t2.refund.not_itemized (2024 deductions not itemized, $3,000 refund supplied: project $0.00, reply $3,000.00), where the worksheet is not used and line 1 reaches nothing; 160 candidate-unknown (60 on completed returns, refund.received unasked when the worksheet does not apply), 40 project-unknown, 2 candidate-refuses on refused returns.",
-   "subject_key": "91cc0e842a474c1987cf56179e03fce4dc1fc44a50bd211b45241027294c5005"
+   "ruling": "Ruling: representation; the same smaller-of (i1040gi p. 90, worksheet line 1, \"Enter the income tax refund from Form(s) 1099-G ... But don't enter more than ... your 2024 Schedule A, line 5d\"); the project reads the refund through refund.received_if_worksheet (zero off the worksheet path), the reply reads refund.received under a shown_when on the worksheet path. Triage: 2,602/3,291 agree, no value differs; 101 project-unknown on completed returns where the reply's line is hidden (worksheet not used, refund.exc_tax or refund.two_returns unasked), the rest unknowns on incomplete or refused returns, 20 candidate-unknown. The reply's cap note is the chosen reading of amb.2025.refund_cap_5d.",
+   "subject_key": "17c9abeb008c4f088ab064b16df401df681851729df40c52629223e68c5d4924"
   },
   {
    "key": "2",
@@ -99,8 +99,8 @@
  ],
  "subjects": {
   "refund.has": "ebb17fa1c64c2c2b8479d241a3f3598583e92775f8ab0c8a5ba8730277223403",
-  "refund.taxable": "34eb7a157e04cecb69dc0b686f8759dabd4ac7618e3d156c84ec2e535159619c",
-  "1": "9fe4856834a5c42a71498a4ca8e432a7cfbf60d2c33fb737c72d7748a149cadd",
+  "refund.taxable": "88987d787080e406d25b6bf00f38733f2e60c5ed3d72ceb9579ec783caaf0142",
+  "1": "9cfda671b758ad1c1411bc3bc52f567abf583bafdc8b0cf5b159aae42cc81caf",
   "2": "5d1fcd89d106a50a99c5c224d43fccb3989f6c037038842467a57092badbf562",
   "3": "dee0b86519f8bb9ddf2c825b78358413221b68d930a03e98e7344a8d18bf6ede",
   "4": "e48bd6e2a58def054ba9a5f5a088b9a4673d02ffec932f6a04a816dbca878417",
@@ -113,7 +113,7 @@
  "__rest__": "9a12945506dcc91b7709e71f5f54423e182739ad982dde223b33e1168f0e0716",
  "foreign": {
   "refund.has": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "refund.taxable": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "1": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+  "refund.taxable": "4bba81d0dead492774605a5b1c00f9d801d4cfcef3ac6fd3635016ae4a7889dd",
+  "1": "4bba81d0dead492774605a5b1c00f9d801d4cfcef3ac6fd3635016ae4a7889dd"
  }
 }

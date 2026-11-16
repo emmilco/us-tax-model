@@ -2,456 +2,445 @@
  "kind": "render",
  "form": "scope",
  "family": "claude",
- "base": "48a07dfc4984c7f6acc583a2e1c30d3d4337f1cf54e7add2748cfb260d81b390",
- "head_rows": {
-  "lines judged": "73",
-  "match / mismatch / unclear / missing": "65 / 4 / 4 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
- },
+ "base": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
  "lines": [
   {
    "key": "no",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "eb8b0352e7336132729b26064ab4e50741c746a92f04c5172d4d85b817dc352c"
   },
   {
    "key": "w2_count",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "98321ab4c6fb94816176b3ec4e8e159e339f5b3d17cc1970701d2c203febf545"
   },
   {
    "key": "has_w2",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "e881e5a824b3580d7735fe8558d875898ce453443b1c43a9de59de8fc1f32334"
   },
   {
    "key": "noncitizen",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "cc42e0d8048063e6e1382da2fe6bff0d1190d374d21e279119ee20cb45d4beaa"
   },
   {
    "key": "nonresident",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "56df3fc2d76e7d7af4286a3a250ec295a8c8bc1066db7192c2c435862268babf"
   },
   {
    "key": "nonresident_if_noncitizen",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "2ae221cd63098704f69b8dced99da05fb3e12e0110c6d17b5230692ff5851f3d"
   },
   {
    "key": "chapter11",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "ace2ebbe5c3596e0af429d954ee800687f8fe6182d5ab83f77c1fc6bc1c210a5"
   },
   {
    "key": "armed_forces",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: interface gap; the window is decided by p590a p. 9, Qualified reservist repayments, \"You can't make these repayment contributions later than the date that is 2 years after your active duty period ends\", which the reviewer was not given. A 2025 repayment (scope.reservist_repaid) needs an active duty period ending after the start of 2023, so service at some time since the start of 2022; the other two children ask about 2025 travel (Schedule 1 line 12) and a 2025 move (line 14), which need 2025 service. The gate is no narrower than the source. Project stands.",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "status": "MATCH",
    "subject_key": "ad57426d42050cfe0b3caa0baa4fee9722646b76a698e182752f60311ddd2639"
   },
   {
    "key": "reservist_expenses",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "d4359f41a3a7abde8c64a41168a748d6350c5937f2e961b53d715987ac3f7177"
   },
   {
    "key": "reservist_expenses_if_armed_forces",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "d5d623df2ade0424a3afa9d00fd7aa90b89132602a5336075ec9409066e92162"
   },
   {
    "key": "military_move",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "36b649ee557b0e3cf9edf833400963c561f6738b1897bfa0a8f1fda733721426"
   },
   {
    "key": "military_move_if_armed_forces",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "905b93747722e23170d6c57bbf121693fb4c99526fd447b9164a4acbcba1e43c"
   },
   {
    "key": "reservist_repaid",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "beca52ebf468eb8d1d39d4fb7a3505349eefce0375c45045fee7b71e1953ad75"
   },
   {
    "key": "reservist_repaid_if_armed_forces",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "3783a4fae866b28b9a81822eaa45a5a282b651cb3404e0ae003c2bc2044af5c6"
   },
   {
    "key": "under24_count",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "5300a06250f7ad7dc363125852649e655bcb26de17f06a72cba54cd8c744c222"
   },
   {
    "key": "under24",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "706557920e3ffd3f71199f45b32645205d5ddffa8ff4fa805ca3ed85506441d6"
   },
   {
    "key": "under24_if_not_joint",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "e590e4674484e5f1326cbaf0caa629a7bd1c24a34b7ee23bdb064976e2f4cc9d"
   },
   {
    "key": "unearned_2700",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "0aaa73fc677f5fe94cacece4a0e7e5b59a47e5644379c8f9eeb5cbd8986bda8f"
   },
   {
    "key": "unearned_2700_if_under24",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "5a6d3ac5296633334f7d4073647844e4dae4dbdaa3747341a032b53926e63c42"
   },
   {
    "key": "f8615",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "d3e872823931fc27d9f79348fe3c5ff45b0b4c77b498fba803b658a7a940471b"
   },
   {
    "key": "f8615_if_unearned_2700",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "6c1ec7bb30a38ae86ba298731d512f0e1023e3e670109fd4292d22f5b78b0186"
   },
   {
    "key": "f8814",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "5f1515190e80ef29a5df1864adc074981cb471f1181797e67d840447ce8952da"
   },
   {
    "key": "adoption_benefits",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "a0bf91bf4e4444997adc209f06e8e8788fb87ca1953a6963643ba5c750d357cf"
   },
   {
    "key": "adoption_benefits_if_adoption",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "512cbcff875ebd748ac73e84eb9040ec3c8069027219ab072ec0a7db9182ebe0"
   },
   {
    "key": "rental",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "a9b42cecc7f4722cb9d67853167d2acb9ba3d9c79c68e81d2ba62aa016f6e0fc"
   },
   {
    "key": "k1",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "f7342912e953b9207b9960613aff54d660b43baa079ba602007d976c37f56df6"
   },
   {
    "key": "farm",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "a7408059c40379ca40781994a8c838049de82ca50af546f3d090b0e8f3786866"
   },
   {
    "key": "pay_no_w2",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
-   "status": "MISMATCH",
-   "ruling": "Ruling: interface gap; allocated tips in W-2 box 8 (i1040gi p. 24, Line 1c, \"any allocated tips shown in box 8 on your Form(s) W-2\") are screened by s2.w2_marks, asked in the same W-2 tick group (\"An amount in box 8, or box 12 code A/B/K/M/N/Z\"; help: \"Box 8 is tips the employer assigned to you ... A Yes ends the interview here\"), and the help of scope.pay_no_w2 also names \"tips ... shown only in box 8\". The reviewer saw only the scope rendering. A filer with box 8 tips is refused. Project stands.",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "status": "MATCH",
    "subject_key": "858dd7cc15e1e3fec3a695f0b5e9129ab861893b9410415e09883ce300afaf63"
   },
   {
    "key": "medicaid_waiver",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "427a507b0704fb28f8bbdd2b76ffed853b2b332ab4cbc7be9b6dded13b3ac17a"
   },
   {
    "key": "religious_work",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "5d0af74a480d21692d5d807faaa3dc09069e9f9fd491435191eb7d2ae81f94c2"
   },
   {
    "key": "clergy",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "aa6117588db6917b31e935fe69eca3d30521dc90188d7db3b2ffe9e1494df43f"
   },
   {
    "key": "clergy_if_religious_work",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "69080e7a882a102cb492988745f3b5a534af27ad5ffd69269e0f689b28df9f68"
   },
   {
    "key": "church_exempt_wages",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "852130f6a9bc8bcb8b3a820e2aeb3aa00c34967a8eba27e268e7645f75ae4cae"
   },
   {
    "key": "church_exempt_wages_if_religious_work",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "c86fc088b33411fe0589fa018cbaf9268030fa68fcfd440bf8e2aed5aa1f3d5f"
   },
   {
    "key": "w2_marks",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: interface gap; code H is tied to a Schedule 1 line by fw2 (Instructions for Employee, box 12), \"H—Elective deferrals to a section 501(c)(18)(D) tax-exempt organization plan. See the Form 1040 instructions for how to deduct\", i1040gi Line 24f, \"Enter contributions to section 501(c)(18)(D) pension plans (see Pub. 525)\", and p525 p. 10, \"The amount you contributed should be identified with code H in box 12. You may deduct the amount deferred ... Include your deduction in the total on Schedule 1\". None of these was given. The statutory employee part the reviewer confirmed. Project stands.",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "status": "MATCH",
    "subject_key": "598a1b49f85ad917945ad087c3dd4ff707ddb91727cec69885997a96e0257e6b"
   },
   {
    "key": "w2_marks_if_w2",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "33096ad94ed1ffa9d52353f095a9e4807258ceb2d0b7e5db843c8186a5f29968"
   },
   {
    "key": "artist_official",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "c3bb8922eb13a7af8f7c508b4f66a35e60734f47e7040241e3e57ea894183946"
   },
   {
    "key": "artist_official_if_w2",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: interface gap; the deduction belongs to employees: p463 p. 20, \"Armed Forces reservists, qualified performing artists, and fee-basis state or local government officials are allowed to deduct unreimbursed employee travel expenses as an adjustment to total income on Schedule 1 (Form 1040), line 12\", and p. 23, \"Form 2106 is only used by Armed Forces reservists, qualified performing artists, fee-basis state or local government officials, and employees with impairment-related work expenses ... employees who don't fit into one of the listed categories may not use Form 2106\". p463 was not given. Residual: an official paid wholly in fees with no W-2 is not asked; the only effect is that the refusal of scope.performer_expenses, whose remedy is to go on without the deduction, is not shown, so the completed return is the one a No gives. Project stands.",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "status": "MATCH",
    "subject_key": "20beeedba767e2ad81e3532a03b573a99f5bc8dc1770e5eef9a91c305a67331d"
   },
   {
    "key": "performer_expenses",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "0fdc04794c3628626dda7ed6fe83dfe5924397b1d6b4f1b2a720616a98da3d4a"
   },
   {
    "key": "performer_expenses_if_artist_official",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "6e4132f4e628b3669b9191426e40afeb5f4a916bdf612288257dab3512e37f8e"
   },
   {
    "key": "care_benefits_other",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "8819179eefd9c3a3b1a0bba280a0433368ce669fdf314fb49fb3649b1ec6915c"
   },
   {
    "key": "care_benefits_other_if_benefits",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "e74b4ab8023e578ea868628622e47cabebe37b62180390f895011d703e2a7bdf"
   },
   {
    "key": "recovery",
-   "record": "bbe54522e0aefc9990e885a6a28992937d400a2ade0e53d01bf411b232fafea7",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "8339ea2427b23bb38f1e6d5f3317ca7540de912b7fabfb55cc20eac2b4141381"
   },
   {
    "key": "disaster_distribution",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MISMATCH",
-   "ruling": "Ruling: interface gap; a qualified disaster distribution made in 2025, and a 2025 qualified distribution for a main home, come on a 2025 Form 1099-R and are screened per form by retirement.disaster (\"Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?\"), refused through retirement.special (\"Forms 5329, 8606, 4972, 8915-F\"). scope.disaster_distribution covers the earlier-year cases of i8915f p. 2, Who Must File, \"A qualified disaster distribution was made to you in a prior year that you are including in income in equal amounts over 3 years and 'this year' is a year within the 3-year period\"; a 2022 distribution's three years end in 2024. Checked residual: a late-2025 repayment of a 2022 distribution goes on the 2025 Form 8915-F but, with no 2025 income from it, is carried back (i8915f p. 8, Carrybacks), leaving the 2025 tax unchanged. The reviewer saw only scope. Project stands.",
+   "ruling": "Ruling: refusal located elsewhere; a qualified disaster distribution made in 2025 is reported on its 2025 Form 1099-R, and each Form 1099-R record asks retirement.disaster ('Did you take this money out, or put money back, because of a federally declared disaster (Form 8915-F)?'), an operand of retirement.special, which refuses the return (forms/2025/retirement.yaml). scope.disaster_distribution covers only what has no 2025 Form 1099-R: a 2023 or 2024 distribution whose tax is spread into 2025 or that is repaid in 2025 (i8915f, qualified 2021 or later disasters). No 2025 distribution goes unrefused; no wording change.",
    "subject_key": "8cdd424f646910d1948fab887c3584cfd44213d7631f91f5122c30d06e7fadd5"
   },
   {
    "key": "excess_deferral",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "12cb0b8de8bfdbf1e72423c1bc5deffd6e1455eba3d72c5443822d9e9eba4c71"
   },
   {
    "key": "excess_deferral_if_w2",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "defd2dcddb2b1d6ea69ce5ad60f08324c29c41e0f3105308e180e2bb5bca3ab6"
   },
   {
    "key": "archer_msa",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "27991e362178f3ecee884a4a4ef4c3072007f120cafef767fc49321078e70fc1"
   },
   {
    "key": "education_recapture",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "b6d87f2a1089cc0af44b59065fac09dec61ff7ff583db4028a3da661864b2420"
   },
   {
    "key": "se_plan_other",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "fec64090e63815b203b9347bf4cb85d780efa1a6274edcb889e2dda35531f15b"
   },
   {
    "key": "se_plan_other_if_business",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "522677c89e00cb53d1862db7e2500bc3c32b42cf3291197949819c482781e795"
   },
   {
    "key": "income_averaging",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "08d6128686c7611be72354ddf3e0337cb84dea31c0229e3613dceb305a78a722"
   },
   {
    "key": "income_averaging_if_business",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "4f6ff8d65570e0dbdbc3ae7a16ed1801eb96dc6c22a8d20c3c037293e29bac39"
   },
   {
    "key": "foreign_shares",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "0921118ded096ae89057fb1ebbd1370a226992c69fbcc895316d4b096fe2ec15"
   },
   {
    "key": "pfic",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "ac8f75fd60f49388a2c428f5bd5ac5ec92957760f26ab39b213ac38fe0751a3e"
   },
   {
    "key": "pfic_if_foreign_shares",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "5bbaba8849c409aadce043612c9b2ad3c979ce04723ae856270429718fa33343"
   },
   {
    "key": "cfc",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "688a0b22a4a2afc69c89da3984f720dfc33eeee85526da71264b3ad2e21b39fa"
   },
   {
    "key": "cfc_if_foreign_shares",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "637d76d56d5f34adfbcb0f19f82fa1a1684417f49300d06217ab108575637f6c"
   },
   {
    "key": "reforestation",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "UNCLEAR",
-   "ruling": "Ruling: interface gap; the window follows i4562 p. 18, Qualified forestation and reforestation costs (section 194), \"You can elect to amortize the qualifying costs that are not deducted currently over an 84-month period\", which was not given: 84 months of amortization reach 2025 from costs paid as early as 2018, the seventh year before 2025. The question is no narrower than that. Project stands.",
+   "ruling": "Ruling: scope; the question screens out Schedule 1 line 24d (reforestation amortization and expenses, outside this tool). Its window is the section 194 amortization: i4562 (2025) p. 18, Qualified forestation and reforestation costs (section 194), 'You can elect to amortize the qualifying costs that are not deducted currently over an 84-month period', so costs paid in 2025 or in the seven years before can still give a 2025 deduction. The reviewer had only Schedule 1's text; the rendered question is supported by the source and refuses every return it should.",
    "subject_key": "3ddb3853c80183d6f287fe45944d0a3170ddbba35da9f1722c2c0cd433e7ef3f"
   },
   {
    "key": "attorney_fees",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "41d225ec61210c04efb569d1839611c90ae1443cf9636ae227265f53c20a3ada"
   },
   {
    "key": "business_before",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "482fdc09bc915f012c3f39561fd04af7580a49d9c849e1b5a498bc3e4fe7d2ea"
   },
   {
    "key": "nol",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "45bd6aa7cabeb776a5d4ce4b03082ab42a45a5ad105ee3d1d1eeb220e36eafce"
   },
   {
    "key": "passive",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "55148f8f5296f1ce86b8fce57db7c1c5a4baf156b507300f331cc6da9f2e6ca3"
   },
   {
    "key": "passive_if_business_before",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
-   "status": "MISMATCH",
-   "ruling": "Ruling: interface gap; every passive activity begun in 2025 is refused by another screen the reviewer did not see: a Schedule C business without material participation by sc.passive (line G, refused; sc note \"The screens refuse ... passive and rental activities\"), a rental by scope.rental, a partnership or S corporation share by scope.k1, a farm by scope.farm. scope.passive under scope.business_before covers what only an earlier holding can bring, the held-back loss carried into 2025 (its help: \"Count a loss from one that was held back in an earlier year\") and the sale of an older holding. Project stands.",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "status": "MATCH",
    "subject_key": "bbdd63d66f4ed52f5422864fdd94aa62a5d3e0d6e6d27383c97d422dcc3e62df"
   },
   {
    "key": "f8978",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "37a8a3568033c424021f644ae49c8e3790492058904c607f2a83953594943d26"
   },
   {
    "key": "f8978_if_business_before",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "b03147cce72f93b90ec70a559642a6d8da92b1b8ba65e041f92fd170886528b5"
   },
   {
    "key": "schedule1",
-   "record": "bbe54522e0aefc9990e885a6a28992937d400a2ade0e53d01bf411b232fafea7",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "703262db9c941bc7f196a3cb996d6c215adafa2cb598887290ca086314e75778"
   },
   {
    "key": "other_income",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "b407238f89dfb390449833e7f34525a549a0c66de88fae0f0fe16b1bc435bea4"
   },
   {
    "key": "other_line16",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
-   "status": "MISMATCH",
-   "ruling": "Ruling: interface gap; Form 4972 applies only to a lump-sum distribution on a Form 1099-R, which retirement asks per form (\"Was this the whole of that person's balance in the plan, paid out within one year (a lump-sum distribution)?\", asked with a person born before January 2, 1936) and refuses through retirement.special (\"Forms 5329, 8606, 4972, 8915-F\"). A section 965(i) deferral (i1040gi p. 36, Line 16, \"Triggering event under section 965(i)\") is an S corporation shareholder's election (IRC 965(i); not in the archive), and a 2025 triggering event comes with a 2025 Schedule K-1, refused by scope.k1; residual: a shareholder who held no 2025 day of the stock. Neither screen was in the pages given. Project stands.",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "status": "MATCH",
    "subject_key": "952c53426462f876d4eb74e69d12005667ff79ed406491001fe3e1c1b3f51111"
   },
   {
    "key": "ready_schedule1",
-   "record": "bbe54522e0aefc9990e885a6a28992937d400a2ade0e53d01bf411b232fafea7",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "aaee7355d6c21947b69924166f10b3305a98f33526c1d35de735c6c1620de14f"
   },
   {
    "key": "ready_other_income",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "a949102c108c2fa0609edae337f4eeb9a4f5f856d0f7082e58ebb97c350050f0"
   },
   {
    "key": "ready_other_line16",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "a15e2888adc005582fb839b690b4afd2a41ca95d1afc5aa1689b6d6a1bf142f2"
   },
   {
    "key": "ready_credits",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "3e3b8de68224523d8f3dc52a401c64bc0f58e995a498c3cedeaf129385d22b87"
   },
   {
    "key": "ready",
-   "record": "5683124529eca66b306614d37fe61160ca72fab1bec2ca642c5197868b018538",
+   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "f732b6b714a798f998cb79a20bbc22259a49faf36cd6470c270f3e2669b3fd61"
   }

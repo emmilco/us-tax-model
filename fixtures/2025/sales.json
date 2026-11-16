@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "sales.official.gain",
-      "walk": "sales",
       "covers": [
         "sales.official.gain"
       ],
@@ -29,7 +28,6 @@
     },
     {
       "id": "sales.official.loss",
-      "walk": "sales",
       "covers": [
         "sales.official.loss"
       ],
@@ -55,7 +53,6 @@
     },
     {
       "id": "sales.official.adjustment",
-      "walk": "sales",
       "covers": [
         "sales.official.adjustment"
       ],
@@ -83,7 +80,6 @@
     },
     {
       "id": "sales.official.basis",
-      "walk": "sales",
       "covers": [
         "sales.official.basis"
       ],
@@ -111,7 +107,6 @@
     },
     {
       "id": "sales.adjust.A.B",
-      "walk": "sales",
       "covers": [
         "sales.adjust.A.B"
       ],
@@ -147,7 +142,6 @@
     },
     {
       "id": "sales.adjust.A.W",
-      "walk": "sales",
       "covers": [
         "sales.adjust.A.W"
       ],
@@ -183,7 +177,6 @@
     },
     {
       "id": "sales.adjust.A.BW",
-      "walk": "sales",
       "covers": [
         "sales.adjust.A.BW"
       ],
@@ -220,7 +213,6 @@
     },
     {
       "id": "sales.adjust.B.B",
-      "walk": "sales",
       "covers": [
         "sales.adjust.B.B"
       ],
@@ -256,7 +248,6 @@
     },
     {
       "id": "sales.adjust.B.W",
-      "walk": "sales",
       "covers": [
         "sales.adjust.B.W"
       ],
@@ -293,7 +284,6 @@
     },
     {
       "id": "sales.adjust.B.BW",
-      "walk": "sales",
       "covers": [
         "sales.adjust.B.BW"
       ],
@@ -330,7 +320,6 @@
     },
     {
       "id": "sales.adjust.D.B",
-      "walk": "sales",
       "covers": [
         "sales.adjust.D.B"
       ],
@@ -367,7 +356,6 @@
     },
     {
       "id": "sales.adjust.D.W",
-      "walk": "sales",
       "covers": [
         "sales.adjust.D.W"
       ],
@@ -404,7 +392,6 @@
     },
     {
       "id": "sales.adjust.D.BW",
-      "walk": "sales",
       "covers": [
         "sales.adjust.D.BW"
       ],
@@ -442,7 +429,6 @@
     },
     {
       "id": "sales.adjust.E.B",
-      "walk": "sales",
       "covers": [
         "sales.adjust.E.B"
       ],
@@ -478,7 +464,6 @@
     },
     {
       "id": "sales.adjust.E.W",
-      "walk": "sales",
       "covers": [
         "sales.adjust.E.W"
       ],
@@ -515,7 +500,6 @@
     },
     {
       "id": "sales.adjust.E.BW",
-      "walk": "sales",
       "covers": [
         "sales.adjust.E.BW"
       ],
@@ -552,7 +536,6 @@
     },
     {
       "id": "sales.refuse.wash_over_loss",
-      "walk": "sales",
       "covers": [
         "sales.wash_bad"
       ],
@@ -603,7 +586,6 @@
     },
     {
       "id": "sales.adjust.A.W.equal_loss",
-      "walk": "sales",
       "covers": [
         "sales.wash_bad"
       ],
@@ -635,7 +617,6 @@
     },
     {
       "id": "sales.adjust.D.BW.wash_within_corrected_loss",
-      "walk": "sales",
       "covers": [
         "sales.wash_bad"
       ],

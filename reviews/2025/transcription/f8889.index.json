@@ -2,137 +2,138 @@
  "kind": "transcription",
  "form": "f8889",
  "family": "claude",
- "base": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+ "base": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
  "lines": [
   {
    "key": "f8889.one",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "AGREE",
    "subject_key": "a29131ac91ec776be5f1e17ec8845345d781ac8280c60b6aa19cc2f6b2e3d5ce"
   },
   {
    "key": "f8889.step1",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the values differ only where Step 1 is not read. i8889 p. 7, Line 6: the Steps apply to \"Spouses who have separate HSAs and had family coverage\"; f8889.step1 is read only through f8889.line6_split (f8889.split true) and the agreed-allocation check. Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,792 agree, 112 differ; the value witnesses are an unmarried filer aged 55 (stage11.hsa.family_55, audit.f8889.unmarried_hoh_family_age55: $8,550 v. $9,550, the reply adding the unmarried $1,000) and the last-month rule with self-only coverage on December 1 (stage11.hsa.last_month_changed, stage13.mut.hsa_married_last_month_self_only: $0 v. $2,850 / $4,275), where f8889.married_family is false (amb.2025.hsa_last_month_all_year, reading 1: treated as self-only all year), so split is false in every witness. The rest are unknown or refusals.",
+   "ruling": "Ruling: model error; i8889 p. 2, Last-month rule, \"You may consider yourself an 'eligible individual' for the entire year if you are an eligible individual on the 1st day of the last month\" (an election), and p. 4, Line 3, rule 2, \"You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month\"; amb.2025.hsa_last_month_all_year (chosen: the treatment applies to a filer who uses the rule; a filer eligible all year who does not keeps the actual family months). Triage .transcription/triage/2025/f8889.json (pass of this reply; 1,849 compared, 1,691 agree, 62 value differences, 14 on completed returns). The reply reads f8889.last_month only when fewer than 12 months were eligible, so a filer eligible all year with family coverage on December 1 is treated as family all year without the election (stage13.hsa_part_year_family, f8889.last_month false: $4,275.00 project v. $8,550.00); with the rule used and self-only on December 1 it still counts family months against rule 2 (stage11.hsa.last_month_changed $0 v. $2,850.00; stage13.mut.hsa_married_last_month_self_only $0 v. $4,275.00); for an unmarried filer 55 or older it adds the $1,000 to Step 1 (stage11.hsa.family_55 $8,550 v. $9,550), which Step 1 (family-coverage months only) does not include. Step 1 is read only for spouses with separate HSAs, so the only printed effect is line 6 on stage13.hsa_part_year_family (ruled at line 6). The project follows the source.",
    "subject_key": "c4484db9ea1ba33a6a6c75a9b28cb94f8cebf830bacdf707cc6b9ca5a78b237c"
   },
   {
    "key": "f8889.share_raw",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; same as f8889.step1: half of Step 1, read only when f8889.split holds (i8889 p. 7, Line 6, Steps 2 and 3). Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,820 agree, 84 differ; the value witnesses are the same unmarried or last-month cases ($4,275 v. $4,775; $0 v. $1,425 / $2,137.50), none with split true; the rest unknown or refusals.",
+   "ruling": "Ruling: model error; i8889 p. 7, Line 6, Steps 1 to 3; p. 2, Last-month rule (elective, \"You may consider yourself\"); amb.2025.hsa_last_month_all_year. Triage: 1,849 compared, 1,750 agree, 57 value differences (14 completed), all inherited from the reply's Step 1 (see f8889.step1: stage13.hsa_part_year_family $2,137.50 v. $4,275.00; stage11.hsa.family_55 $4,275.00 v. $4,775.00) or its cap of an agreed allocation at Step 1 (classm.f8889.4 $3,562.50 v. $4,275.00, not completed). The project's share follows Steps 2 and 3 from its Step 1, which follows the source.",
    "subject_key": "c44dc71eda50e20712358e869565c054dcdb531523b138b2c57eb7863890a738"
   },
   {
    "key": "f8889.split",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply counts two Forms 8889 on the return where the project reads household.hsa_both, and reads the raw spouse_family, fsa and clear_all_year inputs the interview gates. i8889 p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025\". Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,797 agree, 107 differ, all project-unknown or candidate-unknown; no value witness.",
+   "ruling": "Ruling: representation; i8889 p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025\". Triage: 1,849 compared, 1,673 agree, no value difference; the 176 differences are project-unknown (fixtures without household.married_dec31 or coverage_year, 3 on completed returns) and 2 candidate-unknown. The reply counts two Forms 8889 on the return and reads the coverage inputs directly where the project reads the household's married-with-both-HSAs result and the gated coverage helpers; the same test on what the interview produces.",
    "subject_key": "70becd6c39088b2ed9ad2a6efaa4cee386fcf6f46c17a52fbf5e2a715993dfa5"
   },
   {
    "key": "f8889.excess_amt",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the expression is equivalent: the reply's (line 2 - line 13)+ + (line 9 - line 8)+ is the project's (line 2 - line 13)+ + (line 11 - line 8)+ since line 10 is always 0 (a qualified HSA funding distribution is refused, f8889.ira_transfer). i5329 p. 8, Line 47, \"the excess of your contributions ... from Form 8889, line 2 ... over your contribution limit\" and \"Also include on line 47 any excess contributions your employer made.\" Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,476 agree, 428 differ; the value witnesses inherit the reply's line 6 (mutation.t2.mfj_no_overtime_part3 spouse: $906.75 v. $0, from the Step 4 reading ruled on line 6) or its ungated spouse_family input (redesign.hsa.unmarried_spouse_plan_not_asked: an unmarried filer, $0 v. $1,000); the rest unknown or refusals.",
+   "ruling": "Ruling: model error; i5329 p. 8, Line 47, \"Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn ...), over your contribution limit (Form 8889, line 12). Also include on line 47 any excess contributions your employer made.\" The reply's note says it chose the employer excess only and did not choose \"the excess of your own contributions (line 2 less line 13)\"; line 47 is the sum of both. Triage: 1,849 compared, 1,150 agree, 44 value differences, 11 on completed returns, all the own excess the reply drops (stage11.hsa_excess $700.00 v. $0; stage21.blind.e10 $1,500.00 v. $0; redesign.hsa.general_fsa_all_year $1,000.00 v. $0; redesign.hsa.married_spouse_no_family_plan $700.00 v. $0; classm.s2.2 $2,246.50 v. $0); the other differences are the reply's unknowns on gated inputs it reads directly, and project refusals at cited gates. The project's sum of max(0, line 11 - line 8) and max(0, line 2 - line 13) follows the source.",
    "subject_key": "59ffdb4282041924d3fcd0290efa5840448ddc8878f562d956ab736f78188cd8"
   },
   {
    "key": "3",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; for a married filer aged 55 or older with family coverage in part of the year, the reply adds the $1,000 additional contribution for the self-only months on line 3. i8889 p. 5, \"Note. If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\"; p. 4, rule 6 allows the increase only if \"unmarried or married with self-only HDHP coverage for the entire year\". The reply's note shows it read the Note and chose otherwise. Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,865 agree, 39 differ; value witnesses mutation.f8889.married_55_family_months ($6,425 v. $6,925) and generated 154 (spouse born 1970, married, 12 months eligible, 1 of family: $4,654.17 v. $5,570.83, 11 x $1,000/12), 204, 317; and redesign.hsa.unmarried_spouse_plan_not_asked ($4,300 v. $0), where the reply reads a spouse_family answer the interview does not ask an unmarried filer.",
+   "ruling": "Ruling: model error; i8889 p. 5, Line 3, Note, \"If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\"; p. 4, Line 3, rule 1. Triage: 1,849 compared, 1,617 agree, 5 value differences (1 completed). The reply adds the $1,000 on line 3 for a married filer 55 or older in self-only months of a year with family coverage (mutation.f8889.married_55_family_months $6,425.00 v. $6,925.00; generated 154 $4,654.17 v. $5,570.83; generated 204 $7,841.67 v. $8,008.33), against the Note. It also reads f8889.spouse_family and f8889.former_spouse_family ungated: redesign.hsa.unmarried_spouse_plan_not_asked (completed; unmarried, the spouse-plan question is not asked, an answer given to it is not read) $4,300.00 v. $0, and g1f1.hsa.former_spouse_family_refused (the return is refused at f8889.former_spouse_family_if_asked) $4,300.00 v. $0. The other 227 differences are unknowns on gated inputs (dec_coverage, last_month, former_spouse_family) on partial or refused records. The project follows the source.",
    "subject_key": "a729fdf260b4a027047334d7ec08d4848d4572a77383414a89f1db51db0e0211"
   },
   {
    "key": "4",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "AGREE",
    "subject_key": "322340eec7ae68172b64cf9b0b24227a500d1b03dcd8273fbf0e3d5a57c8bc49"
   },
   {
    "key": "5",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "AGREE",
    "subject_key": "282de64da85743b2992d3b4f4a9498a90f33edebc36a27709501dd87e9361eef"
   },
   {
    "key": "6",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.2025.hsa_step4_other_limits (owner decision 2026-10-29, chosen: Step 4 is the self-only amount for the eligible months without family coverage; recorded alternative: Step 4 is line 5 less Step 1). The reply takes the recorded alternative: line 6 = Step 3 + (line 5 - Step 1). i8889 p. 7, Line 6, Step 4, \"Determine any other contribution limits that apply for the tax year and add that amount to the result in Step 3.\" Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,803 agree, 101 differ; value witnesses stage13.hsa_part_year_family (both spouses: $4,287.50 v. $6,412.50, line 5 raised to $8,550 by rule 4) and mutation.t2.mfj_no_overtime_part3 ($4,281.25 v. $5,343.75), all of this pattern, and redesign.hsa.unmarried_spouse_plan_not_asked ($4,300 v. $0, an ungated spouse_family answer for an unmarried filer). The rest unknown or refusals.",
+   "ruling": "Ruling: model error; i8889 p. 7, Line 6, \"If you are not treated as having family coverage for each month ... Step 1. Refigure ... only for the months you were treated as having family coverage\"; p. 2, Last-month rule (elective); amb.2025.hsa_last_month_all_year and amb.2025.hsa_step4_other_limits (chosen: Step 4 the self-only monthly amounts). Triage: 1,849 compared, 1,563 agree, 16 value differences (3 completed). stage13.hsa_part_year_family (joint, both with HSAs, eligible all year, family 6 months including December 1, last-month rule not used): project $4,287.50 (Step 1 $4,275, half $2,137.50, Step 4 $2,150), reply $4,275.00, from its Step 1 treating the filer as family all year without the election (see f8889.step1); the fixture's hand prediction agrees with the project. redesign.hsa.unmarried_spouse_plan_not_asked $4,300.00 v. $0 is inherited from the reply's line 3 (ungated spouse_family). classm.f8889.4 and classm.s2.2.deepseek $4,279.17 v. $4,275.00 (not completed) are the reply's cap of an agreed allocation and its Step 1. The 26 project refusals are the cited line 6 spouse gates (over-allocation, mixed methods, family on one spouse). The project follows the source and the owner's recorded readings.",
    "subject_key": "b381854788cfd0c0d8ca2905eb622d0adf06ee829b43adfbf87aa7f12849c3e3"
   },
   {
    "key": "7",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; the reply takes the recorded alternatives of two registered ambiguities. amb.2025.hsa_line7_months (chosen: count every month treated as eligible; alternative: count only the months of family coverage): the reply counts months_family (classm.sc.2 spouse $1,000 v. $166.67; mutation.t2.* $1,000 v. $750; mutation.f8889.married_55_family_months $1,000 v. $500; generated 141). amb.2025.hsa_last_month_all_year (chosen: under the last-month rule the December 1 coverage is treated as the coverage for all twelve months, so f8889.married_family is false): stage13.mut.hsa_married_last_month_self_only $0 v. $500. i8889 p. 7, Line 7 worksheet, \"$1,000 x number of months eligible\"; p. 4, rule 2, \"You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month\". Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,888 agree, 16 differ, all of these two patterns or project-unknown.",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (chosen: count every month treated as eligible, all twelve under the last-month rule) and amb.2025.hsa_last_month_all_year; i8889 p. 7, Additional Contribution Amount Worksheet; p. 4, Line 3, rule 2. Triage: 1,849 compared, 1,827 agree, 3 value differences (1 completed) and 17 candidate-unknown. The reply counts only family-coverage months, the recorded alternative: mutation.f8889.married_55_family_months $1,000.00 v. $500.00; generated 154 $1,000.00 v. $83.33; generated 204 $1,000.00 v. $833.33; and under the last-month rule with self-only coverage on December 1 (stage13.mut.hsa_married_last_month_self_only, completed) it still counts the 6 family months ($0 v. $500.00) where rule 2 treats the filer as self-only all year and the $1,000 stays on line 3. Same ruling as the landing round.",
    "subject_key": "045a3f60cdc29ef476943416846c682b51492de7605eb1d550cd61aca03d2db2"
   },
   {
    "key": "8",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "AGREE",
    "subject_key": "19822c7927d9671dc92de43cdc99e9ea3d4aec177c9b924ffbe64eaddfd6e719"
   },
   {
    "key": "10",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "AGREE",
    "subject_key": "93d536f5292660a0779e1b41e4489449181d053c957e40de642393914808f43f"
   },
   {
    "key": "11",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "AGREE",
    "subject_key": "bb571680045b0796c495000b6557580fc3a14f19befcde258b46031d087b92a8"
   },
   {
    "key": "12",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "AGREE",
    "subject_key": "15ad697f3660e51637e0ac2a3adf0b020000c86660d855af8402f1e3ba3e9b25"
   },
   {
    "key": "13",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the expression is equivalent (line 2 and line 12 are never negative, so the reply's \"line 2 if line 2 <= 0\" and the project's 0 when lines 2 and 9 are both <= 0 agree; otherwise both take the smaller of lines 2 and 12). i8889 p. 7, Line 13. Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,503 agree, 401 differ; the value witnesses inherit the reply's line 6 (mutation.t2.*, mutation.m4.* spouse: $4,281.25 v. $5,188; generated 291: $4,279.17 v. $4,346.34, the amb.2025.hsa_step4_other_limits witness value) or its ungated spouse_family answer (redesign.hsa.unmarried_spouse_plan_not_asked: $1,000 v. $0); the rest unknown or refusals.",
-   "subject_key": "f97dbb16aab46b90ac203699319a921a48355842ea1ad8f7a435e96a541d1dcf"
+   "ruling": "Ruling: representation; i8889 p. 8, Line 13, \"Generally, enter the smaller of line 2 or line 12\". The reply's own expression (line 2 when line 2 <= 0, else the smaller of lines 12 and 2) equals the project's on valid inputs (line 2 is never negative; with line 2 zero both give $0). Triage: 1,849 compared, 1,412 agree, 8 value differences (3 completed), all inherited from the reply's line 6 (stage13.hsa_part_year_family $4,287.50 v. $4,275.00; mutation.t2.mfj_no_overtime_part3 and mutation.t2.s1a.line13_magi_first $4,281.25 v. $4,275.00) or line 3 (redesign.hsa.unmarried_spouse_plan_not_asked $1,000.00 v. $0), ruled there; the rest are project refusals at cited gates and unknowns. The reply's note on prior-year excess contributions (Form 5329 line 43) names a case the project refuses at Form 5329 (person.x_other, \"an earlier-year excess in Part VII\", gated by person.x_hsa_prior_excess_if_hsa).",
+   "subject_key": "2b06ff9f2ac1f7be6032cce32cb131bc5d5ae4f925e629b6c5e36c75776e5e95"
   },
   {
    "key": "14b",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
-   "status": "AGREE",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; Form 8889 line 14b. Scratch triage of the gate-round-1 reply (triage.py, 1,638 fixtures, 500 generated returns seed 20261026, 477 partial records): 1,339 agree; no completed-return difference; the 64 differences are candidate refusals or unknowns on refused or incomplete records (the reply refuses through its own f8889.unsupported reading where the project does not). Project stands. (carried over from reviews/2025/transcription/f8889.md at 2bcfd009, review of 2026-11-07)",
    "subject_key": "4fcc28164aed0a15799a42940b3ff5d7b72018bf512d442280da979b4ab3f486"
   },
   {
    "key": "14c",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "AGREE",
    "subject_key": "d963a309c6a679744ee237c47698abf2514f52b6c6e7d41a5770641041764426"
   },
   {
    "key": "15",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply tests line 14c where the project tests line 14a and reads medical_all and medical directly where the interview asks them only when there were distributions (medical_all_if_dist, medical_if_partial); when 14a > 0 but 14c = 0 the project's value is 14c = 0 or the stated medical amount, and line 16 is 0 either way. i8889 p. 8, Line 15. Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,611 agree, 293 differ, all candidate-unknown (dist_code) or candidate-refuses (the reply's declared refusals); no value witness.",
+   "ruling": "Ruling: representation; i8889 p. 8, Line 15. Triage: 1,849 compared, 1,425 agree, no value difference; the 424 differences are candidate-unknown (the reply reads f8889.medical_all where the project's gate does not ask it, with no distribution) and candidate refusals (the reply's own declared gate f8889.h_inherited_other). Where both evaluate the amounts are the same: line 14c when all distributions paid qualified expenses, f8889.medical otherwise, zero with no distribution.",
    "subject_key": "acf2abc97be000e9b8506f423b35304152d079f13f01e020551491042c285b1f"
   },
   {
    "key": "16",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. Form 8889 line 16. triage.py (1,802 fixtures, 500 generated returns seed 20261026, 1,014 partial records): 2,011 of 2,093 agree. The one completed difference is redesign.hsa.dist_code_not_asked: the reply refuses on a Form 1099-SA code stated with no distributions, which the project does not ask without distributions (f1099sa, Instructions for Recipient, Box 1 and Box 3: a code belongs to a distribution). The rest are the reply's unknowns on incomplete records, where it reads the questions the project puts on line 17b. This round's reply (the form reviewed whole after the testing-period questions were split): differences by kind 6 candidate-refuses, 76 candidate-unknown; on completed returns 1 candidate-refuses. (carried over from reviews/2025/transcription/f8889.index.json at 168a49d9, review of 2026-11-12)",
-   "subject_key": "5d29db9950ec48c3549f74f3ac3a0d0bc8e035886eff86d53530a5d7ad5cb7a6"
+   "ruling": "Ruling: representation; Form 8889 line 16, \"Subtract line 15 from line 14c. If zero or less, enter -0-\". Triage: 1,849 compared, 1,591 agree, no value difference; the 258 differences are candidate-unknown or candidate refusals inherited from the reply's line 15. Without the project's line 14a guard the amount is the same (line 14c and line 15 are zero when line 14a is zero).",
+   "subject_key": "d8b15d563803d6c19967c2929faa3a75e40b3718d97e5d70a53234a55b7bee4b"
   },
   {
    "key": "17b",
-   "record": "e007c1c715df3ed4e115d8397ec9a08cb37e7127a5e9b9b2acdcd898ba81470f",
+   "record": "43fe6dd04220fb713a8c195c7d5444bb0050ebeda05780a76757bfac6d3e9d22",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the expression is equivalent: when line 16 <= 0 the reply's 20% of line 16 is 0, the project's constant 0. i8889 p. 9, Line 17b. Triage .transcription/triage/2025/f8889.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 1,839 agree, 65 differ, all candidate-unknown or candidate-refuses; no value witness.",
+   "ruling": "Ruling: representation; i8889 p. 9, Line 17b. Triage: 1,849 compared, 1,669 agree, no value difference; the differences are candidate-unknown and candidate refusals inherited from line 15 and 11 project refusals on refused records (the cited f8889.subject_bad gate). The reply's guards (17a checked or not, line 16 positive) give the same 20% of line 16 or of f8889.subject_part.",
    "subject_key": "86b2c2afe2bba2296a0711402afa2478901c0f5993d594f153083fa9e7c3264f"
   }
  ],
@@ -151,11 +152,11 @@
   "10": "4be51c2e6043d549304c4f147f0c648f8061ce8f2c587a7da68274d1de9cbe39",
   "11": "590d6c80986ff4565355039b56a84171e1afc451cb64f6e3f1d4f64d367db4a3",
   "12": "a9fd9e5994291c7a3e39f53ee1f988e632745270f1dae0fd873f0a0a5f813afd",
-  "13": "3a6f9f01d6326a213b4161e01c7753e1540e24f0690293c05fe87dff015515e7",
+  "13": "2d8eba532926197bcd95738ebe20d003b34792345607b8a13f826891e277a38f",
   "14b": "09824692f9480d3bd433570920e255c070ef9a61716676ac2d2eca942e6530b5",
   "14c": "8f2b121d23624cdce6862484db27b6f9b72fd80ddae5b1b97c5e7d660574b6ec",
   "15": "aa084e67e8195bba0c47f2856103e5a1162d1279f35704a34f83207f27b484e8",
-  "16": "568ae216670f476e935d64f281c342d75d995085f0fe11e1a2fc9cff74c25c1c",
+  "16": "86d84a01803639b74170b6993d9ce89b0d7954e6668e2d57abe39937951e182c",
   "17b": "418cefe719801e23f929f506d8c7891fa65cce4f35328eab8c4fc49cace661f8"
  },
  "__rest__": "53224b9b04f6ed8f50b69796e996e2c9484995e759b1ff8a00da01a8e7831756",
@@ -174,7 +175,7 @@
   "10": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "11": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "12": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "13": "19a2aba28bb0f2b39c55ac3c94d9d27fc5680a62d8059257165e10a76d1a36a2",
+  "13": "8a1cb6248fb7e8b2b98c44132971d3762448a0f89ee2aa39157ecdd2575bedc9",
   "14b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "14c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "15": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

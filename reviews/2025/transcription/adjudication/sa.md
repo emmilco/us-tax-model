@@ -111,3 +111,20 @@ for sa. Claude transcription pass 51a9b88c8eed (line 16), triage `.transcription
 | claude | render | 16 | scope | MISMATCH; casualty, claim of right, disaster loss not refused | i1040sca p. 11, Line 16 list; p525 p. 36 | `sd.casualty`, `s3.repaid_income` and `sa.unsupported` refuse them. |
 
 4 lines: transcription 1 representation; render 3 scope. Findings: none.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-a (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the B1 integration worktree. Open lines of the Claude transcription log (line-scoped pass a9e1a8c8fc0e; triage `.transcription/triage/2025/sa.json`) and render log (pass 572805c12157). Full ruling text is in the logs and sidecars; rulings files `/tmp/b1-adj-a/<form>.json` (transcription) and `/tmp/b1-adj-a/render/<form>.json` (render), applied with rule.py. The deepseek family is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | sa.itemizes | representation | 3,276/3,757 agree; no value; 443 candidate-unknown (sa.gambling_losses, s3.mcc read ungated), 17 candidate-refuses (refusals the project places elsewhere), 21 project-refuses | i1040sca, Line 18; f1040 line 12e | Same choice; differences only from inputs the interview gates. |
+| claude | transcription | sa.deduction | representation | 3,263/3,757 agree; no value; 464 candidate-unknown, 11 candidate-refuses, 19 project-refuses | as sa.itemizes | As sa.itemizes. |
+| claude | transcription | 8a | representation | 3,572/3,757 agree; no value; 184 candidate-unknown (s3.mcc), 1 candidate-refuses (mcc, refused at s3 in the project) | i1040sca p. 8, Line 8a | sa.home_other is asked only under sa.home_owner No; same condition. |
+| claude | transcription | 16 | representation | 2,738/3,757 agree; no value; 793 candidate-unknown (sa.gambling_losses without winnings) | i1040sca p. 11, Line 16 | With no winnings line 8b is $0, so the ungated smaller_of equals the project's $0. |
+| claude | render | 8a | scope | MISMATCH; Form 8396 subtraction | i1040sca p. 8, Line 8a | A mortgage credit certificate refuses through s3.mcc_if_interest (Schedule 3 line 7). |
+| claude | render | 6 | scope | MISMATCH; GST | i1040sca p. 7, Other Taxes | GST on trust income distributions comes with a K-1, refused by scope.k1; foreign tax by sa.unsupported. |
+| claude | render | 15 | scope | MISMATCH; casualty | i1040sca p. 11, Line 15 | The line's cite names sd.casualty through sd.other_forms; BUG-0639's stale refusal name is gone. |
+| claude | render | 16 | scope | MISMATCH; casualty, claim of right, disaster loss | i1040sca p. 11, Line 16 list | sd.casualty, sd.business_property, s3.repaid_income and sa.unsupported refuse them, as earlier rounds. |
+
+Counts: claude transcription: representation 4; claude render: scope 4. Findings: none. No line left open.

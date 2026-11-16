@@ -88,18 +88,22 @@ form:
   - id: tipjob.charged
     printed: (helper)
     label: Do the tips from this employer include amounts not paid voluntarily, not determined by the customer or
-      subject to negotiation (service charges, automatic gratuities), or amounts not paid in cash (including by check,
-      card or app)?
+      subject to negotiation (service charges, automatic gratuities), or amounts not paid in a cash medium (cash, check,
+      credit or debit card, gift card, tokens readily exchangeable for a fixed amount such as casino chips, or a payment
+      app)?
     type: Bool
     gated_by: tipjob.charged_if_listed
     expr:
       op: input
       source: Do these tips include a service charge or automatic gratuity that the business added to the bill, an
-        amount you negotiated with the customer, or tips given as tickets, meals or goods instead of money?
+        amount you negotiated with the customer, or tips given as tickets, meals, services or goods instead of money
+        (casino chips count as money)?
     cite:
       doc: i1040gi
-      locator: pp. 101-103, Schedule 1-A, Qualified Tips, Cash tips, "Paid voluntarily, not subject to negotiation,
-        and determined by the customer/payor," "Amounts received that are not qualified tips"
+      locator: pp. 101-103, Schedule 1-A, Qualified Tips, Cash tips, "paid in a cash medium, including by cash, check,
+        credit card, debit card, gift card, tangible or intangible tokens that are readily exchangeable for a fixed amount
+        (for example, casino chips)"; "Paid voluntarily, not subject to negotiation, and determined by the customer/payor,"
+        "Amounts received that are not qualified tips"
   - id: tipjob.charged_if_listed
     printed: (gate)
     label: Whether this employer's tips include amounts not paid voluntarily or not paid in cash, asked only where the tips were received in a listed occupation (false otherwise)

@@ -4,39 +4,41 @@
  "family": "claude",
  "base": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
  "head_rows": {
-  "match / mismatch / unclear / missing": "33 / 3 / 0 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "30 / 2 / 4 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1 (box)",
-   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "45891a3be2401e5fe13af1fe6f36b75f2bf8dc16233cce02033d42ffa086ae35"
+   "subject_key": "9b5bcbf54028b084407a3d4900246ec48bbb0f847598e6f7902f65f93e1dc0cc"
   },
   {
    "key": "2 (box)",
-   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "44d1d1220c7e2f0ba90f17dfdbcbee3eea4fa68e806f0bce85363fe50dbed5ac"
+   "subject_key": "5b37e7750924546afb75cfe66aaecc385db8d6697053fc04186e6d03d98a72a2"
   },
   {
    "key": "3",
-   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "d242e2fa3ba6734fca2b71aab6f67697b58b5f05ca5be31fe2c6843fb68a2176"
+   "subject_key": "dde78f17c6bc92cc0f2fc7f596245e76c983c0845f112dc1a20ae653ac532beb"
   },
   {
    "key": "4",
-   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
-   "status": "MATCH",
-   "subject_key": "75e86b1828737037e3e7c40ef99c2888571f82ada3b24b86584d38054a8529bf"
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: scope; the rendered line 4 (person.dc_earned: W-2 box 1, the person's share of line 1e, Schedule SE line 3 less the Schedule 1 line 15 deduction) is the earned income of i2441 p. 4, Lines 4 and 5, for every return the tool computes: the other Form 1040 line 1z items are refused before Form 2441 by the other-income screen scope.other_income (line 1b and 1c, and Form 8919 wages: scope.pay_no_w2, \"wages, tips or strike benefits that are not on a W-2\"; line 1d: scope.medicaid_waiver; line 1f: scope.adoption_benefits_if_adoption; line 1h: scope.excess_deferral_if_w2 and scope.pay_no_w2), and nontaxable combat pay by the f2441 refusal s8812.combat_pay (\"Nontaxable combat pay election (Form 2441, lines 4, 5, 18 and 19)\"). The reviewer saw only this form's text; no wording defect.",
+   "subject_key": "6d29166b10325a27783aebada45340d7825db9e6f394095d1f5782650f02e8f8"
   },
   {
    "key": "5",
-   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
-   "status": "MATCH",
-   "subject_key": "0a49c1cb3f0f0cc8ac150dd25083e54ce3bce73e83b052a11e8ea23c32ee3e37"
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: scope; the choice matches the form (the reply agrees), and the spouse's earned income has the definition of line 4: the other line 1z items are refused by scope.other_income (scope.pay_no_w2, scope.medicaid_waiver, scope.adoption_benefits_if_adoption, scope.excess_deferral_if_w2) and combat pay by s8812.combat_pay, as for line 4.",
+   "subject_key": "83016a412a5691d9e97686d55513bb6d8603572225234ae2b59603bd79f133fa"
   },
   {
    "key": "6",
@@ -107,141 +109,134 @@
   },
   {
    "key": "12",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
-   "status": "MATCH",
-   "subject_key": "d8dc7b25e9bfa9bfc321926f50acb641c93089bcfefc3e42535e1e20822753d4"
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; i2441 p. 5, Line 12, \"If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership\": a filer with benefits is asked scope.care_benefits_other (\"Were any of those care benefits not shown in box 10 of a W-2 (for example from your own business or a partnership), or carried into 2025 from a 2024 plan under a grace period?\"), whose Yes refuses the return through scope.other_income; on computed returns line 12 is the box 10 amounts the rendering adds.",
+   "subject_key": "45f70bfff6ad7ef44ee23a16eaf955c30602c749fdeb68467b2a6c09d164eb4d"
   },
   {
    "key": "13",
-   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "934c4f06e0b95bdf5683959c302333b29f5a18f3d78686cc9ef527825091b487"
+   "subject_key": "68795827655d96c93bba8e32189173c0298eb43cabc8ceb57e1b421765ffcab6"
   },
   {
    "key": "14",
-   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "32be0a4f3bd14986ebc13e3cf51e2c9752079c90d70483a32af6000d6239e4a8"
+   "subject_key": "5be324c554cf904b9f4fee0e21dfb78f5b84aabccff06d9abbc906306389cfc1"
   },
   {
    "key": "15",
-   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "aa2ddaa42ea27dd689c55fc54aaa490b3707a52401c4919c1f992a05156ac291"
+   "subject_key": "3a445eeb41523c8620e89d24c2e0ffea1f90725051a9f1b1657df52be422a61d"
   },
   {
    "key": "16",
-   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "0a5d3085eab2ce0475f57ebf1fb9aa66210654fee656aeecb5f82a190c480ca8"
+   "subject_key": "1af90ef85127657196c99347f13ff0260ffa85200b080da4a8c67a14b30ccb16"
   },
   {
    "key": "17",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "dc0c0bea288f48c56b050bdb054dcb4d03b62a93e9ef1bddc28d2c50f134ef8f",
-   "carried": {
-    "by": "rename",
-    "map": {
-     "f2441.paid_2026": "f2441.other_care_expenses"
-    },
-    "from": "d6e7c1e615b4af50dc585df1be72861f0514d1cb",
-    "was": "b609221fd2894e28ddc9d9a821d6b6eb746a4a90d70509ded027d55348079c8c"
-   }
+   "subject_key": "f638f0233effd14009a27acc7988dc4d4f4b60bd8a6f0c1f652a5e2cfb641e3c"
   },
   {
    "key": "18",
-   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
-   "status": "MATCH",
-   "subject_key": "0a6de6375e3e29801ab4a011ace980a90bdae5ee09676812019e534b1e750d40"
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: scope; the reply accepts the omission of line 1e (i2441 p. 5, Line 18) and the line 13 refusal; the other line 1z items are refused by scope.other_income (scope.pay_no_w2, scope.medicaid_waiver, scope.adoption_benefits_if_adoption, scope.excess_deferral_if_w2) and combat pay by s8812.combat_pay, as for line 4.",
+   "subject_key": "a4378ca09a27550014daa3fbc68a3707358060863aa268bc4fe8945e80395490"
   },
   {
    "key": "19",
-   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; Form 2441 (2025) line 19: \"If married filing jointly, enter your spouse's earned income ...; all others, enter the amount from line 18\"; the married filing separately branch the model cites (i2441, Line 19, \"No. Enter your spouse's earned income on line 19\") is never reached: married filing separately is refused for the whole return by s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs; refused at scope.ready and in Form 2441 itself, forms/2025/f2441.yaml). On every supported status the English gives the line its source amount. Project stands.",
-   "subject_key": "5455c305626f3a77c9c5ba88a11f2e9c03c3c44e23a5db5b2ec52d959113eaa3"
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: scope; the reply agrees on the choice and on the MFS refusal at line 26; the spouse's earned income has line 18's definition, whose other line 1z items are refused by scope.other_income and combat pay by s8812.combat_pay, as for line 4.",
+   "subject_key": "ff91486a61e7903eed550ebbce3c0414044627a5f01a246f42e2236c718d2f86"
   },
   {
    "key": "20",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "b54ae32670dec183ecf633b4a45c10c60305eb8edb014ec51801c5187a5eaba7"
+   "subject_key": "f181e52c028094dbc4a05ffbc9e179f36726a8af59aa35eef5596e6dc93acae1"
   },
   {
    "key": "21",
-   "record": "0635ec9f513bb0c2ea148141d7161d07f738bd2515a0676ae92bebec2f65b2af",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; f2441 p. 2, line 21, \"Enter $5,000 ($2,500 if married filing separately and you were required to enter your spouse's earned income on line 19)\". The project refuses every married filing separately return (s3.mfs in scope.ready, and on lines 11 and 26, whose refusal names \"lines 19 and 21\"; owner decision 5), so the $2,500 case never arises; as the transcription ruling on this line. No change to the data.",
-   "subject_key": "08c3c63066d39807121688aea6997fb90990a3b07802303465a892b0f79920eb"
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
+   "status": "MATCH",
+   "subject_key": "d1beaaa3e48a4b567e65408cc0505963b16e631d70239dc16deb27c16e8c5fa8"
   },
   {
    "key": "22",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "4a6414cd23a9b3271f7ba7fa2699dd0f62963633a0f063e40e557d76032825e3"
+   "subject_key": "cf8713b0037bb80b4e6b421adeb702ef6506caf2a58a37441f954af542d9043f"
   },
   {
    "key": "23",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "9a3c7c50b2e8ae31c09e63d9f210b78231633ca612a6a830a3751090150a545d"
+   "subject_key": "e720a8959fe77ec6fec379a8f4c05bc931b2cd14294811ec30d76b884d342d92"
   },
   {
    "key": "24",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "083807cacfacac5e1229d55733d32234e8ea1ac2dd972c595402c90c8ddd7180"
+   "subject_key": "20af2c2113754fb909489ea26830cee28f82afa2b60fce6667daa1a775850930"
   },
   {
    "key": "25",
-   "record": "3133c5e961dd3efdf314da0cfaba64b67c1f0ad6a0aa05c9b67e33976ed377cc",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "8407be704b11e78b0146d46178f4fe777f9cb8c06ca35378b9cdd7ec17e79250"
+   "subject_key": "d2fe4db13dd8c8a8b06eb947d667d3f100d2df6a0d3922fafef82862795fd944"
   },
   {
    "key": "26",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "b9650bf0857fbee8443178a0276d1e9b9a489baa104ace49d8d2b1a397e8b30f"
+   "subject_key": "d2cdb36a730413ec1436ebcbed4b054bec4468fb91eefb03ce4482ab3d93f39c"
   },
   {
    "key": "27",
-   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "1310f555c3e0420a4b9df804e375d4d2592b5bd8252f8c43a082412d347b994c"
+   "subject_key": "b94155935d5be7b5d3f5b08c3004b3a6f8b6c0db67a5a77a73729dc24dbe6df8"
   },
   {
    "key": "28",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "9ffa5fa578183b90d4298270afe024e7dd712b297af7624b94b2a11100318924"
+   "subject_key": "1869cd313b0621072050733087807e630a90d554d55e6a7545561e612ba6ef7d"
   },
   {
    "key": "29",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "43be5c4a6600456d1db83604853a3a6af03f7b7cdf60c54056ef90b9c791bad9"
+   "subject_key": "3623818bd7e5244a1bb46eec48e7dbb2715dc0fba1ba41c7e4967003ab38eedd"
   },
   {
    "key": "30",
-   "record": "f005b8971b6c40488197883a835796e6a5ef0db621e6654b9e84e9e54341cc20",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "b957467708295fedf3db47b42911f717843415588846083a23a993265379f530"
+   "subject_key": "82b11db07c4c9458e68f4ee4f06adbc753b6c870680873654dcf4d81c15761d5"
   },
   {
    "key": "31",
-   "record": "6d6dd4b3edb50ea3f07e2ab42eb7b490eacca62bda76ba312a4de86a8f0cd71e",
+   "record": "68dfd05a3f508fd0a475ec6748477d615adbe218cb67e5a5d3ee1b9bab62b683",
    "status": "MATCH",
-   "subject_key": "a580e2d5de09e406b98bb2394b012098b2cbe3aa983f1d0f448b52ab95706473"
+   "subject_key": "c1de6322d80af46b15f56ac54e0791052a4eba5a7ea6d9892e4cb33670b172ea"
   }
  ],
  "subjects": {
-  "1 (box)": "63cf86b36d046aba6c7c9f36f44970ad94918a778daac88083d22cd4525f90e1",
-  "2 (box)": "e23f23395c1078cf8843dfb0c0f34d5e34dd87416a55c168cd85f9c2d2d04cd6",
-  "3": "1c767b2eaa52ff5733a870123e5dae3e75543625d1d51d0eb77652e8c6b7b2c5",
-  "4": "b31e98ed527937ae24810d4e77d0f4aede20f7856cf9edf0aee6337ed566c06d",
-  "5": "bc4e62c8bab3bf687a8197798e83264f64d57c04826301c2815386d4ad0e3e49",
+  "1 (box)": "8405e947cd23ff80885b4fc0cf65e6eb5365827101834331b0aa5dc360d5196e",
+  "2 (box)": "fe60382783a1c410c389e1efef27d04126406e5b3bef4c23a6756d268ff70908",
+  "3": "8b8c7cc22afd21647bb1f3ef44cff5917635936663cda8b520d7d747da3eb5ad",
+  "4": "dec360c614fb6ed54aea47d08f1c03adbe50e059a77d50be3bf261d30ec0b4a6",
+  "5": "2bb63e2d6174ebb22957dc73320f7731f6a39fc58f49aec1b3ac27501a3d48c9",
   "6": "34f0d934a032cf5160050a88a7c21ff9f4b54c02714966c2a6fce32c9aca03fb",
   "7": "9b9154af283c2b42e9d64eb62ce706bf52b02db97816b30e65038653eeb3c9aa",
   "8": "17c760497e98f0b2f513dfc9cc6b76141b008ea179d06e5f01941e0ab163e0e8",
@@ -253,26 +248,26 @@
   "CLW 3": "cdfe0734822819080dc4be75060f36a14af9ca26536f1aefe7983e40a620b964",
   "10": "beb1d772c6355612bcb2d8cd668139efb1b99702b069e88d72a3b14454819f9a",
   "11": "61112cd04e10bd07071fb4cfb9ebbc42d409edcd4da7bc3f3b25aa399737cc64",
-  "12": "27e355e131fd547c722f8fb844c74991cf94a00904e11f73c5ac7c019c88e90f",
-  "13": "9c59410597dd8251a1404a58864e53ac6f836e19d99949e1d1b3681c5da3828f",
-  "14": "1a98d03c2e93e7b622ce07eb9d77306990a1d55aee6b5f4ddce7e75e1e947429",
-  "15": "d75c604b72e6811ff1647da5d3ca0c5dbcd75443bb772c0654e910980de44649",
-  "16": "3aa8c3bd1cfd4a0571f16661fb7cf39654ac9e1ac507b3d138b1d609946ac67c",
-  "17": "78ab2963b186566d4153c3becbc73ce26f1c5b149b5c26e53907cdc0c7c2036a",
-  "18": "888de4d3b50e829ac38070f4d1491ff2eec8be5cb20f7cd4902c221dfea7966c",
-  "19": "9ec41f66512f0595b9412902c35caaf15b50879908481862de6d5c62da1f16ad",
-  "20": "3aab5c68c71c94c0354eb93b008c5b539f5ff921257d450219e800653174b0d3",
-  "21": "7cafa7d867acbfaf07feca23f0e8ff3b61a812ae578493abd2567a44283f0c10",
-  "22": "b915b927da69a12457c6002e5f4945115d7ede5473d998b24281b6acff79954e",
-  "23": "e74db98f2ed34dedf19a98f08d8d1d1e292d34c7d1b2dbbc5c1e396eb43b78f7",
-  "24": "c4455d17f0737c3ab5cbad5a5d0a496bfb08d4d0b51305717e5efdeb09ad5f19",
-  "25": "b3349d87b149af32bf0a4819625b73b5268559fb9c4e2ded7436a04d31bc1b22",
-  "26": "90b1ba6674d128d79ba05341a50c2bb64366e6734e0df6a88c9f9dd10beea6b4",
-  "27": "055d34da3e8a1c73dbbe87490c17e2a493359085667497114216b1e53511094f",
-  "28": "208f72b6ca518d77c27979fd4088f6e51a4a18aeb44779a921cd4d572a31dbcd",
-  "29": "b6d8757189cc5ba3f8e0410f2083b76e555b3c635eb498aa1810ec854604c0ff",
-  "30": "a394a8a338c4392c6cb715b006268e38362090c2c9c4ef763220b088e1839c13",
-  "31": "9bfe370e903a66d4b98337a63a9ce2fa854b3e0e155cfbbd12dd477da41513cc"
+  "12": "76a1dd84da65cb7dbcbebd8e2d0197654ab4d9c85fc3cb17777f93f90cbf1b5f",
+  "13": "4fdfbb6fcd2af8286b252a965cd757143a45459a3da119e0ef6dd808564cdcdf",
+  "14": "b16e5b0402f99061fd374517a368fa77764ad4f56ed04e144e192fe6c97109e9",
+  "15": "bdf7084566a1446247997b8551a0bc67c44077d78abd7f59112d5860b0fe7f41",
+  "16": "e9dcf33ca2748e3a74de32bd6461d2b43d302c2f74fbfedbac8d8d78ae4a7ebe",
+  "17": "53d82130477336f9957ddecd0d80db9b57b23b6d45df57c96bad8b69d85044db",
+  "18": "78154172f34eac826e259b4cbd5b2fc3ea7030866f7948015a5dd250d1df4870",
+  "19": "39aaf204471ab0da0e0c4c8e7f4f25234e0bbe1702a006e450c00a3931993ec8",
+  "20": "be8e82231ddd6fe69b94f433997f4eaeb8cc099c52012e84d51f1a59ef91a136",
+  "21": "d82d23ded578c0a982836927c09703e525d683018592090ae659185a78c0f1a0",
+  "22": "7073e82c50d0aaae88b246fd9ceb2645fcf17439c15fd04984e7f0f53c206d37",
+  "23": "a37f899d0dd8bedb7e1d2599172f584b688564690d4099863b75fdffa2fe3716",
+  "24": "d22ce00ae64c3b9677e9653c07c7a0fc3d4dcb05283fa4630754cdbb18cc8527",
+  "25": "8a81103a7de904dba13526b95260c7b009992a8f1c6657dcf116ddcd3e14d8d1",
+  "26": "84f4efdc03cf12b56bd90a2fd3be51da63f3eb69141eca8cfbd6bda0a2c01043",
+  "27": "18cb3526020eedc348431177480ead271aba8474888ff1ece44e37746fad9aca",
+  "28": "51f6c27fb9dd8d46c4def316d05aeeb6f483fbc3ddde62fcb2510556c1efd332",
+  "29": "4922413d3fd24054b1b92c399435a61bf65c1728b72ff45a77c0e6e6b8da1ffe",
+  "30": "87f640e99fff36a8f5f5e57347956b0f2a946da409dd505dab1c973e9f5a046a",
+  "31": "ea1bc73319500148ba0dc72de15c27fdc6db274c7a4a9197b24f91a04172f504"
  },
  "__rest__": "bb4b29bcc2aa36444c7a09d3b0883307635faecc1234ab9c0d9ed9d55d114f4d"
 }

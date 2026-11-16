@@ -1173,6 +1173,113 @@
           }
         }
       }
+    },
+    {
+      "id": "g1f4.refund.two_returns_standard",
+      "covers": [
+        "refund",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane g1-f4 (BUG-0593), predicted by hand from i1040gi p. 88, Line 1 (TIP: \"None of your refund is taxable if, in the year you paid the tax, you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes\") before running. Facts: 2025 married filing jointly (you wages $50,000, spouse none). The two married in 2025; each filed their own 2024 return with the standard deduction, and each got a refund of 2024 state income tax ($2,000 in all). Neither 2024 return deducted state income tax, so none of either refund is taxable whichever return it is tested against: refund.taxable 0, Schedule 1 line 1 0, Form 1040 line 11a = wages 50,000. Reading amb.2025.refund_two_returns.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box4": 310000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "refund.any": true,
+        "refund.two_returns": true,
+        "refund.two_itemized": false,
+        "refund.received": 200000
+      },
+      "expect": {
+        "refund.taxable": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5000000
+        }
+      }
+    },
+    {
+      "id": "g1f4.refuse.refund.two_itemized",
+      "covers": [
+        "refund:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane g1-f4 (BUG-0593). Inputs are g1f4.refund.two_returns_standard with one spouse's 2024 return itemized with state income tax deducted (refund.two_itemized Yes). The Form 1040 worksheet tests a refund against one 2024 return (i1040gi p. 90, lines 1, 2, 4 and 5), so refunds of both spouses' tax on two 2024 returns, one of which deducted the tax, are refused (amb.2025.refund_two_returns). refund.taxable's earlier gates (box 8, refund.not_prior_year) are No, so its third entry decides; Schedule 1 line 1 carries the same refusal. Gate, form and remedy predicted from the form source; the cite fields are the evaluator's. Added at integration B1: refund.received_if_worksheet is $0. With two 2024 returns the one-return worksheet is not used (refund.worksheet is No, amb.2025.refund_two_returns), so the worksheet's received amount is not taken even though refund.received is answered.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box4": 310000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "$w2@person[spouse]": [
+          "e0"
+        ],
+        "refund.any": true,
+        "refund.two_returns": true,
+        "refund.two_itemized": true,
+        "refund.received": 200000
+      },
+      "expect": {
+        "refund.taxable": {
+          "kind": "refusal",
+          "gate": "refund.two_itemized_if_two",
+          "form": "Pub. 525, Itemized Deduction Recoveries (Worksheet 2)",
+          "remedy": "Refunds of 2024 tax of both of you, when each filed a separate 2024 return and either of you itemized and deducted state and local income taxes, are tested against each 2024 return in turn, and the Form 1040 worksheet takes one; that is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, \"But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"; p525 p. 24, Itemized Deduction Recoveries, \"how to determine the amount to include in your income from a recovery of an amount deducted in an earlier year as an itemized deduction\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "s1.line1": {
+          "kind": "refusal",
+          "gate": "refund.two_itemized_if_two",
+          "form": "Pub. 525, Itemized Deduction Recoveries (Worksheet 2)",
+          "remedy": "Refunds of 2024 tax of both of you, when each filed a separate 2024 return and either of you itemized and deducted state and local income taxes, are tested against each 2024 return in turn, and the Form 1040 worksheet takes one; that is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, \"But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\"; p525 p. 24, Itemized Deduction Recoveries, \"how to determine the amount to include in your income from a recovery of an amount deducted in an earlier year as an itemized deduction\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "refund.received_if_worksheet": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

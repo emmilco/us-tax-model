@@ -17,7 +17,6 @@ export const VOCABULARY = [
   "prorate",
   "percent_floor",
   "table_lookup",
-  "bracket_schedule",
   "sum_over",
   "keyed_lookup",
   "rate_lookup",

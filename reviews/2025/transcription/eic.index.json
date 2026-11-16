@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "20",
   "agree / disagree / missing": "2 / 18 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,24 +23,24 @@
   },
   {
    "key": "eic.eligible",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-42, Steps 1 to 5. The interface is \"Steps 1 to 5 passed in order\"; the candidate reads it as \"you can take the credit\" and adds the worksheet STOPs (Worksheet A line 2 zero; Worksheet B line 4b zero or less, line 7 zero; p. 46-48). It is therefore false on filers who pass Steps 1 to 5 but have no credit: the sampled completed value witnesses are all project true, candidate false on such returns (classm.f1040.4 and .deepseek, Worksheet B line 4b -$25,859.81; sales.carryover.short_term and stage4.mut.div_box3_basis_reconciled, no earned income, Worksheet A line 2 $0; bug0477.clcw26.final_return_short and not_final_return_short). Same reading as the backlog round. eic.credit agrees on every completed return. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,292 of 2,606 agree; on completed returns: 92 value.",
-   "subject_key": "a1aa1074383cfb7e18f84b94babe4445bc082f6687dc2bfc516008dce1d621bc"
+   "ruling": "Ruling: model error; i1040gi pp. 40-42, Steps 1-5. The reply lists household.eic_disallowed_claim in eic.eligible's refuses, but that gate reads household.eic_claimed, which reads eic.eligible: a cycle (triage --explain stage14.asset.hy_5yr: eic.eligible > household.eic_disallowed_claim > household.eic_claimed > eic.eligible), so the line is unknown (825 completed candidate-unknown; every sampled one is this cycle). It also reads the line as also passing the Worksheet A line 2 / B line 7 STOP (its note (1)), false on 12 completed returns that pass Steps 1-5 with no table credit. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,117 agree; completed: 825 candidate-unknown (cycle), 12 value.",
+   "subject_key": "b2769600ed60ac9c0ca643f58d3ef0ee78e820e0768c0555d95706c8a62977e4"
   },
   {
    "key": "eic.credit",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040gi pp. 40-48, Steps 1 to 6 and Worksheets A and B; Worksheet A line 6, \"This is your earned income credit\". No completed-return difference. The differences are refusals and unknowns on refused or incomplete records: the candidate leaves out the Form 8862 refusal (household.eic_disallowed_claim) and places its own screens (s8812.combat_pay, eic.died_this_year) where the project's question order and scope screens differ. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,424 of 2,606 agree; on completed returns: none.",
-   "subject_key": "b315dcec7c297ec56eb603128dfc596c05e43b1773ff40bfc6e7ce7442526854"
+   "ruling": "Ruling: model error; i1040gi pp. 40-48. Guarded by the reply's eic.eligible, it inherits that line's cycle (household.eic_disallowed_claim > household.eic_claimed > eic.eligible) and is unknown on 825 completed returns. Where it evaluates, no value differs. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,188 agree; completed: 825 candidate-unknown.",
+   "subject_key": "17268f94b0b108f46bcc5f1be0993d57239095071264f39b012c808fc3ac0f65"
   },
   {
    "key": "eic.check_27c",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040gi p. 43, Line 27c, and the STOPs on pp. 40-47 that say to check it. No completed-return difference; the differences are refusals and unknowns on refused or incomplete records (scope screens and question order). Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,442 of 2,606 agree; on completed returns: none.",
-   "subject_key": "973b6e79915e9d2d1049bd4b56a121264e2132f570857c585f461416d5b56f02"
+   "ruling": "Ruling: representation; i1040gi p. 43, Line 27c. No value difference. Completed: 30 candidate-unknown; every sampled completed witness is the reply's refusal on scope.nonresident read raw (the project asks it only under scope.nonresident_if_noncitizen); the rest are raw reads of gated dependent questions (kidnapped, us_half, joint_return) and refusal placement on incomplete or refused records. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 2,378 agree.",
+   "subject_key": "c08b9061d6f02ce4539a1ab90027a0dedf6a38279d7a802ec9ab2f7725a60d74"
   },
   {
    "key": "eic.separated_box",
@@ -58,117 +58,117 @@
   },
   {
    "key": "(Step 5, 1)",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-41, Steps 1 to 4, each of which can end \"STOP You can't take the credit\"; p. 42, Step 5. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. The candidate gives Step 5 line 1 no shown_when, so it shows Form 1040 line 1z on every return, including completed returns that STOP in Steps 1 to 4, where the project hides the line (shown_when eic.reached_step5); a nonzero amount on a line the filer does not reach is a model error (README, skipped-line rule). Values agree where the project shows the line. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 677 of 2,606 agree; on completed returns: 645 candidate-shows-skipped.",
-   "subject_key": "08b1a8a3f5b696ee16b9819fdaaf5aac3e427c76de6977f2ff0cc67076ed181a"
+   "ruling": "Ruling: model error; i1040gi pp. 40-42 (Step 5 is reached only through Steps 1-4). The reply has no shown_when and shows Form 1040 line 1z on returns that STOP earlier; the project hides it with eic.reached_step5. As in the landing round. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 705 agree; completed: 657 candidate-shows-skipped.",
+   "subject_key": "cfcf0976a3858b46b0b7f83161866ef6082325714f74a68387e3c8fc063b3ee3"
   },
   {
    "key": "(Step 5, 2)",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040gi p. 42, Step 5, line 2 (Medicaid waiver payments). Both sides give $0 on every supported return; no completed-return difference. The differences are on refused or incomplete records where the project's shown_when eic.reached_step5 evaluates the upstream screens. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 1,918 of 2,606 agree; on completed returns: none.",
-   "subject_key": "70a0c475797cec273b3973de680ab6a8616001efa06a701c42e72c71de1d70ac"
+   "ruling": "Ruling: scope; i1040gi p. 42, Step 5 line 2 (Medicaid waiver). $0 on both sides, refused through scope.medicaid_waiver; no completed difference. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,863 agree; 550 project-refuses, 236 project-unknown on refused or incomplete records.",
+   "subject_key": "e194a5b96b31372122f633fdd4c9b714271ed917466688c43a1fa8a4f875ad28"
   },
   {
    "key": "(Step 5, 3)",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-41, Steps 1 to 4, each of which can end \"STOP You can't take the credit\"; p. 42, Step 5. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. As (Step 5, 1): no shown_when, so the subtotal shows on completed returns that STOP before Step 5, where the project hides it (eic.reached_step5). Values agree where the project shows the line. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 687 of 2,606 agree; on completed returns: 645 candidate-shows-skipped.",
-   "subject_key": "5cc5faf818e39849367840dc01ab124d64dc4ad1c4c417e4588939cfb99fbb2e"
+   "ruling": "Ruling: model error; i1040gi pp. 40-42. As (Step 5, 1): no shown_when; the Step 5 subtotal shown on returns that STOP before Step 5. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 715 agree; completed: 657 candidate-shows-skipped.",
+   "subject_key": "c3d9c00a424bd32f96284fc604e7e38c599f9e738b90463ab654d65ed3e764e2"
   },
   {
    "key": "(Step 5, 4)",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-41, Steps 1 to 4, each of which can end \"STOP You can't take the credit\"; p. 42, Step 5. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. Both sides give $0, but the candidate refuses through s8812.combat_pay on every return, including two completed returns that STOP at Step 1 and never reach Step 5 (stage5.return.refund_combat_pay_no_children, stage8.hoh.actc.three_children.line12_stop_combat_pay), which the project completes; the combat pay election matters only on this line (p. 42, line 4). It has no shown_when either. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 1,780 of 2,606 agree; on completed returns: 2 candidate-refuses.",
-   "subject_key": "21ec4f4e2425bd49796ed1d5420a2fa9e7f99144330a98611ea3545efc8b1633"
+   "ruling": "Ruling: model error; i1040gi p. 42, Step 5 line 4. The reply has no shown_when and refuses or needs s8812.combat_pay on completed returns that never reach Step 5 (stage5.return.refund_combat_pay_no_children; classm.f5695.2), where the project hides the line. As in the landing round. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,823 agree; completed: 17 candidate-unknown, 2 candidate-refuses.",
+   "subject_key": "dcd3f16dce25362ece1b0fd91229748b418c121c1e1fed74d1fb609d40007c65"
   },
   {
    "key": "(Step 5, 5)",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-41, Steps 1 to 4, each of which can end \"STOP You can't take the credit\"; p. 42, Step 5. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. As (Step 5, 1): no shown_when, so the earned income shows on completed returns that STOP before Step 5, and it inherits the combat pay refusal of (Step 5, 4) on two completed returns that never reach Step 5. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 691 of 2,606 agree; on completed returns: 643 candidate-shows-skipped, 2 candidate-refuses.",
-   "subject_key": "0242e6908cb177098453c8273f930d1a3741055d7e8c7b914de326a5b6aa4c0f"
+   "ruling": "Ruling: model error; i1040gi pp. 40-42. As (Step 5, 1), plus the combat-pay refusal of (Step 5, 4). Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 783 agree; completed: 641 candidate-shows-skipped, 17 candidate-unknown, 2 candidate-refuses.",
+   "subject_key": "c3711b9fa5738d6aaeb51e1c085f73b353702089c7a6c529192c5a1d0b2661b1"
   },
   {
    "key": "4b",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 47, Worksheet B, \"Use this worksheet if you answered 'Yes' to Step 5, question 2\", reached only after Steps 1 to 4 (pp. 40-41). The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. The candidate shows line 4b whenever there is a Schedule C (h_ws_b), with no test of Steps 1 to 4, so it shows a nonzero amount on completed returns that STOP at Step 1, where the project hides the line (shown_when eic.show_wsb4b): stage14.asset.hy_5yr, mq_7yr, mq_mixed, mq_not, bonus_100 and bonus_40_before ($27,880.56 to $46,135.83, each above the Step 1 limit). It also inherits the combat pay refusal on two completed returns. The candidate-shows-skipped counts on returns without a Schedule C are artifacts. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 402 of 2,606 agree; on completed returns: 882 candidate-shows-skipped, 2 candidate-refuses.",
-   "subject_key": "9312ae0dc0cf206b137b6fe3d4e3ef5761c8271954b5412a82e2d8d8c7c7b8ca"
+   "ruling": "Ruling: model error; i1040gi p. 47, Worksheet B, reached through Step 5. The reply's shown_when (any Schedule C) has no Steps 1-4 test, so line 4b shows on Schedule C returns that STOP earlier (stage14.asset fixtures). Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,945 agree; completed: 132 candidate-shows-skipped, 1 candidate-unknown (scope.w2_marks read raw).",
+   "subject_key": "055fb112333566c0a31a95769bb5e97b308cf454e5d1a7a138d35e8026380e22"
   },
   {
    "key": "6 (eic.wsb_6)",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 48, Worksheet B line 6, reached only after Steps 1 to 4 and a line 4b above zero. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. The candidate's shown_when (h_wsb_part5: a Schedule C and line 4b above zero and below the limit) has no test of Steps 1 to 4, so it shows line 6 on completed returns that STOP at Step 1 (stage14.asset.hy_5yr and the other stage14.asset fixtures of line 4b), where the project hides it (eic.show_wsb6). Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 419 of 2,606 agree; on completed returns: 879 candidate-shows-skipped, 2 candidate-refuses.",
-   "subject_key": "82f4c38f99e36c94ad65806e3fc10a77e6f72a88a91381ba9c40157fe6084ced"
+   "ruling": "Ruling: model error; i1040gi p. 48, Worksheet B line 6. As 4b. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,953 agree; completed: 130 candidate-shows-skipped, 1 candidate-unknown.",
+   "subject_key": "5188e57320561baeaa42b04e36433b3c6e4362a04b910d6700b5878d7ea00d51"
   },
   {
    "key": "1",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-41, Steps 1 to 4, each of which can end \"STOP You can't take the credit\"; p. 42, Step 5. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. i1040gi p. 46, Worksheet A. The candidate shows line 1 whenever there is no Schedule C (h_ws_a), with no test of Steps 1 to 4, so it shows Worksheet A on completed returns that STOP at Step 4 (stage9.eic.no_child.over65, under25, abroad, qc_of_another: earned income in the table, project hidden by eic.eligible). The project's Worksheet A lines also carry the Worksheet B lines for a self-employed filer (line 1 is Worksheet A line 1 or Worksheet B line 6, and so on); the candidate hides Worksheet A for a filer with a Schedule C and puts Worksheet B in helpers, so the value differences on Schedule C filers (classm.eic.1, classm.f1040.4, stage14.eic.wsb_only_business, stage14.eic.wsb_loss, stage14.sehi.profit_limit, f2.t101.credit_disallowed_eic_zero) are lines its own shown_when hides and are layout, not error.  Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 640 of 2,606 agree; on completed returns: 647 candidate-shows-skipped, 29 value, 2 candidate-refuses.",
-   "subject_key": "4d6c1b71652e3bf042339c370e5919ccc5d4d703e3790f6841357b6a156f7605"
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A line 1. The reply's shown_when (no Schedule C) has no Steps 1-4 test: line 1 shows on returns that STOP earlier (stage20.blind.r1, classm.f2441.1). The 15 hides-shown are layout (the project's line 1 also carries Worksheet B line 6 on Schedule C returns). Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 822 agree; completed: 626 candidate-shows-skipped, 15 candidate-hides-shown, 16 candidate-unknown, 2 candidate-refuses.",
+   "subject_key": "a7f876636fb36e2161316e52b04a9202f4bdc8fa52a8dbc595c7a119f17955ba"
   },
   {
    "key": "2",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-41, Steps 1 to 4, each of which can end \"STOP You can't take the credit\"; p. 42, Step 5. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. i1040gi p. 46, Worksheet A, line 2. Same shown_when as line 1 (h_ws_a), so the candidate shows a credit amount on completed returns that STOP at Step 4 (stage9.eic.no_child.over65, under25, abroad, qc_of_another: $308.00; classm.f1040.6: $649.00), where the project hides line 2 (eic.eligible). The project's Worksheet A lines also carry the Worksheet B lines for a self-employed filer (line 1 is Worksheet A line 1 or Worksheet B line 6, and so on); the candidate hides Worksheet A for a filer with a Schedule C and puts Worksheet B in helpers, so the value differences on Schedule C filers (classm.eic.1, classm.f1040.4, stage14.eic.wsb_only_business, stage14.eic.wsb_loss, stage14.sehi.profit_limit, f2.t101.credit_disallowed_eic_zero) are lines its own shown_when hides and are layout, not error.  Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 1,672 of 2,606 agree; on completed returns: 28 candidate-shows-skipped, 25 value, 2 candidate-refuses.",
-   "subject_key": "f7623203e0139d13e8f65e9f4edb73df0f88af5e851a4793af5aba727459975a"
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A line 2. As 1: a table credit shown on returns that STOP at Step 4 (stage9.eic.no_child.over65, $308; stage9.eic.investment_income, $1,369). Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,796 agree; completed: 20 candidate-shows-skipped, 15 candidate-hides-shown (layout), 17 candidate-unknown, 2 candidate-refuses.",
+   "subject_key": "d219b6472eae881a7ba1b0093f877dc47665b71c980f82b7e7e0bf06ecf55f68"
   },
   {
    "key": "3",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-41, Steps 1 to 4, each of which can end \"STOP You can't take the credit\"; p. 42, Step 5. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. i1040gi p. 46, Worksheet A, line 3. The candidate's shown_when (h_wsa_after2: no Schedule C and line 2 above zero) has no test of Steps 1 to 4, so with line 2 nonzero on the Step 4 STOP returns (stage9.eic.no_child.over65 and the others of line 2) it shows Form 1040 line 11b where the project hides line 3 (eic.show3). The candidate-shows-skipped counts on Schedule C returns are artifacts. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 919 of 2,606 agree; on completed returns: 857 candidate-shows-skipped.",
-   "subject_key": "38ba2a909db6b1c03ccdcbc63cb63482cf1896cceacc6623048db46f6e17c847"
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A lines 2-3 (\"If line 2 is zero, STOP\"). As 1: Form 1040 line 11b shown on returns that STOP before Worksheet A or at line 2; the project hides it with eic.show3. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,059 agree; completed: 707 candidate-shows-skipped, 13 candidate-hides-shown (layout).",
+   "subject_key": "d1f640252ff6f960b413fe528678f207dc332c53377d05012ffd0a007da0d0e7"
   },
   {
    "key": "4",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-41, Steps 1 to 4, each of which can end \"STOP You can't take the credit\"; p. 42, Step 5. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. i1040gi p. 46, Worksheet A, line 4. Same shown_when as line 3, so it shows the line on returns that STOP at Step 4. The project's Worksheet A lines also carry the Worksheet B lines for a self-employed filer (line 1 is Worksheet A line 1 or Worksheet B line 6, and so on); the candidate hides Worksheet A for a filer with a Schedule C and puts Worksheet B in helpers, so the value differences on Schedule C filers (classm.eic.1, classm.f1040.4, stage14.eic.wsb_only_business, stage14.eic.wsb_loss, stage14.sehi.profit_limit, f2.t101.credit_disallowed_eic_zero) are lines its own shown_when hides and are layout, not error.  Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 1,683 of 2,606 agree; on completed returns: 392 candidate-shows-skipped, 15 value, 2 candidate-refuses.",
-   "subject_key": "131a9c58fea61381fe2a2eaed08e0c713b3aa75e800de6f74f3973c09291cc3e"
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A line 4. As 3. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,558 agree; completed: 402 candidate-shows-skipped, 12 candidate-hides-shown, 16 candidate-unknown, 2 candidate-refuses.",
+   "subject_key": "3899225d6b52ae9117fb3ff8e25b1d3933c0fdef28b1c0353a6e7e01c2b2f7eb"
   },
   {
    "key": "5",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-41, Steps 1 to 4, each of which can end \"STOP You can't take the credit\"; p. 42, Step 5. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. i1040gi p. 46, Worksheet A, lines 4 and 5. The candidate's shown_when (h_wsa_show5) adds line 4 No and line 3 at or above the threshold to that of line 3, with no test of Steps 1 to 4, so it shows line 5 on a return that STOPs in Steps 1 to 4 with line 2 nonzero and line 11b above earned income (by reading; the sampled shows-skipped witnesses are Schedule C returns, which its shown_when hides). Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,184 of 2,606 agree; on completed returns: 160 candidate-shows-skipped.",
-   "subject_key": "10d326802c92c667a4b9041401ae566da76ed8a64e21d5c7c555bcdd1bea3100"
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A lines 4-5. The reply's eic.h_show5 has no Steps 1-4 test: line 5 shows on returns that STOP earlier (audit.eic.filer_without_eic_ssn, $3,261 for a filer who STOPs at Step 1 question 2). Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 2,250 agree; completed: 9 candidate-shows-skipped, 15 candidate-unknown, 2 candidate-refuses.",
+   "subject_key": "08c5430148fa7578cff7da814aba287660daadcb0fdbe4b1f9837fcabf747e57"
   },
   {
    "key": "6 (eic.line6)",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-41, Steps 1 to 4, each of which can end \"STOP You can't take the credit\"; p. 42, Step 5. The triage applies only the project's shown_when, so the reply's own shown_when was read, not executed. i1040gi p. 46, Worksheet A, line 6. Same shown_when as line 3, so it shows the credit amount on completed returns that STOP at Step 4 (the stage9.eic.no_child fixtures of line 2), where the project hides line 6 (eic.eligible). The project's Worksheet A lines also carry the Worksheet B lines for a self-employed filer (line 1 is Worksheet A line 1 or Worksheet B line 6, and so on); the candidate hides Worksheet A for a filer with a Schedule C and puts Worksheet B in helpers, so the value differences on Schedule C filers (classm.eic.1, classm.f1040.4, stage14.eic.wsb_only_business, stage14.eic.wsb_loss, stage14.sehi.profit_limit, f2.t101.credit_disallowed_eic_zero) are lines its own shown_when hides and are layout, not error. eic.credit, which the project and the candidate use for Form 1040 line 27a, agrees on every completed return. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,322 of 2,606 agree; on completed returns: 25 value, 17 candidate-shows-skipped, 2 candidate-refuses.",
-   "subject_key": "9abccfdb48121505db136686daa5a393702585e04ada4dbf08972c897839bfef"
+   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A line 6. As 2: the credit line shown on returns that STOP at Step 4 (stage9.eic.no_child.over65, $308); Form 1040 line 27a (eic.credit) is guarded separately. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 2,220 agree; completed: 15 candidate-shows-skipped, 15 candidate-hides-shown (layout), 17 candidate-unknown, 2 candidate-refuses.",
+   "subject_key": "dee9157c2d0dcbb387f579e7377368f33afe99f00b26012b22381338da3d0af1"
   }
  ],
  "subjects": {
   "eic.zero": "52aee938642df0c53e51498dcf7f0375a2dca1b221662a37474feb9a2f92e2d9",
   "eic.self_employed": "055a0cb5a33e1ca077a25b4066e576b957fe3ecfb88e31430139c9058cc2f751",
-  "eic.eligible": "d77414ed4731466fdbcd5c086106fcef7eef092abc406eee29220ee121ac85d9",
-  "eic.credit": "2012ee6877f0d1714439b4937e7996480b55c39dfc2994294426fac2f06eca79",
-  "eic.check_27c": "428aff083c704e446744e5f248fba4bb41647233a5a378e014e3025005b7054f",
+  "eic.eligible": "57b943dc524ff722b5b371d4628abab321539c49d73710085344dbac5e91b179",
+  "eic.credit": "bf219bf74155912bc7bd490679e72905812d71b2015b8bb62b11be169c9cbb29",
+  "eic.check_27c": "c06f79f2dcf0f00bc441b708300918d1b859ea618fd93cefc5184b2552dfcf16",
   "eic.separated_box": "7489adf12d40e64ac56d36357cf01676f46f19d9645e4985f33c4571471b5c3a",
   "eic.clergy": "c34466ce2b1c242bf5bb418b6b0d77070c8e920d6c8754944817940261a62022",
-  "(Step 5, 1)": "857f593e0caa429072f97b5925c1244c590b95bdf1d3b379264119388e5dac3b",
-  "(Step 5, 2)": "87afe6bec21362a70f36953f5cfc97f40f48bbbecae74394f33594126850171d",
-  "(Step 5, 3)": "6c4e2fb6a655ecc8785eb2c222bf8823c607989bcf126d796157ac12afc923c2",
-  "(Step 5, 4)": "9e0c5806ad70c6260db96a36965e64ee828c0905ae684d9c3993b485159cb405",
-  "(Step 5, 5)": "228d72c81b1e00473939df6e893213568466713ae61a9c53a741f03f34f433f9",
-  "4b": "6d8335b6671d4b8466908939be50e2b6f0ba8d92436d2f623d5e477f82ebd996",
-  "6 (eic.wsb_6)": "f07b5f27ab18b16d451ff16aa6dad4941d0404c0e491cb53aab59680d15aa7e2",
-  "1": "86be66ea32c7cbab7bef8328b6b9bf4a5e21d24e92b58c4c8689544ab3cc33b1",
-  "2": "935430b143c808f5c4c1bf3cad92187ea783dbcb6775acc0b3e11ca0ec33c5be",
-  "3": "4f22f1e28b30042eeca3e64393ed992a29feccfdaa8f7b677546735f19f0f5a1",
-  "4": "9dd9a5042d1133ff31c04507e02f6ea5730811778abd190fddcc4f0ef33ba27a",
-  "5": "583c0d8e3f17a13d80aba4cdfa08249876b0b09ed519e06f848aca14b0df6dc3",
-  "6 (eic.line6)": "b6e59056ff63abc7925e9e6841cd28ed7e91cc33ce4052822d544afa2d459866"
+  "(Step 5, 1)": "a007424acb444cdbed629e412c459c5783322660bd0da23481a436b3e202369d",
+  "(Step 5, 2)": "88f70787a51e33e02959280ca6a2e326acb4a3552310be1f98c7c500a0233628",
+  "(Step 5, 3)": "4922fbe5b251eedf5d3a9b4a0e676a31e221ebcb1936534069bc4453bfd07c68",
+  "(Step 5, 4)": "7ba221ffa8c740d1e24aadba0333c987267e0f441f63274ff398169dd6a976b5",
+  "(Step 5, 5)": "21c50d77b40cd0edd770db3db505751d9858293bb63a178b04145a7401e57162",
+  "4b": "363e2d05d02aacf023830b49584e2070c04b1803fc4c764bdb836cf977ac8b0d",
+  "6 (eic.wsb_6)": "58ba14ccd006d5ddb84af71a6932ef325cbec568164243fbd1c19947a5ea2607",
+  "1": "75e10fd7c29b98ce5cca035657e55c15e19948f0ad1fc30ca279f34a025829e4",
+  "2": "dc25f2fcdd094b526e410ebde31cda54e1f357868c44ff82f1f2064d6edab61c",
+  "3": "ff0df0a9603754bf9f469adb8f30c1f217b61c374b236562be45674a2a187829",
+  "4": "4dba51d3dbaa091e324fed56559cf878317223cd057976a33541878d28bb8f62",
+  "5": "dad78b69ae207c074eb8b2c89fc3fab163ccde974c89aa01b0125bbf35034e6a",
+  "6 (eic.line6)": "28f295f8b27fdc90f2a2c8cfec5d8e64122767c928db69f4809b4c78dd0c4e51"
  },
  "__rest__": "0cb74bdc4a8e058e063ada8c81e332a05cd9947874f874edab33db08a9fe38c7",
  "foreign": {

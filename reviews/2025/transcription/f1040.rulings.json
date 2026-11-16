@@ -496,6 +496,84 @@
    }
   },
   {
+   "printed": "f1040.gate.qdcg_applies",
+   "project_expr_sha256": "171337799d3dc56de913bfb726cfcd1d7f4740f0e6ddb588b188be1613ba6bb7",
+   "second_expr_sha256": "14dfc362331e3cd5df5bc9f5c620d372ea84917508a8f592762bb159c9e43680",
+   "ruling": "Ruling: representation; the project's gate is the trigger shared by both capital gain worksheets (Form 1040 line 15 more than zero and any of: qualified dividends on line 3a; no Schedule D and capital gain distributions; Schedule D lines 15 and 16 both gains), and f1040.gate.sdtw narrows it; line 16 takes sdtw.line47 first and f1040.non_sdtw_tax (which reads this gate) only when the SDTW gate is false. The reply makes the gate exclusive (not SDTW and the trigger; its Schedule D exception is redundant with the trigger when Schedule D is filed). Triage (pass 87ac36843c43; 2,805 comparisons): 65 value differences, every witness with the SDTW gate true (project true, reply false), where line 16 is the SDTW amount either way, and f1040.gate.sdtw itself has no value difference; 183 candidate-unknown (the reply reads f1040.line3a, which is not an input; the project reads f1040.line3a_if_ordinary); the rest refusals or unknowns. The inclusive gate is also what s2.amt_l7 needs: Form 6251 line 7, 'If you reported capital gain distributions directly on Form 1040 or 1040-SR, line 7; you reported qualified dividends on Form 1040 or 1040-SR, line 3a; or you had a gain on both lines 15 and 16 of Schedule D ... complete Part III', which holds for SDTW filers too. i1040gi p. 36, Line 16; i1040sd p. 15, Schedule D Tax Worksheet, 'Complete this worksheet only if ...'.",
+   "context": "b1d0adc39da8d54aa0d174d4c78b31bcff09fff865563528872ed2c825e2ff30",
+   "date": "2026-11-15",
+   "run": "8cb93e69d17795009c153df9d51edfa9575f3751c33b7869005d2a9af949c275",
+   "subject_key": "8394657a3a8f9256a5ffe9d0a7eab5d20efc32f0b0104b1745ae8ca1bf75a46b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f1040",
+     "fixture:stage14.asset.refuse_ads_past_gds@f1040",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f1040",
+     "fixture:stage14.asset.refuse_class@f1040",
+     "fixture:stage14.asset.refuse_listed_low@f1040",
+     "fixture:stage14.asset.refuse_s179_over@f1040",
+     "fixture:classm.u1250.2.deepseek@f1040",
+     "fixture:classm.f8962.2.deepseek@f1040",
+     "fixture:classm.f8962.5.deepseek@f1040",
+     "fixture:classm.f8880.2.deepseek@f1040",
+     "fixture:classm.f1040.2.deepseek@f1040",
+     "fixture:classm.f1040.6.deepseek@f1040",
+     "fixture:classm.s8812.4.deepseek@f1040",
+     "fixture:classm.f8863.2.deepseek@f1040",
+     "fixture:classm.eic.2.deepseek@f1040",
+     "fixture:classm.retirement.4.deepseek@f1040",
+     "fixture:classm.sa.6.deepseek@f1040",
+     "fixture:classm.asset.2@f1040",
+     "fixture:classm.asset.3@f1040",
+     "fixture:classm.asset.4@f1040",
+     "fixture:classm.f2441.1@f1040",
+     "fixture:classm.f2441.2@f1040",
+     "fixture:classm.s8812.4@f1040",
+     "fixture:t264.f4952.unsupported_with_interest@f1040",
+     "partial:classm.f8962.5.deepseek-f1040.tax_exempt_interest@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1040.gate.sdtw",
+   "project_expr_sha256": "bb7dd13fbd85b559501528c174d6f4ae490b59f6b3d5602c1611da8c2889569b",
+   "second_expr_sha256": "42cfe5069f483834bdd71676bd58a738ba750f6cf4417ab306b0f299caefa2d4",
+   "ruling": "Ruling: representation; no value difference on 2,805 comparisons (triage pass 87ac36843c43: 2,306 agree; in scope 2,015 of 2,018 agree; the differences are 496 project refusals, 2 project-unknown and 1 candidate-unknown). i1040sd p. 15: 'Complete this worksheet only if line 18 or line 19 of Schedule D is more than zero and lines 15 and 16 of Schedule D are gains or if you file Form 4952 and you have an amount on line 4g', with the Exception 'Line 15 or line 16 of Schedule D is zero or less and you have no qualified dividends ... or Form 1040, 1040-SR, or 1040-NR, line 15, is zero or less'. The project conditions both branches on the shared worksheet trigger (f1040.gate.qdcg_applies, which includes line 15 more than zero) and reads the line 4g election as sd.investment_election (amb.2025.sd4952_selection); the reply states the exception directly and applies it only when Schedule D is filed. A line 4g amount is qualified dividends or net capital gain elected into investment income, so the trigger holds wherever the reply's Form 4952 branch does; the two agree on every return the bank produces.",
+   "context": "b1d0adc39da8d54aa0d174d4c78b31bcff09fff865563528872ed2c825e2ff30",
+   "date": "2026-11-15",
+   "run": "8cb93e69d17795009c153df9d51edfa9575f3751c33b7869005d2a9af949c275",
+   "subject_key": "01b414d82a991195b240351a2822f2b90882b7548bdee97d840a4bd419133295",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f1040",
+     "fixture:stage14.asset.refuse_ads_past_gds@f1040",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f1040",
+     "fixture:stage14.asset.refuse_class@f1040",
+     "fixture:stage14.asset.refuse_listed_low@f1040",
+     "fixture:stage14.asset.refuse_s179_over@f1040",
+     "fixture:classm.f8962.2.deepseek@f1040",
+     "fixture:classm.f8863.2.deepseek@f1040",
+     "fixture:classm.asset.2@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f1040.line3a_if_ordinary",
    "project_expr_sha256": "5a7979af1e4deb0ecfe6bdc89131f9e0db6687903da9b275ee9cdd1e8c2588e0",
    "second_expr_sha256": "b88b803d4b9855440f9cda0e213692fb40d0a119aae7fdda005f30e725bc4267",

@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.mut.div_box3_basis_reconciled",
-      "walk": "stage4",
       "covers": [
         "div",
         "f1040"

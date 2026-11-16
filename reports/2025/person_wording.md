@@ -33,7 +33,7 @@ The closed lists the rule works from (a framed question with a subject before a 
 - verbs after "this person" or "your spouse" that change for "you": "is" to "are", "was" to "were", "has" to "have", "does" to "do", "isn't" to "aren't", "wasn't" to "weren't", "doesn't" to "don't"
 - words after a subject or an object that need no change: "a", "acquired", "age", "agreed", "an", "and", "applied", "applying", "as", "at", "became", "blind", "born", "by", "can", "can't", "cannot", "claimed", "contributed", "could", "covered", "deducted", "deferred", "did", "died", "enrolled", "filed", "for", "fully", "had", "have", "if", "in", "inherited", "made", "more", "never", "of", "on", "opened", "or", "overtime", "paid", "put", "received", "recharacterized", "repaid", "returned", "rolled", "served", "to", "took", "turned", "under", "with"
 
-101 questions carry the frame.
+105 questions carry the frame.
 
 ## `person.rrta`
 
@@ -209,19 +209,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits.
+> The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits. Lenses you can wear only briefly (pain, infection, ulcers) do not count.
 
 Shown on a one-person return:
 
-> The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits.
+> The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits. Lenses you can wear only briefly (pain, infection, ulcers) do not count.
 
 Shown for you on a couple's return:
 
-> The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits.
+> The statement must say that your better eye sees no better than 20/200 with glasses or contact lenses, or that your field of vision is 20 degrees or less, or that your sight is not likely to improve beyond those limits. Lenses you can wear only briefly (pain, infection, ulcers) do not count.
 
 Shown for your spouse:
 
-> The statement must say that your spouse's better eye sees no better than 20/200 with glasses or contact lenses, or that your spouse's field of vision is 20 degrees or less, or that your spouse's sight is not likely to improve beyond those limits.
+> The statement must say that your spouse's better eye sees no better than 20/200 with glasses or contact lenses, or that your spouse's field of vision is 20 degrees or less, or that your spouse's sight is not likely to improve beyond those limits. Lenses your spouse can wear only briefly (pain, infection, ulcers) do not count.
 
 ## `$w2`
 
@@ -413,19 +413,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is.
+> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is. Answer Yes also if the only cost was books, supplies or equipment needed for a course.
 
 Shown on a one-person return:
 
-> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is.
+> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is. Answer Yes also if the only cost was books, supplies or equipment needed for a course.
 
 Shown for you on a couple's return:
 
-> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is.
+> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is. Answer Yes also if the only cost was books, supplies or equipment needed for a course.
 
 Shown for your spouse:
 
-> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is.
+> The school must be one that can take part in federal student aid; nearly every accredited college, university and trade school is. Answer Yes also if the only cost was books, supplies or equipment needed for a course.
 
 ## `person.edu_1098t`
 
@@ -447,19 +447,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to prepare it, and the enrollment and the payments can be shown.
+> Answer Yes also, if the enrollment and the payments can be shown, when the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or when it was asked for after February 2, 2026 and the school was given what it needed to prepare it.
 
 Shown on a one-person return:
 
-> Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to prepare it, and the enrollment and the payments can be shown.
+> Answer Yes also, if the enrollment and the payments can be shown, when the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or when it was asked for after February 2, 2026 and the school was given what it needed to prepare it.
 
 Shown for you on a couple's return:
 
-> Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to prepare it, and the enrollment and the payments can be shown.
+> Answer Yes also, if the enrollment and the payments can be shown, when the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or when it was asked for after February 2, 2026 and the school was given what it needed to prepare it.
 
 Shown for your spouse:
 
-> Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to prepare it, and the enrollment and the payments can be shown.
+> Answer Yes also, if the enrollment and the payments can be shown, when the school did not have to send one (for example, scholarships paid everything, or the courses gave no academic credit), or when it was asked for after February 2, 2026 and the school was given what it needed to prepare it.
 
 ## `person.edu_inst`
 
@@ -481,7 +481,7 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Books, supplies and equipment count here only if they had to be bought from the school.
+> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Required fees include student activity, athletic or lab fees every student must pay the school. Books, supplies and equipment count here only if they had to be bought from the school.
 >
 > Leave out:
 > - room and board, insurance, medical costs (student health fees too) and transportation
@@ -491,7 +491,7 @@ Shown for your spouse:
 
 Shown on a one-person return:
 
-> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Books, supplies and equipment count here only if they had to be bought from the school.
+> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Required fees include student activity, athletic or lab fees every student must pay the school. Books, supplies and equipment count here only if they had to be bought from the school.
 >
 > Leave out:
 > - room and board, insurance, medical costs (student health fees too) and transportation
@@ -501,7 +501,7 @@ Shown on a one-person return:
 
 Shown for you on a couple's return:
 
-> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Books, supplies and equipment count here only if they had to be bought from the school.
+> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Required fees include student activity, athletic or lab fees every student must pay the school. Books, supplies and equipment count here only if they had to be bought from the school.
 >
 > Leave out:
 > - room and board, insurance, medical costs (student health fees too) and transportation
@@ -511,7 +511,7 @@ Shown for you on a couple's return:
 
 Shown for your spouse:
 
-> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Books, supplies and equipment count here only if they had to be bought from the school.
+> Use what was actually paid, by anyone, for terms that began in 2025 or in January to March 2026. Required fees include student activity, athletic or lab fees every student must pay the school. Books, supplies and equipment count here only if they had to be bought from the school.
 >
 > Leave out:
 > - room and board, insurance, medical costs (student health fees too) and transportation
@@ -539,19 +539,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Leave out what is left out of tuition: anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return.
+> Count only what was paid in 2025. Leave out anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return, and materials for a sports, games, hobby or noncredit course outside the degree program.
 
 Shown on a one-person return:
 
-> Leave out what is left out of tuition: anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return.
+> Count only what was paid in 2025. Leave out anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return, and materials for a sports, games, hobby or noncredit course outside the degree program.
 
 Shown for you on a couple's return:
 
-> Leave out what is left out of tuition: anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return.
+> Count only what was paid in 2025. Leave out anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return, and materials for a sports, games, hobby or noncredit course outside the degree program.
 
 Shown for your spouse:
 
-> Leave out what is left out of tuition: anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return.
+> Count only what was paid in 2025. Leave out anything paid with a tax-free 529 plan or Coverdell withdrawal or deducted elsewhere on this return, and materials for a sports, games, hobby or noncredit course outside the degree program.
 
 ## `person.edu_a_this_year`
 
@@ -573,19 +573,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Count only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, inheritances, savings, wages, emergency financial aid grants, and any scholarship reported as income on a tax return.
+> Count help for the terms of the costs just entered, and only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, savings, wages, emergency aid grants, and a scholarship reported as income (allowed only for one whose terms let it pay for room and board or other costs).
 
 Shown on a one-person return:
 
-> Count only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, inheritances, savings, wages, emergency financial aid grants, and any scholarship reported as income on a tax return.
+> Count help for the terms of the costs just entered, and only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, savings, wages, emergency aid grants, and a scholarship reported as income (allowed only for one whose terms let it pay for room and board or other costs).
 
 Shown for you on a couple's return:
 
-> Count only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, inheritances, savings, wages, emergency financial aid grants, and any scholarship reported as income on a tax return.
+> Count help for the terms of the costs just entered, and only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, savings, wages, emergency aid grants, and a scholarship reported as income (allowed only for one whose terms let it pay for room and board or other costs).
 
 Shown for your spouse:
 
-> Count only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, inheritances, savings, wages, emergency financial aid grants, and any scholarship reported as income on a tax return.
+> Count help for the terms of the costs just entered, and only the tax-free part; a Pell grant is a grant. Leave out loans, gifts, savings, wages, emergency aid grants, and a scholarship reported as income (allowed only for one whose terms let it pay for room and board or other costs).
 
 ## `person.edu_a_next_year`
 
@@ -765,35 +765,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?
+> For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?
 
 Shown on a one-person return:
 
-> Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?
+> Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?
 
 Shown for you on a couple's return:
 
-> About you — Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?
+> About you — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?
 
 Shown for your spouse:
 
-> About your spouse — Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?
+> About your spouse — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?
 
 **Help, as stored**
 
-> With one term in the year, answer by that term alone. A Yes is outside what this tool prepares and ends the interview here.
+> With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes is outside what this tool prepares and ends the interview here.
 
 Shown on a one-person return:
 
-> With one term in the year, answer by that term alone. A Yes is outside what this tool prepares and ends the interview here.
+> With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes is outside what this tool prepares and ends the interview here.
 
 Shown for you on a couple's return:
 
-> With one term in the year, answer by that term alone. A Yes is outside what this tool prepares and ends the interview here.
+> With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes is outside what this tool prepares and ends the interview here.
 
 Shown for your spouse:
 
-> With one term in the year, answer by that term alone. A Yes is outside what this tool prepares and ends the interview here.
+> With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before your spouse files. A Yes is outside what this tool prepares and ends the interview here.
 
 ## `person.edu_fulltime`
 
@@ -849,19 +849,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it; a scholarship is not support if you were a full-time student.
+> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it, housing given at its rental value; a scholarship is not support for a full-time student.
 
 Shown on a one-person return:
 
-> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it; a scholarship is not support if you were a full-time student.
+> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it, housing given at its rental value; a scholarship is not support for a full-time student.
 
 Shown for you on a couple's return:
 
-> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it; a scholarship is not support if you were a full-time student.
+> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it, housing given at its rental value; a scholarship is not support for a full-time student.
 
 Shown for your spouse:
 
-> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it; a scholarship is not support if your spouse was a full-time student.
+> Pay from work is wages, salaries, fees and other pay for services, including the part of a scholarship paid for teaching or research. Support counts whoever paid for it, housing given at its rental value; a scholarship is not support for a full-time student.
 
 ## `person.edu_parent`
 
@@ -1073,19 +1073,19 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — For how many births or adoptions (children born or adopted, each counted once) did you take the birth or adoption distributions?
+> For this person (you, or your spouse on a joint return) — For how many births or adoptions (children born or adopted, each counted once) did you take the 2025 birth or adoption distributions? Count only a child for whom a 2025 distribution was taken within 1 year of the birth or of the date the adoption became final.
 
 Shown on a one-person return:
 
-> For how many births or adoptions (children born or adopted, each counted once) did you take the birth or adoption distributions?
+> For how many births or adoptions (children born or adopted, each counted once) did you take the 2025 birth or adoption distributions? Count only a child for whom a 2025 distribution was taken within 1 year of the birth or of the date the adoption became final.
 
 Shown for you on a couple's return:
 
-> About you — For how many births or adoptions (children born or adopted, each counted once) did you take the birth or adoption distributions?
+> About you — For how many births or adoptions (children born or adopted, each counted once) did you take the 2025 birth or adoption distributions? Count only a child for whom a 2025 distribution was taken within 1 year of the birth or of the date the adoption became final.
 
 Shown for your spouse:
 
-> About your spouse — For how many births or adoptions (children born or adopted, each counted once) did your spouse take the birth or adoption distributions?
+> About your spouse — For how many births or adoptions (children born or adopted, each counted once) did your spouse take the 2025 birth or adoption distributions? Count only a child for whom a 2025 distribution was taken within 1 year of the birth or of the date the adoption became final.
 
 ## `person.inherited_account`
 
@@ -1309,7 +1309,7 @@ Shown for your spouse:
 
 > The owner is the person these questions are about. Answer Yes on that person's final return, and for that person on a joint return filed with the surviving husband or wife.
 
-## `f8889.inherited`
+## `f8889.inherited_any`
 
 **Question, as stored**
 
@@ -1343,39 +1343,73 @@ Shown for your spouse:
 
 > For example, a parent, or a husband or wife who has died, named your spouse as the beneficiary of their HSA. Answer Yes whatever year the owner died in.
 
+## `f8889.inherited_case`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Whose HSA was it, and when did they die?
+
+Shown on a one-person return:
+
+> Whose HSA was it, and when did they die?
+
+Shown for you on a couple's return:
+
+> About you — Whose HSA was it, and when did they die?
+
+Shown for your spouse:
+
+> About your spouse — Whose HSA was it, and when did they die?
+
+**Help, as stored**
+
+> An HSA left by a husband or wife now counts as your own, so include it in the answers that follow. Anyone else's HSA stopped being an HSA when they died.
+
+Shown on a one-person return:
+
+> An HSA left by a husband or wife now counts as your own, so include it in the answers that follow. Anyone else's HSA stopped being an HSA when they died.
+
+Shown for you on a couple's return:
+
+> An HSA left by a husband or wife now counts as your own, so include it in the answers that follow. Anyone else's HSA stopped being an HSA when they died.
+
+Shown for your spouse:
+
+> An HSA left by a husband or wife now counts as your spouse's own, so include it in the answers that follow. Anyone else's HSA stopped being an HSA when they died.
+
 ## `f8889.archer`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did you or your spouse have an Archer MSA in 2025?
+> For this person (you, or your spouse on a joint return) — For 2025, was money put into an Archer MSA of yours or your spouse's, or did money come out of one of yours?
 
 Shown on a one-person return:
 
-> Did you or your spouse have an Archer MSA in 2025?
+> For 2025, was money put into an Archer MSA of yours or your spouse's, or did money come out of one of yours?
 
 Shown for you on a couple's return:
 
-> About you — Did you or your spouse have an Archer MSA in 2025?
+> About you — For 2025, was money put into an Archer MSA of yours or your spouse's, or did money come out of one of yours?
 
 Shown for your spouse:
 
-> About your spouse — Did your spouse or you have an Archer MSA in 2025?
+> About your spouse — For 2025, was money put into an Archer MSA of yours or your spouse's, or did money come out of one of your spouse's?
 
 **Help, as stored**
 
-> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Answer Yes also if money was put into one for 2025 after the year ended. If you have never heard of it, the answer is No.
+> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Count money put in for 2025 after the year ended, money moved from one into an HSA, and an Archer MSA that came to you in 2025 because its owner died. If you have never heard of it, the answer is No.
 
 Shown on a one-person return:
 
-> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Answer Yes also if money was put into one for 2025 after the year ended. If you have never heard of it, the answer is No.
+> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Count money put in for 2025 after the year ended, money moved from one into an HSA, and an Archer MSA that came to you in 2025 because its owner died. If you have never heard of it, the answer is No.
 
 Shown for you on a couple's return:
 
-> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Answer Yes also if money was put into one for 2025 after the year ended. If you have never heard of it, the answer is No.
+> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Count money put in for 2025 after the year ended, money moved from one into an HSA, and an Archer MSA that came to you in 2025 because its owner died. If you have never heard of it, the answer is No.
 
 Shown for your spouse:
 
-> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Answer Yes also if money was put into one for 2025 after the year ended. If your spouse has never heard of it, the answer is No.
+> An Archer MSA is an older kind of medical savings account; on a Form 1099-SA (box 5) or Form 5498-SA (box 6) for one, the box “Archer MSA” is checked. Count money put in for 2025 after the year ended, money moved from one into an HSA, and an Archer MSA that came to your spouse in 2025 because its owner died. If your spouse has never heard of it, the answer is No.
 
 ## `f8889.line9`
 
@@ -1397,19 +1431,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Use the amount in box 12 of your Form W-2 next to the letter W. Take off any part of it that was for 2024, and add anything your employer put in for 2025 after December 31, 2025. Zero if none.
+> Use the amount in box 12 of your Form W-2 next to the letter W, which includes money a health insurer put in for your employer. Take off any part of it that was for 2024, and add anything your employer put in for 2025 after December 31, 2025. Zero if none.
 
 Shown on a one-person return:
 
-> Use the amount in box 12 of your Form W-2 next to the letter W. Take off any part of it that was for 2024, and add anything your employer put in for 2025 after December 31, 2025. Zero if none.
+> Use the amount in box 12 of your Form W-2 next to the letter W, which includes money a health insurer put in for your employer. Take off any part of it that was for 2024, and add anything your employer put in for 2025 after December 31, 2025. Zero if none.
 
 Shown for you on a couple's return:
 
-> Use the amount in box 12 of your Form W-2 next to the letter W. Take off any part of it that was for 2024, and add anything your employer put in for 2025 after December 31, 2025. Zero if none.
+> Use the amount in box 12 of your Form W-2 next to the letter W, which includes money a health insurer put in for your employer. Take off any part of it that was for 2024, and add anything your employer put in for 2025 after December 31, 2025. Zero if none.
 
 Shown for your spouse:
 
-> Use the amount in box 12 of your spouse's Form W-2 next to the letter W. Take off any part of it that was for 2024, and add anything your spouse's employer put in for 2025 after December 31, 2025. Zero if none.
+> Use the amount in box 12 of your spouse's Form W-2 next to the letter W, which includes money a health insurer put in for your spouse's employer. Take off any part of it that was for 2024, and add anything your spouse's employer put in for 2025 after December 31, 2025. Zero if none.
 
 ## `f8889.line2`
 
@@ -1431,19 +1465,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Count deposits by you, or by anyone other than your employer, that were for 2025, made up to April 15, 2026 (later if you served in a combat zone). Box 12 of your Form W-2 shows, next to the letter W, what your employer put in and what was taken out of your pay before tax; leave that out, and leave out pre-tax money taken from your pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Zero if none.
+> Count deposits by you, or by anyone other than your employer, that were for 2025, made up to April 15, 2026 (later if you served in a combat zone). Box 12 of your Form W-2 shows, next to the letter W, what your employer put in and what was taken out of your pay before tax; leave that out, and leave out pre-tax money taken from your pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Only money can be put in, not stock or other property. Zero if none.
 
 Shown on a one-person return:
 
-> Count deposits by you, or by anyone other than your employer, that were for 2025, made up to April 15, 2026 (later if you served in a combat zone). Box 12 of your Form W-2 shows, next to the letter W, what your employer put in and what was taken out of your pay before tax; leave that out, and leave out pre-tax money taken from your pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Zero if none.
+> Count deposits by you, or by anyone other than your employer, that were for 2025, made up to April 15, 2026 (later if you served in a combat zone). Box 12 of your Form W-2 shows, next to the letter W, what your employer put in and what was taken out of your pay before tax; leave that out, and leave out pre-tax money taken from your pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Only money can be put in, not stock or other property. Zero if none.
 
 Shown for you on a couple's return:
 
-> Count deposits by you, or by anyone other than your employer, that were for 2025, made up to April 15, 2026 (later if you served in a combat zone). Box 12 of your Form W-2 shows, next to the letter W, what your employer put in and what was taken out of your pay before tax; leave that out, and leave out pre-tax money taken from your pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Zero if none.
+> Count deposits by you, or by anyone other than your employer, that were for 2025, made up to April 15, 2026 (later if you served in a combat zone). Box 12 of your Form W-2 shows, next to the letter W, what your employer put in and what was taken out of your pay before tax; leave that out, and leave out pre-tax money taken from your pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Only money can be put in, not stock or other property. Zero if none.
 
 Shown for your spouse:
 
-> Count deposits by your spouse, or by anyone other than your spouse's employer, that were for 2025, made up to April 15, 2026 (later if your spouse served in a combat zone). Box 12 of your spouse's Form W-2 shows, next to the letter W, what your spouse's employer put in and what was taken out of your spouse's pay before tax; leave that out, and leave out pre-tax money taken from your spouse's pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your spouse's pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Zero if none.
+> Count deposits by your spouse, or by anyone other than your spouse's employer, that were for 2025, made up to April 15, 2026 (later if your spouse served in a combat zone). Box 12 of your spouse's Form W-2 shows, next to the letter W, what your spouse's employer put in and what was taken out of your spouse's pay before tax; leave that out, and leave out pre-tax money taken from your spouse's pay in early 2026 for 2025 (it belongs in the question before). Money taken out of your spouse's pay after tax counts here. Do not count money moved in from another HSA, an Archer MSA or an IRA. Only money can be put in, not stock or other property. Zero if none.
 
 ## `f8889.ira_transfer`
 
@@ -1533,19 +1567,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change.
+> What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change. A plan covering more than one person does not count if its deductible for any one person on it is below $3,300.
 
 Shown on a one-person return:
 
-> What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change.
+> What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change. A plan covering more than one person does not count if its deductible for any one person on it is below $3,300.
 
 Shown for you on a couple's return:
 
-> What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change.
+> What counts is the plan you had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If you were covered all year as a member of someone else's plan (a parent's, or your spouse's), or by a plan for only you and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change. A plan covering more than one person does not count if its deductible for any one person on it is below $3,300.
 
 Shown for your spouse:
 
-> What counts is the plan your spouse had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If your spouse was covered all year as a member of someone else's plan (a parent's, or yours), or by a plan for only your spouse and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change.
+> What counts is the plan your spouse had on the first day of each month; plan papers usually call such a plan “HSA-eligible” or “HDHP”. If your spouse was covered all year as a member of someone else's plan (a parent's, or yours), or by a plan for only your spouse and a family plan at once, choose “covering more than one person”; if that was so for only part of the year, choose “No”. A change of insurer with no gap and the same kind of plan is not a change. A plan covering more than one person does not count if its deductible for any one person on it is below $3,300.
 
 ## `f8889.clear_all_year`
 
@@ -1664,6 +1698,40 @@ Shown for you on a couple's return:
 Shown for your spouse:
 
 > A plan covering more than one person includes one for an employee and a child. Answer Yes even if you have no HSA and even if the plan did not cover your spouse. In a month when both of you qualified to have an HSA, both of you are treated as having family coverage, and the limit is the family one, shared between you both.
+
+## `f8889.former_spouse_family`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did a marriage of yours end during 2025, by divorce or death, while the other person had a high-deductible plan covering more than one person?
+
+Shown on a one-person return:
+
+> Did a marriage of yours end during 2025, by divorce or death, while the other person had a high-deductible plan covering more than one person?
+
+Shown for you on a couple's return:
+
+> About you — Did a marriage of yours end during 2025, by divorce or death, while the other person had a high-deductible plan covering more than one person?
+
+Shown for your spouse:
+
+> About your spouse — Did a marriage of your spouse's end during 2025, by divorce or death, while the other person had a high-deductible plan covering more than one person?
+
+**Help, as stored**
+
+> Answer No if you were not married at any time in 2025. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you. A Yes ends the interview here.
+
+Shown on a one-person return:
+
+> Answer No if you were not married at any time in 2025. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you. A Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> Answer No if you were not married at any time in 2025. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover you. A Yes ends the interview here.
+
+Shown for your spouse:
+
+> Answer No if your spouse was not married at any time in 2025. A plan covering more than one person includes one for an employee and a child, and counts even if it did not cover your spouse. A Yes ends the interview here.
 
 ## `f8889.months_eligible`
 
@@ -1907,35 +1975,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Your employer put more into your HSA than your limit. Is the extra included in box 1 of your Form W-2?
+> For this person (you, or your spouse on a joint return) — Your employer put more into your HSA than your limit. Is all of the extra included in box 1 of your Form W-2?
 
 Shown on a one-person return:
 
-> Your employer put more into your HSA than your limit. Is the extra included in box 1 of your Form W-2?
+> Your employer put more into your HSA than your limit. Is all of the extra included in box 1 of your Form W-2?
 
 Shown for you on a couple's return:
 
-> About you — Your employer put more into your HSA than your limit. Is the extra included in box 1 of your Form W-2?
+> About you — Your employer put more into your HSA than your limit. Is all of the extra included in box 1 of your Form W-2?
 
 Shown for your spouse:
 
-> About your spouse — Your spouse's employer put more into your spouse's HSA than your spouse's limit. Is the extra included in box 1 of your spouse's Form W-2?
+> About your spouse — Your spouse's employer put more into your spouse's HSA than your spouse's limit. Is all of the extra included in box 1 of your spouse's Form W-2?
 
 **Help, as stored**
 
-> Box 1 is your taxable wages. Answer No if your employer has not added the extra to it.
+> Box 1 is your taxable wages. Answer No if your employer has added none of the extra to it, or only part.
 
 Shown on a one-person return:
 
-> Box 1 is your taxable wages. Answer No if your employer has not added the extra to it.
+> Box 1 is your taxable wages. Answer No if your employer has added none of the extra to it, or only part.
 
 Shown for you on a couple's return:
 
-> Box 1 is your taxable wages. Answer No if your employer has not added the extra to it.
+> Box 1 is your taxable wages. Answer No if your employer has added none of the extra to it, or only part.
 
 Shown for your spouse:
 
-> Box 1 is your spouse's taxable wages. Answer No if your spouse's employer has not added the extra to it.
+> Box 1 is your spouse's taxable wages. Answer No if your spouse's employer has added none of the extra to it, or only part.
 
 ## `f8889.ira_prior`
 
@@ -1971,23 +2039,57 @@ Shown for your spouse:
 
 > The IRA's custodian sends the money directly to the HSA. It came with a condition, to stay able to have an HSA for the 12 months after the month of the transfer. Money your spouse took out of an IRA and deposited himself or herself does not count.
 
+## `f8889.ira_gap`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — From the month of that transfer until 12 months after it, was there a month in which you could not have an HSA?
+
+Shown on a one-person return:
+
+> From the month of that transfer until 12 months after it, was there a month in which you could not have an HSA?
+
+Shown for you on a couple's return:
+
+> About you — From the month of that transfer until 12 months after it, was there a month in which you could not have an HSA?
+
+Shown for your spouse:
+
+> About your spouse — From the month of that transfer until 12 months after it, was there a month in which your spouse could not have an HSA?
+
+**Help, as stored**
+
+> For a transfer on June 17, 2024, the months are June 2024 through June 2025. Answer Yes if on the first day of any of them you had no HSA-qualifying plan, were enrolled in Medicare, had other health coverage that pays medical bills, or could be claimed as a dependent.
+
+Shown on a one-person return:
+
+> For a transfer on June 17, 2024, the months are June 2024 through June 2025. Answer Yes if on the first day of any of them you had no HSA-qualifying plan, were enrolled in Medicare, had other health coverage that pays medical bills, or could be claimed as a dependent.
+
+Shown for you on a couple's return:
+
+> For a transfer on June 17, 2024, the months are June 2024 through June 2025. Answer Yes if on the first day of any of them you had no HSA-qualifying plan, were enrolled in Medicare, had other health coverage that pays medical bills, or could be claimed as a dependent.
+
+Shown for your spouse:
+
+> For a transfer on June 17, 2024, the months are June 2024 through June 2025. Answer Yes if on the first day of any of them your spouse had no HSA-qualifying plan, were enrolled in Medicare, had other health coverage that pays medical bills, or could be claimed as a dependent.
+
 ## `f8889.testing_prior`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — For 2024, was more put into your HSA, by you, your employer or anyone else, than the months you could have an HSA, and the kind of plan you had in each, allowed?
+> For this person (you, or your spouse on a joint return) — Could you have an HSA on December 1, 2024, and was more put into it for 2024, by you, your employer or anyone else, than the months you could have one, and the kind of plan you had in each, allowed?
 
 Shown on a one-person return:
 
-> For 2024, was more put into your HSA, by you, your employer or anyone else, than the months you could have an HSA, and the kind of plan you had in each, allowed?
+> Could you have an HSA on December 1, 2024, and was more put into it for 2024, by you, your employer or anyone else, than the months you could have one, and the kind of plan you had in each, allowed?
 
 Shown for you on a couple's return:
 
-> About you — For 2024, was more put into your HSA, by you, your employer or anyone else, than the months you could have an HSA, and the kind of plan you had in each, allowed?
+> About you — Could you have an HSA on December 1, 2024, and was more put into it for 2024, by you, your employer or anyone else, than the months you could have one, and the kind of plan you had in each, allowed?
 
 Shown for your spouse:
 
-> About your spouse — For 2024, was more put into your spouse's HSA, by your spouse, your spouse's employer or anyone else, than the months your spouse could have an HSA, and the kind of plan your spouse had in each, allowed?
+> About your spouse — Could your spouse have an HSA on December 1, 2024, and was more put into it for 2024, by your spouse, your spouse's employer or anyone else, than the months your spouse could have one, and the kind of plan your spouse had in each, allowed?
 
 **Help, as stored**
 
@@ -2004,6 +2106,40 @@ Shown for you on a couple's return:
 Shown for your spouse:
 
 > This is about the “last-month rule”. A person who could have an HSA on December 1, 2024 was allowed the full yearly amount for the plan held that day, on condition of staying able to have an HSA through December 31, 2025. Answer Yes if more went in for 2024 than your spouse's own months allowed, counting each month by the plan of that month. That can be so if your spouse's plan began during 2024; if for part of 2024 your spouse was someone's dependent or had other health coverage, counting a health FSA or HRA at work (also the extra months of a 2023 health FSA early in 2024, and your FSA); or if your spouse's plan, or a plan you had, went from covering one person to covering more. Line 3 of your spouse's 2024 Form 8889 then shows the full yearly amount ($4,150 for a plan covering one person, $8,300 for more, before the extra $1,000 from age 55) although not every month of 2024 earned it. If your spouse is not sure, answer Yes.
+
+## `f8889.disabled`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you stop being able to have an HSA in 2025 because you became disabled?
+
+Shown on a one-person return:
+
+> Did you stop being able to have an HSA in 2025 because you became disabled?
+
+Shown for you on a couple's return:
+
+> About you — Did you stop being able to have an HSA in 2025 because you became disabled?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse stop being able to have an HSA in 2025 because your spouse became disabled?
+
+**Help, as stored**
+
+> Losing it for any other reason, such as Medicare at 65 or a new job's ordinary health plan, means No.
+
+Shown on a one-person return:
+
+> Losing it for any other reason, such as Medicare at 65 or a new job's ordinary health plan, means No.
+
+Shown for you on a couple's return:
+
+> Losing it for any other reason, such as Medicare at 65 or a new job's ordinary health plan, means No.
+
+Shown for your spouse:
+
+> Losing it for any other reason, such as Medicare at 65 or a new job's ordinary health plan, means No.
 
 ## `person.x_hsa_value`
 
@@ -2025,19 +2161,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Married filing separately and unsupported items are refused with citations.
+> Add the balances of all your HSAs on December 31, 2025 (box 5 of each 2025 Form 5498-SA, or the account statements), and anything you put in during 2026 for 2025.
 
 Shown on a one-person return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Add the balances of all your HSAs on December 31, 2025 (box 5 of each 2025 Form 5498-SA, or the account statements), and anything you put in during 2026 for 2025.
 
 Shown for you on a couple's return:
 
-> Married filing separately and unsupported items are refused with citations.
+> Add the balances of all your HSAs on December 31, 2025 (box 5 of each 2025 Form 5498-SA, or the account statements), and anything you put in during 2026 for 2025.
 
 Shown for your spouse:
 
-> Married filing separately and unsupported items are refused with citations.
+> Add the balances of all your spouse's HSAs on December 31, 2025 (box 5 of each 2025 Form 5498-SA, or the account statements), and anything your spouse put in during 2026 for 2025.
 
 ## `f8889.line14a`
 
@@ -2293,19 +2429,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> Nonprescription medicines and menstrual care products count. These costs cannot also be deducted on Schedule A.
+> Some costs count here that Schedule A does not take, among them nonprescription medicines, menstrual care products, condoms, COVID-19 home tests, and masks and hand sanitizer bought to keep COVID-19 from spreading. These costs cannot also be deducted on Schedule A.
 
 Shown on a one-person return:
 
-> Nonprescription medicines and menstrual care products count. These costs cannot also be deducted on Schedule A.
+> Some costs count here that Schedule A does not take, among them nonprescription medicines, menstrual care products, condoms, COVID-19 home tests, and masks and hand sanitizer bought to keep COVID-19 from spreading. These costs cannot also be deducted on Schedule A.
 
 Shown for you on a couple's return:
 
-> Nonprescription medicines and menstrual care products count. These costs cannot also be deducted on Schedule A.
+> Some costs count here that Schedule A does not take, among them nonprescription medicines, menstrual care products, condoms, COVID-19 home tests, and masks and hand sanitizer bought to keep COVID-19 from spreading. These costs cannot also be deducted on Schedule A.
 
 Shown for your spouse:
 
-> Nonprescription medicines and menstrual care products count. These costs cannot also be deducted on Schedule A.
+> Some costs count here that Schedule A does not take, among them nonprescription medicines, menstrual care products, condoms, COVID-19 home tests, and masks and hand sanitizer bought to keep COVID-19 from spreading. These costs cannot also be deducted on Schedule A.
 
 ## `f8889.loan`
 
@@ -2583,19 +2719,19 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for yourself to another plan too, such as a solo 401(k), or to a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted?
+> For this person (you, or your spouse on a joint return) — Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for yourself to another plan of your business too, such as a solo 401(k); with a SIMPLE IRA, pay you put into a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted, including any carried over from an earlier year?
 
 Shown on a one-person return:
 
-> Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for yourself to another plan too, such as a solo 401(k), or to a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted?
+> Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for yourself to another plan of your business too, such as a solo 401(k); with a SIMPLE IRA, pay you put into a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted, including any carried over from an earlier year?
 
 Shown for you on a couple's return:
 
-> About you — Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for yourself to another plan too, such as a solo 401(k), or to a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted?
+> About you — Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for yourself to another plan of your business too, such as a solo 401(k); with a SIMPLE IRA, pay you put into a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted, including any carried over from an earlier year?
 
 Shown for your spouse:
 
-> About your spouse — Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for himself or herself to another plan too, such as a solo 401(k), or to a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted?
+> About your spouse — Does any of these apply: a SARSEP; a SEP rate that is not a whole percent or is over 25%; a SIMPLE plan that allows the higher limits of the SECURE 2.0 Act; money put in for himself or herself to another plan of your spouse's business too, such as a solo 401(k); with a SIMPLE IRA, pay your spouse put into a 401(k) or 403(b) at a job; Roth SEP or Roth SIMPLE contributions; or contributions above the most that can be deducted, including any carried over from an earlier year?
 
 **Help, as stored**
 
@@ -2653,19 +2789,19 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — How much of your own earnings did you put into your SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions)?
+> For this person (you, or your spouse on a joint return) — How much of your own earnings did you put into your SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions your plan allows), counting money paid in up to the due date of this return?
 
 Shown on a one-person return:
 
-> How much of your own earnings did you put into your SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions)?
+> How much of your own earnings did you put into your SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions your plan allows), counting money paid in up to the due date of this return?
 
 Shown for you on a couple's return:
 
-> About you — How much of your own earnings did you put into your SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions)?
+> About you — How much of your own earnings did you put into your SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions your plan allows), counting money paid in up to the due date of this return?
 
 Shown for your spouse:
 
-> About your spouse — How much of your spouse's own earnings did your spouse put into your spouse's SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions)?
+> About your spouse — How much of your spouse's own earnings did your spouse put into your spouse's SIMPLE IRA for 2025 (salary reduction contributions, including any catch-up contributions your spouse's plan allows), counting money paid in up to the due date of this return?
 
 ## `person.simple_age_at_year_end`
 
@@ -2861,35 +2997,35 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — How much did you put into your traditional IRAs for 2025, in 2025 or by April 15, 2026?
+> For this person (you, or your spouse on a joint return) — How much did you put into your traditional IRAs for 2025, in 2025 or by the deadline for your 2025 return (April 15, 2026, for most people)?
 
 Shown on a one-person return:
 
-> How much did you put into your traditional IRAs for 2025, in 2025 or by April 15, 2026?
+> How much did you put into your traditional IRAs for 2025, in 2025 or by the deadline for your 2025 return (April 15, 2026, for most people)?
 
 Shown for you on a couple's return:
 
-> About you — How much did you put into your traditional IRAs for 2025, in 2025 or by April 15, 2026?
+> About you — How much did you put into your traditional IRAs for 2025, in 2025 or by the deadline for your 2025 return (April 15, 2026, for most people)?
 
 Shown for your spouse:
 
-> About your spouse — How much did your spouse put into your spouse's traditional IRAs for 2025, in 2025 or by April 15, 2026?
+> About your spouse — How much did your spouse put into your spouse's traditional IRAs for 2025, in 2025 or by the deadline for your spouse's 2025 return (April 15, 2026, for most people)?
 
 **Help, as stored**
 
-> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately, and SEP or SIMPLE contributions.
+> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, repayments of a reservist distribution, money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately, and SEP or SIMPLE contributions.
 
 Shown on a one-person return:
 
-> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately, and SEP or SIMPLE contributions.
+> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, repayments of a reservist distribution, money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately, and SEP or SIMPLE contributions.
 
 Shown for you on a couple's return:
 
-> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately, and SEP or SIMPLE contributions.
+> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, repayments of a reservist distribution, money you deducted on your 2024 return, anything you took back out with its earnings by the deadline for your return, trustee's fees billed separately, and SEP or SIMPLE contributions.
 
 Shown for your spouse:
 
-> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, money your spouse deducted on your spouse's 2024 return, anything your spouse took back out with its earnings by the deadline for your spouse's return, trustee's fees billed separately, and SEP or SIMPLE contributions.
+> Form 5498 or a statement from the IRA's trustee shows it. Leave out rollovers, repayments of a reservist distribution, money your spouse deducted on your spouse's 2024 return, anything your spouse took back out with its earnings by the deadline for your spouse's return, trustee's fees billed separately, and SEP or SIMPLE contributions.
 
 ## `person.ira_extra_left`
 
@@ -2911,19 +3047,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
 
 Shown on a one-person return:
 
-> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
 
 Shown for you on a couple's return:
 
-> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if you were 50 or older at the end of 2025), or your taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
 
 Shown for your spouse:
 
-> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if your spouse was 50 or older at the end of 2025), or your spouse's taxable pay if that is less; a Roth IRA has a lower limit at higher incomes. A return with this is outside what this tool prepares; a Yes ends the interview here.
+> The limit for traditional and Roth IRAs together is $7,000 ($8,000 if your spouse was 50 or older at the end of 2025), or your spouse's taxable pay if that is less (on a joint return, the couple's pay less the other spouse's IRA contributions); a Roth IRA has a lower limit at higher incomes. Count money an employer put in and a rollover that did not qualify. A Yes ends the interview here.
 
 ## `person.ira_recharacterized`
 
@@ -3065,103 +3201,103 @@ Shown for your spouse:
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Your total basis in traditional IRAs (Form 8606 line 2): zero if this is the first year you file Form 8606; otherwise the amount the Total Basis Chart in the Form 8606 instructions gives for the last Form 8606 you filed (generally line 14 of that form)
+> For this person (you, or your spouse on a joint return) — Your total basis in traditional IRAs (Form 8606 line 2): zero if this is the first year you are required to file Form 8606 (you made no nondeductible traditional IRA contributions before 2025); otherwise the amount the Total Basis Chart in the Form 8606 instructions gives for the last Form 8606 you filed (generally line 14 of that form)
 
 Shown on a one-person return:
 
-> Your total basis in traditional IRAs (Form 8606 line 2): zero if this is the first year you file Form 8606; otherwise the amount the Total Basis Chart in the Form 8606 instructions gives for the last Form 8606 you filed (generally line 14 of that form)
+> Your total basis in traditional IRAs (Form 8606 line 2): zero if this is the first year you are required to file Form 8606 (you made no nondeductible traditional IRA contributions before 2025); otherwise the amount the Total Basis Chart in the Form 8606 instructions gives for the last Form 8606 you filed (generally line 14 of that form)
 
 Shown for you on a couple's return:
 
-> About you — Your total basis in traditional IRAs (Form 8606 line 2): zero if this is the first year you file Form 8606; otherwise the amount the Total Basis Chart in the Form 8606 instructions gives for the last Form 8606 you filed (generally line 14 of that form)
+> About you — Your total basis in traditional IRAs (Form 8606 line 2): zero if this is the first year you are required to file Form 8606 (you made no nondeductible traditional IRA contributions before 2025); otherwise the amount the Total Basis Chart in the Form 8606 instructions gives for the last Form 8606 you filed (generally line 14 of that form)
 
 Shown for your spouse:
 
-> About your spouse — Your spouse's total basis in traditional IRAs (Form 8606 line 2): zero if this is the first year your spouse files Form 8606; otherwise the amount the Total Basis Chart in the Form 8606 instructions gives for the last Form 8606 your spouse filed (generally line 14 of that form)
+> About your spouse — Your spouse's total basis in traditional IRAs (Form 8606 line 2): zero if this is the first year your spouse is required to file Form 8606 (your spouse made no nondeductible traditional IRA contributions before 2025); otherwise the amount the Total Basis Chart in the Form 8606 instructions gives for the last Form 8606 your spouse filed (generally line 14 of that form)
 
 **Help, as stored**
 
-> Your basis is the total of your nondeductible contributions to traditional IRAs, less any nontaxable distributions; zero if this is the first year you file Form 8606.
+> Your basis is the total of your nondeductible contributions to traditional IRAs, less any nontaxable distributions; zero if you made no nondeductible contributions before 2025.
 
 Shown on a one-person return:
 
-> Your basis is the total of your nondeductible contributions to traditional IRAs, less any nontaxable distributions; zero if this is the first year you file Form 8606.
+> Your basis is the total of your nondeductible contributions to traditional IRAs, less any nontaxable distributions; zero if you made no nondeductible contributions before 2025.
 
 Shown for you on a couple's return:
 
-> Your basis is the total of your nondeductible contributions to traditional IRAs, less any nontaxable distributions; zero if this is the first year you file Form 8606.
+> Your basis is the total of your nondeductible contributions to traditional IRAs, less any nontaxable distributions; zero if you made no nondeductible contributions before 2025.
 
 Shown for your spouse:
 
-> Your spouse's basis is the total of your spouse's nondeductible contributions to traditional IRAs, less any nontaxable distributions; zero if this is the first year your spouse files Form 8606.
+> Your spouse's basis is the total of your spouse's nondeductible contributions to traditional IRAs, less any nontaxable distributions; zero if your spouse made no nondeductible contributions before 2025.
 
 ## `person.ira_basis_adjusted`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — Did your traditional IRA basis change other than by nondeductible contributions? That is: did the last Form 8606 you filed with Part I completed have a Line 15c Worksheet with an amount on line 6; did you have a return of excess traditional IRA contributions; did you transfer or receive a traditional IRA incident to divorce; or did you roll over a nontaxable part of a qualified retirement plan to a traditional IRA that wasn't previously reported on Form 8606, line 2?
+> For this person (you, or your spouse on a joint return) — Did your traditional IRA basis change other than by nondeductible contributions? That is: did the last Form 8606 you filed with Part I completed have a Line 15c Worksheet with an amount on line 6; or, since the last Form 8606 you filed (ever, if you have filed none), did you have a return of excess traditional IRA contributions, transfer or receive a traditional IRA incident to divorce, or roll over a nontaxable part of a qualified retirement plan to a traditional IRA that wasn't previously reported on Form 8606, line 2?
 
 Shown on a one-person return:
 
-> Did your traditional IRA basis change other than by nondeductible contributions? That is: did the last Form 8606 you filed with Part I completed have a Line 15c Worksheet with an amount on line 6; did you have a return of excess traditional IRA contributions; did you transfer or receive a traditional IRA incident to divorce; or did you roll over a nontaxable part of a qualified retirement plan to a traditional IRA that wasn't previously reported on Form 8606, line 2?
+> Did your traditional IRA basis change other than by nondeductible contributions? That is: did the last Form 8606 you filed with Part I completed have a Line 15c Worksheet with an amount on line 6; or, since the last Form 8606 you filed (ever, if you have filed none), did you have a return of excess traditional IRA contributions, transfer or receive a traditional IRA incident to divorce, or roll over a nontaxable part of a qualified retirement plan to a traditional IRA that wasn't previously reported on Form 8606, line 2?
 
 Shown for you on a couple's return:
 
-> About you — Did your traditional IRA basis change other than by nondeductible contributions? That is: did the last Form 8606 you filed with Part I completed have a Line 15c Worksheet with an amount on line 6; did you have a return of excess traditional IRA contributions; did you transfer or receive a traditional IRA incident to divorce; or did you roll over a nontaxable part of a qualified retirement plan to a traditional IRA that wasn't previously reported on Form 8606, line 2?
+> About you — Did your traditional IRA basis change other than by nondeductible contributions? That is: did the last Form 8606 you filed with Part I completed have a Line 15c Worksheet with an amount on line 6; or, since the last Form 8606 you filed (ever, if you have filed none), did you have a return of excess traditional IRA contributions, transfer or receive a traditional IRA incident to divorce, or roll over a nontaxable part of a qualified retirement plan to a traditional IRA that wasn't previously reported on Form 8606, line 2?
 
 Shown for your spouse:
 
-> About your spouse — Did your spouse's traditional IRA basis change other than by nondeductible contributions? That is: did the last Form 8606 your spouse filed with Part I completed have a Line 15c Worksheet with an amount on line 6; did your spouse have a return of excess traditional IRA contributions; did your spouse transfer or receive a traditional IRA incident to divorce; or did your spouse roll over a nontaxable part of a qualified retirement plan to a traditional IRA that wasn't previously reported on Form 8606, line 2?
+> About your spouse — Did your spouse's traditional IRA basis change other than by nondeductible contributions? That is: did the last Form 8606 your spouse filed with Part I completed have a Line 15c Worksheet with an amount on line 6; or, since the last Form 8606 your spouse filed (ever, if your spouse has filed none), did your spouse have a return of excess traditional IRA contributions, transfer or receive a traditional IRA incident to divorce, or roll over a nontaxable part of a qualified retirement plan to a traditional IRA that wasn't previously reported on Form 8606, line 2?
 
 **Help, as stored**
 
-> Yes refuses the return (the Form 8606 line 2 adjustments are not prepared).
+> Count only what happened since the last Form 8606 you filed (or ever, if you have filed none). Yes refuses the return (the Form 8606 line 2 adjustments are not prepared).
 
 Shown on a one-person return:
 
-> Yes refuses the return (the Form 8606 line 2 adjustments are not prepared).
+> Count only what happened since the last Form 8606 you filed (or ever, if you have filed none). Yes refuses the return (the Form 8606 line 2 adjustments are not prepared).
 
 Shown for you on a couple's return:
 
-> Yes refuses the return (the Form 8606 line 2 adjustments are not prepared).
+> Count only what happened since the last Form 8606 you filed (or ever, if you have filed none). Yes refuses the return (the Form 8606 line 2 adjustments are not prepared).
 
 Shown for your spouse:
 
-> Yes refuses the return (the Form 8606 line 2 adjustments are not prepared).
+> Count only what happened since the last Form 8606 your spouse filed (or ever, if your spouse has filed none). Yes refuses the return (the Form 8606 line 2 adjustments are not prepared).
 
 ## `person.ira_dist`
 
 **Question, as stored**
 
-> For this person (you, or your spouse on a joint return) — In 2025, did you take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth IRA conversion? Do not count rollovers, qualified charitable distributions, a one-time distribution to fund an HSA, recharacterizations, or returns of contributions made by the due date of the return.
+> For this person (you, or your spouse on a joint return) — In 2025, did you take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth IRA conversion? Do not count rollovers (but count a repayment, treated as a rollover, of a 2025 qualified disaster, birth or adoption, emergency personal expense, domestic abuse or terminal illness distribution), qualified charitable distributions, a one-time distribution to fund an HSA, recharacterizations, or returns of contributions made by the due date of the return.
 
 Shown on a one-person return:
 
-> In 2025, did you take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth IRA conversion? Do not count rollovers, qualified charitable distributions, a one-time distribution to fund an HSA, recharacterizations, or returns of contributions made by the due date of the return.
+> In 2025, did you take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth IRA conversion? Do not count rollovers (but count a repayment, treated as a rollover, of a 2025 qualified disaster, birth or adoption, emergency personal expense, domestic abuse or terminal illness distribution), qualified charitable distributions, a one-time distribution to fund an HSA, recharacterizations, or returns of contributions made by the due date of the return.
 
 Shown for you on a couple's return:
 
-> About you — In 2025, did you take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth IRA conversion? Do not count rollovers, qualified charitable distributions, a one-time distribution to fund an HSA, recharacterizations, or returns of contributions made by the due date of the return.
+> About you — In 2025, did you take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth IRA conversion? Do not count rollovers (but count a repayment, treated as a rollover, of a 2025 qualified disaster, birth or adoption, emergency personal expense, domestic abuse or terminal illness distribution), qualified charitable distributions, a one-time distribution to fund an HSA, recharacterizations, or returns of contributions made by the due date of the return.
 
 Shown for your spouse:
 
-> About your spouse — In 2025, did your spouse take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth IRA conversion? Do not count rollovers, qualified charitable distributions, a one-time distribution to fund an HSA, recharacterizations, or returns of contributions made by the due date of the return.
+> About your spouse — In 2025, did your spouse take a distribution from a traditional IRA (including a SEP or SIMPLE IRA), or make a Roth IRA conversion? Do not count rollovers (but count a repayment, treated as a rollover, of a 2025 qualified disaster, birth or adoption, emergency personal expense, domestic abuse or terminal illness distribution), qualified charitable distributions, a one-time distribution to fund an HSA, recharacterizations, or returns of contributions made by the due date of the return.
 
 **Help, as stored**
 
-> Yes refuses the return (Form 8606 lines 4 to 13 are not prepared).
+> Paying back a 2025 disaster, birth or adoption, emergency, domestic abuse or terminal illness withdrawal counts here too. Yes refuses the return (Form 8606 lines 4 to 13 are not prepared).
 
 Shown on a one-person return:
 
-> Yes refuses the return (Form 8606 lines 4 to 13 are not prepared).
+> Paying back a 2025 disaster, birth or adoption, emergency, domestic abuse or terminal illness withdrawal counts here too. Yes refuses the return (Form 8606 lines 4 to 13 are not prepared).
 
 Shown for you on a couple's return:
 
-> Yes refuses the return (Form 8606 lines 4 to 13 are not prepared).
+> Paying back a 2025 disaster, birth or adoption, emergency, domestic abuse or terminal illness withdrawal counts here too. Yes refuses the return (Form 8606 lines 4 to 13 are not prepared).
 
 Shown for your spouse:
 
-> Yes refuses the return (Form 8606 lines 4 to 13 are not prepared).
+> Paying back a 2025 disaster, birth or adoption, emergency, domestic abuse or terminal illness withdrawal counts here too. Yes refuses the return (Form 8606 lines 4 to 13 are not prepared).
 
 ## `person.sav_able`
 
@@ -3217,19 +3353,19 @@ Shown for your spouse:
 
 **Help, as stored**
 
-> A contribution that was later moved to a traditional IRA (recharacterized) is a traditional IRA contribution, not a Roth one.
+> Leave out money you took back out with its earnings by the deadline, and paying back a disaster, birth or adoption, or emergency withdrawal. A contribution later moved to a traditional IRA (recharacterized) is a traditional IRA contribution.
 
 Shown on a one-person return:
 
-> A contribution that was later moved to a traditional IRA (recharacterized) is a traditional IRA contribution, not a Roth one.
+> Leave out money you took back out with its earnings by the deadline, and paying back a disaster, birth or adoption, or emergency withdrawal. A contribution later moved to a traditional IRA (recharacterized) is a traditional IRA contribution.
 
 Shown for you on a couple's return:
 
-> A contribution that was later moved to a traditional IRA (recharacterized) is a traditional IRA contribution, not a Roth one.
+> Leave out money you took back out with its earnings by the deadline, and paying back a disaster, birth or adoption, or emergency withdrawal. A contribution later moved to a traditional IRA (recharacterized) is a traditional IRA contribution.
 
 Shown for your spouse:
 
-> A contribution that was later moved to a traditional IRA (recharacterized) is a traditional IRA contribution, not a Roth one.
+> Leave out money your spouse took back out with its earnings by the deadline, and paying back a disaster, birth or adoption, or emergency withdrawal. A contribution later moved to a traditional IRA (recharacterized) is a traditional IRA contribution.
 
 ## `person.sav_voluntary`
 

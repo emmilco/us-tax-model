@@ -41,7 +41,9 @@ form:
       expr:
         op: input
         source: In 2025, did you (or, on a joint return, your spouse) pay for, or incur expenses for, the care of a qualifying
-          person so that you (and your spouse) could work or look for work? A qualifying person is your child under age 13;
+          person so that you (or, on a joint return, your spouse) could work or look for work? On a joint return, this
+          includes care that let one of you work or look for work while the other was a full-time student or was not able
+          to care for themselves. A qualifying person is your child under age 13;
           your spouse who was not able to care for themselves; or any other person who was not able to care for themselves,
           lived with you for more than half of 2025, and is your dependent or would be except that they had gross income of
           $5,200 or more, they filed a joint return, or you (or, on a joint return, your spouse) could be claimed as a
@@ -49,7 +51,7 @@ form:
           2026.
       cite:
         doc: i2441
-        locator: 'p. 1, Purpose of Form, "If you paid someone to care for your child or other qualifying person so you (or your spouse if filing jointly) could work or look for work in 2025, you may be able to take the credit for child and dependent care expenses"; p. 1, Qualifying Person(s), "whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer''s 2025 tax return"'
+        locator: 'p. 1, Purpose of Form, "If you paid someone to care for your child or other qualifying person so you (or your spouse if filing jointly) could work or look for work in 2025, you may be able to take the credit for child and dependent care expenses"; p. 2, Who Can Take the Credit or Exclude Dependent Care Benefits?, item 2, "But if you or your spouse was a full-time student or disabled, see the instructions for lines 4 and 5, later"; p. 1, Qualifying Person(s), "whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer''s 2025 tax return"'
     - id: f2441.filing
       printed: (helper)
       type: Bool
@@ -114,7 +116,7 @@ form:
       label: Did your spouse die in 2025?
       expr:
         op: input
-        source: Did your spouse die in 2025?
+        source: Did the spouse with whom you file this joint return die in 2025?
       cite:
         doc: p503
         locator: 'p. 11, Surviving spouse, "If your spouse died during the year and you file a joint return as a surviving spouse, you may, but aren''t required to, take into account the earned income of your spouse who died during the year"'
@@ -994,6 +996,7 @@ form:
             locator: 'p. 2, Married Persons Filing Separately, "Generally, married persons must file a joint return to claim the credit"'
     - id: f2441.line12
       printed: "12"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Enter the total amount of dependent care benefits you received in 2025. Amounts you received as an employee should
         be shown in box 10 of your Form(s) W-2. Don't include amounts reported as wages in box 1 of Form(s) W-2
@@ -1008,6 +1011,7 @@ form:
         the Schedule 1 screen (scope.schedule1).
     - id: f2441.line13
       printed: "13"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Enter the amount, if any, you carried over from 2024 and used in 2025 during the grace period
       expr:
@@ -1020,6 +1024,7 @@ form:
         locator: 'p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"'
     - id: f2441.line14
       printed: "14"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Enter the amount, if any, you forfeited or carried forward to 2026
       expr:
@@ -1057,6 +1062,7 @@ form:
         locator: 'p. 5, Line 14, "enter on line 14 the total of the following amounts included on line 12"'
     - id: f2441.line15
       printed: "15"
+      shown_when: f2441.benefits
       type: Dollars
       label: Combine lines 12 through 14
       expr:
@@ -1092,6 +1098,7 @@ form:
       ambiguity: amb.2025.dc_employer_care_value
     - id: f2441.line16
       printed: "16"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Enter the total amount of qualified expenses incurred in 2025 for the care of the qualifying person(s)
       expr:
@@ -1105,6 +1112,7 @@ form:
       ambiguity: amb.2025.dc_employer_care_value
     - id: f2441.line17
       printed: "17"
+      shown_when: f2441.benefits
       type: Dollars
       label: Enter the smaller of line 15 or 16
       expr:
@@ -1145,6 +1153,7 @@ form:
         locator: 'p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)"; p. 3, Columns (a) and (b), "your employer furnished the care (either at your workplace or by hiring a care provider)"'
     - id: f2441.line18
       printed: "18"
+      shown_when: f2441.benefits
       type: Dollars
       label: Enter your earned income
       expr:
@@ -1197,6 +1206,7 @@ form:
         locator: 'p. 5, Line 18, "Enter your earned income on line 18 and your spouse''s earned income on line 19"'
     - id: f2441.line19
       printed: "19"
+      shown_when: f2441.benefits
       type: Dollars
       label: If married filing jointly, enter your spouse's earned income (if you or your spouse was a student or was disabled,
         see the instructions for line 5). If married filing separately, see instructions. All others, enter the amount from
@@ -1218,7 +1228,7 @@ form:
             then: f2441.line18
       cite:
         doc: f2441
-        locator: Form 2441 (2025), line 19
+        locator: Form 2441 (2025), line 19; i2441 p. 5, Line 19, "Enter your earned income (from line 18) on line 19."
       refuses:
         - when: f2441.student_disabled
           form: Deemed earned income for a student or disabled spouse or filer (Form 2441, line B and lines 4, 5, 18 and 19)
@@ -1272,6 +1282,7 @@ form:
         locator: Form 2441 (2025), line 20
     - id: f2441.line20
       printed: "20"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Enter the smallest of line 17, 18, or 19. If zero or less, enter -0-
       expr:
@@ -1348,6 +1359,7 @@ form:
         locator: 'p. 5, Line 21, "For 2025, the maximum amount that can be excluded from your income through a dependent care assistance program is $5,000"'
     - id: f2441.line21
       printed: "21"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Enter $5,000 ($2,500 if married filing separately and you were required to enter your spouse's earned income on
         line 19). However, don't enter more than the maximum amount allowed under your dependent care plan
@@ -1370,6 +1382,7 @@ form:
             locator: 'p. 5, Line 21, "Don''t enter more than the maximum amount allowed under your dependent care plan"'
     - id: f2441.line22
       printed: "22"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Is any amount on line 12 or 13 from your sole proprietorship or partnership? No. Enter -0-. Yes. Enter the amount
         here
@@ -1383,6 +1396,7 @@ form:
         are refused, so the answer is No and line 22 is zero.
     - id: f2441.line23
       printed: "23"
+      shown_when: f2441.benefits
       type: Dollars
       label: Subtract line 22 from line 15
       expr:
@@ -1407,6 +1421,7 @@ form:
           smaller of line 20 or line 21" (line 25)
     - id: f2441.line24
       printed: "24"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Deductible benefits. Enter the smallest of line 20, 21, or 22. Also, include this amount on the appropriate line(s)
         of your return
@@ -1417,7 +1432,7 @@ form:
           - f2441.line22
       cite:
         doc: f2441
-        locator: Form 2441 (2025), line 24
+        locator: Form 2441 (2025), line 24; i2441 p. 5, Line 24, "Include your deductible benefits in the total entered on Schedule C (Form 1040), line 14"
     - id: f2441.line13_earned
       printed: (gate)
       type: Bool
@@ -1447,6 +1462,7 @@ form:
         locator: 'p. 5, Line 18, "however, for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12"; p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"'
     - id: f2441.line25
       printed: "25"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Excluded benefits. If you checked "No" on line 22, enter the smaller of line 20 or line 21. Otherwise, subtract line
         24 from the smaller of line 20 or line 21. If zero or less, enter -0-
@@ -1471,6 +1487,7 @@ form:
             locator: 'p. 5, Line 18, "however, for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12"; p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"'
     - id: f2441.line26
       printed: "26"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Taxable benefits. Subtract line 25 from line 23. If zero or less, enter -0-. Also, enter this amount on Form 1040,
         1040-SR, or 1040-NR, line 1e
@@ -1484,6 +1501,7 @@ form:
       refuses: *mfs
     - id: f2441.line27
       printed: "27"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Enter $3,000 ($6,000 if two or more qualifying persons)
       expr:
@@ -1491,9 +1509,10 @@ form:
         from: f2441.limit
       cite:
         doc: f2441
-        locator: Form 2441 (2025), line 27
+        locator: Form 2441 (2025), line 27; i2441 p. 6, Lines 27 Through 31, "you will need to complete lines 27 through 31 if you are also claiming the credit for child and dependent care expenses in Part II of the form"
     - id: f2441.line28
       printed: "28"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Add lines 24 and 25
       expr:
@@ -1506,6 +1525,7 @@ form:
         locator: Form 2441 (2025), line 28
     - id: f2441.line29
       printed: "29"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Subtract line 28 from line 27. If zero or less, stop. You can't take the credit. Exception. If you paid 2024 expenses
         in 2025, see the instructions for line 9b
@@ -1519,6 +1539,7 @@ form:
       note: The exception (2024 expenses paid in 2025) is refused at line 9b; a zero here gives a zero line 3 and no credit.
     - id: f2441.line30
       printed: "30"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add
         the amounts in column (d) and enter the total here
@@ -1542,6 +1563,7 @@ form:
       ambiguity: amb.2025.dc_line30
     - id: f2441.line31
       printed: "31"
+      shown_when: f2441.benefits
       type: NonNegDollars
       label: Enter the smaller of line 29 or 30. Also, enter this amount on line 3 on page 1 of this form and complete lines 4
         through 11

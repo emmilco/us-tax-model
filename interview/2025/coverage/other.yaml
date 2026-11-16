@@ -56,10 +56,47 @@ rows:
     proceeds:
       s1.stock_options: false
 - id: other.amt_owed
-  design: s2.amt, the tax owed for a reason no question names
+  design: s2.amt, the tax owed for a reason no question names (now figured from the return, Form 6251 lines 1a to 40 at their largest against line 10)
   situation: A person with a large capital gain has worked out on Form 6251 that alternative minimum tax is owed.
+  uses: [one_w2]
   answers:
-    s2.amt_owed: true
+    div.any: true
+    sb.ordinary_dividends: 100000000
+    f1040.line3a: 100000000
+    qbi.dividends: 0
+    sd.distributions: 0
+    div.other_boxes: false
+    sb.nominee: false
+    sb.bonds_any: false
+    ftc.taxes: 0
+    sd.f2439: false
+    f8960.unsupported: false
+    s2.w2_marks: false
+    s1.nqdc_pension: false
+    scope.w2_marks: false
+    scope.artist_official: false
+    scope.excess_deferral: false
+    f8960.refund: false
+    qbi.coop_patron: false
+  expect:
+    refused: s2.amt
+- id: other.amt_pab
+  design: s2.amt, private activity bond interest (Form 6251 line 2g), asked only where it could matter
+  situation: A person with $150,000 of wages has $100,000 of tax-exempt interest, all of it from private activity bonds (box 9 of Form 1099-INT).
+  answers:
+    $w2@person[taxpayer]: [job]
+    person[taxpayer].w2[job].box1: 15000000
+    person[taxpayer].w2[job].box2: 2000000
+    person[taxpayer].w2[job].box4: 930000
+    person[taxpayer].w2[job].box5: 15000000
+    person[taxpayer].w2[job].box6: 217500
+    f1040.tax_exempt_interest: 10000000
+    s2.amt_pab: 10000000
+    s2.w2_marks: false
+    s1.nqdc_pension: false
+    scope.w2_marks: false
+    scope.artist_official: false
+    scope.excess_deferral: false
   expect:
     refused: s2.amt
 - id: other.w2_uncollected_tax
@@ -68,11 +105,6 @@ rows:
   uses: [one_w2]
   answers:
     s2.w2_marks: true
-    scope.w2_marks: false
-    s1.nqdc_pension: false
-    scope.artist_official: false
-    scope.excess_deferral: false
-    s2.amt_owed: false
   expect:
     refused: s2.other
 - id: other.household_employee
@@ -81,7 +113,6 @@ rows:
   answers:
     s2.household_help: true
     s2.household_employee: true
-    s2.amt_owed: false
   expect:
     refused: s2.other
 - id: other.household_help_small
@@ -98,7 +129,6 @@ rows:
   situation: A person sold in 2025 a building for which a rehabilitation credit was claimed in 2022 and must pay part of it back.
   answers:
     s2.credit_recapture: true
-    s2.amt_owed: false
   expect:
     refused: s2.other
 - id: other.other_tax

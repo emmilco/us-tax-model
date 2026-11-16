@@ -380,7 +380,8 @@
         "person[taxpayer].w2[emp_a].box1": 5000000,
         "person[taxpayer].w2[emp_a].box5": 5000000,
         "person[taxpayer].w2[emp_a].box6": 72500,
-        "person[taxpayer].f8889[hsa].inherited": true,
+        "person[taxpayer].f8889[hsa].inherited_any": true,
+        "person[taxpayer].f8889[hsa].inherited_case": "other",
         "person[taxpayer].f8889[hsa].subject_part": null,
         "s179.prior_form": null,
         "s179.carryover": null
@@ -2343,7 +2344,8 @@
         "f1040.estimated_any": true,
         "f1040.line26": 200000,
         "div.any": true,
-        "person[taxpayer].f8889[hsa].inherited": true,
+        "person[taxpayer].f8889[hsa].inherited_any": true,
+        "person[taxpayer].f8889[hsa].inherited_case": "other",
         "f2441.benefits": null,
         "sd.distributions": null,
         "ssb.benefits": null,
@@ -4787,6 +4789,220 @@
         "person[taxpayer].f8889[hsa].testing_prior_if_asked": {
           "kind": "bool",
           "value": false
+        }
+      }
+    },
+    {
+      "id": "g1f1.hsa.testing_failed_by_disability",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane g1-f1 (BUG-0616), predicted by hand from i8889 p. 2, Testing period (\"other than because of death or becoming disabled\") before running: no contributions for 2025; the last-month rule was used for 2024; eligible in only 2 months of 2025 and not on December 1; the failure was because the person became disabled, so there is no Part III income: testing_failed_figured true, testing_failed false, line 13 $0, not refused.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].testing_prior": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 2,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "none",
+        "person[taxpayer].f8889[hsa].disabled": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].testing_failed_figured": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "g1f1.hsa.ira_testing_period_ended",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane g1-f1 (BUG-0616), predicted by hand from i8889 p. 8, Testing period (it lasts through the 12th month after the month of the transfer) before running: a transfer from an IRA in 2024 whose testing period ended before the first month of 2025 without coverage (ira_gap false); the last-month rule was not used for 2024; no contributions for 2025; eligible in 2 months: ira_failed false, testing_failed false, line 13 $0, not refused.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].f8889[hsa].ira_prior": true,
+        "person[taxpayer].f8889[hsa].ira_gap": false,
+        "person[taxpayer].f8889[hsa].testing_prior": false,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "person[taxpayer].f8889[hsa].months_eligible": 2,
+        "person[taxpayer].f8889[hsa].months_family": 0,
+        "person[taxpayer].f8889[hsa].dec_coverage": "none"
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].ira_failed": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].testing_failed": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "g1f1.hsa.inherited_from_spouse_earlier",
+      "covers": [
+        "f8889"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane g1-f1 (BUG-0613), predicted by hand from i8889 p. 3, Death of Account Beneficiary (\"The surviving spouse completes Form 8889 as though the HSA belonged to the surviving spouse\") and p. 4, Line 3, rule 3, before running: a widow, single, born 1980, whose husband died before 2025 and left her his HSA; self-only HDHP all year as an eligible individual; she put in $1,000 for 2025, no employer contributions: line 3 $4,300, line 13 the smaller of line 2 ($1,000) and line 12 ($4,300) = $1,000; not refused.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "person[taxpayer].birth_year": 1980,
+        "person[taxpayer].f8889[hsa].inherited_any": true,
+        "person[taxpayer].f8889[hsa].inherited_case": "spouse_earlier",
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].line9": 0
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].inherited": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "g1f1.hsa.former_spouse_family_refused",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane g1-f1 (BUG-0618), predicted by hand from i8889 p. 4, How To Complete Part I, before running: a single filer divorced during 2025, self-only HDHP all year as an eligible individual, whose then-husband had family HDHP coverage; she put in $1,000: line 13 is refused at f8889.former_spouse_family_if_asked.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "f1040.status": "single",
+        "household.ever_married": true,
+        "household.married_dec31": false,
+        "household.spouse_died_this_year": false,
+        "person[taxpayer].birth_year": 1980,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].line9": 0,
+        "person[taxpayer].f8889[hsa].former_spouse_family": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].former_spouse_family_if_asked",
+          "form": "Form 8889 Part I for the months of a marriage that ended during 2025",
+          "remedy": "In a month of 2025 in which you were married and both of you were eligible individuals, your husband's or wife's family coverage counts as yours, and if you both have HSAs the family limit for those months is shared between you. This tool figures that only for a couple married at the end of 2025.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 4, How To Complete Part I; p. 7, Line 6",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "g1b1.hsa.family_former_spouse_unread",
+      "covers": [
+        "s1",
+        "f8889",
+        "sli",
+        "f1040.lines8-10"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Integration B1 of the goal-1 round, predicted by hand before running: stage11.hsa.family_all_year_answer (single by default, once married and not married at the end of 2025, family HDHP coverage all year) with the former spouse's family coverage answered Yes. That question is asked only with self-only coverage (f8889.ask_former_spouse_family is No for family coverage): with family coverage the family limit is already the person's own, so the answer is not read and the values are those of the base case, line 3 $9,550 and line 13 $9,000.",
+      "inputs": {
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 8000000,
+        "person[taxpayer].w2[emp_a].box4": 496000,
+        "person[taxpayer].w2[emp_a].box5": 8000000,
+        "person[taxpayer].w2[emp_a].box6": 116000,
+        "person[taxpayer].f8889[hsa].line2": 900000,
+        "person[taxpayer].f8889[hsa].coverage_year": "family",
+        "person[taxpayer].birth_year": 1970,
+        "person[taxpayer].f8889[hsa].former_spouse_family": true
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 955000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 900000
         }
       }
     }

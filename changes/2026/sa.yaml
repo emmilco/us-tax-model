@@ -29,7 +29,7 @@ changes:
             locator: Schedule A (2026), line 8d (draft), "8d Mortgage insurance premiums (see instructions)"
           refuses:
           - when: sa.unsupported
-            form: Schedule A unsupported item / Form 4684
+            form: Schedule A unsupported item
             remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are supported.
             cite:
               doc: f1040sa

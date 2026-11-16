@@ -18,6 +18,16 @@
    "subject_key": "08cb2ca845b3efc140a7d3450a174cf0da10510619312269b4b2e12e28434893"
   },
   {
+   "printed": "12",
+   "restated": "Add person.dc_benefits over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The restatement adds only W-2 box 10 less the part reported in box 1. Line 12 also says 'If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership.' No refusal names this omission.",
+   "ruling": "Ruling: scope; i2441 p. 5, Line 12, \"If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership\": a filer with benefits is asked scope.care_benefits_other (\"Were any of those care benefits not shown in box 10 of a W-2 (for example from your own business or a partnership), or carried into 2025 from a 2024 plan under a grace period?\"), whose Yes refuses the return through scope.other_income; on computed returns line 12 is the box 10 amounts the rendering adds.",
+   "context": "3379f6204c47db5d98c4d1a425e3804d293603517551f52426cb7550f039d229",
+   "date": "2026-11-15",
+   "run": "4fd5326f91cb7e822bed00c2bc28787c4efe57f4ee22245ebcec16502c3161ea",
+   "subject_key": "729894b9a6923bf21cd373752f0bca6756af503ab4126aa0622459b86398a09e"
+  },
+  {
    "printed": "16",
    "restated": "Add helper \"Total of the qualified expenses incurred and paid in 2025 for the qualifying persons (line 2, column (d), before excluding any benefits)\" and helper \"Qualified care expenses incurred in 2025 not already counted in the per-person care amounts\".",
    "model": "Adding expenses incurred and paid in 2025 to other expenses incurred in 2025 regardless of payment fits 'It doesn't matter when the expenses were paid'. But the per-person total covers only dependents, while the IRS says 'the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)', which include 'Your disabled spouse', and no refusal names that case.",
@@ -78,6 +88,16 @@
   {
    "printed": "18",
    "restated": "Add person.dc_earned_b over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Leaving out line 1e follows the rule that earned income 'doesn't include any dependent care benefits shown on line 12', and the line 13 case is refused. The underlying earned income still leaves out the line 1z items other than 1a, as with line 4.",
+   "ruling": "Ruling: scope; the reply accepts the omission of line 1e (i2441 p. 5, Line 18) and the line 13 refusal; the other line 1z items are refused by scope.other_income (scope.pay_no_w2, scope.medicaid_waiver, scope.adoption_benefits_if_adoption, scope.excess_deferral_if_w2) and combat pay by s8812.combat_pay, as for line 4.",
+   "context": "3379f6204c47db5d98c4d1a425e3804d293603517551f52426cb7550f039d229",
+   "date": "2026-11-15",
+   "run": "4fd5326f91cb7e822bed00c2bc28787c4efe57f4ee22245ebcec16502c3161ea",
+   "subject_key": "ca86dacb9921e6914a4c526733f60e0a77eea5b49253e704be965be7b635eada"
+  },
+  {
+   "printed": "18",
+   "restated": "Add person.dc_earned_b over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Leaving out line 1e is correct ('earned income doesn't include any dependent care benefits shown on line 12'). But the base is W-2 box 1 rather than 'Form 1040... line 1z', and the given text does not define line 1z, so the match cannot be confirmed.",
    "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The excerpt's missing Form 1040 page is a real context limitation, supplied in this adjudication; it is not model noise or a claim of support for the excluded cases.",
    "context": "209823876d34ea39a3a4b20db99c3a3a550056f0afba8b5cf1043f71f3334925",
@@ -115,6 +135,16 @@
    "date": "2026-11-14",
    "run": "7ae90939fbc4f1be8c147c3ab7aa364070e9294254bebd23c6eceb010d10fbb6",
    "subject_key": "b40b88bbfa5cac04621f903ea3387a44ce0a87573de3166b35f8ae421a84bf90"
+  },
+  {
+   "printed": "19",
+   "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 19\"] [helper \"Married filing jointly\" = false → line 18]",
+   "model": "Married filing jointly uses the spouse's earned income and all others use line 18, as on the form. Married filing separately is refused at line 26, and that refusal names line 19. The spouse's earned income has the same definition question as line 18.",
+   "ruling": "Ruling: scope; the reply agrees on the choice and on the MFS refusal at line 26; the spouse's earned income has line 18's definition, whose other line 1z items are refused by scope.other_income and combat pay by s8812.combat_pay, as for line 4.",
+   "context": "3379f6204c47db5d98c4d1a425e3804d293603517551f52426cb7550f039d229",
+   "date": "2026-11-15",
+   "run": "4fd5326f91cb7e822bed00c2bc28787c4efe57f4ee22245ebcec16502c3161ea",
+   "subject_key": "44a81a4a508f739894a9b3520ef9265d3de448f236b2b0706dec679417d8133e"
   },
   {
    "printed": "19",
@@ -317,6 +347,16 @@
   {
    "printed": "4",
    "restated": "Add person.dc_earned over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The instructions build earned income from 'The amount shown on Form 1040... line 1z', which also takes in lines 1b, 1c, 1d, 1f, 1g and 1h. The restatement uses only W-2 box 1, line 1e and the Schedule SE/Schedule C amount. The text given does not show whether those other line 1z items are screened out elsewhere, and no refusal here names them.",
+   "ruling": "Ruling: scope; the rendered line 4 (person.dc_earned: W-2 box 1, the person's share of line 1e, Schedule SE line 3 less the Schedule 1 line 15 deduction) is the earned income of i2441 p. 4, Lines 4 and 5, for every return the tool computes: the other Form 1040 line 1z items are refused before Form 2441 by the other-income screen scope.other_income (line 1b and 1c, and Form 8919 wages: scope.pay_no_w2, \"wages, tips or strike benefits that are not on a W-2\"; line 1d: scope.medicaid_waiver; line 1f: scope.adoption_benefits_if_adoption; line 1h: scope.excess_deferral_if_w2 and scope.pay_no_w2), and nontaxable combat pay by the f2441 refusal s8812.combat_pay (\"Nontaxable combat pay election (Form 2441, lines 4, 5, 18 and 19)\"). The reviewer saw only this form's text; no wording defect.",
+   "context": "3379f6204c47db5d98c4d1a425e3804d293603517551f52426cb7550f039d229",
+   "date": "2026-11-15",
+   "run": "4fd5326f91cb7e822bed00c2bc28787c4efe57f4ee22245ebcec16502c3161ea",
+   "subject_key": "e394012bcd3a0fe8deb3f4c763760ba64851d73c4a7b1cad579864855e9b4b76"
+  },
+  {
+   "printed": "4",
+   "restated": "Add person.dc_earned over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The instructions define earned income starting from 'The amount shown on Form 1040... line 1z', but the restatement uses W-2 box 1 plus the line 1e share. The text given does not show what line 1z contains, so whether box 1 plus 1e equals 1z cannot be judged. The statutory-employee item ('the amount shown on line 1 of the schedule') is also not visibly handled or refused.",
    "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The excerpt's missing Form 1040 page is a real context limitation, supplied in this adjudication; it is not model noise or a claim of support for the excluded cases.",
    "context": "209823876d34ea39a3a4b20db99c3a3a550056f0afba8b5cf1043f71f3334925",
@@ -359,6 +399,16 @@
    "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The refreshed prompt supplies Form 1040. The omitted wage classes are explicitly outside completed-return scope, not reviewer noise or supported cases.",
    "context": "93ce585c49d2360759206d6eb5c4cdcca9b47552f5acd100e71f6f85b91fff70",
    "subject_key": "48ce8a562ae61ce6da7ce6c81e8417518031c95957776119a90af622ea6c0dd5"
+  },
+  {
+   "printed": "5",
+   "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 5\"] [helper \"Married filing jointly\" = false → line 4]",
+   "model": "The choice itself matches the form: spouse's earned income if married filing jointly, 'all others, enter the amount from line 4'. The spouse's earned income uses the same definition as line 4, which leaves out the line 1z items other than 1a and 1e, so the same question as line 4 applies.",
+   "ruling": "Ruling: scope; the choice matches the form (the reply agrees), and the spouse's earned income has the definition of line 4: the other line 1z items are refused by scope.other_income (scope.pay_no_w2, scope.medicaid_waiver, scope.adoption_benefits_if_adoption, scope.excess_deferral_if_w2) and combat pay by s8812.combat_pay, as for line 4.",
+   "context": "3379f6204c47db5d98c4d1a425e3804d293603517551f52426cb7550f039d229",
+   "date": "2026-11-15",
+   "run": "4fd5326f91cb7e822bed00c2bc28787c4efe57f4ee22245ebcec16502c3161ea",
+   "subject_key": "0c98b2c9d5a66a0fec4b5692cc844bf825dc58dfeeb54d10d0157e43ba5051ef"
   },
   {
    "printed": "5",

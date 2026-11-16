@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.salt.below",
-      "walk": "stage4",
       "covers": [
         "salt.below"
       ],
@@ -32,7 +31,6 @@
     },
     {
       "id": "stage4.salt.exact",
-      "walk": "stage4",
       "covers": [
         "salt.exact"
       ],
@@ -57,7 +55,6 @@
     },
     {
       "id": "stage4.salt.phase",
-      "walk": "stage4",
       "covers": [
         "salt.phase"
       ],
@@ -82,7 +79,6 @@
     },
     {
       "id": "stage4.salt.floor",
-      "walk": "stage4",
       "covers": [
         "salt.floor"
       ],
@@ -107,7 +103,6 @@
     },
     {
       "id": "stage4.salt.above",
-      "walk": "stage4",
       "covers": [
         "salt.above"
       ],
@@ -132,7 +127,6 @@
     },
     {
       "id": "stage4.salt.mfs",
-      "walk": "stage4",
       "covers": [
         "salt.mfs"
       ],
@@ -161,7 +155,6 @@
     },
     {
       "id": "stage4.salt.mfs_floor",
-      "walk": "stage4",
       "covers": [
         "salt.mfs_floor"
       ],
@@ -194,7 +187,6 @@
     },
     {
       "id": "stage4.salt.low_paid",
-      "walk": "stage4",
       "covers": [
         "salt.low_paid"
       ],
@@ -219,7 +211,6 @@
     },
     {
       "id": "stage4.medical.below",
-      "walk": "stage4",
       "covers": [
         "medical.below"
       ],
@@ -248,7 +239,6 @@
     },
     {
       "id": "stage4.medical.above",
-      "walk": "stage4",
       "covers": [
         "medical.above"
       ],
@@ -273,7 +263,6 @@
     },
     {
       "id": "stage4.standard.single",
-      "walk": "stage4",
       "covers": [
         "standard.single"
       ],
@@ -298,7 +287,6 @@
     },
     {
       "id": "stage4.standard.hoh",
-      "walk": "stage4",
       "covers": [
         "standard.hoh"
       ],
@@ -334,7 +322,6 @@
     },
     {
       "id": "stage4.standard.qss",
-      "walk": "stage4",
       "covers": [
         "standard.qss"
       ],
@@ -361,7 +348,6 @@
     },
     {
       "id": "stage4.standard.mfj",
-      "walk": "stage4",
       "covers": [
         "standard.mfj"
       ],
@@ -395,7 +381,6 @@
     },
     {
       "id": "stage4.standard.mfs",
-      "walk": "stage4",
       "covers": [
         "standard.mfs"
       ],
@@ -424,7 +409,6 @@
     },
     {
       "id": "stage4.standard.spouse_itemizes",
-      "walk": "stage4",
       "covers": [
         "standard.spouse_itemizes"
       ],
@@ -456,7 +440,6 @@
     },
     {
       "id": "stage4.standard.itemized",
-      "walk": "stage4",
       "covers": [
         "standard.itemized"
       ],
@@ -485,7 +468,6 @@
     },
     {
       "id": "stage4.standard.elected",
-      "walk": "stage4",
       "covers": [
         "standard.elected"
       ],
@@ -513,7 +495,6 @@
     },
     {
       "id": "stage4.gift.50000.false",
-      "walk": "stage4",
       "covers": [
         "gift.50000.false"
       ],
@@ -545,7 +526,6 @@
     },
     {
       "id": "stage4.gift.500000.false",
-      "walk": "stage4",
       "covers": [
         "gift.500000.false"
       ],
@@ -577,7 +557,6 @@
     },
     {
       "id": "stage4.gift.500001.true",
-      "walk": "stage4",
       "covers": [
         "gift.500001.true"
       ],
@@ -610,7 +589,6 @@
     },
     {
       "id": "stage4.refuse.sa.unsupported",
-      "walk": "stage4",
       "covers": [
         "sa.unsupported"
       ],
@@ -739,7 +717,6 @@
     },
     {
       "id": "stage4.refuse.sa.charity_limited",
-      "walk": "stage4",
       "covers": [
         "sa.charity_limited"
       ],
@@ -894,7 +871,6 @@
     },
     {
       "id": "stage4.refuse.sa.excluded_income",
-      "walk": "stage4",
       "covers": [
         "sa.excluded_income"
       ],
@@ -1023,7 +999,6 @@
     },
     {
       "id": "stage4.refuse.standard.dependent",
-      "walk": "stage4",
       "covers": [
         "sa.dependent"
       ],
@@ -1075,7 +1050,6 @@
     },
     {
       "id": "stage4.refuse.dependent_itemizes",
-      "walk": "stage4",
       "covers": [
         "sa.dependent",
         "f1040.line12e"
@@ -1128,7 +1102,6 @@
     },
     {
       "id": "stage4.refuse.standard.spouse_extra",
-      "walk": "stage4",
       "covers": [
         "sa.spouse_extra"
       ],
@@ -1168,7 +1141,6 @@
     },
     {
       "id": "stage4.refuse.gift.special",
-      "walk": "stage4",
       "covers": [
         "gift.special"
       ],
@@ -1210,7 +1182,6 @@
     },
     {
       "id": "stage4.refuse.sa.unsupported.simultaneous",
-      "walk": "stage4",
       "covers": [
         "sa.unsupported"
       ],
@@ -1340,7 +1311,6 @@
     },
     {
       "id": "stage4.deductions.combined",
-      "walk": "stage4",
       "covers": [
         "stage4.deductions.combined"
       ],
@@ -1436,7 +1406,6 @@
     },
     {
       "id": "audit.sa.negative_agi_medical",
-      "walk": "stage4",
       "covers": [
         "medical.negative_agi"
       ],
@@ -1482,7 +1451,6 @@
     },
     {
       "id": "audit.sa.negative_agi_medical_paid",
-      "walk": "stage4",
       "covers": [
         "medical.negative_agi"
       ],

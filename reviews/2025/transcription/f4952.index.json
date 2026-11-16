@@ -4,15 +4,15 @@
  "family": "claude",
  "base": "44f0df5a5038d97470818cf392daf80248b4e3bef4d97816b446d24e6f893c35",
  "head_rows": {
-  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "f4952.required",
-   "record": "b92b9e8fdb136f65a4a862f90a1c85a8027fb43cce58d36296dd5b6227c153dd",
+   "record": "004cdfed8769d1c53c7d109f85184345884cd868b88087bf8e424bb2afbc2490",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; triage 2,581/2,730 agree; 33 value differences (3 on completed returns), every one witnessed with an election on line 4g and the exception's three conditions met (e.g. classm.f1040.2: has_interest yes, line 1 $2,441, line 4g $5,992, no carryover): the project says the form is required, the reply says not. Form 4952 instructions p. 4, Line 4g: \"To make the election, enter on line 4g the amount you elect to include in investment income\"; the election is made on the form, so the p. 3 Exception (\"You don't have to file Form 4952 if all of the following apply\") cannot excuse a filer who elects. The reply reads only the exception and ignores the election. Its other differences are refusal placement and the project's has_interest gate (unasked line 1, carryover).",
-   "subject_key": "61a718d3c08a11bc79e43f9c114d2488f699c6f85ba50b27bfed9b8ea7605258"
+   "ruling": "Ruling: model error; f4952 p. 1, Who Must File, 'you must file Form 4952 to claim a deduction for your investment interest expense. Exception. You don’t have to file Form 4952 if all of the following apply ...', and Line 4g, 'To make the election, enter on line 4g the amount you elect to include in investment income'. The reply omits the election: an amount on line 4g is made only on the form, so the form must be filed even when the exception's three conditions hold. Triage executable-triage-v2 (`.transcription/triage/2025/f4952.json`, pass 279a86710400): 2,623 of 2,769 agree; all 32 value differences are project true, reply false (3 completed: e.g. classm.f8880.2, line 4g $9,719.00 elected with line 4c above line 1 and no carryover; also classm.ltc.2, classm.f1040.2.deepseek). The rest: 58 project-refuses (f4952.bad_election, div.bad_components, sb screens), 35 project-unknown and 7 candidate-unknown (records withholding f4952.unsupported or f4952.alternative_allocation), 14 candidate-refuses (refusals the project places elsewhere, f4952.bad_dividends, sb screens). Project stands.",
+   "subject_key": "d7f96bde7582c87852945066f5cb5a138a040bf8c6b5164c968f30ef5dc4110c"
   },
   {
    "key": "1",
@@ -28,10 +28,10 @@
   },
   {
    "key": "2",
-   "record": "b92b9e8fdb136f65a4a862f90a1c85a8027fb43cce58d36296dd5b6227c153dd",
+   "record": "004cdfed8769d1c53c7d109f85184345884cd868b88087bf8e424bb2afbc2490",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; triage 2,618/2,730 agree, no value difference; differences are candidate-unknown (16 on completed returns: the reply reads f4952.carryover, which is asked only when f4952.has_interest is yes) and project-unknown/refuses (the project's f4952.alternative_allocation and f4952.unsupported refusals on this line). f4952 line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\": with no investment interest and no carryforward (has_interest No) the project's line 2 is 0, as the reply's would be; the reply ignores the parent question.",
-   "subject_key": "32cfb796045d4d9549aeab59fbf7f9f75bd228cb0e2841834f34f15b29a8f684"
+   "ruling": "Ruling: representation; equivalent: f4952 line 2, 'Disallowed investment interest expense from 2024 Form 4952, line 7'. The reply reads f4952.carryover ungated; the project asks it only under f4952.has_interest, whose question includes 'investment interest expense disallowed in 2024 or an earlier year and not yet deducted', so a carryover can only be Yes after that parent is Yes. Triage executable-triage-v2 (pass 279a86710400): 2,650 of 2,769 agree and no value differs; 17 candidate-unknown (f4952.carryover not asked when has_interest is No, e.g. classm.f4952.2, project $0), 37 project-refuses (f4952.alternative_allocation) and 65 project-unknown (records withholding has_interest or alternative_allocation). Project stands.",
+   "subject_key": "d338ca10f8a892368f604df42175e76b581bc6de6b71a1d8670b303b7dc2f095"
   },
   {
    "key": "3",
@@ -99,17 +99,17 @@
   },
   {
    "key": "8",
-   "record": "b92b9e8fdb136f65a4a862f90a1c85a8027fb43cce58d36296dd5b6227c153dd",
+   "record": "004cdfed8769d1c53c7d109f85184345884cd868b88087bf8e424bb2afbc2490",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; triage 2,308/2,730 agree, no value difference; differences are candidate-unknown (36 on completed returns: the reply reaches f4952.unsupported where the form is not used and that question is not asked) and candidate/project-refuses (refusals reached through line 6 on returns where the form is not used). When the form is not used, line 1 and line 2 are 0, so line 3 is 0 and the smaller of lines 3 and 6 is 0, the project's value. f4952 line 8, \"Enter the smaller of line 3 or line 6\".",
-   "subject_key": "995488db1f7d5cbbfb53076a4a16c3c5f20636cbfd1b1c0ea2628721853f4e42"
+   "ruling": "Ruling: representation; equivalent: f4952 line 8, smaller of lines 3 and 6. The project gives $0 when Form 4952 is not used (line 1 and line 4g at $0 and no carryover), where line 3 is $0 and the smaller of lines 3 and 6 is $0 as well. Triage executable-triage-v2 (pass 279a86710400): 2,372 of 2,769 agree and no value differs; 275 candidate-unknown and 122 candidate-refuses arise because the reply evaluates line 6 (and its f4952.unsupported, f4952.alternative_allocation and sb screens) on returns with no investment interest, which the interview does not ask (e.g. classm.f2441.1.deepseek, project $0). Project stands.",
+   "subject_key": "dd1a666e3294d971f8cc419fe57ba54a18c364893cfeebb9521495175aed883e"
   }
  ],
  "subjects": {
-  "f4952.required": "e155970fe7fcf74521eee196eb613caae91e4e86f6f263fce2be1751e8024f8c",
+  "f4952.required": "031f6b7948521f7f16c14d1c36f93ff6039a46d6d9aabe572a0c14b40a7a306c",
   "1": "040d57fedb2d2884f77c37869c16886627408afe407590f1725a32c148cbf5f4",
   "4a": "c21d4937d2ac41d88b812da7c86688878ed02c5163ce0b9faad7ea035d8ea5bf",
-  "2": "534769559b6beaa594f4ca0327fbe32a4f792ef5e9c7ecafe2577b4af798d046",
+  "2": "592e24c70fed5a016328274264d054ea40407ab182c10e086894b573e38b5fbc",
   "3": "f86056ac188244bebd0b409f071eaf62534349ea18baf66fbb4a3b62da7f4f3d",
   "4b": "5354454438868809725d7225a618287f516687b56819a0f1391f20833873a08f",
   "4c": "6ed8f4f7add56e5ba37356af0d13416c0ce5da868ee207a1915ca4cc41b627ca",
@@ -120,7 +120,7 @@
   "5": "b8b5a706a5a41c5066bc301db75da460ca165498310762645f91385381aa465d",
   "6": "73868ad0c486b367c5e733328ffa97ece933dfa463b6d647d49c0bb4a921ff2d",
   "7": "ea6ef3551538e84e7d8d5f873599d0793891af205442e430186a37a3bc141cbe",
-  "8": "a005b351f378df5dd2e6404d850da0d7a026bdeedb2cb375a45444df05622867"
+  "8": "080e058d33de39fd3ce3e32f3128312b60ca2992045250457f3eee26fd1d2c3c"
  },
  "__rest__": "9b7c7c4aeba3ea3ae16cf7d238a6cce71a67f7b7722c45a41770e3a6bd2f9b70",
  "foreign": {

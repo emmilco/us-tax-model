@@ -647,6 +647,16 @@
   {
    "printed": "household.hoh_fails",
    "project_expr_sha256": "bcee983e5ada5a27327c5668bc2c5b837529c432e0d05621c36b28858bea1d90",
+   "second_expr_sha256": "0ab0f353c85722be1f1fd6f3d80422e60e0c13fb552aecd62b6514254defa5fb",
+   "ruling": "Ruling: representation; i1040gi p. 14, Head of Household, \"Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies\"; Pub. 501 p. 6, \"If your spouse died during the year, you are considered married for the whole year\". The reply's tests are the project's: dependent.hoh_test1 (Test 1), dependent.hoh_test2 with household.home_cost (Test 2, the project's test2_met), married_dec31 and not considered_unmarried (the project's household.unmarried false). It also folds in a spouse who died in 2025, which the project refuses at the same Form 1040 status line through household.widowed_this_year (f1040.yaml refuses on hoh_fails and widowed_this_year side by side), and it reads married_dec31 and considered_unmarried raw where the project gates them. Same refusal outcome. Ruled by reading: the triage record predates this reply (pass de16cc0a21be).",
+   "context": "cb572549555912111eacfaae2aa104b6cf1907136be1bbde69a459c186c57f5e",
+   "date": "2026-11-15",
+   "run": "4072eddc5d7176db08a6183dcbc3e602718d7db07a2d08fd80396f41268338f3",
+   "subject_key": "7bd2c91853f0ea3ec3f45202c94e95597b11faabf46cca945fb3f44c711c5394"
+  },
+  {
+   "printed": "household.hoh_fails",
+   "project_expr_sha256": "bcee983e5ada5a27327c5668bc2c5b837529c432e0d05621c36b28858bea1d90",
    "second_expr_sha256": "54bb3c99b06e2b18a9722d1f9171772642c3020219b15eca74f138722167f4fa",
    "ruling": "Ruling: scope; i1040gi p. 14, Head of Household: \"Check the 'Head of household' box only if you were unmarried or considered unmarried on the last day of 2025, and either Test 1 or Test 2 below applies\". Ruled by reading: no household triage (triage.py refuses the form because an earlier pass names the renamed household.widowed_2025; the record on disk predates the redraft). The reply's test is the project's (head of household checked; unmarried or considered unmarried; Test 1, or Test 2 with the home cost paid), as ruled before. It differs in two ways: through its own household.married (ruled model error) a filer whose spouse died in 2025 fails here, where the project ends that return at household.widowed_this_year (both stop it at Form 1040 line 12e); and the project's household.hoh_eligible also carries the cited refusals household.hoh_absence (p501 p. 9, temporary absences) and household.hoh_community_property (amb.2025.hoh_community_property), which the reply bypasses. Project stands.",
    "context": "da1ed4881e208ce7fca2aa9e25842b3f4378b0793feeb08d45e49f9797dbb3b0",
@@ -713,6 +723,16 @@
    "second_expr_sha256": "3c4bc210f785adcc19abcacdcac9f2ceb6810daadf5afedc1e1abf37d45dbe30",
    "ruling": "Ruling: representation; project retained. The second tests at least two person entries with a Form 8889; the project exactly two. The roster has one entry for you and, only on a joint return, one for your spouse, and any other roster is refused at Form 1040 line 1a (household.roster_bad), so within scope the counts agree (i8889 p. 4, 'If married filing jointly and both you and your spouse have HSAs, complete a separate Form 8889 for each of you').",
    "subject_key": "ed29e56ada339183cd51c5660cd442e1cabada145e18afe93ca13c09953df6d4"
+  },
+  {
+   "printed": "household.marriage_possible",
+   "project_expr_sha256": "7b1938342f7513ecc879b34c080055b90551cc6c8613bab256fa5f8681f1ea4e",
+   "second_expr_sha256": "c240aca8ba683132709652fde02ff546c6652a62a968e3c1d8a7d772c2a206e7",
+   "ruling": "Ruling: representation; Pub. 501 Marital Status; i1040gi p. 13, Single. Both are true for a married filing status (mfj, mfs, qss) and household.ever_married for single or head of household; the reply writes it as an any() that reads household.ever_married raw, which the project asks only of a single or head of household filer. Same value wherever the reply's input is asked. Ruled by reading: the triage record predates this reply (pass de16cc0a21be not in .transcription/triage/2025/household.json).",
+   "context": "cb572549555912111eacfaae2aa104b6cf1907136be1bbde69a459c186c57f5e",
+   "date": "2026-11-15",
+   "run": "4072eddc5d7176db08a6183dcbc3e602718d7db07a2d08fd80396f41268338f3",
+   "subject_key": "ae093a947108158ccea2a9d5c9ec1cc898f2239c9077bdc512fee9ea365b271c"
   },
   {
    "printed": "household.married",

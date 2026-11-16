@@ -5,8 +5,8 @@
  "base": "e7e819909c6f6e33764ab0d991705d0e9013e6a66417745b89b4e1a75e39de3e",
  "head_rows": {
   "printed lines compared": "6",
-  "agree / disagree / missing": "6 / 0 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
+  "agree / disagree / missing": "5 / 1 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,15 +23,15 @@
   },
   {
    "key": "2",
-   "record": "f7a9049a0fc0d88fb12d32e48391a0beacbc36aa07cd07bc9b20c2c588a8518c",
+   "record": "71be0bf0dffecc5102f2e4c1aa0a00b94d1ac83736b568e63a7f8ee7cf2c5126",
    "status": "AGREE",
-   "subject_key": "02f5b66f3fa6577d6d7d0792d1d9b49a4c9d76487869a3910aa62bb73318e7f4"
+   "subject_key": "40aa4712bb5d5acbace31940caeb546404f8d5d829dda6f2817e02e7605bca6b"
   },
   {
    "key": "3",
-   "record": "f7a9049a0fc0d88fb12d32e48391a0beacbc36aa07cd07bc9b20c2c588a8518c",
+   "record": "71be0bf0dffecc5102f2e4c1aa0a00b94d1ac83736b568e63a7f8ee7cf2c5126",
    "status": "AGREE",
-   "subject_key": "9e96ed4a8c6cb1e8737510544c64d8d69ba838fbb0532faa54769084dd29adfa"
+   "subject_key": "417c58417c7b252dcfc9d87188cca99cff581170dfe8b6fcaa5fbc668296ff63"
   },
   {
    "key": "4",
@@ -41,18 +41,19 @@
   },
   {
    "key": "6",
-   "record": "f7a9049a0fc0d88fb12d32e48391a0beacbc36aa07cd07bc9b20c2c588a8518c",
-   "status": "AGREE",
-   "subject_key": "da7f0a1a2fe8c245e4b438314af16cabcc9ab333139b031aa910e30732803cf3"
+   "record": "71be0bf0dffecc5102f2e4c1aa0a00b94d1ac83736b568e63a7f8ee7cf2c5126",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent: f1040sb Part II, line 6 (the line 5 total); i1040sb, Line 5. The reply reads sb.ordinary_dividends ungated; the project asks it only after div.any is Yes and gives $0 otherwise. Triage executable-triage-v2 (`.transcription/triage/2025/sb.json`, pass 602d75169f27): 2,548 of 3,063 agree and no value differs; 225 candidate-unknown (the reply reads sb.ordinary_dividends, or its sb.nominee gate, where div.any is No, e.g. classm.asset.1, project $0), 2 candidate-refuses (its sb.h_bond_adjust on generated returns, project $0, a refusal the project places on lines 2 and 4), 68 project-refuses (sb.fbar_required_if_foreign, sb.form8938_if_foreign) and 220 project-unknown (records withholding div.any). Project stands.",
+   "subject_key": "ce2d1167daacf581ee55c189ccd0083af34ea4191d9975ffcf39ea972affd95e"
   }
  ],
  "subjects": {
   "sb.interest_total": "a823ed7bdda9a3aa4d7577af47aa144b6dfad54199aaea3a39bf5466d614c560",
   "sb.ordinary_dividends_if_dividends": "b1d271d8d849b7c1efeca53defa98c7bd54ccc1decc43a9cac93006238a8ca45",
-  "2": "3ce3583356f42850e8a7d7f7c23c8d7591811a660655e6995e2e4eb8b535fce5",
-  "3": "8b69d5e369395073f29fbda50a77c1f045057ced847fb7a21d09f006ee4b754e",
+  "2": "f8397afacdc9aeaacc1099050757c5a41fc598395f836af2cd4f1fb25e12d828",
+  "3": "2872fdaa670ff6158b5b87a857e82792ffe81f8bbb669394396f662a5951d365",
   "4": "d225f28e9701cf230747bff686459225d04bd398ce08e2040a616fb8958167c4",
-  "6": "e48b69a4c8bf5bc991a0d825ca0e7ce72dae7cc2063cc23bf1deb7d19cd96ee7"
+  "6": "e51ce7f32a3455a6f67f1c73bde24d4829a957d10ceba43f55f560c643db35de"
  },
  "__rest__": "013e58d3d274e971cd170d48794200b98ac690d600b9af1e38e8133de7ae11db",
  "foreign": {

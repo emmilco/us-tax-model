@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.ftc.29999",
-      "walk": "stage4",
       "covers": [
         "ftc.29999"
       ],
@@ -36,7 +35,6 @@
     },
     {
       "id": "stage4.ftc.30000",
-      "walk": "stage4",
       "covers": [
         "ftc.30000"
       ],
@@ -65,7 +63,6 @@
     },
     {
       "id": "stage4.ftc.regular_limit",
-      "walk": "stage4",
       "covers": [
         "ftc.regular_limit"
       ],
@@ -98,7 +95,6 @@
     },
     {
       "id": "stage4.refuse.ftc.limit",
-      "walk": "stage4",
       "covers": [
         "ftc.needs1116"
       ],
@@ -144,7 +140,6 @@
     },
     {
       "id": "stage4.refuse.ftc.passive",
-      "walk": "stage4",
       "covers": [
         "ftc.needs1116"
       ],
@@ -182,7 +177,6 @@
     },
     {
       "id": "stage4.refuse.ftc.statements",
-      "walk": "stage4",
       "covers": [
         "ftc.needs1116"
       ],
@@ -223,7 +217,6 @@
     },
     {
       "id": "stage4.refuse.ftc.eligible",
-      "walk": "stage4",
       "covers": [
         "ftc.needs1116"
       ],
@@ -264,7 +257,6 @@
     },
     {
       "id": "stage4.refuse.ftc.election",
-      "walk": "stage4",
       "covers": [
         "ftc.needs1116"
       ],

@@ -512,7 +512,9 @@
         ],
         "person[taxpayer].sc[van].scveh[car].miles_business": 10000,
         "person[taxpayer].sc[van].scveh[car].parking": 15000,
-        "person[taxpayer].sc[van].scveh[car].smr_always": true, "person[taxpayer].sc[van].scveh[car].smr_first": false, "person[taxpayer].sc[van].scveh[car].fleet": false
+        "person[taxpayer].sc[van].scveh[car].smr_always": true,
+        "person[taxpayer].sc[van].scveh[car].smr_first": false,
+        "person[taxpayer].sc[van].scveh[car].fleet": false
       },
       "expect": {
         "person[taxpayer].sc[van].scveh[car].line9": {
@@ -1242,7 +1244,9 @@
         "$asset@person[taxpayer].sc[h]": [
           "saw"
         ],
-        "scope.business_before": true, "s179.prior_form": true, "s179.carryover": 450000,
+        "scope.business_before": true,
+        "s179.prior_form": true,
+        "s179.carryover": 450000,
         "person[taxpayer].sc[h].asset[saw].placed": "y2025",
         "person[taxpayer].sc[h].asset[saw].cost": 500000,
         "person[taxpayer].sc[h].asset[saw].pct": 100,
@@ -1385,6 +1389,96 @@
         "person[taxpayer].sc[home].line31": {
           "kind": "money",
           "cents": 1900000
+        }
+      }
+    },
+    {
+      "id": "bug0489.sc.no_home_office_with_179_limit",
+      "covers": [
+        "sc"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0489, predicted by hand from i1040sc p. 10, Line 30 (the Simplified Method Worksheet is completed for a business that claims the business use of the home) and p946 p. 19, Two different taxable income limits, before recording: the inputs of stage14.s179.income_limit (receipts $3,000; a $10,000 section 179 election on $10,000 of 7-year property; no home office). The two-limits gate now reads the home office answer first, so it is false; worksheet line 5 is $0 (line 4 is $0 with no square feet, and the line-5 helper for an elected section 179 amount is $0), not a refusal; line 30 $0; line 13 $3,000 and line 31 $0 as in stage14.s179.income_limit.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 300000,
+        "person[taxpayer].sc[desk].ho_uses": false,
+        "$asset@person[taxpayer].sc[desk]": [
+          "saw"
+        ],
+        "person[taxpayer].sc[desk].asset[saw].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[saw].cost": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].pct": 100,
+        "person[taxpayer].sc[desk].asset[saw].s179": 1000000,
+        "person[taxpayer].sc[desk].asset[saw].bonus_choice": "none"
+      },
+      "expect": {
+        "person[taxpayer].sc[desk].ho_both_limits": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].sc[desk].ho_line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].line30": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].sc[desk].line13": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].sc[desk].line31": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "bug0530.sc.home_daycare_not_exclusive",
+      "covers": [
+        "sc:refuse"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0530 (home daycare), predicted by hand from i1040sc p. 10, Simplified method (the area \"used regularly and exclusively for business, regularly for daycare, or regularly for storage\") and p. 11, Line 3b (a daycare space not used exclusively takes the Daycare Facility Worksheet, which the tool does not figure) before recording: a home daycare with $40,000 of receipts in 250 square feet the family also uses. The home office question now names daycare, so the provider answers Yes; the special-cases question is answered Yes for the daycare, and line 30 and line 31 refuse on the home office screen, as for the other special simplified-method cases.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "care"
+        ],
+        "person[taxpayer].sc[care].line1": 4000000,
+        "person[taxpayer].sc[care].ho_uses": true,
+        "person[taxpayer].sc[care].ho_other": true,
+        "person[taxpayer].sc[care].ho_sqft": 250
+      },
+      "expect": {
+        "person[taxpayer].sc[care].line30": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[care].ho_screened",
+          "form": "Form 8829, or the simplified method with daycare, shared, part-year or multiple homes",
+          "remedy": "The actual-expense method (Form 8829) and the special simplified-method cases are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 10-13, Line 30, the Simplified Method Worksheet and its instructions",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].sc[care].line31": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].sc[care].ho_screened",
+          "form": "Form 8829, or the simplified method with daycare, shared, part-year or multiple homes",
+          "remedy": "The actual-expense method (Form 8829) and the special simplified-method cases are outside this tool.",
+          "cite": {
+            "doc": "i1040sc",
+            "locator": "pp. 10-13, Line 30, the Simplified Method Worksheet and its instructions",
+            "revision": "2025",
+            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
+            "tax_year": 2025
+          }
         }
       }
     }

@@ -27,7 +27,7 @@ const DIST_MAIN = join(ROOT, "engine", "dist", "main.js");
 export interface FixtureCase {
   id: string;
   /** The interview profile whose walk this case is a path of (build's interview path checks, interview-rules). */
-  walk?: "social-security" | "sales" | "stage4" | "full";
+  walk?: "full";
   covers: string[];
   evidence: string;
   evidence_note?: string;

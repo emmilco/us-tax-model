@@ -252,6 +252,6 @@
 ## (helper) — `clcw.figures_notice`
 
 - **Authored helper label:** Notice: the carryover is figured from the 2024 amounts you entered. If you did not file a 2024 return, or your 2024 Schedule D left out a capital loss carried into 2024, they must be the amounts a correct 2024 return would have shown.
-- **Encoded (Bool):** sd helper "Did line 21 of your 2024 Schedule D show a loss?" = true
+- **Encoded (Bool):** sd helper "Did line 21 of your 2024 Schedule D show a loss, or would it have, on a correct 2024 return, if you filed none or left a loss off?" = true
 - Expr: `{"eq":["sd.carryover",{"const":true}],"op":"test"}`
 - Cite: [p550] p. 102, Capital Losses, "you must take the current year's allowable deduction into account, whether or not you claimed it and whether or not you filed a return for the current year" (2025 returns; printed date 2026-03-05; sha256 83552968)

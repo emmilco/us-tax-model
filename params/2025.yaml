@@ -83,6 +83,14 @@ params:
       cite:
         doc: i8889
         locator: "p. 4, Line 3, rule 3, \"If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a family HDHP\"; rules 4 and 5 (a change of coverage type, or not an eligible individual every month)"
+    hsa_inherited:
+      values:
+        - spouse_earlier
+        - other_earlier
+        - other
+      cite:
+        doc: i8889
+        locator: 'p. 3, Death of Account Beneficiary, "If the account beneficiary''s surviving spouse is the designated beneficiary, the HSA is treated as if the surviving spouse were the account beneficiary" and "If the designated beneficiary is not the account beneficiary''s surviving spouse, or there is no designated beneficiary, the account ceases to be an HSA as of the date of death": a surviving spouse''s HSA of an earlier year, another person''s of an earlier year with nothing received in 2025, or anything else'
     retirement_account:
       values:
         - traditional_ira
@@ -429,6 +437,99 @@ params:
       cite:
         doc: i1040gi
         locator: QDCGT worksheet, line 21
+    amt.exemption:
+      type: Dollars
+      value:
+        single: 8810000
+        hoh: 8810000
+        mfj: 13700000
+        qss: 13700000
+        mfs: 6850000
+      cite:
+        doc: f6251
+        locator: Form 6251 (2025), line 5, the exemption chart (Exemption Worksheet line 1)
+        quote: Single or head of household . . . . . $ 626,350 . . . . . $ 88,100 Married filing jointly or qualifying
+          surviving spouse 1,252,700 . . . . . 137,000 Married filing separately . . . . . . 626,350 . . . . . 68,500
+    amt.phaseout_start:
+      type: Dollars
+      value:
+        single: 62635000
+        hoh: 62635000
+        mfj: 125270000
+        qss: 125270000
+        mfs: 62635000
+      cite:
+        doc: i6251
+        locator: p. 9, Exemption Worksheet—Line 5, line 3
+        quote: Enter $626,350 if single or head of household; $1,252,700 if married filing jointly or qualifying surviving
+          spouse; or $626,350 if married filing separately
+    amt.rate_25:
+      type: Rate
+      value:
+        num: 25
+        den: 100
+      cite:
+        doc: i6251
+        locator: p. 9, Exemption Worksheet—Line 5, line 5; Form 6251 (2025), line 37
+        quote: Multiply line 4 by 25% (0.25)
+    amt.mfs_addback_start:
+      type: Dollars
+      value: 90035000
+      cite:
+        doc: i6251
+        locator: p. 9, Line 4—Alternative Minimum Taxable Income
+        quote: If your filing status is married filing separately and line 4 is more than $900,350, you must include an
+          additional amount on line 4.
+    amt.mfs_addback_max:
+      type: Dollars
+      value: 6850000
+      cite:
+        doc: i6251
+        locator: p. 9, Line 4—Alternative Minimum Taxable Income
+        quote: If line 4 is $1,174,350 or more, include an additional $68,500.
+    amt.bracket:
+      type: Dollars
+      value:
+        single: 23910000
+        hoh: 23910000
+        mfj: 23910000
+        qss: 23910000
+        mfs: 11955000
+      cite:
+        doc: f6251
+        locator: Form 6251 (2025), lines 7, 18 and 39
+        quote: If line 6 is $239,100 or less ($119,550 or less if married filing separately), multiply line 6 by 26% (0.26).
+    amt.bracket_subtract:
+      type: Dollars
+      value:
+        single: 478200
+        hoh: 478200
+        mfj: 478200
+        qss: 478200
+        mfs: 239100
+      cite:
+        doc: f6251
+        locator: Form 6251 (2025), lines 7, 18 and 39
+        quote: Otherwise, multiply line 6 by 28% (0.28) and subtract $4,782 ($2,391 if married filing separately) from the
+          result.
+    amt.rate_26:
+      type: Rate
+      value:
+        num: 26
+        den: 100
+      cite:
+        doc: f6251
+        locator: Form 6251 (2025), lines 7, 18 and 39
+        quote: multiply line 6 by 26% (0.26)
+    amt.rate_28:
+      type: Rate
+      value:
+        num: 28
+        den: 100
+      cite:
+        doc: f6251
+        locator: Form 6251 (2025), lines 7, 18 and 39
+        quote: multiply line 6 by 28% (0.28)
     tcw.single.b1.upper:
       type: Dollars
       value: 10335000
@@ -1817,6 +1918,12 @@ params:
       cite:
         doc: i8889
         locator: 'p. 4, Line 3, rule 3, "If you were, or were considered, an eligible individual for the entire year and you did not change your type of coverage, enter ... $8,550 for a family HDHP": the December 1 coverage of a filer eligible all year with family coverage'
+    hsa.inh_spouse_earlier:
+      type: Enum(hsa_inherited)
+      value: spouse_earlier
+      cite:
+        doc: i8889
+        locator: 'p. 3, Death of Account Beneficiary, "The surviving spouse completes Form 8889 as though the HSA belonged to the surviving spouse.": the case of an inherited HSA that refuses nothing, taken when no HSA was acquired because of a death'
     hsa.year_same:
       type: Bool
       value: true

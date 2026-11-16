@@ -6,7 +6,7 @@
  "head_rows": {
   "lines judged": "43",
   "match / mismatch / unclear / missing": "42 / 0 / 1 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -41,9 +41,9 @@
   },
   {
    "key": "box3",
-   "record": "e5e59509b9ae4437c5913d7df2f1aec76efdbf21356bbdc72ea0383125cb0c54",
+   "record": "9f3e1ac9b6607ff1988383f8342798d9a040373ee2536aa286f6ed1899582b4d",
    "status": "MATCH",
-   "subject_key": "74ff58728c339134dc1457dc4d00fa7a2a0b0c12479e454f1714bfbc21d65ed2"
+   "subject_key": "690640b446bad7a35476c8a7abe0c283fe90283a2dd54f5cba25768459532ee3"
   },
   {
    "key": "box9",
@@ -59,9 +59,9 @@
   },
   {
    "key": "box12",
-   "record": "e5e59509b9ae4437c5913d7df2f1aec76efdbf21356bbdc72ea0383125cb0c54",
+   "record": "9f3e1ac9b6607ff1988383f8342798d9a040373ee2536aa286f6ed1899582b4d",
    "status": "MATCH",
-   "subject_key": "b8aff2cbf20d720cffba8751ebd1ff0dff3660e6ef9b1baf35a19f8452999e35"
+   "subject_key": "2ccf36636735db76141030a3118d0c1d2d8b85addb01b55298c554ab01bdc4dd"
   },
   {
    "key": "box13",
@@ -234,9 +234,9 @@
   },
   {
    "key": "box3_if_dividends",
-   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
+   "record": "9f3e1ac9b6607ff1988383f8342798d9a040373ee2536aa286f6ed1899582b4d",
    "status": "MATCH",
-   "subject_key": "16101a0fc39174d37260db509318ba2024705cf5522a7b9ee033661fd9ee2079"
+   "subject_key": "e520aedef346319ef28d5f1f98c769796c762a6527725b29e1a898323c50fa00"
   },
   {
    "key": "box9_if_dividends",
@@ -252,9 +252,9 @@
   },
   {
    "key": "box12_if_dividends",
-   "record": "30ef46fcf381614b6e7264d4ac29cd964dd96affbe4687eca7237395e5a7f7d5",
+   "record": "9f3e1ac9b6607ff1988383f8342798d9a040373ee2536aa286f6ed1899582b4d",
    "status": "MATCH",
-   "subject_key": "c1622c8efe4de8a1778f2ce9d0bc5ca560e1b8d86ce73df90fa8542d72ceb0f5"
+   "subject_key": "0aac19e8763ee26b8ff09d60b8f56d896d67501359659f3dcdcd90c1eee68e13"
   },
   {
    "key": "box13_if_dividends",
@@ -275,10 +275,10 @@
   "box2d": "b541f3b20e9b749f82cca8ff52efb1f10884e1dac2880f78026700515d6e7218",
   "box2e": "84ba23ee4d0a07b100becc2f0740ee5a885bc519aa50015c880f08eb026a47ad",
   "box2f": "31bc662d32fa192b993bb7775d73c13f8364dffad53a37d6ece5b3761e96cf2e",
-  "box3": "e823aced51aca020a861fa2d5bf7c241a7229a82d5abdad82dd6a3228000f3fe",
+  "box3": "59cee8e53591e10de3c85048a5beb6ced53e4a0e6a1d5bd3a9637ef8849cc3b7",
   "box9": "26cf78aaa08edb24c983bbbe95d20157ab17ecc82530a360cc7f5c7a7f34f6fd",
   "box10": "7ec74a0d1a27054678588be8f5bf9738e101e162c05eaa736254a8c6757f7625",
-  "box12": "c44a263712c56dc638fc6fd0d9cbce69558783a492154d3345eb18595528d2e6",
+  "box12": "dbf2353019b4314a7be05926281836ef27fbc34cb40252f2e4bd32786c922f63",
   "box13": "184ff288b4b9d7fe14588a16572d762bc3cb7bfc2f8a1dfa8fa37a01b6d2faa5",
   "basis_reconciled": "9eb732c2bbcbab7c637fa80c79bc52d8ef418ffed68cd0eb4a56b0f40ead041c",
   "box1a": "a034c3cd8fee211510f5cc882fb1c020dca4c1a1bf3bab95249215e158862ffa",
@@ -307,10 +307,10 @@
   "box2d_if_capital_gain": "3b8c381c9c7466a6e865f0e48b0f30298dd4a5d0e963cdbd18c7918c36061bca",
   "box2f_if_capital_gain": "ce48b7453865536cd8707447cd1fbb4b8f00c7621dc328c187b8cdb3c9d83915",
   "box2e_if_ordinary": "422ac1325dc9dbf882203e507fa4a4a01780676c3249a0c4ac122b4604edeb4a",
-  "box3_if_dividends": "072542621917b3401abaa0f4360c6d8ceda4ede6918cc679e98d252b4c855ea6",
+  "box3_if_dividends": "99ff03d829edf683c9e21480afaa59556b0f19bf9fc30bab7a74258680187382",
   "box9_if_dividends": "ac57f7c01290810cb0f9f926262dcdcba265608715473f3a6a4365f866e5766e",
   "box10_if_dividends": "bc76ac55ce91fe4acb992a4b50239e4c83868a1276d00b93529ed5f4660730f9",
-  "box12_if_dividends": "04a45ebb9d3cd8d2b9c1f0d405c89f6e9851278d800a0ef9e0863fddd80a3bb2",
+  "box12_if_dividends": "1435d31c4146c92991d1429c49af0d5547326168353ad0fefea76fedfc56e400",
   "box13_if_dividends": "db88467b427d6642efc7b3e9db3b5c1e03cd507ac1d1933a5adb1b3c62ff145b",
   "basis_reconciled_if_return_of_capital": "4724a9df849c863d4501e6f1b7b9ebf1ae8ad6729325ba81ad245ebba5f1fc38"
  },

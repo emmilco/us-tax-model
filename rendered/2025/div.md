@@ -41,8 +41,8 @@
 ## (helper) — `div.box3`
 
 - **Authored helper label:** Nondividend distributions/return of capital, box 3
-- **Encoded (NonNegDollars):** Input — Nondividend distributions/return of capital, box 3
-- Expr: `{"op":"input","source":"Nondividend distributions/return of capital, box 3"}`
+- **Encoded (NonNegDollars):** Input — Nondividend distributions/return of capital, box 3 (total of all your Forms 1099-DIV, with your share of amounts paid in someone else's name and any received without a form)
+- Expr: `{"op":"input","source":"Nondividend distributions/return of capital, box 3 (total of all your Forms 1099-DIV, with your share of amounts paid in someone else's name and any received without a form)"}`
 - Cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.box9`
@@ -62,8 +62,8 @@
 ## (helper) — `div.box12`
 
 - **Authored helper label:** Exempt-interest dividends, box 12
-- **Encoded (NonNegDollars):** Input — Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV; box 13 amounts are already included)
-- Expr: `{"op":"input","source":"Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV; box 13 amounts are already included)"}`
+- **Encoded (NonNegDollars):** Input — Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV, with your share of amounts paid in someone else's name and any received without a form; box 13 amounts are already included)
+- Expr: `{"op":"input","source":"Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV, with your share of amounts paid in someone else's name and any received without a form; box 13 amounts are already included)"}`
 - Cite: [f1099div] Instructions for Recipient, Box 12 ("Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year. See the Instructions for Form 1040 for where to report") and Box 13 ("This amount is included in box 12") (January 2024 (continuous-use form); sha256 4ea1de80)
 
 ## (helper) — `div.box13`

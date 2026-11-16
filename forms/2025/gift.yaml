@@ -34,29 +34,16 @@ form:
         national newspaper of general circulation)?
       expr:
         op: input
-        source: Is this group publicly traded securities? A security is generally publicly traded if it is (a) listed on a recognized
-          stock exchange whose quotations are published daily, (b) regularly traded on a national or regional over-the-counter
-          market, or (c) mutual fund shares quoted daily in a national newspaper of general circulation. Answer No for
-          privately held stock, LLC or partnership interests, and for stock that is neither listed on a recognized stock
-          exchange nor regularly traded over the counter, even if it has a ticker symbol.
+        source: "Is this group publicly traded securities? A security is generally publicly traded if it is (a) listed on a recognized stock exchange whose quotations are published daily, (b) regularly traded on a national or regional over-the-counter market, or (c) mutual fund shares quoted daily in a national newspaper of general circulation. Answer No for privately held stock, LLC or partnership interests, for stock that is neither listed on a recognized stock exchange nor regularly traded over the counter, even if it has a ticker symbol, and for securities subject to restrictions that materially affect their value to you or prevent them from being freely traded."
       cite:
         doc: i8283
-        locator: 'pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 9, Securities, "A security is
-          generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose
-          quotations are published daily; (b) regularly traded on a national or regional over-the-counter market; or (c)
-          quoted daily in a national newspaper of general circulation in the case of mutual fund shares" and "Nonpublicly
-          traded securities may include, but are not limited to, privately held stock or shares in an entity such as an S
-          corporation or a C corporation, privately held Limited Liability Company (LLC) membership, or privately held
-          partnership interest"'
+        locator: "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 9, Securities, \"A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily; (b) regularly traded on a national or regional over-the-counter market; or (c) quoted daily in a national newspaper of general circulation in the case of mutual fund shares\" and \"Nonpublicly traded securities may include, but are not limited to, privately held stock or shares in an entity such as an S corporation or a C corporation, privately held Limited Liability Company (LLC) membership, or privately held partnership interest\"; cfr-26-1-170a-13 p. 12, Publicly traded securities, \"shall not be considered publicly traded securities if— (1) The securities are subject to any restrictions that materially affect the value of the securities to the donor or prevent the securities from being freely traded\""
     - id: gift.special
       printed: (helper)
       type: Bool
       label: |-
         Does this group need an appraisal or other special treatment: any of the following?
 
-        - a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together, other than publicly traded securities
-          - similar items: items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings
-          - publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper
         - a noncash contribution reaching you through a Schedule K-1
         - vehicles
         - pass-through entity interests
@@ -70,9 +57,6 @@ form:
         source: |-
           Does this group need an appraisal or other special treatment: any of the following?
 
-          - a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together, other than publicly traded securities
-            - similar items: items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings
-            - publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper
           - a noncash contribution reaching you through a Schedule K-1
           - vehicles
           - pass-through entity interests
@@ -83,11 +67,7 @@ form:
           - a clothing or household item over $500 not in good used condition
       cite:
         doc: i8283
-        locator: 'pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property,
-          "Similar items of property are items of the same general category or type, such as coin collections, paintings,
-          books, clothing, jewelry, nonpublicly traded stock, land, or buildings."; p. 9, Securities, "A security is generally
-          considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations
-          are published daily"'
+        locator: "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, \"Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings.\"; p. 9, Securities, \"A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily\"; p. 1, \"Make any required reductions to the amount of the contributions before you determine if you must file Form 8283\"; p. 3, Section B, \"Include in Section B only items (or groups of similar items) for which you claimed a deduction of more than $5,000\"; cfr-26-1-170a-13 p. 3, Deductions in excess of $5,000 for certain charitable contributions of property, \"if the amount claimed or reported as a deduction under section 170 with respect to such item exceeds $5,000\" (a group over $5,000 is refused by gift.section_b from gift.deduction)"
     - id: gift.over_5000
       printed: (helper)
       type: Bool

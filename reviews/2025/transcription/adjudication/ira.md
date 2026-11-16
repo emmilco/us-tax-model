@@ -100,3 +100,13 @@ Lane land3-adj12 (claude-opus-5-5, judgment). Claude class M log of 2026-11-14 (
 | claude | classm | classm.ira.3 — 7b | representation | dropped from the fixture | i1040gi Line 20, IRA Deduction | project retained. No one on the return made traditional IRA contributions (both persons' traditional contributions are $0.00; ira.any_trad false), and the IRA Deduction W... |
 
 Counts: claude classm representation 2. Findings: none. Left open: none.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-b (claude-opus-5-5, judgment; tax year 2025, us), B1 merge worktree nx-b1. Open lines of the Claude transcription log (b349202bae5e (line-scoped)), ruled against `.transcription/triage/2025/ira.json` (executable-triage-v2, log sha matches), the archived sources and `forms/2025/ira.yaml`. Rulings `/tmp/b1-adj-b/ira.json`, applied with `rule.py --kind transcription`; full text in the log and sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | (screen) (ira.special) | model error | 2,680/2,728 agree; 44 candidate-unknown, 4 value; completed: 16 candidate-unknown | i1040gi p. 95, list items 2, 5, 9; p590a pp. 6-7, 16 | Drops the reservist repayment the label names; adds item 2 and ira.se_capital, which the project carries on their own lines. |
+
+Counts: claude transcription model error 1. Findings: none. Left open: none.

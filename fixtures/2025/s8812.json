@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.refuse.gift.sectionB",
-      "walk": "stage4",
       "covers": [
         "gift.section_b"
       ],
@@ -5936,9 +5935,9 @@
         "household.considered_unmarried": true,
         "dependent[child].age": 3,
         "dependent[child].months": 12,
-        "s1a.tips": null,
-        "s1a.overtime": null,
-        "s1a.carloan": null,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
         "s179.prior_form": null,
         "s179.carryover": null,
         "s2.w2_marks": false,

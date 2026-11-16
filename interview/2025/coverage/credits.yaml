@@ -86,6 +86,10 @@ rows:
   answers:
     s3.adoption_any: true
     s3.adoption: true
+    s3.adoption_final: true
+    s3.adoption_stepchild: false
+    s3.adoption_earlier: false
+    scope.adoption_benefits: false
   expect:
     refused: s3.adoption_if_any
 - id: credits.adoption_carried
@@ -104,6 +108,10 @@ rows:
   answers:
     s3.adoption_any: true
     s3.adoption: true
+    s3.adoption_final: true
+    s3.adoption_stepchild: false
+    s3.adoption_earlier: false
+    scope.adoption_benefits: false
   expect:
     refused: s3.adoption_if_any
 - id: credits.elderly_65
@@ -350,6 +358,7 @@ rows:
     s3.prior_other_forms: true
     ftc.carryover: false
     s3.prior_amt: true
+    s3.prior_amt_deferral: true
   expect:
     refused: s3.prior_amt_if_forms
 - id: credits.gap.form8834
@@ -505,6 +514,7 @@ rows:
     sa.mortgage_interest: 0
     sa.line5b: 0
     sa.property_tax_other_any: false
+    s2.mortgage_subsidy: false
   expect:
     proceeds:
       sa.mortgage_interest: 0
@@ -526,3 +536,65 @@ rows:
   expect:
     proceeds:
       s3.mcc: false
+- id: credits.gap.adoption_not_final
+  design: BUG-0620 item 3 (costs paid in 2025 toward an adoption not final in 2025 are credited in a later year)
+  situation: A person paid adoption costs in 2025 for an adoption that was still not final at the end of 2025; no credit exists for 2025, so the return goes on.
+  answers:
+    s3.adoption_any: true
+    s3.adoption: true
+    s3.adoption_final: false
+    s3.adoption_earlier: false
+    scope.adoption_benefits: false
+  expect:
+    proceeds:
+      s3.adoption_final: false
+    not_asked:
+    - s3.adoption_stepchild
+- id: credits.gap.adoption_stepchild
+  design: BUG-0620 item 3 (expenses for the adoption of a spouse's child are not qualified adoption expenses)
+  situation: A person adopted their husband's or wife's child in 2025, a child without special needs; no credit exists, so the return goes on.
+  answers:
+    s3.adoption_any: true
+    s3.adoption: true
+    s3.adoption_final: true
+    s3.adoption_stepchild: true
+    s3.adoption_earlier: false
+    scope.adoption_benefits: false
+  expect:
+    proceeds:
+      s3.adoption_stepchild: true
+- id: credits.adoption_not_stepchild
+  design: BUG-0620 item 3 (an adoption final in 2025 of a child who is not a stepchild)
+  situation: A person adopted a child who is not their husband's or wife's child, final in 2025.
+  answers:
+    s3.adoption_any: true
+    s3.adoption: true
+    s3.adoption_final: true
+    s3.adoption_stepchild: false
+    s3.adoption_earlier: false
+    scope.adoption_benefits: false
+  expect:
+    refused: s3.adoption_if_any
+- id: credits.gap.minimum_tax_exclusion_items
+  design: BUG-0620 item 3 (a 2024 alternative minimum tax from exclusion items only gives no credit)
+  situation: A person's 2024 alternative minimum tax came only from the standard deduction or taxes (lines 2a to 2d, 2g and 2h of Form 6251); no minimum tax credit exists, so the return goes on.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: true
+    s3.prior_amt_deferral: false
+    s3.prior_forms: false
+    f5695.carry: false
+  expect:
+    proceeds:
+      s3.prior_amt_deferral: false
+- id: credits.minimum_tax_deferral_items
+  design: BUG-0620 item 3 (a 2024 alternative minimum tax with a deferral item, such as stock options)
+  situation: A person's 2024 Form 6251 shows an amount for incentive stock options, so a minimum tax credit may arise for 2025.
+  answers:
+    s3.prior_other_forms: true
+    ftc.carryover: false
+    s3.prior_amt: true
+    s3.prior_amt_deferral: true
+  expect:
+    refused: s3.prior_amt_if_forms

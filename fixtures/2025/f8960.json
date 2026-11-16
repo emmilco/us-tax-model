@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "stage4.niit.allocated",
-      "walk": "stage4",
       "covers": [
         "niit.allocated"
       ],
@@ -59,7 +58,6 @@
     },
     {
       "id": "stage4.niit.single.0",
-      "walk": "stage4",
       "covers": [
         "niit.single.0"
       ],
@@ -84,7 +82,6 @@
     },
     {
       "id": "stage4.niit.single.100000",
-      "walk": "stage4",
       "covers": [
         "niit.single.100000"
       ],
@@ -109,7 +106,6 @@
     },
     {
       "id": "stage4.niit.hoh.0",
-      "walk": "stage4",
       "covers": [
         "niit.hoh.0"
       ],
@@ -145,7 +141,6 @@
     },
     {
       "id": "stage4.niit.hoh.100000",
-      "walk": "stage4",
       "covers": [
         "niit.hoh.100000"
       ],
@@ -181,7 +176,6 @@
     },
     {
       "id": "stage4.niit.qss.0",
-      "walk": "stage4",
       "covers": [
         "niit.qss.0"
       ],
@@ -208,7 +202,6 @@
     },
     {
       "id": "stage4.niit.qss.100000",
-      "walk": "stage4",
       "covers": [
         "niit.qss.100000"
       ],
@@ -235,7 +228,6 @@
     },
     {
       "id": "stage4.niit.mfj.0",
-      "walk": "stage4",
       "covers": [
         "niit.mfj.0"
       ],
@@ -269,7 +261,6 @@
     },
     {
       "id": "stage4.niit.mfj.100000",
-      "walk": "stage4",
       "covers": [
         "niit.mfj.100000"
       ],
@@ -303,7 +294,6 @@
     },
     {
       "id": "stage4.niit.mfs.0",
-      "walk": "stage4",
       "covers": [
         "niit.mfs.0"
       ],
@@ -332,7 +322,6 @@
     },
     {
       "id": "stage4.niit.mfs.100000",
-      "walk": "stage4",
       "covers": [
         "niit.mfs.100000"
       ],
@@ -361,7 +350,6 @@
     },
     {
       "id": "stage4.niit.standard_no_deduction",
-      "walk": "stage4",
       "covers": [
         "niit.standard_no_deduction"
       ],
@@ -398,7 +386,6 @@
     },
     {
       "id": "stage4.refuse.8960.unsupported",
-      "walk": "stage4",
       "covers": [
         "f8960.unsupported"
       ],
@@ -579,7 +566,6 @@
     },
     {
       "id": "stage4.refuse.8960.refund",
-      "walk": "stage4",
       "covers": [
         "f8960.refund"
       ],
@@ -760,7 +746,6 @@
     },
     {
       "id": "stage4.niit.loss_floor",
-      "walk": "stage4",
       "covers": [
         "niit.loss_floor"
       ],
@@ -795,7 +780,6 @@
     },
     {
       "id": "stage4.refuse.niit.allocation",
-      "walk": "stage4",
       "covers": [
         "f8960.bad_allocation"
       ],
@@ -834,7 +818,6 @@
     },
     {
       "id": "stage4.refuse.8960.unsupported.simultaneous",
-      "walk": "stage4",
       "covers": [
         "f8960.unsupported"
       ],
@@ -1015,7 +998,6 @@
     },
     {
       "id": "stage4.additional_taxes.combined",
-      "walk": "stage4",
       "covers": [
         "niit.allocated"
       ],

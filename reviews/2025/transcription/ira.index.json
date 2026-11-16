@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "31",
   "agree / disagree / missing": "6 / 25 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -180,10 +180,10 @@
   },
   {
    "key": "(screen) (ira.special)",
-   "record": "0d939d3c094825014f3a5bc2df822f912d4341393c1280366ce88cec7de9c743",
+   "record": "8f6603b653262700287302ad6b237476a40e2af780f219547b70c2e7586558c6",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the interface label names the four cases \"deferred compensation, a fellowship not on a Form W-2, a reservist repayment, difficulty of care payments\" (i1040gi p. 95, items on line 8 income and \"Don't include any repayments of qualified reservist distributions\"; p590a pp. 6, 16). The reply drops the reservist repayment (moving it to special_gate) and adds ira.se_capital, which belongs to worksheet line 9 (p590a pp. 6-7, Self-employment income) and is a separate project gate (ira.se_capital_gate). Triage (pass 12f36e046fb1): 2,563/2,591 agree; all 28 differences are candidate-unknown (ira.se_capital unasked without a Schedule C, classm.ira.2), 8 on completed returns.",
-   "subject_key": "50abb7c1522a8ffd2cb33e139e594c584bf58b0e3625e40de75a67e278f7c778"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/ira.json (log sha matches): 2,680/2,728 agree; 44 candidate-unknown, 4 value; completed: 16 candidate-unknown. As the landing-round ruling. The project screen is any(care_payments, deferred_comp, fellowship, reservist_repaid), as its label says (\"deferred compensation, a fellowship not on a Form W-2, a reservist repayment, difficulty of care payments\"). The reply drops ira.reservist_repaid (i1040gi p. 95 item 9, \"Don’t include any repayments of qualified reservist distributions. You can’t deduct them\") and folds in two cases the project handles on separate lines: the joint traditional-plus-Roth case of item 2 (\"don’t use the IRA Deduction Worksheet in these instructions\", the project's line at forms/2025/ira.yaml under item 2 reading ira.roth_total) and ira.se_capital (refused through ira.se_capital_gate on line 9). Differences are 44 candidate-unknowns (16 on completed returns: the reply reads ira.se_capital and the roth sums unasked) and 4 values, none on a completed return. The project line is right under the source.",
+   "subject_key": "dcb89313a709223ae8fc6cad4bf4940490944f648718b5f9fb6e44f4581cf105"
   },
   {
    "key": "(screen) (ira.reservist_repaid)",
@@ -247,7 +247,7 @@
   "8": "7597109de3fec41b733a74816d8a220d240e9ecde0bf76774502bdbce079b654",
   "9": "0b806f1a31e147b2cbc269826fa9e900506495312ab407c0c8f74f3f2de8fda2",
   "10": "bca4d9e6e7600ac219f8466c342382500fa2e0de9bac73aa2670bcec80f6fe6a",
-  "(screen) (ira.special)": "5f79a772fe57093e0bd4ed33debf756e02240f5f4f474d9438ffaac5840dbd53",
+  "(screen) (ira.special)": "4448ac88ffd76dad53e748b718f5ba4f500e0185235438eae9f5304804efe1d8",
   "(screen) (ira.reservist_repaid)": "85cb353f7249ab5a63609d8ae60312a95768ab8665285db978193a21f2b1b895",
   "11a": "9f9c7a464eb572ffd5a9e421c438ffeb0251460c5da96d152c2666972981acd3",
   "11b": "25435b164251aec5cb70ef5bcb9a9bf2111fdbb4d90739305808653e93b34838",

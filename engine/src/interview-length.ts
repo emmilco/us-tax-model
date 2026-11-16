@@ -16,8 +16,7 @@
 //              where the file has none), ties in bank order. It probes; it never answers for the filer
 //
 // Returns: the Stage 5 whole returns and the generated returns (sampleReturns, as interview-rules) on the full
-// profile, the minimal returns of interview-rules (every existence gate closed, then each opened alone), and each
-// slice profile's walked fixtures. A refused return is counted under static only. An answer is "closed" when it is
+// profile, and the minimal returns of interview-rules (every existence gate closed, then each opened alone). A refused return is counted under static only. An answer is "closed" when it is
 // false, zero or an empty roster.
 //
 //   interview-length [--write] [--self-test] [--what-if]
@@ -38,7 +37,6 @@ import {
   bankOrder, existenceGates, fixtureCases, GENERATED, leakPair, minimalAnswers, plantLeak, readInputs, replayed, replayedState, SEED, Unanswered, walk,
   type Answers, type Walk,
 } from "./interview-rules.js";
-import { walkedCases } from "./fixture-inputs.js";
 import { sampleReturns } from "./generate.js";
 import { gatesOf } from "./gates.js";
 import { TaskWorkers, walkWorkers } from "./pool.js";
@@ -53,6 +51,10 @@ const FREQUENCIES = resolve(ROOT, "interview", String(YEAR), "gate_frequencies.y
 /** The share answering yes assumed for a question the frequency file does not name: no information. */
 const DEFAULT_SHARE = 0.5;
 const MARKER = "<!-- Hand-written findings below this line are kept when the tool rewrites the report. -->";
+/** The hand-written text below the marker of a report, its leading newlines reduced to one: the report puts it on the
+ * line after the marker, so one blank line separates them however often the report is rewritten. */
+const keptAfterMarker = (old: string): string =>
+  old.includes(MARKER) ? old.slice(old.indexOf(MARKER) + MARKER.length).replace(/^\n+/, "\n") : "\n";
 const BOUND = 800;
 
 /** A closed answer: false, zero or an empty roster. */
@@ -215,11 +217,9 @@ export function measure(ctx: Ctx, group: string, profile: string, id: string, an
   return m;
 }
 
-const SLICES = ["social-security", "sales", "stage4"] as const;
-
 export function context(): Ctx {
   const data = loadCanonical();
-  const configs = Object.fromEntries(["full", ...SLICES].map((p) => [p, loadInterview(p)]));
+  const configs = Object.fromEntries(["full"].map((p) => [p, loadInterview(p)]));
   return { data, configs, shares: sharesFrom(readFileSync(FREQUENCIES, "utf8")) };
 }
 
@@ -241,7 +241,6 @@ export function casesOf(ctx: Ctx): Case[] {
     const values = meta.type === "Bool" ? [true] : meta.type === "Enum" ? meta.values!.slice(1) : [];
     for (const value of values) out.push({ group: "minimal returns", profile: "full", id: `${g} = ${JSON.stringify(value)} alone`, answers: minimalAnswers(data, configs["full"]!, "full", { input: g, value }), open: { input: g, value } });
   }
-  for (const p of SLICES) for (const c of walkedCases(p, data)) out.push({ group: `${p} profile fixtures`, profile: p, id: c.id, answers: fromInputs(c.inputs) });
   return out;
 }
 
@@ -365,7 +364,7 @@ export function renderReport(run: Run, gates: Set<string>, gated: Set<string>, s
     "",
     "Templates asked in static order and not read by the complete return, by number of complete returns (all groups): the questions a",
     "better order (or a nested `choose`) would not ask. On the full profile these are the templates interview-rules holds under",
-    "`walked_unused`; the slice profiles are not in its reach check.",
+    "`walked_unused`.",
     "",
     "| Template | Returns |",
     "|---|---|",
@@ -394,7 +393,7 @@ export async function interviewLength(args: string[] = []): Promise<number> {
   console.log(`  ${run.measures.length} returns measured (${done.length} complete), ${Object.values(run.unwalkable).reduce((a, b) => a + b, 0)} not walkable, ${((performance.now() - t0) / 1000).toFixed(1)} s on ${workers} worker(s)`);
   if (args.includes("--write")) {
     const old = existsSync(REPORT) ? readFileSync(REPORT, "utf8") : "";
-    const kept = old.includes(MARKER) ? old.slice(old.indexOf(MARKER) + MARKER.length) : "\n";
+    const kept = keptAfterMarker(old);
     const gates = new Set(existenceGates(ctx.data).keys());
     const gated = new Set(gatesOf(ctx.data).map((g) => g.input));
     const cut = (parse(readFileSync(FREQUENCIES, "utf8")) as { cut: { share: number } }).cut.share;
@@ -451,17 +450,18 @@ async function selfTest(): Promise<number> {
   const wp = walk(data, config, withPrize, bankOrder(config), BOUND, () => {});
   const wrong = walk(applied.data, applied.configs["full"]!, (k, cur) => (k === u.id ? { value: false } : withPrize(k, cur)), bankOrder(applied.configs["full"]!), BOUND, () => {});
   assert.ok(umbrellaAnswer(u, wp.events, isClosed) && wrong.valuesKey !== wp.valuesKey, "a wrong no changes the values");
-  // Workers: the returns of the smallest slice profile (complete and refused ones), measured in this thread and on two
+  // Workers: the first SAMPLED generated returns (complete and refused ones), measured in this thread and on two
   // workers, give the same run and report.
+  const SAMPLED = 5;
   const cases = casesOf(ctx);
-  const picks = cases.flatMap((x, i) => (x.profile === SLICES[0] ? [i] : []));
+  const picks = cases.flatMap((x, i) => (x.group === "generated returns" ? [i] : [])).slice(0, SAMPLED);
   const one = await runAll(ctx, 1, picks), two = await runAll(ctx, 2, picks);
   assert.ok(one.measures.length + Object.values(one.unwalkable).reduce((a, b) => a + b, 0) === picks.length && picks.length > 1);
   assert.ok(one.measures.some((m) => m.status === "complete") && one.measures.some((m) => m.status !== "complete"), "the sample has complete and refused returns");
   assert.deepEqual(two, one, "two workers measure the returns as one thread does");
   const report = (r: Run) => renderReport(r, new Set(existenceGates(data).keys()), new Set(gatesOf(data).map((g) => g.input)), ctx.shares, 0.05, "\n");
   assert.equal(report(two), report(one), "and give the same report");
-  console.log(`interview-length self-test: passed (closed answers, frequency shares, orders on ${c.id}: static ${clean.asked}, floor ${clean.floor}, expected ${clean.expected}; ${pair.leaked} planted before ${pair.decider}; ${u.id} asks ${wi.events.length} for ${w.events.length}; ${picks.length} ${SLICES[0]} returns the same on two workers)`);
+  console.log(`interview-length self-test: passed (closed answers, frequency shares, orders on ${c.id}: static ${clean.asked}, floor ${clean.floor}, expected ${clean.expected}; ${pair.leaked} planted before ${pair.decider}; ${u.id} asks ${wi.events.length} for ${w.events.length}; ${picks.length} generated returns the same on two workers)`);
   return 0;
 }
 
@@ -574,7 +574,7 @@ function whatIf(write: boolean): number {
   }
   if (write) {
     const old = existsSync(WHAT_IF_REPORT) ? readFileSync(WHAT_IF_REPORT, "utf8") : "";
-    const kept = old.includes(MARKER) ? old.slice(old.indexOf(MARKER) + MARKER.length) : "\n";
+    const kept = keptAfterMarker(old);
     writeFileSync(WHAT_IF_REPORT, whatIfReport(results, unwalkable, kept));
     console.log(`  wrote ${WHAT_IF_REPORT}`);
   }

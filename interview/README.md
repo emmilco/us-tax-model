@@ -10,17 +10,13 @@ With dependencies and Lean installed, rebuild and check offline with `npm run ch
 ## Profiles
 
 A profile file lists its targets, its initial answers and the inputs it asks; the build
-(`engine/src/build.ts`) reads the four below and writes each to `canonical/`.
+(`engine/src/build.ts`) reads the profiles below and writes each to `canonical/`.
 
 | Profile | File | Targets | Scope reported by the CLI |
 |---|---|---|---|
-| default (`social-security`) | `2025/social-security.yaml` | Form 1040 line 31 | Social Security credit, with the other Schedule 3 Part II amounts refused where they apply; not a complete return |
-| `sales` | `2025/sales.yaml` | Form 1040 lines 7a and 16 | securities sales, Schedule D and tax-method selection; AGI and taxable income computed; not a complete return |
-| `stage4` | `2025/stage4.yaml` | `scope.ready`, lines 7a and 16, the Schedule A deduction, Form 4952 line 8, the QBI deduction, Schedule 2 line 21, Form 8959 line 24, Schedule 3 line 1 | form slices with eligibility and valuation screens; not a complete return |
 | `full` | `2025/full.yaml` | `scope.ready`, Form 1040 lines 24, 33, 34 and 37, `f2441.line1_box`, `f2441.line1_paid`, `f2441.statement_notice`, `f2441.household_notice`, `f5695.line32b`, `ira.basis_total`, `clcw_next_year.line8`, `clcw_next_year.line13`, `clcw_next_year.decedent_notice`, `clcw.figures_notice`, `s179.line13`, Form 8889's three results (`s1.line13`, `s1.line8f`, `s2.line17c`), and `s1.line10`, `s1a.line7`, `s1a.line15`, `sa.line17` and `s2.other`, asked for directly so that their questions are open in their own topics | the whole return: Form 1040 lines 1a–37 end to end for single, head of household, qualifying surviving spouse and married filing jointly returns, with cited refusals for unsupported items (married filing separately among them); no filing or transmission |
 
-The default, `sales` and `stage4` profiles fix the person roster to `taxpayer` in their
-initial answers. The `full` profile starts from no answers and asks `$person` first
+The `full` profile starts from no answers and asks `$person` first
 ("Who is this tax return for?"): `["taxpayer"]`, or `["taxpayer","spouse"]` for a couple
 filing together. That answer also records each entry's role and, for the couple, the
 filing status ("Answers a choice records"), so a couple is asked nothing more to open the
@@ -37,7 +33,7 @@ node engine/dist/main.js interview answer --log /tmp/synthetic-return.jsonl --in
 node engine/dist/main.js interview advance --log /tmp/synthetic-return.jsonl
 ```
 
-Without `--profile`, `start` uses the default profile. The log's first line pins the
+Without `--profile`, `start` uses the `full` profile. The log's first line pins the
 profile and tax year; `advance` and `answer` read them from it, and a `--profile` that
 differs from the log's is an error. A log is pinned to 2025 and is not usable as another
 tax year. Every command takes `--year N` (default: the newest year in `years.json`).
@@ -369,13 +365,10 @@ the two evaluators and exercised through the CLI.
 
 ## Checks
 
-At build (`engine/src/interview-check.ts`): for the default profile, every finite
-(Boolean or enumerated) answer of every question asked is enumerated over the
-`fixtures/2025/stage2.json` cases, checking termination, that each question is a
-reachable input with a fixture representative and is never repeated, and that the
-reversed answer order gives the same values and status. For `sales`, `stage4` and
-`full`, each case of `stage3.json`, `stage4.json` and `stage5.json` respectively is
-walked once with the fixture's answers, checking termination and order invariance;
+At build (`engine/src/interview-check.ts`): each fixture case marked `walk: full` (the whole
+returns of `returns.json`) is walked once with the fixture's answers, checking termination,
+that each question is a reachable input with a fixture representative and is never repeated,
+and order invariance (the reversed answer order gives the same values and status);
 that is representative coverage, not an exhaustive proof. The build also fails when a
 reachable input has no question in the bank, when a profile asks the roster of an
 implicit collection, and when a line nothing reads is neither a target nor marked

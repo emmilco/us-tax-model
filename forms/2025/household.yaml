@@ -488,12 +488,12 @@ form:
             - you paid over half the cost of keeping up your home for 2025
             - your home was the main home of your child, stepchild or foster child for more than half of 2025 (temporary absences by you or the child for special circumstances count as time lived in the home; a child born or who died in 2025 meets this if the child lived with you for more than half the part of the year the child was alive; a child adopted, lawfully placed with you for legal adoption or placed as an eligible foster child in 2025 meets it if your main home was the child's main home for more than half the time since)
             - you can claim this child as your dependent, or could except that the child's other parent can claim the child under the rule for children of divorced or separated parents
-          - Your spouse was a nonresident alien at any time during 2025 and you did not elect to treat your spouse as a resident alien.
+          - Your spouse was a nonresident alien at any time during 2025 and no election to treat your spouse as a resident alien is in effect for 2025 (an election made for an earlier year remains in effect until terminated).
 
           Your spouse counts as living in your home during a temporary absence for special circumstances, such as business, medical care, school or military service, if it was reasonable to assume your spouse would return and you kept up the home during the absence.
       cite:
         doc: i1040gi
-        locator: 'p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."'
+        locator: 'p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."; i1040gi p. 13, Nonresident aliens and dual-status aliens, "This choice remains in effect in subsequent years until terminated"'
     - id: household.considered_unmarried_if_married
       printed: (helper)
       label: 'Considered unmarried under the head of household rules, asked only of a person married at the end of 2025 (false otherwise)'
@@ -1168,6 +1168,141 @@ form:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household
+      refuses:
+        - when: household.hoh_missed
+          form: Head of household filing status fits you
+          remedy: You chose single, but your answers meet the head of household tests (you were unmarried, and you paid over
+            half the cost of keeping up a home for a person who qualifies you). Head of household gives a lower tax than single
+            on the same income. Go back and choose head of household.
+          cite:
+            doc: i1040gi
+            locator: 'p. 13, Filing Status, "The ones that will usually give you the lowest tax are listed last"; p. 14, Head
+              of Household, "Check the ''Head of household'' box only if you are unmarried (or considered unmarried) and either
+              Test 1 or Test 2 applies"'
+    - id: household.dependents_listed
+      printed: (helper)
+      type: Count
+      label: Number of people listed as dependents
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.one
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2
+    - id: household.dependents_any
+      printed: (helper)
+      type: Bool
+      label: At least one person is listed as a dependent
+      expr:
+        op: test
+        gt:
+        - household.dependents_listed
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2
+    - id: household.hoh_missed_cost
+      printed: (helper)
+      type: Bool
+      label: 'You paid over half the cost of keeping up your home and a person who qualifies you under Test 2 lived with you
+        (the home cost asked first, so the dependent tests are read only when it was paid)'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.home_cost
+            - const: true
+          then: household.hoh_missed_person
+        - guard:
+            op: test
+            eq:
+            - household.home_cost
+            - const: false
+          then: household.no
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in
+          which one of the following also lived for more than half of the year"
+    - id: household.test2_lived_persons
+      printed: (helper)
+      type: Count
+      label: Number of persons who would qualify you under Test 2, counting every absence you counted
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.one
+        where:
+          op: test
+          eq:
+            - dependent.hoh_test2_lived
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2
+    - id: household.hoh_missed_person
+      printed: (helper)
+      type: Bool
+      label: 'A person qualifies you under Test 2: more persons lived with you than the ones who did only by counting an absence
+        head of household does not count (the absence is asked only of a person who lived with you)'
+      expr:
+        op: test
+        gt:
+        - household.test2_lived_persons
+        - household.test2_absence_persons
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent
+          person will return to the home after the temporary absence."
+    - id: household.hoh_missed_test2
+      printed: (helper)
+      type: Bool
+      label: 'Test 2 met on a single return: asked only when a dependent is listed (false with none)'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.dependents_any
+            - const: true
+          then: household.hoh_missed_cost
+        - guard:
+            op: test
+            eq:
+            - household.dependents_any
+            - const: false
+          then: household.no
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2, "You paid over half the cost of keeping up a home in which you lived and in
+          which one of the following also lived for more than half of the year"
+    - id: household.hoh_missed
+      printed: (gate)
+      type: Bool
+      label: Single checked, though you were unmarried and Test 2 of head of household is met (Test 1, a parent's separate home, is not checked)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f1040.status
+              - const: single
+          - op: test
+            eq:
+              - household.unmarried
+              - const: true
+          - op: test
+            eq:
+              - household.hoh_missed_test2
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried)
+          and either Test 1 or Test 2 applies"
     - id: household.qss_eligible
       printed: (helper)
       type: Bool

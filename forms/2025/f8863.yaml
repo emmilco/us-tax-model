@@ -14,8 +14,8 @@ form:
     expr:
       op: input
       source: Did anyone pay qualified education expenses in 2025 for you, your spouse if filing jointly, or a dependent you
-        claim, at a college, university, vocational school or other postsecondary school (for tuition, required fees or course
-        materials)?
+        claim, as a student at a college, university, vocational school or other postsecondary school (tuition and required
+        fees, or books, supplies and equipment needed for a course of study, wherever bought)?
     cite:
       doc: i8863
       locator: p. 2, Who Can Claim an Education Credit, "You may be able to claim an education credit if you, your spouse,
@@ -228,14 +228,16 @@ form:
     expr:
       op: input
       source: Was your American opportunity credit denied or reduced, for a reason other than a math or clerical error, for
-        a tax year after 2015, so that Form 8862 is required (it is not, if you filed Form 8862 for 2024 and the credit was
-        allowed), or are you within 2 years of a final determination that a claim was due to reckless or intentional disregard
+        a tax year after 2015, so that Form 8862 is required (it is not, if since then you filed Form 8862 with the return
+        for a later year and the credit was allowed), or are you within 2 years of a final determination that a claim was due to reckless or intentional disregard
         of the rules, or within 10 years of one that it was due to fraud?
     cite:
       doc: i8863
       locator: 'p. 3, American Opportunity Credit, "Caution: Don’t claim the American opportunity credit for 2 years after
         there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years
-        after there was a final determination that your claim was due to fraud."'
+        after there was a final determination that your claim was due to fraud."; p. 1, Form 8862 may be required, "you must
+        attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next
+        tax year for which you claim the credit"'
   - id: f8863.aoc_claimed
     printed: (helper)
     label: An American opportunity credit claimed (lines 1 and 4 both more than zero)

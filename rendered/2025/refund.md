@@ -1,7 +1,7 @@
 # State and Local Income Tax Refund Worksheet—Schedule 1, Line 1
 
 - Document: `refund` (form, tax year 2025)
-- Note: The worksheet in the Form 1040 instructions, for a 2025 refund of 2024 state or local income tax deducted on the 2024 Schedule A. None of a refund is taxable when you did not itemize in 2024 or deducted general sales taxes instead of income taxes. The Pub. 525 exceptions, Form 1099-G box 8 and other recoveries are refused (Pub. 525 Worksheet 2 is not encoded).
+- Note: The worksheet in the Form 1040 instructions, for a 2025 refund of 2024 state or local income tax deducted on the 2024 Schedule A. None of a refund is taxable when you did not itemize in 2024 or deducted general sales taxes instead of income taxes. The Pub. 525 exceptions, Form 1099-G box 8, other recoveries, and on a joint return refunds of both spouses' tax on separate 2024 returns either of which itemized with income taxes are refused (Pub. 525 Worksheet 2 is not encoded).
 
 ## (helper) — `refund.zero`
 
@@ -60,6 +60,52 @@
 - Expr: `{"any":[{"eq":["refund.other_year",{"const":true}],"op":"test"},{"eq":["refund.paid_other_time",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 89, Line 1, "1. You received a refund in 2025 that is for a tax year other than 2024" and "5. You made your last payment of 2024 estimated state or local income tax in 2025"; f1099g p. 5, Instructions for Recipient, "Box 3. Identifies the tax year for which the box 2 refunds, credits, or offsets shown were made"; p525 p. 24, Recovery for 2 or more years, "If you receive a refund or other recovery that is for amounts you paid in 2 or more separate years, you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it." (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `refund.no`
+
+- **Authored helper label:** Year parameter sa.no (no)
+- **Encoded (Bool):** Enter false (sa.no).
+- Expr: `{"op":"param","ref":"sa.no"}`
+- Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `refund.joint`
+
+- **Authored helper label:** Married filing jointly for 2025
+- **Encoded (Bool):** f1040 line Filing Status = 'mfj'
+- Expr: `{"eq":["f1040.status",{"const":"mfj"}],"op":"test"}`
+- Cite: [i1040gi] p. 89, Line 1, "9. You received a refund because of a jointly filed state or local income tax return, but you aren’t filing a joint 2025 Form 1040 or 1040-SR with the same person" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `refund.two_returns`
+
+- **Authored helper label:** Were these refunds for 2024 tax of both of you, when each of you filed your own 2024 federal return (for example, before you married, or as married filing separately)?
+- **Encoded (Bool):** Input — Were these refunds for 2024 tax of both of you, when each of you filed your own 2024 federal return (for example, before you married, or as married filing separately)?
+- Interpretation: amb.2025.refund_two_returns
+- Expr: `{"op":"input","source":"Were these refunds for 2024 tax of both of you, when each of you filed your own 2024 federal return (for example, before you married, or as married filing separately)?"}`
+- Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, "But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d", and line 4, "Enter your total itemized deductions from your 2024 Schedule A, line 17" (the worksheet tests a refund against one 2024 return) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `refund.two_returns_if_joint`
+
+- **Authored helper label:** Asked only on a joint 2025 return (refund.two_returns)
+- **Encoded (Bool):** Choose — [helper "Married filing jointly for 2025" = true → helper "Were these refunds for 2024 tax of both of you, when each of you filed your own 2024 federal return (for example, before you married, or as married filing separately)?"] [helper "Married filing jointly for 2025" = false → helper "Year parameter sa.no (no)"]
+- Interpretation: amb.2025.refund_two_returns
+- Expr: `{"alternatives":[{"guard":{"eq":["refund.joint",{"const":true}],"op":"test"},"then":"refund.two_returns"},{"guard":{"eq":["refund.joint",{"const":false}],"op":"test"},"then":"refund.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 5, "Enter the amount shown below for the filing status claimed on your 2024 Form 1040 or 1040-SR" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `refund.two_itemized`
+
+- **Authored helper label:** Did either of you itemize deductions on your own 2024 federal return and deduct state and local income taxes there (not general sales taxes)?
+- **Encoded (Bool):** Input — Did either of you itemize deductions on your own 2024 federal return and deduct state and local income taxes there (not general sales taxes)?
+- Interpretation: amb.2025.refund_two_returns
+- Expr: `{"op":"input","source":"Did either of you itemize deductions on your own 2024 federal return and deduct state and local income taxes there (not general sales taxes)?"}`
+- Cite: [i1040gi] p. 88, Line 1, "None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `refund.two_itemized_if_two`
+
+- **Authored helper label:** Refunds of both spouses' 2024 tax, each on a separate 2024 return, and either return itemized with state and local income taxes deducted
+- **Encoded (Bool):** Choose — [helper "Asked only on a joint 2025 return (refund.two_returns)" = true → helper "Did either of you itemize deductions on your own 2024 federal return and deduct state and local income taxes there (not general sales taxes)?"] [helper "Asked only on a joint 2025 return (refund.two_returns)" = false → helper "Year parameter sa.no (no)"]
+- Interpretation: amb.2025.refund_two_returns
+- Expr: `{"alternatives":[{"guard":{"eq":["refund.two_returns_if_joint",{"const":true}],"op":"test"},"then":"refund.two_itemized"},{"guard":{"eq":["refund.two_returns_if_joint",{"const":false}],"op":"test"},"then":"refund.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 88, Line 1, "If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet in these instructions to see if any of your refund is taxable" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `refund.itemized`
 
 - **Authored helper label:** Did you itemize deductions on Schedule A for 2024?
@@ -75,6 +121,14 @@
 - Cite: [i1040gi] p. 88, Line 1, "or (b) elected to deduct state and local general sales taxes instead of state and local income taxes"; p525 p. 24, State tax refund, "Because you didn’t choose to deduct the state income tax, you don’t include the state income tax refund in income" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `refund.worksheet`
+
+- **Authored helper label:** The worksheet is used for one 2024 return on which you itemized deductions and deducted state and local income taxes (not when the refunds are of both spouses' 2024 tax on separate 2024 returns)
+- **Encoded (Bool):** Choose — [helper "Asked only on a joint 2025 return (refund.two_returns)" = true → helper "Year parameter sa.no (no)"] [helper "Asked only on a joint 2025 return (refund.two_returns)" = false → helper "You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used"]
+- Interpretation: amb.2025.refund_two_returns
+- Expr: `{"alternatives":[{"guard":{"eq":["refund.two_returns_if_joint",{"const":true}],"op":"test"},"then":"refund.no"},{"guard":{"eq":["refund.two_returns_if_joint",{"const":false}],"op":"test"},"then":"refund.worksheet_one"}],"op":"choose"}`
+- Cite: [i1040gi] p. 88, Line 1, "If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `refund.worksheet_one`
 
 - **Authored helper label:** You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used
 - **Encoded (Bool):** helper "Did you itemize deductions on Schedule A for 2024?" = true and helper "On your 2024 Schedule A, did you deduct state and local general sales taxes instead of state and local income taxes (the box on line 5a checked)?" = false
@@ -115,7 +169,7 @@
 ## (gate) — `refund.received_if_worksheet`
 
 - **Authored helper label:** State or local income tax refunds, credits or offsets received in 2025 (zero when you did not itemize deductions for 2024 or deducted general sales taxes, since none of the refund is then taxable)
-- **Encoded (NonNegDollars):** Choose — [helper "You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used" = true → helper "State or local income tax refunds, credits or offsets you received in 2025"] [helper "You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used" = false → helper "Year parameter sales.zero"]
+- **Encoded (NonNegDollars):** Choose — [helper "The worksheet is used for one 2024 return on which you itemized deductions and deducted state and local income taxes (not when the refunds are of both spouses' 2024 tax on separate 2024 returns)" = true → helper "State or local income tax refunds, credits or offsets you received in 2025"] [helper "The worksheet is used for one 2024 return on which you itemized deductions and deducted state and local income taxes (not when the refunds are of both spouses' 2024 tax on separate 2024 returns)" = false → helper "Year parameter sales.zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["refund.worksheet",{"const":true}],"op":"test"},"then":"refund.received"},{"guard":{"eq":["refund.worksheet",{"const":false}],"op":"test"},"then":"refund.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 88, Line 1, "If you received a refund, credit, or offset of state or local income taxes in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -378,9 +432,10 @@
 ## (helper) — `refund.taxable`
 
 - **Authored helper label:** Taxable part of your refund (zero when you did not itemize for 2024 or deducted general sales taxes)
-- **Encoded (NonNegDollars):** Choose — [helper "You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used" = false → helper "Year parameter sales.zero"] [helper "You itemized deductions for 2024 and deducted state and local income taxes, so the worksheet is used" = true → line 9]
+- **Encoded (NonNegDollars):** Choose — [helper "The worksheet is used for one 2024 return on which you itemized deductions and deducted state and local income taxes (not when the refunds are of both spouses' 2024 tax on separate 2024 returns)" = false → helper "Year parameter sales.zero"] [helper "The worksheet is used for one 2024 return on which you itemized deductions and deducted state and local income taxes (not when the refunds are of both spouses' 2024 tax on separate 2024 returns)" = true → line 9]
 - **Refusal:** when refund.box8 is true, cannot complete Form 1099-G box 8 (a refund of a tax on trade or business income, Schedule C or F). A refund of an income tax that applies only to trade or business income is reported, if taxable, on Schedule C or F; that is outside this tool. Cite: [f1099g] p. 5, Instructions for Recipient, "Box 8. If this box is checked, the amount in box 2 is attributable to an income tax that applies exclusively to income from a trade or business" (Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026); sha256 fe46acb4)
 - **Refusal:** when refund.not_prior_year is true, cannot complete Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A refund for a tax year other than 2024, or a refund when any of your 2024 state or local income tax was paid in 2025 (a last estimated payment, a payment with an extension, or a balance due) or before 2024, is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool. Cite: [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 1 and 5; p525 p. 24, Recovery for 2 or more years, "you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when refund.two_itemized_if_two is true, cannot complete Pub. 525, Itemized Deduction Recoveries (Worksheet 2). Refunds of 2024 tax of both of you, when each filed a separate 2024 return and either of you itemized and deducted state and local income taxes, are tested against each 2024 return in turn, and the Form 1040 worksheet takes one; that is outside this tool. Cite: [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, "But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d"; p525 p. 24, Itemized Deduction Recoveries, "how to determine the amount to include in your income from a recovery of an amount deducted in an earlier year as an itemized deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 - Interpretation: amb.2025.refund_not_itemized
 - Expr: `{"alternatives":[{"guard":{"eq":["refund.worksheet",{"const":false}],"op":"test"},"then":"refund.zero"},{"guard":{"eq":["refund.worksheet",{"const":true}],"op":"test"},"then":"refund.line9"}],"op":"choose"}`
 - Cite: [i1040gi] p. 88, Line 1, "None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes" (2025; printed date 2026-02-25; sha256 482e9c48)

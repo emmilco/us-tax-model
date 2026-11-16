@@ -55,6 +55,45 @@
   {
    "printed": "(g)",
    "project_expr_sha256": "17936dd7b4e3f8c13d9755c0c103c81f64c570421914a824a59f42de9caccd39",
+   "second_expr_sha256": "a2019b1f76b37d5a536fd72ece310b95767be14ea075dacacdf4116133cb6553",
+   "ruling": "Ruling: model error; i8949 p. 8, code B, 'Correct the error by entering an adjustment in column (g)', and p. 10, code W, 'enter the amount of the nondeductible loss as a positive number in column (g)'. Values on the supported case are the project's (reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW); boxes G and J are refused with every digital-asset box (sales.digital) and codes other than B and W at sales.bad_code (scope). The reply's own consistency gate (sales.h_wash_excess) figures the loss from sales.correct_basis, which is $0 when the code is W alone, and so refuses completed returns the project computes: sales.adjust.A.W, sales.adjust.D.W, sales.adjust.A.W.equal_loss (project column (g) $500.00, $500.00, $200.00; e.g. A.W: proceeds $6,000, reported basis $7,000, wash loss $500). The project refuses only a wash-sale loss above the loss after any code B correction (sales.wash_bad). Triage executable-triage-v2 (`.transcription/triage/2025/sales.json`, pass b91cbaa4b1d2): 1,616 of 1,951 agree, no value differs; 316 candidate-unknown (the reply reads sales.route, asked only after sd.route_each), 6 candidate-refuses (the three above, and special or other-code sales refused by the project at sales.one), 13 project-unknown. Same reading as the earlier rounds. Project stands.",
+   "context": "57b5ab1f483d451fcaf814eecbb9c0e2499c6e6169318bf401e23e21a4b67be6",
+   "date": "2026-11-15",
+   "run": "e77e08d96fe1d65cf89bb7b903713a677d4f3a1a0a2fa944446be1492b545481",
+   "subject_key": "3ed301162ef82f8d5080eceb602c36008290e7daa3da51a7228bd7573af65fba",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.2@sales[s1]",
+     "fixture:classm.f4952.3@sales[s1]",
+     "fixture:classm.f5695.11@sales[s1]",
+     "fixture:classm.f8959.1@sales[s1]",
+     "fixture:classm.f8959.2@sales[s1]",
+     "fixture:classm.s179.3@sales[s1]",
+     "fixture:sales.adjust.A.W@sales[a]",
+     "fixture:sales.adjust.D.W@sales[a]",
+     "fixture:sales.adjust.A.W.equal_loss@sales[a]",
+     "fixture:bug0476.sales.market_discount_code_d@sales[a]",
+     "fixture:sales.refuse.special@sales[a]",
+     "fixture:sales.refuse.code@sales[a]",
+     "partial:classm.f1040.6.deepseek-sales[s1].box@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s1].proceeds@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s1].correct_basis@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s2].code@sales[s2]",
+     "partial:classm.sa.1.deepseek-sales[s3].box@sales[s3]",
+     "partial:classm.sa.1.deepseek-sales[s3].proceeds@sales[s3]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(g)",
+   "project_expr_sha256": "17936dd7b4e3f8c13d9755c0c103c81f64c570421914a824a59f42de9caccd39",
    "second_expr_sha256": "d9ce5993987a3f9524154be7aa87fbf0645d103b13d1340ccec7dd9affea979c",
    "ruling": "Ruling: representation and scope; same reply and project as the earlier rulings. i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\"; i8949 p. 10, code W. Values: reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW, as the project. The reply adds boxes G and J (refused with every digital-asset box by sales.digital at sales.one), a sales.route detail condition (a Schedule D aggregate transaction with any code is refused by sales.bad_aggregate, so the condition changes no supported return) and its own refusals for other codes and adjusted aggregates. executable-triage-v2 (.transcription/triage/2025/sales.json, pass 8c6004669339; 1,767 fixtures, 500 generated returns seed 20261026, 466 partial records): 1,698 of 1,833 agree; 9 candidate-refuses, 120 candidate-unknown, 6 project-unknown, all on refused or incomplete returns; no completed return differs. This round changed only the wording of sales.wash_loss (stock received as pay, a bonus award), not an expression. Project stands.",
    "context": "dc56cfee676b0d7265177b5d4e530bb63afed1bb936490368add13b5be97472d",

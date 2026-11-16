@@ -107,9 +107,11 @@ const NOT_DRAWN = new Set([
   // The yes or no parents of those amounts and of alimony, and the items the Schedule 1 line 8 screen was taken apart into.
   "s1.winnings_any", "s1.alaska_any", "s1.jury_any", "s1.hobby_any", "s1.scholarship_any", "s1.alimony_any", "s1.uc_any",
   "s1.ltc_payout", "s1.stock_options", "s1.olympic", "s1.nqdc_pension", "s1.inmate_wages", "s1.digital_income",
-  // The items the Schedule 2 screens were taken apart into, except one each (s2.amt_owed, s2.other_tax, and
-  // f8959.territory_w2 for Form 8959), which are drawn where the screens were.
-  "s2.options_any", "s2.iso", "s2.iso_vested", "s2.w2_marks", "s2.household_help", "s2.household_employee", "s2.mortgage_subsidy", "s2.hsa_testing",
+  // The items the Schedule 2 screens were taken apart into, except one each (s2.amt_business, s2.other_tax, and
+  // f8959.territory_w2 for Form 8959), which are drawn where the screens were. The alternative minimum tax is figured
+  // from the return; of its remaining questions, s2.amt_business stands where s2.amt_owed was drawn, and the
+  // private activity bond amount and the boat question are not drawn.
+  "s2.options_any", "s2.iso", "s2.iso_vested", "s2.amt_pab", "s2.amt_boat", "s2.w2_marks", "s2.household_help", "s2.household_employee", "s2.mortgage_subsidy", "s2.hsa_testing",
   "s2.credit_recapture", "s2.lookback",
   "s1.jury_to_employer", "sa.gambling_losses", "div.any", "div.other_boxes", "sb.nominee", "sb.bonds_any", "sb.form5471",
   "sb.account_any", "sb.asset_any", "sb.trust_any", "sb.company_any", "sb.territory_any",
@@ -152,19 +154,19 @@ const MODELLED = new Set([
   "person[taxpayer].sav_roth",
 ]);
 
-// Form 5329's per-person answers and Form 8889's box 1 answer (Stage 21): set by `putEarly` after every other draw, so
-// neither the random stream nor the derived streams (which hash the answers given before them) see them. The foreign
+// Form 5329's per-person answers and Form 8889's box 1 answer (Stage 21): set by `putEarly` after every other draw from
+// the derived stream, so the random stream does not depend on them. The foreign
 // questions are likewise left unset until they are answered from their screens at the end of buildInputs.
 const FOREIGN_PARENTS = ["sb.account_any", "sb.asset_any", "sb.trust_any", "sb.company_any", "sb.territory_any"];
 const EARLY_ROOTS = ["x_prior09", "x_births", "x_hsa_value"].map((k) => `person[taxpayer].${k}`).concat(`${HSA}.employer_in_box1`);
 const EARLY_SET = new Set([...EARLY_ROOTS, ...FOREIGN_PARENTS]);
 // Form 8889's questions about the account, the coverage checks, the testing period and the distributions (the questions
 // its one screen was taken apart into). None is drawn. Each Form 8889 keeps one drawn flag under HSA_FLAG, a key of no
-// input that stands where the screen's answer stood, so the random stream and the derived streams (which hash the
-// answers given before them) are those of the returns generated with the screen; `putHsaAnswers`, after every other
+// input that stands where the screen's answer stood, so the random stream is that of the returns generated with the
+// screen; `putHsaAnswers`, after every other
 // draw, removes the flag and gives these answers from it.
 const HSA_FLAG = "unsupported";
-const HSA_SITUATIONS = ["owner_died", "inherited", "archer", "ira_transfer", "excess_withdrawn", "mistake_repaid", "loan"] as const;
+const HSA_SITUATIONS = ["owner_died", "inherited_any", "archer", "ira_transfer", "excess_withdrawn", "mistake_repaid", "loan"] as const;
 const HSA_LATE = [...HSA_SITUATIONS, "clear_all_year", "fsa", "spouse_family", "ira_prior", "testing_prior", "dist_code", "medical_all"];
 const HSA_LATE_ROOTS = new Set(HSA_LATE.map((k) => `${HSA}.${k}`));
 
@@ -268,6 +270,8 @@ interface Spec {
   roth: number;
   businesses: Business[]; plan: Plan; spouseBusinesses: Business[]; spousePlan: Plan;
   oi8z: { kind: string; amount: number }[];
+  /** The seed of the return's derived streams (derivedStream), drawn last so every earlier draw is unchanged by it. */
+  stream: number;
 }
 
 // The Schedule C expense lines the generator fills (Part II), each usually zero.
@@ -495,6 +499,7 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
       { weight: 1, arbitrary: fc.array(fc.record({
         kind: fc.constantFrom("rtaa", "rtaa", "kickbacks", "kickbacks", "insurance_dividends", "recovery", "other"),
         amount: money(1_500_000) }), { minLength: 1, maxLength: 2 }) }),
+    stream: fc.noBias(fc.nat({ max: 0x7fffffff })),
   });
   return spec.map((s) => buildInputs(data, s));
 }
@@ -672,21 +677,19 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
     inputs[`${key}.qr_all_year`] = d.months === 12;
     inputs[`${key}.absence_no_return`] = false;
     // The plain parents of the dependent tests follow the drawn facts, so the stream and every value are unchanged: a
-    // parent is Yes wherever the answer beneath it is, and a plain support answer agrees with the full test's.
+    // parent is Yes wherever the answer beneath it is. The ones that follow the age are given by putDependentAges.
     inputs[`${key}.lived_all_year`] = d.months === 12;
-    inputs[`${key}.ever_married`] = d.married || d.joint_return || d.age > 30;
-    inputs[`${key}.parents_apart`] = d.divorced_rule || d.age % 3 === 0;
-    inputs[`${key}.own_money`] = d.self_support || d.age >= 16;
-    inputs[`${key}.self_support_view`] = d.age % 2 === 0 ? "unsure" : d.self_support ? "over_half" : "under_half";
-    inputs[`${key}.citizen_ssn`] = d.citizen && d.tin && d.work_ssn && d.eic_ssn && d.age % 2 === 1;
-    inputs[`${key}.supported_view`] = d.age % 2 === 0 ? "unsure" : d.supported ? "over_half" : "under_half";
   });
   // Form 2441, derived from the generated facts so the random stream is unchanged: a child turning 13 is under 13
-  // for part of the year, a permanently and totally disabled person cannot care for themselves, and the expenses vary
-  // with the age. One care provider, identified by its number.
+  // for part of the year and a permanently and totally disabled person cannot care for themselves (the expenses, which
+  // vary with the age, are given by putDependentAges). One care provider, identified by its number.
   s.dependents.forEach((d, i) => {
     const D = `dependent[dep_${String.fromCharCode(97 + i)}]`;
-    inputs[`${D}.dc_under13`] = true; inputs[`${D}.dc_incapable`] = d.disabled; inputs[`${D}.dc_paid`] = (d.age * 37_000) % 900_000;
+    inputs[`${D}.dc_under13`] = true; inputs[`${D}.dc_incapable`] = d.disabled;
+    // Care while 13 or older and disabled: for a disabled person who lived with you all year (read only at age 13).
+    inputs[`${D}.dc_over12_care`] = d.disabled && d.months === 12;
+    // No generated dependent was born, died, adopted or placed in 2025, so the part-year home answer is the half-year one.
+    inputs[`${D}.part_year_home`] = d.months > 6;
   });
   inputs["$dcprov"] = ["prov_a"];
   inputs["$oi8z"] = s.oi8z.map((_, i) => `item_${String.fromCharCode(97 + i)}`);
@@ -694,6 +697,9 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   Object.assign(inputs, { "dcprov[prov_a].tin_kind": "tin", "dcprov[prov_a].household": false, "dcprov[prov_a].paid": 0, "dcprov[prov_a].related": false });
   const HOUSEHOLD_KEYS: Record<string, string> = { taxpayer_tin: "person[taxpayer].tin", taxpayer_work_ssn: "person[taxpayer].work_ssn", unmarried: "household.considered_unmarried", married: "household.married_dec31" };
   for (const [k, v] of Object.entries(s.household)) inputs[HOUSEHOLD_KEYS[k] ?? `household.${k}`] = v;
+  // A joint filer is not considered unmarried: the head of household rule needs a separate return or a nonresident
+  // alien spouse who has not elected to be treated as a resident, and neither files jointly.
+  if (s.status === "mfj") inputs["household.considered_unmarried"] = false;
   // A joint filer is married; a head of household is married (considered unmarried) on the household draw; nobody else is.
   inputs["household.ever_married"] = true;
   inputs["household.married_dec31"] = s.status === "mfj" || (s.status === "hoh" && s.household.married);
@@ -823,12 +829,11 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   }
   cohereSpouseHsa(inputs);
   applyScreens(inputs);
-  putCarryovers(inputs);
-  putPtc(inputs);
-  putEdu(inputs);
-  putEarly(inputs);
-  // No dependent was born, died, adopted or placed in 2025. Set last, so neither the random stream nor the derived
-  // streams (which hash the answers given before them) see them. They are read for a person who is not a qualifying
+  putCarryovers(inputs, s.stream);
+  putPtc(inputs, s.stream);
+  putEdu(inputs, s.stream);
+  putEarly(inputs, s.stream);
+  // No dependent was born, died, adopted or placed in 2025. Set last, without a draw. They are read for a person who is not a qualifying
   // child and lived with you half the year or less (the household and dependent care tests).
   for (const k of (inputs["$dependent"] as string[] | undefined) ?? []) Object.assign(inputs, { [`dependent[${k}].born_died`]: false, [`dependent[${k}].placed`]: false });
   // The dividends question agrees with the amounts it gates, set last for the same reason.
@@ -859,9 +864,44 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   Object.assign(inputs, { "sa.home_other": false, "sa.state_tax_other_any": false, "sa.medical_premiums": false, "sa.gift_carryover": false, "sa.property_tax_other_any": false });
   inputs["sa.gifts"] = (inputs["sa.line11"] as number) > 0 || ((inputs["$gift"] as string[] | undefined) ?? []).length > 0 || inputs["sa.charity_limited"] === true;
   inputs["f4952.has_interest"] = (inputs["f4952.line1"] as number) > 0 || inputs["f4952.carryover"] === true;
-  putHsaAnswers(inputs);
+  putHsaAnswers(inputs, s.stream);
   putBirthYear(inputs);
+  putDependentAges(inputs);
   return inputs;
+}
+
+/** Each dependent's age and "younger" answer made possible beside the filers' birth years, which are known only once
+ * putBirthYear has run. A child is at least 12 years younger than the older filer and a parent at least 12 years older
+ * (a drawn age outside that is moved inside it); a dependent more than a year younger than the older filer is younger
+ * than one of you, and one older than the older filer is not, so the drawn answer stands only between the two. */
+function putDependentAges(inputs: Inputs): void {
+  const years = ((inputs["$person"] as string[] | undefined) ?? []).map((p) => inputs[`person[${p}].birth_year`]).filter((y): y is number => typeof y === "number");
+  const oldest = years.length ? YEAR - Math.min(...years) : null;
+  for (const k of (inputs["$dependent"] as string[] | undefined) ?? []) {
+    const D = `dependent[${k}]`;
+    let age = inputs[`${D}.age`] as number;
+    const relationship = inputs[`${D}.relationship`];
+    if (oldest !== null) {
+      if (relationship === "child" && age > oldest - 12) age = age % Math.max(1, oldest - 11);
+      if (relationship === "parent" && age < oldest + 12) age = Math.min(105, oldest + 12 + (age % 30));
+      inputs[`${D}.age`] = age;
+      if (age < oldest - 1) inputs[`${D}.younger`] = true;
+      else if (age > oldest) inputs[`${D}.younger`] = false;
+    }
+    // The answers that follow the age: the plain parents of the dependent tests (a parent is Yes wherever the answer
+    // beneath it is, and a plain support answer agrees with the full test's) and the care expenses.
+    const f = (x: string): boolean => inputs[`${D}.${x}`] === true;
+    Object.assign(inputs, {
+      [`${D}.ever_married`]: f("married") || f("joint_return") || age > 30,
+      [`${D}.parents_apart`]: f("divorced_rule") || age % 3 === 0,
+      [`${D}.own_money`]: f("self_support") || age >= 16,
+      [`${D}.self_support_view`]: age % 2 === 0 ? "unsure" : f("self_support") ? "over_half" : "under_half",
+      [`${D}.citizen_ssn`]: f("citizen") && f("tin") && f("work_ssn") && f("eic_ssn") && age % 2 === 1,
+      [`${D}.supported_view`]: age % 2 === 0 ? "unsure" : f("supported") ? "over_half" : "under_half",
+      // Asked only after a Yes to f2441.care (SCREENS), as applyScreens gives the other amounts.
+      [`${D}.dc_paid`]: inputs["f2441.care"] === true ? (age * 37_000) % 900_000 : 0,
+    });
+  }
 }
 
 /** Each person's birth year from the working birth-date answers, which are then removed: 65 or older (1950; 1960 for
@@ -899,14 +939,16 @@ function putBirthYear(inputs: Inputs): void {
  * type, with no general-purpose FSA and no family plan of the other spouse), so a return's answers never contradict
  * each other. No generated return has a testing period from 2024, a Form 1099-SA code or distributions that all paid
  * medical expenses. */
-function putHsaAnswers(inputs: Inputs): void {
-  const next = derivedStream(inputs, "hsa");
+function putHsaAnswers(inputs: Inputs, stream: number): void {
+  const next = derivedStream(stream, "hsa");
   for (const p of (inputs["$person"] as string[] | undefined) ?? []) for (const h of (inputs[`$f8889@person[${p}]`] as string[] | undefined) ?? []) {
     const H = `person[${p}].f8889[${h}]`;
     const flagged = inputs[`${H}.${HSA_FLAG}`] === true;
     delete inputs[`${H}.${HSA_FLAG}`];
     const situation = HSA_SITUATIONS[Math.floor(next() * HSA_SITUATIONS.length)]!;
     for (const k of HSA_SITUATIONS) inputs[`${H}.${k}`] = flagged && k === situation;
+    // An inherited HSA refuses only in the case that is neither a spouse's nor another's of an earlier year.
+    if (flagged && situation === "inherited_any") inputs[`${H}.inherited_case`] = "other";
     Object.assign(inputs, { [`${H}.clear_all_year`]: true, [`${H}.fsa`]: false, [`${H}.spouse_family`]: false,
       [`${H}.ira_prior`]: false, [`${H}.testing_prior`]: false, [`${H}.dist_code`]: false, [`${H}.medical_all`]: false });
   }
@@ -933,8 +975,8 @@ const EDU_AMOUNTS = ["_inst", "_mat", "_a_this_year", "_a_next_year", "_refunds"
  * zero amounts. Your line 7 answers agree with your other birth-date answers. The screens (a Form 8862 claim or ban,
  * an academic period whose assistance exceeds its expenses) are No, and a dependent student's TIN was issued by the
  * due date. */
-function putEdu(inputs: Inputs): void {
-  const next = derivedStream(inputs, "edu");
+function putEdu(inputs: Inputs, stream: number): void {
+  const next = derivedStream(stream, "edu");
   const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
   const persons = ((inputs["$person"] as string[] | undefined) ?? []).map((p) => `person[${p}]`);
   const deps = ((inputs["$dependent"] as string[] | undefined) ?? []).map((d) => `dependent[${d}]`);
@@ -996,8 +1038,8 @@ const PLAN_EXCEPTIONS = ["e19", "e19", "e22", "e23", "e05", "e12", "e01", "e06",
  * sometimes over their limits and sometimes on both entries; on a joint return your spouse sometimes has an early
  * traditional IRA distribution as well. A Form 8889 with contributions answers the year-end value of the HSAs
  * (sometimes below the excess) and, with employer contributions, whether an excess is in Form W-2 box 1. */
-function putEarly(inputs: Inputs): void {
-  const next = derivedStream(inputs, "early");
+function putEarly(inputs: Inputs, stream: number): void {
+  const next = derivedStream(stream, "early");
   const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
   const pick = <T>(xs: readonly T[]): T => xs[Math.floor(next() * xs.length)]!;
   const persons = ((inputs["$person"] as string[] | undefined) ?? []).map((p) => `person[${p}]`);
@@ -1053,8 +1095,8 @@ function putEarly(inputs: Inputs): void {
  * columns A and B every month, the rest month by month (coverage starting during the year, a column B that changes);
  * two forms sometimes, from one state or from two. The screens are No; the poverty table and the Marketplace's
  * below-100% estimate vary. Claimed dependents are not required to file. */
-function putPtc(inputs: Inputs): void {
-  const next = derivedStream(inputs, "ptc");
+function putPtc(inputs: Inputs, stream: number): void {
+  const next = derivedStream(stream, "ptc");
   const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
   Object.assign(inputs, { "f8962.shared_policy": false, "f8962.divorced_enrolled": false, "f8962.married_this_year": false, "f8962.other_coverage": false, "f8962.mec_job_enrolled": false, "f8962.job_offer": false, "f8962.mec_job_affordable": false, "f8962.mec_government": false, "f8962.mec_other": false, "f8962.hra": false, "f8962.not_lawful": false, "f8962.incarcerated": false, "f8962.no_family": false, "f8962.medicaid_reversed": false, "f8962.unpaid": false, "f8962.a_zero_paid": false, "f8962.midmonth_start": false, "f8962.premium_refunded": false, "f8962.same_state_counted": false, "f8962.alien_below": false,
     "f8962.estimate_100": next() < 0.7, "f8962.fpl_table": next() < 0.9 ? "contiguous" : next() < 0.5 ? "alaska" : "hawaii" });
@@ -1100,19 +1142,20 @@ function putPtc(inputs: Inputs): void {
   });
 }
 
-/** A deterministic stream from the return's other answers, so carryover figures vary without drawing from the
- * random stream that every other generated return depends on. */
-function derivedStream(inputs: Inputs, salt: string): () => number {
+/** A deterministic stream from the return's own drawn seed (`Spec.stream`) and a salt naming its use, so the answers
+ * taken from it vary without further draws from the random stream, and do not depend on the ids or values of the
+ * return's inputs: adding or renaming an input does not redraw them. */
+function derivedStream(stream: number, salt: string): () => number {
   let h = 2166136261 >>> 0;
-  for (const c of salt + JSON.stringify(Object.entries(inputs).sort(([a], [b]) => a.localeCompare(b)))) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0;
+  for (const c of `${salt}:${stream}`) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0;
   return () => { h = (h + 0x6d2b79f5) >>> 0; let x = Math.imul(h ^ (h >>> 15), 1 | h); x ^= x + Math.imul(x ^ (x >>> 7), 61 | x); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; };
 }
 
 /** The 2024 figures behind a capital loss carryover (`sd.carryover` drawn true) and a Form 4952 carryforward
  * (`f4952.carryover` drawn true): a 2024 Schedule D whose line 16 is a loss, line 21 the smaller of that loss and
  * $3,000, and 2024 taxable income that is sometimes negative, so every branch of the worksheet is reached. */
-function putCarryovers(inputs: Inputs): void {
-  const next = derivedStream(inputs, "carryover");
+function putCarryovers(inputs: Inputs, stream: number): void {
+  const next = derivedStream(stream, "carryover");
   const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
   inputs["clcw.spouse_screen"] = false;
   inputs["f8960.prior_2i"] = false;

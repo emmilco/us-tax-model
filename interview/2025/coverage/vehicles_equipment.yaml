@@ -54,6 +54,7 @@ sets:
       scope.income_averaging: false
       qbi.suspended: false
       s2.lookback: false
+      s2.amt_business: false
       $scveh@person[taxpayer].sc[design_studio]: []
       $asset@person[taxpayer].sc[design_studio]: []
 rows:

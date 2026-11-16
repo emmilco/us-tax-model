@@ -48,10 +48,12 @@ changes:
     - set:
         line: dependent.edu
         field: expr.source
-        from: Did anyone pay qualified education expenses in 2025 for this dependent at an eligible educational institution
-          (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
-        to: Did anyone pay qualified education expenses in 2026 for this dependent at an eligible educational institution
-          (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?
+        from: Did anyone pay qualified education expenses in 2025 for this dependent as a student at an eligible educational institution
+          (a college, university, vocational school, or other postsecondary school eligible for federal student aid), counting books,
+          supplies and equipment needed for a course of study wherever they were bought?
+        to: Did anyone pay qualified education expenses in 2026 for this dependent as a student at an eligible educational institution
+          (a college, university, vocational school, or other postsecondary school eligible for federal student aid), counting books,
+          supplies and equipment needed for a course of study wherever they were bought?
     - set:
         line: dependent.edu
         field: cite.locator
@@ -287,18 +289,16 @@ changes:
     - set:
         line: dependent.edu_1098t
         field: expr.source
-        from: Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also if the institution
-          was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships
-          or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution
-          did not furnish it and, after February 2, 2026, but before you file, you or the student requested it, you fully
-          cooperated with the institution's efforts to gather the information needed to furnish it, and you can show the enrollment
-          and the payments.
-        to: Did the student receive a 2026 Form 1098-T from the educational institution? Answer yes also if the institution
-          was not required to furnish one (for example a qualified nonresident alien, expenses paid entirely with scholarships
-          or under a formal billing arrangement, or only courses for which no academic credit is awarded), or if the institution
-          did not furnish it and, after February 1, 2027, but before you file, you or the student requested it, you fully
-          cooperated with the institution's efforts to gather the information needed to furnish it, and you can show the enrollment
-          and the payments.
+        from: Did the student receive a 2025 Form 1098-T from the educational institution? Answer yes also, if you can show the enrollment
+          and the payments, when the institution was not required to furnish one (for example a qualified nonresident alien, expenses
+          paid entirely with scholarships or under a formal billing arrangement, or only courses for which no academic credit is awarded),
+          or when the institution did not furnish it and, after February 2, 2026, but before you file, you or the student requested
+          it and you fully cooperated with the institution's efforts to gather the information needed to furnish it.
+        to: Did the student receive a 2026 Form 1098-T from the educational institution? Answer yes also, if you can show the enrollment
+          and the payments, when the institution was not required to furnish one (for example a qualified nonresident alien, expenses
+          paid entirely with scholarships or under a formal billing arrangement, or only courses for which no academic credit is awarded),
+          or when the institution did not furnish it and, after February 1, 2027, but before you file, you or the student requested
+          it and you fully cooperated with the institution's efforts to gather the information needed to furnish it.
     - set:
         line: dependent.edu_1098t
         field: cite.locator
@@ -325,12 +325,12 @@ changes:
     - set_question:
         input: dependent.edu_1098t
         field: help
-        from: Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses
-          gave no academic credit), or if it was asked for after February 2, 2026, the school was given what it needed to
-          prepare it, and the enrollment and the payments can be shown.
-        to: Answer Yes also if the school did not have to send one (for example, scholarships paid everything, or the courses
-          gave no academic credit), or if it was asked for after February 1, 2027, the school was given what it needed to
-          prepare it, and the enrollment and the payments can be shown.
+        from: Answer Yes also, if the enrollment and the payments can be shown, when the school did not have to send one (for example,
+          scholarships paid everything, or the courses gave no academic credit), or when it was asked for after February 2, 2026 and
+          the school was given what it needed to prepare it.
+        to: Answer Yes also, if the enrollment and the payments can be shown, when the school did not have to send one (for example,
+          scholarships paid everything, or the courses gave no academic credit), or when it was asked for after February 1, 2027 and
+          the school was given what it needed to prepare it.
   - change: C-PEOP-17
     evidence:
     - doc: f8863

@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
  "head_rows": {
-  "printed lines compared": "117",
-  "agree / disagree / missing": "58 / 59 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-14); see Line-scoped reviews"
+  "printed lines compared": "120",
+  "agree / disagree / missing": "59 / 61 / 0",
+  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -243,9 +243,23 @@
   },
   {
    "key": "person.ho_count",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "AGREE",
-   "subject_key": "86acc9bf040472d27f28f6afbde11d3e61c152a99c512da809af365a48ebc56f"
+   "subject_key": "63f9f9e4c79bbc9130a42c71c991ad8d3ccf54ae7b9c003700036cc06f49167d"
+  },
+  {
+   "key": "person.sc_credit_count",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 5,013/5,015 agree; 2 project-refuses; completed: none. The project counts the Schedules C that answer the credit question, adding sc.line1 >= sales.zero, which always holds for a computed line 1 and exists so that the Schedule C's own refusal reaches this helper (label: \"a refusal of that Schedule C (its line 1) is carried\"; lane g1-f9). The only differences are 2 project refusals on returns whose Schedule C is refused. No value differs.",
+   "subject_key": "f4a6ae42745634d77e62f1fbdf08e736d5500755c8579bcc9afa6c08a4c3fd8c"
+  },
+  {
+   "key": "person.sc_fuel_count",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 5,013/5,015 agree; 2 project-refuses; completed: none. The project counts the Schedules C that answer the credit question, adding sc.line1 >= sales.zero, which always holds for a computed line 1 and exists so that the Schedule C's own refusal reaches this helper (label: \"a refusal of that Schedule C (its line 1) is carried\"; lane g1-f9). The only differences are 2 project refusals on returns whose Schedule C is refused. No value differs.",
+   "subject_key": "4e27d0eed8915447bca74a522c52e0a338d3ae81eb9e537507f9bcd0f3985003"
   },
   {
    "key": "person.mq_q4",
@@ -315,10 +329,10 @@
   },
   {
    "key": "person.s16",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; p560 p. 16, chapter 3, Catch-up contributions, \"in a tax year in which they attain age 60, 61, 62, or 63\" the higher limit \"is $5,250\". The reply keys the SIMPLE catch-up on person.simple_age_at_year_end, whose label says it is the answer of \"a person born in 1962 or 1966\"; for every other birth year the interview does not ask it and the project derives the band from person.birth_year (person.simple_age_if_open_year). Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): completed stage14.simple.nonelective_60 (born 1965, age 60 at the end of 2025, deferral $21,750): project $22,858.20, reply $21,108.20 (the $3,500 catch-up instead of $5,250). Also 7 candidate-unknown on completed returns (the reply's plan refusal reads person.plan and person.plan_screen, which the interview asks only of a person with a Schedule C) and candidate refusals on generated returns without a Schedule C; 40 project refusals are the project's cited plan screen.",
-   "subject_key": "ca09ec8ad1e61c4bca3bf182129a5db3617592514e7cbf4d52139eab5b20bf2b"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 3,669/5,015 agree; 1,141 candidate-unknown, 92 candidate-refuses, 59 value, 49 project-refuses, 5 project-unknown; completed: 52 candidate-unknown, 15 value. All value witnesses (15 on completed returns, e.g. generated 28 taxpayer $5,875.85, generated 73 spouse $4,637.72, classm.f1040.5.deepseek $2,053.00) have person.has_sc false and person.plan = simple: the reply deducts a SIMPLE contribution on Schedule 1 line 16 for someone with no Schedule C. person.plan asks \"Did you put money into a SEP IRA or a SIMPLE IRA for yourself for 2025, as a self-employed person?\" (interview order 260, in the business block), so it is not asked without a Schedule C; the reply reads it without that parent. Where a Schedule C exists no value differs. Completed candidate-unknowns are person.plan_screen read unasked. The earlier catch-up difference (Landing round) no longer appears.",
+   "subject_key": "180f238cf1301d3135e2c6a1bfdc3bea46a730694482c7262ffd40259330faf8"
   },
   {
    "key": "person.positive_profits",
@@ -331,6 +345,13 @@
    "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
    "status": "AGREE",
    "subject_key": "95940ec32b670c9c5f45178bbcc02dbc6ee6f8d91cd1d6544deea58ead6d8808"
+  },
+  {
+   "key": "person.amt_dep",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 4,413/5,015 agree; 428 value, 174 project-refuses; completed: 150 value. The project line is the most that Form 6251 line 2l can add (label: \"the line 2l adjustment of Form 6251 is at most this amount\"; read by s2.amt_dep for the AMT screen bound). The reply keeps only Form 4562 line 17 (property placed in service before 2025), on the premise that all 2025 property gets the special allowance and so has no adjustment. i6251 p. 5 exempts only qualified property: \"The special allowance is deductible for the AMT, and no adjustment is required for any depreciation figured on the remaining basis of the qualified property\". 2025 property that is not qualified property and is depreciated under 200% declining balance is still refigured (\"Property placed in service after 1998 that is depreciated for the regular tax using the 200% declining balance method\"). The interface does not say which line 19 or 26 property is qualified, so a bound must include lines 19a-19d and 26(h). The 150 completed-return values are businesses with 2025 MACRS, where the reply gives a smaller bound. A smaller bound could clear the AMT screen when an adjustment exists. The project line is right as a bound.",
+   "subject_key": "e6c18c28af80ddb19daa6b58f0bcd42c97c21d85927d49a86094e6e6db6dc75b"
   },
   {
    "key": "person.qbi",
@@ -387,31 +408,30 @@
   },
   {
    "key": "person.sav_roth_if_ira_owner",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
-   "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (4969 values compared, none different or missing: 2309 on 1986 fixture cases, 565 on 500 generated returns seed 20261026, 2095 on 1781 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
-   "subject_key": "a9cb02b2d801771a9d0a09756110cc8f0270c0949bc4d045854b3cc165a30b66"
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "status": "AGREE",
+   "subject_key": "5a9a328680de006b0fbcec2ade69debe9dd1825ffd23e7a8aa68cb321fca8a11"
   },
   {
    "key": "person.sav_line1",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f8880 line 1, \"Traditional and Roth IRA contributions, and ABLE account contributions by the designated beneficiary for 2025\". Same sum (person.ira_contrib plus person.sav_roth_if_ira_owner) on both sides. The reply refuses the line on its own person.sav_excess screen (an IRA-excess reading, ruled under that screen) where the project refuses on person.ira_excess_gate. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,800/4,969 agree; no value differs; 386 candidate-refuses all on returns refused elsewhere (stage14.asset.refuse_qip_2017, refuse_class), 782 candidate-unknown (person.ira_extra_left unasked; 4 on completed returns), 1 project-refuses.",
-   "subject_key": "8f29b4dfa84e8c3bc681e4043ae1088ee4bc0a133ca36b263b1cb5a4dd6d3073"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 4,941/5,015 agree; 58 candidate-unknown, 14 project-unknown, 2 project-refuses; completed: 19 candidate-unknown. The reply chooses on person.sav_trad before person.ira_owner. The project asks sav_trad only of an IRA owner. The 19 completed differences are candidate-unknowns on sav_trad (classm.f2441.2/.4/.6). The 2 project refusals are its cited excess screen (mutation.t3.roth_excess_screen, stage16.refuse.person.ira_excess). No value differs.",
+   "subject_key": "1655f5d9286d1729c461ac68f1eb235ad289bdd93a11860ac49934ebf988ad5b"
   },
   {
    "key": "person.sav_line2",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f8880 line 2 (elective deferrals and voluntary employee contributions). The reply adds person.simple_deferral whenever person.plan is simple; the project adds it only with a Schedule C, and the interview asks person.plan only of a person with a Schedule C. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 4,102/4,969 agree; every value record supplies person.plan with no Schedule C (classm.clcw.3.deepseek: plan simple, deferral $10,000, $sc empty; project $11,846, reply $21,846; classm.f1040.5.deepseek), a record the interview cannot produce; 628 candidate-unknown are the unasked plan answers; the 177 project refusals are the project's cited screens (excess elective deferrals, person.sav_excess_gate, iw2w3 p. 20, which the reply omits on this line; the self-employed plan screen behind person.sav_simple) (scope).",
-   "subject_key": "cc8e9f39ddbc238395639bb6402a56771efa3d8aa381a6df697e4aba8af2fc3b"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 4,159/5,015 agree; 628 candidate-unknown, 180 project-refuses, 47 value, 1 project-unknown; completed: 19 candidate-unknown, 11 value. The project adds person.simple_deferral only for a person with a Schedule C (person.sav_simple: \"own SIMPLE IRA salary reduction contributions as a self-employed person\"). An employee's SIMPLE deferrals reach line 2 through W-2 box 12 (w2.sav_deferral). The reply adds simple_deferral whenever person.plan = simple. Every value witness (11 completed, e.g. classm.f1040.5.deepseek $12,369.00 against $10,797.00; generated 28) has no Schedule C, where person.plan is not asked (see person.s16). The project refusals are its excess-deferral screen. Same as the landing-round ruling.",
+   "subject_key": "9ac1eac98fd3de652c727df263ebecd99408cd8548631499bab5cb65cb6a1ae2"
   },
   {
    "key": "person.ira_contrib",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 98, worksheet line 11. Same choice of person.ira_trad after person.ira_owner and person.sav_trad are Yes, else zero. The reply adds a recharacterization refusal of its own (h_rechar_refused). Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 4,930/4,969 agree; 11 candidate-unknown (the unasked recharacterization answer) and 28 project-unknown (partial records with person.ira_owner withheld); no value difference, none on a completed return.",
-   "subject_key": "0c6f3bc8a2c333a44dfc638e5044cd3e26207cbd33d5e205ba6b2f892db41401"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 4,824/5,015 agree; 177 candidate-unknown, 14 project-unknown; completed: 3 candidate-unknown. No value differs on any return. The differences are candidate-unknowns on an answer the project asks only under a parent gate: person.ira_trad for ira_contrib and ira_ssb, person.ira_dist for ira_dist_gate, person.ira_basis_adjusted for ira_8606_line2. The project-refuses and project-unknown records fall on refused or partial returns. Same as the landing-round ruling.",
+   "subject_key": "6df3a4adc15fb23eb18163541e1805aa0fd4b61db814dcd1d9049ea581918c14"
   },
   {
    "key": "person.ira_age50",
@@ -457,38 +477,38 @@
   },
   {
    "key": "person.ira_deduction",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 98, worksheet line 12, \"enter the smallest of line 7a, 10, or 11a\". Same worksheet arithmetic; no value differs. The reply's line reads the worksheet columns without the project's contribution and distribution gates, so it needs answers the interview asks only with traditional contributions and refuses where those columns refuse. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,494/4,969 agree; 385 candidate-refuses all on returns refused elsewhere (stage14.asset.refuse_qip_2017), 1,051 candidate-unknown (8 on completed returns without contributions), 21 project refusals on returns refused at the project's cited IRA screens (stage16.refuse.ira.both_kinds), 18 project-unknown on partials.",
-   "subject_key": "b42731d55c565173d7d09489efc9c9d7ee9142555e6873ec1f9df9948ca2adf4"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 2,469/5,015 agree; 2,158 candidate-unknown, 368 candidate-refuses, 17 project-refuses, 3 project-unknown; completed: 143 candidate-unknown, 4 candidate-refuses. The reply refuses on its own ira_excess screen (see (screen) (person.ira_excess)). On completed returns stage16.ira.i5, stage16.ira.i7 and audit.ira.covered_age50_single_phaseout and _joint_phaseout (age 55, $8,000 contributed), it refuses where the project computes (e.g. ira_deduction $200.00, ira_nondeductible $7,800.00 on stage16.ira.i5, as the fixture predicted by hand). The 143 completed candidate-unknowns are person.age50_at_year_end read in place of the birth-year derivation. Model error, as ira_excess.",
+   "subject_key": "c08fa48b91b905a0f78bd0f10569975df05d524b367557c88f372a7ad55c5724"
   },
   {
    "key": "person.ira_nondeductible",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f8606 line 1 / i1040gi p. 98, line 12, \"you can deduct a smaller amount and treat the rest as a nondeductible contribution\". Same worksheet arithmetic; no value differs. The reply's line reads the worksheet columns without the project's contribution and distribution gates, so it needs answers the interview asks only with traditional contributions and refuses where those columns refuse. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,495/4,969 agree; 385 candidate-refuses on returns refused elsewhere, 1,052 candidate-unknown (8 on completed returns), 19 project refusals (stage16.refuse.ira.both_kinds), 18 project-unknown on partials.",
-   "subject_key": "77b98090539236b01416351deb9656d3203fdea658112fce007d8e643bbbdc8b"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 2,463/5,015 agree; 1,965 candidate-unknown, 569 candidate-refuses, 15 project-refuses, 3 project-unknown; completed: 143 candidate-unknown, 4 candidate-refuses. The reply refuses on its own ira_excess screen (see (screen) (person.ira_excess)). On completed returns stage16.ira.i5, stage16.ira.i7 and audit.ira.covered_age50_single_phaseout and _joint_phaseout (age 55, $8,000 contributed), it refuses where the project computes (e.g. ira_deduction $200.00, ira_nondeductible $7,800.00 on stage16.ira.i5, as the fixture predicted by hand). The 143 completed candidate-unknowns are person.age50_at_year_end read in place of the birth-year derivation. Model error, as ira_excess.",
+   "subject_key": "df1548bf4605761627008b0b75b9964a2b39ae7b87e67391acdf0433b46eeca2"
   },
   {
    "key": "person.ira_files_8606",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8606, Who Must File (nondeductible contributions to a traditional IRA). Same worksheet arithmetic; no value differs. The reply's line reads the worksheet columns without the project's contribution and distribution gates, so it needs answers the interview asks only with traditional contributions and refuses where those columns refuse; the reply's Part I conditions add person.ira_basis, which the project carries on person.ira_8606_line2. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,489/4,969 agree; 385 candidate-refuses on returns refused elsewhere, 1,058 candidate-unknown (8 on completed returns), 19 project refusals at the cited IRA screens, 18 project-unknown on partials; no value difference.",
-   "subject_key": "cc3a33fb2ab0e28bfde30ea23e9c6ad4ef107295019a9e040a68e67a5720099f"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 2,463/5,015 agree; 1,965 candidate-unknown, 569 candidate-refuses, 15 project-refuses, 3 project-unknown; completed: 143 candidate-unknown, 4 candidate-refuses. The reply refuses on its own ira_excess screen (see (screen) (person.ira_excess)). On completed returns stage16.ira.i5, stage16.ira.i7 and audit.ira.covered_age50_single_phaseout and _joint_phaseout (age 55, $8,000 contributed), it refuses where the project computes (e.g. ira_deduction $200.00, ira_nondeductible $7,800.00 on stage16.ira.i5, as the fixture predicted by hand). The 143 completed candidate-unknowns are person.age50_at_year_end read in place of the birth-year derivation. Model error, as ira_excess.",
+   "subject_key": "f1bc59b8ca9505d5eda8fdf6f490760847fdccbc139834851e2c04aac1572bb4"
   },
   {
    "key": "person.ira_8606_line2",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f8606 line 2 (basis in traditional IRAs). Same value where both compute. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 4,763/4,969 agree; 171 candidate-unknown (the reply's basis refusal reads answers asked only of a person who files Form 8606), 21 project refusals at the project's cited IRA screens (stage16.refuse.ira.both_kinds), 14 project-unknown on refused or partial returns; none on a completed return.",
-   "subject_key": "d458469129368ee9aa5d3d9acfc517400c09ca0c40b24c2f2dbe353a0513bd74"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 3,802/5,015 agree; 1,153 candidate-unknown, 39 project-unknown, 21 project-refuses; completed: 59 candidate-unknown. No value differs on any return. The differences are candidate-unknowns on an answer the project asks only under a parent gate: person.ira_trad for ira_contrib and ira_ssb, person.ira_dist for ira_dist_gate, person.ira_basis_adjusted for ira_8606_line2. The project-refuses and project-unknown records fall on refused or partial returns. Same as the landing-round ruling.",
+   "subject_key": "a9fdc0010303c54826ca3bd1c3ada9889b14ed33cc3d74210c223a6400d07835"
   },
   {
    "key": "person.ira_dist_gate",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 95 and f8606 Part I (a 2025 distribution or conversion with basis). The reply reads person.ira_dist without the project's parent (asked only of a person who files Form 8606). Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 4,754/4,969 agree; 168 candidate-unknown, 1 candidate-refuses, 21 project-refuses and 25 project-unknown, all on refused, incomplete or partial returns; no value difference.",
-   "subject_key": "ca27fa05f184ccefea49569c80e9abe0e9965b2d98a925de2abebcc90052a493"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 4,782/5,015 agree; 180 candidate-unknown, 30 project-unknown, 21 project-refuses, 2 candidate-refuses; completed: 3 candidate-unknown. No value differs on any return. The differences are candidate-unknowns on an answer the project asks only under a parent gate: person.ira_trad for ira_contrib and ira_ssb, person.ira_dist for ira_dist_gate, person.ira_basis_adjusted for ira_8606_line2. The project-refuses and project-unknown records fall on refused or partial returns. Same as the landing-round ruling.",
+   "subject_key": "9b025c576ab83e75e26744d40f9df182d40c925df651c44ba572730e8e9e5884"
   },
   {
    "key": "person.ira_8606_line14",
@@ -499,24 +519,24 @@
   },
   {
    "key": "person.ira_ssb",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi Social Security Benefits Worksheet, line 3 (the IRA deduction as that worksheet reads it). Same worksheet arithmetic; no value differs. The reply's line reads the worksheet columns without the project's contribution and distribution gates, so it needs answers the interview asks only with traditional contributions and refuses where those columns refuse. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,494/4,969 agree; 385 candidate-refuses on returns refused elsewhere, 1,052 candidate-unknown (8 on completed returns), 20 project refusals, 18 project-unknown; no value difference.",
-   "subject_key": "b7f99bf5bd305ab4a308cc53f51ac542f14c0588a8ad918166d0c7e830076fca"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 4,803/5,015 agree; 177 candidate-unknown, 21 project-refuses, 14 project-unknown; completed: 3 candidate-unknown. No value differs on any return. The differences are candidate-unknowns on an answer the project asks only under a parent gate: person.ira_trad for ira_contrib and ira_ssb, person.ira_dist for ira_dist_gate, person.ira_basis_adjusted for ira_8606_line2. The project-refuses and project-unknown records fall on refused or partial returns. Same as the landing-round ruling.",
+   "subject_key": "00c879d489f14ed580ea37870f0c895c181e3f31f925b779785107315cb078dc"
   },
   {
    "key": "person.ira_se",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 98, worksheet line 9, \"net earnings from self-employment ... minus any deductions on Schedule 1, lines 15 and 16\". The reply subtracts its own person.s16, which keys the SIMPLE catch-up on person.simple_age_at_year_end, an answer the interview takes only from a person born in 1962 or 1966 (see the ruling on person.s16; p560 p. 16, the $5,250 catch-up for ages 60 to 63). Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): completed stage14.simple.nonelective_60 (born 1965): project $32,902.93, reply $34,652.93; also candidate refusals on returns without a Schedule C (classm.carloan.2, classm.f8959.1) and 932 candidate-unknown (8 on completed returns); the 44 project refusals are the project's cited plan screen.",
-   "subject_key": "2f20060ba73a248854b5f0977272a226021a435de86d4d796032e7a285f11544"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 3,752/5,015 agree; 1,117 candidate-unknown, 97 candidate-refuses, 48 project-refuses, 1 project-unknown; completed: 53 candidate-unknown. No value differs. The 53 completed differences are candidate-unknowns: the reply reads person.se_screen without its parent. Its refusals fall on refused or incomplete returns. The landing-round value difference (the s16 catch-up) is gone.",
+   "subject_key": "cb5b8589c0b3a532af2e2e822595c337d0270cf3fdb0548973dcaa202e2494f8"
   },
   {
    "key": "person.edu_kid",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8863 p. 7, line 7 conditions (under 18; or 18, or a full-time student under 24, with earned income less than half of support). The project figures the test only where line 7 needs it (f8863 lines 1 and 7 above zero, not a joint return; otherwise no); the reply figures it always. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 4,769/4,969 agree; the 5 value records are all generated returns where the project's kid_needed is false (no refundable credit is figured), 29 candidate-unknown (person.edu_parent unasked), 61 project refusals and 105 project-unknown on refused or partial returns; none on a completed return.",
-   "subject_key": "70f1394a151a6823803da413d4a061c5cc2b322c8dd9dfc257c16f6540494486"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 4,787/5,015 agree; 111 project-unknown, 83 project-refuses, 29 candidate-unknown, 5 value; completed: none. No completed-return difference. The 5 values are refused generated returns (e.g. 25, 120) where the project evaluates only under f8863.kid_needed, which is false there. Same as the landing-round ruling.",
+   "subject_key": "9b21d68890582055fe716b11ed1dd22407721dc59169c74d6f323105ffa8d551"
   },
   {
    "key": "person.x_l1",
@@ -569,10 +589,10 @@
   },
   {
    "key": "person.x_limited_sum",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2 (exceptions 09, 19, 22 and 23 and their limits); p590b p. 27. Repeat: the project's tree and the reply's tree are identical to those ruled in reviews/2025/transcription/person.md at 5d8c6fd8; lines this one reads changed elsewhere in the project (dividend, HSA and Schedule B lines reached through AGI) but not on the path that decides the disagreement, which triage shows unchanged in kind. As that ruling: the reply asks the exception answers of every person, including persons with no early distribution. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 1,471 of 4,066 agree; 2,595 candidate-unknown; on returns the full interview completes: 336 candidate-unknown. Project stands.",
-   "subject_key": "cb837ce462f3847bb00e2e8880c050c40dc0bde673cefe68b82aad87d93ca337"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,455/5,015 agree; 1,494 candidate-unknown, 63 value, 3 project-unknown; completed: 60 candidate-unknown, 3 value. The reply sums only the dollar-limited exceptions 09, 19, 22 and 23. The line is \"Exceptions 05, 09, 19, 22 and 23 within their limits\", and exception 05 has a limit too: medical expenses over 7.5% of AGI (i5329 p. 5). Completed value witnesses: stage21.blind.e6 (taxpayer x_c05 $7,475.00; reply $0), stage21.blind.e7 (spouse $3,000.00, taxpayer $5,000.00; reply $0). These are hand-predicted cases. Completed candidate-unknowns are person.x_prior09 read for every person.",
+   "subject_key": "afd80f6c8abe2667c83a427c5aa4a66ad8381e0d1ff430fbdddc705f234581e9"
   },
   {
    "key": "person.x_other_exc",
@@ -583,10 +603,10 @@
   },
   {
    "key": "person.x_limit_binds",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i5329 p. 5, Line 2, \"Enter on line 2 the amount that you can exclude\". As the ruling at reviews/2025/transcription/person.md 5d8c6fd8: the reply asks person.x_prior09 and the other exception answers of every person, including persons with no early distribution (classm.f4952.1.deepseek, completed). executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 1,469 of 4,066 agree; 2,591 candidate-unknown, 5 value, 1 project-refuses; on returns the full interview completes: 336 candidate-unknown. No completed-return value difference. Project stands.",
-   "subject_key": "2ad80907e7e2673bee2d0a13c95636d5e4207c1f0660af5937ca6146c6e4f90f"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,438/5,015 agree; 1,508 candidate-unknown, 67 value, 1 project-refuses, 1 project-unknown; completed: 60 candidate-unknown, 3 value. The project line is \"A limited exception over its limit on a person with a code S distribution\" (x_l1_s > 0, then the cap tests). The reply tests the caps alone. Completed value witnesses stage21.blind.e4 (09: $11,500.00 over $8,800.00), stage21.blind.e5 (22) and stage21.mut.e23_over_cap: no code S distribution (x_l1_s $0), project false, reply true. Same as the earlier rulings (Fix round, Refresh round).",
+   "subject_key": "c91fef5ce3fbd5994fba28dab979c1cae85f82143810da07d09bc5ba6af31d4a"
   },
   {
    "key": "person.x_other",
@@ -730,45 +750,45 @@
   },
   {
    "key": "(screen) (person.ira_excess)",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the interface label is \"This person's 2025 IRA contributions were more than allowed and not withdrawn, or were recharacterized\" (p590a p. 35, Tax on Excess Contributions; p. 30, Recharacterizing), the project's person.ira_extra_left or person.ira_recharacterized. The reply transcribes item 10 of i1040gi p. 95 (deduction plus nondeductible contributions less than total traditional contributions) from computed worksheet lines instead, so it ignores the filer's excess and recharacterization answers and needs the worksheet. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 4,044/4,969 agree; 3 value records (stage16.refuse.ira.over_comp: no excess answered, project false, reply true from its arithmetic), 387 candidate-refuses, 338 candidate-unknown (4 on completed returns), 197 project-unknown (18 on completed returns, partials).",
-   "subject_key": "95bc42ea783d31e4ba5e00fb715627643d08bd958788f3539ba6e19ed450d041"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,854/5,015 agree; 1,143 candidate-unknown, 11 project-unknown, 7 value; completed: 71 candidate-unknown, 7 project-unknown, 4 value. The reply tests total contributions > person.h_ira_limit, which it defines from person.age50_at_year_end. In the project that input is gated (person.age50_at_year_end_if_open_year) and is asked only for a person born in the cut-off year. Everyone else is placed by person.birth_year (person.ira_age50: birth_year < age.cut_50). Value witnesses on completed returns: stage16.ira.i5 and stage16.ira.i7 (birth_year 1970, \"Single, aged 55, covered\", traditional IRA $8,000), audit.ira.covered_age50_single_phaseout and audit.ira.covered_age50_joint_phaseout: project false, reply true, because the reply uses the $7,000 limit. A 55-year-old may contribute $8,000, so there is no excess. Completed candidate-unknowns are the same input read where it is not supplied. The project line is right.",
+   "subject_key": "9c62aef30d8f0a474352c439ff48d5f065b73c92cd22965a1e38173d0996539a"
   },
   {
    "key": "27",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\" (owner decision T-113: the American opportunity credit keeps this deeming; f1.t113.person_aoc_itin_applied). The reply's base condition (h_edu_base) requires person.tin, so a student whose ITIN was applied for by the due date gets no American opportunity credit. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,884/4,969 agree; value records classm.person.1 and completed f1.t113.person_aoc_itin_applied (project $4,000, reply $0); 1,080 candidate-unknown (the reply's period-allocation refusal reads person.edu_over, unanswered on these records; 6 on completed returns); 3 project-unknown on incomplete returns.",
-   "subject_key": "6522bdd252b12bbcc55e0953574fedfbf65ddcbacb298f210414aa041b47098d"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,912/5,015 agree; 1,097 candidate-unknown, 4 project-unknown, 2 candidate-hides-shown; completed: 42 candidate-unknown, 1 candidate-hides-shown. Completed candidate-hides-shown witnesses: f1.t113.person_aoc_itin_applied and classm.person.1 (person.tin false, person.itin_applied true). The project shows line 27 $4,000.00, 28 $2,000.00, 29 $500.00 and 30 $2,500.00; the reply hides them through its AOC test. Pub. 970 p. 11 allows the credit for a student whose ITIN was applied for on or before the due date; the owner adopted this in T-113. The remaining completed differences are candidate-unknowns on classm.f2441 cases. Same as the landing-round ruling.",
+   "subject_key": "f6f48287265e7a7e8a52157fde4fbddfa7f8d31140dbde3834bdd8dedaebcf7e"
   },
   {
    "key": "28",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\" (owner decision T-113: the American opportunity credit keeps this deeming; f1.t113.person_aoc_itin_applied). The reply's base condition (h_edu_base) requires person.tin, so a student whose ITIN was applied for by the due date gets no American opportunity credit. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,884/4,969 agree; value records classm.person.1 and completed f1.t113.person_aoc_itin_applied (project $2,000, reply $0); 1,080 candidate-unknown (6 on completed returns); 3 project-unknown.",
-   "subject_key": "9142f20478f061900f6c4db47f5d140ca851458fe9d1afde68b4c1b8ca3725c1"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,912/5,015 agree; 1,097 candidate-unknown, 4 project-unknown, 2 candidate-hides-shown; completed: 42 candidate-unknown, 1 candidate-hides-shown. Completed candidate-hides-shown witnesses: f1.t113.person_aoc_itin_applied and classm.person.1 (person.tin false, person.itin_applied true). The project shows line 27 $4,000.00, 28 $2,000.00, 29 $500.00 and 30 $2,500.00; the reply hides them through its AOC test. Pub. 970 p. 11 allows the credit for a student whose ITIN was applied for on or before the due date; the owner adopted this in T-113. The remaining completed differences are candidate-unknowns on classm.f2441 cases. Same as the landing-round ruling.",
+   "subject_key": "4b931a12c9d63587c3a322708f33e848556d7f60a169fda570531565a6391d64"
   },
   {
    "key": "29",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\" (owner decision T-113: the American opportunity credit keeps this deeming; f1.t113.person_aoc_itin_applied). The reply's base condition (h_edu_base) requires person.tin, so a student whose ITIN was applied for by the due date gets no American opportunity credit. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,884/4,969 agree; value records classm.person.1 and completed f1.t113.person_aoc_itin_applied (project $500, reply $0); 1,080 candidate-unknown (6 on completed returns); 3 project-unknown.",
-   "subject_key": "00c64640359cf4887baf81d7c3e31ab03abdf5d9b619659f8cf7fa0856855fd4"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,912/5,015 agree; 1,097 candidate-unknown, 4 project-unknown, 2 candidate-hides-shown; completed: 42 candidate-unknown, 1 candidate-hides-shown. Completed candidate-hides-shown witnesses: f1.t113.person_aoc_itin_applied and classm.person.1 (person.tin false, person.itin_applied true). The project shows line 27 $4,000.00, 28 $2,000.00, 29 $500.00 and 30 $2,500.00; the reply hides them through its AOC test. Pub. 970 p. 11 allows the credit for a student whose ITIN was applied for on or before the due date; the owner adopted this in T-113. The remaining completed differences are candidate-unknowns on classm.f2441 cases. Same as the landing-round ruling.",
+   "subject_key": "c2d3e8042096891e293fd3d304c9b494258333e55b6944c71e1e1cadad7aef71"
   },
   {
    "key": "30",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return\" (owner decision T-113: the American opportunity credit keeps this deeming; f1.t113.person_aoc_itin_applied). The reply's base condition (h_edu_base) requires person.tin, so a student whose ITIN was applied for by the due date gets no American opportunity credit. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,884/4,969 agree; value records classm.person.1 and completed f1.t113.person_aoc_itin_applied (project $2,500, reply $0); 1,080 candidate-unknown (6 on completed returns); 3 project-unknown.",
-   "subject_key": "a553db28df01bbcd523918e60b45c84584b52a7c28c0bd29742fead4caa1ccd4"
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 3,912/5,015 agree; 1,097 candidate-unknown, 4 project-unknown, 2 candidate-hides-shown; completed: 42 candidate-unknown, 1 candidate-hides-shown. Completed candidate-hides-shown witnesses: f1.t113.person_aoc_itin_applied and classm.person.1 (person.tin false, person.itin_applied true). The project shows line 27 $4,000.00, 28 $2,000.00, 29 $500.00 and 30 $2,500.00; the reply hides them through its AOC test. Pub. 970 p. 11 allows the credit for a student whose ITIN was applied for on or before the due date; the owner adopted this in T-113. The remaining completed differences are candidate-unknowns on classm.f2441 cases. Same as the landing-round ruling.",
+   "subject_key": "1182863fcbd014728cd7cb12564f568b915d8de3253bc687241428e76daa9291"
   },
   {
    "key": "31",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i8863 p. 3, Who cannot claim a credit, \"5. The student has not been issued a TIN by the due date\". No value differs. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,877/4,969 agree; 1,088 candidate-unknown (the reply's period-allocation refusal reads person.edu_over, unanswered on these records; 6 on completed returns), 2 project-unknown on incomplete returns, 1 candidate-refuses on a refused return (stage19.refuse.period_over_person); the 1 project refusal (f1.t113.person_llc_itin_applied) is the owner's T-113 refusal of the lifetime learning credit for a student whose ITIN was only applied for, where the reply enters no credit (scope).",
-   "subject_key": "cf979aa98ec3d2e62246e9eb4338ec9fb19610e957060be93482c3f8ae6ab30e"
+   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 3,914/5,015 agree; 1,097 candidate-unknown, 3 project-unknown, 1 project-refuses; completed: 42 candidate-unknown. No value differs. Completed candidate-unknowns are on the classm.f2441 cases. Same as the landing-round ruling.",
+   "subject_key": "7581ba662083efee0d066ac09aed39495b498c382b94b229f377ad079e0b69a5"
   }
  ],
  "subjects": {
@@ -810,6 +830,8 @@
   "person.medicare6": "4f29402f1550b64e349d5a9ab86488af30237090c02161edbcdd067271bca68c",
   "person.sc_count": "a8bb5074a98fe954bf5936b8c8526e8ca74101445de3a5cec58bda1924c01e2b",
   "person.ho_count": "169f919fdf36d49fd8c8eb7f38ce5ce1c476b94913cd44959497bccdd1a36bdf",
+  "person.sc_credit_count": "f03ed79b40acc6a99dcc1d679cbd378cc890d20fe8ee8e9ac21c87c0ac7c78a1",
+  "person.sc_fuel_count": "8588ae9716dfffa52032b83fb6211824306291bcf79bb436d629e5515ae90ad8",
   "person.mq_q4": "de0704d5d6c304b969dd3a738c72c46b6739941c34350d6d96c84e300da44b68",
   "person.mq_total": "7b5692066eb2eb04877e724c509d593d8a881179e19a944ebcfa458772222e3f",
   "person.cost179": "ec3316731571ab678ce5d7977aa70817c0e7de4cb31a6d9468e12b5dc7f5dea2",
@@ -820,9 +842,10 @@
   "person.se_line6": "687322276a895cefa07d6759c8cbdff7e0543c458194b659a9d0f510efa43baa",
   "person.se_line12": "af35176a6306d177f6221d77ca5503f5e98890dd0838e168309b91659f58f828",
   "person.se_line13": "8a385824ff280996271314868eda7e369c672a404a6a8b8e3305d26acbfb6d1f",
-  "person.s16": "1e0560cb7138e60e1b8aabcfe03f5446b59b0f209d43f588e2696649c7047665",
+  "person.s16": "a82f07264686e1f8731ccd68ea2eaf66f29fb4bc4707a22462eedf968f46649e",
   "person.positive_profits": "e3af6f496c72f810069ccd6fc92b6bdc2e1e26e5056b9ebb5a696daad6e45ec7",
   "person.sehi": "d5aa9b751c781d1fad027cdc108e5071738b8db347b12517e49f00c339a672e8",
+  "person.amt_dep": "b9e4c4cb09d38ad3eed3ee7090dcec95c889e9361ee34f7c50fd829bb939315f",
   "person.qbi": "16d1f8561e30bbddbfc61050270e17e33403830eb495a451b41ac6c300a06a03",
   "person.eic_se": "5fa355054b912db78d07680f98311c38a9c8e673de8ee84a5c322e8e891d8b56",
   "person.sc_1a": "0df5e4e32af4bb76d530313ede5a439f7bd4e22b041f13041490f8548f5199f2",
@@ -831,25 +854,25 @@
   "person.dc_earned": "72b7cad2854b242465449c6d7dc2b4edb63dc04d2880670c8477b7805cdce9db",
   "person.dc_earned_b": "5ad9fc16ae7288d8f2946da26705b4765218007c92fd4bdca3c3035efb60eb76",
   "person.sav_ineligible": "203a87adff7cccb2ce86a4faee67c8ff2c7c613f1107051cdec6272ed1501a4f",
-  "person.sav_roth_if_ira_owner": "0bfc2daf3baa45368a02015a539142b0f8e3006e6659b9c75887536ebae8fb61",
-  "person.sav_line1": "f2c72a107b3f94c4a301f69cbf3fcbd3cb60560a7846588978ec5c8fdaa0a1b4",
-  "person.sav_line2": "963dc703a14a90af86d42cc810f45af7fdda30a219510df340c3e26e92731b01",
-  "person.ira_contrib": "87edc10b4fd5c6ededd0ef637f850d47d540617aa67ea6e25eb1f64d7d927d28",
+  "person.sav_roth_if_ira_owner": "2f4e435ee73de97994fc13e14250a732015190faae6e3144218f1acdbf29affc",
+  "person.sav_line1": "3a9d7fdbeb70a82b28755d80084e695ee57d1b990e6f8b6fd84465adf4a6b27c",
+  "person.sav_line2": "75cb1eb7230a9439b88b3809fde3e899eed1ef080c6ccd4961ec6df6348d21b1",
+  "person.ira_contrib": "707c3fdb38feb734fff793b558a921f8cc11918d5d3153e4bbbde552f7309ad0",
   "person.ira_age50": "f189f100ea995d478d5f65b53fdb9edc4398ce3105eff9ea597fd6054af6d482",
   "person.age55_at_year_end_if_open_year": "436f8c9d8b5a16108fd82f72b659da244e89b07b8dc0d8a5602f27891e80eb6d",
   "person.ira_cov": "75f6bdba7a3c60597744b7e8478ce75353c1f7c2d4fb77b083756dec82d91e4d",
   "person.ira_line2": "63d404c777e7ce7e22328b537d38ede889448222079d6a8b8b12257e0cb21944",
   "person.ira_line6": "8394c4a531f5e7def74994a27b4b35e4fc26f72c7dfcfdaf8f3fa4a8bbdd7a73",
   "person.ira_line7": "a0ae041b47eb7f39e2404ebc2d32029eb67763e459778237fe8081247cb947d9",
-  "person.ira_deduction": "ec7339bcea9dc7f95d6baf77317c149337cf83258327c13e5e6d25a62c7bc305",
-  "person.ira_nondeductible": "f69c5ce1672c6a9dd1f949d3ead86966bfd043bf403a0ab5827a38a9900a8946",
-  "person.ira_files_8606": "8c09679a3a408b9b699726c57befebab7152c8dd1d6f63c2b7ff0d09303a7bdf",
-  "person.ira_8606_line2": "01696619a1203e149167fa5fbf5b7bb5cca73973714f8265749397a55b77b3f3",
-  "person.ira_dist_gate": "6477c4dfdef1a8ef4aae90f5a7baf859235b9cd44d974514ce5914b9728ddaa7",
+  "person.ira_deduction": "57149f7c98cc47c82851e35b115f9736ee5d612d4d355d85deca2e81bbb1f4a3",
+  "person.ira_nondeductible": "5f4125442deb0740115015da8f468a085532fd26da82d73d13a30eb5e024612c",
+  "person.ira_files_8606": "b6efb5db3e457110743c787004def5a20eac6c19f0a345a8821694d42418e5da",
+  "person.ira_8606_line2": "e308e3f7310ba27776134e8ad5c51a921decd82f73e457c15c4d07332e3516ee",
+  "person.ira_dist_gate": "f2da2c2d6b39817d7db3446f309f50bce35475ea7b72d95531b1191494e497ec",
   "person.ira_8606_line14": "47c89972f50bf49fc1746168b164510319590ea9e1dcc1d1c82092b28218a51a",
-  "person.ira_ssb": "a152f7a873710fa172492d1749cdf124f37d90ccf04394e481663a4149148d63",
-  "person.ira_se": "1017d37f2b3a97c20aaed2210f590c5fa7dc13d7dce42284fc8b80f9e190a6cb",
-  "person.edu_kid": "31a978181d3b21a2c3eff7502ee1727a756712730773056e9f833d42cfd8e667",
+  "person.ira_ssb": "8579fce5c85555c8e8f6b87f92aa1590f14f6f9c90bd7b124f0dd2948aaa3a6d",
+  "person.ira_se": "954e30ac82de4e41888f665e5b91b29ce1f1e1a0d59fdca35d7e8f2b621d1efe",
+  "person.edu_kid": "dda6d091300fdcd05ec49fcbb1708ff62619bcb6635115e6dd5d252f33f9bc49",
   "person.x_l1": "8918e95355b7587c0094978375825c55dd25c581cfa70928c887960e7353036a",
   "person.x_l2_all": "72a762c9f410531c028cda2c2c18402a79833e8ff9528c6ee38688017e1890cb",
   "person.x_l1_s": "24267bbbdb0337d89c5f3079e53acba0824dba00bbb8d1bccd2c19a7cf91abde",
@@ -858,9 +881,9 @@
   "person.x_must": "9429d6b3783328f7049e6217d9dd8e0bdea36c5ceaece059947c15881f33ba97",
   "person.x_c05": "47a6b7e1b81e44437ae565e021699f1a4f8cca6f29f9ab87213a4296b16682ce",
   "person.x_two23": "9821f822eb859949bfc972c200e714cd131129bbef06e1223935b7d8277fe444",
-  "person.x_limited_sum": "fde284ffe3b251a7ea7ac41c668177abeb67550ab056cddc55cb89c07a60a2e0",
+  "person.x_limited_sum": "0ab13c538ec974c5a181e1b586ae05ddb820749c715d7139609bbdf6380ca781",
   "person.x_other_exc": "a00e0b1a59db195d537856872dff65750b8bec6c479f8c07c3f88686e7c7e70e",
-  "person.x_limit_binds": "eecca81ae200b378228067391b948580ad6f7301f50821678b11330b5341bb42",
+  "person.x_limit_binds": "32b512bbb91c6d6806cc97de514fa5119518d6a53fb74dd95fa2427512e4a719",
   "person.x_other": "4eae2892d77b805033f9117d0c5066bf9fde7348834bd3401b7c9dda444b7c3b",
   "person.x_hsa_excess": "fdd45bb5717bf952ebab45851dc751e9befd367d231b938a051c02655fc1ab10",
   "person.senior_work_ssn": "37e3493dc87a0d48343beccdd7c7b73b9901a6f1e9708e87b0e29bc1fc80c1c2",
@@ -883,12 +906,12 @@
   "Step 8": "fe42055f98306dd8e3f897a84f7c697179702d5b580f74f25a17881ee5cfb590",
   "Step 21": "9ffcf25cdd3c05e804f113dc4829fe6830c892c9f27958844f9fcb077134c932",
   "(screen) (person.sav_excess)": "7161524684defde8e4ac1110fb75cd9faf970fb4cbda658f6a7055601ecded15",
-  "(screen) (person.ira_excess)": "bc868279385fed014ab9a1c3b5cab9bf62baf6821ae54180c3e661b95be963e8",
-  "27": "ad8ef7a201d9d7f17d27adaa76e9f738f1cb7116b845bd93d344aa76b1e81e03",
-  "28": "26ee7700b175ca89f8531189b9945e10467df8b02470fb3d277dcced01a9bc90",
-  "29": "4bc1321d8f0bbfa6d4f1d2c245f044bb412731d49776775aecaa8e4e68d32840",
-  "30": "78ce6616b651f6d45c59c6622817a06812400bb13217b56a88eab05539caf420",
-  "31": "8bd44ff66bcc9f627121f9263781f2f0793d8d74262bc0d324fc7efead129935"
+  "(screen) (person.ira_excess)": "025cc95bf70008f85fc4bbabab9dbe99e449f91f34ddc832aa093b2ff262b5b9",
+  "27": "d6ce6035848d4843eeffa7ac56ddb336e781f771d6b85f1f69c7228c70eb4312",
+  "28": "22a2549aed04e3f902f0f45bc8ea2889e571720d87a98236de170bfb15d3c0da",
+  "29": "cb0a4a754aca953d9446512addb86f362bbd4cf8680521bd7c9a6885e79ad7e5",
+  "30": "de4a93e13482929e09eb47269cb33de0af4eea51b14f73fe7d8c6da1f859f625",
+  "31": "6965b8746aad942de14b8865d816526b4df3bcc5223369c606999da67fde65c8"
  },
  "__rest__": "d28e22d3400268c696f00ac5cb2cb4acf80222dd6ee55c48f68bb684d57f0110",
  "foreign": {
@@ -929,7 +952,9 @@
   "person.medicare5": "34278b3b7bb595ee3daf02a234cdbe2606178dce8ffd6bc5559ff0b543226621",
   "person.medicare6": "e9f97bb526440c39e8cea487c9db61c33af9c1c08c1d51df6342493842a704e8",
   "person.sc_count": "d5a20b74f1ce15ca402ac4e73b79357c66a2360512df5578c9276ff05e799d56",
-  "person.ho_count": "9f41443a0dcfe128a75b9d0256965d63ce752fea43713448c43f6296ff9932eb",
+  "person.ho_count": "a5094e4eabdb6c31fd825c4db9101762dfcbd8273a55598c3904779b89aa3d04",
+  "person.sc_credit_count": "8d2470ee66bf7c7eb1ff7fc4c1fcaf219821e4003225566db63bd24c4702fd20",
+  "person.sc_fuel_count": "d461741e194cf8609d881c20aa96d13824905fa70b2c7a4c363179a67f8aa2de",
   "person.mq_q4": "3d05bfa1caa7b727a628309f945f2242a177678bc47fcdfd6c95758abf23ace3",
   "person.mq_total": "9c4b1777213a8cfb591b7bbee4407b322629bb281f7e1d028bbec77bf6205409",
   "person.cost179": "dc7bd3de862e2172dc5f1676de99936e402c2a788ebcfece38621672d4e55926",
@@ -943,6 +968,7 @@
   "person.s16": "2e004874517642ed452cc90e38d4f8008bb8cef28d133e2b9f87728217fa3b96",
   "person.positive_profits": "da338b2529be43fe7c46ff76e6ed01abf83708d7b9fb0549927de92376cecb8e",
   "person.sehi": "85f2a2724549838a8e3ec8a03709942c60596753a26f95dde6cb54b52661403c",
+  "person.amt_dep": "3cc28b7201834e24013289577fc8e5223b128aef95e4803a7909dff7c8585acb",
   "person.qbi": "323f168abba5bb1ea9280b076825df33037e8df8cd4a109fc8f6334129e32d7b",
   "person.eic_se": "afe807d46e3179a2cb790aa54c460a733333c632bedad674750cebf6120ee9bf",
   "person.sc_1a": "106a266d894b9149b04b7caf30ee4b5fcbf94b4234eaced7d022fff0035ea3ae",
@@ -1004,10 +1030,10 @@
   "Step 21": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "(screen) (person.sav_excess)": "ab5d2dcbc6fea16793195d16840e90afe343ad4eb8d3ef7b4aee96352657a559",
   "(screen) (person.ira_excess)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "27": "f692f4d4d2c053ac204137707122930b6d2c4ce8a806bc2e2cc97057bf4bd65d",
-  "28": "29df9f2786de87c57709d8a87f0162618742f8f6c1925e8d83dcaafc708a6bb7",
-  "29": "7ffe7549ab877a73e88825b4adee7d1ecec17cc8ac1ba573b94042203c9bd91a",
-  "30": "30e5f817c21695da0fa33d5606849917a9d6ed8f164402ea888abc597f895af1",
-  "31": "52aed407a0e3b862555176375829a6a46c536b4646e1b5d0d1a1c7b9975fbdd9"
+  "27": "88a20b209f5bd9eaf50f72a4fb0913f1b64fa513030df15c6a46b9c16eab32f2",
+  "28": "04ade2990566c93653f53d9149d35a507df7d8bcac1d8c798034e2df9d0bfbff",
+  "29": "a0731f9f73641383c55b0266f4035801c34912c301ed5b3650e071b6e29471f1",
+  "30": "f6ad556e49ce314571e7ad2b80d8e31a82697ad6e25383e17e12fb8ad2bedf8d",
+  "31": "4a51e5c8e29d87c51a67acfe44559e05cb10a72e2117baf6f7a07475a63bb902"
  }
 }

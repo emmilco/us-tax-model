@@ -181,3 +181,35 @@ Lane land3-adj12 (claude-opus-5-5, judgment). Claude class M log of 2026-11-14 (
 | claude | classm | classm.sc.2 — person[taxpayer].sc[d].f7206_line13 | representation | dropped from the fixture | f7206 line 4; sc.hi_uses, sc.f7206_line14#1 | helper of a branch this entry does not take; project retained. No health insurance plan is established under business d (sc.hi_uses false, Form 7206 line 1 zero), so Form... |
 
 Counts: claude classm representation 5. Findings: none. Left open: none.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-e (claude-opus-5-5, judgment; tax year 2025, us). Open lines of the Claude logs after the goal-1 fix lanes (merge worktree nx-b1), ruled on the triage record `.transcription/triage/2025/<form>.json` (executable-triage-v2; not rerun), the archived sources and the form YAML; render lines on the rendered English (`rendered/2025/<form>.md`). Rulings files `/tmp/b1-adj-e/<form>[.render].json`, applied with `rule.py`; full text in the log and sidecar. The deepseek logs are dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | 4 (sc.ho_line4) | representation | 3,714/3,936; 218 project-unknown (19 completed), 4 project-refuses; no value | i1040sc p. 12, worksheet lines 2-4 | Choice on sc.ho_over equals the smaller of the two products; differences are records without ho_sqft (ho_uses false, line 30 $0 on both) and cited refusals. |
+| claude | transcription | 5 (sc.ho_line5) | model error | 2,141/3,936; 1,319 project-unknown, 265 project-refuses, 210 candidate-unknown (9 completed), 1 candidate-refuses; no value | i1040sc p. 12, line 5; p946 p. 19, Two different taxable income limits | Line 1 after the section 179 deduction makes a cycle Pub. 946 resolves; the project orders the limits and refuses where both bind. |
+| claude | render | 5 (sc.ho_line5) | scope | MISMATCH; rendered/2025/sc.md, form YAML | i1040sc p. 11, Line 1, A to E | Form 8949/4797 gains and losses and income from another place of business are refused by the sc.ho_other screen (sc.ho_screened at sc.ho_sqft), so line E is line 29. |
+
+Counts: claude transcription model error 1, representation 1; claude render scope 1. Findings: none. Left open: none. Class M: no open line when ruled (rerun pending; see the lane note docs/provisional/lanes/b1-adj-e.md).
+
+## Goal-1 round (2026-11-15), class M
+
+Lane b1-fin (claude-opus-5-5, judgment; tax year 2025, us). Claude class M log of the goal-1 rerun (2026-11-15); `carry.py --kind classm --form sc` ruled nothing. Evidence: the log section, the form YAML, the cited source and the ambiguity register. Rulings `/tmp/b1-fin/sc.classm.json`, applied with `rule.py --kind classm`; every model value ruled here is dropped from the fixture. Full text: the log and sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_a].f7206_line4 | representation | project $72,053.00 / $5,090.39 / $66,962.61, model $0.00; dropped | Form 7206 lines 1-3, 14; sc.f7206_line14 | No plan under biz_a (lines 1-3 and 14 agree at $0); the project computes lines 4-13 as helpers, the model zeroed the form. As the landing round. |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_a].f7206_line7 | representation | project $72,053.00 / $5,090.39 / $66,962.61, model $0.00; dropped | Form 7206 lines 1-3, 14; sc.f7206_line14 | No plan under biz_a (lines 1-3 and 14 agree at $0); the project computes lines 4-13 as helpers, the model zeroed the form. As the landing round. |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_a].f7206_line8 | representation | project $72,053.00 / $5,090.39 / $66,962.61, model $0.00; dropped | Form 7206 lines 1-3, 14; sc.f7206_line14 | No plan under biz_a (lines 1-3 and 14 agree at $0); the project computes lines 4-13 as helpers, the model zeroed the form. As the landing round. |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_a].f7206_line10 | representation | project $72,053.00 / $5,090.39 / $66,962.61, model $0.00; dropped | Form 7206 lines 1-3, 14; sc.f7206_line14 | No plan under biz_a (lines 1-3 and 14 agree at $0); the project computes lines 4-13 as helpers, the model zeroed the form. As the landing round. |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_a].f7206_line13 | representation | project $72,053.00 / $5,090.39 / $66,962.61, model $0.00; dropped | Form 7206 lines 1-3, 14; sc.f7206_line14 | No plan under biz_a (lines 1-3 and 14 agree at $0); the project computes lines 4-13 as helpers, the model zeroed the form. As the landing round. |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_a].qbi | ambiguity | one cent (e.g. line 7 $5,349.82 v. $5,349.83); dropped | Form 7206 line 6; amb.2025.f7206_ratio_places | Line 6 ratio to six places half-up (0.512425 / 0.487575); the model used the exact fraction. |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_b].f7206_line7 | ambiguity | one cent (e.g. line 7 $5,349.82 v. $5,349.83); dropped | Form 7206 line 6; amb.2025.f7206_ratio_places | Line 6 ratio to six places half-up (0.512425 / 0.487575); the model used the exact fraction. |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_b].f7206_line8 | ambiguity | one cent (e.g. line 7 $5,349.82 v. $5,349.83); dropped | Form 7206 line 6; amb.2025.f7206_ratio_places | Line 6 ratio to six places half-up (0.512425 / 0.487575); the model used the exact fraction. |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_b].f7206_line10 | ambiguity | one cent (e.g. line 7 $5,349.82 v. $5,349.83); dropped | Form 7206 line 6; amb.2025.f7206_ratio_places | Line 6 ratio to six places half-up (0.512425 / 0.487575); the model used the exact fraction. |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_b].f7206_line13 | ambiguity | one cent (e.g. line 7 $5,349.82 v. $5,349.83); dropped | Form 7206 line 6; amb.2025.f7206_ratio_places | Line 6 ratio to six places half-up (0.512425 / 0.487575); the model used the exact fraction. |
+| claude | classm | classm.sc.4 — person[taxpayer].sc[biz_b].qbi | ambiguity | one cent (e.g. line 7 $5,349.82 v. $5,349.83); dropped | Form 7206 line 6; amb.2025.f7206_ratio_places | Line 6 ratio to six places half-up (0.512425 / 0.487575); the model used the exact fraction. |
+
+Counts: claude classm representation 5, ambiguity 6. Findings: none. Left open: none.

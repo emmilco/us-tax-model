@@ -3,21 +3,33 @@
  "form": "dcprov",
  "family": "claude",
  "base": "0dde11c219994840fc0c666d84b1f513c53c6f990f3af59ce49bcc66ab9a0ce3",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1(c)",
    "record": "0dde11c219994840fc0c666d84b1f513c53c6f990f3af59ce49bcc66ab9a0ce3",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "3d79363e36c07351d7ef6bb25c7bf7126659754d3cc57a27db5ba85cb0a3db62"
   },
   {
    "key": "1(d)",
    "record": "0dde11c219994840fc0c666d84b1f513c53c6f990f3af59ce49bcc66ab9a0ce3",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "c1e283b3cca99a03640a15d8e99e58b57ca2eb2a799f6f557d4679372618cfde"
   },
   {
    "key": "1(e)",
-   "record": "0dde11c219994840fc0c666d84b1f513c53c6f990f3af59ce49bcc66ab9a0ce3",
-   "status": "MATCH"
+   "record": "fff961dc539b0d3f51f7a6fb9e01cfe08c3fbbc5db8e08b72aad83d9e6f7e2c0",
+   "status": "MATCH",
+   "subject_key": "d76f34f1bbad5086e7943ad931b7ee1f845727ee4f93fa763730dc3ac2b9ccda"
   }
- ]
+ ],
+ "subjects": {
+  "1(c)": "a8c1b76cf05ad3922e71d37f8893a310df51ed21fe542a2809839bdc8a94e786",
+  "1(d)": "271d60bcb3145e834d7101547505cba673056fc03c4aa087e600d57fecd61ae9",
+  "1(e)": "286efe11a07aa7e92b65b7f39002894355f5f6e155301633e647d96adddbb952"
+ },
+ "__rest__": "f4c780a122a260b496f304b6145682e264a0140a1591bf1d31e5d86055dc25c5"
 }

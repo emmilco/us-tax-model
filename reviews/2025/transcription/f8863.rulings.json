@@ -43,6 +43,47 @@
   {
    "printed": "(CLW 1)",
    "project_expr_sha256": "b63582f7718e6540720ecef0d67f96695c3501082413e4be032bf8405bf3616e",
+   "second_expr_sha256": "b9a83d4d7e47fdb52efd063a253d7719e426f42bcdef5abeaad50ce5c2142ac4",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,868/2,587 agree; 508 candidate-refuses, 198 candidate-unknown, 12 project-unknown, 1 project-refuses; completed: 1 candidate-refuses. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. Completed witness stage19.mut.claimed_filer_llc: the project hides the form (the filer is claimed). The reply computes and refuses the daughter's lifetime learning credit on its applied-for-TIN rule. Other differences are upstream refusals on refused or incomplete returns.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "1259f06d46948f9f0a71838861615882edf3fc1a314bc47a607db21511e2179d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 1)",
+   "project_expr_sha256": "b63582f7718e6540720ecef0d67f96695c3501082413e4be032bf8405bf3616e",
    "second_expr_sha256": "f6a19fb4174cc3f266448559b120c62c042b65ab0620949f3b46fec08aeacfcc",
    "ruling": "Ruling: model error (+ scope); i8863 p. 8, Credit Limit Worksheet, \"1. Enter the amount from Form 8863, line 18\". Same copy; it inherits the reply's missing dependent bar (i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\") through line 18. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 1,782 of 2,261 agree; 429 candidate-refuses, 50 candidate-unknown; on completed returns classm.person.20 (candidate-unknown) and stage19.mut.claimed_filer_llc (candidate refuses), both claimed filers the project completes with the worksheet hidden. the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview. Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
    "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
@@ -102,6 +143,51 @@
      "fixture:classm.f2441.4.deepseek@f8863",
      "fixture:classm.f2441.5.deepseek@f8863",
      "generated:20261026.415@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 2)",
+   "project_expr_sha256": "9b12bde606cfb50d2df8a85a5c6a9644958fdfb7fea0a4d07b2a3f8f2f429172",
+   "second_expr_sha256": "f7efb332c17534e23f9a8e536d4cab677ad8fcc639d3089aa7037085b6829398",
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,860/2,587 agree; 508 candidate-refuses, 203 candidate-unknown, 12 project-unknown, 3 value, 1 project-refuses; completed: 1 candidate-refuses, 1 candidate-unknown. Completed witnesses: stage19.mut.aoc_line4_zero_ban (candidate refuses on f8863.ban, project hidden) and classm.f1040.2 (candidate unknown on f8863.ban), as line 1. Where present, stage19.mut.claimed_filer_llc is the claimed-filer gap (interface gap, see f8863.eligible). The other records fall on refused or incomplete returns.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "10792e86c6ea84347b95704f8b85ff48d581842820bf64325b4c2e8170384b80",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.f8863.2.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:stage19.refuse.period_over_dependent@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "generated:20261026.303@f8863",
+     "generated:20261026.342@f8863",
+     "generated:20261026.352@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -223,6 +309,49 @@
    }
   },
   {
+   "printed": "(CLW 3)",
+   "project_expr_sha256": "954685080b32bfe0ed6a37d0c405036f2bc5d75db990d0904063802f44b2887a",
+   "second_expr_sha256": "edf2ab1c3c3b898bc69fc36648c1660008584860c386f5f5292cc8d9694e359b",
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,860/2,587 agree; 509 candidate-refuses, 203 candidate-unknown, 12 project-unknown, 3 value; completed: 2 candidate-refuses, 1 candidate-unknown. Completed witnesses: stage19.mut.aoc_line4_zero_ban (candidate refuses on f8863.ban, project hidden) and classm.f1040.2 (candidate unknown on f8863.ban), as line 1. Where present, stage19.mut.claimed_filer_llc is the claimed-filer gap (interface gap, see f8863.eligible). The other records fall on refused or incomplete returns.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "ffc486216d47e1afee4964f3e464c3327586f69cb3d86e55ecc8564c2dec94df",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.f8863.2.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "generated:20261026.303@f8863",
+     "generated:20261026.342@f8863",
+     "generated:20261026.352@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "(CLW 4)",
    "project_expr_sha256": "5957a500243524e700cae6f5afdc3d2c5f543ed44569fbd6859a19c002b8689c",
    "second_expr_sha256": "22c135386660a74070f83eaad9c18863ddc740db67917ca1774347615d986f0e",
@@ -264,6 +393,52 @@
      "fixture:classm.ssb.2@f8863",
      "fixture:classm.f8889.2@f8863",
      "fixture:classm.sa.1@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 4)",
+   "project_expr_sha256": "5957a500243524e700cae6f5afdc3d2c5f543ed44569fbd6859a19c002b8689c",
+   "second_expr_sha256": "86a14dbe8f6107816c7992fc219c250d6df46698d4cbcd73f10018e800a95835",
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/f8863.json (log sha matches): 407/2,587 agree; 918 candidate-shows-skipped, 831 candidate-refuses, 415 candidate-unknown, 16 project-unknown; completed: 763 candidate-shows-skipped. The reply gives the worksheet line no shown_when. It is shown on returns where line 4 stops the form (\"If zero or less, stop; you can’t take any education credit\") and on returns without the form (763 completed candidate-shows-skipped). Same as the Refresh-round ruling.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "f8c38f7597ef96654f9002f6ac9d61ae1fc3a7e1b27a8859e1e956cb3d7ff972",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f8863",
+     "fixture:stage14.asset.mq_7yr@f8863",
+     "fixture:stage14.asset.mq_mixed@f8863",
+     "fixture:stage14.asset.mq_not@f8863",
+     "fixture:stage14.asset.bonus_100@f8863",
+     "fixture:stage14.asset.bonus_40_before@f8863",
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f4952.1.deepseek@f8863",
+     "partial:stage14.asset.hy_5yr-f8863.paid@f8863",
+     "partial:stage14.asset.bonus_100-f8863.paid@f8863",
+     "partial:stage14.asset.prior_7yr-f8863.paid@f8863",
+     "partial:stage14.asset.qip-f8863.paid@f8863",
+     "partial:stage14.asset.done-f8863.paid@f8863",
+     "partial:stage14.asset.prior_179_bonus-f8863.paid@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -367,11 +542,11 @@
    "printed": "(CLW 5)",
    "project_expr_sha256": "51e5745a48f8dd7a31a4fbd93ba3f91ae8aecebbe4ac97405691296c917f4ea8",
    "second_expr_sha256": "591e6b17dc2434a0e8c5014405cf8f785c0429ee8521044831220628f802634c",
-   "ruling": "Ruling: interface gap (+ scope); i8863 p. 8, Credit Limit Worksheet, line 5: \"Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l\". As ruled before on this line: the reply enters Schedule 3 line 1 only and says why (s3.line2 is not in the catalog it was given), so it could not express line 2; the project's sum of lines 1 and 2 is the source's within scope. Lines 6d and 6l are refused: this line now refuses on s3.other_credit, which is true for the credit for the elderly or the disabled (s3.elderly_credit_if_asked) and a Form 8986 (s3.docs), in place of scope.credits (BUG-0619); the reply names the same two refusals. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass d133f955683f; 1,803 fixtures, 500 generated returns seed 20261026, 60 partial records from 40 bases; 2,363 comparisons): 2,048 agree; 151 candidate-refuses, 49 candidate-shows-skipped, 31 candidate-unknown, 52 project-refuses, 32 project-unknown. On completed returns: 42 candidate-shows-skipped, all on returns where the project does not show the worksheet; 7 candidate-unknown and 1 candidate-refuses, where the reply reads s3.elderly_credit, a question the interview does not ask on those returns (nobody 65 or older or retired on disability; the refusing one is the fixture that states an unread Yes). No value differs. Project stands.",
-   "context": "5e16b7bf236c543027958535eed26178d4f5edf175d43b7a378cbf086e2f7c41",
-   "date": "2026-11-12",
-   "run": "3009a61c289b9f347562b1ad4f0ad9c272f9b062c8fd69b337f1ef5adf00bfb1",
-   "subject_key": "5b5e4e546e61cc024e40e8dc2154f3b413a23bf3897176a83e341a446c79cea3",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,278/2,587 agree; 133 candidate-refuses, 60 project-unknown, 49 project-refuses, 34 candidate-unknown, 33 candidate-shows-skipped; completed: 29 candidate-shows-skipped. The reply's note: \"the supplied catalog provides only Schedule 3, line 1. It provides no line ids for Schedule 3, lines 2, 6d and 6l.\" The pass records \"complete input context: fail\". The project sums s3.line1 and s3.line2. 6d and 6l are refused by scope.credits, as the label says. Completed differences are candidate-shows-skipped (no form).",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "3cf8ef71996d9b22aa2511668e426786326aa7434e9efd55c1429fa5e8b01dc6",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -383,35 +558,35 @@
     ],
     "witnesses": [
      "fixture:classm.w2.1.deepseek@f8863",
-     "fixture:classm.f8889.1.deepseek@f8863",
      "fixture:classm.f8889.2.deepseek@f8863",
      "fixture:classm.f8889.3.deepseek@f8863",
-     "fixture:classm.f8889.4.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
      "fixture:classm.clcw.4.deepseek@f8863",
-     "fixture:classm.clcw26.3.deepseek@f8863",
+     "fixture:classm.clcw_next_year.3.deepseek@f8863",
      "fixture:classm.dependent.1.deepseek@f8863",
      "fixture:classm.dependent.2.deepseek@f8863",
      "fixture:classm.dependent.3.deepseek@f8863",
      "fixture:classm.dependent.4.deepseek@f8863",
      "fixture:classm.person.1.deepseek@f8863",
      "fixture:classm.f1040.6.deepseek@f8863",
+     "fixture:classm.eic.7.deepseek@f8863",
      "fixture:classm.retirement.4.deepseek@f8863",
      "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.2.deepseek@f8863",
      "fixture:classm.dependent.5.deepseek@f8863",
      "fixture:classm.asset.1@f8863",
-     "fixture:classm.f8960.1@f8863",
-     "fixture:classm.f8995.2@f8863",
-     "fixture:classm.retirement.4@f8863",
-     "fixture:classm.s3.1@f8863",
-     "fixture:classm.s3.3@f8863",
-     "fixture:classm.s3.4@f8863",
-     "fixture:classm.s3.7@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.s1.2@f8863",
      "fixture:classm.se.2@f8863",
-     "fixture:classm.sli.4@f8863",
-     "fixture:classm.ssb.5@f8863",
-     "fixture:classm.f8889.4@f8863",
-     "fixture:classm.clcw26.3@f8863",
-     "fixture:mutation.t4.dependent_edu_paid_unanswered_no_1098t@f8863"
+     "fixture:classm.ssb.3@f8863",
+     "fixture:classm.f8962.2@f8863",
+     "fixture:classm.f1095a.1@f8863",
+     "fixture:classm.gift.1@f8863",
+     "fixture:audit.dependent.listed_not_dependent_no_tin@f8863",
+     "fixture:t091.absence.other_tests_unchanged@f8863",
+     "fixture:stage8.mut.hoh_child_months_unanswered_absence@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -458,6 +633,54 @@
      "partial:stage14.asset.prior_7yr-f8863.paid@f8863",
      "partial:stage14.asset.qip-f8863.paid@f8863",
      "partial:stage14.asset.done-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 6)",
+   "project_expr_sha256": "0fecd51dd4043bdb9f4bf75eeb4a03ac9a43fe750399c9b6bff2787df8ac3f40",
+   "second_expr_sha256": "7f3af86d255e3a1220af6de545fc6b62be33dc114d38abcbe137efe768be95a9",
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/f8863.json (log sha matches): 406/2,587 agree; 918 candidate-shows-skipped, 831 candidate-refuses, 415 candidate-unknown, 16 project-unknown, 1 project-refuses; completed: 763 candidate-shows-skipped. The reply gives the worksheet line no shown_when. It is shown on returns where line 4 stops the form (\"If zero or less, stop; you can’t take any education credit\") and on returns without the form (763 completed candidate-shows-skipped). Same as the Refresh-round ruling.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "08a73adf5aced25d9bc38604f61b36b26aaccb0801e2bbc1d2dcf3225047c1dc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f8863",
+     "fixture:stage14.asset.mq_7yr@f8863",
+     "fixture:stage14.asset.mq_mixed@f8863",
+     "fixture:stage14.asset.mq_not@f8863",
+     "fixture:stage14.asset.bonus_100@f8863",
+     "fixture:stage14.asset.bonus_40_before@f8863",
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f4952.1.deepseek@f8863",
+     "fixture:stage19.refuse.other_credits@f8863",
+     "partial:stage14.asset.hy_5yr-f8863.paid@f8863",
+     "partial:stage14.asset.bonus_100-f8863.paid@f8863",
+     "partial:stage14.asset.prior_7yr-f8863.paid@f8863",
+     "partial:stage14.asset.qip-f8863.paid@f8863",
+     "partial:stage14.asset.done-f8863.paid@f8863",
+     "partial:stage14.asset.prior_179_bonus-f8863.paid@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -580,6 +803,42 @@
    }
   },
   {
+   "printed": "(CLW 7)",
+   "project_expr_sha256": "a5c94226258aaff505f6772c1a4943232205d9d09dfc40de4aef82652cdb694f",
+   "second_expr_sha256": "f5500cd9d1344cf1c6f7664cab7be50242a4eedeaffc0a09c8c102af9832a3fa",
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,329/2,587 agree; 836 candidate-refuses, 420 candidate-unknown, 1 project-refuses, 1 value; completed: 2 candidate-refuses, 1 candidate-unknown. Completed witnesses: stage19.mut.aoc_line4_zero_ban (candidate refuses on f8863.ban, project hidden) and classm.f1040.2 (candidate unknown on f8863.ban), as line 1. Where present, stage19.mut.claimed_filer_llc is the claimed-filer gap (interface gap, see f8863.eligible). The other records fall on refused or incomplete returns.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "273e06b2a93a976592b0755c10af143440aee4381c6cd76b18fb01a4ebc7728c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f4952.1.deepseek@f8863",
+     "fixture:stage19.refuse.other_credits@f8863",
+     "generated:20261026.352@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "1",
    "project_expr_sha256": "5f3d58e6642a0d249eba4dc92b331e642dff91e0097afd63eb9714b4be1f1435",
    "second_expr_sha256": "f3a6519bce6cdae5e3ea7fa0465fbe7358477bf7e9734d6f6817c6424d806e6a",
@@ -671,6 +930,52 @@
    }
   },
   {
+   "printed": "1",
+   "project_expr_sha256": "bab8ace84aa32146be0c6f4c777445b6964cbcf7cb09e64f8f17d07306592338",
+   "second_expr_sha256": "dfdd6faec03f9476db513299228152512bb58a145cb77a1d45395a69a74c0287",
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,544/2,587 agree; 20 project-unknown, 10 candidate-unknown, 9 value, 2 candidate-refuses, 1 candidate-shows-skipped, 1 project-refuses; completed: 1 candidate-refuses, 1 candidate-unknown. The reply puts \"refuses: [f8863.ban]\" on its line 1 total unconditionally. The project asks f8863.ban only when an American opportunity credit is claimed (f8863.ban_refused: aoc_claimed = line 1 > 0 and line 4 > 0). Completed witnesses: stage19.mut.aoc_line4_zero_ban (line 4 zero, so no credit, ban answered yes): project line 1 $2,387.50, reply refuses. classm.f1040.2 (line 4 $0): reply unknown on ban. Form 8862 and the 2- and 10-year bans concern a year for which the credit is claimed, and after the line 4 stop none is. Values on refused returns (classm.tcw.9, .12) are upstream refusals.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "5d010bd755b874b55108dacd3689c07f19e7d5073d5cbfe1a12f07fb0625fead",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.f8863.2.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.dependent.5.deepseek@f8863",
+     "fixture:classm.s179.4@f8863",
+     "fixture:classm.scveh.5@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.tcw.9@f8863",
+     "fixture:classm.tcw.12@f8863",
+     "fixture:classm.tcw.15@f8863",
+     "fixture:classm.f1040.2@f8863",
+     "fixture:classm.person.11@f8863",
+     "fixture:stage19.refuse.period_over_dependent@f8863",
+     "fixture:stage19.refuse.ban@f8863",
+     "fixture:stage19.mut.aoc_line4_zero_ban@f8863",
+     "generated:20261026.92@f8863",
+     "generated:20261026.129@f8863",
+     "generated:20261026.144@f8863",
+     "generated:20261026.301@f8863",
+     "generated:20261026.303@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "10",
    "project_expr_sha256": "354141a22c29d1a42bf05df4dc54d17bb1eeb85d8cd8477100b09c066e1ed8f1",
    "second_expr_sha256": "8373d20b02a729de5ecdf66f612d8b4504762bee00ce5a85386b5409f789be13",
@@ -713,6 +1018,47 @@
      "fixture:classm.f8962.1@f8863",
      "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
      "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "10",
+   "project_expr_sha256": "55abf443c38c7305393043664c2e1054a7594f0e816277e9b0a7a1f8554a6511",
+   "second_expr_sha256": "38294bc9aa32eead046d135d51a81450760ec357af0d5c1f6dc9faf4b0bba356",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,888/2,587 agree; 501 candidate-refuses, 185 candidate-unknown, 12 project-unknown, 1 project-refuses; completed: 1 candidate-refuses. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. Completed witness stage19.mut.claimed_filer_llc: the project hides the form (the filer is claimed). The reply computes and refuses the daughter's lifetime learning credit on its applied-for-TIN rule. Other differences are upstream refusals on refused or incomplete returns.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "008c3b222ec4220305086fd47e7b5cad5b1fe9034762a1be80242fbeb0ffd9c5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -840,43 +1186,35 @@
    "printed": "11",
    "project_expr_sha256": "f344b9e3258cd4935a904ef44632b43b05e3809f48e03bb4393a44975dd30596",
    "second_expr_sha256": "80dfbbc7ab530887e30308c546fe0915279ac7c75253f7b0d8e1fe38ca79526e",
-   "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 11: \"Enter the smaller of line 10 or $10,000\"; f8863 p. 1, line 10: \"If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19\"; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The reply's shown_when (line 10 and line 4 above zero) carries both skips; the 4 completed candidate-shows-skipped (classm.f1040.2 and .deepseek, classm.f8863.2.deepseek, stage19.mut.f8863_line4_zero: line 4 $0.00) are hidden by that shown_when too: triage applies only the project's shown_when (tools/transcription/triage.mjs, displayed()), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. The defect is the dependent bar inherited from line 10: classm.person.20 (candidate-unknown, person[taxpayer].edu) and stage19.mut.claimed_filer_llc (refuses at dependent[daughter].edu_llc_tin_refused), claimed filers the project completes with the line hidden. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 2,191 of 2,261 agree; 40 project-refuses, 18 candidate-unknown, 7 candidate-shows-skipped, 5 candidate-refuses; the rest is on refused or incomplete returns. Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "31168c1a72494e68fc1703819d506ef1e7192d22411a1753a142caa8fa949378",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,071/2,587 agree; 501 candidate-refuses, 12 project-unknown, 2 candidate-unknown, 1 project-refuses; completed: 1 candidate-refuses. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. Completed witness stage19.mut.claimed_filer_llc: the project hides the form (the filer is claimed). The reply computes and refuses the daughter's lifetime learning credit on its applied-for-TIN rule. Other differences are upstream refusals on refused or incomplete returns.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "766e7d0067f4f392e46fd7dda07d4a4e3d9099200d2d799a47f70cfe00309476",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
-     "candidate-shows-skipped",
      "candidate-unknown",
-     "project-refuses"
+     "project-refuses",
+     "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.f8889.2.deepseek@f8863",
-     "fixture:classm.dependent.1.deepseek@f8863",
-     "fixture:classm.dependent.2.deepseek@f8863",
-     "fixture:classm.dependent.3.deepseek@f8863",
-     "fixture:classm.dependent.4.deepseek@f8863",
-     "fixture:classm.f1040.2.deepseek@f8863",
-     "fixture:classm.f8863.2.deepseek@f8863",
-     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
      "fixture:classm.sa.5.deepseek@f8863",
-     "fixture:classm.dependent.5.deepseek@f8863",
-     "fixture:classm.f8960.1@f8863",
-     "fixture:classm.tcw.3@f8863",
-     "fixture:classm.tcw.13@f8863",
-     "fixture:classm.tcw.14@f8863",
-     "fixture:classm.f1040.2@f8863",
-     "fixture:classm.f8863.2@f8863",
-     "fixture:stage19.mut.claimed_filer_llc@f8863",
-     "fixture:stage19.mut.f8863_line4_zero@f8863",
-     "generated:20261026.36@f8863",
-     "generated:20261026.74@f8863",
-     "generated:20261026.112@f8863",
-     "generated:20261026.140@f8863",
-     "generated:20261026.379@f8863"
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -885,43 +1223,35 @@
    "printed": "12",
    "project_expr_sha256": "015b78f711c12d9d3dee729a81121cc5a094c50c6beac0dbab683e3fd1f1f59a",
    "second_expr_sha256": "ecf00b8e05c4ecdef9851b1660e071e1dd410a6030ae1a90e778605700a42097",
-   "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 12: \"Multiply line 11 by 20% (0.20)\"; f8863 p. 1, line 10: \"If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19\". As line 11: the reply's shown_when carries the line 4 and line 10 skips (the 4 completed candidate-shows-skipped are line 4 $0.00 returns it also hides: triage applies only the project's shown_when (tools/transcription/triage.mjs, displayed()), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays); the defect is the dependent bar inherited from line 10 (classm.person.20 candidate-unknown; stage19.mut.claimed_filer_llc refuses at dependent[daughter].edu_llc_tin_refused; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\"). executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 2,191 of 2,261 agree; 40 project-refuses, 18 candidate-unknown, 7 candidate-shows-skipped, 5 candidate-refuses; the rest is on refused or incomplete returns. Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "2e4a65d294389df91c1c9ceb85ea842a0fc5f2443738ae5bc1b3112582f48137",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,071/2,587 agree; 501 candidate-refuses, 12 project-unknown, 2 candidate-unknown, 1 project-refuses; completed: 1 candidate-refuses. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. Completed witness stage19.mut.claimed_filer_llc: the project hides the form (the filer is claimed). The reply computes and refuses the daughter's lifetime learning credit on its applied-for-TIN rule. Other differences are upstream refusals on refused or incomplete returns.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "080e242095ba76d3c38589cad11ccfc97a875cb7cbbf54f1de3ed73befb209b5",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
-     "candidate-shows-skipped",
      "candidate-unknown",
-     "project-refuses"
+     "project-refuses",
+     "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.f8889.2.deepseek@f8863",
-     "fixture:classm.dependent.1.deepseek@f8863",
-     "fixture:classm.dependent.2.deepseek@f8863",
-     "fixture:classm.dependent.3.deepseek@f8863",
-     "fixture:classm.dependent.4.deepseek@f8863",
-     "fixture:classm.f1040.2.deepseek@f8863",
-     "fixture:classm.f8863.2.deepseek@f8863",
-     "fixture:classm.f5329.3.deepseek@f8863",
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
      "fixture:classm.sa.5.deepseek@f8863",
-     "fixture:classm.dependent.5.deepseek@f8863",
-     "fixture:classm.f8960.1@f8863",
-     "fixture:classm.tcw.3@f8863",
-     "fixture:classm.tcw.13@f8863",
-     "fixture:classm.tcw.14@f8863",
-     "fixture:classm.f1040.2@f8863",
-     "fixture:classm.f8863.2@f8863",
-     "fixture:stage19.mut.claimed_filer_llc@f8863",
-     "fixture:stage19.mut.f8863_line4_zero@f8863",
-     "generated:20261026.36@f8863",
-     "generated:20261026.74@f8863",
-     "generated:20261026.112@f8863",
-     "generated:20261026.140@f8863",
-     "generated:20261026.379@f8863"
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -969,6 +1299,43 @@
      "fixture:classm.f8962.1@f8863",
      "partial:classm.f8889.6.deepseek-f8863.paid@f8863",
      "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "13",
+   "project_expr_sha256": "1e2fadb0be09fe19287ceccbb41266db99c69dbe6e7569a054acdc43f445375c",
+   "second_expr_sha256": "5d056166eb86eb2bb4268a7bae20e8cd8d4704975201eb7ed450b873d3b94182",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,071/2,587 agree; 501 candidate-refuses, 12 project-unknown, 2 candidate-unknown, 1 project-refuses; completed: 1 candidate-refuses. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when keeps the line 4 (or line 10/15) stop but has no whole-form term (expenses paid, filer not claimed). Its completed-return differences are the form shown on returns without it (lines 5: 728 candidate-shows-skipped) or stage19.mut.claimed_filer_llc, a filer claimed as a dependent (lines 11-16). Its other differences fall on refused or incomplete returns, where it refuses through upstream refusals. Same arithmetic.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "1636a9b51ce98150221613a9dbb78cedcd540cb0b6a8f6287f5b71243e82c697",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1111,51 +1478,35 @@
    "printed": "14",
    "project_expr_sha256": "279d38b82d5b34e2f295a5fd5e31ec35c9dc1238f99f836b28aace5b648d8fa9",
    "second_expr_sha256": "c02f52f78f7685a2b9669e0b426700e9afdb187ede892324a233f2ef29800ff3",
-   "ruling": "Ruling: representation and interface gap (+ scope); f8863 p. 1, line 14: \"Enter the amount from Form 1040 or 1040-SR, line 11b\". The reply's shown_when (line 10 and line 4 above zero) carries the line 4 stop and the line 10 skip (f8863 p. 1, line 10: \"If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19\"); triage applies only the project's shown_when (tools/transcription/triage.mjs, displayed()), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays: the 47 completed returns that file the form but stop or have line 10 $0.00 are hidden by it as well. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 107 of 2,261 agree; 1,644 candidate-shows-skipped, 424 candidate-refuses, 41 project-unknown, 37 candidate-unknown, 8 project-refuses; on completed returns 1,094 candidate-shows-skipped. Without the form the reply's line 10 is $0.00 wherever no Part III line 31 amount exists, so its shown_when hides the line; what remains is the whole-form condition (interface gap) and the dependent bar it inherits from line 10 (model error there). the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview. Values agree wherever both show. Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "fa0e6acf0ccd260aa6f0b2f11975984ec4475d60cc4f047fcdc416ecfe191d06",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,071/2,587 agree; 501 candidate-refuses, 12 project-unknown, 2 candidate-unknown, 1 project-refuses; completed: 1 candidate-refuses. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when keeps the line 4 (or line 10/15) stop but has no whole-form term (expenses paid, filer not claimed). Its completed-return differences are the form shown on returns without it (lines 5: 728 candidate-shows-skipped) or stage19.mut.claimed_filer_llc, a filer claimed as a dependent (lines 11-16). Its other differences fall on refused or incomplete returns, where it refuses through upstream refusals. Same arithmetic.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "a4531c57c4286b218cdf5da99641cee18f4890d3d3fc97a7f7a32031320236f4",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
-     "candidate-shows-skipped",
      "candidate-unknown",
      "project-refuses",
      "project-unknown"
     ],
     "witnesses": [
-     "fixture:stage14.asset.hy_5yr@f8863",
-     "fixture:stage14.asset.mq_7yr@f8863",
-     "fixture:stage14.asset.mq_mixed@f8863",
-     "fixture:stage14.asset.mq_not@f8863",
-     "fixture:stage14.asset.bonus_100@f8863",
-     "fixture:stage14.asset.bonus_40_before@f8863",
      "fixture:stage14.asset.refuse_qip_2017@f8863",
      "fixture:stage14.asset.refuse_ads_past_gds@f8863",
      "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
      "fixture:stage14.asset.refuse_class@f8863",
      "fixture:stage14.asset.refuse_listed_low@f8863",
      "fixture:stage14.asset.refuse_s179_over@f8863",
-     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
-     "fixture:classm.f8889.2.deepseek@f8863",
-     "fixture:classm.f8889.4.deepseek@f8863",
-     "fixture:classm.f8889.5.deepseek@f8863",
      "fixture:classm.f8960.3.deepseek@f8863",
-     "fixture:classm.person.1.deepseek@f8863",
      "fixture:classm.sa.1.deepseek@f8863",
-     "fixture:classm.sa.2.deepseek@f8863",
-     "fixture:classm.sa.6.deepseek@f8863",
-     "fixture:classm.asset.4@f8863",
-     "fixture:classm.carloan.3@f8863",
-     "fixture:classm.f8889.2@f8863",
-     "fixture:f1.t113.dep_llc_applied@f8863",
-     "fixture:stage19.refuse.period_over_dependent@f8863",
-     "fixture:f1.t113.person_llc_itin_applied@f8863",
-     "fixture:stage19.refuse.period_over_person@f8863",
-     "generated:20261026.42@f8863",
-     "generated:20261026.94@f8863"
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1266,51 +1617,72 @@
    "printed": "15",
    "project_expr_sha256": "da30935dbc64a9ff63f0f03d7eee63acee1f07b37d05f45827db9fbec31fee60",
    "second_expr_sha256": "332af672563cce3fff3ed454a687f92e4bebbfc0189e806b84892e1908afe315",
-   "ruling": "Ruling: representation and interface gap (+ scope); f8863 p. 1, line 15: \"Subtract line 14 from line 13. If zero or less, skip lines 16 and 17, enter -0- on line 18, and go to line 19\". As line 14: the reply's shown_when (line 10 and line 4 above zero) carries the skips, and triage applies only the project's shown_when (tools/transcription/triage.mjs, displayed()), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 670 of 2,261 agree; 1,081 candidate-shows-skipped, 424 candidate-refuses, 41 project-unknown, 37 candidate-unknown, 8 project-refuses; on completed returns 818 candidate-shows-skipped (38 of them on returns that file the form, hidden by the reply's own shown_when). the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview. Values agree wherever both show. Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "7f309969cc3152a44a587d42eded222a69f0f9d01eee00bfb06adac579bf7664",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,071/2,587 agree; 501 candidate-refuses, 12 project-unknown, 2 candidate-unknown, 1 project-refuses; completed: 1 candidate-refuses. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when keeps the line 4 (or line 10/15) stop but has no whole-form term (expenses paid, filer not claimed). Its completed-return differences are the form shown on returns without it (lines 5: 728 candidate-shows-skipped) or stage19.mut.claimed_filer_llc, a filer claimed as a dependent (lines 11-16). Its other differences fall on refused or incomplete returns, where it refuses through upstream refusals. Same arithmetic.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "f8551edb0429cdc35ee557159e348b40293ff792e4e1a3f3c495b9e79c229796",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
-     "candidate-shows-skipped",
      "candidate-unknown",
      "project-refuses",
      "project-unknown"
     ],
     "witnesses": [
-     "fixture:stage14.asset.hy_5yr@f8863",
-     "fixture:stage14.asset.mq_7yr@f8863",
-     "fixture:stage14.asset.mq_mixed@f8863",
-     "fixture:stage14.asset.mq_not@f8863",
-     "fixture:stage14.asset.bonus_100@f8863",
-     "fixture:stage14.asset.bonus_40_before@f8863",
      "fixture:stage14.asset.refuse_qip_2017@f8863",
      "fixture:stage14.asset.refuse_ads_past_gds@f8863",
      "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
      "fixture:stage14.asset.refuse_class@f8863",
      "fixture:stage14.asset.refuse_listed_low@f8863",
      "fixture:stage14.asset.refuse_s179_over@f8863",
-     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
-     "fixture:classm.f8889.2.deepseek@f8863",
-     "fixture:classm.f8889.4.deepseek@f8863",
-     "fixture:classm.f8889.5.deepseek@f8863",
      "fixture:classm.f8960.3.deepseek@f8863",
-     "fixture:classm.person.1.deepseek@f8863",
      "fixture:classm.sa.1.deepseek@f8863",
-     "fixture:classm.sa.2.deepseek@f8863",
-     "fixture:classm.sa.6.deepseek@f8863",
-     "fixture:classm.asset.4@f8863",
-     "fixture:classm.carloan.3@f8863",
-     "fixture:classm.f8889.2@f8863",
-     "fixture:f1.t113.dep_llc_applied@f8863",
-     "fixture:stage19.refuse.period_over_dependent@f8863",
-     "fixture:f1.t113.person_llc_itin_applied@f8863",
-     "fixture:stage19.refuse.period_over_person@f8863",
-     "generated:20261026.42@f8863",
-     "generated:20261026.94@f8863"
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "0c215c0fd70e542b86b2ff78848c0ec1fef78b7e7c806e553308a6bc909a67f0",
+   "second_expr_sha256": "8a14c930fb1f4e5ef96e62e3ee1e01c9d399c43eb8b0a93c8f8689cbba596a4a",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,071/2,587 agree; 501 candidate-refuses, 12 project-unknown, 2 candidate-unknown, 1 project-refuses; completed: 1 candidate-refuses. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when keeps the line 4 (or line 10/15) stop but has no whole-form term (expenses paid, filer not claimed). Its completed-return differences are the form shown on returns without it (lines 5: 728 candidate-shows-skipped) or stage19.mut.claimed_filer_llc, a filer claimed as a dependent (lines 11-16). Its other differences fall on refused or incomplete returns, where it refuses through upstream refusals. Same arithmetic.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "f621d20ad8d15bb4fc1f6dfe1d5c970ff1c24bbf19f130d2fd2a571b46a2a7b5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1424,6 +1796,47 @@
      "fixture:classm.sa.5.deepseek@f8863",
      "fixture:classm.carloan.3@f8863",
      "fixture:classm.f8960.1@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "18",
+   "project_expr_sha256": "38e4bb37c7fd7ac0fe001e5cd290ea60d447bb7584caa1288fc9f3ddc10e1845",
+   "second_expr_sha256": "7c1ac4f3cfeec569a3da340175e448dd362948f8a9b759aebb1cde063a63d78d",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,868/2,587 agree; 508 candidate-refuses, 198 candidate-unknown, 12 project-unknown, 1 project-refuses; completed: 1 candidate-refuses. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. Completed witness stage19.mut.claimed_filer_llc: the project hides the form (the filer is claimed). The reply computes and refuses the daughter's lifetime learning credit on its applied-for-TIN rule. Other differences are upstream refusals on refused or incomplete returns.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "2919b9aaaa1a9a3905b2a42f68b07bfb57cfffc3639b4b80f539c2732165e8aa",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "fixture:stage19.refuse.period_over_person@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1546,6 +1959,42 @@
    }
   },
   {
+   "printed": "19",
+   "project_expr_sha256": "ffafe7805f4adf0bd543e5081b0cb76ff94c89b1e02379fdbf681a130fa2035e",
+   "second_expr_sha256": "faecf7872e707a1ebfc1b85aebfc2f9f18925dfc91ada6bdfda68aa0c545cc06",
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,329/2,587 agree; 836 candidate-refuses, 420 candidate-unknown, 1 project-refuses, 1 value; completed: 2 candidate-refuses, 1 candidate-unknown. Completed witnesses: stage19.mut.aoc_line4_zero_ban (candidate refuses on f8863.ban, project hidden) and classm.f1040.2 (candidate unknown on f8863.ban), as line 1. Where present, stage19.mut.claimed_filer_llc is the claimed-filer gap (interface gap, see f8863.eligible). The other records fall on refused or incomplete returns.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "1057d1a794d067788850702b405cb1db135d2349d5afca9cee02ea2ca1d09516",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f4952.1.deepseek@f8863",
+     "fixture:stage19.refuse.other_credits@f8863",
+     "generated:20261026.352@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "2",
    "project_expr_sha256": "46356acd6cc0f4ba91b151ccca0d75ed9595e9f0ac85742b2c55cb4373378a34",
    "second_expr_sha256": "abca6a9d8e3fc0544a9183da1c3ecafe8780a2d2ad342d3cf377101277382457",
@@ -1620,14 +2069,49 @@
    }
   },
   {
+   "printed": "2",
+   "project_expr_sha256": "764321f9b91600d768717baa8b6ed0580e98189d4fc961a0273e33b8f1525d92",
+   "second_expr_sha256": "dd5e5eaa7a064f27bb829d6bb70477102014675ed8281e3f69f09d48cc037c64",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 153/2,587 agree; 2,331 candidate-shows-skipped, 101 project-unknown, 2 candidate-unknown; completed: 941 candidate-shows-skipped. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when is null, so the line is shown on every return; the project shows it under f8863.eligible. The completed candidate-shows-skipped records are returns without the form. Same value. As the Refresh-round ruling.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "62eebbdb691acc3cf8dfd1fc4278a0fbd7b004c56e9b231bac1d2cfc44349215",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f8863",
+     "fixture:stage14.asset.mq_7yr@f8863",
+     "fixture:stage14.asset.mq_mixed@f8863",
+     "fixture:stage14.asset.mq_not@f8863",
+     "fixture:stage14.asset.bonus_100@f8863",
+     "fixture:stage14.asset.bonus_40_before@f8863",
+     "fixture:classm.f8889.1.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "3",
    "project_expr_sha256": "38d8d2c7063675eca97e4b69098ce97d83d5c305595920738adf86c9c6454986",
    "second_expr_sha256": "903ec5dee406c0b21e10327413e6133076604a12816fb0865fc16c60abf6a078",
-   "ruling": "Ruling: interface gap (+ scope); f8863 p. 1, line 3: \"Enter the amount from Form 1040 or 1040-SR, line 11b\". The reply has no shown_when, so it shows the line on returns that do not file Form 8863 at all (no qualified expenses paid, or a filer claimed as a dependent), where the project hides it on f8863.eligible; the source prints no skip for these lines and the whole-form condition is the project's visibility, not a printed STOP: interface gap, as the earlier rounds ruled for lines 2 to 4 and for f8962's whole-form visibility. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 171 of 2,261 agree; 1,559 candidate-shows-skipped, 445 candidate-refuses, 51 project-unknown, 35 candidate-unknown; on completed returns 1,047 candidate-shows-skipped, every one a return where f8863.eligible is No; the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview. Wherever the project shows the line the values agree. Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "8bfea515b275dc64907717a1db99ccbe59f246c0b0ba94fd360a2dc5b65e2552",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 219/2,587 agree; 1,593 candidate-shows-skipped, 533 candidate-refuses, 184 candidate-unknown, 58 project-unknown; completed: 912 candidate-shows-skipped. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when is null, so the line is shown on every return; the project shows it under f8863.eligible. The completed candidate-shows-skipped records are returns without the form. Same value. As the Refresh-round ruling.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "a08caf5036a7463694156513780a25b9160c89c84f99dae7bf46013ccf18cd2a",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1657,10 +2141,10 @@
      "fixture:classm.sa.1.deepseek@f8863",
      "fixture:classm.sa.2.deepseek@f8863",
      "fixture:classm.sa.6.deepseek@f8863",
-     "fixture:classm.asset.4@f8863",
+     "fixture:classm.asset.3@f8863",
      "fixture:classm.carloan.3@f8863",
-     "fixture:classm.f8889.2@f8863",
-     "fixture:classm.f8889.5@f8863"
+     "fixture:classm.f2441.3@f8863",
+     "fixture:classm.f8960.1@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1759,19 +2243,18 @@
    "printed": "4",
    "project_expr_sha256": "21088ebe861023004a6f24c6f181f72f506646fddf37c4a31db56287a8830b53",
    "second_expr_sha256": "8330f462543980adf6309c5de77ef47af60e5942617355cc5a4825045959e011",
-   "ruling": "Ruling: interface gap (+ scope); f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\". The reply has no shown_when, so it shows the line on returns that do not file Form 8863 at all (no qualified expenses paid, or a filer claimed as a dependent), where the project hides it on f8863.eligible; the source prints no skip for these lines and the whole-form condition is the project's visibility, not a printed STOP: interface gap, as the earlier rounds ruled for lines 2 to 4 and for f8962's whole-form visibility. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 699 of 2,261 agree; 1,030 candidate-shows-skipped, 445 candidate-refuses, 51 project-unknown, 35 candidate-unknown, 1 value; on completed returns 780 candidate-shows-skipped, every one a return where f8863.eligible is No; the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview; the value is generated 415, an MFS return (the MFS returns are refused for the whole return by scope.ready on s3.mfs (forms/2025/scope.yaml, i1040gi p. 14, Married Filing Separately)). Wherever the project shows the line the values agree. Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "ba127ec8698463f45962dc0daee2ba8d14937c14411cfa2cd4c79051d801217b",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 635/2,587 agree; 1,177 candidate-shows-skipped, 533 candidate-refuses, 184 candidate-unknown, 58 project-unknown; completed: 728 candidate-shows-skipped. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when is null, so the line is shown on every return; the project shows it under f8863.eligible. The completed candidate-shows-skipped records are returns without the form. Same value. As the Refresh-round ruling.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "b2a56d3510c90ddbe28c7f90848844710eabe9a4c376a518937a75ddb0b18b60",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
      "candidate-shows-skipped",
      "candidate-unknown",
-     "project-unknown",
-     "value"
+     "project-unknown"
     ],
     "witnesses": [
      "fixture:stage14.asset.hy_5yr@f8863",
@@ -1794,11 +2277,10 @@
      "fixture:classm.sa.1.deepseek@f8863",
      "fixture:classm.sa.2.deepseek@f8863",
      "fixture:classm.sa.6.deepseek@f8863",
-     "fixture:classm.asset.4@f8863",
+     "fixture:classm.asset.3@f8863",
      "fixture:classm.carloan.3@f8863",
-     "fixture:classm.f8889.2@f8863",
-     "fixture:classm.f8889.5@f8863",
-     "generated:20261026.415@f8863"
+     "fixture:classm.f2441.3@f8863",
+     "fixture:classm.f8960.1@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1851,17 +2333,17 @@
    "printed": "5",
    "project_expr_sha256": "8512158b8c2a42bb1bb7a1ab2c5b3c98357eec51ca117d7c326d528634258808",
    "second_expr_sha256": "377ddaf757da8e7d5e62d6c16f56a59249d96cb53fd506f9c8c86af8b3a8988c",
-   "ruling": "Ruling: interface gap; f8863 p. 1, line 5; f8863 p. 1, line 4: \"Subtract line 3 from line 2. If zero or less, stop; you can’t take any education credit\". The reply's shown_when (line 4 above zero) carries the stop; it lacks only the whole-form condition (f8863.eligible), so on returns without the form it shows $10,000 / $20,000 where the project hides it. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 77 of 2,261 agree; 2,090 candidate-shows-skipped, 48 project-unknown, 44 project-refuses, 2 candidate-unknown; on completed returns 1,086 candidate-shows-skipped: 1,075 on returns where f8863.eligible is No (interface gap, as lines 2 to 4) and 11 after the line 4 stop (classm.f1040.2 and .deepseek, classm.f8863.2.deepseek, stage19.mut.aoc_line4_zero_ban, stage19.mut.f8863_line4_zero, generated 80, 150, 255, 396, 411, 448), where the reply's own shown_when also hides the line: triage applies only the project's shown_when (tools/transcription/triage.mjs, displayed()), so candidate-shows-skipped counts the reply's value, not what its own shown_when displays. The project-refuses are on refused returns. Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "8fef7d7be9f9c8b8b0df13e4d2cbfa45514e529991a156944acfe9a0b51c2f11",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 682/2,587 agree; 1,177 candidate-shows-skipped, 500 candidate-refuses, 184 candidate-unknown, 44 project-unknown; completed: 728 candidate-shows-skipped. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when keeps the line 4 (or line 10/15) stop but has no whole-form term (expenses paid, filer not claimed). Its completed-return differences are the form shown on returns without it (lines 5: 728 candidate-shows-skipped) or stage19.mut.claimed_filer_llc, a filer claimed as a dependent (lines 11-16). Its other differences fall on refused or incomplete returns, where it refuses through upstream refusals. Same arithmetic.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "ed96c4ff43cc7fbab430000fcad35d645aea3e4afd81ef42e58a008c2dc34dd7",
    "triage": {
     "verdict": "differs",
     "kinds": [
+     "candidate-refuses",
      "candidate-shows-skipped",
      "candidate-unknown",
-     "project-refuses",
      "project-unknown"
     ],
     "witnesses": [
@@ -1871,20 +2353,24 @@
      "fixture:stage14.asset.mq_not@f8863",
      "fixture:stage14.asset.bonus_100@f8863",
      "fixture:stage14.asset.bonus_40_before@f8863",
-     "fixture:classm.f8889.1.deepseek@f8863",
-     "fixture:classm.f8889.3.deepseek@f8863",
-     "fixture:classm.f8889.4.deepseek@f8863",
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
      "fixture:classm.f8960.3.deepseek@f8863",
-     "fixture:classm.dependent.1.deepseek@f8863",
-     "fixture:classm.dependent.2.deepseek@f8863",
-     "fixture:classm.dependent.3.deepseek@f8863",
-     "fixture:classm.dependent.4.deepseek@f8863",
      "fixture:classm.person.1.deepseek@f8863",
-     "fixture:classm.f5329.3.deepseek@f8863",
      "fixture:classm.sa.1.deepseek@f8863",
-     "fixture:classm.dependent.5.deepseek@f8863",
-     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
-     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+     "fixture:classm.sa.2.deepseek@f8863",
+     "fixture:classm.sa.6.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f2441.3@f8863",
+     "fixture:classm.sli.2@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2018,16 +2504,18 @@
    "printed": "7",
    "project_expr_sha256": "f67990c54143f2043363e22580fa2dc4a268848e0429351619a9a881a9f623f0",
    "second_expr_sha256": "8e49feb7ebe99acb843e3a7268608d352c7074031b90ee1058d2ba327924ec04",
-   "ruling": "Ruling: model error (+ scope); f8863 p. 1, lines 6 and 7 (\"Multiply line 1 by line 6\"; amb.2025.edu_ratio_places on both sides). Same prorate wherever both evaluate, but through line 1 the reply declares `refuses: [f8863.ban]` on line 1, so every line reading line 1 needs the Form 8862 answer on every return and refuses whenever it is Yes, where the project asks it only when an American opportunity credit is claimed (f8863.ban_refused: lines 1 and 4 both above zero; the interview does not ask it otherwise) (i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit\"). executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 1,489 of 2,261 agree; 429 candidate-refuses, 342 candidate-unknown, 1 value; on completed returns 168 candidate-unknown on f8863.ban (165 where the project hides the line, 3 where it shows $0.00 with no American opportunity credit: classm.f8863.4 and .deepseek, classm.person.10) and 1 candidate-refuses, stage19.mut.aoc_line4_zero_ban (ban Yes, line 1 $2,387.50, line 4 $0.00: no credit is claimed, so no Form 8862 is needed; the project completes the return, the same in HEAD and the working tree). The refused-return differences: the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview; the value is generated 415, an MFS return (the MFS returns are refused for the whole return by scope.ready on s3.mfs (forms/2025/scope.yaml, i1040gi p. 14, Married Filing Separately)). Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "39fd9d7395e679cee2a84edf950efbeb0d8422a7d77c0fa00fdd6211c0142108",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,884/2,587 agree; 500 candidate-refuses, 187 candidate-unknown, 12 project-unknown, 3 value, 1 project-refuses; completed: none. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when keeps the line 4 (or line 10/15) stop but has no whole-form term (expenses paid, filer not claimed). Its completed-return differences are the form shown on returns without it (lines 5: 728 candidate-shows-skipped) or stage19.mut.claimed_filer_llc, a filer claimed as a dependent (lines 11-16). Its other differences fall on refused or incomplete returns, where it refuses through upstream refusals. Same arithmetic.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "d4b87ad55a9340cbb6aa60ed6dc69b64bb3730677082e0cde5c5a2f9306e410e",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
      "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
      "value"
     ],
     "witnesses": [
@@ -2038,12 +2526,21 @@
      "fixture:stage14.asset.refuse_listed_low@f8863",
      "fixture:stage14.asset.refuse_s179_over@f8863",
      "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
-     "fixture:classm.f2441.1.deepseek@f8863",
-     "fixture:classm.f2441.2.deepseek@f8863",
-     "fixture:classm.f2441.3.deepseek@f8863",
-     "fixture:classm.f2441.4.deepseek@f8863",
-     "fixture:classm.f2441.5.deepseek@f8863",
-     "generated:20261026.415@f8863"
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:stage19.refuse.period_over_dependent@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "generated:20261026.303@f8863",
+     "generated:20261026.342@f8863",
+     "generated:20261026.352@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2159,19 +2656,67 @@
    "subject_key": "805642bd3d606bf6663c1deec667bbd5f161d4085bb20b403f633afb12d5be66"
   },
   {
-   "printed": "8",
-   "project_expr_sha256": "33ed3b9c7ac4172ef210571bfa752ad443b75d3f5fc69a475825b302699bcfb2",
-   "second_expr_sha256": "4efa15dc2586955ad6c42595cfdf4f9a77298a272dae0ced7fb5f8a718020bce",
-   "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 8: \"Multiply line 7 by 40% (0.40)\"; i8863 p. 7, Line 7: \"check the box next to line 7, skip line 8, and enter the amount from line 7 on line 9\". The reply hides line 8 when the box is checked where the project shows $0, which line 9 reads as blank (the README's skipped-line rule accepts the zero); the values are the project's wherever both show. Through line 1 the reply declares `refuses: [f8863.ban]` on line 1, so every line reading line 1 needs the Form 8862 answer on every return and refuses whenever it is Yes, where the project asks it only when an American opportunity credit is claimed (f8863.ban_refused: lines 1 and 4 both above zero; the interview does not ask it otherwise) (i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit\"). executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 1,489 of 2,261 agree; 429 candidate-refuses, 342 candidate-unknown, 1 value; on completed returns 168 candidate-unknown on f8863.ban (165 hidden by the project, 3 shown at $0.00 with no American opportunity credit: classm.f8863.4 and .deepseek, classm.person.10) and 1 candidate-refuses, stage19.mut.aoc_line4_zero_ban (ban Yes, line 1 $2,387.50, line 4 $0.00: no credit is claimed, so no Form 8862 is needed; the project completes the return, the same in HEAD and the working tree). Refused returns: the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview; the value is generated 415, MFS (the MFS returns are refused for the whole return by scope.ready on s3.mfs (forms/2025/scope.yaml, i1040gi p. 14, Married Filing Separately)). Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "b7fc99f0772e764094953835143a04c72ed478428e6d972d892fb9876f69378b",
+   "printed": "7 (box)",
+   "project_expr_sha256": "83b547966256c582b1fdff9077512a527759808c76aef5b3773d052eda24a7e4",
+   "second_expr_sha256": "f25c6f3386ec372181eae84aed2cac1c3dac457fa2a1a42787aedc0e8fbe77ed",
+   "ruling": "Ruling: model error. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,520/2,587 agree; 26 project-unknown, 18 project-refuses, 14 candidate-unknown, 9 candidate-refuses; completed: 1 candidate-refuses, 1 candidate-unknown. Completed witnesses: stage19.mut.aoc_line4_zero_ban (candidate refuses on f8863.ban, project hidden) and classm.f1040.2 (candidate unknown on f8863.ban), as line 1. Where present, stage19.mut.claimed_filer_llc is the claimed-filer gap (interface gap, see f8863.eligible). The other records fall on refused or incomplete returns.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "a84ddd830d7af17816eda6323cc9fe4ed8c5e5a391799a394949da757ab696db",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
      "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.f8889.4.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.f8863.2.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.2.deepseek@f8863",
+     "fixture:classm.dependent.5.deepseek@f8863",
+     "fixture:classm.s179.4@f8863",
+     "fixture:classm.s2.1@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.dependent.6@f8863",
+     "fixture:classm.sales.3@f8863",
+     "fixture:stage19.refuse.period_over_dependent@f8863",
+     "fixture:stage19.mut.classm_f5329_3_dependent_no_ein@f8863",
+     "fixture:stage19.mut.aoc_line4_zero_ban@f8863",
+     "generated:20261026.70@f8863",
+     "generated:20261026.249@f8863",
+     "generated:20261026.252@f8863",
+     "generated:20261026.282@f8863",
+     "generated:20261026.301@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "33ed3b9c7ac4172ef210571bfa752ad443b75d3f5fc69a475825b302699bcfb2",
+   "second_expr_sha256": "4efa15dc2586955ad6c42595cfdf4f9a77298a272dae0ced7fb5f8a718020bce",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,880/2,587 agree; 504 candidate-refuses, 187 candidate-unknown, 12 project-unknown, 3 value, 1 project-refuses; completed: none. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when keeps the line 4 (or line 10/15) stop but has no whole-form term (expenses paid, filer not claimed). Its completed-return differences are the form shown on returns without it (lines 5: 728 candidate-shows-skipped) or stage19.mut.claimed_filer_llc, a filer claimed as a dependent (lines 11-16). Its other differences fall on refused or incomplete returns, where it refuses through upstream refusals. Same arithmetic.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "0b9b61bdfe4a7f4eda6457f71814f5a3f6d62b46ad540a0a212a12fe8ff2d842",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
      "value"
     ],
     "witnesses": [
@@ -2182,12 +2727,21 @@
      "fixture:stage14.asset.refuse_listed_low@f8863",
      "fixture:stage14.asset.refuse_s179_over@f8863",
      "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
-     "fixture:classm.f2441.1.deepseek@f8863",
-     "fixture:classm.f2441.2.deepseek@f8863",
-     "fixture:classm.f2441.3.deepseek@f8863",
-     "fixture:classm.f2441.4.deepseek@f8863",
-     "fixture:classm.f2441.5.deepseek@f8863",
-     "generated:20261026.415@f8863"
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:stage19.refuse.period_over_dependent@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "generated:20261026.303@f8863",
+     "generated:20261026.342@f8863",
+     "generated:20261026.352@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2237,16 +2791,18 @@
    "printed": "9",
    "project_expr_sha256": "08e59f2ee717a2293054ee787781771e7543ad9e4411953b84c6fb53b59d729e",
    "second_expr_sha256": "73888db15ba18cab8d418d7967d09ea32a5bdf1a4dfc4da2001e4ef90e7a356d",
-   "ruling": "Ruling: model error (+ scope); f8863 p. 1, line 9: \"Subtract line 8 from line 7. Enter here and on line 2 of the Credit Limit Worksheet\". Same subtraction; through line 1 the reply declares `refuses: [f8863.ban]` on line 1, so every line reading line 1 needs the Form 8862 answer on every return and refuses whenever it is Yes, where the project asks it only when an American opportunity credit is claimed (f8863.ban_refused: lines 1 and 4 both above zero; the interview does not ask it otherwise) (i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit\"). executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 1,489 of 2,261 agree; 429 candidate-refuses, 342 candidate-unknown, 1 value; on completed returns 168 candidate-unknown on f8863.ban (165 hidden by the project, 3 shown at $0.00 with no American opportunity credit) and 1 candidate-refuses, stage19.mut.aoc_line4_zero_ban (ban Yes, line 1 $2,387.50, line 4 $0.00: no credit is claimed, so no Form 8862 is needed; the project completes the return, the same in HEAD and the working tree). Refused returns: the candidate-refuses are whole-return screens (sa.excluded_income, sb.form8938, plan_screened, sb.line8 and others) that the reply reaches through Form 1040 line 11b on returns refused under the full interview; the value is generated 415, MFS (the MFS returns are refused for the whole return by scope.ready on s3.mfs (forms/2025/scope.yaml, i1040gi p. 14, Married Filing Separately)). Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "a9680f0ac65861bcbe4905701f1f3024d862142c90e34913542aba316bbbd73b",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,884/2,587 agree; 500 candidate-refuses, 187 candidate-unknown, 12 project-unknown, 3 value, 1 project-refuses; completed: none. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. The reply's shown_when keeps the line 4 (or line 10/15) stop but has no whole-form term (expenses paid, filer not claimed). Its completed-return differences are the form shown on returns without it (lines 5: 728 candidate-shows-skipped) or stage19.mut.claimed_filer_llc, a filer claimed as a dependent (lines 11-16). Its other differences fall on refused or incomplete returns, where it refuses through upstream refusals. Same arithmetic.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "a53c78381fc12d07432f4ed738681557041224d6373fcc9d95adb341d1839ef2",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
      "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
      "value"
     ],
     "witnesses": [
@@ -2257,12 +2813,21 @@
      "fixture:stage14.asset.refuse_listed_low@f8863",
      "fixture:stage14.asset.refuse_s179_over@f8863",
      "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
-     "fixture:classm.f2441.1.deepseek@f8863",
-     "fixture:classm.f2441.2.deepseek@f8863",
-     "fixture:classm.f2441.3.deepseek@f8863",
-     "fixture:classm.f2441.4.deepseek@f8863",
-     "fixture:classm.f2441.5.deepseek@f8863",
-     "generated:20261026.415@f8863"
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.sli.2@f8863",
+     "fixture:classm.clcw_next_year.3@f8863",
+     "fixture:classm.sa.1@f8863",
+     "fixture:stage19.refuse.period_over_dependent@f8863",
+     "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
+     "generated:20261026.303@f8863",
+     "generated:20261026.342@f8863",
+     "generated:20261026.352@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2356,11 +2921,11 @@
    "printed": "f8863.eligible",
    "project_expr_sha256": "f6b95aa485440f95934001b67453025d11a53cfeb51b348260859c7ea2488d29",
    "second_expr_sha256": "c27d1ecd23af1698f7c9faaddc8f08bf96980e267a7d5e58b780f0053d3e607f",
-   "ruling": "Ruling: model error; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" The candidate tests f8863.paid and a status other than MFS and drops the dependent bar; its note says being claimed \"has no supplied input\", but the prompt publishes person.sav_claimed (\"Are you claimed as a dependent on someone else's 2025 tax return?\", .transcription/f8863.lines-35428f998f7b.prompt.txt line 441), which the project's f8863.none_claimed counts. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 2,233 of 2,261 agree; 14 value, 14 project-unknown; on completed returns 3 value: classm.person.20, stage19.mut.claimed_filer_llc and stage19.f8863.claimed_person_answer (head of household, person[taxpayer].sav_claimed Yes, f8863.paid Yes): project No, candidate Yes, so the candidate would give a filer claimed as a dependent an education credit, which item 1 forbids. Checked in both trees on all three: f8863.eligible No and lines 1, 8, 10 and 19 $0.00 in HEAD and in the working tree; the rewritten choose (f8863.paid, then none_claimed, else household.no) has the HEAD `all`'s truth table. The 11 refused-return values are 9 MFS returns (project Yes, candidate No: classm.tcw.9, classm.tcw.12, generated 11, 74, 167, 187, 302, 379, 415; the MFS returns are refused for the whole return by scope.ready on s3.mfs (forms/2025/scope.yaml, i1040gi p. 14, Married Filing Separately)) and 2 claimed filers (classm.sa.5.deepseek, classm.sa.6); the 14 project-unknown withhold f8863.paid and person.sav_claimed together, on refused returns. Same ruling as the earlier rounds. Project stands.",
-   "context": "d6ad9ef18364489c843f090ab67d4b9660f6e3a3b0021a03bd41b36f4d755dd6",
-   "date": "2026-11-09",
-   "run": "12a7a4add221ec4d259cca9c24f6ab6d49f5ee96ad3eec1e619ff6093c1c4dc8",
-   "subject_key": "a546ba33b4548c5d0c198a57d508c6a9c95683665b707e6bd7b9b711f207c8a1",
+   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,553/2,587 agree; 20 project-unknown, 14 value; completed: 2 value. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. Completed value witnesses stage19.mut.claimed_filer_llc and stage19.f8863.claimed_person_answer: project false (a filer claimed as a dependent), reply true. The reply's MFS term duplicates the project's whole-return MFS refusal (s3.mfs on scope.ready). The project line is right.",
+   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "date": "2026-11-15",
+   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
+   "subject_key": "1c46931e4ae413e3857688ba3244986d9eada89f2e410cda5e1d226a1f4ee509",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -2372,14 +2937,14 @@
      "fixture:classm.sa.1.deepseek@f8863",
      "fixture:classm.sa.5.deepseek@f8863",
      "fixture:classm.dependent.5.deepseek@f8863",
-     "fixture:classm.asset.4@f8863",
-     "fixture:classm.sales.2@f8863",
-     "fixture:classm.scveh.2@f8863",
+     "fixture:classm.s179.4@f8863",
+     "fixture:classm.sli.2@f8863",
      "fixture:classm.tcw.9@f8863",
      "fixture:classm.tcw.12@f8863",
-     "fixture:classm.person.20@f8863",
-     "fixture:classm.sa.6@f8863",
-     "fixture:stage19.mut.claimed_filer_llc@f8863"
+     "fixture:classm.tcw.15@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:stage19.f8863.claimed_person_answer@f8863"
     ],
     "policy": "executable-triage-v2"
    }

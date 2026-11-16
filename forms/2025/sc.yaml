@@ -79,19 +79,21 @@ form:
       locator: p. 2, Business Owned and Operated by Spouses, Qualified Joint Venture and Community Income
   - id: sc.method_other
     printed: F
-    label: Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 (Form
-      3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section 263A)
+    label: Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 or any
+      of the 3 years before it (Form 3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section 263A)
       because you are not a small business taxpayer, or is this business a tax shelter or does it have long-term contracts?
     type: Bool
     expr:
       op: input
       source: Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025
-        (Form 3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section
-        263A) because your average annual gross receipts for the 3 prior years were more than $31 million, or is this business
-        a tax shelter (as defined in section 448(d)(3)), or does it have long-term contracts (section 460)?
+        or for any of the 3 years before it (Form 3115 or a section 481(a) adjustment, which is generally spread over 4 years),
+        or must you capitalize costs under the uniform capitalization rules (section 263A) because your average annual gross
+        receipts for the 3 prior years were more than $31 million, or is this business a tax shelter (as defined in section
+        448(d)(3)), or does it have long-term contracts (section 460)?
     cite:
       doc: i1040sc
-      locator: p. 4, Line F, "Special rules apply to long-term contracts (see section 460 for details)"; p. 6, Part II,
+      locator: p. 4, Line F, "Special rules apply to long-term contracts (see section 460 for details)" and "A net positive
+        section 481(a) adjustment is generally taken into account over a period of 4 years"; p. 6, Part II,
         Capitalizing costs; p. 15, Part III, Small business taxpayer, "and (b) are not a tax shelter (as defined in section
         448(d)(3))"; p538 p. 17, Uniform Capitalization Rules, "The uniform capitalization rules do not apply to the following"
         and "A small business taxpayer that meets the gross receipts test under section 448(c) and that is not a tax shelter"
@@ -105,10 +107,8 @@ form:
       - wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)
       - business interest limited by Form 8990
       - recapture of depreciation or section 179 on listed property, recapture of section 179 on other property no longer used more than 50% in the business, or an inclusion amount for leased property
-      - a chapter 11 bankruptcy case
       - extraterritorial income (Form 8873)
       - income you report under the installment method (including installment sales of timeshares or residential lots)
-      - nontaxable Medicaid waiver payments (Notice 2014-7)
       - research or experimental expenditures you elect to capitalize
       - a capital construction fund
       - contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)
@@ -131,10 +131,8 @@ form:
         - wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)
         - business interest limited by Form 8990
         - recapture of depreciation or section 179 on listed property, recapture of section 179 on other property no longer used more than 50% in the business, or an inclusion amount for leased property
-        - a chapter 11 bankruptcy case
         - extraterritorial income (Form 8873)
         - income you report under the installment method (including installment sales of timeshares or residential lots)
-        - nontaxable Medicaid waiver payments (Notice 2014-7)
         - research or experimental expenditures you elect to capitalize
         - a capital construction fund
         - contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)
@@ -1012,10 +1010,13 @@ form:
     expr:
       op: input
       source: Do you claim a deduction for the business use of your home for this business (a part of your home used regularly
-        and exclusively for the business, or regularly for storing inventory or product samples)?
+        and exclusively for the business, regularly for daycare, or, if your home is the sole fixed location of the business,
+        regularly for storing inventory or product samples)?
     cite:
       doc: i1040sc
-      locator: p. 10, Line 30, Business use of your home; Pub. 587 referenced
+      locator: p. 10, Line 30, Business use of your home; Simplified method, "used regularly and exclusively for business,
+        regularly for daycare, or regularly for storage"; Pub. 587 referenced; p587 p. 3, Storage of inventory or product samples,
+        "Your home is the only fixed location of your trade or business"
   - id: sc.ho_other
     printed: (screen)
     label: Does any of these apply to your business use of your home for this business?
@@ -1077,11 +1078,12 @@ form:
     type: Count
     expr:
       op: input
-      source: The square feet of your home used regularly and exclusively for this business (or regularly for storing inventory
-        or product samples) throughout 2025
+      source: The square feet of your home used regularly and exclusively for this business (or, if your home is the sole fixed
+        location of the business, regularly for storing inventory or product samples) throughout 2025
     cite:
       doc: i1040sc
-      locator: p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method
+      locator: p. 12, Simplified Method Worksheet, line 2, and line 30 entry spaces; p. 10, Simplified method; p587 p. 3, Storage
+        of inventory or product samples, "Your home is the only fixed location of your trade or business"
     refuses:
     - when: sc.ho_multi
       form: The simplified method for more than one of your businesses in your home (300 square feet allocated among them)
@@ -1274,6 +1276,10 @@ form:
     expr:
       op: test
       all:
+      - op: test
+        eq:
+        - sc.ho_uses
+        - const: true
       - op: test
         eq:
         - sc.ho_unlimited

@@ -1,5 +1,10 @@
 Values sheet — tax year 2025 (not a complete return for all filers)
 
+== Form 1099-DIV — distribution components and scope screening ==
+  (gate) In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV?
+      = false
+      cite: [f1099div] p. 5, Instructions for Recipient, boxes 1a, 2a, 3, 9, 10, 12 and 13, Box 1b, "The amount shown may be dividends a corporation paid directly to you as a participant (or beneficiary of a participant) in an employee stock ownership plan (ESOP)", Nominees, "If this form includes amounts belonging to another person, you are considered a nominee recipient", "Box 1a. Shows total ordinary dividends that are taxable", "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12" (January 2024 (continuous-use form); 4ea1de80)
+
 == Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes) ==
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
@@ -50,6 +55,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $1,481.80
       cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["person.eligible",{"const":true}],"op":"test"}
+  (helper) Number of this person's Schedules C that claim a general business credit (Form 3800); a refusal of that Schedule C (its line 1) is carried
+      = 0
+      cite: [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $sc@person[taxpayer]:
+  (helper) Number of this person's Schedules C that claim the credit for federal tax paid on fuels (Form 4136); a refusal of that Schedule C (its line 1) is carried
+      = 0
+      cite: [i1040gi] p. 117, Line 12, "Attach Form 4136" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $sc@person[taxpayer]:
 
 == Form W-2 — wage, withholding and Social Security boxes by employer — person[taxpayer].w2[a] ==
   3   Social security wages
@@ -130,6 +143,20 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) In 2025, did you (or, on a joint return, your spouse) repay more than $3,000 in total that you had included in income in an earlier year because it appeared you had an unrestricted right to it?
       = false
       cite: [p525] p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right" and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income" (2025; 39b0fa5e)
+  (helper) Number of Schedules C on the return that claim a general business credit (Form 3800)
+      = 0
+      cite: [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (gate) A business on the return claims a general business credit (Form 3800), whose credit belongs on line 6a and whose elective payment amount on line 13c
+      = false
+      cite: [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Number of Schedules C on the return that claim the credit for federal tax paid on fuels (Form 4136)
+      = 0
+      cite: [i1040gi] p. 117, Line 12, "Attach Form 4136" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (gate) A business on the return claims the credit for federal tax paid on fuels (Form 4136), which belongs on line 12
+      = false
+      cite: [i1040gi] p. 117, Line 12, "Attach Form 4136" (2025; printed date 2026-02-25; 482e9c48)
   (gate) Married filing separately
       = false
       cite: [i1040gi] p. 14, Married Filing Separately (2025; printed date 2026-02-25; 482e9c48)
@@ -154,6 +181,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $1,481.80
       cite: [f1040s3] Schedule 3 (2025), line 15 (2025; created 2025-11-17; 008cfd3f)
 
+== Schedule D — securities sales and supplied distribution subtotals ==
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
+  (gate) Whether a fund or REIT sent a Form 2439 (undistributed long-term capital gains), asked only when you or your spouse received dividends or other distributions (false otherwise)
+      = false
+      cite: [i1040sd] p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439." (2025; printed date 2025-12-11; 650643a6)
+      note: taken: {"eq":["div.any",{"const":false}],"op":"test"}
+
 Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s3.line9: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -167,6 +203,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   s3.virgin_islands_if_foreign: chose false (guard 1)
       not taken: guard 0 = false
   s3.farmland_deferral_if_sold: chose false (guard 1)
+      not taken: guard 0 = false
+  sd.f2439_if_dividends: chose false (guard 1)
       not taken: guard 0 = false
 
 Derivations:
@@ -191,12 +229,18 @@ Derivations:
   s3.line11: sum_over(s3.mfs = false; person[taxpayer].credit = $1,481.80)
   s3.no: param(#s3.no = false)
   s3.kerosene_credit_if_kerosene: choose(s3.kerosene = false; true = true; s3.kerosene = false; false = false; s3.no = false)
-  s3.line12: param(s3.kerosene_credit_if_kerosene = false; #sales.zero = $0)
+  s3.business_fuel_count: sum_over(person[taxpayer].sc_fuel_count = 0)
+  s3.business_fuel_any: test(s3.business_fuel_count = 0; 0 = 0)
+  s3.line12: param(s3.kerosene_credit_if_kerosene = false; s3.business_fuel_any = false; #sales.zero = $0)
   s3.section965_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
   s3.section960c_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
   s3.virgin_islands_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
   s3.farmland_deferral_if_sold: choose(s3.farmland = false; true = true; s3.farmland = false; false = false; s3.no = false)
-  s3.line14: param(s3.section965_if_foreign = false; s3.section960c_if_foreign = false; s3.virgin_islands_if_foreign = false; s3.farmland_deferral_if_sold = false; s3.repaid_income = false; #sales.zero = $0)
+  s3.business_credit_count: sum_over(person[taxpayer].sc_credit_count = 0)
+  s3.business_credit_any: test(s3.business_credit_count = 0; 0 = 0)
+  sd.no: param(#household.no = false)
+  sd.f2439_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; sd.no = false)
+  s3.line14: param(s3.section965_if_foreign = false; s3.section960c_if_foreign = false; s3.virgin_islands_if_foreign = false; s3.farmland_deferral_if_sold = false; s3.repaid_income = false; s3.business_credit_any = false; sd.f2439_if_dividends = false; #sales.zero = $0)
   s3.line15: sum(s3.line9 = $0; s3.line10 = $0; s3.line11 = $1,481.80; s3.line12 = $0; s3.line14 = $0)
   f1040.line31: copy(s3.line15 = $1,481.80)
 Interpretation amb.2025.ss_wages: Use boxes 3 plus 7, summed across employers separately per person. Owner approved the Stage 2 proposal. iw2w3 p. 18 defines these boxes and their combined wage base; box 1 can exclude deferrals subject to Social Security. (iw2w3, p. 18, boxes 3 and 7; compare i1040gi p. 117, Schedule 3 line 11)

@@ -3,13 +3,13 @@
   "cases": [
     {
       "id": "stage4.refuse.s2.amt",
-      "walk": "stage4",
       "covers": [
         "s2.amt"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic refusal regression Restated 2026-11-15 (coordinator decision, DECISIONS.md): line 21 no longer refuses on s2.amt (the AMT is line 2, outside line 21's sum) and line 3 tells s2.other before s2.amt. Line 21 = 4 + 8 + 11 + 12 + 18 = 0: Medicare wages $200,000 do not exceed the $200,000 threshold (Form 8959), no investment income (Form 8960), no SE, Form 5329 or HSA tax.",
       "inputs": {
-        "s2.amt_owed": true,
+        "f1040.tax_exempt_interest": 10000000,
+        "s2.amt_pab": 10000000,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -26,17 +26,8 @@
       },
       "expect": {
         "s2.line21": {
-          "kind": "refusal",
-          "gate": "s2.amt",
-          "form": "Form 6251",
-          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
-          "cite": {
-            "doc": "f1040s2",
-            "tax_year": 2025,
-            "revision": "2025; created 2025-05-08",
-            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
-            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s2.line2": {
           "kind": "refusal",
@@ -68,13 +59,11 @@
     },
     {
       "id": "s2.reg.iso_vested_2025",
-      "walk": "stage4",
       "covers": [
         "s2.amt"
       ],
-      "evidence": "regression: i6251 p. 4, Line 2i; incentive stock option shares bought in 2024 vest in 2025, with no options used and no shares sold in 2025 (BUG-0643)",
+      "evidence": "regression: i6251 p. 4, Line 2i; incentive stock option shares bought in 2024 vest in 2025, with no options used and no shares sold in 2025 (BUG-0643) Restated 2026-11-15 (coordinator decision, DECISIONS.md): line 21 no longer refuses on s2.amt (the AMT is line 2, outside line 21's sum) and line 3 tells s2.other before s2.amt. Line 21 = 4 + 8 + 11 + 12 + 18 = 0: Medicare wages $200,000 do not exceed the $200,000 threshold (Form 8959), no investment income (Form 8960), no SE, Form 5329 or HSA tax.",
       "inputs": {
-        "s2.amt_owed": false,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -92,17 +81,8 @@
       },
       "expect": {
         "s2.line21": {
-          "kind": "refusal",
-          "gate": "s2.amt",
-          "form": "Form 6251",
-          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
-          "cite": {
-            "doc": "f1040s2",
-            "tax_year": 2025,
-            "revision": "2025; created 2025-05-08",
-            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
-            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s2.line2": {
           "kind": "refusal",
@@ -134,7 +114,6 @@
     },
     {
       "id": "stage4.refuse.s2.other",
-      "walk": "stage4",
       "covers": [
         "s2.other"
       ],
@@ -176,17 +155,8 @@
           }
         },
         "s2.line2": {
-          "kind": "refusal",
-          "gate": "s2.other",
-          "form": "Schedule 2 additional source forms",
-          "remedy": "Prepare the other required tax forms; this slice supports only Schedule SE and Forms 8959 and 8960.",
-          "cite": {
-            "doc": "f1040s2",
-            "tax_year": 2025,
-            "revision": "2025; created 2025-05-08",
-            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
-            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s2.line3": {
           "kind": "refusal",
@@ -201,17 +171,18 @@
             "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
           }
         }
-      }
+      },
+      "evidence_note": "Restated at integration B1 of the goal-1 round (coordinator decision on lane g1-f7b, option (b), docs/provisional/DECISIONS.md section 5): s2.other now refuses at line 1z, not line 2, so line 2 is the alternative minimum tax alone. f1040s2 (2025) line 2 is the AMT from Form 6251 line 11; with $100,000 of wages, single, the tentative minimum tax (26% of AMTI less the $88,100 exemption) is far below the regular tax, so no AMT is owed (s2.amt false) and line 2 is $0. Line 3 (lines 1z and 2) still refuses on s2.other, through line 1z; line 21 is unchanged."
     },
     {
       "id": "stage4.refuse.s2.amt.simultaneous",
-      "walk": "stage4",
       "covers": [
         "s2.amt"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic refusal regression Restated 2026-11-15 (coordinator decision, DECISIONS.md): line 21 no longer refuses on s2.amt (the AMT is line 2, outside line 21's sum) and line 3 tells s2.other before s2.amt. With s2.other_tax Yes, lines 3 and 21 refuse on s2.other; line 2 still refuses on s2.amt.",
       "inputs": {
-        "s2.amt_owed": true,
+        "f1040.tax_exempt_interest": 10000000,
+        "s2.amt_pab": 10000000,
         "s2.other_tax": true,
         "$w2@person[taxpayer]": [
           "a"
@@ -237,9 +208,9 @@
       "expect": {
         "s2.line21": {
           "kind": "refusal",
-          "gate": "s2.amt",
-          "form": "Form 6251",
-          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "gate": "s2.other",
+          "form": "Schedule 2 additional source forms",
+          "remedy": "Prepare the other required tax forms; this slice supports only Schedule SE and Forms 8959 and 8960.",
           "cite": {
             "doc": "f1040s2",
             "tax_year": 2025,
@@ -263,9 +234,9 @@
         },
         "s2.line3": {
           "kind": "refusal",
-          "gate": "s2.amt",
-          "form": "Form 6251",
-          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "gate": "s2.other",
+          "form": "Schedule 2 additional source forms",
+          "remedy": "Prepare the other required tax forms; this slice supports only Schedule SE and Forms 8959 and 8960.",
           "cite": {
             "doc": "f1040s2",
             "tax_year": 2025,
@@ -318,6 +289,1106 @@
             "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "s2.reg.amt_pab_owes",
+      "walk": "stage4",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "regression, predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Exemption Worksheet p. 9; Part III p. 13) and the 2025 Tax Computation Worksheet (T-307, the computed AMT screen): single, wages $150,000, $100,000 tax-exempt interest all from private activity bonds (box 9). Regular tax on $134,250: 24% less $7,153 = $25,067 (line 10). AMTI $250,000, exemption $88,100, line 6 $161,900, line 7 26% = $42,094 > line 10, so Form 6251 is required.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 15000000,
+        "person[taxpayer].w2[a].box5": 15000000,
+        "person[taxpayer].w2[a].box6": 217500,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s2.options_any": false,
+        "f1040.tax_exempt_interest": 10000000,
+        "s2.amt_pab": 10000000
+      },
+      "expect": {
+        "s2.amt_l4": {
+          "kind": "money",
+          "cents": 25000000
+        },
+        "s2.amt_l5": {
+          "kind": "money",
+          "cents": 8810000
+        },
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 16190000
+        },
+        "s2.amt_l7": {
+          "kind": "money",
+          "cents": 4209400
+        },
+        "s2.amt_l10": {
+          "kind": "money",
+          "cents": 2506700
+        },
+        "s2.amt_could": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.amt_tmt_over": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.line2": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        }
+      }
+    },
+    {
+      "id": "s2.reg.amt_pab_below",
+      "walk": "stage4",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "regression, predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Exemption Worksheet p. 9; Part III p. 13) and the 2025 Tax Computation Worksheet (T-307, the computed AMT screen): as s2.reg.amt_pab_owes, but only $20,000 of the $100,000 is from private activity bonds: the question is asked (all $100,000 could cross), AMTI $170,000, line 6 $81,900, line 7 $21,294, not more than line 10 ($25,067); no Form 6251.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 15000000,
+        "person[taxpayer].w2[a].box5": 15000000,
+        "person[taxpayer].w2[a].box6": 217500,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s2.options_any": false,
+        "f1040.tax_exempt_interest": 10000000,
+        "s2.amt_pab": 2000000
+      },
+      "expect": {
+        "s2.amt_l4": {
+          "kind": "money",
+          "cents": 17000000
+        },
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 8190000
+        },
+        "s2.amt_l7": {
+          "kind": "money",
+          "cents": 2129400
+        },
+        "s2.amt_l10": {
+          "kind": "money",
+          "cents": 2506700
+        },
+        "s2.amt_could": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.amt_tmt_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.amt": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.line2": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "s2.reg.amt_wages_none",
+      "walk": "stage4",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "regression, predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Exemption Worksheet p. 9; Part III p. 13) and the 2025 Tax Computation Worksheet (T-307, the computed AMT screen): single, one W-2 of $100,000, nothing else: AMTI $100,000 (taxable income $84,250 plus the $15,750 standard deduction), line 6 $11,900, line 7 $3,094, far below the regular tax; nothing is asked and nothing is refused.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box5": 10000000,
+        "person[taxpayer].w2[a].box6": 145000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s2.options_any": false
+      },
+      "expect": {
+        "s2.amt_l1b": {
+          "kind": "money",
+          "cents": 8425000
+        },
+        "s2.amt_l2a": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "s2.amt_l4": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 1190000
+        },
+        "s2.amt_l39": {
+          "kind": "money",
+          "cents": 309400
+        },
+        "s2.amt_could": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.amt": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.line2": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "s2.reg.amt_dividends_owes",
+      "walk": "stage4",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "regression, predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Exemption Worksheet p. 9; Part III p. 13) and the 2025 Tax Computation Worksheet (T-307, the computed AMT screen): single, wages $60,000 and $1,000,000 of qualified dividends: AMTI $1,060,000 is past the exemption phase-out (exemption zero); Part III: line 17 $60,000 at 26% = $15,600, line 21 $4,100 at 0%, line 30 $485,050 at 15% = $72,757.50, line 33 $510,850 at 20% = $102,170, line 38 = line 40 = line 7 = $190,527.50; the regular tax by the Qualified Dividends and Capital Gain Tax Worksheet is about $180,003 (not asserted), so line 7 is greater and Form 6251 is required.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "person[taxpayer].w2[a].box6": 87000,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s2.options_any": false,
+        "div.any": true,
+        "sb.ordinary_dividends": 100000000,
+        "f1040.line3a": 100000000
+      },
+      "expect": {
+        "s2.amt_l4": {
+          "kind": "money",
+          "cents": 106000000
+        },
+        "s2.amt_l5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 106000000
+        },
+        "s2.amt_l13": {
+          "kind": "money",
+          "cents": 100000000
+        },
+        "s2.amt_l17": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "s2.amt_l18": {
+          "kind": "money",
+          "cents": 1560000
+        },
+        "s2.amt_l21": {
+          "kind": "money",
+          "cents": 410000
+        },
+        "s2.amt_l30": {
+          "kind": "money",
+          "cents": 48505000
+        },
+        "s2.amt_l31": {
+          "kind": "money",
+          "cents": 7275750
+        },
+        "s2.amt_l33": {
+          "kind": "money",
+          "cents": 51085000
+        },
+        "s2.amt_l34": {
+          "kind": "money",
+          "cents": 10217000
+        },
+        "s2.amt_l38": {
+          "kind": "money",
+          "cents": 19052750
+        },
+        "s2.amt_l39": {
+          "kind": "money",
+          "cents": 29201800
+        },
+        "s2.amt_l7": {
+          "kind": "money",
+          "cents": 19052750
+        },
+        "s2.amt_tmt_over": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.line2": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "tax_year": 2025,
+            "revision": "2025; created 2025-05-08",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8"
+          }
+        }
+      }
+    },
+    {
+      "id": "s2.reg.amt_dividends_part3_none",
+      "walk": "stage4",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "regression, predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Exemption Worksheet p. 9; Part III p. 13) and the 2025 Tax Computation Worksheet (T-307, the computed AMT screen): single, wages $50,000 and $200,000 of qualified dividends: AMTI $250,000, line 6 $161,900; the flat 26% bound ($42,094) is above the regular tax (about $31,760), but Part III gives line 16 $161,900, line 17 zero, line 23 $14,100 at 0%, line 30 $147,800 at 15% = $22,170 = line 7, below the regular tax: no Form 6251.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "person[taxpayer].w2[a].box6": 72500,
+        "person[taxpayer].w2[a].box2": null,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "s2.options_any": false,
+        "div.any": true,
+        "sb.ordinary_dividends": 20000000,
+        "f1040.line3a": 20000000
+      },
+      "expect": {
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 16190000
+        },
+        "s2.amt_l39": {
+          "kind": "money",
+          "cents": 4209400
+        },
+        "s2.amt_l17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_l23": {
+          "kind": "money",
+          "cents": 1410000
+        },
+        "s2.amt_l30": {
+          "kind": "money",
+          "cents": 14780000
+        },
+        "s2.amt_l7": {
+          "kind": "money",
+          "cents": 2217000
+        },
+        "s2.amt_could": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.amt_tmt_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.amt": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.line2": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_sdtw_phaseout",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656, the Form 6251 bound of s2: exemption phase-out, Part III with the Schedule D Tax Worksheet, the 1250 and 28% lines, the bound with tax-exempt interest), predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Line 4 and the Exemption Worksheet p. 9; Part III p. 13), the 2025 Schedule D Tax Worksheet (i1040sd) and Tax Computation Worksheet. Single, wages $500,000, capital gain distributions $200,000 of which box 2b (unrecaptured section 1250 gain) $50,000 and box 2d (28% rate gain) $30,000, tax-exempt interest $10,000 (the private activity bond question is not asked: the bound's tax below, $175,205.50, is under line 10, the regular tax by the Schedule D Tax Worksheet, $181,477.25 on the first evaluation; line 10 is not asserted). AGI $700,000, taxable income $684,250; the 2025 standard deduction $15,750 (single and married filing separately) is line 2a and is added back, so line 4 is AGI less nothing else: line 4 $700,000. Exemption Worksheet: line 4 $700,000 - $626,350 = $73,650, line 5 25% = $18,412.50, line 6 $88,100 - $18,412.50 = $69,687.50 = line 5; line 6 $630,312.50. Schedule D Tax Worksheet: line 9 = line 10 $200,000, line 11 = Sch D 18 + 19 = $80,000, line 12 $80,000, line 13 $120,000, line 14 $564,250, line 21 = larger of line 18 $484,250 and line 20 $197,300 = $484,250. Part III: line 13 $120,000, line 14 $50,000, line 15 smaller of $170,000 and line 10 $200,000 = $170,000, line 16 $170,000, line 17 $460,312.50 (over $239,100), line 18 28% less $4,782 = $124,105.50; line 20 $564,250, line 21 $0, line 22 $120,000, line 23 $0, line 24 $120,000, line 27 $484,250, line 28 $484,250, line 29 $533,400 - $484,250 = $49,150, line 30 $49,150, line 31 $7,372.50, line 32 $49,150, line 33 $70,850, line 34 $14,170, line 35 = 17 + 32 + 33 = $580,312.50, line 36 $50,000, line 37 25% = $12,500, line 38 $158,148, line 39 $630,312.50 x 28% - $4,782 = $171,705.50, line 40 = line 7 $158,148. The bound with all tax-exempt interest: line 4 $710,000, its exemption $88,100 - 25% of $83,650 = $67,187.50, its line 6 $642,812.50, its tax at 28% less $4,782 = $175,205.50.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 50000000,
+        "person[taxpayer].w2[a].box6": 0,
+        "person[taxpayer].w2[a].box1": 50000000,
+        "s2.options_any": false,
+        "div.any": true,
+        "div.box2b": 5000000,
+        "div.other_boxes": true,
+        "div.box2d": 3000000,
+        "sd.distributions": 20000000,
+        "f1040.tax_exempt_interest": 1000000
+      },
+      "expect": {
+        "s2.amt_l4": {
+          "kind": "money",
+          "cents": 70000000
+        },
+        "s2.amt_l5": {
+          "kind": "money",
+          "cents": 6968750
+        },
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 63031250
+        },
+        "s2.amt_l13": {
+          "kind": "money",
+          "cents": 12000000
+        },
+        "s2.amt_l14": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "s2.amt_l15": {
+          "kind": "money",
+          "cents": 17000000
+        },
+        "s2.amt_l17": {
+          "kind": "money",
+          "cents": 46031250
+        },
+        "s2.amt_l18": {
+          "kind": "money",
+          "cents": 12410550
+        },
+        "s2.amt_l28": {
+          "kind": "money",
+          "cents": 48425000
+        },
+        "s2.amt_l29": {
+          "kind": "money",
+          "cents": 4915000
+        },
+        "s2.amt_l30": {
+          "kind": "money",
+          "cents": 4915000
+        },
+        "s2.amt_l33": {
+          "kind": "money",
+          "cents": 7085000
+        },
+        "s2.amt_l35": {
+          "kind": "money",
+          "cents": 58031250
+        },
+        "s2.amt_l36": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "s2.amt_l37": {
+          "kind": "money",
+          "cents": 1250000
+        },
+        "s2.amt_l38": {
+          "kind": "money",
+          "cents": 15814800
+        },
+        "s2.amt_l39": {
+          "kind": "money",
+          "cents": 17170550
+        },
+        "s2.amt_l7": {
+          "kind": "money",
+          "cents": 15814800
+        },
+        "s2.amt_h4": {
+          "kind": "money",
+          "cents": 71000000
+        },
+        "s2.amt_h5": {
+          "kind": "money",
+          "cents": 6718750
+        },
+        "s2.amt_h6": {
+          "kind": "money",
+          "cents": 64281250
+        },
+        "s2.amt_h39": {
+          "kind": "money",
+          "cents": 17520550
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_line40_rounding",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: line 40 as the smaller of lines 38 and 39, and line 7 = line 40), predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Line 4 and the Exemption Worksheet p. 9; Part III p. 13), the 2025 Schedule D Tax Worksheet (i1040sd) and Tax Computation Worksheet; amounts in cents, each product rounded half up to the cent. Single, wages $100,000.04, capital gain distributions $10,000.00 of which box 2d $9,999.98 and box 2b $0.02. Line 4 $110,000.04, exemption $88,100, line 6 $21,900.04. Schedule D Tax Worksheet line 9 = line 10 $10,000, line 11 $10,000, line 13 $0. Part III: line 13 $0, line 14 $0.02, line 15 $0.02, line 16 $0.02, line 17 $21,900.02, line 18 26% = $5,694.0052 -> $5,694.01; lines 22 to 34 $0; line 36 $0.02, line 37 25% = $0.005 -> $0.01; line 38 $5,694.02; line 39 26% of $21,900.04 = $5,694.0104 -> $5,694.01; line 40 the smaller, $5,694.01 = line 7. Line 38 exceeds line 39 here by the rounding of two products, which is what line 40's 'smaller of' settles.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 10000004,
+        "person[taxpayer].w2[a].box6": 0,
+        "person[taxpayer].w2[a].box1": 10000004,
+        "s2.options_any": false,
+        "div.any": true,
+        "div.box2b": 2,
+        "div.other_boxes": true,
+        "div.box2d": 999998,
+        "sd.distributions": 1000000
+      },
+      "expect": {
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 2190004
+        },
+        "s2.amt_l13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_l14": {
+          "kind": "money",
+          "cents": 2
+        },
+        "s2.amt_l15": {
+          "kind": "money",
+          "cents": 2
+        },
+        "s2.amt_l17": {
+          "kind": "money",
+          "cents": 2190002
+        },
+        "s2.amt_l36": {
+          "kind": "money",
+          "cents": 2
+        },
+        "s2.amt_l37": {
+          "kind": "money",
+          "cents": 1
+        },
+        "s2.amt_l38": {
+          "kind": "money",
+          "cents": 569402
+        },
+        "s2.amt_l39": {
+          "kind": "money",
+          "cents": 569401
+        },
+        "s2.amt_l40": {
+          "kind": "money",
+          "cents": 569401
+        },
+        "s2.amt_l7": {
+          "kind": "money",
+          "cents": 569401
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_line6_at_bracket",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: 'If line 6 is $239,100 or less'), predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Line 4 and the Exemption Worksheet p. 9; Part III p. 13), the 2025 Schedule D Tax Worksheet (i1040sd) and Tax Computation Worksheet. Single, wages $327,200 only; the 2025 standard deduction $15,750 (single and married filing separately) is line 2a and is added back, so line 4 is AGI less nothing else: line 4 $327,200, line 6 $239,100, which is not more than $239,100, so line 39 (= line 7, no capital gain worksheet) is 26%: $62,166. The bound has no tax-exempt or mortgage interest to add, so its line 6 is also $239,100 and not more than $239,100.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 32720000,
+        "person[taxpayer].w2[a].box6": 0,
+        "person[taxpayer].w2[a].box1": 32720000,
+        "s2.options_any": false
+      },
+      "expect": {
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 23910000
+        },
+        "s2.amt_l6_high": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.amt_l39": {
+          "kind": "money",
+          "cents": 6216600
+        },
+        "s2.amt_h6": {
+          "kind": "money",
+          "cents": 23910000
+        },
+        "s2.amt_h6_high": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_line6_over_bracket",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: the $239,100 amount itself), predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Line 4 and the Exemption Worksheet p. 9; Part III p. 13), the 2025 Schedule D Tax Worksheet (i1040sd) and Tax Computation Worksheet. Single, wages $327,201 only: line 6 $239,101, more than $239,100, so line 39 = 28% of $239,101 less $4,782 = $66,948.28 - $4,782 = $62,166.28 = line 7.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 32720100,
+        "person[taxpayer].w2[a].box6": 0,
+        "person[taxpayer].w2[a].box1": 32720100,
+        "s2.options_any": false
+      },
+      "expect": {
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 23910100
+        },
+        "s2.amt_l6_high": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.amt_l39": {
+          "kind": "money",
+          "cents": 6216628
+        },
+        "s2.amt_l7": {
+          "kind": "money",
+          "cents": 6216628
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_line17_at_bracket",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: line 17 at $239,100; line 14 blank without a Schedule D Tax Worksheet), predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Line 4 and the Exemption Worksheet p. 9; Part III p. 13), the 2025 Schedule D Tax Worksheet (i1040sd) and Tax Computation Worksheet. Single, wages $327,200 and qualified dividends $50,000 (no Schedule D). Line 4 $377,200, line 6 $289,100. The Qualified Dividends and Capital Gain Tax Worksheet applies: line 13 = its line 4 $50,000; line 14 has no Schedule D line 19, so $0 ('If line 14 is zero or blank, skip lines 35 through 37'); line 15 = line 13; line 16 $50,000; line 17 $239,100, not more than $239,100, so line 18 is 26%: $62,166. Line 20 = worksheet line 5 $311,450, line 21 $0, line 22 $50,000, line 29 $533,400 - $311,450 = $221,950, line 30 $50,000 at 15% = $7,500, line 33 $0; line 38 $69,666; line 39 $289,100 x 28% - $4,782 = $76,166; line 7 = line 40 $69,666.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 32720000,
+        "person[taxpayer].w2[a].box6": 0,
+        "person[taxpayer].w2[a].box1": 32720000,
+        "s2.options_any": false,
+        "div.any": true,
+        "sb.ordinary_dividends": 5000000,
+        "f1040.line3a": 5000000
+      },
+      "expect": {
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 28910000
+        },
+        "s2.amt_l13": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "s2.amt_l14": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_l14_any": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.amt_l17": {
+          "kind": "money",
+          "cents": 23910000
+        },
+        "s2.amt_l17_high": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.amt_l18": {
+          "kind": "money",
+          "cents": 6216600
+        },
+        "s2.amt_l38": {
+          "kind": "money",
+          "cents": 6966600
+        },
+        "s2.amt_l39": {
+          "kind": "money",
+          "cents": 7616600
+        },
+        "s2.amt_l7": {
+          "kind": "money",
+          "cents": 6966600
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_depreciation_bound",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: person.amt_dep and its six operands, and s2.amt_rel), predicted by hand before running from i6251 p. 5 (Line 2l: 200% declining balance property, generally 3-, 5-, 7- and 10-year), i4562 and Pub. 946 Table A-1 (half-year). One Schedule C, gross receipts $5,000, no special allowance (election out for each 2025 class, no section 179): 3-year property $40,000 (33.33%) $13,332; 5-year $80,000 (20%) $16,000; 7-year $120,000 (14.29%) $17,148; 10-year $160,000 (10%) $16,000 (Form 4562 lines 19a to 19d); 5-year property placed in 2024 for $200,000, year 2 (32%) $64,000 (line 17); the listed camera of stage14.asset.listed_prior (asset.json), $734.70 (line 26 column (h)). s2.amt_dep = $64,000 + $13,332 + $16,000 + $17,148 + $16,000 + $734.70 = $127,214.70, so the depreciation gate is true; no section 179, SE retirement, SE health insurance or IRA deduction, so the related adjustments' items and s2.amt_rel are $0.",
+      "inputs": {
+        "s2.options_any": false,
+        "$sc@person[taxpayer]": [
+          "b"
+        ],
+        "person[taxpayer].sc[b].line1": 500000,
+        "$asset@person[taxpayer].sc[b]": [
+          "p3",
+          "p5",
+          "p7",
+          "p10",
+          "old",
+          "cam"
+        ],
+        "person[taxpayer].sc[b].asset[p3].placed": "y2025",
+        "person[taxpayer].sc[b].asset[p3].cost": 4000000,
+        "person[taxpayer].sc[b].asset[p3].pct": 100,
+        "person[taxpayer].sc[b].asset[p3].class": "c00_26",
+        "person[taxpayer].sc[b].asset[p3].after_jan19": true,
+        "person[taxpayer].sc[b].asset[p3].bonus_same": true,
+        "person[taxpayer].sc[b].asset[p3].bonus_choice": "none",
+        "person[taxpayer].sc[b].asset[p3].s179": 0,
+        "person[taxpayer].sc[b].asset[p5].placed": "y2025",
+        "person[taxpayer].sc[b].asset[p5].cost": 8000000,
+        "person[taxpayer].sc[b].asset[p5].pct": 100,
+        "person[taxpayer].sc[b].asset[p5].class": "c00_12",
+        "person[taxpayer].sc[b].asset[p5].after_jan19": true,
+        "person[taxpayer].sc[b].asset[p5].bonus_same": true,
+        "person[taxpayer].sc[b].asset[p5].bonus_choice": "none",
+        "person[taxpayer].sc[b].asset[p5].s179": 0,
+        "person[taxpayer].sc[b].asset[p7].placed": "y2025",
+        "person[taxpayer].sc[b].asset[p7].cost": 12000000,
+        "person[taxpayer].sc[b].asset[p7].pct": 100,
+        "person[taxpayer].sc[b].asset[p7].class": "c00_11",
+        "person[taxpayer].sc[b].asset[p7].after_jan19": true,
+        "person[taxpayer].sc[b].asset[p7].bonus_same": true,
+        "person[taxpayer].sc[b].asset[p7].bonus_choice": "none",
+        "person[taxpayer].sc[b].asset[p7].s179": 0,
+        "person[taxpayer].sc[b].asset[p10].placed": "y2025",
+        "person[taxpayer].sc[b].asset[p10].cost": 16000000,
+        "person[taxpayer].sc[b].asset[p10].pct": 100,
+        "person[taxpayer].sc[b].asset[p10].class": "c00_28",
+        "person[taxpayer].sc[b].asset[p10].after_jan19": true,
+        "person[taxpayer].sc[b].asset[p10].bonus_same": true,
+        "person[taxpayer].sc[b].asset[p10].bonus_choice": "none",
+        "person[taxpayer].sc[b].asset[p10].s179": 0,
+        "person[taxpayer].sc[b].asset[old].placed": "y2024",
+        "person[taxpayer].sc[b].asset[old].cost": 20000000,
+        "person[taxpayer].sc[b].asset[old].pct": 100,
+        "person[taxpayer].sc[b].asset[old].class": "c00_12",
+        "person[taxpayer].sc[b].asset[cam].placed": "y2024",
+        "person[taxpayer].sc[b].asset[cam].cost": 500000,
+        "person[taxpayer].sc[b].asset[cam].pct": 60,
+        "person[taxpayer].sc[b].asset[cam].listed": true
+      },
+      "expect": {
+        "s2.amt_dep": {
+          "kind": "money",
+          "cents": 12721470
+        },
+        "s2.amt_dep_any": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.amt_rel_items": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_rel": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_related_without_depreciation",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: s2.amt_dep_any and the related adjustments), the inputs of stage19.mut.ira_single_full_edge (ira.json; IRA deduction $7,000, Schedule 1 line 20), predicted from i6251 p. 9, Line 3 (related adjustments arise from refigured items such as depreciation; the IRA deduction is listed as one). No business depreciation: s2.amt_dep $0, the gate false, so the related-adjustment bound is $0 though its items total $7,000. AGI $78,999.50 - $7,000 = $71,999.50; the 2025 standard deduction $15,750 (single and married filing separately) is line 2a and is added back, so line 4 is AGI less nothing else: line 4 $71,999.50.",
+      "inputs": {
+        "f1040.estimated_any": true,
+        "f1040.line26": 200000,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 7899950,
+        "person[taxpayer].w2[emp_a].box4": 489797,
+        "person[taxpayer].w2[emp_a].box5": 7899950,
+        "person[taxpayer].w2[emp_a].box6": 114549,
+        "person[taxpayer].ira_owner": true,
+        "person[taxpayer].sav_trad": true,
+        "person[taxpayer].ira_trad": 700000,
+        "person[taxpayer].ira_work_plan": true,
+        "s2.options_any": false
+      },
+      "expect": {
+        "s1.line20": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "s2.amt_dep": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_dep_any": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.amt_rel_items": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "s2.amt_rel": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_l4": {
+          "kind": "money",
+          "cents": 7199950
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_pab_over_tax_exempt",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: s2.amt_pab_over and the refusal on s2.amt_l4), predicted from i6251 p. 3 (Line 2g: box 9 private activity bond interest is part of the tax-exempt interest of box 8). Single, wages $100,000, tax-exempt interest $100,000, private activity bond interest entered as $100,001. The bound with all tax-exempt interest (line 4 $200,000, line 6 $111,900, 26% = $29,094) is above line 10 ($13,455), so the question is asked; the amount entered exceeds the tax-exempt interest, so line 4 refuses with the Form 1099-INT box 9 remedy. No Schedule D Tax Worksheet: line 14 is $0, its gate false, and line 37 $0 (lines 35 to 37 skipped).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 10000000,
+        "person[taxpayer].w2[a].box6": 0,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "s2.options_any": false,
+        "f1040.tax_exempt_interest": 10000000,
+        "s2.amt_pab": 10000100
+      },
+      "expect": {
+        "s2.amt_pab_over": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.amt_l4": {
+          "kind": "refusal",
+          "gate": "s2.amt_pab_over",
+          "form": "Form 1099-INT box 9",
+          "remedy": "Private activity bond interest (box 9) is part of tax-exempt interest (box 8); correct the amounts entered.",
+          "cite": {
+            "doc": "i6251",
+            "locator": "p. 3, Line 2g—Interest From Private Activity Bonds, \"Each payer of this type of interest should send you a Form 1099-INT showing the amount of this interest in box 9\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "b130e87362006177794ac29affd2637652cc4c8c03e54227891e2d1b9c976753",
+            "tax_year": 2025
+          }
+        },
+        "s2.amt_l14_any": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.amt_l37": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_boat_mortgage",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: the bound's mortgage interest, s2.amt_could, s2.amt_boat_ask and s2.amt_owed), predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Line 4 and the Exemption Worksheet p. 9; Part III p. 13), the 2025 Schedule D Tax Worksheet (i1040sd) and Tax Computation Worksheet and i6251 p. 8 (Line 3, Mortgage Interest: a boat or recreational vehicle is not a qualified dwelling). Single, wages $200,000, itemizing: state income tax $10,000, home mortgage interest $45,000 (Schedule A $55,000); taxable income $145,000, tax by the Tax Computation Worksheet 24% x $145,000 - $7,153 = $27,647 = line 10. Line 4 = $200,000 - $55,000 + taxes $10,000 = $155,000, line 6 $66,900, line 7 26% = $17,394, under line 10 (no tax at line 7 over line 10). With all mortgage interest added the bound's line 4 is $200,000, line 6 $111,900, 26% = $29,094 (not more than $239,100), above $27,647: the boat question is asked, answered Yes, so an item the arithmetic cannot see is present and s2.amt is true; Schedule 2 line 2 refuses (Form 6251).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 0,
+        "person[taxpayer].w2[a].box1": 20000000,
+        "s2.options_any": false,
+        "sa.state_tax_any": true,
+        "sa.line5a": 1000000,
+        "sa.home_owner": true,
+        "sa.mortgage_interest": 4500000,
+        "s2.amt_boat": true
+      },
+      "expect": {
+        "s2.amt_mortgage": {
+          "kind": "money",
+          "cents": 4500000
+        },
+        "s2.amt_h4": {
+          "kind": "money",
+          "cents": 20000000
+        },
+        "s2.amt_h6": {
+          "kind": "money",
+          "cents": 11190000
+        },
+        "s2.amt_h39": {
+          "kind": "money",
+          "cents": 2909400
+        },
+        "s2.amt_l10": {
+          "kind": "money",
+          "cents": 2764700
+        },
+        "s2.amt_could": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.amt_boat_ask": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.amt_owed": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.amt_tmt_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.amt": {
+          "kind": "bool",
+          "value": true
+        },
+        "s2.line2": {
+          "kind": "refusal",
+          "gate": "s2.amt",
+          "form": "Form 6251",
+          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
+          "cite": {
+            "doc": "f1040s2",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "revision": "2025; created 2025-05-08",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_mfs_addback",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: the married filing separately addition to line 4, and line 4 less the state refund), predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Line 4 and the Exemption Worksheet p. 9; Part III p. 13), the 2025 Schedule D Tax Worksheet (i1040sd) and Tax Computation Worksheet. Married filing separately, wages $1,000,350, a state refund of $1,500 of which $1,400 is taxable (the refund case of stage16.mut.refund_single_unasked: 2024 itemized $16,000 over the $14,600 standard deduction). AGI $1,001,750; line 2a $15,750 added back; line 2b subtracts the refund $1,400: line 4 $1,000,350. i6251 p. 9: line 4 over $900,350 by $100,000, 25% = $25,000 (under $68,500) added: $1,025,350. Exemption $68,500 - 25% of ($1,025,350 - $626,350) is below zero: $0; line 6 $1,025,350. The bound (no tax-exempt or mortgage interest) is the same: its addition $25,000, its line 4 $1,025,350.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 100035000,
+        "person[taxpayer].w2[a].box6": 0,
+        "person[taxpayer].w2[a].box1": 100035000,
+        "s2.options_any": false,
+        "f1040.status": "mfs",
+        "refund.any": true,
+        "refund.received": 150000,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 900000,
+        "refund.line5e_prior_year": 900000,
+        "refund.line17_prior_year": 1600000
+      },
+      "expect": {
+        "s1.line1": {
+          "kind": "money",
+          "cents": 140000
+        },
+        "s2.amt_l4": {
+          "kind": "money",
+          "cents": 100035000
+        },
+        "s2.amt_mfs_over": {
+          "kind": "money",
+          "cents": 10000000
+        },
+        "s2.amt_mfs_quarter": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "s2.amt_mfs_add": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "s2.amt_l4m": {
+          "kind": "money",
+          "cents": 102535000
+        },
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 102535000
+        },
+        "s2.amt_h4": {
+          "kind": "money",
+          "cents": 100035000
+        },
+        "s2.amt_h_mfs_add": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "s2.amt_h4m": {
+          "kind": "money",
+          "cents": 102535000
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_mfs_addback_max",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: the $68,500 cap of the married filing separately addition), predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Line 4 and the Exemption Worksheet p. 9; Part III p. 13), the 2025 Schedule D Tax Worksheet (i1040sd) and Tax Computation Worksheet. Married filing separately, wages $1,500,000 only: line 4 $1,500,000, over $1,174,350, so the addition is $68,500 (25% of $599,650 = $149,912.50 is more): $1,568,500; the bound the same.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 150000000,
+        "person[taxpayer].w2[a].box6": 0,
+        "person[taxpayer].w2[a].box1": 150000000,
+        "s2.options_any": false,
+        "f1040.status": "mfs"
+      },
+      "expect": {
+        "s2.amt_l4": {
+          "kind": "money",
+          "cents": 150000000
+        },
+        "s2.amt_mfs_add": {
+          "kind": "money",
+          "cents": 6850000
+        },
+        "s2.amt_l4m": {
+          "kind": "money",
+          "cents": 156850000
+        },
+        "s2.amt_h_mfs_add": {
+          "kind": "money",
+          "cents": 6850000
+        },
+        "s2.amt_h4m": {
+          "kind": "money",
+          "cents": 156850000
+        }
+      }
+    },
+    {
+      "id": "s2.mut.amt_line15_sdtw_line10",
+      "covers": [
+        "s2.amt"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (BUG-0656: line 15, 'the smaller of that result or the amount from line 10 of the Schedule D Tax Worksheet'), predicted by hand before running from f6251 (2025) and i6251 (Who Must File p. 1; Line 2g p. 3; Line 4 and the Exemption Worksheet p. 9; Part III p. 13), the 2025 Schedule D Tax Worksheet (i1040sd) and Tax Computation Worksheet and f4952 (line 4g election). Single, wages $200,000, capital gain distributions $50,000, all box 2b (unrecaptured section 1250 gain), investment interest $40,000 with $30,000 of the gain elected on Form 4952 line 4g (line 4e $50,000). Schedule A investment interest $30,000; taxable income $220,000; line 4 = AGI $250,000 - $30,000 = $220,000, line 6 $131,900. Schedule D Tax Worksheet: line 6 $0, line 9 $50,000 - $30,000 = $20,000 = line 10, line 11 $50,000, line 12 $20,000, line 13 $0. Part III: line 13 $0, line 14 $50,000, lines 13 + 14 $50,000, line 15 the smaller with line 10: $20,000, line 16 $20,000, line 17 $111,900, line 18 26% $29,094, lines 22 to 34 $0, line 36 $20,000, line 37 $5,000, line 38 $34,094, line 39 26% of $131,900 = $34,294, line 7 = line 40 $34,094.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 0,
+        "person[taxpayer].w2[a].box1": 20000000,
+        "s2.options_any": false,
+        "div.any": true,
+        "div.other_boxes": true,
+        "div.box2b": 5000000,
+        "sd.distributions": 5000000,
+        "f4952.has_interest": true,
+        "f4952.line1": 4000000,
+        "f4952.line4g": 3000000
+      },
+      "expect": {
+        "s2.amt_l6": {
+          "kind": "money",
+          "cents": 13190000
+        },
+        "s2.amt_l13": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.amt_l14": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "s2.amt_l15": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "s2.amt_l16": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "s2.amt_l17": {
+          "kind": "money",
+          "cents": 11190000
+        },
+        "s2.amt_l36": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "s2.amt_l37": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s2.amt_l38": {
+          "kind": "money",
+          "cents": 3409400
+        },
+        "s2.amt_l39": {
+          "kind": "money",
+          "cents": 3429400
+        },
+        "s2.amt_l7": {
+          "kind": "money",
+          "cents": 3409400
         }
       }
     }

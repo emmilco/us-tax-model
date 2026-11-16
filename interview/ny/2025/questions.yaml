@@ -40,9 +40,11 @@ bank:
     order: 1000
     seq: 40
     group: ny_where
-    tick: Lived, worked or kept a home in Yonkers in 2025
-    prompt: At any time in 2025, did you (or, on a joint return, your spouse) live or work in Yonkers, or keep a home there?
-    help: Yonkers has its own income tax, which this tool does not compute. A Yes ends the New York part here.
+    tick: Lived or worked in Yonkers, or had a place there, in 2025
+    prompt: At any time in 2025, did you (or, on a joint return, your spouse) live or work in Yonkers, or have a place to
+      live there, even one an employer or relative kept for you?
+    help: Count a place you could use, whether or not you stayed in it. Yonkers has its own income tax, which this tool
+      does not compute. A Yes ends the New York part here.
   - input: ny_it201.ask.moved_in
     order: 1000
     seq: 41
@@ -237,13 +239,14 @@ bank:
     order: 1040
     seq: 10
     prompt: In 2025, did you buy anything taxable in New York without paying New York sales tax on it (for example online, by
-      mail, or in another state)?
-    help: The return must state the tax owed on such purchases (use tax), or 0. For purchases under $1,000 each the amount
-      comes from a chart by income.
+      mail, or in another state)? Leave out a vehicle or boat whose tax you pay at the DMV.
+    help: Count a purchase taxed at a lower rate than New York City's, too. Leave out purchases of a business registered
+      for sales tax; they go on its own return. Purchases under $1,000 each are charged from a chart by income.
   - input: ny_it201.ask.use_tax_st141
     order: 1040
     seq: 20
-    prompt: Did any one of those purchases cost $1,000 or more, or was any of them for a business, a rental or royalties?
+    prompt: Did any one of those purchases cost $1,000 or more, or was any of them for a rental, royalties or a business not
+      registered for sales tax?
     help: Then the tax must be worked out exactly on Form ST-141, which this tool does not do.
   - input: ny_it201.ask.use_tax_exact
     order: 1040
@@ -252,8 +255,9 @@ bank:
   - input: ny_it201.ask.abode_part_year
     order: 1040
     seq: 40
-    prompt: Did you have a home in New York State for only part of 2025?
-    help: The chart amount is for a full year; this tool does not prorate it by months.
+    prompt: Was there a month of 2025 in which you had a home in New York State for half the month or less?
+    help: The chart amount is for a full year and is cut by months without a New York home, which this tool does not do. A
+      month in which you had a New York home for more than half of it counts as a full month.
   # ---- 1050 Tax already paid, and your refund
   - input: ny_it201.ask.other_withholding
     order: 1050
@@ -267,20 +271,22 @@ bank:
     prompt: List your Forms W-2 again, one entry per form, so their New York boxes can be entered; include a W-2 that shows no
       New York tax.
     help: New York needs a record for each Form W-2 you received (Form IT-2). Naming them as you named your federal Forms W-2
-      makes them easier to match.
+      makes them easier to match. If you received a corrected Form W-2c, enter its corrected amounts.
   - input: ny_it2.state_withheld
     order: 1050
     seq: 30
-    help: Box 17 of the Form W-2, the state income tax withheld, where box 15 shows NY. Enter 0 if none.
+    help: Box 17 of the Form W-2, the state income tax withheld, where box 15 shows NY; from a corrected Form W-2c, the
+      corrected amount. Enter 0 if none.
   - input: ny_it2.city_withheld
     order: 1050
     seq: 40
-    help: Box 19 of the Form W-2, the local income tax withheld, where box 20 shows New York City (NYC). Enter 0
-      if none.
+    help: Box 19 of the Form W-2, the local income tax withheld, where box 20 shows New York City (NYC); from a corrected
+      Form W-2c, the corrected amount. Enter 0 if none.
   - input: ny_it2.yonkers_withheld
     order: 1050
     seq: 50
-    help: Box 19 of the Form W-2 where box 20 shows Yonkers. Enter 0 if none; Yonkers tax is outside this tool.
+    help: Box 19 of the Form W-2 where box 20 shows Yonkers; from a corrected Form W-2c, the corrected amount. Enter 0 if
+      none; Yonkers tax is outside this tool.
   - input: ny_it201.ask.est_any
     order: 1050
     seq: 60
@@ -316,14 +322,16 @@ bank:
   - input: ny_it201.ask.prior_full_year
     order: 1050
     seq: 90
-    prompt: Did you file a New York return for 2024 that covered all 12 months?
+    prompt: Did you file a New York return for 2024, as a resident, part-year resident or nonresident?
     help: 'You owe more than was paid in. New York charges no penalty for that if what you paid during 2025 was at least your
-      2024 New York tax; that test needs a full-year 2024 return. Without one, a balance due ends the New York part here.'
+      2024 New York tax, which needs a 2024 return. Without one, a balance due ends the New York part here.'
   - input: ny_it201.ask.prior_year_tax
     order: 1050
     seq: 91
-    prompt: What was the total New York State and City income tax on your 2024 New York return?
-    help: Used only to check for the penalty for paying too little during the year.
+    prompt: What was the total New York State, City, Yonkers and commuter transportation (MCTMT) tax on your 2024 New York
+      return, before payments and refundable credits?
+    help: Leave out sales or use tax and gifts to New York funds. Used only to check for the penalty for paying too little
+      during the year.
   - input: ny_it201.ask.prior_agi_high
     order: 1050
     seq: 92
@@ -352,7 +360,7 @@ bank:
   - input: ny_it201.ask.refund_529
     order: 1050
     seq: 130
-    prompt: Do you want part of your New York refund put into a New York 529 college savings account?
+    prompt: Do you want all or part of your New York refund put into a New York 529 college savings account?
     help: Depositing a refund into a 529 account (Form IT-195) is outside this tool.
   # ---- asked where its subject lives: after the federal care questions
   - input: ny_it201.ask.dependent_care

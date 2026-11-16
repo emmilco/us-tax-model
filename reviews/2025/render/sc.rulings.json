@@ -237,6 +237,16 @@
    "subject_key": "0b78bb66b053b8a8151fc4f22d183c741e02df65e7cfb0e617a36d0e96d3277a"
   },
   {
+   "printed": "5 (sc.ho_line5)",
+   "restated": "Choose — [helper \"Line 4 is not more than the smallest line 29 any section 179 allocation could give\" = true → line 4 (sc.ho_line4)] [helper \"Line 4 is not more than the smallest line 29 any section 179 allocation could give\" = false → helper \"Line 5 when line 4 is more than the room left by the section 179 elections\"]",
+   "model": "The program uses Schedule C line 29 alone as worksheet line 1, but the IRS gross income limitation is broader. The instructions say to 'Enter any gain derived from the business use of your home and shown on Form 8949 ... or Form 4797' and to subtract 'any losses ... allocable to the business, but not allocable to the business use of the home'. They also say that 'If some of the income is from a place of business other than your home, you must first determine the part of your gross income ... from the business use of your home'. None of the refusals names these cases as excluded, so the program's line 5 can differ from the IRS amount when they apply.",
+   "ruling": "Ruling: scope; i1040sc p. 11, Instructions for the Simplified Method Worksheet, Line 1: lines B and D are gains and losses \"shown on Form 8949 (and included on Schedule D) or Form 4797\", and \"If some of the income is from a place of business other than your home, you must first determine the part of your gross income ... from the business use of your home\". Both cases are refused before line 5 is reached: the home-office screen sc.ho_other asks whether \"some of this business's gross income is from a place of business other than your home; you have a gain or loss on Form 8949 or Form 4797 related to this business\", and a Yes sets sc.ho_screened, which refuses at sc.ho_sqft (line 30(b)), the input every simplified-method line reads (rendered/2025/sc.md, (screen) sc.ho_other). With B and D zero, line E equals line A, Schedule C line 29, which is what the English states (sc.ho_line1's cite says so). The restated line 5 is otherwise the worksheet's smaller of line 1 and line 4, with the Pub. 946 two-limit case refused (sc.ho_both_limits).",
+   "context": "676d3cd80b5e9a5d923ff13d536b7c1ab16e6362d3ec4dd4f0b965ba1720207b",
+   "date": "2026-11-15",
+   "run": "41c22e05c05e3c15b48288428901b7ce93caaf570d328fb3565820cbb6a01ac0",
+   "subject_key": "1751ba01abc17733c32648511687bd0c1f711e46a67a7b5c933b96ae87fe8ca8"
+  },
+  {
    "printed": "7 (sc.f7206_line7)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"Schedule 1, line 15 (this person's), times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "Form 7206 line 7 says \"Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the percentage on line 6.\" The restatement instead uses this person's Schedule SE line 13. On a joint return where both spouses have self-employment income, Schedule 1 line 15 combines both spouses' amounts. The Form 7206 instructions, which would say whether to use only the filer's own share, are not provided.",

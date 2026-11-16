@@ -5,7 +5,7 @@
  "base": "1360a1bcf95e5c405a63edc9d74ccbe052a1547147428fa3160de9d74b834a8f",
  "head_rows": {
   "match / mismatch / unclear / missing": "91 / 4 / 0 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -72,9 +72,9 @@
   },
   {
    "key": "10",
-   "record": "1360a1bcf95e5c405a63edc9d74ccbe052a1547147428fa3160de9d74b834a8f",
+   "record": "a9724e1894d35f623fddb8fc47eca71d30e95eb83501fb9c2c27d2c835e1e026",
    "status": "MATCH",
-   "subject_key": "b009f4e0794e90c53dbc52a998ac4322a411bb7f1658d110f5257edf3fedd377"
+   "subject_key": "5c35bcea090d261af59aea36faba4f18a28eaee5eca783009b868967c6657157"
   },
   {
    "key": "11(a)",
@@ -546,28 +546,28 @@
   },
   {
    "key": "24",
-   "record": "d72f35a67e95d671cc413a0282d4b6c3adc40e0964fa385e82612ec0781d855f",
+   "record": "a9724e1894d35f623fddb8fc47eca71d30e95eb83501fb9c2c27d2c835e1e026",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; screen s3.mfs, as the earlier rulings on this line. i8962 p. 16, Not an applicable taxpayer: \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC ... enter -0- on line 24\". No married filing separately return is completed: s3.mfs (forms/2025/s3.yaml, f1040.status equal to mfs) refuses scope.ready (forms/2025/scope.yaml), Exception 2 included, so the applicable-taxpayer helper never meets a married filing separately filer. The render review does not show the return-wide refusal. Project stands.",
-   "subject_key": "89452d005f0561316a1ba44ffb62385e9c0be95a82e1f794ff3cd6dfa796afa5"
+   "ruling": "Ruling: scope; the reviewer's case, married filing separately without Exception 2 (i8962 p. 16, \"Not an applicable taxpayer ... enter -0- on line 24\"), is refused for the whole return before Form 8962: scope.ready_credits refuses s3.mfs (\"Married filing separately ... Married filing jointly is supported\"), and the form note says so. The rendered choice (zero when not an applicable taxpayer, else line 11(e) or lines 12(e) to 23(e)) is right for every computed return; the below-100% zero is the owner's reading of amb.2025.ptc_not_applicable.",
+   "subject_key": "b3fe8d8af56613eabffd75e12d8a33fa490b4ed3e59689756b940c47657e74f4"
   },
   {
    "key": "25",
-   "record": "d72f35a67e95d671cc413a0282d4b6c3adc40e0964fa385e82612ec0781d855f",
+   "record": "a9724e1894d35f623fddb8fc47eca71d30e95eb83501fb9c2c27d2c835e1e026",
    "status": "MATCH",
-   "subject_key": "b4fdffeb13d8c86007f4c9649f3e7879915aeb86596433656672f8b9d4f70d2e"
+   "subject_key": "9bd7adcd8d9dec7ccf468f7bb1748faec88fc8d2f33e3dd5a495d763482f4f5f"
   },
   {
    "key": "26",
-   "record": "1360a1bcf95e5c405a63edc9d74ccbe052a1547147428fa3160de9d74b834a8f",
+   "record": "a9724e1894d35f623fddb8fc47eca71d30e95eb83501fb9c2c27d2c835e1e026",
    "status": "MATCH",
-   "subject_key": "2ca937e9e7d6de510b085a76fa56d321ee75d8515d882788d8d1ed14752e8708"
+   "subject_key": "5bdf9fbb85d9804c127d84415fceb94ff85788ac86e8ae2c10c0b27fadc9c840"
   },
   {
    "key": "27",
-   "record": "1360a1bcf95e5c405a63edc9d74ccbe052a1547147428fa3160de9d74b834a8f",
+   "record": "a9724e1894d35f623fddb8fc47eca71d30e95eb83501fb9c2c27d2c835e1e026",
    "status": "MATCH",
-   "subject_key": "25e60e05e42d975ea17faa84af42e21dc59aacd285cd713721f080e6ae36ad95"
+   "subject_key": "36ba7e27bb48c5ad4861ec144489383b7c8b159d439becfea042f9a5eec3fec0"
   },
   {
    "key": "28",
@@ -594,7 +594,7 @@
   "8a": "a04a417ffc833fc2d91c2bd8ff7a0ca7b53f416845bcb59058620b3f6b7369e7",
   "8b": "d9613e874891a064bfd99682dc5155b4dd798de3ee5faa9537d1347785951e3a",
   "9": "bcb47f287ec6b3dfb70dad9c84dcc25d29eeae687d94681e4a07b3a9c1dd8f0e",
-  "10": "99f971814a781cc894f095ed59c693fbe803447a1142b6432bb565632dd99a65",
+  "10": "356e80ceb46501f36c860e18b8ad81fb0787c8169bd546125bbe5608634e1514",
   "11(a)": "b5943f2c0337b9073928792d21827f4815333852dc2c508729ec330f534f513d",
   "11(b)": "2dbea4f4078162f4a71b203819adfd68999dd0bb371cf65aa3f62a22e565357b",
   "11(c)": "3c4629225f467d0cd80cbfaf0a3df4a535828604995141121eb69a1eddc56e35",
@@ -673,10 +673,10 @@
   "23(d)": "d60a79c9287e2b12c97a5ce5b933a1fdfc858d39dc654b7c01b555b55810d169",
   "23(e)": "9b3ddb6cb5e26795ecf791de22e0f95b80ff155a724769cf8028876acc89b179",
   "23(f)": "89e4610491a1f8c60d22e2aedf43e35aa691775c09e0129a28a8c45ad2eaf5fc",
-  "24": "bc0809e015eed819844b273f898d1519ea3a6c0a3e32e1c838a74999df5fe527",
-  "25": "12043d899f0b58b59c4f1e5560e6c20d5cf1092113183a512f6f12ca59387c53",
-  "26": "f908d298d2a728189fadc68a84e90d0d391cfd93298ba1692c91ce42f60de497",
-  "27": "516f26dedb1b35a72fa7e2ce05bf3c23cd36393a850ca42f81d4d40bbbb111c0",
+  "24": "6bf2a79331fd3aacc06966fc887537165f6ffa8e6cd5497d985f19e7059b8f81",
+  "25": "4294524e7d383824b82967f9009b61fe97f0ab3f7d3710fabfe95f3e97473cba",
+  "26": "b4d5bb15e3d3326cc658218cd80f6662a85d9d1ef567fa6e48bc8477536b7e10",
+  "27": "cdb2461c208b681d6709dbe475a5b3bf951514cd21a836109ada3ca0d908b36d",
   "28": "d296a338cce6f665028306b24638d3422f6c32c1ce57956c338e85adc10d0477",
   "29": "bed65ae3a17d76cdf3b8575d6854e0976d32f22e88198941bc6b6b688341dd78"
  },

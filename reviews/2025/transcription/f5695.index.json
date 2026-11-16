@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "35",
   "agree / disagree / missing": "4 / 31 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -32,17 +32,17 @@
   },
   {
    "key": "5b",
-   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
+   "record": "71438f82ba3dda8ac5fc98f30f7e1ce5e387c44766aa903ec0f86a0f5f3fc0bf",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate reads line 5a raw; the interview asks it only after f5695.any Yes (classm.eic.1: project $0.00, candidate unknown). f5695 p. 1, line 5b, \"If you checked the 'Yes' box, enter the qualified battery technology costs\". The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 4,037 of 4,642 agree; on completed returns: 14 candidate-unknown.",
-   "subject_key": "a55a4cee6586817505ae5522675880ab04496ce1d69506e08576e57405bd9262"
+   "ruling": "Ruling: representation; i5695 p. 4, Lines 5a and 5b, \"If you check the No box, you can't include any battery storage technology costs on line 5b\". The project reads line 5a through f5695.line5a_if_any (5a is asked only when f5695.any is Yes, false otherwise) and gives $0 without it; the reply reads line 5a raw. Triage (.transcription/triage/2025/f5695.json, pass 6bc2a8c26b25): 4,043/4,684 agree; no value difference; completed: 26 candidate-unknown (5a unasked because f5695.any is No, where the project's $0 is the source's answer); the rest 582 candidate-unknown, 30 project-unknown, 3 candidate-refuses on incomplete or refused records.",
+   "subject_key": "c26ec824ce99bed76410806a21b6b99a481e244ce33ae465e1ac79521fe72c9a"
   },
   {
    "key": "6a",
-   "record": "6bb2d75440ee9cbe82f8f1bc2c61c81202f4853b5946f8942fce447987a1270f",
+   "record": "71438f82ba3dda8ac5fc98f30f7e1ce5e387c44766aa903ec0f86a0f5f3fc0bf",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; The interview asks the Form 5695 amounts behind plain-language parent questions (f5695.any, then one Yes/No per kind of property such as f5695.solar, f5695.doors, f5695.central_ac or f5695.audit; s3.prior_other_forms before the 2024 carryforward), and the project reads each amount through its gate (zero, and not asked, when the gate answer is No). Here the candidate sums the raw lines 1 to 5b; the project reads each through its kind gate (f5695 p. 1, line 6a, \"Add lines 1 through 5b\"). Completed differences are partials withholding a cost whose kind was answered No (stage14.asset.hy_5yr). The two value differences are the refused fixtures classm.dcprov.1 and mutation.t2.qss_s1a_car, which carry a line 3 cost with every kind answered No. The sampled completed-return witnesses are all the candidate needing an answer the interview does not ask because a gate answer is No; where the amounts are asked the values agree. Triage executable-triage-v2 (`.transcription/triage/2025/f5695.json`, pass 27cb453e9034; 1,986 fixtures, 500 generated returns seed 20261026, 2,156 partial records): 4,451 of 4,642 agree; on completed returns: 40 candidate-unknown.",
-   "subject_key": "6f047dd08fab4f23533b15ed318ac31a3bc15d8bb05a6e72a62d85b47b0e478b"
+   "ruling": "Ruling: representation; f5695 line 6a, \"Add lines 1 through 5b\". Same sum; the project adds each of lines 1 to 4 through its parent gate (f5695.line1_if_solar, line2_if_solar_water, line3_if_wind, line4_if_geothermal; $0 when the kind is answered No), the reply adds the lines raw. Triage (pass 6bc2a8c26b25): 4,476/4,684 agree; completed: 52 candidate-unknown only (an amount question not asked because its kind is No); 2 value differences, both refused returns (classm.dcprov.1, mutation.t2.qss_s1a_car: f5695.line3 = $1,619 supplied under a wind answer of No, which the project rightly does not read).",
+   "subject_key": "00805c63e4a82b4ea16ef3ce369c38d72cfdfbf8e0b48b915294ba1d17eed8f8"
   },
   {
    "key": "6b",
@@ -255,8 +255,8 @@
   "f5695.part1_any": "0ee5dcdf1ec4cbdd4f0613e7d520e8dfd96a7be1400495a43105189476282779",
   "f5695.part2_any": "5dad0f528c47ae7f9973d66ddcc544f40a63ea8fcd080d658533d0ec3bb5d6e0",
   "f5695.claiming_part1": "ed5c63e7ea1a8d748c304e36346dd83f9c72bdd6437d5168cf381f5ca2a1af6a",
-  "5b": "fe915bce126bcdbe8d05b8dea65a7d7c806cc6ae7ee9cad4b9964bd938ea5587",
-  "6a": "795ee40fbb218bf0776d1ce4734d4c809147461f28a07399b23d78aa020dd643",
+  "5b": "b85bb04e033af2058a15cad03c19b087f07549fb38d2ee19dd331bad64a28fdd",
+  "6a": "5a92e7820d32ab5a6314c321b7dac0c898ed2bcfeb3b91d6cef96eed33fff4f3",
   "6b": "033dda84713fe99afcb352106c331342fe2469475865231043196d95777ddbd5",
   "11": "24d6e9f296e5431e0f6011ca7b7dd2615daa98b09d2421fb56c25d14bba2850f",
   "13": "b56bb80b7d357b0eedd125f36ac504f08a2c7c6bf91c6ff3bd11d363d71b18cc",

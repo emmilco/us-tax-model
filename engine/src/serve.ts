@@ -166,7 +166,7 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
     const path = logPath(name);
     if (!existsSync(path)) throw new HttpError(404, `no return named ${name}`);
     const events = readFileSync(path, "utf8").trim().split("\n").map((l) => JSON.parse(l) as Event);
-    if ((events[0]?.profile ?? "social-security") !== PROFILE) throw new HttpError(400, "interview profile does not match log");
+    if (events[0]?.profile !== PROFILE) throw new HttpError(400, "interview profile does not match log");
     return events;
   };
 

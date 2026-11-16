@@ -113,3 +113,25 @@ Lane land3-adj7 (claude-opus-5-5, judgment). Open lines of the Claude render log
 Counts: claude render: ambiguity and scope 1.
 
 Findings: none. No line left open.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-c (claude-opus-5-5, judgment; tax year 2025, us), goal-1 merge B1 (worktree nx-b1). Open lines of the Claude transcription pass 0e1ac073bd9b, ruled on `.transcription/triage/2025/refund.json` (3,291 comparisons per line), the form YAML and i1040gi. Rulings `/tmp/b1-adj-c/refund.transcription.json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | refund.taxable | representation | 2,611/3,291 agree; no value; 100 project-unknown on completed returns with no refund | i1040gi p. 88, Line 1; amb.2025.refund_two_returns | Same zero-or-line-9 rule; Schedule 1 line 1 reads it only when refund.has. |
+| claude | transcription | 1 | representation | 2,602/3,291; no value; 101 project-unknown completed where the reply's line is hidden | i1040gi p. 90, worksheet line 1 | Same cap; project reads the refund through refund.received_if_worksheet. |
+
+Counts: representation 2. Findings: none.
+
+## Goal-1 round (2026-11-15), render
+
+Lane b1-adj-c. Rulings `/tmp/b1-adj-c/refund.render.json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | 1 | ambiguity | MISMATCH; form YAML, register | i1040gi pp. 89-90; amb.2025.refund_two_returns, amb.2025.refund_cap_5d | Two-returns zero and the 5d cap are chosen readings; exceptions 1 and 5 refused by refund.not_prior_year on refund.taxable. |
+| claude | render | 6 | representation | UNCLEAR; refund.per_box, spouse questions | i1040gi p. 90, line 6 | Amount helpers are per_box when checked; MFS condition in the spouse questions. |
+
+Counts: claude render: ambiguity 1, representation 1. Findings: none. No line left open.

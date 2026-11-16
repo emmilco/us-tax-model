@@ -45,6 +45,18 @@
    "date": "2026-11-14",
    "run": "40af7ef6a728d531e3e645a898554a58c0c303b266c0d781192b269d07358299",
    "subject_key": "a1fbe072efaff2c75e74dc210e1ba7fdfe66537b5bfe859e651fc25c5ea7689e"
+  },
+  {
+   "case": "classm.f1095a.3",
+   "printed": "f1095a[form_1].uniform",
+   "project": "no",
+   "model": "yes",
+   "ruling": "Ruling: model error; the case states that the form as printed is the same every month (yes), that the filer has another reason to believe column B is wrong (yes), and that with column B corrected the form is not the same in all 12 months (no; the corrected column B entries are $400 for January to June and $300 for July to December). f1095a.uniform takes f1095a.b_fixed_same_if_b_wrong when column B needs correcting (b_wrong_asked true), so it is No, as i8962 p. 14, Line 10 requires: \"If your correct applicable SLCSP premium is not the same for all 12 months, check 'No'\". The model answered the printed form and set the correction aside, as the landing round's rulings on b_check and b_wrong_asked of this case. Not evidence; dropped.",
+   "drop": true,
+   "context": "e87d1415430a862aa175b50a4a6070a2537388a09761b13559bb365e335e8505",
+   "date": "2026-11-15",
+   "run": "55578cc4faec1a0fd81ad25695d96052eec8584c87353cfbcdc5ccf23f2cfbff",
+   "subject_key": "806e6d9c3b4b341ba52e0a88b9a4bab1eb714f1cc7fad177a7588c16be3fc84a"
   }
  ]
 }

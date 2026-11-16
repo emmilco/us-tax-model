@@ -8,67 +8,96 @@
    "key": "1",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
    "status": "UNCLEAR",
-   "ruling": "Ruling: ambiguity; amb.2025.clcw_line1_signed. UNCLEAR: the model says nothing in the text given says line 15 equals line 11 minus line 14, and that Form 1040-NR is left out without a refusal. i1040sd p. 10, line 1: \"Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15. If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses\". The rendering states the reading recorded in amb.2025.clcw_line1_signed (owner's decision D2(a), 2026-10-27): ask for 2024 lines 11 and 14 as printed and take line 1 as their difference, because the printed line 15 is floored at zero and the worksheet wants the amount before the floor. The identity is printed on the 2024 Form 1040 (sources/2024/f1040 p. 1, line 15: \"Subtract line 14 from line 11. If zero or less, enter -0-. This is your taxable income\"), a page the review was not given (it had i1040sd pp. 3 and 10 and p550 pp. 102-103), because the line's citation names only the worksheet. Form 1040-NR is outside the tool (this tool prepares Form 1040 or 1040-SR only), so leaving it out changes nothing. Same ruling as the first Stage 20 round. The BUG-0185 change (line 1 shown only when clcw.applies) agrees with p. 10, \"Otherwise, you don't have any carryovers\", and is not disputed."
+   "ruling": "Ruling: ambiguity; amb.2025.clcw_line1_signed. UNCLEAR: the model says nothing in the text given says line 15 equals line 11 minus line 14, and that Form 1040-NR is left out without a refusal. i1040sd p. 10, line 1: \"Enter the amount from your 2024 Form 1040, 1040-SR, or 1040-NR, line 15. If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses\". The rendering states the reading recorded in amb.2025.clcw_line1_signed (owner's decision D2(a), 2026-10-27): ask for 2024 lines 11 and 14 as printed and take line 1 as their difference, because the printed line 15 is floored at zero and the worksheet wants the amount before the floor. The identity is printed on the 2024 Form 1040 (sources/2024/f1040 p. 1, line 15: \"Subtract line 14 from line 11. If zero or less, enter -0-. This is your taxable income\"), a page the review was not given (it had i1040sd pp. 3 and 10 and p550 pp. 102-103), because the line's citation names only the worksheet. Form 1040-NR is outside the tool (this tool prepares Form 1040 or 1040-SR only), so leaving it out changes nothing. Same ruling as the first Stage 20 round. The BUG-0185 change (line 1 shown only when clcw.applies) agrees with p. 10, \"Otherwise, you don't have any carryovers\", and is not disputed.",
+   "subject_key": "1237475996607bb63ffe3b4e3e147a07e6a0b4af98367de0408fd1d791e0bcc7"
   },
   {
    "key": "2",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "879cac900660c48323de53c3c24e3b6354df8ae93344f45ffbad008bdcff9f90"
   },
   {
    "key": "3",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "5143c63d291bd7c7e0ab95fde8b18c067daac20cd249bccf6326b77d787c9391"
   },
   {
    "key": "4",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "6f98f23d1f4a4832dd03445521de7c5bdacd15ad21116c8e5c023dfa7bbfc588"
   },
   {
    "key": "5",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "23e232ff34fc93d10658c920c9c07f84a4179c1ec7d7005a56b6fe7b409c2349"
   },
   {
    "key": "6",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "9a892e573137bfc3bfe8577ee397df2b5379f64e1dae3cd4f073fae8c70b02e5"
   },
   {
    "key": "7",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "6111dab3290f0e2238a7aa8e325f01d0b1586ba606cb694c00bd2c9679a48b4a"
   },
   {
    "key": "8",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "6cca998dc136047d1289fc0d9b41a80a2837944ad31cc94d66916721e8285ef7"
   },
   {
    "key": "9",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "4a821e377c115efa2602d7dd90f0953d27bd3b354eb96a3a24bfb5aa5d79a78d"
   },
   {
    "key": "10",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "3f7c8f0b744eb93aa626aa3c1c03aad617e964da3321d06e3567f9c3e793b75e"
   },
   {
    "key": "11",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "41654ed8de08cfe7dbdb1f8b531146f85fd4b0311a3bd6350dbef6cef45e77e6"
   },
   {
    "key": "12",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "014fec1282e9eda0fd9a4c02703f8d6aac88fbe819e6c03e4a5c062a60399271"
   },
   {
    "key": "13",
    "record": "454409117a5a9a54df09865b973e84bd3bc5c4cbf9018487d07587ca8e237e1c",
-   "status": "MATCH"
+   "status": "MATCH",
+   "subject_key": "984095014201bfacc2aaee2686dbf0e1040a95a581902a34e0d82362e965dbaf"
   }
- ]
+ ],
+ "subjects": {
+  "1": "11bfbb3688733d3f3dd39f57f813b4bbcc30c1b1ddf12bd35c569704184cff41",
+  "2": "cab5c34468ff635c8984778129a3e3d05b87b19a6ce2fc9e36338742276ab415",
+  "3": "3ce0608678c2d2c4d76206ece6733058c290083c5efad6151a365b534c56dcbb",
+  "4": "31cf7b432c1c4a7706073fe2a969ed57f1095102864ed6ef74a8e752c434f360",
+  "5": "da1750617bd3ed5599a91e0bf965caae3fd3aeb54adfb5fcaa006b86f835f9e7",
+  "6": "6b32f98dba8e3a78daa85fcccdbb6302d2ed7bdea3fd18b0950b598155a454ec",
+  "7": "a76ce41fbe901efdc3f263107dcd3e2fcc28fecc843f867cd3a14de653c90b6c",
+  "8": "6952238f7a95ee9be860a2a8fa5a0391741be6cdbcd62334a07b0ffbedafda58",
+  "9": "519623c847c9a2ca0575f8ef318839f07d994aea28577276ec9a7dbf30547755",
+  "10": "baf5a45afb12547120006fe7d4484de5c22f8cc7513099cdb68e262fb51158f2",
+  "11": "160e911e9f7aa86f1ad705bac7995acd7682ce3456b4e707e1b5e33e36aeb522",
+  "12": "c6d140e9b4837ae7bf4896940b1cba9ce25078a76c0b0f68dc4006449cb567a8",
+  "13": "85f952586e089869c0c1199dc387ca1ecbe22064c10ec930abf0f80eae4344a7"
+ },
+ "__rest__": "76ab09e2684a4cbda64a57209185245d853f052f853123ece58c920bee165c55"
 }

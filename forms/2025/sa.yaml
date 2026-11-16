@@ -469,13 +469,16 @@ form:
     - id: sa.state_tax_other_any
       printed: (helper)
       type: Bool
-      label: 'In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, or income tax of a U.S. territory?'
+      label: 'In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, income tax of a U.S. territory, or a state or local tax credit you received for a gift to charity and applied to your tax?'
       expr:
         op: input
-        source: 'In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, or income tax of a U.S. territory?'
+        source: 'In 2025, did you (or, on a joint return, your spouse) pay state or local income tax other than tax withheld from pay: tax withheld from other income, estimated payments, tax paid for an earlier year, a mandatory contribution to a state disability, unemployment, workers compensation or family leave fund, income tax of a U.S. territory, or a state or local tax credit you received for a gift to charity and applied to your tax?'
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040sca
+        locator: 'p. 3, Line 5a, "State and local estimated tax payments made during 2025", "Mandatory contributions to state
+          family leave programs", Safe harbor for certain charitable contributions made in exchange for a state or local tax
+          credit, "to the extent you apply the state or local tax credit to this or a prior year''s state or local tax
+          liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate"'
     - id: sa.line5a
       printed: (helper)
       type: NonNegDollars
@@ -852,15 +855,24 @@ form:
       printed: (helper)
       type: NonNegDollars
       gated_by: sa.line8a
-      label: Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits
-        do not apply
+      label: Home mortgage interest and points reported to you on Form 1098 for a loan secured by your main home or second
+        home (only your share of a loan shared with someone other than your spouse; not reduced by a refund of overpaid
+        interest)
       expr:
         op: input
-        source: Eligible home mortgage interest and points on Form 1098, after confirming the debt/use
-          limits do not apply
+        source: 'Home mortgage interest and points reported to you on Form 1098 (boxes 1 and 6) in 2025 for loans secured by
+          your main home or second home. Where you and someone other than your spouse on a joint return were both liable
+          for and paid the interest, count only your share. Do not reduce the amount by a refund of overpaid interest the
+          Form 1098 shows. Leave out interest paid in 2025 for a period after 2025. The debt and use limits are asked
+          separately.'
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040sca
+        locator: 'p. 8, Interest You Paid, "In general, if you paid interest in 2025 that applies to any period after 2025, you
+          can deduct only amounts that apply for 2025"; Line 8, Home Mortgage Interest, "A home mortgage is any loan that is secured by your main home or second home";
+          Line 8a, "Enter on line 8a mortgage interest and points reported to you on Form 1098 unless one or more of the limits
+          on home mortgage interest apply to you", "Refund of overpaid interest. If your Form 1098 shows any refund of
+          overpaid interest, don''t reduce your deduction by the refund", "More than one borrower" and "If the shared interest
+          was reported on the Form 1098 you received, deduct only your share of the interest on line 8a"'
     - id: sa.line8a
       printed: 8a
       type: NonNegDollars
@@ -1091,15 +1103,26 @@ form:
       printed: (helper)
       type: NonNegDollars
       gated_by: sa.line11_if_gifts
-      label: Deductible cash/check charitable gifts before income limits, after benefits received and
-        required substantiation
+      label: Gifts to charity in cash or by check, card or payroll deduction, including out-of-pocket volunteer costs, less
+        the value of benefits received and the amounts that can't be deducted
       expr:
         op: input
-        source: Deductible cash/check charitable gifts before income limits, after benefits received and
-          required substantiation
+        source: |-
+          Gifts you (or, on a joint return, your spouse) made to charity in 2025 in money (cash, check, card or payroll deduction), including out-of-pocket costs of volunteer work (the actual cost of gas and oil or 14 cents a mile, plus parking and tolls).
+
+          Count only what you paid above the value of any benefit you received in return, and only gifts for which you keep a bank record or a written record from the charity (and, for a gift of $250 or more, the charity's written acknowledgment).
+
+          Leave out: the part of a gift for which you received a state or local tax credit; political contributions; raffle, bingo or lottery tickets; tuition; dues to clubs, lodges or similar groups; payments for the right to buy college athletic tickets; gifts to individuals or to groups run for profit or to lobby; travel away from home with a significant element of personal pleasure; the value of your time; and amounts repaid to you.
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040sca
+        locator: 'p. 9, Amounts You Can Deduct, "Contributions can be in cash, property, or out-of-pocket expenses you paid to
+          do volunteer work", "14 cents a mile", "But don''t deduct any amounts that were repaid to you", Gifts from which you
+          benefit, "you can generally only deduct the amount that is more than the value of the benefit", Gifts of $250 or
+          more; p. 10, Amounts You Can''t Deduct, "Political contributions", "Cost of raffle, bingo, or lottery tickets",
+          "Cost of tuition", "Value of your time or services"; Line 11, "Enter on line 11 the total value of gifts you made in
+          cash or by check (including out-of-pocket expenses)", Recordkeeping, "you must maintain as a record of the
+          contribution a bank record (such as a canceled check or credit card statement) or a written record from the
+          charity"'
     - id: sa.line11_if_gifts
       printed: "11"
       type: NonNegDollars
@@ -1504,11 +1527,13 @@ form:
       expr:
         op: input
         source: 'Your gambling losses during 2025 (you and, on a joint return, your spouse), including the cost of
-          nonwinning bingo, lottery and raffle tickets, in full, whether or not more than your winnings; zero if none'
+          nonwinning bingo, lottery and raffle tickets, in full, whether or not more than your winnings, but not losses of
+          a trade or business of gambling, which go on Schedule C; zero if none'
       cite:
         doc: i1040sca
         locator: 'p. 11, Other Itemized Deductions, "Gambling losses (gambling losses include, but aren''t limited to, the
-          cost of nonwinning bingo, lottery, and raffle tickets)"'
+          cost of nonwinning bingo, lottery, and raffle tickets)"; p525 p. 33, Gambling winnings, "If you’re in the trade or
+          business of gambling, use Schedule C (Form 1040)"'
     - id: sa.line16_gambling
       printed: (helper)
       type: NonNegDollars

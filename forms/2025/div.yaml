@@ -70,7 +70,8 @@ form:
       gated_by: div.box3_if_dividends
       expr:
         op: input
-        source: Nondividend distributions/return of capital, box 3
+        source: Nondividend distributions/return of capital, box 3 (total of all your Forms 1099-DIV, with your share of
+          amounts paid in someone else's name and any received without a form)
       cite:
         doc: f1099div
         locator: Instructions for Recipient, boxes 1–16
@@ -103,7 +104,8 @@ form:
       gated_by: div.box12_if_dividends
       expr:
         op: input
-        source: Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV; box 13 amounts are already included)
+        source: Exempt-interest dividends, box 12 (total of all your Forms 1099-DIV, with your share of amounts paid in
+          someone else's name and any received without a form; box 13 amounts are already included)
       cite:
         doc: f1099div
         locator: 'Instructions for Recipient, Box 12 ("Shows exempt-interest dividends from a mutual fund or other RIC

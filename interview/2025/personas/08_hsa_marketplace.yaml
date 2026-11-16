@@ -15,7 +15,7 @@ answers:
   person[taxpayer].w2[logistics_co].box5: 4200000
   person[taxpayer].w2[logistics_co].box6: 60900
   person[taxpayer].f8889[hsa].owner_died: false
-  person[taxpayer].f8889[hsa].inherited: false
+  person[taxpayer].f8889[hsa].inherited_any: false
   person[taxpayer].f8889[hsa].archer: false
   person[taxpayer].f8889[hsa].line9: 160000
   person[taxpayer].f8889[hsa].line2: 0

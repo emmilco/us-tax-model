@@ -210,9 +210,19 @@ form:
       cite:
         doc: i1040sd
         locator: 'p. 1, Other Forms You May Have To File, "Use Form 4684 to report involuntary conversions of property due to casualty or theft."'
+    - id: sd.qof
+      printed: (gate)
+      label: 'Did you (or, on a joint return, your spouse) own an investment in an opportunity zone fund (QOF) at any time in 2025, or put off tax on a 2025 gain by investing in one?'
+      type: Bool
+      expr:
+        op: input
+        source: 'Did you (or, on a joint return, your spouse) own an investment in an opportunity zone fund (QOF) at any time in 2025, or put off tax on a 2025 gain by investing in one?'
+      cite:
+        doc: i1040sd
+        locator: 'p. 1, Other Forms You May Have To File, "Use Form 8997 to report each QOF investment you held at the beginning and end of the tax year and the deferred gains associated with each investment. Also, use Form 8997 to report any capital gains you are deferring by investing in a QOF during the tax year and any QOF investment you disposed of during the tax year."; i8949 p. 12, "you will need to complete a Form 8997 for each year you hold the investment"; i1040gi p. 31, Line 7a, Exception 1, "You don’t have to file Form 8949 or Schedule D if you aren’t deferring any capital gain by investing in a qualified opportunity fund"'
     - id: sd.other_forms
       printed: (helper)
-      label: 'Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.'
+      label: 'Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or an investment in a qualified opportunity fund (Form 8997)? Count section 1256 contracts and a casualty or theft of property whether you held the property directly or through an entity.'
       type: Bool
       expr:
         op: test
@@ -253,9 +263,13 @@ form:
             eq:
               - sd.casualty
               - const: true
+          - op: test
+            eq:
+              - sd.qof
+              - const: true
       cite:
         doc: i1040sd
-        locator: 'p. 1, Other Forms You May Have To File, "Use Form 4797 to report the following.", "The involuntary conversion (other than from casualty or theft) of property used in a trade or business", "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.", "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.", "Use Form 4684 to report involuntary conversions of property due to casualty or theft.", "Use Form 6781 to report gains and losses from section 1256 contracts and straddles.", "Use Form 8824 to report like-kind exchanges."; p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method"; p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439."'
+        locator: 'p. 1, Other Forms You May Have To File, "Use Form 8997 to report each QOF investment you held at the beginning and end of the tax year", "Use Form 4797 to report the following.", "The involuntary conversion (other than from casualty or theft) of property used in a trade or business", "Ordinary loss on the sale, exchange, or worthlessness of small business (section 1244) stock.", "Ordinary gain or loss on securities or commodities held in connection with your trading business, if you previously made a mark-to-market election.", "Use Form 4684 to report involuntary conversions of property due to casualty or theft.", "Use Form 6781 to report gains and losses from section 1256 contracts and straddles.", "Use Form 8824 to report like-kind exchanges."; p. 6, Installment Sales, "Use Form 6252 to report the sale on the installment method"; p. 6, "Include on Schedule D, line 11, the amount from box 1a of Form 2439."'
     - id: sd.route_each
       printed: (gate)
       label: 'Do you want to choose, sale by sale, between listing a sale on Form 8949 and adding it to a total on Schedule D? The tax is the same either way; with a No, every sale is listed.'
@@ -268,17 +282,19 @@ form:
         locator: p. 10, lines 1a and 8a
     - id: sd.carryover
       printed: (helper)
-      label: 'Did line 21 of your 2024 Schedule D show a loss?'
+      label: 'Did line 21 of your 2024 Schedule D show a loss, or would it have, on a correct 2024 return, if you filed none or left a loss off?'
       type: Bool
       expr:
         op: input
-        source: 'Did line 21 of your 2024 Schedule D show a loss? On a 2025 joint return, answer for your 2024 joint return,
-          or for either spouse''s separate 2024 return.'
+        source: 'Did line 21 of your 2024 Schedule D show a loss, or would it have, on a correct 2024 return, if you filed
+          no 2024 return or Schedule D or left a capital loss off it? On a 2025 joint return, answer for your 2024 joint
+          return, or for either spouse''s separate 2024 return.'
       cite:
         doc: i1040sd
         locator: p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, "Use this worksheet to figure your capital loss
           carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss", "Otherwise, you don’t have any
-          carryovers"
+          carryovers"; p550 p. 102, Capital loss carryover, "you must take the current year's allowable deduction into
+          account, whether or not you claimed it and whether or not you filed a return for the current year"
     - id: sd.distributions
       printed: (helper)
       label: Capital gain distributions, generally Form 1099-DIV box 2a
@@ -1436,7 +1452,9 @@ form:
         from: sd.zero
       cite:
         doc: f1040sd
-        locator: Schedule D (2025), Parts I–III
+        locator: 'Schedule D (2025), line 5, "Net short-term gain or (loss) from partnerships, S corporations, estates,
+          and trusts from Schedule(s) K-1" (zero: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1 at
+          Form 1040 line 8)'
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms
@@ -1515,7 +1533,9 @@ form:
         from: sd.zero
       cite:
         doc: f1040sd
-        locator: Schedule D (2025), Parts I–III
+        locator: 'Schedule D (2025), line 12, "Net long-term gain or (loss) from partnerships, S corporations, estates,
+          and trusts from Schedule(s) K-1" (zero: a Schedule K-1 amount is refused by scope.k1 through scope.schedule1 at
+          Form 1040 line 8)'
       refuses:
         - when: sd.other_forms
           form: Schedule D additional source forms

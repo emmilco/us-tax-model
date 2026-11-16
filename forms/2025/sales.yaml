@@ -172,7 +172,8 @@ form:
       printed: (helper)
       label: "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling
         expenses or option premiums the broker report does not reflect, code D for a bond with accrued market discount,
-        or code O for a contingent payment debt instrument with the Ordinary box checked"
+        code O for a contingent payment debt instrument with the Ordinary box checked, code N for a sale reported to you
+        as a nominee for its actual owner, or code L for a loss on property held for personal use"
       type: Enum(sales_code)
       expr:
         op: input
@@ -180,8 +181,10 @@ form:
           expenses or option premiums that the Form 1099-B (or substitute statement) does not reflect in its proceeds
           or basis; code D for the sale or retirement of a bond or other debt instrument with accrued market discount
           (such as an amount in box 1f of Form 1099-B), whose gain is interest income up to that discount even if the
-          bond's interest is tax-exempt; or code O for a taxable contingent payment debt instrument (such as one
-          reported with the Ordinary box in box 2 of Form 1099-B checked)"
+          bond's interest is tax-exempt; code O for a taxable contingent payment debt instrument (such as one
+          reported with the Ordinary box in box 2 of Form 1099-B checked); code N for a sale on a Form 1099-B, 1099-DA or
+          1099-S you received as a nominee for the property's actual owner; or code L for a loss on the sale of property
+          you held for personal use, which is not deductible"
       cite:
         doc: i8949
         locator: pp. 7–11, columns (e) through (h), codes B and W; p. 6, Column (d)—Proceeds (Sales Price), "If there are
@@ -192,7 +195,11 @@ form:
           sale of a taxable contingent payment debt instrument subject to the noncontingent bond method, enter code “O”";
           p. 10, "with the Ordinary box in box 2 on Form 1099-B or box 6 on Form 1099-DA checked and the security is a
           taxable contingent payment debt instrument"; i1040sd p. 4, Market Discount Bonds, "a capital gain from the
-          disposition of a market discount bond is treated as interest income to the extent of accrued market discount"
+          disposition of a market discount bond is treated as interest income to the extent of accrued market discount";
+          i8949 p. 9, "You received a Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statement) as a
+          nominee for the actual owner of the property" and "As a result of this adjustment, the amount in column (h)
+          should be zero"; i8949 p. 3, "Loss on the sale of personal property is not deductible" and "Enter “L” in column
+          (f) as the code explaining the loss is nondeductible"
     - id: sales.special
       printed: (helper)
       label: |-
@@ -203,6 +210,8 @@ form:
         - qualified small business stock with a section 1202 exclusion
         - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
         - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
+        - a loss on stock held 1 year or less on which you received an extraordinary dividend (one that equals or exceeds 10% of your basis in the stock, 5% for preferred stock) reported as a qualified dividend
+        - a gain from a constructive ownership transaction on a financial asset (an interest in a partnership, S corporation, trust, mutual fund or REIT), such as a forward contract to acquire it
 
         Or does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?
       type: Bool
@@ -216,6 +225,8 @@ form:
           - qualified small business stock with a section 1202 exclusion
           - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
           - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
+          - a loss on stock held 1 year or less on which you received an extraordinary dividend (one that equals or exceeds 10% of your basis in the stock, 5% for preferred stock) reported as a qualified dividend
+          - a gain from a constructive ownership transaction on a financial asset (an interest in a partnership, S corporation, trust, mutual fund or REIT), such as a forward contract to acquire it
 
           Or does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?
       cite:
@@ -223,7 +234,13 @@ form:
         locator: pp. 11–12, lines 18 and 19; p. 11, Line 19, "section 1250 property (generally, real property that you depreciated)"; p. 12, "Figure the smaller of (a) the depreciation allowed or allowable, or (b) the total gain for the sale."; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12,
           line 19, "You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned
           section 1250 property"; p. 10, Disposal of QOF Investment, "If you disposed of any investment in a QOF during the tax year,
-          check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements."
+          check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements.";
+          p. 4, "If qualified dividends that you reported on Form 1040, 1040-SR, or 1040-NR, line 3a, include extraordinary
+          dividends, any loss on the sale or exchange of the stock is a long-term capital loss to the extent of the
+          extraordinary dividends. An extraordinary dividend is a dividend that equals or exceeds 10% (5% in the case of
+          preferred stock) of your basis in the stock."; p550 p. 79, Gains From Certain Constructive Ownership
+          Transactions, "all or part of the gain may be treated instead as ordinary income" and Financial asset, "any
+          equity interest in a pass-through entity"
     - id: sales.aggregate_eligible
       printed: (helper)
       label: "Confirm all aggregate conditions: basis reported, no broker adjustments,
@@ -404,7 +421,7 @@ form:
           - to commodity futures contracts or foreign currencies
           - to a redemption of shares in a floating-NAV money market fund
 
-          The loss entered cannot be more than the loss on this sale (column (e) less column (d), after any code B basis correction).
+          The loss entered cannot be more than the loss on this sale (column (e) less column (d), after any code B basis correction). Enter blocks of identical stock or securities sold on the same day as separate sales: a wash-sale loss on one block cannot reduce a gain on another.
       cite:
         doc: i8949
         locator: p. 10, code W; a lower corrected loss requires an explanation statement; i1040sd p. 5, Wash Sales, "A
@@ -426,7 +443,8 @@ form:
           conduit (REMIC), "during the period beginning 6 months before the sale of the interest and ending 6 months after
           that sale, you acquire any residual interest in any REMIC or any interest in a taxable mortgage pool that is
           comparable to a residual interest"; i8949 p. 10, "If no part of the loss is a nondeductible loss from a wash sale transaction, enter -0- in
-          column (g)."
+          column (g)."; p550 p. 87, Loss and gain on same day, "Loss from a wash sale of one block of stock or securities
+          cannot be used to reduce any gains on identical blocks sold the same day"
     - id: sales.covered
       printed: (helper)
       label: Basis reported to IRS

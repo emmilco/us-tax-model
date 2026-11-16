@@ -28,8 +28,8 @@
 ## 1(e) — `dcprov.paid`
 
 - **Authored helper label:** Amount paid
-- **Encoded (NonNegDollars):** Input — The total amount you actually paid this provider in 2025, including amounts your employer paid to the provider on your behalf, whenever the care was provided and without reducing it by any reimbursement; zero if your employer furnished the care
-- Expr: `{"op":"input","source":"The total amount you actually paid this provider in 2025, including amounts your employer paid to the provider on your behalf, whenever the care was provided and without reducing it by any reimbursement; zero if your employer furnished the care"}`
+- **Encoded (NonNegDollars):** Input — The total amount you actually paid this provider in 2025, including amounts your employer paid to the provider on your behalf, whenever the care was provided and without reducing it by any reimbursement; zero if your employer furnished the care itself, at your workplace or by hiring this provider
+- Expr: `{"op":"input","source":"The total amount you actually paid this provider in 2025, including amounts your employer paid to the provider on your behalf, whenever the care was provided and without reducing it by any reimbursement; zero if your employer furnished the care itself, at your workplace or by hiring this provider"}`
 - Cite: [i2441] p. 3, Column (e), "Enter the total amount you actually paid in 2025 to the care provider. Also, include amounts your employer paid to a third party on your behalf. It doesn't matter when the expenses were incurred. Don't reduce this amount by any reimbursement you received" (2025; sha256 86f0669e)
 
 ## (helper) — `dcprov.related`

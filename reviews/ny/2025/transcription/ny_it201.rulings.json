@@ -781,15 +781,20 @@
    "printed": "(81) (ny_it201.safe_harbor_100)",
    "project_expr_sha256": "085e1f87b7bf7a43988bf6ca8c1e1cb52672954e75edc8f07e4827cc5d15d6d0",
    "second_expr_sha256": "ac829613371708cc76c319bcdf9bd335ab436a0acf3bc4a3c3f743504b1edca5",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds the product (100% of the typed 2024 tax; IT-201-I p. 23, \"the amount of your 2024 New York income tax\") once to the dollar; the reply keeps cents. At most a 50-cent difference in the safe-harbor threshold.",
-   "context": "c81d86a5be048bb9e8df1e1ec97c51b1cba8ffb0b3d49ee1167d741cada0dfb5",
-   "date": "2026-11-04",
-   "run": "176175cec16c2f18e46cba63d86caf553a78b332cb12d6ff476637e8e81161bb",
-   "subject_key": "f59e1042d97fa41acc87148cbc556ac9a919a0808f0feef7ca69a44ef818bb11",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds the product (100% of the typed 2024 tax; IT-201-I p. 23, Line 81, \"at least 100% of your 2024 New York income tax based on a 12-month return\") once to the dollar where it is computed; the reply keeps cents. Triage: 4,606 of 4,608 agree; the 2 value witnesses (generated 273 and 284, a 2024 tax typed with cents) are on refused returns. The 2024 tax comes from a whole-dollar 2024 return, so 100% of it is already whole.",
+   "context": "f057b4158c20e9742ab62282786002d1c4cbed9499350eaa44a013143176c8ab",
+   "date": "2026-11-15",
+   "run": "c6b27997f3d65db2ac511829fa1caeac2f04eeb1f1c36f493ba16a410e284d45",
+   "subject_key": "7f3e18de674e42f5811d4696d2c57db33bd536711609f19643739ce71f0dba33",
    "triage": {
-    "verdict": "agrees on sample",
-    "kinds": [],
-    "witnesses": [],
+    "verdict": "differs",
+    "kinds": [
+     "value"
+    ],
+    "witnesses": [
+     "generated:20261026.273@ny_it201",
+     "generated:20261026.284@ny_it201"
+    ],
     "policy": "executable-triage-v2"
    }
   },
@@ -797,15 +802,20 @@
    "printed": "(81) (ny_it201.safe_harbor_110)",
    "project_expr_sha256": "1d70a296b8a548925222554968080af308cd601f611ab70b6c6986ea1d820ae4",
    "second_expr_sha256": "b804baedbcaea10dbfbbc36836d526182f9ea007acac2ca1fb2aaf67d23edca8",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds the product (110% of the typed 2024 tax; IT-201-I p. 23, \"the amount of your 2024 New York income tax\") once to the dollar; the reply keeps cents. At most a 50-cent difference in the safe-harbor threshold.",
-   "context": "c81d86a5be048bb9e8df1e1ec97c51b1cba8ffb0b3d49ee1167d741cada0dfb5",
-   "date": "2026-11-04",
-   "run": "176175cec16c2f18e46cba63d86caf553a78b332cb12d6ff476637e8e81161bb",
-   "subject_key": "7f2f89884c2253cf6ec7eb6bd90fd9d4761b049385723428c994fa90421d0436",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds the product (110% of the typed 2024 tax; IT-201-I p. 23, Line 81, \"at least 110% of your 2024 New York income tax based on a 12-month return\") once to the dollar where it is computed; the reply keeps cents. Triage: 4,606 of 4,608 agree; the 2 value witnesses (generated 273 and 284) are on refused returns. At most a 50-cent difference in the safe-harbor threshold.",
+   "context": "f057b4158c20e9742ab62282786002d1c4cbed9499350eaa44a013143176c8ab",
+   "date": "2026-11-15",
+   "run": "c6b27997f3d65db2ac511829fa1caeac2f04eeb1f1c36f493ba16a410e284d45",
+   "subject_key": "f8bba6ef62ae36e74299c928755d03646f0eab6a4aa9258b65f28cb49f0a4797",
    "triage": {
-    "verdict": "agrees on sample",
-    "kinds": [],
-    "witnesses": [],
+    "verdict": "differs",
+    "kinds": [
+     "value"
+    ],
+    "witnesses": [
+     "generated:20261026.273@ny_it201",
+     "generated:20261026.284@ny_it201"
+    ],
     "policy": "executable-triage-v2"
    }
   },
@@ -974,11 +984,11 @@
    "printed": "1",
    "project_expr_sha256": "4e0fde6bbd661f1105d1a536ba0f5adfd120991ae32984f69ca91d31bbaa9a97",
    "second_expr_sha256": "483e47bf835761306362f5ca228c939ae3d18344d6a248b860b93a8d0ca2d17b",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4). The reply copies f1040.line1z in cents; the project rounds it half-up to the dollar as it is entered. IT-201-I p. 2, Entering whole dollar amounts: \"When you enter amounts on your return, enter whole dollar amounts only ... round cents to the nearest dollar ... Drop amounts that are less than 50 cents ... Increase amounts that are 50 cents or more to the next dollar\"; the register's chosen reading rounds each federal amount on lines 1 to 18 as it is entered, the reply takes the reading that federal amounts are already whole. The two differ only where line 1z carries cents (triage: 48 value witnesses, all on refused returns). Project retained.",
-   "context": "a58224f191cef95c82e465b600ba65cd3cb7147c39d90e305815de6f5000f0db",
-   "date": "2026-11-14",
-   "run": "eb3fc991784c7e3d50fd008cd630cf6f34bdcfcd34f2f2b6a5640beaefb59ec4",
-   "subject_key": "e297692462a89e650633f0538f4ee8a6b0b8acb02603aadb91a58482654cb937",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The reply copies f1040.line1z in cents; the project rounds it half-up to the dollar as it is entered on lines 1 to 18, the register's chosen reading. Same reference otherwise; the line was rerun because its refusal gates changed, not its expression. Triage: 3 value witnesses, all on refused returns (cents only); the other differing witnesses are refusal or unknown differences (project-refuses 2,483, project-unknown 2,074, candidate-refuses 20) from the whole-return refusal gates the project attaches to line 1 (part-year, spouse nonresident, special accrual, Yonkers), which the reply's line does not carry and the compared expressions do not include; those gates are reviewed with the screens.",
+   "context": "f057b4158c20e9742ab62282786002d1c4cbed9499350eaa44a013143176c8ab",
+   "date": "2026-11-15",
+   "run": "c6b27997f3d65db2ac511829fa1caeac2f04eeb1f1c36f493ba16a410e284d45",
+   "subject_key": "df53b8f9374e9a012dae80dd9ae5814b2d8c00f195d5144d1d5bc55f225dee6e",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1006,12 +1016,9 @@
      "generated:20261026.3@ny_it201",
      "generated:20261026.4@ny_it201",
      "generated:20261026.5@ny_it201",
-     "generated:20261026.116@ny_it201",
-     "generated:20261026.182@ny_it201",
-     "generated:20261026.301@ny_it201",
-     "generated:20261026.471@ny_it201",
-     "partial:generated 20261026/116-ny_it201.ask.state_resident@ny_it201",
-     "partial:generated 20261026/116-ny_it201.ask.special_accrual@ny_it201"
+     "generated:20261026.319@ny_it201",
+     "generated:20261026.325@ny_it201",
+     "generated:20261026.358@ny_it201"
     ],
     "policy": "executable-triage-v2"
    }

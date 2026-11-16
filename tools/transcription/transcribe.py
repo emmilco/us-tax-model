@@ -988,9 +988,40 @@ def listed_lines(reviewed, doc_id, selected):
     return None
 
 
-def catalog_lines(reviewed, selected):
-    """The other-form catalog entries ({line id: note}) of the selected non-collection forms."""
+def computed_from(targets, lines=None):
+    """A predicate on line ids: whether the line's expression reads one of `targets`, directly or through
+    other lines on any form."""
+    lines = load_all_lines() if lines is None else lines
+    memo = {}
+
+    def reads(line_id, stack=()):
+        if line_id in memo:
+            return memo[line_id]
+        if line_id in stack or line_id not in lines:
+            return False
+        refs = operand_refs(lines[line_id][1].get("expr") or {})
+        memo[line_id] = bool(refs & targets) or any(reads(r, stack + (line_id,)) for r in refs)
+        return memo[line_id]
+    return reads
+
+
+def catalog_lines(reviewed, selected, under_review=None):
+    """The other-form catalog entries ({line id: note}) of the selected non-collection forms.
+
+    `under_review` (the ids of the lines the reply is asked to write) leaves out another form's computed
+    line whose value is computed from one of them, unless a line of the reviewed form reads it: such an
+    interface cannot be an operand of the line it is computed from (a reply that used it would be
+    circular), and it is not one of the reviewed form's boundary references that the input context
+    requires (input_context.assess)."""
     other = {}
+    reads = None
+    if under_review:
+        reads = computed_from(set(under_review))
+        read_by_form = set()
+        for line in load_form(reviewed)["lines"]:
+            read_by_form |= operand_refs(line.get("expr") or {})
+            read_by_form |= {r if isinstance(r, str) else r.get("when") for r in line.get("refuses") or []
+                             if isinstance(r, (str, dict))}
     for f, _ in form_files():
         if f.endswith(".yaml") and f[:-5] != reviewed and f[:-5] in selected:
             d = load_form(f[:-5])
@@ -998,10 +1029,11 @@ def catalog_lines(reviewed, selected):
                 continue   # listed with the collections instead
             only = listed_lines(reviewed, d["id"], selected)
             for l in d["lines"]:
-                if only is None:
-                    other[l["id"]] = reference_note(d, l)
-                elif l["id"] in only:
-                    other[l["id"]] = reference_note(d, l)
+                if only is not None and l["id"] not in only:
+                    continue
+                if reads and l["expr"].get("op") != "input" and l["id"] not in read_by_form and reads(l["id"]):
+                    continue
+                other[l["id"]] = reference_note(d, l)
     return other
 
 
@@ -1378,13 +1410,13 @@ class Expander:
             if r in self.inputs and r not in self.by_id:
                 line = self.inputs[r]
                 if line["printed"] not in HELPER_PRINTED and self.form_id not in self.defs:
-                    return {"line": self.keys.get(r, line["printed"])}
+                    return {"line": self.input_key(r, line)}
                 return {"input": r}
             if r in self.by_id:
                 line = self.by_id[r]
                 if line["expr"].get("op") == "input" or depth > 40:
                     if line["printed"] not in HELPER_PRINTED and self.form_id not in self.defs:
-                        return {"ref": r} if self.foreign else {"line": self.keys.get(r, line["printed"])}
+                        return {"ref": r} if self.foreign else {"line": self.input_key(r, line)}
                     return {"input": r}
                 # A printed line of this form is referenced by its number; helpers and
                 # definition-internal lines are expanded in place.
@@ -1406,6 +1438,14 @@ class Expander:
                 return sub.expr(other[1]["expr"], depth + 1)
             return {"ref": r}
         return {"unknown": json.dumps(r, sort_keys=True)}
+
+    def input_key(self, r, line):
+        """The marker a reference to an input compares as: its comparison key, and for a screening input
+        (the bare `(screen)`, which every screening input of the form shares) the marker with the input's id,
+        so that a reference to one screening input never compares equal to a reference to another. Both
+        sides name the form's inputs by the project's ids."""
+        key = self.keys.get(r, line["printed"])
+        return f"{SCREEN} ({r})" if key == SCREEN and (line.get("expr") or {}).get("op") == "input" else key
 
     def param(self, name):
         """A parameter whose value is the literal 0 or 1 compares as that constant."""
@@ -2425,7 +2465,7 @@ def scoped_main(a, form_doc, mani, params, values):
     scoped_doc = {**form_doc, "lines": [l for l in form_doc["lines"] if l["id"] in reach]}
     excerpt, used = excerpt_for(scoped_doc, mani)
     selected = catalog_selection(form_doc, excerpt, used, mani, whole_text=False, cited=scoped_doc)
-    other = catalog_lines(fid, selected)
+    other = catalog_lines(fid, selected, under_review=scope_ids)
     prompt = build_prompt(form_doc, excerpt, params, other, {k: v["type"] for k, v in values.items()},
                           collection_notes(fid, selected), scope=scope_ids)
     os.makedirs(RAW, exist_ok=True)

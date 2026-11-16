@@ -6,11 +6,11 @@
    "printed": "1 (box)",
    "project_expr_sha256": "1eac9c54c605b4cb42fb8ed7f3f7bd31b38038481bcd74e9b7eda45943f7cb67",
    "second_expr_sha256": "b7e1f0ef98e2e684907bec7b5e350ed7a500fbfe7c846d143acdda872a1ab6a8",
-   "ruling": "Ruling: model error; f2441 (2025) p. 1, Part I, \"If you have more than three care providers, see the instructions and check this box\". The second transcription tests the provider count with no test that the return files Form 2441, as in the earlier rounds on this line. Re-reviewed because the questions this line reads were reworded to carry the one spouse phrase (among f2441.care, f2441.nondependent, f2441.line13 and f2441.line14, those it reads; wording only, no expression changed). The disagreement is the one ruled before on this line, in the words above: the candidate's expression and the project's are both unchanged from that ruling. executable-triage-v2 (`.transcription/triage/2025/f2441.json`, pass ee176cd6b45f; 1,767 fixtures, 500 generated returns seed 20261026, 319 partial records; every completed witness listed by a scratch rerun with the witness cap lifted): 2,393 of 2,586 comparisons agree; differences by kind {\"candidate-unknown\": 116, \"project-unknown\": 77}; on completed returns {\"candidate-unknown\": 14} (the candidate is unknown for $dcprov on 14). The other differences are on refused or incomplete returns. No change to the data.",
-   "context": "15732b6f85e3d491aa5166256f9ba55f93610ef0d709c52be603dea341d7a47f",
-   "date": "2026-11-11",
-   "run": "5a315f32504ea9087da66c3a8976ba07d97b1c348e3e4d2b309bf9f245953d6f",
-   "subject_key": "1073e3f3e7dc5fec88662cb87898d3d3ae073526c6d1d46e1bee59f418043a32",
+   "ruling": "Ruling: model error; the reply drops the filing test and compares the dcprov count for every return (Form 2441 p. 1, Part I: the box is part of the form filed only with care expenses or benefits). Triage pass 90370d3fe47f: 2,611/2,895 agree, no value differs; 7 completed returns (stage15.mut.f2441_not_filed_providers_unasked, mutation.m4.f5695.*) are candidate-unknown because the reply needs the provider roster from filers who do not file Form 2441, where the project's line is false; the rest are unknowns on incomplete or refused returns. As the earlier rounds.",
+   "context": "30e6a785b247fbcb7afadd5334217c7ffef0d9edfe855bdff13244668d5f11f6",
+   "date": "2026-11-15",
+   "run": "2ec690a5a206c4282cedc8cdf1f852776d96060dd835eaf728d56ea8c7ece30a",
+   "subject_key": "ed9478304bc6a6dff2729342aecedff01f72432459eae3a702fd9fb7cfbba16b",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -173,26 +173,18 @@
    "printed": "16",
    "project_expr_sha256": "1c26a4a56a2bb0b3b41cbd7146868b16f4b834ff25b325de5dd0fbdd0d6ac081",
    "second_expr_sha256": "e9f9a07c45184b9bfb73b386f31c8b09e0f47742a152d88a74327887f64ddac2",
-   "ruling": "Ruling: representation; both add the other care expenses to the line 2 column (d) total for the qualifying persons (i2441 p. 5, Line 16); the project's total reads the provider roster and parent questions and carries the cited refusals. Triage executable-triage-v2 (.transcription/triage/2025/f2441.json, pass 6339212737d9): 2,864 of 2,877 agree; no value difference; 11 project-unknown (1 completed, stage15.mut.f2441_not_filed_providers_unasked, Form 2441 not filed) and 2 project-refuses on refused returns.",
-   "context": "eb30fe255a320d06364d3f3ad659f5d643c60aa105b261bf904b8c6f457e075e",
-   "date": "2026-11-14",
-   "run": "0b99b316a79cb6dd06c3178de9df673ee1686c96dff9a6ea2f707d19718e774f",
-   "subject_key": "b004ba7a915c255327ec8c95885d775274f6aaf900d0fef9e7d2235fbb3a7923",
+   "ruling": "Ruling: representation; the reply sums dependent.dc_paid, the project dependent.dc_line2d, which is a copy of dependent.dc_paid (forms/2025/dependent.yaml); same filter and other_care_expenses. Triage: 2,894/2,895 agree; the one difference is project-unknown on an incomplete return (parent question f2441.care_other unanswered). i2441 p. 5, Line 16, \"Enter the total of all qualified expenses incurred in 2025\".",
+   "context": "30e6a785b247fbcb7afadd5334217c7ffef0d9edfe855bdff13244668d5f11f6",
+   "date": "2026-11-15",
+   "run": "2ec690a5a206c4282cedc8cdf1f852776d96060dd835eaf728d56ea8c7ece30a",
+   "subject_key": "e39923516221461de03b826a2b92b44ebf953b632506d746940e9c427882049d",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "project-refuses",
      "project-unknown"
     ],
     "witnesses": [
-     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f2441",
-     "fixture:stage16.cleanup.refuse.f1040_line16@f2441",
-     "fixture:stage16.cleanup.refuse.scope_credits@f2441",
-     "fixture:stage15.refuse.f2441.nondependent@f2441",
-     "fixture:stage15.refuse.f2441.related_provider@f2441",
-     "fixture:stage15.mut.f2441_not_filed_providers_unasked@f2441",
-     "fixture:stage16.cleanup.refuse.f4952_unsupported@f2441",
-     "fixture:t264.f4952.unsupported_with_interest@f2441"
+     "partial:classm.f2441.3.deepseek-f2441.care_other@f2441"
     ],
     "policy": "executable-triage-v2"
    }
@@ -400,9 +392,35 @@
    "printed": "19",
    "project_expr_sha256": "dbd8dbed5a83c6a8184306c7e994386ea16ae814906c0e097d4de7e3d30566fe",
    "second_expr_sha256": "7d4daad66429c7f512e32df637a6fb205feedda72c9b753418501114dd481d41",
-   "ruling": "Ruling: scope; f2441 (2025) p. 2 line 19 and i2441 p. 5 distinguish separate-return spouse income from the considered-unmarried exception. The project refuses married filing separately at f2441.line11/s3.line11. Removing only that excluded filing status leaves the same joint spouse-income branch and other-status line18 branch. This is a completed-return scope ruling, not correctness of this line evaluated alone on an excluded MFS return.",
-   "context": "c80b45649ab3b5681c7def0cc3c09d0dd0554171b43dca4b38312a8a2fe3b915",
-   "subject_key": "3ee1b6371abb1dc0607a2d057b31f4a1b960e6749bb23a0638bc714c12730927"
+   "ruling": "Ruling: scope; the reply takes the No branch of i2441 p. 6, Line 19 (\"If your filing status is married filing separately ... Are you considered unmarried under that rule? ... No. Enter your spouse's earned income on line 19\") for every married-filing-separately return; the project uses line 18 for every status other than MFJ, but f2441.line26, reached on every return with benefits (shown_when f2441.benefits), refuses s3.mfs (\"Form 2441 for married filing separately (line A; lines 19 and 21)\"), so its MFS branch is never on a computed return. Triage: 2,872/2,895 agree; 2 value differences on refused MFS returns (stage15.refuse.f2441.mfs_benefits), 16 project-refuses (surviving-spouse refusal, p503 p. 11), 5 project-unknown on incomplete or refused returns. As the landing round.",
+   "context": "30e6a785b247fbcb7afadd5334217c7ffef0d9edfe855bdff13244668d5f11f6",
+   "date": "2026-11-15",
+   "run": "2ec690a5a206c4282cedc8cdf1f852776d96060dd835eaf728d56ea8c7ece30a",
+   "subject_key": "805ff411dac1b5c956868ea77f0f514b14c8956f43b1394f8714a3d94dca44b9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f2441",
+     "fixture:stage15.refuse.f2441.mfs_benefits@f2441",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@f2441",
+     "fixture:mutation.t3.roth_excess_screen@f2441",
+     "generated:20261026.211@f2441",
+     "generated:20261026.219@f2441",
+     "generated:20261026.258@f2441",
+     "generated:20261026.354@f2441",
+     "partial:classm.f2441.3.deepseek-f2441.student@f2441",
+     "partial:classm.f2441.3.deepseek-f2441.unable@f2441",
+     "partial:classm.w2.1.deepseek-f2441.student@f2441",
+     "partial:classm.w2.1.deepseek-f2441.unable@f2441",
+     "partial:classm.w2.1.deepseek-f2441.spouse_died@f2441"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "2 (box)",
@@ -468,11 +486,12 @@
    "printed": "2 (box)",
    "project_expr_sha256": "dbc5f4723629c5eab17a0a7a3a5560f04bb2a2af58f36ec2805ac16dc960c186",
    "second_expr_sha256": "ba5dedd381782b4a9390788a2169e8343818081fd98d8712872e5331eeda6f84",
-   "ruling": "Ruling: representation; the reply counts the dependent entries marked qualifying persons and checks the box above three, as the project does (i2441 p. 3, Line 2, \"If you have more than three qualifying persons, check the box on line 2\"); the project's count also carries the refusal of a qualifying person who is not your dependent and so reads the redraft's parent question f2441.care_other. Triage executable-triage-v2 (.transcription/triage/2025/f2441.json, pass 6339212737d9): 2,856 of 2,877 agree; no value difference; 20 project-unknown (f2441.care_other unasked; 6 incomplete, 14 refused returns) and 1 project-refuses (refused return); no completed-return difference.",
-   "context": "eb30fe255a320d06364d3f3ad659f5d643c60aa105b261bf904b8c6f457e075e",
-   "date": "2026-11-14",
-   "run": "0b99b316a79cb6dd06c3178de9df673ee1686c96dff9a6ea2f707d19718e774f",
-   "subject_key": "45cec80bee6d7c97033a6ab2f671870259e51f78ce34bd83f4350d4c05ef7618",
+   "ruling": "Ruling: finding; the count is the same (dependent.dc_count is param dependent.one, the reply's dependent.one; same dc_qp filter), but the project compares it with dc.providers_listed, the line 1 care-provider limit and its cite (i2441 p. 2, Line 1, \"more than three care providers\"), where line 2 says \"If you have more than three qualifying persons, check the box on line 2\" (i2441 p. 3, Line 2); both are 3 for 2025, so no value differs (triage 2,877/2,895 agree; 17 project-unknown and 1 project-refuses, all on incomplete or refused returns, from the parent questions f2441.care/care_other). Low: parameter and cite only (BUG-0760).",
+   "context": "30e6a785b247fbcb7afadd5334217c7ffef0d9edfe855bdff13244668d5f11f6",
+   "date": "2026-11-15",
+   "run": "2ec690a5a206c4282cedc8cdf1f852776d96060dd835eaf728d56ea8c7ece30a",
+   "severity": "low",
+   "subject_key": "2674ec71852dd56f91c81752cf6eb611db05fac65d4fa1cad334411d12b694bf",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -481,12 +500,12 @@
     ],
     "witnesses": [
      "fixture:classm.dependent.5.deepseek@f2441",
-     "fixture:classm.s179.4@f2441",
-     "fixture:classm.dependent.3@f2441",
-     "fixture:classm.dependent.4@f2441",
      "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f2441",
      "fixture:stage16.cleanup.refuse.f1040_line16@f2441",
-     "fixture:stage15.refuse.f2441.nondependent@f2441"
+     "fixture:stage16.cleanup.refuse.scope_credits@f2441",
+     "fixture:stage15.refuse.f2441.nondependent@f2441",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@f2441",
+     "fixture:t264.f4952.unsupported_with_interest@f2441"
     ],
     "policy": "executable-triage-v2"
    }
@@ -540,19 +559,15 @@
    "printed": "21",
    "project_expr_sha256": "103d6d3777b3958cd9e7b1526f7f21563dcb35175785c55145f2c1a0877d5b25",
    "second_expr_sha256": "85ef6e878f54c305f42e30ffcede85ef58e2381d072dba749aeb15a2bc916a0f",
-   "ruling": "Ruling: scope; project retained, as in the earlier ruling on this line. The second halves the $5,000 for a married filing separately filer; the project refuses every married filing separately return (s3.mfs in scope.ready; owner decision 5), so the $2,500 case never arises. f2441 p. 2, line 21; i2441 p. 5, Line 21. executable-triage-v2 (pass fd2fa01dda32): 2,585 of 2,586 agree; 1 candidate-unknown on a refused return. No change to the data.",
-   "context": "77f121b33d0d45598b8cb64bd7d693c5d8aafb02c7ed56cc998d847738c66b99",
-   "date": "2026-11-10",
-   "run": "9ccee07023cc2628fa61b8efc5bc6ea559a240597cee1327188eae0572c441e8",
-   "subject_key": "6b80094fc09dfd108d8c6f61a2fc070eb3c88fbe0bc7ff925274a588df8431ac",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (2895 values compared, none different or missing: 2028 on 2028 fixture cases, 500 on 500 generated returns seed 20261026, 367 on 367 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "30e6a785b247fbcb7afadd5334217c7ffef0d9edfe855bdff13244668d5f11f6",
+   "date": "2026-11-15",
+   "run": "2ec690a5a206c4282cedc8cdf1f852776d96060dd835eaf728d56ea8c7ece30a",
+   "subject_key": "e96036000a3f87f7f57e35ccf255877f20aab340a39070d56843a517436462fd",
    "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "candidate-unknown"
-    ],
-    "witnesses": [
-     "fixture:stage21.choose.eic_limit_status_unanswered@f2441"
-    ],
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
     "policy": "executable-triage-v2"
    }
   },
@@ -697,25 +712,18 @@
    "printed": "27",
    "project_expr_sha256": "95b0833ba5414e7f3bbcdd8379942925343cf19c2b9b2746c495b93ea008856b",
    "second_expr_sha256": "1c1d0923e9189db879ed2f484224b8164ef8f036cf9a479f52f92f7b10ae467d",
-   "ruling": "Ruling: representation; both enter $3,000, or $6,000 with two or more qualifying persons (Form 2441 line 27); the project's count reads the parent question f2441.care_other and carries the nondependent refusal. Triage executable-triage-v2 (.transcription/triage/2025/f2441.json, pass 6339212737d9): 2,856 of 2,877 agree; no value difference; 20 project-unknown (6 incomplete, 14 refused) and 1 project-refuses on a refused return.",
-   "context": "eb30fe255a320d06364d3f3ad659f5d643c60aa105b261bf904b8c6f457e075e",
-   "date": "2026-11-14",
-   "run": "0b99b316a79cb6dd06c3178de9df673ee1686c96dff9a6ea2f707d19718e774f",
-   "subject_key": "504c60ba78f6240446207e62b448ae0963bacd8ed1416ab6f6027660382580d2",
+   "ruling": "Ruling: representation; the only difference is dependent.dc_count (param dependent.one) for the reply's dependent.one in the qualifying-person count, the same value. Triage: 2,894/2,895 agree; the one difference is project-unknown on an incomplete return (f2441.care_other unanswered). Form 2441 line 27, \"Enter $3,000 ($6,000 if two or more qualifying persons)\".",
+   "context": "30e6a785b247fbcb7afadd5334217c7ffef0d9edfe855bdff13244668d5f11f6",
+   "date": "2026-11-15",
+   "run": "2ec690a5a206c4282cedc8cdf1f852776d96060dd835eaf728d56ea8c7ece30a",
+   "subject_key": "bc41ade471fd8d84e500abfd931bc1cdc7455a750e1cab6efa9bd6d331515f4e",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "project-refuses",
      "project-unknown"
     ],
     "witnesses": [
-     "fixture:classm.dependent.5.deepseek@f2441",
-     "fixture:classm.s179.4@f2441",
-     "fixture:classm.dependent.3@f2441",
-     "fixture:classm.dependent.4@f2441",
-     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f2441",
-     "fixture:stage16.cleanup.refuse.f1040_line16@f2441",
-     "fixture:stage15.refuse.f2441.nondependent@f2441"
+     "partial:classm.f2441.3.deepseek-f2441.care_other@f2441"
     ],
     "policy": "executable-triage-v2"
    }
@@ -805,6 +813,38 @@
      "partial:classm.sd.1.deepseek-f2441.nondependent@f2441",
      "partial:classm.u1250.2.deepseek-f2441.nondependent@f2441",
      "partial:classm.clcw.4.deepseek-f2441.nondependent@f2441"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
+   "project_expr_sha256": "18847bdd33a0ef135e5e71d18821853427e91c044efabfd3b0bff2b43ec3b2c3",
+   "second_expr_sha256": "30b56ef1b94f9c10f064f964eae6936aef6c4c2a0470141962f9dcb0f5911ad6",
+   "ruling": "Ruling: representation; the only difference is dependent.dc_count (param dependent.one) for the reply's dependent.one in the qualifying-person count, the same value. Triage: 2,490/2,895 agree, no value differs; 13 completed returns are project-unknown on dcprov[prov_a].related through the project's ineligible-provider refusal on returns with f2441.benefits false and no Form 2441 (classm.f5695.11, explained: guard benefits = false, line3_expenses unknown on the roster), the rest unknown or refused on incomplete or refused returns. Form 2441 line 3, \"Add the amounts in column (d) of line 2\" capped at $3,000/$6,000; as the landing round.",
+   "context": "30e6a785b247fbcb7afadd5334217c7ffef0d9edfe855bdff13244668d5f11f6",
+   "date": "2026-11-15",
+   "run": "2ec690a5a206c4282cedc8cdf1f852776d96060dd835eaf728d56ea8c7ece30a",
+   "subject_key": "51502ac45a4b51db0a59bce96504c3f8b3ca6e77143897989fb8dbf5c6e9be04",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@f2441",
+     "fixture:classm.f8889.1.deepseek@f2441",
+     "fixture:classm.f8889.3.deepseek@f2441",
+     "fixture:classm.f8889.4.deepseek@f2441",
+     "fixture:classm.f8889.5.deepseek@f2441",
+     "fixture:classm.f4952.1.deepseek@f2441",
+     "fixture:classm.f4952.2.deepseek@f2441",
+     "fixture:f2.t121.line13_earned_refused@f2441",
+     "fixture:stage15.refuse.f2441.line14_over@f2441",
+     "fixture:stage15.refuse.f2441.nondependent@f2441",
+     "fixture:stage15.refuse.f2441.related_provider@f2441",
+     "fixture:stage15.bug0120.line14.above@f2441"
     ],
     "policy": "executable-triage-v2"
    }

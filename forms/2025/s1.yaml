@@ -237,7 +237,7 @@ form:
       ref: s1.ebl_threshold
     cite:
       doc: rp-2024-40
-      locator: p. 17, section 3.32, Threshold for Excess Business Loss, "$313,000 ($626,000 for joint returns)"
+      locator: p. 17, .32 Threshold for Excess Business Loss, "$313,000 ($626,000 for joint returns)"
   - id: s1.ebl
     printed: (gate)
     label: The Schedule C losses are more than the excess business loss threshold
@@ -309,14 +309,14 @@ form:
       field: person.sc_total
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 3; i1040sc p. 14, Line 31, "include it on Schedule 1 (Form 1040), line 3"
+      locator: Schedule 1 (2025), line 3; i1040gi p. 89, Line 3, "If you operated a business or practiced your profession as a sole proprietor, report your income and expenses on Schedule C."; i1040sc p. 14, Line 31, "include it on Schedule 1 (Form 1040), line 3"
     refuses:
       - when: s1.ebl
         form: Form 461 (Limitation on Business Losses)
         remedy: A Schedule C loss above the excess business loss threshold is outside this tool.
         cite:
           doc: i1040sc
-          locator: p. 1, Reminders, Excess business loss limitation; rp-2024-40 section 3.32
+          locator: p. 1, Reminders, Excess business loss limitation; rp-2024-40 section 2.32
   - id: s1.ltc_payout
     printed: (helper)
     type: Bool
@@ -624,12 +624,13 @@ form:
     expr:
       op: input
       source: 'Alaska Permanent Fund dividends paid to you (and, on a joint return, your spouse) in 2025, as shown on the
-        document the state of Alaska sends with the payment, without reducing them by any energy relief payment; zero if
-        none'
+        document the state of Alaska sends with the payment, without reducing them by any energy relief payment, and not
+        counting a child''s dividend, even one paid to you, which is the child''s income; zero if none'
     cite:
       doc: f1040s1
       locator: Schedule 1 (2025), line 8g; p525 p. 31, Alaska Permanent Fund dividend, "report it as income on Schedule 1
-        (Form 1040), line 8g"
+        (Form 1040), line 8g"; i8814 p. 1, "The child’s only income was from interest and dividends, including capital gain
+        distributions and Alaska Permanent Fund dividends"
   - id: s1.line8g
     printed: 8g
     label: Alaska Permanent Fund dividends
@@ -709,12 +710,16 @@ form:
       source: 'Prizes and awards you (and, on a joint return, your spouse) received in 2025 that are not gambling winnings,
         not wages from an employer and not Olympic or Paralympic medals or USOC prize money (for example a contest, quiz or
         drawing prize, or a scholarship prize you need not use for education), goods or services at their fair market
-        value; leave out a prize you refused and a prize transferred under the section 74(b) rules; zero if none'
+        value; leave out a prize you refused, a prize transferred under the section 74(b) rules and a prize related to a
+        business whose income is reported on Schedule C; count prize points in the year they are paid or made available;
+        zero if none'
     cite:
       doc: i1040gi
       locator: 'p. 91, Line 8i, "Enter prizes and awards but see the instructions for line 8m"; p525 p. 35, Prizes and awards,
         "If you refuse to accept a prize, don’t include its value in your income. Prizes and awards in goods or services
-        must be included in your income at their FMV"'
+        must be included in your income at their FMV"; p525 p. 35, Prize points, "The prize points are taxable in the year
+        they’re paid or made available to you, rather than in the year you redeem them for merchandise"; i1040sc p. 6, Line
+        6, "Prizes and awards related to your trade or business"'
   - id: s1.line8i
     printed: 8i
     label: Prizes and awards
@@ -806,12 +811,22 @@ form:
       op: input
       source: 'Scholarship and fellowship grants you (and, on a joint return, your spouse) received in 2025 that are not
         reported on a Form W-2; if you were a degree candidate, only the part used for expenses other than tuition and
-        course-related expenses (for example room, board and travel); zero if none'
+        course-related expenses (for example room, board and travel), plus any part that is payment for teaching, research
+        or other services required as a condition for receiving the grant (but not service pay under the National Health
+        Service Corps Scholarship Program, the Armed Forces Health Professions Scholarship and Financial Assistance Program,
+        or a work college’s comprehensive student work-learning-service program); zero if none'
     cite:
       doc: i1040gi
       locator: 'p. 92, Line 8r, "Enter the amount of scholarship and fellowship grants not reported on Form W-2. However, if
         you were a degree candidate, include on line 8r only the amounts you used for expenses other than tuition and
-        course-related expenses. For example, amounts used for room, board, and travel must be reported on line 8r"'
+        course-related expenses. For example, amounts used for room, board, and travel must be reported on line 8r"; p525
+        p. 35, Payment for services, "Generally, you can’t exclude from your gross income the part of any scholarship or
+        fellowship that represents payment for teaching, research, or other services required as a condition for receiving
+        the scholarship"; p525 p. 35, Exceptions, "You don’t have to include in income the part of any scholarship or
+        fellowship that represents payment for teaching, research, or other services if you receive the amount under: The
+        National Health Services Corps Scholarship Program, The Armed Forces Health Professions Scholarship and Financial
+        Assistance Program, or A comprehensive student work-learning-service program (as defined in section 448(e) of the
+        Higher Education Act of 1965) operated by a work college"'
   - id: s1.line8r
     printed: 8r
     label: Scholarship and fellowship grants not reported on Form W-2
@@ -1082,11 +1097,15 @@ form:
     expr:
       op: input
       source: Was any of your (or, on a joint return, your spouse's) debt canceled or forgiven in 2025 (for example, you received
-        a Form 1099-C, or a lender forgave a debt you owed without one)?
+        a Form 1099-C, a lender forgave a debt you owed without one, a lender took a discount off a loan you paid off early,
+        or a loan modification reduced what you owed)?
     cite:
       doc: p4681
       locator: p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt
-        as gross income on your tax return unless one of the exceptions or exclusions described later applies"
+        as gross income on your tax return unless one of the exceptions or exclusions described later applies"; p. 4,
+        Discounts and Loan Modifications, "If a lender discounts (reduces) the principal balance of a loan because you pay
+        it off early, or agrees to a loan modification (a “workout”) that includes a reduction in the principal balance of
+        a loan, the amount of the discount or the amount of principal reduction is canceled debt"
   - id: s1.cod_amount
     printed: (helper)
     label: Canceled nonbusiness debt (Form 1099-C box 2, and any canceled nonbusiness debt with no Form 1099-C)
@@ -1094,14 +1113,16 @@ form:
     expr:
       op: input
       source: 'Canceled nonbusiness debt: the total of box 2 of your (or, on a joint return, your spouse''s) Forms 1099-C,
-        plus any canceled nonbusiness debt for which you received no Form 1099-C; zero if none. On a joint return, count a debt both spouses owed once, even if each received a Form 1099-C for the whole amount'
+        plus any canceled nonbusiness debt for which you received no Form 1099-C; zero if none. On a joint return, count a debt both spouses owed once, even if each received a Form 1099-C for the whole amount. Count a debt in the year it was actually canceled, whatever year a Form 1099-C reports it in'
     cite:
       doc: p4681
       locator: p. 4, Form 1099-C Reference Guide, "Even if you didn't receive a Form 1099-C, you must report canceled debt
         as gross income on your tax return unless one of the exceptions or exclusions described later applies"; p. 4, Persons
         who each receive a Form 1099-C showing the full amount of debt, "If you and another person were jointly and severally
         liable for a canceled debt, each of you may get a Form 1099-C showing the entire amount of the canceled debt"; f1099c p.
-        4, Instructions for Debtor, "Box 2. Shows the amount of debt either actually or deemed discharged"
+        4, Instructions for Debtor, "Box 2. Shows the amount of debt either actually or deemed discharged" and "If an
+        identifiable event has occurred but the debt has not actually been discharged, then include any discharged debt in
+        your income in the year that it is actually discharged"
   - id: s1.has_cod
     printed: (helper)
     label: Any canceled nonbusiness debt
@@ -1233,7 +1254,9 @@ form:
       - s1.line8z
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 9 (lines 8a, 8d, 8e, 8k to 8q and 8s to 8v are refused by s1.line8_other)
+      locator: Schedule 1 (2025), line 9 (lines 8e, 8k, 8m and 8t to 8v are refused by s1.line8_other, 8a by scope.nol and
+        8l by scope.rental through scope.schedule1, 8d by sa.excluded_income, 8n and 8o by scope.cfc, 8p by the excess
+        business loss refusal of s1.line3, 8q by person.x_other and 8s by scope.medicaid_waiver)
     refuses:
     - when: s1.line8_other
       form: Schedule 1, line 8 (other income this tool does not compute)
@@ -1258,8 +1281,9 @@ form:
       - s1.line9
     cite:
       doc: f1040s1
-      locator: Schedule 1 (2025), line 10 (lines 4 to 6, and the parts of lines 2 and 8 this tool does not compute, are outside
-        this tool and refused at Form 1040 line 8 by scope.schedule1 and the line 8 screen)
+      locator: Schedule 1 (2025), line 10 (line 4 is refused by sd.other_forms on Schedule D, lines 5 and 6 by scope.schedule1
+        at Form 1040 line 8, the parts of line 2a this tool does not compute by s1.alimony_unsupported, and those of line 8
+        as the line 9 citation says)
   - id: s1.line11
     printed: '11'
     label: Educator expenses

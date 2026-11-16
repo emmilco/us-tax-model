@@ -428,7 +428,7 @@ export function checkedCases(): CheckedCase[] {
 
 /** A fixture case as its file states it; `walk` names the interview profile whose path the case is (the build's
  * interview path checks and interview-rules walk it). */
-export type WalkProfile = "social-security" | "sales" | "stage4" | "full";
+export type WalkProfile = "full";
 export interface StatedCase { id: string; walk?: WalkProfile; covers: string[]; evidence: string; evidence_note?: string; inputs: Record<string, unknown>; expect?: Record<string, unknown> }
 
 /** The case files of a fixtures directory: every .json file in it except the defaults table. */

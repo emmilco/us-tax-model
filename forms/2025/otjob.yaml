@@ -32,32 +32,38 @@ form:
       locator: p. 108, Qualified Overtime Compensation From More Than One Employer Worksheet
   - id: otjob.flsa
     printed: (helper)
-    label: Were you an FLSA-eligible employee of this employer (covered by and not exempt from the Fair Labor Standards
-      Act, so that this employer was required to pay you overtime under section 7 of the FLSA)?
+    label: Were you, for all or part of 2025, an FLSA-eligible employee of this employer (covered by and not exempt from
+      the Fair Labor Standards Act, so that this employer was required to pay you overtime under section 7 of the FLSA)?
     type: Bool
     expr:
       op: input
-      source: Were you an FLSA-eligible employee of this employer (covered by and not exempt from the Fair Labor Standards
-        Act, so that this employer was required to pay you overtime under section 7 of the FLSA)? You can ask your employer.
+      source: Were you, for all or part of 2025, an FLSA-eligible employee of this employer (covered by and not exempt
+        from the Fair Labor Standards Act, so that this employer was required to pay you overtime under section 7 of the
+        FLSA)? Overtime for a part of the year in which you were exempt is not qualified overtime. You can ask your employer.
     cite:
       doc: i1040gi
       locator: p. 106, Schedule 1-A, Qualified overtime compensation, "you must (among other requirements) be covered
         by and not exempt from the FLSA (an FLSA-eligible employee)" and "Ask your employer or other service recipients
-        whether you are an FLSA-eligible employee"
+        whether you are an FLSA-eligible employee"; n-25-69 p. 9, "The FLSA applies on a workweek basis"
   - id: otjob.special_rule
     printed: (helper)
-    label: Is this employer covered by an FLSA overtime rule other than the general rule in section 7(a) (for example
-      section 7(k) for fire protection and law enforcement, 7(o) compensatory time, or 7(j) hospitals and residential
-      care facilities)?
+    label: Did this employer pay your own overtime under an FLSA overtime rule other than the general rule in section 7(a)
+      (hours over 40 in a workweek), for example section 7(k) (a work period longer than a week for fire protection and law
+      enforcement), 7(o) (compensatory time off instead of overtime pay) or 7(j) (hospitals and residential care
+      facilities, hours over 8 in a workday or over 80 in a 14-day period)?
     type: Bool
     expr:
       op: input
-      source: Is this employer covered by an FLSA overtime rule other than the general rule in section 7(a) (for example
-        section 7(k) for fire protection and law enforcement, 7(o) compensatory time off, or 7(j) hospitals and residential
-        care facilities)?
+      source: Did this employer pay your own overtime under an FLSA overtime rule other than the general rule in section
+        7(a) (hours over 40 in a workweek), for example section 7(k) (a work period longer than a week for fire protection
+        and law enforcement), 7(o) (compensatory time off instead of overtime pay) or 7(j) (hospitals and residential care
+        facilities, hours over 8 in a workday or over 80 in a 14-day period)? Answer for the rule applied to your pay, not
+        for rules this employer applies to other employees.
     cite:
       doc: n-25-69
-      locator: pp. 22–25, Section III.B.2, method (G)
+      locator: pp. 22–25, Section III.B.2, method (G), "the different overtime rules used in the relevant provision of
+        29 USC § 207 that apply to the individual"; p. 10, 29 USC § 207(k) and § 207(j), "over eight in any workday or over
+        80 in a 14-day work period"
   - id: otjob.method
     printed: (helper)
     label: How you figured the qualified overtime compensation from this employer
@@ -67,12 +73,14 @@ form:
       source: 'How you figured it, counting only overtime for hours over 40 in a workweek: employer_reported (an amount of
         qualified overtime compensation your employer reported in Form W-2 box 14 or gave you on request); premium (a
         statement shows the "half" portion of time-and-a-half for hours over 40 in a workweek, the FLSA Overtime
-        Premium); total_time_and_half (a statement shows the total pay for hours over 40 in a workweek paid at
-        time-and-a-half); premium_double (hours over 40 in a workweek paid at double time, and a statement shows the pay
-        above your regular rate for those hours); total_double (hours over 40 in a workweek paid at double time, and a
-        statement shows the total pay for those hours); other (any other method, rate or adjustment, including a
-        statement whose overtime amount also includes overtime for hours that were not over 40 in the workweek, such as
-        daily overtime under state law or a union contract, that you cannot separate out)'
+        Premium, for hours paid at time-and-a-half only); total_time_and_half (a statement shows the total pay for hours
+        over 40 in a workweek paid at time-and-a-half); premium_double (hours over 40 in a workweek paid at double time,
+        and a statement shows the pay above your regular rate for those hours, whatever the statement calls it, for
+        example an overtime premium); total_double (hours over 40 in a workweek paid at double time, and a statement shows
+        the total pay for those hours); other (any other method, rate or adjustment, including overtime paid partly at
+        time-and-a-half and partly at double time, and a statement whose overtime amount also includes overtime for hours
+        that were not over 40 in the workweek, such as daily overtime under state law or a union contract, that you cannot
+        separate out)'
     cite:
       doc: i1040gi
       locator: pp. 106-107, Schedule 1-A, "Determining the amount of qualified overtime compensation for 2025," the

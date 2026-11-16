@@ -38,7 +38,7 @@ export const UMBRELLAS: Umbrella[] = [
   { id: "f2441.any", label: "Child and dependent care expenses or benefits (Form 2441)",
     covers: ["f2441.care", "f2441.benefits"] },
   { id: "s2.other_taxes_any", label: "Additional taxes this tool does not figure (merged Schedule 2 screens)",
-    covers: ["s2.amt_owed", "s2.options_any", "s2.household_help", "s2.hsa_testing", "s2.credit_recapture", "s2.other_tax", "f8959.territory_w2"] },
+    covers: ["s2.options_any", "s2.household_help", "s2.hsa_testing", "s2.credit_recapture", "s2.other_tax", "f8959.territory_w2"] },
   { id: "s1a.any", label: "Tips, overtime or car loan interest (Schedule 1-A Parts II to IV)",
     covers: ["s1a.tips", "s1a.overtime", "s1a.carloan"] },
 ];

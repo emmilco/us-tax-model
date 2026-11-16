@@ -10,16 +10,17 @@ form:
     - id: qbi.dividends
       printed: (helper)
       type: NonNegDollars
-      label: Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period and
-        related-payment requirements
+      label: Qualified section 199A dividends from Form 1099-DIV box 5, leaving out the part on shares held 45 days or less
+        or that you are obliged to pay to someone else
       gated_by: qbi.dividends_if_ordinary
       expr:
         op: input
-        source: Qualified section 199A dividends from Form 1099-DIV box 5 after confirming holding-period
-          and related-payment requirements
+        source: Qualified section 199A dividends from Form 1099-DIV box 5. Leave out the part paid on shares you held for 45
+          days or less, and the part you are obliged to pay to someone else; enter only the part that qualifies.
       cite:
         doc: f8995
-        locator: Form 8995 (2025), lines 1–17; i8995 pp. 3–4
+        locator: 'Form 8995 (2025), lines 1–17; i8995 pp. 3–4; i8995 p. 3, "Qualified REIT dividends include any dividends
+          you received from a REIT held for more than 45 days and for which the payment isn’t obligated to someone else"'
     - id: qbi.no
       printed: (helper)
       type: Bool

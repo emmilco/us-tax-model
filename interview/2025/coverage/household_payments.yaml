@@ -114,3 +114,45 @@ rows:
       proceeds:
         f1040.status: mfj
       not_asked: [household.ever_married, household.spouse_died_this_year]
+  - id: household.single_entitled_hoh
+    design: T-304 item 1 (a filer entitled to head of household who takes "None of these")
+    situation: A never-married parent takes the single line, lists their young child who lived with them all year, and paid more than half the cost of the home; they are told head of household fits.
+    uses: [one_person]
+    answers:
+      household.ever_married: false
+      $dependent: [kid]
+      dependent[kid].relationship: child
+      dependent[kid].age: 4
+      dependent[kid].lived_all_year: true
+      dependent[kid].younger: true
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: false
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+      dependent[kid].citizen_ssn: true
+      dependent[kid].absence_no_return: false
+      household.home_cost: true
+    expect:
+      refused: household.hoh_missed
+  - id: household.single_parent_home_not_paid
+    design: T-304 item 1 (single with a child, not having paid over half the cost of the home)
+    situation: A never-married parent takes the single line and lists their young child, but did not pay more than half the cost of the home; single is right, and the interview goes on past the head of household details.
+    uses: [one_person]
+    answers:
+      household.ever_married: false
+      $dependent: [kid]
+      dependent[kid].relationship: child
+      dependent[kid].age: 4
+      dependent[kid].lived_all_year: true
+      dependent[kid].younger: true
+      dependent[kid].other_claimant: false
+      dependent[kid].parents_apart: false
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+      dependent[kid].citizen_ssn: true
+      household.home_cost: false
+      person[taxpayer].work_ssn: true
+      person[taxpayer].tin: true
+    expect:
+      asks: household.credit_disallowed
+      not_asked: ["dependent[kid].absence_no_return"]

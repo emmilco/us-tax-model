@@ -4,8 +4,7 @@
  "family": "claude",
  "base": "1a5dc8681840d939dc7333d238b4879fa1687e7749e1080a44ee513b78f00891",
  "head_rows": {
-  "match / mismatch / unclear / missing": "6 / 0 / 0 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -16,21 +15,22 @@
   },
   {
    "key": "8",
-   "record": "939b43ba87019fd0df7b2b1c572779bf6ade30a250a6574de7ed30de69e665b8",
-   "status": "MATCH",
-   "subject_key": "80a8daf7f283d3b6e188a51115dc22c6268e2ea7d3f55a84b855c401e296d2f9"
+   "record": "863886fe52274b7cd1f5d2a62d7eaf9af9011b38d61b6ae107f62791ca1ae7d4",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: finding; i1040sb p. 3, Line 8, 'During 2025, did you receive a distribution from, or were you the grantor of, or transferor to, a foreign trust?' and 'a loan of cash or marketable securities is generally considered to be a distribution'. The reviewer finds the foreign-trust test in agreement with cfr-26-301-7701-7 and is right that the given pages support neither the indirect receipt ('through another person or company'), nor the free or below-market use of trust property, nor 'a foreign foundation, a waqf or another arrangement' counting as a trust. These follow the Form 3520 rules, which are not archived or cited; each only widens a Yes, which refuses (Form 3520), so no value is wrong and no refusal is missed. Low (BUG-0759): archive i3520 and cite the passages, or drop a clause they do not support.",
+   "subject_key": "d178391731ee6086b6a97259b4f090c846d3b8670bba9b649b6670a20858c39d"
   },
   {
    "key": "2",
-   "record": "21873843d69356f1600fc4785f5be5e9d46ba105f64b0ae09fdc880f00f559d8",
+   "record": "863886fe52274b7cd1f5d2a62d7eaf9af9011b38d61b6ae107f62791ca1ae7d4",
    "status": "MATCH",
-   "subject_key": "0310dd489b83f01ef09db61afefc83f42cbaff3cf9c3f56ba81c2efa4a63295a"
+   "subject_key": "11aca01dafd9bf8ca53a1c07276eef93f8273e529e57d083e0c59d3b5dc9967e"
   },
   {
    "key": "3",
-   "record": "21873843d69356f1600fc4785f5be5e9d46ba105f64b0ae09fdc880f00f559d8",
+   "record": "863886fe52274b7cd1f5d2a62d7eaf9af9011b38d61b6ae107f62791ca1ae7d4",
    "status": "MATCH",
-   "subject_key": "9b3f3b4ec10e75e0e94039f0899b9f28f2ce18b7b4866d7859559c1884e79bf8"
+   "subject_key": "d08703514f0fd39f1fca511b4cd6b6921fb2efb3c49f6ae72b073bf7b58c71b5"
   },
   {
    "key": "4",
@@ -40,18 +40,18 @@
   },
   {
    "key": "6",
-   "record": "21873843d69356f1600fc4785f5be5e9d46ba105f64b0ae09fdc880f00f559d8",
+   "record": "863886fe52274b7cd1f5d2a62d7eaf9af9011b38d61b6ae107f62791ca1ae7d4",
    "status": "MATCH",
-   "subject_key": "4f5e5d4826c4b990ce18aa19b305132467677ec0cdc8e843f4870505ffe70c22"
+   "subject_key": "c248e852160eb05262ff2b14ee8121a8ed678245cda5fdb105dd9844481f04e2"
   }
  ],
  "subjects": {
   "7a": "6a532b2dfe92d7e1cd9802a6b8f59bf57f5bef87caac66d805d0fe049bc236f8",
-  "8": "fb336f1368e3ed3eb4f6991b00a46f6774934fa41369f1f36c1981328cbf7068",
-  "2": "45f4555b9cdbdfe881d790825b18aafa8bc63ca76edabddf66d6a8db3e771153",
-  "3": "688ce692c29742df69b9588c0fb8ec84f4f29e57a05ade843ec022707e537feb",
+  "8": "a96cc50653790fbaf7c06a736cba0f32acb35d67d5dbe1b324690c7a97358963",
+  "2": "7aea750f06c26bac7c3812e9a4f8dd24d0f2c782802b94ba78124134c5d63ed7",
+  "3": "9ab0e5ff39bfef9ccf6fe3e148b92068e6e64f04b9c9c72f677807d568dbc0c7",
   "4": "51868f1dba562d284ef317872515b1b49dd12c6a346e0f4379e6aabb34f63bb9",
-  "6": "93e2f5fc3dc0c485fb34984b1a9cf0bd7a3106bcc67bb5e811759140fa177d8f"
+  "6": "cc0d9f90b78ebba3e8ce631bdc13ff382bc521ae392b82afdcce333b6a85b2e9"
  },
  "__rest__": "a94af5b651134640cc219aba4abb67814d5b7730c6a2f18c6e978773a29f39cc"
 }

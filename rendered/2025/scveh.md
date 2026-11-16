@@ -575,9 +575,9 @@
 ## (helper) — `scveh.suv`
 
 - **Authored helper label:** An SUV or similar vehicle rated 6,000 to 14,000 pounds
-- **Encoded (Bool):** Input — If it is not subject to those limits: is it a 4-wheeled vehicle mainly designed or used to carry passengers over public roads, rated at more than 6,000 and not more than 14,000 pounds gross vehicle weight, other than one seating more than nine behind the driver, one with a cargo area of at least 6 feet not readily accessible from the passenger compartment, or one with no seating behind the driver and no body section more than 30 inches ahead of the windshield?
-- Expr: `{"op":"input","source":"If it is not subject to those limits: is it a 4-wheeled vehicle mainly designed or used to carry passengers over public roads, rated at more than 6,000 and not more than 14,000 pounds gross vehicle weight, other than one seating more than nine behind the driver, one with a cargo area of at least 6 feet not readily accessible from the passenger compartment, or one with no seating behind the driver and no body section more than 30 inches ahead of the windshield?"}`
-- Cite: [i4562] p. 16, Column (i)—Elected section 179 cost, "You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles" (2025; sha256 5c1c95b7)
+- **Encoded (Bool):** Input — If it is not subject to those limits: is it a 4-wheeled vehicle mainly designed or used to carry passengers over public roads, rated at more than 6,000 and not more than 14,000 pounds gross vehicle weight, other than one seating more than nine behind the driver, one with a cargo area of at least 6 feet not readily accessible from the passenger compartment, or one with an integral enclosure fully enclosing the driver compartment and load carrying device, no seating behind the driver and no body section more than 30 inches ahead of the windshield?
+- Expr: `{"op":"input","source":"If it is not subject to those limits: is it a 4-wheeled vehicle mainly designed or used to carry passengers over public roads, rated at more than 6,000 and not more than 14,000 pounds gross vehicle weight, other than one seating more than nine behind the driver, one with a cargo area of at least 6 feet not readily accessible from the passenger compartment, or one with an integral enclosure fully enclosing the driver compartment and load carrying device, no seating behind the driver and no body section more than 30 inches ahead of the windshield?"}`
+- Cite: [i4562] p. 16, Column (i)—Elected section 179 cost, "You cannot elect to expense more than $31,300 of the cost of any SUVs and certain other vehicles" and "That has an integral enclosure fully enclosing the driver compartment and load carrying device" (2025; sha256 5c1c95b7)
 
 ## (helper) — `scveh.year`
 
@@ -607,11 +607,25 @@
 - Expr: `{"op":"param","ref":"sc.period_y5"}`
 - Cite: [i4562] pp. 9-10, Lines 19a Through 19j, Column (a), "5-year property includes the following. Automobiles. Light general purpose trucks" (2025; sha256 5c1c95b7)
 
+## (helper) — `scveh.part2_reached`
+
+- **Authored helper label:** Part II of the worksheet is reached: owned and on actual expenses, and for a passenger automobile line 10 is less than line 9
+- **Encoded (Bool):** helper "Owned and on actual expenses" = true and (helper "Subject to the limits for passenger automobiles" = false or line 10 < line 9 (scveh.line9w))
+- Expr: `{"all":[{"eq":["scveh.is_actual_owned",{"const":true}],"op":"test"},{"any":[{"eq":["scveh.passenger",{"const":false}],"op":"test"},{"lt":["scveh.line10","scveh.line9w"],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, Note after line 10, "If line 10 is equal to line 9, stop here" and "If line 10 is less than line 9, complete Part II" (For use in preparing 2025 returns; sha256 07fadfb2)
+
+## (helper) — `scveh.part3_reached`
+
+- **Authored helper label:** Part III of the worksheet is reached: Part II is reached, and for a passenger automobile line 16 is less than line 11
+- **Encoded (Bool):** helper "Part II of the worksheet is reached: owned and on actual expenses, and for a passenger automobile line 10 is less than line 9" = true and (helper "Subject to the limits for passenger automobiles" = false or line 16 < line 11)
+- Expr: `{"all":[{"eq":["scveh.part2_reached",{"const":true}],"op":"test"},{"any":[{"eq":["scveh.passenger",{"const":false}],"op":"test"},{"lt":["scveh.line16","scveh.line11"],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, Note after line 16, "If line 16 is equal to line 11, stop here" and "If line 16 is less than line 11, complete Part III" (For use in preparing 2025 returns; sha256 07fadfb2)
+
 ## 13 — `scveh.bus_cost`
 
 - **IRS:** Business/investment cost (cost times business use)
 - **Encoded (NonNegDollars):** Divide helper "Business miles, as cents" by helper "Total miles, as cents", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply column (d) by the result.
-- **Shown on the values sheet only when:** Owned and on actual expenses (`scveh.is_actual_owned`)
+- **Shown on the values sheet only when:** Part II of the worksheet is reached: owned and on actual expenses, and for a passenger automobile line 10 is less than line 9 (`scveh.part2_reached`)
 - Interpretation: amb.2025.vehicle_business_pct
 - Expr: `{"amount":"scveh.cost","op":"prorate","part":"scveh.bm_c","places":6,"whole":"scveh.total_c"}`
 - Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13, "Multiply line 12 by line 8. This is your business/investment cost" (For use in preparing 2025 returns; sha256 07fadfb2)
@@ -633,16 +647,16 @@
 ## (gate) — `scveh.s179_bad`
 
 - **Authored helper label:** The section 179 election is more than the business cost, or than the SUV limit
-- **Encoded (Bool):** (helper "Elected section 179 cost" > line 13 or helper "Subject to the limits for passenger automobiles" = false and helper "An SUV or similar vehicle rated 6,000 to 14,000 pounds" = true and helper "Elected section 179 cost" > helper "SUV section 179 limit")
-- Expr: `{"any":[{"gt":["scveh.s179_elect","scveh.bus_cost"],"op":"test"},{"all":[{"eq":["scveh.passenger",{"const":false}],"op":"test"},{"eq":["scveh.suv",{"const":true}],"op":"test"},{"gt":["scveh.s179_elect","scveh.suv_cap"],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** (helper "Elected section 179 cost" > line 13 or helper "Subject to the limits for passenger automobiles" = false and helper "Elected section 179 cost" > helper "SUV section 179 limit" and helper "An SUV or similar vehicle rated 6,000 to 14,000 pounds" = true)
+- Expr: `{"any":[{"gt":["scveh.s179_elect","scveh.bus_cost"],"op":"test"},{"all":[{"eq":["scveh.passenger",{"const":false}],"op":"test"},{"gt":["scveh.s179_elect","scveh.suv_cap"],"op":"test"},{"eq":["scveh.suv",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i4562] p. 16, Column (i) (2025; sha256 5c1c95b7)
 
 ## (helper) — `scveh.after_jan19`
 
 - **Authored helper label:** Acquired after January 19, 2025
-- **Encoded (Bool):** Input — Did you acquire this vehicle after January 19, 2025?
-- Expr: `{"op":"input","source":"Did you acquire this vehicle after January 19, 2025?"}`
-- Cite: [i4562] p. 13, Line 25, "certain qualified property acquired after January 19, 2025" (2025; sha256 5c1c95b7)
+- **Encoded (Bool):** Input — Did you acquire this vehicle after January 19, 2025? A vehicle acquired under a written binding contract is treated as acquired no later than the date the contract was entered into, so answer No if you entered into a written binding contract to acquire it before January 20, 2025, even if you received it later.
+- Expr: `{"op":"input","source":"Did you acquire this vehicle after January 19, 2025? A vehicle acquired under a written binding contract is treated as acquired no later than the date the contract was entered into, so answer No if you entered into a written binding contract to acquire it before January 20, 2025, even if you received it later."}`
+- Cite: [i4562] p. 13, Line 25, "certain qualified property acquired after January 19, 2025"; plaw-119-21 sec. 70301(c)(4) (139 Stat. 190), "property shall not be treated as acquired after the date on which a written binding contract is entered into for such acquisition" (2025; sha256 5c1c95b7)
 
 ## (helper) — `scveh.bonus_choice`
 
@@ -773,7 +787,7 @@
 
 - **IRS:** Section 179 deduction claimed in the year you placed the car in service
 - **Encoded (NonNegDollars):** Choose — [helper "Placed in service in 2025" = true → line 10] [helper "Placed in service in 2025" = false → helper "Section 179 deduction claimed for this vehicle in the year placed in service"]
-- **Shown on the values sheet only when:** Owned and on actual expenses (`scveh.is_actual_owned`)
+- **Shown on the values sheet only when:** Part II of the worksheet is reached: owned and on actual expenses, and for a passenger automobile line 10 is less than line 9 (`scveh.part2_reached`)
 - Expr: `{"alternatives":[{"guard":{"eq":["scveh.placed_this_year",{"const":true}],"op":"test"},"then":"scveh.line10"},{"guard":{"eq":["scveh.placed_this_year",{"const":false}],"op":"test"},"then":"scveh.prior_179"}],"op":"choose"}`
 - Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 14 (For use in preparing 2025 returns; sha256 07fadfb2)
 
@@ -781,7 +795,7 @@
 
 - **IRS:** Tentative basis for depreciation (line 13 less line 14)
 - **Encoded (NonNegDollars):** Subtract line 14 from line 13. If zero or less, enter -0-.
-- **Shown on the values sheet only when:** Owned and on actual expenses (`scveh.is_actual_owned`)
+- **Shown on the values sheet only when:** Part II of the worksheet is reached: owned and on actual expenses, and for a passenger automobile line 10 is less than line 9 (`scveh.part2_reached`)
 - Expr: `{"from":"scveh.bus_cost","op":"subtract_floor0","take":"scveh.line14"}`
 - Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 15 (For use in preparing 2025 returns; sha256 07fadfb2)
 
@@ -819,7 +833,7 @@
 
 - **IRS:** Special depreciation allowance
 - **Encoded (NonNegDollars):** Choose — [helper "Placed in service in 2025" = true → helper "Special allowance for a 2025 vehicle"] [helper "Placed in service in 2025" = false → helper "Zero"]
-- **Shown on the values sheet only when:** Owned and on actual expenses (`scveh.is_actual_owned`)
+- **Shown on the values sheet only when:** Part II of the worksheet is reached: owned and on actual expenses, and for a passenger automobile line 10 is less than line 9 (`scveh.part2_reached`)
 - Expr: `{"alternatives":[{"guard":{"eq":["scveh.placed_this_year",{"const":true}],"op":"test"},"then":"scveh.bonus_this_year"},{"guard":{"eq":["scveh.placed_this_year",{"const":false}],"op":"test"},"then":"scveh.zero"}],"op":"choose"}`
 - Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 16, "Enter -0- if this is not the year you placed the car in service" (For use in preparing 2025 returns; sha256 07fadfb2)
 
@@ -843,7 +857,7 @@
 
 - **IRS:** Basis for depreciation (line 15 less line 16)
 - **Encoded (NonNegDollars):** Subtract line 16 from line 15. If zero or less, enter -0-.
-- **Shown on the values sheet only when:** Owned and on actual expenses (`scveh.is_actual_owned`)
+- **Shown on the values sheet only when:** Part III of the worksheet is reached: Part II is reached, and for a passenger automobile line 16 is less than line 11 (`scveh.part3_reached`)
 - Expr: `{"from":"scveh.line15","op":"subtract_floor0","take":"scveh.line16"}`
 - Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 18 (For use in preparing 2025 returns; sha256 07fadfb2)
 
@@ -921,7 +935,7 @@
 
 - **IRS:** Tentative MACRS depreciation deduction (line 18 times line 6)
 - **Encoded (NonNegDollars):** Choose — [helper "Placed in service in 2025" = true → helper "Line 19 for a 2025 vehicle, half-year or mid-quarter"] [helper "Placed in service in 2025" = false → helper "Line 19 for a vehicle placed in service before 2025 (zero after the recovery period, when the worksheet is not used)"]
-- **Shown on the values sheet only when:** Owned and on actual expenses (`scveh.is_actual_owned`)
+- **Shown on the values sheet only when:** Part III of the worksheet is reached: Part II is reached, and for a passenger automobile line 16 is less than line 11 (`scveh.part3_reached`)
 - Expr: `{"alternatives":[{"guard":{"eq":["scveh.placed_this_year",{"const":true}],"op":"test"},"then":"scveh.line19_this_year"},{"guard":{"eq":["scveh.placed_this_year",{"const":false}],"op":"test"},"then":"scveh.line19_earlier"}],"op":"choose"}`
 - Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 19 (For use in preparing 2025 returns; sha256 07fadfb2)
 

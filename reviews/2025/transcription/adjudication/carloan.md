@@ -55,3 +55,15 @@ Interview redraft (landing worktree), Claude line-scoped pass 7f12a8604c3f. Tria
 | claude | transcription | 22(ii) | model error | 307/389; 39 value, 43 candidate-unknown (4 completed) | fr-2025-24154 pp. 21, 23, (d)(2)(iii)(A), (g)(1) | Smaller of the whole Schedule C interest and the QPVLI, not prorated (stage12.car.mixed_sc_interest_prorated $84.80 / $106.00). |
 
 Counts: model error 1 (1). Findings: none. Project lines unchanged.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-e (claude-opus-5-5, judgment; tax year 2025, us). Open lines of the Claude logs after the goal-1 fix lanes (merge worktree nx-b1), ruled on the triage record `.transcription/triage/2025/<form>.json` (executable-triage-v2; not rerun), the archived sources and the form YAML; render lines on the rendered English (`rendered/2025/<form>.md`). Rulings files `/tmp/b1-adj-e/<form>[.render].json`, applied with `rule.py`; full text in the log and sidecar. The deepseek logs are dormant and not ruled. Pass 50b4293b54a4 follows the BUG-0515 wording changes (lane g1-f10).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | 22(ii) | model error | 210/278; 35 candidate-unknown (4 completed), 33 value | fr-2025-24154 p. 21, (d)(2)(iii)(A), (d)(4); p. 23, (g)(1) | Smaller of the whole Schedule C interest and the QPVLI, not prorated (stage12.car.mixed_sc_interest_prorated $84.80 / $106.00); counts it without a Schedule C (classm.carloan.2 $0 / $1,268.00). |
+| claude | transcription | 22(iii) | model error | 220/278; 33 value, 25 candidate-unknown (4 completed) | i1040gi p. 110, col (iii) | Follows the reply's column (ii) (stage12.car.mixed_sc_interest_prorated $254.40 / $233.20). |
+| claude | render | 22(ii) | scope | MISMATCH: Schedules E and F omitted | i1040gi p. 110; scope.schedule1 | E and F refused through scope.schedule1 (scope.rental, scope.farm). |
+
+Counts: claude transcription model error 2; claude render scope 1. Findings: none. Left open: none.

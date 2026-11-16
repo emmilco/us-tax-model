@@ -414,3 +414,30 @@ Lane land3-adj3 (claude-opus-5-5, judgment), interview redraft landing (uncommit
 Counts: model error 13, scope 4.
 
 Findings: none.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-d (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the B1 integration worktree (nx-b1, uncommitted). Open lines of the Claude transcription log (pass 72610e26e3ba), ruled on `.transcription/triage/2025/eic.json` (executable-triage-v2; 2,028 fixtures, 500 generated, 121 partial; 2,649 comparisons per line) and `--explain` witnesses, the reply, the archived sources and `forms/2025/eic.yaml`. Rulings `/tmp/b1-adj-d/eic.json`, applied with rule.py; full text in the log and sidecar.
+
+The reply's eic.eligible refuses on household.eic_disallowed_claim, which reads household.eic_claimed and so eic.eligible: a cycle that leaves eligible and credit unknown on Schedule C returns. Its worksheet shown_when conditions split Worksheet A from B by Schedule C but test no Step 1-4 STOP, as in the landing round.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | eic.eligible | model error | 1,117/2,649 agree; completed: 825 candidate-unknown (cycle), 12 value | i1040gi pp. 40-42 | Cycle through household.eic_disallowed_claim; also adds the worksheet STOP. |
+| claude | transcription | eic.credit | model error | 1,188/2,649 agree; completed: 825 candidate-unknown (cycle) | i1040gi pp. 40-48 | Inherits the cycle; no value differs where it evaluates. |
+| claude | transcription | eic.check_27c | representation | 2,378/2,649 agree; completed: 30 candidate-unknown; no value | i1040gi p. 43, Line 27c | Refusal on scope.nonresident read without its gate. |
+| claude | transcription | (Step 5, 1) | model error | 705/2,649 agree; completed: 657 candidate-shows-skipped | i1040gi pp. 40-42 | No shown_when. |
+| claude | transcription | (Step 5, 2) | scope | 1,863/2,649 agree; completed: none | i1040gi p. 42, line 2 | $0 both. |
+| claude | transcription | (Step 5, 3) | model error | 715/2,649 agree; completed: 657 candidate-shows-skipped | i1040gi pp. 40-42 | As (Step 5, 1). |
+| claude | transcription | (Step 5, 4) | model error | 1,823/2,649 agree; completed: 17 candidate-unknown, 2 candidate-refuses | i1040gi p. 42, line 4 | Combat pay read or refused before Step 5. |
+| claude | transcription | (Step 5, 5) | model error | 783/2,649 agree; completed: 641 candidate-shows-skipped, 17 unknown, 2 refuses | i1040gi pp. 40-42 | As (Step 5, 1) and (Step 5, 4). |
+| claude | transcription | 4b | model error | 1,945/2,649 agree; completed: 132 candidate-shows-skipped, 1 unknown | i1040gi p. 47, Worksheet B | Shown for any Schedule C filer, no Steps 1-4 test. |
+| claude | transcription | 6 (eic.wsb_6) | model error | 1,953/2,649 agree; completed: 130 candidate-shows-skipped, 1 unknown | i1040gi p. 48, Worksheet B line 6 | As 4b. |
+| claude | transcription | 1 | model error | 822/2,649 agree; completed: 626 shows-skipped, 15 hides-shown, 16 unknown, 2 refuses | i1040gi p. 46, Worksheet A | No Steps 1-4 test; hides-shown is layout. |
+| claude | transcription | 2 | model error | 1,796/2,649 agree; completed: 20 shows-skipped, 15 hides-shown, 17 unknown, 2 refuses | i1040gi p. 46, line 2 | Table credit shown on Step 4 STOP returns ($308, $1,369). |
+| claude | transcription | 3 | model error | 1,059/2,649 agree; completed: 707 shows-skipped, 13 hides-shown | i1040gi p. 46, lines 2-3 | As 1. |
+| claude | transcription | 4 | model error | 1,558/2,649 agree; completed: 402 shows-skipped, 12 hides-shown, 16 unknown, 2 refuses | i1040gi p. 46, line 4 | As 3. |
+| claude | transcription | 5 | model error | 2,250/2,649 agree; completed: 9 shows-skipped, 15 unknown, 2 refuses | i1040gi p. 46, lines 4-5 | Shown on a Step 1 STOP return ($3,261). |
+| claude | transcription | 6 (eic.line6) | model error | 2,220/2,649 agree; completed: 15 shows-skipped, 15 hides-shown, 17 unknown, 2 refuses | i1040gi p. 46, line 6 | As 2. |
+
+Counts: model error 14, representation 1, scope 1. Findings: none.

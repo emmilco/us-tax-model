@@ -1,9 +1,10 @@
-// A mutation worker: evaluates its share of the mutants (see mutantShare in mutate.ts).
+// A mutation worker: evaluates its share of the mutants (see mutantShare in mutate.ts), or, given a plan, its share
+// of the sampled check of the keyed arguments (sampledShare).
 // The tax year comes from the main thread, put on the command line before year.ts loads.
 import { parentPort, workerData } from "node:worker_threads";
 
-const { year, index, count, ny } = workerData as { year: number; index: number; count: number; ny?: boolean };
+const { year, index, count, ny, plan } = workerData as { year: number; index: number; count: number; ny?: boolean; plan?: unknown };
 process.argv.push("--year", String(year));
 if (ny) process.argv.push("--ny");
-const { mutantShare } = await import("./mutate.js");
-parentPort!.postMessage(mutantShare(index, count));
+const { mutantShare, sampledShare } = await import("./mutate.js");
+parentPort!.postMessage(plan === undefined ? mutantShare(index, count) : sampledShare(index, count, plan as Parameters<typeof sampledShare>[2]));

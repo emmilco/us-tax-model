@@ -136,11 +136,13 @@ form:
       printed: (helper)
       type: Bool
       gated_by: f4952.carryover_if_interest
-      label: Do you have investment interest expense disallowed in 2024 and carried forward (line 7 of your 2024 Form 4952)?
+      label: Do you (or, on a joint return, your spouse) have investment interest expense disallowed in 2024 and carried
+        forward (line 7 of a 2024 Form 4952 of either of you, on a joint or a separate return)?
       expr:
         op: input
-        source: Do you have investment interest expense that was disallowed in 2024 and carried forward to 2025 (an amount
-          on line 7 of your 2024 Form 4952)?
+        source: Do you (or, on a joint return, your spouse) have investment interest expense that was disallowed in 2024 and
+          carried forward to 2025 (an amount on line 7 of a 2024 Form 4952 of either of you, on a joint or a separate 2024
+          return)?
       cite:
         doc: f4952
         locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"
@@ -148,10 +150,11 @@ form:
       printed: (helper)
       type: NonNegDollars
       gated_by: f4952.line2
-      label: The amount on line 7 of your 2024 Form 4952
+      label: The amount on line 7 of the 2024 Form 4952 (on a joint return, both spouses' amounts if each filed one)
       expr:
         op: input
-        source: The amount on line 7 of your 2024 Form 4952 (disallowed investment interest expense carried forward to 2025)
+        source: The amount on line 7 of the 2024 Form 4952 (disallowed investment interest expense carried forward to 2025);
+          on a joint return, add both spouses' amounts if each filed a separate 2024 return with one
       cite:
         doc: f4952
         locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"

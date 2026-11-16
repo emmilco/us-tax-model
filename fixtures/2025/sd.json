@@ -3,7 +3,6 @@
   "cases": [
     {
       "id": "sales.official.aggregate",
-      "walk": "sales",
       "covers": [
         "sales.official.aggregate"
       ],
@@ -36,7 +35,6 @@
     },
     {
       "id": "sales.official.two_aggregate",
-      "walk": "sales",
       "covers": [
         "sales.official.two_aggregate"
       ],
@@ -75,7 +73,6 @@
     },
     {
       "id": "sales.box.A",
-      "walk": "sales",
       "covers": [
         "sales.box.A"
       ],
@@ -109,7 +106,6 @@
     },
     {
       "id": "sales.box.B",
-      "walk": "sales",
       "covers": [
         "sales.box.B"
       ],
@@ -144,7 +140,6 @@
     },
     {
       "id": "sales.box.C",
-      "walk": "sales",
       "covers": [
         "sales.box.C"
       ],
@@ -179,7 +174,6 @@
     },
     {
       "id": "sales.box.D",
-      "walk": "sales",
       "covers": [
         "sales.box.D"
       ],
@@ -214,7 +208,6 @@
     },
     {
       "id": "sales.box.E",
-      "walk": "sales",
       "covers": [
         "sales.box.E"
       ],
@@ -249,7 +242,6 @@
     },
     {
       "id": "sales.box.F",
-      "walk": "sales",
       "covers": [
         "sales.box.F"
       ],
@@ -284,7 +276,6 @@
     },
     {
       "id": "sales.loss.single.0",
-      "walk": "sales",
       "covers": [
         "sales.loss.single.0"
       ],
@@ -316,7 +307,6 @@
     },
     {
       "id": "sales.loss.mfs.0",
-      "walk": "sales",
       "covers": [
         "sales.loss.mfs.0"
       ],
@@ -355,7 +345,6 @@
     },
     {
       "id": "sales.loss.single.1",
-      "walk": "sales",
       "covers": [
         "sales.loss.single.1"
       ],
@@ -388,7 +377,6 @@
     },
     {
       "id": "sales.loss.mfs.1",
-      "walk": "sales",
       "covers": [
         "sales.loss.mfs.1"
       ],
@@ -422,7 +410,6 @@
     },
     {
       "id": "sales.loss.single.149999",
-      "walk": "sales",
       "covers": [
         "sales.loss.single.149999"
       ],
@@ -455,7 +442,6 @@
     },
     {
       "id": "sales.loss.mfs.149999",
-      "walk": "sales",
       "covers": [
         "sales.loss.mfs.149999"
       ],
@@ -489,7 +475,6 @@
     },
     {
       "id": "sales.loss.single.150000",
-      "walk": "sales",
       "covers": [
         "sales.loss.single.150000"
       ],
@@ -522,7 +507,6 @@
     },
     {
       "id": "sales.loss.mfs.150000",
-      "walk": "sales",
       "covers": [
         "sales.loss.mfs.150000"
       ],
@@ -556,7 +540,6 @@
     },
     {
       "id": "sales.loss.single.150001",
-      "walk": "sales",
       "covers": [
         "sales.loss.single.150001"
       ],
@@ -589,7 +572,6 @@
     },
     {
       "id": "sales.loss.mfs.150001",
-      "walk": "sales",
       "covers": [
         "sales.loss.mfs.150001"
       ],
@@ -623,7 +605,6 @@
     },
     {
       "id": "sales.loss.single.299999",
-      "walk": "sales",
       "covers": [
         "sales.loss.single.299999"
       ],
@@ -656,7 +637,6 @@
     },
     {
       "id": "sales.loss.mfs.299999",
-      "walk": "sales",
       "covers": [
         "sales.loss.mfs.299999"
       ],
@@ -690,7 +670,6 @@
     },
     {
       "id": "sales.loss.single.300000",
-      "walk": "sales",
       "covers": [
         "sales.loss.single.300000"
       ],
@@ -723,7 +702,6 @@
     },
     {
       "id": "sales.loss.mfs.300000",
-      "walk": "sales",
       "covers": [
         "sales.loss.mfs.300000"
       ],
@@ -757,7 +735,6 @@
     },
     {
       "id": "sales.loss.single.300001",
-      "walk": "sales",
       "covers": [
         "sales.loss.single.300001"
       ],
@@ -790,7 +767,6 @@
     },
     {
       "id": "sales.loss.mfs.300001",
-      "walk": "sales",
       "covers": [
         "sales.loss.mfs.300001"
       ],
@@ -824,7 +800,6 @@
     },
     {
       "id": "sales.loss.single.700000",
-      "walk": "sales",
       "covers": [
         "sales.loss.single.700000"
       ],
@@ -861,7 +836,6 @@
     },
     {
       "id": "sales.loss.mfs.700000",
-      "walk": "sales",
       "covers": [
         "sales.loss.mfs.700000"
       ],
@@ -895,7 +869,6 @@
     },
     {
       "id": "sales.cents",
-      "walk": "sales",
       "covers": [
         "sales.cents"
       ],
@@ -926,7 +899,6 @@
     },
     {
       "id": "sales.no_sales",
-      "walk": "sales",
       "covers": [
         "sales.no_sales"
       ],
@@ -963,7 +935,6 @@
     },
     {
       "id": "sales.distribution",
-      "walk": "sales",
       "covers": [
         "sales.distribution"
       ],
@@ -1002,7 +973,6 @@
     },
     {
       "id": "sales.refuse.digital.G",
-      "walk": "sales",
       "covers": [
         "sales.digital"
       ],
@@ -1016,7 +986,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -1478,7 +1449,6 @@
     },
     {
       "id": "sales.refuse.digital.H",
-      "walk": "sales",
       "covers": [
         "sales.digital"
       ],
@@ -1492,7 +1462,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -1954,7 +1925,6 @@
     },
     {
       "id": "sales.refuse.digital.I",
-      "walk": "sales",
       "covers": [
         "sales.digital"
       ],
@@ -1968,7 +1938,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -2430,7 +2401,6 @@
     },
     {
       "id": "sales.refuse.digital.J",
-      "walk": "sales",
       "covers": [
         "sales.digital"
       ],
@@ -2444,7 +2414,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -2906,7 +2877,6 @@
     },
     {
       "id": "sales.refuse.digital.K",
-      "walk": "sales",
       "covers": [
         "sales.digital"
       ],
@@ -2920,7 +2890,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -3382,7 +3353,6 @@
     },
     {
       "id": "sales.refuse.digital.L",
-      "walk": "sales",
       "covers": [
         "sales.digital"
       ],
@@ -3396,7 +3366,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -3858,7 +3829,6 @@
     },
     {
       "id": "sales.refuse.special",
-      "walk": "sales",
       "covers": [
         "sales.special"
       ],
@@ -3872,7 +3842,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -4334,7 +4305,6 @@
     },
     {
       "id": "sales.refuse.code",
-      "walk": "sales",
       "covers": [
         "sales.bad_code"
       ],
@@ -4348,7 +4318,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -4810,7 +4781,6 @@
     },
     {
       "id": "sales.refuse.no_report_B",
-      "walk": "sales",
       "covers": [
         "sales.bad_code"
       ],
@@ -4825,7 +4795,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -5287,7 +5258,6 @@
     },
     {
       "id": "sales.refuse.aggregate.eligibility",
-      "walk": "sales",
       "covers": [
         "sales.bad_aggregate"
       ],
@@ -5301,7 +5271,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -5763,7 +5734,6 @@
     },
     {
       "id": "sales.refuse.aggregate.basis",
-      "walk": "sales",
       "covers": [
         "sales.bad_aggregate"
       ],
@@ -5778,7 +5748,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -6240,7 +6211,6 @@
     },
     {
       "id": "sales.refuse.aggregate.adjustment",
-      "walk": "sales",
       "covers": [
         "sales.bad_aggregate"
       ],
@@ -6255,7 +6225,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -6717,7 +6688,6 @@
     },
     {
       "id": "sales.refuse.forms",
-      "walk": "sales",
       "covers": [
         "sd.other_forms"
       ],
@@ -6728,7 +6698,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f1040.line7a": {
@@ -7268,7 +7239,6 @@
     },
     {
       "id": "sales.select.sdtw.28pct",
-      "walk": "sales",
       "covers": [
         "f1040.gate.sdtw"
       ],
@@ -7303,7 +7273,6 @@
     },
     {
       "id": "sales.select.sdtw.1250",
-      "walk": "sales",
       "covers": [
         "f1040.gate.sdtw"
       ],
@@ -7338,7 +7307,6 @@
     },
     {
       "id": "sales.select.zero_taxable",
-      "walk": "sales",
       "covers": [
         "selector exceptions"
       ],
@@ -7376,7 +7344,6 @@
     },
     {
       "id": "sales.select.4952_zero",
-      "walk": "sales",
       "covers": [
         "selector exceptions"
       ],
@@ -7412,7 +7379,6 @@
     },
     {
       "id": "sales.select.short_only",
-      "walk": "sales",
       "covers": [
         "selector exceptions"
       ],
@@ -7445,7 +7411,6 @@
     },
     {
       "id": "sales.select.loss_dividend",
-      "walk": "sales",
       "covers": [
         "selector exceptions"
       ],
@@ -7481,7 +7446,6 @@
     },
     {
       "id": "sales.select.loss_no_dividend",
-      "walk": "sales",
       "covers": [
         "selector exceptions"
       ],
@@ -7514,7 +7478,6 @@
     },
     {
       "id": "sales.netting",
-      "walk": "sales",
       "covers": [
         "QDCG lesser gain"
       ],
@@ -7558,7 +7521,6 @@
     },
     {
       "id": "sales.mixed_columns",
-      "walk": "sales",
       "covers": [
         "all column filters",
         "short and long netting"
@@ -7808,7 +7770,9 @@
         ],
         "person[taxpayer].sc[biz_a].scveh[car_1].miles_business": 14719,
         "person[taxpayer].sc[biz_a].scveh[car_1].parking": 90280,
-        "person[taxpayer].sc[biz_a].scveh[car_1].smr_always": true, "person[taxpayer].sc[biz_a].scveh[car_1].smr_first": false, "person[taxpayer].sc[biz_a].scveh[car_1].fleet": false,
+        "person[taxpayer].sc[biz_a].scveh[car_1].smr_always": true,
+        "person[taxpayer].sc[biz_a].scveh[car_1].smr_first": false,
+        "person[taxpayer].sc[biz_a].scveh[car_1].fleet": false,
         "$asset@person[taxpayer].sc[biz_a]": [
           "item_1"
         ],
@@ -7962,7 +7926,8 @@
         "clcw.spouse_screen": true,
         "clcw.prior_sd7": -800000,
         "clcw.prior_sd21": 300000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "clcw.line1": {
@@ -8040,7 +8005,8 @@
         "clcw.prior_14": 1460000,
         "clcw.prior_sd7": -800000,
         "clcw.prior_sd21": 300000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sd.line6_ws": {
@@ -8387,7 +8353,9 @@
           "car_1"
         ],
         "person[spouse].sc[biz_a].scveh[car_1].miles_business": 14752,
-        "person[spouse].sc[biz_a].scveh[car_1].smr_always": true, "person[spouse].sc[biz_a].scveh[car_1].smr_first": false, "person[spouse].sc[biz_a].scveh[car_1].fleet": false,
+        "person[spouse].sc[biz_a].scveh[car_1].smr_always": true,
+        "person[spouse].sc[biz_a].scveh[car_1].smr_first": false,
+        "person[spouse].sc[biz_a].scveh[car_1].fleet": false,
         "$asset@person[spouse].sc[biz_a]": [
           "item_1",
           "item_2"
@@ -8513,7 +8481,9 @@
           "car_1"
         ],
         "person[spouse].sc[biz_a].scveh[car_1].miles_business": 14752,
-        "person[spouse].sc[biz_a].scveh[car_1].smr_always": true, "person[spouse].sc[biz_a].scveh[car_1].smr_first": false, "person[spouse].sc[biz_a].scveh[car_1].fleet": false,
+        "person[spouse].sc[biz_a].scveh[car_1].smr_always": true,
+        "person[spouse].sc[biz_a].scveh[car_1].smr_first": false,
+        "person[spouse].sc[biz_a].scveh[car_1].fleet": false,
         "$asset@person[spouse].sc[biz_a]": [
           "item_1",
           "item_2"
@@ -8554,6 +8524,559 @@
           "kind": "unknown",
           "reason": "no input supplied for sales[s2].aggregate_eligible",
           "input": "sales[s2].aggregate_eligible"
+        }
+      }
+    },
+    {
+      "id": "sd.reg.qof_held",
+      "walk": "sales",
+      "covers": [
+        "sd.qof",
+        "sd.other_forms"
+      ],
+      "evidence": "hand-predicted regression (BUG-0451): a filer who holds an opportunity zone fund investment, with no sale entry, needs Form 8997 (i1040sd p. 1, \"Use Form 8997 to report each QOF investment you held at the beginning and end of the tax year\"); predicted before running: the same refusal as sales.refuse.forms, on sd.other_forms, at every line it reaches",
+      "inputs": {
+        "sd.qof": true,
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f8959.territory_w2": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line1a.d": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line1a.e": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line1a.g": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line1a.h": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line1b.d": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line1b.e": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line1b.g": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line1b.h": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line2.d": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line2.e": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line2.g": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line2.h": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line3.d": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line3.e": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line3.g": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line3.h": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line8a.d": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line8a.e": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line8a.g": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line8a.h": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line8b.d": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line8b.e": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line8b.g": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line8b.h": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line9.d": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line9.e": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line9.g": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line9.h": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line10.d": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line10.e": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line10.g": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line10.h": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.count": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.filed": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line4": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line5": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line6": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line11": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line12": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
+        },
+        "sd.line14": {
+          "kind": "refusal",
+          "form": "Schedule D additional source forms",
+          "remedy": "Prepare the required source forms; their gains/losses are outside the supported securities slice.",
+          "cite": {
+            "doc": "f1040sd",
+            "locator": "Schedule D (2025), Parts I–III",
+            "revision": "2025; created 2025-10-06",
+            "snapshot": "90564c8b7e49280363612639b804d113ebedb516c2e87c70649f29c844da1d2e",
+            "tax_year": 2025
+          },
+          "gate": "sd.other_forms"
         }
       }
     }

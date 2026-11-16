@@ -403,12 +403,6 @@ form:
             doc: i1040gi
             locator: 'p. 13, Single and Married Filing Jointly, "You were married at the end of 2025" and "Your spouse died in 2025 and you didn’t remarry in 2025."'
 
-        - when: household.hoh_fails
-          form: Head of household filing status
-          remedy: Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person.
-          cite:
-            doc: i1040gi
-            locator: p. 14, Head of Household
         - when: household.widowed_this_year
           form: Filing status after a spouse's death in 2025
           remedy: Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint
@@ -417,6 +411,12 @@ form:
           cite:
             doc: i1040gi
             locator: 'p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."'
+        - when: household.hoh_fails
+          form: Head of household filing status
+          remedy: Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person.
+          cite:
+            doc: i1040gi
+            locator: p. 14, Head of Household
         - when: household.qss_fails
           form: Qualifying surviving spouse filing status
           remedy: Qualifying surviving spouse is checked but the tests are not met; your spouse must have died in 2023 or 2024 and you must not have remarried before the end of 2025, a child or stepchild (not a foster child) you can claim as a dependent must have lived in your home all year, you must have paid over half the cost of keeping up your home, and you must have been able to file jointly the year your spouse died; or the qualifying child was presumed kidnapped, whose rule (Pub. 501) is outside this tool.

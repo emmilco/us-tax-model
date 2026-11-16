@@ -91,8 +91,8 @@
   {
    "pair": "edu",
    "field": "expr.source",
-   "person": "Did anyone pay qualified education expenses in 2025 for this person at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?",
-   "dependent": "Did anyone pay qualified education expenses in 2025 for this dependent at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid)?",
+   "person": "Did anyone pay qualified education expenses in 2025 for this person as a student at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid), counting books, supplies and equipment needed for a course of study wherever they were bought?",
+   "dependent": "Did anyone pay qualified education expenses in 2025 for this dependent as a student at an eligible educational institution (a college, university, vocational school, or other postsecondary school eligible for federal student aid), counting books, supplies and equipment needed for a course of study wherever they were bought?",
    "reason": "The wording names whom the line is asked about: a person on the return on one side, a dependent on the other.",
    "source": "f8863 p. 2, Part III, \"Complete Part III for each student for whom you’re claiming either the American opportunity credit or lifetime learning credit.\""
   },
@@ -299,8 +299,8 @@
   {
    "pair": "edu_over",
    "field": "interview.prompt",
-   "person": "For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?",
-   "dependent": "Was there a school term for which the tax-free help and the refunds came to more than that term's tuition, required fees and required course materials?",
+   "person": "For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?",
+   "dependent": "Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?",
    "reason": "The same words on both sides; the person side begins with the per-person frame, which the interview shows by the entry's role (interview/README.md, \"The per-person frame as shown\").",
    "source": "interview/README.md, \"The per-person frame as shown\""
   },

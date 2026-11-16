@@ -75,3 +75,14 @@ rebuilt). Rulings in `/tmp/land3-adj5/sales.json`, applied with rule.py.
 | claude | transcription | sales.route_if_chosen | representation | 1,898/1,933 agree; no value; candidate-unknown (`sales.route` unasked with `sd.route_each` No), candidate-refuses 6 completed (its own Exception 1 refusal, which the project makes at `sales.one`) | i1040sd p. 10, lines 1a and 8a, "You can report on line 1a ... If you choose to report these transactions on lines 1a and 8a, don't report them on Form 8949" | Aggregation is optional; with the parent question No every sale is listed (`sales.detail`). The reply ignores the parent question; its claim that choose cannot yield an enum is mistaken. |
 
 Counts: 1 representation. Findings: none.
+
+## Goal-1 round (2026-11-15)
+
+Lane b1-adj-a (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the B1 integration worktree. Open lines of the Claude transcription log (pass b91cbaa4b1d2; triage `.transcription/triage/2025/sales.json`) and render log (pass 66a0168a22ff). Full ruling text is in the logs and sidecars; rulings files `/tmp/b1-adj-a/<form>.json` (transcription) and `/tmp/b1-adj-a/render/<form>.json` (render), applied with rule.py. The deepseek family is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | (g) | model error | 1,616/1,951 agree; no value; 316 candidate-unknown (sales.route), 6 candidate-refuses (3 completed: sales.adjust.A.W, D.W, A.W.equal_loss) | i8949 p. 8 code B; p. 10 code W | The reply's sales.h_wash_excess figures the loss from sales.correct_basis ($0 under code W alone) and refuses returns the project computes; boxes G/J and other codes are refused (scope). |
+| claude | render | (g) | scope | MISMATCH; boxes G/J and other codes give $0 | i8949 p. 8, code B | sales.digital and sales.bad_code refuse those rows at sales.one. |
+
+Counts: claude transcription: model error 1; claude render: scope 1. Findings: none. No line left open.

@@ -4,27 +4,27 @@
  "family": "claude",
  "base": "f4138e78036450efcf662b376a96b9c62d41985cb0fa5cc2e39cea570ce43a70",
  "head_rows": {
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "22(ii)",
-   "record": "000ed476799d22c308df3ebc10251655b34edfdf7aa9d3cc71c39f0a211b6f77",
+   "record": "d59ca5f509eb6a9e816f5a20c2b9eff8597690b0cfbafc53e76c4a6bf270488a",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; fr-2025-24154 p. 23, proposed § 1.163-16(g)(1): \"Independently deductible interest is limited to interest that is QPVLI\"; p. 21, (d)(2)(iii)(A): \"payments of interest and principal are allocated to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on a pro rata basis\", and (d)(4) the same for a refinanced loan. The reply takes the smaller of the whole Schedule C interest and the loan's QPVLI, so on a loan that also financed other amounts it treats non-QPVLI Schedule C interest as QPVLI: stage12.car.mixed_sc_interest_prorated, project $84.80 (the Schedule C interest prorated by the qualifying part), reply $106.00; the deepseek reply of round 4 was ruled model error for the same reading. executable triage (.transcription/triage/2025/carloan.json, executable-triage-v2): 307 of 389 comparisons agree; 39 value (4 incomplete, 35 refused), 43 candidate-unknown (4 completed): the reply asks carloan.col_ii_input without a Schedule C, where the project reads zero (i1040gi p. 110, column (ii); Schedules E and F refused by scope.schedule1). Project stands.",
-   "subject_key": "cb510f1a49447dd2a700ad0b251cdaff885ef22df853f34dd8da7cf5ae6b558f"
+   "ruling": "Ruling: model error; i1040gi p. 110, Schedule 1-A, line 22, column (ii), \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return\"; fr-2025-24154 p. 21, proposed § 1.163-16(d)(2)(iii)(A), \"payments of interest and principal are allocated ... on a pro rata basis\", (d)(4) (a refinancing, also pro rata), and p. 23, (g)(1), \"Independently deductible interest is limited to interest that is QPVLI\". The interest deducted on Schedule C is interest on the whole loan, so its QPVLI part is its pro rata share; the reply instead takes the smaller of the whole Schedule C interest and the loan's QPVLI (stage12.car.mixed_sc_interest_prorated: project $84.80, reply $106.00; classm.carloan.3 and classm.clcw.2: project $551.52, reply $2,149.00), and it counts a Schedule C amount on a return with no Schedule C, where the project enters $0 (classm.carloan.2: project $0, reply $1,268.00; candidate-unknown on returns without a Schedule C, where carloan.col_ii_input is not asked, e.g. stage12.car.basic). Same as the landing round. Triage executable-triage-v2 (pass 50b4293b54a4): 210/278 agree; 35 candidate-unknown, 33 value; on completed returns 4 candidate-unknown.",
+   "subject_key": "2c7c1adf55f97697d68e3ad076da97be546e4025210bfd2325b4937fd97d41fc"
   },
   {
    "key": "22(iii)",
-   "record": "47ab5176aceef6eae2f0a7bfe21b28b23f9c26282d7d9eefedc3cbc3ec0262fb",
+   "record": "d59ca5f509eb6a9e816f5a20c2b9eff8597690b0cfbafc53e76c4a6bf270488a",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.2025.carloan_ratio_places (chosen: ratio rounded half-up to six places; recorded alternatives: exact ratio, three places) on the value difference; representation on the rest. i1040gi p. 110, Line 22: \"On line 22, column (iii), enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii).\" fr-2025-24154 p. 23, proposed § 1.163-16(g)(1): \"Independently deductible interest is limited to interest that is QPVLI ... and that is otherwise deductible by the taxpayer as a different type of interest\"; (g)(2): the QPVLI \"is reduced to the extent that the taxpayer deducts that independently deductible interest as non-QPVLI\". fr-2025-24154 p. 21, proposed § 1.163-16(d)(2)(iii)(A): \"payments of interest and principal are allocated to the portion of the indebtedness described in paragraph (d)(2)(i) ... and the portion ... described in paragraph (d)(2)(ii) ... on a pro rata basis\", and (d)(4): \"A taxpayer allocates principal and interest between the amount of the new loan that is an SPVL and the remaining portion of the indebtedness on a pro rata basis\". Triage executable-triage-v2 (triage/carloan.json): 131 of 151 comparisons agree; 18 candidate-unknown (13 on completed returns), 2 value. Both subtract column (ii) from the loan's prorated QPVLI. classm.carloan.3: project $1,654.54 ($2,206.06 - $551.52), candidate $1,654.55 ($2,206.06 - $551.51), the nine-place ratio on column (ii) (register alternative). classm.carloan.2: project $5,073.00, candidate $3,805.00, only through the column (ii) amount supplied without a Schedule C (a record the interview does not produce). The candidate-unknown are column (ii)'s, on returns without a Schedule C (representation, as on 22(ii)). Project stands.",
-   "subject_key": "2e821d6f94546597a3359732a09ba05799cc23eedb3095b6f6928cfee50dfe2d"
+   "ruling": "Ruling: model error; i1040gi p. 110, Schedule 1-A, line 22, column (iii), \"enter the total amount of the QPVLI paid or accrued on the loan during the taxable year minus the amount on line 22, column (ii)\". The QPVLI is the same on both sides (the loan's interest, prorated for a mixed or refinanced loan; the reply's nine-place ratio against the project's six, amb.2025.carloan_ratio_places, gives no difference on this sample); every difference follows the reply's column (ii), which does not prorate the Schedule C interest and counts it without a Schedule C (fr-2025-24154 p. 21, (d)(2)(iii)(A) and (d)(4), pro rata; stage12.car.mixed_sc_interest_prorated: project $254.40, reply $233.20; classm.carloan.3: project $1,654.54, reply $57.06; classm.carloan.2: project $5,073.00, reply $3,805.00), and its unknown where column (ii)'s input is not asked (stage12.car.basic). Triage executable-triage-v2 (pass 50b4293b54a4): 220/278 agree; 33 value, 25 candidate-unknown; on completed returns 4 candidate-unknown.",
+   "subject_key": "adaadffb569ec5e0fc0286c8b97e455cf6243c4d8f5f4b66a6f10c8f8cf6630b"
   }
  ],
  "subjects": {
-  "22(ii)": "486335a9f75cf11ddda224e796d70a7ef09141715fa6d698283c6870f7ab2351",
-  "22(iii)": "59180e43d75b52fafb561996558ef7e752f5cbc5da74652ec245e8e2349ff60b"
+  "22(ii)": "2070bcf56dfcc71b0bef08c8d117aa420ad93fbe09c7068d15d13cad986917c1",
+  "22(iii)": "d10184e9bc3b753ac230fe0cb8961782ffc4e81cecb086cea10df8212b5dee72"
  },
  "__rest__": "deb19ff2f95d69c9289f6e2fec1090a13ac53679980606283ce9079810026314",
  "foreign": {

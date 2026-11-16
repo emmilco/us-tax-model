@@ -16,10 +16,9 @@ form:
       label: |-
         Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?
 
-        Answer No:
-        - if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B)
-        - if you were in active military service
-        - if your only New York residence was undergraduate student housing
+        Answer No if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B).
+
+        The 184-day test does not apply to a person in active military service, and undergraduate student housing is not a permanent place of abode for the student living in it; a person domiciled in New York State is a resident either way, unless Group A or B applies.
       type: Bool
       gated_by: ny_it201.state_resident_if_not_city
       expr:
@@ -27,10 +26,9 @@ form:
         source: |-
           Were you (and your spouse, on a joint return) a New York State resident for all of 2025: domiciled in New York State, or keeping a permanent place of abode in New York State for substantially all of the year and spending 184 days or more there?
 
-          Answer No:
-          - if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B)
-          - if you were in active military service
-          - if your only New York residence was undergraduate student housing
+          Answer No if, though domiciled in New York, you kept no permanent place of abode in New York, kept one outside New York all year and spent 30 days or less in New York, or met the 548-day foreign-presence test (Group A or B).
+
+          The 184-day test does not apply to a person in active military service, and undergraduate student housing is not a permanent place of abode for the student living in it; a person domiciled in New York State is a resident either way, unless Group A or B applies.
       cite: { doc: ny_it201i, locator: 'p. 30, Resident, "You maintain a permanent place of abode in New York State for substantially all of the tax year and spend 184 days or more in New York State during the tax year"' }
     - id: ny_it201.ask.city_resident
       printed: '(question)'
@@ -47,9 +45,9 @@ form:
       gated_by: ny_it201.gate.special_accrual
     - id: ny_it201.ask.yonkers
       printed: '(question)'
-      label: 'Did you or your spouse maintain living quarters in Yonkers for any part of 2025, or work in Yonkers while not living there (item D2)?'
+      label: 'Did you or your spouse maintain or have the use of living quarters in Yonkers for any part of 2025, including quarters another person, a family member or an employer maintained for your primary use, or work in Yonkers while not living there (item D2)?'
       type: Bool
-      expr: { op: input, source: 'Did you or your spouse maintain living quarters in Yonkers for any part of 2025, or work in Yonkers while not living there (item D2)?' }
+      expr: { op: input, source: 'Did you or your spouse maintain or have the use of living quarters in Yonkers for any part of 2025, including quarters another person, a family member or an employer maintained for your primary use, or work in Yonkers while not living there (item D2)?' }
       cite: { doc: ny_it201i, locator: 'p. 5, Item D2, "All IT-201 filers must complete item D2."' }
     - id: ny_it201.state_resident_if_not_city
       printed: '(gate)'
@@ -277,15 +275,15 @@ form:
       gated_by: ny_it201.gate.mctmt
     - id: ny_it201.ask.owes_use_tax
       printed: '(question)'
-      label: 'Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?'
+      label: 'Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City''s (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business''s own sales tax return.'
       type: Bool
-      expr: { op: input, source: 'Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?' }
+      expr: { op: input, source: 'Do you (or, on a joint return, your spouse) owe New York sales or use tax on purchases made without paying New York tax, or taxed at a lower local rate than New York City''s (for example online, by catalog, or out of state and brought into New York)? Do not count tax on a motor vehicle, trailer, all-terrain vehicle, vessel or snowmobile that is paid to the Department of Motor Vehicles, or on purchases of a business registered for sales tax, which go on the business''s own sales tax return.' }
       cite: { doc: ny_it201i, locator: 'p. 18, Line 59: Sales or use tax, "You owe sales or compensating use tax if you:"' }
     - id: ny_it201.ask.use_tax_st141
       printed: '(question)'
-      label: 'Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?'
+      label: 'Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?'
       type: Bool
-      expr: { op: input, source: 'Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?' }
+      expr: { op: input, source: 'Do you (or, on a joint return, your spouse) owe use tax on an item or service costing $1,000 or more, or on purchases for a business not registered for sales tax, rental real estate or royalty activity, or do you want to calculate the exact amount (Form ST-141)?' }
       cite: { doc: ny_it201i, locator: 'p. 18, Line 59: Sales or use tax, "You must use Form ST-141 to calculate your sales and use tax liability to be reported on this return if any of the following apply:"' }
     - id: ny_it201.ask.contributions
       printed: '(question)'
@@ -327,9 +325,9 @@ form:
       cite: { doc: ny_it201i, locator: 'p. 21, Lines 72, 73, and 74, "Enter on the appropriate line your total New York State, New York City, and Yonkers tax withheld from any of the following:"' }
     - id: ny_it201.ask.refund_529
       printed: '(question)'
-      label: 'Do you want part of a refund deposited into a New York 529 college savings account (Form IT-195)?'
+      label: 'Do you want all or part of a refund deposited into a New York 529 college savings account (Form IT-195)?'
       type: Bool
-      expr: { op: input, source: 'Do you want part of a refund deposited into a New York 529 college savings account (Form IT-195)?' }
+      expr: { op: input, source: 'Do you want all or part of a refund deposited into a New York 529 college savings account (Form IT-195)?' }
       cite: { doc: ny_it201i, locator: 'p. 23, Line 78a, "Enter on line 78a the amount from Form IT-195, line 4."' }
       gated_by: ny_it201.gate.refund_529
     - id: ny_it201.ask.late_penalty
@@ -346,16 +344,16 @@ form:
       cite: { doc: ny_it201i, locator: 'p. 23, Line 81, "if your 2024 New York adjusted gross income was more than $150,000 (or $75,000 if you are married filing separately for 2025)"' }
     - id: ny_it201.ask.abode_part_year
       printed: '(question)'
-      label: 'Did you maintain a permanent place of abode in New York State for only part of 2025 (for sales and use tax purposes)?'
+      label: 'Was there a month of 2025 in which you maintained a permanent place of abode in New York State (for sales and use tax purposes) for no more than half the month?'
       type: Bool
       gated_by: ny_it201.gate.use_tax_abode
-      expr: { op: input, source: 'Did you maintain a permanent place of abode in New York State for only part of 2025 (for sales and use tax purposes)?' }
+      expr: { op: input, source: 'Was there a month of 2025 in which you maintained a permanent place of abode in New York State (for sales and use tax purposes) for no more than half the month?' }
       cite: { doc: ny_it201i, locator: 'p. 18, Line 59: Sales or use tax, "If you maintained a permanent place of abode in New York State for sales and use tax purposes for only part of the year, multiply the tax amount from the chart by the number of months you maintained the permanent place of abode in New York State and divide the result by 12."' }
     - id: ny_it201.ask.prior_full_year
       printed: '(question)'
-      label: 'Did you file a 2024 New York return covering a full 12 months?'
+      label: 'Did you file a 2024 New York return for a full 12-month tax year (a return as a 2024 part-year resident or nonresident counts)?'
       type: Bool
-      expr: { op: input, source: 'Did you file a 2024 New York return covering a full 12 months?' }
+      expr: { op: input, source: 'Did you file a 2024 New York return for a full 12-month tax year (a return as a 2024 part-year resident or nonresident counts)?' }
       cite: { doc: ny_it201i, locator: 'p. 23, Line 81, "In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax based on a 12-month return."' }
     - id: ny_it201.ask.est_late
       printed: '(question)'
@@ -374,7 +372,7 @@ form:
       printed: '(question)'
       label: 'Your 2024 New York income tax (based on a 12-month return)'
       type: NonNegDollars
-      expr: { op: input, source: 'What was your 2024 New York State and City income tax (the tax shown on your 2024 return, based on a 12-month return)?' }
+      expr: { op: input, source: 'What was your 2024 New York State, New York City, Yonkers and metropolitan commuter transportation mobility tax (the tax shown on your 2024 return, based on a 12-month return, before payments and refundable credits; not sales or use tax or voluntary contributions)?' }
       cite: { doc: ny_it201i, locator: 'p. 23, Line 81, "the amount of your 2024 New York income tax"' }
     - id: ny_it201.gate.part_year_state
       printed: '(gate)'
@@ -458,7 +456,7 @@ form:
       label: 'Wages, salaries, tips, etc.'
       type: NonNegDollars
       expr: { op: round, of: "f1040.line1z", unit: 100, rule: half_up }
-      cite: { doc: ny_it201, locator: 'p. 2, Federal income and adjustments, "Wages, salaries, tips, etc."' }
+      cite: { doc: ny_it201i, locator: 'p. 7, Lines 1 through 19, "The amount entered on line 1 (wages, salaries, tips, etc.) should be the same as the amount reported on federal Form 1040, line 1z."' }
       ambiguity: amb.ny.2025.whole_dollars
       refuses:
         - when: ny_it201.gate.part_year_state
@@ -1563,13 +1561,13 @@ form:
       label: 'Married filing separately with federal AGI within the city credit rows (both returns'' AGI and dependents are needed)'
       type: Bool
       expr: { op: test, all: [{ op: test, eq: ["f1040.status", { const: mfs }] }, { op: test, eq: ["ny_it201.hh_city_in_range", { const: true }] }, { op: test, eq: ["ny_it201.item_c", { const: false }] }] }
-      cite: { doc: ny_it201i, locator: 'p. 13, Note 4, "If your spouse was not required to file a New York State return, use your spouse’s federal adjusted gross income as reported on their federal return"' }
+      cite: { doc: ny_it201i, locator: 'p. 14, Use these notes for New York City household credit tables 4 through 6, Note 4, "If your spouse was not required to file a New York State return, use your spouse’s federal adjusted gross income as reported on their federal return"' }
     - id: ny_it201.gate.hh_city_over7
       printed: '(gate)'
       label: 'More than 7 people for the city household credit with federal AGI within the credit rows'
       type: Bool
       expr: { op: test, all: [{ op: test, ne: ["f1040.status", { const: single }] }, { op: test, gt: ["ny_it201.hh_people", { param: "ny.hh.max_people" }] }, { op: test, eq: ["ny_it201.hh_city_in_range", { const: true }] }, { op: test, eq: ["ny_it201.item_c", { const: false }] }] }
-      cite: { doc: ny_it201i, locator: 'p. 13, Use these notes for New York State household credit tables 1 through 3, "Note 3 For each individual over 7, add the amount in this column to the column 7 amount."' }
+      cite: { doc: ny_it201i, locator: 'p. 14, Use these notes for New York City household credit tables 4 through 6, "Note 3 For each individual over 7, add the amount in this column to the column 7 amount."' }
     - id: ny_it201.hh_city_by_status
       printed: '(48)'
       label: 'The city household credit table for the filing status'
@@ -2090,7 +2088,7 @@ form:
           cite: { doc: ny_it201i, locator: 'p. 19, Line 63: Empire State child credit, "review the instructions for Form IT-213, Claim for Empire State Child Credit, to see if you qualify for this credit"' }
     - id: ny_it201.federal_care
       printed: '(gate)'
-      label: 'Did you (or your spouse) have care expenses for a qualifying person so you (and your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?'
+      label: 'Did you (or your spouse) have care expenses for a qualifying person so you (or, on a joint return, your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?'
       type: Bool
       expr:
         op: test

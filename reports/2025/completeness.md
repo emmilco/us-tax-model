@@ -44,7 +44,6 @@ Findings: 0; ruled 0; in the baseline to be worked off 0.
 - `mq`: lines, citations or cited pages changed since its samples
 - `oi8z`: lines, citations or cited pages changed since its samples
 - `otjob`: lines, citations or cited pages changed since its samples
-- `person`: lines, citations or cited pages changed since its samples
 - `qbi`: lines, citations or cited pages changed since its samples
 - `qdcg`: lines, citations or cited pages changed since its samples
 - `refund`: lines, citations or cited pages changed since its samples

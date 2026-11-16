@@ -55,7 +55,7 @@ function walk(expr: Expr | TestExpr, out: { refs: Set<string>; defs: boolean; su
     case "sum": case "smaller_of": case "larger_of": for (const r of e["of"] as string[]) out.refs.add(r); break;
     case "subtract": case "subtract_floor0": out.refs.add(e["from"] as string); op(e["take"] as Operand); break;
     case "multiply_rate": out.refs.add(e["amount"] as string); op(e["rate"] as Operand); break;
-    case "table_lookup": case "bracket_schedule": out.refs.add(e["key"] as string); out.refs.add(e["status"] as string); break;
+    case "table_lookup": out.refs.add(e["key"] as string); out.refs.add(e["status"] as string); break;
     case "round": out.refs.add(e["of"] as string); break;
     case "multiply_count": out.refs.add(e["amount"] as string); out.refs.add(e["count"] as string); break;
     case "keyed_lookup": for (const k of e["keys"] as string[]) out.refs.add(k); break;
@@ -73,6 +73,22 @@ function walk(expr: Expr | TestExpr, out: { refs: Set<string>; defs: boolean; su
     }
     default: break;
   }
+}
+
+/** The printed tax tables whose lookups are results of the shared tax computation: the federal Tax Table
+ * (read inside tax_on_amount) and the New York State and City Tax Tables, which the New York forms look
+ * up directly. Their rows are not among a document's source pages, so a lookup in one is given with the
+ * rate-schedule and worksheet results, not worked. */
+const SHARED_TAX_TABLES = new Set(["tax_table", "ny_tax_table", "ny_city_tax_table"]);
+
+/** A line whose value is a result of the shared tax computation, given rather than worked: one that
+ * takes a shared definition's result, or a lookup in a printed tax table (SHARED_TAX_TABLES). */
+function sharedComputation(line: Line): boolean {
+  const e = line.expr as Expr & { table?: string };
+  if (e.op === "table_lookup" && SHARED_TAX_TABLES.has(e.table ?? "")) return true;
+  const out = { refs: new Set<string>(), defs: false, sums: [] as { collection: string; field: string; where: Set<string> }[] };
+  walk(line.expr as Expr, out);
+  return out.defs;
 }
 
 function roundInputs(inputs: Inputs, data: CanonicalData): Inputs {
@@ -143,7 +159,7 @@ function buildJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResu
     walk(line.expr as Expr, out);
     for (const x of out.refs) refs.add(x);
     sums.push(...out.sums);
-    if (out.defs) defLines.push(line);
+    if (sharedComputation(line)) defLines.push(line);
   }
   const given: Given[] = [];
   const val = (id: string) => r.derivations.get(id)?.value;
@@ -246,7 +262,7 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
   const inputLines = doc.lines.filter((l) => l.expr.op === "input");
   // Lines that take a shared definition's result (a person's Schedule SE lines): given per entry,
   // as a single document's are, not worked (the definition has its own class M review).
-  const defIds = new Set(doc.lines.filter((l) => { const o = { refs: new Set<string>(), defs: false, sums: [] as { collection: string; field: string; where: Set<string> }[] }; walk(l.expr as Expr, o); return o.defs; }).map((l) => l.id));
+  const defIds = new Set(doc.lines.filter(sharedComputation).map((l) => l.id));
   // Fields of an enclosing entry the document reads (a business reading its person's Schedule SE, say):
   // given with the entry, since the entry-level hand-work cannot see the enclosing document.
   const enclosingRefs = new Set<string>();
@@ -500,6 +516,9 @@ export function classmJobs(args: string[]): void {
     if (!cache.has(sig)) cache.set(sig, branchesOf(evaluateAll(data, Object.fromEntries(kept.map((k) => [k, full[k]!])))));
     return cache.get(sig)!;
   };
+  // A return the interview refuses (one of its targets is a refusal: Form 8962 on a married filing
+  // separately return, say) is filed by no one, so no case is spent on it.
+  const refusedReturn = (i: number): boolean => targets.some((t) => results[i]!.derivations.get(t)?.value.kind === "refusal");
   const problems: string[] = [];
   const routedCover = (built: Job[]): number => new Set(built.flatMap((j) => j.branches)).size;
   for (const doc of data.forms) {
@@ -510,6 +529,7 @@ export function classmJobs(args: string[]): void {
     // Candidate cases: the document's printed lines all computed; for a collection, at least one
     // entry, every entry's worked lines computed.
     const candidates = corpus.map((_, i) => i).filter((i) => {
+      if (refusedReturn(i)) return false;
       // A declared filing flag means the form is actually used. Do not ask a
       // source reader to fill an unfiled form and credit incidental zeroes.
       if (doc.lines.some((l) => l.id === `${doc.id}.filing` && l.type === "Bool")) {
@@ -533,8 +553,7 @@ export function classmJobs(args: string[]): void {
     const reachableAll = keys.filter((k) => candidates.some((i) => keysPerCase[i]!.has(k))).length;
     // The lines a job on the return requests, as buildJob and buildCollectionJob choose them (a
     // collection's live-entry filter aside), and the branches the routed job then takes.
-    const isDefLine = (l: Line): boolean => { const o = { refs: new Set<string>(), defs: false, sums: [] as { collection: string; field: string; where: Set<string> }[] }; walk(l.expr as Expr, o); return o.defs; };
-    const printedFill = isCollection ? [] : doc.lines.filter((l) => !isHelperLine(l) && l.expr.op !== "input" && !isDefLine(l));
+    const printedFill = isCollection ? [] : doc.lines.filter((l) => !isHelperLine(l) && l.expr.op !== "input" && !sharedComputation(l));
     const rootsOf = (i: number): string[] => isCollection
       ? [...entriesOf(doc.id, results[i]!).values()].flatMap((f) => collectionFill(doc).map((l) => f.get(l.id)).filter((k): k is string => !!k))
       : printedFill.filter((l) => !hiddenLine(l, results[i]!)).map((l) => l.id);
@@ -594,6 +613,7 @@ export function classmJobs(args: string[]): void {
     const keys = docKeys(def);
     const instances: DefInstance[] = []; const seen = new Set<string>();
     results.forEach((r, caseIndex) => {
+      if (refusedReturn(caseIndex)) return;
       for (const [prefix, lines] of instancesOf(def, r)) {
         const params = defParams(def).map((l) => r.derivations.get(lines.get(l.id) ?? "")?.value);
         const sig = JSON.stringify(params);

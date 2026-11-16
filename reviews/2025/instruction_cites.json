@@ -14,7 +14,8 @@
   "section:sd.line13": "Not applicable: the line cites the form face (f1040sd p. 1, line 13, \"Capital gain distributions. See the instructions\"); the i1040sd p. 11 Line 13 section says only \"See Capital Gain Distributions, earlier\". Held in the baseline until lane A's gate lines changed the form.",
   "section:f1040.line3a": "Cited: the locator reads 'Instructions for Form 1040, pp. 25–26, line 3a and exceptions', i1040gi pp. 25-26, the Line 3a section and its exceptions; the gate line f1040.line3a_if_ordinary cites p. 25, Line 3a. Held in the baseline until lane A's gate lines changed the form.",
   "section:f5695.line21a": "Covered: the Line 21a section of i5695 p. 6 says \"To qualify for the credit, any qualified energy property installed on or in your home must be located in the United States. If you check the “No” box, you can't take the energy efficient home improvement credit for your residential energy property costs.\" The question asks for property \"installed on or in connection with a home located in the United States\", and its No answer zeroes Section B (f5695.sec_b_claimed); the line cites the form's line 21a and i5695 p. 3, Section B, which carry the same rule.",
-  "section:f8889.line13": "Accepted, page not named: f8889.line13 cites the printed form line; the Line 13 section of the instructions (i8889 p. 8) is cited by f8889.line13_figured, where the deduction is figured. Line 13 itself only chooses between that figure and zero and carries the refusals of the three questions about the account (f8889.owner_died, f8889.inherited, f8889.archer), which p. 8 does not govern."
+  "section:f8889.line13": "Accepted, page not named: f8889.line13 cites the printed form line; the Line 13 section of the instructions (i8889 p. 8) is cited by f8889.line13_figured, where the deduction is figured. Line 13 itself only chooses between that figure and zero and carries the refusals of the three questions about the account (f8889.owner_died, f8889.inherited, f8889.archer), which p. 8 does not govern.",
+  "section:sd.line12": "Not applicable: the Line 12 paragraph of i1040sd p. 13 is line 12 of the Unrecaptured Section 1250 Gain Worksheet (its instructions run from Lines 1 through 3 on p. 12 to Line 12 on p. 13), a different line; i1040sd has no Line 12 section for Schedule D line 12 (its line sections are Lines 1a and 8a, Lines 1b ... 10, Line 13, Line 18, Line 19 and Line 21), and sd.line12 is zero under the scope.k1 refusal it cites."
  },
  "baseline": {
   "section:f1040.line10": "fcfe7f73f535b5a0",
@@ -37,9 +38,6 @@
   "section:f1040.line6b": "c171c7dfaa646333",
   "section:f1040.line7a": "69bc0dcb94305788",
   "section:f2441.line10": "d38d40749300d7a2",
-  "section:f2441.line19": "8a29d3dfbba766b4",
-  "section:f2441.line24": "18b7a675f76aadaf",
-  "section:f2441.line27": "0a537d6bc1b31a3f",
   "section:f2441.line5": "8eb15624394a5bc0",
   "section:f2441.line9b": "015ff76c7c69db7e",
   "section:f4562.line22": "693e0f2a37fda92e",
@@ -101,13 +99,11 @@
   "section:s1.line13": "5b100c28af29fe71",
   "section:s1.line20": "0772a9008dfae13e",
   "section:s1.line21": "da4724070f130a4f",
-  "section:s1.line3": "7eedb47689207300",
   "section:s1.line7": "975cdc68de724c2d",
   "section:s179.line12": "a615930f6d20a82b",
   "section:s2.line11": "396d20e38b4d25a9",
   "section:s2.line12": "139d803b31b40d90",
   "section:s2.line17c": "6b396695cb415b1e",
-  "section:s2.line2": "82479f779aa362d8",
   "section:s2.line4": "2da51c1c2e29cd18",
   "section:s2.line8": "e8509216e60459e4",
   "section:s3.line1": "7e7bea4d3ced07bd",

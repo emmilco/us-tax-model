@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "519761d89932f311cb1dd4002be191bbdb4c4fe4edfcd0e68c686b1f4a854955",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -93,10 +93,10 @@
   },
   {
    "key": "10",
-   "record": "1d85a01f12530b85db687371a65a1b50b6aaf3a63fef79c0e923c3cf6cad7507",
+   "record": "48f086d8e244327e066aa5af0187d207384e5deff24a4f52aecc5e93a417a9f2",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error (+ scope); The reply's line 10 is yes when line 9 is no and every Form 1095-A that is not VOID is uniform; where the project shows the line the answer is the same on every completed record. M1 (model error): the reply's line 9 is yes on f8962.married_this_year whatever the filing status, and its line 10 needs line 9; the interview asks f8962.married_this_year only on a joint return (f8962.marriage), as the source allows the alternative calculation only to joint filers (i8962 p. 13, Table 4, question 3, \"Are you filing a joint return with your spouse for 2025? ... No. You are not eligible to elect the alternative calculation. Do not complete Part V. If you did not complete Part IV, check “No” on line 9 and continue to line 10.\"), so on a single, head of household or qualifying surviving spouse return with a Form 1095-A the reply needs an answer the source does not need (triage: classm.f8962.6, head of household, and classm.s3.8, qualifying surviving spouse, candidate unknown on f8962.married_this_year where the project gives the line). The reply leaves out a Form 1095-A marked VOID, where the project counts every entered form and refuses the return (f8962.void_form: scope; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"). The one value difference is stage18.refuse.void_1095a, a refused return: with the VOID form left out the reply answers yes where the project answers no and refuses at f8962.void_form. executable-triage-v2 (`.transcription/triage/2025/f8962.json`, pass 0adff78003b5; 1,986 fixtures, 500 generated returns seed 20261026, 406 partial records from 40 bases; every witness listed by a scratch rerun with the witness cap lifted, same counts): 218 of 2,892 agree; differences: 2048 candidate-shows-skipped, 556 candidate-unknown, 64 project-refuses, 3 candidate-refuses, 2 project-unknown, 1 value; on completed returns: 1074 candidate-shows-skipped, 30 candidate-unknown, every one on a record where the project hides the line (triage applies the project's display condition, not the reply's; the reply's display is ruled here by reading its expressions); where the project shows the line on a completed return no value differs. Off completed returns the differences are the project's refusals at its cited gates, the reply's refusals on its own declarations, and answers withheld on partial records.",
-   "subject_key": "35001fd93ab264c077cdc500d5d41554df57ee68889c8261112dbe96a4d41a5b"
+   "ruling": "Ruling: scope; the reply adds \"line 9 is No\" to the full-year test (Part IV or V completed means line 10 No), the project tests only the Form 1095-A full-year and no-change conditions; Part IV (f8962.alloc) and Part V (f8962.marriage) are refused at lines 24 and following, so a line 9 Yes is never on a computed return. Triage pass 827594184a6a: 2,930/2,934 agree; 1 value difference on a refused return (stage18.refuse.void_1095a), 3 candidate-unknown on incomplete returns (the reply asks f8962.shared_policy, divorced_enrolled, married_this_year).",
+   "subject_key": "a58d6b536ce997bb489fc2947f434a11e70cd57da3c4754103a1fcf6f69e0996"
   },
   {
    "key": "11(a)",
@@ -646,17 +646,17 @@
   },
   {
    "key": "24",
-   "record": "1d85a01f12530b85db687371a65a1b50b6aaf3a63fef79c0e923c3cf6cad7507",
+   "record": "48f086d8e244327e066aa5af0187d207384e5deff24a4f52aecc5e93a417a9f2",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error (+ scope); i8962 p. 17, Line 24, the amount from line 11(e) or the total of lines 12(e) to 23(e): the routing is the project's, and the reply enters zero for a filer who is not an applicable taxpayer, as the project does (amb.2025.ptc_not_applicable). M1 (model error): the reply's line 9 is yes on f8962.married_this_year whatever the filing status, and its line 10 needs line 9; the interview asks f8962.married_this_year only on a joint return (f8962.marriage), as the source allows the alternative calculation only to joint filers (i8962 p. 13, Table 4, question 3, \"Are you filing a joint return with your spouse for 2025? ... No. You are not eligible to elect the alternative calculation. Do not complete Part V. If you did not complete Part IV, check “No” on line 9 and continue to line 10.\"), so on a single, head of household or qualifying surviving spouse return with a Form 1095-A the reply needs an answer the source does not need (triage: classm.f8962.6, head of household, and classm.sli.4, single, candidate unknown on f8962.married_this_year where the project gives the line). It treats married filing separately as not an applicable taxpayer, where the project refuses the whole return (s3.mfs through scope.ready: scope). It takes the lawfully-present-alien route below 100% (f8962.alien_below), which the project refuses (f8962.alien_branch: scope; i8962 p. 9, Line 5, \"If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United States, later.\"). The reply leaves out a Form 1095-A marked VOID, where the project counts every entered form and refuses the return (f8962.void_form: scope; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"). Its refusal list omits gates the project refuses at (f8962.void_form, f8962.two_counted, f8962.alien_branch, and f8962.a_zero_paid inside f8962.other): scope. The 9 value differences are on refused married-filing-separately returns (classm.f1095a.1.deepseek, classm.f1095a.1.gpt and a partial record of it, mutation.t2.f1095a.monthly_columns and three mutations of it, generated returns 61 and 239; reply h_applicable false on each): the reply enters zero, the project computes the column (e) total and the return is refused at s3.mfs. executable-triage-v2 (`.transcription/triage/2025/f8962.json`, pass 0adff78003b5; 1,986 fixtures, 500 generated returns seed 20261026, 406 partial records from 40 bases; every witness listed by a scratch rerun with the witness cap lifted, same counts): 1,603 of 2,892 agree; differences: 734 candidate-unknown, 481 candidate-refuses, 34 project-refuses, 31 project-unknown, 9 value; on completed returns: 97 candidate-unknown, every one on a record where the project hides the line (triage applies the project's display condition, not the reply's; the reply's display is ruled here by reading its expressions); where the project shows the line on a completed return no value differs. Off completed returns the differences are the project's refusals at its cited gates, the reply's refusals on its own declarations, and answers withheld on partial records.",
-   "subject_key": "de02a8984d8770b272e5d2638b5632c681a0539a618ebda034b23dde20c909ee"
+   "ruling": "Ruling: ambiguity; the reply enters line 11(e) or the total of lines 12(e) to 23(e) for every filer (f8962 line 24, i8962 p. 17, Line 24) and relies on the columns for a filer who is not an applicable taxpayer; the project enters zero when f8962.applicable is false (household income below 100% of the poverty line without the Marketplace-estimate exception), the owner's reading of amb.2025.ptc_not_applicable (D7(a), 2026-10-28: i8962 p. 10 \"you are not an applicable taxpayer and you are not eligible to take the PTC ... skip lines 7 and 8, and go to line 9\", and no rule to enter -0- there unlike the MFS rule on p. 16). Triage: 2,820/2,934 agree; the value differences on completed returns (stage18.blind.p8 and one generated return: project $0.00, reply $5,160.00 and $3,066.42) are below-100% filers (explained witness: guard f8962.applicable = false taken, status single); the rest are unknowns and refusals on incomplete or refused returns. Married filing separately, the other -0- case, is refused for the whole return (scope.ready_credits, s3.mfs).",
+   "subject_key": "20ad4dbd25d823cc736b60c4b2effebe945678b62a615b18e3aa1499cef654bd"
   },
   {
    "key": "25",
-   "record": "1d85a01f12530b85db687371a65a1b50b6aaf3a63fef79c0e923c3cf6cad7507",
+   "record": "48f086d8e244327e066aa5af0187d207384e5deff24a4f52aecc5e93a417a9f2",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error (+ scope); The amount is the project's (line 11(f) or the total of lines 12(f) to 23(f)) where the project shows the line. M1 (model error): the reply's line 9 is yes on f8962.married_this_year whatever the filing status, and its line 10 needs line 9; the interview asks f8962.married_this_year only on a joint return (f8962.marriage), as the source allows the alternative calculation only to joint filers (i8962 p. 13, Table 4, question 3, \"Are you filing a joint return with your spouse for 2025? ... No. You are not eligible to elect the alternative calculation. Do not complete Part V. If you did not complete Part IV, check “No” on line 9 and continue to line 10.\"), so on a single, head of household or qualifying surviving spouse return with a Form 1095-A the reply needs an answer the source does not need (triage: classm.f8962.6, head of household, and classm.s3.8, qualifying surviving spouse, candidate unknown on f8962.married_this_year where the project gives the line). The reply leaves out a Form 1095-A marked VOID, where the project counts every entered form and refuses the return (f8962.void_form: scope; i8962 p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"). It refuses only on f8962.no_family, where the project refuses at all its Part IV, Part V and eligibility gates: scope. executable-triage-v2 (`.transcription/triage/2025/f8962.json`, pass 0adff78003b5; 1,986 fixtures, 500 generated returns seed 20261026, 406 partial records from 40 bases; every witness listed by a scratch rerun with the witness cap lifted, same counts): 2,147 of 2,892 agree; differences: 568 candidate-unknown, 90 project-refuses, 87 project-unknown; on completed returns: 38 candidate-unknown, every one on a record where the project hides the line (triage applies the project's display condition, not the reply's; the reply's display is ruled here by reading its expressions); where the project shows the line on a completed return no value differs. Off completed returns the differences are the project's refusals at its cited gates, the reply's refusals on its own declarations, and answers withheld on partial records.",
-   "subject_key": "168abc7506950ca5f7b84642896d77feb768a809679444b5f86cff387a07bd98"
+   "ruling": "Ruling: representation; the expressions differ only in writing line 5 as {\"line\": \"5\"} or {\"ref\": \"f8962.line5\"}, the same line, in the shown_when; the value (line 11(f) or lines 12(f) to 23(f)) is identical. Triage: 2,807/2,934 agree, no value differs; 97 project-unknown and 30 project-refuses, all on incomplete or refused returns (upstream answers such as div.any, scope.nol unanswered).",
+   "subject_key": "357c25452f03009cb4bceb106166c1d950ba75ab4b2b84cd83af28bc1dc6fc24"
   },
   {
    "key": "26",
@@ -700,7 +700,7 @@
   "8a": "3968a2bfa5fea786a60929c7954e3dd87016ac43204dfdf9b4cf54acc7dd27ef",
   "8b": "f7de61bbc5667bf7dd14173b489c7ad204cb87849de1dbc65077b23d21740222",
   "9": "5d57fb82a411ac7a9c38eef049706b90f2a1c50f5daee1cac3ebe9effe9248d9",
-  "10": "b247b13ff300e5822986894cd033ac09634c4b6854c759ce34f09b50926bc71f",
+  "10": "c1db1acc3a5a7f5656544187c708a897616256162e1381267e341bbec529deaa",
   "11(a)": "00b5e06233930cf3f3b0d9fe812b461324e90c87c9fabde85518942fb9edd01a",
   "11(b)": "d75a342b039d3f0231526705b35acad26fe6359e4db5d9f02c59c520066a2e2d",
   "11(c)": "70cc004cb4426eba45fe5ad4bd4877089a47ea8e30b3b4d7beb5a8a66940e111",
@@ -779,8 +779,8 @@
   "23(d)": "f36afa9dccbb1e227c98c81cafe92c3939199b8d6761c139da924df8262e3029",
   "23(e)": "bb465fbfb7694b402d73be2b2160e8155b6460a9ca19bed9136a7822163d5b88",
   "23(f)": "1b6841dee5eece9515a6b41fae017804aa144efa0528eee84dbcc93660ee83bf",
-  "24": "b0407e9a694867fef5aba7fefc6d2946cafee19634879d822e22004d436cb310",
-  "25": "aa4e664f81bf6a2e9b7b955a10205b247f9632fe7c9f58d029a543b6486c495d",
+  "24": "0af7d79cae658e656abdc4fb95c419841ba802eaee5efd97764ef4d9d3a74888",
+  "25": "8692074bdb11c2d92fb768ad27e517dd2d0a1477299a78b52aedca109edff480",
   "26": "f757c9a67ed5e86e801a9ed97190b4db66bf9cc618aa5fbc801db2289c72132a",
   "27": "b3f248924214a4dee37b555bec2b5c1706882c500cbbecfc3b68caf14c6eef3e",
   "28": "3d5b35d01fdc05a527497216dadfbced7ebb39130ce649903a6e519eefb3dcc6",
@@ -792,7 +792,7 @@
   "8a": "86d1441d2491f829b1700b35d3ada3655ab41c7422194e5a0feeb830296a152c",
   "8b": "86d1441d2491f829b1700b35d3ada3655ab41c7422194e5a0feeb830296a152c",
   "9": "1b5e68b3a1edd88d159c3436f78ae19511c8aed2334a53b5fe0950219bbd9969",
-  "10": "495342eaed8e7b19ecf28c041dd409b39da33c8db46e22c538c5ac7d9e1f6fe6",
+  "10": "0532246f7ac7828c090b0646c572dccfe3f559877817c5b1b46a524e05ef71a9",
   "11(a)": "512d0722f93cf284327263d4d51603870595b84f3bf0e6b7cb8f1e5f4382a418",
   "11(b)": "3521a7afc846ac96b5b3096c445e59f957997444d4fe2dd0283d133ca57585ab",
   "11(c)": "86d1441d2491f829b1700b35d3ada3655ab41c7422194e5a0feeb830296a152c",

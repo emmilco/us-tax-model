@@ -75,6 +75,17 @@ rows:
       f2441.unable: true
     expect:
       refused: f2441.student_disabled
+  - id: care.joint_spouse_student
+    design: BUG-0447, f2441.care worded for a couple where one spouse worked while the other studied
+    situation: A married couple on one return paid for day care so that one of them could work while the other was a full-time student.
+    uses: [paid_care, own_children_only]
+    answers:
+      $person: [taxpayer, spouse]
+      household.married_dec31: true
+      f2441.prior_year: false
+      f2441.student: true
+    expect:
+      refused: f2441.student_disabled
   - id: eic.lived_with_no_relative
     design: lane 2b, eic.qc_of_another beneath the parent eic.lived_with_relative (the ordinary case)
     situation: A low earner with no child who did not live with a parent or other close relative is not asked whether they are someone's qualifying child.

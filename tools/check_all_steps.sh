@@ -66,7 +66,7 @@ case "$ny_rc" in
   *) echo "check-all: tools/jurisdiction.py --ny-status failed" >&2; exit 2 ;;
 esac
 slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate interview_length "
-docs_steps=" compile build check_bug_inventory check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree "
+docs_steps=" compile build check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree "
 case "$tier" in
   full|fast|docs) ;;
   *) echo "check-all: unknown tier '$tier' (full, fast or docs)" >&2; exit 2 ;;
@@ -183,7 +183,7 @@ step compile npm run compile --silent
 wave compile
 
 if [ "$tier" = docs ]; then step build "${node[@]}" build "$@"; else step build build_and_render "$@"; fi
-step check_self_test "${node[@]}" check-self-test
+step check_self_test "${node[@]}" check-self-test "$@"
 # The Lean evaluator, for compare and ny_compare.
 step lean_build lean_build
 wave build
@@ -203,6 +203,8 @@ step check_printed_tables python3 tools/extract_printed_tables.py --check "$@"
 step check_layouts python3 tools/layouts.py --check "$@"
 step check_source_titles python3 tools/check_source_titles.py "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
+# Each bug entry's status, derived from the inventory, its closure entries and the task registers; the report current.
+step bug_status python3 tools/bug_status.py --check
 step check_agent_runs python3 tools/check_agent_runs.py
 step check_docs_conventions python3 tools/check_docs_conventions.py
 step siblings_check python3 tools/siblings.py --check "$@"

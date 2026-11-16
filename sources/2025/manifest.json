@@ -16,6 +16,24 @@
       "revision_locator": "Extracted text, line 1 title and 'Page Last Reviewed' footer line"
     },
     {
+      "id": "cfr-26-1-170a-13",
+      "title": "\u00a7 1.170A\u201313 Recordkeeping and return requirements for deductions for charitable contributions.",
+      "url": "https://www.govinfo.gov/link/cfr/26/1?sectionnum=170A-13&year=mostrecent&link-type=pdf",
+      "resolved_url": "https://www.govinfo.gov/content/pkg/CFR-2025-title26-vol4/pdf/CFR-2025-title26-vol4-sec1-170A-13.pdf",
+      "fetched_at": "2026-11-15T05:26:24.578794+00:00",
+      "file": "cfr-26-1-170a-13.pdf",
+      "sha256": "751c7415a3f8f5653ac5fccaf38ac6d88d79b1e38c21b7fb9c6d05a390a2b463",
+      "revision": "26 CFR Ch. I (4-1-25 Edition), section 1.170A-13 (GovInfo, GPO)",
+      "revision_status": "Edition inspected in the extracted page header ('26 CFR Ch. I (4\u20131\u201325 Edition)'); resolved by the GovInfo link service to CFR-2025-title26-vol4",
+      "text_file": "cfr-26-1-170a-13.txt",
+      "text_sha256": "ed3a72e4d6fffae2014579706439566167bff38bdcfa437a9cc045b6c353c247",
+      "cols_file": "cfr-26-1-170a-13.cols.txt",
+      "cols_sha256": "e658fa668001d6aebd614df56fcf09be341ee9cd3cd01e59d5fbcf745ecb2298",
+      "pages_file": "cfr-26-1-170a-13.pages.json",
+      "pages_sha256": "1d9ff424b1977a29d50e504ec8b99c2eaa0bc350a1672dfa2f2e9e697b180698",
+      "extract_tool_version": "0.11"
+    },
+    {
       "id": "cfr-26-1-179-2",
       "url": "https://www.govinfo.gov/link/cfr/26/1?sectionnum=179-2&year=mostrecent&link-type=pdf",
       "resolved_url": "https://www.govinfo.gov/content/pkg/CFR-2025-title26-vol4/pdf/CFR-2025-title26-vol4-sec1-179-2.pdf",
@@ -48,6 +66,24 @@
       "pages_file": "cfr-26-1-179-3.pages.json",
       "pages_sha256": "6c8e66cc9b87e58586e4dd7548ca800f90424075609bcd07f55680d9402ae176",
       "extract_tool_version": "0.10"
+    },
+    {
+      "id": "cfr-26-301-7701-7",
+      "title": "\u00a7 301.7701\u20137 Trusts\u2014domestic and foreign.",
+      "url": "https://www.govinfo.gov/link/cfr/26/301?sectionnum=7701-7&year=mostrecent&link-type=pdf",
+      "resolved_url": "https://www.govinfo.gov/content/pkg/CFR-2025-title26-vol20/pdf/CFR-2025-title26-vol20-sec301-7701-7.pdf",
+      "fetched_at": "2026-11-15T05:24:32.798963+00:00",
+      "file": "cfr-26-301-7701-7.pdf",
+      "sha256": "90e054c8c188071d0b11f5bd12a415a05d0f28d6fc250200cab0eb9aa19fd437",
+      "revision": "26 CFR Ch. I (4-1-25 Edition), section 301.7701-7 (GovInfo, GPO)",
+      "revision_status": "Edition inspected in the extracted page header ('26 CFR Ch. I (4-1-25 Edition)'); resolved by the GovInfo link service to CFR-2025-title26-vol20; the section's source note ends with T.D. 8962 (2001)",
+      "text_file": "cfr-26-301-7701-7.txt",
+      "text_sha256": "b44b441bfab4fc5197e265e0af590284a7ab68494713ae7027c9785b133fdc95",
+      "cols_file": "cfr-26-301-7701-7.cols.txt",
+      "cols_sha256": "9724bb458d4ff3a28fc240e1c9b34cb4561e54c580dd1067e95ae4e08d9179d6",
+      "pages_file": "cfr-26-301-7701-7.pages.json",
+      "pages_sha256": "9ad1b0cac7923f82d657ed740dfce69110531e4b249e7902d04b0724f9d3bd41",
+      "extract_tool_version": "0.11"
     },
     {
       "id": "f1040",
@@ -3150,6 +3186,26 @@
       "pages_sha256": "1d2017e189b7a8abc8c8fa19569c1fb1618a81326950aa042f33a12678a2ce8a",
       "extract_tool_version": "0.10",
       "revision_locator": "Page 1 title, \"2025 Instructions for Form 5329\""
+    },
+    {
+      "id": "i5471",
+      "title": "Instructions for Form 5471",
+      "designation": "Instructions for Form 5471",
+      "url": "https://www.irs.gov/pub/irs-pdf/i5471.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/i5471.pdf",
+      "fetched_at": "2026-11-15T05:24:33.660069+00:00",
+      "file": "i5471.pdf",
+      "sha256": "3680eca847f93eb6b52812db1397077e2fd6d96924edb4e61bcfd0cd8bd4ec3c",
+      "revision": "Instructions for Form 5471 (Rev. December 2025)",
+      "revision_status": "Revision inspected in the extracted page 1 title ('(Rev. December 2025)'); current revision for a 2025 return; read for the Category 2 filer definition only",
+      "text_file": "i5471.txt",
+      "text_sha256": "461ff2a5c06f65d066b57fa5a291bff1a8495e0b17cef1590b8400d88dcd0900",
+      "cols_file": "i5471.cols.txt",
+      "cols_sha256": "5ec27a5b7ea352e91083883e2f7209a7a78e971c1c8eff4c6d2c1ab55aab4aaf",
+      "pages_file": "i5471.pages.json",
+      "pages_sha256": "0c2367074ca45a26dd7c3afb0424e18dbac80c479338262f9d69f8e50edf5439",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Page 1 title, \"Instructions for Form 5471 (Rev. December 2025)\""
     },
     {
       "id": "i5695",

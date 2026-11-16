@@ -100,11 +100,11 @@
    "printed": "16",
    "project_expr_sha256": "ce45ab0471420bdb6853a00cf95eaac0248d70fbade1b2ee8430ba6adbcb8290",
    "second_expr_sha256": "3fe9914054750b8eacb2e7f43cbd3228bb194a81beb745f9cf0cb512fd2c6fc6",
-   "ruling": "Ruling: representation; same amount wherever both are defined. Triage (executable-triage-v2, pass 51a9b88c8eed): 3,717 compared, no value difference; 733 candidate-unknown (sa.gambling_losses is asked only after winnings, the reply reads it for every filer), 61 project-refuses (the line carries the sa.charity_limited_if_gifts, sa.unsupported and sa.excluded_income refusals), 187 project-unknown, 1 candidate-refuses (s3.repaid_income, which the project refuses on Schedule 3 and scope). Without winnings s1.line8b is 0, so the reply's smaller_of is also 0. i1040sca p. 11, Other Itemized Deductions: gambling losses 'but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b'. The items the reply calls uncovered are refused: a casualty or theft (Form 4684 lines 32, 38b, 15) by sd.casualty through sd.other_forms (fixture mutation.json, gate sd.other_forms), the claim of right over $3,000 by s3.repaid_income, the other listed items by sa.unsupported.",
-   "context": "e9c751cf538a85bffc6503dde28baff5acc20660026ad6a10afe49c3207e1929",
-   "date": "2026-11-14",
-   "run": "08848c0733c360ce36906fc44d487f75c1b15120a479e1a6bc6b51ca6b262b91",
-   "subject_key": "c7497f00a40698edd9f63f3cdef99cb2f333f1eb5a542d15aa335dd1392f3f15",
+   "ruling": "Ruling: representation; equivalent: i1040sca p. 11, Line 16, gambling losses 'but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b'. The reply's smaller_of(sa.gambling_losses, s1.line8b) is the project's value when winnings are above $0; with no winnings line 8b is $0 and both give $0, but the reply reads sa.gambling_losses, which the interview asks only after a gambling-winnings Yes. Triage executable-triage-v2 (pass a9e1a8c8fc0e): 2,738 of 3,757 agree and no value differs; 793 candidate-unknown (sa.gambling_losses not asked, e.g. classm.f2441.1.deepseek), 1 candidate-refuses (redesign.credits.refuse.repaid_income: refused at s3.repaid_income in both), 68 project-refuses and 157 project-unknown (the project's Schedule A screens sa.unsupported, sa.excluded_income, sa.charity_limited_if_gifts, and records withholding them). The other line 16 items the note names are refused through sa.unsupported, sd.casualty and s3.repaid_income (ruled on the render log). Project stands.",
+   "context": "df686d99b6e8fd081fb890e99db2dc53a65996dcdf9328bbc3326a4f41796b0c",
+   "date": "2026-11-15",
+   "run": "1db3146fda146b0781d0dc528019c80030786e90586ee0f2744112c1c50a306b",
+   "subject_key": "8b05ef0ba8157bbf4fb9c1efbafefbef4da670d0059ece8499b3fc59ab46cd6c",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -318,11 +318,11 @@
    "printed": "8a",
    "project_expr_sha256": "d287da70a51dbb00b82c2b3a1034a719855a670b7918ffc3a80241d3d714b266",
    "second_expr_sha256": "7ee9ed01297f6fb6efecf7f5cd22e8e0f7a1ab01455d0709bcf19501681379a6",
-   "ruling": "Ruling: representation; triage 3,566/3,708 agree, no value difference; differences are candidate-unknown (15 on completed returns: the reply's mortgage-limit refusal helper reads s3.mcc, not asked on those returns) and one candidate-refuses (refused return). Both take sa.mortgage_interest when the filer owned a home or paid interest on a home in another's name or a boat or mobile home, and 0 otherwise; the reply reads sa.home_other also of an owner, where the project asks it only of a non-owner (sa.home_other_if_not_owner), with the same result. f1040sa line 8a; i1040sca p. 8, Line 8a.",
-   "context": "733ce47c31cdcc4a067970f27e9272bfce6a0d2daabd2ce414866fe24f4fac82",
-   "date": "2026-11-14",
-   "run": "c7d048be9648f556bfdf2cedae3ef7b53e3243f6948db5e039213714e14e9b93",
-   "subject_key": "a9d3dea41f4946c871359defbfa766d0f5a3055b27241be54d39a899a4b23db1",
+   "ruling": "Ruling: representation; equivalent: i1040sca p. 8, Line 8a. The reply reads sa.home_other and sa.home_owner together; the project asks sa.home_other only when sa.home_owner is No (the parent question) and reads sa.mortgage_interest when either is Yes, the same condition. Triage executable-triage-v2 (pass a9e1a8c8fc0e): 3,572 of 3,757 agree and no value differs; 184 candidate-unknown are the reply's mortgage credit screen reading s3.mcc where the interview has not asked it (e.g. classm.sd.3.deepseek, project $0); 1 candidate-refuses (redesign.credits.refuse.mcc: the reply refuses on line 8a, the project at Schedule 3 line 7 through s3.mcc_if_interest; the return refuses in both). Project stands.",
+   "context": "df686d99b6e8fd081fb890e99db2dc53a65996dcdf9328bbc3326a4f41796b0c",
+   "date": "2026-11-15",
+   "run": "1db3146fda146b0781d0dc528019c80030786e90586ee0f2744112c1c50a306b",
+   "subject_key": "f379271f887b7ef2483c48d520f9a2bfa91dcd098c05252c21f90001d9aa8daf",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -428,6 +428,45 @@
   },
   {
    "printed": "sa.deduction",
+   "project_expr_sha256": "4ef739fe6bd0bbf6cf189f99bd5b96b2ea4438f3da05013a1c25a449a644a321",
+   "second_expr_sha256": "b976fa426b2fceaa4a44544fe47beb8fa753f3e100bc1f0867dd9ed561dc3ae9",
+   "ruling": "Ruling: representation; equivalent on every compared value; same reading as sa.itemizes (f1040 line 12e; i1040sca, Line 18). Triage executable-triage-v2 (pass a9e1a8c8fc0e): 3,263 of 3,757 agree and no value differs; 464 candidate-unknown (sa.gambling_losses read without winnings, s3.mcc without interest, e.g. classm.f2441.1.deepseek, project $23,625.00), 11 candidate-refuses (refusals the project places elsewhere: s3.mcc_if_interest, s3.repaid_income, f8889 and asset screens), 19 project-refuses (the project's screens). Project stands.",
+   "context": "df686d99b6e8fd081fb890e99db2dc53a65996dcdf9328bbc3326a4f41796b0c",
+   "date": "2026-11-15",
+   "run": "1db3146fda146b0781d0dc528019c80030786e90586ee0f2744112c1c50a306b",
+   "subject_key": "ff00103d10853fae7c74fcf5a6a6cae1cb7b54c703e6d18232383156fda809f8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@sa",
+     "fixture:classm.f2441.2.deepseek@sa",
+     "fixture:classm.f2441.3.deepseek@sa",
+     "fixture:classm.f2441.4.deepseek@sa",
+     "fixture:classm.f2441.5.deepseek@sa",
+     "fixture:classm.f2441.6.deepseek@sa",
+     "fixture:classm.g28.2.deepseek@sa",
+     "fixture:classm.f4952.2@sa",
+     "fixture:classm.f4952.3@sa",
+     "fixture:classm.f8959.1@sa",
+     "fixture:classm.f8959.2@sa",
+     "fixture:classm.g28.2@sa",
+     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@sa",
+     "fixture:redesign.credits.refuse.mcc@sa",
+     "fixture:redesign.credits.refuse.repaid_income@sa",
+     "partial:stage14.asset.refuse_class-sa.dependent@sa",
+     "partial:stage14.asset.refuse_s179_half-sa.dependent@sa",
+     "partial:stage14.asset.refuse_reuse_recycling-sa.dependent@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sa.deduction",
    "project_expr_sha256": "8362c3f35a9c04ebc07d7034253da9794ca3dce15cba4fffad110b300b83624d",
    "second_expr_sha256": "08716f7ba2b44fe18f462f8ad50071ebf32d8318585b9779737d6790eb92aa95",
    "ruling": "Ruling: model error; i1040gi p. 33, Line 12d: \"If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return\"; p. 34, Line 12e: \"In most cases, your federal income tax will be less if you take the larger of your standard deduction or itemized deductions\"; Schedule A (2025), line 18: \"If you elect to itemize deductions even though they are less than your standard deduction, check this box\". executable-triage-v2 (`.transcription/triage/2025/sa.json`, pass 3adda1bd8137; 1,702 fixtures, 500 generated returns seed 20261026, 509 partial records; 2,711 comparisons): 2,445 of 2,711 agree; differences 215 candidate-unknown, 32 project-refuses, 19 candidate-refuses; on returns the full interview completes: 148 candidate-unknown, 6 candidate-refuses; witnesses enumerated with the cap lifted (scratch /tmp/adj/tr/eicwork/full/sa.json). No value differs on any record. The completed candidate-unknowns on sa.spouse_extra (144 on sa.itemizes, 148 on sa.deduction) are all on returns that are not married filing separately (on sa.deduction's 148: single 65, head of household 29, joint 28, qualifying surviving spouse 9 among the fixtures, 17 partial records): the candidate reads sa.spouse_extra through its standard deduction (sa.h_standard) for every status, while the source's spouse-box rule is for a separate return only and the project asks it only then (sa.mfs_spouse_extra); married filing separately is itself refused (s3.mfs at scope.ready). The 6 completed candidate-refusals are classm.clcw.2, classm.clcw.2.deepseek, mutation.t2.no_senior_part5 and three partials of classm.clcw.2.deepseek: single returns whose record answers sa.spouse_extra Yes to a question that opens \"Married filing separately\", which the interview does not ask a single filer; the project itemizes there ($52,023.83 against a $15,750.00 standard deduction). A candidate that needs an answer, or refuses on one, that the source does not need is a model error (README). The 32 project-refuses are on refused records at cited screens (sa.dependent 7, a retirement distribution code 5, sb.fbar_required 4, f4952.bad_election 3, and other gift, dividend and sales screens): scope. Gate-wave check: sa.deduction and Form 1040 line 12e give the same values in HEAD and the working tree on every completed return (1,702 fixtures and 500 generated returns evaluated in both trees). As the earlier ruling on this line. Project stands.",
@@ -524,6 +563,22 @@
    "second_expr_sha256": "d34b6ec42f9feef27df35033998fd8102cc1ee730da455251016ac5923c89840",
    "ruling": "Ruling: scope; project retained. Both select the itemized total (line 17) when itemizing is elected, when a separate-return spouse itemizes, or when line 17 exceeds the standard deduction, and the standard deduction otherwise, with the standard deduction zero when a separate-return spouse itemizes and increased by the age and blindness additions. As on `sa.itemizes`, the project conditions the spouse-itemizes rule on married-filing-separately status, which the second transcription omits; married filing separately is refused (`s3.mfs`, spec 2.2), so within scope the selections agree (i1040gi pp. 34–35, line 12e and the Standard Deduction Chart). Stage 13 re-run: both count the age and blindness boxes of you and, on a joint return, your spouse (i1040gi p. 33, Line 12d).",
    "subject_key": "7f95ef7a04516824f1cd3a2829c8fd18030a07c99b67d0dd81497d06fdd514d6"
+  },
+  {
+   "printed": "sa.home_asked",
+   "project_expr_sha256": "36bce3e00fa4c1e8ebf17ef9a01949a5400881a3e087a2f7a54ffdd22ef69917",
+   "second_expr_sha256": "ad33627230b419f1acffcefd6f66623ef9824349e32ec055fea077e2158cedde",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3757 values compared, none different or missing: 2028 on 2028 fixture cases, 500 on 500 generated returns seed 20261026, 1229 on 1229 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "df686d99b6e8fd081fb890e99db2dc53a65996dcdf9328bbc3326a4f41796b0c",
+   "date": "2026-11-15",
+   "run": "1db3146fda146b0781d0dc528019c80030786e90586ee0f2744112c1c50a306b",
+   "subject_key": "83bfa9acdb78ac37519c9aff944b057371c572efe012f71aca1af16ab21e1594",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "sa.itemizes",
@@ -661,6 +716,45 @@
      "partial:stage14.asset.bonus_100-sa.state_tax_other_any@sa",
      "partial:stage14.asset.prior_7yr-sa.excluded_income@sa",
      "partial:stage14.asset.prior_7yr-sa.state_tax_other_any@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sa.itemizes",
+   "project_expr_sha256": "bc1e9b5796ef9ee1267dd282d1d663a9e513a2727e33c2ef07de5f49db2db5e7",
+   "second_expr_sha256": "77c9b98c982a483d8dfabbf3b4330af957fea1ce301b24b8a2528d26e10eb5df",
+   "ruling": "Ruling: representation; equivalent on every compared value: f1040 line 12e and i1040sca, Line 18 (elect to itemize when itemized deductions are less than the standard deduction; a married filing separately spouse who itemizes requires itemizing). The reply restructures the standard-deduction comparison (an mfs spouse who itemizes gives a $0 standard deduction; the additional amounts counted per person by birth year); triage executable-triage-v2 (`.transcription/triage/2025/sa.json`, pass a9e1a8c8fc0e; 2,028 fixtures, 500 generated returns, partial records): 3,276 of 3,757 agree and no value differs. 443 candidate-unknown come from the reply reading inputs the interview gates: sa.gambling_losses without s1 winnings (line 16) and s3.mcc without mortgage interest (its mortgage credit check, line 8a); 17 candidate-refuses are refusals the project places on other lines (s3.mcc_if_interest at Schedule 3 line 7, s3.repaid_income at line 14, sb.fbar_required_if_foreign, asset screens: redesign.credits.refuse.mcc and .repaid_income refuse the return in both); 21 project-refuses are the project's own screens on records the reply leaves unknown. Project stands.",
+   "context": "df686d99b6e8fd081fb890e99db2dc53a65996dcdf9328bbc3326a4f41796b0c",
+   "date": "2026-11-15",
+   "run": "1db3146fda146b0781d0dc528019c80030786e90586ee0f2744112c1c50a306b",
+   "subject_key": "7c45ba532be76db09230034db790f0bacc23668824120244a034eda21a8c58ac",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@sa",
+     "fixture:classm.f2441.2.deepseek@sa",
+     "fixture:classm.f2441.3.deepseek@sa",
+     "fixture:classm.f2441.4.deepseek@sa",
+     "fixture:classm.f2441.5.deepseek@sa",
+     "fixture:classm.f2441.6.deepseek@sa",
+     "fixture:classm.g28.2.deepseek@sa",
+     "fixture:classm.carloan.1@sa",
+     "fixture:classm.f4952.2@sa",
+     "fixture:classm.f4952.3@sa",
+     "fixture:classm.f8959.1@sa",
+     "fixture:classm.f8959.2@sa",
+     "fixture:classm.g28.2@sa",
+     "fixture:classm.scveh.1@sa",
+     "fixture:mutation.m4.asset.bonus_used_before@sa",
+     "fixture:mutation.m4.asset.qip_2016_screen@sa",
+     "fixture:redesign.credits.refuse.mcc@sa",
+     "fixture:redesign.credits.refuse.repaid_income@sa"
     ],
     "policy": "executable-triage-v2"
    }

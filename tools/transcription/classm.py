@@ -38,7 +38,7 @@ RAW = os.path.join(ROOT, ".classm")
 LOGS = str(jurisdiction.ypath("reviews", Y, "classm"))
 # The engine's flag for the New York fixtures (classm-jobs seeds its corpus from them).
 ENGINE_ARGS = ["--ny"] if jurisdiction.NY else []
-PROMPT_POLICY = "worked-values-request-bound-v2"
+PROMPT_POLICY = "worked-values-request-bound-v3"
 
 
 def fixture_path(family=families.DEFAULT):
@@ -93,12 +93,17 @@ def title_of(doc_id):
     return _titles[doc_id]
 
 
-def given_name(g, fid):
+def given_name(g, fid, job=None):
     """How a given amount is named: a printed line of another document by its document title and
     line number with its wording; a helper of another document by its label; a line of this document
-    by its number."""
+    by its handle and its wording. The handle is its printed number, followed by the line's id where
+    another line of the job given or to fill shares the number (as handle() names lines to fill), so
+    that the State Tax Table and rate-schedule results both printed (39) are told apart."""
     if g["doc"] == fid:
-        return f"this document, line {g['printed']}"
+        same = [x for x in (job or {}).get("given", []) if x["doc"] == fid and x["printed"] == g["printed"]]
+        same += [l for l in (job or {}).get("fill", []) if l["printed"] == g["printed"]]
+        number = f"{g['printed']} ({g['ref']})" if len(same) > 1 else g["printed"]
+        return f"this document, line {number} ({inline(g['label'])})"
     if re.match(r"^[0-9]", g["printed"]):
         return f"{title_of(g['doc'])}, line {g['printed']} ({inline(g['label'])})"
     return f"{title_of(g['doc'])}: {inline(g['label'])}"
@@ -111,7 +116,7 @@ def build_prompt(form_doc, excerpt, job):
         if g["ref"] == "f1040.status":
             continue  # the filing status heads the prompt
         note = f" [{g['note']}]" if g.get("note") else ""
-        given.append(f"- {given_name(g, fid)}: {dollars(g['value'])}{note}")
+        given.append(f"- {given_name(g, fid, job)}: {dollars(g['value'])}{note}")
     for o in job["own_inputs"]:
         tag = f"line {o['printed']}" if not o["printed"].startswith("(") else "a record the filer supplies"
         given.append(f"- {tag}: {inline(o['source'])}: {dollars(o['value'])}")
@@ -180,7 +185,7 @@ def build_entry_prompt(form_doc, excerpt, job):
             given.append(f"- {inline(g['label'])}: {dollars(g['value'])}")
             continue
         note = f" [{g['note']}]" if g.get("note") else ""
-        given.append(f"- {given_name(g, fid)}: {dollars(g['value'])}{note}")
+        given.append(f"- {given_name(g, fid, job)}: {dollars(g['value'])}{note}")
     entries = []
     for entry, fields in (job.get("entries") or {}).items():
         entries.append(f"- {entry}: " + ("; ".join(f"{inline(f['label'])} = {dollars(f['value'])}" for f in fields) or "(no amounts given)"))
