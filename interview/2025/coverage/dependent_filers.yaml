@@ -1,0 +1,55 @@
+# Coverage rows for filers whom someone else can claim as a dependent (the Standard Deduction Worksheet for
+# Dependents, and the credits that turn on it). See opening.yaml for how a row is read.
+tax_year: 2025
+part: Filers someone else can claim as a dependent
+profile: full
+sets:
+  claimable_single:
+    says: One person, single, whom a parent can claim as a dependent.
+    answers:
+      $person: [taxpayer]
+      f1040.status: single
+      household.ever_married: false
+      sa.dependent: true
+rows:
+  - id: dep.w2_student
+    design: scout-dependent-filers §4, typical filer (a student with one W-2, claimed by the parents)
+    situation: A single student of 19 with one W-2 for $6,000, whom the parents can claim, completes the return.
+    uses: [claimable_single]
+    answers:
+      person[taxpayer].birth_year: 2006
+      $w2@person[taxpayer]: [job]
+      person[taxpayer].w2[job].box1: 600000
+      person[taxpayer].w2[job].box2: 12000
+      person[taxpayer].w2[job].box4: 37200
+      person[taxpayer].w2[job].box5: 600000
+      person[taxpayer].w2[job].box6: 8700
+      scope.w2_marks: false
+      s2.w2_marks: false
+      s1.nqdc_pension: false
+      scope.artist_official: false
+      scope.excess_deferral: false
+      scope.unearned_2700: false
+    expect:
+      proceeds:
+        sa.dependent: true
+  - id: dep.marketplace_refused
+    design: scout-dependent-filers §1.2, f8962.dependent_filer
+    situation: A single filer whom a parent can claim enters a Form 1095-A, and is told that someone who can be claimed
+      cannot take the premium tax credit.
+    uses: [claimable_single]
+    answers:
+      $f1095a: [form_1]
+    expect:
+      refused: f8962.dependent_filer
+  - id: dep.qss_refused
+    design: scout-dependent-filers §1.2, sa.dep_qss (amb.2025.sa_dep_qss)
+    situation: A widowed parent whom someone else can claim as a dependent files as qualifying surviving spouse, for which
+      the worksheet gives no standard deduction.
+    answers:
+      $person: [taxpayer]
+      f1040.status: qss
+      household.qss_eligible: true
+      sa.dependent: true
+    expect:
+      refused: sa.dep_qss

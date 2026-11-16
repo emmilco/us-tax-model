@@ -161,9 +161,83 @@
      "fixture:stage16.mut.refund_line3_stop@refund",
      "fixture:stage16.refuse.refund.line5e_bad@refund",
      "partial:classm.w2.1.deepseek-refund.box8@refund",
-     "partial:classm.w2.1.deepseek-refund.not_2024@refund",
-     "partial:classm.w2.1.deepseek-refund.line17_2024@refund",
+     "partial:classm.w2.1.deepseek-refund.not_prior_year@refund",
+     "partial:classm.w2.1.deepseek-refund.line17_prior_year@refund",
      "partial:classm.w2.1.deepseek-refund.status@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "refund.received_if_worksheet",
+   "project_expr_sha256": "5b04e8f0b853bb9c8ac267bf8c35a5292681e6ee41468cb09335609c66139156",
+   "second_expr_sha256": "467ebef5195a807fb57ae3826572877886f810ff122af82a81e4c6f3dc679ca3",
+   "ruling": "Ruling: representation; executable triage 2,974/3,633 agree, 614 project-unknown, 45 candidate-unknown, no value differs (completed: 190 project-unknown, 1 candidate-unknown). The reply's zero branch tests refund.any, the project's refund.worksheet does not; every witness is a return with refund.any false where the project leaves refund.itemized or refund.two_returns unasked, and no reader reaches the line on such a return (refund.received is gated by it; refund.line1 and rec read it only on the refund path). i1040gi p. 88, Line 1: 'None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes' - both expressions give that zero where it applies.",
+   "context": "5e6376101b54dc30eb959f523412120e7a9232e9860ef377a5309b10b27a49fc",
+   "date": "2026-11-15",
+   "run": "cde22cc9795a6f53b9eaff21eb9170e5c407f1b3184f3b925d928b72eed1267b",
+   "subject_key": "57abfc477abc2f58bc1aeccbb051bff0f4f7086546fcbf211942261c1729d0c1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@refund",
+     "fixture:classm.f2441.2.deepseek@refund",
+     "fixture:classm.f2441.3.deepseek@refund",
+     "fixture:classm.f2441.4.deepseek@refund",
+     "fixture:classm.f2441.5.deepseek@refund",
+     "fixture:classm.f2441.6.deepseek@refund",
+     "fixture:classm.refund.4@refund",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@refund",
+     "fixture:t264.f4952.unsupported_with_interest@refund",
+     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@refund",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@refund",
+     "partial:stage14.asset.hy_5yr-refund.any@refund"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "refund.taxable",
+   "project_expr_sha256": "408cae60ebfd25f042d7b3fb083929db2d3403b9d78f1e4648628f3bcd60e237",
+   "second_expr_sha256": "e08b604b15d75b2af9d4710aade1c7d924b2cb0517010dbbf0b383bb27650b1f",
+   "ruling": "Ruling: model error; executable triage 3,274/3,633 agree; 186 project-unknown, 165 candidate-unknown, 5 project-refuses, 3 value (completed: 3 value). The three value witnesses are the Pub. 525 Worksheet 2 fixtures rec.ex31_allocation (project $300, reply $500), rec.salt_cap_partial (project $666.67, reply $0) and rec.allocation_rounding (project $200, reply $800). The reply always takes the i1040gi worksheet line 9 and drops the recovery path; i1040gi p. 88: 'See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet ... if ... You received a refund other than an income tax refund, such as a general sales tax or real property tax refund'. rec.ex31_allocation reproduces Pub. 525 Example 31 (line A 20%, line B $300 to Schedule 1 line 1), which the project's switch to rec.to_line1 gives. The unknowns are the same rec-path inputs read on returns that do not reach them.",
+   "context": "5e6376101b54dc30eb959f523412120e7a9232e9860ef377a5309b10b27a49fc",
+   "date": "2026-11-15",
+   "run": "cde22cc9795a6f53b9eaff21eb9170e5c407f1b3184f3b925d928b72eed1267b",
+   "subject_key": "a03224051f9c50d8dbb7ae90d8a00d8f9acdc928183386bee15b7f5c34e394f6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@refund",
+     "fixture:classm.g28.2.deepseek@refund",
+     "fixture:classm.clcw_next_year.2.deepseek@refund",
+     "fixture:classm.s2.2.deepseek@refund",
+     "fixture:classm.s2.3.deepseek@refund",
+     "fixture:classm.f1040.2.deepseek@refund",
+     "fixture:classm.s1.10@refund",
+     "fixture:classm.f1040.3@refund",
+     "fixture:classm.refund.3@refund",
+     "fixture:classm.refund.5@refund",
+     "fixture:classm.refund.7@refund",
+     "fixture:classm.rec.3@refund",
+     "fixture:rec.ex31_allocation@refund",
+     "fixture:rec.salt_cap_partial@refund",
+     "fixture:rec.allocation_rounding@refund",
+     "fixture:x2s1o.rec.refuse.nol_negative@refund",
+     "fixture:stage16.refuse.refund.box8@refund",
+     "fixture:stage16.refuse.refund.not_2024@refund",
+     "fixture:stage16.refuse.refund.line5e_bad@refund",
+     "fixture:g1f4.refuse.refund.two_itemized@refund"
     ],
     "policy": "executable-triage-v2"
    }
@@ -222,11 +296,11 @@
      "fixture:stage16.mut.refund_single_unasked@refund",
      "fixture:stage16.mut.refund_line3_stop@refund",
      "fixture:stage16.refuse.refund.line5e_bad@refund",
-     "partial:classm.w2.1.deepseek-refund.not_2024@refund",
+     "partial:classm.w2.1.deepseek-refund.not_prior_year@refund",
      "partial:classm.w2.1.deepseek-refund.itemized@refund",
-     "partial:classm.f8889.5.deepseek-refund.not_2024@refund",
+     "partial:classm.f8889.5.deepseek-refund.not_prior_year@refund",
      "partial:classm.f8889.5.deepseek-refund.itemized@refund",
-     "partial:classm.f4952.3.deepseek-refund.not_2024@refund",
+     "partial:classm.f4952.3.deepseek-refund.not_prior_year@refund",
      "partial:classm.f4952.3.deepseek-refund.itemized@refund"
     ],
     "policy": "executable-triage-v2"

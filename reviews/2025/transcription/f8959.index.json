@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "d72670217a585139aa1c6ff5246e78bf0252f97c79cbc31fa6a97a74764f9b65",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,15 +15,15 @@
   },
   {
    "key": "2",
-   "record": "a3ea876fcb959de201f77545a085529a723597db06762ff8029df539111b2b91",
+   "record": "393892a18728d0fa28dc82b654e5d1f3e93eaffa0f1721312b636ffc51ea07a9",
    "status": "AGREE",
-   "subject_key": "bdad486e62911fdd09c8ba17d09ea6ddcc93ab54fd09de217395e58b1278ba90"
+   "subject_key": "272c35bfff00ceb1956245171a4a874b490d29adfe0d04bf95ef592f3172cd37"
   },
   {
    "key": "3",
-   "record": "a3ea876fcb959de201f77545a085529a723597db06762ff8029df539111b2b91",
+   "record": "393892a18728d0fa28dc82b654e5d1f3e93eaffa0f1721312b636ffc51ea07a9",
    "status": "AGREE",
-   "subject_key": "f4ba7b95bd714bcd413280e19d2de876b6f59af5820fd49277877f00f3730b84"
+   "subject_key": "80f5ec2083ca8cf4404e1fd7833ecc553bae77048e800689e1245500b05f1277"
   },
   {
    "key": "8",
@@ -156,8 +156,8 @@
  ],
  "subjects": {
   "1": "da1dcd8be9abf70f32e2577ed43018caa1add35a0c790b3337ffa4d776972272",
-  "2": "045d7f76dadc05adb3f00d93001803cec201b22c714a0a45f36f3355fd51daa6",
-  "3": "aba3ba9ad5b90ff436f77bace20a150d5aeb520e93978d171dddb5134ad2f188",
+  "2": "b13200d035c7ec534d3973c63f428633a1bbadb647851c49c101145c9992fec9",
+  "3": "9e094bdb113f7d41e2fee1cc4352330b0f534a05329deb7b7c6328f3fa96159a",
   "8": "cf32f7cc0f855d4776e0d2d9691c8bf4a921ec421ce5a4c16f83f1e84e6ecacc",
   "14": "44c43884eb85fc79f6dbc12241fc6ca7d5f1119a929d63d717decc2050cd92bb",
   "23": "ab65e601e410125b267b7c313d44f6fd72b7840bb0eda4f28ef475e91bd1299a",
@@ -183,8 +183,8 @@
  "__rest__": "0f18bfe0c9d5af60014cb591bf4a379e43f44703d8b7cd3fc6c88ca6db3940b5",
  "foreign": {
   "1": "6c139d93c8237087758dfea5eb9e782eb7a2f8ddb6879c23f1f1d1005e008a91",
-  "2": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "3": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "2": "2980ff6bf93f572cbdde30a39f8818b12a99e26cecb47066a6321833c41b18a3",
+  "3": "6377b004680cda2ca4d4dd4e1967a1d8798df4a0ad47f0682c7d71538990732d",
   "8": "3b5563b217c9b8ea2a0df80e77446dc2e1afeae7152c53f4b53f4b6db6f2e018",
   "14": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "23": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",

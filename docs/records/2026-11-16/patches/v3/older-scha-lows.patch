@@ -1,0 +1,137 @@
+diff --git a/forms/2025/gift.yaml b/forms/2025/gift.yaml
+index 9425931..c1576da 100644
+--- a/forms/2025/gift.yaml
++++ b/forms/2025/gift.yaml
+@@ -51,6 +51,8 @@ form:
+         - inventory
+         - conservation or partial interests
+         - property with restrictions on its use
++        - property other than qualified appreciated stock given to a private nonoperating foundation
++        - tangible personal property the charity puts to an unrelated use
+         - a clothing or household item over $500 not in good used condition
+       expr:
+         op: input
+@@ -64,10 +66,12 @@ form:
+           - inventory
+           - conservation or partial interests
+           - property with restrictions on its use
++          - property other than qualified appreciated stock given to a private nonoperating foundation
++          - tangible personal property the charity puts to an unrelated use
+           - a clothing or household item over $500 not in good used condition
+       cite:
+         doc: i8283
+-        locator: "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, \"Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings.\"; p. 9, Securities, \"A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily\"; p. 1, \"Make any required reductions to the amount of the contributions before you determine if you must file Form 8283\"; p. 3, Section B, \"Include in Section B only items (or groups of similar items) for which you claimed a deduction of more than $5,000\"; cfr-26-1-170a-13 p. 3, Deductions in excess of $5,000 for certain charitable contributions of property, \"if the amount claimed or reported as a deduction under section 170 with respect to such item exceeds $5,000\" (a group over $5,000 is refused by gift.section_b from gift.deduction)"
++        locator: "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, \"Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings.\"; p. 9, Securities, \"A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily\"; p. 1, \"Make any required reductions to the amount of the contributions before you determine if you must file Form 8283\"; p. 3, Section B, \"Include in Section B only items (or groups of similar items) for which you claimed a deduction of more than $5,000\"; cfr-26-1-170a-13 p. 3, Deductions in excess of $5,000 for certain charitable contributions of property, \"if the amount claimed or reported as a deduction under section 170 with respect to such item exceeds $5,000\" (a group over $5,000 is refused by gift.section_b from gift.deduction); p526, Capital Gain Property, Exceptions, \"The property (other than qualified appreciated stock) is contributed to certain private nonoperating foundations\" and \"Is put to an unrelated use (defined later) by the charity\""
+     - id: gift.over_5000
+       printed: (helper)
+       type: Bool
+diff --git a/forms/2025/sa.yaml b/forms/2025/sa.yaml
+index 4b97f27..2f050a6 100644
+--- a/forms/2025/sa.yaml
++++ b/forms/2025/sa.yaml
+@@ -177,10 +177,10 @@ form:
+     - id: sa.excluded_income
+       printed: (helper)
+       type: Bool
+-      label: 'Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?'
++      label: 'Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or exclude income from sources within Puerto Rico?'
+       expr:
+         op: input
+-        source: 'Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?'
++        source: 'Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or exclude income from sources within Puerto Rico?'
+       cite:
+         doc: f1040sa
+         locator: Schedule A (2025), lines 1–18
+@@ -399,7 +399,7 @@ form:
+           - your spouse
+           - your dependents
+           - your child whom you do not claim only because of the rules for children of divorced or separated parents
+-          - anyone you could have claimed as a dependent except that the person had gross income of $5,200 or more or filed a joint return
++          - anyone you could have claimed as a dependent except that the person had gross income of $5,200 or more or filed a joint return, or that you (or your spouse, if filing jointly) can be claimed as a dependent on someone else's 2025 return
+ 
+           Reduce them by payments from insurance or other sources, but do not reduce them by a 2025 reimbursement of expenses paid in an earlier year.
+ 
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 5f14891..a86b223 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -907,6 +907,12 @@ bank:
+       - it is a conservation easement, or less than your whole interest in the property
+     
+       - the charity is restricted in how it may use it
++
++      - it went to a private foundation that is not an operating foundation, and it is not publicly traded stock
++
++      - it is art or other belongings the charity will not use for its charitable purpose
++
++      - you gave only the use of it, such as a stay in your vacation home
+     
+       - it is a clothing or household item worth more than $500 that is not in good used condition'
+   - input: $interest
+@@ -1278,9 +1284,9 @@ bank:
+     seq: 4
+     group: "about_you"
+     tick: "Leaving out income earned abroad, in Puerto Rico or in American Samoa"
+-    prompt: In 2025, did you (or, on a joint return, your spouse) live or work abroad, in Puerto Rico or in American
+-      Samoa, and leave the income you earned there out of this return?
+-    help: "If you lived in the 50 states all year, the answer is No. These are the exclusions of Form 2555 (foreign earned income), Form 4563 (American Samoa) and Puerto Rico. A Yes ends the interview here."
++    prompt: Do you (or, on a joint return, your spouse) leave out of this 2025 return any income earned abroad, in Puerto Rico
++      or in American Samoa?
++    help: "Pay received in 2025 for work done abroad in 2024 counts. These are the exclusions of Form 2555 (foreign earned income), Form 4563 (American Samoa) and Puerto Rico. A Yes ends the interview here."
+   - input: sa.dependent
+     order: 111
+     seq: 1
+@@ -1290,8 +1296,9 @@ bank:
+   - input: sa.spouse_extra
+     order: 200
+     seq: 87
+-    help: Only then can your husband or wife's age or blindness raise your standard deduction. A Yes ends the interview here.
+-    prompt: Did your husband or wife have no income in 2025, and are they filing no 2025 return, and were they born before
++    help: Blind means seeing no better than 20/200 in the better eye with glasses, or a field of vision of 20 degrees or less.
++      Only then can your husband or wife's age or blindness raise your standard deduction. A Yes ends the interview here.
++    prompt: Did your husband or wife have no income in 2025, with no 2025 return filed for them, and were they born before
+       January 2, 1961, or blind at the end of 2025?
+   - input: person.birth_year
+     order: 110
+@@ -1325,7 +1332,7 @@ bank:
+     group: paid_2025
+     tick: Owned a home, condo or land at any time in the year
+     help: Count a house, a condo or co-op apartment, a mobile home, a vacation home and land, even if you sold it during the
+-      year. A home you rent does not count.
++      year, and a home you are buying on a land contract while the seller holds the deed. A home you rent does not count.
+   - input: sa.home_other
+     order: 200
+     seq: 7
+@@ -1436,7 +1443,8 @@ bank:
+     
+       - those of your child whom the other parent claims under the rules for divorced or separated parents
+     
+-      - those of a person who would be your dependent but for having income of $5,200 or more or filing a joint return
++      - those of a person who would be your dependent but for having income of $5,200 or more, filing a joint return, or
++      your (or, on a joint return, your spouse''s) being someone else''s dependent
+     
+     
+       Leave out:
+@@ -1501,8 +1509,8 @@ bank:
+     seq: 4
+     group: paid_2025
+     tick: Paid a yearly tax on a car or boat, based on value
+-    help: Some states and towns charge it with the yearly registration of a car. A U.S. territory's tax counts too. A flat fee,
+-      or one based on weight, does not count.
++    help: Some states and towns charge it with the yearly registration of a car. A U.S. territory's tax counts too. If any
++      part of the yearly charge is based on value, answer Yes; a charge wholly flat or by weight does not count.
+     prompt: In 2025, did you (or, on a joint return, your spouse) pay a yearly state or local tax on a car, a boat or other
+       belongings that is based on what the thing is worth?
+   - input: sa.line5b
+@@ -1580,8 +1588,9 @@ bank:
+     seq: 6
+     group: paid_2025
+     tick: Paid medical bills, after insurance, above 7.5% of your income
+-    help: Count what you paid yourselves for doctors, dentists, hospitals, prescriptions and insurance, less anything insurance
+-      paid back. On an income of $60,000, 7.5% is $4,500. If you are not sure, answer Yes.
++    help: Count what you paid yourselves for doctors, dentists, hospitals, prescriptions and insurance, less what insurance
++      paid back. On $60,000 of income, 7.5% is $4,500. On the final return of a person who died in 2025, count costs their
++      estate paid within a year after the death. If not sure, answer Yes.
+     prompt: 'Were the medical and dental costs you (or, on a joint return, your spouse) paid in 2025 large: more than 7.5% of
+       your income, after what insurance paid?'
+   - input: sa.medical_premiums

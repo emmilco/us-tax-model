@@ -2,218 +2,227 @@
  "kind": "transcription",
  "form": "dependent",
  "family": "claude",
- "base": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+ "base": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
  "lines": [
   {
+   "key": "dependent.dc_lived_half",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; as ruled on this line on 2026-11-15: the reply tests months only, and the project's line also holds for a qualifying child born or who died in 2025 who lived with the filer for the part of the year alive. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 5,054 of 5,766 agree; on completed returns 80 candidate-unknown, 1 project-refuses, no value difference. Re-reviewed whole after the xleak-01/02 rewrite of income_exception, qr_household_member and qr_other_relation, which this line does not read. No change to the data.",
+   "subject_key": "f2bd92e62c992aae287ae3caae257b7e9c6de0d0bc7cd1a687b066630d8da3ce"
+  },
+  {
    "key": "dependent.one",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "AGREE",
    "subject_key": "36a9e4cdf461fbe353aff7dbe06def65892970175b715f9ff9990899ec1f06b9"
   },
   {
    "key": "dependent.claimed",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,059/6,501 agree; 774 candidate-unknown, 349 project-unknown, 295 project-refuses, 22 candidate-refuses, 2 value; completed: 25 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
-   "subject_key": "23145a18ead6037dcadde284fd9ec2808536373ef1e7c7d78d75ac260b2b2c2b"
+   "ruling": "Ruling: model error; i1040gi p. 19, Step 4, \"Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn't violate local law\". executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,290 of 5,766 agree; on completed returns 128 candidate-unknown, 1 candidate-refuses, 3 value. The three value witnesses (generated 20261026.135 dep_b, .269 dep_a, .497 dep_b) are household members (relationship household_member) who did not live with the filer all year and are not related to the spouse; the project's qr_household_member is false, so the person is not a qualifying relative and is not claimed; the reply's h_dep_base claims them. As ruled on this line before, the reply does not apply the all-year test to a member-of-household qualifying relative. No change to the data.",
+   "subject_key": "d9e1518c62807e275afa851eac1a9108e35bd63be3d5b25d256fc26e32b6cf24"
   },
   {
    "key": "dependent.ctc_child",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,686/6,501 agree; 487 project-unknown, 260 candidate-unknown, 37 project-refuses, 31 candidate-refuses; completed: 13 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
-   "subject_key": "e2d7dbf4574c7ae3efc5226050dd4e5d75f18fdc709a92bfd38f9376e1e0deb0"
+   "ruling": "Ruling: model error; as ruled on this line on 2026-11-15: the line embeds the reply's dependent test (dependent.claimed), which carries the errors ruled there (i1040gi p. 19, Step 4; pp. 18-19, Step 2). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,990 of 5,766 agree; on completed returns 57 candidate-unknown, 1 candidate-refuses, no value difference. No change to the data.",
+   "subject_key": "943be4f0d55c41817c4168d29e6b96d0d4b046c98c73509effd408fc1f1e1ccc"
   },
   {
    "key": "dependent.odc_person",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,175/6,501 agree; 619 candidate-unknown, 390 project-unknown, 295 project-refuses, 22 candidate-refuses; completed: 25 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
-   "subject_key": "cae0ef115fde41d0586b15afec25dd4ea46a19f51f8a73ac2fc271a195533db8"
+   "ruling": "Ruling: model error; as dependent.claimed, which this line reads (i1040gi p. 18, Step 3, question 3; p. 19, Step 5): the three completed value witnesses (generated 20261026.135, .269, .497) are the household members the reply claims without the all-year test. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,415 of 5,766 agree; on completed returns 122 candidate-unknown, 1 candidate-refuses, 3 value. No change to the data.",
+   "subject_key": "77766b361ebd3c024eaaf30ca2e792b12c5b6469c60bdcb0c7c1932f97dc7446"
   },
   {
    "key": "dependent.ctc_amount",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,686/6,501 agree; 487 project-unknown, 260 candidate-unknown, 37 project-refuses, 31 candidate-refuses; completed: 13 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
-   "subject_key": "2805fd98326aec559414a28a3b0ee4c089db2bfa9024367a4912c8b45178a33e"
+   "ruling": "Ruling: model error; the $2,200 amount embeds the reply's dependent test, ruled a model error on dependent.claimed and dependent.ctc_child. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,990 of 5,766 agree; on completed returns 57 candidate-unknown, 1 candidate-refuses, no value difference. No change to the data.",
+   "subject_key": "86ea655d111c906bd92a44ca9a4d2a41335ab5d8cc0a5543e818f0102b4452f4"
   },
   {
    "key": "dependent.odc_amount",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,175/6,501 agree; 619 candidate-unknown, 390 project-unknown, 295 project-refuses, 22 candidate-refuses; completed: 25 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
-   "subject_key": "a6d9b3e678a081cb703d54e8e294fb9c8f0f6b11d5d9612351a2c701786cb61a"
+   "ruling": "Ruling: model error; as dependent.odc_person, which this line reads ($500 for each such dependent; i1040gi p. 19, Step 5): the three completed value witnesses ($500 in the reply, $0 in the project) are the household members of generated 20261026.135, .269 and .497 who did not live with the filer all year. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,415 of 5,766 agree; on completed returns 122 candidate-unknown, 1 candidate-refuses, 3 value. No change to the data.",
+   "subject_key": "44003aa9b3d659f1473bd7b1ac24e38874a6d41c1474c3a309417404fd3ed09d"
   },
   {
    "key": "dependent.actc_amount",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,686/6,501 agree; 487 project-unknown, 260 candidate-unknown, 37 project-refuses, 31 candidate-refuses; completed: 13 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
-   "subject_key": "4645acb9d91bdcaf34306e2f220b1dd6938a85a1ebc64bceccdf79c9a9c6dbc7"
+   "ruling": "Ruling: model error; the $1,700 ceiling embeds the reply's dependent test, ruled a model error on dependent.claimed and dependent.ctc_child (f1040s8812 p. 2, line 16b). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,990 of 5,766 agree; on completed returns 57 candidate-unknown, 1 candidate-refuses, no value difference. No change to the data.",
+   "subject_key": "1dd2adc1c291b5e1fc131fa23fef2ed21aaacb509b66fb5adb53ad6040dc3c6a"
   },
   {
    "key": "dependent.hoh_test2_lived",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,928/6,501 agree; 880 candidate-unknown, 740 value, 578 project-unknown, 375 project-refuses; completed: 67 value, 7 candidate-unknown, 1 project-refuses. The project line is \"A Test 2 person who lived with you more than half the year, ...\": a claimed dependent other than a household-member-only dependent, or an unmarried qualifying child, who lived with you more than half the year. The reply's line tests only time lived with you. Completed values (67): classm.f1040.2.deepseek and classm.f1040.3.deepseek (dependent not claimed and not a qualifying child), and classm.f1040.4.deepseek (relationship other, a household-member dependent i1040gi p. 14 excludes): project false, reply true.",
-   "subject_key": "0d68467fe7b893787acc366c4c4213fddcb24f516172af2fa2ca734b15ed038a"
+   "ruling": "Ruling: model error; i1040gi p. 14, Head of Household, Test 2; p501 p. 9, Table 4. As ruled on this line on 2026-11-15, the reply drops the qualifying-person half of the label (\"A Test 2 person who lived with you more than half the year\") and is true for persons who are not Test 2 persons. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,189 of 5,766 agree; on completed returns 96 candidate-unknown, 1 project-refuses, 62 value. The six recorded completed witnesses were read: five (classm.f1040.2-4.deepseek) are persons neither claimed nor a qualifying child, and one (classm.f1040.5.deepseek dep_c) is a claimed dependent with relationship other, a member-of-household relative who is not a qualifying person for head of household under Table 4. The project is false on each, as the source requires. No change to the data.",
+   "subject_key": "226d15c7ba6d426f25f96195b6a9619ff00c276de564deb96f05b6ec895488cf"
   },
   {
    "key": "dependent.hoh_absence",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,428/6,501 agree; 674 project-unknown, 303 project-refuses, 78 candidate-unknown, 18 candidate-refuses; completed: 2 candidate-unknown, 1 project-refuses. No value differs. The line is hoh_test2 AND absence_no_return, on the reply's hoh_test2 (see that line) and dependent test. The project refusal on t091.kidnapped.age19 is its kidnapped-child refusal. Ruled on the expression, as in the Landing round.",
-   "subject_key": "7d76ea504884b8f3485c837bd951ed91711220c2ea6ef07ec800018a8b04cff5"
+   "ruling": "Ruling: model error; as ruled on this line before: p501 p. 9, Temporary absences (\"It must be reasonable to assume the absent person will return to the home after the temporary absence\") and Death or birth. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,782 of 5,766 agree; on completed returns 12 candidate-unknown, 1 candidate-refuses, 1 project-refuses, no value difference. No change to the data.",
+   "subject_key": "2ae47b8f347bd8599a4647d01bb7ce9bdeed560ea2060f80c7ce4a4be09738a2"
   },
   {
    "key": "dependent.hoh_test2",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,393/6,501 agree; 504 candidate-unknown, 303 project-refuses, 280 project-unknown, 18 candidate-refuses, 3 value; completed: 14 candidate-unknown, 1 project-refuses, 1 value. The project line requires absence_no_return false (\"counting only absences head of household counts\"). The reply's hoh_test2 ignores it and keeps the absence in a separate line (hoh_absence). Completed value witness t091r.absence.second_child_clean (child with absence_no_return true, 12 months): project false, reply true. Its embedded dependent test also carries the errors of dependent.claimed. Same as the Landing round.",
-   "subject_key": "7d270ad0a4fa1b8e81c4a74973cd7fb7365413c2b07ba3d282b35a23a4c7c74f"
+   "ruling": "Ruling: model error; p501 p. 9, Temporary absences: \"It must be reasonable to assume the absent person will return to the home after the temporary absence.\" executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,584 of 5,766 agree; on completed returns 83 candidate-unknown, 1 candidate-refuses, 1 project-refuses, 1 project-unknown, 1 value. The value witness (t091r.absence.second_child_clean, child) has dependent.absence_no_return true: the project does not count a person who will not return, and the reply does not read the absence answer. No change to the data.",
+   "subject_key": "00e39fef06adca9c39e1a21f012c671af1a24b5e679a4e80bd8099e8783646ce"
   },
   {
    "key": "dependent.hoh_test1",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/dependent.json (log sha matches): 6,009/6,501 agree; 269 project-refuses, 208 project-unknown, 12 candidate-refuses, 3 candidate-unknown; completed: none. No completed-return difference. The project refuses tie-breaker, married and kidnapped cases that the reply reads raw. Same as the Landing round.",
-   "subject_key": "4bd226cfc846d45fce043ffa3af96dd30a4b330d07c27c5885ca2b0833f1df89"
+   "ruling": "Ruling: scope; as ruled on this line before: i1040gi p. 14, Head of Household, Test 1, and the multiple support agreement exception; the project refuses the cases it does not compute (186 project-refuses). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 5,390 of 5,766 agree; on completed returns 3 candidate-unknown, no value difference. No change to the data.",
+   "subject_key": "14fd58082d27dffa87c38572a23f3025e7587121bb8163403a9b273813bcd198"
   },
   {
    "key": "dependent.eic_child",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply's EIC tests (relationship, age, not filing a joint return, lived with you in the United States over half the year, i1040gi p. 41, Step 3) are the project's; the project refuses the tie-breaker, married child and kidnapped child cases (i1040gi p. 44) where the reply reads married and divorced_rule directly. Triage .transcription/triage/2025/dependent.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 5,761 agree, 428 differ, all unknown or refusals; no value witness. (carried over from reviews/2025/transcription/dependent.index.json at f457604f, review of 2026-11-14)",
-   "subject_key": "9eb3c73a21da0ac79cfda0ca9e7ae84287b88ab624a25780f51f412423a33637"
+   "ruling": "Ruling: representation; as ruled on this line on 2026-11-15: the reply's EIC tests (relationship, age, not filing a joint return, lived with you in the United States over half the year, i1040gi p. 41, Step 3) are the project's; the project refuses the tie-breaker, married child and kidnapped child cases (i1040gi p. 44) where the reply reads more answers. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,830 of 5,766 agree; on completed returns 86 candidate-unknown, 1 project-unknown, no value difference.; every difference is an unknown or a refusal. No change to the data.",
+   "subject_key": "153b21f8b279ef055a153ece736f28479f1437aa281b8e4e28859fcd8dc99a9a"
   },
   {
    "key": "dependent.eic_ssn_child",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; dependent.eic_child with a valid SSN (i1040gi p. 41); same differences as eic_child. Triage .transcription/triage/2025/dependent.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 5,732 agree, 457 differ, all unknown or refusals; no value witness. (carried over from reviews/2025/transcription/dependent.index.json at f457604f, review of 2026-11-14)",
-   "subject_key": "30460601fd75ec42a23e09111ddd47f6cfb33da24763a845cdc76bb81fde6306"
+   "ruling": "Ruling: representation; dependent.eic_child with a valid SSN (i1040gi p. 41); the same differences as eic_child. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,810 of 5,766 agree; on completed returns 85 candidate-unknown, 1 project-unknown, no value difference.; every difference is an unknown or a refusal. No change to the data.",
+   "subject_key": "941349a1a296876feb34a12b7bc54841fc09429d7dbbd08e1ce826ac14477a66"
   },
   {
    "key": "dependent.dc_qp",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 2,748/6,501 agree; 2,496 candidate-unknown, 1,163 value, 85 candidate-refuses, 6 project-unknown, 3 project-refuses; completed: 174 value, 24 candidate-unknown. Every value witness sampled is either f2441.care false (the project evaluates the qualifying-person test only with care expenses) or, for dc_count, the project's per-dependent 1 that its reader filters by dc_qp. Those are representation. The line is ruled on its expression: the qualifying-child path is claimed AND h_qc AND under 13, and h_qc has no part-year rule (p503 p. 3, \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive\"). The embedded dependent test carries the joint-return exemption (see dependent.claimed). The incapable-person path now uses a part-year rule (hoh_test2_lived), so the Landing-round witness stage15.f2441.parent_died_part_year no longer differs.",
-   "subject_key": "fc26118239d7b1593d1552c28b4eac518f5bdf5e0dae910eaa33ea3169e4bf49"
+   "ruling": "Ruling: model error; the line's label requires care expenses (\"you have care expenses, and this person is your dependent...\"), and i2441 p. 1, Qualifying Person(s). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 2,693 of 5,766 agree; on completed returns 119 candidate-unknown, 1 candidate-refuses, 176 value. The six recorded completed witnesses (classm.f1040.1.deepseek dep_c, classm.f1040.5.deepseek dep_a, stage8.single.dependent.boundaries mexico, stage8.single.dependent.household_and_ssn no_work_ssn, t091.absence.other_tests_unchanged child, f1.kidnapped.returned_11 child) all have f2441.care false: the project's line is false with no care expenses, and the reply's h_dc_qp_child omits that prerequisite, as ruled on this line before. No change to the data.",
+   "subject_key": "3d18779a087eb12d8acf5bcf65dee73d49b65d2d1b3afea7df36db20e30d6fce"
   },
   {
    "key": "dependent.dc_count",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 1,309/6,501 agree; 2,599 candidate-unknown, 2,503 value, 90 candidate-refuses; completed: 183 value, 24 candidate-unknown. Every value witness sampled is either f2441.care false (the project evaluates the qualifying-person test only with care expenses) or, for dc_count, the project's per-dependent 1 that its reader filters by dc_qp. Those are representation. The line is ruled on its expression: the qualifying-child path is claimed AND h_qc AND under 13, and h_qc has no part-year rule (p503 p. 3, \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive\"). The embedded dependent test carries the joint-return exemption (see dependent.claimed). The incapable-person path now uses a part-year rule (hoh_test2_lived), so the Landing-round witness stage15.f2441.parent_died_part_year no longer differs.",
+   "ruling": "Ruling: representation; project retained. The project counts one per entry and applies the qualifying-person test where the count is summed (f2441.qp_count, where dependent.dc_qp); the reply puts the test on the count itself (i2441 p. 3, Line 2). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 1,195 of 5,766 agree; on completed returns 119 candidate-unknown, 1 candidate-refuses, 203 value. The six recorded completed witnesses are project 1, reply 0 on persons who are not qualifying persons; the summed total is the same. No change to the data.",
    "subject_key": "28c4896a449aa1d2c61aaf367d006d4a6cb1ac45e02be6f49192c1d6b8036958"
   },
   {
    "key": "dependent.ptc_magi_counted",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,603/6,501 agree; 807 project-unknown, 90 candidate-refuses, 1 value; completed: 1 project-unknown, 1 value. Completed value stage18.mut.unclaimed_relative k1 (parent, gross income $30,000, not claimed): project $30,000.00, reply $0. f8962.line2b sums the project line only over claimed dependents, so no return value differs. The reply's line conditions on its own dependent.claimed, which carries the errors of that line. Ruled on the expression, as in the Landing round.",
+   "ruling": "Ruling: representation; project retained. i8962 p. 8, Line 2b. The project's helper counts the modified AGI of a person required to file and applies the claimed-dependent test where line 2b is summed (f8962 sum_over dependent, where dependent.claimed); the reply puts the claimed test on the helper. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 5,047 of 5,766 agree; on completed returns 1 candidate-refuses, 3 project-unknown, 1 value. The value witness (stage18.mut.unclaimed_relative, k1, $30,000 in the project, $0 in the reply) is an unclaimed parent; the fixture's hand-predicted line 2b ($8,000, the claimed child only) passes, so the parent's amount is not counted on the return. No change to the data.",
    "subject_key": "6fc02f1f5275dfcc9d7a97c1c01cf0cff3d858d02b87bc2546eaee9d850f31b4"
   },
   {
    "key": "2(d)",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,827/6,501 agree; 2,580 candidate-unknown, 85 candidate-refuses, 6 project-unknown, 3 project-refuses; completed: 24 candidate-unknown. Every value witness sampled is either f2441.care false (the project evaluates the qualifying-person test only with care expenses) or, for dc_count, the project's per-dependent 1 that its reader filters by dc_qp. Those are representation. The line is ruled on its expression: the qualifying-child path is claimed AND h_qc AND under 13, and h_qc has no part-year rule (p503 p. 3, \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive\"). The embedded dependent test carries the joint-return exemption (see dependent.claimed). The incapable-person path now uses a part-year rule (hoh_test2_lived), so the Landing-round witness stage15.f2441.parent_died_part_year no longer differs.",
-   "subject_key": "06f932b8df454d9fd12d2ed548db0c6cb2d4e523663259ba83a5d12d5b08749e"
+   "ruling": "Ruling: representation; project retained. The project copies the person's qualified expenses and applies the qualifying-person test where column (d) is summed (f2441.paid_total, where dependent.dc_qp); the reply zeroes the column for a person who is not a qualifying person (i2441 p. 3, Line 2). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,704 of 5,766 agree; on completed returns 118 candidate-unknown, 1 candidate-refuses, no value difference. No change to the data.",
+   "subject_key": "722db8cae423f0fc5ee82d1d044ad2ce35a14fef4f5c6241413ce289c77d8638"
   },
   {
    "key": "2(c)",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,897/6,501 agree; 2,497 candidate-unknown, 85 candidate-refuses, 14 candidate-shows-skipped, 5 project-unknown, 3 project-refuses; completed: 24 candidate-unknown, 2 candidate-shows-skipped. Every value witness sampled is either f2441.care false (the project evaluates the qualifying-person test only with care expenses) or, for dc_count, the project's per-dependent 1 that its reader filters by dc_qp. Those are representation. The line is ruled on its expression: the qualifying-child path is claimed AND h_qc AND under 13, and h_qc has no part-year rule (p503 p. 3, \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive\"). The embedded dependent test carries the joint-return exemption (see dependent.claimed). The incapable-person path now uses a part-year rule (hoh_test2_lived), so the Landing-round witness stage15.f2441.parent_died_part_year no longer differs.",
-   "subject_key": "5b2aa7218d97e5ddf62c013f7986899279f62556608e52c8e963b0c6168c8399"
+   "ruling": "Ruling: model error; i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\". executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,715 of 5,766 agree; on completed returns 120 candidate-unknown, 1 candidate-refuses, 2 candidate-shows-skipped, 1 value. The value witness stage15.BUG-0111.care_before_13 is care given before the 13th birthday, where the box is not checked; as ruled on this line on 2026-11-11, the reply's box tests age and disability without the timing of the care. No change to the data.",
+   "subject_key": "470ad9cd892622a1ebbbcaeedeef7de53c6772fc570122cade58d341c44ef7dc"
   },
   {
    "key": "27",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,239/6,501 agree; 3,044 candidate-unknown, 127 project-unknown, 80 candidate-refuses, 8 project-refuses, 2 candidate-shows-skipped, 1 candidate-hides-shown; completed: 31 candidate-unknown, 1 candidate-hides-shown. Each of lines 27-30 has shown_when dependent.h_edu_aoc, built on h_edu_base, which requires dependent.edu_tin_issued. Completed candidate-hides-shown f1.t113.dep_aoc_applied k0: project 27 $4,000.00, 28 $2,000.00, 29 $500.00, 30 $2,500.00; reply hidden. Pub. 970 p. 11 allows the credit when the TIN was applied for by the due date (T-113). The rest are candidate-unknowns. Lines 28-30 were ruled representation in the Landing round as inherited from 27; here each line's own display test carries the error.",
-   "subject_key": "cb93ceeb756bc619ea915a7052131d173e400c4b568df74aad3c9c946ce4e418"
+   "ruling": "Ruling: model error; f8863 p. 2, Part III, line 27; i8863 p. 2. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,108 of 5,766 agree; on completed returns 124 candidate-unknown, 1 candidate-refuses, 1 candidate-hides-shown. The candidate-hides-shown witness (f1.t113.dep_aoc_applied, k0) is an American opportunity credit student whose hand-predicted line 27 ($4,000) passes in the fixture; the reply's h_aoc_path is false there. The reply hides a line whose hand-predicted value the fixture supports; as ruled on this line before, the reply's eligibility path differs from the source's. No change to the data.",
+   "subject_key": "a3c652f4d50d00970a2eb624aee3478d63623ea1d296166c7954bec2a2226ca4"
   },
   {
    "key": "28",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,239/6,501 agree; 3,044 candidate-unknown, 127 project-unknown, 80 candidate-refuses, 8 project-refuses, 2 candidate-shows-skipped, 1 candidate-hides-shown; completed: 31 candidate-unknown, 1 candidate-hides-shown. Each of lines 27-30 has shown_when dependent.h_edu_aoc, built on h_edu_base, which requires dependent.edu_tin_issued. Completed candidate-hides-shown f1.t113.dep_aoc_applied k0: project 27 $4,000.00, 28 $2,000.00, 29 $500.00, 30 $2,500.00; reply hidden. Pub. 970 p. 11 allows the credit when the TIN was applied for by the due date (T-113). The rest are candidate-unknowns. Lines 28-30 were ruled representation in the Landing round as inherited from 27; here each line's own display test carries the error.",
-   "subject_key": "e6d28e7f685d053455b1e0da301f3669a3fabd65181aa2c7ac0386ce16023b09"
+   "ruling": "Ruling: model error; f8863 p. 2, line 28; as line 27, which it reads: the same witness (f1.t113.dep_aoc_applied, k0; project $2,000, reply hidden). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,108 of 5,766 agree; on completed returns 124 candidate-unknown, 1 candidate-refuses, 1 candidate-hides-shown. No change to the data.",
+   "subject_key": "71be3baa099eb28ebcd5da5374bceb2b29144a30e7620c59721b445a92337216"
   },
   {
    "key": "29",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,239/6,501 agree; 3,044 candidate-unknown, 127 project-unknown, 80 candidate-refuses, 8 project-refuses, 2 candidate-shows-skipped, 1 candidate-hides-shown; completed: 31 candidate-unknown, 1 candidate-hides-shown. Each of lines 27-30 has shown_when dependent.h_edu_aoc, built on h_edu_base, which requires dependent.edu_tin_issued. Completed candidate-hides-shown f1.t113.dep_aoc_applied k0: project 27 $4,000.00, 28 $2,000.00, 29 $500.00, 30 $2,500.00; reply hidden. Pub. 970 p. 11 allows the credit when the TIN was applied for by the due date (T-113). The rest are candidate-unknowns. Lines 28-30 were ruled representation in the Landing round as inherited from 27; here each line's own display test carries the error.",
-   "subject_key": "33db14e36b213fe32869a9ef08c7626cb283545d03e924a9cefa7986514074f9"
+   "ruling": "Ruling: model error; f8863 p. 2, line 29; as line 27: the same witness (f1.t113.dep_aoc_applied, k0; project $500, reply hidden). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,108 of 5,766 agree; on completed returns 124 candidate-unknown, 1 candidate-refuses, 1 candidate-hides-shown. No change to the data.",
+   "subject_key": "569a90074ffe12faca04c80ca459cec440fb642132ece1fd27edc8871c94aeb8"
   },
   {
    "key": "30",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,239/6,501 agree; 3,044 candidate-unknown, 127 project-unknown, 80 candidate-refuses, 8 project-refuses, 2 candidate-shows-skipped, 1 candidate-hides-shown; completed: 31 candidate-unknown, 1 candidate-hides-shown. Each of lines 27-30 has shown_when dependent.h_edu_aoc, built on h_edu_base, which requires dependent.edu_tin_issued. Completed candidate-hides-shown f1.t113.dep_aoc_applied k0: project 27 $4,000.00, 28 $2,000.00, 29 $500.00, 30 $2,500.00; reply hidden. Pub. 970 p. 11 allows the credit when the TIN was applied for by the due date (T-113). The rest are candidate-unknowns. Lines 28-30 were ruled representation in the Landing round as inherited from 27; here each line's own display test carries the error.",
-   "subject_key": "8a3efb47b79d1f3cbca2cb8aaa631de21e76aae7bfcb68b27b812ffd92a101ee"
+   "ruling": "Ruling: model error; f8863 p. 2, line 30; as line 27: the same witness (f1.t113.dep_aoc_applied, k0; project $2,500, reply hidden). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,108 of 5,766 agree; on completed returns 124 candidate-unknown, 1 candidate-refuses, 1 candidate-hides-shown. No change to the data.",
+   "subject_key": "6f88b0aa3ff663b09d7bf127ee4ccc0bbfa9a9a1be67714a91b64f7442daf2ab"
   },
   {
    "key": "31",
-   "record": "9ebdabda6acb13371d765a63d8a7acda397e6cac6cb9ff5f2aa2bda3919b1547",
+   "record": "3ab49bcfd1e7dba1affbc29f34714e113e93ac7ef835c5ba8e036dccebe13bab",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,233/6,501 agree; 3,049 candidate-unknown, 126 project-unknown, 80 candidate-refuses, 11 project-refuses, 2 candidate-hides-shown; completed: 31 candidate-unknown, 1 project-refuses. No value differs. The completed project refusal on stage19.mut.claimed_filer_llc is the owner's T-113 lifetime-learning refusal for a student whose TIN was only applied for. The reply hides line 31 there. The line's h_edu_base embeds the reply's dependent test (see dependent.claimed). Ruled on the expression, as in the Landing round.",
-   "subject_key": "c72d01113451cf7a129c6705225a84a838796ca1149da64ca17375d1c1099896"
+   "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit. As ruled on this line before, the reply's eligible-student path asks answers the project does not and refuses where the project computes. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,101 of 5,766 agree; on completed returns 125 candidate-unknown, 1 candidate-refuses, 1 project-refuses, no value difference. No change to the data.",
+   "subject_key": "c188b9e7f312d2d597c383949944c400abdfd86ce23531dfe0a45d7bd8adec97"
   }
  ],
  "subjects": {
+  "dependent.dc_lived_half": "a036957b722b993a839671d90e9862f346f80b9e77cc96aae9de42ded1e7ca54",
   "dependent.one": "858660bbf031f30a7be0943c8d565dfd22a05dfea0dff850664c1d7d444819a0",
-  "dependent.claimed": "8e5874f7a57a4e0c7e1b27e7b7b889820afd7156c6ed439c7a3062a140e2994d",
-  "dependent.ctc_child": "bb6e8872e9840a1a77a335f1ba927db7a7821336c61d84010ba9a2db5af650aa",
-  "dependent.odc_person": "3aab20b93dc0b6bf491e507f3158420bfc78102d2b575d5fc412058c9bf68502",
-  "dependent.ctc_amount": "9257f535116f14cc65f48a32ae34a94db8dd28752541e76c9dd23db763292ca9",
-  "dependent.odc_amount": "32021c9064c2f04aaad35773a4659f05252d7ac5bfb2ddd58495496d49cfdc91",
-  "dependent.actc_amount": "b0059794ae4bffa6f305e6e8fc49b3221671ff38a62ab4ef9c42a394d5a0e526",
-  "dependent.hoh_test2_lived": "d6cbcfb3fad876865a40e13ddecabd846a70397664cb13e950e617351ba5503a",
-  "dependent.hoh_absence": "582dd5ab3915b012a86af34e1bc360d7365cef01ee6c1c843e28c4b85db82a53",
-  "dependent.hoh_test2": "7d8d832449bb74b0165f796c7fd5384ee2953d73e11817918842504baecb10ff",
-  "dependent.hoh_test1": "8951fab28c9933a7e5bc413245ee9cc1129ce2b7da8529f4860c384a82467850",
-  "dependent.eic_child": "42d90853bffbf971d6a985daaf86578ca41f84ee777e5460166335bfc9591678",
-  "dependent.eic_ssn_child": "b8f4bbad04e0317574206f9898d9eafc97a4fb7492aa1cad77d113a5377df5f7",
-  "dependent.dc_qp": "434c0ebc2067047ff2d43042fca27253661b05ba1d1ed7ea02b5fa44e95b1e1b",
+  "dependent.claimed": "3fdd3a99f5539553112890270689f705225930bf250f65f26803b16468dd86b8",
+  "dependent.ctc_child": "4c27a6255c0d31ff716fd0abf6efee2eafb65ebf6cb930e6dbdde0f343df7338",
+  "dependent.odc_person": "aeb8f2021a818dfd7743d83e5542e939c6241132f5882858d4cafd563862dc16",
+  "dependent.ctc_amount": "9aa79f6af499104284e5f90476522a7fdc96ea219af6f8e17ff92e3c562abb63",
+  "dependent.odc_amount": "67c05a515b419c132c4668a4560381e029c2832e658a738679e0755882f7e3e5",
+  "dependent.actc_amount": "75827a3c80fddf6f929aba2fd1f995d6ad72acfd6e03f0547e135b47f88bce96",
+  "dependent.hoh_test2_lived": "9e3f4fdb1b72f90a3e06067126c6a0edc7260aee69cdc166cf4f6448a8d4a724",
+  "dependent.hoh_absence": "90d1d8c9d2f08a8c89e7eafa06d3cf98c151f13d0320ec25618eca30308b8f49",
+  "dependent.hoh_test2": "11950e6e347de2a04a7735654527e6c8a3eb3e9d07ab6709c10bc75277653ca2",
+  "dependent.hoh_test1": "e6dc07b3b40b1c58f3ad54a2651fd405dbf2f9da4eb15bd7b89e4465854c6c01",
+  "dependent.eic_child": "cbc8d4ca266384d8494eddf5ba5c666041f80e718781a5aaf2cd87b7b649404d",
+  "dependent.eic_ssn_child": "354f858a488b4e4281890aafc258b74046c72529eeb13d3abe3f6d8e8994899e",
+  "dependent.dc_qp": "9e08cf9c9e202c94cf473801e86b32fa362a71c80dde658672d595c1909a5633",
   "dependent.dc_count": "6e8b475ab185eebd8f897a7b2cceeb2d4e5cd73e196df35ea0733c70f0d819bd",
   "dependent.ptc_magi_counted": "9f06226881817f73216216288d40f94c92b9ea3130724d256d946a9778481bb8",
-  "2(d)": "cd8b737da86c44bcc72bb8ab188c84757bced6fd83b6d94df1bfb5edc6fb8bed",
-  "2(c)": "0e6366be389591650321e4808d7c718acccbb56c7b80261ae06f876444ed733c",
-  "27": "66f4540150801e5307798addf2e948d4381c653d2b663722a16cd5f650f64951",
-  "28": "f5107ceb7bcffadbaceb7ef87482fd63e703042c754ef58ac7a031b6613efa64",
-  "29": "222ae5efaecdf3c3ba713e1920b8549f329141450be54798db101abddeba08c8",
-  "30": "f1a59e9d5ece42f70ce91b548df8bec4c8113c29cac633269fa821df22560c50",
-  "31": "18604d1ccc47c0fb9df8ba1637b374d4e5ec32ccfdc81ae6ac9a3ca43390280c"
+  "2(d)": "fe641f5d9ab66f9418076d13c058fe04f3eaf2561490a3c7920ce0039098186e",
+  "2(c)": "16a9974d0484c6192b40db7f99420dd98f450a5849f5949156b0be7362e0655d",
+  "27": "eb7869abb2461eec1ffc1a62fb80a425bc51ac320585100abae06448e86cf82c",
+  "28": "4059e38fd231416383906352e8fe1ffd7378ea07126c663d91f17c46aee951ca",
+  "29": "132eb8b412d2cb39221b4617d30a99fa722fc48dc179d5f02a3843c1a40e9742",
+  "30": "ab366392af855359c16c4354d3727ba31c3d20a4fa2670bb24bbce4dec8a79bd",
+  "31": "03a9c95eb3e72e597e3bbb67acb94ab715449d20f5e0228645d88b47aa30e09d"
  },
  "__rest__": "f028e8ebb7d35d80df5faee4808d2ffdf5d99bfea35f697361138bde2dc82f12",
  "foreign": {
+  "dependent.dc_lived_half": "d9d756f3b4040bac2d9b3af56bb1a543138adcc70870df3b8f346db53e216e82",
   "dependent.one": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "dependent.claimed": "231430230f5113dd4fcfb5cb25f080c156668489da6a65cee900f94215093b88",
-  "dependent.ctc_child": "d3364463ec98310efe81955ab6e969ea0d17aef98ba583f7df8bf933dad41a4a",
-  "dependent.odc_person": "8d576a01a6178fb9a4b804cf76f19767e346f80d263727cf649e084be8bbe788",
-  "dependent.ctc_amount": "bc5ccb2f4b5b02da6f075c6e84329cfdfeaad06a6583102938b0fac7e4dd1ad5",
-  "dependent.odc_amount": "81e21aba2e418b4e405839288a9826572052f635626de6bd012b315b7ba33970",
-  "dependent.actc_amount": "bc5ccb2f4b5b02da6f075c6e84329cfdfeaad06a6583102938b0fac7e4dd1ad5",
-  "dependent.hoh_test2_lived": "231430230f5113dd4fcfb5cb25f080c156668489da6a65cee900f94215093b88",
-  "dependent.hoh_absence": "231430230f5113dd4fcfb5cb25f080c156668489da6a65cee900f94215093b88",
-  "dependent.hoh_test2": "231430230f5113dd4fcfb5cb25f080c156668489da6a65cee900f94215093b88",
-  "dependent.hoh_test1": "231430230f5113dd4fcfb5cb25f080c156668489da6a65cee900f94215093b88",
-  "dependent.eic_child": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
-  "dependent.eic_ssn_child": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
-  "dependent.dc_qp": "58cf035b619927a24e648326b2e6e09d41fcd3f95970933bb1e6f2248cd45ec4",
+  "dependent.claimed": "88e09053e6227b5f7e9942850d6275d13526d1a2e1fe7793515c8f6caf742451",
+  "dependent.ctc_child": "6f6ca3c28c0e702a75cd65aca8d3a4fd0b2033fe8c01c7fe96979096949c8dc8",
+  "dependent.odc_person": "d17206ae23a8a000f0a0b4a66ffa9215bfd8e4c0d3817b07414fdcc4a1628c21",
+  "dependent.ctc_amount": "d3786b39ebd0975748ea64d3c70bc227f707ae79bf4fef9111fc4ba51c969372",
+  "dependent.odc_amount": "74a30066c4d62c3ba3708ba5ee6a60683ef88813ab27facb90ef7137d81e4859",
+  "dependent.actc_amount": "d3786b39ebd0975748ea64d3c70bc227f707ae79bf4fef9111fc4ba51c969372",
+  "dependent.hoh_test2_lived": "88e09053e6227b5f7e9942850d6275d13526d1a2e1fe7793515c8f6caf742451",
+  "dependent.hoh_absence": "88e09053e6227b5f7e9942850d6275d13526d1a2e1fe7793515c8f6caf742451",
+  "dependent.hoh_test2": "88e09053e6227b5f7e9942850d6275d13526d1a2e1fe7793515c8f6caf742451",
+  "dependent.hoh_test1": "88e09053e6227b5f7e9942850d6275d13526d1a2e1fe7793515c8f6caf742451",
+  "dependent.eic_child": "d9d756f3b4040bac2d9b3af56bb1a543138adcc70870df3b8f346db53e216e82",
+  "dependent.eic_ssn_child": "d9d756f3b4040bac2d9b3af56bb1a543138adcc70870df3b8f346db53e216e82",
+  "dependent.dc_qp": "3522426ad77b9b0fe78b252bef2b0efcecc93e54468c8484a4d8bb7529f12222",
   "dependent.dc_count": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "dependent.ptc_magi_counted": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "2(d)": "58cf035b619927a24e648326b2e6e09d41fcd3f95970933bb1e6f2248cd45ec4",
-  "2(c)": "58cf035b619927a24e648326b2e6e09d41fcd3f95970933bb1e6f2248cd45ec4",
-  "27": "680d03cb794fcd3c48cec84e7073643c58f4bcf2db92b82b1293ed5ad5257481",
-  "28": "a950878e5209a4b8b2f5c6181d3dd405911e880f1edb63661ad04d82b57b2b65",
-  "29": "ef5f505ae144af4686a412e314d76e8ea7110e1f67d70bacb5f9f58de2d0bf3f",
-  "30": "5c7412ae4ff938c86b4170b76ee33d79ab13f5daebaf4b5b212d1221d85a14f8",
-  "31": "4b27d283bfa677d235615b169a9995bc7d8d6834aebd19cb61f57ee32637cc56"
+  "2(d)": "3522426ad77b9b0fe78b252bef2b0efcecc93e54468c8484a4d8bb7529f12222",
+  "2(c)": "3522426ad77b9b0fe78b252bef2b0efcecc93e54468c8484a4d8bb7529f12222",
+  "27": "d645d0d729c7728c8539d3fb97c1f9117b98e2bddd33a7909bc92a523a058e80",
+  "28": "77b1fc3898d5ff4ff7f335480992daafba84bc0a1f2146d10dd76e8112f60f79",
+  "29": "c4bceba80b88fba7891658cd0f1ba85699ba79b378ff13100c03c3094df01a70",
+  "30": "6a82eef6eb425f39a38dc20512bb24e9c69aea30431eabf1af532f56731de9f7",
+  "31": "6e6a4a1ca8541afa68bc185a055ad9fed62689f13ed91971409579999e345691"
  }
 }

@@ -1,0 +1,71 @@
+{
+ "kind": "render",
+ "form": "f8919",
+ "family": "claude",
+ "base": "c6c747668357b077ad386b00e33eb86c798f2e51f835138479fb43c64b6732c9",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "6",
+   "record": "c6c747668357b077ad386b00e33eb86c798f2e51f835138479fb43c64b6732c9",
+   "status": "MATCH",
+   "subject_key": "582d66ce7011b1b4f3f5717a82e19bfcfb6985f02119b89865450c9c0369e1fb"
+  },
+  {
+   "key": "7",
+   "record": "c6c747668357b077ad386b00e33eb86c798f2e51f835138479fb43c64b6732c9",
+   "status": "MATCH",
+   "subject_key": "5108cf3177c11c6ef103bce83ecb9109f31adb95e1fb12df1c05ec34d44b0e33"
+  },
+  {
+   "key": "8",
+   "record": "7679bc2a50237c25d4e89dfc2762a0e466f235080665827f89bd53e72e80cdf5",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: representation; the rendering's 'person line wages' is person.wages, the sum over the person's W-2s of w2.wages, which forms/2025/w2.yaml defines as w2.box3 + w2.box7 ('Add social security wages and social security tips'; iw2w3 p. 18, boxes 3, 4 and 7; amb.2025.ss_wages chose boxes 3 plus 7), exactly f8919 p. 1, line 8, \"Total social security wages and social security tips (total of boxes 3 and 7 on Form(s) W-2)\". The Form 4137 line 10 operand the reviewer matched is the line's third term; the RRTA term is refused (person.rrta). The rendering does not expand person.wages; the line's own label names boxes 3 and 7. Project stands.",
+   "subject_key": "85eee41ea9b6130e5005864cda8ad1bf62b274654f7f4b9aea6a65b606ee2ab7"
+  },
+  {
+   "key": "9",
+   "record": "7679bc2a50237c25d4e89dfc2762a0e466f235080665827f89bd53e72e80cdf5",
+   "status": "MATCH",
+   "subject_key": "7ea026a1e4d78e170aba8f20d5d5d77c98cfc7a07cb1c4551b9aa40d671fdf79"
+  },
+  {
+   "key": "10",
+   "record": "c6c747668357b077ad386b00e33eb86c798f2e51f835138479fb43c64b6732c9",
+   "status": "MATCH",
+   "subject_key": "f47a32f6fe44084872c02a81b414eb14bc307de3e2781c8415b833d443ebf9c6"
+  },
+  {
+   "key": "11",
+   "record": "c6c747668357b077ad386b00e33eb86c798f2e51f835138479fb43c64b6732c9",
+   "status": "MATCH",
+   "subject_key": "9e98ff8a4b3dc32802b9643c158df9c597100455b6d40ebef3ddbcd5688b3549"
+  },
+  {
+   "key": "12",
+   "record": "c6c747668357b077ad386b00e33eb86c798f2e51f835138479fb43c64b6732c9",
+   "status": "MATCH",
+   "subject_key": "f19d019ef6e56e1943ec7029c8befecb62acab55b64aedb9d357cfecdf2ffaf1"
+  },
+  {
+   "key": "13",
+   "record": "c6c747668357b077ad386b00e33eb86c798f2e51f835138479fb43c64b6732c9",
+   "status": "MATCH",
+   "subject_key": "f131438a054cfd069aef6fa27dc66342f538d1335853ff33f2d930fa3fafdc86"
+  }
+ ],
+ "subjects": {
+  "6": "784eeee299bdc37d8a8ed68f68e1edd3abdc40f94ab9d397cfc5386bb8a943ba",
+  "7": "9c19c0bee72ebb5f81cfc367b484a18545c3cc6698fcb2b6ffdefd96958e8298",
+  "8": "350c5120bca2b52be72f96425d1936e16f428eca3e9877fe754304e05ebf2690",
+  "9": "cbb12f4f716d23781a2d1a055f5ab7a0eb0c07d7826a020a54ecb2f39a0639d3",
+  "10": "8d2304971e95f4da1fe6ca85a7093db96f74c8c56b4425c2fd38663444a0ea5d",
+  "11": "3015bf1fabe88b2f5a46c5c08093672337d5922d4607c4c8e964f51412cb51c1",
+  "12": "8bd469e50b9f51d1bbb4cd30c5a817d74c071087e6d77222d7f445681529f6e4",
+  "13": "da6c69243c61277980de8e5d6588126f3c126c2c26a353e70b0cf8237b724d17"
+ },
+ "__rest__": "28fcfc26276503b44a8e7ad86c43f203b8dece617f88dbcd01cec94fe7743487"
+}

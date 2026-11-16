@@ -1,83 +1,256 @@
 {
  "form": "sb",
  "reviews": {
-  "gate:sb.foreign_any": {
-   "subject_sha": "a2162ef06792dd67e929f388f41a09fb8c3e1e2ceb8951956e342836b8be9b1e",
+  "gate:sb.bonds_any_if_income": {
+   "subject_sha": "a302846e187e987c689d38a211e9a0ddf6ae78374fdbafbd6c71671bbeb068b8",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "FALSE_NO",
      "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer who is named on a parent's bank account or brokerage account. The account's Form 1099-INT or Form 1099-DIV comes under the filer's SSN, but the interest or dividends belong to the parent. The filer owns no bonds or notes, cashed no savings bonds, and made no loan or seller-financed sale.",
+       "why_no": "The parent condition asks only about 'Bonds or notes owned directly, U.S. savings bonds cashed, or interest on a loan made or a property sold.' Nominee bank interest or stock dividends fit none of these, so the gate is false. The catch-all 'any other adjustment' in the gated question is never reached. The tool reports the full Form 1099 amount as the filer's income and does not refuse the return.",
+       "line": "sb.bond_special_if_bonds",
+       "irs_text": "i1040sb p. 1: 'You received interest or ordinary dividends as a nominee.' Also: 'enter \"Nominee Distribution\" and show the total interest you received as a nominee. Subtract this amount from the subtotal.' The same rule applies to dividends on p. 2, line 5.",
+       "severity": "high",
+       "fix": "Ask nominee status separately, for every filer with interest or dividends: 'Did you or your spouse receive a Form 1099-INT, 1099-OID or 1099-DIV that includes interest or dividends belonging to someone else (for example, an account held for a relative)?' Also name nominee status as an explicit bullet in sb.bond_special."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who holds Treasury notes, corporate bonds or brokered CDs in a brokerage account. The broker's Form 1099-INT shows bond premium in box 11 or box 13, or market discount in box 10, or the broker issued a Form 1099-OID.",
+       "why_no": "The filer reads 'owned directly' as excluding securities held in street name at a broker. The filer also may not count a brokered CD as a 'bond or note.' So the filer answers no, and the bond premium, OID and market discount questions are never asked.",
+       "line": "sb.bond_special_if_bonds",
+       "irs_text": "i1040sb p. 1: 'You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium.' Also: 'You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID.' p. 1, line 1: 'include any accrued market discount that is includible in income.'",
+       "severity": "medium",
+       "fix": "Replace 'owned directly' with a fact the filer can check, such as: 'Did you or your spouse own any bonds, notes, Treasury securities or CDs, including those held in a brokerage account (not through a mutual fund), or receive a Form 1099-OID, or a Form 1099-INT with an amount in box 10, 11, 12 or 13?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "A filer whose only investment is a tax-exempt municipal bond bought on the secondary market at a market discount. The filer has no other taxable interest, ordinary dividends or capital gain distributions, and the broker does not report the discount as taxable.",
+       "why_no": "The filer sees only tax-exempt interest, so taxable interest is entered as zero. The computed precondition 'taxable interest ... above zero' is then false. The market discount question is never reached, although the discount is taxable interest.",
+       "line": "sb.bond_special_if_bonds",
+       "irs_text": "i1040sb p. 1: 'The market discount on a tax-exempt bond is taxable interest income and not tax-exempt interest.'",
+       "severity": "medium",
+       "fix": "Do not require taxable interest above zero before asking about bonds. Include tax-exempt interest (Form 1040 line 2a, Form 1099-INT box 8, Form 1099-OID box 2 or 11) in the precondition."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer who sold a house to an individual on a seller-financed note and receives monthly interest from the buyer. The filer gets no Form 1099 for that interest and has no other interest or dividends.",
+       "why_no": "The filer may not have entered the buyer's interest as taxable interest, because no form shows it. The precondition 'taxable interest ... above zero' then evaluates false. The seller-financed mortgage question, along with the buyer's name, address and SSN reporting, is never reached.",
+       "line": "sb.bond_special_if_bonds",
+       "irs_text": "i1040sb p. 1: 'You received interest from a seller-financed mortgage and the buyer used the property as a personal residence.' Also: 'list first any interest the buyer paid you ... Be sure to show the buyer's name, address, and SSN.'",
+       "severity": "medium",
+       "fix": "Ask about seller financing before, and independently of, the taxable-interest precondition. For example: 'Did a buyer of your or your spouse's home or other property pay you interest on the price, with or without a Form 1099?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who sold property years ago, for example in 2019, with seller financing, and still receives interest from the buyer in 2025.",
+       "why_no": "The wording 'interest on a loan made or a property sold' can be read as a loan made, or property sold, this year. The gated bullet is also in the present tense: 'the buyer of your home ... pays you interest.' The filer answers no because nothing was sold in 2025.",
+       "line": "sb.bond_special_if_bonds",
+       "irs_text": "i1040sb p. 1: 'If you sold your home or other property and the buyer used the property as a personal residence, list first any interest the buyer paid you.'",
+       "severity": "medium",
+       "fix": "Say 'interest received in 2025 on a loan you made or on property you sold in any year.'"
+      },
       {
        "kind": "UNCLEAR",
        "pattern": "3",
-       "who": "A married filer filing separately in a community property state (or country) whose spouse holds a foreign bank or brokerage account, foreign shares or a foreign pension in the spouse's sole name. Half of the income from it is reported on the filer's own separate return.",
-       "why_no": "The gate says 'you (or, on a joint return, your spouse)'. On a separate return the filer reads this as excluding everything in the spouse's name, and none of the 'directly or indirectly' examples (agent, nominee, disregarded entity, grantor trust, over-50% entity) mentions a spouse or community property.",
-       "line": "sb.form8938_if_foreign",
-       "irs_text": "i8938 p. 7, Interests in Specified Foreign Financial Assets: 'You have an interest in a specified foreign financial asset if any income, gains, losses, deductions, credits, gross proceeds, or distributions from holding or disposing of the asset are or would be required to be reported, included, or otherwise reflected on your income tax return.'",
+       "who": "Joint filers where only the spouse cashed Series EE or I bonds issued after 1989, used them to pay tuition, or owns the bonds bought at a premium.",
+       "why_no": "If the parent question is worded with 'you' alone, the filer answers for themselves and says no. The Form 8815 exclusion and the bond premium questions are then skipped. The helper wording shown does not mention the spouse.",
+       "line": "sb.bond_special_if_bonds",
+       "irs_text": "i1040sb p. 2, line 3: 'If, during 2025, you cashed series EE or I U.S. savings bonds issued after 1989 and you paid qualified higher education expenses for yourself, your spouse, or your dependents, you may be able to exclude part or all of the interest.'",
        "severity": "medium",
-       "fix": "Add a bullet: 'an account or asset in someone else's name (such as your spouse's on a separate return, including under community property law) if any of its income, gains or proceeds are or would be reported on your return'. Alternatively, when the filing status is married filing separately, ask about the spouse's foreign accounts and assets as well."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer (or spouse) who sits unpaid on the board of a foreign charity, church, school, sports club, professional association or condominium or housing association that is legally incorporated abroad, or who is its company secretary, treasurer or supervisory-board member. They own no shares and have no signing power over its bank account.",
-       "why_no": "The bullet says 'officer, director, managing director or manager of a foreign corporation or other company' and its examples are all commercial forms (Ltd, plc, GmbH, AG, SA, SARL, BV) or 'an employer's subsidiary'. A volunteer trustee or board member of a nonprofit or association does not see it as a 'corporation or company' or see the seat as a 'role in a foreign corporation'.",
-       "line": "sb.form5471_if_foreign",
-       "irs_text": "i1040sb p. 2, Part II. Ordinary Dividends, TIP: 'You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation.'",
-       "severity": "medium",
-       "fix": "Extend the bullet: '...officer, director, board or supervisory-board member, trustee, secretary, treasurer or manager of any incorporated body organized outside the 50 states and DC, whether paid or unpaid, including a nonprofit, charity, association, club, cooperative or building or owners' company'."
+       "fix": "Word the parent and the gated question as 'you or your spouse.'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer who owns a home or holiday flat abroad through shares in a foreign housing company or cooperative, or through a property-holding entity (such as a French SCI or a Finnish or Swedish housing company). They hold no foreign bank account.",
-       "why_no": "They see it as owning real estate, which they know is not a 'financial asset'. The words 'stock ... issued by a non-US company' and 'an interest in a foreign partnership, company, estate or other entity' read to them as investments, not their apartment.",
-       "line": "sb.form8938_if_foreign",
-       "irs_text": "i8938 p. 7: 'Any interest in a foreign entity'; 'Stock issued by a foreign corporation'; 'Stock is not considered used or held for use in the conduct of a trade or business.'",
+       "who": "A filer who received a Form 1099-INT as the buyer of a bond bought between interest dates, and who paid accrued interest to the seller.",
+       "why_no": "The filer sees the gated bullet 'paid the seller the interest earned up to then' but did not perceive the purchase price as including interest. The filer answers no and reports the full Form 1099 amount.",
+       "line": "sb.bond_special_if_bonds",
+       "irs_text": "i1040sb p. 2: 'When you buy bonds between interest payment dates and pay accrued interest to the seller, this interest is taxable to the seller ... identify the amount to be subtracted as \"Accrued Interest.\"'",
        "severity": "low",
-       "fix": "Add to the fifth bullet: 'including shares or a membership in a foreign company, cooperative or partnership that owns real estate you use, such as a housing company or property-holding company'."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who in 2025 received money from relatives abroad that was in fact paid out of a family trust, foundation or similar holding arrangement, or who lives rent-free in a home such an arrangement owns.",
-       "why_no": "They see a gift or family support from a person. The trust bullet is framed as 'a distribution from a foreign trust' and 'being a beneficiary', neither of which they think describes them.",
-       "line": "sb.line8_if_foreign",
-       "irs_text": "i1040sb p. 3, Line 8: 'If you received a distribution from a foreign trust, you must provide additional information. For this purpose, a loan of cash or marketable securities is generally considered to be a distribution.'",
-       "severity": "low",
-       "fix": "Add: 'Answer Yes if money, property or the use of property you received from someone abroad (even if described as a gift, allowance or inheritance) came, or may have come, from a trust, foundation or family holding arrangement.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer whose only foreign connection is one that the headline does not suggest: a personal loan to a relative abroad, a cash-value policy from a non-US insurer bought in the United States, a Puerto Rico or Guam company interest, or a balance in an overseas payment or betting app.",
-       "why_no": "The question is one very long sentence block headed 'foreign account, any other foreign financial asset, a connection to a foreign trust, or a role in a foreign corporation'. A filer who skims the headline and the first bullets answers No before reaching the later bullets. The fifth bullet opens with 'held outside an account at a US financial institution, counting ...' ahead of its subject and is hard to parse.",
-       "line": "sb.form8938_if_foreign",
-       "irs_text": "i8938 p. 7: 'A note, bond, debenture, or other form of indebtedness issued by a foreign person'; 'stock or securities issued by a person organized under the laws of a U.S. possession'",
-       "severity": "low",
-       "fix": "Split the gate into separate yes/no questions (accounts and signature authority; other accounts and balances; directly held foreign securities, entities, loans and estates; trusts; corporate roles and 10% ownership) and treat the gate as true if any is Yes. Reword the fifth bullet to start with the nouns: 'Any of these, unless held in an account at a US financial institution: ...'."
+       "fix": "Add a checkable hint, such as: 'Your trade confirmation or Form 1099-B shows \"accrued interest\" paid on a bond purchase.'"
       }
      ],
-     "prompt_sha": "3f8c5466bdd7976394d2e98de2e86b67beb1b09812f6c6c42b845b440febab84",
+     "prompt_sha": "78acbf837a0df6dbf02d3eb71045274fea6ba598e0a5390ee7c0a4742e1b4f43",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-fable-5-2",
-     "cost": 0.6185039999999999,
-     "date": "2026-11-10",
-     "response": ".transcription/false_no/gate_sb.foreign_any.a2162ef06792.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.12115600000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sb.bonds_any_if_income.a302846e187e.1.response.txt"
+    }
+   ],
+   "condition": "sb.bonds_any_if_income",
+   "lines": [
+    "sb.bond_special_if_bonds"
+   ],
+   "inputs": [
+    "sb.bond_special"
+   ],
+   "used": [
+    {
+     "doc": "i1040sb",
+     "revision": "TY2025; printed April 23, 2025",
+     "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, General Instructions, \"Use Schedule B (Form 1040) if any of the following applies\", \"You received interest from a seller-financed mortgage\", \"You have accrued interest from a bond\", \"You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID\", \"You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium\", \"You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989\", \"You received interest or ordinary dividends as a nominee\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+    }
+   ]
+  },
+  "gate:sb.foreign_any": {
+   "subject_sha": "db40099bc89329bae4a367f280b15d2633e7c16241cfca235716270c78979454",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer who owns more than 50% of a U.S. corporation, LLC or partnership that holds a bank or brokerage account abroad. Also covered: a filer who has a greater than 50% present beneficial interest in a U.S. trust that holds such an account.",
+       "why_no": "Helper 1 asks whether 'you' had an account in another country, and the account belongs to the entity. Helper 4 asks only about companies 'set up outside the United States', and helper 3 only about foreign trusts. The 7a help says 'an account of a company you own more than half of' counts, but it appears only after the gate.",
+       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign",
+       "irs_text": "fincen114 p. 5, Financial Interest 2.b-2.f: 'the owner of record or holder of legal title is ... A corporation in which the United States person owns directly or indirectly ... more than 50 percent'; '... A trust in which the United States person has a greater than 50 percent present beneficial interest'",
+       "severity": "high",
+       "fix": "Add to the gate: 'Did a company, partnership or LLC you (or your spouse) own more than half of, or a trust you set up or get more than half the income of, have an account outside the United States?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer whose single-member LLC (a disregarded entity), or whose revocable U.S. living trust (a grantor trust), holds foreign stock, a foreign partnership interest or a foreign account.",
+       "why_no": "The LLC or trust is the legal owner, so 'did you own anything else of value outside the United States' is truthfully no. The trust has a U.S. trustee and is not foreign, so helper 3 is no as well.",
+       "line": "sb.form8938_if_foreign; sb.line7a_if_foreign",
+       "irs_text": "i8938 p. 8: 'If you are the owner of a disregarded entity, you have an interest in any specified foreign financial assets owned by the disregarded entity'; 'If you are considered the owner under the grantor trust rules ... you have an interest in any specified foreign financial asset held by that part of the trust'",
+       "severity": "high",
+       "fix": "Ask whether anything held through your own LLC or your own revocable/living trust is a foreign account or foreign investment."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "Parents who elect Form 8814 to report their child's interest and dividends, where the child has a foreign savings or investment account, for example one opened by grandparents abroad.",
+       "why_no": "Every helper asks only about 'you (or, on a joint return, your spouse)'. The account is the child's.",
+       "line": "sb.form8938_if_foreign",
+       "irs_text": "i8938 p. 8: 'If you file Form 8814 ... you have an interest in any specified foreign financial asset held by the child.'",
+       "severity": "high",
+       "fix": "Add a gate condition: 'If you are reporting your child's interest or dividends on your return, did the child have an account or investment outside the United States?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer added as a joint owner of an elderly parent's bank account abroad for convenience. Similar cases: an executor or trustee who holds legal title to a foreign account for someone else, and a filer whose relative or attorney abroad holds an account in the relative's name on the filer's behalf.",
+       "why_no": "The filer considers it 'Mom's account' or the estate's account, not 'an account' that 'you' had. The money is not theirs, so the filer does not perceive it as their account or as a 'power to sign'.",
+       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign",
+       "irs_text": "fincen114 p. 5: financial interest where 'the United States person is the owner of record or holder of legal title, regardless of whether the account is maintained for the benefit of the United States person or for the benefit of another person'; or where the owner of record is 'An agent, nominee, attorney ... on behalf of the United States person'",
+       "severity": "medium",
+       "fix": "State in helper 1: 'Count an account in your name even if the money belongs to someone else (a parent, an estate you handle), and an account someone abroad holds for you.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer with a cash-value whole life insurance or annuity policy issued by a foreign insurer, for example one bought while living in Hong Kong or Canada.",
+       "why_no": "Helper 1 lists 'a bank, investment, pension, payment or crypto account', and an insurance policy is none of these. The filer does not see the policy as 'anything else of value outside the United States'.",
+       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign; sb.form8938_if_foreign",
+       "irs_text": "i1040sb p. 2: 'A financial account also includes ... an insurance policy with a cash value (such as a whole life insurance policy), an annuity policy with a cash value'",
+       "severity": "medium",
+       "fix": "Add 'life insurance or annuity policy with a cash value' to the list in helper 1."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer with an account at the London or Singapore branch of a U.S. bank, for example Citibank abroad.",
+       "why_no": "The filer regards the bank as a U.S. bank, so 'an account in another country' reads as no. The help explaining that 'a U.S. bank's branch abroad counts' is shown only after the gate.",
+       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign",
+       "irs_text": "i1040sb p. 3: 'an account maintained with a branch of a U.S. bank that is physically located outside of the United States is a foreign financial account'",
+       "severity": "medium",
+       "fix": "Move the location rule into helper 1: 'an account kept at an office abroad, even of a U.S. bank'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who holds certificated shares of a foreign company, a direct interest in a foreign partnership, or a note from or derivative with a foreign counterparty. The papers are kept at home in the United States, not in any financial account.",
+       "why_no": "'own anything else of value outside the United States' reads as physical location, and the item is in a drawer in the U.S. Helper 4 asks only about a 10% ownership stake or an officer role.",
+       "line": "sb.form8938_if_foreign",
+       "irs_text": "i8938 p. 7: 'Stock or securities issued by someone that is not a U.S. person'; 'A capital or profits interest in a foreign partnership'; '... similar agreement with a foreign counterparty'",
+       "severity": "medium",
+       "fix": "Reword helper 2: 'own shares, a partnership interest, a loan or a contract issued by a foreign company or person (not held through a U.S. brokerage), wherever the papers are kept'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A beneficiary who received a final distribution from a foreign trust in 2025 after which the trust wound up. Also covered: a grantor whose foreign trust ended during 2025.",
+       "why_no": "Helper 3 is in the present tense: 'Do you ... have anything to do with a trust', 'may receive from it'. Nothing more can be received now.",
+       "line": "sb.form8938_if_foreign",
+       "irs_text": "i8938 p. 8: 'If you receive a distribution from the foreign trust or foreign estate, you are considered to know of the interest.'",
+       "severity": "medium",
+       "fix": "Ask 'At any time in 2025, did you ...' and add 'or received anything from'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A beneficiary of the estate of a parent who died abroad, where the estate was still undistributed in 2025.",
+       "why_no": "Helper 3 names only a 'trust or family foundation'. The filer does not yet 'own' the inheritance and is not 'owed money' in the ordinary sense.",
+       "line": "sb.form8938_if_foreign",
+       "irs_text": "i8938 p. 7: 'Examples of other specified foreign financial assets include ... An interest in a foreign trust or foreign estate.'",
+       "severity": "medium",
+       "fix": "Add 'or an estate abroad you may inherit from' to helper 3."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A beneficiary of a trust with a U.S. trustee that is administered in the U.S., where a protector or other person abroad controls substantial decisions, which makes the trust foreign.",
+       "why_no": "Helper 3 asks only 'outside the United States or has a trustee abroad'.",
+       "line": "sb.form8938_if_foreign",
+       "irs_text": "i8938 p. 7: 'An interest in a foreign trust or foreign estate.'",
+       "severity": "low",
+       "fix": "Add to helper 3: 'or anyone abroad who can make major decisions for it'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An employee or officer of a U.S. company who can instruct the company's (or a subsidiary's) bank abroad, alone or jointly.",
+       "why_no": "'did you have an account ... or the power to sign for one' reads as covering personal accounts only.",
+       "line": "sb.line7a_if_foreign; sb.fbar_required_if_foreign",
+       "irs_text": "i1040sb p. 3: 'Signature authority ... Don't consider the exceptions relating to signature authority in answering Question 1 on line 7a.'",
+       "severity": "low",
+       "fix": "Add to helper 1: 'including your employer's or a client's account'."
+      }
+     ],
+     "prompt_sha": "043b8d5c5a4b00206f86f7bb168fa9253c0f5b5b5a8e0fba2bb57a2dd8cad255",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.20412399999999997,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sb.foreign_any.db40099bc893.1.response.txt"
     }
    ],
    "condition": "sb.foreign_any",
    "lines": [
     "sb.fbar_required_if_foreign",
-    "sb.form5471_if_foreign",
     "sb.form8938_if_foreign",
-    "sb.line8_if_foreign"
+    "sb.line7a_if_foreign"
    ],
    "inputs": [
     "sb.fbar_required",
-    "sb.form5471",
     "sb.form8938",
-    "sb.line8"
+    "sb.line7a"
    ],
    "used": [
     {
@@ -105,13 +278,11 @@
      ],
      "how": "whole document",
      "locators": [
-      "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\"",
-      "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\"",
+      "p. 2, Line 7a—Question 1, \"Check the “Yes” box if at any time during 2025 you had a financial interest in or signature authority over a financial account located in a foreign country\"",
       "p. 2, Part III. Foreign Accounts and Trusts, \"Statement of Specified Foreign Financial Assets, with your income tax return\"; , Specified Foreign Financial Assets",
       "p. 3, Line 7a—Question 2, \"See FinCEN Form 114 and its instructions at FINCEN.gov to determine whether you must file the form\"; , Who Must File an FBAR, \"A United States person that has a financial interest in or signature authority over foreign financial accounts must file an FBAR if the aggregate value of the foreign financial accounts exceeds $10,000 at any time during the calendar year\"",
-      "p. 3, Line 8, \"If you received a distribution from a foreign trust, you must provide additional information\", \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520\"",
       "pp. 1–3, interest, dividends and foreign accounts/trusts",
-      "pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, \"a loan of cash or marketable securities is generally considered to be a distribution\"; \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.\""
+      "pp. 2–3, Line 7a—Question 1, \"Check the “Yes” box even if you aren't required to file FinCEN Form 114\", \"an insurance policy with a cash value\", \"shares in a mutual fund or similar pooled fund\", \"A financial account is located in a foreign country if the account is physically located outside of the United States\", \"Don't consider the exceptions relating to signature authority in answering Question 1 on line 7a\"; , Foreign Financial Account, \"An account maintained with a branch of a foreign bank that is physically located in the United States is not a foreign financial account\"; , United States, \"all United States territories and possessions\""
      ],
      "cols_pages": [
       1,
@@ -151,15 +322,415 @@
     }
    ]
   },
-  "gate:sb.has_income": {
-   "subject_sha": "ce534a6d7b965f4e73ce8667e089c1fd4b5a0dc078cc41e50364233e2a240114",
-   "grandfathered": true,
-   "condition": "sb.has_income",
+  "gate:sb.foreign_company_any": {
+   "subject_sha": "f1d8753ce9c1f5bcc33579c624f5a5d14612aa3905922e3e6a3986e1d922946c",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer who owns 4% of a foreign corporation directly and is a partner in a U.S. partnership, or a beneficiary of a trust or estate, that owns another 8% of it. Or a filer who owns 6% and holds vested options or warrants for another 5%.",
+       "why_no": "The gate asks only whether they own 10% 'alone or with your family'. Shares held through partnerships, corporations, trusts or estates and shares they could buy through options are not 'alone' or 'with family', so a truthful no closes the gate. The gated question's help, which adds those shares, is never shown.",
+       "line": "sb.form5471_if_foreign (missed refusal; Form 5471 may be required)",
+       "irs_text": "i1040sb p. 2, Part II TIP: 'You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation's stock, or (b) combined voting power of all classes of a foreign corporation's stock with voting rights.'",
+       "severity": "high",
+       "fix": "Make the gate helper match the gated question: 'own 10% or more of its value or votes, counting shares of your spouse, children, grandchildren and parents, shares held by partnerships, corporations, trusts or estates you have an interest in, and shares any of you could buy through options or warrants.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer who in 2025 was an officer, director or manager of a corporation organized in Puerto Rico, Guam or the U.S. Virgin Islands but owned none of it, for example an executive of a PR subsidiary of their employer.",
+       "why_no": "Helper 1 says 'set up outside the United States', and they treat Puerto Rico and Guam as part of the United States (the FBAR definition says the same). Helper 2 asks whether they 'have ... a company' in a territory, which they read as owning one. They answer no to both. The gated question treats a territory company as foreign.",
+       "line": "sb.form5471_if_foreign (missed refusal)",
+       "irs_text": "i1040sb p. 2, Part II TIP: 'You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation.'",
+       "severity": "medium",
+       "fix": "In helper 1, say 'organized outside the 50 states and the District of Columbia (a company in Puerto Rico, Guam or another U.S. territory counts)'. In helper 2, add 'or were an officer, director or manager of a company there'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who holds a class of voting shares carrying 10% or more of a foreign corporation's votes but under 10% of its value, or the reverse.",
+       "why_no": "'An owner ... of 10% or more of one' reads as 10% of the company's equity or value. A filer measuring by value with under 10% answers no while holding 10% of the votes.",
+       "line": "sb.form5471_if_foreign (missed refusal)",
+       "irs_text": "i1040sb p. 2, Part II TIP: '10% or more of the total (a) value of a foreign corporation's stock, or (b) combined voting power of all classes of a foreign corporation's stock with voting rights.'",
+       "severity": "medium",
+       "fix": "Say '10% or more of its value or of its votes'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A U.S. employee named as a director or managing director of a foreign subsidiary of their U.S. employer, as a corporate formality with no ownership or pay from it.",
+       "why_no": "They do not think of the subsidiary as a company they have a role in for their own taxes. To them it is their employer's company, and the gate gives no example of a nominal or employer-assigned directorship.",
+       "line": "sb.form5471_if_foreign (missed refusal)",
+       "irs_text": "i1040sb p. 2, Part II TIP: 'You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation.'",
+       "severity": "low",
+       "fix": "Add to the gate help: 'Count a title you hold at your employer's foreign subsidiary, even if unpaid or nominal.'"
+      }
+     ],
+     "prompt_sha": "6d10ba9ff612efb8e6ee786d14b1ef672a733280218be75e3a9780d1d25ec3f9",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.11710799999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sb.foreign_company_any.f1d8753ce9c1.1.response.txt"
+    }
+   ],
+   "condition": "sb.foreign_company_any",
    "lines": [
-    "sb.unsupported_if_income"
+    "sb.form5471_if_foreign"
    ],
    "inputs": [
-    "sb.unsupported"
+    "sb.form5471"
+   ],
+   "used": [
+    {
+     "doc": "f1040sb",
+     "revision": "2025; created 2025-04-23",
+     "text_sha256": "8186516d0d5e8418307b784e80f53618eb16a45b8a123a7058e358fcca68ebb6",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Part III, Foreign Accounts and Trusts, \"You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust\"; , Part III, lines 7a and 8; , Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; , Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "df11693629afb7112b9883e2927694d80b0373e3dc65cfb1631fe3229a99650f"
+    },
+    {
+     "doc": "i1040sb",
+     "revision": "TY2025; printed April 23, 2025",
+     "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\"",
+      "p. 2, Part II. Ordinary Dividends, TIP, \"You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation\", \"You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+    },
+    {
+     "doc": "fincen114",
+     "revision": "Release Date January 2017 (v1.4), the version FinCEN links as the FBAR line item filing instructions (no later printed edition on the FinCEN FBAR page)",
+     "text_sha256": "d02d203fae0233099e880f329a2cb62e2d9e421e05b9684d4ff57ee487aeae79",
+     "pages": [
+      4,
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "9dae16399f902265194e429707a89bdd56f6d073c3b2e8a20406adb270fa2621"
+    },
+    {
+     "doc": "i8938",
+     "revision": "November 2021 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+     "text_sha256": "a8e2b7faaddaed66219b50201f6973c6a43930fd6684ff318546e714398767a7",
+     "pages": [
+      7,
+      8
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      7,
+      8
+     ],
+     "cols_sha256": "34ce0e00d160350c359f8a06e1075ab0d2a0e3768c8897b767c87e69198873cf"
+    }
+   ]
+  },
+  "gate:sb.foreign_trust_any": {
+   "subject_sha": "f2e0d92c830c4d2167462e9fad7c1d1d01bcebf1ceaf3079ba38457a5cf84516",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "7",
+       "who": "A beneficiary or grantor of a trust set up under New York law, with a U.S. bank as sole trustee. A nonresident-alien relative or protector abroad, who is not a trustee, can veto distributions or replace the trustee. Alternatively, a co-trustee is a nonresident alien who physically lives in the U.S., such as a diplomat or student, and all decisions need unanimity.",
+       "why_no": "The helper asks only about a trust 'outside the United States or has a trustee abroad'. This trust sits in the U.S. and its trustees are all in the U.S., so the filer truthfully answers no. The control test still makes it foreign. The foreign-trust definition, which counts any veto by a non-U.S. person, appears only in the gated question's help.",
+       "line": "sb.line8_if_foreign (and the Form 3520 refusal it leads to)",
+       "irs_text": "cfr-26-301-7701-7 p. 4: 'Control. ... with no other person having the power to veto any of the substantial decisions. ... it is necessary to consider all persons who have authority to make a substantial decision of the trust, not only the trust fiduciaries'; p. 2: 'The term foreign trust means any trust other than a domestic trust.'",
+       "severity": "high",
+       "fix": "Widen the helper to cover these cases: 'Do you (or your spouse) have any connection to a trust or family foundation that is set up or run outside the 50 states and DC, has any trustee who is not a U.S. citizen or resident, or where anyone who is not a U.S. citizen, resident or company can make, approve or block its decisions, such as a protector or a family member abroad? If you are not sure, answer Yes.'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer, or the filer's spouse, who sold property at full value to a foreign trust, or lent it money, and has no other tie to the trust.",
+       "why_no": "The helper lists the roles 'set it up, gave to it, or may receive from it'. A sale or a loan is not 'giving', so the filer truthfully answers no.",
+       "line": "sb.line8_if_foreign",
+       "irs_text": "f1040sb Part III line 8: 'were you the grantor of, or transferor to, a foreign trust?'; i1040sb p. 3: 'If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.'",
+       "severity": "high",
+       "fix": "Use the gated question's own verbs in the helper: 'set it up, or gave, sold or lent anything to it at any time'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who is not a named beneficiary but received a loan from a foreign trust in 2025, or lived rent-free in or used a home or car the trust owns. Example: a U.S. student living in a London flat held in a parent's offshore trust.",
+       "why_no": "The filer does not see themselves as 'the person who ... may receive from it'. A loan or free use of property does not feel like receiving from a trust, so the filer answers no. The help that says loans and free use count is shown only with the gated question.",
+       "line": "sb.line8_if_foreign",
+       "irs_text": "i1040sb p. 3, Line 8: 'For this purpose, a loan of cash or marketable securities is generally considered to be a distribution.'",
+       "severity": "medium",
+       "fix": "Add to the helper: '...or received anything from it, including money, property, a loan, or free or cheap use of something it owns'. Carry the gated question's help into the helper."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer who in 2025 received money or property that came from a foreign trust through an intermediary, such as a foreign grandparent, a relative, or a company the trust owns.",
+       "why_no": "The filer believes they deal only with the relative or the company and have nothing 'to do with' a trust, so they answer no. The note 'What reached you through another person or company counts' appears only in the gated question's help, which this filer never sees.",
+       "line": "sb.line8_if_foreign",
+       "irs_text": "i1040sb p. 3, Line 8: 'If you received a distribution from a foreign trust, you must provide additional information.'",
+       "severity": "medium",
+       "fix": "Add to the helper: 'including anything that reached you through another person or a company and came from such a trust'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who received a final distribution in 2025 from a foreign trust that then wound up. Also a grantor whose foreign co-trustee resigned during 2025, or whose trust moved onshore during 2025.",
+       "why_no": "The helper asks in the present tense: 'Do you ... have anything to do with a trust ... that is outside the United States or has a trustee abroad'. When the filer answers in 2026, the trust is gone or no longer foreign, so they answer no.",
+       "line": "sb.line8_if_foreign",
+       "irs_text": "f1040sb line 8: 'During 2025, did you receive a distribution from, or were you the grantor of, or transferor to, a foreign trust?'; cfr-26-301-7701-7 p. 2: 'A trust is a United States person ... on any day that the trust meets both the court test and the control test.'",
+       "severity": "medium",
+       "fix": "Ask: 'At any time in 2025, or before 2025 for a trust that still existed in 2025, did you (or your spouse) have any connection ...'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer connected to a foreign arrangement that does not carry the name 'trust' or 'foundation' but may be treated as a foreign trust. Examples: a Liechtenstein Anstalt, a foreign unit trust, or an arrangement described as a fiduciary holding.",
+       "why_no": "The filer reads 'trust or family foundation' as the complete list and answers no.",
+       "line": "sb.line8_if_foreign",
+       "irs_text": "cfr-26-301-7701-7 p. 2: 'The term foreign trust means any trust other than a domestic trust.'",
+       "severity": "low",
+       "fix": "Add to the helper: '(or any arrangement abroad where someone holds or manages property for others, whatever it is called; if not sure, answer Yes)'."
+      }
+     ],
+     "prompt_sha": "b3894f10be02115514fe2981b93301b367de0a9a41bb9bd783433a0f20581e99",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.16444799999999998,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sb.foreign_trust_any.f2e0d92c830c.1.response.txt"
+    }
+   ],
+   "condition": "sb.foreign_trust_any",
+   "lines": [
+    "sb.line8_if_foreign"
+   ],
+   "inputs": [
+    "sb.line8"
+   ],
+   "used": [
+    {
+     "doc": "f1040sb",
+     "revision": "2025; created 2025-04-23",
+     "text_sha256": "8186516d0d5e8418307b784e80f53618eb16a45b8a123a7058e358fcca68ebb6",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Part III, Foreign Accounts and Trusts, \"You must complete this part if you (a) had over $1,500 of taxable interest or ordinary dividends; (b) had a foreign account; or (c) received a distribution from, or were a grantor of, or a transferor to, a foreign trust\"; , Part III, lines 7a and 8; , Who Must File an FBAR, Financial Account, Foreign Financial Account, Financial Interest, Signature Authority; , Specified Foreign Financial Assets, Interests in Foreign Estates and Foreign Trusts, Interests in Foreign Pension Plans and Foreign Deferred Compensation Plans"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "df11693629afb7112b9883e2927694d80b0373e3dc65cfb1631fe3229a99650f"
+    },
+    {
+     "doc": "i1040sb",
+     "revision": "TY2025; printed April 23, 2025",
+     "text_sha256": "2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 3, Line 8, \"If you received a distribution from a foreign trust, you must provide additional information\", \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520\"",
+      "pp. 1–3, interest, dividends and foreign accounts/trusts; p. 3, Line 8, \"a loan of cash or marketable securities is generally considered to be a distribution\"; \"If you were the grantor of, or transferor to, a foreign trust that existed during 2025, you may have to file Form 3520.\"; , In general, \"A trust is a United States person if\", \"The term foreign trust means any trust other than a domestic trust\"; , The court test, \"a court within a territory or possession of the United States or within a foreign country is not a court within the United States\"; , Control test, \"with no other person having the power to veto any of the substantial decisions\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
+    },
+    {
+     "doc": "fincen114",
+     "revision": "Release Date January 2017 (v1.4), the version FinCEN links as the FBAR line item filing instructions (no later printed edition on the FinCEN FBAR page)",
+     "text_sha256": "d02d203fae0233099e880f329a2cb62e2d9e421e05b9684d4ff57ee487aeae79",
+     "pages": [
+      4,
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "9dae16399f902265194e429707a89bdd56f6d073c3b2e8a20406adb270fa2621"
+    },
+    {
+     "doc": "i8938",
+     "revision": "November 2021 (continuous-use revision, the current one on irs.gov/pub/irs-pdf when fetched, so in force for 2025)",
+     "text_sha256": "a8e2b7faaddaed66219b50201f6973c6a43930fd6684ff318546e714398767a7",
+     "pages": [
+      7,
+      8
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      7,
+      8
+     ],
+     "cols_sha256": "34ce0e00d160350c359f8a06e1075ab0d2a0e3768c8897b767c87e69198873cf"
+    },
+    {
+     "doc": "cfr-26-301-7701-7",
+     "revision": "26 CFR Ch. I (4-1-25 Edition), section 301.7701-7 (GovInfo, GPO)",
+     "text_sha256": "b44b441bfab4fc5197e265e0af590284a7ab68494713ae7027c9785b133fdc95",
+     "pages": [
+      1,
+      2,
+      4
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      1,
+      2,
+      4
+     ],
+     "cols_sha256": "9724bb458d4ff3a28fc240e1c9b34cb4561e54c580dd1067e95ae4e08d9179d6"
+    }
+   ]
+  },
+  "gate:sb.has_income": {
+   "subject_sha": "cb4df016f065363d624d6bbd081f896156ac6f69b09d89d3a895c8f39fbea621",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer bought a brokered CD on the secondary market in a brokerage account and paid the seller accrued interest. Alternatively, they hold a multi-year CD for which the bank issued a Form 1099-OID and they bought it at a premium.",
+       "why_no": "The help says 'Interest from a bank account, a certificate of deposit or a fund is not what this asks about,' and a CD is not a 'bond or note.' Following the help, the filer truthfully answers No.",
+       "line": "sb.bonds_any_if_income",
+       "irs_text": "i1040sb p. 2: 'If you received a Form 1099 for interest as a purchaser of a bond with accrued interest, follow the rules earlier under Nominees ... identify the amount to be subtracted as \"Accrued Interest.\"' and 'If you are reporting OID in an amount less than the amount shown in box 1 or box 8 of Form 1099-OID ... \"OID Adjustment.\"'",
+       "severity": "high",
+       "fix": "Drop CDs from the exclusion in the help. Add: 'Answer Yes if you bought a CD, bond or note from another investor (not newly issued), paid accrued interest when buying it, or received a Form 1099-OID.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer holds individual corporate or Treasury bonds in an ordinary brokerage account, where the broker holds them in street name. The filer paid accrued interest on purchase or wants to elect amortizable bond premium.",
+       "why_no": "'Own bonds or notes directly (not through a fund)' can be read as bonds registered in their own name or held at TreasuryDirect, not bonds held by a broker. The help's exclusion of 'interest from ... a fund' reinforces that reading for brokerage holdings.",
+       "line": "sb.bonds_any_if_income",
+       "irs_text": "i1040sb p. 2: 'Amortizable bond premium. If you elect to reduce your interest income on a taxable bond by the amount of taxable amortizable bond premium, follow the rules earlier under Nominees ... \"ABP Adjustment.\"'",
+       "severity": "medium",
+       "fix": "Say 'own individual bonds, notes or Treasury bills, including ones held in a brokerage account (not shares of a bond fund or ETF).'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "In 2025 a parent redeemed Series EE or I bonds issued after 1989 and had the proceeds sent straight into a 529 plan for a dependent, or paid tuition with them.",
+       "why_no": "'Cash in U.S. savings bonds' reads as receiving cash. A filer who redeemed electronically and rolled the money into a 529 plan may say they did not cash them in.",
+       "line": "sb.bonds_any_if_income",
+       "irs_text": "i1040sb p. 2, Line 3: 'If, during 2025, you cashed series EE or I U.S. savings bonds issued after 1989 and you paid qualified higher education expenses ... you may be able to exclude part or all of the interest.'",
+       "severity": "medium",
+       "fix": "Ask 'redeem, cash in, or have proceeds of U.S. savings bonds paid to you or to a 529/education account.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer inherited a parent's bank or brokerage account partway through 2025. The institution issued one Form 1099-INT or 1099-DIV under the filer's SSN covering the whole year, including interest earned before the death, which belongs to the decedent or the estate.",
+       "why_no": "Under 'Does any of the interest or dividends ... belong to someone else,' the account is now entirely theirs, so they answer No. The help's example (a living joint owner) does not suggest pre-death income.",
+       "line": "sb.nominee_if_income",
+       "irs_text": "i1040sb p. 1: 'If you received a Form 1099-INT that includes interest you received as a nominee (that is, in your name, but the interest actually belongs to someone else), report the total on line 1 ... enter \"Nominee Distribution\".'",
+       "severity": "medium",
+       "fix": "Add to the help: 'Answer Yes if a form in your name includes income earned before you acquired the account (for example, before the owner's death) or income that belongs to an estate, trust, child or other person.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married filer files separately and holds a joint bank account with their spouse. The Form 1099-INT is in the filer's SSN, and half the interest is the spouse's.",
+       "why_no": "The question's only example is 'the other owner of a joint account who is not your spouse,' and the help says joint-account income with a spouse is 'all yours.' A filer filing separately takes this to mean the spouse's share does not count and answers No.",
+       "line": "sb.nominee_if_income",
+       "irs_text": "i1040sb p. 2: 'If you received interest as a nominee, you must give the actual owner a Form 1099-INT (unless the owner is your spouse)' (a spouse can be the actual owner; the nominee subtraction on p. 1 still applies).",
+       "severity": "medium",
+       "fix": "Condition the help on filing status: 'On a joint return, your spouse's share is yours. If you file separately, your spouse's share belongs to someone else; answer Yes.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer's only Form 1099-INT or 1099-DIV is in their SSN but belongs entirely to someone else, for example a relative's account or a child's custodial account opened under the parent's SSN. They have no interest or dividends of their own.",
+       "why_no": "Asked for 'Taxable interest from all payers' or ordinary dividends, they enter 0 because none of it is taxable to them. The gate turns false, the nominee question is never asked, and the amount on the 1099 never appears on Schedule B.",
+       "line": "sb.nominee_if_income",
+       "irs_text": "i1040sb p. 1: 'report the total on line 1. Do this even if you later distributed some or all of this income to others.'",
+       "severity": "medium",
+       "fix": "Ask the source helpers as 'total shown on all Forms 1099-INT/1099-OID/1099-DIV in your or your spouse's name, even if some belongs to someone else.' Alternatively, ask the nominee question whenever any such form was received."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer sold a house with seller financing and receives interest from an individual buyer, who issues no Form 1099-INT. Or a filer's only interest-type income is on a Form 1099-OID (zero-coupon bond, long-term CD) that they would reduce for acquisition premium.",
+       "why_no": "The gate helper 'Taxable interest from all payers' sounds like Form 1099-INT amounts. With no 1099-INT, the filer enters 0, the gate is false, and the bonds/seller-financing question is never asked.",
+       "line": "sb.bonds_any_if_income",
+       "irs_text": "i1040sb p. 1: 'Seller-financed mortgages. If you sold your home or other property and the buyer used the property as a personal residence, list first any interest the buyer paid you ... Be sure to show the buyer's name, address, and SSN.'",
+       "severity": "medium",
+       "fix": "Make the interest helper explicitly include interest with no form (seller-financed notes, private loans) and Form 1099-OID amounts. Alternatively, ask the bonds/loans question before the gate rather than behind it."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer cashed EE or I savings bonds, and their only interest is in Form 1099-INT box 3, which is exempt from state tax. They paid tuition and expect the interest to be excluded.",
+       "why_no": "They read 'Taxable interest' as excluding savings bond interest, which they think of as tax-exempt or excludable, so they enter 0. The gate is false and the Form 8815 path behind the bonds question is never reached.",
+       "line": "sb.bonds_any_if_income",
+       "irs_text": "i1040sb p. 1, Line 1: 'Include interest from series EE, H, HH, and I U.S. savings bonds.'",
+       "severity": "medium",
+       "fix": "State in the interest helper: 'Include U.S. savings bond and Treasury interest (Form 1099-INT box 3) even if you expect to exclude it for education.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer bought Treasury bills or other short-term discount obligations from another investor in a brokerage account.",
+       "why_no": "'Bonds or notes' read literally excludes 'bills', so the filer answers No.",
+       "line": "sb.bonds_any_if_income",
+       "irs_text": "i1040sb p. 2: 'If you are reporting OID in an amount less than the amount shown in box 1 or box 8 of Form 1099-OID ... \"OID Adjustment.\"'",
+       "severity": "low",
+       "fix": "List 'bonds, notes, bills, CDs or other debt instruments you hold individually'."
+      }
+     ],
+     "prompt_sha": "1f9890219ca244abb9a483d733dc6dba7552a20b014d2fbec37cdaba341ea7b6",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.179736,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sb.has_income.cb4df016f065.1.response.txt"
+    }
+   ],
+   "condition": "sb.has_income",
+   "lines": [
+    "sb.bonds_any_if_income",
+    "sb.nominee_if_income"
+   ],
+   "inputs": [
+    "sb.bonds_any",
+    "sb.nominee"
    ],
    "used": [
     {
@@ -173,8 +744,7 @@
      ],
      "how": "whole document",
      "locators": [
-      "p. 1, General Instructions, \"Use Schedule B (Form 1040) if any of the following applies\", \"You received interest from a seller-financed mortgage\", \"You have accrued interest from a bond\", \"You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID\", \"You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium\", \"You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989\", \"You received interest or ordinary dividends as a nominee\"",
-      "pp. 1–3, interest, dividends and foreign accounts/trusts"
+      "p. 1, General Instructions, \"Use Schedule B (Form 1040) if any of the following applies\", \"You received interest from a seller-financed mortgage\", \"You have accrued interest from a bond\", \"You are reporting original issue discount (OID) of less than the amount shown on Form 1099-OID\", \"You are reporting interest income of less than the amount shown on a Form 1099 due to amortizable bond premium\", \"You are claiming the exclusion of interest from series EE or I U.S. savings bonds issued after 1989\", \"You received interest or ordinary dividends as a nominee\""
      ],
      "cols_pages": [
       1,
@@ -182,89 +752,6 @@
       3
      ],
      "cols_sha256": "0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e"
-    }
-   ],
-   "samples": [
-    {
-     "verdict": "UNCLEAR",
-     "findings": [
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer whose only Form 1099-INT or 1099-DIV is for an account held in their name for a parent or child, or as a nominee for someone else. They passed every dollar on to the actual owner.",
-       "why_no": "The helper asks for 'Taxable interest' and 'ordinary dividends'. The money was never theirs and was not taxable to them, so they enter $0, even though the helper says 'before any Schedule B adjustment'. The gate is false, so the nominee question is never asked.",
-       "line": "sb.unsupported_if_income",
-       "irs_text": "i1040sb p. 1: 'If you received a Form 1099-INT that includes interest you received as a nominee ... report the total on line 1. Do this even if you later distributed some or all of this income to others.' p. 2 gives the same rule for Form 1099-DIV on line 5.",
-       "severity": "medium",
-       "fix": "Gate on the forms and amounts, not on 'taxable' income: 'Did you or your spouse get any Form 1099-INT, 1099-OID or 1099-DIV, or substitute statement, even if some or all of it belongs to someone else?' Add to the helper: 'include amounts you received for someone else.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer who sold a house with seller financing, and the buyer lives in it. The buyer pays monthly, the filer gets no Form 1099-INT, and they have no bank interest.",
-       "why_no": "'Taxable interest from all payers' reads as interest shown on 1099s from banks. They see the buyer's payments as installments on a sale, not as interest from a 'payer', and enter $0.",
-       "line": "sb.unsupported_if_income",
-       "irs_text": "i1040sb p. 1: 'If you sold your home or other property and the buyer used the property as a personal residence, list first any interest the buyer paid you on a mortgage or other form of seller financing. Be sure to show the buyer's name, address, and SSN.'",
-       "severity": "medium",
-       "fix": "Ask about the fact separately, outside the gate: 'Did you or your spouse sell property and finance any of the price yourself (the buyer pays you over time)?' Count a yes as interest for the gate."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who cashed series EE or I bonds issued after 1989 and paid qualified tuition that year. All of the interest is excludable, and they have no other interest.",
-       "why_no": "They read 'Taxable interest' as the interest after the education exclusion, which is $0. 'Before any Schedule B adjustment' does not say that the savings bond exclusion is such an adjustment.",
-       "line": "sb.unsupported_if_income",
-       "irs_text": "i1040sb p. 1: 'Include interest from series EE, H, HH, and I U.S. savings bonds.' p. 2, Line 3: 'If, during 2025, you cashed series EE or I U.S. savings bonds issued after 1989 and you paid qualified higher education expenses ... you may be able to exclude part or all of the interest.'",
-       "severity": "medium",
-       "fix": "Helper text: 'All interest shown on Forms 1099-INT and 1099-OID or received without a form, including savings bond interest you expect to exclude, interest you will reduce for bond premium, OID or accrued interest, and interest belonging to someone else.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "8",
-       "who": "A filer who holds only municipal bonds bought at a market discount, or who sold one. Or a filer whose only bond is a contingent payment debt instrument that was sold at a gain, or one held only through Form 1099-OID.",
-       "why_no": "All of their bond income feels 'tax-exempt', or it shows up as a sale gain or as OID, not as 'interest'. So taxable interest is $0 to them, and the special items are never asked.",
-       "line": "sb.unsupported_if_income",
-       "irs_text": "i1040sb p. 1: 'Also include any accrued market discount that is includible in income and any gain on a contingent payment debt instrument that is includible in income as interest income.' Also: 'The market discount on a tax-exempt bond is taxable interest income and not tax-exempt interest.'",
-       "severity": "medium",
-       "fix": "Widen the gate: 'Did you or your spouse own, buy or sell any bond, note or other debt instrument, including tax-exempt bonds, or get any Form 1099-INT, 1099-OID or 1099-DIV?' Then ask about the special items."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A married couple filing jointly. Only the spouse has a savings account or a bond with a Form 1099-INT, or nominee interest.",
-       "why_no": "The interest helper says 'Taxable interest from all payers' without 'you or your spouse', while the dividend helpers say it. The filer counts only their own interest.",
-       "line": "sb.unsupported_if_income",
-       "irs_text": "i1040sb p. 1: 'Report on line 1 all of your taxable interest.' On a joint return, this covers both spouses.",
-       "severity": "low",
-       "fix": "Reword the helper to 'Taxable interest you or your spouse received from all payers, before any Schedule B adjustment.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A filer with no interest or dividends who has signature authority over an employer's foreign bank account. Or one who received a distribution, or a cash loan, from a foreign trust, or was a grantor of or transferor to one.",
-       "why_no": "The gate is computed only from interest, dividends and capital gain distributions, all $0. The input cites the foreign accounts/trusts pages, but nothing about the foreign account or trust is asked under this gate.",
-       "line": "sb.unsupported_if_income",
-       "irs_text": "i1040sb p. 1: 'Use Schedule B (Form 1040) if any of the following applies. ... You had a financial interest in, or signature authority over, a financial account in a foreign country or you received a distribution from, or were a grantor of, or transferor to, a foreign trust.'",
-       "severity": "medium",
-       "fix": "Unless Part III is gated separately and not by income, add to the gate a computed or asked condition: 'At any time in 2025, did you or your spouse have a financial interest in or signature authority over a foreign financial account, or receive a distribution or loan from, or create or transfer property to, a foreign trust?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A filer whose only dividends come with no Form 1099-DIV. Examples are a small dividend from a foreign corporation held directly, or dividends shown only on a substitute statement or a K-1, and some of them belong to someone else.",
-       "why_no": "The dividend helper says 'Form 1099-DIV box 1a', so with no 1099-DIV they enter $0.",
-       "line": "sb.unsupported_if_income",
-       "irs_text": "i1040sb p. 2: 'Report on line 5 all of your ordinary dividends. This amount should be shown in box 1a of your Forms 1099-DIV or substitute statements.'",
-       "severity": "low",
-       "fix": "Helper text: 'Ordinary dividends you or your spouse received, from Form 1099-DIV box 1a, substitute statements, or with no form.'"
-      }
-     ],
-     "prompt_sha": "c542c8d734a691a49a28cf311e6120e45d7f9b04b1b3168cec9ec318326613e7",
-     "model": "claude-opus-5-5",
-     "cost": 0.14134,
-     "date": "2026-11-07",
-     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "response": ".transcription/false_no/gate_sb.has_income.response.txt"
     }
    ]
   }

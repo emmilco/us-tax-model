@@ -1,0 +1,157 @@
+diff --git a/ambiguities/2025.yaml b/ambiguities/2025.yaml
+index c99d012..02dd23e 100644
+--- a/ambiguities/2025.yaml
++++ b/ambiguities/2025.yaml
+@@ -2673,3 +2673,18 @@ register:
+           qualified LTC services provided for the insured for LTC periods in 2025"'
+       status: Planning lane plan-med-income (BUG-0873, owner decision 3), drafted in lane v2-income, 2026-11-16; for the
+         owner.
++    - id: amb.2025.f8853c_line25_floor
++      text_at_issue: 'Form 8853 (2025), Section C, line 25: "Per diem limitation. Subtract line 24 from line 23" (no instruction for a
++        result below zero), and line 26: "Taxable payments. Subtract line 25 from line 20. If zero or less, enter -0-".
++        When the reimbursements on line 24 are more than line 23, the printed subtraction on line 25 is negative.'
++      readings:
++      - Line 25 is the printed subtraction and may be negative, so line 26 can be more than the payments on line 20.
++      - Line 25 is floored at zero (a limitation of zero), so the taxable payments on line 26 are never more than line 20.
++      chosen: The second (f8853c.line25 is subtract_floor0).
++      reason: Line 25 is named a limitation on the payments excluded; a negative limitation would tax, through line 26, more
++        than the per diem payments received on lines 17 to 20, and no text of the form or i8853 says reimbursements are
++        taxed there. The two readings differ only when line 24 is more than line 23 (rare).
++      cite:
++        doc: f8853
++        locator: Form 8853 (2025), line 25, "Per diem limitation. Subtract line 24 from line 23"
++      status: Planning lane lows-inc (BUG-0917), drafted 2026-11-16; for the owner.
+diff --git a/forms/2025/f8853c.yaml b/forms/2025/f8853c.yaml
+index afcc115..8a1c74a 100644
+--- a/forms/2025/f8853c.yaml
++++ b/forms/2025/f8853c.yaml
+@@ -346,8 +346,9 @@ form:
+     expr:
+       op: input
+       source: The costs incurred for qualified long-term care services provided for this person during the days of the LTC
+-        period (necessary diagnostic, preventive, therapeutic, treating and rehabilitative services, and maintenance or
+-        personal care, under a plan of care prescribed by a licensed health care practitioner); zero if none
++        period (necessary diagnostic, preventive, therapeutic, curing, treating, mitigating and rehabilitative services, and
++        maintenance or personal care services, required to treat a chronically ill person under a plan of care prescribed by
++        a licensed health care practitioner); zero if none
+     cite:
+       doc: i8853
+       locator: 'p. 9, Line 22, "Qualified LTC services are necessary diagnostic, preventive, therapeutic, curing, treating,
+@@ -487,6 +488,7 @@ form:
+     cite:
+       doc: f8853
+       locator: Form 8853 (2025), line 25, "Per diem limitation. Subtract line 24 from line 23"
++    ambiguity: amb.2025.f8853c_line25_floor
+     refuses:
+     - when: f8853c.contract_before_ltc_date_if_reimbursed
+       form: Form 8853, line 24 (reimbursements under a contract issued before August 1, 1996)
+diff --git a/forms/2025/s2.yaml b/forms/2025/s2.yaml
+index 5af4cae..6bfc4c2 100644
+--- a/forms/2025/s2.yaml
++++ b/forms/2025/s2.yaml
+@@ -19,10 +19,10 @@ form:
+     - id: s2.options_any
+       printed: (helper)
+       type: Bool
+-      label: "In 2025, did you (or, on a joint return, your spouse) exercise stock options from an employer?"
++      label: "In 2025, did you (or, on a joint return, your spouse) exercise employee stock options, including options inherited or received in a divorce?"
+       expr:
+         op: input
+-        source: "In 2025, did you (or, on a joint return, your spouse) exercise stock options from an employer?"
++        source: "In 2025, did you (or, on a joint return, your spouse) exercise employee stock options, including options inherited or received in a divorce?"
+       cite:
+         doc: f1040s2
+         locator: "Schedule 2 (2025), lines 2, 3, 11, 12 and 21"
+@@ -1115,10 +1115,10 @@ form:
+       printed: (helper)
+       type: Bool
+       gated_by: s2.lookback_if_business
+-      label: "Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025 or for property depreciated under the income forecast method (Form 8697 or Form 8866)?"
++      label: "Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025, or whose price or costs were adjusted in 2025 after it was finished, or for property depreciated under the income forecast method (Form 8697 or Form 8866)?"
+       expr:
+         op: input
+-        source: "Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025 or for property depreciated under the income forecast method (Form 8697 or Form 8866)?"
++        source: "Do you (or, on a joint return, your spouse) owe or claim look-back interest for a long-term contract finished in 2025, or whose price or costs were adjusted in 2025 after it was finished, or for property depreciated under the income forecast method (Form 8697 or Form 8866)?"
+       cite:
+         doc: f1040s2
+         locator: "Schedule 2 (2025), line 17n"
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index cd49943..e1bc642 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -623,7 +623,7 @@ bank:
+     seq: 1
+     group: paid_already
+     tick: Tax taken out of a pension, social security or other money
+-    help: "Look for box 4 of a Form 1099 or W-2G, box 6 of Form SSA-1099 or box 10 of Form RRB-1099. Tax withheld on a Schedule K-1 or Form 1042-S counts too. If you are not sure, answer Yes."
++    help: "Box 4 of a Form 1099 or W-2G, box 6 of an SSA-1099 or box 10 of an RRB-1099. Tax withheld on a Schedule K-1 or Form 1042-S, 8805 or 8288-A counts too, even with no money paid to you. If unsure, answer Yes."
+     prompt: In 2025, was federal income tax taken out of money paid to you (or, on a joint return, your spouse) other
+       than wages, such as a pension, social security, unemployment or gambling winnings?
+   - input: f1040.line3a
+@@ -956,11 +956,11 @@ bank:
+     order: 146
+     seq: 5
+     group: "other_pay"
+-    tick: "Employer stock options used to buy shares, or such shares sold"
+-    help: Count shares bought through an employee stock purchase plan. Shares simply granted to you, such as restricted
+-      stock, do not count.
+-    prompt: In 2025, did you (or, on a joint return, your spouse) use stock options from an employer to buy shares, or sell
+-      shares bought that way?
++    tick: "Employee stock options used to buy shares, or such shares sold"
++    help: Count options granted to an employee that you inherited or got in a divorce, and shares bought through an employee
++      stock purchase plan. Shares simply granted to you, such as restricted stock, do not count.
++    prompt: In 2025, did you (or, on a joint return, your spouse) use employee stock options to buy shares, or sell shares
++      bought that way?
+   - input: s2.iso_vested
+     order: 146
+     seq: 6
+@@ -995,8 +995,8 @@ bank:
+     seq: 3
+     group: rare_accounts
+     tick: Over-contributed to an HSA for 2024, with no HSA in 2025
+-    help: The full yearly amount, or a transfer from an IRA, was allowed for 2024 only if the health plan was kept through 2025
+-      (the “last-month rule”). A return with this is outside what this tool prepares; a Yes ends the interview here.
++    help: A full year's amount put in for 2024 needed the health plan kept through 2025; money moved from an IRA, through
++      the 12th month after the move. Losing it by death or disability does not count. A Yes ends the interview here.
+     prompt: Did you (or, on a joint return, your spouse) have a health savings account in 2024 but not in 2025, and put more
+       into it for 2024 than your months in a qualifying health plan allowed?
+   - input: s2.mortgage_subsidy
+@@ -1013,8 +1013,8 @@ bank:
+     help: Interest may then be owed or refunded (Form 8697). Yes also for a film, book or similar property depreciated by
+       its forecast income (Form 8866). If neither is familiar, answer No. A return with this is outside what this tool prepares;
+       a Yes ends the interview here.
+-    prompt: Did you (or, on a joint return, your spouse) finish a contract in 2025 that ran over more than one tax year,
+-      with its income reported as the work went on?
++    prompt: Did you (or, on a joint return, your spouse) have a contract over more than one tax year, with its income
++      reported as the work went on, that was finished, or whose price or costs changed, in 2025?
+   - input: s2.amt_business
+     order: 267
+     seq: 2
+@@ -2003,7 +2003,7 @@ bank:
+     seq: 6
+     group: "money_b"
+     tick: "Paid back a deduction or credit that lowered tax (not state/local refund)"
+-    help: "For example a refund of property tax, mortgage interest refunded (Form 1098 box 4), or a medical bill repaid by insurance. A state or local income tax refund is asked about separately. If you took the standard deduction for 2024, money back for something you could deduct only by itemizing is not income: answer No."
++    help: "Such as a refund of property tax, sales tax or mortgage interest (Form 1098 box 4), a medical bill repaid, or a deducted bad debt repaid. It is not income if it was deductible only by itemizing and you did not itemize that year."
+   - input: scope.disaster_distribution
+     order: 193
+     seq: 1
+@@ -3892,7 +3892,7 @@ bank:
+     seq: 3
+     group: "money_b"
+     tick: "A long-term care insurance payout, or life insurance paid early, in 2025"
+-    help: "The insurer sends Form 1099-LTC. Payments that only repaid care costs are usually not taxed; payments at a set daily or monthly rate may be."
++    help: "The insurer sends Form 1099-LTC. Count payments the policy sent straight to a nursing home or care agency. Payments that only repaid care costs are usually not taxed; payments at a set daily or monthly rate may be."
+     prompt: In 2025, were you (or, on a joint return, your spouse) paid by a long-term care insurance policy, or paid part
+       of a life insurance death benefit early?
+   - input: f1040.digital_assets
+@@ -4192,7 +4192,8 @@ bank:
+   - input: f8853c.line17
+     order: 161
+     seq: 18
+-    help: Add box 1 of every Form 1099-LTC for this person that has "Per diem" checked in box 3. Give 0 if none.
++    help: Add box 1 of every Form 1099-LTC for this person that has "Per diem" checked in box 3, including payments sent
++      straight to a care provider. Give 0 if none.
+     prompt: How much long-term care insurance was paid at a set rate? Add box 1 of those forms.
+   - input: f8853c.nonqualified
+     order: 161

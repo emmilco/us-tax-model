@@ -1,0 +1,257 @@
+diff --git a/engine/src/mutate.ts b/engine/src/mutate.ts
+index 26e375f..a465294 100644
+--- a/engine/src/mutate.ts
++++ b/engine/src/mutate.ts
+@@ -2928,69 +2928,122 @@ function exactly(v: Record<string | symbol, unknown>): string {
+   return `${JSON.stringify(v)}|${v[GATE_PENDING] === true}`;
+ }
+ 
+-/** The sampled check of the mutants `muts` (all of one site), each held to the sets given, or to the sets as given
+- * where `answeredOnly` has its id. A line's readers receive only its value, so where every line the site can change
+- * first (each entry of it) has exactly the same value under the mutant as under the data, nothing that reads them
+- * can differ, and their readers are evaluated only on the other sets. Where `full` is set (the self-test), every
+- * line of the return is evaluated and compared rather than the readers, and a line that differs outside the readers
+- * is reported as `closureMiss`. */
+-function sampleSite(baseline: CanonicalData, site: string, muts: Mutation[], sets: SampleSet[], answeredOnly: Set<string>, full = false): Map<string, SampledResult> {
++type Derivations = ReturnType<typeof evaluate>["derivations"];
++
++/** One site of the sampled check: the lines a mutant of it can change first (`watch`, and as a set `watched`), the
++ * line a keyed argument may let differ (`exclude`), the readers of the watched lines (`closure`), and its mutants,
++ * each applied to its own copy of the data. `group` names the watched set: the lines a site compares are fixed by that
++ * set, so sites with the same one share the baseline's evaluations of a set. */
++type SampledSite = { site: string; watch: string[]; watched: Set<string>; exclude: Set<string>; closure: Set<string>; group: string; muts: Mutation[]; data: CanonicalData[] };
++
++function sampledSite(baseline: CanonicalData, site: string, muts: Mutation[]): SampledSite {
+   const { watch, exclude } = siteLines(baseline, site);
+   const watched = new Set(watch);
+-  const closure = new Set(watch.flatMap((w) => [...downstreamOf(baseline, w)]));
+-  const mutantData = muts.map((m) => { const d = cloneData(baseline); m.apply(d); return d; });
+-  const results = new Map(muts.map((m) => [m.id, { exercised: 0, reached: 0, sets: 0 } as SampledResult]));
++  return {
++    site, watch, watched, exclude,
++    closure: new Set(watch.flatMap((w) => [...downstreamOf(baseline, w)])),
++    group: [...watched].sort().join("\n"),
++    muts,
++    data: muts.map((m) => { const d = cloneData(baseline); m.apply(d); return d; }),
++  };
++}
++
++/** What the sites checked on one set share: the set's targets (allTargets) and the line of each (lineOfKey), the
++ * lines present, and the baseline's evaluations, kept by what they were asked for (a watched set, the readers of one,
++ * or every line). An evaluation is a function of the data, the inputs and the targets, so a site reading one of these
++ * receives what it would compute itself. */
++type SetBaseline = {
++  set: SampleSet;
++  every: string[];
++  lines: string[];
++  present: Set<string>;
++  own: Map<string, { keys: string[]; derivations: Derivations }>;
++  readers: Map<string, { keys: string[]; values: Map<string, string> }>;
++};
++
++function setBaseline(baseline: CanonicalData, set: SampleSet): SetBaseline {
++  const every = allTargets(baseline, set.inputs);
++  const lines = every.map(lineOfKey);
++  return { set, every, lines, present: new Set(lines), own: new Map(), readers: new Map() };
++}
++
++/** The readers' key in SetBaseline.readers when every line of the return is compared (no group is empty of lines and
++ * no line id holds a NUL). */
++const EVERY_LINE = "\u0000every";
++
++/** The sampled check of one site's mutants on one set, added to `results`: each is held to the set, or, where
++ * `answeredOnly` has its id, to the set only as given. A line's readers receive only its value, so where every line
++ * the site can change first (each entry of it) has exactly the same value under the mutant as under the data, nothing
++ * that reads them can differ, and their readers are evaluated only on the other sets. Where `full` is set (the
++ * self-test), every line of the return is evaluated and compared rather than the readers, and a line that differs
++ * outside the readers is reported as `closureMiss`. */
++function sampleSiteSet(baseline: CanonicalData, s: SampledSite, sb: SetBaseline, results: Map<string, SampledResult>, answeredOnly: Set<string>, full: boolean): void {
++  const { set } = sb;
++  const { watch, exclude, closure, muts } = s;
++  const mutantData = s.data;
+   const refs = (d: { operands: { ref: string }[] }): string => d.operands.map((o) => o.ref).join("\n");
+-  for (const set of sets) {
+-    const every = allTargets(baseline, set.inputs);
+-    const own = every.filter((k) => watched.has(lineOfKey(k)));
+-    if (own.length === 0) continue;
+-    const ownBase = evaluate(baseline, set.inputs, own).derivations;
+-    let targets: string[] | undefined;
+-    let base: Map<string, string> | undefined;
+-    muts.forEach((m, i) => {
+-      const r = results.get(m.id)!;
+-      // An argument over answered inputs only is held to the sets as given; on the others the first set telling the
+-      // mutant apart is kept as a witness of the partial return the argument excludes.
+-      const partial = set.rate > 0 && answeredOnly.has(m.id);
+-      if (partial ? r.partial !== undefined : !full && r.contradicted !== undefined) return;
+-      if (!partial) r.sets++;
+-      const ownMutant = evaluate(mutantData[i]!, set.inputs, own).derivations;
+-      let infected = false;
+-      let exact = ownMutant.size === ownBase.size;
+-      let reached = !exact;
+-      for (const [k, d] of ownMutant) {
+-        const b = ownBase.get(k);
+-        if (b === undefined) { exact = false; infected = true; continue; }
+-        // The mutant reached its change where a line it can change first read other operands than under the data.
+-        if (refs(b) !== refs(d)) reached = true;
+-        if (exactly(b.value as never) === exactly(d.value as never)) continue;
+-        exact = false;
+-        if (normal(b.value) !== normal(d.value)) infected = true;
+-      }
+-      if ((reached || !exact) && !partial) r.reached++;
+-      if (exact) return;
+-      targets ??= full ? every : every.filter((k) => closure.has(lineOfKey(k)));
+-      base ??= valuesOf(baseline, set.inputs, targets);
+-      const mutant = valuesOf(mutantData[i]!, set.inputs, targets);
+-      for (const [k, v] of mutant) {
+-        const b = base.get(k);
+-        if (b === v) continue;
+-        infected = true;
+-        const id = lineOfKey(k);
+-        // A def's lines are seen only through the lines that read its instances, which are compared; a helper is on
+-        // no value sheet and is seen only through the lines that read it; the mutated line may differ.
+-        if (b === undefined || k.includes("|inst:") || exclude.has(id) || isHelper(baseline, id)) continue;
+-        if (partial) { r.partial = `${set.label}, answers withheld at rate ${set.rate}: ${k} is ${brief(b)} with the data and ${brief(v)} with the mutant`; return; }
+-        r.contradicted ??= `${set.label}, answers withheld at rate ${set.rate}: ${k} is ${brief(b)} with the data and ${brief(v)} with the mutant`;
+-        if (!full) return;
+-        if (!closure.has(id)) r.closureMiss ??= `${set.label}, rate ${set.rate}: ${k} differs and is not a reader of ${watch.join(", ")} by the closure`;
+-      }
+-      if (r.contradicted !== undefined || partial) return;
+-      if (infected) r.exercised++;
+-    });
+-  }
+-  return results;
++  // The set has a key of a watched line exactly where a watched line is among the lines of its keys.
++  if (!watch.some((l) => sb.present.has(l))) return;
++  let ownShared = sb.own.get(s.group);
++  if (ownShared === undefined) {
++    const keys = sb.every.filter((_, j) => s.watched.has(sb.lines[j]!));
++    ownShared = { keys, derivations: evaluate(baseline, set.inputs, keys).derivations };
++    sb.own.set(s.group, ownShared);
++  }
++  const own = ownShared.keys;
++  const ownBase = ownShared.derivations;
++  let read: { keys: string[]; values: Map<string, string> } | undefined;
++  const readers = (): { keys: string[]; values: Map<string, string> } => {
++    const key = full ? EVERY_LINE : s.group;
++    let shared = sb.readers.get(key);
++    if (shared === undefined) {
++      const keys = full ? sb.every : sb.every.filter((_, j) => closure.has(sb.lines[j]!));
++      shared = { keys, values: valuesOf(baseline, set.inputs, keys) };
++      sb.readers.set(key, shared);
++    }
++    return shared;
++  };
++  muts.forEach((m, i) => {
++    const r = results.get(m.id)!;
++    // An argument over answered inputs only is held to the sets as given; on the others the first set telling the
++    // mutant apart is kept as a witness of the partial return the argument excludes.
++    const partial = set.rate > 0 && answeredOnly.has(m.id);
++    if (partial ? r.partial !== undefined : !full && r.contradicted !== undefined) return;
++    if (!partial) r.sets++;
++    const ownMutant = evaluate(mutantData[i]!, set.inputs, own).derivations;
++    let infected = false;
++    let exact = ownMutant.size === ownBase.size;
++    let reached = !exact;
++    for (const [k, d] of ownMutant) {
++      const b = ownBase.get(k);
++      if (b === undefined) { exact = false; infected = true; continue; }
++      // The mutant reached its change where a line it can change first read other operands than under the data.
++      if (refs(b) !== refs(d)) reached = true;
++      if (exactly(b.value as never) === exactly(d.value as never)) continue;
++      exact = false;
++      if (normal(b.value) !== normal(d.value)) infected = true;
++    }
++    if ((reached || !exact) && !partial) r.reached++;
++    if (exact) return;
++    const shared = (read ??= readers());
++    const base = shared.values;
++    const mutant = valuesOf(mutantData[i]!, set.inputs, shared.keys);
++    for (const [k, v] of mutant) {
++      const b = base.get(k);
++      if (b === v) continue;
++      infected = true;
++      const id = lineOfKey(k);
++      // A def's lines are seen only through the lines that read its instances, which are compared; a helper is on
++      // no value sheet and is seen only through the lines that read it; the mutated line may differ.
++      if (b === undefined || k.includes("|inst:") || exclude.has(id) || isHelper(baseline, id)) continue;
++      if (partial) { r.partial = `${set.label}, answers withheld at rate ${set.rate}: ${k} is ${brief(b)} with the data and ${brief(v)} with the mutant`; return; }
++      r.contradicted ??= `${set.label}, answers withheld at rate ${set.rate}: ${k} is ${brief(b)} with the data and ${brief(v)} with the mutant`;
++      if (!full) return;
++      if (!closure.has(id)) r.closureMiss ??= `${set.label}, rate ${set.rate}: ${k} differs and is not a reader of ${watch.join(", ")} by the closure`;
++    }
++    if (r.contradicted !== undefined || partial) return;
++    if (infected) r.exercised++;
++  });
+ }
+ 
+ /** The sampled check's work: each keyed argument that explains a survivor this run, grouped by site, and one control
+@@ -3013,27 +3066,54 @@ export function sampledPlan(baseline: CanonicalData, muts: Mutation[], survivors
+   return [...bySite].map(([site, e]) => ({ site, ...e }));
+ }
+ 
++/** The sampled check of a block of the plan's sites, set by set, each set's targets and baseline evaluations computed
++ * once for the block (SetBaseline). Each site's keyed arguments and control are held to every set. Self-test of the
++ * restriction to the readers: the controls again, every line of each return compared, on the first CLOSURE_TEST_SETS
++ * sets; a line outside the readers that differs is reported. A mutant's result depends only on its own evaluations,
++ * met in the order of the sets, and on the baseline's, so a site checked in a block has the result it has alone. */
++export function sampledBlock(baseline: CanonicalData, sets: SampleSet[], byId: Map<string, Mutation>, block: SampledPlan): [string, SampledResult][] {
++  const started = Date.now();
++  const sites = block.map((p) => sampledSite(baseline, p.site, [...p.claimed, ...p.controls].map((id) => byId.get(id)!)));
++  // The controls, on the copies of the data already made for them (a site with none has nothing to self-test).
++  const controls = block.map((p, i): SampledSite => ({ ...sites[i]!, muts: sites[i]!.muts.slice(p.claimed.length), data: sites[i]!.data.slice(p.claimed.length) }))
++    .filter((s) => s.muts.length > 0);
++  const fresh = (s: SampledSite) => s.muts.map((m) => [m.id, { exercised: 0, reached: 0, sets: 0 } as SampledResult] as const);
++  const results = new Map(sites.flatMap(fresh));
++  const whole = new Map(controls.flatMap(fresh));
++  const noneAnsweredOnly = new Set<string>();
++  sets.forEach((set, j) => {
++    const sb = setBaseline(baseline, set);
++    for (const s of sites) sampleSiteSet(baseline, s, sb, results, ANSWERED_ONLY, false);
++    if (j < CLOSURE_TEST_SETS) for (const s of controls) sampleSiteSet(baseline, s, sb, whole, noneAnsweredOnly, true);
++  });
++  for (const [id, r] of whole) if (r.closureMiss) results.get(id)!.closureMiss = r.closureMiss;
++  if (process.env.MUTATE_SAMPLE_TIMES) console.error(`sampled check: ${block.map((p) => p.site).join(", ")}: ${Date.now() - started} ms`);
++  return [...results];
++}
++const CLOSURE_TEST_SETS = 200;
++
++/** The plan cut into blocks of consecutive sites holding at most MUTATE_SAMPLE_BLOCK mutants each (a site with more
++ * is a block alone). A block's copies of the data, one per mutant, are held while it runs. */
++export function sampledBlocks(plan: SampledPlan): SampledPlan[] {
++  const blocks: SampledPlan[] = [];
++  let size = 0;
++  for (const p of plan) {
++    const n = p.claimed.length + p.controls.length;
++    if (blocks.length === 0 || size + n > SAMPLE_BLOCK) { blocks.push([]); size = 0; }
++    blocks[blocks.length - 1]!.push(p);
++    size += n;
++  }
++  return blocks;
++}
++const SAMPLE_BLOCK = ((n) => (Number.isInteger(n) && n > 0 ? n : 8))(Number(process.env.MUTATE_SAMPLE_BLOCK ?? 8));
++
+ /** The sampled check of a share of the plan (every `count`-th site from `index`), for the workers. */
+ export function sampledShare(index: number, count: number, plan: SampledPlan): [string, SampledResult][] {
+   const baseline = loadCanonical();
+   const sets = sampleSets(baseline, judgingCases(baseline));
+   const byId = new Map(selectMutants(mutations(baseline)).map((m) => [m.id, m]));
+-  const out: [string, SampledResult][] = [];
+-  for (let i = index; i < plan.length; i += count) {
+-    const p = plan[i]!;
+-    const ms = [...p.claimed, ...p.controls].map((id) => byId.get(id)!);
+-    const started = Date.now();
+-    const results = sampleSite(baseline, p.site, ms, sets, ANSWERED_ONLY);
+-    // Self-test of the restriction to the readers: the controls again, every line of each return compared, on the
+-    // first CLOSURE_TEST_SETS sets; a line outside the readers that differs is reported.
+-    const whole = sampleSite(baseline, p.site, p.controls.map((id) => byId.get(id)!), sets.slice(0, CLOSURE_TEST_SETS), new Set(), true);
+-    for (const [id, r] of whole) if (r.closureMiss) results.get(id)!.closureMiss = r.closureMiss;
+-    if (process.env.MUTATE_SAMPLE_TIMES) console.error(`sampled check: ${p.site}: ${Date.now() - started} ms`);
+-    out.push(...results);
+-  }
+-  return out;
++  return sampledBlocks(plan.filter((_, i) => i % count === index)).flatMap((block) => sampledBlock(baseline, sets, byId, block));
+ }
+-const CLOSURE_TEST_SETS = 200;
+ 
+ async function sampledResults(plan: SampledPlan): Promise<Map<string, SampledResult>> {
+   const count = Math.min(workerCount(), Math.max(1, plan.length));

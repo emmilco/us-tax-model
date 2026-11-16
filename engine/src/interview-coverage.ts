@@ -585,7 +585,11 @@ async function selfTest(): Promise<number> {
   assert.equal(problemsOf([row("uses-set", {}, { refused: GATE }, { uses: ["yes"] })], { yes: { says: "The planted yes.", answers: { [Q]: true } } }), "");
 
   // 1. The walk does not end as expected: another refusal, completion in place of a refusal, another question first.
-  assert.match(problemsOf([row("r", { [Q]: true }, { refused: "s3.mfs" })]), new RegExp(`row r: expected a refusal at s3\\.mfs; the walk was refused at ${GATE.replace(/[.[\]$]/g, "\\$&")}`));
+  const OTHER = "household.mfs_community_property";
+  assert.notEqual(OTHER, GATE, "the planted other gate is not the row's gate");
+  const otherGate = problemsOf([row("r", { [Q]: true }, { refused: OTHER })]);
+  assert.doesNotMatch(otherGate, /no line refuses at a gate/, "the planted other gate is a real refusal gate");
+  assert.match(otherGate, new RegExp(`row r: expected a refusal at household\\.mfs_community_property; the walk was refused at ${GATE.replace(/[.[\]$]/g, "\\$&")}`));
   assert.match(problemsOf([row("r", { [Q]: false }, { refused: GATE })]), /row r: expected a refusal at .*; the walk completed the return/);
   assert.match(problemsOf([row("r", { [Q]: true }, { asks: NEXT })]), /row r: expected the question .* to be asked; the walk was refused at /);
   assert.match(problemsOf([row("r", { [Q]: true }, { proceeds: { [Q]: true } })]), /row r: expected the return to be completed; the walk was refused at /);

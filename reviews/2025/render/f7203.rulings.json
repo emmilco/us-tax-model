@@ -1,0 +1,236 @@
+{
+ "kind": "render",
+ "form": "f7203",
+ "rulings": [
+  {
+   "printed": "12",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 12 says \"Use Part II to figure the debt basis restoration, if any. Enter the total from line 23.\" The restatement always enters $0, even when the Part II loan question is answered yes, and names no refusal.",
+   "ruling": "Ruling: scope; Part II (debt basis) is refused (f7203.loans_if_req, 'Form 7203, Part II (shareholder debt basis)'), so a return with a loan answered yes does not complete.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "ec72103e092305e322e41bc885cc0b19418593c30116249756a1ca43d9a9205a"
+  },
+  {
+   "printed": "13",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 13 says \"Enter any other decreases to stock basis... If an election is made under Regulations section 1.1367-1(g), enter the amounts on this line as instructed on line 8\". The restatement always enters $0 and ignores the item E election.",
+   "ruling": "Ruling: scope; a disposition or redemption of stock is refused (k1s.disposed) and the section 1.1367-1(g) election is refused (f7203.election_if_req).",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "279fe1cc5a39aaaae500bf702517ed3ff5f631270674ed899e8752b708fd178a"
+  },
+  {
+   "printed": "35 (c)",
+   "restated": "Choose — [helper \"Line 47, column (a), is more than zero\" = true → helper \"Line 35, column (a) times line 10 divided by line 47, column (a), the ratio rounded to six places and at most 1\"] [helper \"Line 47, column (a), is more than zero\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The column (c) instructions compare line 10 with \"the sum of column (a) and column (b), line 47\" and allocate pro rata on that sum. The restatement leaves out the column (b) carryovers and uses an incomplete line 47(a).",
+   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "2b7fe7d34ffcd1d79aaed3998006a8e3d5bb3302f35f072db24e045c2a8a4fa6"
+  },
+  {
+   "printed": "35 (e)",
+   "restated": "Subtract line 35 (c) from line 35 (a). If zero or less, enter -0-.",
+   "model": "Column (e) applies \"If the sum of column (a) plus column (b) exceeds the sum of column (c) plus column (d)\". The restatement leaves out column (b) carryovers and column (d) losses allowed from debt basis.",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "630d55e09ead9e278c436fa1a6fcd06a567458d94c593a9fc8df8771087204ab"
+  },
+  {
+   "printed": "36 (c)",
+   "restated": "Choose — [helper \"Line 47, column (a), is more than zero\" = true → helper \"Line 36, column (a) times line 10 divided by line 47, column (a), the ratio rounded to six places and at most 1\"] [helper \"Line 47, column (a), is more than zero\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Column (c) is based on \"the sum of column (a) and column (b), line 47\". The restatement leaves out the column (b) carryovers and lines 39 through 46 from the proration.",
+   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "44ecdd386e9a5ce6d266a5e00c4f3162152ced8e32e77cc8e200cdb46c4cb6ab"
+  },
+  {
+   "printed": "36 (e)",
+   "restated": "Subtract line 36 (c) from line 36 (a). If zero or less, enter -0-.",
+   "model": "Column (e) is \"column (a) plus column (b)\" in excess of \"column (c) plus column (d)\". The restatement leaves out columns (b) and (d).",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "fbb93bdf41e71c551990021b9809657067c7011ffa21fcdc2773c79b831e08e0"
+  },
+  {
+   "printed": "37 (c)",
+   "restated": "Choose — [helper \"Line 47, column (a), is more than zero\" = true → helper \"Line 37, column (a) times line 10 divided by line 47, column (a), the ratio rounded to six places and at most 1\"] [helper \"Line 47, column (a), is more than zero\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Column (c) is based on \"the sum of column (a) and column (b), line 47\". The restatement leaves out the column (b) carryovers and lines 39 through 46 from the proration.",
+   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "21a74fb30002c482cf526ccc1eb4ee35c43e4145fd711a40d6948cd639ee06a4"
+  },
+  {
+   "printed": "37 (e)",
+   "restated": "Subtract line 37 (c) from line 37 (a). If zero or less, enter -0-.",
+   "model": "Column (e) is \"column (a) plus column (b)\" in excess of \"column (c) plus column (d)\". The restatement leaves out columns (b) and (d).",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "d2377618dc1e533da40d64ef1ae285d71614c3159d9be9d3f9b3c752653e19f6"
+  },
+  {
+   "printed": "38 (c)",
+   "restated": "Choose — [helper \"Line 47, column (a), is more than zero\" = true → helper \"Line 38, column (a) times line 10 divided by line 47, column (a), the ratio rounded to six places and at most 1\"] [helper \"Line 47, column (a), is more than zero\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Column (c) is based on \"the sum of column (a) and column (b), line 47\". The restatement leaves out the column (b) carryovers and lines 39 through 46 from the proration.",
+   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "8e96295a989d803692dca5b0cf0d66414971e3f4ae3c1cd9a741fad1cc6786c3"
+  },
+  {
+   "printed": "38 (e)",
+   "restated": "Subtract line 38 (c) from line 38 (a). If zero or less, enter -0-.",
+   "model": "Column (e) is \"column (a) plus column (b)\" in excess of \"column (c) plus column (d)\". The restatement leaves out columns (b) and (d).",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "7f0792e5d4fb972c06a7a52e1c45c7384a680e7d429cf7a6e07e765369dfa62e"
+  },
+  {
+   "printed": "3f",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 3f is \"Royalties\", and K-1 box 6 reports royalties. The restatement always enters $0 and names no refusal, so royalty income is dropped from basis.",
+   "ruling": "Ruling: scope; box 6 (royalties) is refused on k1s.ok (k1s.box6, 'Schedule E (Form 1040), line 4 (royalties from a Schedule K-1)'), so no return with a Form 7203 has a line 3f amount; the label says so. The render review sees the line without the K-1's refusals.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "8f38372e3e3ba5204fdda69ed59f12a4f41dae16e871a2e6f0b27877ceb0c2da"
+  },
+  {
+   "printed": "3h",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 3h is \"Net section 1231 gain (enter losses in Part III)\", reported in K-1 box 9. The restatement always enters $0 and names no refusal.",
+   "ruling": "Ruling: scope; box 9 (net section 1231 gain) is refused on k1s.ok (k1s.box9, 'Form 4797 (net section 1231 gain or loss from a Schedule K-1)').",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "5bcfc1e1fa86dbd6eb61609b562091a6b45fe5ebf94f4538c383d2daf2cf3be8"
+  },
+  {
+   "printed": "3i",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 3i says \"Enter the amount of other income that increases basis\", reported in K-1 box 10. The restatement always enters $0 and names no refusal.",
+   "ruling": "Ruling: scope; box 10 (other income) is refused on k1s.ok (k1s.box10).",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "2f6eaa45385c23c1e4d3a2f0076a966999d33c91963c444cd3748008a7b8324c"
+  },
+  {
+   "printed": "3j",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 3j says \"Enter the amount by which your cumulative depletion deduction exceeds your proportionate share of basis... box 15, using code C\". The restatement always enters $0 and names no refusal.",
+   "ruling": "Ruling: scope; box 15 (including code C, excess depletion) is refused on k1s.ok (k1s.box15, Form 6251 items).",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "57a2c9340d8bce1d4e14ae5fe26606880f4ab3bc5720c9695c0a4dfb48d8678d"
+  },
+  {
+   "printed": "3l",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 3l is \"Recapture of business credits\". The restatement always enters $0 and names no refusal.",
+   "ruling": "Ruling: scope; box 17 codes other than V, among them the credit recapture codes, are refused on k1s.ok (k1s.box17_other_if_17).",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "7dd2b04c658af6971ca35d2448dbf0e56c78fc2d9bb24fde46d646d1fa8099cd"
+  },
+  {
+   "printed": "3m",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 3m is \"Other items that increase stock basis\". The restatement always enters $0 and names no refusal.",
+   "ruling": "Ruling: scope; the K-1 enters only boxes 1 to 5b, 7 to 8c, 13 code O, 16 codes A to D and 17 code V (k1s form note); every other item that could increase stock basis comes from a box refused on k1s.ok, and a capital contribution is line 2.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "3a162c6ba4d8daf47f0c8ddf5d3b9c31d8e48f55c3684af0b047aa0cc01dfdf4"
+  },
+  {
+   "printed": "47 (a)",
+   "restated": "Add line 35 (a), line 36 (a), line 37 (a), and line 38 (a).",
+   "model": "Line 47 says \"Add lines 35 through 46 for each column\". The restatement adds only lines 35 through 38, leaving out section 1231 loss, other loss, section 179, charitable contributions, investment interest, section 59(e)(2) expenditures, other deductions and foreign taxes, and names no refusal.",
+   "ruling": "Ruling: scope; lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok (k1s.box9, box10, box11_12, box14, box16ef_if_16); the form note says 'Lines 39 to 46 have no amount: the boxes that would fill them are refused on the K-1'.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "a63531908c88e9200f3fe25e6685604a22bce0c5380d607ce2a1ee1c4bb40088"
+  },
+  {
+   "printed": "47 (c)",
+   "restated": "Add line 35 (c), line 36 (c), line 37 (c), and line 38 (c).",
+   "model": "Line 47 says \"Add lines 35 through 46 for each column\". The restatement adds only lines 35 through 38 of column (c).",
+   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "c2ab120fbc40ce628c521bf2c25c697eeccded17c4813ea9e53fa57b21e0720e"
+  },
+  {
+   "printed": "47 (e)",
+   "restated": "Add line 35 (e), line 36 (e), line 37 (e), and line 38 (e).",
+   "model": "Line 47 says \"Add lines 35 through 46 for each column\". The restatement adds only lines 35 through 38 of column (e).",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "d706e499e977c06c9eebf5ec0606e6819638ce44c80c31943b659497e79140b8"
+  },
+  {
+   "printed": "5",
+   "restated": "Add helper \"Line 1, asked only when Form 7203 is required (zero otherwise)\", helper \"Line 2, asked only when Form 7203 is required (zero otherwise)\", and line 4.",
+   "model": "Line 5 says \"Add lines 1, 2, and 4\" with no condition. The restatement zeroes lines 1 and 2 unless its own required-form gate is true. That gate leaves out other filing triggers in the instructions, such as a prior-year disallowed loss, a stock disposition or a loan repayment, and no refusal is named.",
+   "ruling": "Ruling: scope; lines 1 and 2 are asked when Form 7203 is required by a loss or a distribution; the other filing triggers the reply names are refused: a loss disallowed in an earlier year (k1s.basis_carry), a disposition of stock (k1s.disposed) and a loan repayment (k1s.box16ef_if_16, 'Form 7203 Part II (loan repayments)'). i7203 p. 1 lists those four triggers.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "41c82b7047b4caae744676451df39f8dedbc715bad803368d366daa839e601e4"
+  },
+  {
+   "printed": "8a",
+   "restated": "Enter the amount from k1s helper \"Box 16 code C, asked only when box 16 shows code C (zero otherwise)\".",
+   "model": "The instructions say to \"Leave lines 8a, 8b, and 8c blank if you made an election under Regulations section 1.1367-1(g)... enter this information on line 13\". The restatement enters box 16 code C whatever the item E answer is.",
+   "ruling": "Ruling: scope; the Regulations section 1.1367-1(g) election is refused (f7203.election_if_req, 'Form 7203 with a Regulations section 1.1367-1(g) election'), so 'Leave lines 8a, 8b, and 8c blank if you made an election' never applies to a completed return.",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "ab6d565d6830aa1947eee5699835e04e7ff9ca374d067343930b92c62785cda7"
+  },
+  {
+   "printed": "8b",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 8b says \"Enter the amount of oil and gas depletion claimed on your personal return up to your proportionate share of basis\". The restatement always enters $0 and names no refusal.",
+   "ruling": "Ruling: scope; oil and gas depletion is box 17 code R, refused on k1s.ok (k1s.box17_other_if_17).",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "1192c8c3c0156bb870b136c9a7e47b493799225136ea0e8928ee0ce9b6fbd165"
+  },
+  {
+   "printed": "8c",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 8c is \"Business credits (sections 50(c)(1) and (5))\". The restatement always enters $0 and names no refusal.",
+   "ruling": "Ruling: scope; box 13 credits other than code O are refused on k1s.ok (k1s.box13_other, Form 3800).",
+   "context": "def252bbd1e8a06a9c53463f80ec51bfa09aff12a04b559e5193ebd179ee8dc6",
+   "date": "2026-11-15",
+   "run": "23adf5d639fd65efa548ef76998ce4fdaf69b9765fd73f43906b387757c24ea9",
+   "subject_key": "428155eead1cecea4b6d0ea07c2805995dc26e41292cf2fe604e22c783943367"
+  }
+ ]
+}

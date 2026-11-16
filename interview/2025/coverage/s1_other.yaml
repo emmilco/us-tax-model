@@ -1,0 +1,289 @@
+tax_year: 2025
+part: Other Schedule 1 income (lane x2-s1o)
+profile: full
+sets:
+  wages:
+    says: "A person with one job and one Form W-2 paying $80,000."
+    answers:
+      "$w2@person[taxpayer]": ["job"]
+      "person[taxpayer].w2[job].box1": 8000000
+      "person[taxpayer].w2[job].box2": 800000
+      "person[taxpayer].w2[job].box4": 496000
+      "person[taxpayer].w2[job].box5": 8000000
+      "person[taxpayer].w2[job].box6": 116000
+      "scope.w2_marks": false
+      "scope.artist_official": false
+      "scope.excess_deferral": false
+      "s2.w2_marks": false
+      "s1.nqdc_pension": false
+  low_wages:
+    says: "A person with one job and one Form W-2 paying $40,000."
+    answers:
+      "$w2@person[taxpayer]": ["job"]
+      "person[taxpayer].w2[job].box1": 4000000
+      "person[taxpayer].w2[job].box2": 400000
+      "person[taxpayer].w2[job].box4": 248000
+      "person[taxpayer].w2[job].box5": 4000000
+      "person[taxpayer].w2[job].box6": 58000
+      "scope.w2_marks": false
+      "scope.artist_official": false
+      "scope.excess_deferral": false
+      "s2.w2_marks": false
+      "s1.nqdc_pension": false
+  money_back:
+    says: "Money was paid back in 2025 for a 2024 itemized deduction, with nothing rare about it."
+    answers:
+      "scope.recovery": true
+      "rec.before_prior_year": false
+      "rec.nonitemized": false
+      "rec.sales_tax": false
+  itemized_2024:
+    says: "A single person who itemized for 2024: Schedule A lines 5d and 5e $5,000, line 17 $20,000, born after 1959 and not blind."
+    answers:
+      "refund.itemized": true
+      "refund.line5d_prior_year": 500000
+      "refund.line5e_prior_year": 500000
+      "refund.line17_prior_year": 2000000
+      "refund.status": single
+      "refund.you_born": false
+      "refund.you_blind": false
+      "refund.exc_tax": false
+      "refund.exc_who": false
+      "rec.ti_positive": true
+  ltc_entry:
+    says: "Long-term care payments for one person, the filer's mother."
+    answers:
+      "s1.ltc_payout": true
+      "$f8853c": ["mom"]
+rows:
+- id: s1o.rec_property_tax
+  design: scout-s1-other 3.1, Pub. 525 Worksheet 2 (the typical filer of the topic)
+  situation: A retiree who itemized for 2024 got back $300 of 2024 property tax in 2025.
+  uses: [money_back, itemized_2024]
+  answers:
+    "rec.has_property_tax": true
+    "rec.has_mortgage": false
+    "rec.has_medical": false
+    "rec.has_other": false
+    "rec.property_tax": 30000
+  expect:
+    proceeds: {"rec.property_tax": 30000}
+- id: s1o.rec_medical
+  design: scout-s1-other 3.1, Pub. 525 Example 34 (the 2024 medical deduction asked beneath the reimbursement)
+  situation: A person who itemized for 2024 had $500 of 2024 medical bills repaid by insurance in 2025, of which $200 had been deducted.
+  uses: [money_back, itemized_2024]
+  answers:
+    "rec.has_property_tax": false
+    "rec.has_mortgage": false
+    "rec.has_medical": true
+    "rec.has_other": false
+    "rec.medical": 50000
+    "rec.medical_deducted": 20000
+  expect:
+    proceeds: {"rec.medical_deducted": 20000}
+- id: s1o.rec_not_itemized
+  design: scout-s1-other 3.1, Pub. 525 p. 24, Deductions not itemized
+  situation: A person who took the standard deduction for 2024 got back some 2024 property tax in 2025.
+  uses: [money_back]
+  answers:
+    "refund.itemized": false
+  expect:
+    proceeds: {"refund.itemized": false}
+- id: s1o.rec_not_2024
+  design: scout-s1-other 1.1, residual refusal rec.before_prior_year
+  situation: A person was reimbursed in 2025 for a casualty loss deducted for 2023.
+  answers:
+    "scope.recovery": true
+    "rec.before_prior_year": true
+  expect:
+    refused: rec.before_prior_year_if_any
+- id: s1o.rec_nonitemized
+  design: scout-s1-other 1.1, residual refusal rec.nonitemized
+  situation: A person was repaid in 2025 a bad debt deducted on an earlier return.
+  answers:
+    "scope.recovery": true
+    "rec.before_prior_year": false
+    "rec.nonitemized": true
+  expect:
+    refused: rec.nonitemized_if_any
+- id: s1o.rec_sales_tax
+  design: scout-s1-other 1.1, residual refusal rec.sales_tax (Worksheet 2 footnote 2)
+  situation: A person who deducted sales tax for 2024 got a sales tax refund in 2025.
+  answers:
+    "scope.recovery": true
+    "rec.before_prior_year": false
+    "rec.nonitemized": false
+    "rec.sales_tax": true
+  expect:
+    refused: rec.sales_tax_if_any
+- id: s1o.rec_amt_2024
+  design: scout-s1-other 1.1, residual refusal at rec.line11 (refund.exc_tax, Pub. 525 Subject to AMT)
+  situation: A person who owed alternative minimum tax for 2024 got back some 2024 property tax in 2025.
+  uses: [money_back, itemized_2024]
+  answers:
+    "refund.exc_tax": true
+  expect:
+    refused: refund.exc_tax
+- id: s1o.nol_computed
+  design: scout-s1-other 3.3, the NOL deduction where the 80% limit cannot bind
+  situation: A person earning $80,000 carries into 2025 a $20,000 loss from a business closed in 2023.
+  uses: [wages]
+  answers:
+    "scope.business_before": true
+    "scope.passive": false
+    "scope.f8978": false
+    "s179.prior_form": false
+    "scope.nol": true
+    "s1.nol_amount": 2000000
+    "s1.nol_before_limit_date": false
+    "s1.nol_ebl": false
+    "s1.nol_was_joint": false
+  expect:
+    proceeds: {"s1.nol_amount": 2000000}
+- id: s1o.nol_pre2018
+  design: scout-s1-other 1.1, residual refusal s1.nol_before_limit_date
+  situation: A person carries into 2025 part of a loss from 2016.
+  uses: [wages]
+  answers:
+    "scope.business_before": true
+    "scope.passive": false
+    "scope.f8978": false
+    "s179.prior_form": false
+    "scope.nol": true
+    "s1.nol_amount": 2000000
+    "s1.nol_before_limit_date": true
+  expect:
+    refused: s1.nol_before_limit_date_if_nol
+- id: s1o.nol_ebl
+  design: scout-s1-other 1.1, residual refusal s1.nol_ebl
+  situation: A person carries into 2025 a loss held back in 2024 by the limit on excess business losses.
+  uses: [wages]
+  answers:
+    "scope.business_before": true
+    "scope.passive": false
+    "scope.f8978": false
+    "s179.prior_form": false
+    "scope.nol": true
+    "s1.nol_amount": 2000000
+    "s1.nol_before_limit_date": false
+    "s1.nol_ebl": true
+  expect:
+    refused: s1.nol_ebl_if_nol
+- id: s1o.nol_was_joint
+  design: scout-s1-other 3.3, residual refusal s1.nol_marital (i172 Change in Marital Status)
+  situation: A divorced person carries into 2025 a loss from a year of a joint return.
+  uses: [wages]
+  answers:
+    "scope.business_before": true
+    "scope.passive": false
+    "scope.f8978": false
+    "s179.prior_form": false
+    "scope.nol": true
+    "s1.nol_amount": 2000000
+    "s1.nol_before_limit_date": false
+    "s1.nol_ebl": false
+    "s1.nol_was_joint": true
+  expect:
+    refused: s1.nol_marital
+- id: s1o.nol_limit
+  design: scout-s1-other 3.3, residual refusal s1.nol_limit at Form 1040 line 15
+  situation: A person earning $40,000 carries into 2025 a $30,000 loss, more than four times taxable income after it.
+  uses: [low_wages]
+  answers:
+    "scope.business_before": true
+    "scope.passive": false
+    "scope.f8978": false
+    "s179.prior_form": false
+    "scope.nol": true
+    "s1.nol_amount": 3000000
+    "s1.nol_before_limit_date": false
+    "s1.nol_ebl": false
+    "s1.nol_was_joint": false
+    "qbi.coop_patron": false
+  expect:
+    refused: s1.nol_limit
+- id: s1o.ltc_per_diem
+  design: scout-s1-other 3.4, Form 8853 Section C computed
+  situation: A person was paid $160,600 at a set daily rate in 2025 by a long-term care policy on their mother, for care costing $120,000.
+  uses: [ltc_entry]
+  answers:
+    "f8853c[mom].periodic": true
+    "f8853c[mom].line17": 16060000
+    "f8853c[mom].nonqualified": false
+    "f8853c[mom].line19": 0
+    "f8853c[mom].others_paid": false
+    "f8853c[mom].rate_changed": false
+    "f8853c[mom].days": 365
+    "f8853c[mom].line22": 12000000
+    "f8853c[mom].line24": 0
+  expect:
+    proceeds: {"f8853c[mom].line17": 16060000}
+- id: s1o.ltc_reimbursed
+  design: scout-s1-other 3.4, payments that only repaid costs (nothing taxable, nothing more asked)
+  situation: A long-term care policy repaid a person's nursing home bills in 2025.
+  uses: [ltc_entry]
+  answers:
+    "f8853c[mom].periodic": false
+  expect:
+    proceeds: {"f8853c[mom].periodic": false}
+- id: s1o.ltc_others_paid
+  design: scout-s1-other 1.1, residual refusal f8853c.other_payees (Multiple Payees)
+  situation: A person and their brother were each paid at a set rate under policies on their mother.
+  uses: [ltc_entry]
+  answers:
+    "f8853c[mom].periodic": true
+    "f8853c[mom].line17": 16060000
+    "f8853c[mom].nonqualified": false
+    "f8853c[mom].line19": 0
+    "f8853c[mom].others_paid": true
+  expect:
+    refused: f8853c[mom].others_paid_if_periodic
+- id: s1o.ltc_rate_changed
+  design: scout-s1-other 3.4, residual refusal f8853c.rate_changed (more than one LTC period)
+  situation: A policy's daily rate rose partway through 2025.
+  uses: [ltc_entry]
+  answers:
+    "f8853c[mom].periodic": true
+    "f8853c[mom].line17": 16060000
+    "f8853c[mom].nonqualified": false
+    "f8853c[mom].line19": 0
+    "f8853c[mom].others_paid": false
+    "f8853c[mom].rate_changed": true
+  expect:
+    refused: f8853c[mom].rate_changed_if_periodic
+- id: s1o.ltc_nonqualified
+  design: scout-s1-other 1.1, residual refusal f8853c.nonqualified (line 17 caution)
+  situation: A person was paid at a set rate under a long-term care policy that is not a qualified contract.
+  uses: [ltc_entry]
+  answers:
+    "f8853c[mom].periodic": true
+    "f8853c[mom].line17": 16060000
+    "f8853c[mom].nonqualified": true
+  expect:
+    refused: f8853c[mom].nonqualified_if_periodic
+- id: s1o.inmate_amount
+  design: scout-s1-other 3.5, line 8u, refused by s1.line8_other (computing it waits for the W-2 part of the pay to be asked; see TASKS.md)
+  situation: A person was paid $800 in 2025 for work done while in prison.
+  answers:
+    "s1.inmate_wages": true
+  expect:
+    refused: s1.line8_other
+- id: s1o.fiduciary_fees
+  design: scout-s1-other 3.2, a new line 8z kind computed
+  situation: A person was paid $2,500 for acting as executor of a friend's estate.
+  answers:
+    "$oi8z": [fees]
+    "oi8z[fees].kind": fiduciary_fees
+    "oi8z[fees].amount": 250000
+  expect:
+    proceeds: {"oi8z[fees].amount": 250000}
+- id: s1o.damages_injury
+  design: scout-s1-other 3.2, residual refusal oi8z.injury
+  situation: A person received a settlement, partly punitive damages, in a case about a car accident injury.
+  answers:
+    "$oi8z": [award]
+    "oi8z[award].kind": taxable_damages
+    "oi8z[award].amount": 500000
+    "oi8z[award].injury": true
+  expect:
+    refused: oi8z[award].injury_if_damages

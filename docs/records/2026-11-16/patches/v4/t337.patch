@@ -1,0 +1,484 @@
+diff --git a/tools/README.md b/tools/README.md
+index 29be45b..7ee2ccd 100644
+--- a/tools/README.md
++++ b/tools/README.md
+@@ -196,6 +196,28 @@ its green tree to a release list (`tools/green.sh`); when the tip's tree is in t
+ `tools/release.sh` still checks the sampled reviews but does not run the suite again, and tags the
+ tip. So the full check that lets a commit onto `main` can also be the release's run.
+ 
++`tools/release_prep.sh [--fail-fast]` is the recommended first step of a release: run it on the candidate tree as
++soon as its content is final, before the release-mode full check. A defect the full check would report only when
++its wave ends (about 13 minutes for wave 1, longer for wave 2) shows here in minutes. It runs:
++
++1. `tools/release_reviews.sh`, which builds and renders the tree and then runs every release check of the sampled
++   reviews (completeness, screens, false-no; both jurisdictions), each separately, so one run lists every due item
++   (the reviews to run while the rest proceeds). A failed build stops the run there (`release_reviews.sh` exits 2).
++2. The check-all steps of its `PREP_STEPS`, one after another, cheapest first: `check_bug_inventory`, `bug_status`,
++   `check_agent_runs`, `doc_figures`, `limits`, `consumers`, `year_changes`, `citations`, `check_extraction`,
++   `check_logs` (each with its `ny_` step), `bookkeeping_self_tests`, `test_fixtures` and `ny_test_fixtures`,
++   `coverage`, `interview_rules` and `self_tests`. Each runs the command `tools/check_all_steps.sh --print-steps
++   --tier full` declares for it, so the two cannot drift; a listed name the steps script does not declare stops the
++   run (exit 2). A step that exits 0 without a line `tools/step_output.py` requires of it fails, as in check-all.
++
++Every step runs, unless `--fail-fast` stops at the first failure. Each step's output goes to
++`<git dir>/release-prep/<step>.log`; a failing step's output is printed. It ends with each step's status and time
++and one line, `release-prep: PASS` (exit 0) or `release-prep: FAIL: <steps>` (exit 1). It rewrites no report but
++those its steps write in check-all (`coverage.md`); the reports only the later waves or a release rewrite are left
++as they are, so `doc_figures` checks against the committed reports. A pass does not mean the full check will pass.
++It takes one of the check-all slots. `tools/test_release_prep.sh` (check-all `self_tests`) runs it in a temporary
++repository with stub tools.
++
+ A run for a year other than the default passes or fails as usual but writes no
+ marker.
+ 
+diff --git a/tools/check_all_steps.sh b/tools/check_all_steps.sh
+index 66ed6c3..bf56072 100755
+--- a/tools/check_all_steps.sh
++++ b/tools/check_all_steps.sh
+@@ -43,12 +43,20 @@
+ # as tools/release.sh does). docs runs docs_steps: compile, the build without
+ # render, and the checks that read the bookkeeping paths of tools/docs_paths.txt (tools/tier_paths.py
+ # lists every reader of them).
++#
++# --print-steps lists the tier's steps instead of running them, in the order declared, one per line: the step's
++# name, a tab, and its command quoted for eval (printf %q; a command that is a function of this script, such as
++# build_and_render, is printed by its name). For a New York step the year skips, the line is its name,
++# "skip" and the reason, tab-separated. Nothing is run and no times file is written (a printed command's times
++# file is /dev/null). tools/release_prep.sh runs its steps from this list, so a step's command is declared here only.
+ set -euo pipefail
+ cd "$(git rev-parse --show-toplevel)"
+ tier=full
++print_steps=0
+ args=()
+ while [ "$#" -gt 0 ]; do
+   case "$1" in
++    --print-steps) print_steps=1; shift ;;
+     --tier) tier="${2:-}"; shift; [ "$#" -gt 0 ] && shift ;;
+     --tier=*) tier="${1#--tier=}"; shift ;;
+     *) args+=("$1"); shift ;;
+@@ -83,8 +91,6 @@ in_tier() {
+ }
+ node=(node engine/dist/main.js)
+ times="$(git rev-parse --git-path check-all-times)"
+-: > "$times"
+-logs="$(mktemp -d)"
+ run_t0=$(date +%s)
+ # finish: on exit, however the run ends, record the run's time and print the summary of the times.
+ finish() {
+@@ -93,7 +99,13 @@ finish() {
+   python3 tools/check_times.py "$times" || true
+   rm -rf "$logs"
+ }
+-trap finish EXIT
++if [ "$print_steps" = 0 ]; then
++  : > "$times"
++  logs="$(mktemp -d)"
++  trap finish EXIT
++else
++  times=/dev/null  # the printed commands that take a times file (self_tests.py --times) write nowhere
++fi
+ names=()
+ pids=()
+ skipped=()
+@@ -177,7 +189,21 @@ review_packets() {
+     "${node[@]}" review-stage5 "$@"
+ }
+ 
+-if [ -n "$ny_skip" ]; then
++if [ "$print_steps" = 1 ]; then
++  # --print-steps: step() prints the line of its command instead of starting it; wave() waits for nothing.
++  step() {
++    local name="$1"; shift
++    in_tier "$name" || return 0
++    if [ -n "$ny_skip" ] && [[ "$name" == ny_* ]]; then
++      printf '%s\tskip\t%s\n' "$name" "$ny_skip"
++      return 0
++    fi
++    printf '%s\t' "$name"
++    printf ' %q' "$@"
++    printf '\n'
++  }
++  wave() { :; }
++elif [ -n "$ny_skip" ]; then
+   echo "check-all: New York steps skipped for $year: $ny_skip"
+ fi
+ step compile npm run compile --silent
+@@ -288,6 +314,6 @@ wave wave3
+ # rewrite the reports they quote.
+ step doc_figures python3 tools/doc_figures.py --check
+ wave wave4
+-if [ "${#skipped[@]}" -gt 0 ]; then
++if [ "$print_steps" = 0 ] && [ "${#skipped[@]}" -gt 0 ]; then
+   echo "check-all: ${#skipped[@]} New York steps skipped for $year (${skipped[*]}): $ny_skip"
+ fi
+diff --git a/tools/release.sh b/tools/release.sh
+index 228fb46..e7b7ef7 100755
+--- a/tools/release.sh
++++ b/tools/release.sh
+@@ -4,6 +4,11 @@
+ #
+ #   tools/release.sh [--push] [-F <file>]
+ #
++# First step (recommended): tools/release_prep.sh on the candidate tree, as soon as its content is final and before
++# its release-mode full check. It runs the sampled-review gate below, every check listed, and the check-all steps
++# that fail in minutes, with each step's time and one PASS or FAIL; a defect it finds would otherwise fail the full
++# check only when its wave ends.
++#
+ # HEAD must be the branch main, in the main worktree, with nothing to commit (the tree
+ # `git add -A` would commit is HEAD's tree). The run is tools/check_all_bg.sh --wait
+ # --tier full, with ENGINE_CACHE=verify: the engine differential reruns every outside engine
+diff --git a/tools/release_prep.sh b/tools/release_prep.sh
+new file mode 100755
+index 0000000..6c1eef3
+--- /dev/null
++++ b/tools/release_prep.sh
+@@ -0,0 +1,134 @@
++#!/usr/bin/env bash
++# The checks a candidate tree runs before its release-mode full check (tools/release.sh): the ones that fail in
++# minutes, where the full check fails only when the wave holding the defect ends.
++#
++#   tools/release_prep.sh [--fail-fast]
++#
++# 1. tools/release_reviews.sh: it compiles, builds and renders the working tree, then runs every release check of
++#    the sampled reviews, each separately, so one run lists every due item. A failed compile, build or render
++#    stops the run here, since the steps below read the build.
++# 2. The check-all steps named in PREP_STEPS, one after another, cheapest first, each with the command that
++#    `tools/check_all_steps.sh --print-steps --tier full` declares for it (the default year): no command is
++#    written here, so the two cannot drift. A name the steps script does not declare stops the run (exit 2).
++#    A New York step the year skips is listed as SKIP. As in check-all, a step that exits 0 without a line
++#    tools/step_output.py requires of it fails.
++#
++# Every step runs, unless --fail-fast stops at the first failure. Each step's output goes to
++# <git dir>/release-prep/<step>.log (rewritten by each run); a failing step's log is printed. The run ends with one
++# line per step (PASS, FAIL or SKIP, and its seconds) and one summary line, "release-prep: PASS" (exit 0) or
++# "release-prep: FAIL: <steps>" (exit 1).
++#
++# It regenerates no report of its own. The steps write only what they write in check-all (coverage rewrites
++# reports/<year>/coverage.md); reports that only later waves or a release rewrite (interview_length.md, evidence,
++# mutation, the engine differential) are left as they are, so doc_figures checks the figures against the
++# committed reports. A pass therefore says the fast-failing steps pass, not that the full check will.
++# Like check-all, it waits for one of the machine's CHECK_ALL_MAX_RUNS slots (tools/check_slot.py).
++set -euo pipefail
++cd "$(git rev-parse --show-toplevel)"
++
++# Cheapest first, from the recorded check-all times; the release reviews run before all of them.
++PREP_STEPS="check_bug_inventory bug_status check_agent_runs doc_figures limits ny_limits consumers ny_consumers
++  year_changes ny_year_changes citations ny_citations check_extraction ny_check_extraction check_logs ny_check_logs
++  bookkeeping_self_tests ny_test_fixtures test_fixtures coverage interview_rules self_tests"
++
++fail_fast=0
++orig=("$@")
++while [ "$#" -gt 0 ]; do
++  case "$1" in
++    --fail-fast) fail_fast=1; shift ;;
++    *) echo "release-prep: unknown argument '$1' (usage: tools/release_prep.sh [--fail-fast])" >&2; exit 2 ;;
++  esac
++done
++if [ -z "${CHECK_ALL_SLOT:-}" ]; then
++  exec python3 tools/check_slot.py --tier release-prep -- "$0" ${orig[@]+"${orig[@]}"}
++fi
++
++listing="$(tools/check_all_steps.sh --print-steps --tier full)" || {
++  echo "release-prep: tools/check_all_steps.sh --print-steps failed; nothing run" >&2; exit 2; }
++known=(); cmds=()
++while IFS=$'\t' read -r name cmd reason; do
++  [ -n "$name" ] || continue
++  known+=("$name")
++  if [ "$cmd" = skip ]; then cmds+=("skip:$reason"); else cmds+=("$cmd"); fi
++done <<< "$listing"
++command_of() {  # command_of NAME: the declared command (or "skip:<reason>"); status 1 if NAME is not declared
++  local i
++  for i in "${!known[@]}"; do
++    if [ "${known[$i]}" = "$1" ]; then printf '%s' "${cmds[$i]}"; return 0; fi
++  done
++  return 1
++}
++missing=()
++for name in $PREP_STEPS; do
++  command_of "$name" > /dev/null || missing+=("$name")
++done
++if [ "${#missing[@]}" -gt 0 ]; then
++  echo "release-prep: tools/check_all_steps.sh declares no step ${missing[*]} (full tier); PREP_STEPS is out of date" >&2
++  exit 2
++fi
++
++logs="$(git rev-parse --git-path release-prep)"
++rm -rf "$logs"
++mkdir -p "$logs"
++results=()
++failed=()
++record() {  # record NAME STATUS SECONDS
++  results+=("$(printf '%-5s %5s s  %s' "$2" "$3" "$1")")
++  if [ "$2" = FAIL ]; then
++    failed+=("$1")
++    echo "== $1: FAILED ($3 s); its output ($logs/$1.log):"
++    cat "$logs/$1.log"
++  else
++    echo "== $1: $2 ($3 s)"
++  fi
++}
++finish() {
++  echo
++  echo "release-prep: steps"
++  printf '  %s\n' "${results[@]}"
++  if [ "${#failed[@]}" -gt 0 ]; then
++    echo "release-prep: FAIL: ${failed[*]}"
++    exit 1
++  fi
++  echo "release-prep: PASS"
++  exit 0
++}
++
++t0=$(date +%s)
++rc=0
++tools/release_reviews.sh > "$logs/release_reviews.log" 2>&1 || rc=$?
++if [ "$rc" = 0 ]; then
++  record release_reviews PASS $(( $(date +%s) - t0 ))
++else
++  record release_reviews FAIL $(( $(date +%s) - t0 ))
++  if [ "$rc" = 2 ] || [ "$fail_fast" = 1 ]; then
++    [ "$rc" != 2 ] || echo "release-prep: no build to check; the other steps were not run"
++    finish
++  fi
++fi
++
++for name in $PREP_STEPS; do
++  cmd="$(command_of "$name")"
++  if [[ "$cmd" == skip:* ]]; then
++    echo "${cmd#skip:}" > "$logs/$name.log"
++    record "$name" SKIP 0
++    continue
++  fi
++  t0=$(date +%s)
++  rc=0
++  ( eval "$cmd" ) > "$logs/$name.log" 2>&1 < /dev/null || rc=$?
++  secs=$(( $(date +%s) - t0 ))
++  if [ "$rc" = 0 ]; then
++    if ! lacking="$(python3 tools/step_output.py --logs "$logs" "$name")"; then
++      echo "release-prep: tools/step_output.py did not run; the step's required lines are unchecked" >> "$logs/$name.log"
++      rc=1
++    elif [ -n "$lacking" ]; then
++      rc=1
++    fi
++  fi
++  if [ "$rc" = 0 ]; then record "$name" PASS "$secs"; else record "$name" FAIL "$secs"; fi
++  if [ "$rc" != 0 ] && [ "$fail_fast" = 1 ]; then
++    finish
++  fi
++done
++finish
+diff --git a/tools/release_reviews.sh b/tools/release_reviews.sh
+index c9f1417..e45bfc3 100755
+--- a/tools/release_reviews.sh
++++ b/tools/release_reviews.sh
+@@ -1,16 +1,34 @@
+ #!/usr/bin/env bash
+ # The release gate of the sampled reviews (tools/transcription/samples.py): on a fresh build of the working tree,
+-# no form may be due, short of the milestone's samples, or hold an unruled finding. Called by tools/release.sh.
++# no form may be due, short of the milestone's samples, or hold an unruled finding. Called by tools/release.sh and
++# tools/release_prep.sh.
+ # It leaves the working tree's tracked files as they are (the --release checks write no report).
++# Every check runs, each under its own "== <check> (<seconds> s)" line, so one run lists every due item; the
++# script then fails naming the checks that failed (exit 1). A failed compile, build or render stops it before the
++# checks (exit 2).
+ set -euo pipefail
+ cd "$(git rev-parse --show-toplevel)"
+-npm run -s compile >/dev/null
+-node engine/dist/main.js build >/dev/null
+-node engine/dist/main.js render >/dev/null
+-node engine/dist/main.js render --ny >/dev/null
+-python3 tools/transcription/check_completeness.py --release
+-python3 tools/transcription/check_completeness.py --release --jurisdiction ny
+-python3 tools/transcription/check_screens.py --release
+-python3 tools/transcription/check_screens.py --release --jurisdiction ny
+-python3 tools/transcription/check_false_no.py --release
+-python3 tools/transcription/check_false_no.py --release --jurisdiction ny
++t0=$(date +%s)
++if ! { npm run -s compile >/dev/null && node engine/dist/main.js build >/dev/null &&
++       node engine/dist/main.js render >/dev/null && node engine/dist/main.js render --ny >/dev/null; }; then
++  echo "release reviews: the compile, build or render failed; no review checked" >&2
++  exit 2
++fi
++echo "== build ($(( $(date +%s) - t0 )) s)"
++failed=()
++for check in "check_completeness.py --release" "check_completeness.py --release --jurisdiction ny" \
++             "check_screens.py --release" "check_screens.py --release --jurisdiction ny" \
++             "check_false_no.py --release" "check_false_no.py --release --jurisdiction ny"; do
++  t0=$(date +%s)
++  rc=0
++  # shellcheck disable=SC2086
++  python3 tools/transcription/$check || rc=$?
++  echo "== $check ($(( $(date +%s) - t0 )) s)$([ "$rc" = 0 ] || echo ": FAILED (exit $rc)")"
++  [ "$rc" = 0 ] || failed+=("$check")
++done
++if [ "${#failed[@]}" -gt 0 ]; then
++  printf 'release reviews: not complete; failed:\n' >&2
++  printf '  %s\n' "${failed[@]}" >&2
++  exit 1
++fi
++echo "release reviews: complete"
+diff --git a/tools/self_tests.py b/tools/self_tests.py
+index cead4f5..9b59495 100755
+--- a/tools/self_tests.py
++++ b/tools/self_tests.py
+@@ -68,6 +68,7 @@ TESTS = [
+     ("year_ids_self_test", "code", False, ["python3", "tools/check_year_ids.py", "--self-test"]),
+     ("jurisdiction_self_test", "code", False, ["python3", "tools/jurisdiction.py", "--self-test"]),
+     ("check_all_ny_skip_self_test", "code", False, ["bash", "tools/test_check_all_ny_skip.sh"]),
++    ("release_prep_self_test", "code", False, ["bash", "tools/test_release_prep.sh"]),
+     ("coverage_tree_self_test", "code", True, ["python3", "tools/coverage/tree.py", "--self-test"]),
+     ("instruction_cites_self_test", "code", True, ["python3", "tools/check_instruction_cites.py", "--self-test"]),
+     ("operands_self_test", "code", True, ["python3", "tools/check_operands.py", "--self-test"]),
+diff --git a/tools/test_release_prep.sh b/tools/test_release_prep.sh
+new file mode 100755
+index 0000000..bb072dd
+--- /dev/null
++++ b/tools/test_release_prep.sh
+@@ -0,0 +1,134 @@
++#!/usr/bin/env bash
++# Self-test of tools/release_prep.sh: the real release_prep.sh, release_reviews.sh, check_all_steps.sh, step_output.py,
++# taxyear.py and jurisdiction.py run in a temporary repository in which every other tool, node and npm are stubs
++# that log their arguments and fail when the FAIL variable (|-separated) names part of their call. Checked: the
++# release reviews and the listed steps run with the commands check_all_steps.sh declares, and no other step; every
++# step runs after a failure, unless --fail-fast; a failed build stops the run; a step that exits 0 without a line
++# step_output.py requires fails; a listed step the steps script does not declare stops the run; a New York step the
++# year skips is listed as skipped; and check-all's times file is not written.
++set -euo pipefail
++here="$(cd "$(dirname "$0")/.." && pwd)"
++tmp="$(mktemp -d)"
++trap 'rm -rf "$tmp"' EXIT
++repo="$tmp/repo"
++mkdir -p "$repo/tools" "$repo/forms/2025" "$repo/forms/ny/2025" "$tmp/bin"
++real="tools/release_prep.sh tools/release_reviews.sh tools/check_all_steps.sh tools/step_output.py tools/taxyear.py tools/jurisdiction.py"
++for path in $real; do cp "$here/$path" "$repo/tools/"; done
++export CALLS="$tmp/calls" STUB="$tmp/stub.sh"
++# The one stub: logs "<name> <args>", prints the tier-path line bookkeeping_self_tests must have (unless
++# NO_TIER_LINE is set), and fails when a part of FAIL is in the logged call.
++cat > "$STUB" <<'EOF'
++line="$*"
++echo "$line" >> "$CALLS"
++if [ "$1" = tools/self_tests.py ] && [[ "$line" == *bookkeeping* ]] && [ -z "${NO_TIER_LINE:-}" ]; then
++  echo "tier paths self-test: ok (stub)"
++fi
++IFS='|'
++for part in ${FAIL:-}; do
++  if [ -n "$part" ] && [[ "$line" == *"$part"* ]]; then exit 1; fi
++done
++exit 0
++EOF
++for path in $(grep -ohE 'tools/[A-Za-z0-9_/.-]+\.(py|mjs|sh)' "$here/tools/check_all_steps.sh" "$here/tools/release_reviews.sh" \
++              "$here/tools/release_prep.sh" | sort -u); do
++  case " $real " in *" $path "*) continue ;; esac
++  mkdir -p "$repo/$(dirname "$path")"
++  case "$path" in
++    *.py) printf 'import os, subprocess, sys\nsys.exit(subprocess.call(["bash", os.environ["STUB"], "%s"] + sys.argv[1:]))\n' \
++            "$path" > "$repo/$path" ;;
++    *) printf '#!/usr/bin/env bash\nexec bash "$STUB" %s "$@"\n' "$path" > "$repo/$path"; chmod +x "$repo/$path" ;;
++  esac
++done
++for cmd in node npm; do
++  printf '#!/usr/bin/env bash\nexec bash "$STUB" %s "$@"\n' "$cmd" > "$tmp/bin/$cmd"; chmod +x "$tmp/bin/$cmd"
++done
++git -C "$repo" init -q
++times="$repo/.git/check-all-times"
++
++failures=0
++fail() { echo "release-prep self-test: $1" >&2; failures=$((failures + 1)); }
++status=0
++run() {  # run NY_ADOPTED ARGS...: release_prep.sh with years.json's ny_adopted set; output in $tmp/out, exit in $status
++  printf '{"adopted": [2025], "ny_adopted": %s}\n' "$1" > "$repo/years.json"; shift
++  : > "$CALLS"
++  echo "sentinel" > "$times"
++  status=0
++  (cd "$repo" && PATH="$tmp/bin:$PATH" CHECK_ALL_SLOT=test bash tools/release_prep.sh "$@") > "$tmp/out" 2>&1 || status=$?
++  [ "$(cat "$times")" = sentinel ] || fail "check-all's times file was written"
++}
++has() { grep -qF -- "$2" "$1" || fail "expected in $(basename "$1"): $2"; }
++lacks() { if grep -qF -- "$2" "$1"; then fail "not expected in $(basename "$1"): $2"; fi; }
++exits() { [ "$status" = "$1" ] || { fail "exit $status, expected $1; output:"; sed 's/^/  /' "$tmp/out" >&2; }; }
++
++# All pass: the release reviews, then each listed step with its declared command, and nothing else.
++run "[2025]"
++exits 0
++has "$tmp/out" "release-prep: PASS"
++for call in "npm run -s compile" "node engine/dist/main.js render --ny" \
++    "tools/transcription/check_completeness.py --release --jurisdiction ny" "tools/transcription/check_false_no.py --release" \
++    "tools/check_bug_inventory.py" "tools/bug_status.py --check" "tools/check_agent_runs.py" "tools/doc_figures.py --check" \
++    "tools/check_limits.py --jurisdiction ny" "tools/check_consumers.py" "tools/year_changes.py --check --jurisdiction ny" \
++    "tools/citations.py --strict --jurisdiction ny" "tools/check_extraction.py" "tools/transcription/check_logs.py --jurisdiction ny" \
++    "tools/self_tests.py --group bookkeeping --times /dev/null" "tools/self_tests.py --group code --times /dev/null" \
++    "node engine/dist/main.js test-fixtures --ny" "node engine/dist/main.js coverage" "node engine/dist/main.js interview-rules"; do
++  has "$CALLS" "$call"
++done
++for call in "mutate" "interview-length" "evidence" "review-stage" "tools/engines/run.sh" "test-integration" "compare" \
++    "properties" "tools/check_twins.py" "interview-coverage" "tools/check_slot.py"; do
++  lacks "$CALLS" "$call"
++done
++has "$tmp/out" "== release_reviews: PASS ("
++has "$tmp/out" "== test_fixtures: PASS ("
++[ "$(grep -c '^  PASS ' "$tmp/out" || true)" = 23 ] || fail "expected 23 steps listed as PASS (the reviews and 22 steps)"
++first="$(grep -n 'tools/check_bug_inventory.py' "$CALLS" | head -1 | cut -d: -f1)"
++last_review="$(grep -n 'check_false_no.py --release --jurisdiction ny' "$CALLS" | head -1 | cut -d: -f1)"
++[ "${first:-0}" -gt "${last_review:-0}" ] || fail "the steps ran before the release reviews ended"
++
++# Failures are collected: every review check and every step still runs; the summary names each failure.
++FAIL="check_screens.py --release --jurisdiction ny|tools/check_limits.py --jurisdiction ny" run "[2025]"
++exits 1
++has "$tmp/out" "release-prep: FAIL: release_reviews ny_limits"
++has "$CALLS" "tools/transcription/check_false_no.py --release --jurisdiction ny"
++has "$CALLS" "tools/self_tests.py --group code"
++has "$tmp/out" "release reviews: not complete; failed:"
++has "$tmp/out" "  check_screens.py --release --jurisdiction ny"
++
++# --fail-fast stops at the first failure.
++FAIL="tools/check_limits.py --jurisdiction ny" run "[2025]" --fail-fast
++exits 1
++has "$tmp/out" "release-prep: FAIL: ny_limits"
++lacks "$CALLS" "tools/check_consumers.py"
++
++# A failed build stops the run before any review check or step.
++FAIL="npm run -s compile" run "[2025]"
++exits 1
++has "$tmp/out" "no build to check"
++lacks "$CALLS" "check_completeness.py"
++lacks "$CALLS" "tools/check_bug_inventory.py"
++
++# A step that passes without its required line (tools/step_output.py) fails.
++NO_TIER_LINE=1 run "[2025]"
++exits 1
++has "$tmp/out" "release-prep: FAIL: bookkeeping_self_tests"
++has "$tmp/out" "exited 0 without a line its output must have"
++
++# New York not adopted: its steps are listed as skipped, not run.
++run "[]"
++exits 0
++has "$tmp/out" "SKIP      0 s  ny_test_fixtures"
++lacks "$CALLS" "node engine/dist/main.js test-fixtures --ny"
++
++# A listed step the steps script does not declare stops the run before anything runs.
++cp "$repo/tools/check_all_steps.sh" "$tmp/steps.orig"
++grep -v '^jstep limits ' "$tmp/steps.orig" > "$repo/tools/check_all_steps.sh"
++run "[2025]"
++exits 2
++has "$tmp/out" "declares no step limits ny_limits"
++[ ! -s "$CALLS" ] || fail "something ran although the step list was refused"
++cp "$tmp/steps.orig" "$repo/tools/check_all_steps.sh"
++
++if [ "$failures" -gt 0 ]; then
++  echo "release-prep self-test FAILED: $failures problem(s)" >&2
++  exit 1
++fi
++echo "release-prep self-test OK: commands from the steps script, failures collected, --fail-fast, build stop, required lines, New York skip, drift"
+diff --git a/tools/tier_paths.py b/tools/tier_paths.py
+index e792f0f..9818970 100755
+--- a/tools/tier_paths.py
++++ b/tools/tier_paths.py
+@@ -56,6 +56,8 @@ READERS = {
+     ("tools/bug_status.py", "TASKS-DONE.md"): ("docs", ["bug_status"]),
+     ("tools/bug_status.py", "reports/bug_status.md"): ("docs", ["bug_status"]),
+     ("tools/check_all_steps.sh", "reports/bug_status.md"): ("none", "the step's name and its command, tools/bug_status.py"),
++    ("tools/release_prep.sh", "reports/bug_status.md"): ("none", "the step's name and its command, tools/bug_status.py --check"),
++    ("tools/test_release_prep.sh", "reports/bug_status.md"): ("none", "the stub's expected call tools/bug_status.py --check"),
+     ("tools/self_tests.py", "reports/bug_status.md"): ("none", "the self-test row runs tools/bug_status.py --self-test, which reads no file"),
+     ("tools/check_bug_inventory.py", "docs/*"): ("none", "the exclusion pathspec docs/records (and its comment): placeholders there are skipped, not read"),
+     ("tools/doc_figures.py", "reports/bug_status.md"): ("docs", ["doc_figures"]),

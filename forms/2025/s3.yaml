@@ -1188,32 +1188,10 @@ form:
             eq:
             - s3.farmland_deferral_if_sold
             - const: false
-          then: s3.other_credit_9
+          then: s3.other_credit_10
       cite:
         doc: i1040gi
         locator: p. 117, Line 13z, "Use line 13z to report the credit under section 960(c) with respect to an excess limitation account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified farmland property"
-    - id: s3.other_credit_9
-      printed: (gate)
-      type: Bool
-      label: 'Helper of s3.other_credit: the same, from the situation of ftc.carryover_if_asked on'
-      expr:
-        op: choose
-        alternatives:
-        - guard:
-            op: test
-            eq:
-            - ftc.carryover_if_asked
-            - const: true
-          then: ftc.carryover_if_asked
-        - guard:
-            op: test
-            eq:
-            - ftc.carryover_if_asked
-            - const: false
-          then: s3.other_credit_10
-      cite:
-        doc: i1116
-        locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"
     - id: s3.other_credit_10
       printed: (gate)
       type: Bool
@@ -1511,18 +1489,6 @@ form:
       cite:
         doc: f1040s3
         locator: Schedule 3 (2025), line 8
-    - id: s3.mfs
-      printed: (gate)
-      label: Married filing separately
-      type: Bool
-      expr:
-        op: test
-        eq:
-          - f1040.status
-          - const: mfs
-      cite:
-        doc: i1040gi
-        locator: p. 14, Married Filing Separately
     - id: s3.line9
       printed: "9"
       label: Net premium tax credit. Attach Form 8962
@@ -1573,15 +1539,6 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 117, Line 11, Excess Social Security and Tier 1 RRTA Tax Withheld, "Figure this amount separately for you and your spouse"'
-      refuses:
-        - when: s3.mfs
-          form: Married filing separately
-          remedy: The rules for a married filing separately return (among them a spouse who itemizes, the Social
-            Security base for spouses who lived together and the credits a separate return cannot take) are outside
-            this tool. Married filing jointly is supported.
-          cite:
-            doc: i1040gi
-            locator: p. 14, Married Filing Separately
     - id: s3.line12
       printed: '12'
       label: Credit for federal tax on fuels. Attach Form 4136

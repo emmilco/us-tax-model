@@ -24,7 +24,8 @@
         "oi8z[z0].kind": "recovery",
         "oi8z[z1].kind": "kickbacks",
         "oi8z[z1].amount": 80000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "oi8z[z0].taxable": {
@@ -108,7 +109,8 @@
         "oi8z[z0].kind": "charitable_recapture",
         "oi8z[z1].kind": "kickbacks",
         "oi8z[z1].amount": 80000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "oi8z[z0].taxable": {
@@ -192,7 +194,8 @@
         "oi8z[z0].kind": "other",
         "oi8z[z1].kind": "kickbacks",
         "oi8z[z1].amount": 80000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "oi8z[z0].taxable": {
@@ -248,6 +251,140 @@
             "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\"",
             "revision": "2025; printed date 2026-02-25",
             "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.oi8z.fiduciary_fees",
+      "covers": [
+        "oi8z",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Fees of $2,500 for acting as executor of a relative's estate (not a business): reported on line 8z in full (Pub. 525 p. 33).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 4000000,
+        "person[taxpayer].w2[e0].box5": 4000000,
+        "person[taxpayer].w2[e0].box6": 58000,
+        "$oi8z": [
+          "z0"
+        ],
+        "oi8z[z0].kind": "fiduciary_fees",
+        "oi8z[z0].amount": 250000
+      },
+      "expect": {
+        "oi8z[z0].taxable": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 250000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.oi8z.found_property",
+      "covers": [
+        "oi8z",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Found property kept, worth $400: taxable at its fair market value (Pub. 525 p. 33).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 4000000,
+        "person[taxpayer].w2[e0].box5": 4000000,
+        "person[taxpayer].w2[e0].box6": 58000,
+        "$oi8z": [
+          "z0"
+        ],
+        "oi8z[z0].kind": "found_property",
+        "oi8z[z0].amount": 40000
+      },
+      "expect": {
+        "oi8z[z0].taxable": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 40000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.oi8z.taxable_damages",
+      "covers": [
+        "oi8z",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Punitive damages of $5,000 in a case not about a physical injury or sickness: ordinary income (Pub. 525 p. 32).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 4000000,
+        "person[taxpayer].w2[e0].box5": 4000000,
+        "person[taxpayer].w2[e0].box6": 58000,
+        "$oi8z": [
+          "z0"
+        ],
+        "oi8z[z0].kind": "taxable_damages",
+        "oi8z[z0].amount": 500000,
+        "oi8z[z0].injury": false
+      },
+      "expect": {
+        "oi8z[z0].taxable": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.oi8z.refuse.injury",
+      "covers": [
+        "oi8z"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Damages in a case about a physical injury: refused at the entry (oi8z.injury_if_damages). The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 4000000,
+        "person[taxpayer].w2[e0].box5": 4000000,
+        "person[taxpayer].w2[e0].box6": 58000,
+        "$oi8z": [
+          "z0"
+        ],
+        "oi8z[z0].kind": "taxable_damages",
+        "oi8z[z0].amount": 500000,
+        "oi8z[z0].injury": true
+      },
+      "expect": {
+        "oi8z[z0].taxable": {
+          "kind": "refusal",
+          "gate": "oi8z[z0].injury_if_damages",
+          "form": "Pub. 525, Court awards and damages (Schedule 1, line 8z)",
+          "remedy": "Damages or a settlement paid in a case about a physical injury or physical sickness are split between the compensatory part, which is not income, and any punitive damages, which are; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 32, Court awards and damages, \"Punitive damages in most cases. It doesn’t matter if they relate to a physical injury or physical sickness\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
             "tax_year": 2025
           }
         }

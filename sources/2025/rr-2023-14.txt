@@ -1,0 +1,255 @@
+26 CFR 1.61-1: Gross income.
+(Also § 61)
+
+
+
+
+Rev. Rul. 2023-14
+
+
+ISSUE
+
+        If a taxpayer that uses a cash method of accounting (cash-method taxpayer)
+
+stakes cryptocurrency native to a proof-of-stake blockchain and receives additional units
+
+of cryptocurrency as rewards when validation occurs (validation rewards or rewards),
+
+must the taxpayer include the value of the rewards in the taxpayer's gross income and,
+
+if so, in which taxable year?
+
+
+BACKGROUND
+
+        Section 6045(g)(3)(D) of the Internal Revenue Code 1 generally defines a digital
+
+asset, for purposes of information reporting by brokers, as any digital representation of
+
+value which is recorded on a cryptographically secured distributed ledger or any similar
+
+technology as specified by the Secretary.
+
+        Digital assets do not exist in physical form and include, but are not limited to,
+
+property the Department of the Treasury and the Internal Revenue Service have
+
+previously referred to as convertible virtual currency and cryptocurrency. See Notice
+
+
+1 Unless otherwise specified, all "section" or "§" references are to sections of the Internal Revenue Code
+
+(Code) or the Income Tax Regulations (26 CFR part 1).
+                                            -2-
+
+
+2014-21, 2014-16 I.R.B. 938, as modified by Notice 2023-34, 2023-19 I.R.B. 837; Rev.
+
+Rul. 2019-24, 2019-44 I.R.B. 1004. Notice 2014-21 defines convertible virtual currency
+
+as virtual currency that has an equivalent value in real currency or acts as a substitute
+
+for real currency. Notice 2014-21 provides that convertible virtual currency is treated as
+
+property and that general tax principles applicable to property transactions apply to
+
+convertible virtual currency.
+
+       Cryptocurrency is a type of virtual currency that utilizes cryptography to secure
+
+transactions that are digitally recorded on a distributed ledger. See Rev. Rul. 2019-24.
+
+References to cryptocurrency in this revenue ruling are to cryptocurrency that is
+
+convertible virtual currency. Units of cryptocurrency are generally referred to as coins
+
+or tokens.
+
+       Many cryptocurrencies utilize blockchain technology, a specific type of distributed
+
+ledger technology. Distributed ledger technology uses independent digital systems to
+
+record, share, and synchronize transactions, the details of which are recorded
+
+simultaneously on multiple nodes on a network. In this context, a node generally refers
+
+to a device that maintains a copy of the distributed ledger and runs copies of the
+
+software associated with the protocol for the distributed ledger at issue.
+
+       In general, it is these nodes that maintain the integrity of a blockchain by
+
+validating transactions and ensuring that new entries in the ledger, in the form of blocks
+
+of transactions, are legitimate and not duplicative so that a new block can be recorded
+
+on the blockchain. This can be done, for example, by rejecting transactions that attempt
+
+to move the same units to two different wallet addresses at the same time. The creation
+
+of new blocks on a blockchain generally requires the participation of multiple validators
+                                             -3-
+
+
+who are selected and rewarded pursuant to the blockchain protocol. These validation
+
+rewards typically consist of one or more newly created units of the cryptocurrency native
+
+to that blockchain.
+
+       A consensus mechanism is a set of protocols by which nodes reach agreement
+
+on updates to the blockchain. One consensus mechanism is commonly referred to as
+
+proof-of-stake. In a proof-of-stake consensus mechanism, persons who hold
+
+cryptocurrency may participate in the validation process by staking their holdings, if they
+
+hold the requisite number of units of a particular cryptocurrency. Persons may also
+
+participate in the validation process by staking their holdings through a cryptocurrency
+
+exchange. In a proof-of-stake consensus mechanism, validators may be selected by
+
+the protocol for the blockchain associated with the specific cryptocurrency based on a
+
+variety of factors including the number of coins or tokens staked. These validators
+
+confirm transactions and add blocks to the blockchain in accordance with the protocol.
+
+If a validator is chosen by the protocol and validation is successful, the validator will
+
+receive a reward. If a validator is chosen by the protocol and validation is unsuccessful,
+
+the staked units may be subject to penalty in the form of "slashing," a process by which
+
+the staked units, or a portion thereof, are forfeited.
+
+FACTS
+
+       Transactions in M, a cryptocurrency, are validated by a proof-of-stake consensus
+
+mechanism. On Date 1, Taxpayer A, a cash-method taxpayer, owns 300 units of M. A
+
+stakes 200 of the units of M and validates a new block of transactions on the M
+
+blockchain, receiving 2 units of M as validation rewards. Pursuant to the M protocol,
+
+during a brief period ending on Date 2, A lacks the ability to sell, exchange, or otherwise
+                                                   -4-
+
+
+dispose of any interest in the 2 units of M in any manner. The following day, on Date 3,
+
+A has the ability to sell, exchange, or otherwise dispose of the 2 units of M. 2
+
+LAW
+
+        Section 61(a) provides the general rule that, except as otherwise provided by
+
+subtitle A of the Code, gross income means all income from whatever source derived.
+
+Specifically, gross income includes, but is not limited to, compensation for services,
+
+gross income derived from business, and gains from dealings in property. Under
+
+section 61, "instances of undeniable accessions to wealth, clearly realized, and over
+
+which the taxpayers have complete dominion," require inclusion in gross income. See
+
+Commissioner v. Glenshaw Glass Co., 348 U.S. 426, 431 (1955). "Gross income
+
+includes income realized in any form, whether in money, property, or services. Income
+
+may be realized, therefore, in the form of services, meals, accommodations, stock, or
+
+other property, as well as in cash." § 1.61-1(a). Unless otherwise provided by a Code
+
+or regulatory provision, any receipt of property constitutes gross income in the amount
+
+of its fair market value at the date and time at which it is reduced to undisputed
+
+possession. See, e.g., section 61(a); Koons v. United States, 315 F.2d 542 (9th Cir.
+
+1963); Rooney v. Commissioner, 88 T.C. 523, 526-527 (1987); § 1.61-2(d)(1).
+
+        Cryptocurrency that is convertible virtual currency is treated as property for
+
+Federal income tax purposes and general tax principles applicable to property
+
+transactions apply to transactions involving cryptocurrency. See Notice 2014-21. For
+
+example, a taxpayer who receives cryptocurrency as a payment for goods or services or
+
+who mines cryptocurrency must include the fair market value of the cryptocurrency in
+
+
+2 The facts in this revenue ruling do not address any type of "gas" or transaction fees other than the
+
+validation rewards described herein.
+                                                  -5-
+
+
+the taxpayer's gross income in the taxable year the taxpayer obtains dominion and
+
+control of the cryptocurrency. See id., Q&A 3 and Q&A 8. Amounts received as gains
+
+derived from dealings in property, or as rents or royalties, also generally must be
+
+included in a cash-method taxpayer's gross income in the taxable year the taxpayer
+
+obtains dominion and control of those amounts through actual or constructive receipt.
+
+See also § 1.451-1(a).
+
+ANALYSIS
+
+        The 2 units of M represent A's reward for staking units and validating
+
+transactions on the M blockchain. On Date 3, A has an accession to wealth as A gains
+
+dominion and control through A’s ability, as of this date, to sell, exchange, or otherwise
+
+dispose of the 2 units of M received as validation rewards. Accordingly, the fair market
+
+value of the 2 units of M, as of the date and time A gains dominion and control over the
+
+2 units of M, is included in A's gross income for the taxable year that includes Date 3.
+
+HOLDING
+
+        If a cash-method taxpayer stakes cryptocurrency native to a proof-of-stake
+
+blockchain and receives additional units of cryptocurrency as rewards when validation
+
+occurs, the fair market value of the validation rewards received is included in the
+
+taxpayer's gross income in the taxable year in which the taxpayer gains dominion and
+
+control over the validation rewards. The fair market value is determined as of the date
+
+and time the taxpayer gains dominion and control over the validation rewards. 3 The
+
+same is true if a taxpayer stakes cryptocurrency native to a proof-of-stake blockchain
+
+
+
+
+3 This revenue ruling does not address issues that may arise under any rules not specifically cited, such
+as section 83.
+                                           -6-
+
+
+through a cryptocurrency exchange and the taxpayer receives additional units of
+
+cryptocurrency as rewards as a result of the validation.
+
+
+DRAFTING INFORMATION
+
+      The principal author of this revenue ruling is Alina Lewandowski of the Office of
+
+Associate Chief Counsel (Income Tax & Accounting). For further information regarding
+
+the revenue ruling, contact Ms. Lewandowski at (202) 317-7006 (not a toll-free number).
+

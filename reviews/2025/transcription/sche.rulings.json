@@ -1,0 +1,177 @@
+{
+ "kind": "transcription",
+ "form": "sche",
+ "rulings": [
+  {
+   "printed": "23a",
+   "project_expr_sha256": "3cb14c87288b615bb1b9a3fc9036639f3dc8cd89e1ffd25709e08867c0686797",
+   "second_expr_sha256": "89ec5eeecb3536ff386c61129479ca1e3ce4757732fc1edd71518db3927831b3",
+   "ruling": "Ruling: representation; equivalent on executable triage (2,029 of 2,029); the reply omits the project's exclusion of a home rented fewer than 15 days, whose line 3 is not reported.",
+   "context": "b7fef618169ecf5f6ccca7103e57a3bf1a60fbec65f3f45dffbb2bd8eb5c00e9",
+   "date": "2026-11-15",
+   "run": "4e6b4797e050929244fcfe4bc9c0b8b0809954d5aeff6e462cbe6a369b14edbc",
+   "subject_key": "680edf1dcc10163f074948ef68566abc292c87ab06527af82b4734aeef02a3b6",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "23c",
+   "project_expr_sha256": "0031ed473df37603e9f6d2c00bbdea593a30b9a2fe77cd1a0b192f0eebb4e160",
+   "second_expr_sha256": "b698ebfa7d7b0adb8786b820abdc27041077a456a8de953c741dc721b69d9882",
+   "ruling": "Ruling: representation; differs only as candidate-unknown (1 completed, 3 incomplete inputs) where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; no value differs.",
+   "context": "b7fef618169ecf5f6ccca7103e57a3bf1a60fbec65f3f45dffbb2bd8eb5c00e9",
+   "date": "2026-11-15",
+   "run": "4e6b4797e050929244fcfe4bc9c0b8b0809954d5aeff6e462cbe6a369b14edbc",
+   "subject_key": "fb6cff420ce42b314da56068fc6e302f3f628422e815df866b08ce895c9d30fb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@sche",
+     "partial:classm.sche.2-sche.re_pro@sche",
+     "partial:classm.sche.2-sche.grouped@sche",
+     "partial:classm.sche.2-sche.qbi_business@sche"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "23d",
+   "project_expr_sha256": "fe8e692103f162b3056ab3facc2b4ee39c567a9d511cc4e3eabac6aff51f23d3",
+   "second_expr_sha256": "267ddd9bcd7fcfcea7973a6cfd3d7e8a6aa391ca8ecabfcc183f1b6adb6f2171",
+   "ruling": "Ruling: representation; equivalent on executable triage (2,029 of 2,029); as 23a.",
+   "context": "b7fef618169ecf5f6ccca7103e57a3bf1a60fbec65f3f45dffbb2bd8eb5c00e9",
+   "date": "2026-11-15",
+   "run": "4e6b4797e050929244fcfe4bc9c0b8b0809954d5aeff6e462cbe6a369b14edbc",
+   "subject_key": "a740b52d62431eb6c66545c6436b9f38069a13f4255351c45e333c075af71908",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "23e",
+   "project_expr_sha256": "fbb8d0d4c6ec7d51061c0910801421e7774b3c7e3cc15cff4a140605228f9ace",
+   "second_expr_sha256": "4a37888bddba13f60d7c4bd2eb748ef2f1e9bd5a2771679aa8825e8b8edfb86a",
+   "ruling": "Ruling: representation; as 23c (where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right).",
+   "context": "b7fef618169ecf5f6ccca7103e57a3bf1a60fbec65f3f45dffbb2bd8eb5c00e9",
+   "date": "2026-11-15",
+   "run": "4e6b4797e050929244fcfe4bc9c0b8b0809954d5aeff6e462cbe6a369b14edbc",
+   "subject_key": "acfc617d9e24dbd3ef7173c8cbc0e5779694627bbef30605c3ebd04fe704d790",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@sche",
+     "partial:classm.sche.2-sche.re_pro@sche",
+     "partial:classm.sche.2-sche.grouped@sche",
+     "partial:classm.sche.2-sche.qbi_business@sche"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "24",
+   "project_expr_sha256": "3e353fc3aa9b3b5bbfc57c76b01590a06de1e48a55c583558fd2251baeb7d730",
+   "second_expr_sha256": "0586e7d6b973754c1d8c603632fadc26719709d03af5c0e195cec7f33430dff1",
+   "ruling": "Ruling: representation; equivalent on executable triage (2,029 of 2,029): positive line 21 amounts of rentals and royalties, as the project's sum of rental.net_income and royalty.income.",
+   "context": "b7fef618169ecf5f6ccca7103e57a3bf1a60fbec65f3f45dffbb2bd8eb5c00e9",
+   "date": "2026-11-15",
+   "run": "4e6b4797e050929244fcfe4bc9c0b8b0809954d5aeff6e462cbe6a369b14edbc",
+   "subject_key": "e8c68010fe83ccd40bcc0bb0776876c96b76a086f335bc673c319eb78a725e02",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "25",
+   "project_expr_sha256": "02103ee3ff3844730b37db06152fe97f85181a9c5dc5eab3866b2b36cf93a2ec",
+   "second_expr_sha256": "7442177134612fc2c6007eefc203c0bad912825b6de361bb69c080bfe80ba6d7",
+   "ruling": "Ruling: representation; as 23c (where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right); the reply's sign convention (negative) is the printed parentheses, same total.",
+   "context": "b7fef618169ecf5f6ccca7103e57a3bf1a60fbec65f3f45dffbb2bd8eb5c00e9",
+   "date": "2026-11-15",
+   "run": "4e6b4797e050929244fcfe4bc9c0b8b0809954d5aeff6e462cbe6a369b14edbc",
+   "subject_key": "9fbb893944576165423b5fac71a09e00d1abb7425416c423c69024e0234cdce9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@sche",
+     "partial:classm.sche.2-sche.re_pro@sche",
+     "partial:classm.sche.2-sche.grouped@sche",
+     "partial:classm.sche.2-sche.qbi_business@sche"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sche.any",
+   "project_expr_sha256": "1c6bfa745fdf667622172c771fadf71d9bb72cc189e9f7ff367b875288447131",
+   "second_expr_sha256": "2d674b4588a1865ab0655a934601155a09fca913fc61a81bb5d92b7fae0802dc",
+   "ruling": "Ruling: model error; on classm.sche.2 (a home rented 10 days with 200 personal days) the reply says Schedule E is filed (it counts the entry, as its note says), but i1040se p. 3 says such a unit's rent is not reported, and the project, which counts only reported rentals, says not filed; its other differences are unknowns where it reads the $rental/$royalty rosters without the scope.rental gate (the project answers false when scope.rental is false).",
+   "context": "b7fef618169ecf5f6ccca7103e57a3bf1a60fbec65f3f45dffbb2bd8eb5c00e9",
+   "date": "2026-11-15",
+   "run": "4e6b4797e050929244fcfe4bc9c0b8b0809954d5aeff6e462cbe6a369b14edbc",
+   "subject_key": "f7216ea45aa8d5b2a529ad7243903203453c48e6ac94736f3b4bbd034ea81354",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sche",
+     "fixture:classm.f8889.5.deepseek@sche",
+     "fixture:classm.f4952.3.deepseek@sche",
+     "fixture:classm.f4952.4.deepseek@sche",
+     "fixture:classm.f8960.2.deepseek@sche",
+     "fixture:classm.dependent.1.deepseek@sche",
+     "fixture:classm.sche.2@sche",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@sche",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sche",
+     "fixture:stage16.cleanup.refuse.f1040_line16@sche",
+     "fixture:stage16.cleanup.refuse.scope_credits@sche",
+     "fixture:x1sche.f9.excluded_home@sche",
+     "fixture:ss.single.over@sche",
+     "fixture:ss.multi.over@sche",
+     "partial:classm.sche.2-sche.re_pro@sche",
+     "partial:classm.sche.2-sche.grouped@sche",
+     "partial:classm.sche.2-sche.qbi_business@sche"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sche.loss_prelimit",
+   "project_expr_sha256": "50c57fd867be7902139fd8b8df3626ebb1304c6d8522c5624c71af4c49f85e3a",
+   "second_expr_sha256": "11d2160cac77dcc29b78b5a1594778ae54313f82f788b32899a5395c95ffe666",
+   "ruling": "Ruling: representation; equivalent on executable triage (2,029 of 2,029 inputs agree): the reply sums line 21 losses over all rentals without the project's home-rented-under-15-days exclusion, which never changes the value (such a home has no reported line 21).",
+   "context": "b7fef618169ecf5f6ccca7103e57a3bf1a60fbec65f3f45dffbb2bd8eb5c00e9",
+   "date": "2026-11-15",
+   "run": "4e6b4797e050929244fcfe4bc9c0b8b0809954d5aeff6e462cbe6a369b14edbc",
+   "subject_key": "029ae6de5180f3590a2a9f66f6e57eab9d7ba93f0c75f863a832d1274d7d98b4",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

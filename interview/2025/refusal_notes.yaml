@@ -7,21 +7,20 @@
 # key is one and is not a consistency check, whose explanation is in conflict_checks.yaml.
 #
 # Grounds, in the Form 1040 instructions (i1040gi):
-#   s3.mfs                p. 13, Married Filing Jointly, "They can file a joint return even if only one had income";
-#                         p. 13, Single, "legally separated according to your state law under a decree of divorce or
-#                         separate maintenance"; p. 14, Married persons who live apart
+#   household.mfs_community_property
+#                         p. 13, Married Filing Jointly, "They can file a joint return even if only one had income";
+#                         p. 14, Married Filing Separately, "Different rules apply to people in community property states";
+#                         p. 23, Community Property States, "For details, see Form 8958 and Pub. 555"
 #   household.hoh_fails   p. 14, Head of Household
 #   household.qss_fails   p. 15, Qualifying Surviving Spouse
 tax_year: 2025
 notes:
-  s3.mfs: >-
-    This tool cannot prepare the return of a married person who files apart from their husband or wife. If the two of
-    you are putting, or could put, your income on one return, go back to “Who is this tax return for?” and choose
-    “Me and my husband or wife, together on one return”: a married couple can file together even if only one of you
-    had income. If you lived apart from your husband or wife for the last six months of 2025 and your child lived with
-    you, go back to “Which of these fits you on December 31, 2025?” and choose the line about paying for a home. If a
-    court decree of divorce or legal separation was final by December 31, 2025, you were not married: choose one of
-    the other lines.
+  household.mfs_community_property: >-
+    This tool cannot prepare a separate return for a married person who lived in a community property state in 2025,
+    because part of each spouse's income may belong to the other under state law. If the two of you are putting, or
+    could put, your income on one return, go back to “Who is this tax return for?” and choose “Me and my husband or
+    wife, together on one return”: a married couple can file together even if only one of you had income. Otherwise this
+    return needs tax software or a preparer that handles community income (Form 8958).
   household.hoh_fails: >-
     You chose the line about paying over half the cost of a home (head of household), but your answers about your
     household do not meet its tests. Go back to “Which of these fits you on December 31, 2025?” and choose another

@@ -1,0 +1,175 @@
+# Coverage rows for pay not on a W-2 (Form 1040 lines 1b, 1c, 1d, 1g and 1h; Forms 4137 and 8919), lane x2-paynow2.
+# See opening.yaml for how a row is read.
+tax_year: 2025
+part: Pay not on a W-2
+profile: full
+sets:
+  pay_no_w2:
+    says: One person who was paid in 2025 in a way not shown on a W-2.
+    answers:
+      scope.pay_no_w2: true
+  tip_rows:
+    says: A server who kept part of the cash tips of one restaurant job off the reports to the employer.
+    answers:
+      scope.tips_unreported: true
+      $f4137row@person[taxpayer]: [diner]
+      person[taxpayer].f4137row[diner].col_c: 900000
+      person[taxpayer].f4137row[diner].col_d: 400000
+  medicaid:
+    says: One person paid by a state Medicaid program to care for her father, who lives with her.
+    answers:
+      scope.medicaid_waiver: true
+rows:
+  - id: pay.household_wages
+    design: scout-tail A.4, pay_no_w2 taken apart (Form 1040 line 1b)
+    situation: A nanny was paid $2,500 by a family that gave her no W-2.
+    uses: [pay_no_w2]
+    answers:
+      scope.contractor_pay: false
+      scope.tips_unreported: false
+      scope.strike_pay: false
+      scope.wages_no_form: false
+      scope.household_pay: true
+      person[taxpayer].household_wages: 250000
+    expect:
+      proceeds:
+        person[taxpayer].household_wages: 250000
+  - id: pay.contractor
+    design: scout-tail A.4, pay_no_w2 taken apart (Form 8919, line 1g)
+    situation: A worker got a W-2 and a Form 1099-NEC from the same firm, and the 1099 pay should have been wages.
+    uses: [pay_no_w2]
+    answers:
+      scope.household_pay: false
+      scope.tips_unreported: false
+      scope.strike_pay: false
+      scope.wages_no_form: false
+      scope.contractor_pay: true
+      $f8919firm@person[taxpayer]: [firm]
+      person[taxpayer].f8919firm[firm].wages: 1000000
+    expect:
+      proceeds:
+        person[taxpayer].f8919firm[firm].wages: 1000000
+  - id: pay.tips_unreported
+    design: scout-tail A.4, pay_no_w2 taken apart (Form 4137, line 1c)
+    situation: A server got $9,000 in cash and card tips, reported $4,000 of them, and $300 came in months under $20.
+    uses: [pay_no_w2, tip_rows]
+    answers:
+      scope.household_pay: false
+      scope.contractor_pay: false
+      scope.strike_pay: false
+      scope.wages_no_form: false
+      person[taxpayer].f4137_under20: 30000
+      person[taxpayer].tips_gov: false
+      person[taxpayer].tips_noncash: 0
+    expect:
+      proceeds:
+        person[taxpayer].f4137_under20: 30000
+  - id: pay.tips_noncash_only
+    design: scout-tail A.4, pay_no_w2 taken apart (line 1c, noncash tips without Form 4137)
+    situation: A hotel worker reported every cash tip but was given concert tickets worth $150 as a tip.
+    uses: [pay_no_w2]
+    answers:
+      scope.household_pay: false
+      scope.contractor_pay: false
+      scope.strike_pay: false
+      scope.wages_no_form: false
+      scope.tips_unreported: true
+      $f4137row@person[taxpayer]: []
+      person[taxpayer].tips_noncash: 15000
+    expect:
+      proceeds:
+        person[taxpayer].tips_noncash: 15000
+      not_asked:
+        - person[taxpayer].f4137_under20
+        - person[taxpayer].tips_gov
+  - id: pay.tips_government
+    design: scout-tail A.1, residual refusal (Form 4137 line 10, government employee tips)
+    situation: A worker at a state park lodge, a state employee whose pay carries only the Medicare tax, did not report all tips.
+    uses: [pay_no_w2, tip_rows]
+    answers:
+      scope.household_pay: false
+      scope.contractor_pay: false
+      scope.strike_pay: false
+      scope.wages_no_form: false
+      person[taxpayer].f4137_under20: 0
+      person[taxpayer].tips_gov: true
+      person[taxpayer].tips_noncash: 0
+      s2.other_tax: false
+    expect:
+      refused: person[taxpayer].tips_gov_if_rows
+  - id: pay.tips_deduction_with_4137
+    design: scout-tail A.8 item 4 (decision deferred), residual refusal (Schedule 1-A line 4b with Form 4137)
+    situation: A server with unreported tips also wants the deduction for qualified tips.
+    uses: [pay_no_w2, tip_rows]
+    answers:
+      scope.household_pay: false
+      scope.contractor_pay: false
+      scope.strike_pay: false
+      scope.wages_no_form: false
+      person[taxpayer].f4137_under20: 0
+      person[taxpayer].tips_gov: false
+      person[taxpayer].tips_noncash: 0
+      s1a.tips: true
+      person[taxpayer].work_ssn: true
+      $tipjob@person[taxpayer]: [diner]
+    expect:
+      refused: s1a.f4137
+  - id: pay.strike
+    design: scout-tail A.4, pay_no_w2 taken apart (line 1h)
+    situation: A factory worker got $3,000 in strike benefits from the union.
+    uses: [pay_no_w2]
+    answers:
+      scope.household_pay: false
+      scope.contractor_pay: false
+      scope.tips_unreported: false
+      scope.wages_no_form: false
+      scope.strike_pay: true
+      person[taxpayer].strike: 300000
+    expect:
+      proceeds:
+        person[taxpayer].strike: 300000
+  - id: pay.wages_no_form
+    design: scout-tail A.1, residual refusal (wages from an employer with no W-2)
+    situation: An employer never sent the W-2 for a job the person left in March.
+    uses: [pay_no_w2]
+    answers:
+      scope.household_pay: false
+      scope.contractor_pay: false
+      scope.tips_unreported: false
+      scope.strike_pay: false
+      scope.wages_no_form: true
+    expect:
+      refused: scope.other_income
+  - id: pay.medicaid_code_ii_earned
+    design: scout-tail A.4, Medicaid waiver payments (line 1d and Schedule 1 line 8s, counted as earned income)
+    situation: Medicaid pay of $30,000 for care of a father at home is shown only in box 12 with code II, and the carer counts it as earned income.
+    uses: [medicaid]
+    answers:
+      person[taxpayer].mw_box1: 0
+      person[taxpayer].mw_not_box1: 3000000
+      person[taxpayer].mw_1099: 0
+      person[taxpayer].mw_earned: true
+    expect:
+      proceeds:
+        person[taxpayer].mw_earned: true
+  - id: pay.medicaid_business
+    design: scout-tail A.1, residual refusal (Medicaid waiver payments in a home-care business, Schedule C)
+    situation: A person who runs a home-care business got Medicaid pay for a client living with her, on a Form 1099-NEC.
+    uses: [medicaid]
+    answers:
+      person[taxpayer].mw_box1: 0
+      person[taxpayer].mw_not_box1: 1200000
+      person[taxpayer].mw_1099: 1200000
+      person[taxpayer].mw_business: true
+    expect:
+      refused: person[taxpayer].mw_business_if_1099
+  - id: pay.medicaid_1099_over
+    design: lane x2-paynow2, inconsistent amounts (Form 1099 part larger than the pay not in box 1)
+    situation: A carer enters more Medicaid pay on Form 1099 than all the pay that is not in box 1 of a W-2.
+    uses: [medicaid]
+    answers:
+      person[taxpayer].mw_box1: 0
+      person[taxpayer].mw_not_box1: 500000
+      person[taxpayer].mw_1099: 800000
+    expect:
+      refused: person[taxpayer].mw_1099_over

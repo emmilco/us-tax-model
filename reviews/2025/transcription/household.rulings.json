@@ -538,6 +538,16 @@
   },
   {
    "printed": "household.filing_status_conflict",
+   "project_expr_sha256": "44b4aa3f5f63cae9bf438d62366e80c8e2541c1d8c142a147b9236411cb1abde",
+   "second_expr_sha256": "bf09897bc3b8072ce63f4f4df9dad1162ccf16f9a705c6b98e36cfd9f6f3c98e",
+   "ruling": "Ruling: model error; read without triage (triage.py refuses the log: an old line-scoped pass, 7073fcafb61a, names household.widowed_2025, which the form no longer compares). The changed alternative is MFS: the project refuses a separate return only when the filer was not married at the end of 2025 and no spouse died in 2025 (household.joint_unmarried); the reply refuses every MFS filer not married on Dec 31, so it refuses a 2025 widow filing separately. p501 p. 6, Spouse died during the year: \"If your spouse died during the year, you are considered married for the whole year for filing status purposes\"; i1040gi p. 14 allows MFS to a married filer. The project is right. The reply's other differences fold in cases other gates refuse (a 2025 death on a single return: household.widowed_2025; HOH tests: household.hoh_fails; QSS: household.qss_fails), as the prior rounds ruled (scope).",
+   "context": "6be5eb93a6ee6ec2512611bdcfb2a062147de37119b940a2305f36f2cdbe3553",
+   "date": "2026-11-15",
+   "run": "495f4cafe67ea993067cf2b66a410a66a13a4774d500538d495dbee75a74f34e",
+   "subject_key": "8df56ea9ad66e91cc1f54a4c22a20f2fe42c5773648913e63ad4ce358665e206"
+  },
+  {
+   "printed": "household.filing_status_conflict",
    "project_expr_sha256": "a09db17f7f8efd1f764d625c8887efab0515975d229594f11f0cc0b2e424c110",
    "second_expr_sha256": "99d711caea0e786414f84261b8517d47ef62c9f049b64c7b365e6c3c23bac19a",
    "ruling": "Ruling: scope — i1040gi pp. 13–15 and p501 pp. 6–8. The published gate (BUG-0286) checks the marriage-status entry conflict (single with married == true, or mfj with married == false and spouse_died_2025 == false) and refuses scope.ready alongside the dedicated status gates (s3.mfs for married filing separately, household.widowed_2025 for single/HOH with spouse_died_2025, household.hoh_fails for HOH, and household.qss_fails for QSS). The candidate folds widowed_2025, mfs && !married, and qss && married into this single gate. On completed returns there are zero value differences and only 2 partial-record candidate-unknowns where household.married was withheld on a QSS return; the 128 value differences are all on already-refused returns (such as MFS returns refused by s3.mfs or death-year single/HOH returns refused by widowed_2025). Evidence: triage/household.json, executable-triage-v2, 2216 comparisons, 2048 agreements; differences by return state {\"completed\": {\"candidate-unknown\": 2}, \"incomplete\": {\"candidate-unknown\": 23}, \"refused\": {\"candidate-unknown\": 15, \"value\": 128}}. Sample witnesses: {\"base\": \"classm.dependent.3.deepseek\", \"kind\": \"partial\", \"withheld\": \"household.married\"}, {\"base\": \"classm.f5695.2.deepseek\", \"kind\": \"partial\", \"withheld\": \"household.married\"}.",
@@ -743,6 +753,36 @@
    "date": "2026-11-14",
    "run": "fef3948830bfa08d2e8fb58ab1152419d9d8ec6ff0e8540fb07576aa9ffa07d4",
    "subject_key": "c543bfab6f28c6807d1af6856c8ceeeb7d50d7ee333cb34e17eb362ddc1c7298"
+  },
+  {
+   "printed": "household.mfs_apart_all_year",
+   "project_expr_sha256": "710874605c067318bae241d052475b5a390300eb9c32948d497135678d31cd15",
+   "second_expr_sha256": "1421af9c3d25fa4d282d8060bc842a44bdfba3be3ba9ae2c0b9e8b940fdacca5",
+   "ruling": "Ruling: representation; read without triage (triage.py refuses the log, see filing_status_conflict). On MFS both read household.mfs_living == apart_all_year. Off MFS the project reads the year parameter household.mfs_living_else (together_late), so the test is false, and the reply's conjunction with status mfs is false too; the reply only reads the gated input ungated. Equal on every status (i1040gi p. 31, Line 6d; amb.2025.mfs_lived_apart).",
+   "context": "6be5eb93a6ee6ec2512611bdcfb2a062147de37119b940a2305f36f2cdbe3553",
+   "date": "2026-11-15",
+   "run": "495f4cafe67ea993067cf2b66a410a66a13a4774d500538d495dbee75a74f34e",
+   "subject_key": "4b6666c4a368e994b22126e26baa36f2e047a81c4caf38a9d9f44e3acaf50ec7"
+  },
+  {
+   "printed": "household.mfs_apart_last6",
+   "project_expr_sha256": "45f8ef47c3ba8908fa304dc9d38d2b7f546c1ab0ce383bea1f26bb4166cab734",
+   "second_expr_sha256": "b593f51f7e2c10d88e3a692c1ad46c6e4ce6440db01969169bd7a9cc5b63294b",
+   "ruling": "Ruling: representation; read without triage (see filing_status_conflict). On MFS both are apart_last6 or apart_all_year (the reply's note picks the IRS condition 'lived apart for the last 6 months', which the all-year value also meets, as the project does). Off MFS both are false (project: together_late from household.mfs_living_else; reply: conjunction with status mfs). i1040gi p. 15, Married persons who live apart; p. 44, Special rule for separated spouses.",
+   "context": "6be5eb93a6ee6ec2512611bdcfb2a062147de37119b940a2305f36f2cdbe3553",
+   "date": "2026-11-15",
+   "run": "495f4cafe67ea993067cf2b66a410a66a13a4774d500538d495dbee75a74f34e",
+   "subject_key": "6bcd39f03ccb3bb441ec2d36fa851a8dbb1f5d0cf022ab70374c08424dbf3094"
+  },
+  {
+   "printed": "household.mfs_community_property",
+   "project_expr_sha256": "7dcb905ac351691058edae01c81c29b4c04a291b8b7fb0846e3b4bee9e674097",
+   "second_expr_sha256": "13470a8758d0818cc4f21a23780297aee4de6be19f47dfcf4b3a8c46273f9d61",
+   "ruling": "Ruling: representation; read without triage (see filing_status_conflict). On MFS both are household.community_property; on every other status the project gives household.no (false) and the reply's conjunction with status mfs gives false. The reply's note leaves registered domestic partners to household.rdp, as the project does (household.rdp_community_property). i1040gi p. 14, Married Filing Separately, \"Different rules apply to people in community property states; see Pub. 555\"; amb.2025.mfs_community_property.",
+   "context": "6be5eb93a6ee6ec2512611bdcfb2a062147de37119b940a2305f36f2cdbe3553",
+   "date": "2026-11-15",
+   "run": "495f4cafe67ea993067cf2b66a410a66a13a4774d500538d495dbee75a74f34e",
+   "subject_key": "7efcfe81c1060ff1119a684c9dbaa8fa0a631e399f37c5bba85c863066c47539"
   },
   {
    "printed": "household.qss_fails",

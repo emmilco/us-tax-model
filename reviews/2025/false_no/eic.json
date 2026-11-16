@@ -1,0 +1,99 @@
+{
+ "form": "eic",
+ "reviews": {
+  "gate:eic.lived_with_relative": {
+   "subject_sha": "c53b1104a45bfba842fdc72336a6319e769cd210a2ba0738c3a48cebc3efd906",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A 20-year-old single parent with a qualifying child and earned income who lived all of 2025 with an older stepbrother or stepsister. The stepsibling files a return that is required.",
+       "why_no": "The gate names 'brother, sister', and the help adds only 'half brothers and sisters', so a stepbrother is neither on the list nor among the added kinds. Strictly, a stepbrother is not a 'brother', so No is truthful.",
+       "line": "eic.qc_of_another_if_lived",
+       "irs_text": "i1040gi p. 41, Step 3: 'Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them'",
+       "severity": "high",
+       "fix": "Add stepbrothers and stepsisters to the gate or its help: '...brother, sister, half brother or sister, stepbrother or stepsister...'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A young filer with a child who lived all year with a step-grandparent (the grandparent's spouse, who is the stepparent of the filer's parent), a step-aunt or step-uncle (a stepsibling of the filer's parent), or a foster grandparent. The filer is a descendant of that person's stepchild, stepsibling or foster child.",
+       "why_no": "The gate says 'grandparent', 'aunt or uncle' and 'foster parent', and the help adds only stepparents, half siblings, great-grandparents and great-aunts and great-uncles. Read as a complete list, these step or foster relatives of a generation up are excluded.",
+       "line": "eic.qc_of_another_if_lived",
+       "irs_text": "i1040gi p. 41, Step 3: '...stepchild, foster child, ... stepbrother, stepsister, ... or a descendant of any of them (for example, your grandchild, niece, or nephew)'",
+       "severity": "medium",
+       "fix": "State the rule from the other side: 'Did you live more than half of 2025 with anyone you are a child, stepchild, foster child, grandchild, sibling, stepsibling, half sibling, niece or nephew (or a descendant of one) of, including step, half, foster and great- relatives?' Keep 'If not sure, answer Yes.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A return prepared for a 20-year-old with a qualifying child who died in April 2025. The decedent lived with their parent for all of 2025 until death, and the parent files a required return.",
+       "why_no": "The gate asks 'more than half the year', and the decedent lived only about four months. The help covers only time 'temporarily away, for example at school', not the birth or death exception, so the preparer truthfully answers No.",
+       "line": "eic.qc_of_another_if_lived",
+       "irs_text": "i1040gi p. 41, Step 3 TIP: 'If the child didn't live with you for more than half of 2025 because of a temporary absence, birth, death, placement with you for foster or adoption, or kidnapping, see Exception to time lived with you, later.'",
+       "severity": "medium",
+       "fix": "Add to the help: 'If you were born or died in 2025, count the time you were alive. Also count time you or the relative were away because of kidnapping or placement.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A 21-year-old full-time student with a child who stayed all year in the home of a parent who was away most of 2025, for example on military deployment, in a hospital or for a temporary work assignment.",
+       "why_no": "The help says to count time 'you were temporarily away'. It says nothing about the relative's temporary absence, so the filer reads 'live in the same home as your parent' as not met when the parent was absent.",
+       "line": "eic.qc_of_another_if_lived",
+       "irs_text": "i1040gi p. 41, Step 3 TIP: 'If the child didn't live with you for more than half of 2025 because of a temporary absence ... see Exception to time lived with you, later.'",
+       "severity": "medium",
+       "fix": "Change the help to: 'Count time either of you was temporarily away, for example at school, in the military, in a hospital, or for work.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A young filer with a child who lived all year with an adoptive parent or with a grandparent who had adopted them.",
+       "why_no": "The gate says 'parent' and the help adds stepparents but does not mention adoptive parents. A few filers may wonder whether an adoptive parent counts and, despite 'If you are not sure, answer Yes,' answer No.",
+       "line": "eic.qc_of_another_if_lived",
+       "irs_text": "i1040gi p. 41, Step 3: 'Son, daughter, stepchild, foster child ...' (an adopted child is a son or daughter)",
+       "severity": "low",
+       "fix": "Add 'adoptive parents' to the help list."
+      }
+     ],
+     "prompt_sha": "e3e37d9ea1d0eae9547bbceb0b0bcddbce63206b3c337e27a3d0c3f3ac228829",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.09668399999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_eic.lived_with_relative.c53b1104a45b.1.response.txt"
+    }
+   ],
+   "condition": "eic.lived_with_relative",
+   "lines": [
+    "eic.qc_of_another_if_lived"
+   ],
+   "inputs": [
+    "eic.qc_of_another"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      41,
+      42
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 41, Step 3, Qualifying Child, \"A qualifying child for the EIC is your... Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them\" and \"Who lived with you in the United States for more than half of 2025\"; p. 41, Step 3, question 6, and p. 42, Step 4, question 5",
+      "p. 41, Step 3, question 6, and p. 42, Step 4, question 5"
+     ],
+     "cols_pages": [
+      41,
+      42
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  }
+ }
+}

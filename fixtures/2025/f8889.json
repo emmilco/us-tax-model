@@ -4970,6 +4970,142 @@
       }
     },
     {
+      "id": "mfs.hsa.self_only",
+      "covers": [
+        "f8889",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l3, predicted by hand from the archived i8889 (pp. 4, 7) before the evaluator was run. Married filing separately, self-only HDHP coverage all year as an eligible individual, under 55, $1,000 contributed: line 3 4,300; no family coverage, so the line 6 rule for spouses with separate HSAs cannot apply and the spouse's HSA is not asked; line 6 = line 5 4,300; line 13 1,000 to Schedule 1 line 13.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 100000,
+        "person[taxpayer].f8889[hsa].coverage_year": "self_only",
+        "person[taxpayer].f8889[hsa].clear_all_year": true,
+        "person[taxpayer].f8889[hsa].fsa": false
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 430000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "mfs.hsa.family_spouse_no_hsa",
+      "covers": [
+        "f8889",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l3, predicted by hand before running: married filing separately, family HDHP coverage all year as an eligible individual, under 55, $8,000 contributed; the spouse has no HSA, so line 6 is line 5 (i8889 p. 7, Line 6 applies to spouses who have separate HSAs). Line 3 8,550; line 6 8,550; line 13 8,000 to Schedule 1 line 13.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 800000,
+        "person[taxpayer].f8889[hsa].coverage_year": "family",
+        "person[taxpayer].f8889[hsa].clear_all_year": true,
+        "person[taxpayer].f8889[hsa].fsa": false,
+        "person[taxpayer].f8889[hsa].mfs_spouse_hsa": false
+      },
+      "expect": {
+        "person[taxpayer].f8889[hsa].line3": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line6": {
+          "kind": "money",
+          "cents": 855000
+        },
+        "person[taxpayer].f8889[hsa].line13": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "s1.line13": {
+          "kind": "money",
+          "cents": 800000
+        }
+      }
+    },
+    {
+      "id": "mfs.hsa.refuse.family_spouse_hsa",
+      "covers": [
+        "f8889:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane mfs-l3: mfs.hsa.family_spouse_no_hsa, but the spouse has an HSA of their own. The family limit is divided between the spouses (i8889 p. 7, Line 6), which is refused on a separate return (f8889.mfs).",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 5000000,
+        "person[taxpayer].w2[emp_a].box3": 5000000,
+        "person[taxpayer].w2[emp_a].box4": 310000,
+        "person[taxpayer].w2[emp_a].box5": 5000000,
+        "person[taxpayer].w2[emp_a].box6": 72500,
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "person[taxpayer].f8889[hsa].line2": 800000,
+        "person[taxpayer].f8889[hsa].coverage_year": "family",
+        "person[taxpayer].f8889[hsa].clear_all_year": true,
+        "person[taxpayer].f8889[hsa].fsa": false,
+        "person[taxpayer].f8889[hsa].mfs_spouse_hsa": true
+      },
+      "expect": {
+        "s1.line13": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f8889[hsa].mfs",
+          "form": "Form 8889 line 6 on a married filing separately return, with a spouse who has an HSA",
+          "remedy": "When you had family coverage and your husband or wife has an HSA of their own, the family contribution limit is divided between you (equally unless you both agree otherwise), and this tool figures that division only on a joint return.",
+          "cite": {
+            "doc": "i8889",
+            "locator": "p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6\"",
+            "revision": "2025",
+            "snapshot": "da6f2f588b06f3f44cc7177883ce6496dc1bb247d84bc068a79277822410cb0f",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
       "id": "g1b1.hsa.family_former_spouse_unread",
       "covers": [
         "s1",

@@ -1,0 +1,235 @@
+form:
+  id: f4137
+  kind: form
+  title: Form 4137 — Social Security and Medicare Tax on Unreported Tip Income, lines 2 to 13, one per person
+  tax_year: 2025
+  note: Lines 2 to 13 of one person's Form 4137, from that person's employer rows (collection f4137row, line 1). Shown only
+    for a person with tips on line 2. Railroad retirement (RRTA) compensation on line 8, and tips received as a government
+    employee whose pay was subject only to the 1.45% Medicare tax (line 10), are refused.
+  collection:
+    parent: person
+    implicit: form
+    cite:
+      doc: f4137
+      locator: 'p. 1, "Name of person who received tips. If married, complete a separate Form 4137 for each spouse with
+        unreported tips"'
+  lines:
+  - id: f4137.files
+    printed: (helper)
+    label: Form 4137 is prepared for this person (line 2 is more than zero)
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f4137.line2
+      - param: sales.zero
+    cite:
+      doc: f4137
+      locator: 'p. 1, Who must file, "You must file Form 4137 if you received cash"'
+  - id: f4137.line2
+    printed: '2'
+    label: Total cash and charge tips you received in 2025. Add the amounts from line 1, column (c)
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: person.f4137_col_c
+    cite:
+      doc: f4137
+      locator: 'p. 1, line 2, "Total cash and charge tips you received in 2025. Add the amounts from line 1"'
+  - id: f4137.line3
+    printed: '3'
+    label: Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line 1, column (d)
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: person.f4137_col_d
+    cite:
+      doc: f4137
+      locator: 'p. 1, line 3, "Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line
+        1"'
+  - id: f4137.line4
+    printed: '4'
+    label: Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f4137.line2
+      take: f4137.line3
+    cite:
+      doc: f4137
+      locator: 'p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c"'
+    ambiguity: amb.2025.f4137_reported_over_received
+  - id: f4137.line5
+    printed: '5'
+    label: Cash and charge tips you received but didn’t report to your employer because the total was less than $20 in a
+      calendar month
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: person.f4137_under20_if_rows
+    cite:
+      doc: f4137
+      locator: 'p. 1, line 5, "Cash and charge tips you received but didn’t report to your employer because the total was less
+        than"; p. 2, Line 5, "Enter only the tips you weren’t required to report to your employer because the total received
+        was less than $20 in a calendar month"'
+  - id: f4137.line5_over
+    printed: (gate)
+    label: Line 5 is more than line 4 (tips under $20 a month that were not reported cannot be more than the unreported tips)
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f4137.line5
+      - f4137.line4
+    cite:
+      doc: f4137
+      locator: 'p. 1, line 6, "Unreported tips subject to Medicare tax. Subtract line 5 from line 4"'
+  - id: f4137.line6
+    printed: '6'
+    label: Unreported tips subject to Medicare tax. Subtract line 5 from line 4
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f4137.line4
+      take: f4137.line5
+    cite:
+      doc: f4137
+      locator: 'p. 1, line 6, "Unreported tips subject to Medicare tax. Subtract line 5 from line 4"'
+    refuses:
+    - when: f4137.line5_over
+      form: Form 4137, line 5 more than line 4
+      remedy: The tips under $20 a month that you did not report (line 5) are more than all the tips you did not report
+        (line 4). Check the amounts of tips received and reported for each employer.
+      cite:
+        doc: f4137
+        locator: 'p. 1, line 6, "Unreported tips subject to Medicare tax. Subtract line 5 from line 4"'
+  - id: f4137.line7
+    printed: '7'
+    label: Maximum amount of wages (including tips) subject to social security tax
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: se.wage_base
+    cite:
+      doc: f4137
+      locator: 'p. 1, line 7, "Maximum amount of wages (including tips) subject to social security tax", "176,100"'
+  - id: f4137.line8
+    printed: '8'
+    label: Total social security wages and social security tips (total of your Form(s) W-2, boxes 3 and 7) and railroad
+      retirement (RRTA) compensation (subject to 6.2% rate)
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: person.wages
+    cite:
+      doc: f4137
+      locator: 'p. 1, line 8, "Total social security wages and social security tips (total of your Form(s) W-2"'
+    refuses:
+    - when: person.rrta
+      form: Form 4137 with railroad retirement (RRTA) compensation
+      remedy: Form 4137 line 8 adds railroad retirement (RRTA) compensation to the social security wages, and tips for work
+        covered by the Railroad Retirement Tax Act are not reported on Form 4137; this tool does not take railroad
+        compensation.
+      cite:
+        doc: f4137
+        locator: 'p. 2, Employees subject to the Railroad Retirement Tax Act, "Don’t use Form 4137 to report tips received for
+          work covered by the Railroad Retirement Tax Act"'
+  - id: f4137.line9
+    printed: '9'
+    label: Subtract line 8 from line 7. If line 8 is more than line 7, enter -0-
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f4137.line7
+      take: f4137.line8
+    cite:
+      doc: f4137
+      locator: 'p. 1, line 9, "Subtract line 8 from line 7. If line 8 is more than line 7, enter -0-"'
+  - id: f4137.line10
+    printed: '10'
+    label: Unreported tips subject to social security tax. Enter the smaller of line 6 or line 9
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f4137.line6
+      - f4137.line9
+    cite:
+      doc: f4137
+      locator: 'p. 1, line 10, "Unreported tips subject to social security tax. Enter the smaller of line 6 or line 9"'
+    refuses:
+    - when: person.tips_gov_if_rows
+      form: Form 4137, line 10, tips received as a government employee whose pay was subject only to the 1.45% Medicare tax
+      remedy: The tips received for work as a federal, state or local government employee whose pay was subject only to the
+        1.45% Medicare tax are taken out of line 6 for the comparison with line 9 on line 10; this tool does not prepare
+        Form 4137 with such tips.
+      cite:
+        doc: f4137
+        locator: 'p. 2, Line 10, "If line 6 includes tips you received for work you did as a federal, state, or local government
+          employee and your pay was subject only to the 1.45% Medicare tax"'
+  - id: f4137.rate_062
+    printed: (helper)
+    label: 0.062 (social security tax rate)
+    type: Rate
+    expr:
+      op: param
+      ref: f4137.rate_062
+    cite:
+      doc: f4137
+      locator: 'p. 1, Multiply line 10 by 0.062, "Multiply line 10 by 0.062 (social security tax rate)"'
+  - id: f4137.line11
+    printed: '11'
+    label: Multiply line 10 by 0.062 (social security tax rate)
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f4137.line10
+      rate: f4137.rate_062
+    cite:
+      doc: f4137
+      locator: 'p. 1, Multiply line 10 by 0.062, "Multiply line 10 by 0.062 (social security tax rate)"'
+  - id: f4137.rate_0145
+    printed: (helper)
+    label: 0.0145 (Medicare tax rate)
+    type: Rate
+    expr:
+      op: param
+      ref: f4137.rate_0145
+    cite:
+      doc: f4137
+      locator: 'p. 1, Multiply line 6 by 0.0145, "Multiply line 6 by 0.0145 (Medicare tax rate)"'
+  - id: f4137.line12
+    printed: '12'
+    label: Multiply line 6 by 0.0145 (Medicare tax rate)
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f4137.line6
+      rate: f4137.rate_0145
+    cite:
+      doc: f4137
+      locator: 'p. 1, Multiply line 6 by 0.0145, "Multiply line 6 by 0.0145 (Medicare tax rate)"'
+  - id: f4137.line13
+    printed: '13'
+    label: Add lines 11 and 12. Include as tax on Schedule 2 (Form 1040), line 5
+    shown_when: f4137.files
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f4137.line11
+      - f4137.line12
+    cite:
+      doc: f4137
+      locator: 'p. 1, Add lines 11 and 12, "Add lines 11 and 12. Include as tax on Schedule 2 (Form 1040), line 5"'

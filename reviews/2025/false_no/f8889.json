@@ -1,49 +1,154 @@
 {
  "form": "f8889",
  "reviews": {
-  "gate:f8889.ask_last_month_prior": {
-   "subject_sha": "02842c2bc7f95a666ac118cebbd5ff9a0354b5ef1ddfd803b82db4e7af0278ce",
+  "gate:f8889.ask_former_spouse_family": {
+   "subject_sha": "fc50d1bf90ca7235a48fddb4f041a38e1b9bb934c495936028a7dba0e0295c28",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "other",
-       "who": "A person (filer or spouse) who made a qualified HSA funding distribution from an IRA in 2024 and also had contributions for 2024 above their month-by-month limit, allowed only by the last-month rule (for example, HDHP began mid-2024, the funding distribution went in then, and payroll or own contributions filled the rest of the full-year limit). In 2025 they stop being an eligible individual (new job without an HDHP, Medicare, a spouse's FSA).",
-       "why_no": "They truthfully answer yes to the 2024 funding distribution question, and the gate then computes false. The tool treats the funding distribution as having 'already begun' the only testing period and never asks about the last-month rule. The two testing periods are separate and have different lengths: the funding distribution's ends 12 months after the month of contribution, the last-month rule's runs to December 31, 2025. If the failure comes after the funding distribution's period has ended, nothing at all is included.",
-       "line": "f8889.testing_prior_if_asked (the Form 8889 line 18 amount that depends on it is silently zero)",
-       "irs_text": "i8889 p. 9, Part III: 'failure to be an eligible individual during the testing period for: • Last-month rule ..., or • A qualified HSA funding distribution'; Line 18: 'Enter on line 18 the excess of the amount contributed over the redetermined amount'; Line 19: 'Enter the total of any qualified HSA funding distribution'. i8889 p. 2: 'you will have to include in income the total contributions made that would not have been made except for the last-month rule'.",
+       "pattern": "5",
+       "who": "A filer with self-only HDHP coverage all year divorced in March 2025 from a spouse who had family HDHP coverage. The filer remarried in October 2025 to someone with self-only or no HDHP coverage.",
+       "why_no": "The computed condition requires the filer to be not married at the end of 2025. Because the filer was married on December 31, the gate is false and the question is never asked. A married path would most likely ask only about the current spouse's coverage.",
+       "line": "f8889.former_spouse_family_if_asked",
+       "irs_text": "i8889 p. 4: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan\"; p. 7, Line 6: \"had family coverage under an HDHP at any time during 2025\"",
        "severity": "high",
-       "fix": "Do not let a 2024 funding distribution switch off the last-month question. Ask f8889.testing_prior whenever the testing period that began in 2024 is asked, and compute line 18 (last-month rule) and line 19 (funding distribution) independently, each with its own testing period."
+       "fix": "Drop 'not married at the end of 2025' from the gate. Ask everyone with self-only coverage all year whether any marriage during 2025, other than one in effect at year end, involved a spouse with family HDHP coverage during the marriage."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer whose HDHP coverage was self-only but did not cover all twelve months, for example starting April 1, 2025. The filer was married until September 2025 to a spouse with family HDHP coverage and was single at year end.",
+       "why_no": "The coverage helper returns 'changed' for coverage that started, ended or changed type. That branch sets the gate to false, so the former spouse's family coverage is never asked. Family coverage would still be deemed for the eligible months of the marriage, which matters to the Line 3 worksheet and the Line 6 allocation.",
+       "line": "f8889.former_spouse_family_if_asked",
+       "irs_text": "i8889 p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules... use the following steps to determine the amount to enter on line 6\"",
+       "severity": "medium",
+       "fix": "Ask the former-spouse question in the 'changed' branch too, or confirm that the month-by-month path asks about every spouse's family coverage for each month of each marriage."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose then-spouse had family HDHP coverage from January to May 2025. The spouse switched to self-only coverage in June, and the divorce was final in August.",
+       "why_no": "The question asks whether the marriage ended 'while the other person had' a family plan. The filer reads this as coverage at the moment of the divorce and answers no. The rule actually turns on family coverage in any month of the marriage.",
+       "line": "f8889.former_spouse_family_if_asked",
+       "irs_text": "i8889 p. 7, Line 6: \"had family coverage under an HDHP at any time during 2025\"",
+       "severity": "medium",
+       "fix": "Reword: 'During 2025, before your marriage ended, did your then-spouse have high-deductible coverage for more than one person in any month, even if it changed before the marriage ended?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who obtained a decree of separate maintenance (legal separation) in 2025 and is treated as unmarried at year end. The then-spouse had family HDHP coverage earlier in 2025.",
+       "why_no": "The question names only 'by divorce or death', so a legally separated filer answers that the marriage did not end.",
+       "line": "f8889.former_spouse_family_if_asked",
+       "irs_text": "i8889 p. 4, How To Complete Part I: \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan\"",
+       "severity": "medium",
+       "fix": "Say 'ended or you became legally separated under a decree of divorce or separate maintenance, or your spouse died'. Better still, ask whether the filer was married at any time in 2025."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A person who used the last-month rule for 2024, kept contributing for 2025, and reports HDHP cover in every month of 2025, but stopped being an eligible individual during 2025 for another reason: enrolled in Medicare, can be claimed as someone's dependent for 2025, gained other coverage such as a spouse's general-purpose health FSA or an HRA, or had a gap and is only 'considered' eligible all year because of cover on December 1, 2025.",
-       "why_no": "The gate is false when 'the answers show an eligible individual in every month of 2025' and there are 2025 contributions. The text shown does not say how the tool derives this. If it rests on HDHP cover by month, or counts months 'considered' eligible under the 2025 last-month rule, the person shows as eligible in every month and the question is never asked, although they did not 'remain an eligible individual' through the testing period.",
-       "line": "f8889.testing_prior_if_asked",
-       "irs_text": "i8889 p. 2, Eligible Individual: 'you must be covered under a high deductible health plan (HDHP) and have no other health coverage except certain disregarded coverage ... you cannot be enrolled in Medicare or be another person's dependent'; Testing period: 'If you fail to remain an eligible individual during this period, other than because of death or becoming disabled, you will have to include in income the total contributions'.",
+       "who": "A filer whose then-spouse was covered as a dependent under someone else's family HDHP, such as a parent's or another employer's plan, during the 2025 marriage.",
+       "why_no": "The words 'the other person had a high-deductible plan' read as a plan the spouse held in their own name. The filer answers no because the spouse was only a covered member of another person's family plan.",
+       "line": "f8889.former_spouse_family_if_asked",
+       "irs_text": "i8889 p. 4, Line 1: \"If you and your spouse are considered covered by a family HDHP, you are considered covered by a family HDHP regardless of whether you file jointly or separately\"",
        "severity": "medium",
-       "fix": "Compute 'eligible in every month of 2025' from actual eligibility on the first day of each month: HDHP cover, no disqualifying other coverage (including a spouse's FSA or an HRA), no Medicare, and not a dependent for 2025. Never use months merely 'considered' eligible under the 2025 last-month rule. If any of these facts is not collected, treat the testing period as asked."
+       "fix": "Say 'was covered by a high-deductible plan covering more than one person (their own or someone else's)'."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A person (often the spouse on a joint return) who used the last-month rule for 2024, lost HDHP cover in early 2025, and had no HSA contributions and no distributions in 2025, so nothing prompts a 2025 Form 8889 for them.",
-       "why_no": "The gate only helps if the Form 8889 section is reached for that person. If it sits behind a parent such as 'did you or your employer contribute to, or take money out of, an HSA in 2025?', the truthful answer is no. The text shown does not include the parent question, so this cannot be confirmed.",
-       "line": "f8889.testing_prior_if_asked",
-       "irs_text": "i8889 p. 2, Testing period: 'You include this amount in income in the year in which you fail to be an eligible individual. This amount is also subject to a 10% additional tax. (See Part III.)'; p. 9: 'Use Part III to figure any additional income ... for failure to be an eligible individual during the testing period'.",
-       "severity": "medium",
-       "fix": "Make the entry question to Form 8889 cover each spouse separately and include 'or had an HSA to which contributions were made for 2024 (including under the last-month rule or by a funding distribution from an IRA)', so the testing-period questions are reached with no 2025 activity."
+       "pattern": "7",
+       "who": "A divorced filer who knows the ex-spouse had employer family health coverage but does not know whether it was a high-deductible plan.",
+       "why_no": "The filer cannot confirm the term 'high-deductible plan' and defaults to no.",
+       "line": "f8889.former_spouse_family_if_asked",
+       "irs_text": "i8889 p. 4, How To Complete Part I: \"either of you has an HDHP with family coverage\"",
+       "severity": "low",
+       "fix": "Ask first whether the then-spouse had health coverage for more than one person. Then ask whether it was HSA-eligible, with help on how to check, for example whether the spouse also had an HSA or the plan was described as HSA-qualified."
       }
      ],
-     "prompt_sha": "2ec55ed05f0460b02d73942f25d4754f954c61c6dae1bb6f7cd05f4529c87ff8",
+     "prompt_sha": "0e7d29384829477e5647839830713772ab823e0b70b79ca099cf44035947fb3e",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-fable-5-2",
-     "cost": 0.22294400000000003,
-     "date": "2026-11-12",
-     "response": ".transcription/false_no/gate_f8889.ask_last_month_prior.02842c2bc7f9.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.104308,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8889.ask_former_spouse_family.fc50d1bf90ca.1.response.txt"
+    }
+   ],
+   "condition": "f8889.ask_former_spouse_family",
+   "lines": [
+    "f8889.former_spouse_family_if_asked"
+   ],
+   "inputs": [
+    "f8889.former_spouse_family"
+   ],
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      4,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, How To Complete Part I, \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan\"",
+      "p. 4, How To Complete Part I, \"if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan. Disregard any plans with self-only coverage\"; p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6\"",
+      "p. 4, How To Complete Part I; p. 7, Line 6"
+     ],
+     "cols_pages": [
+      4,
+      7
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "gate:f8889.ask_last_month_prior": {
+   "subject_sha": "b0fd5d8e06b96096fee15eda8b7ec1e7ef54dc2ddef0e44f13c3b8963eef9cda",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer moved IRA money into the HSA in February 2024 as a qualified HSA funding distribution, lost HDHP coverage in May 2024, and so failed that testing period and reported it on the 2024 return. They regained HDHP coverage before December 1, 2024 and used the last-month rule to contribute the full 2024 amount. They then lost HDHP coverage again in mid-2025.",
+       "why_no": "The computed gate is false whenever the testing period of a 2024 qualified HSA funding distribution 'has already been failed'. The last-month-rule question is then never asked, although the two testing periods are separate and the last-month rule's runs from December 1, 2024 to December 31, 2025.",
+       "line": "f8889.testing_prior_if_asked (feeds Form 8889 Part III line 18 for 2025)",
+       "irs_text": "i8889 p. 9, Part III: 'failure to be an eligible individual during the testing period for: • Last-month rule ..., or • A qualified HSA funding distribution'; p. 2: 'If you fail to remain an eligible individual during this period ... you will have to include in income the total contributions made that would not have been made except for the last-month rule.'",
+       "severity": "high",
+       "fix": "Do not suppress the last-month-rule question because a funding distribution's testing period was failed. At most, suppress it only when the funding distribution's failure fell in the same months and the instructions state that one inclusion replaces the other. Otherwise compute line 18 independently of line 19."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer used the last-month rule for 2024 and also contributed for 2025. They had no HDHP from March to October 2025, then regained it before December 1, 2025 and used the last-month rule again for 2025.",
+       "why_no": "The gate is asked only if the filer was 'not an eligible individual in every month of 2025'. If the 2025 monthly eligibility comes from 'are, or are considered, eligible', the 2025 last-month rule treats them as eligible for all of 2025. The gate then reads as passed, although they actually failed the 2024 testing period in March 2025.",
+       "line": "f8889.testing_prior_if_asked",
+       "irs_text": "i8889 p. 2: 'The testing period begins with the last month of your tax year and ends on the last day of the 12th month following that month ... If you fail to remain an eligible individual during this period ... you will have to include in income the total contributions made that would not have been made except for the last-month rule.'",
+       "severity": "medium",
+       "fix": "Base the gate on actual first-of-month eligibility in each month of 2025, ignoring any 2025 last-month-rule treatment. Alternatively, ask directly: 'Was there any month in 2025 when, on the first day, you or your spouse lacked HDHP coverage, had other health coverage, were enrolled in Medicare, or were someone's dependent?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "On a joint return, only the spouse has an HSA. The spouse used the last-month rule for 2024 and lost eligibility in 2025, while the filer contributed for 2025 and was eligible all year.",
+       "why_no": "If the 'contributions for 2025' and 'eligible in every month of 2025' facts are taken once per return, or for the primary filer only, the spouse's 2024 testing period is never asked.",
+       "line": "f8889.testing_prior_if_asked",
+       "irs_text": "i8889 p. 4: 'If married filing jointly and both you and your spouse have HSAs, complete a separate Form 8889 for each of you.'",
+       "severity": "medium",
+       "fix": "Evaluate the gate and its inputs separately for each HSA account beneficiary, naming the spouse in every 2025 contribution and eligibility question."
+      }
+     ],
+     "prompt_sha": "607b9f8b4c3fa4da53e849a3b7072a32798ceb59bf026167176eeac80993af0e",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.118588,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8889.ask_last_month_prior.b0fd5d8e06b9.1.response.txt"
     }
    ],
    "condition": "f8889.ask_last_month_prior",
@@ -61,16 +166,19 @@
      "pages": [
       2,
       4,
+      8,
       9
      ],
      "how": "cited pages",
      "locators": [
       "p. 2, Last-month rule, \"You may consider yourself an \"eligible individual\" for the entire year if you are an eligible individual on the 1st day of the last month of the tax year\"; p. 2, Testing period, \"If you fail to remain an eligible individual during this period, other than because of death or becoming disabled, you will have to include in income the total contributions made that would not have been made except for the last-month rule\"; p. 4, Line 3, rule 2, \"You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month of your tax year\"; p. 9, Part III",
+      "p. 2, Testing period; p. 8, Testing period; p. 9, Part III",
       "p. 2, Testing period; p. 9, Part III"
      ],
      "cols_pages": [
       2,
       4,
+      8,
       9
      ],
      "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
@@ -441,7 +549,7 @@
    ]
   },
   "gate:f8889.coverage_year": {
-   "subject_sha": "ea560106edb000bdcbb9fdfdbbdb0420fe303cd140a71ae5db2e0622bbba55c5",
+   "subject_sha": "c5b4d26953c82ccbc9e52d42883d6a5cdac89202fd54e51a68ad60e1226dede6",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -449,70 +557,50 @@
       {
        "kind": "FALSE_NO",
        "pattern": "8",
-       "who": "A person with family HDHP coverage on the first day of all twelve months, but through different routes: for example on a spouse's or parent's family HDHP January to June and then their own family HDHP July to December, or on a family HDHP all year with a self-only HDHP as well for some months.",
-       "why_no": "The help says to choose 'covering more than one person' if covered all year as a member of someone else's plan or by a self-only and a family plan at once, and 'if that was so for only part of the year, choose No'. Their membership of someone else's plan, or their double coverage, lasted only part of the year, so the help tells them to answer No.",
-       "line": "f8889.clear_if_uniform (and f8889.clear_all_year, never asked)",
-       "irs_text": "i8889 p. 4, Line 1: 'If you were covered by both a self-only HDHP and a family HDHP at the same time, you are treated as having family coverage during that period'; Line 3 rule 3: 'eligible individual for the entire year and you did not change your type of coverage, enter ... $8,550 for a family HDHP'; p969 p. 4: 'Family HDHP coverage is HDHP coverage for an eligible individual and at least one other individual'",
+       "who": "A filer with family HDHP coverage on the first of every month who, for part of the year, also had a self-only HDHP. Or a filer covered as a member of a spouse's or parent's family HDHP for January to June, then by their own family HDHP for July to December.",
+       "why_no": "The help says that if they were covered as a member of someone else's plan, or by a self-only and a family plan at once, they choose 'covering more than one person', and 'if that was so for only part of the year, choose “No”.' Their overlap or membership lasted only part of the year, so they choose No. But the coverage counted as family coverage in every month, so the type never changed.",
+       "line": "f8889.clear_if_uniform (set to false; clear_all_year never asked)",
+       "irs_text": "i8889 p. 4, Line 1: \"If you were covered by both a self-only HDHP and a family HDHP at the same time, you are treated as having family coverage during that period\"; Line 3, rule 3: \"eligible individual for the entire year and you did not change your type of coverage, enter ... $8,550 for a family HDHP\"",
        "severity": "high",
-       "fix": "Reword the help: 'Choose \"covering more than one person\" if on the first day of every month you were covered by an HSA-eligible plan that covered you and at least one other person, whether it was your plan or someone else's, and even if you also had a plan for only you. Choose No only if in some month you had no such plan, or the plan covered only you in some months and more than one person in others.'"
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A person who enrolled in an HDHP during 2025 (for example a new job in May) and was an eligible individual on December 1, 2025, with one type of coverage from then on.",
-       "why_no": "The plan was not 'the same kind all year', because there was no HDHP in the early months. The options say 'anything else (including coverage that started, ended or changed type)'.",
-       "line": "f8889.clear_if_uniform (false, so the full-year limit of Line 3 rule 3 is not reached through this line)",
-       "irs_text": "i8889 p. 2, Last-month rule: 'You may consider yourself an \"eligible individual\" for the entire year if you are an eligible individual on the 1st day of the last month of the tax year'; p. 4, Line 3 rule 2: 'You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month'; rule 3: 'were, or were considered, an eligible individual for the entire year ... enter $4,300 ... or $8,550'",
-       "severity": "medium",
-       "fix": "On a No, always ask the month-by-month coverage and eligibility, including December 1, and apply the last-month rule (Line 3 rules 2, 4 and 5). Say in the help that a plan that started during the year is handled in the next questions. Wrong only if the 'changed' path does not already apply the last-month rule."
+       "fix": "Replace the 'part of the year' sentence. Tell the filer to choose 'covering more than one person' if, on the first of every month, they were on at least one plan covering more than one person, whether their own or someone else's, even if the plans changed during the year. Choose No only if some first-of-month had no HDHP or only a self-only HDHP."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A person who changed jobs or insurers with a short gap that did not span the first of a month (old self-only HDHP ended March 20, new one began March 28), so was covered by the same type of HDHP on the first day of all twelve months.",
-       "why_no": "The help says 'A change of insurer with no gap and the same kind of plan is not a change'. They read the converse, that a change with a gap is a change, and answer No.",
-       "line": "f8889.clear_if_uniform / f8889.clear_all_year",
-       "irs_text": "i8889 p. 2: 'You must be, or be considered, an eligible individual on the first day of a month to take an HSA deduction for that month'; p. 4, Line 3 rule 3",
+       "who": "A filer whose HDHP stayed a family plan all year but whose tier changed. Examples: they moved from 'employee + child' to 'employee + spouse' or 'family' at marriage, or a child left the plan while a spouse stayed on.",
+       "why_no": "They read the tier change as a change in the 'kind' of plan. The help says only that a change of insurer with no gap is not a change.",
+       "line": "f8889.clear_if_uniform",
+       "irs_text": "p969 p. 4: \"Family HDHP coverage is HDHP coverage for an eligible individual and at least one other individual (whether or not that individual is an eligible individual)\"",
        "severity": "medium",
-       "fix": "Say 'A change of insurer is not a change if you had the same kind of plan on the first day of every month. A gap matters only if you had no such plan on the first day of some month.'"
+       "fix": "Add to the help: 'Only two kinds count: only you, or you and at least one other person. Changing among tiers such as employee+spouse, employee+children or family, or adding or dropping family members, is not a change as long as at least one other person was covered.'"
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A person whose HDHP changed in something other than coverage type: PPO to HMO, a new deductible at a mid-year renewal, employer plan to COBRA or a marketplace plan, or a family plan that added or dropped a member but still covered two or more people.",
-       "why_no": "'The same kind all year' is undefined in the question. They read 'kind' as the plan design, deductible, metal tier or who was covered, and answer No.",
-       "line": "f8889.clear_if_uniform / f8889.clear_all_year",
-       "irs_text": "i8889 p. 4, Line 3 rule 3: 'you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a family HDHP'; p969 p. 4: 'Self-only HDHP coverage is HDHP coverage for only an eligible individual. Family HDHP coverage is ... an eligible individual and at least one other individual'",
-       "severity": "medium",
-       "fix": "Replace 'the same kind' with the checkable fact: 'On the first day of every month of 2025, were you covered by an HSA-eligible high-deductible plan? Choose: every month, a plan covering only me; every month, a plan covering me and at least one other person; or neither.' Add: 'Changes of insurer, network, deductible or of which family members were covered do not matter.'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A person whose plan meets the 2025 HDHP limits but whose plan papers do not say 'HSA-eligible' or 'HDHP', often with employer HSA contributions on Form W-2 box 12 code W.",
-       "why_no": "They cannot classify the plan as 'a high-deductible plan that works with an HSA'. The help says the papers 'usually' say so, theirs do not, and they answer No.",
-       "line": "f8889.clear_if_uniform / f8889.clear_all_year (limit lost; contributions treated as excess or not deductible)",
-       "irs_text": "p969 p. 4: minimum annual deductible $1,650 self-only / $3,300 family, maximum out-of-pocket $8,300 / $16,600 for 2025; i8889 p. 2: 'you must be covered under a high deductible health plan (HDHP)'",
-       "severity": "medium",
-       "fix": "Add the checkable test to the help: the 2025 deductible and out-of-pocket limits, and 'if you or your employer put money in an HSA for 2025 (Form W-2 box 12 code W, or Form 5498-SA), your plan was very likely HSA-eligible; check with the plan before answering No.' Warn when an HSA contribution is present and the answer is No."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "3",
-       "who": "A married person eligible all year who had a self-only HDHP for part of the year and family for the rest, or a self-only HDHP all year, while the spouse, also eligible, had a family HDHP all year that did not cover them.",
-       "why_no": "Their own plan changed type, so they answer No; or it was self-only, so they choose self-only. The question asks only about 'your health plan', not the spouse's.",
-       "line": "f8889.clear_if_uniform (family limit for all twelve months not reached)",
-       "irs_text": "i8889 p. 4, How To Complete Part I: 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan. Disregard any plans with self-only coverage'; Line 3 rule 1: 'Use the family coverage amount if you or your spouse had an HDHP with family coverage'",
+       "pattern": "6",
+       "who": "A filer who changed jobs, moved to COBRA continuation, or renewed into a new plan year mid-year, with no gap and an HDHP of the same tier throughout.",
+       "why_no": "The help names only 'a change of insurer' as not a change. A new employer plan, COBRA, or a new plan year can read as a different plan, so the filer answers No to 'the same kind all year'.",
+       "line": "f8889.clear_if_uniform",
+       "irs_text": "i8889 p. 4, Line 3, rule 3: \"If you were ... an eligible individual for the entire year and you did not change your type of coverage, enter $4,300 for a self-only HDHP or $8,550 for a family HDHP\"",
        "severity": "low",
-       "fix": "For a married person, ask whether the spouse had a family HDHP in each month, and treat those months as family coverage for this person before testing whether coverage was uniform."
+       "fix": "Say: 'A change of insurer, employer, plan, or plan year, or a move to COBRA, with no gap and the same coverage tier is not a change.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer whose plan meets the HDHP deductible and out-of-pocket limits, such as a self-only plan with a $1,700 deductible, but whose papers never say 'HSA-eligible' or 'HDHP', or who has no HSA through the employer.",
+       "why_no": "They don't see the label or an employer HSA, so they read 'works with an HSA' as not met. A $1,700 deductible may also not seem 'high'.",
+       "line": "f8889.clear_if_uniform",
+       "irs_text": "p969 p. 4: minimum annual deductible for 2025 \"$1,650\" self-only and \"$3,300\" family; maximum annual deductible and other out-of-pocket expenses \"$8,300\" and \"$16,600\"",
+       "severity": "low",
+       "fix": "Add to the help: 'If your papers don't say, check the 2025 limits: a deductible of at least $1,650 for only you or $3,300 for more than one person, and out-of-pocket costs no more than $8,300 or $16,600.' State that you need not have an HSA through your employer."
       }
      ],
-     "prompt_sha": "037538aefabec6898bd81a8fadff47c5a5df16346713f084b469703713988c72",
+     "prompt_sha": "4d51f6045f99d6644ac4d67837b8a4f7d8d5cc581755672ad7cb32659a96625c",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-fable-5-2",
-     "cost": 0.294584,
-     "date": "2026-11-12",
-     "response": ".transcription/false_no/gate_f8889.coverage_year.ea560106edb0.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.15634800000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8889.coverage_year.c5b4d26953c8.1.response.txt"
     }
    ],
    "condition": "f8889.coverage_year",
@@ -785,59 +873,239 @@
     }
    ]
   },
-  "gate:f8889.medical_all_if_dist": {
-   "subject_sha": "4cf494b6d6e482b547444b56b0732037ddfa8a79e7d771977fb30ce51e16f0d0",
+  "gate:f8889.inherited_any": {
+   "subject_sha": "b3499a30089c57639e1b52c9befa80183218df25d3a6140fd71800b48e94a8f5",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "A non-spouse designated beneficiary (for example an adult child) of an HSA whose owner died in 2025. The account ceased to be an HSA at death, nothing was withdrawn or it was simply retitled, and the beneficiary paid the decedent's final hospital bills out of pocket within a year.",
-       "why_no": "The parent helper asks whether there were 'Any HSA distributions in 2025'. No money came out of the account and the filer never owned an HSA, so no is truthful as worded. The computed gate then goes to the constant false and the all-or-partial question is never put for this filer's real situation.",
-       "line": "f8889.medical_if_partial (Form 8889 line 15)",
-       "irs_text": "i8889 (2025) p. 3, Death of Account Beneficiary: 'On Part II, line 14a, enter the fair market value of the HSA as of the date of death. On Part II, line 15, for a beneficiary other than the estate, enter qualified medical expenses incurred by the account beneficiary before the date of death that the beneficiary paid within 1 year after the date of death.'",
+       "pattern": "other",
+       "who": "The executor or surviving spouse files the final return of an HSA owner who died in 2025, alone or jointly with the surviving spouse. The HSA had no designated beneficiary, or named the estate, so the estate is the beneficiary.",
+       "why_no": "The gate asks whether 'you' got an HSA or money from one 'because its owner died'. For the decedent, the person was the owner and got nothing. The estate took the account, so no for either spouse is truthful.",
+       "line": "f8889.inherited_case_if_any (it defaults to inh_spouse_earlier, which refuses nothing; the date-of-death value that belongs on the final return is dropped or the case is not refused)",
+       "irs_text": "i8889 p. 3: 'If the account beneficiary's estate is the beneficiary, the value of the HSA as of the date of death is included on the account beneficiary's final income tax return. Complete Form 8889 as described above, except you should complete Part I, if applicable.'",
        "severity": "high",
-       "fix": "Widen the parent helper: 'Did money come out of an HSA in 2025 in any way, or did you (or your spouse) inherit an HSA from someone who died, even if nothing was withdrawn?' Route an inherited HSA to its own Form 8889, with line 14a as the date-of-death value and a line 15 question about the decedent's expenses."
+       "fix": "Add a second gate question for each person: 'Did this person die in 2025 owning an HSA that went to their estate, or had no named beneficiary?' Route a yes into the 'anything else' case."
       },
       {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "The same non-spouse beneficiary who does report the inherited HSA as a distribution and correctly says not all of it paid qualified expenses. They paid part of the decedent's pre-death medical bills within one year of the death.",
-       "why_no": "The gated question lists 'Whose costs count' as yours, your spouse's, your dependents', a near-dependent's, and a child of separated parents. The decedent account holder is not on the list, and the costs must 'date from after you opened the HSA', which the filer never did. Reading the list as complete, they enter zero.",
-       "line": "f8889.medical_if_partial (Form 8889 line 15)",
-       "irs_text": "i8889 (2025) p. 3: 'On Part II, line 15, for a beneficiary other than the estate, enter qualified medical expenses incurred by the account beneficiary before the date of death that the beneficiary paid within 1 year after the date of death.'",
-       "severity": "medium",
-       "fix": "Add to the question: 'If you inherited this HSA from someone other than your spouse, count instead the medical costs the person who died ran up before death that you paid within one year after the death.' Alternatively, ask a separate question on the inherited-HSA path."
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A child was named beneficiary of a parent's HSA, and the parent died in 2025. At filing time the trustee had not yet paid out or retitled the account, for example because the claim paperwork was still pending.",
+       "why_no": "'Did you get an HSA, or money from one' reads as receipt. Nothing has been received yet, so they answer no. Yet the account stopped being an HSA at death, and its date-of-death value is the beneficiary's to report.",
+       "line": "f8889.inherited_case_if_any (it defaults to inh_spouse_earlier instead of the 2025 nonspouse case, so the refusal or amount is missed)",
+       "irs_text": "i8889 p. 3: 'If the designated beneficiary is not the account beneficiary's surviving spouse, or there is no designated beneficiary, the account ceases to be an HSA as of the date of death... On Part II, line 14a, enter the fair market value of the HSA as of the date of death.'",
+       "severity": "high",
+       "fix": "Ask about the fact, not receipt: 'Were you named as beneficiary of, or are you entitled to, an HSA whose owner died, even if you have not received anything yet?'"
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer (or the spouse on a joint return) who only ever swiped the HSA debit card at a pharmacy or doctor's office, or had the custodian pay a provider directly. They never withdrew cash and may overlook or not have a Form 1099-SA.",
-       "why_no": "They do not see card swipes or direct provider payments as 'HSA distributions'; they read the word as a cash withdrawal or payout to themselves. They answer the parent helper no, the gate computes false, and the expense question is not reached.",
-       "line": "f8889.medical_if_partial (Form 8889 line 15)",
-       "irs_text": "i8889 (2025) p. 8: 'Line 14a Enter the total distributions your HSAs made in 2025. These amounts should be shown on Form 1099-SA, box 1.' and 'In general, include on line 15 distributions from all HSAs in 2025 that were used for the qualified medical expenses of: 1. You and your spouse. 2. All your dependents.'",
+       "who": "A surviving spouse's husband or wife died in 2025. The trustee retitled the HSA in the survivor's name, or moved it into the survivor's existing HSA by trustee-to-trustee transfer.",
+       "why_no": "They think of the account as their own HSA now, not as something they 'got' or money paid to them. The help that says a spouse's HSA 'now counts as your own' appears only after a yes. So they answer no, and the year of death falls into the default 'death before 2025' case.",
+       "line": "f8889.inherited_case_if_any (it takes inh_spouse_earlier, the death before 2025, when the 2025 death belongs in 'anything else', so the refusal is missed)",
+       "irs_text": "i8889 p. 3: 'If the account beneficiary's surviving spouse is the designated beneficiary, the HSA is treated as if the surviving spouse were the account beneficiary.'",
        "severity": "medium",
-       "fix": "Ask in plain terms: 'Did any money leave your (or your spouse's) HSA in 2025: debit-card purchases, payments sent to a doctor or pharmacy, reimbursements to you, withdrawals, or a Form 1099-SA?' If a Form 1099-SA box 1 amount is entered anywhere, derive the helper as true so line 15 is never zeroed against a non-zero line 14a."
+       "fix": "Add to the gate help: 'Answer Yes even if the account was moved or retitled into your name, or merged into your own HSA.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer was named beneficiary by a sibling, friend, or unmarried partner, or a trust named them, and the owner died in 2025.",
+       "why_no": "The help's examples, 'a parent, or a husband or wife', can be read as the full list of relationships that count.",
+       "line": "f8889.inherited_case_if_any",
+       "irs_text": "i8889 p. 1: 'You acquired an interest in an HSA because of the death of the account beneficiary.'",
+       "severity": "low",
+       "fix": "Change the help to 'anyone — for example a parent, a husband or wife, a sibling, or a friend — named you…'"
+      }
+     ],
+     "prompt_sha": "412b7453482ebd7781db70c5b4c1f9f22835ef46cccde41d3734c64f9ddf2379",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.090496,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8889.inherited_any.b3499a30089c.1.response.txt"
+    }
+   ],
+   "condition": "f8889.inherited_any",
+   "lines": [
+    "f8889.inherited_case_if_any"
+   ],
+   "inputs": [
+    "f8889.inherited_case"
+   ],
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      1,
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Who Must File, \"You acquired an interest in an HSA because of the death of the account beneficiary\"; p. 3, Death of Account Beneficiary",
+      "p. 3, Death of Account Beneficiary",
+      "p. 3, Death of Account Beneficiary, \"If the account beneficiary's surviving spouse is the designated beneficiary, the HSA is treated as if the surviving spouse were the account beneficiary. The surviving spouse completes Form 8889 as though the HSA belonged to the surviving spouse.\" and \"If the designated beneficiary is not the account beneficiary's surviving spouse, or there is no designated beneficiary, the account ceases to be an HSA as of the date of death\""
+     ],
+     "cols_pages": [
+      1,
+      3
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "gate:f8889.ira_prior_if_asked": {
+   "subject_sha": "546ebfc5687d30e377f8cd5dd373dbad698ebac7f5ccee1c3d9fac2f1a7ec0f9",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer turned 65 in 2024 and moved a qualified HSA funding distribution from an IRA in September 2024. In mid-2025 they applied for Social Security, and Medicare Part A was made retroactive for up to 6 months, into early 2025. When answering the 2025 month-by-month coverage questions, they reported HDHP coverage in every month.",
+       "why_no": "The 2025 answers say HDHP coverage every month, so the tool computes 'eligible individual in every month of 2025' and never asks the 2024 funding distribution question. The filer still had the HDHP and does not think of retroactive Part A as Medicare enrollment in those months.",
+       "line": "f8889.ira_gap_if_prior (and through it Form 8889 line 19, plus the 10% additional tax)",
+       "irs_text": "i8889 p. 8: 'If you fail to remain an eligible individual during this period ... you will have to include the qualified HSA funding distribution in income in the year in which you fail to be an eligible individual. This amount is also subject to a 10% additional tax.'",
+       "severity": "medium",
+       "fix": "Base the gate on each disqualifying fact for each month of 2025, not only on HDHP coverage: Medicare enrollment (including Part A made retroactive), other non-HDHP coverage, and being claimable as a dependent. Or ask the 2024 funding distribution question whenever any 2025 HSA activity exists, and let the testing-period question resolve it."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer with HDHP coverage made a 2024 funding distribution. In 2025, their spouse elected a general-purpose health FSA that could reimburse the filer's expenses, or the filer was covered by a spouse's non-HDHP plan as secondary coverage. They reported HDHP coverage in every month of 2025.",
+       "why_no": "The 2025 month answers ask about the HDHP the filer had, so the computed condition shows eligible every month. The filer does not see the spouse's FSA or secondary plan as 'other health coverage that pays medical bills.' The gate never surfaces the testing-period question.",
+       "line": "f8889.ira_gap_if_prior (Form 8889 line 19)",
+       "irs_text": "i8889 p. 8: 'you must remain an eligible individual during the testing period'; p. 9 Part III: 'Line 19 Enter the total of any qualified HSA funding distribution.'",
+       "severity": "medium",
+       "fix": "Make the 2025 eligibility answers that feed this gate name disqualifying coverage explicitly, such as a spouse's general-purpose health FSA or HRA, or secondary non-HDHP coverage. Or do not let 'HDHP every month' alone suppress the 2024 question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "On a joint return, the spouse made the 2024 funding distribution into the spouse's own HSA. The spouse lost eligibility in March 2025. The primary filer was eligible all year.",
+       "why_no": "If the gate's eligibility test or the 'contributed to your HSA in 2024' question is evaluated only for the primary filer, the filer answers no ('your HSA') or the computed condition is satisfied by the filer's months. The spouse's failure is never asked.",
+       "line": "f8889.ira_gap_if_prior for the spouse (spouse's Form 8889 line 19)",
+       "irs_text": "i8889 p. 8: 'If you fail to remain an eligible individual during this period ... you will have to include the qualified HSA funding distribution in income'",
+       "severity": "low",
+       "fix": "State that the gate is evaluated separately for each spouse, using that spouse's own 2025 months. Word the question as 'to your HSA (or, on a joint return, to your spouse's HSA, asked separately)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "In 2024, a filer had a Roth IRA custodian transfer money directly to their HSA, which was their once-in-a-lifetime transfer.",
+       "why_no": "The filer may read 'qualified HSA funding distribution from an IRA' as covering traditional IRAs only, or may not recognize the term for a custodian-to-custodian transfer.",
+       "line": "f8889.ira_gap_if_prior",
+       "irs_text": "i8889 p. 8: 'If you received a traditional IRA or Roth IRA distribution, you must remain an eligible individual during the testing period.'",
+       "severity": "low",
+       "fix": "Ask: 'In 2024, did you move money directly from any IRA (traditional or Roth) into your HSA?'"
+      }
+     ],
+     "prompt_sha": "e2b5c93d1201ffd352454a86c91828798dad5a91e1b57055afcec5e9964ac6f7",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.089468,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8889.ira_prior_if_asked.546ebfc5687d.1.response.txt"
+    }
+   ],
+   "condition": "f8889.ira_prior_if_asked",
+   "lines": [
+    "f8889.ira_gap_if_prior"
+   ],
+   "inputs": [
+    "f8889.ira_gap"
+   ],
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      8,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Testing period",
+      "p. 8, Testing period, \"The testing period begins with the month in which the traditional IRA or Roth IRA distribution is contributed to the HSA and lasts through the last day of the 12th month following that month. For example, if the distribution is contributed on June 17, 2025, the testing period lasts through June 30, 2026.\"",
+      "p. 8, Testing period; p. 9, Part III"
+     ],
+     "cols_pages": [
+      8,
+      9
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "gate:f8889.medical_all_if_dist": {
+   "subject_sha": "48734f01b25430002de9cce1d52e0d827a58ceaede47e3783e4c7ad8ffb85a68",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A non-spouse designated beneficiary (for example, an adult child) inherited a parent's HSA when the parent died in 2025. Within a year of the death, the beneficiary paid the parent's final hospital and doctor bills.",
+       "why_no": "The list of 'Whose costs count' names only 'yours, and your spouse's', dependents, would-be dependents, and children of separated parents. A deceased parent who was not the filer's dependent is none of these. Read truthfully, the list makes the filer exclude the decedent's bills and report zero or too little.",
+       "line": "f8889.medical_if_partial (Form 8889 line 15)",
+       "irs_text": "i8889 p. 3, Death of Account Beneficiary: 'On Part II, line 15, for a beneficiary other than the estate, enter qualified medical expenses incurred by the account beneficiary before the date of death that the beneficiary paid within 1 year after the date of death.'",
+       "severity": "high",
+       "fix": "Ask first whether the HSA was inherited from someone other than a spouse. If yes, ask separately for the decedent's medical expenses incurred before death that the beneficiary paid within 1 year after the death, and put that amount on line 15."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "1",
-       "who": "A filer who paid medical bills out of pocket in 2022-2024 (after the HSA was opened) and in 2025 withdrew a lump sum from the HSA to reimburse themselves, depositing it in their bank account.",
-       "why_no": "Asked whether all 2025 distributions 'were used to pay' qualified medical expenses, they answer no because the 2025 money went to their checking account and paid no 2025 bills. At the follow-up, 'How much of the money that came out paid for medical costs', they enter zero or only the 2025 bills.",
+       "who": "The same non-spouse beneficiary. The parent died in late 2025 and the beneficiary paid the parent's last medical bills in early 2026, within the one-year window, before filing the 2025 return.",
+       "why_no": "The gate is framed as 2025 distributions 'used to pay' expenses, and the question asks how much of 'the money that came out paid for' costs. Payments made in 2026 do not fit that 2025 framing, and the cost-date rule 'after you opened the HSA' does not describe the decedent's case.",
        "line": "f8889.medical_if_partial (Form 8889 line 15)",
-       "irs_text": "i8889 (2025) p. 8, Line 15: 'Only include on line 15 distributions from your HSA that were used to pay you for qualified medical expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established.'",
+       "irs_text": "i8889 p. 3: 'qualified medical expenses incurred by the account beneficiary before the date of death that the beneficiary paid within 1 year after the date of death.'",
        "severity": "medium",
-       "fix": "Say in both the helper and the question: 'paid, or paid you back for, medical costs that count, including costs from earlier years, as long as they came after you opened the HSA and were not already reimbursed or deducted.'"
+       "fix": "For an inherited non-spouse HSA, state that payments made up to 1 year after the date of death count, even if they were made after 2025."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "The filer (or the spouse) inherited a parent's HSA in 2025 as a non-spouse beneficiary and withdrew nothing. The account simply passed to them, and a Form 1099-SA reports its value at the date of death.",
+       "why_no": "Asked 'Any HSA distributions in 2025', the filer thinks nothing was taken out and answers no. Part II is then skipped, so line 15 is never asked even though the beneficiary paid the decedent's medical bills.",
+       "line": "f8889.medical_if_partial (Form 8889 line 15)",
+       "irs_text": "i8889 p. 3: 'the account ceases to be an HSA as of the date of death... On Part II, line 14a, enter the fair market value of the HSA as of the date of death.'",
+       "severity": "medium",
+       "fix": "Ask the gate as: 'In 2025 did you or your spouse take money out of an HSA, receive a Form 1099-SA, or become the beneficiary of an HSA of someone who died?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer paid medical bills out of pocket in 2023 or 2024, after opening the HSA, and in 2025 withdrew HSA money to reimburse themselves.",
+       "why_no": "The question asks how much of the money that came out 'paid for medical costs'. The bills were already paid from the filer's own funds, so the 2025 withdrawal seems to have paid no medical costs. The filer may then answer zero or exclude these amounts.",
+       "line": "f8889.medical_if_partial (Form 8889 line 15)",
+       "irs_text": "i8889 p. 8, Line 15: 'distributions from your HSA that were used to pay you for qualified medical expenses not reimbursed by insurance or other coverage and that you incurred after the HSA was established.'",
+       "severity": "medium",
+       "fix": "Reword the question as 'paid for, or reimbursed you for, medical costs that count (including costs from earlier years, if incurred after you opened the HSA)', and use the same wording in the gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose HSA distributions included an excess contribution withdrawn after the return's due date, and who spent that money on doctor bills.",
+       "why_no": "The question counts any money that came out and paid for medical costs that count. Nothing in it excludes a late-withdrawn excess contribution, so the filer includes it. This is an overstatement rather than a dropped amount.",
+       "line": "f8889.medical_if_partial (Form 8889 line 15)",
+       "irs_text": "i8889 p. 8, Line 15: 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses.'",
+       "severity": "low",
+       "fix": "Add to the help: 'Do not count a withdrawal of an excess contribution made after your return's due date, even if it paid medical costs.'"
       }
      ],
-     "prompt_sha": "7bcaf96c2dfd70032a49cca947044a818f23821bf349260e058925d1c0b9fd10",
+     "prompt_sha": "aad8946a02ee7b29c6736fc37cf144f3e3b8cfb1ce6d2b369e8e15b6db97d053",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-fable-5-2",
-     "cost": 0.228792,
-     "date": "2026-11-12",
-     "response": ".transcription/false_no/gate_f8889.medical_all_if_dist.4cf494b6d6e4.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.11896000000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8889.medical_all_if_dist.48734f01b254.1.response.txt"
     }
    ],
    "condition": "f8889.medical_all_if_dist",
@@ -866,6 +1134,176 @@
      "cols_pages": [
       2,
       3,
+      8,
+      9
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "gate:f8889.mfs_ask": {
+   "subject_sha": "44364b714d6b4f161f1d9330be811cd89d78493a3454affd244c35f3893f5778",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A married filer filing separately with family HDHP coverage. The spouse had an HSA that received contributions for 2025 (from the spouse or the spouse's employer), but the spouse closed it or rolled it into the filer's account late in 2025 or early in 2026, before this return is prepared.",
+       "why_no": "The question asks in the present tense, 'Does your husband or wife have a health savings account (HSA) of their own?' The spouse no longer has one, so 'no' is truthful. The help covers only an HSA that had nothing put in it, not one that existed for 2025 and has since closed.",
+       "line": "f8889.mfs_spouse_hsa_if_asked (the refusal is missed, and the filer takes the whole line 5 family limit on line 6 with no allocation to the spouse)",
+       "irs_text": "i8889 (2025) p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6 ... divide the amount on line 5 equally between you and your spouse\"",
+       "severity": "high",
+       "fix": "Ask: 'Did your husband or wife have an HSA of their own at any time in 2025, or receive any contribution to an HSA of their own for 2025 (including one made in 2026 or by an employer), even if the account is now closed or was rolled over?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married filer filing separately who has self-only HDHP coverage in their own name. The spouse has family HDHP coverage, and both spouses have their own HSAs.",
+       "why_no": "The filer reports their own coverage as self-only, so the helper 'treated as having family coverage' is false unless the tool applies the spouse's family coverage to the filer. If the helper is built from the filer's own coverage answer, the gate is false and the spouse's HSA is never asked.",
+       "line": "f8889.mfs_spouse_hsa_if_asked (the refusal is missed, and line 6 is not split with the spouse)",
+       "irs_text": "i8889 (2025) p. 7, Line 6: \"If you are treated as having family coverage for each month, divide the amount on line 5 equally between you and your spouse\" (the words 'treated as' cover a spouse's family coverage)",
+       "severity": "medium",
+       "fix": "Compute the family-coverage helper as true for any month in which either spouse had family HDHP coverage. Ask the MFS filer separately whether the spouse had family HDHP coverage in any month of 2025."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A married filer filing separately, looking at the wording 'For this person (you, or your spouse on a joint return)'.",
+       "why_no": "On a separate return the joint-return framing is confusing. A filer may read the question as not applying to them, or as asking about themselves, and answer no.",
+       "line": "f8889.mfs_spouse_hsa_if_asked",
+       "irs_text": "i8889 (2025) p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025\"",
+       "severity": "low",
+       "fix": "On a separate return, drop the 'you, or your spouse on a joint return' prefix and ask directly about the husband or wife who is not on this return."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A married couple filing jointly with family HDHP coverage, where each spouse has their own HSA.",
+       "why_no": "The computed gate requires married filing separately, so it is false on a joint return. The line 6 rule in the instructions is not limited to separate returns, so the joint return gets no allocation step unless another path handles it.",
+       "line": "f8889.mfs_spouse_hsa_if_asked (and the line 6 allocation it feeds)",
+       "irs_text": "i8889 (2025) p. 7, Line 6: \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6\"",
+       "severity": "low",
+       "fix": "Confirm that joint returns with two HSAs and family coverage go through a separate line 6 allocation. If they do not, widen the allocation step beyond married filing separately."
+      }
+     ],
+     "prompt_sha": "61d74d6c4e3bed72361551a04cf1ba3a9206ef622b6f77d2d08f618d41e6ab95",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.09140399999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8889.mfs_ask.44364b714d6b.1.response.txt"
+    }
+   ],
+   "condition": "f8889.mfs_ask",
+   "lines": [
+    "f8889.mfs_spouse_hsa_if_asked"
+   ],
+   "inputs": [
+    "f8889.mfs_spouse_hsa"
+   ],
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025\"",
+      "p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6\"",
+      "p. 7, Line 6, \"Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6\" and \"divide the amount on line 5 equally between you and your spouse, unless you both agree on a different allocation\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "gate:f8889.testing_failed_figured": {
+   "subject_sha": "cf1db833d777a02ed4bc5547c01da059f504905872893cb19e8c27e0549609d4",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer moved an IRA distribution into an HSA as a qualified HSA funding distribution in February 2025. They became disabled in September 2025, left their job, and lost HDHP coverage on October 1, 2025.",
+       "why_no": "The gate asks only about a testing period that began in 2024. This filer's testing period began in 2025, so the truthful answer is no. The tool then never asks the disability question, even though the failure, and any income from it, falls in 2025.",
+       "line": "f8889.disabled_if_failed (and through it Form 8889 line 19 and the 10% additional tax)",
+       "irs_text": "i8889 p. 8, Testing period: \"The testing period begins with the month in which the traditional IRA or Roth IRA distribution is contributed to the HSA ... If you fail to remain an eligible individual during this period, other than because of death or becoming disabled, you will have to include the qualified HSA funding distribution in income in the year in which you fail to be an eligible individual.\"",
+       "severity": "high",
+       "fix": "Broaden the gate to cover a qualified HSA funding distribution contributed in 2024 or in 2025 whose testing period was failed during 2025. Ask the disability question for that case too."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer was first HDHP-covered on December 1, 2024. A preparer or software took the full-year 2024 HSA contribution limit for them. They lost HDHP coverage in 2025.",
+       "why_no": "The gate asks whether \"the last-month rule was used for 2024\". The filer does not know that legal label and never chose it knowingly, so they answer no. The failure is then dropped and the disability question is never reached.",
+       "line": "f8889.disabled_if_failed (and Form 8889 line 18)",
+       "irs_text": "i8889 p. 2, Last-month rule: \"You may consider yourself an 'eligible individual' for the entire year if you are an eligible individual on the 1st day of the last month of the tax year ... You are then subject to a 'testing period'.\"",
+       "severity": "medium",
+       "fix": "Ask facts the filer can check instead: the months of HDHP coverage in 2024, and whether the 2024 HSA contribution was more than the months covered would allow (or whether the 2024 Form 8889 line 3 used the full-year amount). Classify the last-month rule from those answers."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer became disabled in 2025, applied for disability benefits, and enrolled in Medicare because of the disability. That enrollment ended their HSA eligibility within the testing period.",
+       "why_no": "The help says \"Losing it for any other reason, such as Medicare at 65 ... means No.\" The filer sees that Medicare is what ended eligibility and answers no, though the underlying cause was becoming disabled.",
+       "line": "f8889.disabled_if_failed",
+       "irs_text": "i8889 p. 2, Testing period: \"If you fail to remain an eligible individual during this period, other than because of death or becoming disabled, you will have to include in income ...\"",
+       "severity": "medium",
+       "fix": "Change the help to: \"Answer Yes if becoming disabled is why you lost HDHP-only coverage, including Medicare you enrolled in because of the disability. Answer No for Medicare at 65 or a job change unrelated to a disability.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer became disabled in 2025, could no longer work, lost their employer's HDHP, and moved to a spouse's non-HDHP plan. They still hold the HSA and continue to take distributions from it.",
+       "why_no": "The question says \"stop being able to have an HSA\". The filer still has the account, which the instructions confirm they may keep using, so they answer no. The help also names \"a new job's ordinary health plan\" as a No, and the filer may read their move to the spouse's plan that way.",
+       "line": "f8889.disabled_if_failed",
+       "irs_text": "i8889 p. 2: \"You can receive distributions from an HSA even if you are not currently eligible to have contributions made to the HSA.\" Same page, Testing period: \"other than because of death or becoming disabled\".",
+       "severity": "medium",
+       "fix": "Reword to: \"Did you stop being eligible to contribute to an HSA (lose HDHP-only coverage) during the testing period because you became disabled, including coverage changes that followed from the disability?\""
+      }
+     ],
+     "prompt_sha": "ab9aee4561f89904c62339e8eefeb0c6641b3cc36c1a43ef86feaa9832c0d523",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.098724,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8889.testing_failed_figured.cf1db833d777.1.response.txt"
+    }
+   ],
+   "condition": "f8889.testing_failed_figured",
+   "lines": [
+    "f8889.disabled_if_failed"
+   ],
+   "inputs": [
+    "f8889.disabled"
+   ],
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      2,
+      8,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Testing period, \"If you fail to remain an eligible individual during this period, other than because of death or becoming disabled, you will have to include in income the total contributions made that would not have been made except for the last-month rule\"; p. 8, Testing period, \"If you fail to remain an eligible individual during this period, other than because of death or becoming disabled, you will have to include the qualified HSA funding distribution in income\"",
+      "p. 2, Testing period; p. 8, Testing period",
+      "p. 9, Part III, \"Use Part III to figure any additional income and adjustments to income that must be reported on Schedule 1 (Form 1040) and additional taxes that must be reported on Schedule 2 (Form 1040) for failure to be an eligible individual during the testing period\""
+     ],
+     "cols_pages": [
+      2,
       8,
       9
      ],

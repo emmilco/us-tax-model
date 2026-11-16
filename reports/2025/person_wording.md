@@ -33,7 +33,41 @@ The closed lists the rule works from (a framed question with a subject before a 
 - verbs after "this person" or "your spouse" that change for "you": "is" to "are", "was" to "were", "has" to "have", "does" to "do", "isn't" to "aren't", "wasn't" to "weren't", "doesn't" to "don't"
 - words after a subject or an object that need no change: "a", "acquired", "age", "agreed", "an", "and", "applied", "applying", "as", "at", "became", "blind", "born", "by", "can", "can't", "cannot", "claimed", "contributed", "could", "covered", "deducted", "deferred", "did", "died", "enrolled", "filed", "for", "fully", "had", "have", "if", "in", "inherited", "made", "more", "never", "of", "on", "opened", "or", "overtime", "paid", "put", "received", "recharacterized", "repaid", "returned", "rolled", "served", "to", "took", "turned", "under", "with"
 
-105 questions carry the frame.
+120 questions carry the frame.
+
+## `$k1p`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Which partnerships or LLCs sent you a Schedule K-1 (Form 1065) for 2025?
+
+Shown on a one-person return:
+
+> Which partnerships or LLCs sent you a Schedule K-1 (Form 1065) for 2025?
+
+Shown for you on a couple's return:
+
+> About you — Which partnerships or LLCs sent you a Schedule K-1 (Form 1065) for 2025?
+
+Shown for your spouse:
+
+> About your spouse — Which partnerships or LLCs sent your spouse a Schedule K-1 (Form 1065) for 2025?
+
+**Help, as stored**
+
+> List each Schedule K-1 (Form 1065) once, by the partnership's name in item B. A Schedule K-1 from an S corporation (Form 1120-S) or from an estate or trust (Form 1041) is not listed here.
+
+Shown on a one-person return:
+
+> List each Schedule K-1 (Form 1065) once, by the partnership's name in item B. A Schedule K-1 from an S corporation (Form 1120-S) or from an estate or trust (Form 1041) is not listed here.
+
+Shown for you on a couple's return:
+
+> List each Schedule K-1 (Form 1065) once, by the partnership's name in item B. A Schedule K-1 from an S corporation (Form 1120-S) or from an estate or trust (Form 1041) is not listed here.
+
+Shown for your spouse:
+
+> List each Schedule K-1 (Form 1065) once, by the partnership's name in item B. A Schedule K-1 from an S corporation (Form 1120-S) or from an estate or trust (Form 1041) is not listed here.
 
 ## `person.rrta`
 
@@ -222,6 +256,366 @@ Shown for you on a couple's return:
 Shown for your spouse:
 
 > The statement must say that your spouse's better eye sees no better than 20/200 with glasses or contact lenses, or that your spouse's field of vision is 20 degrees or less, or that your spouse's sight is not likely to improve beyond those limits. Lenses your spouse can wear only briefly (pain, infection, ulcers) do not count.
+
+## `person.household_wages`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+
+Shown on a one-person return:
+
+> How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+
+Shown for you on a couple's return:
+
+> About you — How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+
+Shown for your spouse:
+
+> About your spouse — How much was your spouse paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+
+**Help, as stored**
+
+> Add up the pay from every household that gave no W-2 for it. Pay on a W-2 is entered with the W-2s.
+
+Shown on a one-person return:
+
+> Add up the pay from every household that gave no W-2 for it. Pay on a W-2 is entered with the W-2s.
+
+Shown for you on a couple's return:
+
+> Add up the pay from every household that gave no W-2 for it. Pay on a W-2 is entered with the W-2s.
+
+Shown for your spouse:
+
+> Add up the pay from every household that gave no W-2 for it. Pay on a W-2 is entered with the W-2s.
+
+## `$f8919firm`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Which firms paid you in that way in 2025?
+
+Shown on a one-person return:
+
+> Which firms paid you in that way in 2025?
+
+Shown for you on a couple's return:
+
+> About you — Which firms paid you in that way in 2025?
+
+Shown for your spouse:
+
+> About your spouse — Which firms paid your spouse in that way in 2025?
+
+**Help, as stored**
+
+> Name only firms that treated you as a contractor when, in your view, you were their employee. If none did, leave the list empty.
+
+Shown on a one-person return:
+
+> Name only firms that treated you as a contractor when, in your view, you were their employee. If none did, leave the list empty.
+
+Shown for you on a couple's return:
+
+> Name only firms that treated you as a contractor when, in your view, you were their employee. If none did, leave the list empty.
+
+Shown for your spouse:
+
+> Name only firms that treated your spouse as a contractor when, in your spouse's view, your spouse was their employee. If none did, leave the list empty.
+
+## `person.strike`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+
+Shown on a one-person return:
+
+> How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+
+Shown for you on a couple's return:
+
+> About you — How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+
+Shown for your spouse:
+
+> About your spouse — How much did your spouse get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+
+## `$f4137row`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — At which employers did you get tips you did not report in full?
+
+Shown on a one-person return:
+
+> At which employers did you get tips you did not report in full?
+
+Shown for you on a couple's return:
+
+> About you — At which employers did you get tips you did not report in full?
+
+Shown for your spouse:
+
+> About your spouse — At which employers did your spouse get tips your spouse did not report in full?
+
+**Help, as stored**
+
+> Name each employer at which you received cash or card tips you did not report in full to the employer. If the only tips were tickets or other things, leave the list empty.
+
+Shown on a one-person return:
+
+> Name each employer at which you received cash or card tips you did not report in full to the employer. If the only tips were tickets or other things, leave the list empty.
+
+Shown for you on a couple's return:
+
+> Name each employer at which you received cash or card tips you did not report in full to the employer. If the only tips were tickets or other things, leave the list empty.
+
+Shown for your spouse:
+
+> Name each employer at which your spouse received cash or card tips your spouse did not report in full to the employer. If the only tips were tickets or other things, leave the list empty.
+
+## `person.f4137_under20`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Of the cash and charge tips you did not report, how much did you not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none.
+
+Shown on a one-person return:
+
+> Of the cash and charge tips you did not report, how much did you not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none.
+
+Shown for you on a couple's return:
+
+> About you — Of the cash and charge tips you did not report, how much did you not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none.
+
+Shown for your spouse:
+
+> About your spouse — Of the cash and charge tips your spouse did not report, how much did your spouse not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none.
+
+**Help, as stored**
+
+> You had to report tips to an employer only in a month in which the cash and card tips at that job came to $20 or more. Tips below that are still income but carry no social security or Medicare tax.
+
+Shown on a one-person return:
+
+> You had to report tips to an employer only in a month in which the cash and card tips at that job came to $20 or more. Tips below that are still income but carry no social security or Medicare tax.
+
+Shown for you on a couple's return:
+
+> You had to report tips to an employer only in a month in which the cash and card tips at that job came to $20 or more. Tips below that are still income but carry no social security or Medicare tax.
+
+Shown for your spouse:
+
+> Your spouse had to report tips to an employer only in a month in which the cash and card tips at that job came to $20 or more. Tips below that are still income but carry no social security or Medicare tax.
+
+## `person.tips_gov`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Did you receive any of these unreported tips for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?
+
+Shown on a one-person return:
+
+> Did you receive any of these unreported tips for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?
+
+Shown for you on a couple's return:
+
+> About you — Did you receive any of these unreported tips for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?
+
+Shown for your spouse:
+
+> About your spouse — Did your spouse receive any of these unreported tips for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?
+
+**Help, as stored**
+
+> A Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A Yes ends the interview here.
+
+Shown for your spouse:
+
+> A Yes ends the interview here.
+
+## `person.tips_noncash`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — What was the value of the tips you received in 2025 that were not money, such as tickets, passes or other items of value? Zero if none.
+
+Shown on a one-person return:
+
+> What was the value of the tips you received in 2025 that were not money, such as tickets, passes or other items of value? Zero if none.
+
+Shown for you on a couple's return:
+
+> About you — What was the value of the tips you received in 2025 that were not money, such as tickets, passes or other items of value? Zero if none.
+
+Shown for your spouse:
+
+> About your spouse — What was the value of the tips your spouse received in 2025 that were not money, such as tickets, passes or other items of value? Zero if none.
+
+**Help, as stored**
+
+> Value them at what they were worth. You do not report these to the employer.
+
+Shown on a one-person return:
+
+> Value them at what they were worth. You do not report these to the employer.
+
+Shown for you on a couple's return:
+
+> Value them at what they were worth. You do not report these to the employer.
+
+Shown for your spouse:
+
+> Value them at what they were worth. Your spouse does not report these to the employer.
+
+## `person.mw_box1`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — How much of the Medicaid pay you received in 2025 for caring for someone who lived with you in your home appears in box 1 of your W-2s? Zero if none.
+
+Shown on a one-person return:
+
+> How much of the Medicaid pay you received in 2025 for caring for someone who lived with you in your home appears in box 1 of your W-2s? Zero if none.
+
+Shown for you on a couple's return:
+
+> About you — How much of the Medicaid pay you received in 2025 for caring for someone who lived with you in your home appears in box 1 of your W-2s? Zero if none.
+
+Shown for your spouse:
+
+> About your spouse — How much of the Medicaid pay your spouse received in 2025 for caring for someone who lived with your spouse in your spouse's home appears in box 1 of your spouse's W-2s? Zero if none.
+
+**Help, as stored**
+
+> Count only pay for caring for someone who lives in your home with you. Box 12 code II shows such pay that is not in box 1.
+
+Shown on a one-person return:
+
+> Count only pay for caring for someone who lives in your home with you. Box 12 code II shows such pay that is not in box 1.
+
+Shown for you on a couple's return:
+
+> Count only pay for caring for someone who lives in your home with you. Box 12 code II shows such pay that is not in box 1.
+
+Shown for your spouse:
+
+> Count only pay for caring for someone who lives in your spouse's home with your spouse. Box 12 code II shows such pay that is not in box 1.
+
+## `person.mw_not_box1`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none.
+
+Shown on a one-person return:
+
+> How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none.
+
+Shown for you on a couple's return:
+
+> About you — How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none.
+
+Shown for your spouse:
+
+> About your spouse — How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none.
+
+## `person.mw_1099`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — How much of that was reported on a Form 1099-MISC or 1099-NEC? Zero if none.
+
+Shown on a one-person return:
+
+> How much of that was reported on a Form 1099-MISC or 1099-NEC? Zero if none.
+
+Shown for you on a couple's return:
+
+> About you — How much of that was reported on a Form 1099-MISC or 1099-NEC? Zero if none.
+
+Shown for your spouse:
+
+> About your spouse — How much of that was reported on a Form 1099-MISC or 1099-NEC? Zero if none.
+
+## `person.mw_business`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?
+
+Shown on a one-person return:
+
+> Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?
+
+Shown for you on a couple's return:
+
+> About you — Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?
+
+Shown for your spouse:
+
+> About your spouse — Does your spouse run a business of your spouse's own that provides home care, with this pay reported on a business schedule (Schedule C)?
+
+**Help, as stored**
+
+> A Yes ends the interview here.
+
+Shown on a one-person return:
+
+> A Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> A Yes ends the interview here.
+
+Shown for your spouse:
+
+> A Yes ends the interview here.
+
+## `person.mw_earned`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Do you choose to count this Medicaid pay as earned income? It is not taxed either way; counting it can raise credits such as the earned income credit.
+
+Shown on a one-person return:
+
+> Do you choose to count this Medicaid pay as earned income? It is not taxed either way; counting it can raise credits such as the earned income credit.
+
+Shown for you on a couple's return:
+
+> About you — Do you choose to count this Medicaid pay as earned income? It is not taxed either way; counting it can raise credits such as the earned income credit.
+
+Shown for your spouse:
+
+> About your spouse — Does your spouse choose to count this Medicaid pay as earned income? It is not taxed either way; counting it can raise credits such as the earned income credit.
+
+**Help, as stored**
+
+> Each spouse chooses for their own pay. Counting it can raise the earned income credit and the child tax credit; it can also lower them at higher incomes. If unsure, figure the return both ways.
+
+Shown on a one-person return:
+
+> Each spouse chooses for their own pay. Counting it can raise the earned income credit and the child tax credit; it can also lower them at higher incomes. If unsure, figure the return both ways.
+
+Shown for you on a couple's return:
+
+> Each spouse chooses for their own pay. Counting it can raise the earned income credit and the child tax credit; it can also lower them at higher incomes. If unsure, figure the return both ways.
+
+Shown for your spouse:
+
+> Each spouse chooses for their own pay. Counting it can raise the earned income credit and the child tax credit; it can also lower them at higher incomes. If unsure, figure the return both ways.
 
 ## `$w2`
 
@@ -2141,6 +2535,40 @@ Shown for your spouse:
 
 > Losing it for any other reason, such as Medicare at 65 or a new job's ordinary health plan, means No.
 
+## `f8889.mfs_spouse_hsa`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Does your husband or wife have a health savings account (HSA) of their own?
+
+Shown on a one-person return:
+
+> Does your husband or wife have a health savings account (HSA) of their own?
+
+Shown for you on a couple's return:
+
+> About you — Does your husband or wife have a health savings account (HSA) of their own?
+
+Shown for your spouse:
+
+> About your spouse — Does your spouse's husband or wife have a health savings account (HSA) of their own?
+
+**Help, as stored**
+
+> Count an HSA in their name even if nothing was put into it for 2025. A Yes ends the interview here.
+
+Shown on a one-person return:
+
+> Count an HSA in their name even if nothing was put into it for 2025. A Yes ends the interview here.
+
+Shown for you on a couple's return:
+
+> Count an HSA in their name even if nothing was put into it for 2025. A Yes ends the interview here.
+
+Shown for your spouse:
+
+> Count an HSA in their name even if nothing was put into it for 2025. A Yes ends the interview here.
+
 ## `person.x_hsa_value`
 
 **Question, as stored**
@@ -3588,3 +4016,37 @@ Shown for you on a couple's return:
 Shown for your spouse:
 
 > On a joint return these go only in your spouse's own column of Form 8880 line 4.
+
+## `$k1s`
+
+**Question, as stored**
+
+> For this person (you, or your spouse on a joint return) — Which S corporations sent you a Schedule K-1 (Form 1120-S) for 2025?
+
+Shown on a one-person return:
+
+> Which S corporations sent you a Schedule K-1 (Form 1120-S) for 2025?
+
+Shown for you on a couple's return:
+
+> About you — Which S corporations sent you a Schedule K-1 (Form 1120-S) for 2025?
+
+Shown for your spouse:
+
+> About your spouse — Which S corporations sent your spouse a Schedule K-1 (Form 1120-S) for 2025?
+
+**Help, as stored**
+
+> Name each corporation once, as on its K-1. A K-1 from a partnership, an estate or a trust is not listed here. If you received none from an S corporation, leave the list empty.
+
+Shown on a one-person return:
+
+> Name each corporation once, as on its K-1. A K-1 from a partnership, an estate or a trust is not listed here. If you received none from an S corporation, leave the list empty.
+
+Shown for you on a couple's return:
+
+> Name each corporation once, as on its K-1. A K-1 from a partnership, an estate or a trust is not listed here. If you received none from an S corporation, leave the list empty.
+
+Shown for your spouse:
+
+> Name each corporation once, as on its K-1. A K-1 from a partnership, an estate or a trust is not listed here. If your spouse received none from an S corporation, leave the list empty.

@@ -2,87 +2,133 @@
  "kind": "render",
  "form": "se",
  "family": "claude",
- "base": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
+ "base": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
  "lines": [
   {
    "key": "2",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names net earnings from a partnership (Schedule K-1, box 14, code A) and other self-employment income not on a Schedule C."
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: interface gap; restatement accepted. A line of the Schedule SE definition, bound per person by person.se_line2 (person.sc_total); the cases the IRS line adds are refused at that calling line through person.se_screened, whose screen person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5) names net earnings from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C, church employee income, and ministers / members of religious orders / Christian Science practitioners (the statutory-employee and minister adjustments of i1040sse line 2). The reviewer was given the definition, not its caller.",
+   "subject_key": "90c2e1cc4dcaf2c3e48cec49ad4d114c7a5ca4dc4829c814e6ed9a6b2c6db11c"
   },
   {
    "key": "8a",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MATCH"
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "06ed978f390f6cd860e3fc4e2bf1893ee6ad2ecc3a6473ba8f4b70b14897fc35"
+  },
+  {
+   "key": "8b",
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "853d36eff519459c888d00dba189f94d87703ebc15653623b17b3ca0ae0b5351"
+  },
+  {
+   "key": "8c",
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "add287c36ce154ba268e1829061b63709887af7bedbbe2b4eca420aad75d39e2"
   },
   {
    "key": "3",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
    "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names farm income (Schedule F) and Conservation Reserve Program payments, the sources of lines 1a and 1b."
+   "ruling": "Ruling: interface gap; restatement accepted. Lines 1a and 1b (farm profit, Conservation Reserve Program payments) and the dotted-line adjustments are refused at the calling line person.se_line2 through person.se_screen, which names farm income (Schedule F) or Conservation Reserve Program payments, a chapter 11 bankruptcy case and community income on a separate return (i1040sse pp. 1-5); with them refused, line 3 is line 2. The reviewer was given the definition, not its caller.",
+   "subject_key": "50516cb51d0e427c69ae91bcd0c70d983812e79c8ba75cbb42d8e8269691af50"
   },
   {
    "key": "4a",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MATCH"
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "a62a5d54e9a9ee3d9f16f219d77c34a97dd25630aca5c4fe996a1a5c50d39267"
   },
   {
    "key": "4b",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
    "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names electing an optional method (Schedule SE Part II)."
+   "ruling": "Ruling: interface gap; restatement accepted. Line 4b is zero because electing an optional method (Schedule SE Part II) is refused at the calling line person.se_line2 through person.se_screen, which names it (i1040sse Instructions for Part II). The reviewer was given the definition, not its caller.",
+   "subject_key": "f34ed2158a64680efbdd42f48b88085f53e4d1eddabb3a8be89c52be3955c5d6"
   },
   {
    "key": "4c",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MATCH"
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "643aab9d2c1419b0ea67be1dfc79e0789f90829428035025e876e9dea38ed55e"
   },
   {
    "key": "5b",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
    "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names church employee income, the source of line 5a."
+   "ruling": "Ruling: interface gap; restatement accepted. Line 5b is zero because church employee income (line 5a) is refused at the calling line person.se_line2 through person.se_screen, which names 'church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)' (i1040sse p. 1, Employees of Churches and Church Organizations). The reviewer was given the definition, not its caller.",
+   "subject_key": "b6c13e1e18281ecd7728521cd6ceb686efd7208324ceebfa02d62013ed62cb99"
   },
   {
    "key": "6",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MATCH"
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "931a1edf3ddd7b220519c8222ec2ccd2a979cea523683260af6de633045bb25e"
   },
   {
    "key": "7",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MATCH"
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "d528212089015f41a4be557e4e58c4b755f71734f2a01080d3fa39f0a9172462"
   },
   {
    "key": "8d",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names tips reported on Form 4137 and wages on Form 8919, the sources of lines 8b and 8c."
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "944a95bfa3ee147111867350e1bda732239ac32a44d25d864fcf74969bb19411"
   },
   {
    "key": "9",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MATCH"
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "b3cc8334724c084b28ebe4f6aa56375b152b8ad42cb4390d7501664877c1863f"
   },
   {
    "key": "10",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MATCH"
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "705508905b1008ef0ad17fddd6eb26107a284f7e011c0822f59fc7ca116da4b8"
   },
   {
    "key": "11",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MATCH"
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "2b74991a60173f2d459d8416614fb15e5589a07f06ff52ecc049f0ab9049723f"
   },
   {
    "key": "12",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MATCH"
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "0fb1f4b8ea6d5ff7ef394075a107433e40b433832bf4f5faa8bfbf7eb2222537"
   },
   {
    "key": "13",
-   "record": "5c6b5970662a30155e624fff6e095c2c56ac53ab817017b0b2a98b3d85e482a5",
-   "status": "MATCH"
+   "record": "d0e76165290199dc02d0c56fa650ff1239b0efa3924ee8872ceff01892aaf41a",
+   "status": "MATCH",
+   "subject_key": "26ae7178beecd4edad4a25e654417177f573a5d4e16ee71d3bb3a2db22079157"
   }
- ]
+ ],
+ "subjects": {
+  "2": "2e7bd4a2de25ad3e17e74bde96418e3b40954d499e394087224c6cc48de4cc5f",
+  "8a": "64104472aebcb31b35adccb22ae456375eeece2a8608f9f2a2635711e8364e7c",
+  "8b": "bd58c384eb6b6469e9a13e5ae064c08224641e4097e6e78d68515ff9ff80da2e",
+  "8c": "44e37b31f66aa71a4a3b6a5127534fe1d0ce2b63bdabfe40a4f818b1840c7fd8",
+  "3": "9ed4cd484f16a5535355b5cfaa597b89a9ccde188ab58c6c44935604b74dc43f",
+  "4a": "81318570e95baf862dbb093ff747206d5fc8e377fe107c375df37586000fb87a",
+  "4b": "10678da0d0a03abfe0d9a66038fc211dcb45d8fcdfd489a35813cea12e632884",
+  "4c": "bd37bc3b4465618446ee7e5a32a33da2ffb49145b1ada407bab89e90a72b6659",
+  "5b": "abaa14324b8c40c7a2cde26665233db6569b53ffb5882ae6f11d83ddca17011d",
+  "6": "4939e4126322b1f274b2b8818cfc7feffae3a11b040bad0697cc53616a8515d7",
+  "7": "e8dc54d4bd42443725bfc528d57617f3d127ed6f89c347682a0bc8308e1ef94d",
+  "8d": "a6ae777848c993c02ae5f5cc9338bef538477c652fb79488b3ace1660b3aa6d0",
+  "9": "b2437f8a90fc9652a504a97141b9dfaa8183cd43a5503202de8e4ed9c02e1039",
+  "10": "17ef3e5f769454ffeea43b873de42ecb2781b69b708c53b7f79437fb37868d91",
+  "11": "56de0644d0c3b0c3cb33114afa050c35ede0e7affad66ab9ec6786bfe2795ca2",
+  "12": "02d6748bd20fcea803b922d3a141d6529f775e2111d8662165712b0561578001",
+  "13": "209bf9469f7a7fd383e8655f9f6ca191a1b59f69aca29c64f74adb84f6f45327"
+ },
+ "__rest__": "6449555b44dc34d778c9699c3485f87219cb82c8e39ce13064bec80d89370d10"
 }

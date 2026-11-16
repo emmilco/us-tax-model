@@ -1,0 +1,38 @@
+{
+ "kind": "render",
+ "form": "rprop",
+ "rulings": [
+  {
+   "printed": "(a)",
+   "restated": "Input — What is this?\n\n- residential: a building (or an improvement to one) whose rent comes mostly (80% or more) from homes\n- nonresidential: any other building, such as shops or offices, or an improvement to one\n- personal: something other than a building or part of one, such as an appliance, carpet, furniture, a fence or a driveway",
+   "model": "The residential (80% or more of rent from dwelling units) and personal-property splits match, and personal property is refused. But every improvement to a non-home building is classed as nonresidential, so it gets 39-year rates, while the text lists 'Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017' as 15-year property; no refusal excludes it.",
+   "ruling": "Ruling: finding; i4562 p. 9 lists as 15-year property 'Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017', and the design (scout-schedule-e.md R10) refuses it on rprop.screen, but the built screen omits it: an interior improvement to a nonresidential rental is classed nonresidential and gets 39-year rates (BUG-0919).",
+   "context": "d1e56eebfc60e10cd72d00f2a2dab58d7da608c02f4bc3662e1b780b093aaba5",
+   "date": "2026-11-15",
+   "run": "4d4d459f8393b3ec32735cb73d2a01063b12b85b80d0371fcc98889b14df4328",
+   "severity": "medium",
+   "subject_key": "0a7b3f1bcee8d26f9d9bbcaccd7cb707b41321e43c9871b9de12a5c34d00f234"
+  },
+  {
+   "printed": "(c)",
+   "restated": "Input — Its basis for depreciation: what you paid for the building or improvement, not the land (for a home you lived in before renting it, the smaller of its value and your adjusted basis when you began renting it); your share",
+   "model": "The IRS says to \"multiply the cost or other basis of the property by the percentage of business/investment use\"; the restatement applies no business/investment-use percentage (\"your share\" reads as an ownership share), which changes the value for partly rented property. The converted-home rule (smaller of value and adjusted basis) and the exclusion of land are not in the text given. Credit/deduction reductions are covered by the screen refusal.",
+   "ruling": "Ruling: representation; the business-use division of a rental with personal use is made on Schedule E line 18 by days (rental.div18; i1040se p. 6, Line 18, and p527 p. 25, Dividing Expenses), not in column (c); renting part of a home the filer lives in now refuses (rental.part_home, i1040se p. 6, Renting out part of your home), and a basis reduced by a credit or deduction refuses at rprop.screen, as the review notes. 'Your share' is the ownership share. The converted-home rule (smaller of fair market value and adjusted basis) is p527's Property Changed to Rental Use and the exclusion of land is i4562 p. 10, Column (c); the cited i1040se page does not print them but they are right.",
+   "context": "9a04181b04e84eba6a401e9eca03400870208e35898cd2e7b0203cab673052f1",
+   "date": "2026-11-15",
+   "run": "4496d0a918e2d6a548329426dcc9123905489af65982db2eb400922cef4fad30",
+   "subject_key": "3a739aed59fb544eaa9a59cc83be7ae22860b1bbc3887cd2d88938ed2927ceb0"
+  },
+  {
+   "printed": "(c)",
+   "restated": "Input — Its basis for depreciation: what you paid for the building or improvement, not the land (for a home you lived in before renting it, the smaller of its value and your adjusted basis when you began renting it); your share",
+   "model": "The text says to 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property' (for example, 'Deduction for removal of barriers to the disabled and the elderly' and 'Disabled access credit'). The restatement uses what you paid (your share) without the business-use percentage or those subtractions; only section 179 and special allowance are screened out. Its land exclusion and converted-home rule are not in the text given.",
+   "ruling": "Ruling: finding; i1040se p. 6, 'If you rent out only part of your home or other property, deduct the part of your expenses that applies to the rented part', and i4562 Column (c), 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property'. rprop.basis asks what was paid for the building with no rented-part share and no credit reduction, and nothing refuses a room rented in the filer's home (BUG-0920). The land exclusion and converted-home rule the reply calls absent are i1040se Line 18 / p527 basis rules, cited correctly.",
+   "context": "d1e56eebfc60e10cd72d00f2a2dab58d7da608c02f4bc3662e1b780b093aaba5",
+   "date": "2026-11-15",
+   "run": "4d4d459f8393b3ec32735cb73d2a01063b12b85b80d0371fcc98889b14df4328",
+   "severity": "medium",
+   "subject_key": "ceac7222191219cda197a5280f4f3dd8a45c20bb3c8ef87e3e99a3b4c31a4f25"
+  }
+ ]
+}

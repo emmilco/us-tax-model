@@ -1,0 +1,16 @@
+{
+ "kind": "render",
+ "form": "oi8z",
+ "rulings": [
+  {
+   "printed": "8z (amount)",
+   "restated": "Input — The amount of this item to include in income for 2025",
+   "model": "The IRS lists 'Loss on certain corrective distributions of excess deferrals' as a line 8z item, and a loss is a negative amount. The NonNegDollars type cannot hold a negative value, so a loss would be entered as income. The text also says 'See Recoveries in Pub. 525 for details on how to figure the amount to report', but those pages are not provided.",
+   "ruling": "Ruling: scope; the model says a loss on certain corrective distributions of excess deferrals cannot be held by the NonNegDollars amount, and that Pub. 525 Recoveries is not shown. An item of kind corrective_distribution is refused at the entry by oi8z.figured (oi8z.taxable refuses when oi8z.figured: \"a corrective distribution, disaster relief payments, insurance dividends, or any other kind\"), and an item of kind recovery by oi8z.recovery (i1040gi p. 92, Line 8z, \"See Recoveries in Pub. 525 for details on how to figure the amount to report\"); recoveries of 2024 itemized deductions are figured on form rec. Every kind the line computes is an income amount, so NonNegDollars is right for the computed cases.",
+   "context": "4a9a6c6bcac77212a87bf0f8fa29e19ac8a499baa0ad5abab6daf58a0e95e4e6",
+   "date": "2026-11-15",
+   "run": "4323374600012327d9155d6cb578c91da144d5206414f01b125188519f7e6e25",
+   "subject_key": "9a094d1812f17478c33a57d9ec5ac38d6e8d347c5e0f4c2676517beaf7f77a1b"
+  }
+ ]
+}

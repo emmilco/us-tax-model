@@ -1,0 +1,59 @@
+{
+ "kind": "render",
+ "form": "royalty",
+ "family": "claude",
+ "base": "f7e7cefcd2b7e9bcd21f4c3d3e74898c6f974cc94f41fe85bf478a3827aadf5e",
+ "head_rows": {
+  "match / mismatch / unclear / missing": "4 / 2 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "4",
+   "record": "eeb4884e4f9d797c99f76331e02b9bb6524f2bb30c79fc39ae804178840a39e6",
+   "status": "MATCH",
+   "subject_key": "fbe4efc97207d0efe41f9a7bbc884e5b2f3bbab3ee49204b97c961cc4de7acab"
+  },
+  {
+   "key": "10",
+   "record": "f7e7cefcd2b7e9bcd21f4c3d3e74898c6f974cc94f41fe85bf478a3827aadf5e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; royalty.amt10 asks all legal and professional fees, but i1040se Line 10: 'Do not deduct legal fees paid or incurred to defend or protect title to property, to recover property, or to develop or improve property. Instead, you must capitalize these fees.' (BUG-0922)",
+   "subject_key": "a0165b7fffc5eb4118c77cada98edb18205e9214adf615cd28fae2567975b2ce"
+  },
+  {
+   "key": "16",
+   "record": "eeb4884e4f9d797c99f76331e02b9bb6524f2bb30c79fc39ae804178840a39e6",
+   "status": "MATCH",
+   "subject_key": "aff23c083eb39949458cdfc8410a0ef7c47a446d0f158f7c0d36975e8528d0d5"
+  },
+  {
+   "key": "19",
+   "record": "f7e7cefcd2b7e9bcd21f4c3d3e74898c6f974cc94f41fe85bf478a3827aadf5e",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; royalty.amt19 asks 'Other costs of it (not depletion)' without i1040se's exclusion 'Do not deduct the value of your own labor or amounts paid for capital investments or capital improvements' (BUG-0922). Folding expenses of lines 5 to 18 other than 10 and 16 into line 19 is representation (line 21 unchanged).",
+   "subject_key": "e8eb334fc9a52f85c5cf2a27e4e43aa98e91cecbfab3e552f34bb1a83874080e"
+  },
+  {
+   "key": "20",
+   "record": "f7e7cefcd2b7e9bcd21f4c3d3e74898c6f974cc94f41fe85bf478a3827aadf5e",
+   "status": "MATCH",
+   "subject_key": "233a96d0eec1ccdd69aa6dd1bcfcf4d5123afda24393dadfc5b35ae2b2004eb7"
+  },
+  {
+   "key": "21",
+   "record": "eeb4884e4f9d797c99f76331e02b9bb6524f2bb30c79fc39ae804178840a39e6",
+   "status": "MATCH",
+   "subject_key": "346bbafc51e21c4fd3e6fe3731a835e2e7c1c0814cd7b19c109a5a45fe0ddd72"
+  }
+ ],
+ "subjects": {
+  "4": "949fcf475772469a25725ac6096c1ff2d5979c0009fa63745ebbf3b80d731818",
+  "10": "72671447046b5de6c73e15727e0def3a1fc74e03403a9ceeea4ee76c8007b177",
+  "16": "f24ddfe58fa68ecaab99b2866ab46e1abd93559559dc3574f523dbdb37f938a2",
+  "19": "ff22a70dfe43d03fb2091d2edef77fb794941af67672f9320c4567fbc43e96c2",
+  "20": "6140b2f53a68faa7366cc1bcdce0827b7713cee10b9d341397f92f6132bdb0a5",
+  "21": "2f11d1788c2dc89c51e83cce58f1423d5388fff9493a18754a7a2e5bea315a40"
+ },
+ "__rest__": "b88ed3ceb158a0a5392a395ad908a6bdcf2cf6656560d1fe97e9a0b9e00fc250"
+}

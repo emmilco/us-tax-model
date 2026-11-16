@@ -1,0 +1,89 @@
+diff --git a/tools/engines/README.md b/tools/engines/README.md
+index ac46198..7d92053 100644
+--- a/tools/engines/README.md
++++ b/tools/engines/README.md
+@@ -272,7 +272,9 @@ the key leaves out cannot read an old record. The newest six records of each eng
+ `ENGINE_CACHE` chooses the mode: `use` (the default; a missing record is produced and stored), `verify`
+ (every engine runs; a stored record under the same key must equal the fresh one, or the step fails naming the
+ engine and the first differing lines, the stored record set aside as `<key>.stale`), and `off` (every engine
+-runs; nothing is read or stored). `tools/release.sh` runs its full check-all with `ENGINE_CACHE=verify`. The
++runs; nothing is read or stored). `tools/release.sh` runs its full check-all with `ENGINE_CACHE=verify`. With
++`ENGINE_CACHE=verify` or `CHECK_ALL_RELEASE=1`, an engine that is not installed and built for the year fails the
++step rather than being left out (the Python engines in `run.sh`, OpenTaxSolver and UsTaxes in `run_engines.py`). The
+ step's log names, per engine, whether its record was reused or how long the engine ran.
+ 
+ Tax-Calculator runs with `exact_calculations=True`, so its phase-outs follow the printed $1,000 steps (Schedule 1-A lines 11, 19 and 28; Schedule 8812 line 10) rather than its smoothed default. Generated filers are 40, or 66 to 85 for the enhanced deduction for seniors; PolicyEngine-US is told they are not enrolled in Medicare, since medical expenses are all supplied.
+diff --git a/tools/engines/run.sh b/tools/engines/run.sh
+index 16f6a32..52a38ea 100755
+--- a/tools/engines/run.sh
++++ b/tools/engines/run.sh
+@@ -3,7 +3,8 @@
+ # married filing jointly) through the project and through PolicyEngine-US, Tax-Calculator,
+ # OpenTaxSolver and UsTaxes, compared line by line. Skips visibly when the Python engines are not
+ # installed (tools/engines/setup.sh); run_engines.py leaves OpenTaxSolver and UsTaxes out, visibly,
+-# when their packages are not installed.
++# when their packages are not installed. A release or verify run (CHECK_ALL_RELEASE=1 or ENGINE_CACHE=verify)
++# compares every engine, so there a missing engine fails the step instead.
+ set -euo pipefail
+ # Arguments (--year N) are passed to every step; the paths below use the year they resolve to.
+ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+@@ -15,6 +16,10 @@ S="${ENGINE_SE_CASES:-300}"
+ SEED="${ENGINE_SEED:-20260101}"
+ Y="$(python3 -I -c 'import sys; sys.path.insert(0, sys.argv[1]); sys.argv[1:2] = []; import taxyear; print(taxyear.Y)' "$ROOT/tools" "$@")"
+ if [ ! -x "$VENV/bin/python" ]; then
++  if [ "${CHECK_ALL_RELEASE:-}" = 1 ] || [ "${ENGINE_CACHE:-}" = verify ]; then
++    echo "engine differential: engines not installed (tools/engines/setup.sh); a run with CHECK_ALL_RELEASE=1 or ENGINE_CACHE=verify compares every engine and skips none" >&2
++    exit 1
++  fi
+   echo "engine differential: SKIPPED - engines not installed; run tools/engines/setup.sh once (network) to enable this check"
+   exit 0
+ fi
+diff --git a/tools/engines/run_engines.py b/tools/engines/run_engines.py
+index 78a307d..a83f081 100644
+--- a/tools/engines/run_engines.py
++++ b/tools/engines/run_engines.py
+@@ -8,7 +8,8 @@ back the engine's federal lines in integer cents. OpenTaxSolver's adapter is
+ the sibling module ots_adapter.py (text input files through the C programs
+ built under .engines/opentaxsolver-src/); UsTaxes' is ustaxes_adapter.py (one Node
+ process over the TypeScript clone in .engines/ustaxes-src/). Each is left out,
+-visibly, when its package is not installed. Each engine's record is stored and
++visibly, when its package is not installed, except in a release or verify run
++(must_compare_all), which fails instead. Each engine's record is stored and
+ reused while everything that determines it is unchanged (engine_cache.py,
+ ENGINE_CACHE).
+ 
+@@ -33,7 +34,7 @@ adapter gives it in place of a computation), for the comparison's model of its
+ unrounded arithmetic.
+ """
+ import re
+-import argparse, json, sys, warnings
++import argparse, json, os, sys, warnings
+ from pathlib import Path
+ 
+ # tools/ comes off the path again once taxyear is loaded: its coverage/ directory would
+@@ -611,6 +612,12 @@ def ustaxes_identity():
+             "deps": engine_cache.tree_digest(ustaxes_adapter.USTAXES_DEPS), "node": engine_cache.node_version()}
+ 
+ 
++def must_compare_all():
++    """Whether OpenTaxSolver and UsTaxes must both run: in a release run (CHECK_ALL_RELEASE=1, set by tools/release.sh)
++    and in a verify run (ENGINE_CACHE=verify, which reruns every engine). Otherwise a missing one is left out, visibly."""
++    return os.environ.get("CHECK_ALL_RELEASE") == "1" or os.environ.get("ENGINE_CACHE") == "verify"
++
++
+ def main():
+     ap = argparse.ArgumentParser()
+     ap.add_argument("--cases", required=True); ap.add_argument("--out", required=True)
+@@ -618,6 +625,12 @@ def main():
+     raw = Path(a.cases).read_bytes()
+     cases = json.loads(raw)
+     work = Path(a.out).resolve().parent
++    if must_compare_all():
++        missing = [name for name, ok in ((ots_adapter.ENGINE_NAME, ots_adapter.available(YEAR)),
++                                         (ustaxes_adapter.ENGINE_NAME, ustaxes_adapter.available(YEAR))) if not ok]
++        if missing:
++            sys.exit(f"engine differential: {' and '.join(missing)} not installed and built for {YEAR} (tools/engines/README.md); "
++                     "a run with CHECK_ALL_RELEASE=1 or ENGINE_CACHE=verify compares every outside engine and leaves none out")
+     # Each engine's record is reused while everything that determines it is unchanged (engine_cache.py; ENGINE_CACHE).
+     cache = engine_cache.Cache(engine_cache.base_components(raw, YEAR))
+     out = {"engines": {

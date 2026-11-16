@@ -368,10 +368,27 @@ def renamed():
     return (lambda names: {now(n) for n in names}), (lambda docs: {documents.get(d, d) for d in docs})
 
 
+def ever_declared(line_id):
+    """Whether some revision of the year's forms or defs declared `line_id` (a line since removed, not a typo)."""
+    out = subprocess.run(["git", "log", "-1", "--format=%H", "-S", f"id: {line_id}", "--", "forms", "defs"],
+                         capture_output=True, text=True, check=False).stdout.strip()
+    return bool(out)
+
+
+def unknown_siblings(checked, ids, existed_then):
+    """Split the Siblings checked ids that name no line of the year now into those removed since the entry was
+    written (they were lines at its base: a committed entry, `existed_then` the ids at its base) and those unknown.
+    A removed line cannot regress, so it is reported, not failed; a pending entry (no base) has none removed."""
+    gone = checked - ids
+    removed = gone & existed_then if existed_then is not None else set()
+    return removed, gone - removed
+
+
 def check(docs, ids):
     reader_map = readers(docs, ids)
     current, current_docs = renamed()
     problems = []
+    notes = []
     head_text = subprocess.run(["git", "show", "HEAD:BUG_INVENTORY.md"], capture_output=True, text=True, check=False).stdout
     logged = {}
     existed = {}
@@ -393,16 +410,19 @@ def check(docs, ids):
         for target in fix:
             siblings |= siblings_of(docs, ids, target, reader_map)
         checked = current(checked_ids(fields["Siblings checked"]))
-        unknown = checked - set(ids)
+        base = entry_base(bug, head_text)
+        if base != "HEAD" and base not in existed:
+            existed[base] = current(line_ids_at(base[:-1]))
+        removed, unknown = unknown_siblings(checked, set(ids), None if base == "HEAD" else
+                                            {i for i in checked - set(ids) if ever_declared(i)})
+        if removed:
+            notes.append(f"{bug}: Siblings checked names line(s) removed since the fix: {', '.join(sorted(removed))}")
         if unknown:
             problems.append(f"{bug}: Siblings checked names unknown line(s): {', '.join(sorted(unknown))}")
-        base = entry_base(bug, head_text)
         missing = missing_siblings(fix, siblings, checked)
         if base != "HEAD":
             # A committed entry cannot be edited (the inventory is append-only), so a sibling
             # line added after it was written is not counted against it.
-            if base not in existed:
-                existed[base] = current(line_ids_at(base[:-1]))
             missing &= existed[base]
         if missing:
             problems.append(f"{bug}: Siblings checked omits {len(missing)} generated sibling(s): "
@@ -417,6 +437,8 @@ def check(docs, ids):
         if unrefreshed:
             problems.append(f"{bug}: no review log changed since {base} for sibling form(s): "
                             f"{', '.join(unrefreshed)}")
+    for n in notes:
+        print(f"siblings: {n} (a deleted line cannot regress; not a failure)")
     if problems:
         print("siblings: bug-entry problems", file=sys.stderr)
         for p in problems:
@@ -445,8 +467,8 @@ def reviews_since(docs, ids, rev):
 def self_test(docs, ids):
     reader_map = readers(docs, ids)
     eic = siblings_of(docs, ids, "sa.dependent", reader_map)
-    assert "eic.step4" in eic, "sa.dependent should reach eic.step4"
-    assert "sa.standard" in eic, "sa.dependent should reach sa.standard"
+    assert "eic.step4_dependent" in eic, "sa.dependent should reach eic.step4_dependent"
+    assert "sa.standard_amount" in eic, "sa.dependent should reach sa.standard_amount"
     assert "dependent.edu_line31" in siblings_of(docs, ids, "person.edu_line31", reader_map), "person.edu_line31's twin"
     assert "person.edu" in siblings_of(docs, ids, "dependent.edu", reader_map), "dependent.edu's twin"
     assert edu_twin(ids, "person.educator_expenses") is None and edu_twin(ids, "person.edu_kid") is None, "no twin"
@@ -459,6 +481,9 @@ def self_test(docs, ids):
     assert missing_siblings({"a.x"}, {"a.y", "b.z"}, {"b.z"}) == {"a.y"}, "an omitted sibling"
     assert review_logs_due({"a.x", "b.y"}, {"a"}, True) == ["b"], "a sibling form's log is due after a form change"
     assert review_logs_due({"a.x", "b.y"}, set(), False) == [], "no log is due when no form of the year changed"
+    assert unknown_siblings({"a.x", "a.gone", "a.typo"}, {"a.x"}, {"a.x", "a.gone"}) == ({"a.gone"}, {"a.typo"}), \
+        "a sibling line removed since a committed entry was written is reported, not failed; an unknown one fails"
+    assert unknown_siblings({"a.gone"}, {"a.x"}, None) == (set(), {"a.gone"}), "a pending entry's unknown line fails"
     if check(docs, ids) != 0:
         raise SystemExit("siblings self-test: bug-entry check failed")
     print("siblings self-test: ok")

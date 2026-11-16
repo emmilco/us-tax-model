@@ -180,11 +180,13 @@ form:
     - id: s2.amt_l4_sum
       printed: (helper)
       type: Dollars
-      label: Lines 1b and 2a, with the depreciation and related adjustments at their largest
-      expr: { op: sum, of: [s2.amt_l1b, s2.amt_l2a, s2.amt_dep, s2.amt_rel] }
+      label: Lines 1b, 2a and 2e (the net operating loss deduction), with the depreciation and related adjustments at their largest
+      expr: { op: sum, of: [s2.amt_l1b, s2.amt_l2a, s2.amt_dep, s2.amt_rel, s1.nol_amount_if_nol] }
       cite:
         doc: f6251
-        locator: 'Form 6251 (2025), line 4, "Alternative minimum taxable income. Combine lines 1b through 3"'
+        locator: 'Form 6251 (2025), line 4, "Alternative minimum taxable income. Combine lines 1b through 3"; line 2e, "Net
+          operating loss deduction from Schedule 1 (Form 1040), line 8a. Enter as a positive amount" (line 2f, the
+          alternative tax net operating loss deduction, entered as a negative amount, taken at zero for the largest line 4)'
     - id: s2.amt_pab
       printed: (helper)
       type: NonNegDollars
@@ -1168,7 +1170,6 @@ form:
         - household employment taxes
         - the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III)
         - uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)
-        - tax on unreported tips (Form 4137)
         - interest on deferred tax
 
         Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.
@@ -1297,6 +1298,40 @@ form:
       cite:
         doc: f1040s2
         locator: Schedule 2 (2025), line 4; i1040sse p. 2, Joint Returns, "Enter the combined SE tax on Schedule 2 (Form 1040), line 4"
+    - id: s2.line5
+      printed: "5"
+      type: NonNegDollars
+      label: Social security and Medicare tax on unreported tip income. Attach Form 4137
+      expr:
+        op: sum_over
+        collection: person
+        field: person.f4137_tax
+      cite:
+        doc: f1040s2
+        locator: 'Schedule 2 (2025), line 5, "Social security and Medicare tax on unreported tip income. Attach Form 4137"; f4137 p. 1, Add lines 11 and 12, "Include as tax on Schedule 2 (Form 1040), line 5"; i1040gi p. 112, Line 5, "Enter the total of any taxes from Form 4137"'
+    - id: s2.line6
+      printed: "6"
+      type: NonNegDollars
+      label: Uncollected social security and Medicare tax on wages. Attach Form 8919
+      expr:
+        op: sum_over
+        collection: person
+        field: person.f8919_tax
+      cite:
+        doc: f1040s2
+        locator: 'Schedule 2 (2025), line 6, "Uncollected social security and Medicare tax on wages. Attach Form 8919"; f8919 p. 1, Add lines 11 and 12, "Include as tax on your annual tax return (Schedule 2 (Form 1040), line 6"; i1040gi p. 112, Line 6, "Enter the total of any taxes from Form 8919"'
+    - id: s2.line7
+      printed: "7"
+      type: NonNegDollars
+      label: Total additional social security and Medicare tax. Add lines 5 and 6
+      expr:
+        op: sum
+        of:
+          - s2.line5
+          - s2.line6
+      cite:
+        doc: f1040s2
+        locator: 'Schedule 2 (2025), line 7, "Total additional social security and Medicare tax. Add lines 5 and 6"'
     - id: s2.line8_must
       printed: (helper)
       type: Count
@@ -1435,11 +1470,12 @@ form:
     - id: s2.line21
       printed: "21"
       type: NonNegDollars
-      label: Add s2.line4, s2.line8, s2.line11, s2.line12, s2.line18
+      label: Add s2.line4, s2.line7, s2.line8, s2.line11, s2.line12, s2.line18
       expr:
         op: sum
         of:
           - s2.line4
+          - s2.line7
           - s2.line8
           - s2.line11
           - s2.line12

@@ -1,0 +1,667 @@
+diff --git a/ambiguities/2025.yaml b/ambiguities/2025.yaml
+index 82c7554..9756299 100644
+--- a/ambiguities/2025.yaml
++++ b/ambiguities/2025.yaml
+@@ -2042,6 +2042,24 @@ register:
+         locator: p. 17, Code V. Section 199A information, "you must include only those items that are qualified items of
+           income, gain, deduction, and loss included or allowed in determining taxable income for the tax year"
+       status: Lane x2-k1s reading, for the owner's ruling.
++    - id: amb.2025.k1p_qbi_passive
++      text_at_issue: i8995 p. 3 says that when a loss is partially suspended only the portion of the allowed loss attributable to
++        QBI is considered, found by the ratio of the QBI part of the total loss to the total loss; the K-1 statement (box 20,
++        code Z; box 17, code V) reports QBI for the business, and Form 8582 allows the box 1 activity's loss in part.
++      readings:
++        - Scale the statement's QBI loss by the allowed share of the box 1 passive loss (allowed loss over the year's box 1
++          loss), and refuse when a loss held back in an earlier year is released this year.
++        - Refuse every K-1 with a QBI loss and a passive box 1 loss.
++        - Take the statement's QBI as stated.
++      chosen: Scale (D-K7), refusing a prior-year release.
++      reason: >
++        The ratio is the one the instructions give; the box 1 loss is the K-1's trade or business loss that Form 8582 limits.
++        A prior-year release needs the QBI part of each earlier year's loss (i8995a FIFO tracking), which the tool does not ask.
++      cite:
++        doc: i8995
++        locator: p. 3, "If a loss or deduction is partially suspended, only the portion of the allowed loss or deduction
++          attributable to QBI must be considered"
++      status: K-1 integration draft (nightplan round 4), for the owner's ruling.
+     - id: amb.2025.mfs_spouse_qc
+       text_at_issue: 'On a separate return the husband or wife is "any other person" for Step 1 (i1040gi p. 17, "a qualifying
+         child of any other person (other than your spouse if filing jointly)"), so a child who lived with both is the
+diff --git a/forms/2025/k1p.yaml b/forms/2025/k1p.yaml
+index d10c1b3..0907beb 100644
+--- a/forms/2025/k1p.yaml
++++ b/forms/2025/k1p.yaml
+@@ -2749,6 +2749,183 @@ form:
+     cite:
+       doc: i1040se
+       locator: p. 10, Line 28, Column (g), "enter in column (g) the loss allowed"
++  - id: k1p.ebl_loss
++    printed: (helper)
++    label: Losses in boxes 1, 2 and 3 before the passive activity limit, for the excess business loss screen (positive)
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - k1p.b1_neg
++      - k1p.b2_neg
++      - k1p.b3_neg
++    cite:
++      doc: i1040se
++      locator: p. 9, Part II, "If you report a loss on Schedule E from a partnership or S corporation engaged in a trade or
++        business, use Form 461 to figure your excess business loss"
++    ambiguity: amb.2025.s1_ebl_rental
++  - id: k1p.qbi_loss_abs
++    printed: (helper)
++    label: A qualified business loss in box 20, code Z, as a positive amount
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1p.zero
++      take: k1p.box20z_if_any
++    cite: &id210
++      doc: i8995
++      locator: p. 3, "If a loss or deduction is partially suspended, only the portion of the allowed loss or deduction attributable
++        to QBI must be considered when determining QBI from the trade or business in the year the loss or deduction is incurred"
++  - id: k1p.qbi_limited
++    printed: (helper)
++    label: The box 20, code Z amount is a loss and the box 1 activity has a passive net loss this year
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1p.qbi_loss_abs
++        - const: 0
++      - op: test
++        gt:
++        - k1p.b1_net_loss
++        - const: 0
++    cite: *id210
++    ambiguity: amb.2025.k1p_qbi_passive
++  - id: k1p.qbi_loss_allowed
++    printed: (helper)
++    label: The qualified business loss times the allowed share of the box 1 loss
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: k1p.qbi_loss_abs
++      part: k1p.b1_allowed
++      whole: k1p.b1_net_loss
++      places: 6
++    cite:
++      doc: i8995
++      locator: p. 3, "The allowed loss or deduction is then multiplied by this percentage to determine the portion of the
++        allowed loss or deduction attributable to QBI"
++    ambiguity: amb.2025.k1p_qbi_passive
++  - id: k1p.qbi_neg_allowed
++    printed: (helper)
++    label: The allowed qualified business loss (negative)
++    type: Dollars
++    expr:
++      op: subtract
++      from: k1p.zero
++      take: k1p.qbi_loss_allowed
++    cite: *id210
++  - id: k1p.qbi_after_pal
++    printed: (helper)
++    label: Qualified business income or loss after the passive activity limit
++    type: Dollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1p.qbi_limited
++          - const: true
++        then: k1p.qbi_neg_allowed
++      - guard:
++          op: test
++          eq:
++          - k1p.qbi_limited
++          - const: false
++        then: k1p.box20z_if_any
++    cite: *id210
++  - id: k1p.qbi_release
++    printed: (gate)
++    label: A box 1 loss held back in an earlier year is allowed in part or whole this year, and box 20 shows code Z
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1p.prior_b1_if
++        - const: 0
++      - op: test
++        gt:
++        - k1p.b1_allowed
++        - const: 0
++      - op: test
++        eq:
++        - k1p.has_b20z
++        - const: true
++    cite: &id211
++      doc: i8995
++      locator: p. 3, "When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable
++        income"
++  - id: k1p.has_se_pos
++    printed: (helper)
++    label: Box 14, code A shows positive self-employment earnings
++    type: Bool
++    expr:
++      op: test
++      gt:
++      - k1p.se_pos
++      - const: 0
++    cite:
++      doc: i8995
++      locator: p. 2, Determining Your Qualified Business Income, "deductible part of self-employment tax"
++  - id: k1p.qbi_se
++    printed: (helper)
++    label: Deductible part of self-employment tax attributable to this partnership (zero without positive earnings)
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1p.has_se_pos
++          - const: true
++        then: k1p.qbi_se_share
++      - guard:
++          op: test
++          eq:
++          - k1p.has_se_pos
++          - const: false
++        then: k1p.zero
++    cite:
++      doc: i8995
++      locator: p. 2, Determining Your Qualified Business Income, "deductible part of self-employment tax"
++    ambiguity: amb.2025.qbi_attribution
++  - id: k1p.qbi_se_share
++    printed: (helper)
++    label: This person's deductible part of self-employment tax attributable to this partnership (by share of positive
++      earnings)
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: person.se_line13
++      part: k1p.se_pos
++      whole: person.se_pos_whole
++      places: 6
++    cite:
++      doc: i8995
++      locator: p. 2, Determining Your Qualified Business Income, "deductible part of self-employment tax"
++    ambiguity: amb.2025.qbi_attribution
++  - id: k1p.qbi
++    printed: 1(c)
++    label: Qualified business income or (loss) of this partnership after the passive activity limit and the self-employment
++      tax attributable to it
++    type: Dollars
++    expr:
++      op: subtract
++      from: k1p.qbi_after_pal
++      take: k1p.qbi_se
++    cite: *id210
++    refuses:
++    - when: k1p.qbi_release
++      form: Form 8995-A Schedule C (prior-year suspended loss allowed this year)
++      remedy: A partnership loss held back in an earlier year and allowed this year changes qualified business income in a way
++        this tool does not figure.
++      cite: *id211
+   - id: k1p.screened
+     printed: (gate)
+     label: This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)
+diff --git a/forms/2025/k1s.yaml b/forms/2025/k1s.yaml
+index 6b178ea..92af07a 100644
+--- a/forms/2025/k1s.yaml
++++ b/forms/2025/k1s.yaml
+@@ -2584,6 +2584,138 @@ form:
+           - const: false
+         then: k1s.zero
+     cite: *id001
++  - id: k1s.ebl_loss_raw
++    printed: (helper)
++    label: Losses in boxes 1, 2 and 3 after basis and before the passive activity limit (positive)
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - k1s.np_loss
++      - k1s.p1_loss
++      - k1s.p2_loss
++      - k1s.p3_loss
++    cite: &id310
++      doc: i1120ssk
++      locator: p. 6, "Losses attributable to your trade or business may be limited, pursuant to section 461(l)"
++    ambiguity: amb.2025.s1_ebl_rental
++  - id: k1s.ebl_loss
++    printed: (helper)
++    label: Losses for the excess business loss screen (positive)
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1s.ok
++          - const: true
++        then: k1s.ebl_loss_raw
++      - guard:
++          op: test
++          eq:
++          - k1s.ok
++          - const: false
++        then: k1s.zero
++    cite: *id310
++    ambiguity: amb.2025.s1_ebl_rental
++  - id: k1s.qbi_loss_abs
++    printed: (helper)
++    label: A qualified business loss in box 17, code V, as a positive amount
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1s.zero
++      take: k1s.qbi_stmt_if_any
++    cite: &id311
++      doc: i8995
++      locator: p. 3, "If a loss or deduction is partially suspended, only the portion of the allowed loss or deduction attributable
++        to QBI must be considered when determining QBI from the trade or business in the year the loss or deduction is incurred"
++  - id: k1s.qbi_limited
++    printed: (helper)
++    label: The box 17, code V amount is a loss and the box 1 activity has a passive net loss this year
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1s.qbi_loss_abs
++        - const: 0
++      - op: test
++        gt:
++        - k1s.p1_loss
++        - const: 0
++    cite: *id311
++    ambiguity: amb.2025.k1p_qbi_passive
++  - id: k1s.qbi_loss_allowed
++    printed: (helper)
++    label: The qualified business loss times the allowed share of the box 1 loss
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: k1s.qbi_loss_abs
++      part: k1s.b1_allowed
++      whole: k1s.p1_loss
++      places: 6
++    cite:
++      doc: i8995
++      locator: p. 3, "The allowed loss or deduction is then multiplied by this percentage to determine the portion of the
++        allowed loss or deduction attributable to QBI"
++    ambiguity: amb.2025.k1p_qbi_passive
++  - id: k1s.qbi_neg_allowed
++    printed: (helper)
++    label: The allowed qualified business loss (negative)
++    type: Dollars
++    expr:
++      op: subtract
++      from: k1s.zero
++      take: k1s.qbi_loss_allowed
++    cite: *id311
++  - id: k1s.qbi_after_pal
++    printed: (helper)
++    label: Qualified business income or loss after the passive activity limit
++    type: Dollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1s.qbi_limited
++          - const: true
++        then: k1s.qbi_neg_allowed
++      - guard:
++          op: test
++          eq:
++          - k1s.qbi_limited
++          - const: false
++        then: k1s.qbi_stmt_if_any
++    cite: *id311
++  - id: k1s.qbi_release
++    printed: (gate)
++    label: A box 1 loss held back in an earlier year is allowed in part or whole this year, and box 17 shows code V
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1s.p1_prior_passive
++        - const: 0
++      - op: test
++        gt:
++        - k1s.b1_allowed
++        - const: 0
++      - op: test
++        ne:
++        - k1s.qbi_stmt_if_any
++        - const: 0
++    cite: &id312
++      doc: i8995
++      locator: p. 3, "When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable
++        income"
+   - id: k1s.qbi_cut
+     printed: (gate)
+     label: A qualified business loss on a K-1 whose losses are partly carried to 2026 by the basis limitation
+@@ -2607,7 +2739,7 @@ form:
+     ambiguity: amb.2025.k1s_qbi_basis
+   - id: k1s.qbi
+     printed: (helper)
+-    label: Qualified business income (loss) from this K-1 before the passive activity limitation (box 17, code V)
++    label: Qualified business income (loss) from this K-1 after the passive activity limitation (box 17, code V)
+     type: Dollars
+     expr:
+       op: choose
+@@ -2617,7 +2749,7 @@ form:
+           eq:
+           - k1s.ok
+           - const: true
+-        then: k1s.qbi_stmt_if_any
++        then: k1s.qbi_after_pal
+       - guard:
+           op: test
+           eq:
+@@ -2631,6 +2763,11 @@ form:
+       remedy: When a loss is partly carried forward by the basis limitation, only the allowed part of the qualified business
+         loss counts this year; working out that part is outside this tool.
+       cite: *id036
++    - when: k1s.qbi_release
++      form: Form 8995-A Schedule C (prior-year suspended loss allowed this year)
++      remedy: An S corporation loss held back in an earlier year and allowed this year changes qualified business income in a
++        way this tool does not figure.
++      cite: *id312
+   - id: k1s.b1_loss_sum
+     printed: (helper)
+     label: 'Box 1 passive activity: net loss after basis plus prior years unallowed loss'
+diff --git a/forms/2025/person.yaml b/forms/2025/person.yaml
+index 8f4d593..69035f0 100644
+--- a/forms/2025/person.yaml
++++ b/forms/2025/person.yaml
+@@ -3456,7 +3456,20 @@ form:
+         locator: 'p. 6, Line 2l, How Is the Adjustment Figured?, "Subtract the AMT deduction for depreciation from the regular tax deduction and enter the result"'
+     - id: person.qbi
+       printed: (helper)
+-      label: Qualified business income or loss of this person's businesses
++      label: Qualified business income or loss of this person's businesses and Schedules K-1
++      type: Dollars
++      expr:
++        op: sum
++        of:
++        - person.sc_qbi
++        - person.k1_qbi
++      cite:
++        doc: i8995
++        locator: pp. 2, 4, Determining Your Qualified Business Income; p. 4, Line 1, "Enter on line 1(c) the net QBI
++          or (loss) for the trade, business, or aggregation reported in the corresponding row"
++    - id: person.sc_qbi
++      printed: (helper)
++      label: Qualified business income or loss of this person's Schedules C
+       type: Dollars
+       expr:
+         op: sum_over
+@@ -7722,7 +7735,6 @@ form:
+         field: k1p.se_pos
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_backup_wh
+       printed: (helper)
+       type: NonNegDollars
+@@ -7860,6 +7872,26 @@ form:
+         where: *id001
+       cite: *id002
+       display: The partnership K-1 total that Schedule E Part II reads for this person.
++    - id: person.k1p_total_ebl_loss
++      printed: (helper)
++      type: NonNegDollars
++      label: Losses in boxes 1, 2 and 3 before the passive activity limit, all partnership K-1s (positive)
++      expr:
++        op: sum_over
++        collection: k1p
++        field: k1p.ebl_loss
++        where: *id001
++      cite: *id002
++    - id: person.k1p_total_qbi
++      printed: (helper)
++      type: Dollars
++      label: Qualified business income or loss, all partnership K-1s, after the passive activity limit
++      expr:
++        op: sum_over
++        collection: k1p
++        field: k1p.qbi
++        where: *id001
++      cite: *id002
+   # --- end k1p sums ---
+   # --- x2-k1s: per-person totals of the Schedules K-1 (Form 1120-S) ---
+     - id: person.k1s_total_interest
+@@ -8099,7 +8131,7 @@ form:
+         locator: p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c"
+     - id: person.k1s_total_qbi
+       printed: (helper)
+-      label: Qualified business income (loss) from Schedules K-1 (Form 1120-S), box 17, code V, before the passive activity
++      label: Qualified business income (loss) from Schedules K-1 (Form 1120-S), box 17, code V, after the passive activity
+         limitation
+       type: Dollars
+       expr:
+@@ -8110,7 +8142,6 @@ form:
+         doc: i1120ssk
+         locator: p. 17, Code V. Section 199A information, "The S corporation will provide the information you need to figure
+           your deduction"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_count_sche
+       printed: (helper)
+       label: Number of Schedules K-1 (Form 1120-S) with an amount in box 1, 2 or 3 (a row on Schedule E, line 28)
+@@ -8163,6 +8194,17 @@ form:
+         doc: i8582
+         locator: p. 12, Part VII—Allocation of Unallowed Losses
+       display: Read by Schedule E Part II; shown until then.
++    - id: person.k1s_total_ebl_loss
++      printed: (helper)
++      type: NonNegDollars
++      label: Losses in boxes 1, 2 and 3 after basis and before the passive activity limit, all S corporation K-1s (positive)
++      expr:
++        op: sum_over
++        collection: k1s
++        field: k1s.ebl_loss
++      cite: 
++        doc: i1120ssk
++        locator: p. 6, "Losses attributable to your trade or business may be limited, pursuant to section 461(l)"
+   # --- end x2-k1s ---
+   # --- K-1 integration: partnership and S corporation totals together ---
+     - id: person.k1_p4_income
+@@ -8261,6 +8303,43 @@ form:
+       cite:
+         doc: i8582
+         locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++    - id: person.k1_ebl_loss
++      printed: (helper)
++      type: NonNegDollars
++      label: Partnership and S corporation losses before the passive activity limit, for the excess business loss screen
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_ebl_loss
++        - person.k1s_total_ebl_loss
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "use Form 461 to figure your excess business loss"
++    - id: person.k1_qbi
++      printed: (helper)
++      type: Dollars
++      label: Qualified business income or loss of this person's partnership and S corporation K-1s
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_qbi
++        - person.k1s_total_qbi
++      cite:
++        doc: i8995
++        locator: p. 4, Line 1, "Enter on line 1(c) the net QBI or (loss) for the trade, business, or aggregation"
++    - id: person.se_pos_whole
++      printed: (helper)
++      type: NonNegDollars
++      label: Positive net profits of this person's Schedules C plus positive partnership self-employment earnings (box 14, code A)
++      expr:
++        op: sum
++        of:
++        - person.positive_profits
++        - person.k1p_total_se_pos
++      cite:
++        doc: i8995
++        locator: p. 2, Determining Your Qualified Business Income, "deductible part of self-employment tax"
++      ambiguity: amb.2025.qbi_attribution
+   # --- end K-1 integration ---
+   collection:
+     cite:
+diff --git a/forms/2025/qbi.yaml b/forms/2025/qbi.yaml
+index 26dc66c..8192093 100644
+--- a/forms/2025/qbi.yaml
++++ b/forms/2025/qbi.yaml
+@@ -88,25 +88,54 @@ form:
+     - id: qbi.suspended_if_business
+       printed: (gate)
+       type: Bool
+-      label: "Whether losses or deductions suspended in an earlier year are allowed this year, asked only when the return has a Schedule C (false without one)"
++      label: "Whether losses or deductions suspended in an earlier year are allowed this year, asked only when the return has a Schedule C or a Schedule K-1 with qualified business income (false otherwise)"
+       expr:
+         op: choose
+         alternatives:
+         - guard:
+             op: test
+             eq:
+-            - s1.has_sc
++            - qbi.has_business
+             - const: true
+           then: qbi.suspended
+         - guard:
+             op: test
+             eq:
+-            - s1.has_sc
++            - qbi.has_business
+             - const: false
+           then: qbi.no
+       cite:
+         doc: i8995
+         locator: 'p. 3, Determining Your Qualified Business Income, "When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income"'
++    - id: qbi.k1_total
++      printed: (helper)
++      type: Dollars
++      label: Qualified business income or loss of all partnership and S corporation Schedules K-1
++      expr:
++        op: sum_over
++        collection: person
++        field: person.k1_qbi
++      cite:
++        doc: i8995
++        locator: p. 4, Line 1, "Enter on line 1(c) the net QBI or (loss) for the trade, business, or aggregation"
++    - id: qbi.has_business
++      printed: (helper)
++      type: Bool
++      label: The return has a Schedule C or a Schedule K-1 with qualified business income or loss
++      expr:
++        op: test
++        any:
++        - op: test
++          eq:
++          - s1.has_sc
++          - const: true
++        - op: test
++          ne:
++          - qbi.k1_total
++          - const: 0
++      cite:
++        doc: i8995
++        locator: 'p. 3, Determining Your Qualified Business Income, "When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income"'
+     - id: qbi.coop_patron
+       printed: (helper)
+       type: Bool
+diff --git a/forms/2025/s1.yaml b/forms/2025/s1.yaml
+index af0e974..b9ccff3 100644
+--- a/forms/2025/s1.yaml
++++ b/forms/2025/s1.yaml
+@@ -209,13 +209,14 @@ form:
+         business loss limitation
+   - id: s1.ebl_total
+     printed: (helper)
+-    label: Net profit or loss of all Schedules C, with a Schedule E rental or royalty loss counted
++    label: Net profit or loss of all Schedules C, with Schedule E rental, royalty, partnership and S corporation losses counted
+     type: Dollars
+     expr:
+       op: sum
+       of:
+       - s1.ebl_sc
+       - s1.ebl_sche
++      - s1.ebl_k1
+     cite:
+       doc: i1040sc
+       locator: p. 1, Reminders, Excess business loss limitation; i1040se p. 1, Reminders, Excess business loss limitation
+@@ -266,6 +267,31 @@ form:
+       doc: i1040se
+       locator: p. 1, Reminders, Excess business loss limitation
+     ambiguity: amb.2025.s1_ebl_rental
++  - id: s1.ebl_k1_abs
++    printed: (helper)
++    label: The partnership and S corporation losses in boxes 1, 2 and 3 before the passive activity limit, as a positive amount
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_ebl_loss
++    cite:
++      doc: i1040se
++      locator: p. 9, Part II, "If you report a loss on Schedule E from a partnership or S corporation engaged in a trade or
++        business, use Form 461 to figure your excess business loss"
++    ambiguity: amb.2025.s1_ebl_rental
++  - id: s1.ebl_k1
++    printed: (helper)
++    label: The partnership and S corporation losses before the passive activity limit
++    type: Dollars
++    expr:
++      op: subtract
++      from: s1.zero_ebl
++      take: s1.ebl_k1_abs
++    cite:
++      doc: i1040se
++      locator: p. 9, Part II, "use Form 461 to figure your excess business loss"
++    ambiguity: amb.2025.s1_ebl_rental
+   - id: s1.zero_ebl
+     printed: (helper)
+     label: Zero
+@@ -288,7 +314,8 @@ form:
+       locator: p. 17, .32 Threshold for Excess Business Loss, "$313,000 ($626,000 for joint returns)"
+   - id: s1.ebl
+     printed: (gate)
+-    label: The Schedule C losses are more than the excess business loss threshold
++    label: The business losses counted (Schedules C, Schedule E rentals and royalties, Schedules K-1) are more than the excess
++      business loss threshold
+     type: Bool
+     expr:
+       op: test
+diff --git a/forms/2025/sc.yaml b/forms/2025/sc.yaml
+index ed58aac..2de0d25 100644
+--- a/forms/2025/sc.yaml
++++ b/forms/2025/sc.yaml
+@@ -2531,7 +2531,7 @@ form:
+       op: prorate
+       amount: person.se_line13
+       part: sc.profit_pos
+-      whole: person.positive_profits
++      whole: person.se_pos_whole
+       places: 6
+     cite:
+       doc: i8995

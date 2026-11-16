@@ -156,7 +156,10 @@
    "not_applicable": "a rule of Pub. 525 on the page that gives the repayment rule; the tool figures neither the repayment deduction nor the credit and refuses a repayment over $3,000 (s3.repaid_income); the other items of the page are not read by any line"
   },
   "limit:i8582:p1:57da1db6": {
-   "not_applicable": "Form 8582's exception for rental real estate activities with active participation (modified adjusted gross income not more than $100,000); the tool never figures Form 8582: a passive activity is refused at scope.other_income (scope.passive) and rental real estate at scope.schedule1 (scope.rental)."
+   "enforced_by": [
+    "f8582.exception"
+   ],
+   "reason": "one condition of Form 8582's filing exception for rental real estate with active participation: f8582.exception holds only when f8582.line6 (modified adjusted gross income) is not more than f8582.exception_magi ($100,000; $50,000 married filing separately) together with its other conditions. The exception's further condition for married filing separately (lived apart all year) is BUG-0836, open."
   },
   "limit:i6251:p3:abe59e7a": {
    "not_applicable": "the AMT limit on depletion (Form 6251 line 2d); depletion is refused by the Schedule C screen (sc.special, Schedule C line 12) and royalty or partnership depletion with Schedule E and K-1 income (scope.rental, scope.k1), so no completed return has a line 2d amount"
@@ -179,6 +182,175 @@
   },
   "limit:i8839:p2:13eb27b6": {
    "not_applicable": "an example of the adoption credit's per-child maximum reduced by credit claimed in an earlier year (Form 8839); the tool does not prepare Form 8839 and refuses an adoption or adoption expenses in 2025 or in 2024 toward a U.S. adoption not final by the end of 2024 (s3.adoption_if_any, s3.adoption_us_if_earlier)"
+  },
+  "limit:i1040se:p8:a42349d9": {
+   "enforced_by": [
+    "f7203.line11",
+    "k1s.allowed1"
+   ],
+   "reason": "the S corporation basis limit on a shareholder's share of losses and deductions: Form 7203 Part III allows the losses of each K-1 pro rata up to stock basis (f7203.c35 to f7203.c38, with f7203.line11 the smaller of line 47 column (c) and line 10), and k1s.allowed1 takes the allowed box 1 loss from line 35 column (c); debt basis (loans to the corporation, f7203.loans_if_req) and losses carried by the basis limit (k1s.basis_carry) are refused. On a completed return the limit does not yet arise: a Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return."
+  },
+  "limit:i1065sk1:p2:5fa43ca5": {
+   "not_applicable": "the definition of a limited partner (personal liability limited to the partner's contribution), not a limit on an amount the return figures; and a Schedule K-1 (Form 1065) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1p form is not yet wired into the return."
+  },
+  "limit:i1065sk1:p11:e33accfb": {
+   "not_applicable": "the MAGI phase-out of the special allowance for a partnership's rental real estate (box 2), stated for Form 8582; a Schedule K-1 (Form 1065) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1p form is not yet wired into the return. For Schedule E rentals the same phase-out is enforced on Form 8582 by f8582.half7, f8582.max8 and f8582.line8."
+  },
+  "limit:i1065sk1:p14:a59b4cde": {
+   "not_applicable": "a condition (total loss not more than $25,000) for reporting a box 2 rental loss without Form 8582; a Schedule K-1 (Form 1065) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1p form is not yet wired into the return. For Schedule E rentals the same condition is f8582.exception (parameter f8582.exception_loss)."
+  },
+  "limit:i1065sk1:p14:6e4a1673": {
+   "not_applicable": "a condition (MAGI not more than $100,000) for reporting a box 2 rental loss without Form 8582; a Schedule K-1 (Form 1065) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1p form is not yet wired into the return. For Schedule E rentals the same condition is f8582.exception (parameter f8582.exception_magi)."
+  },
+  "limit:i1065sk1:p18:636a4140": {
+   "not_applicable": "a partner-level limit on the section 1202 exclusion for QSB stock sold by the partnership (box 11, code O); box 11 is refused on the K-1 (k1p.r_b11), and a Schedule K-1 (Form 1065) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1p form is not yet wired into the return."
+  },
+  "limit:i1065sk1:p32:90acb11a": {
+   "not_applicable": "foreign taxes in box 21 reduce basis and are limited to basis; box 21 is refused on the K-1 (k1p.r_b21) and losses above basis are refused (k1p.basis_short_if_loss), and a Schedule K-1 (Form 1065) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1p form is not yet wired into the return."
+  },
+  "limit:i1116:p11:d16e352a": {
+   "not_applicable": "which worksheet adjusts foreign source capital gains or losses (Worksheet A, Worksheet B or Pub. 514); a foreign source capital gain or loss is refused on Form 1116 (f1116.foreign_gain, refusal declared on f1116.line35), so no completed return adjusts one."
+  },
+  "limit:i1116sb:p2:b072a9ad": {
+   "enforced_by": [
+    "f1116sb.excess_limit",
+    "f1116sb.used_xii",
+    "f1116sb.l4_xiv"
+   ],
+   "reason": "line 4 of Schedule B (Form 1116) uses the carryover oldest column first, each column the smaller of its line 3 and the excess limitation left (f1116sb.used_i, f1116sb.room_ii ... f1116sb.used_xii, all from f1116sb.excess_limit), so the line 4 total f1116sb.l4_xiv is never more than the current year excess limitation."
+  },
+  "limit:i1120ssk:p5:e33accfb": {
+   "not_applicable": "the MAGI phase-out of the special allowance for an S corporation's rental real estate (box 2), stated for Form 8582; a Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return. For Schedule E rentals the same phase-out is enforced on Form 8582 by f8582.half7, f8582.max8 and f8582.line8."
+  },
+  "limit:i1120ssk:p7:935821aa": {
+   "not_applicable": "a condition (total loss not more than $25,000) for reporting a box 2 rental loss without Form 8582; a Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return. For Schedule E rentals the same condition is f8582.exception (parameter f8582.exception_loss)."
+  },
+  "limit:i1120ssk:p7:6e4a1673": {
+   "not_applicable": "a condition (MAGI not more than $100,000) for reporting a box 2 rental loss without Form 8582; a Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return. For Schedule E rentals the same condition is f8582.exception (parameter f8582.exception_magi)."
+  },
+  "limit:i1120ssk:p9:9babf5a0": {
+   "not_applicable": "a condition of the section 1045 rollover of gain from QSB stock sold by the S corporation (box 10); box 10 is refused on the K-1 (k1s.box10), and a Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return."
+  },
+  "limit:i1120ssk:p9:ffdf47bb": {
+   "not_applicable": "a condition of the section 1045 rollover of gain from QSB stock sold by the S corporation (box 10); box 10 is refused on the K-1 (k1s.box10), and a Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return."
+  },
+  "limit:i1120ssk:p9:bdfbb634": {
+   "not_applicable": "a shareholder-level limit on the section 1202 exclusion for QSB stock sold by the S corporation (box 10, code O); box 10 is refused on the K-1 (k1s.box10), and a Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return."
+  },
+  "limit:i172:p1:af450737": {
+   "enforced_by": [
+    "s1.nol_before_limit_date_if_nol",
+    "s1.nol_limit"
+   ],
+   "reason": "the NOL deduction limit (pre-2018 losses plus the lesser of post-2017 losses or 80% of taxable income figured without the NOL, QBI and section 250 deductions): a loss from a year before 2018 is refused on s1.line8a (s1.nol_before_limit_date_if_nol), and s1.nol_limit, refused on f1040.line15, refuses whenever the loss is more than four times taxable income after deducting it, that is whenever it could be more than 80% of taxable income before it; that test subtracts the QBI deduction, so it refuses a little more often than the limit binds, never less."
+  },
+  "limit:i172:p2:7eb7fa8c": {
+   "enforced_by": [
+    "s1.nol_before_limit_date_if_nol",
+    "s1.nol_limit"
+   ],
+   "reason": "the same NOL deduction limit for nonfarming businesses: a loss from a year before 2018 is refused on s1.line8a (s1.nol_before_limit_date_if_nol), and s1.nol_limit, refused on f1040.line15, refuses whenever the loss could be more than 80% of taxable income figured without it (the test subtracts the QBI deduction, so it refuses at least whenever the limit binds)."
+  },
+  "limit:i172:p2:acfae790": {
+   "enforced_by": [
+    "s1.nol_limit"
+   ],
+   "reason": "the 80%-of-taxable-income limit on post-2017 NOLs: s1.nol_limit (the loss more than four times taxable income after deducting it), refused on f1040.line15, refuses every return on which the limit could bind; the test subtracts the QBI deduction, so it refuses a little more often than the limit binds, never less."
+  },
+  "limit:i172:p3:af545618": {
+   "not_applicable": "the rule for a joint return after a change in marital status (only the spouse who had the loss deducts it, limited to that spouse's income); a loss from a year when the spouses were not married to each other, or filed jointly and now file apart, is refused on s1.line8a (s1.nol_marital)."
+  },
+  "limit:i172:p3:5cb93801": {
+   "not_applicable": "a limit on the refund claimed for a carryback year in which a joint return was filed; it concerns the refigured tax of the carryback year (Form 1045 or 1040-X), not the 2025 return, and the tool figures only a deduction for a loss carried into 2025 (s1.line8a)."
+  },
+  "limit:i172:p6:acfae790": {
+   "enforced_by": [
+    "s1.nol_limit"
+   ],
+   "reason": "the 80%-of-taxable-income limit on post-2017 NOLs, restated in the Form 172 line 10 instructions: s1.nol_limit, refused on f1040.line15, refuses every return on which the limit could bind (the test subtracts the QBI deduction, so it refuses at least whenever the limit binds); the tool does not figure the carryover to 2026."
+  },
+  "limit:i7203:p1:f536b4bf": {
+   "enforced_by": [
+    "f7203.line11",
+    "k1s.allowed1"
+   ],
+   "reason": "the basis limit on a shareholder's losses and deductions: Form 7203 Part III allows each K-1's losses pro rata up to stock basis (f7203.c35 to f7203.c38; f7203.line11 is the smaller of line 47 column (c) and line 10), and k1s.allowed1 takes the allowed box 1 loss; debt basis is refused (f7203.loans_if_req). On a completed return the limit does not yet arise: a Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return."
+  },
+  "limit:i7203:p3:e94e222e": {
+   "enforced_by": [
+    "f7203.line11"
+   ],
+   "reason": "Form 7203 line 11: f7203.line11 is the smaller of line 47 column (c) (f7203.c47) and line 10 (f7203.line10). A Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return."
+  },
+  "limit:i7203:p4:d200f0f5": {
+   "not_applicable": "the limit on restoring debt basis by a net increase (Form 7203 Part II); loans from the shareholder, and with them all of Part II, are refused (f7203.loans_if_req), and a Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return."
+  },
+  "limit:i7203:p4:a1cc34f0": {
+   "enforced_by": [
+    "f7203.line11",
+    "f7203.c47"
+   ],
+   "reason": "losses and deductions limited to stock and debt basis, allocated pro rata: f7203.c35_p to f7203.c38_p prorate each column (a) item by line 10 over line 47 column (a) (the ratio at most 1), f7203.c47 totals them and f7203.line11 caps the total at line 10; debt basis is refused (f7203.loans_if_req). A Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return."
+  },
+  "limit:i7203:p4:9e345e96": {
+   "enforced_by": [
+    "f7203.c47",
+    "f7203.line11"
+   ],
+   "reason": "column (c) of line 47 against line 10: the column (c) amounts are line 10 times each column (a) item over line 47 column (a), the ratio at most 1 (f7203.c35_p to f7203.c38_p), and f7203.line11 takes the smaller of f7203.c47 and line 10. A Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return."
+  },
+  "limit:i7203:p4:54b8366d": {
+   "not_applicable": "column (d) of Form 7203 line 47 (losses allowed from debt basis) against line 29; loans from the shareholder, and with them Part II and column (d), are refused (f7203.loans_if_req), and a Schedule K-1 (Form 1120-S) is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.k1, and the k1s and f7203 forms are not yet wired into the return."
+  },
+  "limit:i8582:p4:5c880616": {
+   "enforced_by": [
+    "f8582.line5",
+    "f8582.half7",
+    "f8582.max8",
+    "f8582.line8"
+   ],
+   "reason": "the MAGI phase-out of the special allowance: f8582.line7 is $150,000 ($75,000 married filing separately, f8582.line5) less MAGI (f8582.line6), f8582.half7 is 50% of it and f8582.line8 the smaller of that and $25,000 ($12,500, f8582.max8). A married filer filing separately who lived with the spouse gets no special allowance; that case is open as BUG-0836 (Proposed fix: f8582.mfs_together zeroing line 9 and the exception)."
+  },
+  "limit:p501:p17:f041de17": {
+   "not_applicable": "Example 1 of the rules for a child who is the qualifying child of more than one person: it says which person claims the child for the five benefits, not a limit on an amount; a child who is the qualifying child of another person (a taxpayer) is refused rather than decided (dependent.qc_tiebreak, dependent.eic_tiebreak; asked through dependent.other_claimant and dependent.other_nontaxpayer)."
+  },
+  "limit:p501:p24:cca3b395": {
+   "enforced_by": [
+    "sa.dep_line2",
+    "sa.dep_line4a"
+   ],
+   "reason": "the standard deduction of a dependent: sa.dep_line2 is the larger of $1,350 (sa.dep_min) and earned income plus $450 (sa.dep_plus), and sa.dep_line4a the smaller of that and the regular standard deduction (sa.dep_line3); the additions for age and blindness are sa.dep_line4b."
+  },
+  "limit:p501:p24:b7b6635a": {
+   "enforced_by": [
+    "sa.dep_line4a"
+   ],
+   "reason": "earned income plus $450, not more than the regular standard deduction: sa.dep_plus adds $450 (sa.dep_add) to earned income, sa.dep_line2 takes the larger of it and $1,350, and sa.dep_line4a the smaller of that and the regular standard deduction for the filing status (sa.dep_line3)."
+  },
+  "limit:p514:p38:9fd62304": {
+   "enforced_by": [
+    "sa.line6"
+   ],
+   "reason": "all foreign taxes credited or all deducted: the tool only credits foreign tax (Schedule 3 line 1 through the election or Form 1116) and never deducts it, since Schedule A line 6 (other taxes) is always zero (sa.line6); a carryover is taken only from the 2024 Schedule B (Form 1116) line 8 (f1116sb.l1_i to f1116sb.l1_xii), which exists only for a year the credit was claimed."
+  },
+  "limit:p525:p26:3683c850": {
+   "enforced_by": [
+    "rec.medical_counted",
+    "rec.other_counted",
+    "rec.line9"
+   ],
+   "reason": "a recovery included only up to the amount deducted: rec.medical_counted and rec.other_counted count each reimbursement or refund up to its 2024 deduction, and Worksheet 2 line 9 (rec.line9) takes the smaller of the recoveries and the 2024 itemized deductions above the standard deduction."
+  },
+  "limit:p525:p32:189a1e76": {
+   "not_applicable": "the limit on the above-the-line deduction for attorney fees and court costs in discrimination and similar suits (Schedule 1, line 24h) to the judgment or settlement included in income; the deduction is refused at Form 1040 line 8 by scope.schedule1 through its screening question scope.attorney_fees."
+  },
+  "limit:p527:p25:825f794e": {
+   "enforced_by": [
+    "rental.div5",
+    "rental.div18",
+    "rental.total_c"
+   ],
+   "reason": "rental expenses of a dwelling with personal use: each expense line (rental.div5 to rental.div19, and depreciation rental.div18) is the whole expense times fair rental days (rental.fair_c) over total days of use (rental.total_c), the ratio rounded to six places and at most 1; a dwelling used as a home (rental.home) and rented 15 days or more is refused (rental.ws51, Pub. 527 Worksheet 5-1)."
   }
  },
  "baseline": {

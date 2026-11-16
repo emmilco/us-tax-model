@@ -1,7 +1,7 @@
 # Schedule 1-A (Form 1040) — Additional Deductions
 
 - Document: `s1a` (form, tax year 2025)
-- Note: For a single, head of household, qualifying surviving spouse or married filing jointly return (married filing separately is refused through s3.mfs). Tips and overtime as an employee only, by the methods the instructions give for 2025; tips or overtime in a trade or business, Form 4137, and excluded Puerto Rico income or Forms 2555 and 4563 are refused. Lines 11, 19 and 28 (a whole number of $1,000 units) are kept as that many thousands of dollars; lines 12, 20 and 29 multiply them by $100 or $200 per thousand.
+- Note: For any filing status; a married filing separately return takes no deduction on lines 13, 21 and 36a (tips, overtime, enhanced senior), as the instructions require. Tips and overtime as an employee only, by the methods the instructions give for 2025; tips or overtime in a trade or business, Form 4137, and excluded Puerto Rico income or Forms 2555 and 4563 are refused. Lines 11, 19 and 28 (a whole number of $1,000 units) are kept as that many thousands of dollars; lines 12, 20 and 29 multiply them by $100 or $200 per thousand.
 
 ## (helper) — `s1a.zero`
 
@@ -130,11 +130,25 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["s1a.part2",{"const":false}],"op":"test"},"then":"s1a.zero"},{"guard":{"eq":["s1a.part2",{"const":true}],"op":"test"},"then":"s1a.line4a_calc"}],"op":"choose"}`
 - Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on Tips, "If you are married, you must file a joint return with your spouse to claim this deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `s1a.f4137_total`
+
+- **Authored helper label:** Cash and charge tips on the Forms 4137 of the people on the return (line 2)
+- **Encoded (NonNegDollars):** Add person.f4137_col_c over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.f4137_col_c","op":"sum_over"}`
+- Cite: [i1040gi] p. 104, Schedule 1-A, line 4b (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `s1a.f4137`
+
+- **Authored helper label:** Someone on the return has tips on Form 4137
+- **Encoded (Bool):** helper "Cash and charge tips on the Forms 4137 of the people on the return (line 2)" > $0 (sales.zero)
+- Expr: `{"gt":["s1a.f4137_total",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040gi] p. 104, Schedule 1-A, line 4b (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `s1a.line4b_calc`
 
 - **Authored helper label:** Figured: Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed, enter -0-
 - **Encoded (NonNegDollars):** Enter $0 (sales.zero).
-- **Refusal:** when s2.other is true, cannot complete Form 4137 (Social Security and Medicare Tax on Unreported Tip Income). Tips reported on Form 4137 are outside this tool. Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137"; p. 104, line 4b (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when s1a.f4137 is true, cannot complete The deduction for qualified tips included on Form 4137 (Schedule 1-A, line 4b). This tool prepares Form 4137 but does not figure the part of its tips that is qualified tips for the deduction. Claim the deduction for tips without this tool, or answer that you do not want the deduction for tips. Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137"; p. 104, line 4b (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"op":"param","ref":"sales.zero"}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 4b (2025; printed date 2026-02-25; sha256 482e9c48)
 

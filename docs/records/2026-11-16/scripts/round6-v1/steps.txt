@@ -1,0 +1,113 @@
+== tf-a-f3
+ forms/2025/dependent.yaml     | 30 ++++++++++++++++++++++++++++--
+ interview/2025/questions.yaml |  2 +-
+ 2 files changed, 29 insertions(+), 3 deletions(-)
+== tf-a-f4.v1
+ forms/2025/asset.yaml                              | 76 ++++++++++++++++++++--
+ .../13_self_employed_actual_vehicle_computer.yaml  |  2 +-
+ interview/2025/questions.yaml                      | 52 ++++++++-------
+ 3 files changed, 99 insertions(+), 31 deletions(-)
+== tf-b-f2
+ fixtures/ny/2025/defaults.json   |  7 ++++++-
+ forms/ny/2025/ny_it201.yaml      | 31 ++++++++++++++++++++++++++++---
+ interview/2025/coverage/ny.yaml  | 30 +++++++++++++++++++++++++++---
+ interview/ny/2025/questions.yaml | 13 +++++++++----
+ 4 files changed, 70 insertions(+), 11 deletions(-)
+== tf-b-f1
+ fixtures/2025/defaults.json                     | 11 +++--
+ forms/2025/f1040.yaml                           | 54 ++++++++++++++++++++-----
+ forms/2025/s1.yaml                              |  8 ++--
+ interview/2025/coverage/other.yaml              |  9 +++--
+ interview/2025/coverage/sales.yaml              | 27 +++++++------
+ interview/2025/personas/17_crypto_investor.yaml |  3 +-
+ interview/2025/personas/18_refused_nft_art.yaml |  4 +-
+ interview/2025/questions.yaml                   | 22 +++++++---
+ 8 files changed, 98 insertions(+), 40 deletions(-)
+== tf-a-f1
+ fixtures/2025/defaults.json       |  52 ++++++++++-
+ forms/2025/gift.yaml              | 184 ++++++++++++++++++++++++++++++++------
+ interview/2025/coverage/home.yaml |  24 ++++-
+ interview/2025/questions.yaml     |  87 ++++++++++++------
+ 4 files changed, 289 insertions(+), 58 deletions(-)
+== def-0871
+ forms/2025/retirement.yaml              | 20 +++++++++++++-------
+ interview/2025/coverage/retirement.yaml | 30 ++++++++++++++++++++++++++++++
+ interview/2025/questions.yaml           |  6 +++---
+ 3 files changed, 46 insertions(+), 10 deletions(-)
+== def-0795
+ fixtures/2025/classm.deepseek.json    | 111 +++++++++++
+ fixtures/2025/classm.gpt.json         |   6 +
+ fixtures/2025/classm.json             | 346 ++++++++++++++++++++++++++++++++++
+ fixtures/2025/defaults.json           |   5 +
+ fixtures/2025/mutation.json           | 246 ++++++++++++++++++++++++
+ fixtures/ny/2025/classm.deepseek.json |  55 ++++++
+ fixtures/ny/2025/classm.json          |  54 ++++++
+ fixtures/ny/2025/mutation.json        | 106 +++++++++++
+ forms/2025/scope.yaml                 |  19 +-
+ interview/2025/coverage/scope.yaml    |   9 +
+ interview/2025/questions.yaml         |   6 +
+ 11 files changed, 962 insertions(+), 1 deletion(-)
+== def-0765
+ fixtures/2025/household.json | 4 ++--
+ forms/2025/f1040.yaml        | 3 +--
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+== def-0891.v1
+ fixtures/2025/classm.json                    | 10 +++++++
+ fixtures/2025/defaults.json                  |  5 ++++
+ forms/2025/rprop.yaml                        | 20 +++++++++++++-
+ interview/2025/coverage/rental.yaml          | 11 ++++++++
+ interview/2025/personas/19_rental_house.yaml |  1 +
+ interview/2025/questions.yaml                | 41 ++++++++++++++++------------
+ 6 files changed, 69 insertions(+), 19 deletions(-)
+== def-0779.v1
+ fixtures/2025/classm.json                    |  15 ++++
+ fixtures/2025/defaults.json                  |   5 ++
+ forms/2025/rental.yaml                       |  26 +++++-
+ interview/2025/coverage/rental.yaml          |  13 +++
+ interview/2025/personas/19_rental_house.yaml |   1 +
+ interview/2025/questions.yaml                | 121 ++++++++++++++-------------
+ 6 files changed, 123 insertions(+), 58 deletions(-)
+== def-0889
+ fixtures/2025/classm.json           |   3 +
+ fixtures/2025/defaults.json         |  20 ++++++
+ forms/2025/royalty.yaml             | 135 ++++++++++++++++++++++++++++++++++--
+ interview/2025/coverage/rental.yaml |  70 +++++++++++++++++++
+ interview/2025/questions.yaml       |  46 +++++++++---
+ 5 files changed, 256 insertions(+), 18 deletions(-)
+== def-0786
+ fixtures/2025/classm.json                    | 12 ++++++++++++
+ fixtures/2025/defaults.json                  |  5 +++++
+ forms/2025/sche.yaml                         | 17 +++++++++++++++++
+ interview/2025/coverage/rental.yaml          | 12 ++++++++++++
+ interview/2025/personas/19_rental_house.yaml |  1 +
+ interview/2025/questions.yaml                |  9 ++++++++-
+ 6 files changed, 55 insertions(+), 1 deletion(-)
+== def-0778.v1
+ fixtures/2025/classm.json           |  2 ++
+ fixtures/2025/defaults.json         |  5 +++
+ forms/2025/rental.yaml              | 43 +++++++++++++++++++++++
+ interview/2025/coverage/rental.yaml | 13 +++++++
+ interview/2025/questions.yaml       | 69 ++++++++++++++++++++-----------------
+ 5 files changed, 101 insertions(+), 31 deletions(-)
+== def-0828
+ fixtures/2025/defaults.json        |  5 +++
+ forms/2025/f8960.yaml              | 65 ++++++++++++++++++++++++++++++++++++++
+ interview/2025/coverage/other.yaml | 16 ++++++++++
+ interview/2025/questions.yaml      |  5 +++
+ 4 files changed, 91 insertions(+)
+== def-0895
+ forms/2025/refund.yaml        | 11 ++++++-----
+ interview/2025/questions.yaml |  2 +-
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+== def-0570a
+ forms/2025/f1040.yaml | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+== def-0791.v1
+ fixtures/2025/classm.deepseek.json              | 21 +++++++++
+ fixtures/2025/classm.json                       | 56 +++++++++++++++++++++++
+ fixtures/2025/defaults.json                     |  5 +++
+ fixtures/2025/mutation.json                     | 42 ++++++++++++++++++
+ forms/2025/asset.yaml                           | 41 +++++++++++++++--
+ interview/2025/coverage/vehicles_equipment.yaml | 33 ++++++++++++++
+ interview/2025/questions.yaml                   | 59 ++++++++++++++-----------
+ 7 files changed, 227 insertions(+), 30 deletions(-)

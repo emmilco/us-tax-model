@@ -67,6 +67,16 @@
   "retirement.born_1936_if_plan": {"to": "retirement.born_before_averaging_date_if_plan", "kind": "computed", "class": "fixed_date", "why": "its gate"},
   "retirement.lump_sum_if_born_1936": {"to": "retirement.lump_sum_if_born_before_averaging_date", "kind": "computed", "class": "fixed_date", "why": "the gate of retirement.lump_sum"},
   "retirement.start_1996": {"to": "retirement.started_before_simplified_method_date", "kind": "input", "class": "fixed_date", "why": "annuity payments started before November 19, 1996, after which the Simplified Method is required (a date in the law; it does not move)"},
-  "retirement.start_1996_if_cost": {"to": "retirement.started_before_simplified_method_date_if_cost", "kind": "computed", "class": "fixed_date", "why": "its gate"}
+  "retirement.start_1996_if_cost": {"to": "retirement.started_before_simplified_method_date_if_cost", "kind": "computed", "class": "fixed_date", "why": "its gate"},
+
+  "f8853c.pre1996": {"to": "f8853c.contract_before_ltc_date", "kind": "input", "class": "fixed_date", "why": "a contract issued before August 1, 1996, the date from which long-term care contracts are qualified (a date in the law; it does not move)"},
+  "f8853c.pre1996_if_reimbursed": {"to": "f8853c.contract_before_ltc_date_if_reimbursed", "kind": "computed", "class": "fixed_date", "why": "its gate"},
+  "rec.not_2024": {"to": "rec.before_prior_year", "kind": "input", "class": "prior_year", "why": "money paid back for something paid or deducted before the prior year"},
+  "rec.not_2024_if_any": {"to": "rec.before_prior_year_if_any", "kind": "computed", "class": "prior_year", "why": "its gate"},
+  "rental.has_2025": {"to": "rental.needs_4562", "kind": "computed", "class": "misnomer", "why": "Form 4562 is needed for the property (something placed in service this year); the line is about the form, not the year"},
+  "rprop.is_2025": {"to": "rprop.placed_this_year_cent", "kind": "computed", "class": "this_year", "why": "one cent if placed in service in the tax year, zero otherwise (a count term)"},
+  "rprop.placed_2025": {"to": "rprop.placed_this_year", "kind": "computed", "class": "this_year", "why": "placed in service in the tax year"},
+  "s1.nol_pre2018": {"to": "s1.nol_before_limit_date", "kind": "input", "class": "fixed_date", "why": "a loss from a tax year that began before 2018, before the 80% limit on the deduction (a date in the law; it does not move)"},
+  "s1.nol_pre2018_if_nol": {"to": "s1.nol_before_limit_date_if_nol", "kind": "computed", "class": "fixed_date", "why": "its gate"}
  }
 }

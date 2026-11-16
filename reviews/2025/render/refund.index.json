@@ -2,61 +2,61 @@
  "kind": "render",
  "form": "refund",
  "family": "claude",
- "base": "424e4019972324fc00a9bdd73421d09eadf64976036b3dd090dc92c200a0e347",
+ "base": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
  "lines": [
   {
    "key": "1",
-   "record": "424e4019972324fc00a9bdd73421d09eadf64976036b3dd090dc92c200a0e347",
+   "record": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
    "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; the zero for refunds of both spouses' 2024 tax on separate 2024 returns is the chosen reading of amb.2025.refund_two_returns (the worksheet tests one 2024 return; the case is zero when neither return itemized with income taxes deducted and refused otherwise, refund.two_itemized_if_two on refund.taxable), and the cap at 2024 line 5d is amb.2025.refund_cap_5d. Exceptions 1 and 5 (i1040gi p. 89, \"1. You received a refund in 2025 that is for a tax year other than 2024\", \"5. You made your last payment of 2024 estimated state or local income tax in 2025\") are refused by refund.not_prior_year on refund.taxable (\"Pub. 525, Itemized Deduction Recoveries (Worksheet 2)\"), which the line-scoped rendering of line 1 does not show. As the earlier rounds; no wording defect.",
+   "ruling": "Ruling: ambiguity; render MISMATCH. The cap is the registered ambiguity amb.2025.refund_cap_5d: i1040gi p. 90, worksheet line 1, 'But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d'; line 5d is the total of 5a, 5b and 5c, and the project chose the cap as printed (line 5d), the reply the income tax part. The exceptions the reply names are not omitted: 1 ('a refund in 2025 that is for a tax year other than 2024') and 5 ('You made your last payment of 2024 estimated state or local income tax in 2025') refuse at refund.not_prior_year (remedy: Pub. 525), and 2 ('a refund other than an income tax refund') is now computed by Pub. 525 Worksheet 2 (rec, refund.taxable), as i1040gi p. 89 directs; line 1's own refusals are only those the worksheet itself raises (refund.exc_tax, refund.exc_who).",
    "subject_key": "f441ab9a2fc382fa0d40de93f0618e057dddc82ca161367d05eafbcb70c7ae44"
   },
   {
    "key": "2",
-   "record": "424e4019972324fc00a9bdd73421d09eadf64976036b3dd090dc92c200a0e347",
+   "record": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
    "status": "MATCH",
    "subject_key": "be2eabe3af855a95440ac8e42366e07b95c806e4693243e5f17057b3c640d2b7"
   },
   {
    "key": "3",
-   "record": "424e4019972324fc00a9bdd73421d09eadf64976036b3dd090dc92c200a0e347",
+   "record": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
    "status": "MATCH",
    "subject_key": "d27b1d820d0c432df476e431e9a3f9d5d3c97fa92a98ff9e1bc71b6bdbd47237"
   },
   {
    "key": "4",
-   "record": "424e4019972324fc00a9bdd73421d09eadf64976036b3dd090dc92c200a0e347",
+   "record": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
    "status": "MATCH",
    "subject_key": "e1b4ebc142b2a710b278ccfba880250aa5a964ce54149e3e12fe724fdd9483f0"
   },
   {
    "key": "5",
-   "record": "424e4019972324fc00a9bdd73421d09eadf64976036b3dd090dc92c200a0e347",
+   "record": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
    "status": "MATCH",
    "subject_key": "edcae3e94e435ee74a57dd1d4b8322f3b6db9fd2c13b91772f4e5deda896baf3"
   },
   {
    "key": "6",
-   "record": "424e4019972324fc00a9bdd73421d09eadf64976036b3dd090dc92c200a0e347",
+   "record": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
    "status": "UNCLEAR",
-   "ruling": "Ruling: representation; each amount helper is refund.per_box when its box is answered Yes and zero otherwise, and refund.per_box is $1,550, or $1,950 when the 2024 filing status was single or head of household (label: \"The amount for each box checked, $1,550 ($1,950 if your 2024 filing status was single or head of household)\"), so the sum is the number of boxes checked times the rate (i1040gi p. 90, line 6). The married-filing-separately condition is in the spouse questions refund.spouse_born and refund.spouse_blind (\"If your 2024 filing status was married filing separately, answer yes only if your spouse also had no income, wasn't filing a return, and couldn't be claimed as a dependent\"). As the earlier rounds.",
+   "ruling": "Ruling: representation; render UNCLEAR. The four helpers are defined lines rendered by label (refund.amt_you_born, amt_you_blind, amt_spouse_born, amt_spouse_blind: $1,550 or $1,950 per box checked), so line 6 is 'Multiply the number of boxes checked by $1,550 ($1,950 if your 2024 filing status was single or head of household)'. The married-filing-separately condition of the worksheet footnote ('you can check the boxes for your spouse only if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return', i1040gi p. 90) is in the spouse-box questions themselves (refund.spouse_born, refund.spouse_blind); a 2024 qualifying surviving spouse return has no spouse on it, so its spouse boxes are zero (refund.spouse_boxes; amb.2025.refund_boxes_2024).",
    "subject_key": "762dd13abc8cb88d63b479f5cdd5321aa80cb60b86288d32b89147ba080e1471"
   },
   {
    "key": "7",
-   "record": "424e4019972324fc00a9bdd73421d09eadf64976036b3dd090dc92c200a0e347",
+   "record": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
    "status": "MATCH",
    "subject_key": "3402c0c8936dbe8b710b30f39017b6021067943ac7b113dc11bbc864e7849768"
   },
   {
    "key": "8",
-   "record": "424e4019972324fc00a9bdd73421d09eadf64976036b3dd090dc92c200a0e347",
+   "record": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
    "status": "MATCH",
    "subject_key": "5e2f7bee08ebd3db973b91b3a5d91b7e607d4d58441074e4d9eb369d80d52f74"
   },
   {
    "key": "9",
-   "record": "424e4019972324fc00a9bdd73421d09eadf64976036b3dd090dc92c200a0e347",
+   "record": "e3662aa3995ad445709cd0c514178b7e90dca4c94a090a7f2aec9c7c406beaf1",
    "status": "MATCH",
    "subject_key": "91824c9671e1332ba87175b457323c8d60dd935f0a2f8dbeb37149afcfc2c7a8"
   }
@@ -72,5 +72,5 @@
   "8": "6fcc5d245ff0a0dd2c4c2fae22127bf8694d7eebd27213d1f78ecfd87877bfff",
   "9": "52731ed038a374ddf4f0a2b7ea2f2dc3db38e88eac3f36e286f25c129fd4b568"
  },
- "__rest__": "6bea2be2e0a0675670f5ef8f2a3720b0fbcda159a207163ccf9ec46613ce89df"
+ "__rest__": "c121ffc332423895e973e95cd731af6fa1258995447b712788de1a215a491ee2"
 }

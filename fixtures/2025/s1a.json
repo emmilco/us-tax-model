@@ -1570,7 +1570,8 @@
         ],
         "carloan[VIN0].requirements": true,
         "carloan[VIN0].vehicle": true,
-        "carloan[VIN0].interest": 300000
+        "carloan[VIN0].interest": 300000,
+        "household.married_dec31": true
       },
       "expect": {
         "s1a.line13": {
@@ -1776,9 +1777,8 @@
         "s1a"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips from one employer and Form 4137 (s2.other): line 4b refuses (Form 4137 is outside this tool), so line 13 refuses.",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips from one employer and Form 4137 (s2.other): line 4b refuses (Form 4137 is outside this tool), so line 13 refuses. Restated by lane x2-paynow2 (approved end change, scout-tail A.1): Form 4137 is now prepared, so it is entered as a Form 4137 row ($9,000 received, $8,000 reported) instead of the old Schedule 2 screen; line 4b still refuses, now at s1a.f4137 (the deduction for qualified tips on Form 4137).",
       "inputs": {
-        "s2.other_tax": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1800,14 +1800,21 @@
         "s2.credit_recapture": false,
         "s2.mortgage_subsidy": false,
         "s2.lookback": false,
-        "sa.mortgage_interest": 0
+        "sa.mortgage_interest": 0,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].f4137row[emp_a].col_c": 900000,
+        "person[taxpayer].f4137row[emp_a].col_d": 800000
       },
       "expect": {
         "s1a.line13": {
           "kind": "refusal",
-          "gate": "s2.other",
-          "form": "Form 4137 (Social Security and Medicare Tax on Unreported Tip Income)",
-          "remedy": "Tips reported on Form 4137 are outside this tool.",
+          "gate": "s1a.f4137",
+          "form": "The deduction for qualified tips included on Form 4137 (Schedule 1-A, line 4b)",
+          "remedy": "This tool prepares Form 4137 but does not figure the part of its tips that is qualified tips for the deduction. Claim the deduction for tips without this tool, or answer that you do not want the deduction for tips.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 101, Schedule 1-A, Part II, \"If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137\"; p. 104, line 4b",
@@ -1824,9 +1831,8 @@
         "s1a"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips from two employers and Form 4137 (s2.other): worksheet column (c) refuses, so line 4c and line 13 refuse.",
+      "evidence_note": "Stage 12, predicted by hand from the printed Schedule 1-A and its instructions before recording: tips from two employers and Form 4137 (s2.other): worksheet column (c) refuses, so line 4c and line 13 refuse. Restated by lane x2-paynow2 (approved end change, scout-tail A.1): Form 4137 is entered as a row ($9,000 received, $8,000 reported) instead of the old Schedule 2 screen; worksheet column (c) still refuses, now at person.f4137_filed.",
       "inputs": {
-        "s2.other_tax": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -1849,14 +1855,21 @@
         "s2.credit_recapture": false,
         "s2.mortgage_subsidy": false,
         "s2.lookback": false,
-        "sa.mortgage_interest": 0
+        "sa.mortgage_interest": 0,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].f4137row[emp_a].col_c": 900000,
+        "person[taxpayer].f4137row[emp_a].col_d": 800000
       },
       "expect": {
         "s1a.line4c": {
           "kind": "refusal",
-          "gate": "s2.other",
-          "form": "Form 4137 (Social Security and Medicare Tax on Unreported Tip Income)",
-          "remedy": "Tips reported on Form 4137 are outside this tool.",
+          "gate": "person[taxpayer].f4137_filed",
+          "form": "The deduction for qualified tips included on Form 4137 (worksheet column (c))",
+          "remedy": "This tool prepares Form 4137 but does not figure the part of its tips that is qualified tips for the deduction. Claim the deduction for tips without this tool, or answer that you do not want the deduction for tips.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 104, Qualified Tips From More Than One Employer Worksheet, column (c), and p. 103, method 4",
@@ -1867,9 +1880,9 @@
         },
         "s1a.line13": {
           "kind": "refusal",
-          "gate": "s2.other",
-          "form": "Form 4137 (Social Security and Medicare Tax on Unreported Tip Income)",
-          "remedy": "Tips reported on Form 4137 are outside this tool.",
+          "gate": "person[taxpayer].f4137_filed",
+          "form": "The deduction for qualified tips included on Form 4137 (worksheet column (c))",
+          "remedy": "This tool prepares Form 4137 but does not figure the part of its tips that is qualified tips for the deduction. Claim the deduction for tips without this tool, or answer that you do not want the deduction for tips.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 104, Qualified Tips From More Than One Employer Worksheet, column (c), and p. 103, method 4",
@@ -3052,7 +3065,8 @@
         "person[taxpayer].w2[emp_a].box6": 43500,
         "f1040.status": "mfs",
         "s1a.tips": true,
-        "s1a.overtime": true
+        "s1a.overtime": true,
+        "household.married_dec31": true
       },
       "expect": {
         "s1a.part2": {
@@ -3090,12 +3104,107 @@
         "person[taxpayer].role": "taxpayer",
         "person[spouse].role": "spouse",
         "person[spouse].birth_year": 1960,
-        "person[spouse].died_at_64": true
+        "person[spouse].died_at_64": true,
+        "household.married_dec31": true
       },
       "expect": {
         "s1a.part2": {
           "kind": "bool",
           "value": false
+        }
+      }
+    },
+    {
+      "id": "mexist.s1a.line4b.no_part2_with_f4137",
+      "covers": [
+        "s1a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of x2pay.f4137.w9_government: Form 4137 tips of $9,000, and no deduction for qualified tips claimed (the tips question on Schedule 1-A answered no). Schedule 1-A Part II is filled out \"only if you received qualified tips\" claimed for the deduction (f1040s1a p. 1, Part II caution), so line 4b is blank ($0), not the $9,000 of Form 4137 line 2.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 400000,
+        "person[taxpayer].f4137_under20": 30000,
+        "person[taxpayer].tips_gov": true
+      },
+      "expect": {
+        "s1a.line4b": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mexist.s1a.line13.schedule1_refused",
+      "covers": [
+        "s1a",
+        "f1040.line13b"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of stage12.refuse.tips_trade_or_business: a K-1 (Schedule 1 income outside this tool) and qualified tips of $8,000 in a listed occupation. Line 13 is line 7 less line 12, and line 7 depends on Form 1040 line 11b (through the Part II modified AGI of lines 8 to 12) which is refused by the Schedule 1 screen (Form 1040 lines 8 and 10 for K-1 income), so line 13 carries the Schedule 1 refusal, recorded from the evaluator.",
+      "inputs": {
+        "scope.noncitizen": false,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": false,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.reservist_expenses": false,
+        "scope.military_move": false,
+        "scope.rental": false,
+        "scope.k1": true,
+        "scope.farm": false,
+        "scope.clergy": false,
+        "scope.church_exempt_wages": false,
+        "scope.w2_marks": false,
+        "scope.performer_expenses": false,
+        "scope.recovery": false,
+        "scope.archer_msa": false,
+        "scope.se_plan_other": false,
+        "scope.reforestation": false,
+        "scope.attorney_fees": false,
+        "scope.nol": false,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "s1a.tips": true,
+        "$tipjob@person[taxpayer]": [
+          "emp0"
+        ],
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].tipjob[emp0].listed": true,
+        "person[taxpayer].tipjob[emp0].tips": 800000
+      },
+      "expect": {
+        "s1a.line13": {
+          "kind": "refusal",
+          "gate": "scope.schedule1",
+          "form": "Schedule 1",
+          "remedy": "Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
         }
       }
     }

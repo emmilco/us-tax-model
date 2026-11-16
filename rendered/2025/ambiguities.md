@@ -28,6 +28,51 @@
 - Status: Stage 3 implementation choice; whole-dollar default not implemented.
 - Cite: [i8949] p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23 (2025; printed date 2026-01-20; sha256 f077991c)
 
+## amb.2025.digital_wash
+
+- Text at issue: i1040sd p. 5: "The wash sale rules generally apply to transactions involving digital assets that are also stock or securities for tax purposes (tokenized securities)." Pub. 550 p. 86 states the wash sale rules for "stock or securities". Neither says how a filer tells whether a digital asset is a tokenized security, and "generally" leaves room for exceptions the archive does not state.
+- Candidate readings: Allow code W on a digital asset sale (boxes G to L), with the filer deciding whether the asset is a tokenized security; the wording of the wash-sale question says the rule generally applies only to one. | Refuse code W on boxes G to L.
+- **Chosen:** The first (sales.wash_loss and sales.has_w apply to boxes G to L as to A to F).
+- Reason: The instructions apply the wash sale rules to tokenized securities and provide box 1i of Form 1099-DA for a reported wash sale loss (i8949 p. 10, code W), so a refusal would refuse a case the instructions expect. Most digital assets are not stock or securities, and the question tells the filer so. Were the reading wrong for some asset, column (g) of that one sale would be wrong by the loss the filer entered.
+- Status: Coordinator's decision D5 of the coverage-expansion round X1, settled as the digital-asset scout recommends (2026-11-15).
+- Cite: [i1040sd] p. 5, Wash Sales, "The wash sale rules generally apply to transactions involving digital assets that are also stock or securities for tax purposes (tokenized securities)."; i8949 p. 10, "the amount of nondeductible wash sale loss shown in box 1g on Form 1099-B or box 1i on Form 1099-DA is incorrect" (2025; printed date 2025-12-11; sha256 650643a6)
+
+## amb.2025.digital_transaction_costs
+
+- Text at issue: i8949 p. 9, code E: "Selling expenses resulting from transactions reported on Form 1099-B or Form 1099-S may have differing treatment than digital asset transaction costs reported on Form 1099-DA." The archive does not say what the differing treatment is; the Form 1099-DA instructions are not archived.
+- Candidate readings: Keep code E refused on every sale (the adjustment code "other"), including digital asset transaction costs. | Treat digital asset transaction costs like selling expenses (a negative column (g) adjustment).
+- **Chosen:** The first (sales.bad_code refuses the code "other").
+- Reason: The instructions say the treatment may differ and do not state it, so computing it would assert a rule the archive does not hold. The refusal is the existing one. To be revisited once the 2025 Form 1099-DA and its instructions are archived.
+- Status: Coordinator's decision D4 of the coverage-expansion round X1, settled as the digital-asset scout recommends (2026-11-15).
+- Cite: [i8949] p. 9, "Selling expenses resulting from transactions reported on Form 1099-B or Form 1099-S may have differing treatment than digital asset transaction costs reported on Form 1099-DA." (2025; printed date 2026-01-20; sha256 f077991c)
+
+## amb.2025.nft_collectible
+
+- Text at issue: The instructions name non-fungible tokens as digital assets (i1040gi p. 15, i8949 p. 3) and define collectibles, whose gain is taxed at up to 28%, as works of art, rugs, antiques, metals, gems, stamps, coins, alcoholic beverages and similar tangible property (i1040sd p. 11, Line 18). They do not say whether a non-fungible token whose underlying asset is such a thing is a collectible. IRS guidance on that question (Notice 2023-27) is not archived.
+- Candidate readings: Refuse a sale of a non-fungible token whose underlying asset is a collectible, through the special-sales question. | Treat every non-fungible token as an ordinary digital asset, not a collectible.
+- **Chosen:** The first (sales.special lists it, and sales.one refuses on sales.special).
+- Reason: Computing the sale at the ordinary capital gain rates would understate the tax if such a token is a collectible, and the archive cannot settle it either way. The refusal is narrow (a token whose underlying asset is a collectible) and uses the existing gate. To be revisited once Notice 2023-27 is archived.
+- Status: Coordinator's decision D2 of the coverage-expansion round X1, settled as the digital-asset scout recommends (2026-11-15).
+- Cite: [i1040sd] p. 11, Line 18, "Collectibles include works of art, rugs, antiques, metals (such as gold, silver, and platinum bullion), gems, stamps, coins, alcoholic beverages, and certain other tangible property."; i1040gi p. 15, Digital Assets, "digital assets include non-fungible tokens (NFTs)" (2025; printed date 2025-12-11; sha256 650643a6)
+
+## amb.2025.digital_income_value
+
+- Text at issue: i1040gi p. 92, Line 8v, says to report "ordinary income in connection with digital assets that isn’t reported elsewhere" (forks, staking, mining) but does not say when it is received or how it is valued. The archive gives the value only for digital assets received as payment for services: "At the time of the payment, the fair market value of one unit of digital asset A is $10,000. You report $10,000 in self-employment income" (i8949 p. 11, Example 6). IRS rulings on forks and staking (Rev. Rul. 2019-24, Rev. Rul. 2023-14) are not archived.
+- Candidate readings: The amount is the fair market value of the digital assets at the time they were received, as the filer determines it. | Some other time or measure of value.
+- **Chosen:** The first (s1.digital_amount asks for the fair market value when received).
+- Reason: It is the only valuation the archive states for digital assets received as income (Example 6), and the tool only sums the amount the filer enters; it determines neither the time of receipt nor the value.
+- Status: Lane x1-digital reading (2026-11-15); the input is the filer's figure.
+- Cite: [i8949] p. 11, Example 6—Digital asset, "At the time of the payment, the fair market value of one unit of digital asset A is $10,000. You report $10,000 in self-employment income" (2025; printed date 2026-01-20; sha256 f077991c)
+
+## amb.2025.digital_8v_nii
+
+- Text at issue: i8960 p. 1, Reminders: "Income derived from transactions involving digital assets may be subject to the tax imposed on net investment income (NII) under section 1411(a)". The archive does not say whether income received in digital assets from staking, mining or a hard fork (Schedule 1 line 8v) is net investment income, or on which line of Form 8960 it would go.
+- Candidate readings: Refuse a return with an amount on Schedule 1 line 8v whose modified adjusted gross income is over the threshold (Form 8960 is filed). | Treat line 8v income as not net investment income.
+- **Chosen:** The first (f8960.digital_nii refuses at Form 8960 line 7).
+- Reason: "May be subject" leaves the question open, and either computed answer could be wrong by 3.8% of the income. Below the threshold the net investment income tax is zero whatever the answer, so only returns over it are refused.
+- Status: Coordinator's decision D3 of the coverage-expansion round X1, settled as the digital-asset scout recommends (2026-11-15).
+- Cite: [i8960] p. 1, Reminders, Digital assets, "Income derived from transactions involving digital assets may be subject to the tax imposed on net investment income (NII) under section 1411(a)" (2025; printed date 2026-02-04; sha256 b10fbb23)
+
 ## amb.2025.sd4952_selection
 
 - Text at issue: Schedule D line 20 directs Form 4952 filers to SDTW, while the worksheet applicability text specifies an amount on Form 4952 line 4g and gives exceptions.
@@ -95,6 +140,27 @@
 
 - Status: Owner ruling, Stage 11.
 - Cite: [i1040gi] p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## amb.2025.sa_dep_earned
+
+- Text at issue: The Standard Deduction Worksheet for Dependents defines earned income as wages and other pay for personal services plus any taxable scholarship or fellowship grant, and adds "Generally, your earned income is the total of the amount(s) you reported on Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15". It does not say whose earned income counts on a joint return.
+- Candidate readings: Use the printed formula (line 1z plus Schedule 1 lines 3, 6, 8r, 8t and 8u, minus line 15), as the return reports them; on a joint return these lines hold both spouses' amounts. | Build earned income from the definition item by item, leaving out amounts on line 1z that are not pay for personal services, and on a joint return use only the claimable spouse's earned income.
+- **Chosen:** The printed formula over the return's lines (sa.dep_earned). Lines 6, 8t and 8u are refused before this worksheet is reached (Schedule F, and Schedule 1 lines 8t and 8u through s1.line8_other), so only lines 1z, 3, 8r and 15 enter it. On a joint return the lines hold both spouses' amounts. A total below zero is entered as zero (Pub. 501 Table 8, line 1, "If none, enter -0-"), which leaves line 2 unchanged: any earned income of $900 or less gives $1,350. Line 2 is figured as the larger of earned income plus $450 and $1,350 (Pub. 501 p. 24, "the greater of"), the same amount as the worksheet's Yes and No.
+
+- Reason: The worksheet gives the formula for the lines a filer has in hand, and Pub. 501 Example 4 applies it with a business loss reducing earned income ($7,000 of wages less a $3,000 loss, $4,000). Line 1z can hold amounts that are not plainly pay for services (taxable employer-provided adoption benefits, line 1f); the formula counts them as written, and the word "Generally" is read as covering them. The joint-return reading is the worksheet's own: line 3 prints the joint amount and line 1 counts both spouses' boxes, and it says "your earned income" of a return whose lines are combined. A joint return where only one spouse is claimable and both have earned income may read differently; no archived text settles it.
+
+- Status: Lane x2-dep reading (coverage expansion, filers who can be claimed as a dependent).
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, note to line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## amb.2025.sa_dep_qss
+
+- Text at issue: The Standard Deduction Worksheet for Dependents, line 3, lists amounts for "Single or married filing separately", "Married filing jointly" and "Head of household", and none for a qualifying surviving spouse, though a qualifying surviving spouse may be someone another person can claim as a dependent (the filing status instructions, condition 2c, "You could be claimed as a dependent on someone else's return").
+- Candidate readings: Use the married filing jointly amount, as the regular standard deduction does for a qualifying surviving spouse. | Refuse, since the worksheet gives no amount for the status.
+- **Chosen:** Refuse (gate sa.dep_qss, on sa.standard and sa.deduction).
+- Reason: The worksheet is silent on the status, and taking the joint amount would be the tool's reading, not the text's. The case is rare (a widowed parent whom another person can claim). The refusal costs that filer the return; it does not compute a deduction the text does not give.
+
+- Status: Lane x2-dep reading (coverage expansion, filers who can be claimed as a dependent).
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## amb.2025.qbi_cooperative_patron
 
@@ -289,6 +355,15 @@
 - Status: Owner ruling, Stage 15 (T-048); same-maximum case confirmed 2026-10-30 (screen review PENDING-1-2).
 - Cite: [i2441] p. 5, Line 21, "Don't enter more than the maximum amount allowed under your dependent care plan" (2025; sha256 86f0669e)
 
+## amb.2025.f2441_mfs_no_credit
+
+- Text at issue: i2441 p. 2, Married Persons Filing Separately: "If you don't meet all of the requirements to be treated as unmarried, you can’t generally take the credit." The instructions do not say whether Part II is left blank or line 11 is entered as zero, nor what "generally" excepts.
+- Candidate readings: Line 11 (and Schedule 3 line 2) is zero; Part III is completed for the exclusion. | Part II is not completed at all.
+- **Chosen:** The first (f2441.line11 is zero when f2441.mfs_married is true).
+- Reason: Both readings put no credit on Schedule 3 line 2, so the return is the same; a zero line 11 also keeps Part III (which needs lines 27 to 31 only for the credit) free of a partly completed Part II. The "generally" names no exception in the archived 2025 sources (i2441 pp. 1 to 2, Pub. 503 pp. 7 to 8), whose only route to the credit on a separate return is the considered-unmarried rule of line A. Settled by the coordinator under the owner's delegation for the MFS expansion (scout-mfs, section 3.7).
+- Status: Coordinator decision under owner delegation, 2026-11-15 (married filing separately expansion, lane L3).
+- Cite: [i2441] p. 2, Married Persons Filing Separately, "If you don't meet all of the requirements to be treated as unmarried, you can’t generally take the credit" (2025; sha256 86f0669e)
+
 ## amb.2025.dc_rate_nonpositive_agi
 
 - Text at issue: Form 2441, line 8: "Enter on line 8 the decimal amount shown below that applies to the amount on line 7", in a table whose first band is "Over $0 But not over 15,000".
@@ -410,9 +485,9 @@
 
 - Text at issue: Schedule 1, line 8z: "Other income. List type and amount". i1040gi p. 92 gives examples; the project has no text values, so the type cannot be written.
 - Candidate readings: A collection of line 8z entries, each with a kind from a fixed list (shown on the values sheet in place of the type) and an amount; the kinds that need no other form or worksheet are computed and the rest refused. | One total for line 8z with a notice that the filer writes the type on the form.
-- **Chosen:** The first (oi8z). Computed kinds: RTAA payments (Form 1099-G box 5) and kickbacks, side commissions, push money or similar payments not from self-employment. Refused kinds: recoveries (Pub. 525 Recoveries), loss on corrective distributions, charitable deduction recaptures (Schedule 2 line 17g), the taxable part of disaster relief payments, Coverdell ESA or QTP distributions (Form 5329), dividends on insurance policies above the net premiums, and any other kind.
+- **Chosen:** The first (oi8z). Computed kinds: RTAA payments (Form 1099-G box 5) and kickbacks, side commissions, push money or similar payments not from self-employment; fees as a nonprofessional executor or personal representative, found property, and taxable damages not paid on account of a physical injury or sickness (oi8z.injury refuses those that are), added by scout-s1-other D2. Recoveries of 2024 itemized deductions are figured on form rec and added to line 8z; the kind recovery stays refused at the entry. Refused kinds: recoveries (Pub. 525 Recoveries), loss on corrective distributions, charitable deduction recaptures (Schedule 2 line 17g), the taxable part of disaster relief payments, Coverdell ESA or QTP distributions (Form 5329), dividends on insurance policies above the net premiums, and any other kind.
 - Reason: The owner's decision D4 (Stage 16). The closed list is the premise map's R-OI-2 less insurance dividends: Form 8960 line 7 takes "Other items of NII ... reported on Schedule 1 (Form 1040), line 8z", and an insurance policy dividend above the premiums paid may be net investment income (an amount from an insurance contract) that this tool would leave off Form 8960; an entry cannot read the return's income to refuse only above the Form 8960 threshold (that would be a cycle through line 8z), so the conservative reading refuses it.
-- Status: Owner decision D4, Stage 16 (T-053); the refusal of insurance dividends is the authoring agent's conservative choice, for the owner.
+- Status: Owner decision D4, Stage 16 (T-053), amended by scout-s1-other D2 (settled as the scout recommends, coordinator delegation, 2026-11-15; insurance dividends stay refused); the refusal of insurance dividends is the authoring agent's conservative choice, for the owner.
 - Cite: [i1040gi] p. 92, Line 8z, "List the type and amount of income" and "Examples of income to report on line 8z include the following"; i8960 p. 13, Line 7—Other Modifications to Investment Income, "Other items of NII (or properly allocable deductions) not otherwise included on Form 8960 reported on Schedule 1 (Form 1040), line 8z" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## amb.2025.gambling_losses
@@ -653,9 +728,36 @@
 - Text at issue: i1040gi p. 23, Community Property States: "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." The text names nine states (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin). Pub. 555 and Form 8958 are not archived. A married person filing as head of household (considered unmarried) reports their own income, which state law may define as half the community income.
 - Candidate readings: Compute the return from the income entered, leaving community income allocation to the filer. | Refuse a married filer who files as head of household and lived in a community property state (household.hoh_community_property), since the tool cannot apply Pub. 555.
 - **Chosen:** The second, for the nine states the instructions list (Direct File''s knockout tests eight; Louisiana is in the text and so in the question).
-- Reason: The owner's decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a forbidden status. Married filing separately, the other case Direct File knocks out, is refused throughout the tool already. A registered domestic partner in Nevada, Washington or California (same paragraph) is asked and refused by household.rdp_community_property (BUG-0220).
+- Reason: The owner's decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a forbidden status. Married filing separately, the other case Direct File knocks out, is refused in a community property state by household.mfs_community_property (amb.2025.mfs_community_property). A registered domestic partner in Nevada, Washington or California (same paragraph) is asked and refused by household.rdp_community_property (BUG-0220).
 - Status: Owner decision, 2026-10-22 (docs/2026-10-22_integrity_plan.md, decision 10).
 - Cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## amb.2025.mfs_community_property
+
+- Text at issue: i1040gi p. 14, Married Filing Separately: "Different rules apply to people in community property states; see Pub. 555." p504 p. 22, Community Property: "If your domicile is in a community property state during any part of your tax year, you may have community income" and "If you and your spouse file separate returns, you must report half of any income described by state law as community income". Pub. 555 and Form 8958 are not archived; the question asks where the filer lived, not where the filer was domiciled.
+- Candidate readings: Compute the separate return from the income entered, leaving the community income split to the filer. | Refuse a married filing separately return of a filer who lived in a community property state at any time in 2025 (household.mfs_community_property).
+- **Chosen:** The second, on the existing question (household.community_property), for the nine states the instructions list.
+- Reason: The same ground as amb.2025.hoh_community_property (owner decision of 2026-10-22, integrity plan decision 10): the community income split of Pub. 555 is outside the tool. "Lived in" is broader than "domicile": a filer who lived in one of the states only temporarily is refused too, which errs toward refusing (settled as design decision D1 of the married-filing-separately scout, by the coordinator under the owner's delegation, 2026-11-15).
+- Status: Coordinator decision under owner delegation, 2026-11-15 (docs/provisional/DECISIONS.md, lane mfs-l1, D1).
+- Cite: [p504] p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income" and "If you and your spouse file separate returns, you must report half of any income described by state law as community income" (2025; sha256 61bb4d52)
+
+## amb.2025.mfs_lived_apart
+
+- Text at issue: i1040gi p. 31, Line 6d, and p. 32, Social Security Benefits Worksheet, line 8: "lived apart from your spouse for all of 2025" and "lived with your spouse at any time in 2025"; p. 97, IRA Deduction Worksheet, line 2, the same words; p. 15, Married persons who live apart: "You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances ... count as time lived in the home." Only the 6-month test states how a temporary absence counts; the all-year test is silent (Pub. 915, which may say more, is not archived). The Earned Income Credit asks "Did you and your spouse have the same principal residence for the last 6 months of 2025?" (p. 41, Step 3, question 4) where its special rule says "You lived apart from your spouse for the last 6 months of 2025" (p. 44).
+- Candidate readings: A temporary absence counts as living together for every test (all of 2025, the last 6 months, and EIC question 4), and EIC question 4 is No only when the spouses did not live together at any time in the last 6 months. | A temporary absence counts as living together only for the 6-month test; the all-year test reads physical living apart. | EIC question 4 is Yes only when the spouses shared a home for all of the last 6 months.
+- **Chosen:** The first. One question (household.mfs_living) asks when the spouses lived together, with the temporary absence rule in its help, and every test reads it.
+- Reason: The 6-month rule's statement of temporary absences is the only one the archived text gives, and p501 p. 9 states the same rule for living in the home generally; applying it to the all-year test asks one fact once (norm N8). The EIC's special rule (p. 44) states the separated-spouse test as living apart for the last 6 months, so a spouse who lived with the filer at some time in those months fails it; the third reading would let that filer pass question 4 while failing the rule the question applies.
+- Status: Coordinator decision under owner delegation, 2026-11-15 (docs/provisional/DECISIONS.md, lane mfs-l1); Pub. 915 to archive.
+- Cite: [i1040gi] p. 15, Married persons who live apart, "Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## amb.2025.mfs_lived_apart_boxes
+
+- Text at issue: i1040gi p. 31, Line 6d: "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d. If you don’t check the box on line 6d, you may get a math error notice from the IRS." The instruction sits under Lines 6a, 6b, 6c, and 6d (social security benefits) and does not say whether the box is checked on a return with no benefits.
+- Candidate readings: Check line 6d on every married filing separately return whose filer lived apart all year. | Check line 6d only where the return has social security benefits (the worksheet is used).
+- **Chosen:** The second.
+- Reason: The box tells the IRS which line 8 base the worksheet used; without benefits there is no worksheet and no math error to avoid, and the first reading would ask every separate filer when they lived together for a box no amount depends on.
+- Status: Coordinator decision under owner delegation, 2026-11-15 (docs/provisional/DECISIONS.md, lane mfs-l1).
+- Cite: [i1040gi] p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d. If you don’t check the box on line 6d, you may get a math error notice from the IRS." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## amb.2025.sep_loss_floor
 
@@ -865,3 +967,403 @@
 - Reason: The general joint-return rule: "A married couple filing jointly report their combined income and deduct their combined allowable expenses on one return" (i1040gi p. 13). The instructions give no exception for this credit, and their joint-occupancy allocation "don't apply to married individuals filing a joint return" (i5695 p. 2). The reading matters only on a joint return where a spouse brings a carryforward from a separate 2024 return; were it wrong, line 12, line 15 and Schedule 3 line 5a would be overstated by that carryforward (BUG-0597).
 - Status: Coordinator's decision D15 of the goal-1 round (2026-11-15), following the owner's reading of 2026-11-11; the encoding is unchanged.
 - Cite: [i1040gi] p. 13, Married Filing Jointly, "A married couple filing jointly report their combined income and deduct their combined allowable expenses on one return"; i5695 p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy credit carryforward from 2024"; i5695 p. 2, Joint occupancy, "These rules don't apply to married individuals filing a joint return." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## amb.2025.k1p_activity_per_box
+
+- Text at issue: Schedule K-1 (Form 1065) instructions, Box 1: "If the partnership had more than one trade or business activity, it will attach a statement identifying the income or loss from each activity"; boxes 2 and 3 say the same of rental activities. A K-1 without such a statement does not say in words that each box is one activity.
+- Candidate readings: Each of boxes 1, 2 and 3 of a K-1 without the statement (boxes 22 and 23 unchecked) is one activity for Form 8582. | The amounts of one K-1 form a single activity.
+- **Chosen:** The first (k1p.b1_*, k1p.b2_*, k1p.b3_*); a K-1 with box 22 or 23 checked is refused (k1p.r_b2223).
+- Reason: The instructions route each box to a different part (box 2 to Part IV when actively participated, boxes 1 and 3 to Part V) and tie the multi-activity case to an attached statement, which boxes 22 and 23 announce; without it each box is one trade or business, rental real estate or other rental activity.
+- Status: Coordinator's decision for lane x2-k1p (scout-k1 amb 1), 2026-11-15.
+- Cite: [i1065sk1] p. 14, Box 1. Ordinary Business Income (Loss), "If the partnership had more than one trade or business activity, it will attach a statement identifying the income or loss from each activity" (2025; sha256 659063e0)
+
+## amb.2025.k1p_basis_by_filer
+
+- Text at issue: Schedule K-1 (Form 1065) instructions, Basis Limitations: "It’s the partner’s responsibility to track and maintain the information necessary to figure their adjusted basis in the partnership". The basis and at-risk limits are figured from facts the K-1 does not show (prior-year basis, contributions, loans).
+- Candidate readings: The filer states whether the year's losses exceed basis and whether any amount is not at risk; a Yes refuses. | The Worksheet for Adjusting the Basis of a Partner’s Interest is encoded from the prior-year basis.
+- **Chosen:** The first (k1p.basis_short, k1p.not_at_risk, asked only when the K-1 shows a loss).
+- Reason: Owner decisions D-K2 and D-K3 (settled as the scout recommends). The worksheet needs the prior year's ending basis, which most filers do not hold in a form the tool can check; the refusal covers every case the limit changes.
+- Status: Coordinator's decision for lane x2-k1p (D-K2, D-K3), 2026-11-15.
+- Cite: [i1065sk1] p. 3, Basis Limitations, "a partner may only claim their share of a partnership loss (including a capital loss) to the extent it doesn’t exceed their adjusted basis in the partnership" (2025; sha256 659063e0)
+
+## amb.2025.k1p_portfolio_no_sche
+
+- Text at issue: Schedule E instructions, Line 28, and the K-1 instructions route boxes 5 to 9 to Schedule B, Form 1040 and Schedule D, not to Schedule E. Whether a K-1 with only portfolio amounts takes a row on Schedule E line 28 is not said.
+- Candidate readings: A K-1 with nothing in boxes 1, 2, 3 or 4a and no held-back loss puts no row on Schedule E. | Every K-1 takes a row on line 28.
+- **Chosen:** The first (k1p.sche_row).
+- Reason: Line 28 columns (g) to (k) hold only passive and nonpassive income and losses; portfolio income "isn’t subject to the passive activity limitations" and is reported elsewhere, so a portfolio-only K-1 has nothing to enter on the row.
+- Status: Coordinator's decision for lane x2-k1p (scout-k1 amb 7, D-K13), 2026-11-15.
+- Cite: [i1065sk1] p. 15, Portfolio Income, "Portfolio income or loss (shown in boxes 5 through 9b and in box 11, code A) isn’t subject to the passive activity limitations" (2025; sha256 659063e0)
+
+## amb.2025.k1p_box9c_business
+
+- Text at issue: Schedule K-1 (Form 1065) instructions, Box 9c: "If the partnership reports only unrecaptured section 1250 gain from the sale or exchange of its business assets, it’ll enter a dollar amount in box 9c. If it reports the other two types of unrecaptured gain, it’ll provide an attached statement".
+- Candidate readings: A dollar amount in box 9c is gain from the partnership's business assets (worksheet line 5); a statement is refused. | The amount may hold other types and must be split from the statement.
+- **Chosen:** The first (k1p.box9c, help on the question; the statement case is named in help as outside the tool).
+- Reason: The instructions tie the dollar amount to the business-asset type and the other types to an attached statement.
+- Status: Coordinator's decision for lane x2-k1p (scout-k1 amb 8), 2026-11-15.
+- Cite: [i1065sk1] p. 16, Box 9c. Unrecaptured Section 1250 Gain, "If the partnership reports only unrecaptured section 1250 gain from the sale or exchange of its business assets, it’ll enter a dollar amount in box 9c" (2025; sha256 659063e0)
+
+## amb.2025.k1p_prior_with_activity
+
+- Text at issue: Form 8582 instructions, Part IV and Part V column (c): prior-year unallowed losses are entered for each activity "from Part VII, column (c), of your 2024 Form 8582". An activity can carry such a loss in a year its K-1 box is blank.
+- Candidate readings: The held-back loss question is asked of a K-1 with an amount in box 1, 2 or 3. | It is asked of every K-1.
+- **Chosen:** The first (k1p.prior_any_if_activity).
+- Reason: One question saved on every portfolio-only K-1. A held-back loss on a K-1 whose boxes 1 to 3 are all blank stays held back (not deducted), which can only understate the losses allowed; the help and the question name the 2024 Form 8582.
+- Status: Coordinator's decision for lane x2-k1p, 2026-11-15; open to the owner's review (a reading that understates a deduction).
+- Cite: [i8582] p. 10, Part IV, "You find these amounts in Part VII, column (c), of your 2024 Form 8582" (2025; sha256 76787e11)
+
+## amb.2025.k1p_material_tests
+
+- Text at issue: Schedule K-1 (Form 1065) instructions, Material participation: seven tests for individuals other than limited partners; "If you’re a limited partner, you must meet item 1, 5, or 6 above". Tests 4, 6 and 7 rest on facts outside the activity (other activities, earlier years, all facts and circumstances).
+- Candidate readings: Tests 1, 2, 3 and 5 are asked in turn and decide; a Yes to test 4, 6 or 7 is refused; a partner who meets none is passive. | All seven tests are asked as one question with the tests in help.
+- **Chosen:** The first (k1p.material, k1p.t4, k1p.t6, k1p.t7).
+- Reason: Owner decision D-K5 (settled as the scout recommends). Item G answers which tests apply; a limited partner is asked tests 1, 5 and 6 only. The spouse's work counts ("any work that you or your spouse does").
+- Status: Coordinator's decision for lane x2-k1p (D-K5), 2026-11-15.
+- Cite: [i1065sk1] p. 9, Limited partners, "If you’re a limited partner, you must meet item 1, 5, or 6 above to qualify as having materially participated" (2025; sha256 659063e0)
+
+## amb.2025.f7203_capital_lines
+
+- Text at issue: Form 7203 line 3g reads "Net capital gains (enter losses in Part III)" and line 38 "Net capital loss", while Schedule K-1 (Form 1120-S) reports a net short-term amount (box 7) and a net long-term amount (box 8a) separately. The form does not say whether a short-term loss and a long-term gain are netted before the stock basis computation.
+- Candidate readings: Enter each box on its own sign, a gain on line 3g and a loss on line 38, without netting box 7 against box 8a. | Net box 7 and box 8a first and enter the net on line 3g or line 38.
+- **Chosen:** Each box on its own sign (k1s.gain7, k1s.gain8 on f7203.l3g; k1s.loss7, k1s.loss8 on f7203.a38).
+- Reason: The instructions for line 3 say "Enter only positive amounts from Schedule K-1 (Form 1120-S) on line 3. Negative amounts (decreases to stock basis) are entered in Part III", which reads item by item; the order of basis adjustments (income first, losses last) gives the same ending basis either way when no loss is limited, and a capital loss that is limited is refused (f7203.cap_limited).
+
+- Status: Lane x2-k1s reading, for the owner's ruling.
+- Cite: [i7203] p. 2, Line 3, "Enter only positive amounts from Schedule K-1 (Form 1120-S) on line 3" (Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists); sha256 f2a4a124)
+
+## amb.2025.f7203_prorata_places
+
+- Text at issue: Form 7203 Part III column (c) asks for "the pro rata amount" of each loss when stock basis (line 10) is less than the total of the losses, and says the column (c) total "can't exceed the amount reported on line 10", without saying how the ratio is figured or rounded.
+- Candidate readings: Each loss times line 10 divided by the line 47 total, the ratio rounded half-up to six places, the product to the cent; line 11 is the smaller of the column (c) total and line 10. | Keep the ratio exact and give any rounding remainder to one line so the column totals line 10 exactly.
+- **Chosen:** Six places, as the prorate atom does elsewhere (f7203.c35_p to f7203.c38_p), with line 11 capped at line 10.
+- Reason: The same reading the register records for other pro rata splits (amb.2025.carloan_ratio_places); on losses below $10 million the result differs from an exact ratio by at most a few cents, and the cap keeps line 11 within line 10 as the instruction requires.
+
+- Status: Lane x2-k1s reading, for the owner's ruling.
+- Cite: [i7203] p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "enter the pro rata amount on the corresponding line in column (c)" (Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists); sha256 f2a4a124)
+
+## amb.2025.f7203_required
+
+- Text at issue: Form 7203 is filed by shareholders who "Are claiming a deduction for their share of an aggregate loss from an S corporation" or "Received a non-dividend distribution". The instructions do not define "aggregate loss" for a K-1 with both income items and loss items.
+- Candidate readings: Figure Form 7203 whenever any loss item (box 1, 2, 3, 7 or 8a below zero) or a distribution is reported. | Figure it only when the K-1's items net to a loss, or a distribution is reported.
+- **Chosen:** Any loss item or a distribution (k1s.f7203_required).
+- Reason: Every loss and deduction item is limited by basis item by item (Part III lists them line by line), so figuring basis whenever any loss item is present never omits a limitation; when basis covers the losses the result equals the K-1 amounts, so the broader reading can change no value, only add the two basis questions.
+
+- Status: Lane x2-k1s reading, for the owner's ruling.
+- Cite: [i7203] p. 1, Who Must File, "Are claiming a deduction for their share of an aggregate loss from an S corporation" (Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists); sha256 f2a4a124)
+
+## amb.2025.k1s_qbi_basis
+
+- Text at issue: The Schedule K-1 (Form 1120-S) instructions for box 17, code V, say to include in QBI "only those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable income for the tax year", without saying how the qualified part of a loss partly suspended by the basis limitation is found.
+- Candidate readings: Refuse a qualified business loss on a K-1 whose losses are partly carried forward by the basis limitation. | Scale the statement's QBI loss by the allowed share of the K-1's losses.
+- **Chosen:** Refuse (k1s.qbi_cut).
+- Reason: The statement reports QBI by business, while Form 7203 limits losses by kind across the whole K-1; no archived text says which part of the QBI loss the allowed loss carries, and the case is rare beside the computed one (basis covering the losses).
+
+- Status: Lane x2-k1s reading, for the owner's ruling.
+- Cite: [i1120ssk] p. 17, Code V. Section 199A information, "you must include only those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable income for the tax year" (2025; sha256 fb6194da)
+
+## amb.2025.mfs_spouse_qc
+
+- Text at issue: On a separate return the husband or wife is "any other person" for Step 1 (i1040gi p. 17, "a qualifying child of any other person (other than your spouse if filing jointly)"), so a child who lived with both is the qualifying child of both. The tie-breaker rules decide only when the two "don’t file a joint return together but both parents claim the child" (p501 p. 15), and otherwise "you and the other person may be able to choose which of you claims the child" (p501 p. 17). The text does not say how a preparer of one spouse's return learns whether the other will claim, and a non-parent claims only with the higher AGI (i1040gi p. 21).
+- Candidate readings: Ask whether the husband or wife is the only other such person and whether they will claim the child. When they will not, and you are the child's parent by birth or adoption, no tie-breaker arises and you claim the child; when they will, or you are not the child's parent, refuse at the tie-breaker gate. | Refuse every separate return on which the child is also the qualifying child of the husband or wife, as for any other person.
+- **Chosen:** The first (dependent.other_only_spouse, dependent.spouse_claims, dependent.filer_parent; dependent.spouse_settles clears dependent.qc_tiebreak and dependent.eic_tiebreak only on the computed path).
+- Reason: Pub. 501 Example 6 (p. 17) states the case: "You and your spouse will file separate returns. Your spouse agrees to let you treat your child as a qualifying child. This means, if your spouse doesn’t claim your child as a qualifying child, you can claim this child". The spouse's claim is a fact the filer can learn from the spouse, as Example 6 assumes. When the spouse also claims, the IRS rule by time lived and AGI needs the spouse's facts, and a stepparent, foster parent or other non-parent claims only with an AGI higher than the parent's (i1040gi p. 21), so those stay refused. When the spouse settles it but the child is not your qualifying child, the existing test still refuses a child who is the qualifying child of another taxpayer (Step 4). A parent who is refused because the spouse also claims is refused even where the spouse is a stepparent and the filer would win the tie-breaker as the only parent: the tool does not ask whether the spouse is a parent.
+- Status: Owner decision D3 of the married-filing-separately round, settled as the design scout recommended (delegated to the coordinator, 2026-11-15); lane mfs-l4.
+- Cite: [p501] p. 17, "Subject to these tiebreaker rules, you and the other person may be able to choose which of you claims the child as a qualifying child."; p. 17, Example 6—separated parents, "You and your spouse will file separate returns. Your spouse agrees to let you treat your child as a qualifying child. This means, if your spouse doesn’t claim your child as a qualifying child, you can claim this child as a qualifying child"; i1040gi p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025" (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## amb.2025.rental_activity_per_property
+
+- Text at issue: The instructions let a filer group rental activities into one appropriate economic unit, and do not say how a tool should treat several properties when the filer does not say.
+- Candidate readings: Each property listed on Schedule E is one activity. | Ask how activities are grouped and allocate by group.
+- **Chosen:** Each property is one activity; a filer who treats two or more rentals as one activity is refused (sche.grouped).
+- Reason: Grouping changes the Part IV to VIII allocation; asking is rare and costly, so it is screened out.
+- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
+- Cite: [i8582] p. 1, Grouping of Activities (2025; sha256 76787e11)
+
+## amb.2025.f8582_magi_build
+
+- Text at issue: Form 8582 line 6 takes modified adjusted gross income "except don't take into account" any passive activity loss; the tool cannot read Form 1040 line 11 without a cycle (line 11 contains the allowed loss).
+- Candidate readings: Build MAGI from the income lines with no Schedule E rental amount at all, adding royalty income (not passive) and subtracting the adjustments other than self-employment tax, IRA and student loan interest. | Start from AGI and add back the allowed passive loss.
+- **Chosen:** The first.
+- Reason: The two agree whenever line 9 is reached: line 9 is reached only when line 3 is a loss, and then the passive incomes and losses net to that loss, which MAGI leaves out. Taxable social security, the EE bond exclusion and adoption benefits are excluded or refused elsewhere.
+- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
+- Cite: [i8582] p. 11, Line 6, "To figure modified adjusted gross income, combine all the amounts used to figure adjusted gross income" (2025; sha256 76787e11)
+
+## amb.2025.f8582_ratio_places
+
+- Text at issue: Parts VI and VII divide each loss by the total of the column and multiply by line 9 (or line C); the instructions say the ratios must total 1.00 and column (c) must equal line 9, but give no number of places.
+- Candidate readings: Ratios to six places, each product rounded to the cent; a cent of residue against line 9 is accepted. | Allocate the residue to the largest loss.
+- **Chosen:** Ratios to six places, products to the cent (prorate, places 6).
+- Reason: A cent of difference has no effect on the tax at whole-dollar rounding.
+- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
+- Cite: [i8582] p. 12, Part VI, "The total of all the ratios in column (b) must equal 1.00" (2025; sha256 76787e11)
+
+## amb.2025.rental_use_ratio_places
+
+- Text at issue: Pub. 527 divides expenses by the fraction of rental days over total days of use and shows the fraction as a rounded percent (85/99 (86%)).
+- Candidate readings: Divide by the exact fraction, carried to six places. | Round the fraction to a whole percent.
+- **Chosen:** Six places.
+- Reason: The publication's percent is a display of the fraction; the fraction itself is exact.
+- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
+- Cite: [p527] p. 26, Dividing Expenses, "Your rental expenses are 85/99 (86%) of the cottage expenses" (2025; sha256 20c826e9)
+
+## amb.2025.rental_overlap_days
+
+- Text at issue: A day rented at a fair price on which the owner also used the unit counts as a rental day for dividing expenses but as a personal day for the home test.
+- Candidate readings: Ask the personal days (all of them) and, beneath, how many were also fair rental days; divide by fair days over fair plus personal less overlap; test the home rule on personal days against fair days less overlap.
+- **Chosen:** The reading above.
+- Reason: It is the publication's own example (85/99 for division; 16 personal and 83 rental days for the home test).
+- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
+- Cite: [p527] p. 26, Dwelling Unit Used as a Home, "count it as a day of personal use in applying both (1) and (2) above" (2025; sha256 20c826e9)
+
+## amb.2025.rental_direct_expenses
+
+- Text at issue: When a unit with personal use is not used as a home, Pub. 527 says to divide the expenses by days; Worksheet 5-1 (for a home) treats rental-only expenses such as advertising and commissions as undivided.
+- Candidate readings: Divide every expense by the days fraction. | Leave rental-only expenses undivided.
+- **Chosen:** Divide every expense (the chapter text applies to a unit not used as a home; Worksheet 5-1 is refused).
+- Reason: The design scout's reading D2; the worksheet that treats them differently applies only to a home, which is refused.
+- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
+- Cite: [p527] p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose" (2025; sha256 20c826e9)
+
+## amb.2025.rental_not_qbi
+
+- Text at issue: A rental real estate activity is a trade or business for the qualified business income deduction only if it meets the safe harbor or is a section 162 trade or business.
+- Candidate readings: A rental is not a trade or business unless the filer says it is (then refused).
+- **Chosen:** The reading above (sche.qbi_business refuses).
+- Reason: Rev. Proc. 2019-38 is not archived; most single-property landlords do not meet it.
+- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
+- Cite: [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction" (2025; printed date 2026-01-26; sha256 875843ba)
+
+## amb.2025.rental_prior_depreciation_tables
+
+- Text at issue: Depreciation of a building placed in service before 2025 is figured from Tables A-6 and A-7a, not taken from the filer's earlier depreciation schedule.
+- Candidate readings: Figure it from the tables. | Ask for the amount on the prior schedule.
+- **Chosen:** Figure it from the tables.
+- Reason: The tables give the deduction the rules require; a schedule prepared another way is screened out (rprop.screen).
+- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
+- Cite: [p946] p. 37, Using the MACRS Percentage Tables (For use in preparing 2025 returns; sha256 07fadfb2)
+
+## amb.2025.f8582_shown
+
+- Text at issue: Form 8582 need not be filed under the exception; the tool computes the same arithmetic either way.
+- Candidate readings: Show the form only when it must be filed. | Always show it when there is a passive rental.
+- **Chosen:** Show it only when required (f8582.required).
+- Reason: Under the exception line 9 equals the total loss, so the allowed losses are the same.
+- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
+- Cite: [i8582] p. 1, Exception; p. 2, Coordination With Other Limitations, "If all the above conditions are met, your rental real estate losses are not limited, and you don’t need to complete Form 8582" (2025; sha256 76787e11)
+
+## amb.2025.s1_ebl_rental
+
+- Text at issue: The excess business loss screen counts Schedule C losses; the Schedule E instructions say a Schedule E loss may also be subject to it (Form 461 is not archived).
+- Candidate readings: Count rental and royalty losses before the passive limit toward the screen. | Leave them out.
+- **Chosen:** Count them (conservative: refuses more).
+- Reason: Form 461 is not archived to say which rental losses are business losses.
+- Status: Coordinator's decision for lane x1-sche (2026-11-15), as the design scout recommends; awaiting review.
+- Cite: [i1040se] p. 1, Reminders, "you may be subject to a business loss limitation" (2025; sha256 ad71de35)
+
+## amb.2025.sa_mfs_spouse_itemizes
+
+- Text at issue: i1040gi p. 33, Line 12b: "If your filing status is married filing separately and your spouse itemizes deductions on their return, check the box on line 12b." Whether the spouse itemizes is the spouse's choice on another return, which the filer may not know when filing; the instructions do not say what a filer who does not know should do.
+- Candidate readings: Ask the fact ("Is your husband or wife itemizing deductions on their own 2025 return?"), with help telling the filer to ask the spouse. | Refuse a married filing separately return whose filer does not know the spouse's choice.
+- **Chosen:** The first (sa.spouse_itemizes, read through sa.mfs_spouse_itemizes).
+- Reason: The line is a fact about the spouse's return, and a filer can find it out by asking; Pub. 504 p. 4: "If you and your spouse file separate returns and one of you itemizes deductions, the other spouse can’t use the standard deduction and should also itemize deductions." A wrong No overstates the standard deduction; the help says to ask.
+- Status: Coordinator's decision for lane mfs-l2 (scout-mfs.md 3.7, settled as recommended under the owner's delegation, 2026-11-15).
+- Cite: [i1040gi] p. 33, Line 12b, "If your filing status is married filing separately and your spouse itemizes deductions on their return, check the box on line 12b" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## amb.2025.sa_mfs_mortgage_limit
+
+- Text at issue: i1040sca p. 8, Limits on home mortgage interest: "you can only deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt". The instructions do not say whether a married filing separately filer measures a mortgage owed jointly with the spouse at its whole balance or at a share; Pub. 936, which the instructions send the filer to, is not archived.
+- Candidate readings: Count the whole balance of every loan on the home, including one shared with the spouse, against $375,000 ($500,000 for debt taken out on or before December 15, 2017); a filer over it is refused. | Count only the filer's share of a jointly owed loan.
+- **Chosen:** The first (sa.mortgage_over_limit_mfs).
+- Reason: The limit question only refuses, so counting the whole balance can only refuse a return that the share reading would compute; it cannot produce a wrong deduction. The rule leans to Yes (formal gates design, standing rule 6). The reading is reopened when Pub. 936 is archived.
+- Status: Coordinator's decision for lane mfs-l2 (scout-mfs.md 3.3, settled as recommended under the owner's delegation, 2026-11-15).
+- Cite: [i1040sca] p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## amb.2025.ira_mfs_spouse_covered
+
+- Text at issue: i1040gi p. 96, Married persons filing separately: "If you weren’t covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025." i1040gi p. 31, Lines 6a and 6b, Exception: do not use the Social Security Benefits Worksheet if "You made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment." Whether "your spouse were covered" in the exception reaches a married filing separately filer who lived apart from the spouse all year, and whose spouse was covered, is not stated.
+- Candidate readings: Ask the spouse's coverage only when it can change the worksheet (married filing separately, a traditional contribution, the filer not covered, and living together at some time in 2025); a filer who lived apart all year is treated as not covered through the spouse, for line 1a and for the social security exception alike. | Ask every married filing separately filer with a traditional contribution and social security benefits whether the spouse was covered, and refuse (ira.cov_gate) when the spouse was, even after living apart all year.
+- **Chosen:** The first (ira.mfs_spouse_covered, ira.mfs_spouse_covered_if_asked).
+- Reason: Pub. 590-A p. 13 states that a separate filer who lived apart all year has filing status single "for this purpose", and its Table 1-3 (p. 14) gives that filer the full deduction whatever the spouse's coverage; the spouse's coverage has no effect on that return. The readings differ only for a filer who lived apart all year, had social security benefits and a traditional contribution, was not covered and whose spouse was.
+- Status: Coordinator's decision for lane mfs-l2 (scout-mfs.md 3.3, settled as recommended under the owner's delegation, 2026-11-15).
+- Cite: [p590a] p. 13, Lived apart from spouse, "If you didn’t live with your spouse at any time during the year and you file a separate return, your filing status, for this purpose, is single" (2025; sha256 ca0e4287)
+
+## amb.2025.s1_line20_box
+
+- Text at issue: Schedule 1 (2025), line 20: "If you are married filing separately and lived apart from your spouse for the entire year (see instructions), check here". The box sits on the IRA deduction line; the instructions (i1040gi p. 96) give it under line 20 and do not say whether it is checked on a return that takes no IRA deduction.
+- Candidate readings: Check the box when the filer is married filing separately, lived apart from the spouse all year, and made a traditional IRA contribution for 2025 (the IRA Deduction Worksheet is used). | Check it on every married filing separately return of a filer who lived apart all year.
+- **Chosen:** The first (s1.line20_box).
+- Reason: The box tells the IRS which line 2 amount of the worksheet applies ($89,000 rather than $10,000); i1040gi warns of a math error notice when it is missing, which arises only where an IRA deduction is figured. The first reading asks no MFS filer without an IRA contribution about living arrangements for a box that changes nothing.
+- Status: Coordinator's decision for lane mfs-l2 (scout-mfs.md 3.7, amb.2025.mfs_lived_apart_boxes, settled as recommended under the owner's delegation, 2026-11-15).
+- Cite: [i1040gi] p. 96, Married persons filing separately, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 20. If you don’t check the box on line 20, you may get a math error notice from the IRS" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## amb.2025.rec_two_returns
+
+- Text at issue: p525 p. 27, Worksheet 2: "Use information from your tax return for the year the expense was deducted." On a joint 2025 return, the amounts paid back may be for deductions on one 2024 return (a joint one, or one spouse's own) or on two (each spouse filed separately for 2024).
+- Candidate readings: Worksheet 2 is completed once, against the one 2024 return the deductions were on; amounts for deductions on two 2024 returns are refused (they need a worksheet for each return, and the split of line 1 and line 8z for each). | Complete Worksheet 2 once against the combined figures of both 2024 returns.
+- **Chosen:** The first (rec.two_returns, refused at rec.to_line8z).
+- Reason: The worksheet's lines 4, 7 and 10 are figures of one return; combining two returns has no basis in the text, and the refund worksheet already refuses the like case for state refunds (amb.2025.refund_two_returns).
+- Status: Authoring agent's reading, lane x2-s1o (2026-11-15), for the owner.
+- Cite: [p525] p. 27, Worksheet 2, "Use information from your tax return for the year the expense was deducted" (2025; sha256 39b0fa5e)
+
+## amb.2025.rec_mortgage_cap
+
+- Text at issue: p525 p. 27, Worksheet 2, footnote 2 to line 2: "Don’t enter more than the amount deducted for the prior year." A mortgage interest refund (Form 1098 box 4) is asked as one amount.
+- Candidate readings: Ask for the refund of mortgage interest deducted, capped in the question at the interest deducted (a refund above it happens only when the 2024 deduction was limited). | Ask the refund and the 2024 mortgage interest deducted separately and take the smaller, as for medical expenses.
+- **Chosen:** The first (rec.mortgage).
+- Reason: Mortgage interest is deducted in full unless the 2024 home mortgage limit applied; a separate question would be asked of every filer with a mortgage refund to serve that rare case. Medical expenses, deducted only above the 7.5% floor, take the second form (rec.medical_deducted), as in Example 34.
+- Status: Authoring agent's reading, lane x2-s1o (2026-11-15), for the owner.
+- Cite: [p525] p. 27, Worksheet 2, footnote 2, "Don’t enter more than the amount deducted for the prior year"; p. 26, Example 34, "the amount actually deducted" (2025; sha256 39b0fa5e)
+
+## amb.2025.rec_ratio_places
+
+- Text at issue: p525 p. 26, Worksheet 2a, lines 7 and 8: "divide line 1 by line 6. Then multiply by the amount on line 5"; p. 27, Worksheet 2, line A: "Divide the amount on line 1a by the amount on line 3. Enter the percentage". The precision of the ratio is not stated.
+- Candidate readings: Round the ratio half-up to six decimal places, then the product half-up to the cent (the prorate atom). | Round the percentage to whole or tenths of a percent.
+- **Chosen:** The first (rec.w2a_line7_share, rec.w2a_line8_share, rec.line_b_share).
+- Reason: Six places leave the result within a cent of the exact product for any amount under $10,000 and match the precision used elsewhere for an unstated ratio (carloan). When line 11 equals line 3 the worksheet's own first case puts line 1a on Schedule 1 line 1 without a ratio (rec.line_b), and when line 1a or lines 1b and 2 are zero the ratio is exactly 0 or 1.
+- Status: Authoring agent's reading, lane x2-s1o (2026-11-15), for the owner.
+- Cite: [p525] p. 27, Worksheet 2, line A, "Divide the amount on line 1a by the amount on line 3. Enter the percentage" (2025; sha256 39b0fa5e)
+
+## amb.2025.rec_line5
+
+- Text at issue: p525 p. 27, Worksheet 2, line 5: "Enter any amount previously refunded to you (don’t enter an amount from line 1a, 1b, or 2)."
+- Candidate readings: Zero for 2024 deductions recovered in 2025; an amount refunded during 2024 reduced the 2024 deduction itself. | Ask the filer for any amount previously refunded.
+- **Chosen:** The first (rec.line5).
+- Reason: For deductions of 2024 there is no year between the year of the deduction and 2025 in which an amount could have been refunded and included; a refund in 2024 itself reduced the deduction (p. 24, Recovery and expense in same year), so it is already out of line 4. Recoveries for earlier years are refused (rec.before_prior_year).
+- Status: Authoring agent's reading, lane x2-s1o (2026-11-15), for the owner.
+- Cite: [p525] p. 24, Recovery and expense in same year, "If the refund or other recovery and the expense occur in the same year, the recovery reduces the deduction or credit and isn’t reported as income" (2025; sha256 39b0fa5e)
+
+## amb.2025.rec_prior_taxable
+
+- Text at issue: p525 p. 27, Worksheet 2, line 10: "Taxable income for prior year (2024 Form 1040, line 15", with footnote 4: "If taxable income is a negative amount, enter that amount in brackets." Form 1040 line 15 cannot be negative; p. 26 says taxable income is negative when "the sum of lines 12 and 13, was more than line 11".
+- Candidate readings: Ask whether 2024 line 15 is more than zero; if it is, line 10 is not negative and line 11 is line 9. Otherwise line 10 is 2024 line 11 less line 14 (lines 12 and 13 added), which can be negative. | Ask line 15 and treat a zero as zero.
+- **Chosen:** The first (rec.ti_positive, rec.agi_prior, rec.ded_prior, rec.line10).
+- Reason: The footnote forbids entering zero unless taxable income is exactly zero, and the 2024 Form 1040 line 14 is the sum of lines 12 and 13 that p. 26 compares with line 11. A negative 2024 taxable income while a net operating loss is carried into 2025 is refused (rec.nol_negative), since footnote 4 adds that it "will have to be adjusted for any net operating loss carryover".
+- Status: Authoring agent's reading, lane x2-s1o (2026-11-15), for the owner.
+- Cite: [p525] p. 26, Negative taxable income, "You have a negative taxable income for 2024 if your: • Form 1040, the sum of lines 12 and 13, was more than line 11" (2025; sha256 39b0fa5e)
+
+## amb.2025.s1_nol_limit_test
+
+- Text at issue: i172 p. 2: the deduction of NOLs from tax years after 2017 cannot exceed "80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions". Taxable income figured without the NOL deduction is not on the return.
+- Candidate readings: Compute the deduction as the whole carryover N only when N is at most four times T, where T is Form 1040 line 11b less line 14 with the deduction taken (unfloored); refuse otherwise. Sound when T0, taxable income without the NOL and QBI deductions, is at least T + N: then N ≤ 4T gives N ≤ 0.8(T + N) ≤ 0.8 T0. | Refigure taxable income without the deduction (a shadow chain of every AGI-dependent line) and apply the limit exactly.
+- **Chosen:** The first (s1.nol_ti, s1.nol_ti4, s1.nol_limit_test, refused at f1040.line15 by s1.nol_limit).
+- Reason: Owner decision D3 (lane x2-s1o, scout-s1-other): the sufficiency test is accepted. The premise T0 ≥ T + N holds when no deduction in scope rises with AGI. Checked against the forms (lane x2-s1o, 2026-11-15): the above-the-line deductions with phase-outs (student loan interest, IRA) fall as modified AGI rises; taxable social security benefits rise with other income, so AGI without the NOL is at least AGI with it plus N; the itemized deductions with an AGI floor (medical, casualty) and the SALT limit that falls above $500,000 of modified AGI fall as AGI rises; the larger of itemized and standard deductions keeps that direction; Schedule 1-A deductions (tips, overtime, car loan interest, seniors) phase out with modified AGI; the QBI deduction is left out of T0 and only lowers T. The one deduction that rises with AGI, charitable gifts under the AGI percentage limits, is refused when a limit binds (sa.charity_limited). NOLs from before 2018 (no 80% limit, deducted first) are refused (s1.nol_before_limit_date). The refusal sits on line 15, not on line 8a, because the test reads lines 11b and 14, which read line 8a.
+- Status: Owner decision D3 of scout-s1-other, settled as the scout recommends (coordinator delegation, 2026-11-15); premise checked by lane x2-s1o.
+- Cite: [i172] p. 2, "80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); sha256 15977bb6)
+
+## amb.2025.f8853c_period
+
+- Text at issue: i8853 pp. 8–9, Line 21: "The number of days in your LTC period depends on which method you choose to define the LTC period. Generally, you can choose either the Contract Period method or the Equal Payment Rate method."
+- Candidate readings: The equal payment rate method, with one LTC period in 2025 (the days the one payment rate applied); a change of rate, or a second contract starting or stopping, makes more than one period and is refused. | The contract period method (a daily contract makes every day its own period).
+- **Chosen:** The first (f8853c.days, f8853c.rate_changed).
+- Reason: With one rate, the equal payment rate method gives one period and one Section C, which the form computes as printed; the contract period method for a daily contract would need a Section C per day. The filer may choose either method, so the first is a permitted choice, not a narrowing of the law.
+- Status: Authoring agent's reading, lane x2-s1o (2026-11-15), for the owner.
+- Cite: [i8853] p. 9, Method 2—Equal Payment Rate, "your LTC period is the period during which the insurance company uses the same payment rate to compute your benefits" (2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 cefff141)
+
+## amb.2025.f1116_ratio_places
+
+- Text at issue: Form 1116 line 3f says "round off the result to at least four decimal places" and the Worksheet for Home Mortgage Interest line 3 says "rounded to at least four places"; line 19 says only "Divide line 17 by line 18" and states no rounding.
+- Candidate readings: Round each ratio half-up to exactly four decimal places, the least precision lines 3f and the worksheet allow. | Keep each ratio at full precision, which also satisfies "at least four". | Round line 19 differently from line 3f (for example six places), since its text states no rounding.
+- **Chosen:** Round lines 3f, the worksheet's line 3 and line 19 half-up to four decimal places (the prorate atom with places 4 on f1116col.line3g_figured, f1116col.line4a_figured and f1116.line21_figured).
+- Reason: Four places is the least precision lines 3f and the worksheet allow, the instructions' own example ("round off to 0.8757"), and the precedent of amb.2025.sli_ratio_places. Line 19 is taken the same way so that one ratio rule runs through the form. The readings differ by cents: with line 20 of $10,095 a change of 0.00005 in the ratio moves line 21 by about 50 cents.
+
+- Status: Lane x1-f1116 reading (scout readings A2 and D6), settled by the coordinator's delegation.
+- Cite: [i1116] p. 18, Line 3f; p. 25, Line 19 (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## amb.2025.f1116_interest_threshold
+
+- Text at issue: Lines 4a and 4b say that when gross foreign source income "doesn’t exceed $5,000, you can allocate all of your interest expense to U.S. source income."
+- Candidate readings: The allocation is permitted, not required; the tool takes it whenever it is available. | The filer chooses, and may apportion interest even at $5,000 or less.
+- **Chosen:** At $5,000 or less no interest expense is entered on lines 4a or 4b (f1116.foreign_over, f1116col.line4a).
+- Reason: Allocating interest to U.S. income never lowers the credit limit, so taking the permission is never worse for the filer; asking would add a question no filer gains by answering the other way.
+
+- Status: Lane x1-f1116 reading (scout reading A5), settled by the coordinator's delegation.
+- Cite: [i1116] p. 18, Lines 4a and 4b (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## amb.2025.f1116_high_taxed
+
+- Text at issue: Reg. 1.904-4(c)(1): income is high-taxed "if, after allocating expenses, losses, and other deductions ... the sum of the foreign income taxes paid ... exceeds the highest rate of tax specified in section 1 ... multiplied by the amount of such income"; (c)(3) groups a U.S. person's passive income received in the year into one item "subject to a withholding tax of fifteen percent or greater" and one "of less than fifteen percent (but greater than zero)"; (c)(2)(i) apportions deductions to the groups under 1.861-8.
+- Candidate readings: The withholding rate of an item is the foreign tax on it divided by its income, taken per column and per kind (a column's dividends, a column's interest); deductions are apportioned to each group by its gross income over line 3e; the rate is 37 percent. | The rate of each payment is the rate the foreign law imposes on it, so a column whose payments straddle 15 percent (a fund's mix of countries) is split between the groups. | A lower rate for qualified dividends (20 percent under section 1(h)).
+- **Chosen:** The first (f1116col.div_hi, f1116col.int_hi and the group lines; f1116.high_taxed when either group's tax is more than 37 percent of its income after deductions, refused on line 35).
+- Reason: The regulation fixes the rate as the highest rate "specified in section 1", 37 percent for 2025, and (c)(2)(iii) makes the test before the section 904(b) adjustments, which is where qualified dividends get their lower rate; so the third reading is rejected. The return holds income and tax per column and kind, not per payment: a fund reports one foreign tax on one foreign income, and a country's treaty rate is normally one rate, so the per column and kind ratio is the payment's rate in the common cases. Every deduction on the returns computed (line 3c and home mortgage interest) is apportioned by gross income, so each group bears the same share of them; a group can be a loss only when all are, so the reallocation of (c)(2)(ii) never moves income between groups here. The residue is a column whose payments straddle 15 percent, classed by its average.
+
+- Status: Lane x1-f1116 second pass, from the archived regulation; replaces the provisional 20 percent screen of scout decision D2.
+- Cite: [cfr-26-1-904-4] p. 3, (c) High-taxed income; p. 4, (c)(2) and (c)(3) (26 CFR Ch. I (4-1-25 Edition), section 1.904-4 (GovInfo, GPO); sha256 811fd03e)
+
+## amb.2025.f1116_itemized
+
+- Text at issue: Line 3a lists "Medical expenses (line 4)", "General sales taxes", "Real estate taxes for your home" and "State and local personal property taxes"; state income taxes may need "a special allocation ... See Pub. 514"; Pub. 514 (p. 27) allocates state income tax by the income the state taxes; Reg. 1.861-8(e)(12)(i) apportions the charitable deduction "on the basis of the relative amounts of gross income from sources in the United States in each grouping".
+- Candidate readings: Gifts to charity go to U.S. income (a foreign category holds no U.S.-source gross income) and gambling losses to the gambling winnings they offset, which are U.S. income on this path; neither is entered on Form 1116. State or local income tax is refused, since its foreign part needs the income the state taxes. | Gifts to charity are not definitely related and are apportioned with line 3b. | State income tax is apportioned by line 3d over line 3e on line 2.
+- **Chosen:** The first (f1116.itemized_unread narrowed to Schedule A line 5a; f1116.line3a_itemized unchanged).
+- Reason: The regulation, archived now, places the charitable deduction on U.S. income for every filer whose gift is allowed by section 170; the second reading follows Pub. 514's general list, which the regulation displaces. A gift allowed only by a treaty (to a Canadian, Mexican or Israeli charity) is apportioned by income from that country under (e)(12)(ii), which this reading does not catch; it is recorded here as the residue. Gambling losses are deductible only up to gambling winnings and are incurred in the activity that produces them; a foreign gambling winning is not passive income and refuses at ftc.all_passive. Pub. 514 makes the state tax rule depend on "the total income taxed by the state" against U.S. source income, and on whether the state exempts foreign income; neither is on the return, and the split of a capped line 5e between line 2 and line 3a is not stated, so the third reading is rejected and the refusal stays.
+
+- Status: Lane x1-f1116 second pass, from Pub. 514 and Reg. 1.861-8 now archived; narrows scout decision D5.
+- Cite: [p514] p. 27, State income taxes; Deductions not definitely related (2025 (Publication 514 (2025), Catalog Number 15018A, Jan 30, 2026); sha256 35061c2d)
+
+## amb.2025.f1116_3b_items
+
+- Text at issue: Line 3b: "any other deductions that don’t definitely relate to any specific type of income (for example, deductions shown on Schedule 1 (Form 1040), Part II, Adjustments to Income)"; the senior deduction is excluded and the car loan interest deduction goes to line 4b.
+- Candidate readings: Every Schedule 1 Part II adjustment except student loan interest (line 4b) goes on line 3b; Schedule 1-A tips, overtime and the qualified business income deduction are left off as related to U.S. income. | An adjustment tied to particular U.S. income (for example educator expenses) is left off line 3b.
+- **Chosen:** The first (f1116.line3b = Schedule 1 line 26 less line 21).
+- Reason: It follows the example the instructions give. The adjustments that relate to self-employment do not arise on the returns computed, which refuse Schedule C on this path.
+
+- Status: Lane x1-f1116 reading (scout reading A6), settled by the coordinator's delegation.
+- Cite: [i1116] p. 17, Lines 3a and 3b (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## amb.2025.f1116_exception
+
+- Text at issue: The adjustment exception may be elected ("you can elect not to adjust") when line 5 of the worksheet does not exceed the ceiling and foreign qualified dividends plus foreign capital gain distributions are "less than $20,000".
+- Candidate readings: Take the exception whenever it applies, and test the $20,000 against all foreign dividends of the columns, which is never less than the foreign qualified dividends. | Compute both paths and take the larger credit.
+- **Chosen:** The first (f1116.exception). A return that must adjust and cannot take the exception is refused (f1116.adjust).
+- Reason: Not adjusting is the simple path the instructions describe first; testing all foreign dividends needs no question about which of them are qualified, and can only refuse a return the exact test would let through, never the reverse.
+
+- Status: Lane x1-f1116 reading (scout reading A7 and decision D4), settled by the coordinator's delegation.
+- Cite: [i1116] p. 9, Adjustment exception; p. 23, Line 18 (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## amb.2025.f1116_gross_income
+
+- Text at issue: Lines 3d and 3e: "gross income means the total of your gross receipts (reduced by cost of goods sold), total capital and ordinary gains (before subtracting any losses), and all other income (before subtracting any deductions)".
+- Candidate readings: Capital gains are taken sale entry by sale entry, adding each entry with a gain and leaving out each entry with a loss; an aggregate entry for a Form 8949 box counts as one entry. | Every transaction's gain is added, which for an aggregate entry needs the gross gains behind its net total.
+- **Chosen:** The first (f1116.gains, with capital gain distributions from Schedule D line 13 added on line 3e).
+- Reason: The entries are what the return holds. An aggregate entry nets gains and losses that the second reading would add separately, so where an aggregate entry hides a loss, line 3e is smaller under the first reading and the credit limit slightly lower.
+
+- Status: Lane x1-f1116 reading (scout reading A1 and decision D6), settled by the coordinator's delegation.
+- Cite: [i1116] p. 17, Lines 3d and 3e (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## amb.2025.f1116_carryback
+
+- Text at issue: Pub. 514 p. 37: unused foreign tax "first" is paid in the first preceding year "up to the excess limit in that year"; i1116sb line 7: "Actual or estimated amount of line 6 to be carried back", with a difference corrected on the next year's line 2a.
+- Candidate readings: The carryback is not elective; nothing is carried back by the tool, and a return whose 2024 passive limit had room (2024 Form 1116 line 24 less than line 23, or foreign income with no credit taken) is refused. | Enter zero on line 7 as an estimate in every case and let the next year's line 2a correct it. | Figure the carryback from the 2024 Form 1116 lines 23 and 14 and enter it on line 7.
+- **Chosen:** The first (f1116sb.l7_xiii zero; f1116sb.prior_year asked when line 6 is above zero; f1116sb.carryback refuses).
+- Reason: Coordinator decision D1 settles that the tool never carries back. The second reading would state a carryover to 2026 that the law has already reduced, and leave the filer unaware of a 2024 refund; the third needs an amended 2024 return, outside the tool. A 2024 election year takes no carryback (i1116 p. 19), nor does a year without foreign income (Pub. 514 p. 37, Example 2).
+
+- Status: Lane x1-f1116 second pass under coordinator decision D1.
+- Cite: [p514] p. 37, Carryback and Carryover (2025 (Publication 514 (2025), Catalog Number 15018A, Jan 30, 2026); sha256 35061c2d)
+
+## amb.2025.f1116_carryover_election
+
+- Text at issue: i1116 pp. 1-2: with the election, "You can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies (but carryovers to and from other years are unaffected)"; p. 19: no carryover is carried "to or from any year for which you made the election".
+- Candidate readings: A filer with foreign tax carried into 2025 files Form 1116 (the election is not made), so the carryover is used. | Make the election whenever its conditions are met and leave the carryover for later years. | Figure both and take the larger credit for 2025.
+- **Chosen:** The first (ftc.elect false when ftc.carryover_if_asked is true).
+- Reason: The carryover can be used only on Form 1116, and each year it is not used brings its oldest column nearer to expiry. The election gives more only when this year's limit is below this year's foreign tax, where the Form 1116 carries the difference forward instead; the third reading would need both computations on every such return and files no Schedule B on the election path. Recorded for the owner.
+
+- Status: Lane x1-f1116 second pass reading, for the owner.
+- Cite: [i1116] pp. 1-2, election to claim the foreign tax credit without filing Form 1116; p. 19, Line 10 (2025; printed date 2025-12-23; sha256 6998cf8c)
+
+## amb.2025.f4137_reported_over_received
+
+- Text at issue: Form 4137 (2025), line 4: "Subtract line 3 from line 2." Line 2 is the tips received (including the tips reported) and line 3 the tips reported; the form does not say what to enter when the tips reported are more than the tips received, for example tips reported in January 2026 for December 2025 and counted on the 2026 form.
+- Candidate readings: Enter zero on line 4 (no unreported tips) when line 3 is more than line 2. | Enter the negative difference on line 4.
+- **Chosen:** The first (f4137.line4 subtracts with a floor of zero).
+- Reason: Line 4 is "Include as income on Form 1040 ... line 1c", the tips not reported; a negative unreported amount has no meaning there, and column (c) is to "Include all cash and charge tips you received", so it holds at least the tips reported. The reading matters only for inconsistent entries.
+- Status: Lane x2-paynow2 (coverage expansion, pay not on a W-2), 2026-11-15.
+- Cite: [f4137] p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c"; p. 2, Columns (c) and (d), "Include all cash and charge tips you received" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## amb.2025.mw_all_nontaxable
+
+- Text at issue: i1040gi p. 24, Line 1d: "Enter your taxable Medicaid waiver payments that were not reported on Form(s) W-2." Pub. 525 p. 33 treats certain Medicaid waiver payments as difficulty-of-care payments, excluded for care of an eligible individual living in the provider's home, but "to the extent they're received for more than" ten qualified foster individuals under age 19 or five aged 19 or older they are income.
+- Candidate readings: Treat every Medicaid waiver payment the filer reports (pay for caring for someone who lives in the filer's home) as nontaxable, with no question on the number of people cared for. | Ask the number of people cared for and refuse when it is over the limits.
+- **Chosen:** The first.
+- Reason: The interview asks only about pay for care of someone living in the filer's home with them, the case Pub. 525 names; an individual care provider caring for more than five adults or ten children at home is taken to be outside the situations a filer of this tool reports. Were it wrong, line 1a or 1d would be right but Schedule 1 line 8s would exclude too much. Notice 2014-7 is not archived.
+- Status: Lane x2-paynow2 (coverage expansion, pay not on a W-2), 2026-11-15.
+- Cite: [p525] p. 33, "Certain Medicaid waiver payments are treated as difficulty-of-care payments when received by an individual care provider for caring for an eligible individual (whether related or unrelated) living in the provider’s home", "Ten qualified foster individuals under age 19, or", "Five qualified foster individuals age 19 or older" (2025; sha256 39b0fa5e)

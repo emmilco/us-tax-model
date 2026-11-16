@@ -1,0 +1,551 @@
+{
+ "form": "scveh",
+ "reviews": {
+  "gate:scveh.claims_bonus_this_year": {
+   "subject_sha": "692ea5ead49d557e10fce587b748c4d8888c23a22763ee29dd2a61b5a1cffa70",
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer bought a car in 2023 for personal use and began using it in a business in 2025. The IRS treats the car as placed in service on the date of conversion.",
+       "why_no": "Read without help, \"Placed in service in 2025\" sounds like \"bought or first driven in 2025\". The filer answers no because they have owned and driven the car since 2023. The gate is then false, and neither used_before nor bonus_excluded is asked. This harms the gated lines only if some other path still gives the vehicle a 2025 special allowance. Otherwise the error is the lost allowance and the wrong recovery start, which are outside these gated lines.",
+       "line": "scveh.used_before_if_bonus (and scveh.bonus_excluded_if_bonus)",
+       "irs_text": "i4562 p.14, Column (b): \"If property held for personal use is converted to business/investment use, treat the property as placed in service on the date of conversion.\" p463 p.25: \"if you first start using the car only for personal use and later convert it to business use, you place the car in service on the date of conversion.\"",
+       "severity": "low",
+       "fix": "Add help to the placed-in-service helper: \"Answer yes if you first started using this vehicle for business or investment in 2025, even if you bought it earlier for personal use.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer has a business car placed in service in 2022 and made a major improvement to it in 2025, such as a new engine. The improvement is a new item of 5-year property placed in service in 2025, and a special allowance may be claimed on it.",
+       "why_no": "The question asks about \"this vehicle\", and the vehicle was placed in service in 2022, so the filer answers no. The improvement's own 2025 placement in service and its allowance are never routed through the gate. If the tool computes an allowance for the improvement elsewhere, the original-use and 168(k)(9) checks are skipped for that allowance.",
+       "line": "scveh.bonus_excluded_if_bonus",
+       "irs_text": "p463 p.26: \"A major improvement to a car is treated as a new item of 5-year recovery property. It is treated as placed in service in the year the improvement is made... you must treat the improvement and the car as a whole when applying the limits\"",
+       "severity": "low",
+       "fix": "Either gate on \"the vehicle or a major improvement to it was placed in service in 2025 and a special allowance is claimed\", or ask separately about 2025 improvements and apply the same eligibility questions to them."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer placed a qualifying business vehicle in service in 2025 and did not attach an election-out statement, so the special allowance applies by default. The filer does not think of themselves as \"claiming\" anything.",
+       "why_no": "\"A special allowance is claimed\" reads like an affirmative choice. A filer who made no choice answers no. This is harmless if the tool then computes no allowance for the vehicle. If the tool applies the default allowance anyway, the original-use and 168(k)(9) exclusions are never tested.",
+       "line": "scveh.used_before_if_bonus",
+       "irs_text": "i4562 p.7, Exceptions: \"Property for which you elected not to claim any special depreciation allowance\"; Election out: \"attach a statement to your timely filed return... indicating the class of property for which you are making the election\"",
+       "severity": "low",
+       "fix": "Make sure the gate's \"claimed\" helper is the same flag that drives the allowance computation. Word the question as \"Are you electing NOT to take the special depreciation allowance for this vehicle's class?\" and derive \"claimed\" from its complement."
+      }
+     ],
+     "prompt_sha": "53ace10482a62637371b50f262b351d1503805e922a41bce0bfa0b517293d974",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.262616,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_scveh.claims_bonus_this_year.692ea5ead49d.1.response.txt"
+    }
+   ],
+   "condition": "scveh.claims_bonus_this_year",
+   "lines": [
+    "scveh.bonus_excluded_if_bonus",
+    "scveh.used_before_if_bonus"
+   ],
+   "inputs": [
+    "scveh.bonus_excluded",
+    "scveh.used_before"
+   ],
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, \"If during the tax year you convert property used solely for personal purposes to business/investment use\"); , Deductions for Passenger Automobiles Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025; p. 7, Exceptions, \"Property converted from business or income-producing use to personal use in the same tax year it is acquired\" and \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 9, Line 17, \"the carryover basis of property you acquire in a like-kind exchange or involuntary conversion\"; p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, \"The following types of property must be depreciated under ADS\"; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; p. 15, \"The business use requirement and the limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly engaged in the business of leasing passenger automobiles\"; , \"You cannot use the percentage tables for a short tax year\" and \"If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables\"; , \"If you have a short tax year, you must reduce the maximum deduction amount\"; , \"You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements\"; , What Property Does Not Qualify?, \"Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property\" and Leased property; i4562 p. 3, \"for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless\"; i4562 p. 4, Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\"; i4562 p. 14, Column (c)—Business/investment use percentage, \"for trade or business purposes or for the production of income during the year\"; , Qualified business use, \"However, you do combine your business and investment use to figure your depreciation deduction for the tax year\"; , Improvements, \"A major improvement to a car is treated as a new item of 5-year recovery property\" and \"you must treat the improvement and the car as a whole when applying the limits on the depreciation deductions\""
+     ],
+     "cols_pages": [
+      3,
+      5,
+      6,
+      7,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      37,
+      60,
+      63
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17,
+      31,
+      37,
+      63
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    },
+    {
+     "doc": "p463",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda",
+     "pages": [
+      25,
+      26
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      25,
+      26
+     ],
+     "cols_sha256": "a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326"
+    }
+   ]
+  },
+  "gate:scveh.others_use": {
+   "subject_sha": "dac4c6089efb62d8eeefb1c5a207045268634c14cd090a42cc7d2b226a1faf7a",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A sole proprietor is the only driver of the car. It is driven 35% for the business and 30% for managing rental properties or other investments. No one else drives it and none of its use is entertainment.",
+       "why_no": "The gate asks only whether anyone else uses the car or whether any use is entertainment. Investment use by the filer is neither, so the truthful answer is no. Yet investment use is one of the uses the gated question removes from qualified business use.",
+       "line": "scveh.qbu_low_if_others_use",
+       "irs_text": "i4562 p. 14, Lines 26 and 27: \"a qualified business use is any use in your trade or business. However, it does not include any of the following. • Investment use.\"; p463 p. 25: \"It doesn't include use for the production of income (investment use)\"",
+       "severity": "high",
+       "fix": "Add investment use to the gate: \"...or do you use any of it for investment or the production of income (not your trade or business)?\" Better, always ask qbu_low whenever business/investment use is entered and includes any investment use."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer regularly in the business of leasing cars, or one who bought this car to lease. At year end, or at the time they answer, the car sits in the fleet between leases or before its first lease, and no lessee has it.",
+       "why_no": "\"Does anyone but you use this vehicle\" is in the present tense and asks about actual use. A car that is held for lease but idle is truthfully used by no one else.",
+       "line": "scveh.leasing_if_others_use",
+       "irs_text": "i4562 p. 15: \"The business use requirement and the limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly engaged in the business of leasing passenger automobiles.\"",
+       "severity": "high",
+       "fix": "Add to the gate: \"or do you hold it for lease, or are you in the business of leasing cars?\" State that the question covers any time during the tax year."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer leased or lent the car during part of the year and has it back now. The car went to a relative, to a 5% owner of the business, or to a government agency under a lease of 6 months or more. Another case: an employee had the car as a fringe benefit until leaving in June.",
+       "why_no": "The question uses the present tense (\"Does anyone ... use\", \"someone you lease or lend it to\"). A filer answering in the following spring describes current use and says no.",
+       "line": "scveh.exempt_use_if_others_use; scveh.leasing_if_others_use; scveh.qbu_low_if_others_use",
+       "irs_text": "p946 p. 17: \"you cannot elect the section 179 deduction for ... Certain property you lease to others (if you are a non-corporate lessor) ... Property used by governmental units or foreign persons or entities, except property used under a lease with a term of less than 6 months.\"",
+       "severity": "medium",
+       "fix": "Reword: \"At any time during the tax year, did anyone but you use this vehicle ...?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple files jointly, and the car is used in one spouse's sole proprietorship. The other spouse works in the business and has the car as part of their pay, or the car is leased to the spouse's separate business.",
+       "why_no": "On a joint return the filer may read \"you\" as both spouses. Then the spouse is not \"anyone but you\", and \"a relative\" seems to mean other relatives.",
+       "line": "scveh.qbu_low_if_others_use; scveh.leasing_if_others_use",
+       "irs_text": "i4562 p. 14: qualified business use does not include \"Leasing the property to a 5% owner or related person ...\" or \"The use of the property as compensation for services performed by a 5% owner or related person.\"",
+       "severity": "medium",
+       "fix": "Say explicitly: \"Does anyone other than the owner — including your spouse — use this vehicle ...\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A business owner uses the car for recreation or amusement with clients, such as driving them to a ski weekend or a golf trip. Another business owner uses it for other travel that section 274 makes nondeductible, such as a spouse's travel on a business trip.",
+       "why_no": "\"Entertainment\" reads as shows or parties. The filer does not see recreation, amusement, or other section 274 disallowed travel as \"entertainment\" and answers no.",
+       "line": "scveh.qbu_low_if_others_use",
+       "irs_text": "i4562 p. 14: qualified business use does not include \"The use of property that is determined to be non-deductible under section 274.\"",
+       "severity": "medium",
+       "fix": "Reword: \"or is any of its use for entertainment, recreation, or amusement, or other travel you cannot deduct (such as a spouse's or guest's trips)?\""
+      }
+     ],
+     "prompt_sha": "1ccba32cf39232b19db18c5dfb8b710c351e8391c81d52cce348adcc28382778",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.252952,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_scveh.others_use.dac4c6089efb.1.response.txt"
+    }
+   ],
+   "condition": "scveh.others_use",
+   "lines": [
+    "scveh.exempt_use_if_others_use",
+    "scveh.leasing_if_others_use",
+    "scveh.qbu_low_if_others_use"
+   ],
+   "inputs": [
+    "scveh.exempt_use",
+    "scveh.leasing",
+    "scveh.qbu_low"
+   ],
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, \"If during the tax year you convert property used solely for personal purposes to business/investment use\"); , Deductions for Passenger Automobiles Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025; p. 7, Exceptions, \"Property converted from business or income-producing use to personal use in the same tax year it is acquired\" and \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 9, Line 17, \"the carryover basis of property you acquire in a like-kind exchange or involuntary conversion\"; p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, \"The following types of property must be depreciated under ADS\"; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; p. 15, \"The business use requirement and the limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly engaged in the business of leasing passenger automobiles\"; , \"You cannot use the percentage tables for a short tax year\" and \"If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables\"; , \"If you have a short tax year, you must reduce the maximum deduction amount\"; , \"You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements\"; , What Property Does Not Qualify?, \"Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property\" and Leased property; i4562 p. 3, \"for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless\"; i4562 p. 4, Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\"; i4562 p. 14, Column (c)—Business/investment use percentage, \"for trade or business purposes or for the production of income during the year\"; , Qualified business use, \"However, you do combine your business and investment use to figure your depreciation deduction for the tax year\"; , Improvements, \"A major improvement to a car is treated as a new item of 5-year recovery property\" and \"you must treat the improvement and the car as a whole when applying the limits on the depreciation deductions\""
+     ],
+     "cols_pages": [
+      3,
+      5,
+      6,
+      7,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      37,
+      60,
+      63
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17,
+      31,
+      37,
+      63
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    },
+    {
+     "doc": "p463",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda",
+     "pages": [
+      25,
+      26
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      25,
+      26
+     ],
+     "cols_sha256": "a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326"
+    }
+   ]
+  },
+  "gate:scveh.placed_this_year": {
+   "subject_sha": "7430aeeb42d1c8cbaef3701ab310b7b60aef4ef1b74710b0d26b457b80323695",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "Any filer with a vehicle placed in service for business before 2025 (for example a 2021 car still being depreciated) that had bonus depreciation, the standard mileage rate, or 50%-or-less business use in an earlier year.",
+       "why_no": "For this vehicle the computed gate scveh.placed_this_year is false, so the tool sets all three lines to false and never asks the questions. But each line yields a value only on its placed_this_year = false branch. Under the true branch it returns household.no. As wired, the three 'earlier-year' questions can never be asked of any vehicle, including the vehicles they were written for.",
+       "line": "scveh.prior_bonus_if_earlier; scveh.prior_low_use_if_earlier; scveh.prior_smr_if_earlier",
+       "irs_text": "p463 p. 25: 'If you used the standard mileage rate in the first year of business use and change to the actual expenses method in a later year, you can't depreciate your car under the MACRS rules. You must use straight line depreciation'; 'If your business use is 50% or less, you must use the straight line method'",
+       "severity": "high",
+       "fix": "Gate these three lines on NOT placed_this_year (or on 'Year of recovery in 2025' > 1), not on placed_this_year. Otherwise every pre-2025 vehicle silently gets MACRS accelerated rates and no straight-line switch or SMR basis reduction."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who bought a car for personal use in 2016 and began using it in their business in 2025.",
+       "why_no": "If 'Year of recovery in 2025' is computed from the purchase date the filer entered, the car looks like it is in its 9th or 10th year. The gate is then false, and the acquisition-date question is never asked. Under IRS rules the car is placed in service on the date of conversion, so 2025 is recovery year 1. It was also acquired before September 28, 2017, which bars bonus depreciation and the $20,200 first-year limit.",
+       "line": "scveh.acquired_before_bonus_date_if_this_year",
+       "irs_text": "i4562 p. 14, Column (b): 'If property held for personal use is converted to business/investment use, treat the property as placed in service on the date of conversion'; i4562 p. 16, Table 2 note: 'If you take the special depreciation allowance for qualified passenger automobiles acquired after September 27, 2017, and placed in service in 2025, the limit is $20,200.'",
+       "severity": "medium",
+       "fix": "Compute recovery year from the date the vehicle was first used for business or investment (conversion date), not from the purchase date. Ask for that date explicitly, with help text saying a personal car converted this year counts as placed in service this year."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who traded in an older business car for a new one in 2025 without making the election out of the like-kind-exchange rules.",
+       "why_no": "The carryover basis keeps the old car's recovery period and placed-in-service date, so a recovery-year helper keyed to the old car gives a year other than 1. The excess basis, however, is 'newly placed in service' in 2025. The gate may misclassify the vehicle, so either the acquisition-date question or the earlier-year questions are skipped for the wrong component.",
+       "line": "scveh.acquired_before_bonus_date_if_this_year",
+       "irs_text": "p946 p. 63: 'depreciate the carryover basis separately as if the trade-in did not occur. Depreciate the part of the new automobile's basis that exceeds its carryover basis (excess basis) as if it were newly placed in service property.'",
+       "severity": "medium",
+       "fix": "For trade-in vehicles, evaluate the gate separately for the carryover and excess basis components. The excess basis is always year 1, so ask the acquisition and bonus questions for it. Ask the earlier-year questions about the traded-in car's history."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who converted a car to business use in mid-2024 and drove it 80% for business for the last six months of that year.",
+       "why_no": "They read 'was half or less of its use for business' as their 80% business share and answer no. For a conversion year, however, the annual business-use percentage is prorated by months: 80% x 6/12 = 40%.",
+       "line": "scveh.prior_low_use_if_earlier",
+       "irs_text": "p463 p. 26 Example: 'This gives you a business-use percentage of 80% (12,000 ÷ 15,000) for that period. Your business use for the year is 40% (80% (0.80) × 6/12).'",
+       "severity": "medium",
+       "fix": "Help text: 'In the year you started using it for business, count the months before that as 0% business use. If you started mid-year, multiply your business share by the number of business months and divide by 12.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer whose car was used more than 50% overall in an earlier year, but much of that use was investment use (driving to rental properties), commuting, or use by a 5% owner or related person as compensation.",
+       "why_no": "They count all of that as 'business' and answer no. Qualified business use excludes investment use and these other uses, so qualified business use was 50% or less. Straight-line ADS was then required, and recapture may apply.",
+       "line": "scveh.prior_low_use_if_earlier",
+       "irs_text": "i4562 p. 14: 'Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following. • Investment use. ... Your percentage of qualified business use may be smaller than the business/investment use percentage.'",
+       "severity": "medium",
+       "fix": "Ask: 'In any earlier year, was half or less of its miles driven for your trade or business, not counting commuting, investment or rental-property trips, or use by an owner or relative as pay?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly where the spouse's sole proprietorship claimed bonus depreciation or the standard mileage rate on the shared vehicle in an earlier year.",
+       "why_no": "The questions say 'Did you claim...' and 'Did you use the standard mileage rate...'. The filer answering did not claim it personally and answers no.",
+       "line": "scveh.prior_bonus_if_earlier; scveh.prior_smr_if_earlier",
+       "irs_text": "p463 p. 25: 'If you used the standard mileage rate in the first year of business use and change to the actual expenses method in a later year, you can't depreciate your car under the MACRS rules.'",
+       "severity": "medium",
+       "fix": "Ask 'Did you or your spouse (on any return) claim...' and 'Did you or your spouse use the standard mileage rate for this vehicle in any earlier year?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer whose prior-year return depreciated a qualifying post-September 27, 2017 vehicle without taking bonus depreciation and without attaching an election-out statement.",
+       "why_no": "They truthfully did not 'claim' a bonus allowance and answer no. The allowance was still allowable unless they elected out, and allowable depreciation reduces basis and counts for recapture.",
+       "line": "scveh.prior_bonus_if_earlier",
+       "irs_text": "i4562 p. 13: 'Depreciation, for this purpose, includes ... Any special depreciation allowance available for the property (unless you elected not to claim it).'",
+       "severity": "low",
+       "fix": "Add help text: 'If the vehicle qualified for bonus depreciation in its first year and you did not attach a statement electing out, answer yes even if you did not deduct it,' or ask a separate question about the election out."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer who signed a binding purchase contract for a vehicle in mid-September 2017 but took delivery in October 2017, then first used it for business in 2025.",
+       "why_no": "'Did you get it before September 28, 2017?' reads as asking when they took possession, so they answer no. Property acquired under a binding contract entered before September 28, 2017 is treated as acquired before that date, which bars the post-2017 bonus allowance and higher limits.",
+       "line": "scveh.acquired_before_bonus_date_if_this_year",
+       "irs_text": "i4562 p. 6: 'Certain qualified property (defined below) acquired after September 27, 2017, and before January 20, 2025 ... is limited to a special depreciation allowance of 40%'",
+       "severity": "low",
+       "fix": "Ask: 'Did you get it, or sign a binding contract to buy it, before September 28, 2017?'"
+      }
+     ],
+     "prompt_sha": "621676eff3aa93e859b5bdbb25ab3bba405f48060d05a815f93b588d1b4bfbea",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.309348,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_scveh.placed_this_year.7430aeeb42d1.1.response.txt"
+    }
+   ],
+   "condition": "scveh.placed_this_year",
+   "lines": [
+    "scveh.acquired_before_bonus_date_if_this_year",
+    "scveh.prior_bonus_if_earlier",
+    "scveh.prior_low_use_if_earlier",
+    "scveh.prior_smr_if_earlier"
+   ],
+   "inputs": [
+    "scveh.acquired_before_bonus_date",
+    "scveh.prior_bonus",
+    "scveh.prior_low_use",
+    "scveh.prior_smr"
+   ],
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Line 25; p. 16, Column (i)",
+      "pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, \"If during the tax year you convert property used solely for personal purposes to business/investment use\"); , Deductions for Passenger Automobiles Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025; p. 7, Exceptions, \"Property converted from business or income-producing use to personal use in the same tax year it is acquired\" and \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 9, Line 17, \"the carryover basis of property you acquire in a like-kind exchange or involuntary conversion\"; p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, \"The following types of property must be depreciated under ADS\"; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; p. 15, \"The business use requirement and the limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly engaged in the business of leasing passenger automobiles\"; , \"You cannot use the percentage tables for a short tax year\" and \"If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables\"; , \"If you have a short tax year, you must reduce the maximum deduction amount\"; , \"You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements\"; , What Property Does Not Qualify?, \"Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property\" and Leased property; i4562 p. 3, \"for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless\"; i4562 p. 4, Line 2, \"Enter the total cost of all section 179 property you placed in service during the tax year\"; i4562 p. 14, Column (c)—Business/investment use percentage, \"for trade or business purposes or for the production of income during the year\"; , Qualified business use, \"However, you do combine your business and investment use to figure your depreciation deduction for the tax year\"; , Improvements, \"A major improvement to a car is treated as a new item of 5-year recovery property\" and \"you must treat the improvement and the car as a whole when applying the limits on the depreciation deductions\""
+     ],
+     "cols_pages": [
+      3,
+      5,
+      6,
+      7,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      37,
+      60,
+      63
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17,
+      31,
+      37,
+      63
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    },
+    {
+     "doc": "p463",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda",
+     "pages": [
+      25,
+      26
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      25,
+      26
+     ],
+     "cols_sha256": "a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326"
+    }
+   ]
+  },
+  "gate:scveh.smr_always": {
+   "subject_sha": "4041694f61bc19d69a75d8e47333d82181309c1e0adcd38f991960aa2ee39c20",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer now uses the family car in a Schedule C business. In an earlier year, the spouse placed the car in service in the spouse's own business and deducted actual expenses (depreciation or section 179).",
+       "why_no": "The gate asks whether 'you have used' the standard mileage rate 'every year you have used it for the business'. The filer has used only the mileage rate personally, in this business, so they answer Yes. The question is never asked, and the eligibility path treats the vehicle as always on the standard mileage rate. The question about the first year placed in service is skipped. The wrong answer here is a Yes to the parent, not a No.",
+       "line": "scveh.smr_first_if_not_always (with the eligibility for the standard mileage rate that it feeds)",
+       "irs_text": "i1040sc (2025) p. 6, Line 9: 'You can take the standard mileage rate for 2025 only if you: • Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service'",
+       "severity": "medium",
+       "fix": "Ask: 'Has anyone (you, your spouse, or a business of either of you) ever deducted actual expenses (gas, repairs, depreciation, section 179, or lease payments) for this vehicle in any year?' Change the help to say 'any business, not only this one'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A sole proprietor bought the car in 2022 and used it for business that year. They claimed depreciation and actual costs as an employee on an earlier return, or in a business they have since closed. They began this Schedule C business in 2024 and have used the mileage rate here since.",
+       "why_no": "'Every year you have used it for the business' reads as 'this business'. The help's 'any earlier year' does not say 'in any business or job'. So the filer answers Yes, skips the first-year question, and claims the standard mileage rate, which the first year placed in service does not allow.",
+       "line": "scveh.smr_first_if_not_always",
+       "irs_text": "i1040sc (2025) p. 6, Line 9: 'used the standard mileage rate for the first year you placed the vehicle in service'",
+       "severity": "medium",
+       "fix": "Tie the gate to the first year the vehicle was placed in service for any business or employment use: 'In the first year this vehicle was used for any business or job, did you (or your spouse) use the standard mileage rate rather than actual expenses?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer in the vehicle's first business year took no vehicle deduction at all, because they did not file or omitted it. Later they used the mileage rate.",
+       "why_no": "They did not use actual expenses, so the help points them to Yes. They may also answer No because they did not 'use' the mileage rate that year. Either way the instructions do not resolve whether they 'used the standard mileage rate for the first year'.",
+       "line": "scveh.smr_first_if_not_always",
+       "irs_text": "i1040sc (2025) p. 6, Line 9: 'Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service'",
+       "severity": "low",
+       "fix": "Add help for a first year with no vehicle deduction claimed, and route it to the same treatment the tool adopts for the first-year rule."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A fleet operator always used the mileage rate for this vehicle, but in 2025 used five or more vehicles simultaneously in the business.",
+       "why_no": "The gate cites the five-vehicle rule but asks only about past method. A truthful Yes skips the gated question, and nothing here applies the fleet bar.",
+       "line": "scveh.smr_first_if_not_always (eligibility it feeds)",
+       "irs_text": "i1040sc (2025) p. 6, Line 9: 'You must use actual expenses if you used five or more vehicles simultaneously in your business (such as in fleet operations).'",
+       "severity": "low",
+       "fix": "Confirm the five-or-more-vehicles bar is asked separately for each vehicle and overrides both paths. Otherwise add it to this gate."
+      }
+     ],
+     "prompt_sha": "edc4994bbf9b8e0602fb0f9020e289c42d2f32cbdeac939be8b350cf178c41d4",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08762400000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_scveh.smr_always.4041694f61bc.1.response.txt"
+    }
+   ],
+   "condition": "scveh.smr_always",
+   "lines": [
+    "scveh.smr_first_if_not_always"
+   ],
+   "inputs": [
+    "scveh.smr_first"
+   ],
+   "used": [
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Line 9, \"You must use actual expenses if you used five or more vehicles simultaneously\" and \"You can take the standard mileage rate for 2025 only if you\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  }
+ }
+}

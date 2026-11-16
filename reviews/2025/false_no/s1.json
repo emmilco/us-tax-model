@@ -1,9 +1,494 @@
 {
  "form": "s1",
  "reviews": {
+  "gate:s1.alaska_any": {
+   "subject_sha": "5dc4694690f9888f8730fcb2e93333379653786d688b991929edda4d8858f4e0",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "An Alaskan whose dividend for an earlier year was held up by an eligibility review or appeal. The state paid that dividend in 2025, but the filer did not qualify for, or was not paid, the 2025 dividend.",
+       "why_no": "They read 'In 2025, did you get an Alaska Permanent Fund dividend?' as asking about the 2025 dividend year, not when the money arrived. So they answer no because they got no 2025 PFD.",
+       "line": "s1.line8g",
+       "irs_text": "p525 p. 31: \"If you received a payment from Alaska's mineral income fund (Alaska Permanent Fund dividend), report it as income on Schedule 1 (Form 1040), line 8g.\"",
+       "severity": "medium",
+       "fix": "Ask: \"Did Alaska pay you (or, on a joint return, your spouse) any Permanent Fund dividend during 2025, for any dividend year, including a late or back payment after an appeal or review?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer or spouse whose whole 2025 dividend was garnished or seized before they saw it. This covers child support, a court judgment, state debts, restitution, or a federal levy.",
+       "why_no": "'Did you get' reads as 'did money reach me'. A filer whose dividend was taken in full says they never got it.",
+       "line": "s1.line8g",
+       "irs_text": "p525 p. 31: \"If you received a payment from Alaska's mineral income fund ... report it as income on Schedule 1 (Form 1040), line 8g ... The state of Alaska sends each recipient a document that shows the amount of the payment\"",
+       "severity": "medium",
+       "fix": "Add to the gate's help: \"Answer yes even if all or part of the dividend was garnished, seized, or sent elsewhere at your request. It is still your income.\" Ask the amount as the gross dividend before garnishments."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer who chose on the PFD application to send all of the dividend straight to charities (Pick.Click.Give) or to an Alaska 529 education account. No check or deposit came to them.",
+       "why_no": "They never 'got' a payment, because the state sent it where they had told it to. So they answer no.",
+       "line": "s1.line8g",
+       "irs_text": "p525 p. 31: \"report it as income on Schedule 1 (Form 1040), line 8g ... the entire ... Alaska Permanent Fund dividend payment ... is taxable for federal income tax purposes\"",
+       "severity": "medium",
+       "fix": "Say in the gate's help: \"Answer yes if you were paid a dividend, even if you directed it to charity, a college savings account, or anyone else.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose dividend was partly garnished or partly directed to charity or a 529 account. Their bank deposit is smaller than the dividend.",
+       "why_no": "They answer the gate yes. They then enter the net amount deposited, or the check amount, rather than the full dividend, because the help says only to add back an energy relief payment.",
+       "line": "s1.line8g",
+       "irs_text": "p525 p. 31: \"Do not reduce the amount on line 8g ... the entire ... Alaska Permanent Fund dividend payment ... is taxable\"",
+       "severity": "low",
+       "fix": "Amount help: \"Give the full dividend amount before any energy relief offset, garnishment, levy, or amounts you directed to charity or a savings account. This is not the amount deposited.\""
+      }
+     ],
+     "prompt_sha": "74ac6ada51e48a42163dcca65fdfd3e8aaef173cbe44a9ddad57d0b3abb41e78",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.12456,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.alaska_any.5dc4694690f9.1.response.txt"
+    }
+   ],
+   "condition": "s1.alaska_any",
+   "lines": [
+    "s1.line8g"
+   ],
+   "inputs": [
+    "s1.alaska_dividend"
+   ],
+   "used": [
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 8g",
+      "Schedule 1 (2025), line 8g; , Alaska Permanent Fund dividend, \"report it as income on Schedule 1 (Form 1040), line 8g\"",
+      "Schedule 1 (2025), line 8g; , Alaska Permanent Fund dividend, \"report it as income on Schedule 1 (Form 1040), line 8g\"; , \"The child’s only income was from interest and dividends, including capital gain distributions and Alaska Permanent Fund dividends\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      31
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    },
+    {
+     "doc": "i8814",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "f6714d8652b8984e4ceef2612968cd2079162128b51028f08a45d00783996330",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "cols_sha256": "4988b9ed65b206eabdbd4f30a91e5e23abd29bd787ec663952e1bc8f054d2f43"
+    }
+   ]
+  },
+  "gate:s1.alimony_any": {
+   "subject_sha": "2e1c19e708582fe3c2a2906bd36302b11e84ce02f026c7e98f972bcdcdfbeeb7",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A payer under a 2016 divorce decree that requires them to pay the former spouse's rent, mortgage, medical bills or tuition directly to the landlord, lender or school. No check goes to the former spouse. The former spouse is the mirror case and also answers no.",
+       "why_no": "The gate defines alimony as 'support paid to a husband or wife'. Money sent to a landlord or hospital is not paid to the spouse, so both people answer no.",
+       "line": "s1.alimony_if_any (and so the Schedule 1 line 19a deduction and the line 2a income behind it)",
+       "irs_text": "i1040gi p. 95, Line 19a: 'If you made payments to or for your spouse or former spouse under a divorce or separation agreement entered into on or before December 31, 2018, you may be able to take this deduction.'",
+       "severity": "medium",
+       "fix": "Say 'pay or receive alimony or separate maintenance, including payments made to someone else (a landlord, lender, school or doctor) for a husband, wife or former spouse under a divorce or separation agreement or court order'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose 2017 decree orders one undivided monthly 'family support' payment. The decree does not fix any part of the payment as child support.",
+       "why_no": "The help says 'Child support ... [is] not alimony'. The filer thinks of the payment as support for the children and answers no, but the part not fixed as child support can be alimony.",
+       "line": "s1.alimony_if_any",
+       "irs_text": "i1040gi p. 89, Line 2a: 'Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018'; p504 p. 16 treats reductions as child support only when 'clearly associated with the happening of a contingency relating to your child'.",
+       "severity": "medium",
+       "fix": "Add to the help: 'Only the part the agreement fixes as child support is excluded. Answer Yes if you pay or receive a combined family or unallocated support payment.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who pays or receives fixed cash installments, labeled a property settlement or equalization payment, under a pre-2019 decree. The decree does not say the payments are not alimony, and the payments stop at death.",
+       "why_no": "The help says 'a division of property [is] not alimony'. The filer reads the label and answers no without checking whether the cash payments meet the alimony tests.",
+       "line": "s1.alimony_if_any",
+       "irs_text": "p504 p. 16: 'In each of the examples, assume the payments qualify as alimony under the Internal Revenue Code of 1986'. The alimony status turns on the Code's tests, not on what the decree calls the payment (i1040gi p. 89, Line 2a; p. 95, Line 19a).",
+       "severity": "low",
+       "fix": "Change the help to: 'A transfer of property, such as a house or an account, is not alimony. Cash paid in installments under a divorce or separation agreement may be alimony even if it is called a property settlement. If unsure, answer Yes.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A married filer, filing separately, who pays the other spouse under a written separation agreement or separate-maintenance decree signed in 2018. There is no divorce and no legal separation.",
+       "why_no": "The gate says 'paid to a husband or wife after a divorce or separation'. The filer may read 'separation' as only a legal separation, and the word 'separate maintenance' never appears in the gate, so they answer no.",
+       "line": "s1.alimony_if_any",
+       "irs_text": "i1040gi p. 89, Line 2a: 'Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018'.",
+       "severity": "low",
+       "fix": "Ask 'pay or receive alimony, spousal support or separate maintenance under a divorce decree, separate-maintenance decree or written separation agreement'."
+      }
+     ],
+     "prompt_sha": "c42d6aa1b862dedac64de01efe014fc379ecedeaf64afd5022bcebf3e4b5c908",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.091808,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.alimony_any.2e1c19e70858.1.response.txt"
+    }
+   ],
+   "condition": "s1.alimony_any",
+   "lines": [
+    "s1.alimony_if_any"
+   ],
+   "inputs": [
+    "s1.alimony"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      89,
+      95
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 89, Line 2a, \"Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018\"; p. 95, Line 19a, \"You can't take a deduction for alimony payments you made to or for your spouse if you entered into your divorce or separation agreement after December 31, 2018\"; , Certain Rules for Instruments Executed or Modified After 2018, \"if the modification expressly states that the alimony isn’t deductible to the payer or includible in the income of the recipient\", and Example 2, \"the modification expressly provided that the post-2018 alimony rules apply\" and \"The alimony payments made in January 2025 through May 2025 are includible in the recipient’s income and deductible from the payer’s income.\"",
+      "p. 89, Line 2a; p. 95, Line 19a"
+     ],
+     "cols_pages": [
+      89,
+      95
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p504",
+     "revision": "2025",
+     "text_sha256": "ab5181b8bd02383ed4b695d9d83000d78ca95964cb0345629815c6e68a309da1",
+     "pages": [
+      16
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "0d985ad253efcd055a01931d1edec50db41ac80ff214206dbb1d969cbaf7fd65"
+    }
+   ]
+  },
+  "gate:s1.digital_income_if_assets": {
+   "subject_sha": "c3cf46dac45d010488e97220181b7c6683f7389a00c8cd9586746eaf40ed4bb2",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer whose only digital asset event in 2025 was an unsolicited airdrop of tokens into a wallet they already held. They did no services, won nothing, and sold nothing.",
+       "why_no": "The page 1 question as quoted asks whether you 'received (as a reward, award, or payment for property or services)' a digital asset. An unsolicited airdrop is none of these, and airdrops are not among the page 1 examples. A truthful No on page 1 makes the tool compute the gate as false, so it never asks the line 8v question.",
+       "line": "s1.line8v",
+       "irs_text": "i1040gi p. 92, Line 8v: 'If, in 2025, you received ordinary income in connection with digital assets that isn't reported elsewhere on your return ... report this income on line 8v.'",
+       "severity": "high",
+       "fix": "Don't make line 8v depend on the page 1 answer. Always ask a broad question: 'In 2025, did you or your spouse get any crypto or other digital assets without buying them, such as staking or mining rewards, airdrops, forks, promotional or learn-and-earn rewards, or interest or yield paid in crypto? Don't count gifts or inheritances.' If the answer is Yes and page 1 was No, flag the page 1 answer for review."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly. Only the spouse staked ETH in 2025 and received staking rewards. The primary filer had no digital asset activity.",
+       "why_no": "The page 1 question and its cited help speak only of 'you'. The primary filer answers No for themselves, so the tool never reaches the inner helper, even though that helper does say 'or, on a joint return, your spouse'.",
+       "line": "s1.line8v",
+       "irs_text": "i1040gi p. 16: 'check \"Yes\" if at any time during 2025, you: ... Received new digital assets as a result of mining, staking, and similar activities'; p. 92, Line 8v: 'report this income on line 8v.'",
+       "severity": "medium",
+       "fix": "Word the page 1 gate as 'you or your spouse' on a joint return, or ask the line 8v gate directly for both spouses."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who received tokens in 2025 from an airdrop, an exchange's learn-and-earn or referral program, DeFi liquidity-mining or lending yield paid in tokens, or play-to-earn game rewards. They answered Yes on page 1 because they also sold some crypto.",
+       "why_no": "The helper's examples are 'staking, mining not as a business or a hard fork'. The filer reads that list as complete and answers No, because their tokens came from something else.",
+       "line": "s1.line8v",
+       "irs_text": "i1040gi p. 92, Line 8v: 'ordinary income in connection with digital assets ... (for example, digital assets, such as income from forks, staking, or mining ...)'; p. 16: 'Received digital assets as a result of a reward or award'.",
+       "severity": "medium",
+       "fix": "Widen the examples to 'such as staking, mining (not as a business), hard forks, airdrops, rewards or bonuses from an exchange or app, or yield or interest paid in crypto'. Then say: 'Count anything you got without buying it, except gifts, inheritances or pay from your job or business.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer who received staking rewards in 2025 and has read that staking rewards aren't taxed until sold. Or a hobby miner who isn't sure whether their mining counts as 'a business' and who files no Schedule C.",
+       "why_no": "The question asks whether they received digital assets 'as ordinary income that is not wages, business income or a capital gain'. That is a legal classification. The first filer believes the rewards are not income yet. The second believes the mining income is business income. Both answer No, and nothing elsewhere on the return picks up the amount.",
+       "line": "s1.line8v",
+       "irs_text": "i1040gi p. 92, Line 8v: 'income from forks, staking, or mining, which aren't wages reported on line 1a or capital gain or loss reported on Form 8949 and Schedule D ... report this income on line 8v.'",
+       "severity": "medium",
+       "fix": "Ask about the facts first: 'Did you or your spouse receive new crypto in 2025 from staking, mining, a fork, an airdrop or a reward?' Then sort the answers: ask whether the amount was already reported on a W-2 or on Schedule C. Anything not already reported goes to line 8v. State plainly that staking rewards count as income when you receive them, even if you haven't sold them."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose staking rewards accrued in late 2024 but were locked, and were unlocked or withdrawable only in 2025.",
+       "why_no": "The filer reads 'receive in 2025' as 'earned in 2025', or thinks the rewards were already received in 2024. They answer No for 2025.",
+       "line": "s1.line8v",
+       "irs_text": "i1040gi p. 92, Line 8v: 'If, in 2025, you received ordinary income in connection with digital assets ... report this income on line 8v.'",
+       "severity": "low",
+       "fix": "Add to the help: 'Count rewards on the date you could first sell or move them, even if they were earned earlier.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer who received ordinary income connected with digital assets that did not itself arrive as a digital asset. One example is a dollar bonus or promotional payment from a crypto platform that is reported nowhere else on the return.",
+       "why_no": "The helper and the Schedule 1 line title both ask whether you 'receive[d] ... digital assets as ordinary income'. The Line 8v instructions are broader: 'ordinary income in connection with digital assets'.",
+       "line": "s1.line8v",
+       "irs_text": "i1040gi p. 92, Line 8v: 'If, in 2025, you received ordinary income in connection with digital assets that isn't reported elsewhere on your return'.",
+       "severity": "low",
+       "fix": "Add a follow-up question, or a pointer to line 8z, for income connected with crypto that was paid in dollars and isn't reported elsewhere."
+      }
+     ],
+     "prompt_sha": "b529b402003976acb31a87c0f52774f58230aa2d933bf375264e4de1567fa16e",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.128952,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.digital_income_if_assets.c3cf46dac45d.1.response.txt"
+    }
+   ],
+   "condition": "s1.digital_income_if_assets",
+   "lines": [
+    "s1.line8v"
+   ],
+   "inputs": [
+    "s1.digital_amount"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      15,
+      16,
+      92
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Digital Assets, \"Check the “Yes” box next to the question on digital assets on page 1 of Form 1040 or 1040-SR if at any time during 2025, you (a) received (as a reward, award, or payment for property or services)\"; p. 16, \"Received new digital assets as a result of mining, staking, and similar activities; • Received digital assets as a result of a hard fork\"",
+      "p. 92, Line 8v, \"If, in 2025, you received ordinary income in connection with digital assets that isn’t reported elsewhere on your return\" and \"Don’t report a gift or inheritance of digital assets on line 8v.\"; p. 16, How To Report Digital Asset Transactions, \"If you received any digital asset as compensation for services or disposed of any digital asset that you held for sale to customers in a trade or business, you must report the income as you would report other income of the same type\""
+     ],
+     "cols_pages": [
+      15,
+      16,
+      92
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 8v; , Line 8v, \"report this income on line 8v\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    }
+   ]
+  },
+  "gate:s1.has_gambling": {
+   "subject_sha": "4342d604da88f846811cfe3bc2bf683e70b6e0f3ce600b8def7d1d578c71851f",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A professional gambler, such as a full-time poker or sports-betting pro, who reports all of their gambling as a trade or business and has no casual winnings outside it.",
+       "why_no": "The gate is computed from a helper tied to Schedule 1 line 8b. That line covers only 'gambling winnings not attributable to a trade or business'. A professional who follows the line's own words truthfully enters $0, so s1.has_gambling is false. The parent question about 'winnings, prizes or awards' can also be read as non-business amounts only, which leaves the helper unasked. The gate shuts out exactly the filer the gated question exists to catch.",
+       "line": "s1.gambling_business (the refusal 'A Yes ends the interview here' is never reached, and the professional's winnings are dropped instead of being sent to Schedule C)",
+       "irs_text": "i1040gi p. 91, Line 8b: 'Enter gambling winnings not attributable to a trade or business.' p525 p. 33: 'If you're in the trade or business of gambling, use Schedule C (Form 1040).'",
+       "severity": "high",
+       "fix": "Do not compute the gate from the line 8b amount. Ask the filer directly: 'Did you or your spouse have any gambling winnings in 2025, including lotteries, raffles, casino, poker, sports betting or fantasy sports, and including winnings from gambling done as a business?' Then ask s1.gambling_pro on a yes, before the line 8b amount is asked."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly where the spouse is the professional gambler and the filer gambles little or not at all.",
+       "why_no": "The filer answers the 'winnings, prizes or awards' parent and the gambling-winnings helper about their own winnings. Unless those questions say 'you or your spouse', the filer enters nothing for the spouse's winnings, so the gate is false. The gated question does say 'your spouse', but it is never reached.",
+       "line": "s1.gambling_business (the refusal for a spouse who is a professional gambler is missed)",
+       "irs_text": "p525 p. 33: 'If you're in the trade or business of gambling, use Schedule C (Form 1040).'",
+       "severity": "medium",
+       "fix": "Word the parent question and the gambling helper as 'you or your spouse' on a joint return, and say in the help that winnings of both spouses count."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A professional or near-professional gambler who had a losing year, or who nets wins against losses session by session, so their net result for 2025 is zero or negative.",
+       "why_no": "Asked for an amount of 'gambling winnings', the filer enters net winnings, which is $0 or less, and the gate is false. Professional gambling winnings are gross amounts that the losses offset only up to the amount of winnings, so the activity still exists and still requires Schedule C.",
+       "line": "s1.gambling_business (the refusal is missed for a professional with a net loss)",
+       "irs_text": "p525 p. 33: 'professional gambling losses and expenses are limited to the amount of your winnings. This also means that a professional gambler cannot claim a loss on Schedule C (Form 1040) in a loss year'",
+       "severity": "medium",
+       "fix": "Ask a yes/no question about whether the filer gambled or placed wagers at all, before any amount. State in the help that winnings are gross winnings before losses, and that a losing year still counts."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A full-time daily fantasy sports player or poker player who earns a living from contests they regard as games of skill rather than gambling.",
+       "why_no": "The filer does not consider fantasy contests or poker to be 'gambling'. They may report the income as prizes or contest earnings and enter $0 in the gambling helper, so the gate is false.",
+       "line": "s1.gambling_business (the refusal for a professional fantasy sports or poker player is missed)",
+       "irs_text": "p525 p. 33: 'Winnings from fantasy sports leagues are gambling winnings.'",
+       "severity": "medium",
+       "fix": "List fantasy sports, poker and sports betting explicitly in the gate question and its help, and say that they count as gambling even when they involve skill."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A professional gambler whose only 2025 receipts are annual installments on a lottery prize won in an earlier year, or a lump sum from selling the right to those future payments.",
+       "why_no": "The filer did not 'win' anything in 2025, so they answer no to the 'winnings, prizes or awards' parent, and the gambling helper is never asked.",
+       "line": "s1.gambling_business (low effect: it matters only if the filer is also a professional gambler)",
+       "irs_text": "p525 p. 33: 'if you win a state lottery prize payable in installments, you must include in your gross income the annual payments'; i1040gi p. 91: 'a lump-sum payment from the sale of a right to receive future lottery payments'",
+       "severity": "low",
+       "fix": "Add to the help: 'Include lottery installments received this year on a prize won earlier, and money received for selling future lottery payments.'"
+      }
+     ],
+     "prompt_sha": "bd3062bf243c62c414cf203f829ca8ac9d65e713de7e33b15e68ff631a085fe7",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.086344,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.has_gambling.4342d604da88.1.response.txt"
+    }
+   ],
+   "condition": "s1.has_gambling",
+   "lines": [
+    "s1.gambling_business"
+   ],
+   "inputs": [
+    "s1.gambling_pro"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8b"
+     ],
+     "cols_pages": [
+      91
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      33
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 33, Gambling winnings, \"If you’re in the trade or business of gambling, use Schedule C (Form 1040)\"",
+      "p. 33, Gambling winnings, \"If you’re in the trade or business of gambling, use Schedule C (Form 1040). For tax years 2018 through 2025, professional gambling losses and expenses are limited to the amount of your winnings\""
+     ],
+     "cols_pages": [
+      33
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
   "gate:s1.has_jury_pay": {
-   "subject_sha": "89d52a3191553404d36fafa53304fea78ba3465ca843c7e50087b291199fd307",
-   "grandfathered": true,
+   "subject_sha": "e4be917657893d2bdc12c7559654bec4e54049ebf30a70099b850e82c964b3e8",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer received jury duty pay in late 2024 and reported it on the 2024 Schedule 1, line 8h. Their employer had kept paying their salary, and they turned the jury pay over in early 2025.",
+       "why_no": "The gate is computed from 2025 line 8h, which is zero because the pay was income in 2024. The repayment question is never asked, although the repayment happened in 2025.",
+       "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
+       "irs_text": "p525 p. 34, Jury duty: \"you can deduct the amount turned over to your employer as an adjustment to income. Enter the amount you repay your employer on Schedule 1 (Form 1040), line 24a.\"",
+       "severity": "medium",
+       "fix": "Do not gate only on 2025 line 8h > 0. Ask directly: \"In 2025, did you or your spouse give any jury duty pay to an employer, including pay received in an earlier year, because the employer kept paying your salary?\" Cap the amount at line 8h only when the pay was received in 2025. Otherwise flag the case for year-of-repayment treatment."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A juror's court or county reported the jury pay on Form 1099-MISC, box 3 (Other income). The filer entered the form as an ordinary 1099-MISC, so the amount went to line 8z instead of line 8h.",
+       "why_no": "The computed gate reads only line 8h. Jury pay that the tool routed from a 1099-MISC to other income leaves line 8h at zero, so the repayment question is suppressed.",
+       "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
+       "irs_text": "i1040gi p. 91, Line 8h: \"Enter any jury duty pay and see the instructions for line 24a\"; p. 99, Line 24a: \"Enter your jury duty pay if you gave the pay to your employer...\"",
+       "severity": "medium",
+       "fix": "When the filer enters a Form 1099-MISC, ask whether any box 3 amount is jury duty pay and route that part to line 8h. Alternatively, gate on a direct question: \"Did you or your spouse receive jury duty pay (with or without a form)?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A married filer's spouse served on a jury, endorsed the court's check over to the employer, and never saw the money as their own. The couple answered no to any jury pay question that feeds line 8h.",
+       "why_no": "They do not see pay they had to hand over as pay they received. Line 8h stays zero and the gate stays false. AGI is unchanged because both lines are omitted, but the return misreports income and the adjustment.",
+       "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
+       "irs_text": "p525 p. 34, Jury duty: \"Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer...\"",
+       "severity": "low",
+       "fix": "Word the line 8h input as: \"Did you or your spouse receive any jury duty pay, even if you turned it over to your employer?\""
+      }
+     ],
+     "prompt_sha": "8138288d739569ad6b491cf3e60c8c97c0aeb59d6c8eb56853d8fbc33a222892",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.07991999999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.has_jury_pay.e4be91765789.1.response.txt"
+    }
+   ],
    "condition": "s1.has_jury_pay",
    "lines": [
     "s1.jury_to_employer_if_pay"
@@ -44,7 +529,622 @@
      ],
      "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
     }
+   ]
+  },
+  "gate:s1.has_sc": {
+   "subject_sha": "2dd8d5b9d4cca374273e6c764e48e6abf2343c17d761c8ec572d22136f2067ec",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A landlord or farmer with no Schedule C who bought a new car or truck in 2025. It is used partly in the rental or farm, and part of the loan interest is deducted on Schedule E or Schedule F.",
+       "why_no": "The computed gate is false because there is no Schedule C, so the tool never asks about interest deducted elsewhere. Column (ii) is set to zero.",
+       "line": "carloan.sc_interest",
+       "irs_text": "i1040gi p. 110, Line 22: \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)\"; \"you cannot deduct the same amount more than once\"",
+       "severity": "high",
+       "fix": "Gate on a Schedule C, Schedule E or Schedule F (or Form 4835) being on the return, not Schedule C alone. Ask: \"How much of this loan's 2025 interest is deducted on Schedule C, Schedule E or Schedule F (business, rental or farm)?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer with both a Schedule C and a rental property who deducts part of the vehicle loan interest as a rental expense on Schedule E.",
+       "why_no": "The question asks about interest deducted \"as an expense of your own business\". Many filers do not see a rental as their business, so they enter zero for the Schedule E part.",
+       "line": "carloan.sc_interest",
+       "irs_text": "i1040gi p. 110: \"if you deducted some or all of the interest ... as interest on Schedule C, Schedule E, or Schedule F, then you can't deduct that same interest as QPVLI\"",
+       "severity": "medium",
+       "fix": "Say \"as an expense of a business, farm or rental property (Schedule C, E or F)\"."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer with no Schedule C in 2025 whose passive rental loss or partnership or S corporation loss (at-risk, basis or passive limits) is freed in 2025, for example on selling the activity. Another case: a prior-year sole proprietorship, closed before 2025, whose suspended loss is now allowed.",
+       "why_no": "The gate is false without a Schedule C, so the suspended-loss question is never asked and the line is set to false.",
+       "line": "qbi.suspended_if_business",
+       "irs_text": "i8995 p. 4, Line 3: \"Include here the qualified portion of trade or business (loss) carryforward allowed in calculating taxable income in the current year, even if the loss was from a trade or business that is no longer in existence\"; p. 3 lists sections 465, 469, 704(d), 1366(d)",
+       "severity": "high",
+       "fix": "Ask the question whenever the return has a Schedule C, Schedule E, Schedule F, Form 4835 or any Schedule K-1, or whenever any loss carryover from an earlier year exists. Better still, ask it of every filer."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose suspended passive rental loss, or whose section 179 or 163(j) carryover from an earlier year, is allowed in 2025.",
+       "why_no": "The filer does not see a rental loss as a \"business loss\". The help names only the at-risk and passive rules, so a section 179 or interest limitation carryover reads as outside the question.",
+       "line": "qbi.suspended_if_business",
+       "irs_text": "i8995 p. 3: \"Such Code provisions include, but aren't limited to, sections 163(j), 179, 461(l), 465, 469, 704(d), and 1366(d)\"",
+       "severity": "medium",
+       "fix": "Ask: \"Are you deducting in 2025 any loss or expense from a business, rental, partnership or S corporation of an earlier year that was carried over or held back then (for example by the at-risk, passive, basis, section 179 or business interest limits)?\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer with no Schedule C who owns a working interest in an oil, gas or geothermal well reported on Schedule E, or who receives a Schedule K-1 passing through intangible drilling costs, mining exploration costs or circulation costs.",
+       "why_no": "The gate is false without a Schedule C, so the AMT preference question is never asked.",
+       "line": "s2.amt_business_if_sc",
+       "irs_text": "i6251 p. 7, Line 2t: \"IDCs from oil, gas, and geothermal wells are a preference to the extent that the excess IDCs are more than 65% of the net income from the wells\"; Line 2q: \"Mining exploration and development costs deducted in full for the regular tax ... must be capitalized and amortized over 10 years for the AMT\"",
+       "severity": "high",
+       "fix": "Ask every filer, or at least every filer with Schedule C, E or F or any Schedule K-1. Ask about these costs \"deducted on your return, including through a partnership, S corporation or well working interest\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "An investor in an oil and gas drilling partnership whose Schedule K-1 shows intangible drilling costs.",
+       "why_no": "\"Do you ... deduct in a business\" reads as costs the filer personally incurs in their own business. A passive investor answers no.",
+       "line": "s2.amt_business_if_sc",
+       "irs_text": "i6251 p. 7, Line 2t: \"IDCs from oil, gas, and geothermal wells are a preference\"",
+       "severity": "medium",
+       "fix": "Add: \"including amounts shown on a Schedule K-1 from a partnership or S corporation\"."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer with no Schedule C who is a partner or S corporation shareholder in a construction or engineering firm that completed a long-term contract. Another case: an author or film investor whose income-forecast property is reported on Schedule E.",
+       "why_no": "The gate is false without a Schedule C, so look-back interest is never asked and no refusal follows.",
+       "line": "s2.lookback_if_business",
+       "irs_text": "f1040s2 (2025) line 17n: \"Look-back interest under section 167(g) or 460(b) from Form 8697 or 8866\"",
+       "severity": "high",
+       "fix": "Ask every filer. Name pass-through sources: \"including through a partnership or S corporation, or for a film, book or similar property reported on Schedule E\"."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A contractor who finished a long-term contract in 2023, used the percentage-of-completion method, and had the contract price or costs adjusted in 2025. Another case: an owner of income-forecast property in its 3rd or 10th recomputation year.",
+       "why_no": "The question asks \"Did you ... finish a contract in 2025\". The contract was finished in an earlier year, and the forecast property was never \"finished\".",
+       "line": "s2.lookback_if_business",
+       "irs_text": "i6251 p. 7, Line 2p Note: \"you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted\"",
+       "severity": "high",
+       "fix": "Ask: \"In 2025, did you (or your spouse) finish, or have the price or costs changed on, a contract that ran over more than one tax year with income reported as the work went on?\" Keep the separate Form 8866 clause."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A farmer reporting on Schedule F with no Schedule C, or a landowner leasing farmland for a crop share (Form 4835 or Schedule E), or a lessor of a fishing vessel for a share of the catch. Any of them may want to elect income averaging.",
+       "why_no": "The gate requires a Schedule C, and the question names only fishing. Farming income on Schedule F never reaches it.",
+       "line": "scope.income_averaging_if_business",
+       "irs_text": "i1040gi p. 36: \"If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J\"; i1040sj p. 1, Definitions, farming business includes \"Leasing land to a tenant engaged in a farming business\" on a share basis",
+       "severity": "medium",
+       "fix": "Ask every filer with Schedule C, Schedule F, Form 4835, Schedule E or a Schedule K-1: \"Do you (or your spouse) have income from farming or fishing and choose to average it over three years (Schedule J)?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "On a joint return, the spouse is a commercial fisher or a crew member paid a share of the catch, and the filer's own business is something else.",
+       "why_no": "\"Is your business fishing\" names only the filer. The spouse appears only in the choice clause, so the filer answers no for their own business.",
+       "line": "scope.income_averaging_if_business",
+       "irs_text": "i1040sj p. 1: fishing business includes \"Compensation as a crew member on a vessel engaged in a fishing business, but only if the compensation is based on a share of the catch\"",
+       "severity": "medium",
+       "fix": "Ask: \"Do you or your spouse have income from a fishing or farming business, including crew pay based on a share of the catch, and choose ...\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner with self-employment income from a partnership (Schedule E and Schedule SE, no Schedule C), or a Schedule F farmer, who contributed to a solo 401(k) or other qualified plan for 2025.",
+       "why_no": "The gate is false without a Schedule C, so the plan question is never asked. The tool continues without refusing, and the line 16 deduction is dropped.",
+       "line": "scope.se_plan_other_if_business",
+       "irs_text": "i1040gi p. 93, Line 16: \"If you were self-employed or a partner, you may be able to take this deduction\"",
+       "severity": "high",
+       "fix": "Gate on any self-employment income (Schedule C, Schedule F, partnership Schedule K-1 box 14, or Schedule SE). Reword: \"... a retirement plan of your own business or partnership other than a SEP or SIMPLE ...\""
+      }
+     ],
+     "prompt_sha": "aa7fee6adb3d4fc11de5aa48c986963e2d6da6347f51090429469f7dbeaf23cd",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.24224,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.has_sc.2dd8d5b9d4cc.1.response.txt"
+    }
    ],
+   "condition": "s1.has_sc",
+   "lines": [
+    "carloan.sc_interest",
+    "qbi.suspended_if_business",
+    "s2.amt_business_if_sc",
+    "s2.lookback_if_business",
+    "scope.income_averaging_if_business",
+    "scope.se_plan_other_if_business"
+   ],
+   "inputs": [
+    "carloan.col_ii_input",
+    "qbi.suspended",
+    "s2.amt_business",
+    "s2.lookback",
+    "scope.income_averaging",
+    "scope.se_plan_other"
+   ],
+   "used": [
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 3, \"Business income or (loss). Attach Schedule C\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      36,
+      93,
+      110
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 110, Schedule 1-A, line 22, column (ii)",
+      "p. 110, Schedule 1-A, line 22, column (ii), \"enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F)\"; , Line 9, Caution",
+      "p. 36, Schedule J, \"If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J\"; , \"all or part of your 2025 taxable income from your trade or business of farming or fishing\"",
+      "p. 93, Line 16, \"Self-Employed SEP, SIMPLE, and Qualified Plans\", \"If you were self-employed or a partner, you may be able to take this\""
+     ],
+     "cols_pages": [
+      36,
+      93,
+      110
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i8995",
+     "revision": "2025; printed date 2026-01-26",
+     "text_sha256": "96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2",
+     "pages": [
+      3,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Determining Your Qualified Business Income, \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income\""
+     ],
+     "cols_pages": [
+      3,
+      4
+     ],
+     "cols_sha256": "6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a"
+    },
+    {
+     "doc": "f8995",
+     "revision": "2025; created 2025-09-12",
+     "text_sha256": "49922587df3bd093e24470f5b42d0e3382ef8f5210b3cedccb02ccb864f2f65a",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8995 (2025), lines 1–17; "
+     ],
+     "cols_pages": [],
+     "cols_sha256": "8e2e78d7610e1d45e93c10c8b03f9026d46a1166678c6ed93f852569c382f346"
+    },
+    {
+     "doc": "i6251",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "024ee22d5460db225e49e2c7d45d284472e0b81c8ac7a95847f50868b8801a99",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 2o—Circulation Costs, \"Circulation costs (expenditures to establish, maintain, or increase the circulation of a newspaper, magazine, or other periodical) deducted in full for the regular tax\"; p. 7, Line 2q—Mining Costs, \"Mining exploration and development costs deducted in full for the regular tax\"; p. 7, Line 2t—Intangible Drilling Costs (IDCs), \"IDCs from oil, gas, and geothermal wells are a preference\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "a67c0bf9545d844d38c9381522baf62c51fc59813677029e87af8a01232e6c7f"
+    },
+    {
+     "doc": "f1040s2",
+     "revision": "2025; created 2025-05-08",
+     "text_sha256": "29e3a05ca4dca4b5316833984170cff8815045c2e3957d048cb713ad90cb728f",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 2 (2025), line 17n"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "129b2541cce9743c9bde3a48fdfcc2512767d88b7cbbbe562d7989b117232d62"
+    },
+    {
+     "doc": "f1040",
+     "revision": "2025; created 2025-09-05",
+     "text_sha256": "ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a"
+    },
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      6
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "i1040sj",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "ca3c9d52d8cf83e02cfe865a176df8d73a03c3dfdb1adc30e85cd601d34b96bc",
+     "pages": [
+      1
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "bf854ca5acec7020d47f739515809d93e2ec93b224f643ef885d0e3c6e04fd56"
+    }
+   ]
+  },
+  "gate:s1.hobby_any": {
+   "subject_sha": "5bf22f50d9363bbf1d6341e9861099eb66f874cbb74b60ba78b5c38913f8e672",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "A filer who sold $2,000 of pottery made as a pastime but spent $3,000 on clay, a kiln and fees, so the hobby lost money for the year.",
+       "why_no": "In everyday speech, 'make money' means come out ahead. A filer whose hobby lost money truthfully says they did not make money from it. Yet the gated question's own help says costs are not subtracted, so the line takes receipts, not profit.",
+       "line": "s1.line8j",
+       "irs_text": "p525 p. 31, Activity not for profit: \"You must include on your return income from an activity, even if you don't expect to make a profit from that activity... Enter this income on Schedule 1 (Form 1040), line 8j.\"",
+       "severity": "high",
+       "fix": "Ask about receipts, not profit: \"In 2025, did you (or, on a joint return, your spouse) receive any money, property, or other payment from a hobby or other activity not run to make a profit, even if its costs were more than what it brought in?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A hobby woodworker who traded furniture for a used car, or a hobby photographer paid in gift cards or cryptocurrency instead of cash.",
+       "why_no": "The gate says 'make money'. A filer paid in goods, services, barter or digital assets reads that as not money and answers no.",
+       "line": "s1.line8j",
+       "irs_text": "p525 p. 31: \"You must include on your return income from an activity, even if you don't expect to make a profit from that activity.\" The line covers income, not only cash.",
+       "severity": "medium",
+       "fix": "Say \"receive money, property, services, or other payment (including barter or digital assets)\" and ask for the fair market value of noncash receipts in the gated amount question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A couple who run a small horse farm or a cattle operation mostly for recreation and sold some animals in 2025, or a retiree who raises show dogs and sold a litter.",
+       "why_no": "They do not think of a farm or a breeding operation as a 'hobby or pastime', which suggests crafts or collecting. They read the example as the whole rule and answer no.",
+       "line": "s1.line8j",
+       "irs_text": "p525 p. 31: \"An example of this type of activity is a hobby or a farm you operate mostly for recreation and pleasure. Enter this income on Schedule 1 (Form 1040), line 8j.\"",
+       "severity": "medium",
+       "fix": "Name the farm case and other activities in the gate: \"a hobby, a farm or animal-breeding activity run mostly for recreation or pleasure, or any other activity you do not run mainly to make a profit\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer with an LLC, a website and business cards for a side activity (for example artwork or a vintage-car restoration sideline) that has lost money for many years and is carried on mainly for enjoyment.",
+       "why_no": "The words 'not run as a business' ask the filer to make the legal call. Because the activity has business trappings, the filer considers it 'run as a business' and answers no, although it is not engaged in for profit.",
+       "line": "s1.line8j",
+       "irs_text": "p525 p. 31, Activity not for profit: \"You must include on your return income from an activity, even if you don't expect to make a profit from that activity.\"",
+       "severity": "medium",
+       "fix": "Ask checkable facts first: whether the filer received income from any side activity, whether it had a profit in prior years, and whether it is carried on mainly for pleasure. Classify the activity after a broad yes, rather than relying on the filer's own label of 'business'."
+      }
+     ],
+     "prompt_sha": "d739eef8d9c0d9131ac4ee5d1b3574f720094937df82abffdbb5e045205bc6c1",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08685599999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.hobby_any.5bf22f50d936.1.response.txt"
+    }
+   ],
+   "condition": "s1.hobby_any",
+   "lines": [
+    "s1.line8j"
+   ],
+   "inputs": [
+    "s1.hobby_income"
+   ],
+   "used": [
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 8j"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8j, \"Activity not engaged in for profit income. See Pub. 525\"; , Activity not for profit, \"An example of this type of activity is a hobby or a farm you operate mostly for recreation and pleasure. Enter this income on Schedule 1 (Form 1040), line 8j\""
+     ],
+     "cols_pages": [
+      91
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      31
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "gate:s1.jury_any": {
+   "subject_sha": "40848e3eabfb2e41c9658b2f079cc5861bf57fa80fafd849465eb3669df9557c",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer was summoned in 2025, reported to the courthouse, and sat in the jury pool or voir dire. They were dismissed without being seated, and the court paid a daily attendance fee for each day they reported.",
+       "why_no": "The gate asks whether they were 'paid for serving on a jury'. They were never empaneled, so they never served on a jury, and a literal truthful answer is no.",
+       "line": "s1.line8h",
+       "irs_text": "i1040gi p. 91, Line 8h: 'Enter any jury duty pay'; p525 p. 34: 'Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h.'",
+       "severity": "high",
+       "fix": "Ask about jury duty, not jury service: 'In 2025, did you (or, on a joint return, your spouse) receive any money from a court for jury duty, including days you reported for jury selection but were not chosen, and grand jury service?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer served on a jury in December 2024, and the court's check arrived and was cashed in January 2025.",
+       "why_no": "The filer can read 'In 2025' as modifying the service ('serving on a jury in 2025'). They served in 2024, so they answer no, even though the pay was received in 2025.",
+       "line": "s1.line8h",
+       "irs_text": "p525 p. 34: 'Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h.'",
+       "severity": "medium",
+       "fix": "Key the question to receipt: 'Did you (or your spouse) receive any jury duty pay during 2025, even for jury duty served in an earlier year?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer's employer kept paying their salary during jury duty, and the filer signed the court's check over to the employer as the employer's policy requires.",
+       "why_no": "The filer sees the money as the employer's and does not think of themselves as having been 'paid' for jury service. They answer no, so the gated question that says 'Count any you handed over to an employer' is never reached.",
+       "line": "s1.line8h",
+       "irs_text": "p525 p. 34: 'If you must give the pay to your employer because your employer continues to pay your salary while you serve on the jury, you can deduct the amount turned over to your employer as an adjustment to income.'",
+       "severity": "medium",
+       "fix": "Move the handover clause into the gate: 'Include jury pay you turned over or signed over to your employer.' Pair it with the line 24a question so a full handover still nets to zero."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer received a court 'per diem', 'attendance fee', or combined fee-and-mileage check for jury duty, and thinks of it as a reimbursement or stipend rather than pay.",
+       "why_no": "Courts label the money 'fees', 'per diem', or 'allowance', so the filer does not see it as being 'paid'. They answer no.",
+       "line": "s1.line8h",
+       "irs_text": "i1040gi p. 91, Line 8h: 'Enter any jury duty pay'",
+       "severity": "medium",
+       "fix": "Name the forms the money takes: 'any jury fee, per diem, or attendance payment from a court (federal, state, or local)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer served on a grand jury or a coroner's inquest jury and was paid for it in 2025.",
+       "why_no": "The filer reads 'serving on a jury' as a trial jury and does not count grand jury or inquest service.",
+       "line": "s1.line8h",
+       "irs_text": "p525 p. 34: 'Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h.'",
+       "severity": "low",
+       "fix": "Add to the help text: 'Includes grand juries and any other jury or jury pool, in any court.'"
+      }
+     ],
+     "prompt_sha": "65a43e5d1d40eeb61236e38c28fcdb5155bff64a1051e67a2a0d80d27dfe6722",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.094156,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.jury_any.40848e3eabfb.1.response.txt"
+    }
+   ],
+   "condition": "s1.jury_any",
+   "lines": [
+    "s1.line8h"
+   ],
+   "inputs": [
+    "s1.jury_pay"
+   ],
+   "used": [
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 8h"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8h, \"Enter any jury duty pay and see the instructions for line 24a\"; , Jury duty, \"Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h\""
+     ],
+     "cols_pages": [
+      91
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "gate:s1.nol_joint": {
+   "subject_sha": "c75e27d13c62fde496597ae76dd0404d1bc5b7496105ece586ea9c12c3850135",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A widow or widower filing as qualifying surviving spouse, or a divorced filer filing single or head of household. They carry into 2025 the unused part of a joint NOL from years they filed jointly with the former or deceased spouse, and some of that loss belonged to the other spouse.",
+       "why_no": "The computed condition requires filing status 'mfj'. Their filing status is not mfj, so the condition is false, the marital-change question is never asked, and the tool takes the whole joint carryover.",
+       "line": "s1.nol_not_married_if_joint",
+       "irs_text": "i172 p. 3, Change in Marital Status: \"If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction.\" Also p. 3, Joint to separate returns: \"figure each of your carryovers separately by separating the NOL portion for each spouse from within the joint return.\"",
+       "severity": "high",
+       "fix": "Ask the marital-change question, or a refusal, on every return carrying an NOL. On a non-joint return, ask: \"Did any of this loss come from a year you filed a joint return?\" A yes means a refusal, or an allocation of each spouse's share."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A married couple filing jointly. One spouse's business loss was limited as an 'excess business loss' (Form 461), or came from a casualty, disaster or farm loss years ago. A prior preparer carried it forward on Schedule 1 line 8a, and the couple never heard it called an NOL.",
+       "why_no": "The gate asks whether they are carrying a loss 'as a net operating loss deduction'. That is a legal classification. They know it as an excess business loss, a carryforward, or just a negative number on last year's Schedule 1.",
+       "line": "s1.nol_not_married_if_joint",
+       "irs_text": "i172 p. 3, Deducting a Carryforward: \"list your NOL deduction as a negative figure on Schedule 1 (Form 1040) for the year to which the NOL is carried.\"",
+       "severity": "medium",
+       "fix": "Ask a fact they can check: \"Did your 2024 return (or your spouse's) show a negative amount on Schedule 1 line 8a, or include a Form 172 or Form 461, or did a preparer tell you a business, farm, casualty or other loss was carried forward?\" Classify after a broad yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A newly married couple filing jointly. One spouse carries an NOL from before the marriage, or from a joint return with a former spouse. The other spouse, who does the interview, does not know about it or thinks of it as the spouse's or the ex-spouse's old loss, not 'ours'.",
+       "why_no": "The filer reads 'carrying a loss' as their own or the couple's history and answers for themselves. A loss from a prior marriage feels like it belongs to that marriage, not to this return.",
+       "line": "s1.nol_not_married_if_joint",
+       "irs_text": "i172 p. 3, Change in Marital Status: \"only the spouse who had the loss can take the NOL deduction. If you file a joint return, the NOL deduction is limited to the income of that spouse.\"",
+       "severity": "medium",
+       "fix": "Add help: \"Include a loss either of you had before this marriage, including one from a joint return with a former or deceased spouse. Check each spouse's 2024 return.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A married couple filing jointly. One spouse is a beneficiary of a trust or estate that ended. That spouse received a final Schedule K-1 (Form 1041) passing through an NOL carryover that arose before the marriage.",
+       "why_no": "They did not have a loss themselves; the trust did. They read 'Are you carrying a loss from an earlier year' as excluding a loss that came to them on a K-1.",
+       "line": "s1.nol_not_married_if_joint",
+       "irs_text": "i172 p. 3, Deducting a Carryforward: \"Estates and trusts, include an NOL deduction on Form 1041.\" Also p. 3, Change in Marital Status: \"only the spouse who had the loss can take the NOL deduction.\"",
+       "severity": "low",
+       "fix": "Add to the help: \"Include an NOL carryover passed to you or your spouse on a final Schedule K-1 from an estate or trust.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A remarried couple filing jointly, one of whom carries a pre-marriage NOL. Once past the gate, they meet the gated question, which is worded as a negative and warns that a Yes ends the interview.",
+       "why_no": "\"Were you and your spouse not married to each other...\" invites a reflexive no from people who are married now. The help \"A Yes ends the interview here\" also pushes them toward no so they can finish. The true answer is yes.",
+       "line": "s1.nol_not_married_if_joint",
+       "irs_text": "i172 p. 3, Change in Marital Status: \"If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction.\"",
+       "severity": "medium",
+       "fix": "Ask positively: \"Were you and your spouse married to each other in every year from the year the loss arose through 2025?\" Treat a no as the refusal. Explain why the tool stops instead of only warning that it will."
+      }
+     ],
+     "prompt_sha": "2cfd9ef1dd2123cabd2ceb46985f5c606c419b64ce0ff2a455a2ba4bda6c8975",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.098168,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.nol_joint.c75e27d13c62.1.response.txt"
+    }
+   ],
+   "condition": "s1.nol_joint",
+   "lines": [
+    "s1.nol_not_married_if_joint"
+   ],
+   "inputs": [
+    "s1.nol_not_married"
+   ],
+   "used": [
+    {
+     "doc": "i172",
+     "revision": "Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025)",
+     "text_sha256": "e17ea777209aec5a08adb794fe1f60c29241e9c091f46ef6e65fcba8290b96e9",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Change in Marital Status, \"If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction. If you file a joint return, the NOL deduction is limited to the income of that spouse\"",
+      "p. 3, Change in Marital Status, \"If you file a joint return, the NOL deduction is limited to the income of that spouse\"",
+      "p. 3, Change in Marital Status, \"only the spouse who had the loss can take the NOL deduction\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "fc6c6fdeed257b455cecbc21db25496924098ab7a604b1c99fcd84256fc58061"
+    }
+   ]
+  },
+  "gate:s1.nol_separate": {
+   "subject_sha": "50fb30b0f2d680b0c9868c32268c331d9bbf835907e2e29cfcb920a585f25782",
    "samples": [
     {
      "verdict": "FALSE_NO",
@@ -52,40 +1152,580 @@
       {
        "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A filer, or the spouse on a joint return, served on a jury in late 2024 and got the jury pay in 2024, which went on the 2024 return. In 2025 they turned that pay over to the employer that kept paying their salary while they served, and they got no new jury pay in 2025.",
-       "why_no": "Line 8h is truthfully zero for 2025, so the computed gate is false. The gated question also limits the amount to 'the part of the jury duty pay on line 8h', which leaves out pay received in an earlier year. The deduction belongs to the year the pay is handed over, not the year it was received.",
-       "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
-       "irs_text": "p525 (2025) p. 34, Jury duty: 'you can deduct the amount turned over to your employer as an adjustment to income. Enter the amount you repay your employer on Schedule 1 (Form 1040), line 24a.'",
+       "who": "A farmer whose 2023 farming NOL was carried back two years to a 2021 joint return, with the remainder carried into 2025. The farmer files married filing separately or single in 2025 and filed separately (or was unmarried) in 2023 and 2024.",
+       "why_no": "The question asks only about 'the year any of the loss arose, or for any year from then to 2024'. The 2021 carryback year comes before the loss year, so the truthful answer is no. The carryover remaining after a joint carryback still has to be separated between the spouses.",
+       "line": "s1.nol_was_joint_if_separate",
+       "irs_text": "i172 p. 3: 'filed a joint return for any or all of the tax years involved in figuring the NOL carryover, figure each of your carryovers separately'; 'all years involved in figuring NOL carrybacks and carryovers'",
        "severity": "high",
-       "fix": "Ask everyone (or gate on 'Did you or your spouse serve on a jury in 2025, or give jury duty pay to an employer in 2025?'): 'Jury duty pay you or your spouse gave to your employer in 2025 because the employer paid your salary while you served, including pay you received in an earlier year.' Don't cap the amount at line 8h."
+       "fix": "Ask: 'Did you file a joint return for any year the loss came from, any year it was carried back to, or any year since then through 2024?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A filer who carried an NOL from a year they filed jointly with a former spouse (now divorced or deceased). The filer remarried and files jointly with the new spouse in 2025.",
+       "why_no": "The computed gate requires Filing Status ≠ 'mfj', so it is false and the question is never asked. The tool then lets the old joint NOL flow in as if it were the new couple's own NOL.",
+       "line": "s1.nol_was_joint_if_separate",
+       "irs_text": "i172 p. 3, Change in Marital Status: 'If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction. If you file a joint return, the NOL deduction is limited to the income of that spouse.'",
+       "severity": "high",
+       "fix": "Widen the gate to any return carrying an NOL. On a joint return, ask: 'For any year involved in the loss, did either of you file a joint return with someone other than your current spouse, or were you not married to each other?' Refuse or allocate when the answer is yes."
       },
       {
        "kind": "UNCLEAR",
-       "pattern": "4",
-       "who": "A court paid the filer's jury fee and reported it on Form 1099-MISC (box 3, other income), or on a form the filer entered as other income. The filer gave the fee to the employer, which kept paying their salary.",
-       "why_no": "The filer, or the tool's 1099-MISC flow, puts the amount on line 8z 'other income' instead of line 8h. Line 8h stays zero, so the gate is false and the question about pay given to the employer is never asked.",
-       "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
-       "irs_text": "p525 (2025) p. 34: 'Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer ... you can deduct the amount turned over to your employer'",
+       "pattern": "7",
+       "who": "A filer filing separately in 2025 whose 2024 Form 461 excess business loss became an NOL carryforward. Another example is a filer whose prior joint return showed an NOL carryover that the filer thinks of as 'ours' or the spouse's, not 'mine'.",
+       "why_no": "The scope helper asks whether 'you' are carrying a loss 'as a net operating loss deduction'. The filer sees the amount as an 'excess business loss' or as the couple's or spouse's loss, answers no, and the separation rule is never reached.",
+       "line": "s1.nol_was_joint_if_separate",
+       "irs_text": "i172 p. 3, Joint to separate returns: 'figure each of your carryovers separately by separating the NOL portion for each spouse from within the joint return'",
        "severity": "medium",
-       "fix": "When the filer enters line 8z or 1099-MISC other income, ask whether any of it was jury duty pay and send it to line 8h. Or gate on the fact the filer can check ('Did you or your spouse get paid for jury duty?') rather than on line 8h alone."
+       "fix": "Ask a fact the filer can check first: 'Did your 2024 return (or any joint return you were on) show an NOL carryover or an excess business loss carried forward?' Then classify whose share it is after a yes."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer signed the jury check over to the employer, or the employer collected it, because the employer kept paying their salary. They treat it as a wash and never enter it as jury duty pay.",
-       "why_no": "They see nothing to report as 'jury duty pay' because they kept none of it. Line 8h is left at zero and the gate turns off line 24a. The net effect on AGI is usually zero, but the return then doesn't follow the instruction to put the pay on line 8h and the repayment on line 24a.",
-       "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
-       "irs_text": "i1040gi (2025) p. 91, Line 8h: 'Enter any jury duty pay and see the instructions for line 24a'; p. 99, Line 24a: 'Enter your jury duty pay if you gave the pay to your employer'",
-       "severity": "low",
-       "fix": "Add help to the line 8h question: 'Include jury duty pay even if you gave it to your employer; you'll deduct that part on line 24a.'"
+       "who": "A filer who filed separately for the loss year, then amended to a joint return. Another example is a filer who only signed a joint return their spouse prepared and filed.",
+       "why_no": "'Did you file a joint return' is read as the original filing, or as the filer personally filing. The help text 'A Yes ends the interview here' also pushes a doubtful filer toward no.",
+       "line": "s1.nol_was_joint_if_separate",
+       "irs_text": "i172 p. 3: 'filed a joint return for any or all of the tax years involved in figuring the NOL carryover'",
+       "severity": "medium",
+       "fix": "Say 'Was a joint return (including an amended joint return) filed with you on it for…'. Replace the help text with an explanation of why a joint year matters, not only the consequence of a yes."
       }
      ],
-     "prompt_sha": "f67ac280d9cf5ac6b95d90c44a19badd75f04b6bbd6c2ba64839c0a5bdc0d234",
-     "model": "claude-opus-5-5",
-     "cost": 0.09942000000000001,
-     "date": "2026-11-07",
+     "prompt_sha": "8ca95b0985a0e345e26cce754a62943025f263bb96fd44469d891ceeaaf44af2",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "response": ".transcription/false_no/gate_s1.has_jury_pay.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.093084,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.nol_separate.50fb30b0f2d6.1.response.txt"
+    }
+   ],
+   "condition": "s1.nol_separate",
+   "lines": [
+    "s1.nol_was_joint_if_separate"
+   ],
+   "inputs": [
+    "s1.nol_was_joint"
+   ],
+   "used": [
+    {
+     "doc": "i172",
+     "revision": "Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025)",
+     "text_sha256": "e17ea777209aec5a08adb794fe1f60c29241e9c091f46ef6e65fcba8290b96e9",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Change in Marital Status, \"If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction\"",
+      "p. 3, Joint to separate returns, \"If you and your spouse file separate returns for a tax year, but filed a joint return for any or all of the tax years involved in figuring the NOL carryover, figure each of your carryovers separately\"",
+      "p. 3, Joint to separate returns, \"figure each of your carryovers separately\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "fc6c6fdeed257b455cecbc21db25496924098ab7a604b1c99fcd84256fc58061"
+    }
+   ]
+  },
+  "gate:s1.scholarship_any": {
+   "subject_sha": "199aa4d696731dac84df6acf06209e570f54ce622eb042e63d8d0cecc28924b4",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A postdoctoral researcher, or a filer's spouse, who is not enrolled anywhere and gets a research fellowship (for example an NIH NRSA postdoctoral fellowship or a foundation fellowship) paid as a stipend with no Form W-2.",
+       "why_no": "The gate says 'a scholarship, a fellowship or a grant for study'. The filer reads 'for study' as applying to all three and answers no because they research and do not study. The help names only Pell grants and 'other grants' paid to a school, which supports reading the gate as student aid only.",
+       "line": "s1.line8r",
+       "irs_text": "i1040gi p. 92, Line 8r: 'Enter the amount of scholarship and fellowship grants not reported on Form W-2. However, if you were a degree candidate, include on line 8r only ...' (a non-degree candidate reports the whole amount)",
+       "severity": "medium",
+       "fix": "Ask: 'In 2025, did you (or, on a joint return, your spouse) get a scholarship, fellowship, or grant (for study, research, training, or creative work), including a stipend or living allowance, that is not on a Form W-2? Include it whether or not you were a student.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A graduate student whose program pays a monthly 'stipend' or 'living allowance' from fellowship or training-grant funds, with no Form W-2 (sometimes a Form 1099-MISC or no form at all), while tuition is waived.",
+       "why_no": "The filer thinks of the stipend as pay or support, not as 'a scholarship' or 'a grant for study'. The help points to Pell grants and payments to the school, not to money paid to the filer for living costs.",
+       "line": "s1.line8r",
+       "irs_text": "i1040gi p. 92, Line 8r: 'amounts used for room, board, and travel must be reported on line 8r'; p525 p. 35: 'Amounts used for room and board don't qualify for the exclusion.'",
+       "severity": "medium",
+       "fix": "Add to the help: 'Include stipends, living allowances, and fellowship payments made to you, even if no form was issued or the payment came on a Form 1099-MISC.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A college athlete, or a student with a merit or housing award, whose aid covers room and board or travel and is called an 'athletic scholarship', 'housing grant', or 'award'.",
+       "why_no": "The filer may not see an athletic scholarship or a housing or merit award as a grant 'for study'. The qualifier 'for study' invites a no for aid tied to sport, housing, or merit rather than to coursework.",
+       "line": "s1.line8r",
+       "irs_text": "i1040gi p. 92, Line 8r: 'For example, amounts used for room, board, and travel must be reported on line 8r.'",
+       "severity": "medium",
+       "fix": "Drop 'for study' from the gate. Add to the help: 'Include athletic scholarships, housing or meal grants, and merit awards from a school or any other source.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A Fulbright grantee, or a teaching or research assistant, whose grant or tuition waiver requires teaching or research and is not reported on a Form W-2.",
+       "why_no": "The filer sees the money as pay for work or as a 'tuition waiver', not as a scholarship or a grant 'for study', and answers no.",
+       "line": "s1.line8r",
+       "irs_text": "p525 p. 35, Payment for services: 'you can't exclude from your gross income the part of any scholarship or fellowship that represents payment for teaching, research, or other services required as a condition for receiving the scholarship'",
+       "severity": "medium",
+       "fix": "Add to the gate's help: 'Include grants and tuition waivers that require you to teach, do research, or do other work, if that pay is not on a Form W-2.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A student who was awarded aid in 2024 but whose disbursement or check for room and board arrived in 2025, or who reads 'get' as 'was awarded'.",
+       "why_no": "The filer reads 'In 2025, did you get' as the year of the award, and answers no because the scholarship was awarded in an earlier year.",
+       "line": "s1.line8r",
+       "irs_text": "i1040gi p. 92, Line 8r: 'Enter the amount of scholarship and fellowship grants not reported on Form W-2.'",
+       "severity": "low",
+       "fix": "Ask whether the filer 'received or had paid for you in 2025' any scholarship, fellowship, or grant, whenever it was awarded."
+      }
+     ],
+     "prompt_sha": "f31573065683a8e844cf269a51e738f18f0c55d27077082bfa24d3fd9bc475fa",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.10830000000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.scholarship_any.199aa4d69673.1.response.txt"
+    }
+   ],
+   "condition": "s1.scholarship_any",
+   "lines": [
+    "s1.line8r"
+   ],
+   "inputs": [
+    "s1.scholarship_taxable"
+   ],
+   "used": [
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 8r"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      92
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 92, Line 8r, \"Enter the amount of scholarship and fellowship grants not reported on Form W-2. However, if you were a degree candidate, include on line 8r only the amounts you used for expenses other than tuition and course-related expenses. For example, amounts used for room, board, and travel must be reported on line 8r\"",
+      "p. 92, Line 8r, \"Enter the amount of scholarship and fellowship grants not reported on Form W-2. However, if you were a degree candidate, include on line 8r only the amounts you used for expenses other than tuition and course-related expenses. For example, amounts used for room, board, and travel must be reported on line 8r\"; , Payment for services, \"Generally, you can’t exclude from your gross income the part of any scholarship or fellowship that represents payment for teaching, research, or other services required as a condition for receiving the scholarship\"; , Exceptions, \"You don’t have to include in income the part of any scholarship or fellowship that represents payment for teaching, research, or other services if you receive the amount under: The National Health Services Corps Scholarship Program, The Armed Forces Health Professions Scholarship and Financial Assistance Program, or A comprehensive student work-learning-service program (as defined in section 448(e) of the Higher Education Act of 1965) operated by a work college\""
+     ],
+     "cols_pages": [
+      92
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      35
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      35
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "gate:s1.stock_options_if_options": {
+   "subject_sha": "47d3149cdfbcc0fd85eee925df78747eeec3fc6889168e2c22c4b22a3991dcfe",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "An employee exercised incentive stock options or bought ESPP shares in 2024 and sold them in 2025 in a disqualifying disposition. The ordinary income was left out of W-2 box 1, which is common for former employees or when the employer did not track the sale.",
+       "why_no": "The gate asks only 'In 2025, did you ... exercise stock options'. The exercise was in 2024, so no is truthful. The tool's own condition label says 'exercised or their shares sold', but the question never asks about a sale.",
+       "line": "s1.line8k",
+       "irs_text": "i1040gi p. 91, Line 8k: \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h.\"",
+       "severity": "high",
+       "fix": "Ask: 'In 2025, did you (or, on a joint return, your spouse) exercise stock options, or sell or give away shares acquired by exercising stock options or through an employee stock purchase plan, in any year?' Then ask for the amount not in W-2 box 1."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A widow, heir or estate beneficiary exercised nonstatutory options inherited from a deceased employee. The income in respect of a decedent was reported on a Form 1099-MISC, not a W-2.",
+       "why_no": "'Stock options from an employer': the filer never had an employer that granted the options. They came from the decedent.",
+       "line": "s1.line8k",
+       "irs_text": "i1040gi p. 91, Line 8k: \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h.\"",
+       "severity": "high",
+       "fix": "Drop 'from an employer'. Ask whether the filer or spouse exercised any stock options received for services, whether their own, a spouse's, an inherited person's or a former spouse's."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A former spouse received nonstatutory options in a divorce property settlement and exercised them in 2025. The income is taxable to that former spouse and is reported on a Form 1099-MISC.",
+       "why_no": "The options did not come from the filer's employer, and 'your spouse' does not cover a former spouse's employer.",
+       "line": "s1.line8k",
+       "irs_text": "i1040gi p. 91, Line 8k: \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h.\"",
+       "severity": "high",
+       "fix": "Include options received in a divorce or from any other person, for example: 'options you received in a divorce, by inheritance, or for services to any company'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A non-employee director, advisor or consultant exercised compensatory nonstatutory options in 2025 and received no W-2.",
+       "why_no": "The filer reads 'from an employer' as excluding a company they served as a director or contractor.",
+       "line": "s1.line8k",
+       "irs_text": "i1040gi p. 91, Line 8k: \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h.\"",
+       "severity": "medium",
+       "fix": "Say 'from an employer or a company you served as a director, consultant or contractor'. Route self-employment income to Schedule C as appropriate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A former employee exercised options from a past employer after leaving, or an employee bought shares under an employee stock purchase plan (an option under section 423).",
+       "why_no": "The filer reads 'an employer' as the current employer, or does not think of an ESPP purchase as 'exercising stock options'.",
+       "line": "s1.line8k",
+       "irs_text": "i1040gi p. 91, Line 8k: \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h.\"",
+       "severity": "medium",
+       "fix": "Help text: 'Include options from a current or former employer, and shares bought through an employee stock purchase plan (ESPP).'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "An employee did a cashless or same-day exercise-and-sell through a broker. They think of it as a sale of shares, not an exercise.",
+       "why_no": "The filer associates 'exercise' with paying cash for shares and holding them. The broker statement shows a sale.",
+       "line": "s1.line8k",
+       "irs_text": "i1040gi p. 91, Line 8k: \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h.\"",
+       "severity": "low",
+       "fix": "Help text: 'A cashless or same-day sale through a broker counts as an exercise.'"
+      }
+     ],
+     "prompt_sha": "a4b4ce6e661f4ced794f0289f6e416e8e6789d85154a0515613deb21eb9df09e",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.091428,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.stock_options_if_options.47d3149cdfbc.1.response.txt"
+    }
+   ],
+   "condition": "s1.stock_options_if_options",
+   "lines": [
+    "s1.line8k"
+   ],
+   "inputs": [
+    "s1.options_amount"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8k, \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h\""
+     ],
+     "cols_pages": [
+      91
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 8k; , Line 8k, \"Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    }
+   ]
+  },
+  "gate:s1.uc_any": {
+   "subject_sha": "e85a6d3da8b833b6e180fda136dfe719aecd2eb1b12b39f2c081782bdf2f5810",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer, or the spouse on a joint return, collected unemployment in 2025. The state posted Form 1099-G only on its unemployment website, so nothing came in the mail, or the form was lost or never arrived.",
+       "why_no": "The help says 'The state sends Form 1099-G for them.' A filer who never received a 1099-G may take that as proof that what they got was not unemployment benefits for this question, or that there is nothing to report.",
+       "line": "s1.uc_paid_if_any",
+       "irs_text": "i1040gi p. 89, line 7: 'your state may issue an electronic Form 1099-G instead of it being mailed to you. Check your state's unemployment compensation website'",
+       "severity": "medium",
+       "fix": "Change the help to: 'Count benefits even if you have no Form 1099-G yet. Many states post the form only online on the unemployment website.' Have the amount question accept an amount with no form."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer got unemployment compensation that was not paid by the state's own program, such as benefits from a federal agency.",
+       "why_no": "The help names one issuer ('The state sends Form 1099-G'). A filer whose benefits came from another payer may decide their benefits are outside the question.",
+       "line": "s1.uc_paid_if_any",
+       "irs_text": "i1040gi p. 89, line 7: 'report on line 7 only the actual amount of unemployment compensation paid to you in 2025' (the line is not limited to state payers)",
+       "severity": "medium",
+       "fix": "Change the help to: 'Unemployment compensation from any government program counts, usually shown on Form 1099-G box 1, whoever paid it.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer's 2025 unemployment benefits were kept back instead of handed over. They may have been offset to recover an earlier overpayment, intercepted for child support or other debts, or had income tax withheld. The filer received little or no cash.",
+       "why_no": "The gate asks whether they 'get' benefits. A filer who never had the money in hand reads that as no, but the amount paid on their behalf still counts.",
+       "line": "s1.uc_paid_if_any",
+       "irs_text": "i1040gi p. 89, line 7: 'Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025. Report this amount on line 7.'",
+       "severity": "medium",
+       "fix": "Ask: 'In 2025, were unemployment benefits paid to you or your spouse, or for you, even if they were withheld, offset or sent to someone else?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer was unemployed in 2024, won an appeal or had a delayed claim approved, and was paid the back benefits as a lump sum in 2025. They had no unemployment during 2025 itself.",
+       "why_no": "'In 2025, did you ... get unemployment benefits?' can be read as asking about being unemployed in 2025. The filer thinks of the payment as 2024 benefits.",
+       "line": "s1.uc_paid_if_any",
+       "irs_text": "i1040gi p. 89, line 7: 'total unemployment compensation paid to you in 2025'",
+       "severity": "medium",
+       "fix": "Ask: 'Were any unemployment benefits paid to you or your spouse during 2025, including back payments for earlier weeks or years?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer received an overpayment of unemployment in 2025 and repaid all or most of it in 2025, so they think they kept nothing.",
+       "why_no": "They believe the benefits were cancelled and answer that they did not 'get' benefits. The instructions still require reporting the amount received and the amount repaid.",
+       "line": "s1.uc_paid_if_any",
+       "irs_text": "i1040gi p. 89, line 7: 'If you received an overpayment of unemployment compensation in 2025, subtract the amount you repaid from the total amount you received... check the box on line 7 and enter the amount you repaid'",
+       "severity": "low",
+       "fix": "Add to the help: 'Answer yes even if you later had to repay some or all of it in 2025.'"
+      }
+     ],
+     "prompt_sha": "14ee9986676052a663f642a516aceb455139b2fcf539b024e953d868a1115948",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.086316,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.uc_any.e85a6d3da8b8.1.response.txt"
+    }
+   ],
+   "condition": "s1.uc_any",
+   "lines": [
+    "s1.uc_paid_if_any"
+   ],
+   "inputs": [
+    "s1.uc_paid"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      89
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 89, Schedule 1, line 7",
+      "p. 89, Schedule 1, line 7, 'You should receive a Form 1099-G showing in box 1 the total unemployment compensation paid to you in 2025' and 'If the amount reported in box 1 of your Form(s) 1099-G is incorrect, report on line 7 only the actual amount'"
+     ],
+     "cols_pages": [
+      89
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:s1.winnings_any": {
+   "subject_sha": "62eeefc30fbfa83203394c3dd710b1eb4419e82ce0485c9c99d824431f2b2f6e",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer who won a state lottery jackpot in 2015 with an annuity payout. In 2025 they received the annual installment plus amounts designated as interest on the unpaid installments.",
+       "why_no": "The gate asks 'In 2025, did you ... win money'. They won in 2015, so a truthful answer is no, even though they received a payment in 2025.",
+       "line": "s1.gambling_winnings_if_winnings (Schedule 1, line 8b)",
+       "irs_text": "p525 p. 33, Installment payments: 'if you win a state lottery prize payable in installments, you must include in your gross income the annual payments and any amounts you receive designated as interest on the unpaid installments'",
+       "severity": "high",
+       "fix": "Ask about payments received regardless of when the prize was won: 'In 2025, did you (or your spouse) receive any gambling or lottery winnings, including an installment of a prize won in an earlier year?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer who won a lottery annuity years ago and in 2025 sold the right to the remaining payments to a buyer for a lump sum.",
+       "why_no": "They did not 'win' anything in 2025; they sold a contract. Neither the verb 'win' nor the list of sources describes a sale.",
+       "line": "s1.gambling_winnings_if_winnings (Schedule 1, line 8b)",
+       "irs_text": "i1040gi p. 91, Line 8b: 'Gambling winnings include lotteries, raffles, a lump-sum payment from the sale of a right to receive future lottery payments, etc.'; p525 p. 33: 'report the amount you receive from the sale as ordinary income (on Schedule 1 (Form 1040), line 8b) in the year you receive it'",
+       "severity": "high",
+       "fix": "Add to the gate: 'or sell your right to future lottery payments'. Name the sale in the help text of s1.gambling_winnings."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A U.S. athlete, or the spouse on a joint return, who won a medal at the 2024 Paris Olympic or Paralympic Games and received the USOC (USOPC) prize money in 2025. No Olympic Games were held in 2025.",
+       "why_no": "The medal was won in 2024, so 'In 2025, did you ... win money or a prize' is truthfully no. The Olympic question, whose Yes ends the interview, is then never asked.",
+       "line": "s1.olympic_if_winnings (Schedule 1, line 8m; refusal missed)",
+       "irs_text": "i1040gi p. 91, Line 8m: 'the amount of United States Olympic Committee (USOC) prize money you receive on account of your participation in the Olympic or Paralympic Games may be nontaxable. These amounts should be reported to you in box 3 of Form 1099-MISC.'",
+       "severity": "high",
+       "fix": "Ask the Olympic or Paralympic medal and USOC prize money question outside the gate, keyed on receipt in 2025 for any year's Games. Or broaden the gate to 'receive in 2025 ... no matter when you won it'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who placed sports bets or played at casinos during 2025, cashed some winning tickets (possibly receiving a Form W-2G), and lost more than they won over the year.",
+       "why_no": "They read 'did you win money ... from gambling' as asking whether they came out ahead. Being down for the year, they answer no. The gate's help says nothing about gross winnings or offsetting losses.",
+       "line": "s1.gambling_winnings_if_winnings (Schedule 1, line 8b)",
+       "irs_text": "p525 p. 33, Gambling winnings: 'You must include your gambling winnings in your income on Schedule 1 (Form 1040), line 8b ... you can deduct gambling losses you had during the year, but only up to the amount of your winnings'; 'Include the amount from box 1 on Schedule 1 (Form 1040), line 8b'",
+       "severity": "medium",
+       "fix": "Add to the gate help: 'Answer yes if you had any winning bet or ticket, or got a Form W-2G, even if you lost more than you won over the year.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A writer, scientist or civic volunteer who was given a recognition award or prize in 2025 (for example a literary or science prize, or a community-service cash award) without entering any contest, and who kept it.",
+       "why_no": "The gate asks whether they 'win money or a prize ... from ... an award'. They were honored, not a winner of a contest, and the verb 'win' plus a list led by gambling suggests games of chance or competition.",
+       "line": "s1.line8i (Schedule 1, line 8i)",
+       "irs_text": "p525 p. 35, Pulitzer, Nobel, and similar prizes: 'If you were awarded a prize in recognition of accomplishments in religious, charitable, scientific, artistic, educational, literary, or civic fields, you must generally include the value of the prize in your income.'",
+       "severity": "medium",
+       "fix": "Reword as 'win or receive ... any prize or award, including one given in recognition of your work or accomplishments, even if you did not enter'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A salesperson employed by a dealer who in 2025 was credited with prize points, redeemable for merchandise, by a manufacturer or distributor. They have not redeemed them yet.",
+       "why_no": "They see the points as a sales incentive, not as winning a prize from a contest or award, and they have not redeemed anything yet. The gate's help does not mention points; only the gated question's help does.",
+       "line": "s1.line8i (Schedule 1, line 8i)",
+       "irs_text": "p525 p. 35, Prize points: 'you must include their FMV in your income. The prize points are taxable in the year they're paid or made available to you, rather than in the year you redeem them for merchandise'",
+       "severity": "medium",
+       "fix": "Add to the gate help: 'Count prize points from a manufacturer or distributor that you could use in 2025, even if not yet redeemed.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who won a contest or drawing announced in December 2024, with the cash or the prize car delivered in January 2025.",
+       "why_no": "'In 2025, did you ... win' points to the date of the win, which was 2024, so they answer no.",
+       "line": "s1.line8i (Schedule 1, line 8i)",
+       "irs_text": "p525 p. 35, Prizes and awards: 'If you win a prize in a lucky number drawing, television or radio quiz program, beauty contest, or other event, you must include it in your income ... Prizes and awards in goods or services must be included in your income at their FMV.'",
+       "severity": "medium",
+       "fix": "Ask about receipt: 'In 2025, did you (or your spouse) receive money or a prize ..., no matter when you won it?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who won a store sweepstakes or promotional giveaway (for example a free trip) in 2025 that required no skill and no purchase.",
+       "why_no": "The list 'gambling, a lottery, a raffle, a contest or an award' may read to them as complete. A free giveaway feels like none of these.",
+       "line": "s1.line8i (Schedule 1, line 8i)",
+       "irs_text": "p525 p. 35: 'If you win a prize in a lucky number drawing, television or radio quiz program, beauty contest, or other event, you must include it in your income.'",
+       "severity": "low",
+       "fix": "Add 'a sweepstakes, drawing, giveaway, game show' to the list, ending with 'or any other event'."
+      }
+     ],
+     "prompt_sha": "cd2a065d359a8fafca5bd67a2a58e72af1e7eca377512d3769b4492fc93d7939",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.15716,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s1.winnings_any.62eeefc30fbf.1.response.txt"
+    }
+   ],
+   "condition": "s1.winnings_any",
+   "lines": [
+    "s1.gambling_winnings_if_winnings",
+    "s1.line8i",
+    "s1.olympic_if_winnings"
+   ],
+   "inputs": [
+    "s1.gambling_winnings",
+    "s1.prizes",
+    "s1.olympic"
+   ],
+   "used": [
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 8m",
+      "Schedule 1 (2025), lines 8b, 8i and 8m"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8b, \"Enter gambling winnings not attributable to a trade or business. Gambling winnings include lotteries, raffles, a lump-sum payment from the sale of a right to receive future lottery payments, etc.\"; , Gambling winnings, \"Winnings from fantasy sports leagues are gambling winnings\" and \"Include the amount from box 1 on Schedule 1 (Form 1040), line 8b\"",
+      "p. 91, Line 8i, \"Enter prizes and awards but see the instructions for line 8m\"; , Prizes and awards, \"If you refuse to accept a prize, don’t include its value in your income. Prizes and awards in goods or services must be included in your income at their FMV\"",
+      "p. 91, Line 8i, \"Enter prizes and awards but see the instructions for line 8m\"; , Prizes and awards, \"If you refuse to accept a prize, don’t include its value in your income. Prizes and awards in goods or services must be included in your income at their FMV\"; , Prize points, \"The prize points are taxable in the year they’re paid or made available to you, rather than in the year you redeem them for merchandise\"; , Line 6, \"Prizes and awards related to your trade or business\"",
+      "p. 91, Line 8m, \"The value of Olympic and Paralympic medals and the amount of United States Olympic Committee (USOC) prize money you receive on account of your participation in the Olympic or Paralympic Games may be nontaxable\""
+     ],
+     "cols_pages": [
+      91
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      33,
+      35
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      33,
+      35
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    },
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      6
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
     }
    ]
   }

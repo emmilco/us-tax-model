@@ -1,0 +1,177 @@
+diff --git a/fixtures/2025/k1block.json b/fixtures/2025/k1block.json
+index 3811d4a7..d1463a33 100644
+--- a/fixtures/2025/k1block.json
++++ b/fixtures/2025/k1block.json
+@@ -159,6 +159,31 @@
+           "cents": 100000
+         }
+       }
++    },
++    {
++      "id": "k1block.f4952_k1_inv",
++      "covers": [
++        "f4952"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 readiness units (nightplan round 5, lane D1-k1block), predicted by hand before any run. A partnership K-1 with box 20 code A or B ticked: the Form 4952 gate is true (one such K-1), so Form 4952 lines 2, 5 and the filing test refuse once investment interest is claimed.",
++      "inputs": {
++        "scope.k1": true,
++        "$k1p@person[taxpayer]": [
++          "fund"
++        ],
++        "person[taxpayer].k1p[fund].has_b20ab": true
++      },
++      "expect": {
++        "f4952.k1_inv_count": {
++          "kind": "count",
++          "value": 1
++        },
++        "f4952.k1_inv": {
++          "kind": "bool",
++          "value": true
++        }
++      }
+     }
+   ]
+ }
+diff --git a/forms/2025/f4952.yaml b/forms/2025/f4952.yaml
+index cf3f9edc..de9203b0 100644
+--- a/forms/2025/f4952.yaml
++++ b/forms/2025/f4952.yaml
+@@ -171,6 +171,53 @@ form:
+         locator: pp. 1, 3–4, Investment Interest Expense Deduction; p. 4, Line 8, "if any part of the interest expense is
+           attributable to royalties, enter that part on Schedule E (Form 1040)" and "If any of your deductible investment
+           interest expense is attributable to an activity for which you aren’t at risk, you must also use Form 6198"
++    - id: f4952.k1_inv_count
++      printed: (helper)
++      type: Count
++      label: Number of partnership Schedules K-1 with investment income or expenses (box 20, code A or B)
++      expr:
++        op: sum_over
++        collection: person
++        field: person.k1p_count_inv
++      cite:
++        doc: f4952
++        locator: p. 3, Line 4a, "Include investment income reported to you on Schedule K-1 from a partnership or an S corporation"
++    - id: f4952.k1_inv_any
++      printed: (helper)
++      type: Bool
++      label: The partnership Schedules K-1 include one with investment income or expenses (box 20, code A or B)
++      expr:
++        op: test
++        gt:
++        - f4952.k1_inv_count
++        - const: 0
++          type: Count
++      cite:
++        doc: f4952
++        locator: p. 3, Line 4a, "Include investment income reported to you on Schedule K-1 from a partnership or an S corporation"
++    - id: f4952.k1_inv
++      printed: (gate)
++      type: Bool
++      label: A partnership Schedule K-1 shows investment income or expenses (box 20, code A or B), counted only when the
++        filer said a partnership or S corporation sent a Schedule K-1 (false otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard:
++            op: test
++            eq:
++            - scope.k1
++            - const: true
++          then: f4952.k1_inv_any
++        - guard:
++            op: test
++            eq:
++            - scope.k1
++            - const: false
++          then: f4952.no
++      cite:
++        doc: f4952
++        locator: p. 3, Line 4a, "Include investment income reported to you on Schedule K-1 from a partnership or an S corporation"
+     - id: f4952.alternative_allocation
+       printed: (helper)
+       type: Bool
+@@ -307,6 +354,13 @@ form:
+           cite:
+             doc: f4952
+             locator: pp. 1, 3–4, Investment Interest Expense Deduction
++        - when: f4952.k1_inv
++          form: Form 4952, lines 4a and 5 (Schedule K-1 box 20, codes A and B)
++          remedy: Investment income and expenses from a partnership Schedule K-1 are outside this tool's Form 4952.
++          cite:
++            doc: f4952
++            locator: p. 3, Line 4a, "Include investment income reported to you on Schedule K-1 from a partnership or an
++              S corporation"
+         - when: f4952.alternative_allocation
+           form: Form 4952 alternative allocation
+           remedy: Only the default capital-gain-first allocation is supported; alternative allocation and Form
+@@ -523,6 +577,13 @@ form:
+           cite:
+             doc: f4952
+             locator: pp. 1, 3–4, Investment Interest Expense Deduction
++        - when: f4952.k1_inv
++          form: Form 4952, lines 4a and 5 (Schedule K-1 box 20, codes A and B)
++          remedy: Investment income and expenses from a partnership Schedule K-1 are outside this tool's Form 4952.
++          cite:
++            doc: f4952
++            locator: p. 3, Line 4a, "Include investment income reported to you on Schedule K-1 from a partnership or an
++              S corporation"
+         - when: f4952.alternative_allocation
+           form: Form 4952 alternative allocation
+           remedy: Only the default capital-gain-first allocation is supported; alternative allocation and Form
+@@ -641,6 +702,13 @@ form:
+           cite:
+             doc: f4952
+             locator: pp. 1, 3–4, Investment Interest Expense Deduction
++        - when: f4952.k1_inv
++          form: Form 4952, lines 4a and 5 (Schedule K-1 box 20, codes A and B)
++          remedy: Investment income and expenses from a partnership Schedule K-1 are outside this tool's Form 4952.
++          cite:
++            doc: f4952
++            locator: p. 3, Line 4a, "Include investment income reported to you on Schedule K-1 from a partnership or an
++              S corporation"
+         - when: f4952.alternative_allocation
+           form: Form 4952 alternative allocation
+           remedy: Only the default capital-gain-first allocation is supported; alternative allocation and Form
+diff --git a/forms/2025/person.yaml b/forms/2025/person.yaml
+index 8f7d5229..721c8204 100644
+--- a/forms/2025/person.yaml
++++ b/forms/2025/person.yaml
+@@ -7861,7 +7861,6 @@ form:
+             - k1p.has_b20ab
+             - const: true
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_count_general
+       printed: (helper)
+       type: Count
+diff --git a/reviews/2025/consumers.json b/reviews/2025/consumers.json
+index b81f078d..7a316b00 100644
+--- a/reviews/2025/consumers.json
++++ b/reviews/2025/consumers.json
+@@ -3355,6 +3355,12 @@
+    "question_phrase": "have income or a loss from a partnership or an S corporation? A paper called Schedule K-1 (Form 1065 or 1120-S) reports it",
+    "source_phrase": "Schedule 1-A, line 5, and the Multiple Trades or Businesses Worksheet",
+    "reason": "the refusal is a conservative stand-in: a Yes means the filer may have a trade or business carried on through a partnership or S corporation, which is the case of the page's line 5 rule the tool does not figure."
++  },
++  "consumer:scope.k1@f4952:p3": {
++   "verdict": "same",
++   "question_phrase": "have income or a loss from a partnership or an S corporation? A paper called Schedule K-1 (Form 1065 or 1120-S) reports it",
++   "source_phrase": "Include investment income reported to you on Schedule K-1 from a partnership or an S corporation",
++   "reason": "The input is read only as the gate before the partnership K-1 entries are counted; the page's K-1 investment income comes from the partnership and S corporation K-1s the question asks about."
+   }
+  },
+  "baseline": {
+diff --git a/tools/coverage/tree.json b/tools/coverage/tree.json
+index 2350ca37..50d59b44 100644
+--- a/tools/coverage/tree.json
++++ b/tools/coverage/tree.json
+@@ -309,6 +309,7 @@
+   {"gate": "gift.special", "topic": "deductions", "kind": "situation", "question": "Does a noncash gift need an appraisal or special treatment (over $5,000, a vehicle, intellectual property, inventory and similar)?"},
+   {"gate": "gift.section_b", "topic": "deductions", "kind": "situation", "question": "Is a group of similar noncash gifts, other than publicly traded securities, over $5,000?"},
+   {"gate": "f4952.unsupported", "topic": "deductions", "kind": "situation", "question": "Is investment interest tied to royalties, a business, passive activities or tax-exempt income, or do you have other investment expenses?"},
++  {"gate": "f4952.k1_inv", "topic": "deductions", "kind": "situation", "question": "Do you deduct investment interest and have a partnership K-1 with investment income or expenses (box 20, codes A and B)?"},
+   {"gate": "f4952.alternative_allocation", "topic": "deductions", "kind": "situation", "question": "Do you want the Form 4952 election to apply to qualified dividends before capital gains?"},
+   {"gate": "sa.mfs_spouse_extra", "topic": "deductions", "kind": "situation", "question": "On a married filing separately return, are you checking age or blindness boxes for your spouse?"},
+   {"gate": "f4952.bad_dividends", "topic": "deductions", "kind": "entry"},

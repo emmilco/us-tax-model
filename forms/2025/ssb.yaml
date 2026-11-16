@@ -132,14 +132,14 @@ form:
         coverage by the September 11 Victim Compensation Fund are treated as incurred as a direct result of the attack."'
   - id: ssb.lived_apart
     printed: (helper)
-    label: 'If you are married filing separately: did you live apart from your spouse for all of 2025?'
+    label: Married filing separately, and you lived apart from your spouse for all of 2025
     type: Bool
     expr:
-      op: input
-      source: 'If you are married filing separately: did you live apart from your spouse for all of 2025?'
+      op: copy
+      from: household.mfs_apart_all_year
     cite:
       doc: i1040gi
-      locator: p. 31, Line 6d; p. 32, worksheet, Before you begin and line 8
+      locator: 'p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"; p. 32, Social Security Benefits Worksheet, line 8, "married filing separately and you lived apart from your spouse for all of 2025, enter $25,000"'
   - id: ssb.benefits_if_any
     printed: (gate)
     label: 'Net benefits, asked only of a filer who got social security or railroad retirement benefits (none otherwise)'

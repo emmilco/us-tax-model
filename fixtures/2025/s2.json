@@ -1237,7 +1237,8 @@
         "refund.itemized": true,
         "refund.line5d_prior_year": 900000,
         "refund.line5e_prior_year": 900000,
-        "refund.line17_prior_year": 1600000
+        "refund.line17_prior_year": 1600000,
+        "household.married_dec31": true
       },
       "expect": {
         "s1.line1": {
@@ -1297,7 +1298,8 @@
         "person[taxpayer].w2[a].box6": 0,
         "person[taxpayer].w2[a].box1": 150000000,
         "s2.options_any": false,
-        "f1040.status": "mfs"
+        "f1040.status": "mfs",
+        "household.married_dec31": true
       },
       "expect": {
         "s2.amt_l4": {

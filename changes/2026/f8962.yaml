@@ -67,8 +67,9 @@ changes:
       filer is not an applicable taxpayer: line 24 is zero (amb.2025.ptc_not_applicable, reading 1), so any advance payments
       are repaid in full on line 27 (C-PEOP-12). How the 2026 Instructions for Form 8962 route that repayment, and the line
       5 worksheet and line 6 text, wait for them. The table ptc_applicable_figure loses its rows above 400 in 2026 (rp-25-25
-      ends at ''not more than 400%''); line 7 is not shown at 401 (show_applicable reads applicable). The 2025 test of applicable
-      moves unchanged to the helper f8962.applicable_under_401, so that applicable''s guards are a Bool pair on line 6.'
+      ends at ''not more than 400%''); line 7 is not shown at 401 (show_applicable reads applicable). The 2025 test of
+      applicable_figured (applicable less the married filing separately bar) moves unchanged to the helper
+      f8962.applicable_under_401, so that applicable_figured''s guards are a Bool pair on line 6.'
     operations:
     - add_line:
         after: f8962.line5
@@ -116,7 +117,7 @@ changes:
               p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100%
               of the federal poverty line for your family size for 2025."
     - set:
-        line: f8962.applicable
+        line: f8962.applicable_figured
         field: expr.alternatives
         from:
         - guard:
@@ -145,10 +146,10 @@ changes:
             - const: false
           then: f8962.applicable_under_401
     - set:
-        line: f8962.applicable
+        line: f8962.applicable_figured
         field: label
-        from: You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
-        to: You are an applicable taxpayer (line 6 is No, and line 5 at least 100 or the Marketplace estimate exception)
+        from: Line 5 at least 100, or the Marketplace estimate exception
+        to: Line 6 is No, and line 5 at least 100 or the Marketplace estimate exception
   - change: C-PEOP-27
     evidence:
     - doc: plaw-119-21
@@ -295,13 +296,15 @@ changes:
           coverage and the coverage-family rules that go with it, coverage of someone not lawfully present, a VOID or replaced
           Form 1095-A, coverage that began after the first day of a month, a refunded premium, QSEHRA and individual coverage
           HRAs, unpaid premiums, advance payments for someone in no tax family, and a covered month with zero in column (b)
-          are refused; married filing separately is refused for the whole return.
+          are refused. Married filing separately takes the PTC only with line A (Exception 2); otherwise the filer is not
+          an applicable taxpayer and repays the advance payments up to the Table 5 limit.
         to: Prepared when there is a Form 1095-A. Parts IV and V (allocation, year of marriage), other minimum essential coverage
           and the coverage-family rules that go with it, coverage of someone not lawfully present, a VOID or replaced Form
           1095-A, coverage that began after the first day of a month, a refunded premium, QSEHRA and individual coverage HRAs,
           unpaid premiums, advance payments for someone in no tax family, a plan enrolled in during a special enrollment period
-          offered on the basis of expected household income, and a covered month with zero in column (b) are refused; married
-          filing separately is refused for the whole return.
+          offered on the basis of expected household income, and a covered month with zero in column (b) are refused. Married
+          filing separately takes the PTC only with line A (Exception 2); otherwise the filer is not an applicable taxpayer
+          and repays the advance payments in full.
     - add_question:
         input: f8962.sep_income
         default: false
@@ -316,3 +319,35 @@ changes:
             interview here.
           prompt: In 2026, did anyone on this return sign up for a Marketplace plan outside open enrollment only because their
             income was low?
+  - change: C-MFS-F8962-01
+    evidence:
+    - doc: i8962
+      page: 8
+      quote: For example, if you used this exception to claim the PTC on your tax returns for 2023, 2024, and 2025, you cannot
+        use this exception to claim the PTC on your 2026 return.
+    - doc: f8962
+      page: 2
+      quote: A. You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception.
+        See instructions. If you qualify, check the box
+    verified: draft
+    note: 'Married filing separately (lane mfs-l3). Exception 2 and its 3-year limit are unchanged; the three years before
+      the tax year move by one. With lines 28 and 29 removed (C-PEOP-12), a separate filer without line A repays the advance
+      payments in full on line 27. The i8962 locators of the new lines are left to relocation.'
+    operations:
+    - set:
+        line: f8962.mfs_three_years
+        field: label
+        from: Exception 2 used to claim the PTC on the returns for 2022, 2023 and 2024
+        to: Exception 2 used to claim the PTC on the returns for 2023, 2024 and 2025
+    - set:
+        line: f8962.mfs_three_years
+        field: expr.source
+        from: Did you take the premium tax credit on a separate return as a victim of domestic abuse or spousal abandonment
+          (checking line A of Form 8962) for each of 2022, 2023 and 2024?
+        to: Did you take the premium tax credit on a separate return as a victim of domestic abuse or spousal abandonment
+          (checking line A of Form 8962) for each of 2023, 2024 and 2025?
+    - set_question:
+        input: f8962.mfs_three_years
+        field: prompt
+        from: Did you take the premium tax credit on a separate return under this exception for each of 2022, 2023 and 2024?
+        to: Did you take the premium tax credit on a separate return under this exception for each of 2023, 2024 and 2025?

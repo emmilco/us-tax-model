@@ -1,0 +1,356 @@
+{
+ "kind": "render",
+ "form": "f7203",
+ "family": "claude",
+ "base": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+ "lines": [
+  {
+   "key": "E",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "2ae5fbc35c11f802f2ffb863e6d24e0e4782a1dbf66856a68db5dcc3eb2eb2d6"
+  },
+  {
+   "key": "Part II",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "b184aac4e9fa6f78f0006cf99208ac1f1063c7bffd6aba0c63d4681863f639fa"
+  },
+  {
+   "key": "1",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "a80396376d4502dcdf6a33068417378064496a6915f3eb6d695e29961ca7eb2c"
+  },
+  {
+   "key": "2",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "7ee0eb730802d799d274fe94204d8f5485d327801607faca4db7f12a07652122"
+  },
+  {
+   "key": "3a",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "8d00f6544fded93c6733fbd60bc1c392392797b5b15629cbc5e1be1ab320992f"
+  },
+  {
+   "key": "3b",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "0a7f800dcb78b6ef76f2e4c2d92b861579f6352006b1ca763decb22c9eff8335"
+  },
+  {
+   "key": "3c",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "a0ddf2284deb71c0c2c09b82da1152341b40c12164500989fae2c38adbfd4fb9"
+  },
+  {
+   "key": "3d",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "1639852015baa5676c7a1f349b05f0d6f5451ecc38643af440151cd39f942fcc"
+  },
+  {
+   "key": "3e",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "6f338c00257d9f138634556f5b26ad11fe190306c369913767785dcb32f5d813"
+  },
+  {
+   "key": "3f",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; box 6 (royalties) is refused on k1s.ok (k1s.box6, 'Schedule E (Form 1040), line 4 (royalties from a Schedule K-1)'), so no return with a Form 7203 has a line 3f amount; the label says so. The render review sees the line without the K-1's refusals.",
+   "subject_key": "85c779a219a45f3de53b436678870ee11297258a15af80ce86b3c62a0267c0ba"
+  },
+  {
+   "key": "3g",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "69b2494fff634d523878f6c7fb5017d8d1e4797ed0c93f34d7635de7e0b24ac2"
+  },
+  {
+   "key": "3h",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; box 9 (net section 1231 gain) is refused on k1s.ok (k1s.box9, 'Form 4797 (net section 1231 gain or loss from a Schedule K-1)').",
+   "subject_key": "8cc9b02a02b1f5d1ccfc552f79a34cc1fdf59e039730e1b1addb718c3e4a61a9"
+  },
+  {
+   "key": "3i",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; box 10 (other income) is refused on k1s.ok (k1s.box10).",
+   "subject_key": "ac0ca9875b697abee0ed4a3580d47fe457981575d86ee586a9ca1ba64947ed15"
+  },
+  {
+   "key": "3j",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; box 15 (including code C, excess depletion) is refused on k1s.ok (k1s.box15, Form 6251 items).",
+   "subject_key": "15361fe1a8fd525cad535c87085b4808e794996a0906acf1b325a9cad4012532"
+  },
+  {
+   "key": "3k",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "15ce8f7dd7ccdf1cac78b6b4b15734b7a264bb43013a9c30fb3e4f1ea50d4564"
+  },
+  {
+   "key": "3l",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; box 17 codes other than V, among them the credit recapture codes, are refused on k1s.ok (k1s.box17_other_if_17).",
+   "subject_key": "7c56de92136ddfa85b85d2355f45bc8388bd3ddb74d80f7262c02838406196ac"
+  },
+  {
+   "key": "3m",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the K-1 enters only boxes 1 to 5b, 7 to 8c, 13 code O, 16 codes A to D and 17 code V (k1s form note); every other item that could increase stock basis comes from a box refused on k1s.ok, and a capital contribution is line 2.",
+   "subject_key": "fc19a784e613e9f0627f7c3e1ac345cbf6416ea02876c5207865a68c7f142b3e"
+  },
+  {
+   "key": "4",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "6340c13824bf24afc1275e014fb51abd0bfffffe96e81b117e2e0626ab7ad0fd"
+  },
+  {
+   "key": "5",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; lines 1 and 2 are asked when Form 7203 is required by a loss or a distribution; the other filing triggers the reply names are refused: a loss disallowed in an earlier year (k1s.basis_carry), a disposition of stock (k1s.disposed) and a loan repayment (k1s.box16ef_if_16, 'Form 7203 Part II (loan repayments)'). i7203 p. 1 lists those four triggers.",
+   "subject_key": "3901db0531b831d0fe95f2661e1eba937c5f058c53fdac7933420a8a0e7696dd"
+  },
+  {
+   "key": "6",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "4b1a4b59f41ccaca947020354e651c35eb22e7b5f23fa95969899eac40ff4767"
+  },
+  {
+   "key": "7",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "33001009e272a4dd51be449bc0c2e8274f6034f839d24e30f6b8fef0a5974f46"
+  },
+  {
+   "key": "8a",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the Regulations section 1.1367-1(g) election is refused (f7203.election_if_req, 'Form 7203 with a Regulations section 1.1367-1(g) election'), so 'Leave lines 8a, 8b, and 8c blank if you made an election' never applies to a completed return.",
+   "subject_key": "6a64087e811997d70e84c55493606a062024217ac34c01f1055d261cdfc04ca7"
+  },
+  {
+   "key": "8b",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; oil and gas depletion is box 17 code R, refused on k1s.ok (k1s.box17_other_if_17).",
+   "subject_key": "151b959d0825fd08d4335ac6c6ea06b0ae439d160a81e35773d01452ccec13f3"
+  },
+  {
+   "key": "8c",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; box 13 credits other than code O are refused on k1s.ok (k1s.box13_other, Form 3800).",
+   "subject_key": "00ec28e9b86cc204d33402b7af3651a6913005fcbe058fc103ce46b46c6b4900"
+  },
+  {
+   "key": "9",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "79403970549a8016b65be4b38367454b574ba61acf5b3b687657846013f90732"
+  },
+  {
+   "key": "10",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "7b358e7608defed54665333b7281bee557ada4c0ec7808c0d0c003c9fac16351"
+  },
+  {
+   "key": "35 (a)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "5f8b5059dfbb9558a305c36ac2ef11ab41188e979765331f52f7ad052e01ba7d"
+  },
+  {
+   "key": "36 (a)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "dfc93beaf9e9acc91b2af189da2167512cb9edc2a054020ae9be91affdc9f7d5"
+  },
+  {
+   "key": "37 (a)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "7fcfd143d15b7d6b0e8bce317c215db76074ecd7db6b7fcb3f4e2e7f85d041fe"
+  },
+  {
+   "key": "38 (a)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "825131a3ae6fa1e2c1b9e52af99e6372a5d3e073e7313e0a6c582726d8ee8957"
+  },
+  {
+   "key": "47 (a)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; lines 39 to 46 come from boxes 9, 10, 11, 12 and 14 (and 16 F), all refused on k1s.ok (k1s.box9, box10, box11_12, box14, box16ef_if_16); the form note says 'Lines 39 to 46 have no amount: the boxes that would fill them are refused on the K-1'.",
+   "subject_key": "34ed6f1b31f0d9f66148096645cf34a621cf0c519703ceb54049eb7f00201350"
+  },
+  {
+   "key": "35 (c)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
+   "subject_key": "5df9e495bcc7df9aa7f08a3ba73ef45633b4f2808f5ebae35c63cc82ee484689"
+  },
+  {
+   "key": "36 (c)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
+   "subject_key": "ee96891c0a62ad4c4fb7f0b2515da9442e818ec21dabcd759772acbc8c0248d1"
+  },
+  {
+   "key": "37 (c)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
+   "subject_key": "cb778a7f5931df1bd58317ecf10adfe1e57e8513989015a8429b5378eaa2475f"
+  },
+  {
+   "key": "38 (c)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
+   "subject_key": "47b4485a059611b459983c7158dec4ae8790a7c3dc3d55fee2b1a38a6c013908"
+  },
+  {
+   "key": "47 (c)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; column (b) carryovers are refused (k1s.basis_carry, 'Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27'), so 'the sum of column (a) and column (b), line 47' is column (a); lines 39 to 46 have no amount (their boxes are refused, as 47 (a)). The rounding of the ratio is amb.2025.f7203_prorata_places.",
+   "subject_key": "9eee981acddf184ed91e82dff88d5283f3e74f7a8813bdbe9f8fba065dd96c93"
+  },
+  {
+   "key": "11",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "20e7a093be0bfaa4f5ee9f129d8e749b218d3d4a0ec248d566fafa00e07520d9"
+  },
+  {
+   "key": "12",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; Part II (debt basis) is refused (f7203.loans_if_req, 'Form 7203, Part II (shareholder debt basis)'), so a return with a loan answered yes does not complete.",
+   "subject_key": "ff9eb51dd43eed1e08afe89c2b8d80d1e9cc9143c4e433b6a4a238f19b542e41"
+  },
+  {
+   "key": "13",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; a disposition or redemption of stock is refused (k1s.disposed) and the section 1.1367-1(g) election is refused (f7203.election_if_req).",
+   "subject_key": "890b8723be2cbbcb6f7af7f1da356ff3287ccc6816e1701a44651a07b73200d6"
+  },
+  {
+   "key": "14",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "c460ef9d3a0fbdff0224fdc1e9fb88cb3690958f9f178200b05e31ca5f0ba6a5"
+  },
+  {
+   "key": "15",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MATCH",
+   "subject_key": "20caddc07ef4bd9044bdd20175f2b52d94ce6cc1e7a3fbec4ee781fa97d9ece3"
+  },
+  {
+   "key": "35 (e)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "subject_key": "854de5eedf33f53f21061af39b861557ebafdac14931a05d3083b9d4e5dbd07b"
+  },
+  {
+   "key": "36 (e)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "subject_key": "38888ae1fdd3f356e69850d396db2ab0d5e71e7ad438f6eac68949df727dfde0"
+  },
+  {
+   "key": "37 (e)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "subject_key": "6f31be5d707619b47cf0b6926e4b72870cb7f4ef7750d3a2cb51fd1460fd417b"
+  },
+  {
+   "key": "38 (e)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "subject_key": "4c6906e410878642212c687b0a60821e70382006092e3c7da859bca7583adfc3"
+  },
+  {
+   "key": "47 (e)",
+   "record": "4960a0b3734d6ef82954b2f10e3b3a043bfa7fb01dcc48b34791b016d3c7faaa",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; column (b) is refused (k1s.basis_carry) and column (d), losses allowed by debt basis, needs Part II, which is refused (f7203.loans_if_req), so 'column (a) plus column (b)' over 'column (c) plus column (d)' is column (a) over column (c); lines 39 to 46 carry no amount.",
+   "subject_key": "eb95621dc6340463b994d1bd0cb4f996d4752045a75087ae7be1af9e2216c99e"
+  }
+ ],
+ "subjects": {
+  "E": "33d766ae278df267308b86a345eea6352479454296e0176c149cb7b1da626324",
+  "Part II": "46ddc92079af3c89de58ac3e9ee5ec72188dbc47a01c7582ab93e1e3871d9e8f",
+  "1": "008e5da68d0ca2d6f38ae9bfde1121a763d52b7f1361e8882753f0945427d40a",
+  "2": "6c9b470fcc7f934597b515b4386363c8807ca9c46e168a895162facf1f60087d",
+  "3a": "eb50f0c70656392e7d5a4136d394dfda98a4c78c9f51751fdb2cb470fc60b1d6",
+  "3b": "10d69b1d8770cc1d73e46869b5c22e1f3cd9b84844d0ebe39b316ecaccd12aed",
+  "3c": "e1060ae749eac0e22157478eae70736908cbaa5eecf007f1b1606fe83dfb967e",
+  "3d": "95b5dabaef9619a083b66bb2248a22c870741ac856f1fd14d0128c5d19f04f41",
+  "3e": "3c6d9a06fb31b5196c7f0f05d36760dabdc6228f080fea406802ce962551a6b7",
+  "3f": "ee9d9cea8e0bdb892d2fb5cc16d2b695241b8228c58f6c8b36662c2ca454baee",
+  "3g": "6fe3b1773cd3173fa4dfdb82d1299bf02f9252bf977836e29fe1341441501cf2",
+  "3h": "b6290f471b21295f0d3a9bde2265ac5b6be604f4e6332b97f7e9c483ab1f243d",
+  "3i": "2cb8ac8cfe5c8e6becd69ef6b679a6cb2b02a25a727c31c758f25e765f83a9f7",
+  "3j": "3bd4ea8c1243ca3a68770d3a3d5ec7274e5737958d8e88ccc5b5c5db2836f652",
+  "3k": "84a6160c367495dc1edc41d151ee3ad87c6efd2afd2a09d77b66c85ece2c704b",
+  "3l": "250e79025c67d6e7efee2289ba45609616e92135cc54af550dabb2a264e65427",
+  "3m": "48b88825523c9a34ffcdc2be58c28bc6d67409954bbd927b435b2c9409ff2584",
+  "4": "eae7a7ae777cd6b027e4069e935eccdbff2b64f107d0129a9b1c0c2c28fd0959",
+  "5": "9665eb2e3e90eb1ea760323acba16f5bf64814d71317fe643452f77a861e2e99",
+  "6": "2dfbfac20a6586e5a757411ab322aca6b127c8d60abb388b0a07b86f2f359316",
+  "7": "88334e0edbd737c09e465de20c6f88f37b585a1ef8308a259e2278e5e81c2546",
+  "8a": "6be26e6b24ef2fccb6c672feecfa30b51b8eabdea8d6e65fb48125e619c07126",
+  "8b": "d58effa0870bbe299295d91e188d1fb78304a0c82ae111375cae2e2f9f61b977",
+  "8c": "f487de94d3fe5f5150fb3dc7c7629010ce03ab13fb10690f970c3ed37f1da1e5",
+  "9": "9c9a8f1ed05d642709e40d462e5beb957f27c88c74a35ab7d8c3286b56ebfd1d",
+  "10": "4d589139021d4354ac2ada91dbd55b5becb79927da99d4e0cf87f63a0574e12f",
+  "35 (a)": "44b995c94d45d9a0b74593d889b94658d930b914fdd619c97265382f6f63fbf3",
+  "36 (a)": "08e7a816724a89e551338b74b7778331a643f69642f7b6dca5cf371432433f4c",
+  "37 (a)": "bd6289cfc3900f2548ad4b87b45e463e7c656ae84bb088a369efa8d63f9f0661",
+  "38 (a)": "d76ff9292248b53a1ba9869a33dbe5050397dc7b212499bfc12dc148cbed1d0a",
+  "47 (a)": "9e0cb360e889af2a5d3d05cbd551499e8058dfb5292ba36a07f74a3a3593cf01",
+  "35 (c)": "45d7a3d505c0178de1c691b291fe734417074de61beaa8c5a0c552861f4a0125",
+  "36 (c)": "159cb87d83febacbc703f03ed7528d4635daa191a8027c91d80fe88b649b4bf6",
+  "37 (c)": "660b0324da5ecf50e1fd6e1764602f7429951b9f205f6f56c57ef0ef838325f9",
+  "38 (c)": "7e63dffd1fd6b782b31c59e0e4d0e5e24281237a5ae180d3c12dc56c83a420bd",
+  "47 (c)": "f1079cf334fdf4cc2776005f49c496100d3ba8183942947f56658191c8d91676",
+  "11": "dded5f67a362faec7d98210f6fe333ca3a38051165419cfcf97766dab399e656",
+  "12": "4106295682d8dadb60288a9e8483c8c8dbe980b5dfb952850a8e582ff28d1567",
+  "13": "027eb8565324abd0d906d20b127a993df00cce2097bf7eaf09da0e8d49dc1f90",
+  "14": "6717b88668100c1f941d5642859fb6b79e5a00ec5fbc81d0c292948500bb6637",
+  "15": "8338217df352fc6504d1588c7fde19b0b5fcd826b633dbb43bc74b49b49710ff",
+  "35 (e)": "2dec14c063f0da80878e9ad239e507d1722c09c7b90f8eef99f2cf7510a51a2a",
+  "36 (e)": "49381ef80e5619afba9d6cb39118cbf09f6d50174557b91bf338d297e29b4145",
+  "37 (e)": "93e15bf0ac2f8a2344b04ff6bacdb880f78c8f1f1b63fb6127d7873fefc1380d",
+  "38 (e)": "513e0600ee16045f9d46723864ad5eaead83431d8a16bcc459f1dcc054a1cdc2",
+  "47 (e)": "70839b9aa271cf429ec17671243d2ba8330b0710bc5cacb9b614bcbace28b8e3"
+ },
+ "__rest__": "a60d0e3bb752c2092c289fc36f6462c42469da708fad0a7db2689f5a0c0dc176"
+}

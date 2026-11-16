@@ -1,0 +1,96 @@
+{
+ "kind": "render",
+ "form": "f4137",
+ "family": "claude",
+ "base": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+ "lines": [
+  {
+   "key": "2",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "d66ea9fc01e2e4b865b407444d2093c789b71072afa163bad4957d3c0b37a94d"
+  },
+  {
+   "key": "3",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "229230d80021a4dc4a7e390ae691a96bf10c0d021e5a11d67873c53f30277fa9"
+  },
+  {
+   "key": "4",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "1ff339fb5eb6eaedf825e1160ac878327636c3da51f5394b7e47d3eeee380c0e"
+  },
+  {
+   "key": "5",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "9fc7ccaf5bfb8656a02a7091491909f0e96ea155bb98ae92e481c7d1ba38e170"
+  },
+  {
+   "key": "6",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "9f924eba80779fcf9d3c21aa7a0931974bc5487e7570908460acf7d54fd1e7c7"
+  },
+  {
+   "key": "7",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "03506f7cc3b0e941fa13cc931e94982e24e0c53d149dcba03a98ca0504a2b0f9"
+  },
+  {
+   "key": "8",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: representation; person.wages is the sum over the person's W-2s of w2.wages = w2.box3 + w2.box7 ('Add social security wages and social security tips'; amb.2025.ss_wages, owner-approved: boxes 3 plus 7), i.e. 'total of boxes 3 and 7 on Form(s) W-2' as the line asks; RRTA is refused (person.rrta). The reply could not see the definition behind the glossary label.",
+   "subject_key": "41e2f9fe14da355b3ff6f1bf3eb32a349f65f06b202b2428824b87c5455d77ed"
+  },
+  {
+   "key": "9",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "3562cea56283bb8d17505308eb4ee2e020462bec6650839b25e9c881b1f9627d"
+  },
+  {
+   "key": "10",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "e722e8b3b7b9c493040d273e62b9a156d78262838592696bf8376ce675ee43fa"
+  },
+  {
+   "key": "11",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "c73ef821a596e91b7da7d9ee7aae8b1927cc6163ab114040b1eeb0fede911cbc"
+  },
+  {
+   "key": "12",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "66c2b6aa246aab7d81745c8a901b8b2a42197640fed302d298be51ecc66e44b9"
+  },
+  {
+   "key": "13",
+   "record": "d0ba68924b415496b13fbc5c2acbb95ea6460262420511b7c08a3026e4e3e557",
+   "status": "MATCH",
+   "subject_key": "d6c9a9cb2a10bf36357c7e39cb97e1b42610ecdeb92bd5eb53a177813cf5c897"
+  }
+ ],
+ "subjects": {
+  "2": "65ca05639eedba34167a6a2f86ba86ef4820ac6b624b2d93c26192050f7774b6",
+  "3": "130966d488cbc4c50acd939eefef68553df387ad6dc8738949c3b4795444f62a",
+  "4": "a0c72e0ecccb0a383d5681609a4cc8ce790a125bc33acd9b9ef1339dfe4ccfbb",
+  "5": "c3d98d1f1b408519b7d0298aa7954a14fb8c7b9cda0ea9e57e0ddb1afbf98764",
+  "6": "6c1bd265b922fa5dafb7738085c240f9ae06970f9b211b14fcbf1068704d77ca",
+  "7": "18b3d7db8581fedbf2203a43508cd4e5667ea06d6a3b164af958a971508d655c",
+  "8": "7b34f0a555e9c1b6759cff2a1f235bf5bbeb0806dc4148cb057a536e292bc23b",
+  "9": "42be0872d71f826129b53396fac0ffc210f15fe470c3e0820c063943a279e35b",
+  "10": "9bb524b7913d7a17877e9a44e0a5eaa941df2ce4085b39e0518f23f1fc3043ad",
+  "11": "27b2f5e3526ead8e0331d5d8bb49c3c54ca4829fc96589edaf9b5ecc8d3f2f8d",
+  "12": "2f8b4640897556a4ac918c5d7c96ee1b57f43e0f4834600e90e2275071784eed",
+  "13": "d20bf00b391d62f19988890a59b7e2ba27d0a4566e2a9d0745cd2c254d07ed93"
+ },
+ "__rest__": "18c5f2e6cfcdd3bb4df9e035c74bc80420fb8e18f5c210db1dd54c4f30049e14"
+}

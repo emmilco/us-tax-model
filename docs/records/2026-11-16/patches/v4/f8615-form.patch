@@ -1,0 +1,2780 @@
+diff --git a/ambiguities/2025.yaml b/ambiguities/2025.yaml
+index 8d20a5f..ac36bae 100644
+--- a/ambiguities/2025.yaml
++++ b/ambiguities/2025.yaml
+@@ -2708,3 +2708,164 @@ register:
+         doc: f8853
+         locator: Form 8853 (2025), line 25, "Per diem limitation. Subtract line 24 from line 23"
+       status: Planning lane lows-inc (BUG-0917), drafted 2026-11-16; for the owner.
++    - id: amb.2025.f8615_required_to_file
++      text_at_issue: 'i8615 p. 1, Who Must File, condition 2: "The child is required to file a tax return for 2025." A blind
++        child, or a dependent child with little income, may file without being required to, and the tool does not ask
++        whether the filer is required to file. An earlier design refused a blind dependent whose filing requirement was
++        unsettled.'
++      readings:
++      - Ask whether the child is required to file (or refuse a blind dependent, whose Chart B thresholds differ), and leave
++        Form 8615 out when the child is not.
++      - Compute Form 8615 whenever conditions 1 and 3 to 5 hold, without testing condition 2.
++      chosen: The second (f8615.applies has no line for condition 2).
++      reason: 'The two readings give the same return. Chart B (i1040gi p. 10) requires a dependent to file when gross income is
++        more than the larger of $1,350 or earned income (up to $15,300) plus $450, and a blind dependent when it is more than
++        the larger of $3,350 or earned income plus $2,450: in both cases exactly the dependent''s standard deduction, the
++        blind addition included (i1040gi pp. 34 and 35). A single filer who is not a dependent must file when gross income
++        is at least the standard deduction ($15,750, or $17,750 if blind). A child not required to file therefore has gross
++        income, and so adjusted gross income, no more than the standard deduction, taxable income zero, Form 8615 line 4
++        zero, line 5 zero, and line 18 equal to line 17, the tax figured in the normal manner. A child required to file only
++        because of another tax (Chart C) meets condition 2 and is computed under either reading.'
++      cite:
++        doc: i8615
++        locator: 'p. 1, Who Must File, "2. The child is required to file a tax return for 2025"; i1040gi p. 10, Chart B—For
++          Children and Other Dependents'
++      status: Planning lane D5-8615, drafted 2026-11-16 (the scout's section 0.2 item 3, re-derived); for the owner.
++    - id: amb.2025.f8615_earned
++      text_at_issue: 'i8615 p. 2, Earned income: "earned income also includes a reasonable allowance for compensation for
++        personal services, but not more than 30% of the child’s share of the net profits from that trade or business", "In
++        that case, earned income is generally the total of the amounts reported on Form 1040 or 1040-NR, line 1z, and
++        Schedule 1 (Form 1040), lines 3 and 6", and a taxable distribution from a qualified disability trust is earned income.'
++      readings:
++      - Earned income is Form 1040 line 1z plus Schedule 1 line 3 (a loss taken as zero), the "generally" of the text.
++      - Ask for the 30% allowance where capital is a material income-producing factor, and for qualified disability trust
++        distributions.
++      chosen: The first (f8615.earned). Schedule 1 line 6 (farm income) is refused through scope.schedule1.
++      reason: The text gives the sum as the general rule and the alternatives as exceptions a child rarely has; neither has a
++        question in the tool. A child with a business in which capital matters, or with a qualified disability trust, is
++        computed by the general rule.
++      cite:
++        doc: i8615
++        locator: 'p. 2, Earned income'
++      status: Planning lane D5-8615, drafted 2026-11-16; for the owner.
++    - id: amb.2025.f8615_alternate_worksheet
++      text_at_issue: 'i8615 p. 2: "But use the Alternate Worksheet for Form 8615, Line 1 ... if the child: Files Form 2555,
++        Has a net loss from self-employment, or Claims a net operating loss deduction." The Alternate Worksheet adds the
++        loss and the deduction back (line B) and subtracts earned income with a loss taken as zero (line D).'
++      readings:
++      - Encode the two worksheets separately, chosen by the three conditions.
++      - Encode one expression, Form 1040 line 9 less line 1z, Schedule 1 line 3 as entered, Schedule 1 line 18 and Schedule 1
++        line 8a (a negative amount), which equals each worksheet where it applies.
++      chosen: The second (f8615.uiw). Form 2555 is refused elsewhere (sa.excluded_income).
++      reason: 'With a Schedule C loss L and no deduction, the Alternate Worksheet gives line 9 + L − 1z − 0 − line 18, the same
++        as line 9 − 1z − (−L) − line 18; with a net operating loss deduction N, line 9 already includes −N (Schedule 1 line
++        8a) and the Alternate Worksheet adds N back, as subtracting line 8a does; with neither, the expression is the Child''s
++        Unearned Income Worksheet. Losses from self-employment outside Schedule C (a partnership) are not earned income by the
++        general rule (amb.2025.f8615_earned).'
++      cite:
++        doc: i8615
++        locator: 'p. 2, Alternate Worksheet for Form 8615, Line 1; p. 3, Child’s Unearned Income Worksheet—Line 1'
++      status: Planning lane D5-8615, drafted 2026-11-16; for the owner.
++    - id: amb.2025.f8615_line1_branch
++      text_at_issue: 'i8615 p. 2, Line 1: "If the child had no earned income (defined below), enter the child’s adjusted gross
++        income from Form 1040 or 1040-NR, line 11b. If the child had earned income, use the Child''s Unearned Income
++        Worksheet ... But use the Alternate Worksheet ... if the child ... Has a net loss from self-employment".'
++      readings:
++      - A child with no earned income enters adjusted gross income, even with a net loss from self-employment.
++      - A child with a net loss from self-employment uses the Alternate Worksheet even with no other earned income.
++      chosen: The first (f8615.line1 chooses on f8615.earned, a loss taken as zero).
++      reason: The text's first sentence is unconditioned and the Alternate Worksheet is introduced as an exception to the
++        earned-income branch ("If the child had earned income ... But use"). The readings differ only for a child whose only
++        work is a business at a loss (the first reading's line 1 is lower by the loss), or who has adjustments other than the
++        early withdrawal penalty and no earned income; a dependent can rarely have those (student loan interest and the HSA
++        deduction are not allowed to a dependent, and an IRA deduction needs compensation).
++      cite:
++        doc: i8615
++        locator: 'p. 2, Line 1'
++      status: Planning lane D5-8615, drafted 2026-11-16; for the owner.
++    - id: amb.2025.f8615_half_support
++      text_at_issue: 'i8615 p. 1, Who Must File, condition 3: "didn’t have earned income that was more than half of the
++        child’s support". The tool asks i8863 line 7''s question, "less than one-half of your support" (person.edu_half_support).'
++      readings:
++      - Reuse the Form 8863 question; a child whose earned income is exactly half of support answers No and is treated as not
++        meeting condition 3.
++      - Ask a separate question with the Form 8615 wording.
++      chosen: The first (f8615.kid_count reads person.edu_kid_age). One fact, one question.
++      reason: The two tests differ only at exactly one-half, a boundary a filer cannot place to the dollar; the same age, student
++        and parent facts are already asked for Form 8863.
++      cite:
++        doc: i8615
++        locator: 'p. 1, Who Must File, condition 3'
++      status: Planning lane D5-8615, drafted 2026-11-16 (the scout's O7, taken under delegation); for the owner.
++    - id: amb.2025.f8615_line10_amt
++      text_at_issue: 'Form 8615 (2025), line 10: "Enter the parent’s tax from Form 1040 or 1040-NR, line 16, minus any
++        alternative minimum tax." i8615 p. 8, Line 10, says only "Enter on line 10 the amount from Form 1040, 1040-SR, or
++        1040-NR, line 16. Don’t include the tax, if any, from Form 4972 or Form 8814 or any tax from recapture of an
++        education credit."'
++      readings:
++      - Subtract the parent's alternative minimum tax from line 16.
++      - Enter line 16 as the instructions say.
++      chosen: The second (the question asks for line 16 without Forms 4972 and 8814 and an education credit recapture).
++      reason: Form 1040 line 16 holds no alternative minimum tax, which is on Schedule 2 line 2; for a Form 1040 parent the two
++        readings give the same amount. The words read as a carry-over for Form 1040-NR or earlier layouts.
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 10'
++      status: Planning lane D5-8615, drafted 2026-11-16; for the owner.
++    - id: amb.2025.f8615_line11_sign
++      text_at_issue: 'Form 8615 (2025), line 11: "Subtract line 10 from line 9 and enter the result." No floor is printed.'
++      readings:
++      - Line 11 is the signed difference.
++      - Line 11 is not less than zero.
++      chosen: The first (f8615.line11 is subtract).
++      reason: Line 9 taxes more income than line 10 at the same status and rates, so line 11 is negative only when the parent's
++        line 16 holds something line 9 does not (a figure entered wrongly, or a tax the instructions say to leave out). The
++        larger of lines 16 and 17 on line 18 keeps the child's tax at least the tax at the child's own rate.
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 11'
++      status: Planning lane D5-8615, drafted 2026-11-16; for the owner.
++    - id: amb.2025.f8615_ratio_places
++      text_at_issue: 'Form 8615 line 12b and the Line 5 Worksheets: "Enter the result as a decimal (rounded to at least three
++        places)"; i8615 p. 8 shows 0.333 for $3,000 / $9,000.'
++      readings:
++      - Round each ratio half-up to exactly three places.
++      - Keep the ratio at full precision.
++      chosen: The first (the prorate atom with places 3), as amb.2025.edu_ratio_places reads the same words; the Persimmon
++        example's 0.333 agrees.
++      reason: The owner's ruling on the same words for Forms 8863 and the student loan interest worksheet.
++      cite:
++        doc: i8615
++        locator: 'p. 8, Lines 12a and 12b, "The decimal on line 12b is 0.333, figured as follows and rounded to three places"'
++      status: Planning lane D5-8615, drafted 2026-11-16; follows amb.2025.edu_ratio_places.
++    - id: amb.2025.amt_kiddie_child
++      text_at_issue: 'Rev. Proc. 2024-40 section 3.12: "for a child to whom the § 1(g) “kiddie tax” applies, the exemption
++        amount ... may not exceed the sum of (1) the child’s earned income for the taxable year, plus (2) $9,550." The
++        archived i6251 and f6251 say nothing of the cap.'
++      readings:
++      - A child who meets the age, parent and joint-return conditions of section 1(g)(2) (Form 8615 Who Must File conditions 3
++        to 5), whatever the amount of unearned income.
++      - Only a child who files Form 8615 (unearned income over $2,700).
++      chosen: The first (s2.amt_kiddie reads f8615.child_1g).
++      reason: 'Section 1(g)(2) says when the subsection "shall apply to any child" by age, parent and joint return; the amount of
++        net unearned income decides how much tax it imposes, not whether it applies [inferred: the Code is not archived]. The
++        readings differ only for a child with $2,700 or less of unearned income whose line 4 still exceeds earned income plus
++        $9,550, which needs alternative minimum tax adjustments of several thousand dollars.'
++      cite:
++        doc: rp-2024-40
++        locator: 'section 3.12'
++      status: Planning lane D5-8615, drafted 2026-11-16; for the owner (the Code text is not archived).
++    - id: amb.2025.amt_kiddie_earned
++      text_at_issue: 'Rev. Proc. 2024-40 section 3.12 caps the exemption at "the child’s earned income for the taxable year,
++        plus (2) $9,550" without defining earned income.'
++      readings:
++      - The Form 8615 earned income (f8615.earned, Form 1040 line 1z and Schedule 1 line 3 with a loss as zero).
++      - Earned income as section 911(d)(2) defines it (wages and other pay for personal services), which the Code cross-refers
++        to [inferred].
++      chosen: The first.
++      reason: The two definitions agree for wages and a profitable sole proprietorship; they could differ for a business in which
++        capital is material (the 30% rule) or a partner's earnings, which the tool takes by the general rule in both places.
++      cite:
++        doc: rp-2024-40
++        locator: 'section 3.12'
++      status: Planning lane D5-8615, drafted 2026-11-16; for the owner.
+diff --git a/fixtures/2025/defaults.json b/fixtures/2025/defaults.json
+index a7cb7cf..8aec1c2 100644
+--- a/fixtures/2025/defaults.json
++++ b/fixtures/2025/defaults.json
+@@ -1698,6 +1698,71 @@
+       "value": false,
+       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+     },
++    {
++      "input": "f8615.other_children",
++      "value": false,
++      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
++    },
++    {
++      "input": "f8615.others_line5",
++      "value": 0,
++      "reason": "Closed: no amount unless the scenario states one."
++    },
++    {
++      "input": "f8615.others_ncg",
++      "value": 0,
++      "reason": "Closed: no amount unless the scenario states one."
++    },
++    {
++      "input": "f8615.others_qd",
++      "value": 0,
++      "reason": "Closed: no amount unless the scenario states one."
++    },
++    {
++      "input": "f8615.others_sdtw",
++      "value": false,
++      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
++    },
++    {
++      "input": "f8615.parent_feitw",
++      "value": false,
++      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
++    },
++    {
++      "input": "f8615.parent_ncg",
++      "value": 0,
++      "reason": "Closed: no amount unless the scenario states one."
++    },
++    {
++      "input": "f8615.parent_qd",
++      "value": 0,
++      "reason": "Closed: no amount unless the scenario states one."
++    },
++    {
++      "input": "f8615.parent_sdtw",
++      "value": false,
++      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
++    },
++    {
++      "input": "f8615.parent_sj",
++      "value": false,
++      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
++    },
++    {
++      "input": "f8615.parent_status",
++      "value": "mfj",
++      "reason": "Married filing jointly: the commonest status of a parent whose return Form 8615 uses (the scout's typical filer); other statuses are scenario facts."
++    },
++    {
++      "input": "f8615.parent_tax",
++      "value": 0,
++      "reason": "Closed: no amount unless the scenario states one."
++    },
++    {
++      "input": "f8615.parent_ti",
++      "value": 0,
++      "reason": "Closed: no amount unless the scenario states one."
++    },
+     {
+       "input": "f8853c.days",
+       "value": 0,
+diff --git a/fixtures/2025/f8615.json b/fixtures/2025/f8615.json
+new file mode 100644
+index 0000000..b0be63f
+--- /dev/null
++++ b/fixtures/2025/f8615.json
+@@ -0,0 +1,771 @@
++{
++  "tax_year": 2025,
++  "cases": [
++    {
++      "id": "f8615.k1.interest_parent_mfj",
++      "covers": [
++        "f8615",
++        "f1040.line16",
++        "s2.amt_l5"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. Interest $10,000, no earned income; a parent married filing jointly with taxable income $150,000 and tax $22,828. Line 1 = AGI $10,000; line 3 $7,300; line 4 $8,650 ($10,000 less the dependent standard deduction $1,350); line 5 $7,300; line 8 $157,300; line 9 by the Tax Computation Worksheet (MFJ) $11,157 + 22% x $60,350 = $24,434; line 11 $1,606 = line 13; line 14 $1,350, Tax Table $136; line 16 $1,742; line 17 Tax Table $8,650 single $868; line 18 $1,742 (larger_of takes line 16). AMT screen: line 4 $10,000, exemption capped at $0 + $9,550, line 6 $450 x 26% = $117, not more than line 10 $1,742: no refusal.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 1000000,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 15000000,
++        "f8615.parent_tax": 2282800
++      },
++      "expect": {
++        "f8615.applies": {
++          "kind": "bool",
++          "value": true
++        },
++        "f8615.line1": {
++          "kind": "money",
++          "cents": 1000000
++        },
++        "f8615.line5": {
++          "kind": "money",
++          "cents": 730000
++        },
++        "f8615.line9": {
++          "kind": "money",
++          "cents": 2443400
++        },
++        "f8615.line11": {
++          "kind": "money",
++          "cents": 160600
++        },
++        "f8615.line13": {
++          "kind": "money",
++          "cents": 160600
++        },
++        "f8615.line15": {
++          "kind": "money",
++          "cents": 13600
++        },
++        "f8615.line16": {
++          "kind": "money",
++          "cents": 174200
++        },
++        "f8615.line17": {
++          "kind": "money",
++          "cents": 86800
++        },
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 174200
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 174200
++        },
++        "s2.amt_l5": {
++          "kind": "money",
++          "cents": 955000
++        },
++        "s2.line2": {
++          "kind": "money",
++          "cents": 0
++        }
++      }
++    },
++    {
++      "id": "f8615.k2.parent_single",
++      "covers": [
++        "f8615"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. K1 with the parent single, taxable income $40,000, tax $4,565 (Tax Table). Line 8 $47,300, Tax Table single $5,441; line 11 $876; line 15 $136; line 16 $1,012; line 17 $868; line 18 $1,012.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 1000000,
++        "f8615.parent_status": "single",
++        "f8615.parent_ti": 4000000,
++        "f8615.parent_tax": 456500
++      },
++      "expect": {
++        "f8615.line9": {
++          "kind": "money",
++          "cents": 544100
++        },
++        "f8615.line11": {
++          "kind": "money",
++          "cents": 87600
++        },
++        "f8615.line16": {
++          "kind": "money",
++          "cents": 101200
++        },
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 101200
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 101200
++        }
++      }
++    },
++    {
++      "id": "f8615.k3.line17_larger_amt",
++      "covers": [
++        "f8615",
++        "s2.amt_l5"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. Interest $61,350; a parent married filing jointly with taxable income and tax 0. Line 4 $60,000; line 5 $58,650; line 9 Tax Table MFJ $58,650 = $6,564; line 11 $6,564; line 15 $136; line 16 $6,700; line 17 Tax Table single $60,000 = $8,120; line 18 $8,120 (larger_of takes line 17). AMT screen: line 4 $61,350; exemption capped at $9,550; line 6 $51,800 x 26% = $13,468, more than line 10 $8,120: Schedule 2 line 2 refuses (Form 6251; the alternative minimum tax would be $5,348).",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 6135000,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 0,
++        "f8615.parent_tax": 0
++      },
++      "expect": {
++        "f8615.line5": {
++          "kind": "money",
++          "cents": 5865000
++        },
++        "f8615.line9": {
++          "kind": "money",
++          "cents": 656400
++        },
++        "f8615.line16": {
++          "kind": "money",
++          "cents": 670000
++        },
++        "f8615.line17": {
++          "kind": "money",
++          "cents": 812000
++        },
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 812000
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 812000
++        },
++        "s2.line2": {
++          "kind": "refusal",
++          "gate": "s2.amt",
++          "form": "Form 6251",
++          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
++          "cite": {
++            "doc": "f1040s2",
++            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
++            "revision": "2025; created 2025-05-08",
++            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8",
++            "tax_year": 2025
++          }
++        }
++      }
++    },
++    {
++      "id": "f8615.k4.qd_ws1",
++      "covers": [
++        "f8615",
++        "qdcg_amount"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. Qualified dividends $6,000 (all ordinary dividends), no earned income; parent MFJ $150,000 / $22,828. Line 1 $6,000; line 3 $3,300 = line 5 (line 4 $4,650): Worksheet #1, ratio 1.000, line 6 $2,700, line 8 $3,300, line 9 0. Line 9 by the Qualified Dividends and Capital Gain Tax Worksheet at MFJ on $153,300 with qualified dividends $3,300: $3,300 x 15% = $495 + tax on $150,000 $22,828 = $23,323 (line 24 $23,554); line 11 $495; line 14 $1,350 with qualified dividends $2,700 ($6,000 less $3,300, more than the amount): worksheet tax 0; line 16 $495; line 17 0 (the child's own worksheet); line 18 $495.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "div.any": true,
++        "sb.ordinary_dividends": 600000,
++        "f1040.line3a": 600000,
++        "div.other_boxes": false,
++        "sd.distributions": 0,
++        "qbi.dividends": 0,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 15000000,
++        "f8615.parent_tax": 2282800
++      },
++      "expect": {
++        "f8615.ws1_8": {
++          "kind": "money",
++          "cents": 330000
++        },
++        "f8615.qd5": {
++          "kind": "money",
++          "cents": 330000
++        },
++        "f8615.qd14": {
++          "kind": "money",
++          "cents": 270000
++        },
++        "f8615.line9": {
++          "kind": "money",
++          "cents": 2332300
++        },
++        "f8615.line11": {
++          "kind": "money",
++          "cents": 49500
++        },
++        "f8615.line15": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8615.line17": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 49500
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 49500
++        }
++      }
++    },
++    {
++      "id": "f8615.k5.ws3_ira",
++      "covers": [
++        "f8615"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. Wages $7,000, a traditional IRA deduction $7,000 (no workplace plan), qualified dividends $12,000; parent MFJ $150,000 / $22,828. AGI $12,000; dependent standard deduction $7,450; taxable income $4,550. Line 1 (worksheet) $19,000 - $7,000 = $12,000; line 3 $9,300; line 5 = line 4 $4,550 < line 3: Worksheet #3: line 3 $12,000, line 4 1.000, line 12 $7,450, line 14 $12,000 / $12,000 = 1.000, line 15 $7,450, line 16 $7,450, line 17 0, line 18 $4,550, line 19 0. Line 9 worksheet MFJ on $154,550 with qualified dividends $4,550: $682.50 + $22,828 = $23,510.50; line 11 $682.50; line 14 0, line 15 0; line 17 0; line 18 $682.50.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$w2@person[taxpayer]": [
++          "job"
++        ],
++        "person[taxpayer].w2[job].box1": 700000,
++        "person[taxpayer].w2[job].box5": 700000,
++        "person[taxpayer].w2[job].box6": 10150,
++        "div.any": true,
++        "sb.ordinary_dividends": 1200000,
++        "f1040.line3a": 1200000,
++        "div.other_boxes": false,
++        "sd.distributions": 0,
++        "qbi.dividends": 0,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 15000000,
++        "f8615.parent_tax": 2282800,
++        "person[taxpayer].ira_owner": true,
++        "person[taxpayer].sav_trad": true,
++        "person[taxpayer].ira_trad": 700000,
++        "person[taxpayer].ira_work_plan": false
++      },
++      "expect": {
++        "f8615.line1": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "f8615.line4": {
++          "kind": "money",
++          "cents": 455000
++        },
++        "f8615.ws3_15": {
++          "kind": "money",
++          "cents": 745000
++        },
++        "f8615.ws3_18": {
++          "kind": "money",
++          "cents": 455000
++        },
++        "f8615.line9": {
++          "kind": "money",
++          "cents": 2351050
++        },
++        "f8615.line11": {
++          "kind": "money",
++          "cents": 68250
++        },
++        "f8615.line14": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 68250
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 68250
++        }
++      }
++    },
++    {
++      "id": "f8615.k6.persimmon_line7",
++      "covers": [
++        "f8615"
++      ],
++      "evidence": "class A (lines 7, 12a, 12b) with synthetic regression for the rest",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. Persimmon example, i8615 pp. 4 and 8: Sharon's line 5 $3,000, line 7 $6,000 (Jerry $2,800 + Mike $3,200), line 12a $9,000, line 12b 0.333. The rest is synthetic: Sharon has interest $5,700 (line 4 $4,350, line 5 $3,000); parent MFJ $150,000 / $22,828. Line 8 $159,000, TCW MFJ $24,808; line 11 $1,980; line 13 $1,980 x 0.333 = $659.34; line 15 $136; line 16 $795.34; line 17 $438; line 18 $795.34.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 570000,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 15000000,
++        "f8615.parent_tax": 2282800,
++        "f8615.other_children": true,
++        "f8615.others_line5": 600000
++      },
++      "expect": {
++        "f8615.line5": {
++          "kind": "money",
++          "cents": 300000
++        },
++        "f8615.line7": {
++          "kind": "money",
++          "cents": 600000
++        },
++        "f8615.line12a": {
++          "kind": "money",
++          "cents": 900000
++        },
++        "f8615.line11": {
++          "kind": "money",
++          "cents": 198000
++        },
++        "f8615.line13": {
++          "kind": "money",
++          "cents": 65934
++        },
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 79534
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 79534
++        }
++      }
++    },
++    {
++      "id": "f8615.k7.wages_worksheet",
++      "covers": [
++        "f8615"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. Wages $4,000 and interest $10,000; parent MFJ $150,000 / $22,828. Line 1 by the Child's Unearned Income Worksheet $14,000 - $4,000 = $10,000 (AGI $14,000: the other side of the line 1 choose); line 4 $9,550 ($14,000 less $4,450); line 5 $7,300; line 11 $1,606; line 14 $2,250, Tax Table $226; line 16 $1,832; line 17 $958; line 18 $1,832.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$w2@person[taxpayer]": [
++          "job"
++        ],
++        "person[taxpayer].w2[job].box1": 400000,
++        "person[taxpayer].w2[job].box5": 400000,
++        "person[taxpayer].w2[job].box6": 5800,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 1000000,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 15000000,
++        "f8615.parent_tax": 2282800
++      },
++      "expect": {
++        "f8615.line1": {
++          "kind": "money",
++          "cents": 1000000
++        },
++        "f8615.line14": {
++          "kind": "money",
++          "cents": 225000
++        },
++        "f8615.line15": {
++          "kind": "money",
++          "cents": 22600
++        },
++        "f8615.line16": {
++          "kind": "money",
++          "cents": 183200
++        },
++        "f8615.line17": {
++          "kind": "money",
++          "cents": 95800
++        },
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 183200
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 183200
++        }
++      }
++    },
++    {
++      "id": "f8615.k8.qd_ncg_parent_qd",
++      "covers": [
++        "f8615",
++        "qdcg_amount"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. Qualified dividends $3,000, capital gain distributions $4,000 (no Schedule D), interest $3,000; parent MFJ $150,000 with qualified dividends $2,000 and tax $22,688 (its own worksheet: $300 + $22,388). Line 1 $10,000; line 5 $7,300 = line 3: Worksheet #1 ratios 0.300 and 0.400, line 6 $810, line 7 $1,080, line 8 $2,190, line 9 $2,920. Line 8 $157,300 with qualified dividends $4,190 and net capital gain $2,920: $7,110 x 15% = $1,066.50 + tax on $150,190 (TCW) $22,869.80 = $23,936.30; line 11 $1,248.30; line 14 $1,350 with $810 and $1,080: tax 0; line 16 $1,248.30; line 17 (the child's worksheet) $166; line 18 $1,248.30.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 300000,
++        "div.any": true,
++        "sb.ordinary_dividends": 300000,
++        "f1040.line3a": 300000,
++        "div.other_boxes": false,
++        "sd.distributions": 400000,
++        "qbi.dividends": 0,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 15000000,
++        "f8615.parent_tax": 2268800,
++        "f8615.parent_qd": 200000
++      },
++      "expect": {
++        "f8615.ws1_6": {
++          "kind": "money",
++          "cents": 81000
++        },
++        "f8615.ws1_7": {
++          "kind": "money",
++          "cents": 108000
++        },
++        "f8615.qd5": {
++          "kind": "money",
++          "cents": 219000
++        },
++        "f8615.ncg5": {
++          "kind": "money",
++          "cents": 292000
++        },
++        "f8615.line9": {
++          "kind": "money",
++          "cents": 2393630
++        },
++        "f8615.line11": {
++          "kind": "money",
++          "cents": 124830
++        },
++        "f8615.line15": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8615.line17": {
++          "kind": "money",
++          "cents": 16600
++        },
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 124830
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 124830
++        }
++      }
++    },
++    {
++      "id": "f8615.k9.refuse_parent_sdtw",
++      "covers": [
++        "f8615:refuse"
++      ],
++      "evidence": "synthetic refusal regression",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. K1 with the parent's tax figured on the Schedule D Tax Worksheet: line 9 refuses, and line 18 and Form 1040 line 16 follow.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 1000000,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 15000000,
++        "f8615.parent_tax": 2282800,
++        "f8615.parent_sdtw": true
++      },
++      "expect": {
++        "f8615.line9": {
++          "kind": "refusal",
++          "gate": "f8615.parent_sdtw_if_applies",
++          "form": "Schedule D Tax Worksheet for Form 8615, line 9 (the parent's)",
++          "remedy": "When the parent's tax was figured on the Schedule D Tax Worksheet, line 9 is figured with a Schedule D Tax Worksheet, which this tool does not figure for Form 8615.",
++          "cite": {
++            "doc": "i8615",
++            "tax_year": 2025,
++            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
++            "snapshot": "902ca736f1205e726e80211c40630178c88fa5d57ca9b9bbdbb89189166fc780",
++            "locator": "p. 7, Using the Schedule D Tax Worksheet for line 9 tax"
++          }
++        },
++        "f1040.line16": {
++          "kind": "refusal",
++          "gate": "f8615.parent_sdtw_if_applies",
++          "form": "Schedule D Tax Worksheet for Form 8615, line 9 (the parent's)",
++          "remedy": "When the parent's tax was figured on the Schedule D Tax Worksheet, line 9 is figured with a Schedule D Tax Worksheet, which this tool does not figure for Form 8615.",
++          "cite": {
++            "doc": "i8615",
++            "tax_year": 2025,
++            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
++            "snapshot": "902ca736f1205e726e80211c40630178c88fa5d57ca9b9bbdbb89189166fc780",
++            "locator": "p. 7, Using the Schedule D Tax Worksheet for line 9 tax"
++          }
++        }
++      }
++    },
++    {
++      "id": "f8615.k10.no_parent_alive",
++      "covers": [
++        "f8615",
++        "f1040.line16"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. K1 with no parent alive at the end of 2025 (a child claimed by a grandparent): condition 4 fails, Form 8615 does not apply, and line 16 is the Tax Table tax on $8,650 single, $868.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": false,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 1000000
++      },
++      "expect": {
++        "f8615.applies": {
++          "kind": "bool",
++          "value": false
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 86800
++        }
++      }
++    },
++    {
++      "id": "f8615.k11.amt_cap",
++      "covers": [
++        "f8615",
++        "s2.amt_l5"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. Interest $50,000, no earned income; parent MFJ $40,000, tax $4,326. Line 4 $48,650; line 5 $47,300; line 8 $87,300, Tax Table MFJ $10,002; line 11 $5,676; line 15 $136; line 16 $5,812; line 17 $5,623; line 18 $5,812. AMT screen: line 4 $50,000; exemption $88,100 capped at $0 + $9,550; line 6 $40,450 x 26% = $10,517 > line 10 $5,812: Schedule 2 line 2 refuses (without the cap line 6 is 0 and the return is silently short by $4,705).",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 5000000,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 4000000,
++        "f8615.parent_tax": 432600
++      },
++      "expect": {
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 581200
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 581200
++        },
++        "s2.amt_kiddie": {
++          "kind": "bool",
++          "value": true
++        },
++        "s2.amt_l5": {
++          "kind": "money",
++          "cents": 955000
++        },
++        "s2.line2": {
++          "kind": "refusal",
++          "gate": "s2.amt",
++          "form": "Form 6251",
++          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
++          "cite": {
++            "doc": "f1040s2",
++            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
++            "revision": "2025; created 2025-05-08",
++            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8",
++            "tax_year": 2025
++          }
++        }
++      }
++    },
++    {
++      "id": "f8615.k12.not_dependent_student",
++      "covers": [
++        "f8615",
++        "s2.amt_l5"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. A full-time student of 22 who supports herself from her investments (no one can claim her; earned income 0, less than half of support), a parent alive; interest $30,000; parent MFJ $150,000 / $22,828. Standard deduction $15,750; line 4 $14,250 binds (line 3 $27,300); line 8 $164,250, TCW $25,963; line 11 $3,135; line 14 0; line 16 $3,135; line 17 $1,475; line 18 $3,135. AMT screen: line 4 $30,000, exemption capped at $9,550, line 6 $20,450 x 26% = $5,317 > $3,135: Schedule 2 line 2 refuses.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2003,
++        "sa.dependent": false,
++        "person[taxpayer].edu_parent": true,
++        "person[taxpayer].edu_half_support": true,
++        "person[taxpayer].edu_fulltime": true,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 3000000,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 15000000,
++        "f8615.parent_tax": 2282800
++      },
++      "expect": {
++        "f8615.applies": {
++          "kind": "bool",
++          "value": true
++        },
++        "f8615.line5": {
++          "kind": "money",
++          "cents": 1425000
++        },
++        "f8615.line14": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 313500
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 313500
++        },
++        "s2.line2": {
++          "kind": "refusal",
++          "gate": "s2.amt",
++          "form": "Form 6251",
++          "remedy": "Alternative minimum tax is outside scope; prepare Form 6251.",
++          "cite": {
++            "doc": "f1040s2",
++            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
++            "revision": "2025; created 2025-05-08",
++            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8",
++            "tax_year": 2025
++          }
++        }
++      }
++    },
++    {
++      "id": "f8615.k13.penalty_no_earned",
++      "covers": [
++        "f8615"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. Interest $10,000 with an early withdrawal penalty $100, no earned income; parent MFJ $150,000 / $22,828. Line 1 = AGI $9,900 (the worksheet gives the same); line 4 $8,550; line 5 $7,200; line 8 $157,200, TCW $24,412; line 11 $1,584; line 15 $136; line 16 $1,720; line 17 $858; line 18 $1,720.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2008,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 1000000,
++        "interest[bank].penalty": 10000,
++        "f8615.parent_status": "mfj",
++        "f8615.parent_ti": 15000000,
++        "f8615.parent_tax": 2282800
++      },
++      "expect": {
++        "f8615.line1": {
++          "kind": "money",
++          "cents": 990000
++        },
++        "f8615.line18": {
++          "kind": "money",
++          "cents": 172000
++        },
++        "f1040.line16": {
++          "kind": "money",
++          "cents": 172000
++        }
++      }
++    },
++    {
++      "id": "f8615.k14.amanda_under16",
++      "covers": [
++        "f8615:refuse"
++      ],
++      "evidence": "synthetic refusal regression",
++      "evidence_note": "Predicted by hand by lane D5-8615 (2026-11-16) from Form 8615 and i8615 (2025) before any evaluation, and cross-checked by a separate read-only calculator over the archived Tax Table (scratch/round5-f8615/calc/k.py); the scout's numbers were not copied. Amanda Black, age 13 (i8615 p. 3): with the under-16 entry check kept (amb.2025.filer_under_16) the return is refused before Form 8615; line 1 ($2,800) would be class A only if that gate is lifted. Inputs restate her dividends ($1,300 qualified), wages ($2,100) and interest ($1,400); her $100 net capital gain is not entered.",
++      "inputs": {
++        "person[taxpayer].birth_year": 2012,
++        "sa.dependent": true,
++        "person[taxpayer].edu_parent": true,
++        "$w2@person[taxpayer]": [
++          "job"
++        ],
++        "person[taxpayer].w2[job].box1": 210000,
++        "person[taxpayer].w2[job].box5": 210000,
++        "person[taxpayer].w2[job].box6": 3045,
++        "$interest": [
++          "bank"
++        ],
++        "interest[bank].amount": 140000,
++        "div.any": true,
++        "sb.ordinary_dividends": 130000,
++        "f1040.line3a": 130000,
++        "div.other_boxes": false,
++        "sd.distributions": 0,
++        "qbi.dividends": 0
++      },
++      "expect": {
++        "household.roster_ok": {
++          "kind": "refusal",
++          "gate": "household.filer_under16",
++          "form": "A filer under age 16 at the end of 2025",
++          "remedy": "A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool. The archived instructions state no such rule; this is an entry check the owner decided on, recorded in the ambiguity register (amb.2025.filer_under_16).",
++          "cite": {
++            "doc": "i1040gi",
++            "locator": "p. 66, Self-Select PIN, \"You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\"",
++            "revision": "2025; printed date 2026-02-25",
++            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
++            "tax_year": 2025
++          }
++        },
++        "f1040.line16": {
++          "kind": "refusal",
++          "gate": "household.filer_under16",
++          "form": "A filer under age 16 at the end of 2025",
++          "remedy": "A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool. The archived instructions state no such rule; this is an entry check the owner decided on, recorded in the ambiguity register (amb.2025.filer_under_16).",
++          "cite": {
++            "doc": "i1040gi",
++            "locator": "p. 66, Self-Select PIN, \"You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\"",
++            "revision": "2025; printed date 2026-02-25",
++            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
++            "tax_year": 2025
++          }
++        }
++      }
++    }
++  ]
++}
+\ No newline at end of file
+diff --git a/forms/2025/f1040.yaml b/forms/2025/f1040.yaml
+index 06712c0..b2f8dea 100644
+--- a/forms/2025/f1040.yaml
++++ b/forms/2025/f1040.yaml
+@@ -781,9 +781,10 @@ form:
+           less than $100,000, you must use the Tax Table", "If your taxable income is $100,000 or more, use the Tax
+           Computation Worksheet", "Use the Qualified Dividends and Capital Gain Tax Worksheet, later, to figure your
+           tax if you don’t have to use the Schedule D Tax Worksheet"
+-    - id: f1040.line16
+-      printed: "16"
+-      label: "Tax (see instructions). Check if any from Form(s): 1 8814 2 4972 3"
++    - id: f1040.regular_tax
++      printed: (helper)
++      label: Tax on taxable income by the Schedule D Tax Worksheet, the Qualified Dividends and Capital Gain Tax Worksheet,
++        the Tax Table or the Tax Computation Worksheet (line 16 without Form 8615)
+       type: Dollars
+       expr:
+         op: choose
+@@ -806,9 +807,34 @@ form:
+           later"; p. 36, Line 16, "Use the Schedule D Tax Worksheet in the Instructions for Schedule D to figure the
+           amount to enter on Form 1040 or 1040-SR, line 16", "Use the Qualified Dividends and Capital Gain Tax
+           Worksheet, later, to figure your tax if you don’t have to use the Schedule D Tax Worksheet"
++    - id: f1040.line16
++      printed: "16"
++      label: "Tax (see instructions). Check if any from Form(s): 1 8814 2 4972 3"
++      type: Dollars
++      expr:
++        op: choose
++        alternatives:
++          - guard:
++              op: test
++              eq:
++                - f8615.applies
++                - const: true
++            then: f8615.line18
++          - guard:
++              op: test
++              eq:
++                - f8615.applies
++                - const: false
++            then: f1040.regular_tax
++      cite:
++        doc: i1040gi
++        locator: p. 34, Line 16, Tax, "Tax on your taxable income. Figure the tax using one of the methods described
++          later"; p. 36, Line 16, "You must file Form 8615 if you meet all of the following conditions"; i8615 p. 10,
++          Line 18, "Enter on line 18 the larger of line 16 or line 17. Also enter this amount on the child’s Form 1040 or
++          1040-NR, line 16"
+       refuses:
+         - when: scope.other_line16
+-          form: Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture
++          form: Forms 8814, 4972, 8621 or 8978, a section 962 election, or an education credit recapture
+           remedy: Additional Form 1040 line 16 taxes are outside this proof of concept.
+           cite:
+             doc: f1040
+diff --git a/forms/2025/f8615.yaml b/forms/2025/f8615.yaml
+new file mode 100644
+index 0000000..e6b71af
+--- /dev/null
++++ b/forms/2025/f8615.yaml
+@@ -0,0 +1,1114 @@
++form:
++  id: f8615
++  kind: form
++  title: "Form 8615 — Tax for Certain Children Who Have Unearned Income (with Line 5 Worksheets #1 and #3)"
++  tax_year: 2025
++  note: "Line 5 Worksheet #2 and lines 5 and 11 of Worksheet #3 read itemized deductions; a child who itemizes is refused
++    (line 2). The parent's Schedule D Tax Worksheet, Schedule J and Foreign Earned Income Tax Worksheet, and another
++    child's Schedule D Tax Worksheet, are refused at line 9. Line 12b is not a line of its own; its decimal is the ratio
++    of line 13."
++  lines:
++    - id: f8615.no
++      printed: (helper)
++      type: Bool
++      label: Year parameter household.no (false)
++      expr: { op: param, ref: household.no }
++      cite:
++        doc: f8615
++        locator: Form 8615 (2025), Who Must File
++    - id: f8615.zero
++      printed: (helper)
++      type: NonNegDollars
++      label: Year parameter sales.zero
++      expr: { op: param, ref: sales.zero }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), Part III, "If lines 4 and 5 above are the same, enter -0- on line 15 and go to line 16"'
++    - id: f8615.base
++      printed: (helper)
++      type: NonNegDollars
++      label: Year parameter f8615.base ($2,700)
++      expr: { op: param, ref: f8615.base }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 2, "If the child did not itemize deductions on Schedule A (Form 1040) or Schedule A (Form 1040-NR), enter $2,700"'
++    - id: f8615.status_unused
++      printed: (helper)
++      type: Enum(filing_status)
++      label: Year parameter f8615.status_unused (single), the parent's filing status where Form 8615 does not apply
++      expr: { op: param, ref: f8615.status_unused }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line C, "Parent’s filing status (check one)"'
++
++    # Part I: the child's net unearned income.
++    - id: f8615.earned_se
++      printed: (helper)
++      type: NonNegDollars
++      label: Schedule 1 line 3, zero if a loss (the child's net earnings from a business, for earned income)
++      expr: { op: subtract_floor0, from: s1.line3, take: f8615.zero }
++      cite:
++        doc: i8615
++        locator: 'p. 2, Alternate Worksheet line D, "Generally, your child’s earned income is the total of the amounts reported on Form 1040 or 1040-NR, line 1z; and Schedule 1 (Form 1040), lines 3 and 6 (if Schedule 1 (Form 1040), line 3 or 6 is a loss, use zero)"'
++      ambiguity: amb.2025.f8615_earned
++    - id: f8615.earned
++      printed: (helper)
++      type: NonNegDollars
++      label: The child's earned income (Form 1040 line 1z and Schedule 1 line 3, a loss taken as zero)
++      expr: { op: sum, of: [f1040.line1z, f8615.earned_se] }
++      cite:
++        doc: i8615
++        locator: 'p. 2, Earned income, "Earned income includes wages, tips, and other payments received for personal services performed", "earned income is generally the total of the amounts reported on Form 1040 or 1040-NR, line 1z, and Schedule 1 (Form 1040), lines 3 and 6"'
++      ambiguity: amb.2025.f8615_earned
++    - id: f8615.has_earned
++      printed: (gate)
++      type: Bool
++      label: The child had earned income
++      expr: { op: test, gt: [f8615.earned, { const: 0 }] }
++      cite:
++        doc: i8615
++        locator: 'p. 2, Line 1, "If the child had no earned income (defined below), enter the child’s adjusted gross income from Form 1040 or 1040-NR, line 11b"'
++    - id: f8615.uiw_less
++      printed: (helper)
++      type: Dollars
++      label: 'Child’s Unearned Income Worksheet line 2 as the Alternate Worksheet figures it: Form 1040 line 1z, Schedule 1 line 3 (a loss as entered), the penalty on early withdrawal of savings (Schedule 1 line 18) and the net operating loss deduction (Schedule 1 line 8a, a negative amount)'
++      expr: { op: sum, of: [f1040.line1z, s1.line3, s1.line18, s1.line8a] }
++      cite:
++        doc: i8615
++        locator: 'p. 2, Alternate Worksheet for Form 8615, Line 1, lines B, C and D; p. 3, Child’s Unearned Income Worksheet—Line 1, line 2, "Enter the child’s earned income (defined earlier) plus the amount of any penalty on early withdrawal of savings from the child’s Schedule 1 (Form 1040), line 18"'
++      ambiguity: amb.2025.f8615_alternate_worksheet
++    - id: f8615.uiw
++      printed: (helper)
++      type: Dollars
++      label: 'Child’s Unearned Income Worksheet line 3 (or Alternate Worksheet line E): Form 1040 line 9 less that line 2'
++      expr: { op: subtract, from: f1040.line9, take: f8615.uiw_less }
++      cite:
++        doc: i8615
++        locator: 'p. 3, Child’s Unearned Income Worksheet—Line 1, line 3, "Subtract line 2 from line 1. Enter the result here and on Form 8615, line 1"; p. 2, Alternate Worksheet, line E, "Subtract line D from line C"'
++      ambiguity: amb.2025.f8615_alternate_worksheet
++    - id: f8615.line1
++      printed: "1"
++      label: Enter the child’s unearned income (adjusted gross income if the child had no earned income; otherwise the Child’s Unearned Income Worksheet)
++      type: Dollars
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.has_earned, { const: false }] }
++          then: f1040.line11b
++        - guard: { op: test, eq: [f8615.has_earned, { const: true }] }
++          then: f8615.uiw
++      cite:
++        doc: i8615
++        locator: 'p. 2, Line 1, "If the child had no earned income (defined below), enter the child’s adjusted gross income from Form 1040 or 1040-NR, line 11b", "If the child had earned income, use the Child''s Unearned Income Worksheet, later, to figure the amount to enter on line 1"'
++      ambiguity: amb.2025.f8615_line1_branch
++    - id: f8615.over_base
++      printed: (gate)
++      type: Bool
++      label: The child had more than $2,700 of unearned income (line 1 more than $2,700)
++      expr: { op: test, gt: [f8615.line1, f8615.base] }
++      cite:
++        doc: i8615
++        locator: 'p. 1, Who Must File, "1. The child had more than $2,700 of unearned income"'
++    - id: f8615.line2
++      printed: "2"
++      label: If the child did not itemize deductions on Schedule A, enter $2,700
++      type: NonNegDollars
++      expr: { op: copy, from: f8615.base }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 2, "If the child did not itemize deductions on Schedule A (Form 1040) or Schedule A (Form 1040-NR), enter $2,700. Otherwise, see instructions"'
++      refuses:
++        - when: f8615.child_itemizes
++          form: "Form 8615 line 2 and Line 5 Worksheets #2 and #3 for a child who itemizes deductions"
++          remedy: A child who itemizes deductions figures line 2 from the itemized deductions directly connected with the
++            unearned income, and the Line 5 Worksheets from them; this tool does not figure them. To go on, take the standard
++            deduction if it is allowed.
++          cite:
++            doc: i8615
++            locator: 'p. 3, Line 2, "If the child itemizes deductions, enter on line 2 the larger of: 1. $1,350 plus the portion of the amount on Schedule A (Form 1040), line 17 ... that is directly connected with the production of the unearned income on Form 8615, line 1; or 2. $2,700"'
++    - id: f8615.line3
++      printed: "3"
++      label: Subtract line 2 from line 1. If zero or less, stop
++      type: NonNegDollars
++      expr: { op: subtract_floor0, from: f8615.line1, take: f8615.line2 }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 3, "Subtract line 2 from line 1. If zero or less, stop; do not complete the rest of this form but do attach it to the child’s return"'
++    - id: f8615.line4
++      printed: "4"
++      label: Enter the child’s taxable income from Form 1040, line 15
++      type: NonNegDollars
++      expr: { op: copy, from: f1040.line15 }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 4, "Enter the child’s taxable income from Form 1040 or 1040-NR, line 15"'
++    - id: f8615.line5
++      printed: "5"
++      label: Enter the smaller of line 3 or line 4. If zero, stop
++      type: NonNegDollars
++      expr: { op: smaller_of, of: [f8615.line3, f8615.line4] }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 5, "Enter the smaller of line 3 or line 4. If zero, stop; do not complete the rest of this form but do attach it to the child’s return"'
++
++    # Who must file: conditions 1, 3, 4 and 5 (condition 2 is moot: amb.2025.f8615_required_to_file).
++    - id: f8615.kid_count
++      printed: (helper)
++      type: Count
++      label: "Your entry, if you were under 18 at the end of 2025, or 18, or a full-time student aged 19 to 23, with earned income less than half of your support, and a parent of yours was alive at the end of 2025"
++      expr:
++        op: sum_over
++        collection: person
++        field: person.one
++        where:
++          op: test
++          all:
++          - op: test
++            eq: [person.role, { const: taxpayer }]
++          - op: test
++            eq: [person.edu_kid_age, { const: true }]
++      cite:
++        doc: i8615
++        locator: 'p. 1, Who Must File, "3. The child: a. Was under age 18 at the end of 2025, b. Was age 18 at the end of 2025 and didn’t have earned income that was more than half of the child’s support, or c. Was a full-time student at least age 19 and under age 24 at the end of 2025 and didn’t have earned income that was more than half of the child’s support", "4. At least one of the child’s parents was alive at the end of 2025"'
++      ambiguity: amb.2025.f8615_half_support
++    - id: f8615.kid
++      printed: (gate)
++      type: Bool
++      label: Who Must File conditions 3 and 4 hold for you (the age, student and support tests, and a parent alive)
++      expr: { op: test, gt: [f8615.kid_count, { const: 0, type: Count }] }
++      cite:
++        doc: i8615
++        locator: 'p. 1, Who Must File, conditions 3 and 4'
++      ambiguity: amb.2025.f8615_half_support
++    - id: f8615.child_1g
++      printed: (gate)
++      type: Bool
++      label: A child to whom section 1(g) applies (Who Must File conditions 3 to 5), asked only of a filer under 24 who does not file jointly (false otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [scope.under24_if_not_joint, { const: true }] }
++          then: f8615.kid
++        - guard: { op: test, eq: [scope.under24_if_not_joint, { const: false }] }
++          then: f8615.no
++      cite:
++        doc: i8615
++        locator: 'p. 1, Who Must File, "5. The child doesn’t file a joint return for 2025", "These rules apply whether or not the child is a dependent"'
++    - id: f8615.applies
++      printed: (gate)
++      type: Bool
++      label: Form 8615 must be filed (Who Must File conditions 1 and 3 to 5; condition 2 is moot), the unearned income tested first
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.over_base, { const: true }] }
++          then: f8615.child_1g
++        - guard: { op: test, eq: [f8615.over_base, { const: false }] }
++          then: f8615.no
++      cite:
++        doc: i8615
++        locator: 'p. 1, Who Must File, "Form 8615 must be filed for any child who meets all of the following conditions"'
++      ambiguity: amb.2025.f8615_required_to_file
++
++    # The parent's return (lines A to C, 6, 8 and 10), asked only when Form 8615 applies.
++    - id: f8615.parent_status
++      printed: C
++      type: Enum(filing_status)
++      gated_by: f8615.parent_status_if_applies
++      label: "Part of your income other than pay for work is taxed at a parent's tax rate. What filing status is on that parent's 2025 return?"
++      expr:
++        op: input
++        source: "Part of your income other than pay for work is taxed at a parent's tax rate. What filing status is on that parent's 2025 return?"
++      cite:
++        doc: i8615
++        locator: 'p. 1, Which Parent''s Return To Use; Form 8615 (2025), line C, "Parent’s filing status (check one)"'
++    - id: f8615.parent_status_if_applies
++      printed: (gate)
++      type: Enum(filing_status)
++      label: The parent's filing status, asked only when Form 8615 applies (single otherwise, never read)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: f8615.parent_status
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.status_unused
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line C, "Parent’s filing status (check one)"'
++    - id: f8615.parent_ti
++      printed: (helper)
++      type: NonNegDollars
++      gated_by: f8615.parent_ti_if_applies
++      label: "On that parent's 2025 Form 1040, what is the taxable income on line 15? Zero if zero or less."
++      expr:
++        op: input
++        source: "On that parent's 2025 Form 1040, what is the taxable income on line 15? Zero if zero or less."
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 6, "Enter the parent’s taxable income from Form 1040 or 1040-NR, line 15. If zero or less, enter -0-"'
++    - id: f8615.parent_ti_if_applies
++      printed: (gate)
++      type: NonNegDollars
++      label: The parent's taxable income, asked only when Form 8615 applies (zero otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: f8615.parent_ti
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.zero
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 6'
++    - id: f8615.parent_tax
++      printed: (helper)
++      type: NonNegDollars
++      gated_by: f8615.parent_tax_if_applies
++      label: "On the same return, what is the tax on line 16? Leave out any tax from Form 4972 or Form 8814 and any recapture of an education credit."
++      expr:
++        op: input
++        source: "On the same return, what is the tax on line 16? Leave out any tax from Form 4972 or Form 8814 and any recapture of an education credit."
++      cite:
++        doc: i8615
++        locator: 'p. 8, Line 10, "Enter on line 10 the amount from Form 1040, 1040-SR, or 1040-NR, line 16. Don’t include the tax, if any, from Form 4972 or Form 8814 or any tax from recapture of an education credit"'
++      ambiguity: amb.2025.f8615_line10_amt
++    - id: f8615.parent_tax_if_applies
++      printed: (gate)
++      type: NonNegDollars
++      label: The parent's tax, asked only when Form 8615 applies (zero otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: f8615.parent_tax
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.zero
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 10'
++    - id: f8615.parent_qd
++      printed: (helper)
++      type: NonNegDollars
++      gated_by: f8615.parent_qd_if_applies
++      label: "On the same return, what are the qualified dividends on line 3a? Zero if none."
++      expr:
++        op: input
++        source: "On the same return, what are the qualified dividends on line 3a? Zero if none."
++      cite:
++        doc: i8615
++        locator: 'p. 4, Line 8, "Qualified dividends are those dividends reported on line 3a of Form 1040 or 1040-NR"; "If the parent has qualified dividends, the full amount is the amount of qualified dividends included on line 6"'
++    - id: f8615.parent_qd_if_applies
++      printed: (gate)
++      type: NonNegDollars
++      label: The parent's qualified dividends, asked only when Form 8615 applies (zero otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: f8615.parent_qd
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.zero
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 6'
++    - id: f8615.parent_ncg
++      printed: (helper)
++      type: NonNegDollars
++      gated_by: f8615.parent_ncg_if_applies
++      label: "On the same return, what is the net capital gain: the smaller of the gains on Schedule D lines 15 and 16, or the capital gain distributions on line 7a if there is no Schedule D? Zero if none."
++      expr:
++        op: input
++        source: "On the same return, what is the net capital gain: the smaller of the gains on Schedule D lines 15 and 16, or the capital gain distributions on line 7a if there is no Schedule D? Zero if none."
++      cite:
++        doc: i8615
++        locator: 'p. 4, Line 8, "Net capital gain is the smaller of the gain, if any, on Schedule D (Form 1040), line 15, or the gain, if any, on Schedule D, line 16. If Schedule D isn’t required, it is the amount on Form 1040, 1040-SR, or 1040-NR, line 7a"'
++    - id: f8615.parent_ncg_if_applies
++      printed: (gate)
++      type: NonNegDollars
++      label: The parent's net capital gain, asked only when Form 8615 applies (zero otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: f8615.parent_ncg
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.zero
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 6'
++    - id: f8615.parent_sdtw
++      printed: (helper)
++      type: Bool
++      gated_by: f8615.parent_sdtw_if_applies
++      label: "Did that parent figure the tax with the Schedule D Tax Worksheet (used when Schedule D line 18 or 19 shows an amount, or Form 4952 line 4g does)?"
++      expr:
++        op: input
++        source: "Did that parent figure the tax with the Schedule D Tax Worksheet (used when Schedule D line 18 or 19 shows an amount, or Form 4952 line 4g does)?"
++      cite:
++        doc: i8615
++        locator: 'p. 7, Line 9, "if the child, the parent, or any other child has 28% rate gain or unrecaptured section 1250 gain, use the Schedule D Tax Worksheet"'
++    - id: f8615.parent_sdtw_if_applies
++      printed: (gate)
++      type: Bool
++      label: The parent used the Schedule D Tax Worksheet, asked only when Form 8615 applies (false otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: f8615.parent_sdtw
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.no
++      cite:
++        doc: i8615
++        locator: 'p. 7, Using the Schedule D Tax Worksheet for line 9 tax'
++    - id: f8615.parent_sj
++      printed: (helper)
++      type: Bool
++      gated_by: f8615.parent_sj_if_applies
++      label: "Did that parent figure the tax with Schedule J (averaging farming or fishing income)?"
++      expr:
++        op: input
++        source: "Did that parent figure the tax with Schedule J (averaging farming or fishing income)?"
++      cite:
++        doc: i8615
++        locator: 'p. 7, Line 9, "But if Schedule J is used to figure the tax on the parent''s return, use it to figure this tax"'
++    - id: f8615.parent_sj_if_applies
++      printed: (gate)
++      type: Bool
++      label: The parent used Schedule J, asked only when Form 8615 applies (false otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: f8615.parent_sj
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.no
++      cite:
++        doc: i8615
++        locator: 'p. 8, Using Schedule J (Form 1040) for line 9 tax'
++    - id: f8615.parent_feitw
++      printed: (helper)
++      type: Bool
++      gated_by: f8615.parent_feitw_if_applies
++      label: "Did that parent file Form 2555 to exclude income earned abroad?"
++      expr:
++        op: input
++        source: "Did that parent file Form 2555 to exclude income earned abroad?"
++      cite:
++        doc: i8615
++        locator: 'p. 4, Line 6, "Parent files Form 2555. If the parent files Form 2555 to claim the foreign earned income exclusion, housing exclusion, or housing deduction, the Foreign Earned Income Tax Worksheet in the Instructions for Form 1040 is used to figure the parent''s tax"'
++    - id: f8615.parent_feitw_if_applies
++      printed: (gate)
++      type: Bool
++      label: The parent filed Form 2555, asked only when Form 8615 applies (false otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: f8615.parent_feitw
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.no
++      cite:
++        doc: i8615
++        locator: 'p. 8, Line 10, Parent files Form 2555'
++
++    # Other children (line 7), asked only when Form 8615 applies.
++    - id: f8615.other_children
++      printed: (helper)
++      type: Bool
++      gated_by: f8615.other_children_if_applies
++      label: "Is the same parent's return also used for this tax on a 2025 return of another child of theirs (a brother or sister of yours)?"
++      expr:
++        op: input
++        source: "Is the same parent's return also used for this tax on a 2025 return of another child of theirs (a brother or sister of yours)?"
++      cite:
++        doc: i8615
++        locator: 'p. 4, Line 7, "If the tax return information of the parent is also used on any other child''s Form 8615, enter on line 7 the total of the amounts from line 5 of all the other children''s Forms 8615 being completed"'
++    - id: f8615.other_children_if_applies
++      printed: (gate)
++      type: Bool
++      label: Another child's Form 8615 uses the same parent, asked only when Form 8615 applies (false otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: f8615.other_children
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.no
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 7'
++    - id: f8615.others_line5
++      printed: (helper)
++      type: NonNegDollars
++      gated_by: f8615.others_line5_if_others
++      label: "What is the total of line 5 of the other children's Forms 8615 (not counting yours)?"
++      expr:
++        op: input
++        source: "What is the total of line 5 of the other children's Forms 8615 (not counting yours)?"
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 7, "Enter the total, if any, from Forms 8615, line 5, of all other children of the parent named above. Do not include the amount from line 5 above"'
++    - id: f8615.others_line5_if_others
++      printed: (gate)
++      type: NonNegDollars
++      label: The other children's line 5 total, asked only when another child's Form 8615 uses the same parent (zero otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.other_children_if_applies, { const: true }] }
++          then: f8615.others_line5
++        - guard: { op: test, eq: [f8615.other_children_if_applies, { const: false }] }
++          then: f8615.zero
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 7'
++    - id: f8615.others_qd
++      printed: (helper)
++      type: NonNegDollars
++      gated_by: f8615.others_qd_if_others
++      label: "Of that total, how much is qualified dividends (from each child's Line 5 Worksheet)? Zero if none."
++      expr:
++        op: input
++        source: "Of that total, how much is qualified dividends (from each child's Line 5 Worksheet)? Zero if none."
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 7, "The qualified dividends included on line 7 are the total of the amounts of qualified dividends included on line 5 of the other children''s Forms 8615"'
++    - id: f8615.others_qd_if_others
++      printed: (gate)
++      type: NonNegDollars
++      label: The other children's qualified dividends on line 7, asked only with other children (zero otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.other_children_if_applies, { const: true }] }
++          then: f8615.others_qd
++        - guard: { op: test, eq: [f8615.other_children_if_applies, { const: false }] }
++          then: f8615.zero
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 7'
++    - id: f8615.others_ncg
++      printed: (helper)
++      type: NonNegDollars
++      gated_by: f8615.others_ncg_if_others
++      label: "And how much of it is net capital gain? Zero if none."
++      expr:
++        op: input
++        source: "And how much of it is net capital gain? Zero if none."
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 7, "The net capital gain included on line 7 is the total of the amounts of net capital gain included on line 5 of the other children''s Forms 8615"'
++    - id: f8615.others_ncg_if_others
++      printed: (gate)
++      type: NonNegDollars
++      label: The other children's net capital gain on line 7, asked only with other children (zero otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.other_children_if_applies, { const: true }] }
++          then: f8615.others_ncg
++        - guard: { op: test, eq: [f8615.other_children_if_applies, { const: false }] }
++          then: f8615.zero
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 7'
++    - id: f8615.others_sdtw
++      printed: (helper)
++      type: Bool
++      gated_by: f8615.others_sdtw_if_others
++      label: "Does any of those children have an amount on Schedule D line 18 or 19 (28% rate gain or unrecaptured section 1250 gain)?"
++      expr:
++        op: input
++        source: "Does any of those children have an amount on Schedule D line 18 or 19 (28% rate gain or unrecaptured section 1250 gain)?"
++      cite:
++        doc: i8615
++        locator: 'p. 7, Line 9, "if the child, the parent, or any other child has 28% rate gain or unrecaptured section 1250 gain, use the Schedule D Tax Worksheet"'
++    - id: f8615.others_sdtw_if_others
++      printed: (gate)
++      type: Bool
++      label: Another child has 28% rate gain or unrecaptured section 1250 gain, asked only with other children (false otherwise)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.other_children_if_applies, { const: true }] }
++          then: f8615.others_sdtw
++        - guard: { op: test, eq: [f8615.other_children_if_applies, { const: false }] }
++          then: f8615.no
++      cite:
++        doc: i8615
++        locator: 'p. 7, Using the Schedule D Tax Worksheet for line 9 tax'
++
++    # Refusal gates.
++    - id: f8615.child_itemizes
++      printed: (gate)
++      type: Bool
++      label: Form 8615 applies and the child itemizes deductions
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: sa.itemizes
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.no
++      cite:
++        doc: i8615
++        locator: 'p. 3, Line 2, "If the child itemizes deductions, enter on line 2 the larger of"; p. 5, Line 5 Worksheet #2; p. 6, Line 5 Worksheet #3, lines 5 and 11'
++    - id: f8615.child_sdtw
++      printed: (gate)
++      type: Bool
++      label: Form 8615 applies and the child's own tax needs the Schedule D Tax Worksheet
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.applies, { const: true }] }
++          then: f1040.gate.sdtw
++        - guard: { op: test, eq: [f8615.applies, { const: false }] }
++          then: f8615.no
++      cite:
++        doc: i8615
++        locator: 'p. 7, Line 9, "if the child, the parent, or any other child has 28% rate gain or unrecaptured section 1250 gain, use the Schedule D Tax Worksheet"; p. 9, Line 15, "if the child has to file Schedule D and line 18 or line 19 of the child''s Schedule D is more than zero, use the Schedule D Tax Worksheet"'
++    - id: f8615.parent_special
++      printed: (gate)
++      type: Bool
++      label: The parent's tax was figured with Schedule J or the Foreign Earned Income Tax Worksheet
++      expr:
++        op: test
++        any:
++        - op: test
++          eq: [f8615.parent_sj_if_applies, { const: true }]
++        - op: test
++          eq: [f8615.parent_feitw_if_applies, { const: true }]
++      cite:
++        doc: i8615
++        locator: 'p. 7, Line 9, "But if Schedule J is used to figure the tax on the parent''s return, use it to figure this tax"; p. 4, Line 6, Parent files Form 2555; p. 8, Line 10, Parent files Form 2555'
++
++    # The child's qualified dividends and net capital gain, and the Line 5 Worksheets.
++    - id: f8615.child_qd
++      printed: (helper)
++      type: NonNegDollars
++      label: The child's qualified dividends (Line 5 Worksheet line 1)
++      expr: { op: copy, from: qdcg.line2 }
++      cite:
++        doc: i8615
++        locator: 'p. 5, Line 5 Worksheet #1, line 1, "Enter the child''s qualified dividends"; p. 4, "Qualified dividends are those dividends reported on line 3a of Form 1040"'
++    - id: f8615.child_ncg
++      printed: (helper)
++      type: NonNegDollars
++      label: The child's net capital gain (Line 5 Worksheet line 2)
++      expr: { op: copy, from: qdcg.line3 }
++      cite:
++        doc: i8615
++        locator: 'p. 5, Line 5 Worksheet #1, line 2, "Enter the child''s net capital gain"; p. 4, Line 8, "Net capital gain is the smaller of the gain, if any, on Schedule D (Form 1040), line 15, or the gain, if any, on Schedule D, line 16. If Schedule D isn’t required, it is the amount on Form 1040, 1040-SR, or 1040-NR, line 7a"'
++    - id: f8615.child_cg
++      printed: (helper)
++      type: NonNegDollars
++      label: 'The child''s qualified dividends and net capital gain together (Line 5 Worksheet #3, line 3: add lines 1 and 2)'
++      expr: { op: sum, of: [f8615.child_qd, f8615.child_ncg] }
++      cite:
++        doc: i8615
++        locator: 'p. 6, Line 5 Worksheet #3, line 3, "Add lines 1 and 2"'
++    - id: f8615.child_cg_any
++      printed: (gate)
++      type: Bool
++      label: The child has qualified dividends or net capital gain
++      expr: { op: test, gt: [f8615.child_cg, { const: 0 }] }
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 5, "If the child has a net capital gain or qualified dividends, use the appropriate Line 5 Worksheet"'
++    - id: f8615.ws3_used
++      printed: (gate)
++      type: Bool
++      label: "Line 5 is less than line 3 (Worksheet #3; otherwise Worksheet #1)"
++      expr: { op: test, lt: [f8615.line5, f8615.line3] }
++      cite:
++        doc: i8615
++        locator: 'p. 5, Line 5 Worksheet #1, "Use this worksheet only if line 2 of the child''s Form 8615 is $2,700 and lines 3 and 5 are the same amount"; p. 6, Line 5 Worksheet #3, "Use this worksheet only if the child''s Form 8615, line 5, is less than line 3"'
++    - id: f8615.ws1_6
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #1 line 6: $2,700 times line 4 (line 1 divided by line 3, three places, not more than 1.000)'
++      expr: { op: prorate, amount: f8615.base, part: f8615.child_qd, whole: f8615.line1, places: 3 }
++      cite:
++        doc: i8615
++        locator: 'p. 5, Line 5 Worksheet #1, line 4, "Divide line 1 by line 3. Enter the result as a decimal (rounded to at least three places). Don’t enter more than 1.000", line 6, "Multiply $2,700 by line 4"'
++      ambiguity: amb.2025.f8615_ratio_places
++    - id: f8615.ws1_7
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #1 line 7: $2,700 times line 5 (line 2 divided by line 3, three places, not more than 1.000)'
++      expr: { op: prorate, amount: f8615.base, part: f8615.child_ncg, whole: f8615.line1, places: 3 }
++      cite:
++        doc: i8615
++        locator: 'p. 5, Line 5 Worksheet #1, line 5, "Divide line 2 by line 3. Enter the result as a decimal (rounded to at least three places). Don’t enter more than 1.000", line 7, "Multiply $2,700 by line 5"'
++      ambiguity: amb.2025.f8615_ratio_places
++    - id: f8615.ws1_8_raw
++      printed: (helper)
++      type: NonNegDollars
++      label: "Worksheet #1 line 1 less line 6, not less than zero"
++      expr: { op: subtract_floor0, from: f8615.child_qd, take: f8615.ws1_6 }
++      cite:
++        doc: i8615
++        locator: 'p. 5, Line 5 Worksheet #1, line 8, "Subtract line 6 of this worksheet from line 1 (but don’t enter less than zero"'
++    - id: f8615.ws1_8
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #1 line 8: qualified dividends on Form 8615, line 5 (line 1 less line 6, not less than zero or more than Form 8615 line 5)'
++      expr: { op: smaller_of, of: [f8615.ws1_8_raw, f8615.line5] }
++      cite:
++        doc: i8615
++        locator: 'p. 5, Line 5 Worksheet #1, line 8, "Qualified dividends on Form 8615, line 5. Subtract line 6 of this worksheet from line 1 (but don’t enter less than zero or more than the amount on Form 8615, line 5)"'
++    - id: f8615.ws1_9_room
++      printed: (helper)
++      type: NonNegDollars
++      label: "Form 8615 line 5 over Worksheet #1 line 8"
++      expr: { op: subtract_floor0, from: f8615.line5, take: f8615.ws1_8 }
++      cite:
++        doc: i8615
++        locator: 'p. 5, Line 5 Worksheet #1, line 9, "more than the excess of Form 8615, line 5, over line 8 of this worksheet"'
++    - id: f8615.ws1_9_raw
++      printed: (helper)
++      type: NonNegDollars
++      label: "Worksheet #1 line 2 less line 7, not less than zero"
++      expr: { op: subtract_floor0, from: f8615.child_ncg, take: f8615.ws1_7 }
++      cite:
++        doc: i8615
++        locator: 'p. 5, Line 5 Worksheet #1, line 9, "Subtract line 7 of this worksheet from line 2 (but don’t enter less than zero"'
++    - id: f8615.ws1_9
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #1 line 9: net capital gain on Form 8615, line 5'
++      expr: { op: smaller_of, of: [f8615.ws1_9_raw, f8615.ws1_9_room] }
++      cite:
++        doc: i8615
++        locator: 'p. 5, Line 5 Worksheet #1, line 9, "Net capital gain on Form 8615, line 5. Subtract line 7 of this worksheet from line 2 (but don’t enter less than zero or more than the excess of Form 8615, line 5, over line 8 of this worksheet)"'
++    - id: f8615.ws3_15
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #3 line 15: line 12 (the standard deduction, lines 10 and 11) times line 14 (line 3 divided by adjusted gross income, three places, not more than 1.000)'
++      expr: { op: prorate, amount: sa.standard, part: f8615.child_cg, whole: f1040.line11b, places: 3 }
++      cite:
++        doc: i8615
++        locator: 'p. 6, Line 5 Worksheet #3, line 10, "Enter -0-", line 11, "Otherwise, enter the child''s standard deduction", line 12, "Add lines 10 and 11", line 13, "Enter the child''s adjusted gross income (Form 1040 or 1040-NR, line 11b)", line 14, "Divide line 3 by line 13. Enter the result as a decimal (rounded to at least three places). Don’t enter more than 1.000", line 15, "Multiply line 12 by line 14"'
++      ambiguity: amb.2025.f8615_ratio_places
++    - id: f8615.ws3_16
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #3 line 16: line 15 times line 4 (line 1 divided by line 3, three places)'
++      expr: { op: prorate, amount: f8615.ws3_15, part: f8615.child_qd, whole: f8615.child_cg, places: 3 }
++      cite:
++        doc: i8615
++        locator: 'p. 6, Line 5 Worksheet #3, line 4, "Divide line 1 by line 3. Enter the result as a decimal (rounded to at least three places)", line 16, "Multiply line 15 by line 4"'
++      ambiguity: amb.2025.f8615_ratio_places
++    - id: f8615.ws3_17
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #3 line 17: line 15 less line 16'
++      expr: { op: subtract_floor0, from: f8615.ws3_15, take: f8615.ws3_16 }
++      cite:
++        doc: i8615
++        locator: 'p. 6, Line 5 Worksheet #3, line 17, "Subtract line 16 from line 15"'
++    - id: f8615.ws3_18_raw
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #3 line 9 (line 1, as line 6 is zero without itemized deductions) less line 16, not less than zero'
++      expr: { op: subtract_floor0, from: f8615.child_qd, take: f8615.ws3_16 }
++      cite:
++        doc: i8615
++        locator: 'p. 6, Line 5 Worksheet #3, line 5, "If the child itemized deductions, enter", line 9, "Subtract line 6 from line 1", line 18, "Subtract line 16 of this worksheet from line 9"'
++    - id: f8615.ws3_18
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #3 line 18: qualified dividends on Form 8615, line 5'
++      expr: { op: smaller_of, of: [f8615.ws3_18_raw, f8615.line5] }
++      cite:
++        doc: i8615
++        locator: 'p. 6, Line 5 Worksheet #3, line 18, "Qualified dividends on Form 8615, line 5. Subtract line 16 of this worksheet from line 9. Enter the result here (but don’t enter less than zero or more than the amount on Form 8615, line 5)"'
++    - id: f8615.ws3_19_room
++      printed: (helper)
++      type: NonNegDollars
++      label: "Form 8615 line 5 over Worksheet #3 line 18"
++      expr: { op: subtract_floor0, from: f8615.line5, take: f8615.ws3_18 }
++      cite:
++        doc: i8615
++        locator: 'p. 6, Line 5 Worksheet #3, line 19, "more than the excess of Form 8615, line 5, over line 18 of this worksheet"'
++    - id: f8615.ws3_19_raw
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #3 line 8 (line 2, as line 7 is zero without itemized deductions) less line 17, not less than zero'
++      expr: { op: subtract_floor0, from: f8615.child_ncg, take: f8615.ws3_17 }
++      cite:
++        doc: i8615
++        locator: 'p. 6, Line 5 Worksheet #3, line 8, "Subtract line 7 from line 2", line 19, "Subtract line 17 of this worksheet from line 8"'
++    - id: f8615.ws3_19
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Worksheet #3 line 19: net capital gain on Form 8615, line 5'
++      expr: { op: smaller_of, of: [f8615.ws3_19_raw, f8615.ws3_19_room] }
++      cite:
++        doc: i8615
++        locator: 'p. 6, Line 5 Worksheet #3, line 19, "Net capital gain on Form 8615, line 5. Subtract line 17 of this worksheet from line 8 (but don’t enter less than zero or more than the excess of Form 8615, line 5, over line 18 of this worksheet)"'
++    - id: f8615.qd5_ws
++      printed: (helper)
++      type: NonNegDollars
++      label: Qualified dividends on line 5, from the worksheet that applies
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.ws3_used, { const: false }] }
++          then: f8615.ws1_8
++        - guard: { op: test, eq: [f8615.ws3_used, { const: true }] }
++          then: f8615.ws3_18
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 5, "use the appropriate Line 5 Worksheet in these instructions to find the amount included on line 5"'
++    - id: f8615.ncg5_ws
++      printed: (helper)
++      type: NonNegDollars
++      label: Net capital gain on line 5, from the worksheet that applies
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.ws3_used, { const: false }] }
++          then: f8615.ws1_9
++        - guard: { op: test, eq: [f8615.ws3_used, { const: true }] }
++          then: f8615.ws3_19
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 5'
++    - id: f8615.qd5
++      printed: (helper)
++      type: NonNegDollars
++      label: Qualified dividends included on line 5 (zero when the child has none and no net capital gain)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.child_cg_any, { const: true }] }
++          then: f8615.qd5_ws
++        - guard: { op: test, eq: [f8615.child_cg_any, { const: false }] }
++          then: f8615.zero
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 5, "If the child has a net capital gain or qualified dividends, use the appropriate Line 5 Worksheet"'
++    - id: f8615.ncg5
++      printed: (helper)
++      type: NonNegDollars
++      label: Net capital gain included on line 5 (zero when the child has none and no qualified dividends)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.child_cg_any, { const: true }] }
++          then: f8615.ncg5_ws
++        - guard: { op: test, eq: [f8615.child_cg_any, { const: false }] }
++          then: f8615.zero
++      cite:
++        doc: i8615
++        locator: 'p. 4, Net capital gain or qualified dividends on line 5'
++
++    # Part II: tentative tax at the parent's rate.
++    - id: f8615.line6
++      printed: "6"
++      label: Enter the parent’s taxable income from Form 1040, line 15. If zero or less, enter -0-
++      type: NonNegDollars
++      expr: { op: copy, from: f8615.parent_ti_if_applies }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 6, "Enter the parent’s taxable income from Form 1040 or 1040-NR, line 15. If zero or less, enter -0-"'
++      refuses:
++        - when: f8615.parent_special
++          form: Schedule J or the Foreign Earned Income Tax Worksheet for Form 8615, lines 6, 9 and 10
++          remedy: When the parent's tax was figured with Schedule J or the Foreign Earned Income Tax Worksheet, lines 6, 9
++            and 10 follow that schedule or worksheet, which this tool does not figure for Form 8615.
++          cite:
++            doc: i8615
++            locator: 'p. 8, Using Schedule J (Form 1040) for line 9 tax; p. 4, Line 6, Parent files Form 2555; p. 8, Line 10, Parent files Form 2555'
++    - id: f8615.line7
++      printed: "7"
++      label: Enter the total, if any, from Forms 8615, line 5, of all other children of the parent named above
++      type: NonNegDollars
++      expr: { op: copy, from: f8615.others_line5_if_others }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 7, "Enter the total, if any, from Forms 8615, line 5, of all other children of the parent named above. Do not include the amount from line 5 above"'
++    - id: f8615.line8
++      printed: "8"
++      label: Add lines 5, 6, and 7
++      type: NonNegDollars
++      expr: { op: sum, of: [f8615.line5, f8615.line6, f8615.line7] }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 8, "Add lines 5, 6, and 7"'
++    - id: f8615.qd8
++      printed: (helper)
++      type: NonNegDollars
++      label: Qualified dividends included on line 8 (lines 5, 6 and 7)
++      expr: { op: sum, of: [f8615.qd5, f8615.parent_qd_if_applies, f8615.others_qd_if_others] }
++      cite:
++        doc: i8615
++        locator: 'p. 4, Line 8, "figure the amount of qualified dividends included on line 8 by adding together the qualified dividend amounts included on lines 5, 6, and 7"'
++    - id: f8615.ncg8
++      printed: (helper)
++      type: NonNegDollars
++      label: Net capital gain included on line 8 (lines 5, 6 and 7)
++      expr: { op: sum, of: [f8615.ncg5, f8615.parent_ncg_if_applies, f8615.others_ncg_if_others] }
++      cite:
++        doc: i8615
++        locator: 'p. 4, Line 8, "figure the amount of net capital gain included on line 8 by adding together the net capital gain amounts included on lines 5, 6, and 7"'
++    - id: f8615.cg8
++      printed: (helper)
++      type: NonNegDollars
++      label: Qualified dividends and net capital gain included on line 8
++      expr: { op: sum, of: [f8615.qd8, f8615.ncg8] }
++      cite:
++        doc: i8615
++        locator: 'p. 7, Line 9, "If line 8 includes any net capital gain or qualified dividends"'
++    - id: f8615.cg8_any
++      printed: (gate)
++      type: Bool
++      label: Line 8 includes qualified dividends or net capital gain
++      expr: { op: test, gt: [f8615.cg8, { const: 0 }] }
++      cite:
++        doc: i8615
++        locator: 'p. 7, Line 9, "If line 8 doesn’t include any net capital gain or qualified dividends, use the Tax Table or Tax Computation Worksheet to figure this tax", "If line 8 includes any net capital gain or qualified dividends, use the Qualified Dividends and Capital Gain Tax Worksheet to figure this tax"'
++    - id: f8615.line9
++      printed: "9"
++      label: Enter the tax on the amount on line 8 based on the parent’s filing status above
++      type: Dollars
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.cg8_any, { const: true }] }
++          then:
++            def: qdcg_amount
++            bind:
++              amount: f8615.line8
++              qd: f8615.qd8
++              ncg: f8615.ncg8
++              status: f8615.parent_status_if_applies
++            line: tax
++        - guard: { op: test, eq: [f8615.cg8_any, { const: false }] }
++          then:
++            def: tax_on_amount
++            bind:
++              amount: f8615.line8
++              status: f8615.parent_status_if_applies
++            line: tax
++      cite:
++        doc: i8615
++        locator: 'p. 7, Line 9, "Figure the tax on the amount on line 8 using the Tax Table, the Tax Computation Worksheet, the Qualified Dividends and Capital Gain Tax Worksheet"; Using the Qualified Dividends and Capital Gain Tax Worksheet for line 9 tax, steps 1 to 3 and 9, "Use the parent''s filing status to complete lines 6, 13, 22, and 24"'
++      refuses:
++        - when: f8615.child_sdtw
++          form: Schedule D Tax Worksheet for Form 8615, lines 9 and 15 (the child's own 28% rate or section 1250 gain)
++          remedy: When the child has 28% rate gain or unrecaptured section 1250 gain (Schedule D line 18 or 19) or a Form 4952
++            election, lines 9 and 15 are figured with a Schedule D Tax Worksheet, which this tool does not figure for Form 8615.
++          cite:
++            doc: i8615
++            locator: 'p. 7, Using the Schedule D Tax Worksheet for line 9 tax; p. 9, Using the Schedule D Tax Worksheet for line 15 tax'
++        - when: f8615.parent_sdtw_if_applies
++          form: Schedule D Tax Worksheet for Form 8615, line 9 (the parent's)
++          remedy: When the parent's tax was figured on the Schedule D Tax Worksheet, line 9 is figured with a Schedule D Tax
++            Worksheet, which this tool does not figure for Form 8615.
++          cite:
++            doc: i8615
++            locator: 'p. 7, Using the Schedule D Tax Worksheet for line 9 tax'
++        - when: f8615.others_sdtw_if_others
++          form: Schedule D Tax Worksheet for Form 8615, line 9 (another child's)
++          remedy: When another child whose Form 8615 uses the same parent has 28% rate gain or unrecaptured section 1250 gain,
++            line 9 is figured with a Schedule D Tax Worksheet, which this tool does not figure for Form 8615.
++          cite:
++            doc: i8615
++            locator: 'p. 7, Using the Schedule D Tax Worksheet for line 9 tax'
++    - id: f8615.line10
++      printed: "10"
++      label: Enter the parent’s tax from Form 1040, line 16, minus any alternative minimum tax, without tax from Form 4972 or Form 8814 or from the recapture of an education credit
++      type: NonNegDollars
++      expr: { op: copy, from: f8615.parent_tax_if_applies }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 10, "Enter the parent’s tax from Form 1040 or 1040-NR, line 16, minus any alternative minimum tax. Do not include any tax from Form 4972 or Form 8814, or any tax from the recapture of an education credit"'
++      ambiguity: amb.2025.f8615_line10_amt
++    - id: f8615.line11
++      printed: "11"
++      label: Subtract line 10 from line 9
++      type: Dollars
++      expr: { op: subtract, from: f8615.line9, take: f8615.line10 }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 11, "Subtract line 10 from line 9 and enter the result. If line 7 is blank, also enter this amount on line 13 and go to Part III"'
++      ambiguity: amb.2025.f8615_line11_sign
++    - id: f8615.line12a
++      printed: 12a
++      label: Add lines 5 and 7
++      type: NonNegDollars
++      expr: { op: sum, of: [f8615.line5, f8615.line7] }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 12a, "Add lines 5 and 7"'
++    - id: f8615.others_any
++      printed: (gate)
++      type: Bool
++      label: Line 7 is not blank (more than zero)
++      expr: { op: test, gt: [f8615.line7, { const: 0 }] }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 11, "If line 7 is blank, also enter this amount on line 13 and go to Part III"'
++    - id: f8615.line13_share
++      printed: (helper)
++      type: Dollars
++      label: 'Line 11 times line 12b (line 5 divided by line 12a, three places)'
++      expr: { op: prorate, amount: f8615.line11, part: f8615.line5, whole: f8615.line12a, places: 3 }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 12b, "Divide line 5 by line 12a. Enter the result as a decimal (rounded to at least three places)", line 13, "Multiply line 11 by line 12b"; i8615 p. 8, Lines 12a and 12b, "The decimal on line 12b is 0.333, figured as follows and rounded to three places"'
++      ambiguity: amb.2025.f8615_ratio_places
++    - id: f8615.line13
++      printed: "13"
++      label: Multiply line 11 by line 12b (line 11 when line 7 is blank)
++      type: Dollars
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.others_any, { const: false }] }
++          then: f8615.line11
++        - guard: { op: test, eq: [f8615.others_any, { const: true }] }
++          then: f8615.line13_share
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 11, "If line 7 is blank, also enter this amount on line 13"; line 13, "Multiply line 11 by line 12b"'
++
++    # Part III: the child's tax.
++    - id: f8615.line14
++      printed: "14"
++      label: Subtract line 5 from line 4
++      type: NonNegDollars
++      expr: { op: subtract_floor0, from: f8615.line4, take: f8615.line5 }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 14, "Subtract line 5 from line 4"'
++    - id: f8615.line14_any
++      printed: (gate)
++      type: Bool
++      label: Lines 4 and 5 are not the same (line 14 more than zero)
++      expr: { op: test, gt: [f8615.line14, { const: 0 }] }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), Part III, "If lines 4 and 5 above are the same, enter -0- on line 15 and go to line 16"'
++    - id: f8615.qd14
++      printed: (helper)
++      type: NonNegDollars
++      label: Qualified dividends included on line 14 (the Line 5 Worksheet's line 1 less its next-to-last line)
++      expr: { op: subtract_floor0, from: f8615.child_qd, take: f8615.qd5 }
++      cite:
++        doc: i8615
++        locator: 'p. 9, Net capital gain and qualified dividends on line 14, "the amount of qualified dividends included on line 14 is the amount from line 1 of the child’s completed Line 5 Worksheet minus the amount from the next to the last line of that worksheet"'
++    - id: f8615.ncg14
++      printed: (helper)
++      type: NonNegDollars
++      label: Net capital gain included on line 14 (the Line 5 Worksheet's line 2 less its last line)
++      expr: { op: subtract_floor0, from: f8615.child_ncg, take: f8615.ncg5 }
++      cite:
++        doc: i8615
++        locator: 'p. 9, Net capital gain and qualified dividends on line 14, "the amount of net capital gain included on line 14 is the amount from line 2 of the child’s completed Line 5 Worksheet minus the amount from the last line of that worksheet"'
++    - id: f8615.cg14
++      printed: (helper)
++      type: NonNegDollars
++      label: Qualified dividends and net capital gain included on line 14
++      expr: { op: sum, of: [f8615.qd14, f8615.ncg14] }
++      cite:
++        doc: i8615
++        locator: 'p. 9, Line 15, "If line 14 includes any net capital gain or qualified dividends"'
++    - id: f8615.cg14_any
++      printed: (gate)
++      type: Bool
++      label: Line 14 includes qualified dividends or net capital gain
++      expr: { op: test, gt: [f8615.cg14, { const: 0 }] }
++      cite:
++        doc: i8615
++        locator: 'p. 9, Line 15, "Tip: If line 14 includes any net capital gain or qualified dividends, use the Qualified Dividends and Capital Gain Tax Worksheet to figure this tax"'
++    - id: f8615.line15_tax
++      printed: (helper)
++      type: Dollars
++      label: The tax on line 14 at the child's filing status (the Qualified Dividends and Capital Gain Tax Worksheet when line 14 includes qualified dividends or net capital gain)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.cg14_any, { const: true }] }
++          then:
++            def: qdcg_amount
++            bind:
++              amount: f8615.line14
++              qd: f8615.qd14
++              ncg: f8615.ncg14
++              status: f1040.status
++            line: tax
++        - guard: { op: test, eq: [f8615.cg14_any, { const: false }] }
++          then:
++            def: tax_on_amount
++            bind:
++              amount: f8615.line14
++              status: f1040.status
++            line: tax
++      cite:
++        doc: i8615
++        locator: 'p. 9, Line 15, "Figure the tax using the Tax Table, Tax Computation Worksheet, Qualified Dividends and Capital Gain Tax Worksheet"; Using the Qualified Dividends and Capital Gain Tax Worksheet for line 15 tax, steps 1 to 5, "Use the child''s filing status to complete lines 6, 13, 22, and 24 of the worksheet"'
++    - id: f8615.line15
++      printed: "15"
++      label: Enter the tax on the amount on line 14 based on the child’s filing status (zero if lines 4 and 5 are the same)
++      type: Dollars
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.line14_any, { const: true }] }
++          then: f8615.line15_tax
++        - guard: { op: test, eq: [f8615.line14_any, { const: false }] }
++          then: f8615.zero
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 15, "Enter the tax on the amount on line 14 based on the child’s filing status"; Part III, "If lines 4 and 5 above are the same, enter -0- on line 15 and go to line 16"'
++    - id: f8615.line16
++      printed: "16"
++      label: Add lines 13 and 15
++      type: Dollars
++      expr: { op: sum, of: [f8615.line13, f8615.line15] }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 16, "Add lines 13 and 15"'
++    - id: f8615.line17
++      printed: "17"
++      label: Enter the tax on the amount on line 4 based on the child’s filing status
++      type: Dollars
++      expr: { op: copy, from: f1040.regular_tax }
++      cite:
++        doc: i8615
++        locator: 'p. 10, Line 17, "Figure the tax on the amount on line 4. Use the Tax Table, the Tax Computation Worksheet, the Qualified Dividends and Capital Gain Tax Worksheet, the Schedule D Tax Worksheet, or the child’s actual Schedule J (Form 1040), whichever applies"'
++    - id: f8615.line5_any
++      printed: (gate)
++      type: Bool
++      label: Line 5 is more than zero (otherwise the form stops and the tax is figured in the normal manner)
++      expr: { op: test, gt: [f8615.line5, { const: 0 }] }
++      cite:
++        doc: i8615
++        locator: 'p. 4, Line 5, "If zero or less, don’t complete the rest of the form. However, you must still attach Form 8615 to your child’s tax return. Figure the tax on your child’s taxable income in the normal manner"'
++    - id: f8615.larger
++      printed: (helper)
++      type: Dollars
++      label: The larger of line 16 or line 17
++      expr: { op: larger_of, of: [f8615.line16, f8615.line17] }
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 18, "Enter the larger of line 16 or line 17"'
++    - id: f8615.line18
++      printed: "18"
++      label: Enter the larger of line 16 or line 17 here and on the child’s Form 1040, line 16 (line 17 when line 5 is zero)
++      type: Dollars
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [f8615.line5_any, { const: true }] }
++          then: f8615.larger
++        - guard: { op: test, eq: [f8615.line5_any, { const: false }] }
++          then: f8615.line17
++      cite:
++        doc: f8615
++        locator: 'Form 8615 (2025), line 18, "Enter the larger of line 16 or line 17 here and on the child’s Form 1040 or 1040-NR, line 16"; line 5, "If zero, stop"; i8615 p. 4, Line 5, "Figure the tax on your child’s taxable income in the normal manner"'
+diff --git a/forms/2025/qdcg_amount.yaml b/forms/2025/qdcg_amount.yaml
+new file mode 100644
+index 0000000..dfb55ac
+--- /dev/null
++++ b/forms/2025/qdcg_amount.yaml
+@@ -0,0 +1,207 @@
++# Qualified Dividends and Capital Gain Tax Worksheet on a bound amount and filing status.
++#
++# The worksheet of i1040gi p. 38 with its inputs bound by the calling line: the amount for line 1, the qualified
++# dividends for line 2, the net capital gain for line 3, and the filing status that lines 6, 13, 22 and 24 use. Form
++# 8615 lines 9 and 15 say to figure the tax with this worksheet on an amount that is not the return's taxable income,
++# at the parent's or the child's filing status. Lines 6 and 13 read keyed tables by the bound status, which equal the
++# year parameters the return's own worksheet (qdcg) reads.
++
++def:
++  id: qdcg_amount
++  kind: def
++  title: "Qualified Dividends and Capital Gain Tax Worksheet on a bound amount and filing status"
++  tax_year: 2025
++  parameters: [amount, qd, ncg, status]
++  lines:
++
++    - id: amount
++      printed: "1"
++      label: "The amount whose tax is figured (line 1)"
++      type: NonNegDollars
++      expr: { op: input, source: "Bound by the calling line (the amount the worksheet's line 1 holds)." }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 1, "Enter the amount from Form 1040 or 1040-SR, line 15"' }
++
++    - id: qd
++      printed: "2"
++      label: "The qualified dividends included in the amount (line 2)"
++      type: NonNegDollars
++      expr: { op: input, source: "Bound by the calling line (the qualified dividends the worksheet's line 2 holds)." }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 2, "Enter the amount from Form 1040 or 1040-SR, line 3a"' }
++
++    - id: ncg
++      printed: "3"
++      label: "The net capital gain included in the amount (line 3)"
++      type: NonNegDollars
++      expr: { op: input, source: "Bound by the calling line (the net capital gain the worksheet's line 3 holds)." }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 3, "Are you filing Schedule D?"' }
++
++    - id: status
++      printed: "(status)"
++      label: "The filing status the worksheet is figured at"
++      type: Enum(filing_status)
++      expr: { op: input, source: "Bound by the calling line (a filing status)." }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 6, "$48,350 if single or married filing separately,"' }
++
++    - id: line4
++      printed: "4"
++      label: "Add lines 2 and 3"
++      type: NonNegDollars
++      expr: { op: sum, of: ["qd", "ncg"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 4, "Add lines 2 and 3"' }
++
++    - id: line5
++      printed: "5"
++      label: "Subtract line 4 from line 1. If zero or less, enter -0-"
++      type: NonNegDollars
++      expr: { op: subtract_floor0, from: "amount", take: "line4" }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 5, "Subtract line 4 from line 1. If zero or less, enter -0-"' }
++
++    - id: line6
++      printed: "6"
++      label: "Enter: $48,350 if single or married filing separately, $96,700 if married filing jointly or qualifying surviving spouse, $64,750 if head of household"
++      type: NonNegDollars
++      expr: { op: keyed_lookup, table: qdcg_zero_ceiling, keys: ["status"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 6, "$48,350 if single or married filing separately,"' }
++
++    - id: line7
++      printed: "7"
++      label: "Enter the smaller of line 1 or line 6"
++      type: NonNegDollars
++      expr: { op: smaller_of, of: ["amount", "line6"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 7, "Enter the smaller of line 1 or line 6"' }
++
++    - id: line8
++      printed: "8"
++      label: "Enter the smaller of line 5 or line 7"
++      type: NonNegDollars
++      expr: { op: smaller_of, of: ["line5", "line7"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 8, "Enter the smaller of line 5 or line 7"' }
++
++    - id: line9
++      printed: "9"
++      label: "Subtract line 8 from line 7. This amount is taxed at 0%"
++      type: Dollars
++      expr: { op: subtract, from: "line7", take: "line8" }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 9, "Subtract line 8 from line 7. This amount is taxed at 0%"' }
++
++    - id: line10
++      printed: "10"
++      label: "Enter the smaller of line 1 or line 4"
++      type: NonNegDollars
++      expr: { op: smaller_of, of: ["amount", "line4"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 10, "Enter the smaller of line 1 or line 4"' }
++
++    - id: line11
++      printed: "11"
++      label: "Enter the amount from line 9"
++      type: Dollars
++      expr: { op: copy, from: "line9" }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 11, "Enter the amount from line 9"' }
++
++    - id: line12
++      printed: "12"
++      label: "Subtract line 11 from line 10"
++      type: Dollars
++      expr: { op: subtract, from: "line10", take: "line11" }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 12, "Subtract line 11 from line 10"' }
++
++    - id: line13
++      printed: "13"
++      label: "Enter: $533,400 if single, $300,000 if married filing separately, $600,050 if married filing jointly or qualifying surviving spouse, $566,700 if head of household"
++      type: NonNegDollars
++      expr: { op: keyed_lookup, table: qdcg_fifteen_ceiling, keys: ["status"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 13, "$533,400 if single,"' }
++
++    - id: line14
++      printed: "14"
++      label: "Enter the smaller of line 1 or line 13"
++      type: NonNegDollars
++      expr: { op: smaller_of, of: ["amount", "line13"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 14, "Enter the smaller of line 1 or line 13"' }
++
++    - id: line15
++      printed: "15"
++      label: "Add lines 5 and 9"
++      type: Dollars
++      expr: { op: sum, of: ["line5", "line9"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 15, "Add lines 5 and 9"' }
++
++    - id: line16
++      printed: "16"
++      label: "Subtract line 15 from line 14. If zero or less, enter -0-"
++      type: NonNegDollars
++      expr: { op: subtract_floor0, from: "line14", take: "line15" }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 16, "Subtract line 15 from line 14. If zero or less, enter -0-"' }
++
++    - id: line17
++      printed: "17"
++      label: "Enter the smaller of line 12 or line 16"
++      type: Dollars
++      expr: { op: smaller_of, of: ["line12", "line16"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 17, "Enter the smaller of line 12 or line 16"' }
++
++    - id: line18
++      printed: "18"
++      label: "Multiply line 17 by 15% (0.15)"
++      type: Dollars
++      expr: { op: multiply_rate, amount: "line17", rate: { param: "qdcg.rate_15" } }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 18, "Multiply line 17 by 15% (0.15)"' }
++
++    - id: line19
++      printed: "19"
++      label: "Add lines 9 and 17"
++      type: Dollars
++      expr: { op: sum, of: ["line9", "line17"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 19, "Add lines 9 and 17"' }
++
++    - id: line20
++      printed: "20"
++      label: "Subtract line 19 from line 10"
++      type: Dollars
++      expr: { op: subtract, from: "line10", take: "line19" }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 20, "Subtract line 19 from line 10"' }
++
++    - id: line21
++      printed: "21"
++      label: "Multiply line 20 by 20% (0.20)"
++      type: Dollars
++      expr: { op: multiply_rate, amount: "line20", rate: { param: "qdcg.rate_20" } }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 21, "Multiply line 20 by 20% (0.20)"' }
++
++    - id: line22
++      printed: "22"
++      label: "Figure the tax on the amount on line 5. If the amount on line 5 is less than $100,000, use the Tax Table to figure the tax. If the amount on line 5 is $100,000 or more, use the Tax Computation Worksheet"
++      type: Dollars
++      expr:
++        op: copy
++        from:
++          def: tax_on_amount
++          bind: { amount: "line5", status: "status" }
++          line: "tax"
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 22, "Figure the tax on the amount on line 5"' }
++
++    - id: line23
++      printed: "23"
++      label: "Add lines 18, 21, and 22"
++      type: Dollars
++      expr: { op: sum, of: ["line18", "line21", "line22"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 23, "Add lines 18, 21, and 22"' }
++
++    - id: line24
++      printed: "24"
++      label: "Figure the tax on the amount on line 1. If the amount on line 1 is less than $100,000, use the Tax Table to figure the tax. If the amount on line 1 is $100,000 or more, use the Tax Computation Worksheet"
++      type: Dollars
++      expr:
++        op: copy
++        from:
++          def: tax_on_amount
++          bind: { amount: "amount", status: "status" }
++          line: "tax"
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 24, "Figure the tax on the amount on line 1"' }
++
++    - id: tax
++      printed: "25"
++      label: "Tax on all taxable income. Enter the smaller of line 23 or line 24"
++      type: Dollars
++      expr: { op: smaller_of, of: ["line23", "line24"] }
++      cite: { doc: i1040gi, locator: 'p. 38, Qualified Dividends and Capital Gain Tax Worksheet, line 25, "Tax on all taxable income. Enter the smaller of line 23 or line 24"' }
+diff --git a/forms/2025/s2.yaml b/forms/2025/s2.yaml
+index c2c16d6..02b6e36 100644
+--- a/forms/2025/s2.yaml
++++ b/forms/2025/s2.yaml
+@@ -325,14 +325,37 @@ form:
+       cite:
+         doc: i6251
+         locator: 'p. 9, Exemption Worksheet—Line 5, line 5, "Multiply line 4 by 25% (0.25)"'
+-    - id: s2.amt_l5
++    - id: s2.amt_l5_full
+       printed: (helper)
+       type: NonNegDollars
+-      label: "Form 6251 line 5: the exemption (Exemption Worksheet line 6)"
++      label: "Exemption Worksheet line 6: line 1 less line 5 (zero if zero or less)"
+       expr: { op: subtract_floor0, from: s2.amt_exemption, take: s2.amt_ex_cut }
+       cite:
+         doc: i6251
+         locator: 'p. 9, Exemption Worksheet—Line 5, line 6, "Subtract line 5 from line 1. If zero or less, enter -0-. Also, enter this amount on Form 6251, line 5"'
++    - id: s2.amt_l5_capped
++      printed: (helper)
++      type: NonNegDollars
++      label: "That exemption, not more than the child's earned income plus $9,550"
++      expr: { op: smaller_of, of: [s2.amt_l5_full, s2.amt_kiddie_cap] }
++      cite:
++        doc: rp-2024-40
++        locator: 'section 3.12, Alternative Minimum Tax Exemption for a Child Subject to the “Kiddie Tax,” "for a child to whom the § 1(g) “kiddie tax” applies, the exemption amount under §§ 55(d) and 59(j) for purposes of the alternative minimum tax under § 55 may not exceed the sum of (1) the child’s earned income for the taxable year, plus (2) $9,550"'
++      ambiguity: amb.2025.amt_kiddie_earned
++    - id: s2.amt_l5
++      printed: (helper)
++      type: NonNegDollars
++      label: "Form 6251 line 5: the exemption (Exemption Worksheet line 6), for a child to whom the kiddie tax applies not more than the child's earned income plus $9,550"
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [s2.amt_kiddie, { const: true }] }
++          then: s2.amt_l5_capped
++        - guard: { op: test, eq: [s2.amt_kiddie, { const: false }] }
++          then: s2.amt_l5_full
++      cite:
++        doc: i6251
++        locator: 'p. 9, Exemption Worksheet—Line 5, line 6, "Subtract line 5 from line 1. If zero or less, enter -0-. Also, enter this amount on Form 6251, line 5"'
+     - id: s2.amt_l6
+       printed: (helper)
+       type: NonNegDollars
+@@ -807,14 +830,76 @@ form:
+       cite:
+         doc: i6251
+         locator: 'p. 9, Exemption Worksheet—Line 5, line 5, "Multiply line 4 by 25% (0.25)"'
+-    - id: s2.amt_h5
++    - id: s2.amt_kiddie_add
++      printed: (helper)
++      type: NonNegDollars
++      label: Year parameter amt.kiddie_add ($9,550)
++      expr: { op: param, ref: amt.kiddie_add }
++      cite:
++        doc: rp-2024-40
++        locator: 'section 3.12, Alternative Minimum Tax Exemption for a Child Subject to the “Kiddie Tax,” "for a child to whom the § 1(g) “kiddie tax” applies, the exemption amount under §§ 55(d) and 59(j) for purposes of the alternative minimum tax under § 55 may not exceed the sum of (1) the child’s earned income for the taxable year, plus (2) $9,550"'
++    - id: s2.amt_kiddie_cap
++      printed: (helper)
++      type: NonNegDollars
++      label: "The child's earned income plus $9,550 (the most a child's exemption can be)"
++      expr: { op: sum, of: [f8615.earned, s2.amt_kiddie_add] }
++      cite:
++        doc: rp-2024-40
++        locator: 'section 3.12, Alternative Minimum Tax Exemption for a Child Subject to the “Kiddie Tax,” "for a child to whom the § 1(g) “kiddie tax” applies, the exemption amount under §§ 55(d) and 59(j) for purposes of the alternative minimum tax under § 55 may not exceed the sum of (1) the child’s earned income for the taxable year, plus (2) $9,550"'
++      ambiguity: amb.2025.amt_kiddie_earned
++    - id: s2.amt_kiddie_over
++      printed: (gate)
++      type: Bool
++      label: "Line 4, at its largest (with the questions not yet answered at their largest), is more than the child's earned income plus $9,550, so the cap could change line 6"
++      expr: { op: test, gt: [s2.amt_h4m, s2.amt_kiddie_cap] }
++      cite:
++        doc: rp-2024-40
++        locator: 'section 3.12, Alternative Minimum Tax Exemption for a Child Subject to the “Kiddie Tax,” "for a child to whom the § 1(g) “kiddie tax” applies, the exemption amount under §§ 55(d) and 59(j) for purposes of the alternative minimum tax under § 55 may not exceed the sum of (1) the child’s earned income for the taxable year, plus (2) $9,550"'
++    - id: s2.amt_kiddie
++      printed: (gate)
++      type: Bool
++      label: "The exemption is capped: a child to whom section 1(g) applies (Form 8615's Who Must File conditions 3 to 5), asked only where the cap could change line 6 (false otherwise)"
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [s2.amt_kiddie_over, { const: true }] }
++          then: f8615.child_1g
++        - guard: { op: test, eq: [s2.amt_kiddie_over, { const: false }] }
++          then: s2.no
++      cite:
++        doc: rp-2024-40
++        locator: 'section 3.12, Alternative Minimum Tax Exemption for a Child Subject to the “Kiddie Tax,” "for a child to whom the § 1(g) “kiddie tax” applies, the exemption amount under §§ 55(d) and 59(j) for purposes of the alternative minimum tax under § 55 may not exceed the sum of (1) the child’s earned income for the taxable year, plus (2) $9,550"'
++      ambiguity: amb.2025.amt_kiddie_child
++    - id: s2.amt_h5_full
+       printed: (helper)
+       type: NonNegDollars
+-      label: The exemption for that line 4
++      label: The exemption for that line 4, before the child's cap
+       expr: { op: subtract_floor0, from: s2.amt_exemption, take: s2.amt_h_ex_cut }
+       cite:
+         doc: i6251
+         locator: 'p. 9, Exemption Worksheet—Line 5, line 6, "Subtract line 5 from line 1. If zero or less, enter -0-"'
++    - id: s2.amt_h5_capped
++      printed: (helper)
++      type: NonNegDollars
++      label: "That exemption, not more than the child's earned income plus $9,550"
++      expr: { op: smaller_of, of: [s2.amt_h5_full, s2.amt_kiddie_cap] }
++      cite:
++        doc: rp-2024-40
++        locator: 'section 3.12, Alternative Minimum Tax Exemption for a Child Subject to the “Kiddie Tax,” "for a child to whom the § 1(g) “kiddie tax” applies, the exemption amount under §§ 55(d) and 59(j) for purposes of the alternative minimum tax under § 55 may not exceed the sum of (1) the child’s earned income for the taxable year, plus (2) $9,550"'
++    - id: s2.amt_h5
++      printed: (helper)
++      type: NonNegDollars
++      label: The exemption for that line 4 (capped for a child to whom the kiddie tax applies)
++      expr:
++        op: choose
++        alternatives:
++        - guard: { op: test, eq: [s2.amt_kiddie, { const: true }] }
++          then: s2.amt_h5_capped
++        - guard: { op: test, eq: [s2.amt_kiddie, { const: false }] }
++          then: s2.amt_h5_full
++      cite:
++        doc: i6251
++        locator: 'p. 9, Exemption Worksheet—Line 5, line 6, "Subtract line 5 from line 1. If zero or less, enter -0-"'
+     - id: s2.amt_h6
+       printed: (helper)
+       type: NonNegDollars
+diff --git a/params/2025.yaml b/params/2025.yaml
+index 37de78b..811a8f1 100644
+--- a/params/2025.yaml
++++ b/params/2025.yaml
+@@ -562,6 +562,14 @@ params:
+         doc: i6251
+         locator: p. 9, Line 4—Alternative Minimum Taxable Income
+         quote: If line 4 is $1,174,350 or more, include an additional $68,500.
++    amt.kiddie_add:
++      type: Dollars
++      value: 955000
++      cite:
++        doc: rp-2024-40
++        locator: section 3.12, Alternative Minimum Tax Exemption for a Child Subject to the “Kiddie Tax”
++        quote: the exemption amount under §§ 55(d) and 59(j) for purposes of the alternative minimum tax under § 55 may not
++          exceed the sum of (1) the child’s earned income for the taxable year, plus (2) $9,550.
+     amt.bracket:
+       type: Dollars
+       value:
+@@ -1427,6 +1435,20 @@ params:
+       cite:
+         doc: i1040gi
+         locator: p. 117, Schedule 3 line 11, amount withheld in excess
++    f8615.base:
++      type: Dollars
++      value: 270000
++      cite:
++        doc: f8615
++        locator: Form 8615 (2025), line 2
++        quote: If the child did not itemize deductions on Schedule A (Form 1040) or Schedule A (Form 1040-NR), enter $2,700.
++    f8615.status_unused:
++      type: Enum(filing_status)
++      value: single
++      cite:
++        doc: f8615
++        locator: Form 8615 (2025), line C, the parent's filing status, read only where Form 8615 applies
++        quote: Parent’s filing status (check one)
+     sales.zero:
+       value: 0
+       type: NonNegDollars
+diff --git a/tables/2025/qdcg_fifteen_ceiling.yaml b/tables/2025/qdcg_fifteen_ceiling.yaml
+new file mode 100644
+index 0000000..1adcd44
+--- /dev/null
++++ b/tables/2025/qdcg_fifteen_ceiling.yaml
+@@ -0,0 +1,21 @@
++# The top of the 15% band of the Qualified Dividends and Capital Gain Tax Worksheet (line 13), by filing status, for
++# the worksheet bound to a filing status other than the return's (def qdcg_amount). Written by hand from the worksheet;
++# tools/check_qdcg_ceiling.py checks that each row equals the year parameter qdcg.fifteen_rate_ceiling.
++table:
++  id: qdcg_fifteen_ceiling
++  kind: keyed
++  title: "Qualified Dividends and Capital Gain Tax Worksheet, line 13, by filing status (2025)"
++  tax_year: 2025
++  cite:
++    doc: i1040gi
++    locator: "p. 38, Qualified Dividends and Capital Gain Tax Worksheet—Line 16, line 13"
++    quote: "$533,400 if single,"
++  keys:
++    - { name: status, type: Enum(filing_status) }
++  cell: NonNegDollars
++  rows:
++    - { keys: [single], value: 53340000 }
++    - { keys: [mfs], value: 30000000 }
++    - { keys: [mfj], value: 60005000 }
++    - { keys: [qss], value: 60005000 }
++    - { keys: [hoh], value: 56670000 }
+diff --git a/tables/2025/qdcg_zero_ceiling.yaml b/tables/2025/qdcg_zero_ceiling.yaml
+new file mode 100644
+index 0000000..b66be17
+--- /dev/null
++++ b/tables/2025/qdcg_zero_ceiling.yaml
+@@ -0,0 +1,21 @@
++# The top of the 0% band of the Qualified Dividends and Capital Gain Tax Worksheet (line 6), by filing status, for the
++# worksheet bound to a filing status other than the return's (def qdcg_amount). Written by hand from the worksheet;
++# tools/check_qdcg_ceiling.py checks that each row equals the year parameter qdcg.zero_rate_ceiling.
++table:
++  id: qdcg_zero_ceiling
++  kind: keyed
++  title: "Qualified Dividends and Capital Gain Tax Worksheet, line 6, by filing status (2025)"
++  tax_year: 2025
++  cite:
++    doc: i1040gi
++    locator: "p. 38, Qualified Dividends and Capital Gain Tax Worksheet—Line 16, line 6"
++    quote: "$48,350 if single or married filing separately,"
++  keys:
++    - { name: status, type: Enum(filing_status) }
++  cell: NonNegDollars
++  rows:
++    - { keys: [single], value: 4835000 }
++    - { keys: [mfs], value: 4835000 }
++    - { keys: [mfj], value: 9670000 }
++    - { keys: [qss], value: 9670000 }
++    - { keys: [hoh], value: 6475000 }
+diff --git a/tools/check_all_steps.sh b/tools/check_all_steps.sh
+index 66ed6c3..2a3d21e 100755
+--- a/tools/check_all_steps.sh
++++ b/tools/check_all_steps.sh
+@@ -200,6 +200,7 @@ jstep check_extraction "--jurisdiction ny" python3 tools/check_extraction.py
+ step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
+ step check_ptc_tables python3 tools/extract_ptc_tables.py --check "$@"
+ step check_realty_tables python3 tools/extract_realty_tables.py --check "$@"
++step check_qdcg_ceiling python3 tools/check_qdcg_ceiling.py "$@"
+ step check_auto_limits python3 tools/check_auto_limits.py "$@"
+ step check_printed_tables python3 tools/extract_printed_tables.py --check "$@"
+ step check_layouts python3 tools/layouts.py --check "$@"
+diff --git a/tools/check_qdcg_ceiling.py b/tools/check_qdcg_ceiling.py
+new file mode 100644
+index 0000000..3a74735
+--- /dev/null
++++ b/tools/check_qdcg_ceiling.py
+@@ -0,0 +1,105 @@
++#!/usr/bin/env python3
++"""Check that the keyed tables qdcg_zero_ceiling and qdcg_fifteen_ceiling equal the year parameters they copy.
++
++The Qualified Dividends and Capital Gain Tax Worksheet's lines 6 and 13 are read two ways: the return's own worksheet
++(form qdcg) reads the status-keyed parameters qdcg.zero_rate_ceiling and qdcg.fifteen_rate_ceiling at the return's
++filing status, and the def qdcg_amount, bound to another filing status, reads the keyed tables. This check fails when
++a table row and its parameter disagree, or a status is missing on either side, so the two copies cannot drift.
++
++Usage: python3 tools/check_qdcg_ceiling.py [--year N] [--self-test]
++"""
++import argparse
++import sys
++from pathlib import Path
++
++import yaml
++
++ROOT = Path(__file__).resolve().parent.parent
++PAIRS = (("qdcg_zero_ceiling", "qdcg.zero_rate_ceiling"), ("qdcg_fifteen_ceiling", "qdcg.fifteen_rate_ceiling"))
++
++
++def find_param(params, key):
++    """The parameter entry for key, wherever the year file nests it."""
++    if isinstance(params, dict):
++        if key in params and isinstance(params[key], dict) and "value" in params[key]:
++            return params[key]
++        for v in params.values():
++            hit = find_param(v, key)
++            if hit is not None:
++                return hit
++    return None
++
++
++def compare(table, param):
++    """Problems between a keyed table (status -> value) and a status-keyed parameter value."""
++    problems = []
++    rows = {}
++    for row in table["rows"]:
++        (status,) = row["keys"]
++        if status in rows:
++            problems.append(f"{table['id']}: status {status} appears twice")
++        rows[status] = row["value"]
++    value = param["value"]
++    if not isinstance(value, dict):
++        return [f"{table['id']}: its parameter is not keyed by filing status"]
++    for status in sorted(set(rows) | set(value)):
++        if status not in rows:
++            problems.append(f"{table['id']}: no row for {status}")
++        elif status not in value:
++            problems.append(f"{table['id']}: row {status} has no parameter value")
++        elif rows[status] != value[status]:
++            problems.append(f"{table['id']}: {status} is {rows[status]} in the table, {value[status]} in the parameter")
++    return problems
++
++
++def check(year):
++    params = yaml.safe_load((ROOT / "params" / f"{year}.yaml").read_text(encoding="utf-8"))
++    problems = []
++    for table_id, param_id in PAIRS:
++        path = ROOT / "tables" / str(year) / f"{table_id}.yaml"
++        if not path.exists():
++            problems.append(f"{path.relative_to(ROOT)} is missing")
++            continue
++        table = yaml.safe_load(path.read_text(encoding="utf-8"))["table"]
++        param = find_param(params, param_id)
++        if param is None:
++            problems.append(f"parameter {param_id} is missing from params/{year}.yaml")
++            continue
++        problems += compare(table, param)
++    return problems
++
++
++def self_test():
++    good = {"id": "t", "rows": [{"keys": ["single"], "value": 1}, {"keys": ["mfj"], "value": 2}]}
++    param = {"value": {"single": 1, "mfj": 2}}
++    cases = [
++        ("equal copies pass", compare(good, param) == []),
++        ("a different value fails", compare(good, {"value": {"single": 1, "mfj": 3}}) != []),
++        ("a status missing from the table fails", compare(good, {"value": {"single": 1, "mfj": 2, "hoh": 4}}) != []),
++        ("a status missing from the parameter fails", compare(good, {"value": {"single": 1}}) != []),
++        ("a repeated row fails", compare({"id": "t", "rows": good["rows"] + [{"keys": ["mfj"], "value": 2}]}, param) != []),
++        ("an unkeyed parameter fails", compare(good, {"value": 5}) != []),
++    ]
++    bad = [name for name, ok in cases if not ok]
++    for name in bad:
++        print(f"self-test failed: {name}")
++    print(f"check_qdcg_ceiling self-test: {len(cases) - len(bad)}/{len(cases)} passed")
++    return 1 if bad else 0
++
++
++def main():
++    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
++    ap.add_argument("--year", type=int, default=2025)
++    ap.add_argument("--self-test", action="store_true")
++    args = ap.parse_args()
++    if args.self_test:
++        return self_test()
++    problems = check(args.year)
++    for p in problems:
++        print(p)
++    print(f"check_qdcg_ceiling {args.year}: {'ok' if not problems else f'{len(problems)} problem(s)'}")
++    return 1 if problems else 0
++
++
++if __name__ == "__main__":
++    sys.exit(main())
+diff --git a/tools/coverage/tree.json b/tools/coverage/tree.json
+index 7191e72..ef898e3 100644
+--- a/tools/coverage/tree.json
++++ b/tools/coverage/tree.json
+@@ -81,7 +81,12 @@
+ 
+   {"gate": "s2.amt", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Does the alternative minimum tax apply? Figured from the return (Form 6251 at its largest against line 10); asked only of the few it could reach: private activity bond interest, mortgage interest on a boat or motor home, a business's circulation, mining or drilling costs."},
+   {"gate": "s2.other", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Do you owe another Schedule 2 tax, such as household employment taxes, tax on unreported tips, or repayment of a clean vehicle credit?", "stop": "Other Schedule 2 taxes"},
+-  {"gate": "scope.other_line16", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Do you have an extra line 16 tax or filing, such as the tax on a child's unearned income (Form 8615), Form 8814, Form 4972 or an education credit recapture?", "stop": "Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture"},
++  {"gate": "scope.other_line16", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Do you have an extra line 16 tax or filing, such as Form 8814, Form 4972 or an education credit recapture?", "stop": "Forms 8814, 4972, 8621 or 8978, a section 962 election, or an education credit recapture"},
++  {"gate": "f8615.child_itemizes", "topic": "interest", "kind": "situation", "question": "Is part of your income other than pay taxed at a parent's rate (Form 8615), and do you itemize deductions?"},
++  {"gate": "f8615.child_sdtw", "topic": "interest", "kind": "situation", "question": "Is part of your income other than pay taxed at a parent's rate, and do you have 28% rate gain or unrecaptured section 1250 gain (Schedule D line 18 or 19)?"},
++  {"gate": "f8615.parent_sdtw_if_applies", "topic": "interest", "kind": "situation", "question": "Is part of your income other than pay taxed at a parent's rate, and was that parent's tax figured on the Schedule D Tax Worksheet?"},
++  {"gate": "f8615.others_sdtw_if_others", "topic": "interest", "kind": "situation", "question": "Does a brother or sister whose Form 8615 uses the same parent have 28% rate gain or unrecaptured section 1250 gain?"},
++  {"gate": "f8615.parent_special", "topic": "interest", "kind": "situation", "question": "Is part of your income other than pay taxed at a parent's rate, and did that parent use Schedule J or file Form 2555?", "stop": "Schedule J or the Foreign Earned Income Tax Worksheet for Form 8615, lines 6, 9 and 10"},
+   {"gate": "s3.adoption_if_any", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Did an adoption become final in 2025, or did you pay adoption costs in 2025?", "stop": "Form 8839 (adoption credit)"},
+   {"gate": "s3.adoption_us_if_earlier", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "In 2024, did you pay costs toward adopting a U.S. child, where the adoption was not final by the end of 2024?"},
+   {"gate": "s3.credit_bond", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "In 2025, did a bond you own, or a fund, give you a federal tax credit?"},
+diff --git a/tools/self_tests.py b/tools/self_tests.py
+index cead4f5..1682160 100755
+--- a/tools/self_tests.py
++++ b/tools/self_tests.py
+@@ -49,6 +49,7 @@ TESTS = [
+     ("archive_text_self_test", "code", False, ["python3", "tools/archive_text.py", "--self-test"]),
+     ("check_extraction_self_test", "code", False, ["python3", "tools/check_extraction.py", "--self-test"]),
+     ("check_macrs_tables_self_test", "code", True, ["python3", "tools/check_macrs_tables.py", "--self-test"]),
++    ("check_qdcg_ceiling_self_test", "code", True, ["python3", "tools/check_qdcg_ceiling.py", "--self-test"]),
+     ("check_auto_limits_self_test", "code", True, ["python3", "tools/check_auto_limits.py", "--self-test"]),
+     ("check_source_titles_self_test", "code", False, ["python3", "tools/check_source_titles.py", "--self-test"]),
+     ("worktree_data_self_test", "code", False, ["python3", "tools/worktree_data.py", "--self-test"]),

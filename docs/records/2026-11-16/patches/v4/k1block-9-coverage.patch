@@ -1,0 +1,257 @@
+diff --git a/interview/2025/coverage/k1p.yaml b/interview/2025/coverage/k1p.yaml
+new file mode 100644
+index 0000000..a4204e8
+--- /dev/null
++++ b/interview/2025/coverage/k1p.yaml
+@@ -0,0 +1,142 @@
++tax_year: 2025
++part: Partnership Schedules K-1
++profile: full
++sets:
++  one_k1:
++    says: One person with one Schedule K-1 (Form 1065) from a partnership that is not publicly traded.
++    answers:
++      scope.k1: true
++      $k1p@person[taxpayer]: [llc]
++      person[taxpayer].k1p[llc].ptp: false
++  general:
++    says: A general partner or LLC member-manager.
++    answers:
++      person[taxpayer].k1p[llc].general: true
++  limited:
++    says: A limited partner or other LLC member.
++    answers:
++      person[taxpayer].k1p[llc].general: false
++rows:
++  - id: k1p.refuse_ptp
++    design: lane x2-k1p, R-K1 (D-K4)
++    situation: A unit holder in a publicly traded partnership (item D checked).
++    answers:
++      scope.k1: true
++      $k1p@person[taxpayer]: [mlp]
++      person[taxpayer].k1p[mlp].ptp: true
++    expect:
++      refused: person[taxpayer].k1p[mlp].ptp
++  - id: k1p.operator_material
++    design: lane x2-k1p, K2 and K7 (typical operating LLC member-manager)
++    situation: A member-manager of a small LLC with business income, self-employment earnings and section 199A information, who worked over 500 hours.
++    uses: [one_k1, general]
++    answers:
++      person[taxpayer].k1p[llc].has_b1: true
++      person[taxpayer].k1p[llc].box1: 5000000
++      person[taxpayer].k1p[llc].has_b14a: true
++      person[taxpayer].k1p[llc].box14a: 5000000
++      person[taxpayer].k1p[llc].has_b20z: true
++      person[taxpayer].k1p[llc].box20z: 5000000
++      person[taxpayer].k1p[llc].trader: false
++      person[taxpayer].k1p[llc].work: true
++      person[taxpayer].k1p[llc].hours500: true
++      person[taxpayer].k1p[llc].prior_any: false
++    expect:
++      proceeds:
++        person[taxpayer].k1p[llc].hours500: true
++      not_asked:
++        - person[taxpayer].k1p[llc].most_hours
++        - person[taxpayer].k1p[llc].basis_short
++  - id: k1p.fund_lp_loss
++    design: lane x2-k1p, K3 (limited partner in a real estate fund)
++    situation: A limited partner with a rental real estate loss; not asked about active participation.
++    uses: [one_k1, limited]
++    answers:
++      person[taxpayer].k1p[llc].has_b2: true
++      person[taxpayer].k1p[llc].box2: -1200000
++      person[taxpayer].k1p[llc].prior_any: false
++      person[taxpayer].k1p[llc].basis_short: false
++      person[taxpayer].k1p[llc].not_at_risk: false
++    expect:
++      proceeds:
++        person[taxpayer].k1p[llc].not_at_risk: false
++      not_asked:
++        - person[taxpayer].k1p[llc].decisions
++  - id: k1p.portfolio_only
++    design: lane x2-k1p, K6 (portfolio-only K-1)
++    situation: A limited partner whose K-1 shows only interest and dividends; no participation or loss questions.
++    uses: [one_k1, limited]
++    answers:
++      person[taxpayer].k1p[llc].has_b5: true
++      person[taxpayer].k1p[llc].box5: 30000
++      person[taxpayer].k1p[llc].has_b6a: true
++      person[taxpayer].k1p[llc].box6a: 100000
++      person[taxpayer].k1p[llc].box6b: 80000
++    expect:
++      proceeds:
++        person[taxpayer].k1p[llc].box6b: 80000
++      not_asked:
++        - person[taxpayer].k1p[llc].work
++        - person[taxpayer].k1p[llc].prior_any
++        - person[taxpayer].k1p[llc].basis_short
++  - id: k1p.refuse_box10
++    design: lane x2-k1p, R-K9
++    situation: A K-1 with a section 1231 gain in box 10.
++    uses: [one_k1, limited]
++    answers:
++      person[taxpayer].k1p[llc].r_b10: true
++    expect:
++      refused: person[taxpayer].k1p[llc].r_b10
++  - id: k1p.refuse_multi
++    design: lane x2-k1p, R-K2
++    situation: A K-1 with box 23 checked (more than one activity).
++    uses: [one_k1, limited]
++    answers:
++      person[taxpayer].k1p[llc].r_b2223: true
++    expect:
++      refused: person[taxpayer].k1p[llc].r_b2223
++  - id: k1p.refuse_disposed
++    design: lane x2-k1p, R-K4
++    situation: A partner who sold part of the interest in 2025.
++    uses: [one_k1, limited]
++    answers:
++      person[taxpayer].k1p[llc].r_disposed: true
++    expect:
++      refused: person[taxpayer].k1p[llc].r_disposed
++  - id: k1p.refuse_basis
++    design: lane x2-k1p, R-K5 (D-K2)
++    situation: A business loss larger than the partner's basis.
++    uses: [one_k1, limited]
++    answers:
++      person[taxpayer].k1p[llc].has_b1: true
++      person[taxpayer].k1p[llc].box1: -500000
++      person[taxpayer].k1p[llc].trader: false
++      person[taxpayer].k1p[llc].work: false
++      person[taxpayer].k1p[llc].prior_any: false
++      person[taxpayer].k1p[llc].basis_short: true
++    expect:
++      refused: person[taxpayer].k1p[llc].basis_short_if_loss
++  - id: k1p.refuse_dist_over
++    design: lane x2-k1p, R-K8
++    situation: Money taken out of the partnership above basis.
++    uses: [one_k1, limited]
++    answers:
++      person[taxpayer].k1p[llc].has_b19: true
++      person[taxpayer].k1p[llc].b19_other: false
++      person[taxpayer].k1p[llc].dist_over: true
++    expect:
++      refused: person[taxpayer].k1p[llc].dist_over_if_any
++  - id: k1p.refuse_test6
++    design: lane x2-k1p, R-K21 (D-K5)
++    situation: A limited partner in a consulting partnership, under 500 hours, materially participated in 3 earlier years.
++    uses: [one_k1, limited]
++    answers:
++      person[taxpayer].k1p[llc].has_b1: true
++      person[taxpayer].k1p[llc].box1: 1000000
++      person[taxpayer].k1p[llc].trader: false
++      person[taxpayer].k1p[llc].work: true
++      person[taxpayer].k1p[llc].hours500: false
++      person[taxpayer].k1p[llc].five_of_ten: false
++      person[taxpayer].k1p[llc].t6: true
++    expect:
++      refused: person[taxpayer].k1p[llc].t6_if_asked
+diff --git a/interview/2025/coverage/k1s.yaml b/interview/2025/coverage/k1s.yaml
+new file mode 100644
+index 0000000..46e09b6
+--- /dev/null
++++ b/interview/2025/coverage/k1s.yaml
+@@ -0,0 +1,53 @@
++tax_year: 2025
++part: S corporation Schedules K-1
++profile: full
++sets:
++  one_k1s:
++    says: One person with one Schedule K-1 (Form 1120-S) from an S corporation.
++    answers:
++      scope.k1: true
++      $k1p@person[taxpayer]: []
++      $k1s@person[taxpayer]: [acme]
++rows:
++  - id: k1s.refuse_multi
++    design: k1block unit 9 (k1s R-gate k1s.multi, boxes 18 and 19)
++    situation: An S corporation K-1 with box 18 checked (more than one activity).
++    uses: [one_k1s]
++    answers:
++      person[taxpayer].k1s[acme].multi: true
++    expect:
++      refused: person[taxpayer].k1s[acme].multi
++  - id: k1s.refuse_disposed
++    design: k1block unit 9 (k1s R-gate k1s.disposed)
++    situation: A shareholder sold some of her S corporation shares back to the corporation in 2025.
++    uses: [one_k1s]
++    answers:
++      person[taxpayer].k1s[acme].multi: false
++      person[taxpayer].k1s[acme].disposed: true
++    expect:
++      refused: person[taxpayer].k1s[acme].disposed
++  - id: k1s.portfolio_interest
++    design: k1block unit 9 (an S corporation K-1 with interest only; no participation or basis questions)
++    situation: A shareholder whose S corporation K-1 shows only interest income in box 4.
++    uses: [one_k1s]
++    answers:
++      person[taxpayer].k1s[acme].multi: false
++      person[taxpayer].k1s[acme].disposed: false
++      person[taxpayer].k1s[acme].box4_any: true
++      person[taxpayer].k1s[acme].box4: 25000
++    expect:
++      proceeds:
++        person[taxpayer].k1s[acme].box4: 25000
++      not_asked:
++        - person[taxpayer].k1s[acme].work
++        - person[taxpayer].k1s[acme].hours500
++  - id: k1s.refuse_box10
++    design: k1block unit 9 (k1s R-gate k1s.box10)
++    situation: An S corporation K-1 shows other income in box 10.
++    uses: [one_k1s]
++    answers:
++      person[taxpayer].k1s[acme].multi: false
++      person[taxpayer].k1s[acme].disposed: false
++      person[taxpayer].k1s[acme].box10: true
++    expect:
++      refused: person[taxpayer].k1s[acme].box10
+diff --git a/tools/coverage/categories.json b/tools/coverage/categories.json
+index 22bc5df..d00740f 100644
+--- a/tools/coverage/categories.json
++++ b/tools/coverage/categories.json
+@@ -280,10 +280,8 @@
+   {
+    "id": "partnership_scorp",
+    "group": "schedule_e",
+-   "gates": [
+-    "scope.schedule1"
+-   ],
+-   "label": "Partnership or S corporation income or loss",
++   "gates": [],
++   "label": "Partnership or S corporation income or loss (supported since the K-1 integration; its remaining refusals, among them partnership self-employment earnings, are unmeasured gates)",
+    "micro": {
+     "nonzero": [
+      "partnership_s_corp_income"
+@@ -317,7 +315,8 @@
+       }
+      ]
+     ]
+-   }
++   },
++   "refused": false
+   },
+   {
+    "id": "estate_trust",
+diff --git a/tools/coverage/tree.json b/tools/coverage/tree.json
+index 42cc917..b3c4844 100644
+--- a/tools/coverage/tree.json
++++ b/tools/coverage/tree.json
+@@ -6,7 +6,7 @@
+   {"theme": "Wages", "covered": "Wages and tips on Form W-2", "refused": [{"label": "Wages or tips not on a Form W-2, and other earned income", "categories": ["wages_not_w2"]}]},
+   {"theme": "Investments", "covered": "Interest, dividends, and sales of stocks, bonds, funds, and crypto and other digital assets", "refused": []},
+   {"theme": "Retirement", "covered": "Pensions, annuities, IRA and 401(k) distributions, Social Security and unemployment compensation", "refused": []},
+-  {"theme": "Business and property", "covered": "A sole proprietorship or freelance work (Schedule C), and rental and royalty income (Schedule E)", "refused": [{"label": "A partnership, S corporation, estate or trust (Schedule K-1)", "categories": ["partnership_scorp", "estate_trust"]}, {"label": "Farm income", "categories": ["farm"]}, {"label": "Sales of business property (Form 4797)", "categories": ["form4797"]}, {"label": "A net operating loss carried from another year", "categories": ["nol"]}]},
++  {"theme": "Business and property", "covered": "A sole proprietorship or freelance work (Schedule C), rental and royalty income (Schedule E), and partnership and S corporation Schedules K-1", "refused": [{"label": "An estate or trust (Schedule K-1 from Form 1041)", "categories": ["estate_trust"]}, {"label": "Farm income", "categories": ["farm"]}, {"label": "Sales of business property (Form 4797)", "categories": ["form4797"]}, {"label": "A net operating loss carried from another year", "categories": ["nol"]}]},
+   {"theme": "Other income", "covered": "State tax refunds, alimony, gambling winnings, prizes, canceled debt and jury duty pay", "refused": [{"label": "Other income the tool does not list", "categories": ["other_income"], "upper_bound": "the IRS count includes the kinds of other income the tool does handle"}]},
+   {"theme": "Deductions", "covered": "The standard deduction or itemized deductions, and the 2025 deductions for tips, overtime, car loan interest and seniors", "refused": []},
+   {"theme": "Credits", "covered": "The child tax credit, the earned income credit, and the child and dependent care, education, saver's, home energy and premium tax credits", "refused": [{"label": "Other credits, such as the adoption, clean vehicle, elderly or disabled, or business credits", "categories": ["other_nonrefundable"]}]},
+@@ -267,6 +267,9 @@
+   {"gate": "k1s.risk_carry", "topic": "k1", "kind": "situation", "question": "Is an S corporation loss carried from an earlier year by the at-risk rules (Form 6198)?"},
+   {"gate": "k1s.not_at_risk_if_loss", "topic": "k1", "kind": "situation", "question": "Is any of your S corporation investment not at risk, with a loss (Form 6198)?"},
+   {"gate": "k1s.qbi_cut", "topic": "k1", "kind": "situation", "question": "Is an S corporation QBI loss partly suspended by the basis limitation?"},
++  {"gate": "k1p.qbi_release", "topic": "k1", "kind": "situation", "question": "Is a partnership business loss held back in an earlier year allowed in 2025, with section 199A information (box 20, code Z)?"},
++  {"gate": "k1s.qbi_release", "topic": "k1", "kind": "situation", "question": "Is an S corporation business loss held back in an earlier year allowed in 2025, with section 199A information (box 17, code V)?"},
++  {"gate": "person.k1_se_any", "topic": "k1", "kind": "situation", "question": "Does a partnership Schedule K-1 show self-employment earnings (box 14, code A)?", "stop": "Partnership self-employment earnings (Schedule SE line 2)"},
+   {"gate": "f7203.election_if_req", "topic": "k1", "kind": "situation", "question": "Is a Regulations section 1.1367-1(g) election in effect for an S corporation (Form 7203)?"},
+   {"gate": "f7203.loans_if_req", "topic": "k1", "kind": "situation", "question": "Have you lent money to an S corporation (Form 7203 Part II)?"},
+   {"gate": "f7203.dist_over", "topic": "k1", "kind": "situation", "question": "Were S corporation distributions more than your stock basis?"},

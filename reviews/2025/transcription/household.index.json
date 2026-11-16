@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "1d20969f901dbf29edffefebc1677a2db6f6d65990af9bd9727a4fc70e55967e",
  "head_rows": {
-  "printed lines compared": "21",
-  "agree / disagree / missing": "6 / 15 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-15); see Line-scoped reviews"
+  "printed lines compared": "25",
+  "agree / disagree / missing": "7 / 18 / 0",
+  "line-scoped reviews": "7 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -145,10 +145,37 @@
   },
   {
    "key": "household.filing_status_conflict",
-   "record": "e489c2b263f0be04bfdce6cb3c97c564f770a815ea6bb5c950f38ca8c8d3bff6",
+   "record": "9e8c0fdaad9ae9700f8acc54ceab59a5719abdb91dd0b6b793c5075a4def1dfa",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040gi pp. 13-15, Filing Status, and p501 pp. 6-8. Ruled by reading: no household triage (triage.py refuses the form because an earlier pass names the renamed household.widowed_2025; the record on disk predates the redraft). The project's gate checks the two marriage-entry contradictions (single while married at the end of 2025; a joint return with no year-end marriage and no 2025 death, BUG-0286); the reply folds in the other statuses, each refused elsewhere: a single return with a 2025 death (household.widowed_this_year), a separate return while unmarried (married filing separately refused for the whole return by s3.mfs on scope.ready), a head of household not unmarried (household.hoh_fails) and a qualifying surviving spouse failing its tests (household.qss_fails). As the prior rulings on this line. Project stands.",
-   "subject_key": "d3726fb701279239fd74ad58da6dde3ece4c0c75daeab37a3af0b50024527454"
+   "ruling": "Ruling: model error; read without triage (triage.py refuses the log: an old line-scoped pass, 7073fcafb61a, names household.widowed_2025, which the form no longer compares). The changed alternative is MFS: the project refuses a separate return only when the filer was not married at the end of 2025 and no spouse died in 2025 (household.joint_unmarried); the reply refuses every MFS filer not married on Dec 31, so it refuses a 2025 widow filing separately. p501 p. 6, Spouse died during the year: \"If your spouse died during the year, you are considered married for the whole year for filing status purposes\"; i1040gi p. 14 allows MFS to a married filer. The project is right. The reply's other differences fold in cases other gates refuse (a 2025 death on a single return: household.widowed_2025; HOH tests: household.hoh_fails; QSS: household.qss_fails), as the prior rounds ruled (scope).",
+   "subject_key": "a24781b8b433b665c709bebd5dd08427ae20e3e7d7e188f3c0c8a7854c2af301"
+  },
+  {
+   "key": "household.mfs",
+   "record": "9e8c0fdaad9ae9700f8acc54ceab59a5719abdb91dd0b6b793c5075a4def1dfa",
+   "status": "AGREE",
+   "subject_key": "7f19e69665bf206cdad7db1115f656478fd328a77254e34f837cb9d62ec70b16"
+  },
+  {
+   "key": "household.mfs_apart_all_year",
+   "record": "9e8c0fdaad9ae9700f8acc54ceab59a5719abdb91dd0b6b793c5075a4def1dfa",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; read without triage (triage.py refuses the log, see filing_status_conflict). On MFS both read household.mfs_living == apart_all_year. Off MFS the project reads the year parameter household.mfs_living_else (together_late), so the test is false, and the reply's conjunction with status mfs is false too; the reply only reads the gated input ungated. Equal on every status (i1040gi p. 31, Line 6d; amb.2025.mfs_lived_apart).",
+   "subject_key": "fb2aecce58a6ab5aab663ba26378b7675be85f613c36240e247f07df222b76d2"
+  },
+  {
+   "key": "household.mfs_apart_last6",
+   "record": "9e8c0fdaad9ae9700f8acc54ceab59a5719abdb91dd0b6b793c5075a4def1dfa",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; read without triage (see filing_status_conflict). On MFS both are apart_last6 or apart_all_year (the reply's note picks the IRS condition 'lived apart for the last 6 months', which the all-year value also meets, as the project does). Off MFS both are false (project: together_late from household.mfs_living_else; reply: conjunction with status mfs). i1040gi p. 15, Married persons who live apart; p. 44, Special rule for separated spouses.",
+   "subject_key": "835fee60361837210beca461cb09f9971f9c06deb33e1dd73222077e21f0bd1e"
+  },
+  {
+   "key": "household.mfs_community_property",
+   "record": "9e8c0fdaad9ae9700f8acc54ceab59a5719abdb91dd0b6b793c5075a4def1dfa",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; read without triage (see filing_status_conflict). On MFS both are household.community_property; on every other status the project gives household.no (false) and the reply's conjunction with status mfs gives false. The reply's note leaves registered domestic partners to household.rdp, as the project does (household.rdp_community_property). i1040gi p. 14, Married Filing Separately, \"Different rules apply to people in community property states; see Pub. 555\"; amb.2025.mfs_community_property.",
+   "subject_key": "108c4a27efbe603f6e40f397fbe16fe7016a9bc7724c3778a99187aeb44d5bc1"
   }
  ],
  "subjects": {
@@ -172,7 +199,11 @@
   "household.widowed_this_year": "8abbe182d333f715cac8ac03b86fa35d20710670f069ca3553d886ecd038ec3f",
   "household.cp_marriage_ended": "74e5a4b773100f1aec2778721a3ddc190f09a7ac7cc8762c239fb490250d6022",
   "household.rdp_community_property": "cb7ac4eaf81490b4b959f5e229c0a0c49d5f3d3cc6e4f3ab0c18cc7a4c0311ba",
-  "household.filing_status_conflict": "da10d0f27ec5cde41d59c8f428cb807d3007c44f9fd55cb7c2185c9619df56d0"
+  "household.filing_status_conflict": "c20f956d22dccd614e1d5ac766e3267b84b02b72154f1fe9624ea9469c34c315",
+  "household.mfs": "176699ddce9a83f1c9416ba78656a2b56ac77d598593dc578bb1ded5ce97b640",
+  "household.mfs_apart_all_year": "da52f9a1821e39b91e804f3aa457836970061d10c66846a048b8e0000e687b3c",
+  "household.mfs_apart_last6": "a5dddebeca49eee99f2000ef1909058390d0ddd5a00d6ad3ba35c13571c86a95",
+  "household.mfs_community_property": "0f1c67a4ce5098eff5c11bcc60478ea07274f28266b249b77afc59af38b2cf40"
  },
  "__rest__": "92bf81ae283c1e0d5fa92ecd444c292ac15487a8e6ed56b6d46422a82d26927b",
  "foreign": {
@@ -188,6 +219,10 @@
   "household.qss_fails": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.widowed_this_year": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "household.cp_marriage_ended": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
-  "household.filing_status_conflict": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0"
+  "household.filing_status_conflict": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.mfs": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.mfs_apart_all_year": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.mfs_apart_last6": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "household.mfs_community_property": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0"
  }
 }

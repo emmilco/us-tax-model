@@ -285,8 +285,9 @@ function selfTest(): number {
   assert.throws(() => pageWalk(ctx.data, config, (k) => { if (k === "$person") return { value: ["taxpayer", "spouse"] }; next ??= k; return undefined; }), Unanswered);
   assert.ok(next !== undefined && next !== "f1040.status" && !next.endsWith(".role"), `after a couple's first answer the next question is ${next}`);
   assert.throws(() => pageWalk(ctx.data, config, (k) => (k === "$person" ? { value: ["taxpayer"] } : undefined)), Unanswered);
-  // One person is asked the status; married filing separately is refused at once, which ends the walk.
-  const alone: Inputs = { $person: ["taxpayer"], "f1040.status": "mfs" };
+  // One person is asked the status; married filing separately in a community property state is refused, which ends
+  // the walk.
+  const alone: Inputs = { $person: ["taxpayer"], "f1040.status": "mfs", "household.married_dec31": true, "household.community_property": true };
   const shown = pageWalk(ctx.data, config, (k) => (k in alone ? { value: alone[k] } : undefined)).shown.slice(0, 2);
   assert.deepEqual(shown.map((s) => s.input), ["$person", "f1040.status"]);
   assert.deepEqual(shown.map((s) => s.options!.length), [2, 4], "who the return is for has two choices; one person is offered four filing statuses, not married filing jointly");

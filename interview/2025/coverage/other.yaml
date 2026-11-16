@@ -37,14 +37,16 @@ rows:
   expect:
     refused: s2.amt
 - id: other.options_income_not_on_w2
-  design: s1.line8_other, line 8k (stock options)
+  design: line 8k (stock options); end restated by lane x2-s1o (line 8k computed; owner decision D7 of scout-s1-other)
   situation: A person sold early the shares of a purchase plan, and the employer did not put the income on a W-2.
   uses: [options]
   answers:
     s2.iso: false
     s1.stock_options: true
+    s1.options_amount: 150000
   expect:
-    refused: s1.line8_other
+    proceeds:
+      s1.options_amount: 150000
 - id: other.options_nothing_more
   design: s2.options_any, the common case beneath the parent
   situation: A person exercised ordinary stock options, with the income on the W-2, and goes on.
@@ -146,12 +148,23 @@ rows:
   expect:
     refused: f8959.unsupported
 - id: other.ltc_payout
-  design: s1.line8_other, line 8e (Form 8853, long-term care)
+  design: line 8e (Form 8853, long-term care); end restated by lane x2-s1o (Form 8853 Section C computed; owner decision D7 of scout-s1-other)
   situation: A person was paid a daily benefit by a long-term care insurance policy.
   answers:
     s1.ltc_payout: true
+    $f8853c: [self]
+    f8853c[self].periodic: true
+    f8853c[self].line17: 3650000
+    f8853c[self].nonqualified: false
+    f8853c[self].line19: 0
+    f8853c[self].others_paid: false
+    f8853c[self].rate_changed: false
+    f8853c[self].days: 365
+    f8853c[self].line22: 0
+    f8853c[self].line24: 0
   expect:
-    refused: s1.line8_other
+    proceeds:
+      f8853c[self].line17: 3650000
 - id: other.nqdc_pension
   design: s1.line8_other, line 8t
   situation: A retired executive's W-2 shows in box 11 a payout from a former employer's deferred pay plan.
@@ -169,12 +182,37 @@ rows:
   expect:
     refused: s1.line8_other
 - id: other.digital_income
-  design: s1.line8_other, line 8v
+  design: s1.line8_other, line 8v; end restated by lane x1-digital (line 8v computed, beneath the Form 1040 digital asset question)
   situation: A person received crypto from staking.
   answers:
+    f1040.digital_assets: true
     s1.digital_income: true
+    s1.digital_amount: 41250
   expect:
-    refused: s1.line8_other
+    proceeds:
+      s1.digital_amount: 41250
+- id: other.digital_income_niit
+  design: x1-digital, f8960.digital_nii (line 8v on a return over the net investment income tax threshold; amb.2025.digital_8v_nii)
+  situation: A person with $190,000 of wages received $20,000 of crypto from staking.
+  answers:
+    $w2@person[taxpayer]: [job]
+    person[taxpayer].w2[job].box1: 19000000
+    person[taxpayer].w2[job].box2: 3000000
+    person[taxpayer].w2[job].box4: 1091820
+    person[taxpayer].w2[job].box5: 19000000
+    person[taxpayer].w2[job].box6: 275500
+    f1040.digital_assets: true
+    s1.digital_income: true
+    s1.digital_amount: 2000000
+    f8960.unsupported: false
+    f8960.refund: false
+    s2.w2_marks: false
+    s1.nqdc_pension: false
+    scope.w2_marks: false
+    scope.artist_official: false
+    scope.excess_deferral: false
+  expect:
+    refused: f8960.digital_nii
 - id: other.olympic_medal
   design: s1.line8_other, line 8m
   situation: An athlete won an Olympic medal and its prize money.
@@ -208,10 +246,8 @@ rows:
   answers:
     s1.gambling_winnings: 9000000
     s1.gambling_pro: true
-    s1.ltc_payout: false
-    s1.inmate_wages: false
-    s1.digital_income: false
     s1.olympic: false
+    s1.inmate_wages: false
   expect:
     refused: s1.gambling_business
 - id: other.prize
@@ -332,7 +368,6 @@ rows:
     s1.cod_any: true
     s1.cod_amount: 400000
     s1.cod_unsupported: true
-    s1.digital_income: false
   expect:
     refused: s1.cod_unsupported
 - id: other.other_income_item

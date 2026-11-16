@@ -1,0 +1,379 @@
+{
+ "kind": "render",
+ "form": "f1116sb",
+ "family": "claude",
+ "base": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+ "lines": [
+  {
+   "key": "1 (i)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "03637194c9a2fed5af07516f1681c2247a3caf1d59c368890e058be20c5dba86"
+  },
+  {
+   "key": "1 (ii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "18d99a49878718dd995673e281d015ed1f521793b0e5986ac024e63901579c08"
+  },
+  {
+   "key": "1 (iii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "f485f77809fdfab0d3e3b1167079cbf7604c1ed504c5de76fcc45d8bef580d49"
+  },
+  {
+   "key": "1 (iv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "a415c0d1df9670f73b8baffbca5d8a529d1966e082604959b3b80ef2f64f788e"
+  },
+  {
+   "key": "1 (v)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "6b1ca7d378818554f70ce120da6b094bb324c55f1c6585b5cfab673985535f85"
+  },
+  {
+   "key": "1 (vi)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "4114c0482ae9f99b79c054069d57cb7de1afd6dd7c4583d25cfca66f39a3fa16"
+  },
+  {
+   "key": "1 (ix)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "175eb7e8576ab12eeebc7496e7fd10675e60a82f8e50ba7843f981808ba72bd4"
+  },
+  {
+   "key": "1 (x)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "0a549efb41acddd9650329af91241b1126b9a16a8e3fb0a42ec085e885cdb01f"
+  },
+  {
+   "key": "1 (xi)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "e07720d120cfe03185dca7cf6c8c9aaf4d0cc7a39fa12f83b0bf252bbbcee298"
+  },
+  {
+   "key": "1 (xii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "569d5227cb0d9ba85e3fe899a6c246c54f62fcb04281d279080c5ab910edf3c8"
+  },
+  {
+   "key": "3 (i)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "subject_key": "7f3ebd1118d95b09f7cbcad24d4167c89b0a79949b435b0e6e7f90c51763b983"
+  },
+  {
+   "key": "3 (ii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "subject_key": "dcd56f83218ae95291ab3d4b33fb4cc99d5e82b0a33a66397d8051a1ddfd380a"
+  },
+  {
+   "key": "3 (iii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "subject_key": "d4eef5470ad85a320bd607b7ce0dfa4c03bb7233a5fdd0741d00d0be6f66ca10"
+  },
+  {
+   "key": "3 (iv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "subject_key": "ddd9a0e33a1481f237aae99bfcbd4996510f2122288941941090f116de4c4b74"
+  },
+  {
+   "key": "3 (v)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "subject_key": "d31675a9953cfc6d5c9dd1e417881e9262d34c2507a107673583a701faaab841"
+  },
+  {
+   "key": "3 (vi)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "subject_key": "5c7ee91d057f8785b1e7a1d1a138f9d51241a49514f98fa967623950f34a7a1f"
+  },
+  {
+   "key": "3 (ix)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "subject_key": "317ecff39b9099395f6276243d6b2aef493b87089aaafa8123a661bb4b53a566"
+  },
+  {
+   "key": "3 (x)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "subject_key": "f84df10c4a4e49227ac83330ae7edef8ded9d414503ce29fb7e2ec78e8411be2"
+  },
+  {
+   "key": "3 (xi)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "subject_key": "b3f1bb66037e719e5b880a7ff72a3791d71e2e771b1a3cb338d3dfc0ebe40fdf"
+  },
+  {
+   "key": "3 (xii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "subject_key": "0ded58b635f1d1cc76c463677aa713017c89397915af54141a38be67db1a9303"
+  },
+  {
+   "key": "4 (i)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "cb658441ff2debead308c3a71256bc8f8f92fdaa9be357b09879e75fd52bc915"
+  },
+  {
+   "key": "4 (ii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "2dceaa3146e9aac93e689f2f3c1543cf2fb03c7d4d64e836169a2f7976f61a7f"
+  },
+  {
+   "key": "4 (iii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "88005f52e3df62ccbe7594270092983e12ab9e5498b1d9ef80942b274635d39e"
+  },
+  {
+   "key": "4 (iv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "b9f31f45561c62ac01c798f0bcf582ea46b32418ea8ea991add16e33b58e6c94"
+  },
+  {
+   "key": "4 (v)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "05acb82909ca3f478a8d9457ddcb5eecf11d5828e1620eef3cd4a77bf6afe0d4"
+  },
+  {
+   "key": "4 (vi)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "6c553b95f5d5783e7d138d4ff9626f51f0037f30fe199e751244163454e1350b"
+  },
+  {
+   "key": "4 (ix)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "4ddf750bb5a51f7828422b878744b5683323e671a554897412c7bd8bedee4f76"
+  },
+  {
+   "key": "4 (x)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "864a94474c07d78a347ef10af31274d4fa6022fada4ce8c9ca5321ba8f4d9479"
+  },
+  {
+   "key": "4 (xi)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "95f81090438e4b38449c29a979b057d4c77326ef54e1ce97215a068c267f4303"
+  },
+  {
+   "key": "4 (xii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "847a2d1a66d18958f20b7ac148586ef49867d84bd3fb1a18a07089f685a7e630"
+  },
+  {
+   "key": "5 (i), (vii), (viii) and (xiv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "17f5dc74fdb62bd749ecee4306260bb241aae4a7f515851a27cf14c47f0ba4d0"
+  },
+  {
+   "key": "6 (xiii) and (xiv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "8b0ae8aaef6c2a8b9f963e8a144fa2e03fd6a2fa233f03a422691e19ec25f6e5"
+  },
+  {
+   "key": "7 (xiii) and (xiv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; D1: nothing is carried back; a return whose 2024 year had room under its limit (or other foreign income untaxed) is refused by f1116sb.carryback ('Schedule B (Form 1116), line 7 (carryback to 2024)'), so line 7 is zero on every return prepared.",
+   "subject_key": "4fb69fe79def11c061c5eb10aa00a5f6f7f3ba43fc8bc56a97a657b14eb2a995"
+  },
+  {
+   "key": "8 (ii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "2afd6cd43d5cb0e92841feb34734268fb0ded2ef3123a62419c1a450f87d015e"
+  },
+  {
+   "key": "8 (iii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "4d061bb2d222f6373497d4085aaeb11828df84b0e689f08b8d8cac130ba921c8"
+  },
+  {
+   "key": "8 (iv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "a9dcb7fffe5255432f458d817c1df4f569b0b5d06f8b51ec63471e528c7a14c8"
+  },
+  {
+   "key": "8 (v)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "1aaba8548d9815a218c195ca9115bf90f3f36ea3c7fe7599beb03fd9c95377a5"
+  },
+  {
+   "key": "8 (vi)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "4f4ee8136da0d4f582b1680ffec58a73fc40ea94daf1c0a3ae4993c856290b71"
+  },
+  {
+   "key": "8 (ix)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "fdab0e989a9e4d977cc7eec40ae2b5bbca8536f8ffa7326f3963d936b10b67d6"
+  },
+  {
+   "key": "8 (x)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "530c53758f374eff3f5d27cae321a9f0eb6dbda6f3aa88f6366be0b844b14310"
+  },
+  {
+   "key": "8 (xi)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "4959170af48ed927dc021b361adb97d8a97930d1525f9a4b2d0c916903be1493"
+  },
+  {
+   "key": "8 (xii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "8139e2218eb79e84f92b16bca7befcf481366183889354c27b9d3127bf49e9df"
+  },
+  {
+   "key": "8 (xiii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "159c22fe2192c1085e33fb31045f68aabbb0ea01971c6a3d40e06fe9e6d8b4a0"
+  },
+  {
+   "key": "1 (vii) and (viii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "69e72a9817655a2cf556e761b4d61033fcc763e4d736508c5f974c387edf7dcd"
+  },
+  {
+   "key": "1 (xiv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "2715106600fcfd920c5aad152cd3d680f0c1596d6b47932d5129abb867961aa5"
+  },
+  {
+   "key": "3 (vii) and (viii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "fc1a02f5259a44a3d962f1a3a2fb52f7b013823f550d70d209ddcee1b31015f1"
+  },
+  {
+   "key": "3 (xiv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "61011111ef6a196e3060973a1b22f4c856698cd5b0b5fd677f2aa647a646be06"
+  },
+  {
+   "key": "4 (vii) and (viii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "51a8828091584acd503e79b57f27cd17fc73bd8cee522473b1cd0b76e1ca23f7"
+  },
+  {
+   "key": "4 (xiv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "533619b1ea64f2a677c7bec82b6ce60b7c8f03feccb7f3f31854082e8dc52512"
+  },
+  {
+   "key": "8 (vii) and (viii)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "8fb2ec7139a6c543334c361dd0cddcf4aeab0a6d32473bb8eef5da5e3e33f8f1"
+  },
+  {
+   "key": "8 (xiv)",
+   "record": "5faf1146579e1eacd82497a06c05b53e9065727adcedff20df8f03acc7654972",
+   "status": "MATCH",
+   "subject_key": "50120528cc8b5d56986a78b22e92b77a37250c599ca00d58dda75c08db8d5053"
+  }
+ ],
+ "subjects": {
+  "1 (i)": "c822f8e3661a4f09e7f98b0a09e762c088a806fae47a3f8b80add243db45dffa",
+  "1 (ii)": "bf1ce306e1fb908c640c276155c75162c8fe9b40ed8bcc5d65d170429e13781e",
+  "1 (iii)": "aeb7ddfb8eb27c70e4ad421194cd579eec2b81d365cd2f53ec31d5acfeddac11",
+  "1 (iv)": "61bc639c3e6ef247061db96351232c30cca7cacc4a720d6143b68cf210ea6180",
+  "1 (v)": "681b05cda235e30e0d22638e28c61dc2e6daa8ebca9dd88f0d1cf2797b6c2c7d",
+  "1 (vi)": "2d355d6478bea4a9678378ea778495f392a829a37e2923216ff7704dec89413f",
+  "1 (ix)": "297444f69ddaec32fcdb98fb97e97866ddfd4e6c23fca6ac34e9bffd0e980b85",
+  "1 (x)": "e5059c695665f14e4426fe5a7cb1e10547244209629ab725ae3c376c589fb53d",
+  "1 (xi)": "985f15b1b373e14d6b204f925e6fe2205471d59839e3fe8e97ae3232be2c8644",
+  "1 (xii)": "f5323e159002ef67cd2b553f8699539c4626549a6d2f46809f272f43f7af57df",
+  "3 (i)": "6fc7d857490a6afc00b27727c2d6397c37edb1bd4987ec358b22d55e3a96a619",
+  "3 (ii)": "6bea4b20d2d807ece943c308b62a82c575b453a025013e3207658498ac725a4a",
+  "3 (iii)": "7ce52c1d47740789595734b7df131531afefe447f220cfbf3f3b38697d1940b7",
+  "3 (iv)": "7efaeb719ac82cba21bd2c4ff14f08976cbe586cfd205b6022b00a10a76fe33f",
+  "3 (v)": "388e22036bf8147656fc75544321892bac60fb200ca3c79c17100c16031b2666",
+  "3 (vi)": "706a3f1578ddecf39e8b70ab9b0e58004300810b2e2cbb91a444778ffa989ce8",
+  "3 (ix)": "733f0e792c5e1b87f34af375ceb58127b9995d350c01100801d8df2207b344a5",
+  "3 (x)": "df5b3edb92efd311c8743f496a905893376a22bfff4e5e8978dd8e02c60b8f45",
+  "3 (xi)": "6e1a79119b96dfba8355135beb8182c545f48f4512d24044c51016588a24cf41",
+  "3 (xii)": "a6e8cf4af455b6fcd2d17a6706461c9cf0ca3072cd863b54f60b71cc9bc29a9d",
+  "4 (i)": "36b33e4808fee055b41c4130e537415e0dfb8b893338fb00c47476b4a0ed8acb",
+  "4 (ii)": "ffde169cb5ca905a61b16699ebdb5a0b426df778e9ac6abd6e2cb8ee55ef7563",
+  "4 (iii)": "06d7e18e4c215b394c8127befc47ac411b63c07d7df3dadc72fe10bb579ff239",
+  "4 (iv)": "01a76f7ed1bafd209da8caf8db7c5b421d99379a60181b169476cb0ce7575254",
+  "4 (v)": "79e533d938c01dab6f0581bc8b83e1ce6992d0e0d0c318396f781fd88ca9391d",
+  "4 (vi)": "ecf9f885621a26c91f6034a85fc9c556d31bb54a8867f99688931f7b1a819317",
+  "4 (ix)": "4db7d44359a34338d422a6c9fedf2975ff1ac02326ca03956157e22770e798d8",
+  "4 (x)": "cb6d55f04b6f28042b5d8eef7903812ddc8129265e3952d07b544abbead630fb",
+  "4 (xi)": "a5d10d4a4e2e1a9bad75d57cb4691a06588b3ba9a77ea98b8b5b87f367c59348",
+  "4 (xii)": "a7c9a523fb061f2422b9cd086d41b6f16019246d6f51bf2dacf3301b48476b0f",
+  "5 (i), (vii), (viii) and (xiv)": "02577f3cbc0dfa0c242ae22cc09ebba092d097f27191ba2f0024d62033cc3a35",
+  "6 (xiii) and (xiv)": "dc446ef2dc2ec3c50cf1fb45aa9dacf336a04fa2bbfd19c5f2b0f53e6ca829aa",
+  "7 (xiii) and (xiv)": "873624669697e22a827995705dbec9f47aa29b0db762b66bec3b5dd12a6991d8",
+  "8 (ii)": "d9a10d130b087dc85b09b6405bce6cb7e20039620387a2ddf381c0f569b084e8",
+  "8 (iii)": "48080ff6cc29ce783ea7c5d1b4e1d3e6bd8b8e69bf762f6d9617193b54aa7513",
+  "8 (iv)": "fd41de1e2ab0a3d8cbf68da52108961a1eac156bdb01d4ece70af470825931ef",
+  "8 (v)": "bdb3c91f50b4daad4a472d3b1a680e129cd89d4a49f3d2d0113417d33b1d6950",
+  "8 (vi)": "727f1e47dbf0ef80f7d24dca68fe9d10629f7d859384d31e4615ad5b18f2a63a",
+  "8 (ix)": "0340cf4b7d31b79eae5b4456352364c762b776485b1f78d71500942fb3a4cbba",
+  "8 (x)": "dfc436fe36a8657192dbb0b692dd763b3d51fa2cb3491b96b642159155fbe260",
+  "8 (xi)": "95a6e6114758b8e0dc3b55c9eace4eecc640af61b4287d22c5172812a225efed",
+  "8 (xii)": "6a5434d13b4d9b8323e4dea68f3c80ec6665255884cebe49164042e0380e0730",
+  "8 (xiii)": "3d82db28d9c2ec6d4afc92ad9b652a3ab5043dcfbef0f3385b70a7d1eb8707ec",
+  "1 (vii) and (viii)": "b041b1759febceae3f07c4828284441a90594cc6588caad98d18050dcd5821e4",
+  "1 (xiv)": "4e3911a766c22767bd755edd8168d0c0b40e4cc728b7d378c845e784c0274091",
+  "3 (vii) and (viii)": "e94169f1c75c19282c550a329d53d190f497604b3131e692009aa91260fa13a4",
+  "3 (xiv)": "b6835b2a569a0d73c4e72b87161a06c25c6c9e8d79443c1fe58bbd2e213a7b61",
+  "4 (vii) and (viii)": "08575bf17adbf8bb88ba2d9af4d3fa45e953729bd9db3bdee48973c83d303f85",
+  "4 (xiv)": "7bec4d3b903dfad7681453a2f9f856913d4bdb848135cc5bacfede8023935d61",
+  "8 (vii) and (viii)": "3a5eac27c20858b8c71c9778104e01ea94b05f2a7adcee587865fc4ceb96f110",
+  "8 (xiv)": "9373841aa17c199303ba301e3d99715e1ee7cf483db203e44a5110fc2e346455"
+ },
+ "__rest__": "631316b0588c17454ab0fbd57762500606172771ef574c522be99bc1586719d3"
+}

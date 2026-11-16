@@ -2,31 +2,106 @@
  "kind": "classm",
  "form": "oi8z",
  "family": "claude",
- "base": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+ "base": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
  "lines": [
   {
    "key": "case classm.oi8z.1",
-   "record": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
    "status": null
   },
   {
-   "key": "classm.oi8z.1 — oi8z[item_a].recovery",
-   "record": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+   "key": "classm.oi8z.1 — oi8z[z0].recovery",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
    "status": "AGREE"
   },
   {
-   "key": "classm.oi8z.1 — oi8z[item_a].additional_tax",
-   "record": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+   "key": "classm.oi8z.1 — oi8z[z0].additional_tax",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
    "status": "AGREE"
   },
   {
-   "key": "classm.oi8z.1 — oi8z[item_a].figured",
-   "record": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+   "key": "classm.oi8z.1 — oi8z[z0].figured",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
    "status": "AGREE"
   },
   {
-   "key": "classm.oi8z.1 — oi8z[item_a].taxable",
-   "record": "e2cadd92cb9a5e82882f61cebeb9603d2df0c321e8953e0b362d5746b8e37f20",
+   "key": "classm.oi8z.1 — oi8z[z0].damages",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.1 — oi8z[z0].injury_if_damages",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.1 — oi8z[z0].taxable",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.oi8z.2",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": null
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_a].recovery",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_a].additional_tax",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_a].figured",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_a].damages",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_a].injury_if_damages",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_a].taxable",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_b].recovery",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_b].additional_tax",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_b].figured",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_b].damages",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_b].injury_if_damages",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.oi8z.2 — oi8z[item_b].taxable",
+   "record": "00ba98a8a81f308628a95958826475d7e06cf3a7968c9b1bb5b5d533e135f253",
    "status": "AGREE"
   }
  ]

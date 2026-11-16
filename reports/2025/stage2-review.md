@@ -33,13 +33,14 @@ Use integer cents below. Work each case independently on the archived instructio
 | ss.tips | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 9000000; 1000000; 620000 / person[taxpayer].w2[b]: 7610001; 0; 471821 | 1 |
 | ss.none | single | div: 0; unknown; unknown | 0 |
 | ss.mfj | mfj | div: 0; unknown; unknown | 0 |
-| ss.mfs | mfs | div: 0; unknown; unknown | refusal: Married filing separately |
+| ss.mfs | mfs | div: 0; unknown; unknown | 0 |
 | ss.rrta | single | div: 0; unknown; unknown | refusal: Schedule 3 line 11 (RRTA path) |
 | ss.hoh | hoh | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
 | ss.qss | qss | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
 | ss.other.components | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
 | ss.person.separation | single | div: 0; unknown; unknown / person[second].w2[a]: 0; 0; 620000 / person[taxpayer].w2[a]: 0; 0; 620000 | 0 |
 | ss.early.refusal | single | div: 0; unknown; unknown / person[taxpayer].w2[a]: 0; 0; 1091821 / person[taxpayer].w2[b]: 0; 0; 0 | refusal: Form 843 |
+| ss.mfs.two_jobs | mfs | div: 0; unknown; unknown / person[taxpayer].w2[a]: 10000000; 0; 620000 / person[taxpayer].w2[b]: 10000000; 0; 620000 | 148180 |
 
 RRTA case has the railroad answer true. Other Schedule 3 components are zero except ss.other.components: lines 9, 10, 12 and 14 are 123, 500, 7 and 20 cents; line 15 and Form 1040 line 31 should be 148830 cents.
 

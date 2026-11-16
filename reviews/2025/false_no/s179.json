@@ -1,6 +1,87 @@
 {
  "form": "s179",
  "reviews": {
+  "gate:s179.prior_form_if_before": {
+   "subject_sha": "1f0d0771f7677db077e4843ea7d0f3933006af897a5862ff78f6ff4f526a16de",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "An Armed Forces reservist, qualified performing artist, fee-basis state or local official, or employee with impairment-related work expenses. Before 2025 they elected section 179 on equipment or a vehicle used in their employment and claimed it through Form 2106. Low wages that year left part of the expense disallowed by the business income limitation, so line 13 of their last Form 4562 shows a carryover.",
+       "why_no": "They were employees and never owned a business, a farm, a rental property, or a share of a partnership or an S corporation. The scope question correctly gets a no, so the tool never asks about line 13.",
+       "line": "s179.carryover_if_prior_form",
+       "irs_text": "i4562 (2025) p. 5, Line 10: \"The carryover of disallowed deduction from 2024 is the amount of section 179 property, if any, you elected to expense in previous years that was not allowed as a deduction because of the business income limitation. If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562.\"",
+       "severity": "high",
+       "fix": "Ask the fact the filer can check, with no ownership precondition: \"Did you (or, on a joint return, your spouse) file a Form 4562 for any year before 2025?\" If yes, ask for line 13 of the 2024 form, or of the last form filed. At minimum, add \"or claim business expenses as an employee on Form 2106\" to the scope question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A freelancer, independent contractor, or gig worker (for example, a rideshare driver) who filed Schedule C before 2025. They elected section 179 on a vehicle or equipment, and the expense exceeded their net business income plus wages, leaving a carryover on line 13 of Form 4562.",
+       "why_no": "Many self-employed people do not think they \"own a business\". They would say they \"did contract work\" or \"drove for an app\", so they answer no to \"own a business\".",
+       "line": "s179.carryover_if_prior_form",
+       "irs_text": "i4562 (2025) p. 5, Line 10: \"enter the amount from line 13 of your 2024 Form 4562.\"",
+       "severity": "medium",
+       "fix": "Reword the scope question as \"…own a business or work for yourself (including freelance, contract, or gig work, or anything reported on Schedule C or Schedule F)…\". Better, gate on whether a Form 4562 was ever filed."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A member of a multi-member LLC, an LLP partner, or a co-venturer in an informal joint venture taxed as a partnership. Their Schedule K-1 (Form 1065) passed through a section 179 deduction that the business income limitation partly disallowed, so it carried over on their Form 4562.",
+       "why_no": "They hold an \"LLC membership\" or a \"stake in a venture\" and do not read that as \"a share of a partnership\".",
+       "line": "s179.carryover_if_prior_form",
+       "irs_text": "i4562 (2025) p. 5, Line 6: \"To report your share of a section 179 expense deduction from a partnership or an S corporation, enter 'from Schedule K-1 (Form 1065)'…\"; Line 10: \"enter the amount from line 13 of your 2024 Form 4562.\"",
+       "severity": "medium",
+       "fix": "Add to the scope question: \"(including an LLC, LLP, or joint venture, or anything that sent you a Schedule K-1 from Form 1065 or Form 1120-S)\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "An individual who before 2025 leased out equipment, vehicles, or other personal property as a noncorporate lessor and elected section 179 on it. Part of that expense was disallowed and carried over.",
+       "why_no": "They read \"a rental property\" as real estate and do not think occasional equipment leasing counts as \"a business\", so they answer no.",
+       "line": "s179.carryover_if_prior_form",
+       "irs_text": "i4562 (2025) p. 5, Line 10: \"the amount of section 179 property, if any, you elected to expense in previous years that was not allowed as a deduction because of the business income limitation.\"",
+       "severity": "medium",
+       "fix": "Reword \"a rental property\" as \"property you rented or leased to others (real estate, equipment, vehicles, or other property)\". Alternatively, gate on whether a Form 4562 was ever filed."
+      }
+     ],
+     "prompt_sha": "1cdd08ccdbc745d74e57d774b897dcc710b74d0192162bf406fab35dc743246e",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.089896,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_s179.prior_form_if_before.1f0d0771f767.1.response.txt"
+    }
+   ],
+   "condition": "s179.prior_form_if_before",
+   "lines": [
+    "s179.carryover_if_prior_form"
+   ],
+   "inputs": [
+    "s179.carryover"
+   ],
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      5
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, Line 10, \"The carryover of disallowed deduction from 2024 is the amount of section 179 property, if any, you elected to expense in previous years that was not allowed as a deduction because of the business income limitation\" and \"If you filed Form 4562 for 2024, enter the amount from line 13 of your 2024 Form 4562\" (owner: the printed amount)"
+     ],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    }
+   ]
+  },
   "gate:s179.wc_ask": {
    "subject_sha": "75a0f92e642f372a526b903a715a88695a98fa8ca29bd9eb105ca4621b78b28d",
    "grandfathered": true,

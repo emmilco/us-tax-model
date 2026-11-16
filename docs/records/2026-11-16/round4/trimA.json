@@ -1,0 +1,522 @@
+[
+ {
+  "file": "forms/2025/k1p.yaml",
+  "id": "k1p.upe",
+  "field": "source",
+  "old": "Did you pay expenses of the partnership yourself, without being paid back, that the partnership agreement required you to pay?",
+  "new": "Did you pay, without being paid back, partnership expenses that the partnership agreement required you to pay?",
+  "words_old": 26,
+  "words_new": 23,
+  "why": "Reordered; 'yourself' dropped (the subject is 'you'). Guards kept: not paid back, required by the agreement."
+ },
+ {
+  "file": "forms/2025/k1p.yaml",
+  "id": "k1p.interest_buy",
+  "field": "source",
+  "old": "Did you pay interest in 2025 on money you borrowed to buy your share of this partnership or to put money into it?",
+  "new": "Did you pay interest in 2025 on money borrowed to buy your share or put money into the partnership?",
+  "words_old": 29,
+  "words_new": 25,
+  "why": "'you borrowed' and 'of this partnership' folded; both purposes kept."
+ },
+ {
+  "file": "forms/2025/k1p.yaml",
+  "id": "k1p.t6",
+  "field": "source",
+  "old": "Is it a business of services in health, law, engineering, architecture, accounting, actuarial science, performing arts or consulting, in which you (or your spouse, whether or not you file jointly) materially participated in any 3 years before 2025?",
+  "new": "Is it a service business (health, law, engineering, architecture, accounting, actuarial science, performing arts or consulting) in which you or your spouse, filing jointly or not, materially participated in any 3 earlier years?",
+  "words_old": 44,
+  "words_new": 39,
+  "why": "List kept whole (i1065sk1 test 6); spouse clause kept in shorter words; 'years before 2025' -> 'earlier years'."
+ },
+ {
+  "file": "forms/2025/k1p.yaml",
+  "id": "k1p.basis_carry",
+  "field": "source",
+  "old": "Was a loss from this partnership held back on an earlier return because your basis in it was too low?",
+  "new": "Was a loss from this partnership held back on an earlier return because your basis was too low?",
+  "words_old": 26,
+  "words_new": 24,
+  "why": "'in it' dropped (basis is in the partnership already named)."
+ },
+ {
+  "file": "forms/2025/k1p.yaml",
+  "id": "k1p.fuel_2024",
+  "field": "source",
+  "old": "Did your 2024 return claim a credit for federal tax on gasoline or other fuels based on information from this partnership?",
+  "new": "Did your 2024 return claim a credit for federal tax on gasoline or other fuels, using this partnership's information?",
+  "words_old": 27,
+  "words_new": 25,
+  "why": "'based on information from this partnership' -> 'using this partnership's information'."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.charity_limited",
+  "field": "help",
+  "old": "The limits are 20%, 30%, 50% or 60% of your income, by the kind of gift and of charity (Publication 526, \"Limits on Deductions\"). A return with a limited gift is outside what this tool prepares; a Yes ends the interview here.",
+  "new": "The limits are 20%, 30%, 50% or 60% of your income, by the kind of gift and of charity (Publication 526, \"Limits on Deductions\"). A Yes ends the interview here.",
+  "words_old": 42,
+  "words_new": 30,
+  "why": "Drops 'outside what this tool prepares' (register 1.3; the refusal sentence remains)."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.excluded_income",
+  "field": "prompt",
+  "old": "Do you (or, on a joint return, your spouse) leave out of this 2025 return any income earned abroad, in Puerto Rico or in American Samoa?",
+  "new": "Do you (or, on a joint return, your spouse) leave out of this return any income earned abroad, in Puerto Rico or in American Samoa?",
+  "words_old": 26,
+  "words_new": 25,
+  "why": "'this 2025 return' -> 'this return'; the help keeps the 2024-work-paid-in-2025 rule."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.dependent",
+  "field": "help",
+  "old": "It is whether they can, not whether they do. At 24 or older, or 19 or older and not a full-time student, they can only if your income was under $5,200, unless you were disabled. Answer No if that person need not file a return and files none, or files only to get back tax withheld.",
+  "new": "Yes even if they did not. At 19 or older (24 if a full-time student): only if your income was under $5,200 or you were disabled. No if they need not file and file none, or only for a refund.",
+  "words_old": 56,
+  "words_new": 40,
+  "why": "All three guards kept (can-not-do; qualifying-relative income test with the disability exception; the refund-only filer), in fewer words."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.spouse_extra",
+  "field": "help",
+  "old": "Blind means seeing no better than 20/200 in the better eye with glasses, or a field of vision of 20 degrees or less. Only then can your husband or wife's age or blindness raise your standard deduction. A Yes ends the interview here.",
+  "new": "Blind means seeing no better than 20/200 in the better eye with glasses, or a field of vision of 20 degrees or less. A Yes ends the interview here.",
+  "words_old": 43,
+  "words_new": 29,
+  "why": "Drops the explanatory sentence 'Only then can ... raise your standard deduction' (no answer depends on it)."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.home_owner",
+  "field": "help",
+  "old": "Count a house, a condo or co-op apartment, a mobile home, a vacation home and land, even if you sold it during the year, and a home you are buying on a land contract while the seller holds the deed. A home you rent does not count.",
+  "new": "Count a house, condo, co-op, mobile home, vacation home or land, even if sold during the year, and a home you are buying on a land contract while the seller holds the deed. A home you rent does not count.",
+  "words_old": 47,
+  "words_new": 40,
+  "why": "Articles and 'apartment' dropped; land contract with the seller's deed kept."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.mortgage_interest",
+  "field": "help",
+  "old": "Form 1098 is the statement a mortgage lender sends in January. Box 1 is the interest; box 6 is points paid when you bought the home. Count loans on your main home and one second home only. Do not subtract a refund of overpaid interest (box 4). If a home was rented or offered for rent for part of 2025, count only the interest for the rest of the year; the rental part is asked with the rental.",
+  "new": "Only loans on your main home and one second home count. Do not subtract box 4 (refunded interest). If a home was rented or offered for rent in 2025, count only the interest for the rest of the year.",
+  "words_old": 78,
+  "words_new": 39,
+  "why": "Drops the gloss of Form 1098 and of boxes 1 and 6 (the prompt names them) and 'the rental part is asked with the rental'. Kept: two homes, box 4, the rental-period split (A1)."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.mortgage_other_use",
+  "field": "help",
+  "old": "An improvement adds to the home's value, makes it last longer or adapts it to new uses; repairs such as repainting are other uses. Refinancing for no more than was still owed is a No. A Yes ends the interview here.",
+  "new": "An improvement adds value, makes the home last longer or adapts it to new uses; repairs such as repainting are other uses. Refinancing for no more than was still owed is a No. A Yes ends the interview here.",
+  "words_old": 41,
+  "words_new": 39,
+  "why": "'adds to the home's value, makes it last longer' -> 'adds value, makes the home last longer'."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.personal_property_tax_any",
+  "field": "help",
+  "old": "Some states and towns charge it with the yearly registration of a car. A U.S. territory's tax counts too. If any part of the yearly charge is based on value, answer Yes; a charge wholly flat or by weight does not count.",
+  "new": "Some states and towns charge it with a car's yearly registration. A U.S. territory's tax counts too. If any part of the yearly charge is based on value, answer Yes; a charge wholly flat or by weight does not count.",
+  "words_old": 42,
+  "words_new": 40,
+  "why": "'the yearly registration of a car' -> 'a car's yearly registration'."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.line5b",
+  "field": "help",
+  "old": "If your lender pays the tax for you, box 10 of Form 1098 or the lender's year-end statement shows what it paid in 2025. If the home was rented or offered for rent for part of 2025, count only the tax for the rest of the year. Zero if you paid none.",
+  "new": "If your lender pays it, count what it paid in 2025 (Form 1098 box 10 or its statement). If the home was rented or offered for rent in 2025, count only the tax for the rest of the year.",
+  "words_old": 52,
+  "words_new": 39,
+  "why": "Lender sentence shortened, keeping 'what it paid in 2025' (not what was escrowed); 'Zero if you paid none' dropped (an amount box takes 0)."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.state_tax_other_any",
+  "field": "prompt",
+  "old": "In 2025, did you (or, on a joint return, your spouse) pay state or local income tax another way, such as estimated payments made in 2025 (or a past refund applied to 2025) or with a state return, or pay into a state disability, unemployment or family leave fund?",
+  "new": "In 2025, did you (or, on a joint return, your spouse) pay state or local income tax not taken from pay (such as estimated payments, or a past refund applied to 2025), or pay into a state disability, unemployment or family leave fund?",
+  "words_old": 49,
+  "words_new": 43,
+  "why": "'another way' (which leans on the sibling box, N6) -> 'not taken from pay'; 'with a state return' dropped (it is tax not taken from pay; the amount child lists it). 'made in 2025' is asked at the amount child. Still 43: tick member, owner plan item 5."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.state_tax_other_any",
+  "field": "help",
+  "old": "Count tax taken out of a pension, IRA, unemployment pay, winnings, 1099-NEC or 1099-MISC; a state disability, unemployment or family leave fund from pay (SDI, SUI, FLI); U.S. territory income tax; a state tax credit for a charity gift, applied to your tax.",
+  "new": "Count tax taken out of a pension, IRA, unemployment pay, winnings, 1099-NEC or 1099-MISC; SDI, SUI or FLI from pay; U.S. territory income tax; a state tax credit for a charity gift, applied to your tax.",
+  "words_old": 43,
+  "words_new": 36,
+  "why": "The fund is now named in the prompt; help keeps its abbreviations so a W-2 box 14 entry is recognised."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.medical_any",
+  "field": "help",
+  "old": "Count what you paid yourselves for doctors, dentists, hospitals, prescriptions and insurance, less what insurance paid back. On $60,000 of income, 7.5% is $4,500. On the final return of a person who died in 2025, count costs their estate paid within a year after the death. If not sure, answer Yes.",
+  "new": "Count what you paid for doctors, dentists, hospitals, prescriptions and insurance. On $60,000 of income, 7.5% is $4,500. For someone who died in 2025, count costs their estate paid within a year of the death. If not sure, answer Yes.",
+  "words_old": 51,
+  "words_new": 40,
+  "why": "'less what insurance paid back' dropped (the prompt says 'after what insurance paid'); the decedent rule shortened, its one-year limit kept."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.line11",
+  "field": "prompt",
+  "old": "How much money did you (or, on a joint return, your spouse) give to U.S. charities in 2025: cash, checks, card payments and payroll deductions? Add what you spent out of pocket as a volunteer, such as mileage, parking and supplies. Leave out political gifts and raffle tickets.",
+  "new": "How much money did you (or, on a joint return, your spouse) give in 2025 to U.S. charities, including ones that work abroad? Include payroll deductions and out-of-pocket volunteer costs such as mileage. Leave out political gifts and raffle tickets.",
+  "words_old": 48,
+  "words_new": 40,
+  "why": "'cash, checks, card payments' dropped ('money' covers them); the U.S.-charity-working-abroad rule moved up from the help (a foreign charity is excluded by 'U.S. charities')."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "sa.line11",
+  "field": "help",
+  "old": "For a payment that got you something back, such as a dinner, count only what you paid above its value. Leave out tuition, club dues, gifts to people, money paid back to you, and a gift's part that earned a state tax credit. A U.S. charity that sends money abroad counts; a charity abroad does not. Count only gifts you have a bank record or receipt for.",
+  "new": "If you got something back, such as a dinner, count the part above its value. Leave out tuition, club dues, gifts to people, refunded gifts, any part earning a state tax credit, and gifts with no bank record or receipt.",
+  "words_old": 67,
+  "words_new": 40,
+  "why": "Every exclusion kept; abroad sentence moved to the prompt; the record rule folded into the leave-out list."
+ },
+ {
+  "file": "forms/2025/person.yaml",
+  "id": "person.household_wages",
+  "field": "source",
+  "old": "How much were you paid in 2025 as a household employee, for work in or around a household's home or for its members, by households that did not give a W-2 for it? Zero if none.",
+  "new": "How much were you paid in 2025 for work in or around a household's home, or for its members, by households that gave you no W-2? Zero if none.",
+  "words_old": 47,
+  "words_new": 40,
+  "why": "'as a household employee' dropped (the definition that follows is the plain one, and the parent scope.household_pay uses it); 'for it' kept in the help."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "dependent.other_only_spouse",
+  "field": "help",
+  "old": "Answer No if a grandparent, aunt, uncle, grown brother or sister, or a parent of the child other than you and your husband or wife also lived with the child for more than half of 2025. A No may end the interview here.",
+  "new": "Answer No if a grandparent, aunt, uncle, grown brother or sister, or a parent other than you and your husband or wife also lived with the child over half of 2025. A No may end the interview here.",
+  "words_old": 43,
+  "words_new": 38,
+  "why": "'of the child' after 'parent' and 'for more than' trimmed; the relative list is whole."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "household.married_dec31",
+  "field": "help",
+  "old": "Living apart, or a divorce not final on December 31, leaves you married; a final decree of divorce, legal separation or annulment does not, unless you divorced only to file as unmarried and remarried in 2026. A common-law marriage, or one made abroad or under tribal law, counts where a U.S. state recognizes it; a domestic partnership or civil union does not. If your husband or wife died in 2025, answer No.",
+  "new": "Living apart, or a divorce not final by December 31, leaves you married; a final decree of divorce or legal separation does not, unless you divorced only to file unmarried and remarried each other in 2026. A common-law marriage a state recognizes counts; a domestic partnership or civil union does not. If widowed in 2025 and not remarried, answer No.",
+  "words_old": 72,
+  "words_new": 60,
+  "why": "Kept overrun (56): every guard names a wrong answer (see trimA.md). Dropped: annulment (nobody annulled answers Yes) and 'abroad or under tribal law' (affirms a Yes those filers give anyway). Added 'and not remarried' (p501: a widow who remarried in 2025 is married at year end)."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "household.community_property",
+  "field": "prompt",
+  "old": "At any time in 2025, did you live in, or have your permanent home in, Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or Wisconsin?",
+  "new": "At any time in 2025, did you live or have your permanent home in Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or Wisconsin?",
+  "words_old": 26,
+  "words_new": 25,
+  "why": "One 'in' and two commas dropped; 'at any time' and the domicile clause kept."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "household.spouse_cp_domicile",
+  "field": "help",
+  "old": "Count a marriage that ended in 2025, for the time before it ended. Their permanent home is the state they mean to return to when away. Answer No if you were not married in 2025. A Yes ends the interview here.",
+  "new": "Their permanent home is the state they mean to return to when away. A Yes ends the interview here.",
+  "words_old": 41,
+  "words_new": 19,
+  "why": "R5: after the reversion only MFS and married-HOH filers reach it (cp_any is read only by mfs_community_property and hoh_cp_married), so the ended-marriage and not-married sentences are dropped; the prompt's 'while you were married' covers an MFS filer whose spouse died in 2025."
+ },
+ {
+  "file": "forms/2025/f1040.yaml",
+  "id": "f1040.line1a",
+  "field": "remedy",
+  "old": "Income earned while you were married, with either of you living in or having a permanent home in a community property state, may be community income under state law, half yours and half your former spouse's; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+  "new": "Income earned while you were married and lived in, or had your permanent home in, a community property state may be community income under state law, half yours and half your former spouse's; Form 8958 and the community property rules of Pub. 555 are outside this tool.",
+  "words_old": 50,
+  "words_new": 47,
+  "why": "R5: the refusal household.cp_marriage_ended now fires only on the filer's own state (cp_not_joint -> cp_unmarried on community_property), so 'either of you' is dropped; jr's domicile widening is kept. Entry: the refusal with when: household.cp_marriage_ended."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "household.credit_disallowed",
+  "field": "prompt",
+  "old": "Has the IRS ever reduced or refused a child tax credit (including the additional one), a credit for other dependents or an earned income credit that you (or, on a joint return, your spouse) claimed, except to fix a math or clerical error?",
+  "new": "Has the IRS ever reduced or refused your (or, on a joint return, your spouse's) child tax credit (including the additional one), credit for other dependents or earned income credit, except for a math or clerical error?",
+  "words_old": 43,
+  "words_new": 37,
+  "why": "Articles dropped; 'to fix' -> 'for'. All three credits and the math-error exception kept."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "person.edu_over",
+  "field": "prompt",
+  "old": "For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials (for the lifetime learning credit, only materials that had to be bought from the school)?",
+  "new": "For this person (you, or your spouse on a joint return) — Did the tax-free help and refunds for any school term come to more than what was paid in 2025 for that term's tuition, required fees and course materials?",
+  "words_old": 57,
+  "words_new": 39,
+  "why": "Back to the xint sentence, reworded; the lifetime-learning materials rule moves to the help (pure wording)."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "person.edu_over",
+  "field": "help",
+  "old": "A term beginning January to March 2026 and paid for in 2025 counts as a 2025 term. With only one such term, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes ends the interview here.",
+  "new": "Lifetime learning credit: only materials you had to buy from the school. A January to March 2026 term paid in 2025 counts. Count help and refunds received in 2025 or 2026 before you file. A Yes ends the interview here.",
+  "words_old": 46,
+  "words_new": 40,
+  "why": "Holds the LLC materials rule and the early-2026 term; drops 'With only one such term, answer by that term alone' (the prompt's 'any school term ... that term's' already compares term by term)."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "dependent.edu_over",
+  "field": "prompt",
+  "old": "Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials (for the lifetime learning credit, only materials that had to be bought from the school)?",
+  "new": "Did the tax-free help and refunds for any school term come to more than what was paid in 2025 for that term's tuition, required fees and course materials?",
+  "words_old": 46,
+  "words_new": 28,
+  "why": "As person.edu_over."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "dependent.edu_over",
+  "field": "help",
+  "old": "A term beginning January to March 2026 and paid for in 2025 counts as a 2025 term. With only one such term, answer by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes ends the interview here.",
+  "new": "Lifetime learning credit: only materials you had to buy from the school. A January to March 2026 term paid in 2025 counts. Count help and refunds received in 2025 or 2026 before you file. A Yes ends the interview here.",
+  "words_old": 46,
+  "words_new": 40,
+  "why": "As person.edu_over."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "dependent.ptc_files",
+  "field": "help",
+  "old": "With both kinds, they must file when the total is over the larger of $1,350 and their pay (up to $15,300) plus $450. If 65 or older or blind, $3,350, $17,750 and $2,450 replace $1,350, $15,750 and $450 ($5,350, $19,750 and $4,450 if both).",
+  "new": "Total limit with both kinds: the larger of $1,350 and their pay (up to $15,300) plus $450. If 65 or older or blind, $3,350, $17,750 and $2,450 replace $1,350, $15,750 and $450 ($5,350, $19,750 and $4,450 if both).",
+  "words_old": 44,
+  "words_new": 38,
+  "why": "First sentence recast; every figure kept (i1040gi p. 9 table)."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "asset.listed",
+  "field": "prompt",
+  "old": "For this property — Is it property of a kind used for entertainment or recreation (such as photographic, sound, communication or video recording equipment) that is not used only in your business or at your regular place of business? Also answer Yes for a computer you began using before 2018 that is not used only at your regular place of business.",
+  "new": "For this property — Is it property of a kind used for entertainment or recreation (such as photographic, sound, communication or video recording equipment), not used only in your business or at your regular place of business? Or is it a computer first used before 2018, not used only at your regular place of business?",
+  "words_old": 60,
+  "words_new": 54,
+  "why": "Kept overrun (53, from 60): the two items have different exceptions (i4562 exceptions 1 and 2) and both refuse. Follow-up: gate the computer item on the asset kind."
+ },
+ {
+  "file": "forms/2025/k1s.yaml",
+  "id": "k1s.mp_other",
+  "field": "source",
+  "old": "Did you (or your spouse, whether or not you file jointly) do nearly all the work in it, work over 100 hours in it and over 500 hours in all such businesses, or meet another test of material participation?",
+  "new": "Did you (or your spouse, whether or not you file jointly) do almost all its work, work over 100 hours in it and over 500 hours in all such businesses, or meet another material participation test?",
+  "words_old": 43,
+  "words_new": 40,
+  "why": "'nearly all the work in it' -> 'almost all its work'; 'test of material participation' -> 'material participation test'. Spouse clause (BUG-0886) kept verbatim."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "k1s.not_at_risk",
+  "field": "prompt",
+  "old": "For this S corporation — Is any money or property you put into it (for shares, a loan or a contribution) protected from loss, or borrowed from another owner, anyone else with a stake in its business, or a relative of either?",
+  "new": "For this S corporation — Is any money or property you put into it (for shares, a loan or a contribution) protected from loss, or borrowed from anyone with a stake in its business or their relative?",
+  "words_old": 41,
+  "words_new": 36,
+  "why": "'another owner, anyone else with a stake' -> 'anyone with a stake' (an owner has one); 'a relative of either' -> 'their relative'."
+ },
+ {
+  "file": "forms/2025/k1s.yaml",
+  "id": "k1s.interest_buy",
+  "field": "source",
+  "old": "Did you pay interest in 2025 on money you borrowed to buy shares of this corporation or to put money into it as an owner?",
+  "new": "Did you pay interest in 2025 on money borrowed to buy its shares or put money into it as an owner?",
+  "words_old": 29,
+  "words_new": 25,
+  "why": "As k1p.interest_buy; 'as an owner' kept."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "rental.days_fair",
+  "field": "prompt",
+  "old": "For this rental property — How many days in 2025 was it rented at a fair price, including any of those days you also used it? Leave out days it was empty but offered for rent.",
+  "new": "For this rental property — How many days in 2025 was it rented at a fair price, including days you also used it? Leave out days it was only offered for rent.",
+  "words_old": 35,
+  "words_new": 31,
+  "why": "Both guards kept in the prompt (overlap days in; offered-only days out). 31: within 40 if per-entry questions take the child limit (open, section 7 caveat)."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "rental.personal_any",
+  "field": "help",
+  "old": "Family means a spouse, parent, grandparent, child, grandchild, brother or sister. Not personal use: family renting at a fair rent as their main home, and days it was your main home before or after renting it out (or trying to) for 12 months or more.",
+  "new": "Family: spouse, parent, grandparent, child, grandchild, sibling. Not personal use: family renting at a fair rent as their main home, and days it was your main home before or after renting it (or trying to) for 12 months or more.",
+  "words_old": 45,
+  "words_new": 40,
+  "why": "'brother or sister' -> 'sibling' (p527 also counts half siblings, now covered); A2's 12-month clause kept."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "rental.days_personal",
+  "field": "prompt",
+  "old": "For this rental property — How many days was it used that way? Leave out days spent mostly on repairs, and days it was your main home before or after renting it (or trying to) for 12 months in a row, or for less if you then sold it.",
+  "new": "For this rental property — How many days was it used that way? Leave out days spent mostly on repairs, and main-home days before or after renting it (or trying to) for 12 months in a row, or less if you then sold it.",
+  "words_old": 48,
+  "words_new": 43,
+  "why": "'days it was your main home' -> 'main-home days'. Kept overrun (43): repairs, the 12-month rule and its sale exception each prevent a wrong count."
+ },
+ {
+  "file": "forms/2025/rental.yaml",
+  "id": "rental.services",
+  "field": "source",
+  "old": "Did you, or a manager or staff for you, provide services for renters, such as cleaning during their stay, changing linen or meals?",
+  "new": "Did you, or someone for you, provide services for renters, such as cleaning during their stay, changing linen or meals?",
+  "words_old": 27,
+  "words_new": 24,
+  "why": "'a manager or staff for you' -> 'someone for you' (help still names them)."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "rental.part_home",
+  "field": "prompt",
+  "old": "For this rental property — Is it part of a building you live in or use yourself, or lived in during 2025, such as a room or a unit?",
+  "new": "For this rental property — Is it a room, unit or part of a building you live in or use yourself, or lived in during 2025?",
+  "words_old": 28,
+  "words_new": 25,
+  "why": "Examples folded into the noun phrase; 'yourself' kept."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "rental.amt12",
+  "field": "help",
+  "old": "If it was your home for part of 2025 and you did not count those days as days you used it, enter only the part for the days it was rented or offered for rent. Interest for the time it was your home goes with your home mortgage interest.",
+  "new": "If it was also your home in 2025, and those days are not counted as days you used it, enter only the part for days it was rented or offered for rent; the rest goes with your home mortgage interest.",
+  "words_old": 49,
+  "words_new": 40,
+  "why": "Condition and split kept (A1); reworded."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "rental.amt16",
+  "field": "help",
+  "old": "If it was your home for part of 2025 and you did not count those days as days you used it, enter only the part for the days it was rented or offered for rent. Tax for the time it was your home goes with your home's property tax.",
+  "new": "If it was also your home in 2025, and those days are not counted as days you used it, enter only the part for days it was rented or offered for rent; the rest goes with your home's property tax.",
+  "words_old": 49,
+  "words_new": 40,
+  "why": "As amt12."
+ },
+ {
+  "file": "forms/2025/rental.yaml",
+  "id": "rental.prior_any",
+  "field": "source",
+  "old": "Was a loss from this rental held back (not deducted) on a 2024 or earlier return of yours (or, on a joint return, your spouse's), including a separate one?",
+  "new": "Was a loss from this rental held back (not deducted) on an earlier return of yours (or, on a joint return, your spouse's), even a separate one?",
+  "words_old": 33,
+  "words_new": 31,
+  "why": "'a 2024 or earlier return' -> 'an earlier return'. 31: spouse phrase and the separate-return clause are guards."
+ },
+ {
+  "file": "forms/2025/rental.yaml",
+  "id": "rental.prior_not_active",
+  "field": "source",
+  "old": "Did any of that held-back loss come from a year when you (or your spouse) did not help make decisions for it, or when you (with your spouse) owned less than a tenth of it at some time that year?",
+  "new": "Did any of that held-back loss come from a year when neither you nor your spouse helped make its decisions, or when you and your spouse together owned under 10% of it at some time?",
+  "words_old": 44,
+  "words_new": 39,
+  "why": "Same two tests (active participation; 10% ownership with the spouse); 'a tenth' -> '10%'."
+ },
+ {
+  "file": "interview/2025/questions.yaml",
+  "id": "rprop.basis",
+  "field": "prompt",
+  "old": "For this building or improvement — Your share of what it cost, not counting the land. If you used it yourself before renting it, use the smaller of what the building was worth then and what you paid plus improvements, both without the land.",
+  "new": "For this building or improvement — Your share of its cost, without the land. If you used it yourself before renting it, enter the smaller of its value then and what you paid plus improvements, both without land.",
+  "words_old": 43,
+  "words_new": 37,
+  "why": "Kept overrun (37, from 43): the converted-home rule is common and must be seen without help. Follow-up: a child on prior personal use."
+ },
+ {
+  "file": "forms/2025/rprop.yaml",
+  "id": "rprop.disposed",
+  "field": "source",
+  "old": "In 2025, was it sold, traded, given away, destroyed or torn out, or did you stop renting it out for good?",
+  "new": "In 2025, was it sold, traded, given away, destroyed or torn out, or did you stop renting it for good?",
+  "words_old": 26,
+  "words_new": 25,
+  "why": "'renting it out' -> 'renting it'."
+ },
+ {
+  "file": "forms/2025/rprop.yaml",
+  "id": "rprop.fast",
+  "field": "source",
+  "old": "Did you deduct any of its cost in one year (bonus depreciation or section 179), or depreciate it other than straight line over 27.5 or 39 years?",
+  "new": "Did you deduct any cost in one year (bonus depreciation or section 179), or depreciate it other than straight line over 27.5 or 39 years?",
+  "words_old": 32,
+  "words_new": 30,
+  "why": "'any of its cost' -> 'any cost'. 29: tick member; both items refuse."
+ },
+ {
+  "file": "forms/2025/rprop.yaml",
+  "id": "rprop.ads",
+  "field": "source",
+  "old": "Do you depreciate it by the alternative depreciation system (ADS), over 30 or 40 years, by choice or because you must?",
+  "new": "Do you depreciate it over 30 or 40 years (the alternative depreciation system, ADS), by choice or because you must?",
+  "words_old": 26,
+  "words_new": 25,
+  "why": "Reordered; same content."
+ },
+ {
+  "file": "forms/2025/rprop.yaml",
+  "id": "rprop.basis_changed",
+  "field": "source",
+  "old": "Since you began renting it, has its cost for tax purposes changed for any reason except depreciation, such as a casualty loss or payment for an easement?",
+  "new": "Since renting began, has anything but depreciation changed its cost for tax purposes, like a casualty loss or easement payment?",
+  "words_old": 32,
+  "words_new": 25,
+  "why": "Same test and examples, fewer words."
+ },
+ {
+  "file": "forms/2025/rprop.yaml",
+  "id": "rprop.credit",
+  "field": "source",
+  "old": "Did you take a tax credit or special deduction for part of its cost, such as the disabled access credit or the deduction for removing barriers?",
+  "new": "Did you take a credit or special deduction for part of its cost, like for disabled access or barrier removal?",
+  "words_old": 31,
+  "words_new": 25,
+  "why": "Both examples kept (i4562: disabled access credit; deduction for removal of barriers)."
+ },
+ {
+  "file": "forms/2025/rental.yaml",
+  "id": "rental.not_at_risk",
+  "field": "source",
+  "old": "Was any money you put into it borrowed without personal liability from anyone but a bank or other regular lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it?",
+  "new": "Was any money you put in borrowed without personal liability from anyone but a bank or regular lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it?",
+  "words_old": 42,
+  "words_new": 40,
+  "why": "'put into it' -> 'put in'; 'or other regular lender' -> 'or regular lender' (help names a government lender)."
+ },
+ {
+  "file": "forms/2025/royalty.yaml",
+  "id": "royalty.expenses_any",
+  "field": "source",
+  "old": "Did you pay any costs for it, or did the payer take any out of your payments (such as fees, severance or production taxes, or production costs)?",
+  "new": "Did you pay costs for it, or were any taken out of your payments (such as fees, severance or production taxes, or production costs)?",
+  "words_old": 30,
+  "words_new": 27,
+  "why": "'did the payer take any out' -> 'were any taken out'. 27: 'such as' kept so the list does not read as closed."
+ }
+]

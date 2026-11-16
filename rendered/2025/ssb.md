@@ -75,10 +75,10 @@
 
 ## (helper) — `ssb.lived_apart`
 
-- **Authored helper label:** If you are married filing separately: did you live apart from your spouse for all of 2025?
-- **Encoded (Bool):** Input — If you are married filing separately: did you live apart from your spouse for all of 2025?
-- Expr: `{"op":"input","source":"If you are married filing separately: did you live apart from your spouse for all of 2025?"}`
-- Cite: [i1040gi] p. 31, Line 6d; p. 32, worksheet, Before you begin and line 8 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Married filing separately, and you lived apart from your spouse for all of 2025
+- **Encoded (Bool):** Enter the amount from household helper "Married filing separately, and you lived apart from your spouse for all of 2025".
+- Expr: `{"from":"household.mfs_apart_all_year","op":"copy"}`
+- Cite: [i1040gi] p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"; p. 32, Social Security Benefits Worksheet, line 8, "married filing separately and you lived apart from your spouse for all of 2025, enter $25,000" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `ssb.benefits_if_any`
 
@@ -179,7 +179,7 @@
 ## (helper) — `ssb.mfs_base`
 
 - **Authored helper label:** Line 8 for married filing separately: $25,000 if you lived apart all year (otherwise lines 8 to 15 are skipped)
-- **Encoded (NonNegDollars):** Choose — [helper "If you are married filing separately: did you live apart from your spouse for all of 2025?" = true → helper "Line 8 amount, $25,000"] [helper "If you are married filing separately: did you live apart from your spouse for all of 2025?" = false → helper "No amount"]
+- **Encoded (NonNegDollars):** Choose — [helper "Married filing separately, and you lived apart from your spouse for all of 2025" = true → helper "Line 8 amount, $25,000"] [helper "Married filing separately, and you lived apart from your spouse for all of 2025" = false → helper "No amount"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ssb.lived_apart",{"const":true}],"op":"test"},"then":"ssb.base_single"},{"guard":{"eq":["ssb.lived_apart",{"const":false}],"op":"test"},"then":"ssb.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 32, line 8 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -258,7 +258,7 @@
 ## (helper) — `ssb.mfs_adjust`
 
 - **Authored helper label:** Line 10 for married filing separately: $9,000 if you lived apart all year
-- **Encoded (NonNegDollars):** Choose — [helper "If you are married filing separately: did you live apart from your spouse for all of 2025?" = true → helper "Line 10 amount, $9,000"] [helper "If you are married filing separately: did you live apart from your spouse for all of 2025?" = false → helper "No amount"]
+- **Encoded (NonNegDollars):** Choose — [helper "Married filing separately, and you lived apart from your spouse for all of 2025" = true → helper "Line 10 amount, $9,000"] [helper "Married filing separately, and you lived apart from your spouse for all of 2025" = false → helper "No amount"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ssb.lived_apart",{"const":true}],"op":"test"},"then":"ssb.adjust_single"},{"guard":{"eq":["ssb.lived_apart",{"const":false}],"op":"test"},"then":"ssb.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 32, line 10 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -313,7 +313,7 @@
 ## (helper) — `ssb.mfs_together`
 
 - **Authored helper label:** Married filing separately and lived with your spouse at any time in 2025
-- **Encoded (Bool):** f1040 line Filing Status = 'mfs' and helper "If you are married filing separately: did you live apart from your spouse for all of 2025?" = false
+- **Encoded (Bool):** f1040 line Filing Status = 'mfs' and helper "Married filing separately, and you lived apart from your spouse for all of 2025" = false
 - Expr: `{"all":[{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["ssb.lived_apart",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 32, line 8, third bullet (2025; printed date 2026-02-25; sha256 482e9c48)
 

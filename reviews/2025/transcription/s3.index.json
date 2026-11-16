@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
  "head_rows": {
-  "printed lines compared": "29",
-  "agree / disagree / missing": "9 / 20 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
+  "printed lines compared": "28",
+  "agree / disagree / missing": "8 / 20 / 0",
+  "line-scoped reviews": "6 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -109,16 +109,10 @@
   },
   {
    "key": "s3.other_credit",
-   "record": "0803422fc88fb1e3816ef3771b9b1c3c75f3c44aa83f5cfe75cd30ac337d21be",
+   "record": "6ca34611337b55f85cf1c82371bf1b50860e7f7e010dfe87cf35c1bcbfa0f024",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f8396 p. 2, Line 1 (the credit is a share of the certified mortgage interest paid); i1040gi Lines 6a-6z. Completed differences are only the reply's raw read of s3.mcc, which the project asks only with home mortgage interest (s3.mcc_if_interest): 41 candidate-unknown, and 1 value at redesign.credits.mcc_not_asked (sa.mortgage_interest $0 with a stray s3.mcc Yes: no interest, no credit; project false is right). The 13 refused-record value differences are the reply reading the id as lines 6a-6z while the project's gate also covers payments and carryovers refused elsewhere (ftc carryover, farmland, section 960(c), Form 8978), as ruled in the landing round; the return is refused either way. Triage (pass 1a67f25f3719): 2,563/3,178 agree.",
-   "subject_key": "34184d62080628a6c3a0a190e16fb5ace7ca36103a1ad1adec117f560b410678"
-  },
-  {
-   "key": "s3.mfs",
-   "record": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
-   "status": "AGREE",
-   "subject_key": "f0ddf5010089c6400468da8bd7488914dffbf72440e483f1fa4b9a60f235f128"
+   "ruling": "Ruling: representation; the reply flattens the screen into a test over every follow-up answer without the gate each is asked under (its own note: 'The follow-up questions are tested only under the gating question they follow' is not what its expression does for s3.elderly_credit and s3.mcc). Triage (pass 5aba9c3e392b) 2,848/3,524 agree; completed returns: 2 value differences, both fixtures whose follow-up answer stands outside its gate (redesign.credits.elderly_not_asked: s3.elderly_credit true where the elderly/disabled question is not asked; redesign.credits.mcc_not_asked: s3.mcc read without the mortgage-interest gate), and 197 candidate-unknown where the reply reads a follow-up input the interview does not ask; the rest are on incomplete or refused records. This round's change (s3.other_credit_9, the Form 1116 carryover link, removed; ftc.carryover_no_tax refuses at ftc.credit instead) is not where the two differ. The same pattern was ruled representation in the landing and Goal-1 rounds (i1040gi Lines 6a-6z; f8396 p. 2, Line 1).",
+   "subject_key": "81c81d02d31ac654c7e1a250a5cb8c9d28fa3c2e35fca6a72af875840523bb09"
   },
   {
    "key": "1",
@@ -181,9 +175,9 @@
   },
   {
    "key": "11",
-   "record": "0fec04d10eb3917399737bc1bf3b0259c9537423ae7abd972872b60f667ab5b9",
+   "record": "6ca34611337b55f85cf1c82371bf1b50860e7f7e010dfe87cf35c1bcbfa0f024",
    "status": "AGREE",
-   "subject_key": "3b5479d8f3c79491049c549089c435d1a41fddefc9d267ed19333be48988c9ab"
+   "subject_key": "7a103a0d55782b0e39178aa6543c561ea6d06fb7c29054dad6756c9fc311bede"
   },
   {
    "key": "12",
@@ -219,8 +213,7 @@
   "s3.mcc_if_interest": "25b0e28308a16ad82ddd75a818327266054071c89ca370f43c07f64cbe1d7731",
   "s3.prior_amt_if_forms": "f4588d61943f96fcea825e7abf6a114adecfa9fad9743081cda2e80d5588ef73",
   "s3.prior_forms_if_forms": "2c74bedfad0be8508185b24b88f826443f9fa261b9b87a021b85fc9bce012011",
-  "s3.other_credit": "06d1808976032bd7af1bb1a1083e4f5c8cd8d4c77e7159a17104671d4f77e353",
-  "s3.mfs": "6726f0b239d5632c25516cb419b9a78cdc2e311417aff2cbef8ada541e5e47b4",
+  "s3.other_credit": "7add8a906789508988a1573070d851ea71ea103a8d42416a8ea7bcbecf96bab3",
   "1": "520111c959989188ce7d481be28a9b533f1facd077083a81cc2c4e457255b9fe",
   "2": "62e7115d0a806175d67b2a301449897878e49828445e6b95e4a18e054c8bda0c",
   "3": "b0daa3d8cb6d0305fb434bfe96790797f41c4bd51ed3f5fb492aab01b6cb5a93",
@@ -230,7 +223,7 @@
   "7": "eeffcc832c7c49529bee96dbfbfc19f1f35f6894bbe8198e6e0ef54051efeff1",
   "8": "85954f42c63184e45d1eee34850eb53f59288a43326d35af3a97d20699c595ce",
   "9": "0f0192bd5d1fe6b89e20cfa96309a4201ab5c9a91a3d9e80707572ac190e4d20",
-  "11": "80dec3598cdd31a4a7a95f9edead1a30e8513ab488c9d1d3999b95bbabde0859",
+  "11": "ef01cd159cd37686d5ae78f7c089a00daf76a95cedb4cbbe2f1b994ccbeb975c",
   "12": "9d1093ee9ee965ec07ab794c630221c777eb97d2d9e5a09a4932cf47ebee66ae",
   "14": "2ad09a9ee97f6c61d6705311bac7749672210e58b9429e6b7bbb3c3ba84ad6c6",
   "15": "0139308d9408fa0c602a3d55a75dad8cfd1aec5d92ec251520510ea0f4b93631"
@@ -251,11 +244,12 @@
   "s3.mcc_if_interest": "35dd1984bb454dbd3fb42fc15752535f9ce5adb3dc582997990dfe651370785c",
   "s3.prior_amt_if_forms": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "s3.prior_forms_if_forms": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "s3.other_credit": "b4cb72a13f2bc7767ce09d3d95ee40039636dcab7bb42558d0d2b391d492713c",
+  "s3.other_credit": "3b1a999106f2fab5a9bf1de4aaf298977dfcc1b581cadf4210edf0175b0165c7",
   "5a": "44145c9c17e80c02409fa95cd0f52adc10271be1967989b4354ff767f5b70bd6",
   "5b": "f31308964e4ab0eaf59e9fdec690c8a94688eee8fecb7e91bd2772510ba14bde",
   "7": "69e0286cd23a6a5e7f33650a27d61737a6f8b3d5b027b25fd14a044fae9725a2",
   "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "11": "20091c601caec80216827fd61b35ec4ab35bdb0740fc318cf0eae7a32938bd02",
   "12": "63b3d1408161573e977fb0185d8e08c9c98f7692eeed34783d826ac05e0fed67",
   "14": "16f29213bc56c8be71f96551113d0bbec65a509e98c3634fa2d721ad3daadffa",
   "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"

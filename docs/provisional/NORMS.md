@@ -1,5 +1,7 @@
 # Provisional redraft of the whole interview: norms and working rules
 
+**Historical.** The working rules given to the agents of the whole-interview redraft (2026-11-12 and 13), in a scratch clone. The redraft has landed on `main` (`a2f24909`). The current standard for interview questions is `docs/2026-11-13_interview_construction_protocol.md`, which restates these norms as N1 to N12; follow it, not this file.
+
 Written by the coordinator on the night of 2026-11-12 for every agent of the redraft. The owner asked for the entire
 interview to be reconstructed on the norms below, as provisional work he will walk in the morning and adopt or reject.
 This clone (`.claude/worktrees/provisional`, branch `provisional/interview-graph` and lane branches cut from it) is a

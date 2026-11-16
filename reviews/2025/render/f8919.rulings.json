@@ -1,0 +1,26 @@
+{
+ "kind": "render",
+ "form": "f8919",
+ "rulings": [
+  {
+   "printed": "8",
+   "restated": "Add person line wages and person helper \"This person's Form 4137 line 10 (unreported tips subject to social security tax) (only when Form 4137 is filed; zero otherwise)\".",
+   "model": "The IRS line asks for the 'Total social security wages and social security tips (total of boxes 3 and 7 on Form(s) W-2)' plus RRTA compensation (refused) plus Form 4137 line 10. The Form 4137 line 10 operand matches, but 'person line wages' is defined only as 'Total w2.wages for this person'. The given text does not show whether that is box 3 plus box 7 or box 1 wages, which can differ.",
+   "ruling": "Ruling: representation; the rendering's 'person line wages' is person.wages, the sum over the person's W-2s of w2.wages, which forms/2025/w2.yaml defines as w2.box3 + w2.box7 ('Add social security wages and social security tips'; iw2w3 p. 18, boxes 3, 4 and 7; amb.2025.ss_wages chose boxes 3 plus 7), exactly f8919 p. 1, line 8, \"Total social security wages and social security tips (total of boxes 3 and 7 on Form(s) W-2)\". The Form 4137 line 10 operand the reviewer matched is the line's third term; the RRTA term is refused (person.rrta). The rendering does not expand person.wages; the line's own label names boxes 3 and 7. Project stands.",
+   "context": "f6c3848691b78e91fb95eed0c9bc0cb0259567c57d617d6b2802a3526ce37843",
+   "date": "2026-11-15",
+   "run": "2de129adbc4104595baf263629dc8be5ca5e41da49d0093f4a9e2a08178c54b7",
+   "subject_key": "593a9465588d63182cde02a10dde2d9a242c70d0d8f7234ee50433153b8d011e"
+  },
+  {
+   "printed": "8",
+   "restated": "Add person line wages and person helper \"This person's Form 4137 line 10 (unreported tips subject to social security tax)\".",
+   "model": "The IRS text requires 'Total social security wages and social security tips (total of boxes 3 and 7 on Form(s) W-2)' plus Form 4137, line 10, and the RRTA part is properly refused. But 'person line wages' is defined only as 'Total w2.wages for this person,' which doesn't say whether it is boxes 3 and 7 or box 1.",
+   "ruling": "Ruling: representation; person.wages is the sum over the person's W-2s of w2.wages = w2.box3 + w2.box7 ('Add social security wages and social security tips'; amb.2025.ss_wages, owner-approved: boxes 3 plus 7), i.e. 'total of boxes 3 and 7 on Form(s) W-2' as the line asks; RRTA is refused (person.rrta). The reply could not see the definition behind the glossary label.",
+   "context": "6d4cd295b6e5848a477731e39956944d70bc583c776d32d71f07751010652e6d",
+   "date": "2026-11-15",
+   "run": "663e7620fa69da0c3a23d81758e1c5299f20845abdf91dee4cb6c8327e331ed5",
+   "subject_key": "c0bbc62499ec5b3b925a210fe77829d6a5a84ae822d83f8685b2bc7743baa285"
+  }
+ ]
+}

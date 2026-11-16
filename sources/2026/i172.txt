@@ -1,0 +1,618 @@
+Note: The draft you are looking for begins on the next page.
+
+
+         Caution: DRAFT—NOT FOR FILING
+
+
+This is an early release draft of an IRS tax form, instructions, or publication, which the IRS is
+providing for your information. Do not file draft forms. We incorporate all significant changes to
+forms posted with this coversheet.
+
+
+However, unexpected issues occasionally arise, or legislation is passed—in this case, we will post a
+new draft of the form to alert users that changes were made to the previously posted draft. Thus, there
+are never any changes to the last posted draft of the form and the final revision of the form. Forms and
+instructions are subject to OMB approval before they can be officially released, so we post drafts of
+them until they are approved. Drafts of instructions and publications usually have some additional
+changes before their final release. Early release drafts are posted at IRS.gov/DraftForms and remain
+there after the final release is posted at IRS.gov/LatestForms. Also see IRS.gov/Forms.
+
+
+Most forms and publications have a page on IRS.gov: IRS.gov/Form1040 for Form 1040;
+IRS.gov/Pub501 for Pub. 501; IRS.gov/W4 for Form W-4; and IRS.gov/ScheduleA for Schedule A
+(Form 1040), for example, and similarly for other forms, publications, and schedules for Form 1040.
+When typing in a link, type it into the address bar of your browser, not a Search box on IRS.gov.
+
+
+If you wish, you can submit comments to the IRS about draft or final forms, instructions, or
+publications at IRS.gov/FormsComments. Include "NTF" followed by the form or publication number
+(for example, "NTF1040", "NTFW4", "NTF501", etc.) in the body of the message to route your
+message properly. We cannot respond to all comments due to the high volume we receive and may
+not be able to consider many suggestions until the subsequent revision of the product, but we will
+review each "NTF" message.
+
+
+If you have comments on reducing paperwork and respondent (filer) burden, with respect to draft or
+final forms, please respond to the relevant information collection through the Federal Register
+process; for more information, click here.
+                                    Userid: CPM                 Schema: instrx Leadpct: 100%      Pt. size: 9    □ Draft □ Ok to Print
+        AH XSL/XML                  Fileid: … form-172/202612/a/xml/cycle03/source                               (Init. & Date) _______
+
+        Page 1 of 7                                                                                             15:27 - 29-Sep-2026
+        The type and rule above prints on all proofs including departmental reproduction proofs. MUST be removed before printing.
+
+
+
+
+                                 TREASURY/IRS AND OMB USE ONLY DRAFT
+        Instructions for Form 172
+        (Rev. December 2026)
+        (Use with Form 172 (December 2024) or later revision)
+        Net Operating Losses (NOLs) for Individuals, Estates, and Trusts
+        Section references are to the Internal Revenue Code unless             Election to waive carryback. A taxpayer may elect to waive
+        otherwise noted.                                                       carrybacks. See Code section 172 (b)(3).
+
+        Future Developments                                                    NOL Steps
+                                                                               Follow Steps 1 through 5 to figure and use your NOL.
+        Go to IRS.gov/form172 for the latest information about Form 172
+                                                                               Step 1. Complete your tax return for the year. You may have an
+        and its instructions.
+                                                                               NOL if a negative amount appears in these cases.
+                                                                               • Individuals—You subtract your standard deduction or itemized
+        What’s New                                                             deductions from your adjusted gross income (AGI).
+                                                                               • Estates and trusts—You combine taxable income, charitable
+        We have clarified the instructions for Part II, lines 9 and 10.        deductions, income distribution deduction, and exemption
+                                                                               amounts from your Form 1041.
+        Reminders                                                              Step 2. Determine whether you have an NOL and its amounts.
+                                                                               See How To Figure an NOL, later. If you do not have an NOL,
+        NOL carryback limitation. Generally, you can only carry NOLs
+                                                                               stop here.
+        arising in tax years after 2020 to a later year. An exception
+        applies to certain farming losses, which may be carried back           Step 3. If applicable, decide whether to carry the NOL back to a
+
+
+
+DRAFT                                                                                                                                               DRAFT
+        2 years. See Code section 172.                                         past year or to waive the carryback period and instead carry the
+                                                                               NOL forward to a future year. See When To Use an NOL, later.
+        NOL deduction limitation. In general, your NOL deduction for
+        tax years beginning after 2020 can’t exceed the sum of (1) the         Step 4. Deduct the NOL in the carryback or carryforward year.
+        NOLs carried to the year from tax years beginning before 2018          See How To Claim an NOL Deduction, later.
+        plus (2) the lesser of (a) the NOLs carried to the year from
+                                                                               Step 5. Determine the amount of your unused NOL. See How
+        tax years beginning after 2017 or (b) 80% of the excess (if
+                                                                               To Figure an NOL Carryover, later. Carry the unused NOL to the
+        any) of taxable income computed without regard to deductions
+                                                                               next carryback or carryforward year and begin again at Step 4.
+        for NOLs, or Qualified Business Income (QBI), or section 250
+        deductions, over the NOLs carried to the year from tax years           Note: If your NOL deduction includes more than one NOL
+        beginning before 2018.                                                 amount, apply Step 5 separately to each NOL amount, starting
+                                                                               with the amount from the earliest year.
+        General Instructions                                                   How To Figure an NOL
+        Purpose of Form                                                        If your deductions for the year are more than your income for the
+                                                                               year, you may have an NOL.
+        Individuals, estates, and trusts use Form 172 to figure the
+        amount of the NOL that is available for carrying back or forward.          There are rules that limit what you can deduct when figuring
+                                                                               an NOL. In general, the following items are not allowed when
+          Generally, “net operating loss” means the excess of                  figuring an NOL.
+        deductions over gross income. See Code section 172(c).                 • Capital losses in excess of capital gains.
+                                                                               • The section 1202 exclusion of the gain from the sale or
+        Caution: Carrying back an NOL to an earlier tax year may               exchange of qualified small business stock.
+        create an alternative minimum tax (AMT) liability for that earlier
+                                                                               • Nonbusiness deductions in excess of nonbusiness income.
+        year. This may be true even if there was no AMT liability on the
+                                                                               • The NOL deduction.
+        tax return filed for that earlier year.
+                                                                               • The section 199A deduction for qualified business income.
+                                                                               See Code section 172(d).
+        Caution: Carrying back an NOL to tax year 2021 may create an
+        excess advance child tax credit (CTC) payment, based on the
+        refigured adjusted gross income (AGI) and Modified AGI (MAGI).
+                                                                               When To Use an NOL
+        With the NOL reduction in MAGI, however, repayment protection          If you have an NOL for a tax year ending after 2020, only the
+        under section 24(j) may reduce the amount of tax you owe,              farming loss portion, if any, can be carried back.
+        based on certain income thresholds. See the 2021 Instructions          NOL year. This is the year in which the NOL occurred.
+        for Schedule 8812 (Form 1040) for more details.
+                                                                               Exception to the no carryback rule. Farming losses, defined
+        Caution: Individuals, estates, and trusts that carry NOLs back         next, qualify for a 2-year carryback period. Only the farming loss
+        to years in which they have a section 965(a) inclusion (“965           portion of an NOL can be carried back 2 years.
+        year”) may not use this form. You must use an amended return to           Farming business. A farming business is a trade or business
+        carry back to such years.                                              involving cultivation of land or the raising or harvesting of any
+                                                                               agricultural or horticultural commodity. A farming business can
+        Keeping records. You should keep records for any tax year that         include operating a nursery or sod farm or raising or harvesting
+        generates an NOL for 3 years after you have used the carryback/        most ornamental trees or trees bearing fruit, nuts, or other
+        carryforward or 3 years after the carryforward expires.
+
+                                               Instructions for Form 172 (Rev. 12-2026) Catalog Number 94487B
+        Sep 29, 2026                          Department of the Treasury Internal Revenue Service www.irs.gov
+        Page 2 of 7           Fileid: … form-172/202612/a/xml/cycle03/source                                      15:27 - 29-Sep-2026
+        The type and rule above prints on all proofs including departmental reproduction proofs. MUST be removed before printing.
+
+
+
+
+                                TREASURY/IRS AND OMB USE ONLY DRAFT
+        crops. The raising, shearing, feeding, caring for, training, and
+        management of animals is also considered a farming business.
+                                                                                How To Claim an NOL Deduction
+                                                                                If you carried the NOL to an earlier year, your NOL deduction
+           A farming business does not include contract harvesting of
+                                                                                is the carried over NOL minus the NOL amount you used in the
+        an agricultural or horticultural commodity grown or raised by
+                                                                                earlier year or years. If you carry more than one NOL to the same
+        someone else. It also does not include a business in which you
+                                                                                year, your NOL deduction is the total of these carrybacks and
+        merely buy or sell plants or animals grown or raised entirely by
+                                                                                carryovers.
+        someone else.
+                                                                                NOL resulting in no taxable income. If your NOL is more than
+        Farming loss. A farming loss is the smaller of:
+                                                                                the taxable income of the year you carry it to (figured before
+         • The amount that would be the NOL for the tax year if only            deducting the NOL), you will generally have an NOL carryover
+        income and deductions from farming businesses (as defined in
+                                                                                to the next year. See How To Figure an NOL Carryover, later, to
+        section 263A(e)(4)) were taken into account, or
+                                                                                determine how much NOL you have used and how much you
+         • The NOL for the tax year.                                            carry to the next year.
+        Annual losses limited. Noncorporate taxpayers may be
+        subject to excess business loss limitations. For more information       Deducting a Carryback
+        see Excess Business Loss, later.                                        If you carry back your NOL, you can use either Form 1045 or
+                                                                                Form 1040-X. You can get your refund faster by using Form
+        Waiving the Carryback Period                                            1045, but you have a shorter time to file it and because it is
+        To make this choice, attach a statement to your original return         not treated as a claim for credit or refund, you may need to
+        filed by the due date (including extensions) for the NOL year.          file a claim for credit or refund (such as Form 1040-X) if your
+        This statement must show that you are choosing to waive the             application on Form 1045 is disallowed. For more information,
+        carryback period under section 172(b).                                  see the Instructions for Form 1045. You can use Form 1045 to
+                                                                                apply an NOL to all carryback years. If you use Form 1040-X,
+           If you filed your original return on time but did not file the       you must use a separate Form 1040-X for each carryback year
+        statement with it, you can make this choice on an amended               to which you apply the NOL.
+        return filed within 6 months of the due date of the return
+        (excluding extensions). Attach a statement to your amended                 Estates and trusts that do not file Form 1045 must file
+
+
+
+DRAFT                                                                                                                                                   DRAFT
+        return and write “Filed pursuant to section 301.9100-2” at the          an amended Form 1041 (instead of Form 1040-X) for each
+        top of the statement.                                                   carryback year to which NOLs are applied. Use a copy of
+                                                                                the appropriate year’s Form 1041, check the net operating
+           Once you choose to waive the carryback period, it is                 loss carryback box, and follow the Form 1041 instructions for
+        generally irrevocable. The election must be made by the due             amended returns. Also see the special procedures for filing an
+        date of the return, including extensions.                               amended return due to an NOL carryback, explained under
+                                                                                Form 1040-X, later.
+        How To Carry an NOL Back or Forward
+        If you choose to carry back a farming loss, you must first carry        Caution: Carrying back an NOL to an earlier tax year may
+        the farming loss to the earliest year in the 2-year carryback           create an alternative minimum tax (AMT) liability for that earlier
+        period. If the farming loss is not used up, you can carry the rest      year. This may be true even if there was no AMT liability on the
+        to the next earliest carryback year and then on to carryover years      tax return filed for that earlier year.
+        after the loss year, and so on.                                         Form 1045. You can apply for a quick refund by filing Form
+           If you waive the carryback period or do not use up all of the        1045. This form results in a tentative adjustment of tax in the
+        farming loss in the carryback period, you will have an NOL that         carryback year.
+        can be carried forward indefinitely until used up. This NOL will be         If the IRS refunds or credits an amount to you from Form 1045
+        equal to the sum of what remains of the farming loss, plus any          and later determines that the refund or credit is too much, the
+        nonfarm NOL, plus any excess business loss for the NOL year.            IRS may assess and collect the excess immediately.
+        See Excess Business Loss, later. Start by carrying the NOL to               Generally, you must file Form 1045 on or after the date you
+        the first tax year after the NOL year. If you do not use it up, carry   file your tax return for the NOL year but not later than 1 year after
+        the unused part to the next year. Continue to carry any unused          the end of the NOL year. If the last day of the NOL year falls on
+        part of the NOL forward until the NOL is used up.                       a Saturday, Sunday, or holiday, the form will be considered timely
+           For nonfarming businesses, since you can’t carry the NOL to          filed if postmarked on the next business day.
+        an earlier year, your NOL deduction for tax years beginning after           Attach Form 172 to your Form 1045 if it applies.
+        2020 can’t exceed the sum of:
+           1. The NOLs carried to the year from tax years beginning             Caution: If you were affected by a federally declared disaster,
+        before 2018; plus                                                       you may have additional time to file your Form 1045. For more
+                                                                                information, go to IRS.gov/DisasterTaxRelief.
+           2. The lesser of:
+                                                                                Form 1040-X. If you do not file Form 1045, you can file Form
+            a. The NOLs carried to the year from tax years beginning            1040-X to get a refund of tax because of an NOL carryback.
+            after 2017, or                                                      Generally, file Form 1040-X for the carryback year within 3 years
+            b. 80% of the excess (if any) of taxable income computed            after the due date, including extensions, for filing the return for
+            without regard to deductions for NOLs, or QBI, or section           the NOL year.
+            250 deductions over the NOLs carried to the year from tax
+            years beginning before 2018.                                        Caution: Filing Form 1040-X does not extend the carryback
+                                                                                period. See When To Use an NOL, earlier.
+            Only NOLs arising after 2017 and carried forward to a year
+        after 2020 are subject to the 80%-of-taxable-income limit. The             Attach a Form 172 for each NOL to your Form 1040-X if it
+        total amount of any NOL deduction for 2021 or thereafter that           applies to the computation of your NOL.
+        is attributable to NOLs from tax years after 2017 can’t exceed
+        80% of taxable income without regard to the NOL deduction or
+        sections 199A or 250.
+
+        2
+        Page 3 of 7           Fileid: … form-172/202612/a/xml/cycle03/source                                      15:27 - 29-Sep-2026
+        The type and rule above prints on all proofs including departmental reproduction proofs. MUST be removed before printing.
+
+
+
+
+                                TREASURY/IRS AND OMB USE ONLY DRAFT
+        Deducting a Carryforward                                                Separate to joint return. If you and your spouse file a joint
+        If you carry forward your NOL to a tax year after the NOL year,         return for the tax year and were married but filed separate
+        list your NOL deduction as a negative figure on Schedule 1              returns for any of the tax years involved in figuring the NOL
+        (Form 1040) for the year to which the NOL is carried. Estates           carryback or carryover, treat the separate carryback or carryover
+        and trusts, include an NOL deduction on Form 1041.                      as a joint carryback or carryover.
+                                                                                Joint to separate returns. If you and your spouse file separate
+          Attach a Form 172 for each NOL to your Form 1040 or Form
+                                                                                returns for a tax year but filed a joint return for any or all of the
+        1041 if it applies.
+                                                                                tax years involved in figuring the NOL carryover, figure each of
+                                                                                your carryovers separately by separating the NOL portion for
+        Change in Marital Status                                                each spouse from within the joint return. Because the joint NOL
+        If you and your spouse were not married to each other in all            is being carried to a tax year involving separate returns, the
+        years involved in figuring NOL carrybacks and carryovers, only          separate NOL of each spouse must be figured.
+        the spouse who had the loss can take the NOL deduction. If you             Joint return in NOL year. Figure each spouse’s share of the
+        file a joint return, the NOL deduction is limited to the income of      joint NOL through the following steps.
+        that spouse.
+                                                                                    1. Figure each spouse’s NOL as if he or she filed a separate
+           For example, if your marital status changes because of death         return. See How To Figure an NOL, earlier. If only one spouse
+        or divorce and in a later year you have an NOL, you can carry           has an NOL, stop here. All of the joint NOL is that spouse’s NOL.
+        back that loss only to the part of the income reported on the joint         2. If both spouses have an NOL, multiply the joint NOL by a
+        return (filed with your former spouse) that was related to your         fraction, the numerator of which is spouse A’s NOL figured in (1)
+        taxable income. After you deduct the NOL in the carryback year,         and the denominator of which is the total of the spouses’ NOLs
+        the joint rates apply to the resulting taxable income.                  figured in (1). The result is spouse A’s share of the joint NOL.
+                                                                                The rest of the joint NOL is spouse B’s share.
+        Refund limit. If you are not married in the NOL year (or are
+        married to a different spouse) and in the carryback year you                Example 1. Mark and Nancy are married and file a joint
+        were married and filed a joint return, your refund for the overpaid     return for the current tax year. They have an NOL of $5,000
+        joint tax may be limited. You can claim a refund for the difference     from a farming business. They carry the NOL back to the
+        between your share of the refigured tax and your contribution
+
+
+DRAFT                                                                                                                                                   DRAFT
+                                                                                second preceding tax year, a year in which Mark and Nancy
+        toward the tax paid on the joint return. The refund cannot be           filed separate returns. Figured separately, Nancy’s current tax
+        more than the joint overpayment. Attach a statement showing             year deductions were more than her income, and Mark’s income
+        how you figured your refund.                                            was more than his deductions. Mark does not have any NOL to
+            Figuring your share of a joint tax liability. There are five        carry back. Nancy can carry back the entire $5,000 NOL to her
+        steps for figuring your share of the refigured joint tax liability.     separate return for the second preceding tax year.
+             1. Figure your total tax as though you had filed as married            Example 2. Assume the same facts as in Example 1, except
+        filing separately.                                                      that both Mark and Nancy had deductions in the current tax year
+             2. Figure your spouse’s total tax as though your spouse also       that were more than their income. Figured separately, his NOL
+        had filed as married filing separately.                                 is $1,800 and her NOL is $3,000. The sum of their separate
+                                                                                NOLs ($4,800) is less than their $5,000 joint NOL because his
+             3. Add the amounts in (1) and (2).
+                                                                                deductions included a $200 net capital loss that is not allowed
+             4. Divide the amount in (1) by the amount in (3).                  in figuring his separate NOL. The loss is allowed in figuring
+             5. Multiply the refigured tax on your joint return by the          their joint NOL because it was offset by Nancy’s capital gains.
+        amount figured in (4). This is your share of the joint tax liability.   Mark’s share of their $5,000 joint NOL is $1,875 ($5,000 ×
+                                                                                $1,800/$4,800) and Nancy’s is $3,125 ($5,000 − $1,875).
+           Figuring your contribution toward tax paid. Unless you
+        have an agreement or clear evidence of each spouse’s                    How To Figure an NOL Carryover
+        contributions toward the payment of the joint tax liability, figure
+                                                                                If your NOL is more than your taxable income for the year to
+        your contribution by adding the tax withheld on your wages and
+                                                                                which you carry it (figured before deducting the NOL), you may
+        your share of joint estimated tax payments or tax paid with the
+                                                                                have an NOL carryover. You must make certain modifications to
+        return. If the original return for the carryback year resulted in an
+                                                                                your taxable income to determine how much NOL you will use
+        overpayment, reduce your contribution by your share of the tax
+                                                                                up in that year and how much you can carry over to the next tax
+        refund. Figure your share of a joint payment or refund by the
+                                                                                year. Your carryover is the excess of your NOL deduction over
+        same method used in figuring your share of the joint tax liability.
+                                                                                your modified taxable income for the carryback or carryforward
+        Use your taxable income as originally reported on the joint return
+                                                                                year. If your NOL deduction includes more than one NOL, apply
+        in steps 1 and 2 above and substitute the joint payment or refund
+                                                                                the NOLs against your modified taxable income in the same
+        for the refigured joint tax in step 5.
+                                                                                order in which you incurred them, starting with the earliest.
+        Change in Filing Status                                                 Modified taxable income. Your modified taxable income is
+        If you and your spouse were married and filed a joint return for        your taxable income figured with the following changes.
+        each year involved in figuring NOL carrybacks and carryovers,               1. You cannot claim an NOL deduction for the NOL
+        figure the NOL deduction on a joint return as you would for an          carryover you are figuring or for any later NOL.
+        individual. However, treat the NOL deduction as a joint NOL.                2. You cannot claim a deduction for capital losses in excess
+                                                                                of your capital gains. Also, you must increase your taxable
+           If you and your spouse were married and filed separate
+                                                                                income by the amount of any section 1202 exclusion.
+        returns for each year involved in figuring NOL carrybacks and
+        carryovers, the spouse who sustained the loss may take the                  3. You cannot claim a deduction for your exemptions for
+        NOL deduction on a separate return.                                     yourself, your spouse, or your dependents.
+                                                                                    4. You must figure any item affected by the amount of your
+           Special rules apply for figuring the NOL carrybacks and              AGI after making the changes in (1), (2), and (3) above and
+        carryovers of married people whose filing status changes for any        certain other changes to your AGI that result from (1), (2), and
+        tax year involved in figuring an NOL carryback or carryover.
+
+                                                                                                                                                   3
+        Page 4 of 7                     Fileid: … form-172/202612/a/xml/cycle03/source                               15:27 - 29-Sep-2026
+        The type and rule above prints on all proofs including departmental reproduction proofs. MUST be removed before printing.
+
+
+
+
+                                            TREASURY/IRS AND OMB USE ONLY DRAFT
+        (3). This includes income and deduction items used to figure
+        AGI (for example, IRA deductions), as well as certain itemized             Specific Instructions
+        deductions. To figure a charitable contribution deduction, do not
+        include deductions for NOL carrybacks in the change in (1) but             Tax Year
+        do include deductions for NOL carryforwards from tax years
+                                                                                   Above your name, enter the calendar year or other tax year you
+        before the NOL year.
+                                                                                   are using. If you are a fiscal year filer using a tax year other than
+           Your taxable income as modified cannot be less than zero.               January 1 through December 31, enter the beginning and ending
+           You can use Form 172, Part II, to figure your modified taxable          months of your fiscal year in the entry space provided.
+        income for carryback years and your carryover from each of
+        those years.
+                                                                                   Address
+                                                                                   P.O. box. Enter your box number only if your post office doesn’t
+        Excess Business Loss                                                       deliver mail to your home.
+        Noncorporate taxpayers may be subject to excess business
+                                                                                   Foreign address. If you have a foreign address, enter the city
+        loss limitations. The at-risk limits and the passive activity limits
+                                                                                   name on the appropriate line. Don’t enter any other information
+        are applied before figuring the amount of any excess business
+                                                                                   on that line but also complete the spaces below that line. Don’t
+        loss. An excess business loss is the amount by which the
+                                                                                   abbreviate the country name. Follow the country’s practice for
+        total deductions attributable to all of your trades or businesses
+                                                                                   entering the postal code and the name of the province, county, or
+        exceed your total gross income and gains attributable to those
+                                                                                   state.
+        trades or businesses plus the threshold amount for excess
+        business losses. The threshold amount for your NOL year can
+        be found in the Instructions for Form 461. The excess is treated
+                                                                                   Part I—NOL
+        as an NOL to be carried forward. Further, when carryforwards               Complete Part I to figure the amount of the NOL that is available
+        can be used, they can only offset 80% of taxable income in                 for carryback or carryforward.
+        future years. A trade or business includes, but is not limited
+        to, Schedule C and Schedule F activities and certain activities            Line 2—Nonbusiness Capital Losses
+        reported on Schedule E. (In the case of a partnership or S                 Don’t include on this line any section 1202 exclusion amounts
+                                                                                   (even if entered as a loss on Schedule D (Form 1041)).
+
+
+DRAFT                                                                                                                                                      DRAFT
+        corporation, although the limitation is applied at the partner or
+        shareholder level, the trade or business determination is made
+        at the entity’s level.) Business gains and losses reported on              Line 6—Nonbusiness Deductions
+        Schedule D and Form 4797 are included in the excess business               Enter as a positive number deductions that aren’t connected with
+        loss calculation. Excess business losses that are disallowed               a trade or business. They include:
+        are treated as an NOL carryover to the following tax year. See              • Health savings account deduction,
+        Form 461 and its instructions for details. For application of these         • Archer MSA deduction,
+        rules to farmers, see also Pub. 225 and the Instructions for                • Deductions for payments on behalf of a self-employed
+        Schedule F (Form 1040 or 1040-SR). Use NOL Carryover with                  individual to a SEP, SIMPLE, or qualified plan,
+        an Excess Business Loss Worksheet below to figure the total                 • IRA deductions,
+        NOL carryover with an excess business loss.                                 • Alimony paid,
+            Example. For the current tax year, an unmarried taxpayer                • Most itemized deductions (except for casualty and theft losses
+        operates a Schedule C business and incurs a loss of $1                     resulting from a federally declared disaster and state income tax
+        million. The taxpayer completes Form 461 and determines that               on trade or business income), and
+        they have incurred an excess business loss of $738,000. The                 • Standard deduction.
+        taxpayer reports the excess business loss as a positive number
+        on Schedule 1 (Form 1040 or 1040-SR) effectively offsetting part               Don’t include on line 6 any business deductions. These are
+        of the loss claimed on Schedule C. This excess business loss               deductions that are connected with a trade or business. They
+        of $738,000 will be treated as an NOL carryover to the next tax            include:
+        year. The taxpayer must then complete theNOL Carryover with                 • State income tax on income from your trade or business
+        an Excess Business Loss Worksheet below to figure the total                (including wages, salary, and unemployment compensation);
+        NOL carryover from the current tax year to the next tax year.               • Moving expenses for members of the Armed Forces on active
+                                                                                   duty;
+        NOL Carryover with an Excess Business Loss                                  • Educator expenses;
+        Worksheet                                                                   • The deduction for the deductible part of self-employed
+                                                                                   health insurance and the deduction for the deductible part of
+        For Use by Individuals, Estates, and Trusts (Keep for you records.)
+                                                                                   self-employment tax;
+                                                                                    • Rental losses;
+            1. Enter the amount from Form 172, line 33, if less than                • Loss on the sale or exchange of business real estate or
+               zero. Enter as a negative number. . . . . . . . . . . . . .
+                                                                                   depreciable property;
+            2. Portion of line 1 above that is a loss that was carried              • Your share of a business loss from a partnership or an S
+               back and used. Enter as a positive number . . . . . . .             corporation;
+            3. Enter the total excess business loss from Form 461.                  • Ordinary loss on the sale or exchange of section 1244 (small
+               Enter as a negative number . . . . . . . . . . . . . . . . .        business) stock;
+            4. Combine lines 1 through 3. This is your NOL to carry                 • Ordinary loss on the sale or exchange of stock in a small
+               over to the next tax year . . . . . . . . . . . . . . . . . . . .   business corporation or a small business investment company;
+                                                                                    • If you itemize your deductions, casualty and theft losses
+                                                                                   resulting from a federally declared disaster (even if they involve
+                                                                                   nonbusiness property);
+                                                                                    • Loss on the sale of accounts receivable (if you use an accrual
+                                                                                   method of accounting);
+                                                                                    • Interest and litigation expenses on state and federal income
+                                                                                   taxes related to your business;
+
+        4
+        Page 5 of 7           Fileid: … form-172/202612/a/xml/cycle03/source                                   15:27 - 29-Sep-2026
+        The type and rule above prints on all proofs including departmental reproduction proofs. MUST be removed before printing.
+
+
+
+
+                                TREASURY/IRS AND OMB USE ONLY DRAFT
+        • Unrecovered investment in a pension or annuity claimed on a        carryback over the modified taxable income for that earlier year.
+        decedent’s final return;                                             Modified taxable income is the amount figured on line 9 of Part II.
+        • Payment by a federal employee to buy back sick leave used in
+        an earlier year.                                                     Caution: If you carry two or more NOLs to a tax year, figure your
+                                                                             modified taxable income by deducting the NOLs in the order in
+        Line 7—Nonbusiness Income Other Than                                 which they were incurred. First, deduct the NOL from the earliest
+        Capital Gains                                                        year, then the NOL from the next earliest year, etc. After you
+                                                                             deduct each NOL, there will be a new, smaller, modified taxable
+        Enter income that isn’t from a trade or business. Examples are       income to compare to any remaining NOL.
+        ordinary dividends, annuities, and interest on investments. This
+        includes:                                                               Use one pair of columns to enter amounts before and after
+         • Your taxable IRA distributions,                                   carryback for each year to which the loss or credit is being
+         • Pension benefits,                                                 carried. Start with the earliest carryback year. Use the next pair
+         • Social security benefits,                                         of columns for the next consecutive preceding tax year if not fully
+         • Annuity income,                                                   absorbed. Enter the date the carryback year ends in the spaces
+         • Dividends,                                                        provided in the column headings at the top of each page.
+         • Interest on investments, and
+         • Your share of nonbusiness income from a partnership or an S       Line 1—NOL Deduction
+        corporation.                                                         For the second preceding tax year, enter on line 1 the amount
+           Don’t enter business income on line 7. This is income from a      of the current year farming loss carried back to the year. For the
+        trade or business and includes:                                      first preceding tax year, enter on line 1 the amount from line 10 of
+        • Salaries and wages,                                                Part II for the second preceding tax year.
+        • Self-employment income,
+        • Unemployment compensation,                                         Line 2—Taxable Income Before the Current Year
+        • Rental income,                                                     NOL Carryback
+        • Gain on the sale or exchange of business real estate or            Don’t take into account on this line any NOL carryback from the
+        depreciable property, and                                            current year or later. However, do take into account NOLs that
+        • Your share of business income from a partnership or an S
+
+DRAFT                                                                                                                                                DRAFT
+                                                                             occurred in tax years before the current year and are otherwise
+        corporation.                                                         allowable as carrybacks or carryforwards.
+        Line 17—Section 1202 Exclusion                                       Note: If your taxable income is shown as zero on your tax return
+        Enter as a positive number on line 17 any gain you excluded          (or as previously adjusted) for any carryback year, refigure it
+        under section 1202 on the sale or exchange of qualified small        without limiting the result to zero and enter it on line 2 as a
+        business stock.                                                      negative number.
+
+        Lines 19–22—Capital Loss Limitation                                  Line 3—Net Capital Loss Deduction
+        The amount deductible for capital losses is limited based on         Individuals. Enter as a positive number the net long-term
+        whether the losses are business capital losses or nonbusiness        capital loss, if any, shown (or as previously adjusted) on
+        capital losses.                                                      Schedule D (Form 1040).
+           You can deduct your nonbusiness capital losses (line 2) only      Estates and trusts. Enter as a positive number the net
+        up to the amount of your nonbusiness capital gains without           long-term capital loss, if any, shown (or as previously adjusted)
+        regard to any section 1202 exclusion (line 3). If your nonbusiness   on Schedule D (Form 1041).
+        capital losses are more than your nonbusiness capital gains
+        without regard to any section 1202 exclusion, you cannot deduct      Line 4—Section 1202 Exclusion
+        the excess.                                                          Enter as a positive number any gain excluded under section
+            You can deduct your business capital losses (line 11) only up    1202 on the sale or exchange of qualified small business stock.
+        to the total of:
+        • Your nonbusiness capital gains that are more than the total        Line 5—Qualified Business Income Deduction
+        of your nonbusiness capital losses and excess nonbusiness            Enter as a positive number the amount of any qualified
+        deductions (line 10), and                                            business income (QBI) deduction under section 199A(a) and
+        • Your total business capital gains without regard to any section    domestic production activities deduction allocated from specified
+        1202 exclusion (line 12).                                            agricultural or horticultural cooperatives under section 199A(g)
+                                                                             claimed on your return for tax years beginning after 2017. See
+        Line 23—NOL Deduction for Losses from Other                          the Instructions for Form 8995 and Form 8995-A for guidance
+        Years                                                                on figuring QBI and the deductible amount based on threshold
+                                                                             income levels.
+        You cannot deduct any NOL carryovers or carrybacks from other
+        years. Enter the total amount of your NOL deduction for losses
+        from other years.
+                                                                             Line 6—Adjustment to AGI
+                                                                             If you entered an amount on line 3 or line 4, you must refigure
+        Part II—NOL Carryover                                                certain income and deductions based on AGI. These include:
+        Complete this part to figure the NOL deduction for each              • The special allowance for passive activity losses from rental
+        carryback year and the amount to be carried forward if not fully     real estate activities,
+        absorbed.                                                            • Taxable social security benefits,
+                                                                             • IRA deductions,
+            If an NOL is more than the modified taxable income for the       • Excludable savings bond interest,
+        earliest year to which it is carried, you must complete Part II to   • The exclusion of amounts received under an employer’s
+        figure the amount of the NOL to be carried to the next tax year.     adoption assistance program,
+        The amount of the carryback is the excess, if any, of the NOL        • The student loan interest deduction, and
+                                                                                                                                                 5
+        Page 6 of 7          Fileid: … form-172/202612/a/xml/cycle03/source                                     15:27 - 29-Sep-2026
+        The type and rule above prints on all proofs including departmental reproduction proofs. MUST be removed before printing.
+
+
+
+
+                                TREASURY/IRS AND OMB USE ONLY DRAFT
+        • The tuition and fees deduction.                                       Modified AGI for estates and trusts. For purposes of
+                                                                             figuring casualty or theft losses, figure MAGI by adding the total
+           For purposes of figuring the adjustment to each of these          of the amounts from lines 3 through 6 of Part II to the AGI
+        items, your AGI is increased by the total of the amounts on line 3   previously used to figure these losses.
+        and line 4. Don’t take into account any NOL carryback from the
+        current year or later.                                               Line 9—Modified Taxable Income
+           In most cases, figure the adjustment to each item of income       Combine lines 2 through 8. If zero or less, enter -0-.
+        or deduction in the order listed above and, when figuring the
+        adjustment to each subsequent item, increase or decrease                 Line 9 must be modified so that NOLs unused due to the 80%
+        AGI by the total adjustments you figured for the previous            limitation may be carried forward.
+        items. However, a special rule applies if you received social         • Start with the amount on line 2.
+        security benefits and deducted IRA contributions. Use the             • Add back any NOL deduction already taken.
+        worksheets in Pub. 590-A, Contributions to Individual Retirement      • Add any deduction taken under section 250 or section 199A.
+        Arrangements (IRAs), to refigure your taxable social security         • Subtract the amount of any pre-2018 NOLs.
+        benefits and IRA deductions under the special rule.                   • Multiply this total amount by 20% and subtract this number
+                                                                             from the amount you would have input on line 9. This is your new
+           Enter on line 6 the total adjustments made to the listed items.   line 9 amount.
+        Attach a computation showing how you figured the adjustments.
+                                                                             Line 10—NOL Carryover to the Subsequent Year
+        Line 7—Adjustment to Itemized Deductions
+                                                                             Generally, subtract line 9 from line 1. If zero or less, enter -0-.
+        Note: Public Law 119-21 amended Code section 67 to
+        indefinitely suspend miscellaneous itemized deductions and              After completing all applicable columns, carry forward to the
+        to categorize certain educator expenses as nonmiscellaneous          next year the amount, if any, on line 10 of the column for the first
+        itemized deductions.                                                 preceding tax year.
+        Note: Public Law 119-21 amended Code section 68 to                       The NOL deduction for a tax year beginning after 2020,
+        indefinitely reduce itemized deductions for taxpayers with           equals:
+        taxable income in the 37% rate bracket.
+
+
+DRAFT                                                                                                                                               DRAFT
+                                                                             (A) the aggregate amount of net operating losses arising in tax
+        Individuals. Skip this line if, for the applicable carryback year:   years beginning before 2018, carried to the tax year, plus
+        • You didn’t itemize deductions; or                                  (B) the lesser of:
+        • The amounts on lines 3 through 5 are zero.                         –(i) the aggregate amount of NOLs arising in tax years beginning
+        Otherwise, complete lines 11 through 33 and enter on line 7 the      after 2017, carried to the tax year, or
+        amount from line 33.                                                 –(ii) 80% of the excess (if any) of:
+                                                                             —(I) taxable income computed without regard to the deductions
+        Estates and trusts. Refigure any casualty and theft loss             under Code sections 172 (NOL), 199A (qualified business
+        deduction of property not used in a trade or business or for         income) and 250 (Foreign-derived deduction eligible income and
+        income-producing purposes shown (or as previously adjusted)          net CFC tested income), over
+        on Form 4684, Casualties and Thefts, by substituting MAGI (see       —(II) the aggregate amount of NOLs arising in tax years
+        below) for the AGI of the estate or trust.                           beginning before 2018, carried to the tax year.
+           Subtract the refigured deductions and losses from the
+        deductions and losses previously shown and enter the difference        Therefore, you must adjust the amount of the year’s NOL
+        on line 7.                                                           deduction you enter on line 10 according to the above.
+
+
+
+
+        6
+        Page 7 of 7                   Fileid: … form-172/202612/a/xml/cycle03/source                                                                                      15:27 - 29-Sep-2026
+        The type and rule above prints on all proofs including departmental reproduction proofs. MUST be removed before printing.
+
+
+
+
+                                          TREASURY/IRS AND OMB USE ONLY DRAFT
+        Line 20—Refigured Mortgage Insurance                                                                               Yes. Your deduction is limited. Refigure your deduction
+        Premiums                                                                                                     using the Mortgage Insurance Premiums Deduction Worksheet
+                                                                                                                     next.
+        Mortgage insurance premiums that are paid or accrued before
+        2022 may be deducted like qualified residence interest. See                                                        No. Your deduction isn’t limited. Enter the amount from
+        section 163. For years prior to 2022, is your MAGI from line 13                                              line 19 on line 20 and enter -0- on line 21.
+        more than $100,000 ($50,000 if married filing separately)?
+
+        Mortgage Insurance Premiums Deduction Worksheet—Line 20
+         Before you begin:                        See the instructions for line 20 to see if you must use this worksheet to refigure your deduction.
+
+         1.   Enter the total premiums you paid in the carryback year for mortgage insurance for a contract issued after 2006 . . . . . . . . . . . . 1.
+         2.   Enter the amount from Form 172, Part II, line 13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2.
+         3.   Enter $100,000 ($50,000 if married filing separately) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3.
+         4.   Is the amount on line 2 more than the amount on line 3?
+                 No.         Your deduction isn’t limited. Enter the amount from line 19 on line 20 of Form 172, Part II,
+                             and enter -0- on line 21. Don’t complete the rest of this worksheet.
+                 Yes.        Subtract line 3 from line 2. If the result isn’t a multiple of $1,000 ($500 if married filing
+                             separately), increase it to the next multiple of $1,000 ($500 if married filing separately). For
+                             example, increase $425 to $1,000, increase $2,025 to $3,000; or if married filing
+                             separately, increase $425 to $500, increase $2,025 to $2,500, etc. . . . . . . . . . . . . . . . 4.
+         5.   Divide line 4 by $10,000 ($5,000 if married filing separately). Enter the result as a decimal. If the result is 1.0 or more, enter
+              1.0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5.
+         6.   Multiply line 1 by line 5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6.
+         7.   Refigured mortgage insurance premiums deduction. Subtract line 6 from line 1. Enter the result here and on Form 172, Part
+              II, line 20 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7.
+
+
+
+
+DRAFT   Line 25—Charitable Contributions                                                                             on line 10 is increased by any adjustment to charitable
+                                                                                                                     contributions.
+                                                                                                                                                                                                   DRAFT
+        Enter your total gifts to charity reported on Schedule A (Form
+        1040 or Form 1040-NR), or as previously adjusted.
+                                                                                                                     Paperwork Reduction Act Notice. We ask for you to obtain
+                                                                                                                     the information on this form to carry out the Internal Revenue
+        Line 26—Refigured Charitable Contributions
+                                                                                                                     laws of the United States. You are required to obtain this
+        Refigure your charitable contributions using line 24 as your AGI                                             information. You are not required to obtain the information
+        unless, for any preceding tax year:                                                                          requested on a form that is subject to the Paperwork Reduction
+        • You entered an amount other than zero on line 23; and                                                      Act unless the form displays a valid OMB control number.
+        • You had any items of income or deductions based on AGI,                                                    Books or records relating to a form or its instructions must be
+        which are listed in the instructions for line 6 of Part II.                                                  retained as long as their contents may become material in the
+            If you can’t use the amount from line 24 as your AGI, figure                                             administration of any Internal Revenue law. Generally, tax returns
+        your AGI as follows.                                                                                         and return information are confidential, as required by Internal
+                                                                                                                     Revenue Code section 6103. The time needed to complete and
+            1. Figure the adjustment to each item of income or                                                       file this form will vary depending on individual circumstances.
+        deduction in the same manner as explained in the instructions                                                The estimated burden for individual filers is approved under
+        for line 6 of Part II, except don’t take into account any NOL                                                OMB control number 1545-0074, and estate and trust filers
+        carryback when figuring AGI. Attach a computation showing how                                                are approved under OMB control number 1545-0092 for the
+        you figured the adjustments.                                                                                 estimated averages, see the instructions for your income tax
+            2. Add lines 3, 4, 5, 11, and 23 of Part II to the total                                                 return. If you have comments concerning the accuracy of these
+        adjustments you figured in (1) above. Use the result as your AGI                                             time estimates or suggestions for making this form simpler, we
+        to refigure charitable contributions.                                                                        would be happy to hear from you. See the instructions for the tax
+                                                                                                                     return with which this form is filed.
+          For NOL carryover purposes, you must reduce any charitable
+        contributions carryover to the extent that the NOL carryover
+
+
+
+
+                                                                                                                                                                                               7
+

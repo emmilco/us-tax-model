@@ -33,6 +33,39 @@ params:
       cite:
         doc: i1040sd
         locator: p. 10, lines 1a and 8a
+    ftc_income_kind:
+      values:
+        - dividends
+        - interest
+        - both
+      cite:
+        doc: f1116
+        locator: 'p. 1, Part II, "Taxes withheld at source on:", "(q) Dividends", "(s) Interest"'
+    ftc_carry_year:
+      values:
+        - p10
+        - p9
+        - p8
+        - p7
+        - p6
+        - p5
+        - p4
+        - p3
+        - p2
+        - p1
+      cite:
+        doc: f1116sb
+        locator: 'p. 1, Foreign Tax Carryover, "10th Preceding", "9th Preceding"; p. 2, "4th Preceding", "1st Preceding"'
+    ftc_prior_year:
+      values:
+        - none
+        - election
+        - form_full
+        - form_room
+        - other
+      cite:
+        doc: p514
+        locator: 'p. 37, Carryback and Carryover, "You are considered to have paid this unused foreign tax first in 2024 (the first preceding tax year) up to the excess limit in that year"'
     sales_code:
       values:
         - none
@@ -50,6 +83,14 @@ params:
       cite:
         doc: f1040
         locator: "Form 1040 (2025), page 1, \"Your first name and middle initial\" and \"If joint return, spouse’s first name and middle initial\""
+    mfs_living:
+      values:
+        - together_late
+        - apart_last6
+        - apart_all_year
+      cite:
+        doc: i1040gi
+        locator: 'p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025"; p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"'
     filing_status:
       values:
         - single
@@ -191,12 +232,25 @@ params:
         - charitable_recapture
         - disaster_relief
         - education_distribution
+        - fiduciary_fees
+        - found_property
+        - taxable_damages
         - other
       cite:
         doc: i1040gi
         locator: 'p. 92, Line 8z, "Examples of income to report on line 8z include the following": recoveries, RTAA
           payments, corrective distributions, insurance dividends, charitable recaptures, disaster relief payments and
-          Coverdell ESA or QTP distributions; p525 p. 34, Kickbacks; other is any other line 8z income'
+          Coverdell ESA or QTP distributions; p525 p. 34, Kickbacks; p525 p. 33, Personal representatives, Found property;
+          p525 p. 32, Court awards and damages; other is any other line 8z income'
+    contractor_reason:
+      values:
+        - a
+        - c
+        - g
+        - h
+      cite:
+        doc: f8919
+        locator: 'p. 1, Reason codes, "For each firm listed below, enter in column (c) the applicable reason code for filing this form"'
     overtime_method:
       values:
         - employer_reported
@@ -272,6 +326,27 @@ params:
       cite:
         doc: f7206
         locator: 'Form 7206 (2025), line 2(b), the ages 40 or younger, 41 to 50, 51 to 60, 61 to 70, and 71 or older'
+    rental_kind:
+      values: [sfr, multi, vacation, commercial, land, self_rental, other]
+      cite:
+        doc: i1040se
+        locator: 'p. 4, Line 1b'
+    rprop_kind:
+      values: [residential, nonresidential, personal]
+      cite:
+        doc: i4562
+        locator: 'p. 10, Residential rental property'
+    month:
+      values: [m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12]
+      cite:
+        doc: p946
+        locator: 'p. 73, Table A-6, "Month property placed in service"'
+    realty_year:
+      values: [before1987, y1987, y1988, y1989, y1990, y1991, y1992, y1993, y1994, y1995, y1996, y1997, y1998, y1999, y2000, y2001, y2002, y2003, y2004, y2005, y2006, y2007, y2008, y2009, y2010, y2011, y2012, y2013, y2014, y2015, y2016, y2017, y2018, y2019, y2020, y2021, y2022, y2023, y2024, y2025]
+      extends_with_year: true
+      cite:
+        doc: p946
+        locator: 'p. 39, Table A-6, "Residential Rental Property"'
   values:
     # Age cut-offs as years of birth. age.cut_N is the year of birth in which only a person born on January 1 is N or
     # older at the end of the tax year (a person is considered to reach an age on the day before the birthday): a person
@@ -949,6 +1024,12 @@ params:
       cite:
         doc: f1040s8812
         locator: Schedule 8812 (2025), line 11, "Multiply line 10 by 5% (0.05)"
+    household.mfs_living_else:
+      type: Enum(mfs_living)
+      value: together_late
+      cite:
+        doc: i1040gi
+        locator: 'p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025": the value read where the return is not married filing separately, so that neither lived-apart test is met'
     household.no:
       type: Bool
       value: false
@@ -1298,6 +1379,12 @@ params:
       cite:
         doc: i2441
         locator: 'p. 5, Line 21, "For 2025, the maximum amount that can be excluded from your income through a dependent care assistance program is $5,000"'
+    dc.exclusion_max_mfs:
+      type: NonNegDollars
+      value: 250000
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 21, "For 2025, the maximum amount that can be excluded from your income through a dependent care assistance program is $5,000 ($2,500 if married filing separately)"'
     dc.child_age:
       type: Count
       value: 13
@@ -1502,8 +1589,8 @@ params:
         doc: f8863
         locator: 'p. 1, Part I, line 2, "Enter $180,000 if married filing jointly; or $90,000 if single, head of household,"; i8863
           p. 1, Reminders, "The lifetime learning credit and the American opportunity credit MAGI limits are $180,000 if you’re
-          married filing jointly ($90,000 if you’re filing single, head of household, or qualifying surviving spouse)." (married
-          filing separately is refused for the whole return, so its amount is never reached)'
+          married filing jointly ($90,000 if you’re filing single, head of household, or qualifying surviving spouse)." (a married
+          filing separately return takes no education credit, so its amount is never reached)'
     edu.phaseout_range:
       type: NonNegDollars
       value:
@@ -1733,6 +1820,19 @@ params:
       cite:
         doc: i1040gi
         locator: pp. 34–35, line 12e and Standard Deduction Chart
+    sa.dep_min:
+      type: NonNegDollars
+      value: 135000
+      cite:
+        doc: i1040gi
+        locator: 'p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 2, "No. Enter $1,350"'
+    sa.dep_add:
+      type: NonNegDollars
+      value: 45000
+      cite:
+        doc: i1040gi
+        locator: 'p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 2, "Yes. Add $450 to your earned income.
+          Enter the total"'
     sa.no:
       type: Bool
       value: false
@@ -1802,6 +1902,57 @@ params:
         doc: i1116
         locator: 'p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t
           apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory"'
+    f1116.interest_threshold:
+      type: NonNegDollars
+      value: 500000
+      cite:
+        doc: i1116
+        locator: 'p. 18, Line 4a, "If your gross foreign source income (including income excluded on Form 2555) doesn’t exceed $5,000, you can allocate all of your interest expense to U.S. source income."'
+    f1116.exception_ceiling:
+      type: NonNegDollars
+      value:
+        single: 19730000
+        mfs: 19730000
+        hoh: 19730000
+        mfj: 39460000
+        qss: 39460000
+      cite:
+        doc: i1116
+        locator: 'p. 9, Adjustment exception, "$394,600 if married filing jointly or qualifying surviving spouse", "$197,300 if married filing separately", "$197,300 if single", "$197,300 if head of household"'
+    f1116.exception_qd_limit:
+      type: NonNegDollars
+      value: 2000000
+      cite:
+        doc: i1116
+        locator: 'p. 9, Adjustment exception, "The amount of your foreign source capital gain distributions plus the amount of your foreign source qualified dividends is less than $20,000."'
+    f1116.high_tax_rate:
+      type: Rate
+      value:
+        num: 37
+        den: 100
+      cite:
+        doc: i1040gi
+        locator: 'p. 80, Tax Computation Worksheet, "37% (0.37)"; cfr-26-1-904-4 p. 3, (c) High-taxed income, "exceeds the highest rate of tax specified in section 1"'
+    f1116.withholding_split:
+      type: Rate
+      value:
+        num: 15
+        den: 100
+      cite:
+        doc: cfr-26-1-904-4
+        locator: 'p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen percent or greater shall be treated as one item of income."'
+    f1116sb.prior_none:
+      value: none
+      type: Enum(ftc_prior_year)
+      cite:
+        doc: p514
+        locator: 'p. 37, Carryback and Carryover, "Because you had no foreign income in 2020, you cannot carry back the unused foreign tax to that year."'
+    ftc.yes:
+      type: Bool
+      value: true
+      cite:
+        doc: i1116
+        locator: 'p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and"'
     s1.educator_max:
       type: NonNegDollars
       value: 30000
@@ -2310,6 +2461,38 @@ params:
       cite:
         doc: f1040sse
         locator: 'Schedule SE (2025), line 13, "Multiply line 12 by 50% (0.50)"'
+    f4137.rate_062:
+      type: Rate
+      value:
+        num: 62
+        den: 1000
+      cite:
+        doc: f4137
+        locator: 'p. 1, Multiply line 10 by 0.062, "Multiply line 10 by 0.062 (social security tax rate)"'
+    f4137.rate_0145:
+      type: Rate
+      value:
+        num: 145
+        den: 10000
+      cite:
+        doc: f4137
+        locator: 'p. 1, Multiply line 6 by 0.0145, "Multiply line 6 by 0.0145 (Medicare tax rate)"'
+    f8919.rate_062:
+      type: Rate
+      value:
+        num: 62
+        den: 1000
+      cite:
+        doc: f8919
+        locator: 'p. 1, Multiply line 10 by 0.062, "Multiply line 10 by 0.062 (social security tax rate)"'
+    f8919.rate_0145:
+      type: Rate
+      value:
+        num: 145
+        den: 10000
+      cite:
+        doc: f8919
+        locator: 'p. 1, Multiply line 6 by 0.0145, "Multiply line 6 by 0.0145 (Medicare tax rate)"'
     ret.comp_limit:
       type: NonNegDollars
       value: 35000000
@@ -2365,6 +2548,14 @@ params:
       cite:
         doc: p560
         locator: 'chapter 3, Nonelective contributions, "nonelective contributions of 2% of compensation"'
+    f8853c.per_diem_limit:
+      type: NonNegDollars
+      value: 42000
+      cite:
+        doc: rp-2024-40
+        locator: 'section 2.62, Periodic Payments Received Under Qualified Long-Term Care Insurance Contracts or Under Certain
+          Life Insurance Contracts, "the stated dollar amount of the per diem limitation" and "chronically ill individual, is
+          $420"'
     s1.ebl_threshold:
       type: NonNegDollars
       value:
@@ -2490,7 +2681,13 @@ params:
         locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Single, head of household, or married filing
           separately and you lived apart from your spouse for all of 2025, enter $89,000", "Qualifying surviving spouse, enter
           $146,000", "Married filing jointly, enter $146,000 in both columns" and "Married filing separately and you lived with
-          your spouse at any time in 2025, enter $10,000" (a separate return is refused, scope.ready)'
+          your spouse at any time in 2025, enter $10,000" (the married-filing-separately amount is for a filer who lived with the spouse at some time in 2025; one who lived apart all year takes ira.line2_apart)'
+    ira.line2_apart:
+      type: NonNegDollars
+      value: 8900000
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Single, head of household, or married filing separately and you lived apart from your spouse for all of 2025, enter $89,000"'
     ira.line2_not_covered:
       type: NonNegDollars
       value: 24600000
@@ -2570,3 +2767,86 @@ params:
         doc: i1040gi
         locator: 'p. 98, IRA Deduction Worksheet—Continued, Caution, "$16,000 if both spouses are age 50 or older at the end of
           2025)"'
+    # Schedule E Part I rentals (one property's days and counts) and Form 8582.
+    rental.one:
+      type: Count
+      value: 1
+      cite:
+        doc: i1040se
+        locator: 'p. 5, Line 1a'
+    rental.day_cents:
+      type: NonNegDollars
+      value: 1
+      cite:
+        doc: p527
+        locator: 'p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number of days used for each purpose" (a day carried as one cent, so that days divide as amounts)'
+    rental.tenth_cents:
+      type: NonNegDollars
+      value: 10
+      cite:
+        doc: p527
+        locator: 'p. 26, Dwelling Unit Used as a Home, "10% of the total days it is rented to others at a fair rental price" (ten times the personal days compared with the rental days, each a cent)'
+    rental.home_days:
+      type: NonNegDollars
+      value: 14
+      cite:
+        doc: p527
+        locator: 'p. 26, Dwelling Unit Used as a Home, "14 days, or" (14 days carried as 14 cents)'
+    rental.min_rental_days:
+      type: Count
+      value: 15
+      cite:
+        doc: i1040se
+        locator: 'p. 5, Line 2, "If you did use the unit as a home and rented the unit out for fewer than 15 days in 2025"'
+    f8582.phaseout_end:
+      type: NonNegDollars
+      value:
+        single: 15000000
+        mfj: 15000000
+        mfs: 7500000
+        hoh: 15000000
+        qss: 15000000
+      cite:
+        doc: f8582
+        locator: 'Form 8582 (2025), line 5, "Enter $150,000. If married filing separately, see instructions"; i8582 p. 11, Line 5'
+    f8582.special_max:
+      type: NonNegDollars
+      value:
+        single: 2500000
+        mfj: 2500000
+        mfs: 1250000
+        hoh: 2500000
+        qss: 2500000
+      cite:
+        doc: f8582
+        locator: 'Form 8582 (2025), line 8, "Do not enter more than $25,000"; i8582 p. 11, Line 8, "Don’t enter more than $12,500 on line 8"'
+    f8582.rate:
+      type: Rate
+      value:
+        num: 50
+        den: 100
+      cite:
+        doc: f8582
+        locator: 'Form 8582 (2025), line 8, "Multiply line 7 by 50% (0.50)"'
+    f8582.exception_magi:
+      type: NonNegDollars
+      value:
+        single: 10000000
+        mfj: 10000000
+        mfs: 5000000
+        hoh: 10000000
+        qss: 10000000
+      cite:
+        doc: i8582
+        locator: 'p. 1, Exception, "was not more than $100,000 ($50,000 if married filing separately)"'
+    f8582.exception_loss:
+      type: NonNegDollars
+      value:
+        single: 2500000
+        mfj: 2500000
+        mfs: 1250000
+        hoh: 2500000
+        qss: 2500000
+      cite:
+        doc: i8582
+        locator: 'p. 1, Exception, "wasn’t more than $25,000 ($12,500 if married filing separately)"'

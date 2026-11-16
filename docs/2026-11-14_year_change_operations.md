@@ -7,6 +7,10 @@ diff (`research/ty2026/forms-proposed/`), which decays unnoticed as the 2025 for
 days). Here each change is a set of operations keyed by line id, kept as data, applied mechanically at adoption,
 and checked against the current forms on every commit.
 
+**Since written (2026-11-15):** built and extended (register, interview-file and split-file operations, defaults on
+new inputs); `changes/2026/` now holds 130 entries and 1,256 operations. Current format: `tools/README.md`, "Year
+changes as operations".
+
 ## 1. Where the operations live
 
 `changes/<year>/<form>.yaml` holds the operations that take the definitions of `<year> - 1` to `<year>`, one file

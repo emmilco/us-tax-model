@@ -1019,6 +1019,30 @@
   },
   {
    "printed": "(CLW B 3)",
+   "project_expr_sha256": "3579d88d0e34044001ffe1d14a74d2d23b40a1ef70d96b7fd5bc3c222a186fc7",
+   "second_expr_sha256": "c73c9298980a421ec878429298cdfd35a5cb3ef8cb2aa92f3b690ece3972f761",
+   "ruling": "Ruling: scope; triage 2,942/2,947 agree; 5 candidate-unknown (1 on a completed return, classm.f5695.4, the reply's ungated K-1 read); no value differs. The reply adds partnership K-1 box 14 code A to Earned Income Worksheet line 2b, as i1040s8812 p. 7 says (\"Schedule C, line 31, and Schedule K-1 (Form 1065), box 14, code A\"); the project's line omits it because every such return is refused (scope.k1 refuses every K-1 filer; person.se_screen refuses partnership self-employment earnings). Not a defect now; the K-1 wiring that lifts scope.k1 must add the term here and at line 18a.",
+   "context": "318448201f50739ecfba5b2158b4654745723ee56633718f88467b682fcf492a",
+   "date": "2026-11-15",
+   "run": "43e57e5c65a01fba98204928d2714eb1848ea593b29d40110dd8e9b8834b2710",
+   "subject_key": "1f6d22b84081b592dcfd42b88c459aea6cd70dbf5cf57617db201807e3a0fd73",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.s8812.3.deepseek@s8812",
+     "fixture:classm.f5695.4.deepseek@s8812",
+     "fixture:classm.f5695.4@s8812",
+     "fixture:classm.s8812.3@s8812",
+     "partial:classm.s8812.3.deepseek-s8812.puerto_rico@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW B 3)",
    "project_expr_sha256": "edcd25cb005c70a91b20579bda7f10ad98db34d41739955f091ad3dc68de20f8",
    "second_expr_sha256": "2b47ae2c6f5fd8ad7d82ab39f90bb98cf104c651ac1aa24cc4604513188fa1f0",
    "ruling": "Ruling: model error; i1040s8812 p. 3, Line 13: \"Complete Credit Limit Worksheet B only if you meet all of the following. 1. You are claiming one or more of the following credits. a. Mortgage interest credit, Form 8396. b. Adoption credit, Form 8839. c. Residential clean energy credit, Form 5695, Part I. d. District of Columbia first-time homebuyer credit, Form 8859. 2. You are not filing Form 2555. 3. Line 4 of Schedule 8812 is more than zero.\" executable-triage-v2 (`reviews/2025/transcription/triage/s8812.json`; 1,495 fixtures, 500 generated returns seed 20261026, 79 partial records): state evaluated; this line is candidate-invalid on every record (s8812.clwb_3: model changed a published result type; invalid lines include s8812.clwb_3, s8812.clwb_4, s8812.clwb_5, s8812.clwb_11, s8812.clwb_12, s8812.clwb_13, s8812.clwb_14), so it was not executed and is ruled by reading. The reply's (CLW B 3) declares NonNegDollars where the published type is Dollars ('model changed a published result type'); this line is that declaration, so it adjudicates the declaration, not the tax reading. By reading: line 3 is the Earned Income Worksheet line 7 floored at zero, which the worksheet's own \"If zero or less, stop ... enter -0- on line 3 of Credit Limit Worksheet B\" (p. 8, line 3) makes harmless; lines 4, 5 and 11 to 14 follow the worksheet's arithmetic, but every line has shown_when null, so each would also show amounts on returns that do not complete Credit Limit Worksheet B (the skipped-line error of the reply's other worksheet lines). Project stands.",
@@ -2029,6 +2053,59 @@
    "ruling": "Ruling: model error; the candidate shows line 18a when Part II-A is not reached. f1040s8812 p. 2, line 16a: \"If zero, stop here; you cannot take the additional child tax credit\"; line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\". The expression is the Earned Income Chart as the project encodes it (i1040s8812 p. 7), less a no-op floor. executable-triage-v2 (`../triage/s8812.json`; 1,376 fixtures, 500 generated returns seed 20261026, 80 partial records from 40 bases; 1,956 comparisons; every completed witness read with the cap lifted, T-083): 894 of 1,956 agree; 977 candidate-shows-skipped (548 completed, e.g. classm.f2441.1.deepseek $50,000.00 and classm.f2441.2.deepseek $85,000.00, project hidden by s8812.show_iia; 219 incomplete, 210 refused); no value difference. 66 candidate-unknown (f1040.tax_exempt_interest; 63 incomplete, 3 refused), 17 candidate-refuses and 2 project-refuses (s8812.combat_pay) on refused returns: scope.",
    "context": "0bb95c211c1d26eaea75b2db51a032f01cda46956d5849a992514d8c3834e43e",
    "subject_key": "33883190e8b021ee6f475f593a548b283823a97b81c6e1fee844cf1e45b7814e"
+  },
+  {
+   "printed": "18a",
+   "project_expr_sha256": "70b6934a51311214b9a172e893315f76026c6e597e263729ab4f715516e95c54",
+   "second_expr_sha256": "c4ea9072a7afac00c811bf0f67c40e744491be79916ae921155a7902535b11d8",
+   "ruling": "Ruling: model error; triage 972/2,947 agree; 1,077 candidate-shows-skipped, 602 candidate-unknown, 231 project-refuses, 43 project-unknown, 22 candidate-refuses; on completed returns: 870 candidate-shows-skipped, 232 candidate-unknown, 14 candidate-refuses. The reply declares no shown_when: it shows line 18a on returns that never reach Part II-A (the project's s8812.show_iia), e.g. stage14.asset.* with no child credit. Its other differences are its Earned Income Worksheet line 2b term for partnership K-1 box 14 code A (person.k1p_total_se_earnings), which i1040s8812 p. 7 names, but every such return is refused before it (scope.k1; person.se_screen, \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A)\"), so the K-1 refusals and unknowns are scope. i1040s8812 pp. 6-7, Earned Income Chart and Worksheet.",
+   "context": "318448201f50739ecfba5b2158b4654745723ee56633718f88467b682fcf492a",
+   "date": "2026-11-15",
+   "run": "43e57e5c65a01fba98204928d2714eb1848ea593b29d40110dd8e9b8834b2710",
+   "subject_key": "cfeb9d0d88a9e0b0b6f38ca2f250202db0c44ab34ed81766a23648210d9005d8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@s8812",
+     "fixture:stage14.asset.mq_7yr@s8812",
+     "fixture:stage14.asset.mq_mixed@s8812",
+     "fixture:stage14.asset.mq_not@s8812",
+     "fixture:stage14.asset.bonus_100@s8812",
+     "fixture:stage14.asset.bonus_40_before@s8812",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@s8812",
+     "fixture:classm.f2441.1.deepseek@s8812",
+     "fixture:classm.f2441.3.deepseek@s8812",
+     "fixture:classm.f2441.4.deepseek@s8812",
+     "fixture:classm.f2441.5.deepseek@s8812",
+     "fixture:classm.f2441.6.deepseek@s8812",
+     "fixture:classm.f8889.1.deepseek@s8812",
+     "fixture:classm.f8889.3.deepseek@s8812",
+     "fixture:classm.f8889.4.deepseek@s8812",
+     "fixture:classm.f8889.5.deepseek@s8812",
+     "fixture:classm.f4952.1.deepseek@s8812",
+     "fixture:classm.f4952.2.deepseek@s8812",
+     "fixture:classm.f4952.3.deepseek@s8812",
+     "fixture:classm.f4952.4.deepseek@s8812",
+     "fixture:classm.f8960.2.deepseek@s8812",
+     "fixture:classm.f8960.3.deepseek@s8812",
+     "fixture:classm.dependent.1.deepseek@s8812",
+     "fixture:classm.dependent.2.deepseek@s8812",
+     "fixture:classm.tax_on_amount.2@s8812",
+     "fixture:classm.eic.11@s8812",
+     "fixture:stage9.eic.refuse.combat_pay@s8812",
+     "fixture:stage14.eic.wsb_combat_pay@s8812",
+     "fixture:stage9.eic.refuse.form8814@s8812",
+     "fixture:stage21.pending.eic_death_pub596_refused@s8812"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "18a",

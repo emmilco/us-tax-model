@@ -6,16 +6,16 @@ was compared (money cents, counts, rates, booleans, enums, full refusals; unknow
 
 This is the federal run. Its cases are the federal fixture cases and federal generated returns; none gives a New York
 answer. Both evaluators read the whole build, federal and New York documents alike, so the lines of the New York
-documents are compared here too: 786129 of the 8640148 values, of which 462192 are unknown for lack of New York answers
-and 323937 have a value (a constant, a figure from federal lines only, or a refusal). The New York run (`compare --ny`,
+documents are compared here too: 939888 of the 11907455 values, of which 554541 are unknown for lack of New York answers
+and 385347 have a value (a constant, a figure from federal lines only, or a refusal). The New York run (`compare --ny`,
 `reports/ny/2025/evaluator_agreement.md`) compares the New York lines on cases that give New York answers.
 
 | Metric | Value |
 | --- | --- |
-| Cases | 2449 |
-| Fixture cases | 2049 |
+| Cases | 2928 |
+| Fixture cases | 2528 |
 | Generated returns | 400 |
-| Line values compared | 8640148 |
+| Line values compared | 11907455 |
 | Cases with differences | 0 |
 | Result | **agreement on every value** |
 
@@ -26,14 +26,14 @@ The last two columns count, among them, the lines of the New York documents.
 
 | Kind | Fixture cases | Generated returns | New York lines, fixture cases | New York lines, generated returns |
 | --- | --- | --- | --- | --- |
-| bool | 2337433 | 584987 | 77769 | 13362 |
-| count | 214772 | 47134 | 16025 | 3007 |
-| enum | 49163 | 20553 | 0 | 0 |
-| money | 3203443 | 648782 | 115972 | 20996 |
-| rate | 27901 | 6561 | 0 | 0 |
-| refusal | 290392 | 171900 | 52146 | 24660 |
-| unknown | 934004 | 103123 | 395817 | 66375 |
-| all | 7057108 | 1583040 | 657729 | 128400 |
+| bool | 3204610 | 642729 | 96934 | 13283 |
+| count | 287020 | 47811 | 19890 | 3005 |
+| enum | 69746 | 22346 | 0 | 0 |
+| money | 4783554 | 717055 | 144190 | 20975 |
+| rate | 44819 | 8291 | 0 | 0 |
+| refusal | 414563 | 195751 | 62419 | 24651 |
+| unknown | 1282123 | 187037 | 488055 | 66486 |
+| all | 10086435 | 1821020 | 811488 | 128400 |
 
 Not compared. Each of these counts as a difference and fails the run.
 

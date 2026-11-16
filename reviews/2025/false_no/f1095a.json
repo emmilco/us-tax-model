@@ -1,0 +1,77 @@
+{
+ "form": "f1095a",
+ "reviews": {
+  "gate:f1095a.b_wrong_asked": {
+   "subject_sha": "c92247358f9256075756853769124c5cf3889b8f94f6801e77a4ed5890c215f4",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer whose Form 1095-A shows the same column A every month but a column B that changes partway through the year. The change is a Marketplace error, such as a wrong rating area or a family change that was never real. The correct SLCSP premium is the same in all 12 months.",
+       "why_no": "The form is not printed the same every month, so the tool asks the narrow test: 'blank or zero in a covered month, or an unreported change'. No month is blank or zero, and the filer did not fail to report a change. They truthfully answer no. The broader reason, 'another reason to believe it wrong', is offered only on the branch for forms printed the same every month.",
+       "line": "f1095a.b_fixed_same_if_b_wrong (forced false; Form 8962 line 10 becomes No instead of Yes, and the corrected column B is never collected)",
+       "irs_text": "i8962 (2025) p. 14: 'or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month'; p. 15: 'or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected'",
+       "severity": "high",
+       "fix": "Use the same broad condition on both branches: blank or zero in a covered month, an unreported change, any other reason to believe the Marketplace reported the wrong SLCSP premium, or no advance payments (column C zero in every month)."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer who received no APTC (column C zero) and whose printed column B varies by month or has odd amounts. With no APTC, the Marketplace's column B may simply be wrong, and the correct SLCSP premium from HealthCare.gov/Tax-Tool or Pub. 974 is the same all year.",
+       "why_no": "Column B is not printed the same every month, so the tool asks only about 'blank or zero in a covered month, or an unreported change'. Column B is filled in and nothing went unreported, so the filer truthfully answers no. The 'no advance payments' reason appears only on the branch for forms printed the same every month.",
+       "line": "f1095a.b_fixed_same_if_b_wrong (forced false; line 10 No, and the monthly lines use the uncorrected column B)",
+       "irs_text": "i8962 (2025) p. 14: 'No APTC was paid for your coverage. If no APTC was paid for your or your family member's coverage, the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-.'",
+       "severity": "high",
+       "fix": "Add 'no advance payments were made for this coverage (column C zero or blank)' as a reason on the branch for forms not printed the same every month."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who reported a move or a change in family to the Marketplace, but the Marketplace never updated column B, or applied the change from the wrong month.",
+       "why_no": "The gate says 'an unreported change'. This filer did report the change, so they read the gate as not applying to them and answer no. On the non-uniform branch nothing else covers a Marketplace that mishandled a change the filer reported.",
+       "line": "f1095a.b_fixed_same_if_b_wrong",
+       "irs_text": "i8962 (2025) p. 15: 'If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected.'",
+       "severity": "medium",
+       "fix": "Word the reason as 'a change during the year (a move, someone added or removed, eligibility for other coverage, a death) that you did not report, or that you reported but column B does not correctly reflect', and include it on both branches."
+      }
+     ],
+     "prompt_sha": "cb60cf00f59bb75e907aeeeca496c370643fedc99e2b97dddf53ae7ae0bfc990",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08848,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f1095a.b_wrong_asked.c92247358f92.1.response.txt"
+    }
+   ],
+   "condition": "f1095a.b_wrong_asked",
+   "lines": [
+    "f1095a.b_fixed_same_if_b_wrong"
+   ],
+   "inputs": [
+    "f1095a.b_fixed_same"
+   ],
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      14,
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Line 10, \"Check “Yes” and continue to line 11 if all of the following apply for each qualified health plan\", \"Full-year coverage with no changes on Form 1095-A, Part III, column A or B.\", \"If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”\"; p. 15, \"Examples of changes in circumstances that may affect your applicable SLCSP premium include the following\", \"You moved during 2025\", \"If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  }
+ }
+}

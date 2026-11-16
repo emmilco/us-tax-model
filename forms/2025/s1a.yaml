@@ -3,7 +3,7 @@ form:
   kind: form
   title: Schedule 1-A (Form 1040) — Additional Deductions
   tax_year: 2025
-  note: For a single, head of household, qualifying surviving spouse or married filing jointly return (married filing separately is refused through s3.mfs). Tips and overtime as an employee
+  note: For any filing status; a married filing separately return takes no deduction on lines 13, 21 and 36a (tips, overtime, enhanced senior), as the instructions require. Tips and overtime as an employee
     only, by the methods the instructions give for 2025; tips or overtime in a trade or business, Form 4137, and excluded
     Puerto Rico income or Forms 2555 and 4563 are refused. Lines 11, 19 and 28 (a whole number of $1,000 units) are kept as
     that many thousands of dollars; lines 12, 20 and 29 multiply them by $100 or $200 per thousand.
@@ -302,6 +302,29 @@ form:
       doc: i1040gi
       locator: p. 101, Schedule 1-A, Part II, "Fill out Schedule 1-A, Part II, only if"; p. 101, Part II No Tax on
         Tips, "If you are married, you must file a joint return with your spouse to claim this deduction"
+  - id: s1a.f4137_total
+    printed: (helper)
+    label: Cash and charge tips on the Forms 4137 of the people on the return (line 2)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: person
+      field: person.f4137_col_c
+    cite:
+      doc: i1040gi
+      locator: p. 104, Schedule 1-A, line 4b
+  - id: s1a.f4137
+    printed: (gate)
+    label: Someone on the return has tips on Form 4137
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1a.f4137_total
+      - param: sales.zero
+    cite:
+      doc: i1040gi
+      locator: p. 104, Schedule 1-A, line 4b
   - id: s1a.line4b_calc
     printed: (helper)
     label: 'Figured: Qualified tips included on Form 4137, line 1, row A, column (c). If Form 4137 is not filed, enter -0-'
@@ -313,9 +336,10 @@ form:
       doc: i1040gi
       locator: p. 104, Schedule 1-A, line 4b
     refuses:
-    - when: s2.other
-      form: Form 4137 (Social Security and Medicare Tax on Unreported Tip Income)
-      remedy: Tips reported on Form 4137 are outside this tool.
+    - when: s1a.f4137
+      form: The deduction for qualified tips included on Form 4137 (Schedule 1-A, line 4b)
+      remedy: This tool prepares Form 4137 but does not figure the part of its tips that is qualified tips for the deduction.
+        Claim the deduction for tips without this tool, or answer that you do not want the deduction for tips.
       cite:
         doc: i1040gi
         locator: p. 101, Schedule 1-A, Part II, "If you received cash and charge tips of $20 or more in a calendar month and

@@ -1,0 +1,241 @@
+form:
+  id: royalty
+  kind: form
+  title: Schedule E, Part I — one royalty property
+  tax_year: 2025
+  note: 'One entry per royalty source (Schedule E type 6). Royalties are not passive and never go on Form 8582. Refused: royalties
+    from the filer''s own business or a working interest, and depletion.'
+  lines:
+  - id: royalty.zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040se
+      locator: p. 3, Line 4
+  - id: royalty.one
+    printed: (helper)
+    label: One
+    type: Count
+    expr:
+      op: param
+      ref: rental.one
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 1a
+  - id: royalty.line4
+    printed: '4'
+    label: Royalties received
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Royalties from it in 2025 before any taxes the payer withheld (Form 1099-MISC box 2), your share
+    cite:
+      doc: i1040se
+      locator: 'p. 6, Line 4, "Report on line 4 royalties from oil, gas, or mineral properties (not including operating interests)"'
+  - id: royalty.business
+    printed: (helper)
+    label: Royalty from the filer's own work as a self-employed writer, artist or inventor, or from a working interest
+    type: Bool
+    expr:
+      op: input
+      source: Did it come from your own work as a self-employed writer, artist, musician or inventor, or from an oil or gas
+        working interest?
+    cite:
+      doc: i1040se
+      locator: p. 6, Line 4, "If you are in business as a self-employed writer, inventor, artist, etc., report your royalty
+        income and expenses on Schedule C"
+  - id: royalty.depletion
+    printed: (helper)
+    label: Depletion claimed
+    type: Bool
+    expr:
+      op: input
+      source: Do you claim depletion for it (oil, gas or minerals)?
+    cite:
+      doc: i1040se
+      locator: p. 6, Line 18, "Depletion"
+  - id: royalty.expenses_any
+    printed: (helper)
+    label: Any expenses for this royalty
+    type: Bool
+    expr:
+      op: input
+      source: Did you pay any costs for it, such as fees, taxes or production costs?
+    cite:
+      doc: i1040se
+      locator: p. 6, General Instructions for Lines 5 Through 21
+  - id: royalty.amt10
+    printed: (helper)
+    label: Legal and other professional fees paid in 2025
+    type: NonNegDollars
+    gated_by: royalty.line10
+    expr:
+      op: input
+      source: Legal and other professional fees for it, paid in 2025; zero if none
+    cite: &id001
+      doc: i1040se
+      locator: p. 6, Line 10
+  - id: royalty.line10
+    printed: '10'
+    label: Legal and other professional fees
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - royalty.expenses_any
+          - const: true
+        then: royalty.amt10
+      - guard:
+          op: test
+          eq:
+          - royalty.expenses_any
+          - const: false
+        then: royalty.zero
+    cite: *id001
+  - id: royalty.amt16
+    printed: (helper)
+    label: Taxes paid in 2025
+    type: NonNegDollars
+    gated_by: royalty.line16
+    expr:
+      op: input
+      source: Taxes on it paid in 2025, such as severance or production taxes, including any the payer withheld; zero if none
+    cite: &id002
+      doc: i1040se
+      locator: p. 6, Line 16
+  - id: royalty.line16
+    printed: '16'
+    label: Taxes
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - royalty.expenses_any
+          - const: true
+        then: royalty.amt16
+      - guard:
+          op: test
+          eq:
+          - royalty.expenses_any
+          - const: false
+        then: royalty.zero
+    cite: *id002
+  - id: royalty.amt19
+    printed: (helper)
+    label: Other paid in 2025
+    type: NonNegDollars
+    gated_by: royalty.line19
+    expr:
+      op: input
+      source: Other costs of it (not depletion), paid in 2025; zero if none
+    cite: &id003
+      doc: i1040se
+      locator: p. 6, Line 19
+  - id: royalty.line19
+    printed: '19'
+    label: Other
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - royalty.expenses_any
+          - const: true
+        then: royalty.amt19
+      - guard:
+          op: test
+          eq:
+          - royalty.expenses_any
+          - const: false
+        then: royalty.zero
+    cite:
+      doc: i1040se
+      locator: 'p. 7, Line 19, "Enter on line 19 any ordinary and necessary expenses not listed on lines 5 through 18"'
+  - id: royalty.line20
+    printed: '20'
+    label: Total expenses. Add lines 5 through 19
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - royalty.line10
+      - royalty.line16
+      - royalty.line19
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 20
+  - id: royalty.line21
+    printed: '21'
+    label: Subtract line 20 from line 4 (royalties)
+    type: Dollars
+    expr:
+      op: subtract
+      from: royalty.line4
+      take: royalty.line20
+    cite:
+      doc: f1040se
+      locator: 'Schedule E (2025), line 21; i1040se p. 7, Line 21, "If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss"'
+    refuses:
+    - when: royalty.business
+      form: Schedule C (royalties from your own trade or business)
+      remedy: Royalties from your own work as a self-employed writer, artist or inventor, or from a working interest, are
+        reported on Schedule C; this tool does not prepare them on Schedule E.
+      cite:
+        doc: i1040se
+        locator: p. 6, Line 4, "If you are in business as a self-employed writer, inventor, artist, etc., report your royalty
+          income and expenses on Schedule C"
+    - when: royalty.depletion
+      form: Schedule E, line 18 (depletion)
+      remedy: Depletion is outside this tool.
+      cite:
+        doc: i1040se
+        locator: p. 6, Line 18, "Depletion"
+  - id: royalty.income
+    printed: (helper)
+    label: Royalty income (positive line 21)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: royalty.line21
+      take: royalty.zero
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 24, "Add positive amounts shown on line 21"
+  - id: royalty.loss
+    printed: (helper)
+    label: Royalty loss (negative line 21)
+    type: Dollars
+    expr:
+      op: subtract
+      from: royalty.zero
+      take: royalty.loss_abs
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 25, "Add royalty losses from line 21"
+  - id: royalty.loss_abs
+    printed: (helper)
+    label: Royalty loss as a positive amount
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: royalty.zero
+      take: royalty.line21
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 25, "Add royalty losses from line 21"
+  collection:
+    cite:
+      doc: i1040se
+      locator: p. 3, Line 4

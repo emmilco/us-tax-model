@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "4",
   "agree / disagree / missing": "4 / 0 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,9 +23,9 @@
   },
   {
    "key": "1(c)",
-   "record": "e238c946aa9c55d23cd6615d3544bdee0ab5af692c97832898191121bd7231a7",
+   "record": "ab907f9629d6c9b4ba50588b922a0b2778a02d84909d2bc56933a23d5ef42c1d",
    "status": "AGREE",
-   "subject_key": "da240fbe42460971e404685ad6296d994321d333f25237e06e44c1fd9805b1ab"
+   "subject_key": "4578c0516c58a281b20be193ebf9e34c5e471a8b8b8398916d2a63d894b7854d"
   },
   {
    "key": "1(d)",
@@ -37,12 +37,13 @@
  "subjects": {
   "tipjob.one": "5974fbc80063c865a4337eaabedcd9f3fc8ff2a5ae649aac66251445d00d35df",
   "1(b)": "16fa3359241f50e3b821cf7a9fa0d11ddb36dbe1b9e412e7bb66964c04a3fb31",
-  "1(c)": "f3f65ff93abdd04fec92f4d420d611be1c57cbd795849bc0e0bc28010d010509",
+  "1(c)": "3201a6098026293971a5ddd2a63ac84206199f5637ddd269b5c0d1d6a509c3d9",
   "1(d)": "fa2a45855056530650d0f911aab7a3e7bca7e4d85c76cbb876eb4828932a7293"
  },
  "__rest__": "0300589bc312f32bcfc4776d58448bd7eab5d75748435f116e1b132ae92c1f76",
  "foreign": {
   "1(b)": "e63a9a6eb12146b7ecb709d9f6aee9c8def33e1f13164200fd954d2b87e4c2d8",
+  "1(c)": "e53c6c9ba555f2bc94b35b44d199391e30b956d3cca5b09233a91eb1e58cdaa9",
   "1(d)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
  }
 }

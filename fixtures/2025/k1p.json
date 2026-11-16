@@ -1,0 +1,2934 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "x2k1p.fk2_general_material",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: FK2. A general partner, box 1 $50,000, worked more than 500 hours (test 1, i1065sk1 p. 9), box 14 code A $50,000, box 20 code Z QBI $50,000. Box 1 is nonpassive income: column (k) $50,000 (p. 14 item 1); columns (h) and (i) zero; Form 8582 Part V columns zero; self-employment earnings $50,000 and QBI $50,000 totalled on the person; one Schedule E row.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "llc"
+        ],
+        "person[taxpayer].k1p[llc].general": true,
+        "person[taxpayer].k1p[llc].has_b1": true,
+        "person[taxpayer].k1p[llc].box1": 5000000,
+        "person[taxpayer].k1p[llc].work": true,
+        "person[taxpayer].k1p[llc].hours500": true,
+        "person[taxpayer].k1p[llc].has_b14a": true,
+        "person[taxpayer].k1p[llc].box14a": 5000000,
+        "person[taxpayer].k1p[llc].has_b20z": true,
+        "person[taxpayer].k1p[llc].box20z": 5000000
+      },
+      "expect": {
+        "person[taxpayer].k1p[llc].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[llc].col_k": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "person[taxpayer].k1p[llc].col_h": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[llc].col_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[llc].p5_income": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p_total_se_earnings": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "person[taxpayer].k1p_total_se_pos": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "person[taxpayer].k1p_total_qbi_stmt": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "person[taxpayer].k1p_total_nonpassive": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "person[taxpayer].k1p_count_sche": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "x2k1p.fk3_limited_rental_loss",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: FK3. A limited partner, box 2 loss $12,000. Box 2 is passive and a limited partner cannot actively participate (p. 11), so Part V: column (b) $12,000, overall loss (e) $12,000, Part IV zero; column (h) zero.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": -1200000
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].active": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].p5_loss": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].k1p[fund].p4_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].b2_overall_loss": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].k1p[fund].p6_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].passive_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_total_p5_loss": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].k1p_count_passive_loss": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "x2k1p.fk3b_general_active",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: FK3b. As FK3 but a general partner who helped make management decisions and owned a tenth all year: Part IV (i8582 p. 10): column (b) $12,000, Part VI column (a) $12,000, Part V zero.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].general": true,
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": -1200000,
+        "person[taxpayer].k1p[fund].decisions": true,
+        "person[taxpayer].k1p[fund].tenth": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].active": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].p4_loss": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].k1p[fund].p6_loss": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].k1p[fund].p5_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p_total_p4_loss": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].k1p_total_p6_loss": {
+          "kind": "money",
+          "cents": 1200000
+        }
+      }
+    },
+    {
+      "id": "x2k1p.fk3c_general_under_tenth",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: As FK3b but the partner owned less than a tenth at some time (p. 11, less than 10% by value): no active participation, Part V column (b) $12,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].general": true,
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": -1200000,
+        "person[taxpayer].k1p[fund].decisions": true,
+        "person[taxpayer].k1p[fund].tenth": false
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].active": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].p4_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p5_loss": {
+          "kind": "money",
+          "cents": 1200000
+        }
+      }
+    },
+    {
+      "id": "x2k1p.fk3d_rental_income_active",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: A general partner with box 2 income $4,000, active, owned a tenth: Part IV column (a) $4,000 and Schedule E column (h) $4,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].general": true,
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": 400000,
+        "person[taxpayer].k1p[fund].decisions": true,
+        "person[taxpayer].k1p[fund].tenth": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].p4_income": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1p[fund].p5_income": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1p[fund].b2_overall_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].passive_loss": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p_total_p4_income": {
+          "kind": "money",
+          "cents": 400000
+        }
+      }
+    },
+    {
+      "id": "x2k1p.fk7_portfolio_only",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: FK7. A limited partner with box 5 $300, 6a $1,000, 6b $800, 9a $2,500 and box 20 codes A and B: portfolio only (p. 15), no Schedule E row.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b5": true,
+        "person[taxpayer].k1p[fund].box5": 30000,
+        "person[taxpayer].k1p[fund].has_b6a": true,
+        "person[taxpayer].k1p[fund].box6a": 100000,
+        "person[taxpayer].k1p[fund].box6b": 80000,
+        "person[taxpayer].k1p[fund].has_b9a": true,
+        "person[taxpayer].k1p[fund].box9a": 250000,
+        "person[taxpayer].k1p[fund].has_b20ab": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].sche_row": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p_total_interest": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "person[taxpayer].k1p_total_ord_div": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p_total_qual_div": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "person[taxpayer].k1p_total_lt_gain": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "person[taxpayer].k1p_count_sche": {
+          "kind": "count",
+          "value": 0
+        },
+        "person[taxpayer].k1p_count_inv": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "x2k1p.gains_withholding",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: Box 8 loss $700, 9a $5,000 with 9b $1,000 and 9c $2,000, 15 O $240, 18 A $150: the totals carry each box (pp. 15, 16, 23, 25); the box 8 loss asks basis and at-risk (answered No).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b8": true,
+        "person[taxpayer].k1p[fund].box8": -70000,
+        "person[taxpayer].k1p[fund].has_b9a": true,
+        "person[taxpayer].k1p[fund].box9a": 500000,
+        "person[taxpayer].k1p[fund].has_b9bc": true,
+        "person[taxpayer].k1p[fund].box9b": 100000,
+        "person[taxpayer].k1p[fund].box9c": 200000,
+        "person[taxpayer].k1p[fund].has_b15o": true,
+        "person[taxpayer].k1p[fund].box15o": 24000,
+        "person[taxpayer].k1p[fund].has_b18a": true,
+        "person[taxpayer].k1p[fund].box18a": 15000
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].any_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_total_st_gain": {
+          "kind": "money",
+          "cents": -70000
+        },
+        "person[taxpayer].k1p_total_lt_gain": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].k1p_total_collectibles": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p_total_unrecap_1250": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p_total_backup_wh": {
+          "kind": "money",
+          "cents": 24000
+        },
+        "person[taxpayer].k1p_total_taxexempt_int": {
+          "kind": "money",
+          "cents": 15000
+        }
+      }
+    },
+    {
+      "id": "x2k1p.fk11_limited_box1_income",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: FK11. A limited partner, box 1 $30,000, did not work in the business: passive income, column (h) $30,000 and Part V column (a) $30,000; column (k) zero.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 3000000,
+        "person[taxpayer].k1p[fund].has_b20z": true,
+        "person[taxpayer].k1p[fund].box20z": 3000000
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].material": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "person[taxpayer].k1p[fund].p5_income": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "person[taxpayer].k1p[fund].col_k": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].nonpassive_net": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "money",
+          "cents": 3000000
+        }
+      }
+    },
+    {
+      "id": "x2k1p.loss_material_with_gp",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: A general partner, box 1 loss $10,000, worked 300 hours and no one worked more (test 3, p. 9), box 4a $20,000: column (i) $10,000, column (k) $20,000, nonpassive net $10,000; basis and at-risk asked (No).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "llc"
+        ],
+        "person[taxpayer].k1p[llc].general": true,
+        "person[taxpayer].k1p[llc].has_b1": true,
+        "person[taxpayer].k1p[llc].box1": -1000000,
+        "person[taxpayer].k1p[llc].has_b4a": true,
+        "person[taxpayer].k1p[llc].box4a": 2000000,
+        "person[taxpayer].k1p[llc].work": true,
+        "person[taxpayer].k1p[llc].hours500": false,
+        "person[taxpayer].k1p[llc].most_hours": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[llc].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[llc].col_i": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].k1p[llc].col_k": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1p[llc].nonpassive_net": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].k1p[llc].p5_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[llc].passive_loss": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p_total_nonpassive_loss": {
+          "kind": "money",
+          "cents": 1000000
+        }
+      }
+    },
+    {
+      "id": "x2k1p.test2_nearly_all",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: A general partner, box 1 $20,000, worked under 500 hours, less than someone else's hours but nearly all of the work (test 2): nonpassive, column (k) $20,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "llc"
+        ],
+        "person[taxpayer].k1p[llc].general": true,
+        "person[taxpayer].k1p[llc].has_b1": true,
+        "person[taxpayer].k1p[llc].box1": 2000000,
+        "person[taxpayer].k1p[llc].work": true,
+        "person[taxpayer].k1p[llc].hours500": false,
+        "person[taxpayer].k1p[llc].most_hours": false,
+        "person[taxpayer].k1p[llc].nearly_all": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[llc].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[llc].col_k": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1p[llc].col_h": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2k1p.test5_five_of_ten",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: A general partner, box 1 $40,000, worked under 500 hours, tests 2 and 3 not met, materially participated in 5 of the 10 earlier years (test 5): column (k) $40,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "llc"
+        ],
+        "person[taxpayer].k1p[llc].general": true,
+        "person[taxpayer].k1p[llc].has_b1": true,
+        "person[taxpayer].k1p[llc].box1": 4000000,
+        "person[taxpayer].k1p[llc].work": true,
+        "person[taxpayer].k1p[llc].hours500": false,
+        "person[taxpayer].k1p[llc].most_hours": false,
+        "person[taxpayer].k1p[llc].nearly_all": false,
+        "person[taxpayer].k1p[llc].five_of_ten": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[llc].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[llc].col_k": {
+          "kind": "money",
+          "cents": 4000000
+        }
+      }
+    },
+    {
+      "id": "x2k1p.limited_worked_passive",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: A limited partner, box 1 $8,000, worked 200 hours (tests 2 and 3 do not apply to a limited partner, p. 9 Limited partners), not test 5 or 6: passive, column (h) $8,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 800000,
+        "person[taxpayer].k1p[fund].work": true,
+        "person[taxpayer].k1p[fund].hours500": false,
+        "person[taxpayer].k1p[fund].five_of_ten": false
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].material": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "person[taxpayer].k1p[fund].col_k": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2k1p.prior_box1_partly_used",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: A limited partner, box 1 $5,000 not materially participated, held-back loss from the business $8,000 (2024 Form 8582 Part VII column (c)): column (a) $5,000, (c) $8,000, overall loss (e) = 8,000 - 5,000 = $3,000; Part V column (c) $8,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 500000,
+        "person[taxpayer].k1p[fund].prior_any": true,
+        "person[taxpayer].k1p[fund].prior_b1_any": true,
+        "person[taxpayer].k1p[fund].prior_b1": 800000
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].b1_net_income": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].k1p[fund].b1_loss_sum": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "person[taxpayer].k1p[fund].b1_overall_loss": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].p5_prior": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "person[taxpayer].k1p[fund].passive_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].sche_row": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_total_prior": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "person[taxpayer].k1p_total_p5_prior": {
+          "kind": "money",
+          "cents": 800000
+        }
+      }
+    },
+    {
+      "id": "x2k1p.prior_box2_active",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, predicted by hand from i1065sk1 and i8582 before recording: A general partner with box 2 income $3,000, active, a tenth, held-back rental loss $5,000 from years of active participation: Part IV columns (a) $3,000, (c) $5,000; overall loss $2,000; Part VI column (a) $2,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].general": true,
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": 300000,
+        "person[taxpayer].k1p[fund].decisions": true,
+        "person[taxpayer].k1p[fund].tenth": true,
+        "person[taxpayer].k1p[fund].prior_any": true,
+        "person[taxpayer].k1p[fund].prior_b2_any": true,
+        "person[taxpayer].k1p[fund].prior_b2": 500000,
+        "person[taxpayer].k1p[fund].prior_not_active": false
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].p4_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].p4_prior": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].k1p[fund].b2_overall_loss": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].p6_loss": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].p5_prior": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_ptp",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: item D checked (i1065sk1 p. 11).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "mlp"
+        ],
+        "person[taxpayer].k1p[mlp].ptp": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_interest": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[mlp].ptp",
+          "form": "Publicly traded partnership (Schedule K-1 item D)",
+          "remedy": "A Schedule K-1 from a publicly traded partnership is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 10, Publicly traded partnerships (PTPs), \"Don’t report passive income, gains, or losses from a PTP on Form 8582\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_box10",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: box 10 section 1231 gain (Form 4797 not encoded).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b10": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_interest": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b10",
+          "form": "Schedule K-1 (Form 1065) box 10 (Form 4797)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 16, Box 10. Net Section 1231 Gain (Loss), \"report it in column (g) of Form 4797, line 2\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_multi",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: box 23 checked (more than one activity).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b2223": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_count_sche": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b2223",
+          "form": "A partnership with more than one activity (boxes 22 and 23)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 9, Material participation, \"If the partnership had more than one activity, it’ll attach a statement to your Schedule K-1 that identifies each activity\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_disposed",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: sale of the interest.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_disposed": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_lt_gain": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_disposed",
+          "form": "Sale or other disposition of a partnership interest (Form 8949, section 751)",
+          "remedy": "A sale or other disposition of a partnership interest is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 2, Sale or Exchange of Partnership Interest, \"Generally, a partner who sells or exchanges a partnership interest\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_dist_over",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: money taken out above basis (box 19, p. 25).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b19": true,
+        "person[taxpayer].k1p[fund].b19_other": false,
+        "person[taxpayer].k1p[fund].dist_over": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_interest": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].dist_over_if_any",
+          "form": "Gain on a distribution above basis (Form 8949)",
+          "remedy": "Money taken out of a partnership above your basis is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 25, Box 19. Distributions, \"exceed the adjusted basis of your partnership interest immediately before the distribution, the excess is treated as gain from the sale or exchange of your partnership interest\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_trader",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: a trading partnership (p. 11).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 100000,
+        "person[taxpayer].k1p[fund].trader": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].trader_if_b1",
+          "form": "A partnership trading investments for its owners (nonpassive trading activity)",
+          "remedy": "A partnership that trades investments for its owners is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 11, Special rules for certain other activities, \"Trading personal property for the account of owners of interests in the activity\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_basis",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: box 1 loss above basis (p. 3).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": -500000,
+        "person[taxpayer].k1p[fund].basis_short": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_p5_loss": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].basis_short_if_loss",
+          "form": "Partnership losses above basis (basis limitation)",
+          "remedy": "Losses from a partnership above your basis in it are outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 3, Basis Limitations, \"a partner may only claim their share of a partnership loss (including a capital loss) to the extent it doesn’t exceed their adjusted basis in the partnership\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_at_risk",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: box 2 loss with an amount not at risk (p. 8).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": -500000,
+        "person[taxpayer].k1p[fund].not_at_risk": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_p5_loss": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].not_at_risk_if_loss",
+          "form": "Form 6198 (at-risk limitations)",
+          "remedy": "A partnership loss with an amount not at risk is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 8, At-Risk Limitations, \"you’ll have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_test4",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: a general partner under 500 hours meeting only test 4.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "llc"
+        ],
+        "person[taxpayer].k1p[llc].general": true,
+        "person[taxpayer].k1p[llc].has_b1": true,
+        "person[taxpayer].k1p[llc].box1": 100000,
+        "person[taxpayer].k1p[llc].work": true,
+        "person[taxpayer].k1p[llc].hours500": false,
+        "person[taxpayer].k1p[llc].t4": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[llc].t4_if_gp",
+          "form": "Material participation by test 4 (significant participation activities)",
+          "remedy": "Material participation by the significant participation test is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 9, Individuals (other than limited partners), \"The activity was a significant participation activity for the tax year\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_former_passive",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: a held-back box 1 loss on a business now materially participated in (i8582 p. 4).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "llc"
+        ],
+        "person[taxpayer].k1p[llc].general": true,
+        "person[taxpayer].k1p[llc].has_b1": true,
+        "person[taxpayer].k1p[llc].box1": 900000,
+        "person[taxpayer].k1p[llc].work": true,
+        "person[taxpayer].k1p[llc].hours500": true,
+        "person[taxpayer].k1p[llc].prior_any": true,
+        "person[taxpayer].k1p[llc].prior_b1_any": true,
+        "person[taxpayer].k1p[llc].prior_b1": 100000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[llc].former_passive",
+          "form": "Form 8582, former passive activity (held-back loss from a business you now materially participate in)",
+          "remedy": "A held-back loss from a business you now materially participate in is outside this tool.",
+          "cite": {
+            "doc": "i8582",
+            "locator": "p. 8, Former Passive Activities, \"A prior-year unallowed loss from a former passive activity is allowed to the extent of current year income from the activity\"",
+            "revision": "2025",
+            "snapshot": "76787e11a385d1205faf70a07924cdec4efd5e66628e6f47e5316d29e6035f71",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_prior_not_active",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: a held-back rental loss from a year without active participation (i8582 p. 10).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].general": true,
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": 100000,
+        "person[taxpayer].k1p[fund].decisions": true,
+        "person[taxpayer].k1p[fund].tenth": true,
+        "person[taxpayer].k1p[fund].prior_any": true,
+        "person[taxpayer].k1p[fund].prior_b2_any": true,
+        "person[taxpayer].k1p[fund].prior_b2": 100000,
+        "person[taxpayer].k1p[fund].prior_not_active": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_p4_prior": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].prior_not_active_if",
+          "form": "Form 8582, Part IV (prior-year loss from a year without active participation)",
+          "remedy": "A held-back rental loss from a year without active participation is outside this tool.",
+          "cite": {
+            "doc": "i8582",
+            "locator": "p. 10, Part IV, \"Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year\"",
+            "revision": "2025",
+            "snapshot": "76787e11a385d1205faf70a07924cdec4efd5e66628e6f47e5316d29e6035f71",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.refuse_se_loss_passive",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane x2-k1p, refusal predicted from the source: a box 14 code A loss on a business not materially participated in.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": -100000,
+        "person[taxpayer].k1p[fund].has_b14a": true,
+        "person[taxpayer].k1p[fund].box14a": -100000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p_total_se_earnings": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].se_loss_not_material",
+          "form": "Schedule K-1 box 14, code A loss without material participation",
+          "remedy": "A self-employment loss from a partnership business you did not materially participate in is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 22, Code A. Net earnings (loss) from self-employment, \"If the amount in this box is a loss, enter only the deductible amount on Schedule SE\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2k1p.collectibles_loss",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane xfix (BUG-0911), predicted by hand from i1065sk1 p. 16 before recording: box 9a loss $2,000 of which box 9b is a collectibles (28%) loss $1,500 (\"Report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet\"); box 9c blank. The long-term total carries -$2,000, the collectibles total carries the loss as -$1,500 (not 0), unrecaptured section 1250 gain 0; the loss asks basis and at-risk (answered No).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b9a": true,
+        "person[taxpayer].k1p[fund].box9a": -200000,
+        "person[taxpayer].k1p[fund].has_b9bc": true,
+        "person[taxpayer].k1p[fund].box9b": -150000,
+        "person[taxpayer].k1p[fund].box9c": 0
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].any_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_total_lt_gain": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "person[taxpayer].k1p_total_collectibles": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "person[taxpayer].k1p_total_unrecap_1250": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box4b",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 4b (guaranteed payments for capital) shows an amount; the form refuses it (i1065sk1 p. 15, Box 4b. Guaranteed Payments for Capital). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b4b": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_nonpassive_loss": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_nonpassive": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_p4_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_p4_loss": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_p5_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_p5_prior": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_p6_loss": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_prior": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_ord_div": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_qual_div": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_st_gain": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_collectibles": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_unrecap_1250": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_se_pos": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_backup_wh": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_taxexempt_int": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_qbi_stmt": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_count": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_count_passive_loss": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_count_inv": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_count_general": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b4b",
+          "form": "Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 4b. Guaranteed Payments for Capital, \"These are guaranteed payments other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box7",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 7 (royalties) shows an amount; royalties go on Schedule E line 4, refused here (i1065sk1 p. 15, Box 7. Royalties). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b7": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b7",
+          "form": "Schedule K-1 (Form 1065) box 7 (royalties on Schedule E, line 4)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 7. Royalties, \"Report royalties on Schedule E (Form 1040), line 4\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_ord_div": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b7",
+          "form": "Schedule K-1 (Form 1065) box 7 (royalties on Schedule E, line 4)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 15, Box 7. Royalties, \"Report royalties on Schedule E (Form 1040), line 4\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box11",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 11 (other income or loss) shows an amount, refused (i1065sk1 p. 16, Box 11. Other Income (Loss)). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b11": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b11",
+          "form": "Schedule K-1 (Form 1065) box 11 (other income or loss)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 16, Box 11. Other Income (Loss), \"Code A. Other portfolio income (loss)\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_st_gain": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b11",
+          "form": "Schedule K-1 (Form 1065) box 11 (other income or loss)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 16, Box 11. Other Income (Loss), \"Code A. Other portfolio income (loss)\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box12",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 12 (section 179 deduction, Form 4562) shows an amount, refused (i1065sk1 p. 18, Box 12. Section 179 Deduction). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b12": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b12",
+          "form": "Schedule K-1 (Form 1065) box 12 (section 179 deduction, Form 4562)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 18, Box 12. Section 179 Deduction, \"to complete Part I of Form 4562\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_count": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b12",
+          "form": "Schedule K-1 (Form 1065) box 12 (section 179 deduction, Form 4562)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 18, Box 12. Section 179 Deduction, \"to complete Part I of Form 4562\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box13",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 13 (other deductions, other than code AE) shows an amount, refused (i1065sk1 p. 18, Box 13. Other Deductions). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b13": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b13",
+          "form": "Schedule K-1 (Form 1065) box 13 (other deductions)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 18, Box 13. Other Deductions, \"Codes A through G\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_prior": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b13",
+          "form": "Schedule K-1 (Form 1065) box 13 (other deductions)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 18, Box 13. Other Deductions, \"Codes A through G\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box14bc",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 14 shows code B or C (gross farming or nonfarm income for the optional methods), refused (i1065sk1 p. 22, Code B. Gross farming or fishing income). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b14bc": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b14bc",
+          "form": "Schedule K-1 (Form 1065) box 14, codes B and C (optional methods of Schedule SE)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 22, Code B. Gross farming or fishing income, \"Also use this amount to figure net earnings from self-employment under the farm optional method\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_se_pos": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b14bc",
+          "form": "Schedule K-1 (Form 1065) box 14, codes B and C (optional methods of Schedule SE)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 22, Code B. Gross farming or fishing income, \"Also use this amount to figure net earnings from self-employment under the farm optional method\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box15",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 15 shows a credit other than code O, refused (i1065sk1 p. 22, Box 15. Credits, Form 8582-CR). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b15": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b15",
+          "form": "Schedule K-1 (Form 1065) box 15 (credits; Form 8582-CR, Form 3800)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 22, Box 15. Credits, \"you must complete Form 8582-CR\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_backup_wh": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b15",
+          "form": "Schedule K-1 (Form 1065) box 15 (credits; Form 8582-CR, Form 3800)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 22, Box 15. Credits, \"you must complete Form 8582-CR\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box16",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 16 is checked (Schedule K-3 attached), refused (i1065sk1 p. 24, Box 16. International Transactions). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b16": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b16",
+          "form": "Schedule K-3 (international items)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 24, Box 16. International Transactions, \"If the partnership checked the box, see the attached Schedule K-3\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_taxexempt_int": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b16",
+          "form": "Schedule K-3 (international items)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 24, Box 16. International Transactions, \"If the partnership checked the box, see the attached Schedule K-3\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box17",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 17 (AMT items, Form 6251) shows an amount, refused (i1065sk1 p. 24, Box 17. Alternative Minimum Tax (AMT) Items). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b17": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b17",
+          "form": "Schedule K-1 (Form 1065) box 17 (Form 6251)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 24, Box 17. Alternative Minimum Tax (AMT) Items, \"to prepare your Form 6251\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_qual_div": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b17",
+          "form": "Schedule K-1 (Form 1065) box 17 (Form 6251)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 24, Box 17. Alternative Minimum Tax (AMT) Items, \"to prepare your Form 6251\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box20",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 20 shows a code other than A, B, N, Z or AG, refused (i1065sk1 p. 29, Box 20 codes). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b20": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b20",
+          "form": "Schedule K-1 (Form 1065) box 20, other information",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 29, Code Z. Section 199A information, \"The partnership will provide the information you need to figure your deduction\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_qbi_stmt": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b20",
+          "form": "Schedule K-1 (Form 1065) box 20, other information",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 29, Code Z. Section 199A information, \"The partnership will provide the information you need to figure your deduction\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box21",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 21 (foreign taxes paid or accrued) shows an amount, refused (i1065sk1 p. 32, Box 21. Foreign Taxes Paid or Accrued). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_b21": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b21",
+          "form": "Schedule K-1 (Form 1065) box 21 (foreign taxes; Form 1116)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 32, Box 21. Foreign Taxes Paid or Accrued, \"Foreign taxes paid or accrued reduce a partner’s basis\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_collectibles": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_b21",
+          "form": "Schedule K-1 (Form 1065) box 21 (foreign taxes; Form 1116)",
+          "remedy": "A Schedule K-1 with this item is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 32, Box 21. Foreign Taxes Paid or Accrued, \"Foreign taxes paid or accrued reduce a partner’s basis\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_foreign",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: a foreign partnership (Schedule E line 28 column (c); Form 8865), refused (i1040se p. 9, Foreign Partnerships). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].r_foreign": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_foreign",
+          "form": "Schedule E, line 28, column (c) (foreign partnership; Form 8865)",
+          "remedy": "A Schedule K-1 from a foreign partnership is outside this tool.",
+          "cite": {
+            "doc": "i1040se",
+            "locator": "p. 9, Foreign Partnerships, \"you may have to file Form 8865\"",
+            "revision": "2025",
+            "snapshot": "ad71de356a6250383ab08097582e982c3c3964792be2d4f5e4bd851816867975",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_unrecap_1250": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].r_foreign",
+          "form": "Schedule E, line 28, column (c) (foreign partnership; Form 8865)",
+          "remedy": "A Schedule K-1 from a foreign partnership is outside this tool.",
+          "cite": {
+            "doc": "i1040se",
+            "locator": "p. 9, Foreign Partnerships, \"you may have to file Form 8865\"",
+            "revision": "2025",
+            "snapshot": "ad71de356a6250383ab08097582e982c3c3964792be2d4f5e4bd851816867975",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_box19_other",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 19 shows a distribution code other than A (property other than cash and marketable securities), refused (i1065sk1 p. 25, Box 19. Distributions). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b19": true,
+        "person[taxpayer].k1p[fund].b19_other": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].b19_other_if_any",
+          "form": "Schedule K-1 (Form 1065) box 19, codes other than A (distributions of property)",
+          "remedy": "A distribution of property other than money is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 25, Box 19. Distributions, \"Code A. Cash and marketable securities other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_count_inv": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].b19_other_if_any",
+          "form": "Schedule K-1 (Form 1065) box 19, codes other than A (distributions of property)",
+          "remedy": "A distribution of property other than money is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 25, Box 19. Distributions, \"Code A. Cash and marketable securities other than for services\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_z_other",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 20 code Z with section 199A dividends or cooperative items, refused (i1065sk1 p. 30, Section 199A dividends). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b20z": true,
+        "person[taxpayer].k1p[fund].box20z": 100000,
+        "person[taxpayer].k1p[fund].z_other": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].z_other_if_z",
+          "form": "Section 199A dividends or cooperative items from a partnership (Form 8995-A)",
+          "remedy": "Section 199A dividends or cooperative items from a partnership are outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 30, Section 199A dividends, \"The amount reported reflects your distributive share of the partnership’s net section 199A dividends\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_total_qbi_stmt": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].z_other_if_z",
+          "form": "Section 199A dividends or cooperative items from a partnership (Form 8995-A)",
+          "remedy": "Section 199A dividends or cooperative items from a partnership are outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 30, Section 199A dividends, \"The amount reported reflects your distributive share of the partnership’s net section 199A dividends\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_test6",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: a limited partner under 500 hours, not 5 of the 10 earlier years, materially participating only by test 6 (personal service activity), refused (i1065sk1 p. 9, tests 5 and 6; limited partners meet 1, 5 or 6). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 100000,
+        "person[taxpayer].k1p[fund].work": true,
+        "person[taxpayer].k1p[fund].hours500": false,
+        "person[taxpayer].k1p[fund].five_of_ten": false,
+        "person[taxpayer].k1p[fund].t6": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].t6_if_asked",
+          "form": "Material participation by test 6 (personal service activity)",
+          "remedy": "Material participation by the personal service test is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 9, Individuals (other than limited partners), \"The activity was a personal service activity and you materially participated in the activity for any 3 tax years\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_count_passive_loss": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[fund].t6_if_asked",
+          "form": "Material participation by test 6 (personal service activity)",
+          "remedy": "Material participation by the personal service test is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 9, Individuals (other than limited partners), \"The activity was a personal service activity and you materially participated in the activity for any 3 tax years\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.refuse_test7",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: a general partner under 500 hours, not substantially all, not the most hours, not 5 of the 10 earlier years, meeting only test 7 (facts and circumstances), refused (i1065sk1 p. 9, test 7). The K-1 is refused at that gate (k1p.screened), and every person total that sums screened K-1s carries the refusal.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "llc"
+        ],
+        "person[taxpayer].k1p[llc].general": true,
+        "person[taxpayer].k1p[llc].has_b1": true,
+        "person[taxpayer].k1p[llc].box1": 100000,
+        "person[taxpayer].k1p[llc].work": true,
+        "person[taxpayer].k1p[llc].hours500": false,
+        "person[taxpayer].k1p[llc].most_hours": false,
+        "person[taxpayer].k1p[llc].nearly_all": false,
+        "person[taxpayer].k1p[llc].five_of_ten": false,
+        "person[taxpayer].k1p[llc].t7": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[llc].screened": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[llc].t7_if_gp",
+          "form": "Material participation by test 7 (facts and circumstances)",
+          "remedy": "Material participation by the facts and circumstances test is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 9, Individuals (other than limited partners), \"Based on all the facts and circumstances, you participated in the activity on a regular, continuous, and substantial basis during the tax year\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1p_count_general": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1p[llc].t7_if_gp",
+          "form": "Material participation by test 7 (facts and circumstances)",
+          "remedy": "Material participation by the facts and circumstances test is outside this tool.",
+          "cite": {
+            "doc": "i1065sk1",
+            "locator": "p. 9, Individuals (other than limited partners), \"Based on all the facts and circumstances, you participated in the activity on a regular, continuous, and substantial basis during the tax year\"",
+            "revision": "2025",
+            "snapshot": "659063e0aaa36e445cc58409c164c3376054eeb05f9184ef142392942bf2cfbb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.passive_three_income_with_priors",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner who did not work in the business (not material participation, i1065sk1 p. 9; limited partners cannot actively participate, p. 11), box 1 $10,000, box 2 $6,000, box 3 $4,000, and losses held back on the 2024 Form 8582 of $1,000 (box 1 activity), $2,000 (box 2) and $3,000 (box 3). All three activities are passive (p. 14, boxes 1 to 3) and go in Form 8582 Part V (i8582 p. 10): column (a) $10,000 + $6,000 + $4,000 = $20,000, column (b) $0, column (c) $1,000 + $2,000 + $3,000 = $6,000; each activity has an overall gain, so column (e) is $0 for each (box 1: 1,000 - 10,000; box 2: 2,000 - 6,000; box 3: 3,000 - 4,000). Part IV is empty. Schedule E line 28 column (h) $20,000 (p. 14, item 2a; box 2 item 4), columns (i) and (k) $0; one Schedule E row.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 1000000,
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": 600000,
+        "person[taxpayer].k1p[fund].has_b3": true,
+        "person[taxpayer].k1p[fund].box3": 400000,
+        "person[taxpayer].k1p[fund].prior_any": true,
+        "person[taxpayer].k1p[fund].prior_b1_any": true,
+        "person[taxpayer].k1p[fund].prior_b1": 100000,
+        "person[taxpayer].k1p[fund].prior_b2_any": true,
+        "person[taxpayer].k1p[fund].prior_b2": 200000,
+        "person[taxpayer].k1p[fund].prior_b3_any": true,
+        "person[taxpayer].k1p[fund].prior_b3": 300000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].material": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].b1_net_income": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].k1p[fund].b1_net_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].b2_net_income": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].k1p[fund].b3_net_income": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1p[fund].b1_overall_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].b2_overall_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].b3_overall_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p4_income": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p4_prior": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p5_income": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1p[fund].p5_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p5_prior": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].k1p[fund].passive_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1p[fund].col_k": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].col_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].sche_row": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_total_p5_income": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1p_total_p5_prior": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].k1p_total_prior": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].k1p_total_passive_income": {
+          "kind": "money",
+          "cents": 2000000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.passive_three_losses",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner who did not work in the business, box 1 loss $3,000, box 2 loss $2,000, box 3 loss $1,000, no earlier held-back loss, basis and amounts at risk cover the losses. All passive, Form 8582 Part V (i8582 p. 10): column (b) $3,000, $2,000 and $1,000 (total $6,000), column (a) $0; overall loss (e) $3,000, $2,000 and $1,000. Part IV is empty (a limited partner cannot actively participate, i1065sk1 p. 11). Schedule E columns (h) and (i) $0: the passive losses go through Form 8582 to column (g) (p. 14).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": -300000,
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": -200000,
+        "person[taxpayer].k1p[fund].has_b3": true,
+        "person[taxpayer].k1p[fund].box3": -100000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].b1_net_loss": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].b2_net_loss": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].b3_net_loss": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[fund].b1_overall_loss": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].b2_overall_loss": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].b3_overall_loss": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[fund].p4_income": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p4_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p5_income": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p5_loss": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].col_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].any_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].passive_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_total_p5_loss": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].k1p_total_p4_income": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.passive_box1_loss_only",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner who did not work in the business, box 1 loss $3,000 only, no earlier held-back loss. A passive loss (i1065sk1 p. 14, box 1 item 2b): Form 8582 Part V column (b) $3,000, overall loss (e) $3,000; the K-1 is one with a passive loss.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": -300000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].b1_loss_sum": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].b1_overall_loss": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].passive_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].col_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p_count_passive_loss": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.passive_box3_loss_only",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner, box 3 loss $1,000 only (other net rental, passive for every partner, i1065sk1 p. 14). A loss is reported (so basis and at-risk are asked), Part V column (b) $1,000 and overall loss (e) $1,000; the K-1 has a passive loss and a Schedule E line 28 row.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b3": true,
+        "person[taxpayer].k1p[fund].box3": -100000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].any_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].b3_loss_sum": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[fund].b3_overall_loss": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[fund].passive_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].sche_row": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_count_passive_loss": {
+          "kind": "count",
+          "value": 1
+        },
+        "person[taxpayer].k1p_count_sche": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.box9a_loss_only",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner whose K-1 shows only box 9a, a net long-term capital loss of $500 (Schedule D line 12, i1065sk1 p. 15). A loss is reported, so the basis and at-risk limits apply (p. 3, a partner may claim a loss, including a capital loss, only to the extent of basis); no Schedule E row (portfolio item only).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b9a": true,
+        "person[taxpayer].k1p[fund].box9a": -50000,
+        "person[taxpayer].k1p[fund].has_b9bc": false,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].any_loss": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].sche_row": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p_total_lt_gain": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "person[taxpayer].k1p_count_sche": {
+          "kind": "count",
+          "value": 0
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.box14a_loss_not_material",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner whose K-1 shows only box 14 code A, a self-employment loss of $1,000. A loss is reported, so basis and at-risk apply. Without material participation only the deductible part of the loss is entered on Schedule SE (i1065sk1 p. 22, Code A), which the form refuses (k1p.screened, k1p.se_loss_not_material).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b14a": true,
+        "person[taxpayer].k1p[fund].box14a": -100000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].any_loss": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.material_box1_and_se_loss",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a general partner who worked more than 500 hours (test 1, i1065sk1 p. 9), box 1 loss $1,000 and box 14 code A loss $1,000; basis and at-risk cover the loss. Box 1 is nonpassive: Schedule E line 28 column (i) $1,000 (p. 14 item 1); Form 8582 Part V column (b) $0. The self-employment loss is from a business the partner materially participated in, so nothing is refused (p. 22, Code A).",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "llc"
+        ],
+        "person[taxpayer].k1p[llc].general": true,
+        "person[taxpayer].k1p[llc].has_b1": true,
+        "person[taxpayer].k1p[llc].box1": -100000,
+        "person[taxpayer].k1p[llc].work": true,
+        "person[taxpayer].k1p[llc].hours500": true,
+        "person[taxpayer].k1p[llc].has_b14a": true,
+        "person[taxpayer].k1p[llc].box14a": -100000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[llc].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[llc].se_loss_not_material": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[llc].screened": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[llc].col_i": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[llc].col_k": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[llc].b1_net_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p_total_nonpassive_loss": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.box2_income_prior_only",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner, box 2 income $3,000 only, and $1,000 of the box 2 activity loss held back on the 2024 Form 8582. A limited partner cannot actively participate (i1065sk1 p. 11), so Part V (i8582 p. 10): column (a) $3,000, column (c) $1,000, overall gain $2,000, column (e) $0. Schedule E column (h) $3,000 (p. 14, box 2 item 4); one Schedule E row.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": 300000,
+        "person[taxpayer].k1p[fund].prior_any": true,
+        "person[taxpayer].k1p[fund].prior_b2_any": true,
+        "person[taxpayer].k1p[fund].prior_b2": 100000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].b2_net_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].b2_loss_sum": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[fund].b2_overall_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p5_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].p5_prior": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[fund].sche_row": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p_total_p5_prior": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p_count_sche": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.box3_income_prior_only",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner, box 3 income $2,000 only, and $500 of the box 3 activity loss held back on the 2024 Form 8582. Passive (i1065sk1 p. 14, box 3), Part V (i8582 p. 10): column (a) $2,000, column (c) $500, column (e) $0; Schedule E column (h) $2,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b3": true,
+        "person[taxpayer].k1p[fund].box3": 200000,
+        "person[taxpayer].k1p[fund].prior_any": true,
+        "person[taxpayer].k1p[fund].prior_b3_any": true,
+        "person[taxpayer].k1p[fund].prior_b3": 50000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].b3_net_income": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].b3_loss_sum": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[taxpayer].k1p[fund].b3_overall_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p5_income": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].p5_prior": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p_total_p5_prior": {
+          "kind": "money",
+          "cents": 50000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.box2_loss_box3_income",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner, box 2 loss $2,000 and box 3 income $3,000, no earlier held-back loss. Two passive activities (i1065sk1 p. 14), each on its own Part V line (i8582 p. 10): box 2 column (b) $2,000 and overall loss $2,000; box 3 column (a) $3,000 and overall gain. Part V totals: column (a) $3,000, column (b) $2,000. Schedule E column (h) $3,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": -200000,
+        "person[taxpayer].k1p[fund].has_b3": true,
+        "person[taxpayer].k1p[fund].box3": 300000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].b2_net_loss": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].b3_net_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].b2_overall_loss": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].b3_overall_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p5_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].p5_loss": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p_total_p5_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p_total_p5_loss": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.box1_loss_box2_income",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner who did not work in the business, box 1 loss $1,000 and box 2 income $2,000, no earlier held-back loss. Both passive (i1065sk1 p. 14), Part V (i8582 p. 10): box 1 column (b) $1,000, box 2 column (a) $2,000. Schedule E column (h) $2,000.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": -100000,
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": 200000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].b1_net_loss": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[fund].b2_net_income": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].p5_income": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].p5_loss": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p_total_p5_income": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p_total_p5_loss": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.material_box1_box3_loss",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a general partner who worked more than 500 hours (test 1, i1065sk1 p. 9), box 1 income $5,000 and box 3 loss $1,000. Box 1 is nonpassive: Schedule E column (k) $5,000, nothing in Form 8582 for it. Box 3 is passive for every partner (p. 14): Part V column (b) $1,000 (i8582 p. 10). Part V column (a) $0; Schedule E column (h) $0.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "llc"
+        ],
+        "person[taxpayer].k1p[llc].general": true,
+        "person[taxpayer].k1p[llc].has_b1": true,
+        "person[taxpayer].k1p[llc].box1": 500000,
+        "person[taxpayer].k1p[llc].work": true,
+        "person[taxpayer].k1p[llc].hours500": true,
+        "person[taxpayer].k1p[llc].has_b3": true,
+        "person[taxpayer].k1p[llc].box3": -100000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[llc].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[llc].b1_net_income": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[llc].b3_net_loss": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[llc].p5_income": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[llc].p5_loss": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1p[llc].col_h": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[llc].col_k": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].k1p_total_nonpassive_income": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].k1p_total_p5_loss": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.passive_box1_with_guaranteed_payments",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner who did not work in the business, box 1 income $2,000 and box 4a guaranteed payments for services $1,500. Box 1 is passive: column (h) $2,000 (i1065sk1 p. 14 item 2a). Guaranteed payments go in column (k) (p. 15, Box 4a): $1,500. Column (i) $0.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 200000,
+        "person[taxpayer].k1p[fund].has_b4a": true,
+        "person[taxpayer].k1p[fund].box4a": 150000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].material": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].col_k": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].k1p[fund].col_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].nonpassive_net": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].k1p_total_nonpassive_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p_total_nonpassive": {
+          "kind": "money",
+          "cents": 150000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.guaranteed_payments_only",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a partner whose K-1 shows only box 4a, guaranteed payments for services $1,500: Schedule E line 28 column (k) $1,500 (i1065sk1 p. 15, Box 4a), so the K-1 has a Schedule E row.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b4a": true,
+        "person[taxpayer].k1p[fund].box4a": 150000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].col_k": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].k1p[fund].col_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].sche_row": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_count_sche": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.passive_box1_income_only",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner who did not work in the business, box 1 income $2,000 only: passive income in column (h) (i1065sk1 p. 14 item 2a), so the K-1 has a Schedule E row.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 200000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].material": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].nonpassive_net": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].sche_row": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_count_sche": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.limited_test5",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner who worked in the business, not more than 500 hours, and materially participated in at least 5 of the 10 years before (test 5); limited partners materially participate by tests 1, 5 or 6 (i1065sk1 p. 9). Box 1 $8,000 is nonpassive: Schedule E column (k) $8,000 (p. 14 item 1). Test 5 already holds, so whether test 6 also holds changes nothing (\"one or more of the following apply\", p. 9) and nothing is refused.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 800000,
+        "person[taxpayer].k1p[fund].work": true,
+        "person[taxpayer].k1p[fund].hours500": false,
+        "person[taxpayer].k1p[fund].five_of_ten": true,
+        "person[taxpayer].k1p[fund].t6": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p[fund].col_k": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].screened": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_total_nonpassive_income": {
+          "kind": "money",
+          "cents": 800000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.box2_income_only",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner whose K-1 shows only box 2 income $3,000, no earlier held-back loss. Passive (a limited partner cannot actively participate, i1065sk1 p. 11): Form 8582 Part V column (a) $3,000 (i8582 p. 10), Schedule E column (h) $3,000 (p. 14, box 2 item 4), so the K-1 has a Schedule E row.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b2": true,
+        "person[taxpayer].k1p[fund].box2": 300000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].b2_net_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].p5_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].col_h": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1p[fund].sche_row": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_count_sche": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "mk1.k1p.box1_zero_prior_loss",
+      "covers": [
+        "k1p"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1065sk1 and i8582 before evaluating: a limited partner who did not work in the business, box 1 shows $0 for 2025, and $2,000 of the box 1 activity loss was held back on the 2024 Form 8582. The activity is still passive and goes in Form 8582 Part V (i8582 p. 10): column (a) $0, column (c) $2,000, overall loss (e) $2,000; whatever Form 8582 allows of it is reported in column (g) of Schedule E line 28 (i1065sk1 p. 14, box 1 item 2b), so the K-1 has a Schedule E row.",
+      "inputs": {
+        "$k1p@person[taxpayer]": [
+          "fund"
+        ],
+        "person[taxpayer].k1p[fund].has_b1": true,
+        "person[taxpayer].k1p[fund].box1": 0,
+        "person[taxpayer].k1p[fund].prior_any": true,
+        "person[taxpayer].k1p[fund].prior_b1_any": true,
+        "person[taxpayer].k1p[fund].prior_b1": 200000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1p[fund].p5_income": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1p[fund].p5_prior": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].b1_overall_loss": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p[fund].sche_row": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1p_total_prior": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1p_count_sche": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    }
+  ]
+}

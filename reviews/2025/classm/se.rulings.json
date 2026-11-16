@@ -1,0 +1,18 @@
+{
+ "kind": "classm",
+ "form": "se",
+ "rulings": [
+  {
+   "case": "classm.se.2",
+   "printed": "line8d",
+   "project": "$176,100.00",
+   "model": "$0.00",
+   "ruling": "Ruling: representation (skipped line, drop); line 4c is under $400 (owes false: Schedule SE (2025) line 4c, 'If less than $400, stop; you don't owe self-employment tax'), so the form never reaches line 8d, and line 8a ($176,100, W-2 box 3) is at the wage base, where line 8a says 'skip lines 8b through 10'. The model entered $0.00 on the skipped line; the engine carries the line's arithmetic (8a + 8b + 8c = $176,100 + $0 + $0). Every line the form reaches agrees (lines 3 through 7 and 9 through 13, all $0 tax). As for f8880 (classm.f8880.1, .3, .4): the model's value on a skipped line is not evidence of the line's value, so it is dropped from the fixture.",
+   "drop": true,
+   "context": "05cfc4d861a4474ffc7e32f9aed7b8cb8248bad5778394293b1d52995518c710",
+   "date": "2026-11-15",
+   "run": "578d4c0005dc6de874387c58eb69d19459b86709ff6ba5a4a2a4faccb9f44bb5",
+   "subject_key": "053708d7339025622142b4f3fce6a599800a96580a15ed290aa93686eb50b887"
+  }
+ ]
+}

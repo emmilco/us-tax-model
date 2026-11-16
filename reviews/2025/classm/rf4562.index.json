@@ -1,0 +1,65 @@
+{
+ "kind": "classm",
+ "form": "rf4562",
+ "family": "claude",
+ "base": "6f5d2099ae3024782920c777dbfb31d78262f040b4af98f7540b53b9ad22f03a",
+ "lines": [
+  {
+   "key": "case classm.rf4562.1",
+   "record": "6f5d2099ae3024782920c777dbfb31d78262f040b4af98f7540b53b9ad22f03a",
+   "status": null
+  },
+  {
+   "key": "classm.rf4562.1 — rental[a].rf4562[form].line17",
+   "record": "6f5d2099ae3024782920c777dbfb31d78262f040b4af98f7540b53b9ad22f03a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rf4562.1 — rental[a].rf4562[form].line19i",
+   "record": "6f5d2099ae3024782920c777dbfb31d78262f040b4af98f7540b53b9ad22f03a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rf4562.1 — rental[a].rf4562[form].line19j",
+   "record": "6f5d2099ae3024782920c777dbfb31d78262f040b4af98f7540b53b9ad22f03a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rf4562.1 — rental[a].rf4562[form].line22",
+   "record": "6f5d2099ae3024782920c777dbfb31d78262f040b4af98f7540b53b9ad22f03a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rf4562.1 — rental[b].rf4562[form].line17",
+   "record": "6f5d2099ae3024782920c777dbfb31d78262f040b4af98f7540b53b9ad22f03a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rf4562.1 — rental[b].rf4562[form].line19i",
+   "record": "6f5d2099ae3024782920c777dbfb31d78262f040b4af98f7540b53b9ad22f03a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rf4562.1 — rental[b].rf4562[form].line19j",
+   "record": "6f5d2099ae3024782920c777dbfb31d78262f040b4af98f7540b53b9ad22f03a",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rf4562.1 — rental[b].rf4562[form].line22",
+   "record": "6f5d2099ae3024782920c777dbfb31d78262f040b4af98f7540b53b9ad22f03a",
+   "status": "AGREE"
+  }
+ ],
+ "subject_carried": {
+  "subject": "8938d5a7d4ffc2b08bf2d00cfa95233ed9bf2402aa9102267467b5c72400f8f7",
+  "was": "e08c92f4429b24aa6e2b14f13a27dac0bb458d410b10e611774b0619b5f49ecb",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "rental.has_2025": "rental.needs_4562"
+   },
+   "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+   "was": "e08c92f4429b24aa6e2b14f13a27dac0bb458d410b10e611774b0619b5f49ecb"
+  }
+ }
+}

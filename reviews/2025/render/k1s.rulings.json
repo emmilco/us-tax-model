@@ -1,0 +1,68 @@
+{
+ "kind": "render",
+ "form": "k1s",
+ "rulings": [
+  {
+   "printed": "(screen) (k1s.not_at_risk)",
+   "restated": "Input — Did you pay for your shares, or for loans to the corporation, with money borrowed on terms that protect you from loss, such as a loan you are not personally liable for or one someone guarantees for you?",
+   "model": "The question covers nonrecourse debt and guarantees but omits the third category: amounts 'covered by indebtedness from a person who has an interest in the activity or from a person related to a person (except you) having such an interest'. It also omits cash or property contributed to the activity that is itself so covered or protected.",
+   "ruling": "Ruling: finding; the screen names nonrecourse and guaranteed borrowing but not the third source the instructions list, money 'covered by indebtedness from a person who has an interest in the activity or from a person related to a person (except you) having such an interest, other than a creditor' (i1120ssk p. 3, At-Risk Limitations), nor contributed cash or property so covered; a shareholder in that case answers No and the Form 6198 refusal does not fire (BUG-0914).",
+   "context": "bef420392f1288fda62aa3fb19fe3506faa4bbf9ed07f5d9cb8b81dbfbe3e8d1",
+   "date": "2026-11-15",
+   "run": "563d96682fe0cb2bb7b640ea72dda645721e0992c28e0f54bb01798b3483934a",
+   "severity": "medium",
+   "subject_key": "b09ffce8aaec67a442ddcfa8f5e1c490ca6f42af6d2c35583bb6c21a7b32cd7f"
+  },
+  {
+   "printed": "(screen) (k1s.past_years)",
+   "restated": "Input — Did you (or, on a joint return, your spouse) take part in running it, for more than 500 hours a year, in at least 5 of the 10 years before 2025 (or any 3 earlier years, if it provides professional services)?",
+   "model": "Tests 5 and 6 require that you 'materially participated in the activity for any 5 tax years' (or 3 for a personal service activity), which any of the seven tests can satisfy, not only 'more than 500 hours a year'. 'Professional services' also differs from the defined 'personal service activity', which includes any business 'in which capital isn't a material income-producing factor'.",
+   "ruling": "Ruling: finding; the question narrows an earlier year of material participation to 'more than 500 hours a year', but tests 5 and 6 count any year in which 'you materially participated in the activity' (i1120ssk p. 4, Individuals), by any of the seven tests, and a personal service activity is 'health, law, engineering, architecture, accounting, actuarial science, performing arts, or consulting, or any other trade or business in which capital isn't a material income-producing factor', wider than 'professional services'. A shareholder who qualifies by another test answers No and box 1 is treated as passive (BUG-0913).",
+   "context": "bef420392f1288fda62aa3fb19fe3506faa4bbf9ed07f5d9cb8b81dbfbe3e8d1",
+   "date": "2026-11-15",
+   "run": "563d96682fe0cb2bb7b640ea72dda645721e0992c28e0f54bb01798b3483934a",
+   "severity": "medium",
+   "subject_key": "cdf6f407423f6478ea8332979baa1b544193af5615485bd07e1cbea641c6b499"
+  },
+  {
+   "printed": "28 (h)",
+   "restated": "Choose — [helper \"This Schedule K-1 passes every screen and its Form 7203 is supported\" = true → helper \"Passive income of boxes 1, 2 and 3\"] [helper \"This Schedule K-1 passes every screen and its Form 7203 is supported\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Box 2 income is always treated as passive, but the instructions say 'the income (loss) in box 2 isn't from a passive activity if you were a real estate professional ... and you materially participated'. No refusal names this case.",
+   "ruling": "Ruling: scope; a real estate professional is refused by sche.re_pro (lane x1-sche, form sche: 'Schedule E, line 43 (real estate professional)'; scout-k1 R-K20), and in this tree scope.k1 still refuses every K-1 filer, so box 2 income or loss reaches no return as nonpassive. Integration must keep sche.re_pro asked of a K-1 box 2 filer.",
+   "context": "bef420392f1288fda62aa3fb19fe3506faa4bbf9ed07f5d9cb8b81dbfbe3e8d1",
+   "date": "2026-11-15",
+   "run": "563d96682fe0cb2bb7b640ea72dda645721e0992c28e0f54bb01798b3483934a",
+   "subject_key": "e7e92436b85f8ce241bc7f2ecc8e8b8a736b2454ccf0bffee96b99c7f524d9c6"
+  },
+  {
+   "printed": "28 (h)",
+   "restated": "Choose — [helper \"This Schedule K-1 passes every screen and its Form 7203 is supported\" = true → helper \"Passive income of boxes 1, 2 and 3\"] [helper \"This Schedule K-1 passes every screen and its Form 7203 is supported\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The restatement always treats box 2 income as passive and puts it in column (h). The IRS text says box 2 'isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity,' and in that case 'report box 2 income (loss) in column (i) or (k) of Schedule E (Form 1040), line 28'; no screen or refusal excludes real estate professionals.",
+   "ruling": "Ruling: scope; as in the first round of this line. A real estate professional who materially participated reports box 2 in column (i) or (k) (i1120ssk, box 2); the K-1 forms leave that case to sche.re_pro, which refuses a real estate professional (lane x1-sche, 'Schedule E, line 43 (real estate professional)'; scout-k1 R-K20), and in this tree scope.k1 still refuses every K-1 filer. The line was re-reviewed only because k1s.past_years (test 5/6) changed wording this round (BUG-0913); the reply raises nothing about that change.",
+   "context": "791170cd4bed859c143a4dc86ae092c4dddb11b62d38d8295d7ae69eaea82d30",
+   "date": "2026-11-15",
+   "run": "1bde1277caa32c3e0c615f5d69fc3b3fda78a80bba746795d72d2696a3522354",
+   "subject_key": "577d587dd53fe450ff28ab9eca65af4ee8ce1c7307a8f5a0d43a2aaebd598891"
+  },
+  {
+   "printed": "28 (i)",
+   "restated": "Choose — [helper \"This Schedule K-1 passes every screen and its Form 7203 is supported\" = true → helper \"Nonpassive box 1 loss allowed by basis, as a positive amount\"] [helper \"This Schedule K-1 passes every screen and its Form 7203 is supported\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Only a box 1 loss can reach column (i), but a box 2 loss of a real estate professional who materially participated is nonpassive ('report box 2 income (loss) in column (i) or (k)'). No refusal names this case.",
+   "ruling": "Ruling: scope; a real estate professional is refused by sche.re_pro (lane x1-sche, form sche: 'Schedule E, line 43 (real estate professional)'; scout-k1 R-K20), and in this tree scope.k1 still refuses every K-1 filer, so box 2 income or loss reaches no return as nonpassive. Integration must keep sche.re_pro asked of a K-1 box 2 filer.",
+   "context": "bef420392f1288fda62aa3fb19fe3506faa4bbf9ed07f5d9cb8b81dbfbe3e8d1",
+   "date": "2026-11-15",
+   "run": "563d96682fe0cb2bb7b640ea72dda645721e0992c28e0f54bb01798b3483934a",
+   "subject_key": "bce71b12cb0e6c5ce9c13654f821d9ca83b6327a0f5b90d83b7dde237b838fc3"
+  },
+  {
+   "printed": "28 (k)",
+   "restated": "Choose — [helper \"This Schedule K-1 passes every screen and its Form 7203 is supported\" = true → helper \"Nonpassive box 1 income\"] [helper \"This Schedule K-1 passes every screen and its Form 7203 is supported\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Only box 1 income can reach column (k), but the instructions say 'If you were a real estate professional and you materially participated in the activity, report box 2 income (loss) in column (i) or (k)'. No refusal names this case.",
+   "ruling": "Ruling: scope; a real estate professional is refused by sche.re_pro (lane x1-sche, form sche: 'Schedule E, line 43 (real estate professional)'; scout-k1 R-K20), and in this tree scope.k1 still refuses every K-1 filer, so box 2 income or loss reaches no return as nonpassive. Integration must keep sche.re_pro asked of a K-1 box 2 filer.",
+   "context": "bef420392f1288fda62aa3fb19fe3506faa4bbf9ed07f5d9cb8b81dbfbe3e8d1",
+   "date": "2026-11-15",
+   "run": "563d96682fe0cb2bb7b640ea72dda645721e0992c28e0f54bb01798b3483934a",
+   "subject_key": "d8426b4e6c04e2261d4f91a8541bc5d356d605da46084e4f7ab9b0de5f9886bd"
+  }
+ ]
+}

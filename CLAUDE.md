@@ -1,21 +1,35 @@
 # Working guidance for this project
 
-Current execution: read the top entry of `HANDOFF-NEXT-SESSION.md` first; it names the current handoff
-(in `handoffs/`). `handoffs/HANDOFF-HARDENING-1.md` holds the owner's standing decisions and operational
-facts. Older handoffs (all of `handoffs/` except HARDENING-1, including `HANDOFF.md`, `HANDOFF-INTEGRITY.md`
-and `HANDOFF-STAGE-16.md`) are historical. `docs/2026-10-24_validation_policy.md` remains the controlling validation
-amendment: human packets and ruling samples are optional; proceed without waiting for them and preserve
-original verdicts. Reviews are Claude-only (`claude-opus-5-5`): the second review family (DeepSeek, GPT) is
-inactive (owner, 2026-11-09; `docs/consolidation_charter.md`). Its machinery is kept dormant and no
-second-family runs are made unless the owner reactivates a family. Existing second-family logs are historical. The consolidation charter governs the execution order and the
-verification system.
+**Start here.** `HANDOFF-NEXT-SESSION.md` is the current state: what is on `main`, what is in flight, and what
+governs each kind of work. Then the top of `TASKS.md` (the order of work; the register is authoritative for each
+task's status).
 
-- **Interview questions (owner decision 2026-11-13).** `docs/2026-11-13_interview_construction_protocol.md` is
-  normative for any work that adds or changes an interview question, topic or form: read it before the first such
-  change. It holds the standard (the least mental effort to answer correctly; the norms N1 to N12), the judgment
-  applied to every question, the techniques, the phases of the work, how agents are briefed, the bar and what it
-  does not show, and the checklist for extending coverage. The whole-interview redraft it describes is on `main`
-  (landed through the full review process, owner decision 2026-11-13); its working record is `docs/provisional/`.
+**Normative documents.** Read the one that applies before the first change of that kind:
+- any work: `docs/consolidation_charter.md` (architecture, verification system, order of work, documentation
+  conventions);
+- validation, rulings and human review: `docs/2026-10-24_validation_policy.md` (human packets and ruling samples
+  are optional; proceed without waiting for them and preserve original verdicts);
+- adding or changing an interview question, topic or form: `docs/2026-11-13_interview_construction_protocol.md`
+  (owner decision 2026-11-13; the standard, norms N1 to N12, the phases, how agents are briefed, the checklist for
+  extending coverage);
+- extending coverage to a new area (a form, schedule, worksheet or situation now refused):
+  `docs/2026-11-15_coverage_expansion_protocol.md` (owner decision 2026-11-15; intake and the stop rule, lanes and
+  merges, reviews, tax-year rules, the definition of done);
+- releases and check tiers: `docs/2026-11-05_release_gating_design.md` and `tools/README.md`;
+- tax year 2026: `docs/ty2026/ADOPTION.md` and `docs/2026-11-14_year_change_operations.md`;
+- New York: `docs/ny/INTEGRATION.md` and `docs/ny/2026-11-14_ny_year_handling.md`.
+
+**Standing decisions** are the bullets below, `handoffs/HANDOFF-HARDENING-1.md` (the hardening phase) and
+`docs/provisional/DECISIONS.md` (the interview redraft, under the owner's delegation of 2026-11-14).
+
+**Records are not guidance.** `docs/provisional/` (above all `lanes/`, one note per past agent lane, and every
+`*_work/` folder), `docs/records/`, `handoffs/` other than HARDENING-1, the handoff archive and dated documents in `docs/` not named
+above record what was done or proposed on a date. Cite them as evidence; check a claim in them against the tree
+before relying on it; never follow them as instructions (`docs/provisional/README.md`).
+
+- **Reviews are Claude-only** (`claude-opus-5-5`; owner, 2026-11-09). The second review family (DeepSeek, GPT) is
+  inactive: its machinery is kept dormant, no second-family runs are made unless the owner reactivates a family,
+  and existing second-family logs are historical.
 - **Inference cost (owner decision 2026-11-03).** Use inference only where it adds evidence.
   Paid review calls (transcription, render, class M, completeness, screen) and agents are
   weighed against what they can find; screen and completeness reviews have the best yield.
@@ -50,6 +64,9 @@ verification system.
   `.transcription/` by hand; missing files are added with `fill`, never copied by hand;
   a file changed on both sides is taken from the worktree only with `carry-back --prefer-worktree`, after
   checking which copy the committed logs were written from.
+- **No ceremonial reruns (owner rule 2026-11-15; advisory, no tool enforces it).** Rerun a check only where the tree
+  changed in what that check verifies. The commit guard still requires a green record of the exact tree; where a
+  rerun would be purely ceremonial, the owner decides (on 2026-11-15, three commits with `--no-verify`).
 - **Background waits (owner decision 2026-11-07; `pgrep -f` refused by tools/claude_hooks/bash_guard.py).** Never wait with `pgrep -f "<pattern>"` (it matches
   the waiting shell itself, so the wait never ends) or for a marker in the log of a run that may be
   killed. Wait on a pid or poll `tools/check_all_bg.sh --status`, always with a timeout, one wait per task.

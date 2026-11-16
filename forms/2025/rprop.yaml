@@ -1,0 +1,235 @@
+form:
+  id: rprop
+  kind: form
+  title: Form 4562 — one building or improvement of a rental property
+  tax_year: 2025
+  note: 'One entry per building, or improvement to one, of a rental property; depreciated by Table A-6 (residential rental
+    property, 27.5 years) or Table A-7a (nonresidential real property, 39 years), mid-month convention, straight line. Refused:
+    personal property and land improvements, ADS and other methods, basis changes, dispositions, qualified improvement property, basis reduced by a credit or
+    deduction, cooperative stock, and nonresidential
+    real property placed in service before 1994.'
+  lines:
+  - id: rprop.zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i4562
+      locator: p. 12, Column (g)—Depreciation deduction
+  - id: rprop.kind
+    printed: (a)
+    label: Kind of property
+    type: Enum(rprop_kind)
+    expr:
+      op: input
+      source: 'What is this?
+
+
+        - residential: a building (or an improvement to one) whose rent comes mostly (80% or more) from homes
+
+        - nonresidential: any other building, such as shops or offices, or an improvement to one
+
+        - personal: something other than a building or part of one, such as an appliance, carpet, furniture, a fence or a
+        driveway'
+    cite:
+      doc: i4562
+      locator: p. 10, Residential rental property
+  - id: rprop.month
+    printed: (b)
+    label: Month placed in service
+    type: Enum(month)
+    expr:
+      op: input
+      source: The month it was first ready and available for rent (placed in service) by you
+    cite:
+      doc: p946
+      locator: p. 73, Table A-6, "Month property placed in service"
+  - id: rprop.year
+    printed: (b)
+    label: Year placed in service
+    type: Enum(realty_year)
+    expr:
+      op: input
+      source: The year it was first ready and available for rent (placed in service) by you; before1987 if earlier than 1987
+    cite:
+      doc: p946
+      locator: p. 37, Using the MACRS Percentage Tables
+  - id: rprop.basis
+    printed: (c)
+    label: Basis for depreciation
+    type: NonNegDollars
+    expr:
+      op: input
+      source: 'Its basis for depreciation: what you paid for the building or improvement, not the land (for a home you lived
+        in before renting it, the smaller of its value and your adjusted basis when you began renting it); your share'
+    cite:
+      doc: i1040se
+      locator: p. 6, Line 18
+  - id: rprop.screen
+    printed: (helper)
+    label: Depreciation of this property outside the tables this tool uses
+    type: Bool
+    expr:
+      op: input
+      source: 'Does any of these apply to it?
+
+
+        - you depreciate it over a longer period (the alternative depreciation system), or chose to
+
+        - its basis changed after you began depreciating it, other than by depreciation (for example, a casualty loss)
+
+        - you sold, gave away or stopped renting it in 2025
+
+        - it is stock in a cooperative housing corporation
+
+        - you deducted any of its cost in one year (a special allowance or section 179) or depreciate it another way
+
+        - it is an improvement to the inside of a nonresidential building, made after the building was first placed in service
+        and placed in service in 2018 or later (not an enlargement, an elevator or escalator, or the internal structural framework)
+
+        - you took a credit or deduction for part of its cost (for example the disabled access credit or the deduction for
+        removing barriers)'
+    cite:
+      doc: i4562
+      locator: p. 11, Column (f)—Method
+  - id: rprop.personal
+    printed: (gate)
+    label: Personal property or a land improvement in a rental
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - rprop.kind
+      - const: personal
+    cite:
+      doc: i4562
+      locator: p. 9, Lines 19a Through 19j
+  - id: rprop.early_nonres
+    printed: (gate)
+    label: Nonresidential real property placed in service before 1994 (31.5-year)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - rprop.kind
+        - const: nonresidential
+      - op: test
+        gt:
+        - rprop.recovery_year
+        - const: 32
+          type: Count
+    cite:
+      doc: p946
+      locator: p. 74, Table A-7, "Straight Line—31.5 Years"
+  - id: rprop.recovery_year
+    printed: (helper)
+    label: Year of recovery in 2025
+    type: Count
+    expr:
+      op: keyed_lookup
+      table: realty_recovery_year
+      keys:
+      - rprop.year
+    cite:
+      doc: p946
+      locator: p. 37, Using the MACRS Percentage Tables
+  - id: rprop.rate
+    printed: (helper)
+    label: Rate from Table A-6 or A-7a for the month placed in service and the year of recovery
+    type: Rate
+    expr:
+      op: keyed_lookup
+      table: macrs_mm
+      keys:
+      - rprop.kind
+      - rprop.month
+      - rprop.recovery_year
+    cite:
+      doc: p946
+      locator: p. 73, Table A-6, "Month property placed in service"
+  - id: rprop.dep
+    printed: (g)
+    label: Depreciation deduction
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: rprop.basis
+      rate: rprop.rate
+    cite:
+      doc: i4562
+      locator: p. 12, Column (g)—Depreciation deduction
+    ambiguity: amb.2025.rental_prior_depreciation_tables
+    refuses:
+    - when: rprop.personal
+      form: Form 4562 (personal property or land improvements in a rental)
+      remedy: Appliances, carpet, furniture, fences and other property that is not a building are outside this tool.
+      cite:
+        doc: i4562
+        locator: p. 9, Lines 19a Through 19j
+    - when: rprop.screen
+      form: Form 4562 (real property outside the mid-month tables)
+      remedy: Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property
+        with a credit or deduction for part of its cost, or cooperative stock is outside this tool.
+      cite:
+        doc: i4562
+        locator: p. 11, Column (f)—Method
+    - when: rprop.early_nonres
+      form: Form 4562 (nonresidential real property placed in service before 1994)
+      remedy: Nonresidential real property placed in service before 1994 is outside this tool.
+      cite:
+        doc: p946
+        locator: p. 74, Table A-7, "Straight Line—31.5 Years"
+  - id: rprop.placed_this_year
+    printed: (gate)
+    label: Placed in service in 2025
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - rprop.year
+      - const: y2025
+    cite:
+      doc: i4562
+      locator: p. 9, Line 17
+  - id: rprop.cent
+    printed: (helper)
+    label: One cent (a count carried as cents)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: rental.day_cents
+    cite:
+      doc: i4562
+      locator: p. 9, Line 17
+  - id: rprop.placed_this_year_cent
+    printed: (helper)
+    label: One cent if placed in service in 2025, zero otherwise
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rprop.placed_this_year
+          - const: true
+        then: rprop.cent
+      - guard:
+          op: test
+          eq:
+          - rprop.placed_this_year
+          - const: false
+        then: rprop.zero
+    cite:
+      doc: i4562
+      locator: p. 9, Line 17
+  collection:
+    parent: rental
+    cite:
+      doc: p946
+      locator: p. 3, Additions and Improvements

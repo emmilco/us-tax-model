@@ -1,3 +1,6 @@
+> **Historical (2026-11-15):** the branch is on `main` (`bdac4121`). Kept as the record of the integration; for the
+> current New York layout, tools and year handling see `PROJECT_INDEX.md` and `tools/README.md`, "New York years".
+
 # New York: integration notes for the owner's machine (Phase 4)
 
 Written at the end of Phase 3 (`docs/ny/2026-11-04_ny_cloud_brief.md`, steps 1 to 8) on branch `ny/2025-foundation`.

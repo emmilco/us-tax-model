@@ -1,0 +1,166 @@
+diff --git a/forms/ny/2025/ny_it201.yaml b/forms/ny/2025/ny_it201.yaml
+index 753f976..85be87a 100644
+--- a/forms/ny/2025/ny_it201.yaml
++++ b/forms/ny/2025/ny_it201.yaml
+@@ -357,10 +357,10 @@ form:
+       cite: { doc: ny_it201i, locator: 'p. 23, Line 81, "In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax based on a 12-month return."' }
+     - id: ny_it201.ask.est_late
+       printed: '(question)'
+-      label: 'Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year''s required payment?'
++      label: 'Was any 2025 New York estimated tax installment skipped, paid late, or smaller than one quarter of the year''s required payment?'
+       type: Bool
+       gated_by: ny_it201.est_penalty_late
+-      expr: { op: input, source: 'Was any 2025 New York estimated tax installment paid late, or smaller than one quarter of the year''s required payment?' }
++      expr: { op: input, source: 'Was any 2025 New York estimated tax installment skipped, paid late, or smaller than one quarter of the year''s required payment?' }
+       cite: { doc: ny_it201i, locator: 'p. 23, Line 81, "if you underpaid your estimated tax liability for any payment period"' }
+     - id: ny_it201.ask.spouse_resident
+       printed: '(question)'
+@@ -651,9 +651,9 @@ form:
+           cite: { doc: ny_it201i, locator: 'p. 7, Line 20, "enter any such interest income that you received or that was credited to you during 2025 that was not included in your federal adjusted gross income"' }
+     - id: ny_it201.ask.public_job
+       printed: '(question)'
+-      label: 'A government job in New York'
++      label: 'A Form W-2 from a New York public employer'
+       type: Bool
+-      expr: { op: input, source: 'In 2025, did you (or, on a joint return, your spouse) work for the government in New York, including a public school or college or the MTA?' }
++      expr: { op: input, source: 'Did you (or, on a joint return, your spouse) get a 2025 Form W-2 from New York State, a New York local government or another New York public employer?' }
+       cite: { doc: ny_it201i, locator: 'p. 8, Line 21, "Are you a public employee of New York State or its local governments?"' }
+       gated_by: ny_it201.public_job_if_w2
+     - id: ny_it201.public_job_if_w2
+@@ -746,13 +746,13 @@ form:
+       cite: { doc: ny_it201, locator: 'p. 2, New York additions, "Add lines 19 through 23"' }
+     - id: ny_it201.has_other_income
+       printed: '(helper)'
+-      label: 'Other income on federal Schedule 1 (line 9 is not zero)'
++      label: 'A state tax refund or other income on federal Schedule 1 (line 1 more than zero, or line 9 not zero)'
+       type: Bool
+-      expr: { op: test, ne: ["s1.line9", { const: 0 }] }
++      expr: { op: test, any: [{ op: test, gt: ["s1.line1", { const: 0 }] }, { op: test, ne: ["s1.line9", { const: 0 }] }] }
+       cite: { doc: ny_it201i, locator: 'p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25."' }
+     - id: ny_it201.inflation_if_other_income
+       printed: '(gate)'
+-      label: 'An inflation refund check in federal income (asked only with other income on Schedule 1; otherwise no)'
++      label: 'An inflation refund check in federal income (asked only with a state tax refund or other income on Schedule 1; otherwise no)'
+       type: Bool
+       expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.has_other_income", { const: true }] }, then: "ny_it201.ask.inflation_check" }, { guard: { op: test, eq: ["ny_it201.has_other_income", { const: false }] }, then: "ny_it201.no" }] }
+       cite: { doc: ny_it201i, locator: 'p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25."' }
+@@ -2407,7 +2407,7 @@ form:
+       printed: '(question)'
+       label: 'Paid New York income tax for 2025 in advance, or had a 2024 refund applied'
+       type: Bool
+-      expr: { op: input, source: 'Apart from tax taken out of your pay, did you (or, on a joint return, your spouse) pay New York income tax for 2025 ahead of time, or have a 2024 New York refund applied to it?' }
++      expr: { op: input, source: 'Apart from tax taken out of your pay, did you (or, on a joint return, your spouse) pay New York income tax for 2025 ahead of time, have a 2024 New York refund applied to it, or have estimated tax passed to you by an estate or trust?' }
+       cite: { doc: ny_it201i, locator: 'p. 22, Line 75: Total estimated tax payments and amount paid with Form IT-370, "your 2025 estimated tax payments for New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax"' }
+     - id: ny_it201.line75_amount
+       printed: '(question)'
+diff --git a/interview/ny/2025/questions.yaml b/interview/ny/2025/questions.yaml
+index 0009e3e..090621e 100644
+--- a/interview/ny/2025/questions.yaml
++++ b/interview/ny/2025/questions.yaml
+@@ -12,7 +12,7 @@ bank:
+   - id: ny_where
+     heading: Did any of these apply to you (or, on a joint return, your spouse)?
+   - id: ny_interest
+-    heading: Did any of your interest or dividends come from these?
++    heading: Did any of your (or, on a joint return, your spouse's) interest or dividends come from these?
+   - id: ny_filing
+     heading: Do any of these apply to you (or, on a joint return, your spouse)?
+   questions:
+@@ -65,8 +65,8 @@ bank:
+   - input: ny_it201.ask.special_accrual
+     order: 1000
+     seq: 50
+-    prompt: Was any of your (or, on a joint return, your spouse's) income earned in one year but paid in the other, such as a
+-      bonus earned in 2025 and paid in 2026?
++    prompt: Did you (or, on a joint return, your spouse) have income fixed in one year but reported federally in another, such
++      as a 2025 bonus paid in 2026, or deferred pay or an installment-sale gain from before 2025 reported for 2025?
+     help: With a move at the turn of the year, such income falls under New York's special accrual rules, which this tool
+       does not apply. A Yes ends the New York part here.
+   - input: ny_it201.ask.decedent
+@@ -86,8 +86,8 @@ bank:
+   - input: ny_it201.ask.public_job
+     order: 1010
+     seq: 10
+-    help: Count the State, a city, county, town or village, a school district, SUNY or CUNY, and public authorities such as
+-      the MTA. A federal job does not count here.
++    help: Count the State, a city, county, town or village, a school district, SUNY or CUNY, and public bodies such as the
++      MTA, a public hospital or library, or a fire district. A federal job does not count here.
+   - input: ny_it201.ask.414h
+     order: 1010
+     seq: 11
+@@ -101,9 +101,9 @@ bank:
+     order: 1010
+     seq: 20
+     group: ny_interest
+-    tick: U.S. Treasury or savings bonds, or a fund holding them
+-    prompt: Was any of your interest or dividends from U.S. Treasury bills, notes or bonds, U.S. savings bonds, or a fund that
+-      holds them?
++    tick: U.S. government bonds, notes or bills, or a fund holding them
++    prompt: Was any of your (or, on a joint return, your spouse's) interest or dividends from U.S. government obligations, such
++      as Treasury bills, notes or bonds, savings bonds, bonds of a U.S. government agency, or a fund that holds them?
+     help: Such interest is often in box 3 of a Form 1099-INT. New York does not tax it, but this tool does not compute the
+       subtraction, so a Yes ends the New York part here rather than overstate your tax.
+   - input: ny_it201.ask.bab
+@@ -161,7 +161,8 @@ bank:
+   - input: ny_it201.ask.inflation_check
+     order: 1010
+     seq: 50
+-    prompt: Was any of the other income you reported on your federal return a New York State inflation refund check?
++    prompt: Did you (or, on a joint return, your spouse) include a New York State inflation refund check in your federal
++      income, as a state tax refund or as other income?
+     help: New York mailed inflation refund checks in the fall of 2025. Whether New York subtracts them is unsettled for 2025,
+       so a Yes ends the New York part here.
+   - input: ny_it201.ask.it225
+@@ -200,10 +201,12 @@ bank:
+   - input: ny_it201.ask.real_property_credit
+     order: 1030
+     seq: 30
+-    prompt: Was your rent $450 a month or less (not counting heat, gas, electricity or meals), or is all the real estate you
+-      own worth $85,000 or less?
+-    help: New York's real property tax credit (Form IT-214) is for people with income of $18,000 or less who lived in the
+-      same New York home for six months or more and paid rent or property tax on it. This tool does not compute it.
++    prompt: In 2025, was the rent you (or, on a joint return, your spouse) paid yourselves $450 a month or less on average,
++      not counting heat, gas, electricity, furnishings or meals? Or was all the real estate either of you owned in 2025
++      worth $85,000 or less?
++    help: Leave out any part of the rent paid by a subsidy, such as Section 8. New York's real property tax credit (Form
++      IT-214) is for people with income of $18,000 or less who lived in the same New York home for six months or more and
++      paid rent or property tax on it. This tool does not compute it.
+   - input: ny_it201.ask.noncustodial
+     order: 1030
+     seq: 40
+@@ -239,9 +242,11 @@ bank:
+   - input: ny_it201.ask.owes_use_tax
+     order: 1040
+     seq: 10
+-    prompt: In 2025, did you buy anything taxable in New York without paying New York sales tax on it (for example online, by
+-      mail, or in another state)? Leave out a vehicle or boat whose tax you pay at the DMV.
+-    help: Count a purchase taxed at a lower rate than New York City's, too. Leave out purchases of a business registered
++    prompt: In 2025, did you (or, on a joint return, your spouse) buy goods or services taxable in New York without paying
++      New York sales tax on them (for example online, by mail, or in another state)? Leave out a vehicle or boat whose tax
++      you pay at the DMV.
++    help: Count a purchase taxed at a lower rate than New York City's, and an untaxed purchase on an Indian reservation
++      (unless Oneida Nation tax was paid). Leave out purchases of a business registered
+       for sales tax; they go on its own return. Purchases under $1,000 each are charged from a chart by income.
+   - input: ny_it201.ask.use_tax_st141
+     order: 1040
+@@ -291,8 +296,8 @@ bank:
+   - input: ny_it201.ask.est_any
+     order: 1050
+     seq: 60
+-    help: Count estimated tax payments (the last one may be paid in January 2026), a 2024 New York refund you asked to have
+-      applied to 2025, and a payment made with a request for more time to file.
++    help: Count estimated payments of State, City or commuter (MCTMT) tax (the last one may be paid in January 2026), a 2024
++      New York refund you asked to have applied to 2025, and a payment made with a request for more time to file.
+   - input: ny_it201.line75_amount
+     order: 1050
+     seq: 70
+@@ -342,7 +347,8 @@ bank:
+   - input: ny_it201.ask.est_late
+     order: 1050
+     seq: 95
+-    prompt: Was any of your 2025 New York estimated payments made late, or smaller than a quarter of what was due for the year?
++    prompt: Was any 2025 New York estimated installment skipped, or any of your (or, on a joint return, your spouse's) 2025
++      New York estimated payments made late or smaller than a quarter of what was due for the year?
+     help: A penalty can apply for any quarter in which a payment was late or short, even when the year's total was enough.
+   - input: ny_it201.ask.late_penalty
+     order: 1050

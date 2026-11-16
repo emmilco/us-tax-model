@@ -1,0 +1,28 @@
+changes:
+  tax_year: 2026
+  form: f8960
+  entries:
+  - change: C-X1-F8960-01
+    evidence:
+    - doc: i8960
+      page: 2
+      quote: Income from transactions involving digital assets may be subject to the tax imposed on net investment income
+        (NII) under section 1411(a)
+    - doc: i8960
+      page: 2
+      quote: Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is greater than the applicable
+        threshold amount.
+    verified: draft
+    note: The Digital assets reminder reads "Income from" for "Income derived from" and moves to page 2; the reading of amb.2025.digital_8v_nii
+      is unchanged. Citation only. The refusal on f8960.line7 cites "p. 1, Reminders, Digital assets" without a quote; its
+      page is left to the adoption citation review.
+    operations:
+    - set:
+        line: f8960.digital_nii
+        field: cite.locator
+        from: p. 1, Reminders, Digital assets, "Income derived from transactions involving digital assets may be subject to
+          the tax imposed on net investment income (NII) under section 1411(a)"; p. 1, Who Must File, "Attach Form 8960 to
+          your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount"
+        to: p. 2, Reminders, Digital assets, "Income from transactions involving digital assets may be subject to the tax
+          imposed on net investment income (NII) under section 1411(a)"; p. 2, Who Must File, "Attach Form 8960 to your return
+          if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount"

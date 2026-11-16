@@ -91,6 +91,17 @@
   {
    "printed": "1a",
    "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The restatement adds every W-2 box 1 amount with no exclusion. The instructions carve some box 1 amounts out of line 1a, and no refusal names them: 'If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a' and '...nonqualified deferred compensation plan or a nongovernmental section 457 plan and it was reported in box 1 of Form W-2, do not include this amount on Form 1040, line 1a.'",
+   "ruling": "Ruling: finding; medium; the model is right that line 1a adds every W-2 box 1 amount with no carve-out for wages earned while an inmate. i1040gi p. 23, Line 1a: \"If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a.\" Earlier rounds ruled this scope because s1.line8_other refused 8u; lane x2-s1o removed s1.inmate_wages from that refusal and computes line 8u, so nothing now keeps inmate pay shown on a W-2 off line 1a (double count with 8u, or EIC earned income that p596 excludes). The nonqualified deferred compensation / section 457 pension part of the model's reason stays refused (s1.line8_other still names 8t). (BUG-0766)",
+   "context": "fed1c36312d5d05efa8a6eedf639fab17665df03e54b7ecf55de8e79326f665d",
+   "date": "2026-11-15",
+   "run": "bd2dc12ba1657229ff8314b1c8d8ca6024506244df8387fa0f78974eb3dfbfb8",
+   "severity": "medium",
+   "subject_key": "73b9736256e2d45df56e32e924e800e1ce081da048a8c14dfdc2a58203223c42"
+  },
+  {
+   "printed": "1a",
+   "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The restatement adds every W-2 box 1 amount with no exclusion. The instructions remove two kinds: 'If you earned wages while you were an inmate in a penal institution... Do not report these wages on line 1a' and pension from a nonqualified deferred compensation or nongovernmental 457 plan reported in box 1, which 'is reported on Schedule 1, line 8t.' No refusal covers either case.",
    "ruling": "Ruling: scope; the model says line 1a keeps two kinds of box 1 wages off the line (i1040gi pp. 23-24). Wages earned while an inmate (Schedule 1 line 8u) and a pension from a nonqualified deferred compensation or nongovernmental section 457 plan (line 8t) are both named in the s1.line8_other screen, which refuses Schedule 1, so line 1a never completes for those filers. Same reading as the earlier rounds.",
    "context": "8bf19ad64c3e9ee47144145905f7b9345b7aef724523c2f16e45741f7abae33e",
@@ -111,6 +122,26 @@
    "ruling": "Ruling: scope — i1040gi pp. 23–24 route incarcerated wages to Schedule 1 line 8u and the specified nonqualified/nongovernmental 457 pensions to line 8t; s1.line8_other explicitly asks both categories and refuses them on Schedule 1. Married filing separately is refused for the whole return by s3.mfs in scope.ready (i1040gi p. 14), so a married filer filing separately in a community property state cannot complete a return. The model missed the return-level s3.mfs and Schedule 1 scope screens.",
    "context": "b5bc205f3ae7c7fde984fa4077f0924f6a96bf0732176bbf952c0927fd035a07",
    "subject_key": "42ace0746b55b97b9289c6479c82f7120e3f428a070ba3bfee3d71f4b7fbdcce"
+  },
+  {
+   "printed": "1h",
+   "restated": "Add person.line1h over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Only strike benefits and pre-minimum-retirement-age disability pensions are included. The instructions also require 'Excess elective deferrals... include the excess on line 1h', and no refusal names this exclusion.",
+   "ruling": "Ruling: scope; the model says line 1h omits excess elective deferrals (i1040gi p. 24, Line 1h). A filer whose elective deferrals exceeded the limit answers scope.excess_deferral (asked when a W-2 is listed, scope.excess_deferral_if_w2), which is a disjunct of scope.other_income, and f1040 refuses on scope.other_income (\"Form 1040 additional income/return forms\"), so line 1h never completes with an excess deferral. Within scope the line's strike benefits and disability pensions before minimum retirement age are the listed items.",
+   "context": "fed1c36312d5d05efa8a6eedf639fab17665df03e54b7ecf55de8e79326f665d",
+   "date": "2026-11-15",
+   "run": "bd2dc12ba1657229ff8314b1c8d8ca6024506244df8387fa0f78974eb3dfbfb8",
+   "subject_key": "be719df4ffd3947c6acabd71f5ed3d140c2f54e0a9cd136c7758cd8f9dcc4377"
+  },
+  {
+   "printed": "1z",
+   "restated": "Add line 1a, line 1b, line 1c, line 1d, line 1e, line 1g, and line 1h.",
+   "model": "The restatement adds 1a, 1b, 1c, 1d, 1e, 1g and 1h but leaves out line 1f (employer-provided adoption benefits from Form 8839, line 31). The form says 'Add lines 1a through 1h', and no refusal names line 1f.",
+   "ruling": "Ruling: scope; the model says line 1z leaves out line 1f. Line 1f (employer-provided adoption benefits, Form 8839 line 31) is refused: scope.adoption_benefits (\"Did an employer pay or repay any of the adoption costs ... Box 12 of a W-2 shows it with the code T\", asked when there was an adoption, scope.adoption_benefits_if_adoption) is a disjunct of scope.other_income, which f1040 refuses on. Line 1f is therefore zero on every computed return and the sum of 1a-1e, 1g and 1h equals \"Add lines 1a through 1h\" (the line's cite says so: \"line 1f, employer-provided adoption benefits, is refused by scope.adoption_benefits\").",
+   "context": "fed1c36312d5d05efa8a6eedf639fab17665df03e54b7ecf55de8e79326f665d",
+   "date": "2026-11-15",
+   "run": "bd2dc12ba1657229ff8314b1c8d8ca6024506244df8387fa0f78974eb3dfbfb8",
+   "subject_key": "b1b99cfef838092078ff2ce177905a30190031c4ad6fece81c5bcc2e1c31600d"
   },
   {
    "printed": "27a",

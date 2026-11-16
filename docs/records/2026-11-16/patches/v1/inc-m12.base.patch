@@ -1,0 +1,392 @@
+diff --git a/forms/2025/person.yaml b/forms/2025/person.yaml
+index 7ab75ac..e56802c 100644
+--- a/forms/2025/person.yaml
++++ b/forms/2025/person.yaml
+@@ -1478,7 +1478,8 @@ form:
+       label: Strike or lockout benefits you received (other than bona fide gifts)
+       expr:
+         op: input
+-        source: How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
++        source: How much did you get in 2025 in strike or lockout benefits? Leave out true gifts and state unemployment pay.
++          Zero if none.
+       cite:
+         doc: i1040gi
+         locator: 'p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout
+diff --git a/forms/2025/s1.yaml b/forms/2025/s1.yaml
+index af0e974..3b24e83 100644
+--- a/forms/2025/s1.yaml
++++ b/forms/2025/s1.yaml
+@@ -559,16 +559,18 @@ form:
+     printed: (helper)
+     type: Bool
+     gated_by: s1.digital_income_if_assets
+-    label: "Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income that is not wages, business income or a capital gain, such as from staking, from mining not as a business or from a hard fork?"
++    label: "Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income that is not wages, business income or a capital gain, such as from staking, from mining not as a business, from a hard fork or from an airdrop?"
+     expr:
+       op: input
+-      source: "Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income that is not wages, business income or a capital gain, such as from staking, from mining not as a business or from a hard fork?"
++      source: "Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income that is not wages, business income or a capital gain, such as from staking, from mining not as a business, from a hard fork or from an airdrop?"
+     cite:
+       doc: i1040gi
+       locator: 'p. 92, Line 8v, "If, in 2025, you received ordinary income in connection with digital assets that isn’t
+         reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining,
+         which aren’t wages reported on line 1a or capital gain or loss reported on Form 8949 and Schedule D), report this
+-        income on line 8v."'
++        income on line 8v."; rr-2019-24, Holding (2), "A taxpayer has gross income, ordinary in character, under § 61 as a
++        result of an airdrop of a new cryptocurrency following a hard fork if the taxpayer receives units of new
++        cryptocurrency"'
+   - id: s1.digital_income_if_assets
+     printed: (gate)
+     type: Bool
+diff --git a/forms/2025/scope.yaml b/forms/2025/scope.yaml
+index f08d0e7..6fcf60a 100644
+--- a/forms/2025/scope.yaml
++++ b/forms/2025/scope.yaml
+@@ -453,10 +453,10 @@ form:
+     - id: scope.pay_no_w2
+       printed: (helper)
+       type: Bool
+-      label: "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?"
++      label: "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?"
+       expr:
+         op: input
+-        source: "In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?"
++        source: "In 2025, did you (or, on a joint return, your spouse) have wages, tips, or strike or lockout benefits that are not on a W-2?"
+       cite:
+         doc: f1040
+         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+@@ -563,10 +563,10 @@ form:
+       printed: (helper)
+       type: Bool
+       gated_by: scope.strike_pay_if_pay
+-      label: "In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits from a union, other than bona fide gifts?"
++      label: "In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits, other than bona fide gifts?"
+       expr:
+         op: input
+-        source: "In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits from a union, other than bona fide gifts?"
++        source: "In 2025, did you (or, on a joint return, your spouse) get strike or lockout benefits, other than bona fide gifts?"
+       cite:
+         doc: i1040gi
+         locator: 'p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)"'
+@@ -628,10 +628,10 @@ form:
+     - id: scope.medicaid_waiver
+       printed: (helper)
+       type: Bool
+-      label: "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?"
++      label: "In 2025, were you (or, on a joint return, your spouse) paid under Medicaid, directly or through an agency or care plan, to care for someone who lived in your home with you?"
+       expr:
+         op: input
+-        source: "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?"
++        source: "In 2025, were you (or, on a joint return, your spouse) paid under Medicaid, directly or through an agency or care plan, to care for someone who lived in your home with you?"
+       cite:
+         doc: f1040
+         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+@@ -985,10 +985,10 @@ form:
+     - id: scope.foreign_shares
+       printed: (helper)
+       type: Bool
+-      label: "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?"
++      label: "In 2025, did you (or, on a joint return, your spouse) own shares, or options or warrants to buy them, of a company or a fund set up outside the United States, other than through a fund set up in the United States?"
+       expr:
+         op: input
+-        source: "In 2025, did you (or, on a joint return, your spouse) own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?"
++        source: "In 2025, did you (or, on a joint return, your spouse) own shares, or options or warrants to buy them, of a company or a fund set up outside the United States, other than through a fund set up in the United States?"
+       cite:
+         doc: f1040
+         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+diff --git a/forms/2025/tipjob.yaml b/forms/2025/tipjob.yaml
+index d196aca..c6243e7 100644
+--- a/forms/2025/tipjob.yaml
++++ b/forms/2025/tipjob.yaml
+@@ -38,13 +38,13 @@ form:
+       locator: p. 104, Qualified Tips From More Than One Employer Worksheet, column (b)
+   - id: tipjob.listed
+     printed: (helper)
+-    label: Were the tips from this employer received in an occupation on the IRS list of occupations that customarily
+-      and regularly received tips on or before December 31, 2024?
++    label: Were any of the tips from this employer received in an occupation on the IRS list of occupations that
++      customarily and regularly received tips on or before December 31, 2024?
+     type: Bool
+     expr:
+       op: input
+-      source: Is the work you got these tips for on the IRS list of jobs that customarily get tips? Restaurant, bar and
+-        hotel staff, hairdressers and barbers, and taxi and delivery drivers are on it.
++      source: Did you get any of these tips for work on the IRS list of jobs that customarily get tips? Restaurant, bar
++        and hotel staff, hairdressers and barbers, and taxi and delivery drivers are on it.
+     cite:
+       doc: i1040gi
+       locator: pp. 101-103, Schedule 1-A, Qualified Tips, "Occupations that customarily and regularly received tips";
+diff --git a/interview/2025/coverage/other.yaml b/interview/2025/coverage/other.yaml
+index 9a11869..a78892a 100644
+--- a/interview/2025/coverage/other.yaml
++++ b/interview/2025/coverage/other.yaml
+@@ -191,6 +191,16 @@ rows:
+   expect:
+     proceeds:
+       s1.digital_amount: 41250
++- id: other.digital_airdrop
++  design: BUG-0896 fix (crypto received in an airdrop, line 8v)
++  situation: A person who only held crypto received new coins worth $200 in an airdrop.
++  answers:
++    f1040.digital_assets: true
++    s1.digital_income: true
++    s1.digital_amount: 20000
++  expect:
++    proceeds:
++      s1.digital_amount: 20000
+ - id: other.digital_income_niit
+   design: x1-digital, f8960.digital_nii (line 8v on a return over the net investment income tax threshold; amb.2025.digital_8v_nii)
+   situation: A person with $190,000 of wages received $20,000 of crypto from staking.
+@@ -239,6 +249,38 @@ rows:
+   expect:
+     proceeds:
+       s1.gambling_winnings: 30000
++- id: other.lottery_installment
++  design: BUG-0808 fix (winnings received in 2025 from an earlier win)
++  situation: A person got the 2025 yearly payment of $1,000 from a lottery prize won in 2022.
++  uses: [won]
++  answers:
++    s1.gambling_winnings: 100000
++    sa.gambling_losses: 0
++    s1.gambling_pro: false
++    s1.prizes: 3750000
++    s1.olympic: false
++    person[taxpayer].sav_student: false
++    person[taxpayer].sav_voluntary: 0
++    person[taxpayer].sav_able: false
++  expect:
++    proceeds:
++      s1.gambling_winnings: 100000
++- id: other.lottery_rights_sale
++  design: BUG-0808 fix (a lump sum for selling the right to future lottery payments)
++  situation: A person sold the right to the rest of a small lottery prize's yearly payments for a lump sum of $1,500.
++  uses: [won]
++  answers:
++    s1.gambling_winnings: 150000
++    sa.gambling_losses: 0
++    s1.gambling_pro: false
++    s1.prizes: 3750000
++    s1.olympic: false
++    person[taxpayer].sav_student: false
++    person[taxpayer].sav_voluntary: 0
++    person[taxpayer].sav_able: false
++  expect:
++    proceeds:
++      s1.gambling_winnings: 150000
+ - id: other.professional_gambler
+   design: s1.gambling_business (unchanged refusal, new path)
+   situation: A person gambles for a living.
+@@ -342,6 +384,15 @@ rows:
+   expect:
+     proceeds:
+       s1.hobby_income: 40000
++- id: other.hobby_at_loss
++  design: BUG-0822 fix (hobby income counted in full when the hobby cost more than it brought in)
++  situation: A person sold $600 of quilts made as a pastime, after spending $900 on fabric.
++  answers:
++    s1.hobby_any: true
++    s1.hobby_income: 60000
++  expect:
++    proceeds:
++      s1.hobby_income: 60000
+ - id: other.scholarship
+   design: s1.line8r beneath s1.scholarship_any
+   situation: A degree student's scholarship paid $3,000 toward room and board.
+diff --git a/interview/2025/coverage/pay_not_w2.yaml b/interview/2025/coverage/pay_not_w2.yaml
+index 3270c62..ce16794 100644
+--- a/interview/2025/coverage/pay_not_w2.yaml
++++ b/interview/2025/coverage/pay_not_w2.yaml
+@@ -128,6 +128,34 @@ rows:
+     expect:
+       proceeds:
+         person[taxpayer].strike: 300000
++  - id: pay.lockout_benefits
++    design: BUG-0906 fix (line 1h names lockout benefits, from any source)
++    situation: A worker locked out by the employer got $1,200 in lockout benefits from the union.
++    uses: [pay_no_w2]
++    answers:
++      scope.household_pay: false
++      scope.contractor_pay: false
++      scope.tips_unreported: false
++      scope.wages_no_form: false
++      scope.strike_pay: true
++      person[taxpayer].strike: 120000
++    expect:
++      proceeds:
++        person[taxpayer].strike: 120000
++  - id: pay.strike_fund_nonunion
++    design: BUG-0906 fix (strike benefits from a fund that is not a union)
++    situation: A worker with no union got $800 from a strike fund raised by a community group during a strike.
++    uses: [pay_no_w2]
++    answers:
++      scope.household_pay: false
++      scope.contractor_pay: false
++      scope.tips_unreported: false
++      scope.wages_no_form: false
++      scope.strike_pay: true
++      person[taxpayer].strike: 80000
++    expect:
++      proceeds:
++        person[taxpayer].strike: 80000
+   - id: pay.wages_no_form
+     design: scout-tail A.1, residual refusal (wages from an employer with no W-2)
+     situation: An employer never sent the W-2 for a job the person left in March.
+@@ -152,6 +180,18 @@ rows:
+     expect:
+       proceeds:
+         person[taxpayer].mw_earned: true
++  - id: pay.medicaid_agency_code_ii
++    design: BUG-0904 fix (Medicaid waiver pay through an agency, line 1d and Schedule 1 line 8s)
++    situation: A home-care agency paid a woman $24,000 under Medicaid to care for her mother, who lives with her, shown only in box 12 of the agency's W-2 with code II.
++    uses: [medicaid]
++    answers:
++      person[taxpayer].mw_box1: 0
++      person[taxpayer].mw_not_box1: 2400000
++      person[taxpayer].mw_1099: 0
++      person[taxpayer].mw_earned: false
++    expect:
++      proceeds:
++        person[taxpayer].mw_not_box1: 2400000
+   - id: pay.medicaid_business
+     design: scout-tail A.1, residual refusal (Medicaid waiver payments in a home-care business, Schedule C)
+     situation: A person who runs a home-care business got Medicaid pay for a client living with her, on a Form 1099-NEC.
+diff --git a/interview/2025/coverage/scope.yaml b/interview/2025/coverage/scope.yaml
+index 8b23f7b..57f846b 100644
+--- a/interview/2025/coverage/scope.yaml
++++ b/interview/2025/coverage/scope.yaml
+@@ -552,6 +552,14 @@ rows:
+     "scope.pfic": false
+   expect:
+     refused: scope.other_line16
++- id: scope.foreign_warrants
++  design: "BUG-0905 fix (options or warrants on shares of a company set up abroad)"
++  situation: "A person holds warrants to buy shares of a company set up in the Cayman Islands to buy another company."
++  answers:
++    "scope.foreign_shares": true
++    "scope.pfic": true
++  expect:
++    refused: scope.other_line16
+ - id: scope.foreign_shares_plain
+   design: "MAP 2.3 item 5 (the plain parent does not refuse)"
+   situation: "A person owns shares of a large foreign car maker: two more questions, and the return is prepared."
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 681ceac..cfb3aa3 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -1846,14 +1846,14 @@ bank:
+     order: 146
+     seq: 1
+     group: "other_pay"
+-    tick: "Wages, tips or strike benefits that are not on a W-2"
+-    help: "Such as pay for work in someone's home, tips not reported in full to your employer, or pay from a firm that wrongly treated you as a contractor. A Yes asks which."
++    tick: "Wages, tips, or strike or lockout pay not on a W-2"
++    help: "Such as pay for work in someone's home, tips not reported in full to your employer, tips given as tickets or goods, or pay from a firm that wrongly treated you as a contractor. A Yes asks which."
+   - input: scope.medicaid_waiver
+     order: 146
+     seq: 2
+     group: "other_pay"
+-    tick: "Medicaid pay for caring for someone who lives in your home"
+-    help: "These are Medicaid waiver payments, also called difficulty of care payments. Medicaid pay for care in the other person's own home, if no W-2 shows it, is pay for work in someone's home with no W-2."
++    tick: "Medicaid pay, through any agency, for care of someone living with you"
++    help: "Also called difficulty of care payments, often paid through an agency or care plan. A W-2 with code II in box 12 shows them. Care in the other person's own home, with no W-2, is pay for work in someone's home."
+   - input: scope.household_pay
+     order: 146
+     seq: 20
+@@ -1876,7 +1876,8 @@ bank:
+     order: 146
+     seq: 23
+     group: "pay_kinds"
+-    tick: "Strike or lockout pay from a union"
++    tick: "Strike or lockout pay"
++    help: "Count it from a union or a strike fund, but not true gifts. State unemployment pay is not this; it is asked with Form 1099-G."
+   - input: scope.wages_no_form
+     order: 146
+     seq: 24
+@@ -2040,8 +2041,8 @@ bank:
+     order: 285
+     seq: 6
+     group: outside_us
+-    tick: Shares of a foreign company or fund, held outside a U.S. fund
+-    help: "Count shares held for you by a partnership, a trust or another company you own."
++    tick: Shares, options or warrants of a company or fund set up abroad
++    help: "Count stock or ADRs of a company set up abroad even if bought in the U.S., a fund set up abroad, and shares held for you by a partnership, trust, estate, foreign pension or insurance policy."
+   - input: scope.pfic
+     order: 285
+     seq: 12
+@@ -3812,8 +3813,8 @@ bank:
+   - input: s1.gambling_winnings
+     order: 160
+     seq: 13
+-    help: 'Add box 1 of each Form W-2G to winnings with no form: lotteries, raffles, sports bets, fantasy sports, and the
+-      value of prizes such as a car. Give 0 if none of it was gambling. Losses are asked with deductions.'
++    help: 'Add box 1 of each Form W-2G to winnings with no form: lotteries (including a yearly installment or a sale of
++      future payments), raffles, sports bets, fantasy sports, and prizes such as a car. Give 0 if none was gambling.'
+     prompt: How much did you (or, on a joint return, your spouse) win from gambling in 2025, before subtracting any losses?
+   - input: s1.gambling_pro
+     order: 160
+@@ -3875,13 +3876,15 @@ bank:
+     order: 160
+     seq: 6
+     group: "money_a"
+-    tick: "Money from a hobby or pastime not run as a business"
+-    prompt: In 2025, did you (or, on a joint return, your spouse) make money from a hobby or pastime that is not run as
+-      a business?
++    tick: "Money or goods from a hobby or pastime, even at a loss"
++    help: Selling things you owned for your own use, such as a collection or old gear, is not this; it is asked with
++      sales.
++    prompt: In 2025, did you (or, on a joint return, your spouse) get money or goods from a hobby or pastime not run as
++      a business, even at a loss?
+   - input: s1.hobby_income
+     order: 160
+     seq: 21
+-    help: Give the money received; the costs of a hobby are not subtracted.
++    help: Give everything it brought in, with goods at what they were worth. The costs of a hobby are not subtracted.
+     prompt: How much did it bring in during 2025?
+   - input: s1.ltc_payout
+     order: 161
+@@ -3895,16 +3898,16 @@ bank:
+     order: 159
+     seq: 1
+     help: Buying crypto with dollars and holding it, or moving it between your own wallets, is a No. Being paid in crypto,
+-      swapping one coin for another, or paying for something with it is a Yes.
++      getting staking rewards or new coins from a fork or airdrop, swapping, or spending it is a Yes.
+     prompt: In 2025, did you (or, on a joint return, your spouse) receive, sell, trade, spend or give away crypto or another
+       digital asset?
+   - input: s1.digital_income
+     order: 159
+     seq: 2
+     help: Selling or trading crypto is asked with your sales. Crypto paid as wages is on your W-2, and crypto received in a
+-      business goes with that business.
++      business goes with that business. A gift of crypto from a person is not counted.
+     prompt: Did you (or, on a joint return, your spouse) receive any crypto from staking, from mining that is not a
+-      business, or when a coin split in two (a fork)?
++      business, from a fork (a coin split in two), or from an airdrop?
+   - input: s1.digital_amount
+     order: 159
+     seq: 3
+@@ -4267,9 +4270,11 @@ bank:
+     seq: 2
+     group: "money_a"
+     tick: "Gambling or lottery winnings, or a prize or award"
+-    help: Count small winnings, winnings with no tax form, and prizes in goods. A scholarship is asked next.
+-    prompt: 'In 2025, did you (or, on a joint return, your spouse) win money or a prize: from gambling, a lottery, a raffle,
+-      a contest or an award?'
++    help: Count winnings paid to you in 2025 even if won earlier, such as a yearly lottery installment or money for
++      selling future lottery payments; winnings in a year you lost more; and prizes in goods. A scholarship is asked
++      next.
++    prompt: In 2025, did you (or, on a joint return, your spouse) receive gambling or lottery winnings, or a prize or
++      award?
+   - input: person.educator_expenses
+     order: 140
+     seq: 3
+@@ -4670,8 +4675,8 @@ bank:
+   - input: tipjob.listed
+     order: 151
+     seq: 2
+-    help: The whole list is at IRS.gov/TippedOccupations. If the work is not on it, tips from this employer cannot
+-      be deducted and nothing more is asked about them.
++    help: The whole list is at IRS.gov/TippedOccupations. If none of the work you got tips for here is on it, tips from
++      this employer cannot be deducted and nothing more is asked about them.
+   - input: tipjob.other_work
+     order: 151
+     seq: 3

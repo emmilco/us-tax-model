@@ -1,0 +1,733 @@
+{
+ "kind": "transcription",
+ "form": "f8582",
+ "rulings": [
+  {
+   "printed": "10",
+   "project_expr_sha256": "6d46c8b86b6fa94dfd3ab846328c32b4d053e01462744951a3ef8c1fae288358",
+   "second_expr_sha256": "34fd2b2ab1b547bac5bb9d59a90e64a224d21467dce4e2b3d5d122aaaa634841",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "b17ded4507f049c98b2306f58bcaaa0afbbfc38b8408d0a00bfb28402fc2dfed",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f1.profit@f8582",
+     "fixture:x1sche.f12.commercial_39yr@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "11",
+   "project_expr_sha256": "aa4db9459a3f2cc9f1fdb0240fcbfd28b2e4e7e8103a7d204ed9b8aeb8e4b46c",
+   "second_expr_sha256": "3a429ba4f46b6a18c152a74b6bb8af4231cc6efd927648f4c50ecd67952300a0",
+   "ruling": "Ruling: model error; the reply refuses line 11 on completed returns the project computes (through its own line 9 refusals on sche.re_pro/sche.grouped and an unasked input) and shows it under the filing exception (f8582.required); no value differs where both compute.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "5c2368b07f66b91ea419053fa5e4b3990cd46667df067449329df0adb02e3f96",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8582",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8582",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8582",
+     "fixture:stage14.asset.refuse_class@f8582",
+     "fixture:stage14.asset.refuse_listed_low@f8582",
+     "fixture:stage14.asset.refuse_s179_over@f8582",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8582",
+     "fixture:classm.asset.2@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f1.profit@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582",
+     "fixture:x1sche.f12.commercial_39yr@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582",
+     "fixture:x1sche.f16.home_test_edges@f8582",
+     "generated:20261026.69@f8582",
+     "generated:20261026.137@f8582",
+     "generated:20261026.147@f8582",
+     "generated:20261026.155@f8582",
+     "generated:20261026.281@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1a",
+   "project_expr_sha256": "afdf8b4aef18530059d65e580fffdcccdf7dda92018a7decf5d77bdc3ac61045",
+   "second_expr_sha256": "2d06de58154885af5567fe47c92b12b5527facee055edc18ce2909df99ea9ff8",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "8807f1fc593a226edb1d761e155f548fc8b6234d2e5605fbaae9777e84f3e33a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f1.profit@f8582",
+     "fixture:x1sche.f12.commercial_39yr@f8582",
+     "fixture:x1sche.f16.home_test_edges@f8582",
+     "fixture:x1sche.f17.home_tenth_edge@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1b",
+   "project_expr_sha256": "b45842573bef9fbbc1ac11632b65339e1af4aa9424c0abf84882dbd36ca0cf06",
+   "second_expr_sha256": "0b5e0f6f1063cfbfbdee742db75b5edec15421ee6882334bc8156f45a0eee4b2",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "e86c81c5eff8a75a2d762edbab65df1fb0ecfa67b5aa2f1038c692e47072158e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582",
+     "fixture:x1sche.r6.not_at_risk@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1c",
+   "project_expr_sha256": "f1950721169d21e0bd501740f03fd3a0a6e76f77cd26f98d2621b863f9d4cf6b",
+   "second_expr_sha256": "10bc0afe50f80dd0920dc80c6edf9aa36050a0bc4a4715839c12e2060f72234d",
+   "ruling": "Ruling: representation; differs only as candidate-unknown on classm.sche.2, where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed); no value differs and no shown/hidden difference.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "7bff9de49d66797822c68572bd93b2ad877e3fd4134d599e0888bccad8d17a35",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.sche.2@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1d",
+   "project_expr_sha256": "37e514f21b5dc66c277a6ec402df2c2e8f1e3b60fa23b9462d258528307039b1",
+   "second_expr_sha256": "945cc7ad241952607707e0e5ccdbdf58e4a1d10fb74e28007effe8b142677724",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "a2599ec9a0aa61aad11d04b114e2b5d25e9c1f094462cc5e806feb2c3ba6911f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f1.profit@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2a",
+   "project_expr_sha256": "816ab1c099118b02306f8f08d94c9ed6f9f8f063bc67ef4c6b02be051cf6bb59",
+   "second_expr_sha256": "e706404de3e8b83f7cf8a94af8e7a4451a7486088a236a5c20fbd66b94721b83",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "4661331066882459a268ff871781b3644eebee42bec36b40bf13afbf1ddb5bbb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2b",
+   "project_expr_sha256": "7dabea96f2479cb4fa3dcad79f584c0fa34245de2bcc46099d4e1ae5a20039b7",
+   "second_expr_sha256": "63d2250d94d705437efc844e2768d933c188283540eac77ebebdcc1858359531",
+   "ruling": "Ruling: representation; differs only as candidate-unknown on classm.sche.2, where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed); no value differs and no shown/hidden difference.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "e759db667c41d72e4ebac3d08326e51f763eb020f9d0f0c40a017e8997608057",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.sche.2@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2c",
+   "project_expr_sha256": "4e2aa23c329291cb003961e18a668287ccf0024eab9219ad52ff6e024838ebed",
+   "second_expr_sha256": "9a5f61dfa74e2a0d11548be70ee228974f2fcd3cc0d93f366f3346c37f5e7970",
+   "ruling": "Ruling: representation; differs only as candidate-unknown on classm.sche.2, where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed); no value differs and no shown/hidden difference.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "9b18f8c9d0db8674a591d6a627a64efd07e807265dbf7612d9644e4317d9e568",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.sche.2@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2d",
+   "project_expr_sha256": "71210fc99594a32ddf5c4513a8c541b27847ef808001a9330ba724b61e92f3b7",
+   "second_expr_sha256": "f236b6a955ea3a67d098b87bbc502df3e7f78494327d9c7d6ee00209af4df5da",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "75dc544fb41baee816a252f0d630b08b20b826237dfba37634130bd36a2e2e31",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
+   "project_expr_sha256": "a66863cde702e2c16657a8dc0f84170c851a3d5894ae4243877ea7b64d816f3c",
+   "second_expr_sha256": "1dee596b45adc51dbdc0281cd3a9114b4ef17b84ec2d82e1b2a5170976b6e65a",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); it also refuses on sche.re_pro/sche.grouped on the line, which the project refuses before (sche, x1sche.r5.re_pro is a refused return either way); unknowns as where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right. Line 4: MFS is refused for every return (s3.mfs), so the MFS-lived-with-spouse caution never applies.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "e2f75da8176952506df6d4747a0f363d170fe1413608378d1d72408084b6d886",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f1.profit@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582",
+     "fixture:x1sche.r5.re_pro@f8582",
+     "generated:20261026.39@f8582",
+     "generated:20261026.40@f8582",
+     "generated:20261026.325@f8582",
+     "generated:20261026.419@f8582",
+     "generated:20261026.488@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4",
+   "project_expr_sha256": "4a0fa7affab9ecc61486a3f4bacb2e8d515fbaa15aadc6b03d01b52c6cf34843",
+   "second_expr_sha256": "d5afac9896574f47307605587ee281f392e681c2c443d7384c17dee55e69a722",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); it also refuses on sche.re_pro/sche.grouped on the line, which the project refuses before (sche, x1sche.r5.re_pro is a refused return either way); unknowns as where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right. Line 4: MFS is refused for every return (s3.mfs), so the MFS-lived-with-spouse caution never applies.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "6c437820be29fe84aefae6002b6d36787b6889a94b5ef84861c471ae4f27999b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582",
+     "fixture:x1sche.r5.re_pro@f8582",
+     "fixture:x1sche.r6.not_at_risk@f8582",
+     "generated:20261026.39@f8582",
+     "generated:20261026.40@f8582",
+     "generated:20261026.325@f8582",
+     "generated:20261026.419@f8582",
+     "generated:20261026.488@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5",
+   "project_expr_sha256": "2979535ff7fb256c60f209a6215669cb107995e65878abc3aa0361e0a865f500",
+   "second_expr_sha256": "3cba09e7db8add198afbcf6810b7547fa497d0cdd46121d581325adcd7670c74",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); and it hides line 5 on x1sche.f10.part5, where the project correctly shows $150,000 (Part II applies there).",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "1cec712a8bf1b10beb0b98eeaf7b3274f38ec97d2dd917d8809d3736b6202d93",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582",
+     "fixture:x1sche.f10.part5@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582",
+     "fixture:x1sche.r5.re_pro@f8582",
+     "fixture:x1sche.r6.not_at_risk@f8582",
+     "generated:20261026.39@f8582",
+     "generated:20261026.40@f8582",
+     "generated:20261026.325@f8582",
+     "generated:20261026.419@f8582",
+     "generated:20261026.488@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6",
+   "project_expr_sha256": "918d02bd7de50bcc59911d1c28eeaa9b9c480312ce61dd767e9ae84b7419e398",
+   "second_expr_sha256": "5fb4a88a1813d431d2357d6ad2ad157200a764d3fde1b13785a6e981c46e96e9",
+   "ruling": "Ruling: model error; on x1sche.f7.royalty_magi the reply leaves the royalty (2,400) out of modified AGI (98,600 vs the project's 101,000), but i8582 p. 11, Line 6: 'Include in modified adjusted gross income any portfolio income and expenses that are clearly and directly allocable to portfolio income' (royalties are portfolio income); it also reads person.plan, unanswered on classm.f8582.2, and hides line 6 on a Part II return (x1sche.f10.part5) and shows it under the filing exception.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "71d1c154bfd0a530d115d40e2d0bab5b14f2af0aca8a75d5810103ebadbd7915",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582",
+     "fixture:x1sche.f10.part5@f8582",
+     "fixture:x1sche.f7.royalty_magi@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582",
+     "fixture:x1sche.r5.re_pro@f8582",
+     "fixture:x1sche.r6.not_at_risk@f8582",
+     "generated:20261026.39@f8582",
+     "generated:20261026.40@f8582",
+     "generated:20261026.325@f8582",
+     "generated:20261026.419@f8582",
+     "generated:20261026.488@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "9ca4aa0d4bc8bd22981154b356b59a1743d9714687c2751b3a226d194e84cba7",
+   "second_expr_sha256": "d66a64a494fa07cd90d828965ca1b23f75cd153373b3ab7d2645f094f5eb616a",
+   "ruling": "Ruling: model error; inherits line 6's exclusion of royalty income from modified AGI (x1sche.f7.royalty_magi: line 7 51,400 vs 49,000; i8582 p. 11, Line 6, 'Include ... any portfolio income'), hides the line on a Part II return and refuses where the project computes. The project-unknown witnesses are generated returns with no rental (scope.rental false), where Form 8582 is not filed and the $royalty roster is not asked: nothing on those completed returns reads the line.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "072c316d131c53f533d5dbc4a6d96cb1d79fddda782d6a3066a405c9cf55db43",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.2@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582",
+     "fixture:x1sche.f10.part5@f8582",
+     "fixture:x1sche.f7.royalty_magi@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582",
+     "fixture:x1sche.r5.re_pro@f8582",
+     "fixture:x1sche.r6.not_at_risk@f8582",
+     "generated:20261026.5@f8582",
+     "generated:20261026.6@f8582",
+     "generated:20261026.9@f8582",
+     "generated:20261026.12@f8582",
+     "generated:20261026.18@f8582",
+     "generated:20261026.19@f8582",
+     "generated:20261026.23@f8582",
+     "generated:20261026.39@f8582",
+     "generated:20261026.40@f8582",
+     "generated:20261026.42@f8582",
+     "generated:20261026.69@f8582",
+     "generated:20261026.73@f8582",
+     "generated:20261026.137@f8582",
+     "generated:20261026.147@f8582",
+     "generated:20261026.155@f8582",
+     "generated:20261026.281@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "f2b147607390d34d7ec6f0a761781123f8d3f30fa303047db381491e78071fab",
+   "second_expr_sha256": "e294887a187473eaf05c02d77e6f094a45a481abe10ac665124933e874485080",
+   "ruling": "Ruling: model error; inherits line 6's exclusion of royalty income from modified AGI (x1sche.f7.royalty_magi: line 7 51,400 vs 49,000; i8582 p. 11, Line 6, 'Include ... any portfolio income'), hides the line on a Part II return and refuses where the project computes. The project-unknown witnesses are generated returns with no rental (scope.rental false), where Form 8582 is not filed and the $royalty roster is not asked: nothing on those completed returns reads the line.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "4cdbd06775e491e20317f4ad937d465a279702b3b814848b617207ec91f32416",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.2@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582",
+     "fixture:x1sche.f10.part5@f8582",
+     "fixture:x1sche.f7.royalty_magi@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582",
+     "fixture:x1sche.r5.re_pro@f8582",
+     "fixture:x1sche.r6.not_at_risk@f8582",
+     "generated:20261026.5@f8582",
+     "generated:20261026.6@f8582",
+     "generated:20261026.9@f8582",
+     "generated:20261026.12@f8582",
+     "generated:20261026.18@f8582",
+     "generated:20261026.19@f8582",
+     "generated:20261026.23@f8582",
+     "generated:20261026.39@f8582",
+     "generated:20261026.40@f8582",
+     "generated:20261026.42@f8582",
+     "generated:20261026.69@f8582",
+     "generated:20261026.73@f8582",
+     "generated:20261026.137@f8582",
+     "generated:20261026.147@f8582",
+     "generated:20261026.155@f8582",
+     "generated:20261026.281@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "3868cb5af8960cb4ed0ed315b766c3226ab88583d5cbfcf1554051bced7a6bbe",
+   "second_expr_sha256": "952a8f21fc9ed4b2c7981773e3837787d5318062e5ed17b644a966a2f4c0b947",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); it also refuses on sche.re_pro/sche.grouped on the line, which the project refuses before (sche, x1sche.r5.re_pro is a refused return either way); unknowns as where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right. Line 4: MFS is refused for every return (s3.mfs), so the MFS-lived-with-spouse caution never applies.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "6ad1c9c6e041db312b3ea0de8ff7aaf05e15575afd1f20a99047613d7c4b03e6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f8582",
+     "fixture:classm.dependent.1.deepseek@f8582",
+     "fixture:classm.dependent.2.deepseek@f8582",
+     "fixture:classm.dependent.3.deepseek@f8582",
+     "fixture:classm.dependent.4.deepseek@f8582",
+     "fixture:classm.dependent.5.deepseek@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f2.small_loss_exception@f8582",
+     "fixture:x1sche.f8.personal_use_not_home@f8582",
+     "fixture:x1sche.f15.part2_line1d_smaller@f8582",
+     "fixture:x1sche.r5.re_pro@f8582",
+     "fixture:x1sche.r6.not_at_risk@f8582",
+     "generated:20261026.39@f8582",
+     "generated:20261026.40@f8582",
+     "generated:20261026.325@f8582",
+     "generated:20261026.419@f8582",
+     "generated:20261026.488@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VI (a) total",
+   "project_expr_sha256": "8f3d59b181fe39f590fd108df36050f2875a0827e3f7cb29ed009a10641b8e8f",
+   "second_expr_sha256": "592f659d3003c4d3b7cb0f5f7d70687387eb58b49d6cb2c388c66f92506264d6",
+   "ruling": "Ruling: model error; the reply's total refuses on 416 inputs (16 on completed returns) and hides the total on x1sche.f5.prior_loss_absorbed where the project shows 2,000 (i8582 Part VI, column (a): 'Enter the overall loss from column (e) of Part IV for each activity').",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "9d4f52fd16e1e320d385efdf10a46406c815b720bdf3c8e4c3302806b4220326",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8582",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8582",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8582",
+     "fixture:stage14.asset.refuse_class@f8582",
+     "fixture:stage14.asset.refuse_listed_low@f8582",
+     "fixture:stage14.asset.refuse_s179_over@f8582",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8582",
+     "fixture:classm.f8582.1@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.1@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:x1sche.f5.prior_loss_absorbed@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VII (a) total",
+   "project_expr_sha256": "a61ce9ceca62de34fb8b92eb06a6310adbc684a280854935428b1a534a2f71ac",
+   "second_expr_sha256": "a4ff74c903bd036be9b04709835978ae230b80723a237cbeb703ea2bb4358494",
+   "ruling": "Ruling: model error; differs only as unknown on 3 class M fixtures where the reply's entry line reads person.plan (through its line 6), an input those returns do not answer; the values agree on 1,942 of 1,945 inputs.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "55b2d0ba3a70e17facef827a7a2a5c7cbd8f45da8113a9f2851eeda3a9826426",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VII worksheet C",
+   "project_expr_sha256": "d2ec8464cff707b92abb60a88f25ccd6b88b016623cab503f5a995f25e641598",
+   "second_expr_sha256": "e72e0d96a7d2bd0326ac9b8474d17a97272ab44fc2fb8c48a66331f1eb648a7f",
+   "ruling": "Ruling: model error; unknown on class M fixtures through its line 9 (person.plan); the project-unknown witnesses are incomplete or refused returns (unanswered filing status, unanswered listed-property answer) where both sides are unknown underneath and the reply hides the line. No value differs.",
+   "context": "6bdebbe16dd22ecb28815a3f1118624a3fc7812d41ee71c1c348fbe733f64187",
+   "date": "2026-11-15",
+   "run": "9470ff656f1ba1f0355dff0260e584faf6b6a6c56a8ee38fc6fbc4a45446f716",
+   "subject_key": "9291872232131a7760cfbece101f77fe607c326840f23bb3e2b8c7f1a6dec162",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8582",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8582",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8582",
+     "fixture:stage14.asset.refuse_class@f8582",
+     "fixture:stage14.asset.refuse_listed_low@f8582",
+     "fixture:stage14.asset.refuse_s179_over@f8582",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8582",
+     "fixture:classm.f8582.2@f8582",
+     "fixture:classm.f8582.3@f8582",
+     "fixture:classm.sche.2@f8582",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8582",
+     "fixture:t264.eic.show5_agi_open_married_child@f8582",
+     "fixture:stage9.eic.refuse.other_income.schedule1_unanswered@f8582",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f8582",
+     "fixture:stage10.ira.roth_code_unanswered@f8582"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

@@ -18,7 +18,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -46,7 +45,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -78,7 +76,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -109,7 +106,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -120,20 +116,21 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "ftc.credit": {
           "kind": "refusal",
-          "gate": "ftc.needs1116",
-          "form": "Form 1116",
-          "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.",
+          "gate": "f1116.tax_mismatch",
+          "form": "Form 1116, Part II",
+          "remedy": "The foreign tax entered for each source must add up to the foreign tax entered for the year; correct one or the other.",
           "cite": {
-            "doc": "i1116",
-            "tax_year": 2025,
-            "revision": "2025; printed date 2025-12-23",
-            "locator": "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
-            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1"
+            "doc": "f1116",
+            "locator": "p. 1, Part II, line 8, \"Add lines A through C, column (u). Enter the total here and on line 9, page 2\"",
+            "revision": "2025; created 2025-09-16 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "2575162f86c37297265c28d3d23ff1d99e06b2b1aeeadf396f5d6e798a8cffc5",
+            "tax_year": 2025
           }
         }
       }
@@ -157,20 +154,21 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "ftc.credit": {
           "kind": "refusal",
-          "gate": "ftc.needs1116",
-          "form": "Form 1116",
-          "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.",
+          "gate": "f1116.other_category",
+          "form": "Form 1116 (another category of income)",
+          "remedy": "Foreign income that is not passive (such as pay for work abroad or a business abroad) needs its own Form 1116 for its category and the Part IV summary, which this tool does not prepare.",
           "cite": {
             "doc": "i1116",
-            "tax_year": 2025,
+            "locator": "p. 11, Lines 1a and 1b, \"If you received dividends (passive category income) and wages (general category income) from foreign sources, you must complete two Forms 1116.\"",
             "revision": "2025; printed date 2025-12-23",
-            "locator": "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
-            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1"
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
           }
         }
       }
@@ -186,7 +184,6 @@
         "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -197,20 +194,21 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "ftc.credit": {
           "kind": "refusal",
-          "gate": "ftc.needs1116",
-          "form": "Form 1116",
-          "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.",
+          "gate": "f1116.not_on_statement",
+          "form": "Form 1116, Part II (foreign currency)",
+          "remedy": "Foreign tax paid directly to another country, or not reported on a statement in U.S. dollars, is entered in the foreign currency and converted, which this tool does not prepare.",
           "cite": {
             "doc": "i1116",
-            "tax_year": 2025,
+            "locator": "p. 18, Part II, \"Generally, you must enter in Part II the amount of foreign taxes, in both the foreign currency denomination(s) and as converted into U.S. dollars, that relate to the category of income checked above Part I.\"",
             "revision": "2025; printed date 2025-12-23",
-            "locator": "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
-            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1"
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
           }
         }
       }
@@ -226,7 +224,6 @@
         "s3.foreign_any": true,
         "ftc.all_passive": true,
         "ftc.statements": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "a"
         ],
@@ -237,20 +234,21 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "ftc.credit": {
           "kind": "refusal",
-          "gate": "ftc.needs1116",
+          "gate": "f1116.not_creditable",
           "form": "Form 1116",
-          "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.",
+          "remedy": "Foreign tax that is not all creditable after the required reductions must be sorted out before Form 1116 is prepared; this tool does not determine it.",
           "cite": {
             "doc": "i1116",
-            "tax_year": 2025,
+            "locator": "p. 18, Part II, \"See General Instructions, earlier, for descriptions of foreign taxes that are eligible for the foreign tax credit and for foreign taxes that aren’t eligible for the foreign tax credit.\"",
             "revision": "2025; printed date 2025-12-23",
-            "locator": "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
-            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1"
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
           }
         }
       }
@@ -277,21 +275,13 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "ftc.credit": {
-          "kind": "refusal",
-          "gate": "ftc.needs1116",
-          "form": "Form 1116",
-          "remedy": "The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.",
-          "cite": {
-            "doc": "i1116",
-            "tax_year": 2025,
-            "revision": "2025; printed date 2025-12-23",
-            "locator": "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
-            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1"
-          }
+          "kind": "money",
+          "cents": 10000
         }
       }
     },
@@ -310,7 +300,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],

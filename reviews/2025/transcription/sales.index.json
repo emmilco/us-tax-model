@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "9d3118026893a1c312a9f2d8f6ed48ff9175923e1c54b7d5ae7765d55be6842d",
  "head_rows": {
-  "printed lines compared": "5",
-  "agree / disagree / missing": "1 / 4 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
+  "printed lines compared": "6",
+  "agree / disagree / missing": "2 / 4 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -17,43 +17,51 @@
    "subject_key": "ce0a5e49bef4d0b6c74826fbba8aae3bb87030ce8623f345221f663bea8b8b26"
   },
   {
-   "key": "sales.one",
-   "record": "11211e59444fa5ac2ee57f3c70bd5ee979c26d40e2c04a2ea32ecce5cd727045",
+   "key": "sales.digital",
+   "record": "415391f0d0f0e06a0303260006fc0639a12e29e52436768ed39aa8c66c012de8",
    "status": "AGREE",
-   "subject_key": "2db6ad4d97247d1907cfae1c23d4cf4015440d171c0813aaa4e526e2921c91e9"
+   "subject_key": "bbf9fcb09602765be2cb82653b945bec9a8ff88c6ff8896fdcd5c60734695eff"
+  },
+  {
+   "key": "sales.one",
+   "record": "415391f0d0f0e06a0303260006fc0639a12e29e52436768ed39aa8c66c012de8",
+   "status": "AGREE",
+   "subject_key": "caeb124d2c26295007225c3bb1850f711681c902e1252487df70557e12befaa9"
   },
   {
    "key": "(e)",
-   "record": "51bc6b75714d40053092852fb59d1cc3602d6dbed67ac52f0250cca1f5f5ef73",
+   "record": "415391f0d0f0e06a0303260006fc0639a12e29e52436768ed39aa8c66c012de8",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; same reply and project as the round-2 and round-3 rulings. f8949 p. 1, box G; i8949 p. 8, code B. The reply adds boxes G and J to the reported-basis boxes, but boxes G to L are refused at the transaction by sales.digital at sales.one. Triage executable-triage-v2 (reviews/2025/transcription/triage/sales.json; 1,638 fixtures, 500 generated returns seed 20261026, 476 partial records): 1,758 of 1,765 comparisons agree; the 7 value differences are all on refused returns (boxes G and J); no completed return differs. Project stands.",
-   "subject_key": "09e8a20031b2dccc6efb5e3a00c977a97a9692de5a962b768d77ac831be7cabd"
+   "ruling": "Ruling: representation; the reply's value is the project's (reported basis for boxes A, D, G and J; correct basis otherwise; this merge added G and J, as i8949 p. 3, Box A or Box G, has it). It differs only in hiding the column on the aggregate route; the project carries (e) on every entry because Schedule D lines 1a and 8a total column (e) of the aggregated entries (sd 1a(e) sums sales.e; i1040sd p. 10, Lines 1a and 8a), and Form 8949's display of a detail row is not a different amount. Triage (pass 60bd5eac256b): 1,864/2,223 agree; no value difference; 77 candidate-hides-shown (21 completed: aggregate entries); 278 candidate-unknown (the reply reads sales.route, which is asked only when the entry may be aggregated, sales.route_if_chosen); 4 project-unknown on incomplete partial records.",
+   "subject_key": "11b40faeaf008512729e46fa6b6150f8c5710c78156f8b0e59039faebe788078"
   },
   {
    "key": "(g)",
-   "record": "11211e59444fa5ac2ee57f3c70bd5ee979c26d40e2c04a2ea32ecce5cd727045",
+   "record": "415391f0d0f0e06a0303260006fc0639a12e29e52436768ed39aa8c66c012de8",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i8949 p. 8, code B, 'Correct the error by entering an adjustment in column (g)', and p. 10, code W, 'enter the amount of the nondeductible loss as a positive number in column (g)'. Values on the supported case are the project's (reported less correct basis for code B or BW on boxes A and D, plus the wash-sale loss for W or BW); boxes G and J are refused with every digital-asset box (sales.digital) and codes other than B and W at sales.bad_code (scope). The reply's own consistency gate (sales.h_wash_excess) figures the loss from sales.correct_basis, which is $0 when the code is W alone, and so refuses completed returns the project computes: sales.adjust.A.W, sales.adjust.D.W, sales.adjust.A.W.equal_loss (project column (g) $500.00, $500.00, $200.00; e.g. A.W: proceeds $6,000, reported basis $7,000, wash loss $500). The project refuses only a wash-sale loss above the loss after any code B correction (sales.wash_bad). Triage executable-triage-v2 (`.transcription/triage/2025/sales.json`, pass b91cbaa4b1d2): 1,616 of 1,951 agree, no value differs; 316 candidate-unknown (the reply reads sales.route, asked only after sd.route_each), 6 candidate-refuses (the three above, and special or other-code sales refused by the project at sales.one), 13 project-unknown. Same reading as the earlier rounds. Project stands.",
-   "subject_key": "c268d829e3c1e7d1747a768ec914c6a4fd3f9e1bd5151c2258a61208d4fe392b"
+   "ruling": "Ruling: model error; as in the goal-1 ruling, the reply's own refusal sales[a].h_wash_excess (a code W loss figured from the correct basis) refuses entries the project computes: i8949 p. 10, code W, the nondeductible wash-sale loss is entered as a positive adjustment in column (g) from the broker's or the filer's figure, which the project reads (sales.wash_loss). Its zero on the aggregate route equals the project's (aggregated entries have no adjustments: sales.aggregate_eligible). Triage (pass 60bd5eac256b): 2,065/2,223 agree; no value difference; 8 candidate-refuses (6 completed, all h_wash_excess, project $200 to $600); 139 candidate-unknown (sales.route read where unasked); 11 project-unknown on incomplete partial records.",
+   "subject_key": "1cdb54d95876fb91027b88673b8be3ff0edd358746a19f7e33806819f5521f00"
   },
   {
    "key": "(h)",
-   "record": "133518d24d4a1d9f017becfde969856c0cffd3fe245165a4d4d594dd1cf9bdcc",
+   "record": "415391f0d0f0e06a0303260006fc0639a12e29e52436768ed39aa8c66c012de8",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation and model error; i8949 p. 11, column (h). The value is the project's ((d) less (e) plus (g)); the reply shows the line only on the detail route, but the transaction's column (h) amount is read on both routes (sd.line1a.h and sd.line8a.h for the aggregate route), and the project's sheet is a values sheet, so the display condition changes no value. Its candidate refusals are column (g)'s h_wash_excess gate (see (g)). Scratch run of triage.mjs on the round-3 reply (.transcription/sales.lines-ceb969c79173) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 476 partial records; 1,762 comparisons per line): 1,380 agree; on completed returns 42 candidate refusals, the column (g) records; 4 value differences, all on refused returns. Project stands.",
-   "subject_key": "132bd4367ef6dd80f3e301d94849177c9506271754dce9e1f4b195f333a59375"
+   "ruling": "Ruling: model error; (h) is (d) minus (e) plus (g) on both sides; it differs through the reply's (g) (its invented h_wash_excess refusal, ruled model error on (g)) and its hiding of the column on the aggregate route, which Schedule D lines 1a and 8a total (i1040sd p. 10). Triage (pass 60bd5eac256b): 1,824/2,223 agree; no value difference; 9 candidate-refuses (6 completed, h_wash_excess); 82 candidate-hides-shown (aggregate entries); 300 candidate-unknown (sales.route read where unasked); 8 project-unknown on incomplete partial records.",
+   "subject_key": "c4d4976f5324a8b22e3ff99ef10847abfeb0ece15f989c8b33651038b2877d6a"
   }
  ],
  "subjects": {
   "sales.route_if_chosen": "315219a45c1f5c9aaac7ee892631f48376b2ea29797dc0d2a21b65e861d12985",
-  "sales.one": "ae1bfa8a700288ff3b983c64fac736ac08874671cfd43bf01c0b8650a309aafa",
-  "(e)": "b7f290bb5c1dd9dbd25b593ae9a7e0244a1e684e986b47849a9572b164e73d0d",
-  "(g)": "f05b6c9f9d43ef2d2892e3ad71d09c1714cc41d6f6b7dcb4b46783287700737e",
-  "(h)": "99ee2a26d2615b358c59742db7fe5cb7211304df3fd2300bdc0b375bc504b241"
+  "sales.digital": "4c436ef913fcc3fa677710d63365109b668f1896131e06387615136698293b03",
+  "sales.one": "ce8e09b2e06e5dcbd01b7e02dc688159bccec8da78053d1d475ce3c446737b2f",
+  "(e)": "7fb99fc56b7a00851447a702f8689880471ea35a1cbd69602504636700be9e0c",
+  "(g)": "52a831b1dfa6f817e96414f8e9cbf7fa8876e9ae77549a570667b0ca1f9b3123",
+  "(h)": "d15e7017095f8267fcd08e1b14e6d02dcb3c973d56402a416b401f48bbcf3353"
  },
  "__rest__": "d66e458afa5745f8eec417fb8e25dc768244f7e1dca0d2d0114dfbf47d7cba76",
  "foreign": {
   "sales.route_if_chosen": "035e230f1191202dc068a51ad305f0c024defb44bb86987e3ec1055d82d92152",
+  "sales.digital": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "sales.one": "9b05197195150a9176724ea1d31b15a2b7ab0273abe446abe4347584a33f2579",
   "(e)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "(g)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",

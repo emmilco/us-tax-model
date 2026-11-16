@@ -1,0 +1,85 @@
+{
+ "kind": "transcription",
+ "form": "f8919",
+ "family": "claude",
+ "base": "f7ac81bb5a618459ce59c19877ca36b1fef465e27529c8a76c8202e7661882d2",
+ "lines": [
+  {
+   "key": "6",
+   "record": "f7ac81bb5a618459ce59c19877ca36b1fef465e27529c8a76c8202e7661882d2",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply sums f8919firm.wages without the parent questions (scope.pay_no_w2, scope.contractor_pay) that open the firm list, so it is unknown where the interview never asks the list (630 candidate-unknown: 85 completed, 49 incomplete, 496 refused); no value differs on any of 2,218 inputs (1,582 agree; 6 project-unknown on refused returns). f8919 line 6 'Total wages. Combine lines 1 through 5 in column (f)'.",
+   "subject_key": "be62adc1a421702f1107b9279d67557244df096ba335b56250118a14c31c1d8a"
+  },
+  {
+   "key": "7",
+   "record": "f7ac81bb5a618459ce59c19877ca36b1fef465e27529c8a76c8202e7661882d2",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply's line has no shown_when, so it shows an amount on returns without a Form 8919 (f8919.files: line 6 more than zero); its value is the project's (se.wage_base and ss.base are both $176,100; 2,208 candidate-shows-skipped, no value differs). f8919 line 7.",
+   "subject_key": "f0204c5a626a55f9ccc1496af029768cf1dbe6a65fbb539f4054a32fec46d1ec"
+  },
+  {
+   "key": "8",
+   "record": "f7ac81bb5a618459ce59c19877ca36b1fef465e27529c8a76c8202e7661882d2",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply's line has no shown_when, so it shows an amount on returns without a Form 8919 (f8919.files: line 6 more than zero); its value is the project's (same sum: person.wages, boxes 3 + 7 by amb.2025.ss_wages, plus Form 4137 line 10; 536 shows-skipped, 47 unknown and 18 refusals only on returns the project refuses or the line hides). f8919 line 8.",
+   "subject_key": "59b28fab7bf00652ca10f659ac5a7106ec894ba96833a105e4cb93de570a4a4a"
+  },
+  {
+   "key": "9",
+   "record": "f7ac81bb5a618459ce59c19877ca36b1fef465e27529c8a76c8202e7661882d2",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply's line has no shown_when, so it shows an amount on returns without a Form 8919 (f8919.files: line 6 more than zero); its value is the project's (1,987 shows-skipped; the rest unknown/refusal on refused or incomplete returns). f8919 line 9 'Subtract line 8 from line 7'.",
+   "subject_key": "ca39fcc38bd7541b64654e2222eefd0a439e274d46d3968df01a1f0b611f014a"
+  },
+  {
+   "key": "10",
+   "record": "f7ac81bb5a618459ce59c19877ca36b1fef465e27529c8a76c8202e7661882d2",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value expression as the project's line 10 (f8919 p. 1); it differs only as unknowns inherited from the ungated line 6 (619 candidate-unknown) and 18 refusals on returns the project refuses too; no value differs on any of 2,218 inputs.",
+   "subject_key": "2ae9692a786ef0add64212642b6b7955967fab712c0ecba193915ab6d28913d0"
+  },
+  {
+   "key": "11",
+   "record": "f7ac81bb5a618459ce59c19877ca36b1fef465e27529c8a76c8202e7661882d2",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value expression as the project's line 11 (f8919 p. 1); it differs only as unknowns inherited from the ungated line 6 (619 candidate-unknown) and 18 refusals on returns the project refuses too; no value differs on any of 2,218 inputs.",
+   "subject_key": "485fb283d13e9f10919337e1320d88536d1b946b8c0498dd84dee1e105c71cb0"
+  },
+  {
+   "key": "12",
+   "record": "f7ac81bb5a618459ce59c19877ca36b1fef465e27529c8a76c8202e7661882d2",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value expression as the project's line 12 (line 6 x 0.0145); it differs only as unknowns inherited from the ungated line 6 (630 candidate-unknown); no value differs on any of 2,218 inputs.",
+   "subject_key": "1af380cd8bbd7b6a16b7fefb6fb639409c229200a3a55f6d6ff996b77bee37de"
+  },
+  {
+   "key": "13",
+   "record": "f7ac81bb5a618459ce59c19877ca36b1fef465e27529c8a76c8202e7661882d2",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value expression as the project's line 13 (f8919 p. 1); it differs only as unknowns inherited from the ungated line 6 (619 candidate-unknown) and 18 refusals on returns the project refuses too; no value differs on any of 2,218 inputs.",
+   "subject_key": "89d7452e4edba868036b813507bd3d38cd8a4a6d9833f8909a6c789b2cd16d74"
+  }
+ ],
+ "subjects": {
+  "6": "e17a68c23f7d543bf9ad415e0bcb036ac10ca8d36437b0cce3fd42dd21b11179",
+  "7": "7ea4c14e0377ea9737d3feeedd5c74013a3a98e85083049f0d951be4e4bab9d2",
+  "8": "1557f42d7a428007ba53a86a932f393f83958293f393a8c56ccf6e8df81c5870",
+  "9": "939c8477b1b4090cf4e15eb35e437a21192a63b0ba120324d4b13cc7f8187d7a",
+  "10": "da0d0a7061143221abcd66e2285c2ec39b4bb433e58483dec1900719074eab0f",
+  "11": "c063722e18886e3b8315eb6691467d51a4293f29889d718cbedc08e9c6045273",
+  "12": "9f1e9e04f79eb6cd35ebdc72529ad1c98a3842530360e540fbd645451419408e",
+  "13": "3ba5d53da57abee7e5b0489248a73da7c0c31060f36030bb4b0618fb8bd3177a"
+ },
+ "__rest__": "362c11fb2e58198c8192b94f9d96d169ca4c76d2e6bc997ddfb62a3665c985d2",
+ "foreign": {
+  "6": "14210a225ff06b7f44b9aecc73a90fc2fc4c9181c6a0e4010ee880d1aa895077",
+  "7": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8": "d9be457044435fb48ea489064a7cc1cc78b1e6bba040dd6ed9f0ea5b13152beb",
+  "9": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "10": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "11": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "12": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "13": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+ }
+}

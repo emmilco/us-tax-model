@@ -1269,7 +1269,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 11742500
+        "person[taxpayer].w2[migrated].box1": 11742500,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1338,7 +1339,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 16607500
+        "person[taxpayer].w2[migrated].box1": 16607500,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1407,7 +1409,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 23966250
+        "person[taxpayer].w2[migrated].box1": 23966250,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1476,7 +1479,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 32891250
+        "person[taxpayer].w2[migrated].box1": 32891250,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -1545,7 +1549,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 51575000
+        "person[taxpayer].w2[migrated].box1": 51575000,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -3419,7 +3424,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 5575000
+        "person[taxpayer].w2[migrated].box1": 5575000,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4585,7 +4591,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 11910099
+        "person[taxpayer].w2[migrated].box1": 11910099,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4654,7 +4661,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 21305099
+        "person[taxpayer].w2[migrated].box1": 21305099,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4723,7 +4731,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 26627599
+        "person[taxpayer].w2[migrated].box1": 26627599,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {
@@ -4792,7 +4801,8 @@
         "$w2@person[taxpayer]": [
           "migrated"
         ],
-        "person[taxpayer].w2[migrated].box1": 39155099
+        "person[taxpayer].w2[migrated].box1": 39155099,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.gate.qdcg_applies": {

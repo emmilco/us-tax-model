@@ -1,0 +1,538 @@
+form:
+  id: f8853c
+  kind: form
+  title: Form 8853, Section C — long-term care insurance contracts, one per insured person
+  tax_year: 2025
+  note: One entry per insured person for whom you (or, on a joint return, your spouse) received payments in 2025 under a
+    long-term care insurance contract, or accelerated death benefits under a life insurance contract. Payments made to
+    repay costs, and accelerated death benefits not paid at a set rate, are not taxable and need no Section C figures.
+    Payments at a set rate (per diem or other periodic payments) are compared with $420 a day for the days of the
+    long-term care period, or the care costs if more, less reimbursements; any excess is taxable on Schedule 1, line 8e.
+    Payments to anyone else for the same insured, more than one long-term care period in 2025 (a change in the payment
+    rate), a contract that is not a qualified long-term care insurance contract, and reimbursements under a contract issued
+    before August 1, 1996, are refused. Sections A and B (Archer and Medicare Advantage MSAs) are refused by
+    scope.archer_msa. Lines 14a, 14b (the insured's name and number) and 16 (terminally ill) change no amount and are not
+    shown; amounts received while the insured was terminally ill are left out of line 19, as its instruction says.
+  lines:
+  - id: f8853c.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 26, "Taxable payments. Subtract line 25 from line 20. If zero or less, enter -0-"
+  - id: f8853c.no
+    printed: (helper)
+    label: Year parameter sa.no (no)
+    type: Bool
+    expr:
+      op: param
+      ref: sa.no
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 15, "did anyone other than you receive payments on a per diem or other periodic basis"
+  - id: f8853c.periodic
+    printed: (helper)
+    label: Were any payments for this person at a set daily or monthly rate, whatever the costs (per diem)?
+    type: Bool
+    expr:
+      op: input
+      source: Were any of the payments for this person made at a set amount per day, week or month whatever the actual costs
+        (the "Per diem" box checked in box 3 of Form 1099-LTC), rather than to repay costs?
+    cite:
+      doc: i8853
+      locator: 'p. 8, Per Diem Payments, "Per diem payments are payments of a fixed amount made on a periodic basis without
+        regard to actual expenses incurred. Box 3 of Form 1099-LTC should indicate whether payments were per diem payments"'
+  - id: f8853c.line17
+    printed: '17'
+    label: Gross LTC payments received on a per diem or other periodic basis
+    type: NonNegDollars
+    gated_by: f8853c.line17_if_periodic
+    expr:
+      op: input
+      source: 'Gross LTC payments received on a per diem or other periodic basis for this person: the total of box 1 of all
+        Forms 1099-LTC you (or, on a joint return, your spouse) received for this person on which the "Per diem" box in box
+        3 is checked; zero if none'
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 17, "Gross LTC payments received on a per diem or other periodic basis. Enter the total
+        of the amounts from box 1 of all Forms 1099-LTC you received with respect to the insured on which the “Per diem”
+        box in box 3 is checked"
+  - id: f8853c.line17_if_periodic
+    printed: (gate)
+    label: Line 17, asked only when payments were made at a set rate (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8853c.periodic
+          - const: true
+        then: f8853c.line17
+      - guard:
+          op: test
+          eq:
+          - f8853c.periodic
+          - const: false
+        then: f8853c.zero
+    cite:
+      doc: i8853
+      locator: 'p. 8, Per Diem Payments, "Per diem payments are payments of a fixed amount made on a periodic basis without
+        regard to actual expenses incurred"'
+  - id: f8853c.line18
+    printed: '18'
+    label: Enter the part of the amount on line 17 that is from qualified LTC insurance contracts
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8853c.line17_if_periodic
+    cite:
+      doc: f8853
+      locator: 'Form 8853 (2025), line 18, "Enter the part of the amount on line 17 that is from qualified LTC insurance contracts" (all of it, since a contract that is not qualified is refused at f8853c.nonqualified); i8853 p. 8, Line 18, "If you have more than one LTC period, you must separately calculate the taxable amount of the payments received during each LTC period"'
+  - id: f8853c.line19
+    printed: '19'
+    label: Accelerated death benefits received on a per diem or other periodic basis
+    type: NonNegDollars
+    gated_by: f8853c.line19_if_periodic
+    expr:
+      op: input
+      source: 'Accelerated death benefits under a life insurance contract received for this person on a per diem or other
+        periodic basis (generally box 2 of Form 1099-LTC), only those received while the person was chronically ill: leave
+        out amounts received while the person was terminally ill; zero if none'
+    cite:
+      doc: i8853
+      locator: 'p. 8, Line 19, "Enter the total accelerated death benefits you received with respect to the insured listed on
+        line 14a. These amounts are generally shown in box 2 of Form 1099-LTC" and "Don’t include amounts you received while
+        the insured was a terminally ill individual"'
+  - id: f8853c.line19_if_periodic
+    printed: (gate)
+    label: Line 19, asked only when payments were made at a set rate (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8853c.periodic
+          - const: true
+        then: f8853c.line19
+      - guard:
+          op: test
+          eq:
+          - f8853c.periodic
+          - const: false
+        then: f8853c.zero
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 19, "Accelerated death benefits received on a per diem or other periodic basis"
+  - id: f8853c.line20
+    printed: '20'
+    label: Add lines 18 and 19
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8853c.line18
+      - f8853c.line19_if_periodic
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 20, "Add lines 18 and 19"
+  - id: f8853c.has_periodic
+    printed: (helper)
+    label: Line 20 is more than zero
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8853c.line20
+      - const: 0
+    cite:
+      doc: i8853
+      locator: 'p. 9, Filing Requirements for Section C, "Complete all of Section C"'
+  - id: f8853c.nonqualified
+    printed: (gate)
+    gated_by: f8853c.nonqualified_if_periodic
+    label: Was any of line 17 paid under a contract that is not a qualified long-term care insurance contract?
+    type: Bool
+    expr:
+      op: input
+      source: Was any of the payments on line 17 made under a long-term care insurance contract that is not a qualified
+        long-term care insurance contract (the "Qualified contract" box in box 4 of Form 1099-LTC not checked)?
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 17, Caution, "Don’t use lines 18 through 26 to figure the taxable amount of benefits paid
+        under an LTC insurance contract that isn’t a qualified LTC insurance contract"
+  - id: f8853c.has_line17
+    printed: (helper)
+    label: Line 17 is more than zero
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8853c.line17_if_periodic
+      - const: 0
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 18, "Enter the part of the amount on line 17 that is from qualified LTC insurance
+        contracts"
+  - id: f8853c.nonqualified_if_periodic
+    printed: (gate)
+    label: A contract that is not qualified, asked only when line 17 is more than zero (no otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_line17
+          - const: true
+        then: f8853c.nonqualified
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_line17
+          - const: false
+        then: f8853c.no
+    cite:
+      doc: i8853
+      locator: 'p. 8, Qualified LTC Insurance Contract, "A qualified LTC insurance contract is a contract issued"'
+  - id: f8853c.others_paid
+    printed: '15'
+    gated_by: f8853c.others_paid_if_periodic
+    label: In 2025, did anyone other than you receive payments on a per diem or other periodic basis under a qualified LTC
+      insurance contract covering the insured or receive accelerated death benefits under a life insurance policy covering
+      the insured?
+    type: Bool
+    expr:
+      op: input
+      source: In 2025, did anyone other than you (or, on a joint return, your spouse) receive payments on a per diem or other
+        periodic basis under a qualified long-term care insurance contract covering this person, or accelerated death
+        benefits under a life insurance policy covering this person?
+    cite:
+      doc: f8853
+      locator: 'Form 8853 (2025), line 15, "In 2025, did anyone other than you receive payments on a per diem or other periodic basis under a qualified LTC insurance contract covering the insured"; i8853 p. 8, Line 15, "Special rules apply in determining the taxable payments if other individuals received per diem payments under a qualified LTC insurance contract"'
+  - id: f8853c.others_paid_if_periodic
+    printed: (gate)
+    label: Payments to others for the same insured, asked only when line 20 is more than zero (no otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_periodic
+          - const: true
+        then: f8853c.others_paid
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_periodic
+          - const: false
+        then: f8853c.no
+    cite:
+      doc: i8853
+      locator: 'p. 9, Multiple Payees, "attach a statement duplicating lines 18 through 26"'
+  - id: f8853c.rate_changed
+    printed: (gate)
+    gated_by: f8853c.rate_changed_if_periodic
+    label: Did the rate of the payments for this person change during 2025, or did a second contract start paying during
+      the year?
+    type: Bool
+    expr:
+      op: input
+      source: During 2025, did the daily, weekly or monthly rate of the payments for this person change, or did another
+        contract for this person start or stop paying, so that the payments were not at one rate for the whole period they
+        covered?
+    cite:
+      doc: i8853
+      locator: 'p. 9, Method 2—Equal Payment Rate, "your LTC period is the period during which the insurance company uses the
+        same payment rate to compute your benefits" and "you have two LTC periods if the insurance contract computes
+        payments at a rate"; p. 8, Line 18, "If you have more than one LTC period, you must separately calculate the taxable
+        amount of the payments received during each LTC period"'
+    ambiguity: amb.2025.f8853c_period
+  - id: f8853c.rate_changed_if_periodic
+    printed: (gate)
+    label: A change in the payment rate, asked only when line 20 is more than zero (no otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_periodic
+          - const: true
+        then: f8853c.rate_changed
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_periodic
+          - const: false
+        then: f8853c.no
+    cite:
+      doc: i8853
+      locator: 'p. 9, Method 2—Equal Payment Rate, "your LTC period is the period during which the insurance company uses the
+        same payment rate to compute your benefits"'
+    ambiguity: amb.2025.f8853c_period
+  - id: f8853c.days
+    printed: (helper)
+    label: The number of days in the LTC period
+    type: Count
+    expr:
+      op: input
+      source: The number of days in 2025 that the payments at a set rate for this person covered (the days from the first to
+        the last day the payment rate applied in 2025)
+    cite:
+      doc: i8853
+      locator: 'p. 9, Method 2—Equal Payment Rate, "The first LTC period is 92 days (from March 1 through May 31) and the second
+        LTC period is 214 days (from June 1 through December 31)"'
+    ambiguity: amb.2025.f8853c_period
+  - id: f8853c.rate
+    printed: (helper)
+    label: Year parameter f8853c.per_diem_limit ($420)
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f8853c.per_diem_limit
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 21, "Multiply $420 by the number of days in the LTC period"
+  - id: f8853c.line21_figured
+    printed: (helper)
+    label: $420 times the number of days in the LTC period
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: f8853c.rate
+      count: f8853c.days
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 21, "Multiply $420 by the number of days in the LTC period"
+  - id: f8853c.line21
+    printed: '21'
+    label: Multiply $420 by the number of days in the LTC period
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_periodic
+          - const: true
+        then: f8853c.line21_figured
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_periodic
+          - const: false
+        then: f8853c.zero
+    cite:
+      doc: f8853
+      locator: 'Form 8853 (2025), line 21, "Multiply $420 by the number of days in the LTC period"; i8853 p. 8, Line 21, "The number of days in your LTC period depends on which method you choose to define the LTC period"'
+  - id: f8853c.line22
+    printed: '22'
+    label: Costs incurred for qualified LTC services provided for the insured during the LTC period
+    type: NonNegDollars
+    gated_by: f8853c.line22_if_periodic
+    expr:
+      op: input
+      source: The costs incurred for qualified long-term care services provided for this person during the days of the LTC
+        period (necessary diagnostic, preventive, therapeutic, treating and rehabilitative services, and maintenance or
+        personal care, under a plan of care prescribed by a licensed health care practitioner); zero if none
+    cite:
+      doc: i8853
+      locator: 'p. 9, Line 22, "Qualified LTC services are necessary diagnostic, preventive, therapeutic, curing, treating,
+        mitigating, and rehabilitative services, and maintenance or personal care services required to treat a chronically ill
+        individual under a plan of care prescribed by a licensed health care practitioner"'
+  - id: f8853c.line22_if_periodic
+    printed: (gate)
+    label: Line 22, asked only when line 20 is more than zero (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_periodic
+          - const: true
+        then: f8853c.line22
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_periodic
+          - const: false
+        then: f8853c.zero
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 22, "Costs incurred for qualified LTC services provided for the insured during the LTC
+        period"
+  - id: f8853c.line23
+    printed: '23'
+    label: Enter the larger of line 21 or line 22
+    type: NonNegDollars
+    expr:
+      op: larger_of
+      of:
+      - f8853c.line21
+      - f8853c.line22_if_periodic
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 23, "Enter the larger of line 21 or line 22"
+  - id: f8853c.line24
+    printed: '24'
+    label: Reimbursements for qualified LTC services provided for the insured during the LTC period
+    type: NonNegDollars
+    gated_by: f8853c.line24_if_periodic
+    expr:
+      op: input
+      source: The reimbursements you (or, on a joint return, your spouse) received or expect to receive, through insurance or
+        otherwise, for qualified long-term care services provided for this person during the LTC period (payments made to
+        repay costs, not the payments at a set rate); zero if none
+    cite:
+      doc: i8853
+      locator: 'p. 9, Line 24, "Enter the reimbursements you received or expect to receive through insurance or otherwise for
+        qualified LTC services provided for the insured for LTC periods in 2025"'
+  - id: f8853c.line24_if_periodic
+    printed: (gate)
+    label: Line 24, asked only when line 20 is more than zero (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_periodic
+          - const: true
+        then: f8853c.line24
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_periodic
+          - const: false
+        then: f8853c.zero
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 24, "Reimbursements for qualified LTC services provided for the insured during the LTC
+        period"
+  - id: f8853c.contract_before_ltc_date
+    printed: (gate)
+    gated_by: f8853c.contract_before_ltc_date_if_reimbursed
+    label: Was any of line 24 received under a contract issued before August 1, 1996?
+    type: Bool
+    expr:
+      op: input
+      source: Was any of those reimbursements received under a long-term care contract issued before August 1, 1996?
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 24, Caution, "If you received any reimbursements from LTC contracts issued before August
+        1, 1996, see instructions"; i8853 p. 9, Line 24, "Generally, don’t include on line 24 reimbursements for qualified LTC
+        services you received under a contract issued before August 1, 1996"
+  - id: f8853c.has_line24
+    printed: (helper)
+    label: Line 24 is more than zero
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8853c.line24_if_periodic
+      - const: 0
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 24, "Reimbursements for qualified LTC services provided for the insured during the LTC
+        period"
+  - id: f8853c.contract_before_ltc_date_if_reimbursed
+    printed: (gate)
+    label: Reimbursements under a contract issued before August 1, 1996, asked only when line 24 is more than zero (no
+      otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_line24
+          - const: true
+        then: f8853c.contract_before_ltc_date
+      - guard:
+          op: test
+          eq:
+          - f8853c.has_line24
+          - const: false
+        then: f8853c.no
+    cite:
+      doc: i8853
+      locator: 'p. 9, Line 24, "However, you must include reimbursements if the contract was exchanged or modified after July
+        31, 1996, to increase per diem payments or reimbursements"'
+  - id: f8853c.line25
+    printed: '25'
+    label: Per diem limitation. Subtract line 24 from line 23
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8853c.line23
+      take: f8853c.line24_if_periodic
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 25, "Per diem limitation. Subtract line 24 from line 23"
+    refuses:
+    - when: f8853c.contract_before_ltc_date_if_reimbursed
+      form: Form 8853, line 24 (reimbursements under a contract issued before August 1, 1996)
+      remedy: Reimbursements under a long-term care contract issued before August 1, 1996, are generally left off line 24
+        unless the contract was later changed; that is outside this tool.
+      cite:
+        doc: i8853
+        locator: 'p. 9, Line 24, "Generally, don’t include on line 24 reimbursements for qualified LTC services you received
+          under a contract issued before August 1, 1996"'
+  - id: f8853c.line26
+    printed: '26'
+    label: Taxable payments. Subtract line 25 from line 20. If zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8853c.line20
+      take: f8853c.line25
+    cite:
+      doc: f8853
+      locator: Form 8853 (2025), line 26, "Taxable payments. Subtract line 25 from line 20. If zero or less, enter -0-. Also
+        include this amount in the total on Schedule 1 (Form 1040), line 8e"
+    refuses:
+    - when: f8853c.nonqualified_if_periodic
+      form: Form 8853, Section C, line 17 (a contract that is not a qualified LTC insurance contract)
+      remedy: Payments at a set rate under a contract that is not a qualified long-term care insurance contract are taxable
+        only to the extent they are not excludable, figured outside Form 8853; that is outside this tool.
+      cite:
+        doc: f8853
+        locator: Form 8853 (2025), line 17, Caution, "Don’t use lines 18 through 26 to figure the taxable amount of benefits
+          paid under an LTC insurance contract that isn’t a qualified LTC insurance contract"
+    - when: f8853c.others_paid_if_periodic
+      form: Form 8853, Section C, Multiple Payees
+      remedy: When someone else also received payments at a set rate for the same insured person, the $420-a-day limit is
+        figured for everyone together on an attached statement; that is outside this tool.
+      cite:
+        doc: i8853
+        locator: 'p. 9, Multiple Payees, "attach a statement duplicating lines 18 through 26"'
+    - when: f8853c.rate_changed_if_periodic
+      form: Form 8853, Section C (more than one LTC period)
+      remedy: Payments at more than one rate in 2025 make more than one long-term care period, each figured on its own
+        Section C; that is outside this tool.
+      cite:
+        doc: i8853
+        locator: 'p. 8, Line 18, "If you have more than one LTC period, you must separately calculate the taxable amount of the
+          payments received during each LTC period"'
+  collection:
+    cite:
+      doc: i8853
+      locator: 'p. 9, Filing Requirements for Section C, "Go through this chart for each insured person for whom you received
+        long-term care (LTC) payments"'

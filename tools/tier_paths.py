@@ -56,7 +56,11 @@ READERS = {
     ("tools/bug_status.py", "TASKS-DONE.md"): ("docs", ["bug_status"]),
     ("tools/bug_status.py", "reports/bug_status.md"): ("docs", ["bug_status"]),
     ("tools/check_all_steps.sh", "reports/bug_status.md"): ("none", "the step's name and its command, tools/bug_status.py"),
+    ("tools/release_prep.sh", "reports/bug_status.md"): ("none", "the step's name and its command, tools/bug_status.py --check"),
+    ("tools/test_release_prep.sh", "reports/bug_status.md"): ("none", "the stub's expected call tools/bug_status.py --check"),
     ("tools/self_tests.py", "reports/bug_status.md"): ("none", "the self-test row runs tools/bug_status.py --self-test, which reads no file"),
+    ("tools/check_bug_inventory.py", "docs/*"): ("none", "the exclusion pathspec docs/records (and its comment): placeholders there are skipped, not read"),
+    ("tools/doc_figures.py", "reports/bug_status.md"): ("docs", ["doc_figures"]),
     ("tools/new_bug.py", "bug_pending/*"): ("docs", ["bookkeeping_self_tests"]),
     ("tools/test_bookkeeping_tools.py", "bug_pending/*"): ("none", "writes the path in a temporary repository"),
     ("tools/check_docs_conventions.py", "HANDOFF-NEXT-SESSION.md"): ("docs", ["check_docs_conventions"]),
@@ -72,6 +76,11 @@ READERS = {
     ("tools/new_bug.py", "BUG_INVENTORY.md"): ("docs", ["bookkeeping_self_tests"]),
     ("tools/task_row.py", "TASKS.md"): ("docs", ["bookkeeping_self_tests"]),
     ("tools/task_row.py", "TASKS-DONE.md"): ("docs", ["bookkeeping_self_tests"]),
+    # --check compares its blocks in the handoff, README.md and docs/TRUST.md with the figures of the registers and reports.
+    ("tools/doc_figures.py", "HANDOFF-NEXT-SESSION.md"): ("docs", ["doc_figures"]),
+    ("tools/doc_figures.py", "docs/*"): ("docs", ["doc_figures"]),
+    ("tools/doc_figures.py", "BUG_INVENTORY.md"): ("docs", ["doc_figures"]),
+    ("tools/doc_figures.py", "TASKS.md"): ("docs", ["doc_figures"]),
     # --check compares docs/COVERAGE.md with the page it generates from canonical/.
     ("tools/coverage/tree.py", "docs/*"): ("docs", ["coverage_tree"]),
     # Validates research/costs/agent_runs.jsonl; the quoted component "research" also names research/audits.
@@ -114,6 +123,7 @@ WALKERS = {
     ("tools/transcription/rename_carry.py", "--name-only"): "the ls-tree listing above",
     ("tools/transcription/rename_carry.py", '"archive"'): "git archive of the --from revision into a scratch directory; run by hand",
     ("tools/transcription/test_rename_carry.py", "os.walk("): "walks reviews/ of a temporary tree of its own",
+    ("tools/rename_ids.py", ".rglob("): "the files of fixtures/<year>, interview/<year>/coverage and interview/<year>/personas only",
     ("tools/archive_text.py", 'glob("tools/**'): "its self-test scans tools/**/*.py",
     ("tools/check_all.sh", "--name-only"): "the run's guard: paths changed during the run, not an input of a step",
     ("tools/commit_tested.sh", "--name-only"): "commits a tested tree; not a check-all step",

@@ -1,0 +1,71 @@
+form:
+  id: rf4562
+  kind: form
+  title: Form 4562 — Depreciation and Amortization, one per rental property
+  tax_year: 2025
+  note: The lines of one rental property's Form 4562, read from its buildings and improvements; shown only when one of them
+    was placed in service in 2025. Amounts are before any division for personal use.
+  lines:
+  - id: rf4562.needed
+    printed: (helper)
+    label: 'Form 4562 is needed: a building or improvement placed in service in 2025'
+    type: Bool
+    expr:
+      op: copy
+      from: rental.needs_4562
+    cite:
+      doc: i1040se
+      locator: p. 7, Line 18, "You must complete and attach Form 4562 only if"
+  - id: rf4562.line17
+    printed: '17'
+    label: MACRS deductions for assets placed in service in tax years beginning before 2025
+    shown_when: rf4562.needed
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: rental.dep_prior
+    cite:
+      doc: i4562
+      locator: p. 9, Line 17
+  - id: rf4562.line19i
+    printed: 19i(g)
+    label: Residential rental property
+    shown_when: rf4562.needed
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: rental.dep_res25
+    cite:
+      doc: i4562
+      locator: p. 9, Lines 19a Through 19j
+  - id: rf4562.line19j
+    printed: 19j(g)
+    label: Nonresidential real property
+    shown_when: rf4562.needed
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: rental.dep_non25
+    cite:
+      doc: i4562
+      locator: p. 9, Lines 19a Through 19j
+  - id: rf4562.line22
+    printed: '22'
+    label: Total. Add amounts from line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21
+    shown_when: rf4562.needed
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - rf4562.line17
+      - rf4562.line19i
+      - rf4562.line19j
+    cite:
+      doc: f4562
+      locator: Form 4562 (2025), line 22, "Enter here and on the appropriate lines of your return"
+  collection:
+    parent: rental
+    implicit: form
+    cite:
+      doc: i4562
+      locator: p. 2, Who Must File

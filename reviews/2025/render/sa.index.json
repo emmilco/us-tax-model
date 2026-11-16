@@ -4,8 +4,9 @@
  "family": "claude",
  "base": "2aa18159549a41f9135273157b0a699abdfb3be6b4e06cf349973e6ddeef99de",
  "head_rows": {
-  "match / mismatch / unclear / missing": "18 / 5 / 1 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "lines judged": "29",
+  "match / mismatch / unclear / missing": "20 / 8 / 1 / 0",
+  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -47,22 +48,23 @@
    "subject_key": "6170154ca939b65d44edda2d7b302b0a69395b5c49b79218fb64a0e733981858"
   },
   {
-   "key": "2",
-   "record": "2aa18159549a41f9135273157b0a699abdfb3be6b4e06cf349973e6ddeef99de",
-   "status": "MATCH",
+   "key": "2 (sa.line2)",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; amb.2025.sa_medical_negative_agi: the project floors adjusted gross income at zero for the 7.5% medical limit (a negative line 2 would raise line 4 above the expenses), the recorded reading; same ruling as the earlier rounds. f1040sa line 2, \"Enter amount from Form 1040 or 1040-SR, line 11b\".",
    "subject_key": "848f098d6161d92e9371a9258715ac09d3268d371b950e6b0324053cec68fd38"
   },
   {
-   "key": "3",
-   "record": "2aa18159549a41f9135273157b0a699abdfb3be6b4e06cf349973e6ddeef99de",
+   "key": "3 (sa.line3)",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
    "status": "MATCH",
-   "subject_key": "15380c1ef5e867ff2088dd9db42591929f6c30da4b925d7a6b334a38d61da515"
+   "subject_key": "e00c95fb4fe93ea5a791c4d221db4e517cd21a51263ac592332c0688d6a5a713"
   },
   {
    "key": "4",
-   "record": "dbcf102659e249cdb01b656eec8fc222c453ca99747614519895dce1289a904d",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
    "status": "MATCH",
-   "subject_key": "df8b1179e3e44c2d736996a6a71fe46fc553e4ebb9c3cfb5917542f2d03cc367"
+   "subject_key": "551ca47bbc4759626d5f315f4c93d09c4add54efd224cdb021a2bfb758a72ad3"
   },
   {
    "key": "5d",
@@ -78,42 +80,42 @@
   },
   {
    "key": "6",
-   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; refusal located elsewhere, as ruled in the landing round. i1040sca p. 7, Other Taxes, 'Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.' The foreign tax deduction is refused by sa.unsupported (sa.foreign_tax_deduct_if_tax). The GST deduction is for tax on income distributions from a trust, which reach the beneficiary on a Schedule K-1 (Form 1041); scope.k1 ('income or a loss from ... an estate or a trust? A paper called Schedule K-1 reports it.') asks it of everyone and refuses Form 1040 line 8 through scope.schedule1, so no computed return has a GST deduction. Project stands on the value.",
-   "subject_key": "ea4ddba929f70739e23ce26f24629c593768256a9fed34eff14437ee8908f3fc"
+   "ruling": "Ruling: finding; low; the model is right that deductible foreign taxes that are not creditable are neither computed nor refused. p514 p. 3, Exceptions for foreign taxes not allowed as a credit: \"Even if you claim a credit for other foreign taxes, you can deduct any foreign tax that is not allowed as a credit if you did any of the following\", including \"You paid withholding tax on dividends from foreign corporations whose stock you did not hold for the required period of time\". ftc.taxes asks only creditable taxes and sa.foreign_tax_deduct is asked only when they are positive (ftc.has_tax), so line 6 is $0 for such a filer with no refusal. The GST part of the model's reason stays refused: GST on income distributions reaches the filer through a Schedule K-1 (Form 1041), and scope.k1 (estates and trusts included) still refuses through scope.schedule1 (checked on the current forms). (BUG-0768)",
+   "subject_key": "d28673647bf3f04dc991d7d6fda3f66b246d6b739906ae7642cb2b78eac159cd"
   },
   {
    "key": "8b",
-   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
    "status": "MATCH",
-   "subject_key": "d9f2084889c4dfa24152c3d1a8505b9bafef62beb13915c96f7b167c8ab52f80"
+   "subject_key": "30538fcee6aa92b5befe8eec172817db69f433d126bc4383a99044796d11f912"
   },
   {
    "key": "8c",
-   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
    "status": "MATCH",
-   "subject_key": "a4e093c9647917925543ef48e26f26648fbaf167882d0d5d47d41034963e8fc5"
+   "subject_key": "b07a6104cfdca2984445e322366b7847a2bec73f5a0be70045a3ae0152578d31"
   },
   {
    "key": "13",
-   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
    "status": "MATCH",
-   "subject_key": "ac81ca345883da1f3d2088f41d34a16c6f7d9681e17d5cb3a16edd84a2d826cc"
+   "subject_key": "8dbd156afa587c00894983babfa2388d24047dca9b85922479f7ca1ddaa73695"
   },
   {
    "key": "15",
-   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; refusal located elsewhere. i1040sca p. 11, Line 15, 'Complete and attach Form 4684 to figure the amount of your loss. Only enter the amount from Form 4684, line 18, on line 15'. The line's citation says where the case goes: 'zero here: a casualty or theft loss is refused by sd.casualty through sd.other_forms'. sd.casualty ('was your ... property damaged, destroyed or stolen, leaving a loss that insurance did not cover ...') is asked of everyone and refuses Schedule D and the return. The stale Form 4684 refusal name of BUG-0639 is gone from the line. Project stands.",
-   "subject_key": "d341038d8ee8403f2fcc7d03d60d0a0ae200cc892939c5969b3854b941a74ceb"
+   "ruling": "Ruling: scope; i1040sca p. 11, Line 15, \"Complete and attach Form 4684 to figure the amount of your loss\". A casualty or theft is refused before Schedule A: sd.casualty (asked of every filer) feeds sd.other_forms, refused on Schedule D and from Form 1040 line 7a on, so line 15 is $0 on every computed return; the line's citation names that refusal (fix of BUG-0639). Same ruling as the earlier round (2026-11-14); checked on the current forms.",
+   "subject_key": "cf9ee37dba46a733612d055af41e60dbf2b40d2155024f5393d4ba67a4bc9411"
   },
   {
    "key": "16",
-   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; refusal located elsewhere, as ruled in pass 4bc7a200f1c1 and the landing round. i1040sca p. 11, Line 16 list: casualty and theft losses of income-producing property (Form 4684 lines 32 and 38b, Form 4797 line 18a) and a net qualified disaster loss (Form 4684 line 15) are refused by sd.casualty and sd.business_property through sd.other_forms; the claim-of-right repayment over $3,000 by s3.repaid_income ('repay more than $3,000 in total that you had included in income in an earlier year'; fixture redesign.credits.refuse.repaid_income); estate tax on income in respect of a decedent, bond premium, debt-instrument loss, unrecovered pension investment and impairment work expenses by sa.unsupported. The gambling limit matches, as the reviewer says. Project stands.",
-   "subject_key": "1ba655ac98465a40a34c8fbca95f3ef605a420394c2af83bc36cd129bd997788"
+   "ruling": "Ruling: scope; i1040sca p. 11, Line 16 list. The gambling limit matches, as the model says. Casualty and theft losses of income-producing property (Form 4684 lines 32 and 38b, Form 4797 line 18a) and a net qualified disaster loss (Form 4684 line 15) are refused through sd.casualty and sd.business_property into sd.other_forms; the claim-of-right repayment over $3,000 by s3.repaid_income (Schedule 3 and scope refusals); the other listed items by sa.unsupported. Same ruling as the earlier round (2026-11-14); gates checked on the current forms.",
+   "subject_key": "8c9a606368109ae77a77c094adf48610cd46d224192aab804e0511ab1556ddcd"
   },
   {
    "key": "7",
@@ -142,9 +144,9 @@
   },
   {
    "key": "12",
-   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
    "status": "MATCH",
-   "subject_key": "687c63385478f6af81a320112a821e06c29ecf1909c7406ca77e8724955af58c"
+   "subject_key": "12fe03ffa7376560828bbb8209b78c81653694b1d29f72ea9ac275e73489b74a"
   },
   {
    "key": "14",
@@ -154,9 +156,41 @@
   },
   {
    "key": "17",
-   "record": "1a5b262f25089215646b41448dfc45e2d98b1b2c61580aaf934a484d513a5274",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
    "status": "MATCH",
-   "subject_key": "33aba5535dd93d9aa0814fc621a6529f46cc22aa1be2692a92e49da63c9b7a21"
+   "subject_key": "ebf00741e136bec4edb9553fef9a3660f728bc73820a744ef718c64416446f09"
+  },
+  {
+   "key": "2 (sa.dep_line2)",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; medium; the model is right in part: the worksheet's earned income is \"Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15\" (i1040gi p. 35, Standard Deduction Worksheet for Dependents) and sa.dep_earned_sum leaves out 6, 8t and 8u. Lines 6 (Schedule F, scope.farm in scope.schedule1) and 8t (s1.nqdc_pension_if_w2 in s1.line8_other) are still refused, so they are zero on every computed return (amb.2025.sa_dep_earned). Line 8u is not: lane x2-s1o made it computed, so a dependent filer with wages earned while an inmate has line 2 too small. (BUG-0767)",
+   "subject_key": "d3010db82acc05abdf47b290c3e26006dc3df1c44dea6c80056c8332615105f3"
+  },
+  {
+   "key": "3 (sa.dep_line3)",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
+   "status": "MATCH",
+   "subject_key": "280e471bbcd97b8264752fb5b2fadbb5665d68d9508dd33b243486b79bad2a0a"
+  },
+  {
+   "key": "4a",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
+   "status": "MATCH",
+   "subject_key": "021878b5816cc5ab8fcee44dad40c097bdb8d2455d5a6423ea1cf2d0f96b72fe"
+  },
+  {
+   "key": "4b",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model says the count of boxes omits a spouse's boxes on a married filing separately return when the spouse had no income, files no return and can't be claimed (i1040gi p. 33, Line 12d). That case is refused: sa.mfs_spouse_extra (\"Married filing separately and claiming age or blindness boxes for your spouse\", asked when the spouse is not itemizing) refuses on sa.standard, which reads this worksheet (\"Standard Deduction Chart spouse boxes on a separate return\"). On every computed return the boxes are the filer's and, on a joint return, the spouse's.",
+   "subject_key": "33aa3e42a2ad9a64329316a63aeb6490301faf0503690ec1bfa55af323fae3d7"
+  },
+  {
+   "key": "4c",
+   "record": "616fdbf35ddc97fec265996fb2f24065eca29c65591f684db1137aee019f48bd",
+   "status": "MATCH",
+   "subject_key": "d17a800d3d17021437850aca7d3c2d92b8af98af32f089a3dd5adcd00c9f0e12"
   }
  ],
  "subjects": {
@@ -166,24 +200,29 @@
   "5c": "9727f5441c3477fe0d2cb79a93b93266726e1b065e0c896692a71e3d730c6c80",
   "8a": "0e0e49979252859854e2cce3f047999eb1920aa7ffb6a2a8aa713df1364590ba",
   "11": "60a99f7f9d1beea160e31cc5e679d3e3e27d6a926b25c3fe066dac8967ba326f",
-  "2": "4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e",
-  "3": "5e24c8422623eea02699f8e25a3375d4b4a5f93310c9c241875983aa685b0cf0",
-  "4": "34a3a2646aecd729e7bf336bdc773357a5c509baf90d1a806a02cdbba74ebd00",
+  "2 (sa.line2)": "4c52e94111b469ad5fce0fe24cb2cd74ec38a052a03ed05e10f6bfcd6933529e",
+  "3 (sa.line3)": "915c7f2a9b0042dab3a9e56be066227e30b5b060fc4824080ce27e96eaa3e71f",
+  "4": "69400b689008aae8f0c9a5e9e4ab38a55cf9c1d97db59c6943dbe2d896c6a5b2",
   "5d": "7f88fb40e2d2c4aa877c02c94fca39fe8e001739d17a0711bd09a5c9e3b7bdeb",
   "5e": "8c2bb6456a87bbb101ea5ef1eb4321d3d7e6760f4bab5581e92b6eb48c6ab7b4",
-  "6": "29c4b0633fe00b5a25b819b84b8e0d70d0d32e11f27b06556c1e8e99a483f0cc",
-  "8b": "3cb6e5edaa7270e1f89f471edcdf3f550aaa6fee0f7d679ac668a84ec29f96e4",
-  "8c": "4265af522f13bf379e782ab5d9ea4c50f6f7b7de38f66e13002c450d327008e4",
-  "13": "399352ecd49f700369b75ff416764a4b851082b135d27867f5eb58f10898afd6",
-  "15": "32d073052ee0109abd232bba06a4cd57818c05d05fb9947f3a45116ffe344746",
-  "16": "a46e2f64b372f40d09269c177fb7babaa38074bcaf7745ca0db5309a514e67be",
+  "6": "ff6ec3f35985aaac8caf0da261427a3683a3865cefe944f9ea4db361d0a5f3a4",
+  "8b": "b6250e2116c451db8f2ec61d2251252bc9d405b9ea86072f13ba409edd36b220",
+  "8c": "a0daf9cd15086da97099e063d7c94b8a2170aa0259eb2a577ca2be11be5a8ae6",
+  "13": "9323a621e3afc01215415cb3bc28b9c667e410748eae382e0069d901f814b6ef",
+  "15": "04700cd337f04399ba0cd2cf7020e393317cd2d4ea9775f6f9cbce63b0372066",
+  "16": "9b1ed8eaf2937febc041ff0fed85be2c8a82ded929d83f58cb5ca415faaba047",
   "7": "1d59e882ba98ae7a8dcf5a3c807217a18fd242122626f5a1ea0b0d30f7d3399e",
   "8e": "a1c3eaa8769af3038750e36dd1ffbdb9801945aaeb0ae10a2eaf1b402c4fdf0c",
   "9": "59551c58e6058836eb81aa7e7079bae6d30cf931898c086363bac3d61c09d8af",
   "10": "92b522a02b3747cf7e857a9a1c388ed33e2503712bdf226862aea42adeee02e9",
-  "12": "6c7b6c41285d5ded7878f1f488e0f420efe7ea55464439a87b4064a4e877cc4f",
+  "12": "e1f69a120478ac9d8c9dcd2c55c6942dc081d0ea49e822de9a3019dbfd22a83e",
   "14": "09594ec9f531977fac4775eaa7aa8d0590d9a4c367feb9b34febdba4bbb296f8",
-  "17": "b87d2487ec3c5e8229114fd8d6deea9fd1d35e8b69c61e7c12e5ec84f7552e92"
+  "17": "9d5b5c7bbe20575198076874da502d091c3e240cc991d9e5379c386b5ff61dde",
+  "2 (sa.dep_line2)": "f61df01beb9d98c04f23918b262b9064ec9bf2e34522103b322b9ccbf7ec5190",
+  "3 (sa.dep_line3)": "bb2a121adcb5f0e32bbd434e9b4a7b6b80ca36b93a3d446dfd5683b45c539313",
+  "4a": "9841bdd28de3be44b498d2e5c93d69a3ceb154f08165210b8b4314b2adc47e9a",
+  "4b": "c827351e10f28b0f9c12b208d0fc3bad584ba6fc106cc517a80096b1fa479880",
+  "4c": "9032f6928ad468e2e05dfc130005a016f7ed3bd1c320edb5065139c5b4ae2912"
  },
  "__rest__": "ac772d777e129a58b4d78fdc4d9997382ee870e6cbf12e65c65dde7b7e719585"
 }

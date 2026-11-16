@@ -2,27 +2,25 @@
  "kind": "render",
  "form": "oi8z",
  "family": "claude",
- "base": "268d682dbbd4736762b9ce5974ef28092ef5504dd3620127d741cfb7f6acec54",
- "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-07); see Line-scoped reviews"
- },
+ "base": "885e3234ac4395670f2fba4fb41d14fb71577e0ab265c9bcdf0436e390fe96b5",
  "lines": [
   {
    "key": "8z (type)",
-   "record": "6f4c31619dbc9adac02607fa2251d73b9291edbfd6f586bf60d6cb30b45bacdd",
+   "record": "885e3234ac4395670f2fba4fb41d14fb71577e0ab265c9bcdf0436e390fe96b5",
    "status": "MATCH",
-   "subject_key": "a0790dedf37e63df4a92fcb29e947e110076cc033b6e02b93b07e8f7bad2e305"
+   "subject_key": "1e59770393411e1ab2a41f02f0e149130d149107a8fc77c243a9109663d11c34"
   },
   {
    "key": "8z (amount)",
-   "record": "268d682dbbd4736762b9ce5974ef28092ef5504dd3620127d741cfb7f6acec54",
-   "status": "MATCH",
+   "record": "885e3234ac4395670f2fba4fb41d14fb71577e0ab265c9bcdf0436e390fe96b5",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model says a loss on certain corrective distributions of excess deferrals cannot be held by the NonNegDollars amount, and that Pub. 525 Recoveries is not shown. An item of kind corrective_distribution is refused at the entry by oi8z.figured (oi8z.taxable refuses when oi8z.figured: \"a corrective distribution, disaster relief payments, insurance dividends, or any other kind\"), and an item of kind recovery by oi8z.recovery (i1040gi p. 92, Line 8z, \"See Recoveries in Pub. 525 for details on how to figure the amount to report\"); recoveries of 2024 itemized deductions are figured on form rec. Every kind the line computes is an income amount, so NonNegDollars is right for the computed cases.",
    "subject_key": "9a60e24da2f6bac1b449280f8f3e9cacbc35a431f78d0b7ab6eecfa77872530d"
   }
  ],
  "subjects": {
-  "8z (type)": "b17bb335f519ea7e57a1b5f86b47fad0219f96a9f0866844ee10335c2ed19a81",
+  "8z (type)": "fcd3d5798616cc62679fa4191bcb574b61553a183188c2c6ab476eca587924cc",
   "8z (amount)": "d08a0d16f93c9b413a4c926f1ba4dcfea4bf4a30e6a3cd45485b5fdbca2076cf"
  },
- "__rest__": "88bff9466958832063aaa5eb6d014d9f7e1967406a1c16d9a33bbdc8e315f9de"
+ "__rest__": "f4adc7b0cc639f88269cbd40999ecb8e07bd5e0ec51c95aed0708603848a6ede"
 }

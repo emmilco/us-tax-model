@@ -37,17 +37,47 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
       cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
+  Digital Assets At any time during 2025, did you (or, on a joint return, your spouse) receive a digital asset (as a reward, award, or payment for property or services), or sell, exchange, or otherwise dispose of a digital asset (or a financial interest in a digital asset)?
+      = false
+      cite: [f1040] Form 1040 (2025), page 1, Digital Assets, "At any time during 2025, did you: (a) receive (as a reward, award, or payment for property or services); or (b) sell, exchange, or otherwise dispose of a digital asset (or a financial interest in a digital asset)?"; i1040gi p. 15, Digital Assets, "Digital assets are any digital representations of value that are recorded on a cryptographically secured distributed ledger or any similar technology."; i1040gi p. 16, "Received new digital assets as a result of mining, staking, and similar activities", "Disposed of a digital asset in exchange or trade for another digital asset", "Holding a digital asset in a wallet or account" and "Purchasing digital assets using U.S. or other real currency" (2025; created 2025-09-05; 3d31c226)
+  (helper) Number of sales entered with a digital asset box (G to L) on Form 8949
+      = 0
+      cite: [f8949] p. 1, Part I, "(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS" (2025; created 2025-05-05; 27451389)
+      note: confirmed roster $sales:
+  (gate) A No to the digital asset question on a return that lists a sale with a digital asset box (G to L)
+      = false
+      cite: [i1040gi] p. 16, How To Report Digital Asset Transactions, "If, in 2025, you disposed of any digital asset, which you held as a capital asset, through a sale, trade, exchange, payment, or other transfer, check “Yes” and use Form 8949 to calculate your capital gain or loss" (2025; printed date 2026-02-25; 482e9c48)
   1a  Total amount from Form(s) W-2, box 1
       = $0
       cite: [i1040gi] pp. 23–24, Line 1a, Total Amount From Form(s) W-2, Box 1, "Enter the total amount from Form(s) W-2, box 1. If a joint return, also include your spouse’s income from Form(s) W-2, box 1" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1b  Household employee wages not reported on Form(s) W-2
+      = $0
+      cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1c  Tip income not reported on line 1a
+      = $0
+      cite: [i1040gi] p. 24, Line 1c, "Enter the total of your tip income that was not reported on Form 1040, line 1a"; f4137 p. 1, line 4, "Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1d  Medicaid waiver payments not reported on Form(s) W-2, box 1
+      = $0
+      cite: [i1040gi] p. 24, Line 1d, "Medicaid Waiver Payments Not Reported on Form(s) W-2, Box 1" (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
   1e  Taxable dependent care benefits from Form 2441, line 26
       = $0
       cite: [i1040gi] p. 24, Line 1e, "Taxable Dependent Care Benefits From Form 2441, Line 26" and "But first complete Form 2441 to see if you can exclude part or all of the benefits" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f2441.benefits",{"const":false}],"op":"test"}
+  1g  Wages from Form 8919, line 6
+      = $0
+      cite: [i1040gi] p. 24, Line 1g, "Enter the total of your wages from Form 8919, line 6" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1h  Other earned income
+      = $0
+      cite: [i1040gi] p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout benefits (other than bona fide gifts)"; p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   1z  Add lines 1a through 1h
       = $0
-      cite: [f1040] Form 1040 (2025), line 1z (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), line 1z (line 1f, employer-provided adoption benefits, is refused by scope.adoption_benefits) (2025; created 2025-09-05; 3d31c226)
   2b  Taxable interest
       = $0
       cite: [i1040gi] Instructions for Form 1040, p. 25, line 2b (2025; printed date 2026-02-25; 482e9c48)
@@ -67,7 +97,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (2025; printed date 2026-02-25; 482e9c48)
   7a  Capital gain or (loss). Attach Schedule D if required
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
-      cite: [i1040gi] Instructions for Form 1040, line 7a (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D" (2025; printed date 2026-02-25; 482e9c48)
   9   Add lines 1z, 2b, 3b, 4b, 5b, 6b, 7a, and 8. This is your total income
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040] Form 1040 (2025), line 9 (2025; created 2025-09-05; 3d31c226)
@@ -164,12 +194,14 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $200,000
       cite: [f8959] p. 1, Part I, line 1, "Medicare wages and tips from Form W-2, box 5", "enter the total of the amounts from box 5"; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
       note: confirmed roster $person: taxpayer
-  2   Amount from f8959.zero
+  2   Unreported tips from Form 4137, line 6
       = $0
-      cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
-  3   Amount from f8959.zero
+      cite: [f8959] Form 8959 (2025), line 2, "Unreported tips from Form 4137, line 6"; i8959 p. 3, Line 2, "Enter unreported tips from line 6 of Form 4137", "If you are filing a joint return, also include the amount from line 6 of your spouse’s Form 4137" (2025; created 2025-04-30; 13e64004)
+      note: confirmed roster $person: taxpayer
+  3   Wages from Form 8919, line 6
       = $0
-      cite: [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
+      cite: [f8959] Form 8959 (2025), line 3, "Wages from Form 8919, line 6"; i8959 p. 3, Line 3, "Enter wages from line 6 of Form 8919", "If you are filing a joint return, also include the amount from line 6 of your spouse’s Form 8919" (2025; created 2025-04-30; 13e64004)
+      note: confirmed roster $person: taxpayer
   8   Self-employment income from Schedule SE (Form 1040), Part I, line 6. If you had a loss, enter -0-
       = $0
       cite: [f8959] Form 8959 (2025), line 8 (on a joint return, the combined amounts of both spouses' Schedules SE, line 6); i8959 p. 3, Line 8, "Enter your self-employment income from Schedule SE (Form 1040), Part I, line 6" (2025; created 2025-04-30; 13e64004)
@@ -261,7 +293,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 
-== Foreign tax credit — election without Form 1116 ==
+== Foreign tax credit — election without Form 1116, or Form 1116 ==
   (helper) Total creditable foreign taxes after required reductions; generally Form 1099-INT box 6 and Form 1099-DIV box 7, less any tax that is not creditable (such as tax on a dividend that fails the holding period or must be paid over)
       = $0
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 3, Foreign Taxes Not Eligible for a Credit, item 5, "Foreign taxes withheld on a dividend from a corporation, if you haven’t held the stock for at least 16 days within the 31-day period that begins 15 days before the ex-dividend date", and item 6, "Foreign taxes withheld on a dividend to the extent that you have to make related payments on positions in substantially similar or related property" (2025; printed date 2025-12-23; 6998cf8c)
@@ -289,12 +321,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Year parameter ftc.no (false)
       = false
       cite: [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory" (2025; printed date 2025-12-23; 6998cf8c)
-  (helper) Fails a condition of the election
+  (gate) A foreign tax credit carried from another year is claimed, with no foreign tax paid in 2025
       = false
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
-  (helper) Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax
+      cite: [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025" (2025; printed date 2025-12-23; 6998cf8c)
+  (helper) The credit without Form 1116 (the smaller of creditable foreign tax and regular income tax) when the election's conditions are met; Form 1116 line 35 when they are not; zero if no foreign tax
       = $0
-      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
+      cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and" (2025; printed date 2025-12-23; 6998cf8c)
       note: taken: {"eq":["ftc.has_tax",{"const":false}],"op":"test"}
 
 == Household facts for dependents and head of household ==
@@ -397,8 +429,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555" (2025; printed date 2026-02-25; 482e9c48)
   (gate) The filing status conflicts with the marriage facts entered
       = false
-      cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025." (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."; p. 14, Married Filing Separately, "if you are married at the end of 2025 and file a separate return"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  (helper) Filing status married filing separately
+      = false
+      cite: [i1040gi] p. 14, Married Filing Separately, "Check the “Married filing separately” box in the Filing Status section on page 1 of Form 1040 or 1040-SR if you are married at the end of 2025 and file a separate return" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Married filing separately, and you lived in a community property state at some time in 2025
+      = false
+      cite: [i1040gi] p. 14, Married Filing Separately, "Different rules apply to people in community property states; see Pub. 555"; p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}; Interpretation amb.2025.mfs_community_property: The second, on the existing question (household.community_property), for the nine states the instructions list. The same ground as amb.2025.hoh_community_property (owner decision of 2026-10-22, integrity plan decision 10): the community income split of Pub. 555 is outside the tool. "Lived in" is broader than "domicile": a filer who lived in one of the states only temporarily is refused too, which errs toward refusing (settled as design decision D1 of the married-filing-separately scout, by the coordinator under the owner's delegation, 2026-11-15). (p504, p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income" and "If you and your spouse file separate returns, you must report half of any income described by state law as community income")
 
 == IRA Deduction Worksheet — Schedule 1, Line 20 ==
   (helper) Year parameter household.no (false)
@@ -492,6 +531,98 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
       note: confirmed roster $w2@person[taxpayer]: a
+  (helper) This person's Form 8919 line 6 (the column (f) wages of the firms listed; zero for a person not paid by such a firm)
+      = $0
+      cite: [f8919] p. 1, line 6, "Total wages. Combine lines 1 through 5 in column (f)" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 84102b12)
+      note: taken: {"eq":["scope.contractor_pay_if_pay",{"const":false}],"op":"test"}
+  (helper) This person has wages on Form 8919 (line 6 more than zero)
+      = false
+      cite: [f8919] p. 1, Who must file, "You must file Form 8919 if all of the following apply" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 84102b12)
+  (helper) This person's Form 8919 line 13 (uncollected social security and Medicare tax on wages) (only when Form 8919 is filed; zero otherwise)
+      = $0
+      cite: [f1040s2] Schedule 2 (2025), line 6, "Uncollected social security and Medicare tax on wages. Attach Form 8919" (2025; created 2025-05-08; 64d867b6)
+      note: taken: {"eq":["person.f8919_any",{"const":false}],"op":"test"}
+  (helper) This person's Form 4137 line 2 (the column (c) tips of the employers listed; zero for a person with no unreported tips)
+      = $0
+      cite: [f4137] p. 1, line 2, "Total cash and charge tips you received in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+      note: taken: {"eq":["scope.tips_unreported_if_pay",{"const":false}],"op":"test"}
+  (helper) This person's Form 4137 line 3 (the column (d) tips of the employers listed; zero for a person with no unreported tips)
+      = $0
+      cite: [f4137] p. 1, line 3, "Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+      note: taken: {"eq":["scope.tips_unreported_if_pay",{"const":false}],"op":"test"}
+  (gate) Noncash tips (asked only when unreported or noncash tips are reported for the return; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 24, Line 1c, "Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.tips_unreported_if_pay",{"const":false}],"op":"test"}
+  (helper) This person's Form 4137 line 4 (unreported cash and charge tips)
+      = $0
+      cite: [f4137] p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+      note: confirmed roster $f4137@person[taxpayer]: form
+  (helper) This person's Form 4137 line 6 (unreported tips subject to Medicare tax) (only when Form 4137 is filed; zero otherwise)
+      = $0
+      cite: [f4137] p. 2, Line 6, "Enter this amount on Form 8959, line 2, if you’re required to file that form" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+      note: taken: {"eq":["person.f4137_filed",{"const":false}],"op":"test"}
+  (helper) This person's Form 4137 line 13 (social security and Medicare tax on unreported tips) (only when Form 4137 is filed; zero otherwise)
+      = $0
+      cite: [f1040s2] Schedule 2 (2025), line 5, "Social security and Medicare tax on unreported tip income. Attach Form 4137" (2025; created 2025-05-08; 64d867b6)
+      note: taken: {"eq":["person.f4137_filed",{"const":false}],"op":"test"}
+  (helper) This person's tip income not reported on line 1a (Form 4137 line 4 and noncash tips)
+      = $0
+      cite: [i1040gi] p. 24, Line 1c, "This should include any tip income you didn’t report to your employer", "Also, include the value of any noncash tips you received" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) This person has tips on Form 4137 (line 2 more than zero)
+      = false
+      cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (c) (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Household employee wages not on a W-2 (asked only when such wages are reported for the return; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.household_pay_if_pay",{"const":false}],"op":"test"}
+  (gate) Strike or lockout benefits (asked only when such benefits are reported for the return; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.strike_pay_if_pay",{"const":false}],"op":"test"}
+  (gate) Medicaid waiver payments in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.medicaid_waiver",{"const":false}],"op":"test"}
+  (gate) Medicaid waiver payments not in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.medicaid_waiver",{"const":false}],"op":"test"}
+  (helper) Medicaid waiver payments not in W-2 box 1 are more than zero
+      = false
+      cite: [i1040gi] p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Medicaid waiver payments on Form 1099-MISC or 1099-NEC (asked only when some payments are not in W-2 box 1; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.mw_has_not_box1",{"const":false}],"op":"test"}
+  (helper) Medicaid waiver payments on Form 1099-MISC or 1099-NEC are more than zero
+      = false
+      cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) The Medicaid waiver payments on Form 1099 are more than the payments not in W-2 box 1
+      = false
+      cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) A home-care business of your own (asked only with Medicaid waiver payments on Form 1099; otherwise no)
+      = false
+      cite: [i1040gi] p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.mw_has_1099",{"const":false}],"op":"test"}
+  (helper) This person's Medicaid waiver payments (in W-2 box 1 and not in box 1)
+      = $0
+      cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person had Medicaid waiver payments
+      = false
+      cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) The choice to count Medicaid waiver payments as earned income (asked only of a person with such payments; otherwise no)
+      = false
+      cite: [i1040gi] p. 24, Line 1d, "if you choose to include nontaxable payments in earned income for purposes of claiming a credit or other tax benefit", "If you and your spouse both received nontaxable Medicaid waiver payments during the year, you and your spouse can make different choices about including payments in earned income" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.mw_paid",{"const":false}],"op":"test"}
+  (helper) Medicaid waiver payments not in W-2 box 1 or on Form 1099 that go on line 1d (only when chosen as earned income; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 92, Line 8s, "and choose to include nontaxable amounts in earned income for purposes of claiming a credit or other tax benefit, report the amount on Form 1040 or 1040-SR, line 1d" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.mw_earned_if_paid",{"const":false}],"op":"test"}
+  (helper) This person's Medicaid waiver payments on Form 1040 line 1d
+      = $0
+      cite: [i1040gi] p. 24, Line 1d, "enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC", "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2, if you choose to include nontaxable payments in earned income" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.mw_all_nontaxable: The first. The interview asks only about pay for care of someone living in the filer's home with them, the case Pub. 525 names; an individual care provider caring for more than five adults or ten children at home is taken to be outside the situations a filer of this tool reports. Were it wrong, line 1a or 1d would be right but Schedule 1 line 8s would exclude too much. Notice 2014-7 is not archived. (p525, p. 33, "Certain Medicaid waiver payments are treated as difficulty-of-care payments when received by an individual care provider for caring for an eligible individual (whether related or unrelated) living in the provider’s home", "Ten qualified foster individuals under age 19, or", "Five qualified foster individuals age 19 or older")
   (helper) Taxable IRA distributions on this person's Forms 1099-R (line 4b amounts)
       = $0
       cite: [i1040gi] p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b' (2025; printed date 2026-02-25; 482e9c48)
@@ -500,6 +631,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040gi] pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts on Form 1040 or 1040-SR, line 5b' (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Taxable disability pensions on this person's Forms 1099-R paid before the minimum retirement age (line 1h amounts)
+      = $0
+      cite: [i1040gi] p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer"; p575 p. 6, Disability Pensions, "You must report your taxable disability payments as wages on Form 1040, 1040-SR, or 1040-NR, line 1h, until you reach minimum retirement age" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) This person's other earned income on Form 1040 line 1h (strike or lockout benefits and disability pensions paid before the minimum retirement age)
+      = $0
+      cite: [i1040gi] p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout benefits (other than bona fide gifts)"; p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer" (2025; printed date 2026-02-25; 482e9c48)
   zero No excess credit
       = $0
       cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
@@ -706,6 +844,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i5329] p. 8, Line 47, "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12)." (2025; aec3d325)
       note: confirmed roster $f8889@person[taxpayer]:
 
+== Form 4137 — Social Security and Medicare Tax on Unreported Tip Income, lines 2 to 13, one per person — person[taxpayer].f4137[form] ==
+  2   Total cash and charge tips you received in 2025. Add the amounts from line 1, column (c)
+      = $0
+      cite: [f4137] p. 1, line 2, "Total cash and charge tips you received in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+  3   Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line 1, column (d)
+      = $0
+      cite: [f4137] p. 1, line 3, "Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+  4   Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c
+      = $0
+      cite: [f4137] p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+      note: Interpretation amb.2025.f4137_reported_over_received: The first (f4137.line4 subtracts with a floor of zero). Line 4 is "Include as income on Form 1040 ... line 1c", the tips not reported; a negative unreported amount has no meaning there, and column (c) is to "Include all cash and charge tips you received", so it holds at least the tips reported. The reading matters only for inconsistent entries. (f4137, p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c"; p. 2, Columns (c) and (d), "Include all cash and charge tips you received")
+
 == Form 5329, Additional Taxes on Qualified Plans (Including IRAs) and Other Tax-Favored Accounts (Parts I and VII), one per person — person[taxpayer].f5329[form] ==
   1   Early distributions includible in income
       = $0
@@ -820,6 +970,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 89, Line 2a; p. 95, Line 19a (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["s1.alimony_any",{"const":false}],"op":"test"}
+  (gate) The 80% limit on the net operating loss deduction may apply (the loss is more than four times taxable income after deducting it)
+      = false
+      cite: [i172] p. 2, "Only NOLs arising after 2017 and carried forward to a year after 2020 are subject to the 80%-of-taxable-income limit" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
+      note: taken: {"eq":["scope.nol",{"const":false}],"op":"test"}; Interpretation amb.2025.s1_nol_limit_test: The first (s1.nol_ti, s1.nol_ti4, s1.nol_limit_test, refused at f1040.line15 by s1.nol_limit). Owner decision D3 (lane x2-s1o, scout-s1-other): the sufficiency test is accepted. The premise T0 ≥ T + N holds when no deduction in scope rises with AGI. Checked against the forms (lane x2-s1o, 2026-11-15): the above-the-line deductions with phase-outs (student loan interest, IRA) fall as modified AGI rises; taxable social security benefits rise with other income, so AGI without the NOL is at least AGI with it plus N; the itemized deductions with an AGI floor (medical, casualty) and the SALT limit that falls above $500,000 of modified AGI fall as AGI rises; the larger of itemized and standard deductions keeps that direction; Schedule 1-A deductions (tips, overtime, car loan interest, seniors) phase out with modified AGI; the QBI deduction is left out of T0 and only lowers T. The one deduction that rises with AGI, charitable gifts under the AGI percentage limits, is refused when a limit binds (sa.charity_limited). NOLs from before 2018 (no 80% limit, deducted first) are refused (s1.nol_before_limit_date). The refusal sits on line 15, not on line 8a, because the test reads lines 11b and 14, which read line 8a. (i172, p. 2, "80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions")
   11  Educator expenses
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 11; i1040gi p. 93, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; created 2025-07-25; 8dafec71)
@@ -923,7 +1077,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       - household employment taxes
       - the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III)
       - uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)
-      - tax on unreported tips (Form 4137)
       - interest on deferred tax
 
       Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.
@@ -933,6 +1086,17 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040s2] Schedule 2 (2025), line 4; i1040sse p. 2, Joint Returns, "Enter the combined SE tax on Schedule 2 (Form 1040), line 4" (2025; created 2025-05-08; 64d867b6)
       note: confirmed roster $person: taxpayer
+  5   Social security and Medicare tax on unreported tip income. Attach Form 4137
+      = $0
+      cite: [f1040s2] Schedule 2 (2025), line 5, "Social security and Medicare tax on unreported tip income. Attach Form 4137"; f4137 p. 1, Add lines 11 and 12, "Include as tax on Schedule 2 (Form 1040), line 5"; i1040gi p. 112, Line 5, "Enter the total of any taxes from Form 4137" (2025; created 2025-05-08; 64d867b6)
+      note: confirmed roster $person: taxpayer
+  6   Uncollected social security and Medicare tax on wages. Attach Form 8919
+      = $0
+      cite: [f1040s2] Schedule 2 (2025), line 6, "Uncollected social security and Medicare tax on wages. Attach Form 8919"; f8919 p. 1, Add lines 11 and 12, "Include as tax on your annual tax return (Schedule 2 (Form 1040), line 6"; i1040gi p. 112, Line 6, "Enter the total of any taxes from Form 8919" (2025; created 2025-05-08; 64d867b6)
+      note: confirmed roster $person: taxpayer
+  7   Total additional social security and Medicare tax. Add lines 5 and 6
+      = $0
+      cite: [f1040s2] Schedule 2 (2025), line 7, "Total additional social security and Medicare tax. Add lines 5 and 6" (2025; created 2025-05-08; 64d867b6)
   (helper) Exception 05 (medical expenses) amounts of everyone on the return, each person's already limited to Schedule A line 4
       = $0
       cite: [i5329] p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year." (2025; aec3d325)
@@ -951,7 +1115,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   12  Amount from f8960.line17
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  21  Add s2.line4, s2.line8, s2.line11, s2.line12, s2.line18
+  21  Add s2.line4, s2.line7, s2.line8, s2.line11, s2.line12, s2.line18
       = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
       cite: [f1040s2] Schedule 2 (2025), line 21, "Add lines 4, 7 through 16, 18, and 19. These are your total other taxes" (2025; created 2025-05-08; 64d867b6)
 
@@ -1092,9 +1256,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) In 2025, did you (or, on a joint return, your spouse) repay more than $3,000 in total that you had included in income in an earlier year because it appeared you had an unrestricted right to it?
       = false
       cite: [p525] p. 36, Repayments, "If the amount you repaid was more than $3,000, you can deduct the repayment as an other itemized deduction on Schedule A (Form 1040), line 16, if you included the income under a claim of right" and "However, you can choose to take a credit for the year of repayment"; i1040gi p. 117, Line 13b, "If you are claiming a credit for repayment of amounts you included in your income in an earlier year because it appeared you had a right to the income" (2025; 39b0fa5e)
-  (gate) Married filing separately
-      = false
-      cite: [i1040gi] p. 14, Married Filing Separately (2025; printed date 2026-02-25; 482e9c48)
 
 == Schedule A — supported itemized deductions and standard comparison ==
   (helper) A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other than gambling losses
@@ -1122,13 +1283,16 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
+  (helper) Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (gate) Married filing separately and claiming age or blindness boxes for your spouse
+  (gate) Married filing separately and claiming age or blindness boxes for your spouse (asked only when the spouse is not itemizing on a separate return; otherwise no)
       = false
-      cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return" (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["sa.mfs",{"const":false}],"op":"test"}
+      cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return"; p. 34, Exception 2—Spouse itemizes on a separate return, "your standard deduction is zero, even if you were born before January 2, 1961, or were blind" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.mfs_spouse_not_itemizing",{"const":false}],"op":"test"}
+  (helper) Married filing separately with a spouse who is not itemizing deductions on a separate return
+      = false
+      cite: [i1040gi] p. 34, Exception 2—Spouse itemizes on a separate return, "your standard deduction is zero, even if you were born before January 2, 1961, or were blind" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Elect to itemize even if the standard deduction is larger?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -1176,10 +1340,23 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040sca] p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 9, Line 8c, "Points Not Reported on Form 1098" (2025; printed date 2025-12-08; b0999b12)
       note: taken: {"eq":["sa.home_asked",{"const":false}],"op":"test"}
-  (gate) Asked only where it can apply (sa.mortgage_over_limit)
+  (helper) Home mortgage interest paid, on a return that is not married filing separately
+      = false
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt" (2025; printed date 2025-12-08; b0999b12)
+  (helper) Home mortgage interest paid, on a married filing separately return
+      = false
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt" (2025; printed date 2025-12-08; b0999b12)
+  (gate) The home mortgage debt is over the $750,000 or $1,000,000 limit or the home's value, asked only where mortgage interest was paid on a return that is not married filing separately (otherwise no)
       = false
       cite: [i1040sca] p. 8, Limits on home mortgage interest, "you can only deduct home mortgage interest on up to $1,000,000", "deduct home mortgage interest on up to $750,000", "If the total amount of all mortgages is more than the fair market value of the home" (2025; printed date 2025-12-08; b0999b12)
-      note: taken: {"eq":["sa.has_mortgage_interest",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sa.mortgage_interest_not_mfs",{"const":false}],"op":"test"}
+  (gate) The home mortgage debt is over the $375,000 or $500,000 limit or the home's value, asked only where mortgage interest was paid on a married filing separately return (otherwise no)
+      = false
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.mortgage_interest_mfs",{"const":false}],"op":"test"}
+  (helper) The home mortgage debt is over the limit for the filing status ($750,000 or $1,000,000; $375,000 or $500,000 if married filing separately) or over the home's value (no when no mortgage interest was paid)
+      = false
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "you can only deduct home mortgage interest on up to $1,000,000 ($500,000 if you are married filing separately) of that debt", "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt", "If the total amount of all mortgages is more than the fair market value of the home" (2025; printed date 2025-12-08; b0999b12)
   (gate) Asked only where it can apply (sa.mortgage_other_use)
       = false
       cite: [i1040sca] p. 8, Line 8, "Interest paid on home mortgage proceeds used for other purposes isn’t deductible on lines 8a or 8b" (2025; printed date 2025-12-08; b0999b12)
@@ -1254,6 +1431,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Add sa.standardbase, sa.extra_age65, sa.extra_blind
       = $15,750
       cite: [f1040sa] i1040gi pp. 34–35, Line 12e Standard Deduction or Itemized Deductions, "Exception 4—Born before January 2, 1961, or blind", "Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind", "If born before January 2, 1961, or blind, multiply the number on line 1 by $1,600 ($2,000 if single or head of household)" (2025; created 2025-11-20; c14acf34)
+  (gate) Someone can claim you as a dependent and your filing status is qualifying surviving spouse
+      = false
+      cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3, "Enter the amount shown below for your filing status" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.sa_dep_qss: Refuse (gate sa.dep_qss, on sa.standard and sa.deduction). The worksheet is silent on the status, and taking the joint amount would be the tool's reading, not the text's. The case is rare (a widowed parent whom another person can claim). The refusal costs that filer the return; it does not compute a deduction the text does not give.
+ (i1040gi, p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3)
+  (helper) Standard deduction before a spouse's itemizing on a separate return is applied (the Standard Deduction Worksheet for Dependents when someone can claim you, or your spouse if filing jointly, as a dependent)
+      = $15,750
+      cite: [i1040gi] p. 34, Line 12e, "Exception 1—Dependent. Line 12a. If you checked a box on line 12a, use the Standard Deduction Worksheet for Dependents to figure your standard deduction" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.dependent",{"const":false}],"op":"test"}
   (helper) Standard deduction, zero when MFS spouse itemizes
       = $15,750
       cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
@@ -1267,7 +1453,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: guard incomplete
   (helper) MFS with spouse itemizing
       = false
-      cite: [i1040gi] p. 34, Line 12e, Exception 2 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 34, Exception 2—Spouse itemizes on a separate return, "If you checked the box on line 12b, your standard deduction is zero" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["sa.mfs",{"const":false}],"op":"test"}
 
 == Schedule B — supported interest and ordinary dividends ==
@@ -1437,6 +1623,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (gate) The answer to scope.rent_personal, asked only when the question scope.rental is answered Yes (false otherwise)
+      = false
+      cite: [i1040se] p. 5, Personal property, "Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles" (2025; ad71de35)
+      note: taken: {"eq":["scope.rental",{"const":false}],"op":"test"}
   (helper) In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it.
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
@@ -1446,6 +1636,26 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (gate) Wages as a household employee not reported on a W-2 (asked only after a Yes to pay not on a W-2; otherwise no)
+      = false
+      cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
+  (gate) Wages from a firm that treated the worker as an independent contractor (Form 8919) (asked only after a Yes to pay not on a W-2; otherwise no)
+      = false
+      cite: [f8919] p. 1, Who must file, "You performed services for a firm", "You believe your pay from the firm wasn’t for services as an independent contractor", "The firm didn’t withhold your share of social security and Medicare taxes from your pay" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 84102b12)
+      note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
+  (gate) Tips not reported in full to an employer, or noncash tips (Form 4137 and line 1c) (asked only after a Yes to pay not on a W-2; otherwise no)
+      = false
+      cite: [i1040gi] p. 24, Line 1c, "This should include any tip income you didn’t report to your employer", "Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
+  (gate) Strike or lockout benefits (asked only after a Yes to pay not on a W-2; otherwise no)
+      = false
+      cite: [i1040gi] p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
+  (gate) Other wages from an employer, with no W-2 (asked only after a Yes to pay not on a W-2; otherwise no)
+      = false
+      cite: [i1040gi] p. 25, Missing or Incorrect Form W-2?, "Even if you don’t get a Form W-2, you must still report your earnings" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
   (helper) In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
@@ -1482,9 +1692,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f2441.benefits",{"const":false}],"op":"test"}
-  (helper) In 2025, were you (or, on a joint return, your spouse) paid back an amount whose deduction or credit on an earlier year's return lowered your tax, other than a state or local income tax refund?
-      = false
-      cite: [p525] p. 24, Recoveries, "A recovery is a return of an amount you deducted or took a credit for in an earlier year" (2025; 39b0fa5e)
   (helper) Did you (or, on a joint return, your spouse) take money from a retirement plan in 2023 or 2024 because of a disaster, and spread its tax over three years or pay any of it back in 2025?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
@@ -1542,7 +1749,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["scope.business_before",{"const":false}],"op":"test"}
   (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool computes (true when any of the Schedule 1 screening questions is answered Yes)
       = false
-      cite: [i1040gi] p. 93, Line 12, "Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home"; p. 93, Line 12, "Performing-arts-related expenses as a qualified performing artist", "Business expenses of fee-basis state or local government officials"; p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station"; p. 93, Line 16, "Self-Employed SEP, SIMPLE, and Qualified Plans", "If you were self-employed or a partner, you may be able to take this"; p. 91, Line 8a, "Enter any deduction for an NOL from an earlier year"; i1040se p. 1, General Instructions, "Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties, partnerships, S corporations, estates, trusts, and residual interests in REMICs"; i1040sf p. 2, General Instructions, "Use Schedule F (Form 1040) to report farm income and expenses"; i1040sse p. 1, Ministers, Members of Religious Orders, and Christian Science Practitioners, "you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn’t taken a vow of poverty, or Christian Science practitioner"; i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes"; p. 25, Were You a Statutory Employee?, "Statutory employees report the amount shown in box 1 of Form W-2 on a Schedule C"; p. 100, Line 24f, "Enter contributions to section 501(c)(18)"; p. 92, Line 8z, "Reimbursements or other amounts received for items deducted in an earlier year"; p. 99, Line 23, "Archer MSA Deduction"; p. 99, Lines 24a Through 24z, "Enter reforestation amortization and expenses"; p. 100, Line 24h, "Enter attorney fees and court costs for actions involving certain unlawful" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 93, Line 12, "Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home"; p. 93, Line 12, "Performing-arts-related expenses as a qualified performing artist", "Business expenses of fee-basis state or local government officials"; p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station"; p. 93, Line 16, "Self-Employed SEP, SIMPLE, and Qualified Plans", "If you were self-employed or a partner, you may be able to take this"; i1040se p. 1, General Instructions, "Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties, partnerships, S corporations, estates, trusts, and residual interests in REMICs"; i1040sf p. 2, General Instructions, "Use Schedule F (Form 1040) to report farm income and expenses"; i1040sse p. 1, Ministers, Members of Religious Orders, and Christian Science Practitioners, "you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn’t taken a vow of poverty, or Christian Science practitioner"; i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes"; p. 25, Were You a Statutory Employee?, "Statutory employees report the amount shown in box 1 of Form W-2 on a Schedule C"; p. 100, Line 24f, "Enter contributions to section 501(c)(18)"; p. 99, Line 23, "Archer MSA Deduction"; p. 99, Lines 24a Through 24z, "Enter reforestation amortization and expenses"; p. 100, Line 24h, "Enter attorney fees and court costs for actions involving certain unlawful" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Nonresident alien status, or other income or return treatment outside this tool (true when any of the other-income screening questions is answered Yes)
       = false
       cite: [i1040gi] p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"; p. 24, Line 1c, "Enter the total of your tip income that was not reported on Form 1040, line 1a"; p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)"; p. 24, Line 1d, "Enter your taxable Medicaid waiver payments that were not reported on"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)" (2025; printed date 2026-02-25; 482e9c48)
@@ -1710,14 +1917,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) You (or, on a joint return, your spouse) paid interest on a student loan in 2025
       = false
       cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) You (or, on a joint return, your spouse) paid interest on a student loan in 2025, asked only when the filing status is not married filing separately (no otherwise, since that status cannot take the deduction)
+      = false
+      cite: [i1040gi] p. 98, Schedule 1, line 21, "Your filing status is any status except married filing separately" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["household.mfs",{"const":false}],"op":"test"}
   (gate) Total interest paid in 2025 on student loans, asked only when interest was paid on a student loan (zero otherwise)
       = $0
       cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["sli.any",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sli.any_if_not_mfs",{"const":false}],"op":"test"}
   (gate) Whether any of the interest was on a loan that is not a qualified student loan, asked only when interest was paid on a student loan (false otherwise)
       = false
       cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["sli.any",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sli.any_if_not_mfs",{"const":false}],"op":"test"}
   (gate) The interest on loans that are not qualified student loans, asked only when there is such a loan (zero otherwise)
       = $0
       cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; 482e9c48)
@@ -1725,7 +1936,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Whether any of the interest was paid from tax-free qualified tuition program earnings or through tax-free loan repayment assistance, asked only when interest was paid on a student loan (false otherwise)
       = false
       cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["sli.any",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sli.any_if_not_mfs",{"const":false}],"op":"test"}
   (gate) The interest paid from tax-free qualified tuition program earnings or loan repayment assistance, asked only when there is some (zero otherwise)
       = $0
       cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; 482e9c48)
@@ -1771,6 +1982,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   scope.military_move_if_armed_forces: chose false (guard 1)
       not taken: guard 0 = false
+  scope.rent_personal_if_rental: chose false (guard 1)
+      not taken: guard 0 = false
   scope.clergy_if_religious_work: chose false (guard 1)
       not taken: guard 0 = false
   scope.church_exempt_wages_if_religious_work: chose false (guard 1)
@@ -1786,6 +1999,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   scope.reservist_repaid_if_armed_forces: chose false (guard 1)
       not taken: guard 0 = false
   scope.adoption_benefits_if_adoption: chose false (guard 1)
+      not taken: guard 0 = false
+  scope.wages_no_form_if_pay: chose false (guard 1)
       not taken: guard 0 = false
   scope.care_benefits_other_if_benefits: chose false (guard 1)
       not taken: guard 0 = false
@@ -1828,10 +2043,6 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s3.farmland_deferral_if_sold: chose false (guard 1)
       not taken: guard 0 = false
-  ftc.carryover_ask: chose false (guard 1)
-      not taken: guard 0 = false
-  ftc.carryover_if_asked: chose false (guard 1)
-      not taken: guard 0 = false
   s3.section960c_if_foreign: chose false (guard 1)
       not taken: guard 0 = false
   s3.section965_if_foreign: chose false (guard 1)
@@ -1865,10 +2076,45 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   div.capital_gain_boxes: chose true (guard 0)
   div.box2c_if_capital_gain: chose $1 (guard 0)
   sd.to1040: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  s1.nol_limit: chose false (guard 1)
+      not taken: guard 0 = false
+  household.mfs_community_property: chose false (guard 0)
   household.cp_not_joint: chose false (guard 1)
       not taken: guard 0 = false
   household.cp_marriage_ended: chose false (guard 0)
+  scope.household_pay_if_pay: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].household_wages_if_pay: chose $0 (guard 1)
+      not taken: guard 0 = false
+  scope.tips_unreported_if_pay: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].f4137_col_c: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].f4137_col_d: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].tips_noncash_if_unreported: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_not_box1_if_mw: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_1099_if_not_box1: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_business_if_1099: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_box1_if_mw: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_earned_if_paid: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_other_1d: chose $0 (guard 1)
+      not taken: guard 0 = false
   f1040.line1e: chose $0 (guard 1)
+      not taken: guard 0 = false
+  scope.contractor_pay_if_pay: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].f8919_wages: chose $0 (guard 1)
+      not taken: guard 0 = false
+  scope.strike_pay_if_pay: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].strike_if_pay: chose $0 (guard 1)
       not taken: guard 0 = false
   sb.ordinary_dividends_if_dividends: chose $0 (guard 0)
   sb.nominee_if_income: chose false (guard 0)
@@ -1909,6 +2155,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   ira.less_gate: chose false (guard 1)
       not taken: guard 0 = false
+  sli.any_if_not_mfs: chose false (guard 0)
   sli.interest_if_any: chose $0 (guard 1)
       not taken: guard 0 = false
   sli.unqualified_any_if_any: chose false (guard 1)
@@ -1938,7 +2185,9 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sa.mortgage_unreported_if_home: chose false (guard 1)
       not taken: guard 0 = false
-  sa.mortgage_over_limit_if_interest: chose false (guard 1)
+  sa.mortgage_over_limit_if_joint_limits: chose false (guard 1)
+      not taken: guard 0 = false
+  sa.mortgage_over_limit_mfs_if_mfs: chose false (guard 1)
       not taken: guard 0 = false
   sa.mortgage_other_use_if_interest: chose false (guard 1)
       not taken: guard 0 = false
@@ -1951,6 +2200,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   sa.mfs_spouse_extra: chose false (guard 1)
       not taken: guard 0 = false
   person[taxpayer].age65_box: chose false (guard 1)
+      not taken: guard 0 = false
+  sa.standard_amount: chose $15,750 (guard 1)
       not taken: guard 0 = false
   sa.standard: chose $15,750 (guard 1)
       not taken: guard 0 = false
@@ -1974,6 +2225,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].se_line12: chose $0 (guard 1)
       not taken: guard 0 = false
+  person[taxpayer].f4137_tax: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].f8919_tax: chose $0 (guard 1)
+      not taken: guard 0 = false
   person[taxpayer].x_c05: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].inherited_account_if_under_73: chose false (guard 0)
@@ -1993,9 +2248,15 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].f5329[form].l49: chose $0 (guard 1)
       not taken: guard 0 = false
+  person[taxpayer].f4137_line6: chose $0 (guard 1)
+      not taken: guard 0 = false
   person[taxpayer].se_line6: chose $0 (guard 1)
       not taken: guard 0 = false
   f8960.line16: chose REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+  ftc.carryover_ask: chose false (guard 1)
+      not taken: guard 0 = false
+  ftc.carryover_if_asked: chose false (guard 1)
+      not taken: guard 0 = false
   ftc.credit: chose $0 (guard 1)
       not taken: guard 0 = false
 
@@ -2003,6 +2264,7 @@ Derivations:
   scope.no: param(#household.no = false)
   scope.reservist_expenses_if_armed_forces: choose(scope.armed_forces = false; true = true; scope.armed_forces = false; false = false; scope.no = false)
   scope.military_move_if_armed_forces: choose(scope.armed_forces = false; true = true; scope.armed_forces = false; false = false; scope.no = false)
+  scope.rent_personal_if_rental: choose(scope.rental = false; true = true; scope.rental = false; false = false; scope.no = false)
   scope.clergy_if_religious_work: choose(scope.religious_work = false; true = true; scope.religious_work = false; false = false; scope.no = false)
   scope.church_exempt_wages_if_religious_work: choose(scope.religious_work = false; true = true; scope.religious_work = false; false = false; scope.no = false)
   person[taxpayer].w2[a].one: param(#ss.one = 1)
@@ -2015,15 +2277,16 @@ Derivations:
   s1.sc_count: sum_over(person[taxpayer].sc_count = 0)
   s1.has_sc: test(s1.sc_count = 0; 0 = 0)
   scope.se_plan_other_if_business: choose(s1.has_sc = false; true = true; s1.has_sc = false; false = false; scope.no = false)
-  scope.schedule1: test(scope.reservist_expenses_if_armed_forces = false; true = true; scope.military_move_if_armed_forces = false; true = true; scope.rental = false; true = true; scope.k1 = false; true = true; scope.farm = false; true = true; scope.clergy_if_religious_work = false; true = true; scope.church_exempt_wages_if_religious_work = false; true = true; scope.w2_marks_if_w2 = false; true = true; scope.performer_expenses_if_artist_official = false; true = true; scope.recovery = false; true = true; scope.archer_msa = false; true = true; scope.se_plan_other_if_business = false; true = true; scope.reforestation = false; true = true; scope.attorney_fees = false; true = true; scope.nol = false; true = true)
+  scope.schedule1: test(scope.reservist_expenses_if_armed_forces = false; true = true; scope.military_move_if_armed_forces = false; true = true; scope.rent_personal_if_rental = false; true = true; scope.k1 = false; true = true; scope.farm = false; true = true; scope.clergy_if_religious_work = false; true = true; scope.church_exempt_wages_if_religious_work = false; true = true; scope.w2_marks_if_w2 = false; true = true; scope.performer_expenses_if_artist_official = false; true = true; scope.archer_msa = false; true = true; scope.se_plan_other_if_business = false; true = true; scope.reforestation = false; true = true; scope.attorney_fees = false; true = true)
   scope.ready_schedule1: test(scope.schedule1 = false; true = true; true = true)
   scope.nonresident_if_noncitizen: choose(scope.noncitizen = false; true = true; scope.noncitizen = false; false = false; scope.no = false)
   scope.reservist_repaid_if_armed_forces: choose(scope.armed_forces = false; true = true; scope.armed_forces = false; false = false; scope.no = false)
   scope.adoption_benefits_if_adoption: choose(s3.adoption_any = false; true = true; s3.adoption_any = false; false = false; scope.no = false)
+  scope.wages_no_form_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
   scope.care_benefits_other_if_benefits: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; scope.no = false)
   scope.excess_deferral_if_w2: choose(scope.has_w2 = true; true = true; scope.excess_deferral = false)
   scope.passive_if_business_before: choose(scope.business_before = false; true = true; scope.business_before = false; false = false; scope.no = false)
-  scope.other_income: test(scope.nonresident_if_noncitizen = false; true = true; scope.chapter11 = false; true = true; scope.reservist_repaid_if_armed_forces = false; true = true; scope.adoption_benefits_if_adoption = false; true = true; scope.pay_no_w2 = false; true = true; scope.medicaid_waiver = false; true = true; scope.care_benefits_other_if_benefits = false; true = true; scope.disaster_distribution = false; true = true; scope.excess_deferral_if_w2 = false; true = true; scope.passive_if_business_before = false; true = true)
+  scope.other_income: test(scope.nonresident_if_noncitizen = false; true = true; scope.chapter11 = false; true = true; scope.reservist_repaid_if_armed_forces = false; true = true; scope.adoption_benefits_if_adoption = false; true = true; scope.wages_no_form_if_pay = false; true = true; scope.care_benefits_other_if_benefits = false; true = true; scope.disaster_distribution = false; true = true; scope.excess_deferral_if_w2 = false; true = true; scope.passive_if_business_before = false; true = true)
   scope.ready_other_income: test(scope.other_income = false; true = true; true = true)
   person[taxpayer].under24: test(person[taxpayer].birth_year = 1980; #age.cut_24 = 2002; person[taxpayer].birth_year = 1980; #age.cut_24 = 2002)
   scope.under24_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].under24 = false; true = true)
@@ -2037,7 +2300,6 @@ Derivations:
   scope.f8978_if_business_before: choose(scope.business_before = false; true = true; scope.business_before = false; false = false; scope.no = false)
   scope.other_line16: test(scope.f8615_if_unearned_2700 = false; true = true; scope.f8814 = false; true = true; scope.education_recapture = false; true = true; scope.income_averaging_if_business = false; true = true; scope.pfic_if_foreign_shares = false; true = true; scope.cfc_if_foreign_shares = false; true = true; scope.f8978_if_business_before = false; true = true)
   scope.ready_other_line16: test(scope.other_line16 = false; true = true; true = true)
-  s3.mfs: test(f1040.status = single; "mfs" = mfs)
   s3.no: param(#s3.no = false)
   s3.adoption_asked_if_any: choose(s3.adoption_any = false; true = true; s3.adoption_any = false; false = false; s3.no = false)
   s3.adoption_final_if_adoption: choose(s3.adoption_asked_if_any = false; true = true; s3.adoption_asked_if_any = false; false = false; s3.no = false)
@@ -2058,9 +2320,6 @@ Derivations:
   s3.ev_credit_if_bought: choose(s3.ev_bought_if_ev = false; true = true; s3.ev_bought_if_ev = false; false = false; s3.no = false)
   s3.ev_equipment_if_ev: choose(s3.ev = false; true = true; s3.ev = false; false = false; s3.no = false)
   s3.farmland_deferral_if_sold: choose(s3.farmland = false; true = true; s3.farmland = false; false = false; s3.no = false)
-  ftc.carryover_ask: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.prior_other_forms = false)
-  ftc.no: param(#ftc.no = false)
-  ftc.carryover_if_asked: choose(ftc.carryover_ask = false; true = true; ftc.carryover_ask = false; false = false; ftc.no = false)
   s3.section960c_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
   s3.section965_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
   s3.virgin_islands_if_foreign: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.no = false)
@@ -2075,8 +2334,9 @@ Derivations:
   sa.line8a: choose(sa.home_asked = false; true = true; sa.home_asked = false; false = false; sa.zero = $0)
   s3.has_mortgage_interest: test(sa.line8a = $0; 0 = $0)
   s3.mcc_if_interest: choose(s3.has_mortgage_interest = false; true = true; s3.has_mortgage_interest = false; false = false; s3.no = false)
-  scope.ready_credits: test(s3.mfs = false; s3.adoption_if_any = false; s3.adoption_us_if_earlier = false; s3.credit_bond = false; s3.elderly_credit_if_asked = false; s3.ev_dealer_if_ev = false; s3.ev_credit_if_bought = false; s3.ev_equipment_if_ev = false; s3.farmland_deferral_if_sold = false; ftc.carryover_if_asked = false; s3.section960c_if_foreign = false; s3.section965_if_foreign = false; s3.virgin_islands_if_foreign = false; s3.kerosene_credit_if_kerosene = false; s3.prior_amt_if_forms = false; s3.prior_forms_if_forms = false; s3.repaid_income = false; s3.mcc_if_interest = false; true = true; true = true)
+  scope.ready_credits: test(s3.adoption_if_any = false; s3.adoption_us_if_earlier = false; s3.credit_bond = false; s3.elderly_credit_if_asked = false; s3.ev_dealer_if_ev = false; s3.ev_credit_if_bought = false; s3.ev_equipment_if_ev = false; s3.farmland_deferral_if_sold = false; s3.section960c_if_foreign = false; s3.section965_if_foreign = false; s3.virgin_islands_if_foreign = false; s3.kerosene_credit_if_kerosene = false; s3.prior_amt_if_forms = false; s3.prior_forms_if_forms = false; s3.repaid_income = false; s3.mcc_if_interest = false; true = true; true = true)
   scope.ready: test(scope.ready_schedule1 = true; true = true; scope.ready_other_income = true; true = true; scope.ready_other_line16 = true; true = true; scope.ready_credits = true; true = true)
+  f1040.digital_conflict: test(f1040.digital_assets = false; false = false; f1040.digital_sales = 0; 0 = 0)
   sd.no: param(#household.no = false)
   sd.business_property_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
   sd.installment_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
@@ -2112,7 +2372,11 @@ Derivations:
   sd.line16: sum(sd.line7 = $0; sd.line15 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   sd.has_loss: test(sd.line16 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); 0 = $0)
   sd.to1040: choose(sd.has_loss = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
-  f1040.line7a: copy(sd.to1040 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  f1040.line7a: copy(f1040.digital_conflict = false; sd.to1040 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  s1.no: param(#household.no = false)
+  s1.nol_limit: choose(scope.nol = false; true = true; scope.nol = false; false = false; s1.no = false)
+  household.no: param(#household.no = false)
+  household.mfs_community_property: choose(f1040.status = single; "single" = single; household.no = false)
   person[taxpayer].birth_year_bad: test(person[taxpayer].birth_year = 1980; #age.birth_year_latest = 2025; person[taxpayer].birth_year = 1980; #age.birth_year_earliest = 1900)
   household.birth_year_bad_count: sum_over(person[taxpayer].birth_year_bad = false; true = true)
   household.birth_year_bad: test(household.birth_year_bad_count = 0; 0 = 0)
@@ -2123,15 +2387,49 @@ Derivations:
   household.spouses: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
   household.roster_ok: test(household.birth_year_bad = false; household.filer_under16 = false; f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
   household.roster_bad: test(household.roster_ok = true; false = false)
-  household.no: param(#household.no = false)
   household.cp_not_joint: choose(household.community_property = false; true = true; household.community_property = false; false = false; household.no = false)
   household.cp_marriage_ended: choose(f1040.status = single; "single" = single; household.cp_not_joint = false)
   household.rdp_community_property: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
   person[taxpayer].box1: sum_over(person[taxpayer].w2[a].box1 = $0)
-  f1040.line1a: sum_over(household.roster_bad = false; household.cp_marriage_ended = false; household.rdp_community_property = false; person[taxpayer].box1 = $0)
+  f1040.line1a: sum_over(household.mfs_community_property = false; household.roster_bad = false; household.cp_marriage_ended = false; household.rdp_community_property = false; person[taxpayer].box1 = $0)
+  scope.household_pay_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
+  person[taxpayer].zero: param(#ss.zero = $0)
+  person[taxpayer].household_wages_if_pay: choose(scope.household_pay_if_pay = false; true = true; scope.household_pay_if_pay = false; false = false; person[taxpayer].zero = $0)
+  f1040.line1b: sum_over(person[taxpayer].household_wages_if_pay = $0)
+  scope.tips_unreported_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
+  person[taxpayer].f4137_col_c: choose(scope.tips_unreported_if_pay = false; true = true; scope.tips_unreported_if_pay = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].f4137[form].line2: copy(person[taxpayer].f4137_col_c = $0)
+  person[taxpayer].f4137_col_d: choose(scope.tips_unreported_if_pay = false; true = true; scope.tips_unreported_if_pay = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].f4137[form].line3: copy(person[taxpayer].f4137_col_d = $0)
+  person[taxpayer].f4137[form].line4: subtract_floor0(person[taxpayer].f4137[form].line2 = $0; person[taxpayer].f4137[form].line3 = $0)
+  person[taxpayer].f4137_line4: sum_over(person[taxpayer].f4137[form].line4 = $0)
+  person[taxpayer].tips_noncash_if_unreported: choose(scope.tips_unreported_if_pay = false; true = true; scope.tips_unreported_if_pay = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].line1c: sum(person[taxpayer].f4137_line4 = $0; person[taxpayer].tips_noncash_if_unreported = $0)
+  f1040.line1c: sum_over(person[taxpayer].line1c = $0)
+  person[taxpayer].mw_not_box1_if_mw: choose(scope.medicaid_waiver = false; true = true; scope.medicaid_waiver = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].mw_has_not_box1: test(person[taxpayer].mw_not_box1_if_mw = $0; #sales.zero = $0)
+  person[taxpayer].mw_1099_if_not_box1: choose(person[taxpayer].mw_has_not_box1 = false; true = true; person[taxpayer].mw_has_not_box1 = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].mw_1099_over: test(person[taxpayer].mw_1099_if_not_box1 = $0; person[taxpayer].mw_not_box1_if_mw = $0)
+  person[taxpayer].mw_has_1099: test(person[taxpayer].mw_1099_if_not_box1 = $0; #sales.zero = $0)
+  person[taxpayer].no: param(#household.no = false)
+  person[taxpayer].mw_business_if_1099: choose(person[taxpayer].mw_has_1099 = false; true = true; person[taxpayer].mw_has_1099 = false; false = false; person[taxpayer].no = false)
+  person[taxpayer].mw_box1_if_mw: choose(scope.medicaid_waiver = false; true = true; scope.medicaid_waiver = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].mw_total: sum(person[taxpayer].mw_box1_if_mw = $0; person[taxpayer].mw_not_box1_if_mw = $0)
+  person[taxpayer].mw_paid: test(person[taxpayer].mw_total = $0; #sales.zero = $0)
+  person[taxpayer].mw_earned_if_paid: choose(person[taxpayer].mw_paid = false; true = true; person[taxpayer].mw_paid = false; false = false; person[taxpayer].no = false)
+  person[taxpayer].mw_other_1d: choose(person[taxpayer].mw_earned_if_paid = false; true = true; person[taxpayer].mw_earned_if_paid = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].line1d: sum(person[taxpayer].mw_1099_over = false; person[taxpayer].mw_business_if_1099 = false; person[taxpayer].mw_1099_if_not_box1 = $0; person[taxpayer].mw_other_1d = $0)
+  f1040.line1d: sum_over(person[taxpayer].line1d = $0)
   f2441.zero: param(#sales.zero = $0)
   f1040.line1e: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; f2441.zero = $0)
-  f1040.line1z: sum(f1040.line1a = $0; f1040.line1e = $0)
+  scope.contractor_pay_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
+  person[taxpayer].f8919_wages: choose(scope.contractor_pay_if_pay = false; true = true; scope.contractor_pay_if_pay = false; false = false; person[taxpayer].zero = $0)
+  f1040.line1g: sum_over(person[taxpayer].f8919_wages = $0)
+  scope.strike_pay_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
+  person[taxpayer].strike_if_pay: choose(scope.strike_pay_if_pay = false; true = true; scope.strike_pay_if_pay = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].line1h: sum(person[taxpayer].strike_if_pay = $0; person[taxpayer].dis_wages = $0)
+  f1040.line1h: sum_over(person[taxpayer].line1h = $0)
+  f1040.line1z: sum(f1040.line1a = $0; f1040.line1b = $0; f1040.line1c = $0; f1040.line1d = $0; f1040.line1e = $0; f1040.line1g = $0; f1040.line1h = $0)
   sb.ordinary_dividends_if_dividends: choose(div.any = true; true = true; sb.ordinary_dividends = $0)
   sb.has_income: test(sb.interest_total = $0; 0 = $0; sb.ordinary_dividends_if_dividends = $0; 0 = $0; sd.distributions_if_dividends = $1; 0 = $0)
   sb.nominee_if_income: choose(sb.has_income = true; true = true; sb.nominee = false)
@@ -2164,7 +2462,6 @@ Derivations:
   ssb.line18: choose(ssb.has_benefits = false; true = true; ssb.has_benefits = false; false = false; ssb.zero = $0)
   f1040.line6b: copy(ssb.line18 = $0)
   f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3b = $0; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  person[taxpayer].zero: param(#ss.zero = $0)
   person[taxpayer].educator_expenses_if_educator: choose(person[taxpayer].eligible_educator = false; true = true; person[taxpayer].eligible_educator = false; false = false; person[taxpayer].zero = $0)
   person[taxpayer].has_educator_expenses: test(person[taxpayer].educator_expenses_if_educator = $0; #sales.zero = $0)
   person[taxpayer].educator_deduction: choose(person[taxpayer].has_educator_expenses = false; true = true; person[taxpayer].has_educator_expenses = false; false = false; person[taxpayer].zero = $0)
@@ -2179,11 +2476,9 @@ Derivations:
   person[taxpayer].s16: choose(person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s1.line16: sum_over(person[taxpayer].s16 = $0)
   s1.line17: sum_over(person[taxpayer].sehi = $0)
-  s1.no: param(#household.no = false)
   s1.alimony_if_any: choose(s1.alimony_any = false; true = true; s1.alimony_any = false; false = false; s1.no = false)
   s1.zero: param(#sales.zero = $0)
   s1.line19a: choose(s1.alimony_if_any = false; true = true; s1.alimony_if_any = false; false = false; s1.zero = $0)
-  person[taxpayer].no: param(#household.no = false)
   person[taxpayer].sav_trad_if_ira_owner: choose(person[taxpayer].ira_owner = false; true = true; person[taxpayer].ira_owner = false; false = false; person[taxpayer].no = false)
   person[taxpayer].ira_contrib: choose(person[taxpayer].sav_trad_if_ira_owner = false; true = true; person[taxpayer].sav_trad_if_ira_owner = false; false = false; person[taxpayer].zero = $0)
   person[taxpayer].ira_has: test(person[taxpayer].ira_contrib = $0; #sales.zero = $0)
@@ -2195,12 +2490,14 @@ Derivations:
   ira.less_gate: choose(ira.has_deduction = false; true = true; ira.has_deduction = false; false = false; ira.no = false)
   ira.line20: copy(ira.less_gate = false; ira.total = $0)
   s1.line20: copy(ira.line20 = $0)
+  household.mfs: test(f1040.status = single; "mfs" = mfs)
+  sli.any_if_not_mfs: choose(household.mfs = false; false = false; sli.any = false)
   sli.zero: param(#sales.zero = $0)
-  sli.interest_if_any: choose(sli.any = false; true = true; sli.any = false; false = false; sli.zero = $0)
+  sli.interest_if_any: choose(sli.any_if_not_mfs = false; true = true; sli.any_if_not_mfs = false; false = false; sli.zero = $0)
   sli.no: param(#household.no = false)
-  sli.unqualified_any_if_any: choose(sli.any = false; true = true; sli.any = false; false = false; sli.no = false)
+  sli.unqualified_any_if_any: choose(sli.any_if_not_mfs = false; true = true; sli.any_if_not_mfs = false; false = false; sli.no = false)
   sli.unqualified_if_some: choose(sli.unqualified_any_if_any = false; true = true; sli.unqualified_any_if_any = false; false = false; sli.zero = $0)
-  sli.assisted_any_if_any: choose(sli.any = false; true = true; sli.any = false; false = false; sli.no = false)
+  sli.assisted_any_if_any: choose(sli.any_if_not_mfs = false; true = true; sli.any_if_not_mfs = false; false = false; sli.no = false)
   sli.assisted_if_some: choose(sli.assisted_any_if_any = false; true = true; sli.assisted_any_if_any = false; false = false; sli.zero = $0)
   sli.not_counted: sum(sli.unqualified_if_some = $0; sli.assisted_if_some = $0)
   sli.qualified: subtract_floor0(sli.interest_if_any = $0; sli.not_counted = $0)
@@ -2235,7 +2532,11 @@ Derivations:
   sa.charity_limited_if_gifts: choose(sa.gifts = false; true = true; sa.gifts = false; false = false; sa.no = false)
   sa.mortgage_unreported_if_home: choose(sa.home_asked = false; true = true; sa.home_asked = false; false = false; sa.no = false)
   sa.has_mortgage_interest: test(sa.line8a = $0; 0 = $0)
-  sa.mortgage_over_limit_if_interest: choose(sa.has_mortgage_interest = false; true = true; sa.has_mortgage_interest = false; false = false; sa.no = false)
+  sa.mortgage_interest_not_mfs: test(sa.has_mortgage_interest = false; true = true)
+  sa.mortgage_over_limit_if_joint_limits: choose(sa.mortgage_interest_not_mfs = false; true = true; sa.mortgage_interest_not_mfs = false; false = false; sa.no = false)
+  sa.mortgage_interest_mfs: test(sa.has_mortgage_interest = false; true = true)
+  sa.mortgage_over_limit_mfs_if_mfs: choose(sa.mortgage_interest_mfs = false; true = true; sa.mortgage_interest_mfs = false; false = false; sa.no = false)
+  sa.mortgage_over_limit_if_interest: test(sa.mortgage_over_limit_if_joint_limits = false; true = true; sa.mortgage_over_limit_mfs_if_mfs = false; true = true)
   sa.mortgage_other_use_if_interest: choose(sa.has_mortgage_interest = false; true = true; sa.has_mortgage_interest = false; false = false; sa.no = false)
   ftc.asked: test(div.any = true; true = true)
   ftc.taxes_if_asked: choose(ftc.asked = true; true = true; ftc.taxes = $0)
@@ -2251,7 +2552,9 @@ Derivations:
   sa.line3: multiply_rate(sa.line2 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); #sa.medical_rate = 75/1000)
   sa.line4: subtract_floor0(sa.line1_if_medical = $0; sa.line3 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   sa.line17: sum(sa.charity_limited_if_gifts = false; sa.unsupported = false; sa.excluded_income = false; sa.line4 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  sa.mfs_spouse_extra: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.no = false)
+  sa.dep_qss: test(sa.dependent = false; true = true)
+  sa.mfs_spouse_not_itemizing: test(sa.mfs = false; true = true)
+  sa.mfs_spouse_extra: choose(sa.mfs_spouse_not_itemizing = false; true = true; sa.mfs_spouse_not_itemizing = false; false = false; sa.no = false)
   sa.standardbase: param(#sa.standard_base = $15,750)
   sa.extra: param(#sa.standard_extra = $2,000)
   person[taxpayer].age65_box: choose(person[taxpayer].age65 = false; true = true; person[taxpayer].age65 = false; false = false; person[taxpayer].no = false)
@@ -2260,12 +2563,13 @@ Derivations:
   sa.boxes_blind: sum_over(person[taxpayer].blind = false; true = true)
   sa.extra_blind: multiply_count(sa.extra = $2,000; sa.boxes_blind = 0)
   sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
-  sa.standard: choose(sa.dependent = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
+  sa.standard_amount: choose(sa.dependent = false; true = true; sa.dependent = false; false = false; sa.standardraw = $15,750)
+  sa.standard: choose(sa.dep_qss = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standard_amount = $15,750)
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); sa.standard = $15,750)
-  sa.deduction: choose(sa.dependent = false; sa.itemizes = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
+  sa.deduction: choose(sa.itemizes = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
   f1040.line12e: copy(household.filing_status_conflict = false; household.widowed_this_year = false; household.hoh_fails = false; household.qss_fails = false; sa.deduction = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   f1040.line14: sum(f1040.line12e = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  f1040.line15: subtract_floor0(f1040.line11b = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); f1040.line14 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  f1040.line15: subtract_floor0(s1.nol_limit = false; f1040.line11b = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); f1040.line14 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   f1040.gate.qdcg_applies: test(f1040.line15 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); 0 = $0)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
   f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
@@ -2291,6 +2595,13 @@ Derivations:
   s2.other: test(s2.w2_marks_if_w2 = false; true = true; s2.household_employee_if_help = false; true = true; s2.mortgage_subsidy_if_interest = false; true = true; s2.hsa_testing = false; true = true; s2.credit_recapture = false; true = true; s2.lookback_if_business = false; true = true; s2.other_tax = false; true = true)
   person[taxpayer].se_line12: choose(person[taxpayer].se_rrta = false; person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
   s2.line4: sum_over(person[taxpayer].se_line12 = $0)
+  person[taxpayer].f4137_filed: test(person[taxpayer].f4137_col_c = $0; #sales.zero = $0)
+  person[taxpayer].f4137_tax: choose(person[taxpayer].f4137_filed = false; true = true; person[taxpayer].f4137_filed = false; false = false; person[taxpayer].zero = $0)
+  s2.line5: sum_over(person[taxpayer].f4137_tax = $0)
+  person[taxpayer].f8919_any: test(person[taxpayer].f8919_wages = $0; #sales.zero = $0)
+  person[taxpayer].f8919_tax: choose(person[taxpayer].f8919_any = false; true = true; person[taxpayer].f8919_any = false; false = false; person[taxpayer].zero = $0)
+  s2.line6: sum_over(person[taxpayer].f8919_tax = $0)
+  s2.line7: sum(s2.line5 = $0; s2.line6 = $0)
   person[taxpayer].x_has05: test(person[taxpayer].x_e05 = $0; 0 = $0)
   person[taxpayer].x_c05: choose(person[taxpayer].x_has05 = false; true = true; person[taxpayer].x_has05 = false; false = false; person[taxpayer].zero = $0)
   s2.e05_total: sum_over(person[taxpayer].x_c05 = $0)
@@ -2339,9 +2650,9 @@ Derivations:
   f8959.unsupported: test(f8959.territory_w2 = false; true = true)
   person[taxpayer].medicare5: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[a].box5 = $200,000)
   f8959.line1: sum_over(f8959.unsupported = false; person[taxpayer].medicare5 = $200,000)
-  f8959.zero: param(#sales.zero = $0)
-  f8959.line2: copy(f8959.unsupported = false; f8959.zero = $0)
-  f8959.line3: copy(f8959.unsupported = false; f8959.zero = $0)
+  person[taxpayer].f4137_line6: choose(person[taxpayer].f4137_filed = false; true = true; person[taxpayer].f4137_filed = false; false = false; person[taxpayer].zero = $0)
+  f8959.line2: sum_over(f8959.unsupported = false; person[taxpayer].f4137_line6 = $0)
+  f8959.line3: sum_over(f8959.unsupported = false; person[taxpayer].f8919_wages = $0)
   f8959.line4: sum(f8959.line1 = $200,000; f8959.line2 = $0; f8959.line3 = $0)
   f8959.line5: param(#medicare.threshold = $200,000)
   f8959.line6: subtract_floor0(f8959.line4 = $200,000; f8959.line5 = $200,000)
@@ -2353,6 +2664,7 @@ Derivations:
   f8959.line11: subtract_floor0(f8959.line9 = $200,000; f8959.line10 = $200,000)
   f8959.line12: subtract_floor0(f8959.line8 = $0; f8959.line11 = $0)
   f8959.line13: multiply_rate(f8959.line12 = $0; #medicare.additional_rate = 9/1000)
+  f8959.zero: param(#sales.zero = $0)
   f8959.line14: copy(f8959.unsupported = false; f8959.zero = $0)
   f8959.line15: copy(f8959.line5 = $200,000)
   f8959.line16: subtract_floor0(f8959.line14 = $0; f8959.line15 = $200,000)
@@ -2364,7 +2676,7 @@ Derivations:
   f8960.line16: choose(f8960.used = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); true = true)
   f8960.line17: multiply_rate(f8960.line16 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax); #niit.rate = 38/1000)
   s2.line12: copy(f8960.line17 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
-  s2.line21: sum(s2.other = false; s2.line4 = $0; s2.line8 = $0; s2.line11 = $0; s2.line12 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
+  s2.line21: sum(s2.other = false; s2.line4 = $0; s2.line7 = $0; s2.line8 = $0; s2.line11 = $0; s2.line12 = REFUSED: Form 8949 code Q / Form 6251. Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope. (trigger: div.section1202; i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax))
   person[taxpayer].medicare6: sum_over(person[taxpayer].rrta = false; person[taxpayer].w2[a].box6 = $2,900)
   f8959.line19: sum_over(f8959.unsupported = false; person[taxpayer].medicare6 = $2,900)
   f8959.line20: copy(f8959.line1 = $200,000)
@@ -2372,18 +2684,27 @@ Derivations:
   f8959.line22: subtract_floor0(f8959.line19 = $2,900; f8959.line21 = $2,900)
   f8959.line23: copy(f8959.unsupported = false; f8959.zero = $0)
   f8959.line24: sum(f8959.line22 = $0; f8959.line23 = $0)
-  ftc.needs1116: test(ftc.has_tax = false; true = true)
+  ftc.carryover_ask: choose(s3.foreign_any = false; true = true; s3.foreign_any = false; false = false; s3.prior_other_forms = false)
+  ftc.no: param(#ftc.no = false)
+  ftc.carryover_if_asked: choose(ftc.carryover_ask = false; true = true; ftc.carryover_ask = false; false = false; ftc.no = false)
+  ftc.carryover_no_tax: test(ftc.carryover_if_asked = false; true = true)
   ftc.zero: param(#sales.zero = $0)
-  ftc.credit: choose(ftc.needs1116 = false; ftc.carryover_if_asked = false; ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.zero = $0)
+  ftc.credit: choose(ftc.carryover_no_tax = false; ftc.has_tax = false; true = true; ftc.has_tax = false; false = false; ftc.zero = $0)
   s3.line1: copy(ftc.credit = $0)
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+Interpretation amb.2025.s1_nol_limit_test: The first (s1.nol_ti, s1.nol_ti4, s1.nol_limit_test, refused at f1040.line15 by s1.nol_limit). Owner decision D3 (lane x2-s1o, scout-s1-other): the sufficiency test is accepted. The premise T0 ≥ T + N holds when no deduction in scope rises with AGI. Checked against the forms (lane x2-s1o, 2026-11-15): the above-the-line deductions with phase-outs (student loan interest, IRA) fall as modified AGI rises; taxable social security benefits rise with other income, so AGI without the NOL is at least AGI with it plus N; the itemized deductions with an AGI floor (medical, casualty) and the SALT limit that falls above $500,000 of modified AGI fall as AGI rises; the larger of itemized and standard deductions keeps that direction; Schedule 1-A deductions (tips, overtime, car loan interest, seniors) phase out with modified AGI; the QBI deduction is left out of T0 and only lowers T. The one deduction that rises with AGI, charitable gifts under the AGI percentage limits, is refused when a limit binds (sa.charity_limited). NOLs from before 2018 (no 80% limit, deducted first) are refused (s1.nol_before_limit_date). The refusal sits on line 15, not on line 8a, because the test reads lines 11b and 14, which read line 8a. (i172, p. 2, "80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions")
+Interpretation amb.2025.mfs_community_property: The second, on the existing question (household.community_property), for the nine states the instructions list. The same ground as amb.2025.hoh_community_property (owner decision of 2026-10-22, integrity plan decision 10): the community income split of Pub. 555 is outside the tool. "Lived in" is broader than "domicile": a filer who lived in one of the states only temporarily is refused too, which errs toward refusing (settled as design decision D1 of the married-filing-separately scout, by the coordinator under the owner's delegation, 2026-11-15). (p504, p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income" and "If you and your spouse file separate returns, you must report half of any income described by state law as community income")
 Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
+Interpretation amb.2025.f4137_reported_over_received: The first (f4137.line4 subtracts with a floor of zero). Line 4 is "Include as income on Form 1040 ... line 1c", the tips not reported; a negative unreported amount has no meaning there, and column (c) is to "Include all cash and charge tips you received", so it holds at least the tips reported. The reading matters only for inconsistent entries. (f4137, p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c"; p. 2, Columns (c) and (d), "Include all cash and charge tips you received")
+Interpretation amb.2025.mw_all_nontaxable: The first. The interview asks only about pay for care of someone living in the filer's home with them, the case Pub. 525 names; an individual care provider caring for more than five adults or ten children at home is taken to be outside the situations a filer of this tool reports. Were it wrong, line 1a or 1d would be right but Schedule 1 line 8s would exclude too much. Notice 2014-7 is not archived. (p525, p. 33, "Certain Medicaid waiver payments are treated as difficulty-of-care payments when received by an individual care provider for caring for an eligible individual (whether related or unrelated) living in the provider’s home", "Ten qualified foster individuals under age 19, or", "Five qualified foster individuals age 19 or older")
 Interpretation amb.2025.ewp_oid: The first (interest.penalty, totaled on s1.line18 and copied to Form 8960 line 10). The owner's decision (Stage 16 decision batch, D2, as corrected by the verification, E4) allows an input or a screen; the instruction treats the two forms alike, so an input loses nothing. Form 1099-OID is not archived, so its box number is not named. (i1040gi, p. 95, Line 18, "The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you were charged")
 Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or paid after a change after 2018 that expressly applies the post-2018 rules (one that states that those rules apply, or that alimony isn't deductible by the payer or isn't included in the recipient's income), are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
 Interpretation amb.2025.jury_24a_cap: The first (s1.jury_over refuses s1.line24a). The pay given to the employer is part of the pay received (p525 p. 34, "you can deduct the amount turned over to your employer"), so a larger amount is an entry error to correct, not a case to cap silently; as with w2.g_bad, the refusal fires only on an impossible entry. Premise map Q14, left open by D3. (i1040gi, p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury")
 Interpretation amb.2025.sa_medical_negative_agi: The second (sa.agi_floor, copied to line 2). The instruction names a part of the expenses, and no part of the expenses exceeds the expenses themselves; the signed reading would deduct $324.85 of medical expenses on a return with none (engine differential case se-00255, BUG-0094). Tax-Calculator (calcfunctions.ItemDed, posagi = max(c00100, 0.)) and PolicyEngine-US both floor adjusted gross income at zero before taking the percentage. Equivalent to flooring line 3 at zero; the floor is placed on line 2's operand so that lines 3 and 4 keep their printed wording. (i1040sca, p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b")
 Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
+Interpretation amb.2025.sa_dep_qss: Refuse (gate sa.dep_qss, on sa.standard and sa.deduction). The worksheet is silent on the status, and taking the joint amount would be the tool's reading, not the text's. The case is rare (a widowed parent whom another person can claim). The refusal costs that filer the return; it does not compute a deduction the text does not give.
+ (i1040gi, p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
 Interpretation amb.2025.f5329_medical_joint: The first (person.x_c05 limits each person to Schedule A line 4, and s2.e05_over refuses when the spouses together exceed it). Owner's decision D8(d), 2026-10-29. (i5329, p. 5, Line 2, "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year.")
 Interpretation amb.2025.f5329_simple_limits: The first (person.x_limit_binds refuses Form 5329 line 4). The split changes the tax and the text gives no rule, so the tool refuses the narrow case rather than choose one; a session choice within the owner's D4, reported to the owner. (i5329, p. 5, Line 4, "If any amount on line 3 was a distribution from a SIMPLE IRA received within 2 years from the date you first participated in the SIMPLE IRA plan, you must multiply that amount by 25% instead of 10%.")

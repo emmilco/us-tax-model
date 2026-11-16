@@ -106,18 +106,118 @@ form:
     ambiguity: amb.2025.ira_covered
   - id: ira.anyone_covered
     printed: (helper)
-    label: You (or, on a joint return, your spouse) were covered by a retirement plan (Yes on line 1a or 1b)
+    label: You (or, on a joint return, your spouse) were covered by a retirement plan, or, married filing separately, are
+      considered covered through your spouse (Yes on line 1a or 1b)
     type: Bool
     expr:
       op: test
-      gt:
-      - ira.cov_count
-      - const: 0
-        type: Count
+      any:
+      - op: test
+        gt:
+        - ira.cov_count
+        - const: 0
+          type: Count
+      - op: test
+        eq:
+        - ira.mfs_spouse_covered_if_asked
+        - const: true
     cite:
       doc: i1040gi
       locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "If you checked “No” on line 1a (and “No” on line 1b if
-        married filing jointly), skip lines 2 through 6" and "Otherwise, go to line 2"'
+        married filing jointly), skip lines 2 through 6" and "Otherwise, go to line 2"; p. 96, Married persons filing
+        separately, "If you weren’t covered by a retirement plan but your spouse was, you are considered covered by a plan
+        unless you lived apart from your spouse for all of 2025"'
+  - id: ira.mfs_cov_matters
+    printed: (helper)
+    label: Whether the spouse's coverage can matter on this return (traditional IRA contributions, married filing separately,
+      you not covered, and you lived with your spouse at some time in 2025)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ira.any_trad
+          - const: true
+        then: ira.mfs_cov_matters_trad
+      - guard:
+          op: test
+          eq:
+          - ira.any_trad
+          - const: false
+        then: ira.no
+    cite:
+      doc: i1040gi
+      locator: 'p. 96, Married persons filing separately, "If you weren’t covered by a retirement plan but your spouse was,
+        you are considered covered by a plan unless you lived apart from your spouse for all of 2025"'
+  - id: ira.mfs_cov_matters_trad
+    printed: (helper)
+    label: Married filing separately, you not covered by a retirement plan, and you lived with your spouse at some time in
+      2025
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - household.mfs
+        - const: true
+      - op: test
+        eq:
+        - ira.cov_you
+        - const: 0
+          type: Count
+      - op: test
+        eq:
+        - household.mfs_apart_all_year
+        - const: false
+    cite:
+      doc: i1040gi
+      locator: 'p. 96, Married persons filing separately, "If you weren’t covered by a retirement plan but your spouse was,
+        you are considered covered by a plan unless you lived apart from your spouse for all of 2025"'
+  - id: ira.mfs_spouse_covered
+    printed: (helper)
+    label: Was your husband or wife covered by a retirement plan at work in 2025?
+    type: Bool
+    gated_by: ira.mfs_spouse_covered_if_asked
+    expr:
+      op: input
+      source: Was your husband or wife covered by a retirement plan at work or through self-employment in 2025 (a pension,
+        profit-sharing or 401(k), annuity, SEP, SIMPLE or other employer plan), even if they were not vested in it?
+    cite:
+      doc: i1040gi
+      locator: 'p. 96, Married persons filing separately, "If you weren’t covered by a retirement plan but your spouse was,
+        you are considered covered by a plan unless you lived apart from your spouse for all of 2025"; p. 96, Were You
+        Covered by a Retirement Plan?, "profit-sharing (including 401(k)), annuity, SEP, SIMPLE, etc.) at work or through
+        self-employment"'
+    ambiguity: amb.2025.ira_mfs_spouse_covered
+  - id: ira.mfs_spouse_covered_if_asked
+    printed: (gate)
+    label: Married filing separately and considered covered by a retirement plan through your spouse (asked only when you
+      made traditional IRA contributions, were not covered yourself and lived with your spouse at some time in 2025;
+      otherwise no)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ira.mfs_cov_matters
+          - const: true
+        then: ira.mfs_spouse_covered
+      - guard:
+          op: test
+          eq:
+          - ira.mfs_cov_matters
+          - const: false
+        then: ira.no
+    cite:
+      doc: i1040gi
+      locator: 'p. 96, Married persons filing separately, "If you weren’t covered by a retirement plan but your spouse was,
+        you are considered covered by a plan unless you lived apart from your spouse for all of 2025"'
+    ambiguity: amb.2025.ira_mfs_spouse_covered
   - id: ira.lines2to6
     printed: (helper)
     label: Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)
@@ -208,7 +308,8 @@ form:
     printed: 1a
     label: Were you covered by a retirement plan (see Were You Covered by a Retirement Plan)?
     type: Bool
-    display: The worksheet's line 1a answer, shown on the values sheet; the deduction reads each person's coverage (person.ira_cov).
+    display: The worksheet's line 1a answer, shown on the values sheet; the deduction reads each person's coverage (person.ira_cov)
+      and, married filing separately, the spouse's (ira.mfs_spouse_covered_if_asked).
     expr:
       op: test
       all:
@@ -217,14 +318,21 @@ form:
         - ira.any_trad
         - const: true
       - op: test
-        gt:
-        - ira.cov_you
-        - const: 0
-          type: Count
+        any:
+        - op: test
+          gt:
+          - ira.cov_you
+          - const: 0
+            type: Count
+        - op: test
+          eq:
+          - ira.mfs_spouse_covered_if_asked
+          - const: true
     cite:
       doc: i1040gi
       locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 1a, "Were you covered by a retirement plan (see Were
-        You Covered by a Retirement Plan)?"'
+        You Covered by a Retirement Plan)?"; p. 96, Married persons filing separately, "you are considered covered by a plan
+        unless you lived apart from your spouse for all of 2025"'
   - id: ira.line1b
     printed: 1b
     label: If married filing jointly, was your spouse covered by a retirement plan?

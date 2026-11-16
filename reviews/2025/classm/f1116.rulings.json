@@ -1,0 +1,162 @@
+{
+ "kind": "classm",
+ "form": "f1116",
+ "rulings": [
+  {
+   "case": "classm.f1116.1",
+   "printed": "21",
+   "project": "$549.46",
+   "model": "$548.82",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept six places (3,426.70 / 94,250 = 0.036358; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "2dc3718e8a48159318072eb37be26bcd184a74beabbfec90dd631478f8a00e49",
+   "subject_key": "31576fcd945a4480fafb2dfa57607abb8efdfc7c64855582fbf15dc9d4442d8c"
+  },
+  {
+   "case": "classm.f1116.1",
+   "printed": "23",
+   "project": "$549.46",
+   "model": "$548.82",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept six places (3,426.70 / 94,250 = 0.036358; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "2dc3718e8a48159318072eb37be26bcd184a74beabbfec90dd631478f8a00e49",
+   "subject_key": "e5ad20c2123d0c06dbedb752e9b8496b9c7a9820944bd3e3ff8446c61569207c"
+  },
+  {
+   "case": "classm.f1116.2",
+   "printed": "21",
+   "project": "$959.18",
+   "model": "$958.20",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept full places (5,082.20 / 139,000 = 0.036563; 0.0366 at four places). The readings differ by cents ($959.18 v. $958.20); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "519e82e9233b845659ab68db10975268eefdd5492d74eac473bbca2ebbd1e78a",
+   "subject_key": "31576fcd945a4480fafb2dfa57607abb8efdfc7c64855582fbf15dc9d4442d8c"
+  },
+  {
+   "case": "classm.f1116.2",
+   "printed": "23",
+   "project": "$959.18",
+   "model": "$958.20",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept full places (5,082.20 / 139,000 = 0.036563; 0.0366 at four places). The readings differ by cents ($959.18 v. $958.20); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "519e82e9233b845659ab68db10975268eefdd5492d74eac473bbca2ebbd1e78a",
+   "subject_key": "e5ad20c2123d0c06dbedb752e9b8496b9c7a9820944bd3e3ff8446c61569207c"
+  },
+  {
+   "case": "classm.f1116.2",
+   "printed": "3a",
+   "project": "$8,000.00",
+   "model": "$26,000.00",
+   "ruling": "Ruling: model error; Form 1116 (2025) line 3a, certain itemized deductions or standard deduction, from the case's given Schedule A amounts (line 4 $0, line 5e $8,000: project $8,000.00). The model did not read line 3a from the given amounts; it back-solved $26,000 from line 6 ($917.80 / 0.0353), treating all of line 6 as line 3g, although line 6 also adds lines 2, 4a, 4b and 5 (the case's apportioned home mortgage interest is on line 4a). Both sides agree on line 6. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "519e82e9233b845659ab68db10975268eefdd5492d74eac473bbca2ebbd1e78a",
+   "subject_key": "4701b9164eef56edeae67e9103878658e3406e3ea445765b97a6cc3c6644bcb4"
+  },
+  {
+   "case": "classm.f1116.2",
+   "printed": "3c",
+   "project": "$8,000.00",
+   "model": "$26,000.00",
+   "ruling": "Ruling: model error; Form 1116 (2025) line 3c (line 3a plus 3b), certain itemized deductions or standard deduction, from the case's given Schedule A amounts (line 4 $0, line 5e $8,000: project $8,000.00). The model did not read line 3a from the given amounts; it back-solved $26,000 from line 6 ($917.80 / 0.0353), treating all of line 6 as line 3g, although line 6 also adds lines 2, 4a, 4b and 5 (the case's apportioned home mortgage interest is on line 4a). Both sides agree on line 6. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "519e82e9233b845659ab68db10975268eefdd5492d74eac473bbca2ebbd1e78a",
+   "subject_key": "78792a70520362ea20646df0dae050845372323885aad697edf999fd8101e621"
+  },
+  {
+   "case": "classm.f1116.3",
+   "printed": "21",
+   "project": "$549.46",
+   "model": "$548.82",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
+   "subject_key": "31576fcd945a4480fafb2dfa57607abb8efdfc7c64855582fbf15dc9d4442d8c"
+  },
+  {
+   "case": "classm.f1116.3",
+   "printed": "23",
+   "project": "$549.46",
+   "model": "$548.82",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
+   "subject_key": "e5ad20c2123d0c06dbedb752e9b8496b9c7a9820944bd3e3ff8446c61569207c"
+  },
+  {
+   "case": "classm.f1116.3",
+   "printed": "24",
+   "project": "$549.46",
+   "model": "$548.82",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
+   "subject_key": "318dcb15644597b907e2732da01c5eafd88a0e7fcc9e094dbbc738d60aac7959"
+  },
+  {
+   "case": "classm.f1116.3",
+   "printed": "27",
+   "project": "$549.46",
+   "model": "$548.82",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
+   "subject_key": "4604bdfc5b65d11ad006698e5e3a32306a447d8bf8813233ad02a86709f72f95"
+  },
+  {
+   "case": "classm.f1116.3",
+   "printed": "32",
+   "project": "$549.46",
+   "model": "$548.82",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
+   "subject_key": "ef9400ce4de154dd2211ec7e9323a5d7d54f203826b42a8cc24b6155f6435803"
+  },
+  {
+   "case": "classm.f1116.3",
+   "printed": "33",
+   "project": "$549.46",
+   "model": "$548.82",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
+   "subject_key": "f8e38cfb9b8b9272af3b727bb843d662a9d674a29336e5c778f6cdebcaadebdd"
+  },
+  {
+   "case": "classm.f1116.3",
+   "printed": "35",
+   "project": "$549.46",
+   "model": "$548.82",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_ratio_places (i1116 p. 18, Line 3f, \"round off the result to at least four decimal places\"; p. 25, Line 19, no rounding stated). The project rounds line 19 half-up to four places (chosen reading, coordinator delegation D6); the model kept seven places (3,426.70 / 94,250 = 0.0363576; 0.0364 at four places). The readings differ by cents ($549.46 v. $548.82); every later line repeats the same difference. Model value dropped.",
+   "drop": true,
+   "context": "1e214fa01c708d0f03bb44c61b987b4af964234c095651812bb21b2ab6eb04ba",
+   "date": "2026-11-15",
+   "run": "0b976191595d168b8d848139d1d948051d11d0dd2fb213990ee1601d9165600e",
+   "subject_key": "1a9610ceee2c8c8e3bdb25443b5b3261d6ea70fad51547b1ef02cea466da8464"
+  }
+ ]
+}

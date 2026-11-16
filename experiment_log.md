@@ -258,3 +258,9 @@ the validation policy.
 - Attempt: `tickScreen`'s probe put back to the plain evaluation, compiled, `node engine/dist/main.js test-serve`; then restored.
 - Observation: the same failure, with the change taken out.
 - Learning: one run. It is consistent with the cause being the two contracts themselves: the tick lane's test states that the ordinary route rejects a later box once an earlier box's Yes has opened a question, which was so only while a refusal screen held a question back. See `docs/provisional/lanes/stitch.md`, part 5.
+
+## Attempt 1 — 2026-11-16 (xint fork 2, premature completions generated.375 / ny.generated.431)
+Hypothesis: the leaks of dependent.spouse_relative come from qr_household_member and qr_other_relation reading it in an any[] that household_all_year decides; a choose on household_all_year first removes them.
+Tried: choose with dependent.household_all_year as the guard, spouse relationship beneath it.
+Outcome: leaks gone on both witnesses and the coverage rows passed, but fixture stage8.mut.mfj_spouse_relative_all_year_unanswered (qr_all_year withheld, spouse_relative true, expects qr_relationship true) became unknown: an expected value would have to change.
+Learning: the guard order must keep what the fixtures already settle; the spouse-relationship test first (the read order of the original any[]) removes the leak without changing that value. Asking the household question first would spare joint filers a moot question but is a coordinator decision on that fixture.

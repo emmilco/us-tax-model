@@ -1,0 +1,506 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "x2pay.f4137.w1",
+      "covers": [
+        "f4137",
+        "f1040.line1c",
+        "s2.line5",
+        "f8959.line2"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Scout W1. Form 4137 (2025): line 2 $9,000; line 3 $4,000; line 4 = 9,000 - 4,000 = $5,000 (to Form 1040 line 1c); line 5 $300; line 6 = 5,000 - 300 = $4,700; line 7 $176,100; line 8 = W-2 boxes 3 + 7 = 24,000 + 4,000 = $28,000; line 9 = 176,100 - 28,000 = $148,100; line 10 = smaller of 4,700 or 148,100 = $4,700; line 11 = 4,700 x 0.062 = $291.40; line 12 = line 6 x 0.0145 = 4,700 x 0.0145 = $68.15; line 13 = $359.55 (Schedule 2 lines 5 and 7). Form 1040 line 1z = 28,000 + 5,000 = $33,000. Form 8959 line 2 = Form 4137 line 6 = $4,700. Adjusted gross income (line 11a) $33,000.00.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 400000,
+        "person[taxpayer].f4137_under20": 30000
+      },
+      "expect": {
+        "person[taxpayer].f4137[form].line2": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "person[taxpayer].f4137[form].line3": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].f4137[form].line4": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].f4137[form].line5": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "person[taxpayer].f4137[form].line6": {
+          "kind": "money",
+          "cents": 470000
+        },
+        "person[taxpayer].f4137[form].line8": {
+          "kind": "money",
+          "cents": 2800000
+        },
+        "person[taxpayer].f4137[form].line9": {
+          "kind": "money",
+          "cents": 14810000
+        },
+        "person[taxpayer].f4137[form].line10": {
+          "kind": "money",
+          "cents": 470000
+        },
+        "person[taxpayer].f4137[form].line11": {
+          "kind": "money",
+          "cents": 29140
+        },
+        "person[taxpayer].f4137[form].line12": {
+          "kind": "money",
+          "cents": 6815
+        },
+        "person[taxpayer].f4137[form].line13": {
+          "kind": "money",
+          "cents": 35955
+        },
+        "f1040.line1c": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 3300000
+        },
+        "s2.line5": {
+          "kind": "money",
+          "cents": 35955
+        },
+        "s2.line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s2.line7": {
+          "kind": "money",
+          "cents": 35955
+        },
+        "f8959.line2": {
+          "kind": "money",
+          "cents": 470000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3300000
+        }
+      }
+    },
+    {
+      "id": "x2pay.f4137.w1_noncash",
+      "covers": [
+        "f4137",
+        "f1040.line1c"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "W1 with $150 of noncash tips: line 1c = Form 4137 line 4 $5,000 + $150 = $5,150 (i1040gi p. 24, Line 1c, noncash tips go on line 1c); Form 4137 is unchanged (line 13 $359.55). Adjusted gross income (line 11a) $33,150.00.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 400000,
+        "person[taxpayer].f4137_under20": 30000,
+        "person[taxpayer].tips_noncash": 15000
+      },
+      "expect": {
+        "f1040.line1c": {
+          "kind": "money",
+          "cents": 515000
+        },
+        "person[taxpayer].f4137[form].line13": {
+          "kind": "money",
+          "cents": 35955
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 3315000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3315000
+        }
+      }
+    },
+    {
+      "id": "x2pay.f4137.noncash_only",
+      "covers": [
+        "f1040.line1c",
+        "f4137"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Only $150 of noncash tips, no employer rows: Form 4137 line 2 is zero, so it is not filed and its tax is zero; line 1c = $150; line 1z = 28,000 + 150. Adjusted gross income (line 11a) $28,150.00.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2800000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [],
+        "person[taxpayer].tips_noncash": 15000
+      },
+      "expect": {
+        "f1040.line1c": {
+          "kind": "money",
+          "cents": 15000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 2815000
+        },
+        "s2.line5": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f4137[form].files": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2815000
+        }
+      }
+    },
+    {
+      "id": "x2pay.f4137.w9_government",
+      "covers": [
+        "f4137"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Scout W9: W1 with tips received as a government employee whose pay was subject only to the 1.45% Medicare tax: refused at Form 4137 line 10 (f4137 p. 2, Line 10).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 400000,
+        "person[taxpayer].f4137_under20": 30000,
+        "person[taxpayer].tips_gov": true
+      },
+      "expect": {
+        "person[taxpayer].f4137[form].line10": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].tips_gov_if_rows",
+          "form": "Form 4137, line 10, tips received as a government employee whose pay was subject only to the 1.45% Medicare tax",
+          "remedy": "The tips received for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax are taken out of line 6 for the comparison with line 9 on line 10; this tool does not prepare Form 4137 with such tips.",
+          "cite": {
+            "doc": "f4137",
+            "locator": "p. 2, Line 10, \"If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax\"",
+            "revision": "2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "f2f7a8220e10c98e1aa0fee4bdb83a8ece8c2c97449208b2a8f9be0189bcb438",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f4137[form].line12": {
+          "kind": "money",
+          "cents": 6815
+        }
+      }
+    },
+    {
+      "id": "x2pay.f4137.over_ss_base",
+      "covers": [
+        "f4137"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Social security wages $175,000 (boxes 3 and 7) and $3,000 of unreported tips: line 9 = 176,100 - 175,000 = $1,100; line 10 = smaller of 3,000 or 1,100 = $1,100; line 11 = 1,100 x 0.062 = $68.20; line 12 = 3,000 x 0.0145 = $43.50; line 13 = $111.70. Adjusted gross income (line 11a) $178,000.00.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 17500000,
+        "person[taxpayer].w2[diner].box3": 17500000,
+        "person[taxpayer].w2[diner].box5": 17500000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 300000,
+        "person[taxpayer].f4137row[diner].col_d": 0
+      },
+      "expect": {
+        "person[taxpayer].f4137[form].line9": {
+          "kind": "money",
+          "cents": 110000
+        },
+        "person[taxpayer].f4137[form].line10": {
+          "kind": "money",
+          "cents": 110000
+        },
+        "person[taxpayer].f4137[form].line11": {
+          "kind": "money",
+          "cents": 6820
+        },
+        "person[taxpayer].f4137[form].line12": {
+          "kind": "money",
+          "cents": 4350
+        },
+        "person[taxpayer].f4137[form].line13": {
+          "kind": "money",
+          "cents": 11170
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 17800000
+        }
+      }
+    },
+    {
+      "id": "x2pay.f4137.line5_over",
+      "covers": [
+        "f4137"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Line 5 ($600) more than line 4 ($500): refused at line 6 (the tips under $20 a month not reported cannot be more than all unreported tips).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 850000,
+        "person[taxpayer].f4137_under20": 60000
+      },
+      "expect": {
+        "person[taxpayer].f4137[form].line4": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[taxpayer].f4137[form].line6": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].f4137[form].line5_over",
+          "form": "Form 4137, line 5 more than line 4",
+          "remedy": "The tips under $20 a month that you did not report (line 5) are more than all the tips you did not report (line 4). Check the amounts of tips received and reported for each employer.",
+          "cite": {
+            "doc": "f4137",
+            "locator": "p. 1, line 6, \"Unreported tips subject to Medicare tax. Subtract line 5 from line 4\"",
+            "revision": "2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "f2f7a8220e10c98e1aa0fee4bdb83a8ece8c2c97449208b2a8f9be0189bcb438",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2pay.f4137.tips_deduction_refused",
+      "covers": [
+        "s1a.line4b"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "W1 and the deduction for qualified tips claimed: Schedule 1-A line 4b (qualified tips included on Form 4137) is refused (s1a.f4137).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 400000,
+        "person[taxpayer].f4137_under20": 30000,
+        "s1a.tips": true,
+        "person[taxpayer].work_ssn": true,
+        "$tipjob@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].tipjob[diner].listed": true,
+        "person[taxpayer].tipjob[diner].tips": 400000
+      },
+      "expect": {
+        "s1a.line4b": {
+          "kind": "refusal",
+          "gate": "s1a.f4137",
+          "form": "The deduction for qualified tips included on Form 4137 (Schedule 1-A, line 4b)",
+          "remedy": "This tool prepares Form 4137 but does not figure the part of its tips that is qualified tips for the deduction. Claim the deduction for tips without this tool, or answer that you do not want the deduction for tips.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 101, Schedule 1-A, Part II, \"If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137\"; p. 104, line 4b",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mexist.f4137.line5_equals_line4",
+      "covers": [
+        "f4137"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of x2pay.f4137.w9_government without the government-employee tips, and $5,000 of the unreported tips received in months when the total was under $20. Line 2 $9,000, line 3 $4,000, line 4 $5,000, line 5 $5,000; line 5 is not more than line 4, so line 6 is line 4 minus line 5, $0 (f4137 p. 1, lines 4-6), and line 12 is $0 x 1.45% = $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 400000,
+        "person[taxpayer].f4137_under20": 500000,
+        "person[taxpayer].tips_gov": false
+      },
+      "expect": {
+        "person[taxpayer].f4137[form].line5_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f4137[form].line6": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].f4137[form].line12": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mexist.f4137.line8_rrta",
+      "covers": [
+        "f4137"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of x2pay.f4137.w9_government without the government-employee tips, for a person with railroad retirement (RRTA) compensation. Form 4137 line 8 adds RRTA compensation to the social security wages, and tips for work covered by the Railroad Retirement Tax Act are not reported on Form 4137 (f4137 p. 2, \"Don't use Form 4137 to report tips received for work covered by the Railroad Retirement Tax Act\"); the tool refuses line 8 (refusal recorded from the evaluator). Line 12 (Medicare on line 6 = $4,700) is $68.15.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 400000,
+        "person[taxpayer].f4137_under20": 30000,
+        "person[taxpayer].tips_gov": false,
+        "person[taxpayer].rrta": true
+      },
+      "expect": {
+        "person[taxpayer].f4137[form].line8": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].rrta",
+          "form": "Form 4137 with railroad retirement (RRTA) compensation",
+          "remedy": "Form 4137 line 8 adds railroad retirement (RRTA) compensation to the social security wages, and tips for work covered by the Railroad Retirement Tax Act are not reported on Form 4137; this tool does not take railroad compensation.",
+          "cite": {
+            "doc": "f4137",
+            "locator": "p. 2, Employees subject to the Railroad Retirement Tax Act, \"Don’t use Form 4137 to report tips received for work covered by the Railroad Retirement Tax Act\"",
+            "revision": "2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "f2f7a8220e10c98e1aa0fee4bdb83a8ece8c2c97449208b2a8f9be0189bcb438",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].f4137[form].line12": {
+          "kind": "money",
+          "cents": 6815
+        }
+      }
+    },
+    {
+      "id": "mexist.f4137.reported_over_unreported",
+      "covers": [
+        "f4137"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of x2pay.f4137.w9_government without the government-employee tips, with $6,000 of the $9,000 of cash and charge tips reported to the employer (the W-2 left as in the base). Line 2 $9,000, line 3 $6,000, line 4 $3,000, line 5 $300 (not more than line 4), line 6 $2,700 (f4137 p. 1, lines 2-6). Line 8 (W-2 boxes 3 and 7) $28,000, line 9 $176,100 - $28,000 = $148,100, line 10 the smaller of lines 6 and 9, $2,700; line 11 $2,700 x 6.2% = $167.40; line 12 $2,700 x 1.45% = $39.15; line 13 $206.55. Reported tips being more than the unreported tips does not refuse.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 600000,
+        "person[taxpayer].f4137_under20": 30000,
+        "person[taxpayer].tips_gov": false
+      },
+      "expect": {
+        "person[taxpayer].f4137[form].line5_over": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].f4137[form].line6": {
+          "kind": "money",
+          "cents": 270000
+        },
+        "person[taxpayer].f4137[form].line13": {
+          "kind": "money",
+          "cents": 20655
+        }
+      }
+    }
+  ]
+}

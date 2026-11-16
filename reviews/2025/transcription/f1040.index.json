@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "b1d494b8d9c7a8ac571efc9eac58e31bed40a2ae1cf596cd087583ffaca15443",
  "head_rows": {
-  "printed lines compared": "55",
-  "agree / disagree / missing": "46 / 9 / 0",
-  "line-scoped reviews": "6 (latest 2026-11-15); see Line-scoped reviews"
+  "printed lines compared": "61",
+  "agree / disagree / missing": "49 / 12 / 0",
+  "line-scoped reviews": "8 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -32,9 +32,27 @@
   },
   {
    "key": "1a",
-   "record": "4443950570801288449b10da9cba283ff549c9ace887c64b8350acc29755614d",
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
    "status": "AGREE",
-   "subject_key": "241770bc41d4939da85497a828791c2247fbced6d110d1ef0cb45327bb4a7942"
+   "subject_key": "4c3ed88538b710beb5e03a0fa1e31f09b0ea47b572fedbf549068e08b0ceb12f"
+  },
+  {
+   "key": "1b",
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
+   "status": "AGREE",
+   "subject_key": "7972f5f46d2bcc6bf7b527cfadf17ef38c71115eabf0bbe746a7b2cc2dba08df"
+  },
+  {
+   "key": "1c",
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
+   "status": "AGREE",
+   "subject_key": "9d9618e86783909a67783cb5050f625b3f6d8b60111f89b80cde7ac952802e9c"
+  },
+  {
+   "key": "1d",
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
+   "status": "AGREE",
+   "subject_key": "6d29dd3f0b01a9d740fb3e01299c5bf86f00a196809c9f779b52381ce9c228ba"
   },
   {
    "key": "1e",
@@ -44,10 +62,22 @@
    "subject_key": "a0c7c948b896cc4d962a66cf992fe9912e80d7ecfb18e88e3aaae0b2f8972c08"
   },
   {
-   "key": "1z",
-   "record": "4443950570801288449b10da9cba283ff549c9ace887c64b8350acc29755614d",
+   "key": "1g",
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
    "status": "AGREE",
-   "subject_key": "27732cbcf25d7d9e409427c027a4c88721b880f63f774419e6c253af40e555e6"
+   "subject_key": "02cd6aa30b929d8a1a409d1b75782689b68075f366e72a579588fa03b81582a8"
+  },
+  {
+   "key": "1h",
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
+   "status": "AGREE",
+   "subject_key": "b5561196fc7ffa00d8fed11c22ef6b36dd56fb1e01203364c23e069c249ac470"
+  },
+  {
+   "key": "1z",
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
+   "status": "AGREE",
+   "subject_key": "cbcbd7209326560f75d02cbd06741e8ea6f99bd36811738c4d8e9ae8d39a7ed7"
   },
   {
    "key": "2a",
@@ -125,15 +155,17 @@
   },
   {
    "key": "6d",
-   "record": "b1d494b8d9c7a8ac571efc9eac58e31bed40a2ae1cf596cd087583ffaca15443",
-   "status": "AGREE",
-   "subject_key": "9e78403d31e2738f07a0d73e58cb71c4a902b296de42e9f1061efe7364eba846"
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.2025.mfs_lived_apart_boxes (coordinator decision under the owner's delegation, lane mfs-l1). i1040gi p. 31, Line 6d: \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d. If you don't check the box on line 6d, you may get a math error notice from the IRS.\" The instruction sits under Lines 6a-6d (social security benefits); the project checks the box only on a return with benefits (ssb.has_benefits), the reply on every separate return lived apart all year. Triage d366a5e05a41: 3,175/3,215 agree; the 3 value differences are exactly that case (MFS, apart all year, ssb.has_benefits false: project false, reply true); the other 37 are the reply's unknown status on returns that never answer it (29 incomplete, 8 refused). The chosen reading stands.",
+   "subject_key": "9fa2056d2db4dec59326b2fd8c6946f41fe245589d8a56b183610834e7c8fc25"
   },
   {
    "key": "7a",
-   "record": "b1d494b8d9c7a8ac571efc9eac58e31bed40a2ae1cf596cd087583ffaca15443",
-   "status": "AGREE",
-   "subject_key": "18f36374fcea9dbcea745f235c043eb6c5bc983fcf05738410dc36156292a2e2"
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply rebuilds Schedule D's carry to line 7a (line 16 gain or zero, line 21 limited loss, Exception 1 capital gain distributions) where the project copies sd.to1040 (f1040sd p. 2, Part III, lines 16 and 21: \"If line 16 is a gain, enter the amount from line 16 on Form 1040 ... line 7a\"; \"If line 16 is a loss, enter here and on Form 1040 ... line 7a, the smaller of\"). Triage d366a5e05a41: 3,186/3,215 agree; in scope 3,045/3,045 agree; all 29 differences are project-refuses (returns the project refuses on a distribution or Schedule D gate the reply does not read). Equivalent wherever the project computes.",
+   "subject_key": "53cdb178f5fa30c9da0eea631215f620369467b367b2502a86718203b1448f05"
   },
   {
    "key": "8",
@@ -166,6 +198,13 @@
    "subject_key": "2d483aaf7f14c962081cee4a56b8fe71ee98bb9df5e2035bc63e082069a1f02f"
   },
   {
+   "key": "12b",
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; both put the spouse-itemizes answer (sa.spouse_itemizes) on line 12b only on a separate return: the project's choose (mfs -> input, else sa.no false) and the reply's all(status = mfs, spouse_itemizes) are the same Boolean (i1040gi p. 33, Line 12b; p. 34, Exception 2). Triage d366a5e05a41: 3,191/3,215 agree, no value difference; the 24 differences are project-unknown on returns that never answer f1040.status (14 incomplete, 10 refused), where the reply's conjunction short-circuits to false.",
+   "subject_key": "b4c767582d35939b8e7ca13c25d27fe0885d6ff7ce7ee642c0a92ee2b543bdfb"
+  },
+  {
    "key": "12e",
    "record": "1cc1af553ee01046c8dd428a236aeddc2fa53fb37f75c37c9ac24e1309bb587c",
    "status": "AGREE",
@@ -191,15 +230,15 @@
   },
   {
    "key": "15",
-   "record": "b1d494b8d9c7a8ac571efc9eac58e31bed40a2ae1cf596cd087583ffaca15443",
+   "record": "c1d96ccfd3ae383409ec6e20859b948a54846212cdab079dbb5ae2ea77cf6426",
    "status": "AGREE",
-   "subject_key": "aa0fb1ce6e72eec0d5757fa8541ea5ed915121b5ccc32735889f34d593ab515d"
+   "subject_key": "d51c1b024af9d1ff3d35a21ce679ce8077f5ef2f8b637e11edfa16de57d6d035"
   },
   {
    "key": "16",
-   "record": "564999d7355bb93c3450aa47e14445d949ed93f8cf723acb97ded0d6faf5d0da",
+   "record": "6d04e40480da1788de8a7b982bd858be6ff3e5a1d93af9f98e4e1e3d5e19f06e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; both take the Schedule D Tax Worksheet, else the Qualified Dividends and Capital Gain Tax Worksheet, else the tax on line 15 (i1040gi p. 36, Line 16, \"Use the Qualified Dividends and Capital Gain Tax Worksheet, later, to figure your tax if you don't have to use the Schedule D Tax Worksheet\"); the reply tests f1040.line3a directly where the project reads f1040.line3a_if_ordinary (zero when the parent question about ordinary dividends is No), and the reply lists no refusal for the other line 16 taxes, which the project refuses by scope.other_line16 (its note: taken to be screened elsewhere). Triage executable-triage-v2 (.transcription/triage/2025/f1040.json, pass 99250f853f76): 2,603 of 2,769 agree; no value difference; 130 candidate-unknown (9 on completed returns, f1040.line3a unasked, project equal to qdcg.line25), 36 project-refuses (scope.other_line16) on refused returns.",
+   "ruling": "Ruling: representation; line-scoped rerun (pass 0416e96b1303, its foreign interfaces changed). Executable triage 2,983/3,201 agree; no value difference on any return; 215 candidate-unknown (175 on completed returns; every witness 'no input supplied for f1040.line3a': the reply reads qualified dividends directly, the project its parent-gated form), 3 project-refuses, all on returns refused by scope.other_line16 (Forms 8814, 4972, 8615, 8621 or 8978, section 962, education credit recapture) or f4952.unsupported. The reply's own note leaves Form 4972 unrefused; the project refuses it at scope.other_line16, which is right under i1040gi p. 34, Line 16, 'Tax from Form 4972 (relating to lump-sum distributions)'. Worksheet selection the same (Tax Table, Tax Computation Worksheet, Schedule D Tax Worksheet, QDCG worksheet). Same ruling as the earlier rounds (adjudication/f1040.md).",
    "subject_key": "708e09782028d6312c772fde69467b54c363178fe8f4dc5ae1768053b0c0f51f"
   },
   {
@@ -353,9 +392,14 @@
   "f1040.gate.qdcg_applies": "1d4febe48a885bbe21682ed27b85357753d14c431b04e8eb4f93a93bb49e7938",
   "f1040.gate.sdtw": "7679caee8ed2ab4227b70e508a47aa4753a33fcdb4e5aa2d2ef11371ac459232",
   "f1040.line3a_if_ordinary": "3ba4cb9c4b8e263a1cece7b9528659ee53df576f3495352e89283e37941b8fda",
-  "1a": "b50991b0e4a046aad90e09a1400d3ca651ec8a5837b1cd130dc9b86943bedcb2",
+  "1a": "15e4dea7aa6d3f166a12aa2cd11a3ddb31a4df4d589593f54ea14680d7c8524c",
+  "1b": "cdcd411b2ce910007a33074e7085bf97e6f74ae33ceb50e351b3cbd785459e41",
+  "1c": "5764b0709a9765ef2c66015b1f2f7609b4ea1dfafed51cd2472675c806e2cfef",
+  "1d": "3b67a2a8f719db3cced40730501f871e89404707f9f1d575c1ebabcf9a7d963a",
   "1e": "44ed6540489e897efab1502a4011b3593f6214d82ac15a70e2f23acee9bd41cc",
-  "1z": "f36d3ec9a9b5c3a371e74d4b070129781e34229674d23ed4fe6dc8140cb4dcca",
+  "1g": "5d19463ba201f23e0a919e8365934ce4575e2a61c632695dec0936881aaafaba",
+  "1h": "64e0faa5acc3986b27ab2c34da8cdc7f7bc302fd4258903460fbdda2db613997",
+  "1z": "16a025624513139dff7593d7ec00a1f2b87fb151d37380de6968838fc4c7a349",
   "2a": "b0580c0d1c3e089b7068fc1f9caf10878e604bc0064edc5dba1f324561cbb180",
   "2b": "03d82155fa8460bec99cb7486856a6cff99a933867f5fc8d76846d8383066867",
   "3b": "0d10dd3b8ea473e76293097fde829743554540aca10def24defbe473cff25883",
@@ -368,18 +412,19 @@
   "6a": "d2758e1d9ca52b28e87856274b4959483c7bd83355f6baefd54618e747880ba7",
   "6b": "666b64f35af320d7d78746eece038f88c2d65839033a0ac8bf3491e70c16c8ed",
   "6c": "717d56ea98d356c868e23a6a66503040122a0f05ffe9343bf3b03d158b178991",
-  "6d": "60c1c4a8ab3f418aaf566bdfcf8071c762b6dbb7163b1ab30edf1eaab506a835",
-  "7a": "70084648d07682496cced0e234fd502ac08d57e93a2bfbd89e1686ebca0e9835",
+  "6d": "05926f02e3e74953a6373db8cb60400f6f061c9f39d29f8a319e840e80efb096",
+  "7a": "c2382d85dfbc2c7bce5f959fa407282803c22eeddc5da7c6843af089228a834a",
   "8": "482e299852c8a42ec80fd05661fa60aa27ec8b58448e77ae9b7337a097859dfc",
   "9": "4a00120baf348ba5e60f8c7441ffd8c0144db25bcbdab3561b0318424d8da03e",
   "10": "756e100cb725da7f4f3229d4bff1971708cb3df121b350ac7aad7d6353d25a91",
   "11a": "27dbd72910e0e60e4ecc381522950d81ef3bdfe9a87d2d2c9872d4a98133d20f",
   "11b": "980e586ccd43ed0b1ead654efdff7144a1b81e5872e19fd1f4f6e1bf95781112",
+  "12b": "6127bc690b4087c10e95ff920733d13c3b8c9c7beee3e2bf55d0eb7d2bc9c72a",
   "12e": "55f2f91ef7f2d91ab863c7b49ad7f59028bb4a912c3c275c0ad412bffd899fcc",
   "13a": "1ca2c02f6b1ae44a9fe194ebef88f9b5d81de340e765fb0184c4beb5f5e68f28",
   "13b": "0d9926e84244027e7ad6305124cabe1353f17fffaaba10b10c0e104cedab91f9",
   "14": "ee12548e01b68f2075b8332ff2bf76bf773510ce09b40e3da6d344bfa77f06fd",
-  "15": "f46a2abb264f976f062b15ce8cafd03a165c846027d7f9312df85d86b28e7072",
+  "15": "07a5425f740529b6d99f73260b329a7ac454c041a26ecd99e0400af6080bd6cc",
   "16": "e47bb6401d82da98f716c9b8b4bd96bf830bf2c20b084194ba0486e3fbb78ac6",
   "17": "197fb0bb8c3ed1fcd417035ab7846c914a605bb956b3937c4e6b86ec87746a24",
   "18": "40b1e9ea8ea7ae6bdeff88b5360e565c7f01335932bd87913bdc97a3edbfb3e3",
@@ -411,13 +456,22 @@
   "f1040.gate.qdcg_applies": "8852262cdfed635a35fb168f567ed68bb278f8ccb9c3b2b28f48ce1e8069ffc2",
   "f1040.gate.sdtw": "2d961074732462eb4461aee8bd8b5a3e4d9b6ccf2285d8647631dabe9edef5af",
   "f1040.line3a_if_ordinary": "a89991d373a0ef9cd22e2a905885c90ec4104aeb0ada89f31b2838188d12bc37",
-  "1a": "f020a8428ad289e0166890c3fe5bf7a2554f1d48db6f1cc30a20a736f5867c82",
+  "1a": "3873886a8db962cca7ddb223a8a433bb01bd46673670da493619eacbbec93b76",
+  "1b": "a75cf1fae84fdc3a6943c8dd64bc5ef63cc7ca156343a5a5f67d4f3e40e81607",
+  "1c": "ecf5974c4dcfd48bbb767a600f955f04b8770c8ca0c478573e9f40aa2e1d6f81",
+  "1d": "527159347fad0290377179b1f53e0bb8d23ef203690f2aa08a7592da5a97fecb",
+  "1g": "6377b004680cda2ca4d4dd4e1967a1d8798df4a0ad47f0682c7d71538990732d",
+  "1h": "041076f6a80cd623f398c9a05535b10ebda49daa72d5062babf82b771af7fec3",
   "1z": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "2a": "fd19b2e351c32dc8459f25a65c94080d73dfdae76fdce3fba9221b09db16ae24",
+  "6d": "7efd919c25b80ea8e444e8940382ed5545c3d81f9106472e10531f81d44b718a",
+  "7a": "74855dd5461a6e6288bfd43b2607624c71bb54bc31278bc9dc036a2529de5579",
   "8": "9d9b1244a6b31e9215f6785b64809b81e7260ab667b5133138b45f7154edb2f1",
   "9": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "12b": "e945b6c871f9d5c81ccbd80de03b3787beff0bdc18e28e94f2451469fac8f93e",
   "12e": "9b30f50bb00f289650037086cf10b86ff178c651f00c6b3b7082e7b0370bd0b0",
   "14": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "15": "563b1deb27909eebf77cc73aaff098465ccbe4843e533960971e72ccd6e93edb",
   "16": "72393a35744677e430686903eae3b7be50b01edc8aa1cda734634b750f5ef149",
   "25c": "c988dcb200ff1b948922f85ba58a1011f7c3d8fe211204736be4562b19420682",
   "25d": "1011e44494516a8c09fdbac7cd21050e605b243ed2e3a7ba2b0dfd366606d44e",

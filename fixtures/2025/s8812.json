@@ -64,7 +64,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],

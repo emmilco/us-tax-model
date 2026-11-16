@@ -36,6 +36,29 @@ form:
     cite:
       doc: i1040gi
       locator: p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan'
+  - id: sli.any_if_not_mfs
+    printed: (helper)
+    label: You (or, on a joint return, your spouse) paid interest on a student loan in 2025, asked only when the filing status
+      is not married filing separately (no otherwise, since that status cannot take the deduction)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - household.mfs
+          - const: false
+        then: sli.any
+      - guard:
+          op: test
+          eq:
+          - household.mfs
+          - const: true
+        then: sli.no
+    cite:
+      doc: i1040gi
+      locator: 'p. 98, Schedule 1, line 21, "Your filing status is any status except married filing separately"'
   - id: sli.interest
     printed: (helper)
     label: Total interest you paid in 2025 on student loans
@@ -57,13 +80,13 @@ form:
       - guard:
           op: test
           eq:
-          - sli.any
+          - sli.any_if_not_mfs
           - const: true
         then: sli.interest
       - guard:
           op: test
           eq:
-          - sli.any
+          - sli.any_if_not_mfs
           - const: false
         then: sli.zero
     cite:
@@ -99,13 +122,13 @@ form:
       - guard:
           op: test
           eq:
-          - sli.any
+          - sli.any_if_not_mfs
           - const: true
         then: sli.unqualified_any
       - guard:
           op: test
           eq:
-          - sli.any
+          - sli.any_if_not_mfs
           - const: false
         then: sli.no
     cite:
@@ -180,13 +203,13 @@ form:
       - guard:
           op: test
           eq:
-          - sli.any
+          - sli.any_if_not_mfs
           - const: true
         then: sli.assisted_any
       - guard:
           op: test
           eq:
-          - sli.any
+          - sli.any_if_not_mfs
           - const: false
         then: sli.no
     cite:

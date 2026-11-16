@@ -20,7 +20,7 @@
       "pages_file": "f1040.pages.json",
       "pages_sha256": "30152e202159138fb88668a30ab308de3fafffff007ca66b2bd854c184738878",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f1040s1",
@@ -41,7 +41,7 @@
       "pages_file": "f1040s1.pages.json",
       "pages_sha256": "91aae862e3dcd4a880858247c7c55c3617b65c4adc611089aa62a3640cd90390",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f1040s1a",
@@ -62,7 +62,7 @@
       "pages_file": "f1040s1a.pages.json",
       "pages_sha256": "c1816c82714f72e129e5a6e9e5a6a7812b192010a5533709941d1c1e557b0e38",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f1040s2",
@@ -83,7 +83,7 @@
       "pages_file": "f1040s2.pages.json",
       "pages_sha256": "91aae862e3dcd4a880858247c7c55c3617b65c4adc611089aa62a3640cd90390",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f1040s3",
@@ -104,7 +104,7 @@
       "pages_file": "f1040s3.pages.json",
       "pages_sha256": "ff8c34ebb8da158504ad29dd5559e5d8c2588dcade4568a6fe56b0b7c03a8ba5",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f1040s3a",
@@ -166,7 +166,7 @@
       "pages_file": "f1040sa.pages.json",
       "pages_sha256": "79e671d7a391a3364962778023437d393b1f9fee44297f75ce62b021d93987f8",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f1040sb",
@@ -187,7 +187,7 @@
       "pages_file": "f1040sb.pages.json",
       "pages_sha256": "ff8c34ebb8da158504ad29dd5559e5d8c2588dcade4568a6fe56b0b7c03a8ba5",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f1040sc",
@@ -227,7 +227,7 @@
       "pages_file": "f1040sd.pages.json",
       "pages_sha256": "5dd5b7b078af64141537c4232e7b206df93efbabc1a90153ad1ccb3b672f663f",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f1040se",
@@ -248,7 +248,28 @@
       "pages_file": "f1040se.pages.json",
       "pages_sha256": "9313b33e625ab83b354b5bd182b713e228418f2572bcc08be14c87ea7af583c2",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "f1040sf",
+      "url": "https://www.irs.gov/pub/irs-dft/f1040sf--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-04-27",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f1040sf--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:51.609393+00:00",
+      "file": "f1040sf.pdf",
+      "sha256": "a8e1d7845b56c8aab175a5b721993569b74f9e850c24874ff6a739174d94bcc7",
+      "revision": "2026 DRAFT, posted 2026-04-27 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-04-27); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "f1040sf.txt",
+      "text_sha256": "c9e4d3827404be7bf41954acc65ff9bf3b03ef6d41d3764771fcdc26f16f7159",
+      "cols_file": "f1040sf.cols.txt",
+      "cols_sha256": "cef87bc0140939bbc6ddb34a290d1e16c2d2a39deed2d32dce074a5b7ea3caad",
+      "pages_file": "f1040sf.pages.json",
+      "pages_sha256": "50bfb6f68451e8539067a4ce2a945b2da31043ce706e1841e98bf8d8410d7f76",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 tax year in line E ('during 2026')"
     },
     {
       "id": "f1040sse",
@@ -288,7 +309,28 @@
       "pages_file": "f1041sk1.pages.json",
       "pages_sha256": "65c0798e3b2e14dedb411d08d6862def2ac17d736318e8a6efd0a773ad4711bd",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "f1045",
+      "url": "https://www.irs.gov/pub/irs-dft/f1045--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-06-23",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f1045--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:54.657847+00:00",
+      "file": "f1045.pdf",
+      "sha256": "53be3ee22a00ea93ead3e19f9eaf1c3fcb1ba2b3b095e0033dbe36979da3ac5b",
+      "revision": "2026 DRAFT, posted 2026-06-23 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-06-23); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "f1045.txt",
+      "text_sha256": "d20cb801ea1d483fb6c6c9a91dd6a58669fff3d0b9dbe47f4c8c607809bb5af3",
+      "cols_file": "f1045.cols.txt",
+      "cols_sha256": "43b618815185d8cc6cd2df5fa73c7b3f316dbd1059867215eb0422abd3f05e64",
+      "pages_file": "f1045.pages.json",
+      "pages_sha256": "f36f8847b111d2efba6ab0666b8c5ebdde9de8d2100e504764c6d6cc7c2d6241",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; Heading 'For the calendar year 2026'"
     },
     {
       "id": "f1062",
@@ -331,7 +373,7 @@
       "pages_file": "f1065sk1.pages.json",
       "pages_sha256": "f0b7c40022364e67ce5e8dfdef8b5b99a6af2fbfe61401d9dc7502249e7eec01",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f1095a",
@@ -389,6 +431,25 @@
       "pages_sha256": "1352a9b52ec2962808accdf0acb705a0677fdbf25d4efac76a79a33fb3b28c23",
       "extract_tool_version": "0.11",
       "revision_locator": "printed form revision \"Rev. April 2025\""
+    },
+    {
+      "id": "f1099da",
+      "url": "https://www.irs.gov/pub/irs-pdf/f1099da.pdf",
+      "description": "Form 1099-DA, 2026 edition (final, printed 2026, created 9/3/25); the IRS also lists a 2027 draft (posted 2026-09-24), not archived",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/f1099da.pdf",
+      "fetched_at": "2026-11-15T05:34:05.827018+00:00",
+      "file": "f1099da.pdf",
+      "sha256": "e6f397924211a3a887cacd75f5ca6378ed728cf0bbce99909f15f4da09dad258",
+      "revision": "2026 (Form 1099-DA, Cat. No. 73567I, created 9/3/25), final irs-pdf edition",
+      "revision_status": "Printed year 2026 inspected in extracted text; a final, not a draft; content review is tracked separately in PREMISES.md",
+      "text_file": "f1099da.txt",
+      "text_sha256": "5529bace62e088f5bb3329fcf62812bbd6aaccbe3edda29bfb6f5aaa5b692aba",
+      "cols_file": "f1099da.cols.txt",
+      "cols_sha256": "ec2e72bbfc39e02b143afdc3192cbf0107d87bc8160b3a79499e1663333625ec",
+      "pages_file": "f1099da.pages.json",
+      "pages_sha256": "2a83e188b920870a0529adc87fb6038da0543209fdec48ec3787930aec11a570",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Page 1 cover note 'Which Revision To Use for Which Year'; printed year '2026' beside the form number"
     },
     {
       "id": "f1099div",
@@ -486,6 +547,48 @@
       "revision_locator": "printed form revision \"Rev. April 2025\""
     },
     {
+      "id": "f1116",
+      "url": "https://www.irs.gov/pub/irs-dft/f1116--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-07-07",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f1116--dft.pdf",
+      "fetched_at": "2026-11-15T17:45:21.679768+00:00",
+      "file": "f1116.pdf",
+      "sha256": "9899d7fbd5401ca26d5677cbc87e221c983c86f8f43130347e8f2329cc6c9779",
+      "revision": "2026 DRAFT, posted 2026-07-07 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-07-07); cannot back a release (spec 7). Printed tax year 2026 inspected in extracted text; content not reviewed",
+      "text_file": "f1116.txt",
+      "text_sha256": "64faf5e9be4ea9aa46d8e46442d0bc19d5688abecdac9bdf4fe593939ed2839f",
+      "cols_file": "f1116.cols.txt",
+      "cols_sha256": "7327f9bc91ec4f14a584ae4cd48132c9262c5fe0d6ec71bf04f71caeab0ce3f9",
+      "pages_file": "f1116.pages.json",
+      "pages_sha256": "d1603f1652ad0fb7f18502a5b7880c56964e0998c53ad34858f6bdd8d2a756bb",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; footer 'Form 1116 (2026) Created 7/1/26'"
+    },
+    {
+      "id": "f1116sb",
+      "url": "https://www.irs.gov/pub/irs-dft/f1116sb--dft.pdf",
+      "draft": true,
+      "draft_edition": "Dec 2026",
+      "draft_posted": "2026-06-11",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f1116sb--dft.pdf",
+      "fetched_at": "2026-11-15T05:34:02.414730+00:00",
+      "file": "f1116sb.pdf",
+      "sha256": "be16368c02aa8abc1afaf861d6ba645cd93f02899598147de106aac59b5b5c99",
+      "revision": "2026 DRAFT (Rev. December 2026), posted 2026-06-11 (irs.gov/draft-tax-forms); created 6/10/26",
+      "revision_status": "IRS draft (Rev. December 2026 edition, posted 2026-06-11); cannot back a release (spec 7). Printed revision inspected in extracted text; content not reviewed",
+      "text_file": "f1116sb.txt",
+      "text_sha256": "9a3c50c5b3b8b4fd53a6f01cfd813ce95c5a3e54544f50dc0af4d86bc028492f",
+      "cols_file": "f1116sb.cols.txt",
+      "cols_sha256": "31b2dccc2bc5180b91eea46930f8df9db9fbf9bca209e895129ad0e1c0a1cc66",
+      "pages_file": "f1116sb.pages.json",
+      "pages_sha256": "efceb879dfeae8d54dcfe85aa211fb5f5ac1ecfd03bd3e4b8fc0cda7c92d229a",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: draft cover; '(Rev. December 2026)' and 'Created 6/10/26' on the form"
+    },
+    {
       "id": "f1120ssk",
       "url": "https://www.irs.gov/pub/irs-dft/f1120ssk--dft.pdf",
       "draft": true,
@@ -504,7 +607,7 @@
       "pages_file": "f1120ssk.pages.json",
       "pages_sha256": "2681c12f5e871675314e435ae10d8a983ef0ea01c34644bcd72cc7f9f958087a",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f2441",
@@ -525,7 +628,28 @@
       "pages_file": "f2441.pages.json",
       "pages_sha256": "91aae862e3dcd4a880858247c7c55c3617b65c4adc611089aa62a3640cd90390",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "f4137",
+      "url": "https://www.irs.gov/pub/irs-dft/f4137--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-04-20",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f4137--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:52.731840+00:00",
+      "file": "f4137.pdf",
+      "sha256": "5aa2841964470753f5106136dc9d505c9301c024ef683f014ea1f6bec852dbc0",
+      "revision": "2026 DRAFT, posted 2026-04-20 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-04-20); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "f4137.txt",
+      "text_sha256": "331fc4844ca8f6b80d438139a28202ee4fd5598c5b9b14848015ab35f9981cb6",
+      "cols_file": "f4137.cols.txt",
+      "cols_sha256": "3aae981f62aa180e480b844ad697bf7d5e6956d19f8d3bc5893c9f7d37c99f60",
+      "pages_file": "f4137.pages.json",
+      "pages_sha256": "3622de33ef76283141eb6ca3e13d5680ef7a2857d28fa637f0674f10dfeef4ff",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 tax year in lines 1 and 2 ('received in 2026')"
     },
     {
       "id": "f4562",
@@ -546,7 +670,49 @@
       "pages_file": "f4562.pages.json",
       "pages_sha256": "53d73c1bae4dcb416cae1dd77f581c422166b135c0f2c38f25f0b1ddeb1296c1",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "f461",
+      "url": "https://www.irs.gov/pub/irs-dft/f461--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-06-16",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f461--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:53.807869+00:00",
+      "file": "f461.pdf",
+      "sha256": "0acb9c3dd8b016a3458f60097733f3da0b5b460853d3e867fc2aa27c1bc8780b",
+      "revision": "2026 DRAFT, posted 2026-06-16 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-06-16); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "f461.txt",
+      "text_sha256": "522e6f5b08155796f13664386eb8e66c245f579dac3e5c89d18c1e4cea942dc4",
+      "cols_file": "f461.cols.txt",
+      "cols_sha256": "b0f0eb61ad997417f23bb325f82a565bdfd9f77bd0ce4a00bc212fdf5459ae12",
+      "pages_file": "f461.pages.json",
+      "pages_sha256": "6810c2e1e57e53c2062a63235c20d2aee551bc73c139ac399ebf6495f0e400e9",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; Form 461 (2026) Created 6/4/26"
+    },
+    {
+      "id": "f4797",
+      "url": "https://www.irs.gov/pub/irs-dft/f4797--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-10-07",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f4797--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:51.080169+00:00",
+      "file": "f4797.pdf",
+      "sha256": "66e57b82213189baa8564ed9cb83e75d6f556edb0bd051df458879280bc1fec9",
+      "revision": "2026 DRAFT, posted 2026-10-07 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-10-07); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "f4797.txt",
+      "text_sha256": "ff622456a46631349796cd3f2a22aa6ceeaaa46811d5259024935fb8a90cf327",
+      "cols_file": "f4797.cols.txt",
+      "cols_sha256": "66b72345d7a110b1114fa641ecd062664b4f29eea29a82373bc4bf7ca004566a",
+      "pages_file": "f4797.pages.json",
+      "pages_sha256": "ffe6acb82fdce27bbd70739d7fbf987d247b42443d8e1c2c51b80de498a3b44a",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; Form 4797 (2026) Created 10/1/26"
     },
     {
       "id": "f4952",
@@ -586,7 +752,7 @@
       "pages_file": "f5329.pages.json",
       "pages_sha256": "61ec203b955069ab1f49d2e28317b0da56d902c71397e66b54c94092b36b16f7",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f5695",
@@ -607,7 +773,7 @@
       "pages_file": "f5695.pages.json",
       "pages_sha256": "ff8c34ebb8da158504ad29dd5559e5d8c2588dcade4568a6fe56b0b7c03a8ba5",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f6198",
@@ -647,7 +813,7 @@
       "pages_file": "f7206.pages.json",
       "pages_sha256": "e58bed43ade888092820351944f96a0f393a928a6949866066d66b2b0076aa07",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f8283",
@@ -687,7 +853,7 @@
       "pages_file": "f8582.pages.json",
       "pages_sha256": "c1816c82714f72e129e5a6e9e5a6a7812b192010a5533709941d1c1e557b0e38",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f8606",
@@ -709,6 +875,48 @@
       "revision_locator": "form footer, \"Form 8606 (2026)\", \"Created 4/21/26\""
     },
     {
+      "id": "f8615",
+      "url": "https://www.irs.gov/pub/irs-dft/f8615--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-06-30",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f8615--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:48.998361+00:00",
+      "file": "f8615.pdf",
+      "sha256": "11db7889385b13ea63d2f05cd0bbb4e92afe34523917a7b9f9fc4ddecd7996d7",
+      "revision": "2026 DRAFT, posted 2026-06-30 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-06-30); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "f8615.txt",
+      "text_sha256": "b542d68695a0d642e89d47c5fb33f35b3264088749322ae6cf032ceedc7feb77",
+      "cols_file": "f8615.cols.txt",
+      "cols_sha256": "6c896901254ab5034165c4b42d5e5992d30bb979a10de678e2fa23f9eec8bf05",
+      "pages_file": "f8615.pages.json",
+      "pages_sha256": "6810c2e1e57e53c2062a63235c20d2aee551bc73c139ac399ebf6495f0e400e9",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; Form 8615 (2026) Created 5/7/26"
+    },
+    {
+      "id": "f8814",
+      "url": "https://www.irs.gov/pub/irs-dft/f8814--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-07-07",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f8814--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:50.024744+00:00",
+      "file": "f8814.pdf",
+      "sha256": "4ba275126e96f31984373285c48e53fad3c82aa8f01e0f72100f7cff962dae0d",
+      "revision": "2026 DRAFT, posted 2026-07-07 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-07-07); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "f8814.txt",
+      "text_sha256": "bab1945b3680c8d6f2e7ae6585c64d51c981589a866a6fcb553716440da3779b",
+      "cols_file": "f8814.cols.txt",
+      "cols_sha256": "92532c96eb965e6135d8966ea083b7ad4f35de8ee4ea38f1a1c5e687ee296703",
+      "pages_file": "f8814.pages.json",
+      "pages_sha256": "6810c2e1e57e53c2062a63235c20d2aee551bc73c139ac399ebf6495f0e400e9",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; Form 8814 (2026) Created 4/28/26"
+    },
+    {
       "id": "f8863",
       "url": "https://www.irs.gov/pub/irs-dft/f8863--dft.pdf",
       "draft": true,
@@ -727,7 +935,7 @@
       "pages_file": "f8863.pages.json",
       "pages_sha256": "f9b88d24a67111421cb9bb0b15ee7eba8cbc7fe142ccdffd2e7ea4bd37f611a4",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f8880",
@@ -748,7 +956,7 @@
       "pages_file": "f8880.pages.json",
       "pages_sha256": "1f40f9e7eb8d602ad94e6895a0160db4c5394ae77d1c22da682fb13f59ef4f88",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f8889",
@@ -769,7 +977,28 @@
       "pages_file": "f8889.pages.json",
       "pages_sha256": "ff8c34ebb8da158504ad29dd5559e5d8c2588dcade4568a6fe56b0b7c03a8ba5",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "f8919",
+      "url": "https://www.irs.gov/pub/irs-dft/f8919--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-05-18",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f8919--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:53.385964+00:00",
+      "file": "f8919.pdf",
+      "sha256": "75f93ccf99e6c06effb2d880909e6c90b194703aa10abdbcbf9a3d3f09885bbf",
+      "revision": "2026 DRAFT, posted 2026-05-18 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-05-18); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "f8919.txt",
+      "text_sha256": "889f032218961dc8093f803b15391262d6d6477c22189763bc4d6b8b7f4049f4",
+      "cols_file": "f8919.cols.txt",
+      "cols_sha256": "73d536f8207a64e6ef6e7dcc5699864be9e03e71ce3fd5571242e95555d34093",
+      "pages_file": "f8919.pages.json",
+      "pages_sha256": "dd9a8c4e695ee6e04bb41ec58503fb60ff17ebdc6823b1a04f4ca3dd76a20e97",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; Form 8919 (2026) Created 5/14/26"
     },
     {
       "id": "f8949",
@@ -790,7 +1019,7 @@
       "pages_file": "f8949.pages.json",
       "pages_sha256": "65073a52b244ccc924bf412c89bb6b8a3395bedc39752962a9c1c70dd1b481ca",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f8959",
@@ -811,7 +1040,7 @@
       "pages_file": "f8959.pages.json",
       "pages_sha256": "ff8c34ebb8da158504ad29dd5559e5d8c2588dcade4568a6fe56b0b7c03a8ba5",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f8960",
@@ -832,7 +1061,7 @@
       "pages_file": "f8960.pages.json",
       "pages_sha256": "ff8c34ebb8da158504ad29dd5559e5d8c2588dcade4568a6fe56b0b7c03a8ba5",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f8962",
@@ -853,7 +1082,28 @@
       "pages_file": "f8962.pages.json",
       "pages_sha256": "91aae862e3dcd4a880858247c7c55c3617b65c4adc611089aa62a3640cd90390",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "f8990",
+      "url": "https://www.irs.gov/pub/irs-dft/f8990--dft.pdf",
+      "draft": true,
+      "draft_edition": "Dec 2026",
+      "draft_posted": "2026-08-26",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/f8990--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:55.713027+00:00",
+      "file": "f8990.pdf",
+      "sha256": "c9faa031d14b89c8e3d32ea2bff2c0485bcdb3e5df8bb338c11bd88a7bb11429",
+      "revision": "Dec 2026 DRAFT, posted 2026-08-26 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (Dec 2026 edition, posted 2026-08-26); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "f8990.txt",
+      "text_sha256": "886a05b809922a36459ac09475fce77b290a354cad5640263e72777928ab0103",
+      "cols_file": "f8990.cols.txt",
+      "cols_sha256": "1546bc9e2b54acf54db38d48c0458cc5bfe3c6ed7fcce2909b025f437629d494",
+      "pages_file": "f8990.pages.json",
+      "pages_sha256": "8d5bdede8d9087fdb696f439103445a81d7b122a99588dcf518db6f78c95d928",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; Form 8990 (Rev. 12-2026) Created 8/25/26"
     },
     {
       "id": "f8995",
@@ -874,7 +1124,7 @@
       "pages_file": "f8995.pages.json",
       "pages_sha256": "ff8c34ebb8da158504ad29dd5559e5d8c2588dcade4568a6fe56b0b7c03a8ba5",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "f8995a",
@@ -895,7 +1145,7 @@
       "pages_file": "f8995a.pages.json",
       "pages_sha256": "91aae862e3dcd4a880858247c7c55c3617b65c4adc611089aa62a3640cd90390",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "fr-2025-01377",
@@ -955,7 +1205,7 @@
       "pages_file": "i1040s8812.pages.json",
       "pages_sha256": "b49956f7bb185e03ef09422c7e6496d93f2e63a9ffda7500408ee48b9763e3fc",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i1040sb",
@@ -976,7 +1226,7 @@
       "pages_file": "i1040sb.pages.json",
       "pages_sha256": "5a83bd2ec9745695b2dba2283651dc9815f548c4ce77b9f7643ea31bd1b68b04",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i1040sc",
@@ -997,7 +1247,7 @@
       "pages_file": "i1040sc.pages.json",
       "pages_sha256": "08f14833c4aab1ddfec88d47ce6f21a1e616b086a3677a3eb5dfee09fba0ca80",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i1040se",
@@ -1018,7 +1268,28 @@
       "pages_file": "i1040se.pages.json",
       "pages_sha256": "f0acd1e72e5e3f24aab73540770a71c2a3d16985d945280c6fe7acecd125e145",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "i1040sf",
+      "url": "https://www.irs.gov/pub/irs-dft/i1040sf--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-09-18",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/i1040sf--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:52.199786+00:00",
+      "file": "i1040sf.pdf",
+      "sha256": "f36a2d5dcc15560c9570531d3af7c6e7101c224a1b2b5c4bf9d34f656c823e0d",
+      "revision": "2026 DRAFT, posted 2026-09-18 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-09-18); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "i1040sf.txt",
+      "text_sha256": "fac7cf56a8e6fe7f40c590bf549e1fcfe07c4f4e61c7992b3974391ed96c825a",
+      "cols_file": "i1040sf.cols.txt",
+      "cols_sha256": "fbf68a9cd7720286d668432561a6b33b6d2a157ee90d3b207fbcc8fc66065a8a",
+      "pages_file": "i1040sf.pages.json",
+      "pages_sha256": "29b293b5b99a63c19506ce6168fa927c9eac97fe311408204789be8c5e8a8ff7",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 mileage rates in the text"
     },
     {
       "id": "i1040sse",
@@ -1058,7 +1329,28 @@
       "pages_file": "i1041sk1.pages.json",
       "pages_sha256": "6b9d085d88f97a2fbba058bde99acf8191812af1bd26df2fa0e3c22fda869aaa",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "i1045",
+      "url": "https://www.irs.gov/pub/irs-dft/i1045--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-06-18",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/i1045--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:55.209416+00:00",
+      "file": "i1045.pdf",
+      "sha256": "bb7d3f7247b1b16037cb17d23f97842ad783f4a73821d924d9d68f23f9fdb8b3",
+      "revision": "2026 DRAFT, posted 2026-06-18 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-06-18); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "i1045.txt",
+      "text_sha256": "6f0f1f4128e10c8ca84bde5e2e2a5b9b4a6228006f8116a324af280206c11a1b",
+      "cols_file": "i1045.cols.txt",
+      "cols_sha256": "280608841b6c72659401cad99835ba163a0854f3848f5106cb65707100d8f21d",
+      "pages_file": "i1045.pages.json",
+      "pages_sha256": "c67af06531d24dde4445b095e792dee2112d27488b40a20241e155efbd0ec8c3",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; Text 'Do not file your 2026 Form 1045 before you file your 2026 return'"
     },
     {
       "id": "i1062",
@@ -1140,6 +1432,25 @@
       "revision_locator": "PDF page 1, \"Rev. April 2025\""
     },
     {
+      "id": "i1099da",
+      "url": "https://www.irs.gov/pub/irs-pdf/i1099da.pdf",
+      "description": "Instructions for Form 1099-DA, 2026 edition (final, Feb 18, 2026); the IRS also lists a 2027 draft (posted 2026-11-02), not archived",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/i1099da.pdf",
+      "fetched_at": "2026-11-15T05:34:06.310094+00:00",
+      "file": "i1099da.pdf",
+      "sha256": "1ae3947a4b570cbd60c58bd2dd35efec588746fec144d0616b40392c7577be37",
+      "revision": "2026 (Instructions for Form 1099-DA (2026), Catalog Number 73597W, Feb 18, 2026), final irs-pdf edition",
+      "revision_status": "Printed year 2026 inspected in extracted text; a final, not a draft; content review is tracked separately in PREMISES.md",
+      "text_file": "i1099da.txt",
+      "text_sha256": "0dc50d93e002c7ca10f7e913264b758d5c845328445d96c7f73e1a1470a9b7fc",
+      "cols_file": "i1099da.cols.txt",
+      "cols_sha256": "97c07a9a8b217eadd44e5015f8473225a5dac1f3a5bd83a11e9415d51d223b1b",
+      "pages_file": "i1099da.pages.json",
+      "pages_sha256": "380c726a43d57ccfde8295b768ce826b56e00d82353ec92ba19cca151115c617",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Page 1 '2026'; last-page footer"
+    },
+    {
       "id": "i1099div",
       "url": "https://www.irs.gov/pub/irs-pdf/i1099div.pdf",
       "description": "Continuous-use revision (Rev. January 2024), current on 2026-11-04; the posted draft is a Dec 2027 revision",
@@ -1177,7 +1488,7 @@
       "pages_file": "i1099int.pages.json",
       "pages_sha256": "da96e76d3dcf9f85dbd8787f7bad03f22e7281bd3b854b357682455e2b837338",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i1099r",
@@ -1217,7 +1528,28 @@
       "pages_file": "i1116.pages.json",
       "pages_sha256": "d7ee578b6eb934766d871262a3023916d4fd619ec816b64572394aeb153cfc3f",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "i1116sb",
+      "url": "https://www.irs.gov/pub/irs-dft/i1116sb--dft.pdf",
+      "draft": true,
+      "draft_edition": "Dec 2026",
+      "draft_posted": "2026-10-16",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/i1116sb--dft.pdf",
+      "fetched_at": "2026-11-15T05:34:02.896605+00:00",
+      "file": "i1116sb.pdf",
+      "sha256": "6bf21677f966821e41a86843e40bada3f35dae13121ca1914119947984b84a30",
+      "revision": "2026 DRAFT (Rev. December 2026), posted 2026-10-16 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (Rev. December 2026 edition, posted 2026-10-16); cannot back a release (spec 7). Printed revision inspected in extracted text; content not reviewed",
+      "text_file": "i1116sb.txt",
+      "text_sha256": "ef64c79796c62b29665cc851098a323cb88b8563893782dd04f11017859e200e",
+      "cols_file": "i1116sb.cols.txt",
+      "cols_sha256": "30f8467c5f9eb5a5694363afddfbd60b3f62e08df809580c8b79337c99d10692",
+      "pages_file": "i1116sb.pages.json",
+      "pages_sha256": "4c9c75ddc04f59e5c155440669ccab883bba69ee4ef75e99925edee728edbb95",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: draft cover; 'Instructions for Schedule B (Form 1116) (Rev. 12-2026)', Catalog Number 37626S"
     },
     {
       "id": "i1120ssk",
@@ -1238,7 +1570,28 @@
       "pages_file": "i1120ssk.pages.json",
       "pages_sha256": "d78aeb6a73e0f632646c4b773ed251ae8b0e1f02500dffb8688aefc70161f482",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "i172",
+      "url": "https://www.irs.gov/pub/irs-dft/i172--dft.pdf",
+      "draft": true,
+      "draft_edition": "Dec 2026",
+      "draft_posted": "2026-10-06",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/i172--dft.pdf",
+      "fetched_at": "2026-11-15T16:54:40.084823+00:00",
+      "file": "i172.pdf",
+      "sha256": "6b787d31d4844446443a228cf859e32b558ebec3576926d3d21a38357b4b989f",
+      "revision": "Dec 2026 DRAFT, posted 2026-10-06 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (Dec 2026 edition, posted 2026-10-06); cannot back a release (spec 7). Printed revision inspected in extracted text; content not reviewed",
+      "text_file": "i172.txt",
+      "text_sha256": "b06ed218b91cd81c28a7a61e6bd44f2f92cdcb2a5f2e6986966563b333b1e37c",
+      "cols_file": "i172.cols.txt",
+      "cols_sha256": "b9fd9a117e6d62e2d955a9b27edb0daf1c62f592cd11cc52dcf1e5af72675bd0",
+      "pages_file": "i172.pages.json",
+      "pages_sha256": "368d455fd70869db2e4a26c173b59f026d241ff1ec46d015601da3ecb68ac6ce",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: '(Rev. December 2026)' on the first instruction page"
     },
     {
       "id": "i2441",
@@ -1259,7 +1612,28 @@
       "pages_file": "i2441.pages.json",
       "pages_sha256": "954a12d9a3f74e26d7bdfc7822cd70b91930533647583f34fe89f2132c818f57",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "i461",
+      "url": "https://www.irs.gov/pub/irs-dft/i461--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-10-06",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/i461--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:54.214671+00:00",
+      "file": "i461.pdf",
+      "sha256": "e3ba90d00f657eed6b83a4555fc5acffb823401a4a6ddda29160fc33a8376399",
+      "revision": "2026 DRAFT, posted 2026-10-06 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-10-06); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "i461.txt",
+      "text_sha256": "2e7073467cb2652c1c687bd8303a990541ddbc8377ebf0589ee685befb7db0af",
+      "cols_file": "i461.cols.txt",
+      "cols_sha256": "5078db083fc5c68a0eeb43877fdf0cef9aced7d4d9bc25359b8d28323df4a198",
+      "pages_file": "i461.pages.json",
+      "pages_sha256": "8b22af59851cbeea45c9529cca90f077f4634d6363c9eeee4bacbfe3e103a5df",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; Source file id 'form-461/2026/a/xml/cycle02' and 2026 in text"
     },
     {
       "id": "i5329",
@@ -1281,7 +1655,7 @@
       "pages_file": "i5329.pages.json",
       "pages_sha256": "dd32861e8de3c924a3b570a9e500d2bb4674e79c754ec57f8a9efd3d604c9882",
       "extract_tool_version": "0.11",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2; \"Instructions for Form 5329 (2026)\", \"Nov 6, 2026\""
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2; \"Instructions for Form 5329 (2026)\", \"Nov 6, 2026\""
     },
     {
       "id": "i5695",
@@ -1302,7 +1676,7 @@
       "pages_file": "i5695.pages.json",
       "pages_sha256": "e9543385d68524a1594fda05d3b22b23769d35e243c8c0087fdf6381bae126e0",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i6198",
@@ -1342,7 +1716,7 @@
       "pages_file": "i7206.pages.json",
       "pages_sha256": "5116f4dc2f47432c0e403e7884deb63295af84af4811c51937b594f29e40d639",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i8283",
@@ -1403,7 +1777,49 @@
       "pages_file": "i8606.pages.json",
       "pages_sha256": "a08aaf822c8500d975dc960d36cf9f4c368166b450dad854a0f0d6c1325929bf",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
+    },
+    {
+      "id": "i8615",
+      "url": "https://www.irs.gov/pub/irs-dft/i8615--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-08-04",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/i8615--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:49.465206+00:00",
+      "file": "i8615.pdf",
+      "sha256": "ac1ec51a5367dfa8187ea9fef43fb6cbf87b4ca1324bf3084c5557407a03160f",
+      "revision": "2026 DRAFT, posted 2026-08-04 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-08-04); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "i8615.txt",
+      "text_sha256": "26eebc2492b1eb24d35072c9c5bbfabd337a9c6309dc3068668565b0314fcc47",
+      "cols_file": "i8615.cols.txt",
+      "cols_sha256": "17e6f5d0166cd2dce2a731d5187d4b91ac3b51266189fc1c037a723e60048dcc",
+      "pages_file": "i8615.pages.json",
+      "pages_sha256": "716a641f769d3ae8f771c3c8bb0e0db2e07d1c55002f88e7a3a725dca0005280",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 tax year in the 'of 2026' qualifying text"
+    },
+    {
+      "id": "i8814",
+      "url": "https://www.irs.gov/pub/irs-dft/i8814--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-08-24",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/i8814--dft.pdf",
+      "fetched_at": "2026-11-15T16:40:50.509781+00:00",
+      "file": "i8814.pdf",
+      "sha256": "66431f1f4588c1195fbca28f35cec7c9659d2a68eccf98afac62e8729362233d",
+      "revision": "2026 DRAFT, posted 2026-08-24 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-08-24); cannot back a release (spec 7). Printed tax year inspected in extracted text; content not reviewed",
+      "text_file": "i8814.txt",
+      "text_sha256": "c65af3647cf9433a6acae823a13e915d4e8b367b3bc0fd18b79dc89e5abe9a6b",
+      "cols_file": "i8814.cols.txt",
+      "cols_sha256": "306f089c6ee9e8fe3c4584577114046983ba55852e12ac71603b5ad19b450174",
+      "pages_file": "i8814.pages.json",
+      "pages_sha256": "c08064ab326009329235ad5923befbe891b8940e84337d7cc4a091ab2bc46364",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 tax year in the qualifying text ('at the end of 2026')"
     },
     {
       "id": "i8863",
@@ -1424,7 +1840,7 @@
       "pages_file": "i8863.pages.json",
       "pages_sha256": "4a6b6fa8145df510a19c699ca3e489153b467c86ca204c132719b17639e268f2",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i8889",
@@ -1445,7 +1861,7 @@
       "pages_file": "i8889.pages.json",
       "pages_sha256": "1b6eaa7fb62a8b0c1b0212a1d96ce82f4a2ee74669d945c5f5eb4a011746a65f",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i8959",
@@ -1466,7 +1882,7 @@
       "pages_file": "i8959.pages.json",
       "pages_sha256": "0cdd386f0f1fee46b720d20af3ec5470f60fd35bd2504b44360ea4b337d3e826",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i8960",
@@ -1487,7 +1903,7 @@
       "pages_file": "i8960.pages.json",
       "pages_sha256": "044b8664f42321b9653b6f9dd07a62006dd90465fde30dfa817ddd553231a89d",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i8962",
@@ -1529,7 +1945,7 @@
       "pages_file": "i8995.pages.json",
       "pages_sha256": "9a1b791a6ca8a15d43273f7dec440d9a53a59984cd5ef4ffe6b45e8a602ac583",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "i982",
@@ -1630,6 +2046,26 @@
       "revision_locator": "PDF page 1 heading"
     },
     {
+      "id": "n-26-11",
+      "url": "https://www.irs.gov/pub/irs-drop/n-26-11.pdf",
+      "document_tax_year": 2026,
+      "purpose": "Notice 2026-11: interim guidance on additional first-year depreciation under section 168(k); final guidance",
+      "resolved_url": "https://www.irs.gov/pub/irs-drop/n-26-11.pdf",
+      "fetched_at": "2026-11-15T16:40:56.192713+00:00",
+      "file": "n-26-11.pdf",
+      "sha256": "63d3a38069aebd856c4d34624f20bf21e1b30eb79bbaf477083999c8129c1f98",
+      "revision": "Notice 2026-11, interim guidance on section 168(k) additional first-year depreciation; not edition-specific",
+      "revision_status": "Number and title inspected in extracted text; the document states no edition; content review is tracked separately in PREMISES.md",
+      "text_file": "n-26-11.txt",
+      "text_sha256": "eb71bcde1dc919d52f05068055ac877bfa25a9c49441b17171c565766a3f4446",
+      "cols_file": "n-26-11.cols.txt",
+      "cols_sha256": "409a6d475086f7753031f150779c77c8553b076725d1ca0dcaf215cafec32d55",
+      "pages_file": "n-26-11.pages.json",
+      "pages_sha256": "c2b3101dc58dfe7e2deb1b2e6f0760cc9805091b816c83c4fda7fb5c7b393981",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Page 1 heading 'Notice 2026-11'"
+    },
+    {
       "id": "p15",
       "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
       "description": "Publication 15 (2026), for use in 2026 (final, checked 2026-11-04)",
@@ -1667,7 +2103,7 @@
       "pages_file": "p4681.pages.json",
       "pages_sha256": "7c5bd89b13810e79a0c3ac96e9d410b252592d9f3988443963bf60e1c51ad995",
       "extract_tool_version": "0.10",
-      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT\u2014NOT FOR FILING' cover; 2026 printed on page 2"
+      "revision_locator": "Extracted text: page 1 is the IRS 'Caution: DRAFT—NOT FOR FILING' cover; 2026 printed on page 2"
     },
     {
       "id": "p503",
@@ -1833,6 +2269,27 @@
       "pages_sha256": "588c44d2a2680c0f54c9fe0eb7008c05a6680bec231be7d2ffe3b2273680f407",
       "extract_tool_version": "0.11",
       "revision_locator": "Extracted text: page 1 is the IRS draft cover; \"Publication 590-B (2026)\", \"Nov 6, 2026\" on page 2"
+    },
+    {
+      "id": "p915",
+      "url": "https://www.irs.gov/pub/irs-dft/p915--dft.pdf",
+      "draft": true,
+      "draft_edition": "2026",
+      "draft_posted": "2026-08-21",
+      "resolved_url": "https://www.irs.gov/pub/irs-dft/p915--dft.pdf",
+      "fetched_at": "2026-11-15T05:34:03.727319+00:00",
+      "file": "p915.pdf",
+      "sha256": "83c99be25e9562a1be4999dd2a108f5c84f654555ccb1a626ac3483834a1bdf3",
+      "revision": "2026 DRAFT, posted 2026-08-21 (irs.gov/draft-tax-forms)",
+      "revision_status": "IRS draft (2026 edition, posted 2026-08-21); cannot back a release (spec 7). Printed revision inspected in extracted text; content not reviewed",
+      "text_file": "p915.txt",
+      "text_sha256": "150531011ab7a200110f69b7eee27872db0ba65b7b9a4f312cbb37a499a1d201",
+      "cols_file": "p915.cols.txt",
+      "cols_sha256": "ae839975194d42a09e6648260d23f5abe7ad1db6651d1a09e7843014da156c1c",
+      "pages_file": "p915.pages.json",
+      "pages_sha256": "5b9df0656df488f6285431c7d368087ea2cac042e696712002deb9174ed333f2",
+      "extract_tool_version": "0.11",
+      "revision_locator": "Extracted text: draft cover; 'For use in preparing 2026 Returns', 'Publication 915 (2026)'"
     },
     {
       "id": "p925",

@@ -1,0 +1,416 @@
+diff --git a/fixtures/2025/classm.json b/fixtures/2025/classm.json
+index 1b3ac32..93881d1 100644
+--- a/fixtures/2025/classm.json
++++ b/fixtures/2025/classm.json
+@@ -106529,6 +106529,9 @@
+         "$rprop@rental[a]": [],
+         "royalty[r].business": false,
+         "royalty[r].depletion": false,
++        "royalty[r].capital": false,
++        "royalty[r].vehicle": false,
++        "royalty[r].depreciation": false,
+         "royalty[r].expenses_any": false,
+         "s1.uc_any": false,
+         "s1.ltc_payout": false,
+diff --git a/fixtures/2025/defaults.json b/fixtures/2025/defaults.json
+index fce8c90..fbdeb45 100644
+--- a/fixtures/2025/defaults.json
++++ b/fixtures/2025/defaults.json
+@@ -4107,11 +4107,21 @@
+       "value": false,
+       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+     },
++    {
++      "input": "royalty.capital",
++      "value": false,
++      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
++    },
+     {
+       "input": "royalty.depletion",
+       "value": false,
+       "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
+     },
++    {
++      "input": "royalty.depreciation",
++      "value": false,
++      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
++    },
+     {
+       "input": "royalty.expenses_any",
+       "value": false,
+@@ -4122,6 +4132,16 @@
+       "value": 0,
+       "reason": "Closed: no amount unless the scenario states one."
+     },
++    {
++      "input": "royalty.not_at_risk",
++      "value": false,
++      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
++    },
++    {
++      "input": "royalty.vehicle",
++      "value": false,
++      "reason": "Closed: the circumstance this question asks about does not apply unless the scenario says so."
++    },
+     {
+       "input": "rprop.ads",
+       "value": false,
+diff --git a/forms/2025/royalty.yaml b/forms/2025/royalty.yaml
+index 6fc7e98..598ba6c 100644
+--- a/forms/2025/royalty.yaml
++++ b/forms/2025/royalty.yaml
+@@ -4,7 +4,8 @@ form:
+   title: Schedule E, Part I — one royalty property
+   tax_year: 2025
+   note: 'One entry per royalty source (Schedule E type 6). Royalties are not passive and never go on Form 8582. Refused: royalties
+-    from the filer''s own business or a working interest, and depletion.'
++    from the filer''s own business or services or a working interest, a patent transfer or coal or iron ore, car and travel
++    costs, depreciation, depletion, and a loss with amounts not at risk.'
+   lines:
+   - id: royalty.zero
+     printed: (helper)
+@@ -38,16 +39,20 @@ form:
+       locator: 'p. 6, Line 4, "Report on line 4 royalties from oil, gas, or mineral properties (not including operating interests)"'
+   - id: royalty.business
+     printed: (helper)
+-    label: Royalty from the filer's own work as a self-employed writer, artist or inventor, or from a working interest
++    label: Royalty from the filer's own business or services (a self-employed writer, artist, inventor or other creator, or
++      name, image and likeness income from sponsorships or services), or from an operating (working) interest in minerals
+     type: Bool
+     expr:
+       op: input
+-      source: Did it come from your own work as a self-employed writer, artist, musician or inventor, or from an oil or gas
+-        working interest?
++      source: Did it come from your own business or services (as a self-employed writer, artist, musician, inventor or other
++        creator, or name, image and likeness income from sponsorships or services), or from an operating (working) interest
++        in oil, gas or other minerals?
+     cite:
+       doc: i1040se
+       locator: p. 6, Line 4, "If you are in business as a self-employed writer, inventor, artist, etc., report your royalty
+-        income and expenses on Schedule C"
++        income and expenses on Schedule C", "Report on line 4 royalties from oil, gas, or mineral properties (not including
++        operating interests)", and "If your NIL income is derived from business activities such as sponsorship deals or
++        service income, report your income and expenses on Schedule C"
+   - id: royalty.depletion
+     printed: (helper)
+     label: Depletion claimed
+@@ -58,6 +63,37 @@ form:
+     cite:
+       doc: i1040se
+       locator: p. 6, Line 18, "Depletion"
++  - id: royalty.capital
++    printed: (helper)
++    label: Payment for a transferred patent, or for coal or iron ore disposed of, that may be a sale of a capital asset
++    type: Bool
++    expr:
++      op: input
++      source: Is it a payment for a patent you transferred, or for coal or iron ore you disposed of?
++    cite:
++      doc: i1040se
++      locator: p. 6, "You may be able to treat amounts received as 'royalties' for the transfer of a patent or amounts received
++        on the disposal of coal and iron ore as the sale of a capital asset"
++  - id: royalty.vehicle
++    printed: (helper)
++    label: Car, truck or travel expenses for the royalty (line 6)
++    type: Bool
++    expr:
++      op: input
++      source: Do you have car, truck or travel costs for it?
++    cite:
++      doc: i1040se
++      locator: p. 4, Line 6
++  - id: royalty.depreciation
++    printed: (helper)
++    label: Depreciation or amortization for the royalty (line 18)
++    type: Bool
++    expr:
++      op: input
++      source: Do you depreciate or amortize anything for it, such as a copyright or patent you bought?
++    cite:
++      doc: f1040se
++      locator: Schedule E (2025), line 18, "Depreciation expense or depletion"
+   - id: royalty.expenses_any
+     printed: (helper)
+     label: Any expenses for this royalty
+@@ -192,8 +228,9 @@ form:
+     refuses:
+     - when: royalty.business
+       form: Schedule C (royalties from your own trade or business)
+-      remedy: Royalties from your own work as a self-employed writer, artist or inventor, or from a working interest, are
+-        reported on Schedule C; this tool does not prepare them on Schedule E.
++      remedy: Royalties from your own business or services (as a self-employed writer, artist, inventor or other creator,
++        or name, image and likeness income from sponsorships or services), or from a working interest, are reported on
++        Schedule C; this tool does not prepare them on Schedule E.
+       cite:
+         doc: i1040se
+         locator: p. 6, Line 4, "If you are in business as a self-employed writer, inventor, artist, etc., report your royalty
+@@ -204,6 +241,26 @@ form:
+       cite:
+         doc: i1040se
+         locator: p. 6, Line 18, "Depletion"
++    - when: royalty.capital
++      form: Form 4797 or Schedule D (patent transfer, or coal or iron ore)
++      remedy: Royalties that may be treated as the sale of a capital asset (from a patent you transferred, or coal or iron
++        ore you disposed of) are outside this tool.
++      cite:
++        doc: i1040se
++        locator: p. 6, "You may be able to treat amounts received as 'royalties' for the transfer of a patent or amounts
++          received on the disposal of coal and iron ore as the sale of a capital asset"
++    - when: royalty.vehicle
++      form: Schedule E, line 6 (auto and travel)
++      remedy: Car, truck and travel costs of a royalty are outside this tool.
++      cite:
++        doc: i1040se
++        locator: p. 4, Line 6
++    - when: royalty.depreciation
++      form: Schedule E, line 18 (depreciation)
++      remedy: Depreciation or amortization for a royalty is outside this tool.
++      cite:
++        doc: f1040se
++        locator: Schedule E (2025), line 18, "Depreciation expense or depletion"
+   - id: royalty.income
+     printed: (helper)
+     label: Royalty income (positive line 21)
+@@ -237,6 +294,70 @@ form:
+     cite:
+       doc: f1040se
+       locator: Schedule E (2025), line 25, "Add royalty losses from line 21"
++    refuses:
++    - when: royalty.not_at_risk_if_loss
++      form: Form 6198 (at-risk limits)
++      remedy: A royalty loss with an amount not at risk is outside this tool.
++      cite:
++        doc: i1040se
++        locator: p. 3, At-Risk Rules
++  - id: royalty.has_loss
++    printed: (helper)
++    label: Line 21 is a loss
++    type: Bool
++    expr:
++      op: test
++      lt:
++      - royalty.line21
++      - const: 0
++    cite:
++      doc: i1040se
++      locator: p. 7, Line 21
++  - id: royalty.no
++    printed: (helper)
++    label: No (false)
++    type: Bool
++    expr:
++      op: param
++      ref: household.no
++    cite:
++      doc: i1040se
++      locator: p. 7, Line 21
++  - id: royalty.not_at_risk
++    printed: (helper)
++    label: Some investment not at risk
++    type: Bool
++    gated_by: royalty.not_at_risk_if_loss
++    expr:
++      op: input
++      source: Was any money you put in borrowed without personal liability from anyone but a bank or regular lender,
++        protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it?
++    cite:
++      doc: i1040se
++      locator: p. 3, At-Risk Rules, "In most cases, you must complete Form 6198 to figure your loss if you have"
++  - id: royalty.not_at_risk_if_loss
++    printed: (gate)
++    label: Asked only when the royalty has a loss (false otherwise)
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - royalty.has_loss
++          - const: true
++        then: royalty.not_at_risk
++      - guard:
++          op: test
++          eq:
++          - royalty.has_loss
++          - const: false
++        then: royalty.no
++    cite:
++      doc: i1040se
++      locator: p. 7, Line 21, "If you have amounts for which you are not at risk, use Form 6198 to determine the amount of
++        your deductible loss"
+   collection:
+     cite:
+       doc: i1040se
+diff --git a/interview/2025/coverage/rental.yaml b/interview/2025/coverage/rental.yaml
+index 9fd91ed..f56b6cb 100644
+--- a/interview/2025/coverage/rental.yaml
++++ b/interview/2025/coverage/rental.yaml
+@@ -490,3 +490,73 @@ rows:
+     royalty[oil].business: false
+   expect:
+     refused: royalty[oil].depletion
++- id: rental.royalty_capital
++  design: BUG-0889 (patent transfer treated as a sale)
++  situation: An inventor who sold his patent is paid by the units the buyer sells.
++  uses:
++  - one_w2
++  - royalty_only
++  answers:
++    $royalty:
++    - patent
++    royalty[patent].line4: 100000
++    royalty[patent].business: false
++    royalty[patent].depletion: false
++    royalty[patent].capital: true
++  expect:
++    refused: royalty[patent].capital
++- id: rental.royalty_vehicle
++  design: BUG-0889 (car and travel costs of a royalty)
++  situation: A person drives to inspect the land under an oil lease and deducts the trips.
++  uses:
++  - one_w2
++  - royalty_only
++  answers:
++    $royalty:
++    - oil
++    royalty[oil].line4: 100000
++    royalty[oil].business: false
++    royalty[oil].depletion: false
++    royalty[oil].capital: false
++    royalty[oil].vehicle: true
++  expect:
++    refused: royalty[oil].vehicle
++- id: rental.royalty_depreciation
++  design: BUG-0889 (depreciation or amortization of a bought copyright)
++  situation: A person bought the copyright of a book and amortizes its cost against the royalties.
++  uses:
++  - one_w2
++  - royalty_only
++  answers:
++    $royalty:
++    - book
++    royalty[book].line4: 100000
++    royalty[book].business: false
++    royalty[book].depletion: false
++    royalty[book].capital: false
++    royalty[book].vehicle: false
++    royalty[book].depreciation: true
++  expect:
++    refused: royalty[book].depreciation
++- id: rental.royalty_not_at_risk
++  design: BUG-0889 (at-risk rules on a royalty loss)
++  situation: A person's royalty costs exceed its payments, and the money put in was a nonrecourse loan from the seller.
++  uses:
++  - one_w2
++  - royalty_only
++  answers:
++    $royalty:
++    - lease
++    royalty[lease].line4: 100000
++    royalty[lease].business: false
++    royalty[lease].depletion: false
++    royalty[lease].capital: false
++    royalty[lease].vehicle: false
++    royalty[lease].depreciation: false
++    royalty[lease].expenses_any: true
++    royalty[lease].amt10: 0
++    royalty[lease].amt16: 0
++    royalty[lease].amt19: 150000
++    royalty[lease].not_at_risk: true
++  expect:
++    refused: royalty[lease].not_at_risk_if_loss
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index e41c59d..32b3ba4 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -181,7 +181,7 @@ bank:
+   - id: rprop_facts
+     heading: "Is any of these true of it?"
+   - id: royalty_rare
+-    heading: "Is either of these true of this royalty?"
++    heading: "Is any of these true of this royalty?"
+   - id: rental_return
+     heading: "Is any of these true of your (or, on a joint return, your spouse's) rentals?"
+   questions:
+@@ -7487,46 +7487,70 @@ bank:
+     order: 130
+     seq: 75
+     group: royalty_rare
+-    tick: From your own self-employed creative work or invention, or a working interest
+-    help: A Yes ends the interview here.
+-    prompt: "For this royalty — Did it come from your work as a self-employed writer, artist, musician or inventor, or an oil or gas working interest?"
++    tick: From your own business, creative work or services, or a working interest
++    help: For example, a self-employed photographer's or songwriter's own work, or name, image and likeness pay for
++      sponsorships. A Yes ends the interview here.
++    prompt: "For this royalty — Did it come from your own business or services (your own creative work or invention, or name, image and likeness pay), or from a working interest in oil, gas or other minerals?"
+   - input: royalty.depletion
+     order: 130
+     seq: 76
+     group: royalty_rare
+     tick: You claim depletion for it
+     help: A Yes ends the interview here.
+-  - input: royalty.expenses_any
++  - input: royalty.capital
+     order: 130
+     seq: 77
+-  - input: royalty.amt10
++    group: royalty_rare
++    tick: From selling a patent, or from coal or iron ore
++    help: Such payments may count as a sale, not a royalty. A Yes ends the interview here.
++  - input: royalty.vehicle
+     order: 130
+     seq: 78
++    group: royalty_rare
++    tick: Car, truck or travel costs for it
++    help: A Yes ends the interview here.
++  - input: royalty.depreciation
++    order: 130
++    seq: 79
++    group: royalty_rare
++    tick: You depreciate something for it, such as a bought copyright
++    help: A Yes ends the interview here.
++  - input: royalty.expenses_any
++    order: 130
++    seq: 80
++  - input: royalty.amt10
++    order: 130
++    seq: 81
+     help: 'Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to
+       its cost, not deducted now.'
+   - input: royalty.amt16
+     order: 130
+-    seq: 79
++    seq: 82
+   - input: royalty.amt19
+     order: 130
+-    seq: 80
++    seq: 83
+     help: Not the value of your own work, and not something that lasts more than a year, such as equipment or an improvement.
++  - input: royalty.not_at_risk
++    order: 130
++    seq: 84
++    help: A loan from a bank, a government or another regular lender is at risk. A loan from the payer of the royalty or
++      a relative is a Yes. A Yes ends the interview here.
+   - input: sche.re_pro
+     order: 130
+-    seq: 94
++    seq: 97
+     group: rental_return
+     tick: Over 750 hours, and most of your work time, in real estate
+     help: Real estate work includes building, buying, renting out, managing or brokering it, including running your own
+       rentals. Work as an employee counts only if you own more than 5% of the employer. A Yes ends the interview here.
+   - input: sche.grouped
+     order: 130
+-    seq: 95
++    seq: 98
+     group: rental_return
+     tick: You treat two or more rentals as one activity
+     help: A Yes ends the interview here.
+   - input: sche.qbi_business
+     order: 130
+-    seq: 96
++    seq: 99
+     group: rental_return
+     tick: A rental claimed for the qualified business income deduction (Form 8995)
+     help: Answer Yes if your 2024 Form 8995 or 8995-A listed a rental, or if you use the rental safe harbor (usually 250

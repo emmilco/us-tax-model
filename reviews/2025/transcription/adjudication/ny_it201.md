@@ -81,3 +81,20 @@ Counts: claude render: finding 1.
 
 Findings: BUG-0762 (low; amount-affecting in a rare case): the MFS household credit gates should
 also refuse when the spouse's federal AGI is negative. No line left open.
+
+## Goal-1 coverage-expansion round (2026-11-15), stale lines
+
+Lane xadj (claude-opus-5-5, judgment, tax year 2025, jurisdiction ny), xint worktree. check_logs --jurisdiction ny listed transcription lines C, 16, 25, 72, 73 (foreign interfaces changed) and render lines C, 34, 40, 48, 67, 69, 69a stale; line-scoped reruns: transcription pass b7f692226401 (72, 73 agree), render pass ec6ad25c387e (34, 67 match). Rulings files `/tmp/xadj/g/ny_it201.transcription.json`, `/tmp/xadj/g/ny_it201.render.json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | C | representation | 2,845/2,883; 6 value, all refused; 32 candidate-unknown (item C unasked after a federal Yes) | IT-201-I p. 5, Item C; decision B8 | A federal Yes implies New York's broader Yes. |
+| claude | transcription | 16 | model error | 2,754/2,883; 58 completed value (classm.s1.1 $5,000 / $0) | IT-201-I p. 7, "enter your total other income on line 16" | The reply copies Schedule 1 line 8z alone; the project line 9. |
+| claude | transcription | 25 | ambiguity | 4 completed project-refuses (gate.line25), the rest refused or unasked | IT-201 line 25; IT-201-I p. 8, Line 25; amb.ny.2025.line25, decision B1 | The project refuses both readings; 0 where both complete. |
+| claude | render | C | ambiguity | UNCLEAR; joint return where only the spouse can be claimed | IT-201-I p. 5, Item C; amb.ny.2025.item_c | New York's text does not say how item C treats a spouse; the facet belongs with the registered ambiguity. The earlier round's scope premise (a federal Yes refuses) no longer holds. |
+| claude | render | 40 | finding (low) | MISMATCH; gate.hh_state_mfs | IT-201-I, table 3, "total from both returns"; Note 2 | BUG-0762, already recorded. |
+| claude | render | 48 | finding (low) | MISMATCH; city residence; gate.hh_city_mfs | IT-201-I, table 6; Note 2 | Residence: refused by gate.part_year_city. MFS: BUG-0762, already recorded. |
+| claude | render | 69 | scope | MISMATCH; residence, Table 2 | IT-201-I pp. 20–21, Line 69 | Non-residents and part-year City residents are refused by gate.part_year_city. |
+| claude | render | 69a | scope | MISMATCH; residence | IT-201-I pp. 20–21, Line 69a | The same. |
+
+Counts: claude transcription representation 1, model error 1, ambiguity 1; claude render ambiguity 1, finding (low) 2 (both BUG-0762), scope 2. New findings: none. Left open: none.

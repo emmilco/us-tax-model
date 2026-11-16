@@ -65,3 +65,37 @@ Lane b1-adj-e (claude-opus-5-5, judgment; tax year 2025, us). Open lines of the 
 | claude | render | limited | scope | MISMATCH; form YAML | i1116 p. 25, Line 20 | Form 4972 tax is refused at Form 1040 line 16 (scope.other_line16). |
 
 Counts: claude transcription model error 1, representation 1; claude render scope 1. Findings: none. Left open: none.
+
+## Goal-1 coverage-expansion round (2026-11-15)
+
+Lane xadj-d (claude-opus-5-5, judgment; tax year 2025, us), round 2 of the coverage-expansion merge (uncommitted worktree xint). Open lines of the Claude transcription log of this round's review, ruled on the triage record `.transcription/triage/2025/ftc.json` (executable-triage-v2, written by triage.py after the review; not rerun), the archived sources, the form YAML and the interview bank. Rulings `/tmp/xadj/xadj-d/ftc.json`, applied with `rule.py`; full text in the log and sidecar. The deepseek logs are dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | ftc.taxes_if_asked, ftc.has_tax, ftc.all_passive_if_tax, ftc.statements_if_tax, ftc.eligible_if_tax | model error | 2,811 to 2,821/2,995 agree; 16 completed value differences each (classm.f1040.6.deepseek $195.00 v. $0.00; classm.s2.1 $444.00 v. $0.00) | i1116 p. 1, election without Form 1116: qualified payee statements include Form 1099-DIV and 1099-INT | The reply asks the foreign tax only on s3.foreign_any, whose help tells a filer to leave out Form 1099-DIV box 7 tax unless Form 1116 was once filed; the project's parent ftc.asked (dividends, interest or s3.foreign_any) reaches it. |
+| claude | transcription | ftc.credit | model error | 2,823/2,995; 13 completed value (the same gate cases), 77 project-refuses (f1116.line35) | i1116 p. 1; p. 25, Line 20 | Inherits the gate; its extra sa.foreign_tax_deduct test matters only on returns Schedule A refuses. |
+| claude | transcription | ftc.carryover_if_asked | representation | 2,989/2,995; 6 differences, none completed | i1116 p. 1, no carryover under the election | The project also asks a filer whose 2024 return had a separate form (s3.prior_other_forms); a carryover refuses the return. |
+
+Counts: model error 6, representation 1 (7). Findings: none. Left open: none.
+
+## Goal-1 coverage-expansion round (2026-11-15), render
+
+Lane xadj-d (claude-opus-5-5, judgment). Open lines of the Claude render log of this round, ruled on the rendered English, the form YAML and the cited source. Rulings `/tmp/xadj/xadj-d/ftc.render.json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | needs1116 | finding (medium) | UNCLEAR | i1040gi Schedule 3, line 1, condition 4, "You aren't filing Form 4563 or excluding income from sources within Puerto Rico" | ftc.needs1116 does not test condition 4, and sa.excluded_income does not refuse on the ftc path (BUG-0769). |
+| claude | render | elect | ambiguity | MISMATCH | i1116 pp. 1-2; amb.2025.f1116_carryover_election; decision D3 | The election is made whenever available; the forfeited carryforward when the foreign tax exceeds the regular tax is raised for the owner. |
+| claude | render | regular_tax | scope | MISMATCH | i1116 p. 25, Line 20 | Form 4972 tax is refused at Form 1040 line 16 (scope.other_line16). |
+
+Counts: claude render 22 match; finding 1 (medium), ambiguity 1, scope 1. Findings: BUG-0769 (medium): add sa.excluded_income = true to ftc.needs1116's failed conditions (cite i1040gi Schedule 3 line 1, condition 4), so the return goes to Form 1116, where f1116.reduction refuses. Left open: none. No class M run for ftc this round.
+
+## Goal-1 coverage-expansion round (2026-11-15), after the d-01 fix
+
+Lane xadj (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), xint worktree, after the integrator added sa.excluded_income to ftc.needs1116 (BUG-0769) and built. Line-scoped reruns: transcription pass 73f790ce759c (ftc.credit); render 2 match, 0 mismatch. Rulings file `/tmp/xadj/g/ftc.transcription.json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | ftc.credit | model error | triage 73f790ce759c: 352 agree of 3,002; no value difference; 2,068 candidate-refuses (no zero branch, routes no-tax returns to f1116.line35), 579 candidate-unknown (reads ftc.all_passive, ftc.carryover unasked), 3 project-refuses (f2441.line14_bad upstream) | i1040gi p. 115, Schedule 3, line 1, condition 4; i1116 pp. 1–2; p. 25, Line 20 | The reply drops the zero branch and requirement 4 (Form 4563 or Puerto Rico exclusion); the project tests it in ftc.needs1116. |
+
+Counts: claude transcription model error 1; render no disagreement. Findings: none. Left open: none.

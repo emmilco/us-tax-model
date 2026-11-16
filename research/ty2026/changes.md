@@ -486,7 +486,7 @@ Notable points:
 | f8960 | (none printed) | n/a |
 | i8960 | Future Developments | not encoded: link only |
 | i8960 | What's New "Overall limitation on itemized deductions in 2026" (Lines 9 and 10 Section 68 Limitation Worksheet) | C-SCHED-27 |
-| i8960 | Reminders "Digital assets" | not encoded: unchanged; no digital-asset income path in the slice |
+| i8960 | Reminders "Digital assets" | C-X1-F8960-01 (citation only: the reminder moves to page 2 and reads "Income from"; Schedule 1 line 8v over the threshold refuses through f8960.digital_nii) |
 | i8960 | Reminders "Schedule SE (Form 1040) income" | not encoded: unchanged statement of the section 1411(c)(6) exclusion; business income on Form 8960 is refused through f8960.unsupported |
 | i8960 | Reminders "Trade or business income subject to net investment income tax (NIIT)" (line 4a) | not encoded: f8960.line4a is zero unless refused through f8960.unsupported |
 | f8995 | (none printed) | n/a |
@@ -2311,6 +2311,31 @@ cannot be re-verified for 2026 and are flagged in the entries.
 - **Worklist items:** none
 - **Notes:** Stage 17 is not built; every What's New and Reminder item of these documents is listed in the table above as not encoded. Form 6198 and its instructions are the same Rev. November 2025 files in both archives. When Stage 17 is built, the Schedule E vehicle-loan line and the mileage split (C-BUS-01) apply to Schedule E as they do to Schedule C.
 
+
+### C-X1SCHE-RENTAL-01. Schedule E line 13 split into 13a (vehicle loan) and 13b (other)
+
+- **Kind:** relabel
+- **2026:** `f1040se` p. 2 (draft): "13a Vehicle loan", "13b Other"; `i1040se` p. 2 (draft): "New line 13a—Vehicle loan."
+- **2025:** `f1040se` p. 1: "13 Other interest"
+- **Touches:** `rental.line13` (printed 13b, label "Other"); line 13a not encoded (`rental.vehicle` refuses car and truck costs)
+- **Notes:** lane x1-sche (coverage wave X1); supersedes the Schedule E part of C-BUS-18 for Part I rentals.
+
+### C-X1SCHE-F8582-01. Form 8582 line 6: MAGI reduced by the deductible part of self-employment tax
+
+- **Kind:** arithmetic
+- **2026:** `i8582` p. 12 (draft): "For 2026 and future years, MAGI is generally reduced by the deduction allowed for the deductible part of self-employment tax."
+- **Touches:** `f8582.magi_adj` (adds `s1.line15`)
+- **Notes:** the choice to treat a passive activity's part of that deduction as a passive deduction does not arise (passive businesses are refused).
+
+### C-X1-F1116-01. Form 1116: the senior deduction added back on line 18 is Schedule 1-A line 43
+
+- **Kind:** wording
+- **2026:** `i1116` p. 26 (draft): "Increase the result by the amount from Schedule 1-A (Form 1040), line 43, and enter the result."; p. 2 (draft): "The enhanced deduction for seniors reported on Schedule 1-A (Form 1040), line 43, must be removed from taxable"
+- **2025:** `i1116` p. 23: "and (ii) Schedule 1-A (Form 1040), line 37."
+- **Touches:** `f1116.line18_raw`, `f1116.line18` (labels; ids unchanged)
+- **Worklist items:** none
+- **Notes:** Written by lane x1-f1116 (`changes/2026/f1116.yaml`). The adjustment exception ceilings are year parameters (`f1116.exception_ceiling`, for `propose_params.py`). Page locators wait for the 2026 Form 1116, not archived. Second pass: Schedule B (Form 1116) (`f1116sb`, `f1116sbyr`, Rev. December 2022) needs no operation (columns named by position; years move with the tax year); `f1116.high_tax_rate` (37%) and `f1116.withholding_split` (15%) are year parameters.
+
 ### Worklist coverage
 
 | item id | entry |
@@ -2358,6 +2383,15 @@ Two provisions touch an encoded line or gate and had no entry: sections 70118 an
 below). Every other provision in force for 2026 that touches the encoding was already covered by an entry, listed
 below. No provision was found that changes an encoded computation without an entry (the kind the verification found
 in section 71304).
+
+### C-X2-S2-01. Schedule 2 lines 5, 6 and 7 (Forms 4137 and 8919) renumbered 16a, 16b and 16c; line 16c added on line 20
+
+- **Kind:** renumbered lines
+- **2026:** `f1040s2` p. 3 (draft): "16a Social security and Medicare tax on unreported tip income. Attach Form 4137" "16b Uncollected social security and Medicare tax on wages. Attach Form 8919" "16c Total additional social security and Medicare tax. Add lines 16a and 16b" "20 Total additional employment and other taxes. Add lines 16c, 17d, 18, and 19c"
+- **2025:** `f1040s2` p. 1: "5 Social security and Medicare tax on unreported tip income. Attach Form 4137" "6 Uncollected social security and Medicare tax on wages. Attach Form 8919" "7 Total additional social security and Medicare tax. Add lines 5 and 6"
+- **Touches:** s2.line5, s2.line6, s2.line7, s2.line20 (added by C-SCHED-10)
+- **Worklist items:** none (coverage expansion, lane x2-paynow2)
+- **Notes:** The lines were refused in 2025 until the coverage expansion of pay not on a W-2 figured Forms 4137 and 8919; C-SCHED-10 already maps 5, 6, 7 to 16a, 16b, 16c. Forms 4137 and 8919 for 2026 are not posted (awaited); their line 7 reads `se.wage_base` ($184,500 on the 2026 Schedule SE draft). Form 1040 lines 1b to 1h are unchanged in the 2026 draft except line 1d's caption ("Medicaid waiver payments not reported on Form(s) W-2"), left for the f1040 owner of C-PRI.
 
 ### C-LAW-01. Hazardous duty areas: the Sinai Peninsula treatment made permanent; Kenya, Mali, Burkina Faso and Chad added (sec. 70118; statute-sourced)
 

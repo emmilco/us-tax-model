@@ -1,0 +1,48 @@
+diff --git a/forms/2025/f1040.yaml b/forms/2025/f1040.yaml
+index 94413f3..1f07454 100644
+--- a/forms/2025/f1040.yaml
++++ b/forms/2025/f1040.yaml
+@@ -1225,10 +1225,43 @@ form:
+       cite:
+         doc: f1040
+         locator: Form 1040 (2025), line 34
++    - id: f1040.refund_split
++      printed: (helper)
++      type: NonNegDollars
++      label: Lines 35a and 36 added together
++      expr:
++        op: sum
++        of:
++          - f1040.line35a
++          - f1040.line36
++      cite:
++        doc: f1040
++        locator: Form 1040 (2025), lines 34, 35a and 36
++    - id: f1040.split_over
++      printed: (gate)
++      type: Bool
++      label: The amounts refunded (line 35a) and applied to 2026 (line 36) add up to more than the overpayment on line 34
++      expr:
++        op: test
++        gt:
++          - f1040.refund_split
++          - f1040.line34
++      cite:
++        doc: f1040
++        locator: Form 1040 (2025), line 35a, "Amount of line 34 you want refunded to you", and line 36, "Amount of line 34
++          you want applied to your 2026 estimated tax"
+     - id: f1040.line35a
+       printed: 35a
+       label: Amount of line 34 you want refunded to you
+       type: NonNegDollars
++      refuses:
++        - when: f1040.split_over
++          form: Form 1040, lines 35a and 36
++          remedy: The amounts to refund (line 35a) and to apply to 2026 (line 36) add up to more than your overpayment
++            (line 34); enter amounts that add up to line 34 at most.
++          cite:
++            doc: f1040
++            locator: Form 1040 (2025), lines 34, 35a and 36
+       expr:
+         op: input
+         source: Amount of line 34 you want refunded to you (supplied election)

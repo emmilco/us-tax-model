@@ -1,11 +1,12 @@
 form:
   id: ftc
   kind: form
-  title: Foreign tax credit — election without Form 1116
+  title: Foreign tax credit — election without Form 1116, or Form 1116
   tax_year: 2025
   note: Creditable foreign tax is a supplied amount after reductions; this slice does not determine
-    foreign-tax law or automate holdings/related-payment tests. The election is an explicit user
-    choice. NIIT is excluded from regular tax.
+    foreign-tax law or automate holdings/related-payment tests. The election is made whenever its
+    conditions are met and no carryover is claimed; otherwise the credit is Form 1116 line 35. NIIT is
+    excluded from regular tax.
   lines:
     - id: ftc.taxes
       printed: (helper)
@@ -68,10 +69,10 @@ form:
       printed: (helper)
       type: Bool
       gated_by: ftc.carryover_if_asked
-      label: Do you (or, on a joint return, your spouse) want to claim a foreign tax credit for unused foreign taxes carried to 2025 from another tax year?
+      label: Are any of your (or, on a joint return, your spouse's) unused foreign taxes carried to 2025 from another tax year?
       expr:
         op: input
-        source: Do you (or, on a joint return, your spouse) want to claim a foreign tax credit for unused foreign taxes carried to 2025 from another tax year?
+        source: Are any of your (or, on a joint return, your spouse's) unused foreign taxes carried to 2025 from another tax year (Schedule B (Form 1116) of 2024, line 8)?
       cite:
         doc: i1116
         locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"
@@ -156,14 +157,38 @@ form:
     - id: ftc.elect
       printed: (helper)
       type: Bool
-      gated_by: ftc.elect_if_tax
-      label: "Elect the credit without Form 1116, accepting that no foreign tax of 2025 is carried to or from another year?"
+      label: The credit is claimed without Form 1116 whenever the election's conditions are met and no carryover from
+        another year is claimed (that credit, the smaller of the foreign tax and the regular tax, is never less than a Form
+        1116 credit without a carryover, whose line 21 is at most line 20; foreign tax carried in is used only on Form 1116)
       expr:
-        op: input
-        source: "Elect the credit without Form 1116, accepting that foreign tax paid or accrued in 2025 cannot be carried over to or from any other year?"
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - ftc.carryover_if_asked
+                - const: true
+            then: ftc.no
+          - guard:
+              op: test
+              eq:
+                - ftc.carryover_if_asked
+                - const: false
+            then: ftc.yes
       cite:
         doc: i1116
         locator: "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; pp. 1–2, \"You can’t carry over to or from any other year any foreign taxes paid or accrued\""
+      ambiguity: amb.2025.f1116_carryover_election
+    - id: ftc.yes
+      printed: (helper)
+      type: Bool
+      label: Year parameter ftc.yes (true)
+      expr:
+        op: param
+        ref: ftc.yes
+      cite:
+        doc: i1116
+        locator: 'p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and"'
     - id: ftc.limit
       printed: (helper)
       type: NonNegDollars
@@ -313,7 +338,7 @@ form:
     - id: ftc.needs1116
       printed: (helper)
       type: Bool
-      label: Fails a condition of the election
+      label: Foreign tax fails a condition of the election, so the credit is figured on Form 1116
       expr:
         op: test
         all:
@@ -343,10 +368,32 @@ form:
                 eq:
                   - ftc.elect_if_tax
                   - const: false
+              - op: test
+                eq:
+                  - sa.excluded_income
+                  - const: true
       cite:
         doc: i1116
         locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
-          regular tax
+          regular tax; i1040gi p. 115, "You aren’t filing Form 4563 or excluding income from sources within Puerto Rico"
+    - id: ftc.carryover_no_tax
+      printed: (gate)
+      type: Bool
+      label: A foreign tax credit carried from another year is claimed, with no foreign tax paid in 2025
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - ftc.carryover_if_asked
+              - const: true
+          - op: test
+            eq:
+              - ftc.has_tax
+              - const: false
+      cite:
+        doc: i1116
+        locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"
     - id: ftc.regular_tax
       printed: (helper)
       type: Dollars
@@ -373,11 +420,34 @@ form:
         doc: i1116
         locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
           regular tax
+    - id: ftc.credit_tax
+      printed: (helper)
+      type: Dollars
+      label: With foreign tax, the credit without Form 1116 when the election's conditions are met, and Form 1116 line
+        35 when they are not
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - ftc.needs1116
+                - const: false
+            then: ftc.limited
+          - guard:
+              op: test
+              eq:
+                - ftc.needs1116
+                - const: true
+            then: f1116.line35
+      cite:
+        doc: i1116
+        locator: 'pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and"'
     - id: ftc.credit
       printed: (helper)
       type: Dollars
-      label: Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign
-        tax
+      label: The credit without Form 1116 (the smaller of creditable foreign tax and regular income tax) when the election's
+        conditions are met; Form 1116 line 35 when they are not; zero if no foreign tax
       expr:
         op: choose
         alternatives:
@@ -386,7 +456,7 @@ form:
               eq:
                 - ftc.has_tax
                 - const: true
-            then: ftc.limited
+            then: ftc.credit_tax
           - guard:
               op: test
               eq:
@@ -395,20 +465,12 @@ form:
             then: ftc.zero
       cite:
         doc: i1116
-        locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
-          regular tax
+        locator: 'pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and"'
       refuses:
-        - when: ftc.needs1116
-          form: Form 1116
-          remedy: The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped;
-            prepare it separately.
-          cite:
-            doc: i1116
-            locator: pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20,
-              regular tax
-        - when: ftc.carryover_if_asked
-          form: Form 1116
-          remedy: A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.
+        - when: ftc.carryover_no_tax
+          form: Form 1116 (a carryover with no foreign tax in 2025)
+          remedy: A foreign tax credit carried from another year, with no foreign tax paid in 2025, is figured on Form 1116
+            from the year's foreign income, which this tool does not ask for without foreign tax.
           cite:
             doc: i1116
             locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"

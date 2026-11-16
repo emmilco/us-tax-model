@@ -1,0 +1,41 @@
+{
+ "kind": "classm",
+ "form": "rprop",
+ "family": "claude",
+ "base": "10fca69265ca6d3bbad3e54e6a7e9ba91eebb34bb14abb5f36eeb348a29f15b7",
+ "lines": [
+  {
+   "key": "case classm.rprop.1",
+   "record": "10fca69265ca6d3bbad3e54e6a7e9ba91eebb34bb14abb5f36eeb348a29f15b7",
+   "status": null
+  },
+  {
+   "key": "classm.rprop.1 — rental[a].rprop[b].dep",
+   "record": "10fca69265ca6d3bbad3e54e6a7e9ba91eebb34bb14abb5f36eeb348a29f15b7",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rprop.1 — rental[a].rprop[c].dep",
+   "record": "10fca69265ca6d3bbad3e54e6a7e9ba91eebb34bb14abb5f36eeb348a29f15b7",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rprop.1 — rental[b].rprop[d].dep",
+   "record": "10fca69265ca6d3bbad3e54e6a7e9ba91eebb34bb14abb5f36eeb348a29f15b7",
+   "status": "AGREE"
+  }
+ ],
+ "subject_carried": {
+  "subject": "78d8355c764b30585216d34bbd810ece544468f3ab067ef3e3923d6f6e35e329",
+  "was": "47a9bf3d01856bfb6b7f765aba7820df2ddf4797db0c49716b3626725bad04d6",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "rprop.is_2025": "rprop.placed_this_year_cent",
+    "rprop.placed_2025": "rprop.placed_this_year"
+   },
+   "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+   "was": "47a9bf3d01856bfb6b7f765aba7820df2ddf4797db0c49716b3626725bad04d6"
+  }
+ }
+}

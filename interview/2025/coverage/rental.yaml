@@ -1,0 +1,370 @@
+tax_year: 2025
+part: Rental real estate and royalties (Schedule E Part I, Form 8582)
+profile: full
+sets:
+  one_w2:
+    says: A person with one job and one Form W-2.
+    answers:
+      $w2@person[taxpayer]:
+      - job
+      person[taxpayer].w2[job].box1: 5200000
+      person[taxpayer].w2[job].box2: 520000
+      person[taxpayer].w2[job].box4: 322400
+      person[taxpayer].w2[job].box5: 5200000
+      person[taxpayer].w2[job].box6: 75400
+      s2.w2_marks: false
+      s1.nqdc_pension: false
+      scope.w2_marks: false
+      scope.artist_official: false
+      scope.excess_deferral: false
+  rents_house:
+    says: 'Rents out one house all year: rent $18,000, mortgage interest $6,000, property tax $2,400, the building ($160,000)
+      placed in service February 2020.'
+    answers:
+      scope.rental: true
+      scope.rent_personal: false
+      $rental:
+      - house
+      rental[house].kind: sfr
+      rental[house].days_fair: 365
+      rental[house].personal_any: false
+      rental[house].short_stays: false
+      rental[house].services: false
+      rental[house].under_tenth: false
+      rental[house].not_for_profit: false
+      rental[house].depletion: false
+      rental[house].part_home: false
+      rental[house].active: true
+      rental[house].rents: 1800000
+      rental[house].has_mortgage: true
+      rental[house].has_other_interest: false
+      rental[house].has_taxes: true
+      rental[house].has_insurance: false
+      rental[house].has_management: false
+      rental[house].has_commissions: false
+      rental[house].has_repairs: false
+      rental[house].has_cleaning: false
+      rental[house].has_utilities: false
+      rental[house].has_supplies: false
+      rental[house].has_advertising: false
+      rental[house].has_legal: false
+      rental[house].has_other: false
+      rental[house].vehicle: false
+      rental[house].amt12: 600000
+      rental[house].amt16: 240000
+      rental[house].prior_any: false
+      $rprop@rental[house]:
+      - bldg
+      rental[house].rprop[bldg].kind: residential
+      rental[house].rprop[bldg].month: m2
+      rental[house].rprop[bldg].year: y2020
+      rental[house].rprop[bldg].basis: 16000000
+      rental[house].rprop[bldg].screen: false
+      $royalty: []
+      sche.re_pro: false
+      sche.grouped: false
+      sche.qbi_business: false
+  royalty_only:
+    says: Has no rental; lists one royalty; no Schedule E return-level items.
+    answers:
+      scope.rental: true
+      scope.rent_personal: false
+      $rental: []
+      sche.re_pro: false
+      sche.grouped: false
+      sche.qbi_business: false
+rows:
+- id: rental.house_computed
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person with one job rents out a house all year with a mortgage, property tax and the building depreciated;
+    the return is completed.
+  uses:
+  - one_w2
+  - rents_house
+  answers: {}
+  expect:
+    proceeds:
+      scope.rental: true
+      rental[house].rents: 1800000
+- id: rental.excluded_home
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person rents her own home for 10 days around a big event and lives there the rest of the year; nothing is reported
+    and the return is completed.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].days_fair: 10
+    rental[house].personal_any: true
+    rental[house].days_personal: 300
+    rental[house].days_overlap: 0
+  expect:
+    proceeds:
+      rental[house].days_fair: 10
+- id: rental.personal_not_home
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person rents a vacation cabin 200 days and uses it 10 days himself; the expenses are divided and the return
+    is completed.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: vacation
+    rental[house].days_fair: 200
+    rental[house].personal_any: true
+    rental[house].days_personal: 10
+    rental[house].days_overlap: 0
+  expect:
+    proceeds:
+      rental[house].days_personal: 10
+- id: rental.part5
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person owns a house rented under a long lease whose decisions an agent makes without her; the loss is held
+    back (Form 8582 Part V) and the return is completed.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].active: false
+    rental[house].rents: 600000
+    rental[house].not_at_risk: false
+  expect:
+    proceeds:
+      rental[house].active: false
+- id: rental.prior_loss_absorbed
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person whose rental loss was held back in 2024 enters it; the return is completed.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].prior_any: true
+    rental[house].prior_amt: 500000
+    rental[house].prior_not_active: false
+  expect:
+    proceeds:
+      rental[house].prior_amt: 500000
+- id: rental.short_stay
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person rents a whole house to vacationers for 3 nights at a time.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: vacation
+    rental[house].short_stays: true
+    rental[house].stay7: true
+  expect:
+    refused: rental[house].stay7_if_short
+- id: rental.services
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person rents rooms and serves breakfast and cleans daily.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].services: true
+  expect:
+    refused: rental[house].services
+- id: rental.ws51
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person rents her beach house 120 days and uses it 30 days herself.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: vacation
+    rental[house].days_fair: 120
+    rental[house].personal_any: true
+    rental[house].days_personal: 30
+    rental[house].days_overlap: 0
+  expect:
+    refused: rental[house].ws51
+- id: rental.self_rental
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person rents a building to the business he runs.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: self_rental
+  expect:
+    refused: rental[house].self_rental
+- id: rental.under_tenth
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person owns 5% of a rental house with others.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].under_tenth: true
+  expect:
+    refused: rental[house].under_tenth
+- id: rental.not_for_profit
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person rents a house to a friend far below its value.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].not_for_profit: true
+  expect:
+    refused: rental[house].not_for_profit
+- id: rental.depletion
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person rents land with timber and claims depletion.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].depletion: true
+  expect:
+    refused: rental[house].depletion
+- id: rental.part_home
+  design: BUG-0920 (lane xfix)
+  situation: A person rents out a room in the home they live in.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].part_home: true
+  expect:
+    refused: rental[house].part_home
+- id: rental.vehicle
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person drives to the rental and deducts car costs.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].vehicle: true
+  expect:
+    refused: rental[house].vehicle
+- id: rental.prior_not_active
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person with a held-back loss from years when an agent made all decisions.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].prior_any: true
+    rental[house].prior_amt: 300000
+    rental[house].prior_not_active: true
+  expect:
+    refused: rental[house].prior_not_active_if_both
+- id: rental.personal_property
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person depreciates a refrigerator in the rental.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].rprop[bldg].kind: personal
+  expect:
+    refused: rental[house].rprop[bldg].personal
+- id: rental.nonres_before_1994
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person depreciates a shop building placed in service in 1990.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].kind: commercial
+    rental[house].rprop[bldg].kind: nonresidential
+    rental[house].rprop[bldg].year: y1990
+  expect:
+    refused: rental[house].rprop[bldg].early_nonres
+- id: rental.rprop_screen
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person depreciates a building she sold in 2025.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].rprop[bldg].screen: true
+  expect:
+    refused: rental[house].rprop[bldg].screen
+- id: rental.not_at_risk
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person bought a rental with a loan from the seller and has a loss.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    rental[house].rents: 200000
+    rental[house].not_at_risk: true
+  expect:
+    refused: rental[house].not_at_risk_if_loss
+- id: rental.re_pro
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A full-time real estate agent owns a rental.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    sche.re_pro: true
+  expect:
+    refused: sche.re_pro
+- id: rental.grouped
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person treats two rentals as one activity.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    sche.grouped: true
+  expect:
+    refused: sche.grouped
+- id: rental.qbi_business
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person treats her rentals as a business for the qualified business income deduction.
+  uses:
+  - one_w2
+  - rents_house
+  answers:
+    sche.qbi_business: true
+  expect:
+    refused: sche.qbi_business
+- id: rental.royalty_computed
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person with one job receives book royalties of $2,400 and no rental; the return is completed.
+  uses:
+  - one_w2
+  - royalty_only
+  answers:
+    $royalty:
+    - book
+    royalty[book].line4: 240000
+    royalty[book].business: false
+    royalty[book].depletion: false
+    royalty[book].expenses_any: false
+  expect:
+    proceeds:
+      royalty[book].line4: 240000
+- id: rental.royalty_business
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A self-employed songwriter receives royalties from his own songs.
+  uses:
+  - one_w2
+  - royalty_only
+  answers:
+    $royalty:
+    - songs
+    royalty[songs].line4: 100000
+    royalty[songs].business: true
+  expect:
+    refused: royalty[songs].business
+- id: rental.royalty_depletion
+  design: scout-schedule-e.md §4 (lane x1-sche)
+  situation: A person claims depletion for an oil royalty.
+  uses:
+  - one_w2
+  - royalty_only
+  answers:
+    $royalty:
+    - oil
+    royalty[oil].line4: 100000
+    royalty[oil].depletion: true
+    royalty[oil].business: false
+  expect:
+    refused: royalty[oil].depletion

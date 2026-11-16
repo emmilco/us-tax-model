@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "82de8c9ba80af1434c63911f671d25a5da3bb6ac74bf7fd42bbe81bb49a3a2b3",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -58,10 +58,10 @@
   },
   {
    "key": "4b",
-   "record": "45f950a70602ddb91cf04fb90208fd30b2f78ac2b9a0f399320813b83c5f0068",
+   "record": "f909e76c1acd09cf57f9057dd7f932884686566d55a973ec31c91444bc8e31ad",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; triage 2,470/2,597 agree, no value difference; differences are project-unknown (unasked Part II questions: s1a.tips and the SSN tests) and project-refuses (6, refused returns: the project's Form 4137 refusal, s2.other). Both lines are 0 wherever they compute: i1040gi p. 104, line 4b, \"If Form 4137 is not filed, enter -0-\", and Form 4137 is outside the tool (refused here by the project, through person.se_screen per the reply's note). The project's line is 0 also when Part II does not apply (i1040gi p. 101, \"Fill out Schedule 1-A, Part II, only if\").",
-   "subject_key": "f8b9f12af223b0fd64d9ac928de8ef434ff7e22010a80eacad714e781a85c81d"
+   "ruling": "Ruling: scope; the project does not figure line 4b: s1a.line4b_calc refuses when anyone has Form 4137 tips (s1a.f4137; i1040gi p. 101, Schedule 1-A, Part II, \"If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137\"; p. 104, line 4b), and is zero otherwise, as the line says (\"If Form 4137 is not filed, enter -0-\"). The reply sums person.f4137_col_c, which its own note says may include tips that are not qualified tips, so it is not a correct figure of the line either. Triage f93799ca7307: 2,946/2,992 agree with no value difference; 42 project-unknown (s1a.tips unanswered on incomplete and refused returns), 3 project-refuses (the Form 4137 refusal), 1 candidate-unknown.",
+   "subject_key": "c8f981498067898ddccee6dbd0a92c951f1fd3bae60cdf26ba2d0077cb769d5b"
   },
   {
    "key": "4c",
@@ -309,7 +309,7 @@
   "2e": "758844a2c4e1ac96ad892c8a175dcd88b1199a734084b18fbdf22483c11ba6d5",
   "3": "24bf2378d5d93636b24d69425c3802bdd6f044d519df7e7e5880bacd4ebb5034",
   "4a": "13af18bdcf814ab06a1f5975dddacabbc7eef636f0e3181d78de6f6b84a1c4b2",
-  "4b": "0c6ca649a212debc0c5f8b3ddb53a3205f9b49882e78c2ef6a2936c9862c1c00",
+  "4b": "c8c2c15e73e78f634b63a21a4c4f4313dff8e7906d758a596a8fa1b87f5a37c1",
   "4c": "6844b4a810e61040ed9c74ade2afec0618cdb56c345bc474ac27bd6d703feac7",
   "5": "9d2fe5f6eb024ad17b39881093d47310bdb759d155f28c270d900fc88f453d40",
   "6": "ba516fc83faeb5e13270159511ca77d08621d948350860527f45e6fefe6b33cb",
@@ -348,7 +348,7 @@
  "__rest__": "72d6a605d769b79dd9b412e8f8a7e363d66aa6f28a55bfe31e2428c7309d2c07",
  "foreign": {
   "4a": "b907ab2795f1cc005b8d008e9d7c715606fd29e20a1d27ca24cf45b9ae97c719",
-  "4b": "d1f44d0e90197f7d6f646345c21e1104ee87c23a9b1112daee886e455038b383",
+  "4b": "69ae202d97f17439be68b239da39f6496156c2844d09d9aec6823f3cca4e81d6",
   "4c": "1f33d0cc21cddedac36b56770eee662d008f2587bb1f6d8a219eaf08fc95ad71",
   "5": "13e5e0d9b0c9b8692fc3632d03c0bc2939c4c3bf70e9cd8e8899e94e372668ba",
   "6": "87cf665601fed8a95803703dacb4c4696c3b2ec0a5b84426ba0042bd3ad7a212",

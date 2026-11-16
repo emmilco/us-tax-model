@@ -1,0 +1,75 @@
+{
+ "kind": "transcription",
+ "form": "f8853c",
+ "family": "claude",
+ "base": "885758b8da739775d31f01d1fc6968e9e2b88a23e7e0e2ac5acf5d1876f91a8e",
+ "lines": [
+  {
+   "key": "18",
+   "record": "885758b8da739775d31f01d1fc6968e9e2b88a23e7e0e2ac5acf5d1876f91a8e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply takes line 17 whether or not any payment was periodic and reads f8853c.nonqualified without its gate, so it is unknown or refuses where the project's gates leave the question unasked (12 differences: 9 candidate-refuses on refused or incomplete returns, 3 candidate-unknown); no value differs. i8853's Filing Requirements chart completes lines 18 to 25 only for per diem or other periodic payments, which is the project's f8853c.periodic gate.",
+   "subject_key": "820c08e0ab7311315c9a8cd221804b2073cc597376fc7a94c8d24c2bbc51ff56"
+  },
+  {
+   "key": "20",
+   "record": "885758b8da739775d31f01d1fc6968e9e2b88a23e7e0e2ac5acf5d1876f91a8e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; as line 18: the reply's line 18 reads f8853c.nonqualified ungated (completed witness: project $20,000, reply unknown); no value differs.",
+   "subject_key": "b49fa45cec7b1db1522707cc01a8c9d636a66776128cbea3b79e45e9b19a67e8"
+  },
+  {
+   "key": "21",
+   "record": "885758b8da739775d31f01d1fc6968e9e2b88a23e7e0e2ac5acf5d1876f91a8e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply gates $420 x days on f8853c.periodic, the project on line 20 more than zero; with line 18 zero when no payment is periodic the two agree wherever both evaluate; differences are unknowns and refusals on incomplete or refused returns only.",
+   "subject_key": "016fcf527d93287510bde6a08a41172a155b7d717f37b994f05b97ac736cd732"
+  },
+  {
+   "key": "23",
+   "record": "885758b8da739775d31f01d1fc6968e9e2b88a23e7e0e2ac5acf5d1876f91a8e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; as line 21 (line 22 asked only when line 20 is more than zero); no value differs.",
+   "subject_key": "3c1a1ad94ef20be38d23fe4d779568be1ff76518b84f3a8b1fda987f11d5b6b0"
+  },
+  {
+   "key": "25",
+   "record": "885758b8da739775d31f01d1fc6968e9e2b88a23e7e0e2ac5acf5d1876f91a8e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply reads f8853c.pre1996 ungated (completed witnesses: project $153,300 and $12,600, reply unknown) and drops the project's zero floor; no value differs where both evaluate. The floor itself is recorded as BUG-0917 (render).",
+   "subject_key": "d7d3d6f4bc43b9bf5c1781baea2ed9d76731fcc25c23b8d7fe8ae6d8301880d3",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8853c.pre1996": "f8853c.contract_before_ltc_date",
+     "f8853c.pre1996_if_reimbursed": "f8853c.contract_before_ltc_date_if_reimbursed"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "7c85c9c3fa86f88d444d64ce4a81d3babb6afc3c184bbc86e08c9ca281fa3332"
+   }
+  },
+  {
+   "key": "26",
+   "record": "885758b8da739775d31f01d1fc6968e9e2b88a23e7e0e2ac5acf5d1876f91a8e",
+   "status": "AGREE",
+   "subject_key": "49c2cb809fcf14f020b2b2490740339e3ea2dca6e29a52b2aeb6d80b30662225"
+  }
+ ],
+ "subjects": {
+  "18": "30c214eda7e886a1cf96001b911824c17c5857711ece7f64cbf3fc9b8beaa94c",
+  "20": "4908a90bfd3c0da9a91ee33ae52a784b48823edf022da9040c2dee07b0d9869d",
+  "21": "302700ed286d34d963286e905e2ca1eefc5e915b4cca260c07c1c6d260c7de5a",
+  "23": "9376d8d936625bafdad889334b7deb6195aed9b4e33a8dc44388d949ac146a45",
+  "25": "44c134ba41921e4dfb70f20d632adb29b40da8814f03597f2facbc8c6dcfbfa2",
+  "26": "7c9c99af3c94c6031bafbdaa3758089dc4694a180d4f813e1d2464019abd86d6"
+ },
+ "__rest__": "8d3cc0cd42845d4e0b64b4b5b9ab07923162fdf134e3c07f36513c648fa2edd4",
+ "foreign": {
+  "18": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "20": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "21": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "23": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "25": "49564474a8819034f8f7738e930b318876bf425ef0a74497c90e5420ef1c6c47",
+  "26": "49564474a8819034f8f7738e930b318876bf425ef0a74497c90e5420ef1c6c47"
+ }
+}

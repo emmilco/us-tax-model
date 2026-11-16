@@ -28,6 +28,52 @@
    }
   },
   {
+   "printed": "1",
+   "project_expr_sha256": "dc41380d6bbb762dc68fc9b3e51723c375498692af6192f858c0336658792e67",
+   "second_expr_sha256": "360afcae3c257b5b81f52394c67c2184fb02d24c411794a1e052132dd23d5b7e",
+   "ruling": "Ruling: representation; the worksheet's line 1 (interest paid less unqualified and assisted parts, at most $2,500; i1040gi p. 98, Student Loan Interest Deduction Worksheet, line 1) is the same in both on every return the interview reaches. The project asks sli.any only on a return that is not married filing separately (sli.any_if_not_mfs; the deduction is not allowed on a separate return), the reply reads it on every return. Triage 6e21762b3daa: 3,021/3,116 agree; the 29 value differences are all separate returns (classm.tcw.4, .9, .15, classm.clcw_next_year.3, classm.retirement.4.deepseek, mutation.t2.f8962_months_r4 and others) whose fixtures still carry an sli.any answer the interview no longer asks; the deduction is 0 on them in both; the rest are 40 project-refuses (Pub. 970 exception), 13 project-unknown, 13 candidate-unknown.",
+   "context": "cf338c47afaf731291b737d211d52589072c3d0a9770a17636e29e2885528b5a",
+   "date": "2026-11-15",
+   "run": "4bbe68ff7f86b06aac2fbc30e7a324ae34d88283b954edf155938b1380677e6a",
+   "subject_key": "a27c84374f47634a33597a1119e28bec6cdc9cb65bb7e0f112306a985c1e086e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sli",
+     "fixture:classm.eic.6.deepseek@sli",
+     "fixture:classm.retirement.4.deepseek@sli",
+     "fixture:classm.f5329.3.deepseek@sli",
+     "fixture:classm.dependent.5.deepseek@sli",
+     "fixture:classm.dcprov.1@sli",
+     "fixture:classm.f2441.2@sli",
+     "fixture:classm.f2441.11@sli",
+     "fixture:classm.f2441.12@sli",
+     "fixture:classm.s179.4@sli",
+     "fixture:classm.tcw.4@sli",
+     "fixture:classm.tcw.9@sli",
+     "fixture:classm.tcw.15@sli",
+     "fixture:classm.clcw_next_year.3@sli",
+     "fixture:classm.f8962.4@sli",
+     "fixture:classm.f8962.7@sli",
+     "fixture:classm.f5329.3@sli",
+     "fixture:classm.sales.3@sli",
+     "fixture:stage21.choose.eic_limit_status_unanswered@sli",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sli",
+     "fixture:stage16.cleanup.refuse.f1040_line16@sli",
+     "fixture:stage16.cleanup.refuse.scope_credits@sli",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@sli",
+     "fixture:mutation.t2.f8962_months_r4@sli"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "5",
    "project_expr_sha256": "8483af9700758061844c6df5132a102046e5c18826438dbe534b383021eff469",
    "second_expr_sha256": "b3fad40fe31fbf817e9caa137b93a373229c2b838aab5781605f23a852c1048c",
@@ -54,6 +100,45 @@
    "second_expr_sha256": "a0eb44063663bc97d52e366d4edb3225ac23ce777df07582dce7d9c576912c03",
    "ruling": "Ruling: equivalent; project retained. Line 8 never exceeds line 1: prorate's ratio is at most 1.000 (Lean lemma prorate_le_amount), so the floor at zero never applies.",
    "subject_key": "114591512ca89fa53b52c90341cac994e6e6ba41bcfc42dc73d6bbfe313937aa"
+  },
+  {
+   "printed": "sli.deduction",
+   "project_expr_sha256": "0cf76ae395c95f9f760baa575dfd0d5a519411143a1112af64dcdc07b1d98140",
+   "second_expr_sha256": "63a0dfab6eab45fc93a662c2ef3475c02f3599ac62cf5cd6ebe78358f0a9fa90",
+   "ruling": "Ruling: model error; the reply leaves out the dependent condition. i1040gi p. 98, Schedule 1, line 21: you can take the deduction only if \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"; the project tests it with sli.claimed_count (person.sav_claimed) in sli.eligible, and the reply's own note says it did not encode it. Triage 6e21762b3daa: 2,478/3,116 agree; all 8 value differences are returns where the filer or the spouse is claimed on another return (person.sav_claimed true: classm.sli.3, dep.sli_claimed_no_deduction, stage11.sli.claimed, stage11.sli.spouse_claimed, stage16.sd.line17_no_skips_19 and three mutation cases), where the project's 0 is right; the other 630 are candidate-refuses (522) and candidate-unknown (108) on refused or incomplete returns. The separate-return zero is the same in both.",
+   "context": "cf338c47afaf731291b737d211d52589072c3d0a9770a17636e29e2885528b5a",
+   "date": "2026-11-15",
+   "run": "4bbe68ff7f86b06aac2fbc30e7a324ae34d88283b954edf155938b1380677e6a",
+   "subject_key": "4b1fb53d27540ca32ad63412df885a9af09b2f49f042f5d98e697c47aea883b0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@sli",
+     "fixture:stage14.asset.refuse_ads_past_gds@sli",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@sli",
+     "fixture:stage14.asset.refuse_class@sli",
+     "fixture:stage14.asset.refuse_listed_low@sli",
+     "fixture:stage14.asset.refuse_s179_over@sli",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@sli",
+     "fixture:classm.f8889.1.deepseek@sli",
+     "fixture:classm.f8889.3.deepseek@sli",
+     "fixture:classm.f8889.4.deepseek@sli",
+     "fixture:classm.f8889.5.deepseek@sli",
+     "fixture:classm.asset.3@sli",
+     "fixture:classm.sli.3@sli",
+     "fixture:mutation.t2.sli.qss_divisor@sli",
+     "fixture:mutation.t2.sli.hoh_divisor@sli",
+     "fixture:mutation.m4.sli.part_unqualified@sli",
+     "fixture:stage16.sd.line17_no_skips_19@sli",
+     "fixture:stage11.sli.claimed@sli"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "sli.deduction",

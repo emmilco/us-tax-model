@@ -1,0 +1,41 @@
+changes:
+  tax_year: 2026
+  form: f8582
+  entries:
+  - change: C-X1SCHE-F8582-01
+    evidence:
+    - doc: i8582
+      page: 12
+      quote: For 2026 and future years, MAGI is generally reduced by the deduction allowed for the deductible part of self-employment
+        tax.
+    verified: draft
+    note: The deductible part of self-employment tax now reduces MAGI. It is figured without the special allowance; no self-employment
+      income in this tool arises from a passive rental, so Schedule 1 line 15 is used as it stands. The option to treat a
+      passive activity's part of that deduction as a passive deduction does not arise (passive trade or business activities
+      are refused, scope.passive).
+    operations:
+    - set:
+        line: f8582.magi_adj
+        field: expr.of
+        from:
+        - s1.line11
+        - s1.line13
+        - s1.line16
+        - s1.line17
+        - s1.line18
+        - s1.line19a
+        - s1.line25
+        to:
+        - s1.line11
+        - s1.line13
+        - s1.line15
+        - s1.line16
+        - s1.line17
+        - s1.line18
+        - s1.line19a
+        - s1.line25
+    - set:
+        line: f8582.magi_adj
+        field: label
+        from: 'Adjustments for modified adjusted gross income: Schedule 1 line 26 less lines 15, 20 and 21'
+        to: 'Adjustments for modified adjusted gross income: Schedule 1 line 26 less lines 20 and 21'

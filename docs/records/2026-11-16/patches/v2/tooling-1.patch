@@ -1,0 +1,224 @@
+diff --git a/tools/README.md b/tools/README.md
+index 2ad5b17..e6f7491 100644
+--- a/tools/README.md
++++ b/tools/README.md
+@@ -292,7 +292,11 @@ trees): no green run, a run of too low a tier, a tree changed since the run, or
+ partial stage. Git runs no pre-commit hook on a merge, so `tools/hooks/pre-push`
+ checks every commit of the pushed range by the same rule, against its own parents,
+ which catches a merge made by `git pull`; it also refuses a release tag (`refs/tags/r*`)
+-whose commit's tree is not full-green. Enable both once per clone:
++whose commit's tree is not full-green. Both refuse a blob over 50 MiB that the commit or
++the push adds (`tools/blob_limit.sh`; GitHub refuses a blob over 100 MiB, and a committed
++blob leaves the history only by rewriting it). pre-push reads only the objects the push
++adds, so a large blob already on the remote is not refused again. A blob that cannot be
++made smaller yet is listed, with its reason, in `tools/large_blobs.txt`. Enable both once per clone:
+ 
+     git config core.hooksPath tools/hooks
+ 
+diff --git a/tools/blob_limit.sh b/tools/blob_limit.sh
+new file mode 100644
+index 0000000..dd43f8f
+--- /dev/null
++++ b/tools/blob_limit.sh
+@@ -0,0 +1,33 @@
++#!/usr/bin/env bash
++# Shared by tools/hooks/pre-commit and tools/hooks/pre-push: the limit on the size of one file (blob) a commit or push
++# adds. GitHub refuses a push holding a blob over 100 MiB and warns over 50 MiB, and a blob once committed leaves the
++# history only by rewriting it, so the hooks refuse a blob over MAX_BLOB_BYTES when it is added.
++#
++# A blob that cannot be made smaller yet may be listed in tools/large_blobs.txt, one per line as
++# "<blob id> <path> <reason>"; a listed blob is not refused. Blobs already in the remote's history are never read:
++# pre-push reads only the objects the push adds.
++MAX_BLOB_BYTES=52428800
++LARGE_BLOBS_LIST=tools/large_blobs.txt
++
++# oversized_blobs: reads "<object id> <path>" lines (git rev-list --objects, or the staged blobs) on standard input
++# and prints "<size> <blob id> <path>" for each blob over MAX_BLOB_BYTES that tools/large_blobs.txt does not list.
++oversized_blobs() {
++  local size id path
++  git cat-file --batch-check='%(objecttype) %(objectsize) %(objectname) %(rest)' |
++    awk -v max="$MAX_BLOB_BYTES" '$1 == "blob" && $2 > max { sub(/^blob /, ""); print }' |
++    while read -r size id path; do
++      if [ -f "$LARGE_BLOBS_LIST" ] && grep -q "^$id " "$LARGE_BLOBS_LIST"; then continue; fi
++      echo "$size $id $path"
++    done
++}
++
++# report_oversized WHO: prints one refusal line per oversized blob read on standard input (oversized_blobs output) and
++# fails when there was any.
++report_oversized() {
++  local size id path found=0
++  while read -r size id path; do
++    found=1
++    echo "$1: blob $id (${path:-no path}, $((size / 1048576)) MiB) is over the $((MAX_BLOB_BYTES / 1048576)) MiB limit (tools/blob_limit.sh); make the file smaller or leave it out. A blob that cannot be made smaller yet goes in $LARGE_BLOBS_LIST as \"$id ${path:-<path>} <reason>\"" >&2
++  done
++  return "$found"
++}
+diff --git a/tools/hooks/pre-commit b/tools/hooks/pre-commit
+index dc3e21b..1e7a57d 100755
+--- a/tools/hooks/pre-commit
++++ b/tools/hooks/pre-commit
+@@ -11,12 +11,14 @@
+ # A full-green tree is also fast- and docs-green, and a fast-green tree docs-green.
+ # `git commit --amend` is judged against the commit it replaces; pre-push judges each
+ # pushed commit against its real parents.
+-# It also refuses a commit that changes a form another branch has claimed (tools/claims.py).
++# It also refuses a commit that changes a form another branch has claimed (tools/claims.py), and one
++# that adds a blob over the size limit of tools/blob_limit.sh.
+ # Enable once per clone with
+ #   git config core.hooksPath tools/hooks
+ set -euo pipefail
+ cd "$(git rev-parse --show-toplevel)"
+ . tools/green.sh
++. tools/blob_limit.sh
+ 
+ if ! any_record; then
+   echo "pre-commit: no green check-all run recorded; run npm run check-all (or tools/check_all.sh --tier fast)" >&2
+@@ -29,6 +31,10 @@ merge_head="$(git rev-parse --git-path MERGE_HEAD)"
+ if [ -f "$merge_head" ]; then
+   while read -r p; do [ -n "$p" ] && parents+=("$p"); done < "$merge_head"
+ fi
++# The blobs the commit adds or changes against HEAD (against the empty tree for a first commit), checked for size.
++base="${parents[0]:-$(git hash-object -t tree /dev/null)}"
++git diff-index --cached --no-renames --diff-filter=AM "$base" | awk -F'\t' '{ split($1, f, " "); print f[4] " " $2 }' |
++  oversized_blobs | report_oversized "pre-commit" || exit 1
+ # Form claims (tools/claims.py): a commit may not change a form another lane's branch holds.
+ python3 tools/claims.py check "$staged" ${parents[@]+"${parents[@]}"} || exit 1
+ # A merge keeps every parent's BUG entries and appends only the pending entries it assigns
+diff --git a/tools/hooks/pre-push b/tools/hooks/pre-push
+index cab57ba..dc49783 100755
+--- a/tools/hooks/pre-push
++++ b/tools/hooks/pre-push
+@@ -8,11 +8,13 @@
+ # intermediate commit would otherwise reach the remote inside a green tip's range.
+ # A release tag (refs/tags/r*) is refused unless its commit's tree is full-green and recorded
+ # release-ready by tools/release.sh (its sampled reviews complete).
++# A push that adds a blob over the size limit of tools/blob_limit.sh is refused.
+ # Enabled with the other hooks:
+ #   git config core.hooksPath tools/hooks
+ set -euo pipefail
+ cd "$(git rev-parse --show-toplevel)"
+ . tools/green.sh
++. tools/blob_limit.sh
+ 
+ failed=0
+ while read -r local_ref local_sha _remote_ref remote_sha; do
+@@ -38,8 +40,14 @@ while read -r local_ref local_sha _remote_ref remote_sha; do
+   if [[ "$remote_sha" =~ ^0+$ ]]; then
+     # A new ref: every commit reachable here and from no remote-tracking ref is being pushed.
+     commits="$(git rev-list "$local_sha" --not --remotes)"
++    added=("$local_sha" --not --remotes)
+   else
+     commits="$(git rev-list "$remote_sha..$local_sha")"
++    added=("$local_sha" "^$remote_sha")
++  fi
++  # Only the objects the push adds are read: a large blob already in the remote's history is not refused again.
++  if ! git rev-list --objects "${added[@]}" | oversized_blobs | report_oversized "pre-push: $local_ref"; then
++    failed=1
+   fi
+   for commit in $commits; do
+     tree="$(git rev-parse "$commit^{tree}")"
+diff --git a/tools/hooks/test_green.sh b/tools/hooks/test_green.sh
+index 0f43bc2..87f495d 100644
+--- a/tools/hooks/test_green.sh
++++ b/tools/hooks/test_green.sh
+@@ -3,7 +3,8 @@
+ # concurrent record_green calls must not lose entries in any tier's list; a tier's
+ # record implies the lower tiers' and not the higher; the release list is read by no tier, and
+ # release_mode needs both release variables; and pre-commit accepts a staged
+-# tree only when it is green in the tier the commit needs (tools/tier_paths.py). Then
++# tree only when it is green in the tier the commit needs (tools/tier_paths.py), and refuses one
++# that adds a blob over the size limit unless tools/large_blobs.txt lists it (tools/blob_limit.sh). Then
+ # the path rule's own self-test on this repository (tools/tier_paths.py --self-test).
+ set -euo pipefail
+ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+@@ -16,10 +17,11 @@ git init -q
+ git config user.email test@example.com
+ git config user.name test
+ mkdir -p tools/hooks
+-cp "$ROOT/tools/green.sh" "$ROOT/tools/tier_paths.py" "$ROOT/tools/docs_paths.txt" "$ROOT/tools/full_paths.txt" "$ROOT/tools/claims.py" "$ROOT/tools/check_bug_inventory.py" tools/
++cp "$ROOT/tools/green.sh" "$ROOT/tools/blob_limit.sh" "$ROOT/tools/tier_paths.py" "$ROOT/tools/docs_paths.txt" "$ROOT/tools/full_paths.txt" "$ROOT/tools/claims.py" "$ROOT/tools/check_bug_inventory.py" tools/
+ cp "$ROOT/tools/hooks/pre-commit" tools/hooks/
+ chmod +x tools/hooks/pre-commit
+ . tools/green.sh
++. tools/blob_limit.sh
+ 
+ # Concurrent records lose nothing, in each tier's own list.
+ for t in full fast docs; do
+@@ -99,6 +101,16 @@ git add -A
+ t="$(git write-tree)"; record_only docs "$t"
+ ! accepts "widen" || fail "pre-commit let a commit widen the docs-tier list it was judged by"
+ git reset -q --hard HEAD
++
++# A blob over the size limit is refused even on a full-green tree; listed in tools/large_blobs.txt, it is accepted.
++head -c $((MAX_BLOB_BYTES + 1)) /dev/zero > src/big.bin
++git add -A
++t="$(git write-tree)"; record_only full "$t"
++! accepts "big" || fail "pre-commit accepted a blob over the size limit"
++echo "$(git rev-parse :src/big.bin) src/big.bin self-test" > tools/large_blobs.txt
++git add -A
++t="$(git write-tree)"; record_only full "$t"
++accepts "big listed" || fail "pre-commit refused a large blob that tools/large_blobs.txt lists"
+ echo "green self-test: ok"
+ 
+ cd "$ROOT"
+diff --git a/tools/hooks/test_pre_push.sh b/tools/hooks/test_pre_push.sh
+index f4c08a6..e1d654f 100644
+--- a/tools/hooks/test_pre_push.sh
++++ b/tools/hooks/test_pre_push.sh
+@@ -5,7 +5,8 @@
+ # handle a new ref against a remote-tracking base; and must refuse a release tag
+ # (refs/tags/r*) whose commit's tree is not full-green or not recorded release-ready. release.sh
+ # runs against stubs of tools/check_all_bg.sh and tools/release_reviews.sh and must tag only a
+-# full-green tree whose sampled reviews are complete.
++# full-green tree whose sampled reviews are complete. pre-push must refuse a push that adds a blob
++# over the size limit (tools/blob_limit.sh), and only one that adds it.
+ set -euo pipefail
+ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+ TMP="$(mktemp -d "${TMPDIR:-/tmp}/pre-push-test.XXXXXX")"
+@@ -18,12 +19,13 @@ git symbolic-ref HEAD refs/heads/main
+ git config user.email test@example.com
+ git config user.name test
+ mkdir -p tools/hooks docs engine/src
+-cp "$ROOT/tools/green.sh" "$ROOT/tools/tier_paths.py" "$ROOT/tools/docs_paths.txt" "$ROOT/tools/full_paths.txt" "$ROOT/tools/claims.py" "$ROOT/tools/check_bug_inventory.py" \
++cp "$ROOT/tools/green.sh" "$ROOT/tools/blob_limit.sh" "$ROOT/tools/tier_paths.py" "$ROOT/tools/docs_paths.txt" "$ROOT/tools/full_paths.txt" "$ROOT/tools/claims.py" "$ROOT/tools/check_bug_inventory.py" \
+   "$ROOT/tools/commit_tested.sh" "$ROOT/tools/release.sh" tools/
+ cp "$ROOT/tools/hooks/pre-push" "$ROOT/tools/hooks/pre-commit" tools/hooks/
+ chmod +x tools/hooks/pre-push tools/hooks/pre-commit tools/commit_tested.sh tools/release.sh
+ echo a > docs/a.md; echo m > engine/src/mutate.ts
+ . tools/green.sh
++. tools/blob_limit.sh
+ 
+ Z=0000000000000000000000000000000000000000
+ commit() { for f in "${@:2}"; do echo "$1" >> "$f"; done; git add -A; git commit -qm "$1"; git rev-parse HEAD; }
+@@ -106,6 +108,21 @@ only; rec fast "$M"
+ hook refs/tags/v1 "$(git rev-parse v1)" "$Z" || fail "refused a non-release tag on a fast-green commit"
+ git tag -d r2026.01.01.1 v1 >/dev/null
+ 
++# A blob over the size limit: refused in the push that adds it, unless tools/large_blobs.txt lists it; not read again
++# once the remote has it, by an update or by a new ref.
++head -c $((MAX_BLOB_BYTES + 1)) /dev/zero > big.bin
++H="$(commit h f)"
++only; rec fast "$H"
++! branch main "$H" "$M" || fail "accepted a push that adds a blob over the size limit"
++echo "$(git rev-parse "$H:big.bin") big.bin self-test" > tools/large_blobs.txt
++branch main "$H" "$M" || fail "refused a push whose large blob tools/large_blobs.txt lists"
++rm tools/large_blobs.txt
++git update-ref refs/remotes/origin/main "$H"
++I="$(commit i f)"
++rec fast "$I"
++branch main "$I" "$H" || fail "refused a push whose large blob the remote already has"
++branch new "$I" "$Z" || fail "refused a new ref whose large blob a remote-tracking ref already has"
++
+ # release.sh, with a stub runner: STUB=same tests HEAD's tree, STUB=reports adds a regenerated report,
+ # STUB=red fails. The stub writes the background run's result file as tools/check_all_bg.sh does.
+ cat > tools/check_all_bg.sh <<'EOF'
+diff --git a/tools/large_blobs.txt b/tools/large_blobs.txt
+new file mode 100644
+index 0000000..0f5a265
+--- /dev/null
++++ b/tools/large_blobs.txt
+@@ -0,0 +1,3 @@
++# Blobs over the 50 MiB limit of tools/blob_limit.sh that tools/hooks/pre-commit and tools/hooks/pre-push accept,
++# one per line as "<blob id> <path> <reason>". Each entry is a debt: remove it once the file has been made smaller.
++# Blobs already pushed are never checked and need no entry.

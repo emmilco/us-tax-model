@@ -1,0 +1,118 @@
+diff --git a/tools/README.md b/tools/README.md
+index 2ad5b17..17968a2 100644
+--- a/tools/README.md
++++ b/tools/README.md
+@@ -190,10 +190,12 @@ the snapshot's version.
+ reports the run rewrote (if any, with `tools/commit_tested.sh`; `-F <file>` gives the
+ message) and puts the annotated tag `r<YYYY>.<MM>.<DD>.<n>` on the tested commit. It
+ pushes the tag only with `--push`. A red run tags nothing. A full run made in release mode
+-(`CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all.sh --tier full`, in any worktree) adds
+-its green tree to a release list (`tools/green.sh`); when the tip's tree is in that list,
+-`tools/release.sh` still checks the sampled reviews but does not run the suite again, and tags the
+-tip. So the full check that lets a commit onto `main` can also be the release's run.
++(`CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full`, in the snapshot worktree
++where nothing else writes during the run) adds its green tree to a release list (`tools/green.sh`), with the
++time; when the tip's tree is in that list from the last 24 hours (`RELEASE_MAX_AGE`), `tools/release.sh` still
++checks the sampled reviews but does not run the suite again, and tags the tip. An older entry is run again:
++the installed engines and the ignored review data a run reads can change after it. So the full check that lets
++a commit onto `main` can also be the release's run.
+ 
+ A run for a year other than the default passes or fails as usual but writes no
+ marker.
+diff --git a/tools/green.sh b/tools/green.sh
+index d59f2ca..b28feff 100755
+--- a/tools/green.sh
++++ b/tools/green.sh
+@@ -10,9 +10,12 @@
+ # accepts a tree green in that tier or a higher one: full-green is also fast- and docs-green.
+ #
+ # A further list, release, holds the trees of full runs made in release mode (CHECK_ALL_RELEASE=1 with
+-# ENGINE_CACHE=verify; tools/check_all.sh records them). It is no tier: is_tier_green never reads it.
+-# tools/release.sh tags a tip whose tree is in it without running the suite again.
++# ENGINE_CACHE=verify; tools/check_all.sh records them), each as "TREE SECONDS", the time it was recorded in
++# seconds since the epoch. It is no tier: is_tier_green never reads it. tools/release.sh tags a tip whose tree is
++# in it without running the suite again, if the entry is at most RELEASE_MAX_AGE seconds old: what a run checks
++# outside the tree (the installed engines, the ignored review data) can change after it.
+ MARKER="$(git rev-parse --git-path check-all-green)"
++RELEASE_MAX_AGE=86400
+ GREEN_TREES="$(cd "$(git rev-parse --git-common-dir)" && pwd)/check-all-green-trees"
+ 
+ worktree_tree() {
+@@ -56,7 +59,7 @@ trees_of() {
+   esac
+ }
+ 
+-# record_green TREE [TIER]: add TREE to the tier's list (default full).
++# record_green TREE [TIER]: add TREE to the tier's list (default full); in the release list, with the time.
+ record_green() (
+   # Serialize the read-modify-write: a foreground and a background run can finish together,
+   # and an unlocked tail/mv would lose one of the entries.
+@@ -70,7 +73,7 @@ record_green() (
+   done
+   trap 'rmdir "$lock" 2>/dev/null || true' EXIT
+   tmp="$(mktemp "$list.XXXXXX")"
+-  { [ -f "$list" ] && tail -n 49 "$list"; echo "$1"; } > "$tmp"
++  { [ -f "$list" ] && tail -n 49 "$list"; if [ "${2:-full}" = release ]; then echo "$1 $(date +%s)"; else echo "$1"; fi; } > "$tmp"
+   mv "$tmp" "$list"
+ )
+ 
+@@ -84,8 +87,14 @@ in_record() {
+ 
+ is_green() { in_record full "$1"; }
+ 
+-# is_release_green TREE: TREE is in the release list (a green full run in release mode).
+-is_release_green() { in_record release "$1"; }
++# is_release_green TREE: TREE is in the release list (a green full run in release mode), recorded at most
++# RELEASE_MAX_AGE seconds ago. An entry without a time is not accepted.
++is_release_green() {
++  local list
++  list="$(trees_of release)"
++  [ -f "$list" ] && awk -v t="$1" -v since="$(( $(date +%s) - RELEASE_MAX_AGE ))" \
++    'NF == 2 && $1 == t && $2 >= since { found = 1 } END { exit !found }' "$list"
++}
+ 
+ # release_mode: this environment is the one tools/release.sh runs the suite in.
+ release_mode() { [ "${CHECK_ALL_RELEASE:-}" = 1 ] && [ "${ENGINE_CACHE:-}" = verify ]; }
+diff --git a/tools/hooks/test_green.sh b/tools/hooks/test_green.sh
+index 0f43bc2..119b975 100644
+--- a/tools/hooks/test_green.sh
++++ b/tools/hooks/test_green.sh
+@@ -48,6 +48,12 @@ record_green rel1 release; record_green full2 full
+ is_release_green rel1 || fail "a release-listed tree is not read as release-green"
+ ! is_release_green full2 || fail "a full-green tree passed as release-green"
+ for t in full fast docs; do ! is_tier_green "$t" rel1 || fail "a release-listed tree passed as $t-green"; done
++# An entry older than RELEASE_MAX_AGE, or without a time, is not release-green.
++echo "rel2 $(( $(date +%s) - RELEASE_MAX_AGE - 60 ))" >> "$(trees_of release)"
++! is_release_green rel2 || fail "a release-list entry older than RELEASE_MAX_AGE passed as release-green"
++echo rel3 >> "$(trees_of release)"
++! is_release_green rel3 || fail "a release-list entry without a time passed as release-green"
++is_release_green rel1 || fail "a recent release-list entry is not read as release-green beside older ones"
+ rm -f "$(trees_of release)" "$(trees_of full)"
+ ( CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify; export CHECK_ALL_RELEASE ENGINE_CACHE; release_mode ) || fail "release_mode is false with both variables set"
+ ( unset ENGINE_CACHE; CHECK_ALL_RELEASE=1; export CHECK_ALL_RELEASE; ! release_mode ) || fail "release_mode is true without ENGINE_CACHE=verify"
+diff --git a/tools/release.sh b/tools/release.sh
+index b644517..f1da26a 100755
+--- a/tools/release.sh
++++ b/tools/release.sh
+@@ -18,8 +18,9 @@
+ # form due or short of samples, or an unruled finding, tags nothing. A tagged tree is recorded under
+ # <git common dir>/release-ready/, which tools/hooks/pre-push requires of a pushed release tag.
+ # When HEAD's tree is already in the release list (tools/green.sh: a green full run made in release mode,
+-# CHECK_ALL_RELEASE=1 with ENGINE_CACHE=verify, on exactly that tree, in any worktree of the clone), the
+-# run is not repeated: the sampled reviews are still checked, and the tag goes on HEAD.
++# CHECK_ALL_RELEASE=1 with ENGINE_CACHE=verify, on exactly that tree, in the snapshot worktree of
++# tools/check_all_bg.sh, at most RELEASE_MAX_AGE seconds ago), the run is not repeated: the sampled reviews
++# are still checked, and the tag goes on HEAD.
+ # --push pushes the tag to origin, through tools/hooks/pre-push; without it nothing is
+ # pushed.
+ set -euo pipefail
+@@ -52,6 +53,9 @@ if is_release_green "$head_tree" && is_green "$head_tree"; then
+   echo "release: tree $head_tree already passed a full run in release mode; not running it again"
+   tested="$head_tree"
+ else
++  if grep -q "^$head_tree " "$(trees_of release)" 2>/dev/null; then
++    echo "release: tree $head_tree passed a run in release mode more than $((RELEASE_MAX_AGE / 3600)) hours ago; running it again"
++  fi
+   # A release reruns every outside engine and compares each stored record with the fresh one (tools/engines/engine_cache.py).
+   if ! CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full; then
+     die "the full run did not pass; nothing tagged (log: $common/check-all-bg/log)"

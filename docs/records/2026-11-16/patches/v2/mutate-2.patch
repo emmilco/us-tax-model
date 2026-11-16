@@ -1,0 +1,158 @@
+diff --git a/engine/src/mutate-worker.ts b/engine/src/mutate-worker.ts
+index a4ac19f..d275e0c 100644
+--- a/engine/src/mutate-worker.ts
++++ b/engine/src/mutate-worker.ts
+@@ -1,10 +1,13 @@
+-// A mutation worker: evaluates its share of the mutants (see mutantShare in mutate.ts), or, given a plan, its share
+-// of the sampled check of the keyed arguments (sampledShare).
+-// The tax year comes from the main thread, put on the command line before year.ts loads.
+-import { parentPort, workerData } from "node:worker_threads";
++// A mutation worker: loads the data, the judging cases and the mutant list as the main thread does, sends the mutant
++// list's digest, then serves the tasks it is sent (mutateTasks in mutate.ts): the outcomes of a range of mutants, or
++// the sampled check of a block of the keyed arguments' sites. The tax year comes from the main thread, put on the
++// command line before year.ts loads.
++import { workerData } from "node:worker_threads";
++import { serveTasks } from "./pool.js";
+ 
+-const { year, index, count, ny, plan } = workerData as { year: number; index: number; count: number; ny?: boolean; plan?: unknown };
++const { year, ny } = workerData as { year: number; ny?: boolean };
+ process.argv.push("--year", String(year));
+ if (ny) process.argv.push("--ny");
+-const { mutantShare, sampledShare } = await import("./mutate.js");
+-parentPort!.postMessage(plan === undefined ? mutantShare(index, count) : sampledShare(index, count, plan as Parameters<typeof sampledShare>[2]));
++const { mutateTasks } = await import("./mutate.js");
++const tasks = mutateTasks();
++serveTasks(tasks.hello, tasks.run);
+diff --git a/engine/src/mutate.ts b/engine/src/mutate.ts
+index a465294..d9448c5 100644
+--- a/engine/src/mutate.ts
++++ b/engine/src/mutate.ts
+@@ -3,9 +3,8 @@
+ // mutation score with the surviving mutations listed.
+ 
+ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+-import { defaultWorkers } from "./pool.js";
++import { defaultWorkers, TaskWorkers } from "./pool.js";
+ import { join, resolve } from "node:path";
+-import { Worker } from "node:worker_threads";
+ import { createHash } from "node:crypto";
+ import { stableStringify } from "./util.js";
+ import { loadCanonical } from "./canonical.js";
+@@ -2674,22 +2673,54 @@ function workerCount(): number {
+   return Number.isInteger(set) && set > 0 ? set : defaultWorkers();
+ }
+ 
+-async function outcomesOf(baseline: CanonicalData, cases: JudgingCases, muts: Mutation[]): Promise<Outcome[]> {
++/** A task for a mutation worker: the outcomes of the mutants from `from` up to `to`, or the sampled check of a block
++ * of the plan's sites (sampledBlock). */
++export type MutateTask = { kind: "mutants"; from: number; to: number } | { kind: "sampled"; block: SampledPlan };
++export type MutateResult = { kind: "mutants"; outcomes: Outcome[] } | { kind: "sampled"; results: [string, SampledResult][] };
++type MutatePool = TaskWorkers<MutateTask, MutateResult>;
++
++/** A mutation worker's side (mutate-worker.ts): the data, the judging cases and the mutant list, built as the main
++ * thread builds them, with the list's digest as its hello for the main thread to compare; the sampled sets are built
++ * at its first sampled task. A task's result depends only on the task and on what the worker built. */
++export function mutateTasks(): { hello: string; run: (task: MutateTask) => MutateResult } {
++  const baseline = loadCanonical();
++  const cases = judgingCases(baseline);
++  const muts = selectMutants(mutations(baseline));
++  let sampled: { sets: SampleSet[]; byId: Map<string, Mutation> } | undefined;
++  return {
++    hello: mutantsDigest(muts),
++    run: (task) => {
++      if (task.kind === "mutants") return { kind: "mutants", outcomes: muts.slice(task.from, task.to).map((m) => outcome(baseline, cases, m)) };
++      sampled ??= { sets: sampleSets(baseline, cases), byId: new Map(muts.map((m) => [m.id, m])) };
++      return { kind: "sampled", results: sampledBlock(baseline, sampled.sets, sampled.byId, task.block) };
++    },
++  };
++}
++
++/** The mutation workers, workerCount() of them, each loading once and taking tasks of both phases from one queue as
++ * it comes free; none where workerCount() is one (the main thread does the work). */
++function startPool(): MutatePool | undefined {
+   const count = workerCount();
+-  if (count === 1) return muts.map((m) => outcome(baseline, cases, m));
++  if (count === 1) return undefined;
++  const pool = new TaskWorkers<MutateTask, MutateResult>(new URL("./mutate-worker.js", import.meta.url), count, { year: YEAR, ny: NY_MODE });
++  // A worker that fails while loading is reported where `ready` is awaited; the run may end before that.
++  pool.ready.catch(() => undefined);
++  return pool;
++}
++
++/** Mutants per phase-one task: small enough that the queue balances the workers, large enough that messages cost
++ * nothing beside the evaluations. */
++const MUTANT_CHUNK = 16;
++
++async function outcomesOf(baseline: CanonicalData, cases: JudgingCases, muts: Mutation[], pool: MutatePool | undefined): Promise<Outcome[]> {
++  if (pool === undefined) return muts.map((m) => outcome(baseline, cases, m));
+   const digest = mutantsDigest(muts);
+-  const shares = await Promise.all(Array.from({ length: count }, (_, index) => new Promise<ReturnType<typeof mutantShare>>((done, fail) => {
+-    const w = new Worker(new URL("./mutate-worker.js", import.meta.url), { workerData: { year: YEAR, index, count, ny: NY_MODE } });
+-    w.once("message", done);
+-    w.once("error", fail);
+-    w.once("exit", (code) => { if (code !== 0) fail(new Error(`mutation worker ${index} exited with ${code}`)); });
+-  })));
+-  const all: Outcome[] = new Array(muts.length);
+-  for (const share of shares) {
+-    if (share.digest !== digest) throw new Error("mutation worker built a different mutant list");
+-    for (const [i, o] of share.outcomes) all[i] = o;
+-  }
+-  if (all.some((o) => o === undefined)) throw new Error("mutation workers left mutants unevaluated");
++  if ((await pool.ready).some((d) => d !== digest)) throw new Error("mutation worker built a different mutant list");
++  const starts = Array.from({ length: Math.ceil(muts.length / MUTANT_CHUNK) }, (_, c) => c * MUTANT_CHUNK);
++  const replies = await pool.map(starts, (from): MutateTask => ({ kind: "mutants", from, to: Math.min(from + MUTANT_CHUNK, muts.length) }));
++  // The replies come in the order of the tasks, so the outcomes are in the order of the mutants.
++  const all = replies.flatMap((r) => (r.kind === "mutants" ? r.outcomes : []));
++  if (all.length !== muts.length || all.some((o) => o === undefined)) throw new Error("mutation workers left mutants unevaluated");
+   return all;
+ }
+ 
+@@ -3115,19 +3146,20 @@ export function sampledShare(index: number, count: number, plan: SampledPlan): [
+   return sampledBlocks(plan.filter((_, i) => i % count === index)).flatMap((block) => sampledBlock(baseline, sets, byId, block));
+ }
+ 
+-async function sampledResults(plan: SampledPlan): Promise<Map<string, SampledResult>> {
+-  const count = Math.min(workerCount(), Math.max(1, plan.length));
+-  if (count === 1) return new Map(sampledShare(0, 1, plan));
+-  const shares = await Promise.all(Array.from({ length: count }, (_, index) => new Promise<[string, SampledResult][]>((done, fail) => {
+-    const w = new Worker(new URL("./mutate-worker.js", import.meta.url), { workerData: { year: YEAR, index, count, ny: NY_MODE, plan } });
+-    w.once("message", done);
+-    w.once("error", fail);
+-    w.once("exit", (code) => { if (code !== 0) fail(new Error(`sampled-check worker ${index} exited with ${code}`)); });
+-  })));
+-  return new Map(shares.flat());
++/** The sampled check of the plan: its blocks (sampledBlocks) on the workers' queue as they come free. */
++async function sampledResults(plan: SampledPlan, pool: MutatePool | undefined): Promise<Map<string, SampledResult>> {
++  if (pool === undefined) return new Map(sampledShare(0, 1, plan));
++  const replies = await pool.map(sampledBlocks(plan), (block): MutateTask => ({ kind: "sampled", block }));
++  return new Map(replies.flatMap((r) => (r.kind === "sampled" ? r.results : [])));
+ }
+ 
++/** The mutation run. The workers start first, and load while the main thread checks the baseline. */
+ export async function runMutation(): Promise<number> {
++  const pool = startPool();
++  try { return await runMutationOn(pool); } finally { await pool?.close(); }
++}
++
++async function runMutationOn(pool: MutatePool | undefined): Promise<number> {
+   const baseline = loadCanonical();
+   const fixtureFile = judgingCases(baseline);
+ 
+@@ -3151,7 +3183,7 @@ export async function runMutation(): Promise<number> {
+   let killedByCheck = 0;
+   let killedByFixtures = 0;
+ 
+-  const outcomes = await outcomesOf(baseline, fixtureFile, muts);
++  const outcomes = await outcomesOf(baseline, fixtureFile, muts, pool);
+   muts.forEach((m, i) => {
+     if (outcomes[i] === "check") killedByCheck++;
+     else if (outcomes[i] === "fixtures") killedByFixtures++;
+@@ -3181,7 +3213,7 @@ export async function runMutation(): Promise<number> {
+   const staleTest = staleEquivalenceSelfTest(baseline, muts, survivorIds);
+   const fixtureKilled = new Set(muts.filter((_, i) => outcomes[i] === "fixtures" || outcomes[i]!.startsWith("classm:")).map((m) => m.id));
+   const plan = sampledPlan(baseline, muts, survivorIds, fixtureKilled);
+-  const sampled = await sampledResults(plan);
++  const sampled = await sampledResults(plan, pool);
+   const sampledProblems: string[] = [];
+   const sampledRows: string[] = [];
+   let controlsTried = 0, controlsRejected = 0;

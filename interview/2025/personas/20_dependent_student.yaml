@@ -1,0 +1,20 @@
+name: 20_dependent_student
+who: A single student, 19, whom the parents claim as a dependent, with one summer job (one Form W-2, $6,000 of wages) and nothing else to report.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 2006
+  sa.dependent: true
+  $w2@person[taxpayer]: [diner]
+  person[taxpayer].w2[diner].box1: 600000
+  person[taxpayer].w2[diner].box2: 12000
+  person[taxpayer].w2[diner].box4: 37200
+  person[taxpayer].w2[diner].box5: 600000
+  person[taxpayer].w2[diner].box6: 8700
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false
+  scope.unearned_2700: false

@@ -421,11 +421,11 @@ form:
                 type: Count
           - op: test
             gt:
-              - sd.line18
+              - div.box2b_if_capital_gain
               - const: 0
           - op: test
             gt:
-              - sd.line19
+              - div.box2d_if_capital_gain
               - const: 0
           - op: test
             lt:
@@ -463,9 +463,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: A
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: A
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: G
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -494,9 +500,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: A
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: A
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: G
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -525,9 +537,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: A
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: A
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: G
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -556,9 +574,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: A
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: A
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: G
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -587,9 +611,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: A
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: A
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: G
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -617,9 +647,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: A
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: A
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: G
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -647,9 +683,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: A
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: A
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: G
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -677,9 +719,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: A
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: A
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: G
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -708,9 +756,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: B
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: B
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: H
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -738,9 +792,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: B
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: B
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: H
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -768,9 +828,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: B
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: B
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: H
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -798,9 +864,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: B
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: B
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: H
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -829,9 +901,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: C
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: C
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: I
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -859,9 +937,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: C
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: C
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: I
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -889,9 +973,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: C
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: C
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: I
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -919,9 +1009,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: C
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: C
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: I
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -950,9 +1046,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: D
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: D
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: J
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -981,9 +1083,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: D
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: D
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: J
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1012,9 +1120,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: D
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: D
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: J
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1043,9 +1157,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: D
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: D
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: J
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1074,9 +1194,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: D
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: D
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: J
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1104,9 +1230,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: D
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: D
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: J
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1134,9 +1266,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: D
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: D
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: J
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1164,9 +1302,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: D
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: D
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: J
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1195,9 +1339,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: E
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: E
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: K
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1225,9 +1375,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: E
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: E
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: K
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1255,9 +1411,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: E
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: E
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: K
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1285,9 +1447,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: E
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: E
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: K
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1316,9 +1484,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: F
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: F
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: L
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1346,9 +1520,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: F
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: F
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: L
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1376,9 +1556,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: F
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: F
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: L
             - op: test
               eq:
                 - sales.route_if_chosen
@@ -1406,9 +1592,15 @@ form:
           op: test
           all:
             - op: test
-              eq:
-                - sales.box
-                - const: F
+              any:
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: F
+                - op: test
+                  eq:
+                    - sales.box
+                    - const: L
             - op: test
               eq:
                 - sales.route_if_chosen

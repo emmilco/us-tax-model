@@ -589,7 +589,7 @@ form:
         source: |-
           Did this person live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025?
 
-          If you were on extended active military duty outside the United States, your main home is considered to be in the United States during that duty.
+          If you (or, on a joint return, your spouse) were on extended active military duty outside the United States (duty ordered for an indefinite period or for more than 90 days), your main home is considered to be in the United States during that duty.
 
           Temporary absences for school, vacation, business, medical care, military service or juvenile detention count as time lived with you; time a child presumed kidnapped was missing because of the kidnapping does not.
 
@@ -599,7 +599,8 @@ form:
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, "Who lived with you in the United States for more than half of 2025"; p. 43, Exception to
-          time lived with you; p. 44, Members of the military; p. 45, United States
+          time lived with you; p. 44, Members of the military, "Extended active duty is military duty ordered for an indefinite
+          period or for a period of more than 90 days."; p. 45, United States
     - id: dependent.eic_ssn
       printed: (helper)
       type: Bool
@@ -1025,22 +1026,20 @@ form:
       label: 'A household member: lived with you all year, or a relative of your spouse on a joint return'
       type: Bool
       expr:
-        op: test
-        any:
-        - op: test
-          all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-            - f1040.status
-            - const: mfj
-          - op: test
-            eq:
-            - dependent.spouse_relative
+            - dependent.spouse_relative_joint
             - const: true
-        - op: test
-          eq:
-          - dependent.household_all_year
-          - const: true
+          then: dependent.spouse_relative_joint
+        - guard:
+            op: test
+            eq:
+            - dependent.spouse_relative_joint
+            - const: false
+          then: dependent.household_all_year
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
@@ -1052,33 +1051,66 @@ form:
         law, or a relative of your spouse on a joint return'
       type: Bool
       expr:
-        op: test
-        any:
-        - op: test
-          all:
-          - op: test
+        op: choose
+        alternatives:
+        - guard:
+            op: test
             eq:
-            - f1040.status
-            - const: mfj
-          - op: test
-            eq:
-            - dependent.spouse_relative
+            - dependent.spouse_relative_joint
             - const: true
-        - op: test
-          all:
-          - op: test
+          then: dependent.spouse_relative_joint
+        - guard:
+            op: test
             eq:
-            - dependent.household_all_year
-            - const: true
-          - op: test
-            eq:
-            - dependent.lawful
-            - const: true
+            - dependent.spouse_relative_joint
+            - const: false
+          then: dependent.qr_other_lawful
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived
           with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person
           can be related to either you or your spouse."
+    - id: dependent.qr_other_lawful
+      printed: (helper)
+      label: Lived with you all year as a member of your household, and the relationship did not violate local law
+      type: Bool
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.household_all_year
+            - const: true
+          then: dependent.lawful
+        - guard:
+            op: test
+            eq:
+            - dependent.household_all_year
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Any other person (other than your spouse) who lived with you all year as a member of your
+          household if your relationship didn’t violate local law"
+    - id: dependent.spouse_relative_joint
+      printed: (helper)
+      label: A relative of your spouse, on a joint return
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - f1040.status
+          - const: mfj
+        - op: test
+          eq:
+          - dependent.spouse_relative
+          - const: true
+      cite:
+        doc: p501
+        locator: p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse."
     - id: dependent.qr_relationship
       printed: (helper)
       type: Bool
@@ -1210,19 +1242,35 @@ form:
       type: Bool
       label: Permanently and totally disabled with gross income at or over the limit
       expr:
-        op: test
-        all:
-          - op: test
-            eq:
-              - dependent.disabled
-              - const: true
-          - op: test
-            eq:
-              - dependent.qr_income
-              - const: false
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - dependent.disabled
+                - const: true
+            then: dependent.qr_income_fails
+          - guard:
+              op: test
+              eq:
+                - dependent.disabled
+                - const: false
+            then: dependent.no
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "If the person was permanently and totally disabled, see Exception to gross income test"
+    - id: dependent.qr_income_fails
+      printed: (helper)
+      type: Bool
+      label: Gross income at or over $5,200
+      expr:
+        op: test
+        eq:
+          - dependent.qr_income
+          - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Who had gross income of less than $5,200 in 2025"
     - id: dependent.qr_kidnapped
       printed: (gate)
       type: Bool
@@ -1900,7 +1948,7 @@ form:
             eq:
             - dependent.other_claimant
             - const: true
-          then: dependent.eic_child_tests
+          then: dependent.eic_tiebreak_unsettled
         - guard:
             op: test
             eq:
@@ -3677,7 +3725,7 @@ form:
             eq:
             - dependent.other_claimant
             - const: true
-          then: dependent.tiebreak_other
+          then: dependent.tiebreak_unsettled
         - guard:
             op: test
             eq:
@@ -3963,6 +4011,285 @@ form:
       cite:
         doc: p501
         locator: "p. 15, Qualifying Child of More Than One Person, \"Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person.\""
+    # Married filing separately: a child who is also the qualifying child of your husband or wife, and of no one else.
+    - id: dependent.other_only_spouse
+      printed: (helper)
+      type: Bool
+      gated_by: dependent.other_only_spouse_if_mfs
+      label: On a separate return, your husband or wife is the only other person this person could be the qualifying child of?
+      expr:
+        op: input
+        source: Is your husband or wife the only relative, besides you, who lived with this child for more than half of 2025
+          and could claim them?
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025, see Qualifying child of more than one person, later."
+      ambiguity: amb.2025.mfs_spouse_qc
+    - id: dependent.other_only_spouse_if_mfs
+      printed: (gate)
+      type: Bool
+      label: Whether your husband or wife is the only other person this person could be the qualifying child of, asked only on a separate return (false on any other return)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.mfs
+            - const: true
+          then: dependent.other_only_spouse
+        - guard:
+            op: test
+            eq:
+            - household.mfs
+            - const: false
+          then: dependent.no
+      cite:
+        doc: i1040gi
+        locator: p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025, see Qualifying child of more than one person, later."
+    - id: dependent.spouse_claims
+      printed: (helper)
+      type: Bool
+      gated_by: dependent.spouse_claims_if_only_spouse
+      label: Your husband or wife will claim this child as a qualifying child on their own 2025 return?
+      expr:
+        op: input
+        source: Will your husband or wife claim this child on their own 2025 return?
+      cite:
+        doc: p501
+        locator: 'p. 15, Tiebreaker rules, "but both parents claim the child as a qualifying child, the IRS will treat the child as the qualifying child of the parent with whom the child lived for the longer period of time during the year"; p. 17, "Subject to these tiebreaker rules, you and the other person may be able to choose which of you claims the child as a qualifying child."'
+      ambiguity: amb.2025.mfs_spouse_qc
+    - id: dependent.spouse_claims_if_only_spouse
+      printed: (gate)
+      type: Bool
+      label: Whether your husband or wife will claim this child, asked only when they are the only other person the child could be the qualifying child of on a separate return (false otherwise)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.other_only_spouse_if_mfs
+            - const: true
+          then: dependent.spouse_claims
+        - guard:
+            op: test
+            eq:
+            - dependent.other_only_spouse_if_mfs
+            - const: false
+          then: dependent.no
+      cite:
+        doc: p501
+        locator: 'p. 17, "Subject to these tiebreaker rules, you and the other person may be able to choose which of you claims the child as a qualifying child."'
+    - id: dependent.filer_parent
+      printed: (helper)
+      type: Bool
+      gated_by: dependent.filer_parent_if_child
+      label: You are this child's parent by birth or adoption (not only a stepparent or foster parent)?
+      expr:
+        op: input
+        source: Are you this child's parent by birth or by adoption?
+      cite:
+        doc: p501
+        locator: 'p. 15, Tiebreaker rules, "For purposes of these tiebreaker rules, the term “parent” means a biological or adoptive parent of an individual. It does not include a stepparent or foster parent unless that person has adopted the individual."'
+    - id: dependent.filer_parent_if_child
+      printed: (gate)
+      type: Bool
+      label: Whether you are this child's parent by birth or adoption, asked only of a person you listed as your child (false for any other relationship)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: child
+          then: dependent.filer_parent
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: sibling
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: sibling_descendant
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: parent
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: parent_relative
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: in_law
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: household_member
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.relationship
+            - const: other
+          then: dependent.no
+      cite:
+        doc: p501
+        locator: 'p. 15, Tiebreaker rules, "For purposes of these tiebreaker rules, the term “parent” means a biological or adoptive parent of an individual."'
+    - id: dependent.spouse_settles
+      printed: (helper)
+      type: Bool
+      label: 'On a separate return: your husband or wife is the only other person this child could be the qualifying child
+        of, will not claim the child, and you are the child''s parent, so no tie-breaker arises'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.other_only_spouse_if_mfs
+            - const: true
+          then: dependent.spouse_settles_unclaimed
+        - guard:
+            op: test
+            eq:
+            - dependent.other_only_spouse_if_mfs
+            - const: false
+          then: dependent.no
+      cite:
+        doc: p501
+        locator: 'p. 17, Example 6—separated parents, "You and your spouse will file separate returns. Your spouse agrees to let you treat your child as a qualifying child. This means, if your spouse doesn’t claim your child as a qualifying child, you can claim this child as a qualifying child"'
+      ambiguity: amb.2025.mfs_spouse_qc
+    - id: dependent.spouse_settles_unclaimed
+      printed: (helper)
+      type: Bool
+      label: 'With your husband or wife the only other person: they will not claim the child, and you are the child''s parent'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.spouse_claims_if_only_spouse
+            - const: true
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.spouse_claims_if_only_spouse
+            - const: false
+          then: dependent.filer_parent_if_child
+      cite:
+        doc: i1040gi
+        locator: 'p. 21, "If only one of the persons is the child’s parent, the child is treated as the qualifying child of the parent." and "If a parent can claim the child as a qualifying child but no parent does so claim the child, the child is treated as the qualifying child of the person who had the highest AGI for 2025, but only if that person’s AGI is higher than the highest AGI of any parent of the child who can claim the child."'
+    - id: dependent.tiebreak_unsettled
+      printed: (gate)
+      type: Bool
+      label: 'With another person who can claim this person: the tie-breaker gate, after the case of a husband or wife on a
+        separate return who is the only other person and will not claim the child'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.spouse_settles
+            - const: true
+          then: dependent.tiebreak_settled
+        - guard:
+            op: test
+            eq:
+            - dependent.spouse_settles
+            - const: false
+          then: dependent.tiebreak_spouse_or_other
+      cite:
+        doc: p501
+        locator: 'p. 17, "Subject to these tiebreaker rules, you and the other person may be able to choose which of you claims the child as a qualifying child."'
+      ambiguity: amb.2025.mfs_spouse_qc
+    - id: dependent.tiebreak_settled
+      printed: (gate)
+      type: Bool
+      label: 'With your husband or wife settled as not claiming: this person is not your qualifying child but is the qualifying
+        child of another person who is a taxpayer'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_tests
+            - const: true
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.qc_tests
+            - const: false
+          then: dependent.other_is_taxpayer
+      cite:
+        doc: i1040gi
+        locator: 'p. 19, Step 4, "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid."'
+    - id: dependent.tiebreak_spouse_or_other
+      printed: (gate)
+      type: Bool
+      label: 'The tie-breaker gate when the case of your husband or wife does not settle it: true when they will claim the
+        child, otherwise the general test'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.spouse_claims_if_only_spouse
+            - const: true
+          then: dependent.spouse_claims_if_only_spouse
+        - guard:
+            op: test
+            eq:
+            - dependent.spouse_claims_if_only_spouse
+            - const: false
+          then: dependent.tiebreak_other
+      cite:
+        doc: p501
+        locator: 'p. 15, Tiebreaker rules, "but both parents claim the child as a qualifying child, the IRS will treat the child as the qualifying child of the parent with whom the child lived for the longer period of time during the year"'
+    - id: dependent.eic_tiebreak_unsettled
+      printed: (gate)
+      type: Bool
+      label: 'With another person who can claim this person: the EIC tie-breaker gate, after the case of a husband or wife on
+        a separate return who is the only other person and will not claim the child'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - dependent.spouse_settles
+            - const: true
+          then: dependent.no
+        - guard:
+            op: test
+            eq:
+            - dependent.spouse_settles
+            - const: false
+          then: dependent.eic_child_tests
+      cite:
+        doc: i1040gi
+        locator: 'p. 44, Qualifying child of more than one person, "If you and any other person can claim the child as a qualifying child, the following rules apply."'
+      ambiguity: amb.2025.mfs_spouse_qc
   collection:
     cite:
       doc: f1040

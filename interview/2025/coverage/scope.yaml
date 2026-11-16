@@ -74,12 +74,30 @@ rows:
   expect:
     refused: scope.schedule1
 - id: scope.recovery
-  design: "MAP 2.1 item 4"
+  design: "MAP 2.1 item 4; end restated by lane x2-s1o (Pub. 525 Worksheet 2 computed, form rec; owner decision D7 of scout-s1-other)"
   situation: "A person was refunded property tax deducted on an earlier year's return."
   answers:
     "scope.recovery": true
+    "rec.before_prior_year": false
+    "rec.nonitemized": false
+    "rec.sales_tax": false
+    "refund.itemized": true
+    "rec.has_property_tax": true
+    "rec.has_mortgage": false
+    "rec.has_medical": false
+    "rec.has_other": false
+    "rec.property_tax": 30000
+    "refund.line5d_prior_year": 500000
+    "refund.line5e_prior_year": 500000
+    "refund.line17_prior_year": 2000000
+    "refund.status": single
+    "refund.you_born": false
+    "refund.you_blind": false
+    "refund.exc_tax": false
+    "refund.exc_who": false
+    "rec.ti_positive": true
   expect:
-    refused: scope.schedule1
+    proceeds: {"rec.property_tax": 30000}
 - id: scope.recovery_no_tax_benefit
   design: "DECISIONS.md item 1 (the old screen's scope: a recovery that has to be reported)"
   situation: "A person who took the standard deduction last year got back part of a medical bill deducted in an earlier year that gave no tax benefit."
@@ -96,35 +114,106 @@ rows:
   expect:
     refused: sd.other_forms
 - id: scope.nol
-  design: "MAP 2.1 item 6"
-  situation: "A person who closed a business in 2023 carries its loss into 2025."
+  design: "MAP 2.1 item 6; end restated by lane x2-s1o (the NOL deduction computed where the 80% limit cannot bind; owner decisions D3 and D7 of scout-s1-other)"
+  situation: "A person with a job who closed a business in 2023 carries its loss into 2025."
+  uses: [one_w2]
   answers:
     "scope.business_before": true
+    "scope.passive": false
+    "scope.f8978": false
+    "s179.prior_form": false
     "scope.nol": true
+    "scope.w2_marks": false
+    "scope.artist_official": false
+    "scope.excess_deferral": false
+    "s1.nol_amount": 1000000
+    "s1.nol_before_limit_date": false
+    "s1.nol_ebl": false
+    "s1.nol_was_joint": false
   expect:
-    refused: scope.schedule1
+    proceeds: {"s1.nol_amount": 1000000}
 - id: scope.nol_casualty_no_business
-  design: "BUG-0642: an NOL with no business (i1040gi p. 91, Line 8a)"
-  situation: "A person who never had a business carries into 2025 a loss from a 2023 disaster that was bigger than that year's income."
+  design: "BUG-0642: an NOL with no business (i1040gi p. 91, Line 8a); end restated by lane x2-s1o (computed; owner decision D7 of scout-s1-other)"
+  situation: "A person with a job who never had a business carries into 2025 a loss from a 2023 disaster that was bigger than that year's income."
+  uses: [one_w2]
   answers:
     "scope.business_before": false
     "scope.nol": true
+    "scope.w2_marks": false
+    "scope.artist_official": false
+    "scope.excess_deferral": false
+    "s1.nol_amount": 500000
+    "s1.nol_before_limit_date": false
+    "s1.nol_ebl": false
+    "s1.nol_was_joint": false
   expect:
-    refused: scope.schedule1
+    proceeds: {"s1.nol_amount": 500000}
 - id: scope.rental
-  design: "MAP 2.1 item 7"
+  design: "MAP 2.1 item 7; end changed by lane x1-sche (Schedule E Part I computed, owner decision D12 as delegated)"
   situation: "A person rents out a house she owns."
   answers:
     "scope.rental": true
+    "scope.rent_personal": false
+    "$rental": [house]
+    "rental[house].kind": sfr
+    "rental[house].days_fair": 365
+    "rental[house].personal_any": false
+    "rental[house].short_stays": false
+    "rental[house].services": false
+    "rental[house].under_tenth": false
+    "rental[house].not_for_profit": false
+    "rental[house].depletion": false
+    "rental[house].part_home": false
+    "rental[house].active": true
+    "rental[house].rents": 1800000
+    "rental[house].has_mortgage": true
+    "rental[house].has_other_interest": false
+    "rental[house].has_taxes": true
+    "rental[house].has_insurance": false
+    "rental[house].has_management": false
+    "rental[house].has_commissions": false
+    "rental[house].has_repairs": false
+    "rental[house].has_cleaning": false
+    "rental[house].has_utilities": false
+    "rental[house].has_supplies": false
+    "rental[house].has_advertising": false
+    "rental[house].has_legal": false
+    "rental[house].has_other": false
+    "rental[house].vehicle": false
+    "rental[house].amt12": 600000
+    "rental[house].amt16": 240000
+    "rental[house].prior_any": false
+    "$rprop@rental[house]": [bldg]
+    "rental[house].rprop[bldg].kind": residential
+    "rental[house].rprop[bldg].month": m2
+    "rental[house].rprop[bldg].year": y2020
+    "rental[house].rprop[bldg].basis": 16000000
+    "rental[house].rprop[bldg].screen": false
+    "$royalty": []
+    "sche.re_pro": false
+    "sche.grouped": false
+    "sche.qbi_business": false
   expect:
-    refused: scope.schedule1
+    proceeds:
+      "scope.rental": true
 - id: scope.royalties
-  design: "MAP 2.1 item 7 (royalties)"
+  design: "MAP 2.1 item 7 (royalties); end changed by lane x1-sche (royalties computed, owner decision D12 as delegated)"
   situation: "A person receives royalties from a book."
   answers:
     "scope.rental": true
+    "scope.rent_personal": false
+    "$rental": []
+    "$royalty": ["book"]
+    "royalty[book].line4": 240000
+    "royalty[book].business": false
+    "royalty[book].depletion": false
+    "royalty[book].expenses_any": false
+    "sche.re_pro": false
+    "sche.grouped": false
+    "sche.qbi_business": false
   expect:
-    refused: scope.schedule1
+    proceeds:
+      "scope.rental": true
 - id: scope.k1
   design: "MAP 2.1 item 8"
   situation: "A person has a share of a partnership's income, reported on a Schedule K-1."
@@ -137,6 +226,7 @@ rows:
   situation: "A person rents out a trailer he owns."
   answers:
     "scope.rental": true
+    "scope.rent_personal": true
   expect:
     refused: scope.schedule1
 - id: scope.farm
@@ -286,19 +376,29 @@ rows:
   expect:
     proceeds: {"scope.nonresident": false}
 - id: scope.pay_no_w2
-  design: "MAP 2.2 item 2"
+  design: "MAP 2.2 item 2; restated by lane x2-paynow2 (household wages not on a W-2 are now figured, Form 1040 line 1b: the end changes from refused to proceeds, scout-tail A.8 item 4)"
   situation: "A person was paid cash wages for work in a household and got no W-2."
   answers:
     "scope.pay_no_w2": true
+    "scope.household_pay": true
+    "scope.contractor_pay": false
+    "scope.tips_unreported": false
+    "scope.strike_pay": false
+    "scope.wages_no_form": false
+    "person[taxpayer].household_wages": 250000
   expect:
-    refused: scope.other_income
+    proceeds: {"person[taxpayer].household_wages": 250000}
 - id: scope.medicaid_waiver
-  design: "MAP 2.2 item 3 and 2.1 item 11"
-  situation: "A state Medicaid program pays a person to care for her father in her home."
+  design: "MAP 2.2 item 3 and 2.1 item 11; restated by lane x2-paynow2 (Medicaid waiver payments are now figured, Form 1040 line 1d and Schedule 1 line 8s: the end changes from refused to proceeds, scout-tail A.8 item 4)"
+  situation: "A state Medicaid program pays a person to care for her father in her home, shown only in box 12 of a W-2 with code II."
   answers:
     "scope.medicaid_waiver": true
+    "person[taxpayer].mw_box1": 0
+    "person[taxpayer].mw_not_box1": 2400000
+    "person[taxpayer].mw_1099": 0
+    "person[taxpayer].mw_earned": false
   expect:
-    refused: scope.other_income
+    proceeds: {"person[taxpayer].mw_not_box1": 2400000}
 - id: scope.adoption_benefits
   design: "MAP 2.2 item 4"
   situation: "An employer repaid part of the cost of an adoption that became final in 2024."
@@ -347,12 +447,18 @@ rows:
   expect:
     refused: scope.other_income
 - id: scope.strike_benefits
-  design: "MAP 2.2 item 6 (line 1h)"
+  design: "MAP 2.2 item 6 (line 1h); restated by lane x2-paynow2 (strike benefits are now figured on Form 1040 line 1h: the end changes from refused to proceeds, scout-tail A.8 item 4)"
   situation: "A person received strike benefits from a union."
   answers:
     "scope.pay_no_w2": true
+    "scope.household_pay": false
+    "scope.contractor_pay": false
+    "scope.tips_unreported": false
+    "scope.strike_pay": true
+    "scope.wages_no_form": false
+    "person[taxpayer].strike": 300000
   expect:
-    refused: scope.other_income
+    proceeds: {"person[taxpayer].strike": 300000}
 - id: scope.passive
   design: "MAP 2.2 item 7"
   situation: "A person who owned a rental before 2025 sold her share of a business she did not help run."

@@ -198,16 +198,124 @@ rows:
     expect:
       refused: sd.other_forms
   - id: sales.crypto_sold
-    design: MAP 2.9, sales.box (digital asset boxes G to L)
+    design: MAP 2.9, sales.box (digital asset boxes G to L); end restated by lane x1-digital (gate sales.digital retired)
     situation: A person lists a sale of crypto reported on a Form 1099-DA.
     answers:
+      f1040.digital_assets: true
+      s1.digital_income: false
       $sales: [a]
       sales[a].box: G
       sd.route_each: false
+      sales[a].special: false
+      sales[a].proceeds: 100000
+      sales[a].reported_basis: 60000
+      sales[a].code: none
       sd.trader_election: false
       sd.qof: false
     expect:
-      refused: sales[a].digital
+      proceeds:
+        sales[a].box: G
+  - id: sales.crypto_no_form_swap
+    design: x1-digital, sales.box L (a digital asset swap with no Form 1099-DA)
+    situation: A person swapped one coin, held two years, for another on a platform that sent no Form 1099-DA.
+    answers:
+      f1040.digital_assets: true
+      s1.digital_income: false
+      $sales: [a]
+      sales[a].box: L
+      sd.route_each: false
+      sales[a].special: false
+      sales[a].proceeds: 300000
+      sales[a].correct_basis: 100000
+      sales[a].code: none
+      sd.trader_election: false
+      sd.qof: false
+    expect:
+      proceeds:
+        sales[a].box: L
+  - id: sales.crypto_basis_not_reported
+    design: x1-digital, sales.box H (a Form 1099-DA without basis)
+    situation: A person sold a coin held six months; the exchange's Form 1099-DA shows the proceeds but no basis.
+    answers:
+      f1040.digital_assets: true
+      s1.digital_income: false
+      $sales: [a]
+      sales[a].box: H
+      sd.route_each: false
+      sales[a].special: false
+      sales[a].proceeds: 420000
+      sales[a].correct_basis: 300000
+      sales[a].code: none
+      sd.trader_election: false
+      sd.qof: false
+    expect:
+      proceeds:
+        sales[a].box: H
+  - id: sales.crypto_code_b_no_form
+    design: x1-digital, sales.bad_code widened to boxes I and L
+    situation: A person with no Form 1099-DA for a coin sale says the basis on the statement is wrong.
+    answers:
+      f1040.digital_assets: true
+      s1.digital_income: false
+      $sales: [a]
+      sales[a].box: I
+      sd.route_each: false
+      sales[a].special: false
+      sales[a].proceeds: 100000
+      sales[a].correct_basis: 50000
+      sales[a].code: B
+      sd.trader_election: false
+      sd.qof: false
+    expect:
+      refused: sales[a].bad_code
+  - id: sales.crypto_cost_code
+    design: x1-digital, sales.bad_code (code E for digital asset transaction costs stays refused; amb.2025.digital_transaction_costs)
+    situation: A person paid network fees on a coin sale that the Form 1099-DA leaves out.
+    answers:
+      f1040.digital_assets: true
+      s1.digital_income: false
+      $sales: [a]
+      sales[a].box: G
+      sd.route_each: false
+      sales[a].special: false
+      sales[a].proceeds: 100000
+      sales[a].reported_basis: 50000
+      sales[a].code: other
+      sd.trader_election: false
+      sd.qof: false
+    expect:
+      refused: sales[a].bad_code
+  - id: sales.nft_collectible
+    design: x1-digital, sales.special (an NFT of a collectible; amb.2025.nft_collectible)
+    situation: A person sold an NFT of a painting, held two years, on a marketplace that sent no Form 1099-DA.
+    answers:
+      f1040.digital_assets: true
+      s1.digital_income: false
+      $sales: [a]
+      sales[a].box: L
+      sales[a].special: true
+      sd.route_each: false
+      sales[a].proceeds: 0
+      sales[a].correct_basis: 0
+      sales[a].code: none
+      sd.trader_election: false
+      sd.qof: false
+    expect:
+      refused: sales[a].special
+  - id: sales.crypto_said_no
+    design: x1-digital, f1040.digital_conflict (entry check)
+    situation: A person answers No to the digital asset question, then lists a coin sale from a Form 1099-DA.
+    answers:
+      f1040.digital_assets: false
+      $sales: [a]
+      sales[a].box: H
+      sd.route_each: false
+      sales[a].special: false
+      sales[a].proceeds: 100000
+      sales[a].correct_basis: 50000
+      sales[a].code: none
+    expect:
+      refused: f1040.digital_conflict
   - id: sales.added_to_total
     design: sales.route beneath sd.route_each (the aggregate route stays reachable)
     situation: A person chooses sale by sale and adds one sale, with basis reported and nothing to adjust, to the Schedule D total.

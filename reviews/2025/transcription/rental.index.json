@@ -1,0 +1,363 @@
+{
+ "kind": "transcription",
+ "form": "rental",
+ "family": "claude",
+ "base": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+ "head_rows": {
+  "agree / disagree / missing": "6 / 29 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "rental.one",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "AGREE",
+   "subject_key": "d30afbc1fe73b74f3771ab86adfe62833caf6e313cdcc1e7ac979b369d35baa8"
+  },
+  {
+   "key": "rental.reported",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "AGREE",
+   "subject_key": "d408e1c89cef437a2b76be6e7e1749bb5c1280982df2c5cf7ceb30aba2e1211b"
+  },
+  {
+   "key": "rental.part4",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 532/596. The reply folds into Part IV the tests the project refuses elsewhere (under a tenth: rental.under_tenth; real estate professional and grouping: sche.re_pro, sche.grouped) and the home tests (a home is not a passive rental: rental.ws51 refuses a home rented 15+ days; one rented under 15 days is left off Schedule E). The only completed difference, x1sche.f9.excluded_home (project true, reply false), is such an excluded home, which no Form 8582 line reads; all others are refused returns or partial records. i8582 p. 3: Part IV for 'rental real estate activities with active participation'.",
+   "subject_key": "451a9c77c42aa837497ec80542dc7196645aa88339ad5d5c773e1e1915230e11"
+  },
+  {
+   "key": "rental.dep_prior",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "AGREE",
+   "subject_key": "1278a5187c0eeddc880e9d1e118d2e276d9df2c3fd775c5d36c477eaba0f454c",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rprop.placed_2025": "rprop.placed_this_year"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "fbe9f881c8284bde0884052e7dbc3c4812f1d078e1547ed2e1b5d19673cdef4d"
+   }
+  },
+  {
+   "key": "rental.dep_res25",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "AGREE",
+   "subject_key": "033fb3083fae1aca35395fe486b0df71234a9dd94fe74d4e36f0b2d17cce3680",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rprop.placed_2025": "rprop.placed_this_year"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "9297917a5650e416b1873bf0c98d8d383387107459f70403f2b2923b2d5d980e"
+   }
+  },
+  {
+   "key": "rental.dep_non25",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "AGREE",
+   "subject_key": "0351ab94b782ad90f01e756c5db45dc14c872e64092bcf557bfe5a7223f81b6c",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rprop.placed_2025": "rprop.placed_this_year"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "525f5ce84d01c7f346f96d99a107ba2476be06ec20a39c5710d753efed253cd5"
+   }
+  },
+  {
+   "key": "rental.needs_4562",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage (596/596 agree): the reply sums rprop.cent over entries whose year is y2025, the project sums rprop.is_2025; both test that some property was placed in service in 2025 (i4562, Who Must File, 'Depreciation for property placed in service during the tax year').",
+   "subject_key": "6af3c126deaa5c2dee747174ae8125d919036c75a62e3b26a87327e0cd0586ba",
+   "section": "rental.has_2025",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rental.has_2025": "rental.needs_4562",
+     "rprop.is_2025": "rprop.placed_this_year_cent"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "b1bf2284c1f034d187682df351187375d331dbb3b09a94e4b17b97719594b31e",
+    "keys": {
+     "rental.has_2025": "rental.needs_4562"
+    }
+   }
+  },
+  {
+   "key": "5",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "4964b2087c1f22c462a889cb0836c27a0d78527dcadb6e5fe7d32c3b6c0a5fb2"
+  },
+  {
+   "key": "7",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "e430d6c774702bc915a3ef9bb677a7aa982924df0c1a09b398294ee60857764f"
+  },
+  {
+   "key": "8",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "3e378f448c9c9c2f2df9def6fad0cbf919d825c90b26c6250a0b750d11bd9d20"
+  },
+  {
+   "key": "9",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "c6f451f316d8b0f102c42880ac33437e40d38528408bf2f99a886857b64ff973"
+  },
+  {
+   "key": "10",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "3244100279ef9e403987240c18747432615a00ee4952536bb4237427cffa64a8"
+  },
+  {
+   "key": "11",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "d2b01d5e2f5543ade05bab7b9ae41a68d78f78e6c5ff3718fc7897fadf04d21b"
+  },
+  {
+   "key": "12",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "b875135e1824eedc6497bf1d3edfae906a76547b7a4fcefb35d9af7cf675207c"
+  },
+  {
+   "key": "13",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "a799c02e361ba8ff11da97067ce377e2de5fbcde1a42abc649d34df671f32e65"
+  },
+  {
+   "key": "14",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "8a413baf872e8ae8fc443fce4724c94af5790be1115570f59eb57644b8f77d3a"
+  },
+  {
+   "key": "15",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "c9fee28e7eec0d1672e747de0a96f724ddb6f391106d9fd3b98704594d6ddd6d"
+  },
+  {
+   "key": "16",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "db721db3c401ae3a195083155d0d8e951ab3d6403f9a6c8ca38e6d9d5da12568"
+  },
+  {
+   "key": "17",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "5811e7e8a4b1016824c1519575266912a89de0362cf46ba177652280de774197"
+  },
+  {
+   "key": "19",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "subject_key": "c1327f0b06e36898dc2b791eee1b513f8209b36caadd44b7aa2ea33d86bd7ec3"
+  },
+  {
+   "key": "18",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage: 619 of 639 in-scope values agree; the 23 differences are on incomplete returns (candidate unknown 18, project refuses 2) and refused returns (3); no completed return differs. The reply divides the mid-month table depreciation by the same rental-day fraction (i1040se p. 6, Line 18; p527 p. 25, Dividing Expenses); depletion is refused on both sides.",
+   "subject_key": "574c8bba1ad4e9c50867e46d9b65d693218cceac08019c46236c9baa76b8df51"
+  },
+  {
+   "key": "20",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "AGREE",
+   "subject_key": "7aff604c480c1e09cddabc06fc46f1bfdf4765ff7a957b1cc7817421194acdd5"
+  },
+  {
+   "key": "3",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage: 622 of 644 in-scope values agree; the 66 differences are refusal order and unknowns on refused (43) and incomplete (23) returns only; no completed return differs. Both zero line 3 for a home rented fewer than 15 days (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses') and refuse the same screens; the reply reaches the new rental.part_home refusal on line 3 where the project refuses on line 21.",
+   "subject_key": "64e7ff7eb3bb24cce3198913c7e54caa3ee1891f5eec7e1da559b28c4868ae1f"
+  },
+  {
+   "key": "21",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage: 494 of 532 in-scope values agree; the 112 differences are refusal placement and unknowns on refused (61) and incomplete (51) returns only; no completed return differs. Both compute line 3 less line 20, zero for an excluded home (i1040se p. 5, Line 2), and refuse rental.part_home, ws51 and the other screens; they differ only in which line carries a refusal.",
+   "subject_key": "b64221b10d21ba8ec1984cdbb97c7bcedda98b3a035072c19d83b28cf46ac1dd"
+  },
+  {
+   "key": "IV/V (a)",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 403/596; completed: 8 candidate-hides-shown (e.g. classm.f8582.1 $1,782.40): on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when rental.h_on8582); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "subject_key": "4306efea26d0245a355a7d14abbd28b7c385f789beb0098320475a1a5368866b"
+  },
+  {
+   "key": "IV/V (b)",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 406/596; completed: 4 candidate-hides-shown: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when rental.h_on8582); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "subject_key": "2f811f3367366ff7654ebc6561255d66c8953c50f9f47aa732c7db16842864d4"
+  },
+  {
+   "key": "IV/V (c)",
+   "record": "0fd7e7e2794630a3ad825aa748b1a6a33e1f8258326af918268247fc2ef5048a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage: 675 of 688 values agree; the 13 differences are unknowns on incomplete and refused returns (candidate unknown 11, project unknown 2) where prior-year answers are unsupplied; no completed return differs. Both take the prior-year unallowed loss only when one was reported (i8582 Part IV/V column (c)).",
+   "subject_key": "2b32e5999e2fe90ab95e6c722cd1bb15f3e6543baaf4c160e8d321f8478bed26"
+  },
+  {
+   "key": "IV/V (e)",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 407/596; completed: 4 candidate-hides-shown, 1 project-unknown on classm.sche.2: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when rental.h_on8582); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "subject_key": "fb15b2e56da189d0ea2260fa91d0c393a8025947d1407415f25c61dd63554ddb"
+  },
+  {
+   "key": "VI (a)",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 427/596; completed: 6 candidate-hides-shown, 1 project-unknown on classm.sche.2: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when rental.h_show6); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "subject_key": "838a23bca54266d1a3c159916c26a094909e3a8e6f8e3bb36f9e21a7ab7b69b7"
+  },
+  {
+   "key": "VI (c)",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 496/596; completed: 4 candidate-hides-shown: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when hidden column); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records. The reply rounds the Part VI column (b) ratio to four places, the project to six; i8582 Part VI column (b) gives no rounding and no compared case differs by it.",
+   "subject_key": "715756854789afb99259a416cacf890e39108ba69da2b81c936d730db6f2f468"
+  },
+  {
+   "key": "VII (a)",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 499/596; completed: 2 candidate-hides-shown, 1 project-unknown on classm.sche.2: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when rental.h_show7); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "subject_key": "3941d471e83c913b8639fa5bc49b93938f79505cd28884ed242668ebafb003a4"
+  },
+  {
+   "key": "VII (c)",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 502/596 with no completed difference: project refusals (home, self-rental), the reply's refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, and partial records. The reply rounds the Part VII column (b) ratio to four places, the project to six (i8582 Part VII column (b), no rounding given).",
+   "subject_key": "d73fed3bd25970ce7325f1b4bcf0d578a27ba1258fc83cad329247d8366bc397"
+  },
+  {
+   "key": "VIII (c)",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 495/596; completed: 6 candidate-hides-shown, 1 project-unknown on classm.sche.2: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when hidden column); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "subject_key": "42d6c44986c5e311df6d8ce824f93cb2d0b95f566b2ab05c00eeab64d0411b80"
+  },
+  {
+   "key": "VIII (b)",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 502/596 with no completed difference: project refusals (home, self-rental), the reply's refusals (re_pro, not at risk) of cases the project refuses on other lines, and partial records.",
+   "subject_key": "93dfe1a5e916217461429bc6f4f54c6dba30d9943020d211a2cbac9e1d37a9f7"
+  },
+  {
+   "key": "22",
+   "record": "24e60c80ea3806f972ff5f5333f235f114a81078f479a7a93f60da4a5106ba55",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; triage 505/596: the one completed difference is the ratio rounding (x1sche.f8 -$1,332.57 vs -$1,333.08, amb.2025.rental_use_ratio_places); the rest are project refusals (home, self-rental, rental.ws51) or the reply's refusal of a real estate professional where the project refuses at sche.re_pro, and partial records. The reply's shown_when (h_show22) hides nothing the project shows on a completed return.",
+   "subject_key": "1a340ee0fc429795252982fe7d091d2cc0467d4ce1258485e28a6be3a4759acd"
+  }
+ ],
+ "subjects": {
+  "rental.one": "b9fbcf21690af74a365df08559d059c5a568143e2b24006c78050121b625b76f",
+  "rental.reported": "58e271f3776bddaef72cb5c9b98ad97ab615dace691714fa9a5ba6a9e592619c",
+  "rental.part4": "1f767e595c4cdc9147e6a68cdcec4f20fd5abad35b7f121f773ba955f2a3a832",
+  "rental.dep_prior": "a73e3e95ba6633e7f5737757e904ce57de05ff1f6b90dcfcad3192f4c10ec7bf",
+  "rental.dep_res25": "8c3c691e93bb972d9bb0f09a7b1337615809196a98688147f6ec6453fe961c67",
+  "rental.dep_non25": "01d7dab6a1f88ae1b659088aa2dd65ed48260208bda74be9cad5869106bfc1ea",
+  "rental.needs_4562": "1fda4fecb4720af69333117f4f925a4a090bbdd01b439a6a1e4de8231a0b91e1",
+  "5": "7f70e35c8dabab6cc975ea93c9d2163aa34a3d78eb30cdee5a51a1708b1354e8",
+  "7": "dad0ab07469a97052c8db944146d36fb0abcb0ce8b5a12f60dac75b9493a53ff",
+  "8": "ff9ea35ee9c64279784799a388454df4692782f9fce4a9ac97b58f1c305ff2a4",
+  "9": "79f532feaebdc6b246c850519c15645880a26d7383da8fc5ce00f1768ab0eea2",
+  "10": "1745846ad8a26dfd76333aa9221be1801fc71b9252f772854c726cf0602f74bf",
+  "11": "0661bbd65c9f808a14718b8878c61520bda6c65e9c14d57a6d4e9ea2ec92204a",
+  "12": "f3b35e5663346f19e91d58bbfda34ef7b16fd664a1728fe6ac6adbb14148bceb",
+  "13": "44df1d8720bac31cc7e56e6e73d56edbcdbb8415720806a77e0f228215a9c5dd",
+  "14": "03bd1154aa1ff3b0c9ee9c27f03da25336d39b8ff4329cb282d40282b3c50548",
+  "15": "1186da6dfdee67ef7ebe6a27491911f1d53abd1451f439baaed3a23d00e4200d",
+  "16": "72b75bcaa55a0dec2427f80540a2d08808a29ae33697673623f4a3ac7fafdba8",
+  "17": "cafbd0524096f96ab192bc2864e80154df734a54624c95ddee3e283bfd875f3a",
+  "19": "44c409259f4ddc236021a6503bf57cb57dbf490cd406d8aa497bf28156f4f8ba",
+  "18": "85f7332a56d3745fcf1fda23fad36834e048699a59b5b0d62f7bfd86c215a935",
+  "20": "9fae51be2187c26a216a5c7f25f4886f757c37c8301449080edc18634736bb2c",
+  "3": "1ae8af8dbe98c8c828cbe21b68daa907d5e7d499499ef5df1e80a73717502a13",
+  "21": "e6860ad9b597ed9a5726c3bab3ac64aa48551bb4f3cb29c0736fdc9cb1c26095",
+  "IV/V (a)": "542aa13d5e47f6d86293679a8be6aad914b6fcf4ab076669af13636e707b5e23",
+  "IV/V (b)": "0b6dfeaf22871f8b93196a29ebbb94e8ea6c5abbe4a08c2fe45f64a927f7b329",
+  "IV/V (c)": "3200a9733e5fe63664afd5b6336e4b767ffff0dfd0546553edadfd826e6a2f53",
+  "IV/V (e)": "c82a04e8328c6f6e621f068eeda3e2174a0707521b66fa40e02b24da3c0c316e",
+  "VI (a)": "75f6cd113918842e955a346c70873f94cfcfcaea48e5260d3c8428bb3fb53eae",
+  "VI (c)": "dec139193dfff28af8ace0c40738f3b5c0d6a658c7928e4938a59465c31c66c7",
+  "VII (a)": "12249bd118437acfbd259cbbacd1f62f5582c5944c7cd4925e707a4ee34b022c",
+  "VII (c)": "19ce1ac193efe6604091fe89d23df8a0bbdad91daa9031ddd2526162d8680912",
+  "VIII (c)": "ad4985f5c853c0dc9e35d074d282183492ccfc9b70e3d0c5e478d3ff9ceba3b9",
+  "VIII (b)": "1fe4a47bc248dbc9d1513a53c124a0a0544bc85c085c749bf044bd9de9ad7cec",
+  "22": "6a6b7e635a97dedf48789ec258f170e8d384bac9ae8f21867c1338b2b6e348d7"
+ },
+ "__rest__": "681b60bdc083dd78ae7323ddba5dff4f81f79a641a3270f0466ad5585a33a196",
+ "foreign": {
+  "rental.one": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "rental.reported": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "rental.part4": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "rental.dep_prior": "bea1faacfa269c54b8d7ca3d2ae717487e8d93f34784f03b7ed33b4ce9a992fe",
+  "rental.dep_res25": "cc8ac1cacccd75472f5c5301b319f53d71f3731c840cd8f895b75a2efb0cdfcb",
+  "rental.dep_non25": "cc8ac1cacccd75472f5c5301b319f53d71f3731c840cd8f895b75a2efb0cdfcb",
+  "rental.needs_4562": "055a9f647dff63e8b258463e00fedb05de5d9962a1cc1b626c590ac9c881b1fb",
+  "5": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "7": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "9": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "10": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "11": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "12": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "13": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "14": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "15": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "16": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "17": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "19": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "18": "bb621a471b99fcef873c3aa1265de008e7ea9a1592684d69885c8033058902d6",
+  "20": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "21": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "IV/V (a)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "IV/V (b)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "IV/V (c)": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "IV/V (e)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "VI (a)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "VI (c)": "53a1ae6d6af2c7e2849e0397d119e97771e192b53cd56964b06a705ff2f0afc1",
+  "VII (a)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "VII (c)": "6a4f6627f830623a208e2d7faf93ab4f53f699a037d2bfa9835b3853ee6c1454",
+  "VIII (c)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "VIII (b)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "22": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5"
+ }
+}

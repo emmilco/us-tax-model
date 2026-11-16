@@ -1,7 +1,14 @@
 name: 11_refused_rental
-who: A single person with wages from one job who also rents out a house she owns; the tool does not prepare rental income.
-end: { refused: scope.schedule1 }
+who: A single person with wages from one job who also rents out a whole house to vacationers for three nights at a time; such a rental is not a rental activity for the passive activity rules, and the tool does not prepare it.
+end: { refused: "rental[beach].stay7_if_short" }
 answers:
   $person: [taxpayer]
   f1040.status: single
   scope.rental: true
+  scope.rent_personal: false
+  $rental: [beach]
+  rental[beach].kind: vacation
+  rental[beach].days_fair: 120
+  rental[beach].personal_any: false
+  rental[beach].short_stays: true
+  rental[beach].stay7: true

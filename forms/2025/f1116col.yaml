@@ -1,0 +1,732 @@
+form:
+  id: f1116col
+  kind: form
+  title: Form 1116 (passive category) — one column of Part I and its line of Part II
+  tax_year: 2025
+  collection:
+    cite:
+      doc: i1116
+      locator: 'p. 11, Line i, "Use a separate column in Part I and a separate line in Part II for each country or territory"; "Total all income, in the applicable category, passed through from the mutual fund or other RIC and enter the total in a single column in Part I."'
+  note: One entry per column of Part I (and its line of Part II) — all mutual funds and other RICs together as one "RIC"
+    column, and one column for each country of foreign shares or bonds held directly. Income and tax are as a Form
+    1099-DIV, 1099-INT or a fund's year-end statement reports them in U.S. dollars ("1099 taxes"), so the
+    foreign-currency columns are not used. Foreign qualified dividends enter line 1a unadjusted; a return that must
+    adjust them is refused on Form 1116 line 35.
+  lines:
+    - id: f1116col.kind
+      printed: (helper)
+      type: Enum(ftc_income_kind)
+      label: Whether the foreign income of this column is dividends, interest or both
+      expr:
+        op: input
+        source: Whether the foreign income from this source (all your funds together, or one country) was dividends, interest
+          or both
+      cite:
+        doc: f1116
+        locator: 'p. 1, Part II, "Taxes withheld at source on:", "(q) Dividends", "(s) Interest"'
+    - id: f1116col.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sales.zero
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1116
+        locator: 'p. 1, Part II, "Taxes withheld at source on:", "(q) Dividends", "(s) Interest"'
+    - id: f1116col.has_div
+      printed: (gate)
+      type: Bool
+      label: The column's foreign income includes dividends
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - f1116col.kind
+              - const: dividends
+          - op: test
+            eq:
+              - f1116col.kind
+              - const: both
+      cite:
+        doc: f1116
+        locator: 'p. 1, Part II, "Taxes withheld at source on:", "(q) Dividends"'
+    - id: f1116col.has_int
+      printed: (gate)
+      type: Bool
+      label: The column's foreign income includes interest
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - f1116col.kind
+              - const: interest
+          - op: test
+            eq:
+              - f1116col.kind
+              - const: both
+      cite:
+        doc: f1116
+        locator: 'p. 1, Part II, "Taxes withheld at source on:", "(s) Interest"'
+    - id: f1116col.div_income
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: f1116col.div_income_if_div
+      label: Foreign-source dividends of this column (for funds, the foreign source income on the fund's year-end
+        statement; for shares of a foreign company, the whole dividend)
+      expr:
+        op: input
+        source: Dividends from sources outside the United States, as reported for this column
+      cite:
+        doc: i1116
+        locator: 'p. 11, Lines 1a and 1b, "Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i"'
+    - id: f1116col.div_income_if_div
+      printed: (helper)
+      type: NonNegDollars
+      label: Foreign-source dividends of this column when it has dividends; zero otherwise
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1116col.has_div
+                - const: true
+            then: f1116col.div_income
+          - guard:
+              op: test
+              eq:
+                - f1116col.has_div
+                - const: false
+            then: f1116col.zero
+      cite:
+        doc: i1116
+        locator: 'p. 11, Lines 1a and 1b, "Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i"'
+    - id: f1116col.int_income
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: f1116col.int_income_if_int
+      label: Foreign-source interest of this column
+      expr:
+        op: input
+        source: Interest from sources outside the United States, as reported for this column
+      cite:
+        doc: i1116
+        locator: 'p. 11, Lines 1a and 1b, "Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i"'
+    - id: f1116col.int_income_if_int
+      printed: (helper)
+      type: NonNegDollars
+      label: Foreign-source interest of this column when it has interest; zero otherwise
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1116col.has_int
+                - const: true
+            then: f1116col.int_income
+          - guard:
+              op: test
+              eq:
+                - f1116col.has_int
+                - const: false
+            then: f1116col.zero
+      cite:
+        doc: i1116
+        locator: 'p. 11, Lines 1a and 1b, "Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i"'
+    - id: f1116col.line1a
+      printed: 1a
+      type: NonNegDollars
+      label: Gross income from sources within country shown above and of the type checked above
+      expr:
+        op: sum
+        of:
+          - f1116col.div_income_if_div
+          - f1116col.int_income_if_int
+      cite:
+        doc: f1116
+        locator: 'p. 1, Part I, line 1a, "Gross income from sources within country shown above and of the type checked above"; i1116 p. 9, "No adjustments required", "include the amount of your foreign source qualified dividends and capital gain distributions in each separate category (without adjustment) on line 1a of the applicable Form 1116"; i1116 p. 11, Lines 1a and 1b—Foreign Gross Income, "Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i"'
+    - id: f1116col.line3d
+      printed: 3d
+      type: NonNegDollars
+      label: Gross foreign source income
+      expr:
+        op: copy
+        from: f1116col.line1a
+      cite:
+        doc: i1116
+        locator: 'p. 17, Lines 3d and 3e, "Line 3d. Enter your gross foreign source income from the category you checked above Part I of this Form 1116."'
+    - id: f1116col.line3g
+      printed: 3g
+      type: NonNegDollars
+      label: Multiply line 3c by line 3f (line 3f, line 3d divided by line 3e, rounded to four decimal places and not
+        more than 1)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1116.has_gross
+                - const: true
+            then: f1116col.line3g_figured
+          - guard:
+              op: test
+              eq:
+                - f1116.has_gross
+                - const: false
+            then: f1116col.zero
+      cite:
+        doc: f1116
+        locator: 'p. 1, Part I, line 3g, "Multiply line 3c by line 3f"'
+    - id: f1116col.line3g_figured
+      printed: (helper)
+      type: NonNegDollars
+      label: Divide line 3d by line 3e, rounded to four decimal places, not more than 1 (line 3f); multiply line 3c by
+        the result
+      expr:
+        op: prorate
+        amount: f1116.line3c
+        part: f1116col.line3d
+        whole: f1116.line3e
+        places: 4
+      cite:
+        doc: i1116
+        locator: 'p. 18, Line 3f, "Divide line 3d by line 3e and round off the result to at least four decimal places"; f1116 p. 1, Part I, line 3g, "Multiply line 3c by line 3f"'
+      ambiguity: amb.2025.f1116_ratio_places
+    - id: f1116col.line4a
+      printed: 4a
+      type: NonNegDollars
+      label: Home mortgage interest (use the Worksheet for Home Mortgage Interest in the instructions)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1116.hmi_applies
+                - const: true
+            then: f1116col.line4a_figured
+          - guard:
+              op: test
+              eq:
+                - f1116.hmi_applies
+                - const: false
+            then: f1116col.zero
+      cite:
+        doc: i1116
+        locator: 'p. 18, Line 4a, "If your gross foreign source income (including income excluded on Form 2555) doesn’t exceed $5,000, you can allocate all of your interest expense to U.S. source income."'
+      ambiguity: amb.2025.f1116_interest_threshold
+    - id: f1116col.line4a_figured
+      printed: (helper)
+      type: NonNegDollars
+      label: Worksheet for Home Mortgage Interest, line 5 (Schedule A line 8e times this column's gross foreign income
+        divided by gross income from all sources, rounded to four decimal places)
+      expr:
+        op: prorate
+        amount: sa.line8e
+        part: f1116col.line3d
+        whole: f1116.line3e
+        places: 4
+      cite:
+        doc: i1116
+        locator: 'p. 18, Worksheet for Home Mortgage Interest—Line 4a, "Divide line 1 by line 2 and enter the result as a decimal (rounded to at least four places)" and "Multiply line 4 by line 3. Enter the result here and on the appropriate Form 1116, line 4a"'
+      ambiguity: amb.2025.f1116_ratio_places
+    - id: f1116col.line6
+      printed: '6'
+      type: NonNegDollars
+      label: Add lines 2, 3g, 4a, 4b, and 5 (lines 2, 4b and 5 are zero on the returns prepared)
+      expr:
+        op: sum
+        of:
+          - f1116col.line3g
+          - f1116col.line4a
+      cite:
+        doc: f1116
+        locator: 'p. 1, Part I, line 6, "Add lines 2, 3g, 4a, 4b, and 5"'
+    - id: f1116col.line7
+      printed: '7'
+      type: Dollars
+      label: Subtract line 6 from line 1a
+      expr:
+        op: subtract
+        from: f1116col.line1a
+        take: f1116col.line6
+      cite:
+        doc: f1116
+        locator: 'p. 1, Part I, line 7, "Subtract line 6 from line 1a."'
+    - id: f1116col.tax_div
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: f1116col.tax_div_if_div
+      label: Foreign tax withheld at source on the dividends of this column, in U.S. dollars (Form 1099-DIV box 7)
+      expr:
+        op: input
+        source: Foreign tax withheld at source on the dividends of this column, in U.S. dollars, as reported on Form
+          1099-DIV box 7 or a similar statement
+      cite:
+        doc: i1116
+        locator: 'p. 19, Tip, "If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV, 1099-INT, or similar statement, you don’t have to convert the amount shown into foreign currency."'
+    - id: f1116col.tax_div_if_div
+      printed: (q)
+      type: NonNegDollars
+      label: Taxes withheld at source on dividends, in U.S. dollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1116col.has_div
+                - const: true
+            then: f1116col.tax_div
+          - guard:
+              op: test
+              eq:
+                - f1116col.has_div
+                - const: false
+            then: f1116col.zero
+      cite:
+        doc: i1116
+        locator: 'p. 19, Tip, "complete columns (q) through (u) for each foreign country indicated in Part I"'
+    - id: f1116col.tax_int
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: f1116col.tax_int_if_int
+      label: Foreign tax withheld at source on the interest of this column, in U.S. dollars (Form 1099-INT box 6)
+      expr:
+        op: input
+        source: Foreign tax withheld at source on the interest of this column, in U.S. dollars, as reported on Form
+          1099-INT box 6 or a similar statement
+      cite:
+        doc: i1116
+        locator: 'p. 19, Tip, "If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV, 1099-INT, or similar statement, you don’t have to convert the amount shown into foreign currency."'
+    - id: f1116col.tax_int_if_int
+      printed: (s)
+      type: NonNegDollars
+      label: Taxes withheld at source on interest, in U.S. dollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1116col.has_int
+                - const: true
+            then: f1116col.tax_int
+          - guard:
+              op: test
+              eq:
+                - f1116col.has_int
+                - const: false
+            then: f1116col.zero
+      cite:
+        doc: i1116
+        locator: 'p. 19, Tip, "complete columns (q) through (u) for each foreign country indicated in Part I"'
+    - id: f1116col.line8u
+      printed: (u)
+      type: NonNegDollars
+      label: Total foreign taxes paid or accrued (add cols. (q) through (t))
+      expr:
+        op: sum
+        of:
+          - f1116col.tax_div_if_div
+          - f1116col.tax_int_if_int
+      cite:
+        doc: f1116
+        locator: 'p. 1, Part II, "(u) Total foreign"'
+    - id: f1116col.div_15
+      printed: (helper)
+      type: NonNegDollars
+      label: Fifteen percent of the column's foreign dividends
+      expr:
+        op: multiply_rate
+        amount: f1116col.div_income_if_div
+        rate:
+          param: f1116.withholding_split
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.div_hi
+      printed: (gate)
+      type: Bool
+      label: The column's foreign dividends are subject to foreign tax of 15 percent of them or more
+      expr:
+        op: test
+        all:
+        - op: test
+          gt:
+          - f1116col.tax_div_if_div
+          - const: 0
+        - op: test
+          ge:
+          - f1116col.tax_div_if_div
+          - f1116col.div_15
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.div_lo
+      printed: (gate)
+      type: Bool
+      label: The column's foreign dividends are subject to foreign tax above zero but less than 15 percent of them
+      expr:
+        op: test
+        all:
+        - op: test
+          gt:
+          - f1116col.tax_div_if_div
+          - const: 0
+        - op: test
+          lt:
+          - f1116col.tax_div_if_div
+          - f1116col.div_15
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.div_gross_hi
+      printed: (helper)
+      type: NonNegDollars
+      label: The column's foreign dividends when in the 15 percent or greater group; zero otherwise
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1116col.div_hi
+            - const: true
+          then: f1116col.div_income_if_div
+        - guard:
+            op: test
+            eq:
+            - f1116col.div_hi
+            - const: false
+          then: f1116col.zero
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.div_tax_hi
+      printed: (helper)
+      type: NonNegDollars
+      label: The foreign tax on the column's dividends when in the 15 percent or greater group; zero otherwise
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1116col.div_hi
+            - const: true
+          then: f1116col.tax_div_if_div
+        - guard:
+            op: test
+            eq:
+            - f1116col.div_hi
+            - const: false
+          then: f1116col.zero
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.div_gross_lo
+      printed: (helper)
+      type: NonNegDollars
+      label: The column's foreign dividends when in the less than 15 percent group; zero otherwise
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1116col.div_lo
+            - const: true
+          then: f1116col.div_income_if_div
+        - guard:
+            op: test
+            eq:
+            - f1116col.div_lo
+            - const: false
+          then: f1116col.zero
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.div_tax_lo
+      printed: (helper)
+      type: NonNegDollars
+      label: The foreign tax on the column's dividends when in the less than 15 percent group; zero otherwise
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1116col.div_lo
+            - const: true
+          then: f1116col.tax_div_if_div
+        - guard:
+            op: test
+            eq:
+            - f1116col.div_lo
+            - const: false
+          then: f1116col.zero
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.int_15
+      printed: (helper)
+      type: NonNegDollars
+      label: Fifteen percent of the column's foreign interest
+      expr:
+        op: multiply_rate
+        amount: f1116col.int_income_if_int
+        rate:
+          param: f1116.withholding_split
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.int_hi
+      printed: (gate)
+      type: Bool
+      label: The column's foreign interest are subject to foreign tax of 15 percent of them or more
+      expr:
+        op: test
+        all:
+        - op: test
+          gt:
+          - f1116col.tax_int_if_int
+          - const: 0
+        - op: test
+          ge:
+          - f1116col.tax_int_if_int
+          - f1116col.int_15
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.int_lo
+      printed: (gate)
+      type: Bool
+      label: The column's foreign interest are subject to foreign tax above zero but less than 15 percent of them
+      expr:
+        op: test
+        all:
+        - op: test
+          gt:
+          - f1116col.tax_int_if_int
+          - const: 0
+        - op: test
+          lt:
+          - f1116col.tax_int_if_int
+          - f1116col.int_15
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.int_gross_hi
+      printed: (helper)
+      type: NonNegDollars
+      label: The column's foreign interest when in the 15 percent or greater group; zero otherwise
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1116col.int_hi
+            - const: true
+          then: f1116col.int_income_if_int
+        - guard:
+            op: test
+            eq:
+            - f1116col.int_hi
+            - const: false
+          then: f1116col.zero
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.int_tax_hi
+      printed: (helper)
+      type: NonNegDollars
+      label: The foreign tax on the column's interest when in the 15 percent or greater group; zero otherwise
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1116col.int_hi
+            - const: true
+          then: f1116col.tax_int_if_int
+        - guard:
+            op: test
+            eq:
+            - f1116col.int_hi
+            - const: false
+          then: f1116col.zero
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.int_gross_lo
+      printed: (helper)
+      type: NonNegDollars
+      label: The column's foreign interest when in the less than 15 percent group; zero otherwise
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1116col.int_lo
+            - const: true
+          then: f1116col.int_income_if_int
+        - guard:
+            op: test
+            eq:
+            - f1116col.int_lo
+            - const: false
+          then: f1116col.zero
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.int_tax_lo
+      printed: (helper)
+      type: NonNegDollars
+      label: The foreign tax on the column's interest when in the less than 15 percent group; zero otherwise
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1116col.int_lo
+            - const: true
+          then: f1116col.tax_int_if_int
+        - guard:
+            op: test
+            eq:
+            - f1116col.int_lo
+            - const: false
+          then: f1116col.zero
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.gross_hi
+      printed: (helper)
+      type: NonNegDollars
+      label: The column's income in the 15 percent or greater withholding group
+      expr:
+        op: sum
+        of:
+        - f1116col.div_gross_hi
+        - f1116col.int_gross_hi
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.tax_hi
+      printed: (helper)
+      type: NonNegDollars
+      label: The column's foreign tax in the 15 percent or greater withholding group
+      expr:
+        op: sum
+        of:
+        - f1116col.div_tax_hi
+        - f1116col.int_tax_hi
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.gross_lo
+      printed: (helper)
+      type: NonNegDollars
+      label: The column's income in the less than 15 percent withholding group
+      expr:
+        op: sum
+        of:
+        - f1116col.div_gross_lo
+        - f1116col.int_gross_lo
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed
+    - id: f1116col.tax_lo
+      printed: (helper)
+      type: NonNegDollars
+      label: The column's foreign tax in the less than 15 percent withholding group
+      expr:
+        op: sum
+        of:
+        - f1116col.div_tax_lo
+        - f1116col.int_tax_lo
+      cite:
+        doc: cfr-26-1-904-4
+        locator: p. 4, (c)(3), "All passive income received during the taxable year that is subject to a withholding tax of fifteen
+          percent or greater shall be treated as one item of income."; "All passive income received during the taxable year that
+          is subject to a withholding tax of less than fifteen percent (but greater than zero) shall be treated as one item of
+          income."
+      ambiguity: amb.2025.f1116_high_taxed

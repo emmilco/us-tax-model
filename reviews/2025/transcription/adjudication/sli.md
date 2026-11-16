@@ -25,3 +25,28 @@ Lane land3-adj13 (claude-opus-5-5, judgment; tax year 2025, us). Claude class M 
 | claude | classm | classm.sli.3 — 9 | representation | project $1,227.00, model $0.00; dropped from the fixture | i1040gi p. 98, Line 21 (not claimed as a dependent); p. 99 worksheet | Model wrote the dependent bar into line 1; the project applies it in sli.eligible, deduction $0.00 both (engine eval: s1.line21 $0.00). |
 
 Counts: claude classm representation 3. Findings: none. Left open: none.
+
+## Goal-1 coverage-expansion round (2026-11-15)
+
+Lane xadj-b (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the xint worktree (coverage-expansion merge). Open lines of the Claude transcription log (line-scoped pass 6e21762b3daa). Full ruling text is in the logs and sidecars; rulings files `/tmp/xadj/b/<form>.transcription.json`, applied with rule.py. The second review family is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | sli.deduction | model error | triage 6e21762b3daa: 8 value, all with person.sav_claimed true | i1040gi p. 98, Schedule 1, line 21 | The reply leaves out the not-claimed-as-a-dependent condition; project's 0 is right. |
+| claude | transcription | 1 | representation | triage: 29 value, all separate returns carrying a stale sli.any | i1040gi p. 98, worksheet line 1 | sli.any is not asked on a separate return; deduction 0 either way. |
+
+Counts: claude transcription: model error 1, representation 1. Render: no disagreement.
+
+Findings: none. No line left open.
+
+## Goal-1 coverage-expansion round (2026-11-15), class M
+
+Lane xadj (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), xint worktree. Class M run of 2026-11-15 (agree 34, disagree 3, skipped 3). The carry tool did not carry the earlier class M rulings on these three lines because sli.yaml changed (the MFS gate sli.any_if_not_mfs); case classm.sli.3 is not a separate return (sli.any_if_not_mfs:true), so the change does not reach it. Rulings file `/tmp/xadj/g/sli.classm.json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | classm | classm.sli.3 — 1 | representation | project $1,500.00, model $0.00; dropped from the fixture | i1040gi p. 98, Line 21 (not claimed as a dependent); p. 99 worksheet | The model wrote the dependent bar into line 1; the project applies it in sli.eligible (false), sli.allowed (zero), so the deduction is $0.00 on both sides. |
+| claude | classm | classm.sli.3 — 8 | representation | project $273.00, model $0.00; dropped from the fixture | same | Follows from line 1. |
+| claude | classm | classm.sli.3 — 9 | representation | project $1,227.00, model $0.00; dropped from the fixture | same | Follows from line 1. |
+
+Counts: claude classm representation 3. Findings: none. Left open: none.

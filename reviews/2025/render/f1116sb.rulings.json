@@ -1,0 +1,116 @@
+{
+ "kind": "render",
+ "form": "f1116sb",
+ "rulings": [
+  {
+   "printed": "3 (i)",
+   "restated": "Enter the amount from line 1 (i).",
+   "model": "The form says 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2)', but the restatement copies line 1 only. It drops the line 2b/2c adjustments ('Adjustments for section 905(c) redeterminations', 'Domestic audit adjustments') and names no refusal for that case.",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "22acd794082faa997c68f1e89c7edcaba88dd4540d998884dd5a0fdaee664b0e"
+  },
+  {
+   "printed": "3 (ii)",
+   "restated": "Enter the amount from line 1 (ii).",
+   "model": "The form says '(combine lines 1 and 2)', but the restatement copies line 1 only. It omits line 2 adjustments without a refusal.",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "93a64b71ff57ec212872b4841afea46b43c716401b2f566bad77e61b565500f9"
+  },
+  {
+   "printed": "3 (iii)",
+   "restated": "Enter the amount from line 1 (iii).",
+   "model": "The form says '(combine lines 1 and 2)', but the restatement copies line 1 only. It omits line 2 adjustments without a refusal.",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "8c6d63d27e012b4d33007f7eb6981604ccd62e8a40584d8516ef41734a9bfb91"
+  },
+  {
+   "printed": "3 (iv)",
+   "restated": "Enter the amount from line 1 (iv).",
+   "model": "The form says '(combine lines 1 and 2)', but the restatement copies line 1 only. It omits line 2 adjustments without a refusal.",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "248536435d0050464adbb1be04ab0b593ad59e0a22b83f4eef6d5aefcb1420f3"
+  },
+  {
+   "printed": "3 (ix)",
+   "restated": "Enter the amount from line 1 (ix).",
+   "model": "The form says '(combine lines 1 and 2)', but the restatement copies line 1 only. It omits line 2 adjustments without a refusal.",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "93a93c84bcc865909107a1130cfbede44ba86c6419aa9ec09a5162b0022ec04b"
+  },
+  {
+   "printed": "3 (v)",
+   "restated": "Enter the amount from line 1 (v).",
+   "model": "The form says '(combine lines 1 and 2)', but the restatement copies line 1 only. It omits line 2 adjustments without a refusal.",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "565c076d9287c317cc84edbc97845c9a71650bf454d5c115ddc9eb9f28250d57"
+  },
+  {
+   "printed": "3 (vi)",
+   "restated": "Enter the amount from line 1 (vi).",
+   "model": "The form says '(combine lines 1 and 2)', but the restatement copies line 1 only. It omits line 2 adjustments without a refusal.",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "1e271614496ae97d4e935ea9467986f1a37c6bba67e550cea044433544992486"
+  },
+  {
+   "printed": "3 (x)",
+   "restated": "Enter the amount from line 1 (x).",
+   "model": "The form says '(combine lines 1 and 2)', but the restatement copies line 1 only. It omits line 2 adjustments without a refusal.",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "b421c3f9b2303edb0595d0b7c2d007ae4b274748f5031a209852fae7fe6c9374"
+  },
+  {
+   "printed": "3 (xi)",
+   "restated": "Enter the amount from line 1 (xi).",
+   "model": "The form says '(combine lines 1 and 2)', but the restatement copies line 1 only. It omits line 2 adjustments without a refusal.",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "28d43f64bf7cd31a6dae19a55cba4fa5870aa9277144749f643a962cfe4744e5"
+  },
+  {
+   "printed": "3 (xii)",
+   "restated": "Enter the amount from line 1 (xii).",
+   "model": "The form says '(combine lines 1 and 2)', and line 2a is entered 'on line 2a, column (xii)' for the carryback adjustment (the Sam example gives $80 + $5 = $85). The restatement copies line 1 only, with no refusal.",
+   "ruling": "Ruling: scope; line 2 adjustments (section 905(c) redeterminations, domestic audit adjustments, a carryback adjustment) are refused on Form 1116 line 35 by f1116sb.changed_if_carry ('Schedule B (Form 1116), line 2') and f1116.redetermination, so line 2 is empty and line 3 = line 1 on every return prepared (i1116sb, line 3 'combine lines 1 and 2'); the form note says 'line 2 is empty (an adjustment is refused)'. A carryback into 2025 from 2026 cannot exist on an original 2025 return.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "3c9e56debdaf8528c7fe74fd54abe514a5307a010176be6f7db205e9085d2651"
+  },
+  {
+   "printed": "7 (xiii) and (xiv)",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Always enters zero with no refusal. The IRS text says 'Enter the amount of line 6 carried back to the first preceding tax year', which is nonzero when the first preceding year is an excess limitation year.",
+   "ruling": "Ruling: scope; D1: nothing is carried back; a return whose 2024 year had room under its limit (or other foreign income untaxed) is refused by f1116sb.carryback ('Schedule B (Form 1116), line 7 (carryback to 2024)'), so line 7 is zero on every return prepared.",
+   "context": "a70ccc04eb29eaba5f8654987516e5e656d44490def0de982fc22ee140192cd9",
+   "date": "2026-11-15",
+   "run": "d8f8ae55dffb7a9e6577c93a5d8dc1213c9a51e196565a3119f605865b459e90",
+   "subject_key": "5f5247774924128a4792975bc2bccaaad267bcb0276796571293a4f28d98020a"
+  }
+ ]
+}

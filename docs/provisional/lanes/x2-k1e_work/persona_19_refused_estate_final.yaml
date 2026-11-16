@@ -1,0 +1,12 @@
+name: 19_refused_estate_final
+who: A single person, 60, with one job, whose mother's estate closed in 2025; the estate's final Schedule K-1 (Form 1041) shows excess deductions in box 11, which the tool does not prepare.
+end: { refused: "person[taxpayer].k1e[mom_estate].box11_any" }
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 1965
+  scope.k1: true
+  $k1e@person[taxpayer]: [mom_estate]
+  person[taxpayer].k1e[mom_estate].box9_any: false
+  person[taxpayer].k1e[mom_estate].box10_any: false
+  person[taxpayer].k1e[mom_estate].box11_any: true

@@ -462,6 +462,56 @@
   },
   {
    "printed": "2(c)",
+   "project_expr_sha256": "bc89bf488886dedbc8a317f0a5d1e76a6850ecc8d25fc8791217ccccc7d9491e",
+   "second_expr_sha256": "7b052008c9ec51f0fc18772c2a629c8a94c5845ca92449537d2fcbdd614536d8",
+   "ruling": "Ruling: model error; i2441 p. 3, Column (c): \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled\". executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,715 of 5,766 agree; on completed returns 120 candidate-unknown, 1 candidate-refuses, 2 candidate-shows-skipped, 1 value. The value witness stage15.BUG-0111.care_before_13 is care given before the 13th birthday, where the box is not checked; as ruled on this line on 2026-11-11, the reply's box tests age and disability without the timing of the care. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "2d5682dbcc68a3c3a4b216cdd8e0e40c0fabc119073b56a6e3e5baee2e4e3ee8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]",
+     "fixture:stage15.refuse.dependent.dc_no_tin@dependent[a]",
+     "fixture:stage15.BUG-0111.care_before_13@dependent[a]",
+     "generated:20261026.10@dependent[dep_b]",
+     "generated:20261026.23@dependent[dep_b]",
+     "generated:20261026.35@dependent[dep_a]",
+     "generated:20261026.36@dependent[dep_a]",
+     "generated:20261026.51@dependent[dep_a]",
+     "generated:20261026.74@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].disabled@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].married@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].tin@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].gross_income@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].divorced_rule@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].multiple_support@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2(c)",
    "project_expr_sha256": "bf47b8d4c273f88a951e5bc726e8894adc1248b778125d9c843f4049d0f36faf",
    "second_expr_sha256": "3e6c28e4f53e874ae2c23820d412ba95bfbcaef341b7d8a46b5cd2a8b35dce25",
    "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,897/6,501 agree; 2,497 candidate-unknown, 85 candidate-refuses, 14 candidate-shows-skipped, 5 project-unknown, 3 project-refuses; completed: 24 candidate-unknown, 2 candidate-shows-skipped. Every value witness sampled is either f2441.care false (the project evaluates the qualifying-person test only with care expenses) or, for dc_count, the project's per-dependent 1 that its reader filters by dc_qp. Those are representation. The line is ruled on its expression: the qualifying-child path is claimed AND h_qc AND under 13, and h_qc has no part-year rule (p503 p. 3, \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive\"). The embedded dependent test carries the joint-return exemption (see dependent.claimed). The incapable-person path now uses a part-year rule (hoh_test2_lived), so the Landing-round witness stage15.f2441.parent_died_part_year no longer differs.",
@@ -505,6 +555,54 @@
      "partial:classm.dependent.4.deepseek-dependent[dep_a].ever_married@dependent[dep_a]",
      "partial:classm.dependent.4.deepseek-dependent[dep_a].parents_apart@dependent[dep_a]",
      "partial:classm.dependent.4.deepseek-dependent[dep_a].citizen_ssn@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2(c)",
+   "project_expr_sha256": "bf47b8d4c273f88a951e5bc726e8894adc1248b778125d9c843f4049d0f36faf",
+   "second_expr_sha256": "501452261c5b0dc632de8609e3f38df6a9e3fe7f39cec7d635d203d61db9b26d",
+   "ruling": "Ruling: model error; triage 3,505/5,836 agree; 2218 candidate-unknown, 88 candidate-refuses, 16 candidate-shows-skipped, 8 project-unknown, 1 project-refuses; completed returns: 6 candidate-unknown. The qualifying-child path uses the reply's months-only test and its dependent test; the completed values are the f2441.care gate or the reader's count filter, as the Goal-1 round ruled. i2441 p. 1, Qualifying Person(s); p503 p. 3, Birth or death of otherwise qualifying person.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "fc3a3c809730628744fd8e434d378bf911b220312f0abdefaadcc0fa155a616b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sli.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:stage15.refuse.dependent.dc_no_tin@dependent[a]",
+     "generated:20261026.10@dependent[dep_b]",
+     "generated:20261026.35@dependent[dep_a]",
+     "generated:20261026.36@dependent[dep_a]",
+     "generated:20261026.51@dependent[dep_a]",
+     "generated:20261026.74@dependent[dep_a]",
+     "generated:20261026.91@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].married@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].tin@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].gross_income@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].multiple_support@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].lived_all_year@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].ever_married@dependent[dep_a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -934,6 +1032,47 @@
   {
    "printed": "2(d)",
    "project_expr_sha256": "e52f22d72daafb9f22f3d8796576cd2243a582add0f1058738bf5e91b38733e6",
+   "second_expr_sha256": "77e5094de9caaf872df0adc5eee2e7e3237e871b2d326554a4a927f145f10f4f",
+   "ruling": "Ruling: model error; triage 3,491/5,836 agree; 2247 candidate-unknown, 88 candidate-refuses, 9 project-unknown, 1 project-refuses; completed returns: 6 candidate-unknown. The qualifying-child path uses the reply's months-only test and its dependent test; the completed values are the f2441.care gate or the reader's count filter, as the Goal-1 round ruled. i2441 p. 1, Qualifying Person(s); p503 p. 3, Birth or death of otherwise qualifying person.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "d73ef248aac9dc0c9bd824de9ea7c9f8c1efaac1d556e51b917344d0ba25acf3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sli.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:stage15.refuse.dependent.dc_no_tin@dependent[a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].age@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].married@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].tin@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].gross_income@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].multiple_support@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].lived_all_year@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2(d)",
+   "project_expr_sha256": "e52f22d72daafb9f22f3d8796576cd2243a582add0f1058738bf5e91b38733e6",
    "second_expr_sha256": "7c9c862a4837c094448d74394a7284acc9c8c67d286cfb3160e835c0f988a1e4",
    "ruling": "Ruling: model error; i2441 p. 3, Line 2; p503 p. 3, Birth or death of otherwise qualifying person: \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive in 2025\"; amb.2025.dc_line30 is not involved (both sides copy dc_paid gross of benefits). executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,378 fixtures, 500 generated returns seed 20261026, 2,485 partial records; 7,441 comparisons): 6,283 of 7,441 agree; 512 candidate-refuses, 360 project-unknown, 277 candidate-unknown, 9 value; on returns the full interview completes: 83 candidate-refuses, 42 candidate-unknown, 29 project-unknown, 1 value. Every completed-return difference was enumerated with the witness cap lifted (triage.mjs run directly; scratch /tmp/adj-dfix/dependent.full.json, causes assigned by /tmp/adj-dfix/classify.py, none unassigned): (a) 1 value, stage15.f2441.parent_died_part_year dep a (a parent who died in 2025, months 0, care yes, dc_incapable yes; BUG-0157's dependent.dc_lived_half): project $4,000.00, candidate $0.00, inheriting its dc_qp: the model error; (b) 83 candidate-refuses: dependent.multiple_support refused on a qualifying child, all classm.s3.4 dep_a (a child aged 2, 12 months, multiple_support yes; the fixtures classm.s3.4 and classm.s3.4.deepseek and 81 partial records of classm.s3.4 withholding an unrelated answer); the project claims the child (multiple support is refused only on dependent.qualifying_relative) (project $0.00 or, on one partial, unknown); (c) 29 project-unknown dc_paid, 9 fixtures and 20 partials, all f2441.care no: the project's column copies dc_paid, which the interview asks only of a qualifying person, and f2441.paid_total sums it only where dc_qp is yes: representation; (d) 6 candidate-unknown, partials of classm.f2441.1 and .deepseek a ($6,000.00), classm.f2441.5 and .deepseek a ($2,500.00) and b ($3,500.00) withholding multiple_support of a qualifying child: the multiple-support model error; (e) 36 other partials (dc_incapable 17 with care no, multiple_support 9, classm.retirement.3 dep_b answers 10). Project stands.",
    "context": "bd569cb0cc466609ff66d8308f446a2d1ba02211d20403c2d0583bb66cd2fc29",
@@ -953,6 +1092,47 @@
    "second_expr_sha256": "90543bca0e5f9f453303dfa08a14eaf5f799414d041fef3985ecdcf88323aa60",
    "ruling": "Ruling: representation; project retained. The project copies the person's qualified expenses and applies the qualifying-person test where column (d) is summed (f2441.paid_total, 'where dependent.dc_qp'); the second zeroes the column for a person who is not a qualifying person (i2441 p. 3, Line 2, \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\"). The total is the same; the benefits reading is the register's (amb.2025.dc_line30).",
    "subject_key": "3eeb24ffbff2f96c8050bcea975020930d07a1cc5c49034449e12e6b1a1b958a"
+  },
+  {
+   "printed": "2(d)",
+   "project_expr_sha256": "e52f22d72daafb9f22f3d8796576cd2243a582add0f1058738bf5e91b38733e6",
+   "second_expr_sha256": "93ccd768a1f983ac2777757c746ad977ba0c1d928a08402605a3efa7cda3bbcf",
+   "ruling": "Ruling: representation; project retained. The project copies the person's qualified expenses and applies the qualifying-person test where column (d) is summed (f2441.paid_total, where dependent.dc_qp); the reply zeroes the column for a person who is not a qualifying person (i2441 p. 3, Line 2). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,704 of 5,766 agree; on completed returns 118 candidate-unknown, 1 candidate-refuses, no value difference. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "416f6b5984c45f13bd151390f38e7439e3ac7d0773a2aaa3922961768ef768af",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]",
+     "fixture:stage15.refuse.dependent.dc_no_tin@dependent[a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].age@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].disabled@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].married@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].tin@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].gross_income@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].divorced_rule@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "2(d)",
@@ -1446,6 +1626,53 @@
   },
   {
    "printed": "27",
+   "project_expr_sha256": "54cabf98d9fc90411eeef4de339428a00bb3dcc8d54b3b59d0304e1ef162a413",
+   "second_expr_sha256": "89359ddd06cabeca6f2641cc80e8d23b76bd4e1b1e2a8b4237e9d3e50d1a8880",
+   "ruling": "Ruling: model error; triage 3,105/5,836 agree; 2516 candidate-unknown, 125 project-unknown, 85 candidate-refuses, 3 project-refuses, 1 candidate-hides-shown, 1 candidate-shows-skipped; completed returns: 6 candidate-unknown, 1 candidate-hides-shown. The reply's AOC gate requires an issued TIN, so it hides the credit for a student whose ATIN/ITIN was applied for by the due date (f1.t113.dep_aoc_applied); p970 p. 11 (owner decision T-113). As the Goal-1 round.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "16240d53fae91215c07f6069ac993751eee437d3375d67f0a234590a73a12a2c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.s179.3@dependent[dep_a]",
+     "fixture:classm.sli.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
+     "generated:20261026.36@dependent[dep_a]",
+     "generated:20261026.47@dependent[dep_a]",
+     "generated:20261026.111@dependent[dep_a]",
+     "generated:20261026.337@dependent[dep_c]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "27",
    "project_expr_sha256": "81050df076c11870a4e89031ccff7a6d902cf392dbda4f70c3486eb8c482c3af",
    "second_expr_sha256": "1c8235f5184ac0d68d3a04de6bb0b3aadb8cda4ba95747dcab61e1dcc609ce07",
    "ruling": "Ruling: model error; i8863 p. 2, Who Can Claim an Education Credit: \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student\"; i8863 p. 3, item 5: \"Filers and students must have been issued a TIN by the due date\" (amb.2025.edu_filer_tin, reading 1, which the reply now applies through household.all_tin). The reply has no f8863.paid test, so it asks dependent.edu where no qualified education expenses were paid. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,378 fixtures, 500 generated returns seed 20261026, 2,485 partial records; 7,441 comparisons): 3,937 of 7,441 agree; 2,993 candidate-unknown, 505 candidate-refuses, 3 project-refuses, 2 project-unknown, 1 value; on returns the full interview completes: 1,097 candidate-unknown, 83 candidate-refuses, 1 value. Every completed-return difference was enumerated with the witness cap lifted (triage.mjs run directly; scratch /tmp/adj-dfix/dependent.full.json, causes assigned by /tmp/adj-dfix/classify.py, none unassigned): (a) 1,068 candidate-unknown dependent.edu on records with f8863.paid no (243 fixtures or generated returns, 825 partials), where the project hides the line: an answer the source does not need; (b) 83 candidate-refuses: dependent.multiple_support refused on a qualifying child, all classm.s3.4 dep_a (a child aged 2, 12 months, multiple_support yes; the fixtures classm.s3.4 and classm.s3.4.deepseek and 81 partial records of classm.s3.4 withholding an unrelated answer); the project claims the child (multiple support is refused only on dependent.qualifying_relative) (line hidden); (c) 3 lawful fixtures (classm.clcw26.2 and .deepseek dep_b, stage8.single.dependent.household_and_ssn all_year); (d) 26 partials withholding multiple_support (14) or joint_return (12); (e) 1 value, generated 464 dep_a, an `other` entry with married no and joint_return yes, project $4,000.00, candidate $0.00: contradictory answers (see dependent.claimed), representation. Project stands.",
@@ -1483,6 +1710,50 @@
    "ruling": "Ruling: model error; i8863 p. 2, Who Can Claim an Education Credit: \"You may be able to claim an education credit if you, your spouse, or a dependent you claim on your tax return was a student\"; i8863 p. 3, item 5: \"Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions)\" (amb.2025.edu_filer_tin). Its American opportunity test (dependent.h_edu_aoc: claimed, edu, edu_1098t, the student's TIN, lines 23 to 26, edu_ein) still has no filer-TIN test and no f8863.paid test. Rerun on this reply, the constructed witness stage19.example.jack_kay with person[spouse].tin and itin_applied no gives line 30 $2,500.00 where the project gives line 30 $0.00 and line 31 $4,300.00. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,390 fixtures, 500 generated returns seed 20261026, 2,487 partial records; 7,463 comparisons): 3,326 of 7,463 agree; 3,810 candidate-unknown, 323 candidate-refuses, 3 project-refuses, 1 project-unknown; on returns the full interview completes: 1,100 candidate-unknown, 83 candidate-refuses. Every completed-return difference was enumerated with the witness cap lifted (triage.mjs run directly; scratch /tmp/adj-fixr2-dependent-household/dependent.full.json, causes assigned by /tmp/adj-fixr2-dependent-household/classify.py, none unassigned; the uncapped rerun reproduces the recorded counts exactly): (a) 83 candidate-refuses: dependent.multiple_support refused on a qualifying child, all classm.s3.4 dep_a (a child aged 2, 12 months, multiple_support yes; the fixtures classm.s3.4 and classm.s3.4.deepseek and 81 partial records of classm.s3.4); the project claims the child (multiple support is refused only on dependent.qualifying_relative) (the project hides the line); (b) 1,100 candidate-unknown dependent.edu on returns with f8863.paid no, where the project hides the line and does not ask it (for example classm.f2441.1.deepseek a). Project stands.",
    "context": "b1bf97d1fc9069ccd49812a2369692172ec137605b1b7f7436c667dd2ca4f4b0",
    "subject_key": "8c883b6f0255b41baaa3579473c583541f881fb660346a1004fdb7b064537afb"
+  },
+  {
+   "printed": "27",
+   "project_expr_sha256": "94b59630b80c4d38fd3f7d1d77c8e97bf72a8f862e076fbea58c2166bf956de7",
+   "second_expr_sha256": "4f30afd0da9109f2c161b7acdc0e47e015792b439b9e8102fa325290bb418706",
+   "ruling": "Ruling: model error; f8863 p. 2, Part III, line 27; i8863 p. 2. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,108 of 5,766 agree; on completed returns 124 candidate-unknown, 1 candidate-refuses, 1 candidate-hides-shown. The candidate-hides-shown witness (f1.t113.dep_aoc_applied, k0) is an American opportunity credit student whose hand-predicted line 27 ($4,000) passes in the fixture; the reply's h_aoc_path is false there. The reply hides a line whose hand-predicted value the fixture supports; as ruled on this line before, the reply's eligibility path differs from the source's. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "ac92726d76cae48432be9ea6592ce478d58e9a49d2891b4a26ab98d4fc95b441",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.s179.3@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]",
+     "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
+     "fixture:mutation.t3.dependent_edu_1098t_unanswered@dependent[daughter]",
+     "generated:20261026.59@dependent[dep_a]",
+     "generated:20261026.337@dependent[dep_c]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "27",
@@ -1649,11 +1920,11 @@
    "printed": "28",
    "project_expr_sha256": "220bc658a49f193e1c85c006b9f6af08bdb4fa76ca3bdff65792a48b365e2d19",
    "second_expr_sha256": "f44d88ab3ed06d475d48b748f39eb415f3a55f73a8e5a329587b7e06eca893f5",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,239/6,501 agree; 3,044 candidate-unknown, 127 project-unknown, 80 candidate-refuses, 8 project-refuses, 2 candidate-shows-skipped, 1 candidate-hides-shown; completed: 31 candidate-unknown, 1 candidate-hides-shown. Each of lines 27-30 has shown_when dependent.h_edu_aoc, built on h_edu_base, which requires dependent.edu_tin_issued. Completed candidate-hides-shown f1.t113.dep_aoc_applied k0: project 27 $4,000.00, 28 $2,000.00, 29 $500.00, 30 $2,500.00; reply hidden. Pub. 970 p. 11 allows the credit when the TIN was applied for by the due date (T-113). The rest are candidate-unknowns. Lines 28-30 were ruled representation in the Landing round as inherited from 27; here each line's own display test carries the error.",
-   "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
+   "ruling": "Ruling: model error; triage 3,105/5,836 agree; 2516 candidate-unknown, 125 project-unknown, 85 candidate-refuses, 3 project-refuses, 1 candidate-hides-shown, 1 candidate-shows-skipped; completed returns: 6 candidate-unknown, 1 candidate-hides-shown. The reply's AOC gate requires an issued TIN, so it hides the credit for a student whose ATIN/ITIN was applied for by the due date (f1.t113.dep_aoc_applied); p970 p. 11 (owner decision T-113). As the Goal-1 round.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
    "date": "2026-11-15",
-   "run": "8447bec2ffe063c9f227b28c2ad5f47ecfd66b1bb8a49aa1daabb9fc831f771f",
-   "subject_key": "9777d36ed8a3893fcf0f461ed935860b9a7e9384dafa2e7431832501a495635f",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "88391b7459bcd1bf9bb36db08b9e9769635e3ad27ae5a58db015635466c2c5e6",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -1679,19 +1950,15 @@
      "fixture:classm.sa.2.deepseek@dependent[dep_a]",
      "fixture:classm.sa.6.deepseek@dependent[dep_b]",
      "fixture:classm.s179.3@dependent[dep_a]",
-     "fixture:classm.scveh.1@dependent[dep_a]",
      "fixture:classm.sli.2@dependent[dep_c]",
      "fixture:classm.tcw.3@dependent[dep_a]",
      "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
      "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
-     "generated:20261026.98@dependent[dep_b]",
-     "generated:20261026.106@dependent[dep_a]",
-     "generated:20261026.195@dependent[dep_a]",
-     "generated:20261026.249@dependent[dep_b]",
-     "generated:20261026.252@dependent[dep_a]",
-     "generated:20261026.282@dependent[dep_a]",
-     "generated:20261026.285@dependent[dep_c]",
-     "generated:20261026.327@dependent[dep_a]"
+     "generated:20261026.36@dependent[dep_a]",
+     "generated:20261026.47@dependent[dep_a]",
+     "generated:20261026.111@dependent[dep_a]",
+     "generated:20261026.337@dependent[dep_c]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1883,6 +2150,50 @@
   },
   {
    "printed": "28",
+   "project_expr_sha256": "c84350704da59093da9d08d062119eff9e262cb299a1b1ad5764646c36591a53",
+   "second_expr_sha256": "f44d88ab3ed06d475d48b748f39eb415f3a55f73a8e5a329587b7e06eca893f5",
+   "ruling": "Ruling: model error; f8863 p. 2, line 28; as line 27, which it reads: the same witness (f1.t113.dep_aoc_applied, k0; project $2,000, reply hidden). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,108 of 5,766 agree; on completed returns 124 candidate-unknown, 1 candidate-refuses, 1 candidate-hides-shown. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "fad499ae5b02718f946d9893aa9f2c84c09ba5b5c9ef06017fead6c9b1355797",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.s179.3@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]",
+     "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
+     "fixture:mutation.t3.dependent_edu_1098t_unanswered@dependent[daughter]",
+     "generated:20261026.59@dependent[dep_a]",
+     "generated:20261026.337@dependent[dep_c]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "28",
    "project_expr_sha256": "f468afdc496b2f626a82d17f73f1044224b78405502b0219b9a43409e0b3a1e7",
    "second_expr_sha256": "f44d88ab3ed06d475d48b748f39eb415f3a55f73a8e5a329587b7e06eca893f5",
    "ruling": "Ruling: model error; f8863 p. 2, line 28; p970 p. 11; i1040gi p. 21. This review was rerun whole (dependent has partial-input cases) because the American opportunity credit test was rewritten as a nested choice in the form's order (BUG-0460); this line's project expression is unchanged unless it reads that test. The reply puts dependent.married, dependent.divorced_rule and dependent.multiple_support as refusal gates on its dependent.claimed for every entry, so it refuses, or needs the answer for, a qualifying child, whose dependency has no support test of the filer: model error, i1040gi p. 21, Multiple support agreements: \"If no one person contributed over half of the support of your relative (or a person who lived with you all year as a member of your household) but you and another person(s) provided more than half of your relative's support, special rules may apply\" (the project refuses it on the qualifying-relative line only). On a completed return: generated 126 dep_b, a qualifying child (the project's qc_dependent yes), is refused by the reply at multiple_support. As the person form's ruling: the reply reads dependent.edu_over for every entry (no f8863.paid gate), so it is unknown where the project hides the line (1078 completed records, for example classm.f8889.1.deepseek dep_a), and it requires an issued TIN, against p970 p. 11, \"If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return.\" (owner decision T-113): f1.t113.dep_aoc_applied k0 (off completed returns) gives $0.00 where the project gives $2,000.00. The other off-completed differences are the reply's refusals on its dependent.claimed gates (divorced_rule, married, multiple_support) and the project's cited screens. The worksheet arithmetic is the project's aqee definition. executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; every witness enumerated by a scratch run of triage.mjs with the witness cap lifted, recorded triage file as written by triage.py; 1,640 fixtures, 500 generated returns seed 20261026, 2,167 partial records; 7,218 comparisons): 3,247 agree; 3,739 candidate-unknown, 189 candidate-refuses, 42 project-refuses, 1 value; on returns the full interview completes: 1,080 candidate-unknown, 1 candidate-refuses. Project stands.",
@@ -2027,13 +2338,57 @@
   },
   {
    "printed": "29",
+   "project_expr_sha256": "40a041f4d0e4bc821d5633968e4e1bb1e35ea8c51cbf7ca65fbd84a553dd9b32",
+   "second_expr_sha256": "bd7a465eeba8148388921a59e7853bf42f6cfef0d6f4766c0e7e6447a064e8f7",
+   "ruling": "Ruling: model error; f8863 p. 2, line 29; as line 27: the same witness (f1.t113.dep_aoc_applied, k0; project $500, reply hidden). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,108 of 5,766 agree; on completed returns 124 candidate-unknown, 1 candidate-refuses, 1 candidate-hides-shown. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "6419a40456cc54f307fe7cf24154313d6489b082ca5e000ba8648364cedff55d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.s179.3@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]",
+     "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
+     "fixture:mutation.t3.dependent_edu_1098t_unanswered@dependent[daughter]",
+     "generated:20261026.59@dependent[dep_a]",
+     "generated:20261026.337@dependent[dep_c]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "29",
    "project_expr_sha256": "acb9f22616f41286b16880a32c3d9067cb14fc69de602fa8a90dc94b21d77bab",
    "second_expr_sha256": "bd7a465eeba8148388921a59e7853bf42f6cfef0d6f4766c0e7e6447a064e8f7",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,239/6,501 agree; 3,044 candidate-unknown, 127 project-unknown, 80 candidate-refuses, 8 project-refuses, 2 candidate-shows-skipped, 1 candidate-hides-shown; completed: 31 candidate-unknown, 1 candidate-hides-shown. Each of lines 27-30 has shown_when dependent.h_edu_aoc, built on h_edu_base, which requires dependent.edu_tin_issued. Completed candidate-hides-shown f1.t113.dep_aoc_applied k0: project 27 $4,000.00, 28 $2,000.00, 29 $500.00, 30 $2,500.00; reply hidden. Pub. 970 p. 11 allows the credit when the TIN was applied for by the due date (T-113). The rest are candidate-unknowns. Lines 28-30 were ruled representation in the Landing round as inherited from 27; here each line's own display test carries the error.",
-   "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
+   "ruling": "Ruling: model error; triage 3,105/5,836 agree; 2516 candidate-unknown, 125 project-unknown, 85 candidate-refuses, 3 project-refuses, 1 candidate-hides-shown, 1 candidate-shows-skipped; completed returns: 6 candidate-unknown, 1 candidate-hides-shown. The reply's AOC gate requires an issued TIN, so it hides the credit for a student whose ATIN/ITIN was applied for by the due date (f1.t113.dep_aoc_applied); p970 p. 11 (owner decision T-113). As the Goal-1 round.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
    "date": "2026-11-15",
-   "run": "8447bec2ffe063c9f227b28c2ad5f47ecfd66b1bb8a49aa1daabb9fc831f771f",
-   "subject_key": "8091e06049fbc369db48f8849f7d40b2e7dda3fc8fd21187b1ca7d893f352750",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "0609d93056f752a90c53c308135751d77c9d3fb7474f535dab13c6fdc8e1acc1",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -2059,19 +2414,15 @@
      "fixture:classm.sa.2.deepseek@dependent[dep_a]",
      "fixture:classm.sa.6.deepseek@dependent[dep_b]",
      "fixture:classm.s179.3@dependent[dep_a]",
-     "fixture:classm.scveh.1@dependent[dep_a]",
      "fixture:classm.sli.2@dependent[dep_c]",
      "fixture:classm.tcw.3@dependent[dep_a]",
      "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
      "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
-     "generated:20261026.98@dependent[dep_b]",
-     "generated:20261026.106@dependent[dep_a]",
-     "generated:20261026.195@dependent[dep_a]",
-     "generated:20261026.249@dependent[dep_b]",
-     "generated:20261026.252@dependent[dep_a]",
-     "generated:20261026.282@dependent[dep_a]",
-     "generated:20261026.285@dependent[dep_c]",
-     "generated:20261026.327@dependent[dep_a]"
+     "generated:20261026.36@dependent[dep_a]",
+     "generated:20261026.47@dependent[dep_a]",
+     "generated:20261026.111@dependent[dep_a]",
+     "generated:20261026.337@dependent[dep_c]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2339,11 +2690,11 @@
    "printed": "30",
    "project_expr_sha256": "b98a60ca25648e5a68a8fd6e2d25500908f3dde1caaddeeeffc212f3623335aa",
    "second_expr_sha256": "6ca58ee473cdd3589a32c7b4a07677cf3db9fbf76df6536691b6b339f8d9ff05",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 3,239/6,501 agree; 3,044 candidate-unknown, 127 project-unknown, 80 candidate-refuses, 8 project-refuses, 2 candidate-shows-skipped, 1 candidate-hides-shown; completed: 31 candidate-unknown, 1 candidate-hides-shown. Each of lines 27-30 has shown_when dependent.h_edu_aoc, built on h_edu_base, which requires dependent.edu_tin_issued. Completed candidate-hides-shown f1.t113.dep_aoc_applied k0: project 27 $4,000.00, 28 $2,000.00, 29 $500.00, 30 $2,500.00; reply hidden. Pub. 970 p. 11 allows the credit when the TIN was applied for by the due date (T-113). The rest are candidate-unknowns. Lines 28-30 were ruled representation in the Landing round as inherited from 27; here each line's own display test carries the error.",
-   "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
+   "ruling": "Ruling: model error; triage 3,105/5,836 agree; 2516 candidate-unknown, 125 project-unknown, 85 candidate-refuses, 3 project-refuses, 1 candidate-hides-shown, 1 candidate-shows-skipped; completed returns: 6 candidate-unknown, 1 candidate-hides-shown. The reply's AOC gate requires an issued TIN, so it hides the credit for a student whose ATIN/ITIN was applied for by the due date (f1.t113.dep_aoc_applied); p970 p. 11 (owner decision T-113). As the Goal-1 round.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
    "date": "2026-11-15",
-   "run": "8447bec2ffe063c9f227b28c2ad5f47ecfd66b1bb8a49aa1daabb9fc831f771f",
-   "subject_key": "dc7e4a4bf2919bc376117fc6027379feb205ee99e968cf0bf996b7b033c832cd",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "8f0a53ea2a5f8e6d1f0d996e9e89bd82ac06ecc8bad47280315d2ae33699176f",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -2369,19 +2720,59 @@
      "fixture:classm.sa.2.deepseek@dependent[dep_a]",
      "fixture:classm.sa.6.deepseek@dependent[dep_b]",
      "fixture:classm.s179.3@dependent[dep_a]",
-     "fixture:classm.scveh.1@dependent[dep_a]",
      "fixture:classm.sli.2@dependent[dep_c]",
      "fixture:classm.tcw.3@dependent[dep_a]",
      "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
      "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
-     "generated:20261026.98@dependent[dep_b]",
-     "generated:20261026.106@dependent[dep_a]",
-     "generated:20261026.195@dependent[dep_a]",
-     "generated:20261026.249@dependent[dep_b]",
-     "generated:20261026.252@dependent[dep_a]",
-     "generated:20261026.282@dependent[dep_a]",
-     "generated:20261026.285@dependent[dep_c]",
-     "generated:20261026.327@dependent[dep_a]"
+     "generated:20261026.36@dependent[dep_a]",
+     "generated:20261026.47@dependent[dep_a]",
+     "generated:20261026.111@dependent[dep_a]",
+     "generated:20261026.337@dependent[dep_c]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "30",
+   "project_expr_sha256": "bacfb1ad6e6cd4c826b2bd48edf39280a8347a1e2d64e3c18070d8faea173d1e",
+   "second_expr_sha256": "6ca58ee473cdd3589a32c7b4a07677cf3db9fbf76df6536691b6b339f8d9ff05",
+   "ruling": "Ruling: model error; f8863 p. 2, line 30; as line 27: the same witness (f1.t113.dep_aoc_applied, k0; project $2,500, reply hidden). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,108 of 5,766 agree; on completed returns 124 candidate-unknown, 1 candidate-refuses, 1 candidate-hides-shown. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "5f19ffcf09aeb58d3af535ae7c880bf30fa20cb2516b9ca7073ac217ed283d64",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.s179.3@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]",
+     "fixture:f1.t113.dep_aoc_applied@dependent[k0]",
+     "fixture:mutation.t3.dependent_edu_1098t_unanswered@dependent[daughter]",
+     "generated:20261026.59@dependent[dep_a]",
+     "generated:20261026.337@dependent[dep_c]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2559,6 +2950,54 @@
      "generated:20261026.195@dependent[dep_a]",
      "generated:20261026.249@dependent[dep_b]",
      "generated:20261026.252@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "31",
+   "project_expr_sha256": "396486fca7116f95b65cbaec3fe259c6bd014b5a12b0368af79605dccc38d845",
+   "second_expr_sha256": "745c5413aff219dfbb4d25e2abd6913769a51ee3ef408d04e8e17fe91b25f836",
+   "ruling": "Ruling: model error; triage 3,099/5,836 agree; 2521 candidate-unknown, 124 project-unknown, 85 candidate-refuses, 6 project-refuses, 1 candidate-hides-shown; completed returns: 6 candidate-unknown, 1 project-refuses. Embeds the reply's dependent test; the project refusal (stage19.mut.claimed_filer_llc) is the owner's T-113 LLC refusal (scope). i8863 p. 3. As the Goal-1 round.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "cfdbc58289b061e110370311a1b3bd009281fefe9b2bd0b844f1a2ac38ed82b7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.s179.3@dependent[dep_a]",
+     "fixture:classm.sli.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:f1.t113.dep_llc_applied@dependent[daughter]",
+     "fixture:stage19.mut.classm_f5329_3_dependent_no_ein@dependent[dep_a]",
+     "fixture:stage19.mut.claimed_filer_llc@dependent[daughter]",
+     "generated:20261026.36@dependent[dep_a]",
+     "generated:20261026.47@dependent[dep_a]",
+     "generated:20261026.111@dependent[dep_a]",
+     "generated:20261026.337@dependent[dep_c]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2833,6 +3272,51 @@
      "generated:20261026.36@dependent[dep_a]",
      "generated:20261026.112@dependent[dep_a]",
      "generated:20261026.161@dependent[dep_c]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "31",
+   "project_expr_sha256": "8ee4f3c2c17f75240d2bff21a3d0bca9dbf0848167e78596bd2c4579c7ebc285",
+   "second_expr_sha256": "2f6a5838fc1269c32f7ccb3ed07cd75623f79d566b96952f15305593678a1da7",
+   "ruling": "Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit. As ruled on this line before, the reply's eligible-student path asks answers the project does not and refuses where the project computes. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,101 of 5,766 agree; on completed returns 125 candidate-unknown, 1 candidate-refuses, 1 project-refuses, no value difference. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "780509ed33450f65d3ebc07a05db1a0f599f4784713ef53a24cbd112794f2a2c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.s179.3@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]",
+     "fixture:f1.t113.dep_llc_applied@dependent[daughter]",
+     "fixture:stage19.mut.classm_f5329_3_dependent_no_ein@dependent[dep_a]",
+     "fixture:stage19.mut.claimed_filer_llc@dependent[daughter]",
+     "fixture:mutation.t4.dependent_edu_paid_unanswered_no_1098t@dependent[daughter]",
+     "generated:20261026.59@dependent[dep_a]",
+     "generated:20261026.337@dependent[dep_c]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -3378,6 +3862,102 @@
   {
    "printed": "dependent.actc_amount",
    "project_expr_sha256": "b15301eef73f1ad286b74fde29041700c8f7c2c8b997ba24b041602f18c42c16",
+   "second_expr_sha256": "b6a5c5c3bb0010b2a23ad552212bdbe48ce12db8dde45060e1f5f2221d63af88",
+   "ruling": "Ruling: model error; the $1,700 ceiling embeds the reply's dependent test, ruled a model error on dependent.claimed and dependent.ctc_child (f1040s8812 p. 2, line 16b). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,990 of 5,766 agree; on completed returns 57 candidate-unknown, 1 candidate-refuses, no value difference. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "65bf0ec467ac75e9111fc854d8ab403a7521e1a9f1c2c99f1bd8ebfd791606b5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.s3.1.deepseek@dependent[dep_c]",
+     "fixture:classm.s3.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.multiple_support@dependent[parent]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage9.mut.household_child_other_claimant_not_eic@dependent[kid]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:mfsl4.spouse_claims@dependent[kid]",
+     "fixture:mfsl4.not_parent@dependent[kid]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.70@dependent[dep_a]",
+     "generated:20261026.121@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.actc_amount",
+   "project_expr_sha256": "b15301eef73f1ad286b74fde29041700c8f7c2c8b997ba24b041602f18c42c16",
+   "second_expr_sha256": "f50f1c0def1f9979822debacfadb767658819a0afa13ff83aaf7310d8811aa93",
+   "ruling": "Ruling: model error; triage 5,091/5,836 agree; 418 project-unknown, 260 candidate-unknown, 34 project-refuses, 32 candidate-refuses, 1 value; completed returns: 6 candidate-unknown. Embeds the reply's own dependent test (months-only residency, its screening inputs read ungated: the completed-return unknowns are dependent.multiple_support / months / married / divorced_rule read where the project's gates skip them), as the Goal-1 round ruled (i1040gi pp. 18-19, Steps 2 and 4; p501 p. 9). The reply's spouse tiebreak also omits the filer-parent condition (dependent.filer_parent): with the husband or wife the only other claimant and not claiming, it lets a filer who is not the child's parent claim; p501 p. 15: \"If a parent can claim the child as a qualifying child but no parent does so claim the child, the child is treated as the qualifying child of the person who had the highest AGI for the year, but only if that person's AGI is higher than the highest AGI of any of the child's parents who can claim the child\". The project refuses that case at dependent.qc_tiebreak (amb.2025.mfs_spouse_qc); the reply is wrong there.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "65bf0ec467ac75e9111fc854d8ab403a7521e1a9f1c2c99f1bd8ebfd791606b5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.s3.1.deepseek@dependent[dep_c]",
+     "fixture:classm.s3.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_b]",
+     "fixture:classm.sa.3@dependent[dep_a]",
+     "fixture:classm.sa.4@dependent[dep_a]",
+     "fixture:classm.sa.5@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.multiple_support@dependent[parent]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.70@dependent[dep_a]",
+     "generated:20261026.121@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.actc_amount",
+   "project_expr_sha256": "b15301eef73f1ad286b74fde29041700c8f7c2c8b997ba24b041602f18c42c16",
    "second_expr_sha256": "f8fd3ff143dfba42e0be0d9dadce814515b4546d9182dd27c3b15a67e6889e69",
    "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,686/6,501 agree; 487 project-unknown, 260 candidate-unknown, 37 project-refuses, 31 candidate-refuses; completed: 13 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
    "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
@@ -3629,6 +4209,59 @@
   {
    "printed": "dependent.claimed",
    "project_expr_sha256": "68cf40ce6be781c175965c8eaaea5fd65ce886896cd6ae947ad0a743e9217cc2",
+   "second_expr_sha256": "6d5c9383d71a82b2f3e472e3c0b5a02d60decf80d7c8fa60e32762a3c4241ce2",
+   "ruling": "Ruling: model error; triage 4,534/5,836 agree; 700 candidate-unknown, 294 project-refuses, 281 project-unknown, 21 candidate-refuses, 6 value; completed returns: 6 candidate-unknown. Embeds the reply's own dependent test (months-only residency, its screening inputs read ungated: the completed-return unknowns are dependent.multiple_support / months / married / divorced_rule read where the project's gates skip them), as the Goal-1 round ruled (i1040gi pp. 18-19, Steps 2 and 4; p501 p. 9). The reply's spouse tiebreak also omits the filer-parent condition (dependent.filer_parent): with the husband or wife the only other claimant and not claiming, it lets a filer who is not the child's parent claim; p501 p. 15: \"If a parent can claim the child as a qualifying child but no parent does so claim the child, the child is treated as the qualifying child of the person who had the highest AGI for the year, but only if that person's AGI is higher than the highest AGI of any of the child's parents who can claim the child\". The project refuses that case at dependent.qc_tiebreak (amb.2025.mfs_spouse_qc); the reply is wrong there.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "493382be62985f3c0e9bc219f22a56a8063edea53ab1eab73364985435fdde07",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_b]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:classm.sa.1@dependent[dep_b]",
+     "fixture:classm.sa.7@dependent[dep_a]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "generated:20261026.119@dependent[dep_a]",
+     "generated:20261026.121@dependent[dep_b]",
+     "generated:20261026.121@dependent[dep_c]",
+     "generated:20261026.362@dependent[dep_a]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_a].age@dependent[dep_a]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_a].disabled@dependent[dep_a]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_a].tin@dependent[dep_a]",
+     "partial:classm.f8960.3.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.claimed",
+   "project_expr_sha256": "68cf40ce6be781c175965c8eaaea5fd65ce886896cd6ae947ad0a743e9217cc2",
    "second_expr_sha256": "e1276866e4b3b746252e2ac8a27749ae849b32f56ef116e0582bb5e7381aa45e",
    "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,059/6,501 agree; 774 candidate-unknown, 349 project-unknown, 295 project-refuses, 22 candidate-refuses, 2 value; completed: 25 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
    "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
@@ -3671,6 +4304,59 @@
      "partial:classm.f8960.3.deepseek-dependent[dep_a].age@dependent[dep_a]",
      "partial:classm.f8960.3.deepseek-dependent[dep_a].disabled@dependent[dep_a]",
      "partial:classm.f8960.3.deepseek-dependent[dep_a].tin@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.claimed",
+   "project_expr_sha256": "716280d84aa57b850154b152e394a698735284e84e8e0f4bc95dac23ef92ab81",
+   "second_expr_sha256": "f4ae2ae0ab47cdbbd756fa92e0827d89df4c12d47e077ed64fd46f3bae7a105e",
+   "ruling": "Ruling: model error; i1040gi p. 19, Step 4, \"Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn't violate local law\". executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,290 of 5,766 agree; on completed returns 128 candidate-unknown, 1 candidate-refuses, 3 value. The three value witnesses (generated 20261026.135 dep_b, .269 dep_a, .497 dep_b) are household members (relationship household_member) who did not live with the filer all year and are not related to the spouse; the project's qr_household_member is false, so the person is not a qualifying relative and is not claimed; the reply's h_dep_base claims them. As ruled on this line before, the reply does not apply the all-year test to a member-of-household qualifying relative. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "ce695b295011697cb3d70901169f611c3c6d59e59dd24e9e3476629ce7f70fc5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_b]",
+     "fixture:classm.f8962.3.gpt@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:xleak.income_exception.disabled_unanswered@dependent[member]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:xleak.spouse_relative.household_member_all_year_unanswered@dependent[member]",
+     "fixture:xleak.spouse_relative.other_all_year_lawful_unanswered@dependent[member]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.f8880.hoh_line4@dependent[dep_a]",
+     "generated:20261026.118@dependent[dep_c]",
+     "generated:20261026.119@dependent[dep_a]",
+     "generated:20261026.126@dependent[dep_b]",
+     "generated:20261026.186@dependent[dep_a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -4460,6 +5146,54 @@
   {
    "printed": "dependent.ctc_amount",
    "project_expr_sha256": "fc3a4c6e3716fab12c556f18c2bab00ca4dc8480f75505fe56657ca423ebc43c",
+   "second_expr_sha256": "1dcb8627881817ea2b1fe8363ce509d04606a81fcc028fd66151cf2f6677db09",
+   "ruling": "Ruling: model error; triage 5,091/5,836 agree; 418 project-unknown, 260 candidate-unknown, 34 project-refuses, 32 candidate-refuses, 1 value; completed returns: 6 candidate-unknown. Embeds the reply's own dependent test (months-only residency, its screening inputs read ungated: the completed-return unknowns are dependent.multiple_support / months / married / divorced_rule read where the project's gates skip them), as the Goal-1 round ruled (i1040gi pp. 18-19, Steps 2 and 4; p501 p. 9). The reply's spouse tiebreak also omits the filer-parent condition (dependent.filer_parent): with the husband or wife the only other claimant and not claiming, it lets a filer who is not the child's parent claim; p501 p. 15: \"If a parent can claim the child as a qualifying child but no parent does so claim the child, the child is treated as the qualifying child of the person who had the highest AGI for the year, but only if that person's AGI is higher than the highest AGI of any of the child's parents who can claim the child\". The project refuses that case at dependent.qc_tiebreak (amb.2025.mfs_spouse_qc); the reply is wrong there.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "22d7d982c41cd7305a656a77bea962190878154d99458276d044dc4953833d0b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.s3.1.deepseek@dependent[dep_c]",
+     "fixture:classm.s3.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_b]",
+     "fixture:classm.sa.3@dependent[dep_a]",
+     "fixture:classm.sa.4@dependent[dep_a]",
+     "fixture:classm.sa.5@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.multiple_support@dependent[parent]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.70@dependent[dep_a]",
+     "generated:20261026.121@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.ctc_amount",
+   "project_expr_sha256": "fc3a4c6e3716fab12c556f18c2bab00ca4dc8480f75505fe56657ca423ebc43c",
    "second_expr_sha256": "68d6e8cf3a17e98e3ac41042fc1fae6d67379ee3dac285428d7bd411c84b2ce6",
    "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,686/6,501 agree; 487 project-unknown, 260 candidate-unknown, 37 project-refuses, 31 candidate-refuses; completed: 13 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
    "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
@@ -4545,6 +5279,54 @@
      "fixture:stage9.mut.household_child_other_claimant_not_eic@dependent[kid]",
      "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
      "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.ctc_amount",
+   "project_expr_sha256": "fc3a4c6e3716fab12c556f18c2bab00ca4dc8480f75505fe56657ca423ebc43c",
+   "second_expr_sha256": "fde978f6c41c2c2bffb4eb966c5ad77f69d50ff92fe2118ef6b34ed2e0996fbb",
+   "ruling": "Ruling: model error; the $2,200 amount embeds the reply's dependent test, ruled a model error on dependent.claimed and dependent.ctc_child. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,990 of 5,766 agree; on completed returns 57 candidate-unknown, 1 candidate-refuses, no value difference. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "22d7d982c41cd7305a656a77bea962190878154d99458276d044dc4953833d0b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.s3.1.deepseek@dependent[dep_c]",
+     "fixture:classm.s3.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.multiple_support@dependent[parent]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage9.mut.household_child_other_claimant_not_eic@dependent[kid]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:mfsl4.spouse_claims@dependent[kid]",
+     "fixture:mfsl4.not_parent@dependent[kid]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.70@dependent[dep_a]",
+     "generated:20261026.121@dependent[dep_b]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -5052,6 +5834,102 @@
   {
    "printed": "dependent.ctc_child",
    "project_expr_sha256": "c17e9b53371d1cf6b4c8602e5165c51499cbf0eb83f7fc9a906946fefa97542d",
+   "second_expr_sha256": "2c16a1f55c3e2422cb156223c212eb7b4ca3dedc9ccc17780705275cfe00c86d",
+   "ruling": "Ruling: model error; as ruled on this line on 2026-11-15: the line embeds the reply's dependent test (dependent.claimed), which carries the errors ruled there (i1040gi p. 19, Step 4; pp. 18-19, Step 2). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,990 of 5,766 agree; on completed returns 57 candidate-unknown, 1 candidate-refuses, no value difference. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "4aa863b6f86c5504cc44e5573312be5c663676ef6832ad8005af9a88375db65b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.s3.1.deepseek@dependent[dep_c]",
+     "fixture:classm.s3.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.multiple_support@dependent[parent]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage9.mut.household_child_other_claimant_not_eic@dependent[kid]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:mfsl4.spouse_claims@dependent[kid]",
+     "fixture:mfsl4.not_parent@dependent[kid]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.70@dependent[dep_a]",
+     "generated:20261026.121@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.ctc_child",
+   "project_expr_sha256": "c17e9b53371d1cf6b4c8602e5165c51499cbf0eb83f7fc9a906946fefa97542d",
+   "second_expr_sha256": "633a2da24078edca75d21dd38d5ba83a19cfdf02204e1fb2dd6f7bae0e84e0f7",
+   "ruling": "Ruling: model error; triage 5,091/5,836 agree; 418 project-unknown, 260 candidate-unknown, 34 project-refuses, 32 candidate-refuses, 1 value; completed returns: 6 candidate-unknown. Embeds the reply's own dependent test (months-only residency, its screening inputs read ungated: the completed-return unknowns are dependent.multiple_support / months / married / divorced_rule read where the project's gates skip them), as the Goal-1 round ruled (i1040gi pp. 18-19, Steps 2 and 4; p501 p. 9). The reply's spouse tiebreak also omits the filer-parent condition (dependent.filer_parent): with the husband or wife the only other claimant and not claiming, it lets a filer who is not the child's parent claim; p501 p. 15: \"If a parent can claim the child as a qualifying child but no parent does so claim the child, the child is treated as the qualifying child of the person who had the highest AGI for the year, but only if that person's AGI is higher than the highest AGI of any of the child's parents who can claim the child\". The project refuses that case at dependent.qc_tiebreak (amb.2025.mfs_spouse_qc); the reply is wrong there.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "4aa863b6f86c5504cc44e5573312be5c663676ef6832ad8005af9a88375db65b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.s3.1.deepseek@dependent[dep_c]",
+     "fixture:classm.s3.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_b]",
+     "fixture:classm.sa.3@dependent[dep_a]",
+     "fixture:classm.sa.4@dependent[dep_a]",
+     "fixture:classm.sa.5@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.multiple_support@dependent[parent]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "generated:20261026.70@dependent[dep_a]",
+     "generated:20261026.121@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.ctc_child",
+   "project_expr_sha256": "c17e9b53371d1cf6b4c8602e5165c51499cbf0eb83f7fc9a906946fefa97542d",
    "second_expr_sha256": "a698e610525e2808cf3a682752b7feaeac566dbee48537b870cb7b17e544f6c4",
    "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,686/6,501 agree; 487 project-unknown, 260 candidate-unknown, 37 project-refuses, 31 candidate-refuses; completed: 13 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
    "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
@@ -5091,6 +5969,45 @@
      "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
      "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
      "generated:20261026.70@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.dc_count",
+   "project_expr_sha256": "63a9c459afcb64ea1ce4e93df3368655c636b9ed8c3015ad5212f63a1e328dbe",
+   "second_expr_sha256": "0c727f695a6fb849c9f984e075103f7243c91bd96d971f8bd7cc8c4f8fde480c",
+   "ruling": "Ruling: representation; project retained. The project counts one per entry and applies the qualifying-person test where the count is summed (f2441.qp_count, where dependent.dc_qp); the reply puts the test on the count itself (i2441 p. 3, Line 2). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 1,195 of 5,766 agree; on completed returns 119 candidate-unknown, 1 candidate-refuses, 203 value. The six recorded completed witnesses are project 1, reply 0 on persons who are not qualifying persons; the summed total is the same. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "a10eb4cf313d966e5f641cceb157f94b10b1e50c6be5c33cacb78096989f4010",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.g28.1.deepseek@dependent[dep_a]",
+     "fixture:classm.g28.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sd.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sd.2.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -5416,6 +6333,45 @@
   },
   {
    "printed": "dependent.dc_count",
+   "project_expr_sha256": "63a9c459afcb64ea1ce4e93df3368655c636b9ed8c3015ad5212f63a1e328dbe",
+   "second_expr_sha256": "f20c43a7dfe6d18f6710c3cefab0c20d1531e8c7b919496950ed3677c8eceb59",
+   "ruling": "Ruling: model error; triage 1,169/5,836 agree; 2317 candidate-unknown, 2259 value, 91 candidate-refuses; completed returns: 6 value, 6 candidate-unknown. The qualifying-child path uses the reply's months-only test and its dependent test; the completed values are the f2441.care gate or the reader's count filter, as the Goal-1 round ruled. i2441 p. 1, Qualifying Person(s); p503 p. 3, Birth or death of otherwise qualifying person.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "a10eb4cf313d966e5f641cceb157f94b10b1e50c6be5c33cacb78096989f4010",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.g28.1.deepseek@dependent[dep_a]",
+     "fixture:classm.g28.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sd.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sli.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.dc_count",
    "project_expr_sha256": "9497959d6c4418610bf1548ac6f2e6cfefbbcf3e7fb7da0df1bde2ef5cf84661",
    "second_expr_sha256": "614a8a101b668dffcaf24d2e13700979d7998d7a74d7aed4887b504c335dc037",
    "ruling": "Ruling: representation; project retained. The second gives 1 for a qualifying person and 0 otherwise; the project's per-entry count is 1 and the only line that reads it, `f2441.qp_count`, sums it over the dependents with `dependent.dc_qp` true, so the number of qualifying persons is the same (i2441 p. 3, Line 2, \"Complete columns (a) through (d) for each qualifying person\" and \"Don't list a person on line 2 unless they are listed as an eligible person under Qualifying Person(s), earlier\").",
@@ -5444,12 +6400,190 @@
    "subject_key": "a10eb4cf313d966e5f641cceb157f94b10b1e50c6be5c33cacb78096989f4010"
   },
   {
+   "printed": "dependent.dc_lived_half",
+   "project_expr_sha256": "1620f144aefc2dba54df01b8d8d32d76b661365f205c01a45b1ea16c41c9ee5f",
+   "second_expr_sha256": "02bef2ed026baeab957b7890728b690d0eb7288c6e9974e874c5573195038ed8",
+   "ruling": "Ruling: model error; triage 5,451/5,836 agree; 322 candidate-unknown, 38 project-unknown, 25 project-refuses; completed returns: 6 candidate-unknown, 1 project-refuses. The reply tests months only; the project's line also holds for a qualifying child born or who died in 2025 who lived with the filer the part of the year alive (dependent.born_died, dependent.part_year_home), which the reply drops. i2441 p. 1, Qualifying Person(s); p503 p. 3, Birth or death of otherwise qualifying person. The one project refusal (t091.kidnapped.age19) is the kidnapped-child refusal (scope).",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "62ec375436376aa20b09935035bef30c97a9f574b17a063e8196e4bbd982ffdf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.1@dependent[dep_a]",
+     "fixture:classm.asset.1@dependent[dep_b]",
+     "fixture:classm.asset.3@dependent[dep_a]",
+     "fixture:classm.asset.4@dependent[dep_a]",
+     "fixture:classm.f4952.1@dependent[dep_a]",
+     "fixture:classm.f4952.1@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_b]",
+     "fixture:classm.sa.1@dependent[dep_b]",
+     "fixture:classm.sa.3@dependent[dep_a]",
+     "fixture:classm.sa.4@dependent[dep_a]",
+     "fixture:classm.sa.5@dependent[dep_b]",
+     "partial:classm.f2441.1.deepseek-dependent[a].lived_all_year@dependent[a]",
+     "partial:classm.f2441.5.deepseek-dependent[a].lived_all_year@dependent[a]",
+     "partial:classm.f2441.5.deepseek-dependent[b].lived_all_year@dependent[b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].lived_all_year@dependent[dep_b]",
+     "partial:classm.sd.2.deepseek-dependent[dep_a].lived_all_year@dependent[dep_a]",
+     "partial:classm.sd.2.deepseek-dependent[dep_b].lived_all_year@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.dc_lived_half",
+   "project_expr_sha256": "1620f144aefc2dba54df01b8d8d32d76b661365f205c01a45b1ea16c41c9ee5f",
+   "second_expr_sha256": "dafa75b0719d6baef4f25d6283a402dc8ede2cdcf6f9214eeb740ea9e7e834cc",
+   "ruling": "Ruling: model error; as ruled on this line on 2026-11-15: the reply tests months only, and the project's line also holds for a qualifying child born or who died in 2025 who lived with the filer for the part of the year alive. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 5,054 of 5,766 agree; on completed returns 80 candidate-unknown, 1 project-refuses, no value difference. Re-reviewed whole after the xleak-01/02 rewrite of income_exception, qr_household_member and qr_other_relation, which this line does not read. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "62ec375436376aa20b09935035bef30c97a9f574b17a063e8196e4bbd982ffdf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.asset.1@dependent[dep_a]",
+     "fixture:classm.asset.1@dependent[dep_b]",
+     "fixture:classm.asset.3@dependent[dep_a]",
+     "fixture:classm.asset.4@dependent[dep_a]",
+     "fixture:classm.f4952.1@dependent[dep_a]",
+     "fixture:classm.f4952.1@dependent[dep_b]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]",
+     "fixture:xleak.income_exception.disabled_unanswered@dependent[member]",
+     "fixture:t091.kidnapped.age19@dependent[parent]",
+     "fixture:xleak.spouse_relative.household_member_all_year_unanswered@dependent[member]",
+     "fixture:xleak.spouse_relative.other_all_year_lawful_unanswered@dependent[member]",
+     "fixture:mfsl4.settled_not_qc_spouse_taxpayer@dependent[kid]",
+     "fixture:stage21.choose.eic_limit_status_unanswered@dependent[child]",
+     "partial:classm.f2441.1.deepseek-dependent[a].lived_all_year@dependent[a]",
+     "partial:classm.f2441.5.deepseek-dependent[a].lived_all_year@dependent[a]",
+     "partial:classm.f2441.5.deepseek-dependent[b].lived_all_year@dependent[b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].lived_all_year@dependent[dep_b]",
+     "partial:classm.sd.2.deepseek-dependent[dep_a].lived_all_year@dependent[dep_a]",
+     "partial:classm.sd.2.deepseek-dependent[dep_b].lived_all_year@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.dc_qp",
+   "project_expr_sha256": "0506431c0148770d57c748e8b089c21f5a89ce9ee2310dda1445844ae37f87f2",
+   "second_expr_sha256": "e484523f410b77d8a3fe76a66b540950406a929fcf420a363afb12ae0179578c",
+   "ruling": "Ruling: model error; the line's label requires care expenses (\"you have care expenses, and this person is your dependent...\"), and i2441 p. 1, Qualifying Person(s). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 2,693 of 5,766 agree; on completed returns 119 candidate-unknown, 1 candidate-refuses, 176 value. The six recorded completed witnesses (classm.f1040.1.deepseek dep_c, classm.f1040.5.deepseek dep_a, stage8.single.dependent.boundaries mexico, stage8.single.dependent.household_and_ssn no_work_ssn, t091.absence.other_tests_unchanged child, f1.kidnapped.returned_11 child) all have f2441.care false: the project's line is false with no care expenses, and the reply's h_dc_qp_child omits that prerequisite, as ruled on this line before. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "1e1118fdb102e0182ce35bcef4e1f8a9b5fc651eee7e8a9623b60427d6ed3f6f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.g28.1.deepseek@dependent[dep_c]",
+     "fixture:classm.g28.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sd.1.deepseek@dependent[dep_c]",
+     "fixture:classm.u1250.1.deepseek@dependent[dep_c]",
+     "fixture:classm.clcw_next_year.1.deepseek@dependent[dep_c]",
+     "fixture:classm.clcw_next_year.2.deepseek@dependent[dep_c]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]",
+     "fixture:stage15.refuse.dependent.dc_no_tin@dependent[a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].age@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].disabled@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].married@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].tin@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].gross_income@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].divorced_rule@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "dependent.dc_qp",
    "project_expr_sha256": "10d38e5c2650ad0e18f711cdd497a10cfe33d5957c59b9d806f0afc7b6bc259c",
    "second_expr_sha256": "f726c9723e242262513f6172b47b164202b814fdad3050d088b6b51f5e678648",
    "ruling": "Ruling: model error; i2441 p. 1, Purpose of Form: \"If you paid someone to care for your child or other qualifying person so you (or your spouse if filing jointly) could work or look for work in 2025, you may be able to take the credit\"; p503 p. 3, Birth or death of otherwise qualifying person: \"a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive in 2025\". (1) The sampled values are f2441.care no (classm.f4952.1.deepseek, classm.f8960.1.deepseek, classm.g28.1.deepseek, classm.sd.1.deepseek dep_c, completed: project no, candidate yes): the care omission reaches no Form 2441 amount (representation, as every round). (2) By reading, the disabled route still needs 7 or more months and has no death-year rule (born_died and part_year_home were published), so stage15.f2441.parent_died_part_year (BUG-0157) is a qualifying person in the project and not in the candidate: model error, as last round. (3) Refusals and unknowns: its dependent.claimed's multiple_support, married, other_claimant and divorced_rule refusals (classm.s3.4.deepseek, classm.f8880.4, classm.carloan.1, classm.f8889.2.deepseek) and dc_incapable or dc_under13 asked with no care (classm.aqee.2.deepseek, classm.asset.1, classm.f8959.2); the project refusal is its cited claimed_no_tin screen (stage15.refuse.dependent.dc_no_tin); project-unknown partials withhold tin. Triage executable-triage-v2 (triage/dependent.json; 1,325 fixtures, 500 generated returns seed 20261026, 2,284 partial records): 4,308 of 6,903 comparisons agree; 413 candidate-refuses, 722 candidate-unknown, 1 project-refuses, 4 project-unknown, 1,455 value; on returns the full interview completes: 2 candidate-refuses, 90 candidate-unknown, 776 value.",
    "context": "6375ba2223c6c18f8a153be3e95f38f652f7408db7448e56e379c4f74fd5f905",
    "subject_key": "e4e954c87987beeba0c38390507590edf45944ac394e92eb76b21671896e0d6c"
+  },
+  {
+   "printed": "dependent.dc_qp",
+   "project_expr_sha256": "15ca0a4917038d23b9449215c78c31e375c6560964af304375b72a28c398d256",
+   "second_expr_sha256": "4298a1b3bd4bc1d592c5f383efa78a0cad4544fadd46daba0decba0f8a2bc80f",
+   "ruling": "Ruling: model error; triage 2,506/5,836 agree; 2217 candidate-unknown, 1015 value, 88 candidate-refuses, 9 project-unknown, 1 project-refuses; completed returns: 6 value, 6 candidate-unknown. The qualifying-child path uses the reply's months-only test and its dependent test; the completed values are the f2441.care gate or the reader's count filter, as the Goal-1 round ruled. i2441 p. 1, Qualifying Person(s); p503 p. 3, Birth or death of otherwise qualifying person.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "7fccd4000a2b7d025de9e1a0aa4c9cab993bb04ac2a946df9b0186c5659c8b5c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[a]",
+     "fixture:classm.f2441.2.deepseek@dependent[b]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.g28.1.deepseek@dependent[dep_c]",
+     "fixture:classm.g28.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sd.1.deepseek@dependent[dep_c]",
+     "fixture:classm.u1250.1.deepseek@dependent[dep_c]",
+     "fixture:classm.clcw_next_year.1.deepseek@dependent[dep_c]",
+     "fixture:classm.clcw_next_year.2.deepseek@dependent[dep_c]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sli.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:stage15.refuse.dependent.dc_no_tin@dependent[a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].age@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].married@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].tin@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].gross_income@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].multiple_support@dependent[dep_a]",
+     "partial:classm.dependent.4.deepseek-dependent[dep_a].lived_all_year@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "dependent.dc_qp",
@@ -6305,6 +7439,52 @@
   {
    "printed": "dependent.eic_child",
    "project_expr_sha256": "897f5e75b3a54aac42c089edc65eada9e446d9e1c6fa694f4532812873d037a4",
+   "second_expr_sha256": "0ac725be0bc4b4d76e76fb1bd7dd620c6f15415af2d1b47897afedc9bf6db77f",
+   "ruling": "Ruling: model error; triage 5,335/5,836 agree; 274 candidate-unknown, 168 project-unknown, 46 candidate-refuses, 13 project-refuses; completed returns: 6 candidate-unknown. The reply reads the married and divorced-parent screening inputs ungated (the completed-return unknowns) and its EIC tiebreak settles a child the husband or wife does not claim for any filer, parent or not; the EIC uses the same tiebreaker rules (i1040gi p. 44, Qualifying child of more than one person; p501 p. 15, \"but only if that person's AGI is higher than the highest AGI of any of the child's parents\"). The project settles it only for a filer who is the parent (dependent.eic_tiebreak_unsettled).",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "af77091f2a693728ad924ab3d918421cf767ccd3a4609c2fbb8021ceb8a40710",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.4.deepseek@dependent[dep_b]",
+     "fixture:classm.f8962.2.deepseek@dependent[dep_b]",
+     "fixture:classm.s8812.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_c]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.asset.1@dependent[dep_a]",
+     "fixture:classm.asset.3@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.f4952.1@dependent[dep_a]",
+     "fixture:classm.f4952.1@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:classm.sa.1@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:mfsl4.spouse_claims@dependent[kid]",
+     "fixture:mfsl4.not_parent@dependent[kid]",
+     "fixture:mfsl4.other_relative_too@dependent[kid]",
+     "fixture:f1.t153.own_child_nontaxpayer_other@dependent[child]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.eic_child",
+   "project_expr_sha256": "897f5e75b3a54aac42c089edc65eada9e446d9e1c6fa694f4532812873d037a4",
    "second_expr_sha256": "22c5b8263152ae67c69a153e5b296782da45f889b86791a0b7c5f867bd4d0e51",
    "ruling": "Ruling: representation; the reply's EIC tests (relationship, age, not filing a joint return, lived with you in the United States over half the year, i1040gi p. 41, Step 3) are the project's; the project refuses the tie-breaker, married child and kidnapped child cases (i1040gi p. 44) where the reply reads married and divorced_rule directly. Triage .transcription/triage/2025/dependent.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 5,761 agree, 428 differ, all unknown or refusals; no value witness. (carried over from reviews/2025/transcription/dependent.index.json at f457604f, review of 2026-11-14)",
    "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
@@ -6344,6 +7524,52 @@
      "fixture:f1.t153.own_child_nontaxpayer_other@dependent[child]",
      "fixture:stage9.eic.refuse.child_of_another@dependent[child]",
      "fixture:stage21.d3.kidnapped_child_refused@dependent[child]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.eic_child",
+   "project_expr_sha256": "897f5e75b3a54aac42c089edc65eada9e446d9e1c6fa694f4532812873d037a4",
+   "second_expr_sha256": "a5d99553a9c609446cfa32d4b6f7aece8e61dda48bfee4143d9890f830b7505f",
+   "ruling": "Ruling: representation; as ruled on this line on 2026-11-15: the reply's EIC tests (relationship, age, not filing a joint return, lived with you in the United States over half the year, i1040gi p. 41, Step 3) are the project's; the project refuses the tie-breaker, married child and kidnapped child cases (i1040gi p. 44) where the reply reads more answers. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,830 of 5,766 agree; on completed returns 86 candidate-unknown, 1 project-unknown, no value difference.; every difference is an unknown or a refusal. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "af77091f2a693728ad924ab3d918421cf767ccd3a4609c2fbb8021ceb8a40710",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.4.deepseek@dependent[dep_b]",
+     "fixture:classm.f8962.2.deepseek@dependent[dep_b]",
+     "fixture:classm.s8812.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_c]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.asset.1@dependent[dep_a]",
+     "fixture:classm.asset.3@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.f4952.1@dependent[dep_a]",
+     "fixture:classm.f4952.1@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:mfsl4.spouse_claims@dependent[kid]",
+     "fixture:mfsl4.not_parent@dependent[kid]",
+     "fixture:mfsl4.other_relative_too@dependent[kid]",
+     "fixture:f1.t153.friend_child_taxpayer@dependent[child]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -6642,6 +7868,98 @@
   {
    "printed": "dependent.eic_ssn_child",
    "project_expr_sha256": "e7e54c7679ec19d1f8422c99981192af37d1a0498dae74ca2df632d63c3d61ec",
+   "second_expr_sha256": "446cca9c33027697187c507731f3a8e70b35cd3a4c47dc57925d977db8efd3aa",
+   "ruling": "Ruling: model error; triage 5,310/5,836 agree; 270 candidate-unknown, 197 project-unknown, 46 candidate-refuses, 13 project-refuses; completed returns: 6 candidate-unknown. The reply reads the married and divorced-parent screening inputs ungated (the completed-return unknowns) and its EIC tiebreak settles a child the husband or wife does not claim for any filer, parent or not; the EIC uses the same tiebreaker rules (i1040gi p. 44, Qualifying child of more than one person; p501 p. 15, \"but only if that person's AGI is higher than the highest AGI of any of the child's parents\"). The project settles it only for a filer who is the parent (dependent.eic_tiebreak_unsettled).",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "3ceb46303dd65bbdb9a4ab6e268a0b97b2fd4a8050c93f0f2a03cde95253a3d6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.4.deepseek@dependent[dep_b]",
+     "fixture:classm.f8962.2.deepseek@dependent[dep_b]",
+     "fixture:classm.s8812.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_c]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.asset.1@dependent[dep_a]",
+     "fixture:classm.asset.3@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.f4952.1@dependent[dep_a]",
+     "fixture:classm.f4952.1@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:classm.sa.1@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:mfsl4.spouse_claims@dependent[kid]",
+     "fixture:mfsl4.not_parent@dependent[kid]",
+     "fixture:mfsl4.other_relative_too@dependent[kid]",
+     "fixture:f1.t153.own_child_nontaxpayer_other@dependent[child]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.eic_ssn_child",
+   "project_expr_sha256": "e7e54c7679ec19d1f8422c99981192af37d1a0498dae74ca2df632d63c3d61ec",
+   "second_expr_sha256": "46d38dcf3ddf45b359d832a4c3695a0900da23140a1a6f9564651f75a91bdefd",
+   "ruling": "Ruling: representation; dependent.eic_child with a valid SSN (i1040gi p. 41); the same differences as eic_child. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,810 of 5,766 agree; on completed returns 85 candidate-unknown, 1 project-unknown, no value difference.; every difference is an unknown or a refusal. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "3ceb46303dd65bbdb9a4ab6e268a0b97b2fd4a8050c93f0f2a03cde95253a3d6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.4.deepseek@dependent[dep_b]",
+     "fixture:classm.f8962.2.deepseek@dependent[dep_b]",
+     "fixture:classm.s8812.4.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_c]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.asset.1@dependent[dep_a]",
+     "fixture:classm.asset.3@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.f4952.1@dependent[dep_a]",
+     "fixture:classm.f4952.1@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.other_claimant@dependent[child]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:mfsl4.spouse_claims@dependent[kid]",
+     "fixture:mfsl4.not_parent@dependent[kid]",
+     "fixture:mfsl4.other_relative_too@dependent[kid]",
+     "fixture:f1.t153.friend_child_taxpayer@dependent[child]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.eic_ssn_child",
+   "project_expr_sha256": "e7e54c7679ec19d1f8422c99981192af37d1a0498dae74ca2df632d63c3d61ec",
    "second_expr_sha256": "b71c75c9c4bfdb2077b4f2609ccd08e302e19a79894db5e08d16c00644bd9689",
    "ruling": "Ruling: representation; dependent.eic_child with a valid SSN (i1040gi p. 41); same differences as eic_child. Triage .transcription/triage/2025/dependent.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 5,732 agree, 457 differ, all unknown or refusals; no value witness. (carried over from reviews/2025/transcription/dependent.index.json at f457604f, review of 2026-11-14)",
    "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
@@ -6681,6 +7999,52 @@
      "fixture:f1.t153.own_child_nontaxpayer_other@dependent[child]",
      "fixture:stage9.eic.refuse.child_of_another@dependent[child]",
      "fixture:stage21.d3.kidnapped_child_refused@dependent[child]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.hoh_absence",
+   "project_expr_sha256": "013f57f5981573907ab0c4296eb8eb4b2068a5f25d44251416085890d3ab0c5f",
+   "second_expr_sha256": "4e7a3420948e56177f2932d453fe736841377a62072e4d8fdac59f9c0d068225",
+   "ruling": "Ruling: model error; as ruled on this line before: p501 p. 9, Temporary absences (\"It must be reasonable to assume the absent person will return to the home after the temporary absence\") and Death or birth. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,782 of 5,766 agree; on completed returns 12 candidate-unknown, 1 candidate-refuses, 1 project-refuses, no value difference. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "4ef1c825125db5fc951b7964afd4e84c9374aa1d5b61de2365eb170607ed07a8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f1095a.1.deepseek@dependent[dep_a]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.4.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_b]",
+     "fixture:classm.f1095a.1.gpt@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.f8960.2@dependent[dep_a]",
+     "fixture:classm.f8995.3@dependent[dep_a]",
+     "fixture:classm.ira.2@dependent[dep_c]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.s179.3@dependent[dep_b]",
+     "fixture:classm.sdtw.3@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage15.mut.dc_parent_part_year_born_died_unanswered@dependent[parent]",
+     "generated:20261026.126@dependent[dep_b]",
+     "generated:20261026.186@dependent[dep_a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -6859,6 +8223,52 @@
      "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
      "partial:classm.sa.2.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]",
      "partial:classm.sa.2.deepseek-dependent[dep_a].divorced_rule@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.hoh_absence",
+   "project_expr_sha256": "6ccedcdd6d0aa902bd845a82a62b2cd0d0d0c116b9bf16caaa2e645f13787228",
+   "second_expr_sha256": "052cacaaf50fe8d5b842964a8cba7500584946207b52d0356099ae0b10049c82",
+   "ruling": "Ruling: model error; triage 4,802/5,836 agree; 595 project-unknown, 299 project-refuses, 122 candidate-unknown, 18 candidate-refuses; completed returns: 6 candidate-unknown, 1 project-refuses. Embeds the reply's own dependent test (months-only residency, its screening inputs read ungated: the completed-return unknowns are dependent.multiple_support / months / married / divorced_rule read where the project's gates skip them), as the Goal-1 round ruled (i1040gi pp. 18-19, Steps 2 and 4; p501 p. 9). The reply's spouse tiebreak also omits the filer-parent condition (dependent.filer_parent): with the husband or wife the only other claimant and not claiming, it lets a filer who is not the child's parent claim; p501 p. 15: \"If a parent can claim the child as a qualifying child but no parent does so claim the child, the child is treated as the qualifying child of the person who had the highest AGI for the year, but only if that person's AGI is higher than the highest AGI of any of the child's parents who can claim the child\". The project refuses that case at dependent.qc_tiebreak (amb.2025.mfs_spouse_qc); the reply is wrong there.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "c631ca5272427aed3b88c3230b1c5294cf585413d5afc1fc53fe2d22ca284cf1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f1095a.1.deepseek@dependent[dep_a]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.retirement.4.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_b]",
+     "fixture:classm.f1095a.1.gpt@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.f4952.2@dependent[dep_a]",
+     "fixture:classm.f8959.2@dependent[dep_a]",
+     "fixture:classm.f8959.2@dependent[dep_b]",
+     "fixture:classm.f8959.2@dependent[dep_c]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.sdtw.3@dependent[dep_a]",
+     "fixture:classm.se.3@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "generated:20261026.126@dependent[dep_b]",
+     "generated:20261026.186@dependent[dep_a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -7409,6 +8819,49 @@
   {
    "printed": "dependent.hoh_test1",
    "project_expr_sha256": "698146d8d1b0f1391151e6c67b0274f80cbd4359bbb2ea6d0dd65afd2941eb57",
+   "second_expr_sha256": "4b635aebb375c82d8b08a10a3a2e5e8d6d146373e4b13c98771be006c36ef0a3",
+   "ruling": "Ruling: representation; triage 5,355/5,836 agree; 277 project-refuses, 189 project-unknown, 12 candidate-refuses, 3 candidate-unknown; completed returns: none. Equal wherever both evaluate; the differences are refusals and unknowns only, none on a completed return (i1040gi p. 14, Test 1). As the Goal-1 round.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "7a6a95985026f45b41a613b16400a92cbfafc8f91cb012263d3420937d901503",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_c]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_b]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.s1.2@dependent[dep_c]",
+     "fixture:classm.s179.3@dependent[dep_b]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_a]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.multiple_support@dependent[parent]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].lived_all_year@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.hoh_test1",
+   "project_expr_sha256": "698146d8d1b0f1391151e6c67b0274f80cbd4359bbb2ea6d0dd65afd2941eb57",
    "second_expr_sha256": "aa02f50573bcb2d0f33e5e618d0b20cbc7b37d9ab34e48380617b3868834e051",
    "ruling": "Ruling: representation. Triage .transcription/triage/2025/dependent.json (log sha matches): 6,009/6,501 agree; 269 project-refuses, 208 project-unknown, 12 candidate-refuses, 3 candidate-unknown; completed: none. No completed-return difference. The project refuses tie-breaker, married and kidnapped cases that the reply reads raw. Same as the Landing round.",
    "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
@@ -7621,6 +9074,51 @@
      "fixture:classm.sa.6@dependent[dep_b]",
      "partial:classm.f2441.1.deepseek-dependent[a].tin@dependent[a]",
      "partial:classm.sa.2.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.hoh_test1",
+   "project_expr_sha256": "f821484f108bd26a15d31d804708e299226a0881c9cabcb3adcd039d9ad838c9",
+   "second_expr_sha256": "7b25b439d9615f4decf5574bdfc0f8c5c622c4c3aec65665d273d2363f900506",
+   "ruling": "Ruling: scope; as ruled on this line before: i1040gi p. 14, Head of Household, Test 1, and the multiple support agreement exception; the project refuses the cases it does not compute (186 project-refuses). executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 5,390 of 5,766 agree; on completed returns 3 candidate-unknown, no value difference. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "16e7c71ba0a76da659c82d5efd61ac8ca42d656c3bc3ffc69a498125522b2b48",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.1.deepseek@dependent[dep_c]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.5.deepseek@dependent[dep_b]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.s179.3@dependent[dep_b]",
+     "fixture:classm.se.2@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.8@dependent[dep_b]",
+     "fixture:classm.f8889.2@dependent[dep_b]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.1@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.income_exception@dependent[parent]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]",
+     "partial:classm.sa.2.deepseek-dependent[dep_a].lived_all_year@dependent[dep_a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -7929,6 +9427,59 @@
   },
   {
    "printed": "dependent.hoh_test2",
+   "project_expr_sha256": "be250475e4f0de4ff06cc5669870a361d613848e4bb3a1a1de7aa9c7a42743ea",
+   "second_expr_sha256": "83d3239174ee94940e600e62c9900128503176e462ccbf034dd43d0ec1bfda09",
+   "ruling": "Ruling: model error; p501 p. 9, Temporary absences: \"It must be reasonable to assume the absent person will return to the home after the temporary absence.\" executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,584 of 5,766 agree; on completed returns 83 candidate-unknown, 1 candidate-refuses, 1 project-refuses, 1 project-unknown, 1 value. The value witness (t091r.absence.second_child_clean, child) has dependent.absence_no_return true: the project does not count a person who will not return, and the reply does not read the absence answer. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "eafcb77464194398b7aa798dc5ebe516ea2ca0215cbdec2a7ee5186ecfed21d3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[b]",
+     "fixture:classm.f2441.6.deepseek@dependent[a]",
+     "fixture:classm.f4952.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.sales.3@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.dependent.2@dependent[a]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage15.mut.dc_parent_part_year_born_died_unanswered@dependent[parent]",
+     "fixture:t091.absence.hoh_refused@dependent[child]",
+     "fixture:t091r.absence.second_child_clean@dependent[child]",
+     "fixture:stage8.mut.hoh_married_child_absence@dependent[kid]",
+     "generated:20261026.119@dependent[dep_a]",
+     "generated:20261026.121@dependent[dep_c]",
+     "generated:20261026.126@dependent[dep_b]",
+     "generated:20261026.186@dependent[dep_a]",
+     "generated:20261026.362@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.hoh_test2",
    "project_expr_sha256": "c177019a8c228a2bfe5fbc63844db5c41448801abccdf22d721c86462a0a26b6",
    "second_expr_sha256": "70b4e41295c84f28bd63fd7d7b7fd1738e94ad5b68af1c4f5fe94973aaea986d",
    "ruling": "Ruling: model error; the reply's Test 2 person is months > 6 only. It omits the part-year rules (p501 p. 9, Death or birth; i1040gi p. 15, adoption or placement in 2025) and does not exclude an absence head of household does not count, which the line's own label requires (p501 p. 9, Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\"). Triage .transcription/triage/2025/dependent.json (log sha matches; 1,986 fixtures, 500 generated returns seed 20261026, 40 partial bases): 4,964 agree, 1,225 differ; value witnesses stage8.hoh.parent.died_lived_part_year, stage8.hoh.adopted_part_year, stage15.f2441.parent_died_part_year (project true, reply false) and t091.absence.hoh_refused, t091r.absence.second_child_clean, stage8.mut.hoh_married_child_absence (absence_no_return true: project false, reply true).",
@@ -7976,6 +9527,59 @@
      "fixture:t091r.absence.second_child_clean@dependent[child]",
      "fixture:stage8.mut.hoh_married_child_absence@dependent[kid]",
      "generated:20261026.126@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.hoh_test2",
+   "project_expr_sha256": "c177019a8c228a2bfe5fbc63844db5c41448801abccdf22d721c86462a0a26b6",
+   "second_expr_sha256": "dbefc2abb4e14bbcb07dbda028dc8c58a71fb942b20eb26c6d50124ad511c1e8",
+   "ruling": "Ruling: model error; triage 4,857/5,836 agree; 450 candidate-unknown, 299 project-refuses, 206 project-unknown, 18 candidate-refuses, 6 value; completed returns: 6 candidate-unknown, 1 project-refuses, 1 value. Does not exclude an absence head of household does not count (t091r.absence.second_child_clean: project false, reply true); p501 p. 9, Temporary absences, \"It must be reasonable to assume the absent person will return to the home\". As the Goal-1 round; the reply's spouse tiebreak also omits the filer-parent condition (p501 p. 15).",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "9da07f18edc557f62d95a2a1d5c9716015d8fa52cbb20574eb190ff58352784b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@dependent[a]",
+     "fixture:classm.f2441.3.deepseek@dependent[a]",
+     "fixture:classm.f2441.4.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[a]",
+     "fixture:classm.f2441.5.deepseek@dependent[b]",
+     "fixture:classm.f2441.6.deepseek@dependent[a]",
+     "fixture:classm.f4952.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.6.deepseek@dependent[dep_b]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.dependent.2@dependent[a]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage15.mut.dc_parent_part_year_born_died_unanswered@dependent[parent]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:t091.absence.hoh_refused@dependent[child]",
+     "fixture:t091r.absence.second_child_clean@dependent[child]",
+     "fixture:stage8.mut.hoh_married_child_absence@dependent[kid]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "generated:20261026.119@dependent[dep_a]",
+     "generated:20261026.121@dependent[dep_c]",
+     "generated:20261026.126@dependent[dep_b]",
+     "generated:20261026.186@dependent[dep_a]",
+     "generated:20261026.362@dependent[dep_a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -8280,6 +9884,98 @@
    }
   },
   {
+   "printed": "dependent.hoh_test2_lived",
+   "project_expr_sha256": "35585e8581777e05d7bc11a0f8bdc1ca39b46d95bd1a8ea2ac219e9b9d82e6b2",
+   "second_expr_sha256": "b20bfac3e23178c12f4dc4eba7dc95be3590a9861dd4013f4cc98551c44c533b",
+   "ruling": "Ruling: model error; triage 3,452/5,836 agree; 802 value, 722 candidate-unknown, 488 project-unknown, 372 project-refuses; completed returns: 6 value, 6 candidate-unknown, 1 project-refuses. Drops the qualifying-person half of the label (\"A Test 2 person who lived with you more than half the year\"): true for persons who are not Test 2 persons (classm.f1040.2-5.deepseek), as the Goal-1 round ruled. i1040gi p. 14, Head of Household, Test 2.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "f4cbadad1676f3d83184d8398ad2f4d466b410e00216a3dc477479a2ea581f7b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.sd.2.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.3.deepseek@dependent[dep_a]",
+     "fixture:classm.u1250.2.deepseek@dependent[dep_a]",
+     "fixture:classm.u1250.2.deepseek@dependent[dep_b]",
+     "fixture:classm.clcw.2.deepseek@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.2.deepseek@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.2.deepseek@dependent[dep_b]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage15.mut.dc_parent_part_year_born_died_unanswered@dependent[parent]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "fixture:mutation.m1.person.no_e05_schedule_a_refused@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.hoh_test2_lived",
+   "project_expr_sha256": "5d64f5a1b90902201d818aae8e741fd105616731adedd6b381c7b8bb40b58f87",
+   "second_expr_sha256": "a6a2fadf5d9edb1cd2760375b8e43389de60ad29b50dcafc7e3a9dcac5c326bc",
+   "ruling": "Ruling: model error; i1040gi p. 14, Head of Household, Test 2; p501 p. 9, Table 4. As ruled on this line on 2026-11-15, the reply drops the qualifying-person half of the label (\"A Test 2 person who lived with you more than half the year\") and is true for persons who are not Test 2 persons. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 3,189 of 5,766 agree; on completed returns 96 candidate-unknown, 1 project-refuses, 62 value. The six recorded completed witnesses were read: five (classm.f1040.2-4.deepseek) are persons neither claimed nor a qualifying child, and one (classm.f1040.5.deepseek dep_c) is a claimed dependent with relationship other, a member-of-household relative who is not a qualifying person for head of household under Table 4. The project is false on each, as the source requires. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "b7f4d399d26b13bcad834433cc80c43b2d5c312cda8cf66fa5de390b6fb92982",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.sd.2.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.3.deepseek@dependent[dep_a]",
+     "fixture:classm.u1250.2.deepseek@dependent[dep_a]",
+     "fixture:classm.u1250.2.deepseek@dependent[dep_b]",
+     "fixture:classm.clcw.2.deepseek@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.2.deepseek@dependent[dep_a]",
+     "fixture:classm.clcw_next_year.2.deepseek@dependent[dep_b]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:stage15.mut.dc_parent_part_year_born_died_unanswered@dependent[parent]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "fixture:mutation.m1.person.no_e05_schedule_a_refused@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "dependent.odc_amount",
    "project_expr_sha256": "0a7a32b553d3eb8e502d8ccf249f7de460230d442fd6143a90c7f9fa4d3be16e",
    "second_expr_sha256": "d37986c7a57f9dc425a7f22c3c93979702531b3dbace0eb3f6b6ef34f93ea35e",
@@ -8374,6 +10070,55 @@
      "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
      "fixture:mutation.m1.person.no_e05_schedule_a_refused@dependent[dep_b]",
      "partial:classm.f8889.5.deepseek-dependent[dep_b].relationship@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.odc_amount",
+   "project_expr_sha256": "1614c22d72982f2c3c1c83423cf346d979e4361c5708612193fb3bb82a8ddd87",
+   "second_expr_sha256": "dfd0c603d997d0f76a0e689e9c681b6b4b50d1956f617ffb519f87fa6578999b",
+   "ruling": "Ruling: model error; triage 4,646/5,836 agree; 528 candidate-unknown, 345 project-unknown, 294 project-refuses, 21 candidate-refuses, 2 value; completed returns: 6 candidate-unknown. Embeds the reply's own dependent test (months-only residency, its screening inputs read ungated: the completed-return unknowns are dependent.multiple_support / months / married / divorced_rule read where the project's gates skip them), as the Goal-1 round ruled (i1040gi pp. 18-19, Steps 2 and 4; p501 p. 9). The reply's spouse tiebreak also omits the filer-parent condition (dependent.filer_parent): with the husband or wife the only other claimant and not claiming, it lets a filer who is not the child's parent claim; p501 p. 15: \"If a parent can claim the child as a qualifying child but no parent does so claim the child, the child is treated as the qualifying child of the person who had the highest AGI for the year, but only if that person's AGI is higher than the highest AGI of any of the child's parents who can claim the child\". The project refuses that case at dependent.qc_tiebreak (amb.2025.mfs_spouse_qc); the reply is wrong there.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "fcba0713646aa19c3402358e6265013f1925a7f021907e0f9c47e6f22f4bfc61",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.clcw_next_year.2.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:classm.sa.1@dependent[dep_b]",
+     "fixture:classm.sa.7@dependent[dep_a]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "fixture:mutation.m1.person.no_e05_schedule_a_refused@dependent[dep_b]",
+     "generated:20261026.119@dependent[dep_a]",
+     "generated:20261026.362@dependent[dep_a]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].relationship@dependent[dep_b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].age@dependent[dep_b]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -8811,6 +10556,59 @@
   },
   {
    "printed": "dependent.odc_amount",
+   "project_expr_sha256": "d85e81085b47bd42dac9e846c7fd330a367e23e81a25181e8a5f9157832a066b",
+   "second_expr_sha256": "109da15880c5712f76dcf9887a44eb8aaadb6ad08979f58f375b0a62649869ed",
+   "ruling": "Ruling: model error; as dependent.odc_person, which this line reads ($500 for each such dependent; i1040gi p. 19, Step 5): the three completed value witnesses ($500 in the reply, $0 in the project) are the household members of generated 20261026.135, .269 and .497 who did not live with the filer all year. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,415 of 5,766 agree; on completed returns 122 candidate-unknown, 1 candidate-refuses, 3 value. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "841caa2a9add3d1ec0e8837640d04b224c3d80fa847a8815aea3f36500a9a976",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.2.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.f8962.3.gpt@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:xleak.income_exception.disabled_unanswered@dependent[member]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:xleak.spouse_relative.household_member_all_year_unanswered@dependent[member]",
+     "fixture:xleak.spouse_relative.other_all_year_lawful_unanswered@dependent[member]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.f8880.hoh_line4@dependent[dep_a]",
+     "generated:20261026.118@dependent[dep_c]",
+     "generated:20261026.119@dependent[dep_a]",
+     "generated:20261026.126@dependent[dep_b]",
+     "generated:20261026.129@dependent[dep_a]",
+     "generated:20261026.135@dependent[dep_b]",
+     "generated:20261026.186@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.odc_amount",
    "project_expr_sha256": "d91b920e39a025884f51a1980c4bd018c37b2b2ff870fb06a0bb47dd2d09e9b0",
    "second_expr_sha256": "ab3e85d93ec54d2b26d26822b744594e8d2f531302681432ff4a0435a2744b63",
    "ruling": "Ruling: scope and representation; project retained. The second transcription folds the qualifying-child, dependency and credit tests into each line; it also lets the rule for children of divorced or separated parents stand in for residency and omits the 'you can be claimed as a dependent' condition (`sa.dependent`), both refused in scope (`dependent.divorced_rule` refuses the entry; `sa.dependent` refuses the standard deduction). Compared by sampling 40,000 inputs per line with every refusal trigger false and consistent answers (only a married person files a joint return; over half of a person's support cannot come from both the person and you): no difference on the child tax credit lines; the remaining differences on odc_person, odc_amount and hoh_test2 all come from the second treating `sibling_descendant` as a Step 4 relative, which the enum defines as any other descendant of a sibling (a Step 4 relative only as a household member who lived with you all year; i1040gi p. 19 lists only a son or daughter of a sibling, which is `sibling`), and from `other` living with you all year, which the all-year household bullet admits. No change.",
@@ -9031,6 +10829,55 @@
   {
    "printed": "dependent.odc_person",
    "project_expr_sha256": "15cf074f0cced7e7051d22de4a6f232bd5278cd886ff3aff02fd49652d27f784",
+   "second_expr_sha256": "3c430a3639253be86d8f535e49a7703d06ed464c473a999f04b4a2f943470ddd",
+   "ruling": "Ruling: model error; triage 4,646/5,836 agree; 528 candidate-unknown, 345 project-unknown, 294 project-refuses, 21 candidate-refuses, 2 value; completed returns: 6 candidate-unknown. Embeds the reply's own dependent test (months-only residency, its screening inputs read ungated: the completed-return unknowns are dependent.multiple_support / months / married / divorced_rule read where the project's gates skip them), as the Goal-1 round ruled (i1040gi pp. 18-19, Steps 2 and 4; p501 p. 9). The reply's spouse tiebreak also omits the filer-parent condition (dependent.filer_parent): with the husband or wife the only other claimant and not claiming, it lets a filer who is not the child's parent claim; p501 p. 15: \"If a parent can claim the child as a qualifying child but no parent does so claim the child, the child is treated as the qualifying child of the person who had the highest AGI for the year, but only if that person's AGI is higher than the highest AGI of any of the child's parents who can claim the child\". The project refuses that case at dependent.qc_tiebreak (amb.2025.mfs_spouse_qc); the reply is wrong there.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "f210b515a4f90e50dbb1f910981d0fe5f6fa6aea2627e7d6b7793ab7db0b64a1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.3.deepseek@dependent[dep_c]",
+     "fixture:classm.f8889.5.deepseek@dependent[dep_a]",
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.clcw_next_year.2.deepseek@dependent[dep_b]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:classm.sa.1@dependent[dep_b]",
+     "fixture:classm.sa.7@dependent[dep_a]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.person.simple_nonelective_excess@dependent[dep_b]",
+     "fixture:mutation.m1.person.no_e05_schedule_a_refused@dependent[dep_b]",
+     "generated:20261026.119@dependent[dep_a]",
+     "generated:20261026.362@dependent[dep_a]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].relationship@dependent[dep_b]",
+     "partial:classm.f8889.5.deepseek-dependent[dep_b].age@dependent[dep_b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.odc_person",
+   "project_expr_sha256": "15cf074f0cced7e7051d22de4a6f232bd5278cd886ff3aff02fd49652d27f784",
    "second_expr_sha256": "d511699f745aae174e7faca24a86d6e275ca7d06ab6d353839233bb21e1c0f20",
    "ruling": "Ruling: model error. Triage .transcription/triage/2025/dependent.json (log sha matches): 5,175/6,501 agree; 619 candidate-unknown, 390 project-unknown, 295 project-refuses, 22 candidate-refuses; completed: 25 candidate-unknown. The reply's dependent test (dependent.claimed, raw lines 170-185) still carries the two errors ruled in the Landing round. (1) h_can_claim_any is \"status = mfj or sa.dependent = false\", which exempts a joint return from i1040gi pp. 18-19 Step 2/Step 4 (\"Could you be claimed as a dependent on someone else’s 2025 tax return? ... Yes. STOP You can’t claim any dependents\"). (2) h_qc tests residency as months >= 7 only, with no part-year rule for a child born or a person who died in 2025 (p501 p. 9, Death or birth; p503 p. 3). On completed returns the triage shows only candidate-unknowns (dependent.multiple_support read unasked), which mask value witnesses. Ruled on the expression, as in the Landing round.",
    "context": "6c20a424de9ae2eaadf88f6b868fbfae71b822420a5767aa7567d3acf139125b",
@@ -9225,6 +11072,59 @@
      "partial:classm.f8960.3.deepseek-dependent[dep_a].tin@dependent[dep_a]",
      "partial:classm.f8960.3.deepseek-dependent[dep_a].kidnapped@dependent[dep_a]",
      "partial:classm.f8960.3.deepseek-dependent[dep_a].other_claimant@dependent[dep_a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.odc_person",
+   "project_expr_sha256": "33e938859d166fc9741c0692f03fe454c030e896e253a045ac05f8618212c5c6",
+   "second_expr_sha256": "f57295f4b8aa096e2b0e97688c53df1d3f23812d514a591ffeec86ee66baea12",
+   "ruling": "Ruling: model error; as dependent.claimed, which this line reads (i1040gi p. 18, Step 3, question 3; p. 19, Step 5): the three completed value witnesses (generated 20261026.135, .269, .497) are the household members the reply claims without the all-year test. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 4,415 of 5,766 agree; on completed returns 122 candidate-unknown, 1 candidate-refuses, 3 value. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "0fc0a2dfbba0d663ec64e0056066d7602df6a127fd83670442f1a098f6eb053d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.1.deepseek@dependent[dep_c]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.1.deepseek@dependent[dep_a]",
+     "fixture:classm.dependent.2.deepseek@dependent[dep_c]",
+     "fixture:classm.dependent.3.deepseek@dependent[dep_a]",
+     "fixture:classm.eic.8.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.f8962.3.gpt@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_a]",
+     "fixture:classm.carloan.1@dependent[dep_b]",
+     "fixture:classm.ltc.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:xleak.income_exception.disabled_unanswered@dependent[member]",
+     "fixture:stage8.refuse.dependent.married.other_claimant_unanswered@dependent[child]",
+     "fixture:xleak.spouse_relative.household_member_all_year_unanswered@dependent[member]",
+     "fixture:xleak.spouse_relative.other_all_year_lawful_unanswered@dependent[member]",
+     "fixture:stage9.mut.kidnapped_household_child_other_claimant_unanswered@dependent[kid]",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@dependent[c2]",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@dependent[b]",
+     "fixture:mutation.t2.f8880.hoh_line4@dependent[dep_a]",
+     "generated:20261026.118@dependent[dep_c]",
+     "generated:20261026.119@dependent[dep_a]",
+     "generated:20261026.126@dependent[dep_b]",
+     "generated:20261026.129@dependent[dep_a]",
+     "generated:20261026.135@dependent[dep_b]",
+     "generated:20261026.186@dependent[dep_a]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -9748,6 +11648,40 @@
   {
    "printed": "dependent.ptc_magi_counted",
    "project_expr_sha256": "e96c25271fbebdb0e2f7878998a92523f015095d05c1a7562f710fcfe1a02e63",
+   "second_expr_sha256": "bda0b9efab55c10dc0b0b8e5e95957435a84626452898755820b2235389b2870",
+   "ruling": "Ruling: representation; project retained. i8962 p. 8, Line 2b. The project's helper counts the modified AGI of a person required to file and applies the claimed-dependent test where line 2b is summed (f8962 sum_over dependent, where dependent.claimed); the reply puts the claimed test on the helper. executable-triage-v2 (.transcription/triage/2025/dependent.json; 2,386 fixtures, 500 generated returns seed 20261026, 1,855 partial records; 5,766 comparisons per line): 5,047 of 5,766 agree; on completed returns 1 candidate-refuses, 3 project-unknown, 1 value. The value witness (stage18.mut.unclaimed_relative, k1, $30,000 in the project, $0 in the reply) is an unclaimed parent; the fixture's hand-predicted line 2b ($8,000, the claimed child only) passes, so the parent's amount is not counted on the return. No change to the data.",
+   "context": "6c015eb4898aab13ae61382450a8a2b535f84949ba6a9ad9bc0290710239c780",
+   "date": "2026-11-16",
+   "run": "6084dab30feb618ce9c551c92830aba2e56cb2eccc1931209f57a4dd23c3a752",
+   "subject_key": "15dddce281a84980155dda04a68c8cdab617774de24b4ea1111f34292264e582",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f4952.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.2.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.3.deepseek@dependent[dep_a]",
+     "fixture:classm.clcw.2.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:stage8.refuse.dependent.divorced_rule@dependent[child]",
+     "fixture:stage8.refuse.dependent.married@dependent[child]",
+     "fixture:stage18.mut.unclaimed_relative@dependent[k1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "dependent.ptc_magi_counted",
+   "project_expr_sha256": "e96c25271fbebdb0e2f7878998a92523f015095d05c1a7562f710fcfe1a02e63",
    "second_expr_sha256": "c8a5ae701fabb4df96450c67932ccc5113d950d76a8df3215229e24f54561c94",
    "ruling": "Ruling: scope; i8962 p. 8, Line 2b: \"Enter on line 2b the combined modified AGI for your dependents who are required to file an income tax return because their income meets the income tax return filing threshold\". executable-triage-v2 (`reviews/2025/transcription/triage/dependent.json`; 1,446 fixtures, 500 generated returns seed 20261026, 3,102 partial records; 9,442 comparisons): 8,811 of 9,442 agree; 546 project-unknown, 84 candidate-refuses, 1 value; on returns the full interview completes: 12 project-unknown, 2 candidate-refuses. Every completed-return difference was enumerated with the witness cap lifted (triage.triage with max_witnesses unbounded, written to scratch, the recorded triage file untouched; causes assigned by a scratch classifier, none unassigned): (a) 12 project-unknown dependent.ptc_files (9 fixtures, for example classm.f8960.2 and classm.clcw26.2.deepseek dep_a, and 3 partial records) on entries line 2b does not sum, which the interview does not ask; the reply's own formula (claimed and ptc_files, else zero) is a representation of the project's choose on ptc_files, which f8962 line 2b sums over claimed entries only; (b) 2 candidate-refuses: the reply declares dependent.multiple_support on its dependent.claimed for every person, so it refuses classm.s3.4 and classm.s3.4.deepseek dep_a, a qualifying child, where i1040gi p. 19 applies multiple support only to the qualifying relative (Step 4, \"For whom you provided over half of the person's support in 2025. But see ... Multiple support agreements\"; p. 20, Multiple support agreements, \"Sometimes no one provides more than half of the support of a person\"). No completed value difference. Project stands.",
    "context": "e1d696d3a6b8f354e6a79b944d2d80752a3d268298c110bc14596c52cd027ce6",
@@ -9760,6 +11694,40 @@
    "ruling": "Ruling: representation; i8962 p. 8, Line 2b: \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold\". The candidate adds its dependent.claimed to the guard; the project leaves it to f8962.line2b, which sums this helper only over entries with dependent.claimed true, so the one value (stage18.mut.unclaimed_relative, an unclaimed relative, $30,000.00 against $0.00) never reaches line 2b. The project-unknown are fixtures without dependent.ptc_files (classm.f8960.2.deepseek, classm.sd.2.deepseek), which the interview asks only for a claimed dependent on a return with a Form 1095-A. The candidate refusals inherit its dependent.claimed (model error there). amb.2025.ptc_dependent_filing in both. Triage executable-triage-v2 (triage/dependent.json; 1,325 fixtures, 500 generated returns seed 20261026, 2,284 partial records): 6,277 of 6,903 comparisons agree; 417 candidate-refuses, 208 project-unknown, 1 value; on returns the full interview completes: 2 candidate-refuses, 12 project-unknown, 1 value.",
    "context": "6375ba2223c6c18f8a153be3e95f38f652f7408db7448e56e379c4f74fd5f905",
    "subject_key": "7e9559c398b39208feaac31a57060c1edcf4876f3725bcf6ae19cc6f0931925d"
+  },
+  {
+   "printed": "dependent.ptc_magi_counted",
+   "project_expr_sha256": "e96c25271fbebdb0e2f7878998a92523f015095d05c1a7562f710fcfe1a02e63",
+   "second_expr_sha256": "e717ef58cf2857fa60e0138730f77ac71bc13fae919033895035b6bc40cc7545",
+   "ruling": "Ruling: model error; triage 5,065/5,836 agree; 679 project-unknown, 91 candidate-refuses, 1 value; completed returns: 2 project-unknown, 1 value. Embeds the reply's dependent test; the one completed value (stage18.mut.unclaimed_relative) is the reader's claimed filter. i8962 p. 8, Line 2b. As the Goal-1 round.",
+   "context": "e5111254ee838811a0a2313a23607aa3f0af461b15483eaec2ee54e2fe4717db",
+   "date": "2026-11-15",
+   "run": "b68c8c9f1a8ca5a9c71d55f1ff6188b9402a9248f2c54b4f3fd366bb9897a4ba",
+   "subject_key": "15dddce281a84980155dda04a68c8cdab617774de24b4ea1111f34292264e582",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@dependent[dep_a]",
+     "fixture:classm.f4952.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_a]",
+     "fixture:classm.f8960.3.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.2.deepseek@dependent[dep_b]",
+     "fixture:classm.sd.3.deepseek@dependent[dep_a]",
+     "fixture:classm.retirement.1.deepseek@dependent[dep_a]",
+     "fixture:classm.sa.2.deepseek@dependent[dep_a]",
+     "fixture:classm.sli.2@dependent[dep_c]",
+     "fixture:classm.tcw.3@dependent[dep_a]",
+     "fixture:classm.tcw.15@dependent[dep_b]",
+     "fixture:classm.eic.5@dependent[dep_b]",
+     "fixture:stage18.mut.unclaimed_relative@dependent[k1]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "dependent.ptc_magi_counted",

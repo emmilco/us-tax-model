@@ -285,3 +285,27 @@ Lane land3-adj7 (claude-opus-5-5, judgment). Open lines of the Claude render log
 Counts: claude render: scope 1.
 
 Findings: none. No line left open.
+
+## Goal-1 coverage-expansion round (2026-11-15)
+
+Lane xadj-b (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the xint worktree (coverage-expansion merge). Open lines of the Claude transcription log (line-scoped pass f93799ca7307). Full ruling text is in the logs and sidecars; rulings files `/tmp/xadj/b/<form>.transcription.json`, applied with rule.py. The second review family is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | 4b | scope | triage f93799ca7307: 2,946/2,992 agree, no value difference | i1040gi p. 101 and p. 104, line 4b | Form 4137 qualified tips refused (s1a.f4137); the reply's column (c) total is not qualified tips either. |
+
+Counts: claude transcription: scope 1.
+
+Findings: none. No line left open.
+
+## Goal-1 coverage-expansion round (2026-11-15), render
+
+Lane xadj-b (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the xint worktree (coverage-expansion merge). Open lines of the Claude render log (whole review). Full ruling text is in the logs and sidecars; rulings files `/tmp/xadj/b/<form>.render.json`, applied with rule.py. The second review family is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | 36b | representation | UNCLEAR; household.roster_bad | f1040s1a line 36b; i1040gi p. 110 | A spouse entry exists only on a joint return. |
+
+Counts: claude render: representation 1.
+
+Findings: none. No line left open.

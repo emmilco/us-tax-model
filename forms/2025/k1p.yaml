@@ -1,0 +1,2537 @@
+form:
+  id: k1p
+  kind: form
+  title: Schedule K-1 (Form 1065) — one partner's share from one partnership
+  tax_year: 2025
+  note: 'One entry per Schedule K-1 (Form 1065) a person received. Boxes 1 to 3 are each one activity; box 1 is passive unless
+    the partner materially participated (tests 1, 2, 3 or 5), boxes 2 and 3 are passive, and box 2 goes in Part IV of Form
+    8582 when a general partner actively participated and owned a tenth. The Form 8582 columns (a) to (c) and (e) of each
+    activity, the Schedule E line 28 columns (h), (i) and (k), and the portfolio, self-employment, withholding and section
+    199A amounts are figured here and totalled on the person. Refused: publicly traded partnerships, boxes 4b, 7, 10 to 13
+    (other than 13 AE), 14 B and C, 15 (other than O), 16, 17, 20 (codes other than A, B, N, Z, AG), 21, 22 and 23, foreign
+    partnerships, a sale of the interest, property distributions and distributions above basis, trading partnerships, material
+    participation by tests 4, 6 or 7, losses above basis or not at risk, and the held-back losses Form 8582 does not take
+    here.'
+  lines:
+  - id: k1p.zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite: &id001
+      doc: f1065sk1
+      locator: p. 1, Part III, "Partner’s Share of Current Year Income"
+  - id: k1p.no
+    printed: (helper)
+    label: No (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite: *id001
+  - id: k1p.yes
+    printed: (helper)
+    label: Yes (true)
+    type: Bool
+    expr:
+      op: param
+      ref: hsa.yes
+    cite: *id001
+  - id: k1p.one
+    printed: (helper)
+    label: One Schedule K-1
+    type: Count
+    expr:
+      op: param
+      ref: person.one
+    cite: &id042
+      doc: i1065sk1
+      locator: p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E"
+  - id: k1p.ptp
+    printed: (helper)
+    label: Publicly traded partnership (item D checked)
+    type: Bool
+    expr:
+      op: input
+      source: Is the box in item D checked, for a publicly traded partnership (PTP)?
+    cite:
+      doc: i1065sk1
+      locator: p. 11, Item D, "If the box in item D is checked, you’re a partner in a PTP"
+  - id: k1p.general
+    printed: (helper)
+    label: General partner or LLC member-manager (item G)
+    type: Bool
+    expr:
+      op: input
+      source: 'In item G, is the first box checked: general partner or LLC member-manager?'
+    cite:
+      doc: i1065sk1
+      locator: p. 2, General Partner, "A general partner is a partner who is personally liable for partnership debts"
+  - id: k1p.has_b1
+    printed: (helper)
+    label: 'Box 1 shows an amount: ordinary business income (loss)'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 1 (ordinary business income or loss) show an amount?
+    cite: &id002
+      doc: i1065sk1
+      locator: p. 14, Box 1. Ordinary Business Income (Loss), "The amount reported in box 1 is your share of the ordinary
+        income (loss) from trade or business activities of the partnership"
+  - id: k1p.box1
+    printed: '1'
+    label: Ordinary business income (loss)
+    type: Dollars
+    expr:
+      op: input
+      source: The amount in box 1, ordinary business income (loss). Enter a loss as a negative amount.
+    cite: *id002
+    gated_by: k1p.box1_if_any
+  - id: k1p.box1_if_any
+    printed: (gate)
+    label: Box 1, asked only when the box shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b1
+          - const: true
+        then: k1p.box1
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b1
+          - const: false
+        then: k1p.zero
+    cite: *id002
+  - id: k1p.has_b2
+    printed: (helper)
+    label: 'Box 2 shows an amount: net rental real estate income (loss)'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 2 (net rental real estate income or loss) show an amount?
+    cite: &id003
+      doc: i1065sk1
+      locator: p. 14, Box 2. Net Rental Real Estate Income (Loss), "Generally, the income (loss) reported in box 2 is a passive
+        activity amount for all partners"
+  - id: k1p.box2
+    printed: '2'
+    label: Net rental real estate income (loss)
+    type: Dollars
+    expr:
+      op: input
+      source: The amount in box 2, net rental real estate income (loss). Enter a loss as a negative amount.
+    cite: *id003
+    gated_by: k1p.box2_if_any
+  - id: k1p.box2_if_any
+    printed: (gate)
+    label: Box 2, asked only when the box shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b2
+          - const: true
+        then: k1p.box2
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b2
+          - const: false
+        then: k1p.zero
+    cite: *id003
+  - id: k1p.has_b3
+    printed: (helper)
+    label: 'Box 3 shows an amount: other net rental income (loss)'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 3 (other net rental income or loss) show an amount?
+    cite: &id004
+      doc: i1065sk1
+      locator: p. 14, Box 3. Other Net Rental Income (Loss), "The amount in box 3 is a passive activity amount for all partners"
+  - id: k1p.box3
+    printed: '3'
+    label: Other net rental income (loss)
+    type: Dollars
+    expr:
+      op: input
+      source: The amount in box 3, other net rental income (loss). Enter a loss as a negative amount.
+    cite: *id004
+    gated_by: k1p.box3_if_any
+  - id: k1p.box3_if_any
+    printed: (gate)
+    label: Box 3, asked only when the box shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b3
+          - const: true
+        then: k1p.box3
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b3
+          - const: false
+        then: k1p.zero
+    cite: *id004
+  - id: k1p.has_b4a
+    printed: (helper)
+    label: 'Box 4a shows an amount: guaranteed payments for services'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 4a (guaranteed payments for services) show an amount?
+    cite: &id005
+      doc: i1065sk1
+      locator: p. 15, Box 4a. Guaranteed Payments for Services, "you should report them in column (k) of Schedule E (Form
+        1040), line 28"
+  - id: k1p.box4a
+    printed: 4a
+    label: Guaranteed payments for services
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The amount in box 4a, guaranteed payments for services.
+    cite: *id005
+    gated_by: k1p.box4a_if_any
+  - id: k1p.box4a_if_any
+    printed: (gate)
+    label: Box 4a, asked only when the box shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b4a
+          - const: true
+        then: k1p.box4a
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b4a
+          - const: false
+        then: k1p.zero
+    cite: *id005
+  - id: k1p.has_b5
+    printed: (helper)
+    label: 'Box 5 shows an amount: interest income'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 5 (interest income) show an amount?
+    cite: &id006
+      doc: i1065sk1
+      locator: p. 15, Box 5. Interest Income, "Report interest income on Form 1040 or 1040-SR, line 2b"
+  - id: k1p.box5
+    printed: '5'
+    label: Interest income
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The amount in box 5, interest income.
+    cite: *id006
+    gated_by: k1p.box5_if_any
+  - id: k1p.box5_if_any
+    printed: (gate)
+    label: Box 5, asked only when the box shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b5
+          - const: true
+        then: k1p.box5
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b5
+          - const: false
+        then: k1p.zero
+    cite: *id006
+  - id: k1p.has_b6a
+    printed: (helper)
+    label: 'Box 6a shows an amount: ordinary dividends'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 6a (ordinary dividends) show an amount?
+    cite: &id007
+      doc: i1065sk1
+      locator: p. 15, Box 6a. Ordinary Dividends, "Report ordinary dividends on Form 1040 or 1040-SR, line 3b"
+  - id: k1p.box6a
+    printed: 6a
+    label: Ordinary dividends
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The amount in box 6a, ordinary dividends.
+    cite: *id007
+    gated_by: k1p.box6a_if_any
+  - id: k1p.box6a_if_any
+    printed: (gate)
+    label: Box 6a, asked only when the box shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b6a
+          - const: true
+        then: k1p.box6a
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b6a
+          - const: false
+        then: k1p.zero
+    cite: *id007
+  - id: k1p.has_b8
+    printed: (helper)
+    label: 'Box 8 shows an amount: net short-term capital gain (loss)'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 8 (net short-term capital gain or loss) show an amount?
+    cite: &id008
+      doc: i1065sk1
+      locator: p. 15, Box 8. Net Short-Term Capital Gain (Loss), "Report the net short-term capital gain (loss) on Schedule
+        D (Form 1040), line 5"
+  - id: k1p.box8
+    printed: '8'
+    label: Net short-term capital gain (loss)
+    type: Dollars
+    expr:
+      op: input
+      source: The amount in box 8, net short-term capital gain (loss). Enter a loss as a negative amount.
+    cite: *id008
+    gated_by: k1p.box8_if_any
+  - id: k1p.box8_if_any
+    printed: (gate)
+    label: Box 8, asked only when the box shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b8
+          - const: true
+        then: k1p.box8
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b8
+          - const: false
+        then: k1p.zero
+    cite: *id008
+  - id: k1p.has_b9a
+    printed: (helper)
+    label: 'Box 9a shows an amount: net long-term capital gain (loss)'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 9a (net long-term capital gain or loss) show an amount?
+    cite: &id009
+      doc: i1065sk1
+      locator: p. 15, Box 9a. Net Long-Term Capital Gain (Loss), "Report the net long-term capital gain (loss) on Schedule
+        D (Form 1040), line 12"
+  - id: k1p.box9a
+    printed: 9a
+    label: Net long-term capital gain (loss)
+    type: Dollars
+    expr:
+      op: input
+      source: The amount in box 9a, net long-term capital gain (loss). Enter a loss as a negative amount.
+    cite: *id009
+    gated_by: k1p.box9a_if_any
+  - id: k1p.box9a_if_any
+    printed: (gate)
+    label: Box 9a, asked only when the box shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b9a
+          - const: true
+        then: k1p.box9a
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b9a
+          - const: false
+        then: k1p.zero
+    cite: *id009
+  - id: k1p.has_b14a
+    printed: (helper)
+    label: 'Box 14 shows an amount with code A: net earnings from self-employment'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 14 show an amount with code A (net earnings from self-employment)?
+    cite: &id010
+      doc: i1065sk1
+      locator: p. 22, Code A. Net earnings (loss) from self-employment, "If the amount in this box is a loss, enter only the
+        deductible amount on Schedule SE"
+  - id: k1p.box14a
+    printed: 14 A
+    label: Net earnings from self-employment
+    type: Dollars
+    expr:
+      op: input
+      source: The amount in box 14 with code A, net earnings (loss) from self-employment. Enter a loss as a negative amount.
+    cite: *id010
+    gated_by: k1p.box14a_if_any
+  - id: k1p.box14a_if_any
+    printed: (gate)
+    label: Box 14 A, asked only when the box shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b14a
+          - const: true
+        then: k1p.box14a
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b14a
+          - const: false
+        then: k1p.zero
+    cite: *id010
+  - id: k1p.has_b15o
+    printed: (helper)
+    label: 'Box 15 shows an amount with code O: backup withholding'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 15 show an amount with code O (backup withholding)?
+    cite: &id011
+      doc: i1065sk1
+      locator: p. 23, Code O. Backup withholding, "Include this amount in the total you enter on Form 1040 or 1040-SR, line
+        25c"
+  - id: k1p.box15o
+    printed: 15 O
+    label: Backup withholding
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The amount in box 15 with code O, backup withholding.
+    cite: *id011
+    gated_by: k1p.box15o_if_any
+  - id: k1p.box15o_if_any
+    printed: (gate)
+    label: Box 15 O, asked only when the box shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b15o
+          - const: true
+        then: k1p.box15o
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b15o
+          - const: false
+        then: k1p.zero
+    cite: *id011
+  - id: k1p.has_b18a
+    printed: (helper)
+    label: 'Box 18 shows an amount with code A: tax-exempt interest income'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 18 show an amount with code A (tax-exempt interest income)?
+    cite: &id012
+      doc: i1065sk1
+      locator: p. 25, Code A. Tax-exempt interest income, "Individual partners include this amount on Form 1040 or 1040-SR,
+        line 2a"
+  - id: k1p.box18a
+    printed: 18 A
+    label: Tax-exempt interest income
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The amount in box 18 with code A, tax-exempt interest income.
+    cite: *id012
+    gated_by: k1p.box18a_if_any
+  - id: k1p.box18a_if_any
+    printed: (gate)
+    label: Box 18 A, asked only when the box shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b18a
+          - const: true
+        then: k1p.box18a
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b18a
+          - const: false
+        then: k1p.zero
+    cite: *id012
+  - id: k1p.has_b20z
+    printed: (helper)
+    label: 'Box 20 shows code Z: section 199A information'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 20 show code Z (section 199A information)?
+    cite: &id013
+      doc: i1065sk1
+      locator: p. 29, Code Z. Section 199A information, "The partnership will provide the information you need to figure your
+        deduction"
+  - id: k1p.box20z
+    printed: 20 Z
+    label: Section 199a information
+    type: Dollars
+    expr:
+      op: input
+      source: 'From the statement for box 20, code Z (section 199A information): the qualified business income (QBI) or loss,
+        all trades or businesses together. Enter a loss as a negative amount.'
+    cite: *id013
+    gated_by: k1p.box20z_if_any
+  - id: k1p.box20z_if_any
+    printed: (gate)
+    label: Box 20 Z, asked only when the box shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b20z
+          - const: true
+        then: k1p.box20z
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b20z
+          - const: false
+        then: k1p.zero
+    cite: *id013
+  - id: k1p.box6b
+    printed: 6b
+    label: Qualified dividends
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The amount in box 6b, qualified dividends (0 if the box is blank).
+    cite: &id014
+      doc: i1065sk1
+      locator: p. 15, Box 6b. Qualified Dividends, "Report any qualified dividends on Form 1040 or 1040-SR, line 3a"
+    gated_by: k1p.box6b_if_any
+  - id: k1p.box6b_if_any
+    printed: (gate)
+    label: Box 6b, asked only when box 6a shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b6a
+          - const: true
+        then: k1p.box6b
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b6a
+          - const: false
+        then: k1p.zero
+    cite: *id014
+  - id: k1p.has_b9bc
+    printed: (helper)
+    label: Box 9b or 9c shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 9b (collectibles 28% gain or loss) or box 9c (unrecaptured section 1250 gain) show an amount?
+    cite: &id015
+      doc: i1065sk1
+      locator: p. 16, Box 9b. Collectibles (28%) Gain (Loss), "Report collectibles gain or loss on line 4 of the 28% Rate
+        Gain Worksheet"
+    gated_by: k1p.has_b9bc_if_9a
+  - id: k1p.has_b9bc_if_9a
+    printed: (gate)
+    label: Asked only when box 9a shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b9a
+          - const: true
+        then: k1p.has_b9bc
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b9a
+          - const: false
+        then: k1p.no
+    cite: *id015
+  - id: k1p.box9b
+    printed: 9b
+    label: Collectibles (28%) gain (loss)
+    type: Dollars
+    expr:
+      op: input
+      source: The amount in box 9b, collectibles (28%) gain or loss (a loss as a negative number; 0 if the box is blank).
+    cite: *id015
+    gated_by: k1p.box9b_if_any
+  - id: k1p.box9b_if_any
+    printed: (gate)
+    label: Box 9b, asked only when box 9b or 9c shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b9bc_if_9a
+          - const: true
+        then: k1p.box9b
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b9bc_if_9a
+          - const: false
+        then: k1p.zero
+    cite: *id015
+  - id: k1p.box9c
+    printed: 9c
+    label: Unrecaptured section 1250 gain
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The amount in box 9c, unrecaptured section 1250 gain (0 if the box is blank).
+    cite: &id016
+      doc: i1065sk1
+      locator: p. 16, Box 9c. Unrecaptured Section 1250 Gain, "If the partnership reports only unrecaptured section 1250 gain
+        from the sale or exchange of its business assets, it’ll enter a dollar amount in box 9c"
+    gated_by: k1p.box9c_if_any
+  - id: k1p.box9c_if_any
+    printed: (gate)
+    label: Box 9c, asked only when box 9b or 9c shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b9bc_if_9a
+          - const: true
+        then: k1p.box9c
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b9bc_if_9a
+          - const: false
+        then: k1p.zero
+    cite: *id016
+    ambiguity: amb.2025.k1p_box9c_business
+  - id: k1p.has_b19
+    printed: (helper)
+    label: 'Box 19 shows an amount: distributions'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 19 (distributions) show an amount?
+    cite: &id017
+      doc: i1065sk1
+      locator: p. 25, Box 19. Distributions, "Code A. Cash and marketable securities other than for services"
+  - id: k1p.has_b20ab
+    printed: (helper)
+    label: 'Box 20 shows code A or B: investment income or expenses'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 20 show code A (investment income) or code B (investment expenses)?
+    cite:
+      doc: i1065sk1
+      locator: p. 27, Code A. Investment income, "Report this amount on Form 4952, Part II, line 4a"
+  - id: k1p.r_b4b
+    printed: (helper)
+    label: 'Box 4b shows an amount: guaranteed payments for capital'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 4b (guaranteed payments for capital) show an amount?
+    cite: &id043
+      doc: i1065sk1
+      locator: p. 15, Box 4b. Guaranteed Payments for Capital, "These are guaranteed payments other than for services"
+  - id: k1p.r_b7
+    printed: (helper)
+    label: 'Box 7 shows an amount: royalties'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 7 (royalties) show an amount?
+    cite: &id044
+      doc: i1065sk1
+      locator: p. 15, Box 7. Royalties, "Report royalties on Schedule E (Form 1040), line 4"
+  - id: k1p.r_b10
+    printed: (helper)
+    label: 'Box 10 shows an amount: net section 1231 gain (loss)'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 10 (net section 1231 gain or loss) show an amount?
+    cite: &id045
+      doc: i1065sk1
+      locator: p. 16, Box 10. Net Section 1231 Gain (Loss), "report it in column (g) of Form 4797, line 2"
+  - id: k1p.r_b11
+    printed: (helper)
+    label: 'Box 11 shows an amount: other income (loss)'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 11 (other income or loss) show an amount?
+    cite: &id046
+      doc: i1065sk1
+      locator: p. 16, Box 11. Other Income (Loss), "Code A. Other portfolio income (loss)"
+  - id: k1p.r_b12
+    printed: (helper)
+    label: 'Box 12 shows an amount: section 179 deduction'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 12 (section 179 deduction) show an amount?
+    cite: &id047
+      doc: i1065sk1
+      locator: p. 18, Box 12. Section 179 Deduction, "to complete Part I of Form 4562"
+  - id: k1p.r_b13
+    printed: (helper)
+    label: Box 13 shows an amount with a code other than AE
+    type: Bool
+    expr:
+      op: input
+      source: Does box 13 (other deductions) show an amount with any code other than AE?
+    cite: &id048
+      doc: i1065sk1
+      locator: p. 18, Box 13. Other Deductions, "Codes A through G"
+  - id: k1p.r_b14bc
+    printed: (helper)
+    label: Box 14 shows an amount with code B or C
+    type: Bool
+    expr:
+      op: input
+      source: Does box 14 show an amount with code B (gross farming or fishing income) or code C (gross nonfarm income)?
+    cite: &id049
+      doc: i1065sk1
+      locator: p. 22, Code B. Gross farming or fishing income, "Also use this amount to figure net earnings from self-employment
+        under the farm optional method"
+  - id: k1p.r_b15
+    printed: (helper)
+    label: Box 15 shows an amount with a code other than O
+    type: Bool
+    expr:
+      op: input
+      source: Does box 15 (credits) show an amount with any code other than O?
+    cite: &id050
+      doc: i1065sk1
+      locator: p. 22, Box 15. Credits, "you must complete Form 8582-CR"
+  - id: k1p.r_b16
+    printed: (helper)
+    label: 'Box 16 is checked: Schedule K-3 is attached'
+    type: Bool
+    expr:
+      op: input
+      source: Is box 16 checked, showing that a Schedule K-3 is attached?
+    cite: &id051
+      doc: i1065sk1
+      locator: p. 24, Box 16. International Transactions, "If the partnership checked the box, see the attached Schedule K-3"
+  - id: k1p.r_b17
+    printed: (helper)
+    label: 'Box 17 shows an amount: alternative minimum tax items'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 17 (alternative minimum tax items) show an amount?
+    cite: &id052
+      doc: i1065sk1
+      locator: p. 24, Box 17. Alternative Minimum Tax (AMT) Items, "to prepare your Form 6251"
+  - id: k1p.r_b20
+    printed: (helper)
+    label: Box 20 shows a code other than A, B, N, Z or AG
+    type: Bool
+    expr:
+      op: input
+      source: Does box 20 show any code other than A, B, N, Z or AG?
+    cite: *id013
+  - id: k1p.r_b21
+    printed: (helper)
+    label: 'Box 21 shows an amount: foreign taxes paid or accrued'
+    type: Bool
+    expr:
+      op: input
+      source: Does box 21 (foreign taxes paid or accrued) show an amount?
+    cite: &id053
+      doc: i1065sk1
+      locator: p. 32, Box 21. Foreign Taxes Paid or Accrued, "Foreign taxes paid or accrued reduce a partner’s basis"
+  - id: k1p.r_b2223
+    printed: (helper)
+    label: 'Box 22 or box 23 is checked: more than one activity'
+    type: Bool
+    expr:
+      op: input
+      source: Is box 22 or box 23 checked, showing more than one activity (with a statement attached)?
+    cite: &id054
+      doc: i1065sk1
+      locator: p. 9, Material participation, "If the partnership had more than one activity, it’ll attach a statement to your
+        Schedule K-1 that identifies each activity"
+  - id: k1p.r_foreign
+    printed: (helper)
+    label: The partnership is a foreign partnership
+    type: Bool
+    expr:
+      op: input
+      source: Is it a foreign partnership (one not created or organized in the United States)?
+    cite: &id055
+      doc: i1040se
+      locator: p. 9, Foreign Partnerships, "you may have to file Form 8865"
+  - id: k1p.r_disposed
+    printed: (helper)
+    label: You sold or gave up any of your share in 2025
+    type: Bool
+    expr:
+      op: input
+      source: In 2025, did you sell, trade or give up any of your share of this partnership?
+    cite: &id056
+      doc: i1065sk1
+      locator: p. 2, Sale or Exchange of Partnership Interest, "Generally, a partner who sells or exchanges a partnership
+        interest"
+  - id: k1p.b19_other
+    printed: (helper)
+    label: Box 19 shows a code other than A
+    type: Bool
+    expr:
+      op: input
+      source: Does box 19 show any code other than A (cash and marketable securities)?
+    cite: *id017
+    gated_by: k1p.b19_other_if_any
+  - id: k1p.b19_other_if_any
+    printed: (gate)
+    label: Asked only when box 19 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b19
+          - const: true
+        then: k1p.b19_other
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b19
+          - const: false
+        then: k1p.no
+    cite: *id017
+  - id: k1p.dist_over
+    printed: (helper)
+    label: Distributions more than basis
+    type: Bool
+    expr:
+      op: input
+      source: Was the money you took out of it in 2025 (box 19) more than your basis in it just before you took it out?
+    cite: &id018
+      doc: i1065sk1
+      locator: p. 25, Box 19. Distributions, "exceed the adjusted basis of your partnership interest immediately before the
+        distribution, the excess is treated as gain from the sale or exchange of your partnership interest"
+    gated_by: k1p.dist_over_if_any
+  - id: k1p.dist_over_if_any
+    printed: (gate)
+    label: Asked only when box 19 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b19
+          - const: true
+        then: k1p.dist_over
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b19
+          - const: false
+        then: k1p.no
+    cite: *id018
+  - id: k1p.z_other
+    printed: (helper)
+    label: Section 199A statement shows section 199A dividends or a cooperative
+    type: Bool
+    expr:
+      op: input
+      source: Does the statement for code Z show section 199A dividends, or payments from a farm or garden cooperative?
+    cite: &id019
+      doc: i1065sk1
+      locator: p. 30, Section 199A dividends, "The amount reported reflects your distributive share of the partnership’s net
+        section 199A dividends"
+    gated_by: k1p.z_other_if_z
+  - id: k1p.z_other_if_z
+    printed: (gate)
+    label: Asked only when box 20 shows code Z (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b20z
+          - const: true
+        then: k1p.z_other
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b20z
+          - const: false
+        then: k1p.no
+    cite: *id019
+  - id: k1p.trader
+    printed: (helper)
+    label: The partnership's business is trading investments
+    type: Bool
+    expr:
+      op: input
+      source: Is the partnership's business trading stocks, commodities or other investments for its owners?
+    cite: &id020
+      doc: i1065sk1
+      locator: p. 11, Special rules for certain other activities, "Trading personal property for the account of owners of
+        interests in the activity"
+    gated_by: k1p.trader_if_b1
+  - id: k1p.trader_if_b1
+    printed: (gate)
+    label: Asked only when box 1 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b1
+          - const: true
+        then: k1p.trader
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b1
+          - const: false
+        then: k1p.no
+    cite: *id020
+  - id: k1p.work
+    printed: (helper)
+    label: Worked in the business in 2025
+    type: Bool
+    expr:
+      op: input
+      source: In 2025, did you (or, on a joint return, your spouse) do any work in the partnership's business?
+    cite: &id021
+      doc: i1065sk1
+      locator: p. 9, Work counted toward material participation, "any work that you or your spouse does in connection with
+        an activity held through a partnership"
+    gated_by: k1p.work_if_b1
+  - id: k1p.work_if_b1
+    printed: (gate)
+    label: Asked only when box 1 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b1
+          - const: true
+        then: k1p.work
+      - guard:
+          op: test
+          eq:
+          - k1p.has_b1
+          - const: false
+        then: k1p.no
+    cite: *id021
+  - id: k1p.hours500
+    printed: (helper)
+    label: More than 500 hours (test 1)
+    type: Bool
+    expr:
+      op: input
+      source: Did that work add up to more than 500 hours in 2025?
+    cite: &id022
+      doc: i1065sk1
+      locator: p. 9, Individuals (other than limited partners), "You participated in the activity for more than 500 hours
+        during the tax year"
+    gated_by: k1p.hours500_if_work
+  - id: k1p.hours500_if_work
+    printed: (gate)
+    label: Asked only of a partner who worked in the business (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.work_if_b1
+          - const: true
+        then: k1p.hours500
+      - guard:
+          op: test
+          eq:
+          - k1p.work_if_b1
+          - const: false
+        then: k1p.no
+    cite: *id022
+  - id: k1p.under500
+    printed: (helper)
+    label: Worked in the business, 500 hours or less
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1p.work_if_b1
+        - const: true
+      - op: test
+        eq:
+        - k1p.hours500_if_work
+        - const: false
+    cite: &id026
+      doc: i1065sk1
+      locator: p. 9, Material participation, "You must determine if you materially participated (a) in each trade or business
+        activity held through the partnership"
+  - id: k1p.gp_under500
+    printed: (helper)
+    label: A general partner who worked 500 hours or less
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1p.under500
+        - const: true
+      - op: test
+        eq:
+        - k1p.general
+        - const: true
+    cite: &id028
+      doc: i1065sk1
+      locator: p. 9, Limited partners, "If you’re a limited partner, you must meet item 1, 5, or 6 above to qualify as having
+        materially participated"
+  - id: k1p.most_hours
+    printed: (helper)
+    label: More than 100 hours and no one worked more (test 3)
+    type: Bool
+    expr:
+      op: input
+      source: Did you (or, on a joint return, your spouse) work in it more than 100 hours in 2025, and at least as many hours
+        as anyone else, employees included?
+    cite: &id023
+      doc: i1065sk1
+      locator: p. 9, Individuals (other than limited partners), "You participated in the activity for more than 100 hours
+        during the tax year, and your participation in the activity for the tax year wasn’t less than the participation in
+        the activity of any other individual"
+    gated_by: k1p.most_hours_if_gp
+  - id: k1p.most_hours_if_gp
+    printed: (gate)
+    label: Asked only of a general partner who worked 500 hours or less (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.gp_under500
+          - const: true
+        then: k1p.most_hours
+      - guard:
+          op: test
+          eq:
+          - k1p.gp_under500
+          - const: false
+        then: k1p.no
+    cite: *id023
+  - id: k1p.ask_nearly_all
+    printed: (helper)
+    label: A general partner who worked 500 hours or less and less than someone else
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1p.gp_under500
+        - const: true
+      - op: test
+        eq:
+        - k1p.most_hours_if_gp
+        - const: false
+    cite: &id024
+      doc: i1065sk1
+      locator: p. 9, Individuals (other than limited partners), "constituted substantially all the participation in the activity
+        of all individuals"
+  - id: k1p.nearly_all
+    printed: (helper)
+    label: Substantially all the work (test 2)
+    type: Bool
+    expr:
+      op: input
+      source: Did you (and, on a joint return, your spouse) do nearly all of the work in it in 2025, counting the work of
+        employees and anyone else?
+    cite: *id024
+    gated_by: k1p.nearly_all_if_asked
+  - id: k1p.nearly_all_if_asked
+    printed: (gate)
+    label: Asked only when test 3 is not met (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_nearly_all
+          - const: true
+        then: k1p.nearly_all
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_nearly_all
+          - const: false
+        then: k1p.no
+    cite: *id024
+  - id: k1p.ask_five
+    printed: (helper)
+    label: Worked 500 hours or less and tests 2 and 3 not met
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1p.under500
+        - const: true
+      - op: test
+        eq:
+        - k1p.most_hours_if_gp
+        - const: false
+      - op: test
+        eq:
+        - k1p.nearly_all_if_asked
+        - const: false
+    cite: &id025
+      doc: i1065sk1
+      locator: p. 9, Individuals (other than limited partners), "You materially participated in the activity for any 5 tax
+        years (whether or not consecutive) during the 10 tax years that immediately precede the tax year"
+  - id: k1p.five_of_ten
+    printed: (helper)
+    label: Materially participated in 5 of the 10 preceding years (test 5)
+    type: Bool
+    expr:
+      op: input
+      source: In at least 5 of the years 2015 to 2024, did you materially participate in this business (its income or loss
+        was nonpassive on your return)?
+    cite: *id025
+    gated_by: k1p.five_of_ten_if_asked
+  - id: k1p.five_of_ten_if_asked
+    printed: (gate)
+    label: Asked only when tests 1 to 3 are not met (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_five
+          - const: true
+        then: k1p.five_of_ten
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_five
+          - const: false
+        then: k1p.no
+    cite: *id025
+  - id: k1p.ask_other
+    printed: (helper)
+    label: Worked in the business but met none of tests 1, 2, 3 and 5
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1p.ask_five
+        - const: true
+      - op: test
+        eq:
+        - k1p.five_of_ten_if_asked
+        - const: false
+    cite: *id026
+  - id: k1p.t6
+    printed: (helper)
+    label: Personal service activity, 3 earlier years (test 6)
+    type: Bool
+    expr:
+      op: input
+      source: Is it a business of services in health, law, engineering, architecture, accounting, actuarial science, performing
+        arts or consulting, in which you materially participated in any 3 years before 2025?
+    cite: &id027
+      doc: i1065sk1
+      locator: p. 9, Individuals (other than limited partners), "The activity was a personal service activity and you materially
+        participated in the activity for any 3 tax years"
+    gated_by: k1p.t6_if_asked
+  - id: k1p.t6_if_asked
+    printed: (gate)
+    label: Asked only when tests 1, 2, 3 and 5 are not met (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_other
+          - const: true
+        then: k1p.t6
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_other
+          - const: false
+        then: k1p.no
+    cite: *id027
+  - id: k1p.ask_other_gp
+    printed: (helper)
+    label: A general partner who met none of tests 1, 2, 3 and 5
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1p.ask_other
+        - const: true
+      - op: test
+        eq:
+        - k1p.general
+        - const: true
+    cite: *id028
+  - id: k1p.t4
+    printed: (helper)
+    label: Significant participation activities over 500 hours (test 4)
+    type: Bool
+    expr:
+      op: input
+      source: In 2025, did your work in it and in other businesses where you worked more than 100 hours add up to more than
+        500 hours?
+    cite: &id029
+      doc: i1065sk1
+      locator: p. 9, Individuals (other than limited partners), "The activity was a significant participation activity for
+        the tax year"
+    gated_by: k1p.t4_if_gp
+  - id: k1p.t4_if_gp
+    printed: (gate)
+    label: Asked only of a general partner who met none of tests 1, 2, 3 and 5 (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_other_gp
+          - const: true
+        then: k1p.t4
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_other_gp
+          - const: false
+        then: k1p.no
+    cite: *id029
+  - id: k1p.t7
+    printed: (helper)
+    label: Regular, continuous and substantial participation (test 7)
+    type: Bool
+    expr:
+      op: input
+      source: Did you work in it in 2025 on a regular, continuous and substantial basis, for more than 100 hours?
+    cite: &id030
+      doc: i1065sk1
+      locator: p. 9, Individuals (other than limited partners), "Based on all the facts and circumstances, you participated
+        in the activity on a regular, continuous, and substantial basis during the tax year"
+    gated_by: k1p.t7_if_gp
+  - id: k1p.t7_if_gp
+    printed: (gate)
+    label: Asked only of a general partner who met none of tests 1, 2, 3 and 5 (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_other_gp
+          - const: true
+        then: k1p.t7
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_other_gp
+          - const: false
+        then: k1p.no
+    cite: *id030
+  - id: k1p.material
+    printed: (helper)
+    label: Materially participated in the trade or business (box 1) by test 1, 2, 3 or 5
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - k1p.hours500_if_work
+        - const: true
+      - op: test
+        eq:
+        - k1p.most_hours_if_gp
+        - const: true
+      - op: test
+        eq:
+        - k1p.nearly_all_if_asked
+        - const: true
+      - op: test
+        eq:
+        - k1p.five_of_ten_if_asked
+        - const: true
+    cite: *id026
+    ambiguity: amb.2025.k1p_material_tests
+  - id: k1p.ask_active
+    printed: (helper)
+    label: Box 2 shows an amount and the partner is a general partner
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1p.has_b2
+        - const: true
+      - op: test
+        eq:
+        - k1p.general
+        - const: true
+    cite:
+      doc: i1065sk1
+      locator: p. 11, Special allowance for a rental real estate activity, "Limited partners can’t actively participate unless
+        future regulations provide an exception"
+  - id: k1p.decisions
+    printed: (helper)
+    label: Helped make management decisions for the rental real estate
+    type: Bool
+    expr:
+      op: input
+      source: Did you (or, on a joint return, your spouse) help make decisions for its rental real estate in 2025, such as
+        approving tenants, rents or repairs?
+    cite: &id031
+      doc: i1065sk1
+      locator: p. 11, Special allowance for a rental real estate activity, "Management decisions that can count as active
+        participation include approving new tenants, deciding rental terms, approving capital or repair expenditures"
+    gated_by: k1p.decisions_if_asked
+  - id: k1p.decisions_if_asked
+    printed: (gate)
+    label: Asked only of a general partner with an amount in box 2 (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_active
+          - const: true
+        then: k1p.decisions
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_active
+          - const: false
+        then: k1p.no
+    cite: *id031
+  - id: k1p.tenth
+    printed: (helper)
+    label: Owned at least 10% by value all year
+    type: Bool
+    expr:
+      op: input
+      source: All through 2025, did you (and, on a joint return, your spouse) own at least a tenth (by value) of all the interests
+        in that rental real estate?
+    cite: &id032
+      doc: i1065sk1
+      locator: p. 11, Special allowance for a rental real estate activity, "your interest (including your spouse’s interest)
+        in the activity was less than 10% (by value) of all interests in the activity"
+    gated_by: k1p.tenth_if_decisions
+  - id: k1p.tenth_if_decisions
+    printed: (gate)
+    label: Asked only when the partner helped make management decisions (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.decisions_if_asked
+          - const: true
+        then: k1p.tenth
+      - guard:
+          op: test
+          eq:
+          - k1p.decisions_if_asked
+          - const: false
+        then: k1p.no
+    cite: *id032
+  - id: k1p.active
+    printed: (helper)
+    label: 'Actively participated in the rental real estate activity (box 2): Part IV of Form 8582'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1p.decisions_if_asked
+        - const: true
+      - op: test
+        eq:
+        - k1p.tenth_if_decisions
+        - const: true
+    cite: &id039
+      doc: i8582
+      locator: p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities
+        must include the income or loss from those activities in Part IV"
+  - id: k1p.has_activity
+    printed: (helper)
+    label: Box 1, 2 or 3 shows an amount
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - k1p.has_b1
+        - const: true
+      - op: test
+        eq:
+        - k1p.has_b2
+        - const: true
+      - op: test
+        eq:
+        - k1p.has_b3
+        - const: true
+    cite: &id033
+      doc: i8582
+      locator: p. 10, Part IV, "You find these amounts in Part VII, column (c), of your 2024 Form 8582"
+  - id: k1p.prior_any
+    printed: (helper)
+    label: A loss from this partnership held back on an earlier return
+    type: Bool
+    expr:
+      op: input
+      source: Was a loss from this partnership held back (not deducted) on your 2024 return or an earlier one, because of
+        the passive activity rules?
+    cite: *id033
+    gated_by: k1p.prior_any_if_activity
+  - id: k1p.prior_any_if_activity
+    printed: (gate)
+    label: Asked only when box 1, 2 or 3 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.has_activity
+          - const: true
+        then: k1p.prior_any
+      - guard:
+          op: test
+          eq:
+          - k1p.has_activity
+          - const: false
+        then: k1p.no
+    cite: *id033
+    ambiguity: amb.2025.k1p_prior_with_activity
+  - id: k1p.prior_b1_any
+    printed: (helper)
+    label: Held-back loss from the business (box 1)
+    type: Bool
+    expr:
+      op: input
+      source: Was any of that held-back loss from the business (box 1)?
+    cite: *id033
+    gated_by: k1p.prior_b1_any_if
+  - id: k1p.prior_b1_any_if
+    printed: (gate)
+    label: Asked only when a loss was held back (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_any_if_activity
+          - const: true
+        then: k1p.prior_b1_any
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_any_if_activity
+          - const: false
+        then: k1p.no
+    cite: *id033
+  - id: k1p.prior_b1
+    printed: (helper)
+    label: Prior years unallowed loss, the business (box 1)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The loss held back from the business (box 1), from your 2024 Form 8582, Part VII, column (c)
+    cite: *id033
+    gated_by: k1p.prior_b1_if
+  - id: k1p.prior_b1_if
+    printed: (gate)
+    label: Asked only when a loss was held back from it (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_b1_any_if
+          - const: true
+        then: k1p.prior_b1
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_b1_any_if
+          - const: false
+        then: k1p.zero
+    cite: *id033
+  - id: k1p.prior_b2_any
+    printed: (helper)
+    label: Held-back loss from rental real estate (box 2)
+    type: Bool
+    expr:
+      op: input
+      source: Was any of that held-back loss from rental real estate (box 2)?
+    cite: *id033
+    gated_by: k1p.prior_b2_any_if
+  - id: k1p.prior_b2_any_if
+    printed: (gate)
+    label: Asked only when a loss was held back (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_any_if_activity
+          - const: true
+        then: k1p.prior_b2_any
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_any_if_activity
+          - const: false
+        then: k1p.no
+    cite: *id033
+  - id: k1p.prior_b2
+    printed: (helper)
+    label: Prior years unallowed loss, rental real estate (box 2)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The loss held back from rental real estate (box 2), from your 2024 Form 8582, Part VII, column (c)
+    cite: *id033
+    gated_by: k1p.prior_b2_if
+  - id: k1p.prior_b2_if
+    printed: (gate)
+    label: Asked only when a loss was held back from it (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_b2_any_if
+          - const: true
+        then: k1p.prior_b2
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_b2_any_if
+          - const: false
+        then: k1p.zero
+    cite: *id033
+  - id: k1p.prior_b3_any
+    printed: (helper)
+    label: Held-back loss from other rentals (box 3)
+    type: Bool
+    expr:
+      op: input
+      source: Was any of that held-back loss from other rentals (box 3)?
+    cite: *id033
+    gated_by: k1p.prior_b3_any_if
+  - id: k1p.prior_b3_any_if
+    printed: (gate)
+    label: Asked only when a loss was held back (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_any_if_activity
+          - const: true
+        then: k1p.prior_b3_any
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_any_if_activity
+          - const: false
+        then: k1p.no
+    cite: *id033
+  - id: k1p.prior_b3
+    printed: (helper)
+    label: Prior years unallowed loss, other rentals (box 3)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: The loss held back from other rentals (box 3), from your 2024 Form 8582, Part VII, column (c)
+    cite: *id033
+    gated_by: k1p.prior_b3_if
+  - id: k1p.prior_b3_if
+    printed: (gate)
+    label: Asked only when a loss was held back from it (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_b3_any_if
+          - const: true
+        then: k1p.prior_b3
+      - guard:
+          op: test
+          eq:
+          - k1p.prior_b3_any_if
+          - const: false
+        then: k1p.zero
+    cite: *id033
+  - id: k1p.former_passive
+    printed: (helper)
+    label: A held-back loss from a business (box 1) the partner now materially participates in
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1p.prior_b1_any_if
+        - const: true
+      - op: test
+        eq:
+        - k1p.material
+        - const: true
+    cite: &id057
+      doc: i8582
+      locator: p. 8, Former Passive Activities, "A prior-year unallowed loss from a former passive activity is allowed to
+        the extent of current year income from the activity"
+  - id: k1p.ask_prior_active
+    printed: (helper)
+    label: A held-back rental real estate loss with active participation this year
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1p.prior_b2_any_if
+        - const: true
+      - op: test
+        eq:
+        - k1p.active
+        - const: true
+    cite: &id034
+      doc: i8582
+      locator: p. 10, Part IV, "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated
+        in the activity in both the year the loss arose and the current tax year"
+  - id: k1p.prior_not_active
+    printed: (helper)
+    label: Part of the held-back rental loss arose in a year without active participation
+    type: Bool
+    expr:
+      op: input
+      source: Did any of the held-back rental real estate loss come from a year when you did not help make decisions for it,
+        or owned less than a tenth of it?
+    cite: *id034
+    gated_by: k1p.prior_not_active_if
+  - id: k1p.prior_not_active_if
+    printed: (gate)
+    label: Asked only of a held-back rental loss with active participation (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_prior_active
+          - const: true
+        then: k1p.prior_not_active
+      - guard:
+          op: test
+          eq:
+          - k1p.ask_prior_active
+          - const: false
+        then: k1p.no
+    cite: *id034
+  - id: k1p.any_loss
+    printed: (helper)
+    label: A loss in box 1, 2, 3, 8, 9a or 14 (code A)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        lt:
+        - k1p.box1_if_any
+        - const: 0
+      - op: test
+        lt:
+        - k1p.box2_if_any
+        - const: 0
+      - op: test
+        lt:
+        - k1p.box3_if_any
+        - const: 0
+      - op: test
+        lt:
+        - k1p.box8_if_any
+        - const: 0
+      - op: test
+        lt:
+        - k1p.box9a_if_any
+        - const: 0
+      - op: test
+        lt:
+        - k1p.box14a_if_any
+        - const: 0
+    cite:
+      doc: i1065sk1
+      locator: p. 3, Limitations on Losses, Deductions, and Credits, "the basis limitations, the at-risk limitations, the
+        passive activity limitations, and the excess business loss limitations"
+  - id: k1p.basis_short
+    printed: (helper)
+    label: Losses more than basis
+    type: Bool
+    expr:
+      op: input
+      source: Were your 2025 losses from it more than your basis in it at the end of its year? Basis is what you put in, plus
+        your share of its income and debts, less losses and money taken out.
+    cite: &id035
+      doc: i1065sk1
+      locator: p. 3, Basis Limitations, "a partner may only claim their share of a partnership loss (including a capital loss)
+        to the extent it doesn’t exceed their adjusted basis in the partnership"
+    gated_by: k1p.basis_short_if_loss
+  - id: k1p.basis_short_if_loss
+    printed: (gate)
+    label: Asked only when the K-1 shows a loss (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.any_loss
+          - const: true
+        then: k1p.basis_short
+      - guard:
+          op: test
+          eq:
+          - k1p.any_loss
+          - const: false
+        then: k1p.no
+    cite: *id035
+    ambiguity: amb.2025.k1p_basis_by_filer
+  - id: k1p.not_at_risk
+    printed: (helper)
+    label: Some investment not at risk
+    type: Bool
+    expr:
+      op: input
+      source: Was any of what you have in it borrowed on a loan you are not personally liable for (other than a qualified
+        real estate loan), covered by a guarantee or stop-loss agreement, or borrowed from another partner or someone related
+        to one?
+    cite: &id036
+      doc: i1065sk1
+      locator: p. 8, At-Risk Limitations, "you’ll have to complete Form 6198, At-Risk Limitations, to figure your allowable
+        loss for the activity"
+    gated_by: k1p.not_at_risk_if_loss
+  - id: k1p.not_at_risk_if_loss
+    printed: (gate)
+    label: Asked only when the K-1 shows a loss (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.any_loss
+          - const: true
+        then: k1p.not_at_risk
+      - guard:
+          op: test
+          eq:
+          - k1p.any_loss
+          - const: false
+        then: k1p.no
+    cite: *id036
+  - id: k1p.se_loss_not_material
+    printed: (helper)
+    label: A self-employment loss (box 14, code A) without material participation in box 1
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        lt:
+        - k1p.box14a_if_any
+        - const: 0
+      - op: test
+        eq:
+        - k1p.material
+        - const: false
+    cite: *id010
+  - id: k1p.b1_passive
+    printed: (helper)
+    label: Box 1 is passive (no material participation)
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - k1p.material
+      - const: false
+    cite:
+      doc: i1065sk1
+      locator: p. 9, Effect of determination, "If you determine that you didn’t materially participate in a trade or business
+        activity of the partnership"
+  - id: k1p.b1_pos
+    printed: (helper)
+    label: Box 1 income
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1p.box1_if_any
+      take: k1p.zero
+    cite: *id002
+  - id: k1p.b1_neg
+    printed: (helper)
+    label: Box 1 loss
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1p.zero
+      take: k1p.box1_if_any
+    cite: *id002
+  - id: k1p.b2_pos
+    printed: (helper)
+    label: Box 2 income
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1p.box2_if_any
+      take: k1p.zero
+    cite: *id003
+  - id: k1p.b2_neg
+    printed: (helper)
+    label: Box 2 loss
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1p.zero
+      take: k1p.box2_if_any
+    cite: *id003
+  - id: k1p.b3_pos
+    printed: (helper)
+    label: Box 3 income
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1p.box3_if_any
+      take: k1p.zero
+    cite: *id004
+  - id: k1p.b3_neg
+    printed: (helper)
+    label: Box 3 loss
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1p.zero
+      take: k1p.box3_if_any
+    cite: *id004
+  - id: k1p.b1_net_income
+    printed: V (a)
+    label: 'Box 1 passive net income: Form 8582 column (a)'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.b1_passive
+          - const: true
+        then: k1p.b1_pos
+      - guard:
+          op: test
+          eq:
+          - k1p.b1_passive
+          - const: false
+        then: k1p.zero
+    cite: &id037
+      doc: i1065sk1
+      locator: p. 14, Box 1. Ordinary Business Income (Loss), "If income is reported in box 1, report the income in column
+        (h)"
+  - id: k1p.b1_net_loss
+    printed: V (b)
+    label: 'Box 1 passive net loss: Form 8582 column (b)'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.b1_passive
+          - const: true
+        then: k1p.b1_neg
+      - guard:
+          op: test
+          eq:
+          - k1p.b1_passive
+          - const: false
+        then: k1p.zero
+    cite: *id037
+  - id: k1p.b2_net_income
+    printed: IV/V (a)
+    label: 'Box 2 net income: Form 8582 column (a)'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1p.b2_pos
+    cite: *id003
+  - id: k1p.b2_net_loss
+    printed: IV/V (b)
+    label: 'Box 2 net loss: Form 8582 column (b)'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1p.b2_neg
+    cite: *id003
+  - id: k1p.b3_net_income
+    printed: V (a)
+    label: 'Box 3 net income: Form 8582 column (a)'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1p.b3_pos
+    cite: *id004
+  - id: k1p.b3_net_loss
+    printed: V (b)
+    label: 'Box 3 net loss: Form 8582 column (b)'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1p.b3_neg
+    cite: *id004
+  - id: k1p.b1_loss_sum
+    printed: (helper)
+    label: 'Box 1 activity: net loss plus prior years unallowed loss'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1p.b1_net_loss
+      - k1p.prior_b1_if
+    cite: &id038
+      doc: i8582
+      locator: p. 10, Columns (d) and (e), "Combine income and losses in columns (a) through (c) for each activity"
+  - id: k1p.b1_overall_loss
+    printed: (e)
+    label: 'Box 1 activity: overall loss, Form 8582 column (e)'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1p.b1_loss_sum
+      take: k1p.b1_net_income
+    cite: *id038
+    display: The activity's overall loss, which Form 8582 Part VII column (a) takes for a Part V activity.
+  - id: k1p.b2_loss_sum
+    printed: (helper)
+    label: 'Box 2 activity: net loss plus prior years unallowed loss'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1p.b2_net_loss
+      - k1p.prior_b2_if
+    cite: *id038
+  - id: k1p.b2_overall_loss
+    printed: (e)
+    label: 'Box 2 activity: overall loss, Form 8582 column (e)'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1p.b2_loss_sum
+      take: k1p.b2_net_income
+    cite: *id038
+  - id: k1p.b3_loss_sum
+    printed: (helper)
+    label: 'Box 3 activity: net loss plus prior years unallowed loss'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1p.b3_net_loss
+      - k1p.prior_b3_if
+    cite: *id038
+  - id: k1p.b3_overall_loss
+    printed: (e)
+    label: 'Box 3 activity: overall loss, Form 8582 column (e)'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1p.b3_loss_sum
+      take: k1p.b3_net_income
+    cite: *id038
+    display: The activity's overall loss, which Form 8582 Part VII column (a) takes for a Part V activity.
+  - id: k1p.p4_income
+    printed: IV (a)
+    label: 'Part IV column (a): box 2 net income with active participation'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: true
+        then: k1p.b2_net_income
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: false
+        then: k1p.zero
+    cite: *id039
+  - id: k1p.p4_loss
+    printed: IV (b)
+    label: 'Part IV column (b): box 2 net loss with active participation'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: true
+        then: k1p.b2_net_loss
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: false
+        then: k1p.zero
+    cite: *id039
+  - id: k1p.p4_prior
+    printed: IV (c)
+    label: 'Part IV column (c): box 2 prior years unallowed loss with active participation'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: true
+        then: k1p.prior_b2_if
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: false
+        then: k1p.zero
+    cite: *id039
+  - id: k1p.p6_loss
+    printed: VI (a)
+    label: 'Part VI column (a): box 2 overall loss with active participation'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: true
+        then: k1p.b2_overall_loss
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: false
+        then: k1p.zero
+    cite:
+      doc: i8582
+      locator: p. 12, Part VI, "Enter the overall loss from column (e) of Part IV for each activity"
+  - id: k1p.p5_b2_income
+    printed: (helper)
+    label: Box 2 net income without active participation (Part V)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: true
+        then: k1p.zero
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: false
+        then: k1p.b2_net_income
+    cite: &id040
+      doc: i8582
+      locator: p. 9, Part V, "Use Part V for all other passive activities"
+  - id: k1p.p5_b2_loss
+    printed: (helper)
+    label: Box 2 net loss without active participation (Part V)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: true
+        then: k1p.zero
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: false
+        then: k1p.b2_net_loss
+    cite: *id040
+  - id: k1p.p5_b2_prior
+    printed: (helper)
+    label: Box 2 prior years unallowed loss without active participation (Part V)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: true
+        then: k1p.zero
+      - guard:
+          op: test
+          eq:
+          - k1p.active
+          - const: false
+        then: k1p.prior_b2_if
+    cite: *id040
+  - id: k1p.p5_income
+    printed: V (a)
+    label: 'Part V column (a): net income of the passive activities other than Part IV'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1p.b1_net_income
+      - k1p.p5_b2_income
+      - k1p.b3_net_income
+    cite: *id040
+    ambiguity: amb.2025.k1p_activity_per_box
+  - id: k1p.p5_loss
+    printed: V (b)
+    label: 'Part V column (b): net loss of the passive activities other than Part IV'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1p.b1_net_loss
+      - k1p.p5_b2_loss
+      - k1p.b3_net_loss
+    cite: *id040
+  - id: k1p.p5_prior
+    printed: V (c)
+    label: 'Part V column (c): prior years unallowed loss of the passive activities other than Part IV'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1p.prior_b1_if
+      - k1p.p5_b2_prior
+      - k1p.prior_b3_if
+    cite: *id040
+  - id: k1p.prior_total
+    printed: (helper)
+    label: Prior years unallowed losses of this K-1
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1p.prior_b1_if
+      - k1p.prior_b2_if
+      - k1p.prior_b3_if
+    cite: *id033
+  - id: k1p.passive_loss
+    printed: (helper)
+    label: A passive activity of this K-1 has a net loss or a prior years unallowed loss
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        gt:
+        - k1p.b1_loss_sum
+        - const: 0
+      - op: test
+        gt:
+        - k1p.b2_loss_sum
+        - const: 0
+      - op: test
+        gt:
+        - k1p.b3_loss_sum
+        - const: 0
+    cite:
+      doc: i1065sk1
+      locator: p. 9, Effect of determination, "If you have an overall loss (the excess of deductions and losses, including
+        any prior-year unallowed loss, over income) or credits from a passive activity"
+  - id: k1p.col_h
+    printed: 28 (h)
+    label: 'Passive income from Schedule K-1: Schedule E line 28 column (h)'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1p.b1_net_income
+      - k1p.b2_net_income
+      - k1p.b3_net_income
+    cite: *id037
+  - id: k1p.np_b1_income
+    printed: (helper)
+    label: Box 1 income with material participation
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.b1_passive
+          - const: true
+        then: k1p.zero
+      - guard:
+          op: test
+          eq:
+          - k1p.b1_passive
+          - const: false
+        then: k1p.b1_pos
+    cite: &id041
+      doc: i1065sk1
+      locator: p. 14, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from partnership trade or business
+        activities in which you materially participated in column (i) or (k)"
+  - id: k1p.col_k
+    printed: 28 (k)
+    label: 'Nonpassive income from Schedule K-1: Schedule E line 28 column (k)'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1p.np_b1_income
+      - k1p.box4a_if_any
+    cite: *id041
+  - id: k1p.col_i
+    printed: 28 (i)
+    label: 'Nonpassive loss allowed: Schedule E line 28 column (i) (as a positive amount)'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1p.b1_passive
+          - const: true
+        then: k1p.zero
+      - guard:
+          op: test
+          eq:
+          - k1p.b1_passive
+          - const: false
+        then: k1p.b1_neg
+    cite: *id041
+  - id: k1p.nonpassive_net
+    printed: (helper)
+    label: Nonpassive income less nonpassive loss (column (k) less column (i))
+    type: Dollars
+    expr:
+      op: subtract
+      from: k1p.col_k
+      take: k1p.col_i
+    cite: *id041
+  - id: k1p.sche_row
+    printed: (helper)
+    label: The K-1 puts a row on Schedule E line 28 (an amount in box 1, 2, 3 or 4a, or a held-back loss)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        ne:
+        - k1p.box1_if_any
+        - const: 0
+      - op: test
+        ne:
+        - k1p.box2_if_any
+        - const: 0
+      - op: test
+        ne:
+        - k1p.box3_if_any
+        - const: 0
+      - op: test
+        gt:
+        - k1p.box4a_if_any
+        - const: 0
+      - op: test
+        gt:
+        - k1p.prior_total
+        - const: 0
+    cite:
+      doc: i1040se
+      locator: p. 10, Line 28, "For nonpassive income or loss and passive income or losses for which you are not filing Form
+        8582"
+    ambiguity: amb.2025.k1p_portfolio_no_sche
+  - id: k1p.se_pos
+    printed: (helper)
+    label: Positive net earnings from self-employment (box 14, code A)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1p.box14a_if_any
+      take: k1p.zero
+    cite: *id010
+  - id: k1p.screened
+    printed: (gate)
+    label: This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)
+    type: Bool
+    expr:
+      op: copy
+      from: k1p.yes
+    cite: *id042
+    refuses:
+    - when: k1p.ptp
+      form: Publicly traded partnership (Schedule K-1 item D)
+      remedy: A Schedule K-1 from a publicly traded partnership is outside this tool.
+      cite:
+        doc: i1065sk1
+        locator: p. 10, Publicly traded partnerships (PTPs), "Don’t report passive income, gains, or losses from a PTP on
+          Form 8582"
+    - when: k1p.r_b4b
+      form: Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id043
+    - when: k1p.r_b7
+      form: Schedule K-1 (Form 1065) box 7 (royalties on Schedule E, line 4)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id044
+    - when: k1p.r_b10
+      form: Schedule K-1 (Form 1065) box 10 (Form 4797)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id045
+    - when: k1p.r_b11
+      form: Schedule K-1 (Form 1065) box 11 (other income or loss)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id046
+    - when: k1p.r_b12
+      form: Schedule K-1 (Form 1065) box 12 (section 179 deduction, Form 4562)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id047
+    - when: k1p.r_b13
+      form: Schedule K-1 (Form 1065) box 13 (other deductions)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id048
+    - when: k1p.r_b14bc
+      form: Schedule K-1 (Form 1065) box 14, codes B and C (optional methods of Schedule SE)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id049
+    - when: k1p.r_b15
+      form: Schedule K-1 (Form 1065) box 15 (credits; Form 8582-CR, Form 3800)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id050
+    - when: k1p.r_b16
+      form: Schedule K-3 (international items)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id051
+    - when: k1p.r_b17
+      form: Schedule K-1 (Form 1065) box 17 (Form 6251)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id052
+    - when: k1p.r_b20
+      form: Schedule K-1 (Form 1065) box 20, other information
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id013
+    - when: k1p.r_b21
+      form: Schedule K-1 (Form 1065) box 21 (foreign taxes; Form 1116)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id053
+    - when: k1p.r_b2223
+      form: A partnership with more than one activity (boxes 22 and 23)
+      remedy: A Schedule K-1 with this item is outside this tool.
+      cite: *id054
+    - when: k1p.r_foreign
+      form: Schedule E, line 28, column (c) (foreign partnership; Form 8865)
+      remedy: A Schedule K-1 from a foreign partnership is outside this tool.
+      cite: *id055
+    - when: k1p.r_disposed
+      form: Sale or other disposition of a partnership interest (Form 8949, section 751)
+      remedy: A sale or other disposition of a partnership interest is outside this tool.
+      cite: *id056
+    - when: k1p.b19_other_if_any
+      form: Schedule K-1 (Form 1065) box 19, codes other than A (distributions of property)
+      remedy: A distribution of property other than money is outside this tool.
+      cite: *id017
+    - when: k1p.dist_over_if_any
+      form: Gain on a distribution above basis (Form 8949)
+      remedy: Money taken out of a partnership above your basis is outside this tool.
+      cite: *id018
+    - when: k1p.z_other_if_z
+      form: Section 199A dividends or cooperative items from a partnership (Form 8995-A)
+      remedy: Section 199A dividends or cooperative items from a partnership are outside this tool.
+      cite: *id019
+    - when: k1p.trader_if_b1
+      form: A partnership trading investments for its owners (nonpassive trading activity)
+      remedy: A partnership that trades investments for its owners is outside this tool.
+      cite: *id020
+    - when: k1p.t6_if_asked
+      form: Material participation by test 6 (personal service activity)
+      remedy: Material participation by the personal service test is outside this tool.
+      cite: *id027
+    - when: k1p.t4_if_gp
+      form: Material participation by test 4 (significant participation activities)
+      remedy: Material participation by the significant participation test is outside this tool.
+      cite: *id029
+    - when: k1p.t7_if_gp
+      form: Material participation by test 7 (facts and circumstances)
+      remedy: Material participation by the facts and circumstances test is outside this tool.
+      cite: *id030
+    - when: k1p.basis_short_if_loss
+      form: Partnership losses above basis (basis limitation)
+      remedy: Losses from a partnership above your basis in it are outside this tool.
+      cite: *id035
+    - when: k1p.not_at_risk_if_loss
+      form: Form 6198 (at-risk limitations)
+      remedy: A partnership loss with an amount not at risk is outside this tool.
+      cite: *id036
+    - when: k1p.se_loss_not_material
+      form: Schedule K-1 box 14, code A loss without material participation
+      remedy: A self-employment loss from a partnership business you did not materially participate in is outside this tool.
+      cite: *id010
+    - when: k1p.former_passive
+      form: Form 8582, former passive activity (held-back loss from a business you now materially participate in)
+      remedy: A held-back loss from a business you now materially participate in is outside this tool.
+      cite: *id057
+    - when: k1p.prior_not_active_if
+      form: Form 8582, Part IV (prior-year loss from a year without active participation)
+      remedy: A held-back rental loss from a year without active participation is outside this tool.
+      cite: *id034
+  collection:
+    parent: person
+    cite: *id042

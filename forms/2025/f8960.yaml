@@ -13,7 +13,7 @@ form:
       label: |-
         Do you (or, on a joint return, your spouse) have any of the following?
 
-        - annuity, rental, royalty, business or pass-through income
+        - annuity, business or pass-through income
         - a CFC or PFIC holding
         - a section 911 exclusion
         - a disposition adjustment (Form 8960 line 5b or 5c), for example:
@@ -31,7 +31,7 @@ form:
         source: |-
           Do you (or, on a joint return, your spouse) have any of the following?
 
-          - annuity, rental, royalty, business or pass-through income
+          - annuity, business or pass-through income
           - a CFC or PFIC holding
           - a section 911 exclusion
           - a disposition adjustment (Form 8960 line 5b or 5c), for example:
@@ -187,14 +187,14 @@ form:
               worksheet
     - id: f8960.line4a
       printed: 4a
-      type: NonNegDollars
-      label: Amount from f8960.zero
+      type: Dollars
+      label: Rental real estate, royalties, partnerships, S corporations, trusts, etc.
       expr:
         op: copy
-        from: f8960.zero
+        from: s1.line5
       cite:
-        doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        doc: i8960
+        locator: 'p. 8, Line 4a, "Schedule 1 (Form 1040), line 5"'
       refuses:
         - when: f8960.unsupported
           form: Form 8960 additional adjustments
@@ -342,6 +342,36 @@ form:
             doc: i8960
             locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
               worksheet
+        - when: f8960.digital_nii
+          form: Form 8960, digital asset income
+          remedy: Digital assets received as ordinary income (Schedule 1 line 8v) on a return whose modified adjusted gross
+            income is over the net investment income tax threshold may be net investment income; whether this income is
+            is outside this tool.
+          cite:
+            doc: i8960
+            locator: p. 1, Reminders, Digital assets
+    - id: f8960.digital_nii
+      printed: (gate)
+      type: Bool
+      label: Digital assets received as ordinary income (Schedule 1 line 8v) on a return whose modified adjusted gross income
+        is over the threshold
+      expr:
+        op: test
+        all:
+          - op: test
+            gt:
+              - s1.line8v
+              - param: sales.zero
+          - op: test
+            eq:
+              - f8960.used
+              - const: true
+      cite:
+        doc: i8960
+        locator: 'p. 1, Reminders, Digital assets, "Income derived from transactions involving digital assets may be subject
+          to the tax imposed on net investment income (NII) under section 1411(a)"; p. 1, Who Must File, "Attach Form 8960
+          to your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount"'
+      ambiguity: amb.2025.digital_8v_nii
     - id: f8960.line9c
       printed: 9c
       type: NonNegDollars
@@ -397,7 +427,7 @@ form:
               worksheet
     - id: f8960.line4c
       printed: 4c
-      type: NonNegDollars
+      type: Dollars
       label: Add f8960.line4a, f8960.line4b
       expr:
         op: sum

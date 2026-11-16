@@ -1,0 +1,121 @@
+{
+ "kind": "transcription",
+ "form": "f4137",
+ "family": "claude",
+ "base": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+ "lines": [
+  {
+   "key": "2",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "b25c2ab48672e51eb90f80ec1c1402e1bdf2dfc33739fd425322b007279ea25f"
+  },
+  {
+   "key": "3",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "d31afdd6ce14d6192c04da937bb6d2892c84f8bf671809eba8345391d8b13208"
+  },
+  {
+   "key": "4",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "3bfb26da876622b8ebe99e162aa2c363e2ade4a06457af03dbc0931bf2f4e70c"
+  },
+  {
+   "key": "5",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage: 2,220 of 2,220 inputs agree (1,655 fixture, 565 generated); the reply only drops the shown_when (line 2 more than zero). Form 4137 line 5.",
+   "subject_key": "32f6ef51fc7f0052602afd6609cc950200a259b133ab155119141b0bef298211"
+  },
+  {
+   "key": "6",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "df58e983b7dd81bde3a9b3b14d75f6b8c642c2581baaab76c324b05b6e330e6e"
+  },
+  {
+   "key": "7",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply's line has no shown_when, so it shows the wage base on returns without a Form 4137 (2,202 candidate-shows-skipped, 9 project-unknown on refused returns); se.wage_base and ss.base are both $176,100, so no value differs. Form 4137 line 7.",
+   "subject_key": "fe7339a8f6acac019c0a8e676e9129d5283f310d4f30507a410d3b04fe333ac0"
+  },
+  {
+   "key": "8",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.h_w2_box3: \"f4137.f4137.h_w2_box3: collection parent binding mismatch\"; f4137.h_w2_box7: \"f4137.f4137.h_w2_box7: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "ba7f15370a8c53d7965fce76b8b61c7a5a5ba6c1703688352d0f45b08fe146e6"
+  },
+  {
+   "key": "9",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.h_w2_box3: \"f4137.f4137.h_w2_box3: collection parent binding mismatch\"; f4137.h_w2_box7: \"f4137.f4137.h_w2_box7: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "95d2954c272307e0535bd33612c85a4ba5d465c365ed7b1f50db8345ef517473"
+  },
+  {
+   "key": "10",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.h_w2_box3: \"f4137.f4137.h_w2_box3: collection parent binding mismatch\"; f4137.h_w2_box7: \"f4137.f4137.h_w2_box7: collection parent binding mismatch\"; f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "97f57fbf6fd931a80b1814713b8542738810c3cc0adc43923e4df092532a2e2e"
+  },
+  {
+   "key": "11",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.h_w2_box3: \"f4137.f4137.h_w2_box3: collection parent binding mismatch\"; f4137.h_w2_box7: \"f4137.f4137.h_w2_box7: collection parent binding mismatch\"; f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "92812110350bf1dd3585ebf8c655c932e8f9176ef58efade0da9f77617bba105"
+  },
+  {
+   "key": "12",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "a376b1ce7c01eed65f9c76d504e3e050c28e00320adf9b6676eb28ef10447c3b"
+  },
+  {
+   "key": "13",
+   "record": "f3b7446f0c07af590aafdd10e90ab11de43665f71dd5654a14fbdf5137876bad",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.h_w2_box3: \"f4137.f4137.h_w2_box3: collection parent binding mismatch\"; f4137.h_w2_box7: \"f4137.f4137.h_w2_box7: collection parent binding mismatch\"; f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "ea08ec0be5a5dd766c3b91c6af5bc134a8615a0cda2f4a54db90df3c42eadaff"
+  }
+ ],
+ "subjects": {
+  "2": "3a9da2ba9a483e45e4f9050cb6c3c7b0a556cbb535eaedfc1b99e6de01c4f2ba",
+  "3": "1b3d76023cae17ee19c6c66f440aa29b88632527046873602f4899563878b49c",
+  "4": "a638cdb2eb2a7f8a28ea62f625f64db7052fba06c12783a578a6a5469dc42cc4",
+  "5": "02ec53d2d247ac80d9632a4f65a03fb2555a260e49a7c0b4786b04f615bdcf03",
+  "6": "52ad160236fe2ce419b8399749ff738ccbe2605ce28c72402287c4e2d17f3b08",
+  "7": "b74ba20cf4c51624c999a9cf81fded2e44c5fd0b678f0b76a5cebf0edf80957f",
+  "8": "40a9361a34b7e916c03bf6c1e4cd95b40c5b8cb6fff42c6c8de50262233190dc",
+  "9": "1f9b6570b2292b707329322567ed7ad994b8b531382aec09df399600af5a8972",
+  "10": "5c04e54310c76964129618c5aa66addde3fcfd45323553bc1d822282ed894434",
+  "11": "4366622432bd3bed358c369476faa5c4b0a57eafaf50ce560b4ff962c68728d8",
+  "12": "7534510c9cd3b4859cdec21e8286200cca72f790240f48a2e8b03929ac5127fc",
+  "13": "5df96f8541035ec1c4fcfe237706ecbfb4793c245b4515c149fa615dd6dd8139"
+ },
+ "__rest__": "e0da25fb9719eebcc48e99945c6c00bbf24bcc52d7fbe1d53e186375aa4f0c7b",
+ "foreign": {
+  "2": "06ac5efac094e35bfaa0c97927e25a8c650bda2b2b954d42830fcdcfbec78b54",
+  "3": "e074f56e67a8f8b08164309b6e04fa23ae9a3e837e5a57688c3ca1db2f4adf61",
+  "4": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "5": "480f23d880ec02b38affaf72c1edae68ebff239d8b5745812071eb14dafbce62",
+  "6": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "7": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8": "e7483ae01c6746a7c9c62ce6960f35285ef89901a95c7654894e164abf9cad3c",
+  "9": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "10": "abbe3ac4970ab938a0052b7c64a69b6ef8346999cff861df9bdc6aa18499f1e6",
+  "11": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "12": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "13": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+ }
+}

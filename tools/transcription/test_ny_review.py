@@ -127,7 +127,7 @@ class NewYorkMode(unittest.TestCase):
                                                       "person:person.birth_year", "person:person.ira_taxable", "person:person.one",
                                                       "person:person.plan_taxable", "person:person.sc_count",
                                                       "person:person.sc_total", "person:person.x_edu_account", "s1:s1.has_sc",
-                                                      "scope:scope.armed_forces", "scope:scope.has_w2"])
+                                                      "sa:sa.dependent", "scope:scope.armed_forces", "scope:scope.has_w2"])
 
     def test_render_prompt_reads_the_new_york_rendering(self):
         got = run_ny("import json, render_compare as R\n"
@@ -277,7 +277,7 @@ class NewYorkFederalCatalog(unittest.TestCase):
         self.assertEqual(it201["listed"], sorted([
             "f1040.line11a", "f1040.line15", "f1040.line1z", "f1040.line27a", "f1040.line2a", "f1040.line2b",
             "f1040.line3b", "f1040.line4b", "f1040.line5b", "f1040.line6b", "f1040.line7a", "f1040.status",
-            "person.sep_s3", "s1.line1", "s1.line15", "s1.line26", "s1.line2a", "s1.line3", "s1.line7", "s1.line9", "s2.line4",
+            "person.sep_s3", "s1.line1", "s1.line15", "s1.line26", "s1.line2a", "s1.line3", "s1.line7", "s1.line8z", "s1.line9", "s2.line4",
             "sc.f7206_line3", "sc.line3"]))
         for fid, r in got.items():
             self.assertTrue(r["notes"].strip().startswith("In this New York request"), fid)

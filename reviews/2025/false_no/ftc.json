@@ -1,79 +1,157 @@
 {
  "form": "ftc",
  "reviews": {
-  "gate:ftc.carryover_ask": {
-   "subject_sha": "539b28a2fe62b6f1a210b59120e75ac2759508e21b6cd5d4298d616d6eb5f292",
+  "gate:ftc.asked": {
+   "subject_sha": "c51a59c3811a76f2614db36a4ede921a6cbcb76127041876872d724b2f0d6f61",
    "samples": [
     {
      "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "FALSE_NO",
-       "pattern": "2",
-       "who": "An investor (or spouse) whose only foreign tax was paid by a mutual fund, ETF, partnership, S corporation, estate or trust and passed through on Form 1099-DIV box 7 or a Schedule K-1/K-3. They filed Form 1116 in, say, 2019-2023 with tax above the limitation, and their 2024 return has only Form 1040 and its schedules (holding sold, no foreign income, or the no-Form-1116 election used in 2024).",
-       "why_no": "\"Have you ever paid income tax to a foreign country\": the fund or partnership paid it, so the filer says no. The fallback asks only about the 2024 return, which truthfully has no other form. The carryover question is never asked.",
-       "line": "ftc.carryover_if_asked",
-       "irs_text": "i1116 p. 19: \"You can carry back 1 year and then forward 10 years any foreign tax you paid or accrued to any foreign country or U.S. territory\"; i1116 p. 19 Tip: \"If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV, 1099-INT, or similar statement\"",
+       "pattern": "5",
+       "who": "A partner or LLC member (or, on a joint return, the spouse) in a partnership that paid foreign income tax and passed the partner's share through on Schedule K-3 (Form 1065). The filer owns no stock or funds outside a retirement account, receives no Form 1099-DIV, has no taxable interest, and has never paid foreign tax personally.",
+       "why_no": "The partnership paid the tax, not the filer, so \"Have you ... ever paid income tax to a foreign country\" is truthfully no. A partnership or LLC interest is not \"shares of a company or a fund,\" so the share-ownership question is also no.",
+       "line": "ftc.taxes_if_asked",
+       "irs_text": "i1116 p. 1: \"Qualified payee statements include Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3 (Form 1065), Schedule K-3 (Form 1120-S)\"; p. 2: credit for income taxes \"paid or accrued during your tax year to any foreign country or U.S. territory\"",
        "severity": "high",
-       "fix": "Ask facts the filer can check: \"In any year from 2015 through 2025, did you or your spouse file Form 1116, or have foreign tax paid, withheld or reported for you (Form 1099-DIV box 7, Form 1099-INT box 6, Schedule K-1 or K-3, a foreign payslip or tax return)?\" Or ask the carryover question of everyone."
+       "fix": "Add a gate branch: \"In 2025, did you (or your spouse) receive a Schedule K-1 or K-3 from a partnership, S corporation, estate, or trust?\" Reword the territory question as \"paid, or had paid for you or passed through to you (including tax withheld or shown on a Schedule K-1/K-3)\". In the gated question, also add the foreign tax shown on Schedule K-1 (Form 1041) and Schedule K-3."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A beneficiary of an estate or trust (or the spouse on a joint return) whose Schedule K-1 (Form 1041) passes through foreign tax the fiduciary paid on the trust's foreign dividends. The filer personally owns no shares, receives no 1099-DIV, and has no taxable interest of their own.",
+       "why_no": "A beneficiary does not \"own shares of a company or a fund\" and did not personally \"pay income tax to a foreign country.\" The trust owned the shares and the fiduciary paid the tax.",
+       "line": "ftc.taxes_if_asked",
+       "irs_text": "i1116 p. 1: qualified payee statements include \"Schedule K-1 (Form 1041)\" for the election to claim the foreign tax credit without filing Form 1116",
+       "severity": "high",
+       "fix": "Use the same broad Schedule K-1/K-3 branch in the gate. Name beneficiaries of estates and trusts explicitly in the help text."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer whose only foreign-related income is a foreign pension, royalty, rent, or wages from which the foreign payer or employer withheld income tax at source. The filer has no U.S. brokerage shares and no taxable interest.",
+       "why_no": "The filer reads \"paid income tax to a foreign country\" as a payment they made themselves, such as a foreign return or a check. Tax withheld by the payer or employer is not seen as tax \"you paid.\"",
+       "line": "ftc.taxes_if_asked",
+       "irs_text": "i1116 p. 3: \"the conversion rate is the rate of exchange in effect on the day you paid the foreign taxes (or on the day the tax was withheld)\"; p. 2: credit for income taxes \"paid or accrued ... to any foreign country or U.S. territory\"",
+       "severity": "medium",
+       "fix": "Reword as \"Has income tax ever been paid or withheld to a foreign country or U.S. territory on your (or your spouse's) income, including tax taken out of wages, pensions, royalties, or rents before you received them?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who elected to claim foreign taxes on an accrual basis and whose 2025 foreign income tax accrued in 2025 but has not yet been paid. Examples are a first year abroad, or a contested tax claimed as a provisional credit.",
+       "why_no": "The words \"Have you ... ever paid\" are past tense. Nothing has been paid yet, so the filer answers no, although accrued taxes count.",
+       "line": "ftc.taxes_if_asked",
+       "irs_text": "i1116 p. 2: \"You can take a credit for income ... taxes paid or accrued during your tax year\"; p. 3: \"If you choose to account for foreign income taxes on an accrual basis ...\"",
+       "severity": "low",
+       "fix": "Say \"paid, owe, or had withheld\" income tax to a foreign country or U.S. territory, for 2025 or any year."
+      }
+     ],
+     "prompt_sha": "0d5cd73c08c46ece91c4516c62da8b2c35010d459f163381d797ce53475e1581",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.11819199999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_ftc.asked.c51a59c3811a.1.response.txt"
+    }
+   ],
+   "condition": "ftc.asked",
+   "lines": [
+    "ftc.taxes_if_asked"
+   ],
+   "inputs": [
+    "ftc.taxes"
+   ],
+   "used": [
+    {
+     "doc": "i1116",
+     "revision": "2025; printed date 2025-12-23",
+     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
+     "pages": [
+      1,
+      2,
+      3,
+      25
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
+      "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 3, Foreign Taxes Not Eligible for a Credit, item 5, \"Foreign taxes withheld on a dividend from a corporation, if you haven’t held the stock for at least 16 days within the 31-day period that begins 15 days before the ex-dividend date\", and item 6, \"Foreign taxes withheld on a dividend to the extent that you have to make related payments on positions in substantially similar or related property\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      25
+     ],
+     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
+    }
+   ]
+  },
+  "gate:ftc.carryover_ask": {
+   "subject_sha": "0de764b66d75043cab2e291423a25c8350c5a4c9bcdfe0950081dc2829b909f9",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A filer divorced or widowed before 2025 who now files single or head of household. On an earlier joint return, the former or deceased spouse's foreign taxes went over the limitation. Part of that unused foreign tax is allocated to this filer and carried into 2025.",
+       "why_no": "The gate asks about 'you (or, on a joint return, your spouse)'. The filer never paid foreign tax personally and has no current spouse, so the first question is a truthful no. Their 2024 return may be a plain Form 1040 with no other forms, so the second question is also a truthful no.",
+       "line": "ftc.carryover_if_asked (Form 1116 line 10)",
+       "irs_text": "i1116 (2025) p. 19, Line 10: 'Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025.'",
+       "severity": "high",
+       "fix": "Add to the gate: 'or did you file a joint return in any of the last 10 years with someone who paid foreign or U.S. territory income tax?' Alternatively, ask directly whether any Form 1116 (including Schedule B) was filed by or for you, alone or jointly, in any of the last 10 years."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "8",
-       "who": "A filer whose foreign tax was withheld at source from dividends, interest, royalties, a pension or wages, or was paid by an employer under tax equalization. They have an unused credit from an earlier Form 1116 and a 2024 return with no extra forms.",
-       "why_no": "They read \"paid income tax to a foreign country\" as filing and paying a foreign return themselves. A withholding on a brokerage statement, or tax the employer settled, is not perceived as tax they paid.",
-       "line": "ftc.carryover_if_asked",
-       "irs_text": "i1116 p. 19, Line 10: \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+       "who": "An investor whose mutual fund, ETF, partnership, S corporation or estate passed foreign tax through to them (Form 1099-DIV box 7, or a K-1). They claimed it on Form 1116 in an earlier year and had an excess. Their 2024 return had no foreign tax and no forms beyond Form 1040 and its schedules (K-1 income is reported on Schedule E).",
+       "why_no": "The filer reads 'Have you ... ever paid income tax to a foreign country' as tax they paid directly. They think the fund or the partnership paid it, not them. Schedule E counts as a schedule, so the 2024 fallback question is also no.",
+       "line": "ftc.carryover_if_asked (Form 1116 line 10)",
+       "irs_text": "i1116 (2025) p. 19, Line 10: 'You can carry back 1 year and then forward 10 years any foreign tax you paid or accrued to any foreign country or U.S. territory ... that is more than the limitation.'",
        "severity": "medium",
-       "fix": "Say \"paid, had withheld from your income, or had paid on your behalf (by an employer, broker, fund, partnership, estate or trust)\"."
+       "fix": "Reword the gate to: 'Have you ... ever had foreign or U.S. territory income tax paid or withheld for you, including foreign tax shown on a Form 1099-DIV or 1099-INT or passed through on a Schedule K-1, or ever filed Form 1116?'"
       },
       {
        "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer whose foreign tax was withheld at source by a foreign bank, broker or payer, or was accrued under the accrual method rather than paid. The excess was claimed on an earlier Form 1116 and carried forward. The 2024 return was a plain Form 1040.",
+       "why_no": "The filer does not see withholding or an accrual as having 'paid income tax to a foreign country'. A filer subject to a tax imposed in lieu of an income tax (for example, a gross-basis withholding tax on royalties) may also not see it as 'income tax'.",
+       "line": "ftc.carryover_if_asked (Form 1116 line 10)",
+       "irs_text": "i1116 (2025) p. 19, Line 10: 'any foreign tax you paid or accrued to any foreign country or U.S. territory ... on income in a separate category that is more than the limitation.'",
+       "severity": "medium",
+       "fix": "Say 'paid, accrued, or had withheld' and add 'including taxes withheld at source or imposed in place of an income tax'."
+      },
+      {
+       "kind": "FALSE_NO",
        "pattern": "1",
-       "who": "A filer with a live carryover from any of 2015-2023 who answers the first helper no for one of the reasons above. Either they filed no 2024 return (income below the threshold, or not yet a U.S. filer), or their 2024 return carried no Form 1116.",
-       "why_no": "The fallback looks only at the 2024 return, though the carryforward runs ten years. \"Does your 2024 return include any form other than Form 1040 and its schedules\" is no when there was no 2024 return or the carryover arose earlier.",
-       "line": "ftc.carryover_if_asked",
-       "irs_text": "i1116 p. 19: \"You can carry back 1 year and then forward 10 years any foreign tax you paid or accrued ... The carryback-carryforward period can't be extended even if you are unable to take a credit in 1 of the intervening years.\"",
+       "who": "A filer amending a 2025 return to carry back foreign tax paid in 2026 that exceeded the 2026 limitation. The first foreign tax they ever paid was in 2026.",
+       "why_no": "The gated question asks only about tax 'you could not use as a credit in an earlier year'. The help says it 'is carried to later years'. A carryback from a later year (2026) is a truthful no.",
+       "line": "ftc.carryover_if_asked (Form 1116 line 10)",
+       "irs_text": "i1116 (2025) p. 19, Line 10: 'eligible to be carried forward to or back to 2025' ... 'File Form 1040-X or other amended return and a revised Form 1116 for the earlier tax year to which you are carrying back excess foreign taxes.'",
+       "severity": "high",
+       "fix": "Reword the question to 'carried into 2025 from an earlier year, or carried back to 2025 from 2026'. Note in the help that a carryback is claimed on an amended 2025 return."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer with an unused foreign tax carryover whose 2024 Form 1116 had no Schedule B attached, or who has no 2024 Form 1116 because the carryover arose earlier and they had no foreign tax in 2024.",
+       "why_no": "The help points to 'your 2024 Schedule B (Form 1116) ... line 8'. A filer with no 2024 Schedule B concludes there is no carryover. The carryover still exists from an earlier year within the 10-year period.",
+       "line": "ftc.carryover_if_asked (Form 1116 line 10)",
+       "irs_text": "i1116 (2025) p. 19, Line 10: 'You can carry back 1 year and then forward 10 years any foreign tax ... First, apply the excess to the earliest year to which it may be carried.'",
        "severity": "medium",
-       "fix": "Make the fallback cover every year in the carryforward window: \"Did any federal return you or your spouse filed for 2015 through 2024 include Form 1116?\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer whose 2024 return did include Form 1116 and Schedule B (Form 1116), prepared by a paid preparer or software, and who answered the first helper no because a fund paid the tax.",
-       "why_no": "\"Any form other than Form 1040 and its schedules\": they do not know what was attached, or they count Form 1116 (which feeds Schedule 3) and \"Schedule B (Form 1116)\" as schedules of Form 1040.",
-       "line": "ftc.carryover_if_asked",
-       "irs_text": "i1116 p. 19, Line 10: \"Attach Schedule B (Form 1116) to your Form 1116 for each applicable separate category of income if you enter a carryover of foreign taxes from a prior tax year on Form 1116, line 10, or if you generated a foreign tax carryover in the current year.\"",
-       "severity": "medium",
-       "fix": "Name the form: \"Did your 2024 return (or any return since 2015) include Form 1116, Foreign Tax Credit, or an amount on the foreign tax credit line of Schedule 3?\""
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "6",
-       "who": "A filer who paid income tax to a foreign province, canton, state or city, or a withholding or other tax in lieu of an income tax, or who is on the accrual basis and accrued foreign tax not yet paid.",
-       "why_no": "\"Income tax to a foreign country\" reads as a national income tax actually paid. A cantonal or provincial tax, a gross withholding tax, or an accrued unpaid tax seems outside it.",
-       "line": "ftc.carryover_if_asked",
-       "irs_text": "i1116 p. 19: \"any foreign tax you paid or accrued to any foreign country or U.S. territory\"",
-       "severity": "low",
-       "fix": "Say \"paid or accrued any tax on income (including withholding tax) to a foreign country, any of its provinces, states or cities, or a U.S. territory such as Puerto Rico, Guam, the U.S. Virgin Islands, American Samoa or the Northern Mariana Islands\"."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer amending 2025 to carry back excess foreign tax from 2026, or one who reaches the gated question with unused tax from an earlier year for which no Form 1116 was filed.",
-       "why_no": "The gated question says \"left over from an earlier year\", and its help says \"if you have never filed Form 1116, the answer is No\". A carryback from a later year is not an earlier year.",
-       "line": "ftc.carryover_if_asked",
-       "irs_text": "i1116 p. 19, Line 10: \"eligible to be carried forward to or back to 2025 ... You don't need to file Schedule B (Form 1116) for 2025 if you carry back a foreign tax to 2025\"",
-       "severity": "low",
-       "fix": "Word it \"carried to 2025 from another year (forward from 2015-2024 or back from 2026)\", and change the help to \"if neither you nor your spouse has had unused foreign tax in any of those years, answer No\"."
+       "fix": "Change the help to: 'Check the most recent Schedule B (Form 1116), or the Form 1116 for any of the last 10 years in which foreign tax exceeded the limitation. A carryover remains even in years when you filed no Form 1116.'"
       }
      ],
-     "prompt_sha": "44e0c33d624132a0181bdc33a075cf85c9063801b20050617b17d19e7b4037eb",
+     "prompt_sha": "7050df5793507f9c3ca38f24db66ca0c7fcef9486884fba08fa8600236643437",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "model": "claude-fable-5-2",
-     "cost": 0.25320800000000004,
-     "date": "2026-11-12",
-     "response": ".transcription/false_no/gate_ftc.carryover_ask.539b28a2fe62.1.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.12145600000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_ftc.carryover_ask.0de764b66d75.1.response.txt"
     }
    ],
    "condition": "ftc.carryover_ask",
@@ -102,21 +180,253 @@
     }
    ]
   },
+  "gate:ftc.carryover_if_asked": {
+   "subject_sha": "c5760421baaebdd860ba72cd0d8fce13c897eed153ab44009086c25f207fd943",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose 2024 Schedule B (Form 1116) line 7 estimated that all of the 2024 excess foreign tax would be carried back to 2023, so line 8 showed no carryforward. The actual 2023 carryback later came out smaller, which leaves a positive line 2a adjustment for 2025.",
+       "why_no": "They read 'Are any of your unused foreign taxes carried to 2025 from another tax year?' against their 2024 Schedule B. It shows zero carried forward and the excess as 'carried back', so they answer no. The carryover gate is false, and the f1116sb.changed question about a carryback that differs from its estimate is never asked.",
+       "line": "f1116sb.changed_if_carry",
+       "irs_text": "i1116sb p. 2, Line 7: 'If an estimated amount is entered on line 7 and this amount differs from the actual carryback amount, the difference will be entered on line 2a of your subsequent year Schedule B.'",
+       "severity": "medium",
+       "fix": "Ask the carryover question more broadly: 'Did you have foreign tax in any of 2015–2024 that you couldn't fully use (including any you estimated as carried back), or has foreign tax for an earlier year changed since then?' Say in its help that a zero carryforward on the 2024 Schedule B can still become a carryover after a carryback, a redetermination or an audit."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose foreign tax for an earlier year rose after a foreign audit (a section 905(c) redetermination), or whose IRS audit of an earlier year lowered the foreign tax credit limitation. Before that change they had no unused foreign tax.",
+       "why_no": "No carryover appeared on any return they filed, so 'Are any of your unused foreign taxes carried to 2025' reads as no. The change that creates the carryover, and the refusal tied to it, is never reached.",
+       "line": "f1116sb.changed_if_carry",
+       "irs_text": "i1116sb p. 2: 'Line 2b. Adjustments for section 905(c) redeterminations' and 'Lines 2c, 2d, 2e ... Domestic audit adjustments'",
+       "severity": "medium",
+       "fix": "Add to the carryover question, or ask beside it: 'Since filing your 2024 return, has foreign tax for any earlier year been changed by a foreign or IRS audit or a refund?' A yes should open the gated questions."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly for 2025. Only the spouse paid foreign tax in earlier years, filed a Form 1116 on their own 2024 separate (or pre-marriage) return, and has an unused carryover. The filer's own 2024 return was Form 1040 only.",
+       "why_no": "The outer helper ('foreign tax, territory income or a foreign corporation at some time, or a 2024 return with a form besides Form 1040') does not say 'you or your spouse'. The filer answers about themselves and 'a 2024 return' means their own return, so the inner question, which does name the spouse, is never asked.",
+       "line": "f1116sb.split_if_carry",
+       "irs_text": "p514 p. 39: 'You may have to allocate an unused foreign tax or excess limit for a tax year in which you and your spouse filed a joint return.'",
+       "severity": "medium",
+       "fix": "Word the outer gate as 'Have you or your spouse ever paid ... , or does your or your spouse's 2024 return include any form besides Form 1040 and its schedules?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer whose foreign tax was withheld by a mutual fund or broker and reported on Form 1099-DIV. They filed Form 1116 in 2021 with excess passive-category tax, then in 2024 used the no-Form-1116 election or claimed a deduction, so the 2024 return has no extra form.",
+       "why_no": "They don't see fund-level withholding shown on a 1099 as having 'paid income tax to a foreign country', and their 2024 return is Form 1040 only. The outer gate is false, so the carryover and the questions under it are skipped.",
+       "line": "f1116sb.changed_if_carry",
+       "irs_text": "i1116 p. 19, Line 10: 'Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025.'",
+       "severity": "medium",
+       "fix": "Name foreign tax shown on Form 1099-DIV, 1099-INT or a brokerage statement, and any Form 1116 or Schedule B filed in any of the last 10 years, as triggers of the outer gate."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A couple who filed jointly for 2023, separately for 2024 and jointly again for 2025 (same spouse), carrying unused foreign tax from 2023 through 2024. Or a couple filing separately for 2025 and carrying unused foreign tax from a separate year through an intervening joint year.",
+       "why_no": "The question asks only about tax 'carried into 2025 from a joint return of an earlier year, when this return is not a joint return with the same spouse'. In the first case the 2025 return is joint with the same spouse. In the second the carryover arose on a separate return. Both truthfully answer no, yet P514 requires the allocation the refusal exists for.",
+       "line": "f1116sb.split_if_carry",
+       "irs_text": "p514 p. 39: '2. You and your spouse file separate returns for the current tax year, to which you carry an unused foreign tax from a tax year for which you and your spouse filed separate returns, but through a tax year for which you and your spouse filed a joint return. 3. You and your spouse file a joint return for the current tax year, to which you carry an unused foreign tax from a tax year for which you and your spouse filed a joint return, but through a tax year for which you and your spouse filed separate returns.'",
+       "severity": "high",
+       "fix": "Ask: 'In any year from the one the carried tax arose in through 2025, did your filing status change between joint and separate, or did you file jointly with a different spouse?' Any yes should lead to the refusal."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A filer now filing single or married filing separately after a divorce or a spouse's death. The foreign tax carryover arose on an earlier joint return, and both spouses had foreign-source income.",
+       "why_no": "They think of the joint carryover as 'ours' or as the ex-spouse's, and only the spouse appears in the help ('on a joint return, your spouse's'). They answer no to 'your unused foreign taxes', so the split question that would refuse is never asked.",
+       "line": "f1116sb.split_if_carry",
+       "irs_text": "p514 p. 39: '1. You and your spouse file separate returns for the current tax year, to which you carry an unused foreign tax from a tax year for which you and your spouse filed a joint return.'",
+       "severity": "medium",
+       "fix": "Add to the carryover question's help: 'Include any carryover shown on an earlier joint return you filed, even if you now file alone or with a different spouse.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose 2024 return carried forward unused foreign tax from 2016–2023 and whose 2025 adjustment affects one of those older columns, such as a 905(c) redetermination of 2019 tax.",
+       "why_no": "'The foreign tax carried from 2024' and 'Since you filed your 2024 return' read as limited to tax that arose in 2024, so a change to an older year's carryover listed on the 2024 schedule is answered no.",
+       "line": "f1116sb.changed_if_carry",
+       "irs_text": "i1116sb p. 1, Line 2: 'Report on lines 2a, 2b, 2c, 2d, etc., any adjustments resulting from events that occurred between the filing of your prior year tax return and the filing of your current year tax return.'",
+       "severity": "low",
+       "fix": "Ask: 'Since you filed your 2024 return, has anything changed any foreign tax carryover (from any earlier year) shown on it ...'"
+      }
+     ],
+     "prompt_sha": "5cb3491cf3c66390593293df6b619282e39b1f967e24123d0fc014ad5fbbfb21",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.178332,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_ftc.carryover_if_asked.c5760421baae.1.response.txt"
+    }
+   ],
+   "condition": "ftc.carryover_if_asked",
+   "lines": [
+    "f1116sb.changed_if_carry",
+    "f1116sb.split_if_carry"
+   ],
+   "inputs": [
+    "f1116sb.changed",
+    "f1116sb.split"
+   ],
+   "used": [
+    {
+     "doc": "i1116",
+     "revision": "2025; printed date 2025-12-23",
+     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
+    },
+    {
+     "doc": "i1116sb",
+     "revision": "Rev. December 2022 (printed 'Instructions for Schedule B (Form 1116) (Rev. 12-2022)', Dec 29, 2022); current irs-pdf edition, not year-specific; the IRS had posted no 2025 edition",
+     "text_sha256": "90f1313e93bf416f2ee96a62d18d70f06016968268aca1055653869475205766",
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Line 2. Adjustments to line 1, \"Report on lines 2a, 2b, 2c, 2d, etc., any adjustments resulting from events that occurred between the filing of your prior year tax return and the filing of your current year tax return.\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3
+     ],
+     "cols_sha256": "4f7920df06efd2f3f67a5f5f7b3a83f7307e81fb9342cd91461ba433b47486fd"
+    },
+    {
+     "doc": "p514",
+     "revision": "2025 (Publication 514 (2025), Catalog Number 15018A, Jan 30, 2026)",
+     "text_sha256": "db756c91fb3988617c583cbb077c6390dd7e235736f6df0ab2b2a63568f934ba",
+     "pages": [
+      39
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 39, Allocations Between Spouses, \"You may have to allocate an unused foreign tax or excess limit for a tax year in which you and your spouse filed a joint return.\""
+     ],
+     "cols_pages": [
+      39
+     ],
+     "cols_sha256": "8ba7d10e464cb1323987bc176a435020718ff8bc7d1b9407fdc32f24a86c6e6a"
+    }
+   ]
+  },
   "gate:ftc.has_tax": {
-   "subject_sha": "4711934c03a420b8cdc7d17bbb49ab050ab0630944e87767658fef7d930ebdaa",
-   "grandfathered": true,
+   "subject_sha": "04c2c370ff5d8e46dd2bdfae4ad8e3bbd49ab17b7bfb357b253c25b4ee4579ff",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner in a partnership, an S corporation shareholder, or an estate or trust beneficiary whose Schedule K-1 or K-3 shows foreign taxes paid by the entity. The filer has no brokerage shares, no Form 1099-DIV, no taxable interest, and never paid foreign tax personally.",
+       "why_no": "The pre-gate asks only whether you 'owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country'. A partnership interest or trust interest is not 'shares', and the entity, not the filer, paid the tax. So the helper is zero and the gate is false.",
+       "line": "ftc.statements_if_tax, ftc.all_passive_if_tax, ftc.eligible_if_tax, sa.foreign_tax_deduct_if_tax",
+       "irs_text": "i1116 p. 1: 'Qualified payee statements include Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3 (Form 1065), Schedule K-3 (Form 1120-S)'",
+       "severity": "high",
+       "fix": "Broaden the pre-gate: 'Did you or your spouse receive a Schedule K-1 or K-3 from a partnership, S corporation, estate or trust, or any statement showing foreign tax paid on your behalf?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer who paid income tax to Puerto Rico, Guam, the CNMI or American Samoa, for example on wages or a business there, with no other foreign link.",
+       "why_no": "'Ever paid income tax to another country.' A U.S. territory is not another country.",
+       "line": "ftc.all_passive_if_tax, ftc.eligible_if_tax, ftc.statements_if_tax, sa.foreign_tax_deduct_if_tax",
+       "irs_text": "i1116 p. 2: 'You paid or accrued certain foreign taxes to a foreign country or U.S. territory'; 'U.S. territories include Puerto Rico, ... Guam, the Commonwealth of the Northern Mariana Islands, and American Samoa.'",
+       "severity": "high",
+       "fix": "Ask 'paid or had withheld income tax to another country, or to Puerto Rico, Guam, the Northern Mariana Islands or American Samoa (including a province, state or city there)'. Route U.S. Virgin Islands tax to Form 8689."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer whose foreign tax was withheld at source and who never filed or paid anything abroad. Examples: tax withheld from a foreign pension, royalties, rent, or wages paid by a foreign employer.",
+       "why_no": "'Ever paid income tax to another country' reads as paying a foreign tax bill yourself, not tax a payer withheld. 'Taxable interest' and 'shares' do not cover pensions, royalties or rents.",
+       "line": "ftc.all_passive_if_tax, ftc.eligible_if_tax, ftc.statements_if_tax, sa.foreign_tax_deduct_if_tax",
+       "irs_text": "i1116 p. 2: 'You can take a credit for income, war profits, and excess profits taxes paid or accrued ... This includes taxes paid or accrued in lieu of a foreign or territory income ... tax'",
+       "severity": "medium",
+       "fix": "Say 'paid, owed, or had withheld from any payment (wages, pension, rent, royalties, interest, dividends)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "An accrual-basis or accrual-election filer whose 2025 foreign tax accrued in 2025 but is paid in 2026. The filer has no shares or interest.",
+       "why_no": "'Ever paid income tax to another country.' Nothing has been paid yet.",
+       "line": "ftc.all_passive_if_tax, ftc.eligible_if_tax, ftc.statements_if_tax, sa.foreign_tax_deduct_if_tax",
+       "irs_text": "i1116 p. 2: 'You paid or accrued certain foreign taxes to a foreign country or U.S. territory'",
+       "severity": "medium",
+       "fix": "Use 'paid or owe (accrued) for 2025'."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer whose only foreign taxes are not creditable but are still deductible. Examples: tax on dividends from shares held too briefly, tax paid to a sanctioned (section 901(j)) country, or a boycott-denied tax.",
+       "why_no": "The gate tests 'Total creditable foreign taxes after required reductions' > $0. When none is creditable the computed condition is false, so the deduction choice is never asked.",
+       "line": "sa.foreign_tax_deduct_if_tax",
+       "irs_text": "i1116 p. 2: 'even if you take the credit for eligible foreign taxes for the year, you can take a deduction for ... Taxes on income or gain that aren't creditable because you don't meet the holding period requirement'; i1040sca p. 7: 'Include on this line income taxes you paid to a foreign country'",
+       "severity": "high",
+       "fix": "Gate the Schedule A question on any foreign income tax paid or accrued, before creditability reductions, and not on creditable taxes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who paid only provincial, cantonal or city income tax abroad, for example Swiss cantonal tax or Canadian provincial tax withheld on a pension.",
+       "why_no": "'Income tax to another country' reads as national tax, not a subdivision's tax.",
+       "line": "ftc.all_passive_if_tax, ftc.eligible_if_tax, ftc.statements_if_tax, sa.foreign_tax_deduct_if_tax",
+       "irs_text": "i1116 p. 2: 'to any foreign country or U.S. territory, or any political subdivision (for example, city, state, or province) of the country or territory'",
+       "severity": "medium",
+       "fix": "Add 'including a state, province, canton or city of that country'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer with foreign tax withheld on original issue discount or interest credited but not paid out on a foreign bond or deposit, reported on Form 1099-OID or not reported at all. The filer has no shares.",
+       "why_no": "'Were paid taxable interest.' The interest was accrued or credited, not paid.",
+       "line": "ftc.all_passive_if_tax, ftc.statements_if_tax, ftc.eligible_if_tax, sa.foreign_tax_deduct_if_tax",
+       "irs_text": "i1116 p. 1: 'All of your foreign source gross income was \"passive category income\" (which includes most interest and dividends)'",
+       "severity": "low",
+       "fix": "Use 'had taxable interest (including OID or interest credited to an account)'."
+      }
+     ],
+     "prompt_sha": "efa88baa56a8d50463717dc534fd5e6008af980ceeb321cfa521112d8cff8638",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.147768,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_ftc.has_tax.04c2c370ff5d.1.response.txt"
+    }
+   ],
    "condition": "ftc.has_tax",
    "lines": [
     "ftc.all_passive_if_tax",
-    "ftc.elect_if_tax",
     "ftc.eligible_if_tax",
-    "ftc.statements_if_tax"
+    "ftc.statements_if_tax",
+    "sa.foreign_tax_deduct_if_tax"
    ],
    "inputs": [
     "ftc.all_passive",
-    "ftc.elect",
     "ftc.eligible",
-    "ftc.statements"
+    "ftc.statements",
+    "sa.foreign_tax_deduct"
    ],
    "used": [
     {
@@ -131,7 +441,9 @@
      "how": "cited pages",
      "locators": [
       "p. 2, Purpose of Form, \"File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and\", \"You paid or accrued certain foreign taxes to a foreign country or U.S. territory\"; p. 1, \"This election is available only if you meet all of the following conditions\"",
-      "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax"
+      "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax",
+      "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 1, Election To Claim the Foreign Tax Credit Without Filing Form 1116, \"However, for this purpose, passive income also includes (a) income subject to the special rule for high-taxed income, described later; and (b) certain export financing interest.\"",
+      "pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax; p. 2, \"You are still required to take into account the general rules for determining whether a tax is creditable\" and \"You are still required to reduce the taxes available for credit by any amount you would have entered on line 12 of Form 1116\""
      ],
      "cols_pages": [
       1,
@@ -139,69 +451,34 @@
       25
      ],
      "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
-    }
-   ],
-   "samples": [
+    },
     {
-     "verdict": "FALSE_NO",
-     "findings": [
-      {
-       "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A filer whose only foreign tax was passed through on a Schedule K-1 (Form 1041) from an estate or trust, or on a Schedule K-3 (Form 1065 or 1120-S) from a partnership or S corporation. They received no Form 1099-INT with box 6 or Form 1099-DIV with box 7.",
-       "why_no": "The helper says 'generally Form 1099-INT box 6 and Form 1099-DIV box 7'. If it is filled from those boxes, or the filer reads it as limited to them, it computes $0, so the condition is false.",
-       "line": "ftc.elect_if_tax (and ftc.all_passive_if_tax, ftc.statements_if_tax, ftc.eligible_if_tax)",
-       "irs_text": "i1116 p. 1: 'Qualified payee statements include Form 1099-DIV, Form 1099-INT, Schedule K-1 (Form 1041), Schedule K-3 (Form 1065), Schedule K-3 (Form 1120-S), or similar substitute statements.'",
-       "severity": "high",
-       "fix": "Add K-1 (1041) and K-3 (1065/1120-S) foreign taxes to the helper. Ask 'Did you or your spouse have foreign tax shown on any 1099, K-1, K-3, or substitute statement?' and ask for each amount."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "4",
-       "who": "A filer, or the spouse on a joint return, who paid foreign income tax directly or had it withheld with no payee statement. Examples: tax withheld on foreign wages not excluded, on a foreign pension or foreign rent, or tax paid to a foreign province or a U.S. territory.",
-       "why_no": "No 1099 box 6 or box 7 amount exists, so a helper built from those boxes, or a filer following the 'generally' list, gives $0.",
-       "line": "ftc.eligible_if_tax (Form 1116 path); all gated lines become false",
-       "irs_text": "i1116 p. 2: 'File Form 1116 to claim the foreign tax credit if the election, earlier, doesn't apply and ... You paid or accrued certain foreign taxes to a foreign country or U.S. territory.'",
-       "severity": "high",
-       "fix": "Make the gate a fact the filer can check: 'Did you or your spouse pay, or have withheld, any income tax to a foreign country, a foreign city or province, or a U.S. territory, on any income?' Then collect the amounts by source, not only from 1099 boxes."
-      },
-      {
-       "kind": "FALSE_NO",
-       "pattern": "1",
-       "who": "A filer with a foreign tax carryover from an earlier year (shown on Schedule B (Form 1116)) and foreign-source income this year, but no foreign tax paid or accrued this year.",
-       "why_no": "This year's creditable foreign taxes are truly $0, so the condition is false and the tool treats Form 1116 as not applying.",
-       "line": "ftc.eligible_if_tax (Form 1116 path, carryover absorbed on line 10); ftc.elect_if_tax",
-       "irs_text": "i1116 pp. 1-2: 'You can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies (but carryovers to and from other years are unaffected). See the instructions for line 10'; p. 2: 'Use Schedule B (Form 1116) to reconcile your prior-year foreign tax carryover with your current-year foreign tax carryover.'",
-       "severity": "high",
-       "fix": "Widen the gate: foreign taxes this year > 0 OR a foreign tax carryover from a prior year > 0. Ask 'Do you have an unused foreign tax credit carryover from an earlier year (prior Form 1116 / Schedule B)?'"
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "1",
-       "who": "A filer with no new foreign tax this year who had a foreign tax redetermination for a prior year, such as an additional assessment or a refund, that must be reported.",
-       "why_no": "The helper counts this year's creditable foreign taxes, so the filer enters $0 and the redetermination is never reached.",
-       "line": "ftc.eligible_if_tax (Form 1116 / Schedule C path)",
-       "irs_text": "i1116 p. 2: 'Use Schedule C (Form 1116) to report foreign tax redeterminations that occurred in the current tax year and that relate to prior tax years.'",
-       "severity": "medium",
-       "fix": "Add to the gate: 'Did you or your spouse pay additional foreign tax, or receive a refund of foreign tax, this year for an earlier year?' Route a yes to Schedule C (Form 1116)."
-      },
-      {
-       "kind": "UNCLEAR",
-       "pattern": "7",
-       "who": "A filer with foreign tax withheld on dividends who is unsure whether the tax is 'creditable' or 'after required reductions', for example because of a holding period they cannot evaluate.",
-       "why_no": "The helper asks for 'creditable foreign taxes after required reductions', a legal classification. An unsure filer enters 0 rather than the box 7 amount.",
-       "line": "ftc.eligible_if_tax; ftc.elect_if_tax",
-       "irs_text": "i1116 p. 2: 'You are still required to take into account the general rules for determining whether a tax is creditable ... You are still required to reduce the taxes available for credit by any amount you would have entered on line 12 of Form 1116.'",
-       "severity": "medium",
-       "fix": "Gate on gross foreign tax shown or paid (> $0). Apply creditability, holding-period, and line 12 reductions afterward through the ftc.eligible question."
-      }
+     "doc": "i1040sca",
+     "revision": "2025; printed date 2025-12-08",
+     "text_sha256": "18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b",
+     "pages": [
+      7
      ],
-     "prompt_sha": "866b5bb5aac093b30be747522f5cd3b12eac0497cfa4b3ae1e6eb790b2550178",
-     "model": "claude-opus-5-5",
-     "cost": 0.115536,
-     "date": "2026-11-07",
-     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "response": ".transcription/false_no/gate_ftc.has_tax.response.txt"
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 6, \"Include on this line income taxes you paid to a foreign country\", \"You may want to take a credit for the foreign tax instead\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c"
+    },
+    {
+     "doc": "f1040sa",
+     "revision": "2025; created 2025-11-20",
+     "text_sha256": "225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd",
+     "pages": [
+      1
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule A (2025), lines 1–18"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe"
     }
    ]
   }

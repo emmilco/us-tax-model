@@ -1,0 +1,112 @@
+{
+ "form": "s1",
+ "reviews": {
+  "gate:s1.has_sc": {
+   "subject_sha": "b79f83d1bd14602d6a282f805f0975116edeaebaaefc5e5c397deb7424a6c7db",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A full-year New York City resident who is a beneficiary of a trust. The trust made an accumulation distribution that qualifies for the New York City accumulation distribution credit. The filer has no sole proprietorship and no Schedule C.",
+       "why_no": "The tool computes the gate as false because the return has no Schedule C. The question is never asked, so line 53 is zero. Even if the question were asked, it mentions only unincorporated business tax, so the filer would truthfully answer no.",
+       "line": "ny_it201.gate.city_credits (IT-201 line 53)",
+       "irs_text": "ny_it201i p. 15, Line 53: \"Can you claim the New York City unincorporated business tax (UBT) credit, the New York City accumulation distribution credit, or the part-year resident nonrefundable New York City child and dependent care credit?\"",
+       "severity": "high",
+       "fix": "Do not gate line 53 on Schedule C. For every return with New York City resident tax (line 51 or line 52 non-zero), ask all three credits as separate questions. Ask about the accumulation distribution credit in terms the filer can check, such as \"Did you receive a distribution of income a trust had accumulated in earlier years?\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A part-year New York City resident who paid for child or dependent care so they could work, while living in the city. The filer is a wage earner with no Schedule C.",
+       "why_no": "The gate is false without a Schedule C, so the part-year resident New York City child and dependent care credit is never offered and line 53 is zero.",
+       "line": "ny_it201.gate.city_credits (IT-201 line 53)",
+       "irs_text": "ny_it201i p. 15, Line 53: \"...or the part-year resident nonrefundable New York City child and dependent care credit? ... If Yes, complete Section C of Form IT-201-ATT and enter the amount from Form IT-201-ATT, line 10, on line 53.\"",
+       "severity": "high",
+       "fix": "Ask every part-year New York City resident with dependent care expenses whether they paid for child or dependent care during the part of 2025 they lived in New York City. Do not condition this on Schedule C."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A New York City resident who is a partner in a partnership or a member of a multi-member LLC. The partnership paid New York City unincorporated business tax. The partner's income is on Schedule E and their K-1, not on Schedule C.",
+       "why_no": "No Schedule C means the gate is false, so the question is skipped. Even if asked, \"Did your business pay\" reads as the filer's own sole proprietorship. A partner would truthfully say their business did not pay; the partnership did.",
+       "line": "ny_it201.gate.city_credits (IT-201 line 53)",
+       "irs_text": "ny_it201i p. 15, Line 53: \"Can you claim the New York City unincorporated business tax (UBT) credit...\" (the credit is not limited to Schedule C filers)",
+       "severity": "high",
+       "fix": "Widen the gate to any New York City resident with Schedule C, Schedule E partnership income, or Schedule F income. Reword the question: \"Did you or your spouse, or any partnership or LLC in which either of you is a partner or member, pay New York City unincorporated business tax for 2025?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly. Only the spouse runs a sole proprietorship in New York City that paid unincorporated business tax. The filer answering the questions has a separate Schedule C side activity, or is answering on behalf of both.",
+       "why_no": "\"Did your business pay\" can be read as the answering filer's own business. The answering filer then says no, even though the spouse's business paid unincorporated business tax.",
+       "line": "ny_it201.gate.city_credits (IT-201 line 53)",
+       "irs_text": "ny_it201i p. 15, Line 53: \"Can you claim the New York City unincorporated business tax (UBT) credit...\"",
+       "severity": "medium",
+       "fix": "Ask \"Did you or your spouse, or any business either of you owns, pay New York City unincorporated business tax (Form NYC-202 or NYC-202S) for 2025?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A sole proprietor whose 2025 unincorporated business tax liability was settled when the Form NYC-202 return was filed in 2026. Alternatively, a filer whose business uses a fiscal year that ends in 2025.",
+       "why_no": "\"Pay ... for 2025\" can be read as tax actually paid during calendar 2025. A filer who paid the tax in 2026, or for a fiscal year that started in 2024, may answer no.",
+       "line": "ny_it201.gate.city_credits (IT-201 line 53)",
+       "irs_text": "ny_it201i p. 15, Line 53: \"Can you claim the New York City unincorporated business tax (UBT) credit...\"",
+       "severity": "medium",
+       "fix": "Ask \"Is your business subject to New York City unincorporated business tax for a tax year ending in 2025 (whether or not you have paid it yet)?\" Add help that mentions Form NYC-202 and NYC-202S."
+      }
+     ],
+     "prompt_sha": "540b4bfbf968d16be426460640123fbbd21e2f3092d3efffce64fe8252172cf1",
+     "system_sha": "74aee435336ffe7a70e8907fcb73429f4ad2f935bac85df64379c2a059535dbb",
+     "model": "claude-opus-5-5",
+     "cost": 0.08275199999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/ny/false_no/gate_s1.has_sc.b79f83d1bd14.1.response.txt"
+    }
+   ],
+   "condition": "s1.has_sc",
+   "lines": [
+    "ny_it201.gate.city_credits"
+   ],
+   "inputs": [
+    "ny_it201.ask.city_credits"
+   ],
+   "used": [
+    {
+     "doc": "f1040s1",
+     "revision": "2025; created 2025-07-25",
+     "text_sha256": "30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule 1 (2025), line 3, \"Business income or (loss). Attach Schedule C\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444"
+    },
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Line 53, \"Can you claim the New York City unincorporated business tax (UBT) credit, the New York City accumulation distribution credit, or the part-year resident nonrefundable New York City child and dependent care credit?\"",
+      "p. 15, Line 53, \"If Yes, complete Section C of Form IT-201-ATT and enter the amount from Form IT-201-ATT, line 10, on line 53.\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ]
+  }
+ }
+}

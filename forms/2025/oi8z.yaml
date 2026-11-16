@@ -4,8 +4,10 @@ form:
   title: Schedule 1, line 8z — other income, one entry per item listed
   tax_year: 2025
   note: One entry per item of other income listed on line 8z, each with its type (a kind from a fixed list, shown on the
-    values sheet in place of the type written on the form) and its amount. Two kinds are computed, reemployment trade
-    adjustment assistance (RTAA) payments and kickbacks; every other kind is refused at the entry.
+    values sheet in place of the type written on the form) and its amount. Five kinds are computed as reported,
+    reemployment trade adjustment assistance (RTAA) payments, kickbacks, fees as a nonprofessional executor or personal
+    representative, found property and taxable damages not paid on account of a physical injury or sickness; every other
+    kind is refused at the entry. Recoveries of 2024 itemized deductions are figured on form rec and added to line 8z.
   lines:
     - id: oi8z.kind
       printed: 8z (type)
@@ -24,10 +26,17 @@ form:
           - charitable_recapture (recapture of a charitable contribution deduction, for a fractional interest in tangible personal property or property the charity disposed of within 3 years)
           - disaster_relief (the taxable part of disaster relief payments)
           - education_distribution (taxable distributions from a Coverdell education savings account or a qualified tuition program)
+          - fiduciary_fees (fees you received as the executor, administrator or personal representative of an estate, when that is not your trade or business)
+          - found_property (lost or abandoned property you found and kept, at its fair market value)
+          - taxable_damages (taxable damages or a settlement from a lawsuit or claim that are not wages, not business income and not a capital gain, such as punitive damages)
           - other (any other taxable income for line 8z)
       cite:
         doc: i1040gi
-        locator: 'p. 92, Line 8z, "Examples of income to report on line 8z include the following"; p525 p. 34, Kickbacks,
+        locator: 'p. 92, Line 8z, "Examples of income to report on line 8z include the following"; p525 p. 33, Personal
+          representatives, "If you aren’t in the trade or business of being an executor (for instance, you’re the executor of
+          a friend’s or relative’s estate), report these fees on Schedule 1 (Form 1040), line 8z"; p525 p. 33, Found property,
+          "it’s taxable to you at its FMV in the first year it’s your undisputed possession"; p525 p. 32, Court awards and
+          damages, "Include the following as ordinary income"; p525 p. 34, Kickbacks,
           "You must include kickbacks, side commissions, push money, or similar payments you receive in your income on
           Schedule 1 (Form 1040), line 8z; or on Schedule C (Form 1040) if from your self-employment activity"'
     - id: oi8z.amount
@@ -104,6 +113,66 @@ form:
           part, if any" and "Dividends on insurance policies if they exceed the total of all net premiums you paid for the
           contract"'
       ambiguity: amb.2025.line8z_kinds
+    - id: oi8z.no
+      printed: (helper)
+      type: Bool
+      label: Year parameter sa.no (no)
+      expr:
+        op: param
+        ref: sa.no
+      cite:
+        doc: p525
+        locator: 'p. 32, Court awards and damages, "Don’t include in your income compensatory damages for personal physical
+          injury or physical sickness"'
+    - id: oi8z.injury
+      printed: (gate)
+      type: Bool
+      gated_by: oi8z.injury_if_damages
+      label: Was any of these damages or settlement paid on account of a physical injury or physical sickness?
+      expr:
+        op: input
+        source: Was any of these damages or this settlement paid on account of a personal physical injury or physical
+          sickness, including punitive damages in a case about one?
+      cite:
+        doc: p525
+        locator: 'p. 32, Court awards and damages, "Punitive damages in most cases. It doesn’t matter if they relate to a
+          physical injury or physical sickness" and "Don’t include in your income compensatory damages for personal physical
+          injury or physical sickness (whether received in a lump sum or installments)"'
+      ambiguity: amb.2025.line8z_kinds
+    - id: oi8z.damages
+      printed: (helper)
+      type: Bool
+      label: The item is taxable damages or a settlement
+      expr:
+        op: test
+        eq:
+          - oi8z.kind
+          - const: taxable_damages
+      cite:
+        doc: p525
+        locator: 'p. 32, Court awards and damages, "Include the following as ordinary income"'
+    - id: oi8z.injury_if_damages
+      printed: (gate)
+      type: Bool
+      label: Damages paid on account of a physical injury or sickness, asked only for the kind taxable_damages (no otherwise)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - oi8z.damages
+                - const: true
+            then: oi8z.injury
+          - guard:
+              op: test
+              eq:
+                - oi8z.damages
+                - const: false
+            then: oi8z.no
+      cite:
+        doc: p525
+        locator: 'p. 32, Court awards and damages, "you must consider the item that the settlement replaces"'
     - id: oi8z.taxable
       printed: (helper)
       type: NonNegDollars
@@ -129,6 +198,14 @@ form:
             doc: i1040gi
             locator: 'p. 92, Line 8z, "See the instructions for Schedule 2, line 17g"; p. 93, Line 8z, "See the Instructions for
               Form 5329"'
+        - when: oi8z.injury_if_damages
+          form: Pub. 525, Court awards and damages (Schedule 1, line 8z)
+          remedy: Damages or a settlement paid in a case about a physical injury or physical sickness are split between the
+            compensatory part, which is not income, and any punitive damages, which are; that is outside this tool.
+          cite:
+            doc: p525
+            locator: 'p. 32, Court awards and damages, "Punitive damages in most cases. It doesn’t matter if they relate to a
+              physical injury or physical sickness"'
         - when: oi8z.figured
           form: Pub. 525, Miscellaneous Income (Schedule 1, line 8z)
           remedy: Line 8z items other than RTAA payments and kickbacks are outside this tool.

@@ -1,0 +1,8 @@
+name: 16_refused_mfs_texas
+who: A married person in Texas who files apart from their husband or wife; their income may be half community income under state law, which the tool does not divide.
+end: { refused: household.mfs_community_property }
+answers:
+  $person: [taxpayer]
+  f1040.status: mfs
+  household.married_dec31: true
+  household.community_property: true

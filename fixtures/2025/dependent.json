@@ -30,7 +30,8 @@
         "dependent[parent].gross_income": 400000,
         "dependent[parent].supported": true,
         "dependent[parent].born_died": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[parent].hoh_test2": {
@@ -1743,7 +1744,7 @@
         "dependent.qr_dependent:sa.dependent"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Synthetic: single, wages $120,000, one child age 10, but the filer can be claimed as a dependent by someone else, so the child is not the filer’s dependent (Step 2 question 4 and Step 4 question 5) and no credit arises. Predicted by the authoring session from i1040gi pp. 18-19; no independent human hand-work is claimed. T-101 (s8812.combat_pay narrowing): no qualifying child or other dependent, so Schedule 8812 line 12 is $0. Predicted from Schedule 8812 line 12, \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\": line 27 and Form 1040 line 28 are $0; the return is still refused at line 24 by sa.dependent. Expectation updated after the fixture run on the changed tree reported the change; the value follows from the line 12 stop as stated.",
+      "evidence_note": "Synthetic: single, wages $120,000, one child age 10, but the filer can be claimed as a dependent by someone else, so the child is not the filer’s dependent (Step 2 question 4 and Step 4 question 5) and no credit arises. Predicted by the authoring session from i1040gi pp. 18-19; no independent human hand-work is claimed. T-101 (s8812.combat_pay narrowing): no qualifying child or other dependent, so Schedule 8812 line 12 is $0. Predicted from Schedule 8812 line 12, \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\": line 27 and Form 1040 line 28 are $0; the return is still refused at line 24 by sa.dependent. Expectation updated after the fixture run on the changed tree reported the change; the value follows from the line 12 stop as stated. Lane x2-dep (the dependent standard deduction computed; restated on the coordinator's decision): single, wages $120,000, Standard Deduction Worksheet for Dependents capped at $15,750, taxable income $104,250, 2025 single rates 1,192.50 + 4,386 + 12,072.50 + 24% x $900 = $17,867; no dependent, so no credit; $12,000 withheld, $5,867 owed.",
       "inputs": {
         "sa.dependent": true,
         "$w2@person[taxpayer]": [
@@ -1761,7 +1762,8 @@
         "dependent[child].age": 10,
         "dependent[child].months": 12,
         "dependent[child].supported": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -1841,60 +1843,24 @@
           "value": true
         },
         "f1040.line12e": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 1575000
         },
         "f1040.line19": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "f1040.line28": {
           "kind": "money",
           "cents": 0
         },
         "f1040.line34": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "f1040.line37": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 586700
         },
         "household.hoh_eligible": {
           "kind": "bool",
@@ -1925,64 +1891,28 @@
           "cents": 918000
         },
         "s8812.clw_a1": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 1786700
         },
         "s8812.clw_a2": {
           "kind": "money",
           "cents": 0
         },
         "s8812.clw_a3": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 1786700
         },
         "s8812.clw_a4": {
           "kind": "money",
           "cents": 0
         },
         "s8812.clw_a5": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 1786700
         },
         "s8812.earned_covers": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "bool",
+          "value": true
         },
         "s8812.eiw_1a": {
           "kind": "money",
@@ -2025,17 +1955,8 @@
           "cents": 0
         },
         "s8812.from_part_iib": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s8812.line1": {
           "kind": "money",
@@ -2054,60 +1975,24 @@
           "cents": 0
         },
         "s8812.line13": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 1786700
         },
         "s8812.line14": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s8812.line16a": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s8812.line16b": {
           "kind": "money",
           "cents": 0
         },
         "s8812.line17": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s8812.line18a": {
           "kind": "money",
@@ -2227,7 +2112,8 @@
         "dependent[child].months": 12,
         "dependent[child].other_claimant": true,
         "dependent[child].other_nontaxpayer": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -2807,7 +2693,8 @@
         ],
         "household.considered_unmarried": true,
         "dependent[child].divorced_rule": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -3387,7 +3274,8 @@
         ],
         "household.considered_unmarried": true,
         "dependent[child].married": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].actc_amount": {
@@ -3968,7 +3856,8 @@
         "household.considered_unmarried": true,
         "dependent[parent].relationship": "parent",
         "dependent[parent].multiple_support": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -4535,7 +4424,8 @@
         "dependent[parent].relationship": "parent",
         "dependent[parent].disabled": true,
         "dependent[parent].gross_income": 600000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[parent].actc_amount": {
@@ -5088,6 +4978,45 @@
       }
     },
     {
+      "id": "xleak.income_exception.disabled_unanswered",
+      "covers": [
+        "dependent.income_exception"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the archived i1040gi before recording: a household member of 15 who lived with the filer all year, with gross income of 2 cents, under the $5,200 limit (p. 19, Step 4), and the disability question not yet answered. The exception to the gross income test (pp. 19-20) concerns only a permanently and totally disabled person, so the gate waits for the answer on disability, which the interview asks before the return is complete; it is not decided by the gross income alone while the disability answer is still open. No independent human review is claimed.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "$dependent": [
+          "member"
+        ],
+        "dependent[member].relationship": "household_member",
+        "dependent[member].age": 15,
+        "dependent[member].lived_all_year": true,
+        "dependent[member].gross_income": 2,
+        "dependent[member].disabled": null,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "dependent[member].qr_income": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[member].income_exception": {
+          "kind": "unknown",
+          "reason": "no input supplied for dependent[member].disabled",
+          "input": "dependent[member].disabled"
+        }
+      }
+    },
+    {
       "id": "audit.dependent.claimed_no_tin",
       "covers": [
         "dependent:refuse",
@@ -5111,7 +5040,8 @@
         "dependent[child].age": 10,
         "dependent[child].months": 12,
         "dependent[child].tin": false,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].claimed_no_tin": {
@@ -5241,7 +5171,8 @@
         "dependent[parent].tin": false,
         "dependent[parent].gross_income": 400000,
         "dependent[parent].supported": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[parent].claimed_no_tin": {
@@ -5328,7 +5259,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -5396,7 +5326,8 @@
         "dependent[child].other_claimant": null,
         "dependent[child].other_nontaxpayer": null,
         "dependent[child].kidnapped": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[child].claimed": {
@@ -5683,7 +5614,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -5935,7 +5865,8 @@
         "person[taxpayer].w2[emp_a].box2": 496000,
         "person[taxpayer].w2[emp_a].box5": 6200000,
         "person[taxpayer].w2[emp_a].box6": 89900,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[daughter].edu_line31": {
@@ -6114,7 +6045,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -6162,7 +6092,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -6456,6 +6385,85 @@
       }
     },
     {
+      "id": "xleak.spouse_relative.household_member_all_year_unanswered",
+      "covers": [
+        "dependent.qr_household_member"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the archived i1040gi and p501 before recording: married filing jointly, a household member of 16 who lived with the couple all year, with the question whether the person is related to the spouse not yet answered. The relationship test (i1040gi p. 19, Step 4) is met either as a relative of the spouse on a joint return (p501 p. 19, Joint return) or as a member of the household all year. The test asks the spouse question first, as the interview does, so the line waits for that answer rather than being settled by the household answer while the spouse question is still open.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[spouse]": [],
+        "$dependent": [
+          "member"
+        ],
+        "dependent[member].relationship": "household_member",
+        "dependent[member].age": 16,
+        "dependent[member].lived_all_year": true,
+        "dependent[member].spouse_relative": null
+      },
+      "expect": {
+        "dependent[member].qr_household_member": {
+          "kind": "unknown",
+          "reason": "no input supplied for dependent[member].spouse_relative",
+          "input": "dependent[member].spouse_relative"
+        }
+      }
+    },
+    {
+      "id": "xleak.spouse_relative.other_all_year_lawful_unanswered",
+      "covers": [
+        "dependent.qr_other_relation"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the archived i1040gi and p501 before recording: married filing jointly, a person of no listed relationship, aged 40, who lived with the couple all year and whose relationship with them is lawful, with the question whether the person is related to the spouse not yet answered. The relationship test (i1040gi p. 19, Step 4) is met either as a relative of the spouse on a joint return (p501 p. 19, Joint return) or as a member of the household all year in a lawful relationship. The test asks the spouse question first, so the line waits for that answer.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 12000000,
+        "person[taxpayer].w2[emp_a].box2": 1200000,
+        "person[taxpayer].w2[emp_a].box4": 744000,
+        "person[taxpayer].w2[emp_a].box5": 12000000,
+        "person[taxpayer].w2[emp_a].box6": 174000,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[spouse]": [],
+        "$dependent": [
+          "member"
+        ],
+        "dependent[member].relationship": "other",
+        "dependent[member].age": 40,
+        "dependent[member].lived_all_year": true,
+        "dependent[member].lawful": true,
+        "dependent[member].spouse_relative": null
+      },
+      "expect": {
+        "dependent[member].qr_other_relation": {
+          "kind": "unknown",
+          "reason": "no input supplied for dependent[member].spouse_relative",
+          "input": "dependent[member].spouse_relative"
+        }
+      }
+    },
+    {
       "id": "stage9.mut.kidnapped_household_child_not_eic",
       "covers": [
         "dependent"
@@ -6620,7 +6628,8 @@
           "p0"
         ],
         "dcprov[p0].paid": 400000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[a].claimed": {
@@ -6773,7 +6782,8 @@
         "person[taxpayer].w2[emp_a].box2": 496000,
         "person[taxpayer].w2[emp_a].box5": 6200000,
         "person[taxpayer].w2[emp_a].box6": 89900,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "dependent[daughter].edu_line27": {
@@ -7006,6 +7016,387 @@
         "f8863.line19": {
           "kind": "money",
           "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "mfsl4.spouse_not_claiming",
+      "covers": [
+        "dependent.spouse_settles",
+        "dependent.tiebreak_unsettled",
+        "dependent.eic_tiebreak_unsettled",
+        "dependent.qualifying_child"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l4 (decision D3, amb.2025.mfs_spouse_qc), predicted from the archived source before evaluating: married filing separately, W-2 $60,000; the filer's own 4-year-old child lived with the filer (and the husband or wife) all year; the husband or wife is the only other person the child could be the qualifying child of and will not claim the child; the filer is the child's parent. Pub. 501 p. 17, Example 6: if your spouse doesn't claim your child, you can claim this child, so no tie-breaker arises; the child is the filer's qualifying child, for the child tax credit ($2,200, Schedule 8812 line 5) and for the EIC qualifying-child tests.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 4,
+        "dependent[kid].months": 12,
+        "dependent[kid].lived_all_year": true,
+        "dependent[kid].parents_apart": false,
+        "dependent[kid].own_money": false,
+        "dependent[kid].other_claimant": true,
+        "dependent[kid].other_only_spouse": true,
+        "dependent[kid].spouse_claims": false,
+        "dependent[kid].filer_parent": true,
+        "dependent[kid].other_nontaxpayer": null
+      },
+      "expect": {
+        "dependent[kid].spouse_settles": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[kid].qc_tiebreak": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[kid].eic_tiebreak": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[kid].qualifying_child": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[kid].ctc_child": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[kid].ctc_amount": {
+          "kind": "money",
+          "cents": 220000
+        },
+        "dependent[kid].eic_child": {
+          "kind": "bool",
+          "value": true
+        },
+        "s8812.line4": {
+          "kind": "count",
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "mfsl4.spouse_claims",
+      "covers": [
+        "dependent.qualifying_child:refuse.other_claimant",
+        "dependent.tiebreak_spouse_or_other"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l4 (decision D3, amb.2025.mfs_spouse_qc), predicted from the archived source before evaluating: as mfsl4.spouse_not_claiming, but the husband or wife will claim the child. Both parents claim and do not file a joint return together, so the IRS tie-breaker by time lived and AGI decides (p501 p. 15): refused at the tie-breaker gate for the dependent tests and for the EIC. Whether the filer is the parent is not asked.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 4,
+        "dependent[kid].months": 12,
+        "dependent[kid].lived_all_year": true,
+        "dependent[kid].parents_apart": false,
+        "dependent[kid].own_money": false,
+        "dependent[kid].other_claimant": true,
+        "dependent[kid].other_only_spouse": true,
+        "dependent[kid].spouse_claims": true,
+        "dependent[kid].filer_parent": null,
+        "dependent[kid].other_nontaxpayer": null
+      },
+      "expect": {
+        "dependent[kid].spouse_settles": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[kid].ctc_amount": {
+          "kind": "refusal",
+          "gate": "dependent[kid].qc_tiebreak",
+          "form": "Qualifying child of more than one person (tie-breaker rules)",
+          "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 21, Qualifying child of more than one person",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "dependent[kid].claimed": {
+          "kind": "refusal",
+          "gate": "dependent[kid].qc_tiebreak",
+          "form": "Qualifying child of more than one person (tie-breaker rules)",
+          "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 21, Qualifying child of more than one person",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "dependent[kid].eic_child": {
+          "kind": "refusal",
+          "gate": "dependent[kid].eic_tiebreak",
+          "form": "Qualifying child of more than one person (EIC)",
+          "remedy": "The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 44, Qualifying child of more than one person",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mfsl4.not_parent",
+      "covers": [
+        "dependent.qualifying_child:refuse.other_claimant",
+        "dependent.spouse_settles_unclaimed"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l4 (decision D3, amb.2025.mfs_spouse_qc), predicted from the archived source before evaluating: as mfsl4.spouse_not_claiming, but the filer is the child's stepparent, not a parent by birth or adoption. With the parent (the husband or wife) not claiming, a non-parent claims only with an AGI higher than the parent's (i1040gi p. 21), which the tool does not ask: the general test applies and, the child being the filer's qualifying child, refuses at the tie-breaker gate.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 4,
+        "dependent[kid].months": 12,
+        "dependent[kid].lived_all_year": true,
+        "dependent[kid].parents_apart": false,
+        "dependent[kid].own_money": false,
+        "dependent[kid].other_claimant": true,
+        "dependent[kid].other_only_spouse": true,
+        "dependent[kid].spouse_claims": false,
+        "dependent[kid].filer_parent": false,
+        "dependent[kid].other_nontaxpayer": null
+      },
+      "expect": {
+        "dependent[kid].spouse_settles": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[kid].ctc_amount": {
+          "kind": "refusal",
+          "gate": "dependent[kid].qc_tiebreak",
+          "form": "Qualifying child of more than one person (tie-breaker rules)",
+          "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 21, Qualifying child of more than one person",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "dependent[kid].eic_child": {
+          "kind": "refusal",
+          "gate": "dependent[kid].eic_tiebreak",
+          "form": "Qualifying child of more than one person (EIC)",
+          "remedy": "The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 44, Qualifying child of more than one person",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mfsl4.other_relative_too",
+      "covers": [
+        "dependent.qualifying_child:refuse.other_claimant",
+        "dependent.other_only_spouse_if_mfs"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l4 (decision D3, amb.2025.mfs_spouse_qc), predicted from the archived source before evaluating: as mfsl4.spouse_not_claiming, but a grandparent also lived with the child for more than half of 2025, so the husband or wife is not the only other person: the general tie-breaker test refuses; whether the spouse claims and whether the filer is the parent are not asked.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 4,
+        "dependent[kid].months": 12,
+        "dependent[kid].lived_all_year": true,
+        "dependent[kid].parents_apart": false,
+        "dependent[kid].own_money": false,
+        "dependent[kid].other_claimant": true,
+        "dependent[kid].other_only_spouse": false,
+        "dependent[kid].spouse_claims": null,
+        "dependent[kid].filer_parent": null,
+        "dependent[kid].other_nontaxpayer": null
+      },
+      "expect": {
+        "dependent[kid].spouse_settles": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[kid].ctc_amount": {
+          "kind": "refusal",
+          "gate": "dependent[kid].qc_tiebreak",
+          "form": "Qualifying child of more than one person (tie-breaker rules)",
+          "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 21, Qualifying child of more than one person",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mfsl4.settled_not_qc_spouse_taxpayer",
+      "covers": [
+        "dependent.tiebreak_settled"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l4 (decision D3, amb.2025.mfs_spouse_qc), predicted from the archived source before evaluating: as mfsl4.spouse_not_claiming, but the child lived with the filer for only 5 months of 2025 (not more than half), so the child is not the filer's qualifying child; the child is the qualifying child of the husband or wife, who files a return and so is a taxpayer. A qualifying child of any taxpayer cannot be the filer's qualifying relative (i1040gi p. 19, Step 4), which the tool refuses at the tie-breaker gate as before.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 4,
+        "dependent[kid].months": 5,
+        "dependent[kid].lived_all_year": false,
+        "dependent[kid].parents_apart": false,
+        "dependent[kid].own_money": false,
+        "dependent[kid].other_claimant": true,
+        "dependent[kid].other_only_spouse": true,
+        "dependent[kid].spouse_claims": false,
+        "dependent[kid].filer_parent": true,
+        "dependent[kid].other_nontaxpayer": false
+      },
+      "expect": {
+        "dependent[kid].spouse_settles": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[kid].tiebreak_settled": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[kid].claimed": {
+          "kind": "refusal",
+          "gate": "dependent[kid].qc_tiebreak",
+          "form": "Qualifying child of more than one person (tie-breaker rules)",
+          "remedy": "This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 21, Qualifying child of more than one person",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mfsl4.settled_not_qc_spouse_nontaxpayer",
+      "covers": [
+        "dependent.tiebreak_settled"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l4 (decision D3, amb.2025.mfs_spouse_qc), predicted from the archived source before evaluating: as mfsl4.settled_not_qc_spouse_taxpayer, but the husband or wife is not a taxpayer (no return required, none filed but to get withheld tax back). The child is the qualifying child of no taxpayer (i1040gi p. 19, Step 4), so no tie-breaker gate stands and the child, not the filer's qualifying child, is tested as a qualifying relative.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$dependent": [
+          "kid"
+        ],
+        "dependent[kid].relationship": "child",
+        "dependent[kid].age": 4,
+        "dependent[kid].months": 5,
+        "dependent[kid].lived_all_year": false,
+        "dependent[kid].parents_apart": false,
+        "dependent[kid].own_money": false,
+        "dependent[kid].other_claimant": true,
+        "dependent[kid].other_only_spouse": true,
+        "dependent[kid].spouse_claims": false,
+        "dependent[kid].filer_parent": true,
+        "dependent[kid].other_nontaxpayer": true
+      },
+      "expect": {
+        "dependent[kid].spouse_settles": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[kid].tiebreak_settled": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[kid].qc_tiebreak": {
+          "kind": "bool",
+          "value": false
+        },
+        "dependent[kid].qualifying_child": {
+          "kind": "bool",
+          "value": false
         }
       }
     }

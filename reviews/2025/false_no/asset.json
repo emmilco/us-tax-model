@@ -1,0 +1,636 @@
+{
+ "form": "asset",
+ "reviews": {
+  "gate:asset.claims_bonus": {
+   "subject_sha": "355e38da77b930ee50a6b7d020a90f10afee03e84c5e808705afeecad18b421d",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer who placed an aircraft or a long-production-period asset in service in 2025 and claims the 60% special depreciation allowance. The asset may be used, for example an aircraft bought from a prior operator.",
+       "why_no": "The helper defines the allowance as \"(the full allowance or the 40% allowance)\". A 60% allowance is neither, so the filer truthfully answers no. The tool then never asks whether anyone used the asset before.",
+       "line": "asset.used_before_if_bonus",
+       "irs_text": "i4562 p. 6: \"Property with a long production period and certain aircraft acquired after September 27, 2017, and before January 20, 2025, is eligible for a special depreciation allowance of 60%\"; \"you can elect to take a 40% special depreciation allowance ... (60% for property with a long production period and certain aircraft)\"; \"Qualified property can be either new property or certain used property.\"",
+       "severity": "high",
+       "fix": "Ask whether any special depreciation allowance (bonus) is claimed for this property at any percentage (100%, 60%, 40% or another), or simply whether the allowance is not elected out."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer who placed a used nonresidential building in service in 2025 and uses it in manufacturing. The filer elects to designate part of its basis as qualified production property (QPP).",
+       "why_no": "The QPP allowance is made by designation for each property, not as an allowance \"for its class\", and it is not \"the full allowance or the 40% allowance\". The filer answers no, so the used-property question is skipped even though QPP may be used property, subject to its own limits.",
+       "line": "asset.used_before_if_bonus",
+       "irs_text": "i4562 p. 7: \"You can elect to take a special depreciation allowance for qualified production property (QPP) by designating up to 100% of the depreciable basis\"; p. 8: \"Eligible property can be either new property or certain used property.\"",
+       "severity": "high",
+       "fix": "Broaden the gate to any special depreciation allowance, including a QPP designation (section 168(n)). Ask the prior-use question for QPP with its own conditions."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A sole proprietor who placed used equipment in service in 2025. The filer attached no election and did nothing to \"claim\" bonus, and may think only of a section 179 deduction taken on part of the cost.",
+       "why_no": "The word \"claimed\" suggests an active choice. The special depreciation allowance applies to a whole class by default unless the filer attaches an election-out statement. A filer who made no choice reads \"is claimed\" as no.",
+       "line": "asset.used_before_if_bonus",
+       "irs_text": "i4562 p. 7: \"Election out. You can elect, for any class of property, to not deduct any special depreciation allowance ... To make an election, attach a statement to your timely filed return\"; \"Property for which you elected not to claim any special depreciation allowance\" is the only opt-out.",
+       "severity": "medium",
+       "fix": "Ask: \"Did you (or will you) attach a statement electing NOT to take the special depreciation allowance for this class of property?\" Treat a no as the allowance applying, then ask the prior-use question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who bought a vehicle or equipment for personal use in 2022 and converted it to business use in 2025.",
+       "why_no": "The filer reads \"placed in service in 2025\" as \"bought in 2025\" and answers no. The instructions treat a converted asset as placed in service on the conversion date. Its prior use by the filer is exactly what the used-property test bars.",
+       "line": "asset.used_before_if_bonus",
+       "irs_text": "i4562 p. 11, Column (b): \"If you converted property held for personal use to use in a trade or business or for the production of income, treat the property as being placed in service on the conversion date.\"",
+       "severity": "medium",
+       "fix": "State in the help for \"placed in service\" that it includes the date personal-use property was converted to business or investment use. Ask the prior-use question, including use by the filer or the filer's spouse, for converted property."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A fiscal-year individual whose tax year began in 2025. The filer placed used property in service in early 2026, within that tax year, and claims bonus.",
+       "why_no": "\"Placed in service in 2025\" reads as a calendar year. The instructions key on \"the tax year beginning in 2025\".",
+       "line": "asset.used_before_if_bonus",
+       "irs_text": "i4562 p. 9: \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\"",
+       "severity": "low",
+       "fix": "Word the helper as \"Placed in service during your tax year beginning in 2025\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly. One spouse used the asset personally or in a separate activity, then transferred it to the other spouse's business in 2025.",
+       "why_no": "The gated question asks whether anyone used it \"before you got it\". The receiving spouse may read \"you\" as the couple and answer no, though prior use by the spouse, a related person, defeats used-property eligibility.",
+       "line": "asset.used_before_if_bonus",
+       "irs_text": "p946 p. 31: \"Original use means the first use to which the property is put, whether or not by you.\"",
+       "severity": "low",
+       "fix": "Ask: \"Had anyone, including you or your spouse, used it before it was placed in service in this business?\""
+      }
+     ],
+     "prompt_sha": "44c01119fc1a2aee6c4fb81edc33002f44f7a18fca0d71af6c79c3ee300f7399",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.17813600000000002,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_asset.claims_bonus.355e38da77b9.1.response.txt"
+    }
+   ],
+   "condition": "asset.claims_bonus",
+   "lines": [
+    "asset.used_before_if_bonus"
+   ],
+   "inputs": [
+    "asset.used_before"
+   ],
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+     ],
+     "cols_pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      37
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17,
+      31,
+      37
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "gate:asset.industry": {
+   "subject_sha": "5c0815c4099523a682fb54fb6b32f106d90d6c669fc0a4eb7ea7c06b7988ae04",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A dentist, retailer, farmer or landlord who installs solar panels, a small wind turbine, a fuel cell or a geothermal heat pump on business or rental property in 2025. They do not sell power as a business.",
+       "why_no": "Their business is not 'a utility or energy producer'. Energy property under section 168(e)(3)(B)(vi) depends on what the property is, not on the owner's industry, so the item question that would classify it is never asked.",
+       "line": "asset.industry_item_if_industry (energy property not classified as 5-year property; it is depreciated as building or 7-year property instead)",
+       "irs_text": "i4562 (2025) p. 10: '5-year property includes the following. … Certain energy property specified in section 168(e)(3)(B)(vi).'",
+       "severity": "high",
+       "fix": "Take energy property out of the industry gate. Ask every filer, per asset: 'Is this item solar, wind, geothermal, fuel cell, microturbine, combined heat and power, or other energy-credit equipment?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A manufacturer, distributor, restaurant or contractor that buys a baler, shredder, sorting line or granulator used only to collect or recycle its own scrap or recyclable waste.",
+       "why_no": "Recycling is a side activity, not their business, so they truthfully say the business is not 'a recycler'. Section 168(m) property is defined by the equipment's exclusive use, not by the owner's industry.",
+       "line": "asset.industry_item_if_industry (qualified reuse and recycling property missed)",
+       "irs_text": "i4562 (2025) p. 6: 'Qualified reuse and recycling property includes any machinery and equipment … that is used exclusively to collect, distribute, or recycle qualified reuse and recyclable materials.'",
+       "severity": "high",
+       "fix": "Ask about the item rather than the business: 'Is this machinery or equipment used only to collect, distribute or recycle reusable or recyclable materials, whatever your line of business?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "An oil and gas working-interest owner, rancher or landowner who owns a natural gas gathering line. Or an industrial plant, data center or solar or wind developer that owns its own transmission line or substation tie of 69 kV or more.",
+       "why_no": "They think of themselves as an investor, a farmer or a manufacturer, not 'a utility or energy producer'. The list reads as complete, and it names no gas gathering or owner-held transmission line.",
+       "line": "asset.industry_item_if_industry (natural gas gathering line treated as 7-year property, or electric transmission property treated as 15-year property, missed)",
+       "irs_text": "p946 (2025) p. 31: 'Any natural gas gathering line placed in service after April 11, 2005, is treated as 7-year property, and electric transmission property (that is section 1245 property) used in the transmission at 69 or more kilovolts of electricity … are treated as 15-year property.'",
+       "severity": "medium",
+       "fix": "Add to the gate: 'or does this property include a gas gathering or distribution pipeline, or an electric transmission line or substation, whatever your business?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose business was a recycler, rent-to-own dealer, racetrack or floor-plan dealer when an asset was placed in service in an earlier year. The business has since changed or wound down, and the filer still depreciates the asset on line 17 or disposes of it in 2025.",
+       "why_no": "The question is in the present tense ('Is your business …'), so they answer by what the business does now. The asset's class depends on the facts when it was placed in service.",
+       "line": "asset.industry_item_if_industry (wrong class, recovery period and method carried on line 17 and in MACRS recapture)",
+       "irs_text": "i4562 (2025) p. 9, Line 17: 'For tangible property placed in service in tax years beginning before 2025 and depreciated under MACRS (\"MACRS asset\"), enter the deductions for the current year.'",
+       "severity": "medium",
+       "fix": "Ask: 'When this property was placed in service, was it used in a business of …?' For 168(k)(9)(B), ask about the tax year the allowance is claimed."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A county fair, private club or landowner that operates a permanent dirt or paved track hosting public paid-admission auto, truck or motorcycle races. Racing is only one activity of the business.",
+       "why_no": "The business is a fairground or event venue, not 'a motor racing track', so they answer no.",
+       "line": "asset.industry_item_if_industry (motorsports entertainment complex treated as 7-year property missed)",
+       "irs_text": "p946 (2025) p. 31: 'Motorsports entertainment complex. This is a racing track facility permanently situated on land that hosts one or more racing events for automobiles, trucks, or motorcycles … open to the public for the price of admission.'",
+       "severity": "medium",
+       "fix": "Ask: 'Does this property include a racing track facility that hosts racing events open to the paying public?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse runs the floor-plan-financed boat or RV dealership, rent-to-own store or recycling operation that owns the asset entered.",
+       "why_no": "The words 'your business' lead the filer entering the asset to answer about their own occupation.",
+       "line": "asset.industry_item_if_industry",
+       "irs_text": "i4562 (2025) p. 7: 'Qualified property does not include: … Property described in section 168(k)(9)(A) or 168(k)(9)(B)'",
+       "severity": "low",
+       "fix": "Ask: 'Is the business that uses this property (yours or your spouse's) …'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A farm-equipment, trailer or camper dealer, or a car dealer, whose inventory line of credit is secured by the units but which it calls a 'line of credit' or 'wholesale financing', not a loan that 'finances its stock'.",
+       "why_no": "The words 'dealer that finances its stock with a loan secured by it' may not match how the filer thinks of its credit arrangement.",
+       "line": "asset.industry_item_if_industry (168(k)(9)(B) exclusion from the special depreciation allowance missed)",
+       "irs_text": "i4562 (2025) p. 7: 'Qualified property does not include: … Property described in section 168(k)(9)(A) or 168(k)(9)(B)'",
+       "severity": "low",
+       "fix": "Ask: 'Do you buy vehicles, boats, farm equipment, trailers or campers for sale or lease with a credit line secured by that inventory (floor plan financing)?'"
+      }
+     ],
+     "prompt_sha": "287620acd970b5419f93b4c7fd7f649754ae866e48bf6364cefc829324c385c0",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.177476,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_asset.industry.5c0815c40995.1.response.txt"
+    }
+   ],
+   "condition": "asset.industry",
+   "lines": [
+    "asset.industry_item_if_industry"
+   ],
+   "inputs": [
+    "asset.industry_item"
+   ],
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+     ],
+     "cols_pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      37
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17,
+      31,
+      37
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "gate:asset.listed": {
+   "subject_sha": "512806f681fc68a975f9457142cc879f29e6d701142986b5355a2d0a38c7d752",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A sole proprietor bought a 5,000-lb passenger car or an SUV in 2025 and drives it 40% for business, measured by qualified business use. Or a married couple filing jointly whose spouse owns a pickup truck or motorcycle that is used partly for personal driving.",
+       "why_no": "The gate asks only about entertainment or recreation equipment (camera, sound or video recording) and pre-2018 computers. A car, truck, SUV, motorcycle or aircraft is none of these, so the truthful answer is no.",
+       "line": "asset.qbu_low_if_listed",
+       "irs_text": "i4562 p. 3: \"Listed property generally includes the following. • Passenger automobiles weighing 6,000 pounds or less... • Any other property used for transportation if the nature of the property lends itself to personal use, such as motorcycles, pickup trucks, SUVs, aircraft, etc.\"; p. 7: qualified property excludes \"Listed property used 50% or less in a qualified business use\"; p. 13: such property \"does not qualify for the section 179 expense deduction or special depreciation allowance.\"",
+       "severity": "high",
+       "fix": "Ask about every listed-property category: \"Is this property (a) a passenger automobile 6,000 lb or less; (b) any other vehicle or aircraft that lends itself to personal use, such as a motorcycle, pickup truck, SUV or airplane; (c) property of a kind used for entertainment or recreation, such as photographic, phonographic, communication or video equipment, not used only in your business or at your regular business establishment; or (d) a computer or peripheral equipment placed in service before 2018 that is not used only at a regular business establishment you own or lease and operate?\" Exclude ambulances, hearses, for-hire vehicles and qualified nonpersonal use vehicles afterward."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer owns a boat, RV or other recreational asset, or communication equipment such as a two-way radio system. They use it partly in a business, such as charters or client entertainment, and partly personally.",
+       "why_no": "The words \"equipment ... such as a camera, or sound or video recording equipment\" suggest small electronic gear. A boat or RV is not \"equipment\" of that kind, and communication equipment is missing from the examples.",
+       "line": "asset.qbu_low_if_listed",
+       "irs_text": "i4562 p. 3: \"Any property used for entertainment or recreational purposes (such as photographic, phonographic, communication, and video recording equipment).\"",
+       "severity": "medium",
+       "fix": "Say \"any property of a kind used for entertainment or recreation (for example, photographic, phonographic, communication or video equipment, or a boat or recreational vehicle)\"."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer owns a printer, monitor or other peripheral equipment placed in service before 2018. It is used at home, in a room that does not qualify as a home office, and partly for personal use.",
+       "why_no": "The gate's second sentence covers only \"a computer\". Peripheral equipment is not mentioned.",
+       "line": "asset.qbu_low_if_listed",
+       "irs_text": "i4562 p. 3, Exceptions: \"Any computer or peripheral equipment used exclusively at a regular business establishment and owned or leased by the person operating the establishment\"; p. 14: \"Other listed property (computers and peripheral equipment placed in service before 2018, etc.)\"",
+       "severity": "medium",
+       "fix": "Say \"a computer or peripheral equipment (such as a printer or monitor) placed in service before 2018\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An employee owns a camera or video equipment that they use only in a home office meeting the home-office requirements, or a filer who is not the operator owns a pre-2018 computer used only at someone else's office. For example, an employee's own computer used only at the employer's office.",
+       "why_no": "The help text says a qualifying part of the home is the regular business establishment, so the employee calls the home office their regular place of business. But for photographic and similar equipment, an employee's regular business establishment is the employer's. The computer exception also requires the property to be owned or leased by the person operating the establishment. The gate's \"your regular place of business\" omits both rules.",
+       "line": "asset.qbu_low_if_listed",
+       "irs_text": "i4562 p. 3: \"However, for any property listed in (1) above, the regular business establishment of an employee is their employer's regular business establishment.\"; exception 2: \"owned or leased by the person operating the establishment\"",
+       "severity": "medium",
+       "fix": "Add to the help: \"If you are an employee, your regular business establishment for this equipment is your employer's, not your home. A computer counts as used only at a regular business establishment only if the person who operates that establishment owns or leases it.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer bought a computer for personal use in 2016 and later began using it in business. Or a filer placed a computer in service in late 2017 but describes it by the year they started business use.",
+       "why_no": "\"Began using\" is not the IRS test, which is the date placed in service, and a conversion to business use is treated as placed in service on the conversion date. A filer may date the computer by first business use, or by first personal use, and answer the gate inconsistently with the rule.",
+       "line": "asset.qbu_low_if_listed",
+       "irs_text": "i4562 p. 14, Column (b): \"If property held for personal use is converted to business/investment use, treat the property as placed in service on the date of conversion.\"",
+       "severity": "low",
+       "fix": "Ask \"placed in service (first used in business or for investment) before 2018\"."
+      }
+     ],
+     "prompt_sha": "1e064d29ed2dbb5a234b6780f8dad2ff5c1d6e56bdae0d16602659de4b2cce2b",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.17252800000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_asset.listed.512806f681fc.1.response.txt"
+    }
+   ],
+   "condition": "asset.listed",
+   "lines": [
+    "asset.qbu_low_if_listed"
+   ],
+   "inputs": [
+    "asset.qbu_low"
+   ],
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      3,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Listed Property and its Exceptions, \"a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home\"; p. 13, Part V",
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+     ],
+     "cols_pages": [
+      3,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      37
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17,
+      31,
+      37
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "gate:asset.placed_this_year": {
+   "subject_sha": "0b7806d827f9434a865f815c8725b5523d1ac7b7fe987d8fe128d8ac54c52ab8",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A sole proprietor (or either spouse on a joint return) placed a car or other listed property in service in 2022 with 80% business use. In 2025 its business use fell to 40%.",
+       "why_no": "The filer gives no answer at all; the gate does the damage. The gate computes 'Placed in service in 2025', which is false for 2022 property, so the gated line takes its 'Otherwise: false' value and the question is never asked. When the gate is true (2025 property), the Choose branch for 'Placed in service in 2025 = true' also returns false. So the line is false on every path, and asset.use_changed is never reached for the prior-year property it exists to catch. The gate is inverted relative to the line's own label ('asked only of property placed in service before 2025').",
+       "line": "asset.use_changed_if_earlier",
+       "irs_text": "i4562 (2025) p. 14, Listed property recapture: \"If you used listed property more than 50% in a qualified business use in the year you placed the property in service, and used it 50% or less in a later year, you may have to include as income part of the depreciation, including the special depreciation allowance, deducted in prior years. Use Form 4797\"",
+       "severity": "high",
+       "fix": "Gate the line on NOT placed_this_year (i.e., 'Year of recovery in 2025' > 1), or remove the outer gate and rely on the Choose, whose false-branch already asks the question. Add a test case with a pre-2025 asset whose use fell to 50% or less, and check that recapture flows to Form 4797."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose vehicle (or other listed property) placed in service in 2023 is still driven the same share of miles for business purposes. In 2025, however, that use is now leasing to a related person or a 5% owner with no income reported, or it is now investment use or compensation use.",
+       "why_no": "The question asks whether 'the business share of its use' has changed. The miles or hours used for the business look the same, so the filer answers no. The recapture test uses qualified business use, which excludes investment use, leasing to a related person, and certain compensation use, so that percentage can drop below 50% while the filer's 'business share' seems unchanged.",
+       "line": "asset.use_changed_if_earlier",
+       "irs_text": "i4562 (2025) p. 14, Qualified business use: \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following. • Investment use. • Leasing the property to a 5% owner or related person ... Your percentage of qualified business use may be smaller than the business/investment use percentage.\"",
+       "severity": "medium",
+       "fix": "Ask for this year's use percentage and the placed-in-service-year percentage as numbers, together with the kinds of use (trade or business, investment, leased to a relative or 5% owner, provided as pay). Then compute whether qualified business use fell from over 50% to 50% or less, instead of asking whether the 'business share changed'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose business use was more than 50% in the year placed in service, dropped to 40% in 2024, and stayed at 40% in 2025. Or a filer whose use dipped mid-2025 and recovered by year end.",
+       "why_no": "The phrase 'since you first used it in the business' can be read as asking for a net change from first use to now, or for a change this year only. A filer whose use fell earlier may say no because it did not change this year. A filer whose use dipped and recovered may say no because the net change is zero. In both cases the instructions still require the 50% test for the current year and the ADS treatment for the later years.",
+       "line": "asset.use_changed_if_earlier",
+       "irs_text": "i4562 (2025) p. 14: \"Use line 26 to figure depreciation for property used more than 50% in a qualified business use. Use line 27 to figure the depreciation for property used 50% or less in a qualified business use.\"",
+       "severity": "medium",
+       "fix": "Ask directly: 'In 2025, was this property used more than 50% for qualified business use?' Also ask: 'Was it used more than 50% that way in the year you placed it in service?' Derive the change from the two answers."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer who bought a car for personal use in 2019 and converted it to business use in 2025. They enter the 2019 purchase date as the date placed in service.",
+       "why_no": "The helper 'Year of recovery in 2025' reads the entered date. It treats the car as prior-year property, although the IRS treats a conversion as placed in service on the conversion date. The car is then routed to the wrong branch and depreciated with the wrong year of recovery.",
+       "line": "asset.use_changed_if_earlier",
+       "irs_text": "i4562 (2025) p. 14, Column (b): \"If property held for personal use is converted to business/investment use, treat the property as placed in service on the date of conversion.\"",
+       "severity": "low",
+       "fix": "Before asking for the date placed in service, ask whether the property was first used personally and later converted. If it was, use the conversion date."
+      }
+     ],
+     "prompt_sha": "e8c39d0d0eb4e901c887c358ed3c133cd8fb908e886ad4bb97bfc73ef9b138ad",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.1507,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_asset.placed_this_year.0b7806d827f9.1.response.txt"
+    }
+   ],
+   "condition": "asset.placed_this_year",
+   "lines": [
+    "asset.use_changed_if_earlier"
+   ],
+   "inputs": [
+    "asset.use_changed"
+   ],
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Lines 19a Through 19j, \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\"; p. 9, Line 17, \"For tangible property placed in service in tax years beginning before 2025 and depreciated under MACRS\"",
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+     ],
+     "cols_pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      37
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17,
+      31,
+      37
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  },
+  "gate:asset.software": {
+   "subject_sha": "66740d215f2c82dd00a36559b25b21ab3cb0430924f36e0536aea07bb6eb9e7f",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A sole proprietor paid a contractor in 2024 to build a custom mobile app or an e-commerce site with a custom code back end. The cost was capitalized and is being recovered over 36 months.",
+       "why_no": "'Computer software' sounds like a packaged program the filer bought, not 'my website' or 'my app'. The question gives no definition, so the filer must decide on their own what section 167(f)(1) software is.",
+       "line": "asset.software_spread_if_software",
+       "irs_text": "i4562 (2025) p. 8, Line 16: 'Intangible property, other than section 197 intangibles, including the following. 1. Computer software. Use the straight line method over 36 months.'",
+       "severity": "medium",
+       "fix": "Add help text: 'Answer yes for any computer program or code you paid for and are deducting over time, including custom-built apps, website code, and software you developed or had developed. Answer yes even if it is not a boxed product.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer paid a lump sum for a perpetual or multi-year license, such as CAD, accounting or ERP software, or a design-tool seat. The license runs past 2025.",
+       "why_no": "The filer thinks they bought a 'license' or 'right to use', not the software itself. They read 'this property' as something they own outright.",
+       "line": "asset.software_spread_if_software",
+       "irs_text": "i4562 (2025) p. 6: 'Qualified property is: ... Computer software defined in and depreciated under section 167(f)(1)'; p. 8, Line 16: 'Computer software. Use the straight line method over 36 months.'",
+       "severity": "medium",
+       "fix": "Ask: 'Is this a computer program, or a license to use one, that you paid for and are recovering over time (not a monthly subscription you deduct as an expense)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer bought hardware with software that is separately stated on the invoice. Examples are a point-of-sale system, a machine with licensed control software, or a server with a separately billed operating system or database license. The filer entered it as one asset.",
+       "why_no": "The filer describes the asset as equipment ('a register system', 'a CNC machine') and answers no. Separately stated software is 36-month section 167(f) property, not part of the hardware's MACRS class.",
+       "line": "asset.software_spread_if_software",
+       "irs_text": "i4562 (2025) p. 9, Caution: 'If you elect the section 179 expense deduction or take the special depreciation allowance for qualified computer software, you must reduce the amount on which you figure your regular depreciation deduction'; p. 8: 'Computer software. Use the straight line method over 36 months.'",
+       "severity": "medium",
+       "fix": "Add: 'If this purchase included software that is priced or billed separately from the hardware, enter that software as its own asset and answer yes for it.' Alternatively, ask a separate question about separately stated software on hardware purchases."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer bought the assets of an existing business. The assets included off-the-shelf software that the filer lumped in with the business's intangibles or goodwill.",
+       "why_no": "The filer views the item as part of 'the business I bought' or as an intangible, not as computer software. Off-the-shelf software acquired this way is still 36-month software, not a 15-year section 197 intangible.",
+       "line": "asset.software_spread_if_software",
+       "irs_text": "i4562 (2025) p. 8, Line 16: 'Intangible property, other than section 197 intangibles, including the following. 1. Computer software.'",
+       "severity": "low",
+       "fix": "Add help text: 'Include ready-made software that came with a business you bought.' When the asset is described as acquired intangibles, ask whether any of it was commercially available software."
+      }
+     ],
+     "prompt_sha": "d0fe4cfd6d0920531df23abcb3a9db59049055d53ce3d44f883bef9b654b49b6",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.15404800000000002,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_asset.software.66740d215f2c.1.response.txt"
+    }
+   ],
+   "condition": "asset.software",
+   "lines": [
+    "asset.software_spread_if_software"
+   ],
+   "inputs": [
+    "asset.software_spread"
+   ],
+   "used": [
+    {
+     "doc": "i4562",
+     "revision": "2025",
+     "text_sha256": "cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2",
+     "pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, \"If you dispose of a portion of a MACRS asset and are required to (or elect to) take the basis of the asset into account\"; p. 7, Exceptions, \"Property described in section 168(k)(9)(A) or 168(k)(9)(B)\" (the description in the question restates IRC section 168(k)(9), which is not archived); p. 6, \"Qualified property can be either new property or certain used property\"; , \"Original use means the first use to which the property is put, whether or not by you\"; p. 8, Line 16, \"Computer software. Use the straight line method over 36 months\"; p. 9, \"However, MACRS does not apply to films, videotapes, and sound recordings\"; p. 10, \"Initial clearing and grading land improvements for gas utility property\"; p. 11, Column (c), \"The following are examples of some credits and deductions that reduce the basis for depreciation\"; p. 12, \"The following types of property must be depreciated under ADS\"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14, Lines 26 and 27, \"Generally, a qualified business use is any use in your trade or business. However, it does not include any of the following\"; , Rules Covering the Use of the Tables, \"You cannot use the percentage tables for a short tax year\", and p. 46, Property Placed in Service Before a Short Tax Year; , Trade-in of other property, \"If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid\"; i4562 p. 14, \"If you acquired the property through a trade-in, special rules apply for determining the basis, recovery period, depreciation method, and convention\""
+     ],
+     "cols_pages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ],
+     "cols_sha256": "9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0"
+    },
+    {
+     "doc": "p946",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2",
+     "pages": [
+      17,
+      31,
+      37
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      17,
+      31,
+      37
+     ],
+     "cols_sha256": "da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7"
+    }
+   ]
+  }
+ }
+}

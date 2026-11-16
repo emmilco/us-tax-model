@@ -1,0 +1,134 @@
+{
+ "kind": "transcription",
+ "form": "f1116col",
+ "family": "claude",
+ "base": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+ "lines": [
+  {
+   "key": "f1116col.div_income_if_div",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "0904e8b7056e943d2418a4b0f1bfbbe275829f51a1f7f7da984190c38b852f0a"
+  },
+  {
+   "key": "f1116col.int_income_if_int",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "5d11684a0897bc3f7a05283fd8c40581d674f305911299a3588f2e0aa9a48f2c"
+  },
+  {
+   "key": "f1116col.gross_hi",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "9ae41ddad4280cf2e7d4b0dcbe976999c27e5d7e7dd54a7b719c55231a0cdd7d"
+  },
+  {
+   "key": "f1116col.tax_hi",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "9a876ada7e190213867a4fc1ed1d21ed0a44b395acd1b437a171a80f0bcdc643"
+  },
+  {
+   "key": "f1116col.gross_lo",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "27221e7bfc15b08f6514ec61b03764476fb6a9a9b2f59aa833223ad5ad142cdc"
+  },
+  {
+   "key": "f1116col.tax_lo",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "c4e38b9e1d2928c7b6c4307f988da6ab00095885fdff19012bdea6f7216624f9"
+  },
+  {
+   "key": "1a",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "f3b55462944eca00efa4fcfeea65d90e927c3cfbd1a59cea5f254c89fbabc46b"
+  },
+  {
+   "key": "3d",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "f981fd3625306606ba0dea47076adb1c04bdd9ed4ae7b7a8d604ec748ca00a0e"
+  },
+  {
+   "key": "3g",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage (82/82 in scope agree: 37 fixtures, 45 partial records); the reply omits the project's guard for line 3e of zero or less, which only avoids a division by zero (i1116 p. 18, Line 3f: line 3d divided by line 3e, 'round off the result to at least four decimal places').",
+   "subject_key": "f21f72eec27e18e7ae07dcfce3fec29311fa2078e05e7d48c2ddf937a435e268"
+  },
+  {
+   "key": "4a",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "41d7f6916ae993554c3485393ea0dc052989786b881ebfe9dc9bdb70bf6b9637"
+  },
+  {
+   "key": "6",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "44c874e8e0e22955ec0e9221e60a5b09a0c05916b8e1fe5b84bae8669296084d"
+  },
+  {
+   "key": "7",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "342b6adf3bf3bb116f2e61caef7fc8f30a9c0af1448901f3e03a8137433ea849"
+  },
+  {
+   "key": "(q)",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "f2551220727f2b38deedae87a656c7953f7356d53165b8d13e9be87f655066b9"
+  },
+  {
+   "key": "(s)",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "823e4d2a232cb2099fd171f4e10f9201cfdbeba1d5f900800c6b949f96b4fbb5"
+  },
+  {
+   "key": "(u)",
+   "record": "739289f6b59979919a9987b3a57fc3f67403b7f57e518f2cf2dcaf2cd52b65ea",
+   "status": "AGREE",
+   "subject_key": "543253af71bbd9df593fca8a35be2e63c67301360f0a302d6e1c446be3efca5b"
+  }
+ ],
+ "subjects": {
+  "f1116col.div_income_if_div": "880aecff988949336e651811acd9a1431fc691ab8611756acbfde04b62451d85",
+  "f1116col.int_income_if_int": "ef16d05b99dcc6addd192978f626696cc22eaba0197785f997f225edbf3d9804",
+  "f1116col.gross_hi": "5eef79f8207dba98550086fb21771c23095b970834967b0b38c67794d090e5b9",
+  "f1116col.tax_hi": "e69f5415ad39d25a02274d13715cfb9e92d5e7d6f0ae643f3c1d1ce06ed15a15",
+  "f1116col.gross_lo": "da12a85eacd882798bca13cbe34b8d69628b11ac80c75d4d79df40d59779293e",
+  "f1116col.tax_lo": "efb16c7bf7b7518c8511c8098311470e9e4fabee0f3a00f91f763a35b96299ce",
+  "1a": "19e4d4b2521c93c9604060ebf14114c86c2563f5964f060c06ab6b0cffb59257",
+  "3d": "5e20a9041cffb6abb1012cb6f0ad388f4f4bdcabfde0b249487c4444c88454d0",
+  "3g": "aa982d49dc622cafd227aad187885d25cf433ab55c20c88ac8d0ae05d90cb7bb",
+  "4a": "a04c90d3e96b1fce4894e907f00ed86071f98f7815db41b4621ddd13686447dc",
+  "6": "3e7b09c4e8234e8db2a1f57a6b32a9c5be5df4155313159384ddff5b558c821a",
+  "7": "735d003a12164d05ed6f37e1fd9a562ae2ee450c137252b0398a3099630b1e20",
+  "(q)": "8b19207ff05e78c49bc4fcb8fa88877bd543bc6df0bfe2c05277f46cd21c4b26",
+  "(s)": "42c28bb93ee269c01f560d6521f8928b4ca6fd7e84bfc28581b178222c2ac753",
+  "(u)": "f9107f291c64fa406f11f2d293cfe93802dc5b3e6c598b162c798b4f2b8d96db"
+ },
+ "__rest__": "611cfdc4b722c884968e3fb67ede2322ac99c7fd49fac387731eebf9c6e71509",
+ "foreign": {
+  "f1116col.div_income_if_div": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "f1116col.int_income_if_int": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "f1116col.gross_hi": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "f1116col.tax_hi": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "f1116col.gross_lo": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "f1116col.tax_lo": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "1a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "3d": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3g": "64f6ef5530efb70ffa5e584a689ce70453f699215a3acbffacd4c7947b78aa59",
+  "4a": "765e45d75275f990c59e7a76ee8983f27ce13f41f63df813a4622b6299bf938f",
+  "6": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "7": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "(q)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "(s)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "(u)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

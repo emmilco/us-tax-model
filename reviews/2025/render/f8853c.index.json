@@ -1,0 +1,107 @@
+{
+ "kind": "render",
+ "form": "f8853c",
+ "family": "claude",
+ "base": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+ "lines": [
+  {
+   "key": "17",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MATCH",
+   "subject_key": "07d25c95f2c10c95fe1120c10c944d9b803f7b1fe56cf9425bf965a58ca1464e"
+  },
+  {
+   "key": "18",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MATCH",
+   "subject_key": "c86bd2d9557a3918a9a3aaf781cb4642106c33d25db812e9e83afa3e89f29de8"
+  },
+  {
+   "key": "19",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MATCH",
+   "subject_key": "65778a9d90a3fd614be06711d319898094e6e68191f08aaa71919ee72a40b3a1"
+  },
+  {
+   "key": "20",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MATCH",
+   "subject_key": "0ba25e99c9c070be611d9109918afa1020430e3f21afe3d1c08fe24e9c62ff60"
+  },
+  {
+   "key": "15",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MATCH",
+   "subject_key": "348a79cbf738f3b87cbdbf7e82178c03c8ea8b94f3a3827fe7550ce9a7123c50"
+  },
+  {
+   "key": "21",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MATCH",
+   "subject_key": "86f2849cf10dc6ec5c83f7c1774f9e24f012bebb466c302ac745d9ca3604dbc8"
+  },
+  {
+   "key": "22",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i8853 p. 9, Line 22: 'necessary diagnostic, preventive, therapeutic, curing, treating, mitigating, and rehabilitative services, and maintenance or personal care services required to treat a chronically ill individual under a plan of care prescribed by a licensed health care practitioner'. The question drops 'curing', 'mitigating' and 'required to treat a chronically ill individual', so a filer can leave out qualifying costs (BUG-0916).",
+   "subject_key": "fecb6e99696140707895e851677bee7709b79db6428ae57416893fca6bfe8805"
+  },
+  {
+   "key": "23",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MATCH",
+   "subject_key": "55da43eb55eed3c2d707e660435c79b59d461ebe6f4dea4b13f4ff77dd542564"
+  },
+  {
+   "key": "24",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MATCH",
+   "subject_key": "17a024c2ea1269f217f027c3c7220c5478bf40dce65a91343487b7664009460c"
+  },
+  {
+   "key": "25",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; f8853 line 25 prints 'Subtract line 24 from line 23' with no floor (line 26 has one); the project floors line 25 at zero, a reading recorded in no ambiguity entry. It differs only when reimbursements exceed line 23, where the printed form would tax more than the payments received; the floor is the sensible reading but must be registered (BUG-0917).",
+   "subject_key": "98bead6c586ef6b66f5028c2e24f31165844028424c166070b08ff18b4f11635",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8853c.pre1996": "f8853c.contract_before_ltc_date",
+     "f8853c.pre1996_if_reimbursed": "f8853c.contract_before_ltc_date_if_reimbursed"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "0cc5c24ab2b62aa96902167b0de33bca5e227f10e6ab679e071e4e890f185cb5"
+   }
+  },
+  {
+   "key": "26",
+   "record": "e29bcd10061814dc891c893f02f66291c61597e5f43626fd81b45728a660d3d9",
+   "status": "MATCH",
+   "subject_key": "96daed712f0b2dd936fe97631564eac443d8f5ad9f6e016153a72677b01ee3b4",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8853c.pre1996_if_reimbursed": "f8853c.contract_before_ltc_date_if_reimbursed"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "a437bec057bb9bf0322cf03c95a775f1af2bdacda9c0db888ebc64e5718cf85b"
+   }
+  }
+ ],
+ "subjects": {
+  "17": "b5f313e21edbcd06179c311865bfb2650116dcb9d63148e4784e7b9eb5b8e3f5",
+  "18": "50a1cb06e0889f113e8c03fb87c78612c9b020c54605a1a7644abfc6f9054314",
+  "19": "4ed1a012d6d39dc48b3103ac476988b4ac3f5b82cf7645ba66ffd44cff23ff2a",
+  "20": "8d2dcd00f08f9df8a3e5a347de0b20d7bf2b30eac0b6ba236b171d37dbec9b16",
+  "15": "915598c2bced39bd5bd8472c79a04e69cf2e6eed171403b59b777be58157aea2",
+  "21": "503dadecab4cab8b90cf3030116f6bd3f29b3b4ba3974e9f37aab7ceb693b3aa",
+  "22": "9b5cc72d4b528c108f095d2d2c26c4a85b9e43a894a4c18858c15e513820ac77",
+  "23": "6ef9d300c6875035172a537bce2ba4e03811224e2abdc33cffdf08bd23e45a65",
+  "24": "e3713a9ec8896b9261306d860fa76e963f749aa8906802456d4a5cf9e9ea5ab5",
+  "25": "b91b02a6f20e53a39fc1262f1e1c4d2a4be6cb8d828478e980089f46fc79f41e",
+  "26": "c4fe06c91f24723c45e421762d428abe728122543c5b2cf24cce169835c605af"
+ },
+ "__rest__": "c5ffe993a4caf7ba8595a6d37fe630e100eb6108ee6d3c21e6e90e953f473b50"
+}

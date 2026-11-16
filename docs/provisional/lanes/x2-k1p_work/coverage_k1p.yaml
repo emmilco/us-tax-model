@@ -1,0 +1,146 @@
+# Coverage rows for the partnership Schedule K-1 (lane x2-k1p), NOT YET IN interview/2025/coverage/.
+# They walk only once the return-integration lane makes scope.k1 stop refusing and reads the person.k1p_* totals
+# (Schedule E Part II, Form 8582, Form 1040). The integrator moves this file to interview/2025/coverage/k1p.yaml then,
+# and runs interview-coverage --rows on it; until then it is unverified. See opening.yaml for how a row is read.
+tax_year: 2025
+part: Partnership Schedules K-1
+profile: full
+sets:
+  one_k1:
+    says: One person with one Schedule K-1 (Form 1065) from a partnership that is not publicly traded.
+    answers:
+      scope.k1: true
+      $k1p@person[taxpayer]: [llc]
+      person[taxpayer].k1p[llc].ptp: false
+  general:
+    says: A general partner or LLC member-manager.
+    answers:
+      person[taxpayer].k1p[llc].general: true
+  limited:
+    says: A limited partner or other LLC member.
+    answers:
+      person[taxpayer].k1p[llc].general: false
+rows:
+  - id: k1p.refuse_ptp
+    design: lane x2-k1p, R-K1 (D-K4)
+    situation: A unit holder in a publicly traded partnership (item D checked).
+    answers:
+      scope.k1: true
+      $k1p@person[taxpayer]: [mlp]
+      person[taxpayer].k1p[mlp].ptp: true
+    expect:
+      refused: person[taxpayer].k1p[mlp].ptp
+  - id: k1p.operator_material
+    design: lane x2-k1p, K2 and K7 (typical operating LLC member-manager)
+    situation: A member-manager of a small LLC with business income, self-employment earnings and section 199A information, who worked over 500 hours.
+    uses: [one_k1, general]
+    answers:
+      person[taxpayer].k1p[llc].has_b1: true
+      person[taxpayer].k1p[llc].box1: 5000000
+      person[taxpayer].k1p[llc].has_b14a: true
+      person[taxpayer].k1p[llc].box14a: 5000000
+      person[taxpayer].k1p[llc].has_b20z: true
+      person[taxpayer].k1p[llc].box20z: 5000000
+      person[taxpayer].k1p[llc].trader: false
+      person[taxpayer].k1p[llc].work: true
+      person[taxpayer].k1p[llc].hours500: true
+      person[taxpayer].k1p[llc].prior_any: false
+    expect:
+      proceeds:
+        person[taxpayer].k1p[llc].hours500: true
+      not_asked:
+        - person[taxpayer].k1p[llc].most_hours
+        - person[taxpayer].k1p[llc].basis_short
+  - id: k1p.fund_lp_loss
+    design: lane x2-k1p, K3 (limited partner in a real estate fund)
+    situation: A limited partner with a rental real estate loss; not asked about active participation.
+    uses: [one_k1, limited]
+    answers:
+      person[taxpayer].k1p[llc].has_b2: true
+      person[taxpayer].k1p[llc].box2: -1200000
+      person[taxpayer].k1p[llc].prior_any: false
+      person[taxpayer].k1p[llc].basis_short: false
+      person[taxpayer].k1p[llc].not_at_risk: false
+    expect:
+      proceeds:
+        person[taxpayer].k1p[llc].not_at_risk: false
+      not_asked:
+        - person[taxpayer].k1p[llc].decisions
+  - id: k1p.portfolio_only
+    design: lane x2-k1p, K6 (portfolio-only K-1)
+    situation: A limited partner whose K-1 shows only interest and dividends; no participation or loss questions.
+    uses: [one_k1, limited]
+    answers:
+      person[taxpayer].k1p[llc].has_b5: true
+      person[taxpayer].k1p[llc].box5: 30000
+      person[taxpayer].k1p[llc].has_b6a: true
+      person[taxpayer].k1p[llc].box6a: 100000
+      person[taxpayer].k1p[llc].box6b: 80000
+    expect:
+      proceeds:
+        person[taxpayer].k1p[llc].box6b: 80000
+      not_asked:
+        - person[taxpayer].k1p[llc].work
+        - person[taxpayer].k1p[llc].prior_any
+        - person[taxpayer].k1p[llc].basis_short
+  - id: k1p.refuse_box10
+    design: lane x2-k1p, R-K9
+    situation: A K-1 with a section 1231 gain in box 10.
+    uses: [one_k1, limited]
+    answers:
+      person[taxpayer].k1p[llc].r_b10: true
+    expect:
+      refused: person[taxpayer].k1p[llc].r_b10
+  - id: k1p.refuse_multi
+    design: lane x2-k1p, R-K2
+    situation: A K-1 with box 23 checked (more than one activity).
+    uses: [one_k1, limited]
+    answers:
+      person[taxpayer].k1p[llc].r_b2223: true
+    expect:
+      refused: person[taxpayer].k1p[llc].r_b2223
+  - id: k1p.refuse_disposed
+    design: lane x2-k1p, R-K4
+    situation: A partner who sold part of the interest in 2025.
+    uses: [one_k1, limited]
+    answers:
+      person[taxpayer].k1p[llc].r_disposed: true
+    expect:
+      refused: person[taxpayer].k1p[llc].r_disposed
+  - id: k1p.refuse_basis
+    design: lane x2-k1p, R-K5 (D-K2)
+    situation: A business loss larger than the partner's basis.
+    uses: [one_k1, limited]
+    answers:
+      person[taxpayer].k1p[llc].has_b1: true
+      person[taxpayer].k1p[llc].box1: -500000
+      person[taxpayer].k1p[llc].trader: false
+      person[taxpayer].k1p[llc].work: false
+      person[taxpayer].k1p[llc].prior_any: false
+      person[taxpayer].k1p[llc].basis_short: true
+    expect:
+      refused: person[taxpayer].k1p[llc].basis_short_if_loss
+  - id: k1p.refuse_dist_over
+    design: lane x2-k1p, R-K8
+    situation: Money taken out of the partnership above basis.
+    uses: [one_k1, limited]
+    answers:
+      person[taxpayer].k1p[llc].has_b19: true
+      person[taxpayer].k1p[llc].b19_other: false
+      person[taxpayer].k1p[llc].dist_over: true
+    expect:
+      refused: person[taxpayer].k1p[llc].dist_over_if_any
+  - id: k1p.refuse_test6
+    design: lane x2-k1p, R-K21 (D-K5)
+    situation: A limited partner in a consulting partnership, under 500 hours, materially participated in 3 earlier years.
+    uses: [one_k1, limited]
+    answers:
+      person[taxpayer].k1p[llc].has_b1: true
+      person[taxpayer].k1p[llc].box1: 1000000
+      person[taxpayer].k1p[llc].trader: false
+      person[taxpayer].k1p[llc].work: true
+      person[taxpayer].k1p[llc].hours500: false
+      person[taxpayer].k1p[llc].five_of_ten: false
+      person[taxpayer].k1p[llc].t6: true
+    expect:
+      refused: person[taxpayer].k1p[llc].t6_if_asked

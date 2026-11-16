@@ -1,120 +1,790 @@
 {
  "rulings": {
   "unruled:gate:ny_it201.mctmt_possible#1": {
-   "reason": "Every finding is self-employment income other than Schedule C (partnership, farm, minister), refused federally.",
+   "class": "no gate defect; non-Schedule C self-employment is refused federally",
+   "reason": "As the earlier ruling, rechecked against the current scope lines.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "severity": "high",
-     "class": "scope: refused federally",
-     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+     "class": "out of scope",
+     "evidence": "Outside the tool's scope, refused federally before New York is reached: partnership K-1s by scope.k1 and farm income by scope.farm (both in scope.schedule1), clergy by scope.clergy_if_religious_work (scope.schedule1), and other self-employment not on Schedule C by person.se_screened. Within the tool the only self-employment income is Schedule C, which ny_it201.mctmt_people reads (its note)."
     },
     {
      "n": 1,
      "kind": "FALSE_NO",
-     "severity": "high",
-     "class": "scope: refused federally",
-     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+     "class": "out of scope",
+     "evidence": "Outside the tool's scope, refused federally before New York is reached: partnership K-1s by scope.k1 and farm income by scope.farm (both in scope.schedule1), clergy by scope.clergy_if_religious_work (scope.schedule1), and other self-employment not on Schedule C by person.se_screened. Within the tool the only self-employment income is Schedule C, which ny_it201.mctmt_people reads (its note)."
     },
     {
      "n": 2,
      "kind": "FALSE_NO",
-     "severity": "high",
-     "class": "scope: refused federally",
-     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+     "class": "out of scope",
+     "evidence": "Outside the tool's scope, refused federally before New York is reached: partnership K-1s by scope.k1 and farm income by scope.farm (both in scope.schedule1), clergy by scope.clergy_if_religious_work (scope.schedule1), and other self-employment not on Schedule C by person.se_screened. Within the tool the only self-employment income is Schedule C, which ny_it201.mctmt_people reads (its note)."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "severity": "medium",
-     "class": "scope: refused federally",
-     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+     "class": "presentation",
+     "evidence": "A Connecticut resident is not a full-year City resident (refused) and a partner is refused (K-1). For a City resident's Schedule C, ny_it201.ask.mctmt asks about earnings 'from business done in New York City or the nearby counties', the allocation the source uses; BUG-0450 (closed) named the counties."
     }
    ],
-   "bugs": [],
-   "subject_sha": "438944083b1c5c15db499765401f008eaae3cc99d738248fc93432aaca27bcea"
+   "subject_sha": "277b2b45b33bedc71a69fa620ba1af1be7b264cd5ff16c7d99320f10e8a08f99"
   },
   "unruled:gate:ny_it201.federal_care#1": {
-   "reason": "The gate is the federal credit's own condition (the New York credit follows the federal one); the findings are about the federal questions' wording, or read their labels for their prompts. The wording findings that hold are registered against f2441.care (BUG-0447), the federal form's lane.",
+   "class": "no gate defect; the federal prompts name the spouse, employer-provided care and the kinds of care",
+   "reason": "Each finding is answered by the current f2441.care and f2441.benefits prompts and help.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "severity": "high",
-     "class": "not a defect: the prompts include the spouse",
-     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person \u2014 your child under age 13, or a dependent or spouse who was not able to care for themselves \u2014 so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 \u2014 amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml)."
+     "class": "covered",
+     "evidence": "f2441.care: 'did you (or, on a joint return, your spouse) use or pay for care ...' (help: 'whoever paid'); f2441.benefits: 'did your (or, on a joint return, your spouse's) employer ... help pay for the care ...'."
     },
     {
      "n": 1,
      "kind": "UNCLEAR",
-     "severity": "medium",
-     "class": "not a defect: the label is not asked",
-     "evidence": "ny_it201.federal_care is computed from the two federal answers; its label, with \"(federal Form 2441)\", is never shown to the filer, and the federal prompts do not ask whether Form 2441 was filed."
+     "class": "covered",
+     "evidence": "f2441.benefits help: 'Box 10 of a W-2 shows it ... and care your employer provided itself, such as a day care at work'; prompt 'for example through a dependent care account at work'."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "severity": "medium",
-     "class": "not a defect: the prompt names them",
-     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person \u2014 your child under age 13, or a dependent or spouse who was not able to care for themselves \u2014 so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 \u2014 amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). A disabled spouse or a dependent not able to care for themselves is named in the care prompt."
+     "class": "covered",
+     "evidence": "f2441.care prompt: 'for someone living with you who could not care for themselves'; help: 'A child who turned 13 during 2025 counts.'"
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "severity": "medium",
-     "class": "federal wording, registered",
-     "bug": "BUG-0447",
-     "evidence": "The care prompt gives no examples of care (day camp, before- or after-school programs, a household employee); recorded in BUG-0447 for f2441.care."
+     "class": "covered",
+     "evidence": "f2441.care help: 'Day care, a sitter, preschool, after-school care and day camp count, whoever paid.'"
     },
     {
      "n": 4,
      "kind": "UNCLEAR",
-     "severity": "medium",
-     "class": "not a defect: the prompt names box 10",
-     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person \u2014 your child under age 13, or a dependent or spouse who was not able to care for themselves \u2014 so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 \u2014 amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). Dependent care FSA amounts are reported in W-2 box 10, which the benefits prompt names; either answer Yes asks line 64."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "severity": "medium",
-     "class": "federal wording, registered",
-     "bug": "BUG-0447",
-     "evidence": "Care while a spouse was a full-time student or disabled: the care prompt says \"so that you (and your spouse) could work or look for work\"; i2441 p. 2 item 2 and IT-216-I p. 1 treat a student or disabled spouse separately. Recorded in BUG-0447 for f2441.care; the federal credit is lost the same way."
+     "class": "covered",
+     "evidence": "'In 2025, did you ... use or pay for care' covers care used in 2025 and care paid in 2025."
     }
    ],
-   "bugs": [
-    "BUG-0447"
-   ],
-   "subject_sha": "4212165716570ac81140e158b6e66ac46e5f89e93734b8591e5fcee4b0611cb5"
+   "subject_sha": "470870e6ec6a5c8062764d58da8f60ac86e2888417d3971fe67db853f7262853"
   },
   "unruled:gate:ny_it201.has_pension_income#1": {
-   "reason": "Every finding is pension income reported outside lines 9 and 10 (wages, an estate or trust K-1), refused federally.",
+   "class": "defect, medium: a government disability pension on line 1h never reaches line 26",
+   "reason": "Evaluated; the public-authority and ORP findings are covered by the follow-up question.",
    "findings": [
     {
      "n": 0,
      "kind": "FALSE_NO",
-     "severity": "high",
-     "class": "scope: refused federally",
-     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). A disability pension before minimum retirement age comes on a Form 1099-R, and retirement.special refuses \"a disability pension received before minimum retirement age\" and \"a military disability pension\"; scope.other_income refuses \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\"; s1.line8_other refuses \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)\" (which i1040gi p. 24 sends to Schedule 1 line 8t, not line 1a, when it is in W-2 box 1); scope.schedule1 refuses estates and trusts (\"Schedule E or a Schedule K-1\"). Within the tool, pension, annuity and IRA income in federal AGI is on federal lines 4b and 5b, IT-201 lines 9 and 10 (ny_it201.has_pension_income, note)."
+     "class": "defect",
+     "evidence": "Evaluated (/tmp/xrel/ny/dis_inputs.json): f1040.line1h $18,000, ny_it201.line9 and line10 $0, has_pension_income false, line26 $0, no refusal. ny_it201i p. 9, Line 26: \"... included in your federal adjusted gross income\". The earlier ruling (refused federally) is stale: retirement.dis_wages now computes it.",
+     "bug": "BUG-0850"
     },
     {
      "n": 1,
-     "kind": "FALSE_NO",
-     "severity": "high",
-     "class": "scope: refused federally",
-     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). A disability pension before minimum retirement age comes on a Form 1099-R, and retirement.special refuses \"a disability pension received before minimum retirement age\" and \"a military disability pension\"; scope.other_income refuses \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\"; s1.line8_other refuses \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)\" (which i1040gi p. 24 sends to Schedule 1 line 8t, not line 1a, when it is in W-2 box 1); scope.schedule1 refuses estates and trusts (\"Schedule E or a Schedule K-1\"). Within the tool, pension, annuity and IRA income in federal AGI is on federal lines 4b and 5b, IT-201 lines 9 and 10 (ny_it201.has_pension_income, note)."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "ny_it201.ask.gov_pension_other: 'Was any of it from the MTA, MABSTOA, the Long Island Rail Road, or a SUNY, CUNY or State Education Department plan (such as TIAA)?' (MTA Police is an MTA plan)."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "severity": "medium",
-     "class": "scope: refused federally",
-     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). A disability pension before minimum retirement age comes on a Form 1099-R, and retirement.special refuses \"a disability pension received before minimum retirement age\" and \"a military disability pension\"; scope.other_income refuses \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\"; s1.line8_other refuses \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)\" (which i1040gi p. 24 sends to Schedule 1 line 8t, not line 1a, when it is in W-2 box 1); scope.schedule1 refuses estates and trusts (\"Schedule E or a Schedule K-1\"). Within the tool, pension, annuity and IRA income in federal AGI is on federal lines 4b and 5b, IT-201 lines 9 and 10 (ny_it201.has_pension_income, note)."
+     "class": "covered",
+     "evidence": "Same follow-up names 'a SUNY, CUNY or State Education Department plan (such as TIAA)'."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "A territory or D.C. pension is in ny_it201.ask.gov_pension's source but not its shown prompt; noted in BUG-0850's proposed fix.",
+     "bug": "BUG-0850"
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "ny_it201.ask.gov_pension help: 'and a refund of your own contributions'."
     }
    ],
-   "bugs": [],
-   "subject_sha": "285f702efc172e4efe2a8e6df978198bf000d5cb2561e4fa4bb92c79d2228a57"
+   "subject_sha": "bbd71fe095ee4e295b1d437a60bc6ddef66d448f64e44716dcf44397f2527681"
+  },
+  "unruled:gate:ny_it201.ask.city_resident#1": {
+   "class": "no gate defect; a No to the City question refuses the New York return",
+   "reason": "Every wrong No is a refusal, not a silent amount.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "A statutory City resident who answers No: A No to the City question always refuses: ny_it201.gate.part_year_city is ny_it201.ask.city_resident = false and refuses ny_it201.line1 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'); ny_it201.state_resident_if_not_city only chooses which form the refusal names (gate.part_year_state, IT-203). So a wrong No is a refusal, never a silent amount (BUG-0748: both answers to the State question refuse)."
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "A City domiciliary away all year who answers No: A No to the City question always refuses: ny_it201.gate.part_year_city is ny_it201.ask.city_resident = false and refuses ny_it201.line1 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'); ny_it201.state_resident_if_not_city only chooses which form the refusal names (gate.part_year_state, IT-203). So a wrong No is a refusal, never a silent amount (BUG-0748: both answers to the State question refuse)."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A No to the City question always refuses: ny_it201.gate.part_year_city is ny_it201.ask.city_resident = false and refuses ny_it201.line1 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'); ny_it201.state_resident_if_not_city only chooses which form the refusal names (gate.part_year_state, IT-203). So a wrong No is a refusal, never a silent amount (BUG-0748: both answers to the State question refuse)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A No to the City question always refuses: ny_it201.gate.part_year_city is ny_it201.ask.city_resident = false and refuses ny_it201.line1 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'); ny_it201.state_resident_if_not_city only chooses which form the refusal names (gate.part_year_state, IT-203). So a wrong No is a refusal, never a silent amount (BUG-0748: both answers to the State question refuse)."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A No to the City question always refuses: ny_it201.gate.part_year_city is ny_it201.ask.city_resident = false and refuses ny_it201.line1 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'); ny_it201.state_resident_if_not_city only chooses which form the refusal names (gate.part_year_state, IT-203). So a wrong No is a refusal, never a silent amount (BUG-0748: both answers to the State question refuse)."
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A joint filer whose spouse was not a full-year City resident is refused by ny_it201.ask.spouse_resident and ny_it201.gate.spouse_nonresident; a filer who moved in mid-year answers No and is refused (ny_it201.gate.part_year_city)."
+    },
+    {
+     "n": 6,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "A servicemember who answers No is refused (A No to the City question always refuses: ny_it201.gate.part_year_city is ny_it201.ask.city_resident = false and refuses ny_it201.line1 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'); ny_it201.state_resident_if_not_city only chooses which form the refusal names (gate.part_year_state, IT-203). So a wrong No is a refusal, never a silent amount (BUG-0748: both answers to the State question refuse).); the civilian spouse on a separate return is BUG-0852."
+    }
+   ],
+   "subject_sha": "875832fbf8802cd287736462087f9d115e034a877cb98072458490c3baaed4f4"
+  },
+  "unruled:gate:ny_it201.ask.est_any#1": {
+   "class": "defect, low: the gate omits estate or trust allocations and City, Yonkers and MCTMT payments",
+   "reason": "Two FALSE_NO and one UNCLEAR are the gate wording; the extension payment and applied refund are named in the help.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it201i-html, Line 75: estimated taxes \"allocated to you by the estate or trust\" go on line 75; the gate asks what 'you (or ... your spouse)' paid, and the allocation is named only in the gated amount question's help.",
+     "bug": "BUG-0853"
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it201i p. 22: line 75 pools State, City, Yonkers and MCTMT estimated payments; 'New York income tax' can exclude MCTMT-only payments (a filer actually owing the MCTMT is refused at ny_it201.gate.mctmt).",
+     "bug": "BUG-0853"
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "Same: City payments are not named in the gate or its help.",
+     "bug": "BUG-0853"
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The gate help: 'Count ... a payment made with a request for more time to file.'"
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The gate prompt: 'or have a 2024 New York refund applied to it', and the help 'a 2024 New York refund you asked to have applied to 2025'."
+    }
+   ],
+   "subject_sha": "afb0fe4a03df6b2d64b443d14ce3cfda124ae7a67229ddafc0144f7216ac19db"
+  },
+  "unruled:gate:ny_it201.ask.owes_use_tax#1": {
+   "class": "defect, low: the prompt shown omits the spouse, services and reservation purchases",
+   "reason": "Lower-rate purchases are named in the help; the rest is BUG-0854.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it201i p. 18, Line 59. The bank prompt 'did you buy anything taxable ...' omits the spouse that the input's source names.",
+     "bug": "BUG-0854"
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The filer paid another state's tax, not New York's, so 'without paying New York sales tax on it' is literally Yes, and the help adds 'Count a purchase taxed at a lower rate than New York City's, too.'"
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The filer is a full-year City resident; the help counts 'a purchase taxed at a lower rate than New York City's'."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "ny_it201i p. 18: purchases \"on an Indian reservation (except for purchases subject to Oneida Nation taxes)\" commonly create the liability; the examples omit them.",
+     "bug": "BUG-0854"
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "ny_it201i p. 18: \"purchased an item or service\"; 'buy anything' can be read as goods only.",
+     "bug": "BUG-0854"
+    }
+   ],
+   "subject_sha": "d45d5bc081c3917a923e4b96cc6c3f6bcd1300816a7001029ed9712c0b73416d"
+  },
+  "unruled:gate:ny_it201.estimated_payments_positive#1": {
+   "class": "no gate defect for no payments (the balance-due test refuses); low wording defect in the installment question",
+   "reason": "With no estimated payments, ny_it201.est_penalty_balance applies; a skipped installment or a spouse's payment can draw a No to ny_it201.ask.est_late.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "ny_it201.gate.estimated_penalty = est_penalty_balance or est_penalty_late. A balance due with prepayments below the safe harbor (100%/110% of 2024 tax, or no full-year 2024 return) refuses line 81 (Form IT-2105.9) without any estimated payment."
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "Same: est_penalty_balance refuses a balance due below the safe harbor whether or not estimated payments were made."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "ny_it201i p. 23: \"if you underpaid your estimated tax liability for any payment period\". 'Was any of your 2025 New York estimated payments made late, or smaller than ...' can be read to exclude a skipped installment.",
+     "bug": "BUG-0853"
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "'your 2025 New York estimated payments' does not name the spouse.",
+     "bug": "BUG-0853"
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "The required installment needs IT-2105.9, not archived (BUG-0748 left est_late's definition for that reason). A filer who paid a quarter of the 2024 tax each quarter meets the 100% safe harbor, so the 'last year' comparison gives the right No."
+    }
+   ],
+   "subject_sha": "59ee58c82b142450e0f684eee87550867f069178e7129082af44d4ee7149d383"
+  },
+  "unruled:gate:ny_it201.gov_said_no#1": {
+   "class": "defect, medium for the disability pension (the chain never starts); the follow-up's other findings are covered or presentation",
+   "reason": "The government pension chain starts only from lines 9 and 10; the shown prompts and help cover beneficiaries, former spouses, refunds, the military and the spouse.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "Evaluated: a disability pension wholly before the minimum retirement age is on Form 1040 line 1h (retirement.dis_wages), lines 9 and 10 are $0, and neither ny_it201.ask.gov_pension nor ask.gov_pension_other is asked; line 26 is $0 (ny_it201i p. 9, Line 26).",
+     "bug": "BUG-0850"
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "ny_it201.ask.gov_pension names 'a New York State or local government job'; a teachers' or police and fire system retiree's employer is a local government. A filer 59\u00bd or older who still answers No is refused at line 29 (pension_59_known or ask.pension_exclusion). Low; no change proposed beyond BUG-0850's territory wording."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "ny_it201.ask.gov_pension names 'the federal government, the military'; retired pay and an OPM annuity are pension or retirement money from them. A territory or D.C. is noted in BUG-0850."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "ny_it201.ask.gov_pension help: 'Count a pension received as a beneficiary or a former spouse'."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "ny_it201.ask.gov_pension help: 'and a refund of your own contributions'."
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "ny_it201.ask.gov_pension: 'Was any of your (or, on a joint return, your spouse's) pension or retirement money ...'; ask.gov_pension_other follows with 'any of it'."
+    }
+   ],
+   "subject_sha": "e86abeafea179b170a08b691f927411635704016d279eab6cf954710243d5eeb"
+  },
+  "unruled:gate:ny_it201.has_edu_account#1": {
+   "class": "defect, medium: the New York ownership question is in the present tense; the beneficiary case is refused federally",
+   "reason": "The federal gate covers held-for-you and contribution-only accounts.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "A withdrawal included in the student's federal AGI is a taxable 529 distribution, refused federally by person.x_other (person.x_edu_taxable). The federal gate counts an account 'held for you'."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "ny_it201.ask.ny_529 is in the present tense ('Is any 529 account you ... own ...'); an owner who closed the account in 2025 answers No.",
+     "bug": "BUG-0851"
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "person.x_edu_account: 'At any time in 2025, did you have a 529 plan ... or was one held for you?'; contributions alone make it Yes."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "The help names only 'the New York 529 College Savings Program'; an Advisor-Guided plan owner may answer No.",
+     "bug": "BUG-0851"
+    }
+   ],
+   "subject_sha": "f4c099cb8a3a60ff88a8123e98f93fc0535a0866f58b326df40bdbfe56c670ae"
+  },
+  "unruled:gate:ny_it201.has_line28_income#1": {
+   "class": "defect, low: the U.S.-obligation list and the group heading",
+   "reason": "Agency obligations and the spouse are missing from the shown prompt; K-1 interest is refused federally.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it201i p. 9, Line 28: \"U.S. government bonds or other U.S. government obligations\"; the shown tick and prompt list only Treasuries, savings bonds and funds holding them.",
+     "bug": "BUG-0858"
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "The ny_interest group heading 'Did any of your interest or dividends come from these?' and the prompts omit the spouse that the sources name.",
+     "bug": "BUG-0858"
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Outside the tool's scope, refused federally before New York is reached (a refused federal return is a refused New York return): every Schedule K-1 (partnership, S corporation, estate or trust) is refused by scope.k1, part of scope.schedule1 (checked: still listed; the k1p collection is encoded but not wired)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "Interest on U.S. obligations held for investment is reported as interest (Form 1040 line 2b, IT-201 line 2), not netted inside Schedule C; partnership line 11 income is refused (K-1). So line 2 is not 0 when such interest exists."
+    }
+   ],
+   "subject_sha": "275f9fba92c3797f3e54d29791ce8f0b85240cdb387e0c74fec0ea632c446a03"
+  },
+  "unruled:gate:ny_it201.has_other_income#1": {
+   "class": "defect, low: the gate reads Schedule 1 line 9 only",
+   "reason": "See BUG-0859.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "A check entered through refund.any reaches Schedule 1 line 1, which the gate does not read (ny_it201i p. 8, Line 25).",
+     "bug": "BUG-0859"
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "'Was any of the other income you reported ...' invites a No from a filer who sees the check as a rebate.",
+     "bug": "BUG-0859"
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "The gated prompt omits the spouse that the input's source names.",
+     "bug": "BUG-0859"
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "s1.line9 sums line 8a (a net operating loss, supported) with line 8z, so it can net to 0. Rare.",
+     "bug": "BUG-0859"
+    }
+   ],
+   "subject_sha": "8e38b5c7677cd57eb2bcbb60b8df79a0bf67371df0cb8e376705e025e87e7545"
+  },
+  "unruled:gate:ny_it201.has_tax_exempt#1": {
+   "class": "defect, low: the gate reads net tax-exempt interest",
+   "reason": "Premium and accrued-interest cases hold; K-1 interest is refused; the spouse is in the group-heading bug; the no-form case is a federal reporting error.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "f1040.tax_exempt_interest is 'net of amortized bond premium'; ny_it201i p. 7: premium amortization \"is not allowed as a direct offset\".",
+     "bug": "BUG-0857"
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it201i p. 7: \"If you sold a bond between interest dates, include ... the accrued interest amount\"; line 2a may be 0.",
+     "bug": "BUG-0857"
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "Outside the tool's scope, refused federally before New York is reached (a refused federal return is a refused New York return): every Schedule K-1 (partnership, S corporation, estate or trust) is refused by scope.k1, part of scope.schedule1 (checked: still listed; the k1p collection is encoded but not wired)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "The ny_interest group heading and the shown prompt omit the spouse (the gated line's source names the spouse).",
+     "bug": "BUG-0858"
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "The help 'Bonds of New York State ... count as No' can lead a New York fund holder to ignore the out-of-state share its statement shows.",
+     "bug": "BUG-0857"
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "f1040.tax_exempt_interest asks for the total tax-exempt interest for 2025, not only amounts on a form; omitting it is a federal reporting error the federal return shares."
+    }
+   ],
+   "subject_sha": "8b6500db6cb42db1899cb60f2bc533183bfa39415c474792df0531f75a0b69ce"
+  },
+  "unruled:gate:ny_it201.low_income#1": {
+   "class": "defect, low: the real property credit question",
+   "reason": "Spouse, furnishings, subsidy, co-op, tense and mid-year moves; one wording fix.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it214i p. 1: \"You or your spouse (if married filing jointly) paid real property taxes\"; the prompt names only 'your rent' and 'real estate you own'.",
+     "bug": "BUG-0856"
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it214i p. 1: \"not counting charges for heat, gas, electricity, furnishings, or board\"; furnishings are not in the prompt.",
+     "bug": "BUG-0856"
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "ny_it214i p. 2, Line 11: \"do not include any subsidized part of your rental charge\".",
+     "bug": "BUG-0856"
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "ny_it214i p. 2: a cooperative counts as a residence; 'real estate you own' and 'rent' fit neither shares nor maintenance.",
+     "bug": "BUG-0856"
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "'is all the real estate you own worth' asks about now; property taxes paid in 2025 on a house sold later count.",
+     "bug": "BUG-0856"
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "ny_it214i p. 2, Line 12: adjusted rent across residences; 'Was your rent $450 a month or less' does not say which period.",
+     "bug": "BUG-0856"
+    }
+   ],
+   "subject_sha": "2cff21c85e9c0695ce94a0912d17906e5b9f8b78625f7aa2c08b03d44e92dd5f"
+  },
+  "unruled:gate:ny_it201.moved#1": {
+   "class": "defect, low on the wording; State-level and mid-year moves are refused",
+   "reason": "See BUG-0855.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "A full-year State resident outside the City: A No to the City question always refuses: ny_it201.gate.part_year_city is ny_it201.ask.city_resident = false and refuses ny_it201.line1 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'); ny_it201.state_resident_if_not_city only chooses which form the refusal names (gate.part_year_state, IT-203). So a wrong No is a refusal, never a silent amount (BUG-0748: both answers to the State question refuse)."
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "A part-year City resident is refused: ny_it201.gate.part_year_city (City question No) refuses line 1 (Form IT-360.1)."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The ny_where group heading reads 'Did any of these apply to you (or, on a joint return, your spouse)?', over the moved_in and moved_out ticks."
+    },
+    {
+     "n": 3,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it201i-html, Special accruals: income \"fixed and determinable in a tax year prior to 2025\" and reported in 2025; the prompt's 'earned in one year but paid in the other' reads as adjacent years.",
+     "bug": "BUG-0855"
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "An installment-sale gain is not 'earned' or 'paid' in the prompt's sense; the source turns on 'fixed and determinable' and federal reporting.",
+     "bug": "BUG-0855"
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A part-year City resident is refused: ny_it201.gate.part_year_city (City question No) refuses line 1 (Form IT-360.1)."
+    }
+   ],
+   "subject_sha": "e41e30601132ba839968e001ec51127cdf9b135226eab4b1754240fc3d5ba383"
+  },
+  "unruled:gate:ny_it201.ny_529_if_account#1": {
+   "class": "defect, medium: present tense and the career-training date",
+   "reason": "The beneficiary and excess-withdrawal cases are refused federally; the spouse is named; several accounts is presentation.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it201i p. 8, Line 22: \"the transfer to another state's program\" is nonqualified; ny_it201.ask.ny_529 asks what the filer owns now.",
+     "bug": "BUG-0851"
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "A beneficiary withdrawal partly in federal AGI is a taxable 529 distribution, refused federally by person.x_other (person.x_edu_taxable)."
+    },
+    {
+     "n": 2,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "ny_it201.ask.ny_529's shown prompt names the spouse ('you (or, on a joint return, your spouse) own'); 529_nonqualified and 529_owner then ask about 'that New York 529 account'."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "person.x_edu_account asks whether the filer had an account at any time in 2025, not about Form 1099-Q; a contribution-only owner answers Yes."
+    },
+    {
+     "n": 4,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it201i p. 8, Line 22: credentialing expenses qualify \"on or after July 4, 2025\"; ny_it201.ask.529_nonqualified excludes 'career training' without the date.",
+     "bug": "BUG-0851"
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "ny_it201i p. 8, Line 22: credentialing expenses \"not paid to an eligible educational institution\" are nonqualified; the prompt does not say so.",
+     "bug": "BUG-0851"
+    },
+    {
+     "n": 6,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "An excess withdrawal kept by the owner has taxable earnings federally (Form 1099-Q), refused by person.x_other; a filer who answers that question correctly does not reach New York."
+    },
+    {
+     "n": 7,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'that New York 529 account' after 'Is any 529 account you ... own part of New York's ...' reads naturally as any of them. Low; no change proposed."
+    }
+   ],
+   "subject_sha": "648fc42c667a8a46980333b791d835d6bfd12eb8c19fda8bff11f207021eccfc"
+  },
+  "unruled:gate:ny_it201.pension_59_known#1": {
+   "class": "no gate defect; the findings read the choice backwards",
+   "reason": "The question is asked whenever no recipient was born in 1965 or earlier.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "With pension_59_known false, ny_it201.ask.pension_exclusion asks 'Did you (or ... your spouse) turn 59\u00bd by December 31, 2025 ...?'; a person born January to June 1966 answers Yes and is refused at line 29."
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "covered",
+     "evidence": "The same question asks about money received 'as the beneficiary of someone who died'."
+    },
+    {
+     "n": 2,
+     "kind": "FALSE_NO",
+     "class": "model error",
+     "evidence": "When the condition holds, ny_it201.pension_exclusion_line is true directly (refusal); when it fails, the question is asked. Neither branch silences line 29."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "For a recipient born in 1965 or earlier no question is asked (line 29 refuses on the birth year); the younger filer's question is about age and beneficiary status, not the kind of plan."
+    }
+   ],
+   "subject_sha": "bc56d1e18c6ee5519f62983571643d2fcfde2eda258b54c235e2fd393e481a2c"
+  },
+  "unruled:gate:ny_it201.public_job_if_w2#1": {
+   "class": "no gate defect; the prompt names the spouse, the year, public schools, colleges and the MTA",
+   "reason": "Each UNCLEAR reads the short label; the shown prompt and help answer it.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "ny_it201.ask.public_job: 'did you (or, on a joint return, your spouse) work for the government in New York'."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The prompt is 'In 2025, did you ... work for the government', so a person who left mid-2025 answers Yes."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The help names 'a school district, SUNY or CUNY, and public authorities such as the MTA'; MABSTOA is an MTA subsidiary. Other public benefit corporations are in BUG-0860."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "The prompt names 'a public school or college'."
+    }
+   ],
+   "subject_sha": "92995fe019f067e6b1f9e28742290b183b005fcf6fdacd14665aecedb662600b"
+  },
+  "unruled:gate:s1.has_sc#1": {
+   "class": "no gate defect; the credits other than UBT are refused elsewhere",
+   "reason": "Trust and partnership cases are refused federally, part-year residents by the City question.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Outside the tool's scope, refused federally before New York is reached (a refused federal return is a refused New York return): every Schedule K-1 (partnership, S corporation, estate or trust) is refused by scope.k1, part of scope.schedule1 (checked: still listed; the k1p collection is encoded but not wired). The accumulation distribution is also on the IT-225 list (ny_it201.ask.it225)."
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "A part-year City resident is refused: ny_it201.gate.part_year_city (City question No) refuses line 1 (Form IT-360.1)."
+    },
+    {
+     "n": 2,
+     "kind": "FALSE_NO",
+     "class": "out of scope",
+     "evidence": "Outside the tool's scope, refused federally before New York is reached (a refused federal return is a refused New York return): every Schedule K-1 (partnership, S corporation, estate or trust) is refused by scope.k1, part of scope.schedule1 (checked: still listed; the k1p collection is encoded but not wired)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "presentation",
+     "evidence": "'Did your business pay ...' on a joint return reads as the household's; low, no change proposed."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "'pay ... for 2025' is the tax year, so UBT paid in 2026 for 2025 counts."
+    }
+   ],
+   "subject_sha": "b79f83d1bd14602d6a282f805f0975116edeaebaaefc5e5c397deb7424a6c7db"
+  },
+  "unruled:gate:scope.armed_forces#1": {
+   "class": "defect, low: SCRA elections on a separate return and for PHS or NOAA officers; Coast Guard wording already pending",
+   "reason": "A civilian spouse filing separately is not asked about the spouse's service.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it201i-html, Filing information for military servicemembers and their spouses (SCRA election, codes M7 to M9). scope.armed_forces names the spouse only 'on a joint return'.",
+     "bug": "BUG-0852"
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A cadet living at West Point (Orange County) is not a New York City resident: A No to the City question always refuses: ny_it201.gate.part_year_city is ny_it201.ask.city_resident = false and refuses ny_it201.line1 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'); ny_it201.state_resident_if_not_city only chooses which form the refusal names (gate.part_year_state, IT-203). So a wrong No is a refusal, never a silent amount (BUG-0748: both answers to the State question refuse)."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "Public Health Service and NOAA officers are SCRA servicemembers but not 'armed forces'.",
+     "bug": "BUG-0852"
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "open residual",
+     "evidence": "The Coast Guard wording of scope.armed_forces is pending from the wide family.",
+     "bug": "BUG-0902"
+    }
+   ],
+   "subject_sha": "74ffc7e170e32a0252ffe5956f5f2cc2e47e9028aba6754ac6e7365f7432ede3"
+  },
+  "unruled:gate:scope.has_w2#1": {
+   "class": "defect, low: the public-job question asks about work in 2025 in New York",
+   "reason": "Arrears without 2025 work, remote work outside the State, and public benefit corporations; chapter 11 is refused federally.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "class": "defect",
+     "evidence": "ny_it201i p. 8, Line 21: 414(h) contributions \"if shown on any federal Form W-2\"; ny_it201.ask.public_job asks 'In 2025, did you ... work for the government in New York'.",
+     "bug": "BUG-0860"
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "The help's list (State, city, county, town or village, school district, SUNY or CUNY, the MTA) may not be read to include a public hospital, fire district or library.",
+     "bug": "BUG-0860"
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "'work for the government in New York' can be read as a place of work.",
+     "bug": "BUG-0860"
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "A chapter 11 case is refused federally by scope.chapter11 (part of scope.other_income)."
+    }
+   ],
+   "subject_sha": "93c17895b363cd9e87ba2d884478d78f0ae31ae1d2e56349cdd6ba9c78c98ad8"
   }
  },
  "baseline": {}

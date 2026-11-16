@@ -1,0 +1,260 @@
+diff --git a/forms/2025/asset.yaml b/forms/2025/asset.yaml
+index 7a75472..df28a41 100644
+--- a/forms/2025/asset.yaml
++++ b/forms/2025/asset.yaml
+@@ -1063,17 +1063,81 @@ form:
+     cite:
+       doc: i4562
+       locator: p. 11, Column (c)
+-  - id: asset.listed
++  - id: asset.listed_rec
+     printed: (helper)
+-    label: Is this listed property?
++    label: Property of a kind used for entertainment or recreation that is not used exclusively in your business or at
++      your regular business establishment
+     type: Bool
+     expr:
+       op: input
+-      source: 'Is this listed property: property used for entertainment or recreation (such as photographic, phonographic,
++      source: 'Is it property of a kind used for entertainment or recreation (such as photographic, phonographic,
+         communication or video recording equipment) that is not used exclusively in your business or at your regular business
+-        establishment, or a computer placed in service before 2018 that is not used exclusively at your regular business establishment?
+-        A part of your home is your regular business establishment only if that part meets the requirements for deducting
+-        expenses for the business use of a home.'
++        establishment? A part of your home is your regular business establishment only if that part meets the requirements
++        for deducting expenses for the business use of a home.'
++    cite:
++      doc: i4562
++      locator: p. 3, Listed Property, "Any property used for entertainment or recreational purposes (such as photographic,
++        phonographic, communication, and video recording equipment)"; Exceptions, "1. Photographic, phonographic,
++        communication, or video equipment used exclusively in a taxpayer’s trade or business or at the taxpayer’s regular
++        business establishment"; "a portion of the taxpayer’s home is treated as a regular business establishment only if
++        that portion meets the requirements for deducting expenses attributable to the business use of a home"; p. 13, Part V
++  - id: asset.listed_computer
++    printed: (helper)
++    label: A computer placed in service before 2018 that is not used exclusively at your regular business establishment
++    type: Bool
++    gated_by: asset.listed_computer_if_early
++    expr:
++      op: input
++      source: 'Is it a computer that is not used exclusively at your regular business establishment? A part of your home is
++        your regular business establishment only if that part meets the requirements for deducting expenses for the
++        business use of a home.'
++    cite:
++      doc: i4562
++      locator: p. 3, Listed Property and its Exceptions, "a portion of the taxpayer’s home is treated as a regular business
++        establishment only if that portion meets the requirements for deducting expenses attributable to the business use
++        of a home"; p. 13, Part V
++  - id: asset.listed_computer_if_early
++    printed: (gate)
++    label: A computer not used exclusively at your regular business establishment, asked only of property placed in service
++      before 2018 (false otherwise)
++    type: Bool
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          gt:
++          - asset.year
++          - const: 8
++            type: Count
++        then: asset.listed_computer
++      - guard:
++          op: test
++          le:
++          - asset.year
++          - const: 8
++            type: Count
++        then: asset.no
++    cite:
++      doc: i4562
++      locator: p. 3, Listed Property and its Exceptions, "a portion of the taxpayer’s home is treated as a regular business
++        establishment only if that portion meets the requirements for deducting expenses attributable to the business use
++        of a home"; p. 13, Part V
++  - id: asset.listed
++    printed: (helper)
++    label: Is this listed property?
++    type: Bool
++    expr:
++      op: test
++      any:
++      - op: test
++        eq:
++        - asset.listed_rec
++        - const: true
++      - op: test
++        eq:
++        - asset.listed_computer_if_early
++        - const: true
+     cite:
+       doc: i4562
+       locator: p. 3, Listed Property and its Exceptions, "a portion of the taxpayer’s home is treated as a regular business
+diff --git a/interview/2025/personas/13_self_employed_actual_vehicle_computer.yaml b/interview/2025/personas/13_self_employed_actual_vehicle_computer.yaml
+index 20924d3..894a785 100644
+--- a/interview/2025/personas/13_self_employed_actual_vehicle_computer.yaml
++++ b/interview/2025/personas/13_self_employed_actual_vehicle_computer.yaml
+@@ -92,7 +92,7 @@ answers:
+   person[taxpayer].sc[design_studio].asset[computer].long_production: false
+   person[taxpayer].sc[design_studio].asset[computer].cost: 200000
+   person[taxpayer].sc[design_studio].asset[computer].pct: 100
+-  person[taxpayer].sc[design_studio].asset[computer].listed: false
++  person[taxpayer].sc[design_studio].asset[computer].listed_rec: false
+   person[taxpayer].sc[design_studio].asset[computer].got_other: false
+   person[taxpayer].sc[design_studio].asset[computer].acquired_before_bonus_date: false
+   person[taxpayer].sc[design_studio].asset[computer].ended_this_year: false
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index f00cf41..82d2fa6 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -5782,32 +5782,38 @@ bank:
+       available for use). For listed property you converted from personal use to business use during 2025, figure the
+       percentage only for the months you used it in the business, multiply it by the number of those months and divide by
+       12.
+-  - input: asset.listed
++  - input: asset.listed_rec
+     order: 257
+     seq: 12
+-    prompt: "For this property — Is it property of a kind used for entertainment or recreation (such as photographic, sound, communication or video recording equipment), not used only in your business or at your regular place of business? Or is it a computer first used before 2018, not used only at your regular place of business?"
++    prompt: "For this property — Is it property of a kind used for entertainment or recreation (such as photographic, sound, communication or video recording equipment), not used only in your business or at your regular place of business?"
+     help: A part of your home is your regular business establishment only if that part meets the requirements for
+       deducting expenses for the business use of a home.
+-  - input: asset.qbu_low
++  - input: asset.listed_computer
+     order: 257
+     seq: 13
++    prompt: "For this property — Is it a computer that is not used only at your regular place of business?"
++    help: Asked because you began using it before 2018. A part of your home is your regular place of business only if
++      that part meets the requirements for deducting expenses for the business use of a home.
++  - input: asset.qbu_low
++    order: 257
++    seq: 14
+   - input: asset.got_other
+     order: 257
+-    seq: 15
++    seq: 16
+     help: Property got in one of these ways is outside what this tool prepares; a Yes ends the interview here.
+   - input: asset.acquired_before_bonus_date
+     order: 257
+-    seq: 16
++    seq: 17
+     group: asset_history
+     tick: Got before September 28, 2017
+   - input: asset.ended_this_year
+     order: 257
+-    seq: 17
++    seq: 18
+     group: asset_history
+     tick: Sold, given away, scrapped or taken for personal use in 2025
+   - input: asset.basis_changed
+     order: 257
+-    seq: 18
++    seq: 19
+     group: asset_history
+     tick: A casualty loss, tax credit or special deduction changed its cost
+     help: Credits and deductions that change it include the disabled access credit, the deduction for removing barriers
+@@ -5815,41 +5821,41 @@ bank:
+       childcare facilities, refueling property and investment credit property.
+   - input: asset.use_changed
+     order: 257
+-    seq: 19
++    seq: 20
+     group: asset_history
+     tick: The business share of its use has changed
+   - input: asset.short_year
+     order: 257
+-    seq: 20
++    seq: 21
+     group: asset_history
+     tick: A tax year of under 12 months since its business use began
+     help: If you have filed a return for the full calendar year every year, the answer is No.
+   - input: asset.method_other
+     order: 257
+-    seq: 21
++    seq: 22
+     group: asset_method
+     tick: A special depreciation method was chosen instead of the IRS tables
+     help: If you have never chosen a depreciation method for it, the answer is No.
+   - input: asset.ads_required
+     order: 257
+-    seq: 22
++    seq: 23
+     group: asset_method
+     tick: The alternative depreciation system (ADS) is required for it
+   - input: asset.outside_use
+     order: 257
+-    seq: 23
++    seq: 24
+     group: asset_method
+     tick: Used mostly abroad; leased to a charity, government or foreigner; or bond-financed
+   - input: asset.s179
+     order: 257
+-    seq: 14
++    seq: 15
+     prompt: For this property — How much of its cost do you choose to deduct at once in 2025 under the section 179
+       election? (Zero if none; not more than its business cost.)
+     help: Only property you bought for use in your business qualifies. Land, land improvements and property held for
+       investment do not.
+   - input: asset.not179
+     order: 257
+-    seq: 24
++    seq: 25
+     prompt: For this property — Is it a land improvement (such as a fence, paving or a swimming pool), property held for
+       investment, or property you bought and lease to others or that a tax-exempt organization, a government or a
+       foreign person uses?
+@@ -5860,7 +5866,7 @@ bank:
+       a government or foreign person under a lease of less than 6 months."
+   - input: asset.bonus_choice
+     order: 257
+-    seq: 25
++    seq: 26
+     prompt: For this property — For property of this kind that you began using in 2025, do you take the special ("bonus")
+       depreciation allowance?
+     value_labels:
+@@ -5869,20 +5875,20 @@ bank:
+       none: 'No: I elect not to take any special allowance'
+   - input: asset.after_jan19
+     order: 257
+-    seq: 26
++    seq: 27
+     prompt: For this property — Did you acquire it after January 19, 2025? (Answer No if you signed a binding written
+       contract for it before January 20, 2025, even if you received it later.)
+   - input: asset.bonus_same
+     order: 257
+-    seq: 27
++    seq: 28
+   - input: asset.used_before
+     order: 257
+-    seq: 28
++    seq: 29
+     help: Rebuilt or reconditioned property counts as used, unless the cost of its used parts is not more than 20% of its
+       total cost.
+   - input: asset.quarter
+     order: 257
+-    seq: 29
++    seq: 30
+     prompt: For this property — In which part of 2025 did you start using it in the business?
+     value_labels:
+       q1: January to March
+@@ -5891,7 +5897,7 @@ bank:
+       q4: October to December
+   - input: asset.prior_conv
+     order: 257
+-    seq: 30
++    seq: 31
+     value_labels:
+       hy: Half-year
+       mq1: Mid-quarter, first used January to March
+@@ -5900,10 +5906,10 @@ bank:
+       mq4: Mid-quarter, first used October to December
+   - input: asset.prior_179
+     order: 257
+-    seq: 31
++    seq: 32
+   - input: asset.prior_bonus
+     order: 257
+-    seq: 32
++    seq: 33
+   - input: s179.prior_form
+     order: 258
+     seq: 5

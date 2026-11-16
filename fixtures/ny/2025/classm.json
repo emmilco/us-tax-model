@@ -323,7 +323,8 @@
         "s1.digital_income": false,
         "s1.olympic": false,
         "ssb.any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "ny_it2[w0].state_whole": {
@@ -680,7 +681,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -970,7 +972,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -1270,7 +1273,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_city_rs#{\"amount\":\"ny_it201.line47\",\"status\":\"f1040.status\"}.tax": {
@@ -1591,7 +1595,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -1863,7 +1868,11 @@
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false,
+        "household.married_dec31": true,
+        "household.mfs_living": "together_late",
+        "f8962.mfs_exception": false
       },
       "expect": {}
     },
@@ -2217,7 +2226,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_city_rs#{\"amount\":\"ny_it201.line47\",\"status\":\"f1040.status\"}.tax": {
@@ -2520,7 +2530,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -2818,7 +2829,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -3115,7 +3127,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -3463,7 +3476,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -3735,7 +3749,11 @@
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false,
+        "household.married_dec31": true,
+        "household.mfs_living": "together_late",
+        "f8962.mfs_exception": false
       },
       "expect": {}
     },
@@ -5757,7 +5775,11 @@
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false,
+        "household.married_dec31": true,
+        "household.mfs_living": "together_late",
+        "f8962.mfs_exception": false
       },
       "expect": {}
     },
@@ -6111,7 +6133,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -6411,7 +6434,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -6759,7 +6783,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_tcw#{\"agi\":\"ny_it201.line33\",\"incremental\":{\"param\":\"ny.tcw.mfj.w2.incremental\"},\"recapture\":{\"param\":\"ny.tcw.mfj.w2.recapture\"},\"start\":{\"param\":\"ny.tcw.mfj.w2.start\"},\"status\":\"f1040.status\",\"ti\":\"ny_it201.line38\"}.line6": {
@@ -7064,7 +7089,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_tcw#{\"agi\":\"ny_it201.line33\",\"incremental\":{\"param\":\"ny.tcw.mfj.w2.incremental\"},\"recapture\":{\"param\":\"ny.tcw.mfj.w2.recapture\"},\"start\":{\"param\":\"ny.tcw.mfj.w2.start\"},\"status\":\"f1040.status\",\"ti\":\"ny_it201.line38\"}.line3": {
@@ -7433,7 +7459,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_tcw_first#{\"agi\":\"ny_it201.line33\",\"rate\":{\"param\":\"ny.tcw.first.rate\"},\"status\":\"f1040.status\",\"ti\":\"ny_it201.line38\"}.stop": {
@@ -7736,7 +7763,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_tcw_first#{\"agi\":\"ny_it201.line33\",\"rate\":{\"param\":\"ny.tcw.first.rate\"},\"status\":\"f1040.status\",\"ti\":\"ny_it201.line38\"}.stop": {
@@ -7943,7 +7971,8 @@
         "sd.carryover": false,
         "sli.any": false,
         "ssb.any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -8564,7 +8593,8 @@
         "sd.carryover": false,
         "sli.any": false,
         "ssb.any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -9248,7 +9278,8 @@
         "sd.carryover": false,
         "sli.any": false,
         "ssb.any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -9932,7 +9963,11 @@
         "sd.carryover": false,
         "sli.any": false,
         "ssb.any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false,
+        "household.married_dec31": true,
+        "household.mfs_living": "together_late",
+        "f8962.mfs_exception": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -10685,7 +10720,8 @@
         "sd.carryover": false,
         "sli.any": false,
         "ssb.any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -11486,7 +11522,8 @@
         "sd.carryover": false,
         "sli.any": false,
         "ssb.any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "ny_it201.item_c": {
@@ -12343,7 +12380,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -12633,7 +12671,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -12933,7 +12972,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -13254,7 +13294,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -13533,7 +13574,11 @@
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false,
+        "household.married_dec31": true,
+        "household.mfs_living": "together_late",
+        "f8962.mfs_exception": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -13892,7 +13937,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -14245,7 +14291,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -14543,7 +14590,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -14835,7 +14883,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -15127,7 +15176,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -15419,7 +15469,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -15711,7 +15762,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -16066,7 +16118,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -16416,7 +16469,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -16766,7 +16820,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -17063,7 +17118,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -17367,7 +17423,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -17666,7 +17723,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -17965,7 +18023,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -18263,7 +18322,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "root|inst:ny_rs#{\"amount\":\"ny_it201.line38\",\"status\":\"f1040.status\"}.tax": {
@@ -20290,7 +20350,11 @@
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false,
+        "household.married_dec31": true,
+        "household.mfs_living": "together_late",
+        "f8962.mfs_exception": false
       },
       "expect": {}
     },
@@ -22236,7 +22300,11 @@
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false,
+        "household.married_dec31": true,
+        "household.mfs_living": "together_late",
+        "f8962.mfs_exception": false
       },
       "expect": {}
     },
@@ -24144,7 +24212,11 @@
         "ny_it201.ask.spouse_itemizes": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false,
+        "household.married_dec31": true,
+        "household.mfs_living": "together_late",
+        "f8962.mfs_exception": false
       },
       "expect": {}
     },
@@ -25806,7 +25878,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -27603,7 +27676,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -27953,7 +28027,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -28252,7 +28327,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -28606,7 +28682,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     },
@@ -28906,7 +28983,8 @@
         "ny_it201.ask.bab": false,
         "ny_it201.ask.gov_pension_other": false,
         "ny_it201.ask.apply_any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {}
     }

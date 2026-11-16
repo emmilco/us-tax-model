@@ -93,17 +93,47 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
       = single
       cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
+  Digital Assets At any time during 2025, did you (or, on a joint return, your spouse) receive a digital asset (as a reward, award, or payment for property or services), or sell, exchange, or otherwise dispose of a digital asset (or a financial interest in a digital asset)?
+      = false
+      cite: [f1040] Form 1040 (2025), page 1, Digital Assets, "At any time during 2025, did you: (a) receive (as a reward, award, or payment for property or services); or (b) sell, exchange, or otherwise dispose of a digital asset (or a financial interest in a digital asset)?"; i1040gi p. 15, Digital Assets, "Digital assets are any digital representations of value that are recorded on a cryptographically secured distributed ledger or any similar technology."; i1040gi p. 16, "Received new digital assets as a result of mining, staking, and similar activities", "Disposed of a digital asset in exchange or trade for another digital asset", "Holding a digital asset in a wallet or account" and "Purchasing digital assets using U.S. or other real currency" (2025; created 2025-09-05; 3d31c226)
+  (helper) Number of sales entered with a digital asset box (G to L) on Form 8949
+      = 0
+      cite: [f8949] p. 1, Part I, "(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS" (2025; created 2025-05-05; 27451389)
+      note: confirmed roster $sales: a
+  (gate) A No to the digital asset question on a return that lists a sale with a digital asset box (G to L)
+      = false
+      cite: [i1040gi] p. 16, How To Report Digital Asset Transactions, "If, in 2025, you disposed of any digital asset, which you held as a capital asset, through a sale, trade, exchange, payment, or other transfer, check “Yes” and use Form 8949 to calculate your capital gain or loss" (2025; printed date 2026-02-25; 482e9c48)
   1a  Total amount from Form(s) W-2, box 1
       = $0
       cite: [i1040gi] pp. 23–24, Line 1a, Total Amount From Form(s) W-2, Box 1, "Enter the total amount from Form(s) W-2, box 1. If a joint return, also include your spouse’s income from Form(s) W-2, box 1" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1b  Household employee wages not reported on Form(s) W-2
+      = $0
+      cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1c  Tip income not reported on line 1a
+      = $0
+      cite: [i1040gi] p. 24, Line 1c, "Enter the total of your tip income that was not reported on Form 1040, line 1a"; f4137 p. 1, line 4, "Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1d  Medicaid waiver payments not reported on Form(s) W-2, box 1
+      = $0
+      cite: [i1040gi] p. 24, Line 1d, "Medicaid Waiver Payments Not Reported on Form(s) W-2, Box 1" (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $person: taxpayer
   1e  Taxable dependent care benefits from Form 2441, line 26
       = $0
       cite: [i1040gi] p. 24, Line 1e, "Taxable Dependent Care Benefits From Form 2441, Line 26" and "But first complete Form 2441 to see if you can exclude part or all of the benefits" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f2441.benefits",{"const":false}],"op":"test"}
+  1g  Wages from Form 8919, line 6
+      = $0
+      cite: [i1040gi] p. 24, Line 1g, "Enter the total of your wages from Form 8919, line 6" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  1h  Other earned income
+      = $0
+      cite: [i1040gi] p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout benefits (other than bona fide gifts)"; p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
   1z  Add lines 1a through 1h
       = $0
-      cite: [f1040] Form 1040 (2025), line 1z (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), line 1z (line 1f, employer-provided adoption benefits, is refused by scope.adoption_benefits) (2025; created 2025-09-05; 3d31c226)
   2b  Taxable interest
       = $0
       cite: [i1040gi] Instructions for Form 1040, p. 25, line 2b (2025; printed date 2026-02-25; 482e9c48)
@@ -123,7 +153,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (2025; printed date 2026-02-25; 482e9c48)
   7a  Capital gain or (loss). Attach Schedule D if required
       = $900
-      cite: [i1040gi] Instructions for Form 1040, line 7a (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D" (2025; printed date 2026-02-25; 482e9c48)
   8   Additional income from Schedule 1, line 10
       = $0
       cite: [f1040] Form 1040 (2025), line 8 (2025; created 2025-09-05; 3d31c226)
@@ -273,7 +303,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f8995] p. 1, "Qualified business income deduction. Enter the smaller of line 10 or line 14" (line 15); i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
 
-== Foreign tax credit — election without Form 1116 ==
+== Foreign tax credit — election without Form 1116, or Form 1116 ==
   (gate) Shares or a Form 1099-DIV, taxable interest above zero, or income tax ever paid to another country: the filers who can have foreign tax to enter
       = false
       cite: [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax (2025; printed date 2025-12-23; 6998cf8c)
@@ -388,8 +418,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555" (2025; printed date 2026-02-25; 482e9c48)
   (gate) The filing status conflicts with the marriage facts entered
       = false
-      cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025." (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."; p. 14, Married Filing Separately, "if you are married at the end of 2025 and file a separate return"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}
+  (helper) Filing status married filing separately
+      = false
+      cite: [i1040gi] p. 14, Married Filing Separately, "Check the “Married filing separately” box in the Filing Status section on page 1 of Form 1040 or 1040-SR if you are married at the end of 2025 and file a separate return" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Married filing separately, and you lived in a community property state at some time in 2025
+      = false
+      cite: [i1040gi] p. 14, Married Filing Separately, "Different rules apply to people in community property states; see Pub. 555"; p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.status",{"const":"single"}],"op":"test"}; Interpretation amb.2025.mfs_community_property: The second, on the existing question (household.community_property), for the nine states the instructions list. The same ground as amb.2025.hoh_community_property (owner decision of 2026-10-22, integrity plan decision 10): the community income split of Pub. 555 is outside the tool. "Lived in" is broader than "domicile": a filer who lived in one of the states only temporarily is refused too, which errs toward refusing (settled as design decision D1 of the married-filing-separately scout, by the coordinator under the owner's delegation, 2026-11-15). (p504, p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income" and "If you and your spouse file separate returns, you must report half of any income described by state law as community income")
 
 == IRA Deduction Worksheet — Schedule 1, Line 20 ==
   (helper) Year parameter household.no (false)
@@ -484,6 +521,83 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040] Form 1040 (2025), line 1a (2025; created 2025-09-05; 3d31c226)
       note: confirmed roster $w2@person[taxpayer]:
+  (helper) This person's Form 8919 line 6 (the column (f) wages of the firms listed; zero for a person not paid by such a firm)
+      = $0
+      cite: [f8919] p. 1, line 6, "Total wages. Combine lines 1 through 5 in column (f)" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 84102b12)
+      note: taken: {"eq":["scope.contractor_pay_if_pay",{"const":false}],"op":"test"}
+  (helper) This person's Form 4137 line 2 (the column (c) tips of the employers listed; zero for a person with no unreported tips)
+      = $0
+      cite: [f4137] p. 1, line 2, "Total cash and charge tips you received in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+      note: taken: {"eq":["scope.tips_unreported_if_pay",{"const":false}],"op":"test"}
+  (helper) This person's Form 4137 line 3 (the column (d) tips of the employers listed; zero for a person with no unreported tips)
+      = $0
+      cite: [f4137] p. 1, line 3, "Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+      note: taken: {"eq":["scope.tips_unreported_if_pay",{"const":false}],"op":"test"}
+  (gate) Noncash tips (asked only when unreported or noncash tips are reported for the return; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 24, Line 1c, "Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.tips_unreported_if_pay",{"const":false}],"op":"test"}
+  (helper) This person's Form 4137 line 4 (unreported cash and charge tips)
+      = $0
+      cite: [f4137] p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+      note: confirmed roster $f4137@person[taxpayer]: form
+  (helper) This person's tip income not reported on line 1a (Form 4137 line 4 and noncash tips)
+      = $0
+      cite: [i1040gi] p. 24, Line 1c, "This should include any tip income you didn’t report to your employer", "Also, include the value of any noncash tips you received" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Household employee wages not on a W-2 (asked only when such wages are reported for the return; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.household_pay_if_pay",{"const":false}],"op":"test"}
+  (gate) Strike or lockout benefits (asked only when such benefits are reported for the return; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.strike_pay_if_pay",{"const":false}],"op":"test"}
+  (gate) Medicaid waiver payments in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.medicaid_waiver",{"const":false}],"op":"test"}
+  (gate) Medicaid waiver payments not in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.medicaid_waiver",{"const":false}],"op":"test"}
+  (helper) Medicaid waiver payments not in W-2 box 1 are more than zero
+      = false
+      cite: [i1040gi] p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Medicaid waiver payments on Form 1099-MISC or 1099-NEC (asked only when some payments are not in W-2 box 1; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.mw_has_not_box1",{"const":false}],"op":"test"}
+  (helper) Medicaid waiver payments on Form 1099-MISC or 1099-NEC are more than zero
+      = false
+      cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) The Medicaid waiver payments on Form 1099 are more than the payments not in W-2 box 1
+      = false
+      cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) A home-care business of your own (asked only with Medicaid waiver payments on Form 1099; otherwise no)
+      = false
+      cite: [i1040gi] p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.mw_has_1099",{"const":false}],"op":"test"}
+  (helper) This person's Medicaid waiver payments (in W-2 box 1 and not in box 1)
+      = $0
+      cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) This person had Medicaid waiver payments
+      = false
+      cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) The choice to count Medicaid waiver payments as earned income (asked only of a person with such payments; otherwise no)
+      = false
+      cite: [i1040gi] p. 24, Line 1d, "if you choose to include nontaxable payments in earned income for purposes of claiming a credit or other tax benefit", "If you and your spouse both received nontaxable Medicaid waiver payments during the year, you and your spouse can make different choices about including payments in earned income" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.mw_paid",{"const":false}],"op":"test"}
+  (helper) Medicaid waiver payments not in W-2 box 1 or on Form 1099 that go on line 1d (only when chosen as earned income; otherwise zero)
+      = $0
+      cite: [i1040gi] p. 92, Line 8s, "and choose to include nontaxable amounts in earned income for purposes of claiming a credit or other tax benefit, report the amount on Form 1040 or 1040-SR, line 1d" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["person.mw_earned_if_paid",{"const":false}],"op":"test"}
+  (helper) This person's Medicaid waiver payments on Form 1040 line 1d
+      = $0
+      cite: [i1040gi] p. 24, Line 1d, "enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC", "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2, if you choose to include nontaxable payments in earned income" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.mw_all_nontaxable: The first. The interview asks only about pay for care of someone living in the filer's home with them, the case Pub. 525 names; an individual care provider caring for more than five adults or ten children at home is taken to be outside the situations a filer of this tool reports. Were it wrong, line 1a or 1d would be right but Schedule 1 line 8s would exclude too much. Notice 2014-7 is not archived. (p525, p. 33, "Certain Medicaid waiver payments are treated as difficulty-of-care payments when received by an individual care provider for caring for an eligible individual (whether related or unrelated) living in the provider’s home", "Ten qualified foster individuals under age 19, or", "Five qualified foster individuals age 19 or older")
+  (helper) This person's nontaxable Medicaid waiver payments included on Form 1040 line 1a or 1d (Schedule 1 line 8s)
+      = $0
+      cite: [i1040gi] p. 92, Line 8s, "Then, on line 8s, enter the total amount of the nontaxable payments reported on Form 1040 or 1040-SR, line 1a or 1d" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Taxable IRA distributions on this person's Forms 1099-R (line 4b amounts)
       = $0
       cite: [i1040gi] p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable amounts on line 4b' (2025; printed date 2026-02-25; 482e9c48)
@@ -492,6 +606,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040gi] pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts on Form 1040 or 1040-SR, line 5b' (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $retirement@person[taxpayer]:
+  (helper) Taxable disability pensions on this person's Forms 1099-R paid before the minimum retirement age (line 1h amounts)
+      = $0
+      cite: [i1040gi] p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer"; p575 p. 6, Disability Pensions, "You must report your taxable disability payments as wages on Form 1040, 1040-SR, or 1040-NR, line 1h, until you reach minimum retirement age" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $retirement@person[taxpayer]:
+  (helper) This person's other earned income on Form 1040 line 1h (strike or lockout benefits and disability pensions paid before the minimum retirement age)
+      = $0
+      cite: [i1040gi] p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout benefits (other than bona fide gifts)"; p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer" (2025; printed date 2026-02-25; 482e9c48)
   zero No excess credit
       = $0
       cite: [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld (2025; printed date 2026-02-25; 482e9c48)
@@ -556,6 +677,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["person.role",{"const":"taxpayer"}],"op":"test"}
 
+== Form 4137 — Social Security and Medicare Tax on Unreported Tip Income, lines 2 to 13, one per person — person[taxpayer].f4137[form] ==
+  2   Total cash and charge tips you received in 2025. Add the amounts from line 1, column (c)
+      = $0
+      cite: [f4137] p. 1, line 2, "Total cash and charge tips you received in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+  3   Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line 1, column (d)
+      = $0
+      cite: [f4137] p. 1, line 3, "Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+  4   Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c
+      = $0
+      cite: [f4137] p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); f2f7a822)
+      note: Interpretation amb.2025.f4137_reported_over_received: The first (f4137.line4 subtracts with a floor of zero). Line 4 is "Include as income on Form 1040 ... line 1c", the tips not reported; a negative unreported amount has no meaning there, and column (c) is to "Include all cash and charge tips you received", so it holds at least the tips reported. The reading matters only for inconsistent entries. (f4137, p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c"; p. 2, Columns (c) and (d), "Include all cash and charge tips you received")
+
 == Qualified business income and section 199A dividends — amounts and the choice of Form 8995 ==
   (helper) Year parameter s3.no (false)
       = false
@@ -613,6 +746,41 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1099div] p. 5, Instructions for Recipient, "Box 5. Shows the portion of the amount in box 1a that may be eligible for the 20% qualified business income deduction under section 199A" (January 2024 (continuous-use form); 4ea1de80)
       note: taken: {"eq":["div.has_ordinary",{"const":false}],"op":"test"}
 
+== Pub. 525 Worksheets 2a and 2 — recoveries of 2024 itemized deductions (Schedule 1, lines 1 and 8z) ==
+  (helper) Year parameter sales.zero
+      = $0
+      cite: [p525] p. 27, Worksheet 2, line 8, "If the result is zero or less, stop here. The amounts on lines 1a, 1b, and 2 aren’t taxable" (2025; 39b0fa5e)
+  (helper) Year parameter sa.no (no)
+      = false
+      cite: [p525] p. 24, Recoveries, "A recovery is a return of an amount you deducted or took a credit for in an earlier year" (2025; 39b0fa5e)
+  (gate) A recovery for something paid or deducted before 2024, asked only after a Yes to the question on money paid back (no otherwise)
+      = false
+      cite: [p525] p. 27, Worksheet 2, "complete a separate worksheet for each year. Use information from your tax return for the year the expense was deducted" (2025; 39b0fa5e)
+      note: taken: {"eq":["scope.recovery",{"const":false}],"op":"test"}
+  (gate) A recovery of a deduction taken without itemizing or of a credit, asked only after a Yes to the question on money paid back (no otherwise)
+      = false
+      cite: [p525] p. 28, Nonitemized Deduction Recoveries, "This section discusses recovery of deductions other than itemized deductions"; p. 28, Amounts Recovered for Credits, "you must increase your 2024 tax by the amount of the recovery" (2025; 39b0fa5e)
+      note: taken: {"eq":["scope.recovery",{"const":false}],"op":"test"}
+  (gate) A refund of general sales tax, asked only after a Yes to the question on money paid back (no otherwise)
+      = false
+      cite: [p525] p. 24, Example 27, "The maximum refund that you may have to include in income is $500 because it’s less than the excess of the tax deducted" (2025; 39b0fa5e)
+      note: taken: {"eq":["scope.recovery",{"const":false}],"op":"test"}
+  (helper) Money paid back on a joint 2025 return
+      = false
+      cite: [p525] p. 27, Worksheet 2, "Use information from your tax return for the year the expense was deducted" (2025; 39b0fa5e)
+  (gate) Amounts for deductions on two 2024 returns, asked only on a joint 2025 return after a Yes to the question on money paid back (no otherwise)
+      = false
+      cite: [p525] p. 27, Worksheet 2, "Use information from your tax return for the year the expense was deducted" (2025; 39b0fa5e)
+      note: taken: {"eq":["rec.joint_any",{"const":false}],"op":"test"}; Interpretation amb.2025.rec_two_returns: The first (rec.two_returns, refused at rec.to_line8z). The worksheet's lines 4, 7 and 10 are figures of one return; combining two returns has no basis in the text, and the refund worksheet already refuses the like case for state refunds (amb.2025.refund_two_returns). (p525, p. 27, Worksheet 2, "Use information from your tax return for the year the expense was deducted")
+  (helper) Worksheet 2 is used — money was paid back for 2024 and you itemized deductions for 2024
+      = false
+      cite: [p525] p. 24, Deductions not itemized, "If you didn’t itemize deductions for the year for which you received the recovery of an expense that was deductible only if you itemized, don’t include any of the recovery amount in your income"; p. 24, Itemized Deduction Recoveries, statement 2, "You received a refund other than an income tax refund, such as a general sales tax or real property tax refund" (2025; 39b0fa5e)
+      note: taken: {"eq":["scope.recovery",{"const":false}],"op":"test"}
+  (helper) The taxable recoveries other than the state or local income tax refund, for Schedule 1, line 8z
+      = $0
+      cite: [p525] p. 25, Where to report, "the total of all other recoveries as other income on Schedule 1 (Form 1040), line 8z"; i1040gi p. 92, Line 8z, "See Recoveries in Pub. 525 for details on how to figure the amount to report" (2025; 39b0fa5e)
+      note: taken: {"eq":["rec.path",{"const":false}],"op":"test"}
+
 == State and Local Income Tax Refund Worksheet—Schedule 1, Line 1 ==
   (helper) Did you (or, on a joint return, your spouse) receive a refund, credit or offset of state or local income tax in 2025?
       = false
@@ -646,10 +814,22 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) The net loss of all Schedules C (as a positive amount)
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 3, "Business income or (loss). Attach Schedule C"; i1040sc p. 1, Excess business loss limitation (2025; created 2025-07-25; 8dafec71)
+  (helper) Net profit or loss of all Schedules C, with a Schedule E rental or royalty loss counted
+      = $0
+      cite: [i1040sc] p. 1, Reminders, Excess business loss limitation; i1040se p. 1, Reminders, Excess business loss limitation (2025; b5536db9)
+      note: Interpretation amb.2025.s1_ebl_rental: Count them (conservative: refuses more). Form 461 is not archived to say which rental losses are business losses. (i1040se, p. 1, Reminders, "you may be subject to a business loss limitation")
   (helper) Net profit or loss of all Schedules C
       = $0
       cite: [i1040sc] p. 1, Reminders, Excess business loss limitation (2025; b5536db9)
       note: confirmed roster $person: taxpayer
+  (helper) The Schedule E rental and royalty losses before the passive activity limit, as a positive amount
+      = $0
+      cite: [i1040se] p. 1, Reminders, Excess business loss limitation (2025; ad71de35)
+      note: taken: {"eq":["scope.rental",{"const":false}],"op":"test"}; Interpretation amb.2025.s1_ebl_rental: Count them (conservative: refuses more). Form 461 is not archived to say which rental losses are business losses. (i1040se, p. 1, Reminders, "you may be subject to a business loss limitation")
+  (helper) The Schedule E rental and royalty losses before the passive activity limit
+      = $0
+      cite: [i1040se] p. 1, Reminders, Excess business loss limitation (2025; ad71de35)
+      note: Interpretation amb.2025.s1_ebl_rental: Count them (conservative: refuses more). Form 461 is not archived to say which rental losses are business losses. (i1040se, p. 1, Reminders, "you may be subject to a business loss limitation")
   (helper) Zero
       = $0
       cite: [i1040sc] p. 1, Reminders, Excess business loss limitation (2025; b5536db9)
@@ -695,12 +875,25 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Did you (or, on a joint return, your spouse) receive in 2025 amounts for services performed while an inmate in a penal institution (Schedule 1, line 8u)?
       = false
       cite: [f1040s1] Schedule 1 (2025), line 8u (2025; created 2025-07-25; 8dafec71)
-  (helper) Did you (or, on a joint return, your spouse) receive in 2025 digital assets as ordinary income not reported elsewhere on the return (Schedule 1, line 8v)?
+  8k  Stock options
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 8k; i1040gi p. 91, Line 8k, "Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h" (2025; created 2025-07-25; 8dafec71)
+      note: taken: {"eq":["s1.stock_options_if_options",{"const":false}],"op":"test"}
+  8e  Income from Form 8853
+      = $0
+      cite: [i1040gi] p. 91, Line 8e, "Enter the total of the amounts from Form 8853, lines 8, 12, and 26" (lines 8 and 12, Sections A and B, are refused by scope.archer_msa) (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1.ltc_payout",{"const":false}],"op":"test"}
+  (gate) Digital assets received as ordinary income, asked only after a Yes to the digital asset question on Form 1040 page 1 (no otherwise)
       = false
-      cite: [f1040s1] Schedule 1 (2025), line 8v (2025; created 2025-07-25; 8dafec71)
+      cite: [i1040gi] p. 15, Digital Assets, "Check the “Yes” box next to the question on digital assets on page 1 of Form 1040 or 1040-SR if at any time during 2025, you (a) received (as a reward, award, or payment for property or services)"; p. 16, "Received new digital assets as a result of mining, staking, and similar activities; • Received digital assets as a result of a hard fork" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["f1040.digital_assets",{"const":false}],"op":"test"}
+  8v  Digital assets received as ordinary income not reported elsewhere
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 8v; i1040gi p. 92, Line 8v, "report this income on line 8v" (2025; created 2025-07-25; 8dafec71)
+      note: taken: {"eq":["s1.digital_income_if_assets",{"const":false}],"op":"test"}
   (gate) Do you have any income for Schedule 1 line 8 other than the items this tool computes?
       = false
-      cite: [i1040gi] p. 91, Line 8e, "Enter the total of the amounts from Form 8853, lines 8, 12, and 26"; p. 91, Line 8k, "Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h"; p. 91, Line 8m, "The value of Olympic and Paralympic medals and the amount of United States Olympic Committee (USOC) prize money you receive on account of your participation in the Olympic or Paralympic Games may be nontaxable"; p. 92, Line 8t, "Enter the amount that you received as a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental 457 plan"; p. 92, Line 8u, "Enter the amount that you received for services performed while an inmate in a penal institution"; p. 92, Line 8v, "If, in 2025, you received ordinary income in connection with digital assets that isn’t reported elsewhere on your return" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 91, Line 8m, "The value of Olympic and Paralympic medals and the amount of United States Olympic Committee (USOC) prize money you receive on account of your participation in the Olympic or Paralympic Games may be nontaxable"; p. 92, Line 8t, "Enter the amount that you received as a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental 457 plan"; p. 92, Line 8u, "Enter the amount that you received for services performed while an inmate in a penal institution" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Did you (or, on a joint return, your spouse) have gambling winnings, or receive a prize or an award, in 2025?
       = false
       cite: [f1040s1] Schedule 1 (2025), lines 8b, 8i and 8m (2025; created 2025-07-25; 8dafec71)
@@ -753,10 +946,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i1040gi] p. 92, Line 8r, "Enter the amount of scholarship and fellowship grants not reported on Form W-2. However, if you were a degree candidate, include on line 8r only the amounts you used for expenses other than tuition and course-related expenses. For example, amounts used for room, board, and travel must be reported on line 8r" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["s1.scholarship_any",{"const":false}],"op":"test"}
-  8z  Other income. List type and amount:
+  (helper) The items of other income listed on line 8z
       = $0
       cite: [i1040gi] p. 92, Line 8z, "Use line 8z to report any taxable income not reported" and "List the type and amount of income" (2025; printed date 2026-02-25; 482e9c48)
       note: confirmed roster $oi8z:
+  8z  Other income. List type and amount:
+      = $0
+      cite: [i1040gi] p. 92, Line 8z, "Use line 8z to report any taxable income not reported" and "List the type and amount of income"; p525 p. 27, Worksheet 2, line C, "Enter the result here and on Schedule 1 (Form 1040), line 8z" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Did you (or, on a joint return, your spouse) pay or receive alimony or separate maintenance in 2023, 2024 or 2025?
       = false
       cite: [i1040gi] p. 89, Line 2a; p. 95, Line 19a (2025; printed date 2026-02-25; 482e9c48)
@@ -779,12 +975,62 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 8f; i1040gi p. 91, Line 8f, "Enter the total of the amounts from Form 8889, lines 16 and 20" (Part III of Form 8889 is not prepared, and f8889.testing_failed refuses a failed testing period) (2025; created 2025-07-25; 8dafec71)
       note: confirmed roster $person: taxpayer
+  (gate) The net operating loss carried into 2025, asked only after a Yes to the question on a loss carried into 2025 (zero otherwise)
+      = $0
+      cite: [i1040gi] p. 91, Line 8a, "Enter any deduction for an NOL from an earlier year" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.nol",{"const":false}],"op":"test"}
+  (gate) A loss from a year before 2018, asked only with a loss carried into 2025 (no otherwise)
+      = false
+      cite: [i172] p. 2, How to Figure an NOL Carryover, "Only NOLs arising after 2017 and carried forward to a year after 2020 are subject to the 80%-of-taxable-income limit" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
+      note: taken: {"eq":["scope.nol",{"const":false}],"op":"test"}
+  (gate) A loss from an excess business loss, asked only with a loss carried into 2025 (no otherwise)
+      = false
+      cite: [i8995] p. 3, "Instead, qualified losses and deductions are taken into account in the tax year they’re included in calculating your taxable income" (2025; printed date 2026-01-26; 875843ba)
+      note: taken: {"eq":["scope.nol",{"const":false}],"op":"test"}
+  (helper) A loss carried into 2025 on a joint return
+      = false
+      cite: [i172] p. 3, Change in Marital Status, "If you file a joint return, the NOL deduction is limited to the income of that spouse" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
+  (helper) A loss carried into 2025 on a return that is not joint
+      = false
+      cite: [i172] p. 3, Joint to separate returns, "figure each of your carryovers separately" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
+  (gate) Not married to each other in all the years of the loss, asked only on a joint return with a loss carried into 2025 (no otherwise)
+      = false
+      cite: [i172] p. 3, Change in Marital Status, "only the spouse who had the loss can take the NOL deduction" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
+      note: taken: {"eq":["s1.nol_joint",{"const":false}],"op":"test"}
+  (gate) A joint return in a year of the loss, asked only on a return that is not joint with a loss carried into 2025 (no otherwise)
+      = false
+      cite: [i172] p. 3, Change in Marital Status, "If you and your spouse were not married to each other in all years involved in figuring NOL carrybacks and carryovers, only the spouse who had the loss can take the NOL deduction" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
+      note: taken: {"eq":["s1.nol_separate",{"const":false}],"op":"test"}
+  (gate) The loss carried into 2025 must be divided between spouses (a change in marriage or in filing jointly since the loss)
+      = false
+      cite: [i172] p. 3, Change in Marital Status, "only the spouse who had the loss can take the NOL deduction"; p. 3, Joint to separate returns, "figure each of your carryovers separately" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
+  8a  Net operating loss
+      = $0
+      cite: [i1040gi] p. 91, Line 8a, "Enter any deduction for an NOL from an earlier year. Enter the amount in the preprinted parentheses (as a negative number)"; i172 p. 3, Deducting a Carryforward, "list your NOL deduction as a negative figure on Schedule 1 (Form 1040)" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) The 80% limit on the net operating loss deduction may apply (the loss is more than four times taxable income after deducting it)
+      = false
+      cite: [i172] p. 2, "Only NOLs arising after 2017 and carried forward to a year after 2020 are subject to the 80%-of-taxable-income limit" (Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025); 15977bb6)
+      note: taken: {"eq":["scope.nol",{"const":false}],"op":"test"}; Interpretation amb.2025.s1_nol_limit_test: The first (s1.nol_ti, s1.nol_ti4, s1.nol_limit_test, refused at f1040.line15 by s1.nol_limit). Owner decision D3 (lane x2-s1o, scout-s1-other): the sufficiency test is accepted. The premise T0 ≥ T + N holds when no deduction in scope rises with AGI. Checked against the forms (lane x2-s1o, 2026-11-15): the above-the-line deductions with phase-outs (student loan interest, IRA) fall as modified AGI rises; taxable social security benefits rise with other income, so AGI without the NOL is at least AGI with it plus N; the itemized deductions with an AGI floor (medical, casualty) and the SALT limit that falls above $500,000 of modified AGI fall as AGI rises; the larger of itemized and standard deductions keeps that direction; Schedule 1-A deductions (tips, overtime, car loan interest, seniors) phase out with modified AGI; the QBI deduction is left out of T0 and only lowers T. The one deduction that rises with AGI, charitable gifts under the AGI percentage limits, is refused when a limit binds (sa.charity_limited). NOLs from before 2018 (no 80% limit, deducted first) are refused (s1.nol_before_limit_date). The refusal sits on line 15, not on line 8a, because the test reads lines 11b and 14, which read line 8a. (i172, p. 2, "80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions")
+  8s  Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d (entered in parentheses, as a negative number)
+      = $0
+      cite: [i1040gi] p. 92, Line 8s, "Then, on line 8s, enter the total amount of the nontaxable payments reported on Form 1040 or 1040-SR, line 1a or 1d", "in the entry space in the preprinted parentheses (as a negative number)" (2025; printed date 2026-02-25; 482e9c48)
+      note: confirmed roster $person: taxpayer
+  (helper) Line 8s as the negative number added on line 9
+      = $0
+      cite: [i1040gi] p. 92, Line 8s, "in the entry space in the preprinted parentheses (as a negative number)" (2025; printed date 2026-02-25; 482e9c48)
   9   Total other income. Add lines 8a through 8z
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 9 (lines 8e, 8k, 8m and 8t to 8v are refused by s1.line8_other, 8a by scope.nol and 8l by scope.rental through scope.schedule1, 8d by sa.excluded_income, 8n and 8o by scope.cfc, 8p by the excess business loss refusal of s1.line3, 8q by person.x_other and 8s by scope.medicaid_waiver) (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 9 (lines 8m, 8t and 8u are refused by s1.line8_other, 8l by scope.rental through scope.schedule1, 8d by sa.excluded_income, 8n and 8o by scope.cfc, 8p by the excess business loss refusal of s1.line3 and 8q by person.x_other) (2025; created 2025-07-25; 8dafec71)
+  5   Rental real estate, royalties, partnerships, S corporations, trusts, etc. Attach Schedule E
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 5, "Rental real estate, royalties, partnerships, S corporations, trusts, etc. Attach Schedule E"; i1040se p. 1, General Instructions, "Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties" (2025; created 2025-07-25; 8dafec71)
+      note: taken: {"eq":["scope.rental",{"const":false}],"op":"test"}
+  (helper) Lines 1 through 4, 6, 7 and 9 of Schedule 1 (additional income other than line 5)
+      = $0
+      cite: [f1040s1] Schedule 1 (2025), line 10 (line 4 is refused by sd.other_forms on Schedule D, line 6 by scope.schedule1 at Form 1040 line 8, the parts of line 2a this tool does not compute by s1.alimony_unsupported, and those of line 8 as the line 9 citation says) (2025; created 2025-07-25; 8dafec71)
   10  Combine lines 1 through 7 and 9. This is your additional income. Enter here and on Form 1040, 1040-SR, or 1040-NR, line 8
       = $0
-      cite: [f1040s1] Schedule 1 (2025), line 10 (line 4 is refused by sd.other_forms on Schedule D, lines 5 and 6 by scope.schedule1 at Form 1040 line 8, the parts of line 2a this tool does not compute by s1.alimony_unsupported, and those of line 8 as the line 9 citation says) (2025; created 2025-07-25; 8dafec71)
+      cite: [f1040s1] Schedule 1 (2025), line 10 (line 4 is refused by sd.other_forms on Schedule D, line 6 by scope.schedule1 at Form 1040 line 8, the parts of line 2a this tool does not compute by s1.alimony_unsupported, and those of line 8 as the line 9 citation says) (2025; created 2025-07-25; 8dafec71)
   11  Educator expenses
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 11; i1040gi p. 93, "If you and your spouse are filing jointly and both of you were eligible educators, the maximum deduction is $600. However, neither spouse can deduct more than $300 of their qualified expenses" (2025; created 2025-07-25; 8dafec71)
@@ -933,13 +1179,16 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
+  (helper) Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (gate) Married filing separately and claiming age or blindness boxes for your spouse
+  (gate) Married filing separately and claiming age or blindness boxes for your spouse (asked only when the spouse is not itemizing on a separate return; otherwise no)
       = false
-      cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return" (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["sa.mfs",{"const":false}],"op":"test"}
+      cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return"; p. 34, Exception 2—Spouse itemizes on a separate return, "your standard deduction is zero, even if you were born before January 2, 1961, or were blind" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.mfs_spouse_not_itemizing",{"const":false}],"op":"test"}
+  (helper) Married filing separately with a spouse who is not itemizing deductions on a separate return
+      = false
+      cite: [i1040gi] p. 34, Exception 2—Spouse itemizes on a separate return, "your standard deduction is zero, even if you were born before January 2, 1961, or were blind" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Your entry, if the answer is yes
       = 0
       cite: [f1040sa] i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked" (2025; created 2025-11-20; c14acf34)
@@ -1033,10 +1282,23 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040sca] p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 9, Line 8c, "Points Not Reported on Form 1098" (2025; printed date 2025-12-08; b0999b12)
       note: taken: {"eq":["sa.home_asked",{"const":false}],"op":"test"}
-  (gate) Asked only where it can apply (sa.mortgage_over_limit)
+  (helper) Home mortgage interest paid, on a return that is not married filing separately
+      = false
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt" (2025; printed date 2025-12-08; b0999b12)
+  (helper) Home mortgage interest paid, on a married filing separately return
+      = false
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt" (2025; printed date 2025-12-08; b0999b12)
+  (gate) The home mortgage debt is over the $750,000 or $1,000,000 limit or the home's value, asked only where mortgage interest was paid on a return that is not married filing separately (otherwise no)
       = false
       cite: [i1040sca] p. 8, Limits on home mortgage interest, "you can only deduct home mortgage interest on up to $1,000,000", "deduct home mortgage interest on up to $750,000", "If the total amount of all mortgages is more than the fair market value of the home" (2025; printed date 2025-12-08; b0999b12)
-      note: taken: {"eq":["sa.has_mortgage_interest",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sa.mortgage_interest_not_mfs",{"const":false}],"op":"test"}
+  (gate) The home mortgage debt is over the $375,000 or $500,000 limit or the home's value, asked only where mortgage interest was paid on a married filing separately return (otherwise no)
+      = false
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt" (2025; printed date 2025-12-08; b0999b12)
+      note: taken: {"eq":["sa.mortgage_interest_mfs",{"const":false}],"op":"test"}
+  (helper) The home mortgage debt is over the limit for the filing status ($750,000 or $1,000,000; $375,000 or $500,000 if married filing separately) or over the home's value (no when no mortgage interest was paid)
+      = false
+      cite: [i1040sca] p. 8, Limits on home mortgage interest, "you can only deduct home mortgage interest on up to $1,000,000 ($500,000 if you are married filing separately) of that debt", "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt", "If the total amount of all mortgages is more than the fair market value of the home" (2025; printed date 2025-12-08; b0999b12)
   (gate) Asked only where it can apply (sa.mortgage_other_use)
       = false
       cite: [i1040sca] p. 8, Line 8, "Interest paid on home mortgage proceeds used for other purposes isn’t deductible on lines 8a or 8b" (2025; printed date 2025-12-08; b0999b12)
@@ -1186,6 +1448,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Add sa.standardbase, sa.extra_age65, sa.extra_blind
       = $15,750
       cite: [f1040sa] i1040gi pp. 34–35, Line 12e Standard Deduction or Itemized Deductions, "Exception 4—Born before January 2, 1961, or blind", "Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind", "If born before January 2, 1961, or blind, multiply the number on line 1 by $1,600 ($2,000 if single or head of household)" (2025; created 2025-11-20; c14acf34)
+  (gate) Someone can claim you as a dependent and your filing status is qualifying surviving spouse
+      = false
+      cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3, "Enter the amount shown below for your filing status" (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.sa_dep_qss: Refuse (gate sa.dep_qss, on sa.standard and sa.deduction). The worksheet is silent on the status, and taking the joint amount would be the tool's reading, not the text's. The case is rare (a widowed parent whom another person can claim). The refusal costs that filer the return; it does not compute a deduction the text does not give.
+ (i1040gi, p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3)
+  (helper) Standard deduction before a spouse's itemizing on a separate return is applied (the Standard Deduction Worksheet for Dependents when someone can claim you, or your spouse if filing jointly, as a dependent)
+      = $15,750
+      cite: [i1040gi] p. 34, Line 12e, "Exception 1—Dependent. Line 12a. If you checked a box on line 12a, use the Standard Deduction Worksheet for Dependents to figure your standard deduction" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["sa.dependent",{"const":false}],"op":"test"}
   (helper) Standard deduction, zero when MFS spouse itemizes
       = $15,750
       cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; 482e9c48)
@@ -1199,11 +1470,17 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["sa.itemizes",{"const":false}],"op":"test"}
   (helper) MFS with spouse itemizing
       = false
-      cite: [i1040gi] p. 34, Line 12e, Exception 2 (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 34, Exception 2—Spouse itemizes on a separate return, "If you checked the box on line 12b, your standard deduction is zero" (2025; printed date 2026-02-25; 482e9c48)
       note: taken: {"eq":["sa.mfs",{"const":false}],"op":"test"}
 
 == Form 8949 and Schedule D — manually classified securities transactions — sales[a] ==
   (helper) Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets.
+
+      Digital assets (such as cryptocurrency, stablecoins and non-fungible tokens):
+      - G (short-term) or J (long-term): on a Form 1099-DA showing basis was reported to the IRS (box 2 checked).
+      - H (short-term) or K (long-term): on a Form 1099-DA without basis, or showing basis was not reported to the IRS.
+      - I (short-term) or L (long-term): not reported to you on a Form 1099-DA or a Form 1099-B.
+      - A digital asset sale is never reported with box C or F.
 
       Inheritances and gifts:
       - Property you inherited is long-term however long you held it, unless the decedent died in 2010 and the executor elected to file Form 8939 (Revenue Procedure 2011-41 then sets the holding period).
@@ -1232,7 +1509,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       - The premium you receive for writing an option that is not exercised (or repurchased) is a short-term capital gain unless you are in the business of writing options; an option you bought and did not exercise is treated as sold on the date it expired.
       - Any capital gain or loss on the sale, exchange or termination of a contract to sell property is short-term however long you held the contract, and a loss on a securities futures contract to sell is treated as a loss on closing a short sale.
       = A
-      cite: [i8949] pp. 2–5, holding period and checkbox classifications; p. 2, "To figure the holding period, begin counting on the day after you received the property and include the day you disposed of it." and "Generally, if you disposed of property that you acquired by inheritance, report the disposition as a long-term gain (or loss) regardless of how long you held the property."; p. 6, "However, you must still report the short-term gain (or loss) on the sale on Part I and the long-term gain (or loss) on Part II."; p550 p. 82, Property received as a gift, "If you receive a gift of property and your basis is determined by the donor's adjusted basis, your holding period is considered to have started on the same day the donor's holding period started.", Stock dividends, "The holding period for stock you received as a taxable stock dividend begins on the date of distribution. The holding period for new stock you received as a nontaxable stock dividend begins on the same day as the holding period of the old stock. This rule also applies to stock acquired in a spin-off", Nontaxable stock rights, "Your holding period for nontaxable stock rights includes the holding period of the underlying stock. The holding period for stock acquired through the exercise of stock rights begins on the date the right was exercised." and Option exercised, "Your holding period for property you acquire when you exercise an option begins the day after you exercise the option."; p550 p. 86, "Your holding period for the new stock or securities includes the holding period of the stock or securities sold." and "If, on the date of the short sale, you held substantially identical property for more than 1 year, any loss you realize on the short sale is a long-term capital loss"; i8949 p. 2, "A nonbusiness bad debt must be treated as a short-term capital loss."; i8949 p. 5, Net asset value (NAV) method for money market funds, "No long-term capital gain (or loss) can be entered under the NAV method."; p550 p. 82, Inherited property, "If you acquired the property from someone who died in 2010 and the executor made the election to file Form 8939, see Revenue Procedure 2011-41 to determine your holding period."; p550 p. 81, Securities traded on an established market, "your holding period begins the day after the trade date you bought the securities, and ends on the trade date you sold them" and "Do not confuse the trade date with the"; p550 p. 82, U.S. Treasury notes and bonds, "starts the day after the Secretary of the Treasury, through news releases, gives notification of acceptance to successful bidders" and "starts the day after the subscription is submitted", Automatic investment service, "full shares are considered bought first and any fractional shares are considered bought last. Your holding period starts on the day after the bank's purchase date." and "your holding period for that share is a split holding period", Nontaxable trades, "your holding period for the new property begins on the day following the date you acquired the old property", Property received as a gift, "If your basis is determined by the fair market value of the property, your holding period starts on the day after the date of the gift.", Real property bought, "begin counting on the day after you received title to it or on the day after you took possession of it and assumed the burdens and privileges of ownership, whichever happened first" and Real property repossessed, "Your holding period does not include the time between the original sale and the repossession."; i8949 p. 6, Column (b)—Date Acquired, "For property you previously elected to treat as having been sold and reacquired on January 1, 2001 (or January 2, 2001, for readily tradable stock), enter the date of the deemed sale and reacquisition."; i1040sd p. 6, Short Sales, "your gain when closing a short sale is short term if you (a) held substantially identical property for 1 year or less on the date of the short sale, or (b) acquired property substantially identical to the property sold short after the short sale but on or before the date you close the short sale" and "Report any short sale on Form 8949 in the year it closes."; p550 p. 88, Writer of option, "If you are not in the business of writing options and an option you write on stocks, securities, commodities, or commodity futures is not exercised (or repurchased), the amount you receive is a short-term capital gain." and Option not exercised, "you are considered to have sold or traded the option on the date it expired."; p550 p. 87, "Losses from the sale, exchange, or termination of a securities futures contract to sell are generally treated in the same manner as losses from the closing of a short sale"; p550 p. 88, "Any capital gain or loss on a sale, exchange, or termination of a contract to sell property will be considered short term, regardless of how long you hold the contract."; i1040sd p. 6, Demutualization of Life Insurance Companies, "Your holding period for the new stock includes the period you held an equity interest in the mutual company." (2025; printed date 2026-01-20; f077991c)
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications; p. 2, "To figure the holding period, begin counting on the day after you received the property and include the day you disposed of it." and "Generally, if you disposed of property that you acquired by inheritance, report the disposition as a long-term gain (or loss) regardless of how long you held the property."; p. 6, "However, you must still report the short-term gain (or loss) on the sale on Part I and the long-term gain (or loss) on Part II."; p550 p. 82, Property received as a gift, "If you receive a gift of property and your basis is determined by the donor's adjusted basis, your holding period is considered to have started on the same day the donor's holding period started.", Stock dividends, "The holding period for stock you received as a taxable stock dividend begins on the date of distribution. The holding period for new stock you received as a nontaxable stock dividend begins on the same day as the holding period of the old stock. This rule also applies to stock acquired in a spin-off", Nontaxable stock rights, "Your holding period for nontaxable stock rights includes the holding period of the underlying stock. The holding period for stock acquired through the exercise of stock rights begins on the date the right was exercised." and Option exercised, "Your holding period for property you acquire when you exercise an option begins the day after you exercise the option."; p550 p. 86, "Your holding period for the new stock or securities includes the holding period of the stock or securities sold." and "If, on the date of the short sale, you held substantially identical property for more than 1 year, any loss you realize on the short sale is a long-term capital loss"; i8949 p. 2, "A nonbusiness bad debt must be treated as a short-term capital loss."; i8949 p. 5, Net asset value (NAV) method for money market funds, "No long-term capital gain (or loss) can be entered under the NAV method."; p550 p. 82, Inherited property, "If you acquired the property from someone who died in 2010 and the executor made the election to file Form 8939, see Revenue Procedure 2011-41 to determine your holding period."; p550 p. 81, Securities traded on an established market, "your holding period begins the day after the trade date you bought the securities, and ends on the trade date you sold them" and "Do not confuse the trade date with the"; p550 p. 82, U.S. Treasury notes and bonds, "starts the day after the Secretary of the Treasury, through news releases, gives notification of acceptance to successful bidders" and "starts the day after the subscription is submitted", Automatic investment service, "full shares are considered bought first and any fractional shares are considered bought last. Your holding period starts on the day after the bank's purchase date." and "your holding period for that share is a split holding period", Nontaxable trades, "your holding period for the new property begins on the day following the date you acquired the old property", Property received as a gift, "If your basis is determined by the fair market value of the property, your holding period starts on the day after the date of the gift.", Real property bought, "begin counting on the day after you received title to it or on the day after you took possession of it and assumed the burdens and privileges of ownership, whichever happened first" and Real property repossessed, "Your holding period does not include the time between the original sale and the repossession."; i8949 p. 6, Column (b)—Date Acquired, "For property you previously elected to treat as having been sold and reacquired on January 1, 2001 (or January 2, 2001, for readily tradable stock), enter the date of the deemed sale and reacquisition."; i1040sd p. 6, Short Sales, "your gain when closing a short sale is short term if you (a) held substantially identical property for 1 year or less on the date of the short sale, or (b) acquired property substantially identical to the property sold short after the short sale but on or before the date you close the short sale" and "Report any short sale on Form 8949 in the year it closes."; p550 p. 88, Writer of option, "If you are not in the business of writing options and an option you write on stocks, securities, commodities, or commodity futures is not exercised (or repurchased), the amount you receive is a short-term capital gain." and Option not exercised, "you are considered to have sold or traded the option on the date it expired."; p550 p. 87, "Losses from the sale, exchange, or termination of a securities futures contract to sell are generally treated in the same manner as losses from the closing of a short sale"; p550 p. 88, "Any capital gain or loss on a sale, exchange, or termination of a contract to sell property will be considered short term, regardless of how long you hold the contract."; i1040sd p. 6, Demutualization of Life Insurance Companies, "Your holding period for the new stock includes the period you held an equity interest in the mutual company."; i8949 p. 3, Box A or Box G, "If your statement shows cost or other basis but indicates it wasn't reported to the IRS (for example, if box 12 on Form 1099-B or box 2 on Form 1099-DA isn't checked), see Box B or Box H below."; i8949 p. 3, Digital Assets, "Digital asset transactions should not be reported using box C or F." and "Digital assets include property that has been referred to as"; i8949 p. 3, Box B or Box H, "without an amount shown for cost or other basis or showing that cost or other basis wasn't reported to the IRS"; i1040gi p. 15, Digital Assets, "virtual currencies, such as cryptocurrencies and stablecoins" (2025; printed date 2026-01-20; f077991c)
   (helper) Report this transaction in detail on Form 8949 or directly in Schedule D aggregate totals
       = detail
       cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
@@ -1247,6 +1524,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 
       Does this sale involve:
       - collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)
+      - a non-fungible token (NFT) whose underlying asset is a collectible, such as an NFT that represents ownership of a work of art or a gem
       - qualified small business stock with a section 1202 exclusion
       - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
       - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
@@ -1255,19 +1533,20 @@ Values sheet — tax year 2025 (not a complete return for all filers)
 
       Or does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?
       = false
-      cite: [i1040sd] pp. 11–12, lines 18 and 19; p. 11, Line 19, "section 1250 property (generally, real property that you depreciated)"; p. 12, "Figure the smaller of (a) the depreciation allowed or allowable, or (b) the total gain for the sale."; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12, line 19, "You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property"; p. 10, Disposal of QOF Investment, "If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements."; p. 4, "If qualified dividends that you reported on Form 1040, 1040-SR, or 1040-NR, line 3a, include extraordinary dividends, any loss on the sale or exchange of the stock is a long-term capital loss to the extent of the extraordinary dividends. An extraordinary dividend is a dividend that equals or exceeds 10% (5% in the case of preferred stock) of your basis in the stock."; p550 p. 79, Gains From Certain Constructive Ownership Transactions, "all or part of the gain may be treated instead as ordinary income" and Financial asset, "any equity interest in a pass-through entity" (2025; printed date 2025-12-11; 650643a6)
-  (helper) Column (d): proceeds per broker report (or the correct proceeds if you received more than the report shows), or net proceeds if no report; the premium of a call you wrote that was exercised is part of the proceeds
+      cite: [i1040sd] pp. 11–12, lines 18 and 19; p. 11, Line 19, "section 1250 property (generally, real property that you depreciated)"; p. 12, "Figure the smaller of (a) the depreciation allowed or allowable, or (b) the total gain for the sale."; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12, line 19, "You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property"; p. 10, Disposal of QOF Investment, "If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements."; p. 4, "If qualified dividends that you reported on Form 1040, 1040-SR, or 1040-NR, line 3a, include extraordinary dividends, any loss on the sale or exchange of the stock is a long-term capital loss to the extent of the extraordinary dividends. An extraordinary dividend is a dividend that equals or exceeds 10% (5% in the case of preferred stock) of your basis in the stock."; p550 p. 79, Gains From Certain Constructive Ownership Transactions, "all or part of the gain may be treated instead as ordinary income" and Financial asset, "any equity interest in a pass-through entity"; i1040gi p. 15, Digital Assets, "digital assets include non-fungible tokens (NFTs)" (2025; printed date 2025-12-11; 650643a6)
+      note: Interpretation amb.2025.nft_collectible: The first (sales.special lists it, and sales.one refuses on sales.special). Computing the sale at the ordinary capital gain rates would understate the tax if such a token is a collectible, and the archive cannot settle it either way. The refusal is narrow (a token whose underlying asset is a collectible) and uses the existing gate. To be revisited once Notice 2023-27 is archived. (i1040sd, p. 11, Line 18, "Collectibles include works of art, rugs, antiques, metals (such as gold, silver, and platinum bullion), gems, stamps, coins, alcoholic beverages, and certain other tangible property."; i1040gi p. 15, Digital Assets, "digital assets include non-fungible tokens (NFTs)")
+  (helper) Column (d): proceeds per broker report (box 1d of Form 1099-B, box 1f of Form 1099-DA; or the correct proceeds if you received more than the report shows), or net proceeds if no report; the premium of a call you wrote that was exercised is part of the proceeds; for a digital asset exchanged for another, or for property or services, the fair market value of what was received
       = $1,000
-      cite: [i8949] p. 6, column (d); p. 6, "If the proceeds you received were more than shown on Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statement), enter the correct proceeds in column (d)."; p. 6, Column (d)—Proceeds (Sales Price), "The net proceeds equal the gross proceeds minus any selling expenses (such as broker's fees, commissions, and state and local transfer taxes)." and "If you sold a call option and it was exercised, you adjust the sales price of the property sold under the option for any option premiums"; i1040sd p. 6, Gain or Loss From Options, "If a call option you sold after 2013 was exercised, the option premium you received will be reflected in the proceeds shown in box 1d of Form 1099-B" (2025; printed date 2026-01-20; f077991c)
-  (helper) Basis shown on broker report
+      cite: [i8949] p. 6, column (d); p. 11, Example 5—Digital asset, "exchange your unit of digital asset A for one unit of digital asset B with a fair market value of $3,000. You must report a long-term capital gain of $2,000."; i1040sd p. 4, Example 2, "It shows proceeds (in box 1d on Form 1099-B or box 1f on Form 1099-DA)"; p. 6, "If the proceeds you received were more than shown on Form 1099-B, Form 1099-DA, or Form 1099-S (or substitute statement), enter the correct proceeds in column (d)."; p. 6, Column (d)—Proceeds (Sales Price), "The net proceeds equal the gross proceeds minus any selling expenses (such as broker's fees, commissions, and state and local transfer taxes)." and "If you sold a call option and it was exercised, you adjust the sales price of the property sold under the option for any option premiums"; i1040sd p. 6, Gain or Loss From Options, "If a call option you sold after 2013 was exercised, the option premium you received will be reflected in the proceeds shown in box 1d of Form 1099-B" (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis shown on broker report (box 1e of Form 1099-B, box 1g of Form 1099-DA)
       = $900
-      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W; p. 2, "your broker may have reported your basis for these securities in box 1e on Form 1099-B or box 1g on Form 1099-DA" (2025; printed date 2026-01-20; f077991c)
   (helper) Correct adjusted basis from records (cost; the donor's basis for a gift; for inherited property, value at death or on an elected alternate valuation date or special-use value, within the Schedule A (Form 8971) final estate tax value where it applies; the basis of property from a trade, from a spouse or incident to divorce, or received for services), with the adjustments to basis
       = $100
-      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W; p. 6, Schedule A (Form 8971)—Consistent basis reporting, "In this case, first use an amount that is equal to or less than the final estate tax value listed in Part II, column (h), of the Schedule A (Form 8971). This amount is your initial basis in the property."; p550 p. 86, "If your loss was disallowed because of the wash sale rules, add the disallowed loss to the cost of the new stock or securities (except in (4) above)." and "Instead, you must increase the basis of the stock used to close the short sale by that amount."; i8949 p. 7, "Increase your basis by any amount you included in income upon grant or exercise of the option."; i8949 p. 5, Nondividend distributions, "Reduce your cost (or other basis) in a share by the distributions allocable to such share."; i8949 p. 6, Column (e)—Cost or Other Basis, "The basis of property you buy is usually its cost, including the purchase price and any costs of purchase, such as commissions.", "The basis of property acquired by gift is generally the basis of the property in the hands of the donor. The basis of inherited property is generally the fair market value at the date of death." and "If you elected to recognize gain on property held on January 1, 2001, your basis in the property is its closing market price or fair market value, whichever applies, on the date of the deemed sale and reacquisition"; p550 p. 60, Fair market value less than donor's adjusted basis, "your basis for gain on its sale or other disposition is the same as the donor's adjusted basis plus or minus any required adjustments to basis during the period you hold the property. Your basis for loss is its fair market value at the time of the gift" and "You have neither gain nor loss."; p550 p. 61, Gift received after 1976, "your basis is the donor's adjusted basis increased by the part of the gift tax paid that was for the net increase in value of the gift" and Part sale, part gift, "your basis is the larger of the amount you paid for the property or the transferor's adjusted basis in the property at the time of the transfer" and "For figuring loss, your basis is limited to the property's fair market value at the time of the transfer."; i8949 p. 7, Adjustments to basis, "Also, adjust your basis for any stock splits.", "Increase the cost or other basis of a taxable OID debt instrument by the amount of OID that you have included in gross income for that instrument.", "Increase the cost or other basis of a tax-exempt OID debt instrument by the amount of tax-exempt OID that accrued on the debt instrument while held by you.", "If you elect to currently include in income the market discount on a bond, increase the basis of the bond by the market discount that has been included in income for that bond.", "If you elect to amortize bond premium on a taxable bond, reduce the basis of the bond by any bond premium amortization allowed as either an offset to interest income or as a deduction for that bond. Reduce the basis of a tax-exempt bond by any bond premium amortization for that bond.", "you must allocate your basis in the property between the part sold and the part contributed based on the fair market value of each" and Average basis, "You can use the average basis method to determine the basis of shares of stock if the shares are identical to each other"; p550 p. 61, Property Received as Inheritance, "The FMV on the alternate valuation date", "The value under the special-use valuation method for real property used in farming or other closely held business, if elected by the personal representative.", "to the extent of the value excluded from the decedent's taxable estate as a qualified conservation easement", "If no Form 706 was filed, or the executor was not required to provide you Schedule A (Form 8971), use the appraised value on the date of death for state inheritance or transmission taxes." and Appreciated property you gave the decedent, "Your basis in certain appreciated property that you inherited is the decedent's adjusted basis in the property immediately before death rather than its fair market value." and "gave the decedent as a gift during the 1-year period ending on the date of death"; p550 p. 60, Property Received in Taxable Trades, "the basis of the new property is its fair market value at the time of the trade", Property Received in Nontaxable Trades, "is generally the same as the adjusted basis of the property you gave up. Increase this amount by any cash you paid, additional costs you had, and any gain recognized.", Property Received From Your Spouse, "your basis is the same as your spouse's or former spouse's adjusted basis just before the transfer", Restricted property, "your basis in the property is generally its fair market value when it becomes substantially vested" and Bargain purchases, "Your basis in the property is the price you pay plus the amount you include in income."; p550 p. 59, Property Received for Services, "The amount you include in income then becomes your basis in the property."; p550 p. 86, Payments in lieu of dividends, "If your payment is made for a liquidating distribution or nontaxable stock distribution", "(more than 1 year in the case of an extraordinary dividend, as defined later)", "To determine how long a short sale is kept open, do not include any period during which you hold, have an option to buy, or are under a contractual obligation to buy substantially identical stock or securities." and "the deduction for amounts you pay in lieu of dividends will be disallowed only to the extent the payments are more than the amount you receive as ordinary income from the lender of the stock for the use of collateral with the short sale" and "you have a capital expense. You must add the payment to the cost of the stock sold short." (2025; printed date 2026-01-20; f077991c)
-  (helper) Basis reported to IRS
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W; p. 2, "The basis of a digital asset is the cost to acquire the digital asset, including transaction fees, commissions, transfer taxes, and other acquisition costs."; p. 6, Schedule A (Form 8971)—Consistent basis reporting, "In this case, first use an amount that is equal to or less than the final estate tax value listed in Part II, column (h), of the Schedule A (Form 8971). This amount is your initial basis in the property."; p550 p. 86, "If your loss was disallowed because of the wash sale rules, add the disallowed loss to the cost of the new stock or securities (except in (4) above)." and "Instead, you must increase the basis of the stock used to close the short sale by that amount."; i8949 p. 7, "Increase your basis by any amount you included in income upon grant or exercise of the option."; i8949 p. 5, Nondividend distributions, "Reduce your cost (or other basis) in a share by the distributions allocable to such share."; i8949 p. 6, Column (e)—Cost or Other Basis, "The basis of property you buy is usually its cost, including the purchase price and any costs of purchase, such as commissions.", "The basis of property acquired by gift is generally the basis of the property in the hands of the donor. The basis of inherited property is generally the fair market value at the date of death." and "If you elected to recognize gain on property held on January 1, 2001, your basis in the property is its closing market price or fair market value, whichever applies, on the date of the deemed sale and reacquisition"; p550 p. 60, Fair market value less than donor's adjusted basis, "your basis for gain on its sale or other disposition is the same as the donor's adjusted basis plus or minus any required adjustments to basis during the period you hold the property. Your basis for loss is its fair market value at the time of the gift" and "You have neither gain nor loss."; p550 p. 61, Gift received after 1976, "your basis is the donor's adjusted basis increased by the part of the gift tax paid that was for the net increase in value of the gift" and Part sale, part gift, "your basis is the larger of the amount you paid for the property or the transferor's adjusted basis in the property at the time of the transfer" and "For figuring loss, your basis is limited to the property's fair market value at the time of the transfer."; i8949 p. 7, Adjustments to basis, "Also, adjust your basis for any stock splits.", "Increase the cost or other basis of a taxable OID debt instrument by the amount of OID that you have included in gross income for that instrument.", "Increase the cost or other basis of a tax-exempt OID debt instrument by the amount of tax-exempt OID that accrued on the debt instrument while held by you.", "If you elect to currently include in income the market discount on a bond, increase the basis of the bond by the market discount that has been included in income for that bond.", "If you elect to amortize bond premium on a taxable bond, reduce the basis of the bond by any bond premium amortization allowed as either an offset to interest income or as a deduction for that bond. Reduce the basis of a tax-exempt bond by any bond premium amortization for that bond.", "you must allocate your basis in the property between the part sold and the part contributed based on the fair market value of each" and Average basis, "You can use the average basis method to determine the basis of shares of stock if the shares are identical to each other"; p550 p. 61, Property Received as Inheritance, "The FMV on the alternate valuation date", "The value under the special-use valuation method for real property used in farming or other closely held business, if elected by the personal representative.", "to the extent of the value excluded from the decedent's taxable estate as a qualified conservation easement", "If no Form 706 was filed, or the executor was not required to provide you Schedule A (Form 8971), use the appraised value on the date of death for state inheritance or transmission taxes." and Appreciated property you gave the decedent, "Your basis in certain appreciated property that you inherited is the decedent's adjusted basis in the property immediately before death rather than its fair market value." and "gave the decedent as a gift during the 1-year period ending on the date of death"; p550 p. 60, Property Received in Taxable Trades, "the basis of the new property is its fair market value at the time of the trade", Property Received in Nontaxable Trades, "is generally the same as the adjusted basis of the property you gave up. Increase this amount by any cash you paid, additional costs you had, and any gain recognized.", Property Received From Your Spouse, "your basis is the same as your spouse's or former spouse's adjusted basis just before the transfer", Restricted property, "your basis in the property is generally its fair market value when it becomes substantially vested" and Bargain purchases, "Your basis in the property is the price you pay plus the amount you include in income."; p550 p. 59, Property Received for Services, "The amount you include in income then becomes your basis in the property."; p550 p. 86, Payments in lieu of dividends, "If your payment is made for a liquidating distribution or nontaxable stock distribution", "(more than 1 year in the case of an extraordinary dividend, as defined later)", "To determine how long a short sale is kept open, do not include any period during which you hold, have an option to buy, or are under a contractual obligation to buy substantially identical stock or securities." and "the deduction for amounts you pay in lieu of dividends will be disallowed only to the extent the payments are more than the amount you receive as ordinary income from the lender of the stock for the use of collateral with the short sale" and "you have a capital expense. You must add the payment to the cost of the stock sold short." (2025; printed date 2026-01-20; f077991c)
+  (helper) Basis reported to IRS (box A, D, G or J)
       = true
-      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W; p. 3, Box A or Box G, "Report on Part I with box A or box G checked all short-term transactions reported to you on Form 1099-B or Form 1099-DA (or substitute statement) with an amount shown for cost or other basis unless the statement indicates that amount wasn't reported to the IRS" (2025; printed date 2026-01-20; f077991c)
   (helper) Digital asset box G–L
       = false
       cite: [f8949] p. 1, Part I, "(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS", "(H) Short-term transactions reported on Form(s) 1099-DA showing basis was not reported to the IRS", "(I) Short-term digital asset transactions not reported to you on Form 1099-DA or Form 1099-B"; p. 2, Part II, "(J) Long-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS", "(K) Long-term transactions reported on Form(s) 1099-DA showing basis was not reported to the IRS", "(L) Long-term digital asset transactions not reported to you on Form 1099-DA or Form 1099-B" (2025; created 2025-05-05; 27451389)
@@ -1277,9 +1556,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Wash-sale code W applies
       = false
       cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
-  (helper) Unsupported adjustment or code B without a broker basis report
+  (helper) Unsupported adjustment, or code B on a sale with no Form 1099-B or Form 1099-DA (box C, F, I or L)
       = false
-      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; f077991c)
+      cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W; p. 8, code B, "You received a Form 1099-B or Form 1099-DA (or substitute statement) and the basis shown in box 1e on Form 1099-B or box 1g on Form 1099-DA is incorrect" (2025; printed date 2026-01-20; f077991c)
   (helper) Aggregate route fails its eligibility conditions
       = false
       cite: [i1040sd] p. 10, lines 1a and 8a (2025; printed date 2025-12-11; 650643a6)
@@ -1483,6 +1762,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (gate) The answer to scope.rent_personal, asked only when the question scope.rental is answered Yes (false otherwise)
+      = false
+      cite: [i1040se] p. 5, Personal property, "Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles" (2025; ad71de35)
+      note: taken: {"eq":["scope.rental",{"const":false}],"op":"test"}
   (helper) In 2025, did you (or, on a joint return, your spouse) have income or a loss from a partnership, an S corporation, an estate or a trust? A paper called Schedule K-1 reports it.
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
@@ -1492,6 +1775,26 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
+  (gate) Wages as a household employee not reported on a W-2 (asked only after a Yes to pay not on a W-2; otherwise no)
+      = false
+      cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
+  (gate) Wages from a firm that treated the worker as an independent contractor (Form 8919) (asked only after a Yes to pay not on a W-2; otherwise no)
+      = false
+      cite: [f8919] p. 1, Who must file, "You performed services for a firm", "You believe your pay from the firm wasn’t for services as an independent contractor", "The firm didn’t withhold your share of social security and Medicare taxes from your pay" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); 84102b12)
+      note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
+  (gate) Tips not reported in full to an employer, or noncash tips (Form 4137 and line 1c) (asked only after a Yes to pay not on a W-2; otherwise no)
+      = false
+      cite: [i1040gi] p. 24, Line 1c, "This should include any tip income you didn’t report to your employer", "Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
+  (gate) Strike or lockout benefits (asked only after a Yes to pay not on a W-2; otherwise no)
+      = false
+      cite: [i1040gi] p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
+  (gate) Other wages from an employer, with no W-2 (asked only after a Yes to pay not on a W-2; otherwise no)
+      = false
+      cite: [i1040gi] p. 25, Missing or Incorrect Form W-2?, "Even if you don’t get a Form W-2, you must still report your earnings" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["scope.pay_no_w2",{"const":false}],"op":"test"}
   (helper) In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
@@ -1579,7 +1882,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["scope.business_before",{"const":false}],"op":"test"}
   (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool computes (true when any of the Schedule 1 screening questions is answered Yes)
       = false
-      cite: [i1040gi] p. 93, Line 12, "Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home"; p. 93, Line 12, "Performing-arts-related expenses as a qualified performing artist", "Business expenses of fee-basis state or local government officials"; p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station"; p. 93, Line 16, "Self-Employed SEP, SIMPLE, and Qualified Plans", "If you were self-employed or a partner, you may be able to take this"; p. 91, Line 8a, "Enter any deduction for an NOL from an earlier year"; i1040se p. 1, General Instructions, "Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties, partnerships, S corporations, estates, trusts, and residual interests in REMICs"; i1040sf p. 2, General Instructions, "Use Schedule F (Form 1040) to report farm income and expenses"; i1040sse p. 1, Ministers, Members of Religious Orders, and Christian Science Practitioners, "you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn’t taken a vow of poverty, or Christian Science practitioner"; i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes"; p. 25, Were You a Statutory Employee?, "Statutory employees report the amount shown in box 1 of Form W-2 on a Schedule C"; p. 100, Line 24f, "Enter contributions to section 501(c)(18)"; p. 92, Line 8z, "Reimbursements or other amounts received for items deducted in an earlier year"; p. 99, Line 23, "Archer MSA Deduction"; p. 99, Lines 24a Through 24z, "Enter reforestation amortization and expenses"; p. 100, Line 24h, "Enter attorney fees and court costs for actions involving certain unlawful" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 93, Line 12, "Certain business expenses of National Guard and reserve members who traveled more than 100 miles from home"; p. 93, Line 12, "Performing-arts-related expenses as a qualified performing artist", "Business expenses of fee-basis state or local government officials"; p. 93, Line 14, "You can deduct moving expenses if you are a member of the Armed Forces on active duty and due to a military order you move because of a permanent change of station"; p. 93, Line 16, "Self-Employed SEP, SIMPLE, and Qualified Plans", "If you were self-employed or a partner, you may be able to take this"; i1040se p. 1, General Instructions, "Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties, partnerships, S corporations, estates, trusts, and residual interests in REMICs"; i1040sf p. 2, General Instructions, "Use Schedule F (Form 1040) to report farm income and expenses"; i1040sse p. 1, Ministers, Members of Religious Orders, and Christian Science Practitioners, "you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn’t taken a vow of poverty, or Christian Science practitioner"; i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes"; p. 25, Were You a Statutory Employee?, "Statutory employees report the amount shown in box 1 of Form W-2 on a Schedule C"; p. 100, Line 24f, "Enter contributions to section 501(c)(18)"; p. 99, Line 23, "Archer MSA Deduction"; p. 99, Lines 24a Through 24z, "Enter reforestation amortization and expenses"; p. 100, Line 24h, "Enter attorney fees and court costs for actions involving certain unlawful" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Nonresident alien status, or other income or return treatment outside this tool (true when any of the other-income screening questions is answered Yes)
       = false
       cite: [i1040gi] p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"; p. 24, Line 1c, "Enter the total of your tip income that was not reported on Form 1040, line 1a"; p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)"; p. 24, Line 1d, "Enter your taxable Medicaid waiver payments that were not reported on"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)" (2025; printed date 2026-02-25; 482e9c48)
@@ -1739,14 +2042,18 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) You (or, on a joint return, your spouse) paid interest on a student loan in 2025
       = false
       cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; 482e9c48)
+  (helper) You (or, on a joint return, your spouse) paid interest on a student loan in 2025, asked only when the filing status is not married filing separately (no otherwise, since that status cannot take the deduction)
+      = false
+      cite: [i1040gi] p. 98, Schedule 1, line 21, "Your filing status is any status except married filing separately" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["household.mfs",{"const":false}],"op":"test"}
   (gate) Total interest paid in 2025 on student loans, asked only when interest was paid on a student loan (zero otherwise)
       = $0
       cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["sli.any",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sli.any_if_not_mfs",{"const":false}],"op":"test"}
   (gate) Whether any of the interest was on a loan that is not a qualified student loan, asked only when interest was paid on a student loan (false otherwise)
       = false
       cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["sli.any",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sli.any_if_not_mfs",{"const":false}],"op":"test"}
   (gate) The interest on loans that are not qualified student loans, asked only when there is such a loan (zero otherwise)
       = $0
       cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; 482e9c48)
@@ -1754,7 +2061,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Whether any of the interest was paid from tax-free qualified tuition program earnings or through tax-free loan repayment assistance, asked only when interest was paid on a student loan (false otherwise)
       = false
       cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; 482e9c48)
-      note: taken: {"eq":["sli.any",{"const":false}],"op":"test"}
+      note: taken: {"eq":["sli.any_if_not_mfs",{"const":false}],"op":"test"}
   (gate) The interest paid from tax-free qualified tuition program earnings or loan repayment assistance, asked only when there is some (zero otherwise)
       = $0
       cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; 482e9c48)
@@ -1862,10 +2169,45 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   scope.f8978_if_business_before: chose false (guard 1)
       not taken: guard 0 = false
+  s1.nol_limit: chose false (guard 1)
+      not taken: guard 0 = false
+  household.mfs_community_property: chose false (guard 0)
   household.cp_not_joint: chose false (guard 1)
       not taken: guard 0 = false
   household.cp_marriage_ended: chose false (guard 0)
+  scope.household_pay_if_pay: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].household_wages_if_pay: chose $0 (guard 1)
+      not taken: guard 0 = false
+  scope.tips_unreported_if_pay: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].f4137_col_c: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].f4137_col_d: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].tips_noncash_if_unreported: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_not_box1_if_mw: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_1099_if_not_box1: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_business_if_1099: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_box1_if_mw: chose $0 (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_earned_if_paid: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].mw_other_1d: chose $0 (guard 1)
+      not taken: guard 0 = false
   f1040.line1e: chose $0 (guard 1)
+      not taken: guard 0 = false
+  scope.contractor_pay_if_pay: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].f8919_wages: chose $0 (guard 1)
+      not taken: guard 0 = false
+  scope.strike_pay_if_pay: chose false (guard 1)
+      not taken: guard 0 = false
+  person[taxpayer].strike_if_pay: chose $0 (guard 1)
       not taken: guard 0 = false
   sb.nominee_if_income: chose false (guard 1)
       not taken: guard 0 = false
@@ -1889,6 +2231,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   scope.military_move_if_armed_forces: chose false (guard 1)
       not taken: guard 0 = false
+  scope.rent_personal_if_rental: chose false (guard 1)
+      not taken: guard 0 = false
   scope.clergy_if_religious_work: chose false (guard 1)
       not taken: guard 0 = false
   scope.church_exempt_wages_if_religious_work: chose false (guard 1)
@@ -1907,6 +2251,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   scope.adoption_benefits_if_adoption: chose false (guard 1)
       not taken: guard 0 = false
+  scope.wages_no_form_if_pay: chose false (guard 1)
+      not taken: guard 0 = false
   scope.care_benefits_other_if_benefits: chose false (guard 1)
       not taken: guard 0 = false
   scope.excess_deferral_if_w2: chose false (guard 1)
@@ -1918,21 +2264,33 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s1.line2a: chose $0 (guard 1)
       not taken: guard 0 = false
+  s1.ebl_sche_abs: chose $0 (guard 1)
+      not taken: guard 0 = false
   s1.uc_paid_if_any: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.line7: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.nqdc_pension_if_w2: chose false (guard 1)
       not taken: guard 0 = false
-  s1.stock_options_if_options: chose false (guard 1)
-      not taken: guard 0 = false
   s1.olympic_if_winnings: chose false (guard 1)
+      not taken: guard 0 = false
+  s1.nol_before_limit_date_if_nol: chose false (guard 1)
+      not taken: guard 0 = false
+  s1.nol_ebl_if_nol: chose false (guard 1)
+      not taken: guard 0 = false
+  s1.nol_not_married_if_joint: chose false (guard 1)
+      not taken: guard 0 = false
+  s1.nol_was_joint_if_separate: chose false (guard 1)
+      not taken: guard 0 = false
+  s1.nol_amount_if_nol: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.gambling_winnings_if_winnings: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.gambling_business: chose false (guard 1)
       not taken: guard 0 = false
   s1.line8c: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s1.line8e: chose $0 (guard 1)
       not taken: guard 0 = false
   s1.line8g: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -1942,7 +2300,28 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   s1.line8j: chose $0 (guard 1)
       not taken: guard 0 = false
+  s1.stock_options_if_options: chose false (guard 1)
+      not taken: guard 0 = false
+  s1.line8k: chose $0 (guard 1)
+      not taken: guard 0 = false
   s1.line8r: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s1.digital_income_if_assets: chose false (guard 1)
+      not taken: guard 0 = false
+  s1.line8v: chose $0 (guard 1)
+      not taken: guard 0 = false
+  rec.before_prior_year_if_any: chose false (guard 1)
+      not taken: guard 0 = false
+  rec.nonitemized_if_any: chose false (guard 1)
+      not taken: guard 0 = false
+  rec.sales_tax_if_any: chose false (guard 1)
+      not taken: guard 0 = false
+  rec.two_returns_if_joint: chose false (guard 1)
+      not taken: guard 0 = false
+  rec.path: chose false (guard 0)
+  rec.to_line8z: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s1.line5: chose $0 (guard 1)
       not taken: guard 0 = false
   person[taxpayer].educator_expenses_if_educator: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -1964,6 +2343,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   ira.less_gate: chose false (guard 1)
       not taken: guard 0 = false
+  sli.any_if_not_mfs: chose false (guard 0)
   sli.interest_if_any: chose $0 (guard 1)
       not taken: guard 0 = false
   sli.unqualified_any_if_any: chose false (guard 1)
@@ -1994,7 +2374,9 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sa.line8a: chose $0 (guard 1)
       not taken: guard 0 = false
-  sa.mortgage_over_limit_if_interest: chose false (guard 1)
+  sa.mortgage_over_limit_if_joint_limits: chose false (guard 1)
+      not taken: guard 0 = false
+  sa.mortgage_over_limit_mfs_if_mfs: chose false (guard 1)
       not taken: guard 0 = false
   sa.mortgage_other_use_if_interest: chose false (guard 1)
       not taken: guard 0 = false
@@ -2038,6 +2420,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].age65_box: chose false (guard 1)
       not taken: guard 0 = false
+  sa.standard_amount: chose $15,750 (guard 1)
+      not taken: guard 0 = false
   sa.standard: chose $15,750 (guard 1)
       not taken: guard 0 = false
   sa.deduction: chose $15,750 (guard 1)
@@ -2063,19 +2447,21 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
 
 Derivations:
+  sales[a].digital: test(sales[a].box = A; "G" = G; sales[a].box = A; "H" = H; sales[a].box = A; "I" = I; sales[a].box = A; "J" = J; sales[a].box = A; "K" = K; sales[a].box = A; "L" = L)
+  f1040.digital_sales: sum_over(sales[a].digital = false; true = true)
+  f1040.digital_conflict: test(f1040.digital_assets = false; false = false; f1040.digital_sales = 0; 0 = 0)
   sd.no: param(#household.no = false)
   sd.business_property_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
   sd.installment_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
   sd.like_kind_if_sold: choose(sd.sold_other = false; true = true; sd.sold_other = false; false = false; sd.no = false)
   sd.f2439_if_dividends: choose(div.any = false; true = true; div.any = false; false = false; sd.no = false)
   sd.other_forms: test(sd.business_property_if_sold = false; true = true; sd.installment_if_sold = false; true = true; sd.like_kind_if_sold = false; true = true; sd.sec1256 = false; true = true; sd.condemned = false; true = true; sd.small_business_stock = false; true = true; sd.trader_election = false; true = true; sd.f2439_if_dividends = false; true = true; sd.casualty = false; true = true; sd.qof = false; true = true)
-  sales[a].digital: test(sales[a].box = A; "G" = G; sales[a].box = A; "H" = H; sales[a].box = A; "I" = I; sales[a].box = A; "J" = J; sales[a].box = A; "K" = K; sales[a].box = A; "L" = L)
   sales[a].has_b: test(sales[a].code = B; "B" = B)
-  sales[a].bad_code: test(sales[a].code = B; "other" = other; sales[a].has_b = true; true = true; sales[a].box = A; "C" = C; sales[a].box = A; "F" = F)
+  sales[a].bad_code: test(sales[a].code = B; "other" = other; sales[a].has_b = true; true = true; sales[a].box = A; "C" = C; sales[a].box = A; "F" = F; sales[a].box = A; "I" = I; sales[a].box = A; "L" = L)
   sales[a].route_if_chosen: choose(sd.route_each = true; true = true; sales[a].route = detail)
   sales[a].no: param(#household.no = false)
   sales[a].bad_aggregate: choose(sales[a].route_if_chosen = detail; "aggregate" = aggregate; sales[a].route_if_chosen = detail; "detail" = detail; sales[a].no = false)
-  sales[a].one: param(sales[a].digital = false; sales[a].special = false; sales[a].bad_code = false; sales[a].bad_aggregate = false; #sales.one = 1)
+  sales[a].one: param(sales[a].special = false; sales[a].bad_code = false; sales[a].bad_aggregate = false; #sales.one = 1)
   sd.count: sum_over(sd.other_forms = false; sales[a].one = 1)
   sd.screen: test(sd.count = 1; 0 = 0)
   sd.line1a.h: sum_over(sd.screen = false; sales[a].box = A; "A" = A; sales[a].route_if_chosen = detail; "aggregate" = aggregate)
@@ -2092,17 +2478,17 @@ Derivations:
   sales[a].g: sum(sales[a].b = $800; sales[a].w = $0)
   sales[a].h: sum(sales[a].before_adjustment = $100; sales[a].g = $800)
   sd.line1b.h: sum_over(sd.screen = false; sales[a].box = A; "A" = A; sales[a].route_if_chosen = detail; "detail" = detail; sales[a].h = $900)
-  sd.line2.h: sum_over(sd.screen = false; sales[a].box = A; "B" = B)
-  sd.line3.h: sum_over(sd.screen = false; sales[a].box = A; "C" = C)
+  sd.line2.h: sum_over(sd.screen = false; sales[a].box = A; "B" = B; sales[a].box = A; "H" = H)
+  sd.line3.h: sum_over(sd.screen = false; sales[a].box = A; "C" = C; sales[a].box = A; "I" = I)
   sd.zero: param(#sales.zero = $0)
   sd.line4: copy(sd.other_forms = false; sd.zero = $0)
   sd.line5: copy(sd.other_forms = false; sd.zero = $0)
   sd.line6: choose(sd.other_forms = false; sd.carryover = false; true = true; sd.carryover = false; false = false; sd.zero = $0)
   sd.line7: sum(sd.line1a.h = $0; sd.line1b.h = $900; sd.line2.h = $0; sd.line3.h = $0; sd.line4 = $0; sd.line5 = $0; sd.line6 = $0)
-  sd.line8a.h: sum_over(sd.screen = false; sales[a].box = A; "D" = D)
-  sd.line8b.h: sum_over(sd.screen = false; sales[a].box = A; "D" = D)
-  sd.line9.h: sum_over(sd.screen = false; sales[a].box = A; "E" = E)
-  sd.line10.h: sum_over(sd.screen = false; sales[a].box = A; "F" = F)
+  sd.line8a.h: sum_over(sd.screen = false; sales[a].box = A; "D" = D; sales[a].box = A; "J" = J)
+  sd.line8b.h: sum_over(sd.screen = false; sales[a].box = A; "D" = D; sales[a].box = A; "J" = J)
+  sd.line9.h: sum_over(sd.screen = false; sales[a].box = A; "E" = E; sales[a].box = A; "K" = K)
+  sd.line10.h: sum_over(sd.screen = false; sales[a].box = A; "F" = F; sales[a].box = A; "L" = L)
   sd.line11: copy(sd.other_forms = false; sd.zero = $0)
   sd.line12: copy(sd.other_forms = false; sd.zero = $0)
   div.zero: param(#sales.zero = $0)
@@ -2140,7 +2526,7 @@ Derivations:
   sd.line16: sum(sd.line7 = $900; sd.line15 = $0)
   sd.has_loss: test(sd.line16 = $900; 0 = $0)
   sd.to1040: choose(sd.has_loss = false; true = true; sd.has_loss = false; false = false; sd.line16 = $900)
-  f1040.line7a: copy(sd.to1040 = $900)
+  f1040.line7a: copy(f1040.digital_conflict = false; sd.to1040 = $900)
   person[taxpayer].under24: test(person[taxpayer].birth_year = 1980; #age.cut_24 = 2002; person[taxpayer].birth_year = 1980; #age.cut_24 = 2002)
   scope.under24_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].under24 = false; true = true)
   scope.under24: test(scope.under24_count = 0; 0 = 0)
@@ -2155,6 +2541,10 @@ Derivations:
   scope.cfc_if_foreign_shares: choose(scope.foreign_shares = false; true = true; scope.foreign_shares = false; false = false; scope.no = false)
   scope.f8978_if_business_before: choose(scope.business_before = false; true = true; scope.business_before = false; false = false; scope.no = false)
   scope.other_line16: test(scope.f8615_if_unearned_2700 = false; true = true; scope.f8814 = false; true = true; scope.education_recapture = false; true = true; scope.income_averaging_if_business = false; true = true; scope.pfic_if_foreign_shares = false; true = true; scope.cfc_if_foreign_shares = false; true = true; scope.f8978_if_business_before = false; true = true)
+  s1.no: param(#household.no = false)
+  s1.nol_limit: choose(scope.nol = false; true = true; scope.nol = false; false = false; s1.no = false)
+  household.no: param(#household.no = false)
+  household.mfs_community_property: choose(f1040.status = single; "single" = single; household.no = false)
   person[taxpayer].birth_year_bad: test(person[taxpayer].birth_year = 1980; #age.birth_year_latest = 2025; person[taxpayer].birth_year = 1980; #age.birth_year_earliest = 1900)
   household.birth_year_bad_count: sum_over(person[taxpayer].birth_year_bad = false; true = true)
   household.birth_year_bad: test(household.birth_year_bad_count = 0; 0 = 0)
@@ -2166,14 +2556,48 @@ Derivations:
   household.spouses: sum_over(person[taxpayer].role = taxpayer; "spouse" = spouse)
   household.roster_ok: test(household.birth_year_bad = false; household.filer_under16 = false; f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
   household.roster_bad: test(household.roster_ok = true; false = false)
-  household.no: param(#household.no = false)
   household.cp_not_joint: choose(household.community_property = false; true = true; household.community_property = false; false = false; household.no = false)
   household.cp_marriage_ended: choose(f1040.status = single; "single" = single; household.cp_not_joint = false)
   household.rdp_community_property: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
-  f1040.line1a: sum_over(household.roster_bad = false; household.cp_marriage_ended = false; household.rdp_community_property = false; person[taxpayer].box1 = $0)
+  f1040.line1a: sum_over(household.mfs_community_property = false; household.roster_bad = false; household.cp_marriage_ended = false; household.rdp_community_property = false; person[taxpayer].box1 = $0)
+  scope.household_pay_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
+  person[taxpayer].zero: param(#ss.zero = $0)
+  person[taxpayer].household_wages_if_pay: choose(scope.household_pay_if_pay = false; true = true; scope.household_pay_if_pay = false; false = false; person[taxpayer].zero = $0)
+  f1040.line1b: sum_over(person[taxpayer].household_wages_if_pay = $0)
+  scope.tips_unreported_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
+  person[taxpayer].f4137_col_c: choose(scope.tips_unreported_if_pay = false; true = true; scope.tips_unreported_if_pay = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].f4137[form].line2: copy(person[taxpayer].f4137_col_c = $0)
+  person[taxpayer].f4137_col_d: choose(scope.tips_unreported_if_pay = false; true = true; scope.tips_unreported_if_pay = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].f4137[form].line3: copy(person[taxpayer].f4137_col_d = $0)
+  person[taxpayer].f4137[form].line4: subtract_floor0(person[taxpayer].f4137[form].line2 = $0; person[taxpayer].f4137[form].line3 = $0)
+  person[taxpayer].f4137_line4: sum_over(person[taxpayer].f4137[form].line4 = $0)
+  person[taxpayer].tips_noncash_if_unreported: choose(scope.tips_unreported_if_pay = false; true = true; scope.tips_unreported_if_pay = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].line1c: sum(person[taxpayer].f4137_line4 = $0; person[taxpayer].tips_noncash_if_unreported = $0)
+  f1040.line1c: sum_over(person[taxpayer].line1c = $0)
+  person[taxpayer].mw_not_box1_if_mw: choose(scope.medicaid_waiver = false; true = true; scope.medicaid_waiver = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].mw_has_not_box1: test(person[taxpayer].mw_not_box1_if_mw = $0; #sales.zero = $0)
+  person[taxpayer].mw_1099_if_not_box1: choose(person[taxpayer].mw_has_not_box1 = false; true = true; person[taxpayer].mw_has_not_box1 = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].mw_1099_over: test(person[taxpayer].mw_1099_if_not_box1 = $0; person[taxpayer].mw_not_box1_if_mw = $0)
+  person[taxpayer].mw_has_1099: test(person[taxpayer].mw_1099_if_not_box1 = $0; #sales.zero = $0)
+  person[taxpayer].no: param(#household.no = false)
+  person[taxpayer].mw_business_if_1099: choose(person[taxpayer].mw_has_1099 = false; true = true; person[taxpayer].mw_has_1099 = false; false = false; person[taxpayer].no = false)
+  person[taxpayer].mw_box1_if_mw: choose(scope.medicaid_waiver = false; true = true; scope.medicaid_waiver = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].mw_total: sum(person[taxpayer].mw_box1_if_mw = $0; person[taxpayer].mw_not_box1_if_mw = $0)
+  person[taxpayer].mw_paid: test(person[taxpayer].mw_total = $0; #sales.zero = $0)
+  person[taxpayer].mw_earned_if_paid: choose(person[taxpayer].mw_paid = false; true = true; person[taxpayer].mw_paid = false; false = false; person[taxpayer].no = false)
+  person[taxpayer].mw_other_1d: choose(person[taxpayer].mw_earned_if_paid = false; true = true; person[taxpayer].mw_earned_if_paid = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].line1d: sum(person[taxpayer].mw_1099_over = false; person[taxpayer].mw_business_if_1099 = false; person[taxpayer].mw_1099_if_not_box1 = $0; person[taxpayer].mw_other_1d = $0)
+  f1040.line1d: sum_over(person[taxpayer].line1d = $0)
   f2441.zero: param(#sales.zero = $0)
   f1040.line1e: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; f2441.zero = $0)
-  f1040.line1z: sum(f1040.line1a = $0; f1040.line1e = $0)
+  scope.contractor_pay_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
+  person[taxpayer].f8919_wages: choose(scope.contractor_pay_if_pay = false; true = true; scope.contractor_pay_if_pay = false; false = false; person[taxpayer].zero = $0)
+  f1040.line1g: sum_over(person[taxpayer].f8919_wages = $0)
+  scope.strike_pay_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
+  person[taxpayer].strike_if_pay: choose(scope.strike_pay_if_pay = false; true = true; scope.strike_pay_if_pay = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].line1h: sum(person[taxpayer].strike_if_pay = $0; person[taxpayer].dis_wages = $0)
+  f1040.line1h: sum_over(person[taxpayer].line1h = $0)
+  f1040.line1z: sum(f1040.line1a = $0; f1040.line1b = $0; f1040.line1c = $0; f1040.line1d = $0; f1040.line1e = $0; f1040.line1g = $0; f1040.line1h = $0)
   sb.has_income: test(sb.interest_total = $0; 0 = $0; sb.ordinary_dividends_if_dividends = $0; 0 = $0; sd.distributions_if_dividends = $0; 0 = $0)
   sb.no: param(#sb.no = false)
   sb.nominee_if_income: choose(sb.has_income = false; true = true; sb.has_income = false; false = false; sb.no = false)
@@ -2205,6 +2629,7 @@ Derivations:
   f1040.line6b: copy(ssb.line18 = $0)
   scope.reservist_expenses_if_armed_forces: choose(scope.armed_forces = false; true = true; scope.armed_forces = false; false = false; scope.no = false)
   scope.military_move_if_armed_forces: choose(scope.armed_forces = false; true = true; scope.armed_forces = false; false = false; scope.no = false)
+  scope.rent_personal_if_rental: choose(scope.rental = false; true = true; scope.rental = false; false = false; scope.no = false)
   scope.clergy_if_religious_work: choose(scope.religious_work = false; true = true; scope.religious_work = false; false = false; scope.no = false)
   scope.church_exempt_wages_if_religious_work: choose(scope.religious_work = false; true = true; scope.religious_work = false; false = false; scope.no = false)
   scope.w2_count: sum_over(person[taxpayer].employers = 0)
@@ -2213,22 +2638,25 @@ Derivations:
   scope.artist_official_if_w2: choose(scope.has_w2 = false; true = true; scope.has_w2 = false; false = false; scope.no = false)
   scope.performer_expenses_if_artist_official: choose(scope.artist_official_if_w2 = false; true = true; scope.artist_official_if_w2 = false; false = false; scope.no = false)
   scope.se_plan_other_if_business: choose(s1.has_sc = false; true = true; s1.has_sc = false; false = false; scope.no = false)
-  scope.schedule1: test(scope.reservist_expenses_if_armed_forces = false; true = true; scope.military_move_if_armed_forces = false; true = true; scope.rental = false; true = true; scope.k1 = false; true = true; scope.farm = false; true = true; scope.clergy_if_religious_work = false; true = true; scope.church_exempt_wages_if_religious_work = false; true = true; scope.w2_marks_if_w2 = false; true = true; scope.performer_expenses_if_artist_official = false; true = true; scope.recovery = false; true = true; scope.archer_msa = false; true = true; scope.se_plan_other_if_business = false; true = true; scope.reforestation = false; true = true; scope.attorney_fees = false; true = true; scope.nol = false; true = true)
+  scope.schedule1: test(scope.reservist_expenses_if_armed_forces = false; true = true; scope.military_move_if_armed_forces = false; true = true; scope.rent_personal_if_rental = false; true = true; scope.k1 = false; true = true; scope.farm = false; true = true; scope.clergy_if_religious_work = false; true = true; scope.church_exempt_wages_if_religious_work = false; true = true; scope.w2_marks_if_w2 = false; true = true; scope.performer_expenses_if_artist_official = false; true = true; scope.archer_msa = false; true = true; scope.se_plan_other_if_business = false; true = true; scope.reforestation = false; true = true; scope.attorney_fees = false; true = true)
   scope.nonresident_if_noncitizen: choose(scope.noncitizen = false; true = true; scope.noncitizen = false; false = false; scope.no = false)
   scope.reservist_repaid_if_armed_forces: choose(scope.armed_forces = false; true = true; scope.armed_forces = false; false = false; scope.no = false)
   scope.adoption_benefits_if_adoption: choose(s3.adoption_any = false; true = true; s3.adoption_any = false; false = false; scope.no = false)
+  scope.wages_no_form_if_pay: choose(scope.pay_no_w2 = false; true = true; scope.pay_no_w2 = false; false = false; scope.no = false)
   scope.care_benefits_other_if_benefits: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; scope.no = false)
   scope.excess_deferral_if_w2: choose(scope.has_w2 = false; true = true; scope.has_w2 = false; false = false; scope.no = false)
   scope.passive_if_business_before: choose(scope.business_before = false; true = true; scope.business_before = false; false = false; scope.no = false)
-  scope.other_income: test(scope.nonresident_if_noncitizen = false; true = true; scope.chapter11 = false; true = true; scope.reservist_repaid_if_armed_forces = false; true = true; scope.adoption_benefits_if_adoption = false; true = true; scope.pay_no_w2 = false; true = true; scope.medicaid_waiver = false; true = true; scope.care_benefits_other_if_benefits = false; true = true; scope.disaster_distribution = false; true = true; scope.excess_deferral_if_w2 = false; true = true; scope.passive_if_business_before = false; true = true)
+  scope.other_income: test(scope.nonresident_if_noncitizen = false; true = true; scope.chapter11 = false; true = true; scope.reservist_repaid_if_armed_forces = false; true = true; scope.adoption_benefits_if_adoption = false; true = true; scope.wages_no_form_if_pay = false; true = true; scope.care_benefits_other_if_benefits = false; true = true; scope.disaster_distribution = false; true = true; scope.excess_deferral_if_w2 = false; true = true; scope.passive_if_business_before = false; true = true)
   refund.has: test(refund.any = false; true = true)
   s1.zero: param(#sales.zero = $0)
   s1.line1: choose(refund.has = false; false = false; s1.zero = $0)
-  s1.no: param(#household.no = false)
   s1.alimony_if_any: choose(s1.alimony_any = false; true = true; s1.alimony_any = false; false = false; s1.no = false)
   s1.line2a: choose(s1.alimony_if_any = false; true = true; s1.alimony_if_any = false; false = false; s1.zero = $0)
   s1.zero_ebl: param(#sales.zero = $0)
-  s1.ebl_total: sum_over(person[taxpayer].sc_total = $0)
+  s1.ebl_sc: sum_over(person[taxpayer].sc_total = $0)
+  s1.ebl_sche_abs: choose(scope.rental = false; true = true; scope.rental = false; false = false; s1.zero_ebl = $0)
+  s1.ebl_sche: subtract(s1.zero_ebl = $0; s1.ebl_sche_abs = $0)
+  s1.ebl_total: sum(s1.ebl_sc = $0; s1.ebl_sche = $0)
   s1.ebl_loss: subtract_floor0(s1.zero_ebl = $0; s1.ebl_total = $0)
   s1.ebl_threshold: param(#s1.ebl_threshold = $313,000)
   s1.ebl: test(s1.ebl_loss = $0; s1.ebl_threshold = $313,000)
@@ -2237,25 +2665,52 @@ Derivations:
   s1.has_uc: test(s1.uc_paid_if_any = $0; #sales.zero = $0)
   s1.line7: choose(s1.has_uc = false; true = true; s1.has_uc = false; false = false; s1.zero = $0)
   s1.nqdc_pension_if_w2: choose(scope.has_w2 = false; true = true; scope.has_w2 = false; false = false; s1.no = false)
-  s1.stock_options_if_options: choose(s2.options_any = false; true = true; s2.options_any = false; false = false; s1.no = false)
   s1.olympic_if_winnings: choose(s1.winnings_any = false; true = true; s1.winnings_any = false; false = false; s1.no = false)
-  s1.line8_other: test(s1.nqdc_pension_if_w2 = false; true = true; s1.stock_options_if_options = false; true = true; s1.olympic_if_winnings = false; true = true; s1.ltc_payout = false; true = true; s1.inmate_wages = false; true = true; s1.digital_income = false; true = true)
+  s1.line8_other: test(s1.nqdc_pension_if_w2 = false; true = true; s1.olympic_if_winnings = false; true = true; s1.inmate_wages = false; true = true)
+  s1.nol_before_limit_date_if_nol: choose(scope.nol = false; true = true; scope.nol = false; false = false; s1.no = false)
+  s1.nol_ebl_if_nol: choose(scope.nol = false; true = true; scope.nol = false; false = false; s1.no = false)
+  s1.nol_joint: test(scope.nol = false; true = true)
+  s1.nol_not_married_if_joint: choose(s1.nol_joint = false; true = true; s1.nol_joint = false; false = false; s1.no = false)
+  s1.nol_separate: test(scope.nol = false; true = true)
+  s1.nol_was_joint_if_separate: choose(s1.nol_separate = false; true = true; s1.nol_separate = false; false = false; s1.no = false)
+  s1.nol_marital: test(s1.nol_not_married_if_joint = false; true = true; s1.nol_was_joint_if_separate = false; true = true)
+  s1.nol_amount_if_nol: choose(scope.nol = false; true = true; scope.nol = false; false = false; s1.zero = $0)
+  s1.line8a: subtract(s1.nol_before_limit_date_if_nol = false; s1.nol_ebl_if_nol = false; s1.nol_marital = false; s1.zero = $0; s1.nol_amount_if_nol = $0)
   s1.gambling_winnings_if_winnings: choose(s1.winnings_any = false; true = true; s1.winnings_any = false; false = false; s1.zero = $0)
   s1.has_gambling: test(s1.gambling_winnings_if_winnings = $0; #sales.zero = $0)
   s1.gambling_business: choose(s1.has_gambling = false; true = true; s1.has_gambling = false; false = false; s1.no = false)
   s1.line8b: copy(s1.gambling_business = false; s1.gambling_winnings_if_winnings = $0)
   s1.line8c: choose(s1.cod_any = false; true = true; s1.cod_any = false; false = false; s1.zero = $0)
+  s1.line8e: choose(s1.ltc_payout = false; true = true; s1.ltc_payout = false; false = false; s1.zero = $0)
   s1.line8f: sum_over(person[taxpayer].hsa_taxable = $0)
   s1.line8g: choose(s1.alaska_any = false; true = true; s1.alaska_any = false; false = false; s1.zero = $0)
   s1.line8h: choose(s1.jury_any = false; true = true; s1.jury_any = false; false = false; s1.zero = $0)
   s1.line8i: choose(s1.winnings_any = false; true = true; s1.winnings_any = false; false = false; s1.zero = $0)
   s1.line8j: choose(s1.hobby_any = false; true = true; s1.hobby_any = false; false = false; s1.zero = $0)
+  s1.stock_options_if_options: choose(s2.options_any = false; true = true; s2.options_any = false; false = false; s1.no = false)
+  s1.line8k: choose(s1.stock_options_if_options = false; true = true; s1.stock_options_if_options = false; false = false; s1.zero = $0)
   s1.line8r: choose(s1.scholarship_any = false; true = true; s1.scholarship_any = false; false = false; s1.zero = $0)
-  s1.line9: sum(s1.line8_other = false; s1.line8b = $0; s1.line8c = $0; s1.line8f = $0; s1.line8g = $0; s1.line8h = $0; s1.line8i = $0; s1.line8j = $0; s1.line8r = $0; s1.line8z = $0)
-  s1.line10: sum(s1.line1 = $0; s1.line2a = $0; s1.line3 = $0; s1.line7 = $0; s1.line9 = $0)
+  s1.digital_income_if_assets: choose(f1040.digital_assets = false; true = true; f1040.digital_assets = false; false = false; s1.no = false)
+  s1.line8v: choose(s1.digital_income_if_assets = false; true = true; s1.digital_income_if_assets = false; false = false; s1.zero = $0)
+  person[taxpayer].line8s: sum(person[taxpayer].mw_box1_if_mw = $0; person[taxpayer].line1d = $0)
+  s1.line8s: sum_over(person[taxpayer].line8s = $0)
+  s1.line8s_neg: subtract(s1.zero = $0; s1.line8s = $0)
+  rec.no: param(#sa.no = false)
+  rec.before_prior_year_if_any: choose(scope.recovery = false; true = true; scope.recovery = false; false = false; rec.no = false)
+  rec.nonitemized_if_any: choose(scope.recovery = false; true = true; scope.recovery = false; false = false; rec.no = false)
+  rec.sales_tax_if_any: choose(scope.recovery = false; true = true; scope.recovery = false; false = false; rec.no = false)
+  rec.joint_any: test(scope.recovery = false; true = true)
+  rec.two_returns_if_joint: choose(rec.joint_any = false; true = true; rec.joint_any = false; false = false; rec.no = false)
+  rec.path: choose(scope.recovery = false; false = false; rec.no = false)
+  rec.zero: param(#sales.zero = $0)
+  rec.to_line8z: choose(rec.before_prior_year_if_any = false; rec.nonitemized_if_any = false; rec.sales_tax_if_any = false; rec.two_returns_if_joint = false; rec.path = false; true = true; rec.path = false; false = false; rec.zero = $0)
+  s1.line8z: sum(s1.oi8z_total = $0; rec.to_line8z = $0)
+  s1.line9: sum(s1.line8_other = false; s1.line8a = $0; s1.line8b = $0; s1.line8c = $0; s1.line8e = $0; s1.line8f = $0; s1.line8g = $0; s1.line8h = $0; s1.line8i = $0; s1.line8j = $0; s1.line8k = $0; s1.line8r = $0; s1.line8v = $0; s1.line8s_neg = $0; s1.line8z = $0)
+  s1.line10_ex5: sum(s1.line1 = $0; s1.line2a = $0; s1.line3 = $0; s1.line7 = $0; s1.line9 = $0)
+  s1.line5: choose(scope.rental = false; true = true; scope.rental = false; false = false; s1.zero_ebl = $0)
+  s1.line10: sum(s1.line10_ex5 = $0; s1.line5 = $0)
   f1040.line8: copy(scope.schedule1 = false; scope.other_income = false; s1.line10 = $0)
   f1040.line9: sum(f1040.line1z = $0; f1040.line2b = $0; f1040.line3b = $0; f1040.line4b = $0; f1040.line5b = $0; f1040.line6b = $0; f1040.line7a = $900; f1040.line8 = $0)
-  person[taxpayer].zero: param(#ss.zero = $0)
   person[taxpayer].educator_expenses_if_educator: choose(person[taxpayer].eligible_educator = false; true = true; person[taxpayer].eligible_educator = false; false = false; person[taxpayer].zero = $0)
   person[taxpayer].has_educator_expenses: test(person[taxpayer].educator_expenses_if_educator = $0; #sales.zero = $0)
   person[taxpayer].educator_deduction: choose(person[taxpayer].has_educator_expenses = false; true = true; person[taxpayer].has_educator_expenses = false; false = false; person[taxpayer].zero = $0)
@@ -2271,7 +2726,6 @@ Derivations:
   s1.line16: sum_over(person[taxpayer].s16 = $0)
   s1.line17: sum_over(person[taxpayer].sehi = $0)
   s1.line19a: choose(s1.alimony_if_any = false; true = true; s1.alimony_if_any = false; false = false; s1.zero = $0)
-  person[taxpayer].no: param(#household.no = false)
   person[taxpayer].sav_trad_if_ira_owner: choose(person[taxpayer].ira_owner = false; true = true; person[taxpayer].ira_owner = false; false = false; person[taxpayer].no = false)
   person[taxpayer].ira_contrib: choose(person[taxpayer].sav_trad_if_ira_owner = false; true = true; person[taxpayer].sav_trad_if_ira_owner = false; false = false; person[taxpayer].zero = $0)
   person[taxpayer].ira_has: test(person[taxpayer].ira_contrib = $0; #sales.zero = $0)
@@ -2283,12 +2737,14 @@ Derivations:
   ira.less_gate: choose(ira.has_deduction = false; true = true; ira.has_deduction = false; false = false; ira.no = false)
   ira.line20: copy(ira.less_gate = false; ira.total = $0)
   s1.line20: copy(ira.line20 = $0)
+  household.mfs: test(f1040.status = single; "mfs" = mfs)
+  sli.any_if_not_mfs: choose(household.mfs = false; false = false; sli.any = false)
   sli.zero: param(#sales.zero = $0)
-  sli.interest_if_any: choose(sli.any = false; true = true; sli.any = false; false = false; sli.zero = $0)
+  sli.interest_if_any: choose(sli.any_if_not_mfs = false; true = true; sli.any_if_not_mfs = false; false = false; sli.zero = $0)
   sli.no: param(#household.no = false)
-  sli.unqualified_any_if_any: choose(sli.any = false; true = true; sli.any = false; false = false; sli.no = false)
+  sli.unqualified_any_if_any: choose(sli.any_if_not_mfs = false; true = true; sli.any_if_not_mfs = false; false = false; sli.no = false)
   sli.unqualified_if_some: choose(sli.unqualified_any_if_any = false; true = true; sli.unqualified_any_if_any = false; false = false; sli.zero = $0)
-  sli.assisted_any_if_any: choose(sli.any = false; true = true; sli.any = false; false = false; sli.no = false)
+  sli.assisted_any_if_any: choose(sli.any_if_not_mfs = false; true = true; sli.any_if_not_mfs = false; false = false; sli.no = false)
   sli.assisted_if_some: choose(sli.assisted_any_if_any = false; true = true; sli.assisted_any_if_any = false; false = false; sli.zero = $0)
   sli.not_counted: sum(sli.unqualified_if_some = $0; sli.assisted_if_some = $0)
   sli.qualified: subtract_floor0(sli.interest_if_any = $0; sli.not_counted = $0)
@@ -2326,7 +2782,11 @@ Derivations:
   sa.zero: param(#sales.zero = $0)
   sa.line8a: choose(sa.home_asked = false; true = true; sa.home_asked = false; false = false; sa.zero = $0)
   sa.has_mortgage_interest: test(sa.line8a = $0; 0 = $0)
-  sa.mortgage_over_limit_if_interest: choose(sa.has_mortgage_interest = false; true = true; sa.has_mortgage_interest = false; false = false; sa.no = false)
+  sa.mortgage_interest_not_mfs: test(sa.has_mortgage_interest = false; true = true)
+  sa.mortgage_over_limit_if_joint_limits: choose(sa.mortgage_interest_not_mfs = false; true = true; sa.mortgage_interest_not_mfs = false; false = false; sa.no = false)
+  sa.mortgage_interest_mfs: test(sa.has_mortgage_interest = false; true = true)
+  sa.mortgage_over_limit_mfs_if_mfs: choose(sa.mortgage_interest_mfs = false; true = true; sa.mortgage_interest_mfs = false; false = false; sa.no = false)
+  sa.mortgage_over_limit_if_interest: test(sa.mortgage_over_limit_if_joint_limits = false; true = true; sa.mortgage_over_limit_mfs_if_mfs = false; true = true)
   sa.mortgage_other_use_if_interest: choose(sa.has_mortgage_interest = false; true = true; sa.has_mortgage_interest = false; false = false; sa.no = false)
   ftc.asked: test(div.any = false; true = true; sb.interest_total = $0; 0 = $0; s3.foreign_any = false; true = true)
   ftc.zero: param(#sales.zero = $0)
@@ -2384,7 +2844,9 @@ Derivations:
   sa.line15: copy(sa.charity_limited_if_gifts = false; sa.unsupported = false; sa.excluded_income = false; sa.zero = $0)
   sa.line16: choose(sa.charity_limited_if_gifts = false; sa.unsupported = false; sa.excluded_income = false; s1.has_gambling = false; true = true; s1.has_gambling = false; false = false; sa.zero = $0)
   sa.line17: sum(sa.charity_limited_if_gifts = false; sa.unsupported = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $0; sa.line10 = $0; sa.line14 = $0; sa.line15 = $0; sa.line16 = $0)
-  sa.mfs_spouse_extra: choose(sa.mfs = false; true = true; sa.mfs = false; false = false; sa.no = false)
+  sa.dep_qss: test(sa.dependent = false; true = true)
+  sa.mfs_spouse_not_itemizing: test(sa.mfs = false; true = true)
+  sa.mfs_spouse_extra: choose(sa.mfs_spouse_not_itemizing = false; true = true; sa.mfs_spouse_not_itemizing = false; false = false; sa.no = false)
   sa.standardbase: param(#sa.standard_base = $15,750)
   sa.extra: param(#sa.standard_extra = $2,000)
   person[taxpayer].age65: test(person[taxpayer].birth_year = 1980; #age.cut_65 = 1961; person[taxpayer].birth_year = 1980; #age.cut_65 = 1961)
@@ -2394,9 +2856,10 @@ Derivations:
   sa.boxes_blind: sum_over(person[taxpayer].blind = false; true = true)
   sa.extra_blind: multiply_count(sa.extra = $2,000; sa.boxes_blind = 0)
   sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
-  sa.standard: choose(sa.dependent = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
+  sa.standard_amount: choose(sa.dependent = false; true = true; sa.dependent = false; false = false; sa.standardraw = $15,750)
+  sa.standard: choose(sa.dep_qss = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standard_amount = $15,750)
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $0; sa.standard = $15,750)
-  sa.deduction: choose(sa.dependent = false; sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
   f1040.line12e: copy(household.filing_status_conflict = false; household.widowed_this_year = false; household.hoh_fails = false; household.qss_fails = false; sa.deduction = $15,750)
   s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
   s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
@@ -2444,7 +2907,7 @@ Derivations:
   qbi.deduction: choose(qbi.use_8995a = false; true = true; qbi.use_8995a = false; false = false; f8995.line15 = $0)
   f1040.line13a: copy(qbi.deduction = $0)
   f1040.line14: sum(f1040.line12e = $15,750; f1040.line13a = $0; f1040.line13b = $0)
-  f1040.line15: subtract_floor0(f1040.line11b = $900; f1040.line14 = $15,750)
+  f1040.line15: subtract_floor0(s1.nol_limit = false; f1040.line11b = $900; f1040.line14 = $15,750)
   f1040.gate.qdcg_applies: test(f1040.line15 = $0; 0 = $0)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = false; true = true)
   root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.amount: bound(f1040.line15 = $0)
@@ -2454,18 +2917,27 @@ Derivations:
   root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax: choose(root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary = true; true = true; root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.table_tax = $0)
   f1040.non_sdtw_tax: choose(f1040.gate.qdcg_applies = false; true = true; f1040.gate.qdcg_applies = false; false = false; bind amount = f1040.line15 = $0; bind status = f1040.status = single)
   f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = $0)
+Interpretation amb.2025.nft_collectible: The first (sales.special lists it, and sales.one refuses on sales.special). Computing the sale at the ordinary capital gain rates would understate the tax if such a token is a collectible, and the archive cannot settle it either way. The refusal is narrow (a token whose underlying asset is a collectible) and uses the existing gate. To be revisited once Notice 2023-27 is archived. (i1040sd, p. 11, Line 18, "Collectibles include works of art, rugs, antiques, metals (such as gold, silver, and platinum bullion), gems, stamps, coins, alcoholic beverages, and certain other tangible property."; i1040gi p. 15, Digital Assets, "digital assets include non-fungible tokens (NFTs)")
 Interpretation amb.2025.sales_rounding: Preserve exact cents throughout Stage 3; whole-dollar mode remains deferred. Avoid choosing a reconciliation policy without explicit support; cents are expressly permitted. (i8949, p. 3, Rounding Off to Whole Dollars; compare i1040gi p. 23)
 Interpretation amb.2025.div_gain_portions_disjoint: The first (div.bad_special tests div.special_total, boxes 2b plus 2c plus 2d, against box 2a). The issuer instructions define each box by a different kind of property: box 2b is unrecaptured section 1250 gain "from certain depreciable real property", box 2c section 1202 gain "from certain qualified small business stock", box 2d 28% rate gain "from sales or exchanges of collectibles"; and box 2a must "Include all amounts shown in boxes 2b, 2c, 2d, and 2f". No one gain comes from two of those kinds. Box 2f (section 897 gain from US real property interests) can share an amount with box 2b, and it is not in the sum. The reading can only refuse an entry, never change a computed amount, and any box 2c amount is refused in any case (div.section1202). Recorded under T-006.
  (i1099div, p. 4, Box 2a, "Include all amounts shown in boxes 2b, 2c, 2d, and 2f"; Box 2b; Box 2c; Box 2d)
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
+Interpretation amb.2025.s1_nol_limit_test: The first (s1.nol_ti, s1.nol_ti4, s1.nol_limit_test, refused at f1040.line15 by s1.nol_limit). Owner decision D3 (lane x2-s1o, scout-s1-other): the sufficiency test is accepted. The premise T0 ≥ T + N holds when no deduction in scope rises with AGI. Checked against the forms (lane x2-s1o, 2026-11-15): the above-the-line deductions with phase-outs (student loan interest, IRA) fall as modified AGI rises; taxable social security benefits rise with other income, so AGI without the NOL is at least AGI with it plus N; the itemized deductions with an AGI floor (medical, casualty) and the SALT limit that falls above $500,000 of modified AGI fall as AGI rises; the larger of itemized and standard deductions keeps that direction; Schedule 1-A deductions (tips, overtime, car loan interest, seniors) phase out with modified AGI; the QBI deduction is left out of T0 and only lowers T. The one deduction that rises with AGI, charitable gifts under the AGI percentage limits, is refused when a limit binds (sa.charity_limited). NOLs from before 2018 (no 80% limit, deducted first) are refused (s1.nol_before_limit_date). The refusal sits on line 15, not on line 8a, because the test reads lines 11b and 14, which read line 8a. (i172, p. 2, "80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions")
+Interpretation amb.2025.mfs_community_property: The second, on the existing question (household.community_property), for the nine states the instructions list. The same ground as amb.2025.hoh_community_property (owner decision of 2026-10-22, integrity plan decision 10): the community income split of Pub. 555 is outside the tool. "Lived in" is broader than "domicile": a filer who lived in one of the states only temporarily is refused too, which errs toward refusing (settled as design decision D1 of the married-filing-separately scout, by the coordinator under the owner's delegation, 2026-11-15). (p504, p. 22, Community Property, "If your domicile is in a community property state during any part of your tax year, you may have community income" and "If you and your spouse file separate returns, you must report half of any income described by state law as community income")
 Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
+Interpretation amb.2025.f4137_reported_over_received: The first (f4137.line4 subtracts with a floor of zero). Line 4 is "Include as income on Form 1040 ... line 1c", the tips not reported; a negative unreported amount has no meaning there, and column (c) is to "Include all cash and charge tips you received", so it holds at least the tips reported. The reading matters only for inconsistent entries. (f4137, p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c"; p. 2, Columns (c) and (d), "Include all cash and charge tips you received")
+Interpretation amb.2025.mw_all_nontaxable: The first. The interview asks only about pay for care of someone living in the filer's home with them, the case Pub. 525 names; an individual care provider caring for more than five adults or ten children at home is taken to be outside the situations a filer of this tool reports. Were it wrong, line 1a or 1d would be right but Schedule 1 line 8s would exclude too much. Notice 2014-7 is not archived. (p525, p. 33, "Certain Medicaid waiver payments are treated as difficulty-of-care payments when received by an individual care provider for caring for an eligible individual (whether related or unrelated) living in the provider’s home", "Ten qualified foster individuals under age 19, or", "Five qualified foster individuals age 19 or older")
 Interpretation amb.2025.alimony_screen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or paid after a change after 2018 that expressly applies the post-2018 rules (one that states that those rules apply, or that alimony isn't deductible by the payer or isn't included in the recipient's income), are not asked, as the questions say, and are neither income nor deductible). The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2). The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment partly child support needs the Pub. 504 allocation rules. (p504, p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 16, Recapture of Alimony; p. 13, Underpayment)
+Interpretation amb.2025.s1_ebl_rental: Count them (conservative: refuses more). Form 461 is not archived to say which rental losses are business losses. (i1040se, p. 1, Reminders, "you may be subject to a business loss limitation")
 Interpretation amb.2025.cod_fully_taxable: The first (s1.cod_amount, s1.cod_unsupported). Student loans are refused with the other exceptions. The owner's decision (Stage 16 decision batch, D2, "fully taxable canceled nonbusiness debt"). An excepted student loan discharge is nontaxable and usually comes with no Form 1099-C (p. 3, TIP), so a filer who reports one is refused rather than told how much of it to include; the conservative choice where D2 is silent. (p4681, p. 3, General Rules, "There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable"; p. 4, Exceptions)
+Interpretation amb.2025.rec_two_returns: The first (rec.two_returns, refused at rec.to_line8z). The worksheet's lines 4, 7 and 10 are figures of one return; combining two returns has no basis in the text, and the refund worksheet already refuses the like case for state refunds (amb.2025.refund_two_returns). (p525, p. 27, Worksheet 2, "Use information from your tax return for the year the expense was deducted")
 Interpretation amb.2025.ewp_oid: The first (interest.penalty, totaled on s1.line18 and copied to Form 8960 line 10). The owner's decision (Stage 16 decision batch, D2, as corrected by the verification, E4) allows an input or a screen; the instruction treats the two forms alike, so an input loses nothing. Form 1099-OID is not archived, so its box number is not named. (i1040gi, p. 95, Line 18, "The Form 1099-INT or Form 1099-OID you received will show the amount of any penalty you were charged")
 Interpretation amb.2025.jury_24a_cap: The first (s1.jury_over refuses s1.line24a). The pay given to the employer is part of the pay received (p525 p. 34, "you can deduct the amount turned over to your employer"), so a larger amount is an entry error to correct, not a case to cap silently; as with w2.g_bad, the refusal fires only on an impossible entry. Premise map Q14, left open by D3. (i1040gi, p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury")
 Interpretation amb.2025.sa_medical_negative_agi: The second (sa.agi_floor, copied to line 2). The instruction names a part of the expenses, and no part of the expenses exceeds the expenses themselves; the signed reading would deduct $324.85 of medical expenses on a return with none (engine differential case se-00255, BUG-0094). Tax-Calculator (calcfunctions.ItemDed, posagi = max(c00100, 0.)) and PolicyEngine-US both floor adjusted gross income at zero before taking the percentage. Equivalent to flooring line 3 at zero; the floor is placed on line 2's operand so that lines 3 and 4 keep their printed wording. (i1040sca, p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b")
 Interpretation amb.2025.multiplication_subcent: Round the product half-up to the nearest cent at the multiplication. Matches the half-up convention of the printed whole-dollar rounding rules. The whole-dollar default is unaffected: whole-dollar amounts multiplied by these rates produce exact cents, so the reading only matters when cents are turned on.
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
+Interpretation amb.2025.sa_dep_qss: Refuse (gate sa.dep_qss, on sa.standard and sa.deduction). The worksheet is silent on the status, and taking the joint amount would be the tool's reading, not the text's. The case is rare (a widowed parent whom another person can claim). The refusal costs that filer the return; it does not compute a deduction the text does not give.
+ (i1040gi, p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3)
 Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
  (f8995, Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)

@@ -538,10 +538,15 @@ export async function serveChecks(): Promise<void> {
       "changing the choice withdraws the status the couple's choice recorded");
     ok(framed(opening, "taxpayer").length > 0 && framed(opening, "taxpayer").every((q: any) => q.frame === undefined && q.prompt === personWording(storedFor(q.input).prompt.slice(FRAME.length + 3), "taxpayer").replace(/^./, (c: string) => c.toUpperCase()))
       && !opening.pending.some((q: any) => q.input.includes("person[spouse]")), "on a one-person return a per-person question has no frame");
+    // Married filing separately is refused only in a community property state; the refusal carries its note.
     opening = (await answer("opening", STATUS_INPUT, "mfs")).body;
-    ok(opening.status === "refused" && opening.refusal.form === "Married filing separately" && /choose “Me and my husband or wife, together on one return”/.test(opening.refusalNote ?? ""),
-      `married filing separately is refused with what the filer can do: ${opening.refusal?.gate} ${String(opening.refusalNote).slice(0, 80)}`);
+    opening = (await answer("opening", "household.married_dec31", true)).body;
+    opening = (await answer("opening", "household.community_property", true)).body;
+    ok(opening.status === "refused" && opening.refusal.gate === "household.mfs_community_property" && /^Community income on a married filing separately return/.test(opening.refusal.form)
+      && /choose “Me and my husband or wife, together on one return”/.test(opening.refusalNote ?? ""),
+      `married filing separately in a community property state is refused with what the filer can do: ${opening.refusal?.gate} ${String(opening.refusalNote).slice(0, 80)}`);
     opening = (await answer("opening", STATUS_INPUT, "single")).body;
+    opening = (await answer("opening", "household.married_dec31", false)).body;
     ok(opening.refusalNote === null && opening.answered.find((a: any) => a.input === STATUS_INPUT).withheld?.[0] === "mfj", "the corrected status clears the note, and its answered question still withholds the joint status");
     sameOpening(opening, "one person's return");
     // A log answered when the roster, the status and each role were separate questions is served, its role answers
@@ -565,7 +570,9 @@ export async function serveChecks(): Promise<void> {
     // question a yes opens), so the group's first member is the next question.
     const TICKS = ["s3.credit_bond", "s3.farmland", "s3.repaid_income"];
     const OPENED = ["s3.farmland_deferral"];
-    const tickCase = federal.find((c) => c.walk === "full" && jointReturn(c.inputs) === "not-joint" && TICKS.every((m) => c.inputs[m] === false))!;
+    // A named return, not the first that qualifies: a return whose other answers close a member after another's yes
+    // (a foreign tax credit return, for one) cannot run the one-at-a-time steps below.
+    const tickCase = federal.find((c) => c.id === "stage5.return.owed" && c.walk === "full" && jointReturn(c.inputs) === "not-joint" && TICKS.every((m) => c.inputs[m] === false))!;
     ok(tickCase !== undefined, "a whole federal return answers the three grouped questions no");
     const linesOf = (name: string) => readFileSync(join(dir, `${name}.jsonl`), "utf8").trim().split("\n").map((l) => JSON.parse(l) as Event);
     const seed = async (name: string, keep: string[] = []) => {

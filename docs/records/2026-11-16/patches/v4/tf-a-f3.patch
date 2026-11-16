@@ -1,0 +1,73 @@
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index 8d0ce57..3b61c60 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -2243,6 +2243,7 @@ form:
+       printed: (gate)
+       label: Is this dependent required to file a 2025 return because of their income (Chart B in the Form 1040 instructions)?
+       type: Bool
++      gated_by: dependent.ptc_files_if_own_money
+       expr:
+         op: input
+         source: 'Is this dependent required to file a 2025 income tax return because of their income, by Chart B in the Form
+@@ -2258,6 +2259,31 @@ form:
+           Dependents, "Your unearned income was over $1,350.", "Earned income includes salaries, wages, tips, professional
+           fees, and taxable scholarship and fellowship grants.", "Were you either age 65 or older or blind?"'
+       ambiguity: amb.2025.ptc_dependent_filing
++    - id: dependent.ptc_files_if_own_money
++      printed: (gate)
++      label: Whether this dependent is required to file because of their income, asked only of a dependent with income,
++        funds or property of their own (false for one with none)
++      type: Bool
++      expr:
++        op: choose
++        alternatives:
++          - guard:
++              op: test
++              eq:
++                - dependent.own_money
++                - const: true
++            then: dependent.ptc_files
++          - guard:
++              op: test
++              eq:
++                - dependent.own_money
++                - const: false
++            then: dependent.no
++      cite:
++        doc: i8962
++        locator: 'p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their
++          income meets the income tax return filing threshold."; i1040gi p. 10, Chart B—For Children and Other Dependents,
++          "Your unearned income was over $1,350.", "Your earned income was over $15,750."'
+     - id: dependent.ptc_magi
+       printed: (helper)
+       label: This dependent's modified AGI (Worksheet 1-2)
+@@ -2282,13 +2308,13 @@ form:
+           - guard:
+               op: test
+               eq:
+-                - dependent.ptc_files
++                - dependent.ptc_files_if_own_money
+                 - const: true
+             then: dependent.ptc_magi
+           - guard:
+               op: test
+               eq:
+-                - dependent.ptc_files
++                - dependent.ptc_files_if_own_money
+                 - const: false
+             then: dependent.zero
+       cite:
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 2022b14..6750d87 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -2474,7 +2474,7 @@ bank:
+     seq: 16
+     group: "dependent_facts"
+     tick: "Had money of their own in 2025, or owned their home"
+-    help: "For a child with no income, savings or property of their own, answer No. If you are not sure, answer Yes."
++    help: "Count any income, even a scholarship. For a child with no income, savings or property of their own, answer No. If you are not sure, answer Yes."
+     prompt: "In 2025, did this person have money of their own (pay, benefits in their name, savings, a trust, a loan) or own the home they lived in?"
+   - input: dependent.other_only_spouse
+     order: 120

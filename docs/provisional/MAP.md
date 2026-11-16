@@ -1,5 +1,7 @@
 # The map: the whole interview redrafted by topic
 
+**Historical.** The architect's map of the interview for the redraft's lanes (2026-11-13), describing the interview before the redraft. The redraft has landed on `main` (`a2f24909`); the current interview is described by `interview/README.md`, and new work follows `docs/2026-11-13_interview_construction_protocol.md`.
+
 Written by the architect agent on 2026-11-13 for the lanes of the provisional redraft. Read `NORMS.md` first; a lane
 then needs its own section of Part 3, the rows of Part 2 that name it, and Part 4. Nothing here is built yet.
 

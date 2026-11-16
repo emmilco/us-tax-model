@@ -1,0 +1,457 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "mrental.f8582.part5_prior_loss",
+      "covers": [
+        "f8582",
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Form 8582 (2025) and i8582 pp. 10-13. a, active participation: line 21 4,000 - 10,000 = -6,000 (Part IV (b)). b, no active participation: line 21 5,000 - 1,000 = 4,000 (Part V (a)) and a prior-year unallowed loss of 2,000 (Part V (c)). Line 1a 0, 1b -6,000, 1c 0, 1d -6,000; 2a 4,000, 2b 0, 2c -2,000, 2d 2,000; line 3 -4,000. Line 4: smaller of the losses on 1d and 3 = 4,000. Line 5 150,000; line 6 (MAGI, wages) 90,000; line 7 60,000; line 8 = 50% = 30,000, not more than 25,000: 25,000; line 9 4,000; line 10 = 1a + 2a = 4,000; line 11 8,000. Part VI: a 6,000, (c) 4,000; Part VII: a 2,000; b's overall result is a gain (4,000 - 2,000); C = 4,000 - 4,000 = 0, so nothing is unallowed. Allowed: a 6,000, b 2,000; line 22 a -6,000, b -2,000. Schedule E line 24 4,000, line 25 -8,000, line 26 -4,000. Required: a prior-year unallowed loss and a Part V activity rule out the exception (i8582 p. 1).",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 9000000,
+        "person[taxpayer].w2[a].box3": 9000000,
+        "person[taxpayer].w2[a].box5": 9000000,
+        "$rental": [
+          "a",
+          "b"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 400000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 1000000,
+        "rental[b].kind": "sfr",
+        "rental[b].rents": 500000,
+        "rental[b].has_taxes": true,
+        "rental[b].amt16": 100000,
+        "rental[b].active": false,
+        "rental[b].prior_any": true,
+        "rental[b].prior_amt": 200000
+      },
+      "expect": {
+        "f8582.line1c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8582.line1d": {
+          "kind": "money",
+          "cents": -600000
+        },
+        "f8582.line2c": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "f8582.line2d": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f8582.line3": {
+          "kind": "money",
+          "cents": -400000
+        },
+        "f8582.line4": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f8582.line7": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "f8582.line8": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "f8582.line9": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f8582.line10": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f8582.line11": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "f8582.p7_C": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": -600000
+        },
+        "rental[b].line22": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sche.line26": {
+          "kind": "money",
+          "cents": -400000
+        },
+        "f8582.required": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "mrental.f8582.part5_income_and_loss",
+      "covers": [
+        "f8582",
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Form 8582 (2025), i8582 pp. 10-13. a active: -6,000 (Part IV). b inactive: +3,000; c inactive: 1,000 - 6,000 = -5,000 (Part V). 1d -6,000; 2a 3,000, 2b -5,000, 2d -2,000; line 3 -8,000; line 4 = smaller of 6,000 (1d) and 8,000 (3) = 6,000. MAGI 60,000, line 7 90,000, 50% 45,000, line 8 25,000; line 9 6,000; line 10 3,000; line 11 9,000. Part VI: a (c) 6,000. Part VII: c 5,000; C = 8,000 - 6,000 = 2,000, all to c. Allowed: a 6,000, c 3,000; line 22 a -6,000, c -3,000. Line 26 = 3,000 - 9,000 = -6,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "$rental": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 400000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 1000000,
+        "rental[b].kind": "sfr",
+        "rental[b].rents": 300000,
+        "rental[b].active": false,
+        "rental[c].kind": "sfr",
+        "rental[c].rents": 100000,
+        "rental[c].has_mortgage": true,
+        "rental[c].amt12": 600000,
+        "rental[c].active": false
+      },
+      "expect": {
+        "f8582.line4": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f8582.line8": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "f8582.line9": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f8582.line11": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "f8582.p7_C": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": -600000
+        },
+        "rental[c].line22": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "rental[c].carryforward": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "sche.line26": {
+          "kind": "money",
+          "cents": -600000
+        }
+      }
+    },
+    {
+      "id": "mrental.f8582.part4_prior_loss_net_gain",
+      "covers": [
+        "f8582",
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. i8582 (2025) p. 1, Who Must File: Form 8582 is generally filed by taxpayers with an overall gain including prior-year unallowed losses, and the exception requires no prior-year unallowed losses. a active: line 21 +5,000 (no expenses), prior-year unallowed loss 2,000: 1a 5,000, 1c -2,000, 1d 3,000; line 3 3,000 is not a loss, so line 4 and 9 are 0 and C is 0. The prior loss is allowed in full against the gain: allowed 2,000, line 22 -2,000; line 24 5,000, line 25 -2,000, line 26 3,000. Form 8582 required.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 500000,
+        "rental[a].prior_any": true,
+        "rental[a].prior_amt": 200000
+      },
+      "expect": {
+        "f8582.exception": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.required": {
+          "kind": "bool",
+          "value": true
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sche.line26": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "mrental.f8582.part5_loss_net_gain",
+      "covers": [
+        "f8582",
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. i8582 (2025) p. 1: the exception needs rental activities with active participation to be the only passive activities; b and c are without active participation, so it fails and b's net loss is a passive activity deduction: Form 8582 required. b 1,000 - 2,000 = -1,000, c +3,000; 2d +2,000, line 3 +2,000, not a loss; C 0; b's loss is allowed in full: line 22 -1,000; line 26 2,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "b",
+          "c"
+        ],
+        "rental[b].kind": "sfr",
+        "rental[b].rents": 100000,
+        "rental[b].has_mortgage": true,
+        "rental[b].amt12": 200000,
+        "rental[b].active": false,
+        "rental[c].kind": "sfr",
+        "rental[c].rents": 300000,
+        "rental[c].active": false
+      },
+      "expect": {
+        "f8582.exception": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.required": {
+          "kind": "bool",
+          "value": true
+        },
+        "rental[b].line22": {
+          "kind": "money",
+          "cents": -100000
+        },
+        "sche.line26": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "mrental.f8582.part5_prior_loss_net_gain",
+      "covers": [
+        "f8582",
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. i8582 (2025) p. 1: an inactive rental (Part V) with a prior-year unallowed loss of 2,000 and a current gain of 5,000: the prior-year loss is a passive activity deduction and the exception fails (no prior-year unallowed losses; only active rentals): Form 8582 required. Line 2d 3,000, line 3 3,000; the prior loss is allowed in full: line 22 -2,000; line 26 3,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "b"
+        ],
+        "rental[b].kind": "sfr",
+        "rental[b].rents": 500000,
+        "rental[b].active": false,
+        "rental[b].prior_any": true,
+        "rental[b].prior_amt": 200000
+      },
+      "expect": {
+        "f8582.exception": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.required": {
+          "kind": "bool",
+          "value": true
+        },
+        "rental[b].line22": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sche.line26": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "mrental.f8582.loss_over_25000",
+      "covers": [
+        "f8582",
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. i8582 (2025) p. 1, Exception: the total loss from the rental real estate activities must not be more than $25,000. a active: 10,000 - 40,000 = -30,000, so Form 8582 is required. Line 4 30,000; MAGI 80,000, line 7 70,000, 50% 35,000, line 8 25,000; line 9 25,000; C = 30,000 - 25,000 = 5,000 unallowed, carried forward; line 22 -25,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 8000000,
+        "person[taxpayer].w2[a].box3": 8000000,
+        "person[taxpayer].w2[a].box5": 8000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1000000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 4000000
+      },
+      "expect": {
+        "f8582.line9": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "f8582.p7_C": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f8582.exception": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.required": {
+          "kind": "bool",
+          "value": true
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": -2500000
+        },
+        "rental[a].carryforward": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "mrental.f8582.loss_one_cent_over_25000",
+      "covers": [
+        "f8582",
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. i8582 (2025) p. 1, Exception: total loss not more than $25,000. a active: 10,000 - 35,000.01 = -25,000.01, one cent more: the exception fails and Form 8582 is required. Line 4 25,000.01; line 8 25,000 (MAGI 80,000); line 9 25,000; C 0.01 carried forward; line 22 -25,000.00.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 8000000,
+        "person[taxpayer].w2[a].box3": 8000000,
+        "person[taxpayer].w2[a].box5": 8000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1000000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 3500001
+      },
+      "expect": {
+        "f8582.exception": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.required": {
+          "kind": "bool",
+          "value": true
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": -2500000
+        },
+        "rental[a].carryforward": {
+          "kind": "money",
+          "cents": 1
+        }
+      }
+    },
+    {
+      "id": "mrental.f8582.magi_one_cent_over",
+      "covers": [
+        "f8582",
+        "rental",
+        "sche"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. i8582 (2025) p. 1, Exception: modified adjusted gross income not more than $100,000. Wages 100,000.01 are the MAGI (line 6; the rental loss is not counted, i8582 p. 11, line 6), one cent over: Form 8582 required. a active: 8,000 - 10,000 = -2,000, within the special allowance (line 8 is about 25,000), so line 9 2,000 and line 22 -2,000.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000001,
+        "person[taxpayer].w2[a].box3": 10000001,
+        "person[taxpayer].w2[a].box5": 10000001,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 800000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 1000000
+      },
+      "expect": {
+        "f8582.line6": {
+          "kind": "money",
+          "cents": 10000001
+        },
+        "f8582.exception": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8582.required": {
+          "kind": "bool",
+          "value": true
+        },
+        "rental[a].line22": {
+          "kind": "money",
+          "cents": -200000
+        }
+      }
+    }
+  ]
+}

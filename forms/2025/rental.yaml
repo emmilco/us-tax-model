@@ -1,0 +1,2100 @@
+form:
+  id: rental
+  kind: form
+  title: Schedule E, Part I — one rental real estate property
+  tax_year: 2025
+  note: 'One entry per rental real estate property (Schedule E types 1 to 5). Its expenses are divided by days when it had
+    personal use but was not used as a home; a home rented fewer than 15 days is left out. Its Form 8582 worksheet columns
+    (Parts IV to VIII) are figured here and totalled on Form 8582. Refused: self-rental and other property, average stays
+    of 7 days or less, significant services, less than 10% owned, not for profit, depletion, part of a property the filer lives in, car and travel expenses, a home
+    used personally and rented 15 days or more, a held-back loss from a year without active participation, and a loss with
+    amounts not at risk.'
+  lines:
+  - id: rental.zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1040se
+      locator: p. 7, Line 21
+  - id: rental.no
+    printed: (helper)
+    label: No (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: i1040se
+      locator: p. 1, Line 2
+  - id: rental.one
+    printed: (helper)
+    label: One
+    type: Count
+    expr:
+      op: param
+      ref: rental.one
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 1a
+  - id: rental.kind
+    printed: 1b
+    label: Type of property
+    type: Enum(rental_kind)
+    expr:
+      op: input
+      source: 'What kind of property is this?
+
+
+        - sfr: a house or condo (one home)
+
+        - multi: a building with two or more homes
+
+        - vacation: a vacation or short-stay rental
+
+        - commercial: shops, offices or other business space
+
+        - land: land only
+
+        - self_rental: property rented to a business you or your spouse run
+
+        - other: something else'
+    cite:
+      doc: i1040se
+      locator: 'p. 5, Line 1b, "Enter one of the codes listed under “Type of Property” in Part I of the form"'
+  - id: rental.self_rental
+    printed: (gate)
+    label: Self-rental (type 7) or other property (type 8)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - rental.kind
+        - const: self_rental
+      - op: test
+        eq:
+        - rental.kind
+        - const: other
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 1b, "Self-Rental"
+  - id: rental.days_fair
+    printed: '2'
+    label: Fair rental days
+    type: Count
+    expr:
+      op: input
+      source: How many days in 2025 was it rented at a fair price? Count a day rented at a fair price even if you also used
+        it that day; do not count days it was empty but offered for rent.
+    cite:
+      doc: i1040se
+      locator: 'p. 5, Line 2, "For each property listed on line 1a, report the number of days in the year each property was rented at fair rental value and the number of days of personal use"'
+  - id: rental.personal_any
+    printed: (helper)
+    label: Any day of personal use in 2025
+    type: Bool
+    expr:
+      op: input
+      source: On any day in 2025, did you, your family or another owner use it, or did anyone stay free, below a fair rent
+        or under a home swap?
+    cite:
+      doc: p527
+      locator: p. 26, What is a day of personal use?, "A day of personal use of a dwelling unit is any day that the unit is
+        used by any of the following persons"
+  - id: rental.days_personal
+    printed: '2'
+    label: Personal use days
+    type: Count
+    expr:
+      op: input
+      source: How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free,
+        below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home
+        before or after renting it out (or trying to) for 12 months or more in a row.
+    cite:
+      doc: p527
+      locator: 'p. 26, What is a day of personal use?; i1040se p. 5, Line 2, "For each property listed on line 1a, report the number of days in the year each property was rented at fair rental value and the number of days of personal use"'
+  - id: rental.days_overlap
+    printed: (helper)
+    label: Days of personal use that were also fair rental days
+    type: Count
+    expr:
+      op: input
+      source: Of those days, how many were also days it was rented at a fair price (for example, a renter let you stay a weekend)?
+    cite:
+      doc: p527
+      locator: p. 26, Dwelling Unit Used as a Home, "If a dwelling unit is used for personal purposes on a day it is rented
+        at a fair rental price"
+  - id: rental.day_cents
+    printed: (helper)
+    label: One day carried as one cent
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: rental.day_cents
+    cite: &id001
+      doc: p527
+      locator: p. 26, Dividing Expenses, "Any day that the unit is rented at a fair rental price is a", "The total use of
+        the cottage was 99 days"
+  - id: rental.tenth_cents
+    printed: (helper)
+    label: 'One day of personal use carried as ten cents (against one cent per rental day: the 10% test)'
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: rental.tenth_cents
+    cite:
+      doc: p527
+      locator: p. 26, Dwelling Unit Used as a Home, "10% of the total days it is rented to others at a fair rental price"
+  - id: rental.fair_c
+    printed: (helper)
+    label: Fair rental days (as cents)
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: rental.day_cents
+      count: rental.days_fair
+    cite: *id001
+  - id: rental.personal_raw
+    printed: (helper)
+    label: Personal use days as answered (as cents)
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: rental.day_cents
+      count: rental.days_personal
+    cite: *id001
+  - id: rental.personal_c
+    printed: (helper)
+    label: Personal use days (as cents), asked only when there was personal use (none otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.personal_raw
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.zero
+    cite: *id001
+  - id: rental.overlap_raw
+    printed: (helper)
+    label: Overlap days as answered (as cents)
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: rental.day_cents
+      count: rental.days_overlap
+    cite: *id001
+  - id: rental.overlap_c
+    printed: (helper)
+    label: Overlap days (as cents), asked only when there was personal use (none otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.overlap_raw
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.zero
+    cite: *id001
+  - id: rental.use_c
+    printed: (helper)
+    label: Fair rental days plus personal use days, before taking out overlap days (as cents)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - rental.fair_c
+      - rental.personal_c
+    cite: *id001
+  - id: rental.total_c
+    printed: (helper)
+    label: 'Total days of use: rental days plus personal use days not also rental days (as cents)'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: rental.use_c
+      take: rental.overlap_c
+    cite: *id001
+  - id: rental.home_rent_c
+    printed: (helper)
+    label: Fair rental days less days also used personally, for the home test (as cents)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: rental.fair_c
+      take: rental.overlap_c
+    cite:
+      doc: p527
+      locator: p. 26, Dwelling Unit Used as a Home, "don't count that day as a day of rental use in applying (2) above"
+  - id: rental.home_pers10
+    printed: (helper)
+    label: Ten times the personal use days (as cents)
+    type: NonNegDollars
+    expr:
+      op: multiply_count
+      amount: rental.tenth_cents
+      count: rental.days_personal
+    cite:
+      doc: p527
+      locator: p. 26, Dwelling Unit Used as a Home
+  - id: rental.home_pers10_if_any
+    printed: (helper)
+    label: Ten times the personal use days (as cents), when there was personal use (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.home_pers10
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.zero
+    cite:
+      doc: p527
+      locator: p. 26, Dwelling Unit Used as a Home
+  - id: rental.home
+    printed: (gate)
+    label: 'Used as a home: personal use more than the greater of 14 days or 10% of the fair rental days'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - rental.personal_c
+        - param: rental.home_days
+      - op: test
+        gt:
+        - rental.home_pers10_if_any
+        - rental.home_rent_c
+    cite:
+      doc: p527
+      locator: p. 26, Dwelling Unit Used as a Home, "You use a dwelling unit as a home during the tax year if you use it for
+        personal purposes more than the greater of"
+    ambiguity: amb.2025.rental_overlap_days
+  - id: rental.excluded
+    printed: (gate)
+    label: 'Used as a home and rented fewer than 15 days: not reported'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - rental.home
+        - const: true
+      - op: test
+        lt:
+        - rental.days_fair
+        - param: rental.min_rental_days
+    cite: &id002
+      doc: i1040se
+      locator: p. 5, Line 2, "do not report the rental income and do not deduct any rental expenses"
+  - id: rental.reported
+    printed: (helper)
+    label: The property is reported on Schedule E (not excluded)
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - rental.excluded
+      - const: false
+    cite: *id002
+  - id: rental.ws51
+    printed: (gate)
+    label: Used as a home and rented 15 days or more (Worksheet 5-1)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - rental.home
+        - const: true
+      - op: test
+        eq:
+        - rental.excluded
+        - const: false
+    cite:
+      doc: p527
+      locator: p. 28, Used as a home and rented 15 days or more
+  - id: rental.short_stays
+    printed: (helper)
+    label: Average stay of 30 days or less
+    type: Bool
+    expr:
+      op: input
+      source: Did renters stay 30 days or less, on average? Divide the days it was rented by the number of separate stays.
+    cite:
+      doc: i8582
+      locator: p. 3, Exceptions, "Figure the average period of customer use for a class of property by dividing the total
+        number of days in all rental periods by the number of rentals"
+  - id: rental.stay7
+    printed: (helper)
+    label: Average stay of 7 days or less
+    type: Bool
+    gated_by: rental.stay7_if_short
+    expr:
+      op: input
+      source: Was the average stay 7 days or less?
+    cite:
+      doc: i8582
+      locator: p. 3, Exceptions, "Figure the average period of customer use for a class of property by dividing the total
+        number of days in all rental periods by the number of rentals"
+  - id: rental.stay7_if_short
+    printed: (gate)
+    label: Average stay of 7 days or less, asked only when stays averaged 30 days or less (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.short_stays
+          - const: true
+        then: rental.stay7
+      - guard:
+          op: test
+          eq:
+          - rental.short_stays
+          - const: false
+        then: rental.no
+    cite:
+      doc: i8582
+      locator: p. 3, Exceptions
+  - id: rental.services
+    printed: (helper)
+    label: Significant services provided to renters (Schedule C)
+    type: Bool
+    expr:
+      op: input
+      source: Did you provide services for renters, such as cleaning during their stay, changing linen or meals?
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 3, "If you provided significant services to the renter, such as maid service, report the rental
+        activity on Schedule C"
+  - id: rental.under_tenth
+    printed: (helper)
+    label: Less than 10% owned (with the spouse)
+    type: Bool
+    expr:
+      op: input
+      source: Did you (with your spouse) own less than a tenth of it?
+    cite:
+      doc: i8582
+      locator: p. 4, Active participation, "in the activity was less than 10% (by value) of all interests in the activity"
+  - id: rental.not_for_profit
+    printed: (helper)
+    label: Not rented to make a profit
+    type: Bool
+    expr:
+      op: input
+      source: Was it rented not to make a profit, for example to a friend at a low rent?
+    cite:
+      doc: p527
+      locator: p. 17, Not Rented for Profit
+  - id: rental.depletion
+    printed: (helper)
+    label: Depletion claimed
+    type: Bool
+    expr:
+      op: input
+      source: Do you claim depletion for it (oil, gas, minerals or timber)?
+    cite:
+      doc: i1040se
+      locator: p. 6, Line 18, "Depletion"
+  - id: rental.part_home
+    printed: (helper)
+    label: Part of a property the filer also lives in
+    type: Bool
+    expr:
+      op: input
+      source: Is it part of a property you also live in, such as a room in your home or one unit of a building you live
+        in?
+    cite:
+      doc: i1040se
+      locator: p. 6, Renting out part of your home
+  - id: rental.vehicle
+    printed: (helper)
+    label: Car, truck or travel expenses for the rental (line 6)
+    type: Bool
+    expr:
+      op: input
+      source: Car, truck or travel costs for the rental
+    cite:
+      doc: i1040se
+      locator: p. 4, Line 6
+  - id: rental.active
+    printed: (helper)
+    label: Active participation
+    type: Bool
+    expr:
+      op: input
+      source: Did you or your spouse help make decisions for it, such as approving tenants, setting the rent or approving
+        repairs, even if a manager did the daily work?
+    cite:
+      doc: i1040se
+      locator: p. 4, Active participation, "You can meet the active participation requirement without regular, continuous,
+        and substantial involvement"
+  - id: rental.rents
+    printed: (helper)
+    label: Rents received (your share)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Rent received for it in 2025 (your share), including advance rent and expenses a tenant paid for you
+    cite:
+      doc: i1040se
+      locator: p. 4, Line 3
+  - id: rental.has_advertising
+    printed: (helper)
+    label: 'Advertising: any'
+    type: Bool
+    expr:
+      op: input
+      source: Advertising
+    cite: &id003
+      doc: i1040se
+      locator: p. 6, General Instructions for Lines 5 Through 21
+  - id: rental.amt5
+    printed: (helper)
+    label: Advertising paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt5_if_any
+    expr:
+      op: input
+      source: Advertising for renters, paid in 2025
+    cite: *id003
+  - id: rental.amt5_if_any
+    printed: (gate)
+    label: Advertising, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_advertising
+          - const: true
+        then: rental.amt5
+      - guard:
+          op: test
+          eq:
+          - rental.has_advertising
+          - const: false
+        then: rental.zero
+    cite: *id003
+  - id: rental.div5
+    printed: (helper)
+    label: 'Advertising: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt5_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line5
+    printed: '5'
+    label: Advertising
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt5_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div5
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"
+  - id: rental.has_cleaning
+    printed: (helper)
+    label: 'Cleaning and maintenance: any'
+    type: Bool
+    expr:
+      op: input
+      source: Cleaning and maintenance
+    cite: &id004
+      doc: i1040se
+      locator: p. 6, General Instructions for Lines 5 Through 21
+  - id: rental.amt7
+    printed: (helper)
+    label: Cleaning and maintenance paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt7_if_any
+    expr:
+      op: input
+      source: Cleaning and maintenance (not repairs), paid in 2025
+    cite: *id004
+  - id: rental.amt7_if_any
+    printed: (gate)
+    label: Cleaning and maintenance, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_cleaning
+          - const: true
+        then: rental.amt7
+      - guard:
+          op: test
+          eq:
+          - rental.has_cleaning
+          - const: false
+        then: rental.zero
+    cite: *id004
+  - id: rental.div7
+    printed: (helper)
+    label: 'Cleaning and maintenance: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt7_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line7
+    printed: '7'
+    label: Cleaning and maintenance
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt7_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div7
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"
+  - id: rental.has_commissions
+    printed: (helper)
+    label: 'Commissions: any'
+    type: Bool
+    expr:
+      op: input
+      source: Commissions
+    cite: &id005
+      doc: i1040se
+      locator: p. 1, Line 8
+  - id: rental.amt8
+    printed: (helper)
+    label: Commissions paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt8_if_any
+    expr:
+      op: input
+      source: Commissions paid, for example to an agent who found a renter, paid in 2025
+    cite: *id005
+  - id: rental.amt8_if_any
+    printed: (gate)
+    label: Commissions, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_commissions
+          - const: true
+        then: rental.amt8
+      - guard:
+          op: test
+          eq:
+          - rental.has_commissions
+          - const: false
+        then: rental.zero
+    cite: *id005
+  - id: rental.div8
+    printed: (helper)
+    label: 'Commissions: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt8_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line8
+    printed: '8'
+    label: Commissions
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt8_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div8
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"
+  - id: rental.has_insurance
+    printed: (helper)
+    label: 'Insurance: any'
+    type: Bool
+    expr:
+      op: input
+      source: Insurance
+    cite: &id006
+      doc: i1040se
+      locator: p. 10, Line 9
+  - id: rental.amt9
+    printed: (helper)
+    label: Insurance paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt9_if_any
+    expr:
+      op: input
+      source: Insurance on it (the part for 2025), paid in 2025
+    cite: *id006
+  - id: rental.amt9_if_any
+    printed: (gate)
+    label: Insurance, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_insurance
+          - const: true
+        then: rental.amt9
+      - guard:
+          op: test
+          eq:
+          - rental.has_insurance
+          - const: false
+        then: rental.zero
+    cite: *id006
+  - id: rental.div9
+    printed: (helper)
+    label: 'Insurance: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt9_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line9
+    printed: '9'
+    label: Insurance
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt9_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div9
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"
+  - id: rental.has_legal
+    printed: (helper)
+    label: 'Legal and other professional fees: any'
+    type: Bool
+    expr:
+      op: input
+      source: Legal and other professional fees
+    cite: &id007
+      doc: i1040se
+      locator: p. 6, Line 10
+  - id: rental.amt10
+    printed: (helper)
+    label: Legal and other professional fees paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt10_if_any
+    expr:
+      op: input
+      source: Legal fees and other professional fees, such as tax preparation for the rental, paid in 2025
+    cite: *id007
+  - id: rental.amt10_if_any
+    printed: (gate)
+    label: Legal and other professional fees, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_legal
+          - const: true
+        then: rental.amt10
+      - guard:
+          op: test
+          eq:
+          - rental.has_legal
+          - const: false
+        then: rental.zero
+    cite: *id007
+  - id: rental.div10
+    printed: (helper)
+    label: 'Legal and other professional fees: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt10_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line10
+    printed: '10'
+    label: Legal and other professional fees
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt10_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div10
+    cite:
+      doc: i1040se
+      locator: 'p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"; p. 6, Line 10, "Include on line 10 fees for tax advice and the preparation of tax forms related to your rental real estate or royalty properties"'
+  - id: rental.has_management
+    printed: (helper)
+    label: 'Management fees: any'
+    type: Bool
+    expr:
+      op: input
+      source: Management fees
+    cite: &id008
+      doc: i1040se
+      locator: p. 6, General Instructions for Lines 5 Through 21
+  - id: rental.amt11
+    printed: (helper)
+    label: Management fees paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt11_if_any
+    expr:
+      op: input
+      source: Management fees, paid in 2025
+    cite: *id008
+  - id: rental.amt11_if_any
+    printed: (gate)
+    label: Management fees, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_management
+          - const: true
+        then: rental.amt11
+      - guard:
+          op: test
+          eq:
+          - rental.has_management
+          - const: false
+        then: rental.zero
+    cite: *id008
+  - id: rental.div11
+    printed: (helper)
+    label: 'Management fees: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt11_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line11
+    printed: '11'
+    label: Management fees
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt11_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div11
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"
+  - id: rental.has_mortgage
+    printed: (helper)
+    label: 'Mortgage interest paid to banks, etc.: any'
+    type: Bool
+    expr:
+      op: input
+      source: Mortgage interest paid to banks, etc.
+    cite: &id009
+      doc: i1040se
+      locator: p. 6, Lines 12 and 13
+  - id: rental.amt12
+    printed: (helper)
+    label: Mortgage interest paid to banks, etc. paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt12_if_any
+    expr:
+      op: input
+      source: Mortgage interest on it shown on Form 1098 (box 1), your share, paid in 2025
+    cite: *id009
+  - id: rental.amt12_if_any
+    printed: (gate)
+    label: Mortgage interest paid to banks, etc., asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_mortgage
+          - const: true
+        then: rental.amt12
+      - guard:
+          op: test
+          eq:
+          - rental.has_mortgage
+          - const: false
+        then: rental.zero
+    cite: *id009
+  - id: rental.div12
+    printed: (helper)
+    label: 'Mortgage interest paid to banks, etc.: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt12_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line12
+    printed: '12'
+    label: Mortgage interest paid to banks, etc.
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt12_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div12
+    cite:
+      doc: i1040se
+      locator: 'p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"; p. 6, Lines 12 and 13, "In most cases, to determine the interest expense allocable to your rental activities, you must have records to show how the proceeds of each debt were used"'
+  - id: rental.has_other_interest
+    printed: (helper)
+    label: 'Other interest: any'
+    type: Bool
+    expr:
+      op: input
+      source: Other interest
+    cite: &id010
+      doc: i1040se
+      locator: p. 6, Lines 12 and 13
+  - id: rental.amt13
+    printed: (helper)
+    label: Other interest paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt13_if_any
+    expr:
+      op: input
+      source: Other interest on loans for it (no Form 1098 in your name), paid in 2025
+    cite: *id010
+  - id: rental.amt13_if_any
+    printed: (gate)
+    label: Other interest, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_other_interest
+          - const: true
+        then: rental.amt13
+      - guard:
+          op: test
+          eq:
+          - rental.has_other_interest
+          - const: false
+        then: rental.zero
+    cite: *id010
+  - id: rental.div13
+    printed: (helper)
+    label: 'Other interest: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt13_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line13
+    printed: '13'
+    label: Other interest
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt13_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div13
+    cite:
+      doc: i1040se
+      locator: 'p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"; p. 6, Lines 12 and 13, "In most cases, to determine the interest expense allocable to your rental activities, you must have records to show how the proceeds of each debt were used"'
+  - id: rental.has_repairs
+    printed: (helper)
+    label: 'Repairs: any'
+    type: Bool
+    expr:
+      op: input
+      source: Repairs
+    cite: &id011
+      doc: i1040se
+      locator: p. 7, Line 14
+  - id: rental.amt14
+    printed: (helper)
+    label: Repairs paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt14_if_any
+    expr:
+      op: input
+      source: Repairs (not improvements), paid in 2025
+    cite: *id011
+  - id: rental.amt14_if_any
+    printed: (gate)
+    label: Repairs, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_repairs
+          - const: true
+        then: rental.amt14
+      - guard:
+          op: test
+          eq:
+          - rental.has_repairs
+          - const: false
+        then: rental.zero
+    cite: *id011
+  - id: rental.div14
+    printed: (helper)
+    label: 'Repairs: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt14_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line14
+    printed: '14'
+    label: Repairs
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt14_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div14
+    cite:
+      doc: i1040se
+      locator: 'p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"; p. 7, Line 14, "You can deduct the amounts paid for repairs and maintenance"'
+  - id: rental.has_supplies
+    printed: (helper)
+    label: 'Supplies: any'
+    type: Bool
+    expr:
+      op: input
+      source: Supplies
+    cite: &id012
+      doc: i1040se
+      locator: p. 11, Line 15
+  - id: rental.amt15
+    printed: (helper)
+    label: Supplies paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt15_if_any
+    expr:
+      op: input
+      source: Supplies, paid in 2025
+    cite: *id012
+  - id: rental.amt15_if_any
+    printed: (gate)
+    label: Supplies, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_supplies
+          - const: true
+        then: rental.amt15
+      - guard:
+          op: test
+          eq:
+          - rental.has_supplies
+          - const: false
+        then: rental.zero
+    cite: *id012
+  - id: rental.div15
+    printed: (helper)
+    label: 'Supplies: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt15_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line15
+    printed: '15'
+    label: Supplies
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt15_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div15
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"
+  - id: rental.has_taxes
+    printed: (helper)
+    label: 'Taxes: any'
+    type: Bool
+    expr:
+      op: input
+      source: Taxes
+    cite: &id013
+      doc: i1040se
+      locator: p. 6, Line 16
+  - id: rental.amt16
+    printed: (helper)
+    label: Taxes paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt16_if_any
+    expr:
+      op: input
+      source: Property tax and other taxes on it, paid in 2025
+    cite: *id013
+  - id: rental.amt16_if_any
+    printed: (gate)
+    label: Taxes, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_taxes
+          - const: true
+        then: rental.amt16
+      - guard:
+          op: test
+          eq:
+          - rental.has_taxes
+          - const: false
+        then: rental.zero
+    cite: *id013
+  - id: rental.div16
+    printed: (helper)
+    label: 'Taxes: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt16_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line16
+    printed: '16'
+    label: Taxes
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt16_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div16
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"
+  - id: rental.has_utilities
+    printed: (helper)
+    label: 'Utilities: any'
+    type: Bool
+    expr:
+      op: input
+      source: Utilities
+    cite: &id014
+      doc: i1040se
+      locator: p. 7, Line 17
+  - id: rental.amt17
+    printed: (helper)
+    label: Utilities paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt17_if_any
+    expr:
+      op: input
+      source: Utilities you paid, paid in 2025
+    cite: *id014
+  - id: rental.amt17_if_any
+    printed: (gate)
+    label: Utilities, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_utilities
+          - const: true
+        then: rental.amt17
+      - guard:
+          op: test
+          eq:
+          - rental.has_utilities
+          - const: false
+        then: rental.zero
+    cite: *id014
+  - id: rental.div17
+    printed: (helper)
+    label: 'Utilities: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt17_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line17
+    printed: '17'
+    label: Utilities
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt17_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div17
+    cite:
+      doc: i1040se
+      locator: 'p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"; p. 7, Line 17, "You can deduct the cost of ordinary and necessary telephone calls related to your rental activities or royalty income"'
+  - id: rental.has_other
+    printed: (helper)
+    label: 'Other: any'
+    type: Bool
+    expr:
+      op: input
+      source: Other
+    cite: &id015
+      doc: i1040se
+      locator: p. 6, Line 19
+  - id: rental.amt19
+    printed: (helper)
+    label: Other paid in 2025, before any division for personal use
+    type: NonNegDollars
+    gated_by: rental.amt19_if_any
+    expr:
+      op: input
+      source: Other costs of renting it (not depreciation), paid in 2025
+    cite: *id015
+  - id: rental.amt19_if_any
+    printed: (gate)
+    label: Other, asked only when ticked (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_other
+          - const: true
+        then: rental.amt19
+      - guard:
+          op: test
+          eq:
+          - rental.has_other
+          - const: false
+        then: rental.zero
+    cite: *id015
+  - id: rental.div19
+    printed: (helper)
+    label: 'Other: the rental part (rental days over total days of use)'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.amt19_if_any
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite: *id001
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line19
+    printed: '19'
+    label: Other
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.amt19_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div19
+    cite:
+      doc: i1040se
+      locator: 'p. 5, Line 2, "If you rented out a dwelling unit that you also used for personal purposes"; p. 7, Line 19, "Enter on line 19 any ordinary and necessary expenses not listed on lines 5 through 18"'
+  - id: rental.dep_full
+    printed: (helper)
+    label: Depreciation of the buildings and improvements, before any division for personal use
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rprop
+      field: rprop.dep
+    cite:
+      doc: i1040se
+      locator: p. 6, Line 18
+  - id: rental.div18
+    printed: (helper)
+    label: 'Depreciation: the rental part'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: rental.dep_full
+      part: rental.fair_c
+      whole: rental.total_c
+      places: 6
+    cite:
+      doc: p527
+      locator: p. 25, Dividing Expenses, "divide your expenses between the rental use and the personal use based on the number
+        of days used for each purpose"
+    ambiguity: amb.2025.rental_use_ratio_places
+  - id: rental.line18
+    printed: '18'
+    label: Depreciation expense or depletion
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: false
+        then: rental.dep_full
+      - guard:
+          op: test
+          eq:
+          - rental.personal_any
+          - const: true
+        then: rental.div18
+    cite:
+      doc: i1040se
+      locator: 'p. 7, Line 18, "Depreciation is the annual deduction you must take to recover the cost or other basis of business or investment property"'
+    ambiguity: amb.2025.rental_prior_depreciation_tables
+  - id: rental.line20
+    printed: '20'
+    label: Total expenses. Add lines 5 through 19
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - rental.line5
+      - rental.line7
+      - rental.line8
+      - rental.line9
+      - rental.line10
+      - rental.line11
+      - rental.line12
+      - rental.line13
+      - rental.line14
+      - rental.line15
+      - rental.line16
+      - rental.line17
+      - rental.line18
+      - rental.line19
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 20
+  - id: rental.line21_full
+    printed: (helper)
+    label: Rents less total expenses
+    type: Dollars
+    expr:
+      op: subtract
+      from: rental.rents
+      take: rental.line20
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 21, "Subtract line 20 from line 3 (rents)"
+    refuses:
+    - when: rental.self_rental
+      form: Schedule E, Part I, property type 7 or 8 (self-rental or other)
+      remedy: Property rented to a business you or your spouse run, and property of another type, are outside this tool.
+      cite:
+        doc: i1040se
+        locator: p. 5, Self-rental
+    - when: rental.stay7_if_short
+      form: 'Schedule C or Schedule E with Form 8582 (not a rental activity: average stay of 7 days or less)'
+      remedy: A rental whose average stay is 7 days or less is not a rental activity under the passive activity rules and
+        is outside this tool.
+      cite:
+        doc: i8582
+        locator: p. 3, Exceptions, "Figure the average period of customer use for a class of property by dividing the total
+          number of days in all rental periods by the number of rentals"
+    - when: rental.services
+      form: Schedule C (rental with significant services)
+      remedy: A rental where you provide significant services, such as maid service, is reported on Schedule C; this tool
+        does not prepare it.
+      cite:
+        doc: i1040se
+        locator: p. 5, Line 3, "If you provided significant services to the renter"
+    - when: rental.under_tenth
+      form: Form 8582, Part V (ownership of less than 10%)
+      remedy: A rental you own less than 10% of is outside this tool.
+      cite:
+        doc: i8582
+        locator: p. 4, Active participation, "in the activity was less than 10% (by value) of all interests in the activity"
+    - when: rental.not_for_profit
+      form: Not rented for profit (Schedule 1, line 8l and Schedule A)
+      remedy: Property not rented for profit is reported differently and is outside this tool.
+      cite:
+        doc: p527
+        locator: p. 17, Not Rented for Profit
+    - when: rental.depletion
+      form: Schedule E, line 18 (depletion)
+      remedy: Depletion is outside this tool.
+      cite:
+        doc: i1040se
+        locator: p. 6, Line 18, "Depletion"
+    - when: rental.part_home
+      form: Schedule E, Part I (rental of part of a property you also live in)
+      remedy: Renting out part of a home or building you also live in, such as a room, is outside this tool.
+      cite:
+        doc: i1040se
+        locator: p. 6, Renting out part of your home
+    - when: rental.vehicle
+      form: Schedule E, line 6 (auto and travel)
+      remedy: Car, truck and travel expenses of a rental are outside this tool.
+      cite:
+        doc: i1040se
+        locator: p. 4, Line 6
+    - when: rental.ws51
+      form: Pub. 527, Worksheet 5-1 (dwelling unit used as a home)
+      remedy: A home you also lived in or used for more than the greater of 14 days or 10% of the days rented, and rented
+        15 days or more, is outside this tool.
+      cite:
+        doc: p527
+        locator: p. 28, Used as a home and rented 15 days or more
+  - id: rental.line3
+    printed: '3'
+    label: Rents received
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.excluded
+          - const: true
+        then: rental.zero
+      - guard:
+          op: test
+          eq:
+          - rental.excluded
+          - const: false
+        then: rental.rents
+    cite: *id002
+  - id: rental.line21
+    printed: '21'
+    label: Subtract line 20 from line 3 (rents)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.excluded
+          - const: true
+        then: rental.zero
+      - guard:
+          op: test
+          eq:
+          - rental.excluded
+          - const: false
+        then: rental.line21_full
+    cite:
+      doc: i1040se
+      locator: 'p. 5, Line 2, "do not report the rental income and do not deduct any rental expenses"; p. 7, Line 21, "If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss"'
+  - id: rental.net_income
+    printed: IV/V (a)
+    label: Current year net income
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: rental.line21
+      take: rental.zero
+    cite: &id016
+      doc: i8582
+      locator: p. 10, Part IV, "You find these amounts in Part VII, column (c), of your 2024 Form 8582"
+  - id: rental.net_loss
+    printed: IV/V (b)
+    label: Current year net loss
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: rental.zero
+      take: rental.line21
+    cite: *id016
+  - id: rental.prior_any
+    printed: (helper)
+    label: A loss from this rental held back on the 2024 return
+    type: Bool
+    expr:
+      op: input
+      source: Was a loss from this rental held back (not deducted) on your 2024 return or an earlier one?
+    cite: *id016
+  - id: rental.prior_amt
+    printed: (helper)
+    label: Prior years unallowed loss
+    type: NonNegDollars
+    gated_by: rental.prior_amt_if_any
+    expr:
+      op: input
+      source: The loss held back for this rental, from your 2024 Form 8582, Part VII, column (c)
+    cite: *id016
+  - id: rental.prior_amt_if_any
+    printed: (gate)
+    label: Prior years unallowed loss, asked only when a loss was held back (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.prior_any
+          - const: true
+        then: rental.prior_amt
+      - guard:
+          op: test
+          eq:
+          - rental.prior_any
+          - const: false
+        then: rental.zero
+    cite: *id016
+  - id: rental.prior_not_active
+    printed: (helper)
+    label: Part of the held-back loss arose in a year without active participation
+    type: Bool
+    gated_by: rental.prior_not_active_if_both
+    expr:
+      op: input
+      source: Did any of that held-back loss come from a year when you (or your spouse) did not help make decisions for it?
+    cite:
+      doc: i8582
+      locator: p. 10, Part IV, "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated
+        in the activity in both the year the loss arose and the current tax year"
+  - id: rental.prior_not_active_if_both
+    printed: (gate)
+    label: Asked only of an actively managed rental with a held-back loss (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.prior_and_active
+          - const: true
+        then: rental.prior_not_active
+      - guard:
+          op: test
+          eq:
+          - rental.prior_and_active
+          - const: false
+        then: rental.no
+    cite:
+      doc: i8582
+      locator: p. 4, Part IV
+  - id: rental.prior_and_active
+    printed: (helper)
+    label: A held-back loss on a rental with active participation
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - rental.prior_any
+        - const: true
+      - op: test
+        eq:
+        - rental.active
+        - const: true
+    cite:
+      doc: i8582
+      locator: p. 4, Part IV
+  - id: rental.prior_loss
+    printed: IV/V (c)
+    label: Prior years unallowed loss
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.reported
+          - const: true
+        then: rental.prior_amt_if_any
+      - guard:
+          op: test
+          eq:
+          - rental.reported
+          - const: false
+        then: rental.zero
+    cite: *id016
+    refuses:
+    - when: rental.prior_not_active_if_both
+      form: Form 8582, Part IV and Part V (prior-year loss from a year without active participation)
+      remedy: A held-back loss from a year in which you did not actively participate is outside this tool.
+      cite:
+        doc: i8582
+        locator: p. 4, Part IV
+  - id: rental.part4
+    printed: (gate)
+    label: 'Actively participated: Part IV (otherwise Part V)'
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - rental.active
+      - const: true
+    cite:
+      doc: i8582
+      locator: p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities
+        must include the income or loss from those activities in Part IV"
+  - id: rental.loss_sum
+    printed: (helper)
+    label: Net loss plus prior years unallowed loss
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - rental.net_loss
+      - rental.prior_loss
+    cite:
+      doc: i8582
+      locator: p. 13, Part VIII—Allowed Losses, "enter the net loss plus the prior-year unallowed loss for the activity"
+  - id: rental.overall_loss
+    printed: IV/V (e)
+    label: Overall loss
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: rental.loss_sum
+      take: rental.net_income
+    cite:
+      doc: i8582
+      locator: p. 10, Columns (d) and (e), "Combine income and losses in columns (a) through (c) for each activity"
+  - id: rental.p6_loss
+    printed: VI (a)
+    label: 'Part VI: overall loss of an activity with active participation'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.part4
+          - const: true
+        then: rental.overall_loss
+      - guard:
+          op: test
+          eq:
+          - rental.part4
+          - const: false
+        then: rental.zero
+    cite:
+      doc: i8582
+      locator: p. 12, Part VI, "Enter the overall loss from column (e) of Part IV for each activity"
+  - id: rental.p6c
+    printed: VI (c)
+    label: 'Part VI: special allowance'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.p6_on
+          - const: true
+        then: rental.p6c_share
+      - guard:
+          op: test
+          eq:
+          - rental.p6_on
+          - const: false
+        then: rental.zero
+    cite:
+      doc: i8582
+      locator: p. 12, Part VI, "Multiply each ratio in column (b) by the amount on Part II, line 9"
+  - id: rental.p6_on
+    printed: (helper)
+    label: 'Part VI applies to this activity: an overall loss in Part IV and an amount on line 9'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - rental.p6_loss
+        - const: 0
+      - op: test
+        gt:
+        - f8582.line9
+        - const: 0
+    cite:
+      doc: i8582
+      locator: p. 12, Part VI, "Use Part VI to allocate the special allowance on Part II, line 9"
+  - id: rental.p6c_share
+    printed: (helper)
+    label: 'Part VI: line 9 times this activity’s ratio'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: f8582.line9
+      part: rental.p6_loss
+      whole: f8582.p6_total
+      places: 6
+    cite:
+      doc: i8582
+      locator: p. 12, Part VI, "Divide each of the individual losses shown in column (a) by the total of all the losses in
+        column (a)"
+    ambiguity: amb.2025.f8582_ratio_places
+  - id: rental.p7a
+    printed: VII (a)
+    label: 'Part VII: loss (Part VI column (d), or Part V column (e))'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: rental.overall_loss
+      take: rental.p6c
+    cite:
+      doc: i8582
+      locator: p. 12, Part VII—Allocation of Unallowed Losses
+  - id: rental.p7c
+    printed: VII (c)
+    label: 'Part VII: unallowed loss'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.p7_on
+          - const: true
+        then: rental.p7c_share
+      - guard:
+          op: test
+          eq:
+          - rental.p7_on
+          - const: false
+        then: rental.zero
+    cite:
+      doc: i8582
+      locator: p. 13, Column (c), "Multiply each ratio in column (b) by the amount on line C above"
+  - id: rental.p7_on
+    printed: (helper)
+    label: 'Part VII applies to this activity: a loss in Part VII column (a) and an unallowed amount on line C'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        gt:
+        - rental.p7a
+        - const: 0
+      - op: test
+        gt:
+        - f8582.p7_C
+        - const: 0
+    cite:
+      doc: i8582
+      locator: p. 12, Part VII—Allocation of Unallowed Losses
+  - id: rental.p7c_share
+    printed: (helper)
+    label: 'Part VII: line C times this activity’s ratio'
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: f8582.p7_C
+      part: rental.p7a
+      whole: f8582.p7_total
+      places: 6
+    cite:
+      doc: i8582
+      locator: p. 13, Column (c), "Subtract line B from line A"
+    ambiguity: amb.2025.f8582_ratio_places
+  - id: rental.allowed
+    printed: VIII (c)
+    label: 'Part VIII: loss allowed'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: rental.loss_sum
+      take: rental.p7c
+    cite:
+      doc: i8582
+      locator: p. 13, Part VIII—Allowed Losses, "Subtract column (b) from column (a)"
+  - id: rental.carryforward
+    printed: VIII (b)
+    label: Unallowed loss carried to 2026
+    type: NonNegDollars
+    display: 'Keep this amount: it is the loss held back for this rental, entered next year.'
+    expr:
+      op: copy
+      from: rental.p7c
+    cite:
+      doc: i8582
+      locator: p. 13, Part VIII—Allowed Losses, "Keep a record of these amounts so the losses can be used to figure your PAL
+        next year"
+  - id: rental.not_at_risk
+    printed: (helper)
+    label: Some investment not at risk
+    type: Bool
+    gated_by: rental.not_at_risk_if_loss
+    expr:
+      op: input
+      source: Is any of the money you put into it borrowed on a loan you are not personally liable for, other than a loan
+        from a bank or other lender in the business of lending (for example, a loan from the seller)?
+    cite:
+      doc: i1040se
+      locator: p. 2, At-Risk Rules
+  - id: rental.not_at_risk_if_loss
+    printed: (gate)
+    label: Asked only when the property has a loss (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rental.has_loss
+          - const: true
+        then: rental.not_at_risk
+      - guard:
+          op: test
+          eq:
+          - rental.has_loss
+          - const: false
+        then: rental.no
+    cite:
+      doc: i1040se
+      locator: p. 7, Line 21, "If you have amounts for which you are not at risk, use Form 6198 to determine the amount of
+        your deductible loss"
+  - id: rental.has_loss
+    printed: (helper)
+    label: Line 21 is a loss
+    type: Bool
+    expr:
+      op: test
+      lt:
+      - rental.line21
+      - const: 0
+    cite:
+      doc: i1040se
+      locator: p. 7, Line 21
+  - id: rental.line22
+    printed: '22'
+    label: Deductible rental real estate loss after limitation, if any, on Form 8582
+    type: Dollars
+    expr:
+      op: subtract
+      from: rental.zero
+      take: rental.allowed
+    cite:
+      doc: i1040se
+      locator: p. 8, Line 22
+    refuses:
+    - when: rental.not_at_risk_if_loss
+      form: Form 6198 (at-risk limits)
+      remedy: A rental loss with an amount not at risk is outside this tool.
+      cite:
+        doc: i1040se
+        locator: p. 2, At-Risk Rules
+  - id: rental.dep_prior
+    printed: (helper)
+    label: MACRS on buildings placed in service before 2025
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rprop
+      field: rprop.dep
+      where:
+        op: test
+        eq:
+        - rprop.placed_this_year
+        - const: false
+    cite:
+      doc: i4562
+      locator: p. 9, Line 17
+  - id: rental.dep_res25
+    printed: (helper)
+    label: MACRS on residential rental property placed in service in 2025
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rprop
+      field: rprop.dep
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - rprop.placed_this_year
+          - const: true
+        - op: test
+          eq:
+          - rprop.kind
+          - const: residential
+    cite:
+      doc: i4562
+      locator: p. 9, Lines 19a Through 19j
+  - id: rental.dep_non25
+    printed: (helper)
+    label: MACRS on nonresidential real property placed in service in 2025
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rprop
+      field: rprop.dep
+      where:
+        op: test
+        all:
+        - op: test
+          eq:
+          - rprop.placed_this_year
+          - const: true
+        - op: test
+          eq:
+          - rprop.kind
+          - const: nonresidential
+    cite:
+      doc: i4562
+      locator: p. 9, Lines 19a Through 19j
+  - id: rental.count25
+    printed: (helper)
+    label: Buildings or improvements placed in service in 2025, one cent each
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rprop
+      field: rprop.placed_this_year_cent
+    cite:
+      doc: i1040se
+      locator: p. 7, Line 18, "You must complete and attach Form 4562 only if"
+  - id: rental.needs_4562
+    printed: (helper)
+    label: Form 4562 is needed for this property
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - rental.count25
+      - const: 0
+    cite:
+      doc: i1040se
+      locator: p. 7, Line 18, "You must complete and attach Form 4562 only if"
+  collection:
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 1a

@@ -1,0 +1,597 @@
+{
+ "kind": "classm",
+ "form": "rental",
+ "family": "claude",
+ "base": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+ "lines": [
+  {
+   "key": "case classm.rental.1",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": null
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line5",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line7",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line8",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line9",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line10",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line11",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line12",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line13",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line14",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line15",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line16",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line17",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line19",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line18",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line20",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line3",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line21",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].net_income",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].net_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].prior_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].overall_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].p6_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].p6c",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].p7a",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].p7c",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].allowed",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].carryforward",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[a].line22",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line5",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line7",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line8",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line9",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line10",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line11",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line12",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line13",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line14",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line15",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line16",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line17",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line19",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line18",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line20",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line3",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line21",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].net_income",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].net_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].prior_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].overall_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].p6_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].p6c",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].p7a",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].p7c",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].allowed",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].carryforward",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.1 — rental[b].line22",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.rental.2",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": null
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line5",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line7",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line8",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line9",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line10",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line11",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line12",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line13",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line14",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line15",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line16",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line17",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line19",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line18",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line20",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line3",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line21",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].net_income",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].net_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].prior_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].overall_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].p6_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].p6c",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].p7a",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].p7c",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].allowed",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].carryforward",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.2 — rental[a].line22",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "case classm.rental.3",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": null
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line5",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line7",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line8",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line9",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line10",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line11",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line12",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line13",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line14",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line15",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line16",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line17",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line19",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line18",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line20",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line3",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line21",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].net_income",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].net_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].prior_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].overall_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].p6_loss",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].p6c",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].p7a",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].p7c",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].allowed",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].carryforward",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  },
+  {
+   "key": "classm.rental.3 — rental[a].line22",
+   "record": "918196e91d47cf0041c19652b36ad710576c8eb929c7ea957f5b26076225021c",
+   "status": "AGREE"
+  }
+ ],
+ "subject_carried": {
+  "subject": "e79eaf4e2df809b90a3f5e87e16ee8af8720675748747f386758f3396a8bee31",
+  "was": "94c40caed4fe9c1c7e6274f40768b4a14b71be41e7d7b168cc382487d4aa5b56",
+  "carried": {
+   "by": "rename",
+   "map": {
+    "rental.has_2025": "rental.needs_4562",
+    "rprop.is_2025": "rprop.placed_this_year_cent",
+    "rprop.placed_2025": "rprop.placed_this_year"
+   },
+   "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+   "was": "94c40caed4fe9c1c7e6274f40768b4a14b71be41e7d7b168cc382487d4aa5b56"
+  }
+ }
+}

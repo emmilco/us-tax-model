@@ -1,0 +1,197 @@
+diff --git a/interview/2025/coverage/sales.yaml b/interview/2025/coverage/sales.yaml
+index dc472de..1a11ffe 100644
+--- a/interview/2025/coverage/sales.yaml
++++ b/interview/2025/coverage/sales.yaml
+@@ -138,9 +138,6 @@ rows:
+       sales[a].box: D
+       sales[a].special: true
+       sd.route_each: false
+-      sales[a].proceeds: 0
+-      sales[a].reported_basis: 0
+-      sales[a].code: none
+       sd.trader_election: false
+       sd.qof: false
+     expect:
+@@ -153,9 +150,6 @@ rows:
+       sales[a].box: A
+       sales[a].special: true
+       sd.route_each: false
+-      sales[a].proceeds: 0
+-      sales[a].reported_basis: 0
+-      sales[a].code: none
+       sd.trader_election: false
+       sd.qof: false
+     expect:
+@@ -168,9 +162,6 @@ rows:
+       sales[a].box: D
+       sales[a].special: true
+       sd.route_each: false
+-      sales[a].proceeds: 0
+-      sales[a].reported_basis: 0
+-      sales[a].code: none
+       sd.trader_election: false
+       sd.qof: false
+     expect:
+@@ -295,9 +286,6 @@ rows:
+       sales[a].box: L
+       sales[a].special: true
+       sd.route_each: false
+-      sales[a].proceeds: 0
+-      sales[a].correct_basis: 0
+-      sales[a].code: none
+       sd.trader_election: false
+       sd.qof: false
+     expect:
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 681ceac..de7ae71 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -1602,7 +1602,7 @@ bank:
+       out political gifts and raffle tickets.'
+   - input: $sales
+     order: 274
+-    seq: 1
++    seq: 10
+     help: Your broker's statement (Form 1099-B, or Form 1099-DA for crypto) lists each sale. Swapping one crypto for another,
+       or paying with it, is a sale. So is a taxable sale of other property, such as land; a sale inside a retirement account
+       is not.
+@@ -1610,12 +1610,12 @@ bank:
+       outside a retirement account? Add one entry for each sale, or leave the list empty if there were none.
+   - input: sd.route_each
+     order: 274
+-    seq: 2
++    seq: 11
+     help: A sale whose basis the broker reported to the IRS, and that needs no adjustment, may be added to a total on
+       Schedule D instead of being listed on Form 8949. Most people answer No.
+   - input: sales.box
+     order: 274
+-    seq: 4
++    seq: 12
+     help: With no statement, count from the day after you got the property through the day you sold it; more than one year
+       is long-term, and inherited property is always long-term. Crypto never goes under C or F; with no Form 1099-DA,
+       choose I or L.
+@@ -1635,14 +1635,14 @@ bank:
+       L: Crypto or another digital asset on no form, owned for more than one year (box L)
+   - input: sales.route
+     order: 274
+-    seq: 11
++    seq: 19
+     prompt: How should this sale appear on the return? The tax is the same either way.
+     value_labels:
+       detail: Listed on its own line (Form 8949)
+       aggregate: Added to the Schedule D total without being listed (only with basis reported to the IRS and nothing to adjust)
+   - input: sales.code
+     order: 274
+-    seq: 9
++    seq: 17
+     prompt: Does anything need adjusting for this sale?
+     value_labels:
+       none: No, the figures are right and there is no wash sale
+@@ -1654,7 +1654,7 @@ bank:
+         checked, a sale reported to you that is really someone else's, or a loss on something you owned for personal use
+   - input: sales.special
+     order: 274
+-    seq: 5
++    seq: 13
+     help: A broker's statement marks a collectible or an opportunity zone fund (QOF) with a checkbox in box 3. A return with a
+       sale of this kind is outside what this tool prepares; a Yes ends the interview here.
+     prompt: |-
+@@ -1670,30 +1670,30 @@ bank:
+       - an investment in an opportunity zone fund, or a gain you put off by investing in one
+   - input: sales.aggregate_eligible
+     order: 274
+-    seq: 12
++    seq: 20
+     prompt: Is every one of these true of this sale? The statement shows no adjustment and the Ordinary box is not checked, you
+       are correcting nothing, and it is not a collectible or an opportunity zone fund investment.
+   - input: sales.proceeds
+     order: 274
+-    seq: 6
++    seq: 14
+     help: If you received more than the statement shows, enter what you received. The premium for a call option you wrote
+       that was exercised is part of the proceeds.
+     prompt: Proceeds of this sale (box 1d of Form 1099-B or box 1f of Form 1099-DA). With no statement, the sale price less
+       commissions and fees; for a swap, the value of what you received.
+   - input: sales.reported_basis
+     order: 274
+-    seq: 7
++    seq: 15
+     prompt: Cost or other basis the statement shows for this sale (box 1e of Form 1099-B or box 1g of Form 1099-DA).
+   - input: sales.correct_basis
+     order: 274
+-    seq: 8
++    seq: 16
+     help: Adjust for stock splits, for a return of capital, and for a wash sale loss added when you bought. Fund shares
+       held by a custodian may use the average cost the fund reports. For crypto, what you paid with its fees.
+     prompt: Your basis in what you sold. If you bought it, what it cost you with commissions and fees. If you inherited it,
+       usually its value on the date of death. If it was a gift, usually what the giver paid.
+   - input: sales.wash_loss
+     order: 274
+-    seq: 10
++    seq: 18
+     help: Enter the right amount even if the broker's differs or is missing. It cannot exceed this sale's loss, so enter
+       blocks sold the same day as separate sales. Buying for your IRA, or by your spouse, counts too.
+     prompt: How much of the loss on this sale is not allowed as a wash sale (box 1g of Form 1099-B)? A wash sale is a sale at a
+@@ -2110,45 +2110,45 @@ bank:
+     help: "A Yes ends the interview here: this tool cannot prepare a return with it."
+   - input: sd.sold_other
+     order: 274
+-    seq: 20
++    seq: 1
+     group: sales_rare
+     tick: Sold real estate or business property, or any sale paid later
+     help: A home you lived in counts as real estate. Business property is anything you used in a business or rented out, such
+       as equipment, a vehicle or a building.
+   - input: sd.business_property
+     order: 274
+-    seq: 26
++    seq: 7
+     help: Its sale is figured on Form 4797. A return with this is outside what this tool prepares; a Yes ends the interview here.
+   - input: sd.installment
+     order: 274
+-    seq: 27
++    seq: 8
+     help: An installment sale is figured on Form 6252. A return with this is outside what this tool prepares; a Yes ends the interview here. If you sold in 2025 and choose to report the whole gain this
+       year, answer No.
+   - input: sd.like_kind
+     order: 274
+-    seq: 28
++    seq: 9
+     help: A like-kind exchange is reported on Form 8824. A return with this is outside what this tool prepares; a Yes ends the interview here.
+   - input: sd.sec1256
+     order: 274
+-    seq: 21
++    seq: 2
+     group: sales_rare
+     tick: Traded futures, foreign currency contracts or index options, or held a straddle
+     help: These are reported on Form 6781. Options on single stocks and on most funds are not among them. A return with this is outside what this tool prepares; a Yes ends the interview here.
+   - input: sd.condemned
+     order: 274
+-    seq: 22
++    seq: 3
+     group: sales_rare
+     tick: Had business or investment property taken by a government
+     help: A taking of business or investment property is reported on Form 4797. A return with this is outside what this tool prepares; a Yes ends the interview here.
+   - input: sd.small_business_stock
+     order: 274
+-    seq: 23
++    seq: 4
+     group: sales_rare
+     tick: Lost money on small-company stock and claim it as an ordinary loss
+     help: The ordinary loss is claimed on Form 4797. A return with this is outside what this tool prepares; a Yes ends the interview here. To enter the loss as a capital loss among your sales, answer No.
+   - input: sd.trader_election
+     order: 274
+-    seq: 24
++    seq: 5
+     group: sales_rare
+     tick: Trade securities as a business under a mark-to-market election
+     help: "Trading for your own account counts only if it is your regular, daily activity and you made the election with an earlier return. A return with this is outside what this tool prepares; a Yes ends the interview here."
+@@ -2174,7 +2174,7 @@ bank:
+       carried into 2024? Answer Yes even if you filed no 2024 return or left the loss off it.
+   - input: sd.qof
+     order: 274
+-    seq: 25
++    seq: 6
+     group: sales_rare
+     tick: Owned an opportunity zone fund (QOF), or put a gain into one
+     help: Count a 2025 gain you are putting off tax on by investing in one, even if you invest in 2026. A return with one is

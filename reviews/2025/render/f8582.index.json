@@ -1,0 +1,153 @@
+{
+ "kind": "render",
+ "form": "f8582",
+ "family": "claude",
+ "base": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+ "lines": [
+  {
+   "key": "1a",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "fa2984e0d1c55b1bb86a88df193369a876eac9b762e179d98f25714709a4e3e9"
+  },
+  {
+   "key": "1b",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "bc6f2be173a38f5a50c52a8b0f02ca338e86997dc75dac2ec7c5f9100f171259"
+  },
+  {
+   "key": "1c",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "9774f2d6320def5e75dd9a7df6413b0c17538516d0f7095c1dc699702847ed43"
+  },
+  {
+   "key": "1d",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "ad82d8cf61a20197e605fd5f33eb6d60ab39606840e4be4c95170cab4d48d1b8"
+  },
+  {
+   "key": "2a",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "1328354b44b104648b384f11f1300534a8d49a320fb43a466bcc8170f65b709c"
+  },
+  {
+   "key": "2b",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "5e3257726e4026e567e83dd1d2eb88dc35bda6afc097ef289b889293eb5791a1"
+  },
+  {
+   "key": "2c",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "d93531da7ead6d87d819ce98d4cc96a0dd07a2527d4c706ab05ceac6f9f88e62"
+  },
+  {
+   "key": "2d",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "22f9db321dcac6f0f1387e1f7b192c7f4b91de0151066ad687fbb430b7e5d0c2"
+  },
+  {
+   "key": "3",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "7e32fd0c0d1c33f92d1bc0ea78d2c57ae24069db5bfb6693708813e28bd9d448"
+  },
+  {
+   "key": "4",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; married filing separately is refused for every return (scope, s3.mfs, 'Married filing separately': 'The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together ...) are outside'), so the caution 'If your filing status is married filing separately and you lived with your spouse ... do not complete Part II' never applies to a completed return.",
+   "subject_key": "bbc61c3c4f29407dc1937b1c8b6c7256c68725814e1a6be8a1475713a5b7d2cf"
+  },
+  {
+   "key": "5",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "2360a7bef25d388d3006aac0aefb1139af90fe7e5ba2368ee0e3b9f43eb79566"
+  },
+  {
+   "key": "6",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; s1.line25 is a copy of s1.line24a only (Schedule 1 lines 24b to 24z, 24f included, are outside the tool and refused at Form 1040 line 10 by scope.schedule1), so no section 501(c)(18)(D) contribution can reach f8582.magi_adj.",
+   "subject_key": "80ee9a46ee239e121ced890c89d6e5392e0bd401327bac5d2f6a3c2097ffe0c9"
+  },
+  {
+   "key": "7",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "b8bf4e70d3bf90150b098c2679577ab25f6c1c131afcbc9baa013ee4c906bd44"
+  },
+  {
+   "key": "8",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "3b5354591bd4c315d9380e294f364dadd0280948baca06351e27d048114ea1b7"
+  },
+  {
+   "key": "9",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "a4d8ebed739bb6bda07cb61cc9cd364f6408eb5563c4317fbc46d39796cd9ac2"
+  },
+  {
+   "key": "10",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "4f8f7ffa278e62a17789b1404d954284392f8f28afa96dcfa7b237ec975e9af6"
+  },
+  {
+   "key": "11",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "70342cb75cbb73632754041f326e16110298df4a6f9754d7e049d2e01ec85269"
+  },
+  {
+   "key": "VI (a) total",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "5e630b2c2f6fc8bab5e67d85b9c7d14fdb9520153d85c9d236afcec35a84cc0c"
+  },
+  {
+   "key": "VII (a) total",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "4ec9fac9c38b1510f5a83e06c1e4adee9f3eee17ff191cca4e9b35e7579301af"
+  },
+  {
+   "key": "VII worksheet C",
+   "record": "5da7caca70d33b9861be1a0e9528d6f24294f3a609db9643eec62463df6988a6",
+   "status": "MATCH",
+   "subject_key": "54aecbd293097e2de81c90a6abf81bf7ccfdf7f26f9003f73d122e3a79ba6c59"
+  }
+ ],
+ "subjects": {
+  "1a": "d18fc47b260e2a0ab178079cbd9e2a5138f44ac86acaeb9e707fc704fb49d0b4",
+  "1b": "adae1cb5f21e416120bacd968169117e01009b10a5bcd4ef6926ef7c58ce5550",
+  "1c": "0f8d462364371576f96ee2cd11a37f03dbfa8473dfdcd823ad21f062e8fe6e96",
+  "1d": "5c8574385a50d0c30b92140927eaf3240a3745d37632f98a371813312a56744c",
+  "2a": "18ded85887469dbe918c5ef0b1d6defa4085359e50019bd7b9244878144febb9",
+  "2b": "7cd241a00cb521ea0f2077a8c510029c60cf7d80cc34611210ef2d6fd0299154",
+  "2c": "8a7622f6763e5faf446d0edf243e854da79fdd7071340fb5fa4c7bb3aa03086d",
+  "2d": "fc3995dee2909f428509ed44302835e03587ea73d4add9927ebc3b6cc9404b08",
+  "3": "deec39dd383f11d1d192b5e088d0d3a4220343b21395d235dc644d17314fa9d0",
+  "4": "cea9a6be307fdbeecc1bfb1a4b0562525dfce0e8ca9d1a1ca2ea24a25bb24269",
+  "5": "ced94a7f696763e67bca17cf7ad06abfda9dd94a77c619389d7f7f4ea07b307a",
+  "6": "4fb1d6d3328406aad700ab9220b426155341df38a22c2b64afed282e5b61344c",
+  "7": "55a2ead1e50e051faf8b8409483aa6588a61bfd7adafc723fc853c02f18cfa1e",
+  "8": "8000dd6f56a91447bdd1cc7a4004c01814fc2e3293098d5569330d8177ebba4e",
+  "9": "7f47cffcf03754bbaf02636d95cc36440a8f45bc377cbd90092d2c79715c5143",
+  "10": "a82a331bcfd8888d91586cbef0b1dec93a5747e331fad95a28bba2dcb4f2e57d",
+  "11": "1869c5448c3d9c5e9e5744a0717d8168a59fb9163e0af4cd892f06f1bf5e8ee8",
+  "VI (a) total": "5fe2342a8da144e87ec3b4b55d755d468dab6ea95976be557860a7eb9c1518f1",
+  "VII (a) total": "641782ba02e5d83454f4f7f338630613230481c1def334452c82479dc0388a52",
+  "VII worksheet C": "4b613d2e7fa76ea65e668e62487e54654c302561506b871a272f852f59bc5942"
+ },
+ "__rest__": "4bd6500b643c93b7d13a548ba3bf7cc991c4e9c46e977ae29b2e186e57caaba0"
+}

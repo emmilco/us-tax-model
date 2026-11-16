@@ -493,7 +493,7 @@ export function reviewStage2(): void {
 
 export function reviewStage3(): void {
   const dir=yearPath("reports");
-  const selected=["sales.official.basis","sales.mixed_columns","sales.refuse.digital.G","sales.select.sdtw.election"];
+  const selected=["sales.official.basis","sales.mixed_columns","sales.box.G","sales.select.sdtw.election"];
   const tmp=mkdtempSync(join(tmpdir(),"stage3-review-"));
   try {
     for(const id of selected) {
@@ -506,7 +506,7 @@ export function reviewStage3(): void {
     writeFileSync(join(dir,"stage3-review.md"),[
       "# Stage 3 review packet", "",
       `Read rendered/${YEAR}/sales.md and sd.md alongside archived i8949 pp. 7–11, i1040sd pp. 10–11 and f1040sd. Check the Form 1040 selector against i1040sd p. 15 and i1040gi p. 36.`, "",
-      "Official arithmetic: i8949 p. 11 examples 1–4 and the repeated Schedule D column-(h) examples; i1040sd pp. 10–11 aggregate example and its two-transaction continuation. The adjustment example supplies no code: the fixture's B routing is synthetic scaffolding, not official evidence. Example 4 explicitly supplies code B. Official digital-asset examples 5–6 and the main-home EH example are outside scope; digital boxes and unsupported codes are refused, not claimed computed.", "",
+      "Official arithmetic: i8949 p. 11 examples 1–4 and the repeated Schedule D column-(h) examples; i1040sd pp. 10–11 aggregate example and its two-transaction continuation. The adjustment example supplies no code: the fixture's B routing is synthetic scaffolding, not official evidence. Example 4 explicitly supplies code B. Official digital-asset examples 5–6 and the main-home EH example are not used as evidence; digital-asset boxes G–L are computed (sales.box.G is the box G case), and unsupported codes are refused, not claimed computed.", "",
       `Review choices: exact cents (whole-dollar mode deferred); supplied A–F classification (holding periods, dates, descriptions and basis determination not computed); code W takes a supplied correct disallowed loss; corrected broker wash loss may require a statement. See ambiguities/${YEAR}.yaml for rounding and Form 4952 worksheet selection.`, "",
       "Stage 4 now computes Schedule D lines 18/19 from distribution feeders, Form 4952 amounts and the Schedule D Tax Worksheet; these regenerated examples reflect that extension. Capital-loss carryovers and additional source forms are refused. This is not a complete return.", "",
       "The synthetic cases are regressions, not class B. No independent human hand-work is claimed. Stage 3 interview build checks cover fixture paths and answer-order invariance; they are not exhaustive over all finite domains or roster sizes.", "",

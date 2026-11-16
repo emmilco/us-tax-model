@@ -55,22 +55,52 @@
 
 ## (helper) — `ira.anyone_covered`
 
-- **Authored helper label:** You (or, on a joint return, your spouse) were covered by a retirement plan (Yes on line 1a or 1b)
-- **Encoded (Bool):** helper "Number of persons on the return covered by a retirement plan" > 0 (a count)
-- Expr: `{"gt":["ira.cov_count",{"const":0,"type":"Count"}],"op":"test"}`
-- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6" and "Otherwise, go to line 2" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** You (or, on a joint return, your spouse) were covered by a retirement plan, or, married filing separately, are considered covered through your spouse (Yes on line 1a or 1b)
+- **Encoded (Bool):** (helper "Number of persons on the return covered by a retirement plan" > 0 (a count) or helper "Married filing separately and considered covered by a retirement plan through your spouse (asked only when you made traditional IRA contributions, were not covered yourself and lived with your spouse at some time in 2025; otherwise no)" = true)
+- Expr: `{"any":[{"gt":["ira.cov_count",{"const":0,"type":"Count"}],"op":"test"},{"eq":["ira.mfs_spouse_covered_if_asked",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6" and "Otherwise, go to line 2"; p. 96, Married persons filing separately, "If you weren’t covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ira.mfs_cov_matters`
+
+- **Authored helper label:** Whether the spouse's coverage can matter on this return (traditional IRA contributions, married filing separately, you not covered, and you lived with your spouse at some time in 2025)
+- **Encoded (Bool):** Choose — [helper "Anyone on the return made traditional IRA contributions for 2025" = true → helper "Married filing separately, you not covered by a retirement plan, and you lived with your spouse at some time in 2025"] [helper "Anyone on the return made traditional IRA contributions for 2025" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ira.any_trad",{"const":true}],"op":"test"},"then":"ira.mfs_cov_matters_trad"},{"guard":{"eq":["ira.any_trad",{"const":false}],"op":"test"},"then":"ira.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 96, Married persons filing separately, "If you weren’t covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ira.mfs_cov_matters_trad`
+
+- **Authored helper label:** Married filing separately, you not covered by a retirement plan, and you lived with your spouse at some time in 2025
+- **Encoded (Bool):** household helper "Filing status married filing separately" = true and helper "You were covered by a retirement plan (1 if Yes)" = 0 (a count) and household helper "Married filing separately, and you lived apart from your spouse for all of 2025" = false
+- Expr: `{"all":[{"eq":["household.mfs",{"const":true}],"op":"test"},{"eq":["ira.cov_you",{"const":0,"type":"Count"}],"op":"test"},{"eq":["household.mfs_apart_all_year",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 96, Married persons filing separately, "If you weren’t covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ira.mfs_spouse_covered`
+
+- **Authored helper label:** Was your husband or wife covered by a retirement plan at work in 2025?
+- **Encoded (Bool):** Input — Was your husband or wife covered by a retirement plan at work or through self-employment in 2025 (a pension, profit-sharing or 401(k), annuity, SEP, SIMPLE or other employer plan), even if they were not vested in it?
+- Interpretation: amb.2025.ira_mfs_spouse_covered
+- Expr: `{"op":"input","source":"Was your husband or wife covered by a retirement plan at work or through self-employment in 2025 (a pension, profit-sharing or 401(k), annuity, SEP, SIMPLE or other employer plan), even if they were not vested in it?"}`
+- Cite: [i1040gi] p. 96, Married persons filing separately, "If you weren’t covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025"; p. 96, Were You Covered by a Retirement Plan?, "profit-sharing (including 401(k)), annuity, SEP, SIMPLE, etc.) at work or through self-employment" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `ira.mfs_spouse_covered_if_asked`
+
+- **Authored helper label:** Married filing separately and considered covered by a retirement plan through your spouse (asked only when you made traditional IRA contributions, were not covered yourself and lived with your spouse at some time in 2025; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Whether the spouse's coverage can matter on this return (traditional IRA contributions, married filing separately, you not covered, and you lived with your spouse at some time in 2025)" = true → helper "Was your husband or wife covered by a retirement plan at work in 2025?"] [helper "Whether the spouse's coverage can matter on this return (traditional IRA contributions, married filing separately, you not covered, and you lived with your spouse at some time in 2025)" = false → helper "Year parameter household.no (false)"]
+- Interpretation: amb.2025.ira_mfs_spouse_covered
+- Expr: `{"alternatives":[{"guard":{"eq":["ira.mfs_cov_matters",{"const":true}],"op":"test"},"then":"ira.mfs_spouse_covered"},{"guard":{"eq":["ira.mfs_cov_matters",{"const":false}],"op":"test"},"then":"ira.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 96, Married persons filing separately, "If you weren’t covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ira.lines2to6`
 
 - **Authored helper label:** Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)
-- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "You (or, on a joint return, your spouse) were covered by a retirement plan (Yes on line 1a or 1b)" = true
+- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "You (or, on a joint return, your spouse) were covered by a retirement plan, or, married filing separately, are considered covered through your spouse (Yes on line 1a or 1b)" = true
 - Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["ira.anyone_covered",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "skip lines 2 through 6" and "Otherwise, go to line 2" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `ira.cov_gate`
 
 - **Authored helper label:** Social security benefits, traditional IRA contributions for 2025, and you or your spouse covered by a retirement plan
-- **Encoded (Bool):** ssb helper "Any social security benefits (otherwise the worksheet is not needed)" = true and helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "You (or, on a joint return, your spouse) were covered by a retirement plan (Yes on line 1a or 1b)" = true
+- **Encoded (Bool):** ssb helper "Any social security benefits (otherwise the worksheet is not needed)" = true and helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "You (or, on a joint return, your spouse) were covered by a retirement plan, or, married filing separately, are considered covered through your spouse (Yes on line 1a or 1b)" = true
 - Interpretation: amb.2025.ira_ssb_copy
 - Expr: `{"all":[{"eq":["ssb.has_benefits",{"const":true}],"op":"test"},{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["ira.anyone_covered",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 31, Lines 6a and 6b, Exception (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -92,9 +122,9 @@
 ## 1a — `ira.line1a`
 
 - **IRS:** Were you covered by a retirement plan (see Were You Covered by a Retirement Plan)?
-- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "You were covered by a retirement plan (1 if Yes)" > 0 (a count)
-- Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"gt":["ira.cov_you",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
-- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 1a, "Were you covered by a retirement plan (see Were You Covered by a Retirement Plan)?" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and (helper "You were covered by a retirement plan (1 if Yes)" > 0 (a count) or helper "Married filing separately and considered covered by a retirement plan through your spouse (asked only when you made traditional IRA contributions, were not covered yourself and lived with your spouse at some time in 2025; otherwise no)" = true)
+- Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"any":[{"gt":["ira.cov_you",{"const":0,"type":"Count"}],"op":"test"},{"eq":["ira.mfs_spouse_covered_if_asked",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 1a, "Were you covered by a retirement plan (see Were You Covered by a Retirement Plan)?"; p. 96, Married persons filing separately, "you are considered covered by a plan unless you lived apart from your spouse for all of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## 1b — `ira.line1b`
 
@@ -376,7 +406,7 @@
 ## (gate) — `ira.excl_gate`
 
 - **Authored helper label:** Traditional IRA contributions, someone covered by a retirement plan, and Form 2555 or 4563 or income excluded as a bona fide resident of Puerto Rico
-- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "You (or, on a joint return, your spouse) were covered by a retirement plan (Yes on line 1a or 1b)" = true and sa helper "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?" = true
+- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "You (or, on a joint return, your spouse) were covered by a retirement plan, or, married filing separately, are considered covered through your spouse (Yes on line 1a or 1b)" = true and sa helper "Do you (or, on a joint return, your spouse) file Form 2555 or Form 4563, or have income excluded as a bona fide resident of Puerto Rico?" = true
 - Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["ira.anyone_covered",{"const":true}],"op":"test"},{"eq":["sa.excluded_income",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 96, Were You Covered by a Retirement Plan?, "If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
 

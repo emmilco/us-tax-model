@@ -1,0 +1,110 @@
+# Coverage rows for the credits of a married filing separately return (lane mfs-l3: Forms 2441, 8863, 8962, 8889).
+# See opening.yaml for how a row is read.
+tax_year: 2025
+part: Married filing separately, credits
+profile: full
+sets:
+  separate:
+    says: A married person filing a separate return, married at the end of 2025, living with their husband or wife.
+    answers:
+      f1040.status: mfs
+      household.married_dec31: true
+      household.mfs_living: together_late
+      sa.spouse_itemizes: false
+      sa.spouse_extra: false
+  hsa_family:
+    says: One health savings account, not inherited, no Archer MSA, with family coverage under a high-deductible plan all year as an eligible individual and $8,000 put in by the person.
+    answers:
+      $f8889@person[taxpayer]: [hsa]
+      person[taxpayer].f8889[hsa].owner_died: false
+      person[taxpayer].f8889[hsa].inherited_any: false
+      person[taxpayer].f8889[hsa].archer: false
+      person[taxpayer].f8889[hsa].line9: 0
+      person[taxpayer].f8889[hsa].line2: 800000
+      person[taxpayer].f8889[hsa].ira_transfer: false
+      person[taxpayer].f8889[hsa].excess_withdrawn: false
+      person[taxpayer].f8889[hsa].coverage_year: family
+      person[taxpayer].f8889[hsa].clear_all_year: true
+      person[taxpayer].f8889[hsa].fsa: false
+      person[taxpayer].f8889[hsa].line14a: 0
+      person[taxpayer].f8889[hsa].mistake_repaid: false
+      person[taxpayer].f8889[hsa].loan: false
+rows:
+  - id: mfs.no_education
+    design: scout-mfs 4 (gated off on a separate return, N8)
+    situation: A married person filing separately is never asked about education expenses, since a separate return takes no education credit.
+    uses: [separate]
+    answers: {}
+    expect:
+      proceeds:
+        f1040.status: mfs
+      not_asked: [f8863.paid]
+  - id: mfs.hsa_spouse
+    design: scout-mfs 4 row 11 (D5, the narrowed Form 8889 refusal)
+    situation: A married person filing separately, with family coverage, whose husband or wife has a health savings account of their own.
+    uses: [separate, hsa_family]
+    answers:
+      person[taxpayer].f8889[hsa].mfs_spouse_hsa: true
+    expect:
+      refused: person[taxpayer].f8889[hsa].mfs
+  - id: mfs.hsa_spouse_none
+    design: scout-mfs 4 row 11 (D5, the narrowed Form 8889 refusal)
+    situation: A married person filing separately, with family coverage, whose husband or wife has no health savings account, goes on past the question.
+    uses: [separate, hsa_family]
+    answers:
+      person[taxpayer].f8889[hsa].mfs_spouse_hsa: false
+    expect:
+      asks: person[taxpayer].x_hsa_prior_excess
+  - id: mfs.dc_spouse_deemed
+    design: scout-mfs 4 row 9 (the guard of f2441.mfs_spouse_earned)
+    situation: A married person filing separately and living with their husband or wife has dependent care benefits from work, and the husband or wife was a full-time student.
+    uses: [separate]
+    answers:
+      f2441.care: true
+      f2441.benefits: true
+      f2441.care_other: false
+      f2441.student: false
+      f2441.unable: false
+      f2441.line13: 0
+      f2441.line14: 0
+      f2441.plans_differ: false
+      f2441.plan_max: 500000
+      f2441.employer_care: false
+      f2441.other_care_expenses: 0
+      f2441.mfs_spouse_deemed: true
+    expect:
+      refused: f2441.mfs_spouse_deemed_if_married
+  - id: mfs.dc_spouse_earned
+    design: scout-mfs 4 row 9 (the spouse's earned income on line 19)
+    situation: A married person filing separately and living with their husband or wife has dependent care benefits from work; the husband or wife was not a student or disabled.
+    uses: [separate]
+    answers:
+      f2441.care: true
+      f2441.benefits: true
+      f2441.care_other: false
+      f2441.student: false
+      f2441.unable: false
+      f2441.line13: 0
+      f2441.line14: 0
+      f2441.plans_differ: false
+      f2441.plan_max: 500000
+      f2441.employer_care: false
+      f2441.other_care_expenses: 0
+      f2441.mfs_spouse_deemed: false
+    expect:
+      asks: f2441.mfs_spouse_earned
+  - id: mfs.ptc_exception
+    design: scout-mfs 4 row 10 (D6, Form 8962 line A)
+    situation: A married person filing separately with a Marketplace plan says they live apart from their husband or wife and cannot file jointly because of abuse; the three-year limit is asked next.
+    uses: [separate]
+    answers:
+      $f1095a: [form_1]
+      f8962.shared_policy: false
+      f8962.divorced_enrolled: false
+      f8962.no_family: false
+      f8962.not_lawful: false
+      f8962.incarcerated: false
+      f8962.medicaid_reversed: false
+      f8962.mfs_exception: true
+    expect:
+      asks: f8962.mfs_three_years

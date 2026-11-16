@@ -1,0 +1,54 @@
+{
+ "kind": "transcription",
+ "form": "royalty",
+ "rulings": [
+  {
+   "printed": "royalty.income",
+   "project_expr_sha256": "1c1fd797f13a82d943fb2deadc92997b405b4fe7fd97e2bfc7a67f58f9af8011",
+   "second_expr_sha256": "d9324f17fa5d1ae071ca56eac376fb2764dec5399e3b72a53e97767164a6fad0",
+   "ruling": "Ruling: representation; equivalent on executable triage (8 of 8 inputs agree, too few generated royalty entries for the mechanical rule): line 21 is line 4 less line 20, so the reply's line 4 less line 20 floored at zero (or its negation) is the project's line 21 form exactly.",
+   "context": "efa5f3a3f9425d565816790c7078fa7841b317c9ee57411f5bbdf6a12d019476",
+   "date": "2026-11-15",
+   "run": "32d1aaae565ee7fbd703f2dc500521d24fb00c2e8522677b19eba783f6ef6e4d",
+   "subject_key": "bc39c40c04d24077cc3f37e9e12ce3b869a5367f065ace8dfce0c105c30c7aa0",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "royalty.loss",
+   "project_expr_sha256": "4a811cb927e274fecf8a4230624cb368416492e4f7f804e4a7d94c5947c990e6",
+   "second_expr_sha256": "509e5f85fd0a11ce8bcc067428eb5708e083aec129d0b607b9eff6bf20a1d667",
+   "ruling": "Ruling: representation; equivalent on executable triage (8 of 8 inputs agree, too few generated royalty entries for the mechanical rule): line 21 is line 4 less line 20, so the reply's line 4 less line 20 floored at zero (or its negation) is the project's line 21 form exactly.",
+   "context": "efa5f3a3f9425d565816790c7078fa7841b317c9ee57411f5bbdf6a12d019476",
+   "date": "2026-11-15",
+   "run": "32d1aaae565ee7fbd703f2dc500521d24fb00c2e8522677b19eba783f6ef6e4d",
+   "subject_key": "eff433889a2cd6305657ef922a253c9ef464620dd8500b8bb26340fc62e714c7",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "royalty.loss_abs",
+   "project_expr_sha256": "240aed503f4f5bff18bb2190f5f58a4491e076600e93267ffa14f44844d4b2cb",
+   "second_expr_sha256": "4d274864fbbb6681719b2f26894474c09288146e0b9dae78e548a67214d0ebd1",
+   "ruling": "Ruling: representation; equivalent on executable triage (8 of 8 inputs agree, too few generated royalty entries for the mechanical rule): line 21 is line 4 less line 20, so the reply's line 4 less line 20 floored at zero (or its negation) is the project's line 21 form exactly.",
+   "context": "efa5f3a3f9425d565816790c7078fa7841b317c9ee57411f5bbdf6a12d019476",
+   "date": "2026-11-15",
+   "run": "32d1aaae565ee7fbd703f2dc500521d24fb00c2e8522677b19eba783f6ef6e4d",
+   "subject_key": "9c3f686b07322754f1a9ec10a648c68ab365d57c780379a1981b8d290fda4f74",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

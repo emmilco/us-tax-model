@@ -1,0 +1,161 @@
+diff --git a/fixtures/ny/2025/it201.json b/fixtures/ny/2025/it201.json
+index 6c9c84a..43f4c6b 100644
+--- a/fixtures/ny/2025/it201.json
++++ b/fixtures/ny/2025/it201.json
+@@ -12480,6 +12480,54 @@
+         }
+       }
+     },
++    {
++      "id": "ny.refuse.line20_premium",
++      "covers": [
++        "ny_it201"
++      ],
++      "inputs": {
++        "$interest": [
++          "bank_a"
++        ],
++        "$w2@person[taxpayer]": [
++          "emp_a",
++          "emp_b"
++        ],
++        "person[taxpayer].w2[emp_a].box1": 3800000,
++        "person[taxpayer].w2[emp_a].box2": 1200000,
++        "person[taxpayer].w2[emp_a].box3": 3800000,
++        "person[taxpayer].w2[emp_a].box4": 496000,
++        "person[taxpayer].w2[emp_a].box5": 3800000,
++        "person[taxpayer].w2[emp_a].box6": 116000,
++        "person[taxpayer].w2[emp_b].box1": 4000000,
++        "person[taxpayer].w2[emp_b].box2": 500000,
++        "person[taxpayer].w2[emp_b].box3": 4000000,
++        "person[taxpayer].w2[emp_b].box4": 248000,
++        "person[taxpayer].w2[emp_b].box5": 4000000,
++        "person[taxpayer].w2[emp_b].box6": 58000,
++        "ny_it201.ask.city_resident": true,
++        "ny_it201.ask.out_of_state_bond_interest": true,
++        "f1040.tax_exempt_any": true,
++        "f1040.tax_exempt_interest": 0
++      },
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Refusal predicted from the source: line 20 adds the gross interest of other states' bonds, and bond premium amortization is not an offset (IT-201-I p. 7, Line 20). Premium equal to the coupon leaves federal line 2a at 0, but the federal Yes to tax-exempt interest opens ny_it201.gate.line20, so the Yes refuses at line 20 as in ny.refuse.line20.",
++      "expect": {
++        "ny_it201.line20": {
++          "kind": "refusal",
++          "gate": "ny_it201.gate.line20",
++          "form": "Form IT-201 line 20 (addition for other states' bond interest)",
++          "remedy": "This addition is not computed by this tool (decision B4).",
++          "cite": {
++            "doc": "ny_it201i",
++            "locator": "p. 7, Line 20, \"enter any such interest income that you received or that was credited to you during 2025 that was not included in your federal adjusted gross income\"",
++            "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
++            "snapshot": "29489d6eed7529bc1388e57a5bf0814e6e6d94d02288c5c83a377d21e3773f72",
++            "tax_year": 2025
++          }
++        }
++      }
++    },
+     {
+       "id": "ny.refuse.line21",
+       "covers": [
+diff --git a/forms/ny/2025/ny_it201.yaml b/forms/ny/2025/ny_it201.yaml
+index 58cd62e..4162dc9 100644
+--- a/forms/ny/2025/ny_it201.yaml
++++ b/forms/ny/2025/ny_it201.yaml
+@@ -628,9 +628,9 @@ form:
+       ambiguity: amb.ny.2025.whole_dollars
+     - id: ny_it201.has_tax_exempt
+       printed: '(helper)'
+-      label: 'Tax-exempt interest or exempt-interest dividends on federal line 2a'
++      label: 'Tax-exempt interest received (federal Yes, even if bond premium leaves line 2a at zero), or exempt-interest dividends on federal line 2a'
+       type: Bool
+-      expr: { op: test, gt: ["f1040.line2a", { const: 0 }] }
++      expr: { op: test, any: [{ op: test, eq: ["f1040.tax_exempt_any", { const: true }] }, { op: test, gt: ["f1040.line2a", { const: 0 }] }] }
+       cite: { doc: ny_it201i, locator: 'p. 7, Line 20, "Do you have interest income from state and local bonds and obligations from states other than New York State or its local governments?"' }
+     - id: ny_it201.gate.line20
+       printed: '(gate)'
+diff --git a/interview/2025/coverage/ny.yaml b/interview/2025/coverage/ny.yaml
+index 80c453a..d75d4be 100644
+--- a/interview/2025/coverage/ny.yaml
++++ b/interview/2025/coverage/ny.yaml
+@@ -201,6 +201,15 @@ rows:
+       ny_it201.ask.out_of_state_bond_interest: true
+     expect:
+       refused: ny_it201.gate.line20
++  - id: ny.other_state_bonds_premium
++    design: lane ny, BUG-0857; the line 20 question opens on the federal Yes even when bond premium leaves line 2a at zero
++    situation: A filer whose other-state bonds were bought at a premium that, amortized, equals their interest.
++    answers:
++      f1040.tax_exempt_any: true
++      f1040.tax_exempt_interest: 0
++      ny_it201.ask.out_of_state_bond_interest: true
++    expect:
++      refused: ny_it201.gate.line20
+   - id: ny.gov_pension
+     design: lane ny, ny_it201.ask.gov_pension asked only with pension or IRA income
+     situation: A retired city police officer.
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index a651f7c..c31da86 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -1687,8 +1687,9 @@ bank:
+   - input: sales.aggregate_eligible
+     order: 274
+     seq: 20
+-    prompt: Is every one of these true of this sale? The statement shows no adjustment and the Ordinary box is not checked, you
+-      are correcting nothing, and it is not a collectible or an opportunity zone fund investment.
++    prompt: Is every one of these true of this sale? The statement shows no adjustment and the Ordinary box is not checked, none
++      of its figures needs changing, and it is not a collectible or an opportunity zone fund investment.
++    help: A corrected statement counts if none of its own figures needs changing.
+   - input: sales.proceeds
+     order: 274
+     seq: 14
+@@ -1717,11 +1718,11 @@ bank:
+   - input: sb.nominee
+     order: 273
+     seq: 1
+-    help: Interest and dividends on an account you own with your spouse are all yours on a joint return. If part of what a form shows in your name is really another person's, answer Yes.
++    help: On a joint return, an account you own with your spouse is all yours; on a separate return, your spouse's share is another person's. If part of what a form shows in your name is really another person's, answer Yes.
+   - input: sb.bonds_any
+     order: 273
+     seq: 2
+-    help: Interest from a bank account, a certificate of deposit or a fund is not what this asks about. If you are not sure, answer Yes.
++    help: Interest from a bank account, a fund or a certificate of deposit from your bank is not what this asks about; a certificate of deposit bought through a broker, or with a Form 1099-OID, counts. If you are not sure, answer Yes.
+   - input: sb.bond_special
+     order: 273
+     seq: 3
+@@ -2137,8 +2138,8 @@ bank:
+     seq: 1
+     group: sales_rare
+     tick: Sold real estate or business property, or any sale paid later
+-    help: A home you lived in counts as real estate. Business property is anything you used in a business or rented out, such
+-      as equipment, a vehicle or a building.
++    help: A home you lived in counts as real estate, and so does an oil, gas or mineral interest, such as a royalty. Business
++      property is anything you used in a business or rented out, such as equipment, a vehicle or a building.
+   - input: sd.business_property
+     order: 274
+     seq: 7
+@@ -6892,7 +6893,7 @@ bank:
+     order: 264
+     seq: 178
+     help: "Such as a loan you are not personally liable for, or money protected from loss by a guarantee or stop-loss agreement. A bank loan you must repay yourself does not count. A Yes ends the interview here."
+-    prompt: "For this S corporation — Did you pay for your shares, or lend to it, with money borrowed on terms that protect you from loss, or borrowed from another owner or someone related to one?"
++    prompt: "For this S corporation — Is any money or property you put into it (for shares, a loan or a contribution) protected from loss, or borrowed from another owner, anyone else with a stake in its business, or a relative of either?"
+   - input: f7203.election
+     order: 264
+     seq: 180
+diff --git a/interview/ny/2025/questions.yaml b/interview/ny/2025/questions.yaml
+index 1d92b2a..df907ec 100644
+--- a/interview/ny/2025/questions.yaml
++++ b/interview/ny/2025/questions.yaml
+@@ -120,8 +120,9 @@ bank:
+     tick: Another state's bonds, or a fund holding them
+     prompt: Did any of your tax-free interest or dividends come from bonds issued outside New York, or from a fund that holds
+       them?
+-    help: Most national tax-free bond funds hold bonds of many states. Bonds of New York State, its cities and agencies, and
+-      of Puerto Rico and other U.S. territories count as No. New York taxes the rest, which this tool does not compute.
++    help: Most national tax-free bond funds hold other states' bonds, and part of a New York fund may too (see its year-end
++      statement). Bonds of New York State, its cities and agencies, or a U.S. territory count as No. A Yes ends the interview
++      here.
+   - input: ny_it201.ask.gov_pension
+     order: 1010
+     seq: 30

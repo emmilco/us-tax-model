@@ -628,7 +628,7 @@
         "s1:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage16.other.o1 (gambling winnings $5,000), with the question on other line 8 income this tool does not compute answered Yes. No line 8 entry (8b to 8z) carries this gate, so their sum is a number and line 9's own entry decides its value; line 10 and Form 1040 line 8 carry the same refusal through line 9. The refused values are the evaluator's.",
+      "evidence_note": "Inputs are stage16.other.o1 (gambling winnings $5,000), with the question on other line 8 income this tool does not compute answered Yes. No line 8 entry (8b to 8z) carries this gate, so their sum is a number and line 9's own entry decides its value; line 10 and Form 1040 line 8 carry the same refusal through line 9. The refused values are the evaluator's. Restated by lane x2-s1o: line 8e (Form 8853) is computed now, and with no Section C entry it is $0, so lines 9 and 10 and Form 1040 line 8 are the $5,000 of gambling winnings (Schedule 1 line 9, \"Add lines 8a through 8z\"); the refusal through line 8m is kept by x2s1o.refuse.s1.line8_other.",
       "inputs": {
         "f1040.estimated_any": true,
         "f1040.line26": 200000,
@@ -655,43 +655,16 @@
           "cents": 500000
         },
         "s1.line9": {
-          "kind": "refusal",
-          "gate": "s1.line8_other",
-          "form": "Schedule 1, line 8 (other income this tool does not compute)",
-          "remedy": "Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit, scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 91–92, Lines 8a Through 8z",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 500000
         },
         "s1.line10": {
-          "kind": "refusal",
-          "gate": "s1.line8_other",
-          "form": "Schedule 1, line 8 (other income this tool does not compute)",
-          "remedy": "Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit, scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 91–92, Lines 8a Through 8z",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 500000
         },
         "f1040.line8": {
-          "kind": "refusal",
-          "gate": "s1.line8_other",
-          "form": "Schedule 1, line 8 (other income this tool does not compute)",
-          "remedy": "Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit, scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 91–92, Lines 8a Through 8z",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 500000
         }
       }
     },
@@ -1137,6 +1110,528 @@
         "s1.line10": {
           "kind": "money",
           "cents": 0
+        }
+      }
+    },
+    {
+      "id": "s1.line8v",
+      "covers": [
+        "s1.line8v"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "i1040gi p. 92, Line 8v: digital assets received as ordinary income not reported elsewhere (staking, mining, a fork) go on Schedule 1 line 8v, which line 9 adds (f1040s1 line 9, \"Add lines 8a through 8z\"). With nothing else on Schedule 1, lines 8v, 9 and 10 and Form 1040 line 8 are all the amount entered, 1,234.56.",
+      "inputs": {
+        "f1040.digital_assets": true,
+        "s1.digital_income": true,
+        "s1.digital_amount": 123456
+      },
+      "expect": {
+        "s1.line8v": {
+          "kind": "money",
+          "cents": 123456
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 123456
+        },
+        "s1.line10": {
+          "kind": "money",
+          "cents": 123456
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 123456
+        }
+      }
+    },
+    {
+      "id": "s1.line8v.none",
+      "covers": [
+        "s1.line8v"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "A Yes to the digital asset question with no digital asset income (the filer only sold or traded): line 8v is zero.",
+      "inputs": {
+        "f1040.digital_assets": true,
+        "s1.digital_income": false,
+        "s1.digital_amount": 123456
+      },
+      "expect": {
+        "s1.line8v": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "s1.line8v.not_asked",
+      "covers": [
+        "s1.line8v"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "A No to the digital asset question: the income question beneath it is not read (its answer stated Yes here to show it), and line 8v is zero.",
+      "inputs": {
+        "f1040.digital_assets": false,
+        "s1.digital_income": true,
+        "s1.digital_amount": 123456
+      },
+      "expect": {
+        "s1.line8v": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "s1.refuse.digital_nii",
+      "covers": [
+        "f8960.digital_nii"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Wages 190,000 and line 8v 20,000: AGI 210,000 is over the 200,000 single threshold (f8960 line 14), so Form 8960 is filed and whether the line 8v income is net investment income is refused at Form 8960 line 7 (i8960 p. 1, Reminders, Digital assets: \"may be subject to\" the tax). Line 8v itself is computed.",
+      "inputs": {
+        "f1040.digital_assets": true,
+        "s1.digital_income": true,
+        "s1.digital_amount": 2000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 19000000,
+        "person[taxpayer].w2[a].box5": 19000000,
+        "person[taxpayer].w2[a].box6": 275500
+      },
+      "expect": {
+        "s1.line8v": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f8960.line7": {
+          "kind": "refusal",
+          "form": "Form 8960, digital asset income",
+          "remedy": "Digital assets received as ordinary income (Schedule 1 line 8v) on a return whose modified adjusted gross income is over the net investment income tax threshold may be net investment income; whether this income is is outside this tool.",
+          "cite": {
+            "doc": "i8960",
+            "tax_year": 2025,
+            "revision": "2025; printed date 2026-02-04",
+            "snapshot": "b10fbb23ff4a053db197285497a00914c558e3ae0cdf5c956b7c0c7867376428",
+            "locator": "p. 1, Reminders, Digital assets"
+          },
+          "gate": "f8960.digital_nii"
+        }
+      }
+    },
+    {
+      "id": "s1.digital_nii.under_threshold",
+      "covers": [
+        "f8960.digital_nii"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Wages 180,000 and line 8v 10,000: AGI 190,000 is not over the 200,000 threshold, so no Form 8960 and no refusal; line 7 and line 17 are zero.",
+      "inputs": {
+        "f1040.digital_assets": true,
+        "s1.digital_income": true,
+        "s1.digital_amount": 1000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 18000000,
+        "person[taxpayer].w2[a].box5": 18000000,
+        "person[taxpayer].w2[a].box6": 261000
+      },
+      "expect": {
+        "f8960.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8960.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 1000000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.nol.computed",
+      "covers": [
+        "s1",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Single, wages $80,000, a $20,000 net operating loss from after 2017 carried into 2025. Line 8a is −$20,000, AGI $60,000, taxable income $60,000 − $15,750 = $44,250. The test: 4 × $44,250 = $177,000 is not less than $20,000, so the deduction is computed (taxable income without it, $64,250, × 80% = $51,400 ≥ $20,000).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 8000000,
+        "person[taxpayer].w2[e0].box5": 8000000,
+        "person[taxpayer].w2[e0].box6": 116000,
+        "scope.nol": true,
+        "s1.nol_amount": 2000000
+      },
+      "expect": {
+        "s1.line8a": {
+          "kind": "money",
+          "cents": -2000000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": -2000000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 4425000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.nol.boundary",
+      "covers": [
+        "s1",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Single, wages $65,750, a $40,000 loss carried in: taxable income after it is $25,750 − $15,750 = $10,000, and 4 × $10,000 = $40,000 equals the loss, so the test (loss more than four times taxable income) is not met and the deduction is computed; exactly at the 80% limit ($50,000 × 80% = $40,000). Pins less-than against less-or-equal.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6575000,
+        "person[taxpayer].w2[e0].box5": 6575000,
+        "person[taxpayer].w2[e0].box6": 95338,
+        "scope.nol": true,
+        "s1.nol_amount": 4000000
+      },
+      "expect": {
+        "s1.line8a": {
+          "kind": "money",
+          "cents": -4000000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 1000000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.nol.limit_refused",
+      "covers": [
+        "s1",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Single, wages $40,000, a $30,000 loss carried in: after it taxable income is $10,000 − $15,750 = −$5,750, four times that is less than $30,000, so s1.nol_limit refuses at Form 1040 line 15 (the true limit, 80% of $24,250 = $19,400, is below $30,000). Line 8a itself is computed. The refused value is the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 4000000,
+        "person[taxpayer].w2[e0].box5": 4000000,
+        "person[taxpayer].w2[e0].box6": 58000,
+        "scope.nol": true,
+        "s1.nol_amount": 3000000
+      },
+      "expect": {
+        "s1.line8a": {
+          "kind": "money",
+          "cents": -3000000
+        },
+        "f1040.line15": {
+          "kind": "refusal",
+          "gate": "s1.nol_limit",
+          "form": "Form 172, NOL deduction limitation (the 80% limit)",
+          "remedy": "Your net operating loss carried into 2025 is more than four times your taxable income after deducting it, so the limit of 80% of taxable income figured without the deduction may apply; figuring the limit and the loss carried to 2026 is outside this tool.",
+          "cite": {
+            "doc": "i172",
+            "locator": "p. 2, \"Only NOLs arising after 2017 and carried forward to a year after 2020 are subject to the 80%-of-taxable-income limit\"",
+            "revision": "Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025)",
+            "snapshot": "15977bb641b55d9ca8acb81b1da10e04371f10acf15ec9fb09bce829bd1a5c77",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.nol.pre2018_refused",
+      "covers": [
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "As x2s1o.nol.computed with part of the loss from a year before 2018: refused at line 8a by s1.nol_before_limit_date_if_nol. The refused value is the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 8000000,
+        "person[taxpayer].w2[e0].box5": 8000000,
+        "person[taxpayer].w2[e0].box6": 116000,
+        "scope.nol": true,
+        "s1.nol_amount": 2000000,
+        "s1.nol_before_limit_date": true
+      },
+      "expect": {
+        "s1.line8a": {
+          "kind": "refusal",
+          "gate": "s1.nol_before_limit_date_if_nol",
+          "form": "Form 172, NOL deduction limitation (a loss from a year before 2018)",
+          "remedy": "A net operating loss from a tax year that began before 2018 is deducted ahead of the limit on later losses; that is outside this tool.",
+          "cite": {
+            "doc": "i172",
+            "locator": "p. 1, NOL deduction limitation, \"cannot exceed the sum of: (1) the NOLs carried to the year from tax years beginning before January 1, 2018\"",
+            "revision": "Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025)",
+            "snapshot": "15977bb641b55d9ca8acb81b1da10e04371f10acf15ec9fb09bce829bd1a5c77",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.nol.ebl_refused",
+      "covers": [
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "As x2s1o.nol.computed with part of the loss from an excess business loss: refused at line 8a by s1.nol_ebl_if_nol. The refused value is the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 8000000,
+        "person[taxpayer].w2[e0].box5": 8000000,
+        "person[taxpayer].w2[e0].box6": 116000,
+        "scope.nol": true,
+        "s1.nol_amount": 2000000,
+        "s1.nol_ebl": true
+      },
+      "expect": {
+        "s1.line8a": {
+          "kind": "refusal",
+          "gate": "s1.nol_ebl_if_nol",
+          "form": "Form 172 and Form 8995 (a loss carried from an excess business loss)",
+          "remedy": "A net operating loss from an excess business loss is taken into the qualified business income of the year it is deducted; that is outside this tool.",
+          "cite": {
+            "doc": "i8995",
+            "locator": "p. 3, \"Instead, qualified losses and deductions are taken into account in the tax year they’re included in calculating your taxable income\"",
+            "revision": "2025; printed date 2026-01-26",
+            "snapshot": "875843baead68f6fa9aa7c3f6f27d6c1f37cb971ac334bcf414acdb4c1487684",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.nol.marital_refused",
+      "covers": [
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Joint return, a loss from a year the spouses were not married to each other: refused at line 8a by s1.nol_marital (i172 p. 3, Change in Marital Status). The refused value is the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 8000000,
+        "person[taxpayer].w2[e0].box5": 8000000,
+        "person[taxpayer].w2[e0].box6": 116000,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "scope.nol": true,
+        "s1.nol_amount": 2000000,
+        "s1.nol_not_married": true
+      },
+      "expect": {
+        "s1.line8a": {
+          "kind": "refusal",
+          "gate": "s1.nol_marital",
+          "form": "Form 172, Change in Marital Status",
+          "remedy": "A net operating loss from a year when you were not married to your spouse of 2025, or when you filed jointly and now file alone, must be divided between the spouses; that is outside this tool.",
+          "cite": {
+            "doc": "i172",
+            "locator": "p. 3, Change in Marital Status, \"only the spouse who had the loss can take the NOL deduction\"; p. 3, Joint to separate returns, \"figure each of your carryovers separately\"",
+            "revision": "Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025)",
+            "snapshot": "15977bb641b55d9ca8acb81b1da10e04371f10acf15ec9fb09bce829bd1a5c77",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.line8k",
+      "covers": [
+        "s1",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Single, wages $50,000; $1,500 of stock option income not on the W-2 (line 8k). Line 9 is $1,500; AGI $51,500.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s2.options_any": true,
+        "s1.stock_options": true,
+        "s1.options_amount": 150000
+      },
+      "expect": {
+        "s1.line8k": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 5150000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.refuse.inmate_8u",
+      "covers": [
+        "s1",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Single, wages $50,000; $1,500 of stock option income (line 8k) and pay for work done while an inmate (line 8u). Line 8u is refused by s1.line8_other (its W-2 part is not asked), so line 9 and AGI refuse there.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s2.options_any": true,
+        "s1.stock_options": true,
+        "s1.options_amount": 150000,
+        "s1.inmate_wages": true
+      },
+      "expect": {
+        "s1.line8k": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "s1.line9": {
+          "kind": "refusal",
+          "gate": "s1.line8_other",
+          "form": "Schedule 1, line 8 (other income this tool does not compute)",
+          "remedy": "Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit, scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 91–92, Lines 8a Through 8z",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.refuse.s1.line8_other",
+      "covers": [
+        "s1:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Gambling winnings of $5,000 with an Olympic medal or USOC prize money (line 8m), which stays refused through s1.line8_other at line 9: the refusal case stage16.refuse.s1.line8_other reached through line 8e, which lane x2-s1o computes. The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "s1.winnings_any": true,
+        "s1.gambling_winnings": 500000,
+        "s1.olympic": true
+      },
+      "expect": {
+        "s1.line8b": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "s1.line9": {
+          "kind": "refusal",
+          "gate": "s1.line8_other",
+          "form": "Schedule 1, line 8 (other income this tool does not compute)",
+          "remedy": "Other income on Schedule 1 line 8 other than gambling winnings, canceled debt, income from Form 8889, Alaska Permanent Fund dividends, jury duty pay, prizes and awards, income from an activity not engaged in for profit, scholarship and fellowship grants not on Form W-2 and the supported line 8z items is outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 91–92, Lines 8a Through 8z",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mint.s1.nol.limit_refused_positive_income",
+      "covers": [
+        "s1",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mint), expected values predicted by hand from the archived sources before running the evaluator. Single, wages $100,000, an $80,000 loss carried in, no HSA distribution. Schedule 1 line 8a is -$80,000, so adjusted gross income (Form 1040 line 11a) is $20,000; the standard deduction for a single filer is $15,750 (Form 1040 (2025) p. 2, margin beside lines 12e to 14), so taxable income after the deduction is $4,250, and four times that ($17,000) is less than the $80,000 carried in: s1.nol_limit (amb.2025.s1_nol_limit_test, chosen reading) is true and the tool refuses at Form 1040 line 15 (i172 p. 2: the deduction of post-2017 NOLs cannot exceed \"80% of the excess (if any) of taxable income computed without regard to deductions for NOLs\"; here 80% of $35,750 = $28,600 is below $80,000, so the limit does apply). Unlike x2s1o.nol.limit_refused, taxable income after the deduction is positive. The refused value is the evaluator's, after it refused at the predicted gate.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 10000000,
+        "person[taxpayer].w2[e0].box5": 10000000,
+        "person[taxpayer].w2[e0].box6": 145000,
+        "scope.nol": true,
+        "s1.nol_amount": 8000000
+      },
+      "expect": {
+        "s1.line8a": {
+          "kind": "money",
+          "cents": -8000000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "s1.nol_limit": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line15": {
+          "kind": "refusal",
+          "gate": "s1.nol_limit",
+          "form": "Form 172, NOL deduction limitation (the 80% limit)",
+          "remedy": "Your net operating loss carried into 2025 is more than four times your taxable income after deducting it, so the limit of 80% of taxable income figured without the deduction may apply; figuring the limit and the loss carried to 2026 is outside this tool.",
+          "cite": {
+            "doc": "i172",
+            "locator": "p. 2, \"Only NOLs arising after 2017 and carried forward to a year after 2020 are subject to the 80%-of-taxable-income limit\"",
+            "revision": "Rev. December 2024 (Instructions for Form 172; the current irs-pdf edition; names 2018 through 2025)",
+            "snapshot": "15977bb641b55d9ca8acb81b1da10e04371f10acf15ec9fb09bce829bd1a5c77",
+            "tax_year": 2025
+          }
         }
       }
     }

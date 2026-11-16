@@ -14554,10 +14554,10 @@
         "$ny_it2": [
           "w0"
         ],
-        "person[taxpayer].w2[a].box2": null
+        "household.married_dec31": true
       },
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 48,000.00, f1040.line11a 48,000.00, eic.limit 19,104.00. Filing status mfs (target taxable income $40,000). The federal return refuses married filing separately at line 37 (s3.mfs); the New York lines asserted do not read it. Taxable income reached (line 38): $40,000; New York AGI (line 33): $48,000.",
+      "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 48,000.00, f1040.line11a 48,000.00, eic.limit 19,104.00. Filing status mfs (target taxable income $40,000). The filer is married at the end of 2025 (stated; the federal return computes married filing separately). Taxable income reached (line 38): $40,000; New York AGI (line 33): $48,000.",
       "expect": {
         "ny_it201.line1": {
           "kind": "money",
@@ -14709,10 +14709,10 @@
         "$ny_it2": [
           "w0"
         ],
-        "person[taxpayer].w2[a].box2": null
+        "household.married_dec31": true
       },
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: schedule). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 78,000.00, f1040.line11a 78,000.00, eic.limit 19,104.00. Filing status mfs (target taxable income $70,000). The federal return refuses married filing separately at line 37 (s3.mfs); the New York lines asserted do not read it. Taxable income reached (line 38): $70,000; New York AGI (line 33): $78,000.",
+      "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: schedule). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 78,000.00, f1040.line11a 78,000.00, eic.limit 19,104.00. Filing status mfs (target taxable income $70,000). The filer is married at the end of 2025 (stated; the federal return computes married filing separately). Taxable income reached (line 38): $70,000; New York AGI (line 33): $78,000.",
       "expect": {
         "ny_it201.line1": {
           "kind": "money",
@@ -14864,10 +14864,10 @@
         "$ny_it2": [
           "w0"
         ],
-        "person[taxpayer].w2[a].box2": null
+        "household.married_dec31": true
       },
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 128,000.00, f1040.line11a 128,000.00, eic.limit 19,104.00. Filing status mfs (target taxable income $120,000). The federal return refuses married filing separately at line 37 (s3.mfs); the New York lines asserted do not read it. Taxable income reached (line 38): $120,000; New York AGI (line 33): $128,000.",
+      "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 128,000.00, f1040.line11a 128,000.00, eic.limit 19,104.00. Filing status mfs (target taxable income $120,000). The filer is married at the end of 2025 (stated; the federal return computes married filing separately). Taxable income reached (line 38): $120,000; New York AGI (line 33): $128,000.",
       "expect": {
         "ny_it201.line1": {
           "kind": "money",
@@ -15019,10 +15019,10 @@
         "$ny_it2": [
           "w0"
         ],
-        "person[taxpayer].w2[a].box2": null
+        "household.married_dec31": true
       },
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 308,000.00, f1040.line11a 308,000.00, eic.limit 19,104.00. Filing status mfs (target taxable income $300,000). The federal return refuses married filing separately at line 37 (s3.mfs); the New York lines asserted do not read it. Taxable income reached (line 38): $300,000; New York AGI (line 33): $308,000.",
+      "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 308,000.00, f1040.line11a 308,000.00, eic.limit 19,104.00. Filing status mfs (target taxable income $300,000). The filer is married at the end of 2025 (stated; the federal return computes married filing separately). Taxable income reached (line 38): $300,000; New York AGI (line 33): $308,000.",
       "expect": {
         "ny_it201.line1": {
           "kind": "money",
@@ -16103,7 +16103,7 @@
         "$ny_it2": [
           "w0"
         ],
-        "person[taxpayer].w2[a].box2": null
+        "household.married_dec31": true
       },
       "evidence": "synthetic regression (not class B)",
       "evidence_note": "Refusal predicted from the source: married filing separately with federal AGI within the household credit rows (table 3 needs the spouse's AGI). The New York answers make ny_it201.gate.hh_state_mfs true, so ny_it201.line40 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text.",
@@ -17040,6 +17040,38 @@
             "snapshot": "29489d6eed7529bc1388e57a5bf0814e6e6d94d02288c5c83a377d21e3773f72",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "ny.dep.item_c_single",
+      "covers": [
+        "ny_it201.item_c",
+        "ny_it201.line34"
+      ],
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2006,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 600000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 600000,
+        "person[taxpayer].w2[emp_a].box4": 37200,
+        "person[taxpayer].w2[emp_a].box5": 600000,
+        "person[taxpayer].w2[emp_a].box6": 8700
+      },
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Predicted from the source: a single filer whom someone else can claim as a dependent marks item C Yes (ny_it201.item_c reads the federal answer), and the New York standard deduction table gives \"Single and you marked item C Yes ... $3,100\" (IT-201-I, line 34). Reachable since the federal return computes for a claimable filer (lane x2-dep).",
+      "expect": {
+        "ny_it201.item_c": {
+          "kind": "bool",
+          "value": true
+        },
+        "ny_it201.line34": {
+          "kind": "money",
+          "cents": 310000
         }
       }
     }

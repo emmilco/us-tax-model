@@ -1,0 +1,15 @@
+diff --git a/tools/transcription/screen_review.py b/tools/transcription/screen_review.py
+index 856d099..c069528 100644
+--- a/tools/transcription/screen_review.py
++++ b/tools/transcription/screen_review.py
+@@ -172,8 +172,8 @@ Read the IRS text below. Report:
+ - WIDE: a situation the question's wording makes a filer answer YES to, although the tool computes
+   it correctly. Quote the question and the IRS text.
+ - UNCLEAR: wording a filer could reasonably read either way.
+-Do not report differences that arise only on a joint return (married filing statuses are refused
+-elsewhere) or situations another listed refusal already covers.
++Do not report situations another listed refusal already covers. A joint return is in scope: on a
++joint return the question must cover the spouse's situations too.
+ 
+ # Output
+ 

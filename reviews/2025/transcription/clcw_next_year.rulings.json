@@ -164,12 +164,12 @@
      "candidate-unknown"
     ],
     "witnesses": [
-     "fixture:classm.clcw26.2.deepseek@clcw26",
-     "fixture:classm.s2.3.deepseek@clcw26",
-     "fixture:classm.f8960.1@clcw26",
-     "fixture:classm.s2.3@clcw26",
-     "fixture:classm.tcw.11@clcw26",
-     "fixture:classm.clcw26.4@clcw26"
+     "fixture:classm.clcw26.2.deepseek@clcw_next_year",
+     "fixture:classm.s2.3.deepseek@clcw_next_year",
+     "fixture:classm.f8960.1@clcw_next_year",
+     "fixture:classm.s2.3@clcw_next_year",
+     "fixture:classm.tcw.11@clcw_next_year",
+     "fixture:classm.clcw26.4@clcw_next_year"
     ],
     "policy": "executable-triage-v2"
    }
@@ -448,13 +448,13 @@
      "project-refuses"
     ],
     "witnesses": [
-     "fixture:classm.clcw26.2.deepseek@clcw26",
-     "fixture:classm.asset.1@clcw26",
-     "fixture:classm.f8960.1@clcw26",
-     "fixture:classm.otjob.1@clcw26",
-     "fixture:classm.tcw.11@clcw26",
-     "fixture:classm.clcw26.1@clcw26",
-     "fixture:classm.f8863.2@clcw26"
+     "fixture:classm.clcw26.2.deepseek@clcw_next_year",
+     "fixture:classm.asset.1@clcw_next_year",
+     "fixture:classm.f8960.1@clcw_next_year",
+     "fixture:classm.otjob.1@clcw_next_year",
+     "fixture:classm.tcw.11@clcw_next_year",
+     "fixture:classm.clcw26.1@clcw_next_year",
+     "fixture:classm.f8863.2@clcw_next_year"
     ],
     "policy": "executable-triage-v2"
    }

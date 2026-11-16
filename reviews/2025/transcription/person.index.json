@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
  "head_rows": {
-  "printed lines compared": "120",
-  "agree / disagree / missing": "59 / 61 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
+  "printed lines compared": "136",
+  "agree / disagree / missing": "58 / 78 / 0",
+  "line-scoped reviews": "7 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -182,6 +182,110 @@
    "subject_key": "26e23d689780f77ec1f5df595aa10fde1a78ccd83cbe29af37e3e4e2927159a3"
   },
   {
+   "key": "person.f8919_wages",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 2,765/5,490 agree; 2,720 candidate-unknown, 5 project-unknown (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 8919 firm rows without the parent question that opens them (scope.contractor_pay_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 8919 rows are read the same way once asked; f8919 line 6, 'Total wages. Combine lines 1 through 5 in column (f)'.",
+   "subject_key": "283526358ada8964057b72a3c7f0b3660a51ee3c60f0b9b18db89c9e1c5741de"
+  },
+  {
+   "key": "person.f8919_tax",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 2,715/5,490 agree; 2,662 candidate-unknown, 109 candidate-refuses, 4 project-unknown (completed: 355 candidate-unknown). No value differs on any return; the reply sums or reads the Form 8919 firm rows without the parent question that opens them (scope.contractor_pay_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 8919 rows are read the same way once asked; f8919 line 13.",
+   "subject_key": "a8e0b9eb5f712aa819b94b4d4b3f1147e9c4e8596b8ac3e35137f9bf2dceda5a"
+  },
+  {
+   "key": "person.f4137_col_c",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 2,765/5,490 agree; 2,720 candidate-unknown, 5 project-unknown (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 employer rows without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 line 2, column (c).",
+   "subject_key": "7c8e28f84c8d44882aec92d5fd74e9ce73458b6cdb97d65070b040c1fcf9ab05"
+  },
+  {
+   "key": "person.f4137_col_d",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 2,765/5,490 agree; 2,720 candidate-unknown, 5 project-unknown (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 employer rows without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 line 3, column (d).",
+   "subject_key": "2369b5b5715946295c1cff60a52698af6d477e97af1e12add315d0680d26cde0"
+  },
+  {
+   "key": "person.f4137_under20_if_rows",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 2,765/5,490 agree; 2,720 candidate-unknown, 5 project-unknown (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows and person.f4137_under20 without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 line 5.",
+   "subject_key": "2b032451bcfdb65122c116b710ec16f3e3a72ca3641ef2fbf48eedf272c7c3a4"
+  },
+  {
+   "key": "person.tips_gov_if_rows",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 3,250/5,490 agree; 2,233 candidate-unknown, 7 project-unknown (completed: 257 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows and person.tips_gov without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 instructions, line 10, government employees.",
+   "subject_key": "62030310358b321f15b1b73569721b94ee1ca966d2121c0f940bb4a91bb9c273"
+  },
+  {
+   "key": "person.f4137_line6",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 2,764/5,490 agree; 2,720 candidate-unknown, 5 project-unknown, 1 project-refuses (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 line 6.",
+   "subject_key": "c11d69bd8e06400492eaf2e0daaf4bdeacf9a067d578c635c43ddb922ca7e9e0"
+  },
+  {
+   "key": "person.f4137_line10",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 2,714/5,490 agree; 2,757 candidate-unknown, 14 candidate-refuses, 4 project-unknown, 1 project-refuses (completed: 355 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows and W-2 boxes 3 and 7 without the parent question that opens them (scope.tips_unreported_if_pay; the reply also refuses government-employee tips, as the project does at person.tips_gov_if_rows), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 lines 7 to 10.",
+   "subject_key": "cfa760b7edeae90c41a52c840fb30d697e89121593b9cf5f156204b6eb7ebdc4"
+  },
+  {
+   "key": "person.f4137_tax",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 2,714/5,490 agree; 2,757 candidate-unknown, 14 candidate-refuses, 4 project-unknown, 1 project-refuses (completed: 355 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 line 13.",
+   "subject_key": "82f9b9391f328fb202ccde6f16ec23b62a78ee3d1b5cbca4a52f0e6d1d838f5f"
+  },
+  {
+   "key": "person.line1c",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 2,718/5,490 agree; 2,767 candidate-unknown, 5 project-unknown (completed: 364 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows and person.tips_noncash without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; i1040gi Line 1c.",
+   "subject_key": "994b1e94b3ccec4bd72ba3c48896a4c46b71256ffa2e39624d197359a5f025e1"
+  },
+  {
+   "key": "person.f4137_filed",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 2,764/5,490 agree; 2,720 candidate-unknown, 5 project-unknown, 1 value (completed: 321 candidate-unknown). The one value witness, x2pay.f4137.line5_over (project true, reply false), is a refused return whose line 5 exceeds line 4 (person.f4137 inconsistent entry, refused by f4137.line5_over). Otherwise both agree; the reply's test is line 6 above zero, the label's line 2 above zero, and its readers (the line 6/10/13 gates, the tipjob column (c) refusal) only differ when every tip is under-$20-month, which the triage did not reach. f4137 line 2.",
+   "subject_key": "30f80130448a49eb650122d159079f6c6e58dbf31ac7c5622320501a1e054767"
+  },
+  {
+   "key": "person.household_wages_if_pay",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "AGREE",
+   "subject_key": "1c1ab693c7299e5efe942104ad84ecf1ef28aa8ecd0079b4fe022663c319c8bd"
+  },
+  {
+   "key": "person.line1d",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 3,189/5,490 agree; 2,292 candidate-unknown, 5 project-unknown, 3 value, 1 project-refuses (completed: 315 candidate-unknown). No value differs on any return; the reply sums or reads the Medicaid waiver answers without the parent question that opens them (the person.mw_* _if_ gates, e.g. person.mw_1099_if_not_box1), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Medicaid waiver rows are read the same way once asked; i1040gi Line 1d and Schedule 1 line 8s.",
+   "subject_key": "76c3c32e5d5dd1d8f28eaeb6cb7794b0a892c2d3b2d93173147fc455ae79469b"
+  },
+  {
+   "key": "person.line8s",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 3,175/5,490 agree; 2,303 candidate-unknown, 6 value, 5 project-unknown, 1 project-refuses (completed: 322 candidate-unknown). No value differs on any return; the reply sums or reads the Medicaid waiver answers without the parent question that opens them (person.mw_box1_if_mw and the other person.mw_* gates), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Medicaid waiver rows are read the same way once asked; i1040s1 line 8s; Notice 2014-7.",
+   "subject_key": "08ceaa52db1f7ca46ea8f3ff7d497f9336d7b34fedaf36c9e3b85d43cbc97fc3"
+  },
+  {
+   "key": "person.mw_not_earned",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 3,175/5,490 agree; 2,303 candidate-unknown, 6 value, 5 project-unknown, 1 project-refuses (completed: 322 candidate-unknown). No value differs on any return; the reply sums or reads the Medicaid waiver answers without the parent question that opens them (the person.mw_* gates), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Medicaid waiver rows are read the same way once asked; i1040gi Line 1d, the earned-income choice.",
+   "subject_key": "5441010e1b0285c795c7fb3edef8e256523478ac3b287e0351b2ffdcac636b5b"
+  },
+  {
    "key": "person.ira_amount_a",
    "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
    "status": "AGREE",
@@ -201,15 +305,24 @@
   },
   {
    "key": "person.plan_amount_a",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
-   "status": "AGREE",
-   "subject_key": "499ea2b63e8fb5d0c01ae2da6131467742848f9c808b956332bbdfed79645554"
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 5,490/5,490 agree (completed: none): the project's line and the reply agree on every input run (fixture, partial and generated returns). i1040gi Line 5a; the disability-pension items moved to line 1h (x2-paynow2) are left out by both.",
+   "subject_key": "2d421ac593eb43118c6eb5a31c8cff5fa3c4cabace12a0ab00806bb50239c2b0"
   },
   {
    "key": "person.plan_taxable",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
-   "status": "AGREE",
-   "subject_key": "19bf9531e4c9543a4687a21a032233c5896573bbdadce19e53db5f2126a8204e"
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 5,490/5,490 agree (completed: none): the project's line and the reply agree on every input run (fixture, partial and generated returns). i1040gi Line 5b; disability-pension items excluded by both.",
+   "subject_key": "74aad324b6ab61d65ef0b8b8a00547f0a33e20bb7e059b47704c28e837749da1"
+  },
+  {
+   "key": "person.line1h",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 3,234/5,490 agree; 2,249 candidate-unknown, 5 project-unknown, 2 value (completed: 301 candidate-unknown). No value differs on any return; the reply sums or reads the strike benefits and disability-pension items without the parent question that opens them (person.strike_if_pay, retirement.dis_wages), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's line 1h rows are read the same way once asked; i1040gi Line 1h.",
+   "subject_key": "3d667dc903f250de76fd84a034d10503439b47b7922bb3964c6ee7319bcb33bc"
   },
   {
    "key": "person.plan_rollovers",
@@ -308,31 +421,31 @@
   },
   {
    "key": "person.se_line6",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "af4be8616de0139066dc07ddc71b8397261517d96ed4cff31ce359101346e45c",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040sse p. 1, Who Must File Schedule SE, \"You must file Schedule SE if:\". R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). The reply is identical to the one ruled before: the reply reads person.se_screen of every person, where the project asks it only of a person with a Schedule C and gives zero without one (the completed-return witnesses, for example classm.f4952.1.deepseek, are candidate-unknown on se_screen); it gives no different completed-return amount. executable-triage-v2 on this pass's reply (`.transcription/person.lines-a83b11fb00e8.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 1,630 partial records; 4,822 comparisons): 3,028 of 4,822 agree; differences on returns the full interview completes: 109 candidate-unknown; no completed-return value difference. Project stands. (carried over from reviews/2025/transcription/person.md at 5d8c6fd8, review of 2026-11-03)",
-   "subject_key": "836a676ad3cfde56f43ab5f03bd90612817f8d5aa730682a7b26d40538e3f18b"
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 4,744/5,728 agree; 954 candidate-unknown, 13 candidate-refuses, 4 project-refuses, 13 project-unknown (completed: 285 candidate-unknown). No value differs on any return the project completes; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen and the pay gates), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040sse lines 4 to 6.",
+   "subject_key": "c30aa5f9d88f1020c58418f07c45fd9978e5332ed367798e4f0397559e933288"
   },
   {
    "key": "person.se_line12",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "af4be8616de0139066dc07ddc71b8397261517d96ed4cff31ce359101346e45c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. i1040sse p. 1 and Schedule SE line 12. Repeat: the project's tree and the reply's tree are identical to those ruled in reviews/2025/transcription/person.md at ce1e69a1; lines this one reads changed elsewhere in the project (asset, Schedule C and household helpers) but not on the path that decides the disagreement, which triage shows unchanged in kind. As that ruling: zero for a person with no Schedule C against the second's $400 floor of line 4c, which gives zero for the same person; the reply reads person.se_screen of every person, where the project asks it only of a person with a Schedule C and gives zero without one (completed-return witness classm.f4952.1.deepseek is candidate-unknown on se_screen). executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 2,156 of 4,066 agree; 1,888 candidate-unknown, 20 candidate-refuses, 2 project-refuses; on returns the full interview completes: 150 candidate-unknown. No completed-return value difference.",
-   "subject_key": "99b509c09d50566141808bc046fec5aff630416c48cfda650cf01ca8fa08d280"
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 4,639/5,728 agree; 977 candidate-unknown, 110 candidate-refuses, 2 project-refuses (completed: 285 candidate-unknown). No value differs on any return the project completes; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen and the pay gates), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040sse line 12.",
+   "subject_key": "ad24e080d04f902b59eda74583550aa9b0c340ee0b3950e7827e192119bdf059"
   },
   {
    "key": "person.se_line13",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "af4be8616de0139066dc07ddc71b8397261517d96ed4cff31ce359101346e45c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. i1040sse p. 1 and Schedule SE line 13. Repeat: the project's tree and the reply's tree are identical to those ruled in reviews/2025/transcription/person.md at ce1e69a1; lines this one reads changed elsewhere in the project (asset, Schedule C and household helpers) but not on the path that decides the disagreement, which triage shows unchanged in kind. As person.se_line12: the reply reads person.se_screen of every person, where the project asks it only of a person with a Schedule C and gives zero without one (completed-return witness classm.f4952.1.deepseek is candidate-unknown on se_screen). executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 2,156 of 4,066 agree; 1,888 candidate-unknown, 20 candidate-refuses, 2 project-refuses; on returns the full interview completes: 150 candidate-unknown. No completed-return value difference.",
-   "subject_key": "36248851b5d5e0bd28178b6288279919e524cc0f01ba89e7397cb371883732ae"
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 4,639/5,728 agree; 977 candidate-unknown, 110 candidate-refuses, 2 project-refuses (completed: 285 candidate-unknown). No value differs on any return the project completes; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen and the pay gates), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040sse line 13.",
+   "subject_key": "1323edbedd9bea21e9ca18c22e512374193fdc4fb47a1ff8fdbaa0fbf751aff8"
   },
   {
    "key": "person.s16",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 3,669/5,015 agree; 1,141 candidate-unknown, 92 candidate-refuses, 59 value, 49 project-refuses, 5 project-unknown; completed: 52 candidate-unknown, 15 value. All value witnesses (15 on completed returns, e.g. generated 28 taxpayer $5,875.85, generated 73 spouse $4,637.72, classm.f1040.5.deepseek $2,053.00) have person.has_sc false and person.plan = simple: the reply deducts a SIMPLE contribution on Schedule 1 line 16 for someone with no Schedule C. person.plan asks \"Did you put money into a SEP IRA or a SIMPLE IRA for yourself for 2025, as a self-employed person?\" (interview order 260, in the business block), so it is not asked without a Schedule C; the reply reads it without that parent. Where a Schedule C exists no value differs. Completed candidate-unknowns are person.plan_screen read unasked. The earlier catch-up difference (Landing round) no longer appears.",
-   "subject_key": "180f238cf1301d3135e2c6a1bfdc3bea46a730694482c7262ffd40259330faf8"
+   "ruling": "Ruling: representation; executable triage 4,006/5,490 agree; 1,280 candidate-unknown, 98 candidate-refuses, 56 value, 45 project-refuses, 5 project-unknown (completed: 1 candidate-refuses, 242 candidate-unknown, 8 value). Every value witness is a person with no Schedule C answering person.plan = simple (classm.clcw.3, classm.f1040.5, classm.se.1 spouse instance with $sc empty); the interview asks person.plan only of the self-employed. Same pattern as the Goal-1 round ruling. i1040s1 line 16; p560 p. 39.",
+   "subject_key": "ccff1c6ee27a5cf8dd0ea9791b5704f7eb9bfdc8de1ef5956ded744643c8f35e"
   },
   {
    "key": "person.positive_profits",
@@ -361,10 +474,10 @@
   },
   {
    "key": "person.eic_se",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "af4be8616de0139066dc07ddc71b8397261517d96ed4cff31ce359101346e45c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. i1040gi p. 47, EIC Worksheet B. Repeat: the project's tree and the reply's tree are identical to those ruled in reviews/2025/transcription/person.md at ce1e69a1; lines this one reads changed elsewhere in the project (asset, Schedule C and household helpers) but not on the path that decides the disagreement, which triage shows unchanged in kind. As that ruling: Part 1 for a person filing Schedule SE and Part 2 otherwise on both sides; the reply reads person.se_screen of every person, where the project asks it only of a person with a Schedule C and gives zero without one (completed-return witness classm.f4952.1.deepseek is candidate-unknown on se_screen). executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 2,154 of 4,066 agree; 1,888 candidate-unknown, 20 candidate-refuses, 4 project-refuses; on returns the full interview completes: 150 candidate-unknown. No completed-return value difference.",
-   "subject_key": "90f2d0f2e49c357cee43986a208a17b5efd74ea14c26d1cbc9ba74578d56525b"
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 4,638/5,728 agree; 977 candidate-unknown, 106 candidate-refuses, 7 project-refuses (completed: 285 candidate-unknown). No value differs on any return the project completes; the reply sums or reads the Schedule SE and Schedule C inputs without the parent question that opens them (person.se_screen), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040gi EIC Worksheet B, Parts 1 and 2.",
+   "subject_key": "d217a0c55becaee46d1613446a344bcec2f49d32f5afc2558ed27702c9d693ca"
   },
   {
    "key": "person.sc_1a",
@@ -387,24 +500,24 @@
   },
   {
    "key": "person.dc_earned",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "af4be8616de0139066dc07ddc71b8397261517d96ed4cff31ce359101346e45c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. i2441 p. 4 and p503 p. 11, Self-employment earnings. Repeat: the project's tree and the reply's tree are identical to those ruled in reviews/2025/transcription/person.md at ce1e69a1; lines this one reads changed elsewhere in the project (asset, Schedule C, household and dependent-test helpers) but not on the path that decides the disagreement, which triage shows unchanged in kind. As that ruling: Form W-2 box 1 and the self-employment part are the same on both sides; the self-employment part differs as person.eic_se does (the reply reads person.se_screen of every person, where the project asks it only of a person with a Schedule C and gives zero without one (completed-return witness classm.f4952.1.deepseek is candidate-unknown on se_screen)); line 1e is not split by person in the reply, which the project assigns by amb.2025.dc_line1e. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 2,159 of 4,066 agree; 1,858 candidate-unknown, 17 candidate-refuses, 17 project-refuses, 15 value; on returns the full interview completes: 150 candidate-unknown. No completed-return value difference.",
-   "subject_key": "94752efadb172eba54967def4d5b44ad562376c60ac719c99867877ab5cff9bf"
+   "ruling": "Ruling: model error; line-scoped rerun (pass 238b2e0eecf5). Executable triage 3,280/5,728 agree; 2,287 candidate-unknown, 114 project-refuses, 25 candidate-refuses, 17 value, 5 project-unknown (completed: 427 candidate-unknown, 10 value). The reply leaves line 1e out again (its note: 'Line 1e is not included'): stage9.eic.line5_skipped project $5,000, reply $3,000; f2.t121.line13_earned_not_limiting $45,500 / $45,000; f2.t121.line13_line21_binds $5,700 / $5,200; stage15.f2441.s5 $41,500 / $40,000; the differences are the taxable dependent care benefits on line 1e. i2441 p. 4, Lines 4 and 5, earned income is 'The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z', which includes line 1e; how a joint line 1e is shared is the registered ambiguity amb.2025.dc_line1e_attribution, but the single-earner witnesses need no share. Same ruling as the earlier round (lane xadj-e).",
+   "subject_key": "71e98ab76326b4ae4c538c9df6015d4feba09966376ad8d34d443eb2bb640659"
   },
   {
    "key": "person.dc_earned_b",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "af4be8616de0139066dc07ddc71b8397261517d96ed4cff31ce359101346e45c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; project retained. i2441 p. 5, Line 18. Repeat: the project's tree and the reply's tree are identical to those ruled in reviews/2025/transcription/person.md at ce1e69a1; lines this one reads changed elsewhere in the project (asset, Schedule C and household helpers) but not on the path that decides the disagreement, which triage shows unchanged in kind. As that ruling: Form W-2 box 1 plus the self-employment part, without line 1e, on both sides; the self-employment part differs as on person.dc_earned (the reply reads person.se_screen of every person, where the project asks it only of a person with a Schedule C and gives zero without one (completed-return witness classm.f4952.1.deepseek is candidate-unknown on se_screen)). executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 2,172 of 4,066 agree; 1,870 candidate-unknown, 20 candidate-refuses, 4 project-refuses; on returns the full interview completes: 150 candidate-unknown. No completed-return value difference.",
-   "subject_key": "83e8cc4c65cd3926511ab3068f9c18e03601dd01a4e120bd6a0c23fb97c67c5e"
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 3,232/5,728 agree; 2,376 candidate-unknown, 106 candidate-refuses, 8 project-refuses, 6 value, all 6 on returns the project refuses (completed: 427 candidate-unknown, no value). No value differs on any return the project completes; the reply sums or reads the Form 2441 earned-income inputs without the parent question that opens them (the pay and Medicaid gates), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i2441 p. 5, Line 18.",
+   "subject_key": "a2ce4612c8378789ba906b194ce4c085a30c8bbb41bb04f9fe3f485be0eb47ea"
   },
   {
    "key": "person.sav_ineligible",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f8880 p. 2, Who Can Take This Credit, \"(b) is claimed as a dependent on someone else's 2025 tax return\". The line's label says the dependent question is \"asked only if someone can claim you or your spouse as a dependent\" (sa.dependent); the reply reads person.sav_claimed without that parent. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 4,862/4,969 agree; all 22 value records supply person.sav_claimed true with sa.dependent false (classm.f1040.6.deepseek, classm.carloan.1, classm.w2.1), an answer the interview never takes (no one can claim the filer, so the filer is not claimed); 84 candidate-unknown are the unasked answer; 1 project-unknown.",
-   "subject_key": "fe893b28342f55413c7c3fa5c537513bcbe92ae35f6059ee74f8c16e500cf85f"
+   "ruling": "Ruling: representation; executable triage 5,348/5,490 agree; 106 candidate-unknown, 34 value, 2 project-unknown (completed: 39 candidate-unknown, 1 project-unknown, 6 value). Value witnesses (classm.carloan.1, classm.w2.1, classm.f1040.6) state person.sav_claimed true with sa.dependent false; the project asks sav_claimed only of a filer who can be claimed (x2-dep, decision D7), so the reply reads an answer the interview never takes. f8880 p. 2, Who Can Take This Credit. Same pattern as the Goal-1 round ruling.",
+   "subject_key": "297fa6e1a324485f5748a20411ff24d0e020e958530a55e2b384f5793c352f66"
   },
   {
    "key": "person.sav_roth_if_ira_owner",
@@ -456,59 +569,59 @@
   },
   {
    "key": "person.ira_line2",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.2025.ira_covered (owner decision); i1040gi p. 97, line 1, \"skip lines 2 through 6\". Every value difference is the coverage reading of person.ira_cov carried into the line 2 limit ($89,000, $146,000 or $246,000) or into a person whose lines 2 to 6 are skipped (spot-checked: classm.f8889.1.deepseek spouse, classm.f4952.1.deepseek and classm.s2.3.deepseek); the differences are $157,000 or $100,000 (the gaps between the limits) or an amount against zero. None reaches the deduction: person.ira_deduction has no completed-return value difference. Reply changed (the work-plan test is now applied before the plan reading); the mechanism and the owner reading are the same, and person.ira_deduction still has no completed-return value difference. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 4,880 of 5,127 agree; 170 value, 66 candidate-unknown, 6 project-unknown, 5 candidate-refuses; on returns the full interview completes: 129 value, 2 candidate-unknown, 2 project-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 129 value (for example classm.f8889.1.deepseek, person[spouse]); 2 project-unknown person.ira_work_plan (for example stage21.f1.lower_bound_still_decides, person[spouse]); 2 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[taxpayer]). Project stands. (carried over from reviews/2025/transcription/person.md at 0a43f158, review of 2026-11-03)",
-   "subject_key": "921057333ddbaa41722cb8467de04756a7ea251809aa96986bbe4a58c7bcf20f"
+   "ruling": "Ruling: representation; executable triage 5,472/5,490 agree; 16 value, 2 candidate-unknown (completed: 1 value). Value witnesses (classm.g28.2, mutation.t2.f8880.simple_line2: project $146,000, reply $246,000) have no traditional contribution (person.ira_trad 0), where line 2 is never used; the reply decides coverage from worksheet line 1a, which is No without a contribution. i1040gi p. 97, line 2.",
+   "subject_key": "0950e0a37d847f0c47300f3a8be66c168fda7535bc20a34028bd9afd6249521a"
   },
   {
    "key": "person.ira_line6",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.2025.ira_covered; i1040gi p. 97, lines 1 to 6. Repeat: the project's tree and the reply's tree are identical to those ruled in reviews/2025/transcription/person.md at 0a43f158; lines this one reads changed elsewhere in the project (dividend, HSA, Schedule B and Social Security worksheet lines reached through MAGI) but not on the path that decides the disagreement, which triage shows unchanged in kind. As that ruling: inherits person.ira_line2, the skipped-path line 2 amounts and the coverage reading carried through line 5; the candidate-unknown are the reply's reference cycle and its answers asked of persons without a contribution. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 2,437 of 4,066 agree; 1,389 candidate-unknown, 173 value, 38 project-refuses, 18 project-unknown, 11 candidate-refuses; on returns the full interview completes: 255 candidate-unknown, 117 value, 3 project-unknown, 1 candidate-refuses. Project stands.",
-   "subject_key": "6c58cf0f79ac19f7ae27cc2a2df8082337e2d378bef489dabf00ce716ebd55ce"
+   "ruling": "Ruling: representation; executable triage 3,849/5,490 agree; 1,595 candidate-unknown, 36 project-refuses, 10 candidate-refuses (completed: 1 candidate-refuses, 334 candidate-unknown). No value differs on any return; the reply sums or reads the IRA worksheet inputs without the parent question that opens them (person.ira_owner and the coverage questions), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too, but for generated return 423 (seed 20261026), completed by the project, where the reply refuses on person.plan_screen, which the interview asks only of the self-employed. x2-paynow2's IRA worksheet rows are read the same way once asked; i1040gi p. 97, line 6.",
+   "subject_key": "3e942102426bab7c5e641cc8c438fb56bc118ba9216fdbb346b82f2288a3e941"
   },
   {
    "key": "person.ira_line7",
-   "record": "3fff1fb6ce24dd3985b712dfac584fa8485a779d693121e94833f8620d220cd4",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 97, worksheet lines 1 and 6-7. The reply's coverage branch also requires a traditional contribution on the return; where nobody contributes the worksheet is not used (i1040gi p. 95, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\") and line 12 is zero either way. Triage executable-triage-v2 (pass 1b9b7f0d8800; 1,986 fixtures, 500 generated returns, seed 20261026): 3,774/4,969 agree; every value record has no traditional contribution (classm.sd.2.deepseek: person.plan simple with a Schedule C, ira_trad $0; project $0, reply $8,000), 7 on completed returns; 1,069 project-unknown (partials; 15 on completed returns, where nothing reads the line); 70 project refusals on refused returns; 7 candidate-unknown (worksheet line 6 needing unasked answers, classm.ira.2). The reply's reading of a zero line 6 as the line 6 STOP agrees with the source.",
-   "subject_key": "25d2d1d0fe7b2dcff0e6ae31fc4447b47f8c631bd2bd82cd193512934028a467"
+   "ruling": "Ruling: representation; executable triage 4,339/5,490 agree; 922 candidate-unknown, 122 value, 66 project-refuses, 41 project-unknown (completed: 68 candidate-unknown, 8 project-unknown, 64 value). Value witnesses (stage9.eic.no_child.over65, born_jan1_1961, mfs.m5/m6, stage11.hsa.*) have no traditional contribution, so line 12 is zero either way; the age-50 limit difference ($8,000 / $7,000) is ruled where it reaches a deduction (person.ira_deduction). i1040gi pp. 95, 97.",
+   "subject_key": "87fbb93649e6af331b80cc4ae8046ad79ec022b20f9e0d376656beb8a6d490a2"
   },
   {
    "key": "person.ira_deduction",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 2,469/5,015 agree; 2,158 candidate-unknown, 368 candidate-refuses, 17 project-refuses, 3 project-unknown; completed: 143 candidate-unknown, 4 candidate-refuses. The reply refuses on its own ira_excess screen (see (screen) (person.ira_excess)). On completed returns stage16.ira.i5, stage16.ira.i7 and audit.ira.covered_age50_single_phaseout and _joint_phaseout (age 55, $8,000 contributed), it refuses where the project computes (e.g. ira_deduction $200.00, ira_nondeductible $7,800.00 on stage16.ira.i5, as the fixture predicted by hand). The 143 completed candidate-unknowns are person.age50_at_year_end read in place of the birth-year derivation. Model error, as ira_excess.",
-   "subject_key": "c08fa48b91b905a0f78bd0f10569975df05d524b367557c88f372a7ad55c5724"
+   "ruling": "Ruling: model error; executable triage 2,311/5,490 agree; 2,562 candidate-unknown, 595 candidate-refuses, 19 project-refuses, 3 value (completed: 1 candidate-refuses, 393 candidate-unknown, 3 value). The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a birth in the cut-off year, not from person.birth_year: stage16.ira.i7 (born 1970, $8,000 contributed) project $8,000, reply $7,000; audit.ira.covered_age50_single_phaseout and _joint_phaseout likewise. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same pattern as the Goal-1 round ruling.",
+   "subject_key": "317c59f81457ee9b2c794de9e9fa52ee67ac2989d22a01dacb86770021d96f77"
   },
   {
    "key": "person.ira_nondeductible",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 2,463/5,015 agree; 1,965 candidate-unknown, 569 candidate-refuses, 15 project-refuses, 3 project-unknown; completed: 143 candidate-unknown, 4 candidate-refuses. The reply refuses on its own ira_excess screen (see (screen) (person.ira_excess)). On completed returns stage16.ira.i5, stage16.ira.i7 and audit.ira.covered_age50_single_phaseout and _joint_phaseout (age 55, $8,000 contributed), it refuses where the project computes (e.g. ira_deduction $200.00, ira_nondeductible $7,800.00 on stage16.ira.i5, as the fixture predicted by hand). The 143 completed candidate-unknowns are person.age50_at_year_end read in place of the birth-year derivation. Model error, as ira_excess.",
-   "subject_key": "df1548bf4605761627008b0b75b9964a2b39ae7b87e67391acdf0433b46eeca2"
+   "ruling": "Ruling: model error; executable triage 2,311/5,490 agree; 2,539 candidate-unknown, 620 candidate-refuses, 17 project-refuses, 3 value (completed: 1 candidate-refuses, 393 candidate-unknown, 3 value). The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a birth in the cut-off year, not from person.birth_year: stage16.ira.i7 (born 1970, $8,000 contributed) project $0, reply $1,000 nondeductible; audit.ira.covered_age50_single_phaseout and _joint_phaseout likewise. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same pattern as the Goal-1 round ruling.",
+   "subject_key": "a79e8cf7ff7bb8d0cf0f331542c60b973030248a5624e03dbd6fe498af264829"
   },
   {
    "key": "person.ira_files_8606",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 2,463/5,015 agree; 1,965 candidate-unknown, 569 candidate-refuses, 15 project-refuses, 3 project-unknown; completed: 143 candidate-unknown, 4 candidate-refuses. The reply refuses on its own ira_excess screen (see (screen) (person.ira_excess)). On completed returns stage16.ira.i5, stage16.ira.i7 and audit.ira.covered_age50_single_phaseout and _joint_phaseout (age 55, $8,000 contributed), it refuses where the project computes (e.g. ira_deduction $200.00, ira_nondeductible $7,800.00 on stage16.ira.i5, as the fixture predicted by hand). The 143 completed candidate-unknowns are person.age50_at_year_end read in place of the birth-year derivation. Model error, as ira_excess.",
-   "subject_key": "f1bc59b8ca9505d5eda8fdf6f490760847fdccbc139834851e2c04aac1572bb4"
+   "ruling": "Ruling: model error; executable triage 2,313/5,490 agree; 2,539 candidate-unknown, 620 candidate-refuses, 17 project-refuses, 1 value (completed: 1 candidate-refuses, 393 candidate-unknown, 1 value). The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a birth in the cut-off year, not from person.birth_year: stage16.ira.i7 (born 1970, $8,000 contributed) project false, reply true (files Form 8606 for the $1,000 it wrongly treats as nondeductible); audit.ira.covered_age50_single_phaseout and _joint_phaseout likewise. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same pattern as the Goal-1 round ruling.",
+   "subject_key": "cd3e199db7e5e5ea5d1e0da0128385b43c170fb94a61667708b81f7cf41e477d"
   },
   {
    "key": "person.ira_8606_line2",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 3,802/5,015 agree; 1,153 candidate-unknown, 39 project-unknown, 21 project-refuses; completed: 59 candidate-unknown. No value differs on any return. The differences are candidate-unknowns on an answer the project asks only under a parent gate: person.ira_trad for ira_contrib and ira_ssb, person.ira_dist for ira_dist_gate, person.ira_basis_adjusted for ira_8606_line2. The project-refuses and project-unknown records fall on refused or partial returns. Same as the landing-round ruling.",
-   "subject_key": "a9fdc0010303c54826ca3bd1c3ada9889b14ed33cc3d74210c223a6400d07835"
+   "ruling": "Ruling: representation; executable triage 4,203/5,490 agree; 1,229 candidate-unknown, 37 project-unknown, 21 project-refuses (completed: 238 candidate-unknown). No value differs on any return; the reply sums or reads the Form 8606 inputs without the parent question that opens them (person.ira_files_8606), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 8606 rows are read the same way once asked; f8606 line 2.",
+   "subject_key": "7986d65822253861a82a056a660732ef0851390314ca5c8021f083042d34cab4"
   },
   {
    "key": "person.ira_dist_gate",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 4,782/5,015 agree; 180 candidate-unknown, 30 project-unknown, 21 project-refuses, 2 candidate-refuses; completed: 3 candidate-unknown. No value differs on any return. The differences are candidate-unknowns on an answer the project asks only under a parent gate: person.ira_trad for ira_contrib and ira_ssb, person.ira_dist for ira_dist_gate, person.ira_basis_adjusted for ira_8606_line2. The project-refuses and project-unknown records fall on refused or partial returns. Same as the landing-round ruling.",
-   "subject_key": "9b025c576ab83e75e26744d40f9df182d40c925df651c44ba572730e8e9e5884"
+   "ruling": "Ruling: representation; executable triage 4,242/5,490 agree; 1,182 candidate-unknown, 25 project-unknown, 21 project-refuses, 20 candidate-refuses (completed: 223 candidate-unknown). No value differs on any return; the reply sums or reads the Form 8606 inputs without the parent question that opens them (person.ira_owner), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 8606 rows are read the same way once asked; f8606 Part I, line 3.",
+   "subject_key": "550302395f4db63ea0888d79f50892315db033914c42fe4e340336f6b73f7e00"
   },
   {
    "key": "person.ira_8606_line14",
@@ -526,10 +639,10 @@
   },
   {
    "key": "person.ira_se",
-   "record": "d24f2856523c2787016d76c2a89d66a2e0ea64dd7abb1e6286bada24b4b19a1a",
+   "record": "af4be8616de0139066dc07ddc71b8397261517d96ed4cff31ce359101346e45c",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/person.json (log sha matches): 3,752/5,015 agree; 1,117 candidate-unknown, 97 candidate-refuses, 48 project-refuses, 1 project-unknown; completed: 53 candidate-unknown. No value differs. The 53 completed differences are candidate-unknowns: the reply reads person.se_screen without its parent. Its refusals fall on refused or incomplete returns. The landing-round value difference (the s16 catch-up) is gone.",
-   "subject_key": "cb5b8589c0b3a532af2e2e822595c337d0270cf3fdb0548973dcaa202e2494f8"
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 4,471/5,728 agree; 1,093 candidate-unknown, 122 candidate-refuses, 42 project-refuses (completed: 320 candidate-unknown, 1 candidate-refuses: a generated return the reply refuses on person.plan_screen, which the interview asks only of the self-employed). No value differs on any return the project completes; the reply sums or reads the Schedule C inputs without the parent question that opens them (person.se_screen), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040gi p. 98, line 9; p560 p. 16.",
+   "subject_key": "833061893ab89c06600c757a7fa395978a0583f1e602388ed7f49ad80dbac5e8"
   },
   {
    "key": "person.edu_kid",
@@ -692,17 +805,17 @@
   },
   {
    "key": "Step 1",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "2c6bd0553bc41aa25ebc7e3aba02f686b314689ebfa549c8e413154d1e449e9f",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; p560 p. 39, Step 1. R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). The reply is identical to the one ruled before (same line and candidate as the refresh-round ruling): both sum the person's Schedule C results; the project refuses at person.se_screened (cited); the completed-return differences are display and unknown states (the reply reads person.plan_screen of a person whose step the project hides, and shows the step where the project hides it), not values. executable-triage-v2 on this pass's reply (`.transcription/person.lines-a83b11fb00e8.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 1,630 partial records; 4,822 comparisons): 3,662 of 4,822 agree; differences on returns the full interview completes: 240 candidate-shows-skipped, 116 candidate-unknown, 8 project-unknown; no completed-return value difference. Project stands. (carried over from reviews/2025/transcription/person.md at 5d8c6fd8, review of 2026-11-03)",
-   "subject_key": "47ff9736f76485e37382fb46f2f22c96d83df783dba774e776f0676af17e3248"
+   "ruling": "Ruling: representation; executable triage 5,490/5,490 agree (completed: none): the project's line and the reply agree on every input run (fixture, partial and generated returns). i1040sse; Schedule C line 31.",
+   "subject_key": "47f3d21a16d9e17c5e4866ce314a74b5acb7d833e0234542ff025a46959d5c84"
   },
   {
    "key": "Step 2",
-   "record": "f650c274e9a59581218a368689c8fc8d566bbb4c7c54fd760afa487094080574",
+   "record": "af4be8616de0139066dc07ddc71b8397261517d96ed4cff31ce359101346e45c",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; p560 p. 39, Step 2. Repeat: the project's tree and the reply's tree are identical to those ruled in reviews/2025/transcription/person.md at 465bcfc7; lines this one reads changed elsewhere in the project (asset, Schedule C, vehicle and plan-screen helpers) but not on the path that decides the disagreement, which triage shows unchanged in kind. As that ruling: the reply's Step 2 reads person.se_screen for every person, with no Schedule C guard, so it asks the self-employment screen of persons with no business and shows the step where the project hides it (no SEP); values agree where both compute. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,643 fixtures, 500 generated returns seed 20261026, 1,207 partial records; 4,066 comparisons): 3,568 of 4,066 agree; 235 candidate-shows-skipped, 187 candidate-refuses, 58 candidate-unknown, 18 project-unknown; on returns the full interview completes: 138 candidate-shows-skipped, 4 candidate-unknown, 4 project-unknown. No completed-return value difference. Project stands.",
-   "subject_key": "731118a74ca8f61a4f4e26a74b5b55a91e6909026908eefd7b7bcbb88d37d392"
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 5,719/5,728 agree; 6 candidate-unknown, 3 candidate-refuses (none on a completed return). No value differs on any return the project completes; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040sse; Schedule 1 line 15.",
+   "subject_key": "57f8ac15094a5bd3e3572b4e8f3bd23b250767b08a930f54952bd452af8f0c46"
   },
   {
    "key": "Step 3",
@@ -819,11 +932,27 @@
   "person.ot_total": "08303f469cc196a914fcc12c3e757a11570e8a35dfc94af60397bace159942fb",
   "person.box1": "07ad8865d53bc777dc547733160a3fec3a254480e67c64db630e8020bd86ac0d",
   "person.box2": "a3e0f7c9fbed5eff0cb1ba5c0febfceaa19678c9ad4d19432f6eacd47894c6a0",
+  "person.f8919_wages": "cd3910b94f8289870a8b151ad6e2fbd05613ac48d5528c091b08152169526d8c",
+  "person.f8919_tax": "56e22259e31dc7c3d2eeef795a871f5ffd9a8d0b31123a3a6aa69bd2487b1490",
+  "person.f4137_col_c": "0e6c119dd805efb9d593c3faeb16fa5783efb7db2dfff87a6f817501cbd7afe4",
+  "person.f4137_col_d": "53f3976331e503b645a21f40886d9d87f824baaa244928bd0522dc040b009da8",
+  "person.f4137_under20_if_rows": "dd046b84b4657cdcc95fbb41c5cd8f998a48f7029c9772ddf7d96ad001d92441",
+  "person.tips_gov_if_rows": "3f16c4a7ac06bbef51e34488440ece60b5beb85c9d308375183d1b28f32611cf",
+  "person.f4137_line6": "c7eafed6521f656c006631b41528b41ab734344f99f694da1b6d396746536340",
+  "person.f4137_line10": "6f51e160f99697e0194b0d19f070c0c6b4cf45a6821b1a742128c14f5998af1b",
+  "person.f4137_tax": "83ca513d0b7eaf66f61b1fe4c3195ad4753527eaece7156c636eb6b17afad7a4",
+  "person.line1c": "cf1e22b2602fbf5c32773f1dc755aaabc6f33e3ddcf2879a3c7d06e71b476cef",
+  "person.f4137_filed": "1d39b5f9cdb14a3686d134c081b28f84352ec134a3b6e852c83b264c3a95b29e",
+  "person.household_wages_if_pay": "ac5aabd2704517d36d20c67a6430f9ec83e309316747b4079c4169c2dfd5ff67",
+  "person.line1d": "15ed625d62d1a444a5129b9bdf294b63fa999ade6426e23b79b0f151c0f30bb4",
+  "person.line8s": "fa67bcf4f2b112909799e6742f6f02ecb20f04d0e666bd09a5e4a74edb625126",
+  "person.mw_not_earned": "30a816e4dcd2f647df64c166853f422cf23adc72ec84418efd3b3073ae9d6c80",
   "person.ira_amount_a": "f4e1df5681daaf1d59066c65892bbe9c32c27c33f6b690e54ba15c0d047fe8fe",
   "person.ira_taxable": "b004c85e3196980273c6d9a0c3c9b13a2afa1f8f9dc5baa72725782eb0b34eec",
   "person.ira_rollovers": "53e32c0d52e2313d82f1e4f14e395aea91bf9c011edfd8ee26fb5afb65b84d90",
-  "person.plan_amount_a": "3ea7b9b73d666c799883263deca7ccb07c2eeb0774987aa5af8b2c67c063c2d3",
-  "person.plan_taxable": "0c1837c7e41b5a6a85296810007cf1951835a9694fdc03ea3b9b0dab5845ada6",
+  "person.plan_amount_a": "5cc6568f967cbdd75af60dd45fc5dc49cc3c367f85339f338d5822731dabe68c",
+  "person.plan_taxable": "60126d9e45002baa1f6024a6e05f4a967368367c5d62d3df0d9ed00a01e240cd",
+  "person.line1h": "2c477bbc8f52fc566084ed8acab9dc30746208e9580b2fb3183cbfb0b30e4b9f",
   "person.plan_rollovers": "77f8e620cf88262c92a8f85e36d6beb1a98d711786fb3641a0f75c41ed61273f",
   "person.sav_dist": "e44d996c717afaa8eda666844404b7498332f5f63a70ced2e014c1474815b111",
   "person.medicare5": "cc1195eec313ff98214428f9d9351759d3823066aeaa358c17298d3e816e78a0",
@@ -839,20 +968,20 @@
   "person.s179_listed": "564c0c147c347285c7ee4e66c34029769c52618dc4c955bdfa40cce19d551395",
   "person.income179": "46bd33c8733ea60aa1e24d71ee4caf89b81f97d7c617b36a4f475f0896a155e5",
   "person.sc_total": "2c271738423acb156327cd41fcb8bc940835db81b1c673fd9ae048c7266dc670",
-  "person.se_line6": "687322276a895cefa07d6759c8cbdff7e0543c458194b659a9d0f510efa43baa",
-  "person.se_line12": "af35176a6306d177f6221d77ca5503f5e98890dd0838e168309b91659f58f828",
-  "person.se_line13": "8a385824ff280996271314868eda7e369c672a404a6a8b8e3305d26acbfb6d1f",
-  "person.s16": "a82f07264686e1f8731ccd68ea2eaf66f29fb4bc4707a22462eedf968f46649e",
+  "person.se_line6": "75675cbb3fdd622a5d2c1f5de1ef25397b9d046c2c634666a6fedaffd58aed68",
+  "person.se_line12": "6c077cc38156a3e7ffdc3fdb2724343adcb02ae62485aae44f51a119eb71987f",
+  "person.se_line13": "55825afbbcfc6f0c26b18989922788c7dd7b4e631ea489773e4ed9f859422c4d",
+  "person.s16": "629c254cdb3d08aea8b186bb5c2a556b99c7128eadf82b63251e12b052cc45db",
   "person.positive_profits": "e3af6f496c72f810069ccd6fc92b6bdc2e1e26e5056b9ebb5a696daad6e45ec7",
   "person.sehi": "d5aa9b751c781d1fad027cdc108e5071738b8db347b12517e49f00c339a672e8",
   "person.amt_dep": "b9e4c4cb09d38ad3eed3ee7090dcec95c889e9361ee34f7c50fd829bb939315f",
   "person.qbi": "16d1f8561e30bbddbfc61050270e17e33403830eb495a451b41ac6c300a06a03",
-  "person.eic_se": "5fa355054b912db78d07680f98311c38a9c8e673de8ee84a5c322e8e891d8b56",
+  "person.eic_se": "4a1929307c4c75bcdc47e30377cd50bf51d3bfd3069735582062f44ae5b118bc",
   "person.sc_1a": "0df5e4e32af4bb76d530313ede5a439f7bd4e22b041f13041490f8548f5199f2",
   "person.dc_benefits": "637bcf9be95f6a0efab4ca9bbc7870e86eb3e2983b3d266cb1877fd576785be7",
   "person.dc_has_box10": "e2e636a67d0a92c317a5bd31d21b15e3d4cd77afcc6dde843394fd4c64f1a53e",
-  "person.dc_earned": "72b7cad2854b242465449c6d7dc2b4edb63dc04d2880670c8477b7805cdce9db",
-  "person.dc_earned_b": "5ad9fc16ae7288d8f2946da26705b4765218007c92fd4bdca3c3035efb60eb76",
+  "person.dc_earned": "02fa067d7a8ad23298273b2744842f9b3593739339f3ac2e86bcddd6a3161129",
+  "person.dc_earned_b": "598fb8b5eaa0cc93c759530d329ea93853577e990ee3b00d5232ffd3fc0ffcfd",
   "person.sav_ineligible": "203a87adff7cccb2ce86a4faee67c8ff2c7c613f1107051cdec6272ed1501a4f",
   "person.sav_roth_if_ira_owner": "2f4e435ee73de97994fc13e14250a732015190faae6e3144218f1acdbf29affc",
   "person.sav_line1": "3a9d7fdbeb70a82b28755d80084e695ee57d1b990e6f8b6fd84465adf4a6b27c",
@@ -861,17 +990,17 @@
   "person.ira_age50": "f189f100ea995d478d5f65b53fdb9edc4398ce3105eff9ea597fd6054af6d482",
   "person.age55_at_year_end_if_open_year": "436f8c9d8b5a16108fd82f72b659da244e89b07b8dc0d8a5602f27891e80eb6d",
   "person.ira_cov": "75f6bdba7a3c60597744b7e8478ce75353c1f7c2d4fb77b083756dec82d91e4d",
-  "person.ira_line2": "63d404c777e7ce7e22328b537d38ede889448222079d6a8b8b12257e0cb21944",
-  "person.ira_line6": "8394c4a531f5e7def74994a27b4b35e4fc26f72c7dfcfdaf8f3fa4a8bbdd7a73",
-  "person.ira_line7": "a0ae041b47eb7f39e2404ebc2d32029eb67763e459778237fe8081247cb947d9",
-  "person.ira_deduction": "57149f7c98cc47c82851e35b115f9736ee5d612d4d355d85deca2e81bbb1f4a3",
-  "person.ira_nondeductible": "5f4125442deb0740115015da8f468a085532fd26da82d73d13a30eb5e024612c",
-  "person.ira_files_8606": "b6efb5db3e457110743c787004def5a20eac6c19f0a345a8821694d42418e5da",
-  "person.ira_8606_line2": "e308e3f7310ba27776134e8ad5c51a921decd82f73e457c15c4d07332e3516ee",
-  "person.ira_dist_gate": "f2da2c2d6b39817d7db3446f309f50bce35475ea7b72d95531b1191494e497ec",
+  "person.ira_line2": "716fcebb25201f684b5dd7686dfd69f913cae69e2f99bdd5906482f6bd38ce59",
+  "person.ira_line6": "05f28e97aea586fe33c8ad8ba08adb044c32332c8ab1ac7b49414594fd8bd033",
+  "person.ira_line7": "209827dee3c86bc6faf2cf8e82b0ab30f1a6130a5feb755c35cf7170bd2d9ccf",
+  "person.ira_deduction": "d3f4b660aaf65fa00975dfb0447ab808d22534f1f6015f2298431de631b69e9d",
+  "person.ira_nondeductible": "d628a03bd214f53a74e5ec9ccefacd4614d3ff7c728f42bfe32c0d4b211ca632",
+  "person.ira_files_8606": "db238bce771b415c9ca1ad6088889f5433643f050f0d80c71fba2caba8875b9e",
+  "person.ira_8606_line2": "a46b5a7543ced411e82df31594f51d4bb12b0a0d742e61dffc56c914cd29f6b0",
+  "person.ira_dist_gate": "2afe263d2a2c46eb3696dbba795657f70cd95ac3b77b8aa9f8fcbecc0e47221d",
   "person.ira_8606_line14": "47c89972f50bf49fc1746168b164510319590ea9e1dcc1d1c82092b28218a51a",
   "person.ira_ssb": "8579fce5c85555c8e8f6b87f92aa1590f14f6f9c90bd7b124f0dd2948aaa3a6d",
-  "person.ira_se": "954e30ac82de4e41888f665e5b91b29ce1f1e1a0d59fdca35d7e8f2b621d1efe",
+  "person.ira_se": "c86b9bc4ff77167b9c15f74a482bcef8097e16aad2314b7293c00b84141f7605",
   "person.edu_kid": "dda6d091300fdcd05ec49fcbb1708ff62619bcb6635115e6dd5d252f33f9bc49",
   "person.x_l1": "8918e95355b7587c0094978375825c55dd25c581cfa70928c887960e7353036a",
   "person.x_l2_all": "72a762c9f410531c028cda2c2c18402a79833e8ff9528c6ee38688017e1890cb",
@@ -897,8 +1026,8 @@
   "excess": "36213481b5918b55e4b8547fd3832346aa82500050df8f938d68c53b49c3f546",
   "zero": "03c3b426160895500d9e08bd8c01204899f9ca2203641f090893e8670436cbd5",
   "credit": "ec1bb832290dace7cc9d2e273019856cfbe92bb71fd5a5ad6f777c18eb360361",
-  "Step 1": "66f4971e919e425d8fca1fd7572ec5d4f7abb9020611179e80b6ff7f83aa6abf",
-  "Step 2": "a6188175ea426590988002e5f23c48c6c6fb0c26dcd2bc2b6cffee8b8ef3fb06",
+  "Step 1": "c2c41a5b0ec9e6540e2af6470ab921d4c5100d945d379ae0cd49f7b641cc7c9d",
+  "Step 2": "4dd7f94b2e6dc4f2f06b23faf056178f44a9b446b9c8f73ce1f3ddcdbb97be54",
   "Step 3": "ff07ff298c66340c69277de7465e38a9f9679a882eb3938eefa3fcba2f31c9f1",
   "Step 5": "b43f33bf770d0114b1cbf0cbb298e4e4018e569341ad74621d8b52198c8f0402",
   "Step 6": "4f41cb62ebc0298b330e5657b8014254ef6262818d8626ee9a66d752259d61ee",
@@ -942,11 +1071,27 @@
   "person.ot_total": "636d04d95d86476db2003d90f9f3c785a6ee94d6aec08598f6395ed4fa7c1955",
   "person.box1": "056132170d28179fc192dae2644e55a3fce765caeaf22d15c210f4fe8fd8bd29",
   "person.box2": "00005c2f0c3f53c0fc12efd5f44e323e53cf49b0a31f1627d7198fd0f1163013",
+  "person.f8919_wages": "8324106d3e5f5174f62bd9b7372ff7f3e2c421199b12273bc36b60f7ad814019",
+  "person.f8919_tax": "67f0358fc253a5428a44eb87c348f3d039294320fa17f6ae7cd2a7479ce1ae8e",
+  "person.f4137_col_c": "b75d0c6bb1b92c8b37bdc120a236f68b81af972a5284e066522598fe67c6f7c9",
+  "person.f4137_col_d": "168f6bfeed8160a4fd8677db64aaac93e6befe0e049b339a6e1e61f92b942379",
+  "person.f4137_under20_if_rows": "ddcab3885ced003e4428c5809bae8b0f4137b6336c95f308b811681dc8a1636f",
+  "person.tips_gov_if_rows": "50e28161c690e7047d71de1cf19a94d5a8200bbff171fee998e60244d3770bf2",
+  "person.f4137_line6": "7cdf8dcf1ce764fa8771b2b28fc5273bd4dd0b0b51277cb260ef1713f66b994a",
+  "person.f4137_line10": "e8bac92bf70789dcab4787114869ec7250f04cf1a3f4cd01fe6d629baca317a1",
+  "person.f4137_tax": "a7f4661c043b71a9891356c063581ac05137469579ca83a2acb367d46ab0bcaf",
+  "person.line1c": "73aaa44dfb19e2c0aec776013ffcd11f3e1e104116e811bc920f8f51b28b9fbe",
+  "person.f4137_filed": "ddcab3885ced003e4428c5809bae8b0f4137b6336c95f308b811681dc8a1636f",
+  "person.household_wages_if_pay": "ab90f5a00a6b5eae89395121802256c095c12cb26e2ee939a630508a8be1729b",
+  "person.line1d": "4324e192410d569a6102fc64d5a4b78995cf8d98f62f697b1bfc19f80da8ec71",
+  "person.line8s": "4324e192410d569a6102fc64d5a4b78995cf8d98f62f697b1bfc19f80da8ec71",
+  "person.mw_not_earned": "4324e192410d569a6102fc64d5a4b78995cf8d98f62f697b1bfc19f80da8ec71",
   "person.ira_amount_a": "7150af5735753eecac76c04d543d0c207bf2147fc66c591359078defc3011b71",
   "person.ira_taxable": "93d28f3964373f41a530a17f2b69e565c57e33be1e72ded1d4acf051676a4e52",
   "person.ira_rollovers": "3b9c41b704f3ec0003e916314ebc6857bd264e3bc8c6638fd325f55802b8fef4",
-  "person.plan_amount_a": "7150af5735753eecac76c04d543d0c207bf2147fc66c591359078defc3011b71",
-  "person.plan_taxable": "93d28f3964373f41a530a17f2b69e565c57e33be1e72ded1d4acf051676a4e52",
+  "person.plan_amount_a": "12d67130444ca694efab6394675edef8b3ff528115c3d615a45c5f03cb4e75cf",
+  "person.plan_taxable": "6ffd35498e3e2e80d108e69d7998a31d3f30058550354a36cfd36fce7ccad5d7",
+  "person.line1h": "a4454ba84ccdf0059c4b26f154da5a51c1b9471bbbee6713cd1edd2fbe785047",
   "person.plan_rollovers": "3b9c41b704f3ec0003e916314ebc6857bd264e3bc8c6638fd325f55802b8fef4",
   "person.sav_dist": "3eeffab2e5334b0019bda53386e65bf6728c25b1f9ecb11066875bad665a6a24",
   "person.medicare5": "34278b3b7bb595ee3daf02a234cdbe2606178dce8ffd6bc5559ff0b543226621",
@@ -962,21 +1107,21 @@
   "person.s179_listed": "310610393448a7e347c74909d73f5930068bee4d3f700c79d61f860839893a55",
   "person.income179": "08ea802f90ef3983a725fa3a3fb4c7edc9b3599fc04c3e1a6bb3d10ecacb7703",
   "person.sc_total": "aa58c401ba6049531b4a2a1b0b52711807523298b7fe41548a7fff9ff611bb51",
-  "person.se_line6": "14ed98407a5f2668418f83ec50cf1667357a664ca030759b63b533a2940bd7d9",
-  "person.se_line12": "4b4bb64e52ff8ce8025962ed90b4bd007293093cd664cdf474489383367d89c7",
-  "person.se_line13": "0ae710212c76b1f262d318ec7fc3be591859167d0241c14f451008bf5d66b7b3",
-  "person.s16": "2e004874517642ed452cc90e38d4f8008bb8cef28d133e2b9f87728217fa3b96",
+  "person.se_line6": "a5ffef0d833f3297d8b416581b8089c7f9c0164d3e525901dfe474428a86a619",
+  "person.se_line12": "cdc10f7b205cf4c1e3d193b354409da657704555c084a2444a5a9bc78f9a6051",
+  "person.se_line13": "4988e9a37b07b1e4c3bf8074b276b6329f0c18f066a0bba59b806425cf85014d",
+  "person.s16": "8e9512f1d10b49fccc6bab603cedb22ab939eb63f817e64395c2ef623637765a",
   "person.positive_profits": "da338b2529be43fe7c46ff76e6ed01abf83708d7b9fb0549927de92376cecb8e",
   "person.sehi": "85f2a2724549838a8e3ec8a03709942c60596753a26f95dde6cb54b52661403c",
   "person.amt_dep": "3cc28b7201834e24013289577fc8e5223b128aef95e4803a7909dff7c8585acb",
   "person.qbi": "323f168abba5bb1ea9280b076825df33037e8df8cd4a109fc8f6334129e32d7b",
-  "person.eic_se": "afe807d46e3179a2cb790aa54c460a733333c632bedad674750cebf6120ee9bf",
+  "person.eic_se": "237224fbd3402e022c53fb1339a228c5cc0570efa23b866d7ce06c4808accd25",
   "person.sc_1a": "106a266d894b9149b04b7caf30ee4b5fcbf94b4234eaced7d022fff0035ea3ae",
   "person.dc_benefits": "6996260d0fa599c98aa6f1c9296b43e553bbd02dc25344033df7b18240ab6a20",
   "person.dc_has_box10": "63f9510a6cf441faadf06b60727f737ce0f5ea50800d806398a7d25b8dbec61b",
-  "person.dc_earned": "8b1ea65a823fbe4c80c4b58a592ca34ffe3e5113387eaf0587ca33b0f29dadf6",
-  "person.dc_earned_b": "aec324954a272d08688c93a68a5b139747a166a8d3cbfe05cfe1138ee83dd05e",
-  "person.sav_ineligible": "93ae9184a2547a042fe8a19cf1a361b2ee8cd2be9134e1ca425820a992c0d337",
+  "person.dc_earned": "562a9daf4ad457e1cd5d99c93ea175db9a4fa7222371eff3164689c85dd4c2e6",
+  "person.dc_earned_b": "f7ad2032d96b380cd65cab087f7aee84b91e2939a3c614497c6deb217677032c",
+  "person.sav_ineligible": "74e851da5dbee2a924009fe0812794a252f1ddae08866f830c48972bb6c2efba",
   "person.sav_roth_if_ira_owner": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "person.sav_line1": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "person.sav_line2": "43c8a0a7eceae0384691486ec34206f7d39c3393050bf9452f2814480b707b76",
@@ -984,17 +1129,17 @@
   "person.ira_age50": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "person.age55_at_year_end_if_open_year": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "person.ira_cov": "d5a20b74f1ce15ca402ac4e73b79357c66a2360512df5578c9276ff05e799d56",
-  "person.ira_line2": "560e179fb93453a7dc0035608bd5bf7afb8834753f92dca440df89ce41b1c39e",
-  "person.ira_line6": "5d00eb29a808bdf18fc32e282c1276b4bbaf1d9a203015017d48def55379a660",
-  "person.ira_line7": "1f6bcbbf60460e5d4fd04e615a1e7c036bb8f87adea68d62bb684a057cce7079",
-  "person.ira_deduction": "659d642320fe92a68b39f323713d0bcaaee8565949888eb511108b5291be4618",
-  "person.ira_nondeductible": "659d642320fe92a68b39f323713d0bcaaee8565949888eb511108b5291be4618",
-  "person.ira_files_8606": "659d642320fe92a68b39f323713d0bcaaee8565949888eb511108b5291be4618",
-  "person.ira_8606_line2": "659d642320fe92a68b39f323713d0bcaaee8565949888eb511108b5291be4618",
-  "person.ira_dist_gate": "659d642320fe92a68b39f323713d0bcaaee8565949888eb511108b5291be4618",
+  "person.ira_line2": "19b84438a64f3f916119fb32a2ddd0a0be6fe78acb688af1b98b28c1d50ea309",
+  "person.ira_line6": "ab4868769346f08b0687c26971987faed067a8c780d540ec9d1b957cf5126bb4",
+  "person.ira_line7": "0da50796c15ef6fcf0cac25732aa9765895096b4a9148833c5f067649d67f6f2",
+  "person.ira_deduction": "896bc45823beffd4bf40ee49602efb64f50fadd38a155283874d05a06d5b67f0",
+  "person.ira_nondeductible": "896bc45823beffd4bf40ee49602efb64f50fadd38a155283874d05a06d5b67f0",
+  "person.ira_files_8606": "896bc45823beffd4bf40ee49602efb64f50fadd38a155283874d05a06d5b67f0",
+  "person.ira_8606_line2": "896bc45823beffd4bf40ee49602efb64f50fadd38a155283874d05a06d5b67f0",
+  "person.ira_dist_gate": "896bc45823beffd4bf40ee49602efb64f50fadd38a155283874d05a06d5b67f0",
   "person.ira_8606_line14": "6e2ce5ce3a4d7488f1072f6e52b16e7c4487402bffff8f75af0f51dbcb2894c6",
   "person.ira_ssb": "89cc2dbadcdaf1cbaea6b7b46f724f5776e52364ca6b2e2524491de067f1cd69",
-  "person.ira_se": "0c9a8c1fb92154790602085e9750797e634d2c03670a2d6c8d6a2b0a17619326",
+  "person.ira_se": "a17d60654b9587f3bd0fd46cb2e975e716e65e8b97b4565afc804e649cb90f77",
   "person.edu_kid": "2fc0552361d594c319941e9c2cf899ab31969a61a9ceee40ed239ff6887498f0",
   "person.x_l1": "13ac39d5ad3ecc7f0161ea320bdf8c0a5471b6438ea0ac203a4e9b895534e72b",
   "person.x_l2_all": "72e265fbc505d3f4560c064945578f14f548cba5a15f41ed1a2b3b5e276ce237",
@@ -1021,7 +1166,7 @@
   "zero": "56b016e933ef4d229a153549a4524a68df36949137ac15f717036080415863d2",
   "credit": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "Step 1": "aa58c401ba6049531b4a2a1b0b52711807523298b7fe41548a7fff9ff611bb51",
-  "Step 2": "0ae710212c76b1f262d318ec7fc3be591859167d0241c14f451008bf5d66b7b3",
+  "Step 2": "4988e9a37b07b1e4c3bf8074b276b6329f0c18f066a0bba59b806425cf85014d",
   "Step 3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "Step 5": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "Step 6": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",

@@ -1,0 +1,222 @@
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 0490bfc..2083230 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -2313,7 +2313,7 @@ bank:
+   - input: dependent.age
+     order: 120
+     seq: 3
+-    help: "Enter 0 for a baby born in 2025."
++    help: "Enter 0 for a baby born in 2025. A person born on January 1 counts as a year older on the December 31 before (born January 1, 2007: enter 19)."
+     prompt: "How old was this person at the end of 2025?"
+   - input: dependent.lived_all_year
+     order: 120
+@@ -2370,7 +2370,7 @@ bank:
+     seq: 15
+     group: "dependent_facts"
+     tick: "Has been married at some time"
+-    help: "Count a marriage that has since ended."
++    help: "Count a marriage that has since ended, a common-law marriage, and a marriage abroad or under tribal law that a U.S. state would recognize."
+     prompt: "Has this person ever been married?"
+   - input: dependent.own_money
+     order: 120
+@@ -2382,7 +2382,7 @@ bank:
+   - input: dependent.other_only_spouse
+     order: 120
+     seq: 17
+-    help: "Answer No if a grandparent, aunt, uncle, grown brother or sister, or another parent of the child also lived with the child for more than half of 2025. A No may end the interview here."
++    help: "Answer No if a grandparent, aunt, uncle, grown brother or sister, or a parent of the child other than you and your husband or wife also lived with the child for more than half of 2025. A No may end the interview here."
+   - input: dependent.spouse_claims
+     order: 120
+     seq: 18
+@@ -2690,10 +2690,10 @@ bank:
+     order: 101
+     seq: 2
+     prompt: Were you married on December 31, 2025?
+-    help: A divorce that was not yet final on December 31 means you were still married; a final decree of divorce,
+-      legal separation or annulment means you were not, unless you divorced only to file as unmarried and married each
+-      other again in 2026. A registered domestic partnership or civil union is not a marriage. If your husband or wife
+-      died in 2025, answer No.
++    help: Living apart, or a divorce not final on December 31, leaves you married; a final decree of divorce, legal separation
++      or annulment does not, unless you divorced only to file as unmarried and remarried in 2026. A common-law marriage, or
++      one made abroad or under tribal law, counts where a U.S. state recognizes it; a domestic partnership or civil union
++      does not. If your husband or wife died in 2025, answer No.
+   - input: eic.lived_with_relative
+     order: 313
+     seq: 5
+@@ -3101,7 +3101,7 @@ bank:
+   - input: f8962.mfs_exception
+     order: 196
+     seq: 8
+-    help: "Abuse includes physical, sexual or emotional abuse, and efforts to control, isolate or frighten you. Abandoned means you cannot find them after a reasonable effort. Keep any records you have; do not send them."
++    help: "Abuse includes physical, psychological, sexual or emotional abuse, and efforts to control, isolate, humiliate or intimidate you; abuse of your child or another family member living with you can count too. Abandoned means you cannot find them after a reasonable effort. Keep any records you have; do not send them."
+     prompt: "Do you live apart from your husband or wife now, and are you unable to file a joint return with them because they abused you or abandoned you?"
+   - input: f8962.mfs_three_years
+     order: 196
+@@ -3270,10 +3270,11 @@ bank:
+   - input: person.edu_over
+     order: 241
+     seq: 140
+-    help: With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before
+-      you file. A Yes is outside what this tool prepares and ends the interview here.
++    help: A term beginning January to March 2026 and paid for in 2025 counts as a 2025 term. With only one such term, answer
++      by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes ends the interview here.
+     prompt: For this person (you, or your spouse on a joint return) — Was there a school term for which the tax-free help
+-      and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials?
++      and the refunds came to more than what was paid in 2025 for that term's tuition, required fees and course materials
++      (for the lifetime learning credit, only materials that had to be bought from the school)?
+   - input: dependent.edu
+     order: 241
+     seq: 210
+@@ -3360,10 +3361,11 @@ bank:
+   - input: dependent.edu_over
+     order: 241
+     seq: 340
+-    help: With one term in the year, answer by that term alone. Count help and refunds received in 2025 or in 2026 before
+-      you file. A Yes is outside what this tool prepares and ends the interview here.
++    help: A term beginning January to March 2026 and paid for in 2025 counts as a 2025 term. With only one such term, answer
++      by that term alone. Count help and refunds received in 2025 or in 2026 before you file. A Yes ends the interview here.
+     prompt: Was there a school term for which the tax-free help and the refunds came to more than what was paid in 2025 for
+-      that term's tuition, required fees and course materials?
++      that term's tuition, required fees and course materials (for the lifetime learning credit, only materials that had to
++      be bought from the school)?
+   - input: f8863.ban
+     order: 242
+     seq: 1
+@@ -3489,7 +3491,7 @@ bank:
+     order: 199
+     seq: 2
+     help: "Asked because the income on this return is below the federal poverty line. A return with this is outside what this tool prepares; a Yes ends the interview here."
+-    prompt: "Was anyone on this return who was covered by the Marketplace plan a lawfully present immigrant who could not get Medicaid because of their immigration status?"
++    prompt: "Was anyone on this return who was covered by the Marketplace plan a noncitizen lawfully present in the United States (green card and visa holders included) who could not get Medicaid in any month of 2025 because of their immigration status?"
+   - input: dependent.ptc_files
+     order: 199
+     seq: 3
+@@ -6095,7 +6097,8 @@ bank:
+       a utility subsidy that was not taxed as income. Do not take off other state incentives or net metering credits. Leave
+       out loan interest, fees and extended warranties. Leave out any part paid with a subsidized energy loan from a government
+       program.
+-    prompt: What did the insulation and air sealing materials cost, without labor, after any rebate or utility subsidy?
++    prompt: What did the insulation and air sealing materials cost, without labor, after any rebate or utility subsidy? Leave
++      out siding, drywall and anything else that also holds up the house or is a finished surface.
+   - input: f5695.line19a
+     order: 230
+     seq: 35
+@@ -6108,17 +6111,17 @@ bank:
+     order: 230
+     seq: 36
+     help: Zero if there was one door.
+-    prompt: What did the second most expensive door cost, on the same basis?
++    prompt: What did the second most expensive Energy Star door cost, on the same basis?
+   - input: f5695.line19d_ii
+     order: 230
+     seq: 37
+     help: Zero if there were two doors.
+-    prompt: What did the third most expensive door cost?
++    prompt: What did the third most expensive Energy Star door cost, on the same basis?
+   - input: f5695.line19e
+     order: 230
+     seq: 38
+     help: Zero if there were three doors or fewer.
+-    prompt: What did all the other doors cost together?
++    prompt: What did all the other Energy Star doors cost together, on the same basis?
+   - input: f5695.qmid_doors
+     order: 230
+     seq: 39
+@@ -6137,22 +6140,22 @@ bank:
+     order: 230
+     seq: 41
+     help: Zero if there was one.
+-    prompt: What did the second most expensive window or skylight cost, on the same basis?
++    prompt: What did the second most expensive Energy Star Most Efficient window or skylight cost, on the same basis?
+   - input: f5695.line20a_iii
+     order: 230
+     seq: 42
+     help: Zero if there were two.
+-    prompt: What did the third most expensive window or skylight cost?
++    prompt: What did the third most expensive Energy Star Most Efficient window or skylight cost, on the same basis?
+   - input: f5695.line20a_iv
+     order: 230
+     seq: 43
+     help: Zero if there were three.
+-    prompt: What did the fourth most expensive window or skylight cost?
++    prompt: What did the fourth most expensive Energy Star Most Efficient window or skylight cost, on the same basis?
+   - input: f5695.line20b
+     order: 230
+     seq: 44
+     help: Zero if there were four or fewer.
+-    prompt: What did all the other windows and skylights cost together?
++    prompt: What did all the other Energy Star Most Efficient windows and skylights cost together, on the same basis?
+   - input: f5695.qmid_windows
+     order: 230
+     seq: 45
+@@ -6188,7 +6191,7 @@ bank:
+     order: 230
+     seq: 61
+     help: Zero if there was one.
+-    prompt: What did the other central air conditioners cost together?
++    prompt: What did the other central air conditioners that meet the same efficiency tier cost together?
+   - input: f5695.qmid_ac
+     order: 230
+     seq: 62
+@@ -6209,12 +6212,12 @@ bank:
+     order: 230
+     seq: 64
+     help: Zero if there was one.
+-    prompt: What did the second most expensive such water heater cost?
++    prompt: What did the second most expensive gas, propane or oil water heater that meets the same efficiency tier cost?
+   - input: f5695.line23b
+     order: 230
+     seq: 65
+-    help: Zero if there were two or fewer.
+-    prompt: What did all the other such water heaters cost together?
++    help: Zero if there were two or fewer. Leave out heat pump water heaters; they were asked earlier.
++    prompt: What did all the other gas, propane or oil water heaters that meet the same efficiency tier cost together?
+   - input: f5695.qmid_wh
+     order: 230
+     seq: 66
+@@ -6236,7 +6239,7 @@ bank:
+     order: 230
+     seq: 68
+     help: Zero if there was one.
+-    prompt: What did the other furnaces and hot water boilers cost together?
++    prompt: What did the other furnaces and hot water boilers that meet the same standard cost together?
+   - input: f5695.qmid_furnace
+     order: 230
+     seq: 69
+@@ -6281,7 +6284,7 @@ bank:
+     help: Take off a rebate from the seller, maker or installer, a Department of Energy Home Energy Rebate, and a utility
+       subsidy that was not taxed as income. Do not take off other state incentives or net metering credits. Leave out loan
+       interest, fees and extended warranties. Leave out any part paid with a subsidized energy loan from a government program.
+-    prompt: What did the audit cost, after any rebate or utility subsidy?
++    prompt: What did the audit cost, after any rebate or utility subsidy? Count only audits with such a report.
+   - input: f5695.line29a
+     order: 230
+     seq: 53
+@@ -6296,7 +6299,7 @@ bank:
+     order: 230
+     seq: 54
+     help: Zero if there was one.
+-    prompt: What did the other heat pumps cost together?
++    prompt: What did the other heat pumps that meet the same efficiency tier cost together?
+   - input: f5695.line29c
+     order: 230
+     seq: 55
+@@ -6311,7 +6314,7 @@ bank:
+     order: 230
+     seq: 56
+     help: Zero if there was one.
+-    prompt: What did the other heat pump water heaters cost together?
++    prompt: What did the other heat pump water heaters that meet the same efficiency tier cost together?
+   - input: f5695.line29e
+     order: 230
+     seq: 57
+@@ -6325,7 +6328,7 @@ bank:
+     order: 230
+     seq: 58
+     help: Zero if there was one.
+-    prompt: What did the other biomass stoves and boilers cost together?
++    prompt: What did the other biomass stoves and boilers with the same 75% rating cost together?
+   - input: f5695.qmid_hp
+     order: 230
+     seq: 59

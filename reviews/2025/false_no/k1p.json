@@ -1,0 +1,2582 @@
+{
+ "form": "k1p",
+ "reviews": {
+  "gate:k1p.any_loss": {
+   "subject_sha": "26c0ff104db59acacf241be11855cfbcd2e055d384f791b34bf51c89800e9a8e",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A partner whose K-1 shows a section 179 deduction in box 12, and box 1 shows income or nothing. The deduction is more than their basis, or the property was bought with nonrecourse debt.",
+       "why_no": "The gate tests only boxes 1, 2, 3, 8, 9a and 14A. A box 12 deduction is not a negative amount in any of them, so the gate is false and neither question is asked.",
+       "line": "k1p.basis_short_if_loss; k1p.not_at_risk_if_loss",
+       "irs_text": "i1065sk1 p. 8: 'These losses and deductions include a loss on the disposition of assets and the section 179 expense deduction.' p. 3: 'Other limitations may apply to specific deductions (for example, the section 179 expense deduction).'",
+       "severity": "high",
+       "fix": "Make the gate true if box 12 shows any amount (or any box 12 code is present), as well as for the listed loss boxes."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A partner with little or zero outside basis whose K-1 shows partnership charitable contributions in box 13 (codes A–G) or foreign taxes paid or accrued in box 21. No listed box shows a loss.",
+       "why_no": "The gate counts only negative amounts in the six listed boxes. Charitable contributions and foreign taxes are positive figures in other boxes, so the gate is false.",
+       "line": "k1p.basis_short_if_loss",
+       "irs_text": "i1065sk1 p. 3: 'a partner's share of the adjusted basis in partnership charitable contributions (defined in section 170(c)) and taxes, described in section 901, paid or accrued to foreign countries and to U.S. territories is subject to this basis limitation (defined in section 704(d)).'",
+       "severity": "high",
+       "fix": "Make the gate true when box 13 or box 21 shows any amount. Better still, make it true for any deduction or loss item on the K-1."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A partner whose K-1 shows a net section 1231 loss in box 10, a loss in box 11 (for example a section 1256 contracts loss or other portfolio loss), or other deductions in box 13 (investment interest, portfolio deductions, other deductions). Box 1 is zero or positive.",
+       "why_no": "Box 10, box 11 and box 13 are not among the boxes the gate tests. A loss or deduction there leaves the gate false.",
+       "line": "k1p.basis_short_if_loss; k1p.not_at_risk_if_loss",
+       "irs_text": "i1065sk1 p. 3: 'a partner may only claim their share of a partnership loss (including a capital loss) to the extent it doesn't exceed their adjusted basis'; p. 8: 'if you have (a) a loss or other deduction from any activity ... and (b) amounts in the activity for which you aren't at risk, you'll have to complete Form 6198'",
+       "severity": "high",
+       "fix": "Add box 10 < 0, box 11 losses, and any box 12 or box 13 deduction to the gate. Equivalently: 'Does this K-1 show any loss, any amount in parentheses, or any deduction (boxes 1–3, 8–13, 14A, 21)?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner whose losses from this partnership were disallowed in an earlier year for lack of basis or at-risk amount and carried forward. This year the K-1 shows income in every box.",
+       "why_no": "The gate looks only at this year's K-1 boxes. With no current-year loss, it is false and the carried-forward losses are never raised.",
+       "line": "k1p.basis_short_if_loss; k1p.not_at_risk_if_loss",
+       "irs_text": "i1065sk1 p. 3: 'Any losses and deductions not allowed can be carried forward.'",
+       "severity": "medium",
+       "fix": "Also ask: 'Do you have losses or deductions from this partnership that were not allowed in an earlier year (basis or at-risk carryover)?' Make the gate true on yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose K-1 prints a loss in parentheses, such as '(12,000)' in box 1, and who types 12000 into the box 1 helper.",
+       "why_no": "The helper says 'Box 1, asked only when the box shows an amount' and does not say to enter a loss as a negative number. A positive entry makes 'Box 1 < $0' false.",
+       "line": "k1p.basis_short_if_loss; k1p.not_at_risk_if_loss",
+       "irs_text": "i1065sk1 p. 3: 'Note: Enter only positive amounts from Schedule K-1 on line 4. Negative amounts (decreases to basis) are entered on lines 8 through 10.'",
+       "severity": "medium",
+       "fix": "Ask for each box: 'Is the amount a loss (shown in parentheses or with a minus sign)?' Alternatively, have the helpers say 'enter a loss as a negative number' and confirm the sign."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A partner whose capital contribution is protected by an indemnity, a buy-back agreement or a similar arrangement that is not called a guarantee or a stop-loss agreement.",
+       "why_no": "The at-risk question lists only 'a guarantee or stop-loss agreement'. The filer reads that list as complete and answers no.",
+       "line": "k1p.not_at_risk_if_loss",
+       "irs_text": "i1065sk1 p. 8: 'protected against loss by a guarantee, a stop-loss agreement, or other similar arrangement (excluding casualty insurance and insurance against tort liability)'",
+       "severity": "medium",
+       "fix": "Change the wording to 'covered by a guarantee, stop-loss agreement, or any other arrangement that protects you against loss (other than casualty or liability insurance)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner who has received property distributions or has had nondeductible partnership expenses, or whose share of partnership liabilities fell during the year.",
+       "why_no": "The help defines basis as 'what you put in, plus your share of its income and debts, less losses and money taken out'. That leaves out property distributions, nondeductible expenses and a drop in the share of liabilities, so the filer overstates basis and answers no.",
+       "line": "k1p.basis_short_if_loss",
+       "irs_text": "i1065sk1 p. 3: 'Line 3e ... If the sum is negative, enter the amount on line 9a'; 'Use the Worksheet for Adjusting the Basis of a Partner's Interest in the Partnership to figure the basis of your interest'",
+       "severity": "medium",
+       "fix": "Change the help to: 'less losses, deductions, nondeductible expenses, money and the basis of property distributed to you, and any decrease in your share of its debts.' Point to the basis worksheet."
+      }
+     ],
+     "prompt_sha": "58014906d958f79203598935ed3ab44415c516da1bc265f2b2b2f0d505150c0e",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.10568,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.any_loss.26c0ff104db5.1.response.txt"
+    }
+   ],
+   "condition": "k1p.any_loss",
+   "lines": [
+    "k1p.basis_short_if_loss",
+    "k1p.not_at_risk_if_loss"
+   ],
+   "inputs": [
+    "k1p.basis_short",
+    "k1p.not_at_risk"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      3,
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Basis Limitations, \"a partner may only claim their share of a partnership loss (including a capital loss) to the extent it doesn’t exceed their adjusted basis in the partnership\"",
+      "p. 3, Limitations on Losses, Deductions, and Credits, \"the basis limitations, the at-risk limitations, the passive activity limitations, and the excess business loss limitations\"",
+      "p. 8, At-Risk Limitations, \"you’ll have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity\""
+     ],
+     "cols_pages": [
+      3,
+      8
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.ask_active": {
+   "subject_sha": "78cb2f7c576c4b25af5a1bf762c6cd58349db06c92f3e1e943f044971e5730bf",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "7",
+       "who": "A member of a member-managed or manager-managed LLC who is not a manager. The K-1 item G box checked is 'Limited partner or other LLC member'. The member approves tenants, rents and repairs, and box 2 shows a rental real estate loss.",
+       "why_no": "The computed helper 'General partner or LLC member-manager (item G)' is false because item G groups 'other LLC member' with limited partners. The cited text bars only limited partners, and an LLC member is not a limited partner in a limited partnership. The tool treats a form checkbox as the legal classification.",
+       "line": "k1p.decisions_if_asked",
+       "irs_text": "i1065sk1 p. 11: 'Limited partners can’t actively participate unless future regulations provide an exception' (the bar names limited partners only, not other LLC members)",
+       "severity": "high",
+       "fix": "Make the gate 'box 2 shows an amount and the partner is not a limited partner in a limited partnership'. When item G shows 'Limited partner or other LLC member', ask whether the entity is a limited partnership (or an LLC) before setting the line to false."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "An individual who holds both a general and a limited interest in the same partnership. The K-1 item G shows (or the filer reads it as showing) limited partner, and the filer actively manages the rentals.",
+       "why_no": "Item G has only one box. A dual-interest partner whose K-1 marks the limited box fails the computed 'general partner' helper, even though the general partner interest is not barred.",
+       "line": "k1p.decisions_if_asked",
+       "irs_text": "i1065sk1 p. 11: 'Limited partners can’t actively participate unless future regulations provide an exception'",
+       "severity": "medium",
+       "fix": "Ask whether the filer holds any general partner (or LLC manager) interest in this partnership, not only what item G shows."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A general partner whose 2025 box 2 is blank (for example, the activity broke even or the property was idle), but who carries prior-year unallowed rental real estate losses from this partnership's activity into 2025.",
+       "why_no": "The helper 'Box 2 shows an amount' is false, so the active-participation question is never asked. The prior-year unallowed losses may still qualify for the special allowance if the filer actively participated.",
+       "line": "k1p.decisions_if_asked",
+       "irs_text": "i1065sk1 p. 11: 'Active participation is a less stringent requirement than material participation... Management decisions that can count as active participation include approving new tenants, deciding rental terms, approving capital or repair expenditures' (special allowance for a rental real estate activity; see also Instructions for Form 8582)",
+       "severity": "medium",
+       "fix": "Broaden the gate to 'box 2 shows an amount, or the filer has prior-year unallowed losses from this partnership's rental real estate activity'."
+      }
+     ],
+     "prompt_sha": "967d23927f046558d15c09ac532f1d910314f5a6b39470788fc3f5692124b16f",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.06714799999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.ask_active.78cb2f7c576c.1.response.txt"
+    }
+   ],
+   "condition": "k1p.ask_active",
+   "lines": [
+    "k1p.decisions_if_asked"
+   ],
+   "inputs": [
+    "k1p.decisions"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Special allowance for a rental real estate activity, \"Limited partners can’t actively participate unless future regulations provide an exception\"",
+      "p. 11, Special allowance for a rental real estate activity, \"Management decisions that can count as active participation include approving new tenants, deciding rental terms, approving capital or repair expenditures\""
+     ],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.ask_five": {
+   "subject_sha": "1e6bffd530798ef8090947e4bfb7e7ad1052bc33984367271705558811d6caa8",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A retired general partner who did no work in the business in 2025, or a limited partner who did no work in 2025, but who materially participated in at least 5 of the years 2015 to 2024.",
+       "why_no": "The gate requires the helper \"Worked in the business, 500 hours or less\" to be true. A filer with zero hours in 2025 answers that they did not work in the business, so the gate is false and the five-of-ten question is never asked. Test 5 exists mainly for partners who no longer work in the activity.",
+       "line": "k1p.five_of_ten_if_asked",
+       "irs_text": "i1065sk1 p. 9: \"You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year.\" Also: \"Limited partners... you must meet item 1, 5, or 6 above.\"",
+       "severity": "high",
+       "fix": "Gate on 'did not work more than 500 hours, including no work at all' (0 to 500 hours), not on 'worked in the business'. State that test 5 applies even when you did no work this year."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose business was a sole proprietorship (Schedule C or F) or an S corporation in earlier years before it became this partnership, and who worked in it full time in those years.",
+       "why_no": "The question says 'this business', and the help says to look for the income or loss in column (i) or (k) of Schedule E. The earlier returns show the business on Schedule C or F, or on a different Schedule E entity line, so the filer finds no matching column entry and answers no. Test 5 looks at material participation in the activity, not in the partnership.",
+       "line": "k1p.five_of_ten_if_asked",
+       "irs_text": "i1065sk1 p. 9: \"You materially participated in the activity for any 5 tax years ... during the 10 tax years that immediately precede the tax year.\"",
+       "severity": "medium",
+       "fix": "Ask about the activity, whatever form it was held in. Broaden the help: 'nonpassive on your return, for example on Schedule C or F, or in column (i) or (k) of Schedule E Part II, even if the business was then a sole proprietorship or another entity.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse did the work in the activity in earlier years, or whose K-1 is in the spouse's name; or a filer whose earlier years were on separate or single returns.",
+       "why_no": "The question asks whether 'you materially participate[d]'. The filer reads 'you' as themselves alone and answers no, even though work by either spouse counts toward material participation.",
+       "line": "k1p.five_of_ten_if_asked",
+       "irs_text": "i1065sk1 p. 9: \"Generally, any work that you or your spouse does in connection with an activity held through a partnership ... is counted toward material participation.\"",
+       "severity": "medium",
+       "fix": "Ask: 'In at least 5 of the years 2015 to 2024, did you materially participate in this business, counting work done by you or your spouse?' Name whose K-1 this is."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A limited partner who answers yes to the test 3 question (more than 100 hours and not less than any other individual), and who also materially participated in 5 of the prior 10 years.",
+       "why_no": "Test 3 does not count for a limited partner. If a yes to the test 3 helper sets the gate false, the five-of-ten question is skipped and the line is false. The limited partner is then left with no qualifying test, although test 5 would qualify them.",
+       "line": "k1p.five_of_ten_if_asked",
+       "irs_text": "i1065sk1 p. 9: \"Limited partners. If you're a limited partner, you must meet item 1, 5, or 6 above to qualify as having materially participated.\"",
+       "severity": "medium",
+       "fix": "For limited partners (other than those holding a general partnership interest all year), ignore tests 2 and 3 in the gate and ask the five-of-ten question whenever test 1 is not met."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner who materially participated in earlier years in which the activity had no income or loss to report, or whose earlier returns misreported it as passive.",
+       "why_no": "The help points to where the amount appeared on Schedule E. With no amount reported, or an amount reported in the passive columns (g) or (h), the filer concludes they did not materially participate.",
+       "line": "k1p.five_of_ten_if_asked",
+       "irs_text": "i1065sk1 p. 9: \"You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year.\"",
+       "severity": "low",
+       "fix": "Present the Schedule E columns as one way to check, not the test. Add: 'or you met a material participation test that year, such as more than 500 hours.'"
+      }
+     ],
+     "prompt_sha": "a8f4ba4ad96faffd45459a0367dda48952503d5167fee6653c5b2cc859c097f2",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.086728,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.ask_five.1e6bffd53079.1.response.txt"
+    }
+   ],
+   "condition": "k1p.ask_five",
+   "lines": [
+    "k1p.five_of_ten_if_asked"
+   ],
+   "inputs": [
+    "k1p.five_of_ten"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Individuals (other than limited partners), \"You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.ask_nearly_all": {
+   "subject_sha": "11128494cc77f69c7973ec6b97e685bc9b6c09d24cf195cf660f25c3ee3e6b78",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A general partner in a partnership whose fiscal year ended June 30, 2025. They did nearly all the work in the activity from July 2024 to June 2025. Hired staff then did most of the work from July to December 2025.",
+       "why_no": "The question asks about the work 'in 2025'. Looking at calendar 2025, the filer sees that others did most of the work in the second half and answers no. The test applies to the partnership's tax year that ends in 2025.",
+       "line": "k1p.nearly_all_if_asked",
+       "irs_text": "i1065sk1 p. 9: \"All determinations of material participation are based on your participation during the partnership’s tax year.\"",
+       "severity": "medium",
+       "fix": "Ask about 'the partnership's tax year that ends in 2025 (shown at the top of your Schedule K-1)', not 'in 2025'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A general partner whose Schedule K-1 covers two activities, with a statement attached and box 23 checked. They alone run one small trade or business activity. Employees do most of the work in the partnership's other activity.",
+       "why_no": "The question asks about 'nearly all of the work in it' and frames it 'On this Schedule K-1'. The filer reads 'it' as the K-1 or the whole partnership. Taking all activities together, they did not do nearly all of the work, so they answer no.",
+       "line": "k1p.nearly_all_if_asked",
+       "irs_text": "i1065sk1 p. 9: \"You must determine if you materially participated (a) in each trade or business activity held through the partnership\"; test 2: \"constituted substantially all the participation in the activity of all individuals\"",
+       "severity": "medium",
+       "fix": "Ask this question once per activity listed on the K-1 statement: 'In this activity (name), did you (and your spouse) do nearly all of the work…'. Replace the vague 'it' with 'the activity'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A limited partner who also owned a general partnership interest at all times during the year. They and their spouse did nearly all of the work in the activity.",
+       "why_no": "The gate helper is labeled 'A general partner'. A filer whose K-1 shows them as a limited partner answers no or is routed away. Test 2 still applies to them, because the IRS treats this filer as an individual 'other than limited partners'.",
+       "line": "k1p.nearly_all_if_asked",
+       "irs_text": "i1065sk1 p. 9: \"If you’re an individual (either a general partner or a limited partner who owned a general partnership interest at all times during the tax year), you materially participated ... if one or more of the following apply.\"",
+       "severity": "medium",
+       "fix": "Define the gate helper as 'a general partner, or a limited partner who also held a general partnership interest at all times during the partnership's tax year'. State this in the question's help text."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly. Each spouse worked 300 hours in the partnership activity, and they were the only people who worked in it.",
+       "why_no": "The gate's hour helper may count only the partner's own hours, so the 500-hour and 'less than someone else' comparisons may be computed on one spouse alone. The gated question counts both spouses, but the hour helpers that lead to it may not. The partner's own hours (300) appear to be less than the spouse's or close to them, which makes test 3 or the gate misfire. Combined, the couple did substantially all of the work.",
+       "line": "k1p.nearly_all_if_asked",
+       "irs_text": "i1065sk1 p. 9: \"Generally, any work that you or your spouse does in connection with an activity held through a partnership ... is counted toward material participation.\"",
+       "severity": "medium",
+       "fix": "Count the spouse's work in every hour helper the gate uses ('you (and, on a joint return, your spouse)'). Never treat the spouse as the 'someone else' the filer is compared with."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A general partner who worked 90 hours and was the only person who worked in the activity. Test 3 fails for this filer only because of the 100-hour floor.",
+       "why_no": "The gate's label, 'worked 500 hours or less and less than someone else', suggests the question is only for someone outranked by another worker. If the test-3 helper is read or built to mean 'not less than anyone', a filer with no one above them is screened out. Test 2 is exactly their case.",
+       "line": "k1p.nearly_all_if_asked",
+       "irs_text": "i1065sk1 p. 9: test 3 requires \"more than 100 hours ... and ... wasn’t less than the participation ... of any other individual\"; test 2 has no hour floor",
+       "severity": "low",
+       "fix": "Relabel the gate as 'test 3 not met (100 hours or less, or less than someone else)'. Confirm that the helper is false whenever hours are 100 or less."
+      }
+     ],
+     "prompt_sha": "65b83baacbcf5950d25da4a2a108dcc2fb47b05e9bfff33d801d3d0d33b7f9a1",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.07941200000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.ask_nearly_all.11128494cc77.1.response.txt"
+    }
+   ],
+   "condition": "k1p.ask_nearly_all",
+   "lines": [
+    "k1p.nearly_all_if_asked"
+   ],
+   "inputs": [
+    "k1p.nearly_all"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Individuals (other than limited partners), \"constituted substantially all the participation in the activity of all individuals\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.ask_other": {
+   "subject_sha": "a1c8cc7b63eb8e1b5b2888b5a220b9e6664be518e6bcc5bc4a11b24e63439c3b",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A partner in a service business outside the eight named fields where capital is not a material income-producing factor, such as an insurance agency, real estate brokerage, financial planning or investment advisory firm, executive search firm, or design studio. They materially participated in 3 earlier years and worked under 500 hours in 2025.",
+       "why_no": "The question asks only whether it is 'a business of services in health, law, engineering, architecture, accounting, actuarial science, performing arts or consulting'. The business is none of these, so a truthful answer is no. The question omits the catch-all clause.",
+       "line": "k1p.t6_if_asked",
+       "irs_text": "i1065sk1 p. 9: 'A personal service activity involves the performance of personal services in the field of health, law, ... or consulting, or any other trade or business in which capital isn't a material income-producing factor.'",
+       "severity": "high",
+       "fix": "Ask about the facts the full definition turns on: 'Is the business mainly the performance of personal services, either in health, law, engineering, architecture, accounting, actuarial science, performing arts or consulting, or in any other business whose income comes mainly from people's services rather than from capital (equipment, inventory, property)?' Add help text that gives the catch-all and examples."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse did the work in the partnership's practice in earlier years. For example, the spouse ran the office of the filer's accounting partnership full time from 2019 to 2022, while the filer was mostly an investor.",
+       "why_no": "The question says 'in which you materially participated'. The filer reads 'you' as themselves alone and does not count the spouse's work.",
+       "line": "k1p.t6_if_asked",
+       "irs_text": "i1065sk1 p. 9: 'Generally, any work that you or your spouse does in connection with an activity held through a partnership ... is counted toward material participation.'",
+       "severity": "medium",
+       "fix": "Reword to 'in which you materially participated (counting work done by you or your spouse)', and say the same in the help."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A partner who, in 3 earlier years, met material participation only through test 4, 5, 7 or a spouse's hours. For example, they worked about 300 hours a year in a consulting firm, regularly and continuously, and were not full time.",
+       "why_no": "'Materially participated' is a legal classification. A filer who was not full time, or who never ran the 7 tests for those years, reads it as 'worked full time' and answers no.",
+       "line": "k1p.t6_if_asked",
+       "irs_text": "i1065sk1 p. 9: test 6 requires that 'you materially participated in the activity for any 3 tax years (whether or not consecutive) preceding the tax year', where material participation means any of tests 1 to 7.",
+       "severity": "medium",
+       "fix": "Ask about checkable facts year by year: hours worked by you or your spouse, whether that work was the most of any person's, and whether it was regular and continuous. Alternatively, give the 7 tests in the help and state that meeting any one of them in a year counts."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A retired or departed partner who did no work in 2025 but still holds an interest in a law or medical partnership where they materially participated for 3 or 4 earlier years (too few for test 5).",
+       "why_no": "The gate is labeled 'Worked in the business but met none of tests 1, 2, 3 and 5'. If an earlier question such as 'Did you work in the business?' leads here, the retired partner truthfully answers no and test 6 is never asked. Test 6 needs no current-year work.",
+       "line": "k1p.t6_if_asked",
+       "irs_text": "i1065sk1 p. 9, test 6: 'The activity was a personal service activity and you materially participated in the activity for any 3 tax years ... preceding the tax year' (no current-year participation required).",
+       "severity": "medium",
+       "fix": "Make sure a filer with zero 2025 hours reaches the test 5 and test 6 questions: compute the helper true when hours are 0, and do not route through a 'worked in the business' gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A partner who is a limited partner (not holding a general interest). Test 6 is one of the only three tests open to them.",
+       "why_no": "The gate's citation is under 'Individuals (other than limited partners)'. If an upstream helper routes limited partners away from the hours and tests 2/3 path, test 6 is never asked.",
+       "line": "k1p.t6_if_asked",
+       "irs_text": "i1065sk1 p. 9: 'Limited partners. If you're a limited partner, you must meet item 1, 5, or 6 above to qualify as having materially participated.'",
+       "severity": "medium",
+       "fix": "Ask test 6 for limited partners too, whenever tests 1 and 5 are not met, whatever the answers to tests 2 and 3."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A partner in a fiscal-year partnership, for example one whose tax year runs July 2024 to June 2025, or a partner whose earlier years of participation are counted by the partnership's tax year.",
+       "why_no": "The question says 'any 3 years before 2025', but the rule counts tax years before the partnership's tax year. The filer may count or exclude the wrong years.",
+       "line": "k1p.t6_if_asked",
+       "irs_text": "i1065sk1 p. 9: 'All determinations of material participation are based on your participation during the partnership's tax year' and test 6 counts 'tax years ... preceding the tax year'.",
+       "severity": "low",
+       "fix": "Say 'in any 3 tax years before the partnership's tax year shown on this K-1 (they need not be consecutive)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who sees that the help says 'A Yes ends the interview here' and wants to finish the return in this tool.",
+       "why_no": "The help tells the filer that yes stops the interview, which invites a no from a filer whose answer is uncertain.",
+       "line": "k1p.t6_if_asked",
+       "irs_text": "i1065sk1 p. 9, test 6 (a yes makes the activity nonpassive, which the tool cannot handle).",
+       "severity": "low",
+       "fix": "Explain why: 'If yes, income from this activity is nonpassive, which this tool does not support.' Also tell the filer to answer yes when unsure."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A partner in a partnership with several activities whose main business is not a service business but which includes a consulting or other personal service activity in which the partner worked.",
+       "why_no": "The question asks 'On this Schedule K-1 ... Is it a business of services ...'. The filer judges the partnership as a whole and answers no.",
+       "line": "k1p.t6_if_asked",
+       "irs_text": "i1065sk1 p. 9: 'You must determine if you materially participated (a) in each trade or business activity held through the partnership.'",
+       "severity": "low",
+       "fix": "Ask per activity listed on the K-1 statement, or ask 'Is any activity on this K-1 a personal service activity ...'."
+      }
+     ],
+     "prompt_sha": "39d84473f510d9bd48f298a06736f03bf68e77ac798a3646aa1397e736b57a18",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.09894,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.ask_other.a1c8cc7b63eb.1.response.txt"
+    }
+   ],
+   "condition": "k1p.ask_other",
+   "lines": [
+    "k1p.t6_if_asked"
+   ],
+   "inputs": [
+    "k1p.t6"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Individuals (other than limited partners), \"The activity was a personal service activity and you materially participated in the activity for any 3 tax years\"",
+      "p. 9, Material participation, \"You must determine if you materially participated (a) in each trade or business activity held through the partnership\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.ask_other_gp": {
+   "subject_sha": "c443d8eb96a58f95e8d23ab9f30c99529ffef369100c129272e248d26e60e5eb",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner who holds a limited partnership interest and also held a general partnership interest in the same partnership at all times during the year. The partnership checked item G as limited partner, or the filer has two K-1s and is answering on the limited one.",
+       "why_no": "The gate keys on item G, 'General partner or LLC member-manager.' This filer's K-1 shows limited partner, so the helper is false and tests 4 and 7 are never asked.",
+       "line": "k1p.t4_if_gp and k1p.t7_if_gp",
+       "irs_text": "i1065sk1 p. 9: 'If you're an individual (either a general partner or a limited partner who owned a general partnership interest at all times during the tax year), you materially participated in an activity only if one or more of the following apply.'",
+       "severity": "high",
+       "fix": "Make the second helper 'General partner, or limited partner who also held a general partnership interest in this partnership at all times during the partnership's tax year.' Ask that fact directly rather than relying only on item G."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "An LLC member who actively runs the business but is not designated a manager. The K-1 item G box is 'Limited partner or other LLC member.'",
+       "why_no": "The filer goes by the item G checkbox, which says limited/other member. The gate then treats them as a limited partner and skips tests 4 and 7.",
+       "line": "k1p.t4_if_gp and k1p.t7_if_gp",
+       "irs_text": "i1065sk1 p. 9: 'Individuals (other than limited partners)... you materially participated in an activity only if one or more of the following apply... 4... 7.'",
+       "severity": "medium",
+       "fix": "Do not equate 'other LLC member' with limited partner. Ask whether the filer's liability is limited under state law and whether they had authority to manage. Otherwise, route non-manager LLC members to all seven tests, or refuse."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A general partner filing jointly whose spouse also works in the partnership's business, or in the other businesses. The filer's own hours fall short of 500 (test 4) or 100 (test 7), but combined hours meet the threshold.",
+       "why_no": "Both questions ask 'did your work in it' and 'did you work in it.' The helper says nothing about a spouse, so the filer truthfully counts only their own hours.",
+       "line": "k1p.t4_if_gp and k1p.t7_if_gp",
+       "irs_text": "i1065sk1 p. 9: 'Generally, any work that you or your spouse does in connection with an activity held through a partnership... is counted toward material participation.'",
+       "severity": "high",
+       "fix": "Ask 'did your work and your spouse's work (whether or not you file jointly)...' in both questions, and in the upstream 'worked in the business' helper."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A general partner who did no work in the business personally, while the spouse worked in it substantially.",
+       "why_no": "The upstream helper 'Worked in the business' asks about the filer alone. A truthful no makes the gate false, so tests 4 and 7 are never asked.",
+       "line": "k1p.t4_if_gp and k1p.t7_if_gp",
+       "irs_text": "i1065sk1 p. 9: 'any work that you or your spouse does in connection with an activity held through a partnership... is counted toward material participation.'",
+       "severity": "high",
+       "fix": "Word the upstream helper as 'Did you or your spouse work in the business...' so the gate counts spouse participation."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A general partner in a fiscal-year partnership whose K-1 covers, for example, July 2024 through June 2025. The filer worked heavily in the second half of 2024 and little in 2025.",
+       "why_no": "Both questions ask about 'In 2025' or 'in 2025.' The test is measured over the partnership's tax year, so calendar-2025 hours understate the hours that count.",
+       "line": "k1p.t4_if_gp and k1p.t7_if_gp",
+       "irs_text": "i1065sk1 p. 9: 'All determinations of material participation are based on your participation during the partnership's tax year.'",
+       "severity": "medium",
+       "fix": "Replace 'In 2025' with 'during the partnership's tax year shown at the top of this Schedule K-1.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A general partner who worked more than 100 hours in another activity, such as one held through another partnership's K-1, an S corporation, or a second activity inside this same partnership. Combined with this activity, the hours exceed 500.",
+       "why_no": "'Other businesses' reads as separate businesses the filer runs. Another trade or business activity within this partnership, or a passive K-1 investment the filer worked in, may not be counted.",
+       "line": "k1p.t4_if_gp",
+       "irs_text": "i1065sk1 p. 9: 'you participated in all significant participation activities (including activities outside the partnership) during the year for more than 500 hours. A significant participation activity is any trade or business activity in which you participated for more than 100 hours...'",
+       "severity": "medium",
+       "fix": "Say 'in this activity and in every other trade or business activity (including other activities of this partnership and businesses held through other partnerships or S corporations) where you or your spouse worked more than 100 hours but did not otherwise materially participate.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A general partner whose partnership attaches a statement with more than one trade or business activity. The filer met test 4 or test 7 for one activity but not the others.",
+       "why_no": "The questions say 'On this Schedule K-1 (Form 1065)... did you work in it,' which invites a single answer for the whole K-1. A filer who worked in only part of it may answer no.",
+       "line": "k1p.t4_if_gp and k1p.t7_if_gp",
+       "irs_text": "i1065sk1 p. 9: 'You must determine if you materially participated (a) in each trade or business activity held through the partnership.'",
+       "severity": "low",
+       "fix": "When box 23 is checked, ask per activity listed on the attached statement, or refuse."
+      }
+     ],
+     "prompt_sha": "fa90e1fe4ebdd42598ba16edeb2e84d8f361f554ff89f5f3661c153292ab88c7",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.098112,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.ask_other_gp.c443d8eb96a5.1.response.txt"
+    }
+   ],
+   "condition": "k1p.ask_other_gp",
+   "lines": [
+    "k1p.t4_if_gp",
+    "k1p.t7_if_gp"
+   ],
+   "inputs": [
+    "k1p.t4",
+    "k1p.t7"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Individuals (other than limited partners), \"Based on all the facts and circumstances, you participated in the activity on a regular, continuous, and substantial basis during the tax year\"",
+      "p. 9, Individuals (other than limited partners), \"The activity was a significant participation activity for the tax year\"",
+      "p. 9, Limited partners, \"If you’re a limited partner, you must meet item 1, 5, or 6 above to qualify as having materially participated\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.ask_prior_active": {
+   "subject_sha": "385c4d9bdc61e13d6a688ac75a8733f05bb56deeae3f7616b0333b21f46cfe7c",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose held-back rental loss built up over several years, for example from 2019 through 2024. They actively participated only from 2022 on. Before that they held the interest passively or were not involved in decisions.",
+       "why_no": "\"The held-back rental real estate loss\" reads as last year's single carryover. Form 8582 Part VII column (c) pools all prior years into one figure, so the filer checks only 2024, when they did participate, and answers no without looking at the older years inside the amount.",
+       "line": "k1p.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV: \"Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.\"",
+       "severity": "medium",
+       "fix": "Ask: \"The held-back loss may include losses from several earlier years. For any of those years, did you not help make decisions for this rental, or own less than a tenth of it at any time that year?\" Help: \"Check every year whose loss is still carried forward, not only last year.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A married filer who filed separately in the year the loss arose and lived with their spouse at some point that year. They made the management decisions and owned well over 10%.",
+       "why_no": "The question asks only about decisions and ownership. Both were true for this filer, so they answer no. Married filing separately while living with a spouse also disqualifies that year from the active participation rule, and the question never mentions it.",
+       "line": "k1p.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV Caution: \"Married individuals who file separate returns and lived with their spouses at any time during the tax year don't qualify under the active participation rule and must use Part V instead of Part IV.\"",
+       "severity": "medium",
+       "fix": "Add a separate question: \"In any year the held-back loss arose, did you file married filing separately and live with your spouse at any time that year?\" Treat a yes the same as a yes to the participation question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who in a loss year owned 10% or more for most of the year but fell below a tenth for part of it. Another example is a filer who held the interest as a limited partner that year and still weighed in on decisions informally.",
+       "why_no": "\"Owned less than a tenth of it\" without \"at any time\" reads as the year-end or typical share. \"Help make decisions\" invites a limited partner who gave informal input to answer no.",
+       "line": "k1p.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV: \"unless you actively participated in the activity in both the year the loss arose and the current tax year. If you didn't actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V.\"",
+       "severity": "medium",
+       "fix": "Ask: \"…or owned less than a tenth of it (counting your spouse's share) at any time that year, or held it only as a limited partner?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "Any filer who is unsure how to answer.",
+       "why_no": "The help says \"A Yes ends the interview here.\" That pushes an uncertain filer toward no to keep going, and a no silently places the prior-year loss in Part IV.",
+       "line": "k1p.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV: \"If you didn't actively participate in both years, enter the prior-year unallowed loss in column (c) of Part V.\"",
+       "severity": "low",
+       "fix": "Replace the help with what the answer decides: \"If yes, part of this loss belongs in Part V and can't use the special allowance. This tool can't split it, so a yes stops here.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse made the rental decisions, or held the larger share, in the loss year. The filer personally did neither.",
+       "why_no": "The singular \"you\" leads this filer to answer yes, the opposite error. The interview is wrongly refused even though their spouse's participation and share can count toward the requirement.",
+       "line": "k1p.prior_not_active_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV: \"unless you actively participated in the activity in both the year the loss arose and the current tax year\"",
+       "severity": "low",
+       "fix": "Ask: \"…a year when neither you nor your spouse helped make decisions for it, or the two of you together owned less than a tenth of it?\""
+      }
+     ],
+     "prompt_sha": "0524183f3afbba0b57022c637b2da726dde89f59bcc245f6dc17d3744a866f90",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.080444,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.ask_prior_active.385c4d9bdc61.1.response.txt"
+    }
+   ],
+   "condition": "k1p.ask_prior_active",
+   "lines": [
+    "k1p.prior_not_active_if"
+   ],
+   "inputs": [
+    "k1p.prior_not_active"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Part IV, \"Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
+  "gate:k1p.decisions_if_asked": {
+   "subject_sha": "6db0821a8eedd693dc6dc6dfa07f1bac419b16cf55941765d8711bbce5958b62",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A general partner with a box 2 rental real estate loss who held at least 10% all year. They made no leasing or spending decisions, but they arranged, in a significant and bona fide way, for contractors to do repairs and for a manager to provide services.",
+       "why_no": "The gate asks only whether they 'helped make management decisions for the rental real estate'. Arranging for others to provide services is a separate example of active participation, so the filer truthfully answers no.",
+       "line": "k1p.tenth_if_decisions",
+       "irs_text": "i1065sk1 (2025) p. 11: \"You may be treated as actively participating if you participated, for example, in making management decisions or arranging for others to provide services (such as repairs) in a significant and bona fide sense.\"",
+       "severity": "high",
+       "fix": "Ask: 'Did you (or your spouse) take part in managing the rental real estate in a significant and bona fide way, for example by approving tenants, setting rental terms, approving repairs or capital spending, or arranging for others to provide services such as repairs?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A non-manager member of an LLC taxed as a partnership whose K-1 checks 'Limited partner or other LLC member', with a box 2 rental loss and at least a 10% interest. They approve tenants and repairs under the operating agreement.",
+       "why_no": "The computed gate treats anyone not marked 'General partner or LLC member-manager' as not a general partner, so the question is never asked. The IRS text excludes only 'limited partners', and an LLC member who is not a state-law limited partner is not literally one.",
+       "line": "k1p.tenth_if_decisions",
+       "irs_text": "i1065sk1 (2025) p. 11: \"Limited partners can't actively participate unless future regulations provide an exception.\"",
+       "severity": "medium",
+       "fix": "Gate on 'not a limited partner (in a limited partnership)' rather than on the K-1 general-partner checkbox. Alternatively, ask LLC members directly whether their interest is a limited partnership interest."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner who holds both a general partner interest and a limited partner interest in the same rental partnership. The K-1 or the tool records the interest as limited.",
+       "why_no": "The computed condition reads the partner as not a general partner and skips the question. A partner who also holds a general interest is not limited to the limited partner treatment for that activity.",
+       "line": "k1p.tenth_if_decisions",
+       "irs_text": "i1065sk1 (2025) p. 11: \"Limited partners can't actively participate unless future regulations provide an exception.\"",
+       "severity": "medium",
+       "fix": "Ask whether the filer held any general partner interest in the partnership at any time in 2025, and do not rely only on the item I checkbox."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A general partner whose 2025 K-1 shows nothing in box 2 (the activity broke even or was sold) but who carries unallowed rental real estate losses from earlier years. Another example is a partner who received rental real estate credits reported elsewhere on the K-1.",
+       "why_no": "The computed gate requires an amount in box 2, so the active participation questions are never reached. The special allowance can still apply to prior-year unallowed losses from an activity in which the partner actively participates.",
+       "line": "k1p.tenth_if_decisions",
+       "irs_text": "i1065sk1 (2025) p. 11: \"The maximum special allowance that single individuals and married individuals filing a joint return can qualify for is $25,000.\" (Allowance for rental real estate losses with active participation; prior-year unallowed losses flow through Form 8582.)",
+       "severity": "medium",
+       "fix": "Broaden the gate to: box 2 shows an amount, or the filer has prior-year unallowed losses or rental real estate credits from this partnership's rental activity."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly where only one spouse is the general partner. The other spouse made the tenant and repair decisions for the partnership's rental property.",
+       "why_no": "The helper speaks of the partner helping make management decisions, so the partner-spouse answers no because they personally did not. Under the passive activity rules, a spouse's participation counts.",
+       "line": "k1p.tenth_if_decisions",
+       "irs_text": "i1065sk1 (2025) p. 11: \"your interest (including your spouse's interest) in the activity was less than 10% (by value)\" (spouse treated together with the partner in the active participation test)",
+       "severity": "medium",
+       "fix": "Word the question as 'Did you or your spouse help make management decisions ... or arrange for others to provide services ...?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A partner who was a general partner for most of 2025 but converted to a limited interest, or who made the year's management decisions before a mid-year change in role.",
+       "why_no": "If the gate's wording uses the present tense ('are you a general partner', 'do you help make decisions'), a filer whose status changed during the year may answer no.",
+       "line": "k1p.tenth_if_decisions",
+       "irs_text": "i1065sk1 (2025) p. 11: \"You aren't considered to actively participate in a rental real estate activity if, at any time during the tax year, your interest ... was less than 10%\"",
+       "severity": "low",
+       "fix": "Use past tense tied to 2025: 'At any time in 2025, did you or your spouse ...'"
+      }
+     ],
+     "prompt_sha": "0b2c49714830cd86137f23457a917666de50e9fd0735154702c748f7312a9335",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.086224,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.decisions_if_asked.6db0821a8eed.1.response.txt"
+    }
+   ],
+   "condition": "k1p.decisions_if_asked",
+   "lines": [
+    "k1p.tenth_if_decisions"
+   ],
+   "inputs": [
+    "k1p.tenth"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Special allowance for a rental real estate activity, \"Management decisions that can count as active participation include approving new tenants, deciding rental terms, approving capital or repair expenditures\"",
+      "p. 11, Special allowance for a rental real estate activity, \"your interest (including your spouse’s interest) in the activity was less than 10% (by value) of all interests in the activity\""
+     ],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.gp_under500": {
+   "subject_sha": "1ed18d9cdc0291fe43c35d4f04a63b53f74bfb7082d6bb21fe122357397f0858",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A general partner in a fiscal-year partnership whose tax year ran July 2024 to June 2025. The partner worked 150 hours in the activity, all from July to December 2024, more than anyone else, and worked almost none in calendar 2025.",
+       "why_no": "The question asks whether they worked more than 100 hours 'in 2025'. Their calendar-2025 hours are under 100, so they truthfully answer no. The same calendar-year reading of the 'Worked in the business, 500 hours or less' helper can also close the gate.",
+       "line": "k1p.most_hours_if_gp",
+       "irs_text": "i1065sk1 (2025) p. 9: \"All determinations of material participation are based on your participation during the partnership’s tax year.\"",
+       "severity": "high",
+       "fix": "Ask about hours 'during the partnership’s tax year that ends in 2025 (the period shown at the top of this Schedule K-1)', not 'in 2025'. Use the same period in the 500-hours helper."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A married filer filing separately, or a filer whose spouse does not appear on the return, holding a general partnership interest. The filer worked 0 to 40 hours, and the spouse worked 150 hours in the activity, more than anyone else.",
+       "why_no": "The question counts the spouse only 'on a joint return'. On a separate return, the filer truthfully answers no about their own hours.",
+       "line": "k1p.most_hours_if_gp",
+       "irs_text": "i1065sk1 (2025) p. 9: \"Generally, any work that you or your spouse does in connection with an activity held through a partnership ... is counted toward material participation.\"",
+       "severity": "high",
+       "fix": "Ask about 'you and your spouse (whether or not you file jointly)'. The IRS text counts spouse work on any return."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple on a joint return who each worked 60 hours in the activity. Together they worked 120 hours, more than any other individual.",
+       "why_no": "'Did you (or ... your spouse) work in it more than 100 hours' reads as asking whether either of them alone passed 100 hours. Neither did, so they answer no.",
+       "line": "k1p.most_hours_if_gp",
+       "irs_text": "i1065sk1 (2025) p. 9: \"any work that you or your spouse does ... is counted toward material participation\"; test 3, \"more than 100 hours ... wasn’t less than the participation ... of any other individual\"",
+       "severity": "medium",
+       "fix": "Ask 'Counting your hours and your spouse’s hours together, did the two of you work more than 100 hours, and at least as many hours as any other single person (employees included)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A general partner who did no work personally, while the spouse worked 150 hours in the activity, more than anyone else.",
+       "why_no": "The 'Worked in the business, 500 hours or less' helper sounds like it is about the filer's own work. A filer who did no work answers no, the gate closes, and the gated question is never asked.",
+       "line": "k1p.most_hours_if_gp",
+       "irs_text": "i1065sk1 (2025) p. 9: \"any work that you or your spouse does in connection with an activity held through a partnership ... is counted toward material participation\"",
+       "severity": "medium",
+       "fix": "Word the helper as 'You and your spouse together worked in this activity at least 1 hour but no more than 500 hours during the partnership’s tax year'."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A general partner in a partnership with several activities, listed on the box 23 statement. They worked 150 hours in one activity, more than anyone else in that activity, but a manager worked 2,000 hours in the partnership's other activities.",
+       "why_no": "The question asks about 'this Schedule K-1' and 'anyone else' as a whole. Someone else worked more in the partnership overall, so the filer truthfully answers no.",
+       "line": "k1p.most_hours_if_gp",
+       "irs_text": "i1065sk1 (2025) p. 9: \"You must determine if you materially participated (a) in each trade or business activity held through the partnership\"; test 3, \"your participation in the activity ... wasn’t less than the participation in the activity of any other individual\"",
+       "severity": "high",
+       "fix": "Ask the question separately for each activity listed on the box 23 statement: 'In this activity, did you ...'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A partner who held both a limited interest and a general partnership interest at all times during the year. Their Schedule K-1 item G is checked 'Limited partner or other LLC member'. They worked 150 hours, more than anyone else.",
+       "why_no": "The helper 'General partner or LLC member-manager (item G)' is false according to item G. The gate closes, and the filer is treated as a limited partner.",
+       "line": "k1p.most_hours_if_gp",
+       "irs_text": "i1065sk1 (2025) p. 9: \"Individuals (other than limited partners). If you’re an individual (either a general partner or a limited partner who owned a general partnership interest at all times during the tax year)\"",
+       "severity": "high",
+       "fix": "Add to the helper: 'or, if item G shows limited partner, did you also hold a general partnership interest for the whole partnership tax year?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A member of an LLC taxed as a partnership whose item G box is 'Limited partner or other LLC member'. The member worked 150 hours running the business, more than anyone else.",
+       "why_no": "Item G does not show 'member-manager', so the gate helper is false. The page 9 text limits tests 1, 5, and 6 to 'limited partners' and does not say that every non-manager LLC member is a limited partner.",
+       "line": "k1p.most_hours_if_gp",
+       "irs_text": "i1065sk1 (2025) p. 9: \"Limited partners. If you’re a limited partner, you must meet item 1, 5, or 6 above\"",
+       "severity": "medium",
+       "fix": "Do not use item G alone to decide limited-partner status for LLC members. Ask whether the member's liability is limited under state law and whether the member has management rights. Otherwise, state the tool's rule and its source."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A real estate professional who is a general partner in a rental real estate activity of the partnership. They worked 150 hours in the rental, more than anyone else.",
+       "why_no": "The helper says 'Worked in the business'. The filer thinks of the rental as a rental, not a business, and answers no.",
+       "line": "k1p.most_hours_if_gp",
+       "irs_text": "i1065sk1 (2025) p. 9: \"You must determine if you materially participated ... (b) if you were a real estate professional ... in each rental real estate activity held through the partnership.\"",
+       "severity": "medium",
+       "fix": "Word the helper as 'worked in this activity (a trade or business, or a rental real estate activity if you are a real estate professional)'."
+      }
+     ],
+     "prompt_sha": "1e3f9b75ecdb34cd4153d5f8979055ea02db70e32662ce2543a20ed7f1f73f3c",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.10093999999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.gp_under500.1ed18d9cdc02.1.response.txt"
+    }
+   ],
+   "condition": "k1p.gp_under500",
+   "lines": [
+    "k1p.most_hours_if_gp"
+   ],
+   "inputs": [
+    "k1p.most_hours"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Individuals (other than limited partners), \"You participated in the activity for more than 100 hours during the tax year, and your participation in the activity for the tax year wasn’t less than the participation in the activity of any other individual\"",
+      "p. 9, Limited partners, \"If you’re a limited partner, you must meet item 1, 5, or 6 above to qualify as having materially participated\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_activity": {
+   "subject_sha": "0014cb8d56047534a8b5ed61b95aa4b8099e551c19e9477617a9c0512a66652b",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner with a loss suspended on a 2024 Form 8582 whose 2025 K-1 shows nothing in boxes 1, 2 or 3. For example, the partnership broke even, or its only 2025 items are in other boxes (box 10 section 1231 gain or loss, box 11 other income, box 12 section 179, box 13 deductions).",
+       "why_no": "The tool computes the gate from current-year boxes 1-3 only. With all three blank or zero the gate is false, and the prior-year question is never asked.",
+       "line": "k1p.prior_any_if_activity (k1p.prior_any)",
+       "irs_text": "\"Column (c). Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\" (i8582 2025 p. 10, Parts IV and V). The column takes the carryover with no condition on current-year income or loss.",
+       "severity": "high",
+       "fix": "Drop the box 1-3 gate. Ask k1p.prior_any for every Schedule K-1 (Form 1065), or gate it on 'any amount on this K-1 or any loss from this partnership on a 2024 Form 8582, Part VII'. The cited text does not support the gate condition."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner who sold or otherwise fully disposed of the whole partnership interest in 2025, or whose partnership ended. The final K-1 shows zero in boxes 1-3, and the sale is reported elsewhere (Form 4797 or Form 8949).",
+       "why_no": "No box 1-3 amount on the final K-1 makes the computed gate false, so the suspended passive loss for the activity is set to zero. This is the year that loss matters most.",
+       "line": "k1p.prior_any_if_activity (k1p.prior_any)",
+       "irs_text": "\"Enter the prior-year unallowed losses for each activity.\" (i8582 2025 p. 10, Part V column (c)). Prior-year unallowed losses stay attached to the activity whatever its current-year boxes show.",
+       "severity": "high",
+       "fix": "Ask about prior-year unallowed losses whether or not any K-1 box has an amount, and ask separately whether the interest was disposed of in 2025."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose box 1, 2 or 3 shows 'STMT', '*' or 'See attached' with no figure. The amounts are on a statement because the partnership has several activities.",
+       "why_no": "The helper asks whether 'Box 1 ... shows an amount'. The box itself shows no number, so the filer answers no for each box and the gate is false.",
+       "line": "k1p.prior_any_if_activity (k1p.prior_any)",
+       "irs_text": "\"Column (c). Enter the prior-year unallowed losses for each activity.\" (i8582 2025 p. 10)",
+       "severity": "medium",
+       "fix": "Word each helper as 'Box N, or a statement attached for box N, shows an amount (other than zero)'. Better, remove the gate as in the first finding."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Joint filers where the K-1 belongs to the spouse, and the spouse's loss was suspended on the spouse's own 2024 return (filed single or married filing separately before the joint return).",
+       "why_no": "The question says 'held back ... on your 2024 return'. The filer answering looks at the joint return or their own 2024 return, finds no such loss, and answers no.",
+       "line": "k1p.prior_any",
+       "irs_text": "\"You find these amounts in Part VII, column (c), of your 2024 Form 8582.\" (i8582 2025 p. 10)",
+       "severity": "medium",
+       "fix": "Ask: 'Was a loss from this partnership held back (not deducted) on your or your spouse's 2024 return or an earlier one, including a separate return, because of the passive activity rules?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose 2024 return had no Form 8582 attached (prepared elsewhere, filed late, or never filed) or who cannot find it. A loss from this partnership was still suspended under the passive rules in 2024 or an earlier year.",
+       "why_no": "The help says 'A 2024 Form 8582 (Part VII, column (c)) lists such a loss.' A filer with no such form, or who does not have it, reads that as a no.",
+       "line": "k1p.prior_any",
+       "irs_text": "\"Enter the prior-year unallowed losses for each activity.\" (i8582 2025 p. 10). The carryover exists by law, whether or not a 2024 form shows it.",
+       "severity": "medium",
+       "fix": "Change the help to: 'Usually shown on a 2024 Form 8582, Part VII, column (c). Answer yes even if you can't find that form, or it wasn't filed, if a loss from this partnership was ever limited by the passive activity rules and not yet used.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner with prior-year unallowed commercial revitalization deductions (CRD) from this partnership's rental real estate or other activity.",
+       "why_no": "A CRD carryover is a deduction, not a 'loss', and the question asks only about a loss held back.",
+       "line": "k1p.prior_any",
+       "irs_text": "\"If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real estate activities, treat that dollar amount as negative... If you have prior-year unallowed CRD from passive activities other than rental real estate activities, include that amount in Part V.\" (i8582 2025 p. 10)",
+       "severity": "low",
+       "fix": "Add to the help: 'Include any held-back commercial revitalization deduction (CRD).'"
+      }
+     ],
+     "prompt_sha": "d3657b294cbc282d271d2382a12275ff4058fa5cd14961b2cfde99383ce8cb87",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08626400000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_activity.0014cb8d5604.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_activity",
+   "lines": [
+    "k1p.prior_any_if_activity"
+   ],
+   "inputs": [
+    "k1p.prior_any"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
+  "gate:k1p.has_b1": {
+   "subject_sha": "6ceeedd793bfb14dff5da89118546a92413a402c1f2efb6bcf1fdb5290736e77",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner in a trading fund that reports its trading gains in boxes 8 and 9a and its trading expenses and investment interest in boxes 11 and 13. Box 1 is blank.",
+       "why_no": "Box 1 truly shows no amount, so the filer answers no. The trading question is reached only through box 1.",
+       "line": "k1p.trader_if_b1",
+       "irs_text": "i1065sk1 p. 11: \"If you have net income (loss), deductions, or credits from any of the following activities, treat such amounts as nonpassive ... 3. Trading personal property for the account of owners of interests in the activity.\"",
+       "severity": "high",
+       "fix": "Ask the trading question for every Schedule K-1 (Form 1065), whether or not box 1 shows an amount, so the refusal fires for any trading activity."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A general partner who works full time in the partnership's business. Box 1 is zero or blank, but the business reports a section 179 deduction (box 12), other deductions (box 13) or credits (box 15) from that trade or business.",
+       "why_no": "Box 1 shows no amount, so the work question is never asked.",
+       "line": "k1p.work_if_b1",
+       "irs_text": "i1065sk1 p. 9: \"Income (loss), deductions, and credits from an activity are nonpassive if you determine that: • You materially participated in a trade or business activity of the partnership\"",
+       "severity": "high",
+       "fix": "Gate the work question on any trade or business item on the K-1 (box 1, or box 12, 13, 15 or 20 items tied to a trade or business activity), not on box 1 alone."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose partnership has two trade or business activities, one with income and one with an equal loss. Box 1 nets to 0, and the attached statement shows each activity's amount.",
+       "why_no": "The filer reads \"Does box 1 show an amount?\" literally and sees 0 (or blank) in box 1. The per-activity amounts appear only on the statement.",
+       "line": "k1p.box1_if_any",
+       "irs_text": "i1065sk1 p. 14: \"If the partnership had more than one trade or business activity, it will attach a statement identifying the income or loss from each activity.\"; p. 9: \"You must determine if you materially participated (a) in each trade or business activity\"",
+       "severity": "medium",
+       "fix": "Add help: \"Answer yes if box 1 shows any amount, including a loss, or if box 1 or box 23 points to an attached statement showing business income or loss for any activity.\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A retired partner who materially participated in the partnership's business for 5 of the last 10 years (or 3 prior years in a personal service partnership such as a law or accounting firm) and did no work in 2025.",
+       "why_no": "\"In 2025, did you ... do any work\" is truthfully no.",
+       "line": "k1p.work_if_b1",
+       "irs_text": "i1065sk1 p. 9: \"5. You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year. 6. The activity was a personal service activity and you materially participated in the activity for any 3 tax years ... preceding the tax year.\"",
+       "severity": "high",
+       "fix": "Add a separate question: \"Did you (or your spouse) work in this business in any of the 10 years before 2025?\" Then follow up for the 5-of-10 and 3-year personal service tests. Also cover the retired or disabled farmer and surviving spouse rules."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner in a partnership with a fiscal year (for example, July 2024 through June 2025) who worked in the business only in late 2024.",
+       "why_no": "The question says \"In 2025,\" and the filer did no work in calendar 2025.",
+       "line": "k1p.work_if_b1",
+       "irs_text": "i1065sk1 p. 9: \"All determinations of material participation are based on your participation during the partnership's tax year.\"",
+       "severity": "high",
+       "fix": "Ask: \"During the partnership's tax year shown at the top of this K-1, did you or your spouse do any work in its business?\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A married partner filing separately whose spouse worked in the partnership's business. The filer did not.",
+       "why_no": "The question counts the spouse only \"on a joint return,\" so a separate filer truthfully answers no.",
+       "line": "k1p.work_if_b1",
+       "irs_text": "i1065sk1 p. 9: \"Generally, any work that you or your spouse does in connection with an activity held through a partnership ... is counted toward material participation.\"",
+       "severity": "high",
+       "fix": "Ask: \"did you or your spouse (whether or not you file jointly) do any work in the partnership's business?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose box 1 shows a loss in parentheses, such as (12,500).",
+       "why_no": "The filer may read \"show an amount\" as income only and treat a loss as nothing to report.",
+       "line": "k1p.box1_if_any",
+       "irs_text": "i1065sk1 p. 14: \"The amount reported in box 1 is your share of the ordinary income (loss) from trade or business activities of the partnership.\"",
+       "severity": "low",
+       "fix": "Add help: \"A loss, often shown in parentheses or with a minus sign, counts as an amount.\""
+      }
+     ],
+     "prompt_sha": "70ac762a0c4596e12e63f24753f9a8016e7af65199b6b544301cacd22b8ec850",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.10986,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b1.6ceeedd793bf.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b1",
+   "lines": [
+    "k1p.box1_if_any",
+    "k1p.trader_if_b1",
+    "k1p.work_if_b1"
+   ],
+   "inputs": [
+    "k1p.box1",
+    "k1p.trader",
+    "k1p.work"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      9,
+      11,
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Special rules for certain other activities, \"Trading personal property for the account of owners of interests in the activity\"",
+      "p. 14, Box 1. Ordinary Business Income (Loss), \"The amount reported in box 1 is your share of the ordinary income (loss) from trade or business activities of the partnership\"",
+      "p. 9, Work counted toward material participation, \"any work that you or your spouse does in connection with an activity held through a partnership\""
+     ],
+     "cols_pages": [
+      9,
+      11,
+      14
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b14a": {
+   "subject_sha": "2ba85954ec7a82fec830e878b2c20609793058a6f56eff1d6d81c310e5677e30",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A general partner whose Schedule K-1 (Form 1065) box 14 shows code A with a negative figure, for example (12,400) or -12,400, because the partnership's trade or business had a loss.",
+       "why_no": "The gate's parenthetical says only \"(net earnings from self-employment)\", without \"(loss)\". A partner with a loss reads \"net earnings\" as positive income, decides there are no earnings, and answers no.",
+       "line": "k1p.box14a_if_any",
+       "irs_text": "i1065sk1 (2025) p. 22, Code A: \"Net earnings (loss) from self-employment. ... If the amount in this box is a loss, enter only the deductible amount on Schedule SE (Form 1040).\"",
+       "severity": "medium",
+       "fix": "Ask: \"Does box 14 show any amount with code A (net earnings or loss from self-employment), including a negative amount or an amount in parentheses?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose box 14 code A shows a loss, and who knows from the basis, at-risk or passive limits that the loss is not deductible this year.",
+       "why_no": "The gate cites \"enter only the deductible amount on Schedule SE.\" A partner with no deductible amount concludes there is nothing to report and answers no. The question then never collects the loss \"before any change\", so the tool cannot apply the limitation itself.",
+       "line": "k1p.box14a_if_any",
+       "irs_text": "i1065sk1 (2025) p. 22, Code A: \"If the amount in this box is a loss, enter only the deductible amount on Schedule SE (Form 1040). See Limitations on Losses, Deductions, and Credits, earlier.\"",
+       "severity": "medium",
+       "fix": "State in the help: \"Answer yes if any amount appears with code A, even a loss you think you cannot deduct. The tool applies the limits later.\" Cite the box contents, not the Schedule SE entry rule."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose box 14 shows \"A\" followed by \"STMT\", \"*\" or \"See attached\", with the dollar amount (or several code A amounts, one per activity) printed only on the partnership's attached statement.",
+       "why_no": "The words \"does box 14 show an amount\" read literally: the box itself shows no number, only a reference to a statement, so the partner answers no.",
+       "line": "k1p.box14a_if_any",
+       "irs_text": "i1065sk1 (2025) p. 22, Code A: \"Net earnings (loss) from self-employment.\" The amount reported with code A is the partner's share, whether it is printed in the box or on a supporting statement.",
+       "severity": "medium",
+       "fix": "Ask: \"Does box 14 list code A, with an amount either in the box or on an attached statement the box refers to?\" In the amount help, say to total all code A amounts from the statement."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A partner who receives a corrected or amended Schedule K-1 (Form 1065), where the original showed no code A but the corrected one does, or the reverse.",
+       "why_no": "\"On this Schedule K-1\" does not say which version to use. A partner who looks at the original, or the one first entered, answers no.",
+       "line": "k1p.box14a_if_any",
+       "irs_text": "i1065sk1 (2025) p. 22, Code A: \"Net earnings (loss) from self-employment\". The amount is the one the partnership reports to the partner for the year.",
+       "severity": "low",
+       "fix": "Add to the help: \"If you received a corrected Schedule K-1, use the corrected one.\""
+      }
+     ],
+     "prompt_sha": "42299adb711fc3d7db2f67c4a974f4d2408bead9dd5189f45585141aaf545565",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.06336,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b14a.2ba85954ec7a.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b14a",
+   "lines": [
+    "k1p.box14a_if_any"
+   ],
+   "inputs": [
+    "k1p.box14a"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      22
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 22, Code A. Net earnings (loss) from self-employment, \"If the amount in this box is a loss, enter only the deductible amount on Schedule SE\""
+     ],
+     "cols_pages": [
+      22
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b15o": {
+   "subject_sha": "b7205487e4e646d861355d24e15d28d02d925a346e9587bb4ceaec58d330dbda",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose K-1 from a large or publicly traded partnership prints only \"O\" with \"STMT\" or \"*\" in box 15. The backup withholding dollar amount appears only on the attached supplemental statement.",
+       "why_no": "The gate asks whether box 15 \"show[s] an amount\" with code O. The box itself shows no number, only a code and a reference to a statement. A literal reader answers no.",
+       "line": "k1p.box15o_if_any",
+       "irs_text": "i1065sk1 (2025) p. 23, Code O: \"This is your share of the credit for backup withholding on dividends, interest income, and other types of income. Include this amount in the total you enter on Form 1040 or 1040-SR, line 25c\"",
+       "severity": "medium",
+       "fix": "Ask: \"Does box 15 list code O (backup withholding), either with an amount or with a note such as STMT or * pointing to an attached statement?\" Then ask for the amount from the box or the statement."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A partner who received an original K-1 with no code O, then a corrected or amended K-1 from the partnership that adds backup withholding in box 15 code O.",
+       "why_no": "\"On this Schedule K-1\" can lead the filer to answer from the first K-1 received instead of the final corrected one.",
+       "line": "k1p.box15o_if_any",
+       "irs_text": "i1065sk1 (2025) p. 23, Code O: \"Include this amount in the total you enter on Form 1040 or 1040-SR, line 25c\"",
+       "severity": "low",
+       "fix": "Add help: \"If the partnership sent a corrected Schedule K-1, answer from the corrected one.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Joint filers where only the spouse is a partner and the spouse's K-1 shows box 15 code O backup withholding.",
+       "why_no": "The per-document question may be answered only for the K-1s the filer thinks of as their own. A spouse's K-1 may never be entered, or may be answered no.",
+       "line": "k1p.box15o_if_any",
+       "irs_text": "i1065sk1 (2025) p. 23, Code O: \"Include this amount in the total you enter on Form 1040 or 1040-SR, line 25c\"",
+       "severity": "low",
+       "fix": "When the K-1 list is collected, ask about Schedules K-1 (Form 1065) issued to \"you or your spouse.\""
+      }
+     ],
+     "prompt_sha": "3422ee8e26213650a6dd6936049d6bf04d7ae5ab15292164a804485cacdc4cb6",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.05405600000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b15o.b7205487e4e6.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b15o",
+   "lines": [
+    "k1p.box15o_if_any"
+   ],
+   "inputs": [
+    "k1p.box15o"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Code O. Backup withholding, \"Include this amount in the total you enter on Form 1040 or 1040-SR, line 25c\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b18a": {
+   "subject_sha": "93ed551723a99d1465dd9892358396ecbba0a24a150df1387cae104053ab7555",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose K-1 box 18 shows code A with \"STMT\" or \"*\" instead of a dollar figure, and the tax-exempt interest amount appears only on an attached statement. This is common for large or tiered partnerships whose box 18 entries do not fit on the face of the form.",
+       "why_no": "The gate asks whether box 18 \"show[s] an amount with code A\". The box itself shows only \"STMT\", not an amount, so the filer answers no.",
+       "line": "k1p.box18a_if_any",
+       "irs_text": "i1065sk1 (2025) p. 25, Code A: \"Report on your return, as an item of information, your share of the tax-exempt interest received or accrued by the partnership during the year. Individual partners include this amount on Form 1040 or 1040-SR, line 2a.\"",
+       "severity": "medium",
+       "fix": "Ask: \"Does box 18 of this K-1, or a statement attached to it for box 18, show code A (tax-exempt interest income)? Answer yes if box 18 says STMT or * and the statement lists code A.\" Then ask for the total code A amount, adding any entries listed on the statement."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A partner whose K-1 shows more than one code A entry in box 18. Partnerships do this, for example, to separate in-state from out-of-state municipal interest, or private activity bond interest from other interest.",
+       "why_no": "The filer answers yes to the gate. The gated question then asks for \"The amount in box 18 with code A\" (singular), so the filer enters only the first figure and drops the rest. The silent loss is the same as with a false no.",
+       "line": "k1p.box18a_if_any",
+       "irs_text": "i1065sk1 (2025) p. 25, Code A: \"your share of the tax-exempt interest received or accrued by the partnership during the year\"",
+       "severity": "medium",
+       "fix": "Reword the gated question: \"The total of all box 18 code A amounts on this K-1 and any attached statement.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer who answers yes to the gate.",
+       "why_no": "The line's Choose step repeats the gate in a helper (\"Box 18 shows an amount with code A\" = false → Zero). Under the gate, that branch cannot be reached. If the helper is ever wired to a different input than k1p.has_b18a, the line could fall to zero after a yes.",
+       "line": "k1p.box18a_if_any",
+       "irs_text": "i1065sk1 (2025) p. 25, Code A: \"Individual partners include this amount on Form 1040 or 1040-SR, line 2a.\"",
+       "severity": "low",
+       "fix": "Under the gate, define the line directly as k1p.box18a and remove the redundant helper branch."
+      }
+     ],
+     "prompt_sha": "09f3472954f73bea39e537b0a54a6e8f57714914d07c7302d2089499e0a23774",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.051588,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b18a.93ed551723a9.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b18a",
+   "lines": [
+    "k1p.box18a_if_any"
+   ],
+   "inputs": [
+    "k1p.box18a"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      25
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 25, Code A. Tax-exempt interest income, \"Individual partners include this amount on Form 1040 or 1040-SR, line 2a\""
+     ],
+     "cols_pages": [
+      25
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b19": {
+   "subject_sha": "44294e4a0dc092a5a0e2593d95b211021169710b139233181cf55bbde950d4da",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A partner whose partnership enters '*' or 'STMT' in box 19 and lists the codes and amounts on an attached statement. Large investment partnerships often do this.",
+       "why_no": "Box 19 itself holds no number, only a code letter or 'see statement', so 'Does box 19 (distributions) show an amount?' is truthfully no.",
+       "line": "k1p.b19_other_if_any; k1p.dist_over_if_any",
+       "irs_text": "i1065sk1 p. 25, Box 19: 'The partnership will also attach a statement separately identifying the following...' (distributions reported by code, with supporting statements)",
+       "severity": "high",
+       "fix": "Ask: 'Does box 19 of this Schedule K-1, or any statement attached for box 19, show a distribution code or an amount (including \"STMT\" or \"*\")?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A partner whose share of partnership liabilities went down during 2025, for example when the partnership paid down a mortgage or refinanced away recourse debt. The partnership did not enter code D in box 19, and the drop appears only in Item K (beginning versus ending liabilities).",
+       "why_no": "No cash came out and box 19 is blank, so the filer truthfully answers no. A decrease in liability share is a deemed distribution of money under section 752(b) and can exceed basis.",
+       "line": "k1p.dist_over_if_any",
+       "irs_text": "i1065sk1 p. 25, Box 19, Code A: 'Code A, however, doesn't include deemed distributions of money under section 752(b); see Code D, later.' Also 'To the extent the cash ... received exceed the adjusted basis of your partnership interest immediately before the distribution, the excess is treated as gain'",
+       "severity": "high",
+       "fix": "Broaden the gate: 'Does box 19 show any code or amount, OR did your share of liabilities in Item K go down from the beginning to the end of the year?' Treat a Yes to the Item K part as a possible deemed distribution and route it to the basis comparison."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner who received property with a zero (or fully reduced) partnership basis. Box 19 shows code C (or code B) with 0, or code A for marketable securities reduced to zero by the section 731(c)(3)(B) reduction amount.",
+       "why_no": "The box shows a code but the amount is 0, so 'show an amount' reads as no. Yet a code other than A should end the interview.",
+       "line": "k1p.b19_other_if_any",
+       "irs_text": "i1065sk1 p. 25, Box 19, Code C: 'Code C is used to report the partnership's adjusted basis in property other than money immediately before the property was distributed to you'",
+       "severity": "medium",
+       "fix": "Ask whether box 19 shows any code letter (A, B, C, D, E, F, G), even with a zero or blank amount, rather than 'an amount'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A partner who received only property or a payment for services (code C, F or G) and no cash.",
+       "why_no": "The gate's citation and help center on code A, 'Cash and marketable securities'. A filer can read 'distributions' as money only and answer no when box 19 shows only non-money codes.",
+       "line": "k1p.b19_other_if_any",
+       "irs_text": "i1065sk1 p. 25, Box 19, Code C: 'Other property' and Code A: 'doesn't include distributions the partnership made to you for performing services. See the instructions later for codes F and G.'",
+       "severity": "medium",
+       "fix": "State in the help: 'Answer yes if box 19 shows any code, including property (C), section 737 property (B), liability decreases (D), or services (F, G), not only cash.'"
+      }
+     ],
+     "prompt_sha": "9dd52a4348da83c78f517cac9d9c3e15bca2fd89e8f1d28a92c1c4309af61d39",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.071876,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b19.44294e4a0dc0.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b19",
+   "lines": [
+    "k1p.b19_other_if_any",
+    "k1p.dist_over_if_any"
+   ],
+   "inputs": [
+    "k1p.b19_other",
+    "k1p.dist_over"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      25
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 25, Box 19. Distributions, \"Code A. Cash and marketable securities other than for services\"",
+      "p. 25, Box 19. Distributions, \"exceed the adjusted basis of your partnership interest immediately before the distribution, the excess is treated as gain from the sale or exchange of your partnership interest\""
+     ],
+     "cols_pages": [
+      25
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b2": {
+   "subject_sha": "1e0010cd3f4caeda54fcf66247f9bc726098a74d3ecd80586b31489b290f96bf",
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner who is a real estate professional and materially participated in the partnership's rental real estate activity. Their K-1 shows a figure in box 2.",
+       "why_no": "The help quoted with the gate says box 2 is 'a passive activity amount for all partners.' A partner who knows their activity is nonpassive may decide the box-2 question does not apply to them and answer no, even though the box shows a number.",
+       "line": "k1p.box2_if_any",
+       "irs_text": "i1065sk1 p. 14, Box 2: 'the income (loss) in box 2 isn't from a passive activity if you were a real estate professional ... and you materially participated ... report box 2 income (loss) in column (i) or (k) of Schedule E (Form 1040), line 28.'",
+       "severity": "low",
+       "fix": "Keep the gate to the printed fact and change the help to say: 'Answer yes if any number other than zero is printed in box 2, whether income or a loss, and whether or not the activity is passive to you. Passive treatment is decided later.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose box 2 shows a loss printed in parentheses, such as (4,200), or with a minus sign.",
+       "why_no": "The gate's words 'show an amount' may be read as income only. A filer may not count a bracketed loss as an amount and answer no, which drops a loss the return should report or limit through Form 8582.",
+       "line": "k1p.box2_if_any",
+       "irs_text": "i1065sk1 p. 14, Box 2: 'If you have a loss from a passive activity in box 2 ... report the loss in column (g) of Schedule E (Form 1040), line 28' / 'follow the Instructions for Form 8582.'",
+       "severity": "low",
+       "fix": "Reword the gate as: 'Does box 2 show any amount other than zero, either income or a loss (a loss may be shown in parentheses or with a minus sign)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner in a partnership with several rental real estate activities. The K-1 has an asterisk or a reference to an attached statement that lists the amount for each activity.",
+       "why_no": "The filer sees a statement reference instead of a single plain figure, or looks only at the statement. They may conclude that box 2 itself does not 'show an amount' and answer no.",
+       "line": "k1p.box2_if_any",
+       "irs_text": "i1065sk1 p. 14, Box 2: 'If the partnership had more than one rental real estate activity, it'll attach a statement identifying the income or loss from each activity.'",
+       "severity": "low",
+       "fix": "Add to the help: 'Answer yes if box 2 shows a total, or if the partnership's attached statement reports net rental real estate income or loss for box 2.'"
+      }
+     ],
+     "prompt_sha": "8707b0f721f89af11a1cb9451b213861e2ad025d6a77315b0bbfba45782a8584",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.054540000000000005,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b2.1e0010cd3f4c.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b2",
+   "lines": [
+    "k1p.box2_if_any"
+   ],
+   "inputs": [
+    "k1p.box2"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Box 2. Net Rental Real Estate Income (Loss), \"Generally, the income (loss) reported in box 2 is a passive activity amount for all partners\""
+     ],
+     "cols_pages": [
+      14
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b20z": {
+   "subject_sha": "e5e25f0a182e73c36ee9a1f9124746ab9ba3781f131c46d763c5bfb22f5cfecf",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner in a partnership, often a publicly traded partnership or a large fund, whose K-1 box 20 has more codes than fit. Box 20 shows only an asterisk or \"STMT\", and the supplemental statement lists code Z with per-business QBI, W-2 wages and UBIA.",
+       "why_no": "The question asks whether \"box 20 show[s] code Z\". The printed box shows no letter Z, only \"*\" or \"See Statement\", so the filer reads the face of the form literally and answers no.",
+       "line": "k1p.box20z_if_any (QBI dropped to zero); k1p.z_other_if_z (section 199A dividends or cooperative items never asked, so the refusal is missed)",
+       "irs_text": "i1065sk1 p. 29, Code Z: \"The partnership will provide the information you need to figure your deduction.\"",
+       "severity": "medium",
+       "fix": "Ask: \"Does box 20, or any statement attached for box 20, show code Z or section 199A information (QBI, W-2 wages, UBIA, section 199A dividends, PTP or cooperative items)? Check the attached statements as well as the box itself.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose box 20 shows code Z followed by \"*\" or \"STMT\" instead of a dollar amount, because all section 199A figures are on the attached statement.",
+       "why_no": "The gated line's printed label reads \"asked only when the box shows an amount\". A filer who sees code Z with no amount next to it takes that as the condition for a yes, and answers no.",
+       "line": "k1p.box20z_if_any; k1p.z_other_if_z",
+       "irs_text": "i1065sk1 p. 30: \"W-2 wages. The amounts reported reflect your distributive share of the partnership's W-2 wages allocable to the QBI of each qualified trade, business, or aggregation.\" The figures are on the statement, not in the box.",
+       "severity": "medium",
+       "fix": "Drop \"when the box shows an amount\" from the label. Say in the help: \"Answer Yes if code Z appears, even if the amount column shows only '*' or 'STMT'.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A partner whose code Z statement reports only section 199A dividends, qualified PTP income, or cooperative items (a section 199A(g) deduction or qualified payments) and no QBI line.",
+       "why_no": "The filer reads the gate and the first gated question as being about qualified business income. Seeing no QBI on the statement, they answer the gate no rather than yes.",
+       "line": "k1p.z_other_if_z (the refusal for section 199A dividends or cooperative items is missed)",
+       "irs_text": "i1065sk1 p. 30: \"Section 199A dividends. The amount reported reflects your distributive share of the partnership's net section 199A dividends.\" Also: \"Patrons of specified agricultural or horticultural cooperatives ... you must use Form 8995-A.\"",
+       "severity": "medium",
+       "fix": "Ask the gate as the presence of code Z for any item, and add to the help: \"Answer Yes even if the statement shows no QBI, for example only section 199A dividends, PTP income, or cooperative items.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose code Z statement shows a section 199A(g) deduction, \"qualified payments from specified cooperatives\", or W-2 wages allocable to qualified payments, from a grain, fruit or similar marketing cooperative.",
+       "why_no": "The gated question says \"payments from a farm or garden cooperative\", and its help says \"A Yes ends the interview here.\" The filer does not see the statement's statutory terms as matching, or prefers to avoid ending the interview, and answers no.",
+       "line": "k1p.z_other_if_z",
+       "irs_text": "i1065sk1 p. 30: \"Section 199A(g) deduction from specified cooperatives. The amount reported reflects your distributive share of the partnership's net section 199A(g) deduction.\"",
+       "severity": "low",
+       "fix": "Use the statement's own terms: \"Does the code Z statement show section 199A dividends, or any item for a specified agricultural or horticultural cooperative (qualified payments, W-2 wages allocable to qualified payments, or a section 199A(g) deduction)?\""
+      }
+     ],
+     "prompt_sha": "718d34627ae962a135c73290668d782a4b7104133fff97031e74ccce02f94ad1",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.09412799999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b20z.e5e25f0a182e.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b20z",
+   "lines": [
+    "k1p.box20z_if_any",
+    "k1p.z_other_if_z"
+   ],
+   "inputs": [
+    "k1p.box20z",
+    "k1p.z_other"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      29,
+      30
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 29, Code Z. Section 199A information, \"The partnership will provide the information you need to figure your deduction\"",
+      "p. 30, Section 199A dividends, \"The amount reported reflects your distributive share of the partnership’s net section 199A dividends\""
+     ],
+     "cols_pages": [
+      29,
+      30
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b3": {
+   "subject_sha": "7adabb436c24878dcf2ba466c839e91e98c66f4d031556801435a53e544e038c",
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner in a partnership with more than one non-real-estate rental activity. Box 3 on the K-1 shows an asterisk or \"STMT\", and the per-activity income or loss appears only on the attached statement.",
+       "why_no": "\"Does box 3 ... show an amount?\" They see no dollar figure printed in the box itself. They read \"STMT\" or the asterisk as \"no amount\".",
+       "line": "k1p.box3_if_any",
+       "irs_text": "i1065sk1 (2025) p. 14, Box 3: \"If the partnership had more than one rental activity, it'll attach a statement identifying the income or loss from each activity.\" Also p. 14, Attached statements: \"enter 'STMT' in the dollar amount entry space to indicate the information is provided on an attached statement.\"",
+       "severity": "low",
+       "fix": "On this Schedule K-1 (Form 1065), does box 3 (other net rental income or loss) show an amount, a loss in parentheses, or \"STMT\" or an asterisk referring to an attached statement? Count any of these as yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose box 3 shows a loss printed in parentheses or with a minus sign, for example from equipment leasing.",
+       "why_no": "They may take \"show an amount\" to mean income. They may treat a loss, especially one they expect to be suspended under the passive rules, as \"nothing to report\".",
+       "line": "k1p.box3_if_any",
+       "irs_text": "i1065sk1 (2025) p. 14, Box 3: \"If box 3 is a loss, follow the Instructions for Form 8582 to figure how much of the loss can be reported in column (g) of Schedule E (Form 1040), line 28.\"",
+       "severity": "low",
+       "fix": "Add to the help text: \"Answer yes for income or a loss, even if you expect the loss to be limited. A loss is often shown in parentheses.\""
+      }
+     ],
+     "prompt_sha": "143c20e0a4cf7a4dd0c1cf768bb9cbab33a19b38a5fe1f05c874ce4e1d58ab80",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.048344,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b3.7adabb436c24.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b3",
+   "lines": [
+    "k1p.box3_if_any"
+   ],
+   "inputs": [
+    "k1p.box3"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      14
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Box 3. Other Net Rental Income (Loss), \"The amount in box 3 is a passive activity amount for all partners\""
+     ],
+     "cols_pages": [
+      14
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b4a": {
+   "subject_sha": "e09137fa057f959894901a08e5cdd4726ac1af11e22d8b76e084b1158239a44f",
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose Schedule K-1 (Form 1065) has \"STMT\" or \"See attached\" in box 4a instead of a number. The amount of guaranteed payments for services is on a supplemental statement the partnership attached.",
+       "why_no": "The question asks whether box 4a \"show[s] an amount.\" The box itself shows text, not a dollar figure, so the filer may answer no.",
+       "line": "k1p.box4a_if_any",
+       "irs_text": "i1065sk1 (2025) p. 15, Box 4a: \"Guaranteed payments are payments made by a partnership to a partner that are determined without regard to the partnership's income. ... you should report them in column (k) of Schedule E (Form 1040), line 28\"",
+       "severity": "low",
+       "fix": "Ask: \"Does box 4a show an amount, or refer to an attached statement (for example, 'STMT') that gives one?\" Then ask for the amount from the box or the statement."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose K-1 has an amount in box 4a, but who thinks of the payment as salary or a draw, or thinks it was for the use of capital rather than services.",
+       "why_no": "The parenthetical \"(guaranteed payments for services)\" may lead the filer to judge the nature of the payment instead of simply reading the box. They might say no if they believe the payment was not \"for services.\"",
+       "line": "k1p.box4a_if_any",
+       "irs_text": "i1065sk1 (2025) p. 15, Box 4a: \"Generally, amounts on this line aren't passive income, and you should report them in column (k) of Schedule E (Form 1040), line 28 (for example, guaranteed payments for personal services).\"",
+       "severity": "low",
+       "fix": "Add help text: \"Answer from what is printed in box 4a, whatever you call the payment (salary, draw, or other). The partnership's classification controls.\""
+      }
+     ],
+     "prompt_sha": "390b9fd515d569ce8cab479d0e877ed1ce0879b5fb1bf914b3b27999990d4c38",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.045276,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b4a.e09137fa057f.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b4a",
+   "lines": [
+    "k1p.box4a_if_any"
+   ],
+   "inputs": [
+    "k1p.box4a"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Box 4a. Guaranteed Payments for Services, \"you should report them in column (k) of Schedule E (Form 1040), line 28\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b5": {
+   "subject_sha": "1652a49a36542e70f22ec77341d18e6d34febeabe08f190b42efaffc2584b251",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose Schedule K-1 (Form 1065), often a substitute form from a large or tiered partnership, shows only \"STMT\" or \"See attached\" in box 5. The interest amount appears only on the attached supplemental statement, for example because it is broken out by source or includes clean renewable energy bond credit interest.",
+       "why_no": "The question asks whether box 5 itself \"show[s] an amount\". The box holds a reference, not a number, so a literal reader answers no and never opens the statement.",
+       "line": "k1p.box5_if_any",
+       "irs_text": "i1065sk1 (2025) p. 15, Box 5: \"Report interest income on Form 1040 or 1040-SR, line 2b. If the amount of interest income included in box 5 includes interest from the credit for holders of clean renewable energy bonds, the partnership will attach a statement to Schedule K-1 showing your share\"",
+       "severity": "medium",
+       "fix": "Ask: \"Does box 5 (interest income) show an amount, or does it refer to an attached statement (for example 'STMT' or 'See attached')? If it refers to a statement, use the box 5 interest total from that statement.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A partner whose K-1 is a substitute or software-generated form that does not follow the official box layout or numbering. Interest income appears under a label such as \"Interest\" or \"Portfolio income – interest\" rather than in a box numbered 5.",
+       "why_no": "The filer looks for a box numbered 5, does not find one with an amount, and answers no.",
+       "line": "k1p.box5_if_any",
+       "irs_text": "i1065sk1 (2025) p. 15, Portfolio Income: \"Portfolio income or loss (shown in boxes 5 through 9b ...) ... Portfolio income includes income ... from interest\"; Box 5: \"Report interest income on Form 1040 or 1040-SR, line 2b.\"",
+       "severity": "low",
+       "fix": "Add help text: \"Box 5 is the interest income line. On a substitute K-1 it may be labeled 'Interest income' rather than numbered; answer yes if any interest income is shown on the K-1 or its statements.\""
+      }
+     ],
+     "prompt_sha": "cb6731ccddfa35b883a3a0bb3932dc173c1b041e600260d007e8677d2bb0e393",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.056048,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b5.1652a49a3654.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b5",
+   "lines": [
+    "k1p.box5_if_any"
+   ],
+   "inputs": [
+    "k1p.box5"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Box 5. Interest Income, \"Report interest income on Form 1040 or 1040-SR, line 2b\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b6a": {
+   "subject_sha": "a525d73354f4678b207a7b9a026f3caa35a5718b1e88f6b939326ebff684be45",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose Schedule K-1 (Form 1065) prints \"STMT\", \"See Statement\" or an asterisk in box 6a. The dividend figure appears only on the attached supplemental statement, which partnerships often use when they report several activities or break out dividends.",
+       "why_no": "The gate asks whether box 6a \"show[s] an amount\". The box itself shows a word or symbol, not a number, so a literal reader answers no.",
+       "line": "k1p.box6a_if_any",
+       "irs_text": "i1065sk1 (2025) p. 15, Box 6a: \"Report ordinary dividends on Form 1040 or 1040-SR, line 3b.\" The same page also says: \"The partnership attached a statement to the Schedule K-1 identifying the dividends included in box 6a or 6b\"",
+       "severity": "medium",
+       "fix": "Ask: \"Does box 6a (ordinary dividends) show an amount, or refer you to an attached statement (for example 'STMT' or '*') that gives one?\" Help: \"If the box points to a statement, answer yes and enter the total ordinary dividends from the statement.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "Same partner as above. The qualified-dividend figure is also given on the statement rather than in box 6b.",
+       "why_no": "The 6b line is reached only through the box 6a gate. A no caused by \"STMT\" in box 6a also drops the qualified dividends.",
+       "line": "k1p.box6b_if_any",
+       "irs_text": "i1065sk1 (2025) p. 15, Box 6b: \"Report any qualified dividends on Form 1040 or 1040-SR, line 3a.\"",
+       "severity": "medium",
+       "fix": "Same broadened gate as above. Add to the 6b question: \"include qualified dividends shown on an attached statement.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A partner whose K-1, through a partnership error, leaves box 6a blank but shows an amount in box 6b.",
+       "why_no": "Box 6a truthfully shows no amount, so the gate is no. The 6b amount is never asked, and nothing prompts the filer to get a corrected K-1.",
+       "line": "k1p.box6b_if_any",
+       "irs_text": "i1065sk1 (2025) p. 15, Box 6b: \"Report any qualified dividends on Form 1040 or 1040-SR, line 3a.\"",
+       "severity": "low",
+       "fix": "Ask: \"Does box 6a or 6b show an amount?\" If 6b exceeds 6a, flag the inconsistency (the help already says 6b is never more than 6a)."
+      }
+     ],
+     "prompt_sha": "bf5d1d3f9ba8be3820b22203fe5176d73d17afb0164c664a25fd008ec5e7f0ca",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.058072,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b6a.a525d73354f4.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b6a",
+   "lines": [
+    "k1p.box6a_if_any",
+    "k1p.box6b_if_any"
+   ],
+   "inputs": [
+    "k1p.box6a",
+    "k1p.box6b"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Box 6a. Ordinary Dividends, \"Report ordinary dividends on Form 1040 or 1040-SR, line 3b\"",
+      "p. 15, Box 6b. Qualified Dividends, \"Report any qualified dividends on Form 1040 or 1040-SR, line 3a\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b8": {
+   "subject_sha": "32a2a143ba033ee4d514ceb2d1b94e02a971e28d06c9e2044f520f7ed6f0bcc3",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose K-1 shows \"STMT\", \"See attached\" or an asterisk in box 8 instead of a number. The partnership reports the net short-term capital gain or loss on a supplemental statement, which is common for tiered or multi-activity partnerships.",
+       "why_no": "The question asks whether box 8 \"show[s] an amount\". The box itself shows no figure, only a reference to a statement, so the filer reads it literally and answers no.",
+       "line": "k1p.box8_if_any",
+       "irs_text": "i1065sk1 (2025) p. 15, Box 8: \"Report the net short-term capital gain (loss) on Schedule D (Form 1040), line 5.\"",
+       "severity": "medium",
+       "fix": "Ask: \"Does box 8 (net short-term capital gain or loss) show an amount, or refer to an attached statement that reports one? Answer yes for a gain or a loss, including an amount in parentheses.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose box 8 shows a loss printed in parentheses, such as (2,350), with no minus sign.",
+       "why_no": "The filer may read the parenthesized figure as not \"an amount\" or not a \"gain\", and answer no. The partnership's short-term loss is then dropped from Schedule D, line 5.",
+       "line": "k1p.box8_if_any",
+       "irs_text": "i1065sk1 (2025) p. 15, Box 8. Net Short-Term Capital Gain (Loss): \"Report the net short-term capital gain (loss) on Schedule D (Form 1040), line 5.\"",
+       "severity": "low",
+       "fix": "Add help text: \"A loss is often printed in parentheses; it is still an amount. Answer yes.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any partner who answers yes to the gate.",
+       "why_no": "No wrong no results. The gated line repeats the gate as a helper choice (\"Box 8 shows an amount\" true → line 8, false → zero). If the helper and the gate diverged, a yes could still yield zero.",
+       "line": "k1p.box8_if_any",
+       "irs_text": "i1065sk1 (2025) p. 15, Box 8: \"Report the net short-term capital gain (loss) on Schedule D (Form 1040), line 5.\"",
+       "severity": "low",
+       "fix": "Bind the line's choice directly to the gate input k1p.has_b8, or drop the redundant helper and use k1p.box8 whenever the gate is yes."
+      }
+     ],
+     "prompt_sha": "1bec1636497a486415815f647a56ddb1323963345673655c3528c1e633b72527",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.053704,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b8.32a2a143ba03.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b8",
+   "lines": [
+    "k1p.box8_if_any"
+   ],
+   "inputs": [
+    "k1p.box8"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Box 8. Net Short-Term Capital Gain (Loss), \"Report the net short-term capital gain (loss) on Schedule D (Form 1040), line 5\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b9a": {
+   "subject_sha": "07091a9721cfc5f7ed154d2a34accbb0a1510479d55b72ef92f23b1c8bc9c5e2",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner whose partnership had collectibles gain (for example, $500 from sold art or coins) offset by an equal other net long-term capital loss. Box 9a nets to zero and is left blank, but box 9b shows $500. The filer also has $10,000 of long-term gains from stock sales elsewhere on the return.",
+       "why_no": "Box 9a, net long-term capital gain (loss), shows no amount, so the filer truthfully answers no. The 9b/9c question is never reached.",
+       "line": "k1p.has_b9bc_if_9a (forced false), so the box 9b collectibles amount never reaches line 4 of the 28% Rate Gain Worksheet and $500 is taxed at 15% instead of 28%",
+       "irs_text": "i1065sk1 (2025) p. 16, Box 9b: \"Report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet—Line 18 in the Instructions for Schedule D (Form 1040).\"",
+       "severity": "high",
+       "fix": "Do not nest the 9b/9c question under box 9a. Ask it on every Schedule K-1 (Form 1065): \"Does box 9b (collectibles 28% gain or loss) or box 9c (unrecaptured section 1250 gain) show an amount or refer to an attached statement, even if box 9a is blank or zero?\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner in a real estate partnership that sold depreciated buildings at a gain and investment property at a loss. The net long-term result is zero, so box 9a is blank, but box 9c shows unrecaptured section 1250 gain. The filer has other long-term gains on the return.",
+       "why_no": "Box 9a shows no amount. The help text \"Both are parts of the gain in box 9a\" reinforces the belief that 9b and 9c cannot matter without 9a.",
+       "line": "k1p.has_b9bc_if_9a (forced false), so the 25% unrecaptured section 1250 gain is omitted from the Unrecaptured Section 1250 Gain Worksheet",
+       "irs_text": "i1065sk1 (2025) p. 16, Box 9c: \"Report unrecaptured section 1250 gain from the sale or exchange of the partnership's business assets on line 5.\"",
+       "severity": "high",
+       "fix": "Gate the 9b/9c question independently of 9a. Revise the help to: \"These are usually parts of box 9a, but they can show amounts even when box 9a is blank or zero.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose box 9a shows \"STMT\" or \"See attached\" instead of a figure, with the net long-term capital gain or loss given on a partnership statement. This is common for multi-activity or tiered partnerships.",
+       "why_no": "The question asks whether box 9a \"show[s] an amount\", and the box itself contains no dollar figure.",
+       "line": "k1p.box9a_if_any (zero instead of the net long-term capital gain or loss for Schedule D line 12)",
+       "irs_text": "i1065sk1 (2025) p. 15, Box 9a: \"Report the net long-term capital gain (loss) on Schedule D (Form 1040), line 12.\"",
+       "severity": "medium",
+       "fix": "\"Does box 9a show an amount, or a code or note such as STMT referring to an attached statement that gives a net long-term capital gain or loss?\" with help: \"If the amount is on a statement, answer yes and enter the statement's figure.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner in a fund-of-funds partnership that passes through unrecaptured section 1250 gain from a REIT or RIC. Per the instructions, the partnership reports this on an attached statement rather than as a dollar amount in box 9c.",
+       "why_no": "Asked whether box 9c \"show[s] an amount\", the filer sees only a statement reference in the box and answers no.",
+       "line": "k1p.has_b9bc_if_9a (false), so the REIT/RIC unrecaptured section 1250 gain for worksheet line 11 is omitted",
+       "irs_text": "i1065sk1 (2025) p. 16: \"If it reports the other two types of unrecaptured gain, it'll provide an attached statement that shows the amount for each type of unrecaptured section 1250 gain.\"",
+       "severity": "medium",
+       "fix": "\"Does box 9b or 9c show an amount, or does the partnership attach a statement reporting collectibles gain or any type of unrecaptured section 1250 gain?\""
+      }
+     ],
+     "prompt_sha": "c4a16e4ae9439496f43e8cd400620e6bb6e010838a4f967468c41cdb65a8e3ec",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.088928,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b9a.07091a9721cf.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b9a",
+   "lines": [
+    "k1p.box9a_if_any",
+    "k1p.has_b9bc_if_9a"
+   ],
+   "inputs": [
+    "k1p.box9a",
+    "k1p.has_b9bc"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      15,
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Box 9a. Net Long-Term Capital Gain (Loss), \"Report the net long-term capital gain (loss) on Schedule D (Form 1040), line 12\"",
+      "p. 16, Box 9b. Collectibles (28%) Gain (Loss), \"Report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet\""
+     ],
+     "cols_pages": [
+      15,
+      16
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.has_b9bc_if_9a": {
+   "subject_sha": "b7001029a10e39f332f5e8386f5935da7cce9b54ad993392bd0dae0cfc7f34ec",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner whose partnership had collectibles gain or unrecaptured section 1250 gain that was fully offset by other long-term capital losses. For example, $10,000 of collectibles gain and a $10,000 long-term loss leave box 9a at 0 or blank, while box 9b shows $10,000 or box 9c shows unrecaptured gain.",
+       "why_no": "The parent gate asks only whether box 9a shows an amount. When the partnership's netting leaves box 9a at zero or blank, the gate is false, and the box 9b and 9c question is never reached.",
+       "line": "k1p.box9b_if_any; k1p.box9c_if_any",
+       "irs_text": "i1065sk1 p. 16, Box 9b: \"Report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet\"; Box 9c: \"Report your share of this unrecaptured gain on the Unrecaptured Section 1250 Gain Worksheet\". Neither instruction is conditioned on box 9a.",
+       "severity": "high",
+       "fix": "Remove the box 9a dependency. Ask on every Schedule K-1 (Form 1065): \"Does box 9b or box 9c show an amount or 'STMT' (even if box 9a is blank or zero)?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner whose partnership reports more than one type of unrecaptured section 1250 gain, for example from a REIT, a RIC or a lower-tier partnership interest. Box 9c then reads 'STMT' and the amounts are on an attached statement.",
+       "why_no": "The gate asks whether box 9b or 9c 'shows an amount'. 'STMT' is not a dollar amount, so the partner answers no. The help that says the STMT case is outside the tool's scope is attached only to the gated question, so it never appears and the tool never refuses.",
+       "line": "k1p.box9c_if_any",
+       "irs_text": "i1065sk1 p. 16, Box 9c: \"If it reports the other two types of unrecaptured gain, it'll provide an attached statement that shows the amount for each type of unrecaptured section 1250 gain.\"",
+       "severity": "medium",
+       "fix": "Word the gate as \"Does box 9b or 9c show an amount, a loss, or 'STMT'?\" Move the STMT-is-out-of-scope help onto the gate question itself."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose box 9a shows a net long-term capital loss in parentheses, for example (15,000), while box 9b shows a $5,000 collectibles gain.",
+       "why_no": "If the box 9a condition is answered by the filer and not computed from an entered amount, the label 'net long-term capital gain (loss)' and 'shows an amount' may lead the filer to say no when the box holds a loss.",
+       "line": "k1p.box9b_if_any; k1p.box9c_if_any",
+       "irs_text": "i1065sk1 p. 16, Box 9b: \"Report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet\"",
+       "severity": "low",
+       "fix": "Compute the condition from the entered box 9a amount (nonzero, including negative values). If it is asked, say \"any amount, including a loss shown in parentheses.\" This is better resolved by the first fix, which removes the dependency."
+      }
+     ],
+     "prompt_sha": "074e77956cdb2a4aa4408f92ff49a87b63e44bcacde4454328fcf391e63c150f",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.07016,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.has_b9bc_if_9a.b7001029a10e.1.response.txt"
+    }
+   ],
+   "condition": "k1p.has_b9bc_if_9a",
+   "lines": [
+    "k1p.box9b_if_any",
+    "k1p.box9c_if_any"
+   ],
+   "inputs": [
+    "k1p.box9b",
+    "k1p.box9c"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Box 9b. Collectibles (28%) Gain (Loss), \"Report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet\"",
+      "p. 16, Box 9c. Unrecaptured Section 1250 Gain, \"If the partnership reports only unrecaptured section 1250 gain from the sale or exchange of its business assets, it’ll enter a dollar amount in box 9c\""
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  },
+  "gate:k1p.prior_any_if_activity": {
+   "subject_sha": "bfeecf598fcb08e90e25cc093dcec65177e03a04ced5638c89899c586e9b3fe2",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner has a prior-year unallowed passive loss from this partnership on Form 8582, Part VII, column (c). Their 2025 Schedule K-1 shows nothing in boxes 1, 2 or 3. For example, the activity broke even, the K-1 reports only box 4 or other items, or the final K-1 for an interest sold in 2025 shows no ordinary or rental amount.",
+       "why_no": "The gate is computed false whenever boxes 1–3 are blank. The filer is never asked about a held-back loss, so the carryover is set to zero.",
+       "line": "k1p.prior_b1_any_if, k1p.prior_b2_any_if, k1p.prior_b3_any_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\" The column takes the carryover whether or not the activity has current-year income or loss in columns (a)/(b).",
+       "severity": "high",
+       "fix": "Do not condition the held-back-loss question on boxes 1–3. Ask it for every Schedule K-1 (Form 1065): 'Did your 2024 Form 8582 (Part VII, column (c)) or an earlier passive-loss carryover worksheet show an unallowed loss from this partnership, even if this year's K-1 shows nothing in boxes 1–3?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse owns the partnership interest. The unallowed loss arose on the spouse's earlier separate return, or on a return the spouse filed before the marriage, or the filer's own name appears on the 2024 Form 8582 only through the spouse's activity.",
+       "why_no": "\"A loss from this partnership held back on an earlier return\" and \"your 2024 Form 8582\" read as the filer's own prior return. The filer answers no because they personally had no carryover.",
+       "line": "k1p.prior_b1_any_if, k1p.prior_b2_any_if, k1p.prior_b3_any_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "medium",
+       "fix": "Word the gate as 'Did you or your spouse have a loss from this partnership that was not allowed on an earlier return (including a separate return filed by either of you) and carried forward?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose earlier return was prepared by software or a paid preparer that silently limited the passive loss and carried it forward. The filer never saw it described as 'held back'. They know it only as a 'suspended' or 'carryover' amount, or not at all.",
+       "why_no": "\"Held back\" is not the term on Form 8582 or in preparer summaries, which use \"unallowed\", \"suspended\" or \"carryover\". The filer recalls deducting the K-1 loss and answers no.",
+       "line": "k1p.prior_b1_any_if, k1p.prior_b2_any_if, k1p.prior_b3_any_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "medium",
+       "fix": "Ask the filer to check a document: 'Look at your 2024 return. Is there a Form 8582 whose Part VII, column (c) (unallowed loss) lists this partnership? Preparers may call this a suspended or carryover passive loss.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A partner whose earlier K-1 loss was limited by basis (section 704(d)) or by the at-risk rules (Form 6198), and also by the passive rules. Alternatively, the loss was limited only by basis or at-risk and not by the passive rules.",
+       "why_no": "\"Held back\" does not say which limitation is meant. A filer may answer yes for a basis or at-risk carryover that does not belong in Form 8582 column (c). Or a filer may think their only limit was basis-related and answer no, missing the passive-loss part.",
+       "line": "k1p.prior_b1_any_if, k1p.prior_b2_any_if, k1p.prior_b3_any_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "low",
+       "fix": "Name the source of the amount: 'unallowed passive loss shown on Form 8582, Part VII, column (c)'. Add help text saying that basis or at-risk carryovers (Form 6198) are asked separately."
+      }
+     ],
+     "prompt_sha": "55a3581b72675cdc7a288e7d22c532b75a71ea64c7e1c53116c72da8776f30af",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.07925600000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.prior_any_if_activity.bfeecf598fcb.1.response.txt"
+    }
+   ],
+   "condition": "k1p.prior_any_if_activity",
+   "lines": [
+    "k1p.prior_b1_any_if",
+    "k1p.prior_b2_any_if",
+    "k1p.prior_b3_any_if"
+   ],
+   "inputs": [
+    "k1p.prior_b1_any",
+    "k1p.prior_b2_any",
+    "k1p.prior_b3_any"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
+  "gate:k1p.prior_b1_any_if": {
+   "subject_sha": "ca7e5d0c9dea34b9ab0035f9b8a2e32eed3239009ca55336586f224525eb3a52",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner with passive losses from this partnership suspended on the 2024 Form 8582 who sold their entire interest in 2025. The final K-1 shows the sale (for example, box 9a/10 or a sale reported on Form 8949/4797) but nothing in boxes 1, 2 or 3.",
+       "why_no": "The gate is computed. Boxes 1-3 are blank, so the helper is false and the tool never asks about the held-back loss. The filer gives no answer at all.",
+       "line": "k1p.prior_b1_if (prior years unallowed loss, box 1 activity)",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "high",
+       "fix": "Don't condition on boxes 1-3. Ask for every K-1: \"Does your (or your spouse's) 2024 Form 8582, Part VII (or any prior-year passive loss worksheet), show an unallowed loss for this partnership, even if this year's K-1 shows no amount in box 1, 2 or 3 or you disposed of your interest?\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner in a still-held passive partnership with a 2024 suspended loss whose 2025 K-1 shows zero or blank in boxes 1-3. The only amounts are in other boxes, such as box 10 net section 1231 gain, box 4 guaranteed payments or box 11 other income, or it is a break-even year.",
+       "why_no": "The computed gate \"box 1, 2 or 3 shows an amount\" is false, so the prior-year loss is never asked. That loss must still enter column (c) and can offset other passive income.",
+       "line": "k1p.prior_b1_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity... Enter the total of column (c) from your 2025 Part V on Part I, line 2c\"",
+       "severity": "high",
+       "fix": "Gate the prior-year question on the existence of a prior-year unallowed loss for the activity, not on current-year amounts in boxes 1-3."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A couple filing jointly in 2025 whose partnership interest belongs to the spouse. The spouse filed single or MFS in 2024, so the suspended loss is on the spouse's own 2024 Form 8582. Or the couple married in 2025.",
+       "why_no": "The question says \"from your 2024 Form 8582\". The filer looks at their own 2024 return, finds no Form 8582 and answers no.",
+       "line": "k1p.prior_b1_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV/V, Column (c): \"You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "medium",
+       "fix": "Ask: \"Did your or your spouse's 2024 Form 8582 (from a joint or separate 2024 return) show an unallowed loss for this partnership?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A partner whose 2024 Form 8582 Part VII lists the partnership by name with an unallowed loss, without reference to K-1 boxes. Or the partner's 2024 loss came through a different K-1 box than this year's activity line.",
+       "why_no": "The question asks about a \"held-back loss from the business (box 1)\". The 2024 form shows an \"unallowed loss\" per activity, not per box. The filer doesn't see \"held back\" or \"box 1\" anywhere and answers no, or attributes the loss to another box.",
+       "line": "k1p.prior_b1_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity.\"",
+       "severity": "medium",
+       "fix": "Use the form's own words and ask by activity: \"Does Part VII, column (c) ('Unallowed loss') of your 2024 Form 8582 show an amount for this partnership's trade or business activity?\" Then classify by box afterward."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A partner who used software or a preparer in 2024 that carried the suspended loss on a worksheet. The partner has only a summary or doesn't have the 2024 Form 8582 at hand.",
+       "why_no": "The question names only \"your 2024 Form 8582, Part VII, column (c)\". A filer who can't find that specific form answers no, although the unallowed loss exists.",
+       "line": "k1p.prior_b1_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity.\"",
+       "severity": "low",
+       "fix": "Add help text: \"Losses from this partnership that were not allowed in earlier years because of the passive activity rules. They usually appear on your 2024 Form 8582 or your preparer's carryover worksheet.\""
+      }
+     ],
+     "prompt_sha": "963493cc30a714f31c95df8736d6a2bba42c948bf9112e6b964232dae2ce0226",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.083784,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.prior_b1_any_if.ca7e5d0c9dea.1.response.txt"
+    }
+   ],
+   "condition": "k1p.prior_b1_any_if",
+   "lines": [
+    "k1p.prior_b1_if"
+   ],
+   "inputs": [
+    "k1p.prior_b1"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
+  "gate:k1p.prior_b2_any_if": {
+   "subject_sha": "a714cad58d924152cb8c5daf0741a173f99c5b724a69c9d6b7f2d7a4de3b00bb",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner whose partnership sold its rental building in 2025. The final 2025 K-1 reports the sale in box 9a/9c/10 or Form 4797 detail, and boxes 1, 2 and 3 are blank. The partner's 2024 Form 8582, Part VII, column (c), carries a suspended rental real estate loss for this activity.",
+       "why_no": "The parent gate is computed from this year's K-1 alone (\"box 1, 2 or 3 shows an amount\"). With all three boxes blank, it is false, so the held-back question is never asked, even though a carryover from an earlier year exists.",
+       "line": "k1p.prior_b2_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "high",
+       "fix": "Do not gate prior-year unallowed losses on current-year box 1–3 amounts. Ask for every K-1, including a final one: \"Did your 2024 Form 8582 (Part VII, column (c)) or carryover worksheet show an unallowed loss for this partnership's rental real estate activity, even if box 2 is blank this year or this is a final K-1?\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner whose partnership's rental real estate broke even, or whose 2025 box 2 is blank because the activity was idle. The partner still has losses suspended from 2022–2024 on the 2024 Form 8582.",
+       "why_no": "The computed parent condition is false because box 2 shows no amount this year. The suspended loss carries forward regardless of current-year activity, and current-year income from another passive activity could release it.",
+       "line": "k1p.prior_b2_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Columns (d) and (e): \"Combine income and losses in columns (a) through (c) for each activity\"; column (c) prior-year unallowed losses are entered for each activity.",
+       "severity": "high",
+       "fix": "Ask about carryovers whenever the filer had this partnership in any prior year (or simply always). The condition should be the existence of a 2024 Part VII column (c) amount, not a current box amount."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Spouses filing jointly in 2025 where the K-1 belongs to the spouse, or where the couple filed separately (or the spouse filed single before marriage) in 2024. The suspended loss sits on the spouse's own 2024 Form 8582.",
+       "why_no": "The filer reads \"was a loss held back\" or \"your 2024 Form 8582\" as their own return and sees nothing on it.",
+       "line": "k1p.prior_b2_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "medium",
+       "fix": "Say \"you or your spouse\" and \"any 2024 Form 8582 filed by you or your spouse (joint or separate)\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer whose 2024 software suspended the loss in its carryover worksheet, or who never attached a Form 8582 in 2024 although a loss was limited. The filer sees no \"held back\" amount on anything they recognize.",
+       "why_no": "\"Held-back loss\" is a classification the filer cannot check, and the cited source (Part VII, column (c) of a 2024 Form 8582) may not be in their records. They answer no instead of reconstructing the amount.",
+       "line": "k1p.prior_b2_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity.\"",
+       "severity": "medium",
+       "fix": "Ask a checkable fact first: \"In any earlier year, did this partnership report a rental real estate loss (box 2) that was not fully deducted on your return?\" Then direct the filer to the 2024 Form 8582 Part VII, the software carryover report, or a recomputation."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose box 2 loss was suspended in 2021 and never released. The amount carried through every later Form 8582.",
+       "why_no": "\"A loss was held back\", asked on the 2025 K-1, reads as a limitation on this year's box 2 loss. The filer thinks of the old loss as an earlier year's matter, not one held back \"from it\".",
+       "line": "k1p.prior_b2_if",
+       "irs_text": "i8582 (2025) p. 10, Part IV: \"Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year.\"",
+       "severity": "medium",
+       "fix": "Word it as \"from any earlier year, still not deducted as of the end of 2024\", not \"held back\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A partner who did not actively participate, or who lived with their spouse and filed separately, so their box 2 loss was suspended in Part V of the 2024 Form 8582 rather than Part IV.",
+       "why_no": "The cited help text is from Part IV (active participation). The filer reads the question as covering only the Part IV special-allowance case and answers no for a Part V carryover.",
+       "line": "k1p.prior_b2_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): \"Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "low",
+       "fix": "State that the question covers the box 2 rental real estate carryover whether it was figured in Part IV or Part V, and cite both columns (c)."
+      }
+     ],
+     "prompt_sha": "c6acfa56b7eb677c042aa8db22e0fc784987b7a6e1217b33d882fd53c75b91eb",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.0879,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.prior_b2_any_if.a714cad58d92.1.response.txt"
+    }
+   ],
+   "condition": "k1p.prior_b2_any_if",
+   "lines": [
+    "k1p.prior_b2_if"
+   ],
+   "inputs": [
+    "k1p.prior_b2"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
+  "gate:k1p.prior_b3_any_if": {
+   "subject_sha": "c75916bd8f176733a4811c7f150517e4a9976066f5fdce3a41474a154565ebee",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner in a partnership that rents equipment or other non-real-estate property. Their 2024 box 3 loss was disallowed and appears in 2024 Form 8582, Part VII, column (c). Their 2025 K-1 shows nothing in boxes 1, 2 or 3: the activity broke even, or the only 2025 amounts are elsewhere, such as box 9/10 section 1231 gain or box 19 distributions.",
+       "why_no": "The parent helper 'Asked only when box 1, 2 or 3 shows an amount' is truthfully false. So the gate is false and the held-back loss question is never asked, even though the activity still carries a prior-year unallowed loss.",
+       "line": "k1p.prior_b3_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.'",
+       "severity": "high",
+       "fix": "Do not make the prior-year question depend on current boxes 1-3. Ask for every Form 1065 K-1, including a final K-1: 'Did your 2024 Form 8582 (Part VII, column (c)) show an unallowed loss for this partnership's activity, whether or not this year's K-1 shows an amount in boxes 1-3?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner who disposed of their entire interest during 2025 in a fully taxable transaction. The final K-1 reports the sale or only a box 9/10/11 gain or loss, with boxes 1-3 blank. They have suspended box 3 losses from earlier years.",
+       "why_no": "Boxes 1, 2 and 3 are empty, so the computed gate is false. The suspended loss, which the disposition frees in full, is treated as zero.",
+       "line": "k1p.prior_b3_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.'",
+       "severity": "high",
+       "fix": "Ask the prior-year unallowed loss question whenever the filer had a 2024 Form 8582 entry for the activity. Also ask it when the K-1 is marked final or the filer reports a disposition, regardless of boxes 1-3."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose 2024 return carried a box 3 rental loss forward on Form 8582. They know it as a 'suspended', 'carryover' or 'unallowed passive' loss.",
+       "why_no": "The help text 'Held-back loss from other rentals' does not use the IRS words 'prior-year unallowed loss'. A filer may also read 'held back' as something the partnership withheld or did not distribute, not a loss limited on their own 2024 Form 8582.",
+       "line": "k1p.prior_b3_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity.'",
+       "severity": "medium",
+       "fix": "Word it as: 'Does your 2024 Form 8582, Part VII, column (c), show a prior-year unallowed (suspended passive) loss for this partnership's other rental activity (box 3)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A couple filing jointly for 2025 who filed separately, or were unmarried, in 2024. The K-1 belongs to the spouse, whose unallowed box 3 loss is on the spouse's own 2024 Form 8582.",
+       "why_no": "'Your 2024 Form 8582' is read by the filer completing the interview as their own 2024 return, which had no Form 8582 or no entry for this activity.",
+       "line": "k1p.prior_b3_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'You find these amounts in Part VII, column (c), of your 2024 Form 8582.'",
+       "severity": "medium",
+       "fix": "Say 'your or your spouse's 2024 Form 8582 (including a separate 2024 return of the K-1 owner)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A partner whose activity reported a loss in box 3 in 2024 but reports in box 1 or 2 in 2025, for example after a change in rental classification. The prior-year unallowed loss belongs to the activity, not to the box.",
+       "why_no": "The question is tied to '(box 3)'. Because this year's box 3 is empty, the filer answers no to the box 3 held-back loss even though the activity's prior-year unallowed loss carries forward.",
+       "line": "k1p.prior_b3_if",
+       "irs_text": "i8582 (2025) p. 10, Part V, Column (c): 'Enter the unallowed losses for the prior years for each activity.'",
+       "severity": "low",
+       "fix": "Ask per activity: 'Any prior-year unallowed loss for this activity, whatever box it was reported in.' Then route it by the activity's current classification."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer reviewing the help text who reads the citation.",
+       "why_no": "The citation quotes Part IV, which covers rental real estate with active participation. Box 3 other rental activities belong in Part V. A filer who has no actively participated real estate may conclude that the question does not apply to them.",
+       "line": "k1p.prior_b3_if",
+       "irs_text": "i8582 (2025) p. 10, Part V: 'Use Part V ... for: ... Rental activities other than rental real estate activities.'",
+       "severity": "low",
+       "fix": "Cite i8582 p. 10, Part V, Column (c), instead of Part IV."
+      }
+     ],
+     "prompt_sha": "1b5760bdef0722fdbcdf36c078be15c7a55a669a06b88afc71073174766a1f4f",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08970800000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.prior_b3_any_if.c75916bd8f17.1.response.txt"
+    }
+   ],
+   "condition": "k1p.prior_b3_any_if",
+   "lines": [
+    "k1p.prior_b3_if"
+   ],
+   "inputs": [
+    "k1p.prior_b3"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
+  "gate:k1p.work_if_b1": {
+   "subject_sha": "b493cb7f1eb5201af8bdf3e34a5072a6a8aa15a2950760d6a14c084b4110b32f",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A partner in a fiscal-year partnership (for example, a tax year running February 2024 through January 2025). The K-1 is reported on the 2025 return, and the partner worked 600 hours in the business between February and December 2024.",
+       "why_no": "Both the gate (\"Worked in the business in 2025\") and the gated question (\"add up to more than 500 hours in 2025\") use calendar 2025. Little or none of this partner's work fell in 2025, so they truthfully answer no.",
+       "line": "k1p.hours500_if_work",
+       "irs_text": "\"All determinations of material participation are based on your participation during the partnership's tax year.\" (i1065sk1 2025 p. 9)",
+       "severity": "high",
+       "fix": "Ask about \"the partnership's tax year shown at the top of this Schedule K-1 (which may begin in 2024)\" instead of \"in 2025\", in both the gate and the hours question."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A partner whose K-1 has an empty box 1 but shows trade or business amounts elsewhere: section 179 in box 12, a net section 1231 gain or loss in box 10, other deductions in box 13, or credits. Another case is a real estate professional whose K-1 shows only box 2 rental real estate income or loss. Either partner may work more than 500 hours in the activity.",
+       "why_no": "The computed gate is false whenever box 1 is blank, so the work and hours questions are never asked. Material participation still decides whether these other amounts are passive.",
+       "line": "k1p.hours500_if_work",
+       "irs_text": "\"You must determine if you materially participated (a) in each trade or business activity held through the partnership, and (b) if you were a real estate professional ... in each rental real estate activity\"; \"Income (loss), deductions, and credits from an activity are nonpassive if you determine that ... You materially participated\" (i1065sk1 2025 p. 9)",
+       "severity": "high",
+       "fix": "Open the gate when the K-1 reports any trade or business item (boxes 1, 4, 9-13, 15, 20 tied to an activity), or any box 2 amount for a filer who is a real estate professional. Do not key it on box 1 alone."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A married partner filing separately whose spouse, who is not a partner, works 400 hours in the partnership's business while the partner works 200.",
+       "why_no": "The help says \"on a joint return, your spouse's hours\". A filer on a separate return reads this as excluding the spouse's hours, counts 200, and answers no.",
+       "line": "k1p.hours500_if_work",
+       "irs_text": "\"Generally, any work that you or your spouse does in connection with an activity held through a partnership ... is counted toward material participation.\" (i1065sk1 2025 p. 9). The text sets no joint-return condition.",
+       "severity": "high",
+       "fix": "Help text: \"Count your own hours and your spouse's hours together, whether or not you file a joint return and whether or not your spouse is a partner.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "On a joint return, a partner who did no work in the business, while their spouse worked full time in it without owning any interest.",
+       "why_no": "The gate helper reads \"Worked in the business in 2025\" and does not say \"you or your spouse\". The partner answers for themselves, says no, and the hours question, whose help does mention the spouse, is never reached.",
+       "line": "k1p.hours500_if_work",
+       "irs_text": "\"any work that you or your spouse does in connection with an activity held through a partnership\" (i1065sk1 2025 p. 9)",
+       "severity": "medium",
+       "fix": "Ask \"Did you or your spouse do any work in this partnership's business during its tax year? (Your spouse's work counts even if your spouse is not a partner.)\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A general partner who runs day-to-day operations by making managerial decisions, supervising staff, and negotiating with vendors and customers, but does no hands-on labor.",
+       "why_no": "The words \"worked in the business\" suggest hands-on or employee-type labor. The filer thinks of themselves as an owner, not a worker, and answers no.",
+       "line": "k1p.hours500_if_work",
+       "irs_text": "\"any work that you or your spouse does in connection with an activity\"; investor work is excluded only if \"you aren't directly involved in the day-to-day operations of the activity\" (i1065sk1 2025 p. 9)",
+       "severity": "medium",
+       "fix": "Ask about \"any time spent on the business's operations, including managing, supervising, or making operating decisions, but not only reviewing financial reports as an investor\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A partner in a partnership with several activities, with a box 23 statement attached, who works more than 500 hours in one trade or business activity listed on the statement but not in the one whose income is in box 1.",
+       "why_no": "The gate and the question ask about \"the business\" as a single unit tied to box 1. The filer answers about the box 1 activity, says no, and is never asked about the other activities.",
+       "line": "k1p.hours500_if_work",
+       "irs_text": "\"it'll attach a statement ... that identifies each activity\"; \"You must determine if you materially participated (a) in each trade or business activity held through the partnership\" (i1065sk1 2025 p. 9)",
+       "severity": "medium",
+       "fix": "When box 23 is checked, ask the work and hours questions once for each trade or business activity on the statement."
+      }
+     ],
+     "prompt_sha": "e921fa646a2c09abe3e22c2012ab81c29ae7c625f33b834b762d752ed428a459",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.084364,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_k1p.work_if_b1.b493cb7f1eb5.1.response.txt"
+    }
+   ],
+   "condition": "k1p.work_if_b1",
+   "lines": [
+    "k1p.hours500_if_work"
+   ],
+   "inputs": [
+    "k1p.hours500"
+   ],
+   "used": [
+    {
+     "doc": "i1065sk1",
+     "revision": "2025",
+     "text_sha256": "24a27b60de9813842eeca067da0ae65988a3eb70b30e74d464d8dbf4490b7363",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Individuals (other than limited partners), \"You participated in the activity for more than 500 hours during the tax year\"",
+      "p. 9, Work counted toward material participation, \"any work that you or your spouse does in connection with an activity held through a partnership\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "03a19f12a23589bdda4319d16c6575927e236e8336bce45c50056b53acb01499"
+    }
+   ]
+  }
+ }
+}

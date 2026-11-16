@@ -1,0 +1,39 @@
+{
+ "kind": "render",
+ "form": "rf4562",
+ "rulings": [
+  {
+   "printed": "17",
+   "restated": "Enter the amount from rental helper \"MACRS on buildings placed in service before 2025\".",
+   "model": "Line 17 takes MACRS deductions for property placed in service before 2025, and the 2025 instructions point to line 19, column (g) to figure them. That column applies the table rate to column (c), which the instructions define as: \"multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property.\" The program's column (c) input does neither: it has no business/investment-use percentage (for example, renting only part of a home) and does not subtract credits such as the disabled access credit, and no refusal excludes these cases.",
+   "ruling": "Ruling: finding; i4562 Column (c): 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property'. The column (g) amount is the rate times rprop.basis with neither step: personal-use days are prorated only on Schedule E line 18, a rental of part of the home is neither limited nor refused, and allocable credits are not subtracted (BUG-0920).",
+   "context": "1f4249b1bf997c39f6503fdbb018051457a504efd79188376e764ca8a18b24a1",
+   "date": "2026-11-15",
+   "run": "efbdb6ab0f66ba29c2a04c6762dc8c9a939c60b102bbd166bd00e808949b2a3a",
+   "severity": "medium",
+   "subject_key": "d8be2e51cc2776e280e74a660dec026690f8468aa9b45cc10e5244b77dd8ab94"
+  },
+  {
+   "printed": "19i(g)",
+   "restated": "Enter the amount from rental helper \"MACRS on residential rental property placed in service in 2025\".",
+   "model": "The program multiplies column (c) by the Table A-6 rate, but its column (c) is the full cost of the building without the land. The instructions require column (c) to be the basis \"multiply[ed] ... by the percentage of business/investment use,\" less \"any credits and deductions allocable to the property\" (for example, the disabled access credit or the barrier-removal deduction). Partly rented property and these reductions are not refused, so the result can be too high.",
+   "ruling": "Ruling: finding; i4562 Column (c): 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property'. The column (g) amount is the rate times rprop.basis with neither step: personal-use days are prorated only on Schedule E line 18, a rental of part of the home is neither limited nor refused, and allocable credits are not subtracted (BUG-0920).",
+   "context": "1f4249b1bf997c39f6503fdbb018051457a504efd79188376e764ca8a18b24a1",
+   "date": "2026-11-15",
+   "run": "efbdb6ab0f66ba29c2a04c6762dc8c9a939c60b102bbd166bd00e808949b2a3a",
+   "severity": "medium",
+   "subject_key": "20566d97bd48c4bc5cb79ab320187897a6f6486f1aab79ddfae7e92c7731d99c"
+  },
+  {
+   "printed": "19j(g)",
+   "restated": "Enter the amount from rental helper \"MACRS on nonresidential real property placed in service in 2025\".",
+   "model": "The Table A-7a lookup and the mid-month, straight-line method match the instructions. However, column (c) omits the required step to \"multiply the cost or other basis of the property by the percentage of business/investment use\" and subtract \"any credits and deductions allocable to the property,\" and no refusal excludes these cases.",
+   "ruling": "Ruling: finding; i4562 Column (c): 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property'. The column (g) amount is the rate times rprop.basis with neither step: personal-use days are prorated only on Schedule E line 18, a rental of part of the home is neither limited nor refused, and allocable credits are not subtracted (BUG-0920).",
+   "context": "1f4249b1bf997c39f6503fdbb018051457a504efd79188376e764ca8a18b24a1",
+   "date": "2026-11-15",
+   "run": "efbdb6ab0f66ba29c2a04c6762dc8c9a939c60b102bbd166bd00e808949b2a3a",
+   "severity": "medium",
+   "subject_key": "53d861da39bd3ac4daec5c066639694831407e5a637a9ab7d96903cd8798a5eb"
+  }
+ ]
+}

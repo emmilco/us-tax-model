@@ -36,6 +36,9 @@ from structured_text import inline, summary  # noqa: E402
 JOBS = os.path.join(ROOT, ".classm", "jobs.json")
 RAW = os.path.join(ROOT, ".classm")
 LOGS = str(jurisdiction.ypath("reviews", Y, "classm"))
+# Heap for classm-jobs: it holds every corpus return's full evaluation (2,000 sampled returns and the fixtures that
+# cover the document), about 10 GB on the largest documents (s1, f1040, person) of the 2025 forms.
+JOBS_HEAP_MB = 16384
 # The engine's flag for the New York fixtures (classm-jobs seeds its corpus from them).
 ENGINE_ARGS = ["--ny"] if jurisdiction.NY else []
 PROMPT_POLICY = "worked-values-request-bound-v3"
@@ -422,7 +425,16 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
     for job in jobs:
         out += [f"### {job['id']}", "", "```yaml", runs[job["id"]]["raw"].strip(), "```", ""]
     rulings.write_log("classm", fid, "\n".join(out), family)
-    # Merge this document's cases into the family's fixture file.
+    # Merge this document's cases into the family's fixture file. Runs side by side (rerun_all.py) share the
+    # file, so the read, merge and write hold the jobs lock, and the write replaces the file in one step.
+    import fcntl
+    with open(os.path.join(os.path.dirname(JOBS), "lock"), "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        _merge_fixture(fixture, fid, fixture_cases)
+    return path, counts
+
+
+def _merge_fixture(fixture, fid, fixture_cases):
     fx = json.load(open(fixture)) if os.path.exists(fixture) else {"tax_year": YEAR, "cases": []}
     # A rerun regenerates the cases, so a mutant only a replaced case killed can survive: name the
     # replaced cases so any the mutation step needs can be kept in a stage fixture.
@@ -443,9 +455,11 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
     if not inserted:
         merged.extend(fixture_cases)
     fx["cases"] = merged
-    json.dump(fx, open(fixture, "w"), indent=2)
-    open(fixture, "a").write("\n")
-    return path, counts
+    tmp = fixture + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(fx, f, indent=2)
+        f.write("\n")
+    os.replace(tmp, fixture)
 
 
 def main():
@@ -476,7 +490,7 @@ def main():
         import build_fresh
         if build_fresh.stale():
             subprocess.run(["node", main_js, "build", *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
-        subprocess.run(["node", "--max-old-space-size=8192", main_js, "classm-jobs", "--docs", a.doc, "--include-fixtures", *YEAR_ARGS, *ENGINE_ARGS], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(["node", f"--max-old-space-size={JOBS_HEAP_MB}", main_js, "classm-jobs", "--docs", a.doc, "--include-fixtures", *YEAR_ARGS, *ENGINE_ARGS], check=True, stdout=subprocess.DEVNULL)
         jobs = [j for j in json.load(open(JOBS))["jobs"] if j["doc"] == a.doc]
     if not jobs:
         sys.exit(f"{a.doc}: no jobs in {JOBS}; run classm-jobs")

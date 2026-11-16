@@ -1,0 +1,26 @@
+diff --git a/forms/2025/qbi.yaml b/forms/2025/qbi.yaml
+index 99f4b26..2af8f80 100644
+--- a/forms/2025/qbi.yaml
++++ b/forms/2025/qbi.yaml
+@@ -149,7 +149,7 @@ form:
+     - id: qbi.unsupported
+       printed: (helper)
+       type: Bool
+-      label: 'Any of these: a prior-year REIT or PTP loss carryforward; losses or deductions suspended in an earlier year by another provision and allowed this year; being a patron of any agricultural or horticultural cooperative, specified or not. Qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses is refused by the scope questions on Schedule E, Schedule K-1 and Schedule F income'
++      label: 'Any of these: a prior-year REIT or PTP loss carryforward; losses or deductions suspended in an earlier year by another provision and allowed this year; being a patron of any agricultural or horticultural cooperative, specified or not. Qualified business income or loss from Schedule C businesses and from partnership and S corporation Schedules K-1, and section 199A dividends, are figured; PTP income or loss is refused on the K-1 (item D), and estate, trust and Schedule F income by the scope questions'
+       expr:
+         op: test
+         any:
+diff --git a/tools/coverage/tree.json b/tools/coverage/tree.json
+index 50d59b4..42cc917 100644
+--- a/tools/coverage/tree.json
++++ b/tools/coverage/tree.json
+@@ -42,7 +42,7 @@
+   {"gate": "s8812.puerto_rico_if_child", "topic": "everyone", "part": "status", "kind": "situation", "question": "Were you a bona fide resident of Puerto Rico?", "stop": "Schedule 8812 Part II-B and Credit Limit Worksheet B for bona fide residents of Puerto Rico"},
+ 
+   {"gate": "scope.schedule1", "topic": "everyone", "part": "income", "kind": "situation", "question": "Do you have income from an estate or trust (a Schedule K-1 from Form 1041), farm income, sales of business property (Form 4797), a net operating loss, or another Schedule 1 item the tool does not ask about?", "stop": "Schedule 1 items outside the tool, among them estate and trust income, Schedule F, Form 4797 and the net operating loss"},
+-  {"gate": "qbi.unsupported", "topic": "everyone", "part": "income", "kind": "situation", "question": "Do you have qualified business income beyond your Schedule C businesses and section 199A dividends (a partnership, publicly traded partnership, REIT carryforward or cooperative)?"},
++  {"gate": "qbi.unsupported", "topic": "everyone", "part": "income", "kind": "situation", "question": "Do you have qualified business income beyond your Schedule C businesses, partnership and S corporation Schedules K-1 and section 199A dividends (a REIT or PTP carryforward, a loss released from an earlier year, or a cooperative)?"},
+   {"gate": "person.rrta", "topic": "everyone", "part": "income", "kind": "situation", "question": "Do you have railroad retirement (RRTA) compensation on a wage statement, or did you file Form CT-2?", "stop": "Railroad retirement (RRTA) compensation"},
+   {"gate": "person.over", "topic": "everyone", "part": "income", "kind": "situation", "question": "Did one employer withhold more than the Social Security maximum, so a refund must be claimed on Form 843?"},
+   {"gate": "s8812.combat_pay", "topic": "everyone", "part": "income", "kind": "situation", "question": "Did you receive nontaxable combat pay (Form W-2 box 12, code Q)?", "stop": "Nontaxable combat pay"},

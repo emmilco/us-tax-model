@@ -1,0 +1,22 @@
+name: 15_mfs_separate_finances
+who: A married person, 40, in Ohio, who lives with their husband or wife but files a separate return, with one job (one Form W-2, $60,000 of wages) and nothing else to report; the husband or wife takes the standard deduction.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: mfs
+  household.married_dec31: true
+  household.community_property: false
+  person[taxpayer].birth_year: 1985
+  $w2@person[taxpayer]: [acme]
+  person[taxpayer].w2[acme].box1: 6000000
+  person[taxpayer].w2[acme].box2: 600000
+  person[taxpayer].w2[acme].box4: 372000
+  person[taxpayer].w2[acme].box5: 6000000
+  person[taxpayer].w2[acme].box6: 87000
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false
+  sa.spouse_itemizes: false
+  sa.spouse_extra: false

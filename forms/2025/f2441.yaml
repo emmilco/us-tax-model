@@ -5,8 +5,9 @@ form:
   tax_year: 2025
   note: Part I (care providers, collection dcprov), Part II (the credit, with the line 10 Credit Limit Worksheet) and Part III
     (dependent care benefits from Form W-2 box 10). Qualifying persons are the dependent entries (dependent.dc_qp), their
-    column (d) expenses asked per entry. Refused here or on the lines that read this form - married filing separately,
-    line 9b (2024 expenses paid in 2025), deemed income for a student or disabled spouse or filer (and with it a disabled
+    column (d) expenses asked per entry. On a married filing separately return, line A (considered unmarried) allows the
+    credit; otherwise line 11 is zero, line 19 takes the spouse's earned income and line 21 is $2,500. Refused here or on
+    the lines that read this form - a separate return's spouse who was a student or disabled (with benefits), line 9b (2024 expenses paid in 2025), deemed income for a student or disabled spouse or filer (and with it a disabled
     spouse as a qualifying person), a qualifying person who is not your dependent, a spouse who died in 2025, a qualifying
     person with no SSN, ITIN or ATIN, nontaxable combat pay, excluded foreign or possessions income, an ineligible related
     care provider, two dependent care plans with different maximums and benefits from your own sole proprietorship or
@@ -138,6 +139,112 @@ form:
       cite:
         doc: i2441
         locator: 'p. 4, Special Situations, "If your spouse died in 2025, see Pub. 503"'
+    - id: f2441.mfs_qp_count
+      printed: (helper)
+      type: Count
+      label: Number of qualifying persons whose main home was your home for more than half of 2025
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.dc_count
+        where:
+          op: test
+          all:
+            - op: test
+              eq:
+                - dependent.dc_qp
+                - const: true
+            - op: test
+              eq:
+                - dependent.dc_lived_half
+                - const: true
+      cite:
+        doc: i2441
+        locator: 'p. 2, Married Persons Filing Separately, "Your home was the qualifying person''s main home for more than half
+          of 2025"'
+    - id: f2441.mfs_qp_home
+      printed: (helper)
+      type: Bool
+      label: Your home was a qualifying person's main home for more than half of 2025
+      expr:
+        op: test
+        gt:
+          - f2441.mfs_qp_count
+          - const: 0
+            type: Count
+      cite:
+        doc: i2441
+        locator: 'p. 2, Married Persons Filing Separately, "Your home was the qualifying person''s main home for more than half
+          of 2025"'
+    - id: f2441.line_a_home
+      printed: (helper)
+      type: Bool
+      label: Your home was a qualifying person's main home for more than half of 2025, and you paid more than half of the
+        cost of keeping it up for 2025
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f2441.mfs_qp_home
+              - const: true
+          - op: test
+            eq:
+              - household.home_cost
+              - const: true
+      cite:
+        doc: i2441
+        locator: 'p. 2, Married Persons Filing Separately, "Your home was the qualifying person''s main home for more than half
+          of 2025" and "You paid more than half of the cost of keeping up that home for 2025"'
+    - id: f2441.line_a
+      printed: A
+      type: Bool
+      label: You can't claim a credit for child and dependent care expenses if your filing status is married filing separately
+        unless you meet the requirements listed in the instructions under Married Persons Filing Separately. If you meet these
+        requirements, check this box
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - household.mfs_apart_last6
+                - const: true
+            then: f2441.line_a_home
+          - guard:
+              op: test
+              eq:
+                - household.mfs_apart_last6
+                - const: false
+            then: f2441.no
+      cite:
+        doc: i2441
+        locator: 'p. 2, Married Persons Filing Separately, "If your filing status is married filing separately and all of the
+          following apply, you are considered unmarried for purposes of claiming the credit on Form 2441", "You lived apart
+          from your spouse during the last 6 months of 2025"; p. 2, Line A, "If your filing status is married filing separately
+          and you meet the requirements to claim the credit for child and dependent care expenses, you must check the box on
+          line A"'
+      note: False for every other filing status (household.mfs_apart_last6 is false unless married filing separately).
+    - id: f2441.mfs_married
+      printed: (helper)
+      type: Bool
+      label: 'Married filing separately and not considered unmarried (line A not checked): no credit, the spouse''s earned income
+        on line 19 and $2,500 on line 21'
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - household.mfs
+              - const: true
+          - op: test
+            eq:
+              - f2441.line_a
+              - const: false
+      cite:
+        doc: i2441
+        locator: 'p. 2, Married Persons Filing Separately, "If you don''t meet all of the requirements to be treated as unmarried,
+          you can’t generally take the credit. However, you can generally take the exclusion if you meet items 2 through 5"'
     - id: f2441.care_other
       printed: (helper)
       type: Bool
@@ -973,11 +1080,10 @@ form:
       cite:
         doc: f2441
         locator: Form 2441 (2025), line 10
-    - id: f2441.line11
-      printed: "11"
+    - id: f2441.line11_figured
+      printed: (helper)
       type: NonNegDollars
-      label: Credit for child and dependent care expenses. Enter the smaller of line 9c or line 10 here and on Schedule 3 (Form
-        1040), line 2
+      label: The smaller of line 9c or line 10
       expr:
         op: smaller_of
         of:
@@ -986,14 +1092,31 @@ form:
       cite:
         doc: f2441
         locator: Form 2441 (2025), line 11
-      refuses: &mfs
-        - when: s3.mfs
-          form: Form 2441 for married filing separately (line A; lines 19 and 21)
-          remedy: A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is
-            outside this tool. Married filing jointly is supported.
-          cite:
-            doc: i2441
-            locator: 'p. 2, Married Persons Filing Separately, "Generally, married persons must file a joint return to claim the credit"'
+    - id: f2441.line11
+      printed: "11"
+      type: NonNegDollars
+      label: Credit for child and dependent care expenses. Enter the smaller of line 9c or line 10 here and on Schedule 3 (Form
+        1040), line 2
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f2441.mfs_married
+                - const: false
+            then: f2441.line11_figured
+          - guard:
+              op: test
+              eq:
+                - f2441.mfs_married
+                - const: true
+            then: f2441.zero
+      cite:
+        doc: f2441
+        locator: Form 2441 (2025), line 11; i2441 p. 2, Married Persons Filing Separately, "If you don't meet all of the
+          requirements to be treated as unmarried, you can’t generally take the credit"
+      ambiguity: amb.2025.f2441_mfs_no_credit
     - id: f2441.line12
       printed: "12"
       shown_when: f2441.benefits
@@ -1204,6 +1327,106 @@ form:
       cite:
         doc: i2441
         locator: 'p. 5, Line 18, "Enter your earned income on line 18 and your spouse''s earned income on line 19"'
+    - id: f2441.mfs_spouse_earned
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: f2441.mfs_spouse_earned_if_married
+      label: Your spouse's earned income for line 19 (married filing separately, not considered unmarried)
+      expr:
+        op: input
+        source: Your husband's or wife's earned income for 2025 (wages, salaries, tips and other taxable employee pay, and net
+          earnings from self-employment less any loss); for line 19 it does not include dependent care benefits shown in box
+          10 of their Forms W-2; zero if none or a loss
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 19, "No. Enter your spouse''s earned income on line 19"; p. 5, Line 18, "for purposes of lines 18
+          and 19, earned income doesn’t include any dependent care benefits shown on line 12"'
+    - id: f2441.mfs_spouse_earned_if_married
+      printed: (helper)
+      type: NonNegDollars
+      label: 'Your spouse''s earned income for line 19: asked only on a married filing separately return not considered
+        unmarried (zero otherwise, and not read)'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f2441.mfs_married
+                - const: true
+            then: f2441.mfs_spouse_earned
+          - guard:
+              op: test
+              eq:
+                - f2441.mfs_married
+                - const: false
+            then: f2441.zero
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 19, "If your filing status is married filing separately, see Married Persons Filing Separately,
+          earlier. Are you considered unmarried under that rule?"'
+    - id: f2441.mfs_spouse_deemed
+      printed: (helper)
+      type: Bool
+      gated_by: f2441.mfs_spouse_deemed_if_married
+      label: Your spouse (on a separate return) was a full-time student or not able to care for themselves in 2025
+      expr:
+        op: input
+        source: In 2025, was your husband or wife a full-time student at a school for some part of each of 5 calendar months,
+          or physically or mentally not able to care for themselves at any time?
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 19, "No. Enter your spouse''s earned income on line 19. If you or your spouse was a full-time
+          student or disabled in 2025, see the instructions for lines 4 and 5"; p. 4, If You or Your Spouse Was a Student or
+          Disabled, "Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)"'
+    - id: f2441.mfs_spouse_deemed_if_married
+      printed: (gate)
+      type: Bool
+      label: 'A separate return''s spouse who was a student or disabled: asked only on a married filing separately return not
+        considered unmarried (false otherwise)'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f2441.mfs_married
+                - const: true
+            then: f2441.mfs_spouse_deemed
+          - guard:
+              op: test
+              eq:
+                - f2441.mfs_married
+                - const: false
+            then: f2441.no
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 19, "If you or your spouse was a full-time student or disabled in 2025, see the instructions for
+          lines 4 and 5"'
+    - id: f2441.line19_other
+      printed: (helper)
+      type: Dollars
+      label: 'Line 19 when not filing jointly: married filing separately and not considered unmarried, your spouse''s earned
+        income; all others, the amount from line 18'
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f2441.mfs_married
+                - const: true
+            then: f2441.mfs_spouse_earned_if_married
+          - guard:
+              op: test
+              eq:
+                - f2441.mfs_married
+                - const: false
+            then: f2441.line18
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 19, "Yes. Enter your earned income (from line 18) on line 19." and "No. Enter your spouse''s
+          earned income on line 19"'
     - id: f2441.line19
       printed: "19"
       shown_when: f2441.benefits
@@ -1225,11 +1448,18 @@ form:
               eq:
                 - f2441.joint
                 - const: false
-            then: f2441.line18
+            then: f2441.line19_other
       cite:
         doc: f2441
         locator: Form 2441 (2025), line 19; i2441 p. 5, Line 19, "Enter your earned income (from line 18) on line 19."
       refuses:
+        - when: f2441.mfs_spouse_deemed_if_married
+          form: Deemed earned income of a student or disabled spouse on a separate return (Form 2441, line 19)
+          remedy: Your husband's or wife's earned income on line 19 is considered to be at least $250 or $500 a month for each
+            month they were a full-time student or not able to care for themselves, which this tool does not figure.
+          cite:
+            doc: i2441
+            locator: 'p. 4, If You or Your Spouse Was a Student or Disabled, "Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)"'
         - when: f2441.student_disabled
           form: Deemed earned income for a student or disabled spouse or filer (Form 2441, line B and lines 4, 5, 18 and 19)
           remedy: The deemed earned income of $250 or $500 a month for a full-time student or a person not able to care for
@@ -1357,6 +1587,40 @@ form:
       cite:
         doc: i2441
         locator: 'p. 5, Line 21, "For 2025, the maximum amount that can be excluded from your income through a dependent care assistance program is $5,000"'
+    - id: f2441.exclusion_max_mfs
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter dc.exclusion_max_mfs ($2,500)
+      expr:
+        op: param
+        ref: dc.exclusion_max_mfs
+      cite:
+        doc: f2441
+        locator: Form 2441 (2025), line 21, "$2,500 if married filing separately and you were required to enter your spouse’s
+          earned income on line 19"
+    - id: f2441.exclusion_cap
+      printed: (helper)
+      type: NonNegDollars
+      label: $5,000, or $2,500 if married filing separately and your spouse's earned income is on line 19
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f2441.mfs_married
+                - const: true
+            then: f2441.exclusion_max_mfs
+          - guard:
+              op: test
+              eq:
+                - f2441.mfs_married
+                - const: false
+            then: f2441.exclusion_max
+      cite:
+        doc: i2441
+        locator: 'p. 5, Line 21, "For 2025, the maximum amount that can be excluded from your income through a dependent care
+          assistance program is $5,000 ($2,500 if married filing separately)"'
     - id: f2441.line21
       printed: "21"
       shown_when: f2441.benefits
@@ -1366,7 +1630,7 @@ form:
       expr:
         op: smaller_of
         of:
-          - f2441.exclusion_max
+          - f2441.exclusion_cap
           - f2441.plan_max
       cite:
         doc: i2441
@@ -1498,7 +1762,6 @@ form:
       cite:
         doc: i2441
         locator: 'p. 6, Line 26, "If line 26 is more than zero, you have taxable dependent care benefits. Enter this amount on Form 1040, 1040-SR, or 1040-NR, line 1e"'
-      refuses: *mfs
     - id: f2441.line27
       printed: "27"
       shown_when: f2441.benefits

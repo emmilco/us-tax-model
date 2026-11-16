@@ -1,0 +1,169 @@
+{
+ "kind": "transcription",
+ "form": "f8853c",
+ "rulings": [
+  {
+   "printed": "18",
+   "project_expr_sha256": "c7d2baf571944bc9e11bef4802110bb0cb3062cacb5e5922e4fc0dd5ffbe1968",
+   "second_expr_sha256": "1a8b2e4bc92952c4193586d21ecbcd4a627ab93284a5334283e8e719a3bca543",
+   "ruling": "Ruling: representation; the reply takes line 17 whether or not any payment was periodic and reads f8853c.nonqualified without its gate, so it is unknown or refuses where the project's gates leave the question unasked (12 differences: 9 candidate-refuses on refused or incomplete returns, 3 candidate-unknown); no value differs. i8853's Filing Requirements chart completes lines 18 to 25 only for per diem or other periodic payments, which is the project's f8853c.periodic gate.",
+   "context": "11c951d9dfceaef31e71aa2a881302c4cda16f447aee7f5b91fed4cd7d4924dc",
+   "date": "2026-11-15",
+   "run": "a4753496d2f717cd6d12c16e0e9d2377c67f0f1c0e07a1a2f2ad27477d50801e",
+   "subject_key": "56dac26f195afc6b579b5d7ff7b1776d24539a1f1f4175d01497bd01aea44056",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2s1o.f8853c.refuse.nonqualified@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].nonqualified@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].nonqualified@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].days@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].nonqualified@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].line19@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].others_paid@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].rate_changed@f8853c[p0]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "20",
+   "project_expr_sha256": "014e775b5272406a83fc9add374a723ecb6e907e209404399dce0adf0eab30a7",
+   "second_expr_sha256": "0b25cc423014aec57ad8ab448c948d9dd8199fe9f30aee5b98c3b3de9625bd50",
+   "ruling": "Ruling: representation; as line 18: the reply's line 18 reads f8853c.nonqualified ungated (completed witness: project $20,000, reply unknown); no value differs.",
+   "context": "11c951d9dfceaef31e71aa2a881302c4cda16f447aee7f5b91fed4cd7d4924dc",
+   "date": "2026-11-15",
+   "run": "a4753496d2f717cd6d12c16e0e9d2377c67f0f1c0e07a1a2f2ad27477d50801e",
+   "subject_key": "bba7102fc6beaf33e49500ad44cdef1e59407e8c97e3a63e6ebc0161186e5214",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2s1o.f8853c.refuse.nonqualified@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].nonqualified@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].nonqualified@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].days@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].nonqualified@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].line19@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].others_paid@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].rate_changed@f8853c[p0]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "21",
+   "project_expr_sha256": "90e0d6aff6e492410810e412d1a3e4796b935c318ffaec8647a6c9a2776440fb",
+   "second_expr_sha256": "6b0cce4ae7c720ef8b0ff77d387ab6b2aa52dc5494138373f38c8ec5d1c89edf",
+   "ruling": "Ruling: representation; the reply gates $420 x days on f8853c.periodic, the project on line 20 more than zero; with line 18 zero when no payment is periodic the two agree wherever both evaluate; differences are unknowns and refusals on incomplete or refused returns only.",
+   "context": "11c951d9dfceaef31e71aa2a881302c4cda16f447aee7f5b91fed4cd7d4924dc",
+   "date": "2026-11-15",
+   "run": "a4753496d2f717cd6d12c16e0e9d2377c67f0f1c0e07a1a2f2ad27477d50801e",
+   "subject_key": "ced335212f3fae5eb46d4a4a0bacbfaed0c8ec904355eecd2bae136af69ff256",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2s1o.f8853c.refuse.others_paid@f8853c[p0]",
+     "fixture:x2s1o.f8853c.refuse.rate_changed@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].line19@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].others_paid@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].rate_changed@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].line19@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].others_paid@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].rate_changed@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].line19@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].others_paid@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].rate_changed@f8853c[p0]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "23",
+   "project_expr_sha256": "04f437709dceff544599aa683d1cc2efe6b175cf7a0f5e00660fc1c2ccd47392",
+   "second_expr_sha256": "bc5b94e55478f56398d656a387feb5e95dc80c0c45761a75a23fd91c16eea33d",
+   "ruling": "Ruling: representation; as line 21 (line 22 asked only when line 20 is more than zero); no value differs.",
+   "context": "11c951d9dfceaef31e71aa2a881302c4cda16f447aee7f5b91fed4cd7d4924dc",
+   "date": "2026-11-15",
+   "run": "a4753496d2f717cd6d12c16e0e9d2377c67f0f1c0e07a1a2f2ad27477d50801e",
+   "subject_key": "66e0b0358f5107b3888208e8aec64f23c64d6dcef016a5759bf1b55800bf9b5c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2s1o.f8853c.refuse.others_paid@f8853c[p0]",
+     "fixture:x2s1o.f8853c.refuse.rate_changed@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].line19@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].others_paid@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].rate_changed@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].line19@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].others_paid@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].rate_changed@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].line19@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].others_paid@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].rate_changed@f8853c[p0]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "25",
+   "project_expr_sha256": "1c78eb77c5df2f8e8ca160e51fb21ef81aace20d8e3ca4c33baccf5fb2d45910",
+   "second_expr_sha256": "e2fb63b308c5ce81f9d31b01432ec59c60f75b9f150e307101c18bf5bb5a1f9d",
+   "ruling": "Ruling: representation; the reply reads f8853c.pre1996 ungated (completed witnesses: project $153,300 and $12,600, reply unknown) and drops the project's zero floor; no value differs where both evaluate. The floor itself is recorded as BUG-0917 (render).",
+   "context": "11c951d9dfceaef31e71aa2a881302c4cda16f447aee7f5b91fed4cd7d4924dc",
+   "date": "2026-11-15",
+   "run": "a4753496d2f717cd6d12c16e0e9d2377c67f0f1c0e07a1a2f2ad27477d50801e",
+   "subject_key": "e78b0da31bbc94e850ddbdf0aa0dd00057fcd5fcd2d4afc791ef9f0259bfa64f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2s1o.f8853c.refuse.others_paid@f8853c[p0]",
+     "fixture:x2s1o.f8853c.refuse.rate_changed@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].line19@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].others_paid@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].rate_changed@f8853c[p0]",
+     "partial:x2s1o.f8853c.per_diem_excess-f8853c[p0].contract_before_ltc_date@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].line19@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].others_paid@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].rate_changed@f8853c[p0]",
+     "partial:x2s1o.f8853c.adb-f8853c[p0].contract_before_ltc_date@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].line17@f8853c[p0]",
+     "partial:x2s1o.f8853c.refuse.nonqualified-f8853c[p0].line19@f8853c[p0]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

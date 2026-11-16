@@ -1,7 +1,7 @@
 # Schedule SE (Form 1040) — Self-Employment Tax, one per person
 
 - Document: `se` (def, tax year 2025)
-- Parameters: line2, line8a
+- Parameters: line2, line8a, line8b, line8c
 
 ## 2 — `line2`
 
@@ -17,12 +17,26 @@
 - Expr: `{"op":"input","source":"Bound by the calling line (this person's Forms W-2, boxes 3 and 7; railroad retirement compensation is refused, person.se_rrta)."}`
 - Cite: [f1040sse] Schedule SE (2025), line 8a (2025; created 2025-05-07; sha256 05bc2b3e)
 
+## 8b — `line8b`
+
+- **IRS:** Unreported tips subject to social security tax from Form 4137, line 10
+- **Encoded (NonNegDollars):** Input — Bound by the calling line (this person's Form 4137, line 10).
+- Expr: `{"op":"input","source":"Bound by the calling line (this person's Form 4137, line 10)."}`
+- Cite: [f1040sse] Schedule SE (2025), line 8b (2025; created 2025-05-07; sha256 05bc2b3e)
+
+## 8c — `line8c`
+
+- **IRS:** Wages subject to social security tax from Form 8919, line 10
+- **Encoded (NonNegDollars):** Input — Bound by the calling line (this person's Form 8919, line 10).
+- Expr: `{"op":"input","source":"Bound by the calling line (this person's Form 8919, line 10)."}`
+- Cite: [f1040sse] Schedule SE (2025), line 8c (2025; created 2025-05-07; sha256 05bc2b3e)
+
 ## (helper) — `zero`
 
 - **Authored helper label:** Zero
 - **Encoded (NonNegDollars):** Enter $0 (sales.zero).
 - Expr: `{"op":"param","ref":"sales.zero"}`
-- Cite: [f1040sse] Schedule SE (2025), lines 1a, 1b, 4b, 5a, 8b and 8c (zero under the screen of this person) (2025; created 2025-05-07; sha256 05bc2b3e)
+- Cite: [f1040sse] Schedule SE (2025), lines 1a, 1b, 4b and 5a (zero under the screen of this person) (2025; created 2025-05-07; sha256 05bc2b3e)
 
 ## 3 — `line3`
 
@@ -132,9 +146,9 @@
 ## 8d — `line8d`
 
 - **IRS:** Add lines 8a, 8b, and 8c
-- **Encoded (NonNegDollars):** Enter the amount from line 8a.
-- Expr: `{"from":"line8a","op":"copy"}`
-- Cite: [f1040sse] Schedule SE (2025), line 8d (lines 8b and 8c, Forms 4137 and 8919, are refused) (2025; created 2025-05-07; sha256 05bc2b3e)
+- **Encoded (NonNegDollars):** Add line 8a, line 8b, and line 8c.
+- Expr: `{"of":["line8a","line8b","line8c"],"op":"sum"}`
+- Cite: [f1040sse] Schedule SE (2025), line 8d (2025; created 2025-05-07; sha256 05bc2b3e)
 
 ## 9 — `line9`
 

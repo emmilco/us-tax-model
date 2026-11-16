@@ -670,3 +670,32 @@ Lane b1-adj-d (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in th
 | claude | transcription | household.hoh_fails | representation | by reading | i1040gi p. 14, Head of Household; Pub. 501 p. 6 | The project's tests; a 2025 widow(er) is refused by the project at the same status line through household.widowed_this_year. |
 
 Counts: representation 2. Findings: none.
+
+
+## Goal-1 coverage-expansion round (2026-11-15)
+
+Lane xadj-a (claude-opus-5-5, judgment; tax year 2025, us), coverage-expansion merge worktree xint (uncommitted). Open lines of the Claude transcription log (line-scoped pass of 2026-11-15), ruled by reading the reply against the archived sources and `forms/2025/household.yaml`: triage.py refused this log (an old line-scoped pass, 7073fcafb61a, names household.widowed_2025, which the form no longer compares), so no triage record of this reply exists. Rulings `/tmp/xadj/a/household.transcription.json`, applied with `rule.py --kind transcription`; full text in the log and sidecar.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | household.filing_status_conflict | model error | read without triage (triage.py refuses the log: an old line-scoped pass, 7073fcafb61a, names household.widowed_2025, which the form no longer compares) | p501 p. 6; i1040gi p. 14 | The changed alternative is MFS: the project refuses a separate return only when the filer was not married at the end of 2025 and no spouse died in 2025 (household.joint_unmarried); the reply refuses every MFS filer not married on Dec 31, so it refuses a 2025 widow filing separately. p501 p. 6, Spouse died during the year: "If your spouse died during the year, you are considered married for the whole year for filing s |
+| claude | transcription | household.mfs_apart_all_year | representation | read without triage (triage.py refuses the log, see filing_status_conflict) | i1040gi p. 31; amb.2025.mfs_lived_apart | On MFS both read household.mfs_living == apart_all_year. Off MFS the project reads the year parameter household.mfs_living_else (together_late), so the test is false, and the reply's conjunction with status mfs is false too; the reply only reads the gated input ungated. Equal on every status (i1040gi p. 31, Line 6d; amb.2025.mfs_lived_apart). |
+| claude | transcription | household.mfs_apart_last6 | representation | read without triage (see filing_status_conflict) | i1040gi p. 15 | On MFS both are apart_last6 or apart_all_year (the reply's note picks the IRS condition 'lived apart for the last 6 months', which the all-year value also meets, as the project does). Off MFS both are false (project: together_late from household.mfs_living_else; reply: conjunction with status mfs). i1040gi p. 15, Married persons who live apart; p. 44, Special rule for separated spouses. |
+| claude | transcription | household.mfs_community_property | representation | read without triage (see filing_status_conflict) | i1040gi p. 14; amb.2025.mfs_community_property | On MFS both are household.community_property; on every other status the project gives household.no (false) and the reply's conjunction with status mfs gives false. The reply's note leaves registered domestic partners to household.rdp, as the project does (household.rdp_community_property). i1040gi p. 14, Married Filing Separately, "Different rules apply to people in community property states; see Pub. 555"; amb.2025. |
+
+Counts: claude transcription model error 1, representation 3.
+
+Findings: none. Left open: none.
+
+
+## Goal-1 coverage-expansion round (2026-11-15), render
+
+Lane xadj-a (claude-opus-5-5, judgment; tax year 2025, us), coverage-expansion merge worktree xint (uncommitted). Open lines of the Claude render log (line-scoped pass 9a569793d983), ruled against `rendered/2025/household.md`, the cited source and `forms/2025/household.yaml`; rulings `/tmp/xadj/a/household.render.json`, applied with `rule.py --kind render`. The pass matched the other 10 lines.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | filing_status_conflict | scope | MISMATCH | p501 p. 6; i1040gi p. 15 | As the earlier rounds: a filer widowed in 2025 who checks single is refused by household.widowed_2025, and a qualifying surviving spouse who remarried fails household.qss_eligible and is refused by household.qss_fails, so this gate need not repeat either test (p501 p. 6, Spouse died during the year; i1040gi p. 15, Qualifying Surviving Spouse). The changed MFS alternative (household.joint_unmarried: refused only when  |
+
+Counts: claude render scope 1.
+
+Findings: none. Left open: none.

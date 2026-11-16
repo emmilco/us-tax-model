@@ -1,0 +1,1530 @@
+{
+ "form": "rental",
+ "reviews": {
+  "gate:rental.has_advertising": {
+   "subject_sha": "ca7079a0252c3504ee48405001db38384a8ac22e8732e76d796ea4f3aac3b065",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "An accrual-method landlord whose 2025 listing campaign was invoiced in December 2025 and paid in January 2026.",
+       "why_no": "The gated question asks for advertising 'paid in 2025'. Nothing was paid in 2025, so the filer truthfully answers no or enters zero, even though the expense was incurred in 2025.",
+       "line": "rental.amt5_if_any",
+       "irs_text": "i1040se p. 6: 'You can deduct all ordinary and necessary expenses' (no 'paid' limit in the general instructions for lines 5 through 21)",
+       "severity": "high",
+       "fix": "Ask for advertising 'paid (or, if you use the accrual method, incurred) in 2025', or ask the accounting method first and word the question to match."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "An owner of a royalty property, such as a copyright, patent or NIL licensing deal reported on Schedule E, who paid to market the work to licensees in 2025.",
+       "why_no": "The gate and question say 'For this rental property' and 'Advertising for renters'. A royalty owner has no renters and no rental property, so they answer no.",
+       "line": "rental.amt5_if_any",
+       "irs_text": "i1040se p. 6: 'Enter your rental and royalty expenses for each property in the appropriate column.'",
+       "severity": "medium",
+       "fix": "Say 'For this rental or royalty property — advertising or marketing to find tenants, licensees or other payers'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord who paid listing fees on Zillow or Apartments.com, a promoted Craigslist post, or yard signs, and does not think of these as 'advertising'.",
+       "why_no": "The bare gate word 'Advertising' suggests newspaper, radio or online display ads. Listing fees and signs do not feel like advertising, so the filer answers no.",
+       "line": "rental.amt5_if_any",
+       "irs_text": "i1040se p. 6: 'You can deduct all ordinary and necessary expenses'",
+       "severity": "medium",
+       "fix": "Add examples to the help text: 'listing-site fees, promoted posts, signs, flyers and other costs to find tenants'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A landlord whose property manager placed and paid for vacancy ads and deducted the cost from the rent sent to the owner. The owner only sees a net remittance on a statement.",
+       "why_no": "The question says 'paid in 2025'. The owner never wrote a check for advertising, so they believe they did not pay it.",
+       "line": "rental.amt5_if_any",
+       "irs_text": "i1040se p. 6: 'You can deduct all ordinary and necessary expenses, such as ... management fees, agents’ commissions'",
+       "severity": "medium",
+       "fix": "Add: 'Include advertising your property manager or agent paid on your behalf, such as amounts deducted from rent they sent you (see your owner statement).'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer who reads the gate as shown.",
+       "why_no": "The gate text is only 'For this rental property — Advertising', with no verb or time frame. The filer cannot tell what a yes means: whether they advertised, whether they paid, or in what year.",
+       "line": "rental.amt5_if_any",
+       "irs_text": "i1040se p. 6, General Instructions for Lines 5 Through 21",
+       "severity": "low",
+       "fix": "Reword the gate: 'For this rental or royalty property, did you have any advertising or marketing costs for 2025 (paid by you or by an agent for you)?'"
+      }
+     ],
+     "prompt_sha": "4a3829cd4e6c8dbc468441820c14395557afb9846115b5c7ed51f1f517a4ed7f",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.06734,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_advertising.ca7079a0252c.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_advertising",
+   "lines": [
+    "rental.amt5_if_any"
+   ],
+   "inputs": [
+    "rental.amt5"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, General Instructions for Lines 5 Through 21"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_cleaning": {
+   "subject_sha": "b97a781ea44caa78008d716790b2ca8977fbc860ffbcf2b6cfbac176efe7bb9c",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A short-term rental host whose platform or property manager pays the cleaners and takes the fees out of each payout. The host never writes a check to a cleaner and sees only net deposits.",
+       "why_no": "The gate is just the label 'Cleaning and maintenance' with no help text. A host who thinks only of payments they made themselves answers no, because the cleaning was netted out by someone else.",
+       "line": "rental.amt7_if_any",
+       "irs_text": "i1040se p. 6: 'Enter your rental and royalty expenses for each property ... You can deduct all ordinary and necessary expenses'",
+       "severity": "medium",
+       "fix": "Ask: 'Did you, or a platform or manager acting for you, pay for cleaning, cleaning supplies, or routine upkeep of this property? Include cleaning fees taken out of platform payouts or manager statements.' Tell the filer to report gross rents, not net payouts."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A landlord who paid for routine upkeep that is not cleaning: a gardener or lawn service, snow removal, pest control, pool service, HVAC filter or gutter service. They paid no cleaning crew.",
+       "why_no": "They read 'Cleaning and maintenance' as cleaning only. Or they think of 'maintenance' as repairs, which the follow-up question excludes ('not repairs'), and decide no amount of theirs belongs here.",
+       "line": "rental.amt7_if_any",
+       "irs_text": "i1040se p. 6: 'You can deduct all ordinary and necessary expenses, such as taxes, interest, repairs, insurance, management fees...'",
+       "severity": "medium",
+       "fix": "In the gate help, list examples: janitorial and turnover cleaning, landscaping, snow removal, pest control, pool service, and routine servicing. Explain that fixing something broken is a repair and goes on line 14."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A landlord who uses the accrual method. Cleaning or maintenance was done and billed in December 2025, but the bill was paid in January 2026.",
+       "why_no": "The gated question asks for amounts 'paid in 2025', and the help says 'paid in 2025'. An accrual-method filer incurred the expense in 2025 but paid nothing that year, so they answer no or enter zero.",
+       "line": "rental.amt7_if_any",
+       "irs_text": "i1040se p. 6: 'Enter your rental and royalty expenses for each property'; the same page uses 'paid or incurred in 2025' for related expenses",
+       "severity": "low",
+       "fix": "Ask for cleaning and maintenance 'paid in 2025 (or incurred in 2025 if you use the accrual method)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer who sees a gate that is only a bare label, 'For this rental property — Cleaning and maintenance', without a question or a year.",
+       "why_no": "No year, no verb and no examples are given. The filer must guess whether the gate asks if the property was cleaned, if they cleaned it themselves (own labor, not deductible), or if they paid someone. Someone who did some of the work themselves and paid for the rest may answer no.",
+       "line": "rental.amt7_if_any",
+       "irs_text": "i1040se p. 6: 'Do not deduct the value of your own labor'",
+       "severity": "low",
+       "fix": "Phrase the gate as a question: 'Did you pay (or owe) any amount in 2025 for cleaning or routine maintenance of this property, including supplies, but not counting your own labor?'"
+      }
+     ],
+     "prompt_sha": "9926afc06d6d21b2ef67bbff3e5020a23f96e0c7d99e1146c749ee807f8280b4",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.063276,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_cleaning.b97a781ea44c.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_cleaning",
+   "lines": [
+    "rental.amt7_if_any"
+   ],
+   "inputs": [
+    "rental.amt7"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, General Instructions for Lines 5 Through 21"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_commissions": {
+   "subject_sha": "17f189cedc7337a7362ee31c295ad23eec6b6f4363d9d35129d1c78130798f17",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A landlord who in 2024 paid a leasing agent a commission to secure a three-year lease that runs through 2027, and paid no new commission in 2025.",
+       "why_no": "The gate says only 'Commissions'. The gated question narrows this to 'Commissions ... paid in 2025'. A filer who paid nothing this year reads the gate as asking about 2025 payments and answers no. A commission for a multi-year lease is generally recovered over the lease term, so part of the 2024 payment belongs in 2025.",
+       "line": "rental.amt8_if_any",
+       "irs_text": "Not in the supplied snapshot. i1040se p. 1 cites Line 8 but the text shown contains no Line 8 instruction. The rule that a multi-year lease commission is spread over the lease term (Pub. 527) is outside the supplied text and is unverified here.",
+       "severity": "medium",
+       "fix": "Ask: 'For this rental property, did you pay a commission in 2025, or in an earlier year for a lease that still runs in 2025 (for example to an agent who found a renter)?' Then split the gated input into the amount paid in 2025 and the share of earlier lease commissions for 2025."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A short-term rental host whose booking platform (for example Airbnb or VRBO) kept a host service fee from each payout, or who paid a booking agent a percentage of rent.",
+       "why_no": "The host never wrote a check called a 'commission'. The platform's percentage cut shows as a reduced payout or a 'service fee', so the host does not see it as a commission and answers no.",
+       "line": "rental.amt8_if_any",
+       "irs_text": "i1040se p. 1, Line 8 (cited by the tool). The supplied snapshot does not include the Line 8 text, so whether a platform fee belongs on Line 8 or on another expense line cannot be confirmed from it.",
+       "severity": "medium",
+       "fix": "Add help text: 'Include any percentage of rent paid or withheld by an agent, broker, or booking platform (for example a host service fee), even if it was taken out of your payout.' Alternatively, ask whether rent received was reduced by fees and route those fees to the right line."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer who sees the bare gate 'For this rental property — Commissions' with no verb, period, or examples.",
+       "why_no": "The gate is not a full question. It does not say paid or received, and it gives no period or examples. A filer may read it as commissions earned, or answer no by default.",
+       "line": "rental.amt8_if_any",
+       "irs_text": "i1040se p. 1: 'Use Schedule E (Form 1040) to report income or loss from rental real estate'. The Line 8 text itself is not in the supplied snapshot.",
+       "severity": "low",
+       "fix": "Word the gate as a full question: 'For this rental property, did you or your spouse pay (or have withheld) any commission related to renting it, such as to an agent who found a renter?'"
+      }
+     ],
+     "prompt_sha": "33f4eb5b3b43cb378ac4dfde6c4e5fb76d418a37860560732e47ef0315717b8b",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.058984,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_commissions.17f189cedc73.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_commissions",
+   "lines": [
+    "rental.amt8_if_any"
+   ],
+   "inputs": [
+    "rental.amt8"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Line 8"
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_insurance": {
+   "subject_sha": "093c9cd87952ffaec1d2f8d4fdab27ebfa420eb810fb2c029c9092cee72fc53c",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A landlord who prepaid a multi-year policy (for example, a 3-year landlord or flood policy paid in full in 2024) on this rental, so part of the premium covers 2025 but nothing was paid in 2025.",
+       "why_no": "The gate's helper is 'Insurance paid in 2025, before any division for personal use', and the gated input is 'the part for 2025, paid in 2025'. The filer truthfully paid no insurance in 2025 and answers no.",
+       "line": "rental.amt9_if_any (Schedule E line 9)",
+       "irs_text": "The supplied i1040se p. 10 snapshot does not contain the Line 9 text. The governing rule (i1040se Line 9 and Pub 527) is that a premium paid in advance for more than one year is deducted each year for the part that applies to that year. That rule gives 2025 an amount from a 2024 payment, and it must be confirmed against the actual Line 9 page.",
+       "severity": "high",
+       "fix": "Ask: 'Did insurance cover this rental property for any part of 2025, whether paid in 2025 or paid earlier as a prepaid multi-year premium?' Then ask for 2025 payments and for the 2025 share of earlier prepayments separately."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord whose hazard insurance on the rental is paid by the mortgage servicer out of an escrow account funded through the monthly mortgage payment.",
+       "why_no": "The filer pays only 'the mortgage' and perceives no insurance payment of their own. The servicer, not the filer, pays the insurer, so they answer no to 'Insurance'.",
+       "line": "rental.amt9_if_any (Schedule E line 9)",
+       "irs_text": "Line 9 text is not in the supplied p. 10 snapshot. Under i1040se Line 9 and Pub 527, insurance premiums on the rental are deductible, including premiums paid from escrow (see the escrow statement / Form 1098).",
+       "severity": "medium",
+       "fix": "Add help text: 'Include insurance paid through your mortgage escrow account. Check your escrow statement or Form 1098.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An owner who rents out a vacation home or part of their residence and carries only an ordinary homeowner's policy, an umbrella liability policy, or flood insurance, with no policy labeled 'landlord' or 'rental' insurance.",
+       "why_no": "The bare prompt 'For this rental property — Insurance' reads as asking about rental or landlord insurance. Their policy is a personal homeowner's, umbrella, or flood policy, so they answer no.",
+       "line": "rental.amt9_if_any (Schedule E line 9)",
+       "irs_text": "Line 9 text is not in the supplied p. 10 snapshot. Under i1040se Line 9 and Pub 527, the rental share of fire, theft, flood, liability and similar premiums on the property is deductible. Splitting for personal use is applied afterward, as the helper's words 'before any division for personal use' confirm.",
+       "severity": "medium",
+       "fix": "Reword the gate: 'Did you or your spouse pay any insurance covering this property (homeowner's, landlord, fire, flood, liability or umbrella) that applies to 2025, even if the property was also used personally?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Joint filers where the rental's insurance premium was paid from the spouse's separate account or by the spouse.",
+       "why_no": "If the help text or the filer reads the question as asking what 'you' paid, the filer answers no because the spouse paid it.",
+       "line": "rental.amt9_if_any (Schedule E line 9)",
+       "irs_text": "Line 9 text is not in the supplied p. 10 snapshot. On a joint return, premiums paid by either spouse on the jointly reported rental are deductible.",
+       "severity": "low",
+       "fix": "Say 'you or your spouse' in the gate and its help text."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer. This is a citation and source defect rather than a filer situation.",
+       "why_no": "The gate and the gated line cite i1040se p. 10, Line 9, but the supplied p. 10 covers lines 27–28 and Part III. It contains no Line 9 instructions, so the gate's scope cannot be checked against the cited text.",
+       "line": "rental.amt9_if_any (Schedule E line 9)",
+       "irs_text": "i1040se (2025) p. 10 begins with 'Line 27 ... Line 28 ... Part III'. No 'Line 9' heading appears.",
+       "severity": "low",
+       "fix": "Correct the citation to the page that holds the Line 9 (Insurance) instructions, and quote its rule on prepaid premiums in the help text."
+      }
+     ],
+     "prompt_sha": "32095c8eb8c7dab058db0d7e9c4b2df728d09d7fc2dd002ca7b0f6491121c940",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08055999999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_insurance.093c9cd87952.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_insurance",
+   "lines": [
+    "rental.amt9_if_any"
+   ],
+   "inputs": [
+    "rental.amt9"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 9"
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_legal": {
+   "subject_sha": "9ba4bd084869451b23b6eb65f6b6c91d63158ca046640ca679a576238c730f46",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord whose only professional cost for the property is the share of a CPA's or tax-software bill that covers Schedule E, or tax advice about the rental. No lawyer was ever involved.",
+       "why_no": "The gate leads with 'Legal' and gives no example of tax preparation. Many filers do not think of the yearly return-preparation bill as a 'professional fee' for the property, so they answer no.",
+       "line": "rental.amt10_if_any",
+       "irs_text": "i1040se (2025) p. 6, Line 10: \"Include on line 10 fees for tax advice and the preparation of tax forms related to your rental real estate or royalty properties.\"",
+       "severity": "medium",
+       "fix": "Reword the gate: 'For this property, did you or your spouse pay any legal fees, or any accountant, tax preparer, tax software, or tax-advice fees related to it (including the rental part of a fee for your whole tax return)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who paid one preparer fee for the entire joint return, with no separate charge or invoice line for the rental.",
+       "why_no": "They had no fee 'for this rental property' because the bill was for the whole return. They do not know they may allocate the rental-related part to line 10.",
+       "line": "rental.amt10_if_any",
+       "irs_text": "i1040se (2025) p. 6, Line 10: \"fees for tax advice and the preparation of tax forms related to your rental real estate or royalty properties.\"",
+       "severity": "medium",
+       "fix": "Add help text: 'Include the part of a whole-return preparation fee that relates to this property (for example, the Schedule E portion).'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A landlord who paid a preparer in 2025 for the 2024 return that included this rental, and has paid nothing yet for the 2025 return.",
+       "why_no": "The gate states no year. The filer reads it as fees for this year's return or rental activity and answers no, because last year's return fee feels like last year's expense. The amount question says 'paid in 2025', but that question is never reached.",
+       "line": "rental.amt10_if_any",
+       "irs_text": "i1040se (2025) p. 6, Line 10: \"Include on line 10 fees for tax advice and the preparation of tax forms related to your rental real estate or royalty properties.\"",
+       "severity": "medium",
+       "fix": "State the period in the gate: 'paid in 2025, including fees paid in 2025 to prepare your 2024 or earlier returns'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "An owner of oil, gas, mineral, copyright, patent, or NIL royalty interests, reported in a Schedule E column, who paid a CPA or tax adviser about the royalty income.",
+       "why_no": "The gate says 'For this rental property'. A royalty owner does not see a royalty interest as a rental property, so they may answer no or treat the question as not applying to them.",
+       "line": "rental.amt10_if_any",
+       "irs_text": "i1040se (2025) p. 6, Line 10: \"...related to your rental real estate or royalty properties.\"",
+       "severity": "medium",
+       "fix": "Use 'For this rental or royalty property' in both the gate and the amount question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Spouses on a joint return where the other spouse hired and paid the lawyer (for example, for an eviction or a lease dispute) or the accountant for the jointly reported property.",
+       "why_no": "The person answering did not pay or hire the professional personally and may read the question as asking about their own fees.",
+       "line": "rental.amt10_if_any",
+       "irs_text": "i1040se (2025) p. 6, Line 10: \"Include on line 10 fees for tax advice and the preparation of tax forms related to your rental real estate or royalty properties.\"",
+       "severity": "low",
+       "fix": "Say 'did you or your spouse pay'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer reading the gate as it appears in the interface.",
+       "why_no": "The gate is a heading ('For this rental property — Legal and other professional fees'), not a yes/no question. It does not say what a yes covers, and it gives none of the inclusions or the capitalization exclusion.",
+       "line": "rental.amt10_if_any",
+       "irs_text": "i1040se (2025) p. 6, Line 10: \"Do not deduct legal fees paid or incurred to defend or protect title to property, to recover property, or to develop or improve property. Instead, you must capitalize these fees...\"",
+       "severity": "low",
+       "fix": "Phrase the gate as a full question with help text listing the inclusions (tax preparation, tax advice, eviction or collection legal fees) and the exclusion (capitalized title, recovery, and development legal fees)."
+      }
+     ],
+     "prompt_sha": "718a45571b42d3e530b3fa1cd3f9699f766886f546976969a11ff8e4730b63cb",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.077776,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_legal.9ba4bd084869.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_legal",
+   "lines": [
+    "rental.amt10_if_any"
+   ],
+   "inputs": [
+    "rental.amt10"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Line 10"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_loss": {
+   "subject_sha": "ea87ba7b5e95e0255b2049fd7feb5e3687936085b36cc42caff1aacd6662f0a0",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer with a royalty property on Schedule E Part I, such as a mineral interest, an oil and gas working-interest royalty or a copyright, bought with a nonrecourse loan from a bank. Line 21 is a loss.",
+       "why_no": "The question carves out 'a loan from a bank or other lender in the business of lending'. The qualified nonrecourse financing exception covers only real property, so a nonrecourse bank loan on a royalty property is still not at risk. The filer truthfully answers no.",
+       "line": "rental.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 2: \"At-risk rules apply to losses from rental real estate or royalties.\" i1040se p. 7, Line 21: \"If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss.\"",
+       "severity": "high",
+       "fix": "Apply the bank carve-out only to real property. For royalty or other non-real-estate properties, ask whether any of the money put in is borrowed on a loan they are not personally liable for, from any lender."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer who is personally liable on a loan from a co-owner, the promoter, or a relative or related entity, and put that money into the rental. Line 21 is a loss.",
+       "why_no": "The question asks only about loans 'you are not personally liable for'. The filer is liable, so they truthfully answer no. Amounts borrowed from a person with an interest in the activity, or from a related person, are not at risk even when the borrower is liable.",
+       "line": "rental.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 7, Line 21: \"If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss\"; i1040se p. 2, At-Risk Rules.",
+       "severity": "high",
+       "fix": "Add a separate question: 'Did you borrow any of the money from a co-owner, from someone with an interest in the property other than as a lender, or from a relative or related business?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer whose investment is protected against loss by a guarantee, stop-loss agreement, guaranteed buy-back, or indemnity from the seller, promoter or another party. No nonrecourse loan is involved.",
+       "why_no": "The question is only about borrowed money and personal liability. Protected amounts are not borrowed, so the filer truthfully answers no.",
+       "line": "rental.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 7, Line 21: \"If you have amounts for which you are not at risk, use Form 6198...\"; i1040se p. 2, At-Risk Rules.",
+       "severity": "high",
+       "fix": "Add: 'Is any of your investment protected against loss by a guarantee, stop-loss agreement, buy-back arrangement, or similar agreement?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer with a nonrecourse loan on a building from a bank that is related to them, or from a lender that also shares in the property's profits or has an equity interest in it.",
+       "why_no": "The loan is 'from a bank or other lender in the business of lending', so the question's carve-out tells the filer to answer no. Financing from a lender with an interest in the activity is not qualified nonrecourse financing. Financing from a related lender on terms that are not commercially reasonable is not qualified either.",
+       "line": "rental.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 2, At-Risk Rules; i1040se p. 7, Line 21: \"If you have amounts for which you are not at risk, use Form 6198...\"",
+       "severity": "medium",
+       "fix": "Narrow the carve-out to an unrelated commercial lender with no share in the property's income or ownership. Otherwise treat a yes as not at risk."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer who acquired the rental subject to an existing nonrecourse mortgage held by a private party, without assuming it. Another case is a filer whose property was refinanced or later encumbered with nonrecourse seller financing.",
+       "why_no": "'Money you put into it' and 'borrowed' read as cash the filer borrowed and invested. Taking property subject to existing debt does not feel like borrowing money.",
+       "line": "rental.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 7, Line 21: \"If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss.\"",
+       "severity": "medium",
+       "fix": "Ask: 'Is the property, or any of your cost or investment in it, financed by any debt (including a mortgage you took the property subject to) that you are not personally liable for...'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A joint filer whose spouse borrowed, on the spouse's own nonrecourse note from the seller, the money the spouse put into a jointly owned rental. QJV properties are another case, with each spouse's interest reported as a separate property.",
+       "why_no": "The question asks about money 'you put into it' and a loan 'you are not personally liable for'. The filer is truthful about their own money and answers no.",
+       "line": "rental.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 2, QJV: \"each of you must report your interest as separate properties on line 1 of Schedule E\"; i1040se p. 7, Line 21: \"If you have amounts for which you are not at risk, use Form 6198...\"",
+       "severity": "medium",
+       "fix": "Say 'you or your spouse' in the question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose property shows net income or zero on line 21 this year before a prior-year at-risk loss carryover from Form 6198 is applied. Another case is a filer whose at-risk amount fell below zero this year, for example after converting recourse debt to nonrecourse, which triggers recapture.",
+       "why_no": "The computed gate 'line 21 < $0' is false, so the tool never asks the at-risk question. Form 6198 still governs the carried-over loss or the recapture.",
+       "line": "rental.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 7, Line 21: \"If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss.\"",
+       "severity": "medium",
+       "fix": "Broaden the gate to 'line 21 < 0 OR a prior-year at-risk loss carryover exists OR nonrecourse or protected amounts changed this year'. Add a gate question asking whether any loss for this property was limited by Form 6198 in a prior year."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer with seller financing who is unsure whether they are 'personally liable', and who reads the help text.",
+       "why_no": "The help 'A Yes ends the interview here' signals a penalty for yes. Combined with the legal term 'personally liable', it nudges an uncertain filer toward no.",
+       "line": "rental.not_at_risk_if_loss",
+       "irs_text": "i1040se p. 7, Line 21: \"If you have amounts for which you are not at risk, use Form 6198...\"",
+       "severity": "low",
+       "fix": "Explain the consequence neutrally: 'If yes, the tool cannot figure your deductible loss; Form 6198 is needed.' Define nonrecourse in plain words: 'the lender can take only the property, not your other assets.'"
+      }
+     ],
+     "prompt_sha": "7461499e6a5813ed792d5c493f0170366878dff0e5d7e1470217a153acfba14e",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.11000399999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_loss.ea87ba7b5e95.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_loss",
+   "lines": [
+    "rental.not_at_risk_if_loss"
+   ],
+   "inputs": [
+    "rental.not_at_risk"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      2,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, At-Risk Rules",
+      "p. 7, Line 21",
+      "p. 7, Line 21, \"If you have amounts for which you are not at risk, use Form 6198 to determine the amount of your deductible loss\""
+     ],
+     "cols_pages": [
+      2,
+      7
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_management": {
+   "subject_sha": "3a375dcda752e8293a892fd6454a7e210cd951a6769cd320edf254d233dad059",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord whose property management company collects the rent, keeps its percentage fee, and sends the owner only the net amount. The owner never writes a check to the manager.",
+       "why_no": "The gate's bare words 'Management fees', and the gated input's 'paid in 2025', suggest a bill the owner paid. A fee kept out of rent that the owner never handled does not feel paid, so the owner ticks no. The owner may also report the net deposit as rent.",
+       "line": "rental.amt11_if_any",
+       "irs_text": "i1040se p. 6: 'You can deduct all ordinary and necessary expenses, such as taxes, interest, repairs, insurance, management fees, agents' commissions, and depreciation.'",
+       "severity": "medium",
+       "fix": "Ask: 'Did you or anyone acting for you (a property manager, rental agent, or co-host) charge a management fee for this property, including fees taken out of rent before it reached you?' Help text: report gross rent on line 3 and the withheld fee here."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A short-term or vacation rental host who pays a co-host or vacation-rental management company a percentage of bookings for listing, guest handling, and turnover coordination.",
+       "why_no": "The host reads 'Management fees' as a traditional long-term property management contract. A co-host share or a 'service fee' does not look like one, so the host answers no.",
+       "line": "rental.amt11_if_any",
+       "irs_text": "i1040se p. 6: 'You can deduct all ordinary and necessary expenses, such as ... management fees, agents' commissions ...'",
+       "severity": "medium",
+       "fix": "Add help text: 'Includes fees to property managers, co-hosts, and vacation-rental management companies for running the rental, whether a flat fee or a percentage of rent.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "An owner of a royalty property, such as a mineral or oil and gas interest, who pays a mineral management firm a fee to administer leases and collect royalties. The property is entered in a Schedule E column.",
+       "why_no": "The gate says 'For this rental property'. A royalty owner truthfully holds no rental property, so they answer no or skip the question, although Schedule E line 11 applies to every column.",
+       "line": "rental.amt11_if_any",
+       "irs_text": "i1040se p. 6, General Instructions for Lines 5 Through 21: 'Enter your rental and royalty expenses for each property in the appropriate column. You can deduct all ordinary and necessary expenses, such as ... management fees ...'",
+       "severity": "medium",
+       "fix": "Word the gate per property: 'For this rental or royalty property, did you pay or incur management fees?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A rare individual landlord on the accrual method who incurred December 2025 management fees but paid them in January 2026.",
+       "why_no": "The gated input asks for fees 'paid in 2025', so the filer may answer no or enter zero. Under the accrual method the expense belongs to 2025.",
+       "line": "rental.amt11_if_any",
+       "irs_text": "i1040se p. 6: 'You can deduct all ordinary and necessary expenses, such as ... management fees ...' (the instructions elsewhere use 'paid or incurred in 2025')",
+       "severity": "low",
+       "fix": "Change the wording to 'paid (or, if you use the accrual method, incurred) for 2025'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer who reaches the gate.",
+       "why_no": "The gate text 'For this rental property — Management fees' is a label, not a question. A filer may not know whether to tick it or what ticking means.",
+       "line": "rental.amt11_if_any",
+       "irs_text": "i1040se p. 6, General Instructions for Lines 5 Through 21",
+       "severity": "low",
+       "fix": "Word it as a question: 'For this property, did you or your spouse pay, or have deducted from rents, any management fees in 2025?'"
+      }
+     ],
+     "prompt_sha": "261355bda034bd8fe7136d77d4557afa13fed555c6f3488b424a248585b4d128",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.07304,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_management.3a375dcda752.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_management",
+   "lines": [
+    "rental.amt11_if_any"
+   ],
+   "inputs": [
+    "rental.amt11"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, General Instructions for Lines 5 Through 21"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_mortgage": {
+   "subject_sha": "105b874e4354b274293f956759403a551baa95bfefe221822f8fb14f48931fb2",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer took out a mortgage or home equity loan secured by their main home and used the proceeds to buy or improve this rental. The rental itself has no lien on it.",
+       "why_no": "The gate reads as whether this rental property has a mortgage. The help says 'Only the interest on this property' and 'Leave this mortgage out of your home mortgage interest', so the filer truthfully answers no for the rental and keeps the interest on their home mortgage.",
+       "line": "rental.amt12_if_any",
+       "irs_text": "i1040se p. 6, Lines 12 and 13: 'In general, you allocate interest on a loan the same way you allocate the loan proceeds. You allocate loan proceeds by tracing disbursements to specific uses.'",
+       "severity": "high",
+       "fix": "Ask whether in 2025 you or your spouse paid interest to a bank or other lender on any loan secured by this property, or on any loan whose proceeds were used to buy, improve, or operate this property. Explain the tracing rule in the help, and remove 'Only the interest on this property'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer paid off or refinanced the rental's mortgage during 2025, or sold the rental mid-year. The filer paid interest earlier in 2025 but has no mortgage at year-end or now.",
+       "why_no": "The input is named has_mortgage, and the gate has no tense. The filer reads it as 'do you have a mortgage on this rental' and answers no.",
+       "line": "rental.amt12_if_any",
+       "irs_text": "i1040se p. 6, General Instructions for Lines 5 Through 21: 'You can deduct all ordinary and necessary expenses, such as taxes, interest...'; Lines 12 and 13 (interest allocable to rental activities).",
+       "severity": "medium",
+       "fix": "Ask 'Did you or your spouse pay any mortgage interest on this property at any time in 2025, including on a loan paid off, refinanced, or ended by a sale during the year?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly co-own the rental, and the mortgage and Form 1098 are in only the spouse's name. The spouse paid the 2025 interest.",
+       "why_no": "The help says 'your share', and the filer reads the gate and the input as asking about their own loan and their own payments, so they answer no.",
+       "line": "rental.amt12_if_any",
+       "irs_text": "i1040se p. 6, Lines 12 and 13: interest expense allocable to your rental activities (deductible on the joint return regardless of which spouse paid it).",
+       "severity": "medium",
+       "fix": "Say 'you or your spouse' in the gate and the input, and reword 'your share' to 'the share belonging to you and your spouse'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer rents out a room or one unit of the home they live in, or a vacation home they also use personally. The only mortgage is the home mortgage.",
+       "why_no": "The filer sees the mortgage as their home mortgage, a Schedule A item, not as 'mortgage interest' for the rental, and answers no. The help 'Leave this mortgage out of your home mortgage interest' makes them think the two cannot overlap.",
+       "line": "rental.amt12_if_any",
+       "irs_text": "i1040se p. 6: 'Renting out part of your home. If you rent out only part of your home or other property, deduct the part of your expenses that applies to the rented part.'",
+       "severity": "medium",
+       "fix": "Add to the gate's help: 'Include a mortgage on your home if you rent out part of it or use it partly as a rental. Answer yes, and the personal-use part will be divided out later.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer holds the rental through a single-member LLC that is disregarded for tax purposes. The mortgage and Form 1098 are in the LLC's name.",
+       "why_no": "The filer reads the gate as asking whether they have a mortgage and answers no, because the LLC is the borrower.",
+       "line": "rental.amt12_if_any",
+       "irs_text": "i1040se p. 6, General Instructions for Lines 5 Through 21: 'Enter your rental and royalty expenses for each property'; Lines 12 and 13 (interest allocable to rental activities).",
+       "severity": "medium",
+       "fix": "Add to the help: 'Include loans in the name of a single-member LLC or other entity that you report on this Schedule E.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer paid mortgage interest on the rental to a lender who did not send a Form 1098. Or the 1098 differs from what was paid, for example it went to a co-borrower or leaves out amounts the filer paid.",
+       "why_no": "The filer answers the gate yes, but the gated input asks for the amount 'shown on Form 1098 (box 1)'. Without a 1098 they enter zero, and with a 1098 they copy the figure even when their deductible share differs.",
+       "line": "rental.amt12_if_any",
+       "irs_text": "i1040se p. 6, Lines 12 and 13: 'you must have records to show how the proceeds of each debt were used' (the deduction is the interest paid and allocable, not the form amount).",
+       "severity": "medium",
+       "fix": "Ask for 'mortgage interest you and your spouse paid in 2025 to a bank or other lender for this property (usually Form 1098 box 1; enter what was actually paid if there is no 1098 or it differs).'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer shown the gate as written.",
+       "why_no": "The gate text 'Mortgage interest paid to banks, etc.' is a line caption, not a question, so a filer cannot tell what yes or no means. A filer whose lender is a credit union, servicer, or nonbank mortgage company may read 'banks' narrowly.",
+       "line": "rental.amt12_if_any",
+       "irs_text": "i1040se p. 6, Lines 12 and 13 (heading only, no definition of 'banks, etc.' on this page).",
+       "severity": "low",
+       "fix": "Phrase the gate as a yes/no question and name examples of lenders: banks, credit unions, mortgage companies, and loan servicers."
+      }
+     ],
+     "prompt_sha": "57876d9eacafc7f77da2890d7885cfdbc22280378e19f3dd884c57cba3db41e6",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.09268799999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_mortgage.105b874e4354.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_mortgage",
+   "lines": [
+    "rental.amt12_if_any"
+   ],
+   "inputs": [
+    "rental.amt12"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 12 and 13"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_other": {
+   "subject_sha": "b048151fdcd0444f154814caf7c826bd8e37bf4a5576b801483906ca03b6383c",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer with a line 19 expense who sees only the gate prompt, which reads 'For this rental property — Other' with no noun, verb, year, or examples.",
+       "why_no": "The prompt fragment does not say other what, and nothing says it means expenses not listed on lines 5 through 18. A filer may read it as other income, other properties, or other information and answer no.",
+       "line": "rental.amt19_if_any",
+       "irs_text": "i1040se p. 6, General Instructions for Lines 5 Through 21: 'You can deduct all ordinary and necessary expenses, such as taxes, interest, repairs, insurance, management fees, agents' commissions, and depreciation.'",
+       "severity": "medium",
+       "fix": "Ask: 'For this rental property, did you or your spouse pay any other ordinary and necessary rental expenses in 2025 that are not on the lines above (for example, auto rental or lease payments when you deduct actual auto expenses)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord who leases the car used to visit tenants and deducts actual auto expenses. They entered gas, repairs, and insurance as auto and travel expenses.",
+       "why_no": "They think all auto costs went into the auto and travel question, so they don't see the lease payments as 'Other' and answer no. The instructions instead route the lease payments to line 19.",
+       "line": "rental.amt19_if_any",
+       "irs_text": "i1040se p. 6, Line 6 caution: 'If you deduct actual auto expenses: ... Show auto rental or lease payments on line 19 and depreciation on line 18.'",
+       "severity": "medium",
+       "fix": "Ask about this directly in the auto expense questions: 'Do you deduct actual auto expenses and pay rent or a lease on the vehicle?' If yes, route the rental-use share of the payments to line 19 whatever the answer to the Other gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A landlord who paid in 2025 to add a ramp or widen a doorway at the rental for disabled or elderly tenants, and who may elect the barrier-removal deduction of up to $15,000.",
+       "why_no": "The instructions say not to deduct capital improvements, so the filer treats the ramp as one to be depreciated and answers no to 'Other'. The elective deduction is not an expense they recognize. (The snapshot does not name the line for the deduction, so whether it belongs on line 19 is unconfirmed.)",
+       "line": "rental.amt19_if_any",
+       "irs_text": "i1040se p. 6: 'You can also elect to deduct up to $15,000 of qualified costs paid or incurred in 2025 to remove architectural or transportation barriers to individuals with disabilities and the elderly.'",
+       "severity": "low",
+       "fix": "Ask separately whether the filer paid or incurred 2025 costs to remove barriers for people with disabilities or the elderly. Confirm the reporting line from the line 19 instructions, and also offer Form 8826."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "An accrual-basis lessor, or one claiming barrier-removal costs incurred but not yet paid at year end.",
+       "why_no": "The gated question asks only for costs 'paid in 2025'. That wording leaves out amounts incurred in 2025 but not paid, which the instructions allow.",
+       "line": "rental.amt19_if_any",
+       "irs_text": "i1040se p. 6: 'qualified costs paid or incurred in 2025'.",
+       "severity": "low",
+       "fix": "Change the question to 'paid or incurred in 2025 (under your accounting method)'."
+      }
+     ],
+     "prompt_sha": "aad287b9c6866929245ccd4dab14abfa5c4c40a16ccd36727ccb297162b70217",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.06661600000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_other.b048151fdcd0.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_other",
+   "lines": [
+    "rental.amt19_if_any"
+   ],
+   "inputs": [
+    "rental.amt19"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Line 19"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_other_interest": {
+   "subject_sha": "b541fcdd32cdf9e6b1070e3aeaef8b7b58aa72b8364f6a29e3cbf9c4037806f4",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who bought the rental with seller financing and pays interest monthly to the former owner, an individual who issues no Form 1098.",
+       "why_no": "The gate says only 'Other interest'. The filer reads 'other' as interest other than the mortgage. This loan is a mortgage, so they answer no, expecting it to be asked under mortgage interest. The mortgage question presumably takes only Form 1098 amounts, so the interest is asked nowhere.",
+       "line": "rental.amt13_if_any",
+       "irs_text": "i1040se (2025) p. 6, Lines 12 and 13: 'to determine the interest expense allocable to your rental activities, you must have records to show how the proceeds of each debt were used.'",
+       "severity": "medium",
+       "fix": "Ask: 'Did you or your spouse pay interest in 2025 on any debt used for this property that is not shown on a Form 1098 in your name? Include a mortgage held by a private person or seller, a lender that sent no 1098, and a 1098 issued only to a co-owner.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer who co-owns the rental with a sibling (not a spouse). Both are liable on the mortgage and pay it, but the lender issued Form 1098 only in the sibling's name.",
+       "why_no": "A Form 1098 exists for this mortgage, so the filer treats it as mortgage interest, not 'Other interest', and answers no. Their share of the interest is dropped.",
+       "line": "rental.amt13_if_any",
+       "irs_text": "i1040se (2025) p. 6, Lines 12 and 13: interest expense allocable to rental activities is determined by tracing; 'you allocate interest on a loan the same way you allocate the loan proceeds.'",
+       "severity": "medium",
+       "fix": "State in the gate that mortgage interest reported on a Form 1098 issued only to someone else (other than your spouse) belongs here."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who paid for the rental's down payment, a new roof or a furnace with a personal loan, a credit card balance, a margin loan, or a cash-out refinance or HELOC on their main home.",
+       "why_no": "The gated question says 'loans for it', which the filer reads as loans secured by this property. The bare gate gives no hint that interest on other debt counts, so they answer no.",
+       "line": "rental.amt13_if_any",
+       "irs_text": "i1040se (2025) p. 6, Lines 12 and 13: 'In general, you allocate interest on a loan the same way you allocate the loan proceeds. You allocate loan proceeds by tracing disbursements to specific uses.'",
+       "severity": "medium",
+       "fix": "Ask: 'Did you borrow money (any loan, credit card, margin, or home equity or refinance on another property) and spend any of it on buying, improving or operating this property?' Then ask for the interest traced to those uses."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who paid points or prepaid interest in an earlier year on a loan for the rental and deducts them over the loan's life, or who refinanced or paid off that loan in 2025 and can deduct the remaining points.",
+       "why_no": "Nothing was 'paid in 2025'. The filer does not see an amortized amount from a past payment as interest for this year, so they answer no to the gate and would answer zero to the gated question as worded.",
+       "line": "rental.amt13_if_any",
+       "irs_text": "i1040se (2025) p. 6, Lines 12 and 13: 'to determine the interest expense allocable to your rental activities' (the deductible interest expense for the year, not only cash paid in the year).",
+       "severity": "medium",
+       "fix": "Add to the gate: 'including your share for 2025 of points or prepaid interest paid in an earlier year on a loan for this property, or the remaining balance if the loan ended in 2025.' Drop 'paid in 2025' from the amount question, or ask for the amortized part separately."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Joint filers where the spouse alone holds and pays a loan, such as a personal loan or credit card, whose proceeds were spent on the jointly reported rental.",
+       "why_no": "The filer reads the property-level 'Other interest' gate as asking about their own borrowing. The spouse's loan is not theirs, so they answer no.",
+       "line": "rental.amt13_if_any",
+       "irs_text": "i1040se (2025) p. 6, Lines 12 and 13: 'you allocate interest on a loan the same way you allocate the loan proceeds.'",
+       "severity": "low",
+       "fix": "Say 'you or your spouse' in the gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "Any filer with no help text beyond the label.",
+       "why_no": "'Other interest' is a form-line label, not a checkable fact. The filer cannot tell what it is 'other' than, and defaults to no.",
+       "line": "rental.amt13_if_any",
+       "irs_text": "i1040se (2025) p. 6, Lines 12 and 13: 'Specific tracing rules apply for allocating debt proceeds and repayment.'",
+       "severity": "low",
+       "fix": "Replace the label with factual questions about borrowing used for the property and Form 1098s received, and classify between line 12 and line 13 after a broad yes."
+      }
+     ],
+     "prompt_sha": "3492e138833725bdd68f7b7916ffb05edee67ecc9d53b2fbdefe0df441abe2b0",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.090352,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_other_interest.b541fcdd32cd.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_other_interest",
+   "lines": [
+    "rental.amt13_if_any"
+   ],
+   "inputs": [
+    "rental.amt13"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Lines 12 and 13"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_repairs": {
+   "subject_sha": "8a6bfffa3522568f075a9513c0b1f257caf4aa34b8e8a3d705873674ad4d54e2",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord who paid only for routine upkeep in 2025, such as repainting a unit between tenants, servicing the furnace, cleaning gutters, or pest treatment. Nothing broke and nothing was fixed.",
+       "why_no": "The gate says only \"Repairs\". The filer reads that as fixing something broken and answers no, because the work was maintenance, not a repair.",
+       "line": "rental.amt14_if_any",
+       "irs_text": "\"You can deduct the amounts paid for repairs and maintenance... Examples are fixing a broken lock or painting a room.\" (i1040se 2025 p. 7, Line 14)",
+       "severity": "medium",
+       "fix": "Ask: \"For this rental property, did you or your spouse pay for any repairs or maintenance that keep it in working order (for example fixing a lock, painting a room, servicing equipment, cleaning or pest control)? Do not count improvements.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord who patched part of a roof, replaced a few shingles, or fixed one furnace component in 2025.",
+       "why_no": "The help says \"A new roof, a new furnace or an addition is an improvement, not a repair\". The filer sees roof or furnace work named as an improvement and answers no, even though a partial fix that only keeps the system working is a repair.",
+       "line": "rental.amt14_if_any",
+       "irs_text": "\"Repairs and maintenance costs are those costs that keep the property in an ordinarily efficient operating condition... improvements are amounts paid to better or restore your property... Examples of improvements are... replacing an entire HVAC system.\" (i1040se 2025 p. 7, Line 14)",
+       "severity": "medium",
+       "fix": "Reword the help: \"Replacing an entire roof, HVAC system or furnace, or adding to the building, is an improvement. Fixing or patching part of one (a leak, a few shingles, a failed part) is a repair.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A landlord whose tenant paid for a repair and deducted it from rent, or whose property manager paid repairs out of collected rents and sent only the net amount.",
+       "why_no": "The filer did not write the check, so they believe they had no repairs to report. They also report only the net rent they received.",
+       "line": "rental.amt14_if_any",
+       "irs_text": "\"You can deduct the amounts paid for repairs and maintenance.\" (i1040se 2025 p. 7, Line 14)",
+       "severity": "medium",
+       "fix": "Add to the gate: \"Include repairs a tenant or property manager paid on your behalf, for example deducted from rent or paid out of rents collected; report the gross rent on line 3.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A landlord whose repair was done in December 2024 but whose invoice was paid in January 2025.",
+       "why_no": "The gate does not say which year counts. The filer associates the repair with 2024 and answers no for the 2025 return.",
+       "line": "rental.amt14_if_any",
+       "irs_text": "\"You can deduct the amounts paid for repairs and maintenance.\" (i1040se 2025 p. 7, Line 14)",
+       "severity": "low",
+       "fix": "State the timing in the gate: \"Did you pay anything in 2025 for repairs or maintenance, including work done in an earlier year but paid in 2025?\""
+      }
+     ],
+     "prompt_sha": "778c50089ddb233c34dfd63f6f0c8fa2f9045f242a9804c669a8812b49e2f0e2",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.066508,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_repairs.8a6bfffa3522.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_repairs",
+   "lines": [
+    "rental.amt14_if_any"
+   ],
+   "inputs": [
+    "rental.amt14"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 14"
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_supplies": {
+   "subject_sha": "b79084c7a931d2c989b2e645cdb976d076c0b647d79871e20fd5231670f2bec6",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord bought cleaning products, light bulbs, smoke-detector batteries, filters and small tools for the rental in 2025. The landlord thinks of these as maintenance, repairs or other expenses, not as supplies.",
+       "why_no": "The gate is the single word 'Supplies' with no help text. Low-cost items bought for upkeep, or expensed under the de minimis safe harbor, read as repairs or other expenses, so the filer answers no.",
+       "line": "rental.amt15_if_any",
+       "irs_text": "i1040se p. 11 is cited for Line 15, but the supplied snapshot of p. 11 contains no Line 15 text. The line's own caption, 'Supplies' (Schedule E, line 15), is the only rule the filer sees.",
+       "severity": "medium",
+       "fix": "Ask: 'For this rental property, did you or your spouse pay in 2025 for any supplies or materials used for it (for example cleaning products, light bulbs, filters, batteries, small tools or other low-cost items), even if you think of them as maintenance?' Then route each amount to line 14 or line 15."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "The owner of a vacation home or a room rented in the owner's own residence bought household supplies used both by tenants and personally.",
+       "why_no": "Nothing at the gate says that mixed-use purchases count before the personal-use split. Only the gated question's helper says 'before any division for personal use', and the filer never reaches it after answering no because the supplies were 'for the house, not the rental'.",
+       "line": "rental.amt15_if_any",
+       "irs_text": "Gated helper: 'Supplies paid in 2025, before any division for personal use' (cited i1040se p. 11, Line 15).",
+       "severity": "medium",
+       "fix": "Add to the gate: 'Include supplies used partly for personal purposes; the tool divides them later.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer bought supplies once for several rental properties and did not tie them to any single property.",
+       "why_no": "'For this rental property' reads as items bought specifically for this property, so the filer answers no for every property and the shared cost is lost.",
+       "line": "rental.amt15_if_any",
+       "irs_text": "Schedule E, line 15 'Supplies' is reported per property column (i1040se p. 11 cited; Line 15 text not in snapshot).",
+       "severity": "low",
+       "fix": "Add: 'Include this property's share of supplies bought for more than one property.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer, and any reviewer checking the tool's sources.",
+       "why_no": "The cited page (i1040se p. 11) covers Part IV REMICs and Part V, not Line 15, so neither the gate nor its help text has a stated IRS rule behind it.",
+       "line": "rental.amt15_if_any",
+       "irs_text": "i1040se (2025) p. 11 contains 'Part IV Income or Loss From ... REMICs' and 'Part V Summary, Line 42', and no Line 15 text.",
+       "severity": "low",
+       "fix": "Correct the citation to the page that discusses lines 5 through 19 (or Pub. 527 on supplies and materials) and quote its definition in the help text."
+      }
+     ],
+     "prompt_sha": "128f4c3b253f7841e70f219991020f4c8929f2155968012f6a2a0f3bd0de6500",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.06376799999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_supplies.b79084c7a931.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_supplies",
+   "lines": [
+    "rental.amt15_if_any"
+   ],
+   "inputs": [
+    "rental.amt15"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      11
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Line 15"
+     ],
+     "cols_pages": [
+      11
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_taxes": {
+   "subject_sha": "61101175ee4c14983808b90c2f371c4d26e20b7951a3c48316dba428dd507c03",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer with an oil or gas royalty interest reported in a Schedule E column. The producer withheld state severance or production tax from the royalty payments, and line 4 shows the gross royalty.",
+       "why_no": "The gate reads 'For this rental property — Taxes'. A royalty interest is not a rental property, and the filer did not pay a tax; the producer withheld it. The gated question also says 'Property tax ... paid in 2025', which does not describe withheld production tax.",
+       "line": "rental.amt16_if_any",
+       "irs_text": "i1040se (2025) p. 6, Line 4: 'Enter on line 4 the gross amount of royalty income, even if state or local taxes were withheld from oil or gas payments you received. Include taxes withheld by the producer on line 16.'",
+       "severity": "high",
+       "fix": "For royalty columns, word the gate as 'For this rental or royalty property — any taxes paid by you or withheld from your payments (property tax, state or local taxes withheld by an oil or gas producer, other taxes)?' Add help that tells royalty owners to include taxes the producer withheld, because line 4 is reported gross."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A homeowner who rents out a room or one unit of the home they live in, and who pays the property tax on the whole home.",
+       "why_no": "The help says 'Leave these taxes out of the taxes you deduct for your own home.' This filer reads the tax as tax on their own home and plans to deduct all of it on Schedule A, so they answer no. The tool's helper ('before any division for personal use') is never reached.",
+       "line": "rental.amt16_if_any",
+       "irs_text": "i1040se (2025) p. 6: 'Renting out part of your home. If you rent out only part of your home or other property, deduct the part of your expenses that applies to the rented part.'",
+       "severity": "medium",
+       "fix": "Ask the gate before any reference to the personal home: 'Were any taxes paid on this property, including on a home you live in and partly rent out? Enter the full amount; we will split off the personal part.' Move the Schedule A caution to after the split."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord under a net lease whose tenant pays the property tax directly to the county as part of the rent arrangement.",
+       "why_no": "The filer sees 'Taxes' and 'paid in 2025' and answers no, because they personally paid nothing. Expenses a tenant pays for the landlord are rental income to the landlord and are also deductible by the landlord, so a no drops the deduction.",
+       "line": "rental.amt16_if_any",
+       "irs_text": "i1040se (2025) p. 6, General Instructions for Lines 5 Through 21: 'You can deduct all ordinary and necessary expenses, such as taxes ...' and 'For more details on rental income, see Pub. 527.'",
+       "severity": "medium",
+       "fix": "Ask whether any taxes on the property were paid by you or by the tenant on your behalf. Tie the answer to the rental-income question, so that tenant-paid taxes are both included in rents and deducted on line 16."
+      }
+     ],
+     "prompt_sha": "8c035e777878f407b7b94a29354d7c22492aa58f12fab3ec718d4b54c6aa005a",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.06447599999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_taxes.61101175ee4c.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_taxes",
+   "lines": [
+    "rental.amt16_if_any"
+   ],
+   "inputs": [
+    "rental.amt16"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Line 16"
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.has_utilities": {
+   "subject_sha": "8544c1cfccc2771b076c44f6962f416cfff48ade55798a911a6c79e3e7e9a82e",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord whose only Line 17 cost is phone calls to tenants, for example long-distance or cell calls to the renter, or a second phone line used for the rental. They pay no electric, gas or water bills because the tenants pay those.",
+       "why_no": "The gate is the bare word 'Utilities'. Most people read that as electric, gas, water and sewer, not telephone. The tenants pay all of those, so the landlord answers no.",
+       "line": "rental.amt17_if_any",
+       "irs_text": "i1040se (2025) p. 7, Line 17: 'You can deduct the cost of ordinary and necessary telephone calls related to your rental activities or royalty income (for example, calls to the renter).'",
+       "severity": "medium",
+       "fix": "Ask: 'For this property, did you or your spouse pay any utilities (electric, gas, water, sewer, trash, internet or cable) or rental-related telephone costs, such as calls to tenants or a separate phone line? Do not count the base rate of the first phone line into your home.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer reporting royalty income (oil and gas, mineral, copyright or patent) on Schedule E who paid telephone costs related to that royalty activity.",
+       "why_no": "The gate says 'For this rental property'. A royalty interest is not a rental property, so the filer answers no, or reads the question as not applying to them.",
+       "line": "rental.amt17_if_any",
+       "irs_text": "i1040se (2025) p. 7, Line 17: 'telephone calls related to your rental activities or royalty income'",
+       "severity": "medium",
+       "fix": "Say 'For this rental or royalty property' wherever royalty properties use the same document, and name royalty-related phone costs in the help."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A landlord who pays the utility bills and is reimbursed by the tenant, or who pays utilities only while the unit is vacant or being prepared for a new tenant.",
+       "why_no": "The landlord does not see the cost as their own. The tenant 'covers' the utilities, or the landlord thinks utilities count only when supplied to a tenant. They answer no to 'Utilities'.",
+       "line": "rental.amt17_if_any",
+       "irs_text": "i1040se (2025) p. 7, Line 17 (the Utilities line); the gated question asks for 'Utilities you paid, paid in 2025'",
+       "severity": "medium",
+       "fix": "Add help: 'Include utilities you paid even if a tenant reimbursed you (report the reimbursement as rent) and utilities paid while the property was vacant.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly where the spouse paid the rental's utility bills from the spouse's own account.",
+       "why_no": "The gated question says 'Utilities you paid'. The filer did not pay the bills personally, so they may treat the amount as not theirs and answer no or enter zero.",
+       "line": "rental.amt17_if_any",
+       "irs_text": "i1040se (2025) p. 7, Line 17 (the Utilities line); the gated question asks for 'Utilities you paid'",
+       "severity": "low",
+       "fix": "Say 'you or your spouse paid' in both the gate and the gated question."
+      }
+     ],
+     "prompt_sha": "8d78201bb8799fbcd724efddbf5e8a1d1d531d3edf4267ff95ccf5fea0f009fb",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.061308,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.has_utilities.8544c1cfccc2.1.response.txt"
+    }
+   ],
+   "condition": "rental.has_utilities",
+   "lines": [
+    "rental.amt17_if_any"
+   ],
+   "inputs": [
+    "rental.amt17"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 17"
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  },
+  "gate:rental.prior_and_active": {
+   "subject_sha": "5b1201f2c59f39798a104247d23509e3a3eff4977d411b8e635b468589677efa",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer whose held-back loss arose in 2021, when they and their spouse together owned 5% of the rental. They approved tenants and repairs that year. By 2025 they own 60% and actively participate.",
+       "why_no": "The question asks only whether the loss came from a year when they did not 'help make decisions for it'. They did make decisions in 2021, so No is truthful. But owning less than 10% at any time in a year bars active participation for that year, whatever decisions they made. The tool accepts the No, and the 2021 loss is wrongly placed in Part IV column (c) instead of Part V.",
+       "line": "rental.prior_not_active_if_both",
+       "irs_text": "\"You aren't considered to actively participate in a rental real estate activity if at any time during the tax year your interest (including your spouse's interest) in the activity was less than 10% (by value) of all interests\" (i8582 2025 p. 4); \"Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year\" (i8582 2025 p. 10)",
+       "severity": "high",
+       "fix": "Ask: 'Did any of that held-back loss come from a year when (a) you and your spouse together owned less than 10% of the property, by value, at any time during the year, (b) you held it as a limited partner, (c) you were married filing separately and lived with your spouse at any time during the year, or (d) neither of you approved tenants, set rental terms, approved repairs or spending, or arranged for others to provide services?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer whose held-back loss arose in a year when they owned the rental through a partnership as a limited partner, and voted on tenant and repair decisions. They now own the property directly and actively manage it.",
+       "why_no": "They did help make decisions in the year the loss arose, so No is truthful. But limited partners are not treated as actively participating, so that year's loss does not qualify for Part IV.",
+       "line": "rental.prior_not_active_if_both",
+       "irs_text": "\"Limited partners are not treated as actively participating in a partnership's rental real estate activity.\" (i8582 2025 p. 4)",
+       "severity": "high",
+       "fix": "Include the limited-partner condition in the gated question, as in the fix above."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer whose rental lost money in 2019 to 2022, when they did not actively participate. Those losses carry forward, but the rental showed net income in 2024. Their 2024 Form 8582 still lists the carryover in Part VII, column (c).",
+       "why_no": "They read 'A loss from this rental held back on the 2024 return' as asking whether the rental's own 2024 loss was disallowed. It had income in 2024, so they answer No. The gate is then false, and the carryover from years without active participation is never tested. Where the tool picks up the carryover by another route, it lands in Part IV column (c) instead of Part V.",
+       "line": "rental.prior_not_active_if_both",
+       "irs_text": "\"Column (c). Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\" (i8582 2025 p. 10)",
+       "severity": "medium",
+       "fix": "Word the helper as: 'Does your 2024 Form 8582 (Part VII, column (c)) show any unallowed loss for this rental, from 2024 or any earlier year, that is still carried forward?' Help: 'Include losses that arose in earlier years and were carried through 2024.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse made the rental's management decisions in 2025. The filer took no part in them.",
+       "why_no": "If the 'Active participation' helper asks only about 'you', the filer truthfully answers No. The gate is then false, although on a joint return the spouse's participation counts. The wording of that helper is not shown.",
+       "line": "rental.prior_not_active_if_both",
+       "irs_text": "\"You aren't considered to actively participate ... if at any time during the tax year your interest (including your spouse's interest) ...\" (i8582 2025 p. 4)",
+       "severity": "low",
+       "fix": "Make sure the 'Active participation' helper asks about 'you or your spouse' for 2025."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who did not make decisions in the year the loss arose, but in a significant and bona fide sense arranged for others to provide repairs and services.",
+       "why_no": "The wording 'did not help make decisions' leads them to answer Yes, and the interview ends. Arranging for others to provide services can itself count as active participation, so the refusal is wrong. This is a false yes rather than a false no, but it comes from the same narrow wording.",
+       "line": "rental.prior_not_active_if_both",
+       "irs_text": "\"You may be treated as actively participating if, for example, you participated in making management decisions or arranged for others to provide services (such as repairs) in a significant and bona fide sense.\" (i8582 2025 p. 4)",
+       "severity": "low",
+       "fix": "Add 'or arranged for others to provide services such as repairs' to the description of participation in the gated question."
+      }
+     ],
+     "prompt_sha": "47529c0040519275f2f73e6c01c459d7f120106285579b678c6b186f70203fdb",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.094524,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.prior_and_active.5b1201f2c59f.1.response.txt"
+    }
+   ],
+   "condition": "rental.prior_and_active",
+   "lines": [
+    "rental.prior_not_active_if_both"
+   ],
+   "inputs": [
+    "rental.prior_not_active"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      4,
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Part IV, \"Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year\"",
+      "p. 4, Part IV"
+     ],
+     "cols_pages": [
+      4,
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
+  "gate:rental.prior_any": {
+   "subject_sha": "2aaa70ea7d71eb8b8eb22840e0120155ba627569d0fa1b02f327cf74f1718ba2",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A couple files jointly for 2025. Before the marriage, the spouse owned the rental and filed a single (or married filing separately) 2024 return. That return's Form 8582 suspended a loss from this rental. The filer's own 2024 return had no rental and no Form 8582.",
+       "why_no": "\"Was a loss from this rental held back ... on your 2024 return or an earlier one?\" The filer's own return held back nothing, and the help says to look for Form 8582 in 'your 2024 return', which has none. The spouse's separate return is not 'your' return.",
+       "line": "rental.prior_amt_if_any",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "high",
+       "fix": "Ask: \"Was a loss from this rental held back (not deducted) on a 2024 or earlier return filed by you or your spouse, including a separate or pre-marriage return?\" The help should say to check each spouse's 2024 Form 8582."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "The rental had a loss in 2020 that was suspended. It has shown a net profit every year since, and the profits have used up only part of the suspended loss. Part VII, column (c), of the 2024 Form 8582 still shows the remaining amount.",
+       "why_no": "The help says \"Answer No if your rentals had no loss before 2025.\" The filer remembers recent profits, especially 2024, and reads 'held back' as something that happened to last year's loss. The old carryover is not seen as a current loss.",
+       "line": "rental.prior_amt_if_any",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "medium",
+       "fix": "Replace the help with: \"Answer Yes if any loss from this rental in any earlier year has not yet been fully used, even if the rental made a profit in 2024. Check Part VII, column (c), of your 2024 Form 8582 and any carryover worksheet from your preparer.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "The filer had a suspended rental loss on a 2023 Form 8582 and filed no 2024 return (income below the filing threshold, or overlooked). Or the filer's 2024 return omitted Form 8582 even though a carryover existed, for example a self-prepared return that simply left the loss off.",
+       "why_no": "The help says \"Look for Form 8582 in your 2024 return.\" The filer finds no 2024 return or no Form 8582 in it and concludes the answer is no. The gated question also reads only from the 2024 Form 8582.",
+       "line": "rental.prior_amt_if_any",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "medium",
+       "fix": "Ask about the fact, not the form: \"Do you have any loss from this rental from an earlier year that has not yet been deducted?\" The help should say that if no 2024 Form 8582 was filed, the filer should use the latest Form 8582 they filed and adjust it for 2024. The helper that maps 'held back on the 2024 return' = false to zero should also cover a carryover from an earlier year."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "The filer actively participates and has modified AGI between $100,000 and $150,000. The 2024 rental loss was partly allowed under the reduced $25,000 special allowance, so some of the loss appeared on the return and the rest was suspended.",
+       "why_no": "The filer saw a rental loss on the 2024 Schedule E or Form 1040 and believes it was deducted. A partial disallowance does not register as a loss 'held back (not deducted)'.",
+       "line": "rental.prior_amt_if_any",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582.\"",
+       "severity": "medium",
+       "fix": "Add \"or only partly deducted\" to the question. The help should say: \"If Form 8582 was filed with your 2024 return, answer Yes if Part VII, column (c), shows any amount for this rental.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Before 2025, the filer grouped this property with other rentals as a single activity on Form 8582. Part VII, column (c), shows one unallowed loss for the group, not a figure for this property.",
+       "why_no": "'From this rental' leads the filer to look for this property by name in Part VII. When they cannot find it, they answer no for this property, and the per-property question does not ask them to allocate the group amount.",
+       "line": "rental.prior_amt_if_any",
+       "irs_text": "i8582 (2025) p. 10, Part IV, Column (c): \"Enter the prior-year unallowed losses for each activity.\"",
+       "severity": "low",
+       "fix": "Add to the help: \"If this property was reported with others as one activity on Form 8582, answer Yes and enter its share of that activity's unallowed loss.\""
+      }
+     ],
+     "prompt_sha": "be71f5b147e6e27f9402ec65c08f43753185d8a796e3046d2b8a1c4acc7cc339",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.09179600000000002,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.prior_any.2aaa70ea7d71.1.response.txt"
+    }
+   ],
+   "condition": "rental.prior_any",
+   "lines": [
+    "rental.prior_amt_if_any"
+   ],
+   "inputs": [
+    "rental.prior_amt"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Part IV, \"You find these amounts in Part VII, column (c), of your 2024 Form 8582\""
+     ],
+     "cols_pages": [
+      10
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  },
+  "gate:rental.short_stays": {
+   "subject_sha": "e37aa0f4de6b013565eed449fd2f49ef71dc1b46d9442c96dac5de8ec6abc454",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer whose rental activity rents more than one class of property, for example short daily rentals that bring in most of the income alongside one low-rent long lease. Take ten 3-day rentals earning 99% of gross rental income and one 365-day lease earning 1%.",
+       "why_no": "The help says to divide the days rented by the number of separate stays: 395 / 11 = 35.9 days, so the honest answer is no. The IRS rule weights each class's average by its share of gross rental income: 3 x 0.99 + 365 x 0.01 = 6.6 days. That is 7 days or less.",
+       "line": "rental.stay7_if_short",
+       "irs_text": "i8582 p. 3, Exceptions: \"If the activity involves renting more than one class of property, multiply the average period of customer use of each class by the ratio of the gross rental income from that class to the activity's total gross rental income. The activity's average period of customer use equals the sum of these class-by-class average periods weighted by gross income.\"",
+       "severity": "high",
+       "fix": "First ask whether the activity rents more than one kind of property, such as rooms and equipment, or units with different rental terms. If yes, compute the income-weighted average from per-class days, stays and gross rent. Do not use a single days-per-stay division."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A vacation rental owner who listed the property all year (365 days) and had 10 bookings of about 4 nights each.",
+       "why_no": "\"Days it was rented\" can be read as the days the property was rented out or offered for rent, not the nights renters actually occupied it. Then 365 / 10 = 36.5 days, more than 30, so the filer answers no. The true average is about 4 days.",
+       "line": "rental.stay7_if_short",
+       "irs_text": "i8582 p. 3, Exceptions: \"dividing the total number of days in all rental periods by the number of rentals during the tax year\"; exception 1a: \"The average period of customer use is: a. 7 days or less\"",
+       "severity": "medium",
+       "fix": "Say: \"Add up only the days renters actually had use of it. Do not count days it was listed or vacant, or days you used it yourself. Divide by the number of separate rentals.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An owner whose property is booked repeatedly by the same renters, for example a corporate client that took 12 separate 5-day stays and a family that came back four times for a week.",
+       "why_no": "\"Number of separate stays\" can be read as the number of renters or customers. Counting each repeat client once shrinks the divisor and pushes the average above 30 days, or at least above 7.",
+       "line": "rental.stay7_if_short",
+       "irs_text": "i8582 p. 3, Exceptions: \"dividing the total number of days in all rental periods by the number of rentals during the tax year\"",
+       "severity": "medium",
+       "fix": "Add to the help: \"Count each rental period (booking) separately, even when the same renter comes back.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "An owner who switched in 2025 from short-term stays to a long lease, or the reverse, and also counts days in a lease or booking that started in 2024 or runs into 2026.",
+       "why_no": "The question has no tax-year limit, and the help example of \"a one-year lease is one stay of 365 days\" invites counting a whole lease that crosses years. That can raise the average above 30 even though the 2025 rental periods average 7 days or less.",
+       "line": "rental.stay7_if_short",
+       "irs_text": "i8582 p. 3, Exceptions: \"by the number of rentals during the tax year\"",
+       "severity": "low",
+       "fix": "Add \"in 2025\" to the question and state how to count rental periods that cross the start or end of the year."
+      }
+     ],
+     "prompt_sha": "e788782dddab4c496fdb7f930123d07d356053b9745d2ad20f062a13ed5c26fa",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.079832,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rental.short_stays.e37aa0f4de6b.1.response.txt"
+    }
+   ],
+   "condition": "rental.short_stays",
+   "lines": [
+    "rental.stay7_if_short"
+   ],
+   "inputs": [
+    "rental.stay7"
+   ],
+   "used": [
+    {
+     "doc": "i8582",
+     "revision": "2025",
+     "text_sha256": "c7d05b8f9f05eaa0ede717f07f8e844ff7cec74c2bd71a79c6ecd032ec8cecaa",
+     "pages": [
+      3
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Exceptions",
+      "p. 3, Exceptions, \"Figure the average period of customer use for a class of property by dividing the total number of days in all rental periods by the number of rentals\""
+     ],
+     "cols_pages": [
+      3
+     ],
+     "cols_sha256": "7c2f83d446387ce35258f4a1c181512fd7816100a62441658fb48844f4fb516f"
+    }
+   ]
+  }
+ }
+}

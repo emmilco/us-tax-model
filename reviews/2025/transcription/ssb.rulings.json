@@ -36,12 +36,62 @@
    "subject_key": "b18a822421af0bbf971d35ee774b9ad74e83ab4b4aa4f9404cf372bf23fa1f46"
   },
   {
+   "printed": "10",
+   "project_expr_sha256": "fadbc8f2be92431eda59095f58e277f76defff738f76347bda667ef1a7286d54",
+   "second_expr_sha256": "37edcbc7e1203d3b09d19f91c6a4e04ad727477d48bfa85f44ce5b8524ae4346",
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "849e6cb3e79a4b115ec446d39edfc7b090d3cb46f886a7f0afa8bd8aa1d591c9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@ssb",
+     "fixture:classm.s179.4@ssb",
+     "fixture:classm.sales.3@ssb",
+     "fixture:mfs.f2441.refuse.spouse_deemed@ssb",
+     "fixture:mfs.hsa.refuse.family_spouse_hsa@ssb",
+     "fixture:mfs.household.community_property@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "11",
    "project_expr_sha256": "016a5599cf06f60cb6646e79cc2c71096b435c9fe83225b42d7f5961467e5921",
    "second_expr_sha256": "3bcb65829f463dbf57a2fec7e6e781164bdd660b4a8d4c96c07f79fb949f2f7f",
    "ruling": "Ruling: representation and scope; i1040gi p. 32, worksheet line 11; i1040gi p. 32, worksheet line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\"; i1040gi p. 32, lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP\"; owner's decision (2026-10-26) that a worksheet after a STOP counts as skipped. executable-triage-v2 (`reviews/2025/transcription/triage/ssb.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 128 partial records from 40 bases; 2,193 comparisons): 2,067 agree; 54 candidate-refuses, 46 candidate-shows-skipped, 18 project-unknown, 5 candidate-unknown, 3 project-refuses (on completed returns: 10 project-unknown). The reply adds a shown_when that hides the line after the STOPs at lines 7 and 9 (and, as the project now does after BUG-0399, for married filing separately living together); the project shows the line there with $0, which the README permits for a skipped line (\"where a later line reads it as blank, by entering zero\"), so the visibility difference is not a value difference. The candidate-shows-skipped witnesses are married filing separately returns living together, where the reply's own shown_when also hides the line (triage applies only the project's shown_when, tools/transcription/triage.mjs), all on refused returns (s3.mfs refuses married filing separately for the whole return). The project-unknown witnesses are partial records withholding ssb.lump_sum, the project's line 2 gate (i1040gi p. 31, Line 6c: \"you may be able to reduce the taxable amount with the lump-sum election\"), which the interview asks whenever there are benefits; the project-refuses are that gate (stage10.refuse.lump_sum) and ira.cov_gate (stage16.refuse.ira.ssb_covered), the candidate-refuses ira.less_gate on stage16.refuse.ira.deduct_less, a return the project refuses at s1.line20: scope. Project stands.",
    "context": "2362eac331c7750b6fda06b7d3b941bee288efe9ad1bf48dcf587b66e7a7666c",
    "subject_key": "5df879a5df15e11c8031051a7c9239e84d6668abc4da5baa4862c1c0b6b6cc67"
+  },
+  {
+   "printed": "11",
+   "project_expr_sha256": "1b9002c85ca23999b21cca72af5d6ff86770ace5847e539d8817d7638a35cb13",
+   "second_expr_sha256": "e6106c5790b0b01d302541727ff7ba58edf16b371ce0d163dd2592efef11e01f",
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "f106241675a3d42d13e7be26a8eca7b11127a22d11f7ad562bdcfd6cc22052cd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@ssb",
+     "fixture:classm.s179.4@ssb",
+     "fixture:classm.sales.3@ssb",
+     "fixture:mfs.f2441.refuse.spouse_deemed@ssb",
+     "fixture:mfs.hsa.refuse.family_spouse_hsa@ssb",
+     "fixture:mfs.household.community_property@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "11",
@@ -72,12 +122,62 @@
    "subject_key": "e5f8c585c8f434fe1d5dc6268b44af58f5df49bda375f2d17c2f3c07dda61186"
   },
   {
+   "printed": "12",
+   "project_expr_sha256": "fe7dcf459290b683e20985b2bc4b2934f875ed23d9f772d957437000d96cad32",
+   "second_expr_sha256": "5e6d1d49f67dbffc82e305835b5afaad6162dd3fd48babc847037cd70db0f7db",
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "c8d06e568407716359130047a6a257c4c57acd719a9e5a81eee2157ffc6874b9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@ssb",
+     "fixture:classm.s179.4@ssb",
+     "fixture:classm.sales.3@ssb",
+     "fixture:mfs.f2441.refuse.spouse_deemed@ssb",
+     "fixture:mfs.hsa.refuse.family_spouse_hsa@ssb",
+     "fixture:mfs.household.community_property@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "13",
    "project_expr_sha256": "37523ca297dd94d9dae56776d0d0ff7485b11c3ea7580b76472d4945b4ee77e5",
    "second_expr_sha256": "857fcb782d5f1061a1d7f6e17d6311174df1afadee97f121ca6550b40c0b1b8a",
    "ruling": "Ruling: representation and scope; i1040gi p. 32, worksheet line 13; i1040gi p. 32, worksheet line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\"; i1040gi p. 32, lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP\"; owner's decision (2026-10-26) that a worksheet after a STOP counts as skipped. executable-triage-v2 (`reviews/2025/transcription/triage/ssb.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 128 partial records from 40 bases; 2,193 comparisons): 2,063 agree; 54 candidate-refuses, 50 candidate-shows-skipped, 18 project-unknown, 5 candidate-unknown, 3 project-refuses (on completed returns: 10 project-unknown). The reply adds a shown_when that hides the line after the STOPs at lines 7 and 9 (and, as the project now does after BUG-0399, for married filing separately living together); the project shows the line there with $0, which the README permits for a skipped line (\"where a later line reads it as blank, by entering zero\"), so the visibility difference is not a value difference. The candidate-shows-skipped witnesses are married filing separately returns living together, where the reply's own shown_when also hides the line (triage applies only the project's shown_when, tools/transcription/triage.mjs), all on refused returns (s3.mfs refuses married filing separately for the whole return). The project-unknown witnesses are partial records withholding ssb.lump_sum, the project's line 2 gate (i1040gi p. 31, Line 6c: \"you may be able to reduce the taxable amount with the lump-sum election\"), which the interview asks whenever there are benefits; the project-refuses are that gate (stage10.refuse.lump_sum) and ira.cov_gate (stage16.refuse.ira.ssb_covered), the candidate-refuses ira.less_gate on stage16.refuse.ira.deduct_less, a return the project refuses at s1.line20: scope. Project stands.",
    "context": "2362eac331c7750b6fda06b7d3b941bee288efe9ad1bf48dcf587b66e7a7666c",
    "subject_key": "1dde3ffa2d84129a4b3464873b80511782a33910fc8bdfe9f5fefdf9b89eb08b"
+  },
+  {
+   "printed": "13",
+   "project_expr_sha256": "395e760b764a6a499202d85d0f6d39e56b99f0a8963e62d75434432e0c5f81c9",
+   "second_expr_sha256": "c7e7a1166031bb08a89687a4a4c24737198280bdcc6a6a4a0743f0ca09ac8b24",
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "6ddb8b7280cc03e0127afcc1f69aef4a3e0e38f545b82898dc4217b7c0280c7f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@ssb",
+     "fixture:classm.s179.4@ssb",
+     "fixture:classm.sales.3@ssb",
+     "fixture:mfs.f2441.refuse.spouse_deemed@ssb",
+     "fixture:mfs.hsa.refuse.family_spouse_hsa@ssb",
+     "fixture:mfs.household.community_property@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "13",
@@ -108,12 +208,62 @@
    "subject_key": "eb705814000ff3b9d8dfb9a4f839b2b69a0d8fcab8e9d20132c1d6bb7f2b2552"
   },
   {
+   "printed": "14",
+   "project_expr_sha256": "fe783f81a059a44e5d363f04e3cd8bad61dd96c8ecc965d753cc0fd51b13659d",
+   "second_expr_sha256": "6546480f2f81e5adb678ef9ef5adf5ba49227ce1ffdfb518e9ae5d7105a2650a",
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "5a0d47351d2bd078da0f8bfcbaf7a720e55bae346b076d58ceb7a6a0a881e460",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@ssb",
+     "fixture:classm.s179.4@ssb",
+     "fixture:classm.sales.3@ssb",
+     "fixture:mfs.f2441.refuse.spouse_deemed@ssb",
+     "fixture:mfs.hsa.refuse.family_spouse_hsa@ssb",
+     "fixture:mfs.household.community_property@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "15",
    "project_expr_sha256": "27dd622c4214b3ea91b6d9d9129a4b9e1e5fb36453ac8dc4507aa42d137e1060",
    "second_expr_sha256": "a51da4c761c03ed2bd72405711b7b0083257615aded075d41846e44bbfd0e7b5",
    "ruling": "Ruling: representation and scope; i1040gi p. 32, worksheet line 15; i1040gi p. 32, worksheet line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\"; i1040gi p. 32, lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP\"; owner's decision (2026-10-26) that a worksheet after a STOP counts as skipped. executable-triage-v2 (`reviews/2025/transcription/triage/ssb.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 128 partial records from 40 bases; 2,193 comparisons): 2,067 agree; 54 candidate-refuses, 46 candidate-shows-skipped, 18 project-unknown, 5 candidate-unknown, 3 project-refuses (on completed returns: 10 project-unknown). The reply adds a shown_when that hides the line after the STOPs at lines 7 and 9 (and, as the project now does after BUG-0399, for married filing separately living together); the project shows the line there with $0, which the README permits for a skipped line (\"where a later line reads it as blank, by entering zero\"), so the visibility difference is not a value difference. The candidate-shows-skipped witnesses are married filing separately returns living together, where the reply's own shown_when also hides the line (triage applies only the project's shown_when, tools/transcription/triage.mjs), all on refused returns (s3.mfs refuses married filing separately for the whole return). The project-unknown witnesses are partial records withholding ssb.lump_sum, the project's line 2 gate (i1040gi p. 31, Line 6c: \"you may be able to reduce the taxable amount with the lump-sum election\"), which the interview asks whenever there are benefits; the project-refuses are that gate (stage10.refuse.lump_sum) and ira.cov_gate (stage16.refuse.ira.ssb_covered), the candidate-refuses ira.less_gate on stage16.refuse.ira.deduct_less, a return the project refuses at s1.line20: scope. Project stands.",
    "context": "2362eac331c7750b6fda06b7d3b941bee288efe9ad1bf48dcf587b66e7a7666c",
    "subject_key": "37e34d0b1aec3abbcb648e5eb00d70ec14a63766fcb0a656356f7e7cfe8b3597"
+  },
+  {
+   "printed": "15",
+   "project_expr_sha256": "9eef8011d4006409a070fb40864ea2d76553cdbcb528a1799daa346d49408907",
+   "second_expr_sha256": "dab64ad709f43ab716515aefa6ef95cf24cb7693a9e9c7eb012cf34670a01af4",
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "d6ee59e452b1fc44724902540d16efedb3808e50adc3a0af3ea54b747ed0d434",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@ssb",
+     "fixture:classm.s179.4@ssb",
+     "fixture:classm.sales.3@ssb",
+     "fixture:mfs.f2441.refuse.spouse_deemed@ssb",
+     "fixture:mfs.hsa.refuse.family_spouse_hsa@ssb",
+     "fixture:mfs.household.community_property@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "15",
@@ -124,6 +274,22 @@
    "date": "2026-11-04",
    "run": "71281afa90e7664da835c91cff44290baa5bce1b7f8a75599edf5a68828d50f5",
    "subject_key": "37e34d0b1aec3abbcb648e5eb00d70ec14a63766fcb0a656356f7e7cfe8b3597"
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "1f17741db576129e1dea13df843f668b3e93adae1a3eeaeb78ed31bf07fd5b07",
+   "second_expr_sha256": "ea30206ca84e6a03d2c53d0551fe0f7d8d89d47f48be6d9a3e6199514e40e9a1",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3053 values compared, none different or missing: 2376 on 2376 fixture cases, 500 on 500 generated returns seed 20261026, 177 on 177 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "f81c9dd92813589f06020ee9af0cb230f2fb31c92cdf3d03406cbdc7f3fbcf4a",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "16",
@@ -152,6 +318,22 @@
   },
   {
    "printed": "17",
+   "project_expr_sha256": "25f2166694ea66bcbb219fde531330fe067902756f7e6c379659810bbca1d89f",
+   "second_expr_sha256": "b1de29eeb4bf46448f6f8f5ca7c5468cd8767523b04de05527005fa6af10b812",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3053 values compared, none different or missing: 2376 on 2376 fixture cases, 500 on 500 generated returns seed 20261026, 177 on 177 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "7c82be0659d71ba85f37e09ebffd10ce82a5f00b972a6d590f6af88d0f7677e0",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "17",
    "project_expr_sha256": "38b853cd741740ba29e9910bca3b27456bafbfe78ce8ad7eeda2a4c7906d37d3",
    "second_expr_sha256": "fe6a57b5db25f61d86bf7779febc62f48e468a95b10caeabbbeb95bbf652dfdc",
    "ruling": "Ruling: model error and finding (SSB-L1, low); i1040gi p. 32, worksheet line 17; i1040gi p. 32, lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. STOP\"; owner's decision (2026-10-26) that a worksheet after a STOP counts as skipped; i1040gi p. 31, Lines 6a and 6b: \"Use the Social Security Benefits Worksheet in these instructions to see if any of your benefits are taxable.\" executable-triage-v2 (`reviews/2025/transcription/triage/ssb.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 128 partial records from 40 bases; 2,193 comparisons): 813 agree; 1,334 candidate-unknown, 46 candidate-refuses (on completed returns: 13 candidate-refuses, 156 candidate-unknown). Model error: through its shown_when the reply figures lines 5 to 8 on every return and needs ssb.pub915 (or refuses on it) where there are no benefits and the project correctly shows $0 (classm.f4952.1.deepseek, classm.s3.1.deepseek and others; candidate-refuses classm.clcw.2, classm.aqee.1). Finding: the reply is right that the line follows a STOP; the project shows 85% of line 1 after the line 9 STOP (checked: stage10.ss.none, single, benefits $20,000, line 7 $20,000 not more than line 8 $25,000: line 17 shows $17,000 and line 10 $9,000, line 18 $0). Value-neutral display defect of the BUG-0209 kind; Form 1040 line 6b is $0 as the source says. Project value stands; display finding.",
@@ -172,9 +354,26 @@
    "printed": "18",
    "project_expr_sha256": "5f68c87cd953f37aaf5c185bfa5dd22e725361fb0c51b6a824eb4863b7df4edf",
    "second_expr_sha256": "44bcda9f0291b240bf725f02c08c3ed536c892b25e5f5214aa75bd3fd8aa5443",
-   "ruling": "Ruling: model error and ambiguity (+ scope); i1040gi p. 31, Lines 6a and 6b: \"Use the Social Security Benefits Worksheet in these instructions to see if any of your benefits are taxable.\"; i1040gi p. 31, Line 6c: \"If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year, you may be able to reduce the taxable amount with the lump-sum election\"; amb.2025.ira_ssb_copy. executable-triage-v2 (`reviews/2025/transcription/triage/ssb.json`; 1,382 fixtures, 500 generated returns seed 20261026, 156 partial records from 40 bases; 2,038 comparisons; every witness re-read from an uncapped scratch re-run of triage.mjs, same counts): 1,142 of 2,038 agree; 540 candidate-unknown (202 completed), 354 candidate-refuses (none completed), 2 project-refuses (none completed). The reply has no zero-benefit guard, so on a return without benefits it figures the whole worksheet and needs answers the source does not need there: 198 of the 202 completed candidate-unknown need f1040.tax_exempt_interest through line 4 (classm.f5695.5.deepseek and others, all with $0 benefits, project $0.00); the other 4 are the line 6 cycle of the register (stage16.ira.i1, i8, stage16.mut.ira_joint_full_edge, audit.ira.covered_age50_joint_phaseout). The 354 candidate-refuses are returns the project refuses elsewhere, met because the reply reads the Form 1040 income lines on every return (sales.digital, sb.unsupported, sb.line8, plan_screened and others): scope. The 2 project-refuses are ira.cov_gate (stage16.refuse.ira.ssb_covered) and sb.fbar_required on a partial of classm.dcprov.1: scope. BUG-0249 reworded ssb.terror_disability only (eligibility for September 11 Victim Compensation Fund coverage, \"whether or not you made a claim\"), which matches i1040gi p. 31, Disability payments: \"In the case of the September 11 attacks, injuries eligible for coverage by the September 11 Victim Compensation Fund are treated as incurred as a direct result of the attack.\"; no ssb expression changed. Project stands.",
-   "context": "249a88949406c5d3ef9abba751ec90dc4073a49d1e590919782fa10400fcbbe1",
-   "subject_key": "0911a09367bf0dc8c155a2d81f67af80d9c2b78d5926312f4262f330bf65ede6"
+   "ruling": "Ruling: representation; executable triage 2,960/3,053 agree; 93 candidate-unknown, no value differs (completed: 14 candidate-unknown). Same smaller-of line 16 or 17; the reply reads ssb.lump_elect, which the interview does not ask on these returns, so it is unknown where the project computes. i1040gi Social Security Benefits Worksheet line 18.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "8352a9a15a6fe8837ab135fb86558b4d62ffc81f27d52ae22af49e1e62df240b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.g28.1.deepseek@ssb",
+     "fixture:classm.sd.1.deepseek@ssb",
+     "fixture:classm.sd.2.deepseek@ssb",
+     "fixture:classm.sd.3.deepseek@ssb",
+     "fixture:classm.u1250.1.deepseek@ssb",
+     "fixture:classm.u1250.2.deepseek@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "18",
@@ -252,6 +451,31 @@
   },
   {
    "printed": "8",
+   "project_expr_sha256": "94cbb8e2561ed5cee20ebb091813bea56d373a252636a524b4b044b71d15dab2",
+   "second_expr_sha256": "aa96a840bd0619eea64707a6d1d5709289d3bb1dc68d4e74dd712ff4549a2b7d",
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "34fdc08422286054ba159f4445bb6aaaa795fc876f4a5c94dc201b3ddb32eea1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@ssb",
+     "fixture:classm.s179.4@ssb",
+     "fixture:classm.sales.3@ssb",
+     "fixture:mfs.f2441.refuse.spouse_deemed@ssb",
+     "fixture:mfs.hsa.refuse.family_spouse_hsa@ssb",
+     "fixture:mfs.household.community_property@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
    "project_expr_sha256": "f8b0260abea3db36bea8b376831b0e98a8e71105ba5ce61a31d622993e443d6f",
    "second_expr_sha256": "28e60266ba7f01453a1b779fb59fd9a2c86160bda7bb3069e1c2245f18f7816b",
    "ruling": "Ruling: equivalent; project retained. As ruled before: both give $25,000 to single, head of household, qualifying surviving spouse and to married filing separately having lived apart all year, $32,000 to married filing jointly, and $0 to married filing separately having lived with the spouse; the guards are written differently.",
@@ -303,6 +527,31 @@
   },
   {
    "printed": "9",
+   "project_expr_sha256": "f445dc887f8fc11c95b3bfad3b66cad3bfd8f166996a5cd4c78a344a5522fe6e",
+   "second_expr_sha256": "52074ea7a19fe5915cdd17196542fd11afb8a88624b429fb99f1c310f830293e",
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "32e7ba58b7d4883887a4bba09d153af9fb42ae5a281b159a8106ead660ba8547",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.5.deepseek@ssb",
+     "fixture:classm.s179.4@ssb",
+     "fixture:classm.sales.3@ssb",
+     "fixture:mfs.f2441.refuse.spouse_deemed@ssb",
+     "fixture:mfs.hsa.refuse.family_spouse_hsa@ssb",
+     "fixture:mfs.household.community_property@ssb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9",
    "project_expr_sha256": "fe40497c5e1344b889df846aafb47d94713d685d47a82e95b5bd492f63edcae8",
    "second_expr_sha256": "0a8817c01adc2509c65dd16fab36d5d3c529a096979cab9bda38da7ea6effe16",
    "ruling": "Ruling: equivalent; project retained. As line 7: the second's zero on the STOP branch equals the project's floor at zero.",
@@ -323,6 +572,22 @@
    "ruling": "Ruling: representation; i1040gi p. 31, Lines 6a and 6b: \"Use the Social Security Benefits Worksheet in these instructions to see if any of your benefits are taxable.\". executable-triage-v2 (`reviews/2025/transcription/triage/ssb.json`; 1,382 fixtures, 500 generated returns seed 20261026, 156 partial records from 40 bases; 2,038 comparisons; every witness re-read from an uncapped scratch re-run of triage.mjs, same counts): 2,038 of 2,038 agree. The project tests line 1, a copy of ssb.benefits; the candidate tests ssb.benefits. Project stands.",
    "context": "249a88949406c5d3ef9abba751ec90dc4073a49d1e590919782fa10400fcbbe1",
    "subject_key": "1281b06ac0838bbd832a726a2709b99abf79cf354fa098d1901808ac7e852bd1"
+  },
+  {
+   "printed": "ssb.lived_apart",
+   "project_expr_sha256": "710874605c067318bae241d052475b5a390300eb9c32948d497135678d31cd15",
+   "second_expr_sha256": "a908d10f5aa8fb3a1d7f2971cbe323d391abcc18f2f23f56215af0e510331eb5",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3053 values compared, none different or missing: 2376 on 2376 fixture cases, 500 on 500 generated returns seed 20261026, 177 on 177 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "context": "75705e22b92469ff21d8fde668bc9952bad906455b4ff38a8fd4f3aa6fd8229c",
+   "date": "2026-11-15",
+   "run": "ad0c20b94bcf087380b9963c714f4cedab89c736f2514a889861e4d17b56d58f",
+   "subject_key": "04754d27ce24b35809614f5ba1a3657d159dfbdb0e4de1324e719ee22f038a68",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "ssb.lump_sum",

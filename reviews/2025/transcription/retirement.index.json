@@ -4,9 +4,18 @@
  "family": "claude",
  "base": "fcf25eb148a54b794b29ec94b05b000c0b9cba830d5fa7651f7b18afc1788d13",
  "head_rows": {
+  "printed lines compared": "27",
+  "agree / disagree / missing": "1 / 26 / 0",
   "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
+  {
+   "key": "retirement.dis_wages",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; executable triage 3,414/3,506 agree; 50 candidate-refuses, 42 project-unknown, no value differs, nothing completed. Same test (a plan disability pension paid before the minimum retirement age); the reply reads retirement.dis_early and retirement.disability outside the project's gates, so it refuses or the project is unknown only where the interview does not ask them. p575 (disability pensions are wages until minimum retirement age), as x2-paynow2 encodes.",
+   "subject_key": "e7e3b4cc58e3dfa73e321789b07d1fd5ed75068f2c23483f5e4b5a4cfb98fc49"
+  },
   {
    "key": "retirement.one",
    "record": "fcf25eb148a54b794b29ec94b05b000c0b9cba830d5fa7651f7b18afc1788d13",
@@ -22,73 +31,73 @@
   },
   {
    "key": "retirement.has_rollover",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,576/2,459 agree; 509 project-unknown, 186 project-refuses, 119 value, 69 candidate-unknown; completed: 2 value, 1 candidate-unknown. The project counts a code G direct rollover through retirement.rolled/direct. For code G it takes box 1 as the amount rolled over and does not ask retirement.rollover_any. The reply reads only rollover_any/rollover. Completed values: stage10.plan.direct_rollover and stage10.plan.direct_rollover_zero (code G), project true, reply false. Under the reply's interface a code G filer would answer the rollover question; the difference is the gate. Same as the landing-round ruling.",
-   "subject_key": "14ef80c0a5ad07bbb35ec2e092376e0236bba3a051cf8ef35e9312793049efc7"
+   "ruling": "Ruling: representation; executable triage 2,190/3,506 agree; 613 project-unknown, 299 value, 245 candidate-unknown, 159 project-refuses (completed: 6 value, 6 candidate-unknown). Value pairs are project true, reply false on code G direct rollovers (classm.clcw.3, classm.f1040.3, classm.aqee.1): the reply reads raw retirement.rollover, which the project does not ask with code G (gated by retirement.rollover_if_any; box 1 is the rollover). i1040gi p. 30, Rollovers; f1099r p. 5, Box 2a. Same pattern as the Goal-1 round ruling.",
+   "subject_key": "6ac8d90da815ab63109432e9e33911f3aa800e1209e14e3c9d11f00a29ef526a"
   },
   {
    "key": "retirement.taxable",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,519/2,459 agree; 626 candidate-unknown, 149 value, 102 project-refuses, 39 project-unknown, 24 candidate-refuses; completed: 101 value, 30 candidate-unknown. Completed value witnesses fall into three patterns. (1) stage10.plan.box5 and stage10.mixed.ira_and_plan (pension $12,000.00, box 5 $1,200.00): project $10,800.00, reply $12,000.00. The reply treats a pension as fully taxable unless a cost answer is given, but box 5 is employee contributions \"that the employee may recover tax free this year\" (i1099r p. 5). (2) stage10.smw.recovered_exceeds_cost (box 1 $12,000.00, the whole cost recovered before 2025): project $12,000.00, fully taxable (\"you got your entire cost back tax free before 2025\", i1040gi p. 28); reply $21,000.00, more than the payment itself. (3) stage10.plan.direct_rollover: code G, as has_rollover (gate). Patterns 1 and 2 are errors.",
-   "subject_key": "dec139b49f90b0f58cdf3cb17a20cd78962b33303dec6069ca7422d084470c03"
+   "ruling": "Ruling: model error; executable triage 2,356/3,506 agree; 820 candidate-unknown, 175 project-refuses, 73 value, 57 project-unknown, 25 candidate-refuses (completed: 6 value). stage10.smw.recovered_exceeds_cost (box 1 $12,000, cost $31,000 already recovered $40,000): the project gives $12,000, the reply $21,000, more than the payment; i1040gi Simplified Method Worksheet line 9, 'Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than zero', and line 8 'Enter the smaller of line 5 or line 7' with line 7 'Subtract line 6 from line 2' cannot leave more than line 1. Code G direct rollovers (stage10.plan.direct_rollover $20,000, classm.clcw.3 $4,054, classm.carloan.1 $40,040) are taxed in full because the reply subtracts the unasked rollover amount; i1040gi Lines 5a and 5b, Rollovers: 'Use lines 5a and 5b to report a rollover, including a direct rollover ... From that result, subtract the amount of the rollover. Enter the remaining amount on line 5b'.",
+   "subject_key": "caa8c8a2fc81263c79a264bc3e391d6b5bb610f35f5ed5812e178c17baeff478"
   },
   {
    "key": "retirement.amount_a",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,519/2,459 agree; 614 candidate-unknown, 158 value, 102 project-refuses, 42 project-unknown, 24 candidate-refuses; completed: 109 value, 25 candidate-unknown. Completed value witnesses: stage10.plan.box5 and stage10.mixed.ira_and_plan, project $12,000.00 (partly taxable, box 5), reply $0. Also stage10.smw.cost_recovered, stage10.smw.recovered_exceeds_cost and stage10.smw.cost_recovered_box5, project $0 (fully taxable, no line 5a entry), reply $12,000.00. stage10.plan.direct_rollover is code G, as has_rollover. The first two patterns contradict i1040gi p. 28. Same pattern as retirement.taxable.",
-   "subject_key": "f3a1ec04d580086807dfa37dcaed95e8dd216ecfddfde32715f2c398d624eaff"
+   "ruling": "Ruling: model error; executable triage 2,314/3,506 agree; 862 candidate-unknown, 175 project-refuses, 73 value, 57 project-unknown, 25 candidate-refuses (completed: 6 value). The reply leaves line 4a/5a blank for a code G direct rollover (stage10.plan.direct_rollover project $20,000, reply $0; classm.carloan.1 $40,040; classm.clcw.3 $4,054), against i1040gi Lines 5a and 5b, Rollovers: 'Enter on line 5a the distribution from Form 1099-R, box 1'; and fills it for stage10.smw.recovered_exceeds_cost (project $0, reply $12,000), whose cost was recovered before 2025, against i1040gi Fully Taxable Pensions and Annuities: 'Your payments are fully taxable if ... (b) you got your entire cost back tax free before 2025 ... enter the total pension or annuity payments (from Form(s) 1099-R, box 1) on line 5b; don't make an entry on line 5a'.",
+   "subject_key": "247cfb92417b83a669e7526c46fa5f5f0ef42df4fe33749ea8bf1ee9e395a2df"
   },
   {
    "key": "retirement.sav_amount",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,727/2,459 agree; 355 candidate-unknown, 147 project-refuses, 117 project-unknown, 68 value, 45 candidate-refuses; completed: 27 candidate-unknown, 1 value. The single completed value is stage10.plan.direct_rollover (code G): project $0 (rolled over), reply $20,000.00 (rollover not seen). This is the has_rollover gate pattern. The completed candidate-unknowns are screens read on partial records. Same as the landing-round ruling.",
-   "subject_key": "af0f08d27b39745475784d35b2f6b2457fa3ca89f91b771c719699ee450e1e05"
+   "ruling": "Ruling: representation; executable triage 2,598/3,506 agree; 512 candidate-unknown, 144 project-unknown, 141 value, 93 project-refuses, 18 candidate-refuses (completed: 6 value). Value pairs are project $0, reply box 1 on code G direct rollovers (stage10.plan.direct_rollover, classm.aqee.1, classm.clcw.3, classm.carloan.1): the reply subtracts raw retirement.rollover, which the project does not ask with code G (the has_rollover pattern). f8880 p. 2, Line 4, distributions rolled over are not counted. Same pattern as the Goal-1 round ruling.",
+   "subject_key": "695e7bc58779e0b7da4d624d4742a2686d809243257177e41c4738f584901853"
   },
   {
    "key": "retirement.l1",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,971/2,459 agree; 485 candidate-unknown, 1 candidate-refuses, 1 project-refuses, 1 value; completed: 7 candidate-unknown. No value differs on a completed return. The candidate-unknowns are code-gated screens the reply reads on every entry (partial stage21.blind bases, classm.f1040, classm.s2). The single value and refusal records fall on refused returns.",
-   "subject_key": "5a4d21f98b551ee9a9ce1b5b1f2a05a4c210f98f1820b504d6bdeea09fc26555"
+   "ruling": "Ruling: representation; executable triage 2,522/3,506 agree; 963 candidate-unknown, 20 project-unknown, 1 project-refuses, no value differs (completed: 6 candidate-unknown). Same Form 5329 line 1 share; the reply reads answers the interview does not ask. i5329 pp. 3, 5.",
+   "subject_key": "d332d2ca3ff8028dbf2b08d4a82f17c3aec5714899860c7f03f8f996abd75270"
   },
   {
    "key": "retirement.l2",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 1,725/2,459 agree; 373 value, 346 candidate-unknown, 14 project-unknown, 1 project-refuses; completed: 220 value, 11 candidate-unknown. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
-   "subject_key": "8a3f0465fc39938cc5918549ce4b616093c829912a10615be32eaa1eebaedad2"
+   "ruling": "Ruling: representation; executable triage 1,662/3,506 agree; 1,099 candidate-unknown, 668 value, 51 project-refuses, 25 project-unknown, 1 candidate-refuses (completed: 6 value). The reply's automatic exception 12 reads raw retirement.under59, which the project asks only with code 7 (retirement.under59 gated by retirement.under59_if_code7); on code 1/S entries the unasked answer takes its default and the reply treats the filer as 59 1/2 or older, so its share is zero where the project's is the exception amount (e.g. stage21.example.tom_jones, stage21.blind.e1, e2: project $0 where the reply keeps the amount on line 2 before the exceptions). Same pattern as the Goal-1 round ruling. i5329 p. 5, exception 12; p590b p. 29 example.",
+   "subject_key": "bf48e65430b0ea08cc792bb418f30f0c66fd342b2508acf50c8cb97b2cf5b5e4"
   },
   {
    "key": "retirement.l2_e05",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,326/2,459 agree; 71 candidate-unknown, 45 value, 17 project-unknown; completed: 43 value, 1 candidate-unknown. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
-   "subject_key": "8921986bc99abd7199e9978a442a6bccb5e98fabf59771362de386c8794e72bf"
+   "ruling": "Ruling: representation; executable triage 3,155/3,506 agree; 299 value, 46 project-unknown, 6 candidate-unknown (completed: 6 value). The reply's automatic exception 12 reads raw retirement.under59, which the project asks only with code 7 (retirement.under59 gated by retirement.under59_if_code7); on code 1/S entries the unasked answer takes its default and the reply treats the filer as 59 1/2 or older, so its share is zero where the project's is the exception amount (e.g. stage21.blind.e7, stage21.refuse.e05_joint: project $3,000 / $5,000, reply $0). Same pattern as the Goal-1 round ruling. i5329 p. 5, exception 12; p590b p. 29 example.",
+   "subject_key": "18776c8f5bb3274c7224b92becb96598d32be598e0553a41b0b0520e9475fbc4"
   },
   {
    "key": "retirement.l2_e09",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,330/2,459 agree; 119 candidate-unknown, 8 project-unknown, 2 value; completed: 2 value. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
-   "subject_key": "898d5ca4a15d4dca545b107f71fb5e05cae3d21f130357bb50f9a9f337bb79ab"
+   "ruling": "Ruling: representation; executable triage 3,397/3,506 agree; 81 candidate-unknown, 26 project-unknown, 2 value (completed: 2 value). The reply's automatic exception 12 reads raw retirement.under59, which the project asks only with code 7 (retirement.under59 gated by retirement.under59_if_code7); on code 1/S entries the unasked answer takes its default and the reply treats the filer as 59 1/2 or older, so its share is zero where the project's is the exception amount (e.g. stage21.blind.e4: project $7,000 / $4,500, reply $0). Same pattern as the Goal-1 round ruling. i5329 p. 5, exception 12; p590b p. 29 example.",
+   "subject_key": "d1d595976e803607f204838f7bf5f6e25648a12fd5f2f74fb6ee2069fe65f1d3"
   },
   {
    "key": "retirement.l2_e19",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,327/2,459 agree; 72 candidate-unknown, 43 value, 17 project-unknown; completed: 43 value, 1 candidate-unknown. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
-   "subject_key": "2b52bece3ecca28304e3f2d2544707be938d94a3f8745b1cdcad62fa3c865ad4"
+   "ruling": "Ruling: representation; executable triage 3,402/3,506 agree; 75 candidate-unknown, 26 project-unknown, 3 value (completed: 3 value). The reply's automatic exception 12 reads raw retirement.under59, which the project asks only with code 7 (retirement.under59 gated by retirement.under59_if_code7); on code 1/S entries the unasked answer takes its default and the reply treats the filer as 59 1/2 or older, so its share is zero where the project's is the exception amount (e.g. stage21.blind.e4, stage21.mut.e19). Same pattern as the Goal-1 round ruling. i5329 p. 5, exception 12; p590b p. 29 example.",
+   "subject_key": "b0c78ff28737cbb435167e6ab5c810be1c9dbd106bb586ea0c2d0cccda53a218"
   },
   {
    "key": "retirement.l2_e22",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,377/2,459 agree; 72 candidate-unknown, 8 project-unknown, 2 value; completed: 2 value. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
-   "subject_key": "73f8a8d80fba81a3c42a824ba89040b0afb4e0a014c6610f9c69d0a0fdc02aff"
+   "ruling": "Ruling: representation; executable triage 3,472/3,506 agree; 26 project-unknown, 6 candidate-unknown, 2 value (completed: 2 value). The reply's automatic exception 12 reads raw retirement.under59, which the project asks only with code 7 (retirement.under59 gated by retirement.under59_if_code7); on code 1/S entries the unasked answer takes its default and the reply treats the filer as 59 1/2 or older, so its share is zero where the project's is the exception amount (e.g. stage21.blind.e5: project $6,000 / $5,500, reply $0). Same pattern as the Goal-1 round ruling. i5329 p. 5, exception 12; p590b p. 29 example.",
+   "subject_key": "20739622c4ed204f3db558d32b8b235970e395a021c294cf087514566bfa37bf"
   },
   {
    "key": "retirement.is_e23",
@@ -99,24 +108,24 @@
   },
   {
    "key": "retirement.l2_e23",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,323/2,459 agree; 72 candidate-unknown, 47 value, 17 project-unknown; completed: 3 value. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
-   "subject_key": "48837f8ad1cdb4f4a5a55af71457674c4d688984d96e80214b0c3a2d50419f74"
+   "ruling": "Ruling: representation; executable triage 3,364/3,506 agree; 89 value, 46 project-unknown, 7 candidate-unknown (completed: 6 value). The reply's automatic exception 12 reads raw retirement.under59, which the project asks only with code 7 (retirement.under59 gated by retirement.under59_if_code7); on code 1/S entries the unasked answer takes its default and the reply treats the filer as 59 1/2 or older, so its share is zero where the project's is the exception amount (e.g. stage21.mut.e23_over_cap, stage21.refuse.limit_binds, stage21.blind.e5). Same pattern as the Goal-1 round ruling. i5329 p. 5, exception 12; p590b p. 29 example.",
+   "subject_key": "e44a25eabace61f9b6c14598b8ae6cf517a6f89ffd8b0e5bc712be73d5fdd6e1"
   },
   {
    "key": "retirement.l1_s",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,438/2,459 agree; 20 candidate-unknown, 1 project-refuses; completed: 1 candidate-unknown. No value differs on a completed return. The candidate-unknowns are code-gated screens the reply reads on every entry (partial stage21.blind bases, classm.f1040, classm.s2). The single value and refusal records fall on refused returns.",
-   "subject_key": "3ea70f559e14e3e4f1e6b9d7d2aed190d1019f68e90ee82d1b71f8498120b735"
+   "ruling": "Ruling: representation; executable triage 3,465/3,506 agree; 39 candidate-unknown, 1 project-refuses, 1 project-unknown, no value differs (completed: 5 candidate-unknown). Same share, code S. i5329 pp. 3, 5.",
+   "subject_key": "adeafbfaba041bf38fff247ff47973004c339d07bc350c6f2eb1e64eed74afda"
   },
   {
    "key": "retirement.l2_s",
-   "record": "358e16093f6683372ad68be40f77321fb1a94562776eed3539cdd1abc09f7a8c",
+   "record": "491d54aaf7e131db81639a35be7c81f53c975192c772a14328dfa703a72ad2e6",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation. Triage .transcription/triage/2025/retirement.json (log sha matches): 2,280/2,459 agree; 136 value, 39 candidate-unknown, 4 project-unknown; completed: 84 value, 2 candidate-unknown. retirement.under59 is gated by retirement.under59_if_code7 in the project. The reply reads it on every early (code 1 or S) entry to apply exception 12 automatically (\"Code 1 or S received at age 59½ or older\"). With the answer unasked, h_auto12 is true on every code 1/S entry. Line 2 then takes the whole taxable amount (stage21.example.tom_jones $3,000.00 against $0, the p590b example of a 35-year-old; stage21.blind.e1). The named-exception shares l2_e05 to l2_e23 fall to $0 because h_exc_counts excludes auto12 entries (e.g. stage21.blind.e6 e05 $9,000.00, stage21.blind.e4 e09 $7,000.00, stage21.mut.e23_over_cap). l2_s is inflated the same way (stage21.blind.e2 $4,000.00 against $0). With the age answer given, the reply's rule matches the source. Same as the landing-round ruling.",
-   "subject_key": "e020dec41df19fa68193928b80828e8782daf57923a47a499d7c89be401dd17c"
+   "ruling": "Ruling: representation; executable triage 3,409/3,506 agree; 54 candidate-unknown, 40 value, 3 project-unknown (completed: 6 value). The reply's automatic exception 12 reads raw retirement.under59, which the project asks only with code 7 (retirement.under59 gated by retirement.under59_if_code7); on code 1/S entries the unasked answer takes its default and the reply treats the filer as 59 1/2 or older, so its share is zero where the project's is the exception amount (e.g. stage21.mut.simple_e23_within_cap: project $800, reply $3,000; code S). Same pattern as the Goal-1 round ruling. i5329 p. 5, exception 12; p590b p. 29 example.",
+   "subject_key": "4af544fff66f9ac2df962df1f1c8a0810f97b8f26cae3212c0f686b7d8be9520"
   },
   {
    "key": "(SMW 1)",
@@ -190,22 +199,23 @@
   }
  ],
  "subjects": {
+  "retirement.dis_wages": "b6f45a3ec750d43297c306ca33a3b5519325e7ce083c4513470372717199aba2",
   "retirement.one": "76b9f2cffa363962328538b47981396fbfe500bba0758d5db5018ea61d1d0a64",
   "retirement.is_ira": "346a3e8d9e9bd5fd570df6652d6d72eac3cf20ec1a8149eb316e81b972dcde84",
-  "retirement.has_rollover": "4ea169d881d4756dfd32222a5a7a7cbf7d49007a528d1cbfa39aff32ade8b607",
-  "retirement.taxable": "e857d0c59195ef6ccbee3b31b8a81c3cc172046810ee78bcfe3b19a5850fc4c7",
-  "retirement.amount_a": "ced8eec7e9778b141c7c1b9b898e1d938d62e00c3f07a2117667d917a8b1aecb",
-  "retirement.sav_amount": "946f313719251b3290515b32dde865993ea45a8c2f3b6ee2b550ab40485d09ca",
-  "retirement.l1": "0cf2820a5a667137bcdcf41de1223b998c1cbb9c1c617e8b175c17d9f5c60d5e",
-  "retirement.l2": "1b36c326daa75a411fc8b63cf956ebff46aea2298ec5822dfd2a9d7bbf6bb891",
-  "retirement.l2_e05": "0c7fff04f88358b84d9fd46f074592d44904412172c949db7c7ed5902aaccb60",
-  "retirement.l2_e09": "531dde2d57e905db3eb2013c898d53282af82780a6cd6f2c47a08a8cba3aaee2",
-  "retirement.l2_e19": "7dbeab3bd1944effebbdc616cfd194b81ddb6956c3a456d6294e8a4d211a71b6",
-  "retirement.l2_e22": "c26f3471740559127e45e6fba3b3bf90a5c3267dc4ce412f89d5917c84345155",
+  "retirement.has_rollover": "44c0b4f9e44632d0db895a5f233a0e3781f035d3506c7b497fb04515be8b5a65",
+  "retirement.taxable": "47d820fcff91c2dd319e1d62a0b188f8aa463ace5876b73fc26a3b0527d9f898",
+  "retirement.amount_a": "7382a9ab51116499a82e50b146f545888c93c5eb3720e38a8c28ab614a00d55a",
+  "retirement.sav_amount": "c52f92bb8ab8defa62f2b3d7fae6f4cdd4b1f80db9ef36e655612b64af89887d",
+  "retirement.l1": "713b034b412975a61a7329e6d362a707388f7536611272be99531386328f9b3c",
+  "retirement.l2": "91f56227409286ccb57366f97b932b247ef498677b0227b432ac21effd00407d",
+  "retirement.l2_e05": "baf76c7ae4521d46e9e902e3cd9e74ef1eb7fa5afd76cf22b7c58967fd3e3a86",
+  "retirement.l2_e09": "6ef765d41c449b7cef54f111e530a443232d12ffe137c33cc35f103871c3aeae",
+  "retirement.l2_e19": "916d1e45129de0e1c4b43fe8250a0a785b1a6342b95a93cbe9917fa6b3c1794e",
+  "retirement.l2_e22": "5b13590080dafd19358a4a60d374ff847ba63a072f03fd777e93f580014cb6be",
   "retirement.is_e23": "d7026551843db7349d62b187ebdb7eb262f1ddd4f11baade3a052fa8c16388ff",
-  "retirement.l2_e23": "c2c628e94b8a65405a1e009252368beab3c47a6335392c1d295e79269eda8fc2",
-  "retirement.l1_s": "1eed318e143ced9463373f06c39d2c146735c3a42572b803d1046d60746bed35",
-  "retirement.l2_s": "a9337b5f8d8d972dbed6c80a5f12f8982baf18453be1d0cac227fb8c341a8f2a",
+  "retirement.l2_e23": "143ab02170d0f8f9c61473ec82c8a697b8d3aa0bee9931ae5a10981f255a1311",
+  "retirement.l1_s": "46765ad840e1755191ce2ee528297b470387dfa4cb9e6463e08fb4f402788f21",
+  "retirement.l2_s": "3b4a955de37a08e06ef91156cd81d2ff2d5c5d2b72cac48f37c10bcaf3d6b0b3",
   "(SMW 1)": "6cb93b92e8867cf90e78cb740ae19ccc1230fc61c1a98abbbd651d5549f07b82",
   "(SMW 2)": "db87ae5f86ff35815b8daee3e086d080c5c024071aff0254b4367df9cb2aa9c0",
   "(SMW 4)": "8784980b8e3f69dd647b676bb94b7e6d9d1357c614f923f963940b11defab806",
@@ -219,6 +229,7 @@
  },
  "__rest__": "753d6dcac87a3c80fc66eda9e36c1de83ff170ac41b64253534cb38b1e178e2d",
  "foreign": {
+  "retirement.dis_wages": "8e58164f5796377a873627a87019e0ea9a7a6b2de3ac9e347c69b89a3a2d132e",
   "retirement.has_rollover": "e63a9a6eb12146b7ecb709d9f6aee9c8def33e1f13164200fd954d2b87e4c2d8",
   "retirement.taxable": "e63a9a6eb12146b7ecb709d9f6aee9c8def33e1f13164200fd954d2b87e4c2d8",
   "retirement.amount_a": "e63a9a6eb12146b7ecb709d9f6aee9c8def33e1f13164200fd954d2b87e4c2d8",

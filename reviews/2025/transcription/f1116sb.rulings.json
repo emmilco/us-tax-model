@@ -1,0 +1,389 @@
+{
+ "kind": "transcription",
+ "form": "f1116sb",
+ "rulings": [
+  {
+   "printed": "4 (i)",
+   "project_expr_sha256": "029cc1ee18f1616c84533edac24d87744ab1a66a8aefcfb5eae5628cb8bc403a",
+   "second_expr_sha256": "5788074b32f2158751c31de4cd649563f76de1700040b25a3ad9fe6667c89ec0",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "7956816cb2c9774ec691c2ca13267d5a0ae95f8c5a70e630618f67051fc1b9a7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (ii)",
+   "project_expr_sha256": "589e4ca7028d7b8b578b9f16e07098a4dc35eae66cf0c026286dad9ebf036fce",
+   "second_expr_sha256": "886a67ffc88f5d85851118fdc567801d99c663218c006b5565fac0486b225ebf",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "19daf449a2b17b8ca36f172c7765f86a6b65b281b11b6f30e93db54b3eba221e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (iii)",
+   "project_expr_sha256": "59ec045c071e31b8d51c1aaa5958d132925affbdeb012550ec69d1419757db9a",
+   "second_expr_sha256": "592e7969c6683ccbb8d9dfe7c4176b491edbdc752a8f1a4b322dfe3e6d220b8d",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "261d5955e216b946fc44eabde2be4ad0a44a32a444a54542850e42dceaf03dcb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (iv)",
+   "project_expr_sha256": "cd41af19244ba3d48c365a6944a955117184afdb635dd50824268a2d74e31cfe",
+   "second_expr_sha256": "f26a74141ecbb9506c7cab5f2bae342f00479653643531a2890c6490edb3a420",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "82b933fbfb4e4e8d456db9c7d1eee8b6201df161ba47fed883c8f9cbda33ba2f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (ix)",
+   "project_expr_sha256": "0b1b8608b2d8311b433b5d9a2cc7f2f2e6e605fa8b9d4103e8e0309d1d3c065c",
+   "second_expr_sha256": "58c3f8da6c7851d12e50d1d9c8f174371e6d8f9e885fae6fcbd0622482d41576",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "42ace65cb9294820b63a90e8d88d749c2d090dd2b0f11e7f66d1e332aebb64cb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (v)",
+   "project_expr_sha256": "12f474899a1761d4418a2f9001bd60f5eb723b63027dc3a008cb34578288a86a",
+   "second_expr_sha256": "6e82ce76493ff6ed86329d0b61948a7381599634802f5412fa40cf46c62fef4c",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "55057fa7b562ec33e9cf5fd627b1c3ef23f08ae01f18dda5b546fbb0eb530790",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (vi)",
+   "project_expr_sha256": "8d350383182f81e457a3f807fb740463b9b9403521b72a80926699c66c333325",
+   "second_expr_sha256": "bf94747825767cc39d437dc44658d9585c6b3af9f41d8551666de229adf9a0e9",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "6c8e7eec5ebcacd1c732453c494f180cbf9eaea973e273ca55ea94b584087a79",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (vii) and (viii)",
+   "project_expr_sha256": "90fb2fac7d2f198a526ad4c9311e34c73d2e0ffe66b9ad8c9ad78780deade8ce",
+   "second_expr_sha256": "e0d5db6d25f46ed83ab2fe17287cbbfc14ccc570aa7fdf3b11bf9d7fc1a02f65",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "250b034e341a9d08048743a71dfda5f91f4084c92f572af66472521fe0937e26",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (x)",
+   "project_expr_sha256": "299aee73208c26f86aecfa6be68bdcd86e4cd6379556cba859b53bd59a4debb4",
+   "second_expr_sha256": "2c81416eab42b5bd7180023c8021323ca873c89acc070d192f2fadcb93f871b7",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "e1dd8445082f524edd2a0e08cb95a59471370001a2878dca09622b7692adf35f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (xi)",
+   "project_expr_sha256": "1370ce49f476deddc9492a81fc696ccf7f6af2ff6d3ccbce67634a810901f8c9",
+   "second_expr_sha256": "d4543fa14398b236a51083e78967cb20fb421809ea46f110cc08324039058289",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "4bfb1bb463332da0f89279f882b96aa10209758d73bf06059131a5512a01656b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (xii)",
+   "project_expr_sha256": "5d09c0bd43dfe5282ac079e55caaeec61f2f1268d9341ae5d8a07129332f4afb",
+   "second_expr_sha256": "7bbffbb737d5ecf8ecaa311aea6d1acd075c07949109e103595e0ac58c491b90",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "1b164355c728cbd744835f645a6dd16db77c6bf0dab01b608194703131d87d84",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4 (xiv)",
+   "project_expr_sha256": "83436149d46226290eb089e38ee296ddb2787423db6d32de8db32b346af36a88",
+   "second_expr_sha256": "90a7e393a09b09882fa7209fd88808f2d9c0af0fcb717fd801927dbe4477f5ed",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "f9b04a5d5239a9df4f85a9890de4609365e4c113ecb421372ecb8894bcbe4354",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6 (xiii) and (xiv)",
+   "project_expr_sha256": "2b55b91d466f14bf078ff865bcca7f04e79b1f9f2b2ccfed687e4ab9cffc2f83",
+   "second_expr_sha256": "85134a2cda2eef684fdbda9eb34f690bab0e9736b90a611638838c474f6c0bc0",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "3f5dad33d9e5637af95265a406eb9f6ee648cab132951ec18946da2ab6cfbce1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses"
+    ],
+    "witnesses": [
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7 (xiii) and (xiv)",
+   "project_expr_sha256": "b16766589c75d0bdfed71b5b1922cab41bdf9521d17e2f0441dab71abfcd5bf5",
+   "second_expr_sha256": "f377f32d107a7f704303a84559de99859986ea282cdca99e534f64399ba91bff",
+   "ruling": "Ruling: representation; both enter 0 (no carryback, D1: a return whose 2024 limit had room is refused by f1116sb.carryback); the reply's shown_when on line 6 above zero hides a zero, and is unknown where line 6 is not figured (64 completed candidate-unknown, off the Form 1116 path), 711 candidate-refuses on refused returns.",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "7304e2492e1963cab42365abbfef400681b7d5a006e8c18462e6e1f69d090bf9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f1116sb",
+     "fixture:stage14.asset.refuse_ads_past_gds@f1116sb",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f1116sb",
+     "fixture:stage14.asset.refuse_class@f1116sb",
+     "fixture:stage14.asset.refuse_listed_low@f1116sb",
+     "fixture:stage14.asset.refuse_s179_over@f1116sb",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f1116sb",
+     "fixture:classm.f8889.2.deepseek@f1116sb",
+     "fixture:classm.f8960.2.deepseek@f1116sb",
+     "fixture:classm.asset.3@f1116sb",
+     "fixture:classm.asset.4@f1116sb",
+     "fixture:classm.f8960.2@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1116sb.carryback",
+   "project_expr_sha256": "e259dcad7f20f4264f5cd4ffe8542afde4478a05f38a38fa2e46a44b81ceaefc",
+   "second_expr_sha256": "b01474fc0da6fb30bce68973268eb16b69793ef991d15437a3c22a9bfefec329",
+   "ruling": "Ruling: representation; the project asks f1116sb.prior_year only when line 6 (an excess generated) is above zero and takes prior_none otherwise; the reply reads the input with the same line 6 test inside its condition. Same refusal where both evaluate; differences are project-unknown (64 completed, 67 incomplete, 79 refused: returns off the Form 1116 path whose line 6 is not figured) and 2 candidate-refuses on already refused returns. i1116sb p. 2 and D1 (no carryback; a 2024 year with room refuses).",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "e3af5a7960c75d44b5ee6182c0e3b86c35369b49ab2a22daa548ead41643812e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f1116sb",
+     "fixture:stage8.mut.hoh_child_months_unanswered_absence@f1116sb",
+     "fixture:stage9.eic.refuse.combat_pay@f1116sb",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@f1116sb",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f1116sb",
+     "fixture:t264.eic.show5_agi_open_married_child@f1116sb",
+     "fixture:f1116.c5_changed@f1116sb",
+     "fixture:f1116.c5_split@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1116sb.changed_if_carry",
+   "project_expr_sha256": "d795f42569e2aa63e4e287433293bcd952d381f577284ff92b08f8be9407c28d",
+   "second_expr_sha256": "3ff93bc4b22f37687c889595a454ae743e896037a19be767da09a03ef03f4142",
+   "ruling": "Ruling: representation; the reply reads the input unconditionally where the project asks it only when a carryover is claimed (ftc.carryover_if_asked), giving 'no' otherwise; the only differences are candidate-unknown (8 incomplete, 38 refused returns, input unasked), none on a completed return. Source: i1116sb, line 2 adjustments (refused, Schedule B line 2).",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "ae921c7420e85e6ad3275d9d8ff1a8907933d965661a15739e1733119fea96df",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f1116sb",
+     "fixture:classm.f8889.5.deepseek@f1116sb",
+     "fixture:classm.f4952.3.deepseek@f1116sb",
+     "fixture:classm.f4952.4.deepseek@f1116sb",
+     "fixture:classm.f8960.2.deepseek@f1116sb",
+     "fixture:classm.dependent.1.deepseek@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1116sb.split_if_carry",
+   "project_expr_sha256": "c36db0d3cd3f1f8f6aa8b34a3a91c7de1f22a27d7818f27cc8f3c4f581940cf0",
+   "second_expr_sha256": "d0c8973efc5ec69701e75e6f086316f068d226a3ac2e30d0cb52bf143c7fdd27",
+   "ruling": "Ruling: representation; the reply reads the input unconditionally where the project asks it only when a carryover is claimed (ftc.carryover_if_asked), giving 'no' otherwise; the only differences are candidate-unknown (8 incomplete, 38 refused returns, input unasked), none on a completed return. Source: Pub. 514 p. 39, carryover from a joint-return year divided between spouses (refused).",
+   "context": "a161e3354ab12d115cdc1917db74f5d10cffa602a910aee31128794252dd5e07",
+   "date": "2026-11-15",
+   "run": "9f8343e92e630a1bd8596e45e869e80ef014e2eaa591e38b217947892c5de72f",
+   "subject_key": "af1785c8674757e50cc5b2718c83cf4acc43f95d380cb1a6e52c5aeee3356e42",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f1116sb",
+     "fixture:classm.f8889.5.deepseek@f1116sb",
+     "fixture:classm.f4952.3.deepseek@f1116sb",
+     "fixture:classm.f4952.4.deepseek@f1116sb",
+     "fixture:classm.f8960.2.deepseek@f1116sb",
+     "fixture:classm.dependent.1.deepseek@f1116sb"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

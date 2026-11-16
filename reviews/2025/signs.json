@@ -2,7 +2,8 @@
  "rulings": {
   "sign:s2.amt_l18_low": "s2.amt_l17 is Form 6251 line 17, s2.amt_l6 less s2.amt_l16, and s2.amt_l16 is the smaller of s2.amt_l6 and s2.amt_l15, so it is never more than s2.amt_l6: the amount is zero or more on every return, whatever the sign of line 15.",
   "sign:s2.amt_l18_product": "s2.amt_l17 is Form 6251 line 17, s2.amt_l6 less s2.amt_l16, and s2.amt_l16 is the smaller of s2.amt_l6 and s2.amt_l15, so it is never more than s2.amt_l6: the amount is zero or more on every return, whatever the sign of line 15.",
-  "sign:s2.amt_l31": "s2.amt_l30 is Form 6251 line 30, the smaller of s2.amt_l24 and s2.amt_l29. s2.amt_l29 is NonNegDollars (subtract_floor0), and s2.amt_l24 is s2.amt_l22 less s2.amt_l23, where s2.amt_l23 is the smaller of s2.amt_l21 and s2.amt_l22 and so never more than s2.amt_l22: both operands are zero or more, so the amount is zero or more on every return."
+  "sign:s2.amt_l31": "s2.amt_l30 is Form 6251 line 30, the smaller of s2.amt_l24 and s2.amt_l29. s2.amt_l29 is NonNegDollars (subtract_floor0), and s2.amt_l24 is s2.amt_l22 less s2.amt_l23, where s2.amt_l23 is the smaller of s2.amt_l21 and s2.amt_l22 and so never more than s2.amt_l22: both operands are zero or more, so the amount is zero or more on every return.",
+  "sign:f1116.line21_figured": "f1116.line20 is ftc.regular_tax, Form 1040 line 16 plus Schedule 2 line 1z. s2.line1z is NonNegDollars, and f1040.line16 is the tax on taxable income (f1040.line15, NonNegDollars) by the Tax Table or Tax Computation Worksheet, the Qualified Dividends and Capital Gain Tax Worksheet (qdcg.line25) or the Schedule D Tax Worksheet (sdtw.line47, the smaller of two such taxes), each a tax on amounts that are zero or more: the amount is zero or more on every return."
  },
  "baseline": {
   "sign:f8889.chart_limit": "59b10def19a5ba68",

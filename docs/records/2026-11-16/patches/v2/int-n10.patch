@@ -1,0 +1,113 @@
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 681ceac..fb93f1c 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -502,11 +502,13 @@ bank:
+     seq: 95
+     help: Most partners with a loss have basis to cover it. The worksheet for a partner's basis in the instructions for
+       Schedule K-1 figures it. A Yes ends the interview here.
++    prompt: "On this Schedule K-1 (Form 1065) — Were your 2025 losses from it more than your basis at the end of its year (what you put in, plus your share of its income and debts, less losses and money taken out)?"
+   - input: k1p.not_at_risk
+     order: 264
+     seq: 96
+     help: A partner who put in their own cash, or is liable for the partnership's loans, is at risk; so is money borrowed
+       from a bank or other outside lender that you must repay. A Yes ends the interview here.
++    prompt: "On this Schedule K-1 (Form 1065) — Was any of what you put in borrowed without personal liability (other than qualified real estate loans), protected by a guarantee or stop-loss agreement, or lent by another partner or someone related to one?"
+   # --- end k1p ---
+   - input: $person
+     order: 100
+@@ -1018,6 +1020,7 @@ bank:
+     order: 267
+     seq: 2
+     help: "These costs are figured differently for the alternative minimum tax (Form 6251). A Yes ends the interview here."
++    prompt: "Do you (or, on a joint return, your spouse) deduct in a business costs of gaining or keeping readers for a newspaper, magazine or newsletter, exploring for or developing a mine, or drilling an oil, gas or geothermal well?"
+   - input: s2.credit_recapture
+     order: 291
+     seq: 1
+@@ -1934,8 +1937,8 @@ bank:
+   - input: person.f4137_under20
+     order: 148
+     seq: 4
+-    help: You had to report tips to an employer only in a month in which the cash and card tips at that job came to $20 or
+-      more. Tips below that are still income but carry no social security or Medicare tax.
++    help: "Tips under $20 in a month at one job did not have to be reported to the employer. They are still income but carry no social security or Medicare tax."
++    prompt: "For this person (you, or your spouse on a joint return) — Of the cash and card tips you did not report, how much was from a month in which your tips at that job were under $20? Zero if none."
+   - input: person.tips_gov
+     order: 148
+     seq: 5
+@@ -1949,9 +1952,12 @@ bank:
+     seq: 1
+     help: Count only pay for caring for someone who lives in your home with you. Box 12 code II shows such pay that is not in
+       box 1.
++    prompt: "For this person (you, or your spouse on a joint return) — How much 2025 Medicaid pay for caring for someone who lived in your home with you is in box 1 of your W-2s? Zero if none."
+   - input: person.mw_not_box1
+     order: 149
+     seq: 2
++    help: "It may show only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form."
++    prompt: "For this person (you, or your spouse on a joint return) — How much of that Medicaid pay is not in box 1 of a W-2? Zero if none."
+   - input: person.mw_1099
+     order: 149
+     seq: 3
+@@ -6815,10 +6821,8 @@ bank:
+   - input: k1s.past_years
+     order: 264
+     seq: 168
+-    help: A personal service business is one in health, law, engineering, architecture, accounting, actuarial science,
+-      performing arts or consulting, or any other business in which capital is not a major source of income. A year counts
+-      if you met any test of material participation in it; your earlier returns show it (the business's income or loss was
+-      in column (i) or (k) of Schedule E, not (g) or (h)).
++    help: "Personal services: health, law, engineering, architecture, accounting, actuarial science, performing arts, consulting, or other work where capital is not a major source of income. A year counts if its income was in column (i) or (k) of your Schedule E."
++    prompt: "For this S corporation — Did you (or your spouse, whether or not you file jointly) materially participate in this business in at least 5 of the years 2015 to 2024 (any 3 earlier years if it provides personal services)?"
+   - input: k1s.mp_other
+     order: 264
+     seq: 169
+@@ -6867,8 +6871,8 @@ bank:
+   - input: k1s.not_at_risk
+     order: 264
+     seq: 178
+-    help: A loan from a bank or other outside lender that you must repay yourself is not meant. Outside what this tool
+-      prepares; a Yes ends the interview here.
++    help: "Such as a loan you are not personally liable for, or money protected from loss by a guarantee or stop-loss agreement. A bank loan you must repay yourself does not count. A Yes ends the interview here."
++    prompt: "For this S corporation — Did you pay for your shares, or lend to it, with money borrowed on terms that protect you from loss, or borrowed from another owner or someone related to one?"
+   - input: f7203.election
+     order: 264
+     seq: 180
+@@ -6918,16 +6922,16 @@ bank:
+     seq: 13
+     help: A fair price is what a stranger would pay for a similar place nearby. A day it was empty but offered for rent is not
+       counted.
++    prompt: "For this rental property — How many days in 2025 was it rented at a fair price, including any of those days you also used it? Leave out days it was empty but offered for rent."
+   - input: rental.personal_any
+     order: 130
+     seq: 14
+-    help: 'Family means a spouse, parent, grandparent, child, grandchild, brother or sister. Not personal use: family renting
+-      at a fair rent as their main home, days spent mostly on repairs, and days it was your main home before or after
+-      renting it out (or trying to) for 12 months or more.'
++    help: "Family means a spouse, parent, grandparent, child, grandchild, brother or sister. Not personal use: family renting at a fair rent as their main home, and days it was your main home before or after renting it out (or trying to) for 12 months or more."
+   - input: rental.days_personal
+     order: 130
+     seq: 15
+     help: A swap is an arrangement that lets you use someone else's home in return.
++    prompt: "For this rental property — How many days was it used that way? Leave out days spent mostly on repairs, and days it was your main home before or after renting it (or trying to) for 12 months in a row."
+   - input: rental.days_overlap
+     order: 130
+     seq: 16
+@@ -7112,8 +7116,9 @@ bank:
+   - input: rprop.kind
+     order: 130
+     seq: 57
++    prompt: "For this building or improvement — What is it?"
+     value_labels:
+-      residential: A building with homes, or an improvement to one
++      residential: "A building with 80% or more of its rent from homes or apartments, or an improvement to one"
+       nonresidential: Another building, such as shops or offices, or an improvement to one
+       personal: Something else, such as an appliance, carpet, furniture, a fence or a driveway
+     help: Something else ends the interview here.
+@@ -7182,6 +7187,7 @@ bank:
+     seq: 60
+     help: For a building you bought, the price (with closing costs) less the part for the land; your property tax bill’s split
+       of land and building may be used.
++    prompt: "For this building or improvement — Your share of what it cost, not counting the land. If you used it yourself before renting it, use the smaller of what the building was worth then and what you paid plus improvements, both without the land."
+   - input: rprop.screen
+     order: 130
+     seq: 61

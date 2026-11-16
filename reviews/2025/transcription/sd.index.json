@@ -5,8 +5,8 @@
  "base": "17fd196d69724c3cfebb9e35d493f3164cb77aa60b4791cc3810a6dad8688673",
  "head_rows": {
   "printed lines compared": "57",
-  "agree / disagree / missing": "15 / 42 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "21 / 36 / 0",
+  "line-scoped reviews": "6 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -44,10 +44,10 @@
   },
   {
    "key": "sd.filed",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 31, Line 7a, Exception 1 (no capital losses, only box 2a capital gain distributions, no box 2b, 2c or 2d amounts) and i1040sd p. 10, Capital Loss Carryover Worksheet, 'Use this worksheet to figure your capital loss carryovers from 2024 to 2025 if your 2024 Schedule D, line 21, is a loss ... Otherwise, you don’t have any carryovers'. The reply files Schedule D whenever sd.carryover is Yes; sd.carryover asks only whether 2024 line 21 was a loss, and the worksheet can leave no carryover (lines 6 and 14 at $0), in which case there is no capital loss and Exception 1 can apply. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,702 of 2,959 agree; 2 value differences, both completed (stage20.line21_at_both_bounds, stage20.mut.line21_below_limit: carryover Yes with lines 6 and 14 at $0; project false, reply true), the same witnesses as earlier rounds. The reply's added sd.qof, sd.f2439, sd.casualty, sd.condemned, sd.sec1256 and sd.sold_other terms are refused through sd.other_forms (scope): 106 project-refuses, 147 project-unknown (records withholding div.any or the screens), 2 candidate-unknown (mutation.m3.div.* cases, where the reply reads div.box2b ungated by its parent question). Project stands.",
-   "subject_key": "be747baab4190b56641f5098a5eb127d396085d7626f2992b9063995afb4313c"
+   "ruling": "Ruling: model error; i1040gi p. 31, Line 7a, Exception 1: \"You don't have to file Form 8949 or Schedule D if you aren't deferring any capital gain by investing in a qualified opportunity fund and both of the following apply. You have no capital losses, and your only capital gains are capital gain distributions from Form(s) 1099-DIV, box 2a ...; and None of the Form(s) 1099-DIV ... have an amount in box 2b ..., box 2c ..., or box 2d\". The project files Schedule D for any sale, any 1099-DIV box 2b or 2d amount (this merge's change, read from div.box2b_if_capital_gain and div.box2d_if_capital_gain) or a capital loss carryover (sd.line6 or sd.line14 below zero); box 2c is screened by div.section1202. The reply drops the box 2b and 2d tests (its note says its interface had no input for them, so a return whose only items are box 2b or 2d distributions would wrongly skip Schedule D), files on a Yes to sd.carryover even when the carryover worksheet leaves no loss (then there is no capital loss and Exception 1 can apply), and adds sd.qof, which the project refuses (sd other forms refusal, i1040sd p. 1, Form 8997), so it never differs on a computed return; lines 4, 5, 11 and 12 are zero after screening on both sides. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source. Project stands.",
+   "subject_key": "0d4187637d3e6aea343f8da2da81edb9b76703b1e5d2acdd968aaef7db50c781"
   },
   {
    "key": "sd.zero",
@@ -84,227 +84,221 @@
   },
   {
    "key": "1a(d)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (d). The reply adds the digital-asset box G to box A; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,500 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 314 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "aa69863c4ed729ceef3de923c83fe5f8a0878bc816e167efd2c0e6ffbb9dabf2"
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "cee10fdda342698f0334ea80b3b4e9709218ba25ba6e48fa59ba8c3e63f7f1d5"
   },
   {
    "key": "1a(e)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (e). The reply adds the digital-asset box G to box A; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,500 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 314 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "80545216ed6f37fc93c1ca41f36b357938f6a5b598183d8c4596ed25a056088a"
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "ef4c73d127f85a71d8deacd812f11a4c7ddc495637c59f36f612fd64be2a223f"
   },
   {
    "key": "1a(g)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (g). The reply adds the digital-asset box G to box A; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,500 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 314 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "765d177a776dfb81d54c26b07c4aa89db06252123d25b9a7155800a2649d4249"
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "8bd05d96e6f0edb17035b30ce6fdf0e42a1deee0e4cd0713b3c52474b91c84d7"
   },
   {
    "key": "1a(h)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1a, column (h). The reply adds the digital-asset box G to box A; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). Column (h) is the reply's (d) less (e) plus (g) of the same boxes. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,627 of 2,959 agree; 109 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 223 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "4588894e79d38d54918a318033dd22fe656266baf1feaf6891930c03ba44ca30"
+   "ruling": "Ruling: representation; equivalent: the reply's line 1a (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 1a, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "ead07741c8f0da53f46e1a3bed0dfa040618b401ad5803a176d948fa38bf1a87"
   },
   {
    "key": "1b(d)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1b, column (d). The reply adds the digital-asset box G to box A; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,500 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 314 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "7ba71774dd7c954296c2d36eef8028173ffc1d4acfd3156fc6103598100a31a5"
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "status": "AGREE",
+   "subject_key": "0ae4307636e3cd6416ed00782c5ce65423943e35412c95ca788af8056b2a08bb"
   },
   {
    "key": "1b(e)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1b, column (e). The reply adds the digital-asset box G to box A; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,500 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 314 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "e70de716a225c864800fc1a814020ebbe6670ef9692738dc14f3f0611b5250fa"
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "status": "AGREE",
+   "subject_key": "a6872e7418d66c5608fcfcbcbcd28d66d7b714f2a67db5a3bf2758c78d286e1e"
   },
   {
    "key": "1b(g)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1b, column (g). The reply adds the digital-asset box G to box A; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,500 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 314 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "38ad250cd0a1cbcd0f40c9d168c9afbd6b29cda9942e0430bcfde2e06cb0fefd"
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "status": "AGREE",
+   "subject_key": "cc023329e2cd70673bb8da1b0dd1e1c052c83054e7697f313feb62a5f18bb3df"
   },
   {
    "key": "1b(h)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 1b, column (h). The reply adds the digital-asset box G to box A; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). Column (h) is the reply's (d) less (e) plus (g) of the same boxes. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,627 of 2,959 agree; 109 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 223 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "1f6e38152f6997bef78c18bd83c8f04e826e950abb7062d10e54386f708db97a"
+   "ruling": "Ruling: representation; equivalent: the reply's line 1b (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 1b, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "d7dd431ab0fb5484a1b8d727a2f2e8fb66fcb24cc80d9b11bd118f2de1374f88"
   },
   {
    "key": "2(d)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (d). The reply adds the digital-asset box H to box B; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "8be9cbd001601a3e2481af09539c6540aec38a301056889e8ba06afc1195eb03"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box B/H entries; the project adds the condition that the entry is on the detail route (Form 8949). Box B/H entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (B/H) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "2f2861e2d317d7fe69aaa0a56493565a8f2af556eaf615537f226ec629bf9e5a"
   },
   {
    "key": "2(e)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (e). The reply adds the digital-asset box H to box B; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "f321f2621eeae6390086616988cbb1a432112dbc498c9fdf93b8157508e11a91"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box B/H entries; the project adds the condition that the entry is on the detail route (Form 8949). Box B/H entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (B/H) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "48eab14a912d6d90952cac7ddf480dfc56f7bfec6c219978547d59f1231d6961"
   },
   {
    "key": "2(g)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (g). The reply adds the digital-asset box H to box B; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,499 of 2,959 agree; 144 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "892b6a4da7d51ca0cb5c01eb5af2254ad5dbec2a35ed505cb0f64ed17220f04d"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box B/H entries; the project adds the condition that the entry is on the detail route (Form 8949). Box B/H entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (B/H) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "ccd3f610865f9cb336360cc1db5e1f02db4cb49ef093f29a89d2affc777670fd"
   },
   {
    "key": "2(h)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 2, column (h). The reply adds the digital-asset box H to box B; the project sums box B behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. Column (h) is the reply's (d) less (e) plus (g) of the same boxes. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,626 of 2,959 agree; 108 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 225 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "31b2e25174e1d577704997f90926dd62efbd0b0f8c14fb1880446bb1295bd912"
+   "ruling": "Ruling: representation; equivalent: the reply's line 2 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 2, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "7cec7f630c67210825c7060cabd4d11b43c88ed2e7bf67cf23fbad8d389683d2"
   },
   {
    "key": "3(d)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (d). The reply adds the digital-asset box I to box C; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "aca75551928b7feef8c5a0261bc01815f6ec1bb9548006fdb2fcdc8cd8f2bee7"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box C/I entries; the project adds the condition that the entry is on the detail route (Form 8949). Box C/I entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (C/I) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "05de74a46f7324cf507f5abb75f0c696531ac60dd5888471033dfd3f3ccb9fe3"
   },
   {
    "key": "3(e)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (e). The reply adds the digital-asset box I to box C; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "706a74068ea16073b7f2a1fd96504ceed2c1610aab00cf40869741aeec8b1c80"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box C/I entries; the project adds the condition that the entry is on the detail route (Form 8949). Box C/I entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (C/I) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "24ebaa89683a81fa93d63f21c59ce1182577e79edad4058894602e1a8d895a1d"
   },
   {
    "key": "3(g)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (g). The reply adds the digital-asset box I to box C; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,553 of 2,959 agree; 130 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 276 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "6bfa41bc81da70cc70936dca51037f4b85a1c9cd7f0a2ca799964f864be65952"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box C/I entries; the project adds the condition that the entry is on the detail route (Form 8949). Box C/I entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (C/I) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "1954f52791e6811c88acc07d28df2c4dfd91ef3e8cddc991aae6823a3b7946ea"
   },
   {
    "key": "3(h)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 3, column (h). The reply adds the digital-asset box I to box C; the project sums box C behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. Column (h) is the reply's (d) less (e) plus (g) of the same boxes. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,675 of 2,959 agree; 99 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 185 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "9c5d80ac81147cc723d3686630e8de1eb596794560348a85bd89ac0844298109"
+   "ruling": "Ruling: representation; equivalent: the reply's line 3 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 3, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "73a80d787156b19d1610c540908f1b3cb67cd478e6b0ccc3f405e6f3e7ab09f1"
   },
   {
    "key": "8a(d)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (d). The reply adds the digital-asset box J to box D; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,501 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 313 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "4ce74aa41f57df242acab44996e878f7322b71b736677a09287b7db7c7e975ea"
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "ed224c1fc2676ad586aab3a666e2244cf07a551d4b7b8b3c587273e4f0be6aef"
   },
   {
    "key": "8a(e)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (e). The reply adds the digital-asset box J to box D; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,501 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 313 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "4937458e4bd5aa283c8a04ecfd471c43f396e5030ea313248824bad5273865fd"
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "bc0fc686a38e70fb942b0268df3e0b4960af34c322feb5820041a8a72ef668ed"
   },
   {
    "key": "8a(g)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (g). The reply adds the digital-asset box J to box D; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,501 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 313 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "bbf99c55a6ac01993b38ed811bbeed589a449f0ed15a201b28ed5db2a9d7703b"
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "211f17fc0c6838d19fea3f93a90cd2b9c85ff0a464afb62db763059866bd77b4"
   },
   {
    "key": "8a(h)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8a, column (h). The reply adds the digital-asset box J to box D; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). Column (h) is the reply's (d) less (e) plus (g) of the same boxes. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,628 of 2,959 agree; 109 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 222 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "4b3c9fef12d8906736ff630795cd00d427192674c3ab26fbdeabd5a553589aba"
+   "ruling": "Ruling: representation; equivalent: the reply's line 8a (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 8a, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "66428175ca2eaf529fa3aee2683993415ca35172905794831e0b41f332ecd0f0"
   },
   {
    "key": "8b(d)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8b, column (d). The reply adds the digital-asset box J to box D; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,501 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 313 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "5d9aa70a4c12ef3a03c8a13725f4a813ed19de74a02945665b371cd9c602a59c"
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "status": "AGREE",
+   "subject_key": "607433a32a2b6a31f6cf8120d7aea635a3c4b90df9dd8e5ad79de6a16464c0a6"
   },
   {
    "key": "8b(e)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8b, column (e). The reply adds the digital-asset box J to box D; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,501 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 313 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "29cd62a7d62f8816b9a2da3c597c368c63bd8c6b5dba0fe6f64d5ebf56ed8b46"
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "status": "AGREE",
+   "subject_key": "83ebfc2342825261c12b728f32f7dc3ba09f0c5855369803c64f20147876c943"
   },
   {
    "key": "8b(g)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
-   "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8b, column (g). The reply adds the digital-asset box J to box D; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,501 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 313 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "a34fb843325804280dae3effb390a38a5853625cddd6dda0c9db0fd67be5f1ec"
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
+   "status": "AGREE",
+   "subject_key": "0a4f1bb838de7ee9e260dc1f8207384b8055ccaf0e65ae2a9d1dc09751cf520c"
   },
   {
    "key": "8b(h)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 8b, column (h). The reply adds the digital-asset box J to box D; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). Column (h) is the reply's (d) less (e) plus (g) of the same boxes. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,628 of 2,959 agree; 109 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 222 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "9e4b70908334e3b343f6d3cb7bdeb0552cebaaaf14e48f0e33820bd655bd46c9"
+   "ruling": "Ruling: representation; equivalent: the reply's line 8b (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 8b, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "f6cdc28ecb3f60de4deb99721faa17f1a73a1e87bf64a17d43a7207c0eac7196"
   },
   {
    "key": "9(d)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (d). The reply adds the digital-asset box K to box E; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "65cf3f3380627ae2526528caa97627fe9b20cebc7e67ea95501acc91deb3bde0"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box E/K entries; the project adds the condition that the entry is on the detail route (Form 8949). Box E/K entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (E/K) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "7973236f96fdbcd6d45c381bcc25246f8f77d50ebc54a42348f9a272ee8f5be5"
   },
   {
    "key": "9(e)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (e). The reply adds the digital-asset box K to box E; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "fab7f39d6c76f97cc8b6ba777142ca593aca5abe8cc7d417f8939d0851e49979"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box E/K entries; the project adds the condition that the entry is on the detail route (Form 8949). Box E/K entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (E/K) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "6dfd1fdd4bf0ec06fbd9e4c14e76ddb6b1590170defcb29a1a389d72c239579a"
   },
   {
    "key": "9(g)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (g). The reply adds the digital-asset box K to box E; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "2dbf9f7993c53387491754f0d0fbb5d4d08b220baa8785f1647d797c5f9d4bb1"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box E/K entries; the project adds the condition that the entry is on the detail route (Form 8949). Box E/K entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (E/K) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "3b502bfd0751fa2759f90cac2d8d28faf6190199c1b99748fc41d67071a3a92b"
   },
   {
    "key": "9(h)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (h). The reply adds the digital-asset box K to box E; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. Column (h) is the reply's (d) less (e) plus (g) of the same boxes. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,625 of 2,959 agree; 109 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 225 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "c5ab2e70ada2f0da497b405e078cab1e6b3ffcbae6ea25cd944e67c74dfd0934"
+   "ruling": "Ruling: representation; equivalent: the reply's line 9 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 9, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "dedfea7682a4cd52fe1ba18d1255dc47b9adcdcbe310d2c86a9f7f862d33aef9"
   },
   {
    "key": "10(d)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (d). The reply adds the digital-asset box L to box F; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "6adc0427f1770a5972a3d5cf2cc6ce4a3b79936ce803fecfa4935d795d5bb501"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box F/L entries; the project adds the condition that the entry is on the detail route (Form 8949). Box F/L entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (F/L) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "f24b160610ca94365ab5ad0c5220c9f857ac801bfb5be20edcb82e7d5bbe147d"
   },
   {
    "key": "10(e)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (e). The reply adds the digital-asset box L to box F; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "4b2b53a3150963bfa648690884b6abe92524523d6a218f42fadb489d10027ee6"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box F/L entries; the project adds the condition that the entry is on the detail route (Form 8949). Box F/L entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (F/L) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "a796dfc12a2de8c39f968719aa23d35c76569e907e94a57964cf6e1e262e330b"
   },
   {
    "key": "10(g)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (g). The reply adds the digital-asset box L to box F; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,553 of 2,959 agree; 130 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 276 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "8316e6e159c43f00a0845df57b58d543e295e3a607d964265b1cc49a2bb68e68"
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box F/L entries; the project adds the condition that the entry is on the detail route (Form 8949). Box F/L entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (F/L) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "7ba65a9377fe8d82bd545b8ebd4db8a781758f2c9fd5e80b6e15353556406720"
   },
   {
    "key": "10(h)",
-   "record": "08c4af8381d2abc38e0510cedd8463f47aabb057bea6192fe352e9084cd68a36",
+   "record": "5117aa74fe5113fd1c51f11e5d5174752acf9a5eedb1ccdb662275e8d58f1d47",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (h). The reply adds the digital-asset box L to box F; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. Column (h) is the reply's (d) less (e) plus (g) of the same boxes. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,675 of 2,959 agree; 99 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 185 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
-   "subject_key": "aff7c7e11686f8165131b93a430bb9325ea0f41a1d40489216d4efd7a230d6e1"
+   "ruling": "Ruling: representation; equivalent: the reply's line 10 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 10, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "subject_key": "0143984b35a6cbe6f70cecabbf0ca80f6099d74f8d3bb59b12af3f2aac4ed9fa"
   },
   {
    "key": "4",
@@ -400,44 +394,44 @@
   "sd.line19": "b653bf85615a8a9a33689a866188bc4740382a75c6c28c008f27bbd7bf9181a4",
   "sd.filing4952": "c463919a506118918868fb38826faafbd33315376d7f29963f6e818120502b75",
   "sd.investment_election": "a3d91ae14f27d51f584ab503205e59279759a061e193355b00ebdf9732585be4",
-  "sd.filed": "f7819e61c27feb3efc40e8687109718d378741f1f338039d3dc92a1fb67f17ab",
+  "sd.filed": "5a8c3754309489e91237c0dfae36ae75c3eea81635978fcbe8ff851923c8b85b",
   "sd.zero": "ce16c7c938fea13ef80d3f7cf152cea6dd84d856dea677c44b6e24fbc5cc60fd",
   "sd.has_loss": "1e2c8c7df8ec4dc8a21e5ed72420311c4ae2a7b2895ded86e2213151661ada7f",
   "sd.to1040": "c6be714faee43a2731a8e84b3fdbc9673314f85a90a3ddff50bd1fcc4a556678",
   "sd.net_gain": "9975d7415b27cc117455a94113d2867f95c94c61be4bc016b9faae8e92704ab9",
   "sd.distributions_if_dividends": "e298b33df964936239e1aa4a899b76c8308e3041094d52235a155aab067750ae",
-  "1a(d)": "e6a020ec8fb3afbb9c5f50ee8d14f7d8d98ed822e171a0194ff3f5ab867e1998",
-  "1a(e)": "f504326f5b40bcbdc77b8415bd4ce6740bc89213c3e4f17e0db8bafba58fb2f9",
-  "1a(g)": "c116e18aec3593c376bdb8b452075d78c47f7ba0cce7eed3bd46d78402179557",
-  "1a(h)": "62599e1520ec7d6026e20975cb83b4224bc328feabaa23d8b98a47a028494749",
-  "1b(d)": "a9af2650a41f929557d4e54a60913d68669f999aa80e3587aac55058f1acde09",
-  "1b(e)": "365ce7ac7f6bba59c793029761652d404f103e11c320e39e608a021a31c7946c",
-  "1b(g)": "0cbf6100c9449591c6c55f535431ddb3331ee3663ce3b5142871f3c81a20b84b",
-  "1b(h)": "c9125bc67a8319e097f6297ca9371f230747ace5fbce4443d0e884593bae4c76",
-  "2(d)": "71360249a50cae5cf8e6172719fb9c417eab7845786f14fb9b781844446f07b0",
-  "2(e)": "cc93ed351ca49b7fa767d36fde2c799815b73c1701e1ae63471b75828931a6c2",
-  "2(g)": "5f23a04abbdad3f996033a2ec3c06b026713a2168dce7c5bb5b8ff15cfc1c300",
-  "2(h)": "dee10e593e52ac092558ef6456f2dbb28c75f4c65903f9234e18cc86f5728499",
-  "3(d)": "850348349069f4b8d531e0563c5d2db9edb6485d2fcd5e02fcc2b83e304329cd",
-  "3(e)": "39596fc9ed326c79559e7baee769c8bc55cba75930c17dc814de72fb00ab8fb3",
-  "3(g)": "8e7adee40cd0d987566c45811c606d23c2264caeb87ae4159974e543d77690a7",
-  "3(h)": "06684b7462336fb84e3814753732d5eeaa6e16ec96a0402a51ceed5f23fc70ca",
-  "8a(d)": "320398a6c135f1089c0390139a275a22a9c78cbbaedfdbd0351d5ff5c5399eaf",
-  "8a(e)": "3d3d70d62d0754bfc0cb54a82dc3e68d6488a3377fff3342a9ea54cfed4d228c",
-  "8a(g)": "0c82c270ae5e73b677f3af2346e79855fee26597fbd5b6a131f71e85fb771499",
-  "8a(h)": "59bf9f14205e963747a2141d19f69eaa61f8b4c08809aa0bccab7bdfbec7769a",
-  "8b(d)": "db471273089b07ec7b5fa216d31fa97a783c636181c3461b212ab3635e85a7fd",
-  "8b(e)": "3ef1ff8bb027eabc6bcdc2667b98107e197c9bba546f868cc744817865a366de",
-  "8b(g)": "a294c94a52df05aac65e8021a6e0b4dd0c3f53a19e3eafdb07ded3662bd5a546",
-  "8b(h)": "4b34b28ed1c3be6383edd61daf37f85d18959fef75cc278572cdd23561a108c7",
-  "9(d)": "f5f7067172cabb961a0c88f778f5ca4fd0d5fff1ed55e438c6187f079c98d934",
-  "9(e)": "3ccbed1080800ab18cff595475b7d715404b46f68b67cbc25a082abbb116ce4b",
-  "9(g)": "c7aac1c56796f1eba8ce5f746534dfe17ec56584d04cf12dca2ae677364d5609",
-  "9(h)": "ce7eaf20fd825659cc74b1b4e788e50979ebe52ab0d9cdb17348c9e569489249",
-  "10(d)": "8f77da9e287d53a41a0b31e7b6f2508549a3a0546be35377c5399bf99153f111",
-  "10(e)": "165f6dcd134e9d0958fc6fc9a904668c61d06d540d3cb8f7c39511e396a2e902",
-  "10(g)": "65a832b825d1ad4024bf28dda2262d55e4b18167ea7128e5c35da8493883b871",
-  "10(h)": "9a91b645944fc40235ae114c2f2714eff93a1edac0aef4688fb473927feb9d62",
+  "1a(d)": "f6423ab371b401b1353bd688b325d3a685277507afb3bf8748a9c5faea0af0c1",
+  "1a(e)": "e280eacd1bf4c932744e3683237219aeeb20a955c32b60a28cea1a7b783e674a",
+  "1a(g)": "72d1f291be6d864a005ac03f7dfe3353fe3f41e8cb105a4cbe72ee72f0571f55",
+  "1a(h)": "b0bfafbe15ca095d56b2186d0afdd9a8a74ecac1347a50f9ed9978a9670f1317",
+  "1b(d)": "a897cb9a9fe67e83f223640472026256d1e31bd4229a30f7365d958e3bfe24bb",
+  "1b(e)": "ef87d67232f828d66942961ce454ed7ebc80a14103abc7b0e9852189ab863388",
+  "1b(g)": "ebc39ca04a1ed304f9f67b514b333138884968805b1b54bc39b64d0c042abce5",
+  "1b(h)": "bb3f82f08404e6684132a8a0e7ab48fe0e126a9cc945092a5ffa6587263fafb2",
+  "2(d)": "43c1d813d2165bbdfd874775ce0c3b6eb33f42bcc7d6d782db1c55e96722bce6",
+  "2(e)": "7a33876fe9fd5c3983abb7d0211efd773fb18ebbfc6519acbd923298c2d377e6",
+  "2(g)": "1ba6a3753a831a3dccee2e7b94acbdd87f3bcd72e36de5c2da92f308491a2d32",
+  "2(h)": "ecbcb4a8e231925005294dd2b8f3ae62f98646352b78452951b4a92cd9cc9b1e",
+  "3(d)": "e44d7c11dafd05386127052d832ffee50f25b0dce8b680069969647620be4337",
+  "3(e)": "241575f1ac64b27ada4f1e6c47b815468982b31f2a0fa19134dd7f593436ed0a",
+  "3(g)": "ba6364a84f85a710fc0c6ee4bc46c721458a634c39f55f2a6830a0ddce3b5030",
+  "3(h)": "bfea082d4efa92b1816fbd867546969b737bd9bc3369adb94cea4decf51c4066",
+  "8a(d)": "7524aea3629009ccb23fb69b649a8fa56ac8e88c8990de7b305740c87d085ece",
+  "8a(e)": "e3d4cfed83e1bbd8d9740b5690cf6f13b487f5fe51bda1ab954d9baabae84864",
+  "8a(g)": "a94e1f5d4f47015367c2b24ec113534d8b1d932f5ab024e4af4bf8c29d5ba039",
+  "8a(h)": "9768e16300de865d7500d0fca10bf567403e54858a5ae5bd683f8d6c45c80964",
+  "8b(d)": "6c5453b98b2901da47cb02f210086129cf6215c3597a9af936e013b9fab5d0b6",
+  "8b(e)": "92a3242b219a6abdfcc560f0c5afcf45c05d8645ebb25595dfa07c66f852b334",
+  "8b(g)": "af5efcd89deb351858b26db5eeedd3ae8bb09187ded41a1ddde363b8c4b920ad",
+  "8b(h)": "9dadeeb5189c99f725de3f20778e74d2c229ae8cdfe89abf044fe4894ca68547",
+  "9(d)": "add2ded997f801ef8a6878ead396ea1e5c5414f6fb6535411e5fcb8b5054fbeb",
+  "9(e)": "d8674cd764ab7a670c0ae6eb469558d81265a0c55b78203b56e43b0558d97c17",
+  "9(g)": "6df884c8c6eacecccea25db7300eb74e5ea73f43ba8c12266c8aad6b653b7476",
+  "9(h)": "4a45cfa97cf1dc671fcb972f2a73353aacc36b1b78fb300ee296d6cfae47adda",
+  "10(d)": "42ae10c67802838c3e714995c4c45e74c316b253b4e456465058c06c2eef5df4",
+  "10(e)": "a2a2c51f97ec4e1d3d4356fd29b121b4e17c3c8c903490792d7b39a69994ef24",
+  "10(g)": "1851fbfe580e52636b47d0b5b813f57ddf3b21d242774ffd271e13dcd044fbd2",
+  "10(h)": "86db5cf0481476c2eefbbc867058e14ed68284e35171a8e646dec2f63a54978e",
   "4": "66d00814b2a95c27a060e36fced1df100821a291580bc89fe2323371d35852d5",
   "5": "4691d7d6611ec07de43a9ccc60c17aabed10bdd4aacbaa9bf1b20abda2ed25eb",
   "6": "af2c8f24c7f4b5b4e7adc5f0f8f51b303846d9df0442c320feecee89f86b5f4d",
@@ -457,40 +451,40 @@
  "foreign": {
   "sd.f2439_if_dividends": "09943e220a521e74675f59f86cadf5816a95091a65de3edba7a7b393a1d605ef",
   "sd.filing4952": "c405707b740da3bf0125426dc18b58e2ef543b6ec4effa8f0989c54d79b6c596",
-  "sd.filed": "f63d941cc3f5eb94c70853aeccc7d71f7ca935eb96a77ed3e8cd2b169c29dcb5",
+  "sd.filed": "3861c85c115e2d2b190d5b4330169571ab6bbfbc3eb467138aeae101a7764066",
   "sd.distributions_if_dividends": "c62fb3f15c4520b8a8b6f83704bc3dedcda9ab409919eff46b0f3f4d2bcaf8be",
-  "1a(d)": "e131fc397458c743ccdc41001185da6da4b367610abe4fb376098d327a180ee7",
-  "1a(e)": "d3587e08df7687efb7fb06eda9ee8adb06661331641b6f05596ef128751650f5",
-  "1a(g)": "920f243828e8d9899d4e5d90140f36732e99b2d57121d4d2787f494da738a7e3",
-  "1a(h)": "146e8d0004152a8803ef1f693bece6805831461fbcb277a18adb3cbace998eb0",
-  "1b(d)": "e131fc397458c743ccdc41001185da6da4b367610abe4fb376098d327a180ee7",
-  "1b(e)": "d3587e08df7687efb7fb06eda9ee8adb06661331641b6f05596ef128751650f5",
-  "1b(g)": "920f243828e8d9899d4e5d90140f36732e99b2d57121d4d2787f494da738a7e3",
-  "1b(h)": "146e8d0004152a8803ef1f693bece6805831461fbcb277a18adb3cbace998eb0",
-  "2(d)": "e131fc397458c743ccdc41001185da6da4b367610abe4fb376098d327a180ee7",
-  "2(e)": "d3587e08df7687efb7fb06eda9ee8adb06661331641b6f05596ef128751650f5",
-  "2(g)": "920f243828e8d9899d4e5d90140f36732e99b2d57121d4d2787f494da738a7e3",
-  "2(h)": "146e8d0004152a8803ef1f693bece6805831461fbcb277a18adb3cbace998eb0",
-  "3(d)": "e131fc397458c743ccdc41001185da6da4b367610abe4fb376098d327a180ee7",
-  "3(e)": "d3587e08df7687efb7fb06eda9ee8adb06661331641b6f05596ef128751650f5",
-  "3(g)": "920f243828e8d9899d4e5d90140f36732e99b2d57121d4d2787f494da738a7e3",
-  "3(h)": "146e8d0004152a8803ef1f693bece6805831461fbcb277a18adb3cbace998eb0",
-  "8a(d)": "e131fc397458c743ccdc41001185da6da4b367610abe4fb376098d327a180ee7",
-  "8a(e)": "d3587e08df7687efb7fb06eda9ee8adb06661331641b6f05596ef128751650f5",
-  "8a(g)": "920f243828e8d9899d4e5d90140f36732e99b2d57121d4d2787f494da738a7e3",
-  "8a(h)": "146e8d0004152a8803ef1f693bece6805831461fbcb277a18adb3cbace998eb0",
-  "8b(d)": "e131fc397458c743ccdc41001185da6da4b367610abe4fb376098d327a180ee7",
-  "8b(e)": "d3587e08df7687efb7fb06eda9ee8adb06661331641b6f05596ef128751650f5",
-  "8b(g)": "920f243828e8d9899d4e5d90140f36732e99b2d57121d4d2787f494da738a7e3",
-  "8b(h)": "146e8d0004152a8803ef1f693bece6805831461fbcb277a18adb3cbace998eb0",
-  "9(d)": "e131fc397458c743ccdc41001185da6da4b367610abe4fb376098d327a180ee7",
-  "9(e)": "d3587e08df7687efb7fb06eda9ee8adb06661331641b6f05596ef128751650f5",
-  "9(g)": "920f243828e8d9899d4e5d90140f36732e99b2d57121d4d2787f494da738a7e3",
-  "9(h)": "146e8d0004152a8803ef1f693bece6805831461fbcb277a18adb3cbace998eb0",
-  "10(d)": "e131fc397458c743ccdc41001185da6da4b367610abe4fb376098d327a180ee7",
-  "10(e)": "d3587e08df7687efb7fb06eda9ee8adb06661331641b6f05596ef128751650f5",
-  "10(g)": "920f243828e8d9899d4e5d90140f36732e99b2d57121d4d2787f494da738a7e3",
-  "10(h)": "146e8d0004152a8803ef1f693bece6805831461fbcb277a18adb3cbace998eb0",
+  "1a(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
+  "1a(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
+  "1a(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
+  "1a(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
+  "1b(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
+  "1b(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
+  "1b(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
+  "1b(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
+  "2(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
+  "2(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
+  "2(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
+  "2(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
+  "3(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
+  "3(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
+  "3(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
+  "3(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
+  "8a(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
+  "8a(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
+  "8a(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
+  "8a(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
+  "8b(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
+  "8b(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
+  "8b(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
+  "8b(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
+  "9(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
+  "9(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
+  "9(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
+  "9(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
+  "10(d)": "9f6e162e669259c3b0a01402f901b03c0fa2c2f560bc2d6492a49255937a5f01",
+  "10(e)": "ad0983aa309a306d2ca2e963135028fd938dc5a83997335eef7039fb5b4234da",
+  "10(g)": "c7cd516c6e51f2ca424c60b4a1f30904acf7209775839f0f2f85304425c6c9c1",
+  "10(h)": "ea6886d9625101cc60bb882da4c2e54d5c6ec992d7c8c9499137995d1995607c",
   "4": "9894f3d525be7ead0bf33acb3b4d70ced11a0d04927229d4b766e2c83ce212bc",
   "5": "9894f3d525be7ead0bf33acb3b4d70ced11a0d04927229d4b766e2c83ce212bc",
   "6": "384ca1c3382438288c5e0efa556f857c22f2aafc7a3ae7efee42f66b28f3082b",

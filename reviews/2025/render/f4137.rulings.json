@@ -1,0 +1,16 @@
+{
+ "kind": "render",
+ "form": "f4137",
+ "rulings": [
+  {
+   "printed": "8",
+   "restated": "Enter the amount from person line wages.",
+   "model": "IRS line 8 is the \"total of your Form(s) W-2, boxes 3 and 7\" plus RRTA compensation, and the RRTA part is properly excluded by the refusal. The glossary only says \"Total w2.wages for this person\" and does not say whether that is box 1 or boxes 3 and 7, so it cannot be confirmed.",
+   "ruling": "Ruling: representation; person.wages is the sum over the person's W-2s of w2.wages = w2.box3 + w2.box7 ('Add social security wages and social security tips'; amb.2025.ss_wages, owner-approved: boxes 3 plus 7), i.e. 'total of boxes 3 and 7 on Form(s) W-2' as the line asks; RRTA is refused (person.rrta). The reply could not see the definition behind the glossary label.",
+   "context": "b87f252e4e92f6bb14e2aff571a477c65f59949d82f39ac436ec86ce0cc35d08",
+   "date": "2026-11-15",
+   "run": "bdf1e87739b9086b3c3cc630fc1805b425b981def3a5e766ed029534e5d3dcbc",
+   "subject_key": "78c71dac63fe60ffde7f3d065422efa8af222f1c25b593f29255828193d44f06"
+  }
+ ]
+}

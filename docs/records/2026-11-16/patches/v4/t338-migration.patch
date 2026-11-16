@@ -1,0 +1,154 @@
+diff --git a/reviews/2025/transcription/clcw_next_year.rulings.json b/reviews/2025/transcription/clcw_next_year.rulings.json
+index ff71bab6..852e7aa5 100644
+--- a/reviews/2025/transcription/clcw_next_year.rulings.json
++++ b/reviews/2025/transcription/clcw_next_year.rulings.json
+@@ -164,12 +164,12 @@
+      "candidate-unknown"
+     ],
+     "witnesses": [
+-     "fixture:classm.clcw26.2.deepseek@clcw26",
+-     "fixture:classm.s2.3.deepseek@clcw26",
+-     "fixture:classm.f8960.1@clcw26",
+-     "fixture:classm.s2.3@clcw26",
+-     "fixture:classm.tcw.11@clcw26",
+-     "fixture:classm.clcw26.4@clcw26"
++     "fixture:classm.clcw26.2.deepseek@clcw_next_year",
++     "fixture:classm.s2.3.deepseek@clcw_next_year",
++     "fixture:classm.f8960.1@clcw_next_year",
++     "fixture:classm.s2.3@clcw_next_year",
++     "fixture:classm.tcw.11@clcw_next_year",
++     "fixture:classm.clcw26.4@clcw_next_year"
+     ],
+     "policy": "executable-triage-v2"
+    }
+@@ -448,13 +448,13 @@
+      "project-refuses"
+     ],
+     "witnesses": [
+-     "fixture:classm.clcw26.2.deepseek@clcw26",
+-     "fixture:classm.asset.1@clcw26",
+-     "fixture:classm.f8960.1@clcw26",
+-     "fixture:classm.otjob.1@clcw26",
+-     "fixture:classm.tcw.11@clcw26",
+-     "fixture:classm.clcw26.1@clcw26",
+-     "fixture:classm.f8863.2@clcw26"
++     "fixture:classm.clcw26.2.deepseek@clcw_next_year",
++     "fixture:classm.asset.1@clcw_next_year",
++     "fixture:classm.f8960.1@clcw_next_year",
++     "fixture:classm.otjob.1@clcw_next_year",
++     "fixture:classm.tcw.11@clcw_next_year",
++     "fixture:classm.clcw26.1@clcw_next_year",
++     "fixture:classm.f8863.2@clcw_next_year"
+     ],
+     "policy": "executable-triage-v2"
+    }
+diff --git a/reviews/2025/transcription/f8962.rulings.json b/reviews/2025/transcription/f8962.rulings.json
+index 8f849f05..ef804ae2 100644
+--- a/reviews/2025/transcription/f8962.rulings.json
++++ b/reviews/2025/transcription/f8962.rulings.json
+@@ -11921,7 +11921,7 @@
+      "partial:classm.retirement.4.deepseek-f8962.fpl_table@f8962",
+      "partial:classm.f8962.2.gpt-f8962.alloc@f8962",
+      "partial:classm.f1095a.1.gpt-f8962.alloc@f8962",
+-     "partial:classm.f1095a.1.gpt-f8962.married_in_2025@f8962"
++     "partial:classm.f1095a.1.gpt-f8962.married_this_year@f8962"
+     ],
+     "policy": "executable-triage-v2"
+    }
+@@ -12524,7 +12524,7 @@
+      "partial:classm.retirement.4.deepseek-f8962.fpl_table@f8962",
+      "partial:classm.f8962.2.gpt-f8962.alloc@f8962",
+      "partial:classm.f1095a.1.gpt-f8962.alloc@f8962",
+-     "partial:classm.f1095a.1.gpt-f8962.married_in_2025@f8962"
++     "partial:classm.f1095a.1.gpt-f8962.married_this_year@f8962"
+     ],
+     "policy": "executable-triage-v2"
+    }
+@@ -12752,7 +12752,7 @@
+      "partial:classm.retirement.4.deepseek-f8962.fpl_table@f8962",
+      "partial:classm.f8962.2.gpt-f8962.alloc@f8962",
+      "partial:classm.f1095a.1.gpt-f8962.alloc@f8962",
+-     "partial:classm.f1095a.1.gpt-f8962.married_in_2025@f8962"
++     "partial:classm.f1095a.1.gpt-f8962.married_this_year@f8962"
+     ],
+     "policy": "executable-triage-v2"
+    }
+@@ -13107,7 +13107,7 @@
+      "partial:classm.retirement.4.deepseek-f8962.alloc@f8962",
+      "partial:classm.f8962.2.gpt-f8962.alloc@f8962",
+      "partial:classm.f1095a.1.gpt-f8962.alloc@f8962",
+-     "partial:classm.f1095a.1.gpt-f8962.married_in_2025@f8962",
++     "partial:classm.f1095a.1.gpt-f8962.married_this_year@f8962",
+      "partial:classm.f1095a.1.gpt-f8962.same_state_counted@f8962"
+     ],
+     "policy": "executable-triage-v2"
+diff --git a/reviews/2025/transcription/rec.rulings.json b/reviews/2025/transcription/rec.rulings.json
+index 3b473910..bda9801e 100644
+--- a/reviews/2025/transcription/rec.rulings.json
++++ b/reviews/2025/transcription/rec.rulings.json
+@@ -71,7 +71,7 @@
+      "fixture:x2s1o.rec.refuse.nol_negative@rec",
+      "fixture:stage16.refuse.refund.exc_tax@rec",
+      "fixture:stage16.refuse.refund.exc_who@rec",
+-     "partial:classm.rec.3-rec.not_2024@rec",
++     "partial:classm.rec.3-rec.before_prior_year@rec",
+      "partial:classm.rec.3-rec.nonitemized@rec",
+      "partial:classm.rec.3-rec.sales_tax@rec",
+      "partial:classm.rec.3-rec.agi_prior@rec"
+@@ -328,7 +328,7 @@
+      "partial:stage14.asset.prior_7yr-rec.has_property_tax@rec",
+      "partial:stage14.asset.qip-rec.has_property_tax@rec",
+      "partial:stage14.asset.done-rec.has_property_tax@rec",
+-     "partial:classm.rec.3-rec.not_2024@rec",
++     "partial:classm.rec.3-rec.before_prior_year@rec",
+      "partial:classm.rec.3-rec.nonitemized@rec",
+      "partial:classm.rec.3-rec.sales_tax@rec"
+     ],
+@@ -408,7 +408,7 @@
+      "partial:stage14.asset.prior_7yr-rec.ti_positive@rec",
+      "partial:stage14.asset.qip-rec.ti_positive@rec",
+      "partial:stage14.asset.done-rec.ti_positive@rec",
+-     "partial:classm.rec.3-rec.not_2024@rec",
++     "partial:classm.rec.3-rec.before_prior_year@rec",
+      "partial:classm.rec.3-rec.nonitemized@rec",
+      "partial:classm.rec.3-rec.sales_tax@rec",
+      "partial:classm.rec.3-rec.agi_prior@rec",
+@@ -453,7 +453,7 @@
+      "partial:stage14.asset.prior_7yr-rec.ti_positive@rec",
+      "partial:stage14.asset.qip-rec.ti_positive@rec",
+      "partial:stage14.asset.done-rec.ti_positive@rec",
+-     "partial:classm.rec.3-rec.not_2024@rec",
++     "partial:classm.rec.3-rec.before_prior_year@rec",
+      "partial:classm.rec.3-rec.nonitemized@rec",
+      "partial:classm.rec.3-rec.sales_tax@rec",
+      "partial:classm.rec.3-rec.agi_prior@rec",
+diff --git a/reviews/2025/transcription/refund.rulings.json b/reviews/2025/transcription/refund.rulings.json
+index f7868bc0..da67eb2d 100644
+--- a/reviews/2025/transcription/refund.rulings.json
++++ b/reviews/2025/transcription/refund.rulings.json
+@@ -161,8 +161,8 @@
+      "fixture:stage16.mut.refund_line3_stop@refund",
+      "fixture:stage16.refuse.refund.line5e_bad@refund",
+      "partial:classm.w2.1.deepseek-refund.box8@refund",
+-     "partial:classm.w2.1.deepseek-refund.not_2024@refund",
+-     "partial:classm.w2.1.deepseek-refund.line17_2024@refund",
++     "partial:classm.w2.1.deepseek-refund.not_prior_year@refund",
++     "partial:classm.w2.1.deepseek-refund.line17_prior_year@refund",
+      "partial:classm.w2.1.deepseek-refund.status@refund"
+     ],
+     "policy": "executable-triage-v2"
+@@ -296,11 +296,11 @@
+      "fixture:stage16.mut.refund_single_unasked@refund",
+      "fixture:stage16.mut.refund_line3_stop@refund",
+      "fixture:stage16.refuse.refund.line5e_bad@refund",
+-     "partial:classm.w2.1.deepseek-refund.not_2024@refund",
++     "partial:classm.w2.1.deepseek-refund.not_prior_year@refund",
+      "partial:classm.w2.1.deepseek-refund.itemized@refund",
+-     "partial:classm.f8889.5.deepseek-refund.not_2024@refund",
++     "partial:classm.f8889.5.deepseek-refund.not_prior_year@refund",
+      "partial:classm.f8889.5.deepseek-refund.itemized@refund",
+-     "partial:classm.f4952.3.deepseek-refund.not_2024@refund",
++     "partial:classm.f4952.3.deepseek-refund.not_prior_year@refund",
+      "partial:classm.f4952.3.deepseek-refund.itemized@refund"
+     ],
+     "policy": "executable-triage-v2"

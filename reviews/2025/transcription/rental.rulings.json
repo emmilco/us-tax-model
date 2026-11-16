@@ -1,0 +1,1328 @@
+{
+ "kind": "transcription",
+ "form": "rental",
+ "rulings": [
+  {
+   "printed": "10",
+   "project_expr_sha256": "4e8491d227a028c961f42327ed0ba4544d2d8c58d075246cea733e1ec1fd4ec6",
+   "second_expr_sha256": "022fbdd54c5b6a8739accf9b47177b29f9bc557357068a0456d913a7819327eb",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "da6da874cd8700eac2a136f7031bf8a8a5c9a9eeb08675d5306805365fcec94d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "10",
+   "project_expr_sha256": "4e8491d227a028c961f42327ed0ba4544d2d8c58d075246cea733e1ec1fd4ec6",
+   "second_expr_sha256": "6caf92a0e4b521338a4c3965fb406221324e9127ddb47f84525d570ae7616fe2",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Executable triage: 596/596 agree (36 fixtures, 560 partial records; no generated return reaches a rental entry), as no compared case has a fraction that differs at the fifth place.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "edde278e581b2fb98c1ae147a648e555c340380da3877cd0e899936ab55b331a",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "11",
+   "project_expr_sha256": "9a606bb81240900fd839fa85e2306ea830e063ccfcfba2d62c27d72a80fbf3ed",
+   "second_expr_sha256": "3c88228f67bc2179df846a5a82b8399550e20b722f058841973b8ea81b8b88b4",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "8cfe4ea0e2c8cdffbc6de8b645b79434b14ced3db9cf2bda782ba02930959899",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "11",
+   "project_expr_sha256": "9a606bb81240900fd839fa85e2306ea830e063ccfcfba2d62c27d72a80fbf3ed",
+   "second_expr_sha256": "5846920dca281275b80b6e52d9aa78aa035bf249a2e1aa7f7b6fc1aa4cbaccbc",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Executable triage: 596/596 agree (36 fixtures, 560 partial records; no generated return reaches a rental entry), as no compared case has a fraction that differs at the fifth place.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "7a7beb07f31ec1fa19137e472d732354419f36756168ce1b988781cdc404012d",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "12",
+   "project_expr_sha256": "bf3a25124c426a9ea654987a190053ab813f4cf9d7b566c96e270139fc5ed23a",
+   "second_expr_sha256": "b23421ca2f2f40e8f579230a4954c1075ec370ad482bd9d541055894f2d5071b",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "1b30f13e9704dff9bf46b56db07d580cc0bfe3e0aa45fefe9ca0b37c208b48fb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "12",
+   "project_expr_sha256": "bf3a25124c426a9ea654987a190053ab813f4cf9d7b566c96e270139fc5ed23a",
+   "second_expr_sha256": "eeae84bc1b0791ad7e31a84d512d1631a32a4f1fdb1564d1b034f9901b684bbc",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Triage: 595/596; x1sche.f8.personal_use_not_home $11,428.57 vs $11,428.80.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "5d5eb0a35c048c687310c627c9a0e006fd58e789896c68fc872e8e6013ce7006",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "13",
+   "project_expr_sha256": "576521f9ca434915a0df8e6f475ce1ad3f67d95f7536383347734eb6b08fed49",
+   "second_expr_sha256": "3ba285bfc321f497907634e7c3f1254d5b91846a5792dc76c06f99b3440b7f53",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Executable triage: 596/596 agree (36 fixtures, 560 partial records; no generated return reaches a rental entry), as no compared case has a fraction that differs at the fifth place.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "cbc8bf61e3771a7cab50b1da9caa89e0694c9a3c45e76d6e48803c81f5873a78",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "13",
+   "project_expr_sha256": "576521f9ca434915a0df8e6f475ce1ad3f67d95f7536383347734eb6b08fed49",
+   "second_expr_sha256": "91af32cfcac6dfdca73777cb1c1277012aabe64ff0418f4cd808191aca091961",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "d406e53b491481e2f30b0a91cdf3475d2329cdc1e95e30b98eb2c8a06f23650f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14",
+   "project_expr_sha256": "13d2506ff68eff29abf564004af0b35ab5b6b0a3c6429e7631211cf69b6212e7",
+   "second_expr_sha256": "af21167b100f26acff807988203eec5a2721cc39035134688b0130bcd910a2f7",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "9231b3497b3ad2706e414bf026f3367c91a7d036fab376f6962b89da6f8bb4ee",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14",
+   "project_expr_sha256": "13d2506ff68eff29abf564004af0b35ab5b6b0a3c6429e7631211cf69b6212e7",
+   "second_expr_sha256": "dce740120e15a5a789db7e86fc1792767378c252eea3921a5b44b3efa4bcac6d",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Executable triage: 596/596 agree (36 fixtures, 560 partial records; no generated return reaches a rental entry), as no compared case has a fraction that differs at the fifth place.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "7839cb8c550729f31f5ec289f8fa3112a5ac4fee27327a237e2d57c5baf1aef5",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "15",
+   "project_expr_sha256": "8c7ec1f70442ed6fd027431d9950c52aca112c8c283fb507fa58d584c1d357f9",
+   "second_expr_sha256": "7a38ee4d4e861b71f679aa55bb6580eff24741594fe65555519ff93538082717",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "dee734ececd7b2c61657552c74dd213dd4883909cf0ec5930690e0505b2a14dc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "15",
+   "project_expr_sha256": "8c7ec1f70442ed6fd027431d9950c52aca112c8c283fb507fa58d584c1d357f9",
+   "second_expr_sha256": "d5303df57486931dc7b164c09fadcf7e9ae6d6fdad1971602b5d46e45c9f22ff",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Executable triage: 596/596 agree (36 fixtures, 560 partial records; no generated return reaches a rental entry), as no compared case has a fraction that differs at the fifth place.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "c406e09f0fb548b95e7b731ec9364b14a651d61185b13258622f9883314564c9",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "6a9428d142861314cd3509d1fc848e8dc61f0793e4c1c994ea727db873ad4fbc",
+   "second_expr_sha256": "67ad186e7961f4fb7b5820218faf404fc99c241c86e5ef613f53214f6303c4b8",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "6aee7f85717d64c6c1c582f92b0002ab1dac756dd9cd32adbed06c37f9ae3264",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "6a9428d142861314cd3509d1fc848e8dc61f0793e4c1c994ea727db873ad4fbc",
+   "second_expr_sha256": "e5cc6ef4458dfe4fe54361a09428dfba2e6140705664c15bbce9f91c872e0757",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Triage: 553/596; completed: x1sche.f8 $2,857.14 vs $2,857.20, f16.home_test_edges $3,000.00 vs $2,999.96, f17 $2,000.00 vs $2,000.02; the rest on refused or partial records, all cents of rounding.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "11fe436c9cc93ef1a754f0190b0c28317ad404b36c00d403a782757b049ab220",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:x1sche.f16.home_test_edges@rental[a]",
+     "fixture:x1sche.f17.home_tenth_edge@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].kind@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "17",
+   "project_expr_sha256": "7b61257cf2021108f203335b8046dc58882d14f14c2d8894d72956fd1d8e137e",
+   "second_expr_sha256": "09e2fbe196359ac3e062117c04af82ce27320646a1302bf06fab238aca568cb9",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Triage: 595/596; x1sche.f8 $2,000.00 vs $2,000.04.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "a3175fcd9a98a7c07783173eb0ec375783d1bce6127c43441291af9bafa025f2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "17",
+   "project_expr_sha256": "7b61257cf2021108f203335b8046dc58882d14f14c2d8894d72956fd1d8e137e",
+   "second_expr_sha256": "d5a31b3aea710c4d592b3012326dc89e6fab782f2a47bed67b9aeec1ad355187",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "17afae9bb640dee79ac76e3569fd3c5641d12df80350fd49b6907e59aae11edc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "18",
+   "project_expr_sha256": "3bd6438e8c37bb8ddc5338ed2f5e38fcdf4960e2bee42900df152c6d281541c8",
+   "second_expr_sha256": "0dd7b042261c6424c9ecda391899d9434ba75cddcc9a31ea9c3acf05635a4736",
+   "ruling": "Ruling: representation; triage: 619 of 639 in-scope values agree; the 23 differences are on incomplete returns (candidate unknown 18, project refuses 2) and refused returns (3); no completed return differs. The reply divides the mid-month table depreciation by the same rental-day fraction (i1040se p. 6, Line 18; p527 p. 25, Dividing Expenses); depletion is refused on both sides.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "77b21690065a31a670f69a82670bf214dcbe35fdc412add1cddd2d5d58c29653",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].depletion@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].depletion@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].depletion@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:xfix.r11.qip_screen-rental[a].depletion@rental[a]",
+     "partial:xfix.r11.qip_screen-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "18",
+   "project_expr_sha256": "3bd6438e8c37bb8ddc5338ed2f5e38fcdf4960e2bee42900df152c6d281541c8",
+   "second_expr_sha256": "209ee3ddfb8536b6887eb8bb57fcd7326f1187aa63dc174d77f36503948c13c0",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Triage 585/596: completed x1sche.f8 $7,618.29 vs $7,618.44 (rounding); the reply also reads rental.depletion ungated (candidate-unknown where it is withheld, and on class M fixture classm.sche.2, whose given amounts leave it unanswered), while the project refuses depletion at rental.depletion and reads the answered tick through its gate.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "23c806064f4450c71c6a668e7a44f550de9884251978062214e217da1887556f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].depletion@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].depletion@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].depletion@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].depletion@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].depletion@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "19",
+   "project_expr_sha256": "a97a9104da0de8520f7a09d97593a11547c640c659f59ce2679b8e6120fce945",
+   "second_expr_sha256": "5ff455d93c1268b614ea945dbd6d22c78971fc37b031e08f29da9ce1a9bd3c41",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "6582a4b33b6d6f6f438e9225c5719879a81e09ca9a3a8bca4566726fa0e14212",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "19",
+   "project_expr_sha256": "a97a9104da0de8520f7a09d97593a11547c640c659f59ce2679b8e6120fce945",
+   "second_expr_sha256": "ffbf7b8262a33b9f2925963cc95697e7ce39ce2d27d43241b69abb9cf725adf6",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Executable triage: 596/596 agree (36 fixtures, 560 partial records; no generated return reaches a rental entry), as no compared case has a fraction that differs at the fifth place.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "d632da21697c4dbf56ca30cf744d1ad53560b7d2de4ac6b7a49f2ea8f0df57ba",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "21",
+   "project_expr_sha256": "c012fc53dabe4c444eeddd669c74c0f83cd889b3c2ade2cdbbb1f4e1045cec19",
+   "second_expr_sha256": "6fa2c0eaad03e95d756bd97d3a9d2a29a9ac2053059cb871de5621640a450146",
+   "ruling": "Ruling: representation; triage: 494 of 532 in-scope values agree; the 112 differences are refusal placement and unknowns on refused (61) and incomplete (51) returns only; no completed return differs. Both compute line 3 less line 20, zero for an excluded home (i1040se p. 5, Line 2), and refuse rental.part_home, ws51 and the other screens; they differ only in which line carries a refusal.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "e62b61581f80e96eee74223ba2cdbf88b50f52f78bfdad70d8e4ac8496ed3471",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r1.short_stay@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r4.vehicle@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:classm.f8582.1-rental[a].short_stays@rental[a]",
+     "partial:classm.f8582.1-rental[a].under_tenth@rental[a]",
+     "partial:classm.f8582.1-rental[a].vehicle@rental[a]",
+     "partial:classm.royalty.1-rental[a].kind@rental[a]",
+     "partial:classm.royalty.1-rental[a].short_stays@rental[a]",
+     "partial:classm.royalty.1-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_personal@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "22",
+   "project_expr_sha256": "e0f0da295d48ae3a1d81660ad692f34042fb4ab3da9d44ee3a22f3a003b566f2",
+   "second_expr_sha256": "79a8ed5067851418da07003f928fc1b8f2a8830f8ff2dd160fe88019751f36e5",
+   "ruling": "Ruling: representation; triage 505/596: the one completed difference is the ratio rounding (x1sche.f8 -$1,332.57 vs -$1,333.08, amb.2025.rental_use_ratio_places); the rest are project refusals (home, self-rental, rental.ws51) or the reply's refusal of a real estate professional where the project refuses at sche.re_pro, and partial records. The reply's shown_when (h_show22) hides nothing the project shows on a completed return.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "8b5cdf33efebe39c78cb75d3e094470c79b7ef2237de3bc8dcc6fb901c88f3e8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].rents@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].has_mortgage@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].amt12@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].personal_any@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].services@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].under_tenth@rental[a]",
+     "partial:x1sche.f10.part5-rental[a].kind@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].under_tenth@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
+   "project_expr_sha256": "142d7ce62642f6c3f183c4f4962508448014d0596bc16e091dd6c9a50f1c7f3e",
+   "second_expr_sha256": "1adf6b9eeb152babdd81e3a705e553c0615494a9b2fc5d9f263384a43a3adf03",
+   "ruling": "Ruling: representation; triage: 622 of 644 in-scope values agree; the 66 differences are refusal order and unknowns on refused (43) and incomplete (23) returns only; no completed return differs. Both zero line 3 for a home rented fewer than 15 days (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses') and refuse the same screens; the reply reaches the new rental.part_home refusal on line 3 where the project refuses on line 21.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "a6ef74ff19f12ea3d2e2ecde2fb86514d46d7e982726d45f76a9fcd001d08882",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:x1sche.r2.services@rental[a]",
+     "partial:classm.f8582.1-rental[a].services@rental[a]",
+     "partial:classm.f8582.1-rental[a].not_for_profit@rental[a]",
+     "partial:classm.royalty.1-rental[a].services@rental[a]",
+     "partial:classm.royalty.1-rental[a].not_for_profit@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].services@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].not_for_profit@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].rents@rental[a]",
+     "partial:x1sche.r2.services-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].amt16@rental[a]",
+     "partial:x1sche.r2.services-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5",
+   "project_expr_sha256": "dfb5ce620c644ef071c7e186f6e34899971af0733e5ada647bcd69fd3c0924e7",
+   "second_expr_sha256": "762ebe12e002e62e973e92fcea146cbae42cfb5a40feb1eacb5f4fafa1434be9",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Executable triage: 596/596 agree (36 fixtures, 560 partial records; no generated return reaches a rental entry), as no compared case has a fraction that differs at the fifth place.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "e2d1dc5eae4e87f7939ac82df5d045f32f64e10910bd4b62fb628672c3043e1c",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5",
+   "project_expr_sha256": "dfb5ce620c644ef071c7e186f6e34899971af0733e5ada647bcd69fd3c0924e7",
+   "second_expr_sha256": "ea78b5c7ac7ae8cb89a97c9a8ee2f9c97a77412807634be564e00f75f98c4dbf",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "407df1c35611345bc81343d93a13b7ca6b9eca58e1a771bc6788a999514f43c6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "65c433e3c1d81ed810c80c5b08c2fa4b917b24c24da1093241cb312df62d42f6",
+   "second_expr_sha256": "811ffb019706fb2266fe033c5a0a01941c7060473b8b11c5630acf67db272543",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "0f9cab85ef6afd0aac2efee4794a9150a55bf0afbe5cc8d4d6274e1fed8ee83f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "65c433e3c1d81ed810c80c5b08c2fa4b917b24c24da1093241cb312df62d42f6",
+   "second_expr_sha256": "e1da9da911fc809eaee75de2e9f06218478ef0cbc67a43adeae7d95f7cfb07ea",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Executable triage: 596/596 agree (36 fixtures, 560 partial records; no generated return reaches a rental entry), as no compared case has a fraction that differs at the fifth place.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "90e291086b44e14f87a9a5914a75dbeae9d388d2af3401613d1e695132f4929c",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "46073b433bf5426441b657449e4d86b135db1303c942a84bd0001173ba43ca12",
+   "second_expr_sha256": "7f30a066c477be70c20b030b259b3bb86c87e3ca99fff9cdf4346b6f6a18b07e",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "054daf4042ec8306f04b19a3b4880748cfc5aa9357b226f3680498d8a864fdcd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "46073b433bf5426441b657449e4d86b135db1303c942a84bd0001173ba43ca12",
+   "second_expr_sha256": "a2604d6d60479d3292f2bec9bd6555403d275694e6d0597ca8a45eae6c9f929c",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Executable triage: 596/596 agree (36 fixtures, 560 partial records; no generated return reaches a rental entry), as no compared case has a fraction that differs at the fifth place.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "a9fcd1c3fe82ed9b6c9af0b51baf9ee65947f98f33cc26abb3c860ff8683c93d",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "5c7515405e6d12c475b695af9738bbb01be2136e4de1135c984c87ec28e8df90",
+   "second_expr_sha256": "16c7ccb48b42067167982be3243f5dd2fbc6661ff3cdcd7120a4ec90d0181056",
+   "ruling": "Ruling: ambiguity; amb.2025.rental_use_ratio_places (chosen: the fraction of fair-rental days over total days of use carried to six places; p527 p. 26, Dividing Expenses, 'Your rental expenses are 85/99 (86%)'). The reply divides by the same fraction (fair days over fair + personal - overlap days) rounded to four places; its extra branch (a home rented under 15 days gives 0) is a case the project leaves off Schedule E or refuses (rental.ws51). Triage: 595/596; the one completed difference is x1sche.f8.personal_use_not_home, $1,428.57 vs $1,428.60.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "dfdd473a5068f0b940002a68a66c70fe72d5cd7a3c43971925438b072cb8df92",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "5c7515405e6d12c475b695af9738bbb01be2136e4de1135c984c87ec28e8df90",
+   "second_expr_sha256": "195ac766785e1ae8c78e0402e6aa38433f75daa78c2f2410b67d405cc8cbaedd",
+   "ruling": "Ruling: representation; triage .transcription/triage/2025/rental.json: 675 of 687 in-scope values agree; the 13 differences are all on incomplete or refused returns (candidate unknown 11, candidate refuses 1, project unknown 1 on a partial where the reply hides the line behind an unanswered rental.part_home) and no completed return differs. The reply divides by the same rental-day fraction (p527 p. 25, Dividing Expenses, 'divide your expenses between the rental use and the personal use based on the number of days used for each purpose') at a different number of places (amb.2025.rental_use_ratio_places, ruled representation in the first round) and hides the line when the entry is not reported; the project shows it but sche sums every line over rental.reported only.",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "39cca07d88c4d076d9f2654938b3d60ab8705cafcf44d1a89f147ecd3e60a38c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:xfix.r10.part_home@rental[a]",
+     "partial:classm.f8582.1-rental[a].part_home@rental[a]",
+     "partial:classm.royalty.1-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].part_home@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].part_home@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].part_home@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].part_home@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV/V (a)",
+   "project_expr_sha256": "1c1fd797f13a82d943fb2deadc92997b405b4fe7fd97e2bfc7a67f58f9af8011",
+   "second_expr_sha256": "d559e30ec8b3a264254d81b05f78b9b6383d7023b7a46ac409cdffe93c8699b5",
+   "ruling": "Ruling: representation; triage 403/596; completed: 8 candidate-hides-shown (e.g. classm.f8582.1 $1,782.40): on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when rental.h_on8582); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "e2fa4b0463429b6b4ba40f2173c8e603ae714d6d56616c54107deb782f30846c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.1@rental[a]",
+     "fixture:classm.f8582.3@rental[b]",
+     "fixture:classm.sche.1@rental[a]",
+     "fixture:x1sche.f1.profit@rental[a]",
+     "fixture:x1sche.f12.commercial_39yr@rental[a]",
+     "fixture:x1sche.f15.part2_line1d_smaller@rental[b]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:classm.f8582.1-rental[a].active@rental[a]",
+     "partial:classm.f8582.1-rental[a].prior_any@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].rents@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].has_taxes@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].amt16@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].rents@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].short_stays@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].kind@rental[a]",
+     "partial:x1sche.f10.part5-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV/V (b)",
+   "project_expr_sha256": "240aed503f4f5bff18bb2190f5f58a4491e076600e93267ffa14f44844d4b2cb",
+   "second_expr_sha256": "d15727e30e4e0384ce6ae68e7565378dbd1ada66040cc49a0585c6436e8e59eb",
+   "ruling": "Ruling: representation; triage 406/596; completed: 4 candidate-hides-shown: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when rental.h_on8582); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "a5d7438e1fb657bd5ac3515e3c46897708a0d28a0c1171fdfd546efdb103b0d7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.3@rental[a]",
+     "fixture:x1sche.f2.small_loss_exception@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:x1sche.f15.part2_line1d_smaller@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:classm.f8582.1-rental[a].active@rental[a]",
+     "partial:classm.f8582.1-rental[a].prior_any@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].kind@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].rents@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].has_taxes@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].amt16@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].rents@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].short_stays@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].kind@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV/V (c)",
+   "project_expr_sha256": "2c7466b0e9dc063c8ab65b9bcdabf707dd57a849612873ef571b70fc44400fc0",
+   "second_expr_sha256": "dcda2b3e823b07435ef11fd0edc3a1b0e9a0cbe1bfd640b2aae66dd32c56156b",
+   "ruling": "Ruling: representation; triage: 675 of 688 values agree; the 13 differences are unknowns on incomplete and refused returns (candidate unknown 11, project unknown 2) where prior-year answers are unsupplied; no completed return differs. Both take the prior-year unallowed loss only when one was reported (i8582 Part IV/V column (c)).",
+   "context": "d2eb2c4312f427475c08eae1ccfbbdf9652c69d1613cf3d2b8a1775eb16b2c4f",
+   "date": "2026-11-15",
+   "run": "390a303c200650b4c47009708af72d26878be30adcca46ce5b7b17a1cda0d8df",
+   "subject_key": "59f2a5f49c7501780f90d1e04b7ffa3dda5602c5e424cf8c7451c2507dcae368",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sche.2@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].personal_any@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].personal_any@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].personal_any@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].personal_any@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].personal_any@rental[b]",
+     "partial:x1sche.f18.home_refused-rental[a].personal_any@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].prior_any@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV/V (e)",
+   "project_expr_sha256": "033c1be788052aec17e019bf2af59976e5ed26198a8fb94e9a7e8dc65adff916",
+   "second_expr_sha256": "fb32b518bb69c780010ed4888c30519e5e9151bd85f50d101438dd12d2622bd5",
+   "ruling": "Ruling: representation; triage 407/596; completed: 4 candidate-hides-shown, 1 project-unknown on classm.sche.2: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when rental.h_on8582); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "67c0e233ac7e961f4609a76ceee0031041160c50103d0d97a0f8dafa1048f1f3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.3@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:x1sche.f2.small_loss_exception@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:x1sche.f15.part2_line1d_smaller@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:classm.f8582.1-rental[a].active@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].rents@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].has_taxes@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].amt16@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].rents@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].has_mortgage@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].short_stays@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].kind@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VI (a)",
+   "project_expr_sha256": "958f0e1481012f46020cdae79fa2632bcf1679dd1e301cd0ac3169b9837f79e2",
+   "second_expr_sha256": "6b59ba776f8f7cde346a8e4bf0e50aeef594bbc9206c48dfb5173a2f11aed35d",
+   "ruling": "Ruling: representation; triage 427/596; completed: 6 candidate-hides-shown, 1 project-unknown on classm.sche.2: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when rental.h_show6); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "ca599470eda2e2d20cf99b41f8e5345759abcff32eb4be42bc7ae9947cf9c96d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.2@rental[a]",
+     "fixture:classm.f8582.3@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:x1sche.f2.small_loss_exception@rental[a]",
+     "fixture:x1sche.f5.prior_loss_absorbed@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:x1sche.f15.part2_line1d_smaller@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:classm.f8582.1-rental[a].under_tenth@rental[a]",
+     "partial:classm.f8582.1-rental[a].active@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].rents@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].has_taxes@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].amt16@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].personal_any@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].services@rental[b]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r2.services-rental[a].active@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VI (c)",
+   "project_expr_sha256": "9d6f4ceb93efbed21281d61f665c77632f4cd825fcfd3681939343edf2331496",
+   "second_expr_sha256": "ed911fae5025ca943b44adea11b30150c53b91b3a2749cddcd867d06347dae57",
+   "ruling": "Ruling: representation; triage 496/596; completed: 4 candidate-hides-shown: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when hidden column); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records. The reply rounds the Part VI column (b) ratio to four places, the project to six; i8582 Part VI column (b) gives no rounding and no compared case differs by it.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "b96daf7eccbdd3eb61bccd1b7a12b4d083293e3e8026fa129a9fd8c32c896bc1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.3@rental[a]",
+     "fixture:x1sche.f2.small_loss_exception@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:x1sche.f15.part2_line1d_smaller@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:classm.f8582.1-rental[a].under_tenth@rental[a]",
+     "partial:classm.f8582.1-rental[a].active@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].under_tenth@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[b]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VII (a)",
+   "project_expr_sha256": "958579e834cc96c4f7a993850487fc0f0908499e06dbaa297e051160fee66f8d",
+   "second_expr_sha256": "4bd3ce99f0325221da293a5dca88ef85da48d1c6838bdd09a9db087da761e6ba",
+   "ruling": "Ruling: representation; triage 499/596; completed: 2 candidate-hides-shown, 1 project-unknown on classm.sche.2: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when rental.h_show7); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "4e2ab4aa3a58face9e024cd0a246ad0a5dec928aea06cb4c4e7a9a3635486d78",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.3@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:x1sche.f15.part2_line1d_smaller@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[b]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VII (c)",
+   "project_expr_sha256": "e330c5e69cf3e9dce866a66cb127985d0284989f8fb0f2e266534ca9002fb3bc",
+   "second_expr_sha256": "36f6e888ab65bade8950342ee80843a22ccdbf15f18bb4d5c0caa91ffb6d1cba",
+   "ruling": "Ruling: representation; triage 502/596 with no completed difference: project refusals (home, self-rental), the reply's refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, and partial records. The reply rounds the Part VII column (b) ratio to four places, the project to six (i8582 Part VII column (b), no rounding given).",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "f2ce6cb8adf42495524cb5ebe584ff6de8bb2f9742cbf36d7e0a70a426eb6f8a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].kind@rental[a]",
+     "partial:x1sche.f10.part5-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[b]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VIII (b)",
+   "project_expr_sha256": "d354b023b972c32c983caa3acfeccf100cb2b389f451db2f8bfad4e1fef5c4d1",
+   "second_expr_sha256": "9527b9ceaa5b2c28c4b5e7bf613b4bd58ba069de79f7cdd858949ee502faa675",
+   "ruling": "Ruling: representation; triage 502/596 with no completed difference: project refusals (home, self-rental), the reply's refusals (re_pro, not at risk) of cases the project refuses on other lines, and partial records.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "2b3f16abd5bd59546482953f6d2c5ac297135f01e8b1bc80380f86b74a26c7dc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].kind@rental[a]",
+     "partial:x1sche.f10.part5-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[b]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VIII (c)",
+   "project_expr_sha256": "c70df32ab4d28a7fda93cd43143b6a7f0c53ef658449e064410d66cca482f2c4",
+   "second_expr_sha256": "34f677ed7e7f20bb7da5ecbe0f8520efff41d2a570897392e41551fd6e37a8c1",
+   "ruling": "Ruling: representation; triage 495/596; completed: 6 candidate-hides-shown, 1 project-unknown on classm.sche.2: on completed returns the reply only hides the column where Form 8582 is not filed or the part does not apply (its shown_when hidden column); the project shows the activity's column value, which f8582 reads and shows only when required (f8582's filing exception), so no amount differs. Other differences: project refusals (home, self-rental), the reply's own refusals of cases the project refuses at sche.re_pro and rental.not_at_risk_if_loss, the class M fixture classm.sche.2 (answers not supplied), and partial records.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "1f3d50237bf0276115a947e20b9a812d00f47484b7e882ad888d1fadbb56d847",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.3@rental[a]",
+     "fixture:classm.sche.2@rental[a]",
+     "fixture:x1sche.f2.small_loss_exception@rental[a]",
+     "fixture:x1sche.f8.personal_use_not_home@rental[a]",
+     "fixture:x1sche.f7.royalty_magi@rental[a]",
+     "fixture:x1sche.f13.part4_and_part5@rental[a]",
+     "fixture:x1sche.f15.part2_line1d_smaller@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r3.self_rental@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "fixture:x1sche.r6.not_at_risk@rental[a]",
+     "partial:classm.f8582.1-rental[a].kind@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].kind@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].short_stays@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f10.part5-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[a].not_at_risk@rental[b]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[a]",
+     "partial:x1sche.f14.two_losses_phaseout-rental[b].not_at_risk@rental[b]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].has_taxes@rental[a]",
+     "partial:x1sche.r2.services-rental[a].kind@rental[a]",
+     "partial:x1sche.r2.services-rental[a].short_stays@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].kind@rental[a]",
+     "partial:x1sche.r6.not_at_risk-rental[a].days_fair@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "rental.needs_4562",
+   "project_expr_sha256": "5396be80e291eebfe2016e006ab344443519ad9610e050696f05ce692ba07aab",
+   "second_expr_sha256": "f969b2bc0572c95d021c8fc9ec8dd79b075dddc825565eb55c5e60219c70ec67",
+   "ruling": "Ruling: representation; equivalent on executable triage (596/596 agree): the reply sums rprop.cent over entries whose year is y2025, the project sums rprop.is_2025; both test that some property was placed in service in 2025 (i4562, Who Must File, 'Depreciation for property placed in service during the tax year').",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "9676493117a35c421e6864963ff9a0c77fbbbe474d0b5e8e191a37a7e1c7b348",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "rental.part4",
+   "project_expr_sha256": "549f0c5cb566e2ca1768c30afa9541353ff771d87263458663158e2fda51c4ae",
+   "second_expr_sha256": "dc78048d5f0fbb96df12687c8b999b25895d459feace328cda93c3d6841b546a",
+   "ruling": "Ruling: representation; triage 532/596. The reply folds into Part IV the tests the project refuses elsewhere (under a tenth: rental.under_tenth; real estate professional and grouping: sche.re_pro, sche.grouped) and the home tests (a home is not a passive rental: rental.ws51 refuses a home rented 15+ days; one rented under 15 days is left off Schedule E). The only completed difference, x1sche.f9.excluded_home (project true, reply false), is such an excluded home, which no Form 8582 line reads; all others are refused returns or partial records. i8582 p. 3: Part IV for 'rental real estate activities with active participation'.",
+   "context": "af1134426dc3a8bf1ab63333a53cedc5800b0ced6f3bfcd9f2b77bcb252e5dc7",
+   "date": "2026-11-15",
+   "run": "a2811afd9045000712757f39a8699aa1fadd275996f9cf41e8860041e3b4fa1e",
+   "subject_key": "af5acd43eb6ba5e764857f9e7a1be5fe34e358327a1e5b816c45f7b056e6f430",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x1sche.f9.excluded_home@rental[a]",
+     "fixture:x1sche.f18.home_refused@rental[a]",
+     "fixture:x1sche.f19.overlap_days@rental[a]",
+     "fixture:x1sche.f20.exactly_15_days@rental[a]",
+     "fixture:x1sche.r5.re_pro@rental[a]",
+     "partial:classm.f8582.1-rental[a].personal_any@rental[a]",
+     "partial:classm.f8582.1-rental[a].under_tenth@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].personal_any@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[a].under_tenth@rental[a]",
+     "partial:x1sche.f4.two_properties-rental[b].personal_any@rental[b]",
+     "partial:x1sche.f4.two_properties-rental[b].under_tenth@rental[b]",
+     "partial:x1sche.f18.home_refused-rental[a].kind@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].rents@rental[a]",
+     "partial:x1sche.f18.home_refused-rental[a].active@rental[a]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

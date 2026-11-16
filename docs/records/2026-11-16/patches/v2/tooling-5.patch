@@ -1,0 +1,20 @@
+diff --git a/tools/hooks/test_pre_push.sh b/tools/hooks/test_pre_push.sh
+index f4c08a6..1d3720e 100644
+--- a/tools/hooks/test_pre_push.sh
++++ b/tools/hooks/test_pre_push.sh
+@@ -159,4 +159,15 @@ STUB=reports tools/release.sh >/dev/null
+ [ -f reports/r.md ] || fail "release.sh did not write the regenerated report into the working tree"
+ hook "refs/tags/r$day.2" "$(git rev-parse "r$day.2")" "$Z" || fail "pre-push refused the tag release.sh made"
+ 
++# The release list (tools/green.sh): a tip whose tree is release-listed but not full-green is run again, and the red
++# stub fails it; once the tree is also full-green, release.sh tags the tip without a run, so the red stub is not reached.
++echo j >> f; git add -A; git commit -qm j --no-verify
++record_green "$(tree HEAD)" release
++STUB=red tools/release.sh >/dev/null 2>&1 && fail "release.sh tagged a release-listed tree that is not full-green"
++[ -z "$(git tag -l "r$day.3")" ] || fail "release.sh tagged a release-listed tree that is not full-green"
++rec full HEAD
++STUB=red tools/release.sh >/dev/null || fail "release.sh ran the suite on a release-listed, full-green tree"
++[ "$(git rev-parse "r$day.3^{commit}")" = "$(git rev-parse HEAD)" ] || fail "release.sh did not tag the release-listed tip as r$day.3"
++hook "refs/tags/r$day.3" "$(git rev-parse "r$day.3")" "$Z" || fail "pre-push refused the tag release.sh made without a run"
++
+ echo "pre-push self-test: ok"

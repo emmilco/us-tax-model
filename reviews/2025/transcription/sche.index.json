@@ -1,0 +1,120 @@
+{
+ "kind": "transcription",
+ "form": "sche",
+ "family": "claude",
+ "base": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "sche.loss_prelimit",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage (2,029 of 2,029 inputs agree): the reply sums line 21 losses over all rentals without the project's home-rented-under-15-days exclusion, which never changes the value (such a home has no reported line 21).",
+   "subject_key": "e142e0075f19307ef4a9e40c136047b27bdbe35e594b21decca47a17c4dbaca0"
+  },
+  {
+   "key": "sche.nonpassive_net",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "AGREE",
+   "subject_key": "7466a90410317dcdff609251d61c76f104a0a1a262c6904625442e14af3f0ef0"
+  },
+  {
+   "key": "sche.any",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on classm.sche.2 (a home rented 10 days with 200 personal days) the reply says Schedule E is filed (it counts the entry, as its note says), but i1040se p. 3 says such a unit's rent is not reported, and the project, which counts only reported rentals, says not filed; its other differences are unknowns where it reads the $rental/$royalty rosters without the scope.rental gate (the project answers false when scope.rental is false).",
+   "subject_key": "0ab2426db7fb945dd2e35febc59ef089f5965e655dde397b59521be4e5d9b4f7"
+  },
+  {
+   "key": "23a",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage (2,029 of 2,029); the reply omits the project's exclusion of a home rented fewer than 15 days, whose line 3 is not reported.",
+   "subject_key": "f94e285ef45312367681dcab741fa70e7cbef6c3e263c623cb8423a657312142"
+  },
+  {
+   "key": "23b",
+   "record": "3d92266c41894bd23dce57121af273e30ddc9b3cf5c9276a8628185a746af76c",
+   "status": "AGREE",
+   "subject_key": "db460d0fc841d9ec643607be2def27a13bba8ec87411e8b69b1e188076239c90"
+  },
+  {
+   "key": "23c",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; differs only as candidate-unknown (1 completed, 3 incomplete inputs) where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; no value differs.",
+   "subject_key": "8bb6f96d0b070b003d82bf2d9f6bea525df728fcf1e7e7c8b9d891fbebc174dd"
+  },
+  {
+   "key": "23d",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage (2,029 of 2,029); as 23a.",
+   "subject_key": "4e827fbc29dc115f91fde4d26b1d2a065aba763ea5fe0d95c5184e64633579bd"
+  },
+  {
+   "key": "23e",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; as 23c (where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right).",
+   "subject_key": "77305babb9a798ed5b0185564e071bb96411fdf80645d6f286a939c588322d72"
+  },
+  {
+   "key": "24",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage (2,029 of 2,029): positive line 21 amounts of rentals and royalties, as the project's sum of rental.net_income and royalty.income.",
+   "subject_key": "8e8822d54f975fd8d52373338dff127c0788a4422ddbd6b229f0f416d6b80ce5"
+  },
+  {
+   "key": "25",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; as 23c (where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right); the reply's sign convention (negative) is the printed parentheses, same total.",
+   "subject_key": "ae4250177407f90c04d0ff4e9c97f0f2f0ba75646c9869ff49097743f7befc39"
+  },
+  {
+   "key": "26",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "AGREE",
+   "subject_key": "a0d00b7daa4d4128b0bc9692f7a3b3cf7b31ed2cb134539b164f20da90abdd33"
+  },
+  {
+   "key": "41",
+   "record": "71ade88b832d5e2b310149e003edb93ad9bc63610387874a4a354c610a695895",
+   "status": "AGREE",
+   "subject_key": "45b18c9206c8fe23dcd1b1909f3249223c8c8fc5df6859f8279d60a2265dd7b3"
+  }
+ ],
+ "subjects": {
+  "sche.loss_prelimit": "65f680b6e109cd2ad9864ec28c35d9a2f5f6b5e033fb39f8d53a6b03de16dbf8",
+  "sche.nonpassive_net": "9f670013a20da9504c103a95eba78f797efd05af22bb5165a9c793e92ab1e47c",
+  "sche.any": "7c513588063c6efdab9fc422d3f75e3a8733dd9f6522a366c8968f171f997479",
+  "23a": "f4726b2db84dcc5b4c887d6c75792b81dd013b2e6a064229ba69f2cb5ada1ec0",
+  "23b": "80fb595b2317eed3f3788b2f12008928b4fbecb174e3c79a150d5869d8422ed5",
+  "23c": "ce1d72784b141256a43e489897628759e5acf19624e29f7e60a9730bcda45f49",
+  "23d": "de429119ae800140fb0f7f5987bddd1a28258700053b91a1548b16e44f0df03c",
+  "23e": "fe896446c749b3077cb9b3e710260b1ae0300abe59635c05686ea5bf630e5bed",
+  "24": "f65c4e47dd7c175f3243e99bb95c7a8f86756cc07d2b4d80827106f4a533d762",
+  "25": "7192bcd2d08471534d166589776b5d69fc122d95fdaf5f14d0c80cc5e9f327eb",
+  "26": "8a8d51a75ed3a2975cc8eef701ff03a234280a0ac77eeaf9991924f94960726b",
+  "41": "b6afbc989a773ceb33c9679fb51a12b2cb05d802905af99447d4eea456cd0c99"
+ },
+ "__rest__": "5a4d6c7a20564da55dd7ba0a76a8e4cf5b3891b1517ff484715ecca4a2ca59cc",
+ "foreign": {
+  "sche.loss_prelimit": "76f73d926d4faefcf39b8a68145a631d7efbe3459f9049fd1a872431256bfd02",
+  "sche.nonpassive_net": "037d1d84ac2ddad3fa092e9b692d8472b7af48e29bb266201189600987d37928",
+  "sche.any": "29be226c10e6ed0bb2ddcadb2b3c1609da788ae3d64e5e6860c2aec4bafc783b",
+  "23a": "ee5491ab7f0f9b901724702032f410866f224bdc5c49f20bad8b5cb5ba27a85d",
+  "23b": "1622789cde471de84db346066fd6458c6d6d2e8ab6082cc6177f866d2d88bb45",
+  "23c": "245a16b2b38c12cbb339c8e536f2bcda284a6be9c6811ad3412cecff2a84d6f0",
+  "23d": "4884732e0e876c1ec8ce6d33e84c05835c41c555b14b09e9f6a5df8b84800f85",
+  "23e": "069b0e0380cde7278ea24a67a93c914f36eb4315167b8a65dd3398b25863ae30",
+  "24": "9af4b8efe609ee7b79a97b377a072a18f5ccdfda2eb1781e3989d455a7667d7d",
+  "25": "5d04adbcc28e9c506f66a977600dc6786b37893a8e3485fe9fd0cff182a29c79",
+  "26": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "41": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

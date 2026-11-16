@@ -13,6 +13,43 @@
    "subject_key": "17711affa62e8c265d432b323a026bcbf2144c9765e65d569feb714e53c48d57"
   },
   {
+   "printed": "(e)",
+   "project_expr_sha256": "7073866372583b5cebfe2045f62ce644f2888404771e49b6d5ec219ebf1bbdb5",
+   "second_expr_sha256": "8d35f99d35a840969c47e78a85da93c0c1f98be6d4127d9833970fa22fddc328",
+   "ruling": "Ruling: representation; the reply's value is the project's (reported basis for boxes A, D, G and J; correct basis otherwise; this merge added G and J, as i8949 p. 3, Box A or Box G, has it). It differs only in hiding the column on the aggregate route; the project carries (e) on every entry because Schedule D lines 1a and 8a total column (e) of the aggregated entries (sd 1a(e) sums sales.e; i1040sd p. 10, Lines 1a and 8a), and Form 8949's display of a detail row is not a different amount. Triage (pass 60bd5eac256b): 1,864/2,223 agree; no value difference; 77 candidate-hides-shown (21 completed: aggregate entries); 278 candidate-unknown (the reply reads sales.route, which is asked only when the entry may be aggregated, sales.route_if_chosen); 4 project-unknown on incomplete partial records.",
+   "context": "63e4d911dbc8ce5bba0ce3b732fb0263961b0f689f6277a03ee595fb7717ffa3",
+   "date": "2026-11-15",
+   "run": "c8609d4e0a8ade47e51ddb546a3d72a8aa69ea18ba4d4f78d60ee9f273471a53",
+   "subject_key": "5288331881e47e23924187bc26d58275173f7a499c228251b68daa932a071edc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f1040.6.deepseek@sales[s2]",
+     "fixture:classm.retirement.3.deepseek@sales[s1]",
+     "fixture:classm.f4952.2@sales[s1]",
+     "fixture:classm.f4952.3@sales[s1]",
+     "fixture:classm.f5695.11@sales[s1]",
+     "fixture:classm.f8959.1@sales[s1]",
+     "fixture:classm.f8959.2@sales[s1]",
+     "fixture:classm.ltc.2@sales[s1]",
+     "fixture:classm.s179.3@sales[s1]",
+     "fixture:classm.sales.2@sales[s2]",
+     "fixture:classm.tcw.5@sales[s3]",
+     "fixture:classm.tcw.15@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s2].box@sales[s2]",
+     "partial:classm.f1040.6.deepseek-sales[s2].reported_basis@sales[s2]",
+     "partial:classm.clcw_next_year.2-sales[s3].box@sales[s3]",
+     "partial:classm.clcw_next_year.2-sales[s3].reported_basis@sales[s3]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "(g)",
    "project_expr_sha256": "17936dd7b4e3f8c13d9755c0c103c81f64c570421914a824a59f42de9caccd39",
    "second_expr_sha256": "400639e193506a52e503db59b6639002a75ac5e7348d23f4f669b42c77c183c4",
@@ -180,14 +217,89 @@
    }
   },
   {
+   "printed": "(g)",
+   "project_expr_sha256": "8b31f2e28cccf9b95479f868170f38c6a0794c044644b0c1a08872ebf962e5df",
+   "second_expr_sha256": "400639e193506a52e503db59b6639002a75ac5e7348d23f4f669b42c77c183c4",
+   "ruling": "Ruling: model error; as in the goal-1 ruling, the reply's own refusal sales[a].h_wash_excess (a code W loss figured from the correct basis) refuses entries the project computes: i8949 p. 10, code W, the nondeductible wash-sale loss is entered as a positive adjustment in column (g) from the broker's or the filer's figure, which the project reads (sales.wash_loss). Its zero on the aggregate route equals the project's (aggregated entries have no adjustments: sales.aggregate_eligible). Triage (pass 60bd5eac256b): 2,065/2,223 agree; no value difference; 8 candidate-refuses (6 completed, all h_wash_excess, project $200 to $600); 139 candidate-unknown (sales.route read where unasked); 11 project-unknown on incomplete partial records.",
+   "context": "63e4d911dbc8ce5bba0ce3b732fb0263961b0f689f6277a03ee595fb7717ffa3",
+   "date": "2026-11-15",
+   "run": "c8609d4e0a8ade47e51ddb546a3d72a8aa69ea18ba4d4f78d60ee9f273471a53",
+   "subject_key": "1d7692839bf733c758be985d2a8492b1e73071f38212d8a33f0fbf41f6fd3cab",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f4952.3@sales[s1]",
+     "fixture:classm.f8959.2@sales[s1]",
+     "fixture:classm.s179.3@sales[s1]",
+     "fixture:classm.s2.1@sales[s1]",
+     "fixture:classm.s2.3@sales[s1]",
+     "fixture:classm.s3.4@sales[s1]",
+     "fixture:sales.adjust.A.W@sales[a]",
+     "fixture:sales.adjust.D.W@sales[a]",
+     "fixture:sales.adjust.A.W.equal_loss@sales[a]",
+     "fixture:bug0476.sales.market_discount_code_d@sales[a]",
+     "fixture:sales.adjust.G.W@sales[a]",
+     "fixture:sales.adjust.J.W@sales[a]",
+     "partial:classm.f1040.6.deepseek-sales[s1].box@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s1].proceeds@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s1].correct_basis@sales[s1]",
+     "partial:classm.f1040.6.deepseek-sales[s2].code@sales[s2]",
+     "partial:classm.sa.1.deepseek-sales[s3].box@sales[s3]",
+     "partial:classm.sa.1.deepseek-sales[s3].proceeds@sales[s3]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "(h)",
    "project_expr_sha256": "5f822cd2194b5e2b35673882ee841ce992af653e68d6dc10d05ef6bebaee5078",
    "second_expr_sha256": "c7ad68776015b96f99a3e7700c69f9bf17176168eda49f143107d20f65651784",
-   "ruling": "Ruling: representation and model error; i8949 p. 11, column (h). The value is the project's ((d) less (e) plus (g)); the reply shows the line only on the detail route, but the transaction's column (h) amount is read on both routes (sd.line1a.h and sd.line8a.h for the aggregate route), and the project's sheet is a values sheet, so the display condition changes no value. Its candidate refusals are column (g)'s h_wash_excess gate (see (g)). Scratch run of triage.mjs on the round-3 reply (.transcription/sales.lines-ceb969c79173) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 476 partial records; 1,762 comparisons per line): 1,380 agree; on completed returns 42 candidate refusals, the column (g) records; 4 value differences, all on refused returns. Project stands.",
-   "context": "6005574f072686328888ee18aeaefc80d53b5c2d03127ed4182e4ed4debb9830",
-   "date": "2026-11-04",
-   "run": "5dfa6a4e46e56519758f3b0c44170dcee514a2c71aeb203255fec1ff73db040a",
-   "subject_key": "c21350a26c46e8cbd390bcb8fdcdeb9958bb06822a44e357f22881ef44c627e0"
+   "ruling": "Ruling: model error; (h) is (d) minus (e) plus (g) on both sides; it differs through the reply's (g) (its invented h_wash_excess refusal, ruled model error on (g)) and its hiding of the column on the aggregate route, which Schedule D lines 1a and 8a total (i1040sd p. 10). Triage (pass 60bd5eac256b): 1,824/2,223 agree; no value difference; 9 candidate-refuses (6 completed, h_wash_excess); 82 candidate-hides-shown (aggregate entries); 300 candidate-unknown (sales.route read where unasked); 8 project-unknown on incomplete partial records.",
+   "context": "63e4d911dbc8ce5bba0ce3b732fb0263961b0f689f6277a03ee595fb7717ffa3",
+   "date": "2026-11-15",
+   "run": "c8609d4e0a8ade47e51ddb546a3d72a8aa69ea18ba4d4f78d60ee9f273471a53",
+   "subject_key": "7144d26c88d63021f6f85a868383a5d2492917f2522b9ffa0d6035379681536b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f1040.6.deepseek@sales[s2]",
+     "fixture:classm.retirement.3.deepseek@sales[s1]",
+     "fixture:classm.f4952.2@sales[s1]",
+     "fixture:classm.f4952.3@sales[s1]",
+     "fixture:classm.f5695.11@sales[s1]",
+     "fixture:classm.f8959.1@sales[s1]",
+     "fixture:classm.f8959.2@sales[s1]",
+     "fixture:classm.ltc.2@sales[s1]",
+     "fixture:classm.s179.3@sales[s1]",
+     "fixture:classm.sales.2@sales[s2]",
+     "fixture:classm.tcw.5@sales[s3]",
+     "fixture:classm.tcw.15@sales[s1]",
+     "fixture:sales.adjust.A.W@sales[a]",
+     "fixture:sales.adjust.D.W@sales[a]",
+     "fixture:sales.adjust.A.W.equal_loss@sales[a]",
+     "fixture:bug0476.sales.market_discount_code_d@sales[a]",
+     "fixture:sales.adjust.G.W@sales[a]",
+     "fixture:sales.adjust.J.W@sales[a]",
+     "partial:classm.f1040.6.deepseek-sales[s2].box@sales[s2]",
+     "partial:classm.f1040.6.deepseek-sales[s2].code@sales[s2]",
+     "partial:classm.f1040.6.deepseek-sales[s2].proceeds@sales[s2]",
+     "partial:classm.f1040.6.deepseek-sales[s2].reported_basis@sales[s2]",
+     "partial:classm.clcw_next_year.2-sales[s3].box@sales[s3]",
+     "partial:classm.clcw_next_year.2-sales[s3].code@sales[s3]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "sales.route_if_chosen",

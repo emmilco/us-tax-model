@@ -75,7 +75,7 @@ def gen_case(rng, i):
         "$sc@person[taxpayer]": [],
         "f4952.line4g": 0, "f4952.carryover": False, "f4952.unsupported": False, "f4952.alternative_allocation": False,
         "f8959.unsupported": False, "f8960.unsupported": False, "f8960.refund": False, "f8960.allocated_taxes": 0,
-        "ftc.all_passive": True, "ftc.statements": True, "ftc.eligible": True, "ftc.elect": True,
+        "ftc.all_passive": True, "ftc.statements": True, "ftc.eligible": True,
         "$f1095a": [], "s3.line10": 0,
         "sa.sales_tax_wish": False, "sa.estate_tax_income": False, "sa.bond_premium": False, "sa.debt_instrument_loss": False, "sa.pension_unrecovered": False, "sa.impairment_work": False, "sa.charity_limited": False, "sa.excluded_income": False, "sa.dependent": False,
         "sa.spouse_extra": False, "person[taxpayer].age65": False, "person[taxpayer].blind": False, "sa.spouse_itemizes": False, "sa.elect_itemize": False,
@@ -730,7 +730,7 @@ SCREENS_NO = {
                        "sd.f2439", "sd.sec1256", "sd.small_business_stock", "sd.trader_election", "sd.qof"),
     "qbi.unsupported": ("qbi.coop_patron", "qbi.prior_form", "qbi.reit_loss", "qbi.suspended"),
     "f8959.unsupported": ("f8959.territory_w2",),
-    "s1.line8_other": ("s1.digital_income", "s1.inmate_wages", "s1.ltc_payout", "s1.nqdc_pension", "s1.olympic", "s1.stock_options",
+    "s1.line8_other": ("s1.inmate_wages", "s1.ltc_payout", "s1.nqdc_pension", "s1.olympic", "s1.stock_options",
                        "s1.winnings_any"),
     "s1.line8g": ("s1.alaska_any",), "s1.line8h": ("s1.jury_any",), "s1.line8i": ("s1.winnings_any",),
     "s1.line8j": ("s1.hobby_any",), "s1.line8r": ("s1.scholarship_any",),
@@ -821,6 +821,8 @@ def redraft_answers(case):
     # listed on Form 8949 (the generator's route), no care provider when no care was paid.
     inputs.update({"sa.mortgage_unreported": False, "sa.mortgage_over_limit": False, "sa.foreign_tax_deduct": False,
                    "s1.alimony_any": False, "sli.unqualified_any": False, "sli.assisted_any": False, "sd.route_each": False})
+    # No digital asset received or disposed of (the generator draws boxes A, B, D and E only).
+    inputs["f1040.digital_assets"] = False
     # Form 1099-DIV: the boxes other than 1a, 1b, 2a, 5, 7 and 12 are asked beneath their own parent.
     inputs["div.other_boxes"] = any(inputs.get(f"div.{b}", 0) for b in ("box2b", "box2c", "box2d", "box2e", "box2f", "box3",
                                                                         "box9", "box10", "box13"))

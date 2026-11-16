@@ -1,0 +1,655 @@
+form:
+  id: f8582
+  kind: form
+  title: Form 8582 — Passive Activity Loss Limitations
+  tax_year: 2025
+  note: Parts I to III for the return, from the rental entries' Part IV to VIII columns. The only passive activities this
+    tool computes are the rentals listed (Part IV with active participation, Part V without); other passive activities are
+    refused (scope.passive). Shown only when required (f8582.required).
+  lines:
+  - id: f8582.zero
+    printed: (helper)
+    label: Zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i8582
+      locator: p. 1, Part I
+  - id: f8582.line1a_rental
+    printed: (helper)
+    label: 'Part IV, column (a): net income of the Schedule E rentals'
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.net_income
+      where:
+        op: test
+        all:
+        - &id001
+          op: test
+          eq:
+          - rental.reported
+          - const: true
+        - &id002
+          op: test
+          eq:
+          - rental.part4
+          - const: true
+    cite:
+      doc: i8582
+      locator: p. 4, Part IV
+  - id: f8582.p4a
+    printed: (helper)
+    label: 'Part IV, column (a) total: net income'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8582.line1a_rental
+    cite:
+      doc: i8582
+      locator: p. 4, Part IV
+  - id: f8582.line2a_rental
+    printed: (helper)
+    label: 'Part V, column (a): net income of the Schedule E rentals'
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.net_income
+      where:
+        op: test
+        all:
+        - *id001
+        - &id003
+          op: test
+          eq:
+          - rental.part4
+          - const: false
+    cite:
+      doc: i8582
+      locator: p. 4, Part V
+  - id: f8582.p5a
+    printed: (helper)
+    label: 'Part V, column (a) total: net income'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8582.line2a_rental
+    cite:
+      doc: i8582
+      locator: p. 4, Part V
+  - id: f8582.line1b_rental
+    printed: (helper)
+    label: 'Part IV, column (b): net loss of the Schedule E rentals'
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.net_loss
+      where:
+        op: test
+        all:
+        - *id001
+        - *id002
+    cite:
+      doc: i8582
+      locator: p. 4, Part IV
+  - id: f8582.p4b
+    printed: (helper)
+    label: 'Part IV, column (b) total: net loss'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8582.line1b_rental
+    cite:
+      doc: i8582
+      locator: p. 4, Part IV
+  - id: f8582.line2b_rental
+    printed: (helper)
+    label: 'Part V, column (b): net loss of the Schedule E rentals'
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.net_loss
+      where:
+        op: test
+        all:
+        - *id001
+        - *id003
+    cite:
+      doc: i8582
+      locator: p. 4, Part V
+  - id: f8582.p5b
+    printed: (helper)
+    label: 'Part V, column (b) total: net loss'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8582.line2b_rental
+    cite:
+      doc: i8582
+      locator: p. 4, Part V
+  - id: f8582.line1c_rental
+    printed: (helper)
+    label: 'Part IV, column (c): prior years unallowed losses of the Schedule E rentals'
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.prior_loss
+      where:
+        op: test
+        all:
+        - *id001
+        - *id002
+    cite:
+      doc: i8582
+      locator: p. 4, Part IV
+  - id: f8582.p4c
+    printed: (helper)
+    label: 'Part IV, column (c) total: prior years unallowed losses'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8582.line1c_rental
+    cite:
+      doc: i8582
+      locator: p. 4, Part IV
+  - id: f8582.line2c_rental
+    printed: (helper)
+    label: 'Part V, column (c): prior years unallowed losses of the Schedule E rentals'
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.prior_loss
+      where:
+        op: test
+        all:
+        - *id001
+        - *id003
+    cite:
+      doc: i8582
+      locator: p. 4, Part V
+  - id: f8582.p5c
+    printed: (helper)
+    label: 'Part V, column (c) total: prior years unallowed losses'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8582.line2c_rental
+    cite:
+      doc: i8582
+      locator: p. 4, Part V
+  - id: f8582.line1a
+    printed: 1a
+    label: Activities with net income (enter the amount from Part IV, column (a))
+    shown_when: f8582.required
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8582.p4a
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 1a
+  - id: f8582.line1b
+    printed: 1b
+    label: Activities with net loss (enter the amount from Part IV, column (b))
+    shown_when: f8582.required
+    type: Dollars
+    expr:
+      op: subtract
+      from: f8582.zero
+      take: f8582.p4b
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 1b
+  - id: f8582.line1c
+    printed: 1c
+    label: Prior years’ unallowed losses (enter the amount from Part IV, column (c))
+    shown_when: f8582.required
+    type: Dollars
+    expr:
+      op: subtract
+      from: f8582.zero
+      take: f8582.p4c
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 1c
+  - id: f8582.line1d
+    printed: 1d
+    label: Combine lines 1a, 1b, and 1c
+    shown_when: f8582.required
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - f8582.line1a
+      - f8582.line1b
+      - f8582.line1c
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 1d
+  - id: f8582.line2a
+    printed: 2a
+    label: Activities with net income (enter the amount from Part V, column (a))
+    shown_when: f8582.required
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8582.p5a
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 2a
+  - id: f8582.line2b
+    printed: 2b
+    label: Activities with net loss (enter the amount from Part V, column (b))
+    shown_when: f8582.required
+    type: Dollars
+    expr:
+      op: subtract
+      from: f8582.zero
+      take: f8582.p5b
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 2b
+  - id: f8582.line2c
+    printed: 2c
+    label: Prior years’ unallowed losses (enter the amount from Part V, column (c))
+    shown_when: f8582.required
+    type: Dollars
+    expr:
+      op: subtract
+      from: f8582.zero
+      take: f8582.p5c
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 2c
+  - id: f8582.line2d
+    printed: 2d
+    label: Combine lines 2a, 2b, and 2c
+    shown_when: f8582.required
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - f8582.line2a
+      - f8582.line2b
+      - f8582.line2c
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 2d
+  - id: f8582.line3
+    printed: '3'
+    label: Combine lines 1d and 2d and subtract any prior year unallowed CRD
+    shown_when: f8582.required
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - f8582.line1d
+      - f8582.line2d
+    cite:
+      doc: f8582
+      locator: 'Form 8582 (2025), line 3; i8582 p. 10, Line 3, "If you have prior-year unallowed commercial revitalization deductions (CRD) from rental real estate activities, treat that dollar amount as negative and combine with lines 1d and 2d"'
+    note: Prior-year unallowed commercial revitalization deductions are not asked (none can arise after 2009).
+  - id: f8582.loss1d
+    printed: (helper)
+    label: The loss on line 1d, as a positive amount
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8582.zero
+      take: f8582.line1d
+    cite:
+      doc: i8582
+      locator: p. 11, Line 4
+  - id: f8582.loss3
+    printed: (helper)
+    label: The loss on line 3, as a positive amount
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8582.zero
+      take: f8582.line3
+    cite:
+      doc: i8582
+      locator: p. 11, Line 4
+  - id: f8582.line4_both
+    printed: (helper)
+    label: The smaller of the loss on line 1d or the loss on line 3
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8582.loss1d
+      - f8582.loss3
+    cite:
+      doc: i8582
+      locator: p. 11, Line 4
+  - id: f8582.part2
+    printed: (helper)
+    label: 'Part II applies: line 3 is a loss and line 1d is a loss'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        lt:
+        - f8582.line1d
+        - const: 0
+      - op: test
+        lt:
+        - f8582.line3
+        - const: 0
+    cite:
+      doc: f8582
+      locator: 'Form 8582 (2025), line 3, "If line 3 is a loss and: • Line 1d is a loss, go to Part II"'
+  - id: f8582.line4
+    printed: '4'
+    label: Enter the smaller of the loss on line 1d or the loss on line 3
+    shown_when: f8582.required
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8582.part2
+          - const: true
+        then: f8582.line4_both
+      - guard:
+          op: test
+          eq:
+          - f8582.part2
+          - const: false
+        then: f8582.zero
+    cite:
+      doc: f8582
+      locator: 'Form 8582 (2025), line 4; i8582 p. 11, Line 4, "Enter on line 4 the smaller of the loss on Part I, line 1d, or the loss on line 3"'
+  - id: f8582.line5
+    printed: '5'
+    label: Enter $150,000. If married filing separately, see instructions
+    shown_when: f8582.required
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f8582.phaseout_end
+    cite:
+      doc: f8582
+      locator: 'Form 8582 (2025), line 5; i8582 p. 11, Line 5, "Married persons filing separate returns who lived apart from their spouses at all times during the year must enter $75,000 on line 5 instead of $150,000"'
+  - id: f8582.magi_income
+    printed: (helper)
+    label: 'Income for modified adjusted gross income: Form 1040 lines 1z to 5b and 7a, Schedule 1 additional income other
+      than line 5, and royalty income or loss'
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - f1040.line1z
+      - f1040.line2b
+      - f1040.line3b
+      - f1040.line4b
+      - f1040.line5b
+      - f1040.line7a
+      - s1.line10_ex5
+      - sche.nonpassive_net
+    cite:
+      doc: i8582
+      locator: p. 11, Line 6, "To figure modified adjusted gross income, combine all the amounts used to figure adjusted gross
+        income, except don’t take into account"
+    ambiguity: amb.2025.f8582_magi_build
+  - id: f8582.magi_adj
+    printed: (helper)
+    label: 'Adjustments for modified adjusted gross income: Schedule 1 line 26 less lines 15, 20 and 21'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - s1.line11
+      - s1.line13
+      - s1.line16
+      - s1.line17
+      - s1.line18
+      - s1.line19a
+      - s1.line25
+    cite:
+      doc: i8582
+      locator: p. 11, Line 6, "The deduction allowed for the deductible part of self-employment taxes", "The student loan
+        interest deduction"
+  - id: f8582.line6
+    printed: '6'
+    label: Enter modified adjusted gross income, but not less than zero
+    shown_when: f8582.required
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8582.magi_income
+      take: f8582.magi_adj
+    cite:
+      doc: i8582
+      locator: p. 11, Line 6, "The taxable amount of social security and tier 1 railroad retirement benefits"
+    ambiguity: amb.2025.f8582_magi_build
+  - id: f8582.line7
+    printed: '7'
+    label: Subtract line 6 from line 5
+    shown_when: f8582.required
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8582.line5
+      take: f8582.line6
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 7
+  - id: f8582.half7
+    printed: (helper)
+    label: Line 7 times 50%
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8582.line7
+      rate:
+        param: f8582.rate
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 8, "Multiply line 7 by 50% (0.50)"
+  - id: f8582.max8
+    printed: (helper)
+    label: $25,000
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: f8582.special_max
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 8
+  - id: f8582.line8
+    printed: '8'
+    label: Multiply line 7 by 50% (0.50). Do not enter more than $25,000
+    shown_when: f8582.required
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8582.half7
+      - f8582.max8
+    cite:
+      doc: f8582
+      locator: 'Form 8582 (2025), line 8; i8582 p. 11, Line 8, "Don’t enter more than $12,500 on line 8 if you’re married filing a separate return and you and your spouse lived apart at all times during the year"'
+  - id: f8582.line9
+    printed: '9'
+    label: Enter the smaller of line 4 or line 8
+    shown_when: f8582.required
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8582.line4
+      - f8582.line8
+    cite:
+      doc: f8582
+      locator: 'Form 8582 (2025), line 9; i8582 p. 11, Line 9, "If you do not have prior-year unallowed CRD from rental real estate activities, enter the smaller of line 4 or line 8 on line 9"'
+  - id: f8582.line10
+    printed: '10'
+    label: Add the income, if any, on lines 1a and 2a and enter the total
+    shown_when: f8582.required
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8582.line1a
+      - f8582.line2a
+    cite:
+      doc: f8582
+      locator: Form 8582 (2025), line 10
+  - id: f8582.line11
+    printed: '11'
+    label: Total losses allowed from all passive activities for 2025. Add lines 9 and 10
+    shown_when: f8582.required
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8582.line9
+      - f8582.line10
+    cite:
+      doc: f8582
+      locator: 'Form 8582 (2025), line 11; i8582 p. 11, Line 11, "Use Parts IV through IX of Form 8582 and the related instructions to figure the unallowed loss to be carried forward and the allowed loss to report on your forms and schedules for 2025"'
+  - id: f8582.p6_total_rental
+    printed: (helper)
+    label: 'Part VI, column (a): losses of the Schedule E rentals'
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.p6_loss
+      where: *id001
+    cite:
+      doc: i8582
+      locator: p. 12, Part VI, "by the total of all the losses in column (a)"
+  - id: f8582.p6_total
+    printed: VI (a) total
+    label: Part VI, column (a) total
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8582.p6_total_rental
+    cite:
+      doc: i8582
+      locator: p. 12, Part VI, "by the total of all the losses in column (a)"
+  - id: f8582.p7_total_rental
+    printed: (helper)
+    label: 'Part VII, column (a): losses of the Schedule E rentals'
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.p7a
+      where: *id001
+    cite:
+      doc: i8582
+      locator: p. 12, Part VII—Allocation of Unallowed Losses
+  - id: f8582.p7_total
+    printed: VII (a) total
+    label: Part VII, column (a) total
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f8582.p7_total_rental
+    cite:
+      doc: i8582
+      locator: p. 12, Part VII—Allocation of Unallowed Losses
+  - id: f8582.p7_C
+    printed: VII worksheet C
+    label: 'Part VII column (c) worksheet: line 3 as a positive amount less line 9'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8582.loss3
+      take: f8582.line9
+    cite:
+      doc: i8582
+      locator: p. 13, Column (c), "Enter as a positive amount Part I, line 3, of Form 8582", "Subtract line B from line A"
+  - id: f8582.exception
+    printed: (gate)
+    label: 'The filing exception holds: active participation only, no prior unallowed loss, total loss $25,000 or less, MAGI
+      $100,000 or less'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        le:
+        - f8582.p5b
+        - const: 0
+      - op: test
+        le:
+        - f8582.p5c
+        - const: 0
+      - op: test
+        le:
+        - f8582.p4c
+        - const: 0
+      - op: test
+        le:
+        - f8582.p4b
+        - param: f8582.exception_loss
+      - op: test
+        le:
+        - f8582.line6
+        - param: f8582.exception_magi
+    cite:
+      doc: i8582
+      locator: p. 1, Exception, "Your total loss from the rental real estate activities wasn’t more than $25,000"
+    ambiguity: amb.2025.f8582_shown
+  - id: f8582.deductions
+    printed: (helper)
+    label: Any passive activity deduction (a net loss or a prior unallowed loss)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        gt:
+        - f8582.p4b
+        - const: 0
+      - op: test
+        gt:
+        - f8582.p4c
+        - const: 0
+      - op: test
+        gt:
+        - f8582.p5b
+        - const: 0
+      - op: test
+        gt:
+        - f8582.p5c
+        - const: 0
+    cite:
+      doc: i8582
+      locator: p. 1, Who Must File, "Form 8582 is filed by individuals, estates, and trusts who have passive activity deductions"
+  - id: f8582.required
+    printed: (gate)
+    label: Form 8582 must be filed
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8582.deductions
+        - const: true
+      - op: test
+        eq:
+        - f8582.exception
+        - const: false
+    cite:
+      doc: i8582
+      locator: p. 1, Who Must File
+    ambiguity: amb.2025.f8582_shown

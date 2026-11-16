@@ -1,0 +1,271 @@
+{
+ "kind": "transcription",
+ "form": "f1116",
+ "family": "claude",
+ "base": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+ "head_rows": {
+  "agree / disagree / missing": "16 / 14 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "f1116.hmi_applies",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply tests only gross foreign source income over $5,000 and drops the itemizing condition. i1116 p. 18, Line 4a: 'Otherwise, deductible home mortgage interest including points is apportioned using a gross income method': only an itemizer has deductible home mortgage interest. Triage 1,504/2,073 agree; completed: 6 value (the f1116 fixtures c1, c3, c7, c9, c10, standard-deduction filers: project false, reply true), 9 candidate-unknown (reply reads the $f1116col roster unasked).",
+   "subject_key": "7c9a5d4313aa18a9c544a6b11994bb823f4b6add387e4bb1327af30e5fa49270"
+  },
+  {
+   "key": "f1116.has_gross",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "eb06ff09d63c139422eb396e972c711655797751ba50bf22d1bd57413fd6210d"
+  },
+  {
+   "key": "1a (Total)",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "c96956b0cc70b8f3a03ee49ac4e7673b3656d4edafe0ed8c8029f4af782eedca"
+  },
+  {
+   "key": "3a",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply puts Schedule A lines 5b and 5c on line 3a where the project puts line 5e. They differ only where line 5a (state or local income tax) is above zero, and such a return is refused on line 35 by f1116.itemized_unread (p514 p. 27, 'State income taxes ... are definitely related and allocable to the gross income on which the taxes are imposed'); with line 5a zero, line 5e is lines 5b and 5c capped, the reply's value. Triage 1,911/2,073 agree; completed: 53 value, every witness a return with line 5a above zero off the Form 1116 path (stage4.salt.below $40,000 v. $0, stage20.blind.r9 $9,000 v. $0).",
+   "subject_key": "1779e1830ec0f559e8ff799217954c293f388d6c1917a5dbfc35c62bf180c550"
+  },
+  {
+   "key": "3b",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "6382c7346cb3854f2d6bf4103a3aa996c587564208bdcde8bd161fbddbf5db7f"
+  },
+  {
+   "key": "3c",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "1b5776a4e8c33980c9b0531c90d26cb4823be181100dd914b33b6073c2f74d57"
+  },
+  {
+   "key": "3e",
+   "record": "e83665a19d2765b3d3b336848c37038325ad2c266ae57487d3f3ab15f0b14bfa",
+   "status": "DISAGREE",
+   "ruling": "Ruling: interface gap; i1116 p. 17, Lines 3d and 3e: gross income \"means the total of your gross receipts (reduced by cost of goods sold), total capital and ordinary gains (before subtracting any losses), and all other income\". The log records complete input context: fail; the line-scoped request (f1116.lines-a0e3f14dd0cd) carried no computed income line of Form 1040 or Schedule 1 (no f1040.line1z, 2b, 3b, 4b, 5b, 6b, s1.line1, 2a, 7, 9, sd.line13), and the reply says so in its note and sums only Schedule B lines 4 and 6 and positive gains. Taxable interest and ordinary dividends are the same on both sides (f1040.line2b, 3b vs sb.line4, 6). The project adds wages, IRA, pension, annuity and social security amounts, Schedule 1 business, alimony, unemployment and other income and Schedule D line 13, as the source requires; Schedule E rents and royalties, which line 3e would also need, are refused on this path (f1116.rental, on line 35), and Schedule C by f1116.business. Triage executable-triage-v2: 602/2,914 agree; 2,014 value (1,075 completed, e.g. classm.f1040.1.deepseek: project $32,936.00 from wages, reply $0.00), 165 project-refuses, 133 project-unknown, all on refused or incomplete returns. Project right; no change. The incomplete request is a review-tool gap (catalog for a line-scoped f1116 request), reported to the coordinator.",
+   "subject_key": "c27ce08225a90b05e4d8e5fa3043a11c883de481bb01eccafd7d40c03cf392e0"
+  },
+  {
+   "key": "6 (Total)",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "71133efcb2a5da63763d91783ed74eaf9ab52f380d3684f177cfa83c02f0089a"
+  },
+  {
+   "key": "7 (Total)",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "d3f15f4bcd23598dd0610824828bb41ce6cc7ba2e967bddf873d47f579c607f4"
+  },
+  {
+   "key": "8",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "04a1713f7e0da66ac0d4a1daec87a6d47489b96ba3db25b07920417d3044664f"
+  },
+  {
+   "key": "9",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "e97dd69f60d764808575d6ba2ee974fbafe8418957f3d63552b35cbd264c29bb"
+  },
+  {
+   "key": "10",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply enters Schedule B line 3 column (xiv) without the project's gate on ftc.carryover_if_asked (a carryover claimed). Where no carryover is claimed the $f1116sbyr roster is never asked and line 3 is empty, so the project's 0 is the value; the reply's only differences are candidate-unknown (86 completed, roster not confirmed) and 19 candidate-refuses on refused returns. Form 1116 line 10: 'Enter the sum of any carryover of foreign taxes (from Schedule B, line 3, column (xiv)) plus any carrybacks'.",
+   "subject_key": "b64f4b832bace9d4b72ae9233c0eef78adcb5b1e2562426066b0e82b37ebe651"
+  },
+  {
+   "key": "11",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "27fdeca566772f969b47b1d8b08591923bdae4fdce8da638b6a1395ea7ffae31"
+  },
+  {
+   "key": "12",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "7e0a48c660aba0ced6f41d9152a38a194c8fcc75ebe90241c671db0b7cc5e5b2"
+  },
+  {
+   "key": "13",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "4595d260bc25986f21b9fce46a6b91efe2325bbec4608ec9826b1afc66037ce3"
+  },
+  {
+   "key": "14",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply subtracts line 13. Form 1116 line 14: 'Combine lines 11, 12, and 13'; line 12 is printed in parentheses (a reduction) and line 13 (taxes reclassified under high tax kickout) is combined as entered, so line 14 = line 11 - line 12 + line 13, the project's. Line 13 is zero on the returns prepared (high-taxed income refused, f1116.high_taxed); the triage differences are candidate-unknown only (the reply reads f1116.redetermination and f1116.reduction unasked), 44 completed.",
+   "subject_key": "ddfccec66ecaa848460559d5f24e175bac42189695d9a1069d79c2eab26e20f6"
+  },
+  {
+   "key": "15",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "96e643c08481c5b3dabd3b2b0d1fe024c088f9987f80fb51e54f8feeee554b8f"
+  },
+  {
+   "key": "16",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "ea5c956ae101ae8c63cc2e3c4edaab7dc04c1c325ba6c3dbe8bfe92cb08bd0ce"
+  },
+  {
+   "key": "17",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "65da1b9778bde57adb3f02877c0ed19f47115c8123ba1f43634a94a560f294f6"
+  },
+  {
+   "key": "18",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply's value is unknown on every return (1,032 completed candidate-unknown: its h_line18_ws branch for the Worksheet for Line 18, refused here by f1116.adjust, yields no value). Its shown_when (line 17 above zero) follows Form 1116 line 17, '(If the result is zero or less, skip line 18 and enter -0- on line 19.)': the project shows line 18 there; filed as a low finding on display only (BUG-0912), the value stays needed by f1116.us_loss.",
+   "subject_key": "e9482a3e8085e6365cfb8a884d2063147ee22106a02e58625b664d5d35d6b4b7"
+  },
+  {
+   "key": "20",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "faaab1647fe9004214837465ad37134591e68f4711a4c4e9d87b8bf7e15b16cf"
+  },
+  {
+   "key": "21",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "0f0b10668155968ada3a30dc79315b1f1dbee5b8c884d653acb3445241d223f8"
+  },
+  {
+   "key": "22",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "383d49116f75db07c90299c8e2e3a3835267d434993f4b4a3b72410f77ef2042"
+  },
+  {
+   "key": "23",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "65d8c107dc8bee5e98e5e3a48a9f331a0361be2a6f66cea80cfecbfdb05a9ba0"
+  },
+  {
+   "key": "24",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "4da5668d28f870402e812cb62fb4e5726c2315ac3e4eb525b05359f00f74fd8b"
+  },
+  {
+   "key": "27",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "02f1c80a61405b5fe6608b410a9ecaf0ede9409c9116c50f8df5621388adc5a1"
+  },
+  {
+   "key": "32",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "97be3e334ec2503aa49937dd068023e8f130395de65ec74fdc06fb901956d0a1"
+  },
+  {
+   "key": "33",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "d6f25583c03ba139469c9b1a38d6691e75606455342024c595eda833d91c204c"
+  },
+  {
+   "key": "34",
+   "record": "9d8701a147961b5d7f1e1a0085564d27d1c0ee6821aa740acb0803d7dd09ed2d",
+   "status": "AGREE",
+   "subject_key": "b71a4ec1d54466953645fbfa2931b519a2a4b3cd076d4b70714399e3b1efdc9d"
+  },
+  {
+   "key": "35",
+   "record": "e83665a19d2765b3d3b336848c37038325ad2c266ae57487d3f3ab15f0b14bfa",
+   "status": "AGREE",
+   "subject_key": "d039eab7fe46b7c8dbf7519b57c2a61ca48bcd7abb93d5ee51977f9f93ecdb07"
+  }
+ ],
+ "subjects": {
+  "f1116.hmi_applies": "a986def641c524514e2d7e79d95d1c11514e22d70b620b598490a49fb4a84e15",
+  "f1116.has_gross": "74b913a346e3ca7e09fed01868463348b8f4804646bad4a8864937c6496008d0",
+  "1a (Total)": "292ffa1d3909b67fe1cadd61548100351488121c5b6a1b7b9d0f32b1f3133a5c",
+  "3a": "abac26e20314c2a5b6e0e03e7a4f9b79e85bcac69edaa3c0c45d87407f4c8c44",
+  "3b": "425ebacc56fd4a2f9e27d45c083ec52a8a359ab0122a96ec211dd5e0c139e8cc",
+  "3c": "c091cfc20420bc350e026feeedffd2f5bf70e87bffc440d458e5dab35bee997d",
+  "3e": "f4fc3e14b2b3dca613ea1477a86941dc8a25219f5bb15d14df1a8a3e2b788108",
+  "6 (Total)": "5a21f1aa14acc7e2766ddbc12f8d5b47f3492c1133d65f124416c2ecf6de0a94",
+  "7 (Total)": "6cb55bf303149e6558a4f2f635a5133c87835adb3d31410f3e102fd3cd679eb7",
+  "8": "555eb5235a05bba94bd2f2429ab8bd1295b62cc49b03653e31703c27b6e8925d",
+  "9": "b36b1f22a9d5d8a72541f520ce5f23ca2b511033afd1d9498363d9f248a82f82",
+  "10": "320611e10758540581b085280a094ba028a9c539a79eeb7f6d57f830db64ba18",
+  "11": "357407de6d5463ae5d92e1d5480c1e13555dbd751dcf716636979f8297bfd162",
+  "12": "56e3b0c74042d2c6c0ab1e518c7a333be20ff7ae7a3da139cb33703f0ce9ec84",
+  "13": "43bbde3b66a9c5f99d842faf33b8a3a4148b35c529abe4b89137eca587a52105",
+  "14": "4297b7d526e863c490332abc4f1525ca8aac454f683d320524efdaddece9ed0b",
+  "15": "346e12842c6aeb33a8daa6082da14070450696fd127deb6fb82a5c5162b15b48",
+  "16": "c49f6d8c7a1fe57c93e28863ba23df07019cfda2e48edd167fee347ecea35a8a",
+  "17": "1fe866dcb2b09e6ded7a49ee20b601ee034a39e5aaa2714d45ffbb05c75acf00",
+  "18": "b0d63004df2ce815747758cccd39d35d061eb46f80fef1ed3835d744c0e7e973",
+  "20": "df8f2cf66230b13575ab21d0fce5a2a86ccbc8a9999839a16109eec9fd254111",
+  "21": "eb5e8ca4879af1f3c6b8df86b430488fc57b3d1870afec6880a32b9697ade359",
+  "22": "e964e5d524b820394febcd5f0ba3475c789515ee64b55edf46bab9e013aef581",
+  "23": "e01065fd14cda4266578ff6d59a4d5b4b0c80d5bfeb5d5c6cc4d4c27a4857c64",
+  "24": "a5527d4af3215b5515c9c3f790cf6ca564a81430b49af116b01cb41811069899",
+  "27": "922d51b30956cc0a5ce63332a4316bd145ce640c1ae92c1c8c2474603d63daeb",
+  "32": "bc1cb75029a817fef623ca102e8b402cb0c472dc4744ef7e31f2b99cfd8bc6aa",
+  "33": "2b9533860865bd8969408089841242687522dcbecd43c6c28302181151dea5ba",
+  "34": "8efe8f7dafe0f9273661ccf64e8b653b49476cd550eb813c097726d45ff1ccd8",
+  "35": "5af4042177fd66b2901f24a5ba05d78a38c7e4b65da3d1e7af21c7b061ee7e02"
+ },
+ "__rest__": "16b2fa9a12e1e39f4ae68a9c3835a066fc107ba134255e3442748fdb141148ee",
+ "foreign": {
+  "f1116.hmi_applies": "3cfdbe2ec43eabaed09338e134affde90d75b8a955ca9c4b341607985c2b6ff3",
+  "f1116.has_gross": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "1a (Total)": "58c70bb4fbb69bdd8953dab9f3219497371b47c2184b5f9908cad3b084641555",
+  "3a": "7942b9373f4707cc5630d3c22fcf1c25a49a2addc45cdcf9102140b173737bd6",
+  "3b": "7219011b9987f62627f2765bfd967c75bd71b2daeac9e4ed122eb81960dd506e",
+  "3c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3e": "e1208a94d3e43c1fd78680df868f1f599548636671384d12c7edb6ce6bcecd07",
+  "6 (Total)": "fa7cd6be6f58391b99902e048aeef824bcf9ba8e0f9a2135e8585c101b5c30ed",
+  "7 (Total)": "6da3903d65cab97e7b3f6e3ef3a02292df591344de9152dcd75f6b77d7546f24",
+  "8": "56ac232aef758fc0a4f938b27c3fe68e26a2c97dec0427a74f70dfcdcedc8a9f",
+  "9": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "10": "47a7d259573c2bcf0966dd28e9074f336d0a993ed9d6c17cfe2ced1be116b561",
+  "11": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "12": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "13": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "14": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "16": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "17": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "18": "5d0411084d8173874a666ae4e90de55cd62624bb2f477eb7536bcd816d0ef3c3",
+  "20": "fb18d5ee13e3c3d2f8a558b0e9c6a7d2947c201f929ab87154d38ef66674c6e2",
+  "21": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "22": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "23": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "24": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "27": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "32": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "33": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "34": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "35": "72b1ecb6521c30235d3bee0a2667613c49b7e8440a2269c378bd36b9a23f1567"
+ }
+}

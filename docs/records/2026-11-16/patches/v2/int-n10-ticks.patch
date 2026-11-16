@@ -1,0 +1,111 @@
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 681ceac..e1163da 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -778,8 +778,7 @@ bank:
+     tick: Foreign tax tied to excluded income, oil, gas, minerals or a boycott
+     help: Also tax on income from Puerto Rico or American Samoa not taxed here, a foreign company or partnership you
+       control and did not report, or a splitting event. A Yes ends the interview here.
+-    prompt: Does any of the foreign tax relate to income you exclude, foreign oil, gas or minerals, an international boycott,
+-      or another reduction the Form 1116 instructions list?
++    prompt: "Does any of the foreign tax relate to income you exclude, foreign oil, gas or minerals, an international boycott, or another reduction?"
+   - input: f1116.loss_accounts
+     order: 280
+     seq: 15
+@@ -796,8 +795,7 @@ bank:
+     tick: A change since your 2024 return to the foreign tax carried
+     help: For example a carryback to 2023 that differs from the estimate on the 2024 Schedule B (Form 1116), a change in
+       foreign tax for an earlier year, or an IRS audit. A Yes ends the interview here.
+-    prompt: Since you filed your 2024 return, has anything changed the foreign tax carried from it, such as a carryback
+-      that differs from its estimate, a change in foreign tax for an earlier year, or an audit?
++    prompt: "Since you filed your 2024 return, has anything changed the foreign tax carried from it?"
+   - input: f1116sb.split
+     order: 280
+     seq: 17
+@@ -805,6 +803,7 @@ bank:
+     tick: Foreign tax carried from a joint return, this one not joint
+     help: For example after a divorce or a spouse's death, the carryover is divided between the spouses. A Yes ends the
+       interview here.
++    prompt: "Is any foreign tax carried into 2025 from an earlier joint return with someone you are not filing jointly with now?"
+   - input: $f1116sbyr
+     order: 280
+     seq: 18
+@@ -1860,18 +1859,21 @@ bank:
+     group: "pay_kinds"
+     tick: "Pay for work in someone's home, with no W-2"
+     help: "Such as a nanny, carer, cleaner or gardener paid by a household. A household that pays you less than $2,800 in a year need not give you a W-2."
++    prompt: "In 2025, were you (or, on a joint return, your spouse) paid by a household for work in its home, with no W-2?"
+   - input: scope.contractor_pay
+     order: 146
+     seq: 21
+     group: "pay_kinds"
+     tick: "Pay from a firm that wrongly treated you as a contractor"
+     help: "Yes only if you believe you were the firm's employee, it took out no social security or Medicare tax, and you are not reporting the pay as a business of your own."
++    prompt: "In 2025, did a firm pay you (or, on a joint return, your spouse) as a contractor, with no social security tax taken out, when you were really its employee?"
+   - input: scope.tips_unreported
+     order: 146
+     seq: 22
+     group: "pay_kinds"
+     tick: "Tips not reported in full to an employer, or noncash tips"
+     help: "Count cash and card tips you did not report to the employer, and tips such as tickets or goods. Tips in box 8 of a W-2 were asked about with the W-2."
++    prompt: "In 2025, did you (or, on a joint return, your spouse) get tips at work not fully reported to the employer, or noncash tips?"
+   - input: scope.strike_pay
+     order: 146
+     seq: 23
+@@ -1883,6 +1885,7 @@ bank:
+     group: "pay_kinds"
+     tick: "Other wages from an employer that gave you no W-2"
+     help: "For example when an employer never sent a W-2. Ask the employer for it first; a Yes ends the interview here."
++    prompt: "In 2025, did an employer pay you (or, on a joint return, your spouse) other wages for which you have no W-2?"
+   - input: person.household_wages
+     order: 147
+     seq: 1
+@@ -2094,6 +2097,7 @@ bank:
+     group: nol_facts
+     tick: You two were not married to each other when it arose
+     help: A Yes ends the interview here.
++    prompt: "Were you and your spouse not married to each other in a year the loss arose, or in any year since?"
+   - input: s1.nol_was_joint
+     order: 258
+     seq: 14
+@@ -2179,6 +2183,7 @@ bank:
+     tick: Owned an opportunity zone fund (QOF), or put a gain into one
+     help: Count a 2025 gain you are putting off tax on by investing in one, even if you invest in 2026. A return with one is
+       outside what this tool prepares; a Yes ends the interview here.
++    prompt: "Did you (or, on a joint return, your spouse) hold an opportunity zone fund (QOF) in 2025, or put a 2025 gain into one?"
+   - input: clcw.spouse_screen
+     order: 276
+     seq: 10
+@@ -4085,6 +4090,7 @@ bank:
+     group: rec_kinds
+     tick: Something else you itemized for 2024
+     help: Not state or local income tax; that refund is asked on its own.
++    prompt: "Was any of it a refund or reimbursement of something else you itemized on your 2024 Schedule A, such as a casualty loss?"
+   - input: rec.property_tax
+     order: 165
+     seq: 25
+@@ -6970,6 +6976,7 @@ bank:
+     group: rental_rare
+     tick: It is part of a home or building you live in
+     help: A Yes ends the interview here.
++    prompt: "For this rental property — Is it part of a building you live in, such as a room or a unit?"
+   - input: rental.active
+     order: 130
+     seq: 24
+@@ -7205,6 +7212,7 @@ bank:
+     group: royalty_rare
+     tick: From your own self-employed creative work or invention, or a working interest
+     help: A Yes ends the interview here.
++    prompt: "For this royalty — Did it come from your work as a self-employed writer, artist, musician or inventor, or an oil or gas working interest?"
+   - input: royalty.depletion
+     order: 130
+     seq: 74
+@@ -7240,4 +7248,5 @@ bank:
+     seq: 94
+     group: rental_return
+     tick: A rental treated as a business for the qualified business income deduction
+-    help: A Yes ends the interview here.
+\ No newline at end of file
++    help: "For example, 250 hours or more a year of rental services, with separate books. A Yes ends the interview here."
++    prompt: "Do you treat a rental as a business for the qualified business income deduction?"
+\ No newline at end of file

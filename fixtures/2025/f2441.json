@@ -35,7 +35,8 @@
         "person[taxpayer].w2[emp_a].box10": 400000,
         "f2441.line13": 50000,
         "f2441.plan_max": 500000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line15": {
@@ -4029,7 +4030,8 @@
           "p0"
         ],
         "dcprov[p0].paid": 700000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line4": {
@@ -4128,7 +4130,8 @@
           "p0"
         ],
         "dcprov[p0].paid": 700000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line4": {
@@ -4225,7 +4228,8 @@
           "p0"
         ],
         "dcprov[p0].paid": 700000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line4": {
@@ -4324,7 +4328,8 @@
           "p0"
         ],
         "dcprov[p0].paid": 700000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line5": {
@@ -4400,7 +4405,8 @@
         "person[taxpayer].w2[e0].box10": 300000,
         "person[spouse].w2[e0].box10": 300000,
         "f2441.plan_max": 500000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line4": {
@@ -4460,7 +4466,8 @@
           "p0"
         ],
         "dcprov[p0].paid": 400000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line9b": {
@@ -4522,7 +4529,8 @@
         "dcprov[p0].paid": 1950000,
         "person[taxpayer].w2[e0].box10": 100000,
         "f2441.plans_differ": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line21": {
@@ -4582,7 +4590,8 @@
         "dcprov[p0].paid": 1950000,
         "person[taxpayer].w2[e0].box10": 100000,
         "f2441.line14": 200000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line15": {
@@ -4629,7 +4638,8 @@
           "p0"
         ],
         "dcprov[p0].paid": 400000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.qp_count": {
@@ -4688,7 +4698,8 @@
         ],
         "dcprov[p0].paid": 400000,
         "dcprov[p0].related": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.paid_total": {
@@ -4712,7 +4723,7 @@
         "f2441:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage15.f2441.s1 with the filing status married filing separately: line 11 (the credit, Schedule 3 line 2) is refused (i2441 line A). Lines 9c and 10 are computed, so the entry on line 11 decides its value. The refused value is the evaluator's.",
+      "evidence_note": "Inputs are stage15.f2441.s1 with the filing status married filing separately: line 11 (the credit, Schedule 3 line 2) is refused (i2441 line A). Lines 9c and 10 are computed, so the entry on line 11 decides its value. The refused value is the evaluator's. Restated by lane mfs-l3 (married filing separately expansion, owner decision D2): line 11 is no longer refused. With the test-data default household.mfs_living (together at some time July to December 2025), the filer is not considered unmarried (i2441 p. 2), so line A is not checked and no credit is taken: line 11 is zero.",
       "inputs": {
         "f1040.status": "mfs",
         "$w2@person[taxpayer]": [
@@ -4731,23 +4742,15 @@
           "p0"
         ],
         "dcprov[p0].paid": 400000,
-        "eic.same_home": null,
         "eic.legally_separated": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "household.married_dec31": true
       },
       "expect": {
         "f2441.line11": {
-          "kind": "refusal",
-          "gate": "s3.mfs",
-          "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
-          "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported.",
-          "cite": {
-            "doc": "i2441",
-            "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\"",
-            "revision": "2025",
-            "snapshot": "86f0669e78b1dc00bfb99e956673d4fccee9e40d6c44d53623dd08e62567fd39",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -4757,7 +4760,7 @@
         "f2441:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage15.f2441.s4 (box 10 $5,000) with the filing status married filing separately: line 26 (Form 1040 line 1e) is refused (the line 21 amount differs for married filing separately). Lines 23 and 25 are computed, so the entry on line 26 decides its value. The refused value is the evaluator's.",
+      "evidence_note": "Inputs are stage15.f2441.s4 (box 10 $5,000) with the filing status married filing separately: line 26 (Form 1040 line 1e) is refused (the line 21 amount differs for married filing separately). Lines 23 and 25 are computed, so the entry on line 26 decides its value. The refused value is the evaluator's. Restated by lane mfs-l3 (owner decision D2): line 26 is no longer refused. The case's inputs state no W-2 box 10 amount (the $5,000 of the note above is not among them), so line 12 is zero and, the filer not being considered unmarried, line 26 is zero (Part III, i2441 pp. 5 to 6).",
       "inputs": {
         "f1040.status": "mfs",
         "$w2@person[taxpayer]": [
@@ -4777,21 +4780,14 @@
           "p0"
         ],
         "dcprov[p0].paid": 600000,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "household.married_dec31": true
       },
       "expect": {
         "f2441.line26": {
-          "kind": "refusal",
-          "gate": "s3.mfs",
-          "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
-          "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported.",
-          "cite": {
-            "doc": "i2441",
-            "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\"",
-            "revision": "2025",
-            "snapshot": "86f0669e78b1dc00bfb99e956673d4fccee9e40d6c44d53623dd08e62567fd39",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -5302,7 +5298,8 @@
         "person[taxpayer].w2[emp_a].box10": 100000,
         "f2441.line13": 50000,
         "f2441.line14": 100001,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line12": {
@@ -5935,7 +5932,8 @@
         "person[taxpayer].w2[emp_a].box10": 200000,
         "f2441.plan_max": 500000,
         "f2441.employer_care": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.paid_total": {
@@ -6034,7 +6032,8 @@
         "person[spouse].w2[e0].box6": null,
         "person[taxpayer].w2[e0].box6": null,
         "f5695.condo": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line24": {
@@ -6152,7 +6151,8 @@
         "dcprov[p0].paid": 600000,
         "person[taxpayer].w2[emp_a].box10": 200000,
         "f2441.employer_care": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.line15": {
@@ -6231,7 +6231,8 @@
         "person[taxpayer].w2[emp_a].box10": 200000,
         "f2441.plan_max": 500000,
         "f2441.employer_care": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f2441.employer_care_l16": {
@@ -6258,6 +6259,463 @@
             "snapshot": "86f0669e78b1dc00bfb99e956673d4fccee9e40d6c44d53623dd08e62567fd39",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "dep.care_parent_claimable_refused",
+      "covers": [
+        "f2441.care_other_or_claimable",
+        "f2441.nondependent_gate"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "i2441 p. 1, Qualifying Person(s): a child under 13 is a qualifying person if you could claim the child as a dependent except that \"You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return\". A claimable single parent (who can claim no dependent, i1040gi p. 18, Step 2 question 4) pays $4,000 of care for a child of 4 and answers Yes to the question on a qualifying person who is not a dependent: refused at f2441.nondependent_gate, which this tool keeps for every such person. Refusal text recorded from the evaluator.",
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2003,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 3000000,
+        "person[taxpayer].w2[a].box5": 3000000,
+        "person[taxpayer].w2[a].box6": 186000,
+        "f2441.care": true,
+        "$dependent": [
+          "a"
+        ],
+        "dependent[a].age": 4,
+        "dependent[a].months": 12,
+        "dependent[a].dc_paid": 400000,
+        "$dcprov": [
+          "p0"
+        ],
+        "dcprov[p0].paid": 400000,
+        "f2441.nondependent": true
+      },
+      "expect": {
+        "f2441.line11": {
+          "kind": "refusal",
+          "gate": "f2441.nondependent_gate",
+          "form": "Qualifying person who is not your dependent (Form 2441)",
+          "remedy": "A qualifying person you cannot claim as a dependent (a person who would be your dependent but for their gross income, their joint return or your being claimable as a dependent, or a child you treat as your qualifying person as the custodial parent) is outside this tool.",
+          "cite": {
+            "doc": "i2441",
+            "locator": "p. 1, Qualifying Person(s), \"or could claim as a dependent except\"; p. 1, Special rule for children of divorced or separated parents or parents who live apart, \"Even if you can't claim your child as a dependent, they are treated as your qualifying person if\"",
+            "revision": "2025",
+            "snapshot": "86f0669e78b1dc00bfb99e956673d4fccee9e40d6c44d53623dd08e62567fd39",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mfs.f2441.benefits_no_credit",
+      "covers": [
+        "f2441",
+        "f1040",
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l3 (married filing separately), predicted by hand from the archived f2441 and i2441 (pp. 2, 5) before the evaluator was run. Facts: married filing separately, living with the spouse in the last 6 months of 2025 (not considered unmarried, so line A is not checked). Wages $60,000 with W-2 box 10 $5,000 (none in box 1); one child aged 4 who lived with the filer all year; care paid $6,000; plan maximum $5,000; the spouse's earned income $50,000. Part III: L12 5,000; L15 5,000; L16 6,000; L17 5,000; L18 60,000; L19 the spouse's earned income 50,000 (i2441 p. 5, Line 19, No); L20 5,000; L21 2,500 (married filing separately with the spouse's income on line 19); L25 2,500; L26 2,500 to Form 1040 line 1e. Part II: no credit (i2441 p. 2, 'you can't generally take the credit'; amb.2025.f2441_mfs_no_credit), so line 11 and Schedule 3 line 2 are zero.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box3": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "person[taxpayer].w2[emp_a].box10": 500000,
+        "$dependent": [
+          "a"
+        ],
+        "dependent[a].age": 4,
+        "dependent[a].months": 12,
+        "f2441.care": true,
+        "f2441.benefits": true,
+        "dependent[a].dc_paid": 600000,
+        "$dcprov": [
+          "p0"
+        ],
+        "dcprov[p0].paid": 600000,
+        "f2441.plan_max": 500000,
+        "f2441.mfs_spouse_earned": 5000000,
+        "household.mfs_living": "together_late"
+      },
+      "expect": {
+        "f2441.line_a": {
+          "kind": "bool",
+          "value": false
+        },
+        "f2441.line12": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f2441.line15": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f2441.line16": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f2441.line17": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f2441.line18": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "f2441.line19": {
+          "kind": "money",
+          "cents": 5000000
+        },
+        "f2441.line20": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f2441.line21": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f2441.line25": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f2441.line26": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f1040.line1e": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f2441.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line2": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mfs.f2441.line_a_credit",
+      "covers": [
+        "f2441",
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l3, predicted by hand from the archived f2441, i2441 (pp. 2, 4 to 5), the dc_rate table and the 2025 Tax Table before the evaluator was run. Facts: married filing separately; the spouse did not live in the home in the last 6 months of 2025; the filer paid over half the cost of keeping up the home, which was the main home all year of the filer's child aged 4. All three requirements hold, so the filer is considered unmarried and checks line A (i2441 p. 2). Wages $30,000; care paid $4,000. L3 3,000 (one person); L4 30,000; L5 'all others' = L4 30,000; L6 3,000; L7 30,000; L8 .27 (over 29,000, not over 31,000); L9a 810; taxable income 30,000 - 15,750 = 14,250, Tax Table (married filing separately, 14,250-14,300) 1,475 = L10; L11 810 = Schedule 3 line 2.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$dependent": [
+          "a"
+        ],
+        "dependent[a].age": 4,
+        "dependent[a].months": 12,
+        "f2441.care": true,
+        "dependent[a].dc_paid": 400000,
+        "$dcprov": [
+          "p0"
+        ],
+        "dcprov[p0].paid": 400000,
+        "household.mfs_living": "apart_last6",
+        "household.home_cost": true
+      },
+      "expect": {
+        "f2441.line_a": {
+          "kind": "bool",
+          "value": true
+        },
+        "f2441.line3": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f2441.line5": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "f2441.line9a": {
+          "kind": "money",
+          "cents": 81000
+        },
+        "f2441.line10": {
+          "kind": "money",
+          "cents": 147500
+        },
+        "f2441.line11": {
+          "kind": "money",
+          "cents": 81000
+        },
+        "s3.line2": {
+          "kind": "money",
+          "cents": 81000
+        }
+      }
+    },
+    {
+      "id": "mfs.f2441.apart_no_home_cost",
+      "covers": [
+        "f2441",
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l3, predicted by hand before running: mfs.f2441.line_a_credit, except that the filer did not pay over half the cost of keeping up the home. One requirement of Married Persons Filing Separately fails (i2441 p. 2), so line A is not checked and no credit is taken: line 11 and Schedule 3 line 2 are zero.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$dependent": [
+          "a"
+        ],
+        "dependent[a].age": 4,
+        "dependent[a].months": 12,
+        "f2441.care": true,
+        "dependent[a].dc_paid": 400000,
+        "$dcprov": [
+          "p0"
+        ],
+        "dcprov[p0].paid": 400000,
+        "household.mfs_living": "apart_last6",
+        "household.home_cost": false
+      },
+      "expect": {
+        "f2441.line_a": {
+          "kind": "bool",
+          "value": false
+        },
+        "f2441.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line2": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mfs.f2441.refuse.spouse_deemed",
+      "covers": [
+        "f2441:refuse"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane mfs-l3: mfs.f2441.benefits_no_credit with a spouse who was a full-time student. Line 19 would take the spouse's earned income, considered to be at least $250 or $500 a month for a student (i2441 p. 5, Line 19, No; p. 4), which is refused at line 19.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box3": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "person[taxpayer].w2[emp_a].box10": 500000,
+        "$dependent": [
+          "a"
+        ],
+        "dependent[a].age": 4,
+        "dependent[a].months": 12,
+        "f2441.care": true,
+        "f2441.benefits": true,
+        "dependent[a].dc_paid": 600000,
+        "$dcprov": [
+          "p0"
+        ],
+        "dcprov[p0].paid": 600000,
+        "f2441.plan_max": 500000,
+        "f2441.mfs_spouse_earned": 5000000,
+        "household.mfs_living": "together_late",
+        "f2441.mfs_spouse_deemed": true
+      },
+      "expect": {
+        "f2441.line19": {
+          "kind": "refusal",
+          "gate": "f2441.mfs_spouse_deemed_if_married",
+          "form": "Deemed earned income of a student or disabled spouse on a separate return (Form 2441, line 19)",
+          "remedy": "Your husband's or wife's earned income on line 19 is considered to be at least $250 or $500 a month for each month they were a full-time student or not able to care for themselves, which this tool does not figure.",
+          "cite": {
+            "doc": "i2441",
+            "locator": "p. 4, If You or Your Spouse Was a Student or Disabled, \"Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)\"",
+            "revision": "2025",
+            "snapshot": "86f0669e78b1dc00bfb99e956673d4fccee9e40d6c44d53623dd08e62567fd39",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mexist.f2441.line_a.mfs_apart_no_qp",
+      "covers": [
+        "f2441"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of mfs.f2441.refuse.spouse_deemed (married filing separately, wages $60,000) with a dependent child of 15 who lived with you all year, you lived apart from your spouse during the last 6 months of 2025 and paid more than half the cost of keeping up the home, and no care expenses or dependent care benefits. A qualifying person is a dependent under age 13 or one not able to care for themselves (i2441 p. 2, Qualifying Person); the 15-year-old is neither, so your home was not a qualifying person's main home and you are not considered unmarried (i2441 p. 2, Married Persons Filing Separately): line A is not checked (false).",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box3": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "$dependent": [
+          "a"
+        ],
+        "dependent[a].age": 15,
+        "dependent[a].months": 12,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "household.mfs_living": "apart_last6",
+        "household.home_cost": true
+      },
+      "expect": {
+        "f2441.line_a": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "mexist.f2441.line20.mfs_spouse_deemed",
+      "covers": [
+        "f2441"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of mfs.f2441.refuse.spouse_deemed: married filing separately, not considered unmarried, with a spouse who was a full-time student or disabled. Line 19 is the spouse's earned income, which is deemed to be at least $250 or $500 a month (i2441 p. 4, If You or Your Spouse Was a Student or Disabled) and is refused; line 20 is the smallest of lines 17, 18 and 19, so it carries line 19's refusal (recorded from the evaluator).",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box3": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "person[taxpayer].w2[emp_a].box10": 500000,
+        "$dependent": [
+          "a"
+        ],
+        "dependent[a].age": 4,
+        "dependent[a].months": 12,
+        "f2441.care": true,
+        "f2441.benefits": true,
+        "dependent[a].dc_paid": 600000,
+        "$dcprov": [
+          "p0"
+        ],
+        "dcprov[p0].paid": 600000,
+        "f2441.plan_max": 500000,
+        "f2441.mfs_spouse_earned": 5000000,
+        "household.mfs_living": "together_late",
+        "f2441.mfs_spouse_deemed": true
+      },
+      "expect": {
+        "f2441.line20": {
+          "kind": "refusal",
+          "gate": "f2441.mfs_spouse_deemed_if_married",
+          "form": "Deemed earned income of a student or disabled spouse on a separate return (Form 2441, line 19)",
+          "remedy": "Your husband's or wife's earned income on line 19 is considered to be at least $250 or $500 a month for each month they were a full-time student or not able to care for themselves, which this tool does not figure.",
+          "cite": {
+            "doc": "i2441",
+            "locator": "p. 4, If You or Your Spouse Was a Student or Disabled, \"Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)\"",
+            "revision": "2025",
+            "snapshot": "86f0669e78b1dc00bfb99e956673d4fccee9e40d6c44d53623dd08e62567fd39",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mint.f2441.line_a.mfs_apart_all_year",
+      "covers": [
+        "f2441",
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mint), expected values predicted by hand from the archived sources before running the evaluator. Inputs of mfs.f2441.line_a_credit with one change: the filer and spouse did not live together at any time in 2025 (apart all year) instead of only during the last 6 months. Living apart all year satisfies 'You lived apart from your spouse during the last 6 months of 2025' (i2441 p. 2, Married Persons Filing Separately); the child aged 4 lived in the home all year and the filer paid over half the cost of keeping it up, so the filer is considered unmarried and checks line A (i2441 p. 2, Married Persons Filing Separately and Line A). No other figure depends on when the spouses lived apart: wages $30,000, care paid $4,000; L3 3,000 (one person); L5 'all others' = L4 30,000; L8 .27 (over 29,000, not over 31,000); L9a 810; taxable income 30,000 - 15,750 = 14,250, Tax Table (married filing separately, 14,250-14,300) 1,475 = L10; L11 810 = Schedule 3 line 2.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "$dependent": [
+          "a"
+        ],
+        "dependent[a].age": 4,
+        "dependent[a].months": 12,
+        "f2441.care": true,
+        "dependent[a].dc_paid": 400000,
+        "$dcprov": [
+          "p0"
+        ],
+        "dcprov[p0].paid": 400000,
+        "household.mfs_living": "apart_all_year",
+        "household.home_cost": true
+      },
+      "expect": {
+        "f2441.line_a": {
+          "kind": "bool",
+          "value": true
+        },
+        "f2441.line3": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f2441.line5": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "f2441.line9a": {
+          "kind": "money",
+          "cents": 81000
+        },
+        "f2441.line10": {
+          "kind": "money",
+          "cents": 147500
+        },
+        "f2441.line11": {
+          "kind": "money",
+          "cents": 81000
+        },
+        "s3.line2": {
+          "kind": "money",
+          "cents": 81000
         }
       }
     }

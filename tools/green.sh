@@ -8,6 +8,10 @@
 # the last 50 green runs of that tier in any worktree of the clone, most recent last. The full
 # record is MARKER and GREEN_TREES. A tier's steps include the next tier's, so is_tier_green
 # accepts a tree green in that tier or a higher one: full-green is also fast- and docs-green.
+#
+# A further list, release, holds the trees of full runs made in release mode (CHECK_ALL_RELEASE=1 with
+# ENGINE_CACHE=verify; tools/check_all.sh records them). It is no tier: is_tier_green never reads it.
+# tools/release.sh tags a tip whose tree is in it without running the suite again.
 MARKER="$(git rev-parse --git-path check-all-green)"
 GREEN_TREES="$(cd "$(git rev-parse --git-common-dir)" && pwd)/check-all-green-trees"
 
@@ -39,7 +43,7 @@ refuse_sizing_env() {
 marker_of() {
   case "$1" in
     full) echo "$MARKER" ;;
-    fast|docs) echo "$MARKER-$1" ;;
+    fast|docs|release) echo "$MARKER-$1" ;;
     *) echo "green.sh: unknown tier '$1'" >&2; return 1 ;;
   esac
 }
@@ -47,7 +51,7 @@ marker_of() {
 trees_of() {
   case "$1" in
     full) echo "$GREEN_TREES" ;;
-    fast|docs) echo "${GREEN_TREES%-trees}-$1-trees" ;;
+    fast|docs|release) echo "${GREEN_TREES%-trees}-$1-trees" ;;
     *) echo "green.sh: unknown tier '$1'" >&2; return 1 ;;
   esac
 }
@@ -79,6 +83,12 @@ in_record() {
 }
 
 is_green() { in_record full "$1"; }
+
+# is_release_green TREE: TREE is in the release list (a green full run in release mode).
+is_release_green() { in_record release "$1"; }
+
+# release_mode: this environment is the one tools/release.sh runs the suite in.
+release_mode() { [ "${CHECK_ALL_RELEASE:-}" = 1 ] && [ "${ENGINE_CACHE:-}" = verify ]; }
 
 is_tier_green() {
   case "$1" in

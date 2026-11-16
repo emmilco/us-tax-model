@@ -4,6 +4,8 @@
  "family": "claude",
  "base": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
  "head_rows": {
+  "lines judged": "65",
+  "match / mismatch / unclear / missing": "61 / 4 / 0 / 0",
   "line-scoped reviews": "6 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
@@ -14,10 +16,35 @@
    "subject_key": "821a994a2038d3f1db713493df4827f8d41876778c3dc4da6ad24861057217ef"
   },
   {
-   "key": "1a",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "key": "Digital Assets",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
    "status": "MATCH",
-   "subject_key": "d6934c60d1c902a1febe80247735f94418305f5122c05cc97542ff718f41d0d5"
+   "subject_key": "71dc0ed5701787125189e9ba5ccd0c9e2c85c0239eac24bb098ef432894edcad"
+  },
+  {
+   "key": "1a",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; medium; the model is right that line 1a adds every W-2 box 1 amount with no carve-out for wages earned while an inmate. i1040gi p. 23, Line 1a: \"If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a.\" Earlier rounds ruled this scope because s1.line8_other refused 8u; lane x2-s1o removed s1.inmate_wages from that refusal and computes line 8u, so nothing now keeps inmate pay shown on a W-2 off line 1a (double count with 8u, or EIC earned income that p596 excludes). The nonqualified deferred compensation / section 457 pension part of the model's reason stays refused (s1.line8_other still names 8t). (BUG-0766)",
+   "subject_key": "7a9ee48ea64f9ab9238614fdc124aa115d6915eefe338802f015ca614641b25b"
+  },
+  {
+   "key": "1b",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "status": "MATCH",
+   "subject_key": "4c19adefa16b924b35cefb9db60d829b0ef9eb7d3801468eadaee35b7d1c4a10"
+  },
+  {
+   "key": "1c",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "status": "MATCH",
+   "subject_key": "233bc27440e370a775cd8ca64322e8fbab969bdbf69ec9276b516f77e75e5109"
+  },
+  {
+   "key": "1d",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "status": "MATCH",
+   "subject_key": "015d612da0f91afeb440ec10981e7d9ee8612f305d6809d2ad419d91db16b342"
   },
   {
    "key": "1e",
@@ -26,10 +53,24 @@
    "subject_key": "d5ef22c78afd0ef5f6f109bbcdf2677760c4d7ffd5f520a87e049470dd07e00f"
   },
   {
-   "key": "1z",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "key": "1g",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
    "status": "MATCH",
-   "subject_key": "e8f982cb026bf344e28015aa9a37b8583b5368981126d75e1e4fb13961ff623f"
+   "subject_key": "a3eff1b11632315fe0ec855efefd5544ed26903e0b167710cb508176bce6bce5"
+  },
+  {
+   "key": "1h",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model says line 1h omits excess elective deferrals (i1040gi p. 24, Line 1h). A filer whose elective deferrals exceeded the limit answers scope.excess_deferral (asked when a W-2 is listed, scope.excess_deferral_if_w2), which is a disjunct of scope.other_income, and f1040 refuses on scope.other_income (\"Form 1040 additional income/return forms\"), so line 1h never completes with an excess deferral. Within scope the line's strike benefits and disability pensions before minimum retirement age are the listed items.",
+   "subject_key": "b826cdfb7552e8184af5e615c7d73cc59114ce45158bfc263cacd900531ec802"
+  },
+  {
+   "key": "1z",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model says line 1z leaves out line 1f. Line 1f (employer-provided adoption benefits, Form 8839 line 31) is refused: scope.adoption_benefits (\"Did an employer pay or repay any of the adoption costs ... Box 12 of a W-2 shows it with the code T\", asked when there was an adoption, scope.adoption_benefits_if_adoption) is a disjunct of scope.other_income, which f1040 refuses on. Line 1f is therefore zero on every computed return and the sum of 1a-1e, 1g and 1h equals \"Add lines 1a through 1h\" (the line's cite says so: \"line 1f, employer-provided adoption benefits, is refused by scope.adoption_benefits\").",
+   "subject_key": "c10a3389859571903a50b9facd19f5d4c9fe82dc38104601f6a5c86ff5813d3f"
   },
   {
    "key": "2a",
@@ -111,15 +152,15 @@
   },
   {
    "key": "6d",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
    "status": "MATCH",
-   "subject_key": "b15723a0ce56afa259fd7bd5a73a4347320cd20a3c0872ce48afa26c06efb4e5"
+   "subject_key": "6662030df7a8a1a4573fffb1b7d1e82c1d17c0ad2618003683a6189d9abd5f34"
   },
   {
    "key": "7a",
-   "record": "c2e280552971a303bf8b53cfed9af1d67f0e518baedb955277a858007e9f3106",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
    "status": "MATCH",
-   "subject_key": "cbc65e57f66377947812a3df05229203f74a5496d61137c118c64a53fa676113"
+   "subject_key": "cf252494585ed36ef19951fe890c64d6c4eef034bcfd065065d1abc165ae93da"
   },
   {
    "key": "8",
@@ -129,9 +170,9 @@
   },
   {
    "key": "9",
-   "record": "2582a02f993770d93878eaccd2f970c6947401ad7ab5471be11d933184f3a797",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
    "status": "MATCH",
-   "subject_key": "4daf4f7b42bcf1e2f4e4022edc444fd514938e25a69dc55ebdaa5f296d58049f"
+   "subject_key": "f2c6d4fe575bd0732d0c7ac325754eff8ade5a4d8c9384751dc71735d85abc05"
   },
   {
    "key": "10",
@@ -150,6 +191,12 @@
    "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
    "status": "MATCH",
    "subject_key": "32592108731abba0dc0ba828c4a253f46fd14c001b6e21d9e94468a6d214fc91"
+  },
+  {
+   "key": "12b",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "status": "MATCH",
+   "subject_key": "3ac809a42af0ee01b5f89fc262f9065a06d1ff984b60088bca5bd1a1636fb74e"
   },
   {
    "key": "12e",
@@ -177,16 +224,15 @@
   },
   {
    "key": "15",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
    "status": "MATCH",
-   "subject_key": "0408976021cc764d34f396f6ae3042c01392df49a48c8bcc9e933f2ce9727ea2"
+   "subject_key": "529dfbf02244cce5a0570f12789d45769cee7929b24ae5f5f209aaba235dfa0f"
   },
   {
    "key": "16",
-   "record": "c2e280552971a303bf8b53cfed9af1d67f0e518baedb955277a858007e9f3106",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; project retained. i1040gi, Line 16: \"If you are filing Form 2555, you must use the Foreign Earned Income Tax Worksheet\"; Form 2555 is refused by sa.excluded_income (\"Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?\"), which refuses the deduction and so line 16 downstream; the refusal sits on Schedule A, not on this line's derivation, so the rendered English did not name it. Line 16 itself is unchanged; it went stale through line 3a.",
-   "subject_key": "154a1169ba7a440f03803277395e6c4f36ba965a810a8f65cdd4fc83bdbc8c4c"
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "status": "MATCH",
+   "subject_key": "78cf205c00f3a82e5b1f5ead6bb6551856d2ab5ddc860435e67a31f4d63fb08e"
   },
   {
    "key": "17",
@@ -305,10 +351,9 @@
   },
   {
    "key": "29",
-   "record": "d3b104e4e5efb818f0dd7075e44aaf05c5ad4356a63a05da870824c57d9ac6f2",
-   "status": "UNCLEAR",
-   "ruling": "Ruling: scope — scope.ready refuses s3.mfs (married filing separately) for the whole return (i1040gi p. 14; i8863 p. 3). f8863.line3 through line8 perform the MAGI limit and phaseout. The narrow f8863.eligible helper does not purport to decide every restriction; the missing Form 8863 restatements are a review-context limitation. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
-   "subject_key": "de9f2cac53deba78dbbb37c79697f5559fb12c922347700466e78642e368a536"
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
+   "status": "MATCH",
+   "subject_key": "bf8e122c641398ff6ab64893a96a2d0f48b107de070f9a3cb608e494918f4608"
   },
   {
    "key": "30",
@@ -324,9 +369,9 @@
   },
   {
    "key": "32",
-   "record": "fe652e56ac94a2053d575d852a028d157e2a1a60f4fbfe98c3b728c16230e090",
+   "record": "e77b869fedd3e7f0294dc0afa28187c18ab7feff3f09184c67434d897af2172c",
    "status": "MATCH",
-   "subject_key": "d267e224a4445b4c3500dfac57edf6e8b330e5b0794b6eee71e01e83a88feb36"
+   "subject_key": "a10728aa07e83fed3c13866224298f691aee1c44f12a988b26dcaff455926a70"
   },
   {
    "key": "33",
@@ -361,9 +406,15 @@
  ],
  "subjects": {
   "Filing Status": "801fa2ed5458122404d348444fe6a5005e94d94c822fb1b9c35f915b193514b1",
-  "1a": "30edf8cb3b612e9385107ce98977eda708e34ff0da9de56c2189ee80af12f628",
+  "Digital Assets": "df9bdaea38e093215a615ebf0590699b5e37c002b8df44e049d4d85958eca19b",
+  "1a": "430487890a7b0f2b6e7cd42660eaa03817f6a02f9d3871cdda406a13e0612808",
+  "1b": "2728b0bef68d5e6114001eb765ea97623f829134ae81e6da26b50d4cb5515a05",
+  "1c": "45e84ebfaefcbba71551fe8560d1fc2a551b0dfaa75f388a15cd280dd65d80d3",
+  "1d": "54a29d08832324a43209392cbcf6db61e0fa6cb07e618adeefad817d6443f659",
   "1e": "f11ac36da1c34a2647c8a2d99ccb55dda332b3355f00e2ddd18e457120a40e60",
-  "1z": "8d8cb9b32215c44e593de2b042813d8b0fb77927bd1ebaaedd46ce46ca6dd573",
+  "1g": "2345499d47453246a01c68de37bdc0bd62ba8bab8e0f7b5ebc05003d938708f9",
+  "1h": "10313f383c5458576ff1abbf90bfc6a7053e9e80f4ff996bd8da8c17774cef29",
+  "1z": "4fe7c340434063a3f1951bac2d6800bc75d416e275ed77799fcc644af40fa3f6",
   "2a": "e8c9b844784825d9205dd6175cfbfef15afde57b9d07e38db6c3fb86dd643558",
   "2b": "48291acb502b02c2e8d526c1ea984748a53248240981b7cfac306b63033cca22",
   "3b": "747eeb072037cc1b34b72900a4247be3c419c015d581dc88da0d831bb8476af7",
@@ -377,19 +428,20 @@
   "6a": "49bda76655bc51d6f65861fd1c37addbcc512de35da37cccb4bcf08e46f5582f",
   "6b": "2cfe44440e5bb1af343272aa6c6e2101d02fb705630feb24f0ce2ab80a6a49cf",
   "6c": "39f3fa35ea53da9a3950ed1e0d318dfbf500019d3c18ff0a7288dff2bacef715",
-  "6d": "e3960ca641905a84b592ad3a90dd7fd46a3b0cdb8bbd1abdc97f718f0ec97eca",
-  "7a": "19acf19ce2d9361081a65416cc166e8efbf5899ab70464f86bc0961e99e17658",
+  "6d": "9796eed4c9fa5787a64f033cfaaff1457d413f2e449525f53150b2d9873f85ae",
+  "7a": "46425acd5b253489c42e114295f17912766612cca9746e7232989ebbf9933e1d",
   "8": "a42edcad6b686d6a14fc6fe265fcd8d634b143446c75ca4bde2c0bcec8c02a3a",
-  "9": "6eb28ba8daf2367c84e1f463c3894181bc2460e2274187b64d4d43cf66eda4ac",
+  "9": "ae6119935dc43602719f142cc0698b3fe8821beef465e8438012705c58ca3031",
   "10": "4530ea57e270b30dbeb7901b5515647693a7231b8435745678fd61e01501f9a8",
   "11a": "064e972a2617f2fc888fe2d32b56ceaef22b560bd8e8a239578aec3f4f800b5c",
   "11b": "7df116c5e90d3201485de113ebc2dab1b5231717df077133b325ece94ff93004",
+  "12b": "6a583c52a7a4fd228c16a0381ec99669568d5b94dbee99eef75ac17540393f6b",
   "12e": "e429b529772ebf1700ced37a4445b0ac712fc8261776f616025c18862b3a5316",
   "13a": "dfe2b5904c4bf25e025191f62d204a2a0ea19e7b88c01e4ee78678c56b769883",
   "13b": "aaffecdd8735a76d4cdbabda6a1050129779c26b30681ef982fd627ad92fa861",
   "14": "e624b92fb1e9a00ccb2a03a63c5d375eb46cfe1afbcb6630959d60e47c3bbaa7",
-  "15": "a97370574cdfcfe2e6fa2d02920c8666b1c5e3961701e5c8627a8355b5aa4559",
-  "16": "24a3ce21743f784e8b8039882b304f41409b726e4e7d959ce5cde2f5aeb2e8b7",
+  "15": "cb08046dd4d0a337ee8620eecf5270a8412a96a89ad8462c6a762bc6c546ec54",
+  "16": "daa590e0215ca848d95a76113cb30e3a3dd9dce669b46fc6715088f2cf6846f4",
   "17": "28ea233a6bb93db2d5371ed426827b429860b05eb3ef8ceb5ca08f871edfc37d",
   "18": "8eb51b0b9ea4c3d13d6bfb4d05fedc53d6cbc0d13c450f90c3314e0ee431bbea",
   "19": "2acec0fabe27c85c4a2078c2b853eed218c07d0213990e32254404612600ba6a",
@@ -409,10 +461,10 @@
   "Dependents (separated spouses)": "8eec894864d5bac420dacd4969a5834baacac856d2106ef2f89c5f9f0efafe51",
   "28": "befadb1ce960fdf4051e3f7b79c62fd5df9916a044eda34cdf2977d44bd2284a",
   "28 (box)": "7cc8ac2cd5fde24fad5aad84211fc7674cd733a3e4c90283629f7948c48ef531",
-  "29": "38e40ee5db57acada98d3feb21e4384845e3fb65c3dec8bf394585a59d4c1a7d",
+  "29": "85714851a294ef9e99cb28ed67a92308c5b01fd25392b41513343cf4b158a6aa",
   "30": "249d7cdd9fea39416d33a7f03f19eb2fbd5310daa641b1028ccbc62ffddc411b",
   "31": "c5eb806c50ca7c3b98c519785b5064acc52416a647c6845dc92cb5e3404dbe39",
-  "32": "57b59116f04bb5053efae6dad7b2127f65a81a3238bff241de064cc28092f6d8",
+  "32": "0b8d405d3ce0a03852fef96d061f623354d738951867cede8b14f6faba38cb94",
   "33": "e359f7cc28baf6f337c1b36ee429599ecfa17e9be7422b6e1aeb81d0132a6d9f",
   "34": "6368c7b607b854b25dbc1572b14a0b0aa90002da02f6a89c3baa12378ea69386",
   "35a": "2cb7e8d0b935bf4109c4af7779143617535183fe71b5344e65c4663a99b88a89",

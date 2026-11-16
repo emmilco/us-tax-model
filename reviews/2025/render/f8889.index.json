@@ -2,121 +2,121 @@
  "kind": "render",
  "form": "f8889",
  "family": "claude",
- "base": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+ "base": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
  "lines": [
   {
    "key": "2",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "174b0d50b6e8ab908bd6d5bf024121012ba34aea0bfb39f8423bcb6bcdd0411b"
   },
   {
    "key": "9",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "439e665b7f453f3f46f69ff8c37676154277050d48546ae70a15f628b3e4792b"
   },
   {
    "key": "3",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "eb08660fdc6ede35f7f5cb928f843fe79148212b947c8dae6e2d5333c15fdcf3"
   },
   {
    "key": "4",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "0ea15f5fcafd721f8ae70914b44e133e95ed14f89471869a90aa0e1d1d97c0a7"
   },
   {
    "key": "5",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "f54acfbbc0fde3fa2c0cd8b952303f9413fb863b1e528c24805a63c440af67c4"
   },
   {
    "key": "6",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "e0766f43e3d4213804394fdd61f393b205a89cd66b7614076ca8288aa74fc679"
   },
   {
    "key": "7",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MISMATCH",
-   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted: count every month treated as eligible; i8889 p. 7, worksheet line 1, \"$1,000 × number of months eligible\", and p. 5, Line 3, Note, which takes the additional amount off line 3 for a married filer with family coverage at any time). The rendered English (f8889.line7_total, marked Interpretation: amb.2025.hsa_line7_months) states the chosen reading: all twelve months when treated as having the December 1 coverage all year, else every eligible month. The model reads the recorded alternative (family-coverage months only). Same ruling as the landing round.",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (i8889 p. 7, Additional Contribution Amount Worksheet, line 1; p. 5, Note). The rendered line 7 states the owner-accepted reading recorded on f8889.line7_total (every month the filer was an eligible individual counts toward the $1,000 once family coverage applied at any time); the model reads the recorded alternative (family months only). Same as the goal-1 round; the line's English is unchanged in substance by this merge.",
    "subject_key": "394e52206f0c65bc0544583c987a10147828c66e34a5e71bda48d5e50d14a14a"
   },
   {
    "key": "8",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "c7db06fa58e27669c9cbbac38f12974080965b13f9bb5642cf891ef4a6e940fd"
   },
   {
    "key": "10",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "a918a4b8310e96e33abf68cfac47e93258e80b119dbfa576b6fa2f4220ee9875"
   },
   {
    "key": "11",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "5c0ccd8c2a94ca6d78fe6f4c47467fb48f05d1e750d0392331e483d556612c25"
   },
   {
    "key": "12",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "4acd0b052bb475b19161b01c06cae5ca9adbd4318e403cec596e8d473bd3edf0"
   },
   {
    "key": "13",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; i5329 p. 8, Line 43 and Line 47 (prior-year excess HSA contributions). The rendered line 13 is the smaller of line 2 and line 12 with zero when there are no 2025 contributions, which matches i8889 p. 8, Line 13, \"Generally, enter the smaller of line 2 or line 12\". The prior-year-excess case the model names is outside the tool and refused on the return, not at line 13: person.x_hsa_prior_excess (\"Do you have excess HSA contributions from an earlier year that you had not removed or used up before 2025 ...\") feeds person.x_other, which refuses Form 5329 (\"Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII\"). Checked by evaluation: redesign.hsa.married_spouse_no_family_plan with person[taxpayer].x_hsa_prior_excess true refuses f5329.l4, f5329.l49 and f5329.tax at person[taxpayer].x_other. No wording defect in line 13's rendering.",
-   "subject_key": "1925cd4d321317c65e0c39cd74fa3e74c4f9e57c97d7e0c6282f0bd516e4981b"
+   "ruling": "Ruling: scope; i8889 p. 8, Line 13, and i5329 p. 8, Lines 43 and 47. Line 13 renders the general rule (the smaller of line 2 or line 12). A filer with prior-year excess HSA contributions is refused on the return at Form 5329: person.x_hsa_prior_excess_if_hsa is one of the tests of person.x_other (Form 5329 parts this tool does not prepare), so the Form 5329 line 43 addition never reaches a computed line 13. Same as the goal-1 round.",
+   "subject_key": "b7de9200b26410a5d4f07be790ca0a1161bcc167dec1b286ec7977ddb4c55c2f"
   },
   {
    "key": "14a",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "19cf7f6528cd72424be423fd22003261f05f0e79e0fd02cc404123c1134a9f5b"
   },
   {
    "key": "14b",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "692f9d6004246e436823c870ba145fa081f45c39ca0da9ffb6d65caa131ca355"
   },
   {
    "key": "14c",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "a815c7a72bf76a7f9be58da1c057fc1f97a0dcd43b6c7d22e3365d76222508c7"
   },
   {
    "key": "15",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "fbeddeb4af6a6a5373bda898096927e4ea4ed58c9c295d61cb42edb102ce95ae"
   },
   {
    "key": "16",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "8dff63d4ef055fabb86ba10d1443521a0cfcad993bf9e152cbb7aab0e0fe1011"
   },
   {
    "key": "17a",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "a312a041bbdab47ec27d67c852aa01270bcee7df1783f79afe6b63328c17bd55"
   },
   {
    "key": "17b",
-   "record": "837112454ea1b546ce5e763178717db3592f7b15a6d977fc3df38e7d7caeb363",
+   "record": "25ca7518efcc81e380c8ad8ec7cb93030399d6a938e2ec2ead005c00525fc26b",
    "status": "MATCH",
    "subject_key": "ab0d36ce82715966339957c68f9a55e09896efeba43a0477242cfaf3a435c97f"
   }
@@ -133,7 +133,7 @@
   "10": "4d894568a5073a0219da252a0228e9f16d4da19de17284ac2591ccbd8a62bdf0",
   "11": "10231ebfca7ee67bae504c3d67a48b26630654159159ba35f8f04439cb17d497",
   "12": "433e1aab81c429caf584307e3aefe3f7b97a2077d40a3f639fdb9a4d76c7915b",
-  "13": "5edb370e8c07e28df48db63e920d08ff473ddf2d084517f6535fdb8fedfec554",
+  "13": "3439ac9b902c1912b56daed4adbbb091865615c76910dcf3ba5a346551488100",
   "14a": "2a13fc3666dd83c836cabda2b0e3f470c3e797bc913548161b25f9a6763613d4",
   "14b": "1cc9da67d36bfb3e4e5dbc97332dd6257b083257857343d18c0872f8fb0d6b72",
   "14c": "ab5463202f3bac2cc65837d523f1a5b1e024ca4c01ad301d1192e808e93a3385",
@@ -142,5 +142,5 @@
   "17a": "2b52e5398cab09553bc77bfe41957ef8e1bf70e6915a380f8705b30eec8cf27e",
   "17b": "3d9dc1ad065d3557d389ec8bb2ba2981d786c0ab58d25bdd6142234f0c152497"
  },
- "__rest__": "9f483b1ad7ea2a5ce4d265bd157a78e76962b93bf8f16fc023f365683ba514c2"
+ "__rest__": "0fdbcfb3ee82ce07cbd5c72ea4e3f52cb0b2dc148759fb25c4831c7a21ba52e1"
 }

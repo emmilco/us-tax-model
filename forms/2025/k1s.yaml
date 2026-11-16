@@ -1,0 +1,2666 @@
+form:
+  id: k1s
+  kind: form
+  title: Schedule K-1 (Form 1120-S), Shareholder's Share of Income, Deductions, Credits, etc., one per S corporation
+  tax_year: 2025
+  note: One entry per Schedule K-1 (Form 1120-S) a person received. Boxes 1 to 5b, 7 to 8c, 13 code O, 16 codes A to D and
+    17 code V are entered; each box 1, 2 and 3 is one activity. Box 1 is passive or nonpassive by material participation tests
+    1, 3, 5 and 6; box 2 is in Form 8582 Part IV with active participation. Losses are limited by stock basis on the K-1's
+    Form 7203 (collection f7203); the passive activity limitation (Form 8582) is applied by the return-level forms from the
+    lines exposed here. Boxes 6, 9 to 12, 13 (other codes), 14, 15, 16 E and F and 17 (other codes), more than one activity,
+    a disposition of stock, at-risk amounts, losses carried from earlier years by basis or at-risk limits and the other material
+    participation tests are refused.
+  lines:
+  - id: k1s.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f1120ssk
+      locator: p. 1, Part III, "Ordinary business income (loss)"
+  - id: k1s.no
+    printed: (helper)
+    label: Year parameter s3.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: s3.no
+    cite:
+      doc: i1120ssk
+      locator: p. 6, Specific Instructions, "If you are an individual, and the above limitations don’t apply to the amounts
+        shown on your Schedule K-1, take the amounts shown and report them on the appropriate lines of your tax return"
+  - id: k1s.multi
+    printed: 18, 19
+    label: Box 18 or box 19 is checked (more than one activity for at-risk or passive activity purposes)
+    type: Bool
+    expr:
+      op: input
+      source: Is box 18 or box 19 of this Schedule K-1 checked (the corporation has more than one activity)?
+    cite:
+      doc: i1120ssk
+      locator: p. 19, Box 18. More Than One Activity for At-Risk Purposes, "When the corporation has more than one activity
+        for at-risk purposes, it will check this box and attach a statement"; p. 19, Box 19. More Than One Activity for Passive
+        Activity Purposes, "When the corporation has more than one activity for passive activity purposes, it will check this
+        box and attach a statement"
+  - id: k1s.disposed
+    printed: (screen)
+    label: Sold or otherwise disposed of stock of the corporation in 2025, or had stock redeemed
+    type: Bool
+    expr:
+      op: input
+      source: In 2025, did you sell, give away or otherwise dispose of any of your shares in this corporation, or did it buy
+        any back from you?
+    cite:
+      doc: i7203
+      locator: p. 1, Who Must File, "Disposed of stock in an S corporation (whether or not gain is recognized)"; i7203 p.
+        3, Line 13, "If a portion of your stock is redeemed, sold, or otherwise disposed of during the year, attach two"
+  - id: k1s.box1_any
+    printed: '1'
+    label: Box 1 (ordinary business income (loss)) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 1 of this Schedule K-1 (ordinary business income or loss) show an amount?
+    cite:
+      doc: f1120ssk
+      locator: p. 1, Part III, "Ordinary business income (loss)"
+  - id: k1s.box2_any
+    printed: '2'
+    label: Box 2 (net rental real estate income (loss)) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 2 of this Schedule K-1 (net rental real estate income or loss) show an amount?
+    cite:
+      doc: f1120ssk
+      locator: p. 1, Part III, "Net rental real estate income (loss)"
+  - id: k1s.box3_any
+    printed: '3'
+    label: Box 3 (other net rental income (loss)) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 3 of this Schedule K-1 (other net rental income or loss) show an amount?
+    cite:
+      doc: f1120ssk
+      locator: p. 1, Part III, "Other net rental income (loss)"
+  - id: k1s.box4_any
+    printed: '4'
+    label: Box 4 (interest income) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 4 of this Schedule K-1 (interest income) show an amount?
+    cite:
+      doc: f1120ssk
+      locator: p. 1, Part III, "Interest income"
+  - id: k1s.box5_any
+    printed: 5a
+    label: Box 5a (ordinary dividends) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 5a of this Schedule K-1 (ordinary dividends) show an amount?
+    cite:
+      doc: f1120ssk
+      locator: p. 1, Part III, "Ordinary dividends"
+  - id: k1s.box1
+    printed: '1'
+    label: Ordinary business income (loss)
+    type: Dollars
+    gated_by: k1s.box1_if_any
+    expr:
+      op: input
+      source: What amount is in box 1 (ordinary business income or loss)? Enter a loss as a negative number.
+    cite: &id001
+      doc: i1120ssk
+      locator: p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business
+        activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28"
+  - id: k1s.box1_if_any
+    printed: (gate)
+    label: Box 1, asked only when box 1 shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box1_any
+          - const: true
+        then: k1s.box1
+      - guard:
+          op: test
+          eq:
+          - k1s.box1_any
+          - const: false
+        then: k1s.zero
+    cite: *id001
+  - id: k1s.box2
+    printed: '2'
+    label: Net rental real estate income (loss)
+    type: Dollars
+    gated_by: k1s.box2_if_any
+    expr:
+      op: input
+      source: What amount is in box 2 (net rental real estate income or loss)? Enter a loss as a negative number.
+    cite: &id002
+      doc: i1120ssk
+      locator: p. 6, Box 2. Net Rental Real Estate Income (Loss), "Generally, the income (loss) reported in box 2 is a passive
+        activity amount for all shareholders"
+  - id: k1s.box2_if_any
+    printed: (gate)
+    label: Box 2, asked only when box 2 shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box2_any
+          - const: true
+        then: k1s.box2
+      - guard:
+          op: test
+          eq:
+          - k1s.box2_any
+          - const: false
+        then: k1s.zero
+    cite: *id002
+  - id: k1s.box3
+    printed: '3'
+    label: Other net rental income (loss)
+    type: Dollars
+    gated_by: k1s.box3_if_any
+    expr:
+      op: input
+      source: What amount is in box 3 (other net rental income or loss)? Enter a loss as a negative number.
+    cite: &id003
+      doc: i1120ssk
+      locator: p. 7, Box 3. Other Net Rental Income (Loss), "The amount in box 3 is a passive activity amount for all shareholders"
+  - id: k1s.box3_if_any
+    printed: (gate)
+    label: Box 3, asked only when box 3 shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box3_any
+          - const: true
+        then: k1s.box3
+      - guard:
+          op: test
+          eq:
+          - k1s.box3_any
+          - const: false
+        then: k1s.zero
+    cite: *id003
+  - id: k1s.box4
+    printed: '4'
+    label: Interest income
+    type: NonNegDollars
+    gated_by: k1s.box4_if_any
+    expr:
+      op: input
+      source: What amount is in box 4 (interest income)?
+    cite: &id004
+      doc: i1120ssk
+      locator: p. 7, Box 4. Interest Income, "Report interest income on Form 1040 or 1040-SR, line 2b"
+  - id: k1s.box4_if_any
+    printed: (gate)
+    label: Box 4, asked only when box 4 shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box4_any
+          - const: true
+        then: k1s.box4
+      - guard:
+          op: test
+          eq:
+          - k1s.box4_any
+          - const: false
+        then: k1s.zero
+    cite: *id004
+  - id: k1s.box5a
+    printed: 5a
+    label: Ordinary dividends
+    type: NonNegDollars
+    gated_by: k1s.box5a_if_any
+    expr:
+      op: input
+      source: What amount is in box 5a (ordinary dividends)?
+    cite: &id005
+      doc: i1120ssk
+      locator: p. 7, Box 5a. Ordinary Dividends, "Report ordinary dividends on Form 1040 or 1040-SR, line 3b"
+  - id: k1s.box5a_if_any
+    printed: (gate)
+    label: Box 5a, asked only when box 5a shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box5_any
+          - const: true
+        then: k1s.box5a
+      - guard:
+          op: test
+          eq:
+          - k1s.box5_any
+          - const: false
+        then: k1s.zero
+    cite: *id005
+  - id: k1s.box5b
+    printed: 5b
+    label: Qualified dividends
+    type: NonNegDollars
+    gated_by: k1s.box5b_if_any
+    expr:
+      op: input
+      source: What amount is in box 5b (qualified dividends)? Enter 0 if it is empty.
+    cite: &id006
+      doc: i1120ssk
+      locator: p. 7, Box 5b. Qualified Dividends, "Report any qualified dividends on Form 1040 or 1040-SR, line 3a"
+  - id: k1s.box5b_if_any
+    printed: (gate)
+    label: Box 5b, asked only when box 5a shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box5_any
+          - const: true
+        then: k1s.box5b
+      - guard:
+          op: test
+          eq:
+          - k1s.box5_any
+          - const: false
+        then: k1s.zero
+    cite: *id006
+  - id: k1s.box6
+    printed: '6'
+    label: Box 6 (royalties) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 6 of this Schedule K-1 (royalties) show an amount?
+    cite:
+      doc: i1120ssk
+      locator: p. 7, Box 6. Royalties, "Report royalties on Schedule E (Form 1040), line 4"
+  - id: k1s.box7_any
+    printed: '7'
+    label: Box 7 (net short-term capital gain (loss)) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 7 of this Schedule K-1 (net short-term capital gain or loss) show an amount?
+    cite:
+      doc: f1120ssk
+      locator: p. 1, Part III, "Net short-term capital gain (loss)"
+  - id: k1s.box8_any
+    printed: 8a
+    label: Box 8a, 8b or 8c (long-term capital gain (loss)) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 8a, 8b or 8c of this Schedule K-1 (long-term capital gain or loss) show an amount?
+    cite:
+      doc: f1120ssk
+      locator: p. 1, Part III, "Net long-term capital gain (loss)"
+  - id: k1s.box9
+    printed: '9'
+    label: Box 9 (net section 1231 gain (loss)) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 9 of this Schedule K-1 (net section 1231 gain or loss) show an amount?
+    cite:
+      doc: i1120ssk
+      locator: p. 7, Box 9. Net Section 1231 Gain (Loss), "The amount in box 9 is generally passive if it is from a"
+  - id: k1s.box10
+    printed: '10'
+    label: Box 10 (other income (loss)) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 10 of this Schedule K-1 (other income or loss) show an amount?
+    cite:
+      doc: i1120ssk
+      locator: p. 8, Box 10. Other Income (Loss), "Losses reported in box 10 may be limited"
+  - id: k1s.box11_12
+    printed: 11, 12
+    label: Box 11 (section 179 deduction) or box 12 (other deductions) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 11 (section 179 deduction) or box 12 (other deductions) of this Schedule K-1 show an amount?
+    cite:
+      doc: i1120ssk
+      locator: p. 9, Box 11. Section 179 Deduction, "Use this amount, along with the total cost of section 179 property placed
+        in service during the year from other sources, to complete Part I of Form 4562"; p. 9, Box 12. Other Deductions, "Deductions
+        reported in box 12 may be limited"
+  - id: k1s.box7
+    printed: '7'
+    label: Net short-term capital gain (loss)
+    type: Dollars
+    gated_by: k1s.box7_if_any
+    expr:
+      op: input
+      source: What amount is in box 7 (net short-term capital gain or loss)? Enter a loss as a negative number.
+    cite: &id007
+      doc: i1120ssk
+      locator: p. 7, Box 7. Net Short-Term Capital Gain (Loss), "report the net short-term capital gain (loss) on Schedule
+        D (Form 1040), Capital Gains and Losses, line 5"
+  - id: k1s.box7_if_any
+    printed: (gate)
+    label: Box 7, asked only when box 7 shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box7_any
+          - const: true
+        then: k1s.box7
+      - guard:
+          op: test
+          eq:
+          - k1s.box7_any
+          - const: false
+        then: k1s.zero
+    cite: *id007
+  - id: k1s.box8a
+    printed: 8a
+    label: Net long-term capital gain (loss)
+    type: Dollars
+    gated_by: k1s.box8a_if_any
+    expr:
+      op: input
+      source: What amount is in box 8a (net long-term capital gain or loss)? Enter a loss as a negative number, and 0 if it
+        is empty.
+    cite: &id008
+      doc: i1120ssk
+      locator: p. 7, Box 8a. Net Long-Term Capital Gain (Loss), "report the net long-term capital gain (loss) on Schedule
+        D (Form 1040), line 12"
+  - id: k1s.box8a_if_any
+    printed: (gate)
+    label: Box 8a, asked only when box 8a, 8b or 8c shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box8_any
+          - const: true
+        then: k1s.box8a
+      - guard:
+          op: test
+          eq:
+          - k1s.box8_any
+          - const: false
+        then: k1s.zero
+    cite: *id008
+  - id: k1s.box8b
+    printed: 8b
+    label: Collectibles (28%) gain (loss)
+    type: Dollars
+    gated_by: k1s.box8b_if_any
+    expr:
+      op: input
+      source: What amount is in box 8b (collectibles (28%) gain or loss)? Enter a loss as a negative number, and 0 if it is
+        empty.
+    cite: &id009
+      doc: i1120ssk
+      locator: p. 7, Box 8b. Collectibles (28%) Gain (Loss), "report collectibles gain or loss on line 4 of the 28% Rate Gain
+        Worksheet"
+  - id: k1s.box8b_if_any
+    printed: (gate)
+    label: Box 8b, asked only when box 8a, 8b or 8c shows an amount (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box8_any
+          - const: true
+        then: k1s.box8b
+      - guard:
+          op: test
+          eq:
+          - k1s.box8_any
+          - const: false
+        then: k1s.zero
+    cite: *id009
+  - id: k1s.box8c
+    printed: 8c
+    label: Unrecaptured section 1250 gain
+    type: NonNegDollars
+    gated_by: k1s.box8c_if_any
+    expr:
+      op: input
+      source: What amount is in box 8c (unrecaptured section 1250 gain)? Enter 0 if it is empty.
+    cite: &id010
+      doc: i1120ssk
+      locator: p. 7, Box 8c. Unrecaptured Section 1250 Gain, "Report unrecaptured section 1250 gain from the sale or exchange
+        of the corporation’s business assets on line 5"
+  - id: k1s.box8c_if_any
+    printed: (gate)
+    label: Box 8c, asked only when box 8a, 8b or 8c shows an amount (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box8_any
+          - const: true
+        then: k1s.box8c
+      - guard:
+          op: test
+          eq:
+          - k1s.box8_any
+          - const: false
+        then: k1s.zero
+    cite: *id010
+  - id: k1s.box8_stmt
+    printed: (screen)
+    label: Box 8c refers to an attached statement of unrecaptured section 1250 gain of other types
+    type: Bool
+    gated_by: k1s.box8_stmt_if_any
+    expr:
+      op: input
+      source: Does box 8c say STMT, or point to an attached statement, instead of showing only an amount?
+    cite: &id011
+      doc: i1120ssk
+      locator: p. 7, Box 8c. Unrecaptured Section 1250 Gain, "If it reports the other two types of unrecaptured gain, it will
+        provide an attached statement that shows the amount for each type of unrecaptured section 1250 gain"
+  - id: k1s.box8_stmt_if_any
+    printed: (gate)
+    label: Box 8c statement, asked only when box 8a, 8b or 8c shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box8_any
+          - const: true
+        then: k1s.box8_stmt
+      - guard:
+          op: test
+          eq:
+          - k1s.box8_any
+          - const: false
+        then: k1s.no
+    cite: *id011
+  - id: k1s.box13o_any
+    printed: 13 O
+    label: Box 13 shows code O (backup withholding)
+    type: Bool
+    expr:
+      op: input
+      source: Does box 13 of this Schedule K-1 show code O (backup withholding)?
+    cite: &id012
+      doc: i1120ssk
+      locator: p. 13, Code O. Backup withholding, "Include this amount in the total you enter on Form 1040 or 1040-SR, line
+        25c"
+  - id: k1s.box13_other
+    printed: '13'
+    label: Box 13 shows a code other than O (credits)
+    type: Bool
+    expr:
+      op: input
+      source: Does box 13 of this Schedule K-1 (credits) show any code other than O?
+    cite:
+      doc: i1120ssk
+      locator: p. 12, Box 13. Credits, "If you have credits that are passive activity credits to you, you must complete Form
+        8582-CR in addition to the credit forms identified below"
+  - id: k1s.box14
+    printed: '14'
+    label: Box 14 is checked (Schedule K-3 attached)
+    type: Bool
+    expr:
+      op: input
+      source: Is box 14 of this Schedule K-1 checked (a Schedule K-3 is attached)?
+    cite:
+      doc: i1120ssk
+      locator: p. 14, Box 14. International Transactions, "If the S corporation checked the box, see the attached Schedule
+        K-3 with respect to items of international tax relevance"
+  - id: k1s.box15
+    printed: '15'
+    label: Box 15 (alternative minimum tax (AMT) items) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 15 of this Schedule K-1 (alternative minimum tax items) show an amount?
+    cite:
+      doc: i1120ssk
+      locator: p. 14, Box 15. Alternative Minimum Tax (AMT) Items, "See List of Codes, later"
+  - id: k1s.box16_any
+    printed: '16'
+    label: Box 16 (items affecting shareholder basis) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 16 of this Schedule K-1 (items affecting shareholder basis) show an amount?
+    cite:
+      doc: f1120ssk
+      locator: p. 1, Part III, "Items affecting shareholder basis"
+  - id: k1s.box17_any
+    printed: '17'
+    label: Box 17 (other information) shows an amount
+    type: Bool
+    expr:
+      op: input
+      source: Does box 17 of this Schedule K-1 (other information) show an amount?
+    cite:
+      doc: f1120ssk
+      locator: p. 1, Part III, "Other information"
+  - id: k1s.box13o
+    printed: 13 O
+    label: Backup withholding (box 13, code O)
+    type: NonNegDollars
+    gated_by: k1s.box13o_if_any
+    expr:
+      op: input
+      source: What amount is shown in box 13 with code O (backup withholding)?
+    cite: *id012
+  - id: k1s.box13o_if_any
+    printed: (gate)
+    label: Box 13 code O, asked only when box 13 shows code O (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box13o_any
+          - const: true
+        then: k1s.box13o
+      - guard:
+          op: test
+          eq:
+          - k1s.box13o_any
+          - const: false
+        then: k1s.zero
+    cite: *id012
+  - id: k1s.box16a_any
+    printed: 16 A
+    label: Box 16 shows code A (tax-exempt interest income)
+    type: Bool
+    gated_by: k1s.box16a_any_if_16
+    expr:
+      op: input
+      source: Does box 16 of this Schedule K-1 show code A (tax-exempt interest income)?
+    cite: &id013
+      doc: i1120ssk
+      locator: p. 15, Code A. Tax-exempt interest income, "Individual shareholders include this amount on Form 1040 or 1040-SR,
+        line 2a"
+  - id: k1s.box16a_any_if_16
+    printed: (gate)
+    label: Box 16 code A, asked only when box 16 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box16_any
+          - const: true
+        then: k1s.box16a_any
+      - guard:
+          op: test
+          eq:
+          - k1s.box16_any
+          - const: false
+        then: k1s.no
+    cite: *id013
+  - id: k1s.box16b_any
+    printed: 16 B
+    label: Box 16 shows code B (other tax-exempt income)
+    type: Bool
+    gated_by: k1s.box16b_any_if_16
+    expr:
+      op: input
+      source: Does box 16 of this Schedule K-1 show code B (other tax-exempt income)?
+    cite: &id014
+      doc: i1120ssk
+      locator: p. 15, Code B. Other tax-exempt income, "Generally, you must increase the basis of your stock by the amount
+        shown, but don’t include it in income on your tax return"
+  - id: k1s.box16b_any_if_16
+    printed: (gate)
+    label: Box 16 code B, asked only when box 16 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box16_any
+          - const: true
+        then: k1s.box16b_any
+      - guard:
+          op: test
+          eq:
+          - k1s.box16_any
+          - const: false
+        then: k1s.no
+    cite: *id014
+  - id: k1s.box16c_any
+    printed: 16 C
+    label: Box 16 shows code C (nondeductible expenses)
+    type: Bool
+    gated_by: k1s.box16c_any_if_16
+    expr:
+      op: input
+      source: Does box 16 of this Schedule K-1 show code C (nondeductible expenses)?
+    cite: &id015
+      doc: i1120ssk
+      locator: p. 15, Code C. Nondeductible expenses, "Generally, you must decrease the basis of your stock by this amount"
+  - id: k1s.box16c_any_if_16
+    printed: (gate)
+    label: Box 16 code C, asked only when box 16 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box16_any
+          - const: true
+        then: k1s.box16c_any
+      - guard:
+          op: test
+          eq:
+          - k1s.box16_any
+          - const: false
+        then: k1s.no
+    cite: *id015
+  - id: k1s.box16d_any
+    printed: 16 D
+    label: Box 16 shows code D (distributions)
+    type: Bool
+    gated_by: k1s.box16d_any_if_16
+    expr:
+      op: input
+      source: Does box 16 of this Schedule K-1 show code D (distributions)?
+    cite: &id016
+      doc: i1120ssk
+      locator: p. 15, Code D. Distributions, "Reduce the basis of your stock (as explained earlier) by distributions"
+  - id: k1s.box16d_any_if_16
+    printed: (gate)
+    label: Box 16 code D, asked only when box 16 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box16_any
+          - const: true
+        then: k1s.box16d_any
+      - guard:
+          op: test
+          eq:
+          - k1s.box16_any
+          - const: false
+        then: k1s.no
+    cite: *id016
+  - id: k1s.box16ef
+    printed: 16 E, F
+    label: Box 16 shows code E (repayment of loans from shareholders) or code F (foreign taxes paid or accrued)
+    type: Bool
+    gated_by: k1s.box16ef_if_16
+    expr:
+      op: input
+      source: Does box 16 of this Schedule K-1 show code E (repayment of loans from you) or code F (foreign taxes paid or
+        accrued)?
+    cite: &id017
+      doc: i1120ssk
+      locator: p. 15, Code E. Repayment of loans from shareholders, "the repayments must be allocated in part to a return
+        of your basis in the loan and in part to the receipt of income"
+  - id: k1s.box16ef_if_16
+    printed: (gate)
+    label: Box 16 code E or F, asked only when box 16 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box16_any
+          - const: true
+        then: k1s.box16ef
+      - guard:
+          op: test
+          eq:
+          - k1s.box16_any
+          - const: false
+        then: k1s.no
+    cite: *id017
+  - id: k1s.box16a
+    printed: 16 A
+    label: Tax-exempt interest income
+    type: NonNegDollars
+    gated_by: k1s.box16a_if_any
+    expr:
+      op: input
+      source: What amount is shown in box 16 with code A (tax-exempt interest income)?
+    cite: *id013
+  - id: k1s.box16a_if_any
+    printed: (gate)
+    label: Box 16 code A, asked only when box 16 shows code A (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box16a_any_if_16
+          - const: true
+        then: k1s.box16a
+      - guard:
+          op: test
+          eq:
+          - k1s.box16a_any_if_16
+          - const: false
+        then: k1s.zero
+    cite: *id013
+  - id: k1s.box16b
+    printed: 16 B
+    label: Other tax-exempt income
+    type: NonNegDollars
+    gated_by: k1s.box16b_if_any
+    expr:
+      op: input
+      source: What amount is shown in box 16 with code B (other tax-exempt income)?
+    cite: *id014
+  - id: k1s.box16b_if_any
+    printed: (gate)
+    label: Box 16 code B, asked only when box 16 shows code B (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box16b_any_if_16
+          - const: true
+        then: k1s.box16b
+      - guard:
+          op: test
+          eq:
+          - k1s.box16b_any_if_16
+          - const: false
+        then: k1s.zero
+    cite: *id014
+  - id: k1s.box16c
+    printed: 16 C
+    label: Nondeductible expenses
+    type: NonNegDollars
+    gated_by: k1s.box16c_if_any
+    expr:
+      op: input
+      source: What amount is shown in box 16 with code C (nondeductible expenses)?
+    cite: *id015
+  - id: k1s.box16c_if_any
+    printed: (gate)
+    label: Box 16 code C, asked only when box 16 shows code C (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box16c_any_if_16
+          - const: true
+        then: k1s.box16c
+      - guard:
+          op: test
+          eq:
+          - k1s.box16c_any_if_16
+          - const: false
+        then: k1s.zero
+    cite: *id015
+  - id: k1s.box16d
+    printed: 16 D
+    label: Distributions
+    type: NonNegDollars
+    gated_by: k1s.box16d_if_any
+    expr:
+      op: input
+      source: What amount is shown in box 16 with code D (distributions)?
+    cite: *id016
+  - id: k1s.box16d_if_any
+    printed: (gate)
+    label: Box 16 code D, asked only when box 16 shows code D (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box16d_any_if_16
+          - const: true
+        then: k1s.box16d
+      - guard:
+          op: test
+          eq:
+          - k1s.box16d_any_if_16
+          - const: false
+        then: k1s.zero
+    cite: *id016
+  - id: k1s.box17v_any
+    printed: 17 V
+    label: Box 17 shows code V (section 199A information)
+    type: Bool
+    gated_by: k1s.box17v_any_if_17
+    expr:
+      op: input
+      source: Does box 17 of this Schedule K-1 show code V (section 199A information)?
+    cite: &id018
+      doc: i1120ssk
+      locator: p. 17, Code V. Section 199A information, "The S corporation will provide the information you need to figure
+        your deduction"
+  - id: k1s.box17v_any_if_17
+    printed: (gate)
+    label: Box 17 code V, asked only when box 17 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box17_any
+          - const: true
+        then: k1s.box17v_any
+      - guard:
+          op: test
+          eq:
+          - k1s.box17_any
+          - const: false
+        then: k1s.no
+    cite: *id018
+  - id: k1s.box17_other
+    printed: '17'
+    label: Box 17 shows a code other than A, B, V or AC
+    type: Bool
+    gated_by: k1s.box17_other_if_17
+    expr:
+      op: input
+      source: Does box 17 of this Schedule K-1 show any code other than A, B, V or AC?
+    cite: &id019
+      doc: i1120ssk
+      locator: p. 15, Box 17. Other Information, "Code A. Investment income. Report this amount on Form 4952, line 4a"; p.
+        18, Code AC. Gross receipts for section 448(c), "Use the gross receipts amount to figure the business interest expense
+        you can deduct, if applicable"
+  - id: k1s.box17_other_if_17
+    printed: (gate)
+    label: Box 17 other codes, asked only when box 17 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box17_any
+          - const: true
+        then: k1s.box17_other
+      - guard:
+          op: test
+          eq:
+          - k1s.box17_any
+          - const: false
+        then: k1s.no
+    cite: *id019
+  - id: k1s.qbi_stmt
+    printed: 17 V
+    label: Qualified business income (loss) on the box 17, code V statement
+    type: Dollars
+    gated_by: k1s.qbi_stmt_if_any
+    expr:
+      op: input
+      source: What qualified business income (QBI) or loss does the statement for box 17, code V show? Enter a loss as a negative
+        number.
+    cite: &id020
+      doc: i1120ssk
+      locator: p. 17, Code V. Section 199A information, "When determining QBI or qualified PTP income, you must include only
+        those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable
+        income for the tax year"
+  - id: k1s.qbi_stmt_if_any
+    printed: (gate)
+    label: QBI from the code V statement, asked only when box 17 shows code V (zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box17v_any_if_17
+          - const: true
+        then: k1s.qbi_stmt
+      - guard:
+          op: test
+          eq:
+          - k1s.box17v_any_if_17
+          - const: false
+        then: k1s.zero
+    cite: *id020
+  - id: k1s.v_other
+    printed: 17 V
+    label: The code V statement shows section 199A dividends or qualified PTP income
+    type: Bool
+    gated_by: k1s.v_other_if_any
+    expr:
+      op: input
+      source: Does the code V statement also show section 199A (REIT) dividends or qualified PTP income?
+    cite: &id021
+      doc: i1120ssk
+      locator: p. 17, Code V. Section 199A information, "Section 199A dividends. The amount reported reflects your pro rata
+        share of the S corporation’s net section 199A dividends"
+  - id: k1s.v_other_if_any
+    printed: (gate)
+    label: Section 199A dividends or PTP income on the statement, asked only when box 17 shows code V (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box17v_any_if_17
+          - const: true
+        then: k1s.v_other
+      - guard:
+          op: test
+          eq:
+          - k1s.box17v_any_if_17
+          - const: false
+        then: k1s.no
+    cite: *id021
+  - id: k1s.work
+    printed: (screen)
+    label: You or your spouse worked in the corporation's business in 2025
+    type: Bool
+    gated_by: k1s.work_if_b1
+    expr:
+      op: input
+      source: In 2025, did you (or, on a joint return, your spouse) work in this corporation's business?
+    cite: &id022
+      doc: i1120ssk
+      locator: p. 4, Work counted toward material participation, "Generally, any work that you or your spouse does in connection
+        with an activity held through an S corporation (where you own your stock at the time the work is done) is counted
+        toward material participation"
+  - id: k1s.work_if_b1
+    printed: (gate)
+    label: Worked in the business, asked only when box 1 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box1_any
+          - const: true
+        then: k1s.work
+      - guard:
+          op: test
+          eq:
+          - k1s.box1_any
+          - const: false
+        then: k1s.no
+    cite: *id022
+  - id: k1s.hours500
+    printed: (screen)
+    label: 'Material participation test 1: more than 500 hours in 2025'
+    type: Bool
+    gated_by: k1s.hours500_if_work
+    expr:
+      op: input
+      source: Did you (or, on a joint return, your spouse) work more than 500 hours in it in 2025, counting both of you together?
+    cite: &id023
+      doc: i1120ssk
+      locator: p. 4, Material participation, "Material participation standards for shareholders who are individuals are listed
+        below"; p. 4, Individuals, "You participated in the activity for more than 500 hours during the tax year"
+  - id: k1s.hours500_if_work
+    printed: (gate)
+    label: More than 500 hours, asked only when you or your spouse worked in the business (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.work_if_b1
+          - const: true
+        then: k1s.hours500
+      - guard:
+          op: test
+          eq:
+          - k1s.work_if_b1
+          - const: false
+        then: k1s.no
+    cite: *id023
+  - id: k1s.under500
+    printed: (helper)
+    label: Worked in the business, but not more than 500 hours
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1s.work_if_b1
+        - const: true
+      - op: test
+        eq:
+        - k1s.hours500_if_work
+        - const: false
+    cite: *id023
+  - id: k1s.most_hours
+    printed: (screen)
+    label: 'Material participation test 3: more than 100 hours, and not less than any other individual'
+    type: Bool
+    gated_by: k1s.most_hours_if_under
+    expr:
+      op: input
+      source: Did you (or, on a joint return, your spouse) work more than 100 hours in it in 2025, with no one else, employees
+        included, working more?
+    cite: &id024
+      doc: i1120ssk
+      locator: p. 4, Individuals, "You participated in the activity for more than 100 hours during the tax year, and your
+        participation in the activity for the tax year wasn’t less than the participation in the activity of any other individual"
+  - id: k1s.most_hours_if_under
+    printed: (gate)
+    label: More than 100 hours and no one more, asked only when you worked in it but not more than 500 hours (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.under500
+          - const: true
+        then: k1s.most_hours
+      - guard:
+          op: test
+          eq:
+          - k1s.under500
+          - const: false
+        then: k1s.no
+    cite: *id024
+  - id: k1s.mp_now
+    printed: (helper)
+    label: Material participation by test 1 or test 3
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - k1s.hours500_if_work
+        - const: true
+      - op: test
+        eq:
+        - k1s.most_hours_if_under
+        - const: true
+    cite: *id023
+  - id: k1s.past_ask
+    printed: (helper)
+    label: Box 1 shows an amount and neither test 1 nor test 3 is met
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1s.box1_any
+        - const: true
+      - op: test
+        eq:
+        - k1s.mp_now
+        - const: false
+    cite: *id023
+  - id: k1s.past_years
+    printed: (screen)
+    label: 'Material participation test 5 or 6: earlier years'
+    type: Bool
+    gated_by: k1s.past_years_if_ask
+    expr:
+      op: input
+      source: In at least 5 of the years 2015 to 2024 (or any 3 earlier years, if it is a personal service business), did
+        you (or, on a joint return, your spouse) materially participate in this business (its income or loss was nonpassive
+        on your return)?
+    cite: &id025
+      doc: i1120ssk
+      locator: p. 4, Individuals, "You materially participated in the activity for any 5 tax years (whether or not consecutive)
+        during the 10 tax years that immediately precede the tax year"; "The activity was a personal service activity and
+        you materially participated in the activity for any 3 tax years (whether or not consecutive) preceding the tax year"
+  - id: k1s.past_years_if_ask
+    printed: (gate)
+    label: Earlier years, asked only when box 1 shows an amount and test 1 or 3 is not met (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.past_ask
+          - const: true
+        then: k1s.past_years
+      - guard:
+          op: test
+          eq:
+          - k1s.past_ask
+          - const: false
+        then: k1s.no
+    cite: *id025
+  - id: k1s.other_ask
+    printed: (helper)
+    label: Worked in the business in 2025, and no test of 1, 3, 5 or 6 is met
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1s.work_if_b1
+        - const: true
+      - op: test
+        eq:
+        - k1s.mp_now
+        - const: false
+      - op: test
+        eq:
+        - k1s.past_years_if_ask
+        - const: false
+    cite: *id023
+  - id: k1s.mp_other
+    printed: (screen)
+    label: Material participation by test 2, 4 or 7
+    type: Bool
+    gated_by: k1s.mp_other_if_ask
+    expr:
+      op: input
+      source: Did you do nearly all the work done in it, or work over 100 hours in it and over 500 hours in all such businesses
+        together, or meet another test of material participation?
+    cite: &id026
+      doc: i1120ssk
+      locator: p. 4, Individuals, "Your participation in the activity for the tax year constituted substantially all the participation
+        in the activity of all individuals"; "The activity was a significant participation activity for the tax year, and
+        you participated in all significant participation activities (including activities outside the corporation) during
+        the year for more than 500 hours"
+  - id: k1s.mp_other_if_ask
+    printed: (gate)
+    label: Other tests, asked only when you worked in it and no test of 1, 3, 5 or 6 is met (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.other_ask
+          - const: true
+        then: k1s.mp_other
+      - guard:
+          op: test
+          eq:
+          - k1s.other_ask
+          - const: false
+        then: k1s.no
+    cite: *id026
+  - id: k1s.material
+    printed: (gate)
+    label: Materially participated in the corporation's trade or business activity (tests 1, 3, 5 or 6)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - k1s.mp_now
+        - const: true
+      - op: test
+        eq:
+        - k1s.past_years_if_ask
+        - const: true
+    cite:
+      doc: i1120ssk
+      locator: p. 5, Effect of determination, "Income (loss), deductions, and credits from an activity are nonpassive if you
+        determine that"; p. 4, Material participation, "Material participation standards for shareholders who are individuals
+        are listed below"
+  - id: k1s.active
+    printed: (screen)
+    label: Actively participated in the corporation's rental real estate activity
+    type: Bool
+    gated_by: k1s.active_if_b2
+    expr:
+      op: input
+      source: In 2025, did you (or, on a joint return, your spouse) help make management decisions for its rental real estate,
+        such as approving tenants, rents or repairs?
+    cite: &id027
+      doc: i1120ssk
+      locator: p. 5, Special allowance for a rental real estate activity, "You may be treated as actively participating if
+        you participated, for example, in making management decisions or arranging for others to provide services (such as
+        repairs) in a significant and bona fide sense"
+  - id: k1s.active_if_b2
+    printed: (gate)
+    label: Management decisions, asked only when box 2 shows an amount (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.box2_any
+          - const: true
+        then: k1s.active
+      - guard:
+          op: test
+          eq:
+          - k1s.box2_any
+          - const: false
+        then: k1s.no
+    cite: *id027
+  - id: k1s.tenth
+    printed: (screen)
+    label: Your and your spouse's interest was at least 10% (by value) all year
+    type: Bool
+    gated_by: k1s.tenth_if_active
+    expr:
+      op: input
+      source: Did you (or, on a joint return, your spouse) own at least a tenth of this corporation's stock, by value, all
+        through 2025?
+    cite: &id028
+      doc: i1120ssk
+      locator: p. 5, Special allowance for a rental real estate activity, "You aren’t considered to actively participate in
+        a rental real estate activity if, at any time during the tax year, your interest (including your spouse’s interest)
+        in the activity was less than 10% (by value) of all interests in the activity"
+  - id: k1s.tenth_if_active
+    printed: (gate)
+    label: At least a tenth all year, asked only when you helped make management decisions (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.active_if_b2
+          - const: true
+        then: k1s.tenth
+      - guard:
+          op: test
+          eq:
+          - k1s.active_if_b2
+          - const: false
+        then: k1s.no
+    cite: *id028
+  - id: k1s.part4
+    printed: (gate)
+    label: Box 2 activity with active participation (Form 8582 Part IV)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1s.active_if_b2
+        - const: true
+      - op: test
+        eq:
+        - k1s.tenth_if_active
+        - const: true
+    cite:
+      doc: i8582
+      locator: p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities
+        must include the income or loss from those activities in Part IV"
+  - id: k1s.prior_any
+    printed: (screen)
+    label: A loss from this corporation was not allowed on the 2024 Form 8582 (prior-year unallowed passive loss)
+    type: Bool
+    expr:
+      op: input
+      source: Was a loss from this corporation held back on your 2024 return by the passive activity rules (Form 8582)?
+    cite: &id029
+      doc: i8582
+      locator: p. 10, Column (c), "Enter the prior-year unallowed losses for each activity"
+  - id: k1s.basis_carry
+    printed: (screen)
+    label: Losses or deductions from this corporation not allowed in an earlier year because of the basis limitation
+    type: Bool
+    expr:
+      op: input
+      source: Was a loss or deduction from this corporation held back on an earlier return because your basis in it was too
+        low?
+    cite:
+      doc: i7203
+      locator: p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "Column (b). Enter any loss or deduction items
+        disallowed due to basis limitations in prior years that were carried forward"
+  - id: k1s.risk_carry
+    printed: (screen)
+    label: A loss from this corporation not allowed in an earlier year because of the at-risk limitation
+    type: Bool
+    expr:
+      op: input
+      source: Was a loss from this corporation held back on an earlier return by the at-risk rules (Form 6198)?
+    cite:
+      doc: i1120ssk
+      locator: p. 3, At-Risk Limitations, "Any loss from a section 465 activity not allowed for this tax year will be treated
+        as a deduction allocable to the activity in the next tax year"
+  - id: k1s.b1_prior
+    printed: (c)
+    label: Prior-year unallowed loss of the box 1 activity (2024 Form 8582, Part VII, column (c))
+    type: NonNegDollars
+    gated_by: k1s.b1_prior_if_any
+    expr:
+      op: input
+      source: How much of the loss from its box 1 activity was held back on your 2024 Form 8582 (Part VII, column (c))? Enter
+        0 if none.
+    cite: *id029
+  - id: k1s.b1_prior_if_any
+    printed: (gate)
+    label: Prior-year unallowed loss of the box 1 activity, asked only when a loss was held back (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.prior_any
+          - const: true
+        then: k1s.b1_prior
+      - guard:
+          op: test
+          eq:
+          - k1s.prior_any
+          - const: false
+        then: k1s.zero
+    cite: *id029
+  - id: k1s.b2_prior
+    printed: (c)
+    label: Prior-year unallowed loss of the box 2 activity (2024 Form 8582, Part VII, column (c))
+    type: NonNegDollars
+    gated_by: k1s.b2_prior_if_any
+    expr:
+      op: input
+      source: How much of the loss from its box 2 activity was held back on your 2024 Form 8582 (Part VII, column (c))? Enter
+        0 if none.
+    cite: *id029
+  - id: k1s.b2_prior_if_any
+    printed: (gate)
+    label: Prior-year unallowed loss of the box 2 activity, asked only when a loss was held back (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.prior_any
+          - const: true
+        then: k1s.b2_prior
+      - guard:
+          op: test
+          eq:
+          - k1s.prior_any
+          - const: false
+        then: k1s.zero
+    cite: *id029
+  - id: k1s.b3_prior
+    printed: (c)
+    label: Prior-year unallowed loss of the box 3 activity (2024 Form 8582, Part VII, column (c))
+    type: NonNegDollars
+    gated_by: k1s.b3_prior_if_any
+    expr:
+      op: input
+      source: How much of the loss from its box 3 activity was held back on your 2024 Form 8582 (Part VII, column (c))? Enter
+        0 if none.
+    cite: *id029
+  - id: k1s.b3_prior_if_any
+    printed: (gate)
+    label: Prior-year unallowed loss of the box 3 activity, asked only when a loss was held back (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.prior_any
+          - const: true
+        then: k1s.b3_prior
+      - guard:
+          op: test
+          eq:
+          - k1s.prior_any
+          - const: false
+        then: k1s.zero
+    cite: *id029
+  - id: k1s.former_passive
+    printed: (gate)
+    label: A prior-year unallowed passive loss of the box 1 activity, which is not passive this year
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - k1s.material
+        - const: true
+      - op: test
+        gt:
+        - k1s.b1_prior_if_any
+        - const: 0
+    cite:
+      doc: i8582
+      locator: p. 10, Column (c), "Enter the prior-year unallowed losses for each activity"
+  - id: k1s.gain1
+    printed: (helper)
+    label: Box 1 income (zero for a loss)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.box1_if_any
+      take: k1s.zero
+    cite: &id030
+      doc: i7203
+      locator: p. 2, Line 3, "Reminder. Enter only positive amounts from Schedule K-1 (Form 1120-S) on line 3. Negative amounts
+        (decreases to stock basis) are entered in Part III"
+  - id: k1s.loss1
+    printed: (helper)
+    label: Box 1 loss, as a positive amount (zero for income)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.zero
+      take: k1s.box1_if_any
+    cite: *id030
+  - id: k1s.gain2
+    printed: (helper)
+    label: Box 2 income (zero for a loss)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.box2_if_any
+      take: k1s.zero
+    cite: *id030
+  - id: k1s.loss2
+    printed: (helper)
+    label: Box 2 loss, as a positive amount (zero for income)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.zero
+      take: k1s.box2_if_any
+    cite: *id030
+  - id: k1s.gain3
+    printed: (helper)
+    label: Box 3 income (zero for a loss)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.box3_if_any
+      take: k1s.zero
+    cite: *id030
+  - id: k1s.loss3
+    printed: (helper)
+    label: Box 3 loss, as a positive amount (zero for income)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.zero
+      take: k1s.box3_if_any
+    cite: *id030
+  - id: k1s.gain7
+    printed: (helper)
+    label: Box 7 gain (zero for a loss)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.box7_if_any
+      take: k1s.zero
+    cite: *id030
+  - id: k1s.loss7
+    printed: (helper)
+    label: Box 7 loss, as a positive amount (zero for a gain)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.zero
+      take: k1s.box7_if_any
+    cite: *id030
+  - id: k1s.gain8
+    printed: (helper)
+    label: Box 8a gain (zero for a loss)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.box8a_if_any
+      take: k1s.zero
+    cite: *id030
+  - id: k1s.loss8
+    printed: (helper)
+    label: Box 8a loss, as a positive amount (zero for a gain)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.zero
+      take: k1s.box8a_if_any
+    cite: *id030
+  - id: k1s.loss_items
+    printed: (helper)
+    label: Total of the losses in boxes 1, 2, 3, 7 and 8a, as a positive amount
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1s.loss1
+      - k1s.loss2
+      - k1s.loss3
+      - k1s.loss7
+      - k1s.loss8
+    cite: *id030
+    ambiguity: amb.2025.f7203_capital_lines
+  - id: k1s.f7203_required
+    printed: (gate)
+    label: 'Form 7203 is required: a loss or deduction item, or a distribution (box 16, code D)'
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        gt:
+        - k1s.loss_items
+        - const: 0
+      - op: test
+        gt:
+        - k1s.box16d_if_any
+        - const: 0
+    cite:
+      doc: i7203
+      locator: p. 1, Who Must File, "Are claiming a deduction for their share of an aggregate loss from an S corporation";
+        "Received a non-dividend distribution from an S corporation"
+    ambiguity: amb.2025.f7203_required
+  - id: k1s.allowed1
+    printed: (helper)
+    label: Box 1 loss allowed by stock basis (Form 7203 line 35, column (c))
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f7203
+      field: f7203.c35
+    cite:
+      doc: i7203
+      locator: p. 5, Column (e), "The allowable losses and deductions from columns (c) and (d) should be reported on the appropriate
+        areas of your return (subject to any additional limitations)"
+  - id: k1s.allowed2
+    printed: (helper)
+    label: Box 2 loss allowed by stock basis (Form 7203 line 36, column (c))
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f7203
+      field: f7203.c36
+    cite:
+      doc: i7203
+      locator: p. 5, Column (e), "The allowable losses and deductions from columns (c) and (d) should be reported on the appropriate
+        areas of your return (subject to any additional limitations)"
+  - id: k1s.allowed3
+    printed: (helper)
+    label: Box 3 loss allowed by stock basis (Form 7203 line 37, column (c))
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f7203
+      field: f7203.c37
+    cite:
+      doc: i7203
+      locator: p. 5, Column (e), "The allowable losses and deductions from columns (c) and (d) should be reported on the appropriate
+        areas of your return (subject to any additional limitations)"
+  - id: k1s.basis_carry_out
+    printed: (helper)
+    label: Losses carried to 2026 by the basis limitation (Form 7203 line 47, column (e))
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: f7203
+      field: f7203.e47
+    cite:
+      doc: i7203
+      locator: p. 5, Column (e), "The allowable losses and deductions from columns (c) and (d) should be reported on the appropriate
+        areas of your return (subject to any additional limitations)"
+  - id: k1s.f7203_n
+    printed: (helper)
+    label: One Form 7203 for this corporation, screened
+    type: Count
+    expr:
+      op: sum_over
+      collection: f7203
+      field: f7203.one
+    cite:
+      doc: i7203
+      locator: p. 1, Purpose of Form, "Use Form 7203 to figure potential limitations of your share of the S corporation's
+        deductions, credits, and other items that can be deducted on your return"
+  - id: k1s.not_at_risk
+    printed: (screen)
+    label: Some of the stock or loan basis is not at risk (nonrecourse, guaranteed, borrowed from an owner, or similar)
+    type: Bool
+    gated_by: k1s.not_at_risk_if_loss
+    expr:
+      op: input
+      source: Did you pay for your shares, or for loans to the corporation, with money borrowed on terms that protect you
+        from loss (a loan you are not personally liable for, or one someone guarantees for you), or borrowed from another
+        owner of the corporation or someone related to one?
+    cite: &id031
+      doc: i1120ssk
+      locator: p. 3, At-Risk Limitations, "you will have to complete Form 6198, At-Risk Limitations, to figure your allowable
+        loss for the activity"
+  - id: k1s.has_loss
+    printed: (helper)
+    label: A loss in box 1, 2, 3, 7 or 8a
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - k1s.loss_items
+      - const: 0
+    cite: *id031
+  - id: k1s.not_at_risk_if_loss
+    printed: (gate)
+    label: Not at risk, asked only when a box shows a loss (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.has_loss
+          - const: true
+        then: k1s.not_at_risk
+      - guard:
+          op: test
+          eq:
+          - k1s.has_loss
+          - const: false
+        then: k1s.no
+    cite: *id031
+  - id: k1s.ok
+    printed: (gate)
+    label: This Schedule K-1 passes every screen and its Form 7203 is supported
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - k1s.f7203_n
+      - const: 1
+        type: Count
+    cite:
+      doc: i1120ssk
+      locator: p. 6, Specific Instructions, "If any of the above limitations apply, adjust the amounts on Schedule K-1 before
+        you report them on your return"
+    refuses:
+    - when: k1s.multi
+      form: Schedule K-1 (Form 1120-S) with more than one activity (box 18 or 19)
+      remedy: A corporation with more than one activity reports each on an attached statement, and each activity's income
+        and losses are limited separately; that is outside this tool.
+      cite:
+        doc: i1120ssk
+        locator: p. 19, Box 19. More Than One Activity for Passive Activity Purposes, "Use the information in the attached
+          statement to correctly determine your passive activity limitations"
+    - when: k1s.disposed
+      form: Form 7203 for a disposition of S corporation stock, and Form 8949
+      remedy: A sale or other disposition of S corporation stock, or a redemption, needs the stock basis at the date of sale
+        (two Forms 7203) and the gain or loss on Form 8949; that is outside this tool.
+      cite:
+        doc: i7203
+        locator: p. 3, Line 13, "If a portion of your stock is redeemed, sold, or otherwise disposed of during the year, attach
+          two"
+    - when: k1s.box6
+      form: Schedule E (Form 1040), line 4 (royalties from a Schedule K-1)
+      remedy: Royalties from an S corporation are reported on Schedule E line 4, which this tool does not prepare for a Schedule
+        K-1.
+      cite:
+        doc: i1120ssk
+        locator: p. 7, Box 6. Royalties, "Report royalties on Schedule E (Form 1040), line 4"
+    - when: k1s.box8_stmt_if_any
+      form: Unrecaptured section 1250 gain from an attached statement
+      remedy: Unrecaptured section 1250 gain of the other two types is reported from the corporation's statement on other
+        lines of the worksheet; that is outside this tool.
+      cite: *id011
+    - when: k1s.box9
+      form: Form 4797 (net section 1231 gain or loss from a Schedule K-1)
+      remedy: Section 1231 gain or loss is reported on Form 4797, which this tool does not prepare.
+      cite:
+        doc: i1120ssk
+        locator: p. 7, Box 9. Net Section 1231 Gain (Loss), "The amount in box 9 is generally passive if it is from a"
+    - when: k1s.box10
+      form: Schedule K-1 (Form 1120-S), box 10 (other income (loss))
+      remedy: The items of box 10 go to forms and lines this tool does not prepare.
+      cite:
+        doc: i1120ssk
+        locator: p. 8, Box 10. Other Income (Loss), "Losses reported in box 10 may be limited"
+    - when: k1s.box11_12
+      form: Schedule K-1 (Form 1120-S), boxes 11 and 12 (section 179 and other deductions)
+      remedy: Section 179 and the other deductions of box 12 are limited and reported on forms this tool does not prepare.
+      cite:
+        doc: i1120ssk
+        locator: p. 9, Box 12. Other Deductions, "Deductions reported in box 12 may be limited"
+    - when: k1s.box13_other
+      form: Credits from a Schedule K-1 (Form 1120-S), box 13 (Form 3800, Form 8582-CR)
+      remedy: The credits of box 13, other than backup withholding, are figured on forms this tool does not prepare.
+      cite:
+        doc: i1120ssk
+        locator: p. 12, Box 13. Credits, "If you have credits that are passive activity credits to you, you must complete
+          Form 8582-CR in addition to the credit forms identified below"
+    - when: k1s.box14
+      form: Schedule K-3 (Form 1120-S) (international items)
+      remedy: Items of international tax relevance reported on Schedule K-3 are outside this tool.
+      cite:
+        doc: i1120ssk
+        locator: p. 14, Box 14. International Transactions, "If the S corporation checked the box, see the attached Schedule
+          K-3 with respect to items of international tax relevance"
+    - when: k1s.box15
+      form: Form 6251 (alternative minimum tax items from a Schedule K-1)
+      remedy: Alternative minimum tax items are figured on Form 6251, which this tool does not prepare.
+      cite:
+        doc: i1120ssk
+        locator: p. 14, Box 15. Alternative Minimum Tax (AMT) Items, "See List of Codes, later"
+    - when: k1s.box16ef_if_16
+      form: Form 7203 Part II (loan repayments) or Form 1116 (foreign taxes from a Schedule K-1)
+      remedy: A repayment of a loan you made to the corporation, and foreign taxes it paid, are figured on forms this tool
+        does not prepare.
+      cite: *id017
+    - when: k1s.box17_other_if_17
+      form: Schedule K-1 (Form 1120-S), box 17 (other information)
+      remedy: The codes of box 17 other than A, B, V and AC go to forms this tool does not prepare.
+      cite: *id019
+    - when: k1s.v_other_if_any
+      form: Form 8995, lines 6 to 9 (section 199A dividends and qualified PTP income)
+      remedy: Section 199A dividends and qualified PTP income from an S corporation are outside this tool.
+      cite: *id021
+    - when: k1s.mp_other_if_ask
+      form: Schedule E (Form 1040), Part II, with material participation by test 2, 4 or 7
+      remedy: Material participation by these tests is outside this tool.
+      cite: *id026
+    - when: k1s.former_passive
+      form: Form 8582 (prior-year unallowed loss of an activity that is not passive this year)
+      remedy: A prior-year unallowed loss of an activity in which you now materially participate is allowed under special
+        rules that are outside this tool.
+      cite: *id029
+    - when: k1s.basis_carry
+      form: Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27
+      remedy: A loss or deduction carried from an earlier year by the basis limitation is outside this tool.
+      cite:
+        doc: i7203
+        locator: p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "Column (b). Enter any loss or deduction
+          items disallowed due to basis limitations in prior years that were carried forward"
+    - when: k1s.risk_carry
+      form: Form 6198 (At-Risk Limitations)
+      remedy: A loss carried from an earlier year by the at-risk limitation is figured on Form 6198, which this tool does
+        not prepare.
+      cite:
+        doc: i1120ssk
+        locator: p. 3, At-Risk Limitations, "Any loss from a section 465 activity not allowed for this tax year will be treated
+          as a deduction allocable to the activity in the next tax year"
+    - when: k1s.not_at_risk_if_loss
+      form: Form 6198 (At-Risk Limitations)
+      remedy: A loss with amounts not at risk is figured on Form 6198, which this tool does not prepare.
+      cite: *id031
+  - id: k1s.b1_net
+    printed: (helper)
+    label: 'Box 1 after the basis limitation: the income, or the loss allowed (Form 7203, Part III, column (c))'
+    type: Dollars
+    expr:
+      op: subtract
+      from: k1s.gain1
+      take: k1s.allowed1
+    cite: &id032
+      doc: i1120ssk
+      locator: p. 6, Box 1. Ordinary Business Income (Loss), "report your box 1 income (loss) as instructed after applying
+        the basis and at-risk limitations on losses"
+  - id: k1s.b2_net
+    printed: (helper)
+    label: 'Box 2 after the basis limitation: the income, or the loss allowed (Form 7203, Part III, column (c))'
+    type: Dollars
+    expr:
+      op: subtract
+      from: k1s.gain2
+      take: k1s.allowed2
+    cite: *id032
+  - id: k1s.b3_net
+    printed: (helper)
+    label: 'Box 3 after the basis limitation: the income, or the loss allowed (Form 7203, Part III, column (c))'
+    type: Dollars
+    expr:
+      op: subtract
+      from: k1s.gain3
+      take: k1s.allowed3
+    cite: *id032
+  - id: k1s.basis_cut
+    printed: (gate)
+    label: Some loss of this K-1 is carried to 2026 by the basis limitation
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - k1s.basis_carry_out
+      - const: 0
+    cite:
+      doc: i7203
+      locator: p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "Loss and deductions in excess of basis are
+        suspended and carried forward indefinitely and the character of the loss and deduction items is retained"
+  - id: k1s.b1_np
+    printed: (helper)
+    label: Box 1 after basis when materially participated (nonpassive; zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.material
+          - const: true
+        then: k1s.b1_net
+      - guard:
+          op: test
+          eq:
+          - k1s.material
+          - const: false
+        then: k1s.zero
+    cite: *id001
+  - id: k1s.b1_passive
+    printed: (helper)
+    label: Box 1 after basis when not materially participated (passive; zero otherwise)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.material
+          - const: false
+        then: k1s.b1_net
+      - guard:
+          op: test
+          eq:
+          - k1s.material
+          - const: true
+        then: k1s.zero
+    cite:
+      doc: i1120ssk
+      locator: p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business
+        activities in which you didn’t materially participate as follows"
+  - id: k1s.col_k
+    printed: 28 (k)
+    label: 'Schedule E line 28, column (k): nonpassive income (box 1, materially participated)'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.np_income
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id001
+  - id: k1s.np_income
+    printed: (helper)
+    label: Nonpassive box 1 income
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.b1_np
+      take: k1s.zero
+    cite: *id001
+  - id: k1s.np_loss
+    printed: (helper)
+    label: Nonpassive box 1 loss allowed by basis, as a positive amount
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.zero
+      take: k1s.b1_np
+    cite: *id001
+  - id: k1s.col_i
+    printed: 28 (i)
+    label: 'Schedule E line 28, column (i): nonpassive loss allowed (box 1, materially participated), as a positive amount'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.np_loss
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id001
+  - id: k1s.p1_income
+    printed: (helper)
+    label: Passive box 1 income
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.b1_passive
+      take: k1s.zero
+    cite: &id033
+      doc: i1120ssk
+      locator: p. 6, Box 1. Ordinary Business Income (Loss), "If income is reported in box 1, report the income in column
+        (h) of Schedule E (Form 1040), line 28"
+  - id: k1s.p1_loss
+    printed: (helper)
+    label: Passive box 1 loss after basis, as a positive amount
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.zero
+      take: k1s.b1_passive
+    cite: *id033
+  - id: k1s.p2_income
+    printed: (helper)
+    label: Box 2 income (passive)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.b2_net
+      take: k1s.zero
+    cite: *id033
+  - id: k1s.p2_loss
+    printed: (helper)
+    label: Box 2 loss after basis, as a positive amount (passive)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.zero
+      take: k1s.b2_net
+    cite: *id033
+  - id: k1s.p3_income
+    printed: (helper)
+    label: Box 3 income (passive)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.b3_net
+      take: k1s.zero
+    cite: *id033
+  - id: k1s.p3_loss
+    printed: (helper)
+    label: Box 3 loss after basis, as a positive amount (passive)
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: k1s.zero
+      take: k1s.b3_net
+    cite: *id033
+  - id: k1s.passive_income
+    printed: (helper)
+    label: Passive income of boxes 1, 2 and 3
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1s.p1_income
+      - k1s.p2_income
+      - k1s.p3_income
+    cite: *id033
+  - id: k1s.col_h
+    printed: 28 (h)
+    label: 'Schedule E line 28, column (h): passive income'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.passive_income
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id033
+  - id: k1s.p4_income_raw
+    printed: (helper)
+    label: Box 2 income with active participation (Form 8582 Part IV, column (a))
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: true
+        then: k1s.p2_income
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: false
+        then: k1s.zero
+    cite: &id034
+      doc: i8582
+      locator: p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities
+        must include the income or loss from those activities in Part IV"
+  - id: k1s.p4_loss_raw
+    printed: (helper)
+    label: Box 2 loss with active participation (Form 8582 Part IV, column (b))
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: true
+        then: k1s.p2_loss
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: false
+        then: k1s.zero
+    cite: *id034
+  - id: k1s.p4_prior_raw
+    printed: (helper)
+    label: Prior-year unallowed loss of the box 2 activity with active participation (Form 8582 Part IV, column (c))
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: true
+        then: k1s.b2_prior_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: false
+        then: k1s.zero
+    cite: *id034
+  - id: k1s.p5_b2_income
+    printed: (helper)
+    label: Box 2 income without active participation
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: false
+        then: k1s.p2_income
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: true
+        then: k1s.zero
+    cite: *id034
+  - id: k1s.p5_b2_loss
+    printed: (helper)
+    label: Box 2 loss without active participation
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: false
+        then: k1s.p2_loss
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: true
+        then: k1s.zero
+    cite: *id034
+  - id: k1s.p5_b2_prior
+    printed: (helper)
+    label: Prior-year unallowed loss of the box 2 activity without active participation
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: false
+        then: k1s.b2_prior_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.part4
+          - const: true
+        then: k1s.zero
+    cite: *id034
+  - id: k1s.p4_income
+    printed: (helper)
+    label: 'Form 8582 Part IV, column (a): net income'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.p4_income_raw
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id034
+  - id: k1s.p4_loss
+    printed: (helper)
+    label: 'Form 8582 Part IV, column (b): net loss'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.p4_loss_raw
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id034
+  - id: k1s.p4_prior
+    printed: (helper)
+    label: 'Form 8582 Part IV, column (c): prior-year unallowed loss'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.p4_prior_raw
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id034
+  - id: k1s.p5_income_raw
+    printed: (helper)
+    label: Passive income outside Part IV (boxes 1, 3 and box 2 without active participation)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1s.p1_income
+      - k1s.p5_b2_income
+      - k1s.p3_income
+    cite: &id035
+      doc: i8582
+      locator: p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c"
+  - id: k1s.p5_loss_raw
+    printed: (helper)
+    label: Passive losses outside Part IV
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1s.p1_loss
+      - k1s.p5_b2_loss
+      - k1s.p3_loss
+    cite: *id035
+  - id: k1s.p1_prior_passive
+    printed: (helper)
+    label: Prior-year unallowed loss of the box 1 activity when it is passive this year
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.material
+          - const: false
+        then: k1s.b1_prior_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.material
+          - const: true
+        then: k1s.zero
+    cite: *id035
+  - id: k1s.p5_prior_raw
+    printed: (helper)
+    label: Prior-year unallowed losses outside Part IV
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1s.p1_prior_passive
+      - k1s.p5_b2_prior
+      - k1s.b3_prior_if_any
+    cite: *id035
+  - id: k1s.p5_income
+    printed: (helper)
+    label: 'Form 8582 Part V, column (a): net income (sum over this K-1''s Part V activities)'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.p5_income_raw
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id035
+  - id: k1s.p5_loss
+    printed: (helper)
+    label: 'Form 8582 Part V, column (b): net loss (sum over this K-1''s Part V activities)'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.p5_loss_raw
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id035
+  - id: k1s.p5_prior
+    printed: (helper)
+    label: 'Form 8582 Part V, column (c): prior-year unallowed loss (sum over this K-1''s Part V activities)'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.p5_prior_raw
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id035
+  - id: k1s.int
+    printed: (helper)
+    label: Interest income (box 4), for Form 1040 line 2b
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.box4_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id004
+  - id: k1s.ord_div
+    printed: (helper)
+    label: Ordinary dividends (box 5a), for Form 1040 line 3b
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.box5a_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id005
+  - id: k1s.qual_div
+    printed: (helper)
+    label: Qualified dividends (box 5b), for Form 1040 line 3a
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.box5b_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id006
+  - id: k1s.st
+    printed: (helper)
+    label: Net short-term capital gain (loss) (box 7), for Schedule D line 5
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.box7_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id007
+  - id: k1s.lt
+    printed: (helper)
+    label: Net long-term capital gain (loss) (box 8a), for Schedule D line 12
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.box8a_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id008
+  - id: k1s.g28
+    printed: (helper)
+    label: Collectibles (28%) gain (loss) (box 8b), for the 28% Rate Gain Worksheet line 4
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.box8b_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id009
+  - id: k1s.u1250
+    printed: (helper)
+    label: Unrecaptured section 1250 gain (box 8c), for the Unrecaptured Section 1250 Gain Worksheet line 5
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.box8c_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id010
+  - id: k1s.backup
+    printed: (helper)
+    label: Backup withholding (box 13, code O), for Form 1040 line 25c
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.box13o_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id012
+  - id: k1s.taxexempt
+    printed: (helper)
+    label: Tax-exempt interest (box 16, code A), for Form 1040 line 2a
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.box16a_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id013
+  - id: k1s.nonpassive
+    printed: (helper)
+    label: Nonpassive trade or business income (loss) after basis (box 1, materially participated)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.b1_np
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id001
+  - id: k1s.qbi_cut
+    printed: (gate)
+    label: A qualified business loss on a K-1 whose losses are partly carried to 2026 by the basis limitation
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        lt:
+        - k1s.qbi_stmt_if_any
+        - const: 0
+      - op: test
+        eq:
+        - k1s.basis_cut
+        - const: true
+    cite: &id036
+      doc: i1120ssk
+      locator: p. 17, Code V. Section 199A information, "When determining QBI or qualified PTP income, you must include only
+        those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable
+        income for the tax year"
+    ambiguity: amb.2025.k1s_qbi_basis
+  - id: k1s.qbi
+    printed: (helper)
+    label: Qualified business income (loss) from this K-1 before the passive activity limitation (box 17, code V)
+    type: Dollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: true
+        then: k1s.qbi_stmt_if_any
+      - guard:
+          op: test
+          eq:
+          - k1s.ok
+          - const: false
+        then: k1s.zero
+    cite: *id036
+    refuses:
+    - when: k1s.qbi_cut
+      form: Form 8995 with a qualified business loss limited by stock basis
+      remedy: When a loss is partly carried forward by the basis limitation, only the allowed part of the qualified business
+        loss counts this year; working out that part is outside this tool.
+      cite: *id036
+  - id: k1s.one
+    printed: (helper)
+    label: One Schedule K-1
+    type: Count
+    expr:
+      op: param
+      ref: ss.one
+    cite: *id001
+  - id: k1s.sche_any
+    printed: (helper)
+    label: Box 1, 2 or 3 of this K-1 shows an amount (a row on Schedule E, line 28)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - k1s.box1_any
+        - const: true
+      - op: test
+        eq:
+        - k1s.box2_any
+        - const: true
+      - op: test
+        eq:
+        - k1s.box3_any
+        - const: true
+    cite: *id001
+  collection:
+    parent: person
+    cite:
+      doc: i1120ssk
+      locator: p. 1, General Instructions, "The corporation uses Schedule K-1 to report your share of"

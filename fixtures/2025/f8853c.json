@@ -1,0 +1,447 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "x2s1o.f8853c.per_diem_excess",
+      "covers": [
+        "f8853c",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Per diem payments of $160,600 (box 1, per diem checked, qualified contract) for 365 days, care costs $120,000, no reimbursements. Line 21 = $420 × 365 = $153,300; line 23 the larger, $153,300; line 25 $153,300; line 26 = $160,600 − $153,300 = $7,300, on Schedule 1 line 8e.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": true,
+        "f8853c[p0].line17": 16060000,
+        "f8853c[p0].days": 365,
+        "f8853c[p0].line22": 12000000
+      },
+      "expect": {
+        "f8853c[p0].line20": {
+          "kind": "money",
+          "cents": 16060000
+        },
+        "f8853c[p0].line21": {
+          "kind": "money",
+          "cents": 15330000
+        },
+        "f8853c[p0].line23": {
+          "kind": "money",
+          "cents": 15330000
+        },
+        "f8853c[p0].line25": {
+          "kind": "money",
+          "cents": 15330000
+        },
+        "f8853c[p0].line26": {
+          "kind": "money",
+          "cents": 730000
+        },
+        "s1.line8e": {
+          "kind": "money",
+          "cents": 730000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.f8853c.costs_larger",
+      "covers": [
+        "f8853c",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "As x2s1o.f8853c.per_diem_excess with care costs of $158,000: line 23 takes line 22, $158,000; line 26 = $160,600 − $158,000 = $2,600.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": true,
+        "f8853c[p0].line17": 16060000,
+        "f8853c[p0].days": 365,
+        "f8853c[p0].line22": 15800000
+      },
+      "expect": {
+        "f8853c[p0].line23": {
+          "kind": "money",
+          "cents": 15800000
+        },
+        "f8853c[p0].line26": {
+          "kind": "money",
+          "cents": 260000
+        },
+        "s1.line8e": {
+          "kind": "money",
+          "cents": 260000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.f8853c.under_limit",
+      "covers": [
+        "f8853c",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Per diem payments of $100,000 for 365 days, no costs entered: line 26 = $100,000 − $153,300, floored at zero.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": true,
+        "f8853c[p0].line17": 10000000,
+        "f8853c[p0].days": 365
+      },
+      "expect": {
+        "f8853c[p0].line25": {
+          "kind": "money",
+          "cents": 15330000
+        },
+        "f8853c[p0].line26": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8e": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2s1o.f8853c.reimbursed",
+      "covers": [
+        "f8853c",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Per diem payments of $160,600 for 365 days, no costs, $10,000 of reimbursements for care in the period: line 25 = $153,300 − $10,000 = $143,300; line 26 = $17,300.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": true,
+        "f8853c[p0].line17": 16060000,
+        "f8853c[p0].days": 365,
+        "f8853c[p0].line24": 1000000
+      },
+      "expect": {
+        "f8853c[p0].line25": {
+          "kind": "money",
+          "cents": 14330000
+        },
+        "f8853c[p0].line26": {
+          "kind": "money",
+          "cents": 1730000
+        },
+        "s1.line8e": {
+          "kind": "money",
+          "cents": 1730000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.f8853c.adb",
+      "covers": [
+        "f8853c",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Accelerated death benefits of $20,000 paid at a set rate for 30 days while chronically ill (line 19), no long-term care per diem: line 20 $20,000, line 21 = $420 × 30 = $12,600, line 26 = $7,400.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": true,
+        "f8853c[p0].line19": 2000000,
+        "f8853c[p0].days": 30
+      },
+      "expect": {
+        "f8853c[p0].line20": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f8853c[p0].line21": {
+          "kind": "money",
+          "cents": 1260000
+        },
+        "f8853c[p0].line26": {
+          "kind": "money",
+          "cents": 740000
+        },
+        "s1.line8e": {
+          "kind": "money",
+          "cents": 740000
+        }
+      }
+    },
+    {
+      "id": "x2s1o.f8853c.reimbursement_only",
+      "covers": [
+        "f8853c",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Payments that only repaid costs (no per diem): nothing taxable, line 26 zero; the Section C amounts are not asked.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": false
+      },
+      "expect": {
+        "f8853c[p0].line26": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8e": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2s1o.f8853c.refuse.others_paid",
+      "covers": [
+        "f8853c"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Someone else also received periodic payments for the same insured (line 15 Yes): refused at line 26 (Multiple Payees). The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": true,
+        "f8853c[p0].line17": 16060000,
+        "f8853c[p0].days": 365,
+        "f8853c[p0].others_paid": true
+      },
+      "expect": {
+        "f8853c[p0].line26": {
+          "kind": "refusal",
+          "gate": "f8853c[p0].others_paid_if_periodic",
+          "form": "Form 8853, Section C, Multiple Payees",
+          "remedy": "When someone else also received payments at a set rate for the same insured person, the $420-a-day limit is figured for everyone together on an attached statement; that is outside this tool.",
+          "cite": {
+            "doc": "i8853",
+            "locator": "p. 9, Multiple Payees, \"attach a statement duplicating lines 18 through 26\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "cefff1410968fd320fa175e1b84d9f6335fb9838f1f3c8b1594e477cbe0ab531",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.f8853c.refuse.rate_changed",
+      "covers": [
+        "f8853c"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The payment rate changed in 2025 (more than one LTC period): refused at line 26. The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": true,
+        "f8853c[p0].line17": 16060000,
+        "f8853c[p0].days": 365,
+        "f8853c[p0].rate_changed": true
+      },
+      "expect": {
+        "f8853c[p0].line26": {
+          "kind": "refusal",
+          "gate": "f8853c[p0].rate_changed_if_periodic",
+          "form": "Form 8853, Section C (more than one LTC period)",
+          "remedy": "Payments at more than one rate in 2025 make more than one long-term care period, each figured on its own Section C; that is outside this tool.",
+          "cite": {
+            "doc": "i8853",
+            "locator": "p. 8, Line 18, \"If you have more than one LTC period, you must separately calculate the taxable amount of the payments received during each LTC period\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "cefff1410968fd320fa175e1b84d9f6335fb9838f1f3c8b1594e477cbe0ab531",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.f8853c.refuse.nonqualified",
+      "covers": [
+        "f8853c"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Per diem payments under a contract that is not a qualified LTC insurance contract: refused at line 26 (line 17 caution). The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": true,
+        "f8853c[p0].line17": 16060000,
+        "f8853c[p0].days": 365,
+        "f8853c[p0].nonqualified": true
+      },
+      "expect": {
+        "f8853c[p0].line26": {
+          "kind": "refusal",
+          "gate": "f8853c[p0].nonqualified_if_periodic",
+          "form": "Form 8853, Section C, line 17 (a contract that is not a qualified LTC insurance contract)",
+          "remedy": "Payments at a set rate under a contract that is not a qualified long-term care insurance contract are taxable only to the extent they are not excludable, figured outside Form 8853; that is outside this tool.",
+          "cite": {
+            "doc": "f8853",
+            "locator": "Form 8853 (2025), line 17, Caution, \"Don’t use lines 18 through 26 to figure the taxable amount of benefits paid under an LTC insurance contract that isn’t a qualified LTC insurance contract\"",
+            "revision": "2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "5582f8137b70251d6292426ee89b78862412cf48d76577b8407e5f5f8775e5e9",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.f8853c.refuse.pre1996",
+      "covers": [
+        "f8853c"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Reimbursements under a contract issued before August 1, 1996: refused at line 25. The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": true,
+        "f8853c[p0].line17": 16060000,
+        "f8853c[p0].days": 365,
+        "f8853c[p0].line24": 500000,
+        "f8853c[p0].contract_before_ltc_date": true
+      },
+      "expect": {
+        "f8853c[p0].line25": {
+          "kind": "refusal",
+          "gate": "f8853c[p0].contract_before_ltc_date_if_reimbursed",
+          "form": "Form 8853, line 24 (reimbursements under a contract issued before August 1, 1996)",
+          "remedy": "Reimbursements under a long-term care contract issued before August 1, 1996, are generally left off line 24 unless the contract was later changed; that is outside this tool.",
+          "cite": {
+            "doc": "i8853",
+            "locator": "p. 9, Line 24, \"Generally, don’t include on line 24 reimbursements for qualified LTC services you received under a contract issued before August 1, 1996\"",
+            "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "cefff1410968fd320fa175e1b84d9f6335fb9838f1f3c8b1594e477cbe0ab531",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mint.f8853c.adb_only.nonqualified_not_asked",
+      "covers": [
+        "f8853c",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mint), expected values predicted by hand from the archived sources before running the evaluator. Inputs of x2s1o.f8853c.adb (accelerated death benefits of $20,000 paid at a set rate for 30 days while chronically ill; no long-term care per diem payments), with line 17 stated as $0 and the question whether any line 17 payment was under a non-qualified contract left unanswered: with nothing on line 17 the question does not apply and the interview does not ask it. Form 8853 (2025): line 17 $0, line 18 $0, line 19 $20,000, line 20 (add lines 18 and 19) $20,000; line 21 $420 x 30 = $12,600; lines 22 and 24 $0, line 23 $12,600, line 25 $12,600; line 26 (line 20 less line 25) $7,400, which goes to Schedule 1, line 8e (Form 8853 (2025) lines 17 to 26; i8853 p. 8, Line 19).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 5000000,
+        "person[taxpayer].w2[e0].box5": 5000000,
+        "person[taxpayer].w2[e0].box6": 72500,
+        "s1.ltc_payout": true,
+        "$f8853c": [
+          "p0"
+        ],
+        "f8853c[p0].periodic": true,
+        "f8853c[p0].line19": 2000000,
+        "f8853c[p0].days": 30,
+        "f8853c[p0].line17": 0,
+        "f8853c[p0].nonqualified": null
+      },
+      "expect": {
+        "f8853c[p0].line20": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f8853c[p0].line21": {
+          "kind": "money",
+          "cents": 1260000
+        },
+        "f8853c[p0].line26": {
+          "kind": "money",
+          "cents": 740000
+        },
+        "s1.line8e": {
+          "kind": "money",
+          "cents": 740000
+        }
+      }
+    }
+  ]
+}

@@ -35,6 +35,8 @@ NAME = r"[a-z0-9]+(?:-[a-z0-9]+)*"
 NAME_RE = re.compile(rf"^{NAME}$")
 PLACEHOLDER = re.compile(rf"BUG-NEW-({NAME})")
 PLACEHOLDER_ERE = "BUG-NEW-[a-z0-9]+(-[a-z0-9]+)*"  # the same, for git grep -E
+# Records kept verbatim (docs/records/): placeholders there are history, neither checked nor rewritten.
+RECORDS_PATHSPEC = ":(exclude)docs/records"
 PENDING_HEAD = re.compile(rf"\A## BUG-NEW-({NAME}) — (\S.*)\n")
 
 
@@ -155,7 +157,7 @@ def working_pending():
 def placeholders_in_tracked():
     """{name: [files]} for every BUG-NEW placeholder in the tracked files of the working tree."""
     out = {}
-    r = git("grep", "-I", "-o", "-E", PLACEHOLDER_ERE)
+    r = git("grep", "-I", "-o", "-E", PLACEHOLDER_ERE, "--", ".", RECORDS_PATHSPEC)
     for line in r.stdout.splitlines():
         f, _, token = line.partition(":")
         out.setdefault(PLACEHOLDER.match(token).group(1), []).append(f)

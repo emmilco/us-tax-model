@@ -4,7 +4,7 @@
  "family": "claude",
  "base": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
  "head_rows": {
-  "line-scoped reviews": "1 (latest 2026-11-04); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,15 +15,15 @@
   },
   {
    "key": "(Step 5, 2)",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "3f556f68a48055b17ebe2a950f03d1bdb25196e816c4c3ba8094006bb10157a7",
    "status": "MATCH",
-   "subject_key": "f051777fa865594dbb53ae339c6620a45bb85228ed309f997bb5c6e4da8e9f7c"
+   "subject_key": "9ba15b839d7c3a633eff2e92e42bf25545838ab6e878483895aa80bb4a13bbb4"
   },
   {
    "key": "(Step 5, 3)",
-   "record": "e48cb32ad63846d936369e5eb02f0034f058baef820868201a2f488437b4afa0",
+   "record": "3f556f68a48055b17ebe2a950f03d1bdb25196e816c4c3ba8094006bb10157a7",
    "status": "MATCH",
-   "subject_key": "4fdcf8fd4002ec8d13f2bbf462910d431ef5b3fff784a4056546e3d90db083fc"
+   "subject_key": "17d2ec24848bf7cec75d26c892519a0dc948b4a8a93621c363485519c9f46c5e"
   },
   {
    "key": "(Step 5, 4)",
@@ -88,8 +88,8 @@
  ],
  "subjects": {
   "(Step 5, 1)": "1ef8158708475b572809e15915810b286872ea6f239fb66c92cd8c1c74a5a0c1",
-  "(Step 5, 2)": "e335e8076f503454b40025991609193c4c4e8beaca3bd921d9687537f3f5c3f1",
-  "(Step 5, 3)": "fe995124e8022c9da5908d70286fa0dd1534677ef174fc601dae11f79df529b6",
+  "(Step 5, 2)": "2ce681018d1efa5f370e4c69b515a2d6c09fa3d0f2d01684146e5f12bf3a6b9b",
+  "(Step 5, 3)": "4836d5eff146ac8c4edb719e527d723796362818cfa331f31513c5aafd77f277",
   "(Step 5, 4)": "c2e1b81d402cb239d9ede1ecdfe725488451710620cf87d94b19d7472e963175",
   "(Step 5, 5)": "845221e785022b555bf69f6d66ea4712d5d0b37cbe65ba33007436323ddef40a",
   "4b": "2b4afa0797268c5f7779a5cb1ad27cda5d81c1ae9332b754818d5e97736b5efa",

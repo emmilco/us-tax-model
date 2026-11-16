@@ -1,0 +1,276 @@
+{
+ "kind": "transcription",
+ "form": "f8919",
+ "rulings": [
+  {
+   "printed": "10",
+   "project_expr_sha256": "f875e4ef2c4b7bf46340b9dcbbf770f68e1b51e119d72cdd847c476d46def031",
+   "second_expr_sha256": "23ae796084ee83ae541855f003e53b6183fb787817221f09c63891b2e056212b",
+   "ruling": "Ruling: representation; same value expression as the project's line 10 (f8919 p. 1); it differs only as unknowns inherited from the ungated line 6 (619 candidate-unknown) and 18 refusals on returns the project refuses too; no value differs on any of 2,218 inputs.",
+   "context": "f37d7f83c39a255f29335416c6c72392bb1baf55a9edd2ec3c78853c48c18272",
+   "date": "2026-11-15",
+   "run": "684f3895d8927c06602be0f04d413825159e5eba5149249b962df75dc213ebe4",
+   "subject_key": "045f255db91e5614336002ebed1136ab0de148b1b0ea8377334dbd3ce1ff3df7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8919[form]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.3.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.4.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8960.2.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.asset.1@person[taxpayer].f8919[form]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer].f8919[form]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer].f8919[form]",
+     "fixture:stage14.refuse.se_railroad@person[taxpayer].f8919[form]",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@person[taxpayer].f8919[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "11",
+   "project_expr_sha256": "452b2f33858d370322a084389d6d15003bd3ba27261001b4a8f24abaf25839e7",
+   "second_expr_sha256": "67b1e7f3eea11b8b99cc186d6d1aa9e8dd70b3cfc206550f2768b2a8a1b39a70",
+   "ruling": "Ruling: representation; same value expression as the project's line 11 (f8919 p. 1); it differs only as unknowns inherited from the ungated line 6 (619 candidate-unknown) and 18 refusals on returns the project refuses too; no value differs on any of 2,218 inputs.",
+   "context": "f37d7f83c39a255f29335416c6c72392bb1baf55a9edd2ec3c78853c48c18272",
+   "date": "2026-11-15",
+   "run": "684f3895d8927c06602be0f04d413825159e5eba5149249b962df75dc213ebe4",
+   "subject_key": "15bf1a0c5503f7064089ad40a9d245c5e7b8e6c31b6b0934932d74ebd843a9dd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8919[form]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.3.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.4.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8960.2.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.asset.1@person[taxpayer].f8919[form]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer].f8919[form]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer].f8919[form]",
+     "fixture:stage14.refuse.se_railroad@person[taxpayer].f8919[form]",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@person[taxpayer].f8919[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "12",
+   "project_expr_sha256": "e6221b9096cbfa070f4fcab17add12c27c59a9854d8ae940492f08b3c6dab0f2",
+   "second_expr_sha256": "6584776ffb8358073abcf5261a22c929a5e5cf7e6c18f86e3c9cdf6eede53c7f",
+   "ruling": "Ruling: representation; same value expression as the project's line 12 (line 6 x 0.0145); it differs only as unknowns inherited from the ungated line 6 (630 candidate-unknown); no value differs on any of 2,218 inputs.",
+   "context": "f37d7f83c39a255f29335416c6c72392bb1baf55a9edd2ec3c78853c48c18272",
+   "date": "2026-11-15",
+   "run": "684f3895d8927c06602be0f04d413825159e5eba5149249b962df75dc213ebe4",
+   "subject_key": "6213ef0a6962c40ee7f2d9c9f949a347e9394f14555ebaa77cc5471fe356bf2d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8919[form]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.3.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.4.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8960.2.deepseek@person[taxpayer].f8919[form]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer].f8919[form]",
+     "fixture:ss.single.over@person[taxpayer].f8919[form]",
+     "fixture:ss.multi.over@person[taxpayer].f8919[form]",
+     "fixture:ss.mfs@person[taxpayer].f8919[form]",
+     "fixture:ss.rrta@person[taxpayer].f8919[form]",
+     "fixture:ss.early.refusal@person[taxpayer].f8919[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "13",
+   "project_expr_sha256": "30b90d55d32027d1907d111504acbb771151c752572708a7cf5dc4bcf24000a9",
+   "second_expr_sha256": "be056b32fe8afb99edc84fd1324606b88d261de720d5d3f30ba208186744f08a",
+   "ruling": "Ruling: representation; same value expression as the project's line 13 (f8919 p. 1); it differs only as unknowns inherited from the ungated line 6 (619 candidate-unknown) and 18 refusals on returns the project refuses too; no value differs on any of 2,218 inputs.",
+   "context": "f37d7f83c39a255f29335416c6c72392bb1baf55a9edd2ec3c78853c48c18272",
+   "date": "2026-11-15",
+   "run": "684f3895d8927c06602be0f04d413825159e5eba5149249b962df75dc213ebe4",
+   "subject_key": "501dd55e15a3872c79b9e649385a45dc0e66a74a649b5a5f04321a4cb01077ed",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8919[form]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.3.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.4.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8960.2.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.asset.1@person[taxpayer].f8919[form]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer].f8919[form]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer].f8919[form]",
+     "fixture:stage14.refuse.se_railroad@person[taxpayer].f8919[form]",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@person[taxpayer].f8919[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6",
+   "project_expr_sha256": "3ece4a7662023f1dbca6ee81fcc1a70601d44493e4eae455fc71d13c1839b5d2",
+   "second_expr_sha256": "e55c3ed1388ef9c08c8ea5a0e2068a00faacc72267fc678de504618a7e6ba14b",
+   "ruling": "Ruling: representation; the reply sums f8919firm.wages without the parent questions (scope.pay_no_w2, scope.contractor_pay) that open the firm list, so it is unknown where the interview never asks the list (630 candidate-unknown: 85 completed, 49 incomplete, 496 refused); no value differs on any of 2,218 inputs (1,582 agree; 6 project-unknown on refused returns). f8919 line 6 'Total wages. Combine lines 1 through 5 in column (f)'.",
+   "context": "f37d7f83c39a255f29335416c6c72392bb1baf55a9edd2ec3c78853c48c18272",
+   "date": "2026-11-15",
+   "run": "684f3895d8927c06602be0f04d413825159e5eba5149249b962df75dc213ebe4",
+   "subject_key": "2b7c73ac43f389647d87de6a095e449f31718c9fea849761d04ae3dfb0833ecf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8919[form]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.3.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.4.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8960.2.deepseek@person[taxpayer].f8919[form]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer].f8919[form]",
+     "fixture:ss.single.over@person[taxpayer].f8919[form]",
+     "fixture:ss.multi.over@person[taxpayer].f8919[form]",
+     "fixture:ss.mfs@person[taxpayer].f8919[form]",
+     "fixture:ss.rrta@person[taxpayer].f8919[form]",
+     "fixture:ss.early.refusal@person[taxpayer].f8919[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "da125f665ce41849975b89f201a512daccb8fe6de10841db035d6eaf4cebf446",
+   "second_expr_sha256": "5c706f55636de92d9f864a01172db66c03c6bc5e6380483384199fd1c9cff2bb",
+   "ruling": "Ruling: model error; the reply's line has no shown_when, so it shows an amount on returns without a Form 8919 (f8919.files: line 6 more than zero); its value is the project's (se.wage_base and ss.base are both $176,100; 2,208 candidate-shows-skipped, no value differs). f8919 line 7.",
+   "context": "f37d7f83c39a255f29335416c6c72392bb1baf55a9edd2ec3c78853c48c18272",
+   "date": "2026-11-15",
+   "run": "684f3895d8927c06602be0f04d413825159e5eba5149249b962df75dc213ebe4",
+   "subject_key": "5e29681ec23bad2e3da6d2c9e5daa56f5f64de10e0d5ef110163134b66885a16",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f8919[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f8919[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f8919[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f8919[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f8919[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f8919[form]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer].f8919[form]",
+     "fixture:ss.single.over@person[taxpayer].f8919[form]",
+     "fixture:ss.multi.over@person[taxpayer].f8919[form]",
+     "fixture:ss.mfs@person[taxpayer].f8919[form]",
+     "fixture:ss.rrta@person[taxpayer].f8919[form]",
+     "fixture:ss.early.refusal@person[taxpayer].f8919[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "cfe4c51849ee0c9c91e24020a81f373102fb1582b79a28b92d24a3ff39a3fbc9",
+   "second_expr_sha256": "b673033b1a4c79b746d17bc0d3d10857826bc9c8e86c54761ddddba9a285015c",
+   "ruling": "Ruling: model error; the reply's line has no shown_when, so it shows an amount on returns without a Form 8919 (f8919.files: line 6 more than zero); its value is the project's (same sum: person.wages, boxes 3 + 7 by amb.2025.ss_wages, plus Form 4137 line 10; 536 shows-skipped, 47 unknown and 18 refusals only on returns the project refuses or the line hides). f8919 line 8.",
+   "context": "f37d7f83c39a255f29335416c6c72392bb1baf55a9edd2ec3c78853c48c18272",
+   "date": "2026-11-15",
+   "run": "684f3895d8927c06602be0f04d413825159e5eba5149249b962df75dc213ebe4",
+   "subject_key": "3ac0417346c5cc071ddb22eeabb76c87382ab397cbd0b46231d24b8312a9f465",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8919[form]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.3.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8960.2.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.dependent.2.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.dependent.3.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.person.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.asset.1@person[taxpayer].f8919[form]",
+     "fixture:classm.asset.2@person[taxpayer].f8919[form]",
+     "fixture:classm.asset.3@person[taxpayer].f8919[form]",
+     "fixture:classm.asset.4@person[taxpayer].f8919[form]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer].f8919[form]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer].f8919[form]",
+     "fixture:stage14.refuse.se_railroad@person[taxpayer].f8919[form]",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@person[taxpayer].f8919[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "5142b16b1743ac532bdfdbcac76b1d2f1b34f1817444d939242c5cc501473bd0",
+   "second_expr_sha256": "5daf5a95ec1f149b7cd0162a87cca93b3f5364176b9502c8d94d16b21cc0e86e",
+   "ruling": "Ruling: model error; the reply's line has no shown_when, so it shows an amount on returns without a Form 8919 (f8919.files: line 6 more than zero); its value is the project's (1,987 shows-skipped; the rest unknown/refusal on refused or incomplete returns). f8919 line 9 'Subtract line 8 from line 7'.",
+   "context": "f37d7f83c39a255f29335416c6c72392bb1baf55a9edd2ec3c78853c48c18272",
+   "date": "2026-11-15",
+   "run": "684f3895d8927c06602be0f04d413825159e5eba5149249b962df75dc213ebe4",
+   "subject_key": "e62e6304d76059e83c691bdf83e3876f173c0c1057d7b916cc8ec609c8dc53ee",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f8919[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f8919[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f8919[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f8919[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f8919[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f8919[form]",
+     "fixture:classm.f8889.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f8889.2.deepseek@person[sample].f8919[form]",
+     "fixture:classm.f8889.5.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.f4952.3.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.dependent.2.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.dependent.4.deepseek@person[taxpayer].f8919[form]",
+     "fixture:classm.asset.1@person[taxpayer].f8919[form]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer].f8919[form]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer].f8919[form]",
+     "fixture:stage14.refuse.se_railroad@person[taxpayer].f8919[form]",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@person[taxpayer].f8919[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

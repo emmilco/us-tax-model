@@ -601,10 +601,11 @@ form:
     - id: s8812.eiw_4
       printed: (helper)
       type: NonNegDollars
-      label: Earned Income Worksheet, line 4. Medicaid waiver payments excluded on Schedule 1, line 8s, not chosen as earned income; zero in this slice
+      label: Earned Income Worksheet, line 4. Medicaid waiver payments excluded on Schedule 1, line 8s, not chosen as earned income
       expr:
-        op: copy
-        from: s8812.zero
+        op: sum_over
+        collection: person
+        field: person.mw_not_earned
       cite:
         doc: i1040s8812
         locator: p. 8, Earned Income Worksheet, line 4

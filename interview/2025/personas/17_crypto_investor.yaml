@@ -1,0 +1,38 @@
+name: 17_crypto_investor
+who: A single person, 35, with one job (one Form W-2, $85,000 of wages) who sold two coins on an exchange that sent a Form 1099-DA without basis, swapped a third coin in a self-custody wallet, and received $412.50 of coins from staking.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 1990
+  $w2@person[taxpayer]: [acme]
+  person[taxpayer].w2[acme].box1: 8500000
+  person[taxpayer].w2[acme].box2: 900000
+  person[taxpayer].w2[acme].box4: 527000
+  person[taxpayer].w2[acme].box5: 8500000
+  person[taxpayer].w2[acme].box6: 123250
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false
+  f1040.digital_assets: true
+  s1.digital_income: true
+  s1.digital_amount: 41250
+  $sales: [eth, btc, sol_swap]
+  sd.route_each: false
+  sales[eth].box: H
+  sales[eth].special: false
+  sales[eth].code: none
+  sales[eth].proceeds: 420000
+  sales[eth].correct_basis: 300000
+  sales[btc].box: K
+  sales[btc].special: false
+  sales[btc].code: none
+  sales[btc].proceeds: 1500000
+  sales[btc].correct_basis: 1850000
+  sales[sol_swap].box: L
+  sales[sol_swap].special: false
+  sales[sol_swap].code: none
+  sales[sol_swap].proceeds: 260000
+  sales[sol_swap].correct_basis: 100000

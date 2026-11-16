@@ -1,0 +1,21 @@
+diff --git a/forms/2025/f1040.yaml b/forms/2025/f1040.yaml
+index db4cba6..94413f3 100644
+--- a/forms/2025/f1040.yaml
++++ b/forms/2025/f1040.yaml
+@@ -305,11 +305,13 @@ form:
+       gated_by: f1040.line3a_if_ordinary
+       expr:
+         op: input
+-        source: Form 1040 line 3a total qualified dividends, generally Form 1099-DIV box 1b, after the line
+-          3a exceptions. Supplied as a subtotal; qualification checks are outside this stage.
++        source: Qualified dividends, generally the total of Form 1099-DIV box 1b, less any amount the line 3a exceptions
++          leave out (for example, dividends on stock held less than 61 days of the 121-day period around the ex-dividend
++          date, or received as a nominee)
+       cite:
+         doc: i1040gi
+-        locator: Instructions for Form 1040, pp. 25–26, line 3a and exceptions
++        locator: 'pp. 25–26, Line 3a, Exception, "Some dividends may be reported as qualified dividends in box 1b of Form
++          1099-DIV but aren’t qualified dividends"'
+     - id: f1040.line4a
+       printed: 4a
+       label: IRA distributions

@@ -45,8 +45,13 @@ rows:
     answers:
       $person: [taxpayer]
       f1040.status: mfs
+      household.married_dec31: true
+      household.community_property: false
+      sa.spouse_itemizes: false
+      sa.spouse_extra: false
     expect:
-      refused: s3.mfs
+      proceeds:
+        f1040.status: mfs
   - id: opening.living_apart_parent
     design: C.1 row 5 (married, living apart, child at home; may be head of household)
     situation: A married parent who lives apart from their husband or wife picks the line about paying for a home, says they were married at the end of the year, and is asked whether they count as unmarried.

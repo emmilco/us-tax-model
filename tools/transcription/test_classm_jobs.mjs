@@ -8,6 +8,9 @@ import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 // The year of the run (--year N, removed from process.argv on import) is passed to every engine command.
 import { YEAR_ARGS } from '../../engine/dist/year.js';
+import { loadCanonical } from '../../engine/dist/canonical.js';
+import { evaluate } from '../../engine/dist/eval.js';
+import { loadInterview } from '../../engine/dist/interview.js';
 
 const temp = mkdtempSync(join(tmpdir(), 'classm-seeds-'));
 try {
@@ -80,8 +83,10 @@ try {
   }
   assert.ok(entries > 0);
   console.log(`classm route: ${f1095aJobs.length} f1095a job(s), ${entries} entries shown only their own route`);
-  // A return the interview refuses earns no case: the interview refuses Form 8962 on a married filing
-  // separately return, so no Form 8962 case is one.
+  // A return the interview refuses earns no case: a refusal outside the document (a filing status the
+  // household answers contradict, say) leaves Form 8962's own lines computed, so the corpus offers such
+  // returns, and no Form 8962 case may be one. Each case's answers, evaluated on the interview's targets,
+  // reach no refusal.
   const f8962Out = join(temp, 'f8962-jobs.json');
   const f8962 = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs', ...YEAR_ARGS,
     '--docs', 'f8962', '--corpus', '300', '--include-fixtures', '--out', f8962Out],
@@ -89,8 +94,14 @@ try {
   assert.equal(f8962.status, 0, f8962.stderr);
   const f8962Jobs = JSON.parse(readFileSync(f8962Out, 'utf8')).jobs;
   assert.ok(f8962Jobs.length > 0, 'Form 8962 must still be worked');
-  assert.ok(f8962Jobs.every(job => job.inputs['f1040.status'] !== 'mfs'), 'no case on a return the interview refuses');
-  console.log(`classm refused returns: ${f8962Jobs.length} f8962 job(s), none married filing separately`);
+  const canonical = loadCanonical();
+  const targets = loadInterview('full').targets;
+  for (const job of f8962Jobs) {
+    const r = evaluate(canonical, job.inputs, targets);
+    const refused = targets.filter(t => r.derivations.get(t)?.value.kind === 'refusal');
+    assert.equal(refused.length, 0, `${job.id}: no case on a return the interview refuses (${refused.slice(0, 3).join(', ')})`);
+  }
+  console.log(`classm refused returns: ${f8962Jobs.length} f8962 job(s), none on a return the interview refuses`);
   // The New York State and City Tax Table lookups are given with the rate-schedule results, not filled:
   // their rows are not among the form's pages.
   const nyOut = join(temp, 'ny-jobs.json');

@@ -1,0 +1,32 @@
+changes:
+  tax_year: 2026
+  form: f1040
+  entries:
+  - change: C-X1-F1040-01
+    evidence:
+    - doc: f1040
+      page: 2
+      quote: 'At any time during 2026, did you: (a) receive (as a reward, award, or payment for property or services); or
+        (b) sell, exchange, or otherwise dispose of a digital asset (or a financial interest in a digital asset)?'
+    verified: draft
+    note: 'The digital asset question keeps its wording and moves from page 1 to page 2, under Other Information. Citation
+      only: the line, its question and its entry check are unchanged. The i1040gi quotes of the line are awaited (2026 instructions
+      not posted); the year in the question moves at adoption.'
+    operations:
+    - set:
+        line: f1040.digital_assets
+        field: cite.locator
+        from: 'Form 1040 (2025), page 1, Digital Assets, "At any time during 2025, did you: (a) receive (as a reward, award,
+          or payment for property or services); or (b) sell, exchange, or otherwise dispose of a digital asset (or a financial
+          interest in a digital asset)?"; i1040gi p. 15, Digital Assets, "Digital assets are any digital representations of
+          value that are recorded on a cryptographically secured distributed ledger or any similar technology."; i1040gi p.
+          16, "Received new digital assets as a result of mining, staking, and similar activities", "Disposed of a digital
+          asset in exchange or trade for another digital asset", "Holding a digital asset in a wallet or account" and "Purchasing
+          digital assets using U.S. or other real currency"'
+        to: 'Form 1040 (2026), page 2, Other Information, "At any time during 2026, did you: (a) receive (as a reward, award,
+          or payment for property or services); or (b) sell, exchange, or otherwise dispose of a digital asset (or a financial
+          interest in a digital asset)?"; i1040gi p. 15, Digital Assets, "Digital assets are any digital representations of
+          value that are recorded on a cryptographically secured distributed ledger or any similar technology."; i1040gi p.
+          16, "Received new digital assets as a result of mining, staking, and similar activities", "Disposed of a digital
+          asset in exchange or trade for another digital asset", "Holding a digital asset in a wallet or account" and "Purchasing
+          digital assets using U.S. or other real currency"'

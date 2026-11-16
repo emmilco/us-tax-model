@@ -100,11 +100,11 @@
    "printed": "16",
    "project_expr_sha256": "ce45ab0471420bdb6853a00cf95eaac0248d70fbade1b2ee8430ba6adbcb8290",
    "second_expr_sha256": "3fe9914054750b8eacb2e7f43cbd3228bb194a81beb745f9cf0cb512fd2c6fc6",
-   "ruling": "Ruling: representation; equivalent: i1040sca p. 11, Line 16, gambling losses 'but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b'. The reply's smaller_of(sa.gambling_losses, s1.line8b) is the project's value when winnings are above $0; with no winnings line 8b is $0 and both give $0, but the reply reads sa.gambling_losses, which the interview asks only after a gambling-winnings Yes. Triage executable-triage-v2 (pass a9e1a8c8fc0e): 2,738 of 3,757 agree and no value differs; 793 candidate-unknown (sa.gambling_losses not asked, e.g. classm.f2441.1.deepseek), 1 candidate-refuses (redesign.credits.refuse.repaid_income: refused at s3.repaid_income in both), 68 project-refuses and 157 project-unknown (the project's Schedule A screens sa.unsupported, sa.excluded_income, sa.charity_limited_if_gifts, and records withholding them). The other line 16 items the note names are refused through sa.unsupported, sd.casualty and s3.repaid_income (ruled on the render log). Project stands.",
-   "context": "df686d99b6e8fd081fb890e99db2dc53a65996dcdf9328bbc3326a4f41796b0c",
+   "ruling": "Ruling: representation; both limit gambling losses to gambling winnings (i1040sca p. 11, Other Itemized Deductions, \"Gambling losses ... but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b\"); the project asks the losses only beneath its winnings question, the reply reads sa.gambling_losses and s1.line8b directly and declares refusals for the other listed items, which the project refuses through sa.unsupported. Triage 8d1c7332dffb: 3,033/4,083 agree with no value difference: 836 candidate-unknown (sa.gambling_losses unasked), 136 project-unknown, 64 project-refuses, 14 candidate-refuses.",
+   "context": "5acadf16dd520747d59daea4fa0268765afe32978e0eba0e18456f0a2749e239",
    "date": "2026-11-15",
-   "run": "1db3146fda146b0781d0dc528019c80030786e90586ee0f2744112c1c50a306b",
-   "subject_key": "8b05ef0ba8157bbf4fb9c1efbafefbef4da670d0059ece8499b3fc59ab46cd6c",
+   "run": "2c24ce5bfb4801682bcbd31664f588cb6c2b51fdece900cb5189ed2889434aee",
+   "subject_key": "1f48e5717fc564203b5939146956f1ad8763c8176a9b419568739aaeaca9e1db",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -127,12 +127,17 @@
      "fixture:classm.f5329.3.deepseek@sa",
      "fixture:classm.dcprov.1@sa",
      "fixture:t264.eic.show5_agi_open_married_child@sa",
-     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sa",
-     "fixture:stage16.cleanup.refuse.f1040_line16@sa",
-     "fixture:stage16.cleanup.refuse.scope_credits@sa",
-     "fixture:stage16.cleanup.refuse.f4952_unsupported@sa",
-     "fixture:t264.f4952.unsupported_with_interest@sa",
-     "fixture:redesign.credits.refuse.repaid_income@sa"
+     "fixture:mutation.m3.sd.other_forms_casualty@sa",
+     "fixture:redesign.credits.refuse.repaid_income@sa",
+     "generated:20261026.17@sa",
+     "generated:20261026.18@sa",
+     "generated:20261026.142@sa",
+     "generated:20261026.198@sa",
+     "partial:stage14.asset.hy_5yr-sa.gifts@sa",
+     "partial:stage14.asset.hy_5yr-sa.excluded_income@sa",
+     "partial:stage14.asset.hy_5yr-sa.home_owner@sa",
+     "partial:stage14.asset.hy_5yr-sa.home_other@sa",
+     "partial:stage14.asset.hy_5yr-sa.sales_tax_wish@sa"
     ],
     "policy": "executable-triage-v2"
    }
@@ -214,6 +219,219 @@
      "fixture:stage16.cleanup.refuse.f4952_unsupported@sa",
      "fixture:t264.f4952.unsupported_with_interest@sa",
      "fixture:stage16.cleanup.refuse.rrta_medicare@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2 (sa.dep_line2)",
+   "project_expr_sha256": "2ec313710c442ec0c87fdfad74ccdb59305ce6ebeb8dbf20f30bc8858841b343",
+   "second_expr_sha256": "79f32bf300a32c28dc62c8434e7a1b3e29826ddd738358f67ab35cb8eb85981b",
+   "ruling": "Ruling: finding; medium; the reply adds Schedule 1 line 8u to earned income and the project does not. i1040gi p. 35, Standard Deduction Worksheet for Dependents, footnote: \"Generally, your earned income is the total of the amount(s) you reported on Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15.\" amb.2025.sa_dep_earned left 8u out because it was refused upstream; lane x2-s1o now computes s1.line8u, so a dependent filer with inmate wages gets too small a line 2. The reply's 'more than $900' branch equals the project's larger_of(earned + $450, $1,350) (amb.2025.sa_dep_earned). Triage 8d1c7332dffb shows no value difference (no dependent filer with line 8u in fixtures or generated returns): 3,521 candidate-hides-shown (the reply shows the worksheet only when sa.dependent), 309 project-refuses, 136 project-unknown, 36 candidate-unknown. (BUG-0767)",
+   "context": "5acadf16dd520747d59daea4fa0268765afe32978e0eba0e18456f0a2749e239",
+   "date": "2026-11-15",
+   "run": "2c24ce5bfb4801682bcbd31664f588cb6c2b51fdece900cb5189ed2889434aee",
+   "severity": "medium",
+   "subject_key": "2575f2f673217d40a0b61aaf426f36625e332af8809b765ccb2c263f4b21a0a1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@sa",
+     "fixture:stage14.asset.mq_7yr@sa",
+     "fixture:stage14.asset.mq_mixed@sa",
+     "fixture:stage14.asset.mq_not@sa",
+     "fixture:stage14.asset.bonus_100@sa",
+     "fixture:stage14.asset.bonus_40_before@sa",
+     "fixture:stage14.asset.refuse_qip_2017@sa",
+     "fixture:stage14.asset.refuse_ads_past_gds@sa",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@sa",
+     "fixture:stage14.asset.refuse_class@sa",
+     "fixture:stage14.asset.refuse_listed_low@sa",
+     "fixture:stage14.asset.refuse_s179_over@sa",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@sa",
+     "fixture:classm.dependent.1.deepseek@sa",
+     "fixture:classm.dependent.2.deepseek@sa",
+     "fixture:classm.dependent.3.deepseek@sa",
+     "fixture:classm.dependent.4.deepseek@sa",
+     "fixture:classm.dependent.5.deepseek@sa",
+     "fixture:classm.asset.2@sa",
+     "fixture:classm.s179.4@sa",
+     "fixture:classm.sales.3@sa",
+     "partial:stage14.asset.hy_5yr-sa.dependent@sa",
+     "partial:stage14.asset.bonus_100-sa.dependent@sa",
+     "partial:stage14.asset.prior_7yr-sa.dependent@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3 (sa.dep_line3)",
+   "project_expr_sha256": "2f607ef5dac6bd7096f45eefab1c86144c039a7e1f7e30f27aa74c1e3ce719ab",
+   "second_expr_sha256": "335ffbc4887e1e605aaead2262609f10a485a328928f9bfa93fd7a5dcf0cbe7c",
+   "ruling": "Ruling: representation; same value (sa.standard_base, the line 3 amounts by filing status; i1040gi p. 35, worksheet line 3). The reply shows the line only when sa.dependent; the project figures the worksheet on every return and reads it (sa.standard) only for a filer someone can claim. Triage 8d1c7332dffb: 65/4,083 agree with no value difference: 3,959 candidate-hides-shown, 57 candidate-unknown, 2 project-unknown (status not supplied).",
+   "context": "5acadf16dd520747d59daea4fa0268765afe32978e0eba0e18456f0a2749e239",
+   "date": "2026-11-15",
+   "run": "2c24ce5bfb4801682bcbd31664f588cb6c2b51fdece900cb5189ed2889434aee",
+   "subject_key": "a1d4d8d857f3a283d2186129885fdc0e1c5d563cf281fd62eda68b23587b84af",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@sa",
+     "fixture:stage14.asset.mq_7yr@sa",
+     "fixture:stage14.asset.mq_mixed@sa",
+     "fixture:stage14.asset.mq_not@sa",
+     "fixture:stage14.asset.bonus_100@sa",
+     "fixture:stage14.asset.bonus_40_before@sa",
+     "fixture:classm.f8889.2.deepseek@sa",
+     "fixture:classm.asset.2@sa",
+     "fixture:classm.s179.4@sa",
+     "fixture:classm.sales.3@sa",
+     "fixture:stage21.choose.eic_limit_status_unanswered@sa",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sa",
+     "fixture:stage16.cleanup.refuse.f1040_line16@sa",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4a",
+   "project_expr_sha256": "69c9987f79674d9b0cb3caf89dd75419a705f8fbd76b1a3067af5f872a449b35",
+   "second_expr_sha256": "fd2d2438d1e955dfb18fd3bb7fc1de9a1b2c7ad5f2f71fb75234b8fe03fb1e4b",
+   "ruling": "Ruling: representation; smaller of lines 2 and 3 in both (i1040gi p. 35, worksheet line 4a); the reply only shows it when sa.dependent, the project figures it always and reads it only for a dependent filer. Triage 8d1c7332dffb: no value difference (3,521 candidate-hides-shown, 309 project-refuses, 136 project-unknown, 36 candidate-unknown). Line 2's earned income omission is ruled on line 2 (BUG-0767).",
+   "context": "5acadf16dd520747d59daea4fa0268765afe32978e0eba0e18456f0a2749e239",
+   "date": "2026-11-15",
+   "run": "2c24ce5bfb4801682bcbd31664f588cb6c2b51fdece900cb5189ed2889434aee",
+   "subject_key": "c9ffac496d4a5c213f6f3527cf0af4e8bcd0ff2d4d23bb4c3615e25415f45a51",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@sa",
+     "fixture:stage14.asset.mq_7yr@sa",
+     "fixture:stage14.asset.mq_mixed@sa",
+     "fixture:stage14.asset.mq_not@sa",
+     "fixture:stage14.asset.bonus_100@sa",
+     "fixture:stage14.asset.bonus_40_before@sa",
+     "fixture:stage14.asset.refuse_qip_2017@sa",
+     "fixture:stage14.asset.refuse_ads_past_gds@sa",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@sa",
+     "fixture:stage14.asset.refuse_class@sa",
+     "fixture:stage14.asset.refuse_listed_low@sa",
+     "fixture:stage14.asset.refuse_s179_over@sa",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@sa",
+     "fixture:classm.dependent.1.deepseek@sa",
+     "fixture:classm.dependent.2.deepseek@sa",
+     "fixture:classm.dependent.3.deepseek@sa",
+     "fixture:classm.dependent.4.deepseek@sa",
+     "fixture:classm.dependent.5.deepseek@sa",
+     "fixture:classm.asset.2@sa",
+     "fixture:classm.s179.4@sa",
+     "fixture:classm.sales.3@sa",
+     "partial:stage14.asset.hy_5yr-sa.dependent@sa",
+     "partial:stage14.asset.bonus_100-sa.dependent@sa",
+     "partial:stage14.asset.prior_7yr-sa.dependent@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4b",
+   "project_expr_sha256": "7da469f10f5d0258d2c2e41508c573e5e9c6a897b8a92be94935954d2300f266",
+   "second_expr_sha256": "37b06a2bb68b9c0149da31671e6f0685cc9c9413d41914baccd465eccfe94140",
+   "ruling": "Ruling: representation; the age 65 and blindness boxes times $2,000 (single, head of household) or $1,600 counted over the people on the return in both (i1040gi p. 35, worksheet line 4b; p. 33, Line 12d); the reply splits the count by role and shows the line only when sa.dependent. Triage 8d1c7332dffb: 3,845/4,083 agree with no value difference: 173 candidate-hides-shown, 49 project-unknown (person.blind unanswered on incomplete or refused returns), 16 candidate-unknown.",
+   "context": "5acadf16dd520747d59daea4fa0268765afe32978e0eba0e18456f0a2749e239",
+   "date": "2026-11-15",
+   "run": "2c24ce5bfb4801682bcbd31664f588cb6c2b51fdece900cb5189ed2889434aee",
+   "subject_key": "13d5dc2662fdd144ca7fea8c146a70b8dd5abf7341d69f875c12c1ae26680699",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@sa",
+     "fixture:classm.f8889.3.deepseek@sa",
+     "fixture:classm.f8960.3.deepseek@sa",
+     "fixture:classm.sd.2.deepseek@sa",
+     "fixture:classm.clcw.4.deepseek@sa",
+     "fixture:classm.eic.7.deepseek@sa",
+     "fixture:classm.sa.2.deepseek@sa",
+     "fixture:classm.sa.3.deepseek@sa",
+     "fixture:classm.sa.4.deepseek@sa",
+     "fixture:classm.dependent.5.deepseek@sa",
+     "fixture:classm.f4952.2@sa",
+     "fixture:classm.f8960.1@sa",
+     "partial:classm.f2441.3.deepseek-sa.dependent@sa",
+     "partial:classm.w2.1.deepseek-sa.dependent@sa",
+     "partial:classm.f8889.4.deepseek-sa.dependent@sa",
+     "partial:classm.sd.2.deepseek-sa.dependent@sa",
+     "partial:classm.dependent.1.deepseek-sa.dependent@sa",
+     "partial:classm.s3.2.deepseek-sa.dependent@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4c",
+   "project_expr_sha256": "9b6f7ecf6d30e694bd5a6131f99a054e1001035e82fcbf531010ce3ef0b49d50",
+   "second_expr_sha256": "fcdbcd14ea37de2a9dde5b47a522b67b949bbe1f26f032813c90485991d0fa10",
+   "ruling": "Ruling: representation; lines 4a plus 4b in both (i1040gi p. 35, worksheet line 4c); the reply shows it only when sa.dependent and at least one box. Triage 8d1c7332dffb: 53/4,083 agree with no value difference: 3,526 candidate-hides-shown, 311 project-refuses, 180 project-unknown, 13 candidate-unknown.",
+   "context": "5acadf16dd520747d59daea4fa0268765afe32978e0eba0e18456f0a2749e239",
+   "date": "2026-11-15",
+   "run": "2c24ce5bfb4801682bcbd31664f588cb6c2b51fdece900cb5189ed2889434aee",
+   "subject_key": "a330bcf16dc7f445506be97c6c5efb71006d60e0a6a653dda8283cfc2c9e097a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@sa",
+     "fixture:stage14.asset.mq_7yr@sa",
+     "fixture:stage14.asset.mq_mixed@sa",
+     "fixture:stage14.asset.mq_not@sa",
+     "fixture:stage14.asset.bonus_100@sa",
+     "fixture:stage14.asset.bonus_40_before@sa",
+     "fixture:stage14.asset.refuse_qip_2017@sa",
+     "fixture:stage14.asset.refuse_ads_past_gds@sa",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@sa",
+     "fixture:stage14.asset.refuse_class@sa",
+     "fixture:stage14.asset.refuse_listed_low@sa",
+     "fixture:stage14.asset.refuse_s179_over@sa",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@sa",
+     "fixture:classm.f8889.3.deepseek@sa",
+     "fixture:classm.f8960.3.deepseek@sa",
+     "fixture:classm.dependent.1.deepseek@sa",
+     "fixture:classm.dependent.2.deepseek@sa",
+     "fixture:classm.dependent.3.deepseek@sa",
+     "partial:classm.f8889.4.deepseek-sa.dependent@sa",
+     "partial:classm.sd.2.deepseek-sa.dependent@sa",
+     "partial:classm.s3.2.deepseek-sa.dependent@sa",
+     "partial:classm.f8962.1.deepseek-sa.dependent@sa",
+     "partial:classm.f8962.5.deepseek-sa.dependent@sa",
+     "partial:classm.f8880.3.deepseek-sa.dependent@sa"
     ],
     "policy": "executable-triage-v2"
    }
@@ -506,6 +724,52 @@
   },
   {
    "printed": "sa.deduction",
+   "project_expr_sha256": "a0120d3b9cd12e82d0c6baace3effbc075c5dc6ffa091455447e8c7ab4f2fffe",
+   "second_expr_sha256": "f5a71cae45af0e609dbcd23742825273582b020f0e42929b6ef51cf6e9ea2415",
+   "ruling": "Ruling: representation; the deduction for Form 1040 line 12e is Schedule A line 17 when itemizing and the standard deduction (including the dependents worksheet) otherwise in both (i1040gi p. 33, Line 12e). Triage 8d1c7332dffb: 3,201/4,083 agree with no value difference: 728 candidate-unknown, 116 candidate-refuses, 22 project-refuses, 16 project-unknown, from the same unasked inputs and one-sided refusals as sa.itemizes. Separately, the worksheet's earned income omits Schedule 1 line 8u (BUG-0767, ruled on line 2 (sa.dep_line2)); no return in triage exercises it.",
+   "context": "5acadf16dd520747d59daea4fa0268765afe32978e0eba0e18456f0a2749e239",
+   "date": "2026-11-15",
+   "run": "2c24ce5bfb4801682bcbd31664f588cb6c2b51fdece900cb5189ed2889434aee",
+   "subject_key": "116b7e367382dd782c169d5cc59f76668bd6f3fdd8e7e494e050b50cf5ddeb58",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@sa",
+     "fixture:classm.f2441.2.deepseek@sa",
+     "fixture:classm.f2441.3.deepseek@sa",
+     "fixture:classm.f2441.4.deepseek@sa",
+     "fixture:classm.f2441.5.deepseek@sa",
+     "fixture:classm.f2441.6.deepseek@sa",
+     "fixture:classm.clcw.2.deepseek@sa",
+     "fixture:classm.dependent.1.deepseek@sa",
+     "fixture:classm.dependent.2.deepseek@sa",
+     "fixture:classm.dependent.3.deepseek@sa",
+     "fixture:classm.dependent.4.deepseek@sa",
+     "fixture:classm.eic.6.deepseek@sa",
+     "fixture:classm.eic.7.deepseek@sa",
+     "fixture:classm.f5329.3.deepseek@sa",
+     "fixture:classm.dependent.5.deepseek@sa",
+     "fixture:classm.f5329.3@sa",
+     "fixture:stage19.mut.classm_f5329_3_dependent_no_ein@sa",
+     "fixture:stage9.eic.refuse.form2555@sa",
+     "partial:stage14.asset.hy_5yr-sa.excluded_income@sa",
+     "partial:stage14.asset.hy_5yr-sa.sales_tax_wish@sa",
+     "partial:stage14.asset.bonus_100-sa.excluded_income@sa",
+     "partial:stage14.asset.bonus_100-sa.sales_tax_wish@sa",
+     "partial:stage14.asset.prior_7yr-sa.excluded_income@sa",
+     "partial:stage14.asset.prior_7yr-sa.sales_tax_wish@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sa.deduction",
    "project_expr_sha256": "a2bb36c5904901760a1216fa6be2a329a0d6295c82035f8299d4687186457da1",
    "second_expr_sha256": "55b61eec05244f9358e741427c71b5625049f0016d533d7840c1ae9945f05549",
    "ruling": "Ruling: scope and representation; project retained. Re-ruled after Schedule A line 2 took its floored operand (amb.2025.sa_medical_negative_agi): both transcriptions carry line 11b at no less than zero through line 2 and line 17. Both select the itemized total (line 17) when itemizing is elected, when a separate-return spouse itemizes, or when line 17 exceeds the standard deduction, and the standard deduction otherwise, zero when a separate-return spouse itemizes and increased by the age and blindness additions. As on sa.itemizes, the project conditions the spouse-itemizes rule on married-filing-separately status, which the second omits; married filing separately is refused (s3.mfs, spec 2.2), so within scope the selections agree; the second's single product of the addition and the summed box count equals the project's sum of one product per box (i1040gi pp. 34-35, line 12e and the Standard Deduction Chart). No change to the data.",
@@ -755,6 +1019,72 @@
      "fixture:mutation.m4.asset.qip_2016_screen@sa",
      "fixture:redesign.credits.refuse.mcc@sa",
      "fixture:redesign.credits.refuse.repaid_income@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sa.itemizes",
+   "project_expr_sha256": "fbd7a19f195937b53d88421c67553a377f0e7ec10f7d804237b7c97e33694830",
+   "second_expr_sha256": "6d62076ac141c84cce011a89916fd4309ed3df34165fb71ab673d9a41d5fa6c6",
+   "ruling": "Ruling: representation; the reply's three conditions (line 18 election, a separate return whose spouse itemizes, itemized total over the standard deduction; tie to the standard deduction) are the project's (i1040gi p. 33, Line 12e; p. 34, Exception 2; f1040sa line 18). The reply reads sa.spouse_itemizes outside the separate-return gate and reaches each Schedule A amount directly. Triage 8d1c7332dffb: 3,228/4,083 agree with no value difference: 702 candidate-unknown (inputs such as sa.gambling_losses and sa.home_other that the interview did not ask), 115 candidate-refuses and 22 project-refuses (a refusal reached on one side only, on refused or incomplete returns), 16 project-unknown (sa.excluded_income unanswered on incomplete returns).",
+   "context": "5acadf16dd520747d59daea4fa0268765afe32978e0eba0e18456f0a2749e239",
+   "date": "2026-11-15",
+   "run": "2c24ce5bfb4801682bcbd31664f588cb6c2b51fdece900cb5189ed2889434aee",
+   "subject_key": "ab6107c318ab6d9f1c2fe21d4c08fad6100588f7980e872d63782b9009c4f13c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@sa",
+     "fixture:classm.f2441.2.deepseek@sa",
+     "fixture:classm.f2441.3.deepseek@sa",
+     "fixture:classm.f2441.4.deepseek@sa",
+     "fixture:classm.f2441.5.deepseek@sa",
+     "fixture:classm.f2441.6.deepseek@sa",
+     "fixture:classm.clcw.2.deepseek@sa",
+     "fixture:classm.dependent.1.deepseek@sa",
+     "fixture:classm.dependent.2.deepseek@sa",
+     "fixture:classm.dependent.3.deepseek@sa",
+     "fixture:classm.dependent.4.deepseek@sa",
+     "fixture:classm.eic.6.deepseek@sa",
+     "fixture:classm.eic.7.deepseek@sa",
+     "fixture:classm.f5329.3.deepseek@sa",
+     "fixture:classm.carloan.3@sa",
+     "fixture:classm.f5329.3@sa",
+     "fixture:stage19.mut.classm_f5329_3_dependent_no_ein@sa",
+     "fixture:stage9.eic.refuse.form2555@sa",
+     "partial:stage14.asset.hy_5yr-sa.excluded_income@sa",
+     "partial:stage14.asset.hy_5yr-sa.sales_tax_wish@sa",
+     "partial:stage14.asset.bonus_100-sa.excluded_income@sa",
+     "partial:stage14.asset.bonus_100-sa.sales_tax_wish@sa",
+     "partial:stage14.asset.prior_7yr-sa.excluded_income@sa",
+     "partial:stage14.asset.prior_7yr-sa.sales_tax_wish@sa"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "sa.mfs_spouse_itemizes",
+   "project_expr_sha256": "f00fac728f0a44219568c3d7645debae6411982e92ac224e99e3433b989624df",
+   "second_expr_sha256": "ddcd8ba9ced6f342abe33943a34249613a4c6d4558d76f1e45df96e5393963d2",
+   "ruling": "Ruling: representation; the project's choose (mfs -> sa.spouse_itemizes, else sa.no false) is the reply's all(status = mfs, spouse_itemizes) (i1040gi p. 34, Exception 2). Triage 8d1c7332dffb: 4,082/4,083 agree; the one difference is project-unknown on a refused return that never answers f1040.status.",
+   "context": "5acadf16dd520747d59daea4fa0268765afe32978e0eba0e18456f0a2749e239",
+   "date": "2026-11-15",
+   "run": "2c24ce5bfb4801682bcbd31664f588cb6c2b51fdece900cb5189ed2889434aee",
+   "subject_key": "679a5d946d258f782a601115afddb8ee242127275f2eec703d3a472a6082d272",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage21.choose.eic_limit_status_unanswered@sa"
     ],
     "policy": "executable-triage-v2"
    }

@@ -1,0 +1,45 @@
+name: 14_investor_international_fund
+who: A single person, 45, with wages from one job and an international index fund whose Form 1099-DIV shows $10,000 of dividends ($8,000 qualified) and $320 of foreign tax; the fund's year-end statement shows $4,000 of foreign source income.
+end: complete
+answers:
+  $person: [taxpayer]
+  f1040.status: single
+  person[taxpayer].birth_year: 1980
+  $w2@person[taxpayer]: [employer]
+  person[taxpayer].w2[employer].box1: 10000000
+  person[taxpayer].w2[employer].box2: 1300000
+  person[taxpayer].w2[employer].box4: 620000
+  person[taxpayer].w2[employer].box5: 10000000
+  person[taxpayer].w2[employer].box6: 145000
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false
+  div.any: true
+  sb.ordinary_dividends: 1000000
+  f1040.line3a: 800000
+  qbi.dividends: 0
+  sd.distributions: 0
+  div.other_boxes: false
+  sd.f2439: false
+  sb.nominee: false
+  sb.bonds_any: false
+  s3.foreign_any: true
+  s3.section960c: false
+  s3.section965: false
+  s3.virgin_islands: false
+  ftc.carryover: false
+  ftc.taxes: 32000
+  ftc.all_passive: true
+  ftc.statements: true
+  ftc.eligible: true
+  $f1116col: [funds]
+  f1116col[funds].kind: dividends
+  f1116col[funds].div_income: 400000
+  f1116col[funds].tax_div: 32000
+  f1116.foreign_gain: false
+  f1116.redetermination: false
+  f1116.reduction: false
+  f1116.loss_accounts: false
+  sa.foreign_tax_deduct: false

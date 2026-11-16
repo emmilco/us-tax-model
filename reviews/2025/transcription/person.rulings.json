@@ -1006,47 +1006,15 @@
    "printed": "Step 1",
    "project_expr_sha256": "9d10bb5fb41f7ab276624d93da654dad47a4e39bcf1f7fe467d3d571788f1ee3",
    "second_expr_sha256": "74fd8914aaf1596afb1d06b4e48aafcb38a6be9953e70641a920b212b358e7ea",
-   "ruling": "Ruling: scope; p560 p. 39, Step 1. R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). The reply is identical to the one ruled before (same line and candidate as the refresh-round ruling): both sum the person's Schedule C results; the project refuses at person.se_screened (cited); the completed-return differences are display and unknown states (the reply reads person.plan_screen of a person whose step the project hides, and shows the step where the project hides it), not values. executable-triage-v2 on this pass's reply (`.transcription/person.lines-a83b11fb00e8.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 1,630 partial records; 4,822 comparisons): 3,662 of 4,822 agree; differences on returns the full interview completes: 240 candidate-shows-skipped, 116 candidate-unknown, 8 project-unknown; no completed-return value difference. Project stands. (carried over from reviews/2025/transcription/person.md at 5d8c6fd8, review of 2026-11-03)",
-   "context": "6932ddf30d9417e095465e688f596a808ca646f5f5f9da934d160bb4f321f0aa",
-   "date": "2026-11-07",
-   "run": "014521ac26d55221653f638ccc9752b34039c9bd15a1ab9c6e849e9f40d350e9",
-   "subject_key": "c6a7e775aecec6387e4673ab7b3ad97d0c9917b9d09c12c9f1177b560f2c2ec5",
+   "ruling": "Ruling: representation; executable triage 5,490/5,490 agree (completed: none): the project's line and the reply agree on every input run (fixture, partial and generated returns). i1040sse; Schedule C line 31.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "4dcee3528c4a8395fe7c4b1c58d7d5a02bdde1be02cfba5f09899c932ef3a959",
    "triage": {
-    "verdict": "differs",
-    "kinds": [
-     "candidate-refuses",
-     "candidate-shows-skipped",
-     "candidate-unknown",
-     "project-refuses",
-     "project-unknown"
-    ],
-    "witnesses": [
-     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
-     "fixture:classm.f2441.2.deepseek@person[spouse]",
-     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
-     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
-     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
-     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
-     "fixture:classm.f8889.4.deepseek@person[spouse]",
-     "fixture:classm.f8889.4.deepseek@person[taxpayer]",
-     "fixture:classm.f4952.2.deepseek@person[taxpayer]",
-     "fixture:classm.f8960.2.deepseek@person[taxpayer]",
-     "fixture:classm.f8960.3.deepseek@person[taxpayer]",
-     "fixture:classm.g28.1.deepseek@person[taxpayer]",
-     "fixture:classm.g28.2.deepseek@person[spouse]",
-     "fixture:classm.g28.2@person[spouse]",
-     "fixture:classm.s179.4@person[taxpayer]",
-     "fixture:classm.scveh.3@person[taxpayer]",
-     "fixture:mutation.t2.f8962_months_scveh3@person[taxpayer]",
-     "fixture:mutation.t2.no_carloan_part4@person[taxpayer]",
-     "fixture:mutation.t2.mfj_no_overtime_part3@person[taxpayer]",
-     "fixture:mutation.t2.qss_s1a_tips_ot_car@person[taxpayer]",
-     "fixture:mutation.t2.s1a.line13_magi_first@person[taxpayer]",
-     "fixture:mutation.t2.s1a.line21_magi_first@person[taxpayer]",
-     "fixture:mutation.t2.scveh.mq_prior_car_q4@person[taxpayer]",
-     "fixture:mutation.t2.scveh.mq_2025_car_q2@person[taxpayer]",
-     "generated:20261026.66@person[taxpayer]"
-    ],
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
     "policy": "executable-triage-v2"
    }
   },
@@ -1151,6 +1119,60 @@
    "ruling": "Ruling: model error; p560 p. 39, Step 2, \"Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15\". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. The reply now sums sc.line31 where the project (and the previous reply) read sc.result; the two are equal except on a Schedule C loss limited by the cited at-risk screen (see person.sc_total), so this changes no computed amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,202 of 5,127 agree; 1,700 candidate-unknown, 224 candidate-refuses, 1 project-refuses; on returns the full interview completes: 16 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 20 against the record's 19, the class M fixtures having been rewritten by a concurrent run): 17 candidate-unknown person.se_screen (for example classm.asset.1, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]). Project stands.",
    "context": "7bb8666cf74b4bfdc059f8cfc5e62ed0fe1cfa4e08e0152ff5c16acd11779e08",
    "subject_key": "d1b95332a8bca6fc6488d3c75cd6ac1ffc70884e7873d803d579b2eb0c95331a"
+  },
+  {
+   "printed": "Step 2",
+   "project_expr_sha256": "b44ff684f31a9f28668754739dd40ea2e04e10dbc14e9bd0e919b5642b95a172",
+   "second_expr_sha256": "5d8665837814d1b0417d7037ef583adf8cda1d5dfb61fb3548ad6e467c6b334a",
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 5,719/5,728 agree; 6 candidate-unknown, 3 candidate-refuses (none on a completed return). No value differs on any return the project completes; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040sse; Schedule 1 line 15.",
+   "context": "eb5fad7c71d9362bab8ea3a6f380da7bc06b272e3d7cdf04fd51d8b40add1ee1",
+   "date": "2026-11-15",
+   "run": "9318009e5d9c1c4a47bafa577239fae2379da2ce3389dcf479db1d7e72e0179f",
+   "subject_key": "5431fcaf663a5d0b808cc04dd9f23a242fd91e68d4e58323414a0562ccea1af1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "generated:20261026.96@person[taxpayer]",
+     "generated:20261026.215@person[taxpayer]",
+     "generated:20261026.218@person[taxpayer]",
+     "generated:20261026.219@person[taxpayer]",
+     "generated:20261026.330@person[taxpayer]",
+     "partial:classm.f5329.1.deepseek-person[taxpayer].rrta@person[taxpayer]",
+     "partial:classm.f5329.1.deepseek-person[taxpayer].se_screen@person[taxpayer]",
+     "partial:classm.f8962.3.gpt-person[taxpayer].rrta@person[taxpayer]",
+     "partial:classm.f8962.3.gpt-person[taxpayer].se_screen@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "Step 2",
+   "project_expr_sha256": "b44ff684f31a9f28668754739dd40ea2e04e10dbc14e9bd0e919b5642b95a172",
+   "second_expr_sha256": "c0116843a3f424fc84c78866c7dbf38484d31952957f386f892ed2375b52759b",
+   "ruling": "Ruling: representation; executable triage 5,417/5,490 agree; 73 candidate-unknown (completed: 11 candidate-unknown). No value differs on any return; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Schedule SE rows are read the same way once asked; i1040sse; Schedule 1 line 15.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "5431fcaf663a5d0b808cc04dd9f23a242fd91e68d4e58323414a0562ccea1af1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.3.deepseek@person[taxpayer]",
+     "fixture:classm.s2.3.deepseek@person[spouse]",
+     "fixture:classm.f5329.1.deepseek@person[taxpayer]",
+     "fixture:classm.f8962.3.gpt@person[taxpayer]",
+     "fixture:classm.oi8z.1@person[taxpayer]",
+     "fixture:classm.s1.12@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "Step 21",
@@ -1443,6 +1465,109 @@
   },
   {
    "printed": "person.dc_earned",
+   "project_expr_sha256": "024095868740a133fcee19551f8dce7680c9b574026d1f39d8428b93654827ab",
+   "second_expr_sha256": "4e20d2490771a960b0af6c6f656e122798506a1bc6038687567509124ad44a6b",
+   "ruling": "Ruling: model error; executable triage 2,915/5,490 agree; 2,422 candidate-unknown, 113 project-refuses, 25 candidate-refuses, 11 value, 4 project-unknown (completed: 394 candidate-unknown, 10 value). The reply leaves line 1e out (its note: 'It is left out here, so this equals dc_earned_b'): stage9.eic.line5_skipped project $5,000, reply $3,000; f2.t121.line13_earned_not_limiting $45,500 / $45,000; stage15.f2441.s5 $41,500 / $40,000; the differences are the taxable dependent care benefits on line 1e. i2441 p. 4, Lines 4 and 5, earned income is 'The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z', which includes line 1e; how a joint line 1e is shared is the project's registered ambiguity (amb.2025.dc_line1e_attribution), but the single-earner witnesses need no share.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "2158fbcfc5bbdda704c87cebfa3330fe73aa35c32fcb121e69706015732bdaad",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[spouse]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.s179.3@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:stage9.eic.line5_skipped@person[taxpayer]",
+     "fixture:f2.t121.line13_earned_refused@person[taxpayer]",
+     "fixture:f2.t121.line13_earned_not_limiting@person[taxpayer]",
+     "fixture:f2.t121.line13_line21_binds@person[taxpayer]",
+     "fixture:stage15.f2441.s5@person[taxpayer]",
+     "fixture:stage15.f2441-2.r16@person[taxpayer]",
+     "fixture:stage15.refuse.f2441.both_spouses_benefits@person[taxpayer]",
+     "fixture:stage15.refuse.f2441.plans_differ@person[spouse]",
+     "fixture:stage15.refuse.f2441.plans_differ@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@person[taxpayer]",
+     "fixture:t264.f4952.unsupported_with_interest@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:mutation.t2.hoh_s1a_car@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.dc_earned",
+   "project_expr_sha256": "024095868740a133fcee19551f8dce7680c9b574026d1f39d8428b93654827ab",
+   "second_expr_sha256": "68dd12c0de11fbdbde84fad1d58a74f8a61458d53dbbbe013aaf1e6af146a4d4",
+   "ruling": "Ruling: model error; line-scoped rerun (pass 238b2e0eecf5). Executable triage 3,280/5,728 agree; 2,287 candidate-unknown, 114 project-refuses, 25 candidate-refuses, 17 value, 5 project-unknown (completed: 427 candidate-unknown, 10 value). The reply leaves line 1e out again (its note: 'Line 1e is not included'): stage9.eic.line5_skipped project $5,000, reply $3,000; f2.t121.line13_earned_not_limiting $45,500 / $45,000; f2.t121.line13_line21_binds $5,700 / $5,200; stage15.f2441.s5 $41,500 / $40,000; the differences are the taxable dependent care benefits on line 1e. i2441 p. 4, Lines 4 and 5, earned income is 'The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z', which includes line 1e; how a joint line 1e is shared is the registered ambiguity amb.2025.dc_line1e_attribution, but the single-earner witnesses need no share. Same ruling as the earlier round (lane xadj-e).",
+   "context": "eb5fad7c71d9362bab8ea3a6f380da7bc06b272e3d7cdf04fd51d8b40add1ee1",
+   "date": "2026-11-15",
+   "run": "9318009e5d9c1c4a47bafa577239fae2379da2ce3389dcf479db1d7e72e0179f",
+   "subject_key": "2158fbcfc5bbdda704c87cebfa3330fe73aa35c32fcb121e69706015732bdaad",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[spouse]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.s179.3@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:stage9.eic.line5_skipped@person[taxpayer]",
+     "fixture:f2.t121.line13_earned_refused@person[taxpayer]",
+     "fixture:f2.t121.line13_earned_not_limiting@person[taxpayer]",
+     "fixture:f2.t121.line13_line21_binds@person[taxpayer]",
+     "fixture:stage15.f2441.s5@person[taxpayer]",
+     "fixture:stage15.f2441-2.r16@person[taxpayer]",
+     "fixture:stage15.refuse.f2441.both_spouses_benefits@person[taxpayer]",
+     "fixture:stage15.refuse.f2441.plans_differ@person[spouse]",
+     "fixture:stage15.refuse.f2441.plans_differ@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@person[taxpayer]",
+     "fixture:t264.f4952.unsupported_with_interest@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.f8889.screen_no_amounts@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:mutation.t2.hoh_s1a_car@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@person[taxpayer]",
+     "generated:20261026.315@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.dc_earned",
    "project_expr_sha256": "6ea48c753530533a83dca9844fcf9f18b152047a240613b2116b190458ae6638",
    "second_expr_sha256": "0b5fdf857386cb25d2af929a7615248ea2e60d09e6061eaaca244fde6557d4f6",
    "ruling": "Ruling: model error; i2441 p. 4, Lines 4 and 5: \"If filing jointly, figure your and your spouse's earned income separately\" and \"Earned income for figuring the credit generally includes the following amounts. 1. The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\"; amb.2025.dc_line1e_attribution (owner ruling: line 1e is the earned income of the spouse whose Forms W-2 show box 10; with both, refused while a credit remains, otherwise shown once on the taxpayer's line 4). The reply changed: it now adds f2441.line26 (line 1e) for a person with a Form W-2 showing box 10, which fixes fix round 2's model error (classm.carloan.1 no longer differs), and its self-employment part is on sc.line31 again. But where both spouses' Forms W-2 show box 10 it adds the whole of line 26 to each spouse, counting line 1z's line 1e twice, which no reading of the register allows; no record in the sample isolates it (the project refuses such a return at f2441.attrib_gate while a credit remains, so the doubled amount reaches only printed lines 4 and 5 where none remains). No value differs on the sample. The project refusals are cited Form 2441 and return screens reached through the line (f2441.line14_bad on classm.w2.1.deepseek and stage15.refuse.f2441.line14_over, f2441.plans_differ, sa.excluded_income on classm.f8889.5 and .5.deepseek, sc not_at_risk on stage14.refuse.at_risk; refused returns). The candidate-unknown records also include W-2 box 10 asked where the interview does not ask it (classm.f8995.2, classm.sc.4, completed; box 10 is asked with Form 2441): placement. The candidate declares refusals on person.se_screen and person.rrta for every person; the project asks se_screen (and, through the Schedule C, the railroad question) only of a person with a Schedule C, so every candidate-unknown record is a person with no Schedule C where the interview does not ask se_screen (classm.f2441.1.deepseek to .5, completed), and every candidate refusal supplies se_screen true for such a person (classm.f5695.2, classm.f5695.2.deepseek and classm.ssb.5 on completed returns; classm.carloan.2, classm.f8959.1 and generated returns such as 8, 11 and 16 on refused returns), an answer the interview does not produce for that person: placement (checked on every witness: none has a Schedule C). Fix round 3 re-check: the only project change since fix round 2 is BUG-0256 (person.tin: an expired ITIN counts only if renewed by the due date), which this line does not read. Triage executable-triage-v2 (triage/person.json; 1,390 fixtures, 500 generated returns seed 20261026, 2,014 partial records; every witness listed by a scratch rerun of tools/transcription/triage.mjs with the witness cap lifted): 3,128 of 4,724 comparisons agree; 6 project-refuses, 16 candidate-refuses, 1,574 candidate-unknown; on returns the full interview completes: 3 candidate-refuses, 766 candidate-unknown.",
@@ -1625,6 +1750,91 @@
    "second_expr_sha256": "bf7761fd6eb73d957fe57f9915d86f2e26e8338d317edab3424c3f0f3866d213",
    "ruling": "Ruling: representation; project retained. Both are W-2 box 1 plus the self-employment part without line 1e (i2441 p. 5, Line 18, 'for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12'); the self-employment part differs only as person.eic_se does.",
    "subject_key": "7c7c66ac10f7e2b049bf31d2fc1824ce5c2ed7453ee3802caf5ec23572ccefd2"
+  },
+  {
+   "printed": "person.dc_earned_b",
+   "project_expr_sha256": "d5c7a2f23ec223c03c53b0a721e42f68d5066f190e62304c0cc5128dc173c48b",
+   "second_expr_sha256": "4e20d2490771a960b0af6c6f656e122798506a1bc6038687567509124ad44a6b",
+   "ruling": "Ruling: representation; executable triage 2,855/5,490 agree; 2,521 candidate-unknown, 106 candidate-refuses, 8 project-refuses (completed: 394 candidate-unknown). No value differs on any return; the reply sums or reads the Form 2441 earned-income inputs (now with lines 1b to 1h) without the parent question that opens them (the pay and Medicaid gates), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 2441 rows are read the same way once asked; i2441 p. 5, Line 18.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "34bb5daf1bba935b91f088e1393f04cbd226693e252fb7593dc25071bf0b3ea3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.s179.3@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@person[taxpayer]",
+     "fixture:x2pay.medicaid.business@person[taxpayer]",
+     "fixture:stage14.refuse.at_risk@person[taxpayer]",
+     "partial:stage14.asset.refuse_class-person[taxpayer].se_screen@person[taxpayer]",
+     "partial:stage14.asset.refuse_s179_half-person[taxpayer].se_screen@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.dc_earned_b",
+   "project_expr_sha256": "d5c7a2f23ec223c03c53b0a721e42f68d5066f190e62304c0cc5128dc173c48b",
+   "second_expr_sha256": "68dd12c0de11fbdbde84fad1d58a74f8a61458d53dbbbe013aaf1e6af146a4d4",
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 3,232/5,728 agree; 2,376 candidate-unknown, 106 candidate-refuses, 8 project-refuses, 6 value, all 6 on returns the project refuses (completed: 427 candidate-unknown, no value). No value differs on any return the project completes; the reply sums or reads the Form 2441 earned-income inputs without the parent question that opens them (the pay and Medicaid gates), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i2441 p. 5, Line 18.",
+   "context": "eb5fad7c71d9362bab8ea3a6f380da7bc06b272e3d7cdf04fd51d8b40add1ee1",
+   "date": "2026-11-15",
+   "run": "9318009e5d9c1c4a47bafa577239fae2379da2ce3389dcf479db1d7e72e0179f",
+   "subject_key": "34bb5daf1bba935b91f088e1393f04cbd226693e252fb7593dc25071bf0b3ea3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.s179.3@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:x2pay.medicaid.business@person[taxpayer]",
+     "fixture:stage14.refuse.at_risk@person[taxpayer]",
+     "generated:20261026.36@person[taxpayer]",
+     "generated:20261026.53@person[taxpayer]",
+     "generated:20261026.122@person[taxpayer]",
+     "generated:20261026.131@person[taxpayer]",
+     "generated:20261026.285@person[taxpayer]",
+     "generated:20261026.416@person[taxpayer]",
+     "partial:stage14.asset.refuse_class-person[taxpayer].se_screen@person[taxpayer]",
+     "partial:stage14.asset.refuse_s179_half-person[taxpayer].se_screen@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "person.dc_has_box10",
@@ -2059,6 +2269,389 @@
    "subject_key": "f43e25645e5544c46aa997e3826d85dfdceb887828c597391c64897c7c89f015"
   },
   {
+   "printed": "person.eic_se",
+   "project_expr_sha256": "ca4e62421dfd5692c4b42726b3955cfd4ab86e68493c40a2feddad361d68d56d",
+   "second_expr_sha256": "39dd495cc9627f7873ed44cba527936982a605bc51105c45510460fd1e6116c1",
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 4,638/5,728 agree; 977 candidate-unknown, 106 candidate-refuses, 7 project-refuses (completed: 285 candidate-unknown). No value differs on any return the project completes; the reply sums or reads the Schedule SE and Schedule C inputs without the parent question that opens them (person.se_screen), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040gi EIC Worksheet B, Parts 1 and 2.",
+   "context": "eb5fad7c71d9362bab8ea3a6f380da7bc06b272e3d7cdf04fd51d8b40add1ee1",
+   "date": "2026-11-15",
+   "run": "9318009e5d9c1c4a47bafa577239fae2379da2ce3389dcf479db1d7e72e0179f",
+   "subject_key": "cd1d613b922978663216739de8cdb1c3da8071a2063d6750e2a6f66ec6bf0b04",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.s179.3@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:stage14.refuse.at_risk@person[taxpayer]",
+     "partial:stage14.asset.refuse_class-person[taxpayer].se_screen@person[taxpayer]",
+     "partial:stage14.asset.refuse_s179_half-person[taxpayer].se_screen@person[taxpayer]",
+     "partial:stage14.asset.refuse_reuse_recycling-person[taxpayer].se_screen@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.eic_se",
+   "project_expr_sha256": "ca4e62421dfd5692c4b42726b3955cfd4ab86e68493c40a2feddad361d68d56d",
+   "second_expr_sha256": "51af591f2af9f51f99f3c373c4417628c4d47c1da1d495aa7d72ee00beacf60b",
+   "ruling": "Ruling: representation; executable triage 2,796/5,490 agree; 2,581 candidate-unknown, 106 candidate-refuses, 7 project-refuses (completed: 358 candidate-unknown). No value differs on any return; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen and the pay gates), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's EIC Worksheet B rows are read the same way once asked; i1040gi EIC Worksheet B, Parts 1 and 2.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "cd1d613b922978663216739de8cdb1c3da8071a2063d6750e2a6f66ec6bf0b04",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.s179.3@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@person[taxpayer]",
+     "fixture:stage14.refuse.at_risk@person[taxpayer]",
+     "partial:stage14.asset.refuse_class-person[taxpayer].se_screen@person[taxpayer]",
+     "partial:stage14.asset.refuse_s179_half-person[taxpayer].se_screen@person[taxpayer]",
+     "partial:stage14.asset.refuse_reuse_recycling-person[taxpayer].se_screen@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.f4137_col_c",
+   "project_expr_sha256": "446e1269aefdf82f15ee116acd87103abe8db65e80c5431dd591322981a34196",
+   "second_expr_sha256": "8f62ecb9f3baa4f63e33fd17b0ef9a20edb861e30d815a77d668a91254ab9d16",
+   "ruling": "Ruling: representation; executable triage 2,765/5,490 agree; 2,720 candidate-unknown, 5 project-unknown (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 employer rows without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 line 2, column (c).",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "71678fd12efadd9ec57d1007f52ab35b749910620dcca5e6f00b9c645b088188",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.f4137_col_d",
+   "project_expr_sha256": "b9bd2987b74f395548c5a867d0444faaf9fd5d90a19c6544dd23cd5dd00c47e7",
+   "second_expr_sha256": "6de84937f8fbc0cabcb78b52275900995f88dc503a0e0bdd4b08e8d90b007c8b",
+   "ruling": "Ruling: representation; executable triage 2,765/5,490 agree; 2,720 candidate-unknown, 5 project-unknown (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 employer rows without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 line 3, column (d).",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "eda7ad6190e22e7e9f1d49c30796db99ba36861568a3cdc794edaede91855aad",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.f4137_filed",
+   "project_expr_sha256": "85fb144bc4f78ebf6d1abdae328b26498f840c78f002f801f517b7a8f92453b5",
+   "second_expr_sha256": "ae76b3a867bc5acbe1e3c756df8cdc81b2f1a50ac038b1479b3ff761adec83b8",
+   "ruling": "Ruling: representation; executable triage 2,764/5,490 agree; 2,720 candidate-unknown, 5 project-unknown, 1 value (completed: 321 candidate-unknown). The one value witness, x2pay.f4137.line5_over (project true, reply false), is a refused return whose line 5 exceeds line 4 (person.f4137 inconsistent entry, refused by f4137.line5_over). Otherwise both agree; the reply's test is line 6 above zero, the label's line 2 above zero, and its readers (the line 6/10/13 gates, the tipjob column (c) refusal) only differ when every tip is under-$20-month, which the triage did not reach. f4137 line 2.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "03b3173a3a09ad859afa39445aa6f415b195bcdeaaada8feadc0511e2e1a7a23",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.f4137_line10",
+   "project_expr_sha256": "2fceea6fdf23f90d6054ba77347d9508df136b99f24ea53c7ab93c245f334fb9",
+   "second_expr_sha256": "e8bf4c6c6378509438fcb28d9008b962c3b0d8f1ea35c970db509bbd341cfe6f",
+   "ruling": "Ruling: representation; executable triage 2,714/5,490 agree; 2,757 candidate-unknown, 14 candidate-refuses, 4 project-unknown, 1 project-refuses (completed: 355 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows and W-2 boxes 3 and 7 without the parent question that opens them (scope.tips_unreported_if_pay; the reply also refuses government-employee tips, as the project does at person.tips_gov_if_rows), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 lines 7 to 10.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "e6196fedaf8c811f99a3dfb78d1290768f3cff0ecc9e942aa974aa402752b504",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:stage14.refuse.se_railroad@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]",
+     "generated:20261026.104@person[taxpayer]",
+     "generated:20261026.118@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.f4137_line6",
+   "project_expr_sha256": "555d226aa48094bb170e4c6b23ab8f53b4266b12638c8eb7000459f147399785",
+   "second_expr_sha256": "2299c9d2f29e790ce567d054568eb5aba968013f7670293a7f945ddae92e1350",
+   "ruling": "Ruling: representation; executable triage 2,764/5,490 agree; 2,720 candidate-unknown, 5 project-unknown, 1 project-refuses (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 line 6.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "3f701353bdec1fdcc6604196dc1d071a11af3f03e4add62fbea09a4611b17dc0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.f4137_tax",
+   "project_expr_sha256": "682aff3bf1eacc23fe712c5ed8d8b18fc9dab3e56b85f17ae2856cb63deba222",
+   "second_expr_sha256": "ce4569f47c940cadb77989835649c5c712a3030bbf68cfc43cb80edb9872d6a5",
+   "ruling": "Ruling: representation; executable triage 2,714/5,490 agree; 2,757 candidate-unknown, 14 candidate-refuses, 4 project-unknown, 1 project-refuses (completed: 355 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 line 13.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "74b5cf77c80fc09f502d7bed0893dcab0ccfdf1cd6458ad78e9b4cd3eb5aaa7d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:stage14.refuse.se_railroad@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]",
+     "generated:20261026.104@person[taxpayer]",
+     "generated:20261026.118@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.f4137_under20_if_rows",
+   "project_expr_sha256": "f42e64eeb6771b395558fc319203721b52066adb695fba417fa37d68e96cf97c",
+   "second_expr_sha256": "2ea2c4de0378f4b0e416d3e4bb9f4625e972c15d432726bcd8e0c46a94948e07",
+   "ruling": "Ruling: representation; executable triage 2,765/5,490 agree; 2,720 candidate-unknown, 5 project-unknown (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows and person.f4137_under20 without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 line 5.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "1dda06dfd36fdef50ad0f1a0c8a840e9825f7cb64ce8f09d89270c9d118b440d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.f8919_tax",
+   "project_expr_sha256": "8b02b6e4f2338bf47160e939b66aeb208af2ccbd89fe7542c97961cf394d6334",
+   "second_expr_sha256": "40adcb615ce026018260ae5facd31152bbf38609f4e82c56efe273b5cdcd0c22",
+   "ruling": "Ruling: representation; executable triage 2,715/5,490 agree; 2,662 candidate-unknown, 109 candidate-refuses, 4 project-unknown (completed: 355 candidate-unknown). No value differs on any return; the reply sums or reads the Form 8919 firm rows without the parent question that opens them (scope.contractor_pay_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 8919 rows are read the same way once asked; f8919 line 13.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "71f4db845b8bc1ff71333fcdd65fdaa41c4d549bf8255eb6c1234dffc0838687",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.dependent.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.f8919_wages",
+   "project_expr_sha256": "aac7069492c883747b79d69befbb4427ed46ff0c96adc7e260f96bd63e9f78c4",
+   "second_expr_sha256": "e55c3ed1388ef9c08c8ea5a0e2068a00faacc72267fc678de504618a7e6ba14b",
+   "ruling": "Ruling: representation; executable triage 2,765/5,490 agree; 2,720 candidate-unknown, 5 project-unknown (completed: 321 candidate-unknown). No value differs on any return; the reply sums or reads the Form 8919 firm rows without the parent question that opens them (scope.contractor_pay_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 8919 rows are read the same way once asked; f8919 line 6, 'Total wages. Combine lines 1 through 5 in column (f)'.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "f6c93b9f798288b6d5f7256dd7152a7c84440768aea8d5bf2b4dab94c4d4ed55",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "person.hsa_agreed",
    "project_expr_sha256": "26a15ac1ae41ea340544038ab31ca6cc70ca212e860fc95ff6fb549b3d532b5d",
    "second_expr_sha256": "a24e1b22096f2daece555ffa1e687cc89bc8e2e93967491f8ed9e96e99f500b4",
@@ -2484,6 +3077,45 @@
    "second_expr_sha256": "94f3b1cc9c2438651b39e9383dbb1f1773f4083746eed742cad6e9fcead07524",
    "ruling": "Ruling: representation; project retained. Both give the basis input to a person with nondeductible contributions and zero otherwise; the difference is that of person.ira_nondeductible. Form 8606 (2025), line 2, \"Enter your total basis in traditional IRAs\". The wording of the basis question is a separate proposed finding (render log for f8606, line 2).",
    "subject_key": "cc64237bb943f52e9e9bfebfe6e33ccac85afad2f8b214941b1ee1dca41fe4ce"
+  },
+  {
+   "printed": "person.ira_8606_line2",
+   "project_expr_sha256": "a478212b2445fcfcbdd8c2a184f4e4150da554919e1d98d493f8aa8475d12e86",
+   "second_expr_sha256": "f834ec24a8906be7c0f9e49de5e2961201911fdfa0cc13608067fc03594fb36c",
+   "ruling": "Ruling: representation; executable triage 4,203/5,490 agree; 1,229 candidate-unknown, 37 project-unknown, 21 project-refuses (completed: 238 candidate-unknown). No value differs on any return; the reply sums or reads the Form 8606 inputs without the parent question that opens them (person.ira_files_8606), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 8606 rows are read the same way once asked; f8606 line 2.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "39e06648f2aeb2fed92c8a46ee36973034e1c4c5758120b1d450d4f796c57c5b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.f1040_line16@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.f2441_line24@person[spouse]",
+     "fixture:stage16.cleanup.refuse.f2441_line24@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@person[taxpayer]",
+     "fixture:stage16.refuse.ira.both_kinds@person[spouse]",
+     "fixture:stage16.refuse.ira.both_kinds@person[taxpayer]",
+     "fixture:stage16.refuse.ira.kbh_short@person[spouse]",
+     "fixture:stage16.refuse.ira.kbh_short@person[taxpayer]",
+     "fixture:stage16.refuse.person.ira_over_limit@person[taxpayer]",
+     "fixture:stage16.refuse.ira.over_comp@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "person.ira_8606_line2",
@@ -3040,6 +3672,49 @@
    "subject_key": "8d70f90b6b3c4b7d792f8782933468f2119dfe20d8ed5ab7edaecbdf117c0d6f"
   },
   {
+   "printed": "person.ira_deduction",
+   "project_expr_sha256": "be42742983ecf7e5d312cdf7c0d9ae4bdadeb2560d42219ad24fbdd08c95b067",
+   "second_expr_sha256": "ba42e8cd0b67b8833561a2cf51abbd63ccc5348b57b33b055c9e76b7f6439447",
+   "ruling": "Ruling: model error; executable triage 2,311/5,490 agree; 2,562 candidate-unknown, 595 candidate-refuses, 19 project-refuses, 3 value (completed: 1 candidate-refuses, 393 candidate-unknown, 3 value). The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a birth in the cut-off year, not from person.birth_year: stage16.ira.i7 (born 1970, $8,000 contributed) project $8,000, reply $7,000; audit.ira.covered_age50_single_phaseout and _joint_phaseout likewise. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same pattern as the Goal-1 round ruling.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "86ddecb661b3bc04d422e98748ee1ea05a9d2f24cb6918d763eb3ba2a2cb22bf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@person[taxpayer]",
+     "fixture:stage14.asset.refuse_ads_past_gds@person[taxpayer]",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@person[taxpayer]",
+     "fixture:stage14.asset.refuse_class@person[taxpayer]",
+     "fixture:stage14.asset.refuse_listed_low@person[taxpayer]",
+     "fixture:stage14.asset.refuse_s179_over@person[taxpayer]",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@person[taxpayer]",
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:stage16.ira.i7@person[taxpayer]",
+     "fixture:stage16.refuse.ira.both_kinds@person[spouse]",
+     "fixture:stage16.refuse.ira.both_kinds@person[taxpayer]",
+     "fixture:stage16.refuse.ira.kbh_short@person[spouse]",
+     "fixture:stage16.refuse.ira.kbh_short@person[taxpayer]",
+     "fixture:stage16.refuse.person.ira_over_limit@person[taxpayer]",
+     "fixture:stage16.refuse.ira.over_comp@person[taxpayer]",
+     "fixture:audit.ira.covered_age50_single_phaseout@person[taxpayer]",
+     "fixture:audit.ira.covered_age50_joint_phaseout@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "person.ira_dist_gate",
    "project_expr_sha256": "4d387d065b8b6ce75afbcda62edbd1bafab50d41f7b793ffb303c150e4fdf26c",
    "second_expr_sha256": "23bcb6022f86c4485e599717c603fc8d6551963d3674326ed19b4640a3744f7c",
@@ -3296,6 +3971,52 @@
      "fixture:stage16.refuse.ira.kbh_short@person[taxpayer]",
      "fixture:stage16.refuse.person.ira_over_limit@person[taxpayer]",
      "fixture:stage16.refuse.ira.over_comp@person[taxpayer]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].ira_owner@person[taxpayer]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].ira_owner@person[taxpayer]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].ira_owner@person[taxpayer]",
+     "partial:stage14.asset.qip-person[taxpayer].ira_owner@person[taxpayer]",
+     "partial:stage14.asset.done-person[taxpayer].ira_owner@person[taxpayer]",
+     "partial:stage14.asset.refuse_class-person[taxpayer].ira_owner@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.ira_dist_gate",
+   "project_expr_sha256": "c6f429d53a6fe8343c08e36d596e504a2a8fc4c0ea8047192d3facf21df6ed1a",
+   "second_expr_sha256": "018e8a87663e2cca0151e019ebf322f83f2bbb6be2196b6884c1018f149f642d",
+   "ruling": "Ruling: representation; executable triage 4,242/5,490 agree; 1,182 candidate-unknown, 25 project-unknown, 21 project-refuses, 20 candidate-refuses (completed: 223 candidate-unknown). No value differs on any return; the reply sums or reads the Form 8606 inputs without the parent question that opens them (person.ira_owner), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 8606 rows are read the same way once asked; f8606 Part I, line 3.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "3fa14dd7e3b015aee2156e3c3f2db284fa22ca3ca842dbc2e19bc6e1eaa07ca4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.s179.3@person[taxpayer]",
+     "fixture:classm.w2.1@person[spouse]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:stage16.cleanup.f8959_line16_se_refused@person[taxpayer]",
+     "fixture:stage16.refuse.ira.both_kinds@person[spouse]",
+     "fixture:stage16.refuse.ira.both_kinds@person[taxpayer]",
+     "fixture:stage16.refuse.ira.kbh_short@person[spouse]",
+     "fixture:stage16.refuse.ira.kbh_short@person[taxpayer]",
+     "fixture:stage16.refuse.person.ira_over_limit@person[taxpayer]",
+     "fixture:stage16.refuse.ira.over_comp@person[taxpayer]",
+     "fixture:mutation.t2.qss_s1a_tips_ot_car@person[taxpayer]",
      "partial:stage14.asset.hy_5yr-person[taxpayer].ira_owner@person[taxpayer]",
      "partial:stage14.asset.bonus_100-person[taxpayer].ira_owner@person[taxpayer]",
      "partial:stage14.asset.prior_7yr-person[taxpayer].ira_owner@person[taxpayer]",
@@ -3740,6 +4461,47 @@
   },
   {
    "printed": "person.ira_files_8606",
+   "project_expr_sha256": "d55afd6977b6d8336b91d3131233276571054f4835b73a98e2a3ab526eb0db24",
+   "second_expr_sha256": "27ca9a96782fcdcfed0b3d507de8ded974a54b685d352ebb0dbc8cc99a1982df",
+   "ruling": "Ruling: model error; executable triage 2,313/5,490 agree; 2,539 candidate-unknown, 620 candidate-refuses, 17 project-refuses, 1 value (completed: 1 candidate-refuses, 393 candidate-unknown, 1 value). The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a birth in the cut-off year, not from person.birth_year: stage16.ira.i7 (born 1970, $8,000 contributed) project false, reply true (files Form 8606 for the $1,000 it wrongly treats as nondeductible); audit.ira.covered_age50_single_phaseout and _joint_phaseout likewise. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same pattern as the Goal-1 round ruling.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "d7067478c931c397b614f7a64da98d3399e62928b0ee74ef045b272943e7a120",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@person[taxpayer]",
+     "fixture:stage14.asset.refuse_ads_past_gds@person[taxpayer]",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@person[taxpayer]",
+     "fixture:stage14.asset.refuse_class@person[taxpayer]",
+     "fixture:stage14.asset.refuse_listed_low@person[taxpayer]",
+     "fixture:stage14.asset.refuse_s179_over@person[taxpayer]",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@person[taxpayer]",
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:stage16.ira.i7@person[taxpayer]",
+     "fixture:stage16.refuse.ira.both_kinds@person[spouse]",
+     "fixture:stage16.refuse.ira.both_kinds@person[taxpayer]",
+     "fixture:stage16.refuse.ira.kbh_short@person[spouse]",
+     "fixture:stage16.refuse.ira.kbh_short@person[taxpayer]",
+     "fixture:stage16.refuse.person.ira_over_limit@person[taxpayer]",
+     "fixture:stage16.refuse.ira.over_comp@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.ira_files_8606",
    "project_expr_sha256": "d8c64a842477769293b1077ee7d26133f3ed333bf3fb0ddffdf7c35d45a034cc",
    "second_expr_sha256": "158ed1917d9117afebe9cadc177016306262b94a027c54bfeef3a69cec7bfce4",
    "ruling": "Ruling: model error. Triage .transcription/triage/2025/person.json (log sha matches): 2,463/5,015 agree; 1,965 candidate-unknown, 569 candidate-refuses, 15 project-refuses, 3 project-unknown; completed: 143 candidate-unknown, 4 candidate-refuses. The reply refuses on its own ira_excess screen (see (screen) (person.ira_excess)). On completed returns stage16.ira.i5, stage16.ira.i7 and audit.ira.covered_age50_single_phaseout and _joint_phaseout (age 55, $8,000 contributed), it refuses where the project computes (e.g. ira_deduction $200.00, ira_nondeductible $7,800.00 on stage16.ira.i5, as the fixture predicted by hand). The 143 completed candidate-unknowns are person.age50_at_year_end read in place of the birth-year derivation. Model error, as ira_excess.",
@@ -3836,6 +4598,34 @@
   },
   {
    "printed": "person.ira_line2",
+   "project_expr_sha256": "90f11de1ac0652ed4fc4adcb1dded67445a4dbcf9ea36619f3a42eb21c80026b",
+   "second_expr_sha256": "7470de428e8fdc6199c634a9e205d1da8922eba638bc78fe69c8ed6af519cfe0",
+   "ruling": "Ruling: representation; executable triage 5,472/5,490 agree; 16 value, 2 candidate-unknown (completed: 1 value). Value witnesses (classm.g28.2, mutation.t2.f8880.simple_line2: project $146,000, reply $246,000) have no traditional contribution (person.ira_trad 0), where line 2 is never used; the reply decides coverage from worksheet line 1a, which is No without a contribution. i1040gi p. 97, line 2.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "ee247f69840ebdffb43cc667f39de9747a4e198ce253fa383feccf700737963d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.g28.2.deepseek@person[spouse]",
+     "fixture:classm.f8959.2@person[spouse]",
+     "fixture:classm.g28.2@person[spouse]",
+     "fixture:classm.se.2@person[spouse]",
+     "fixture:mutation.t2.f8880.simple_line2@person[spouse]",
+     "generated:20261026.73@person[taxpayer]",
+     "generated:20261026.103@person[taxpayer]",
+     "generated:20261026.121@person[spouse]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.ira_line2",
    "project_expr_sha256": "988b0497bc1acd3040e387875855a41792ad4f36cf857d5fff6fd6d8468cc7dd",
    "second_expr_sha256": "20784f4f74c9291b8a2dde26cd70364d5e155acd223dce152ed7411ee88f9e69",
    "ruling": "Ruling: model error; i1040gi p. 97, line 1: \"If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6\"; line 2: \"Single, head of household, or married filing separately and you lived apart from your spouse for all of 2025, enter $89,000\" ... \"Married filing jointly, enter $146,000 in both columns. But if you checked “No” on either line 1a or 1b, enter $246,000 for the person who wasn't covered by a plan.\" The reply changed: it now chooses on its person.ira_cov first (covered: the filing-status amount; not covered: $246,000 for any status) and refuses a separate return living apart (person.h_ira_apart). Value records (checked on each witness): 1,471 are persons covered on neither side on a return where no one is covered (single, head of household, qualifying surviving spouse, or a separate return the project refuses at scope.ready; project $89,000.00, $146,000.00 or $10,000.00 against $246,000.00; 501 on completed returns, for example classm.f4952.1.deepseek, classm.s3.2.deepseek, classm.u1250.2.deepseek), where line 1 skips lines 2 to 6 and ira.anyone_covered is false in both graphs, so no printed line reads the value; the other 164 are joint-return persons the candidate covers through its person.plan reading (amb.2025.ira_covered, ruled at person.ira_cov; $246,000.00 against $146,000.00; 124 completed, classm.f8889.1.deepseek spouse, classm.clcw26.2.deepseek, classm.f8880.2.deepseek). Every value record is on a return with no traditional IRA contribution (ira.any_trad false, or unknown on partials withholding sav_trad, plus stage16.refuse.ira.se_capital, refused), and lines 7a, 7b, 12a, 12b and Schedule 1 line 20 are equal in both graphs wherever both evaluate. But choosing on coverage first makes the line need ira_work_plan (or plan) for every person: all 113 candidate-unknown records on completed returns are persons who answered sav_trad no on returns with no traditional contribution (ira.any_trad false; classm.f8995.3, classm.s179.2, stage14.sc.basic), where the project's line needs no coverage answer and the interview asks none: an answer the source does not need. The 5 candidate refusals are h_ira_apart on separate returns the project refuses (stage10.ss.mfs_apart, generated 165, 306, 406 and 441); project-unknown records withhold ira_work_plan where the candidate's plan answer settles it. Hardening round re-check: the only project change since fix round 4 is BUG-0263 (person.sep_s3 now links amb.2025.sep_loss_floor; no value change), which this line does not read. Triage executable-triage-v2 (triage/person.json; 1,394 fixtures, 500 generated returns seed 20261026, 2,014 partial records; every witness listed by a scratch rerun of tools/transcription/triage.mjs with the witness cap lifted, counts identical to the record): 1,771 of 4,728 comparisons agree; 1,635 value, 5 candidate-refuses, 6 project-unknown, 1,311 candidate-unknown; on returns the full interview completes: 625 value, 2 project-unknown, 113 candidate-unknown.",
@@ -3906,6 +4696,45 @@
    "second_expr_sha256": "f5a71992e979b85ae98a13971b96aea4b1b01d79224b7a731eca575ea3f0befd",
    "ruling": "Ruling: representation; project retained. The amounts are the same ($246,000 for the column of a person not covered on a joint return, otherwise the filing-status amount); the coverage test differs only as on person.ira_cov (the project reads person.plan, the self-employed person's own SEP or SIMPLE plan, only for a person with a Schedule C (person.ira_se_plan), where it is asked (amb.2025.ira_covered, owner decision 9(b)); the second reads it for everyone). i1040gi p. 97, line 2, \"Married filing jointly, enter $146,000 in both columns. But if you checked “No” on either line 1a or 1b, enter $246,000 for the person who wasn’t covered by a plan\". The $89,000 for a separate filer who lived apart, in the second's note, is not reached: A separate return is refused (scope.ready, s3.mfs).",
    "subject_key": "01d374358d0ecc00c5de7e63d01086d3a40b35da5cb7e576b39d93dcaaca152f"
+  },
+  {
+   "printed": "person.ira_line6",
+   "project_expr_sha256": "5de7a894da23a0e6bff6fcc3631d09fe6e0b069426ffb95097d15babecbc6d0d",
+   "second_expr_sha256": "a18de297caf5f243652501079f544bc35333eca3e6affd6489b1c226834a4240",
+   "ruling": "Ruling: representation; executable triage 3,849/5,490 agree; 1,595 candidate-unknown, 36 project-refuses, 10 candidate-refuses (completed: 1 candidate-refuses, 334 candidate-unknown). No value differs on any return; the reply sums or reads the IRA worksheet inputs without the parent question that opens them (person.ira_owner and the coverage questions), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too, but for generated return 423 (seed 20261026), completed by the project, where the reply refuses on person.plan_screen, which the interview asks only of the self-employed. x2-paynow2's IRA worksheet rows are read the same way once asked; i1040gi p. 97, line 6.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "bd798d7553d6efaa4540fde9c74ed95cd45231d686296bcdbe55aaabfa0967de",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.6.deepseek@person[taxpayer]",
+     "fixture:classm.f4952.1.deepseek@person[taxpayer]",
+     "fixture:classm.clcw.4.deepseek@person[taxpayer]",
+     "fixture:classm.clcw.4@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:mutation.t2.no_carloan_part4@person[taxpayer]",
+     "fixture:mutation.t2.f8880.sep_line2@person[taxpayer]",
+     "fixture:mutation.t2.s1a.line21_magi_first@person[taxpayer]",
+     "fixture:x2pay.medicaid.business@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.rrta_medicare@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "generated:20261026.104@person[taxpayer]",
+     "generated:20261026.118@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "person.ira_line6",
@@ -3997,6 +4826,52 @@
    "second_expr_sha256": "b29c2e912571e9c86552b79d134f069156efea6f669b0da80a6bf362f63745d0",
    "ruling": "Ruling: representation; project retained. The cases, thresholds, rates and rounding are the same; the coverage test differs only as on person.ira_cov (the project reads person.plan, the self-employed person's own SEP or SIMPLE plan, only for a person with a Schedule C (person.ira_se_plan), where it is asked (amb.2025.ira_covered, owner decision 9(b)); the second reads it for everyone), and the second's 70% test (not joint, or this person not covered on a joint return) and the project's (not joint type, or this person not covered) part only for a qualifying surviving spouse who is not covered, whose column is figured only when someone is covered, which on a one-person return is that person. Zero on line 6's No, as the second's note says, is the project's person.ira_below. i1040gi p. 97, line 6, \"None of your IRA contributions are deductible\"; p. 98, line 7.",
    "subject_key": "93d65f818a34c4de3fb14bc96ea4a971899b1fafab42df29b0d79113436b65bb"
+  },
+  {
+   "printed": "person.ira_line7",
+   "project_expr_sha256": "b6dd99527cff4b4e3f47cd40edfea60a49a73557a154f0a1451dec10149da6e2",
+   "second_expr_sha256": "eb61159aa1eadd4159ab1dbf3c953041f0940fa1dc38b4ebd9ecfaa1c60778bf",
+   "ruling": "Ruling: representation; executable triage 4,339/5,490 agree; 922 candidate-unknown, 122 value, 66 project-refuses, 41 project-unknown (completed: 68 candidate-unknown, 8 project-unknown, 64 value). Value witnesses (stage9.eic.no_child.over65, born_jan1_1961, mfs.m5/m6, stage11.hsa.*) have no traditional contribution, so line 12 is zero either way; the age-50 limit difference ($8,000 / $7,000) is ruled where it reaches a deduction (person.ira_deduction). i1040gi pp. 95, 97.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "a2039dac1237a3fa59e3242881c17d0a8780fea80f86a7998382e9c8fac4f932",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@person[spouse]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.g28.1.deepseek@person[taxpayer]",
+     "fixture:classm.g28.2.deepseek@person[spouse]",
+     "fixture:classm.g28.2.deepseek@person[taxpayer]",
+     "fixture:classm.sd.1.deepseek@person[taxpayer]",
+     "fixture:classm.sd.2.deepseek@person[taxpayer]",
+     "fixture:classm.sd.3.deepseek@person[taxpayer]",
+     "fixture:classm.clcw.4.deepseek@person[taxpayer]",
+     "fixture:classm.dependent.3.deepseek@person[taxpayer]",
+     "fixture:classm.f8959.2@person[spouse]",
+     "fixture:classm.f8959.2@person[taxpayer]",
+     "fixture:stage9.eic.no_child.over65@person[taxpayer]",
+     "fixture:stage9.eic.no_child.born_jan1_1961@person[taxpayer]",
+     "fixture:mfs.m5.ssb_together@person[taxpayer]",
+     "fixture:mfs.m6.ssb_apart@person[taxpayer]",
+     "fixture:stage11.hsa.family_55@person[taxpayer]",
+     "fixture:stage11.hsa.family_all_year_answer@person[taxpayer]",
+     "fixture:redesign.hsa.testing_kept_age_unanswered@person[taxpayer]",
+     "fixture:stage21.f1.lower_bound_still_decides@person[spouse]",
+     "fixture:mutation.m1.person.born_1976_age50_both_answers@person[spouse]",
+     "fixture:mutation.m1.person.born_1976_age50_both_answers@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "person.ira_line7",
@@ -4597,6 +5472,49 @@
    "subject_key": "66f52be0b61d3c7864f7d527fec02e57b46e4b55cfcbd942701ab76399d4ea47"
   },
   {
+   "printed": "person.ira_nondeductible",
+   "project_expr_sha256": "d4520b88077de831e051b61033ce94e1e9bea777a291c2e8d4ae2c71fcdb2af3",
+   "second_expr_sha256": "29d9e780b517bcf2274d878632cbc3de9ddb16373623e40a996b4d8a8f042650",
+   "ruling": "Ruling: model error; executable triage 2,311/5,490 agree; 2,539 candidate-unknown, 620 candidate-refuses, 17 project-refuses, 3 value (completed: 1 candidate-refuses, 393 candidate-unknown, 3 value). The reply takes the $8,000 limit from person.age50_at_year_end, which is asked only for a birth in the cut-off year, not from person.birth_year: stage16.ira.i7 (born 1970, $8,000 contributed) project $0, reply $1,000 nondeductible; audit.ira.covered_age50_single_phaseout and _joint_phaseout likewise. i1040gi p. 97, IRA Deduction Worksheet line 7, '$8,000 if age 50 or older at the end of 2025'. Same pattern as the Goal-1 round ruling.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "52b83d2e4135ad92093e5fd63c412a0d25a52bc967c1c4227a36de0cd8099ef6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@person[taxpayer]",
+     "fixture:stage14.asset.refuse_ads_past_gds@person[taxpayer]",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@person[taxpayer]",
+     "fixture:stage14.asset.refuse_class@person[taxpayer]",
+     "fixture:stage14.asset.refuse_listed_low@person[taxpayer]",
+     "fixture:stage14.asset.refuse_s179_over@person[taxpayer]",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@person[taxpayer]",
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:stage16.ira.i7@person[taxpayer]",
+     "fixture:stage16.refuse.ira.both_kinds@person[spouse]",
+     "fixture:stage16.refuse.ira.both_kinds@person[taxpayer]",
+     "fixture:stage16.refuse.ira.kbh_short@person[spouse]",
+     "fixture:stage16.refuse.ira.kbh_short@person[taxpayer]",
+     "fixture:stage16.refuse.person.ira_over_limit@person[taxpayer]",
+     "fixture:stage16.refuse.ira.over_comp@person[taxpayer]",
+     "fixture:audit.ira.covered_age50_single_phaseout@person[taxpayer]",
+     "fixture:audit.ira.covered_age50_joint_phaseout@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "person.ira_rollovers",
    "project_expr_sha256": "d6c068f2c6d70542b5b6218b3506101a66fd18ba702595aea7b589b4b2b4b4a4",
    "second_expr_sha256": "3ed5f7750bfd64ddb8c4d51cd8798aacc81cf6594312751666bcc6439206693e",
@@ -4867,6 +5785,84 @@
      "fixture:mutation.t2.f8880.inherited_ira@person[taxpayer]",
      "fixture:mutation.t3.roth_excess_screen@person[taxpayer]",
      "partial:classm.sd.2.deepseek-person[taxpayer].simple_kind@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.ira_se",
+   "project_expr_sha256": "65f9006e05dea7bc536794080681f71cc6c5a88357a32b9c7b53cb2b0e5047a2",
+   "second_expr_sha256": "53b5d2b1f195035e03aa0824c0e5a8e868f290868438a6f25385faab38c85881",
+   "ruling": "Ruling: representation; executable triage 2,796/5,490 agree; 2,531 candidate-unknown, 123 candidate-refuses, 40 project-refuses (completed: 1 candidate-refuses, 365 candidate-unknown). No value differs on any return; the reply sums or reads the Schedule C inputs without the parent question that opens them (person.se_screen), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too, but for generated return 423 (seed 20261026), completed by the project, where the reply refuses on person.plan_screen, which the interview asks only of the self-employed. x2-paynow2's IRA worksheet rows are read the same way once asked; i1040gi p. 98, line 9; p560 p. 16.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "3bc2fd47665261a1ef8a2f2b91978a713cf3736fd27c4e0676d353b5abe72cbb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.clcw.4.deepseek@person[taxpayer]",
+     "fixture:classm.dependent.3.deepseek@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.f8959.2@person[spouse]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:classm.clcw.4@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:mutation.t2.no_carloan_part4@person[taxpayer]",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@person[taxpayer]",
+     "fixture:mutation.t2.f8880.sep_line2@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.ira_se",
+   "project_expr_sha256": "65f9006e05dea7bc536794080681f71cc6c5a88357a32b9c7b53cb2b0e5047a2",
+   "second_expr_sha256": "7a9e1ee946cf18289e0893d8f60a891b1b7335105b1e7fd7a7bfde8ec3e1d628",
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 4,471/5,728 agree; 1,093 candidate-unknown, 122 candidate-refuses, 42 project-refuses (completed: 320 candidate-unknown, 1 candidate-refuses: a generated return the reply refuses on person.plan_screen, which the interview asks only of the self-employed). No value differs on any return the project completes; the reply sums or reads the Schedule C inputs without the parent question that opens them (person.se_screen), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040gi p. 98, line 9; p560 p. 16.",
+   "context": "eb5fad7c71d9362bab8ea3a6f380da7bc06b272e3d7cdf04fd51d8b40add1ee1",
+   "date": "2026-11-15",
+   "run": "9318009e5d9c1c4a47bafa577239fae2379da2ce3389dcf479db1d7e72e0179f",
+   "subject_key": "3bc2fd47665261a1ef8a2f2b91978a713cf3736fd27c4e0676d353b5abe72cbb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.clcw.4.deepseek@person[taxpayer]",
+     "fixture:classm.dependent.3.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.s179.3@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:classm.clcw.4@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:mutation.t2.no_carloan_part4@person[taxpayer]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -5163,12 +6159,210 @@
    "subject_key": "f5dcf93355de959f401c83b47592cd045ad184d1679f092f5c276c80def00f0c"
   },
   {
+   "printed": "person.line1c",
+   "project_expr_sha256": "dc7e106fa272b60cdebebf367d5fb3e5dec31acd6fd483259c5d865c7d96b34b",
+   "second_expr_sha256": "07bf65436f00898209660ed3fd2f3a6eb4b2f37c3c84baa085ff524d0cd0ccc4",
+   "ruling": "Ruling: representation; executable triage 2,718/5,490 agree; 2,767 candidate-unknown, 5 project-unknown (completed: 364 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows and person.tips_noncash without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; i1040gi Line 1c.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "d2f68076c128655cadd9e7d2bdd8d05e60e728f77a31c7b0802433ce6da675ca",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.line1d",
+   "project_expr_sha256": "24d06d1c38cf0aa6418708c44522be3dbfc9f04158008128bcd652a69048a8e6",
+   "second_expr_sha256": "3aaa87c80251422a8edd973a21c1823f29ff3b6e710d2f7a0ccb5c7c2dbe06ee",
+   "ruling": "Ruling: representation; executable triage 3,189/5,490 agree; 2,292 candidate-unknown, 5 project-unknown, 3 value, 1 project-refuses (completed: 315 candidate-unknown). No value differs on any return; the reply sums or reads the Medicaid waiver answers without the parent question that opens them (the person.mw_* _if_ gates, e.g. person.mw_1099_if_not_box1), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Medicaid waiver rows are read the same way once asked; i1040gi Line 1d and Schedule 1 line 8s.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "e05af14e96d1961e2c570e7e7dcc2a80b671889212292ef68db870aefb6f5058",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:x2pay.medicaid.business@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]",
+     "generated:20261026.223@person[taxpayer]",
+     "generated:20261026.317@person[taxpayer]",
+     "generated:20261026.416@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.line1h",
+   "project_expr_sha256": "2078c25079b648434ead9214df4b26585be3f9528aad58f677c6692c3902618e",
+   "second_expr_sha256": "f56515e243e819923fe058fe9340fb3486a794d1c40a7806f1029786d7661538",
+   "ruling": "Ruling: representation; executable triage 3,234/5,490 agree; 2,249 candidate-unknown, 5 project-unknown, 2 value (completed: 301 candidate-unknown). No value differs on any return; the reply sums or reads the strike benefits and disability-pension items without the parent question that opens them (person.strike_if_pay, retirement.dis_wages), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's line 1h rows are read the same way once asked; i1040gi Line 1h.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "b7b3c29b78889c008f21b506cf18fb30fc99464b9a3b31ae84bcd553b3b7e144",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]",
+     "generated:20261026.444@person[taxpayer]",
+     "generated:20261026.458@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.line8s",
+   "project_expr_sha256": "df52648c818be8ef099696f37bee96e34e8392d19081da0becaa92d033f87074",
+   "second_expr_sha256": "79e9522cb6acddb94d2ec26f4b19036247337fdc67902697c3ef49ae7bea5f34",
+   "ruling": "Ruling: representation; executable triage 3,175/5,490 agree; 2,303 candidate-unknown, 6 value, 5 project-unknown, 1 project-refuses (completed: 322 candidate-unknown). No value differs on any return; the reply sums or reads the Medicaid waiver answers without the parent question that opens them (person.mw_box1_if_mw and the other person.mw_* gates), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Medicaid waiver rows are read the same way once asked; i1040s1 line 8s; Notice 2014-7.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "60ec9a2ede8dc1ca1f468f91c2a31deba87a4eea541c4081d17eac3de45e56df",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:x2pay.medicaid.business@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]",
+     "generated:20261026.223@person[taxpayer]",
+     "generated:20261026.275@person[taxpayer]",
+     "generated:20261026.284@person[taxpayer]",
+     "generated:20261026.317@person[taxpayer]",
+     "generated:20261026.416@person[taxpayer]",
+     "generated:20261026.444@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.mw_not_earned",
+   "project_expr_sha256": "65b5247b035e26108b9c215a970eb153cd97e2c9da21709fe0d53ab15b5482c3",
+   "second_expr_sha256": "dd85daf03846929b9e0e14ea21c8eb078fa791dc2c40fffdaefd4413308c998c",
+   "ruling": "Ruling: representation; executable triage 3,175/5,490 agree; 2,303 candidate-unknown, 6 value, 5 project-unknown, 1 project-refuses (completed: 322 candidate-unknown). No value differs on any return; the reply sums or reads the Medicaid waiver answers without the parent question that opens them (the person.mw_* gates), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Medicaid waiver rows are read the same way once asked; i1040gi Line 1d, the earned-income choice.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "020a7c2271f95c4c98aad4db485060f4faa44364f5eb5a9d45be4a03536ea2fd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:x2pay.medicaid.business@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]",
+     "generated:20261026.223@person[taxpayer]",
+     "generated:20261026.275@person[taxpayer]",
+     "generated:20261026.284@person[taxpayer]",
+     "generated:20261026.317@person[taxpayer]",
+     "generated:20261026.416@person[taxpayer]",
+     "generated:20261026.444@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "person.plan_amount_a",
    "project_expr_sha256": "363ad38cd333ac2d109c1f3d9d78815f23e7a1e70261c3de2d0ef2aa27dd65c1",
    "second_expr_sha256": "c217951d6246f5e2152e416caa61d210a16cc2ea3203dec80dab642ba7e2e466",
    "ruling": "Ruling: representation; i1040gi pp. 26-28, Lines 4a to 5b. The same answer is read through a ref where the project uses an input reference. No difference. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 5,033 of 5,033 agree; none; on returns the full interview completes: none. Project stands.",
    "context": "475380d22861e33690a18e5ed2f185e526e7d9083156fee8b22829073c5c48c4",
    "subject_key": "e263e1c4bbf6511dbd51d63fc7e47a150ce7de92c7a09699588ea5dede0d8061"
+  },
+  {
+   "printed": "person.plan_amount_a",
+   "project_expr_sha256": "927f043bc78fac404e67d5993292bdae59ef8b276e7f5854f312375b8dd6663f",
+   "second_expr_sha256": "c18a540ce8099dccae0df7667c1af79ca56fa87e7c44b46cfec0326b92dc23d5",
+   "ruling": "Ruling: representation; executable triage 5,490/5,490 agree (completed: none): the project's line and the reply agree on every input run (fixture, partial and generated returns). i1040gi Line 5a; the disability-pension items moved to line 1h (x2-paynow2) are left out by both.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "54b7b7b1ba05186d252a7b60d325e6e7fff879bfa15ce770018c264ac07c55a0",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "person.plan_rollovers",
@@ -5185,6 +6379,22 @@
    "ruling": "Ruling: representation; i1040gi pp. 26-28, Lines 4a to 5b. The same answer is read through a ref where the project uses an input reference. No difference. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 5,033 of 5,033 agree; none; on returns the full interview completes: none. Project stands.",
    "context": "475380d22861e33690a18e5ed2f185e526e7d9083156fee8b22829073c5c48c4",
    "subject_key": "94d4e012e6be835b848514667a68762b1a1457cdd6e8c37bd82797b9d803c65c"
+  },
+  {
+   "printed": "person.plan_taxable",
+   "project_expr_sha256": "bb2b0633ec2f84939726502ed8d4b564b477ac2b9cc922f303038e3a01ffc93b",
+   "second_expr_sha256": "89c1e690409446ba9308317318aa1f032deaa1d11925810aa6298f77bdbc2d17",
+   "ruling": "Ruling: representation; executable triage 5,490/5,490 agree (completed: none): the project's line and the reply agree on every input run (fixture, partial and generated returns). i1040gi Line 5b; disability-pension items excluded by both.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "7f571667aa6232207687335c78e217033478a38e3859f1504c41516cbd9c6d9a",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "person.positive_profits",
@@ -5373,9 +6583,53 @@
    "printed": "person.s16",
    "project_expr_sha256": "d0a59a8179404a8d15bd9e0779ac576eeda8913395940b3a99f214e65af42a10",
    "second_expr_sha256": "6cdb310cb1f890a151e84c248ea325458ee923934e8bbd0919a57c54c4fa77ff",
-   "ruling": "Ruling: model error; p560 p. 16, chapter 3, Salary reduction contributions: \"These contributions must be expressed as a percentage of the employee's compensation\", and the catch-up contribution \"can't exceed the lesser of ... The excess of the participant's compensation over the salary reduction contributions that aren't catch-up contributions\"; i1040gi p. 93, Line 16: \"If you were self-employed or a partner, you may be able to take this deduction.\" Same expression as the prior round. The candidate's SIMPLE test never compares salary reduction contributions with compensation, so it deducts deferrals with no compensation behind them: stage16.sd.line17_no_skips_18 (Schedule C, employer match maximum $0.00, i.e. no compensation; deferral $5,686.54) deducts $5,686.54 where the project refuses at person.simple_excess; likewise gen#39 ($0.08). Without a Schedule C gate it also deducts a plan for a person with no self-employment (classm.sc.1 spouse $3,626.00, classm.se.1, classm.tcw.13, gen#22 $2,174.89, gen#30; plan supplied without a Schedule C, which the interview does not ask). Other kinds: the project's person.plan_screened refusal for a plan with two Schedules C (stage14.plan.refuse_two_businesses; candidate $20,000.00) is a cited screen (p560 p. 7, \"only the earned income from that business is considered for that plan\"); person.sep_excess (stage14.sep.refuse_excess, candidate $18,587.04; classm.scveh.6) is the cited excess refusal where the candidate caps at Step 21; the candidate's plan_screen and h_simple_bad refusals and plan_screen unknowns for persons without a Schedule C (classm.w2.1.deepseek, classm.f5695.2, classm.f5695.4, classm.s3.2, classm.f2441.1.deepseek) are placement. Triage executable-triage-v2 (triage/person.json; 1,111 fixtures, 500 generated returns seed 20261026, 1,616 partial records): 2,349 of 4,117 comparisons agree; 157 candidate-refuses, 1,517 candidate-unknown, 19 project-refuses, 75 value; on returns the full interview completes: 51 candidate-refuses, 619 candidate-unknown, 4 value.",
-   "context": "67e4c24893ee8f31745c3c10325ebddb175a35b8f1ebacc1a194d02c241a568d",
-   "subject_key": "24bbe2fc75ddb8400779cb98d2ca48bc87ba767a0f432fc4cef69d5b3f7d865d"
+   "ruling": "Ruling: representation; executable triage 4,006/5,490 agree; 1,280 candidate-unknown, 98 candidate-refuses, 56 value, 45 project-refuses, 5 project-unknown (completed: 1 candidate-refuses, 242 candidate-unknown, 8 value). Every value witness is a person with no Schedule C answering person.plan = simple (classm.clcw.3, classm.f1040.5, classm.se.1 spouse instance with $sc empty); the interview asks person.plan only of the self-employed. Same pattern as the Goal-1 round ruling. i1040s1 line 16; p560 p. 39.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "3ce48cb30d2663ab35b72f99e7fc8c8e97b456449f6fad723919284ffbc2ec97",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.g28.2.deepseek@person[spouse]",
+     "fixture:classm.clcw.3.deepseek@person[taxpayer]",
+     "fixture:classm.clcw.4.deepseek@person[taxpayer]",
+     "fixture:classm.clcw_next_year.2.deepseek@person[taxpayer]",
+     "fixture:classm.dependent.3.deepseek@person[taxpayer]",
+     "fixture:classm.f1040.5.deepseek@person[taxpayer]",
+     "fixture:classm.f8962.5.gpt@person[spouse]",
+     "fixture:classm.f8959.2@person[spouse]",
+     "fixture:classm.g28.2@person[spouse]",
+     "fixture:classm.se.1@person[spouse]",
+     "fixture:classm.clcw.3@person[taxpayer]",
+     "fixture:classm.clcw.4@person[taxpayer]",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@person[taxpayer]",
+     "fixture:mutation.t2.f8880.inherited_ira@person[taxpayer]",
+     "fixture:mutation.t3.roth_excess_screen@person[taxpayer]",
+     "generated:20261026.1@person[taxpayer]",
+     "generated:20261026.46@person[taxpayer]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].role@person[taxpayer]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].birth_year@person[taxpayer]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].rrta@person[taxpayer]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].se_screen@person[taxpayer]",
+     "partial:classm.sd.2.deepseek-person[taxpayer].simple_kind@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "person.s16",
@@ -5612,6 +6866,41 @@
      "fixture:classm.f1040.6@person[taxpayer]",
      "fixture:mutation.t2.mfj_no_overtime_part3@person[taxpayer]",
      "fixture:mutation.t2.sli.qss_divisor@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.sav_ineligible",
+   "project_expr_sha256": "ae56ddab5dc6f8778518088b18655882e0fb162149798731b2c0fc4a3c60f4cd",
+   "second_expr_sha256": "45a1287b1aa2814b435eb0e5f4ee38eba3ac08e52cad82fbcd23851a63904520",
+   "ruling": "Ruling: representation; executable triage 5,348/5,490 agree; 106 candidate-unknown, 34 value, 2 project-unknown (completed: 39 candidate-unknown, 1 project-unknown, 6 value). Value witnesses (classm.carloan.1, classm.w2.1, classm.f1040.6) state person.sav_claimed true with sa.dependent false; the project asks sav_claimed only of a filer who can be claimed (x2-dep, decision D7), so the reply reads an answer the interview never takes. f8880 p. 2, Who Can Take This Credit. Same pattern as the Goal-1 round ruling.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "370bf8a7f203e76d9bcff525dfdf2eb874a04e97879a8eaa79ed235b3041a4c4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8880.1.deepseek@person[taxpayer]",
+     "fixture:classm.f8880.2.deepseek@person[taxpayer]",
+     "fixture:classm.f8880.3.deepseek@person[spouse]",
+     "fixture:classm.f1040.6.deepseek@person[taxpayer]",
+     "fixture:classm.s8812.3.deepseek@person[taxpayer]",
+     "fixture:classm.f5695.4.deepseek@person[taxpayer]",
+     "fixture:classm.carloan.1@person[taxpayer]",
+     "fixture:classm.f2441.2@person[taxpayer]",
+     "fixture:classm.sli.3@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:classm.person.21@person[taxpayer]",
+     "fixture:stage19.mut.claimed_filer_llc@person[taxpayer]",
+     "fixture:stage19.f8863.claimed_person_answer@person[taxpayer]",
+     "fixture:mutation.t2.mfj_no_overtime_part3@person[taxpayer]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -6043,6 +7332,76 @@
   },
   {
    "printed": "person.se_line12",
+   "project_expr_sha256": "bd310fb90c740755b3ddda507923ad334d577aacb5e73bbd7730314bdcc631e8",
+   "second_expr_sha256": "7a18bc193638b791f1704fceba66ca82d07ccfe0b7b4ede471d7dadf0b3b528d",
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 4,639/5,728 agree; 977 candidate-unknown, 110 candidate-refuses, 2 project-refuses (completed: 285 candidate-unknown). No value differs on any return the project completes; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen and the pay gates), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040sse line 12.",
+   "context": "eb5fad7c71d9362bab8ea3a6f380da7bc06b272e3d7cdf04fd51d8b40add1ee1",
+   "date": "2026-11-15",
+   "run": "9318009e5d9c1c4a47bafa577239fae2379da2ce3389dcf479db1d7e72e0179f",
+   "subject_key": "617748130e41f3236d03a3a7ae2fad2057c11f04787a853244585938aa66a642",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:stage14.refuse.at_risk@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.se_line12",
+   "project_expr_sha256": "bd310fb90c740755b3ddda507923ad334d577aacb5e73bbd7730314bdcc631e8",
+   "second_expr_sha256": "8b4998cd161dc28214901376b5c3cc064133025cb643ae856d119b6b340853cc",
+   "ruling": "Ruling: representation; executable triage 2,803/5,490 agree; 2,579 candidate-unknown, 106 candidate-refuses, 2 project-refuses (completed: 358 candidate-unknown). No value differs on any return; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen and the pay gates), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Schedule SE rows are read the same way once asked; i1040sse line 12.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "617748130e41f3236d03a3a7ae2fad2057c11f04787a853244585938aa66a642",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@person[taxpayer]",
+     "fixture:stage14.refuse.at_risk@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.se_line12",
    "project_expr_sha256": "dc8141baa5479d945a96d501dc16808bc133f0bcc286db933a4a780c33963458",
    "second_expr_sha256": "5c4ea2b08adb66649403545590d72978fe431f6030dd9b8e956981e95641d315",
    "ruling": "Ruling: representation; project retained. The project enters zero for a person with no Schedule C; the second applies the $400 floor of Schedule SE line 4c, which gives zero for the same person. Otherwise the same Schedule SE computation; church employee income, the optional methods and statutory employee income are refused (person.se_screen, sc.statutory).",
@@ -6151,6 +7510,76 @@
    "subject_key": "211aef5778338ee7cc80aa9015607a33da08c2741e66287645992bffd11d8fcf"
   },
   {
+   "printed": "person.se_line13",
+   "project_expr_sha256": "b44ff684f31a9f28668754739dd40ea2e04e10dbc14e9bd0e919b5642b95a172",
+   "second_expr_sha256": "5d8665837814d1b0417d7037ef583adf8cda1d5dfb61fb3548ad6e467c6b334a",
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 4,639/5,728 agree; 977 candidate-unknown, 110 candidate-refuses, 2 project-refuses (completed: 285 candidate-unknown). No value differs on any return the project completes; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen and the pay gates), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040sse line 13.",
+   "context": "eb5fad7c71d9362bab8ea3a6f380da7bc06b272e3d7cdf04fd51d8b40add1ee1",
+   "date": "2026-11-15",
+   "run": "9318009e5d9c1c4a47bafa577239fae2379da2ce3389dcf479db1d7e72e0179f",
+   "subject_key": "63128bfdb68db7d11d7d48f3b95df5497f4eee437215e44f6277ad1434cac672",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f4137.line5_over@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:stage14.refuse.at_risk@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.se_line13",
+   "project_expr_sha256": "b44ff684f31a9f28668754739dd40ea2e04e10dbc14e9bd0e919b5642b95a172",
+   "second_expr_sha256": "c0116843a3f424fc84c78866c7dbf38484d31952957f386f892ed2375b52759b",
+   "ruling": "Ruling: representation; executable triage 2,803/5,490 agree; 2,579 candidate-unknown, 106 candidate-refuses, 2 project-refuses (completed: 358 candidate-unknown). No value differs on any return; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen and the pay gates), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Schedule SE rows are read the same way once asked; i1040sse line 13.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "63128bfdb68db7d11d7d48f3b95df5497f4eee437215e44f6277ad1434cac672",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
+     "fixture:classm.carloan.2@person[taxpayer]",
+     "fixture:classm.w2.1@person[taxpayer]",
+     "fixture:x2pay.f4137.w9_government@person[taxpayer]",
+     "fixture:x2pay.f8919.w10_rrta@person[taxpayer]",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@person[taxpayer]",
+     "fixture:stage14.refuse.at_risk@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "person.se_line6",
    "project_expr_sha256": "46380f5732c8dd4263e524ba7e21e9d2942ecff85f50a8b74829050ee97b9a0e",
    "second_expr_sha256": "48c4027226d22d65759112b08a4226b5995557a4f3066ab141dcda4e9fbee17c",
@@ -6190,17 +7619,18 @@
    "printed": "person.se_line6",
    "project_expr_sha256": "c74d98c4f37e9d1652d4a2ea70c8dd7320ddfdfc50ae27d5ceea3e51efdf6bb1",
    "second_expr_sha256": "99a814da46c2f33e96e84bb5da4a6cedc1f08e320e5eaf2a1f563b27379b177c",
-   "ruling": "Ruling: model error; i1040sse p. 1, Who Must File Schedule SE, \"You must file Schedule SE if:\". R4 reran this line because a question it reads was restructured into a question and lists (the word check loses no word). The reply is identical to the one ruled before: the reply reads person.se_screen of every person, where the project asks it only of a person with a Schedule C and gives zero without one (the completed-return witnesses, for example classm.f4952.1.deepseek, are candidate-unknown on se_screen); it gives no different completed-return amount. executable-triage-v2 on this pass's reply (`.transcription/person.lines-a83b11fb00e8.response.txt`, merged with the project's lines it names; a scratch run of triage.mjs, since triage.py evaluates the whole review's reply; 1,638 fixtures; 500 generated returns seed 20261026; 1,630 partial records; 4,822 comparisons): 3,028 of 4,822 agree; differences on returns the full interview completes: 109 candidate-unknown; no completed-return value difference. Project stands. (carried over from reviews/2025/transcription/person.md at 5d8c6fd8, review of 2026-11-03)",
-   "context": "6932ddf30d9417e095465e688f596a808ca646f5f5f9da934d160bb4f321f0aa",
-   "date": "2026-11-07",
-   "run": "014521ac26d55221653f638ccc9752b34039c9bd15a1ab9c6e849e9f40d350e9",
-   "subject_key": "e34f22d35efafee016d0da85ad6482c5c7b12d5564896e51fbb15880180a2c90",
+   "ruling": "Ruling: representation; line-scoped rerun after the line 8u revert and the d-01 fix (pass 238b2e0eecf5, its foreign interfaces changed). Executable triage 4,744/5,728 agree; 954 candidate-unknown, 13 candidate-refuses, 4 project-refuses, 13 project-unknown (completed: 285 candidate-unknown). No value differs on any return the project completes; the reply sums or reads the Schedule SE inputs without the parent question that opens them (person.se_screen and the pay gates), so it is unknown where the interview never asks them, and its one-sided refusals fall on returns the project refuses too. Same ruling as the earlier rounds (lane xadj-e); i1040sse lines 4 to 6.",
+   "context": "eb5fad7c71d9362bab8ea3a6f380da7bc06b272e3d7cdf04fd51d8b40add1ee1",
+   "date": "2026-11-15",
+   "run": "9318009e5d9c1c4a47bafa577239fae2379da2ce3389dcf479db1d7e72e0179f",
+   "subject_key": "cfaac72ff93e95c44868b4bddaf85aa7d0f8ad84581d4744dc70dac6fd0da92b",
    "triage": {
     "verdict": "differs",
     "kinds": [
      "candidate-refuses",
      "candidate-unknown",
-     "project-refuses"
+     "project-refuses",
+     "project-unknown"
     ],
     "witnesses": [
      "fixture:classm.f2441.1.deepseek@person[taxpayer]",
@@ -6209,14 +7639,22 @@
      "fixture:classm.f2441.3.deepseek@person[taxpayer]",
      "fixture:classm.f2441.4.deepseek@person[taxpayer]",
      "fixture:classm.f2441.5.deepseek@person[taxpayer]",
-     "fixture:classm.w2.1.deepseek@person[taxpayer]",
+     "fixture:classm.asset.1@person[taxpayer]",
      "fixture:classm.carloan.2@person[taxpayer]",
-     "fixture:classm.f8959.1@person[taxpayer]",
-     "fixture:classm.scveh.2@person[taxpayer]",
-     "fixture:classm.w2.1@person[taxpayer]",
-     "fixture:mutation.t2.no_5695_part1_s3_5a@person[taxpayer]",
      "fixture:mutation.t2.hoh_s1a_car@person[taxpayer]",
-     "fixture:stage14.refuse.at_risk@person[taxpayer]"
+     "fixture:stage14.refuse.se_railroad@person[taxpayer]",
+     "fixture:stage14.refuse.at_risk@person[taxpayer]",
+     "generated:20261026.184@person[taxpayer]",
+     "generated:20261026.211@person[taxpayer]",
+     "generated:20261026.268@person[taxpayer]",
+     "generated:20261026.304@person[taxpayer]",
+     "generated:20261026.385@person[taxpayer]",
+     "partial:stage14.asset.hy_5yr-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.bonus_100-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.prior_7yr-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.qip-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.done-person[taxpayer].rrta@person[taxpayer]",
+     "partial:stage14.asset.prior_179_bonus-person[taxpayer].rrta@person[taxpayer]"
     ],
     "policy": "executable-triage-v2"
    }
@@ -6393,6 +7831,38 @@
      "generated:20261026.339@person[taxpayer]",
      "generated:20261026.431@person[taxpayer]",
      "generated:20261026.461@person[taxpayer]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "person.tips_gov_if_rows",
+   "project_expr_sha256": "65f40f7f658d08d0e5c0d7ecd8bde665542da354317f37ac15e61594d7aac987",
+   "second_expr_sha256": "bf44e549c8ee4be947744a7886482d9aa8bcc789b46c33794cdcd1ece1951dca",
+   "ruling": "Ruling: representation; executable triage 3,250/5,490 agree; 2,233 candidate-unknown, 7 project-unknown (completed: 257 candidate-unknown). No value differs on any return; the reply sums or reads the Form 4137 rows and person.tips_gov without the parent question that opens them (scope.tips_unreported_if_pay), so it is unknown where the interview never asks them, and its extra refusals fall on returns the project refuses too. x2-paynow2's Form 4137 rows are read the same way once asked; f4137 instructions, line 10, government employees.",
+   "context": "83d74cea36b6cfabdbfde031c653d6945ae3955bba37b1d67f71567c2d4b2c46",
+   "date": "2026-11-15",
+   "run": "c457829981046d4772d466eea592478b55a3460360a08a38dde1ad40a8f94191",
+   "subject_key": "3712689df18c49de6882a8e49ebfefa933d5d969822eeb861688e217808a4c0e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.2.deepseek@person[spouse]",
+     "fixture:classm.f2441.2.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.3.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.4.deepseek@person[taxpayer]",
+     "fixture:classm.f2441.5.deepseek@person[taxpayer]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer]",
+     "fixture:ss.single.over@person[taxpayer]",
+     "fixture:ss.multi.over@person[taxpayer]",
+     "fixture:ss.rrta@person[taxpayer]",
+     "fixture:ss.early.refusal@person[taxpayer]",
+     "generated:20261026.134@person[taxpayer]"
     ],
     "policy": "executable-triage-v2"
    }

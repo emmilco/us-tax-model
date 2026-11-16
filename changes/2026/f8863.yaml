@@ -25,7 +25,7 @@ changes:
         institution.
     verified: draft
     note: The return-level half of the valid-SSN rule (you, or one spouse on a joint return) is tested once, in f8863.eligible,
-      which zeroes lines 1 and 10; the student half is in Part III (changes/2026/person.edu.yaml and dependent.edu.yaml).
+      (by its helper f8863.eligible_figured, below the married filing separately bar), which zeroes lines 1 and 10; the student half is in Part III (changes/2026/person.edu.yaml and dependent.edu.yaml).
       household.any_work_ssn is the existing count of people on the return whose person.work_ssn answer is yes (an SSN valid
       for employment, issued before the due date). Lines 3 and 14 (C-CRED-17) are lane W1's.
     operations:
@@ -60,7 +60,7 @@ changes:
               (if the student is a dependent on your tax return) have not been issued valid SSNs before the due date of your
               2026 return (including extensions)."
     - set:
-        line: f8863.eligible
+        line: f8863.eligible_figured
         field: expr.alternatives
         from:
         - guard:
@@ -89,11 +89,11 @@ changes:
             - const: false
           then: f8863.no
     - set:
-        line: f8863.eligible
+        line: f8863.eligible_figured
         field: label
-        from: 'An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed
+        from: 'On a return not filed as married filing separately: expenses paid, and neither you nor your spouse is claimed
           as a dependent'
-        to: 'An education credit can be claimed on this return: expenses paid, neither you nor your spouse is claimed as a
+        to: 'On a return not filed as married filing separately: expenses paid, neither you nor your spouse is claimed as a
           dependent, and you, or your spouse if filing jointly, have a valid SSN'
     - set:
         line: f8863.paid

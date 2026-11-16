@@ -3,6 +3,11 @@
  "form": "scope",
  "family": "claude",
  "base": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+ "head_rows": {
+  "lines judged": "85",
+  "match / mismatch / unclear / missing": "82 / 2 / 1 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "no",
@@ -155,6 +160,18 @@
    "subject_key": "a9b42cecc7f4722cb9d67853167d2acb9ba3d9c79c68e81d2ba62aa016f6e0fc"
   },
   {
+   "key": "rent_personal",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "fef385f967a830a2e3bfa84d01065b3aba2353dbd94e568530201efc2a4d9eef"
+  },
+  {
+   "key": "rent_personal_if_rental",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "96e2369f3b82176bb77b1bf16f4e3bd09a5ad029b61f4f58b56edda9c36703dc"
+  },
+  {
    "key": "k1",
    "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
@@ -171,6 +188,66 @@
    "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
    "status": "MATCH",
    "subject_key": "858dd7cc15e1e3fec3a695f0b5e9129ab861893b9410415e09883ce300afaf63"
+  },
+  {
+   "key": "household_pay",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "0c6021c3559f567f6e4b3229e24c8bad16b80d1cc44b7340a72bf403561b2439"
+  },
+  {
+   "key": "household_pay_if_pay",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "49ba0b30cb0eb3bc1ca70b1e0fd5aa7a03940194441c68de3d11ca1fadd0d1f2"
+  },
+  {
+   "key": "contractor_pay",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "d17e42a0a961199ab247fea0edd2712883902686e24443a35038b004b660daea"
+  },
+  {
+   "key": "contractor_pay_if_pay",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "fd5b2f27887009249c78847b6be0510ec34e91e9bfad377dbc087eeafa1a3fb0"
+  },
+  {
+   "key": "tips_unreported",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "dd5935d2376d4d68c70d3682034c0c2fe066d348df94d9402d4ac49d0794be97"
+  },
+  {
+   "key": "tips_unreported_if_pay",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "bd5f24c950856ff164a23f0ece04d1081ef74e7ab7629b432cbc8a34ff645990"
+  },
+  {
+   "key": "strike_pay",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "e6f0d7b22a0d72a0e3562c8b03a1c115b47db74c0b0638101b04e6eb989e8cb7"
+  },
+  {
+   "key": "strike_pay_if_pay",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "463ed3ed2dc0cb2817459727528fb353d250dddebff40a0897b3913d89baa675"
+  },
+  {
+   "key": "wages_no_form",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "a23721a8b4d61dac1ea13c783fe7542253b1cd65f17d1270c22393e9be7fc23a"
+  },
+  {
+   "key": "wages_no_form_if_pay",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MATCH",
+   "subject_key": "6e32ca041f1a18de920347a9f0211f39c9a21d2a85646e915fa194455fc0c330"
   },
   {
    "key": "medicaid_waiver",
@@ -374,15 +451,16 @@
   },
   {
    "key": "passive",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
    "status": "MATCH",
-   "subject_key": "55148f8f5296f1ce86b8fce57db7c1c5a4baf156b507300f331cc6da9f2e6ca3"
+   "subject_key": "b51882b42b32edb034689a493516959424253f2522710d63b0028c8e5f971a0c"
   },
   {
    "key": "passive_if_business_before",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
-   "status": "MATCH",
-   "subject_key": "bbdd63d66f4ed52f5422864fdd94aa62a5d3e0d6e6d27383c97d422dcc3e62df"
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the reviewer is right that f8582's passive activities carry no prior-year ownership condition, but each activity begun in 2025 is screened where it is entered: a Schedule C business in which the filer did not materially participate is refused by sc.screened (sc.passive false; i1040sc p. 4, Line G, the seven tests), a farm or a K-1 by scope.schedule1 (scope.farm, scope.k1), and a rental of real property is now computed with its passive loss limit (Schedule E with Form 8582, this merge: f8582, rental.active). The gated question catches what those do not: a passive activity owned before 2025 with prior-year unallowed losses or a 2025 disposition, the case its wording (no longer 'or rental') names. As in the landing render ruling, now with rentals computed rather than refused. Project stands.",
+   "subject_key": "0611bf893fb186aa85edccef80cb4c74ba4d515ed4af91335e29cc981a6a9580"
   },
   {
    "key": "f8978",
@@ -398,15 +476,15 @@
   },
   {
    "key": "schedule1",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
    "status": "MATCH",
-   "subject_key": "703262db9c941bc7f196a3cb996d6c215adafa2cb598887290ca086314e75778"
+   "subject_key": "1883e6c1b3855a632439c0a4296ab595db59c65cd9bed76bff1db55ef01e8dee"
   },
   {
    "key": "other_income",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
    "status": "MATCH",
-   "subject_key": "b407238f89dfb390449833e7f34525a549a0c66de88fae0f0fe16b1bc435bea4"
+   "subject_key": "fb1fb9b7e244fda512508615f24613632952b55cda6236383e567f5d22be95f5"
   },
   {
    "key": "other_line16",
@@ -416,15 +494,15 @@
   },
   {
    "key": "ready_schedule1",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
    "status": "MATCH",
-   "subject_key": "aaee7355d6c21947b69924166f10b3305a98f33526c1d35de735c6c1620de14f"
+   "subject_key": "65cbc4c57b71fd1044075e7202925495939716ad0a9d56032fc116261780a59f"
   },
   {
    "key": "ready_other_income",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
    "status": "MATCH",
-   "subject_key": "a949102c108c2fa0609edae337f4eeb9a4f5f856d0f7082e58ebb97c350050f0"
+   "subject_key": "54000f11bffd0a568f7858841fa00b567b6fa8d40cc60ac2c0519c45aa8a3421"
   },
   {
    "key": "ready_other_line16",
@@ -434,15 +512,15 @@
   },
   {
    "key": "ready_credits",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
    "status": "MATCH",
-   "subject_key": "3e3b8de68224523d8f3dc52a401c64bc0f58e995a498c3cedeaf129385d22b87"
+   "subject_key": "c63e74493a9002dcaf4863bcfb7d0f6aac1cf750c061624b0dac0ca19769c818"
   },
   {
    "key": "ready",
-   "record": "27f1826cde7b2d5f7beae2708827f8a3b0a1ce9cc080ebd1203e32054f97bc9d",
+   "record": "78cf2f0a009576ca708fd7e47ec1cf8ed34ada52267e49fbe93cf0a1e8165680",
    "status": "MATCH",
-   "subject_key": "f732b6b714a798f998cb79a20bbc22259a49faf36cd6470c270f3e2669b3fd61"
+   "subject_key": "c0a2f96ed58acce41142b7f663109ef01894f848eae0fa92698803c3bb4ef537"
   }
  ],
  "subjects": {
@@ -471,9 +549,21 @@
   "adoption_benefits": "b1838773cca4e0b3c14261c6fdc53b18218434dd28acf9c700321140af84c02f",
   "adoption_benefits_if_adoption": "636438b8af226b84a60d547e7001bedff27cbeace99ee18e0db881d041f2bed6",
   "rental": "a6fc88d07c11303baa186d6ddf220db13fb5f475f2b0d14226b0c57570145749",
+  "rent_personal": "12cde52fbb91223f4480a018559177d0ea3476151ef5ce64a12a92741cd7682f",
+  "rent_personal_if_rental": "3e21ed30e6feff2e58c7b4eea22c03deee604f9a4f70592986b41fea966ac933",
   "k1": "3225ae8119162f469d441b426dbb2d8c7a6c4034dfcd3a51a4c092254e985050",
   "farm": "578d529fa363bc239681d3655b093dcc75315388f028e1faf7b020b91655cec2",
   "pay_no_w2": "f2cfd385d964a3b63419043eb88b332d67bd24c2d2daa49c14f6cbb74a89ae6d",
+  "household_pay": "805bb9846e1e5bdfef7f0733baf51d2c3c81aa7c4d4ebd0dda0c5967b0c8abbd",
+  "household_pay_if_pay": "b8c87af7b85df341d652ba15cf1dd54e0a9cda2acd765f4821123dff383d7762",
+  "contractor_pay": "b4806a19a76ecb11d25ff4a7a5a829960bf4f15f0c5ea31ae75d49af7da3b9dc",
+  "contractor_pay_if_pay": "04da2a3b217711968cf57e2c54df3e0ab49fec17549deedd76abaae706eddb38",
+  "tips_unreported": "c4c68ae746a2da305185b5fa0a8099a155b81ccd147c52956a6c15ed426f5b7a",
+  "tips_unreported_if_pay": "67b3c4f03aa06da241954548a332d9c26ff025b15794a551af06fec32ad43b80",
+  "strike_pay": "fd4a5e47b30a292eeb2c79b0c9aca1d59c756752de5f84dbd57290a9f66bb648",
+  "strike_pay_if_pay": "29c510e54af9bdf58886e78aadbf23ccb9e63b64ab703c0026a3fbab3160205f",
+  "wages_no_form": "538625d465d3e451f6a290e67bd19385fd53225b3aff2269de2f89e15890bb8a",
+  "wages_no_form_if_pay": "b44c34d843e4cd21547866505af9413a03e11f85f619b41b1a768112860fb174",
   "medicaid_waiver": "3e9b686aa4b22ccb5163ec513d5ecc681b1b0aef7c516d50e1b013dc2d0cc40b",
   "religious_work": "13dfe1bfc569b7c06a6a0ec86071b21fa548b274f6242efb5bf8dac42c55d761",
   "clergy": "b91de6ec12fcf8531b2aa942fa6e8cd8c3502d573b788c2bc0f3a6915bcdefa0",
@@ -507,18 +597,18 @@
   "attorney_fees": "8b52fafa243ca77ef07d5dc43706195e7b423c82d10b84b4a0a89b10f86e567c",
   "business_before": "ac2fdd5a26be10733a36ff8af96f2f65f5fa201be8bfcad2d13f01c1fb0810db",
   "nol": "38624bd882fafc88a3161c61e8a6dc63609fc7256c3224b7767a4f1f37f93897",
-  "passive": "21a3249e1c4c87d902828aa1f0eef5e21bce4b307a43da927fee409d94764370",
-  "passive_if_business_before": "701d7d94ef14075c27dbe2ca96cac1915914d5777219d047ad291b200965f04d",
+  "passive": "17ba9a9c5b48834402457225f2a3a0226b4ba76237d0409ef0d08a6380e6a852",
+  "passive_if_business_before": "c90f75d34fe0b9a9ae3948e3a664b4481d693a1851c4a69ce97a536ecd84341a",
   "f8978": "55fd93d088666a05e39701777efa2970e6dbb8e5dac38b8917868126b2cfb821",
   "f8978_if_business_before": "33c9bbb2fe3e9e3afafd84dde0a459eaabf32c867c9cf4c40dd09d41858d362f",
-  "schedule1": "8677a15a95ca8127db7558714a169ea2f969be2943f2033e7eff19be8eaa3025",
-  "other_income": "ae75664ea5418312842eb90ca7ee17c896bfccda785f68d0db9ab8a52f64646e",
+  "schedule1": "bb8ee9b398c3f986471d2467cbec42382bed99d16a5684e8765d163ae55eb1d1",
+  "other_income": "8039d111fa92805c61264c99c289b159affa232a88aac2f77d362f7aead576a3",
   "other_line16": "1f56ab926f7e64a8060563d09171803dc136f66f40b96de02a69690a201104e5",
-  "ready_schedule1": "b8b2c21ce66f551ea9f91111cda07ebdf0787861e3bf14b28d169d3bd6bfb3b1",
-  "ready_other_income": "194c20435f549e00136ad340055e4f43f703f501f2fb3fa3a93c7a73f0165edb",
+  "ready_schedule1": "19b84ba1bdb5010f75b15d5816cbcf47e001fc421767f6bece6a689c16f22e4e",
+  "ready_other_income": "6a05639d01bdd3911bae387c61395ff5f3b729d46174617098be1b24e17c9fa8",
   "ready_other_line16": "6723121cfef5906c08d9d43756bc044d432c8f065f65c8efcca571c01ff362d2",
-  "ready_credits": "9abe987f2be4c0eaef171769037d099da99949b633b307dddc8d620afb7dc092",
-  "ready": "b8400e0879e0b619af12608729f7edf16606dd43129323d0f3335b21e6049410"
+  "ready_credits": "e0073779f5c49f9d21a15fcc5e1c6d394a8d828a3f9a1ae061e8de5d5878d3ce",
+  "ready": "e4267e857480b694d79ed117cf8484b9e14f645bcb7ff6c369440c81bcaf1f63"
  },
  "__rest__": "9a25da53ed2fbd2a45701244528c1eac2209891e67bfcf91f6753aa6e83ec08d"
 }

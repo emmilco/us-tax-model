@@ -144,7 +144,8 @@
         "person[taxpayer].w2[a].box1": 30000000,
         "s1a.tips": null,
         "s1a.overtime": null,
-        "s1a.carloan": null
+        "s1a.carloan": null,
+        "household.married_dec31": true
       },
       "expect": {
         "sa.line5e": {
@@ -172,7 +173,8 @@
         "person[taxpayer].w2[a].box1": 35000000,
         "s1a.tips": null,
         "s1a.overtime": null,
-        "s1a.carloan": null
+        "s1a.carloan": null,
+        "household.married_dec31": true
       },
       "expect": {
         "sa.line5e": {
@@ -398,7 +400,8 @@
         "person[taxpayer].w2[a].box1": 10000000,
         "s1a.tips": null,
         "s1a.overtime": null,
-        "s1a.carloan": null
+        "s1a.carloan": null,
+        "household.married_dec31": true
       },
       "expect": {
         "sa.standard": {
@@ -425,7 +428,8 @@
         "person[taxpayer].w2[a].box1": 10000000,
         "s1a.tips": null,
         "s1a.overtime": null,
-        "s1a.carloan": null
+        "s1a.carloan": null,
+        "household.married_dec31": true
       },
       "expect": {
         "sa.standard": {
@@ -1002,7 +1006,7 @@
       "covers": [
         "sa.dependent"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic regression",
       "inputs": {
         "sa.dependent": true,
         "$w2@person[taxpayer]": [
@@ -1020,33 +1024,15 @@
       },
       "expect": {
         "sa.standard": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
-          "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice.",
-          "cite": {
-            "doc": "i1040gi",
-            "tax_year": 2025,
-            "revision": "2025; printed date 2026-02-25",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
-          }
+          "kind": "money",
+          "cents": 1575000
         },
         "sa.itemizes": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
-          "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "bool",
+          "value": false
         }
       },
-      "evidence_note": "Mutation-score assertion (T-159: the standard operand of sa.itemizes): the choice between itemizing and the standard deduction compares the itemized total with the standard deduction (i1040gi p. 34, line 12e), which is refused here (someone can claim the filer as a dependent), and neither the election nor a spouse who itemizes decides it first, so the choice is the same refusal. Refusal text recorded from the evaluator."
+      "evidence_note": "Restated by lane x2-dep (coverage expansion, decision D1 pre-authorizes it): the refusal became a computation. i1040gi p. 35, Standard Deduction Worksheet for Dependents: wages $100,000, line 2 $100,450, line 3 (single) $15,750, line 4a the smaller, $15,750. With no itemized deductions and no election the choice to itemize is No (i1040gi p. 34, line 12e). Mutation-score assertion (T-159) kept: the standard operand of sa.itemizes is now a value."
     },
     {
       "id": "stage4.refuse.dependent_itemizes",
@@ -1054,7 +1040,7 @@
         "sa.dependent",
         "f1040.line12e"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic regression",
       "inputs": {
         "sa.dependent": true,
         "$w2@person[taxpayer]": [
@@ -1072,33 +1058,15 @@
       },
       "expect": {
         "sa.deduction": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "tax_year": 2025,
-            "revision": "2025; printed date 2026-02-25",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
-          }
+          "kind": "money",
+          "cents": 1575000
         },
         "f1040.line12e": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "tax_year": 2025,
-            "revision": "2025; printed date 2026-02-25",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a"
-          }
+          "kind": "money",
+          "cents": 1575000
         }
       },
-      "evidence_note": "A filer who can be claimed as a dependent and who elects to itemize is still outside this tool: the dependent refusal sits on both the standard-deduction helper and the selected-deduction line, so the itemized branch cannot bypass it (i1040gi pp. 34–35, line 12e)."
+      "evidence_note": "Restated by lane x2-dep (decision D1): a claimable filer is no longer refused on the deduction, standard or itemized. i1040gi p. 35, Standard Deduction Worksheet for Dependents: wages $100,000, line 4a $15,750; with no itemized deductions the selected deduction and line 12e are $15,750."
     },
     {
       "id": "stage4.refuse.standard.spouse_extra",
@@ -1120,7 +1088,8 @@
         "f1040.line25c_other": null,
         "f1040.line26": null,
         "s179.prior_form": null,
-        "s179.carryover": null
+        "s179.carryover": null,
+        "household.married_dec31": true
       },
       "expect": {
         "sa.standard": {
@@ -1512,7 +1481,8 @@
         ],
         "person[taxpayer].w2[e0].box1": 10000000,
         "person[taxpayer].w2[e0].box5": 10000000,
-        "person[taxpayer].w2[e0].box6": 145000
+        "person[taxpayer].w2[e0].box6": 145000,
+        "household.married_dec31": true
       },
       "expect": {
         "sa.line5d": {
@@ -1541,7 +1511,8 @@
         ],
         "person[taxpayer].w2[e0].box1": 40000000,
         "person[taxpayer].w2[e0].box5": 40000000,
-        "person[taxpayer].w2[e0].box6": 580000
+        "person[taxpayer].w2[e0].box6": 580000,
+        "household.married_dec31": true
       },
       "expect": {
         "sa.line5e": {
@@ -1802,6 +1773,1077 @@
             "snapshot": "b0999b12d9dc4b13868501a9c1879011c00d2fc035f13a1391251d355a6242c8",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "dep.pub501_ex1",
+      "covers": [
+        "sa.dep_line2",
+        "sa.dep_line4c",
+        "sa.standard"
+      ],
+      "evidence": "class A: Pub. 501 (2025) p. 24, Example 1",
+      "evidence_note": "Pub. 501 Example 1: 16 and single, claimable by the parents, interest $780 and wages $150, no itemized deductions; standard deduction $1,350 (the larger of $600 and $1,350). Earned income $150 is not more than $900, so i1040gi p. 35, Standard Deduction Worksheet for Dependents line 2 is $1,350; AGI $930, taxable income $0.",
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2009,
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 78000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 15000,
+        "person[taxpayer].w2[a].box5": 15000,
+        "person[taxpayer].w2[a].box6": 930
+      },
+      "expect": {
+        "sa.dep_line2": {
+          "kind": "money",
+          "cents": 135000
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 135000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 135000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 93000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "dep.pub501_ex3_blind",
+      "covers": [
+        "sa.dep_line4b",
+        "sa.dep_line4c",
+        "sa.standard"
+      ],
+      "evidence": "class A: Pub. 501 (2025) p. 24, Example 3",
+      "evidence_note": "Pub. 501 Example 3: 18, single, blind, claimable by the parents, interest $1,300 and wages $2,900; standard deduction $5,350 ($2,900 + $450 = $3,350, plus $2,000 for one box). AGI $4,200, taxable income $0.",
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2007,
+        "person[taxpayer].blind": true,
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 130000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 290000,
+        "person[taxpayer].w2[a].box5": 290000,
+        "person[taxpayer].w2[a].box6": 17980
+      },
+      "expect": {
+        "sa.dep_line2": {
+          "kind": "money",
+          "cents": 335000
+        },
+        "sa.dep_line4a": {
+          "kind": "money",
+          "cents": 335000
+        },
+        "sa.dep_line4b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 535000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 420000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "dep.pub501_ex4_business_loss",
+      "covers": [
+        "sa.dep_earned",
+        "sa.dep_line2",
+        "sa.standard",
+        "f1040.line16"
+      ],
+      "evidence": "class A: Pub. 501 (2025) p. 24, Example 4 (standard deduction); the rest a synthetic regression",
+      "evidence_note": "Pub. 501 Example 4: 18, single, claimable, wages $7,000, interest $500, a business loss of $3,000; earned income $4,000 ($7,000 - $3,000), standard deduction $4,450. AGI $4,500; taxable income $50; tax from the Tax Table row $50-$75 single, $6.",
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2007,
+        "$interest": [
+          "bank_a"
+        ],
+        "interest[bank_a].amount": 50000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 700000,
+        "person[taxpayer].w2[a].box5": 700000,
+        "person[taxpayer].w2[a].box6": 43400,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 100000,
+        "person[taxpayer].sc[shop].line8": 400000
+      },
+      "expect": {
+        "sa.dep_earned": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 445000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 450000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 600
+        }
+      }
+    },
+    {
+      "id": "dep.capped_at_basic",
+      "covers": [
+        "sa.dep_line4a",
+        "sa.standard",
+        "f1040.line16"
+      ],
+      "evidence": "synthetic regression",
+      "evidence_note": "i1040gi p. 35, Standard Deduction Worksheet for Dependents: wages $20,000, single, claimable. Line 2 $20,450, line 3 $15,750, line 4a the smaller, $15,750. Taxable income $4,250; Tax Table row $4,250-$4,300 single, $428.",
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2004,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 2000000,
+        "person[taxpayer].w2[a].box5": 2000000,
+        "person[taxpayer].w2[a].box6": 124000
+      },
+      "expect": {
+        "sa.dep_line2": {
+          "kind": "money",
+          "cents": 2045000
+        },
+        "sa.dep_line4a": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 42800
+        }
+      }
+    },
+    {
+      "id": "dep.joint_both_claimable",
+      "covers": [
+        "sa.dep_line3",
+        "sa.standard"
+      ],
+      "evidence": "synthetic regression",
+      "evidence_note": "i1040gi p. 35, Standard Deduction Worksheet for Dependents: a joint return, both 20 or 21, claimable; wages $8,000 and $6,000. Line 2 $14,450 (the return's line 1z, amb.2025.sa_dep_earned), line 3 $31,500, line 4a $14,450. Taxable income $0.",
+      "inputs": {
+        "sa.dependent": true,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 2004,
+        "person[spouse].birth_year": 2005,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 800000,
+        "person[taxpayer].w2[a].box5": 800000,
+        "person[taxpayer].w2[a].box6": 49600,
+        "$w2@person[spouse]": [
+          "b"
+        ],
+        "person[spouse].w2[b].box1": 600000,
+        "person[spouse].w2[b].box5": 600000,
+        "person[spouse].w2[b].box6": 37200
+      },
+      "expect": {
+        "sa.dep_line3": {
+          "kind": "money",
+          "cents": 3150000
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 1445000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "dep.self_employed_se_half",
+      "covers": [
+        "sa.dep_earned",
+        "sa.standard"
+      ],
+      "evidence": "synthetic regression",
+      "evidence_note": "i1040gi p. 35, Standard Deduction Worksheet for Dependents note: earned income is Schedule 1 line 3 less line 15. Schedule C profit $2,000, no wages: net earnings $1,847.00 (x 92.35%), SE tax $282.59, half $141.30 (Schedule 1 line 15); earned income $1,858.70, line 2 $2,308.70. Leaving line 15 out would give $2,450.",
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2004,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 200000
+      },
+      "expect": {
+        "s1.line15": {
+          "kind": "money",
+          "cents": 14130
+        },
+        "sa.dep_earned": {
+          "kind": "money",
+          "cents": 185870
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 230870
+        }
+      }
+    },
+    {
+      "id": "dep.scholarship_counts",
+      "covers": [
+        "sa.dep_earned_sum",
+        "sa.standard"
+      ],
+      "evidence": "synthetic regression",
+      "evidence_note": "i1040gi p. 35, Standard Deduction Worksheet for Dependents note: earned income \"also includes any taxable scholarship or fellowship grant\" (Schedule 1 line 8r). Wages $2,000 and taxable scholarship $3,000: earned income $5,000, line 2 $5,450. AGI $5,000, taxable income $0.",
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2004,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 200000,
+        "person[taxpayer].w2[a].box5": 200000,
+        "person[taxpayer].w2[a].box6": 12400,
+        "s1.scholarship_any": true,
+        "s1.scholarship_taxable": 300000
+      },
+      "expect": {
+        "sa.dep_earned": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 545000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "dep.qss_refused",
+      "covers": [
+        "sa.dep_qss"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Worksheet line 3 gives no amount for a qualifying surviving spouse (amb.2025.sa_dep_qss): refused at sa.dep_qss.",
+      "inputs": {
+        "sa.dependent": true,
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 2000000,
+        "person[taxpayer].w2[a].box5": 2000000,
+        "person[taxpayer].w2[a].box6": 124000
+      },
+      "expect": {
+        "sa.standard": {
+          "kind": "refusal",
+          "gate": "sa.dep_qss",
+          "form": "Standard Deduction Worksheet for Dependents, line 3, for a qualifying surviving spouse",
+          "remedy": "The Standard Deduction Worksheet for Dependents gives no amount for a qualifying surviving spouse whom someone else can claim as a dependent, so this tool does not figure that standard deduction.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3, \"Enter the amount shown below for your filing status\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        },
+        "f1040.line12e": {
+          "kind": "refusal",
+          "gate": "sa.dep_qss",
+          "form": "Standard Deduction Worksheet for Dependents, line 3, for a qualifying surviving spouse",
+          "remedy": "The Standard Deduction Worksheet for Dependents gives no amount for a qualifying surviving spouse whom someone else can claim as a dependent, so this tool does not figure that standard deduction.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3, \"Enter the amount shown below for your filing status\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "dep.hoh_claimable_parent",
+      "covers": [
+        "sa.dep_line3",
+        "f1040.line12e",
+        "s8812.line27"
+      ],
+      "evidence": "synthetic regression",
+      "evidence_note": "Pub. 501 (2025) p. 10, Table 4 (who is a qualifying person for head of household), note 3: a qualifying person \"if the only reason you can't claim the person as a dependent is that you can be claimed as a dependent on another taxpayer's return\". A claimable head of household with a child of 4, wages $30,000: worksheet line 2 $30,450, line 3 $23,625, standard deduction $23,625; no child tax credit, since a claimable filer claims no dependent (i1040gi p. 18, Step 2 question 4). Taxable income $6,375, tax $638 (Tax Table, head of household).",
+      "inputs": {
+        "sa.dependent": true,
+        "f1040.status": "hoh",
+        "household.home_cost": true,
+        "household.considered_unmarried": true,
+        "person[taxpayer].birth_year": 2003,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 3000000,
+        "person[taxpayer].w2[a].box5": 3000000,
+        "person[taxpayer].w2[a].box6": 186000,
+        "$dependent": [
+          "a"
+        ],
+        "dependent[a].age": 4,
+        "dependent[a].months": 12
+      },
+      "expect": {
+        "sa.standard": {
+          "kind": "money",
+          "cents": 2362500
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 2362500
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 63800
+        },
+        "s8812.line27": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "dep.earned_below_zero",
+      "covers": [
+        "sa.dep_earned",
+        "sa.dep_line2"
+      ],
+      "evidence": "synthetic regression",
+      "evidence_note": "Pub. 501 (2025) p. 26, Table 8, line 1, \"Enter your earned income (defined below). If none, enter -0-.\" Wages $1,000 and a Schedule C loss of $3,000 (receipts $1,000, advertising $4,000): the printed total (line 1z plus Schedule 1 line 3) is -$2,000, entered as $0 (amb.2025.sa_dep_earned); line 2 $1,350; standard deduction $1,350.",
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2006,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 100000,
+        "person[taxpayer].w2[a].box5": 100000,
+        "person[taxpayer].w2[a].box6": 6200,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 100000,
+        "person[taxpayer].sc[shop].line8": 400000
+      },
+      "expect": {
+        "sa.dep_earned_sum": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sa.dep_earned": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sa.dep_line2": {
+          "kind": "money",
+          "cents": 135000
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 135000
+        }
+      }
+    },
+    {
+      "id": "mfs.sa.spouse_itemizes_return",
+      "covers": [
+        "sa",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l2 (scout M2), predicted by hand before running from i1040gi pp. 33-34 (line 12b, Exception 2), i1040sca pp. 1, 3, 7 and the 2025 Tax Table. Facts: married filing separately; wages $60,000, federal withholding $6,000, state income tax withheld $3,000; the spouse itemizes on a separate return. Line 5a 3,000; 5d 3,000; 5e = smaller of 3,000 and the SALT limit = 3,000; line 17 3,000; standard deduction 0; itemizes; deduction 3,000. Line 15 57,000; tax 57,000-57,050 = 7,460 (midpoint 57,025: 1,192.50 + 12% x 36,550 + 22% x 8,550 = 7,459.50). Line 37 (owed) 1,460.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$person": [
+          "taxpayer"
+        ],
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box2": 600000,
+        "person[taxpayer].w2[e0].box3": 6000000,
+        "person[taxpayer].w2[e0].box4": 372000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "sa.spouse_itemizes": true,
+        "sa.state_tax_any": true,
+        "sa.line5a": 300000
+      },
+      "expect": {
+        "sa.line5e": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sa.itemizes": {
+          "kind": "bool",
+          "value": true
+        },
+        "sa.deduction": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 5700000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 746000
+        },
+        "f1040.line37": {
+          "kind": "money",
+          "cents": 146000
+        }
+      }
+    },
+    {
+      "id": "mfs.sa.spouse_itemizes_no_extra_question",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l2. i1040gi p. 34, Exception 2: with line 12b checked the standard deduction is zero even with age or blindness boxes, so the spouse-boxes question is not reached (its gate is false) and the return is not refused on it. Facts: married filing separately, wages $100,000, the spouse itemizes.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$person": [
+          "taxpayer"
+        ],
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 10000000,
+        "person[taxpayer].w2[e0].box2": 0,
+        "person[taxpayer].w2[e0].box3": 10000000,
+        "person[taxpayer].w2[e0].box4": 620000,
+        "person[taxpayer].w2[e0].box5": 10000000,
+        "person[taxpayer].w2[e0].box6": 145000,
+        "sa.spouse_itemizes": true
+      },
+      "expect": {
+        "sa.mfs_spouse_extra": {
+          "kind": "bool",
+          "value": false
+        },
+        "sa.standard": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sa.itemizes": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "mfs.sa.mortgage_over_mfs_limit",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Lane mfs-l2. i1040sca p. 8: the $375,000 ($500,000) limits for married filing separately; a limited mortgage is outside scope (sa.unsupported). Facts: married filing separately, home owner, Form 1098 interest $20,000, loans over $375,000.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$person": [
+          "taxpayer"
+        ],
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 10000000,
+        "person[taxpayer].w2[e0].box2": 0,
+        "person[taxpayer].w2[e0].box3": 10000000,
+        "person[taxpayer].w2[e0].box4": 620000,
+        "person[taxpayer].w2[e0].box5": 10000000,
+        "person[taxpayer].w2[e0].box6": 145000,
+        "sa.home_owner": true,
+        "sa.mortgage_interest": 2000000,
+        "sa.mortgage_over_limit_mfs": true
+      },
+      "expect": {
+        "sa.mortgage_over_limit_if_interest": {
+          "kind": "bool",
+          "value": true
+        },
+        "sa.unsupported": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "mfs.sa.mortgage_under_mfs_limit",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l2. As mfs.sa.mortgage_over_mfs_limit with loans not over $375,000: no limit, and the joint-limit question (sa.mortgage_over_limit) is not reached on a separate return. Line 8a 20,000.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "$person": [
+          "taxpayer"
+        ],
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 10000000,
+        "person[taxpayer].w2[e0].box2": 0,
+        "person[taxpayer].w2[e0].box3": 10000000,
+        "person[taxpayer].w2[e0].box4": 620000,
+        "person[taxpayer].w2[e0].box5": 10000000,
+        "person[taxpayer].w2[e0].box6": 145000,
+        "sa.home_owner": true,
+        "sa.mortgage_interest": 2000000,
+        "sa.mortgage_over_limit_mfs": false
+      },
+      "expect": {
+        "sa.mortgage_over_limit_if_joint_limits": {
+          "kind": "bool",
+          "value": false
+        },
+        "sa.mortgage_over_limit_if_interest": {
+          "kind": "bool",
+          "value": false
+        },
+        "sa.unsupported": {
+          "kind": "bool",
+          "value": false
+        },
+        "sa.line8a": {
+          "kind": "money",
+          "cents": 2000000
+        }
+      }
+    },
+    {
+      "id": "mexist.sa.itemizes.qss_dependent",
+      "covers": [
+        "sa",
+        "f8960"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of mutation.t2.qss_s1a_senior (qualifying surviving spouse, 65 or older, wages $100,000) with someone able to claim you as a dependent. The Standard Deduction Worksheet for Dependents, line 3, gives no amount for a qualifying surviving spouse (i1040gi p. 35), and the tool refuses that standard deduction. Whether you itemize compares Schedule A line 17 with the standard deduction, so it carries that refusal, and Form 8960 line 9a (investment interest deducted on Schedule A) with it (refusal recorded from the evaluator).",
+      "inputs": {
+        "person[taxpayer].ira_owner": false,
+        "person[taxpayer].x_edu_account": false,
+        "person[taxpayer].x_archer_excess": false,
+        "person[taxpayer].inherited_account": false,
+        "person[taxpayer].rmd_missed": false,
+        "person[taxpayer].x_hsa_prior_excess": false,
+        "person[taxpayer].x_ira_prior_excess": false,
+        "qbi.prior_form": false,
+        "qbi.coop_patron": false,
+        "f8863.paid": false,
+        "div.any": false,
+        "div.other_boxes": false,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "f1040.status": "qss",
+        "household.qss_eligible": true,
+        "f1040.line3a": 0,
+        "f4952.has_interest": false,
+        "f4952.line1": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f4952.line4g": 0,
+        "f8959.territory_w2": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "qbi.dividends": 0,
+        "s2.other_tax": false,
+        "s3.line10": 0,
+        "s3.adoption_any": false,
+        "s3.credit_bond": false,
+        "s3.disability_retired": false,
+        "s3.elderly_credit": false,
+        "s3.ev": false,
+        "s3.farmland": false,
+        "s3.foreign_any": false,
+        "s3.kerosene": false,
+        "s3.prior_other_forms": false,
+        "s3.repaid_income": false,
+        "sa.mortgage_unreported": false,
+        "sa.mortgage_over_limit": false,
+        "sa.mortgage_other_use": false,
+        "sa.sales_tax_wish": false,
+        "sa.foreign_tax_deduct": false,
+        "sa.estate_tax_income": false,
+        "sa.bond_premium": false,
+        "sa.debt_instrument_loss": false,
+        "sa.pension_unrecovered": false,
+        "sa.impairment_work": false,
+        "sa.gifts": false,
+        "sa.gift_carryover": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": true,
+        "sa.spouse_extra": false,
+        "person[taxpayer].birth_year": 1950,
+        "person[taxpayer].blind": true,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.medical_any": false,
+        "sa.medical_premiums": false,
+        "sa.line1": 0,
+        "sa.state_tax_any": false,
+        "sa.state_tax_other_any": false,
+        "sa.line5a": 0,
+        "sa.home_owner": false,
+        "sa.home_other": false,
+        "sa.line5b": 0,
+        "sa.personal_property_tax_any": false,
+        "sa.line5c": 0,
+        "sa.mortgage_interest": 0,
+        "sa.line11": 0,
+        "sb.bond_special": false,
+        "sb.bonds_any": false,
+        "sb.nominee": false,
+        "sb.account_any": false,
+        "sb.asset_any": false,
+        "sb.trust_any": false,
+        "sb.company_any": false,
+        "sb.territory_any": false,
+        "sb.form5471": false,
+        "sb.ordinary_dividends": 0,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "scope.noncitizen": false,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": false,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.reservist_expenses": false,
+        "scope.military_move": false,
+        "scope.rental": false,
+        "scope.k1": false,
+        "scope.farm": false,
+        "scope.clergy": false,
+        "scope.church_exempt_wages": false,
+        "scope.w2_marks": false,
+        "scope.performer_expenses": false,
+        "scope.recovery": false,
+        "scope.archer_msa": false,
+        "scope.se_plan_other": false,
+        "scope.reforestation": false,
+        "scope.attorney_fees": false,
+        "scope.nol": false,
+        "scope.nonresident": false,
+        "scope.chapter11": false,
+        "scope.reservist_repaid": false,
+        "scope.adoption_benefits": false,
+        "scope.pay_no_w2": false,
+        "scope.medicaid_waiver": false,
+        "scope.care_benefits_other": false,
+        "scope.disaster_distribution": false,
+        "scope.excess_deferral": false,
+        "scope.passive": false,
+        "scope.f8615": false,
+        "scope.f8814": false,
+        "scope.education_recapture": false,
+        "scope.income_averaging": false,
+        "scope.pfic": false,
+        "scope.cfc": false,
+        "scope.f8978": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "$sales": [],
+        "$interest": [],
+        "$gift": [],
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box3": 0,
+        "person[taxpayer].w2[a].box4": 0,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "person[taxpayer].eic_ssn": true,
+        "household.home_cost": false,
+        "household.considered_unmarried": true,
+        "household.ever_married": true,
+        "household.married_dec31": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false,
+        "household.spouse_died_this_year": false,
+        "household.cp_married": false,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "$retirement@person[taxpayer]": [],
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.any": false,
+        "refund.received": 0,
+        "s1.ltc_payout": false,
+        "s1.gambling_winnings": 0,
+        "s1.alaska_dividend": 0,
+        "s1.jury_pay": 0,
+        "s1.prizes": 0,
+        "s1.hobby_income": 0,
+        "s1.scholarship_taxable": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "person[taxpayer].eligible_educator": false,
+        "sli.interest": 0,
+        "sli.any": false,
+        "sli.unqualified_any": false,
+        "sli.unqualified": 0,
+        "sli.assisted_any": false,
+        "sli.assisted": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0,
+        "f5695.any": false,
+        "f5695.solar": false,
+        "f5695.solar_water": false,
+        "f5695.wind": false,
+        "f5695.geothermal": false,
+        "f5695.insulation": false,
+        "f5695.doors": false,
+        "f5695.windows": false,
+        "f5695.panel": false,
+        "f5695.audit": false,
+        "f5695.heat_pump": false,
+        "f5695.hp_water_heater": false,
+        "f5695.central_ac": false,
+        "f5695.water_heater": false,
+        "f5695.furnace": false,
+        "f5695.biomass": false,
+        "f5695.carry": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[a].box12_any": false,
+        "f2441.employer_care": false,
+        "s1.cod_any": false,
+        "$f1095a": [],
+        "sd.sold_other": false,
+        "sd.sec1256": false,
+        "sd.condemned": false,
+        "sd.small_business_stock": false,
+        "sd.trader_election": false,
+        "sd.casualty": false,
+        "s1.uc_any": false,
+        "s1.winnings_any": false,
+        "s1.alaska_any": false,
+        "s1.jury_any": false,
+        "s1.hobby_any": false,
+        "s1.scholarship_any": false,
+        "s1.alimony_any": false,
+        "s2.options_any": false,
+        "s2.w2_marks": false,
+        "s2.household_help": false,
+        "s2.hsa_testing": false,
+        "s2.credit_recapture": false,
+        "s2.mortgage_subsidy": false,
+        "s2.lookback": false,
+        "s1.nqdc_pension": false,
+        "s1.inmate_wages": false,
+        "s1.digital_income": false,
+        "s1.olympic": false,
+        "ssb.any": false,
+        "sd.qof": false,
+        "f1040.withheld_other_any": false,
+        "f1040.digital_assets": false
+      },
+      "expect": {
+        "f8960.line9a": {
+          "kind": "refusal",
+          "gate": "sa.dep_qss",
+          "form": "Standard Deduction Worksheet for Dependents, line 3, for a qualifying surviving spouse",
+          "remedy": "The Standard Deduction Worksheet for Dependents gives no amount for a qualifying surviving spouse whom someone else can claim as a dependent, so this tool does not figure that standard deduction.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3, \"Enter the amount shown below for your filing status\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mint.sa.mortgage_limit.over_limit_1098_only",
+      "covers": [
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mint), expected values predicted by hand from the archived sources before running the evaluator. Inputs of classm.tipjob.1 (single filer, home owner) with $12,000 of mortgage interest reported on Form 1098, no mortgage interest or points paid outside a Form 1098, no other use of the proceeds, and the answer that the interest is limited by the debt or fair-market-value limits. i1040sca p. 8, Limits on home mortgage interest: \"deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt ... See Pub. 936 to figure your deduction\", and Line 8a, \"Home mortgage interest limited. If your home mortgage interest deduction is limited, see Pub. 936 to figure the amount\". On a return that is not married filing separately with interest on line 8a the joint-limits question applies, so its gate is true, and the limited interest is a Schedule A item this tool does not compute (sa.unsupported true).",
+      "inputs": {
+        "div.any": false,
+        "f1040.status": "single",
+        "f1040.withheld_other_any": false,
+        "f1040.estimated_any": false,
+        "f2441.benefits": false,
+        "f2441.care": false,
+        "f5695.any": true,
+        "f5695.solar": true,
+        "f5695.solar_water": true,
+        "f5695.wind": true,
+        "f5695.geothermal": true,
+        "f5695.insulation": false,
+        "f5695.doors": false,
+        "f5695.windows": false,
+        "f5695.panel": false,
+        "f5695.audit": false,
+        "f5695.heat_pump": false,
+        "f5695.hp_water_heater": false,
+        "f5695.central_ac": false,
+        "f5695.water_heater": false,
+        "f5695.furnace": false,
+        "f5695.biomass": false,
+        "f5695.line5a": false,
+        "f5695.line7a": false,
+        "f8959.territory_w2": false,
+        "household.ever_married": true,
+        "household.married_dec31": false,
+        "household.community_property": false,
+        "household.spouse_died_this_year": false,
+        "refund.any": false,
+        "s1.uc_any": false,
+        "s1.ltc_payout": false,
+        "s1.nqdc_pension": false,
+        "s1.inmate_wages": false,
+        "s1.digital_income": false,
+        "s1.winnings_any": false,
+        "s1.alaska_any": false,
+        "s1.jury_any": false,
+        "s1.hobby_any": false,
+        "s1.scholarship_any": false,
+        "s1.alimony_any": false,
+        "s1.cod_any": false,
+        "s1a.tips": true,
+        "s1a.overtime": false,
+        "s2.options_any": false,
+        "s2.w2_marks": false,
+        "s2.household_help": false,
+        "s2.hsa_testing": false,
+        "s2.credit_recapture": false,
+        "s2.other_tax": false,
+        "sa.gifts": true,
+        "sa.charity_limited": true,
+        "sa.dependent": true,
+        "sa.home_owner": true,
+        "sa.mortgage_interest": 1200000,
+        "sb.nominee": false,
+        "sb.bonds_any": false,
+        "sb.fbar_required": true,
+        "scope.armed_forces": false,
+        "scope.f8814": true,
+        "scope.rental": false,
+        "scope.k1": true,
+        "scope.business_before": false,
+        "sd.sold_other": false,
+        "sd.sec1256": false,
+        "sd.condemned": false,
+        "sd.small_business_stock": false,
+        "sd.trader_election": false,
+        "sd.casualty": false,
+        "sd.carryover": false,
+        "person[taxpayer].role": "taxpayer",
+        "person[taxpayer].birth_year": 1980,
+        "person[taxpayer].work_ssn": true,
+        "person[taxpayer].rrta": false,
+        "person[taxpayer].ira_owner": true,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].f8889[hsa].line2": 0,
+        "person[taxpayer].f8889[hsa].line9": 0,
+        "person[taxpayer].f8889[hsa].line14a": 0,
+        "$person": [
+          "taxpayer"
+        ],
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$sc@person[taxpayer]": [],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 235400,
+        "person[taxpayer].w2[emp_a].box2": 14100,
+        "person[taxpayer].w2[emp_a].box5": 235400,
+        "person[taxpayer].w2[emp_a].box6": 3400,
+        "person[taxpayer].w2[emp_b].box1": 5059400,
+        "person[taxpayer].w2[emp_b].box2": 1113100,
+        "person[taxpayer].w2[emp_b].box5": 5059400,
+        "person[taxpayer].w2[emp_b].box6": 73400,
+        "$interest": [
+          "bank_a",
+          "bank_b"
+        ],
+        "interest[bank_a].amount": 40500,
+        "interest[bank_b].amount": 100,
+        "$sales": [],
+        "$gift": [
+          "item_a",
+          "item_b"
+        ],
+        "$dependent": [],
+        "$dcprov": [
+          "prov_a"
+        ],
+        "$oi8z": [],
+        "$retirement@person[taxpayer]": [],
+        "$tipjob@person[taxpayer]": [
+          "tip_1"
+        ],
+        "person[taxpayer].tipjob[tip_1].listed": true,
+        "person[taxpayer].tipjob[tip_1].other_work": false,
+        "person[taxpayer].tipjob[tip_1].charged": false,
+        "person[taxpayer].tipjob[tip_1].unlawful": false,
+        "person[taxpayer].tipjob[tip_1].tips": 1317200,
+        "$f1095a": [],
+        "sb.account_any": true,
+        "person[taxpayer].f8889[hsa].owner_died": false,
+        "person[taxpayer].f8889[hsa].inherited_any": false,
+        "person[taxpayer].f8889[hsa].archer": false,
+        "person[taxpayer].f8889[hsa].ira_transfer": false,
+        "person[taxpayer].f8889[hsa].excess_withdrawn": false,
+        "person[taxpayer].f8889[hsa].mistake_repaid": false,
+        "person[taxpayer].f8889[hsa].loan": false,
+        "person[taxpayer].f8889[hsa].ira_prior": false,
+        "person[taxpayer].f8889[hsa].testing_prior": false,
+        "sd.qof": false,
+        "s2.mortgage_subsidy": false,
+        "f1040.digital_assets": false,
+        "scope.pay_no_w2": false,
+        "scope.medicaid_waiver": false,
+        "sa.mortgage_unreported": false,
+        "sa.mortgage_over_limit": true,
+        "sa.mortgage_other_use": false,
+        "sa.elect_itemize": false,
+        "sa.excluded_income": false
+      },
+      "expect": {
+        "sa.mortgage_over_limit_if_joint_limits": {
+          "kind": "bool",
+          "value": true
+        },
+        "sa.unsupported": {
+          "kind": "bool",
+          "value": true
         }
       }
     }

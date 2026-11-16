@@ -1,0 +1,1240 @@
+form:
+  id: f1116sb
+  kind: form
+  title: Schedule B (Form 1116) — Foreign Tax Carryover Reconciliation Schedule (passive category)
+  tax_year: 2025
+  note: Filed with the passive category Form 1116 when foreign tax is carried into 2025 or a carryover is generated. Line
+    1 is the 2024 Schedule B line 8, column by column; line 2 is empty (an adjustment is refused); line 4 uses the carryover
+    oldest column first up to the excess limitation; line 5 is the 10th preceding year's carryover left unused; line 6 is
+    the current year's excess foreign tax; nothing is carried back (line 7 is zero, and a return whose 2024 limit had room
+    is refused).
+  lines:
+  - id: f1116sb.zero
+    printed: (helper)
+    type: NonNegDollars
+    label: Year parameter sales.zero
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 7. Actual or estimated amount of line 6 to be carried back to the prior tax year, "Enter the amount
+        of line 6 carried back to the first preceding tax year."
+  - id: f1116sb.no
+    printed: (helper)
+    type: Bool
+    label: Year parameter ftc.no (false)
+    expr:
+      op: param
+      ref: ftc.no
+    cite:
+      doc: i1116sb
+      locator: p. 1, Who Must File, "if you’re filing Form 1116 that has a foreign tax carryover in the prior tax year, the
+        current tax year, or both, you must file Schedule B for that separate category of income"
+  - id: f1116sb.l1_i
+    printed: 1 (i)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), 10th preceding tax year
+    expr:
+      op: sum_over
+      collection: f1116sbyr
+      field: f1116sbyr.amount
+      where:
+        op: test
+        eq:
+        - f1116sbyr.year
+        - const: p10
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 1. Foreign tax carryover from the prior tax year, "Enter on line 1 the amounts from the appropriate
+        columns of line 8 of the prior year Schedule B."
+  - id: f1116sb.l1_ii
+    printed: 1 (ii)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), 9th preceding tax year
+    expr:
+      op: sum_over
+      collection: f1116sbyr
+      field: f1116sbyr.amount
+      where:
+        op: test
+        eq:
+        - f1116sbyr.year
+        - const: p9
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 1. Foreign tax carryover from the prior tax year, "Enter on line 1 the amounts from the appropriate
+        columns of line 8 of the prior year Schedule B."
+  - id: f1116sb.l1_iii
+    printed: 1 (iii)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), 8th preceding tax year
+    expr:
+      op: sum_over
+      collection: f1116sbyr
+      field: f1116sbyr.amount
+      where:
+        op: test
+        eq:
+        - f1116sbyr.year
+        - const: p8
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 1. Foreign tax carryover from the prior tax year, "Enter on line 1 the amounts from the appropriate
+        columns of line 8 of the prior year Schedule B."
+  - id: f1116sb.l1_iv
+    printed: 1 (iv)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), 7th preceding tax year
+    expr:
+      op: sum_over
+      collection: f1116sbyr
+      field: f1116sbyr.amount
+      where:
+        op: test
+        eq:
+        - f1116sbyr.year
+        - const: p7
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 1. Foreign tax carryover from the prior tax year, "Enter on line 1 the amounts from the appropriate
+        columns of line 8 of the prior year Schedule B."
+  - id: f1116sb.l1_v
+    printed: 1 (v)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), 6th preceding tax year
+    expr:
+      op: sum_over
+      collection: f1116sbyr
+      field: f1116sbyr.amount
+      where:
+        op: test
+        eq:
+        - f1116sbyr.year
+        - const: p6
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 1. Foreign tax carryover from the prior tax year, "Enter on line 1 the amounts from the appropriate
+        columns of line 8 of the prior year Schedule B."
+  - id: f1116sb.l1_vi
+    printed: 1 (vi)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), 5th preceding tax year
+    expr:
+      op: sum_over
+      collection: f1116sbyr
+      field: f1116sbyr.amount
+      where:
+        op: test
+        eq:
+        - f1116sbyr.year
+        - const: p5
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 1. Foreign tax carryover from the prior tax year, "Enter on line 1 the amounts from the appropriate
+        columns of line 8 of the prior year Schedule B."
+  - id: f1116sb.l1_ix
+    printed: 1 (ix)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), 4th preceding tax year
+    expr:
+      op: sum_over
+      collection: f1116sbyr
+      field: f1116sbyr.amount
+      where:
+        op: test
+        eq:
+        - f1116sbyr.year
+        - const: p4
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 1. Foreign tax carryover from the prior tax year, "Enter on line 1 the amounts from the appropriate
+        columns of line 8 of the prior year Schedule B."
+  - id: f1116sb.l1_x
+    printed: 1 (x)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), 3rd preceding tax year
+    expr:
+      op: sum_over
+      collection: f1116sbyr
+      field: f1116sbyr.amount
+      where:
+        op: test
+        eq:
+        - f1116sbyr.year
+        - const: p3
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 1. Foreign tax carryover from the prior tax year, "Enter on line 1 the amounts from the appropriate
+        columns of line 8 of the prior year Schedule B."
+  - id: f1116sb.l1_xi
+    printed: 1 (xi)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), 2nd preceding tax year
+    expr:
+      op: sum_over
+      collection: f1116sbyr
+      field: f1116sbyr.amount
+      where:
+        op: test
+        eq:
+        - f1116sbyr.year
+        - const: p2
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 1. Foreign tax carryover from the prior tax year, "Enter on line 1 the amounts from the appropriate
+        columns of line 8 of the prior year Schedule B."
+  - id: f1116sb.l1_xii
+    printed: 1 (xii)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), 1st preceding tax year
+    expr:
+      op: sum_over
+      collection: f1116sbyr
+      field: f1116sbyr.amount
+      where:
+        op: test
+        eq:
+        - f1116sbyr.year
+        - const: p1
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 1. Foreign tax carryover from the prior tax year, "Enter on line 1 the amounts from the appropriate
+        columns of line 8 of the prior year Schedule B."
+  - id: f1116sb.l3_i
+    printed: 3 (i)
+    type: NonNegDollars
+    label: 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), 10th preceding tax year (line 2 is
+      empty on the returns prepared: an adjustment is refused)'
+    expr:
+      op: copy
+      from: f1116sb.l1_i
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 3. Adjusted foreign tax carryover from prior tax year, "Combine lines 1 and 2."
+  - id: f1116sb.l3_ii
+    printed: 3 (ii)
+    type: NonNegDollars
+    label: 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), 9th preceding tax year (line 2 is
+      empty on the returns prepared: an adjustment is refused)'
+    expr:
+      op: copy
+      from: f1116sb.l1_ii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 3. Adjusted foreign tax carryover from prior tax year, "Combine lines 1 and 2."
+  - id: f1116sb.l3_iii
+    printed: 3 (iii)
+    type: NonNegDollars
+    label: 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), 8th preceding tax year (line 2 is
+      empty on the returns prepared: an adjustment is refused)'
+    expr:
+      op: copy
+      from: f1116sb.l1_iii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 3. Adjusted foreign tax carryover from prior tax year, "Combine lines 1 and 2."
+  - id: f1116sb.l3_iv
+    printed: 3 (iv)
+    type: NonNegDollars
+    label: 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), 7th preceding tax year (line 2 is
+      empty on the returns prepared: an adjustment is refused)'
+    expr:
+      op: copy
+      from: f1116sb.l1_iv
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 3. Adjusted foreign tax carryover from prior tax year, "Combine lines 1 and 2."
+  - id: f1116sb.l3_v
+    printed: 3 (v)
+    type: NonNegDollars
+    label: 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), 6th preceding tax year (line 2 is
+      empty on the returns prepared: an adjustment is refused)'
+    expr:
+      op: copy
+      from: f1116sb.l1_v
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 3. Adjusted foreign tax carryover from prior tax year, "Combine lines 1 and 2."
+  - id: f1116sb.l3_vi
+    printed: 3 (vi)
+    type: NonNegDollars
+    label: 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), 5th preceding tax year (line 2 is
+      empty on the returns prepared: an adjustment is refused)'
+    expr:
+      op: copy
+      from: f1116sb.l1_vi
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 3. Adjusted foreign tax carryover from prior tax year, "Combine lines 1 and 2."
+  - id: f1116sb.l3_ix
+    printed: 3 (ix)
+    type: NonNegDollars
+    label: 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), 4th preceding tax year (line 2 is
+      empty on the returns prepared: an adjustment is refused)'
+    expr:
+      op: copy
+      from: f1116sb.l1_ix
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 3. Adjusted foreign tax carryover from prior tax year, "Combine lines 1 and 2."
+  - id: f1116sb.l3_x
+    printed: 3 (x)
+    type: NonNegDollars
+    label: 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), 3rd preceding tax year (line 2 is
+      empty on the returns prepared: an adjustment is refused)'
+    expr:
+      op: copy
+      from: f1116sb.l1_x
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 3. Adjusted foreign tax carryover from prior tax year, "Combine lines 1 and 2."
+  - id: f1116sb.l3_xi
+    printed: 3 (xi)
+    type: NonNegDollars
+    label: 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), 2nd preceding tax year (line 2 is
+      empty on the returns prepared: an adjustment is refused)'
+    expr:
+      op: copy
+      from: f1116sb.l1_xi
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 3. Adjusted foreign tax carryover from prior tax year, "Combine lines 1 and 2."
+  - id: f1116sb.l3_xii
+    printed: 3 (xii)
+    type: NonNegDollars
+    label: 'Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), 1st preceding tax year (line 2 is
+      empty on the returns prepared: an adjustment is refused)'
+    expr:
+      op: copy
+      from: f1116sb.l1_xii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 3. Adjusted foreign tax carryover from prior tax year, "Combine lines 1 and 2."
+  - id: f1116sb.current
+    printed: (helper)
+    type: Dollars
+    label: 'Current year foreign taxes available for credit: Form 1116 lines 9, 12 and 13 combined (line 14 less line 10)'
+    expr:
+      op: subtract
+      from: f1116.line14
+      take: f1116.line10
+    cite:
+      doc: i1116sb
+      locator: p. 1, Excess limitation. If your foreign tax credit limitation, "your current year foreign taxes available
+        for credit (the sum of Form 1116, Part III, lines 9, 12, and 13)"
+  - id: f1116sb.excess_limit
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Excess limitation: Form 1116 line 23 above the current year foreign taxes available for credit (zero if not above)'
+    expr:
+      op: subtract_floor0
+      from: f1116.line23
+      take: f1116sb.current
+    cite:
+      doc: i1116sb
+      locator: p. 1, Excess limitation. If your foreign tax credit limitation, "(Form 1116, Part III, line 23) exceeds your
+        current year foreign taxes available for credit (the sum of Form 1116, Part III, lines 9, 12, and 13), you have an
+        excess limitation."
+  - id: f1116sb.used_i
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Carryover of the 10th preceding tax year used in the current year: line 3 of the column, but not more than the
+      excess limitation left'
+    expr:
+      op: smaller_of
+      of:
+      - f1116sb.l3_i
+      - f1116sb.excess_limit
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.room_ii
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Excess limitation left for the 9th preceding tax year: what the earlier columns of line 4 did not use'
+    expr:
+      op: subtract_floor0
+      from: f1116sb.excess_limit
+      take: f1116sb.used_i
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.used_ii
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Carryover of the 9th preceding tax year used in the current year: line 3 of the column, but not more than the
+      excess limitation left'
+    expr:
+      op: smaller_of
+      of:
+      - f1116sb.l3_ii
+      - f1116sb.room_ii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.room_iii
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Excess limitation left for the 8th preceding tax year: what the earlier columns of line 4 did not use'
+    expr:
+      op: subtract_floor0
+      from: f1116sb.room_ii
+      take: f1116sb.used_ii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.used_iii
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Carryover of the 8th preceding tax year used in the current year: line 3 of the column, but not more than the
+      excess limitation left'
+    expr:
+      op: smaller_of
+      of:
+      - f1116sb.l3_iii
+      - f1116sb.room_iii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.room_iv
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Excess limitation left for the 7th preceding tax year: what the earlier columns of line 4 did not use'
+    expr:
+      op: subtract_floor0
+      from: f1116sb.room_iii
+      take: f1116sb.used_iii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.used_iv
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Carryover of the 7th preceding tax year used in the current year: line 3 of the column, but not more than the
+      excess limitation left'
+    expr:
+      op: smaller_of
+      of:
+      - f1116sb.l3_iv
+      - f1116sb.room_iv
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.room_v
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Excess limitation left for the 6th preceding tax year: what the earlier columns of line 4 did not use'
+    expr:
+      op: subtract_floor0
+      from: f1116sb.room_iv
+      take: f1116sb.used_iv
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.used_v
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Carryover of the 6th preceding tax year used in the current year: line 3 of the column, but not more than the
+      excess limitation left'
+    expr:
+      op: smaller_of
+      of:
+      - f1116sb.l3_v
+      - f1116sb.room_v
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.room_vi
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Excess limitation left for the 5th preceding tax year: what the earlier columns of line 4 did not use'
+    expr:
+      op: subtract_floor0
+      from: f1116sb.room_v
+      take: f1116sb.used_v
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.used_vi
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Carryover of the 5th preceding tax year used in the current year: line 3 of the column, but not more than the
+      excess limitation left'
+    expr:
+      op: smaller_of
+      of:
+      - f1116sb.l3_vi
+      - f1116sb.room_vi
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.room_ix
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Excess limitation left for the 4th preceding tax year: what the earlier columns of line 4 did not use'
+    expr:
+      op: subtract_floor0
+      from: f1116sb.room_vi
+      take: f1116sb.used_vi
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.used_ix
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Carryover of the 4th preceding tax year used in the current year: line 3 of the column, but not more than the
+      excess limitation left'
+    expr:
+      op: smaller_of
+      of:
+      - f1116sb.l3_ix
+      - f1116sb.room_ix
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.room_x
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Excess limitation left for the 3rd preceding tax year: what the earlier columns of line 4 did not use'
+    expr:
+      op: subtract_floor0
+      from: f1116sb.room_ix
+      take: f1116sb.used_ix
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.used_x
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Carryover of the 3rd preceding tax year used in the current year: line 3 of the column, but not more than the
+      excess limitation left'
+    expr:
+      op: smaller_of
+      of:
+      - f1116sb.l3_x
+      - f1116sb.room_x
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.room_xi
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Excess limitation left for the 2nd preceding tax year: what the earlier columns of line 4 did not use'
+    expr:
+      op: subtract_floor0
+      from: f1116sb.room_x
+      take: f1116sb.used_x
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.used_xi
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Carryover of the 2nd preceding tax year used in the current year: line 3 of the column, but not more than the
+      excess limitation left'
+    expr:
+      op: smaller_of
+      of:
+      - f1116sb.l3_xi
+      - f1116sb.room_xi
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.room_xii
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Excess limitation left for the 1st preceding tax year: what the earlier columns of line 4 did not use'
+    expr:
+      op: subtract_floor0
+      from: f1116sb.room_xi
+      take: f1116sb.used_xi
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.used_xii
+    printed: (helper)
+    type: NonNegDollars
+    label: 'Carryover of the 1st preceding tax year used in the current year: line 3 of the column, but not more than the
+      excess limitation left'
+    expr:
+      op: smaller_of
+      of:
+      - f1116sb.l3_xii
+      - f1116sb.room_xii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l4_i
+    printed: 4 (i)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), 10th preceding tax year
+    expr:
+      op: subtract
+      from: f1116sb.zero
+      take: f1116sb.used_i
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l4_ii
+    printed: 4 (ii)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), 9th preceding tax year
+    expr:
+      op: subtract
+      from: f1116sb.zero
+      take: f1116sb.used_ii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l4_iii
+    printed: 4 (iii)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), 8th preceding tax year
+    expr:
+      op: subtract
+      from: f1116sb.zero
+      take: f1116sb.used_iii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l4_iv
+    printed: 4 (iv)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), 7th preceding tax year
+    expr:
+      op: subtract
+      from: f1116sb.zero
+      take: f1116sb.used_iv
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l4_v
+    printed: 4 (v)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), 6th preceding tax year
+    expr:
+      op: subtract
+      from: f1116sb.zero
+      take: f1116sb.used_v
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l4_vi
+    printed: 4 (vi)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), 5th preceding tax year
+    expr:
+      op: subtract
+      from: f1116sb.zero
+      take: f1116sb.used_vi
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l4_ix
+    printed: 4 (ix)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), 4th preceding tax year
+    expr:
+      op: subtract
+      from: f1116sb.zero
+      take: f1116sb.used_ix
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l4_x
+    printed: 4 (x)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), 3rd preceding tax year
+    expr:
+      op: subtract
+      from: f1116sb.zero
+      take: f1116sb.used_x
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l4_xi
+    printed: 4 (xi)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), 2nd preceding tax year
+    expr:
+      op: subtract
+      from: f1116sb.zero
+      take: f1116sb.used_xi
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l4_xii
+    printed: 4 (xii)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), 1st preceding tax year
+    expr:
+      op: subtract
+      from: f1116sb.zero
+      take: f1116sb.used_xii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 4. Foreign tax carryover used in current tax year, "the amount to be entered on line 4 of a given
+        column will be the amount on line 3 of that column, but only to the extent that it doesn’t exceed"; "The amount of
+        the current year excess limitation (defined earlier), less"; "The sum of all amounts entered in all previous columns
+        of line 4"
+  - id: f1116sb.l5_i
+    printed: 5 (i), (vii), (viii) and (xiv)
+    type: Dollars
+    label: 'Foreign tax carryover expired unused in current tax year (entered as a negative number): the 10th preceding tax
+      year''s line 3 not used on line 4 (the same amount in the subtotal and totals columns)'
+    expr:
+      op: subtract
+      from: f1116sb.used_i
+      take: f1116sb.l3_i
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 5. Foreign tax carryover expired unused in current tax year, "For the 10th preceding tax year (column
+        (i)), combine lines 3 and 4 and enter the result on line 5, column (i)."
+  - id: f1116sb.l6_xiii
+    printed: 6 (xiii) and (xiv)
+    type: NonNegDollars
+    label: 'Foreign tax carryover generated in current tax year: Form 1116 lines 9, 12 and 13 above line 23 (the same amount
+      in the totals column)'
+    expr:
+      op: subtract_floor0
+      from: f1116sb.current
+      take: f1116.line23
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 6. Foreign tax carryover generated in current tax year, "the amount by which the sum of Form 1116,
+        Part III, lines 9, 12, and 13, exceeds the amount on Form 1116, Part III, line 23"; "Also enter the same amount in
+        the “Totals” column (column (xiv))."
+  - id: f1116sb.l7_xiii
+    printed: 7 (xiii) and (xiv)
+    type: Dollars
+    label: 'Actual or estimated amount of line 6 to be carried back to prior tax year (entered as a negative number) (zero:
+      the tool carries nothing back; a return whose 2024 limit had room is refused)'
+    expr:
+      op: copy
+      from: f1116sb.zero
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 7. Actual or estimated amount of line 6 to be carried back to the prior tax year, "Enter the amount
+        of line 6 carried back to the first preceding tax year."; "In order to carry back amounts to the first preceding tax
+        year, that first preceding tax year must be an excess limitation year"
+    ambiguity: amb.2025.f1116_carryback
+  - id: f1116sb.l8_ii
+    printed: 8 (ii)
+    type: NonNegDollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, 9th preceding tax year
+    expr:
+      op: subtract_floor0
+      from: f1116sb.l3_ii
+      take: f1116sb.used_ii
+    cite:
+      doc: f1116sb
+      locator: p. 1, Foreign Tax Carryover, "Combine lines 3 through 7"
+  - id: f1116sb.l8_iii
+    printed: 8 (iii)
+    type: NonNegDollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, 8th preceding tax year
+    expr:
+      op: subtract_floor0
+      from: f1116sb.l3_iii
+      take: f1116sb.used_iii
+    cite:
+      doc: f1116sb
+      locator: p. 1, Foreign Tax Carryover, "Combine lines 3 through 7"
+  - id: f1116sb.l8_iv
+    printed: 8 (iv)
+    type: NonNegDollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, 7th preceding tax year
+    expr:
+      op: subtract_floor0
+      from: f1116sb.l3_iv
+      take: f1116sb.used_iv
+    cite:
+      doc: f1116sb
+      locator: p. 1, Foreign Tax Carryover, "Combine lines 3 through 7"
+  - id: f1116sb.l8_v
+    printed: 8 (v)
+    type: NonNegDollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, 6th preceding tax year
+    expr:
+      op: subtract_floor0
+      from: f1116sb.l3_v
+      take: f1116sb.used_v
+    cite:
+      doc: f1116sb
+      locator: p. 1, Foreign Tax Carryover, "Combine lines 3 through 7"
+  - id: f1116sb.l8_vi
+    printed: 8 (vi)
+    type: NonNegDollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, 5th preceding tax year
+    expr:
+      op: subtract_floor0
+      from: f1116sb.l3_vi
+      take: f1116sb.used_vi
+    cite:
+      doc: f1116sb
+      locator: p. 1, Foreign Tax Carryover, "Combine lines 3 through 7"
+  - id: f1116sb.l8_ix
+    printed: 8 (ix)
+    type: NonNegDollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, 4th preceding tax year
+    expr:
+      op: subtract_floor0
+      from: f1116sb.l3_ix
+      take: f1116sb.used_ix
+    cite:
+      doc: f1116sb
+      locator: p. 2, Foreign Tax Carryover, "Combine lines 3 through 7"
+  - id: f1116sb.l8_x
+    printed: 8 (x)
+    type: NonNegDollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, 3rd preceding tax year
+    expr:
+      op: subtract_floor0
+      from: f1116sb.l3_x
+      take: f1116sb.used_x
+    cite:
+      doc: f1116sb
+      locator: p. 2, Foreign Tax Carryover, "Combine lines 3 through 7"
+  - id: f1116sb.l8_xi
+    printed: 8 (xi)
+    type: NonNegDollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, 2nd preceding tax year
+    expr:
+      op: subtract_floor0
+      from: f1116sb.l3_xi
+      take: f1116sb.used_xi
+    cite:
+      doc: f1116sb
+      locator: p. 2, Foreign Tax Carryover, "Combine lines 3 through 7"
+  - id: f1116sb.l8_xii
+    printed: 8 (xii)
+    type: NonNegDollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, 1st preceding tax year
+    expr:
+      op: subtract_floor0
+      from: f1116sb.l3_xii
+      take: f1116sb.used_xii
+    cite:
+      doc: f1116sb
+      locator: p. 2, Foreign Tax Carryover, "Combine lines 3 through 7"
+  - id: f1116sb.l8_xiii
+    printed: 8 (xiii)
+    type: Dollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, current tax year
+    expr:
+      op: sum
+      of:
+      - f1116sb.l6_xiii
+      - f1116sb.l7_xiii
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 7. Actual or estimated amount of line 6 to be carried back to the prior tax year, "When this line
+        7 carryback amount is subtracted from line 6, the difference is the amount of the foreign tax carryover generated
+        in the current tax year which will be carried forward"
+  - id: f1116sb.l1_vii
+    printed: 1 (vii) and (viii)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), subtotal of columns (i) through (vi) (entered again in column (viii))
+    expr:
+      op: sum
+      of:
+      - f1116sb.l1_i
+      - f1116sb.l1_ii
+      - f1116sb.l1_iii
+      - f1116sb.l1_iv
+      - f1116sb.l1_v
+      - f1116sb.l1_vi
+    cite:
+      doc: f1116sb
+      locator: p. 1, Foreign Tax Carryover, "(add columns (i) through (vi))"
+  - id: f1116sb.l1_xiv
+    printed: 1 (xiv)
+    type: NonNegDollars
+    label: Foreign tax carryover from the prior tax year (enter amounts from the appropriate columns of line 8 of the prior
+      year Schedule B), totals (add columns (viii) through (xiii))
+    expr:
+      op: sum
+      of:
+      - f1116sb.l1_vii
+      - f1116sb.l1_ix
+      - f1116sb.l1_x
+      - f1116sb.l1_xi
+      - f1116sb.l1_xii
+    cite:
+      doc: f1116sb
+      locator: p. 2, Foreign Tax Carryover, "(add columns (viii) through (xiii))"
+  - id: f1116sb.l3_vii
+    printed: 3 (vii) and (viii)
+    type: NonNegDollars
+    label: Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), subtotal of columns (i) through (vi)
+      (entered again in column (viii))
+    expr:
+      op: sum
+      of:
+      - f1116sb.l3_i
+      - f1116sb.l3_ii
+      - f1116sb.l3_iii
+      - f1116sb.l3_iv
+      - f1116sb.l3_v
+      - f1116sb.l3_vi
+    cite:
+      doc: f1116sb
+      locator: p. 1, Foreign Tax Carryover, "(add columns (i) through (vi))"
+  - id: f1116sb.l3_xiv
+    printed: 3 (xiv)
+    type: NonNegDollars
+    label: Adjusted foreign tax carryover from prior tax year (combine lines 1 and 2), totals (add columns (viii) through
+      (xiii))
+    expr:
+      op: sum
+      of:
+      - f1116sb.l3_vii
+      - f1116sb.l3_ix
+      - f1116sb.l3_x
+      - f1116sb.l3_xi
+      - f1116sb.l3_xii
+    cite:
+      doc: f1116sb
+      locator: p. 2, Foreign Tax Carryover, "Include the column (xiv) total on the current year Form 1116, Part III, line
+        10."
+  - id: f1116sb.l4_vii
+    printed: 4 (vii) and (viii)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), subtotal of columns (i) through
+      (vi) (entered again in column (viii))
+    expr:
+      op: sum
+      of:
+      - f1116sb.l4_i
+      - f1116sb.l4_ii
+      - f1116sb.l4_iii
+      - f1116sb.l4_iv
+      - f1116sb.l4_v
+      - f1116sb.l4_vi
+    cite:
+      doc: f1116sb
+      locator: p. 1, Foreign Tax Carryover, "(add columns (i) through (vi))"
+  - id: f1116sb.l4_xiv
+    printed: 4 (xiv)
+    type: Dollars
+    label: Foreign tax carryover used in current tax year (entered as a negative number), totals (add columns (viii) through
+      (xiii))
+    expr:
+      op: sum
+      of:
+      - f1116sb.l4_vii
+      - f1116sb.l4_ix
+      - f1116sb.l4_x
+      - f1116sb.l4_xi
+      - f1116sb.l4_xii
+    cite:
+      doc: f1116sb
+      locator: p. 2, Foreign Tax Carryover, "(add columns (viii) through (xiii))"
+  - id: f1116sb.l8_vii
+    printed: 8 (vii) and (viii)
+    type: NonNegDollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, subtotal of columns (i) through (vi)
+      (entered again in column (viii))
+    expr:
+      op: sum
+      of:
+      - f1116sb.l8_ii
+      - f1116sb.l8_iii
+      - f1116sb.l8_iv
+      - f1116sb.l8_v
+      - f1116sb.l8_vi
+    cite:
+      doc: f1116sb
+      locator: p. 1, Foreign Tax Carryover, "(add columns (i) through (vi))"
+  - id: f1116sb.l8_xiv
+    printed: 8 (xiv)
+    type: Dollars
+    label: Foreign tax carryover to the following tax year. Combine lines 3 through 7, totals (add columns (viii) through
+      (xiii))
+    expr:
+      op: sum
+      of:
+      - f1116sb.l8_vii
+      - f1116sb.l8_ix
+      - f1116sb.l8_x
+      - f1116sb.l8_xi
+      - f1116sb.l8_xii
+      - f1116sb.l8_xiii
+    cite:
+      doc: f1116sb
+      locator: p. 2, Foreign Tax Carryover, "(add columns (viii) through (xiii))"
+  - id: f1116sb.changed
+    printed: (helper)
+    type: Bool
+    label: Has the foreign tax carried from 2024 changed since that return was filed (a carryback different from its estimate,
+      a redetermination of foreign tax, an audit or another adjustment of Schedule B line 2)?
+    expr:
+      op: input
+      source: Since you filed your 2024 return, has anything changed the foreign tax carried from it, such as a carryback
+        to 2023 that differs from the estimate on line 7 of the 2024 Schedule B (Form 1116), a change in foreign tax for an
+        earlier year, or an IRS audit?
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 2. Adjustments to line 1, "Report on lines 2a, 2b, 2c, 2d, etc., any adjustments resulting from
+        events that occurred between the filing of your prior year tax return and the filing of your current year tax return."
+    gated_by: f1116sb.changed_if_carry
+  - id: f1116sb.changed_if_carry
+    printed: (gate)
+    type: Bool
+    label: The foreign tax carried from 2024 has changed since that return was filed, asked only when a carryover is claimed
+      (false otherwise)
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ftc.carryover_if_asked
+          - const: true
+        then: f1116sb.changed
+      - guard:
+          op: test
+          eq:
+          - ftc.carryover_if_asked
+          - const: false
+        then: f1116sb.no
+    cite:
+      doc: i1116sb
+      locator: p. 1, Line 2. Adjustments to line 1, "Report on lines 2a, 2b, 2c, 2d, etc., any adjustments resulting from
+        events that occurred between the filing of your prior year tax return and the filing of your current year tax return."
+  - id: f1116sb.split
+    printed: (helper)
+    type: Bool
+    label: Is foreign tax carried from a joint return of an earlier year when this return is not a joint return (or is joint
+      with another spouse)?
+    expr:
+      op: input
+      source: Is any of the foreign tax carried into 2025 from a joint return of an earlier year, when this return is not
+        a joint return with the same spouse?
+    cite:
+      doc: p514
+      locator: p. 39, Allocations Between Spouses, "You may have to allocate an unused foreign tax or excess limit for a tax
+        year in which you and your spouse filed a joint return."
+    gated_by: f1116sb.split_if_carry
+  - id: f1116sb.split_if_carry
+    printed: (gate)
+    type: Bool
+    label: Foreign tax is carried from a joint return of an earlier year that this return does not continue, asked only when
+      a carryover is claimed (false otherwise)
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - ftc.carryover_if_asked
+          - const: true
+        then: f1116sb.split
+      - guard:
+          op: test
+          eq:
+          - ftc.carryover_if_asked
+          - const: false
+        then: f1116sb.no
+    cite:
+      doc: p514
+      locator: p. 39, Allocations Between Spouses, "You may have to allocate an unused foreign tax or excess limit for a tax
+        year in which you and your spouse filed a joint return."
+  - id: f1116sb.generated
+    printed: (gate)
+    type: Bool
+    label: A foreign tax carryover is generated in the current year (line 6 above zero)
+    expr:
+      op: test
+      gt:
+      - f1116sb.l6_xiii
+      - const: 0
+    cite:
+      doc: i1116sb
+      locator: p. 2, Line 6. Foreign tax carryover generated in current tax year, "line 6 is completed only if you have current
+        year excess foreign taxes"
+  - id: f1116sb.prior_none
+    printed: (helper)
+    type: Enum(ftc_prior_year)
+    label: Year parameter f1116sb.prior_none (none)
+    expr:
+      op: param
+      ref: f1116sb.prior_none
+    cite:
+      doc: p514
+      locator: p. 37, Carryback and Carryover, "You are considered to have paid this unused foreign tax first in 2024 (the
+        first preceding tax year) up to the excess limit in that year"; "Because you had no foreign income in 2020, you cannot
+        carry back the unused foreign tax to that year."; p. 38, "You cannot carry back or carry over any unused foreign taxes
+        to or from a year for which you elect not to be subject to the foreign tax credit limit."; i1116 p. 19, Line 10, "You
+        can’t carry over unused foreign taxes paid or accrued in a year to which the election doesn’t apply to or from any
+        year for which you made the election."
+  - id: f1116sb.prior_year
+    printed: (helper)
+    type: Enum(ftc_prior_year)
+    label: 'How the 2024 return treated foreign tax on passive income: no foreign income, the credit without Form 1116, Form
+      1116 with its limit used up (line 24 equal to line 23), Form 1116 with room left (line 24 less than line 23), or foreign
+      income with the tax deducted or no credit taken'
+    expr:
+      op: input
+      source: 'How did your (or, on a joint return, your spouse''s) 2024 return treat foreign tax on investment income: no
+        income from other countries, a credit without Form 1116, Form 1116 with line 24 equal to line 23, Form 1116 with line
+        24 less than line 23, or the tax deducted or no credit taken?'
+    cite:
+      doc: p514
+      locator: p. 37, Carryback and Carryover, "You are considered to have paid this unused foreign tax first in 2024 (the
+        first preceding tax year) up to the excess limit in that year"; "Because you had no foreign income in 2020, you cannot
+        carry back the unused foreign tax to that year."; p. 38, "You cannot carry back or carry over any unused foreign taxes
+        to or from a year for which you elect not to be subject to the foreign tax credit limit."; i1116 p. 19, Line 10, "You
+        can’t carry over unused foreign taxes paid or accrued in a year to which the election doesn’t apply to or from any
+        year for which you made the election."
+    gated_by: f1116sb.prior_year_if_excess
+    ambiguity: amb.2025.f1116_carryback
+  - id: f1116sb.prior_year_if_excess
+    printed: (gate)
+    type: Enum(ftc_prior_year)
+    label: How the 2024 return treated foreign tax on passive income, asked only when a carryover is generated (line 6 above
+      zero); none otherwise
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f1116sb.generated
+          - const: true
+        then: f1116sb.prior_year
+      - guard:
+          op: test
+          eq:
+          - f1116sb.generated
+          - const: false
+        then: f1116sb.prior_none
+    cite:
+      doc: p514
+      locator: p. 37, Carryback and Carryover, "You are considered to have paid this unused foreign tax first in 2024 (the
+        first preceding tax year) up to the excess limit in that year"; "Because you had no foreign income in 2020, you cannot
+        carry back the unused foreign tax to that year."; p. 38, "You cannot carry back or carry over any unused foreign taxes
+        to or from a year for which you elect not to be subject to the foreign tax credit limit."; i1116 p. 19, Line 10, "You
+        can’t carry over unused foreign taxes paid or accrued in a year to which the election doesn’t apply to or from any
+        year for which you made the election."
+  - id: f1116sb.carryback
+    printed: (gate)
+    type: Bool
+    label: The carryover generated is first carried back to 2024, which had room under its limit (Form 1116 line 24 less than
+      line 23) or foreign income with no credit taken
+    expr:
+      op: test
+      any:
+      - op: test
+        eq:
+        - f1116sb.prior_year_if_excess
+        - const: form_room
+      - op: test
+        eq:
+        - f1116sb.prior_year_if_excess
+        - const: other
+    cite:
+      doc: p514
+      locator: p. 37, Carryback and Carryover, "You are considered to have paid this unused foreign tax first in 2024 (the
+        first preceding tax year) up to the excess limit in that year"; "Because you had no foreign income in 2020, you cannot
+        carry back the unused foreign tax to that year."; p. 38, "You cannot carry back or carry over any unused foreign taxes
+        to or from a year for which you elect not to be subject to the foreign tax credit limit."; i1116 p. 19, Line 10, "You
+        can’t carry over unused foreign taxes paid or accrued in a year to which the election doesn’t apply to or from any
+        year for which you made the election."
+    ambiguity: amb.2025.f1116_carryback

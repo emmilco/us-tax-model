@@ -1,0 +1,81 @@
+{
+ "kind": "transcription",
+ "form": "rf4562",
+ "family": "claude",
+ "base": "9b62ab35e28d9d0177f32571aa2b453beaac27a81dd3b0ef81b5e8e49e1738f4",
+ "lines": [
+  {
+   "key": "17",
+   "record": "9b62ab35e28d9d0177f32571aa2b453beaac27a81dd3b0ef81b5e8e49e1738f4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (rf4562.line17: \"rf4562.rf4562.line17: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "4f119e79b1e76a2ce070ad01d8ddc3cb4bb1c6c5fa7ddfa378d71d0399e64fbb",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rental.has_2025": "rental.needs_4562"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "da06df34a432d2b7301573283fbeaaf4c963608625a8787f90e3dfa4a3dc3c72"
+   }
+  },
+  {
+   "key": "19i(g)",
+   "record": "9b62ab35e28d9d0177f32571aa2b453beaac27a81dd3b0ef81b5e8e49e1738f4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (rf4562.line19i: \"rf4562.rf4562.line19i: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "05ca6c2c031b367d0a400ea4dd3c3cb781431939826c797cf39ca8e46d7d64ac",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rental.has_2025": "rental.needs_4562"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "173f889ae15e2c4003ca04ea54fa8d22236a2fa87484efe365cb7f95051a3095"
+   }
+  },
+  {
+   "key": "19j(g)",
+   "record": "9b62ab35e28d9d0177f32571aa2b453beaac27a81dd3b0ef81b5e8e49e1738f4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (rf4562.line19j: \"rf4562.rf4562.line19j: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "4a619cf7977504adb7b19225d6e78a48fbae1e161d15c4a5b1aaae930ba6e347",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rental.has_2025": "rental.needs_4562"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "0fa1fd9427fad090b98ebc8980e32ac8b10b98d652995780610aa283c5658ecd"
+   }
+  },
+  {
+   "key": "22",
+   "record": "9b62ab35e28d9d0177f32571aa2b453beaac27a81dd3b0ef81b5e8e49e1738f4",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (rf4562.h_19_other: \"rf4562.rf4562.h_19_other: collection parent binding mismatch\"; rf4562.line17: \"rf4562.rf4562.line17: collection parent binding mismatch\"; rf4562.line19i: \"rf4562.rf4562.line19i: collection parent binding mismatch\"; rf4562.line19j: \"rf4562.rf4562.line19j: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "subject_key": "1b71686041590aa6902ee55a7d6f8daebc239c464ccbfdd52fbbd27dec62422c",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rental.has_2025": "rental.needs_4562"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "63335e9c8d5a653e20bb79e5fe91fa3e28ccb7ffc713653ca1e5f841aa1de034"
+   }
+  }
+ ],
+ "subjects": {
+  "17": "5f10f24bf4e27904bd55c9bf5d396bb7190c13f59c40f406f879f3a1056082fe",
+  "19i(g)": "ef2f57d60a3792cbded5eecd474ee52b3640128905b2873da737b59becefe90f",
+  "19j(g)": "c58e8520dcc19924e8f31730808473c4338e2a54e40f2f9ee74a1bad5dbaf519",
+  "22": "10847be8010d7f43a81b0db198d24adeedbb124df36bb84cc186db1863f20304"
+ },
+ "__rest__": "913497079ba429db139ea35d349cf6d975c00ea92bee667319e8bb9307126f6d",
+ "foreign": {
+  "17": "bddf704fda6fa6f5ec514eaa25986d6c8b3c47ac76decb8522f8d826527d3244",
+  "19i(g)": "459d500f77a5e6066a628cbc0d705c71f336dd17b1da5a686dcabd7cbd74e3bc",
+  "19j(g)": "66cb491c466cf771ccb3e692a7e2619aa800e55674df9d90f572e50abe9e2f6e",
+  "22": "f36e97489186fc8abc5c3522d5b7a925664334129f08a6d66245bb5cbf6388e7"
+ }
+}

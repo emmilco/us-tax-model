@@ -164,7 +164,6 @@
         "ftc.all_passive": true,
         "ftc.statements": false,
         "ftc.eligible": false,
-        "ftc.elect": true,
         "household.home_cost": false,
         "household.considered_unmarried": true,
         "household.ever_married": true,
@@ -331,7 +330,6 @@
         "sli.assisted": 0,
         "ssb.benefits": 0,
         "ssb.terror_disability": false,
-        "ssb.lived_apart": true,
         "person[taxpayer].role": "taxpayer",
         "person[taxpayer].birth_year": 1965,
         "person[taxpayer].blind": false,
@@ -743,7 +741,8 @@
         "ssb.repaid_more": true,
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "f8962.line1": {
@@ -886,7 +885,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "s3.line10": 0,
         "s3.adoption_any": false,
         "s3.credit_bond": false,
@@ -1241,7 +1239,8 @@
         "s1.digital_income": false,
         "s1.olympic": false,
         "ssb.any": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "f8962.line1": {
@@ -1506,7 +1505,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "household.home_cost": true,
         "household.considered_unmarried": true,
         "household.ever_married": true,
@@ -1673,7 +1671,6 @@
         "sli.assisted": 0,
         "ssb.benefits": 3684100,
         "ssb.terror_disability": false,
-        "ssb.lived_apart": false,
         "person[taxpayer].role": "taxpayer",
         "person[taxpayer].birth_year": 1980,
         "person[taxpayer].blind": false,
@@ -2141,7 +2138,8 @@
         "ssb.repaid_more": false,
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "f8962.line1": {
@@ -2394,7 +2392,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "household.home_cost": true,
         "household.considered_unmarried": true,
         "household.ever_married": true,
@@ -2562,7 +2559,6 @@
         "sli.assisted": 0,
         "ssb.benefits": 0,
         "ssb.terror_disability": false,
-        "ssb.lived_apart": false,
         "person[taxpayer].role": "taxpayer",
         "person[taxpayer].birth_year": 1980,
         "person[taxpayer].blind": false,
@@ -2782,7 +2778,8 @@
         "ssb.repaid_more": false,
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "f8962.line1": {
@@ -3040,7 +3037,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "household.home_cost": true,
         "household.considered_unmarried": false,
         "household.ever_married": true,
@@ -3208,7 +3204,6 @@
         "sli.assisted": 0,
         "ssb.benefits": 0,
         "ssb.terror_disability": false,
-        "ssb.lived_apart": false,
         "person[taxpayer].role": "taxpayer",
         "person[taxpayer].birth_year": 1980,
         "person[taxpayer].blind": false,
@@ -3915,7 +3910,8 @@
         "ssb.repaid_more": false,
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false
       },
       "expect": {
         "f8962.line1": {
@@ -4042,7 +4038,6 @@
         "eic.qc_of_another": false,
         "eic.died_this_year": false,
         "eic.us_home": true,
-        "eic.same_home": false,
         "eic.legally_separated": false,
         "f1040.status": "mfs",
         "f1040.tax_exempt_interest": 0,
@@ -4172,11 +4167,10 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "household.home_cost": true,
         "household.considered_unmarried": true,
         "household.ever_married": true,
-        "household.married_dec31": false,
+        "household.married_dec31": true,
         "household.community_property": false,
         "household.credit_disallowed": false,
         "household.qss_eligible": true,
@@ -4340,7 +4334,6 @@
         "sli.assisted": 0,
         "ssb.benefits": 0,
         "ssb.terror_disability": false,
-        "ssb.lived_apart": false,
         "person[taxpayer].role": "taxpayer",
         "person[taxpayer].birth_year": 1975,
         "person[taxpayer].blind": false,
@@ -4649,7 +4642,11 @@
         "ssb.repaid_more": false,
         "ssb.ira_covered": false,
         "ssb.prior_year_pay": false,
-        "sd.qof": false
+        "sd.qof": false,
+        "f1040.digital_assets": false,
+        "sa.mortgage_over_limit_mfs": false,
+        "household.mfs_living": "apart_last6",
+        "f8962.mfs_exception": false
       },
       "expect": {
         "f1095a[form_1].a_jan": {

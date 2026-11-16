@@ -5,6 +5,16 @@
   {
    "printed": "2",
    "restated": "Input — Bound by the calling line (this person's Schedule C results).",
+   "model": "IRS line 2 is \"Net profit or (loss) from Schedule C, line 31; and Schedule K-1 (Form 1065), box 14, code A (other than farming)\". The instructions also exclude statutory-employee Schedule C profit and add minister income. The restatement takes only 'this person's Schedule C results', and the calling line is not shown, so it can't be confirmed that partnership income and these adjustments are handled or refused.",
+   "ruling": "Ruling: interface gap; restatement accepted. A line of the Schedule SE definition, bound per person by person.se_line2 (person.sc_total); the cases the IRS line adds are refused at that calling line through person.se_screened, whose screen person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5) names net earnings from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C, church employee income, and ministers / members of religious orders / Christian Science practitioners (the statutory-employee and minister adjustments of i1040sse line 2). The reviewer was given the definition, not its caller.",
+   "context": "e53892be137c09b2b38764662e97f06d8091af05ec28f41ad0d5b00530a17467",
+   "date": "2026-11-15",
+   "run": "85d42792e5315be24d0455daf74af566fd97eca07a4000d2c13ffd8b6fd8f59c",
+   "subject_key": "adabbb285517f2d196401a55d0b90a82233fe392fddd3d8c0c0b3d7c034b0698"
+  },
+  {
+   "printed": "2",
+   "restated": "Input — Bound by the calling line (this person's Schedule C results).",
    "model": "The IRS line covers more than Schedule C results: \"Net profit or (loss) from Schedule C, line 31; and Schedule K-1 (Form 1065), box 14, code A (other than farming).\" The restatement binds only this person's Schedule C and names no refusal for partnership amounts.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names net earnings from a partnership (Schedule K-1, box 14, code A) and other self-employment income not on a Schedule C.",
    "subject_key": "2380ceffb922f10a226df9f21c355e4659f8eb044445d96b5198b0391fa629ce"
@@ -15,6 +25,16 @@
    "model": "The IRS line is \"Net profit or (loss) from Schedule C, line 31; and Schedule K-1 (Form 1065), box 14, code A (other than farming)\". The restatement takes only Schedule C results and has no refusal naming the excluded partnership income.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names net earnings from a partnership (Schedule K-1, box 14, code A) and other self-employment income not on a Schedule C.",
    "subject_key": "2380ceffb922f10a226df9f21c355e4659f8eb044445d96b5198b0391fa629ce"
+  },
+  {
+   "printed": "3",
+   "restated": "Enter the amount from line 2.",
+   "model": "IRS: \"Combine lines 1a, 1b, and 2\". The instructions also add dotted-line adjustments (Chapter 11, community income, notary). The restatement uses line 2 alone and names no refusal for farm profit (1a), CRP payments (1b) or those adjustments.",
+   "ruling": "Ruling: interface gap; restatement accepted. Lines 1a and 1b (farm profit, Conservation Reserve Program payments) and the dotted-line adjustments are refused at the calling line person.se_line2 through person.se_screen, which names farm income (Schedule F) or Conservation Reserve Program payments, a chapter 11 bankruptcy case and community income on a separate return (i1040sse pp. 1-5); with them refused, line 3 is line 2. The reviewer was given the definition, not its caller.",
+   "context": "e53892be137c09b2b38764662e97f06d8091af05ec28f41ad0d5b00530a17467",
+   "date": "2026-11-15",
+   "run": "85d42792e5315be24d0455daf74af566fd97eca07a4000d2c13ffd8b6fd8f59c",
+   "subject_key": "877cb9fc80bd537cfa3db9bd71ef675b39e2b7c146254f661cde4cf679639603"
   },
   {
    "printed": "3",
@@ -33,6 +53,16 @@
   {
    "printed": "4b",
    "restated": "Enter the amount from helper \"Zero\".",
+   "model": "IRS: \"If you elect one or both of the optional methods, enter the total of lines 15 and 17 here\". The restatement always enters $0 and names no refusal excluding the optional methods.",
+   "ruling": "Ruling: interface gap; restatement accepted. Line 4b is zero because electing an optional method (Schedule SE Part II) is refused at the calling line person.se_line2 through person.se_screen, which names it (i1040sse Instructions for Part II). The reviewer was given the definition, not its caller.",
+   "context": "e53892be137c09b2b38764662e97f06d8091af05ec28f41ad0d5b00530a17467",
+   "date": "2026-11-15",
+   "run": "85d42792e5315be24d0455daf74af566fd97eca07a4000d2c13ffd8b6fd8f59c",
+   "subject_key": "c83e05eccab6576eba7917db0b285e3b082026389dfeed06a41def0612aed2ae"
+  },
+  {
+   "printed": "4b",
+   "restated": "Enter the amount from helper \"Zero\".",
    "model": "The IRS line says \"If you elect one or both of the optional methods, enter the total of lines 15 and 17 here\". The restatement always enters $0 and has no refusal for filers who elect an optional method.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names electing an optional method (Schedule SE Part II).",
    "subject_key": "fcc80817d7a037798eeee88ecb5a61ca39f18cf9306543bd5a5e0110fa4fe3c8"
@@ -43,6 +73,16 @@
    "model": "The IRS says \"If you elect one or both of the optional methods, enter the total of lines 15 and 17 here.\" The restatement always enters $0, and no refusal names the excluded optional-method elections.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. This is a line of the Schedule SE definition, bound per person; the cases the IRS line adds are refused before the definition is used, by person.se_screen ('Does any of these apply to this person', i1040sse pp. 1-5), which names electing an optional method (Schedule SE Part II).",
    "subject_key": "fcc80817d7a037798eeee88ecb5a61ca39f18cf9306543bd5a5e0110fa4fe3c8"
+  },
+  {
+   "printed": "5b",
+   "restated": "Enter the amount from helper \"Zero\".",
+   "model": "IRS: \"Multiply line 5a by 92.35% (0.9235). If less than $100, enter -0-\". The restatement always enters $0 with no church-employee-income input and no refusal naming that case.",
+   "ruling": "Ruling: interface gap; restatement accepted. Line 5b is zero because church employee income (line 5a) is refused at the calling line person.se_line2 through person.se_screen, which names 'church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)' (i1040sse p. 1, Employees of Churches and Church Organizations). The reviewer was given the definition, not its caller.",
+   "context": "e53892be137c09b2b38764662e97f06d8091af05ec28f41ad0d5b00530a17467",
+   "date": "2026-11-15",
+   "run": "85d42792e5315be24d0455daf74af566fd97eca07a4000d2c13ffd8b6fd8f59c",
+   "subject_key": "1c98c082ab742c7318ea5b9054aa90f0e079bf688bec9244b7c097d5ad0e4d3c"
   },
   {
    "printed": "5b",

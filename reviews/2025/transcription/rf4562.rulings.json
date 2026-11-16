@@ -1,0 +1,106 @@
+{
+ "kind": "transcription",
+ "form": "rf4562",
+ "rulings": [
+  {
+   "printed": "17",
+   "project_expr_sha256": "9325af53031b0e03acba9f6691d53c381fcdd163f84d1b90e624651ee85e33f2",
+   "second_expr_sha256": "2467c65136eb7850f237aef168ad9c63bb06f4a4eda2079eb9bc4bf8e1e04c2d",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (rf4562.line17: \"rf4562.rf4562.line17: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "cdef2f809e00991a7947ce4a32895e8387488aca4445f559650870669a92b574",
+   "date": "2026-11-15",
+   "run": "efa918da4306bb14c181c0966376fb68b55a0a06cfa9b3be6b4b7a958c913388",
+   "subject_key": "1b1c2554d5992af18bff7546246c320f2f8c7c9f7e7fcdd1cbe29a3894c83d39",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.1@rental[a].rf4562[form]",
+     "fixture:classm.f8582.2@rental[a].rf4562[form]",
+     "fixture:classm.f8582.3@rental[a].rf4562[form]",
+     "fixture:classm.f8582.3@rental[b].rf4562[form]",
+     "fixture:classm.sche.1@rental[a].rf4562[form]",
+     "fixture:classm.sche.2@rental[a].rf4562[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "19i(g)",
+   "project_expr_sha256": "1e1941fe5aec35262e13439e9cf934649719271acabf61222b52244d50148185",
+   "second_expr_sha256": "b3fcd60e695feca1399767f60ed0c5e6163e8f0df99c88c87fb0b38fcdf03f98",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (rf4562.line19i: \"rf4562.rf4562.line19i: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "cdef2f809e00991a7947ce4a32895e8387488aca4445f559650870669a92b574",
+   "date": "2026-11-15",
+   "run": "efa918da4306bb14c181c0966376fb68b55a0a06cfa9b3be6b4b7a958c913388",
+   "subject_key": "25d9ea4cc3bec1dc4b896833b2a959a5d7a6bc55fd19bff30c96841f0f49472d",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.1@rental[a].rf4562[form]",
+     "fixture:classm.f8582.2@rental[a].rf4562[form]",
+     "fixture:classm.f8582.3@rental[a].rf4562[form]",
+     "fixture:classm.f8582.3@rental[b].rf4562[form]",
+     "fixture:classm.sche.1@rental[a].rf4562[form]",
+     "fixture:classm.sche.2@rental[a].rf4562[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "19j(g)",
+   "project_expr_sha256": "f090727663e853cc2866b9d4a1815dda05d032cd26fd75700fc871bb36b59534",
+   "second_expr_sha256": "c268823c14a8d15dbc9c1c4c81448b7239a9f6d7e3a77c975ba84e205c81f6d0",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (rf4562.line19j: \"rf4562.rf4562.line19j: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "cdef2f809e00991a7947ce4a32895e8387488aca4445f559650870669a92b574",
+   "date": "2026-11-15",
+   "run": "efa918da4306bb14c181c0966376fb68b55a0a06cfa9b3be6b4b7a958c913388",
+   "subject_key": "822b66884f09f616025dec456529b0504b97339da59bcd13ab9064ace8a10a76",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.1@rental[a].rf4562[form]",
+     "fixture:classm.f8582.2@rental[a].rf4562[form]",
+     "fixture:classm.f8582.3@rental[a].rf4562[form]",
+     "fixture:classm.f8582.3@rental[b].rf4562[form]",
+     "fixture:classm.sche.1@rental[a].rf4562[form]",
+     "fixture:classm.sche.2@rental[a].rf4562[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "22",
+   "project_expr_sha256": "4f210a8c46cb3a32a91ac65eb3960be82b5cdaf0721e08a79afb7bb4cee2a555",
+   "second_expr_sha256": "8e29dbe7337139dcc84a993bdd26446016d316ab13e6af22559ce35b639e33a4",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (rf4562.h_19_other: \"rf4562.rf4562.h_19_other: collection parent binding mismatch\"; rf4562.line17: \"rf4562.rf4562.line17: collection parent binding mismatch\"; rf4562.line19i: \"rf4562.rf4562.line19i: collection parent binding mismatch\"; rf4562.line19j: \"rf4562.rf4562.line19j: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "cdef2f809e00991a7947ce4a32895e8387488aca4445f559650870669a92b574",
+   "date": "2026-11-15",
+   "run": "efa918da4306bb14c181c0966376fb68b55a0a06cfa9b3be6b4b7a958c913388",
+   "subject_key": "335a6b4b64808a69e1b018b084948c53344d9fb419cfd0491ae9f40ed070608a",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:classm.f8582.1@rental[a].rf4562[form]",
+     "fixture:classm.f8582.2@rental[a].rf4562[form]",
+     "fixture:classm.f8582.3@rental[a].rf4562[form]",
+     "fixture:classm.f8582.3@rental[b].rf4562[form]",
+     "fixture:classm.sche.1@rental[a].rf4562[form]",
+     "fixture:classm.sche.2@rental[a].rf4562[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

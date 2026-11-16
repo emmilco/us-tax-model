@@ -1,0 +1,219 @@
+{
+ "form": "f1116col",
+ "reviews": {
+  "gate:f1116col.has_div": {
+   "subject_sha": "2110e410ef5b05bd8736a9fc50178ccd1d8c88919cf10d594111f83cb43b5932",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose RIC column comes from an international bond fund. The fund's foreign source income and foreign tax are reported on Form 1099-DIV (box 7) and on the fund's year-end statement.",
+       "why_no": "The helper asks whether the column's income is \"dividends, interest or both\". Because the fund holds foreign bonds and its statement calls the income interest, the filer answers \"interest\", although the fund paid it as a dividend reported on Form 1099-DIV.",
+       "line": "f1116col.tax_div_if_div (q) and f1116col.div_income_if_div",
+       "irs_text": "i1116 p. 11: \"Total all income, in the applicable category, passed through from the mutual fund or other RIC and enter the total in a single column in Part I. Enter 'RIC' on line i.\" i1116 p. 19: \"If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV ... complete columns (q) through (u)\"",
+       "severity": "medium",
+       "fix": "Ask by the form, not the label: \"Was any of this column's foreign income or foreign tax reported on Form 1099-DIV, or as a dividend on a fund statement, Schedule K-1 or a foreign broker's statement?\" If yes, set has_div, whatever the fund holds."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A partner, S corporation shareholder or trust beneficiary whose Schedule K-1 (or K-3) passes through foreign-source dividends and foreign tax withheld on them, with no Form 1099-DIV of their own.",
+       "why_no": "The filer thinks of the income as partnership, S corporation or trust income, not dividends they received, and the help points only to Form 1099-DIV. They answer \"neither\" or treat the income as other income, so dividends are never asked for this column.",
+       "line": "f1116col.tax_div_if_div (q) and f1116col.div_income_if_div",
+       "irs_text": "i1116 p. 11: \"Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i\"; f1116 p. 1, Part II: \"Taxes withheld at source on: ... (q) Dividends\"",
+       "severity": "medium",
+       "fix": "Make the gate's help say that dividends include those passed through on Schedule K-1 or K-3 (partnership, S corporation, estate or trust), and those from foreign brokers without a Form 1099."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer who holds ADRs of a foreign company through a U.S. broker. The dividend is paid by a U.S. depositary bank, and the 1099-DIV shows foreign tax withheld.",
+       "why_no": "The payer is a U.S. bank, so the filer believes the dividend is not foreign income and answers that this column's foreign income has no dividends.",
+       "line": "f1116col.tax_div_if_div (q)",
+       "irs_text": "i1116 p. 19: \"If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV ... complete columns (q) through (u) for each foreign country indicated in Part I.\"",
+       "severity": "medium",
+       "fix": "Add to the gate's help: \"Count dividends from foreign companies even if paid through a U.S. broker or depositary (ADRs), and any dividend where Form 1099-DIV box 7 shows foreign tax.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married couple filing jointly. Only the spouse holds the foreign fund or the foreign shares that pay dividends to this column's country; the filer's own foreign income in that country is interest.",
+       "why_no": "If the helper's wording says \"your\" foreign income, the filer describes only their own holdings and answers \"interest\".",
+       "line": "f1116col.tax_div_if_div (q) and f1116col.div_income_if_div",
+       "irs_text": "i1116 p. 11: \"Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i\"",
+       "severity": "low",
+       "fix": "Word the helper as \"Does the foreign income of this column (yours or your spouse's) include dividends, interest or both?\""
+      }
+     ],
+     "prompt_sha": "e2d6158e8ed95c994aa1efaef7040722441750f2aa0930c23695ee4c0c858813",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.106152,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f1116col.has_div.2110e410ef5b.1.response.txt"
+    }
+   ],
+   "condition": "f1116col.has_div",
+   "lines": [
+    "f1116col.div_income_if_div",
+    "f1116col.tax_div_if_div"
+   ],
+   "inputs": [
+    "f1116col.div_income",
+    "f1116col.tax_div"
+   ],
+   "used": [
+    {
+     "doc": "f1116",
+     "revision": "2025; created 2025-09-16 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "35fb2ea431123e1b99d31ebffd382e3452d1d1c9a2ca56f5c1e658cf2d2c4e20",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Part II, \"Taxes withheld at source on:\", \"(q) Dividends\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "47a5c4ac2284a31b7c1c9d473905bf2e1d6ac3e68875543a6e19bc9224861b76"
+    },
+    {
+     "doc": "i1116",
+     "revision": "2025; printed date 2025-12-23",
+     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
+     "pages": [
+      11,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Lines 1a and 1b, \"Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i\"",
+      "p. 19, Tip, \"If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV, 1099-INT, or similar statement, you don’t have to convert the amount shown into foreign currency.\"",
+      "p. 19, Tip, \"complete columns (q) through (u) for each foreign country indicated in Part I\""
+     ],
+     "cols_pages": [
+      11,
+      19
+     ],
+     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
+    }
+   ]
+  },
+  "gate:f1116col.has_int": {
+   "subject_sha": "9d59caa680280db7b9a5f38e3b94b4f4ad3baaa0d03e18c1ae5e56dd4edba8be",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer holds a foreign zero-coupon or deep-discount bond. The bond generates original issue discount, reported on Form 1099-OID or a foreign broker statement, or market discount, but pays no stated coupon.",
+       "why_no": "The helper offers only 'dividends, interest or both'. The filer thinks of OID or accrued discount as 'discount' or 'gain', not interest, so they pick 'dividends' or nothing. The help mentions only interest 'paid by a bank or company'.",
+       "line": "f1116col.int_income_if_int (and f1116col.tax_int_if_int if tax was withheld)",
+       "irs_text": "i1116 p. 11, Lines 1a and 1b: \"Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i\"",
+       "severity": "medium",
+       "fix": "Ask whether the column's foreign income includes interest of any kind, including original issue discount (Form 1099-OID), discount on bonds, or interest credited but not withdrawn. Then classify."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A partner in a partnership or an S corporation shareholder receives a Schedule K-1 and K-3 showing foreign-source passive interest and the foreign tax withheld on it. The filer has no Form 1099-INT.",
+       "why_no": "The filer sees the column's income as 'partnership income' or 'K-1 income', not as interest. The help points to 1099-INT box 6 and to bank or fund statements, so the filer does not classify the pass-through amount as interest.",
+       "line": "f1116col.int_income_if_int and f1116col.tax_int_if_int",
+       "irs_text": "i1116 p. 19, Tip: \"reported to you in U.S. dollars on a Form 1099-DIV, 1099-INT, or similar statement ... complete columns (q) through (u) for each foreign country indicated in Part I\"",
+       "severity": "medium",
+       "fix": "In the helper question and help, name Schedule K-1/K-3 and other pass-through statements as sources of foreign interest and of foreign tax withheld on interest."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer had foreign tax withheld this year on interest that was included in income in an earlier year. Examples are accrued interest or OID on a foreign bond that matured this year, or a foreign tax assessed this year after a foreign audit of an earlier year's interest. This year's column has little or no interest income.",
+       "why_no": "The filer reads the helper as asking about this year's income and truthfully says the column's income does not include interest. The withholding on interest (column (s)) is then forced to zero.",
+       "line": "f1116col.tax_int_if_int",
+       "irs_text": "i1116 p. 19, Note: \"If you are taking a credit for additional taxes paid or accrued as the result of an audit by a foreign taxing authority ... attach a statement to Form 1116 identifying these taxes.\"",
+       "severity": "medium",
+       "fix": "Gate the tax question on either condition: the column has foreign interest income, or foreign tax was withheld or paid this year on interest from any year. Alternatively, ask about the tax separately from the income type."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse alone holds a foreign bank account or a foreign bond that pays interest with foreign tax withheld. The filer's own foreign income in the column is dividends only.",
+       "why_no": "If the helper question asks about 'your' foreign income, the filer answers 'dividends' and omits the spouse's interest.",
+       "line": "f1116col.int_income_if_int and f1116col.tax_int_if_int",
+       "irs_text": "i1116 p. 11, Lines 1a and 1b: \"Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i\"",
+       "severity": "medium",
+       "fix": "Word the helper as 'Does the foreign income in this column, yours or your spouse's, include dividends, interest, or both?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer earns interest on a foreign bank deposit and the foreign bank withholds tax. The filer receives no Form 1099-INT, only a foreign-language bank statement or nothing at all.",
+       "why_no": "The tax question's help points to 'box 6 of Form 1099-INT'. A filer whose type answer is anchored on 1099 forms may report the column as dividends only. A filer with no such form may treat the withheld tax as not applicable.",
+       "line": "f1116col.tax_int_if_int",
+       "irs_text": "f1116 p. 1, Part II: \"Taxes withheld at source on: ... (s) Interest\" (In U.S. dollars)",
+       "severity": "low",
+       "fix": "Help: 'Include interest and foreign tax withheld from it even if you received no U.S. form. Use the foreign bank's statement and convert to U.S. dollars.'"
+      }
+     ],
+     "prompt_sha": "aac54f508da1659827606bbec9b3c867d94a52cfc47df580137c940d47678e52",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.111256,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f1116col.has_int.9d59caa68028.1.response.txt"
+    }
+   ],
+   "condition": "f1116col.has_int",
+   "lines": [
+    "f1116col.int_income_if_int",
+    "f1116col.tax_int_if_int"
+   ],
+   "inputs": [
+    "f1116col.int_income",
+    "f1116col.tax_int"
+   ],
+   "used": [
+    {
+     "doc": "f1116",
+     "revision": "2025; created 2025-09-16 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "35fb2ea431123e1b99d31ebffd382e3452d1d1c9a2ca56f5c1e658cf2d2c4e20",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Part II, \"Taxes withheld at source on:\", \"(s) Interest\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "47a5c4ac2284a31b7c1c9d473905bf2e1d6ac3e68875543a6e19bc9224861b76"
+    },
+    {
+     "doc": "i1116",
+     "revision": "2025; printed date 2025-12-23",
+     "text_sha256": "ca3e843c3bead1e7991566852707530b6bb7c2fd6008c1dbda0ac0bbd40c48ff",
+     "pages": [
+      11,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 11, Lines 1a and 1b, \"Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i\"",
+      "p. 19, Tip, \"If foreign tax paid on passive income is reported to you in U.S. dollars on a Form 1099-DIV, 1099-INT, or similar statement, you don’t have to convert the amount shown into foreign currency.\"",
+      "p. 19, Tip, \"complete columns (q) through (u) for each foreign country indicated in Part I\""
+     ],
+     "cols_pages": [
+      11,
+      19
+     ],
+     "cols_sha256": "4e9025bfc8a73bcfd687c7f45cb1a037cd39e7445319bbc71c748e12db68a46a"
+    }
+   ]
+  }
+ }
+}

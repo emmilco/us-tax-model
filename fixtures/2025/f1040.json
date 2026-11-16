@@ -289,7 +289,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "$w2@person[taxpayer]": [
           "emp_a"
         ],
@@ -593,8 +592,8 @@
         "eic",
         "f1040.line27a"
       ],
-      "evidence": "synthetic refusal regression",
-      "evidence_note": "Stage 9, predicted by hand from the printed instructions before recording: As no_child.4000 where someone can claim the filer as a dependent: Step 4, question 6 is refused.",
+      "evidence": "synthetic regression",
+      "evidence_note": "Restated by lane x2-dep (decision D1): i1040gi p. 42, Step 4, question 6, \"Can you be claimed as a dependent on someone else's 2025 tax return?\" Yes: \"STOP You can't take the credit.\" EIC $0; that STOP does not say to check line 27c, so 27c is not checked.",
       "inputs": {
         "sa.dependent": true,
         "$w2@person[taxpayer]": [
@@ -608,30 +607,12 @@
       },
       "expect": {
         "f1040.line27a": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "Dependent of another person or dual-status alien (EIC, Step 4, question 6)",
-          "remedy": "A filer who can be claimed as a dependent, or a dual-status alien, is outside this tool.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 42, Step 4, question 6",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "f1040.line27c": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "Dependent of another person or dual-status alien (EIC, Step 4, question 6)",
-          "remedy": "A filer who can be claimed as a dependent, or a dual-status alien, is outside this tool.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 42, Step 4, question 6",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "bool",
+          "value": false
         }
       }
     },
@@ -740,7 +721,9 @@
           "child"
         ],
         "dependent[child].age": 3,
-        "dependent[child].months": 12
+        "dependent[child].months": 12,
+        "household.mfs_living": "apart_last6",
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.line27a": {
@@ -1430,7 +1413,8 @@
         "person[taxpayer].w2[emp_a].box5": 1000000,
         "person[taxpayer].w2[emp_a].box6": 14500,
         "ssb.any": true,
-        "ssb.benefits": 2000000
+        "ssb.benefits": 2000000,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.line6b": {
@@ -1462,7 +1446,8 @@
         "person[taxpayer].w2[emp_a].box6": 14500,
         "ssb.any": true,
         "ssb.benefits": 2000000,
-        "ssb.lived_apart": true
+        "household.mfs_living": "apart_all_year",
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.line6b": {
@@ -2231,7 +2216,7 @@
         "f1040.lines8-10"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Married filing separately with HSA contributions: the spouses' rules (Form 8889 lines 6 and 7) are outside this tool, refused. Stage 13: Form 8889 on a married filing separately return stays refused (f8889.mfs); joint returns use the spouse rules. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged.",
+      "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Married filing separately with HSA contributions: the spouses' rules (Form 8889 lines 6 and 7) are outside this tool, refused. Stage 13: Form 8889 on a married filing separately return stays refused (f8889.mfs); joint returns use the spouse rules. Form 8889 coverage_year completed as changed: the month counts and December 1 coverage are asked and used as recorded, so the recorded values are unchanged. Restated by lane mfs-l3 (owner decision D2): Form 8889 is refused on a separate return only with family coverage and a spouse who has an HSA (i8889 p. 7, Line 6). Input added: household.married_dec31 true (a married filing separately filer is married at the end of 2025; the test-data default is withheld for that status). Self-only coverage all year (default), under 55: line 3 $4,300, line 13 the smaller of $1,000 and $4,300, so Form 1040 line 10 is $1,000.",
       "inputs": {
         "f1040.status": "mfs",
         "$f8889@person[taxpayer]": [
@@ -2245,21 +2230,13 @@
         "person[taxpayer].w2[emp_a].box6": 72500,
         "person[taxpayer].f8889[hsa].line2": 100000,
         "s179.prior_form": null,
-        "s179.carryover": null
+        "s179.carryover": null,
+        "household.married_dec31": true
       },
       "expect": {
         "f1040.line10": {
-          "kind": "refusal",
-          "gate": "person[taxpayer].f8889[hsa].mfs",
-          "form": "Form 8889 on a married filing separately return",
-          "remedy": "Married filing separately is outside this tool; the HSA rules for spouses are supported on a joint return.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 14, Married Filing Separately",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 100000
         }
       }
     },
@@ -2421,7 +2398,6 @@
       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: married filing jointly with only your entry: refused at line 1a (one entry for each spouse on a joint return).",
       "inputs": {
         "f1040.status": "mfj",
-        "household.married_dec31": true,
         "$w2@person[taxpayer]": [
           "e0"
         ],
@@ -3941,6 +3917,381 @@
             "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "mfs.m1.basic",
+      "covers": [
+        "f1040",
+        "f1040.line12b",
+        "f1040.line6d"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l1, scout M1, predicted before evaluating: married filing separately, born 1985, W-2 $60,000, withholding $6,000, nothing else. Standard deduction $15,750 (i1040gi p. 34 chart); taxable $44,250; Tax Table row 44,250-44,300, married filing separately column $5,075 (1,192.50 + 12% x 32,350 at the 44,275 midpoint); no line 12b (spouse not itemizing), no line 6d (no benefits); refund 6,000 - 5,075 = $925.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "household.community_property": false
+      },
+      "expect": {
+        "f1040.line12b": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line6d": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 4425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 507500
+        },
+        "f1040.line34": {
+          "kind": "money",
+          "cents": 92500
+        }
+      }
+    },
+    {
+      "id": "mfs.m2.spouse_itemizes",
+      "covers": [
+        "f1040.line12b",
+        "sa"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l1, scout M2 reduced to no deductions of the filer's own, predicted before evaluating: as mfs.m1.basic with a spouse who itemizes on a separate return. i1040gi p. 33, Line 12b: check line 12b; p. 34, Exception 2: the standard deduction is zero, so line 12e is the itemized total, $0. Taxable $60,000; Tax Table row 60,000-60,050, married filing separately $8,120. Owed 8,120 - 6,000 = $2,120.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 6000000,
+        "person[taxpayer].w2[emp_a].box2": 600000,
+        "person[taxpayer].w2[emp_a].box3": 6000000,
+        "person[taxpayer].w2[emp_a].box4": 372000,
+        "person[taxpayer].w2[emp_a].box5": 6000000,
+        "person[taxpayer].w2[emp_a].box6": 87000,
+        "household.community_property": false,
+        "sa.spouse_itemizes": true
+      },
+      "expect": {
+        "f1040.line12b": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 812000
+        },
+        "f1040.line37": {
+          "kind": "money",
+          "cents": 212000
+        }
+      }
+    },
+    {
+      "id": "mfs.m5.ssb_together",
+      "covers": [
+        "ssb",
+        "f1040.line6d"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l1, scout M5, predicted before evaluating from i1040gi p. 32: married filing separately, lived together at some time July-December, born 1962, wages $30,000, benefits $20,000. Line 7 = 10,000 + 30,000 = $40,000; line 8: married filing separately and lived with the spouse at any time: skip lines 8-15, line 16 = 85% x 40,000 = $34,000; line 17 = 85% x 20,000 = $17,000; line 18 (6b) $17,000; 6d not checked. AGI $47,000; taxable 47,000 - 15,750 = $31,250; Tax Table married filing separately $3,515.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1962,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "household.community_property": false,
+        "ssb.any": true,
+        "ssb.benefits": 2000000,
+        "household.mfs_living": "together_late"
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 1700000
+        },
+        "f1040.line6d": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4700000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 3125000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 351500
+        }
+      }
+    },
+    {
+      "id": "mfs.m6.ssb_apart",
+      "covers": [
+        "ssb",
+        "f1040.line6d"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l1, scout M6, predicted before evaluating from i1040gi p. 32: as mfs.m5.ssb_together but lived apart all year. Line 8 $25,000; line 9 15,000; line 10 $9,000; line 11 6,000; line 12 9,000; line 13 4,500; line 14 smaller of 10,000 and 4,500 = 4,500; line 15 85% x 6,000 = 5,100; line 16 9,600; line 17 17,000; line 18 (6b) $9,600; 6d checked (p. 31). AGI 39,600; taxable 23,850; Tax Table $2,627.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1962,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 3000000,
+        "person[taxpayer].w2[emp_a].box2": 0,
+        "person[taxpayer].w2[emp_a].box3": 3000000,
+        "person[taxpayer].w2[emp_a].box4": 186000,
+        "person[taxpayer].w2[emp_a].box5": 3000000,
+        "person[taxpayer].w2[emp_a].box6": 43500,
+        "household.community_property": false,
+        "ssb.any": true,
+        "ssb.benefits": 2000000,
+        "household.mfs_living": "apart_all_year"
+      },
+      "expect": {
+        "f1040.line6b": {
+          "kind": "money",
+          "cents": 960000
+        },
+        "f1040.line6d": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 3960000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 2385000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 262700
+        }
+      }
+    },
+    {
+      "id": "mfs.m8.no_child",
+      "covers": [
+        "eic",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l1, scout M8 (without its student loan interest, lane L2's), predicted before evaluating: married filing separately, no child, W-2 $15,000, withholding $500. EIC Step 4 question 1 (i1040gi p. 41): married filing separately: STOP, no credit. Taxable 0 (15,000 - 15,750); tax 0; refund $500.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "person[taxpayer].birth_year": 1985,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 1500000,
+        "person[taxpayer].w2[emp_a].box2": 50000,
+        "person[taxpayer].w2[emp_a].box3": 1500000,
+        "person[taxpayer].w2[emp_a].box4": 93000,
+        "person[taxpayer].w2[emp_a].box5": 1500000,
+        "person[taxpayer].w2[emp_a].box6": 21750,
+        "household.community_property": false
+      },
+      "expect": {
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line34": {
+          "kind": "money",
+          "cents": 50000
+        }
+      }
+    },
+    {
+      "id": "mfs.m7.separated_parent",
+      "covers": [
+        "eic",
+        "s8812",
+        "f1040.separated_spouses"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l1, scout M7, predicted before evaluating: married filing separately, wages $20,000, no withholding; a child age 6 lived with the filer all of 2025; the spouses lived together only before July (apart_last6); the filer did not pay over half the home's cost (so not head of household). Taxable 20,000 - 15,750 = $4,250; Tax Table row 4,250-4,300 $428. EIC Step 3 (i1040gi p. 41): question 4 No (no shared residence in the last 6 months), question 6 No: the separated-spouses box is checked; EIC Table one child, married filing separately column, $20,000: $4,328. Schedule 8812: credit $2,200 limited to the tax, $428; additional child tax credit smaller of 1,772, $1,700 and 15% x 17,500: $1,700. Refund 4,328 + 1,700 = $6,028.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "household.community_property": false,
+        "person[taxpayer].birth_year": 1985,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 2000000,
+        "person[taxpayer].w2[emp_a].box3": 2000000,
+        "person[taxpayer].w2[emp_a].box4": 124000,
+        "person[taxpayer].w2[emp_a].box5": 2000000,
+        "person[taxpayer].w2[emp_a].box6": 29000,
+        "$dependent": [
+          "child"
+        ],
+        "dependent[child].age": 6,
+        "dependent[child].months": 12,
+        "household.home_cost": false,
+        "household.mfs_living": "apart_last6"
+      },
+      "expect": {
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 42800
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 432800
+        },
+        "f1040.separated_spouses": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 42800
+        },
+        "f1040.line28": {
+          "kind": "money",
+          "cents": 170000
+        },
+        "f1040.line34": {
+          "kind": "money",
+          "cents": 602800
+        }
+      }
+    },
+    {
+      "id": "f1040.refuse.digital_conflict",
+      "covers": [
+        "f1040.digital_conflict"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "A No to the digital asset question with a sale entered under box H: i1040gi p. 16, How To Report Digital Asset Transactions, a disposition of a digital asset is a Yes. Refused at Form 1040 line 7a on gate f1040.digital_conflict.",
+      "inputs": {
+        "f1040.digital_assets": false,
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "H",
+        "sales[a].proceeds": 100000,
+        "sales[a].correct_basis": 50000
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "form": "Form 1040, Digital Assets question",
+          "remedy": "A sale entered under box G, H, I, J, K or L of Form 8949 is a sale of a digital asset, which needs a Yes to the digital asset question. Answer Yes, or correct the box of the sale.",
+          "cite": {
+            "doc": "i1040gi",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025,
+            "locator": "p. 16, How To Report Digital Asset Transactions, \"If, in 2025, you disposed of any digital asset, which you held as a capital asset, through a sale, trade, exchange, payment, or other transfer, check “Yes” and use Form 8949 to calculate your capital gain or loss\""
+          },
+          "gate": "f1040.digital_conflict"
+        }
+      }
+    },
+    {
+      "id": "f1040.digital_assets.yes_no_sales",
+      "covers": [
+        "f1040.digital_conflict"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "A Yes to the digital asset question with no sale (crypto received and held): no conflict, line 7a zero.",
+      "inputs": {
+        "f1040.digital_assets": true
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.digital_conflict": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "f1040.digital_assets.no_with_stock",
+      "covers": [
+        "f1040.digital_conflict"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "A No to the digital asset question with a box A stock sale (no digital asset box): no conflict; line 7a is the gain, 500,000 - 400,000 = 100,000.",
+      "inputs": {
+        "f1040.digital_assets": false,
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "A",
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1040.digital_sales": {
+          "kind": "count",
+          "value": 0
+        },
+        "f1040.digital_conflict": {
+          "kind": "bool",
+          "value": false
         }
       }
     }

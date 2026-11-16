@@ -1,0 +1,29 @@
+changes:
+  tax_year: 2026
+  form: rental
+  entries:
+  - change: C-X1SCHE-RENTAL-01
+    evidence:
+    - doc: f1040se
+      page: 2
+      quote: 13a Vehicle loan
+    - doc: f1040se
+      page: 2
+      quote: 13b Other
+    - doc: i1040se
+      page: 2
+      quote: New line 13a—Vehicle loan. Use line 13a to report the business-use portion of your vehicle loan interest.
+    verified: draft
+    note: 'Line 13 is split into 13a (vehicle loan) and 13b (other). Line 13a is not encoded: car and truck costs of a rental
+      are refused (rental.vehicle), so a vehicle loan never reaches it. Other interest moves to 13b.'
+    operations:
+    - set:
+        line: rental.line13
+        field: printed
+        from: '13'
+        to: 13b
+    - set:
+        line: rental.line13
+        field: label
+        from: Other interest
+        to: Other

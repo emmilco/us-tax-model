@@ -4,16 +4,16 @@
  "family": "claude",
  "base": "6f51763b029a4d741e330504ce6edaca9af0403f5a92821cd3ed4cdaa0bed337",
  "head_rows": {
-  "match / mismatch / unclear / missing": "159 / 9 / 0 / 0",
-  "line-scoped reviews": "7 (latest 2026-11-15); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "156 / 11 / 1 / 0",
+  "line-scoped reviews": "8 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "C",
-   "record": "e111646ae185fe84874eb5e3d4cc65b441333a6b8498e6018a3fa9dd6d362bdd",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; the restatement's first branch (sa.dependent Yes) is reached only on a return the federal return refuses: sa.deduction refuses when sa.dependent is Yes (\"A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice\"), and dual-status aliens are refused again by the scope screen (\"For any part of 2025, were you (or, on a joint return, your spouse) a nonresident alien\"); a refused federal return is a refused New York return. On every return the tool completes, item C is the New York question \"Can you be claimed as a dependent on another taxpayer's federal return? Answer Yes even if the other taxpayer did not claim you\", which is item C's own text (IT-201-I p. 5, Item C). The spouse and dual-status cases the reply names cannot reach this line.",
-   "subject_key": "9bac6b62947cd0647d1c556cf301cc2d894f4fa21e791f051310d74466ab933e"
+   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.item_c. IT-201-I p. 5, Item C: 'If you can be claimed as a dependent on another taxpayer's federal return, you must mark an X in the Yes box.' The project marks item C Yes on a federal Yes to sa.dependent ('Can someone claim you or your spouse as a dependent'), else asks New York's own question. The reply's case, a joint return where only the spouse can be claimed (possible only where the joint return is filed just to claim a refund), is one New York's text does not settle: item C speaks of 'you', and neither the form nor the instructions say how a joint return treats a spouse who can be claimed. The registered ambiguity covers how item C relates to the federal answer; this spouse facet belongs with it (noted for the owner's list). The earlier round's premise that a federal Yes refuses the federal return no longer holds (the Standard Deduction Worksheet for Dependents is computed, sa.standard_amount), so this is ruled on the text, not on scope.",
+   "subject_key": "3a46a3a761bac3c1bc1fe8ff3d2857fa6adb2940fe882758ffbf012208604d7a"
   },
   {
    "key": "H (count)",
@@ -243,9 +243,9 @@
   },
   {
    "key": "34",
-   "record": "e111646ae185fe84874eb5e3d4cc65b441333a6b8498e6018a3fa9dd6d362bdd",
+   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
    "status": "MATCH",
-   "subject_key": "3040fdf942d48a50bdb4dcbea887f38ef81af20616143baf8d3ff38095b8e2ed"
+   "subject_key": "d756322d1f0c9347e4c26bac6175b5a9fefc4258bd80155aeb62dcdf6b7a0bcf"
   },
   {
    "key": "35",
@@ -543,9 +543,10 @@
   },
   {
    "key": "40",
-   "record": "e111646ae185fe84874eb5e3d4cc65b441333a6b8498e6018a3fa9dd6d362bdd",
-   "status": "MATCH",
-   "subject_key": "5e227148ecad8ed9810db2ce4acabe708999179ef6a49eaf4c455d583c72f81d"
+   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; the same defect as BUG-0762 (low), already recorded on line 48 and its sibling line 40: IT-201-I web edition, New York State household credit table 3 (filing status 3), 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'This amount could be 0 or a negative amount.' The refusal ny_it201.gate.hh_state_mfs tests only this return's line 19 against $32,000, so a spouse's negative AGI can leave a credit the tool enters as $0 without refusing. The reply is right; no new bug (BUG-0762)",
+   "subject_key": "23517b4d37238c9dc562091fb6d6bc71a759d67fbc47ad037e9c4b0d560ddaee"
   },
   {
    "key": "41",
@@ -609,10 +610,10 @@
   },
   {
    "key": "48",
-   "record": "06f728b5357c24dcf2275f43fc1c3106765199e1c3c5f695482223849003da2c",
+   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
    "status": "MISMATCH",
-   "ruling": "Ruling: finding; IT-201-I web edition, New York City household credit table 6 (filing status 3): \"If your federal adjusted gross income (see Note 4) total from both returns is:\" ... \"22,500 ... No credit is allowed\"; Note 2, \"This amount could be 0 or a negative amount.\" The rendered refusal (ny_it201.gate.hh_city_mfs) tests only this return's line 19 against $22,500 (ny_it201.hh_city_in_range), and ny_it201.hh_city_by_status gives zero for married filing separately. When this return's AGI is above $22,500 and the spouse's federal AGI is negative enough to bring the total within the rows, a credit is allowed and the tool enters $0 without refusing. The reply is right. Sibling: line 40 (table 3, gate.hh_state_mfs, $32,000), same defect. (BUG-0762)",
-   "subject_key": "197767d787585aef552739d967117786eda18d890cc53d545024b9705fb65681"
+   "ruling": "Ruling: finding; two points. (1) City residence: scope; the form is for a full-year New York City resident only: ny_it201.gate.part_year_city ('Not a New York City resident for all of 2025', ny_it201.ask.city_resident No) refuses every other filer at line 50 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'), and a part-year resident is refused there too, so Table 2 is never reached. (2) Married filing separately: the reply is right, and it is BUG-0762 (low), already recorded: IT-201-I web edition, New York City household credit table 6, 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'could be 0 or a negative amount'; ny_it201.gate.hh_city_mfs tests only this return's line 19 against $22,500. No new bug (BUG-0762)",
+   "subject_key": "5cabc4c635056cb22596d217605eef8e57007df44c578f1c4de637e073aa326b"
   },
   {
    "key": "49",
@@ -823,9 +824,9 @@
   },
   {
    "key": "67",
-   "record": "e111646ae185fe84874eb5e3d4cc65b441333a6b8498e6018a3fa9dd6d362bdd",
+   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
    "status": "MATCH",
-   "subject_key": "2e6609805bdb799fdb5d455c200cb32b431444175f2f176ac5f41df8909d909f"
+   "subject_key": "5dff29f9e703c08102867145b67dd05cf16d4b98461a78532782bd1963988210"
   },
   {
    "key": "68",
@@ -847,9 +848,10 @@
   },
   {
    "key": "69",
-   "record": "e111646ae185fe84874eb5e3d4cc65b441333a6b8498e6018a3fa9dd6d362bdd",
-   "status": "MATCH",
-   "subject_key": "210c65eaae6e6220d88968f6305d6b27eaf24d8d46eae91895dfc3ebb07270a6"
+   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; IT-201-I pp. 20–21, Line 69, 'If you are not a New York City resident or part-year resident, you do not qualify to claim this credit.' The restatement has no residence condition because the form is for a full-year New York City resident only: ny_it201.gate.part_year_city ('Not a New York City resident for all of 2025', ny_it201.ask.city_resident No) refuses every other filer at line 50 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'), and a part-year resident is refused there too, so Table 2 is never reached.",
+   "subject_key": "380f8a8948a47bebb6d0465be0ff5052756b8d901f23a12432734875d0e1cfd7"
   },
   {
    "key": "(69a) (ny_it201.stc_rr_low)",
@@ -889,9 +891,10 @@
   },
   {
    "key": "69a",
-   "record": "e111646ae185fe84874eb5e3d4cc65b441333a6b8498e6018a3fa9dd6d362bdd",
-   "status": "MATCH",
-   "subject_key": "84c82dc83ece74392b03cbf8e1952b8ad8cf55cc92fd92aa426ed38377d39024"
+   "record": "dcde0995f9dd7b4309ef4ec05fd1e3d5b9f9d53a0d631deffb5467fa2187fa5b",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; IT-201-I pp. 20–21, Line 69a, 'If you are not a New York City resident or part-year resident, you do not qualify to claim this credit.' The restatement has no residence condition because the form is for a full-year New York City resident only: ny_it201.gate.part_year_city ('Not a New York City resident for all of 2025', ny_it201.ask.city_resident No) refuses every other filer at line 50 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only').",
+   "subject_key": "f1b18bf7a0331ddd2c7b98723428e7452bc35fa5eac4d35313fcc9fe0f9943a1"
   },
   {
    "key": "70",
@@ -1027,7 +1030,7 @@
   }
  ],
  "subjects": {
-  "C": "be52176bed915f465d133a6141e899b2914604c4a185c54863b1a9c05c280d4e",
+  "C": "5a5c945c24f437b06b84e0310ff52e9bcf017d0a9aa92b57a82b4273643e745e",
   "H (count)": "0c8c87a494445eedac6b11398976eaa3cc695158ad2d7d62ac07fde93f319b62",
   "1": "a884b100120062866667bdd89abd23cacfa443f33dc9173f54e4c89026b8fd08",
   "2": "41a22296c262da3dae545c48ee34e0f1f178cb656d50b89b46b262cac4e8812b",
@@ -1065,7 +1068,7 @@
   "33": "7b96b7c994a8e9a524d0193eb82a7a320ca68169b98c81a7b8f3f5cf2cfaf050",
   "(table) (ny_it201.std_deduction)": "0e8766c3c819e055d3d598b209b3e55c2835cd45cf104996847a451f3ecd7c3b",
   "(table) (ny_it201.std_deduction_dependent)": "0fcde989e3b289b6a1609ebb5c9889f90e37528033509cc51d2e0c05e7da9310",
-  "34": "67556722ba1deedf0bf51274d9f4f8c9c6587136813d1cce8d32257b57170d79",
+  "34": "9a8bc9552188799a4605b6375778340e4f884bf6dd509f56cf503016d4fd3e0f",
   "35": "654c67a879b75f8d7359e6f35b59180300efab6569e481f75c706e0fbbf6aaa0",
   "36": "19baf153857b46aba808e84884fc62df0f4d214854e1aad69053202256f3f80c",
   "37": "26fc983509b26bf9a2ce7a2f1ae231b2f728a34cabf782b09e4df36ded036819",
@@ -1115,7 +1118,7 @@
   "(table 4)": "3bada7525cd785b2bc159137d40feb4a1d7e118d0bce8c44b5023bfe8e5edf6d",
   "(40)": "5b7b0c67337989723dbdc71cc86b9847b5ed126547cbde9341d020162b85c8bc",
   "(48)": "be511286c5c784fd8d72020f389fccbbb129504aed32cb20b32446ec3aac31cc",
-  "40": "5b0a5dd4fe233f33f2420e5291f4a7f87c4d1f291bd007f3ad4979169f8b55f9",
+  "40": "ffab7712c9f5b1857e92a3641a082d9d5efe27d86b0fb2198713c0822e90e79b",
   "41": "185247ce6f2ec8c2451df0e33eed2cf73dbe399cf3d1515151f0372fa8040793",
   "42": "38e7e54fbb206e02ea396710bf968ace785c38da186476e2966f9dfa145165a6",
   "43": "0ce88c0c67a3d1a4c17d47409bdb3950bae1670b9c7809c9044bf8a22d001994",
@@ -1126,7 +1129,7 @@
   "(47a) (ny_it201.city_tax_table)": "a7fa356eefc0bcfdec2a0c5004f0c51b39bd516823e6749b0e748546dc612c80",
   "(47a) (ny_it201.city_tax_schedule)": "f307de98fbb6466a67c1e78bb7fe74deb1c590cd502323d04626dd2591d234cf",
   "47a": "05e571c7eda86eea3ee225d8e9917433078f45ba8b9e0789163160f85dbceb24",
-  "48": "25d58a372af2319bb263752c46e7e4145c309a5c34148f3dc6bc13b4a8506ad8",
+  "48": "e5aed86f6c12936911f60f8fa54fbfad8b4f579b651259de831adfaf27f9b902",
   "49": "8eeb7186e42775f3ec6e0cff74306a2a6a677e6cbbbaf6925fad91c0d8879ff3",
   "50": "459b49222e30a4359e91a309b6f34d09333434b80aa65f4551682fbb70343c9c",
   "51": "8b1fd4bb72bfb5c2d5a4502acb07bd37eea75f6065a8179aba83d0b42e18b01c",
@@ -1161,18 +1164,18 @@
   "64": "3d02e668c1dcf887913796fa5c7bcaa4c15d9ebcb5ac027ec6c6492c703e0c1d",
   "65": "9e31cadedda4bf6b230eb458cacc032a09ccd052221ec1304cd46c228ecdfd4a",
   "66": "cf60c0a98c5c05ec04a370d0a624eb29cc64db709fb89aa6f704ec61e0df3e10",
-  "67": "e6728cdc4bc56b0e45acbc29470c198e0469192a6b529c18b6151c689c05f87e",
+  "67": "8ab7f0b40f7d954ca9d78c5c8f5e56e1837c9ab419aaa698eb995acb19478562",
   "68": "e680d3a3ae264aa0290ebcde42e05c1f309d384957910f5560237a625f2e34e7",
   "(69) (ny_it201.stc_income)": "de1338d480c5b810312817bdaa6a5606ab07a34e682b98b42fca2f9d1e6755ce",
   "(69) (ny_it201.stc_fixed_amount)": "80e4e2f2e9ac6f0a884ce75d1933e434933d02746b7c88132e94c79f57afb892",
-  "69": "d80a37479b93fef04fafaca1cc46753774f71ae4a0d1892f85e431f25f0d5813",
+  "69": "565d315aefd29f63d991b0a6ccc515c61ca46b25c6c818a7b668c9fc4d0de5bc",
   "(69a) (ny_it201.stc_rr_low)": "850101ea8025450936011493501f8c8efa608dd9cf54fe0943d3c676e9532167",
   "(69a) (ny_it201.stc_rr_excess)": "041d753e26891e16b3f97e8147560e3393698cb0786be76d0b6ac8d725434354",
   "(69a) (ny_it201.stc_rr_excess_product)": "e9b801362d2eef5ef0fd9a793e13900eb1b9bac6fdaf6761f0d902b70ad21f5b",
   "(69a) (ny_it201.stc_rr_base)": "8b76330641a4c0450c8a5f2af2cb216187253609b2204a9e77a05a56d26997c2",
   "(69a) (ny_it201.stc_rr_high)": "e9b801362d2eef5ef0fd9a793e13900eb1b9bac6fdaf6761f0d902b70ad21f5b",
   "(69a) (ny_it201.stc_rr)": "8c5bf23f63c83a37aec3e27a01fb326a6b830b2f21ebc3d68a0bafddf2f9d2a9",
-  "69a": "09090af14e01f4a4f54bfb94aa1dc023badb941c7274853923bc03b7463d762b",
+  "69a": "2b8ac19ee61dd23e430ae32cad7d04daa06c906b267a5c19c9f5448f242ec897",
   "70": "c1b77882bfa478597244335ac2467c270683611a99bd0edc816291b96e9130cb",
   "70a": "67cd8ff3610b8af9e0e65ce00d0a23f3618f35a40567f56c441582890222445e",
   "71": "2ad8ca4d4503d4801c04677fcd31020bd46fafb81af8441cb7093d5c6f99d010",

@@ -10,6 +10,7 @@ rows:
     answers:
       $retirement@person[taxpayer]: [r]
       person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].disability: false
       person[taxpayer].retirement[r].code: normal_7
       person[taxpayer].retirement[r].rollover_any: true
       person[taxpayer].retirement[r].roth_moved: true
@@ -22,6 +23,7 @@ rows:
     answers:
       $retirement@person[taxpayer]: [r]
       person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].disability: false
       person[taxpayer].retirement[r].code: normal_7
       person[taxpayer].retirement[r].rollover_any: true
       person[taxpayer].retirement[r].roth_moved: false
@@ -35,6 +37,7 @@ rows:
     answers:
       $retirement@person[taxpayer]: [r]
       person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].disability: false
       person[taxpayer].retirement[r].code: normal_7
       person[taxpayer].retirement[r].rollover_any: true
       person[taxpayer].retirement[r].roth_moved: false
@@ -49,6 +52,7 @@ rows:
     answers:
       $retirement@person[taxpayer]: [r]
       person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].disability: false
       person[taxpayer].retirement[r].code: normal_7
       person[taxpayer].retirement[r].rollover_any: true
       person[taxpayer].retirement[r].roth_moved: false
@@ -106,6 +110,7 @@ rows:
     answers:
       $retirement@person[taxpayer]: [r]
       person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].disability: false
       person[taxpayer].retirement[r].code: normal_7
       person[taxpayer].retirement[r].under59: false
       person[taxpayer].retirement[r].rollover_any: false
@@ -119,6 +124,7 @@ rows:
     answers:
       $retirement@person[taxpayer]: [r]
       person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].disability: false
       person[taxpayer].retirement[r].box6: false
       person[taxpayer].retirement[r].code: normal_7
       person[taxpayer].retirement[r].rollover_any: false
@@ -128,7 +134,7 @@ rows:
     expect:
       refused: person[taxpayer].retirement[r].special
   - id: retirement.dis_early
-    design: "retirement.special: a disability pension received before minimum retirement age"
+    design: "retirement.special: a disability pension received before minimum retirement age; restated by lane x2-paynow2 (now figured as wages on Form 1040 line 1h: the end changes from refused to proceeds, scout-tail A.8 item 4)"
     situation: "A person of 60 draws a disability pension from a plan whose minimum retirement age is 62."
     answers:
       $retirement@person[taxpayer]: [r]
@@ -140,9 +146,31 @@ rows:
       person[taxpayer].retirement[r].loan_offset: false
       person[taxpayer].retirement[r].disability: true
       person[taxpayer].retirement[r].dis_early: true
+      person[taxpayer].retirement[r].dis_all_early: true
+      person[taxpayer].retirement[r].dis_terror: false
+      person[taxpayer].retirement[r].dis_military: false
+      person[taxpayer].retirement[r].cost_any: false
+      person[taxpayer].retirement[r].box1: 1800000
+      person[taxpayer].retirement[r].box5: 0
+      person[taxpayer].sav_student: false
+      person[taxpayer].sav_able: false
+      person[taxpayer].sav_voluntary: 0
       person[taxpayer].retirement[r].under59: false
       person[taxpayer].retirement[r].pso_exclusion: false
       person[taxpayer].retirement[r].born_before_averaging_date: false
+    expect:
+      proceeds:
+        person[taxpayer].retirement[r].dis_all_early: true
+  - id: retirement.dis_reached_age
+    design: "lane x2-paynow2: a disability pension in the year the person reached the plan's minimum retirement age (paid partly as wages, partly as a pension)"
+    situation: "A person drew a disability pension all year and reached the plan's minimum retirement age of 62 in July 2025."
+    answers:
+      $retirement@person[taxpayer]: [r]
+      person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].code: normal_7
+      person[taxpayer].retirement[r].disability: true
+      person[taxpayer].retirement[r].dis_early: true
+      person[taxpayer].retirement[r].dis_all_early: false
     expect:
       refused: person[taxpayer].retirement[r].special
   - id: retirement.dis_terror
@@ -407,6 +435,7 @@ rows:
     answers:
       $retirement@person[taxpayer]: [r]
       person[taxpayer].retirement[r].account: plan
+      person[taxpayer].retirement[r].disability: false
       person[taxpayer].retirement[r].code: normal_7
       person[taxpayer].retirement[r].rollover_any: false
       person[taxpayer].retirement[r].disaster: true

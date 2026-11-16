@@ -1,0 +1,156 @@
+diff --git a/forms/2025/dependent.yaml b/forms/2025/dependent.yaml
+index bcc047f..8d0ce57 100644
+--- a/forms/2025/dependent.yaml
++++ b/forms/2025/dependent.yaml
+@@ -2246,15 +2246,17 @@ form:
+       expr:
+         op: input
+         source: 'Is this dependent required to file a 2025 income tax return because of their income, by Chart B in the Form
+-          1040 instructions (unearned income over $1,350, earned income over $15,750, or gross income over the larger of $1,350
+-          and earned income up to $15,300 plus $450, for a single dependent under 65 and not blind)? Answer no if the dependent
+-          files only to claim a refund of withheld or estimated tax.'
++          1040 instructions (for a single dependent under 65 and not blind: unearned income over $1,350, earned income, which
++          includes taxable scholarship and fellowship grants, over $15,750, or gross income over the larger of $1,350 and earned
++          income up to $15,300 plus $450; higher limits for a dependent 65 or older or blind, and other limits for a married
++          dependent)? Answer no if the dependent files only to claim a refund of withheld or estimated tax.'
+       cite:
+         doc: i8962
+         locator: 'p. 8, Line 2b, "Only include your dependents who are required to file an income tax return because their
+           income meets the income tax return filing threshold.", "Do not include the modified AGI of dependents who are filing
+           a tax return only to claim a refund of tax withheld or estimated tax."; i1040gi p. 10, Chart B—For Children and Other
+-          Dependents, "Your unearned income was over $1,350."'
++          Dependents, "Your unearned income was over $1,350.", "Earned income includes salaries, wages, tips, professional
++          fees, and taxable scholarship and fellowship grants.", "Were you either age 65 or older or blind?"'
+       ambiguity: amb.2025.ptc_dependent_filing
+     - id: dependent.ptc_magi
+       printed: (helper)
+diff --git a/forms/2025/eic.yaml b/forms/2025/eic.yaml
+index 2dce4a5..ec58eb6 100644
+--- a/forms/2025/eic.yaml
++++ b/forms/2025/eic.yaml
+@@ -17,8 +17,8 @@ form:
+       label: Did you live for more than half of 2025 with a person whose qualifying child you could be by relationship?
+       expr:
+         op: input
+-        source: In 2025, did you live for more than half the year in the same home as your parent, grandparent, brother, sister,
+-          aunt or uncle, or a foster parent? Count time you were temporarily away, for example at school.
++        source: In 2025, did you live for more than half the year in the same home as a parent, grandparent, brother, sister,
++          aunt or uncle, counting step, half and foster relatives?
+       cite:
+         doc: i1040gi
+         locator: 'p. 41, Step 3, Qualifying Child, "A qualifying child for the EIC is your... Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them" and "Who lived with you in the United States for more than half of 2025"; p. 41, Step 3, question 6, and p. 42, Step 4, question 5'
+diff --git a/forms/2025/f5695.yaml b/forms/2025/f5695.yaml
+index 4132e2a..c1dae8f 100644
+--- a/forms/2025/f5695.yaml
++++ b/forms/2025/f5695.yaml
+@@ -416,7 +416,7 @@ form:
+     gated_by: f5695.panel_if_any
+     expr:
+       op: input
+-      source: "Did that include a new or upgraded electrical panel, circuits or wiring?"
++      source: "Did that include an electrical panel, circuits or wiring, put in in 2024 or 2025?"
+     cite:
+       doc: i5695
+       locator: p. 2, Energy Efficient Home Improvement Credit (Part II), "You may be able to take a credit equal to 30% of
+@@ -2943,8 +2943,8 @@ form:
+       source: Did you (or, on a joint return, your spouse) incur costs for qualified energy property (central air
+         conditioners; natural gas, propane or oil water heaters, furnaces or hot water boilers; panelboards,
+         subpanelboards, branch circuits or feeders; electric or natural gas heat pumps or heat pump water heaters;
+-        biomass stoves or boilers) installed on or in connection with a home located in the United States that you use
+-        as a residence (it may be a second home or a home you rent)? (Answer No if there are none.)
++        biomass stoves or boilers) installed on or in connection with a home located in the United States that you used
++        as a residence during 2025 (it may be a second home or a home you rent)? (Answer No if there are none.)
+     cite:
+       doc: f5695
+       locator: Form 5695 (2025), line 21a; i5695 p. 3, Section B—Residential Energy Property Expenditures, "costs of new
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 681ceac..0490bfc 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -2697,7 +2697,7 @@ bank:
+   - input: eic.lived_with_relative
+     order: 313
+     seq: 5
+-    help: "Stepparents, half brothers and sisters, great-grandparents, great-aunts and great-uncles count too. If you are not sure, answer Yes."
++    help: "Great-grandparents, great-aunts and great-uncles count. Time either of you was away for a while, such as at school, counts as time together. If you are not sure, answer Yes."
+   - input: household.community_property
+     order: 103
+     seq: 1
+@@ -2742,8 +2742,8 @@ bank:
+   - input: household.credit_disallowed
+     order: 310
+     seq: 1
+-    help: "Count any earlier return, including a joint return with someone else: the earned income credit for 1997 or later, the other credits for 2016 or later. If you are not sure, answer Yes. A Yes ends the interview here."
+-    prompt: "Has the IRS ever reduced or refused a child tax credit, a credit for other dependents or an earned income credit that you (or, on a joint return, your spouse) claimed, for any reason other than a math or clerical error?"
++    help: "Count any earlier return, including a joint one with someone else, and a credit taken back after an IRS request for proof or an audit, even if you agreed. If in doubt, answer Yes. A Yes ends the interview here."
++    prompt: "Has the IRS ever reduced or refused a child tax credit (including the additional one), a credit for other dependents or an earned income credit that you (or, on a joint return, your spouse) claimed, except to fix a math or clerical error?"
+   - input: eic.same_home
+     order: 313
+     seq: 1
+@@ -3367,9 +3367,8 @@ bank:
+   - input: f8863.ban
+     order: 242
+     seq: 1
+-    help: 'Answer No if, after that, you filed Form 8862 with a later year''s return and the credit was then allowed, or if
+-      a bar has run out: it lasts 2 years after a finding of reckless or intentional disregard of the rules, 10 years after
+-      a finding of fraud. A Yes is outside what this tool prepares and ends the interview here.'
++    help: 'Answer No only if, after the denial or bar, you filed Form 8862 for this credit with a later year''s return and
++      it was allowed. A bar running out is not enough. A Yes ends the interview here.'
+     prompt: Has the IRS ever denied or reduced an American opportunity credit you claimed, for more than a math error, or
+       barred you from claiming it?
+   - input: person.edu_fulltime
+@@ -3477,10 +3476,10 @@ bank:
+   - input: person.rmd_missed
+     order: 180
+     seq: 25
+-    help: People aged 73 or older, and people who inherited an account, usually must take a minimum amount out each year. A
+-      return with this is outside what this tool prepares; a Yes ends the interview here.
+-    prompt: For this person (you, or your spouse on a joint return) — Did you take less than the required yearly minimum out
+-      of a retirement account by its deadline, even if you made up the shortfall later?
++    help: This includes a yearly minimum (at 73 or older, or on an inherited account), a first amount due April 1, 2025, and
++      emptying an inherited account by its deadline. A Yes ends the interview here.
++    prompt: For this person (you, or your spouse on a joint return) — Did you take less than the required amount out of a
++      retirement account by a 2025 deadline, even if you made up the shortfall later?
+   - input: f8962.estimate_100
+     order: 199
+     seq: 1
+@@ -3494,8 +3493,8 @@ bank:
+   - input: dependent.ptc_files
+     order: 199
+     seq: 3
+-    help: "A dependent with both kinds must also file when the two together are more than the larger of $1,350 and their pay (up to $15,300) plus $450. These limits are for a single dependent under 65 who is not blind."
+-    prompt: "Did this dependent have enough income of their own in 2025 to have to file a tax return: more than $1,350 of interest, dividends or other income not from work, or more than $15,750 of pay? A return filed only to get a refund does not count."
++    help: "With both kinds, they must file when the total is over the larger of $1,350 and their pay (up to $15,300) plus $450. If 65 or older or blind, $3,350, $17,750 and $2,450 replace $1,350, $15,750 and $450 ($5,350, $19,750 and $4,450 if both)."
++    prompt: "Did this dependent have to file a 2025 return because of their own income: over $1,350 not from work, such as interest, or over $15,750 of pay (a taxable scholarship is pay)? Filing only for a refund does not count."
+   - input: dependent.ptc_magi
+     order: 199
+     seq: 4
+@@ -5915,8 +5914,8 @@ bank:
+     seq: 4
+     group: home_school
+     tick: Had solar, insulation, windows, doors or heating equipment installed at home
+-    help: It counts for 2025 if the installation was finished in 2025, whenever it was paid for. A furnace, boiler, wood stove,
+-      electrical panel or home energy audit counts too. If in doubt, answer Yes.
++    help: Count work finished in 2025, work on a new or rebuilt home you moved into in 2025, and your share of work paid by a
++      condo association or co-op. A panel, wiring or energy audit counts. If in doubt, answer Yes.
+   - input: f5695.solar
+     order: 230
+     seq: 2
+@@ -5957,7 +5956,7 @@ bank:
+     order: 230
+     seq: 11
+     group: energy_shell
+-    tick: A new or upgraded electrical panel, circuits or wiring
++    tick: An electrical panel, circuits or wiring, put in in 2024 or 2025
+   - input: f5695.audit
+     order: 230
+     seq: 12
+@@ -6165,7 +6164,7 @@ bank:
+     seq: 50
+     help: A second home or a home you rent counts.
+     prompt: Was the heating, cooling, hot-water or electrical equipment installed at a home in the United States that you
+-      live in?
++      lived in during 2025?
+   - input: f5695.line21b
+     order: 230
+     seq: 51

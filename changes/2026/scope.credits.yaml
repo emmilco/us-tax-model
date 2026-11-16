@@ -14,14 +14,6 @@ changes:
         line: scope.ready_credits
         field: refuses
         from:
-        - when: s3.mfs
-          form: Married filing separately
-          remedy: The rules for a married filing separately return (among them a spouse who itemizes, the Social Security
-            base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married
-            filing jointly is supported.
-          cite:
-            doc: i1040gi
-            locator: p. 14, Married Filing Separately
         - when: s3.adoption_if_any
           form: Form 8839 (adoption credit)
           remedy: An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form
@@ -90,13 +82,6 @@ changes:
               account", "Also use line 13z to report the amount of U.S. tax allocable to the U.S. Virgin Islands" and "If
               you made the election to defer net income tax attributable to the gain on the sale or exchange of qualified
               farmland property"
-        - when: ftc.carryover_if_asked
-          form: Form 1116
-          remedy: A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.
-          cite:
-            doc: i1116
-            locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are
-              eligible to be carried forward to or back to 2025"
         - when: s3.section960c_if_foreign
           form: Schedule 3 line 13z (section 960(c) credit)
           remedy: The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.
@@ -174,14 +159,6 @@ changes:
               Credit Certificate (MCC) by a state or local governmental unit or agency"; p. 2, Line 3, "you must reduce the
               amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3"
         to:
-        - when: s3.mfs
-          form: Married filing separately
-          remedy: The rules for a married filing separately return (among them a spouse who itemizes, the Social Security
-            base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married
-            filing jointly is supported.
-          cite:
-            doc: i1040gi
-            locator: p. 14, Married Filing Separately
         - when: s3.adoption_if_any
           form: Form 8839 (adoption credit)
           remedy: An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form
@@ -248,13 +225,6 @@ changes:
             doc: f1040s3
             locator: Schedule 3 (2026), line 13e (draft), "Total section 1062 applicable net tax liability. Enter amount from
               Form 1062, line 14"
-        - when: ftc.carryover_if_asked
-          form: Form 1116
-          remedy: A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.
-          cite:
-            doc: i1116
-            locator: p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are
-              eligible to be carried forward to or back to 2025"
         - when: s3.section960c_if_foreign
           form: Schedule 3 line 13z (section 960(c) credit)
           remedy: The credit under section 960(c) is reported on Schedule 3 line 13z, which this tool does not prepare.

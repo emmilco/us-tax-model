@@ -317,7 +317,8 @@
           "a"
         ],
         "f1040.status": "mfs",
-        "f1040.tax_exempt_interest": null
+        "f1040.tax_exempt_interest": null,
+        "household.married_dec31": true
       },
       "expect": {
         "sd.line16": {
@@ -387,7 +388,8 @@
           "a"
         ],
         "f1040.status": "mfs",
-        "sales[a].reported_basis": 1
+        "sales[a].reported_basis": 1,
+        "household.married_dec31": true
       },
       "expect": {
         "sd.line16": {
@@ -452,7 +454,8 @@
           "a"
         ],
         "f1040.status": "mfs",
-        "sales[a].reported_basis": 149999
+        "sales[a].reported_basis": 149999,
+        "household.married_dec31": true
       },
       "expect": {
         "sd.line16": {
@@ -517,7 +520,8 @@
           "a"
         ],
         "f1040.status": "mfs",
-        "sales[a].reported_basis": 150000
+        "sales[a].reported_basis": 150000,
+        "household.married_dec31": true
       },
       "expect": {
         "sd.line16": {
@@ -582,7 +586,8 @@
           "a"
         ],
         "f1040.status": "mfs",
-        "sales[a].reported_basis": 150001
+        "sales[a].reported_basis": 150001,
+        "household.married_dec31": true
       },
       "expect": {
         "sd.line16": {
@@ -647,7 +652,8 @@
           "a"
         ],
         "f1040.status": "mfs",
-        "sales[a].reported_basis": 299999
+        "sales[a].reported_basis": 299999,
+        "household.married_dec31": true
       },
       "expect": {
         "sd.line16": {
@@ -712,7 +718,8 @@
           "a"
         ],
         "f1040.status": "mfs",
-        "sales[a].reported_basis": 300000
+        "sales[a].reported_basis": 300000,
+        "household.married_dec31": true
       },
       "expect": {
         "sd.line16": {
@@ -777,7 +784,8 @@
           "a"
         ],
         "f1040.status": "mfs",
-        "sales[a].reported_basis": 300001
+        "sales[a].reported_basis": 300001,
+        "household.married_dec31": true
       },
       "expect": {
         "sd.line16": {
@@ -846,7 +854,8 @@
           "a"
         ],
         "f1040.status": "mfs",
-        "sales[a].reported_basis": 700000
+        "sales[a].reported_basis": 700000,
+        "household.married_dec31": true
       },
       "expect": {
         "sd.line16": {
@@ -972,16 +981,21 @@
       }
     },
     {
-      "id": "sales.refuse.digital.G",
+      "id": "sales.box.G",
       "covers": [
+        "sales.box.G",
         "sales.digital"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Restated from the refusal case sales.refuse.digital.G (gate sales.digital, retired by lane x1-digital): the same one sale under box G, now with figures. f8949 p. 1 and f1040sd p. 1 put a box G sale on Schedule D line 1b (\"Box ... or Box G\"); column (e) is the reported basis (basis reported to the IRS, i8949 p. 3); column (h) = (d) - (e) = 200000. Every other transaction line is zero. Form 1040 line 7a is the net gain.",
       "inputs": {
         "$sales": [
           "a"
         ],
         "sales[a].box": "G",
+        "f1040.digital_assets": true,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 300000,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
@@ -991,473 +1005,163 @@
       },
       "expect": {
         "f1040.line7a": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 200000
         },
         "sd.line1a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 500000
         },
         "sd.line1b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 300000
         },
         "sd.line1b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 200000
         },
         "sd.line2.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.count": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "count",
+          "value": 1
         },
         "sd.filed": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "bool",
+          "value": true
         }
       }
     },
     {
-      "id": "sales.refuse.digital.H",
+      "id": "sales.box.H",
       "covers": [
+        "sales.box.H",
         "sales.digital"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Restated from the refusal case sales.refuse.digital.H (gate sales.digital, retired by lane x1-digital): the same one sale under box H, now with figures. f8949 p. 1 and f1040sd p. 1 put a box H sale on Schedule D line 2 (\"Box ... or Box H\"); column (e) is the correct basis (basis not reported, or no Form 1099-DA; i8949 p. 11, worksheet: enter the correct basis in column (e)); column (h) = (d) - (e) = 200000. Every other transaction line is zero. Form 1040 line 7a is the net gain.",
       "inputs": {
         "$sales": [
           "a"
         ],
         "sales[a].box": "H",
+        "f1040.digital_assets": true,
+        "sales[a].proceeds": 500000,
+        "sales[a].correct_basis": 300000,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
@@ -1467,473 +1171,163 @@
       },
       "expect": {
         "f1040.line7a": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 200000
         },
         "sd.line1a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 500000
         },
         "sd.line2.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 300000
         },
         "sd.line2.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 200000
         },
         "sd.line3.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.count": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "count",
+          "value": 1
         },
         "sd.filed": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "bool",
+          "value": true
         }
       }
     },
     {
-      "id": "sales.refuse.digital.I",
+      "id": "sales.box.I",
       "covers": [
+        "sales.box.I",
         "sales.digital"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Restated from the refusal case sales.refuse.digital.I (gate sales.digital, retired by lane x1-digital): the same one sale under box I, now with figures. f8949 p. 1 and f1040sd p. 1 put a box I sale on Schedule D line 3 (\"Box ... or Box I\"); column (e) is the correct basis (basis not reported, or no Form 1099-DA; i8949 p. 11, worksheet: enter the correct basis in column (e)); column (h) = (d) - (e) = 200000. Every other transaction line is zero. Form 1040 line 7a is the net gain.",
       "inputs": {
         "$sales": [
           "a"
         ],
         "sales[a].box": "I",
+        "f1040.digital_assets": true,
+        "sales[a].proceeds": 500000,
+        "sales[a].correct_basis": 300000,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
@@ -1943,473 +1337,163 @@
       },
       "expect": {
         "f1040.line7a": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 200000
         },
         "sd.line1a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 500000
         },
         "sd.line3.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 300000
         },
         "sd.line3.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 200000
         },
         "sd.line8a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.count": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "count",
+          "value": 1
         },
         "sd.filed": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "bool",
+          "value": true
         }
       }
     },
     {
-      "id": "sales.refuse.digital.J",
+      "id": "sales.box.J",
       "covers": [
+        "sales.box.J",
         "sales.digital"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Restated from the refusal case sales.refuse.digital.J (gate sales.digital, retired by lane x1-digital): the same one sale under box J, now with figures. f8949 p. 2 and f1040sd p. 1 put a box J sale on Schedule D line 8b (\"Box ... or Box J\"); column (e) is the reported basis (basis reported to the IRS, i8949 p. 3); column (h) = (d) - (e) = 200000. Every other transaction line is zero. Form 1040 line 7a is the net gain.",
       "inputs": {
         "$sales": [
           "a"
         ],
         "sales[a].box": "J",
+        "f1040.digital_assets": true,
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 300000,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
@@ -2419,473 +1503,163 @@
       },
       "expect": {
         "f1040.line7a": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 200000
         },
         "sd.line1a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 500000
         },
         "sd.line8b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 300000
         },
         "sd.line8b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 200000
         },
         "sd.line9.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.count": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "count",
+          "value": 1
         },
         "sd.filed": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "bool",
+          "value": true
         }
       }
     },
     {
-      "id": "sales.refuse.digital.K",
+      "id": "sales.box.K",
       "covers": [
+        "sales.box.K",
         "sales.digital"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Restated from the refusal case sales.refuse.digital.K (gate sales.digital, retired by lane x1-digital): the same one sale under box K, now with figures. f8949 p. 2 and f1040sd p. 1 put a box K sale on Schedule D line 9 (\"Box ... or Box K\"); column (e) is the correct basis (basis not reported, or no Form 1099-DA; i8949 p. 11, worksheet: enter the correct basis in column (e)); column (h) = (d) - (e) = 200000. Every other transaction line is zero. Form 1040 line 7a is the net gain.",
       "inputs": {
         "$sales": [
           "a"
         ],
         "sales[a].box": "K",
+        "f1040.digital_assets": true,
+        "sales[a].proceeds": 500000,
+        "sales[a].correct_basis": 300000,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
@@ -2895,473 +1669,163 @@
       },
       "expect": {
         "f1040.line7a": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 200000
         },
         "sd.line1a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 500000
         },
         "sd.line9.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 300000
         },
         "sd.line9.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 200000
         },
         "sd.line10.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.count": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "count",
+          "value": 1
         },
         "sd.filed": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "bool",
+          "value": true
         }
       }
     },
     {
-      "id": "sales.refuse.digital.L",
+      "id": "sales.box.L",
       "covers": [
+        "sales.box.L",
         "sales.digital"
       ],
-      "evidence": "synthetic refusal regression",
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Restated from the refusal case sales.refuse.digital.L (gate sales.digital, retired by lane x1-digital): the same one sale under box L, now with figures. f8949 p. 2 and f1040sd p. 1 put a box L sale on Schedule D line 10 (\"Box ... or Box L\"); column (e) is the correct basis (basis not reported, or no Form 1099-DA; i8949 p. 11, worksheet: enter the correct basis in column (e)); column (h) = (d) - (e) = -300000. Every other transaction line is zero. Form 1040 line 7a is the net loss (within $3,000).",
       "inputs": {
         "$sales": [
           "a"
         ],
         "sales[a].box": "L",
+        "f1040.digital_assets": true,
+        "sales[a].proceeds": 100000,
+        "sales[a].correct_basis": 400000,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
@@ -3371,459 +1835,144 @@
       },
       "expect": {
         "f1040.line7a": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": -300000
         },
         "sd.line1a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line1b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line2.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line3.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8a.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line8b.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line9.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.d": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 100000
         },
         "sd.line10.e": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 400000
         },
         "sd.line10.g": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": 0
         },
         "sd.line10.h": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "money",
+          "cents": -300000
         },
         "sd.count": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "count",
+          "value": 1
         },
         "sd.filed": {
-          "kind": "refusal",
-          "form": "Form 8949 digital asset boxes G–L",
-          "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part.",
-          "cite": {
-            "doc": "f8949",
-            "locator": "Parts I and II, boxes G–L",
-            "revision": "2025; created 2025-05-05",
-            "snapshot": "274513891e4e281d11e14286f14b9df724c24b6030fca0f0681da64fb2e7f525",
-            "tax_year": 2025
-          },
-          "gate": "sales[a].digital"
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -7809,7 +5958,8 @@
         "dependent[dep_a].age": 18,
         "dependent[dep_a].supported": true,
         "dependent[dep_b].age": 28,
-        "dependent[dep_b].supported": true
+        "dependent[dep_b].supported": true,
+        "household.married_dec31": true
       },
       "expect": {
         "sd.line17": {
@@ -8060,7 +6210,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "household.married_dec31": true,
         "sa.gifts": true,
         "sa.state_tax_any": true,
@@ -8173,7 +6322,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "household.married_dec31": true,
         "sa.gifts": true,
         "sa.state_tax_any": true,
@@ -8292,7 +6440,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "household.married_dec31": true,
         "qbi.dividends": 3536400,
         "s1a.overtime": true,
@@ -8420,7 +6567,6 @@
         "ftc.all_passive": true,
         "ftc.statements": true,
         "ftc.eligible": true,
-        "ftc.elect": true,
         "household.married_dec31": true,
         "qbi.dividends": 3536400,
         "s1a.overtime": true,
@@ -8524,6 +6670,298 @@
           "kind": "unknown",
           "reason": "no input supplied for sales[s2].aggregate_eligible",
           "input": "sales[s2].aggregate_eligible"
+        }
+      }
+    },
+    {
+      "id": "sales.official.da.aggregate",
+      "covers": [
+        "sales.official.da.aggregate"
+      ],
+      "evidence": "A — official IRS example",
+      "evidence_note": "i1040sd p. 10, Example 1—Basis Reported to the IRS, read with a Form 1099-DA (box 1f proceeds $6,000, box 1g basis $2,000, box 2 checked, held 3 years, no adjustments): $6,000 on Schedule D line 8a column (d), $2,000 in column (e), $4,000 in column (h). Box J is the Form 8949 box such a sale would carry if listed (i8949 p. 4, Box D or Box J).",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "J",
+        "sales[a].route": "aggregate",
+        "sales[a].aggregate_eligible": true,
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 200000
+      },
+      "expect": {
+        "sd.line8a.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line8a.e": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "sd.line8a.g": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line8a.h": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "sd.line8b.h": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 400000
+        }
+      }
+    },
+    {
+      "id": "sales.official.da.two_aggregate",
+      "covers": [
+        "sales.official.da.two_aggregate"
+      ],
+      "evidence": "A — official IRS example",
+      "evidence_note": "i1040sd p. 11, continuation of Example 1 (a second transaction with proceeds $5,000 and basis $3,000), Form 1099-DA branch: line 8a column (d) $11,000, column (e) $5,000, column (h) $6,000.",
+      "inputs": {
+        "$sales": [
+          "a",
+          "b"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "J",
+        "sales[a].route": "aggregate",
+        "sales[a].aggregate_eligible": true,
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 200000,
+        "sales[b].box": "J",
+        "sales[b].route": "aggregate",
+        "sales[b].aggregate_eligible": true,
+        "sales[b].proceeds": 500000,
+        "sales[b].reported_basis": 300000
+      },
+      "expect": {
+        "sd.line8a.d": {
+          "kind": "money",
+          "cents": 1100000
+        },
+        "sd.line8a.e": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "sd.line8a.h": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 600000
+        }
+      }
+    },
+    {
+      "id": "sales.official.da.not_reported",
+      "covers": [
+        "sales.official.da.not_reported"
+      ],
+      "evidence": "A — official IRS example",
+      "evidence_note": "i1040sd p. 11, Example 2—Basis Not Reported to the IRS, Form 1099-DA branch (proceeds $6,000, basis $2,000, box 2 not checked): not on line 8a; reported on Form 8949. Column (e) is the correct basis, taken as the $2,000 shown; column (h) = $6,000 - $2,000 = $4,000 (i1040sd p. 11, column (h) Example 1). Box K (long-term) is synthetic: the example gives no holding period.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "K",
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 200000,
+        "sales[a].correct_basis": 200000
+      },
+      "expect": {
+        "sd.line9.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line9.e": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "sd.line9.g": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line9.h": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "sd.line8a.d": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 400000
+        }
+      }
+    },
+    {
+      "id": "sales.official.da.adjustment",
+      "covers": [
+        "sales.official.da.adjustment"
+      ],
+      "evidence": "A — official IRS example",
+      "evidence_note": "i1040sd p. 11, Example 3—Adjustment, Form 1099-DA branch (proceeds $6,000, reported basis $2,000, box 2 checked, basis incorrect) with column (h) Example 3 (column (g) ($1,000), column (h) $3,000). Code B and a correct basis of $3,000 are the scaffolding that gives the stated ($1,000) (i8949 p. 11, Worksheet for Basis Adjustments: line 1 $2,000, line 2 $3,000, line 3 ($1,000)). Box J (long-term) is synthetic.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "J",
+        "sales[a].code": "B",
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 200000,
+        "sales[a].correct_basis": 300000
+      },
+      "expect": {
+        "sd.line8b.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line8b.e": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "sd.line8b.g": {
+          "kind": "money",
+          "cents": -100000
+        },
+        "sd.line8b.h": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "sales.mixed.A_G",
+      "covers": [
+        "sales.mixed.A_G"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Schedule D line 1b totals Form 8949 rows with box A or box G (f1040sd p. 1, \"Box A or Box G checked\"), so a box A sale and a box G sale add: (d) 500,000 + 300,000 = 800,000; (e) 400,000 + 350,000 = 750,000; (h) 100,000 - 50,000 = 50,000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a",
+          "b"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "A",
+        "sales[a].proceeds": 500000,
+        "sales[a].reported_basis": 400000,
+        "sales[b].box": "G",
+        "sales[b].proceeds": 300000,
+        "sales[b].reported_basis": 350000
+      },
+      "expect": {
+        "sd.line1b.d": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line1b.e": {
+          "kind": "money",
+          "cents": 750000
+        },
+        "sd.line1b.g": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line1b.h": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 50000
+        }
+      }
+    },
+    {
+      "id": "sales.refuse.aggregate.H",
+      "covers": [
+        "sales.bad_aggregate"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "A box H sale (basis not reported to the IRS) cannot go on line 1a: i1040sd p. 10, Lines 1a and 8a, \"shows basis was reported to the IRS\". Gate sales[a].bad_aggregate; refusal text as sales.refuse.aggregate.basis records it.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "H",
+        "sales[a].route": "aggregate",
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f8959.territory_w2": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "form": "Form 8949",
+          "remedy": "Use the detail route; this transaction does not qualify for Schedule D lines 1a/8a.",
+          "cite": {
+            "doc": "i1040sd",
+            "locator": "p. 10, lines 1a and 8a",
+            "revision": "2025; printed date 2025-12-11",
+            "snapshot": "650643a686378b7573e4f4476ee4e7c9f9bab1384314dca32dc336f7b2276002",
+            "tax_year": 2025
+          },
+          "gate": "sales[a].bad_aggregate"
+        }
+      }
+    },
+    {
+      "id": "sales.da.loss_limit",
+      "covers": [
+        "sales.da.loss_limit"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Box L, proceeds 100,000, basis 600,000: column (h) -500,000 on line 10; line 15 and line 16 -500,000; line 21 is the smaller loss of line 16 and $3,000 for a single filer (f1040sd line 21), -300,000, which is Form 1040 line 7a.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "L",
+        "sales[a].proceeds": 100000,
+        "sales[a].correct_basis": 600000
+      },
+      "expect": {
+        "sd.line10.h": {
+          "kind": "money",
+          "cents": -500000
+        },
+        "sd.line15": {
+          "kind": "money",
+          "cents": -500000
+        },
+        "sd.line16": {
+          "kind": "money",
+          "cents": -500000
+        },
+        "sd.line21": {
+          "kind": "money",
+          "cents": -300000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -300000
         }
       }
     },

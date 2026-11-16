@@ -1,0 +1,563 @@
+{
+ "form": "f8962",
+ "reviews": {
+  "gate:f8962.aptc": {
+   "subject_sha": "54aa6e505601d0ded17c7fce33ca95ad2ccd49a14dd629368ac8b2fe1dba1852",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer whose dependent child, or whose spouse on a joint return, was enrolled in Marketplace coverage with APTC by someone else, such as a former spouse or the other parent. The Form 1095-A went to that person, so the filer has no form to enter and the tool's line 33C total is $0.",
+       "why_no": "The gate is computed from the advance payments on the Forms 1095-A the filer entered. Not having a form is treated as no APTC having been paid for anyone in the tax family.",
+       "line": "f8962.estimate_exception",
+       "irs_text": "i8962 p. 3: \"If someone else enrolled an individual in your tax family in coverage, and APTC was paid for that individual's coverage, you must file Form 8962 to reconcile the APTC. You need to obtain a copy of the Form 1095-A from the person who enrolled the individual.\" p. 9: the exception applies if \"APTC was paid for the coverage of 1 or more months during 2025.\"",
+       "severity": "high",
+       "fix": "Before computing the gate, ask: \"Was anyone on this return (you, your spouse, or a dependent) covered by a Marketplace plan in 2025, even if someone else signed them up or you didn't get a Form 1095-A?\" On yes, require that Form 1095-A, obtained from the person who enrolled them, before computing line 33C."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A filer or family member covered under a Marketplace policy with APTC whose Form 1095-A never arrived, or arrived after filing began, and who skipped the 1095-A entry or plans to add it later.",
+       "why_no": "No Form 1095-A has been entered, so line 33C totals $0 and the gate is false. Nothing asks whether APTC was paid as a fact.",
+       "line": "f8962.estimate_exception",
+       "irs_text": "i8962 p. 2: \"If you are expecting to receive Form 1095-A for a qualified health plan and you do not receive it by early February, contact the Marketplace.\" p. 2: \"If APTC was paid on your behalf... you must file Form 8962.\"",
+       "severity": "high",
+       "fix": "Gate on a fact question (Marketplace coverage in 2025 for anyone on the return), separate from forms received. Refuse to finish until a Form 1095-A is entered for each Marketplace policy."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse completed the Marketplace application, or a filer whose dependent was enrolled by another adult. The household income is below 100% of the poverty line and APTC was paid.",
+       "why_no": "The gated question reads \"When you signed up for 2025...\". A filer who did not sign up personally may answer No because they did not enroll, or because they don't know what estimate was made.",
+       "line": "f8962.estimate_exception",
+       "irs_text": "i8962 p. 9: \"You or an individual in your tax family enrolled in a qualified health plan through a Marketplace. The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025.\"",
+       "severity": "medium",
+       "fix": "Reword: \"When you, your spouse, or anyone else enrolled a member of your household in a 2025 Marketplace plan, did the Marketplace estimate your household income at 100% or more of the federal poverty line? (Your eligibility notice shows this; if APTC was approved, the answer is usually yes.)\""
+      }
+     ],
+     "prompt_sha": "1eca5070fd2cea3735c8243a5f5a1b938d46416ade1d9c2c4da279dfa9c9b2ec",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08668,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8962.aptc.54aa6e505601.1.response.txt"
+    }
+   ],
+   "condition": "f8962.aptc",
+   "lines": [
+    "f8962.estimate_exception"
+   ],
+   "inputs": [
+    "f8962.estimate_100"
+   ],
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      2,
+      3,
+      6,
+      9,
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, \"If APTC was paid for any individuals in your tax family, skip lines 7 and 8, and go to line 9.\"",
+      "p. 6, Applicable taxpayer, \"Generally, you are an applicable taxpayer if your household income for 2025\"; p. 9, \"The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025.\"",
+      "p. 9, \"You or an individual in your tax family enrolled in a qualified health plan through a Marketplace.\"; p. 9, \"The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025.\"; p. 2, \"your tax family (yourself, your spouse, and your dependents)\"; p. 3, Tax family, \"Your spouse if filing jointly and your spouse can’t be claimed as a dependent on someone else’s 2025 tax return\"; p. 9, \"You, with intentional or reckless disregard for the facts, provided incorrect information to a Marketplace for the year of coverage.\""
+     ],
+     "cols_pages": [
+      2,
+      3,
+      6,
+      9,
+      10
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "gate:f8962.income_100": {
+   "subject_sha": "03f45e644c80cbe6bbc79a0072136469c477671ae7a131457c35d6ecb6226f3b",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A single filer or a married couple filing jointly with Marketplace coverage, APTC paid, and household income below the poverty line (Form 8962 line 5 below 100). The filer or the spouse is a green card holder within the five-year bar and is therefore ineligible for Medicaid.",
+       "why_no": "The gate is inverted. The tool asks the question only when line 5 is at least 100, and in that case the line is false whatever the answer. When line 5 is below 100, the gate fails, so the tool never asks the question and sets the line to false. Its own help says 'Asked because the income on this return is below the federal poverty line', which contradicts the condition. A filer who should be asked never is, and no answer from any filer can make the line true.",
+       "line": "f8962.alien_from_income",
+       "irs_text": "i8962 p. 9, Household income below 100%: 'If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under ... Alien lawfully present in the United States'; 'Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.'",
+       "severity": "high",
+       "fix": "Gate on NOT f8962.income_100 (line 5 below 100) so the question is asked exactly when the help says it is. Alternatively, drop the outer gate and rely on the Choose already inside the line."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer below the poverty line whose Marketplace-covered spouse or dependent holds a nonimmigrant status, such as an H-1B worker, an F-1 student, or a TPS holder. The person is lawfully present but ineligible for Medicaid because of that status.",
+       "why_no": "The question asks about a 'lawfully present immigrant'. Under immigration law, H-1B, F-1, and similar visa holders are 'nonimmigrants', so a filer who knows the terms answers no truthfully. Other filers read 'immigrant' as meaning green card holders only.",
+       "line": "f8962.alien_from_income",
+       "irs_text": "i8962 p. 9, 'Alien lawfully present in the United States. Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.'",
+       "severity": "high",
+       "fix": "Ask: 'Was anyone covered by the Marketplace plan lawfully in the United States but not a U.S. citizen (for example a green card holder, a visa holder such as H-1B or F-1 and their family members, or someone with TPS or another lawful status)?' Then ask a separate question about Medicaid."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A lawfully present noncitizen below the poverty line who never applied for Medicaid. The person enrolled through the Marketplace, which granted APTC without a Medicaid denial notice.",
+       "why_no": "'Could not get Medicaid because of their immigration status' asks the filer to make a legal eligibility determination. A filer who never applied, or never got a denial, answers no or 'I don't know' and treats that as no.",
+       "line": "f8962.alien_from_income",
+       "irs_text": "i8962 p. 9, 'Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.'",
+       "severity": "medium",
+       "fix": "First ask a fact the filer can check: is the covered person a noncitizen who is lawfully present? On a yes, ask whether the Marketplace told them they were not eligible for Medicaid, or whether they were in the U.S. less than five years with that status. Treat 'not sure' as yes, which leads to the refusal."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A covered family member whose immigration status changed partway through 2025. For example, the person was within the five-year bar for some months, then became a citizen or Medicaid-eligible later in the year.",
+       "why_no": "The past tense 'was ... could not get Medicaid' reads as a description of the person's status now or at year end. A filer whose relative can now get Medicaid answers no, although the exception applied for the earlier months of coverage.",
+       "line": "f8962.alien_from_income",
+       "irs_text": "i8962 p. 9, 'Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.'",
+       "severity": "medium",
+       "fix": "Add: 'for any month of 2025 in which they had Marketplace coverage'."
+      }
+     ],
+     "prompt_sha": "8476978449521adc156ad4f6ef1f8fba4ae9590a90868ac6469e3a018b91e7b7",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.082896,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8962.income_100.03f45e644c80.1.response.txt"
+    }
+   ],
+   "condition": "f8962.income_100",
+   "lines": [
+    "f8962.alien_from_income"
+   ],
+   "inputs": [
+    "f8962.alien_below"
+   ],
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      6,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Applicable taxpayer, \"Generally, you are an applicable taxpayer if your household income for 2025\"; p. 9, \"The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025.\"",
+      "p. 9, Alien lawfully present in the United States, \"Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status.\"",
+      "p. 9, Line 5, \"If the amount on line 5 is less than 100%, you can take the PTC if you meet the requirements under Estimated household income at least 100% of the federal poverty line next or Alien lawfully present in the United States, later.\""
+     ],
+     "cols_pages": [
+      6,
+      9
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "gate:f8962.job_offer_if_other_coverage": {
+   "subject_sha": "e93b2c41cfd93e9744c9291fd4de7767665bd9479126ce340888230529cf4522",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A Marketplace enrollee turned down a job-based plan that was cheap and gave minimum value. Nobody in the family qualified for Medicaid, Medicare, CHIP, TRICARE or VA care.",
+       "why_no": "The first helper asks whether someone 'may have been eligible for other minimum essential coverage'. The cited list names government programs (Medicaid, Medicare, CHIP, veterans, TRICARE, Peace Corps). The filer reads that as the whole meaning, says no, and never reaches the employer-offer question.",
+       "line": "f8962.mec_job_affordable_if_job_offer (the Yes refusal is missed and PTC is claimed for months the person is not in the coverage family)",
+       "irs_text": "i8962 p. 5: 'In addition to qualified health plans and other coverage in the individual market, MEC includes: ... Most types of employer-sponsored coverage'",
+       "severity": "medium",
+       "fix": "Ask the employer question directly, without the first helper in front of it: 'In any month you had Marketplace coverage, could you, your spouse, or anyone you claim as a dependent have signed up for a health plan through a job (yours, your spouse's, or a parent's), even if you chose not to?' Or name job-based plans first and plainly in the MEC question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "An employee declined the employer plan because it felt expensive. They judged it against wages or the family premium, but the self-only share was 9.02% of household income or less.",
+       "why_no": "'Eligible for' MEC is a legal test that already includes affordability and minimum value. The filer decides on their own that they were 'not eligible' because the plan 'wasn't affordable' and answers no before the tool shows its 9.02% test.",
+       "line": "f8962.mec_job_affordable_if_job_offer",
+       "irs_text": "i8962 p. 5: 'The coverage offered by your employer is generally considered affordable for you if your share of the annual cost for self-only coverage ... is not more than 9.02% of your household income.'",
+       "severity": "medium",
+       "fix": "Gate on the checkable fact (a job-based plan was offered or could be joined), whatever its cost. Leave affordability to the gated question and its help."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "Like Don in the instructions: the Marketplace found an earlier employer offer unaffordable. Mid-year a new job offered an affordable plan with minimum value, which the filer declined without telling the Marketplace.",
+       "why_no": "The filer remembers the Marketplace deciding they were not eligible for other coverage and answers no to 'may have been eligible for other minimum essential coverage'. They do not realize that determination does not cover the new employer's months.",
+       "line": "f8962.mec_job_affordable_if_job_offer",
+       "irs_text": "i8962 p. 5: 'The Marketplace determination does not apply, however, for the months September through December of 2025 because Don did not provide information to the Marketplace about his new employer's offer of coverage.'",
+       "severity": "medium",
+       "fix": "Add: 'Count any job that started or changed during the year, even if the Marketplace earlier said you qualified for help.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A worker was on the employer plan for part of the year. At a plan-year change they dropped it but could still enroll, and moved to the Marketplace for the remaining months.",
+       "why_no": "The question asks whether someone 'was offered employer-sponsored coverage and did not enroll'. The worker did enroll for part of the year and answers no, though for the Marketplace months the offer stood and was not taken.",
+       "line": "f8962.mec_job_affordable_if_job_offer",
+       "irs_text": "i8962 p. 3: 'That individual was not eligible for MEC for the month, other than coverage in the individual market.'",
+       "severity": "medium",
+       "fix": "Ask by month: 'In any month you had Marketplace coverage, was someone able to join a job-based plan that month but not on it?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "On a joint return, the filer's own job offers no health plan. The spouse's employer offered affordable family coverage with minimum value that the family declined in favor of the Marketplace.",
+       "why_no": "The filer thinks of 'employer-sponsored coverage' as coverage from their own job ('offered by your employer' in the help) and does not count the spouse's employer, or a parent's employer for a child.",
+       "line": "f8962.mec_job_affordable_if_job_offer",
+       "irs_text": "i8962 p. 5: 'The coverage offered by your employer is generally considered affordable for the other members of your tax family allowed to enroll in the coverage if your share of the annual cost for coverage for yourself and the other members ... is not more than 9.02% of your household income.'",
+       "severity": "medium",
+       "fix": "Name every source: 'through your job, your spouse's job, or a job of anyone you claim as a dependent, whether as the worker or as a family member.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A worker was eligible for the employer plan but never got a formal offer letter or enrollment packet, and received no Form 1095-C (the form is now sent only on request).",
+       "why_no": "'Was offered' reads as a received document or explicit offer. With no paperwork, the filer answers no.",
+       "line": "f8962.mec_job_affordable_if_job_offer",
+       "irs_text": "i8962 p. 1: 'reporting entities aren't required to send tax forms to covered individuals showing proof of MEC (Forms 1095-B and 1095-C) unless a form is requested.'",
+       "severity": "low",
+       "fix": "Use 'could have signed up for' rather than 'was offered', and add 'whether or not you got a form or letter about it.'"
+      }
+     ],
+     "prompt_sha": "0c21d6039136b3cbaa7cba693bafc7a40d292b58296c1a9f53210738aeb28c6d",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.149532,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8962.job_offer_if_other_coverage.e93b2c41cfd9.1.response.txt"
+    }
+   ],
+   "condition": "f8962.job_offer_if_other_coverage",
+   "lines": [
+    "f8962.mec_job_affordable_if_job_offer"
+   ],
+   "inputs": [
+    "f8962.mec_job_affordable"
+   ],
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      1,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 5, \"Most coverage through government-sponsored programs (including Medicaid coverage, Medicare Part A or C, the Children’s Health Insurance Program (CHIP), certain benefits for veterans and their families, TRICARE, and health coverage for Peace Corps volunteers);\"; p. 5, \"Other health coverage the Department of Health and Human Services designates as MEC.\"; p. 5, \"In addition, if you or your family member enrolls in employer-sponsored coverage for a month, you or your family member is considered eligible for employer-sponsored coverage for that month, even if the coverage does not satisfy the affordability and minimum value standards.\"; p. 5, \"The coverage offered by your employer is generally considered affordable for you if your share of the annual cost for self-only coverage, which is sometimes referred to as the “employee required contribution,” is not more than 9.02% of your household income.\"; p. 5, \"coverage if your share of the annual cost for coverage for yourself and the other members of your tax family allowed to enroll in the coverage is not more than 9.02% of your household income.\"; p. 5, \"If your employer coverage is affordable for you but not affordable for your other family members, you may be able to take the PTC for your other family members if they enroll in a Marketplace qualified health plan.\"; p. 6, \"Also, if you leave your employment and are offered post-employment coverage such as COBRA or retiree coverage, you are not considered eligible for that post-employment coverage unless you actually enroll in the coverage.\"; p. 6, \"Individuals who are incarcerated (other than pending disposition of charges, for example, awaiting trial) are not eligible for coverage in a qualified health plan through a Marketplace.\"; p. 6, \"You or the family member may be treated as eligible for Medicaid, CHIP, or the similar program, and not eligible for the PTC, if the Marketplace determination is later found to be based on incorrect information that was given with an intentional or reckless disregard for the facts.\"; p. 6, \"While coverage purchased in the individual market outside the Marketplace is MEC, eligibility for this type of coverage does not prevent you from being eligible for the PTC for Marketplace coverage.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"; p. 3, \"If you were covered under an individual coverage HRA for 2025, you are not allowed a PTC for your 2025 Marketplace health insurance.\"; p. 1, \"If the QSEHRA is affordable for a month, no PTC is allowed for the month.\"; p. 4, Enrollment premiums, \"You are generally not allowed a monthly credit amount for the month if any part of that month\"; p. 3, \"if you became eligible for APTC because of a successful eligibility appeal and you retroactively enrolled in the plan, then the portion of the enrollment premium for which you are responsible must be paid on or before the 120th day following the date of the appeals decision\"; p. 4, \"due date of your tax return (not including extensions)\""
+     ],
+     "cols_pages": [
+      1,
+      3,
+      4,
+      5,
+      6
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "gate:f8962.mfs_ask": {
+   "subject_sha": "bb2e4d3e48dae935f11628f1feb55f60503b3f4dcf7be0178a4f20eb0115b3b5",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A married filer whose abandoning or abusive spouse was the Marketplace enrollee. The Form 1095-A was mailed to the spouse, and the filer, who was covered on the policy with APTC, never received it and files married filing separately.",
+       "why_no": "The gate depends on the helper \"Any Form 1095-A, so Form 8962 is prepared.\" This filer truthfully has no Form 1095-A, so the tool never prepares Form 8962 and never asks the line A question, even though APTC was paid for their coverage.",
+       "line": "f8962.mfs_exception_if_mfs (and Form 8962 as a whole, including the APTC repayment it would figure)",
+       "irs_text": "i8962 p. 7: \"If you are a victim of domestic abuse or spousal abandonment, you can file a return as married filing separately and take the PTC\"; \"If APTC was paid for your coverage but you cannot take the PTC because you are married filing a separate return ... complete lines 1 through 5 ... Then, complete the rest of the form to determine how much you must repay.\" The policy may cover \"at least one individual in your spouse's tax family.\"",
+       "severity": "high",
+       "fix": "Base the gate on the fact, not the document. Ask: \"Were you or anyone in your tax family enrolled in a health plan through the Marketplace (HealthCare.gov or a state exchange) at any time in 2025, even if you did not get a Form 1095-A or it went to your spouse?\" Then tell the filer how to get the 1095-A from their Marketplace account."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer filing married filing separately who had Marketplace coverage with APTC but lost or never received the Form 1095-A, or got it only online and does not think of it as received.",
+       "why_no": "If the helper asks whether a Form 1095-A was received, this filer answers no from the paperwork in hand. Form 8962 is then never prepared and the line A question is never asked.",
+       "line": "f8962.mfs_exception_if_mfs",
+       "irs_text": "i8962 p. 7: \"Check the box on line A ... if you are filing as married filing separately, are a victim of domestic abuse or spousal abandonment, and qualify for Exception 2\"; \"If APTC was paid for your coverage ... complete the rest of the form to determine how much you must repay.\"",
+       "severity": "medium",
+       "fix": "Ask about Marketplace enrollment, with or without advance payments, rather than about receiving the form."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A married filer living apart from a spouse who abused the filer's child or another family member in the household, but never directly harmed the filer.",
+       "why_no": "The question says \"because they abused you\", and the help lists only abuse aimed at \"you\". The filer reads abuse of the child as outside the question and answers no.",
+       "line": "f8962.mfs_exception_if_mfs",
+       "irs_text": "i8962 p. 7: \"Depending on the facts and circumstances, abuse of an individual's child or other family member living in the household may constitute abuse of the individual.\"",
+       "severity": "medium",
+       "fix": "Add to the help: \"Abuse of your child or another family member living in your household can count as abuse of you.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A married filer whose spouse used humiliation, psychological manipulation, or efforts to undermine the filer's ability to reason independently, often alongside the spouse's drinking or drug use, with no physical violence.",
+       "why_no": "The help lists \"physical, sexual or emotional abuse, and efforts to control, isolate or frighten you.\" The filer takes that list as complete and does not see psychological abuse, humiliation, or undermining their reasoning in it, so they answer no.",
+       "line": "f8962.mfs_exception_if_mfs",
+       "irs_text": "i8962 p. 7: \"Domestic abuse includes physical, psychological, sexual, or emotional abuse, including efforts to control, isolate, humiliate, and intimidate, or to undermine the victim's ability to reason independently. All the facts and circumstances are considered ... including the effects of alcohol or drug abuse by the victim's spouse.\"",
+       "severity": "low",
+       "fix": "Use the full IRS list in the help: physical, psychological, sexual or emotional abuse, including efforts to control, isolate, humiliate or intimidate you, or to undermine your ability to think for yourself."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An abused filer who could in principle sign a joint return but does not, because doing so would require contact with or cooperation from the abusive spouse or would be unsafe.",
+       "why_no": "\"Unable to file a joint return\" reads as physically impossible. A filer who could technically sign, but will not for safety reasons, answers no.",
+       "line": "f8962.mfs_exception_if_mfs",
+       "irs_text": "i8962 p. 7: \"You are unable to file a joint return because you are a victim of domestic abuse (described next) or spousal abandonment.\"",
+       "severity": "low",
+       "fix": "Add to the help: \"Unable includes not filing jointly because of the abuse, for example because it would be unsafe or would require contact or cooperation with your spouse.\""
+      }
+     ],
+     "prompt_sha": "fdb55150f7b06a2407eb637d5faabedad26a2217147170732938917bf66effeb",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.087504,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8962.mfs_ask.bb2e4d3e48da.1.response.txt"
+    }
+   ],
+   "condition": "f8962.mfs_ask",
+   "lines": [
+    "f8962.mfs_exception_if_mfs"
+   ],
+   "inputs": [
+    "f8962.mfs_exception"
+   ],
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Exception 2—victim of domestic abuse or spousal abandonment, \"You are living apart from your spouse at the time you file your 2025 tax return.\" and \"You are unable to file a joint return because you are a victim of domestic abuse (described next) or spousal abandonment (described later).\"; p. 7, Domestic abuse, \"Domestic abuse includes physical, psychological, sexual, or emotional abuse, including efforts to control, isolate, humiliate, and intimidate\"; p. 7, Spousal abandonment, \"the taxpayer is unable to locate their spouse after reasonable diligence\"",
+      "p. 7, Married taxpayers, \"If Exception 2 applies, you are treated as married but can take the PTC with the filing status of married filing separately\"",
+      "p. 7, Victims of domestic abuse or spousal abandonment, \"Check the box on line A, above Part I of Form 8962, if you are filing as married filing separately, are a victim of domestic abuse or spousal abandonment, and qualify for Exception 2 under Married taxpayers, earlier\""
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "gate:f8962.mfs_exception_if_mfs": {
+   "subject_sha": "2cfc6814343277cb0af14be4b810b34d6a937d487db7d467aa05e5b228c3f5c3",
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A married filer filing separately with a Form 1095-A. Their spouse left and cannot be found, or controls and intimidates them without physical violence. They have never used Exception 2.",
+       "why_no": "They may read 'victim of domestic abuse or spousal abandonment' as meaning physical violence, or a spouse who formally deserted them. The gate gives no help text quoting the IRS definitions, which include psychological, emotional and controlling abuse and a spouse who cannot be located after reasonable diligence.",
+       "line": "f8962.mfs_three_years_if_exception (no wrong value results; the 3-year limit matters only when the exception otherwise applies, so a no at the gate cannot leave it wrongly false. The harm falls on the exception itself, which wrongly denies the PTC.)",
+       "irs_text": "i8962 p. 7: 'Domestic abuse includes physical, psychological, sexual, or emotional abuse, including efforts to control, isolate, humiliate, and intimidate'; 'the taxpayer is unable to locate their spouse after reasonable diligence.'",
+       "severity": "low",
+       "fix": "Add help to the gate question quoting both IRS definitions, and point the filer to Pub. 3865. This protects the gate's own answer. The gated 3-year line needs no change."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who used Exception 2 for 2022 and 2023, and for 2024 only on a later amended or late-filed return.",
+       "why_no": "'Did you take the premium tax credit on a separate return ... for each of 2022, 2023 and 2024?' may be read as asking about the original returns only.",
+       "line": "f8962.mfs_three_years_if_exception",
+       "irs_text": "i8962 p. 7: 'if you used this exception to claim the PTC on your tax returns for 2022, 2023, and 2024, you cannot use this exception to claim the PTC on your 2025 return.'",
+       "severity": "low",
+       "fix": "Ask: 'Did you claim the premium tax credit under this exception on your returns (including any amended returns) for all three of 2022, 2023 and 2024?'"
+      }
+     ],
+     "prompt_sha": "437083e140e65ba75d50ee3090ec236b40d89f0f387b199435461f3c1f6f32a7",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.066952,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8962.mfs_exception_if_mfs.2cfc68143432.1.response.txt"
+    }
+   ],
+   "condition": "f8962.mfs_exception_if_mfs",
+   "lines": [
+    "f8962.mfs_three_years_if_exception"
+   ],
+   "inputs": [
+    "f8962.mfs_three_years"
+   ],
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      3,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, 3-year limit for Exception 2, \"You cannot claim the PTC using this exception for more than 3 consecutive years. For example, if you used this exception to claim the PTC on your tax returns for 2022, 2023, and 2024, you\"",
+      "p. 7, Exception 2—victim of domestic abuse or spousal abandonment, \"You do not meet the 3-year limit for Exception 2, described below.\"",
+      "p. 7, Married taxpayers, \"If Exception 2 applies, you are treated as married but can take the PTC with the filing status of married filing separately\""
+     ],
+     "cols_pages": [
+      3,
+      7
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  },
+  "gate:f8962.other_coverage": {
+   "subject_sha": "163eb89a456157ddb51e90fdb5e264369545c6b529aa4123d903766a55039884",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "An employee whose employer gives an individual coverage HRA (or a QSEHRA) that reimburses the premiums for the Marketplace plan the employee picked and enrolled in.",
+       "why_no": "The only insurance they had was the Marketplace plan they chose. The HRA is a reimbursement account, not a 'job's plan' or 'other health coverage'. The help, 'Insurance you bought on your own ... does not count', confirms that reading.",
+       "line": "f8962.mec_job_enrolled_if_other_coverage",
+       "irs_text": "i8962 p. 3, \"If you were covered under an individual coverage HRA for 2025, you are not allowed a PTC for your 2025 Marketplace health insurance.\"; p. 1, \"If the QSEHRA is affordable for a month, no PTC is allowed for the month.\"",
+       "severity": "high",
+       "fix": "Ask in the gate: 'Did an employer offer or pay toward health coverage for anyone on this return, including an HRA, ICHRA or QSEHRA that reimburses premiums (see Form W-2 box 12 code FF)?' Then route a yes to the HRA rules."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "Someone who left a job, elected COBRA, and paid the full premium themselves for some months while a spouse or child was on a Marketplace plan. Or a retiree paying for an employer retiree plan.",
+       "why_no": "They paid the whole premium personally, so they see it as 'insurance you bought on your own' rather than 'a job's plan'.",
+       "line": "f8962.mec_job_enrolled_if_other_coverage",
+       "irs_text": "i8962 p. 6, \"if you leave your employment and are offered post-employment coverage such as COBRA or retiree coverage, you are not considered eligible for that post-employment coverage unless you actually enroll in the coverage.\"",
+       "severity": "medium",
+       "fix": "Name COBRA and retiree plans in the gate, and limit the exclusion: 'Only individual policies bought outside the Marketplace do not count; COBRA and retiree plans count even if you paid the whole premium.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A low-income family whose children met the CHIP or Medicaid income rules but who never applied, or who were told they qualified and enrolled everyone in the Marketplace anyway (the Tom and Nicole example).",
+       "why_no": "'Could ... have had' reads as coverage they actually had or were enrolled in. They never had Medicaid or CHIP, so they answer no without knowing they met the criteria.",
+       "line": "f8962.mec_government_if_other_coverage",
+       "irs_text": "i8962 p. 6, \"You are generally considered eligible for coverage under a government-sponsored program for a month if you met the eligibility criteria for that month, even if you did not enroll.\"",
+       "severity": "medium",
+       "fix": "Add: 'Count programs someone qualified for but did not sign up for, including if the Marketplace said a child could get CHIP or Medicaid.' Also ask whether the Marketplace's notice found anyone eligible for Medicaid or CHIP."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A person who turned 65 (or reached 24 months of disability benefits) during the year and qualified for premium-free Medicare Part A but stayed on the Marketplace plan without enrolling in Medicare.",
+       "why_no": "They read 'have had ... Medicare' as being enrolled, and they never signed up.",
+       "line": "f8962.mec_government_if_other_coverage",
+       "irs_text": "i8962 p. 5, \"Most coverage through government-sponsored programs (including Medicaid coverage, Medicare Part A or C, ...)\"; p. 6, \"if you met the eligibility criteria for that month, even if you did not enroll.\"",
+       "severity": "medium",
+       "fix": "Ask 'Did anyone on this return turn 65, get Social Security disability benefits for 24 months, or otherwise qualify for Medicare, even without signing up?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A spouse or parent who was offered an employer plan and declined it as too expensive or too thin, then enrolled the family in the Marketplace.",
+       "why_no": "They judged the offer unaffordable and so believe they 'could not have had' it. The gate asks them to apply the affordability rule themselves before the tool does.",
+       "line": "f8962.job_offer_if_other_coverage",
+       "irs_text": "i8962 p. 5, \"The coverage offered by your employer is generally considered affordable for you if your share of the annual cost for self-only coverage ... is not more than 9.02% of your household income.\"",
+       "severity": "medium",
+       "fix": "Ask about the fact: 'Was anyone on this return offered a health plan through any job (theirs, a spouse's or a parent's), even if it was turned down as too expensive?' Let the tool test affordability afterward."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A self-employed owner or partner whose own business sponsors a group plan they could join. Or a family member who spent part of the year abroad, eligible for a foreign employer or group plan.",
+       "why_no": "The gate lists 'a job's plan, Medicare, Medicaid, CHIP, TRICARE or veterans' care'. A business owner does not think of having 'a job', and a foreign group plan is not on the list.",
+       "line": "f8962.mec_other_if_other_coverage",
+       "irs_text": "i8962 p. 5, \"Other health coverage the Department of Health and Human Services designates as MEC.\"; \"Most types of employer-sponsored coverage\"",
+       "severity": "medium",
+       "fix": "Add to the gate's examples: 'a plan through a business you own, a plan from another country, Peace Corps coverage, or a school or other group plan'. Say plainly that the list is not complete."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A college student dependent covered by, or eligible for, a university's self-funded student health plan while also on the family's Marketplace policy.",
+       "why_no": "A student plan is often bought by the student or family, so it seems like 'insurance you bought on your own', and it is not among the listed examples.",
+       "line": "f8962.mec_other_if_other_coverage",
+       "irs_text": "i8962 p. 5, \"Other health coverage the Department of Health and Human Services designates as MEC.\"",
+       "severity": "low",
+       "fix": "Name student health plans in the gate's help and send them to the follow-up questions."
+      }
+     ],
+     "prompt_sha": "5c03d89fc3973aa157b88fa2c8bd985e0a0fa2535cd0b69adea8f21bcf873cf5",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.18975199999999998,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8962.other_coverage.163eb89a4561.1.response.txt"
+    }
+   ],
+   "condition": "f8962.other_coverage",
+   "lines": [
+    "f8962.job_offer_if_other_coverage",
+    "f8962.mec_government_if_other_coverage",
+    "f8962.mec_job_enrolled_if_other_coverage",
+    "f8962.mec_other_if_other_coverage"
+   ],
+   "inputs": [
+    "f8962.job_offer",
+    "f8962.mec_government",
+    "f8962.mec_job_enrolled",
+    "f8962.mec_other"
+   ],
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      1,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 5, \"Most coverage through government-sponsored programs (including Medicaid coverage, Medicare Part A or C, the Children’s Health Insurance Program (CHIP), certain benefits for veterans and their families, TRICARE, and health coverage for Peace Corps volunteers);\"; p. 5, \"Other health coverage the Department of Health and Human Services designates as MEC.\"; p. 5, \"In addition, if you or your family member enrolls in employer-sponsored coverage for a month, you or your family member is considered eligible for employer-sponsored coverage for that month, even if the coverage does not satisfy the affordability and minimum value standards.\"; p. 5, \"The coverage offered by your employer is generally considered affordable for you if your share of the annual cost for self-only coverage, which is sometimes referred to as the “employee required contribution,” is not more than 9.02% of your household income.\"; p. 5, \"coverage if your share of the annual cost for coverage for yourself and the other members of your tax family allowed to enroll in the coverage is not more than 9.02% of your household income.\"; p. 5, \"If your employer coverage is affordable for you but not affordable for your other family members, you may be able to take the PTC for your other family members if they enroll in a Marketplace qualified health plan.\"; p. 6, \"Also, if you leave your employment and are offered post-employment coverage such as COBRA or retiree coverage, you are not considered eligible for that post-employment coverage unless you actually enroll in the coverage.\"; p. 6, \"Individuals who are incarcerated (other than pending disposition of charges, for example, awaiting trial) are not eligible for coverage in a qualified health plan through a Marketplace.\"; p. 6, \"You or the family member may be treated as eligible for Medicaid, CHIP, or the similar program, and not eligible for the PTC, if the Marketplace determination is later found to be based on incorrect information that was given with an intentional or reckless disregard for the facts.\"; p. 6, \"While coverage purchased in the individual market outside the Marketplace is MEC, eligibility for this type of coverage does not prevent you from being eligible for the PTC for Marketplace coverage.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"; p. 3, \"If you were covered under an individual coverage HRA for 2025, you are not allowed a PTC for your 2025 Marketplace health insurance.\"; p. 1, \"If the QSEHRA is affordable for a month, no PTC is allowed for the month.\"; p. 4, Enrollment premiums, \"You are generally not allowed a monthly credit amount for the month if any part of that month\"; p. 3, \"if you became eligible for APTC because of a successful eligibility appeal and you retroactively enrolled in the plan, then the portion of the enrollment premium for which you are responsible must be paid on or before the 120th day following the date of the appeals decision\"; p. 4, \"due date of your tax return (not including extensions)\""
+     ],
+     "cols_pages": [
+      1,
+      3,
+      4,
+      5,
+      6
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    }
+   ]
+  }
+ }
+}

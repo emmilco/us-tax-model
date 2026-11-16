@@ -1,0 +1,1312 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "rec.ex30",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "A — official IRS example",
+      "evidence_note": "Pub. 525 (2025) p. 25, Example 30: a 2024 joint return with itemized deductions of $30,700 against a standard deduction of $29,200 and taxable income of $60,000; in 2025 a state income tax refund of $400, a medical reimbursement of $200 and a mortgage interest refund of $325, none more than deducted, with the income tax deducted more than $400 over the sales tax (refund.exc_tax No). Line 5d equals line 5e (no 2024 limit on taxes), so Worksheet 2a line 5 is blank and line 1a is the $400. Total $925 is under $1,500 (line 8), so all is included: $400 on Schedule 1 line 1 and $525 on line 8z, as the example states.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 9000000,
+        "person[taxpayer].w2[e0].box5": 9000000,
+        "person[taxpayer].w2[e0].box6": 130500,
+        "refund.any": true,
+        "refund.received": 40000,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 800000,
+        "refund.line5e_prior_year": 800000,
+        "refund.line17_prior_year": 3070000,
+        "refund.status": "mfj",
+        "scope.recovery": true,
+        "rec.has_mortgage": true,
+        "rec.mortgage": 32500,
+        "rec.has_medical": true,
+        "rec.medical": 20000,
+        "rec.medical_deducted": 100000
+      },
+      "expect": {
+        "rec.line3": {
+          "kind": "money",
+          "cents": 92500
+        },
+        "rec.line8": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 92500
+        },
+        "rec.line_b": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "rec.line_c": {
+          "kind": "money",
+          "cents": 52500
+        },
+        "s1.line1": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 52500
+        }
+      }
+    },
+    {
+      "id": "rec.ex32",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "A — official IRS example",
+      "evidence_note": "Pub. 525 (2025) p. 25, Example 32: a 2024 joint return with taxable income of $45,000, itemized deductions of $29,450 and a standard deduction of $29,200; $2,100 of 2024 itemized deductions recovered in 2025, none more than deducted (entered as another Schedule A item, deducted $3,000). Include $250, the smaller of $2,100 and $29,450 − $29,200. No state refund: line 1a is zero, so all of line 11 goes to line 8z.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 9000000,
+        "person[taxpayer].w2[e0].box5": 9000000,
+        "person[taxpayer].w2[e0].box6": 130500,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 800000,
+        "refund.line5e_prior_year": 800000,
+        "refund.line17_prior_year": 2945000,
+        "refund.status": "mfj",
+        "scope.recovery": true,
+        "rec.has_other": true,
+        "rec.other": 210000,
+        "rec.other_deducted": 300000
+      },
+      "expect": {
+        "rec.line3": {
+          "kind": "money",
+          "cents": 210000
+        },
+        "rec.line8": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "rec.line9": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "rec.line_b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rec.line_c": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "s1.line1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 25000
+        }
+      }
+    },
+    {
+      "id": "rec.ex33",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "A — official IRS example",
+      "evidence_note": "Pub. 525 (2025) p. 26, Example 33: the facts of Example 32 except that line 14 of the 2024 Form 1040 was $200 more than line 11 (entered as line 11 $10,000 and line 14 $10,200), a negative taxable income of $200. Include $50 rather than $250.",
+      "inputs": {
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 9000000,
+        "person[taxpayer].w2[e0].box5": 9000000,
+        "person[taxpayer].w2[e0].box6": 130500,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 800000,
+        "refund.line5e_prior_year": 800000,
+        "refund.line17_prior_year": 2945000,
+        "refund.status": "mfj",
+        "scope.recovery": true,
+        "rec.has_other": true,
+        "rec.other": 210000,
+        "rec.other_deducted": 300000,
+        "rec.ti_positive": false,
+        "rec.agi_prior": 1000000,
+        "rec.ded_prior": 1020000
+      },
+      "expect": {
+        "rec.line10": {
+          "kind": "money",
+          "cents": -20000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 5000
+        }
+      }
+    },
+    {
+      "id": "rec.ex31_allocation",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Inputs constructed so that, as in Example 31, $2,500 of 2024 itemized deductions are recovered (a $500 state income tax refund and $2,000 of other items) and only $1,500 must be included (2024 single itemized deductions $16,100 less the $14,600 standard deduction). Line A is $500 ÷ $2,500 = 20%; line B $300 goes on Schedule 1 line 1 and line C $1,200 on line 8z, the example's figures.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "refund.any": true,
+        "refund.received": 50000,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 600000,
+        "refund.line5e_prior_year": 600000,
+        "refund.line17_prior_year": 1610000,
+        "refund.status": "single",
+        "scope.recovery": true,
+        "rec.has_other": true,
+        "rec.other": 200000,
+        "rec.other_deducted": 250000
+      },
+      "expect": {
+        "rec.line1a": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "rec.line3": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "rec.line8": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "rec.line_b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "rec.line_c": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "s1.line1": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 120000
+        }
+      }
+    },
+    {
+      "id": "rec.below_standard",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Single for 2024, itemized deductions $14,000 under the $14,600 standard deduction; a $300 property tax refund (no 2024 limit on taxes, so Worksheet 2a passes it to line 1b). Line 8 is zero (\"If the result is zero or less, stop here\"), so nothing is included.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 500000,
+        "refund.line5e_prior_year": 500000,
+        "refund.line17_prior_year": 1400000,
+        "refund.status": "single",
+        "scope.recovery": true,
+        "rec.has_property_tax": true,
+        "rec.property_tax": 30000
+      },
+      "expect": {
+        "rec.line1b": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "rec.line3": {
+          "kind": "money",
+          "cents": 30000
+        },
+        "rec.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rec.line_c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "rec.salt_cap_absorbs",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Single for 2024: Schedule A line 5d $15,000 limited to $10,000 on line 5e; refunds of $2,000 state income tax and $1,000 property tax. Worksheet 2a: line 3 $3,000, line 4 $5,000 (5d − 5e), line 3 not more than line 4, so none of the tax refunds is taxable (lines 7 and 8 zero). The $500 mortgage interest refund on line 2 is all included (line 8 $20,000 − $14,600 = $5,400), on line 8z; line 11 equals line 3, so line B is line 1a, zero.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "refund.any": true,
+        "refund.received": 200000,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 1500000,
+        "refund.line5e_prior_year": 1000000,
+        "refund.line17_prior_year": 2000000,
+        "refund.status": "single",
+        "scope.recovery": true,
+        "rec.has_property_tax": true,
+        "rec.property_tax": 100000,
+        "rec.has_mortgage": true,
+        "rec.mortgage": 50000
+      },
+      "expect": {
+        "rec.w2a_line3": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "rec.w2a_line4": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "rec.w2a_line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rec.w2a_line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rec.line3": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "rec.line_b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line1": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 50000
+        }
+      }
+    },
+    {
+      "id": "rec.salt_cap_partial",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "As rec.salt_cap_absorbs with refunds of $4,000 state income tax and $2,000 property tax. Worksheet 2a: line 3 $6,000, line 4 $5,000, line 5 $1,000; line 7 = $1,000 × $4,000 ÷ $6,000 = $666.67 (ratio 0.666667, six places, amb.2025.rec_ratio_places) and line 8 = $1,000 × 0.333333 = $333.33. Line 3 of Worksheet 2 is $1,000.00, under line 8 ($5,400), so line 11 equals line 3: line B is line 1a ($666.67) on Schedule 1 line 1 and line C $333.33 on line 8z.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "refund.any": true,
+        "refund.received": 400000,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 1500000,
+        "refund.line5e_prior_year": 1000000,
+        "refund.line17_prior_year": 2000000,
+        "refund.status": "single",
+        "scope.recovery": true,
+        "rec.has_property_tax": true,
+        "rec.property_tax": 200000
+      },
+      "expect": {
+        "rec.w2a_line5": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "rec.w2a_line7": {
+          "kind": "money",
+          "cents": 66667
+        },
+        "rec.w2a_line8": {
+          "kind": "money",
+          "cents": 33333
+        },
+        "rec.line3": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "rec.line_b": {
+          "kind": "money",
+          "cents": 66667
+        },
+        "rec.line_c": {
+          "kind": "money",
+          "cents": 33333
+        },
+        "s1.line1": {
+          "kind": "money",
+          "cents": 66667
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 33333
+        }
+      }
+    },
+    {
+      "id": "rec.medical_cap",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Pub. 525 (2025) p. 26, Example 34, the cap only: $1,700 of 2024 medical expenses of which only $200 was deducted; a $500 reimbursement in 2025. Only $200, the amount deducted, is included. The 2024 itemized deductions ($20,000 single, standard deduction $14,600) are constructed so that the standard deduction limit does not bind.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 500000,
+        "refund.line5e_prior_year": 500000,
+        "refund.line17_prior_year": 2000000,
+        "refund.status": "single",
+        "scope.recovery": true,
+        "rec.has_medical": true,
+        "rec.medical": 50000,
+        "rec.medical_deducted": 20000
+      },
+      "expect": {
+        "rec.medical_counted": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "rec.line2": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 20000
+        }
+      }
+    },
+    {
+      "id": "rec.allocation_rounding",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Single for 2024, itemized deductions $15,400 against $14,600: line 8 $800. Recoveries: a $1,000 state income tax refund (line 1a) and $3,000 of other items; line 3 $4,000, line 11 $800. Line A = $1,000 ÷ $4,000 = 25%; line B = $200 on Schedule 1 line 1; line C = $600 on line 8z.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "refund.any": true,
+        "refund.received": 100000,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 600000,
+        "refund.line5e_prior_year": 600000,
+        "refund.line17_prior_year": 1540000,
+        "refund.status": "single",
+        "scope.recovery": true,
+        "rec.has_other": true,
+        "rec.other": 300000,
+        "rec.other_deducted": 300000
+      },
+      "expect": {
+        "rec.line3": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "rec.line8": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "rec.line_b": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "rec.line_c": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "s1.line1": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 60000
+        }
+      }
+    },
+    {
+      "id": "rec.not_itemized",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The standard deduction was taken for 2024; a $300 property tax refund in 2025 is not income (\"don’t include any of the recovery amount in your income\"). Worksheet 2 is not used; line 8z is zero and the amount is not asked.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "refund.itemized": false,
+        "scope.recovery": true,
+        "rec.has_property_tax": true,
+        "rec.property_tax": 30000
+      },
+      "expect": {
+        "rec.to_line8z": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line1": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2s1o.rec.refuse.not_2024",
+      "covers": [
+        "rec",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Money paid back in 2025 for something deducted for 2023: refused at rec.to_line8z (Worksheet 2, a separate worksheet for each year). The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "scope.recovery": true,
+        "rec.before_prior_year": true
+      },
+      "expect": {
+        "rec.to_line8z": {
+          "kind": "refusal",
+          "gate": "rec.before_prior_year_if_any",
+          "form": "Pub. 525, Worksheet 2 (a recovery for an earlier year)",
+          "remedy": "Money paid back for something paid or deducted before 2024 is figured on a separate worksheet with that year's return; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, \"If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 and a casualty loss reimbursement from 2023, complete a separate worksheet for each year\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "s1.line8z": {
+          "kind": "refusal",
+          "gate": "rec.before_prior_year_if_any",
+          "form": "Pub. 525, Worksheet 2 (a recovery for an earlier year)",
+          "remedy": "Money paid back for something paid or deducted before 2024 is figured on a separate worksheet with that year's return; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, \"If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 and a casualty loss reimbursement from 2023, complete a separate worksheet for each year\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.rec.refuse.nonitemized",
+      "covers": [
+        "rec",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Money paid back for a bad debt deducted without itemizing: refused at rec.to_line8z (Nonitemized Deduction Recoveries). The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "scope.recovery": true,
+        "rec.nonitemized": true
+      },
+      "expect": {
+        "rec.to_line8z": {
+          "kind": "refusal",
+          "gate": "rec.nonitemized_if_any",
+          "form": "Pub. 525, Nonitemized Deduction Recoveries and Amounts Recovered for Credits",
+          "remedy": "Money paid back for a deduction taken without itemizing (such as a bad debt) or for an item on which a credit was claimed is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 28, Nonitemized Deduction Recoveries, \"If you recover an amount that you deducted in an earlier year when you were figuring your AGI, you must generally include the full amount\"; p. 28, Amounts Recovered for Credits",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "s1.line8z": {
+          "kind": "refusal",
+          "gate": "rec.nonitemized_if_any",
+          "form": "Pub. 525, Nonitemized Deduction Recoveries and Amounts Recovered for Credits",
+          "remedy": "Money paid back for a deduction taken without itemizing (such as a bad debt) or for an item on which a credit was claimed is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 28, Nonitemized Deduction Recoveries, \"If you recover an amount that you deducted in an earlier year when you were figuring your AGI, you must generally include the full amount\"; p. 28, Amounts Recovered for Credits",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.rec.refuse.sales_tax",
+      "covers": [
+        "rec",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "A refund of general sales tax: refused at rec.to_line8z (Worksheet 2, footnote 2). The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "scope.recovery": true,
+        "rec.sales_tax": true
+      },
+      "expect": {
+        "rec.to_line8z": {
+          "kind": "refusal",
+          "gate": "rec.sales_tax_if_any",
+          "form": "Pub. 525, Worksheet 2, line 2 (a refund of general sales tax)",
+          "remedy": "A refund of general sales tax is limited by the sales tax and income tax you could have deducted for 2024; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, footnote 2, \"don’t enter more than the excess of your sales tax deduction over your state and local income tax you could have deducted\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "s1.line8z": {
+          "kind": "refusal",
+          "gate": "rec.sales_tax_if_any",
+          "form": "Pub. 525, Worksheet 2, line 2 (a refund of general sales tax)",
+          "remedy": "A refund of general sales tax is limited by the sales tax and income tax you could have deducted for 2024; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, footnote 2, \"don’t enter more than the excess of your sales tax deduction over your state and local income tax you could have deducted\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.rec.refuse.two_returns",
+      "covers": [
+        "rec",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "A joint 2025 return with amounts paid back for deductions on two 2024 returns, one for each spouse: refused at rec.to_line8z. The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "scope.recovery": true,
+        "f1040.status": "mfj",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "household.married_dec31": true,
+        "rec.two_returns": true
+      },
+      "expect": {
+        "rec.to_line8z": {
+          "kind": "refusal",
+          "gate": "rec.two_returns_if_joint",
+          "form": "Pub. 525, Worksheet 2 (deductions on two 2024 returns)",
+          "remedy": "Amounts paid back for deductions on two 2024 returns, one for each of you, are tested against each 2024 return in turn; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, \"Use information from your tax return for the year the expense was deducted\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "s1.line8z": {
+          "kind": "refusal",
+          "gate": "rec.two_returns_if_joint",
+          "form": "Pub. 525, Worksheet 2 (deductions on two 2024 returns)",
+          "remedy": "Amounts paid back for deductions on two 2024 returns, one for each of you, are tested against each 2024 return in turn; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, \"Use information from your tax return for the year the expense was deducted\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.rec.refuse.amt_2024",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Money paid back for 2024 property tax by a filer who owed AMT for 2024 (refund.exc_tax): refused at rec.line11 (Pub. 525, Subject to AMT). The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 500000,
+        "refund.line5e_prior_year": 500000,
+        "refund.line17_prior_year": 2000000,
+        "refund.status": "single",
+        "rec.has_property_tax": true,
+        "rec.property_tax": 30000,
+        "refund.exc_tax": true
+      },
+      "expect": {
+        "rec.line11": {
+          "kind": "refusal",
+          "gate": "refund.exc_tax",
+          "form": "Pub. 525, Itemized Deduction Recoveries (Unused tax credits, Subject to AMT, Capital gains)",
+          "remedy": "Your 2024 alternative minimum tax, unused credits, 0% capital gain rate or sales tax choice means the 2024 tax is refigured to find how much of what was paid back is taxable; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, \"If you were subject to the AMT or your tax credits reduced your tax to zero, see Unused tax credits and Subject to AMT under Itemized Deduction Recoveries\"; p. 25, Capital gains, \"you’ll have to refigure your tax for the earlier year to determine if the recovery must be included in your income\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2s1o.rec.refuse.nol_negative",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Negative 2024 taxable income (line 11 $10,000, line 14 $11,000) while a net operating loss is carried into 2025: refused at rec.line11 (Worksheet 2, footnote 4). The refused values are the evaluator's.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 500000,
+        "refund.line5e_prior_year": 500000,
+        "refund.line17_prior_year": 2000000,
+        "refund.status": "single",
+        "rec.has_property_tax": true,
+        "rec.property_tax": 30000,
+        "rec.ti_positive": false,
+        "rec.agi_prior": 1000000,
+        "rec.ded_prior": 1100000,
+        "scope.nol": true,
+        "s1.nol_amount": 100000
+      },
+      "expect": {
+        "rec.line11": {
+          "kind": "refusal",
+          "gate": "rec.nol_negative",
+          "form": "Pub. 525, Worksheet 2, line 10, and Form 172 (a net operating loss carryover)",
+          "remedy": "Negative 2024 taxable income while a net operating loss is carried into 2025 must be adjusted for the carryover under the Instructions for Form 172; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, footnote 4, \"Taxable income will have to be adjusted for any net operating loss carryover\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mrental.rec.line11_equals_line3",
+      "covers": [
+        "rec",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Pub. 525 (2025) pp. 26-27, Worksheets 2a and 2. 2a: line 1 700, line 2 0, line 3 700 (not more than 5d 8,000); 5d is not more than 5e, so line 4 = line 3 and line 5 is blank; line 7 700. Worksheet 2: 1a 700, 1b 0, line 2 (mortgage interest refunded) 20,300, line 3 21,000; line 4 60,000, line 5 0, line 6 60,000, line 7 (2024 standard deduction, single) 14,600, line 8 45,400; line 9 21,000; line 10 positive, so line 11 21,000. Line 11 equals line 3: line 1a (700) goes on Schedule 1 line 1 and lines 1b and 2 (20,300) on line 8z; line C = 21,000 - 700 = 20,300.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 800000,
+        "refund.line5e_prior_year": 800000,
+        "refund.line17_prior_year": 6000000,
+        "refund.status": "single",
+        "refund.any": true,
+        "refund.received": 70000,
+        "rec.has_mortgage": true,
+        "rec.mortgage": 2030000
+      },
+      "expect": {
+        "rec.line3": {
+          "kind": "money",
+          "cents": 2100000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 2100000
+        },
+        "rec.line_b": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "rec.line_c": {
+          "kind": "money",
+          "cents": 2030000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 2030000
+        }
+      }
+    },
+    {
+      "id": "mrental.rec.prior_mfs_spouse_standard",
+      "covers": [
+        "rec",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Pub. 525 (2025) p. 25, Standard deduction limit: only itemized deductions more than the standard deduction are subject to the recovery rule, unless you were required to itemize; a 2024 married-filing-separately filer whose spouse itemized had to itemize (standard deduction 0). Here the spouse did not itemize: Worksheet 2 line 7 is the 2024 MFS standard deduction 14,600. Mortgage interest refunded 1,000 (line 2 and 3); line 4 20,000, line 6 20,000, line 8 = 20,000 - 14,600 = 5,400; line 9 = smaller of 1,000 and line 8 = 1,000; line 11 1,000, all on Schedule 1 line 8z.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 500000,
+        "refund.line5e_prior_year": 500000,
+        "refund.line17_prior_year": 2000000,
+        "refund.status": "mfs",
+        "refund.mfs_spouse_itemized": false,
+        "rec.has_mortgage": true,
+        "rec.mortgage": 100000
+      },
+      "expect": {
+        "rec.line7": {
+          "kind": "money",
+          "cents": 1460000
+        },
+        "rec.line8": {
+          "kind": "money",
+          "cents": 540000
+        },
+        "rec.line9": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "mrental.rec.prior_mfs_spouse_itemized",
+      "covers": [
+        "rec",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Pub. 525 (2025) p. 25, Standard deduction limit: only itemized deductions more than the standard deduction are subject to the recovery rule, unless you were required to itemize; a 2024 married-filing-separately filer whose spouse itemized had to itemize (standard deduction 0). Here the spouse itemized: line 7 is 0. Mortgage interest refunded 1,000 (line 2 and 3); line 4 20,000, line 6 20,000, line 8 = 20,000 - 0 = 20,000; line 9 = smaller of 1,000 and line 8 = 1,000; line 11 1,000, all on Schedule 1 line 8z.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 500000,
+        "refund.line5e_prior_year": 500000,
+        "refund.line17_prior_year": 2000000,
+        "refund.status": "mfs",
+        "refund.mfs_spouse_itemized": true,
+        "rec.has_mortgage": true,
+        "rec.mortgage": 100000
+      },
+      "expect": {
+        "rec.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rec.line8": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "rec.line9": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "mrental.rec.salt_limited_no_tax_refunds",
+      "covers": [
+        "rec",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Pub. 525 (2025) p. 26, Worksheet 2a, with the 2024 limit on taxes applying (5d 12,000 more than 5e 10,000) but no state or local tax refunded: line 1 0, line 2 0, line 3 0, line 4 = 12,000 - 10,000 = 2,000; line 3 is not more than line 4, so none of the refunds on line 1 or 2 is taxable: lines 7 and 8 (Worksheet 2 lines 1a and 1b) are 0. Worksheet 2: line 2 500 (mortgage interest refunded), line 3 500, line 8 = 30,000 - 14,600 = 15,400, line 9 500, line 11 500, all on Schedule 1 line 8z.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 1200000,
+        "refund.line5e_prior_year": 1000000,
+        "refund.line17_prior_year": 3000000,
+        "refund.status": "single",
+        "rec.has_mortgage": true,
+        "rec.mortgage": 50000
+      },
+      "expect": {
+        "rec.w2a_line4": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "rec.w2a_line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rec.w2a_line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rec.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rec.line1b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rec.line3": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 50000
+        }
+      }
+    },
+    {
+      "id": "mrental.rec.w2a_refunds_over_5d",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Pub. 525 (2025) p. 26, Worksheet 2a: line 1 3,000 (income tax refund), line 2 2,000 (real estate tax refund); line 3 = 5,000 but not more than 5d (4,000): 4,000. 5d is not more than 5e, so line 4 = line 3 = 4,000 (\"No. Enter the amount from line 3 on line 4 and go to line 6\"): line 5 is blank (0).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 400000,
+        "refund.line5e_prior_year": 400000,
+        "refund.line17_prior_year": 3000000,
+        "refund.status": "single",
+        "refund.any": true,
+        "refund.received": 300000,
+        "rec.has_property_tax": true,
+        "rec.property_tax": 200000
+      },
+      "expect": {
+        "rec.w2a_line3": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "rec.w2a_line4": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "rec.w2a_line5": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mrental.rec.amt_2024_split_refused",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. x2s1o.rec.refuse.amt_2024's facts: a filer who owed AMT for 2024 must refigure the 2024 tax (Pub. 525 p. 27, Worksheet 2 and Subject to AMT), outside this tool, so line 11 is refused at refund.exc_tax and so is the split of line 11 between Schedule 1 lines 1 and 8z (line B).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "e0"
+        ],
+        "person[taxpayer].w2[e0].box1": 6000000,
+        "person[taxpayer].w2[e0].box5": 6000000,
+        "person[taxpayer].w2[e0].box6": 87000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 500000,
+        "refund.line5e_prior_year": 500000,
+        "refund.line17_prior_year": 2000000,
+        "refund.status": "single",
+        "rec.has_property_tax": true,
+        "rec.property_tax": 30000,
+        "refund.exc_tax": true
+      },
+      "expect": {
+        "rec.line11": {
+          "kind": "refusal",
+          "gate": "refund.exc_tax",
+          "form": "Pub. 525, Itemized Deduction Recoveries (Unused tax credits, Subject to AMT, Capital gains)",
+          "remedy": "Your 2024 alternative minimum tax, unused credits, 0% capital gain rate or sales tax choice means the 2024 tax is refigured to find how much of what was paid back is taxable; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, \"If you were subject to the AMT or your tax credits reduced your tax to zero, see Unused tax credits and Subject to AMT under Itemized Deduction Recoveries\"; p. 25, Capital gains, \"you’ll have to refigure your tax for the earlier year to determine if the recovery must be included in your income\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        },
+        "rec.line_b": {
+          "kind": "refusal",
+          "gate": "refund.exc_tax",
+          "form": "Pub. 525, Itemized Deduction Recoveries (Unused tax credits, Subject to AMT, Capital gains)",
+          "remedy": "Your 2024 alternative minimum tax, unused credits, 0% capital gain rate or sales tax choice means the 2024 tax is refigured to find how much of what was paid back is taxable; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, \"If you were subject to the AMT or your tax credits reduced your tax to zero, see Unused tax credits and Subject to AMT under Itemized Deduction Recoveries\"; p. 25, Capital gains, \"you’ll have to refigure your tax for the earlier year to determine if the recovery must be included in your income\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mrental.rec.prior_dependent_refused",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Pub. 525 (2025) p. 25, Itemized Deduction Recoveries: a 2024 return on which the filer could be claimed as a dependent (or a 2024 Form 1040-NR, or a joint state refund) changes the 2024 standard deduction or the refund to count; outside this tool: Worksheet 2 line 11 is refused at refund.exc_who.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 800000,
+        "refund.line5e_prior_year": 800000,
+        "refund.line17_prior_year": 6000000,
+        "refund.status": "single",
+        "refund.any": true,
+        "refund.received": 70000,
+        "rec.has_mortgage": true,
+        "rec.mortgage": 100000,
+        "refund.exc_who": true
+      },
+      "expect": {
+        "rec.line11": {
+          "kind": "refusal",
+          "gate": "refund.exc_who",
+          "form": "Pub. 525, Itemized Deduction Recoveries (Worksheet 2)",
+          "remedy": "A 2024 return on which you could be claimed as a dependent, a 2024 Form 1040-NR, or a refund from a joint state or local return with someone you are not filing jointly with for 2025 changes the 2024 standard deduction or the refund to count; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 25, Itemized Deduction Recoveries, \"You could be claimed as a dependent by someone else in 2024\" and \"You received a refund because of a jointly filed state or local income tax return\"; p. 25, Nonresident aliens, \"you can’t claim the standard deduction\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mrental.rec.negative_ti_line9_is_line3",
+      "covers": [
+        "rec",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Pub. 525 (2025) pp. 26-27 (Example 33's rule): mortgage interest refunded 1,000; line 4 20,000, line 7 14,600, line 8 5,400; line 9 = smaller of 1,000 and 5,400 = 1,000; 2024 taxable income -200 (line 14 10,200 over line 11 10,000), so line 11 = 1,000 + (-200) = 800, on Schedule 1 line 8z.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 500000,
+        "refund.line5e_prior_year": 500000,
+        "refund.line17_prior_year": 2000000,
+        "refund.status": "single",
+        "rec.has_mortgage": true,
+        "rec.mortgage": 100000,
+        "rec.ti_positive": false,
+        "rec.agi_prior": 1000000,
+        "rec.ded_prior": 1020000
+      },
+      "expect": {
+        "rec.line9": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "rec.line10": {
+          "kind": "money",
+          "cents": -20000
+        },
+        "rec.line11": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 80000
+        }
+      }
+    },
+    {
+      "id": "mrental.rec.nol_negative_ti_prior_mfs",
+      "covers": [
+        "rec"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. x2s1o.rec.refuse.nol_negative with a 2024 married-filing-separately return: negative 2024 taxable income (-1,000) while a net operating loss is carried into 2025 must be adjusted under the Instructions for Form 172 (Pub. 525 p. 27, Worksheet 2, footnote 4), whatever the 2024 filing status: line 11 refused at rec.nol_negative.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 500000,
+        "refund.line5e_prior_year": 500000,
+        "refund.line17_prior_year": 2000000,
+        "refund.status": "mfs",
+        "rec.has_property_tax": true,
+        "rec.property_tax": 30000,
+        "rec.ti_positive": false,
+        "rec.agi_prior": 1000000,
+        "rec.ded_prior": 1100000,
+        "scope.nol": true,
+        "s1.nol_amount": 100000
+      },
+      "expect": {
+        "rec.line11": {
+          "kind": "refusal",
+          "gate": "rec.nol_negative",
+          "form": "Pub. 525, Worksheet 2, line 10, and Form 172 (a net operating loss carryover)",
+          "remedy": "Negative 2024 taxable income while a net operating loss is carried into 2025 must be adjusted for the carryover under the Instructions for Form 172; that is outside this tool.",
+          "cite": {
+            "doc": "p525",
+            "locator": "p. 27, Worksheet 2, footnote 4, \"Taxable income will have to be adjusted for any net operating loss carryover\"",
+            "revision": "2025",
+            "snapshot": "39b0fa5e04c5d159a34583da12a91326f396f69286f4b7a6f399d34cebc2c25b",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mrental.rec.split_line11_less_than_line3",
+      "covers": [
+        "rec",
+        "s1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. Pub. 525 (2025) p. 27, Worksheet 2 lines A to C. Line 1a 1,000 (income tax refund; 5d not more than 5e, so 2a line 7 = line 1), line 2 2,000 (mortgage interest), line 3 3,000; line 8 = 16,100 - 14,600 = 1,500; line 9 1,500; 2024 taxable income positive, so line 11 1,500 (its amount is not asked: the 2024 lines 11 and 14 are left unanswered, as the interview leaves them). Line 11 is less than line 3 with amounts on 1a and 2: A = 1,000/3,000 = 0.333333; B = 1,500 x 0.333333 = 499.9995 = 500.00 (Schedule 1 line 1); C = 1,000.00 (line 8z).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 6000000,
+        "person[taxpayer].w2[a].box3": 6000000,
+        "person[taxpayer].w2[a].box5": 6000000,
+        "scope.recovery": true,
+        "refund.itemized": true,
+        "refund.line5d_prior_year": 500000,
+        "refund.line5e_prior_year": 500000,
+        "refund.line17_prior_year": 1610000,
+        "refund.status": "single",
+        "refund.any": true,
+        "refund.received": 100000,
+        "rec.has_mortgage": true,
+        "rec.mortgage": 200000,
+        "rec.agi_prior": null,
+        "rec.ded_prior": null
+      },
+      "expect": {
+        "rec.line11": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "rec.line_b": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "rec.line_c": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "s1.line8z": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    }
+  ]
+}

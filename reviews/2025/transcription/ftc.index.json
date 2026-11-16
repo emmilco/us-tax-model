@@ -2,44 +2,86 @@
  "kind": "transcription",
  "form": "ftc",
  "family": "claude",
- "base": "65c196ceb6df30d9c6140b3c66b0abbdb93374ba0893d011bec927b0b749dc3a",
+ "base": "f7af1fe592d8595ccb3286ea46b772e6ad4c729d49dc3f623e421cd8cb002a86",
  "head_rows": {
-  "printed lines compared": "3",
-  "agree / disagree / missing": "0 / 3 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
-   "key": "ftc.carryover_if_asked",
-   "record": "1456921272952bfa0ff347c6e9b43a21dc762e51fcf920acc566311a2b5c9a78",
+   "key": "ftc.taxes_if_asked",
+   "record": "f7af1fe592d8595ccb3286ea46b772e6ad4c729d49dc3f623e421cd8cb002a86",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the page does not state when the question is asked: this is the project's gate line for the carryover question (i1116 p. 19, Line 10), asked after a Yes to either plain question above it, s3.foreign_any or s3.prior_other_forms (owner decision recorded in BUG-0619: Form 1116 is not in the list of last year's forms that refuse, so the carryover is asked of a filer whose 2024 return includes a separate form). The reply asks it only after s3.foreign_any. executable-triage-v2 (`.transcription/triage/2025/ftc.json`, pass c0bc3a63fe27; 1,854 fixtures, 500 generated returns seed 20261026, 149 partial records from 40 bases; 2,503 comparisons): 2,502 agree; 1 value difference, on a refused return, the fixture redesign.credits.refuse.ftc_carryover_prior_return (s3.foreign_any No, s3.prior_other_forms Yes, ftc.carryover Yes): project true, reply false. None on a completed return. Project stands.",
-   "subject_key": "452a3ee97af3ac24853d24989362a9e732a16b637e7113a6baae390e979ad422"
+   "ruling": "Ruling: model error; i1116 p. 1, Election To Claim the Foreign Tax Credit Without Filing Form 1116: the election covers foreign tax \"reported to you on a qualified payee statement. Qualified payee statements include Form 1099-DIV, Form 1099-INT\". The reply asks ftc.taxes only when s3.foreign_any is yes, but that screening question's help tells the filer to count fund tax in Form 1099-DIV box 7 \"only if you once filed Form 1116 for it\", so a filer with box 7 tax who never filed Form 1116 answers No and the reply drops the tax. The project asks under ftc.asked (dividends, taxable interest or s3.foreign_any), which reaches every payee-statement holder. Triage executable-triage-v2: 2,811/2,995 agree; 16 completed value differences (classm.f1040.6.deepseek project $195.00, reply $0.00; classm.s2.1 $444.00 / $0.00; classm.scveh.4; classm.f8889.1; stage5.return.itemized), all with s3.foreign_any No and Form 1099-DIV tax; the rest on refused or incomplete returns. Project right; no change.",
+   "subject_key": "6b72e8a19288f3e726f4151bd4494c9af9269208c2face29f35ea586da609751"
+  },
+  {
+   "key": "ftc.carryover_if_asked",
+   "record": "f7af1fe592d8595ccb3286ea46b772e6ad4c729d49dc3f623e421cd8cb002a86",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; i1116 p. 1, the election is not available with a carryover (\"You can’t carry over to or from any other year any foreign\" tax under the election). The project asks ftc.carryover also of a filer whose 2024 return included a separate form (s3.prior_other_forms, the screening for any earlier credit form, including a 2024 Form 1116); the reply asks only on s3.foreign_any. A carryover needs an earlier Form 1116, which the project's broader parent reaches, and a carryover refuses the return (ftc.carryover_no_tax / redesign.credits.refuse.ftc_carryover_prior_return). Triage: 2,989/2,995 agree; 6 differences, none on a completed return (5 project-unknown where s3.prior_other_forms is unstated, 1 value on the refused redesign.credits.refuse.ftc_carryover_prior_return). No change.",
+   "subject_key": "a4e3ce92ce1bd1e1a2310149673b29c2237c9621817230d93649d2bed8751ddb"
   },
   {
    "key": "ftc.has_tax",
-   "record": "9085048462402dd427cb829d0b7decaae7c92ac0b3dda2c94a0ced647162d74b",
+   "record": "f7af1fe592d8595ccb3286ea46b772e6ad4c729d49dc3f623e421cd8cb002a86",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1116 pp. 1-2, Election To Claim the Foreign Tax Credit Without Filing Form 1116. Both sides test total foreign tax above zero; the project reads ftc.taxes only under its parent (dividends, taxable interest or foreign income tax: div.any, interest, s3.foreign_any), where the interview asks it, and is $0 otherwise; the reply reads ftc.taxes directly, so it is unknown where the question is not asked (classm.f2441.1 to .7: project false, reply unknown). No value differs. Same as the landing round. Triage executable-triage-v2 (pass 39681964b3ef): 2,511/2,671 agree; 149 candidate-unknown, 11 project-unknown; on completed returns 32 candidate-unknown, no value.",
+   "ruling": "Ruling: model error; as ftc.taxes_if_asked (i1116 p. 1, qualified payee statements include Form 1099-DIV and 1099-INT). The reply's test reads its own s3.foreign_any-only gate, so it is false for a filer with Form 1099-DIV box 7 tax who answered No to the screening question as its help directs (classm.f1040.6.deepseek, classm.s2.1, classm.scveh.4, classm.f8889.1: project true, reply false). Triage: 2,811/2,995 agree; 16 completed value differences, same cases. Project right; no change.",
    "subject_key": "5a32eebff02ae39adb2fe0252231055d377bd7488174957817a7b0dd17b136f0"
   },
   {
-   "key": "ftc.credit",
-   "record": "9085048462402dd427cb829d0b7decaae7c92ac0b3dda2c94a0ced647162d74b",
+   "key": "ftc.all_passive_if_tax",
+   "record": "f7af1fe592d8595ccb3286ea46b772e6ad4c729d49dc3f623e421cd8cb002a86",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1116 p. 25, Line 20, regular tax is \"the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z\", and p. 2, the election enters \"the smaller of (a) your total foreign tax, or (b) your regular tax\". The reply limits the credit by Form 1040 line 16 alone, dropping Schedule 2 line 1z (stage18.ftc_limit_with_repayment: project $200.00, reply $0.00). It also reads ftc.elect and ftc.carryover where the interview does not ask them (no foreign tax, e.g. classm.f2441.1; classm.f1040.6.deepseek), so it is unknown there (representation); project refusals are cited (ftc.needs1116 and the election's conditions). Same as the landing round. Triage executable-triage-v2 (pass 39681964b3ef): 2,469/2,671 agree; 151 candidate-unknown, 26 project-refuses, 23 project-unknown, 2 value; on completed returns 33 candidate-unknown, 1 value.",
-   "subject_key": "06332b97ef5b1c8de3be1dafc11b1d8eea544ee2a4970e41aa6a9471457a30b7"
+   "ruling": "Ruling: model error; follows the reply's s3.foreign_any-only gate on the foreign tax amount (see ftc.taxes_if_asked; i1116 p. 1, qualified payee statements include Form 1099-DIV). The question itself is asked of the same filers on both sides once the tax is positive. Triage: 2,818/2,995 agree; 16 completed value differences, all the gate cases (classm.f1040.6.deepseek: project true from ftc.all_passive, reply false). Project right; no change.",
+   "subject_key": "06141bfcbc3cb4f4cfe251b4f06e570f50df2af225120ad625cf56c4e67030fc"
+  },
+  {
+   "key": "ftc.statements_if_tax",
+   "record": "f7af1fe592d8595ccb3286ea46b772e6ad4c729d49dc3f623e421cd8cb002a86",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; follows the reply's s3.foreign_any-only gate on the foreign tax amount (see ftc.taxes_if_asked; i1116 p. 1). Triage: 2,817/2,995 agree; 16 completed value differences, all the gate cases (classm.f1040.6.deepseek: project true, reply false). Project right; no change.",
+   "subject_key": "76e67fd984045069dd67008791b82b92beb1a2a08390f3f732151d6fcf329226"
+  },
+  {
+   "key": "ftc.eligible_if_tax",
+   "record": "f7af1fe592d8595ccb3286ea46b772e6ad4c729d49dc3f623e421cd8cb002a86",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; follows the reply's s3.foreign_any-only gate on the foreign tax amount (see ftc.taxes_if_asked; i1116 p. 1). Triage: 2,821/2,995 agree; 16 completed value differences, all the gate cases. Project right; no change.",
+   "subject_key": "13f497f23396c540bec3928b4122f7659e0fd0492dadad61e9221abded54c0ef"
+  },
+  {
+   "key": "ftc.regular_tax",
+   "record": "f7af1fe592d8595ccb3286ea46b772e6ad4c729d49dc3f623e421cd8cb002a86",
+   "status": "AGREE",
+   "subject_key": "9302917cce8b0b1ab616d67f47361749d0b87ae5b3e0a38d9039880dd23e7a7e"
+  },
+  {
+   "key": "ftc.credit",
+   "record": "bb7faccaea5fcba2245664567aa79ea6533e1d6c243618fa2d1af184be3122fb",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply's credit cannot be relied on. Triage (pass 73f790ce759c, 3,002 compared): 352 agree, no value difference on any return; every difference is the reply's own: 2,068 candidate-refuses (with no foreign tax it has no zero branch and routes to f1116.line35, which refuses, e.g. stage14.asset.hy_5yr: project $0.00, f1116.other_category), 579 candidate-unknown (it reads ftc.all_passive and ftc.carryover directly, which the interview asks only when foreign tax was paid), and 3 project-refuses where the project's refusal comes from Form 2441 (f2441.line14_bad), not from this line. It also leaves out requirement 4 of the election, which its own pages carry: i1040gi p. 115, Schedule 3, line 1, 'You aren't filing Form 4563 or excluding income from sources within Puerto Rico'; the project tests it in ftc.needs1116 (sa.excluded_income). The project's credit is the election's 'smaller of (a) your total foreign taxes, or (b)' the regular tax when every condition is met (i1116 pp. 1-2; p. 25, Line 20), Form 1116 line 35 otherwise, and zero with no foreign tax.",
+   "subject_key": "32677f3fe2bbd06aad08156f27524f6be1effb986e2473a56c24971613c2c4b5"
   }
  ],
  "subjects": {
-  "ftc.carryover_if_asked": "b4d6bec027ee368c2448eaa608846710cf41834d017cbab91ffc9f643b1beb45",
+  "ftc.taxes_if_asked": "8afc1df7b6c883237e7ad1e13b8def2ce14d00cc50972f6b661d1b16f84f3fd3",
+  "ftc.carryover_if_asked": "e6bff3f6d8741a575b495a4d762c2ee2bee731de0df117f8c77ad96cabf2aafa",
   "ftc.has_tax": "26e782794da0824f27fd86c308a4f12a489f3c14f59f85ebda7b33b3e20e1cc0",
-  "ftc.credit": "8fa60ebdda001c2e903c03bcea185891783757d86c05bd3369b147666b1a1250"
+  "ftc.all_passive_if_tax": "0d62c95c5a40c7494e474a893c411cde530c2e6fba26c1170abcf996e068a9d2",
+  "ftc.statements_if_tax": "25a063ece057e7d3e50dbfab566f09e0bfeb0b7a924b264192ea46f75c0d4c1c",
+  "ftc.eligible_if_tax": "bb8d2b2efcc4a19258f91022b3cbc457d3d196b36c10004f8865b8f47ecc9145",
+  "ftc.regular_tax": "a89f3418724c788a7391c48690f07346db4417577caf503309cd109a905a8cf6",
+  "ftc.credit": "1adc12d7c00407135b19ebc4e3de49c89034c89e57fcd1763929530f4350d79b"
  },
- "__rest__": "0b27c1db7e23a8e90ed880b6d5e278e7ce96926cdbe182df2a1cfd1afeed920d",
+ "__rest__": "5fa7a967d96b28e29fceba76a8995f60d6a555781f514b8f0749ccd069fa82a3",
  "foreign": {
+  "ftc.taxes_if_asked": "ec11c0522c2e35b28cc43c29df709dfb45bbb31a47d44093c456501d397e9836",
   "ftc.carryover_if_asked": "101424bfae053a6fc397942b53d359900381c419c0394c302da8687f95c7cfcb",
   "ftc.has_tax": "ec11c0522c2e35b28cc43c29df709dfb45bbb31a47d44093c456501d397e9836",
-  "ftc.credit": "c219d11a7a0ac1a3b7b23a045a74704d43d1ce066673e2113ab931241f5719e9"
+  "ftc.all_passive_if_tax": "ec11c0522c2e35b28cc43c29df709dfb45bbb31a47d44093c456501d397e9836",
+  "ftc.statements_if_tax": "ec11c0522c2e35b28cc43c29df709dfb45bbb31a47d44093c456501d397e9836",
+  "ftc.eligible_if_tax": "ec11c0522c2e35b28cc43c29df709dfb45bbb31a47d44093c456501d397e9836",
+  "ftc.regular_tax": "774b5845d44fad5bd8b79ebabcf444cdf4602990d646b1aaa32abcf7330c421e",
+  "ftc.credit": "f93ed19bb046fb55612cf4021c99f42931cf684d1849f505f76b02334eae7f5d"
  }
 }

@@ -11,19 +11,19 @@ pages, a quote found in the document, or one printed line number of a form docum
 of the form's text beside three consecutive words of the label. The segments that do not are listed
 under "Locators to rewrite"; they fail the check only with `--strict`.
 
-- anchors: 5955
+- anchors: 7410
 - anchors ruled: 51
-- quotes: 6612
+- quotes: 8124
 - quotes ruled: 4
-- segments checked: 7028
+- segments checked: 8563
 - findings without a ruling: 0
 - rulings no anchor uses: 0
 
-- computed lines: 2708
-- computed-line segments: 3938
-- computed-line segments with a quote and no page: 243
-- computed-line segments with pages: 3487
-- form-line locators: 208
-- form-line locators verified: 208
-- quotes without a page found: 243
+- computed lines: 3549
+- computed-line segments: 4976
+- computed-line segments with a quote and no page: 396
+- computed-line segments with pages: 4342
+- form-line locators: 238
+- form-line locators verified: 238
+- quotes without a page found: 396
 - locators to rewrite: 0

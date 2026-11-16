@@ -1,0 +1,472 @@
+diff --git a/forms/2025/scope.yaml b/forms/2025/scope.yaml
+index 214985f..e394d51 100644
+--- a/forms/2025/scope.yaml
++++ b/forms/2025/scope.yaml
+@@ -1279,10 +1279,6 @@ form:
+       expr:
+         op: test
+         any:
+-          - op: test
+-            eq:
+-              - scope.f8615_if_unearned_2700
+-              - const: true
+           - op: test
+             eq:
+               - scope.f8814
+@@ -1309,7 +1305,7 @@ form:
+               - const: true
+       cite:
+         doc: i1040gi
+-        locator: 'p. 36, Form 8615, "You must file Form 8615 if you meet all of the following conditions"; p. 34, Line 16, "Tax from Form(s) 8814 (relating to the election to report child’s interest or dividends)", "Recapture of an education credit", "Tax with respect to a section 962 election (election made by a domestic shareholder of a controlled foreign corporation to be taxed at corporate rates)"; p. 34, Line 16, "Any tax from Form 8621, line 16e, relating to a section 1291 fund"; p. 114, Line 17p, "Enter any interest amount from Form 8621, line 16f"; p. 34, Line 16, "Tax from Form 8978, line 14 (relating to partner’s audit liability under section 6226)"; p. 36, Schedule J, "If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J"'
++        locator: 'p. 34, Line 16, "Tax from Form(s) 8814 (relating to the election to report child’s interest or dividends)", "Recapture of an education credit", "Tax with respect to a section 962 election (election made by a domestic shareholder of a controlled foreign corporation to be taxed at corporate rates)"; p. 34, Line 16, "Any tax from Form 8621, line 16e, relating to a section 1291 fund"; p. 114, Line 17p, "Enter any interest amount from Form 8621, line 16f"; p. 34, Line 16, "Tax from Form 8978, line 14 (relating to partner’s audit liability under section 6226)"; p. 36, Schedule J, "If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J"'
+     - id: scope.ready_schedule1
+       printed: (helper)
+       type: Bool
+diff --git a/interview/2025/coverage/dependent_filers.yaml b/interview/2025/coverage/dependent_filers.yaml
+index dc881ca..201ed34 100644
+--- a/interview/2025/coverage/dependent_filers.yaml
++++ b/interview/2025/coverage/dependent_filers.yaml
+@@ -29,7 +29,6 @@ rows:
+       s1.nqdc_pension: false
+       scope.artist_official: false
+       scope.excess_deferral: false
+-      scope.unearned_2700: false
+     expect:
+       proceeds:
+         sa.dependent: true
+diff --git a/interview/2025/coverage/kiddie.yaml b/interview/2025/coverage/kiddie.yaml
+new file mode 100644
+index 0000000..702a91a
+--- /dev/null
++++ b/interview/2025/coverage/kiddie.yaml
+@@ -0,0 +1,191 @@
++# Coverage rows for the tax on a child's income at a parent's rate (Form 8615, topic 277). See opening.yaml for how a
++# row is read. The typical filer is a 17-year-old with a custodial or brokerage account whom the parents claim.
++tax_year: 2025
++part: Tax on a child's income at a parent's rate (Form 8615)
++profile: full
++sets:
++  kid17:
++    says: A single 17-year-old whom the parents can claim, with a bank or brokerage account in their own name.
++    answers:
++      $person: [taxpayer]
++      f1040.status: single
++      household.ever_married: false
++      sa.dependent: true
++      person[taxpayer].birth_year: 2008
++      $interest: [bank]
++      interest[bank].penalty: 0
++      sb.nominee: false
++      sb.bonds_any: false
++      ftc.taxes: 0
++  parent_mfj:
++    says: The parents file one joint return with taxable income of $150,000, tax of $22,828 and no dividends or gains.
++    answers:
++      person[taxpayer].edu_parent: true
++      f8615.parent_status: mfj
++      f8615.parent_sdtw: false
++      f8615.parent_sj: false
++      f8615.parent_feitw: false
++      f8615.parent_ti: 15000000
++      f8615.parent_tax: 2282800
++      f8615.parent_qd: 0
++      f8615.parent_ncg: 0
++rows:
++  - id: kiddie.interest_parent_mfj
++    design: scout-8615 section 5 (the typical filer; fixture K1)
++    situation: A 17-year-old with $10,000 of interest, whose parents file jointly, copies five figures from the parents' return and the return is prepared.
++    uses: [kid17, parent_mfj]
++    answers:
++      interest[bank].amount: 1000000
++      f8615.other_children: false
++    expect:
++      proceeds:
++        f8615.other_children: false
++  - id: kiddie.qd_ws1
++    design: "scout-8615 section 5 (qualified dividends through Line 5 Worksheet #1; fixture K4)"
++    situation: A 17-year-old with $6,000 of qualified dividends from a custodial account and no interest, whose parents file jointly, completes the return.
++    uses: [kid17, parent_mfj]
++    answers:
++      $interest: []
++      div.any: true
++      div.other_boxes: false
++      sb.ordinary_dividends: 600000
++      f1040.line3a: 600000
++      sd.distributions: 0
++      qbi.dividends: 0
++      f8615.other_children: false
++    expect:
++      proceeds:
++        f8615.other_children: false
++  - id: kiddie.other_children
++    design: scout-8615 section 5 (line 7, other children; fixture K6)
++    situation: A 17-year-old with $5,700 of interest whose brother and sister also file this form on the same parents' return enters their line 5 total of $6,000.
++    uses: [kid17, parent_mfj]
++    answers:
++      interest[bank].amount: 570000
++      f8615.other_children: true
++      f8615.others_line5: 600000
++      f8615.others_qd: 0
++      f8615.others_ncg: 0
++      f8615.others_sdtw: false
++    expect:
++      proceeds:
++        f8615.others_line5: 600000
++  - id: kiddie.line5_zero
++    design: scout-8615 section 5 (the form applies but line 5 is zero; no parent figure is needed)
++    situation: A full-time student of 20 who supports herself, with $9,000 of interest and no taxable income, is not asked about a parent's return.
++    answers:
++      $person: [taxpayer]
++      f1040.status: single
++      household.ever_married: false
++      sa.dependent: false
++      person[taxpayer].birth_year: 2005
++      person[taxpayer].edu_half_support: true
++      person[taxpayer].edu_fulltime: true
++      person[taxpayer].edu_parent: true
++      $interest: [bank]
++      interest[bank].amount: 900000
++      interest[bank].penalty: 0
++    expect:
++      proceeds:
++        person[taxpayer].edu_parent: true
++      not_asked: [f8615.parent_status, f8615.parent_ti]
++  - id: kiddie.amt
++    design: scout-8615 section 3.3 (the child's alternative minimum tax exemption cap; fixture K11)
++    situation: A 17-year-old with $50,000 of interest, whose parents have $40,000 of taxable income, is told the alternative minimum tax applies.
++    uses: [kid17, parent_mfj]
++    answers:
++      interest[bank].amount: 5000000
++      f8615.parent_ti: 4000000
++      f8615.parent_tax: 432600
++      f8615.other_children: false
++    expect:
++      refused: s2.amt
++  - id: kiddie.parent_sdtw
++    design: scout-8615 section 4 (the parent's Schedule D Tax Worksheet; fixture K9)
++    situation: A 17-year-old with $10,000 of interest ticks that the parents' tax was figured on the Schedule D Tax Worksheet, and is told at that screen.
++    uses: [kid17]
++    answers:
++      interest[bank].amount: 1000000
++      person[taxpayer].edu_parent: true
++      f8615.parent_status: mfj
++      f8615.parent_sdtw: true
++      f8615.parent_sj: false
++      f8615.parent_feitw: false
++    expect:
++      refused: f8615.parent_sdtw_if_applies
++      not_asked: [f8615.parent_ti]
++  - id: kiddie.parent_sj
++    design: scout-8615 section 4 (the parent's Schedule J)
++    situation: A 17-year-old with $10,000 of interest whose parent averaged farm income on Schedule J is told at that screen.
++    uses: [kid17]
++    answers:
++      interest[bank].amount: 1000000
++      person[taxpayer].edu_parent: true
++      f8615.parent_status: mfj
++      f8615.parent_sdtw: false
++      f8615.parent_sj: true
++      f8615.parent_feitw: false
++    expect:
++      refused: f8615.parent_special
++  - id: kiddie.child_itemizes
++    design: scout-8615 section 4 (a child who itemizes)
++    situation: A 17-year-old with $10,000 of interest who chooses to itemize deductions is told that line 2 is not figured.
++    uses: [kid17]
++    answers:
++      interest[bank].amount: 1000000
++      person[taxpayer].edu_parent: true
++      sa.elect_itemize: true
++    expect:
++      refused: f8615.child_itemizes
++  - id: kiddie.not_asked_over24
++    design: "scout-8615 section 5 (the filer with nothing in the area: 24 or over)"
++    situation: A single person of 35 with $10,000 of interest is asked nothing about a parent.
++    answers:
++      $person: [taxpayer]
++      f1040.status: single
++      household.ever_married: false
++      person[taxpayer].birth_year: 1990
++      $interest: [bank]
++      interest[bank].amount: 1000000
++      interest[bank].penalty: 0
++    expect:
++      proceeds:
++        f1040.status: single
++      not_asked: ["person[taxpayer].edu_parent", f8615.parent_status]
++  - id: kiddie.not_asked_joint
++    design: "scout-8615 section 5 (the filer with nothing in the area: a joint return)"
++    situation: A married couple of 22 filing jointly with $10,000 of interest is asked nothing about a parent.
++    answers:
++      $person: [taxpayer, spouse]
++      f1040.status: mfj
++      household.married_dec31: true
++      person[taxpayer].birth_year: 2003
++      person[spouse].birth_year: 2003
++      $interest: [bank]
++      interest[bank].amount: 1000000
++      interest[bank].penalty: 0
++    expect:
++      proceeds:
++        f1040.status: mfj
++      not_asked: [f8615.parent_status]
++  - id: kiddie.not_asked_small
++    design: "scout-8615 section 5 (the filer with nothing in the area: $2,700 or less of income other than pay; replaces scope.under24_small_income)"
++    situation: A 17-year-old with $2,000 of interest is asked nothing about a parent or about support.
++    uses: [kid17]
++    answers:
++      interest[bank].amount: 200000
++    expect:
++      proceeds:
++        sa.dependent: true
++      not_asked: ["person[taxpayer].edu_parent", f8615.parent_status]
++  - id: kiddie.no_parent_alive
++    design: "scout-8615 section 1 (condition 4: no parent alive; fixture K10)"
++    situation: A 17-year-old claimed by a grandparent, with no parent alive, and $10,000 of interest, is not asked about a parent's return.
++    uses: [kid17]
++    answers:
++      interest[bank].amount: 1000000
++      person[taxpayer].edu_parent: false
++    expect:
++      proceeds:
++        person[taxpayer].edu_parent: false
++      not_asked: [f8615.parent_status]
+diff --git a/interview/2025/coverage/scope.yaml b/interview/2025/coverage/scope.yaml
+index 104c86d..69a91c6 100644
+--- a/interview/2025/coverage/scope.yaml
++++ b/interview/2025/coverage/scope.yaml
+@@ -505,22 +505,39 @@ rows:
+   expect:
+     refused: scope.other_line16
+ - id: scope.f8615
+-  design: "MAP 2.3 item 2"
++  design: "MAP 2.3 item 2; end changed by design (Form 8615 computed, scout-8615 O8)"
+   situation: "A 20-year-old full-time student with $5,000 of dividends, whose parents support her."
+   answers:
+     "person[taxpayer].birth_year": 2005
+-    "scope.unearned_2700": true
+-    "scope.f8615": true
+-  expect:
+-    refused: scope.other_line16
++    "sa.dependent": true
++    "person[taxpayer].edu_half_support": true
++    "person[taxpayer].edu_fulltime": true
++    "person[taxpayer].edu_parent": true
++    "div.any": true
++    "div.other_boxes": false
++    "sb.ordinary_dividends": 500000
++    "f1040.line3a": 500000
++    "sd.distributions": 0
++    "qbi.dividends": 0
++    "f8615.parent_status": mfj
++    "f8615.parent_sdtw": false
++    "f8615.parent_sj": false
++    "f8615.parent_feitw": false
++    "f8615.parent_ti": 15000000
++    "f8615.parent_tax": 2282800
++    "f8615.parent_qd": 0
++    "f8615.parent_ncg": 0
++    "f8615.other_children": false
++  expect:
++    proceeds: {"f8615.other_children": false}
+ - id: scope.under24_small_income
+-  design: "MAP 2.3 item 2 (the plain parents do not refuse)"
+-  situation: "A 22-year-old with no investment income: one more question, and the return is prepared."
++  design: "MAP 2.3 item 2; restated by design (scout-8615 O8): the income question is gone, Form 8615 is derived from the income entered"
++  situation: "A 22-year-old with no investment income is asked nothing about it, and the return is prepared."
+   answers:
+     "person[taxpayer].birth_year": 2003
+-    "scope.unearned_2700": false
+   expect:
+-    proceeds: {"scope.unearned_2700": false}
++    proceeds: {"person[taxpayer].birth_year": 2003}
++    not_asked: [scope.unearned_2700, "person[taxpayer].edu_parent"]
+ - id: scope.couple_not_asked_age
+   design: "MAP 2.3 item 2 (not asked on a joint return)"
+   situation: "A couple filing together is not asked the under-24 question on income that is not pay (the age comes from the years of birth); one of them was in a chapter 11 case."
+diff --git a/interview/2025/gate_frequencies.yaml b/interview/2025/gate_frequencies.yaml
+index 93c83af..98f9ee7 100644
+--- a/interview/2025/gate_frequencies.yaml
++++ b/interview/2025/gate_frequencies.yaml
+@@ -140,14 +140,14 @@ situations:
+         - {file: soi-23in14ar, table: "Table 1.4", column: 11, header: "Tip income not reported", returns: 106786}
+         - {file: soi-23in14ar, table: "Table 1.4", column: 15, header: "Wages from Form 8919", returns: 55403}
+   scope_other_line16:
+-    label: Additional line 16 taxes (Forms 8814, 4972, 8615 and others)
++    label: Additional line 16 taxes (Forms 8814, 4972 and others; Form 8615 is computed)
+     theme: other
+     refs: [scope.other_line16]
+-    share: 0.002
+-    range: [0.0014, 0.005]
++    share: 0.0006
++    range: [0.0002, 0.002]
+     source:
+       kind: judgment
+-      reasoning: The kiddie tax (Form 8615) alone is 0.14% of returns (dependent returns with it, Table 1.7); Forms 8814 and 4972 add a little.
++      reasoning: Form 8615 (0.14% of returns, Table 1.7) is computed and no longer refused here; what remains is Forms 8814 and 4972, Form 8621, Form 8978, the section 962 election and education credit recapture, each well under 0.1%.
+       bounds:
+         - {file: soi-23in17dp, table: "Table 1.7", column: 35, header: "kiddie tax", returns: 228992}
+   scope_schedule1:
+diff --git a/interview/2025/personas/20_dependent_student.yaml b/interview/2025/personas/20_dependent_student.yaml
+index 2667cdd..db1b963 100644
+--- a/interview/2025/personas/20_dependent_student.yaml
++++ b/interview/2025/personas/20_dependent_student.yaml
+@@ -17,4 +17,3 @@ answers:
+   s1.nqdc_pension: false
+   scope.artist_official: false
+   scope.excess_deferral: false
+-  scope.unearned_2700: false
+diff --git a/interview/2025/personas/23_kiddie_teen_investor.yaml b/interview/2025/personas/23_kiddie_teen_investor.yaml
+new file mode 100644
+index 0000000..935a4e8
+--- /dev/null
++++ b/interview/2025/personas/23_kiddie_teen_investor.yaml
+@@ -0,0 +1,42 @@
++name: 23_kiddie_teen_investor
++who: A single 17-year-old whom the parents claim, with a summer job (one Form W-2, $3,000) and a custodial brokerage account paying $4,000 of qualified dividends and $2,000 of interest; the parents file jointly ($150,000 of taxable income, $22,828 of tax, no dividends or gains), and no brother or sister files this form.
++end: complete
++answers:
++  $person: [taxpayer]
++  f1040.status: single
++  household.ever_married: false
++  person[taxpayer].birth_year: 2008
++  sa.dependent: true
++  $w2@person[taxpayer]: [shop]
++  person[taxpayer].w2[shop].box1: 300000
++  person[taxpayer].w2[shop].box2: 0
++  person[taxpayer].w2[shop].box4: 18600
++  person[taxpayer].w2[shop].box5: 300000
++  person[taxpayer].w2[shop].box6: 4350
++  scope.w2_marks: false
++  s2.w2_marks: false
++  s1.nqdc_pension: false
++  scope.artist_official: false
++  scope.excess_deferral: false
++  $interest: [brokerage]
++  interest[brokerage].amount: 200000
++  interest[brokerage].penalty: 0
++  sb.nominee: false
++  sb.bonds_any: false
++  div.any: true
++  div.other_boxes: false
++  sb.ordinary_dividends: 400000
++  f1040.line3a: 400000
++  sd.distributions: 0
++  qbi.dividends: 0
++  ftc.taxes: 0
++  person[taxpayer].edu_parent: true
++  f8615.parent_status: mfj
++  f8615.parent_sdtw: false
++  f8615.parent_sj: false
++  f8615.parent_feitw: false
++  f8615.parent_ti: 15000000
++  f8615.parent_tax: 2282800
++  f8615.parent_qd: 0
++  f8615.parent_ncg: 0
++  f8615.other_children: false
+diff --git a/interview/2025/personas/24_refused_kiddie_parent_sdtw.yaml b/interview/2025/personas/24_refused_kiddie_parent_sdtw.yaml
+new file mode 100644
+index 0000000..960e90f
+--- /dev/null
++++ b/interview/2025/personas/24_refused_kiddie_parent_sdtw.yaml
+@@ -0,0 +1,20 @@
++name: 24_refused_kiddie_parent_sdtw
++who: A single 16-year-old whom the parents claim, with $8,000 of interest from a custodial account; the parents' tax was figured on the Schedule D Tax Worksheet (they had collectibles gain), so the interview ends at the screen about the parent's return.
++end: { refused: f8615.parent_sdtw_if_applies }
++answers:
++  $person: [taxpayer]
++  f1040.status: single
++  household.ever_married: false
++  person[taxpayer].birth_year: 2009
++  sa.dependent: true
++  $interest: [custodial]
++  interest[custodial].amount: 800000
++  interest[custodial].penalty: 0
++  sb.nominee: false
++  sb.bonds_any: false
++  ftc.taxes: 0
++  person[taxpayer].edu_parent: true
++  f8615.parent_status: mfj
++  f8615.parent_sdtw: true
++  f8615.parent_sj: false
++  f8615.parent_feitw: false
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 2022b14..a986e87 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -63,6 +63,8 @@ bank:
+     heading: In 2025, did you (or, on a joint return, your spouse) have any of these less common sales or trades?
+   - id: invest_other
+     heading: Is either of these true of your (or, on a joint return, your spouse's) investments?
++  - id: parent_return
++    heading: Was that parent's 2025 tax figured in any of these ways?
+   - id: outside_us
+     heading: At any time in 2025, did you (or, on a joint return, your spouse) have any of these outside the United States?
+   - id: foreign_credit
+@@ -731,6 +733,66 @@ bank:
+       months of the due date. Once made, it can be undone only with IRS consent.
+     prompt: How much of your qualified dividends and long-term gains do you choose to count as investment income, so that
+       more of this interest can be deducted now? What you count is taxed at ordinary rates. Enter 0 to make no such choice.
++  - input: f8615.parent_status
++    order: 277
++    seq: 1
++    help: "Use the return of the parent you lived with longer in 2025. If your parents filed one joint return, use it; if they were married and filed separately, the one with more taxable income. If that parent remarried and filed jointly, use that joint return."
++    value_labels:
++      single: Single
++      mfj: Married filing jointly
++      mfs: Married filing separately
++      hoh: Head of household
++      qss: Qualifying surviving spouse
++  - input: f8615.parent_sdtw
++    order: 277
++    seq: 2
++    group: parent_return
++    tick: "On the Schedule D Tax Worksheet"
++    help: "That worksheet is used only when Schedule D line 18 or 19, or Form 4952 line 4g, shows an amount. A Yes ends the interview here."
++  - input: f8615.parent_sj
++    order: 277
++    seq: 3
++    group: parent_return
++    tick: "With Schedule J (farm or fishing income averaged)"
++    help: "A Yes ends the interview here."
++  - input: f8615.parent_feitw
++    order: 277
++    seq: 4
++    group: parent_return
++    tick: "With Form 2555 (income earned abroad left out)"
++    help: "A Yes ends the interview here."
++  - input: f8615.parent_ti
++    order: 277
++    seq: 5
++  - input: f8615.parent_tax
++    order: 277
++    seq: 6
++    help: "If a box on line 16 is checked for Form 8814 or 4972, leave out the tax from that form."
++  - input: f8615.parent_qd
++    order: 277
++    seq: 7
++  - input: f8615.parent_ncg
++    order: 277
++    seq: 8
++    help: "A parent who sold no stock or funds and received no capital gain distributions enters zero."
++  - input: f8615.other_children
++    order: 277
++    seq: 9
++    help: "Answer Yes if a return with this tax is being prepared for a brother or sister too, using the same parent's return."
++  - input: f8615.others_line5
++    order: 277
++    seq: 10
++    help: "Line 5 of each other child's Form 8615, added up. Leave out your own."
++  - input: f8615.others_qd
++    order: 277
++    seq: 11
++  - input: f8615.others_ncg
++    order: 277
++    seq: 12
++  - input: f8615.others_sdtw
++    order: 277
++    seq: 13
++    help: "A Yes ends the interview here."
+   - input: f8959.territory_w2
+     order: 146
+     seq: 4

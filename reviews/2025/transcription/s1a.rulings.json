@@ -2244,6 +2244,37 @@
   },
   {
    "printed": "4b",
+   "project_expr_sha256": "902f5efc3111f6b5c8380d6425d8b335c0ee7ac03d181073ee96d1891c070934",
+   "second_expr_sha256": "0a17cde9d5cb503b89cfb97687da6e7913b00fe66964514263a3af2b3f815453",
+   "ruling": "Ruling: scope; the project does not figure line 4b: s1a.line4b_calc refuses when anyone has Form 4137 tips (s1a.f4137; i1040gi p. 101, Schedule 1-A, Part II, \"If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137\"; p. 104, line 4b), and is zero otherwise, as the line says (\"If Form 4137 is not filed, enter -0-\"). The reply sums person.f4137_col_c, which its own note says may include tips that are not qualified tips, so it is not a correct figure of the line either. Triage f93799ca7307: 2,946/2,992 agree with no value difference; 42 project-unknown (s1a.tips unanswered on incomplete and refused returns), 3 project-refuses (the Form 4137 refusal), 1 candidate-unknown.",
+   "context": "3cdeda6cd2f4cbee460b394bc09fc030fd0dc4524e8e5bb280f13cea11b1225a",
+   "date": "2026-11-15",
+   "run": "5e14a18c258c26ec5b404c5cb10746b16651154affeb4b2b12a52bfc586dd045",
+   "subject_key": "6bc447ac0c55c6be92836f45d6042670215a995e61af45f2b5d5d8085e91a1c8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@s1a",
+     "fixture:classm.f4952.3.deepseek@s1a",
+     "fixture:classm.dependent.4.deepseek@s1a",
+     "fixture:classm.person.1.deepseek@s1a",
+     "fixture:stage9.eic.refuse.combat_pay@s1a",
+     "fixture:stage9.eic.refuse.form8814@s1a",
+     "fixture:x2pay.f4137.tips_deduction_refused@s1a",
+     "fixture:mutation.m4.s1a.spouse_no_ssn_one_job@s1a",
+     "fixture:stage12.refuse.form4137_one_employer@s1a",
+     "fixture:stage12.refuse.form4137_two_employers@s1a"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4b",
    "project_expr_sha256": "cf1942bfb02f55c834efae79fac8449aa72941e654f0c0b62c6beabe0b91cb88",
    "second_expr_sha256": "2e56b1df35234aefcaa70589ae02bb390567b97a8966984cfd495ae2e24caa96",
    "ruling": "Ruling: refusal representation; project retained. The line is $0 within scope and carries its own refusal for the forms it would come from (Form 4137 through s2.other; a trade or business, Forms 1099-NEC, 1099-MISC or 1099-K, through scope.schedule1), as ruled in Stage 12 (BUG-0043); the second figures the refused amount, or zero without the refusal.",

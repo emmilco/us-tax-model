@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "967264f92b4f12f49b8e65c16bb93a24be5c589d17652ae79c3b265ba870c5b8",
  "head_rows": {
-  "printed lines compared": "6",
-  "agree / disagree / missing": "1 / 5 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "printed lines compared": "10",
+  "agree / disagree / missing": "1 / 9 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,6 +23,34 @@
    "subject_key": "ecc1ce1d0a25cb19f5e65b26aab2806772fe3554987debce39afa8d95a6957c6"
   },
   {
+   "key": "scope.household_pay_if_pay",
+   "record": "d3da9c7d7db29b23ee6a60cc52a963fcc617584f410e4f65eda4f3d5374e841b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.pay_no_w2 and scope.household_pay is the project's gated choose (household.no when scope.pay_no_w2 is false; the answer when true); i1040gi p. 24, Line 1b, \"Enter the total of your wages received as a household employee that was not reported on Form(s) W-2\". Triage (pass 4be1d7385eb3): 4,483/4,499 agree; the 16 others are project-unknown on incomplete (7) and refused (9) partial records, where scope.pay_no_w2 is unanswered and the reply's conjunction short-circuits; no value difference.",
+   "subject_key": "7d4089ad0adb0278a8d7cc228ed8e284be03602b6db0656ea58cbea007cd1291"
+  },
+  {
+   "key": "scope.contractor_pay_if_pay",
+   "record": "d3da9c7d7db29b23ee6a60cc52a963fcc617584f410e4f65eda4f3d5374e841b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.pay_no_w2 and scope.contractor_pay is the project's gated choose; f8919 p. 1, the form is for wages from a firm that treated the worker as an independent contractor. Triage (pass 4be1d7385eb3): 4,483/4,499 agree; 16 project-unknown on incomplete (7) and refused (9) partial records (scope.pay_no_w2 unanswered); no value difference.",
+   "subject_key": "5abeb02f04be99fb083ac04cace434a44a5fba67207d3ff8699e29415cebf41f"
+  },
+  {
+   "key": "scope.tips_unreported_if_pay",
+   "record": "d3da9c7d7db29b23ee6a60cc52a963fcc617584f410e4f65eda4f3d5374e841b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.pay_no_w2 and scope.tips_unreported is the project's gated choose; i1040gi p. 24, Line 1c, \"Enter the total of your tip income that was not reported on Form 1040, line 1a\". Triage (pass 4be1d7385eb3): 4,483/4,499 agree; 16 project-unknown on incomplete (7) and refused (9) partial records (scope.pay_no_w2 unanswered); no value difference.",
+   "subject_key": "ea204347382837d4bbd515e052015464952a4b4403582a4477b9a55bd28f52df"
+  },
+  {
+   "key": "scope.strike_pay_if_pay",
+   "record": "d3da9c7d7db29b23ee6a60cc52a963fcc617584f410e4f65eda4f3d5374e841b",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent: the reply's conjunction of scope.pay_no_w2 and scope.strike_pay is the project's gated choose; i1040gi p. 24, Line 1h, \"Strike or lockout benefits (other than bona fide gifts)\". Triage (pass 4be1d7385eb3): 4,483/4,499 agree; 16 project-unknown on incomplete (7) and refused (9) partial records (scope.pay_no_w2 unanswered); no value difference.",
+   "subject_key": "3438fc5c9d87ae08b2466a0f50245771ec2109ad0269f1967e2c9d970432cc54"
+  },
+  {
    "key": "scope.excess_deferral_if_w2",
    "record": "ec8ead938781af5865e68143050c853b23b3dabb0d05e50c285bae5f014b9da7",
    "status": "DISAGREE",
@@ -31,17 +59,17 @@
   },
   {
    "key": "scope.schedule1",
-   "record": "73f7eadb4e82f4a9e6b814402fb3aefe305332d1febf91baf4f1bc850f4e736a",
+   "record": "d3da9c7d7db29b23ee6a60cc52a963fcc617584f410e4f65eda4f3d5374e841b",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; as ruled twice earlier today on this line. Triage (executable-triage-v2, pass 2eb39b30c079): 3,689/4,053 agree; 59 value differences, all refused returns with the project true and the reply false (scope.rental, e.g. t264.eic.step2_schedule1; scope.clergy_if_religious_work, stage9.eic.refuse.clergy_schedule1); 53 candidate-unknown (3 completed: scope.se_plan_other read ungated), 252 project-unknown. The reply leaves out rental and royalty (Schedule E to Schedule 1 line 5; i1040se p. 1), K-1 income, farm income (i1040sf p. 2, Schedule 1 line 6), clergy and church wages, W-2 marks (i1040gi Line 24f, code H) and the gated items, all of which carloan, f2441 and f1040 rely on this screen to refuse. Its extra CFC term changes no outcome: scope.cfc_if_foreign_shares is refused by scope.other_line16 on Form 1040.",
-   "subject_key": "e1a83d59ddf5b8e6313101c99cb6ca6d8b0c318cffb3b4c4a1cde8c7740c8181"
+   "ruling": "Ruling: model error; as in the earlier landing and goal-1 rulings, the reply's screen keeps only reservist, military move, performer, Archer MSA, reforestation and attorney-fee items and leaves out the personal-property rental (scope.rent_personal_if_rental, which this merge put in place of scope.rental), K-1, farm, clergy/church employee, W-2 marks (statutory employee) and other self-employed plan items the project refuses (i1040se p. 1, \"Use Schedule E (Form 1040) to report income or loss from rental real estate, royalties, partnerships, S corporations\"; i1040sf p. 2; i1040sse p. 1, Ministers and Employees of Churches; i1040gi p. 25, statutory employees). Every operand of the reply is in the project's list, so the reply can be true only where the project is: triage (pass 4be1d7385eb3) 4,134/4,499 agree; 48 value differences, all on refused returns (project true, reply false); 279 project-unknown on incomplete/refused partial records; 38 candidate-unknown (27 on completed returns: the reply reads scope.artist_official and others without their gates). Like the project, the reply leaves NOL and recoveries out (now computed: s1.nol_amount_if_nol, rec). Project stands.",
+   "subject_key": "3a5c47d8d58fc94e42e76a83531440904972e7a6bb7e5b3c64f0fe6da8239835"
   },
   {
    "key": "scope.other_income",
-   "record": "ec8ead938781af5865e68143050c853b23b3dabb0d05e50c285bae5f014b9da7",
+   "record": "d3da9c7d7db29b23ee6a60cc52a963fcc617584f410e4f65eda4f3d5374e841b",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; the label is \"Nonresident alien status, or other income or return treatment outside this tool\", and the reply leaves out nonresident status (scope.nonresident_if_noncitizen; i1040gi p. 8, \"Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR\"), a chapter 11 case (p. 23), a repayment of qualified reservist distributions (p. 95, Line 20) and dependent care benefits from one's own business or a grace period (scope.care_benefits_other_if_benefits; i2441 p. 5, Lines 12 and 13), and adds Schedule 1 items that belong to scope.schedule1. Triage (pass 1ad4bbd67c02): 3,503/4,036 agree; 63 value differences on refused returns, mostly project true / reply false (e.g. classm.carloan.2, classm.f8959.1, classm.sb.1), one the reverse (stage9.eic.refuse.clergy_schedule1.step5); 279 candidate-unknown (37 completed: scope.adoption_benefits read without its adoption gate); 191 project-unknown.",
-   "subject_key": "627cf0ac31f2e4478ca8c5306d923c7b07e991e994d529680a18e66fb5a1f2ed"
+   "ruling": "Ruling: model error; the reply keeps only wages with no form (scope.pay_no_w2 and scope.wages_no_form) and excess deferrals, and leaves out nonresident status (named in the label), chapter 11, reservist repayments, adoption and other dependent care benefits, disaster distributions and passive losses, which the project refuses (i1040gi p. 8, \"Most nonresident aliens and dual-status aliens have different filing requirements\"; p. 23, Chapter 11 Bankruptcy Cases; p. 95, Line 20; i2441 p. 5, Lines 12 and 13; i8915f p. 2; i8582 p. 1). Its omission of household, contractor, tips, strike and Medicaid pay agrees with the project, which now computes them (lines 1b, 1c, 1d, 1g, 1h). Triage (pass 4be1d7385eb3): 4,207/4,499 agree; 34 value differences, all on refused returns; 212 project-unknown on incomplete/refused partial records; 46 candidate-unknown (34 completed: scope.excess_deferral read without its W-2 gate). Project stands.",
+   "subject_key": "95ec14316561b07f37349023d50a8467da8d6a7e3aecb8c686f5d5850ef01787"
   },
   {
    "key": "scope.other_line16",
@@ -54,15 +82,23 @@
  "subjects": {
   "scope.has_w2": "821f02aa9c7493efd8a6e938a2b1537590ee73b4e2847d7ca11c29b640ec4f44",
   "scope.reservist_repaid_if_armed_forces": "af82e1bc652fea7fe1f41699ff421bca139acb0a060f3ecf29d83179d5118bb1",
+  "scope.household_pay_if_pay": "c27ccb876a837eef4e10db7cb6b4fbaa8d34444f817eab869579cfd7ebe3332e",
+  "scope.contractor_pay_if_pay": "44179d1ae487c4f77c4e90bacbb9d39c37b48541fecd79d9b617bfbd60283559",
+  "scope.tips_unreported_if_pay": "e7ac50d8f87bb529f96216e514859c9d6573e3fcb919496b090d5b5f000aaddd",
+  "scope.strike_pay_if_pay": "06e92f854c10bd17c968cf55a6dee827d8b5745749b0ae66205cb18096b0ec25",
   "scope.excess_deferral_if_w2": "f62b1921e36df83067fa2da62cd47f106dfc9fe5cb829ed703143c124679ee03",
-  "scope.schedule1": "f272c151b4418325ca3d5d0479c4eadd7aba273857cc5b15c367ffd2ad4e12aa",
-  "scope.other_income": "215ec974d87e61ecedccd7880de0f3723bc0a09e11f7c981527c0acfd8f35292",
+  "scope.schedule1": "7244f1dcff323382002d2463a8a968b8e5a02427745fdec4c0ed09d06d54055d",
+  "scope.other_income": "8a52bbf432b6a7221536d15d1002887c8e24a06db049942e26fc5fbb67ad7e87",
   "scope.other_line16": "bc48e7ea67e5a0ad99bbeb8ec4a60ee0f4c563596aaadcf5e6afbf0721e37691"
  },
  "__rest__": "c0448cd138abd167fdf478a533908ab7d7dbffd5aa5e7a74d1e438f35e949699",
  "foreign": {
   "scope.has_w2": "d529f6cae62dfea3096edc13769b5bbd78c78f1eacc2d484f528e23ca088a586",
   "scope.reservist_repaid_if_armed_forces": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "scope.household_pay_if_pay": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "scope.contractor_pay_if_pay": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "scope.tips_unreported_if_pay": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
+  "scope.strike_pay_if_pay": "490c341f207cadaa0a2ad59a0cc640d15369dcb61648e0566cacc8a439bbff1a",
   "scope.excess_deferral_if_w2": "057a207b3671167074c52c60785b543abaf1a4748c6cb99727ac0b1bc2a8da1a",
   "scope.schedule1": "10b1502db6a36d41a0ffc5423c74e95c279ee954b169a5d8144a9a83af36b692",
   "scope.other_income": "cfc694723d808a9eb9747f8a66507176f04acd9be445f2e01cd588217f2b6c12",

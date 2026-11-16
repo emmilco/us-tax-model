@@ -1,0 +1,228 @@
+diff --git a/forms/2025/rental.yaml b/forms/2025/rental.yaml
+index 54202ef..923b501 100644
+--- a/forms/2025/rental.yaml
++++ b/forms/2025/rental.yaml
+@@ -114,7 +114,8 @@ form:
+       op: input
+       source: How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free,
+         below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home
+-        before or after renting it out (or trying to) for 12 months or more in a row.
++        before or after renting it out (or trying to) for 12 months or more in a row, or for less if you then sold or traded
++        it.
+     cite:
+       doc: p527
+       locator: 'p. 26, What is a day of personal use?; i1040se p. 5, Line 2, "For each property listed on line 1a, report the number of days in the year each property was rented at fair rental value and the number of days of personal use"'
+@@ -397,7 +398,8 @@ form:
+     type: Bool
+     expr:
+       op: input
+-      source: Did you provide services for renters, such as cleaning during their stay, changing linen or meals?
++      source: Did you, or a manager or staff for you, provide services for renters, such as cleaning during their stay, changing
++        linen or meals?
+     cite:
+       doc: i1040se
+       locator: p. 5, Line 3, "If you provided significant services to the renter, such as maid service, report the rental
+@@ -408,7 +410,7 @@ form:
+     type: Bool
+     expr:
+       op: input
+-      source: Did you (with your spouse) own less than a tenth of it?
++      source: At any time in 2025, did you (with your spouse) own less than a tenth of it, by value?
+     cite:
+       doc: i8582
+       locator: p. 4, Active participation, "in the activity was less than 10% (by value) of all interests in the activity"
+@@ -434,12 +436,12 @@ form:
+       locator: p. 6, Line 18, "Depletion"
+   - id: rental.part_home
+     printed: (helper)
+-    label: Part of a property the filer also lives in
++    label: Part of a property the filer also lives in, lived in during 2025, or uses
+     type: Bool
+     expr:
+       op: input
+-      source: Is it part of a property you also live in, such as a room in your home or one unit of a building you live
+-        in?
++      source: Is it part of a property you live in or use yourself, or lived in during 2025, such as a room in your home,
++        one unit of a building you live in, or space in a building that holds your own office?
+     cite:
+       doc: i1040se
+       locator: p. 6, Renting out part of your home
+@@ -630,7 +632,7 @@ form:
+       source: Commissions
+     cite: &id005
+       doc: i1040se
+-      locator: p. 1, Line 8
++      locator: p. 6, General Instructions for Lines 5 Through 21
+   - id: rental.amt8
+     printed: (helper)
+     label: Commissions paid in 2025, before any division for personal use
+@@ -703,16 +705,19 @@ form:
+       source: Insurance
+     cite: &id006
+       doc: i1040se
+-      locator: p. 10, Line 9
++      locator: p. 6, General Instructions for Lines 5 Through 21
+   - id: rental.amt9
+     printed: (helper)
+-    label: Insurance paid in 2025, before any division for personal use
++    label: Insurance for 2025 coverage, before any division for personal use
+     type: NonNegDollars
+     gated_by: rental.amt9_if_any
+     expr:
+       op: input
+-      source: Insurance on it (the part for 2025), paid in 2025
+-    cite: *id006
++      source: Insurance on it for 2025 coverage, paid in 2025 or paid earlier for more than one year (only the part for 2025)
++    cite:
++      doc: p527
++      locator: p. 5, Insurance premiums paid in advance, "For each year of coverage, you can deduct only the part of the premium
++        payment that applies to that year"
+   - id: rental.amt9_if_any
+     printed: (gate)
+     label: Insurance, asked only when ticked (zero otherwise)
+@@ -930,7 +935,8 @@ form:
+     gated_by: rental.amt12_if_any
+     expr:
+       op: input
+-      source: Mortgage interest on it shown on Form 1098 (box 1), your share, paid in 2025
++      source: Mortgage interest on it shown on Form 1098 (box 1), your share, paid in 2025, leaving out interest on any part
++        of the loan spent on something else
+     cite: *id009
+   - id: rental.amt12_if_any
+     printed: (gate)
+@@ -1003,7 +1009,8 @@ form:
+     gated_by: rental.amt13_if_any
+     expr:
+       op: input
+-      source: Other interest on loans for it (no Form 1098 in your name), paid in 2025
++      source: Other interest on loans for it (no Form 1098 in your name), paid in 2025 and not for a later year; for points
++        or loan fees, only 2025's share, spread evenly over the loan
+     cite: *id010
+   - id: rental.amt13_if_any
+     printed: (gate)
+@@ -1141,7 +1148,7 @@ form:
+       source: Supplies
+     cite: &id012
+       doc: i1040se
+-      locator: p. 11, Line 15
++      locator: p. 6, General Instructions for Lines 5 Through 21
+   - id: rental.amt15
+     printed: (helper)
+     label: Supplies paid in 2025, before any division for personal use
+@@ -1635,7 +1642,8 @@ form:
+     type: Bool
+     expr:
+       op: input
+-      source: Was a loss from this rental held back (not deducted) on your 2024 return or an earlier one?
++      source: Was a loss from this rental held back (not deducted) on a 2024 or earlier return of yours (or, on a joint return,
++        your spouse's), including a separate one?
+     cite: *id016
+   - id: rental.prior_amt
+     printed: (helper)
+@@ -1673,7 +1681,8 @@ form:
+     gated_by: rental.prior_not_active_if_both
+     expr:
+       op: input
+-      source: Did any of that held-back loss come from a year when you (or your spouse) did not help make decisions for it?
++      source: Did any of that held-back loss come from a year when you (or your spouse) did not help make decisions for it,
++        or when you (with your spouse) owned less than a tenth of it at some time that year?
+     cite:
+       doc: i8582
+       locator: p. 10, Part IV, "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 408149d..a651f7c 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -6950,8 +6950,9 @@ bank:
+   - input: rental.days_personal
+     order: 130
+     seq: 15
+-    help: A swap is an arrangement that lets you use someone else's home in return.
+-    prompt: "For this rental property — How many days was it used that way? Leave out days spent mostly on repairs, and days it was your main home before or after renting it (or trying to) for 12 months in a row."
++    help: A swap is an arrangement that lets you use someone else's home in return. Also leave out days a co-owner rented it
++      from you as their main home at a fair rent under a shared equity financing agreement.
++    prompt: "For this rental property — How many days was it used that way? Leave out days spent mostly on repairs, and days it was your main home before or after renting it (or trying to) for 12 months in a row, or for less if you then sold it."
+   - input: rental.days_overlap
+     order: 130
+     seq: 16
+@@ -6968,13 +6969,14 @@ bank:
+     order: 130
+     seq: 19
+     group: rental_rare
+-    tick: You gave renters services, such as cleaning during stays or meals
+-    help: A Yes ends the interview here.
++    tick: Renters got services, such as cleaning during stays or meals
++    help: From you, a manager or staff. Heat, light, trash collection and cleaning shared areas do not count. A Yes ends the
++      interview here.
+   - input: rental.under_tenth
+     order: 130
+     seq: 20
+     group: rental_rare
+-    tick: You (with your spouse) owned less than a tenth of it
++    tick: In 2025 you (with your spouse) owned under a tenth, even briefly
+     help: A Yes ends the interview here.
+   - input: rental.not_for_profit
+     order: 130
+@@ -6992,9 +6994,9 @@ bank:
+     order: 130
+     seq: 23
+     group: rental_rare
+-    tick: It is part of a home or building you live in
++    tick: Part of a building you lived in or used yourself in 2025
+     help: A Yes ends the interview here.
+-    prompt: "For this rental property — Is it part of a building you live in, such as a room or a unit?"
++    prompt: "For this rental property — Is it part of a building you live in or use yourself, or lived in during 2025, such as a room or a unit?"
+   - input: rental.active
+     order: 130
+     seq: 24
+@@ -7024,7 +7026,7 @@ bank:
+     order: 130
+     seq: 29
+     group: rental_costs_a
+-    tick: Insurance
++    tick: Insurance covering 2025, even if paid earlier
+   - input: rental.has_management
+     order: 130
+     seq: 30
+@@ -7093,6 +7095,8 @@ bank:
+   - input: rental.amt10
+     order: 130
+     seq: 44
++    help: 'Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to
++      its cost, not deducted now.'
+   - input: rental.amt11
+     order: 130
+     seq: 45
+@@ -7126,6 +7130,8 @@ bank:
+   - input: rental.amt19
+     order: 130
+     seq: 52
++    help: 'Not something that lasts more than a year, such as an appliance, furniture or an improvement: list it with the
++      buildings below.'
+   - input: rental.prior_any
+     order: 130
+     seq: 53
+@@ -7294,18 +7300,22 @@ bank:
+   - input: royalty.amt10
+     order: 130
+     seq: 76
++    help: 'Not fees to defend or protect your ownership, recover the property, or develop or improve it: those are added to
++      its cost, not deducted now.'
+   - input: royalty.amt16
+     order: 130
+     seq: 77
+   - input: royalty.amt19
+     order: 130
+     seq: 78
++    help: Not the value of your own work, and not something that lasts more than a year, such as equipment or an improvement.
+   - input: sche.re_pro
+     order: 130
+     seq: 92
+     group: rental_return
+     tick: Over 750 hours, and most of your work time, in real estate
+-    help: A Yes ends the interview here.
++    help: Real estate work includes building, buying, renting out, managing or brokering it, including running your own
++      rentals. Work as an employee counts only if you own more than 5% of the employer. A Yes ends the interview here.
+   - input: sche.grouped
+     order: 130
+     seq: 93

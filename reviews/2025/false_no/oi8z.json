@@ -1,0 +1,108 @@
+{
+ "form": "oi8z",
+ "reviews": {
+  "gate:oi8z.damages": {
+   "subject_sha": "114e5151ece1960cacad2efef02e1e824b0372e9481bd4a3865b406452f14346",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer who received a personal-injury settlement after a car crash that included punitive damages. Because they know injury settlements are not taxed, they classify the 8z item as something other than 'taxable damages', or leave it off the return entirely.",
+       "why_no": "The type label 'taxable damages' asks the filer to decide taxability first. Someone who believes a physical-injury recovery is not taxable will not pick it, so the gate is false and the physical-injury question is never asked.",
+       "line": "oi8z.injury_if_damages (the refusal is missed, and the taxable punitive part is dropped)",
+       "irs_text": "p525 (2025) p. 32: \"Punitive damages in most cases. It doesn't matter if they relate to a physical injury or physical sickness.\"",
+       "severity": "high",
+       "fix": "Make the type a fact the filer can check, such as 'a court award, judgment, or settlement of a claim (taxable or not)'. Then ask the physical-injury question for every award, and classify the item afterward."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose claim against an at-fault driver's insurer was settled by negotiation, with no lawsuit filed. Part of the payment was punitive or for lost wages.",
+       "why_no": "The question asks whether any of it was 'paid in a case'. The filer reads 'case' as a lawsuit and answers no, because no suit was ever filed.",
+       "line": "oi8z.injury_if_damages",
+       "irs_text": "p525 (2025) p. 32: \"settlement amounts you receive by compromise or judgment\"; \"Don't include in your income compensatory damages for personal physical injury or physical sickness\"",
+       "severity": "medium",
+       "fix": "Reword to: 'Was any of it paid, by judgment or by settlement with or without a lawsuit, on a claim involving a physical injury or physical sickness (yours, your spouse's, or a family member's, including wrongful death)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who sued for emotional distress after a physical assault or an accident that physically injured them. They think of the claim as an emotional-distress case.",
+       "why_no": "They do not see the case as 'about a physical injury', because the damages were labeled emotional distress. They answer no, and the excludable amount is treated as taxable.",
+       "line": "oi8z.injury_if_damages",
+       "irs_text": "p525 (2025) p. 32: \"damages you receive for emotional distress due to a physical injury or sickness are treated as received for the physical injury or sickness. Don't include them in your income.\"",
+       "severity": "medium",
+       "fix": "Add to the question or help: 'Include emotional distress damages that arise from a physical injury or sickness.'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A filer in a discrimination or defamation case with no physical injury. Part of the settlement reimbursed medical care for the resulting emotional distress.",
+       "why_no": "The case truthfully was not about a physical injury or sickness, so they answer no. The tool then includes the whole amount, although the medical-care part is excluded.",
+       "line": "oi8z.injury_if_damages (the no is followed by overinclusion with no refusal or split)",
+       "irs_text": "p525 (2025) p. 32: \"you must include the damages in your income, except for any damages you receive for medical care due to that emotional distress.\"",
+       "severity": "high",
+       "fix": "Add a gated question: 'Was any of it for medical care for emotional distress?' If yes, either refuse the interview or subtract that amount."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer who still receives installments under a written settlement or court decree in effect on or before September 13, 1995. The claim was for a non-physical personal injury, such as defamation.",
+       "why_no": "The question asks only about physical injury or sickness, so their truthful answer is no. But the pre-1995 rule excludes damages for any personal injury, physical or not.",
+       "line": "oi8z.injury_if_damages",
+       "irs_text": "p525 (2025) p. 32: \"If you receive damages under a written binding agreement, court decree, or mediation award that was in effect (or issued on or before) September 13, 1995, don't include in income any of those damages received on account of personal injuries or sickness.\"",
+       "severity": "high",
+       "fix": "Add: 'Is any of it paid under an agreement, decree, or award in effect on or before September 13, 1995, for any personal injury or sickness?' If yes, refuse the interview or exclude that amount."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A married filer filing jointly who received loss-of-consortium damages, or wrongful-death proceeds, in a case about the spouse's or a relative's physical injury.",
+       "why_no": "They read the question as asking about their own injury, and they were not physically hurt, so they answer no.",
+       "line": "oi8z.injury_if_damages",
+       "irs_text": "p525 (2025) p. 32: \"Don't include in your income compensatory damages for personal physical injury or physical sickness\"",
+       "severity": "medium",
+       "fix": "Say explicitly: 'a physical injury or sickness of anyone (you, your spouse, or another person, including a death)'."
+      }
+     ],
+     "prompt_sha": "4283e977e14ffc96d6da7d0f58955530cf2bbd4cdb3fb206183abe658f3a09bd",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.078524,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_oi8z.damages.114e5151ece1.1.response.txt"
+    }
+   ],
+   "condition": "oi8z.damages",
+   "lines": [
+    "oi8z.injury_if_damages"
+   ],
+   "inputs": [
+    "oi8z.injury"
+   ],
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      32
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 32, Court awards and damages, \"Include the following as ordinary income\"",
+      "p. 32, Court awards and damages, \"Punitive damages in most cases. It doesn’t matter if they relate to a physical injury or physical sickness\" and \"Don’t include in your income compensatory damages for personal physical injury or physical sickness (whether received in a lump sum or installments)\"",
+      "p. 32, Court awards and damages, \"you must consider the item that the settlement replaces\""
+     ],
+     "cols_pages": [
+      32
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  }
+ }
+}

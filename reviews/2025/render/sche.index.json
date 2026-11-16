@@ -1,0 +1,75 @@
+{
+ "kind": "render",
+ "form": "sche",
+ "family": "claude",
+ "base": "52cbe9ff82fdad5480a168b77302f27d0ce4975db3c4afc5a040e1c1d77c3cef",
+ "lines": [
+  {
+   "key": "23a",
+   "record": "52cbe9ff82fdad5480a168b77302f27d0ce4975db3c4afc5a040e1c1d77c3cef",
+   "status": "MATCH",
+   "subject_key": "9a06d0bad3799e80ec19422ed2b43bb261cb451611c48e02c82e714b2474cb28"
+  },
+  {
+   "key": "23b",
+   "record": "52cbe9ff82fdad5480a168b77302f27d0ce4975db3c4afc5a040e1c1d77c3cef",
+   "status": "MATCH",
+   "subject_key": "5d0c6148ca0b7f9eae61f81998ac0e163d120beda29c5741fbfd6319024fb64e"
+  },
+  {
+   "key": "23c",
+   "record": "52cbe9ff82fdad5480a168b77302f27d0ce4975db3c4afc5a040e1c1d77c3cef",
+   "status": "MATCH",
+   "subject_key": "e18467fee1e8d7559099d2b92a729bf5447e221c3c75670459881300082cd3c1"
+  },
+  {
+   "key": "23d",
+   "record": "52cbe9ff82fdad5480a168b77302f27d0ce4975db3c4afc5a040e1c1d77c3cef",
+   "status": "MATCH",
+   "subject_key": "45d2fb8b3a7e241059c1f9e3bcd519b63fb0247d09c49b08a5587cef40d66a77"
+  },
+  {
+   "key": "23e",
+   "record": "52cbe9ff82fdad5480a168b77302f27d0ce4975db3c4afc5a040e1c1d77c3cef",
+   "status": "MATCH",
+   "subject_key": "a3efac8ac37f3b0af2fdd6a0a8839815e22f36130a20789c52ed6f19c4392b8b"
+  },
+  {
+   "key": "24",
+   "record": "52cbe9ff82fdad5480a168b77302f27d0ce4975db3c4afc5a040e1c1d77c3cef",
+   "status": "MATCH",
+   "subject_key": "ba34f15d48d9c48d41ca6248c699ec644039e1f3d894c35698a97bd5881ef216"
+  },
+  {
+   "key": "25",
+   "record": "52cbe9ff82fdad5480a168b77302f27d0ce4975db3c4afc5a040e1c1d77c3cef",
+   "status": "MATCH",
+   "subject_key": "fe08e8293ebb82c9bac4673734c48d76dc477b4593de1bdb4377535837e4c8b8"
+  },
+  {
+   "key": "26",
+   "record": "52cbe9ff82fdad5480a168b77302f27d0ce4975db3c4afc5a040e1c1d77c3cef",
+   "status": "MATCH",
+   "subject_key": "b291e9c94c9b7e916ecf7d3de7d68e568682ded216830e374da9c1b5d299de20"
+  },
+  {
+   "key": "41",
+   "record": "52cbe9ff82fdad5480a168b77302f27d0ce4975db3c4afc5a040e1c1d77c3cef",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; sche's note: 'line 41 is line 26 (Parts II to IV are refused)': partnership, S corporation, estate and trust income is refused by scope.k1 (through scope.schedule1) and farm income by scope.farm, so lines 32, 37, 39 and 40 are zero on every completed return. (A REMIC residual interest, line 39, has no question of its own; it is cited by scope.schedule1's sources; pre-existing, not this lane's.)",
+   "subject_key": "152bb0d27bdb209351f55e6807b985057aaafd827a8844fef953bf8437508c43"
+  }
+ ],
+ "subjects": {
+  "23a": "eb2d32cbf1f47e5cfd742e5aa634a16ed028a1486cb9ffedb63e8c67eb754806",
+  "23b": "375155e0c2454bb69e5a32ba02054ec8b5e53253e1ea84eefb969c398f6c8fa3",
+  "23c": "a1ddddc3903644b1a40d3d9f565fe1502b1c77a66fdb449db4ae00a02f62fba7",
+  "23d": "95e70bd2d3f7026c2f9c2f50528fbe8e15ba471a95667d8ad13c9dbf34231c89",
+  "23e": "b165be4a969158302ccf3b53a776812f3d7edb10ff1c99c1622e2e056087b05c",
+  "24": "b49d3b1a9aa94d5dc982eac5a637690715c0e278dc105c78e625dbaca728bee2",
+  "25": "f0695f57cafc5e82eccb7f5cd98abbd7383470f9df2820ec4921cfdf6d95ab8c",
+  "26": "76f24ae7d97f3acecff27ad4be51f2ec1516f5bb521276c6848aababa0f7d954",
+  "41": "ae5ff9d7ab350c64158443bd9fce0fde482b005f2f9e7f72b5c64627087b6447"
+ },
+ "__rest__": "823b175be456b59f85a7147919ae95971d4dd1119b7a18ed7421e769749de82e"
+}

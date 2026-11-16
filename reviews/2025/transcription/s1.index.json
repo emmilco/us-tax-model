@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
  "head_rows": {
-  "printed lines compared": "32",
-  "agree / disagree / missing": "23 / 9 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
+  "printed lines compared": "42",
+  "agree / disagree / missing": "26 / 16 / 0",
+  "line-scoped reviews": "6 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -27,6 +27,25 @@
    "status": "DISAGREE",
    "ruling": "Ruling: representation; the reply tests line 8b, the project the gated winnings amount that line 8b copies (s1.gambling_winnings_if_winnings); they differ only where line 8b refuses for a professional gambler (s1.gambling_business: p525 p. 33, \"If you're in the trade or business of gambling, use Schedule C\") or its question is unasked. Triage (pass eba464d939db): 3,551/3,553 agree; 1 candidate-refuses (refused return, stage16.refuse.s1.gambling_business), 1 candidate-unknown (incomplete); no value difference.",
    "subject_key": "5a3860bd96681b0f615f647b60cf1655bcf61eee758f1a7ee6a97b3af577084c"
+  },
+  {
+   "key": "s1.nol_amount_if_nol",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "status": "AGREE",
+   "subject_key": "0f005895cc71174f9b01694acba405e573a36a0d27ad26be2c246c0c5522f5f2"
+  },
+  {
+   "key": "s1.nol_limit",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; both flag the case where the 80% limit may bind with the same test: the project's N > 4T (T = Form 1040 line 11b less line 14, with the deduction taken) and the reply's 0.8 x max(0, N + T) < N are the same condition, and neither adds back the QBI deduction (amb.2025.s1_nol_limit_test, owner decision D3: i172 p. 2, \"80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions\"; a sufficiency test refused at f1040.line15). Triage 4e8342b3a4f8: 1,521/4,000 agree with no value difference: 1,386 candidate-unknown (the reply's Form 1040 line 11b / 14 chain reads inputs such as sche.re_pro the interview never asked) and 1,093 candidate-refuses (refusals the reply reaches through that chain, on returns refused either way).",
+   "subject_key": "c037ea2f09cacc1502a12faeaa2e0cb713c91afc8be7a8730604ab68285cd71e"
+  },
+  {
+   "key": "s1.line10_ex5",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "status": "AGREE",
+   "subject_key": "d971cb183a55e450405cfe37743d6e88658b1e172e4933a0280112712128ebaf"
   },
   {
    "key": "1",
@@ -57,9 +76,29 @@
   },
   {
    "key": "3",
-   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
    "status": "AGREE",
-   "subject_key": "3ec852e6b2897a3b28bfdf1a59274872b3d66cbdf6a986375062fab08cde1d59"
+   "subject_key": "8e56ed93069302f2a545698e1e69f0814ab407e426229402690e5d39ceaf8c9c"
+  },
+  {
+   "key": "8k",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply reads s1.stock_options directly, the project only beneath its parent question s2.options_any (an option exercised in 2025), as the interview asks it (i1040gi p. 92, Line 8k). Triage 4e8342b3a4f8: 2,610/4,000 agree with no value difference; all 1,390 differences are candidate-unknown (s1.stock_options unasked because the parent was No or unanswered).",
+   "subject_key": "66eb0620be3ab6f119bc91afb23e2df88aeb9aecea75a8a4b088bfe950f6aec5"
+  },
+  {
+   "key": "8e",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "status": "AGREE",
+   "subject_key": "6c2d36043fb7238b9fbc8530cf941e9d570df81aa594cd1ea17a3ecb14e1e5c6"
+  },
+  {
+   "key": "8v",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply reads s1.digital_income directly, the project only beneath f1040.digital_assets (the page 1 digital asset question; i1040gi p. 92, Line 8v). Triage 4e8342b3a4f8: 3,921/4,000 agree; 78 candidate-unknown (the question not asked), and the one value difference is fixture s1.line8v.not_asked, which answers f1040.digital_assets No and s1.digital_income Yes: the interview never asks the second after a No to the first, and the project gives 0 as it must.",
+   "subject_key": "fcda92751d5af1af554aab5166dc57e897bc84432830d30b097a0f86d978938d"
   },
   {
    "key": "8b",
@@ -99,9 +138,9 @@
   },
   {
    "key": "8z",
-   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
    "status": "AGREE",
-   "subject_key": "d72f77c7a8c48c6b6e69772384002d481fba27e04a7cdd61f7a61e2866ec6f67"
+   "subject_key": "a72e63f56cc7560b491e5f836546eb873e32d46519d07d1fcbcb4b42374bb44c"
   },
   {
    "key": "2a",
@@ -124,16 +163,46 @@
    "subject_key": "34ff8356bcca9150eec4e028b8be589d1324c1d3f590c60383cece024738d8c6"
   },
   {
-   "key": "9",
-   "record": "441d1e1deafba0cc4d34b39d7b9c421d5eb6a73d729b13f97f410e5e1505abde",
+   "key": "8a",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
    "status": "AGREE",
-   "subject_key": "b71837ffd1fd226736cc9d964387dd77926dd4d6ac19470f118bd8b90e8944cd"
+   "subject_key": "b5a1fc11adefff4b45b9793db60ded1faf0985c5feb3d09ce9f2d179407fd883",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1.nol_pre2018": "s1.nol_before_limit_date",
+     "s1.nol_pre2018_if_nol": "s1.nol_before_limit_date_if_nol"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "9f0a6c9bb504eebbaacca5861fe6b10305d2e9bd78636bbed73881ca58d80ac6"
+   }
+  },
+  {
+   "key": "8s",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "status": "AGREE",
+   "subject_key": "baf0c7e751d2e6b59238485101ded4bca6ec477fe302f991f5ed0be40aafe02a"
+  },
+  {
+   "key": "9",
+   "record": "b87dde44befbfb01fa61cd4b2687f39c8858c5f822d9f46b04bb8ea61bcc48aa",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; both add lines 8a, 8b, 8c, 8e to 8k, 8r, 8v and 8z and take away line 8s. The project adds the helper 0 - s1.line8s (s1.line8s_neg, 'Line 8s as the negative number added on line 9'), and the reply subtracts s1.line8s from the sum of the others; with the unfloored subtract the two are the same number on every return (sum + (0 - s) = sum - s). f1040s1 line 9, 'Add lines 8a through 8z'; line 8s is printed in parentheses (i1040gi pp. 91-92, Line 8s, \"in the entry space in the preprinted parentheses (as a negative number)\"). The lines both leave out (8d, 8l, 8m to 8q, 8t, 8u) are refused elsewhere, as the line's citation lists.",
+   "subject_key": "5e845fd7db4a3ba3307beee1d05a45255546864e484b1cbf86cbe1d24864316d"
+  },
+  {
+   "key": "5",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the project reads Schedule E line 41 only when scope.rental is Yes (else 0), the reply always. When there is no rental, royalty, partnership, S corporation, estate or trust income the Schedule E chain is not asked, so line 5 is 0 either way (f1040s1 line 5; i1040se p. 1). Triage 4e8342b3a4f8: 2,111/4,000 agree with no value difference: 1,854 candidate-unknown (Schedule E inputs such as sche.re_pro unasked), 27 candidate-refuses, 8 project-unknown (scope.rental unanswered).",
+   "subject_key": "bb677422185f9c3275deef59d97d6d71bfd2242f5e4fa9877fff7fa3e6fc9f57"
   },
   {
    "key": "10",
-   "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
-   "status": "AGREE",
-   "subject_key": "aeeda48e5d9ab9ef17125781a5db1ef6e47b378d46a03530fd5567fc6ac334a1"
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; sum(line10_ex5, line 5) with line10_ex5 = lines 1, 2a, 3, 7 and 9 is the reply's sum of lines 1, 2a, 3, 5, 7 and 9 (lines 4 and 6 are refused: Forms 4797/4684 and Schedule F). Triage 4e8342b3a4f8: 2,478/4,000 agree; 1,454 candidate-unknown and 59 candidate-refuses through lines 5, 8k and 8v, 7 project-refuses, 1 project-unknown, and one value difference, fixture s1.line8v.not_asked (line 8v's gate).",
+   "subject_key": "c3c98b086f8feb5699dd81fde50e36c5ce4ca9af9d844565a63ec0cd8712a4f9"
   },
   {
    "key": "11",
@@ -186,6 +255,13 @@
    "subject_key": "b33be80a1cc62ccfa6d1df38b78e296779d5f11a42692cf09283a696fff4a821"
   },
   {
+   "key": "20 (box)",
+   "record": "05b109eaf40bef937a2bb88d27531f0a4323c8b2a00323aa07ab6215f9cb98f3",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.2025.s1_line20_box (coordinator decision for lane mfs-l2 under the owner's delegation): f1040s1 line 20, \"If you are married filing separately and lived apart from your spouse for the entire year (see instructions), check here\"; the project checks it only when a traditional IRA contribution is made (the IRA Deduction Worksheet is used), the reply on every separate return lived apart all year. Triage 4e8342b3a4f8: 3,982/4,000 agree; the 5 value differences are exactly that case (MFS, apart all year, ira.any_trad false: project false, reply true); 11 project-unknown and 2 candidate-unknown on unanswered inputs.",
+   "subject_key": "4e89c0e7782f1dacbcc79eda15de13e18d7192fc607451fa4af4d135fceff482"
+  },
+  {
    "key": "21",
    "record": "3038c2ea7cdb37a3bf8646acec1549a677c64b97e3aebfb75ff7bf6ddce4f186",
    "status": "AGREE",
@@ -215,23 +291,32 @@
   "s1.has_sc": "0fe1b1b9461b2a4c48585ceada14a7c4ecfedd2f9f0ed4039dcbb6dcbb4ff250",
   "s1.sc_1a": "5c6f1b079cd92fba4c6d2b1a6f359ba77427d33e9f45725797617359bf69d6c5",
   "s1.has_gambling": "53187f318247b17e052505192c3f65724ecec0c5fe10054fa1282c68ff26c1da",
+  "s1.nol_amount_if_nol": "e514db08912a18fdacf4310495b30a4b72c20c014533207409a91e47a487b679",
+  "s1.nol_limit": "a62784a96c3f67575972430f537e0c67882d0f3b9cc4a6141a7d076f9346498d",
+  "s1.line10_ex5": "c8dfc792d11088acb9a0f14bf645bbe0897433839cf8ca056994f45ce47146f4",
   "1": "22095d5b679fd68f482e87a713c5db00395fae9e5a4f972380f9559246c90320",
   "7": "fcd2529d8f0221272b86fb99f937008156f8d53cf113ff460a3c1cc620d0053f",
   "7 (box)": "6800053d71cb26ff4f4fcf6c1914d4c22fff5f4df1300d2e07af4e8184f1139f",
   "7 (amount repaid)": "5b9e4b8684f95b8e68638e79322cce45359abe70ac55476ea167d454ca65a490",
-  "3": "c97c946386c5fb2067144aa7f84b4311e2207f35de90cd4575a6a5145f2a548e",
+  "3": "128e6afe6daa483cb0a928220b4cb698fd332f7aa814a710a5c977557018a833",
+  "8k": "12ef7a8c8aee45184e532cb680e7a5930acf83339f3eb56dc495d4bf8bc45a91",
+  "8e": "0931c3b526b1fd13b959607c92c04a33eba8931da85a6d3d6394b3fbdbc3d4eb",
+  "8v": "76b3aff83021a78b42b2f89bfcd57bb006334722e61a687b4a3e30a0f295d172",
   "8b": "317c9af4b8707be06471ed88e4d9b39551d8cf70d504260681d24c58481737b4",
   "8g": "e557e03a3d1e792213d88b196ed644d6c5b431411f094e0eb267197c544bc5f2",
   "8h": "a624e95b6ab59b1369cedeaaff167e84b80885b45dca5831904fce89ed2159ed",
   "8i": "abc2a4b6c577b6ddd2a95568ddf3b288e38c3e340531fbea04e16ad87fc062be",
   "8j": "07e50c701ff1bfaf2dadb97455272aa6f7a195da5c9d1d94ed31d2b83f455ac9",
   "8r": "d8ee2687a7f54dad0f30de5dde8a057e667aa59d731dd2c686445ca0db228bfe",
-  "8z": "630e42eaae09bcc1f9c3a94b62627ca12df3047d675eedcd4e7443f1360b1dcb",
+  "8z": "7e7807fc60b99a48a1c1e410ddfc18bb152506ca0b490fc83d263d6b75c7bc6f",
   "2a": "2624bf842fdb3dea79f7e27e69337c835de05e667027bbcb00126ba016de922a",
   "8c": "c23d04291c8cf663f26a5f385e82ab902418ee7f4d607c9702aaca963b75bf64",
   "8f": "dee58c3a3a2e9d420ebd44edc73fd91c3b2398b04d3f339930e9912c50bae6cb",
-  "9": "d273332a6d53d80671c67e26f1e25f268f0857a77460bfe1d057b32f2a7f9f70",
-  "10": "6c36a2439085118e58153a4eedf06b6b3556c61da0268e00e54e72c18962a6d9",
+  "8a": "98bbfd144e7f15f0bd432333d38a36046c2bbf297f8aa9e1ba11fbba06c6a985",
+  "8s": "4c6b90ed1828a8350f4997b6946a7facb8de86113c5d7ff100ba16359a3da9ff",
+  "9": "d779a369728fde16ce0d8c87763aea7db98cb6b873901d4ab61fa67cbe55405a",
+  "5": "86615372531012dd894bf2c6c03464d689e29d6d64725a91e6f751ae0dc30c92",
+  "10": "dd82cfee84b7b1356102592f71425ba70b843c3d8f689199605d74bff8b227d2",
   "11": "044622b1359c92e89ddafdebcf93219d03874a227210145e840c3635ea4836eb",
   "13": "544655e51ba5584cd13ac2f7d4ae27838a90075a0ecba6e0be48c48c12c4de13",
   "15": "74a5219a8e318410bb9f9e85e851f03cba70b8f64eec16d37fe4d19736f1890c",
@@ -240,6 +325,7 @@
   "18": "d0843bef728c388d96ec672f0464994db9be0ac65197c5e23a6f9963b6ba97ab",
   "19a": "289a02980b1fc161aa2e65a6f37322ec0a2ec781f201714963b366f773ad12f8",
   "20": "b550eeb947adf246372cd559bbc937259ff83c85f8a2e7e1c191a5bdac8b61a2",
+  "20 (box)": "5e14373f325912a6f49ceb2c777b886f55489d9ce20d801672ebb796d9d0d500",
   "21": "1a5d9962277c896a177908b1334498f2ad890269bdcbe23a087e88d4cf52777c",
   "24a": "74e87d07a1be2c9186862fecfde0af3a91e7cd86b6f8d96d19ad07a7049b06be",
   "25": "c38ffe50b1c38810522edb06965e35cef4cb3a1489b32da902ee06976a5d733d",
@@ -248,19 +334,32 @@
  "__rest__": "1df47ff476caab5254486cac7cc33ec3618e59f81de5a353661491aecf3e58a8",
  "foreign": {
   "s1.has_gambling": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "s1.nol_amount_if_nol": "e9b3755b9ca179feb08992688478d8e1fabcfa3b48b1aa510fda101e1067c382",
+  "s1.nol_limit": "32d81f036d100c678ff7a3a8c5325a12ae7492c0ff27d27b20cae58c87263d56",
+  "s1.line10_ex5": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "7": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "7 (box)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "7 (amount repaid)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3": "66176e861ad864f333077964273aa9972087f570ad4138b85da10194a3708f3c",
+  "8k": "f5d2e4b17be626214ba8e4d8dfd4186a2d59c7dd3fd1eb4cad6ec55fd7585426",
+  "8e": "7872673caca1d365b475a70b988fc32d20e307cb5602130b09ddd12df6869b65",
+  "8v": "8ad59ee21212289d55e9b04644b1887b76f4bba07fb369b815df80c59375c07b",
   "8b": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "8g": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "8h": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "8i": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "8j": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "8r": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8z": "b4ada0b7f4d851c3aadea89c2690bcfb029fdb7b80e3dbd11fe933aef4abbd41",
   "2a": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
   "8c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "9": "469bee8697dab6d4542734647dc5fbaf74dff8039fc97fdc6dddd2e3fe593111",
+  "8a": "1aa4410e52a1ee814fc4f9d404939bfeba60656d9bcf0aceddd2a694b6701ac9",
+  "8s": "0a701c83a4087c557fc3a1cbdf90bd0c59ab685ae364a7b145acffcf5eab1ed6",
+  "9": "c581079fc619e65dbdf1d0669d689494d527ce2b3fb32c8a0dcb5b555cc88c75",
+  "5": "7ed1becfc18ec9e493bef39ffe5be15ddfd4c0982ba858183dfbbcc2a288f79d",
+  "10": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "19a": "37c0b5b4bdf3833e15fd0f0f9eeae08e6ab2605d93702966512dcbe8f06cf4f5",
+  "20 (box)": "08927003e7927682732d357290954820e20041dd23ee8bfb5dc68beacc369d3b",
   "24a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
  }
 }

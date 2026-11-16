@@ -1,0 +1,2641 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "k1s.owner_distribution",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i7203 (lines 1 to 15) and i1120ssk p. 6 (box 1, materially participated: column (k)). Box 1 $80,000, 16 C $1,000, 16 D $50,000, beginning stock basis $30,000, nothing added. Line 4 = 3a 80,000; line 5 = 30,000 + 80,000 = 110,000; line 7 = 110,000 - 50,000 = 60,000; line 9 = 1,000; line 10 = 59,000; no loss, so line 11 = 0 and line 15 = 59,000. Schedule E column (k) $80,000; QBI $80,000 from code V.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 8000000,
+        "person[taxpayer].k1s[acme].box16_any": true,
+        "person[taxpayer].k1s[acme].box16c_any": true,
+        "person[taxpayer].k1s[acme].box16c": 100000,
+        "person[taxpayer].k1s[acme].box16d_any": true,
+        "person[taxpayer].k1s[acme].box16d": 5000000,
+        "person[taxpayer].k1s[acme].box17_any": true,
+        "person[taxpayer].k1s[acme].box17v_any": true,
+        "person[taxpayer].k1s[acme].qbi_stmt": 8000000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 3000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].required": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line4": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line5": {
+          "kind": "money",
+          "cents": 11000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line7": {
+          "kind": "money",
+          "cents": 6000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 5900000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line11": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line15": {
+          "kind": "money",
+          "cents": 5900000
+        },
+        "person[taxpayer].k1s[acme].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "person[taxpayer].k1s_total_nonpassive": {
+          "kind": "money",
+          "cents": 8000000
+        },
+        "person[taxpayer].k1s_total_qbi": {
+          "kind": "money",
+          "cents": 8000000
+        }
+      }
+    },
+    {
+      "id": "k1s.loss_within_basis",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted: box 1 -$10,000, materially participated (more than 500 hours), beginning stock basis $25,000. Form 7203 required (a loss). Line 5 = 25,000; line 10 = 25,000; line 35 (a) 10,000; line 47 (a) 10,000; line 10 is more than line 47 (a), so column (c) = column (a) = 10,000 (i7203 p. 4, Column (c)); line 11 = 10,000; line 15 = 15,000; column (e) 0. Schedule E column (i) $10,000; QBI -$10,000 (no loss is suspended).",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -1000000,
+        "person[taxpayer].k1s[acme].box17_any": true,
+        "person[taxpayer].k1s[acme].box17v_any": true,
+        "person[taxpayer].k1s[acme].qbi_stmt": -1000000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 2500000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].required": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 2500000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c35": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line11": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line15": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e47": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].b1_net": {
+          "kind": "money",
+          "cents": -1000000
+        },
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s_total_nonpassive": {
+          "kind": "money",
+          "cents": -1000000
+        },
+        "person[taxpayer].k1s_total_qbi": {
+          "kind": "money",
+          "cents": -1000000
+        }
+      }
+    },
+    {
+      "id": "k1s.loss_over_basis_prorata",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted: box 1 -$30,000 (materially participated), box 2 -$10,000 (helped make management decisions, owns more than a tenth), box 4 $2,000, 16 D $5,000; beginning basis $20,000, $10,000 added. Line 3d 2,000; line 4 2,000; line 5 = 20,000 + 10,000 + 2,000 = 32,000; line 6 5,000; line 7 27,000; line 10 27,000. Column (a): line 35 30,000, line 36 10,000, line 47 40,000. Line 10 is less than line 47 (a): ratio 27,000 / 40,000 = 0.675 exactly; column (c) line 35 20,250, line 36 6,750, line 47 27,000 = line 11; line 15 0; column (e) 9,750 and 3,250, line 47 13,000 carried to 2026. Box 1 after basis -20,250 (Schedule E column (i) 20,250); box 2 after basis -6,750 in Form 8582 Part IV column (b); interest $2,000.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -3000000,
+        "person[taxpayer].k1s[acme].box2_any": true,
+        "person[taxpayer].k1s[acme].box2": -1000000,
+        "person[taxpayer].k1s[acme].box4_any": true,
+        "person[taxpayer].k1s[acme].box4": 200000,
+        "person[taxpayer].k1s[acme].box16_any": true,
+        "person[taxpayer].k1s[acme].box16d_any": true,
+        "person[taxpayer].k1s[acme].box16d": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].active": true,
+        "person[taxpayer].k1s[acme].tenth": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 2000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 1000000
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].line5": {
+          "kind": "money",
+          "cents": 3200000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line7": {
+          "kind": "money",
+          "cents": 2700000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 2700000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].a47": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c35": {
+          "kind": "money",
+          "cents": 2025000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c36": {
+          "kind": "money",
+          "cents": 675000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line11": {
+          "kind": "money",
+          "cents": 2700000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e35": {
+          "kind": "money",
+          "cents": 975000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e36": {
+          "kind": "money",
+          "cents": 325000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e47": {
+          "kind": "money",
+          "cents": 1300000
+        },
+        "person[taxpayer].k1s[acme].basis_cut": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s[acme].b1_net": {
+          "kind": "money",
+          "cents": -2025000
+        },
+        "person[taxpayer].k1s[acme].b2_net": {
+          "kind": "money",
+          "cents": -675000
+        },
+        "person[taxpayer].k1s[acme].part4": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s_total_nonpassive_loss": {
+          "kind": "money",
+          "cents": 2025000
+        },
+        "person[taxpayer].k1s_total_p4_loss": {
+          "kind": "money",
+          "cents": 675000
+        },
+        "person[taxpayer].k1s_total_p5_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s_total_interest": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "k1s.loss_over_basis_ratio_rounding",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted: box 1 -$20,000 and box 3 -$10,000, materially participated in box 1, beginning basis $10,000. Line 10 10,000; line 47 (a) 30,000; ratio 10,000 / 30,000 = 0.333333 (six places, amb.2025.f7203_prorata_places); column (c) line 35 = 20,000 x 0.333333 = 6,666.66, line 37 = 10,000 x 0.333333 = 3,333.33; line 47 (c) 9,999.99; line 11 = smaller of 9,999.99 and 10,000 = 9,999.99; line 15 = 0.01. Column (e) 13,333.34 and 6,666.67. Box 3 is passive: Form 8582 Part V column (b) 3,333.33.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -2000000,
+        "person[taxpayer].k1s[acme].box3_any": true,
+        "person[taxpayer].k1s[acme].box3": -1000000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 1000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].c35": {
+          "kind": "money",
+          "cents": 666666
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c37": {
+          "kind": "money",
+          "cents": 333333
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line11": {
+          "kind": "money",
+          "cents": 999999
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line15": {
+          "kind": "money",
+          "cents": 1
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e35": {
+          "kind": "money",
+          "cents": 1333334
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e37": {
+          "kind": "money",
+          "cents": 666667
+        },
+        "person[taxpayer].k1s_total_p5_loss": {
+          "kind": "money",
+          "cents": 333333
+        },
+        "person[taxpayer].k1s_total_nonpassive_loss": {
+          "kind": "money",
+          "cents": 666666
+        }
+      }
+    },
+    {
+      "id": "k1s.passive_investor_portfolio",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted: box 1 $15,000, the filer did not work in the business in 2025 and did not in earlier years (passive: Schedule E column (h), Form 8582 Part V column (a)); box 5a $1,200, 5b $1,000; box 8a $3,000, 8b 0, 8c $400. No loss and no distribution, so Form 7203 is not required.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 1500000,
+        "person[taxpayer].k1s[acme].box5_any": true,
+        "person[taxpayer].k1s[acme].box5a": 120000,
+        "person[taxpayer].k1s[acme].box5b": 100000,
+        "person[taxpayer].k1s[acme].box8_any": true,
+        "person[taxpayer].k1s[acme].box8a": 300000,
+        "person[taxpayer].k1s[acme].box8b": 0,
+        "person[taxpayer].k1s[acme].box8c": 40000,
+        "person[taxpayer].k1s[acme].work": false,
+        "person[taxpayer].k1s[acme].past_years": false
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].material": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1s[acme].f7203[form].required": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s_total_p5_income": {
+          "kind": "money",
+          "cents": 1500000
+        },
+        "person[taxpayer].k1s_total_nonpassive": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s_total_ord_div": {
+          "kind": "money",
+          "cents": 120000
+        },
+        "person[taxpayer].k1s_total_qual_div": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s_total_lt_gain": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1s_total_unrecap_1250": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "person[taxpayer].k1s_total_st_gain": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "k1s.material_by_earlier_years",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted: box 1 $12,000; no work in 2025 but more than 500 hours a year in at least 5 of the 10 years before (test 5, i1120ssk p. 4): nonpassive, Schedule E column (k).",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 1200000,
+        "person[taxpayer].k1s[acme].work": false,
+        "person[taxpayer].k1s[acme].past_years": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "k1s.material_by_most_hours",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted: box 1 $9,000; worked 300 hours in 2025 (not more than 500) and no one worked more (test 3, i1120ssk p. 4): nonpassive, Schedule E column (k).",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 900000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": false,
+        "person[taxpayer].k1s[acme].most_hours": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "money",
+          "cents": 900000
+        }
+      }
+    },
+    {
+      "id": "k1s.passive_rental_prior_loss",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted: box 3 -$4,000 (passive for every shareholder, i1120ssk p. 7), beginning basis $50,000, a loss of $1,500 from box 3 held back on the 2024 Form 8582. Basis covers the loss (line 10 50,000 more than line 47 (a) 4,000): column (c) 4,000. Form 8582 Part V: column (b) 4,000, column (c) 1,500.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box3_any": true,
+        "person[taxpayer].k1s[acme].box3": -400000,
+        "person[taxpayer].k1s[acme].prior_any": true,
+        "person[taxpayer].k1s[acme].b3_prior": 150000,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 5000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].c37": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s_total_p5_loss": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s_total_p5_prior": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].k1s_total_passive_income": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "k1s.rental_not_active",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted: box 2 $6,000 income; the filer helped make management decisions but owned under a tenth (i1120ssk p. 5, less than 10% by value): not Part IV; Form 8582 Part V column (a) 6,000, Schedule E column (h) 6,000.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box2_any": true,
+        "person[taxpayer].k1s[acme].box2": 600000,
+        "person[taxpayer].k1s[acme].active": true,
+        "person[taxpayer].k1s[acme].tenth": false
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].part4": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1s_total_p5_income": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].k1s_total_p4_income": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s_total_passive_income": {
+          "kind": "money",
+          "cents": 600000
+        }
+      }
+    },
+    {
+      "id": "k1s.withholding_taxexempt_st_loss",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted: box 7 -$1,500, box 13 code O $240, 16 A $700; beginning basis $9,000. Line 3k 700; line 5 9,700; line 10 9,700; line 38 (a) 1,500; column (c) 1,500 (basis covers); Schedule D line 5 operand -1,500; backup withholding 240; tax-exempt interest 700.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box7_any": true,
+        "person[taxpayer].k1s[acme].box7": -150000,
+        "person[taxpayer].k1s[acme].box13o_any": true,
+        "person[taxpayer].k1s[acme].box13o": 24000,
+        "person[taxpayer].k1s[acme].box16_any": true,
+        "person[taxpayer].k1s[acme].box16a_any": true,
+        "person[taxpayer].k1s[acme].box16a": 70000,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 900000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].l3k": {
+          "kind": "money",
+          "cents": 70000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 970000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c38": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "person[taxpayer].k1s_total_st_gain": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "person[taxpayer].k1s_total_backup_wh": {
+          "kind": "money",
+          "cents": 24000
+        },
+        "person[taxpayer].k1s_total_taxexempt_int": {
+          "kind": "money",
+          "cents": 70000
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_multi",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Box 19 checked: more than one activity; refused at k1s.multi (i1120ssk p. 19).",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].multi": true,
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].multi",
+          "form": "Schedule K-1 (Form 1120-S) with more than one activity (box 18 or 19)",
+          "remedy": "A corporation with more than one activity reports each on an attached statement, and each activity's income and losses are limited separately; that is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 19, Box 19. More Than One Activity for Passive Activity Purposes, \"Use the information in the attached statement to correctly determine your passive activity limitations\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].multi",
+          "form": "Schedule K-1 (Form 1120-S) with more than one activity (box 18 or 19)",
+          "remedy": "A corporation with more than one activity reports each on an attached statement, and each activity's income and losses are limited separately; that is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 19, Box 19. More Than One Activity for Passive Activity Purposes, \"Use the information in the attached statement to correctly determine your passive activity limitations\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_box15",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Box 15 (AMT items) shows an amount: refused at k1s.box15.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box15": true,
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box15",
+          "form": "Form 6251 (alternative minimum tax items from a Schedule K-1)",
+          "remedy": "Alternative minimum tax items are figured on Form 6251, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 14, Box 15. Alternative Minimum Tax (AMT) Items, \"See List of Codes, later\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_mp_other",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Worked in it, not more than 500 hours, someone worked more, not 5 of 10 earlier years, and another test met: refused at k1s.mp_other_if_ask.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": false,
+        "person[taxpayer].k1s[acme].most_hours": false,
+        "person[taxpayer].k1s[acme].past_years": false,
+        "person[taxpayer].k1s[acme].mp_other": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].mp_other_if_ask",
+          "form": "Schedule E (Form 1040), Part II, with material participation by test 2, 4 or 7",
+          "remedy": "Material participation by these tests is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 4, Individuals, \"Your participation in the activity for the tax year constituted substantially all the participation in the activity of all individuals\"; \"The activity was a significant participation activity for the tax year, and you participated in all significant participation activities (including activities outside the corporation) during the year for more than 500 hours\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_dist_over_basis",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Box 1 $10,000 (materially participated), 16 D $60,000, beginning basis $40,000: line 5 50,000 < line 6 60,000; refused at f7203.dist_over (i7203 p. 3, Line 6).",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 1000000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box16_any": true,
+        "person[taxpayer].k1s[acme].box16d_any": true,
+        "person[taxpayer].k1s[acme].box16d": 6000000,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 4000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].f7203[form].dist_over",
+          "form": "Form 8949 and Schedule D (a distribution above stock basis)",
+          "remedy": "A distribution larger than your stock basis is a capital gain reported on Form 8949, which this tool does not prepare for this case.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 3, Line 6, \"If the amount of the distribution is more than the stock basis before distributions, report the excess amount as a capital gain on Form 8949, Sales and Other Dispositions of Capital Assets, and Schedule D\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_capital_loss_limited",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Box 1 -$10,000 (materially participated) and box 8a -$5,000, beginning basis $3,000: line 10 3,000 < line 47 (a) 15,000, so part of line 38 is carried; refused at f7203.cap_limited.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -1000000,
+        "person[taxpayer].k1s[acme].box8_any": true,
+        "person[taxpayer].k1s[acme].box8a": -500000,
+        "person[taxpayer].k1s[acme].box8b": 0,
+        "person[taxpayer].k1s[acme].box8c": 0,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 300000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].f7203[form].cap_limited",
+          "form": "Form 7203, Part III, line 38 (a capital loss limited by stock basis)",
+          "remedy": "When part of a capital loss is held back by the basis limitation, splitting the allowed part between short-term and long-term gain or loss is outside this tool.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 4, Part III. Shareholder Allowable Loss and Deduction Items, \"Loss and deductions in excess of basis are suspended and carried forward indefinitely and the character of the loss and deduction items is retained\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_loans",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "A box 1 loss with loans from the shareholder to the corporation: Form 7203 Part II; refused at f7203.loans_if_req.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].f7203[form].loans": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].f7203[form].loans_if_req",
+          "form": "Form 7203, Part II (shareholder debt basis)",
+          "remedy": "A shareholder who has lent money to the corporation figures debt basis in Part II of Form 7203, which this tool does not prepare.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 3, Part II. Shareholder Debt Basis, \"You must complete this section if you have personally loaned money to the corporation\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "k1s.refuse_qbi_basis_cut",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Box 1 -$10,000 (materially participated), code V QBI -$10,000, beginning basis $4,000: $6,000 of the loss is carried by basis, so the QBI loss is refused at k1s.qbi_cut.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -1000000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box17_any": true,
+        "person[taxpayer].k1s[acme].box17v_any": true,
+        "person[taxpayer].k1s[acme].qbi_stmt": -1000000,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 400000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].qbi": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].qbi_cut",
+          "form": "Form 8995 with a qualified business loss limited by stock basis",
+          "remedy": "When a loss is partly carried forward by the basis limitation, only the allowed part of the qualified business loss counts this year; working out that part is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 17, Code V. Section 199A information, \"When determining QBI or qualified PTP income, you must include only those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable income for the tax year\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "money",
+          "cents": 400000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_disposed",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and the shareholder disposed of stock in the corporation during the year (Form 7203 line 13 and Form 8949), refused (i7203 p. 3, Line 13). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].disposed": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].disposed",
+          "form": "Form 7203 for a disposition of S corporation stock, and Form 8949",
+          "remedy": "A sale or other disposition of S corporation stock, or a redemption, needs the stock basis at the date of sale (two Forms 7203) and the gain or loss on Form 8949; that is outside this tool.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 3, Line 13, \"If a portion of your stock is redeemed, sold, or otherwise disposed of during the year, attach two\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].disposed",
+          "form": "Form 7203 for a disposition of S corporation stock, and Form 8949",
+          "remedy": "A sale or other disposition of S corporation stock, or a redemption, needs the stock basis at the date of sale (two Forms 7203) and the gain or loss on Form 8949; that is outside this tool.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 3, Line 13, \"If a portion of your stock is redeemed, sold, or otherwise disposed of during the year, attach two\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].disposed",
+          "form": "Form 7203 for a disposition of S corporation stock, and Form 8949",
+          "remedy": "A sale or other disposition of S corporation stock, or a redemption, needs the stock basis at the date of sale (two Forms 7203) and the gain or loss on Form 8949; that is outside this tool.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 3, Line 13, \"If a portion of your stock is redeemed, sold, or otherwise disposed of during the year, attach two\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_box6",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 6 (royalties) shows an amount; royalties go on Schedule E line 4, refused (i1120ssk p. 7, Box 6. Royalties). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box6": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box6",
+          "form": "Schedule E (Form 1040), line 4 (royalties from a Schedule K-1)",
+          "remedy": "Royalties from an S corporation are reported on Schedule E line 4, which this tool does not prepare for a Schedule K-1.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 7, Box 6. Royalties, \"Report royalties on Schedule E (Form 1040), line 4\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box6",
+          "form": "Schedule E (Form 1040), line 4 (royalties from a Schedule K-1)",
+          "remedy": "Royalties from an S corporation are reported on Schedule E line 4, which this tool does not prepare for a Schedule K-1.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 7, Box 6. Royalties, \"Report royalties on Schedule E (Form 1040), line 4\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box6",
+          "form": "Schedule E (Form 1040), line 4 (royalties from a Schedule K-1)",
+          "remedy": "Royalties from an S corporation are reported on Schedule E line 4, which this tool does not prepare for a Schedule K-1.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 7, Box 6. Royalties, \"Report royalties on Schedule E (Form 1040), line 4\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_box8_stmt",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 8a shows a gain and an attached statement reports other unrecaptured section 1250 gain, refused (i1120ssk p. 7, Box 8c). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box8_any": true,
+        "person[taxpayer].k1s[acme].box8a": 100000,
+        "person[taxpayer].k1s[acme].box8b": 0,
+        "person[taxpayer].k1s[acme].box8c": 0,
+        "person[taxpayer].k1s[acme].box8_stmt": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box8_stmt_if_any",
+          "form": "Unrecaptured section 1250 gain from an attached statement",
+          "remedy": "Unrecaptured section 1250 gain of the other two types is reported from the corporation's statement on other lines of the worksheet; that is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 7, Box 8c. Unrecaptured Section 1250 Gain, \"If it reports the other two types of unrecaptured gain, it will provide an attached statement that shows the amount for each type of unrecaptured section 1250 gain\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box8_stmt_if_any",
+          "form": "Unrecaptured section 1250 gain from an attached statement",
+          "remedy": "Unrecaptured section 1250 gain of the other two types is reported from the corporation's statement on other lines of the worksheet; that is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 7, Box 8c. Unrecaptured Section 1250 Gain, \"If it reports the other two types of unrecaptured gain, it will provide an attached statement that shows the amount for each type of unrecaptured section 1250 gain\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_lt_gain": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box8_stmt_if_any",
+          "form": "Unrecaptured section 1250 gain from an attached statement",
+          "remedy": "Unrecaptured section 1250 gain of the other two types is reported from the corporation's statement on other lines of the worksheet; that is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 7, Box 8c. Unrecaptured Section 1250 Gain, \"If it reports the other two types of unrecaptured gain, it will provide an attached statement that shows the amount for each type of unrecaptured section 1250 gain\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_box9",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 9 (net section 1231 gain or loss, Form 4797) shows an amount, refused (i1120ssk p. 7, Box 9). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box9": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box9",
+          "form": "Form 4797 (net section 1231 gain or loss from a Schedule K-1)",
+          "remedy": "Section 1231 gain or loss is reported on Form 4797, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 7, Box 9. Net Section 1231 Gain (Loss), \"The amount in box 9 is generally passive if it is from a\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box9",
+          "form": "Form 4797 (net section 1231 gain or loss from a Schedule K-1)",
+          "remedy": "Section 1231 gain or loss is reported on Form 4797, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 7, Box 9. Net Section 1231 Gain (Loss), \"The amount in box 9 is generally passive if it is from a\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box9",
+          "form": "Form 4797 (net section 1231 gain or loss from a Schedule K-1)",
+          "remedy": "Section 1231 gain or loss is reported on Form 4797, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 7, Box 9. Net Section 1231 Gain (Loss), \"The amount in box 9 is generally passive if it is from a\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_box10",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 10 (other income or loss) shows an amount, refused (i1120ssk p. 8, Box 10). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box10": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box10",
+          "form": "Schedule K-1 (Form 1120-S), box 10 (other income (loss))",
+          "remedy": "The items of box 10 go to forms and lines this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 8, Box 10. Other Income (Loss), \"Losses reported in box 10 may be limited\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box10",
+          "form": "Schedule K-1 (Form 1120-S), box 10 (other income (loss))",
+          "remedy": "The items of box 10 go to forms and lines this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 8, Box 10. Other Income (Loss), \"Losses reported in box 10 may be limited\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box10",
+          "form": "Schedule K-1 (Form 1120-S), box 10 (other income (loss))",
+          "remedy": "The items of box 10 go to forms and lines this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 8, Box 10. Other Income (Loss), \"Losses reported in box 10 may be limited\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_box11_12",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 11 or 12 (section 179 or other deductions) shows an amount, refused (i1120ssk p. 9, Box 12). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box11_12": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box11_12",
+          "form": "Schedule K-1 (Form 1120-S), boxes 11 and 12 (section 179 and other deductions)",
+          "remedy": "Section 179 and the other deductions of box 12 are limited and reported on forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 9, Box 12. Other Deductions, \"Deductions reported in box 12 may be limited\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box11_12",
+          "form": "Schedule K-1 (Form 1120-S), boxes 11 and 12 (section 179 and other deductions)",
+          "remedy": "Section 179 and the other deductions of box 12 are limited and reported on forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 9, Box 12. Other Deductions, \"Deductions reported in box 12 may be limited\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box11_12",
+          "form": "Schedule K-1 (Form 1120-S), boxes 11 and 12 (section 179 and other deductions)",
+          "remedy": "Section 179 and the other deductions of box 12 are limited and reported on forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 9, Box 12. Other Deductions, \"Deductions reported in box 12 may be limited\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_box13_other",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 13 shows a credit other than code O, refused (i1120ssk p. 12, Box 13. Credits). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box13_other": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box13_other",
+          "form": "Credits from a Schedule K-1 (Form 1120-S), box 13 (Form 3800, Form 8582-CR)",
+          "remedy": "The credits of box 13, other than backup withholding, are figured on forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 12, Box 13. Credits, \"If you have credits that are passive activity credits to you, you must complete Form 8582-CR in addition to the credit forms identified below\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box13_other",
+          "form": "Credits from a Schedule K-1 (Form 1120-S), box 13 (Form 3800, Form 8582-CR)",
+          "remedy": "The credits of box 13, other than backup withholding, are figured on forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 12, Box 13. Credits, \"If you have credits that are passive activity credits to you, you must complete Form 8582-CR in addition to the credit forms identified below\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box13_other",
+          "form": "Credits from a Schedule K-1 (Form 1120-S), box 13 (Form 3800, Form 8582-CR)",
+          "remedy": "The credits of box 13, other than backup withholding, are figured on forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 12, Box 13. Credits, \"If you have credits that are passive activity credits to you, you must complete Form 8582-CR in addition to the credit forms identified below\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_box14",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 14 is checked (Schedule K-3 attached), refused (i1120ssk p. 14, Box 14). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box14": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box14",
+          "form": "Schedule K-3 (Form 1120-S) (international items)",
+          "remedy": "Items of international tax relevance reported on Schedule K-3 are outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 14, Box 14. International Transactions, \"If the S corporation checked the box, see the attached Schedule K-3 with respect to items of international tax relevance\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box14",
+          "form": "Schedule K-3 (Form 1120-S) (international items)",
+          "remedy": "Items of international tax relevance reported on Schedule K-3 are outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 14, Box 14. International Transactions, \"If the S corporation checked the box, see the attached Schedule K-3 with respect to items of international tax relevance\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box14",
+          "form": "Schedule K-3 (Form 1120-S) (international items)",
+          "remedy": "Items of international tax relevance reported on Schedule K-3 are outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 14, Box 14. International Transactions, \"If the S corporation checked the box, see the attached Schedule K-3 with respect to items of international tax relevance\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_box16ef",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 16 shows code E (repayment of loans from shareholders) or F, refused (i1120ssk p. 15, Code E). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box16_any": true,
+        "person[taxpayer].k1s[acme].box16ef": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box16ef_if_16",
+          "form": "Form 7203 Part II (loan repayments) or Form 1116 (foreign taxes from a Schedule K-1)",
+          "remedy": "A repayment of a loan you made to the corporation, and foreign taxes it paid, are figured on forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 15, Code E. Repayment of loans from shareholders, \"the repayments must be allocated in part to a return of your basis in the loan and in part to the receipt of income\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box16ef_if_16",
+          "form": "Form 7203 Part II (loan repayments) or Form 1116 (foreign taxes from a Schedule K-1)",
+          "remedy": "A repayment of a loan you made to the corporation, and foreign taxes it paid, are figured on forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 15, Code E. Repayment of loans from shareholders, \"the repayments must be allocated in part to a return of your basis in the loan and in part to the receipt of income\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box16ef_if_16",
+          "form": "Form 7203 Part II (loan repayments) or Form 1116 (foreign taxes from a Schedule K-1)",
+          "remedy": "A repayment of a loan you made to the corporation, and foreign taxes it paid, are figured on forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 15, Code E. Repayment of loans from shareholders, \"the repayments must be allocated in part to a return of your basis in the loan and in part to the receipt of income\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_box17_other",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 17 shows a code other than V, refused (i1120ssk p. 15, Box 17. Other Information). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box17_any": true,
+        "person[taxpayer].k1s[acme].box17_other": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box17_other_if_17",
+          "form": "Schedule K-1 (Form 1120-S), box 17 (other information)",
+          "remedy": "The codes of box 17 other than A, B, V and AC go to forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 15, Box 17. Other Information, \"Code A. Investment income. Report this amount on Form 4952, line 4a\"; p. 18, Code AC. Gross receipts for section 448(c), \"Use the gross receipts amount to figure the business interest expense you can deduct, if applicable\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box17_other_if_17",
+          "form": "Schedule K-1 (Form 1120-S), box 17 (other information)",
+          "remedy": "The codes of box 17 other than A, B, V and AC go to forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 15, Box 17. Other Information, \"Code A. Investment income. Report this amount on Form 4952, line 4a\"; p. 18, Code AC. Gross receipts for section 448(c), \"Use the gross receipts amount to figure the business interest expense you can deduct, if applicable\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].box17_other_if_17",
+          "form": "Schedule K-1 (Form 1120-S), box 17 (other information)",
+          "remedy": "The codes of box 17 other than A, B, V and AC go to forms this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 15, Box 17. Other Information, \"Code A. Investment income. Report this amount on Form 4952, line 4a\"; p. 18, Code AC. Gross receipts for section 448(c), \"Use the gross receipts amount to figure the business interest expense you can deduct, if applicable\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_v_other",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 17 code V reports section 199A dividends or qualified PTP income (Form 8995 lines 6 to 9), refused (i1120ssk p. 17, Code V. Section 199A information). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box17_any": true,
+        "person[taxpayer].k1s[acme].box17v_any": true,
+        "person[taxpayer].k1s[acme].qbi_stmt": 500000,
+        "person[taxpayer].k1s[acme].v_other": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].v_other_if_any",
+          "form": "Form 8995, lines 6 to 9 (section 199A dividends and qualified PTP income)",
+          "remedy": "Section 199A dividends and qualified PTP income from an S corporation are outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation\u2019s net section 199A dividends\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].v_other_if_any",
+          "form": "Form 8995, lines 6 to 9 (section 199A dividends and qualified PTP income)",
+          "remedy": "Section 199A dividends and qualified PTP income from an S corporation are outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation\u2019s net section 199A dividends\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].v_other_if_any",
+          "form": "Form 8995, lines 6 to 9 (section 199A dividends and qualified PTP income)",
+          "remedy": "Section 199A dividends and qualified PTP income from an S corporation are outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation\u2019s net section 199A dividends\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_former_passive",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and box 1 income from a business the shareholder materially participated in (more than 500 hours, test 1) with a box 1 loss held back on an earlier Form 8582: a former passive activity, refused (i8582 p. 10, Column (c)). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].prior_any": true,
+        "person[taxpayer].k1s[acme].b1_prior": 300000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].former_passive",
+          "form": "Form 8582 (prior-year unallowed loss of an activity that is not passive this year)",
+          "remedy": "A prior-year unallowed loss of an activity in which you now materially participate is allowed under special rules that are outside this tool.",
+          "cite": {
+            "doc": "i8582",
+            "locator": "p. 10, Column (c), \"Enter the prior-year unallowed losses for each activity\"",
+            "revision": "2025",
+            "snapshot": "76787e11a385d1205faf70a07924cdec4efd5e66628e6f47e5316d29e6035f71",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].former_passive",
+          "form": "Form 8582 (prior-year unallowed loss of an activity that is not passive this year)",
+          "remedy": "A prior-year unallowed loss of an activity in which you now materially participate is allowed under special rules that are outside this tool.",
+          "cite": {
+            "doc": "i8582",
+            "locator": "p. 10, Column (c), \"Enter the prior-year unallowed losses for each activity\"",
+            "revision": "2025",
+            "snapshot": "76787e11a385d1205faf70a07924cdec4efd5e66628e6f47e5316d29e6035f71",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].former_passive",
+          "form": "Form 8582 (prior-year unallowed loss of an activity that is not passive this year)",
+          "remedy": "A prior-year unallowed loss of an activity in which you now materially participate is allowed under special rules that are outside this tool.",
+          "cite": {
+            "doc": "i8582",
+            "locator": "p. 10, Column (c), \"Enter the prior-year unallowed losses for each activity\"",
+            "revision": "2025",
+            "snapshot": "76787e11a385d1205faf70a07924cdec4efd5e66628e6f47e5316d29e6035f71",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_basis_carry",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and a loss carried from an earlier year by the stock basis limitation (Form 7203 Part III column (b)), refused (i7203 p. 4, Part III, Column (b)). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].basis_carry": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].basis_carry",
+          "form": "Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27",
+          "remedy": "A loss or deduction carried from an earlier year by the basis limitation is outside this tool.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 4, Part III. Shareholder Allowable Loss and Deduction Items, \"Column (b). Enter any loss or deduction items disallowed due to basis limitations in prior years that were carried forward\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].basis_carry",
+          "form": "Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27",
+          "remedy": "A loss or deduction carried from an earlier year by the basis limitation is outside this tool.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 4, Part III. Shareholder Allowable Loss and Deduction Items, \"Column (b). Enter any loss or deduction items disallowed due to basis limitations in prior years that were carried forward\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].basis_carry",
+          "form": "Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27",
+          "remedy": "A loss or deduction carried from an earlier year by the basis limitation is outside this tool.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 4, Part III. Shareholder Allowable Loss and Deduction Items, \"Column (b). Enter any loss or deduction items disallowed due to basis limitations in prior years that were carried forward\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_risk_carry",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 $5,000 from a business the shareholder worked in more than 500 hours, and a loss carried from an earlier year by the at-risk rules (Form 6198), refused (i1120ssk p. 3, At-Risk Limitations). The K-1 is refused at that gate (k1s.ok), and its Schedule E column (k) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].risk_carry": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].risk_carry",
+          "form": "Form 6198 (At-Risk Limitations)",
+          "remedy": "A loss carried from an earlier year by the at-risk limitation is figured on Form 6198, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 3, At-Risk Limitations, \"Any loss from a section 465 activity not allowed for this tax year will be treated as a deduction allocable to the activity in the next tax year\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].risk_carry",
+          "form": "Form 6198 (At-Risk Limitations)",
+          "remedy": "A loss carried from an earlier year by the at-risk limitation is figured on Form 6198, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 3, At-Risk Limitations, \"Any loss from a section 465 activity not allowed for this tax year will be treated as a deduction allocable to the activity in the next tax year\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].risk_carry",
+          "form": "Form 6198 (At-Risk Limitations)",
+          "remedy": "A loss carried from an earlier year by the at-risk limitation is figured on Form 6198, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 3, At-Risk Limitations, \"Any loss from a section 465 activity not allowed for this tax year will be treated as a deduction allocable to the activity in the next tax year\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_not_at_risk",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 loss $5,000 from a business the shareholder worked in more than 500 hours, beginning stock basis $20,000, and some of the investment is not at risk (Form 6198), refused (i1120ssk p. 3, At-Risk Limitations). The K-1 is refused at that gate, and its Schedule E column (i) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].not_at_risk": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 2000000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].not_at_risk_if_loss",
+          "form": "Form 6198 (At-Risk Limitations)",
+          "remedy": "A loss with amounts not at risk is figured on Form 6198, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 3, At-Risk Limitations, \"you will have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].not_at_risk_if_loss",
+          "form": "Form 6198 (At-Risk Limitations)",
+          "remedy": "A loss with amounts not at risk is figured on Form 6198, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 3, At-Risk Limitations, \"you will have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_loss": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].not_at_risk_if_loss",
+          "form": "Form 6198 (At-Risk Limitations)",
+          "remedy": "A loss with amounts not at risk is figured on Form 6198, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 3, At-Risk Limitations, \"you will have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.refuse_f7203_election",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, refusal predicted from the source before evaluating: box 1 loss $5,000 from a business the shareholder worked in more than 500 hours, beginning stock basis $20,000, and a Regulations section 1.1367-1(g) election is in effect (Form 7203 item E), refused (i7203 p. 3, Line 6). The K-1 is refused at that gate, and its Schedule E column (i) and the person total carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].f7203[form].election": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 2000000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].f7203[form].election_if_req",
+          "form": "Form 7203 with a Regulations section 1.1367-1(g) election",
+          "remedy": "With the election, nondeductible expenses are moved to line 13 and carried over under special rules; that is outside this tool.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 3, Line 6, \"Leave lines 8a, 8b, and 8c blank if you made an election under Regulations section 1.1367-1(g)\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].f7203[form].election_if_req",
+          "form": "Form 7203 with a Regulations section 1.1367-1(g) election",
+          "remedy": "With the election, nondeductible expenses are moved to line 13 and carried over under special rules; that is outside this tool.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 3, Line 6, \"Leave lines 8a, 8b, and 8c blank if you made an election under Regulations section 1.1367-1(g)\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s_total_nonpassive_loss": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].f7203[form].election_if_req",
+          "form": "Form 7203 with a Regulations section 1.1367-1(g) election",
+          "remedy": "With the election, nondeductible expenses are moved to line 13 and carried over under special rules; that is outside this tool.",
+          "cite": {
+            "doc": "i7203",
+            "locator": "p. 3, Line 6, \"Leave lines 8a, 8b, and 8c blank if you made an election under Regulations section 1.1367-1(g)\"",
+            "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+            "snapshot": "f2a4a12413f58c2b5e59bc370d98ef9ad03df5f463a189786d86b0833e78ccb0",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.passive_box1_loss_box2_income",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 1 loss $2,000 from a business the shareholder did not work in, in 2025 or earlier (passive, i1120ssk p. 4), box 2 income $3,000 without active participation, beginning stock basis $10,000. Form 7203 is figured (a loss). Line 3b $3,000 (only positive amounts on line 3, i7203 p. 2), line 4 $3,000, line 5 $10,000 + $3,000 = $13,000, no distribution, line 10 $13,000; line 35 column (a) $2,000, and line 10 is more than line 47 (a), so column (c) $2,000 (i7203 p. 4, Column (c)); line 15 $13,000 - $2,000 = $11,000. Form 8582 Part V: box 1 column (b) $2,000, box 2 column (a) $3,000 (i8582 p. 10). Schedule E column (h) $3,000; column (i) $0 (a passive loss goes through Form 8582).",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -200000,
+        "person[taxpayer].k1s[acme].work": false,
+        "person[taxpayer].k1s[acme].past_years": false,
+        "person[taxpayer].k1s[acme].box2_any": true,
+        "person[taxpayer].k1s[acme].box2": 300000,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 1000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line5": {
+          "kind": "money",
+          "cents": 1300000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 1300000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c35": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line15": {
+          "kind": "money",
+          "cents": 1100000
+        },
+        "person[taxpayer].k1s[acme].p5_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1s[acme].p5_loss": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s_total_p5_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1s_total_p5_loss": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1s_total_passive_income": {
+          "kind": "money",
+          "cents": 300000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.box2_loss_box3_income",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 2 loss $1,000 without active participation and box 3 income $4,000, beginning stock basis $5,000. Form 7203: line 3c $4,000, line 4 $4,000, line 5 $9,000, line 10 $9,000; line 36 (a) $1,000 within basis, column (c) $1,000. Both activities passive (i1120ssk p. 7, boxes 2 and 3): Form 8582 Part V column (b) $1,000 (box 2) and column (a) $4,000 (box 3). Schedule E column (h) $4,000.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box2_any": true,
+        "person[taxpayer].k1s[acme].box2": -100000,
+        "person[taxpayer].k1s[acme].box3_any": true,
+        "person[taxpayer].k1s[acme].box3": 400000,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 500000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].line4": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line5": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 900000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c36": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s[acme].p5_income": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s[acme].p5_loss": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s_total_p5_income": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s_total_p5_loss": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.box3_loss_box7_gain",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 3 loss $1,000 and box 7 net short-term capital gain $2,000, beginning stock basis $5,000. Form 7203: line 3g net capital gains $2,000, line 4 $2,000, line 5 $7,000, line 10 $7,000; line 37 (a) $1,000 within basis, column (c) $1,000. Schedule D line 5 gets $2,000 (i1120ssk p. 7, Box 7); Form 8582 Part V column (b) $1,000.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box3_any": true,
+        "person[taxpayer].k1s[acme].box3": -100000,
+        "person[taxpayer].k1s[acme].box7_any": true,
+        "person[taxpayer].k1s[acme].box7": 200000,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 500000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].l3g": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line4": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line5": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c37": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s[acme].p5_loss": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s_total_st_gain": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1s_total_p5_loss": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.box7_loss_box8_gain",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 7 net short-term capital loss $500 and box 8a net long-term capital gain $3,000 (8b and 8c blank), beginning stock basis $5,000. Form 7203: line 3g $3,000 (positive amounts only), line 4 $3,000, line 5 $8,000, line 10 $8,000; line 38 (a) $500 within basis, column (c) $500, column (e) $0. Schedule D: line 5 -$500, line 12 $3,000 (i1120ssk p. 7, boxes 7 and 8a); no 28% rate gain.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box7_any": true,
+        "person[taxpayer].k1s[acme].box7": -50000,
+        "person[taxpayer].k1s[acme].box8_any": true,
+        "person[taxpayer].k1s[acme].box8a": 300000,
+        "person[taxpayer].k1s[acme].box8b": 0,
+        "person[taxpayer].k1s[acme].box8c": 0,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 500000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].l3g": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line4": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line5": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c38": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e38": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s_total_st_gain": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "person[taxpayer].k1s_total_lt_gain": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1s_total_collectibles": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.rental_active_with_prior_and_box3",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 2 income $5,000 from rental real estate in which the shareholder actively participated (made management decisions, owned at least a tenth, i1120ssk p. 5) both in 2025 and in the year the held-back loss arose, a box 2 loss of $2,000 held back on the 2024 Form 8582, and box 3 income $1,000. Form 8582 Part IV (i8582 p. 10): column (a) $5,000, column (c) $2,000; Part V: box 3 column (a) $1,000, column (c) $0. Schedule E column (h) $5,000 + $1,000 = $6,000. No loss item and no distribution, so no Form 7203 figures.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box2_any": true,
+        "person[taxpayer].k1s[acme].box2": 500000,
+        "person[taxpayer].k1s[acme].active": true,
+        "person[taxpayer].k1s[acme].tenth": true,
+        "person[taxpayer].k1s[acme].box3_any": true,
+        "person[taxpayer].k1s[acme].box3": 100000,
+        "person[taxpayer].k1s[acme].prior_any": true,
+        "person[taxpayer].k1s[acme].b2_prior": 200000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].part4": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s[acme].p4_income": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].k1s[acme].p4_loss": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].p4_prior": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1s[acme].p5_income": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s[acme].p5_prior": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].k1s_total_p4_income": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].k1s_total_p4_prior": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "person[taxpayer].k1s_total_p5_income": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.material_box1_qbi",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 1 income $5,000 from a business the shareholder worked in more than 500 hours (test 1, i1120ssk p. 4): Schedule E column (k) $5,000 (p. 6). Box 17 code V statement: qualified business income $4,000, which is what Form 8995 takes (p. 17, Code V), not the box 1 amount.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box17_any": true,
+        "person[taxpayer].k1s[acme].box17v_any": true,
+        "person[taxpayer].k1s[acme].qbi_stmt": 400000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].k1s[acme].qbi": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s_total_qbi": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s_total_nonpassive": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.passive_loss_over_basis_qbi_loss",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 1 loss $10,000 from a business the shareholder did not work in (passive), box 17 code V qualified business loss $10,000, beginning stock basis $4,000. Form 7203: line 10 $4,000; line 35 (a) $10,000 is more than basis, so column (c) is the pro rata amount $10,000 x 4,000 / 10,000 = $4,000 and column (e) carries $6,000 (i7203 p. 4). Form 8582 Part V column (b) $4,000. Part of the loss is held back by basis, so only the allowed part counts toward the qualified business loss (i1120ssk p. 17, Code V), which the form refuses (k1s.qbi_cut).",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -1000000,
+        "person[taxpayer].k1s[acme].work": false,
+        "person[taxpayer].k1s[acme].past_years": false,
+        "person[taxpayer].k1s[acme].box17_any": true,
+        "person[taxpayer].k1s[acme].box17v_any": true,
+        "person[taxpayer].k1s[acme].qbi_stmt": -1000000,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 400000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c35": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].e35": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "person[taxpayer].k1s[acme].qbi": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].qbi_cut",
+          "form": "Form 8995 with a qualified business loss limited by stock basis",
+          "remedy": "When a loss is partly carried forward by the basis limitation, only the allowed part of the qualified business loss counts this year; working out that part is outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 17, Code V. Section 199A information, \"When determining QBI or qualified PTP income, you must include only those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable income for the tax year\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        },
+        "person[taxpayer].k1s[acme].p5_loss": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s_total_p5_loss": {
+          "kind": "money",
+          "cents": 400000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.test3_with_ptp_qbi",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 1 income $5,000; the shareholder worked in the business not more than 500 hours but more than 100 hours and no less than anyone else (test 3, i1120ssk p. 4), so materially participated. Box 17 code V also reports section 199A dividends or qualified PTP income, which the form refuses (Form 8995 lines 6 to 9, p. 17), so the K-1 lines carry the refusal.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": false,
+        "person[taxpayer].k1s[acme].most_hours": true,
+        "person[taxpayer].k1s[acme].box17_any": true,
+        "person[taxpayer].k1s[acme].box17v_any": true,
+        "person[taxpayer].k1s[acme].qbi_stmt": 500000,
+        "person[taxpayer].k1s[acme].v_other": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].k1s[acme].v_other_if_any",
+          "form": "Form 8995, lines 6 to 9 (section 199A dividends and qualified PTP income)",
+          "remedy": "Section 199A dividends and qualified PTP income from an S corporation are outside this tool.",
+          "cite": {
+            "doc": "i1120ssk",
+            "locator": "p. 17, Code V. Section 199A information, \"Section 199A dividends. The amount reported reflects your pro rata share of the S corporation\u2019s net section 199A dividends\"",
+            "revision": "2025",
+            "snapshot": "fb6194da1d1f9e898385f4a5b3df1355f04c478f9422d969b182d4dc04f2a355",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.material_with_box3_prior",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 1 income $5,000 from a business the shareholder worked in more than 500 hours (nonpassive, column (k)), box 3 income $1,000 and $500 of the box 3 activity loss held back on the 2024 Form 8582. The held-back loss is of the box 3 rental activity, still passive (i1120ssk p. 7), not of the box 1 business, so it is not a former passive activity: Form 8582 Part V column (a) $1,000, column (c) $500 (i8582 p. 10). Schedule E column (h) $1,000.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box3_any": true,
+        "person[taxpayer].k1s[acme].box3": 100000,
+        "person[taxpayer].k1s[acme].prior_any": true,
+        "person[taxpayer].k1s[acme].b3_prior": 50000,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].ok": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].k1s[acme].col_h": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s[acme].p5_income": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s[acme].p5_prior": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[taxpayer].k1s_total_p5_prior": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.count_schedule_e_rows",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: four Schedules K-1 (Form 1120-S): a, box 1 income $1,000 (passive); b, box 2 income $1,000; c, box 3 income $1,000; d, only box 5a ordinary dividends $100. Each of a, b and c has a Schedule E line 28 row (i1120ssk p. 6 to 7, boxes 1 to 3); d reports only dividends, on Form 1040 line 3b (p. 7, Box 5a), and has none. Three rows; Schedule E column (h) $3,000.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "person[taxpayer].k1s[a].box1_any": true,
+        "person[taxpayer].k1s[a].box1": 100000,
+        "person[taxpayer].k1s[a].work": false,
+        "person[taxpayer].k1s[a].past_years": false,
+        "person[taxpayer].k1s[b].box2_any": true,
+        "person[taxpayer].k1s[b].box2": 100000,
+        "person[taxpayer].k1s[c].box3_any": true,
+        "person[taxpayer].k1s[c].box3": 100000,
+        "person[taxpayer].k1s[d].box5_any": true,
+        "person[taxpayer].k1s[d].box5a": 10000,
+        "person[taxpayer].k1s[d].box5b": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s_count_sche": {
+          "kind": "count",
+          "value": 3
+        },
+        "person[taxpayer].k1s_total_passive_income": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1s_total_ord_div": {
+          "kind": "money",
+          "cents": 10000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.f7203_dividends_and_gain_with_loss",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 1 loss $1,000 from a business the shareholder worked in more than 500 hours, box 5a ordinary dividends $400, box 7 net short-term gain $600, beginning stock basis $3,000. Form 7203 (i7203 p. 2 to 3): line 3e ordinary dividends $400, line 3f royalties $0, line 3g net capital gains $600, line 3h net section 1231 gain $0; line 4 $1,000; line 5 $3,000 + $1,000 = $4,000; line 10 $4,000; line 35 (a) $1,000 within basis, column (c) $1,000; line 15 $3,000. Schedule E column (i) $1,000.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -100000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box5_any": true,
+        "person[taxpayer].k1s[acme].box5a": 40000,
+        "person[taxpayer].k1s[acme].box5b": 0,
+        "person[taxpayer].k1s[acme].box7_any": true,
+        "person[taxpayer].k1s[acme].box7": 60000,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 300000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].l3e": {
+          "kind": "money",
+          "cents": 40000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].l3f": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].f7203[form].l3g": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].l3h": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line4": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line5": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].c35": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line15": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "person[taxpayer].k1s[acme].col_i": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "person[taxpayer].k1s_total_nonpassive_loss": {
+          "kind": "money",
+          "cents": 100000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.f7203_distribution_equal_to_basis",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 1 income $10,000 (more than 500 hours, column (k)), box 16 code D distribution $30,000, beginning stock basis $20,000. Form 7203: line 4 $10,000, line 5 $30,000, line 6 $30,000; the distribution does not exceed basis, so there is no gain on it (i7203 p. 3, Line 6) and line 7 is $0; line 10 $0; line 15 $0. Schedule E column (k) $10,000.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 1000000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].box16_any": true,
+        "person[taxpayer].k1s[acme].box16d_any": true,
+        "person[taxpayer].k1s[acme].box16d": 3000000,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 2000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].line5": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line6": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line15": {
+          "kind": "money",
+          "cents": 0
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "money",
+          "cents": 1000000
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.f7203_loss_over_basis_line14",
+      "covers": [
+        "k1s",
+        "f7203"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 1 loss $30,000 from a business the shareholder worked in more than 500 hours, beginning stock basis $20,000. Form 7203: line 10 $20,000; line 47 (a) $30,000 is more than basis, so the column (c) total is the pro rata allocation, which can not exceed line 10 (i7203 p. 4, Column (c)); line 11 is the column (c) total and can not exceed line 10 (p. 3, Line 11): $20,000. Lines 12 and 13 are $0, line 14 $20,000, line 15 $20,000 - $20,000 = $0.",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "$f7203@person[taxpayer].k1s[acme]": [
+          "form"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": -3000000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].f7203[form].line1": 2000000,
+        "person[taxpayer].k1s[acme].f7203[form].line2": 0,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].f7203[form].line10": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line11": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line14": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "person[taxpayer].k1s[acme].f7203[form].line15": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mk1.k1s.test1_earlier_years_not_used",
+      "covers": [
+        "k1s"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mk1, predicted by hand from i1120ssk, i7203 and i8582 before evaluating: box 1 income $5,000 from a business the shareholder worked in more than 500 hours in 2025 (test 1, i1120ssk p. 4). Material participation holds when \"one or more\" of the tests is met, so test 1 settles it and the earlier-years test (test 5) is not reached: the earlier-years answer is not used (its gate is No) and Schedule E column (k) is $5,000 (p. 6).",
+      "inputs": {
+        "$k1s@person[taxpayer]": [
+          "acme"
+        ],
+        "person[taxpayer].k1s[acme].box1_any": true,
+        "person[taxpayer].k1s[acme].box1": 500000,
+        "person[taxpayer].k1s[acme].work": true,
+        "person[taxpayer].k1s[acme].hours500": true,
+        "person[taxpayer].k1s[acme].past_years": true,
+        "scope.k1": true
+      },
+      "expect": {
+        "person[taxpayer].k1s[acme].material": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].k1s[acme].past_years_if_ask": {
+          "kind": "bool",
+          "value": false
+        },
+        "person[taxpayer].k1s[acme].col_k": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "person[taxpayer].k1s_total_nonpassive_income": {
+          "kind": "money",
+          "cents": 500000
+        }
+      }
+    }
+  ]
+}

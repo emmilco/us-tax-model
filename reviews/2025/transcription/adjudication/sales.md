@@ -86,3 +86,20 @@ Lane b1-adj-a (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in th
 | claude | render | (g) | scope | MISMATCH; boxes G/J and other codes give $0 | i8949 p. 8, code B | sales.digital and sales.bad_code refuse those rows at sales.one. |
 
 Counts: claude transcription: model error 1; claude render: scope 1. Findings: none. No line left open.
+
+## Goal-1 coverage-expansion round (2026-11-15)
+
+Lane xadj-f (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the coverage-expansion merge worktree (xint). Claude transcription log, line-scoped pass 60bd5eac256b (sales.digital, sales.one, (e), (g), (h); triage `.transcription/triage/2025/sales.json`, 2,223 comparisons); render log, line-scoped ((e), (g), (h)). Rulings files `/tmp/xadj/f/sales.transcription.json`, `/tmp/xadj/f/sales.render.json`. What changed (x1-digital): the sales.digital refusal left sales.one; boxes G and J joined A and D wherever basis was reported (sales.covered, (e), (g)); box text and cites for Form 1099-DA.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | (e) | representation | 1,864/2,223; no value difference; 77 candidate-hides-shown (aggregate entries); 278 candidate-unknown (sales.route unasked); 4 project-unknown | i1040sd p. 10, Lines 1a and 8a; i8949 p. 3, Box A or Box G | Same value; the reply hides the column on the aggregate route, which Schedule D 1a/8a total (sd 1a(e) sums sales.e). |
+| claude | transcription | (g) | model error | 2,065/2,223; no value difference; 8 candidate-refuses (6 completed, all its own h_wash_excess); 139 candidate-unknown; 11 project-unknown | i8949 p. 10, code W | As in the goal-1 ruling: an invented wash-sale refusal on entries the project computes. |
+| claude | transcription | (h) | model error | 1,824/2,223; no value difference; 9 candidate-refuses (h_wash_excess through (g)); 82 candidate-hides-shown; 300 candidate-unknown; 8 project-unknown | i8949 p. 10; i1040sd p. 10 | Differs only through its (g) and its hiding on the aggregate route. |
+| claude | render | (g) | scope | MISMATCH: other codes (E, D, O, N, L) add nothing to (g) | i8949 pp. 7-11; sales.bad_code | Code 'other' is refused at sales.one, so (g) never stands for an entry that needs another code. |
+
+Counts: claude transcription: representation 1, model error 2; claude render: scope 1 ((e) and (h) render match). Findings: none. No line left open.
+
+## Goal-1 coverage-expansion round (2026-11-15), class M
+
+Lane xadj-f. Claude class M log (whole): agree 18, disagree 0, skipped 0. Nothing to rule.

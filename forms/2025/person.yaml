@@ -1016,6 +1016,828 @@ form:
       cite:
         doc: f1040
         locator: p. 2, Payments and Refundable Credits, line 25a, "Federal income tax withheld from:", "Form(s) W-2"
+    - id: person.f8919_firms
+      printed: (helper)
+      type: NonNegDollars
+      label: Total of column (f) of this person's firms (Form 8919, lines 1 to 5)
+      expr:
+        op: sum_over
+        collection: f8919firm
+        field: f8919firm.wages
+      cite:
+        doc: f8919
+        locator: 'p. 1, line 6, "Total wages. Combine lines 1 through 5 in column (f)"'
+    - id: person.f8919_wages
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's Form 8919 line 6 (the column (f) wages of the firms listed; zero for a person not paid by such a firm)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.contractor_pay_if_pay
+            - const: true
+          then: person.f8919_firms
+        - guard:
+            op: test
+            eq:
+            - scope.contractor_pay_if_pay
+            - const: false
+          then: person.zero
+      cite:
+        doc: f8919
+        locator: 'p. 1, line 6, "Total wages. Combine lines 1 through 5 in column (f)"'
+    - id: person.f8919_any
+      printed: (helper)
+      type: Bool
+      label: This person has wages on Form 8919 (line 6 more than zero)
+      expr:
+        op: test
+        gt:
+        - person.f8919_wages
+        - param: sales.zero
+      cite:
+        doc: f8919
+        locator: 'p. 1, Who must file, "You must file Form 8919 if all of the following apply"'
+    - id: person.f8919_line10_figured
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's Form 8919 line 10 (wages subject to social security tax)
+      expr:
+        op: sum_over
+        collection: f8919
+        field: f8919.line10
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 8c, "Wages subject to social security tax from Form 8919, line 10"'
+    - id: person.f8919_line10
+      printed: (helper)
+      type: NonNegDollars
+      label: 'This person''s Form 8919 line 10 (wages subject to social security tax) (only when Form 8919 is filed; zero otherwise)'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.f8919_any
+            - const: true
+          then: person.f8919_line10_figured
+        - guard:
+            op: test
+            eq:
+            - person.f8919_any
+            - const: false
+          then: person.zero
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 8c, "Wages subject to social security tax from Form 8919, line 10"'
+    - id: person.f8919_tax_figured
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's Form 8919 line 13 (uncollected social security and Medicare tax on wages)
+      expr:
+        op: sum_over
+        collection: f8919
+        field: f8919.line13
+      cite:
+        doc: f1040s2
+        locator: 'Schedule 2 (2025), line 6, "Uncollected social security and Medicare tax on wages. Attach Form 8919"'
+    - id: person.f8919_tax
+      printed: (helper)
+      type: NonNegDollars
+      label: 'This person''s Form 8919 line 13 (uncollected social security and Medicare tax on wages) (only when Form 8919 is filed; zero otherwise)'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.f8919_any
+            - const: true
+          then: person.f8919_tax_figured
+        - guard:
+            op: test
+            eq:
+            - person.f8919_any
+            - const: false
+          then: person.zero
+      cite:
+        doc: f1040s2
+        locator: 'Schedule 2 (2025), line 6, "Uncollected social security and Medicare tax on wages. Attach Form 8919"'
+    - id: person.f4137_rows_c
+      printed: (helper)
+      type: NonNegDollars
+      label: Total of column (c) of this person's employer rows (Form 4137, line 1)
+      expr:
+        op: sum_over
+        collection: f4137row
+        field: f4137row.col_c
+      cite:
+        doc: f4137
+        locator: 'p. 1, line 2, "Total cash and charge tips you received in 2025. Add the amounts from line 1"'
+    - id: person.f4137_col_c
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's Form 4137 line 2 (the column (c) tips of the employers listed; zero for a person with no unreported tips)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.tips_unreported_if_pay
+            - const: true
+          then: person.f4137_rows_c
+        - guard:
+            op: test
+            eq:
+            - scope.tips_unreported_if_pay
+            - const: false
+          then: person.zero
+      cite:
+        doc: f4137
+        locator: 'p. 1, line 2, "Total cash and charge tips you received in 2025. Add the amounts from line 1"'
+    - id: person.f4137_rows_d
+      printed: (helper)
+      type: NonNegDollars
+      label: Total of column (d) of this person's employer rows (Form 4137, line 1)
+      expr:
+        op: sum_over
+        collection: f4137row
+        field: f4137row.col_d
+      cite:
+        doc: f4137
+        locator: 'p. 1, line 3, "Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line 1"'
+    - id: person.f4137_col_d
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's Form 4137 line 3 (the column (d) tips of the employers listed; zero for a person with no unreported tips)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.tips_unreported_if_pay
+            - const: true
+          then: person.f4137_rows_d
+        - guard:
+            op: test
+            eq:
+            - scope.tips_unreported_if_pay
+            - const: false
+          then: person.zero
+      cite:
+        doc: f4137
+        locator: 'p. 1, line 3, "Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line
+          1"'
+    - id: person.f4137_under20
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: person.f4137_under20_if_rows
+      label: Cash and charge tips you received but did not report to your employer because the total was less than $20 in a calendar month
+      expr:
+        op: input
+        source: Of the cash and charge tips you did not report, how much did you not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none.
+      cite:
+        doc: f4137
+        locator: 'p. 2, Line 5, "Enter only the tips you weren’t required to report to your employer because the total received
+          was less than $20 in a calendar month"; p. 2, Tips you must report to your employer, "the $20 rule applies separately
+          to the tips you received while working for each employer"'
+    - id: person.f4137_under20_if_rows
+      printed: (gate)
+      type: NonNegDollars
+      label: Form 4137 line 5 (asked only of a person with an employer row on Form 4137; otherwise zero)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.f4137_filed
+            - const: true
+          then: person.f4137_under20
+        - guard:
+            op: test
+            eq:
+            - person.f4137_filed
+            - const: false
+          then: person.zero
+      cite:
+        doc: f4137
+        locator: 'p. 2, Line 5, "Enter only the tips you weren’t required to report to your employer because the total received
+          was less than $20 in a calendar month"'
+    - id: person.tips_gov
+      printed: (helper)
+      type: Bool
+      gated_by: person.tips_gov_if_rows
+      label: Did you receive any of these unreported tips for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?
+      expr:
+        op: input
+        source: Did you receive any of these unreported tips for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?
+      cite:
+        doc: f4137
+        locator: 'p. 2, Line 10, "If line 6 includes tips you received for work you did as a federal, state, or local government
+          employee and your pay was subject only to the 1.45% Medicare tax"'
+    - id: person.tips_gov_if_rows
+      printed: (gate)
+      type: Bool
+      label: Unreported tips received as a government employee whose pay was subject only to the 1.45% Medicare tax (asked only of a person with an employer row on Form 4137; otherwise no)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.f4137_filed
+            - const: true
+          then: person.tips_gov
+        - guard:
+            op: test
+            eq:
+            - person.f4137_filed
+            - const: false
+          then: person.no
+      cite:
+        doc: f4137
+        locator: 'p. 2, Line 10, "If line 6 includes tips you received for work you did as a federal, state, or local government
+          employee and your pay was subject only to the 1.45% Medicare tax"'
+    - id: person.tips_noncash
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: person.tips_noncash_if_unreported
+      label: The value of noncash tips you received, such as tickets, passes, or other items of value
+      expr:
+        op: input
+        source: What was the value of the tips you received in 2025 that were not money, such as tickets, passes or other items of value? Zero if none.
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1c, "Also, include the value of any noncash tips you received, such as tickets, passes, or other
+          items of value. Although you don’t report these noncash tips to your employer, you must report them on line 1c"'
+    - id: person.tips_noncash_if_unreported
+      printed: (gate)
+      type: NonNegDollars
+      label: Noncash tips (asked only when unreported or noncash tips are reported for the return; otherwise zero)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.tips_unreported_if_pay
+            - const: true
+          then: person.tips_noncash
+        - guard:
+            op: test
+            eq:
+            - scope.tips_unreported_if_pay
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1c, "Also, include the value of any noncash tips you received, such as tickets, passes, or other
+          items of value"'
+    - id: person.f4137_line4
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's Form 4137 line 4 (unreported cash and charge tips)
+      expr:
+        op: sum_over
+        collection: f4137
+        field: f4137.line4
+      cite:
+        doc: f4137
+        locator: 'p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c"'
+    - id: person.f4137_line6_figured
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's Form 4137 line 6 (unreported tips subject to Medicare tax)
+      expr:
+        op: sum_over
+        collection: f4137
+        field: f4137.line6
+      cite:
+        doc: f4137
+        locator: 'p. 2, Line 6, "Enter this amount on Form 8959, line 2, if you’re required to file that form"'
+    - id: person.f4137_line6
+      printed: (helper)
+      type: NonNegDollars
+      label: 'This person''s Form 4137 line 6 (unreported tips subject to Medicare tax) (only when Form 4137 is filed; zero otherwise)'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.f4137_filed
+            - const: true
+          then: person.f4137_line6_figured
+        - guard:
+            op: test
+            eq:
+            - person.f4137_filed
+            - const: false
+          then: person.zero
+      cite:
+        doc: f4137
+        locator: 'p. 2, Line 6, "Enter this amount on Form 8959, line 2, if you’re required to file that form"'
+    - id: person.f4137_line10_figured
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's Form 4137 line 10 (unreported tips subject to social security tax)
+      expr:
+        op: sum_over
+        collection: f4137
+        field: f4137.line10
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 8b, "Unreported tips subject to social security tax from Form 4137, line 10"'
+    - id: person.f4137_line10
+      printed: (helper)
+      type: NonNegDollars
+      label: 'This person''s Form 4137 line 10 (unreported tips subject to social security tax) (only when Form 4137 is filed; zero otherwise)'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.f4137_filed
+            - const: true
+          then: person.f4137_line10_figured
+        - guard:
+            op: test
+            eq:
+            - person.f4137_filed
+            - const: false
+          then: person.zero
+      cite:
+        doc: f1040sse
+        locator: 'Schedule SE (2025), line 8b, "Unreported tips subject to social security tax from Form 4137, line 10"'
+    - id: person.f4137_tax_figured
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's Form 4137 line 13 (social security and Medicare tax on unreported tips)
+      expr:
+        op: sum_over
+        collection: f4137
+        field: f4137.line13
+      cite:
+        doc: f1040s2
+        locator: 'Schedule 2 (2025), line 5, "Social security and Medicare tax on unreported tip income. Attach Form 4137"'
+    - id: person.f4137_tax
+      printed: (helper)
+      type: NonNegDollars
+      label: 'This person''s Form 4137 line 13 (social security and Medicare tax on unreported tips) (only when Form 4137 is filed; zero otherwise)'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.f4137_filed
+            - const: true
+          then: person.f4137_tax_figured
+        - guard:
+            op: test
+            eq:
+            - person.f4137_filed
+            - const: false
+          then: person.zero
+      cite:
+        doc: f1040s2
+        locator: 'Schedule 2 (2025), line 5, "Social security and Medicare tax on unreported tip income. Attach Form 4137"'
+    - id: person.line1c
+      printed: (helper)
+      type: NonNegDollars
+      label: This person's tip income not reported on line 1a (Form 4137 line 4 and noncash tips)
+      expr:
+        op: sum
+        of:
+        - person.f4137_line4
+        - person.tips_noncash_if_unreported
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1c, "This should include any tip income you didn’t report to your employer", "Also, include the
+          value of any noncash tips you received"'
+    - id: person.f4137_filed
+      printed: (gate)
+      type: Bool
+      label: This person has tips on Form 4137 (line 2 more than zero)
+      expr:
+        op: test
+        gt:
+        - person.f4137_col_c
+        - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 104, Qualified Tips From More Than One Employer Worksheet, column (c)'
+    - id: person.household_wages
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: person.household_wages_if_pay
+      label: Wages you received as a household employee that were not reported on Form(s) W-2
+      expr:
+        op: input
+        source: How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on
+          Form(s) W-2", "An employer isn’t required to provide a Form W-2 to you if they paid you wages of less than $2,800 in
+          2025"'
+    - id: person.household_wages_if_pay
+      printed: (gate)
+      type: NonNegDollars
+      label: Household employee wages not on a W-2 (asked only when such wages are reported for the return; otherwise zero)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.household_pay_if_pay
+            - const: true
+          then: person.household_wages
+        - guard:
+            op: test
+            eq:
+            - scope.household_pay_if_pay
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on
+          Form(s) W-2"'
+    - id: person.strike
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: person.strike_if_pay
+      label: Strike or lockout benefits you received (other than bona fide gifts)
+      expr:
+        op: input
+        source: How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout
+          benefits (other than bona fide gifts)"'
+    - id: person.strike_if_pay
+      printed: (gate)
+      type: NonNegDollars
+      label: Strike or lockout benefits (asked only when such benefits are reported for the return; otherwise zero)
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.strike_pay_if_pay
+            - const: true
+          then: person.strike
+        - guard:
+            op: test
+            eq:
+            - scope.strike_pay_if_pay
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)"'
+    - id: person.mw_box1
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: person.mw_box1_if_mw
+      label: "Nontaxable Medicaid waiver payments reported in box 1 of Form(s) W-2"
+      expr:
+        op: input
+        source: "How much of the Medicaid pay you received in 2025 for caring for someone who lived with you in your home appears in box 1 of your W-2s? Zero if none."
+      cite:
+        doc: i1040gi
+        locator: 'p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a"'
+    - id: person.mw_box1_if_mw
+      printed: (gate)
+      type: NonNegDollars
+      label: "Medicaid waiver payments in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.medicaid_waiver
+            - const: true
+          then: person.mw_box1
+        - guard:
+            op: test
+            eq:
+            - scope.medicaid_waiver
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a"'
+    - id: person.mw_not_box1
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: person.mw_not_box1_if_mw
+      label: "Nontaxable Medicaid waiver payments not reported in box 1 of a Form W-2"
+      expr:
+        op: input
+        source: "How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none."
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2"; p. 92, Line 8s, "Your nontaxable Medicaid waiver payments should be reported to you on Form(s) W-2 in box 12, Code II"'
+    - id: person.mw_not_box1_if_mw
+      printed: (gate)
+      type: NonNegDollars
+      label: "Medicaid waiver payments not in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - scope.medicaid_waiver
+            - const: true
+          then: person.mw_not_box1
+        - guard:
+            op: test
+            eq:
+            - scope.medicaid_waiver
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2"'
+    - id: person.mw_has_not_box1
+      printed: (helper)
+      type: Bool
+      label: "Medicaid waiver payments not in W-2 box 1 are more than zero"
+      expr:
+        op: test
+        gt:
+        - person.mw_not_box1_if_mw
+        - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2"'
+    - id: person.mw_1099
+      printed: (helper)
+      type: NonNegDollars
+      gated_by: person.mw_1099_if_not_box1
+      label: "Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC"
+      expr:
+        op: input
+        source: "How much of that was reported on a Form 1099-MISC or 1099-NEC? Zero if none."
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC"'
+    - id: person.mw_1099_if_not_box1
+      printed: (gate)
+      type: NonNegDollars
+      label: "Medicaid waiver payments on Form 1099-MISC or 1099-NEC (asked only when some payments are not in W-2 box 1; otherwise zero)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.mw_has_not_box1
+            - const: true
+          then: person.mw_1099
+        - guard:
+            op: test
+            eq:
+            - person.mw_has_not_box1
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC"'
+    - id: person.mw_has_1099
+      printed: (helper)
+      type: Bool
+      label: "Medicaid waiver payments on Form 1099-MISC or 1099-NEC are more than zero"
+      expr:
+        op: test
+        gt:
+        - person.mw_1099_if_not_box1
+        - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC"'
+    - id: person.mw_1099_over
+      printed: (gate)
+      type: Bool
+      label: "The Medicaid waiver payments on Form 1099 are more than the payments not in W-2 box 1"
+      expr:
+        op: test
+        gt:
+        - person.mw_1099_if_not_box1
+        - person.mw_not_box1_if_mw
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC"'
+    - id: person.mw_business
+      printed: (helper)
+      type: Bool
+      gated_by: person.mw_business_if_1099
+      label: "Do you run a business of providing home care services, as a sole proprietor?"
+      expr:
+        op: input
+        source: "Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?"
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts"'
+    - id: person.mw_business_if_1099
+      printed: (gate)
+      type: Bool
+      label: "A home-care business of your own (asked only with Medicaid waiver payments on Form 1099; otherwise no)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.mw_has_1099
+            - const: true
+          then: person.mw_business
+        - guard:
+            op: test
+            eq:
+            - person.mw_has_1099
+            - const: false
+          then: person.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts"'
+    - id: person.mw_total
+      printed: (helper)
+      type: NonNegDollars
+      label: "This person's Medicaid waiver payments (in W-2 box 1 and not in box 1)"
+      expr:
+        op: sum
+        of:
+        - person.mw_box1_if_mw
+        - person.mw_not_box1_if_mw
+      cite:
+        doc: i1040gi
+        locator: 'p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a"'
+    - id: person.mw_paid
+      printed: (helper)
+      type: Bool
+      label: "This person had Medicaid waiver payments"
+      expr:
+        op: test
+        gt:
+        - person.mw_total
+        - param: sales.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a"'
+    - id: person.mw_earned
+      printed: (helper)
+      type: Bool
+      gated_by: person.mw_earned_if_paid
+      label: "Do you choose to include your nontaxable Medicaid waiver payments in earned income for purposes of claiming a credit or other tax benefit?"
+      expr:
+        op: input
+        source: "Do you choose to count this Medicaid pay as earned income? It is not taxed either way; counting it can raise credits such as the earned income credit."
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "if you choose to include nontaxable payments in earned income for purposes of claiming a credit or other tax benefit", "If you and your spouse both received nontaxable Medicaid waiver payments during the year, you and your spouse can make different choices about including payments in earned income"'
+    - id: person.mw_earned_if_paid
+      printed: (gate)
+      type: Bool
+      label: "The choice to count Medicaid waiver payments as earned income (asked only of a person with such payments; otherwise no)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.mw_paid
+            - const: true
+          then: person.mw_earned
+        - guard:
+            op: test
+            eq:
+            - person.mw_paid
+            - const: false
+          then: person.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "if you choose to include nontaxable payments in earned income for purposes of claiming a credit or other tax benefit", "If you and your spouse both received nontaxable Medicaid waiver payments during the year, you and your spouse can make different choices about including payments in earned income"'
+    - id: person.mw_other
+      printed: (helper)
+      type: NonNegDollars
+      label: "Medicaid waiver payments not in W-2 box 1 and not on Form 1099 (shown only in box 12 with code II, or on no form)"
+      expr:
+        op: subtract_floor0
+        from: person.mw_not_box1_if_mw
+        take: person.mw_1099_if_not_box1
+      cite:
+        doc: i1040gi
+        locator: 'p. 92, Line 8s, "If you did not receive a Form W-2 for nontaxable payments, or you received nontaxable payments that you didn’t report on line 1a, and choose to include nontaxable amounts in earned income for purposes of claiming a credit or other tax benefit, report the amount on Form 1040 or 1040-SR, line 1d"'
+    - id: person.mw_other_1d
+      printed: (helper)
+      type: NonNegDollars
+      label: "Medicaid waiver payments not in W-2 box 1 or on Form 1099 that go on line 1d (only when chosen as earned income; otherwise zero)"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.mw_earned_if_paid
+            - const: true
+          then: person.mw_other
+        - guard:
+            op: test
+            eq:
+            - person.mw_earned_if_paid
+            - const: false
+          then: person.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 92, Line 8s, "and choose to include nontaxable amounts in earned income for purposes of claiming a credit or other tax benefit, report the amount on Form 1040 or 1040-SR, line 1d"'
+    - id: person.line1d
+      printed: (helper)
+      type: NonNegDollars
+      label: "This person's Medicaid waiver payments on Form 1040 line 1d"
+      expr:
+        op: sum
+        of:
+        - person.mw_1099_if_not_box1
+        - person.mw_other_1d
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC", "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2, if you choose to include nontaxable payments in earned income"'
+      ambiguity: amb.2025.mw_all_nontaxable
+      refuses:
+      - when: person.mw_1099_over
+        form: Medicaid waiver payments on Form 1099 more than the payments not in W-2 box 1
+        remedy: The Medicaid pay reported on Form 1099-MISC or 1099-NEC is part of the pay not in box 1 of a W-2, so it cannot be more. Check the two amounts.
+        cite:
+          doc: i1040gi
+          locator: 'p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC"'
+      - when: person.mw_business_if_1099
+        form: Medicaid waiver payments in a home-care business (Schedule C)
+        remedy: A sole proprietor in a business of providing home care services reports these payments as the Schedule C instructions say; this tool does not prepare that.
+        cite:
+          doc: i1040gi
+          locator: 'p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts"'
+    - id: person.line8s
+      printed: (helper)
+      type: NonNegDollars
+      label: "This person's nontaxable Medicaid waiver payments included on Form 1040 line 1a or 1d (Schedule 1 line 8s)"
+      expr:
+        op: sum
+        of:
+        - person.mw_box1_if_mw
+        - person.line1d
+      cite:
+        doc: i1040gi
+        locator: 'p. 92, Line 8s, "Then, on line 8s, enter the total amount of the nontaxable payments reported on Form 1040 or 1040-SR, line 1a or 1d"'
+    - id: person.mw_not_earned
+      printed: (helper)
+      type: NonNegDollars
+      label: "This person's Medicaid waiver payments on Schedule 1 line 8s not chosen as earned income"
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - person.mw_earned_if_paid
+            - const: true
+          then: person.zero
+        - guard:
+            op: test
+            eq:
+            - person.mw_earned_if_paid
+            - const: false
+          then: person.line8s
+      cite:
+        doc: i1040gi
+        locator: 'p. 42, Step 5, "Enter the Medicaid waiver payment amounts excluded from income on Schedule 1, line 8s, unless you choose to include these amounts in earned income, in which case enter -0-"'
+    - id: person.earned_not_w2
+      printed: (helper)
+      type: NonNegDollars
+      label: "This person's pay on Form 1040 lines 1b, 1c, 1d, 1g and 1h (wages, tips and other earned income not in W-2 box 1)"
+      expr:
+        op: sum
+        of:
+        - person.household_wages_if_pay
+        - person.line1c
+        - person.line1d
+        - person.f8919_wages
+        - person.line1h
+      cite:
+        doc: i2441
+        locator: 'p. 4, Lines 4 and 5, "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z"'
     - id: person.ira_amount_a
       printed: (helper)
       label: IRA distributions on this person's Forms 1099-R (line 4a amounts)
@@ -1081,9 +1903,15 @@ form:
         field: retirement.amount_a
         where:
           op: test
-          eq:
-            - retirement.is_ira
-            - const: false
+          all:
+            - op: test
+              eq:
+                - retirement.is_ira
+                - const: false
+            - op: test
+              eq:
+                - retirement.dis_wages
+                - const: false
       cite:
         doc: i1040gi
         locator: pp. 28-30, Lines 5a and 5b
@@ -1097,13 +1925,51 @@ form:
         field: retirement.taxable
         where:
           op: test
-          eq:
-            - retirement.is_ira
-            - const: false
+          all:
+            - op: test
+              eq:
+                - retirement.is_ira
+                - const: false
+            - op: test
+              eq:
+                - retirement.dis_wages
+                - const: false
       cite:
         doc: i1040gi
         locator: pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts
           on Form 1040 or 1040-SR, line 5b'
+    - id: person.dis_wages
+      printed: (helper)
+      label: Taxable disability pensions on this person's Forms 1099-R paid before the minimum retirement age (line 1h amounts)
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: retirement
+        field: retirement.taxable
+        where:
+          op: test
+          eq:
+            - retirement.dis_wages
+            - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by
+          your employer"; p575 p. 6, Disability Pensions, "You must report your taxable disability payments as wages on Form
+          1040, 1040-SR, or 1040-NR, line 1h, until you reach minimum retirement age"'
+    - id: person.line1h
+      printed: (helper)
+      label: This person's other earned income on Form 1040 line 1h (strike or lockout benefits and disability pensions paid before the minimum retirement age)
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - person.strike_if_pay
+          - person.dis_wages
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout
+          benefits (other than bona fide gifts)"; p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the
+          minimum retirement age set by your employer"'
     - id: person.plan_rollovers
       printed: (helper)
       label: Number of this person's pension distributions with a rollover
@@ -1435,11 +2301,10 @@ form:
           - a chapter 11 bankruptcy case
           - community income on a separate return
           - self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government
-          - tips reported on Form 4137 or wages on Form 8919
       cite:
         doc: i1040sse
         locator: pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II;
-          f1040sse lines 1a, 1b, 5a, 8b and 8c; p. 1, Employees of Churches and Church Organizations, "Church employee income
+          f1040sse lines 1a, 1b and 5a; p. 1, Employees of Churches and Church Organizations, "Church employee income
           is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science
           practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an
           exemption from employer social security and Medicare taxes."
@@ -1490,6 +2355,8 @@ form:
             bind:
               line2: person.se_line2
               line8a: person.wages
+              line8b: person.f4137_line10
+              line8c: person.f8919_line10
             line: line6
         - guard:
             op: test
@@ -1526,6 +2393,8 @@ form:
             bind:
               line2: person.se_line2
               line8a: person.wages
+              line8b: person.f4137_line10
+              line8c: person.f8919_line10
             line: line12
         - guard:
             op: test
@@ -1561,6 +2430,8 @@ form:
             bind:
               line2: person.se_line2
               line8a: person.wages
+              line8b: person.f4137_line10
+              line8c: person.f8919_line10
             line: line13
         - guard:
             op: test
@@ -1596,6 +2467,8 @@ form:
             bind:
               line2: person.se_line2
               line8a: person.wages
+              line8b: person.f4137_line10
+              line8c: person.f8919_line10
             line: line4c
         - guard:
             op: test
@@ -2804,6 +3677,7 @@ form:
         op: sum
         of:
           - person.box1
+          - person.earned_not_w2
           - person.dc_1e
           - person.eic_se
       cite:
@@ -2818,6 +3692,7 @@ form:
         op: sum
         of:
           - person.box1
+          - person.earned_not_w2
           - person.eic_se
       cite:
         doc: i2441
@@ -3659,16 +4534,54 @@ form:
         doc: i1040gi
         locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "But if you checked “No” on either line 1a or 1b,
           enter $246,000 for the person who wasn’t covered by a plan"'
-    - id: person.ira_line2_status
+    - id: person.ira_line2_table
       printed: (helper)
-      label: The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse)
+      label: The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse;
+        $10,000 if married filing separately)
       type: NonNegDollars
       expr:
         op: param
         ref: ira.line2
       cite:
         doc: i1040gi
-        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Enter the amount shown below that applies to you"'
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Enter the amount shown below that applies to you"
+          and "Married filing separately and you lived with your spouse at any time in 2025, enter $10,000"'
+    - id: person.ira_line2_apart
+      printed: (helper)
+      label: $89,000 (married filing separately and lived apart from your spouse for all of 2025)
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: ira.line2_apart
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Single, head of household, or married filing
+          separately and you lived apart from your spouse for all of 2025, enter $89,000"'
+    - id: person.ira_line2_status
+      printed: (helper)
+      label: The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse;
+        married filing separately, $89,000 if you lived apart from your spouse for all of 2025 and $10,000 otherwise)
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.mfs_apart_all_year
+            - const: true
+          then: person.ira_line2_apart
+        - guard:
+            op: test
+            eq:
+            - household.mfs_apart_all_year
+            - const: false
+          then: person.ira_line2_table
+      cite:
+        doc: i1040gi
+        locator: 'p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Single, head of household, or married filing
+          separately and you lived apart from your spouse for all of 2025, enter $89,000" and "Married filing separately and
+          you lived with your spouse at any time in 2025, enter $10,000"'
     - id: person.ira_line2_nc
       printed: (helper)
       label: $246,000
@@ -6579,6 +7492,636 @@ form:
         doc: i1040gi
         locator: 'p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN"'
   # --- end Stage 21 ---
+  # --- k1p sums (lane x2-k1p) ---
+    - id: person.k1p_total_passive_income
+      printed: (helper)
+      type: NonNegDollars
+      label: Schedule E line 28 column (h), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.col_h
+        where: &id001
+          op: test
+          eq:
+          - k1p.screened
+          - const: true
+      cite: &id002
+        doc: i1065sk1
+        locator: p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E"
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_nonpassive_income
+      printed: (helper)
+      type: NonNegDollars
+      label: Schedule E line 28 column (k), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.col_k
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_nonpassive_loss
+      printed: (helper)
+      type: NonNegDollars
+      label: Schedule E line 28 column (i), all partnership K-1s (as a positive amount)
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.col_i
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_nonpassive
+      printed: (helper)
+      type: Dollars
+      label: Nonpassive income less nonpassive loss, all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.nonpassive_net
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_p4_income
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 8582 Part IV column (a), partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.p4_income
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_p4_loss
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 8582 Part IV column (b), partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.p4_loss
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_p4_prior
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 8582 Part IV column (c), partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.p4_prior
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_p5_income
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 8582 Part V column (a), partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.p5_income
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_p5_loss
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 8582 Part V column (b), partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.p5_loss
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_p5_prior
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 8582 Part V column (c), partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.p5_prior
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_p6_loss
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 8582 Part VI column (a), partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.p6_loss
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_prior
+      printed: (helper)
+      type: NonNegDollars
+      label: Prior years unallowed losses, partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.prior_total
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_interest
+      printed: (helper)
+      type: NonNegDollars
+      label: Interest income (K-1 box 5), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box5_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_ord_div
+      printed: (helper)
+      type: NonNegDollars
+      label: Ordinary dividends (K-1 box 6a), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box6a_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_qual_div
+      printed: (helper)
+      type: NonNegDollars
+      label: Qualified dividends (K-1 box 6b), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box6b_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_st_gain
+      printed: (helper)
+      type: Dollars
+      label: Net short-term capital gain or loss (K-1 box 8), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box8_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_lt_gain
+      printed: (helper)
+      type: Dollars
+      label: Net long-term capital gain or loss (K-1 box 9a), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box9a_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_collectibles
+      printed: (helper)
+      type: Dollars
+      label: Collectibles (28%) gain or loss (K-1 box 9b), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box9b_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_unrecap_1250
+      printed: (helper)
+      type: NonNegDollars
+      label: Unrecaptured section 1250 gain (K-1 box 9c), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box9c_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_se_earnings
+      printed: (helper)
+      type: Dollars
+      label: Net earnings from self-employment (K-1 box 14, code A), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box14a_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_se_pos
+      printed: (helper)
+      type: NonNegDollars
+      label: Positive net earnings from self-employment (K-1 box 14, code A), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.se_pos
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_backup_wh
+      printed: (helper)
+      type: NonNegDollars
+      label: Backup withholding (K-1 box 15, code O), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box15o_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_taxexempt_int
+      printed: (helper)
+      type: NonNegDollars
+      label: Tax-exempt interest (K-1 box 18, code A), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box18a_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_total_qbi_stmt
+      printed: (helper)
+      type: Dollars
+      label: QBI or loss from the section 199A statements (K-1 box 20, code Z), all partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.box20z_if_any
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_count
+      printed: (helper)
+      type: Count
+      label: Number of partnership K-1s
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.one
+        where: *id001
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_count_sche
+      printed: (helper)
+      type: Count
+      label: Number of partnership K-1s with a row on Schedule E line 28
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.one
+        where:
+          op: test
+          all:
+          - *id001
+          - op: test
+            eq:
+            - k1p.sche_row
+            - const: true
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_count_passive_loss
+      printed: (helper)
+      type: Count
+      label: Number of partnership K-1s with a passive net loss or held-back loss
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.one
+        where:
+          op: test
+          all:
+          - *id001
+          - op: test
+            eq:
+            - k1p.passive_loss
+            - const: true
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_count_inv
+      printed: (helper)
+      type: Count
+      label: Number of partnership K-1s with box 20, code A or B
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.one
+        where:
+          op: test
+          all:
+          - *id001
+          - op: test
+            eq:
+            - k1p.has_b20ab
+            - const: true
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+    - id: person.k1p_count_general
+      printed: (helper)
+      type: Count
+      label: Number of partnership K-1s held as a general partner
+      expr:
+        op: sum_over
+        collection: k1p
+        field: k1p.one
+        where:
+          op: test
+          all:
+          - *id001
+          - op: test
+            eq:
+            - k1p.general
+            - const: true
+      cite: *id002
+      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+  # --- end k1p sums ---
+  # --- x2-k1s: per-person totals of the Schedules K-1 (Form 1120-S) ---
+    - id: person.k1s_total_interest
+      printed: (helper)
+      label: Interest income from Schedules K-1 (Form 1120-S), box 4
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.int
+      cite:
+        doc: i1120ssk
+        locator: p. 7, Box 4. Interest Income, "Report interest income on Form 1040 or 1040-SR, line 2b"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_ord_div
+      printed: (helper)
+      label: Ordinary dividends from Schedules K-1 (Form 1120-S), box 5a
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.ord_div
+      cite:
+        doc: i1120ssk
+        locator: p. 7, Box 5a. Ordinary Dividends, "Report ordinary dividends on Form 1040 or 1040-SR, line 3b"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_qual_div
+      printed: (helper)
+      label: Qualified dividends from Schedules K-1 (Form 1120-S), box 5b
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.qual_div
+      cite:
+        doc: i1120ssk
+        locator: p. 7, Box 5b. Qualified Dividends, "Report any qualified dividends on Form 1040 or 1040-SR, line 3a"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_st_gain
+      printed: (helper)
+      label: Net short-term capital gain (loss) from Schedules K-1 (Form 1120-S), box 7
+      type: Dollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.st
+      cite:
+        doc: i1120ssk
+        locator: p. 7, Box 7. Net Short-Term Capital Gain (Loss), "report the net short-term capital gain (loss) on Schedule
+          D (Form 1040), Capital Gains and Losses, line 5"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_lt_gain
+      printed: (helper)
+      label: Net long-term capital gain (loss) from Schedules K-1 (Form 1120-S), box 8a
+      type: Dollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.lt
+      cite:
+        doc: i1120ssk
+        locator: p. 7, Box 8a. Net Long-Term Capital Gain (Loss), "report the net long-term capital gain (loss) on Schedule
+          D (Form 1040), line 12"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_collectibles
+      printed: (helper)
+      label: Collectibles (28%) gain (loss) from Schedules K-1 (Form 1120-S), box 8b
+      type: Dollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.g28
+      cite:
+        doc: i1120ssk
+        locator: p. 7, Box 8b. Collectibles (28%) Gain (Loss), "report collectibles gain or loss on line 4 of the 28% Rate
+          Gain Worksheet"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_unrecap_1250
+      printed: (helper)
+      label: Unrecaptured section 1250 gain from Schedules K-1 (Form 1120-S), box 8c
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.u1250
+      cite:
+        doc: i1120ssk
+        locator: p. 7, Box 8c. Unrecaptured Section 1250 Gain, "Report unrecaptured section 1250 gain from the sale or exchange
+          of the corporation’s business assets on line 5"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_backup_wh
+      printed: (helper)
+      label: Backup withholding from Schedules K-1 (Form 1120-S), box 13, code O
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.backup
+      cite:
+        doc: i1120ssk
+        locator: p. 13, Code O. Backup withholding, "Include this amount in the total you enter on Form 1040 or 1040-SR, line
+          25c"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_taxexempt_int
+      printed: (helper)
+      label: Tax-exempt interest from Schedules K-1 (Form 1120-S), box 16, code A
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.taxexempt
+      cite:
+        doc: i1120ssk
+        locator: p. 15, Code A. Tax-exempt interest income, "Individual shareholders include this amount on Form 1040 or 1040-SR,
+          line 2a"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_passive_income
+      printed: (helper)
+      label: 'Schedule E line 28, column (h) total of the S corporation rows: passive income'
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.col_h
+      cite:
+        doc: i1120ssk
+        locator: p. 6, Box 1. Ordinary Business Income (Loss), "If income is reported in box 1, report the income in column
+          (h) of Schedule E (Form 1040), line 28"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_nonpassive_loss
+      printed: (helper)
+      label: 'Schedule E line 28, column (i) total of the S corporation rows: nonpassive loss allowed, as a positive amount'
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.col_i
+      cite:
+        doc: i1120ssk
+        locator: p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business
+          activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_nonpassive_income
+      printed: (helper)
+      label: 'Schedule E line 28, column (k) total of the S corporation rows: nonpassive income'
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.col_k
+      cite:
+        doc: i1120ssk
+        locator: p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business
+          activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_nonpassive
+      printed: (helper)
+      label: Nonpassive trade or business income (loss) after basis from Schedules K-1 (Form 1120-S), box 1
+      type: Dollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.nonpassive
+      cite:
+        doc: i1120ssk
+        locator: p. 5, Effect of determination, "Income (loss), deductions, and credits from an activity are nonpassive if
+          you determine that"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_p4_income
+      printed: (helper)
+      label: Form 8582 Part IV column (a) total of the S corporation box 2 activities with active participation
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.p4_income
+      cite:
+        doc: i8582
+        locator: p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities
+          must include the income or loss from those activities in Part IV"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_p4_loss
+      printed: (helper)
+      label: Form 8582 Part IV column (b) total of the S corporation box 2 activities with active participation
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.p4_loss
+      cite:
+        doc: i8582
+        locator: p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities
+          must include the income or loss from those activities in Part IV"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_p4_prior
+      printed: (helper)
+      label: Form 8582 Part IV column (c) total of the S corporation box 2 activities with active participation
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.p4_prior
+      cite:
+        doc: i8582
+        locator: p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities
+          must include the income or loss from those activities in Part IV"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_p5_income
+      printed: (helper)
+      label: Form 8582 Part V column (a) total of the S corporation passive activities
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.p5_income
+      cite:
+        doc: i8582
+        locator: p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_p5_loss
+      printed: (helper)
+      label: Form 8582 Part V column (b) total of the S corporation passive activities
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.p5_loss
+      cite:
+        doc: i8582
+        locator: p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_p5_prior
+      printed: (helper)
+      label: Form 8582 Part V column (c) total of the S corporation passive activities
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.p5_prior
+      cite:
+        doc: i8582
+        locator: p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_total_qbi
+      printed: (helper)
+      label: Qualified business income (loss) from Schedules K-1 (Form 1120-S), box 17, code V, before the passive activity
+        limitation
+      type: Dollars
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.qbi
+      cite:
+        doc: i1120ssk
+        locator: p. 17, Code V. Section 199A information, "The S corporation will provide the information you need to figure
+          your deduction"
+      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+    - id: person.k1s_count_sche
+      printed: (helper)
+      label: Number of Schedules K-1 (Form 1120-S) with an amount in box 1, 2 or 3 (a row on Schedule E, line 28)
+      type: Count
+      expr:
+        op: sum_over
+        collection: k1s
+        field: k1s.one
+        where:
+          op: test
+          eq:
+          - k1s.sche_any
+          - const: true
+      cite:
+        doc: i1120ssk
+        locator: p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business
+          activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28"
+      display: Read by the return-integration lane (whether Schedule E Part II is filed); shown until then.
+  # --- end x2-k1s ---
   collection:
     cite:
       doc: f1040

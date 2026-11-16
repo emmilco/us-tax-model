@@ -3,21 +3,141 @@
  "form": "ftc",
  "rulings": [
   {
-   "printed": "ftc.carryover_if_asked",
-   "project_expr_sha256": "eda0e9c6b01b354262b7364fb46efcfe1915b1223cf613706e904107bc918dc9",
-   "second_expr_sha256": "4f1e84ff0391ba6cd701bc026ff95196db8b7347c8ab1994584760446a0b7432",
-   "ruling": "Ruling: model error; the page does not state when the question is asked: this is the project's gate line for the carryover question (i1116 p. 19, Line 10), asked after a Yes to either plain question above it, s3.foreign_any or s3.prior_other_forms (owner decision recorded in BUG-0619: Form 1116 is not in the list of last year's forms that refuse, so the carryover is asked of a filer whose 2024 return includes a separate form). The reply asks it only after s3.foreign_any. executable-triage-v2 (`.transcription/triage/2025/ftc.json`, pass c0bc3a63fe27; 1,854 fixtures, 500 generated returns seed 20261026, 149 partial records from 40 bases; 2,503 comparisons): 2,502 agree; 1 value difference, on a refused return, the fixture redesign.credits.refuse.ftc_carryover_prior_return (s3.foreign_any No, s3.prior_other_forms Yes, ftc.carryover Yes): project true, reply false. None on a completed return. Project stands.",
-   "context": "5a33d8b0d7b4a15151325f597d63acd7d49d6c8ec7d8f1d109d474301c3361d6",
-   "date": "2026-11-12",
-   "run": "2a223812cd3dfe727007d7a630efcc50a2d0803edb7e26d634ca570d7ea35a11",
-   "subject_key": "43c4d3d03e659cb826c7e5f0df647951aee8d37ccd810bc67b02f01ffcff15f6",
+   "printed": "ftc.all_passive_if_tax",
+   "project_expr_sha256": "d359b1d222aa772c7f2f62f357b2baf74f67a15520d8112f87763c4e110085e5",
+   "second_expr_sha256": "b6c6ca217f8603b2bb13289b8628a9e85165d37f96d0e99bee38cbddd6740d04",
+   "ruling": "Ruling: model error; follows the reply's s3.foreign_any-only gate on the foreign tax amount (see ftc.taxes_if_asked; i1116 p. 1, qualified payee statements include Form 1099-DIV). The question itself is asked of the same filers on both sides once the tax is positive. Triage: 2,818/2,995 agree; 16 completed value differences, all the gate cases (classm.f1040.6.deepseek: project true from ftc.all_passive, reply false). Project right; no change.",
+   "context": "d2d1866b288dac846a00151f6c4ee655a17c55bafc39d31f161714f73ae607dd",
+   "date": "2026-11-15",
+   "run": "dbff6f7324805514c2c51c9309aef801a69cf807ed48c5938249a47945e17dd8",
+   "subject_key": "09a7b62e1ee2d5b9eb9c3f58bb2caa6b8110b6e02f43658aefa32f8c38d62585",
    "triage": {
     "verdict": "differs",
     "kinds": [
+     "candidate-unknown",
+     "project-unknown",
      "value"
     ],
     "witnesses": [
-     "fixture:redesign.credits.refuse.ftc_carryover_prior_return@ftc"
+     "fixture:classm.w2.1.deepseek@ftc",
+     "fixture:classm.f8889.1.deepseek@ftc",
+     "fixture:classm.f8889.3.deepseek@ftc",
+     "fixture:classm.f8889.4.deepseek@ftc",
+     "fixture:classm.f8889.5.deepseek@ftc",
+     "fixture:classm.clcw.4.deepseek@ftc",
+     "fixture:classm.clcw_next_year.3.deepseek@ftc",
+     "fixture:classm.dependent.2.deepseek@ftc",
+     "fixture:classm.person.1.deepseek@ftc",
+     "fixture:classm.f1040.6.deepseek@ftc",
+     "fixture:classm.f4952.2@ftc",
+     "fixture:classm.f8959.1@ftc",
+     "fixture:classm.f8959.2@ftc",
+     "fixture:classm.f8960.2@ftc",
+     "fixture:classm.sales.2@ftc",
+     "fixture:classm.sli.2@ftc",
+     "fixture:classm.ssb.1@ftc",
+     "fixture:classm.ssb.3@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.carryover_if_asked",
+   "project_expr_sha256": "eda0e9c6b01b354262b7364fb46efcfe1915b1223cf613706e904107bc918dc9",
+   "second_expr_sha256": "4f1e84ff0391ba6cd701bc026ff95196db8b7347c8ab1994584760446a0b7432",
+   "ruling": "Ruling: representation; i1116 p. 1, the election is not available with a carryover (\"You can’t carry over to or from any other year any foreign\" tax under the election). The project asks ftc.carryover also of a filer whose 2024 return included a separate form (s3.prior_other_forms, the screening for any earlier credit form, including a 2024 Form 1116); the reply asks only on s3.foreign_any. A carryover needs an earlier Form 1116, which the project's broader parent reaches, and a carryover refuses the return (ftc.carryover_no_tax / redesign.credits.refuse.ftc_carryover_prior_return). Triage: 2,989/2,995 agree; 6 differences, none on a completed return (5 project-unknown where s3.prior_other_forms is unstated, 1 value on the refused redesign.credits.refuse.ftc_carryover_prior_return). No change.",
+   "context": "d2d1866b288dac846a00151f6c4ee655a17c55bafc39d31f161714f73ae607dd",
+   "date": "2026-11-15",
+   "run": "dbff6f7324805514c2c51c9309aef801a69cf807ed48c5938249a47945e17dd8",
+   "subject_key": "451b0a6f1c2d01f48b4df48e240e73aa4f9cf8210d9fcf6038db78a3c67dcd40",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.s179.1@ftc",
+     "fixture:classm.ssb.3@ftc",
+     "fixture:classm.dependent.6@ftc",
+     "fixture:mutation.t2.no_itemize_f8960_9a@ftc",
+     "fixture:redesign.credits.refuse.ftc_carryover_prior_return@ftc",
+     "partial:classm.sa.6.deepseek-ftc.carryover@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.credit",
+   "project_expr_sha256": "2da56c035e2a26d1c89064fc8893c7c475a8fae4c920acca63b30547b2e8ec2e",
+   "second_expr_sha256": "708cb5aaea94f997273503857de38caf837bb71b6c80ea714143888bd7a8a61e",
+   "ruling": "Ruling: model error; the reply's credit inherits its s3.foreign_any-only gate on ftc.taxes (see ftc.taxes_if_asked; i1116 p. 1, qualified payee statements include Form 1099-DIV and 1099-INT), so it is $0 for a filer with Form 1099-DIV box 7 tax who answered No to the screening question as its help directs. Triage: 2,823/2,995 agree; 13 completed value differences, every one a gate case (classm.f1040.6.deepseek project $195.00, reply $0.00; classm.s2.1 $444.00 / $0.00; classm.scveh.4 $119.00; classm.f8889.1 and stage21.f1.lower_bound_still_decides $241.00; stage5.return.itemized $120.00), and 77 project-refuses on the Form 1116 path (f1116.line35's refusals). The reply's extra test of sa.foreign_tax_deduct matters only on refused returns: a Yes there refuses the return in Schedule A. Both take f1116.line35 when Form 1116 is required and the smaller of tax and regular tax (Form 1040 line 16 plus Schedule 2 line 1z, i1116 p. 25, Line 20) otherwise. Project right; no change.",
+   "context": "d2d1866b288dac846a00151f6c4ee655a17c55bafc39d31f161714f73ae607dd",
+   "date": "2026-11-15",
+   "run": "dbff6f7324805514c2c51c9309aef801a69cf807ed48c5938249a47945e17dd8",
+   "subject_key": "a20af198870c72e23669859c19931b5cd68ea84eebf0c44423a1a07a3f241a57",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@ftc",
+     "fixture:classm.f8889.1.deepseek@ftc",
+     "fixture:classm.f8889.3.deepseek@ftc",
+     "fixture:classm.f8889.4.deepseek@ftc",
+     "fixture:classm.f8889.5.deepseek@ftc",
+     "fixture:classm.clcw.4.deepseek@ftc",
+     "fixture:classm.clcw_next_year.3.deepseek@ftc",
+     "fixture:classm.person.1.deepseek@ftc",
+     "fixture:classm.f1040.6.deepseek@ftc",
+     "fixture:classm.eic.7.deepseek@ftc",
+     "fixture:classm.retirement.4.deepseek@ftc",
+     "fixture:classm.retirement.5.deepseek@ftc",
+     "fixture:classm.sa.6.deepseek@ftc",
+     "fixture:classm.f4562.1@ftc",
+     "fixture:classm.s2.1@ftc",
+     "fixture:classm.scveh.4@ftc",
+     "fixture:classm.se.2@ftc",
+     "fixture:classm.f8889.1@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.credit",
+   "project_expr_sha256": "337b0682c817fc469669c8a3de565d2d5c74d6b52903418fb57bee504d5745d2",
+   "second_expr_sha256": "700ccc18ff21210129829411e87f62d934b036d2e7a71ca476c144218b7322fd",
+   "ruling": "Ruling: model error; the reply's credit cannot be relied on. Triage (pass 73f790ce759c, 3,002 compared): 352 agree, no value difference on any return; every difference is the reply's own: 2,068 candidate-refuses (with no foreign tax it has no zero branch and routes to f1116.line35, which refuses, e.g. stage14.asset.hy_5yr: project $0.00, f1116.other_category), 579 candidate-unknown (it reads ftc.all_passive and ftc.carryover directly, which the interview asks only when foreign tax was paid), and 3 project-refuses where the project's refusal comes from Form 2441 (f2441.line14_bad), not from this line. It also leaves out requirement 4 of the election, which its own pages carry: i1040gi p. 115, Schedule 3, line 1, 'You aren't filing Form 4563 or excluding income from sources within Puerto Rico'; the project tests it in ftc.needs1116 (sa.excluded_income). The project's credit is the election's 'smaller of (a) your total foreign taxes, or (b)' the regular tax when every condition is met (i1116 pp. 1-2; p. 25, Line 20), Form 1116 line 35 otherwise, and zero with no foreign tax.",
+   "context": "17802822ff2dd0676b9c013971b1fbd0728b1a7c7ec97f2f55aac6c0864f44ca",
+   "date": "2026-11-15",
+   "run": "3c322cf57bb247ea280150f521c248c8651b7a3c80b93d67b89b612c0d9b3fd7",
+   "subject_key": "117950d76be62e0433de9e35e3adbbf687d4bf965dd70d81ef850a9198f9e329",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@ftc",
+     "fixture:stage14.asset.mq_7yr@ftc",
+     "fixture:stage14.asset.mq_mixed@ftc",
+     "fixture:stage14.asset.mq_not@ftc",
+     "fixture:stage14.asset.bonus_100@ftc",
+     "fixture:stage14.asset.bonus_40_before@ftc",
+     "fixture:classm.f2441.1.deepseek@ftc",
+     "fixture:classm.f2441.2.deepseek@ftc",
+     "fixture:classm.f2441.3.deepseek@ftc",
+     "fixture:classm.f2441.4.deepseek@ftc",
+     "fixture:classm.f2441.5.deepseek@ftc",
+     "fixture:classm.f2441.6.deepseek@ftc",
+     "fixture:classm.w2.1.deepseek@ftc",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@ftc",
+     "fixture:mutation.t3.roth_excess_screen@ftc"
     ],
     "policy": "executable-triage-v2"
    }
@@ -216,6 +336,84 @@
    "subject_key": "0e73f66f019a05fd77f8ec8636b3c7faae886a43c0e784c1affca3b7eccb0ec4"
   },
   {
+   "printed": "ftc.eligible_if_tax",
+   "project_expr_sha256": "71bd1301272e94262a81cdd9db7fb259d7afe95dd268eb0dc07bf2bae1d6a2c4",
+   "second_expr_sha256": "cf4a9ea12b5cab6edb4775af2cb5a097421400f3868b47cfc767517fd9c95442",
+   "ruling": "Ruling: model error; follows the reply's s3.foreign_any-only gate on the foreign tax amount (see ftc.taxes_if_asked; i1116 p. 1). Triage: 2,821/2,995 agree; 16 completed value differences, all the gate cases. Project right; no change.",
+   "context": "d2d1866b288dac846a00151f6c4ee655a17c55bafc39d31f161714f73ae607dd",
+   "date": "2026-11-15",
+   "run": "dbff6f7324805514c2c51c9309aef801a69cf807ed48c5938249a47945e17dd8",
+   "subject_key": "f6bfb43a2a050ec8e38cd416a306b03057ec405a02fdd5bd753465e40e52c6a6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@ftc",
+     "fixture:classm.f8889.1.deepseek@ftc",
+     "fixture:classm.f8889.3.deepseek@ftc",
+     "fixture:classm.f8889.4.deepseek@ftc",
+     "fixture:classm.f8889.5.deepseek@ftc",
+     "fixture:classm.clcw.4.deepseek@ftc",
+     "fixture:classm.clcw_next_year.3.deepseek@ftc",
+     "fixture:classm.dependent.2.deepseek@ftc",
+     "fixture:classm.f1040.6.deepseek@ftc",
+     "fixture:classm.eic.7.deepseek@ftc",
+     "fixture:classm.retirement.4.deepseek@ftc",
+     "fixture:classm.sa.6.deepseek@ftc",
+     "fixture:classm.f4952.2@ftc",
+     "fixture:classm.f8959.1@ftc",
+     "fixture:classm.f8959.2@ftc",
+     "fixture:classm.f8960.2@ftc",
+     "fixture:classm.sales.2@ftc",
+     "fixture:classm.sli.2@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.has_tax",
+   "project_expr_sha256": "38ce81184d28a22c3d873493d7d6e00f2267ed55b3714ea3123967a5d3c5117c",
+   "second_expr_sha256": "06cb28b02faecfa5e052283c5833bede04504926d197ffa8be47a7f708a1b1c8",
+   "ruling": "Ruling: model error; as ftc.taxes_if_asked (i1116 p. 1, qualified payee statements include Form 1099-DIV and 1099-INT). The reply's test reads its own s3.foreign_any-only gate, so it is false for a filer with Form 1099-DIV box 7 tax who answered No to the screening question as its help directs (classm.f1040.6.deepseek, classm.s2.1, classm.scveh.4, classm.f8889.1: project true, reply false). Triage: 2,811/2,995 agree; 16 completed value differences, same cases. Project right; no change.",
+   "context": "d2d1866b288dac846a00151f6c4ee655a17c55bafc39d31f161714f73ae607dd",
+   "date": "2026-11-15",
+   "run": "dbff6f7324805514c2c51c9309aef801a69cf807ed48c5938249a47945e17dd8",
+   "subject_key": "368aff5d06407149fa0c8cebc0ba4b649debfe1e0f2f3658f2ed333888ca2f7f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@ftc",
+     "fixture:classm.f8889.1.deepseek@ftc",
+     "fixture:classm.f8889.3.deepseek@ftc",
+     "fixture:classm.f8889.4.deepseek@ftc",
+     "fixture:classm.f8889.5.deepseek@ftc",
+     "fixture:classm.clcw.4.deepseek@ftc",
+     "fixture:classm.clcw_next_year.3.deepseek@ftc",
+     "fixture:classm.dependent.2.deepseek@ftc",
+     "fixture:classm.person.1.deepseek@ftc",
+     "fixture:classm.f1040.6.deepseek@ftc",
+     "fixture:classm.f4952.2@ftc",
+     "fixture:classm.f4952.3@ftc",
+     "fixture:classm.f8959.1@ftc",
+     "fixture:classm.f8959.2@ftc",
+     "fixture:classm.s179.3@ftc",
+     "fixture:classm.gift.1@ftc",
+     "fixture:t264.eic.show5_agi_open_married_child@ftc",
+     "fixture:stage16.cleanup.refuse.scope_credits@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "ftc.has_tax",
    "project_expr_sha256": "38ce81184d28a22c3d873493d7d6e00f2267ed55b3714ea3123967a5d3c5117c",
    "second_expr_sha256": "1afa0661af6ed06828e7407965af184ec34dc2d6b7cb1ce7e5308025964ca9d1",
@@ -243,6 +441,84 @@
      "fixture:t264.eic.show5_agi_open_married_child@ftc",
      "fixture:stage16.cleanup.refuse.scope_credits@ftc",
      "fixture:mutation.t2.sd.line7a_gain_no_status@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.statements_if_tax",
+   "project_expr_sha256": "c99a79091fb24000e4e4428c9e0f4555086064f4c17010ecc8a8425f5463c7b1",
+   "second_expr_sha256": "763a4c23213ce0c328b072c4e59e2de6fece293445f05ea36ca17e15d686e197",
+   "ruling": "Ruling: model error; follows the reply's s3.foreign_any-only gate on the foreign tax amount (see ftc.taxes_if_asked; i1116 p. 1). Triage: 2,817/2,995 agree; 16 completed value differences, all the gate cases (classm.f1040.6.deepseek: project true, reply false). Project right; no change.",
+   "context": "d2d1866b288dac846a00151f6c4ee655a17c55bafc39d31f161714f73ae607dd",
+   "date": "2026-11-15",
+   "run": "dbff6f7324805514c2c51c9309aef801a69cf807ed48c5938249a47945e17dd8",
+   "subject_key": "5775896f097ab6705a6e594abb305d6c97da488f0a3c3da302c21c980b1a7092",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@ftc",
+     "fixture:classm.f8889.1.deepseek@ftc",
+     "fixture:classm.f8889.4.deepseek@ftc",
+     "fixture:classm.f8889.5.deepseek@ftc",
+     "fixture:classm.clcw.4.deepseek@ftc",
+     "fixture:classm.clcw_next_year.3.deepseek@ftc",
+     "fixture:classm.dependent.2.deepseek@ftc",
+     "fixture:classm.person.1.deepseek@ftc",
+     "fixture:classm.f1040.6.deepseek@ftc",
+     "fixture:classm.eic.7.deepseek@ftc",
+     "fixture:classm.sa.6.deepseek@ftc",
+     "fixture:classm.f4952.2@ftc",
+     "fixture:classm.f8959.1@ftc",
+     "fixture:classm.f8959.2@ftc",
+     "fixture:classm.f8960.2@ftc",
+     "fixture:classm.sales.2@ftc",
+     "fixture:classm.sli.2@ftc",
+     "fixture:classm.ssb.1@ftc"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ftc.taxes_if_asked",
+   "project_expr_sha256": "516e09c096ca1a4dc7ec9447da720bc160f1fa74b52a0460f636049826d72783",
+   "second_expr_sha256": "a8fb4c8528e7c560c63aba014c942da400529563510ca6a5d59366cf8d909074",
+   "ruling": "Ruling: model error; i1116 p. 1, Election To Claim the Foreign Tax Credit Without Filing Form 1116: the election covers foreign tax \"reported to you on a qualified payee statement. Qualified payee statements include Form 1099-DIV, Form 1099-INT\". The reply asks ftc.taxes only when s3.foreign_any is yes, but that screening question's help tells the filer to count fund tax in Form 1099-DIV box 7 \"only if you once filed Form 1116 for it\", so a filer with box 7 tax who never filed Form 1116 answers No and the reply drops the tax. The project asks under ftc.asked (dividends, taxable interest or s3.foreign_any), which reaches every payee-statement holder. Triage executable-triage-v2: 2,811/2,995 agree; 16 completed value differences (classm.f1040.6.deepseek project $195.00, reply $0.00; classm.s2.1 $444.00 / $0.00; classm.scveh.4; classm.f8889.1; stage5.return.itemized), all with s3.foreign_any No and Form 1099-DIV tax; the rest on refused or incomplete returns. Project right; no change.",
+   "context": "d2d1866b288dac846a00151f6c4ee655a17c55bafc39d31f161714f73ae607dd",
+   "date": "2026-11-15",
+   "run": "dbff6f7324805514c2c51c9309aef801a69cf807ed48c5938249a47945e17dd8",
+   "subject_key": "12e6f013686170cfb52afec8f634ca9e4ac2094afb73415167a8db9dac87265b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.w2.1.deepseek@ftc",
+     "fixture:classm.f8889.1.deepseek@ftc",
+     "fixture:classm.f8889.3.deepseek@ftc",
+     "fixture:classm.f8889.4.deepseek@ftc",
+     "fixture:classm.f8889.5.deepseek@ftc",
+     "fixture:classm.clcw.4.deepseek@ftc",
+     "fixture:classm.clcw_next_year.3.deepseek@ftc",
+     "fixture:classm.dependent.2.deepseek@ftc",
+     "fixture:classm.person.1.deepseek@ftc",
+     "fixture:classm.f1040.6.deepseek@ftc",
+     "fixture:classm.f4952.2@ftc",
+     "fixture:classm.f4952.3@ftc",
+     "fixture:classm.f8959.1@ftc",
+     "fixture:classm.f8959.2@ftc",
+     "fixture:classm.s179.3@ftc",
+     "fixture:classm.gift.1@ftc",
+     "fixture:t264.eic.show5_agi_open_married_child@ftc",
+     "fixture:stage16.cleanup.refuse.scope_credits@ftc"
     ],
     "policy": "executable-triage-v2"
    }

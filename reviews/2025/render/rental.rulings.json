@@ -1,0 +1,188 @@
+{
+ "kind": "render",
+ "form": "rental",
+ "rulings": [
+  {
+   "printed": "10",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Legal and other professional fees, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Legal and other professional fees: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "58122eaf38bd68bd6e6ff52cf90f16306d4fc5f2718a66564146ee69b810fdd3"
+  },
+  {
+   "printed": "11",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Management fees, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Management fees: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "e139b0f1f06e9f760495e780c21057f5c2b577ed4e4353ab915da50a11833419"
+  },
+  {
+   "printed": "12",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Mortgage interest paid to banks, etc., asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Mortgage interest paid to banks, etc.: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the Form 1098 bank interest, divided by rental days over total days of use, matches.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "60f1a6f210f15ef63d77ad6a29c96807f87d91ee4b6b19d501e194e2480ef894"
+  },
+  {
+   "printed": "13",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Other interest, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Other interest: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "84bbf5439fafa216affc8a5c965078b9c6a5c11da7ecafa0f56adf084d3cb5d9"
+  },
+  {
+   "printed": "14",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Repairs, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Repairs: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "93f4099324aa6fe85b9f381795b87529e9f32cee4770ea70ba321e2cd8b5fb20"
+  },
+  {
+   "printed": "15",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Supplies, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Supplies: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "89e54f21bb65e4379d1f5c5f547035551926dfe76cb82970562a7c9efabea22e"
+  },
+  {
+   "printed": "16",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Taxes, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Taxes: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "afd48ce977a016391f911b9eeb83ab915beb84a89662dc5234242ae687fa0b19"
+  },
+  {
+   "printed": "17",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Utilities, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Utilities: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "4141be29f02140fcd311fefce6822fb0aff1eccc38f2b16937ad3ba714995476"
+  },
+  {
+   "printed": "18",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Depreciation of the buildings and improvements, before any division for personal use\"] [helper \"Any day of personal use in 2025\" = true → helper \"Depreciation: the rental part\"]",
+   "model": "Building depreciation from the mid-month tables, divided by rental days, matches, and depletion is refused. But it is not zeroed when the property is excluded, contrary to 'do not deduct any rental expenses'.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "57278e35b0b9ad92600d826de6b0970798a1e5f9b12e69fc922853abba2b0034"
+  },
+  {
+   "printed": "19",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Other, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Other: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "b3648814eb19d1cbb92a0e5cfb5282e0c4adb4d53382fc7e0003c1ea0e5e8ecc"
+  },
+  {
+   "printed": "2 (rental.days_personal)",
+   "restated": "Input — How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free or below a fair rent)?",
+   "model": "The restated list leaves out 'Anyone under an agreement that lets you use some other unit'. It also leaves out the exceptions for family 'unless the unit is rented at a fair rental price to that person as his or her main home' and 'Do not count as personal use: Any day you spent working substantially full time repairing and maintaining the unit'. Each of these can change the count.",
+   "ruling": "Ruling: finding; i1040se p. 4, Line 2: personal use includes 'Anyone under an agreement that lets you use some other unit' and 'Do not count as personal use: Any day you spent working substantially full time repairing and maintaining the unit ...; or Any days you used the unit as your main home before or after renting it ... for at least 12 consecutive months'. The question and its help (rental.personal_any: family renting at a fair rent as a main home is not personal use) leave out the excluded repair and main-home days and the swap arrangement, so a converted former home fails the home test or is divided on wrong days (BUG-0918).",
+   "context": "b66523cd4478f10eea95afd2cd36b99d14d90893cbef2cbcbadca8f03a55fced",
+   "date": "2026-11-15",
+   "run": "ae16189042837d57f95592a5e920beabfd8e5b448b050ace9f6ccf5ccb813ce7",
+   "severity": "medium",
+   "subject_key": "7ee7bedebe63b623a153382124f17333df5c4d6577d51a4156789334a19f805c"
+  },
+  {
+   "printed": "2 (rental.days_personal)",
+   "restated": "Input — How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free, below a fair rent or under a home swap)? Leave out days spent mostly repairing it, and days it was your main home before or after renting it out (or trying to) for 12 months or more in a row.",
+   "model": "The main-home exclusion requires 12 months or more in a row. The IRS also allows a shorter period: 'for at least 12 consecutive months (or for a period of less than 12 consecutive months at the end of which you sold or exchanged it)'. The restatement also does not except family members renting it at a fair price 'as his or her main home'.",
+   "ruling": "Ruling: finding; i1040se p. 4, Line 2 excludes main-home days around a rental of 'at least 12 consecutive months (or for a period of less than 12 consecutive months at the end of which you sold or exchanged it)'; the question names only the 12-month case. A 2025 sale of a listed building already refuses at rprop.screen, so the gap is a shorter rental ended by a later sale or exchange: low (BUG-0772). The family point is representation: the question asks days 'used that way', the use defined at rental.personal_any, whose help says family renting at a fair rent as their main home is not personal use.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "severity": "low",
+   "subject_key": "e508fd2cc131065b529498db7286d12c6440bbc049ee58c18dea83cf025be488"
+  },
+  {
+   "printed": "20",
+   "restated": "Add line 5, line 7, line 8, line 9, line 10, line 11, line 12, line 13, line 14, line 15, line 16, line 17, line 18, and line 19.",
+   "model": "The sum matches 'Add lines 5 through 19' (line 6 is refused). But the total is still reported for an excluded property; the IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days.",
+   "ruling": "Ruling: representation; line 20 adds lines 5 and 7 to 19 (line 6 refused), as the review says; for an excluded entry the line is not reported: sche sums over rental.reported only and line 21 is zero (i1040se p. 5, Line 2, 'do not deduct any rental expenses').",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "056bb9423a1ca89aff64ef0bf356e6d2429576c6b3407e527ddeb5b5d257b95a"
+  },
+  {
+   "printed": "5",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Advertising, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Advertising: the rental part (rental days over total days of use)\"]",
+   "model": "The rental-day ratio is right, but the amount is still entered when the property is excluded. Line 2 instructions say a home rented fewer than 15 days means 'do not report the rental income and do not deduct any rental expenses'; only lines 3 and 21 are zeroed.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "63eb0554a27d04ef9829ce57dd0dacf52dcb7d6e388003707bf2e6859a4dc3e4"
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Cleaning and maintenance, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Cleaning and maintenance: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "a0735c771cd2b153edb454130c931946f0f280893ca86890a8c843995feeb500"
+  },
+  {
+   "printed": "8",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Commissions, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Commissions: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "15b484f14ea98914a15ff97b16f9b54f4316b946e51fae6fda3850cfb362853a"
+  },
+  {
+   "printed": "9",
+   "restated": "Choose — [helper \"Any day of personal use in 2025\" = false → helper \"Insurance, asked only when ticked (zero otherwise)\"] [helper \"Any day of personal use in 2025\" = true → helper \"Insurance: the rental part (rental days over total days of use)\"]",
+   "model": "Not zeroed when the property is excluded. The IRS says 'do not deduct any rental expenses' when it was used as a home and rented fewer than 15 days. Otherwise the allocation matches Pub. 527.",
+   "ruling": "Ruling: representation; an entry that is used as a home and rented fewer than 15 days (rental.excluded) is never reported: Schedule E's totals (sche.rents and lines 23a to 26) sum each rental line over rental.reported only, and lines 3 and 21 of the entry are zero, so none of its expenses is deducted (i1040se p. 5, Line 2, 'do not report the rental income and do not deduct any rental expenses'). The entry's unreported line keeps its computed amount internally; the division for personal use matches, as the review says.",
+   "context": "25ecb1795ccce9dc75ae4bc78d262e9345d9bad91f5c314071de5874a1ffd333",
+   "date": "2026-11-15",
+   "run": "9ebe7735657054a18b18ae66d76bf730d717161e76273cfeb8f64a7d2284fd39",
+   "subject_key": "e8f1e048a48918c8268b63c311b18162194cb9bee717d894586451796a7b9f20"
+  },
+  {
+   "printed": "VI (a)",
+   "restated": "Choose — [helper \"Actively participated: Part IV (otherwise Part V)\" = true → line IV/V (e)] [helper \"Actively participated: Part IV (otherwise Part V)\" = false → helper \"Zero\"]",
+   "model": "Part IV is chosen on active participation alone. The text says 'Married individuals who file separate returns and lived with their spouses at any time during the tax year don't qualify under the active participation rule and must use Part V instead of Part IV.' Those filers should have nothing in Part VI column (a).",
+   "ruling": "Ruling: scope; married filing separately is refused for every return (scope.yaml, refusal on s3.mfs, 'Married filing separately'), so the rule that MFS filers who lived with their spouse 'must use Part V instead of Part IV' never applies to a return that completes.",
+   "context": "b66523cd4478f10eea95afd2cd36b99d14d90893cbef2cbcbadca8f03a55fced",
+   "date": "2026-11-15",
+   "run": "ae16189042837d57f95592a5e920beabfd8e5b448b050ace9f6ccf5ccb813ce7",
+   "subject_key": "50a37997d648d75ee73cd3be907faa86bf76ccf41c5839dc828c2c39a7a4ce83"
+  }
+ ]
+}

@@ -211,6 +211,24 @@
     "url": "https://www.irs.gov/pub/irs-pdf/p526.pdf"
   },
   {
+    "id": "p936",
+    "title": "Home Mortgage Interest Deduction",
+    "designation": "Publication 936",
+    "url": "https://www.irs.gov/pub/irs-pdf/p936.pdf"
+  },
+  {
+    "id": "p926",
+    "title": "Household Employer's Tax Guide",
+    "designation": "Publication 926 (2025)",
+    "url": "https://www.irs.gov/pub/irs-prior/p926--2025.pdf"
+  },
+  {
+    "id": "i1040sh",
+    "title": "Instructions for Schedule H (Form 1040)",
+    "designation": "Instructions for Schedule H (Form 1040)",
+    "url": "https://www.irs.gov/pub/irs-pdf/i1040sh.pdf"
+  },
+  {
     "id": "p538",
     "title": "Accounting Periods and Methods",
     "designation": "Publication 538",
@@ -2304,5 +2322,217 @@
       "doc": "f8911sa",
       "page": 1
     }
+  },
+  {
+    "id": "f1116sb",
+    "title": "Foreign Tax Carryover Reconciliation Schedule",
+    "designation": "Schedule B (Form 1116)",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1116sb.pdf"
+  },
+  {
+    "id": "i1116sb",
+    "title": "Instructions for Schedule B (Form 1116)",
+    "designation": "Instructions for Schedule B (Form 1116)",
+    "url": "https://www.irs.gov/pub/irs-pdf/i1116sb.pdf"
+  },
+  {
+    "id": "p514",
+    "title": "Foreign Tax Credit for Individuals",
+    "designation": "Publication 514",
+    "url": "https://www.irs.gov/pub/irs-pdf/p514.pdf"
+  },
+  {
+    "id": "cfr-26-1-904-4",
+    "title": "§ 1.904–4 Separate application of section 904 with respect to certain categories of income.",
+    "url": "https://www.govinfo.gov/link/cfr/26/1?sectionnum=904-4&year=mostrecent&link-type=pdf"
+  },
+  {
+    "id": "cfr-26-1-861-8",
+    "title": "§ 1.861–8 Computation of taxable income from sources within the United States and from other sources and activities.",
+    "url": "https://www.govinfo.gov/link/cfr/26/1?sectionnum=861-8&year=mostrecent&link-type=pdf"
+  },
+  {
+    "id": "f1099da",
+    "title": "Digital Asset Proceeds From Broker Transactions",
+    "designation": "Form 1099-DA",
+    "title_source": "i1099da",
+    "url": "https://www.irs.gov/pub/irs-prior/f1099da--2025.pdf"
+  },
+  {
+    "id": "i1099da",
+    "title": "Instructions for Form 1099-DA",
+    "designation": "Instructions for Form 1099-DA",
+    "url": "https://www.irs.gov/pub/irs-prior/i1099da--2025.pdf"
+  },
+  {
+    "id": "n-2023-27",
+    "title": "Treatment of certain nonfungible tokens as collectibles",
+    "designation": "Notice 2023-27",
+    "url": "https://www.irs.gov/pub/irs-drop/n-23-27.pdf"
+  },
+  {
+    "id": "p555",
+    "title": "Community Property",
+    "designation": "Publication 555",
+    "url": "https://www.irs.gov/pub/irs-pdf/p555.pdf"
+  },
+  {
+    "id": "p915",
+    "title": "Publication 915",
+    "designation": "Publication 915",
+    "url": "https://www.irs.gov/pub/irs-pdf/p915.pdf"
+  },
+  {
+    "id": "p596",
+    "title": "Earned Income Credit",
+    "designation": "Publication 596",
+    "url": "https://www.irs.gov/pub/irs-pdf/p596.pdf"
+  },
+  {
+    "id": "rp-2024-28",
+    "title": "Rev. Proc. 2024-28",
+    "designation": "Rev. Proc. 2024-28",
+    "url": "https://www.irs.gov/pub/irs-drop/rp-24-28.pdf"
+  },
+  {
+    "id": "rr-2019-24",
+    "title": "Rev. Rul. 2019-24",
+    "designation": "Rev. Rul. 2019-24",
+    "url": "https://www.irs.gov/pub/irs-drop/rr-19-24.pdf"
+  },
+  {
+    "id": "rr-2023-14",
+    "title": "Rev. Rul. 2023-14",
+    "designation": "Rev. Rul. 2023-14",
+    "url": "https://www.irs.gov/pub/irs-drop/rr-23-14.pdf"
+  },
+  {
+    "id": "rp-2019-38",
+    "title": "Rev. Proc. 2019-38",
+    "designation": "Rev. Proc. 2019-38",
+    "url": "https://www.irs.gov/pub/irs-drop/rp-19-38.pdf"
+  },
+  {
+    "id": "p225",
+    "title": "Farmer's Tax Guide",
+    "designation": "Publication 225",
+    "url": "https://www.irs.gov/pub/irs-pdf/p225.pdf"
+  },
+  {
+    "id": "p536",
+    "title": "Net Operating Losses (NOLs) for Individuals, Estates, and Trusts",
+    "designation": "Publication 536",
+    "url": "https://www.irs.gov/pub/irs-prior/p536--2023.pdf"
+  },
+  {
+    "id": "p929",
+    "title": "Tax Rules for Children and Dependents",
+    "designation": "Publication 929",
+    "url": "https://www.irs.gov/pub/irs-prior/p929--2021.pdf"
+  },
+  {
+    "id": "p534",
+    "title": "Depreciating Property Placed in Service Before 1987",
+    "designation": "Publication 534",
+    "url": "https://www.irs.gov/pub/irs-pdf/p534.pdf"
+  },
+  {
+    "id": "f461",
+    "title": "Limitation on Business Losses",
+    "designation": "Form 461",
+    "url": "https://www.irs.gov/pub/irs-pdf/f461.pdf"
+  },
+  {
+    "id": "i461",
+    "title": "Instructions for Form 461",
+    "designation": "Instructions for Form 461",
+    "url": "https://www.irs.gov/pub/irs-pdf/i461.pdf"
+  },
+  {
+    "id": "f1045",
+    "title": "Application for Tentative Refund",
+    "designation": "Form 1045",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1045.pdf"
+  },
+  {
+    "id": "i1045",
+    "title": "Instructions for Form 1045",
+    "designation": "Instructions for Form 1045",
+    "url": "https://www.irs.gov/pub/irs-pdf/i1045.pdf"
+  },
+  {
+    "id": "f7203",
+    "title": "S Corporation Shareholder Stock and Debt Basis Limitations",
+    "designation": "Form 7203",
+    "url": "https://www.irs.gov/pub/irs-pdf/f7203.pdf"
+  },
+  {
+    "id": "i7203",
+    "title": "Instructions for Form 7203",
+    "designation": "Instructions for Form 7203",
+    "url": "https://www.irs.gov/pub/irs-pdf/i7203.pdf"
+  },
+  {
+    "id": "p541",
+    "title": "Partnerships",
+    "designation": "Publication 541",
+    "url": "https://www.irs.gov/pub/irs-pdf/p541.pdf"
+  },
+  {
+    "id": "p531",
+    "title": "Reporting Tip Income",
+    "designation": "Publication 531",
+    "url": "https://www.irs.gov/pub/irs-pdf/p531.pdf"
+  },
+  {
+    "id": "p544",
+    "title": "Sales and Other Dispositions of Assets",
+    "designation": "Publication 544",
+    "url": "https://www.irs.gov/pub/irs-pdf/p544.pdf"
+  },
+  {
+    "id": "f172",
+    "title": "Net Operating Losses (NOLs)",
+    "designation": "Form 172",
+    "url": "https://www.irs.gov/pub/irs-pdf/f172.pdf"
+  },
+  {
+    "id": "i172",
+    "title": "Instructions for Form 172",
+    "designation": "Instructions for Form 172",
+    "url": "https://www.irs.gov/pub/irs-pdf/i172.pdf"
+  },
+  {
+    "id": "n-2014-7",
+    "title": "Notice 2014-7",
+    "designation": "Notice 2014-7",
+    "url": "https://www.irs.gov/pub/irs-drop/n-14-07.pdf"
+  },
+  {
+    "id": "p4801",
+    "title": "Individual Income Tax Returns Line Item Estimates",
+    "designation": "Publication 4801",
+    "url": "https://www.irs.gov/pub/irs-pdf/p4801.pdf"
+  },
+  {
+    "id": "usc-26-172",
+    "title": "§ 172. Net operating loss deduction",
+    "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapB-partVI-sec172.pdf",
+    "document_tax_year": 2025,
+    "purpose": "26 U.S.C. 172 (net operating loss deduction, including the 80 percent limitation); law, not a form source"
+  },
+  {
+    "id": "usc-26-402",
+    "title": "§ 402. Taxability of beneficiary of employees’ trust",
+    "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapD-partI-subpartA-sec402.pdf",
+    "document_tax_year": 2025,
+    "purpose": "BUG-0719: 26 U.S.C. 402 (taxability of beneficiary of employees' trust); law, not a form source"
+  },
+  {
+    "id": "usc-26-457",
+    "title": "§ 457. Deferred compensation plans of State and local governments and tax-exempt organizations",
+    "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/pdf/USCODE-2024-title26-subtitleA-chap1-subchapE-partII-subpartB-sec457.pdf",
+    "document_tax_year": 2025,
+    "purpose": "BUG-0719: 26 U.S.C. 457 (deferred compensation plans of State and local governments and tax-exempt organizations); law, not a form source"
   }
 ]

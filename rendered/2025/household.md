@@ -597,7 +597,7 @@
 
 ## (helper) — `household.joint_unmarried`
 
-- **Authored helper label:** Filing jointly, not married at the end of 2025, and no spouse who died in 2025
+- **Authored helper label:** Not married at the end of 2025, and no spouse who died in 2025 (read for a joint or a separate return)
 - **Encoded (Bool):** Choose — [helper "Married at the end of 2025 (false for a person filing as single or head of household who has never been married)" = true → helper "Year parameter household.no (false)"] [helper "Married at the end of 2025 (false for a person filing as single or head of household who has never been married)" = false → helper "Your spouse did not die in 2025"]
 - Expr: `{"alternatives":[{"guard":{"eq":["household.married",{"const":true}],"op":"test"},"then":"household.no"},{"guard":{"eq":["household.married",{"const":false}],"op":"test"},"then":"household.no_spouse_died"}],"op":"choose"}`
 - Cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025." (2025; printed date 2026-02-25; sha256 482e9c48)
@@ -612,6 +612,66 @@
 ## (gate) — `household.filing_status_conflict`
 
 - **Authored helper label:** The filing status conflicts with the marriage facts entered
-- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "Married at the end of 2025 (false for a person filing as single or head of household who has never been married)"] [f1040 line Filing Status = 'mfj' → helper "Filing jointly, not married at the end of 2025, and no spouse who died in 2025"] [f1040 line Filing Status = 'mfs' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'hoh' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'qss' → helper "Year parameter household.no (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"household.married"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"household.joint_unmarried"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"household.no"}],"op":"choose"}`
-- Cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025." (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "Married at the end of 2025 (false for a person filing as single or head of household who has never been married)"] [f1040 line Filing Status = 'mfj' → helper "Not married at the end of 2025, and no spouse who died in 2025 (read for a joint or a separate return)"] [f1040 line Filing Status = 'mfs' → helper "Not married at the end of 2025, and no spouse who died in 2025 (read for a joint or a separate return)"] [f1040 line Filing Status = 'hoh' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'qss' → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"household.married"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"household.joint_unmarried"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"household.joint_unmarried"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."; p. 14, Married Filing Separately, "if you are married at the end of 2025 and file a separate return"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.mfs`
+
+- **Authored helper label:** Filing status married filing separately
+- **Encoded (Bool):** f1040 line Filing Status = 'mfs'
+- Expr: `{"eq":["f1040.status",{"const":"mfs"}],"op":"test"}`
+- Cite: [i1040gi] p. 14, Married Filing Separately, "Check the “Married filing separately” box in the Filing Status section on page 1 of Form 1040 or 1040-SR if you are married at the end of 2025 and file a separate return" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.mfs_spouse_notice`
+
+- **Authored helper label:** Notice: on a married filing separately return, enter your spouse's name in the entry space beside the box, and your spouse's SSN or ITIN in the space for the spouse's SSN ("NRA" if your spouse has none and needs none)
+- **Encoded (Bool):** Enter the amount from helper "Filing status married filing separately".
+- Expr: `{"from":"household.mfs","op":"copy"}`
+- Cite: [i1040gi] p. 14, Married Filing Separately, "Enter your spouse’s name in the entry space. Be sure to enter your spouse’s SSN or ITIN in the space for spouse’s SSN on Form 1040 or 1040-SR. If your spouse doesn’t have and isn’t required to have an SSN or ITIN, enter “NRA” in the entry space." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.mfs_living`
+
+- **Authored helper label:** Married filing separately: when you lived with your spouse in 2025 (together_late: at some time from July through December; apart_last6: only before July; apart_all_year: not at any time)
+- **Encoded (Enum(mfs_living)):** Input — Married filing separately: did you live with your spouse at any time in 2025? together_late if you lived together at some time from July 1 through December 31, 2025; apart_last6 if you lived together only before July 1, 2025; apart_all_year if you did not live together at any time in 2025. A temporary absence for special circumstances, such as business, medical care, school or military service, counts as time lived together.
+- Interpretation: amb.2025.mfs_lived_apart
+- Expr: `{"op":"input","source":"Married filing separately: did you live with your spouse at any time in 2025? together_late if you lived together at some time from July 1 through December 31, 2025; apart_last6 if you lived together only before July 1, 2025; apart_all_year if you did not live together at any time in 2025. A temporary absence for special circumstances, such as business, medical care, school or military service, counts as time lived together."}`
+- Cite: [i1040gi] p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025"; p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.mfs_living_else`
+
+- **Authored helper label:** Year parameter household.mfs_living_else (together_late)
+- **Encoded (Enum(mfs_living)):** Enter together_late (household.mfs_living_else).
+- Expr: `{"op":"param","ref":"household.mfs_living_else"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.mfs_living_if_mfs`
+
+- **Authored helper label:** When you lived with your spouse in 2025, asked only on a married filing separately return (together_late otherwise, so that neither lived-apart test is met)
+- **Encoded (Enum(mfs_living)):** Choose — [helper "Filing status married filing separately" = true → helper "Married filing separately: when you lived with your spouse in 2025 (together_late: at some time from July through December; apart_last6: only before July; apart_all_year: not at any time)"] [helper "Filing status married filing separately" = false → helper "Year parameter household.mfs_living_else (together_late)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.mfs",{"const":true}],"op":"test"},"then":"household.mfs_living"},{"guard":{"eq":["household.mfs",{"const":false}],"op":"test"},"then":"household.mfs_living_else"}],"op":"choose"}`
+- Cite: [i1040gi] p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"; p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.mfs_apart_all_year`
+
+- **Authored helper label:** Married filing separately, and you lived apart from your spouse for all of 2025
+- **Encoded (Bool):** helper "When you lived with your spouse in 2025, asked only on a married filing separately return (together_late otherwise, so that neither lived-apart test is met)" = 'apart_all_year'
+- Interpretation: amb.2025.mfs_lived_apart
+- Expr: `{"eq":["household.mfs_living_if_mfs",{"const":"apart_all_year"}],"op":"test"}`
+- Cite: [i1040gi] p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"; p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "married filing separately and you lived apart from your spouse for all of 2025, enter $89,000" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.mfs_apart_last6`
+
+- **Authored helper label:** Married filing separately, and your spouse did not live with you at any time in the last 6 months of 2025
+- **Encoded (Bool):** (helper "When you lived with your spouse in 2025, asked only on a married filing separately return (together_late otherwise, so that neither lived-apart test is met)" = 'apart_last6' or helper "When you lived with your spouse in 2025, asked only on a married filing separately return (together_late otherwise, so that neither lived-apart test is met)" = 'apart_all_year')
+- Interpretation: amb.2025.mfs_lived_apart
+- Expr: `{"any":[{"eq":["household.mfs_living_if_mfs",{"const":"apart_last6"}],"op":"test"},{"eq":["household.mfs_living_if_mfs",{"const":"apart_all_year"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `household.mfs_community_property`
+
+- **Authored helper label:** Married filing separately, and you lived in a community property state at some time in 2025
+- **Encoded (Bool):** Choose — [f1040 line Filing Status = 'single' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfj' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'mfs' → helper "Did you live in a community property state at any time in 2025?"] [f1040 line Filing Status = 'hoh' → helper "Year parameter household.no (false)"] [f1040 line Filing Status = 'qss' → helper "Year parameter household.no (false)"]
+- Interpretation: amb.2025.mfs_community_property
+- Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"household.community_property"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"household.no"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 14, Married Filing Separately, "Different rules apply to people in community property states; see Pub. 555"; p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income" (2025; printed date 2026-02-25; sha256 482e9c48)

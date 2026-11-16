@@ -6,9 +6,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1099div] p. 5, Instructions for Recipient, boxes 1a, 2a, 3, 9, 10, 12 and 13, Box 1b, "The amount shown may be dividends a corporation paid directly to you as a participant (or beneficiary of a participant) in an employee stock ownership plan (ESOP)", Nominees, "If this form includes amounts belonging to another person, you are considered a nominee recipient", "Box 1a. Shows total ordinary dividends that are taxable", "Box 2a. Shows total capital gain distributions from a regulated investment company (RIC) or real estate investment trust (REIT)", "Box 3. Shows a return of capital. To the extent of your cost (or other basis) in the stock, the distribution reduces your basis and is not taxable", "Boxes 9 and 10. Show cash and noncash liquidation distributions", "Box 12. Shows exempt-interest dividends from a mutual fund or other RIC paid to you during the calendar year", "Box 13. Shows exempt-interest dividends subject to the alternative minimum tax. This amount is included in box 12" (January 2024 (continuous-use form); 4ea1de80)
 
 == Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes) ==
-  Filing Status Single. Married filing jointly (even if only one had income). Married filing separately. Head of household (HOH). Qualifying surviving spouse (QSS).
-      = single
-      cite: [f1040] Form 1040, Filing Status (2025; created 2025-09-05; 3d31c226)
   31  Amount from Schedule 3, line 15
       = $1,481.80
       cite: [f1040] Form 1040 (2025), line 31 (2025; created 2025-09-05; 3d31c226)
@@ -157,9 +154,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) A business on the return claims the credit for federal tax paid on fuels (Form 4136), which belongs on line 12
       = false
       cite: [i1040gi] p. 117, Line 12, "Attach Form 4136" (2025; printed date 2026-02-25; 482e9c48)
-  (gate) Married filing separately
-      = false
-      cite: [i1040gi] p. 14, Married Filing Separately (2025; printed date 2026-02-25; 482e9c48)
   9   Net premium tax credit. Attach Form 8962
       = $0
       cite: [f1040s3] p. 1, Part II, line 9, "Net premium tax credit. Attach Form 8962"; i1040gi p. 117, "your net premium tax credit will be shown on Form 8962, line 26." (2025; created 2025-11-17; 008cfd3f)
@@ -211,7 +205,6 @@ Derivations:
   f8962.any: test(f8962.forms = 0; 0 = 0)
   s3.zero: param(#sales.zero = $0)
   s3.line9: choose(f8962.any = false; true = true; f8962.any = false; false = false; s3.zero = $0)
-  s3.mfs: test(f1040.status = single; "mfs" = mfs)
   person[taxpayer].w2[a].over: test(person[taxpayer].w2[a].box4 = $6,200; #ss.limit = $10,918.20)
   person[taxpayer].w2[b].over: test(person[taxpayer].w2[b].box4 = $6,200; #ss.limit = $10,918.20)
   person[taxpayer].overcount: sum_over(person[taxpayer].w2[a].over = false; true = true; person[taxpayer].w2[b].over = false; true = true)
@@ -226,7 +219,7 @@ Derivations:
   person[taxpayer].withheld: sum_over(person[taxpayer].w2[a].box4 = $6,200; person[taxpayer].w2[b].box4 = $6,200)
   person[taxpayer].excess: subtract_floor0(person[taxpayer].withheld = $12,400; #ss.limit = $10,918.20)
   person[taxpayer].credit: choose(person[taxpayer].rrta = false; person[taxpayer].over = false; person[taxpayer].eligible = true; true = true; person[taxpayer].excess = $1,481.80)
-  s3.line11: sum_over(s3.mfs = false; person[taxpayer].credit = $1,481.80)
+  s3.line11: sum_over(person[taxpayer].credit = $1,481.80)
   s3.no: param(#s3.no = false)
   s3.kerosene_credit_if_kerosene: choose(s3.kerosene = false; true = true; s3.kerosene = false; false = false; s3.no = false)
   s3.business_fuel_count: sum_over(person[taxpayer].sc_fuel_count = 0)

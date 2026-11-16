@@ -1,0 +1,3132 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "f1116.c1_unlimited",
+      "covers": [
+        "f1116",
+        "f1116col",
+        "f1116.line35",
+        "f1116.line21",
+        "f1116col.line3g",
+        "ftc.credit"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 32000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 32000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 32000
+        },
+        "s3.line1": {
+          "kind": "money",
+          "cents": 32000
+        },
+        "f1116.line20": {
+          "kind": "money",
+          "cents": 1509500
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 54946
+        },
+        "f1116.line7_total": {
+          "kind": "money",
+          "cents": 342670
+        },
+        "f1116.line24": {
+          "kind": "money",
+          "cents": 32000
+        }
+      }
+    },
+    {
+      "id": "f1116.c2_carryover_generated",
+      "covers": [
+        "f1116sb",
+        "f1116sb.l6_xiii",
+        "f1116sb.l8_xiv",
+        "f1116sb.excess_limit"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 60000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 60000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 54946
+        },
+        "f1116sb.l6_xiii": {
+          "kind": "money",
+          "cents": 5054
+        },
+        "f1116sb.l8_xiii": {
+          "kind": "money",
+          "cents": 5054
+        },
+        "f1116sb.l8_xiv": {
+          "kind": "money",
+          "cents": 5054
+        },
+        "f1116sb.excess_limit": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l3_xiv": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "f1116.c2_prior_form_room",
+      "covers": [
+        "f1116sb",
+        "f1116sb.carryback",
+        "f1116sb.prior_year_if_excess"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 60000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 60000,
+        "f1116sb.prior_year": "form_room"
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116sb.carryback",
+          "form": "Schedule B (Form 1116), line 7 (carryback to 2024)",
+          "remedy": "Foreign tax above this year's limit is carried back first to 2024 when that year had room under its limit, on an amended 2024 return, which this tool does not prepare.",
+          "cite": {
+            "doc": "p514",
+            "locator": "p. 37, Carryback and Carryover, \"You are considered to have paid this unused foreign tax first in 2024 (the first preceding tax year) up to the excess limit in that year\"",
+            "revision": "2025 (Publication 514 (2025), Catalog Number 15018A, Jan 30, 2026)",
+            "snapshot": "35061c2d247112cd65654cdcd446aa7bd2d3370f84da2563239b8fe772a462bb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c2_prior_other",
+      "covers": [
+        "f1116sb",
+        "f1116sb.carryback",
+        "f1116sb.prior_year_if_excess"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 60000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 60000,
+        "f1116sb.prior_year": "other"
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116sb.carryback",
+          "form": "Schedule B (Form 1116), line 7 (carryback to 2024)",
+          "remedy": "Foreign tax above this year's limit is carried back first to 2024 when that year had room under its limit, on an amended 2024 return, which this tool does not prepare.",
+          "cite": {
+            "doc": "p514",
+            "locator": "p. 37, Carryback and Carryover, \"You are considered to have paid this unused foreign tax first in 2024 (the first preceding tax year) up to the excess limit in that year\"",
+            "revision": "2025 (Publication 514 (2025), Catalog Number 15018A, Jan 30, 2026)",
+            "snapshot": "35061c2d247112cd65654cdcd446aa7bd2d3370f84da2563239b8fe772a462bb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c2_prior_election",
+      "covers": [
+        "f1116sb",
+        "f1116sb.carryback",
+        "f1116sb.prior_year_if_excess"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 60000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 60000,
+        "f1116sb.prior_year": "election"
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 54946
+        }
+      }
+    },
+    {
+      "id": "f1116.c2_prior_form_full",
+      "covers": [
+        "f1116sb",
+        "f1116sb.carryback",
+        "f1116sb.prior_year_if_excess"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 60000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 60000,
+        "f1116sb.prior_year": "form_full"
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 54946
+        }
+      }
+    },
+    {
+      "id": "f1116.c5_carryover_in",
+      "covers": [
+        "f1116",
+        "f1116sb",
+        "f1116.line10",
+        "f1116sb.l4_iii",
+        "ftc.elect"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 29946,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 29946,
+        "ftc.carryover": true,
+        "$f1116sbyr": [
+          "a",
+          "b",
+          "c"
+        ],
+        "f1116sbyr[a].year": "p10",
+        "f1116sbyr[a].amount": 8000,
+        "f1116sbyr[b].year": "p9",
+        "f1116sbyr[b].amount": 6000,
+        "f1116sbyr[c].year": "p8",
+        "f1116sbyr[c].amount": 13000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 54946
+        },
+        "ftc.needs1116": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1116.line10": {
+          "kind": "money",
+          "cents": 27000
+        },
+        "f1116.line14": {
+          "kind": "money",
+          "cents": 56946
+        },
+        "f1116sb.excess_limit": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "f1116sb.l4_i": {
+          "kind": "money",
+          "cents": -8000
+        },
+        "f1116sb.l4_ii": {
+          "kind": "money",
+          "cents": -6000
+        },
+        "f1116sb.l4_iii": {
+          "kind": "money",
+          "cents": -11000
+        },
+        "f1116sb.l4_xiv": {
+          "kind": "money",
+          "cents": -25000
+        },
+        "f1116sb.l5_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_iii": {
+          "kind": "money",
+          "cents": 2000
+        },
+        "f1116sb.l8_xiv": {
+          "kind": "money",
+          "cents": 2000
+        },
+        "f1116sb.l6_xiii": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "f1116.c5_no_carryover_elects",
+      "covers": [
+        "ftc.elect"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 29946,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 29946
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 29946
+        },
+        "ftc.needs1116": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "f1116.c5_carryover_expires",
+      "covers": [
+        "f1116sb",
+        "f1116sb.l5_i",
+        "f1116sb.room_xii"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 29946,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 29946,
+        "ftc.carryover": true,
+        "$f1116sbyr": [
+          "a",
+          "b"
+        ],
+        "f1116sbyr[a].year": "p10",
+        "f1116sbyr[a].amount": 30000,
+        "f1116sbyr[b].year": "p1",
+        "f1116sbyr[b].amount": 4000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 54946
+        },
+        "f1116.line10": {
+          "kind": "money",
+          "cents": 34000
+        },
+        "f1116sb.l4_i": {
+          "kind": "money",
+          "cents": -25000
+        },
+        "f1116sb.l4_xii": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l5_i": {
+          "kind": "money",
+          "cents": -5000
+        },
+        "f1116sb.l8_xii": {
+          "kind": "money",
+          "cents": 4000
+        },
+        "f1116sb.l8_vii": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_xiv": {
+          "kind": "money",
+          "cents": 4000
+        }
+      }
+    },
+    {
+      "id": "f1116.c5_carryover_and_excess",
+      "covers": [
+        "f1116sb",
+        "f1116sb.l6_xiii",
+        "f1116sb.l5_i"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 60000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 60000,
+        "ftc.carryover": true,
+        "$f1116sbyr": [
+          "a",
+          "b"
+        ],
+        "f1116sbyr[a].year": "p10",
+        "f1116sbyr[a].amount": 10000,
+        "f1116sbyr[b].year": "p1",
+        "f1116sbyr[b].amount": 4000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 54946
+        },
+        "f1116.line10": {
+          "kind": "money",
+          "cents": 14000
+        },
+        "f1116.line14": {
+          "kind": "money",
+          "cents": 74000
+        },
+        "f1116sb.l4_xiv": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l5_i": {
+          "kind": "money",
+          "cents": -10000
+        },
+        "f1116sb.l6_xiii": {
+          "kind": "money",
+          "cents": 5054
+        },
+        "f1116sb.l8_xii": {
+          "kind": "money",
+          "cents": 4000
+        },
+        "f1116sb.l8_xiv": {
+          "kind": "money",
+          "cents": 9054
+        }
+      }
+    },
+    {
+      "id": "f1116.c5_carryover_no_tax",
+      "covers": [
+        "ftc.carryover_no_tax"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 0,
+        "ftc.carryover": true
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "ftc.carryover_no_tax",
+          "form": "Form 1116 (a carryover with no foreign tax in 2025)",
+          "remedy": "A foreign tax credit carried from another year, with no foreign tax paid in 2025, is figured on Form 1116 from the year's foreign income, which this tool does not ask for without foreign tax.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c5_changed",
+      "covers": [
+        "f1116sb",
+        "f1116sb.changed_if_carry"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 29946,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 29946,
+        "ftc.carryover": true,
+        "$f1116sbyr": [
+          "a",
+          "b",
+          "c"
+        ],
+        "f1116sbyr[a].year": "p10",
+        "f1116sbyr[a].amount": 8000,
+        "f1116sbyr[b].year": "p9",
+        "f1116sbyr[b].amount": 6000,
+        "f1116sbyr[c].year": "p8",
+        "f1116sbyr[c].amount": 13000,
+        "f1116sb.changed": true
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116sb.changed_if_carry",
+          "form": "Schedule B (Form 1116), line 2",
+          "remedy": "A change to the foreign tax carried from 2024 since that return was filed is an adjustment on line 2 of Schedule B (Form 1116), which this tool does not figure.",
+          "cite": {
+            "doc": "i1116sb",
+            "locator": "p. 1, Line 2. Adjustments to line 1, \"Report on lines 2a, 2b, 2c, 2d, etc., any adjustments resulting from events that occurred between the filing of your prior year tax return and the filing of your current year tax return.\"",
+            "revision": "Rev. December 2022 (printed 'Instructions for Schedule B (Form 1116) (Rev. 12-2022)', Dec 29, 2022); current irs-pdf edition, not year-specific; the IRS had posted no 2025 edition",
+            "snapshot": "84d287be4147447e9d3b715f3ff97f9a7e47519c47b4e67b0cbf1fe07136a76c",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c5_split",
+      "covers": [
+        "f1116sb",
+        "f1116sb.split_if_carry"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 29946,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 29946,
+        "ftc.carryover": true,
+        "$f1116sbyr": [
+          "a",
+          "b",
+          "c"
+        ],
+        "f1116sbyr[a].year": "p10",
+        "f1116sbyr[a].amount": 8000,
+        "f1116sbyr[b].year": "p9",
+        "f1116sbyr[b].amount": 6000,
+        "f1116sbyr[c].year": "p8",
+        "f1116sbyr[c].amount": 13000,
+        "f1116sb.split": true
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116sb.split_if_carry",
+          "form": "Schedule B (Form 1116) (allocation between spouses)",
+          "remedy": "Foreign tax carried from a joint return into a return that is not joint with the same spouse is divided between the spouses, which this tool does not figure.",
+          "cite": {
+            "doc": "p514",
+            "locator": "p. 39, Allocations Between Spouses, \"You may have to allocate an unused foreign tax or excess limit for a tax year in which you and your spouse filed a joint return.\"",
+            "revision": "2025 (Publication 514 (2025), Catalog Number 15018A, Jan 30, 2026)",
+            "snapshot": "35061c2d247112cd65654cdcd446aa7bd2d3370f84da2563239b8fe772a462bb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c3_htko_at_limit",
+      "covers": [
+        "f1116",
+        "f1116col",
+        "f1116.high_taxed",
+        "f1116.limit_lo",
+        "f1116col.div_lo"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "sb.ordinary_dividends": 2000000,
+        "f1040.line3a": 0,
+        "s3.foreign_any": true,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 1000000,
+        "ftc.taxes": 78625,
+        "f1116col[ric].tax_div": 78625
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 21400
+        },
+        "f1116.limit_lo": {
+          "kind": "money",
+          "cents": 78625
+        },
+        "f1116.exp_lo": {
+          "kind": "money",
+          "cents": 787500
+        },
+        "f1116.line20": {
+          "kind": "money",
+          "cents": 42800
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 21400
+        },
+        "f1116sb.l6_xiii": {
+          "kind": "money",
+          "cents": 57225
+        }
+      }
+    },
+    {
+      "id": "f1116.c3_htko_over",
+      "covers": [
+        "f1116",
+        "f1116.high_taxed"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "sb.ordinary_dividends": 2000000,
+        "f1040.line3a": 0,
+        "s3.foreign_any": true,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 1000000,
+        "ftc.taxes": 78626,
+        "f1116col[ric].tax_div": 78626
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.high_taxed",
+          "form": "Form 1116, line 13 (high-taxed income)",
+          "remedy": "Passive income whose foreign tax is more than 37 percent of it after deductions is high-taxed income, moved to the general category on line 13 and a second Form 1116, which this tool does not prepare.",
+          "cite": {
+            "doc": "cfr-26-1-904-4",
+            "locator": "p. 3, (c) High-taxed income, \"If, after application of this paragraph (c), income that would otherwise be passive income is determined to be high-taxed income, the income is treated as general category income\"",
+            "revision": "26 CFR Ch. I (4-1-25 Edition), section 1.904-4 (GovInfo, GPO)",
+            "snapshot": "811fd03e7a9c999726b001add54394130137c205d21f457fce91fba9b6174409",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c3_two_groups",
+      "covers": [
+        "f1116",
+        "f1116col",
+        "f1116.high_taxed",
+        "f1116col.div_hi",
+        "f1116.gross_hi"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 2000000,
+        "f1040.line3a": 0,
+        "s3.foreign_any": true,
+        "ftc.taxes": 170000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric",
+          "swiss"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 900000,
+        "f1116col[ric].tax_div": 135000,
+        "f1116col[swiss].kind": "dividends",
+        "f1116col[swiss].div_income": 100000,
+        "f1116col[swiss].tax_div": 35000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 148832
+        },
+        "f1116.gross_hi": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f1116.tax_hi": {
+          "kind": "money",
+          "cents": 170000
+        },
+        "f1116.exp_hi": {
+          "kind": "money",
+          "cents": 131198
+        },
+        "f1116.limit_hi": {
+          "kind": "money",
+          "cents": 321457
+        },
+        "f1116.line7_total": {
+          "kind": "money",
+          "cents": 868802
+        },
+        "f1116.line20": {
+          "kind": "money",
+          "cents": 1786700
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 148832
+        },
+        "f1116sb.l6_xiii": {
+          "kind": "money",
+          "cents": 21168
+        }
+      }
+    },
+    {
+      "id": "f1116.c4_gifts",
+      "covers": [
+        "f1116",
+        "f1116.itemized_unread",
+        "f1116.hmi_total",
+        "f1116.exp_hi"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 17-25, Schedule B (Form 1116) and its instructions (Rev. 12-2022), Pub. 514 (2025) pp. 27 and 37, Reg. 1.904-4(c) and 1.861-8(e)(12), and the 2025 Tax Table and Tax Computation Worksheet, before the run (lane x1-f1116 record, Second pass, Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 15000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 2000000,
+        "f1040.line3a": 0,
+        "sa.home_owner": true,
+        "sa.line5b": 800000,
+        "sa.mortgage_interest": 1800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 90000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 600000,
+        "f1116col[ric].tax_div": 90000,
+        "sa.gifts": true,
+        "sa.line11": 500000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "sa.line14": {
+          "kind": "money",
+          "cents": 500000
+        },
+        "f1116.line3c": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "f1116.line6_total": {
+          "kind": "money",
+          "cents": 91780
+        },
+        "f1116.line7_total": {
+          "kind": "money",
+          "cents": 508220
+        },
+        "f1116.line20": {
+          "kind": "money",
+          "cents": 2620700
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 95918
+        },
+        "f1116.exp_hi": {
+          "kind": "money",
+          "cents": 91780
+        },
+        "f1116.limit_hi": {
+          "kind": "money",
+          "cents": 188041
+        }
+      }
+    },
+    {
+      "id": "f1116.c1_tax_mismatch",
+      "covers": [
+        "f1116",
+        "f1116.tax_mismatch"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 32000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 31999
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.tax_mismatch",
+          "form": "Form 1116, Part II",
+          "remedy": "The foreign tax entered for each source must add up to the foreign tax entered for the year; correct one or the other.",
+          "cite": {
+            "doc": "f1116",
+            "locator": "p. 1, Part II, line 8, \"Add lines A through C, column (u). Enter the total here and on line 9, page 2\"",
+            "revision": "2025; created 2025-09-16 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "2575162f86c37297265c28d3d23ff1d99e06b2b1aeeadf396f5d6e798a8cffc5",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c1_income_over",
+      "covers": [
+        "f1116",
+        "f1116.income_over"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 32000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 1000001,
+        "f1116col[ric].tax_div": 32000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.income_over",
+          "form": "Form 1116, line 1a",
+          "remedy": "Foreign dividends or interest cannot be more than the dividends or interest reported in all; correct the amounts entered.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 11, Lines 1a and 1b, \"Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c1_income_at",
+      "covers": [
+        "f1116",
+        "f1116.income_over"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 32000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 1000000,
+        "f1116col[ric].tax_div": 32000
+      },
+      "expect": {
+        "f1116.income_over": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "f1116.screen_foreign_gain",
+      "covers": [
+        "f1116",
+        "f1116.foreign_gain"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 32000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 32000,
+        "f1116.foreign_gain": true
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.foreign_gain",
+          "form": "Form 1116, Worksheets A and B",
+          "remedy": "A foreign-source capital gain or loss must be adjusted on the worksheets in the Form 1116 instructions, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 9, Foreign Qualified Dividends and Capital Gains (Losses), \"If you have foreign source qualified dividends or foreign source capital gains (including any foreign source capital gain distributions) or losses, you may be required to make certain adjustments to those amounts before taking them into account on line 1a (gross income) or line 5 (losses).\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.screen_redetermination",
+      "covers": [
+        "f1116",
+        "f1116.redetermination"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 32000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 32000,
+        "f1116.redetermination": true
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.redetermination",
+          "form": "Schedule C (Form 1116)",
+          "remedy": "A change in foreign tax of an earlier year is reported on Schedule C (Form 1116), which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 2, \"Use Schedule C (Form 1116) to report foreign tax redeterminations that occurred in the current tax year and that relate to prior tax years.\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.screen_reduction",
+      "covers": [
+        "f1116",
+        "f1116.reduction"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 32000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 32000,
+        "f1116.reduction": true
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.reduction",
+          "form": "Form 1116, line 12",
+          "remedy": "A reduction of foreign taxes on line 12 is not figured by this tool.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 12, \"You may have to reduce the foreign taxes you paid or accrued by the following items.\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.excluded_income_small_tax",
+      "covers": [
+        "ftc.needs1116",
+        "f1116.reduction"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted before the run (integration XINT, BUG-0769): f1116.screen_reduction's return with foreign tax $250 (under the $300 election limit, all passive, on statements) but income excluded from sources within Puerto Rico (sa.excluded_income). i1040gi p. 115 (Schedule 3, Line 1, condition 4), 'You aren't filing Form 4563 or excluding income from sources within Puerto Rico', fails, so the election is not open (ftc.needs1116 true) and Form 1116 line 12 must reduce the taxes for the excluded income: the credit refuses at f1116.reduction.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 25000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 25000,
+        "f1116.reduction": true,
+        "sa.excluded_income": true
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.reduction",
+          "form": "Form 1116, line 12",
+          "remedy": "A reduction of foreign taxes on line 12 is not figured by this tool.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 19, Line 12, \"You may have to reduce the foreign taxes you paid or accrued by the following items.\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        },
+        "ftc.needs1116": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "f1116.screen_loss_accounts",
+      "covers": [
+        "f1116",
+        "f1116.loss_accounts"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 32000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 32000,
+        "f1116.loss_accounts": true
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.loss_accounts",
+          "form": "Form 1116, line 16",
+          "remedy": "Recapturing a foreign or domestic loss account on line 16 is not figured by this tool.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 20, Line 16, \"You are required to increase or decrease the amount on line 15 by the following adjustments.\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.business",
+      "covers": [
+        "f1116",
+        "f1116.business"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 32000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 32000,
+        "$sc@person[taxpayer]": [
+          "shop"
+        ],
+        "person[taxpayer].sc[shop].line1": 1000000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.business",
+          "form": "Form 1116, line 3e (gross receipts)",
+          "remedy": "With a Schedule C business, gross income from all sources counts the business's gross receipts; this tool does not yet carry them to Form 1116.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 17, Lines 3d and 3e, \"gross income means the total of your gross receipts (reduced by cost of goods sold), total capital and ordinary gains (before subtracting any losses), and all other income (before subtracting any deductions)\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.rental",
+      "covers": [
+        "f1116",
+        "f1116.rental"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted before the run (integration XINT): f1116.business's return with the Schedule C business replaced by x1sche.f1.profit's single-family rental. Foreign tax $320 on a single return is over the $300 election limit, so the Form 1116 path (ftc.needs1116) is taken; all passive, on statements, creditable, no Schedule C; Schedule E is filed (scope.rental, one rental), so line 3e would need the gross rents (i1116 p. 17, Lines 3d and 3e) and the credit refuses at f1116.rental.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 32000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 32000,
+        "scope.rental": true,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1800000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 600000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 240000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 120000,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 80000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m2",
+        "rental[a].rprop[b].year": "y2020",
+        "rental[a].rprop[b].basis": 16000000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.rental",
+          "form": "Form 1116, line 3e (gross rents and royalties)",
+          "remedy": "With a Schedule E rental or royalty, gross income from all sources counts the gross rents and royalties (and the asset method counts interest of a passive activity); this tool does not yet carry them to Form 1116.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 17, Lines 3d and 3e, \"gross income means the total of your gross receipts (reduced by cost of goods sold), total capital and ordinary gains (before subtracting any losses), and all other income (before subtracting any deductions)\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c4_interest_at_5000",
+      "covers": [
+        "f1116",
+        "f1116col",
+        "f1116.foreign_over",
+        "f1116col.line4a",
+        "f1116.line3a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 15000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 2000000,
+        "f1040.line3a": 0,
+        "sa.home_owner": true,
+        "sa.line5b": 800000,
+        "sa.mortgage_interest": 1800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 80000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 500000,
+        "f1116col[ric].tax_div": 80000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "f1116.line3a": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "f1116.line6_total": {
+          "kind": "money",
+          "cents": 23520
+        },
+        "f1116.line7_total": {
+          "kind": "money",
+          "cents": 476480
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 90717
+        }
+      }
+    },
+    {
+      "id": "f1116.c4_interest_over_5000",
+      "covers": [
+        "f1116",
+        "f1116col",
+        "f1116.foreign_over",
+        "f1116col.line4a",
+        "f1116.hmi_applies"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 15000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 2000000,
+        "f1040.line3a": 0,
+        "sa.home_owner": true,
+        "sa.line5b": 800000,
+        "sa.mortgage_interest": 1800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 80000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 500100,
+        "f1116col[ric].tax_div": 80000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "f1116.line6_total": {
+          "kind": "money",
+          "cents": 76440
+        },
+        "f1116.line7_total": {
+          "kind": "money",
+          "cents": 423660
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 80577
+        }
+      }
+    },
+    {
+      "id": "f1116.c4_state_income_tax",
+      "covers": [
+        "f1116",
+        "f1116.itemized_unread"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 15000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 2000000,
+        "f1040.line3a": 0,
+        "sa.home_owner": true,
+        "sa.line5b": 800000,
+        "sa.mortgage_interest": 1800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 80000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 500000,
+        "f1116col[ric].tax_div": 80000,
+        "sa.state_tax_any": true,
+        "sa.line5a": 100000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.itemized_unread",
+          "form": "Form 1116, line 2 (state and local income tax)",
+          "remedy": "The part of state or local income tax related to foreign income depends on the income the state taxes, which this tool does not ask.",
+          "cite": {
+            "doc": "p514",
+            "locator": "p. 27, State income taxes, \"If the total income taxed by the state is greater than the amount of U.S. source income for federal tax purposes, then the state tax is allocable to both U.S. source and foreign source income.\"",
+            "revision": "2025 (Publication 514 (2025), Catalog Number 15018A, Jan 30, 2026)",
+            "snapshot": "35061c2d247112cd65654cdcd446aa7bd2d3370f84da2563239b8fe772a462bb",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c4_asset_method",
+      "covers": [
+        "f1116",
+        "f1116.asset_method"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 15000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 2000000,
+        "f1040.line3a": 0,
+        "sa.home_owner": true,
+        "sa.line5b": 800000,
+        "sa.mortgage_interest": 1800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 80000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 500100,
+        "f1116col[ric].tax_div": 80000,
+        "f4952.has_interest": true,
+        "f4952.line1": 100000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.asset_method",
+          "form": "Form 1116, line 4b (asset method)",
+          "remedy": "With gross foreign income over $5,000, investment, student loan or car loan interest is apportioned by the value of your assets, which this tool does not figure.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 18, Line 4b, \"Otherwise, each type of interest expense is apportioned separately using an\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c4_asset_method_at_5000",
+      "covers": [
+        "f1116",
+        "f1116.asset_method"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 15000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 2000000,
+        "f1040.line3a": 0,
+        "sa.home_owner": true,
+        "sa.line5b": 800000,
+        "sa.mortgage_interest": 1800000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 80000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 500000,
+        "f1116col[ric].tax_div": 80000,
+        "f4952.has_interest": true,
+        "f4952.line1": 100000
+      },
+      "expect": {
+        "f1116.asset_method": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "f1116.c6_adjust_ceiling",
+      "covers": [
+        "f1116",
+        "f1116.adjust",
+        "f1116.exception"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 25000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 3000000,
+        "f1040.line3a": 3000000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 90000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 1000000,
+        "f1116col[ric].tax_div": 90000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.adjust",
+          "form": "Form 1116, Worksheet for Line 18",
+          "remedy": "Your qualified dividends must be adjusted on line 1a and the Worksheet for Line 18, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 23, Line 18, \"If you have qualified dividends or capital gains, you may be required to make adjustments to those qualified dividends and gains before you take those amounts into account on line 18 as described next.\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c7_adjust_20000",
+      "covers": [
+        "f1116",
+        "f1116.adjust",
+        "f1116.exception"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 2500000,
+        "f1040.line3a": 2500000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 100000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 2000000,
+        "f1116col[ric].tax_div": 100000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.adjust",
+          "form": "Form 1116, Worksheet for Line 18",
+          "remedy": "Your qualified dividends must be adjusted on line 1a and the Worksheet for Line 18, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 23, Line 18, \"If you have qualified dividends or capital gains, you may be required to make adjustments to those qualified dividends and gains before you take those amounts into account on line 18 as described next.\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c7_exception_under_20000",
+      "covers": [
+        "f1116",
+        "f1116.adjust",
+        "f1116.exception"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 2500000,
+        "f1040.line3a": 2500000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 100000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 1999999,
+        "f1116col[ric].tax_div": 100000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1116.line20": {
+          "kind": "money",
+          "cents": 1720500
+        },
+        "f1116.line7_total": {
+          "kind": "money",
+          "cents": 1747999
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 275280
+        }
+      }
+    },
+    {
+      "id": "f1116.c9_only_foreign",
+      "covers": [
+        "f1116",
+        "f1116.us_loss",
+        "f1116.line21_figured"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "sb.ordinary_dividends": 4000000,
+        "f1040.line3a": 0,
+        "s3.foreign_any": true,
+        "ftc.taxes": 150000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "canada"
+        ],
+        "f1116col[canada].kind": "dividends",
+        "f1116col[canada].div_income": 4000000,
+        "f1116col[canada].tax_div": 150000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f1116.line18": {
+          "kind": "money",
+          "cents": 2425000
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 267500
+        },
+        "f1116.us_loss": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "f1116.c8_us_loss",
+      "covers": [
+        "f1116",
+        "f1116.us_loss",
+        "f1116.gains"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "div.any": true,
+        "sb.ordinary_dividends": 4000000,
+        "f1040.line3a": 0,
+        "s3.foreign_any": true,
+        "ftc.taxes": 150000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "canada"
+        ],
+        "f1116col[canada].kind": "dividends",
+        "f1116col[canada].div_income": 4000000,
+        "f1116col[canada].tax_div": 150000,
+        "$sales": [
+          "a"
+        ],
+        "sales[a].proceeds": 100000,
+        "sales[a].reported_basis": 400000
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.us_loss",
+          "form": "Form 1116, line 16 (U.S. loss)",
+          "remedy": "A net loss from U.S. sources is allocated on line 16, which this tool does not figure.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 21, \"If you have a net loss from U.S. sources, proportionately allocate that loss among the separate categories of your foreign income.\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.c10_two_columns",
+      "covers": [
+        "f1116",
+        "f1116col",
+        "f1116col.line3g",
+        "f1116.line7_total"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Hand-predicted from i1116 (2025) pp. 9, 11, 17-19, 23-25 and the 2025 Tax Table and rate schedule before the run (lane x1-f1116 note, section Fixtures); independent human review pending.",
+      "inputs": {
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "f1040.status": "mfj",
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 12000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1400000,
+        "f1040.line3a": 900000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 65000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric",
+          "canada"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 600000,
+        "f1116col[ric].tax_div": 30000,
+        "f1116col[canada].kind": "dividends",
+        "f1116col[canada].div_income": 400000,
+        "f1116col[canada].tax_div": 35000,
+        "household.married_dec31": true
+      },
+      "expect": {
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 65000
+        },
+        "f1116.line6_total": {
+          "kind": "money",
+          "cents": 235305
+        },
+        "f1116.line7_total": {
+          "kind": "money",
+          "cents": 764695
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 86655
+        }
+      }
+    },
+    {
+      "id": "f1116.m1116_sb_limit_ends_in_xii",
+      "covers": [
+        "f1116sb",
+        "f1116sb.l4_xiv",
+        "f1116sb.l8_xiv",
+        "f1116sb.l1_xiv"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane m1116, Schedule B (Form 1116) column waterfall); expected values predicted by hand from the archived sources before running the evaluator. Base return as f1116.c5_carryover_in, re-derived here: single, wages $100,000, ordinary dividends $10,000 ($8,000 qualified), standard deduction $15,750, taxable income $94,250; Form 1040 line 16 by the Qualified Dividends and Capital Gain Tax Worksheet, $13,895 on $86,250 (2025 Tax Table row 86,250-86,300) plus 15% of $8,000, $15,095 = Form 1116 line 20 (i1116 p. 25, Line 20). Form 1116 line 3a $15,750 (i1116 p. 17, Lines 3a and 3b), line 3e $110,000, line 3f 4,000/110,000 = 0.0364, line 3g $573.30, line 7 $3,426.70 (f1116 p. 1); line 18 $94,250 (i1116 p. 23, Line 18), line 19 0.0364, line 21 $549.46 (i1116 p. 25). Schedule B (Form 1116) by its instructions (i1116sb, Rev. 12-2022): line 1 of each column is the prior year's line 8 of that column (p. 1, Line 1); line 3 combines lines 1 and 2, with no line 2 adjustment (p. 2, Line 3); line 4, starting with column (i), is the column's line 3 but not more than the excess limitation less the line 4 amounts of all previous columns, entered as negative numbers (p. 2, Line 4, and its example of Bob); the excess limitation is Form 1116 line 23 less lines 9, 12 and 13 (p. 1, Definitions); line 5 is column (i)'s lines 3 and 4 combined (p. 2, Line 5); line 8 combines lines 3 through 7 (f1116sb, Foreign Tax Carryover); columns (vii)/(viii) add (i) through (vi) and column (xiv) adds (viii) through (xiii) (f1116sb). Form 1116 line 10 is line 3 column (xiv) (i1116 p. 19, Line 10). Carryover $5, $10, ... $50 in columns (i)-(vi) and (ix)-(xii) (rising by $5, so that every column differs from the one before it), $275 in all. Foreign tax $277.46 (6.9% of the $4,000, not high-taxed: 37% of $3,426.70 is $1,267.88): line 14 $552.46, line 24 $549.46 = the credit; excess limitation $549.46 less $277.46 = $272.00. Line 4 uses $5, $10, $15, $20, $25, $30 (subtotal $105), $35, $40, $45 ($225 so far) and $47 of column (xii)'s $50; line 4 column (xiv) -$272; line 5 column (i) $0; line 8 is $0 in columns (ii)-(xi) and $3 in column (xii); no excess foreign tax, so line 6 is $0 and line 8 column (xiv) is $3.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.taxes": 27746,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 27746,
+        "ftc.carryover": true,
+        "$f1116sbyr": [
+          "yi",
+          "yii",
+          "yiii",
+          "yiv",
+          "yv",
+          "yvi",
+          "yix",
+          "yx",
+          "yxi",
+          "yxii"
+        ],
+        "f1116sbyr[yi].year": "p10",
+        "f1116sbyr[yi].amount": 500,
+        "f1116sbyr[yii].year": "p9",
+        "f1116sbyr[yii].amount": 1000,
+        "f1116sbyr[yiii].year": "p8",
+        "f1116sbyr[yiii].amount": 1500,
+        "f1116sbyr[yiv].year": "p7",
+        "f1116sbyr[yiv].amount": 2000,
+        "f1116sbyr[yv].year": "p6",
+        "f1116sbyr[yv].amount": 2500,
+        "f1116sbyr[yvi].year": "p5",
+        "f1116sbyr[yvi].amount": 3000,
+        "f1116sbyr[yix].year": "p4",
+        "f1116sbyr[yix].amount": 3500,
+        "f1116sbyr[yx].year": "p3",
+        "f1116sbyr[yx].amount": 4000,
+        "f1116sbyr[yxi].year": "p2",
+        "f1116sbyr[yxi].amount": 4500,
+        "f1116sbyr[yxii].year": "p1",
+        "f1116sbyr[yxii].amount": 5000
+      },
+      "expect": {
+        "f1116sb.l3_iv": {
+          "kind": "money",
+          "cents": 2000
+        },
+        "f1116sb.l3_v": {
+          "kind": "money",
+          "cents": 2500
+        },
+        "f1116sb.l3_vi": {
+          "kind": "money",
+          "cents": 3000
+        },
+        "f1116sb.l3_ix": {
+          "kind": "money",
+          "cents": 3500
+        },
+        "f1116sb.l3_x": {
+          "kind": "money",
+          "cents": 4000
+        },
+        "f1116sb.l3_xi": {
+          "kind": "money",
+          "cents": 4500
+        },
+        "f1116sb.l3_xii": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f1116sb.l4_ii": {
+          "kind": "money",
+          "cents": -1000
+        },
+        "f1116sb.l4_iii": {
+          "kind": "money",
+          "cents": -1500
+        },
+        "f1116sb.l4_iv": {
+          "kind": "money",
+          "cents": -2000
+        },
+        "f1116sb.l4_v": {
+          "kind": "money",
+          "cents": -2500
+        },
+        "f1116sb.l4_vi": {
+          "kind": "money",
+          "cents": -3000
+        },
+        "f1116sb.l4_ix": {
+          "kind": "money",
+          "cents": -3500
+        },
+        "f1116sb.l4_x": {
+          "kind": "money",
+          "cents": -4000
+        },
+        "f1116sb.l4_xi": {
+          "kind": "money",
+          "cents": -4500
+        },
+        "f1116sb.l4_xii": {
+          "kind": "money",
+          "cents": -4700
+        },
+        "f1116sb.l8_iii": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_iv": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_v": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_vi": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_ix": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_x": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_xi": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_xii": {
+          "kind": "money",
+          "cents": 300
+        },
+        "f1116sb.l1_vii": {
+          "kind": "money",
+          "cents": 10500
+        },
+        "f1116sb.l1_xiv": {
+          "kind": "money",
+          "cents": 27500
+        },
+        "f1116sb.excess_limit": {
+          "kind": "money",
+          "cents": 27200
+        },
+        "f1116sb.l4_xiv": {
+          "kind": "money",
+          "cents": -27200
+        },
+        "f1116sb.l5_i": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l6_xiii": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_vii": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_xiv": {
+          "kind": "money",
+          "cents": 300
+        },
+        "f1116.line10": {
+          "kind": "money",
+          "cents": 27500
+        },
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 54946
+        }
+      }
+    },
+    {
+      "id": "f1116.m1116_sb_no_excess_limit",
+      "covers": [
+        "f1116sb",
+        "f1116sb.l4_xiv",
+        "f1116sb.l8_xiv",
+        "f1116sb.l1_xiv"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane m1116, Schedule B (Form 1116) column waterfall); expected values predicted by hand from the archived sources before running the evaluator. Base return as f1116.c5_carryover_in, re-derived here: single, wages $100,000, ordinary dividends $10,000 ($8,000 qualified), standard deduction $15,750, taxable income $94,250; Form 1040 line 16 by the Qualified Dividends and Capital Gain Tax Worksheet, $13,895 on $86,250 (2025 Tax Table row 86,250-86,300) plus 15% of $8,000, $15,095 = Form 1116 line 20 (i1116 p. 25, Line 20). Form 1116 line 3a $15,750 (i1116 p. 17, Lines 3a and 3b), line 3e $110,000, line 3f 4,000/110,000 = 0.0364, line 3g $573.30, line 7 $3,426.70 (f1116 p. 1); line 18 $94,250 (i1116 p. 23, Line 18), line 19 0.0364, line 21 $549.46 (i1116 p. 25). Schedule B (Form 1116) by its instructions (i1116sb, Rev. 12-2022): line 1 of each column is the prior year's line 8 of that column (p. 1, Line 1); line 3 combines lines 1 and 2, with no line 2 adjustment (p. 2, Line 3); line 4, starting with column (i), is the column's line 3 but not more than the excess limitation less the line 4 amounts of all previous columns, entered as negative numbers (p. 2, Line 4, and its example of Bob); the excess limitation is Form 1116 line 23 less lines 9, 12 and 13 (p. 1, Definitions); line 5 is column (i)'s lines 3 and 4 combined (p. 2, Line 5); line 8 combines lines 3 through 7 (f1116sb, Foreign Tax Carryover); columns (vii)/(viii) add (i) through (vi) and column (xiv) adds (viii) through (xiii) (f1116sb). Form 1116 line 10 is line 3 column (xiv) (i1116 p. 19, Line 10). Carryover $5, $10, ... $50 in columns (i)-(vi) and (ix)-(xii) (rising by $5, so that every column differs from the one before it), $275 in all. Foreign tax $549.46 (13.7% of the $4,000, not high-taxed), equal to line 21: no excess limitation and no excess foreign tax, so line 4 is $0 in every column, line 5 column (i) is -$5 (the 10th preceding year's $5 expires), line 6 is $0 and line 8 repeats line 3 in columns (ii)-(xii): subtotal (vii) $100 and total (xiv) $270; line 14 $824.46, line 24 $549.46 = the credit.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.taxes": 54946,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 54946,
+        "ftc.carryover": true,
+        "$f1116sbyr": [
+          "yi",
+          "yii",
+          "yiii",
+          "yiv",
+          "yv",
+          "yvi",
+          "yix",
+          "yx",
+          "yxi",
+          "yxii"
+        ],
+        "f1116sbyr[yi].year": "p10",
+        "f1116sbyr[yi].amount": 500,
+        "f1116sbyr[yii].year": "p9",
+        "f1116sbyr[yii].amount": 1000,
+        "f1116sbyr[yiii].year": "p8",
+        "f1116sbyr[yiii].amount": 1500,
+        "f1116sbyr[yiv].year": "p7",
+        "f1116sbyr[yiv].amount": 2000,
+        "f1116sbyr[yv].year": "p6",
+        "f1116sbyr[yv].amount": 2500,
+        "f1116sbyr[yvi].year": "p5",
+        "f1116sbyr[yvi].amount": 3000,
+        "f1116sbyr[yix].year": "p4",
+        "f1116sbyr[yix].amount": 3500,
+        "f1116sbyr[yx].year": "p3",
+        "f1116sbyr[yx].amount": 4000,
+        "f1116sbyr[yxi].year": "p2",
+        "f1116sbyr[yxi].amount": 4500,
+        "f1116sbyr[yxii].year": "p1",
+        "f1116sbyr[yxii].amount": 5000
+      },
+      "expect": {
+        "f1116sb.l3_iv": {
+          "kind": "money",
+          "cents": 2000
+        },
+        "f1116sb.l3_v": {
+          "kind": "money",
+          "cents": 2500
+        },
+        "f1116sb.l3_vi": {
+          "kind": "money",
+          "cents": 3000
+        },
+        "f1116sb.l3_ix": {
+          "kind": "money",
+          "cents": 3500
+        },
+        "f1116sb.l3_x": {
+          "kind": "money",
+          "cents": 4000
+        },
+        "f1116sb.l3_xi": {
+          "kind": "money",
+          "cents": 4500
+        },
+        "f1116sb.l3_xii": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f1116sb.l4_ii": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l4_iii": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l4_iv": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l4_v": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l4_vi": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l4_ix": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l4_x": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l4_xi": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l4_xii": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_iii": {
+          "kind": "money",
+          "cents": 1500
+        },
+        "f1116sb.l8_iv": {
+          "kind": "money",
+          "cents": 2000
+        },
+        "f1116sb.l8_v": {
+          "kind": "money",
+          "cents": 2500
+        },
+        "f1116sb.l8_vi": {
+          "kind": "money",
+          "cents": 3000
+        },
+        "f1116sb.l8_ix": {
+          "kind": "money",
+          "cents": 3500
+        },
+        "f1116sb.l8_x": {
+          "kind": "money",
+          "cents": 4000
+        },
+        "f1116sb.l8_xi": {
+          "kind": "money",
+          "cents": 4500
+        },
+        "f1116sb.l8_xii": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f1116sb.l1_vii": {
+          "kind": "money",
+          "cents": 10500
+        },
+        "f1116sb.l1_xiv": {
+          "kind": "money",
+          "cents": 27500
+        },
+        "f1116sb.excess_limit": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l4_xiv": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l5_i": {
+          "kind": "money",
+          "cents": -500
+        },
+        "f1116sb.l6_xiii": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116sb.l8_vii": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "f1116sb.l8_xiv": {
+          "kind": "money",
+          "cents": 27000
+        },
+        "f1116.line10": {
+          "kind": "money",
+          "cents": 27500
+        },
+        "ftc.credit": {
+          "kind": "money",
+          "cents": 54946
+        }
+      }
+    },
+    {
+      "id": "f1116.m1116_col_mixed_groups",
+      "covers": [
+        "f1116col",
+        "f1116col.gross_hi",
+        "f1116col.gross_lo",
+        "f1116.gross_hi"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane m1116, withholding groups of columns with both dividends and interest); expected values predicted by hand from the archived sources before running the evaluator. Form 1116 Part I line 1a is the column's foreign dividends and interest together (f1116 p. 1, line 1a; i1116 p. 11, Lines 1a and 1b) and Part II column (u) adds the tax withheld on the dividends, column (q), and on the interest, column (s) (f1116 p. 1, Part II). Reg. 1.904-4(c)(3) (p. 4) groups passive income by withholding tax: 'subject to a withholding tax of fifteen percent or greater' is one item of income, 'less than fifteen percent (but greater than zero)' another; the column's dividends and its interest are each placed by their own withholding rate, and income with no withholding tax is in neither group. Base return as f1116.c5_carryover_in with $3,000 of taxable interest added, all foreign. Column ric: dividends $2,000 with $100 tax (5%, less than 15%), interest $1,000 with $250 tax (25%, 15% or greater): line 1a $3,000, column (u) $350, high group $1,000/$250, low group $2,000/$100. Column both2: dividends $1,000 with $200 (20%, high), interest $1,000 with $20 (2%, low): line 1a $2,000, (u) $220, high $1,000/$200, low $1,000/$20. Column both3: dividends $1,000 with no tax (neither group), interest $1,000 with $100 (10%, low): line 1a $2,000, (u) $100, high $0/$0, low $1,000/$100. Totals: high $2,000/$450, low $4,000/$220, line 8 $670.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$interest": [
+          "bank"
+        ],
+        "interest[bank].amount": 300000,
+        "$f1116col": [
+          "ric",
+          "both2",
+          "both3"
+        ],
+        "f1116col[ric].kind": "both",
+        "f1116col[ric].div_income": 200000,
+        "f1116col[ric].tax_div": 10000,
+        "f1116col[ric].int_income": 100000,
+        "f1116col[ric].tax_int": 25000,
+        "f1116col[both2].kind": "both",
+        "f1116col[both2].div_income": 100000,
+        "f1116col[both2].tax_div": 20000,
+        "f1116col[both2].int_income": 100000,
+        "f1116col[both2].tax_int": 2000,
+        "f1116col[both3].kind": "both",
+        "f1116col[both3].div_income": 100000,
+        "f1116col[both3].tax_div": 0,
+        "f1116col[both3].int_income": 100000,
+        "f1116col[both3].tax_int": 10000,
+        "ftc.taxes": 67000
+      },
+      "expect": {
+        "f1116col[ric].line1a": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f1116col[ric].line8u": {
+          "kind": "money",
+          "cents": 35000
+        },
+        "f1116col[ric].gross_hi": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1116col[ric].tax_hi": {
+          "kind": "money",
+          "cents": 25000
+        },
+        "f1116col[ric].gross_lo": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1116col[ric].tax_lo": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "f1116col[both2].line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1116col[both2].line8u": {
+          "kind": "money",
+          "cents": 22000
+        },
+        "f1116col[both2].gross_hi": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1116col[both2].tax_hi": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f1116col[both2].gross_lo": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1116col[both2].tax_lo": {
+          "kind": "money",
+          "cents": 2000
+        },
+        "f1116col[both3].line1a": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1116col[both3].line8u": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "f1116col[both3].gross_hi": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116col[both3].tax_hi": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116col[both3].gross_lo": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1116col[both3].tax_lo": {
+          "kind": "money",
+          "cents": 10000
+        },
+        "f1116.gross_hi": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1116.tax_hi": {
+          "kind": "money",
+          "cents": 45000
+        },
+        "f1116.gross_lo": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1116.tax_lo": {
+          "kind": "money",
+          "cents": 22000
+        },
+        "f1116.line8": {
+          "kind": "money",
+          "cents": 67000
+        }
+      }
+    },
+    {
+      "id": "f1116.m1116_col_interest_and_cent",
+      "covers": [
+        "f1116col",
+        "f1116col.gross_hi",
+        "f1116col.gross_lo",
+        "f1116.gross_hi"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane m1116, withholding groups of columns with both dividends and interest); expected values predicted by hand from the archived sources before running the evaluator. Form 1116 Part I line 1a is the column's foreign dividends and interest together (f1116 p. 1, line 1a; i1116 p. 11, Lines 1a and 1b) and Part II column (u) adds the tax withheld on the dividends, column (q), and on the interest, column (s) (f1116 p. 1, Part II). Reg. 1.904-4(c)(3) (p. 4) groups passive income by withholding tax: 'subject to a withholding tax of fifteen percent or greater' is one item of income, 'less than fifteen percent (but greater than zero)' another; the column's dividends and its interest are each placed by their own withholding rate, and income with no withholding tax is in neither group. Base return as f1116.c5_carryover_in with $2,000 of taxable interest added, all foreign. Column uk: interest only, $1,000 with $200 tax (20%, high): line 1a $1,000, (u) $200, high $1,000/$200, low $0. Column tiny: dividends of $0.01 with no tax (neither group: no withholding tax) and interest $1,000 with $50 (5%, low): line 1a $1,000.01, (u) $50, high $0, low $1,000/$50. Totals: high $1,000/$200, low $1,000/$50, line 8 $250.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$interest": [
+          "bank"
+        ],
+        "interest[bank].amount": 200000,
+        "$f1116col": [
+          "uk",
+          "tiny"
+        ],
+        "f1116col[uk].kind": "interest",
+        "f1116col[uk].int_income": 100000,
+        "f1116col[uk].tax_int": 20000,
+        "f1116col[tiny].kind": "both",
+        "f1116col[tiny].div_income": 1,
+        "f1116col[tiny].tax_div": 0,
+        "f1116col[tiny].int_income": 100000,
+        "f1116col[tiny].tax_int": 5000,
+        "ftc.taxes": 25000
+      },
+      "expect": {
+        "f1116col[uk].line1a": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1116col[uk].line8u": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f1116col[uk].gross_hi": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1116col[uk].tax_hi": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f1116col[uk].gross_lo": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116col[uk].tax_lo": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116col[tiny].line1a": {
+          "kind": "money",
+          "cents": 100001
+        },
+        "f1116col[tiny].line8u": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f1116col[tiny].gross_hi": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116col[tiny].tax_hi": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116col[tiny].gross_lo": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1116col[tiny].tax_lo": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f1116.gross_hi": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1116.tax_hi": {
+          "kind": "money",
+          "cents": 20000
+        },
+        "f1116.gross_lo": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f1116.tax_lo": {
+          "kind": "money",
+          "cents": 5000
+        },
+        "f1116.line8": {
+          "kind": "money",
+          "cents": 25000
+        }
+      }
+    },
+    {
+      "id": "f1116.m1116_asset_method_standard_deduction",
+      "covers": [
+        "f1116",
+        "f1116.asset_method"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane m1116, the asset method without itemized deductions); expected values predicted by hand from the archived sources before running the evaluator: single, wages $50,000, student loan interest $1,200, deductible in full (worksheet line 4, $56,000 with the dividends, is not more than $85,000: i1040gi p. 99), ordinary dividends $6,000 all foreign, $400 foreign tax (more than the $300 limit of the election, i1116 p. 1, so Form 1116). Gross foreign source income $6,000 is more than $5,000, so interest expense is not all allocated to U.S. income (i1116 p. 18, Line 4a), and deductible student loan interest is other interest expense apportioned by the asset method (p. 18, Line 4b), which the tool refuses, whether or not the filer itemizes; home mortgage interest is not apportioned (no itemized deductions).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "sli.any": true,
+        "sli.interest": 120000,
+        "div.any": true,
+        "sb.ordinary_dividends": 600000,
+        "f1040.line3a": 0,
+        "s3.foreign_any": true,
+        "ftc.taxes": 40000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 600000,
+        "f1116col[ric].tax_div": 40000
+      },
+      "expect": {
+        "f1116.asset_method": {
+          "kind": "bool",
+          "value": true
+        },
+        "f1116.hmi_applies": {
+          "kind": "bool",
+          "value": false
+        },
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.asset_method",
+          "form": "Form 1116, line 4b (asset method)",
+          "remedy": "With gross foreign income over $5,000, investment, student loan or car loan interest is apportioned by the value of your assets, which this tool does not figure.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 18, Line 4b, \"Otherwise, each type of interest expense is apportioned separately using an\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.m1116_exception_ceiling_plus_1",
+      "covers": [
+        "f1116",
+        "f1116.exception",
+        "f1116.adjust"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane m1116, the adjustment exception's ceiling, $1 above it); expected values predicted by hand from the archived sources before running the evaluator: single, wages $213,051, ordinary dividends $10,000 all qualified, $4,000 of them foreign with $400 tax (more than the $300 limit of the election, i1116 p. 1). Taxable income $223,051 less $15,750 = $207,301; Qualified Dividends and Capital Gain Tax Worksheet line 5 is $207,301 less $10,000 = $197,301, more than $197,300, the single ceiling of the adjustment exception (i1116 p. 9, Adjustment exception), so the exception is not available; line 5 is above zero and the qualified dividends taxed at 15% (in the 32% bracket) make line 23 less than line 24 (i1116 p. 9), so the foreign qualified dividends must be adjusted (Worksheet for Line 18), which the tool refuses.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 21305100,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 1000000,
+        "s3.foreign_any": true,
+        "ftc.taxes": 40000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 40000
+      },
+      "expect": {
+        "f1116.l5": {
+          "kind": "money",
+          "cents": 19730100
+        },
+        "f1116.exception": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1116.adjust": {
+          "kind": "bool",
+          "value": true
+        },
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.adjust",
+          "form": "Form 1116, Worksheet for Line 18",
+          "remedy": "Your qualified dividends must be adjusted on line 1a and the Worksheet for Line 18, which this tool does not prepare.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 23, Line 18, \"If you have qualified dividends or capital gains, you may be required to make adjustments to those qualified dividends and gains before you take those amounts into account on line 18 as described next.\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.m1116_carryover_unanswered_with_tax",
+      "covers": [
+        "ftc",
+        "ftc.carryover_no_tax"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane m1116, the refusal of a carryover with no foreign tax, before the carryover question is answered); expected values predicted from spec 4.7 and the lines before running the evaluator: base return as f1116.c5_carryover_in with $299.46 of foreign tax and the carryover question left unanswered (null). The refusal is for a carryover claimed with no foreign tax paid in 2025 (i1116 p. 19, Line 10; ftc.carryover_no_tax: carryover claimed and no foreign tax). Foreign tax is $299.46, so ftc.has_tax is a known true and its test 'has_tax = false' a known false; an all-test with a false conjunct is false whatever its unknown conjuncts (spec 4.7.2), so the gate is false although the carryover answer is unknown.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 10000000,
+        "div.any": true,
+        "sb.ordinary_dividends": 1000000,
+        "f1040.line3a": 800000,
+        "s3.foreign_any": true,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.taxes": 29946,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 29946,
+        "ftc.carryover": null
+      },
+      "expect": {
+        "ftc.has_tax": {
+          "kind": "bool",
+          "value": true
+        },
+        "ftc.carryover_no_tax": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "f1116.m1116_no_gross_income",
+      "covers": [
+        "f1116",
+        "f1116.has_gross",
+        "f1116.exp_hi",
+        "f1116.exp_lo",
+        "f1116col.line3g"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane m1116, line 3e of $0); expected values predicted by hand from the archived sources before running the evaluator: single, no wages and no dividends reported on Form 1040 (line 3b $0), yet a column of $4,000 foreign dividends with $800 tax (20%, the 15% or greater group) entered, which the tool refuses on line 35 because the foreign dividends are more than the dividends reported (i1116 p. 11, Lines 1a and 1b, 'Include income ... that is taxable by the United States'). Line 3e, gross income from all sources, is $0 (i1116 p. 17, Line 3e), so line 3f (line 3d divided by line 3e, p. 18) cannot be figured and nothing is apportioned: line 3g $0, line 7 $4,000; the deductions apportioned to each withholding group (Reg. 1.904-4(c)(2), p. 4, by gross income) are $0, the high group's income after deductions $4,000 (37% of it $1,480) and the low group's $0; $800 is not more than $1,480, so the income is not high-taxed.",
+      "inputs": {
+        "$w2@person[taxpayer]": [],
+        "div.any": true,
+        "sb.ordinary_dividends": 0,
+        "f1040.line3a": 0,
+        "s3.foreign_any": true,
+        "ftc.taxes": 80000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 80000
+      },
+      "expect": {
+        "f1116.line3e": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.has_gross": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1116.exp_hi": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.exp_lo": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.net_hi": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1116.net_lo": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.limit_hi": {
+          "kind": "money",
+          "cents": 148000
+        },
+        "f1116.high_taxed": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1116col[ric].line3g": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116col[ric].line7": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.income_over",
+          "form": "Form 1116, line 1a",
+          "remedy": "Foreign dividends or interest cannot be more than the dividends or interest reported in all; correct the amounts entered.",
+          "cite": {
+            "doc": "i1116",
+            "locator": "p. 11, Lines 1a and 1b, \"Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i\"",
+            "revision": "2025; printed date 2025-12-23",
+            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.m1116_zero_taxable_capital_loss",
+      "covers": [
+        "f1116",
+        "f1116.has_line18",
+        "f1116.line21",
+        "f1116.gains"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane m1116, line 18 of $0 and a capital loss); expected values predicted by hand from the archived sources before running the evaluator: single, no wages, ordinary dividends $4,000 (none qualified) all foreign with $400 tax (10%, more than the $300 limit of the election, i1116 p. 1), and no 2024 Form 1116. Line 3e $4,000 (i1116 p. 17); line 3c $15,750, the standard deduction; line 3f 1.0000, line 3g $15,750, line 7 and line 15 -$11,750 (f1116 p. 1-2). Taxable income is $0, so line 18 is $0 ('If the result is zero or less, enter -0- on line 18 and on line 19', i1116 p. 23) and line 19 is not figured (line 17 is zero or less: f1116 p. 2, line 17, 'skip line 18 and enter -0- on line 19'), so line 21 = line 20 times 0 is $0 and line 23 is $0. The low group's income after its $15,750 share of deductions is $0, so its $400 tax is more than 37% of it: high-taxed income, refused on line 35 (Reg. 1.904-4(c), p. 3). A sale of stock with a $1,000 loss (proceeds $2,000, basis $3,000, box D): line 3e counts capital gains before subtracting any losses (i1116 p. 17, Lines 3d and 3e), so the loss adds nothing and line 3e stays $4,000; adjusted gross income is $3,000. Line 20, the tax on $0, is $0.",
+      "inputs": {
+        "$w2@person[taxpayer]": [],
+        "div.any": true,
+        "sb.ordinary_dividends": 400000,
+        "f1040.line3a": 0,
+        "s3.foreign_any": true,
+        "ftc.taxes": 40000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 40000,
+        "f1116sb.prior_year": "none",
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "D",
+        "sales[a].route": "aggregate",
+        "sales[a].aggregate_eligible": true,
+        "sales[a].proceeds": 200000,
+        "sales[a].reported_basis": 300000
+      },
+      "expect": {
+        "f1116.gains": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.line3e": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f1116.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.has_line18": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1116.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "ftc.credit": {
+          "kind": "refusal",
+          "gate": "f1116.high_taxed",
+          "form": "Form 1116, line 13 (high-taxed income)",
+          "remedy": "Passive income whose foreign tax is more than 37 percent of it after deductions is high-taxed income, moved to the general category on line 13 and a second Form 1116, which this tool does not prepare.",
+          "cite": {
+            "doc": "cfr-26-1-904-4",
+            "locator": "p. 3, (c) High-taxed income, \"If, after application of this paragraph (c), income that would otherwise be passive income is determined to be high-taxed income, the income is treated as general category income\"",
+            "revision": "26 CFR Ch. I (4-1-25 Edition), section 1.904-4 (GovInfo, GPO)",
+            "snapshot": "811fd03e7a9c999726b001add54394130137c205d21f457fce91fba9b6174409",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.m1116_zero_taxable_other_tax",
+      "covers": [
+        "f1116",
+        "f1116.line21",
+        "f1116.line33"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane m1116, line 18 of $0 with line 20 refused); expected values predicted by hand from the archived sources and spec 4.7 before running the evaluator: single, no wages, ordinary dividends $4,000 (none qualified) all foreign with $400 tax (10%, more than the $300 limit of the election, i1116 p. 1), and no 2024 Form 1116. Line 3e $4,000 (i1116 p. 17); line 3c $15,750, the standard deduction; line 3f 1.0000, line 3g $15,750, line 7 and line 15 -$11,750 (f1116 p. 1-2). Taxable income is $0, so line 18 is $0 ('If the result is zero or less, enter -0- on line 18 and on line 19', i1116 p. 23) and line 19 is not figured (line 17 is zero or less: f1116 p. 2, line 17, 'skip line 18 and enter -0- on line 19'), so line 21 = line 20 times 0 is $0 and line 23 is $0. The low group's income after its $15,750 share of deductions is $0, so its $400 tax is more than 37% of it: high-taxed income, refused on line 35 (Reg. 1.904-4(c), p. 3). An other tax on Schedule 2 (line 17z, i1040gi p. 114) is refused by the tool, so Schedule 2 line 1z, and line 20, the total of Form 1040 line 16 and Schedule 2 line 1z (i1116 p. 25), carry that refusal. Line 21 is $0 without line 20 (line 19 is $0, above); line 33 is the smaller of line 20 and line 32 (f1116 p. 2) and carries line 20's refusal.",
+      "inputs": {
+        "$w2@person[taxpayer]": [],
+        "div.any": true,
+        "sb.ordinary_dividends": 400000,
+        "f1040.line3a": 0,
+        "s3.foreign_any": true,
+        "ftc.taxes": 40000,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "ric"
+        ],
+        "f1116col[ric].kind": "dividends",
+        "f1116col[ric].div_income": 400000,
+        "f1116col[ric].tax_div": 40000,
+        "f1116sb.prior_year": "none",
+        "s2.other_tax": true
+      },
+      "expect": {
+        "f1116.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.line33": {
+          "kind": "refusal",
+          "gate": "s2.other",
+          "form": "Schedule 2 additional source forms",
+          "remedy": "Prepare the other required tax forms; this slice supports only Schedule SE and Forms 8959 and 8960.",
+          "cite": {
+            "doc": "f1040s2",
+            "locator": "Schedule 2 (2025), lines 2, 3, 11, 12 and 21",
+            "revision": "2025; created 2025-05-08",
+            "snapshot": "64d867b683334cfc533993e37ccb0d143449ec29428a78206be2e4de333941e8",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "f1116.mint_line33_refused_line20_zero_line18",
+      "walk": "full",
+      "covers": [
+        "f1116.line33",
+        "f1116.line35",
+        "f1116.line20",
+        "f1116.line18",
+        "f1116.line7_total",
+        "f1116col.line3g",
+        "s3.line1"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mint, operand.f1116.f1116.line35.line33). The input was found with a scratch probe of the evaluator (round7/mint-work/D/probe.mjs) before the expectations were written; each expected amount was then figured by hand from the archived sources, and the refusal objects were copied from the evaluator after checking that the refusal is Form 1040 line 16's own (scope.other_line16). Single, W-2 wages $15,492.01 and $257.99 of taxable interest, all foreign: column c1 $99.70 with $0.01 of foreign tax, column c2 $158.29 with none; a $50 carryover from 2024 is claimed, so Form 1116 is used (the election rules out carrying foreign tax over to or from any other year, i1116 pp. 1-2). AGI $15,750.00 less the $15,750 standard deduction (i1040gi, Line 12e, Standard Deduction Chart, $15,750 single) is taxable income $0, so Form 1116 line 18 is $0 (i1116 p. 23, Line 18, 'If the result is zero or less, enter -0- on line 18'). Line 3e (gross income from all sources, i1116 p. 17) $15,750.00 and line 3c $15,750 (line 3a standard deduction). Line 3f per column, rounded to four places (i1116 p. 18, Line 3f, 'round off the result to at least four decimal places'): c1 99.70/15,750 = 0.006330 -> 0.0063, line 3g $99.225 -> $99.23, line 6 $99.23, line 7 $0.47; c2 158.29/15,750 = 0.010050 -> 0.0101, line 3g $159.075 -> $159.08, line 7 -$0.79 (f1116 p. 1, line 7 'Subtract line 6 from line 1a'). Line 7 total and line 15 -$0.32; line 15 is not more than line 18, so no U.S.-loss allocation (i1116 p. 21). The $0.01 tax is under 15% of c1's $99.70, so c1 is the low-withholding group (Reg. 1.904-4(c)(3), p. 4), net $0.47 after its share of the deductions; 37% of $0.47 is $0.17, more than $0.01, so the income is not high-taxed (Reg. 1.904-4(c)(1), p. 3). Line 17 is -$0.32, so line 21 is $0 and line 24 $0 (smaller of line 14 and line 23). Owning shares of a passive foreign investment company (screen answered Yes after the foreign tax questions) puts Form 8621 tax on Form 1040 line 16 (i1040gi, Line 16, 'Any tax from Form 8621, line 16e'), which this tool refuses; line 20 is that tax (i1116 p. 25, Line 20), so line 20 and line 33 ('Enter the smaller of line 20 or line 32', i1116 p. 25), line 35 and Schedule 3 line 1 are refused with it.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 1549201,
+        "$interest": [
+          "bank"
+        ],
+        "interest[bank].amount": 25799,
+        "s3.foreign_any": true,
+        "ftc.carryover": true,
+        "ftc.taxes": 1,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "$f1116col": [
+          "c1",
+          "c2"
+        ],
+        "f1116col[c1].kind": "interest",
+        "f1116col[c1].int_income": 9970,
+        "f1116col[c1].tax_int": 1,
+        "f1116col[c2].kind": "interest",
+        "f1116col[c2].int_income": 15829,
+        "f1116col[c2].tax_int": 0,
+        "$f1116sbyr": [
+          "a"
+        ],
+        "f1116sbyr[a].year": "p1",
+        "f1116sbyr[a].amount": 5000,
+        "scope.foreign_shares": true,
+        "scope.pfic": true
+      },
+      "expect": {
+        "f1116col[c1].line3g": {
+          "kind": "money",
+          "cents": 9923
+        },
+        "f1116col[c1].line7": {
+          "kind": "money",
+          "cents": 47
+        },
+        "f1116col[c2].line3g": {
+          "kind": "money",
+          "cents": 15908
+        },
+        "f1116col[c2].line7": {
+          "kind": "money",
+          "cents": -79
+        },
+        "f1116.line7_total": {
+          "kind": "money",
+          "cents": -32
+        },
+        "f1116.line15": {
+          "kind": "money",
+          "cents": -32
+        },
+        "f1116.line18": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.line24": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1116.us_loss": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1116.high_taxed": {
+          "kind": "bool",
+          "value": false
+        },
+        "f1116.line20": {
+          "kind": "refusal",
+          "gate": "scope.other_line16",
+          "form": "Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture",
+          "remedy": "Additional Form 1040 line 16 taxes are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1116.line33": {
+          "kind": "refusal",
+          "gate": "scope.other_line16",
+          "form": "Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture",
+          "remedy": "Additional Form 1040 line 16 taxes are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "f1116.line35": {
+          "kind": "refusal",
+          "gate": "scope.other_line16",
+          "form": "Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture",
+          "remedy": "Additional Form 1040 line 16 taxes are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        },
+        "s3.line1": {
+          "kind": "refusal",
+          "gate": "scope.other_line16",
+          "form": "Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture",
+          "remedy": "Additional Form 1040 line 16 taxes are outside this proof of concept.",
+          "cite": {
+            "doc": "f1040",
+            "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+            "revision": "2025; created 2025-09-05",
+            "snapshot": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982",
+            "tax_year": 2025
+          }
+        }
+      }
+    }
+  ]
+}

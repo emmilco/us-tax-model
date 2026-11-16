@@ -693,8 +693,8 @@ def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True, cited
     from the pages given. `cited` (a line-scoped review: the document cut to the scoped lines' reach)
     narrows it as a New York catalog is narrowed, with that document's citations in place of the whole
     form's (federal_whole). Federally, a form the excerpt names only as a form is listed whole only
-    where those citations name its IRS form; otherwise its input lines and the lines the excerpt names
-    by form and line are listed (NAMED_FORM_INPUTS), and a collection named only as a form only by
+    where those citations name its IRS form; otherwise its input lines, the lines the scoped lines read
+    and the lines the excerpt names by form and line are listed (NAMED_FORM_INPUTS), and a collection named only as a form only by
     those named lines (NAMED_LINES). Definitions, shared pages, worksheets and named lines are listed
     as without `cited`."""
     mani = manifest() if mani is None else mani
@@ -730,16 +730,18 @@ def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True, cited
             out = {d: why for d, why in out.items() if jurisdiction.is_ny(d) or d in whole}
         else:
             # A form named only as a form keeps its input lines, the return's facts the text may rely on
-            # without naming a line (filing status); a collection named only as a form is not listed
-            # unless a scoped line sums over it, since the model cannot write that sum without its fields.
+            # without naming a line (filing status), and the lines the scoped lines read; a collection
+            # named only as a form is not listed unless a scoped line sums over it, since the model cannot
+            # write that sum without its fields.
             summed = collections_read(cited) if cited is not None else set()
+            read = {r for l in cited["lines"] for r in subjects._strings({k: v for k, v in l.items() if k != "id"})}
             for d in [d for d, why in out.items() if why == "named form" and d not in whole]:
                 doc = load_form(d)
                 if doc.get("collection") and d in summed:
                     continue
                 del out[d]
                 if not doc.get("collection"):
-                    inputs[d] = {l["id"] for l in doc["lines"] if l["expr"].get("op") == "input"}
+                    inputs[d] = {l["id"] for l in doc["lines"] if l["expr"].get("op") == "input" or l["id"] in read}
             for d in sorted(summed - set(out)):
                 if d != form_doc["id"]:
                     out[d] = SUMMED_COLLECTION
@@ -766,7 +768,7 @@ def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True, cited
 # "Federal adjusted gross income") without naming the line, so both are needed.
 NAMED_LINES = "named lines: "
 # A line-scoped federal catalog (catalog_selection with `cited`): of a form the excerpt names only as a form,
-# its input lines and the lines the excerpt names by form and line.
+# its input lines, the lines the scoped lines read and the lines the excerpt names by form and line.
 NAMED_FORM_INPUTS = "named form, inputs and named lines: "
 # A line-scoped federal catalog: a collection a scoped line sums over, listed whole.
 SUMMED_COLLECTION = "collection a scoped line sums over"

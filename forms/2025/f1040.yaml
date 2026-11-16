@@ -15,6 +15,69 @@ form:
       cite:
         doc: f1040
         locator: Form 1040, Filing Status
+    - id: f1040.digital_assets
+      printed: Digital Assets
+      label: 'At any time during 2025, did you (or, on a joint return, your spouse) receive a digital asset (as a reward,
+        award, or payment for property or services), or sell, exchange, or otherwise dispose of a digital asset (or a
+        financial interest in a digital asset)?'
+      type: Bool
+      expr:
+        op: input
+        source: |-
+          At any time during 2025, did you (or, on a joint return, your spouse) receive a digital asset (as a reward, award, or payment for property or services), or sell, exchange, or otherwise dispose of a digital asset (or a financial interest in a digital asset)?
+
+          A digital asset is a digital representation of value recorded on a cryptographically secured distributed ledger or similar technology, such as a cryptocurrency, a stablecoin or a non-fungible token (NFT).
+
+          Yes, for example, if you received digital assets as payment for property or services, as a reward or award, or from mining, staking or a hard fork, or if you sold one, exchanged or traded one for another, or used one to pay for property or services.
+
+          No, if all you did was hold digital assets, transfer them between wallets or accounts you own or control, or buy them with U.S. or other real currency.
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2025), page 1, Digital Assets, "At any time during 2025, did you: (a) receive (as a reward,
+          award, or payment for property or services); or (b) sell, exchange, or otherwise dispose of a digital asset (or
+          a financial interest in a digital asset)?"; i1040gi p. 15, Digital Assets, "Digital assets are any digital
+          representations of value that are recorded on a cryptographically secured distributed ledger or any similar
+          technology."; i1040gi p. 16, "Received new digital assets as a result of mining, staking, and similar
+          activities", "Disposed of a digital asset in exchange or trade for another digital asset", "Holding a digital
+          asset in a wallet or account" and "Purchasing digital assets using U.S. or other real currency"'
+    - id: f1040.digital_sales
+      printed: (helper)
+      label: Number of sales entered with a digital asset box (G to L) on Form 8949
+      type: Count
+      expr:
+        op: sum_over
+        collection: sales
+        field: sales.one
+        where:
+          op: test
+          eq:
+            - sales.digital
+            - const: true
+      cite:
+        doc: f8949
+        locator: p. 1, Part I, "(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to
+          the IRS"
+    - id: f1040.digital_conflict
+      printed: (gate)
+      label: A No to the digital asset question on a return that lists a sale with a digital asset box (G to L)
+      type: Bool
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f1040.digital_assets
+              - const: false
+          - op: test
+            gt:
+              - f1040.digital_sales
+              - const: 0
+                type: Count
+      cite:
+        doc: i1040gi
+        locator: 'p. 16, How To Report Digital Asset Transactions, "If, in 2025, you disposed of any digital asset, which
+          you held as a capital asset, through a sale, trade, exchange, payment, or other transfer, check “Yes” and use
+          Form 8949 to calculate your capital gain or loss"'
     - id: f1040.line1a
       printed: 1a
       label: Total amount from Form(s) W-2, box 1
@@ -28,6 +91,14 @@ form:
         locator: pp. 23–24, Line 1a, Total Amount From Form(s) W-2, Box 1, "Enter the total amount from Form(s) W-2,
           box 1. If a joint return, also include your spouse’s income from Form(s) W-2, box 1"
       refuses:
+        - when: household.mfs_community_property
+          form: Community income on a married filing separately return (Form 8958; Pub. 555)
+          remedy: A married person who files a separate return and lived in a community property state may have to report
+            half of the community income of both spouses under state law; Form 8958 and the community property rules of
+            Pub. 555 are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'p. 14, Married Filing Separately, "Different rules apply to people in community property states; see Pub. 555"; p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."'
         - when: household.roster_bad
           form: The people on the return
           remedy: Enter one person with the role taxpayer, and, only when married filing jointly, one person with the
@@ -51,6 +122,39 @@ form:
           cite:
             doc: i1040gi
             locator: 'p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"'
+    - id: f1040.line1b
+      printed: 1b
+      label: Household employee wages not reported on Form(s) W-2
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.household_wages_if_pay
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"'
+    - id: f1040.line1c
+      printed: 1c
+      label: Tip income not reported on line 1a
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.line1c
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1c, "Enter the total of your tip income that was not reported on Form 1040, line 1a"; f4137 p. 1, line 4, "Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c"'
+    - id: f1040.line1d
+      printed: 1d
+      label: Medicaid waiver payments not reported on Form(s) W-2, box 1
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.line1d
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1d, "Medicaid Waiver Payments Not Reported on Form(s) W-2, Box 1"'
     - id: f1040.line1e
       printed: 1e
       label: Taxable dependent care benefits from Form 2441, line 26
@@ -74,6 +178,28 @@ form:
         doc: i1040gi
         locator: 'p. 24, Line 1e, "Taxable Dependent Care Benefits From Form 2441, Line 26" and "But first complete Form 2441 to see if you can exclude part or all of the benefits"'
       note: Zero when you received no dependent care benefits (Form 2441 Part III is then not completed).
+    - id: f1040.line1g
+      printed: 1g
+      label: Wages from Form 8919, line 6
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.f8919_wages
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1g, "Enter the total of your wages from Form 8919, line 6"'
+    - id: f1040.line1h
+      printed: 1h
+      label: Other earned income
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.line1h
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout benefits (other than bona fide gifts)"; p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer"'
     - id: f1040.line1z
       printed: 1z
       label: Add lines 1a through 1h
@@ -82,10 +208,15 @@ form:
         op: sum
         of:
           - f1040.line1a
+          - f1040.line1b
+          - f1040.line1c
+          - f1040.line1d
           - f1040.line1e
+          - f1040.line1g
+          - f1040.line1h
       cite:
         doc: f1040
-        locator: Form 1040 (2025), line 1z
+        locator: Form 1040 (2025), line 1z (line 1f, employer-provided adoption benefits, is refused by scope.adoption_benefits)
     - id: f1040.tax_exempt_interest
       printed: (helper)
       label: Tax-exempt interest and tax-exempt OID, net of amortized premium
@@ -289,11 +420,16 @@ form:
           - const: mfs
         - op: test
           eq:
+          - ssb.has_benefits
+          - const: true
+        - op: test
+          eq:
           - ssb.lived_apart
           - const: true
       cite:
         doc: i1040gi
-        locator: p. 31, Line 6d
+        locator: 'p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d. If you don’t check the box on line 6d, you may get a math error notice from the IRS."'
+      ambiguity: amb.2025.mfs_lived_apart_boxes
     - id: f1040.line7a
       printed: 7a
       label: Capital gain or (loss). Attach Schedule D if required
@@ -303,7 +439,17 @@ form:
         from: sd.to1040
       cite:
         doc: i1040gi
-        locator: Instructions for Form 1040, line 7a
+        locator: 'p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D"'
+      refuses:
+        - when: f1040.digital_conflict
+          form: Form 1040, Digital Assets question
+          remedy: A sale entered under box G, H, I, J, K or L of Form 8949 is a sale of a digital asset, which needs a Yes
+            to the digital asset question. Answer Yes, or correct the box of the sale.
+          cite:
+            doc: i1040gi
+            locator: 'p. 16, How To Report Digital Asset Transactions, "If, in 2025, you disposed of any digital asset,
+              which you held as a capital asset, through a sale, trade, exchange, payment, or other transfer, check “Yes”
+              and use Form 8949 to calculate your capital gain or loss"'
     - id: f1040.line8
       printed: "8"
       label: Additional income from Schedule 1, line 10
@@ -383,6 +529,16 @@ form:
       cite:
         doc: f1040
         locator: Form 1040 (2025), line 11b
+    - id: f1040.line12b
+      printed: 12b
+      label: Spouse itemizes on a separate return
+      type: Bool
+      expr:
+        op: copy
+        from: sa.mfs_spouse_itemizes
+      cite:
+        doc: i1040gi
+        locator: 'p. 33, Line 12b, "If your filing status is married filing separately and your spouse itemizes deductions on their return, check the box on line 12b"; p. 34, Exception 2—Spouse itemizes on a separate return, "If you checked the box on line 12b, your standard deduction is zero"'
     - id: f1040.line12e
       printed: 12e
       label: Standard deduction or itemized deductions (from Schedule A)
@@ -468,6 +624,16 @@ form:
         doc: i1040gi
         locator: f1040 Form 1040 (2025), line 15, "Subtract line 14 from line 11b. If zero or less, enter -0-. This is
           your taxable income"
+      refuses:
+        - when: s1.nol_limit
+          form: Form 172, NOL deduction limitation (the 80% limit)
+          remedy: Your net operating loss carried into 2025 is more than four times your taxable income after deducting it,
+            so the limit of 80% of taxable income figured without the deduction may apply; figuring the limit and the loss
+            carried to 2026 is outside this tool.
+          cite:
+            doc: i172
+            locator: 'p. 2, "Only NOLs arising after 2017 and carried forward to a year after 2020 are subject to the
+              80%-of-taxable-income limit"'
     - id: f1040.gate.qdcg_applies
       printed: (gate)
       label: Use the Qualified Dividends and Capital Gain Tax Worksheet?

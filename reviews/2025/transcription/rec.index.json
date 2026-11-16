@@ -1,0 +1,239 @@
+{
+ "kind": "transcription",
+ "form": "rec",
+ "family": "claude",
+ "base": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+ "lines": [
+  {
+   "key": "rec.path",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply's path is any recovery kind ticked, without the 2024 itemizing test. On fixture rec.not_itemized (a property tax refund, no itemized deductions for 2024) the project says false and the reply true (41 value differences, 1 completed). p525 p. 27, Worksheet 2 is 'Recoveries of Itemized Deductions' and 'A recovery is included in income only to the extent of the deduction amount that reduced your tax in the prior year': a filer who did not itemize has no itemized deduction to recover, so the project's gate (scope.recovery then refund.itemized) is right.",
+   "subject_key": "176083537f301959cf45fed661249c585312691edff7c2af3a5619a0d0a300ac"
+  },
+  {
+   "key": "rec.to_line1",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply refuses through its own gate rec.h_ti_conflict on 1,095 completed returns where the project computes (stage14.asset.hy_5yr: project $0, no recovery at all); its value branches follow the p525 p. 27 split ('If line 11 equals line 3 ... line 1a on Schedule 1, line 1'; 'If line 11 is less than line 3 and either line 1a or line 1b or line 2 is zero ...'), which the project's line B gives on every return that reaches it (no value difference).",
+   "subject_key": "fdf51b12dc4283003e4cd68c99f8c5be3f7efe05ed77e4fc17192c8eddc6321a"
+  },
+  {
+   "key": "rec.to_line8z",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; as rec.to_line1: the reply refuses through its own rec.h_ti_conflict on 1,095 completed returns where the project computes $0; no value differs where both compute.",
+   "subject_key": "701c99dc0ccaa25eed3bc16bc5dd0d7fcd5984c9e2c3b2943cdf0fa7217d4dbe",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rec.not_2024": "rec.before_prior_year",
+     "rec.not_2024_if_any": "rec.before_prior_year_if_any"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "b80787bbe866cf1f823500ce6cae723f45f868490843bc6fb606418c50b80c74"
+   }
+  },
+  {
+   "key": "2a:1",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply drops the refund gates (refund.itemized, refund.sales, refund.two_returns). Value differences (5; completed: stage16.refund.f1, project $0, reply $1,000) fall only on returns where Worksheet 2 is not used (rec.path false), where the project's zero is i1040gi's 'none of your refund is taxable' for a non-itemizer and line 1 reaches no output.",
+   "subject_key": "112562b207772f457d1346af6bfb2b685a42870cf37cc578712ad2f72b35c1eb"
+  },
+  {
+   "key": "2a:2",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply drops the parent gate (scope.recovery and refund.itemized). Its one completed value difference (rec.not_itemized, project $0, reply $300) is a non-itemizer for whom Worksheet 2 is not used (p525 p. 27, Recoveries of Itemized Deductions).",
+   "subject_key": "ac99d3aca51363e9b042ecde8ab05cbecfd14713b9432fd5b925171240c34f14"
+  },
+  {
+   "key": "2a:6",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; value differences only where line 1 differs off the Worksheet 2 path (as 2a:1); the reply also hides line 6 after the line 5 STOP ('No. [STOP] None of the refunds on line 1 or 2 are taxable', p525 p. 26), where the project shows the sum (rec.salt_cap_absorbs, $3,000): layout only, lines 7 and 8 are $0 either way.",
+   "subject_key": "7703f5c33ee6839a57c93ba75085c6ccc7c2216688f94e6d588efe569bfcf159"
+  },
+  {
+   "key": "2a:3",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "AGREE",
+   "subject_key": "6bb40aa9bd032ab0a55ef9eb3ed97c0267ddbbd8163db8d6424c3688eb8223e6"
+  },
+  {
+   "key": "2a:4",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply subtracts 2024 line 5e from line 5d where the project reads refund.line2 (the same 2024 figure); the reply reads the worksheet's inputs without their parent questions (scope.recovery, refund.itemized, the rec_kinds ticks), so it is unknown where the interview never asks them; no value differs on any completed return.",
+   "subject_key": "f13d8ae1ac6a28df9fbb82da710c7f549a2cebda93cb05da442abc3bb2b46bbc"
+  },
+  {
+   "key": "2a:5",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply adds a shown_when for the line 5 'Yes' branch; differences are project-unknown only on refused or incomplete returns, no value differs (p525 p. 26, line 5).",
+   "subject_key": "d2e8e7450b14ae4c787aeb5780755203d4139c509022917176a03c0476db6292"
+  },
+  {
+   "key": "2a:7",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.2025.rec_ratio_places (p525 p. 26, line 7, 'divide line 1 by line 6. Then multiply by the amount on line 5', precision unstated): the project rounds the ratio to six places (classm.rec.3: $666.67), the reply to four ($666.70). Other value differences only off the Worksheet 2 path, as 2a:1.",
+   "subject_key": "06870f639977146f42a85d073bd95d10017b887fd242cebbf40d439e54cc9f25"
+  },
+  {
+   "key": "2a:8",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.2025.rec_ratio_places, as 2a:7 (classm.rec.3: project $333.33, reply $333.30).",
+   "subject_key": "a4a783a0de0d9b4400bcb3de1409f9810461ecb556f844130b8c52001cf9dc53"
+  },
+  {
+   "key": "1a",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "AGREE",
+   "subject_key": "f5dd786fca091c4228331554628a67e73b4775d210fce89554f0d2bdb02b4045"
+  },
+  {
+   "key": "1b",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "AGREE",
+   "subject_key": "6f8a72087e95d391b10820dd65943e30342d73e7f648a92bbbcc73c00bd28f79"
+  },
+  {
+   "key": "2",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply reads the worksheet's inputs without their parent questions (scope.recovery, refund.itemized, the rec_kinds ticks), so it is unknown where the interview never asks them; no value differs on any completed return (p525 p. 27, line 2).",
+   "subject_key": "aeee173e509704bc14179acf89a7b8ac9c14f61f26b551303d6c8069a9bdb8f5"
+  },
+  {
+   "key": "3",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "AGREE",
+   "subject_key": "954eeeb77665e47ec1ab877cab86a96804c5376c1bf8c0d41d0645ed78c386fe"
+  },
+  {
+   "key": "4",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "AGREE",
+   "subject_key": "18fe8eb938288a59b54b4775be81a207b218908e0936c53e1615d96852dca8b8"
+  },
+  {
+   "key": "5",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "AGREE",
+   "subject_key": "4587cc214a412625534adde44edcd6e87636df4492799788368a61a5cfb47b18"
+  },
+  {
+   "key": "6",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "AGREE",
+   "subject_key": "53c1031da2d3337680dd815ab64aec59f7e96a41e2aee081d44d748b5d41290f"
+  },
+  {
+   "key": "7",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage (2,444/2,444 agree); the project's extra branch is married filing separately with a spouse who itemized, and MFS is refused for every return (scope, s3.mfs).",
+   "subject_key": "988911f5d26c6b8c39878a8a6dca923f76bc6f0f29b078bc3b7de08eabd33ed0"
+  },
+  {
+   "key": "8",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "AGREE",
+   "subject_key": "e2860ef86649b8a18ae3ee5da20581c6d8fa8937d1a83b1c28cef2321671d829"
+  },
+  {
+   "key": "9",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply hides the line when line 8 is zero or less (p525 p. 27, line 8, 'If the result is zero or less, stop here'); differences are project-unknown only on refused or incomplete returns, no value differs.",
+   "subject_key": "68ef8f31e294534eb64118b25a51599f78f9ab0fe87da783ff410f4fc8f37e5c"
+  },
+  {
+   "key": "10",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply hides line 10 after the line 8 stop; its only shown/hidden differences are on refused returns (7), and no value differs on a completed return.",
+   "subject_key": "5458e77d6b399b3cb21bd607d5a11a9e97bfaff2b0eaad5c937fef036718466b"
+  },
+  {
+   "key": "11",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply refuses through its own rec.h_ti_conflict on 16 completed returns where the project computes (classm.rec.1: project $925); its value expression equals the project's (p525 p. 27, line 11, 'If line 10 is a negative amount, add lines 9 and 10 ... but not less than zero').",
+   "subject_key": "981879aae12111f7282e8ed64ff6baee2df9a17f8bdb967a9bc0018aa8b1ffa2"
+  },
+  {
+   "key": "B",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply refuses through its own rec.h_ti_conflict on 1,095 completed returns (stage14.asset.hy_5yr); its ratio rounded to four places instead of six is amb.2025.rec_ratio_places.",
+   "subject_key": "b562b49dd0f4d745ecf57e0cb74d66cffc7bd359ced0025fc6b34a3424536b3e"
+  },
+  {
+   "key": "C",
+   "record": "8b3365a1fb08ceb3fd83aa987bab30e7ac014e70720942286d810406dc2f08dc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; as B (the reply's rec.h_ti_conflict refusal on 1,095 completed returns); its shown_when also hides line C where line 1a is zero (classm.rec.4, project shows $50), where p525 p. 27 sends line 11 to line 8z without the A-C worksheet: the reply's own rec.to_line8z gives the same $50, so that part is layout.",
+   "subject_key": "08de17192030ac6e8be708359877b18b6b983568d17176ce55121d0ccf0d6667"
+  }
+ ],
+ "subjects": {
+  "rec.path": "fb4d04ec944021c07552977b186dd020e0c51fa913961b928b3da662cca9eef1",
+  "rec.to_line1": "c2255e751655b2de20e16c60292fc536f7a914e3c3bfb09f90cb15b17d8207da",
+  "rec.to_line8z": "edf3663fe22a3603ecdfd9487ee175560a8088645183566fe2193da732c896a4",
+  "2a:1": "13b079f9103c7dc193f919252470c6cc359e20eefc7dbe4a938f229b2e2206a0",
+  "2a:2": "50bf47fd2c89e7888e007b0534b840deae2e0bed0169924d1166cf20727c3f9f",
+  "2a:6": "d48f10968d46d9effc7dca093254f679acca9100c01b0cc51fbf4779024e1c66",
+  "2a:3": "9f880f581c60bf9093391ecded157f79e1c013bb335937ec3426b358a4017371",
+  "2a:4": "f5f042bc321c831d552df039a45d94c645e8bfe738aa1144bd5865581ca81bbd",
+  "2a:5": "675d3a437ee0d55c1bfbade28916523bd41e7fd9f906086a5fb56017cbf083d1",
+  "2a:7": "5e1e3e777c63225df89409411818f89a5302f09725d6f457e29c18cfc46af08f",
+  "2a:8": "afad513f4590e87f8d750648b52b90e80c47ae1763cf56e0e767075146635677",
+  "1a": "b355a7efbf5f032b800156792557bae91997bf258cdd50b0aa7cf0826930fd14",
+  "1b": "f3ebe444fb9cbee1109cb0c75439687d1e83ce515ee7158f5f8ee87440e15492",
+  "2": "950b457a5cfd2636667e9176f63c7d304bee4aee3b0a76b88b838916e9502367",
+  "3": "43db87922bbe877a526a42438fe7e4e1a73b3710833cc2315803b66979c398b5",
+  "4": "a59ff8ad31c4992c0d3f87a32eb6b8b3417b8ce5f684b876213ca7edff63b37a",
+  "5": "cde28ae05caa2803ad93cba8d2d0f93ce5fa368cd6a6c8611e17f6353d17388b",
+  "6": "c7c33871fd8845654af2816044d5fcc63dad05ec5776cf1898ce0d7350b9725f",
+  "7": "1e34e89b66c67a10bf68aa65d196bdefdacb5f81ce78cea6096ec4f92dd31163",
+  "8": "28c64da52d086fd50a7b700eff7696cf7d7b5a552d5e5441eecce5cdeca50d74",
+  "9": "dda43342bc290f60c9d21af512d3d6e5094ea0e91e75a99fbd4b1c6de6231bdf",
+  "10": "057459abb306c829527c1f70aef6e6133b4c770ad29168dbb61a340d57d42ab9",
+  "11": "0438fbb0e825ed9bd8b3c9a1e2f9c22991ad33188068b5bc3ddf64a14a0dc749",
+  "B": "ff230653c8254b5cc9c1175d37c674f5f83b78bb72336e3e62e8b61b9bc0e3a6",
+  "C": "b6c1fe526fdca51190e43bc1de9280bb970a5d81818a65f8144bab17973ff409"
+ },
+ "__rest__": "eb42786d08ac98e21bfc9498bf503ea728c02c7c1a49fa672307b8770b9f340f",
+ "foreign": {
+  "rec.path": "3ad1d51a4db54d8198dfe373a52f716c48eb3637cab9e256bb0be6c7b99caad6",
+  "rec.to_line1": "71859a847677ecaaa85c97c329bc9bf904f77e2cebd5f4859076f45ddbf36325",
+  "rec.to_line8z": "3cbcdbefbb42b5eeccf1226158f4edc3dd71280e6bd18f3ff24499208f4eb4ab",
+  "2a:1": "767a8559f7bba7e1db2ba2c0034c620a737b72c2546955adc2f5babe20b75725",
+  "2a:2": "71859a847677ecaaa85c97c329bc9bf904f77e2cebd5f4859076f45ddbf36325",
+  "2a:6": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "2a:3": "d181699b9f7a7204d666f2f1cfba2ca7572b6529929a9b446ee1a9cd509bf00f",
+  "2a:4": "5a6d8b9862d80ce2d8c0411a21b4224d435ee9815a22ea3add4aa23a30219ea1",
+  "2a:5": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "2a:7": "1cc109966732f3ae1f52f853b67a824d793bfec0d6191f6245843ae13c061557",
+  "2a:8": "1cc109966732f3ae1f52f853b67a824d793bfec0d6191f6245843ae13c061557",
+  "1a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "1b": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "2": "71859a847677ecaaa85c97c329bc9bf904f77e2cebd5f4859076f45ddbf36325",
+  "3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "4": "aa2a422c8d5a8c7faa4981cbdab0c7dd2ba037594f274575c336f13a7a89d7c0",
+  "5": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "6": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "7": "28eacbc06d3ce79c4e009c936f1761995ed184d041f0d92317927e1e667342ca",
+  "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "9": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "10": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "11": "c01ffbc99a126d58326f8186b34b5d7bdda4f5c4fc4cbbf80eb17d3a5bcfc11d",
+  "B": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "C": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

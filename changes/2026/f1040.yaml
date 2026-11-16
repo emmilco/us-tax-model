@@ -192,8 +192,26 @@ changes:
     - set:
         line: f1040.line15
         field: refuses
-        from: null
+        from:
+        - when: s1.nol_limit
+          form: Form 172, NOL deduction limitation (the 80% limit)
+          remedy: Your net operating loss carried into 2025 is more than four times your taxable income after deducting it,
+            so the limit of 80% of taxable income figured without the deduction may apply; figuring the limit and the loss
+            carried to 2026 is outside this tool.
+          cite:
+            doc: i172
+            locator: 'p. 2, "Only NOLs arising after 2017 and carried forward to a year after 2020 are subject to the
+              80%-of-taxable-income limit"'
         to:
+        - when: s1.nol_limit
+          form: Form 172, NOL deduction limitation (the 80% limit)
+          remedy: Your net operating loss carried into 2025 is more than four times your taxable income after deducting it,
+            so the limit of 80% of taxable income figured without the deduction may apply; figuring the limit and the loss
+            carried to 2026 is outside this tool.
+          cite:
+            doc: i172
+            locator: 'p. 2, "Only NOLs arising after 2017 and carried forward to a year after 2020 are subject to the
+              80%-of-taxable-income limit"'
         - when: f1040.gate.itemized_limit
           form: Schedule A Itemized Deductions Worksheet (2026)
           remedy: Your itemized deductions may be limited for 2026 (Schedule A line 18, "Yes"); the worksheet that figures

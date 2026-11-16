@@ -1,0 +1,618 @@
+{
+ "form": "rec",
+ "reviews": {
+  "gate:rec.has_medical_if_path": {
+   "subject_sha": "7ea2d86f781bb0d47be0eebd538d94acd04f8de7f481287e734e6d350f515433",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A couple filing jointly for 2025 who filed separate returns for 2024. Only the spouse itemized and deducted medical expenses, and the spouse's insurer reimbursed part of them in 2025.",
+       "why_no": "The parent condition reads 'you itemized deductions for 2024'. The filer did not itemize; the spouse did. So the Worksheet 2 helper is no, and the medical question is never asked.",
+       "line": "rec.medical_if_has (and rec.medical_deducted_if_has)",
+       "irs_text": "p525 p. 25: 'If you recover any itemized deduction that you claimed in an earlier year, you must generally include the full amount of the recovery in your income in the year you receive it.'",
+       "severity": "high",
+       "fix": "Ask 'Did you or your spouse itemize deductions on any 2024 return, joint or separate?' Use the itemizing spouse's 2024 Schedule A for the deduction and its limits."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose health insurer or HSA/HRA reimbursed in 2025 medical bills that the filer had paid and deducted for 2024.",
+       "why_no": "'Money was paid back for 2024' reads as a refund of something overpaid, such as a tax refund. An insurance reimbursement for a claim does not feel like money 'paid back'.",
+       "line": "rec.medical_if_has",
+       "irs_text": "p525 p. 26, Example 34: 'In 2025, you received a $500 reimbursement from your medical insurance for your 2024 expenses.'",
+       "severity": "medium",
+       "fix": "Word the parent as 'In 2025, did you or your spouse receive any refund, reimbursement, insurance payment, or settlement for something you deducted on your 2024 Schedule A (taxes, medical bills, mortgage interest, and so on)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer who paid a 2024 doctor or hospital bill. In 2025 the insurer paid the provider directly, and the provider refunded the filer's overpayment.",
+       "why_no": "The filer reads 'reimbursement' as a payment from an insurer to them. The refund came from the provider, and the insurer paid the provider, so they answer no.",
+       "line": "rec.medical_if_has",
+       "irs_text": "p525 p. 27, Worksheet 2, line 2: 'Enter the total of all other Schedule A (Form 1040) refunds or reimbursements.'",
+       "severity": "medium",
+       "fix": "In the help, say that refunds from doctors, hospitals, pharmacies or insurers all count, whoever paid whom."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who deducted 2024 health or long-term-care insurance premiums as medical expenses and received a 2025 premium refund or rebate. Also a filer who received a 2025 lawsuit or accident settlement allocated to 2024 medical costs they deducted.",
+       "why_no": "A premium rebate or a damages settlement is not seen as a 'reimbursement of medical or dental expenses'. The filer thinks only of bills for care.",
+       "line": "rec.medical_if_has",
+       "irs_text": "p525 p. 27, Worksheet 2, line 2: 'Enter the total of all other Schedule A (Form 1040) refunds or reimbursements.'",
+       "severity": "medium",
+       "fix": "List examples in the medical question: insurance claim payments, refunds of insurance premiums you deducted, provider refunds, and the part of a settlement or damages award meant for medical costs."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer reimbursed in 2025 for medical expenses deducted on a 2023 (or earlier) Schedule A, with or without 2024 recoveries.",
+       "why_no": "The gate and the questions ask only about 2024 itemizing and 2024 expenses. An earlier-year recovery gets a truthful no and is dropped.",
+       "line": "rec.medical_if_has",
+       "irs_text": "p525 p. 27, Worksheet 2: 'If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 and a casualty loss reimbursement from 2023, complete a separate worksheet for each year.'",
+       "severity": "medium",
+       "fix": "Ask whether any 2025 recovery relates to a deduction from a year before 2024. If so, run a separate Worksheet 2 per year, or refuse."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer whose 2024 itemized deductions exceeded the standard deduction by more than all recoveries, with every one of the five statements true, as in Example 30, and who received a medical reimbursement.",
+       "why_no": "If 'Worksheet 2 is used' is computed false whenever full inclusion applies, the medical question is skipped. The $200 medical recovery is then lost unless another path collects it.",
+       "line": "rec.medical_if_has",
+       "irs_text": "p525 p. 25, Example 30: 'so you must include your total recoveries in your income for 2025 ... the balance of your recoveries, $525, on Schedule 1 (Form 1040), line 8z.'",
+       "severity": "low",
+       "fix": "Gate on 'any 2025 recovery of a 2024 itemized deduction', not on whether Worksheet 2 is needed. Let the computation decide full or partial inclusion."
+      }
+     ],
+     "prompt_sha": "cb242e452ce36044755349db2f7a86280253937ec3c6b3f444ebd8d038245b69",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.114804,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rec.has_medical_if_path.7ea2d86f781b.1.response.txt"
+    }
+   ],
+   "condition": "rec.has_medical_if_path",
+   "lines": [
+    "rec.medical_deducted_if_has",
+    "rec.medical_if_has"
+   ],
+   "inputs": [
+    "rec.medical_deducted",
+    "rec.medical"
+   ],
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      25,
+      26,
+      27
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 25, Example 30, \"Medical expenses\"",
+      "p. 26, Example 34, \"In 2025, you received a $500 reimbursement from your medical insurance for your 2024 expenses\"",
+      "p. 26, Example 34, \"The only amount of the $500 reimbursement that must be included in your income for 2025 is $200, the amount actually deducted\"; p. 26, Recovery limited to deduction, \"The amount you include in your income is limited to the smaller of: • The amount deducted, or • The amount recovered\"",
+      "p. 26, Recovery limited to deduction, \"You don’t include in your income any amount of your recovery that is more than the amount you deducted in the earlier year\"",
+      "p. 27, Worksheet 2, line 2, \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements\""
+     ],
+     "cols_pages": [
+      25
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "gate:rec.has_mortgage_if_path": {
+   "subject_sha": "7a4a12d6f4dc732da00498d8cb81923ae65b67f524aafbeb7aaf26a45040cdbe",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A couple who married in 2025 and file jointly for 2025. In 2024 the spouse filed single, itemized, deducted mortgage interest on their own home, and in 2025 the lender refunded part of that 2024 interest. The filer took the standard deduction in 2024.",
+       "why_no": "The parent helper says \"you itemized deductions for 2024.\" The filer truthfully did not itemize, so the computed condition is false and the refund question is never asked.",
+       "line": "rec.mortgage_if_has",
+       "irs_text": "p525 p. 24: \"If you received a refund or credit in 2025 of mortgage interest paid in an earlier year ... You may have to include it in your income\"; p525 p. 27, Worksheet 2, line 2: \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements\"",
+       "severity": "high",
+       "fix": "Ask whether you or your spouse received the recovery, and whether that person itemized on their own 2024 return (joint or separate). Run Worksheet 2 for each spouse's 2024 return where that applies."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer with a seller-financed or private-lender mortgage who deducted 2024 interest on Schedule A line 8b with no Form 1098, and whose lender refunded overpaid 2024 interest in 2025. A co-op tenant-stockholder who received a refund of their share of the co-op's 2024 mortgage interest is in the same position.",
+       "why_no": "The question says \"refunded (Form 1098 box 4).\" With no Form 1098, or an empty box 4, the filer reads the form reference as the test and answers no.",
+       "line": "rec.mortgage_if_has",
+       "irs_text": "p525 p. 24: \"the amount should be shown in box 4 of Form 1098\" (should, not must); p. 27, Worksheet 2, line 2: \"all other Schedule A (Form 1040) refunds or reimbursements\"",
+       "severity": "medium",
+       "fix": "Ask: \"In 2025, did any lender, co-op, or other payee refund or credit you any mortgage interest you deducted for 2024? It is often, but not always, shown in Form 1098 box 4.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer whose lender found an overcharge of 2024 interest and, in 2025, credited it to the loan principal or escrow account instead of sending a check.",
+       "why_no": "The word \"refunded\" suggests money paid out. The filer received no payment and answers no.",
+       "line": "rec.mortgage_if_has",
+       "irs_text": "p525 p. 24: \"If you received a refund or credit in 2025 of mortgage interest paid in an earlier year\"",
+       "severity": "medium",
+       "fix": "Say \"refunded or credited (including a credit to your loan balance or escrow).\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer who itemized for 2024 and whose only recovery in 2025 is a mortgage interest refund. There is no state tax refund.",
+       "why_no": "The parent helper says \"money was paid back for 2024,\" which can be read as the filer repaying money. The six statements that trigger Worksheet 2 on p. 24 also name only taxes (\"such as a general sales tax or real property tax refund\"). So the filer, or the tool, concludes that Worksheet 2 is not used, and the mortgage question is never reached.",
+       "line": "rec.mortgage_if_has",
+       "irs_text": "p525 p. 24 statement 2: \"You received a refund other than an income tax refund ... of an amount deducted or credit claimed in an earlier year\"; Worksheet 2 line 2 covers \"all other Schedule A (Form 1040) refunds or reimbursements\"",
+       "severity": "medium",
+       "fix": "Word the parent as \"In 2025, did you or your spouse receive a refund, credit, or reimbursement of anything deducted on your 2024 Schedule A (taxes, mortgage interest, medical, casualty, etc.)?\" Use Worksheet 2 whenever any non-income-tax recovery exists."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who received a refund in 2025 of mortgage interest paid partly in 2023 and partly in 2024, or entirely in 2023, and who itemized in those years.",
+       "why_no": "Both the parent and the child say \"for 2024.\" The filer answers no, or reports only part of the refund, and nothing asks about the 2023 portion.",
+       "line": "rec.mortgage_if_has",
+       "irs_text": "p525 p. 24: \"refund or credit in 2025 of mortgage interest paid in an earlier year\"; \"Recovery for 2 or more years ... you must allocate, on a pro rata basis\"; p. 27: \"If you recovered amounts from more than 1 year ... complete a separate worksheet for each year\"",
+       "severity": "low",
+       "fix": "Ask which year's interest was refunded. Allocate the refund across years, and either support a separate Worksheet 2 for earlier years or refuse."
+      }
+     ],
+     "prompt_sha": "a6f7df8513efad1bfbbd0d71e822c3f71a701cc80b03868b040e79d092850c94",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.108732,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rec.has_mortgage_if_path.7a4a12d6f4dc.1.response.txt"
+    }
+   ],
+   "condition": "rec.has_mortgage_if_path",
+   "lines": [
+    "rec.mortgage_if_has"
+   ],
+   "inputs": [
+    "rec.mortgage"
+   ],
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      24,
+      27
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 24, Mortgage interest refund, \"You may have to include it in your income under the rules explained in the following discussions\"",
+      "p. 24, Mortgage interest refund, \"the amount should be shown in box 4 of Form 1098\"; p. 27, Worksheet 2, footnote 2, \"Don’t enter more than the amount deducted for the prior year\"",
+      "p. 27, Worksheet 2, line 2, \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements\""
+     ],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "gate:rec.has_other_if_path": {
+   "subject_sha": "f1379faf8feab1388ae5fd95beab5990d52ecc772127fb4684a624e27490b917",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer who itemized in 2023 and took a casualty loss or medical deduction that year, then received the insurance reimbursement or refund in 2025. They took the standard deduction in 2024, or itemized in 2024 but nothing from 2024 was recovered.",
+       "why_no": "The parent gate and child question are fixed to 2024 ('paid back for 2024 and you itemized deductions for 2024', 'something else you itemized for 2024'), so a truthful no excludes recoveries of deductions from earlier years.",
+       "line": "rec.other_if_has (and rec.other_deducted_if_has)",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2: 'If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 and a casualty loss reimbursement from 2023, complete a separate worksheet for each year. Use information from your tax return for the year the expense was deducted.'",
+       "severity": "high",
+       "fix": "Ask 'In 2025, did you or your spouse get back any amount (refund, reimbursement, rebate, credit or offset) of an expense deducted on Schedule A in ANY earlier year?' Then collect the deduction year and run one Worksheet 2 per year, using that year's Schedule A, standard deduction and taxable income."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A married couple filing jointly for 2025 who filed separately in 2024, or were not yet married. The spouse itemized on a 2024 separate return and in 2025 received a refund of medical or mortgage interest from that year.",
+       "why_no": "The gate says 'you itemized deductions for 2024', so the filer answers about their own 2024 return and says no.",
+       "line": "rec.other_if_has (and rec.other_deducted_if_has)",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2, line 2: 'Enter the total of all other Schedule A (Form 1040) refunds or reimbursements'; 'Use information from your tax return for the year the expense was deducted.'",
+       "severity": "high",
+       "fix": "Ask 'Did you or your spouse itemize on any prior-year return (joint or separate) and get back part of a deducted expense in 2025?' Run a worksheet for each prior return, using that return's figures."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer who itemized 2024 medical expenses and in 2025 received an insurance reimbursement, or a damages award covering them. A filer whose 2024 casualty loss was reimbursed later.",
+       "why_no": "The words 'money was paid back' and 'a refund of something else' suggest a refund from the payee. An insurer's reimbursement, a later award or a rebate is not seen as 'paid back' or a 'refund'. The filer may also read 'money was paid back' as money the filer repaid.",
+       "line": "rec.other_if_has",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2, line 2: 'Enter the total of all other Schedule A (Form 1040) refunds or reimbursements (excluding the amounts you entered on lines 1a and 1b)'",
+       "severity": "medium",
+       "fix": "Ask 'In 2025, did you or your spouse receive any refund, reimbursement, rebate, insurance payment, award or credit for an expense you itemized (medical, mortgage interest, casualty/theft loss, charitable gift returned, sales tax, other taxes)?' List the categories."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who deducted 2024 state and local general sales taxes instead of income taxes and got part of that sales tax back in 2025.",
+       "why_no": "The filer treats it as a 'state/local tax refund' already handled by the state tax refund questions (lines 1a/1b), not as 'something else you itemized'.",
+       "line": "rec.other_if_has (and rec.other_deducted_if_has)",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2, footnote 2: 'If you deducted state and local general sales taxes and received a refund of those taxes, include the amount on line 2'",
+       "severity": "medium",
+       "fix": "Name the case in the child question or its help text: 'including refunds of state or local general sales taxes you deducted, refunded mortgage interest (Form 1098 box 4), and reimbursed medical or casualty expenses'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose lender reported 2024 mortgage interest refunded or credited in 2025 (Form 1098, box 4). Or a filer whose medical provider issued a credit to the account, or applied an overpayment to a later bill.",
+       "why_no": "No money was 'paid back' to them; the recovery came as a credit, offset or adjustment. So they answer the 'money was paid back' parent gate no.",
+       "line": "rec.other_if_has",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2, line 2: 'Enter the total of all other Schedule A (Form 1040) refunds or reimbursements'",
+       "severity": "medium",
+       "fix": "Replace 'money was paid back' with 'you got back, were credited, or were reimbursed for any part of an amount you deducted', and mention credits and offsets in the help text."
+      }
+     ],
+     "prompt_sha": "421e52515de6712062b0d0e5ffd181b78f62d2f8e3ea03e8c2505ad71a5cb267",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.081448,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rec.has_other_if_path.f1379faf8fea.1.response.txt"
+    }
+   ],
+   "condition": "rec.has_other_if_path",
+   "lines": [
+    "rec.other_deducted_if_has",
+    "rec.other_if_has"
+   ],
+   "inputs": [
+    "rec.other_deducted",
+    "rec.other"
+   ],
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      27
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 27, Worksheet 2, footnote 2, \"Don’t enter more than the amount deducted for the prior year\"",
+      "p. 27, Worksheet 2, line 2, \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements (excluding the amounts you entered on lines 1a and 1b)\"",
+      "p. 27, Worksheet 2, line 2, \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "gate:rec.has_property_tax_if_path": {
+   "subject_sha": "60622aa5f8d625f71b871c413feb503fa61f200dd3eda8021d0d518ea30fd212",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A couple files jointly for 2025. In 2024 the spouse filed a separate (married filing separately or single) return and itemized; the filer took the standard deduction. In 2025 the county refunded part of the real estate tax the spouse paid and deducted in 2024.",
+       "why_no": "The parent helper says 'you itemized deductions for 2024'. The filer truthfully did not itemize, so Worksheet 2 is treated as not used and the property-tax question is never reached. Only the gated question below mentions a spouse.",
+       "line": "rec.property_tax_if_has",
+       "irs_text": "p525 (2025) p. 26, Worksheet 2a line 2: 'Enter the refunds received for state and local real estate taxes and state and local personal property taxes'",
+       "severity": "high",
+       "fix": "Word the parent gate as 'Did you or your spouse itemize deductions on a 2024 return, and did either of you get back in 2025 any amount deducted on it?' Ask the property-tax helper as 'you or your spouse' as well."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A homeowner who itemized in 2024 won an assessment appeal in 2025. The county credited the overpayment against the 2025 tax bill, or sent it to the mortgage servicer, which applied it to escrow. No check came to the filer.",
+       "why_no": "'money was paid back for 2024' and 'refund' read as cash received. A credit against next year's bill or an escrow adjustment does not feel like money paid back. 'Paid back' may also be read as money the filer repaid.",
+       "line": "rec.property_tax_if_has",
+       "irs_text": "p525 (2025) p. 26, Worksheet 2a line 2: 'Enter the refunds received for state and local real estate taxes and state and local personal property taxes'",
+       "severity": "medium",
+       "fix": "Ask 'In 2025, did you get back, or have credited to a later bill or escrow, any 2024 state or local tax, medical expense, or other amount you deducted on 2024 Schedule A?' Explain that credits, abatements and escrow pass-throughs count."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer paid the 2023-assessment real estate tax bill in 2024 and deducted it on 2024 Schedule A. Part of that tax was refunded in 2025.",
+       "why_no": "'a refund of 2024 real estate ... tax' reads as tax for assessment year 2024. The bill was labeled 2023, so the filer answers no. The line turns on tax deducted on the 2024 return, which means tax paid in 2024.",
+       "line": "rec.property_tax_if_has",
+       "irs_text": "p525 (2025) p. 26, Worksheet 2a line 4: 'real estate taxes, and personal property taxes paid in 2024 (generally, this is the amount reported on your 2024 Schedule A (Form 1040), line 5d)'",
+       "severity": "medium",
+       "fix": "Ask about 'real estate or personal property tax you paid in 2024 and deducted on your 2024 Schedule A, whatever tax year the bill was for'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer deducted the value-based part of a 2024 vehicle registration or excise fee, or received a state property-tax rebate or relief payment tied to 2024 tax paid on the home.",
+       "why_no": "The filer sees a registration-fee refund, an excise abatement, or a 'rebate' or 'relief check', not a 'refund of real estate or personal property tax'. Some of these programs pay out through the income tax system, so the filer files them under income tax refunds or answers no.",
+       "line": "rec.property_tax_if_has",
+       "irs_text": "p525 (2025) p. 26, Worksheet 2a line 2: 'refunds received for state and local real estate taxes and state and local personal property taxes'",
+       "severity": "medium",
+       "fix": "Add help text: 'Include refunds, rebates, abatements or credits of property tax on your home or land, and of the value-based part of vehicle registration, boat or excise taxes you deducted in 2024.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who itemized in 2023 (not 2024) received a refund of 2023 real estate tax in 2025.",
+       "why_no": "The gate is framed only around 2024 deductions, so the filer correctly answers no. The taxable recovery of an earlier year's deduction then has no path in this flow.",
+       "line": "rec.property_tax_if_has",
+       "irs_text": "p525 (2025) p. 26: 'The result of step 2 is the amount of the recovery to include in your income for the year you receive the recovery.'",
+       "severity": "low",
+       "fix": "State that recoveries of deductions from years before 2024 are handled elsewhere, and route them there."
+      }
+     ],
+     "prompt_sha": "b21bbf9cc4e68baec79943a5dbd33a74ddf1de8ce1fb6f5fc2b9c97af620005b",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.086144,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rec.has_property_tax_if_path.60622aa5f8d6.1.response.txt"
+    }
+   ],
+   "condition": "rec.has_property_tax_if_path",
+   "lines": [
+    "rec.property_tax_if_has"
+   ],
+   "inputs": [
+    "rec.property_tax"
+   ],
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      26
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 26, Worksheet 2a, line 2, \"Enter the refunds received for state and local real estate taxes and state and local personal property taxes\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "gate:rec.joint_any": {
+   "subject_sha": "599d6107548218249a118c8ac7561b62af9ed0090dc2072ae074512fc6fb54de",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A couple filing jointly for 2025 who each filed their own return for 2023 (single or married filing separately). In 2025 they recovered a 2023 itemized deduction, such as an insurance reimbursement of a casualty loss or medical expenses deducted on each spouse's 2023 return.",
+       "why_no": "The gate passes, but the gated question asks only about 'two 2024 returns'. Their deductions were on two 2023 returns, so they truthfully answer No.",
+       "line": "rec.two_returns_if_joint (the refusal is missed, and the recovery is figured as if from a single 2024 return)",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2: \"If you recovered amounts from more than 1 year, such as ... a casualty loss reimbursement from 2023, complete a separate worksheet for each year. Use information from your tax return for the year the expense was deducted.\"",
+       "severity": "high",
+       "fix": "Ask: 'Was any of this money paid back for deductions on an earlier year's returns that the two of you filed separately (either of you single, head of household, or married filing separately)?' Alternatively, ask the year of each recovery and refuse any year other than 2024."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "Spouses married in 2025 who each itemized on their own 2024 single return. In 2025 the wife receives a reimbursement of medical expenses she deducted on her own 2024 return. The husband answers the interview.",
+       "why_no": "The scope question asks whether the amount's deduction 'lowered your tax'. The deduction lowered the spouse's tax on the spouse's own return, not 'your' tax, so the husband reads the question as not met and answers No.",
+       "line": "rec.two_returns_if_joint (never reached; the whole recovery path is skipped)",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2: \"A recovery is included in income only to the extent of the deduction amount that reduced your tax in the prior year (year of the deduction).\" and \"Use information from your tax return for the year the expense was deducted.\"",
+       "severity": "medium",
+       "fix": "Ask: '... whose deduction or credit lowered the tax on an earlier year's return filed by you or your spouse (including a return either of you filed before you married)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A couple filing jointly for 2025 who filed separate 2024 returns. Each itemized and deducted 2024 state income tax. In 2025 they received state income tax refunds for both 2024 returns.",
+       "why_no": "The scope question excludes state or local income tax refunds outright, so they answer No. Yet the worksheet covers state income tax refunds (line 1a), and it is skipped only 'generally', with separate prior-year returns as the case that needs separate figuring.",
+       "line": "rec.two_returns_if_joint (the refusal is missed for separate 2024 returns)",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2: \"You generally don't need to use this worksheet if ... the recovery is for state or local income taxes paid for the immediately preceding tax year. If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 ...\"",
+       "severity": "medium",
+       "fix": "On a joint 2025 return, ask the separate-returns question whenever any recovery exists, including a state or local income tax refund. Or ask first: 'Did you and your spouse file separate returns for 2024?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A couple who filed separate 2024 returns and co-owned a home before marriage, each deducting half of the real estate taxes. In 2025 the county refunded the overpaid tax in one check payable to the husband.",
+       "why_no": "The help says 'Answer No if only one of you got money back'. Only one spouse received the check, even though it recovers deductions taken on both 2024 returns.",
+       "line": "rec.two_returns_if_joint (the refusal is missed)",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2: \"complete a separate worksheet for each year. Use information from your tax return for the year the expense was deducted.\" and footnote 2: \"Don't enter more than the amount deducted for the prior year.\"",
+       "severity": "medium",
+       "fix": "Change the help to 'Answer Yes if the money paid back relates to deductions taken on both of your separate 2024 returns, even if only one of you received it. Answer No if all of it relates to one return, or if you filed one joint 2024 return.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer whose 2024 deducted medical expenses were reimbursed by an insurer in 2025, or whose overpaid property tax was credited against the next bill rather than refunded.",
+       "why_no": "'Paid back' reads as repayment of money they lent, or as a cash refund. A reimbursement from a third party, or a credit applied to a later bill, does not seem to be 'paid back'.",
+       "line": "rec.two_returns_if_joint (never reached)",
+       "irs_text": "p525 (2025) p. 27, Worksheet 2, line 2: \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements\"",
+       "severity": "medium",
+       "fix": "Ask: 'In 2025, did you or your spouse receive a refund, reimbursement, rebate, or credit of any amount deducted or credited on an earlier year's return (for example, medical, property tax, casualty, or sales tax)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer who itemized in 2024 and got a small reimbursement in 2025, but cannot tell whether the deduction actually lowered their 2024 tax (AMT, credits, a negative taxable income year).",
+       "why_no": "The scope question asks them to judge whether the deduction 'lowered your tax', which is what the worksheet itself determines. Unsure, they answer No.",
+       "line": "rec.two_returns_if_joint (never reached)",
+       "irs_text": "p525 (2025) p. 27: \"A recovery is included in income only to the extent of the deduction amount that reduced your tax in the prior year\"; \"If you were subject to the AMT or your tax credits reduced your tax to zero, see Unused tax credits and Subject to AMT\"",
+       "severity": "medium",
+       "fix": "Ask about the checkable fact ('received back an amount you deducted or took a credit for on an earlier return') and let the worksheet decide whether it lowered tax."
+      }
+     ],
+     "prompt_sha": "a522bd3499ed8c43b93bc4026f03aac8010bd0dc6e951cb129667d23318f1206",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.107792,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rec.joint_any.599d61075482.1.response.txt"
+    }
+   ],
+   "condition": "rec.joint_any",
+   "lines": [
+    "rec.two_returns_if_joint"
+   ],
+   "inputs": [
+    "rec.two_returns"
+   ],
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      27
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 27, Worksheet 2, \"Use information from your tax return for the year the expense was deducted\"",
+      "p. 27, Worksheet 2, \"complete a separate worksheet for each year. Use information from your tax return for the year the expense was deducted\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  },
+  "gate:rec.path": {
+   "subject_sha": "b970e6ca2cd205250c35898dec0b8503a30cc254a106f16b308bb2e0a5b74fa5",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer took the standard deduction for 2024 but itemized for 2023. In 2025 they received an insurance reimbursement for a 2023 casualty loss, or a refund of 2023 real estate tax or medical expenses.",
+       "why_no": "The first helper asks broadly about 'an earlier year's return', so they answer yes. The second asks 'Did you itemize deductions on Schedule A for 2024?', and they truthfully answer no. Every gated question also names only 2024.",
+       "line": "rec.has_other_if_path, rec.has_property_tax_if_path, rec.has_medical_if_path",
+       "irs_text": "p525 p. 27, Worksheet 2: \"If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 and a casualty loss reimbursement from 2023, complete a separate worksheet for each year.\"",
+       "severity": "high",
+       "fix": "Ask which year each recovered amount was deducted, then ask whether the filer (or spouse) itemized for that year. Run Worksheet 2, and each gated question, once per year with the year filled in, not fixed at 2024."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer itemized for 2024 and deducted state general sales tax instead of income tax. In 2025 they returned a car or other purchase and got the sales tax refunded.",
+       "why_no": "The 'other' question expressly excludes 'sales tax', and the property tax question names only real estate and personal property tax. No gated question covers a sales tax refund, so they answer no to all of them.",
+       "line": "rec.has_other_if_path",
+       "irs_text": "p525 p. 27, Worksheet 2, footnote 2: \"If you deducted state and local general sales taxes and received a refund of those taxes, include the amount on line 2\"; p. 24, Example 27",
+       "severity": "high",
+       "fix": "Remove 'or sales tax' from the exclusion in the 'other' question. Better, ask separately: 'Was any of it a refund of state or local general sales tax you deducted for 2024?' Route the answer to line 2 with the footnote 2 limit."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "Spouses file jointly for 2025 but filed separately for 2024. Only the spouse itemized for 2024, and the spouse received the 2025 recovery, for example a property tax refund.",
+       "why_no": "'Did you itemize deductions on Schedule A for 2024?' says 'you'. The filer took the standard deduction in 2024 and answers no.",
+       "line": "rec.has_property_tax_if_path, rec.has_medical_if_path, rec.has_mortgage_if_path, rec.has_other_if_path",
+       "irs_text": "p525 p. 24, Deductions not itemized: \"If you didn't itemize deductions for the year for which you received the recovery...\" The test is whether the person who deducted the amount itemized.",
+       "severity": "high",
+       "fix": "Ask 'Did you, or your spouse on a separate 2024 return, itemize deductions on Schedule A for 2024?' and apply the test per person and per return."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "An itemizer whose 2024 itemized deductions barely exceeded the standard deduction, or whose medical deduction was mostly lost to the AGI floor. They received a 2025 insurance reimbursement.",
+       "why_no": "The gate asks whether the deduction 'lowered your tax'. The filer believes it made little or no difference and answers no. That is the Worksheet 2 calculation (lines 8 to 11), which the tool should do instead.",
+       "line": "rec.has_medical_if_path, rec.has_other_if_path, rec.has_property_tax_if_path, rec.has_mortgage_if_path",
+       "irs_text": "p525 p. 27, Worksheet 2: \"A recovery is included in income only to the extent of the deduction amount that reduced your tax in the prior year\". The worksheet computes that amount.",
+       "severity": "medium",
+       "fix": "Drop 'whose deduction or credit ... lowered your tax'. Ask only whether the filer received a refund, credit, or reimbursement of something deducted or credited on an earlier return, and let Worksheet 2 decide what is taxable."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer whose county credited an overpaid 2024 property tax against the 2025 bill. Or a lender applied a mortgage interest overcharge to principal, or an insurer paid a doctor directly for 2024 care the filer had paid and deducted.",
+       "why_no": "No money came back to them, so they answer no to 'were you ... paid back an amount'.",
+       "line": "rec.has_property_tax_if_path, rec.has_mortgage_if_path, rec.has_medical_if_path",
+       "irs_text": "p525 p. 24, Recoveries: \"The most common recoveries are refunds, reimbursements, and rebates of itemized deductions\"; Mortgage interest refund: \"If you received a refund or credit in 2025 of mortgage interest\"",
+       "severity": "medium",
+       "fix": "Reword the gate as 'In 2025, did you or your spouse receive a refund, credit, offset, rebate, or reimbursement (from any source, including insurance) of an amount deducted or credited on an earlier year's return?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A homeowner who itemized for 2024 and received a state property tax refund or homestead rebate in 2025. It was claimed on, or paid through, the state income tax return and reported on Form 1099-G.",
+       "why_no": "The money arrived as part of the state income tax refund, or on the same form. The gate excludes 'a state or local income tax refund', so they answer no.",
+       "line": "rec.has_property_tax_if_path",
+       "irs_text": "p525 p. 26, Worksheet 2a, line 2: \"Enter the refunds received for state and local real estate taxes and state and local personal property taxes\"",
+       "severity": "medium",
+       "fix": "Add help to the gate: 'A property tax refund or rebate counts here even if it came with your state income tax refund or on Form 1099-G.' Or ask about property tax refunds on their own, outside the exclusion."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer who itemized 2024 mortgage interest on a seller-financed or private loan, or whose lender did not fill in box 4. They got a 2025 refund of 2024 interest.",
+       "why_no": "The question's parenthetical '(box 4 of Form 1098)' reads as a condition, and they have no box 4 amount.",
+       "line": "rec.has_mortgage_if_path",
+       "irs_text": "p525 p. 24, Mortgage interest refund: \"If you received a refund or credit in 2025 of mortgage interest paid in an earlier year... You may have to include it in your income\"",
+       "severity": "medium",
+       "fix": "Reword as 'Was any of it a refund or credit of home mortgage interest you deducted for 2024? (Lenders usually report this in box 4 of Form 1098, but answer yes even without a form.)'"
+      }
+     ],
+     "prompt_sha": "514304ccbebfdf234f9e0a9ab4bf1b50fe936a39e1006a6c08645f071f83fd68",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.142788,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_rec.path.b970e6ca2cd2.1.response.txt"
+    }
+   ],
+   "condition": "rec.path",
+   "lines": [
+    "rec.has_medical_if_path",
+    "rec.has_mortgage_if_path",
+    "rec.has_other_if_path",
+    "rec.has_property_tax_if_path"
+   ],
+   "inputs": [
+    "rec.has_medical",
+    "rec.has_mortgage",
+    "rec.has_other",
+    "rec.has_property_tax"
+   ],
+   "used": [
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      24,
+      25,
+      26,
+      27
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 24, Deductions not itemized, \"If you didn’t itemize deductions for the year for which you received the recovery of an expense that was deductible only if you itemized, don’t include any of the recovery amount in your income\"; p. 24, Itemized Deduction Recoveries, statement 2, \"You received a refund other than an income tax refund, such as a general sales tax or real property tax refund\"",
+      "p. 24, Mortgage interest refund, \"If you received a refund or credit in 2025 of mortgage interest paid in an earlier year, the amount should be shown in box 4 of Form 1098\"",
+      "p. 24, Mortgage interest refund, \"You may have to include it in your income under the rules explained in the following discussions\"",
+      "p. 25, Example 30, \"Medical expenses\"",
+      "p. 26, Example 34, \"In 2025, you received a $500 reimbursement from your medical insurance for your 2024 expenses\"",
+      "p. 26, Worksheet 2a, line 2, \"Enter the refunds received for state and local real estate taxes and state and local personal property taxes\"",
+      "p. 27, Worksheet 2, line 2, \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements (excluding the amounts you entered on lines 1a and 1b)\"",
+      "p. 27, Worksheet 2, line 2, \"Enter the total of all other Schedule A (Form 1040) refunds or reimbursements\""
+     ],
+     "cols_pages": [
+      24,
+      25
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ]
+  }
+ }
+}

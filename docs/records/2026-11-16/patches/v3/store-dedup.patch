@@ -1,0 +1,409 @@
+diff --git a/tools/transcription/README.md b/tools/transcription/README.md
+index 85a27ac..909c80f 100644
+--- a/tools/transcription/README.md
++++ b/tools/transcription/README.md
+@@ -157,7 +157,12 @@ not committed: tools read it with `rulings.read_log` and write it with `rulings.
+ (which stores what is new and checks the view reproduces the log byte for byte), and
+ `python3 tools/transcription/review_store.py render [--kind K] [--form F]` writes the readable
+ views to `.transcription/logs/<year>/<kind>/<stem>.md` (git-ignored; a writer refreshes its
+-own). `review_store.py check` verifies every index's records.
++own). `review_store.py check` verifies every index's records. A record over 1 MiB stores each JSON
++subtree its sections repeat once, in a `shared` part, with `{"$shared": "<id>"}` in its place; reading
++a record expands them, so the sections, the view and every ruling and carry key computed on them are as
++the tool wrote them, and a record stored before (no `shared` part) is read as it is.
++`review_store.py share [--write]` stores a large unshared record in that form, after verifying it reads
++back the same.
+ 
+ `rulings.py`, `rule.py` (`--family deepseek`) and `check_logs.py` address a log
+ by (kind, form, family); the Claude family is implied when none is named. The
+diff --git a/tools/transcription/review_store.py b/tools/transcription/review_store.py
+index 22891bd..d9c0c36 100644
+--- a/tools/transcription/review_store.py
++++ b/tools/transcription/review_store.py
+@@ -12,6 +12,11 @@ with its ruling line as "Ruling: open": rulings are written later and live in th
+ hashes the pass's identity: kind, form, family, scope, each scoped line's subject key, prompt sha,
+ response sha and policy versions (identity()). The file holds that identity and the pass's parts.
+ 
++A record over SHARED_MIN_BYTES stores each JSON subtree its sections repeat once, in a `shared` part, and a
++reference ({"$shared": "<id>"}) in its place; parse_record expands the references, so every reader sees each
++section exactly as the review tool wrote it, and rulings and carry keys, computed on that text, are unchanged.
++A record without a `shared` part is read as it is.
++
+ The index maps each compared line, in section order, to {key, record, status, ruling, subject_key}, with
+ the line subjects (`subjects`, the per-line hashes of subjects.py), the rest of the document (`__rest__`),
+ the foreign interfaces of transcription lines (`foreign`), the whole-form record the view's header comes
+@@ -34,6 +39,7 @@ git-ignored .transcription/logs/<year>/<kind>/<stem>.md.
+     review_store.py render [--kind K] [--form F]   write views (every form of every kind by default)
+     review_store.py migrate                         store every committed log (*.md) and remove it
+     review_store.py check                           every index's records exist and its view parses back
++    review_store.py share [--write]                 store the repeated subtrees of large unshared records once
+ """
+ import argparse, hashlib, json, os, re, subprocess, sys
+ 
+@@ -223,26 +229,195 @@ def identity(kind, form, family, scope, subjects, head_text, raw_text):
+             "prompt_sha256": prompt, "response_sha256": response, "policies": policies}
+ 
+ 
++# ---------------------------------------------------------------- shared subtrees
++
++# A transcription section shows each side of a disagreement as one line of canonical JSON (transcribe.canonical:
++# sorted keys, the default separators). Helpers are expanded in place, so a form that reuses guard helpers repeats
++# the same subtrees many times over. A record whose parts exceed SHARED_MIN_BYTES characters stores each subtree of
++# at least SHARED_MIN_CHARS characters that its sections hold more than once a single time: in the part SHARED_PART,
++# one line "<id> <text>" per subtree, children before parents, with {"$shared": "<id>"} in its place in the sections
++# and in the shared texts. The id is the start of the sha256 of the subtree's shared text, which names its own shared
++# children by their ids. Expanding the references gives back each section byte for byte; _share verifies that, and
++# stores the parts as they are when it does not hold.
++SHARED_PART = "shared"
++SHARED_MIN_BYTES = 1 << 20
++SHARED_MIN_CHARS = 80
++SHARED_MARK = '"$shared"'
++SHARED_REF = re.compile(r'\{"\$shared": "([0-9a-f]{16})"\}')
++JSON_LINE = re.compile(r"^```json\n(.*)\n```$", re.M)
++
++
++def _dump(value):
++    return json.dumps(value, ensure_ascii=False)
++
++
++class _Forest:
++    """JSON trees with equal subtrees under one id (hash-consing). nodes[i] is ("=", scalar text), ("[", child ids)
++    or ("{", sorted keys, child ids); size[i] is the length of its canonical text and count[i] the number of times
++    it occurs in the trees added. A node's id is assigned after its children's, so children precede parents."""
++
++    def __init__(self):
++        self.ids, self.nodes, self.size, self.count = {}, [], [], []
++
++    def add(self, tree):
++        """The id of `tree`, counting one occurrence of it and of each of its subtrees (iteratively: the trees are
++        deep)."""
++        work, done = [(tree, False)], []
++        while work:
++            node, ready = work.pop()
++            if isinstance(node, (dict, list)) and not ready:
++                work.append((node, True))
++                kids = [node[k] for k in sorted(node)] if isinstance(node, dict) else node
++                work.extend((k, False) for k in reversed(kids))
++                continue
++            if isinstance(node, (dict, list)):
++                keys = tuple(sorted(node)) if isinstance(node, dict) else None
++                kids = tuple(done[len(done) - len(node):])
++                del done[len(done) - len(node):]
++                sep = 2 * max(len(kids) - 1, 0)
++                if keys is None:
++                    sig, n = ("[", kids), 2 + sep + sum(self.size[c] for c in kids)
++                else:
++                    sig = ("{", keys, kids)
++                    n = 2 + sep + sum(len(_dump(k)) + 2 + self.size[c] for k, c in zip(keys, kids))
++            else:
++                sig = ("=", _dump(node))
++                n = len(sig[1])
++            i = self.ids.get(sig)
++            if i is None:
++                i = self.ids[sig] = len(self.nodes)
++                self.nodes.append(sig)
++                self.size.append(n)
++                self.count.append(0)
++            self.count[i] += 1
++            done.append(i)
++        return done[0]
++
++
++def _share(parts):
++    """`parts` ([(name, text)]) with the subtrees their sections' JSON lines repeat stored once (the note above), or
++    `parts` itself when the record is small, repeats nothing, or the shared form would not expand back to it."""
++    if sum(len(t) for _, t in parts) <= SHARED_MIN_BYTES:
++        return parts
++    if any(n.startswith("section ") and SHARED_MARK in t for n, t in parts):
++        return parts  # a reference could not be told from the text
++    forest, roots = _Forest(), {}
++    for at, (name, text) in enumerate(parts):
++        if not name.startswith("section "):
++            continue
++        for m in JSON_LINE.finditer(text):
++            try:
++                tree = json.loads(m.group(1))
++            except ValueError:
++                continue  # not JSON (a missing or unparseable side): kept as written
++            if json.dumps(tree, sort_keys=True, ensure_ascii=False) != m.group(1):
++                continue  # not in the canonical form the shared texts are written in: kept as written
++            roots[(at, m.start(1), m.end(1))] = forest.add(tree)
++            del tree
++    shared = {i for i, (n, c) in enumerate(zip(forest.size, forest.count)) if c > 1 and n >= SHARED_MIN_CHARS}
++    if not shared:
++        return parts
++    text, lines, ids = [None] * len(forest.nodes), [], set()
++    for i, sig in enumerate(forest.nodes):
++        if sig[0] == "=":
++            body = sig[1]
++        elif sig[0] == "[":
++            body = "[" + ", ".join(text[c] for c in sig[1]) + "]"
++        else:
++            body = "{" + ", ".join(_dump(k) + ": " + text[c] for k, c in zip(sig[1], sig[2])) + "}"
++        if sig[0] != "=":
++            for c in sig[-1]:
++                if forest.count[c] == 1:
++                    text[c] = None  # its only occurrence is in this node's text now
++        if i in shared:
++            sid = hashlib.sha256(body.encode()).hexdigest()[:16]
++            if sid in ids:
++                return parts
++            ids.add(sid)
++            lines.append(sid + " " + body)
++            body = '{"$shared": "' + sid + '"}'
++        text[i] = body
++    out = []
++    for at, (name, t) in enumerate(parts):
++        spans = sorted((s, e, r) for (a, s, e), r in roots.items() if a == at)
++        if spans:
++            pieces, last = [], 0
++            for s, e, r in spans:
++                pieces += [t[last:s], text[r]]
++                last = e
++            t = "".join(pieces) + t[last:]
++        out.append((name, t))
++    out.append((SHARED_PART, "\n".join(lines)))
++    if list(_unshare(dict(out)).items()) != list(parts):
++        print("review_store: the shared form of a record does not expand back to it; stored unshared", file=sys.stderr)
++        return parts
++    return out
++
++
++def _unshare(parts):
++    """`parts` ({name: text}) with the shared part removed and its references in the sections expanded. A shared
++    text may name only the subtrees listed before it, so expansion ends."""
++    table = {}
++    for line in parts.pop(SHARED_PART).split("\n"):
++        sid, _, body = line.partition(" ")
++        pieces = SHARED_REF.split(body)
++        if not re.fullmatch(r"[0-9a-f]{16}", sid) or sid in table or any(p not in table for p in pieces[1::2]):
++            raise ValueError(f"shared subtree {sid!r} is malformed, repeated or names one not listed before it")
++        table[sid] = pieces
++
++    def expand(t):
++        pieces = SHARED_REF.split(t)
++        if any(p not in table for p in pieces[1::2]):
++            raise ValueError("a section names a shared subtree the record does not hold")
++        out, work, at = [], [], 0
++        while True:
++            if at < len(pieces):
++                if at % 2:
++                    work.append((pieces, at + 1))
++                    pieces, at = table[pieces[at]], 0
++                else:
++                    out.append(pieces[at])
++                    at += 1
++            elif work:
++                pieces, at = work.pop()
++            else:
++                return "".join(out)
++
++    return {n: expand(t) if n.startswith("section ") else t for n, t in parts.items()}
++
++
++def _compose(sha, ident, parts):
++    """The text of a record file: its title, identity and parts ([(name, text)])."""
++    text = [f"# Review record {sha[:12]} — {ident['kind']} {families.stem(ident['form'], ident['family'])}", "",
++            "One pass of a review, stored once (tools/transcription/review_store.py); the form's index says which lines "
++            "it still judges.", "", "```json", json.dumps(ident, sort_keys=True, ensure_ascii=False, indent=1), "```", ""]
++    for name, body in parts:
++        text += [f"<!-- part {name} -->", body]
++    text += ["<!-- end -->", ""]
++    return "\n".join(text)
++
++
+ def write_record(ident, parts):
+-    """Store a record (identity, [(part name, text)]); returns its sha. A record already stored is never
+-    rewritten: storing the same sha with other parts is an error."""
++    """Store a record (identity, [(part name, text)]); returns its sha. A large record stores its repeated
++    subtrees once (_share). A record already stored is never rewritten: storing the same sha with other parts is
++    an error, and a record stored unshared is kept as it is."""
+     names = [name for name, _ in parts]
+     if len(set(names)) != len(names):
+         raise ValueError(f"record parts share a name: {sorted({n for n in names if names.count(n) > 1})}")
+-    sha = _sha(ident)
+-    text = [f"# Review record {sha[:12]} — {ident['kind']} {families.stem(ident['form'], ident['family'])}", "",
+-            "One pass of a review, stored once (tools/transcription/review_store.py); the form's index says which lines "
+-            "it still judges.", "", "```json", json.dumps(ident, sort_keys=True, ensure_ascii=False, indent=1), "```", ""]
++    if SHARED_PART in names:
++        raise ValueError(f"record part name {SHARED_PART!r} is reserved for shared subtrees")
+     for name, body in parts:
+         if PART.search(body):
+             raise ValueError(f"record part {name} contains a part delimiter")
+-        text += [f"<!-- part {name} -->", body]
+-    text += ["<!-- end -->", ""]
+-    content = "\n".join(text)
++    sha = _sha(ident)
++    content = _compose(sha, ident, _share(parts))
+     path = record_path(ident["kind"], sha)
+     if os.path.exists(path):
+-        if _read(path) != content:
+-            raise ValueError(f"record {sha} is stored with other content; records are never rewritten")
++        stored = _read(path)
++        if stored != content:
++            was, got = parse_record(stored)
++            if _compose(sha, was, got.items()) != _compose(sha, ident, parts):
++                raise ValueError(f"record {sha} is stored with other content; records are never rewritten")
+         return sha
+     os.makedirs(os.path.dirname(path), exist_ok=True)
+     with open(path, "w", encoding="utf-8") as f:
+@@ -251,7 +426,7 @@ def write_record(ident, parts):
+ 
+ 
+ def parse_record(content):
+-    """(identity, {part name: text}) of a stored record."""
++    """(identity, {part name: text}) of a stored record, its shared subtrees expanded."""
+     ident = json.loads(content.partition("```json\n")[2].partition("\n```\n")[0])
+     body = content[content.index("<!-- part "):] if "<!-- part " in content else ""
+     names = PART.findall(body)
+@@ -265,6 +440,8 @@ def parse_record(content):
+             t = t[:t.rindex("<!-- end -->")]
+         parts[chunks[i]] = t[1:-1]
+     assert list(parts) == names
++    if SHARED_PART in parts:
++        parts = _unshare(parts)
+     return ident, parts
+ 
+ 
+@@ -673,6 +850,39 @@ def check():
+     return 1 if problems else 0
+ 
+ 
++def share(write=False):
++    """Every stored record over SHARED_MIN_BYTES that is stored unshared, in its shared form (_share): the same
++    identity and parts, verified to read back the same before it is written. Reports the sizes; writes only with
++    `write`. Returns the number of records that would shrink or did."""
++    n = 0
++    for kind in KINDS:
++        d = store_dir(kind)
++        if not os.path.isdir(d):
++            continue
++        for name in sorted(os.listdir(d)):
++            path = os.path.join(d, name)
++            if not name.endswith(".md") or os.path.getsize(path) <= SHARED_MIN_BYTES:
++                continue
++            old = _read(path)
++            ident, parts = parse_record(old)
++            sha = _sha(ident)
++            if sha != name[:-3]:
++                print(f"{kind}/{name[:12]}: not the pass its name hashes; left as it is", file=sys.stderr)
++                continue
++            new = _compose(sha, ident, _share(list(parts.items())))
++            if len(new) >= len(old):
++                continue
++            if parse_record(new) != (ident, parts):
++                raise SystemExit(f"{kind}/{name[:12]}: the shared form does not read back as the record")
++            n += 1
++            print(f"{kind}/{name[:12]}: {len(old.encode()):,} -> {len(new.encode()):,} bytes")
++            if write:
++                with open(path, "w", encoding="utf-8") as f:
++                    f.write(new)
++    print(f"review store: {n} record(s) {'stored shared' if write else 'would shrink (--write stores them)'}")
++    return n
++
++
+ def former_document(form):
+     """The name a document had before the rename recorded in tools/year_free_names.json (None if it was not renamed):
+     a record is immutable, so it keeps the name of the document it reviewed, and its index, moved to the new name by
+@@ -690,7 +900,12 @@ def main(argv=None):
+     r.add_argument("--form")
+     sub.add_parser("migrate", help="store every committed log file and remove it")
+     sub.add_parser("check", help="every index's records are present and its view assembles")
++    s = sub.add_parser("share", help="store the repeated subtrees of large unshared records once")
++    s.add_argument("--write", action="store_true", help="rewrite them (default: report only)")
+     a = ap.parse_args(argv)
++    if a.cmd == "share":
++        share(a.write)
++        return 0
+     if a.cmd == "render":
+         paths = render((a.kind,) if a.kind else KINDS, a.form)
+         print(f"review store: {len(paths)} views written under {os.path.relpath(os.path.dirname(os.path.dirname(paths[0])), ROOT) if paths else '-'}")
+diff --git a/tools/transcription/test_review_tools.py b/tools/transcription/test_review_tools.py
+index 20b866a..eeeaa82 100644
+--- a/tools/transcription/test_review_tools.py
++++ b/tools/transcription/test_review_tools.py
+@@ -3710,6 +3710,84 @@ class ReviewStore(unittest.TestCase):
+             self.assertIn("foreign interfaces", S.index_state("transcription", "x", "2025", {**index, "foreign": {"1": "e"}}, "v", True))
+             self.assertIsNone(S.index_state("transcription", "x", "2025", {**index, "__rest__": "q"}, "w", False))  # reviewed whole, unchanged
+ 
++    # A subtree both sides repeat, above SHARED_MIN_CHARS, holding a smaller repeated subtree of its own.
++    BIG = {"guard": {"test": "all", "args": [{"line": "1"}, {"input": "x.coverage_changed_during_the_year"}]},
++           "then": {"param": "x.limit_for_family_coverage"}}
++
++    def side(self, n):
++        return json.dumps({"op": "max", "args": [self.BIG, {"const": n}, self.BIG]}, sort_keys=True, ensure_ascii=False)
++
++    def shared_log(self, ruling="Ruling: open"):
++        return self.log(ruling).replace('{"const": 1}\n', self.side(1) + "\n").replace('{"const": 2}\n', self.side(2) + "\n")
++
++    def test_a_large_record_stores_repeated_subtrees_once_and_reads_back_as_written(self):
++        text = self.shared_log()
++        with patch.object(self.store, "SHARED_MIN_BYTES", 0):
++            rulings.write_log("transcription", "x", text)
++        self.assertEqual(rulings.read_log("transcription", "x"), text)
++        (stored,) = self.records().values()
++        self.assertIn("<!-- part shared -->", stored)
++        self.assertNotIn(json.dumps(self.BIG, sort_keys=True, ensure_ascii=False), stored)
++        self.assertEqual(len(re.findall(r'\{"\$shared": "[0-9a-f]{16}"\}', stored)), 5)  # 4 uses of BIG, 1 of its guard
++        # the ruling key is the sha256 of the text as written, read back expanded
++        (key, ruling), = rulings.log_sections("transcription", rulings.read_log("transcription", "x"))
++        self.assertEqual(rulings.stored_key("transcription", key),
++                         rulings.stored_key("transcription", ("2", self.side(1), self.side(2))))
++        ruled = self.shared_log("Ruling: scope; same amount")
++        with patch.object(self.store, "SHARED_MIN_BYTES", 0):
++            rulings.write_log("transcription", "x", ruled)
++        self.assertEqual(rulings.read_log("transcription", "x"), ruled)
++        self.assertEqual(list(self.records().values()), [stored])  # a ruling still changes only the index
++        self.assertEqual(self.store.check(), 0)
++
++    def test_a_record_stored_unshared_is_read_and_kept_as_it_is(self):
++        text = self.shared_log()
++        rulings.write_log("transcription", "x", text)  # below SHARED_MIN_BYTES: stored as written
++        (name, stored), = self.records().items()
++        self.assertNotIn("<!-- part shared -->", stored)
++        ident, parts = self.store.parse_record(stored)
++        with patch.object(self.store, "SHARED_MIN_BYTES", 0):
++            self.assertEqual(self.store.write_record(ident, list(parts.items())), name[:-3])  # the same parts: accepted
++            self.assertEqual(self.records(), {name: stored})  # and not rewritten
++            with self.assertRaisesRegex(ValueError, "never rewritten"):
++                self.store.write_record(ident, [(n, t + "x") for n, t in parts.items()])
++            self.assertEqual(self.store.share(), 1)  # reported, not written
++            self.assertEqual(self.records(), {name: stored})
++            self.store.share(write=True)
++        self.assertIn("<!-- part shared -->", self.records()[name])
++        self.assertEqual(rulings.read_log("transcription", "x"), text)
++        self.assertEqual(self.store.check(), 0)
++
++    def test_text_that_could_be_read_as_a_reference_is_stored_unshared(self):
++        held = self.shared_log().replace("Status: **DISAGREE**", 'Status: **DISAGREE**\n{"$shared": "0123456789abcdef"}')
++        noncanonical = self.shared_log().replace(self.side(1), json.dumps(json.loads(self.side(1)), sort_keys=True, separators=(",", ":")))
++        ident = {"kind": "transcription", "form": "x", "family": families.DEFAULT, "scope": "whole", "subjects": {}}
++        for text in (held, noncanonical):
++            with self.subTest(held=text is held), patch.object(self.store, "SHARED_MIN_BYTES", 0):
++                p = self.store.parse("transcription", text)
++                parts = [("section " + k, s) for k, s in p["sections"]]
++                shared = self.store._share(parts)
++                if text is held:
++                    self.assertIs(shared, parts)
++                else:  # the non-canonical side is kept as written; the other side's repeats are still shared
++                    self.assertIn(("section 1", parts[0][1]), shared)
++                    self.assertEqual(self.store._unshare(dict(shared)), dict(parts))
++                    self.assertIn(json.dumps(self.BIG, sort_keys=True, separators=(",", ":")), dict(shared)["section 2"])
++                self.assertEqual(self.store.parse_record(self.store._compose("0" * 64, ident, shared))[1], dict(parts))
++
++    def test_a_shared_part_naming_a_later_or_missing_subtree_is_refused(self):
++        ident = {"kind": "transcription", "form": "x", "family": families.DEFAULT, "scope": "whole", "subjects": {}}
++        ref = lambda s: '{"$shared": "' + s + '"}'
++        for shared in (f"{'a' * 16} [{ref('b' * 16)}]\n{'b' * 16} 1", f"{'a' * 16} [{ref('a' * 16)}]", f"{'a' * 16} 1\n{'a' * 16} 2"):
++            content = self.store._compose("0" * 64, ident, [("section 2", f"```json\n{ref('a' * 16)}\n```"), ("shared", shared)])
++            with self.subTest(shared=shared), self.assertRaises(ValueError):
++                self.store.parse_record(content)
++        content = self.store._compose("0" * 64, ident, [("section 2", f"```json\n{ref('c' * 16)}\n```"), ("shared", f"{'a' * 16} 1")])
++        with self.assertRaisesRegex(ValueError, "does not hold"):
++            self.store.parse_record(content)
++        with self.assertRaisesRegex(ValueError, "reserved"):
++            self.store.write_record(ident, [("shared", "x")])
++
+ 
+ if __name__ == "__main__":
+     unittest.main(verbosity=2)

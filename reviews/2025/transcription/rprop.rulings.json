@@ -1,0 +1,48 @@
+{
+ "kind": "transcription",
+ "form": "rprop",
+ "rulings": [
+  {
+   "printed": "(g)",
+   "project_expr_sha256": "77bcb7c94e864d5d51560455a989584e75ae49936fb4b60a9a68b1cf480acfdf",
+   "second_expr_sha256": "14c49517ad6d56b3ced70160c85072f95c9aed5f6541d8d4e43ae4b040b09668",
+   "ruling": "Ruling: scope; triage .transcription/triage/2025/rprop.json: all 66 in-scope values agree; the 2 differences are returns the project refuses (project refuses 2: personal property at rprop.personal, nonresidential property placed in service before 1994 at rprop.early_nonres; rprop note), which the reply depreciates (5-year half-year property, ACRS). Within scope both multiply column (c) by the Table A-6 / A-7a rate (p946 p. 73).",
+   "context": "50099df1763805e9008035d5e2b47a5a79165ab85f4846aa7ab7c4dbeba9e416",
+   "date": "2026-11-15",
+   "run": "107d1cc77f7cf9ba115c3ccef0ccbcce9040f4cd2df3cd3e6726c2a6fb4deb57",
+   "subject_key": "9ebe2029c8a006b5e0041327df10a536127b54f66d862182fb12b5fc8328b238",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:x1sche.r7.personal_property@rental[a].rprop[b]",
+     "fixture:x1sche.r9.nonres_before_1994@rental[a].rprop[b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(g)",
+   "project_expr_sha256": "77bcb7c94e864d5d51560455a989584e75ae49936fb4b60a9a68b1cf480acfdf",
+   "second_expr_sha256": "831b03aa74da1d4b7f29da71b3de3c44a30b39a19a169ea0d200a657d54726b5",
+   "ruling": "Ruling: scope; triage 18/20 agree; the two differences are project refusals: the reply also depreciates personal property by the 5-year GDS table, which the project refuses (rprop.personal, i4562 p. 9, Lines 19a Through 19j); on buildings both take the Table A-6 / A-7a mid-month rate by month and recovery year (p946 pp. 73-74).",
+   "context": "5e54f63d66563e282bdf13fd6b135cf8185d759b6c82d5ad4a9b60bdd5179c0f",
+   "date": "2026-11-15",
+   "run": "36bf635baed3675b070c9cee053626cba59524702da09f14e3d412df0f09a9f8",
+   "subject_key": "962d1c844621dec7444dffe046a8c7172332a93e9ca70624c4f49350f26621af",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:x1sche.r7.personal_property@rental[a].rprop[b]",
+     "fixture:x1sche.r9.nonres_before_1994@rental[a].rprop[b]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

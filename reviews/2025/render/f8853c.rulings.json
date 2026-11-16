@@ -1,0 +1,28 @@
+{
+ "kind": "render",
+ "form": "f8853c",
+ "rulings": [
+  {
+   "printed": "22",
+   "restated": "Input — The costs incurred for qualified long-term care services provided for this person during the days of the LTC period (necessary diagnostic, preventive, therapeutic, treating and rehabilitative services, and maintenance or personal care, under a plan of care prescribed by a licensed health care practitioner); zero if none",
+   "model": "The instructions define qualified LTC services as \"necessary diagnostic, preventive, therapeutic, curing, treating, mitigating, and rehabilitative services, and maintenance or personal care services required to treat a chronically ill individual.\" The restatement drops \"curing\" and \"mitigating\" and the condition \"required to treat a chronically ill individual,\" which can change which costs are entered.",
+   "ruling": "Ruling: finding; i8853 p. 9, Line 22: 'necessary diagnostic, preventive, therapeutic, curing, treating, mitigating, and rehabilitative services, and maintenance or personal care services required to treat a chronically ill individual under a plan of care prescribed by a licensed health care practitioner'. The question drops 'curing', 'mitigating' and 'required to treat a chronically ill individual', so a filer can leave out qualifying costs (BUG-0916).",
+   "context": "7b502bde6c61a7cdac4846ea409091fb36775fe571ee50b06b4c8f8e904aca59",
+   "date": "2026-11-15",
+   "run": "e43dbc8c0a18503ca04dc28a7b3aea6aaf83835878504ab3814dc52057d2ed26",
+   "severity": "low",
+   "subject_key": "13bb58f0c89bab76d3416d4ed3f77dda1d4afcc8b0f6c750137152383baa1b7c"
+  },
+  {
+   "printed": "25",
+   "restated": "Subtract helper \"Line 24, asked only when line 20 is more than zero (zero otherwise)\" from line 23. If zero or less, enter -0-.",
+   "model": "The form says only \"Per diem limitation. Subtract line 24 from line 23\" and gives no zero floor. The restatement adds \"If zero or less, enter -0-,\" which changes line 26 whenever line 24 exceeds line 23.",
+   "ruling": "Ruling: finding; f8853 line 25 prints 'Subtract line 24 from line 23' with no floor (line 26 has one); the project floors line 25 at zero, a reading recorded in no ambiguity entry. It differs only when reimbursements exceed line 23, where the printed form would tax more than the payments received; the floor is the sensible reading but must be registered (BUG-0917).",
+   "context": "7b502bde6c61a7cdac4846ea409091fb36775fe571ee50b06b4c8f8e904aca59",
+   "date": "2026-11-15",
+   "run": "e43dbc8c0a18503ca04dc28a7b3aea6aaf83835878504ab3814dc52057d2ed26",
+   "severity": "low",
+   "subject_key": "72cbb210f54de02d8c8495091f5c486d6d3d411e41084051b754afc97b95547d"
+  }
+ ]
+}

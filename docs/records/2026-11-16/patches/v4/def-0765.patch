@@ -1,0 +1,36 @@
+diff --git a/fixtures/2025/household.json b/fixtures/2025/household.json
+index 92ddd77..8f04e8b 100644
+--- a/fixtures/2025/household.json
++++ b/fixtures/2025/household.json
+@@ -1289,7 +1289,7 @@
+           "kind": "refusal",
+           "gate": "household.widowed_this_year",
+           "form": "Filing status after a spouse's death in 2025",
+-          "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.",
++          "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly) or a separate return (married filing separately).",
+           "cite": {
+             "doc": "i1040gi",
+             "locator": "p. 13, Single, \"You were widowed before January 1, 2025, and didn’t remarry before the end of 2025\"; p. 13, Married Filing Jointly, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"; p501 p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"",
+@@ -1382,7 +1382,7 @@
+           "kind": "refusal",
+           "gate": "household.widowed_this_year",
+           "form": "Filing status after a spouse's death in 2025",
+-          "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.",
++          "remedy": "Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly) or a separate return (married filing separately).",
+           "cite": {
+             "doc": "i1040gi",
+             "locator": "p. 13, Single, \"You were widowed before January 1, 2025, and didn’t remarry before the end of 2025\"; p. 13, Married Filing Jointly, \"Your spouse died in 2025 and you didn’t remarry in 2025.\"; p501 p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"",
+diff --git a/forms/2025/f1040.yaml b/forms/2025/f1040.yaml
+index 06712c0..db4cba6 100644
+--- a/forms/2025/f1040.yaml
++++ b/forms/2025/f1040.yaml
+@@ -598,8 +598,7 @@ form:
+         - when: household.widowed_this_year
+           form: Filing status after a spouse's death in 2025
+           remedy: Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint
+-            return with your deceased spouse (married filing jointly), or a separate return, which this tool does not
+-            support.
++            return with your deceased spouse (married filing jointly) or a separate return (married filing separately).
+           cite:
+             doc: i1040gi
+             locator: 'p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."'

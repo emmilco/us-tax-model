@@ -1,0 +1,1705 @@
+{
+ "form": "person",
+ "reviews": {
+  "gate:person.age50_open_year": {
+   "subject_sha": "37951633c5ef06fc11d8536d26cc2fd7745a944a1d4b73e290daa2573a1e6238",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "A filer or spouse born on January 1, 1976. Under the federal age-attainment convention, a person reaches an age on the day before the birthday, so this person reached 50 on December 31, 2025.",
+       "why_no": "The question asks 'Were you age 50 or older at the end of 2025?' and the help adds nothing about how age is counted. By ordinary birthday counting, this person turned 50 on January 1, 2026, so they truthfully answer no. Everyone born later in 1976 also answers no, correctly. The gate admits only 1976 births, so its sole purpose is this edge case, and the question as worded resolves it the wrong way.",
+       "line": "person.age50_at_year_end_if_open_year (and through it IRA Deduction Worksheet lines 7a/7b: $7,000 instead of $8,000; SIMPLE IRA catch-up eligibility)",
+       "irs_text": "i1040gi 2025 p. 97, IRA Deduction Worksheet—Schedule 1, Line 20: \"$8,000 if age 50 or older at the end of 2025.\" (Age is reached the day before the birthday, so a January 1, 1976 birth is age 50 at the end of 2025.)",
+       "severity": "high",
+       "fix": "Do not ask about age. Ask for the exact date of birth, or 'Were you born on January 1, 1976?', and compute: age 50 at the end of 2025 if born before January 2, 1976. If a question must stay, add help text: 'You are treated as reaching an age on the day before your birthday. If you were born on January 1, 1976, answer yes.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer or spouse born in 1975 or earlier, who is plainly age 50 or older at the end of 2025.",
+       "why_no": "The computed gate 'Born in 1976' is false, so this line is set to false and nothing is asked. The person is age 50 or older, but this line reports no. The result is correct only if every consumer combines this line with a separate 'born before 1976' line. The material shown does not show that combination.",
+       "line": "person.age50_at_year_end_if_open_year",
+       "irs_text": "i1040gi 2025 p. 97: \"$8,000 if age 50 or older at the end of 2025.\"",
+       "severity": "low",
+       "fix": "Make sure the line that feeds worksheet lines 7a/7b is 'born before 1976 OR (born in 1976 AND age 50 at the end of 2025)'. Alternatively, compute directly from date of birth: born before January 2, 1976."
+      }
+     ],
+     "prompt_sha": "551308b4ca661ca2cd0b315ef68d28f459fb81471c985c533a1508381d772a34",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.065144,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.age50_open_year.37951633c5ef.1.response.txt"
+    }
+   ],
+   "condition": "person.age50_open_year",
+   "lines": [
+    "person.age50_at_year_end_if_open_year"
+   ],
+   "inputs": [
+    "person.age50_at_year_end"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      97
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, \"$8,000 if age 50 or older at the end of 2025\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:person.age55_open_year": {
+   "subject_sha": "53258f08eaf88c0f272d7af51ebad02ed8100cdbfd76b3132c200162aa600f1e",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "Any HSA account holder born in 1970 or earlier, such as a 58-year-old with self-only HDHP coverage all year, or a joint-return spouse born in 1965. This also covers a person 65 or older who is still working and not enrolled in Medicare.",
+       "why_no": "The computed gate is true only for birth year 1971, so it is false for everyone born earlier. The tool never asks the age question and sets the line to false. The gate is off by one year: a person born in 1971 reaches only 54 during 2025 (except a person born January 1, 1971). Everyone who is unambiguously 55 or older at the end of 2025 was born in 1970 or earlier, and all of them are excluded.",
+       "line": "person.age55_at_year_end_if_open_year (and through it the $1,000 additional contribution on Form 8889 line 3, the $5,300 or $9,550 monthly chart amounts, and the HSA deduction)",
+       "irs_text": "i8889 (2025) p. 4, Line 3 rule 6: \"If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year, you can increase the amount ... by $1,000\"; p. 6 chart: \"If you were age 55 or older at the end of 2025, enter $5,300 for the month.\"",
+       "severity": "high",
+       "fix": "Compute the gate as birth year <= 1970 OR birth date = January 1, 1971. Simpler: ask every person with an HSA 'Were you born on or before January 1, 1971?' (or compute it from the date of birth), with no year-equality cut. The age-55 condition is open-ended, not a single-year window."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "On a joint return, a spouse born in 1968 who has their own HSA and self-only coverage. The primary filer was born in 1971 or later.",
+       "why_no": "The gate tests each person's birth year against 1971 only, so the older spouse fails it. The spouse's separate Form 8889 then loses the $1,000 additional contribution. The additional contribution is not allocable between spouses, so each spouse's own age matters.",
+       "line": "person.age55_at_year_end_if_open_year (spouse instance)",
+       "irs_text": "i8889 (2025) p. 4: \"The $1,000 additional contribution amount is not allocable among spouses\"; \"complete a separate Form 8889 for each of you.\"",
+       "severity": "high",
+       "fix": "Same broadened gate (born on or before January 1, 1971), evaluated separately for each person on the return who has an HSA."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A person born on January 1, 1971, the only person born in 1971 who is inside the gate and may qualify. Under the federal convention for age-based rules, a person reaches an age on the day before the birthday, so this person is treated as 55 on December 31, 2025.",
+       "why_no": "The question 'Were you 55 or older on December 31, 2025?' invites a literal answer. Their 55th birthday is January 1, 2026, so they answer no.",
+       "line": "person.age55_at_year_end_if_open_year",
+       "irs_text": "i8889 (2025) p. 4, Line 3 rule 6: \"If, at the end of 2025, you were age 55 or older\" (the instructions do not define when an age is reached)",
+       "severity": "low",
+       "fix": "Compute the answer from the date of birth (true if born on or before January 1, 1971) instead of asking the filer to apply the age convention themselves."
+      }
+     ],
+     "prompt_sha": "033aea80dd9e6c8dd957f0717d3befde6ed7ba4ef4ebc05170eda944145e4b55",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.06637599999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.age55_open_year.53258f08eaf8.1.response.txt"
+    }
+   ],
+   "condition": "person.age55_open_year",
+   "lines": [
+    "person.age55_at_year_end_if_open_year"
+   ],
+   "inputs": [
+    "person.age55_at_year_end"
+   ],
+   "used": [
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      4,
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Line 3, rule 6, \"If, at the end of 2025, you were age 55 or older\"; p. 6, Line 3 Limitation Chart, \"If you were age 55 or older at the end of 2025\""
+     ],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "gate:person.birth_cut_year": {
+   "subject_sha": "c8ae9f097b67b82aab61a628a40522227a2c5f11492cbfd0d4c06e3e294aafb9",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A filer claiming the EIC with a child born January 1, 2007 who was not a full-time student. Or a child born January 1, 2002 who was a full-time student. Both are treated as one year older on December 31, 2025, so the child is 19 (or 24) and fails the EIC qualifying-child age test.",
+       "why_no": "The gated question is addressed 'For this person (you, or your spouse on a joint return)'. A filer reached through a dependent's record may answer about themselves, not the child. If the tool asks only the filer and spouse, the child's January 1 birth is never asked and is treated as no.",
+       "line": "person.born_jan1_if_cut_year (for a dependent or qualifying child), which then lets the EIC qualifying-child test pass when it should fail",
+       "irs_text": "i1040gi p. 41, Step 3: 'Under age 19 at the end of 2025 ... or Under age 24 at the end of 2025, a full-time student'",
+       "severity": "medium",
+       "fix": "Ask the January 1 question for every person on the return whose birth year is a cut year, including dependents. Word it per person, for example: 'Was [name] born on January 1?' Do not use 'you, or your spouse'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer or spouse whose official birth date (SSA or immigration record) is January 1, assigned because the true date was unknown, as is common for refugees. Or the reverse: a filer whose true birth date is January 1 but whose records show another date.",
+       "why_no": "'Were you born on January 1?' leaves it unclear whether to answer from the actual birth date or from the record. Some filers with an assigned January 1 date answer no because they believe their real birthday differs.",
+       "line": "person.born_jan1_if_cut_year",
+       "irs_text": "p501 p. 23: 'You are considered 65 on the day before your 65th birthday. Therefore, you can take a higher standard deduction for 2025 if you were born before January 2, 1961.'",
+       "severity": "low",
+       "fix": "Add to the help: 'Answer using the date of birth on your Social Security record.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A person on the return born January 1 in a year outside the list whose age still matters elsewhere in the return. Examples: a child born January 1, 2009, for the age-17 child tax credit test, or a filer born January 1, 1976, for the age-50 catch-up contribution test.",
+       "why_no": "The gate's year list (1961, 2001, 2002, 2007, 2008) covers only the age tests in the cited text. Any other age test the tool applies never triggers the question.",
+       "line": "person.born_jan1_if_cut_year",
+       "irs_text": "p501 p. 23: 'A person is considered to reach age 65 on the day before the person’s 65th birthday.' (The same day-before rule applies to every age test.)",
+       "severity": "low",
+       "fix": "Build the cut-year list from every age test the tool implements, not only the cited pages. Or ask the January 1 question of anyone born in any year at an age boundary the return uses."
+      }
+     ],
+     "prompt_sha": "42e0a6d18bc7bbfe36c792af1b9da7dbf063cbf46d82ac421f76e3446eda4c68",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.132244,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.birth_cut_year.c8ae9f097b67.1.response.txt"
+    }
+   ],
+   "condition": "person.birth_cut_year",
+   "lines": [
+    "person.born_jan1_if_cut_year"
+   ],
+   "inputs": [
+    "person.born_jan1"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      33,
+      41
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 33, Line 12d, \"If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)\"",
+      "p. 33, Line 12d, \"If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)\"; p. 33, Blindness, \"If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that:\", \"You can't see better than 20/200 in your better eye with glasses or contact lenses, or\", \"Your field of vision is 20 degrees or less.\", \"If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead.\" and \"You must keep the statement for your records.\"; , Not totally blind, \"If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection, or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify.\"",
+      "p. 41, Step 4, question 2, \"Check 'Yes' if you ... were born after December 31, 1960, and before January 2, 2001\""
+     ],
+     "cols_pages": [
+      33,
+      41
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f8880",
+     "revision": "2025; created 2025-11-04",
+     "text_sha256": "e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Who Can Take This Credit, \"The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575"
+    },
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 7, Line 7, \"1. Were you under age 24 at the end of 2025?\"",
+      "p. 7, Line 7, \"b. Age 18 at the end of 2025 and your earned income (defined later) was less than one-half of your support (defined later), or\" (over age 18 is 19 or older)"
+     ],
+     "cols_pages": [
+      7
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      23
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "gate:person.edu_has_adj": {
+   "subject_sha": "aad7b15de5307e8e753d0d8dc75e19ce10c18d45d5ec6f9aab9dccb06ed612b2",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose employer reimbursed tuition under a section 127 plan, or a veteran whose GI Bill benefits paid toward the term. Their 1098-T shows no scholarship in box 5.",
+       "why_no": "They read 'tax-free help' as scholarships and grants. They do not count employer tuition assistance or veterans' benefits, so they compare only the Pell grant or scholarship with the term's cost and answer no.",
+       "line": "person.edu_over_if_adj",
+       "irs_text": "i8863 p. 4: 'reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period... Tax-free educational assistance includes: 1. The tax-free part of any scholarship or fellowship grant (including Pell grants);' (the list continues with employer-provided assistance, veterans' assistance and other nontaxable payments)",
+       "severity": "medium",
+       "fix": "Name the kinds in the question or help: 'Count scholarships and grants (including Pell grants), tuition your employer paid or reimbursed tax-free, veterans' education benefits, and any other tax-free payment for education other than a gift or inheritance.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A lifetime learning credit filer whose student bought required books and a laptop from an outside bookstore. The scholarship exceeds tuition and fees paid to the school, but not tuition, fees and the outside purchases combined.",
+       "why_no": "The question counts 'course materials' in what was paid, so they add the outside purchases and answer no. For the lifetime learning credit, materials count only if paid to the institution. The tool's own helper label says 'expenses paid to the institution'.",
+       "line": "person.edu_over_if_adj",
+       "irs_text": "i8863 p. 4: 'Lifetime learning credit: Qualified education expenses include amounts paid for books, supplies, and equipment only if required to be paid to the institution as a condition of enrollment or attendance.'",
+       "severity": "medium",
+       "fix": "Make the expense side match the credit: count course materials bought elsewhere only for the American opportunity credit. Otherwise ask the question per credit, or compare against the worksheet line 1 the tool has already computed."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A student who paid in December 2025 for a term starting in January–March 2026 and also attended a fall 2025 term. A grant for the 2026 term arrived in February 2026, before filing, and exceeds the prepaid amount.",
+       "why_no": "The help says 'With one term in the year, answer by that term alone.' They read 'the year' as calendar 2025, see one term, check only fall 2025 and answer no. The prepaid 2026 term is treated as beginning in 2025.",
+       "line": "person.edu_over_if_adj",
+       "irs_text": "i8863 p. 9: 'If any qualified education expenses for the student were paid in 2025 for an academic period beginning in the first 3 months of 2026, treat that academic period as if it began in 2025.'; line 2b 'Tax-free educational assistance received in 2026 (and before you file your 2025 tax return) allocable to the academic period'",
+       "severity": "medium",
+       "fix": "Change the help to: 'Include any term beginning January–March 2026 that you paid for in 2025. Check each term separately; answer by a single term only if it is the only one.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A student holding a scholarship whose terms allow it to be used for room and board as well as tuition, with the total exceeding the term's tuition.",
+       "why_no": "'Tax-free help' asks the filer to classify for themselves how much of the scholarship is tax-free. They may treat the excess over tuition as taxable, leaving 'tax-free help' equal to tuition, so it does not 'come to more' and they answer no. The tool's upstream allocation (line 2a) may differ.",
+       "line": "person.edu_over_if_adj",
+       "irs_text": "i8863 p. 4: 'Tax-free educational assistance includes: 1. The tax-free part of any scholarship or fellowship grant (including Pell grants);'",
+       "severity": "low",
+       "fix": "Ask for the total of scholarships, grants and other assistance applied to the term, and let the tool apply the tax-free allocation already used for line 2a. Alternatively, compute the excess per period from the worksheet lines the tool already holds, rather than asking."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A parent preparing a return where the student is a dependent child, if the tool uses the person document for dependents as well.",
+       "why_no": "The question begins 'For this person (you, or your spouse on a joint return)'. A filer answering for the child may think the question is about themselves, who attended no school, and answer no.",
+       "line": "person.edu_over_if_adj",
+       "irs_text": "i8863 p. 9: 'Complete a separate worksheet for each student for each academic period...'",
+       "severity": "low",
+       "fix": "Name the student in the question ('For [student name]') and drop the 'you, or your spouse' parenthetical if dependents can be students on this document."
+      }
+     ],
+     "prompt_sha": "8fc3c43a7e570dcd72a13e415f1abdf5f55a74626c6c689ab09823e1afd37d32",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.10188,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.edu_has_adj.aad7b15de530.1.response.txt"
+    }
+   ],
+   "condition": "person.edu_has_adj",
+   "lines": [
+    "person.edu_over_if_adj"
+   ],
+   "inputs": [
+    "person.edu_over"
+   ],
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      4,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Tax-free educational assistance, \"For tax-free educational assistance received in 2025, reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period.\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025.\""
+     ],
+     "cols_pages": [
+      4,
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "gate:person.eligible_educator": {
+   "subject_sha": "c25a86ee05447b2407a85cfd2cd8ba8e231a4c0561d15ddd579ae07814dd43e4",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A teacher who worked the full 2024–25 school year, well over 900 hours, and retired or left teaching in June 2025. She bought classroom supplies in spring 2025.",
+       "why_no": "\"In 2025, did you work ... for at least 900 hours\" reads as hours worked inside calendar 2025. January through June comes to well under 900 hours, so she answers no. The IRS test counts hours during a school year, and the 2024–25 school year ended in 2025.",
+       "line": "person.educator_expenses_if_educator",
+       "irs_text": "i1040gi p. 93, line 11: 'If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025 ... who worked in a school for at least 900 hours during a school year.'",
+       "severity": "medium",
+       "fix": "Ask: 'Did you work at least 900 hours in a kindergarten through grade 12 school during a school year that included part of 2025, such as 2024–25 or 2025–26? Count the whole school year, not only the months in 2025.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A first-year teacher or aide who started full time in August 2025. She works more than 900 hours in the 2025–26 school year, but fewer than 900 of those hours fall in calendar 2025. She paid for classroom supplies that fall.",
+       "why_no": "\"In 2025 ... for at least 900 hours\" leads her to count only her hours from August to December 2025. The IRS text measures hours during a school year, not hours in the tax year.",
+       "line": "person.educator_expenses_if_educator",
+       "irs_text": "i1040gi p. 93, line 11: 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year.'",
+       "severity": "medium",
+       "fix": "Measure the 900 hours across the whole school year (2024–25 or 2025–26), not the calendar year. The instructions should state which school year counts."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A full-time teacher at an online or virtual K-12 public charter school who teaches from home.",
+       "why_no": "\"Did you work in a school\" can be read as working physically inside a school building.",
+       "line": "person.educator_expenses_if_educator",
+       "irs_text": "i1040gi p. 93, line 11: 'teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year.'",
+       "severity": "medium",
+       "fix": "Ask 'work for a kindergarten through grade 12 school, including an online school, ...'. Keep the home-schooling exclusion in the help text."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A substitute teacher or itinerant aide who works at several schools in one district and totals more than 900 hours in the school year, but fewer than 900 at any one school.",
+       "why_no": "\"In a school ... for at least 900 hours\" reads as 900 hours at one school.",
+       "line": "person.educator_expenses_if_educator",
+       "irs_text": "i1040gi p. 93, line 11: 'who worked in a school for at least 900 hours during a school year.'",
+       "severity": "low",
+       "fix": "Add help text: 'Count all your hours in kindergarten through grade 12 schools during the school year, even if you worked at more than one school.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A school librarian, reading specialist or instructional coach working full time in a K-12 school. She buys materials for students.",
+       "why_no": "Her job title is not one of the five listed (teacher, instructor, counselor, principal, aide), so she reads the list as excluding her, even where her duties are instruction.",
+       "line": "person.educator_expenses_if_educator",
+       "irs_text": "i1040gi p. 93, line 11: 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide'",
+       "severity": "low",
+       "fix": "Add help text: 'Answer by what you did, not your job title. Anyone who instructs or counsels students, or assists a teacher, counts.'"
+      }
+     ],
+     "prompt_sha": "288dd05c9170c93c8e7164295fcccf6c1e39c28d2ee2495c2ad1fa50a080b50c",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.079148,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.eligible_educator.c25a86ee0544.1.response.txt"
+    }
+   ],
+   "condition": "person.eligible_educator",
+   "lines": [
+    "person.educator_expenses_if_educator"
+   ],
+   "inputs": [
+    "person.educator_expenses"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      93
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 93, Schedule 1, line 11, 'An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year'",
+      "p. 93, Schedule 1, line 11, Qualified expenses, 'For professional development courses you have taken related to the curriculum you teach or to the students you teach', 'equipment (including computer equipment, software, and services)', 'for personal protective equipment, disinfectant, and other supplies used for the prevention of the spread of coronavirus', and 'You must reduce your qualified expenses by the following amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses in health or physical education.'"
+     ],
+     "cols_pages": [
+      93
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:person.f4137_filed": {
+   "subject_sha": "32ea859ec1fa178071700f1fa89d0de4db6d32b29d02f2f321290cdd43311de9",
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "An employee whose W-2 box 8 shows allocated tips. They reported every actual tip to the employer and kept no records showing their unreported tips were less than box 8, so they must file Form 4137 and enter the allocated tips in column (c).",
+       "why_no": "The helper that sets line 2 says it is 'zero for a person with no unreported tips'. This filer believes they reported all their tips, so they leave column (c) empty. Line 2 becomes zero and the gate closes. The gated lines are correctly zero once line 2 is zero, so the real loss is upstream on lines 4, 6 and 13. If such a filer were also a 1.45%-only government employee, the line-10 condition would be lost too.",
+       "line": "person.tips_gov_if_rows (and person.f4137_under20_if_rows, through the upstream line 2 helper)",
+       "irs_text": "f4137 p. 1, Who must file: 'You must also file Form 4137 if your Form(s) W-2, box 8, shows allocated tips that you must report as income'; p. 2, Columns (c) and (d): 'include any allocated tips ... shown on your Form(s) W-2, box 8, unless you can prove that your unreported tips are less than the amount in box 8'",
+       "severity": "low",
+       "fix": "Word the line 2 helper as 'zero for a person with no unreported tips and no allocated tips in W-2 box 8 that must be reported as income', or ask about W-2 box 8 directly before this gate. The gate itself (line 2 > 0) is sound: if line 2 is zero, then lines 4, 5 and 6 must be zero and the line 10 government-tips condition has no effect."
+      }
+     ],
+     "prompt_sha": "796bdc726a46458c885f68e5d287d1c054739a356204a08fbe1f0b7b17d17484",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.075544,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.f4137_filed.32ea859ec1fa.1.response.txt"
+    }
+   ],
+   "condition": "person.f4137_filed",
+   "lines": [
+    "person.f4137_under20_if_rows",
+    "person.tips_gov_if_rows"
+   ],
+   "inputs": [
+    "person.f4137_under20",
+    "person.tips_gov"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      104
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 104, Qualified Tips From More Than One Employer Worksheet, column (c)"
+     ],
+     "cols_pages": [
+      104
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f4137",
+     "revision": "2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "0b976ed382c261be5c8fd15e4d353f66ebcb9e89e107c1d427f723530e333972",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 2, Line 10, \"If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax\"",
+      "p. 2, Line 5, \"Enter only the tips you weren’t required to report to your employer because the total received was less than $20 in a calendar month\"",
+      "p. 2, Line 5, \"Enter only the tips you weren’t required to report to your employer because the total received was less than $20 in a calendar month\"; p. 2, Tips you must report to your employer, \"the $20 rule applies separately to the tips you received while working for each employer\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "31fdacc4d2614a3a47ee1e3e540119fc3ac13a5f47a961524c804eccd7fc3c95"
+    }
+   ]
+  },
+  "gate:person.has_hsa": {
+   "subject_sha": "807272bc274066e2b74e7c89bd560e6b3f588bc6327aac213e7238d11416230a",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A person (you, or your spouse on a joint return) who put too much into an HSA in 2024 or earlier and left the excess in. In 2025 the account had no contributions from anyone and no distributions, for example because they enrolled in Medicare or changed to a non-HDHP plan. So no Form 8889 is required or entered for 2025, and none is entered for this person.",
+       "why_no": "The gate is computed as 'Number of Forms 8889 entered for this person' > 0. Form 8889 is driven by 2025 activity: contributions, distributions, or a testing-period inclusion. A filer with a dormant HSA truthfully enters no Form 8889, so the gate is false. The prior-excess question is never asked, and the tool never refuses the return.",
+       "line": "person.x_hsa_prior_excess_if_hsa (and the refusal it leads to; Form 5329 Part VII lines 42, 46, 48, 49)",
+       "irs_text": "f5329 (2025) p. 2, Part VII: 'Complete this part if you, someone on your behalf, or your employer contributed more to your HSAs for 2025 than is allowable or you had an amount on line 49 of your 2024 Form 5329.' Line 42: 'Enter the excess contributions from line 48 of your 2024 Form 5329.' Line 49: 'Enter 6% (0.06) of the smaller of line 48 or the value of your HSAs on December 31, 2025.'",
+       "severity": "high",
+       "fix": "Do not gate on Forms 8889 entered. Ask every person (you, and your spouse on a joint return) whether they have ever had an HSA, whether or not anything went in or came out in 2025. Ask the prior-excess question whenever that answer is yes. Alternatively, ask per person: 'Does your 2024 Form 5329 show an amount on line 48 or 49, or was more ever put into your HSA than the yearly limit and left in the account?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A person whose HSA is held at a brokerage or bank they think of as an ordinary investment or savings account. They received no Form 5498-SA or 1099-SA prompt in 2025 and so never 'list' the HSA in the tool. They have an unremoved excess from an earlier year.",
+       "why_no": "The gate is labelled 'This person listed a health savings account'. Listing appears to depend on 2025 documents or activity that lead the filer to enter Form 8889. A filer with no 2025 HSA paperwork reasonably lists nothing.",
+       "line": "person.x_hsa_prior_excess_if_hsa",
+       "irs_text": "f5329 (2025) p. 2, Part VII, line 42: 'Enter the excess contributions from line 48 of your 2024 Form 5329.'",
+       "severity": "medium",
+       "fix": "Ask about the fact, not the form: 'Have you (or your spouse) ever had a health savings account (HSA), even if nothing was added or withdrawn in 2025 and you received no HSA form?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any reviewer or maintainer relying on the gate's citations.",
+       "why_no": "The gate and the input cite Part II (education/ABLE distributions) and Part IX (required minimum distributions). These say nothing about HSAs, so the gate's authority is not shown and its scope cannot be checked against the text.",
+       "line": "person.has_hsa / person.x_hsa_prior_excess_if_hsa",
+       "irs_text": "f5329 (2025) p. 2, Part VII: '... or you had an amount on line 49 of your 2024 Form 5329.'",
+       "severity": "low",
+       "fix": "Cite f5329 Part VII (the heading condition and lines 42 and 49) for both the gate and the gated question."
+      }
+     ],
+     "prompt_sha": "b155d43d6139a7b1c67c72847cdd66a7d002d14922e74d9573e43cd73f29de71",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.093004,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.has_hsa.807272bc2740.1.response.txt"
+    }
+   ],
+   "condition": "person.has_hsa",
+   "lines": [
+    "person.x_hsa_prior_excess_if_hsa"
+   ],
+   "inputs": [
+    "person.x_hsa_prior_excess"
+   ],
+   "used": [
+    {
+     "doc": "f5329",
+     "revision": "2025",
+     "text_sha256": "53ac10ecce39dbd1cc0a3b88c04e351c2a61f3ad35d145d5d847f30f47a1b945",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d"
+    },
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      9
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    }
+   ]
+  },
+  "gate:person.ira_files_8606": {
+   "subject_sha": "7b9703a193ca4d0efd8e026c0427aaf6ce78673c417a3b76e3035dcf588f5519",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer has basis from nondeductible contributions for earlier years, shown as line 14 on a prior Form 8606. They made no nondeductible contribution for 2025 but took a regular 2025 traditional IRA distribution.",
+       "why_no": "The gate asks only about nondeductible contributions 'for 2025'. They made none, so line 1 is $0 and the gate is false.",
+       "line": "person.ira_8606_line2 (zero instead of prior basis) and person.ira_dist_if_files (false, so the required refusal never happens; the whole distribution is treated as taxable on line 4b)",
+       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You received distributions from a traditional IRA in 2025 and your basis in these IRAs is more than zero.' f8606 Part I: 'You took distributions from a traditional IRA in 2025 and you made nondeductible contributions to a traditional IRA in 2025 or an earlier year.'",
+       "severity": "high",
+       "fix": "Gate on a broader fact the filer can check: 'Have you (or your spouse, for that spouse) ever made nondeductible traditional IRA contributions, filed a Form 8606 showing basis, or rolled after-tax plan money into a traditional IRA?' OR line 1 > 0. Then ask line 2 and the distribution/conversion question whenever that holds."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A backdoor-Roth filer made a nondeductible contribution for 2024 between January and April 2025, reported it on a 2024 Form 8606, and converted it to a Roth in 2025. They made no contribution for 2025.",
+       "why_no": "Their contribution was 'for 2024', not 'for 2025', so line 1 for 2025 is $0.",
+       "line": "person.ira_8606_line2 (zero instead of the 2024 line 14 basis) and person.ira_dist_if_files (conversion not asked, so no refusal; the conversion is treated as fully taxable)",
+       "irs_text": "f8606 Part I: 'You converted part, but not all, of your traditional IRAs to Roth IRAs in 2025 and you made nondeductible contributions to a traditional IRA in 2025 or an earlier year.' i8606 p. 2: 'You converted an amount from a traditional IRA to a Roth IRA in 2025.' i8606 p. 9, Total Basis Chart: 'a year after 2023 and before 2025 ... the amount from line 14 of that Form 8606'",
+       "severity": "high",
+       "fix": "Same broader gate: any prior Form 8606 basis, or any 2025 conversion or distribution combined with possible basis. Also ask directly whether the filer converted any traditional, SEP or SIMPLE IRA to a Roth IRA in 2025."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A filer rolled the after-tax (nontaxable) portion of a 401(k) or other qualified plan into a traditional IRA. They never made a nondeductible IRA contribution, and they took a 2025 IRA distribution or conversion.",
+       "why_no": "They made no 'nondeductible contributions'; a rollover of after-tax plan money is not a contribution in their eyes.",
+       "line": "person.ira_8606_line2 and person.ira_dist_if_files",
+       "irs_text": "i8606 (2025) p. 9, Line 2: 'You rolled over any nontaxable portion of your qualified retirement plan to a traditional IRA that wasn't previously reported on Form 8606, line 2. Include the nontaxable portion on line 2.' i8606 p. 2: 'nondeductible contributions (including nontaxable amounts you rolled over from a qualified retirement plan)'",
+       "severity": "high",
+       "fix": "Include in the gate: 'Did you ever roll after-tax (nontaxable) money from an employer plan into a traditional IRA?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A spouse received all or part of a traditional IRA that carries basis, under a divorce or separation agreement. They made no nondeductible contribution for 2025.",
+       "why_no": "No nondeductible contribution for 2025; the gate does not mention transfers incident to divorce.",
+       "line": "person.ira_8606_line2",
+       "irs_text": "i8606 (2025) p. 2, Who Must File: 'You or your spouse transferred all or part of their traditional IRA in 2025 to the other spouse under a divorce or separation agreement where the transfer resulted in a change in the basis.' p. 9, Line 2: 'Incident to divorce, you transferred or received part or all of a traditional IRA'",
+       "severity": "medium",
+       "fix": "Add divorce or separation transfers of IRAs with basis to the broadened gate, or refuse in that case."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer inherited a traditional IRA whose decedent had basis, and took a 2025 distribution from it.",
+       "why_no": "They made no nondeductible contributions themselves, so their own line 1 is $0.",
+       "line": "person.ira_dist_if_files (no refusal) and person.ira_8606_line2 (the inherited basis is never captured)",
+       "irs_text": "i8606 (2025) p. 2: 'You received a distribution from an inherited traditional IRA that has a basis ... You may need to file more than one Form 8606.'",
+       "severity": "medium",
+       "fix": "Ask whether any distribution came from an inherited traditional IRA with basis, and refuse if so."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A reservist repaid a qualified reservist distribution to an IRA in 2025 and made no other nondeductible contribution.",
+       "why_no": "A repayment does not read as a 'nondeductible contribution', so they report $0 for line 1.",
+       "line": "person.ira_8606_line2 and person.ira_dist_if_files (the gate stays false)",
+       "irs_text": "i8606 (2025) p. 9, Line 1: 'Include on line 1 any repayment of a qualified reservist distribution.'",
+       "severity": "medium",
+       "fix": "Ask about qualified reservist distribution repayments separately and add them to the line 1 helper."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer contributed to a Roth IRA for 2025 and recharacterized it as a traditional IRA contribution, which is nondeductible because of income or plan coverage.",
+       "why_no": "They think of their contribution as a Roth contribution, so they report no traditional nondeductible contribution.",
+       "line": "person.ira_8606_line2 and person.ira_dist_if_files",
+       "irs_text": "i8606 (2025) p. 2, Note: 'If you recharacterized a 2025 Roth IRA contribution as a traditional IRA contribution ... treat the contribution as having been made to the second IRA, not the first IRA.'",
+       "severity": "medium",
+       "fix": "Ask about recharacterizations explicitly when collecting traditional IRA contributions."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer made their only nondeductible contribution for 2025 between January 1 and April 15, 2026.",
+       "why_no": "They read 'for 2025' as 'made during 2025'.",
+       "line": "person.ira_8606_line2 and person.ira_dist_if_files",
+       "irs_text": "f8606 (2025) line 1: 'including those made for 2025 from January 1, 2026, through April 15, 2026'",
+       "severity": "medium",
+       "fix": "State in the contribution question that contributions made January 1 to April 15, 2026 for 2025 count."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer is covered by a workplace plan, earns above the deduction phase-out, and contributed to a traditional IRA without knowing the contribution is nondeductible.",
+       "why_no": "If line 1 depends on their own label, 'nondeductible' is a legal classification they cannot check.",
+       "line": "person.ira_8606_line2 and person.ira_dist_if_files",
+       "irs_text": "i8606 (2025) p. 9, Line 1: 'subtract line 12 of the worksheet ... from the smaller of line 10 or line 11 of the worksheet. Enter the result on line 1 of Form 8606.'",
+       "severity": "low",
+       "fix": "Compute line 1 from the total traditional IRA contributions and the IRA Deduction Worksheet rather than asking the filer to classify them."
+      }
+     ],
+     "prompt_sha": "56b44bddd29811fdfe3f631c7d2807032484c2c5fe79b708293989772558eb55",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.144036,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.ira_files_8606.7b9703a193ca.1.response.txt"
+    }
+   ],
+   "condition": "person.ira_files_8606",
+   "lines": [
+    "person.ira_8606_line2",
+    "person.ira_dist_if_files"
+   ],
+   "inputs": [
+    "person.ira_basis",
+    "person.ira_dist"
+   ],
+   "used": [
+    {
+     "doc": "i8606",
+     "revision": "2025",
+     "text_sha256": "242e712835ef634f3af8f1d0f19435b236e9c54b80921d6017c153b3e6c2aec6",
+     "pages": [
+      2,
+      4,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 2, Who Must File, \"You made nondeductible contributions to a traditional IRA for 2025\"",
+      "p. 9, Line 2, \"Generally, if this is the first year you are required to file Form 8606, enter -0-. Otherwise, use the Total Basis Chart to find the amount to enter on line 2\"",
+      "p. 9, Line 2, \"you may need to enter an amount that is more than -0- (even if this is the first year you are required to file Form 8606) or increase or decrease the amount from the chart\""
+     ],
+     "cols_pages": [
+      2,
+      9
+     ],
+     "cols_sha256": "805e59f2458d33a3fc0a1d17ebede2ecd59e18d911069bbe84987e53e297ec79"
+    },
+    {
+     "doc": "f8606",
+     "revision": "2025",
+     "text_sha256": "1e2747fd38afcfefc11564f9673556808470614c153f2d34458afe98a560cb2c",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8606 (2025), Part I, \"In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?\" and \"For this purpose, “distributions” does not include rollovers (but does include certain 2025 retirement plan distribution repayments treated as rollovers (see instructions))\"; , Special Terms, Certain 2025 retirement plan distribution repayments treated as rollovers",
+      "Form 8606 (2025), Part I, \"In 2025, did you take a distribution from a traditional IRA, or make a Roth IRA conversion?\" and \"Go to line 4\"",
+      "Form 8606 (2025), line 2, \"Enter your total basis in traditional IRAs\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "47a023b69eb81610f8bf73059c609131854d900f1694660f8496a7791f974233"
+    }
+   ]
+  },
+  "gate:person.ira_owner": {
+   "subject_sha": "32dba6de11da073b6a9b71079d1da1cdb13df95a02b5546397ce62134d39ce53",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "An employee auto-enrolled through payroll in a state auto-IRA program (CalSavers, OregonSaves, Illinois Secure Choice, etc.) or an employer payroll-deduction IRA. The default account is a Roth IRA funded by 2025 paycheck deductions. The employee has never opened an account themselves and thinks of it as 'the retirement plan at work'.",
+       "why_no": "The help says 'A 401(k) or a pension at work is not an IRA'. A filer whose only retirement savings came out of a paycheck through the employer reads that as excluding the work program and answers no, without knowing the program is legally a Roth IRA.",
+       "line": "person.sav_roth_if_ira_owner (also person.x_ira_prior_excess_if_ira_owner when the filer's income was above the Roth limit in an earlier year and the excess was never removed)",
+       "irs_text": "f8880 (2025) p. 2, Who Can Take This Credit: 'made (a) contributions (other than rollover contributions) to a traditional or Roth IRA'; f8880 p. 1, line 1, 'Traditional and Roth IRA contributions'",
+       "severity": "medium",
+       "fix": "Add to the help: 'An IRA you pay into through payroll counts, including a state program such as CalSavers, OregonSaves or Illinois Secure Choice, even though your employer set it up. Only a 401(k), 403(b), 457, TSP or pension plan run by your employer is not an IRA.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer who bought an individual retirement annuity (an IRA annuity contract) from an insurance company and paid premiums into it for 2025. The filer has no account at a bank or brokerage.",
+       "why_no": "The question defines IRA as 'an individual retirement account', and the help lists only account types. An annuity contract is not an 'account' in ordinary speech, so the filer truthfully reads the question as not covering it. The IRS term is 'arrangement', which includes annuities.",
+       "line": "person.sav_trad_if_ira_owner and person.sav_roth_if_ira_owner",
+       "irs_text": "i1040gi (2025) p. 95, Line 20: 'If you made any nondeductible contributions to a traditional individual retirement arrangement (IRA) for 2025, you must report them on Form 8606.'; f8880 p. 1, line 1",
+       "severity": "medium",
+       "fix": "Use 'individual retirement arrangement', and add to the help: 'An individual retirement annuity bought from an insurance company counts as an IRA.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose only IRA is a 'rollover IRA' holding money moved from a former employer's 401(k). Part of an earlier rollover failed the rules (for example, a second 60-day rollover within 12 months), so that amount sits in the IRA as an uncorrected excess contribution at the end of 2025.",
+       "why_no": "The help says 'A 401(k) ... is not an IRA'. The filer thinks of the account as their old 401(k) money, and 'rollover' does not appear among the listed IRA types, so the filer answers no.",
+       "line": "person.x_ira_prior_excess_if_ira_owner (a missed refusal)",
+       "irs_text": "f5329 (2025) p. 1, Part III: 'Complete this part if you contributed more to your traditional IRAs ... for 2025 than is allowable or you had an amount on line 17 of your 2024 Form 5329.'",
+       "severity": "low",
+       "fix": "Add to the help: 'A rollover IRA holding money moved from a 401(k) or other work plan counts as an IRA.'"
+      }
+     ],
+     "prompt_sha": "cf2f98d8dde5ed8068e4ea41fd2dcbb1fe03c76a95ac474bf0f661946f39ad67",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.165636,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.ira_owner.32dba6de11da.1.response.txt"
+    }
+   ],
+   "condition": "person.ira_owner",
+   "lines": [
+    "person.sav_roth_if_ira_owner",
+    "person.sav_trad_if_ira_owner",
+    "person.x_ira_prior_excess_if_ira_owner"
+   ],
+   "inputs": [
+    "person.sav_roth",
+    "person.sav_trad",
+    "person.x_ira_prior_excess"
+   ],
+   "used": [
+    {
+     "doc": "f8880",
+     "revision": "2025; created 2025-11-04",
+     "text_sha256": "e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8880 (2025), line 1, \"Do not include rollover contributions\"; p. 2, Who Can Take This Credit, \"(a) contributions (other than rollover contributions) to a traditional or Roth IRA\"",
+      "Form 8880 (2025), line 1, \"Do not include rollover contributions\"; p. 2, Who Can Take This Credit, \"(a) contributions (other than rollover contributions) to a traditional or Roth IRA\"; , Special Terms, Certain 2025 retirement plan distribution repayments treated as rollovers; , Contributions Returned Before Due Date of Return",
+      "Form 8880 (2025), line 1, \"Traditional and Roth IRA contributions\"; , Line 20, \"If you made any nondeductible contributions to a traditional\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575"
+    },
+    {
+     "doc": "f5329",
+     "revision": "2025",
+     "text_sha256": "53ac10ecce39dbd1cc0a3b88c04e351c2a61f3ad35d145d5d847f30f47a1b945",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      95
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      95
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i8606",
+     "revision": "2025",
+     "text_sha256": "242e712835ef634f3af8f1d0f19435b236e9c54b80921d6017c153b3e6c2aec6",
+     "pages": [
+      4
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "805e59f2458d33a3fc0a1d17ebede2ecd59e18d911069bbe84987e53e297ec79"
+    },
+    {
+     "doc": "p590a",
+     "revision": "2025",
+     "text_sha256": "be942a345a01a8f875a2a625b400d7760221e1a55a2c85dca5ab75826e6c801a",
+     "pages": [
+      31
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b"
+    },
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      9
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    }
+   ]
+  },
+  "gate:person.mw_has_1099": {
+   "subject_sha": "58f03b9062769beb4c889ce33cddb8f17d58e1e676137c496cc938b9582a4f9a",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A sole proprietor who runs a home-care business and receives Medicaid waiver payments without a Form 1099-MISC or 1099-NEC. For example, a payer paid under the reporting threshold, paid through a card processor and issued a Form 1099-K, or never sent a form.",
+       "why_no": "The helper asks for Medicaid waiver payments 'on Form 1099-MISC or 1099-NEC'. With no such form, the filer truthfully enters $0. The business question, whose Yes ends the interview, is then never asked.",
+       "line": "person.mw_business_if_1099",
+       "irs_text": "i1040gi p. 24, Line 1d: 'If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts' (not conditioned on any Form 1099)",
+       "severity": "high",
+       "fix": "Ask about the business whenever any Medicaid waiver payments were not reported in W-2 box 1, however they were reported or if no form was received: 'Did you (or your spouse) receive Medicaid waiver payments for home care that were not in box 1 of a Form W-2, whether or not you got a Form 1099?' Or gate on any home-care business income."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A self-employed caregiver who gets a Form 1099-NEC or 1099-MISC from a home-care agency, fiscal intermediary or state program. The form does not say the money is Medicaid waiver funding.",
+       "why_no": "The filer does not see agency or contractor pay as 'Medicaid waiver payments', so they enter $0 for that helper. The sole-proprietor refusal is then skipped.",
+       "line": "person.mw_business_if_1099",
+       "irs_text": "i1040gi p. 24, Line 1d: 'If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts'",
+       "severity": "medium",
+       "fix": "Ask a checkable fact first: 'Were you paid to provide care in your home or a client's home (including through a state program, agency, or fiscal intermediary)?' Then classify Medicaid waiver status and business status after a yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A home-care sole proprietor filing for the first time with this tool who has not yet prepared a Schedule C.",
+       "why_no": "The gated question adds 'with this pay reported on a business schedule (Schedule C)'. A filer who has not filed or prepared a Schedule C may answer no even though they are a sole proprietor in the business.",
+       "line": "person.mw_business_if_1099",
+       "irs_text": "i1040gi p. 24, Line 1d: 'If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts'",
+       "severity": "low",
+       "fix": "Drop the Schedule C clause and ask: 'Do you run your own home-care business as a sole proprietor (separate from being paid as an individual caregiver)?'"
+      }
+     ],
+     "prompt_sha": "58a51f299780db0ffd420e337d717947229ccd29af920de2731520ddc36619fb",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.057032,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.mw_has_1099.58f03b906276.1.response.txt"
+    }
+   ],
+   "condition": "person.mw_has_1099",
+   "lines": [
+    "person.mw_business_if_1099"
+   ],
+   "inputs": [
+    "person.mw_business"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      24
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 24, Line 1d, \"If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts\"",
+      "p. 24, Line 1d, \"If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC\""
+     ],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:person.mw_has_not_box1": {
+   "subject_sha": "62aae009fd81d8ea3f0fbd998f9c8f1e9e36bec21f5de6a0d0f950ab3800da8a",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer cares for a disabled adult child in their home under a state Medicaid waiver program. They receive no Form W-2, only a Form 1099-NEC (or 1099-MISC) from the state's fiscal intermediary, and they have no separate home care business.",
+       "why_no": "The helper asks for payments 'not in W-2 box 1'. With no W-2 at all, the filer reads this as being about W-2s whose box 1 is blank or zero, and enters $0. The cited help text, about W-2s and box 1, supports that reading.",
+       "line": "person.mw_1099_if_not_box1",
+       "irs_text": "i1040gi p. 24, Line 1d: \"If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC.\"",
+       "severity": "medium",
+       "fix": "Ask the 1099 question directly whenever Medicaid waiver payments are reported for the return: 'Did you receive any Medicaid waiver payments reported on a Form 1099-MISC or 1099-NEC, or with no W-2 at all?' Then derive the not-in-box-1 amount from both answers instead of gating on it."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer receives taxable or nontaxable Medicaid waiver payments on a 1099-NEC and does not want to include nontaxable payments in earned income for the EIC or another credit.",
+       "why_no": "The helper cites the sentence 'Also enter the total of your taxable and nontaxable ... not reported in box 1 ... if you choose to include nontaxable payments in earned income'. A filer not making that election reads the amount as relevant only to electors and answers $0. The 1099 amount is still required on line 1d regardless of the election.",
+       "line": "person.mw_1099_if_not_box1",
+       "irs_text": "i1040gi p. 24, Line 1d: \"enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC. Also, enter your nontaxable Medicaid waiver payments on Schedule 1, line 8s.\"",
+       "severity": "medium",
+       "fix": "Separate the election from the gate. Ask whether any payments came on a 1099-MISC or 1099-NEC regardless of any choice about earned income, and cite the 1099 sentence rather than the election sentence."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A filer is paid by a state agency or fiscal intermediary for in-home care of a relative, reported on a 1099-NEC labeled as nonemployee compensation. They do not recognize the money as 'Medicaid waiver payments' (difficulty-of-care payments).",
+       "why_no": "The parent condition, 'Medicaid waiver payments are reported for the return', is answered no because neither the document nor the payer uses the term 'Medicaid waiver'. The child helper and the gated 1099 question are then never reached.",
+       "line": "person.mw_1099_if_not_box1",
+       "irs_text": "i1040gi p. 24, Line 1d: \"your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC\"",
+       "severity": "medium",
+       "fix": "Word the parent gate by facts the filer can check: 'Were you (or your spouse) paid by a state Medicaid program, agency, or fiscal intermediary for caring for someone living in your home? This includes payments on a W-2 (box 12 code II) or a 1099-NEC/1099-MISC.'"
+      }
+     ],
+     "prompt_sha": "a24f1f74422db4cb528695d2eb23f0492c388e4afd5cc1f5224d1a143873d8c0",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.062756,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.mw_has_not_box1.62aae009fd81.1.response.txt"
+    }
+   ],
+   "condition": "person.mw_has_not_box1",
+   "lines": [
+    "person.mw_1099_if_not_box1"
+   ],
+   "inputs": [
+    "person.mw_1099"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      24
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 24, Line 1d, \"Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2\"",
+      "p. 24, Line 1d, \"If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC\""
+     ],
+     "cols_pages": [
+      24
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:person.mw_paid": {
+   "subject_sha": "cebc14160e81fff1dd595fa20c16ea1de6124ac0d85e2c40720498c7cfbadde1",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A parent paid through a state consumer-directed program to care for an adult child living with them. The payer, often a fiscal intermediary, reports the pay on Form 1099-MISC or 1099-NEC, or sends no form at all, and the parent has no separate home-care business.",
+       "why_no": "The gate's helper is titled \"Medicaid waiver payments (in W-2 box 1 and not in box 1)\". This filer has no W-2, so a helper built from W-2 entries (box 1 plus box 12 code II) totals $0 and the gate is false.",
+       "line": "person.mw_earned_if_paid",
+       "irs_text": "i1040gi p. 24, Line 1d: \"Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2 ... if you choose to include nontaxable payments in earned income\"; p. 92, Line 8s: \"If you did not receive a Form W-2 for nontaxable payments ... and choose to include nontaxable amounts in earned income ... report the amount on Form 1040 or 1040-SR, line 1d.\"",
+       "severity": "medium",
+       "fix": "Build the helper from every source: W-2 box 1, W-2 box 12 code II, Form 1099-MISC or 1099-NEC, and payments with no form. Ask directly: \"Were you (or your spouse) paid by a state Medicaid program, or by an agency or fiscal intermediary acting for one, to care for someone who lived in your home, whether or not you got a W-2 or 1099?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A spouse paid as a family caregiver under a program with a state name, such as California IHSS, \"consumer-directed attendant care\", \"Community First Choice\" or \"Structured Family Caregiving\". The W-2 comes from the home-care agency, with $0 in box 1 and the pay in box 12 code II.",
+       "why_no": "The filer does not see this pay as \"Medicaid waiver payments\". A W-2 with $0 in box 1 looks empty, so it is skipped or entered without box 12. The instructions also say not to attach such W-2s, which encourages leaving them out.",
+       "line": "person.mw_earned_if_paid",
+       "irs_text": "i1040gi p. 24, Line 1d TIP: \"Your nontaxable Medicaid waiver payments may have been reported to you [on] Form(s) W-2, box 12, with Code II\"; Caution: \"if ... box 1 of your Form(s) W-2 is blank or has zeros, and you are choosing not to include ... do not attach any of these Form(s) W-2\"",
+       "severity": "medium",
+       "fix": "Require entry of every W-2, including those with $0 in box 1, and set the gate from box 12 code II. In the help, name common program names and say \"paid by a home-care agency or the state to care for a family member or other person living with you\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A caregiver whose care recipient moved out, went into a facility, or died partway through 2025. The payments made while they lived together were nontaxable.",
+       "why_no": "If the helper's wording describes care for someone \"living in your home\" in the present tense, a filer whose recipient no longer lives there reports $0.",
+       "line": "person.mw_earned_if_paid",
+       "irs_text": "i1040gi p. 92, Line 8s: \"Certain Medicaid waiver payments you received for caring for someone living in your home with you may be nontaxable.\"",
+       "severity": "low",
+       "fix": "Word it in the past tense for the whole year: \"at any time in 2025, for care of someone who lived in your home at that time\"."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A caregiver whose nontaxable payments were reported in W-2 box 1. The gate fires and the choice question is asked.",
+       "why_no": "The filer answers no to counting the pay as earned income. The instructions do not treat box-1 amounts as an elective inclusion: they go on line 1a regardless. The tool may then drop them from earned income.",
+       "line": "person.mw_earned_if_paid",
+       "irs_text": "i1040gi p. 92, Line 8s: \"If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a.\"; p. 24, Line 1d limits the choice to payments \"not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2\"",
+       "severity": "low",
+       "fix": "Ask the choice question only about payments not in W-2 box 1. Say in the help that amounts already in box 1 are reported on line 1a whatever the answer."
+      }
+     ],
+     "prompt_sha": "c092979275f9656603bed3d7be7693019cddd5888b289523e1383fd61a54a0e2",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.083984,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.mw_paid.cebc14160e81.1.response.txt"
+    }
+   ],
+   "condition": "person.mw_paid",
+   "lines": [
+    "person.mw_earned_if_paid"
+   ],
+   "inputs": [
+    "person.mw_earned"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      24,
+      92
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 24, Line 1d, \"if you choose to include nontaxable payments in earned income for purposes of claiming a credit or other tax benefit\", \"If you and your spouse both received nontaxable Medicaid waiver payments during the year, you and your spouse can make different choices about including payments in earned income\"",
+      "p. 92, Line 8s, \"Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d\", \"If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a\""
+     ],
+     "cols_pages": [
+      24,
+      92
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:person.rmd_possible": {
+   "subject_sha": "69ec185521f4d9ce9e8ea54e285b220ede07697678e7ea2167f8eaa9520642fb",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer born after 1952 who is an alternate payee under a QDRO from a divorce. They hold a separate share in an ex-spouse's 401(k). The ex-spouse was born in 1950, so required distributions from the share are timed by the participant's age and are already due. The alternate payee took nothing in 2025.",
+       "why_no": "The gate offers only two ways in: 'Born in 1952 or earlier' and 'Inherited an IRA or a retirement plan account'. This filer is younger and inherited nothing; the share came from a divorce. Both helpers are truthfully false, so the question is never asked.",
+       "line": "person.rmd_missed_if_possible",
+       "irs_text": "i5329 p. 9: \"You owe this tax if you don't receive the minimum required distribution from your qualified retirement plan, including an IRA or an eligible section 457 deferred compensation plan.\"",
+       "severity": "high",
+       "fix": "Add a third gate helper: 'Do you have a retirement plan or IRA share that came from someone else, for example by inheritance or a divorce or separation order (QDRO)?' Or ask the RMD question of anyone who has an IRA or plan account, and drop the birth-year gate."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A beneficiary under the 5-year rule. For example, someone who inherited through an estate from an owner who died in 2019 before the required beginning date. The whole account had to be paid out by December 31, 2025, and a balance remained.",
+       "why_no": "The question asks about 'the required yearly minimum', and the help says 'take a minimum amount out each year'. This beneficiary had no yearly amount, only a deadline to empty the account, so a no is truthful as worded.",
+       "line": "person.rmd_missed_if_possible",
+       "irs_text": "i5329 p. 9: \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed. The tax is due for the tax year that includes the last day by which the minimum required distribution must be taken.\"",
+       "severity": "high",
+       "fix": "Ask: 'Was any amount you were required to take out of a retirement account (a yearly minimum, or emptying an inherited account by a 5- or 10-year deadline) not taken by its deadline, even if you made it up later?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A non-spouse beneficiary under the 10-year rule. The original owner died after the required beginning date, so annual distributions are required in 2025 after the 2021–2024 relief. The beneficiary took nothing in 2025.",
+       "why_no": "They believe the 10-year rule means they only have to empty the account by year 10, with no yearly minimum. Nothing in the question or help tells them that annual distributions can also be required within the 10 years.",
+       "line": "person.rmd_missed_if_possible",
+       "irs_text": "i5329 p. 9: \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\" (f5329 p. 3, Part IX)",
+       "severity": "medium",
+       "fix": "Add to the help: 'If you inherited an account from someone who had already started required distributions, you generally must take a yearly amount even under the 10-year rule (starting 2025).'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A beneficiary of an inherited Roth IRA, or of a designated Roth account in a plan, who missed a required distribution.",
+       "why_no": "They know that Roth accounts have no required distributions and apply that to the inherited Roth as well. The help ('People aged 73 or older ... usually must take a minimum amount out each year') does not correct them.",
+       "line": "person.rmd_missed_if_possible",
+       "irs_text": "i5329 p. 9: \"Roth IRA. There are no minimum required distributions during the lifetime of the owner of a Roth IRA. Following the death of the Roth IRA owner, required distribution rules apply to the beneficiary.\"",
+       "severity": "medium",
+       "fix": "Add to the help: 'This includes inherited Roth IRAs and inherited Roth 401(k) accounts.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A surviving spouse born after 1952 who is the beneficiary of the late spouse's IRA. They kept it as a beneficiary (inherited) IRA, and the late spouse was born in 1950. The surviving spouse thinks of the IRA as their own.",
+       "why_no": "They read 'Inherited an IRA or a retirement plan account' as meaning accounts from someone other than a spouse. They say the IRA simply passed to them and answer no.",
+       "line": "person.rmd_missed_if_possible",
+       "irs_text": "i5329 p. 9: \"If you are the beneficiary of an inherited IRA, then only distributions from IRAs inherited from the same decedent can be combined to satisfy the minimum required distribution for all inherited IRAs from that decedent.\"",
+       "severity": "medium",
+       "fix": "Word the helper: 'Are you the beneficiary of an IRA or retirement plan account of someone who died (including your spouse), or do you hold an account received through a beneficiary designation?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer born in 1951 whose first required distribution (for 2024) was due April 1, 2025. They missed it, but took their 2025 distribution in full.",
+       "why_no": "They read 'the required yearly minimum' as this year's (2025) amount, which they took. The first-year amount had a deadline in 2025 but belongs to the 2024 year.",
+       "line": "person.rmd_missed_if_possible",
+       "irs_text": "i5329 p. 9: \"The tax is due for the tax year that includes the last day by which the minimum required distribution must be taken.\"",
+       "severity": "medium",
+       "fix": "Ask: 'Did any required minimum distribution whose deadline fell in 2025 (including a first-year distribution due April 1, 2025) go untaken in full by that deadline?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who missed a required distribution from an eligible governmental 457(b) deferred compensation plan or a 403(a)/403(b) annuity.",
+       "why_no": "They do not think of a deferred compensation plan or an annuity contract as a 'retirement account'.",
+       "line": "person.rmd_missed_if_possible",
+       "irs_text": "i5329 p. 9: \"You owe this tax if you don't receive the minimum required distribution from your qualified retirement plan, including an IRA or an eligible section 457 deferred compensation plan.\"",
+       "severity": "low",
+       "fix": "Write 'an IRA, 401(k), 403(b), 457(b) deferred compensation plan, pension, or annuity under such a plan'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer who missed a required distribution and reads the help before answering.",
+       "why_no": "The help says 'a Yes ends the interview here', which invites a no from a filer who is unsure or wants to finish the return.",
+       "line": "person.rmd_missed_if_possible",
+       "irs_text": "f5329 p. 3, Part IX: \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"",
+       "severity": "low",
+       "fix": "Explain the consequence neutrally, for example 'Form 5329 Part IX is required; this tool cannot prepare it', and point to the 10% reduced rate for a correction made in time."
+      }
+     ],
+     "prompt_sha": "8bf67bde1e55f644d0e04140db603dfe484368e29aab3e61d96e933a89c0e11d",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.163812,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.rmd_possible.69ec185521f4.1.response.txt"
+    }
+   ],
+   "condition": "person.rmd_possible",
+   "lines": [
+    "person.rmd_missed_if_possible"
+   ],
+   "inputs": [
+    "person.rmd_missed"
+   ],
+   "used": [
+    {
+     "doc": "f5329",
+     "revision": "2025",
+     "text_sha256": "53ac10ecce39dbd1cc0a3b88c04e351c2a61f3ad35d145d5d847f30f47a1b945",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d"
+    },
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      9
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    }
+   ]
+  },
+  "gate:person.sav_trad_if_ira_owner": {
+   "subject_sha": "f0d5572597bd2b0b5c9bc7726b6032a37871cbdbd97ae0cefe9a23f79383ff11",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer preparing the 2025 return in February or March 2026 who has never had an IRA. They plan to open a traditional IRA and contribute for 2025 before April 15, 2026, so they can deduct it on this return.",
+       "why_no": "The parent question asks whether they 'had an IRA ... at any time in 2025, or has one now'. They had none in 2025 and have none yet, so they truthfully answer no. The child question 'Did you make contributions' is also past tense and excludes a contribution not yet made.",
+       "line": "person.ira_contrib",
+       "irs_text": "i1040gi p. 98, IRA Deduction Worksheet line 11: \"Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025\"",
+       "severity": "high",
+       "fix": "Ask the parent question as: 'Did you or will you have any IRA, including one you will open by April 15, 2026, to contribute for 2025?' Ask the child question as: 'Did you make, or will you make by April 15, 2026, contributions (not rollovers) to a traditional IRA for 2025?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who deposited $7,000 into a traditional IRA in March 2026 and designated it for 2025.",
+       "why_no": "They read 'contributions ... for 2025' as money put in during 2025. Their deposit happened in 2026, so they answer no.",
+       "line": "person.ira_contrib",
+       "irs_text": "i1040gi p. 98, line 11: \"traditional IRA contributions made, or that will be made by the due date of your 2025 return ... for 2025\"",
+       "severity": "medium",
+       "fix": "Add to the gate: 'Count money you put in from January 1, 2025, through April 15, 2026, that you designated for 2025. Do not count money put in during early 2025 for 2024.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A non-working spouse on a joint return. The working spouse funded a spousal traditional IRA in the non-working spouse's name.",
+       "why_no": "When asked about the non-working spouse, the question reads 'Did you make contributions'. The couple answers no because the other spouse made the deposit from their own earnings.",
+       "line": "person.ira_contrib (spouse)",
+       "irs_text": "i1040gi p. 98, line 11: \"Enter traditional IRA contributions ... to your IRA on line 11a and to your spouse's IRA on line 11b\"; p. 95 item 6: \"You must file a joint return to deduct contributions to your spouse's IRA.\"",
+       "severity": "medium",
+       "fix": "Reword the gate to: 'Was any money (not rollovers) put into a traditional IRA in this person's name for 2025, by either spouse?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who did a 'backdoor Roth'. They made a nondeductible traditional IRA contribution and converted it to a Roth IRA days later.",
+       "why_no": "They think of the money as a Roth contribution and the traditional account as a pass-through, so they answer no to traditional IRA contributions.",
+       "line": "person.ira_contrib",
+       "irs_text": "i1040gi p. 95, Line 20: \"If you made any nondeductible contributions to a traditional individual retirement arrangement (IRA) for 2025, you must report them on Form 8606.\"",
+       "severity": "medium",
+       "fix": "Add help to the gate: 'Count it even if you later converted it to a Roth IRA (a backdoor Roth) or the contribution isn't deductible.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who contributed to a Roth IRA for 2025 and then recharacterized it as a traditional IRA contribution before the due date.",
+       "why_no": "They remember making a Roth contribution and answer no to the traditional question. The help never mentions recharacterization.",
+       "line": "person.ira_contrib",
+       "irs_text": "i1040gi p. 98, line 11: \"Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return ... for 2025\"",
+       "severity": "medium",
+       "fix": "Add help to the gate: 'Include a Roth IRA contribution you recharacterized as a traditional IRA contribution. Leave out a traditional contribution you recharacterized as Roth.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A self-employed filer whose only IRA is a SEP-IRA. They deposited their own regular annual contribution into it, separate from the employer SEP contribution.",
+       "why_no": "They read their account as a SEP, not a 'traditional IRA'. The gated help also says to leave out 'SEP or SIMPLE contributions', so they answer no.",
+       "line": "person.ira_contrib",
+       "irs_text": "i1040gi p. 98, line 11: \"Enter traditional IRA contributions made ... for 2025 to your IRA\"",
+       "severity": "medium",
+       "fix": "Add help to the gate: 'A regular (non-SEP) contribution you made to a SEP-IRA counts as a traditional IRA contribution. Leave out only the SEP contribution made under the plan.'"
+      }
+     ],
+     "prompt_sha": "e463dbe29abd0986c940dcf373c7e6d2eee650d9cc19f2a5f718edd9ce1afe10",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.1137,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.sav_trad_if_ira_owner.f0d5572597bd.1.response.txt"
+    }
+   ],
+   "condition": "person.sav_trad_if_ira_owner",
+   "lines": [
+    "person.ira_contrib"
+   ],
+   "inputs": [
+    "person.ira_trad"
+   ],
+   "used": [
+    {
+     "doc": "f8880",
+     "revision": "2025; created 2025-11-04",
+     "text_sha256": "e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8880 (2025), line 1, \"Traditional and Roth IRA contributions\"; , Line 20, \"If you made any nondeductible contributions to a traditional\""
+     ],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      95,
+      98
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 98, IRA Deduction Worksheet—Continued, line 11, \"Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025\"",
+      "p. 98, IRA Deduction Worksheet—Continued, line 11, \"Enter traditional IRA contributions made, or that will be made by the due date of your 2025 return not counting extensions (April 15, 2026, for most people), for 2025\"; p. 95, Line 20, \"If you made contributions to your IRA in 2025 that you deducted for 2024, don’t include them in the worksheet\", \"Don’t include rollover contributions in figuring your deduction\", \"Don’t include trustees’ fees that were billed separately\" and \"Don’t include any repayments of qualified reservist distributions\""
+     ],
+     "cols_pages": [
+      95,
+      98
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:person.simple_open_year": {
+   "subject_sha": "b00b6b51f47d68fdbde8ac04d50657274df8001fe839bd87feeca5d1ced1ff55",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A SIMPLE IRA or SIMPLE 401(k) participant born in 1963, 1964 or 1965, who reaches age 62, 61 or 60 during 2025. For example, someone born in 1965 who turns 60 in 2025 and defers more than $16,500 plus $3,500.",
+       "why_no": "The computed gate is true only for birth years 1962 and 1966, so it is false for this person. The line then takes person.catchup_age50, the 'age50' year parameter. The line's own note says the otherwise case means '50 to 59 or 64 and over', which puts this person in the age-50 band. They are actually in the 60-to-63 band for the whole year.",
+       "line": "person.simple_age_if_open_year",
+       "irs_text": "p560 p. 16: 'allow participants to make a higher amount of catch-up contributions in a tax year in which they attain age 60, 61, 62, or 63. For 2025 and 2026, the higher limit on catch-up contributions to SIMPLE plans for such participants is $5,250.'",
+       "severity": "medium",
+       "fix": "Give the otherwise branch a value derived from birth year. For birth years 1963 to 1965, set the 60-to-63 band ($5,250 limit). For birth years 1961 and earlier through 1975, set the age-50 band. For birth years after 1975, set no catch-up. Do not use a single 'age50' constant. Alternatively, state in the instructions that a separate line handles birth years 1963 to 1965, and cite that line."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Married filing jointly, where the spouse is the SIMPLE participant and was born in 1962 or 1966, and the primary filer was born in another year.",
+       "why_no": "The helper 'The year you were born' says 'you'. If the tool evaluates it once per return for the primary filer, rather than once per person, the gate is false for the spouse. The spouse's age question is then never asked.",
+       "line": "person.simple_age_if_open_year",
+       "irs_text": "p560 p. 16: 'A SIMPLE IRA plan can permit participants who are age 50 or over at the end of the calendar year to also make catch-up contributions.' The rule applies to each participant.",
+       "severity": "medium",
+       "fix": "Evaluate the gate on each person's own birth year, and word the helper as 'The year this person (you, or your spouse on a joint return) was born'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A participant born January 1, 1966. Under the common-law rule, a person attains an age on the day before the birthday, so this person attains age 60 on December 31, 2025.",
+       "why_no": "The gate correctly opens, but the gated question asks 'How old were you at the end of 2025?'. On December 31, 2025, this person would truthfully answer 59 by the ordinary count. The tool would then treat them as outside the 60-to-63 band and drop the higher catch-up amount.",
+       "line": "person.simple_age_if_open_year",
+       "irs_text": "p560 p. 16: 'in a tax year in which they attain age 60, 61, 62, or 63'; '$5,250'",
+       "severity": "medium",
+       "fix": "Ask for the full birth date instead of the age at year end. Compute 'attains age' in the tool, stating which day-before-birthday convention applies, and handle January 1 birthdays in 1962 and 1966 explicitly."
+      }
+     ],
+     "prompt_sha": "d201998aef3abe8249c0a8b01ae14912b9a34d7c3293ea09d523772046497de4",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.075116,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.simple_open_year.b00b6b51f47d.1.response.txt"
+    }
+   ],
+   "condition": "person.simple_open_year",
+   "lines": [
+    "person.simple_age_if_open_year"
+   ],
+   "inputs": [
+    "person.simple_age_at_year_end"
+   ],
+   "used": [
+    {
+     "doc": "p560",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, chapter 3, Catch-up contributions, \"age 50 or over at the end of the calendar year\" and \"in a tax year in which they attain age 60, 61, 62, or 63\"",
+      "p. 16, chapter 3, Catch-up contributions, \"in a tax year in which they attain age 60, 61, 62, or 63\"",
+      "p. 16, chapter 3, Catch-up contributions, \"in a tax year in which they attain age 60, 61, 62, or 63\" (attaining 64 leaves the band)"
+     ],
+     "cols_pages": [
+      16
+     ],
+     "cols_sha256": "7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737"
+    }
+   ]
+  },
+  "gate:person.turned_65_this_year": {
+   "subject_sha": "566d3e402854c6e2b395f3fd3ef327f5508ef26165135e660fd5fed38f982808",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A surviving spouse files married filing separately for 2025. The spouse was born March 3, 1960 and died January 10, 2025. The spouse had no income, no return is being filed for the spouse, and nobody can claim the spouse as a dependent, so the filer may check the spouse box on line 12d.",
+       "why_no": "The question asks 'Is this the final return of a person who died in 2025' and limits itself to 'your spouse on a joint return'. On a separate return, this is not the spouse's return at all, so 'No' is the truthful answer.",
+       "line": "person.died_before_65 (for the spouse; the line 12d spouse box and the extra standard deduction then follow wrongly)",
+       "irs_text": "i1040gi p. 33, Line 12d: 'If your filing status is married filing separately and your spouse was born before January 2, 1961 ... you can check the appropriate box(es) ... Death of spouse in 2025. If your spouse was born before January 2, 1961, but died in 2025 before reaching age 65, don't check the box that says \"Spouse was born before January 2, 1961.\"'",
+       "severity": "high",
+       "fix": "Ask about the person, not the return: 'Did this person (you, or your spouse on any return where your spouse's age counts, including married filing separately) die in 2025 before reaching age 65?' Ask it of the spouse whenever the spouse's year of birth is used."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A widow files a 2025 joint return with her husband. He was born in August 1960 and died in May 2025. She thinks of this as her own joint return, not as 'his final return', which she takes to mean a separate return an executor files.",
+       "why_no": "'Is this the final return of a person who died' reads as describing a decedent-only return filed by an estate. A joint return the survivor files in her own name does not look like that, so she answers no for the spouse.",
+       "line": "person.died_before_65 (spouse)",
+       "irs_text": "i1040gi p. 110, Part V: 'If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors.'",
+       "severity": "medium",
+       "fix": "Ask a fact instead of a return label: 'Did this person die in 2025? If so, on what date?' Then compute 'before reaching age 65' from the birth date and the date of death (age 65 is reached on the day before the 65th birthday)."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An executor or adult child prepares the final 2025 return of a single parent. The parent was born in November 1960 and died in July 2025.",
+       "why_no": "The question addresses 'you', and the help says 'For a living person the answer is No.' The preparer is alive and reads 'you' as themselves, so they answer no.",
+       "line": "person.died_before_65",
+       "irs_text": "i1040gi p. 110, Part V: 'If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors.'; i1040gi p. 33: 'Death of taxpayer in 2025. If you are preparing a return for someone who died in 2025, see Pub. 501 before completing the standard deduction information.'",
+       "severity": "medium",
+       "fix": "Name the person in the question (for example, 'Did [name], the person this return is for, die in 2025?'). Change the help to 'Answer about the person named on the return, not about whoever is preparing it.'"
+      }
+     ],
+     "prompt_sha": "b8fca76e180563352d28c20560d9105d0fbb0653a529b320646721b8aaddbf1d",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.086104,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.turned_65_this_year.566d3e402854.1.response.txt"
+    }
+   ],
+   "condition": "person.turned_65_this_year",
+   "lines": [
+    "person.died_before_65"
+   ],
+   "inputs": [
+    "person.died_at_64"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      33,
+      110
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 110, Schedule 1-A, Part V, \"Death of a taxpayer in 2025\"",
+      "p. 110, Schedule 1-A, Part V, Death of a taxpayer in 2025, \"If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn’t qualify for the enhanced deduction for seniors. A person is considered to reach age 65 on the day before the person’s 65th birthday.\" (the year of birth of a person whose 65th birthday falls in the tax year)",
+      "p. 33, Line 12d, \"If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)\""
+     ],
+     "cols_pages": [
+      33,
+      110
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:person.under16_open_year": {
+   "subject_sha": "3f20ade7d5bc5563f276f5d95acc928af050616c2dde57d7e95d5709921b5550",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A child born in 2011 or later who files their own 2025 return for the first time. Examples are a 14-year-old with wages from a summer job, or a 12-year-old with enough unearned income to need a return. On a joint return, it is either spouse born in 2011 or later.",
+       "why_no": "The tool computes the gate as birth year = 2010, which is false for anyone born in 2011 or later. These filers are even further under 16 at the end of 2025, but they are never asked the question. The line defaults to no without any answer from the filer.",
+       "line": "person.under16_at_year_end_if_open_year",
+       "irs_text": "i1040gi 2025 p. 66: \"You can't use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025.\"",
+       "severity": "high",
+       "fix": "Change the gate to birth year >= 2010. Better, compute the line from the full date of birth: the filer is under 16 at the end of 2025 if born after January 1, 2010, because a person born January 1, 2010 attains age 16 on December 31, 2025. Then ask whether this is the person's first federal return, so that the refusal applies only to a first-time filer, as the instruction states."
+      }
+     ],
+     "prompt_sha": "89a2f73682bd7e88979ecade983bb13ac681073c34c16134d43cf5a0575c1984",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.046516,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.under16_open_year.3f20ade7d5bc.1.response.txt"
+    }
+   ],
+   "condition": "person.under16_open_year",
+   "lines": [
+    "person.under16_at_year_end_if_open_year"
+   ],
+   "inputs": [
+    "person.under16_at_year_end"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      66
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 66, Self-Select PIN, \"You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025\""
+     ],
+     "cols_pages": [
+      66
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:person.x_edu_account": {
+   "subject_sha": "9d72875f4cf35ba86ac950cc489a6be1a5e0a7976cb58365a13d8c8f8ed20e95",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A parent opened a Coverdell ESA for a child between January 1 and April 15, 2026, and made a contribution for 2025. The contribution was over the $2,000 limit, or the contributor's income made any contribution excess. The child (the beneficiary) files a 2025 return, and the account did not exist during 2025.",
+       "why_no": "The gate asks 'At any time in 2025, did you have ... a Coverdell education savings account.' The account did not exist until 2026, so No is truthful. Coverdell contributions for 2025 can still be made in 2026.",
+       "line": "person.x_edu_excess_if_account",
+       "irs_text": "f5329 (2025) p. 2, line 33: 'Enter 6% (0.06) of the smaller of line 32 or the value of your Coverdell ESAs on December 31, 2025 (including 2025 contributions made in 2026).'",
+       "severity": "high",
+       "fix": "Broaden the gate: 'At any time in 2025, or in 2026 as a contribution for 2025, did you have ... or was one held for you?' Or ask directly whether any contribution for 2025 was made to a Coverdell ESA for this person, including one made by April 15, 2026."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A Coverdell ESA beneficiary had an excess contribution in 2024 that was not withdrawn, so line 32 of the 2024 Form 5329 shows an amount. Nothing was contributed to or distributed from the account in 2025.",
+       "why_no": "The filer answers Yes to the gate. The computed helper 'had contributions or distributions in 2025' is then false, so the excess question is never asked. This happens even though its own help says 'This includes an excess from an earlier year.'",
+       "line": "person.x_edu_excess_if_account",
+       "irs_text": "f5329 (2025) p. 2, Part V: 'Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329.' Line 26: 'Enter the excess contributions from line 32 of your 2024 Form 5329.'",
+       "severity": "high",
+       "fix": "Do not let the 2025-activity helper gate the excess question. Ask it whenever the account gate is Yes, or extend the helper to 'or a Form 5329 for 2024 showed excess contributions to this Coverdell ESA.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A Coverdell ESA beneficiary turned 30 in 2025, or died, and the balance was not distributed within 30 days. The balance is treated as distributed even though no money was paid out and no 2025 contribution was made.",
+       "why_no": "The helper 'had contributions or distributions in 2025' and the gated question 'Was any money that came out of the account in 2025 taxable' both describe actual withdrawals. A deemed distribution is not money that came out.",
+       "line": "person.x_edu_taxable_if_account",
+       "irs_text": "f5329 (2025) p. 1, line 5: 'Distributions included in income from a Coverdell ESA, a QTP, or an ABLE account'",
+       "severity": "medium",
+       "fix": "Add to the helper and the gated question: 'including a balance treated as distributed because the beneficiary reached age 30 or died, or because the account stopped qualifying.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "The owner of a 529 plan received a non-qualified distribution paid to the owner. The beneficiary's costs had also been used for the American opportunity or lifetime learning credit, or were covered by a tax-free scholarship.",
+       "why_no": "The help says 'Money used for the costs the account is meant for is not taxable.' The filer compares the distribution to total tuition and does not reduce the costs by scholarships or by the expenses used for an education credit.",
+       "line": "person.x_edu_taxable_if_account",
+       "irs_text": "f5329 (2025) p. 1, Part II: 'Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP)'",
+       "severity": "medium",
+       "fix": "Ask facts the filer can check: Form 1099-Q box 1, the qualified costs paid, tax-free scholarships, and any costs used for an education credit. Compute the taxable amount from those, or end the interview when any distribution exceeds costs after these reductions."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A parent or grandparent owns a 529 plan or Coverdell ESA naming a child as beneficiary. In 2025 the owner withdrew money paid to themselves for a non-education use.",
+       "why_no": "The gate's phrasing 'or was one held for you' and the help 'whether the account is yours or is held for you' read as asking about accounts for the filer's own benefit. The owner thinks of it as the child's account. The help's Form 1099-Q cue fails if the form was not received, was lost, or was addressed in a way the owner did not connect to themselves.",
+       "line": "person.x_edu_taxable_if_account",
+       "irs_text": "f5329 (2025) p. 1, line 5: 'Distributions included in income from a Coverdell ESA, a QTP, or an ABLE account'",
+       "severity": "medium",
+       "fix": "Reword the gate: 'At any time in 2025, did you own a 529 plan, Coverdell ESA or ABLE account (even one for someone else's benefit), was one held for your benefit, or did you receive money from one?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer or reviewer checking the gate against its sources.",
+       "why_no": "The citations attached to the gate and to both gated lines include Part IX and the excess accumulation text on required minimum distributions. That text is unrelated to education or ABLE accounts. The citations omit Parts V and VIII, which give the excess-contribution line its amount.",
+       "line": "person.x_edu_excess_if_account",
+       "irs_text": "f5329 (2025) p. 2, Part VIII: 'Complete this part if contributions to your ABLE account for 2025 were more than is allowable.'",
+       "severity": "low",
+       "fix": "Replace the Part IX and i5329 p. 9 excess-accumulation citations with f5329 Part V (lines 26–33) and Part VIII (lines 50–51) for the excess line, and keep Part II for the taxable-distribution line."
+      }
+     ],
+     "prompt_sha": "a1d9d3b00835645e287d5787748ca0e028bd1e79c584987856c290282db8b472",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.140316,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_person.x_edu_account.9d72875f4cf3.1.response.txt"
+    }
+   ],
+   "condition": "person.x_edu_account",
+   "lines": [
+    "person.x_edu_excess_if_account",
+    "person.x_edu_taxable_if_account"
+   ],
+   "inputs": [
+    "person.x_edu_excess",
+    "person.x_edu_taxable"
+   ],
+   "used": [
+    {
+     "doc": "f5329",
+     "revision": "2025",
+     "text_sha256": "53ac10ecce39dbd1cc0a3b88c04e351c2a61f3ad35d145d5d847f30f47a1b945",
+     "pages": [
+      1,
+      2,
+      3
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"; p. 3, Part IX, \"Complete this part if you did not receive the minimum required distribution from your qualified retirement plan.\"; , \"The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed.\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d"
+    },
+    {
+     "doc": "i5329",
+     "revision": "2025",
+     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
+     "pages": [
+      9
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+    }
+   ]
+  }
+ }
+}

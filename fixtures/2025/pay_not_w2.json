@@ -1,0 +1,415 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "x2pay.household.w5",
+      "covers": [
+        "f1040.line1b"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Scout W5: no W-2; household wages $2,500 not on a W-2: line 1b $2,500; line 1z $2,500; no Form 4137 or 8919 tax. Adjusted gross income (line 11a) $2,500.00.",
+      "inputs": {
+        "scope.pay_no_w2": true,
+        "scope.household_pay": true,
+        "person[taxpayer].household_wages": 250000
+      },
+      "expect": {
+        "f1040.line1b": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 250000
+        },
+        "s2.line7": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 250000
+        }
+      }
+    },
+    {
+      "id": "x2pay.strike.w8",
+      "covers": [
+        "f1040.line1h"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Scout W8: W-2 $40,000 and strike benefits $3,000: line 1h $3,000; line 1z $43,000. Adjusted gross income (line 11a) $43,000.00.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "job"
+        ],
+        "person[taxpayer].w2[job].box1": 4000000,
+        "person[taxpayer].w2[job].box3": 4000000,
+        "person[taxpayer].w2[job].box5": 4000000,
+        "scope.pay_no_w2": true,
+        "scope.strike_pay": true,
+        "person[taxpayer].strike": 300000
+      },
+      "expect": {
+        "f1040.line1h": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 4300000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 4300000
+        }
+      }
+    },
+    {
+      "id": "x2pay.disability.w6",
+      "covers": [
+        "f1040.line1h",
+        "retirement"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Scout W6: a pension plan's Form 1099-R, box 1 $18,000 (no after-tax contributions in box 5), code 3, paid because of disability, every payment before the plan's minimum retirement age: the taxable amount goes on line 1h (i1040gi p. 25), not lines 5a and 5b. Line 1h $18,000; lines 5a and 5b $0; line 1z $18,000. Adjusted gross income (line 11a) $18,000.00.",
+      "inputs": {
+        "$retirement@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].retirement[r].account": "plan",
+        "person[taxpayer].retirement[r].code": "disability_3",
+        "person[taxpayer].retirement[r].box1": 1800000,
+        "person[taxpayer].retirement[r].disability": true,
+        "person[taxpayer].retirement[r].dis_early": true,
+        "person[taxpayer].retirement[r].dis_all_early": true
+      },
+      "expect": {
+        "f1040.line1h": {
+          "kind": "money",
+          "cents": 1800000
+        },
+        "f1040.line5a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line5b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 1800000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 1800000
+        }
+      }
+    },
+    {
+      "id": "x2pay.disability.split_year",
+      "covers": [
+        "retirement"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "A disability pension in the year the person reached the minimum retirement age (not every payment before it): refused, as before (retirement.special).",
+      "inputs": {
+        "$retirement@person[taxpayer]": [
+          "r"
+        ],
+        "person[taxpayer].retirement[r].account": "plan",
+        "person[taxpayer].retirement[r].code": "disability_3",
+        "person[taxpayer].retirement[r].box1": 1800000,
+        "person[taxpayer].retirement[r].disability": true,
+        "person[taxpayer].retirement[r].dis_early": true,
+        "person[taxpayer].retirement[r].dis_all_early": false
+      },
+      "expect": {
+        "f1040.line5b": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].retirement[r].special",
+          "form": "Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939)",
+          "remedy": "This distribution needs a form or rule outside this tool.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "x2pay.medicaid.w7_box1_not_earned",
+      "covers": [
+        "s1.line8s",
+        "eic.step5_line2"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Scout W7: W-2 box 1 $30,000, all qualified Medicaid waiver payments for a parent living with the carer; not chosen as earned income. Line 1a $30,000; line 1d $0; Schedule 1 line 8s $30,000 (entered as -30,000), line 9 -$30,000; line 1z $30,000; EIC Step 5 line 2 $30,000; Schedule 8812 Earned Income Worksheet line 4 $30,000. Adjusted gross income (line 11a) $0.00.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "agency"
+        ],
+        "person[taxpayer].w2[agency].box1": 3000000,
+        "person[taxpayer].w2[agency].box3": 3000000,
+        "person[taxpayer].w2[agency].box5": 3000000,
+        "scope.medicaid_waiver": true,
+        "person[taxpayer].mw_box1": 3000000
+      },
+      "expect": {
+        "f1040.line1d": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8s": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": -3000000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "eic.step5_line2": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "s8812.eiw_4": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2pay.medicaid.w7b_box1_earned",
+      "covers": [
+        "s1.line8s",
+        "eic.step5_line2"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Scout W7b: W7 with the choice to count the payments as earned income: line 8s still $30,000 (they stay excluded from income); EIC Step 5 line 2 $0. Adjusted gross income (line 11a) $0.00.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "agency"
+        ],
+        "person[taxpayer].w2[agency].box1": 3000000,
+        "person[taxpayer].w2[agency].box3": 3000000,
+        "person[taxpayer].w2[agency].box5": 3000000,
+        "scope.medicaid_waiver": true,
+        "person[taxpayer].mw_box1": 3000000,
+        "person[taxpayer].mw_earned": true
+      },
+      "expect": {
+        "s1.line8s": {
+          "kind": "money",
+          "cents": 3000000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": -3000000
+        },
+        "eic.step5_line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s8812.eiw_4": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2pay.medicaid.code_ii_earned",
+      "covers": [
+        "f1040.line1d",
+        "s1.line8s"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Medicaid waiver payments of $24,000 shown only in W-2 box 12 code II (box 1 blank), chosen as earned income: line 1d $24,000; line 8s $24,000 (-24,000 on line 9); line 1z $24,000; EIC Step 5 line 2 $0 (i1040gi p. 92, Line 8s). Adjusted gross income (line 11a) $0.00.",
+      "inputs": {
+        "scope.medicaid_waiver": true,
+        "person[taxpayer].mw_not_box1": 2400000,
+        "person[taxpayer].mw_earned": true
+      },
+      "expect": {
+        "f1040.line1d": {
+          "kind": "money",
+          "cents": 2400000
+        },
+        "s1.line8s": {
+          "kind": "money",
+          "cents": 2400000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": -2400000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 2400000
+        },
+        "eic.step5_line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2pay.medicaid.code_ii_not_earned",
+      "covers": [
+        "f1040.line1d",
+        "s1.line8s"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "The same code II payments not chosen as earned income: nothing goes on line 1d or line 8s (they are not reported on line 1a or 1d); EIC Step 5 line 2 $0. Adjusted gross income (line 11a) $0.00.",
+      "inputs": {
+        "scope.medicaid_waiver": true,
+        "person[taxpayer].mw_not_box1": 2400000,
+        "person[taxpayer].mw_earned": false
+      },
+      "expect": {
+        "f1040.line1d": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line8s": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": 0
+        },
+        "eic.step5_line2": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2pay.medicaid.form_1099",
+      "covers": [
+        "f1040.line1d",
+        "s1.line8s"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Medicaid waiver payments of $12,000 on Form 1099-NEC, no home-care business, not chosen as earned income: line 1d $12,000 and line 8s $12,000 (i1040gi p. 24, Line 1d, and p. 92, Line 8s); EIC Step 5 line 2 $12,000. Adjusted gross income (line 11a) $0.00.",
+      "inputs": {
+        "scope.medicaid_waiver": true,
+        "person[taxpayer].mw_not_box1": 1200000,
+        "person[taxpayer].mw_1099": 1200000
+      },
+      "expect": {
+        "f1040.line1d": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "s1.line8s": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": -1200000
+        },
+        "eic.step5_line2": {
+          "kind": "money",
+          "cents": 1200000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "x2pay.medicaid.business",
+      "covers": [
+        "f1040.line1d"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "The same Form 1099-NEC payments in a home-care business of the filer's own: refused (Schedule C route).",
+      "inputs": {
+        "scope.medicaid_waiver": true,
+        "person[taxpayer].mw_not_box1": 1200000,
+        "person[taxpayer].mw_1099": 1200000,
+        "person[taxpayer].mw_business": true
+      },
+      "expect": {
+        "f1040.line1d": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].mw_business_if_1099",
+          "form": "Medicaid waiver payments in a home-care business (Schedule C)",
+          "remedy": "A sole proprietor in a business of providing home care services reports these payments as the Schedule C instructions say; this tool does not prepare that.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 24, Line 1d, \"If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mint.person.mw_has_1099.no_1099_business_unasked",
+      "covers": [
+        "f1040.line1d",
+        "s1.line8s"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "Medicaid waiver payments of $24,000 shown only in W-2 box 12 code II (box 1 blank), none of it on Form 1099-MISC or 1099-NEC (answered $0), chosen as earned income. The interview asks about a home-care business only when some of the pay was on a Form 1099, so that question is left unanswered here, as an interview return leaves it. Line 1d $24,000 (i1040gi p. 24, Line 1d, Medicaid Waiver Payments Not Reported on Form(s) W-2, Box 1); line 8s $24,000, -$24,000 on line 9 (i1040gi p. 92, Line 8s); line 1z $24,000; adjusted gross income (line 11a) $0.00. The same figures as x2pay.medicaid.code_ii_earned: the business question is not reached when no pay was on a Form 1099.",
+      "inputs": {
+        "scope.medicaid_waiver": true,
+        "person[taxpayer].mw_not_box1": 2400000,
+        "person[taxpayer].mw_1099": 0,
+        "person[taxpayer].mw_earned": true,
+        "person[taxpayer].mw_business": null
+      },
+      "expect": {
+        "f1040.line1d": {
+          "kind": "money",
+          "cents": 2400000
+        },
+        "s1.line8s": {
+          "kind": "money",
+          "cents": 2400000
+        },
+        "s1.line9": {
+          "kind": "money",
+          "cents": -2400000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 2400000
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    }
+  ]
+}

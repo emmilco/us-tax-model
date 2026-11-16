@@ -213,6 +213,16 @@
   {
    "printed": "(g)",
    "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The code B part (reported minus correct, signed per Worksheet lines 3–4) and the code W part ('enter the correct amount of the nondeductible loss as a positive number in column (g)') match, and the wash-sale refusal is a valid narrowing. However, the code input offers 'other' (E, D, O, N, L) with no refusal, and those codes add nothing to (g). The IRS requires adjustments for them, e.g. code E: 'In column (g), enter as a negative number (in parentheses) selling expenses...'. It also says: 'If you entered more than one code ... enter the net adjustment in column (g)'.",
+   "ruling": "Ruling: scope; as in the goal-1 and landing render rulings: an entry with any code other than none, B, W or BW (code E, D, O, N, L and the rest, the 'other' choice of sales.code) is refused at sales.one by sales.bad_code (\"Only applicable B and W adjustments are supported\"; i8949 pp. 7-11, columns (e) through (h)), so (g) never stands for an entry that needs another code's adjustment. The code B part (signed per the worksheet) and the code W part (i8949 p. 10, code W, \"enter the correct amount of the nondeductible loss as a positive number in column (g)\") match, as the reviewer says; this merge's change to (g) only added boxes G and J to the code B test.",
+   "context": "20f5f55723a758a527b50cd4bcd7e403ed51a04eb166949cddd8dfae22a8f444",
+   "date": "2026-11-15",
+   "run": "9e2d8945d08755b38a39b182740c2420e6d3e86528af177884488d6a8c8e5f01",
+   "subject_key": "82026d5cf8075ba115df890418fc8172e2a82ac372ff158802e536c33c38fc43"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
    "model": "The reported-minus-correct sign and netting with code W match the worksheet for boxes A and D, but code B gets $0 for boxes G and J, where the IRS says to \"Correct the error by entering an adjustment in column (g)\" (no refusal is shown). The \"other\" code also yields $0 with no refusal, although code O says \"Enter the appropriate adjustment amount in column (g).\"",
    "ruling": "Ruling: scope; i8949 p. 8, code B; i8949 pp. 7–11, columns (f) and (g). Boxes G and J are refused with every digital-asset box (see column (e)), so the A/D condition of the basis correction is the whole supported case. Codes other than B and W are refused: sales.one refuses when sales.bad_code (\"Only applicable B and W adjustments are supported\"), and the refusal reaches the Schedule D totals and Form 1040 (checked: sales.refuse.code gives sd.line15, f1040.line7a and f1040.line16 refused on sales.bad_code while the row's own column (g) shows $0.00). Project stands on the English.",
    "context": "d829736289280eae82c0ce4298c24619149d4c3aecf982a3a88c5bc6e9052566",

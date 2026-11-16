@@ -1,0 +1,443 @@
+diff --git a/ambiguities/2025.yaml b/ambiguities/2025.yaml
+index 82c7554..0a81532 100644
+--- a/ambiguities/2025.yaml
++++ b/ambiguities/2025.yaml
+@@ -2615,3 +2615,38 @@ register:
+           individual care provider for caring for an eligible individual (whether related or unrelated) living in the provider’s
+           home", "Ten qualified foster individuals under age 19, or", "Five qualified foster individuals age 19 or older"'
+       status: Lane x2-paynow2 (coverage expansion, pay not on a W-2), 2026-11-15.
++    - id: amb.2025.f4952_latest_carryover
++      text_at_issue: 'f4952 p. 1, Part I, line 2: "Disallowed investment interest expense from 2024 Form 4952, line 7". A
++        filer who carried disallowed investment interest into 2024 and took the standard deduction for 2024 filed no 2024
++        Form 4952, so there is no 2024 line 7 to read.'
++      readings:
++      - Use line 7 of the latest Form 4952 filed, when none was filed for 2024 because the standard deduction was taken.
++      - Use the amount a 2024 Form 4952 would have shown on line 7 had one been completed (the carryforward less the 2024
++        net investment income it could have offset).
++      - Refuse a carryforward from before 2024 when no 2024 Form 4952 was filed.
++      chosen: The first (f4952.carryover and f4952.prior_7).
++      reason: 'Pub. 550, Limit on Deduction, says the interest carried over "is treated as investment interest paid or accrued in that next
++        year"; whether a year in which the standard deduction was taken uses up the part its net investment income could
++        have absorbed is not settled by the archived sources. The first reading is the plain one for a filer holding the
++        last form; if the second is right, it overstates line 2 by the 2024 net investment income.'
++      cite:
++        doc: f4952
++        locator: 'p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"; p. 3, Who Must
++          File, "You don’t have any carryover of disallowed investment interest expense from 2024"'
++      status: Planning lane plan-med-income (BUG-0833), drafted in lane patch-inc-m34, 2026-11-16; for the owner.
++    - id: amb.2025.amt_transient
++      text_at_issue: 'i6251 p. 8, Line 3: "A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not
++        used on a transient basis." The instructions do not define "used on a transient basis".'
++      readings:
++      - A house, apartment, condominium or mobile home rented out for short stays is used on a transient basis, so its
++        mortgage interest is a line 3 adjustment; asked in s2.amt_boat, whose Yes refuses.
++      - Only a place run as lodging for passing guests, like a hotel, is meant; a second home that is sometimes rented
++        for short stays is a qualified dwelling.
++      chosen: The first.
++      reason: Every Yes to s2.amt_boat refuses (Form 6251), so the broader reading can lose a case but cannot give a wrong
++        value.
++      cite:
++        doc: i6251
++        locator: 'p. 8, Line 3, Mortgage Interest, "A qualified dwelling for AMT is a house, apartment, condominium, or mobile
++          home not used on a transient basis"'
++      status: Planning lane plan-med-income (BUG-0900), drafted in lane patch-inc-m34, 2026-11-16; for the owner.
+diff --git a/forms/2025/f4952.yaml b/forms/2025/f4952.yaml
+index fe5a45b..0a14b49 100644
+--- a/forms/2025/f4952.yaml
++++ b/forms/2025/f4952.yaml
+@@ -136,25 +136,29 @@ form:
+       printed: (helper)
+       type: Bool
+       gated_by: f4952.carryover_if_interest
+-      label: Do you (or, on a joint return, your spouse) have investment interest expense disallowed in 2024 and carried
+-        forward (line 7 of a 2024 Form 4952 of either of you, on a joint or a separate return)?
++      label: Do you (or, on a joint return, your spouse) have investment interest expense from before 2025 that was
++        disallowed and not yet deducted (line 7 of the latest Form 4952 of either of you, on a joint or a separate return)?
+       expr:
+         op: input
+-        source: Do you (or, on a joint return, your spouse) have investment interest expense that was disallowed in 2024 and
+-          carried forward to 2025 (an amount on line 7 of a 2024 Form 4952 of either of you, on a joint or a separate 2024
+-          return)?
++        source: Do you (or, on a joint return, your spouse) have investment interest expense from before 2025 that was
++          disallowed and not yet deducted, carried forward to 2025 (an amount on line 7 of the latest Form 4952 of either of
++          you, on a joint or a separate return)?
+       cite:
+         doc: f4952
+-        locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"
++        locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"; p. 3, Who
++          Must File, "You don’t have any carryover of disallowed investment interest expense from 2024"
++      ambiguity: amb.2025.f4952_latest_carryover
+     - id: f4952.prior_7
+       printed: (helper)
+       type: NonNegDollars
+       gated_by: f4952.line2
+-      label: The amount on line 7 of the 2024 Form 4952 (on a joint return, both spouses' amounts if each filed one)
++      label: The amount on line 7 of the 2024 Form 4952, or of the latest one filed if none was filed for 2024 (on a joint
++        return, both spouses' amounts if each filed one)
+       expr:
+         op: input
+-        source: The amount on line 7 of the 2024 Form 4952 (disallowed investment interest expense carried forward to 2025);
+-          on a joint return, add both spouses' amounts if each filed a separate 2024 return with one
++        source: The amount on line 7 of the 2024 Form 4952 (disallowed investment interest expense carried forward to 2025),
++          or of the latest Form 4952 filed if none was filed for 2024 because the standard deduction was taken; on a joint
++          return, add both spouses' amounts if each filed a separate 2024 return with one
+       cite:
+         doc: f4952
+         locator: p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7"
+diff --git a/forms/2025/s2.yaml b/forms/2025/s2.yaml
+index 5c59ea4..5af4cae 100644
+--- a/forms/2025/s2.yaml
++++ b/forms/2025/s2.yaml
+@@ -881,13 +881,14 @@ form:
+       printed: (helper)
+       type: Bool
+       gated_by: s2.amt_boat_if_could
+-      label: "Is any of the home mortgage interest you (or, on a joint return, your spouse) deduct for a boat, a motor home or another recreational vehicle that was not your main home?"
++      label: "Is any of the home mortgage interest you (or, on a joint return, your spouse) deduct for a dwelling that was not your main home for all of 2025 and is a boat, a motor home or another recreational vehicle, or a house, apartment, condominium or mobile home used on a transient basis (rented out for short stays)?"
+       expr:
+         op: input
+-        source: "Is any of the home mortgage interest you (or, on a joint return, your spouse) deduct for a boat, a motor home or another recreational vehicle that was not your main home?"
++        source: "Is any of the home mortgage interest you (or, on a joint return, your spouse) deduct for a dwelling that was not your main home for all of 2025 and is a boat, a motor home or another recreational vehicle, or a house, apartment, condominium or mobile home used on a transient basis (rented out for short stays)?"
+       cite:
+         doc: i6251
+-        locator: 'p. 8, Line 3, Mortgage Interest, "If you deducted home mortgage interest on Schedule A for a dwelling that isn’t a principal residence (within the meaning of section 121) or qualified dwelling for AMT, include that deducted interest on line 3", "A qualified dwelling for AMT doesn’t include house boats and recreational vehicles"'
++        locator: 'p. 8, Line 3, Mortgage Interest, "If you deducted home mortgage interest on Schedule A for a dwelling that isn’t a principal residence (within the meaning of section 121) or qualified dwelling for AMT, include that deducted interest on line 3", "A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis", "A qualified dwelling for AMT doesn’t include house boats and recreational vehicles"'
++      ambiguity: amb.2025.amt_transient
+     - id: s2.amt_boat_ask
+       printed: (gate)
+       type: Bool
+diff --git a/interview/2025/coverage/household_payments.yaml b/interview/2025/coverage/household_payments.yaml
+index d3aab25..9edbd1c 100644
+--- a/interview/2025/coverage/household_payments.yaml
++++ b/interview/2025/coverage/household_payments.yaml
+@@ -68,6 +68,26 @@ rows:
+     expect:
+       proceeds:
+         f1040.line26: 400000
++  - id: payments.estimated_amended_overpayment
++    design: BUG-0897 (an overpayment from an amended 2024 return applied to 2025)
++    situation: A filer whose only 2025 payment is an overpayment from an amended 2024 return, applied to 2025, gives that amount.
++    uses: [one_person]
++    answers:
++      f1040.estimated_any: true
++      f1040.line26: 120000
++    expect:
++      proceeds:
++        f1040.line26: 120000
++  - id: payments.estimated_january_2026
++    design: BUG-0897 (the fourth payment for 2025, sent in January 2026)
++    situation: A filer whose only estimated payment for 2025 was sent in January 2026 gives that amount.
++    uses: [one_person]
++    answers:
++      f1040.estimated_any: true
++      f1040.line26: 150000
++    expect:
++      proceeds:
++        f1040.line26: 150000
+   - id: household.single_divorced
+     design: lane 1, marriage chain (single; married before, not at the end of 2025)
+     situation: A divorced person files as single, says the marriage was over by December 31 and that no husband or wife died in 2025.
+diff --git a/interview/2025/coverage/investments_foreign.yaml b/interview/2025/coverage/investments_foreign.yaml
+index 3b5fd17..7888db0 100644
+--- a/interview/2025/coverage/investments_foreign.yaml
++++ b/interview/2025/coverage/investments_foreign.yaml
+@@ -272,6 +272,21 @@ rows:
+       div.basis_reconciled: false
+     expect:
+       refused: div.unsupported
++  - id: dividends.return_of_capital_no_form
++    design: BUG-0830 (a distribution with no Form 1099-DIV is counted at div.other_boxes)
++    situation: A shareholder of a small company was paid, with no Form 1099-DIV, a return of capital that was more than what the shares had cost.
++    answers:
++      div.any: true
++      sb.ordinary_dividends: 0
++      sd.distributions: 0
++      div.other_boxes: true
++      div.box3: 500000
++      div.box9: 0
++      div.box10: 0
++      div.box13: 0
++      div.basis_reconciled: false
++    expect:
++      refused: div.unsupported
+   # The special-treatment screen of Schedule B (sb.unsupported, nine items in one sentence) taken apart.
+   - id: interest.bank_only
+     design: 'lane 5a, interest (the common case: bank interest and nothing special)'
+diff --git a/interview/2025/coverage/other.yaml b/interview/2025/coverage/other.yaml
+index 9a11869..ac230f4 100644
+--- a/interview/2025/coverage/other.yaml
++++ b/interview/2025/coverage/other.yaml
+@@ -117,6 +117,22 @@ rows:
+     s2.household_employee: true
+   expect:
+     refused: s2.other
++- id: other.household_nanny_payroll_service
++  design: BUG-0901 (a worker the family directs, paid through a payroll service)
++  situation: A family paid a nanny it chose and directs $30,000 in 2025 through a payroll service.
++  answers:
++    s2.household_help: true
++    s2.household_employee: true
++  expect:
++    refused: s2.other
++- id: other.household_private_driver
++  design: BUG-0901 (a private driver is a household worker)
++  situation: A person paid a private driver $15,000 in 2025.
++  answers:
++    s2.household_help: true
++    s2.household_employee: true
++  expect:
++    refused: s2.other
+ - id: other.household_help_small
+   design: s2.household_help, the common case beneath the parent
+   situation: A person paid a babysitter a few hundred dollars over the year and goes on.
+diff --git a/interview/2025/coverage/s1_other.yaml b/interview/2025/coverage/s1_other.yaml
+index 658cb64..f7c3721 100644
+--- a/interview/2025/coverage/s1_other.yaml
++++ b/interview/2025/coverage/s1_other.yaml
+@@ -261,6 +261,51 @@ rows:
+     "f8853c[mom].nonqualified": true
+   expect:
+     refused: f8853c[mom].nonqualified_if_periodic
++- id: s1o.ltc_reimbursed_to_provider
++  design: BUG-0873 (line 24 counts reimbursements paid straight to the care provider)
++  situation: A person was paid $160,600 at a set daily rate for their mother's care costing $120,000, and a second policy paid $30,000 of the nursing home's bills straight to the home.
++  uses: [ltc_entry]
++  answers:
++    "f8853c[mom].periodic": true
++    "f8853c[mom].line17": 16060000
++    "f8853c[mom].nonqualified": false
++    "f8853c[mom].line19": 0
++    "f8853c[mom].others_paid": false
++    "f8853c[mom].rate_changed": false
++    "f8853c[mom].days": 365
++    "f8853c[mom].line22": 12000000
++    "f8853c[mom].line24": 3000000
++    "f8853c[mom].contract_before_ltc_date": false
++  expect:
++    proceeds: {"f8853c[mom].line24": 3000000}
++- id: s1o.ltc_others_accelerated
++  design: BUG-0873 (line 15, an accelerated death benefit paid to someone else)
++  situation: A person was paid at a set rate under a policy on their mother, and their brother was paid a life insurance benefit early because she was ill.
++  uses: [ltc_entry]
++  answers:
++    "f8853c[mom].periodic": true
++    "f8853c[mom].line17": 16060000
++    "f8853c[mom].nonqualified": false
++    "f8853c[mom].line19": 0
++    "f8853c[mom].others_paid": true
++  expect:
++    refused: f8853c[mom].others_paid_if_periodic
++- id: s1o.ltc_weekly_per_diem
++  design: BUG-0873 (a fixed amount per week is a per diem payment)
++  situation: A person was paid a fixed $3,080 a week in 2025 by a long-term care policy on their mother, for care costing $120,000.
++  uses: [ltc_entry]
++  answers:
++    "f8853c[mom].periodic": true
++    "f8853c[mom].line17": 16060000
++    "f8853c[mom].nonqualified": false
++    "f8853c[mom].line19": 0
++    "f8853c[mom].others_paid": false
++    "f8853c[mom].rate_changed": false
++    "f8853c[mom].days": 365
++    "f8853c[mom].line22": 12000000
++    "f8853c[mom].line24": 0
++  expect:
++    proceeds: {"f8853c[mom].line17": 16060000}
+ - id: s1o.inmate_amount
+   design: scout-s1-other 3.5, line 8u, refused by s1.line8_other (computing it waits for the W-2 part of the pay to be asked; see TASKS.md)
+   situation: A person was paid $800 in 2025 for work done while in prison.
+diff --git a/interview/2025/coverage/sales.yaml b/interview/2025/coverage/sales.yaml
+index dc472de..e1d6d97 100644
+--- a/interview/2025/coverage/sales.yaml
++++ b/interview/2025/coverage/sales.yaml
+@@ -115,6 +115,35 @@ rows:
+       s3.foreign_any: false
+     expect:
+       refused: f4952.bad_election
++  - id: sales.interest_home_equity_for_stocks
++    design: BUG-0833 (interest on a home equity loan whose money bought investments is investment interest)
++    situation: A person paid $500 of interest in 2025 on a home equity loan used to buy shares, and has no carryforward.
++    answers:
++      f4952.has_interest: true
++      f4952.line1: 50000
++      f4952.carryover: false
++      f4952.line4g: 0
++      f4952.unsupported: false
++      f4952.alternative_allocation: false
++      s3.foreign_any: false
++    expect:
++      proceeds:
++        f4952.line1: 50000
++  - id: sales.interest_carry_from_2023
++    design: BUG-0833 (a carryforward from before 2024, with no 2024 Form 4952 filed)
++    situation: A person who could not deduct $800 of investment interest for 2023, took the standard deduction for 2024 and filed no 2024 Form 4952, paid $500 of margin interest in 2025.
++    answers:
++      f4952.has_interest: true
++      f4952.line1: 50000
++      f4952.carryover: true
++      f4952.prior_7: 80000
++      f4952.line4g: 0
++      f4952.unsupported: false
++      f4952.alternative_allocation: false
++      s3.foreign_any: false
++    expect:
++      proceeds:
++        f4952.prior_7: 80000
+   - id: sales.ordinary_sale
+     design: MAP 2.9, the per-sale questions; the route beneath a question asked once
+     situation: A person sold shares of one stock, reported on a Form 1099-B with basis, and none of the special kinds.
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 681ceac..2ca8aac 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -543,7 +543,8 @@ bank:
+   - input: div.other_boxes
+     order: 272
+     seq: 7
+-    help: Most forms show amounts only in boxes 1a, 1b, 2a, 5, 7 and 12. If you have no Form 1099-DIV, answer No.
++    help: Most forms show amounts only in boxes 1a, 1b, 2a, 5, 7 and 12. Count your share of a form in another's name, and
++      a payment with no form, such as a return of capital or a payout when a company closed.
+   - input: div.box2b
+     order: 272
+     seq: 8
+@@ -643,18 +644,18 @@ bank:
+     seq: 3
+     help: Your broker's year-end statement shows margin interest. If one loan paid for investments and for something else,
+       count only the investments' share.
+-    prompt: How much interest did you pay in 2025 on money borrowed to buy investments? Leave out interest on a home loan,
+-      and interest on money that went into tax-exempt bonds or a business.
++    prompt: How much interest did you pay in 2025 on money borrowed to buy investments? Leave out interest on money used to
++      buy, build or improve your home, and on money that went into tax-exempt bonds or a business.
+   - input: f4952.carryover
+     order: 276
+     seq: 4
+-    prompt: Does a 2024 Form 4952 of yours (or, on a joint return, of your spouse's), on a joint or a separate 2024 return,
+-      show an amount on line 7 (investment interest that could not be deducted in 2024)?
++    prompt: Do you (or, on a joint return, your spouse) have investment interest from before 2025 that could not be deducted
++      and is still unused (line 7 of the latest Form 4952)?
+   - input: f4952.prior_7
+     order: 276
+     seq: 6
+-    help: The amount on line 7 of the Form 4952 filed for 2024. If you and your spouse each filed one on a separate 2024
+-      return, add the two amounts.
++    help: Line 7 of the Form 4952 filed for 2024. If none was filed for 2024 because you took the standard deduction, line
++      7 of the latest one filed. On separate 2024 returns, add the two amounts.
+   - input: f4952.unsupported
+     order: 276
+     seq: 7
+@@ -978,9 +979,9 @@ bank:
+     order: 155
+     seq: 3
+     group: "care_help"
+-    tick: "Someone you paid to work in your home: a nanny, housekeeper, gardener"
+-    help: Count anyone you paid yourself, whatever the amount. Do not count a company you hired, such as a cleaning service
+-      or a daycare center.
++    tick: "Someone you paid to work for your household: nanny, housekeeper, driver"
++    help: Count a worker you choose and direct even if a payroll service or registry handles the pay, a private driver,
++      and pay in 2025 for 2024 work. Do not count a company that sends and directs its own staff.
+     prompt: In 2025, did you (or, on a joint return, your spouse) pay anyone to work in or around your home, such as a nanny,
+       a carer, a housekeeper or a gardener?
+   - input: s2.household_employee
+@@ -1033,8 +1034,8 @@ bank:
+   - input: s2.amt_boat
+     order: 291
+     seq: 5
+-    prompt: "Is any of the mortgage interest you (or, on a joint return, your spouse) deduct for a boat, a motor home or another recreational vehicle that was not your main home?"
+-    help: "A house, an apartment, a condominium or a mobile home is not one of these. The alternative minimum tax (Form 6251) then has to be figured; a Yes ends the interview here."
++    prompt: "Is any of the mortgage interest you (or, on a joint return, your spouse) deduct for a place, not your main home, that is a boat or RV, or a home rented out for short stays?"
++    help: "A camper, travel trailer or houseboat is an RV. Count a place that was your main home for only part of 2025. The alternative minimum tax (Form 6251) then has to be figured; a Yes ends the interview here."
+   - input: s2.other_tax
+     order: 291
+     seq: 3
+@@ -2272,17 +2273,19 @@ bank:
+     order: 300
+     seq: 2
+     group: paid_already
+-    tick: Estimated tax payments, or a 2024 refund applied to 2025
+-    prompt: Did you (or, on a joint return, your spouse) send the IRS estimated tax payments for 2025, or have a 2024
+-      refund applied to your 2025 tax?
+-    help: Estimated payments are ones you send yourself during the year, usually each quarter; they are not tax taken
+-      out of your pay.
++    tick: Estimated tax payments, or an overpayment applied to 2025
++    prompt: Were estimated tax payments made for 2025 by you (or, on a joint return, your spouse), or an earlier
++      overpayment applied to your 2025 tax?
++    help: Count payments by mail, online or card, including the one due in January 2026; an overpayment from your 2024
++      return or an amended return applied to 2025; and joint payments with a spouse or former spouse.
+   - input: f1040.line26
+     order: 300
+     seq: 5
+-    prompt: How much estimated tax did you (or, on a joint return, your spouse) pay for 2025 in all, counting any 2024
+-      refund applied to 2025?
+-    help: On a joint return add what each of you paid, even if you paid separately.
++    prompt: How much estimated tax did you (or, on a joint return, your spouse) pay for 2025 in all, counting any
++      overpayment applied to 2025?
++    help: "On a joint return, add what each of you paid. For joint payments made with a spouse or former spouse whose
++      return is separate from yours, enter your share: any split you both agree on, otherwise in proportion to your
++      separate 2025 taxes."
+   - input: f1040.line35a
+     order: 301
+     seq: 1
+@@ -3998,8 +4001,8 @@ bank:
+   - input: refund.itemized
+     order: 165
+     seq: 7
+-    help: If you took the standard deduction for 2024, the answer is No, and none of the refund, or of other money paid back
+-      for 2024 deductions you could take only by itemizing, is taxed.
++    help: On separate 2024 returns, answer for the return of the one who got the money back. If that return took the
++      standard deduction, the answer is No, and none of the refund or other money paid back is taxed.
+     prompt: Did you itemize deductions on your 2024 federal return? (A Schedule A was filed with it.)
+   - input: refund.sales
+     order: 165
+@@ -4183,8 +4186,8 @@ bank:
+     seq: 17
+     help: 'Box 3 of Form 1099-LTC shows "Per diem" or "Reimbursed amount". Payments that only repaid care costs are not taxed:
+       answer No and nothing more is asked for this person.'
+-    prompt: Were any of the payments at a set amount per day or month, whatever the care cost ("Per diem" checked in box 3 of
+-      Form 1099-LTC)?
++    prompt: Were any of the payments a set amount per day, week, month or other period, whatever the care cost ("Per diem"
++      checked in box 3 of Form 1099-LTC)?
+   - input: f8853c.line17
+     order: 161
+     seq: 18
+@@ -4205,8 +4208,8 @@ bank:
+     order: 161
+     seq: 21
+     help: For example a brother or sister who owns another policy on the same parent. A Yes ends the interview here.
+-    prompt: In 2025, was anyone besides you (or, on a joint return, your spouse) also paid at a set rate under a policy on
+-      this person?
++    prompt: In 2025, was anyone besides you (or, on a joint return, your spouse) paid at a set rate under a long-term care
++      policy on this person, or paid a life insurance benefit early because this person was ill?
+   - input: f8853c.rate_changed
+     order: 161
+     seq: 22
+@@ -4227,13 +4230,15 @@ bank:
+   - input: f8853c.line24
+     order: 161
+     seq: 25
+-    help: Count insurance or other payments that repaid those costs, not the payments at a set rate. Give 0 if none.
+-    prompt: How much of those care costs was paid back to you, by insurance or otherwise?
++    help: Count insurance or other payments for those costs, received or still due, not the payments at a set rate. Give
++      0 if none.
++    prompt: How much of those care costs was, or will be, paid by insurance or anyone else, to you or straight to the care
++      provider? Leave out the payments at a set rate.
+   - input: f8853c.contract_before_ltc_date
+     order: 161
+     seq: 26
+-    help: A Yes ends the interview here.
+-    prompt: Was any of that paid back under a policy issued before August 1, 1996?
++    help: Count a policy first issued then even if it was later exchanged or changed. A Yes ends the interview here.
++    prompt: Was any of that amount paid, or due, under a policy first issued before August 1, 1996?
+   - input: rec.before_prior_year
+     order: 161
+     seq: 28
+@@ -4259,8 +4264,8 @@ bank:
+   - input: rec.two_returns
+     order: 161
+     seq: 31
+-    help: Answer No if only one of you got money back, or if you filed one joint return for 2024. A Yes ends the interview
+-      here.
++    help: Answer No if you filed one joint 2024 return, or only one of you got money back (the questions that follow are
++      then about that person's 2024 return). A state income tax refund counts. A Yes ends the interview here.
+     prompt: Was the money paid back for deductions on two 2024 returns, each of you filing your own?
+   - input: s1.winnings_any
+     order: 160

@@ -4,34 +4,34 @@
  "family": "claude",
  "base": "29aed0840712a4ca34448653ed8da8b97746531a1f715f6421ad92d801e2dd67",
  "head_rows": {
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "2 / 1 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "(e)",
-   "record": "dcedb2e4cef65e0b34664b6efe6dfbdd4dcae845537979339bc414d9ebc78ea8",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). f8949 p. 1, box G: \"Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\"; i8949 p. 8, code B. The helper is true only for boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). Within boxes A to F the condition reads as the instructions do. The R3 restructuring of the sales questions changed the glossary text, not this line. Project stands on the English.",
-   "subject_key": "964d2b8e458dc73879877a26e1d726fdd796274373f3d9db2a39da33dffa610a"
+   "record": "f1f6a5fec12e8a9240bb75fa147ec70bc240b0bc55ee54c1a5b70a3615a8169a",
+   "status": "MATCH",
+   "subject_key": "0dd971f0270b5890a5cdb0c6690028aa6f45764fff2ecb8087c853b298d7cf5a"
   },
   {
    "key": "(g)",
-   "record": "340b3e6d61414a1decba4b10e78ca30fdb8abfd400195d6aa428a7d76eacb03e",
+   "record": "f1f6a5fec12e8a9240bb75fa147ec70bc240b0bc55ee54c1a5b70a3615a8169a",
    "status": "MISMATCH",
-   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J), plus other codes. i8949 p. 8, code B, 'Correct the error by entering an adjustment in column (g)'. Boxes G to L are refused at the transaction: sales.one refuses when sales.digital ('Form 8949 digital asset boxes G–L'), and the refusal reaches every Schedule D total and Form 1040 line 7a; codes other than B and W (E, D, L, O and the rest) are refused by sales.bad_code at sales.one ('Only applicable B and W adjustments are supported'), so the $0 the reviewer sees on those rows is never a computed column (g). The sum of the code B correction and the code W loss is the net adjustment the reviewer accepts. Project stands on the English.",
-   "subject_key": "f619c3c310a2f611db7353b27eb67cc8b0d6de33780f6d8b3955f2a4ffef9fdd"
+   "ruling": "Ruling: scope; as in the goal-1 and landing render rulings: an entry with any code other than none, B, W or BW (code E, D, O, N, L and the rest, the 'other' choice of sales.code) is refused at sales.one by sales.bad_code (\"Only applicable B and W adjustments are supported\"; i8949 pp. 7-11, columns (e) through (h)), so (g) never stands for an entry that needs another code's adjustment. The code B part (signed per the worksheet) and the code W part (i8949 p. 10, code W, \"enter the correct amount of the nondeductible loss as a positive number in column (g)\") match, as the reviewer says; this merge's change to (g) only added boxes G and J to the code B test.",
+   "subject_key": "0bbfe8b13bd8b5a8e72dbfe8a184c471b1fa7aeed4b6bd79c268b98168cf4b14"
   },
   {
    "key": "(h)",
-   "record": "210c40e4f9c7568f74303b54316e4173da8003dc38ec0b300a57b56fa8b6b00a",
+   "record": "f1f6a5fec12e8a9240bb75fa147ec70bc240b0bc55ee54c1a5b70a3615a8169a",
    "status": "MATCH",
-   "subject_key": "5bbc6f7a9e0467cbdbb2a170714048343af9e08fde19c49d755f1bc74275b877"
+   "subject_key": "9d8e318a0f66f166c5f2a33ad88141725eb7b4a65741dbf7d3ab188a5c65992c"
   }
  ],
  "subjects": {
-  "(e)": "35b4dd45acfb89238962c5f6cf689bca4b8ca5756c6cb69685d5cb4d95ea73f6",
-  "(g)": "4f7c1bd4b1a74fb5f186d2ee634e76ec9056f4ebb5b8136ec94b530367f73d4d",
-  "(h)": "2478528525171d6f13225a6f4ef4eec3f9b7fa92f6869221628e8b2282792bf9"
+  "(e)": "768c392ef3fe4beb1400037aa7e43e0a750d09cd0fca2206ef4f15eba28c5ffd",
+  "(g)": "bdf028fa87232c1aa4199f3d3df736991d72c132efc3e0225b81633211a648ea",
+  "(h)": "8fc1a0f6840dd6fbd0024750b91bd7e2b3885a869d465a52a5b7a73c16dfffb4"
  },
  "__rest__": "173d9d26e48e7de243e42df8a66476933ccaf441a5d2d8dd3a5d3a9677bc158c"
 }

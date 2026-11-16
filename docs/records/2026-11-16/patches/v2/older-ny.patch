@@ -1,0 +1,213 @@
+diff --git a/fixtures/ny/2025/it201.json b/fixtures/ny/2025/it201.json
+index 8eb6635..00dd53a 100644
+--- a/fixtures/ny/2025/it201.json
++++ b/fixtures/ny/2025/it201.json
+@@ -16990,6 +16990,126 @@
+         }
+       }
+     },
++    {
++      "id": "ny.gate.pension_disability_wages",
++      "covers": [
++        "ny_it201"
++      ],
++      "inputs": {
++        "$interest": [
++          "bank_a"
++        ],
++        "$w2@person[taxpayer]": [
++          "emp_a",
++          "emp_b"
++        ],
++        "person[taxpayer].w2[emp_a].box1": 3800000,
++        "person[taxpayer].w2[emp_a].box2": 1200000,
++        "person[taxpayer].w2[emp_a].box3": 3800000,
++        "person[taxpayer].w2[emp_a].box4": 496000,
++        "person[taxpayer].w2[emp_a].box5": 3800000,
++        "person[taxpayer].w2[emp_a].box6": 116000,
++        "person[taxpayer].w2[emp_b].box1": 4000000,
++        "person[taxpayer].w2[emp_b].box2": 500000,
++        "person[taxpayer].w2[emp_b].box3": 4000000,
++        "person[taxpayer].w2[emp_b].box4": 248000,
++        "person[taxpayer].w2[emp_b].box5": 4000000,
++        "person[taxpayer].w2[emp_b].box6": 58000,
++        "ny_it201.ask.city_resident": true,
++        "$ny_it2": [
++          "w0"
++        ],
++        "ny_it2[w0].state_withheld": 300000,
++        "ny_it2[w0].city_withheld": 200000,
++        "$retirement@person[taxpayer]": [
++          "r"
++        ],
++        "person[taxpayer].retirement[r].account": "plan",
++        "person[taxpayer].retirement[r].code": "disability_3",
++        "person[taxpayer].retirement[r].box1": 1800000,
++        "person[taxpayer].retirement[r].disability": true,
++        "person[taxpayer].retirement[r].dis_early": true,
++        "person[taxpayer].retirement[r].dis_all_early": true,
++        "ny_it201.ask.gov_pension": true
++      },
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Gate regression, predicted from the source: a Form 1099-R disability pension of $18,000 paid wholly before the minimum retirement age is wages on federal line 1h (person.dis_wages), so IT-201 lines 9 and 10 are $0; the pension is still included in federal adjusted gross income, so the line 26 question is asked (ny_it201.gov_pension_candidate) and its Yes refuses line 26 at ny_it201.gate.line26 (IT-201-I p. 9, Line 26).",
++      "expect": {
++        "ny_it201.line26": {
++          "kind": "refusal",
++          "gate": "ny_it201.gate.line26",
++          "form": "Form IT-201 line 26",
++          "remedy": "This subtraction is not computed by this tool (decision B4).",
++          "cite": {
++            "doc": "ny_it201i",
++            "locator": "p. 9, Line 26, \"enter the amount of any pension you received\"",
++            "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
++            "snapshot": "29489d6eed7529bc1388e57a5bf0814e6e6d94d02288c5c83a377d21e3773f72",
++            "tax_year": 2025
++          }
++        }
++      }
++    },
++    {
++      "id": "ny.gate.pension_disability_wages_not_gov",
++      "covers": [
++        "ny_it201"
++      ],
++      "inputs": {
++        "$interest": [
++          "bank_a"
++        ],
++        "$w2@person[taxpayer]": [
++          "emp_a",
++          "emp_b"
++        ],
++        "person[taxpayer].w2[emp_a].box1": 3800000,
++        "person[taxpayer].w2[emp_a].box2": 1200000,
++        "person[taxpayer].w2[emp_a].box3": 3800000,
++        "person[taxpayer].w2[emp_a].box4": 496000,
++        "person[taxpayer].w2[emp_a].box5": 3800000,
++        "person[taxpayer].w2[emp_a].box6": 116000,
++        "person[taxpayer].w2[emp_b].box1": 4000000,
++        "person[taxpayer].w2[emp_b].box2": 500000,
++        "person[taxpayer].w2[emp_b].box3": 4000000,
++        "person[taxpayer].w2[emp_b].box4": 248000,
++        "person[taxpayer].w2[emp_b].box5": 4000000,
++        "person[taxpayer].w2[emp_b].box6": 58000,
++        "ny_it201.ask.city_resident": true,
++        "$ny_it2": [
++          "w0"
++        ],
++        "ny_it2[w0].state_withheld": 300000,
++        "ny_it2[w0].city_withheld": 200000,
++        "$retirement@person[taxpayer]": [
++          "r"
++        ],
++        "person[taxpayer].retirement[r].account": "plan",
++        "person[taxpayer].retirement[r].code": "disability_3",
++        "person[taxpayer].retirement[r].box1": 1800000,
++        "person[taxpayer].retirement[r].disability": true,
++        "person[taxpayer].retirement[r].dis_early": true,
++        "person[taxpayer].retirement[r].dis_all_early": true,
++        "ny_it201.ask.gov_pension": false,
++        "ny_it201.ask.gov_pension_other": false
++      },
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Gate regression, predicted from the source: the same $18,000 disability pension in wages (federal line 1h), with No to both government pension questions, so line 26 is $0 and nothing refuses; lines 9 and 10 stay $0, so the line 29 pension exclusion is not reached and line 29 is $0. Federal adjusted gross income is the two W-2s ($38,000 and $40,000) plus the pension: $96,000, which is line 33 with no New York additions or subtractions.",
++      "expect": {
++        "ny_it201.line26": {
++          "kind": "money",
++          "cents": 0
++        },
++        "ny_it201.line29": {
++          "kind": "money",
++          "cents": 0
++        },
++        "ny_it201.line33": {
++          "kind": "money",
++          "cents": 9600000
++        }
++      }
++    },
+     {
+       "id": "ny.gate.penalty_line79",
+       "covers": [
+diff --git a/forms/ny/2025/ny_it201.yaml b/forms/ny/2025/ny_it201.yaml
+index 58cd62e..753f976 100644
+--- a/forms/ny/2025/ny_it201.yaml
++++ b/forms/ny/2025/ny_it201.yaml
+@@ -693,9 +693,9 @@ form:
+       cite: { doc: ny_it201i, locator: 'p. 10, Line 30, "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?"' }
+     - id: ny_it201.ask.ny_529
+       printed: '(question)'
+-      label: 'Owns an account in New York''s 529 college savings program'
++      label: 'Owned an account in New York''s 529 college savings program at any time in 2025'
+       type: Bool
+-      expr: { op: input, source: 'Is any 529 account you (or, on a joint return, your spouse) own part of New York''s own 529 college savings program?' }
++      expr: { op: input, source: 'At any time in 2025, did you (or, on a joint return, your spouse) own an account in New York''s 529 college savings program?' }
+       cite: { doc: ny_it201i, locator: 'p. 10, Line 30, "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York’s 529 college savings program?"' }
+       gated_by: ny_it201.ny_529_if_account
+     - id: ny_it201.ny_529_if_account
+@@ -790,18 +790,35 @@ form:
+           - { op: test, gt: ["ny_it201.line9", { const: 0 }] }
+           - { op: test, gt: ["ny_it201.line10", { const: 0 }] }
+       cite: { doc: ny_it201i, locator: 'p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10)"; p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
+-      note: 'Within this tool, pension, annuity and IRA income in federal adjusted gross income is on federal lines 4b and 5b (IT-201 lines 9 and 10): the federal screens refuse a disability pension reported as wages (retirement.special, scope.other_income) and a pension from a nonqualified plan or a nongovernmental section 457 plan on Schedule 1 line 8t (s1.line8_other).'
++      note: 'Within this tool, pension, annuity and IRA income in federal adjusted gross income is on federal lines 4b and 5b (IT-201 lines 9 and 10), except a disability pension paid wholly before the minimum retirement age, which is wages on federal line 1h (person.dis_wages) and is read by ny_it201.gov_pension_candidate, not here. The federal screens refuse a disability pension paid partly before and partly after that age, or with after-tax cost (retirement.dis_split, through retirement.special), and a pension from a nonqualified plan or a nongovernmental section 457 plan on Schedule 1 line 8t (s1.line8_other).'
++    - id: ny_it201.dis_pension_wages
++      printed: '(helper)'
++      label: 'Disability pensions paid before the minimum retirement age, in federal wages (Form 1040 line 1h)'
++      type: NonNegDollars
++      expr: { op: sum_over, collection: person, field: person.dis_wages }
++      cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
++      note: 'A disability pension paid before the minimum retirement age is reported as wages (IT-201 line 1, through federal line 1h), not on line 9 or 10, but it is still a pension included in federal adjusted gross income for line 26.'
++    - id: ny_it201.gov_pension_candidate
++      printed: '(gate)'
++      label: 'Pension, annuity or IRA income on line 9 or 10, or a disability pension in wages'
++      type: Bool
++      expr:
++        op: test
++        any:
++          - { op: test, eq: ["ny_it201.has_pension_income", { const: true }] }
++          - { op: test, gt: ["ny_it201.dis_pension_wages", { const: 0 }] }
++      cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
+     - id: ny_it201.gov_pension_if_income
+       printed: '(gate)'
+-      label: 'The government pension question, asked only with pension or IRA income; otherwise no'
++      label: 'The government pension question, asked only with pension or IRA income or a disability pension in wages; otherwise no'
+       type: Bool
+-      expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.has_pension_income", { const: true }] }, then: "ny_it201.ask.gov_pension" }, { guard: { op: test, eq: ["ny_it201.has_pension_income", { const: false }] }, then: "ny_it201.no" }] }
++      expr: { op: choose, alternatives: [{ guard: { op: test, eq: ["ny_it201.gov_pension_candidate", { const: true }] }, then: "ny_it201.ask.gov_pension" }, { guard: { op: test, eq: ["ny_it201.gov_pension_candidate", { const: false }] }, then: "ny_it201.no" }] }
+       cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
+     - id: ny_it201.gov_said_no
+       printed: '(helper)'
+-      label: 'Pension or IRA income, and No to the government pension question'
++      label: 'Pension or IRA income, or a disability pension in wages, and No to the government pension question'
+       type: Bool
+-      expr: { op: test, all: [{ op: test, eq: ["ny_it201.has_pension_income", { const: true }] }, { op: test, eq: ["ny_it201.gov_pension_if_income", { const: false }] }] }
++      expr: { op: test, all: [{ op: test, eq: ["ny_it201.gov_pension_candidate", { const: true }] }, { op: test, eq: ["ny_it201.gov_pension_if_income", { const: false }] }] }
+       cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
+     - id: ny_it201.ask.gov_pension_other
+       printed: '(question)'
+diff --git a/interview/ny/2025/questions.yaml b/interview/ny/2025/questions.yaml
+index 1d92b2a..0009e3e 100644
+--- a/interview/ny/2025/questions.yaml
++++ b/interview/ny/2025/questions.yaml
+@@ -142,15 +142,16 @@ bank:
+   - input: ny_it201.ask.ny_529
+     order: 180
+     seq: 40
+-    help: New York's program is the New York 529 College Savings Program. A 529 plan of another state, or an account someone
+-      else owns for you, counts as No.
++    help: Count an account you closed, or moved to another state's plan, during 2025. A 529 plan of another state, or an account
++      someone else owns for you, counts as No.
+   - input: ny_it201.ask.529_nonqualified
+     order: 180
+     seq: 41
+     prompt: In 2025, did you take money out of that New York 529 account for anything but college, career training or student
+       loans? School tuition before college and a move to another state's plan count.
+-    help: A rollover to a Roth IRA or an ABLE account, and money taken out because the student died or became disabled,
+-      count as No. Moving money between family members' New York accounts is not taking it out.
++    help: Career training is No only if paid from July 4, 2025, to a college or other eligible school; loans only if the student's
++      or a sibling's. A Roth IRA or ABLE rollover, money taken out because the student died or became disabled, and a move
++      between family members' New York accounts are No.
+   - input: ny_it201.ask.529_owner
+     order: 180
+     seq: 42

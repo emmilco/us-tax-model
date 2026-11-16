@@ -6,6 +6,11 @@ item 4. Measured on `main` at `460825d2`, then on this branch. Written by a judg
 nothing was fetched, and the path to 2026 was rehearsed in a scratch copy outside the repository in which "2026" is
 made of the 2025 documents (section 3).
 
+**Since written (2026-11-15):** D1 went the other way (`years.json` `ny_adopted`; check-all skips the New York
+steps of a year not listed), steps 18, 22 and 24 are carried by `year_diff.py --adopt` and `year_carry.py`, and
+Y15 and Y19 are done (`docs/provisional/lanes/ty26-r1.md`, `ty26-r2.md`, `ty26-p1r4.md`; `tools/README.md`, "New York
+years").
+
 **Labels.** [M] measured, with the command or file. [I] inferred from reading code, not run. [T] testimony from a
 project document, not re-measured.
 

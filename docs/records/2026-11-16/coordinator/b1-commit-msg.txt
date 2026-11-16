@@ -1,0 +1,16 @@
+Goal-1 consolidation round: eighteen fix lanes, BUG-0656 to BUG-0764
+
+The goal-1 round's eighteen fix lanes, merged, reviewed and adjudicated.
+
+- Defect entries BUG-0656 to BUG-0764: fixes and the open findings of
+  the round, with their fixtures.
+- Round-2 transcription, render and class M reviews of the forms the
+  lanes changed, with their rulings.
+- Mutation backing for the T3 mutants of the round's new expressions.
+- Engine differential: the case generator is fixed, and the full-size
+  run passes.
+- reports/2025/person_wording.md regenerated.
+
+Full check green on this tree (815a7955).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>

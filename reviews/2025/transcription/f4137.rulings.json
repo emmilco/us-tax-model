@@ -1,0 +1,304 @@
+{
+ "kind": "transcription",
+ "form": "f4137",
+ "rulings": [
+  {
+   "printed": "10",
+   "project_expr_sha256": "77632c87550d551a73a6ed5d404313c1b0f46471477fc30330a650e3ab09bf4b",
+   "second_expr_sha256": "3a2fa2ea973b22124f9a40f60f55f115957c33be0e8f558aae948c170c443790",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.h_w2_box3: \"f4137.f4137.h_w2_box3: collection parent binding mismatch\"; f4137.h_w2_box7: \"f4137.f4137.h_w2_box7: collection parent binding mismatch\"; f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "de62bb2cb16d61159a9d789e18814397e9b4e2be861cd80050d17e0adf4224f5",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "11",
+   "project_expr_sha256": "563d861af4e8b3288e42cf1f80595ba1696710dea18c0b30e410f90bf4028749",
+   "second_expr_sha256": "9a5bff1ba195949f62c06223f33af50d906282821a5fd742a56f7c949a8d8489",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.h_w2_box3: \"f4137.f4137.h_w2_box3: collection parent binding mismatch\"; f4137.h_w2_box7: \"f4137.f4137.h_w2_box7: collection parent binding mismatch\"; f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "64a04e1c1fd2abdb0da4fe7b3306f47d869d90c7ee9e65da94b6557752c22e95",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "12",
+   "project_expr_sha256": "cc62e6d3c69610c5fcaa51bc6cb0a830793db0f62229c326e75d9dd2798525b6",
+   "second_expr_sha256": "9680eb84446c8ce6b691be2ace58f250151ccd585044a5bdbd6891150c62fff9",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "4c88cd0079538fae88e68b6f44cf1ce5c9d74770eb18afb1f90688e18f9d88d7",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "13",
+   "project_expr_sha256": "7d6dd4697d285c5218f93a712e86bb3ba76dccb5b8d6e0e89bcf787b7399ba65",
+   "second_expr_sha256": "26385622d3811a60390402aa5ec87bef008c225196b78671adcfac0884bb8390",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.h_w2_box3: \"f4137.f4137.h_w2_box3: collection parent binding mismatch\"; f4137.h_w2_box7: \"f4137.f4137.h_w2_box7: collection parent binding mismatch\"; f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "5f733bf5a8ba264f20aa2d10b487637782f7c9a0ac3069ae766becfa1c1aa6a7",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2",
+   "project_expr_sha256": "df49159778d2df48ab5c81aeefb030ba64a321938824aa64c804554fba3ee64f",
+   "second_expr_sha256": "f8ebb896d259d058ddb965711e1f3257c7523634c581afb074311da3c5683627",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "b46adc6ea9d3c9ca40b616fea75a7c2f720a56956740ba46057f12bf6d24b174",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
+   "project_expr_sha256": "f5c4d0a98b9cfd4a1634e8d3dfac79008e48b1a252f6202e2d5e9e3613a7f895",
+   "second_expr_sha256": "02957d7d75b9fef7220d9eb92cf357680f83a66228230068b66f41c9f4c94c51",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "f4f17d87d9e3c49e7c32722832ce0a044ce3478b0501a4e8a1f69471be87c776",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4",
+   "project_expr_sha256": "06fed05829127944aaf96e535d4e903ac203143a7ab0a36cdb0872a86fc63902",
+   "second_expr_sha256": "24e2d38971105afc15fab8421ff67929703694cf955eedfb0174add7456a6588",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "074ebfc77d221ffbcbd7bc4b9d28a3f42a19256873f7ce4f151084a925318bf5",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5",
+   "project_expr_sha256": "fc5565e9f6bc59f6569a78afe86d95a9ba1e33980f8c611802d76de91e70b3db",
+   "second_expr_sha256": "a444b7eaca7277292158d81ca8329ec7a225a84ca7e402d05a62eba45ab1662a",
+   "ruling": "Ruling: representation; equivalent on executable triage: 2,220 of 2,220 inputs agree (1,655 fixture, 565 generated); the reply only drops the shown_when (line 2 more than zero). Form 4137 line 5.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "a139fe5cd4b8870a5d4ad7f2df02b262b7fd9f543d83d4b3a3d06b0f934c294d",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6",
+   "project_expr_sha256": "d9b6607ce98f740f3fc8ba61e7505d1386d169642e0d4470f35f0c245d91efa1",
+   "second_expr_sha256": "b7836507fb7fb0f0ee9928112007f9f2b07da0f11719e89f842435cdd9976644",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.line2: \"f4137.f4137.line2: collection parent binding mismatch\"; f4137.line3: \"f4137.f4137.line3: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "e279bcac27cf7fa9637fc8345c992405adf56bd6d66bed02823382964a32abfb",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "da125f665ce41849975b89f201a512daccb8fe6de10841db035d6eaf4cebf446",
+   "second_expr_sha256": "5c706f55636de92d9f864a01172db66c03c6bc5e6380483384199fd1c9cff2bb",
+   "ruling": "Ruling: model error; the reply's line has no shown_when, so it shows the wage base on returns without a Form 4137 (2,202 candidate-shows-skipped, 9 project-unknown on refused returns); se.wage_base and ss.base are both $176,100, so no value differs. Form 4137 line 7.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "9fdb346413f91e757cc885664fe1e91468868933dce4e46e3c7b172edb6e9a81",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]",
+     "fixture:stage16.cleanup.refuse.scope_credits@person[taxpayer].f4137[form]",
+     "fixture:ss.single.over@person[taxpayer].f4137[form]",
+     "fixture:ss.multi.over@person[taxpayer].f4137[form]",
+     "fixture:ss.mfs@person[taxpayer].f4137[form]",
+     "fixture:ss.rrta@person[taxpayer].f4137[form]",
+     "fixture:ss.early.refusal@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8",
+   "project_expr_sha256": "00594c0ec4ebf124325eca63c1148789a9eeb49d93fa039524a31e6508d48286",
+   "second_expr_sha256": "cf5c7a3ca4d1d19a82baf0d713ad593ec217ffe7208ba63aa2b03e30c9769fac",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.h_w2_box3: \"f4137.f4137.h_w2_box3: collection parent binding mismatch\"; f4137.h_w2_box7: \"f4137.f4137.h_w2_box7: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "5ab77ea4da5475472326adb4bd3a89cb45a1146dd93a519938a09ce7956bdc93",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "fe40497c5e1344b889df846aafb47d94713d685d47a82e95b5bd492f63edcae8",
+   "second_expr_sha256": "e567a02150b5c1ffc062ad9706daf6e9d430b031cbcc998af55de2e786a4edd7",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f4137.h_w2_box3: \"f4137.f4137.h_w2_box3: collection parent binding mismatch\"; f4137.h_w2_box7: \"f4137.f4137.h_w2_box7: collection parent binding mismatch\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "5bcbb70470ba508f71c71712025513175d4ab29d26e2e226b351d9cd00689da7",
+   "date": "2026-11-15",
+   "run": "ab48a43cad909c3cbc2d45dd56f7e02e66cdc40b8a4575c8afba15284da4eed7",
+   "subject_key": "51c5cd25ee5e8c5c8c0089fbaf56e3f44f9120aa1b1c1c0e747f9bcaecdfeaf2",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_7yr@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_mixed@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.mq_not@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_100@person[taxpayer].f4137[form]",
+     "fixture:stage14.asset.bonus_40_before@person[taxpayer].f4137[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

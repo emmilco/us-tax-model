@@ -553,7 +553,8 @@
         "f1040.line25c_other": null,
         "f8959.territory_w2": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "sales[a].w": {
@@ -690,6 +691,958 @@
             "snapshot": "f077991c83b086810c46cbad3755e0f126cb8dfd88cf8bf8ab2d5605d6e7ab45",
             "tax_year": 2025
           }
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.G.B",
+      "covers": [
+        "sales.adjust.G.B"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.A.B: the same figures under box G, which i8949 treats as box A (basis reported to the IRS; i8949 pp. 3-4, \"Box A or Box G\"), so column (g) -100000 and column (h) -200000 are the same, and the row lands on Schedule D line 1b (f1040sd p. 1): (d) 600000, (e) 700000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "G",
+        "f1040.digital_assets": true,
+        "sales[a].code": "B",
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 700000,
+        "sales[a].correct_basis": 800000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": -100000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line1b.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line1b.e": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "sd.line1b.g": {
+          "kind": "money",
+          "cents": -100000
+        },
+        "sd.line1b.h": {
+          "kind": "money",
+          "cents": -200000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.G.W",
+      "covers": [
+        "sales.adjust.G.W"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.A.W: the same figures under box G, which i8949 treats as box A (basis reported to the IRS; i8949 pp. 3-4, \"Box A or Box G\"), so column (g) 50000 and column (h) -50000 are the same, and the row lands on Schedule D line 1b (f1040sd p. 1): (d) 600000, (e) 700000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "G",
+        "f1040.digital_assets": true,
+        "sales[a].code": "W",
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 700000,
+        "sales[a].wash_loss": 50000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line1b.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line1b.e": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "sd.line1b.g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sd.line1b.h": {
+          "kind": "money",
+          "cents": -50000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.G.BW",
+      "covers": [
+        "sales.adjust.G.BW"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.A.BW: the same figures under box G, which i8949 treats as box A (basis reported to the IRS; i8949 pp. 3-4, \"Box A or Box G\"), so column (g) -50000 and column (h) -150000 are the same, and the row lands on Schedule D line 1b (f1040sd p. 1): (d) 600000, (e) 700000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "G",
+        "f1040.digital_assets": true,
+        "sales[a].code": "BW",
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 700000,
+        "sales[a].correct_basis": 800000,
+        "sales[a].wash_loss": 50000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line1b.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line1b.e": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "sd.line1b.g": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "sd.line1b.h": {
+          "kind": "money",
+          "cents": -150000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.H.B",
+      "covers": [
+        "sales.adjust.H.B"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.B.B: the same figures under box H, which i8949 treats as box B (basis not reported to the IRS; i8949 pp. 3-4, \"Box B or Box H\"), so column (g) 0 and column (h) -200000 are the same, and the row lands on Schedule D line 2 (f1040sd p. 1): (d) 600000, (e) 800000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "H",
+        "f1040.digital_assets": true,
+        "sales[a].code": "B",
+        "sales[a].proceeds": 600000,
+        "sales[a].correct_basis": 800000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line2.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line2.e": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line2.g": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line2.h": {
+          "kind": "money",
+          "cents": -200000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.H.W",
+      "covers": [
+        "sales.adjust.H.W"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.B.W: the same figures under box H, which i8949 treats as box B (basis not reported to the IRS; i8949 pp. 3-4, \"Box B or Box H\"), so column (g) 50000 and column (h) -150000 are the same, and the row lands on Schedule D line 2 (f1040sd p. 1): (d) 600000, (e) 800000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "H",
+        "f1040.digital_assets": true,
+        "sales[a].code": "W",
+        "sales[a].proceeds": 600000,
+        "sales[a].correct_basis": 800000,
+        "sales[a].wash_loss": 50000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line2.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line2.e": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line2.g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sd.line2.h": {
+          "kind": "money",
+          "cents": -150000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.H.BW",
+      "covers": [
+        "sales.adjust.H.BW"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.B.BW: the same figures under box H, which i8949 treats as box B (basis not reported to the IRS; i8949 pp. 3-4, \"Box B or Box H\"), so column (g) 50000 and column (h) -150000 are the same, and the row lands on Schedule D line 2 (f1040sd p. 1): (d) 600000, (e) 800000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "H",
+        "f1040.digital_assets": true,
+        "sales[a].code": "BW",
+        "sales[a].proceeds": 600000,
+        "sales[a].correct_basis": 800000,
+        "sales[a].wash_loss": 50000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line2.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line2.e": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line2.g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sd.line2.h": {
+          "kind": "money",
+          "cents": -150000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.J.B",
+      "covers": [
+        "sales.adjust.J.B"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.D.B: the same figures under box J, which i8949 treats as box D (basis reported to the IRS; i8949 pp. 3-4, \"Box D or Box J\"), so column (g) -100000 and column (h) -200000 are the same, and the row lands on Schedule D line 8b (f1040sd p. 1): (d) 600000, (e) 700000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "J",
+        "f1040.digital_assets": true,
+        "sales[a].code": "B",
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 700000,
+        "sales[a].correct_basis": 800000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": -100000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line8b.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line8b.e": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "sd.line8b.g": {
+          "kind": "money",
+          "cents": -100000
+        },
+        "sd.line8b.h": {
+          "kind": "money",
+          "cents": -200000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.J.W",
+      "covers": [
+        "sales.adjust.J.W"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.D.W: the same figures under box J, which i8949 treats as box D (basis reported to the IRS; i8949 pp. 3-4, \"Box D or Box J\"), so column (g) 50000 and column (h) -50000 are the same, and the row lands on Schedule D line 8b (f1040sd p. 1): (d) 600000, (e) 700000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "J",
+        "f1040.digital_assets": true,
+        "sales[a].code": "W",
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 700000,
+        "sales[a].wash_loss": 50000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line8b.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line8b.e": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "sd.line8b.g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sd.line8b.h": {
+          "kind": "money",
+          "cents": -50000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.J.BW",
+      "covers": [
+        "sales.adjust.J.BW"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.D.BW: the same figures under box J, which i8949 treats as box D (basis reported to the IRS; i8949 pp. 3-4, \"Box D or Box J\"), so column (g) -50000 and column (h) -150000 are the same, and the row lands on Schedule D line 8b (f1040sd p. 1): (d) 600000, (e) 700000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "J",
+        "f1040.digital_assets": true,
+        "sales[a].code": "BW",
+        "sales[a].proceeds": 600000,
+        "sales[a].reported_basis": 700000,
+        "sales[a].correct_basis": 800000,
+        "sales[a].wash_loss": 50000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line8b.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line8b.e": {
+          "kind": "money",
+          "cents": 700000
+        },
+        "sd.line8b.g": {
+          "kind": "money",
+          "cents": -50000
+        },
+        "sd.line8b.h": {
+          "kind": "money",
+          "cents": -150000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.K.B",
+      "covers": [
+        "sales.adjust.K.B"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.E.B: the same figures under box K, which i8949 treats as box E (basis not reported to the IRS; i8949 pp. 3-4, \"Box E or Box K\"), so column (g) 0 and column (h) -200000 are the same, and the row lands on Schedule D line 9 (f1040sd p. 1): (d) 600000, (e) 800000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "K",
+        "f1040.digital_assets": true,
+        "sales[a].code": "B",
+        "sales[a].proceeds": 600000,
+        "sales[a].correct_basis": 800000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -200000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line9.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line9.e": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line9.g": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sd.line9.h": {
+          "kind": "money",
+          "cents": -200000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.K.W",
+      "covers": [
+        "sales.adjust.K.W"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.E.W: the same figures under box K, which i8949 treats as box E (basis not reported to the IRS; i8949 pp. 3-4, \"Box E or Box K\"), so column (g) 50000 and column (h) -150000 are the same, and the row lands on Schedule D line 9 (f1040sd p. 1): (d) 600000, (e) 800000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "K",
+        "f1040.digital_assets": true,
+        "sales[a].code": "W",
+        "sales[a].proceeds": 600000,
+        "sales[a].correct_basis": 800000,
+        "sales[a].wash_loss": 50000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line9.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line9.e": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line9.g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sd.line9.h": {
+          "kind": "money",
+          "cents": -150000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.K.BW",
+      "covers": [
+        "sales.adjust.K.BW"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "The digital asset twin of sales.adjust.E.BW: the same figures under box K, which i8949 treats as box E (basis not reported to the IRS; i8949 pp. 3-4, \"Box E or Box K\"), so column (g) 50000 and column (h) -150000 are the same, and the row lands on Schedule D line 9 (f1040sd p. 1): (d) 600000, (e) 800000. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "K",
+        "f1040.digital_assets": true,
+        "sales[a].code": "BW",
+        "sales[a].proceeds": 600000,
+        "sales[a].correct_basis": 800000,
+        "sales[a].wash_loss": 50000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "sd.line9.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line9.e": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line9.g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sd.line9.h": {
+          "kind": "money",
+          "cents": -150000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.I.W",
+      "covers": [
+        "sales.adjust.I.W"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Code W on a box I sale (a tokenized security received with no Form 1099-DA; i1040sd p. 5): column (e) is the correct basis 800,000, column (g) the wash sale loss 50,000, column (h) 600,000 - 800,000 + 50,000 = -150,000 on Schedule D line 3. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "I",
+        "f1040.digital_assets": true,
+        "sales[a].code": "W",
+        "sales[a].proceeds": 600000,
+        "sales[a].correct_basis": 800000,
+        "sales[a].wash_loss": 50000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "sd.line3.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line3.e": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line3.g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sd.line3.h": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -150000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.L.W",
+      "covers": [
+        "sales.adjust.L.W"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Code W on a box L sale (a tokenized security received with no Form 1099-DA; i1040sd p. 5): column (e) is the correct basis 800,000, column (g) the wash sale loss 50,000, column (h) 600,000 - 800,000 + 50,000 = -150,000 on Schedule D line 10. Predicted by hand before running.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "sales[a].box": "L",
+        "f1040.digital_assets": true,
+        "sales[a].code": "W",
+        "sales[a].proceeds": 600000,
+        "sales[a].correct_basis": 800000,
+        "sales[a].wash_loss": 50000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "sd.line10.d": {
+          "kind": "money",
+          "cents": 600000
+        },
+        "sd.line10.e": {
+          "kind": "money",
+          "cents": 800000
+        },
+        "sd.line10.g": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "sd.line10.h": {
+          "kind": "money",
+          "cents": -150000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -150000
+        }
+      }
+    },
+    {
+      "id": "sales.official.da.basis_worksheet",
+      "covers": [
+        "sales.official.da.basis_worksheet"
+      ],
+      "evidence": "A — official IRS example",
+      "evidence_note": "i8949 p. 11, Example 4—Adjustment for incorrect basis, Form 1099-DA branch: sold for $1,000 after 3 months, correct basis $100, the Form 1099-DA shows $900 reported to the IRS (box G). Column (e) $900, column (g) $800, column (h) $1,000 - $900 + $800 = $900 on Schedule D line 1b.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "G",
+        "sales[a].code": "B",
+        "sales[a].proceeds": 100000,
+        "sales[a].reported_basis": 90000,
+        "sales[a].correct_basis": 10000
+      },
+      "expect": {
+        "sales[a].e": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 80000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "sd.line1b.h": {
+          "kind": "money",
+          "cents": 90000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 90000
+        }
+      }
+    },
+    {
+      "id": "sales.official.da.swap",
+      "covers": [
+        "sales.official.da.swap"
+      ],
+      "evidence": "A — official IRS example",
+      "evidence_note": "i8949 p. 11, Example 5—Digital asset: one unit of digital asset A bought for $1,000 and exchanged three years later for a unit of digital asset B worth $3,000; a long-term capital gain of $2,000. Proceeds are the value received. Box L (no Form 1099-DA) is inferred: the example names no form.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "L",
+        "sales[a].proceeds": 300000,
+        "sales[a].correct_basis": 100000
+      },
+      "expect": {
+        "sales[a].h": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "sd.line10.h": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "sd.line15": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "sales.official.da.paid_in_crypto",
+      "covers": [
+        "sales.official.da.paid_in_crypto"
+      ],
+      "evidence": "A — official IRS example",
+      "evidence_note": "i8949 p. 11, Example 6—Digital asset (sale part only): a unit received as pay for services when worth $10,000 (its basis) and sold two months later for $12,000; a short-term capital gain of $2,000. Box I (no Form 1099-DA) is inferred.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "I",
+        "sales[a].proceeds": 1200000,
+        "sales[a].correct_basis": 1000000
+      },
+      "expect": {
+        "sales[a].h": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "sd.line3.h": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 200000
+        }
+      }
+    },
+    {
+      "id": "sales.adjust.G.W.tokenized",
+      "covers": [
+        "sales.adjust.G.W.tokenized"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Code W on a box G sale of a tokenized security (i1040sd p. 5; box 1i of Form 1099-DA, i8949 p. 10): proceeds 400,000, reported basis 500,000, wash sale loss 60,000; column (g) 60,000, column (h) -40,000 on line 1b.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "G",
+        "sales[a].code": "W",
+        "sales[a].proceeds": 400000,
+        "sales[a].reported_basis": 500000,
+        "sales[a].wash_loss": 60000
+      },
+      "expect": {
+        "sales[a].g": {
+          "kind": "money",
+          "cents": 60000
+        },
+        "sales[a].h": {
+          "kind": "money",
+          "cents": -40000
+        },
+        "sd.line1b.h": {
+          "kind": "money",
+          "cents": -40000
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": -40000
+        }
+      }
+    },
+    {
+      "id": "sales.refuse.I.B",
+      "covers": [
+        "sales.bad_code"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Code B on a box I sale (no Form 1099-DA or 1099-B, so no reported basis to correct): i8949 p. 11, Worksheet for Basis Adjustments, applies only to a basis shown on the form. Gate sales[a].bad_code, as for box C (sales.refuse.no_report_B); refusal text as that case records it.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "I",
+        "sales[a].code": "B",
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f8959.territory_w2": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "form": "Form 8949 adjustment instructions",
+          "remedy": "Only applicable B and W adjustments are supported. Review the required code and prepare the unsupported adjustment.",
+          "cite": {
+            "doc": "i8949",
+            "locator": "pp. 7–11, columns (e) through (h), codes B and W",
+            "revision": "2025; printed date 2026-01-20",
+            "snapshot": "f077991c83b086810c46cbad3755e0f126cb8dfd88cf8bf8ab2d5605d6e7ab45",
+            "tax_year": 2025
+          },
+          "gate": "sales[a].bad_code"
+        }
+      }
+    },
+    {
+      "id": "sales.refuse.L.B",
+      "covers": [
+        "sales.bad_code"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "Code B on a box L sale (no Form 1099-DA or 1099-B, so no reported basis to correct): i8949 p. 11, Worksheet for Basis Adjustments, applies only to a basis shown on the form. Gate sales[a].bad_code, as for box C (sales.refuse.no_report_B); refusal text as that case records it.",
+      "inputs": {
+        "$sales": [
+          "a"
+        ],
+        "f1040.digital_assets": true,
+        "sales[a].box": "L",
+        "sales[a].code": "B",
+        "f1040.line25b": null,
+        "f1040.line25c_other": null,
+        "f8959.territory_w2": null,
+        "f1040.line26": null,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "f1040.line7a": {
+          "kind": "refusal",
+          "form": "Form 8949 adjustment instructions",
+          "remedy": "Only applicable B and W adjustments are supported. Review the required code and prepare the unsupported adjustment.",
+          "cite": {
+            "doc": "i8949",
+            "locator": "pp. 7–11, columns (e) through (h), codes B and W",
+            "revision": "2025; printed date 2026-01-20",
+            "snapshot": "f077991c83b086810c46cbad3755e0f126cb8dfd88cf8bf8ab2d5605d6e7ab45",
+            "tax_year": 2025
+          },
+          "gate": "sales[a].bad_code"
         }
       }
     }

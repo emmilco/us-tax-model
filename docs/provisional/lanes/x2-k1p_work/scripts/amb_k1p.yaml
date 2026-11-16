@@ -1,0 +1,89 @@
+    - id: amb.2025.k1p_activity_per_box
+      text_at_issue: 'Schedule K-1 (Form 1065) instructions, Box 1: "If the partnership had more than one trade or business activity,
+        it will attach a statement identifying the income or loss from each activity"; boxes 2 and 3 say the same of rental
+        activities. A K-1 without such a statement does not say in words that each box is one activity.'
+      readings:
+      - Each of boxes 1, 2 and 3 of a K-1 without the statement (boxes 22 and 23 unchecked) is one activity for Form 8582.
+      - The amounts of one K-1 form a single activity.
+      chosen: The first (k1p.b1_*, k1p.b2_*, k1p.b3_*); a K-1 with box 22 or 23 checked is refused (k1p.r_b2223).
+      reason: The instructions route each box to a different part (box 2 to Part IV when actively participated, boxes 1 and 3 to
+        Part V) and tie the multi-activity case to an attached statement, which boxes 22 and 23 announce; without it each box is
+        one trade or business, rental real estate or other rental activity.
+      cite:
+        doc: i1065sk1
+        locator: p. 14, Box 1. Ordinary Business Income (Loss), "If the partnership had more than one trade or business activity,
+          it will attach a statement identifying the income or loss from each activity"
+      status: Coordinator's decision for lane x2-k1p (scout-k1 amb 1), 2026-11-15.
+    - id: amb.2025.k1p_basis_by_filer
+      text_at_issue: 'Schedule K-1 (Form 1065) instructions, Basis Limitations: "It’s the partner’s responsibility to track and
+        maintain the information necessary to figure their adjusted basis in the partnership". The basis and at-risk limits are
+        figured from facts the K-1 does not show (prior-year basis, contributions, loans).'
+      readings:
+      - The filer states whether the year's losses exceed basis and whether any amount is not at risk; a Yes refuses.
+      - The Worksheet for Adjusting the Basis of a Partner’s Interest is encoded from the prior-year basis.
+      chosen: The first (k1p.basis_short, k1p.not_at_risk, asked only when the K-1 shows a loss).
+      reason: Owner decisions D-K2 and D-K3 (settled as the scout recommends). The worksheet needs the prior year's ending basis,
+        which most filers do not hold in a form the tool can check; the refusal covers every case the limit changes.
+      cite:
+        doc: i1065sk1
+        locator: p. 3, Basis Limitations, "a partner may only claim their share of a partnership loss (including a capital loss)
+          to the extent it doesn’t exceed their adjusted basis in the partnership"
+      status: Coordinator's decision for lane x2-k1p (D-K2, D-K3), 2026-11-15.
+    - id: amb.2025.k1p_portfolio_no_sche
+      text_at_issue: 'Schedule E instructions, Line 28, and the K-1 instructions route boxes 5 to 9 to Schedule B, Form 1040 and
+        Schedule D, not to Schedule E. Whether a K-1 with only portfolio amounts takes a row on Schedule E line 28 is not said.'
+      readings:
+      - A K-1 with nothing in boxes 1, 2, 3 or 4a and no held-back loss puts no row on Schedule E.
+      - Every K-1 takes a row on line 28.
+      chosen: The first (k1p.sche_row).
+      reason: Line 28 columns (g) to (k) hold only passive and nonpassive income and losses; portfolio income "isn’t subject to
+        the passive activity limitations" and is reported elsewhere, so a portfolio-only K-1 has nothing to enter on the row.
+      cite:
+        doc: i1065sk1
+        locator: p. 15, Portfolio Income, "Portfolio income or loss (shown in boxes 5 through 9b and in box 11, code A) isn’t
+          subject to the passive activity limitations"
+      status: Coordinator's decision for lane x2-k1p (scout-k1 amb 7, D-K13), 2026-11-15.
+    - id: amb.2025.k1p_box9c_business
+      text_at_issue: 'Schedule K-1 (Form 1065) instructions, Box 9c: "If the partnership reports only unrecaptured section 1250
+        gain from the sale or exchange of its business assets, it’ll enter a dollar amount in box 9c. If it reports the other two
+        types of unrecaptured gain, it’ll provide an attached statement".'
+      readings:
+      - A dollar amount in box 9c is gain from the partnership's business assets (worksheet line 5); a statement is refused.
+      - The amount may hold other types and must be split from the statement.
+      chosen: The first (k1p.box9c, help on the question; the statement case is named in help as outside the tool).
+      reason: The instructions tie the dollar amount to the business-asset type and the other types to an attached statement.
+      cite:
+        doc: i1065sk1
+        locator: p. 16, Box 9c. Unrecaptured Section 1250 Gain, "If the partnership reports only unrecaptured section 1250 gain
+          from the sale or exchange of its business assets, it’ll enter a dollar amount in box 9c"
+      status: Coordinator's decision for lane x2-k1p (scout-k1 amb 8), 2026-11-15.
+    - id: amb.2025.k1p_prior_with_activity
+      text_at_issue: 'Form 8582 instructions, Part IV and Part V column (c): prior-year unallowed losses are entered for each
+        activity "from Part VII, column (c), of your 2024 Form 8582". An activity can carry such a loss in a year its K-1 box
+        is blank.'
+      readings:
+      - The held-back loss question is asked of a K-1 with an amount in box 1, 2 or 3.
+      - It is asked of every K-1.
+      chosen: The first (k1p.prior_any_if_activity).
+      reason: One question saved on every portfolio-only K-1. A held-back loss on a K-1 whose boxes 1 to 3 are all blank stays
+        held back (not deducted), which can only understate the losses allowed; the help and the question name the 2024 Form 8582.
+      cite:
+        doc: i8582
+        locator: p. 10, Part IV, "You find these amounts in Part VII, column (c), of your 2024 Form 8582"
+      status: Coordinator's decision for lane x2-k1p, 2026-11-15; open to the owner's review (a reading that understates a
+        deduction).
+    - id: amb.2025.k1p_material_tests
+      text_at_issue: 'Schedule K-1 (Form 1065) instructions, Material participation: seven tests for individuals other than limited
+        partners; "If you’re a limited partner, you must meet item 1, 5, or 6 above". Tests 4, 6 and 7 rest on facts outside the
+        activity (other activities, earlier years, all facts and circumstances).'
+      readings:
+      - Tests 1, 2, 3 and 5 are asked in turn and decide; a Yes to test 4, 6 or 7 is refused; a partner who meets none is passive.
+      - All seven tests are asked as one question with the tests in help.
+      chosen: The first (k1p.material, k1p.t4, k1p.t6, k1p.t7).
+      reason: Owner decision D-K5 (settled as the scout recommends). Item G answers which tests apply; a limited partner is asked
+        tests 1, 5 and 6 only. The spouse's work counts ("any work that you or your spouse does").
+      cite:
+        doc: i1065sk1
+        locator: p. 9, Limited partners, "If you’re a limited partner, you must meet item 1, 5, or 6 above to qualify as having
+          materially participated"
+      status: Coordinator's decision for lane x2-k1p (D-K5), 2026-11-15.

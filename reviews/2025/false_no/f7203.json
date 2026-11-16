@@ -1,0 +1,103 @@
+{
+ "form": "f7203",
+ "reviews": {
+  "gate:f7203.required": {
+   "subject_sha": "faaeca7424e13f78864c7c69d7743c71ae6f21367b1db9bd0d3e47f8424811fc",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A shareholder whose 2025 K-1 shows only income and no distribution, but who carries a loss suspended in 2024 for lack of basis. This year's income gives them enough basis to deduct it.",
+       "why_no": "The computed gate looks only at this year's K-1 loss or deduction items and box 16 code D. A loss carried from an earlier year is not on the 2025 K-1, so the gate is false.",
+       "line": "f7203.line1_if_req (and f7203.line2_if_req, f7203.election_if_req; the carryover in Part III column (b) is never reached)",
+       "irs_text": "i7203 p. 1, Who Must File: \"Are claiming a deduction for their share of an aggregate loss from an S corporation (including an aggregate loss not allowed last year because of basis limitations)\"; p. 4, Column (b): \"Enter any loss or deduction items disallowed due to basis limitations in prior years that were carried forward.\"",
+       "severity": "high",
+       "fix": "Broaden the gate with an input: \"For this S corporation, do you have losses or deductions from earlier years that you could not deduct because your basis was too low (for example, column (e) of your 2024 Form 7203)?\" A yes makes Form 7203 required."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A shareholder who sold, redeemed, gifted, or otherwise disposed of some or all of the S corporation stock in 2025. Their K-1 shows income and no distribution.",
+       "why_no": "The gate tests only for loss or deduction items and non-dividend distributions. A disposition is not either, so the gate is false and stock basis (lines 1 and 2) is never asked.",
+       "line": "f7203.line1_if_req; f7203.line2_if_req",
+       "irs_text": "i7203 p. 1, Who Must File: \"Disposed of stock in an S corporation (whether or not gain is recognized)\"; p. 3, Line 13: \"This includes the reduction to basis for the sale or redemption of part of your stock... attach two separate forms.\"",
+       "severity": "high",
+       "fix": "Add to the gate an input: \"For this S corporation, did you or your spouse sell, exchange, give away, or otherwise dispose of any of its stock in 2025, or did the corporation redeem any of your shares?\" A yes makes Form 7203 required."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A shareholder whose S corporation repaid all or part of a loan they made to it in 2025. They have no loss item and no distribution this year, and their debt basis had been reduced by earlier losses.",
+       "why_no": "The gate does not test for a loan repayment, so it is false. The loans question, whose yes would end the interview, is never asked, and the gain on repayment (capital for a formal note, ordinary for open account debt) is silently dropped.",
+       "line": "f7203.loans_if_req (missed refusal)",
+       "irs_text": "i7203 p. 1, Who Must File: \"Received a loan repayment from an S corporation.\"; p. 4, Line 34: \"Debt evidenced by a formal note will result in capital gain... Any open account debt... will result in ordinary gain and should be reported on Form 4797.\"",
+       "severity": "high",
+       "fix": "Ask the loans question regardless of the gate, or add to the gate: \"For this S corporation, did it repay any money you or your spouse had lent it, in 2025?\" A yes makes Form 7203 required and leads to the refusal."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Spouses filing jointly who each hold a separate K-1 from the same S corporation. Only one spouse's K-1 shows a loss or a code D distribution.",
+       "why_no": "If the k1s helper is evaluated per corporation from only one K-1, rather than per K-1 and per shareholder, the other spouse's loss, distribution, or loan facts may not trigger the gate for their own Form 7203.",
+       "line": "f7203.line1_if_req; f7203.loans_if_req",
+       "irs_text": "i7203 p. 2, Name of Shareholder: \"If you are married filing jointly and you received a Schedule K-1 (Form 1120-S) for you and your spouse, complete a separate Form 7203 for each spouse.\"",
+       "severity": "medium",
+       "fix": "Evaluate the gate per K-1 (per shareholder spouse), and word each gated question \"you\" or \"your spouse\" according to whose K-1 it is."
+      }
+     ],
+     "prompt_sha": "28e401ba8b3ae35912e05ddadb9323f99e3445462d9a16c98ef48e4f50950b22",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.096496,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f7203.required.faaeca7424e1.1.response.txt"
+    }
+   ],
+   "condition": "f7203.required",
+   "lines": [
+    "f7203.election_if_req",
+    "f7203.line1_if_req",
+    "f7203.line2_if_req",
+    "f7203.loans_if_req"
+   ],
+   "inputs": [
+    "f7203.election",
+    "f7203.line1",
+    "f7203.line2",
+    "f7203.loans"
+   ],
+   "used": [
+    {
+     "doc": "i7203",
+     "revision": "Rev. December 2022 (Instructions for Form 7203; the current irs-pdf edition; no 2025 revision exists)",
+     "text_sha256": "05cd664c63245d804773cece143242254b5cc58597f54559d64065e8486d2b14",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "how": "whole document",
+     "locators": [
+      "p. 1, Who Must File, \"Are claiming a deduction for their share of an aggregate loss from an S corporation\"; \"Received a non-dividend distribution from an S corporation\"",
+      "p. 2, Item E, \"Check the box to indicate if you have a Regulations section 1.1367-1(g) election in effect during the tax year for this S corporation\"",
+      "p. 2, Line 1, \"Enter your basis in the stock of the S corporation at the beginning of the corporation’s tax year. Unless this is your initial year owning stock in the S corporation, this amount should be the same as your ending stock basis from the prior tax year\"",
+      "p. 2, Line 2, \"Enter any additional contributions to the capital of the S corporation or any additional acquisitions of stock. Don’t include any loans to the S corporation\"",
+      "p. 3, Part II. Shareholder Debt Basis, \"You must complete this section if you have personally loaned money to the corporation\""
+     ],
+     "cols_pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "cols_sha256": "8ed9a12c1a4ca11920cb91658fed5b3efd2542d68cadf650b02e63d65ffc606d"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,326 @@
+diff --git a/fixtures/2025/defaults.json b/fixtures/2025/defaults.json
+index a7cb7cf..28967a0 100644
+--- a/fixtures/2025/defaults.json
++++ b/fixtures/2025/defaults.json
+@@ -830,9 +830,14 @@
+       "reason": "true: the ordinary filer's main home is in the United States for more than half the year; a home abroad bars the EIC."
+     },
+     {
+-      "input": "f1040.digital_assets",
++      "input": "f1040.digital_disposed",
+       "value": false,
+-      "reason": "Closed: no digital asset received, sold, exchanged or otherwise disposed of in 2025 unless the scenario says so; a case with a sale under box G to L states Yes."
++      "reason": "Closed: no digital asset sold, exchanged or otherwise disposed of in 2025 unless the scenario says so; a case with a sale under box G to L states Yes."
++    },
++    {
++      "input": "f1040.digital_got",
++      "value": false,
++      "reason": "Closed: no digital asset received as a reward, award or payment in 2025 unless the scenario says so."
+     },
+     {
+       "input": "f1040.estimated_any",
+@@ -5947,7 +5952,7 @@
+     {
+       "never": [
+         {
+-          "input": "f1040.digital_assets",
++          "input": "f1040.digital_disposed",
+           "is": false
+         },
+         {
+diff --git a/forms/2025/f1040.yaml b/forms/2025/f1040.yaml
+index 06712c0..46bdff0 100644
+--- a/forms/2025/f1040.yaml
++++ b/forms/2025/f1040.yaml
+@@ -22,15 +22,16 @@ form:
+         financial interest in a digital asset)?'
+       type: Bool
+       expr:
+-        op: input
+-        source: |-
+-          At any time during 2025, did you (or, on a joint return, your spouse) receive a digital asset (as a reward, award, or payment for property or services), or sell, exchange, or otherwise dispose of a digital asset (or a financial interest in a digital asset)?
+-
+-          A digital asset is a digital representation of value recorded on a cryptographically secured distributed ledger or similar technology, such as a cryptocurrency, a stablecoin or a non-fungible token (NFT).
+-
+-          Yes, for example, if you received digital assets as payment for property or services, as a reward or award, or from mining, staking or a hard fork, or if you sold one, exchanged or traded one for another, or used one to pay for property or services.
+-
+-          No, if all you did was hold digital assets, transfer them between wallets or accounts you own or control, or buy them with U.S. or other real currency.
++        op: test
++        any:
++          - op: test
++            eq:
++              - f1040.digital_got
++              - const: true
++          - op: test
++            eq:
++              - f1040.digital_disposed
++              - const: true
+       cite:
+         doc: f1040
+         locator: 'Form 1040 (2025), page 1, Digital Assets, "At any time during 2025, did you: (a) receive (as a reward,
+@@ -40,6 +41,41 @@ form:
+           technology."; i1040gi p. 16, "Received new digital assets as a result of mining, staking, and similar
+           activities", "Disposed of a digital asset in exchange or trade for another digital asset", "Holding a digital
+           asset in a wallet or account" and "Purchasing digital assets using U.S. or other real currency"'
++    - id: f1040.digital_got
++      printed: (helper)
++      label: 'At any time during 2025, did you (or, on a joint return, your spouse) receive a digital asset (as a reward,
++        award, or payment for property or services), including new digital assets from mining, staking, a hard fork or
++        similar activities?'
++      type: Bool
++      expr:
++        op: input
++        source: 'In 2025, did you (or, on a joint return, your spouse) get crypto or another digital asset as pay, a reward
++          or new coins (for example from mining, staking, a hard fork or an airdrop)? Not a gift or an inheritance, and not
++          a purchase with dollars.'
++      cite:
++        doc: i1040gi
++        locator: 'p. 15, Digital Assets, "if at any time during 2025, you (a) received (as a reward, award, or payment for
++          property or services)"; "Received digital assets as payment for property or services provided; • Received
++          digital assets as a result of a reward or award"; p. 16, "Received new digital assets as a result of mining,
++          staking, and similar activities; • Received digital assets as a result of a hard fork" and "Purchasing digital
++          assets using U.S. or other real currency"; p. 92, Line 8v, "Don’t report a gift or inheritance of digital assets
++          on line 8v."'
++    - id: f1040.digital_disposed
++      printed: (helper)
++      label: 'At any time during 2025, did you (or, on a joint return, your spouse) sell, exchange, or otherwise dispose of a
++        digital asset (or a financial interest in a digital asset)?'
++      type: Bool
++      expr:
++        op: input
++        source: 'In 2025, did you (or, on a joint return, your spouse) sell, trade, spend or give away crypto or another
++          digital asset? Not holding it, and not moving it between wallets or accounts you own.'
++      cite:
++        doc: i1040gi
++        locator: 'p. 15, Digital Assets, "(b) sold, exchanged, or otherwise disposed of a digital asset (or any financial
++          interest in any digital asset)"; p. 16, "Disposed of digital assets in exchange for property or services; •
++          Disposed of a digital asset in exchange or trade for another digital asset; • Sold a digital asset", "Holding a
++          digital asset in a wallet or account; • Transferring a digital asset from one wallet or account you own or control
++          to another wallet or account that you own or control"'
+     - id: f1040.digital_sales
+       printed: (helper)
+       label: Number of sales entered with a digital asset box (G to L) on Form 8949
+diff --git a/forms/2025/s1.yaml b/forms/2025/s1.yaml
+index 2b7ded4..9d2fb5e 100644
+--- a/forms/2025/s1.yaml
++++ b/forms/2025/s1.yaml
+@@ -574,21 +574,21 @@ form:
+   - id: s1.digital_income_if_assets
+     printed: (gate)
+     type: Bool
+-    label: "Digital assets received as ordinary income, asked only after a Yes to the digital asset question on Form 1040
+-      page 1 (no otherwise)"
++    label: "Digital assets received as ordinary income, asked only after a Yes to receiving a digital asset, the first part
++      of the digital asset question on Form 1040 page 1 (no otherwise)"
+     expr:
+       op: choose
+       alternatives:
+       - guard:
+           op: test
+           eq:
+-          - f1040.digital_assets
++          - f1040.digital_got
+           - const: true
+         then: s1.digital_income
+       - guard:
+           op: test
+           eq:
+-          - f1040.digital_assets
++          - f1040.digital_got
+           - const: false
+         then: s1.no
+     cite:
+diff --git a/interview/2025/coverage/other.yaml b/interview/2025/coverage/other.yaml
+index 86b6539..3f19588 100644
+--- a/interview/2025/coverage/other.yaml
++++ b/interview/2025/coverage/other.yaml
+@@ -202,7 +202,8 @@ rows:
+   design: s1.line8_other, line 8v; end restated by lane x1-digital (line 8v computed, beneath the Form 1040 digital asset question)
+   situation: A person received crypto from staking.
+   answers:
+-    f1040.digital_assets: true
++    f1040.digital_got: true
++    f1040.digital_disposed: false
+     s1.digital_income: true
+     s1.digital_amount: 41250
+   expect:
+@@ -212,7 +213,8 @@ rows:
+   design: BUG-0896 fix (crypto received in an airdrop, line 8v)
+   situation: A person who only held crypto received new coins worth $200 in an airdrop.
+   answers:
+-    f1040.digital_assets: true
++    f1040.digital_got: true
++    f1040.digital_disposed: false
+     s1.digital_income: true
+     s1.digital_amount: 20000
+   expect:
+@@ -228,7 +230,8 @@ rows:
+     person[taxpayer].w2[job].box4: 1091820
+     person[taxpayer].w2[job].box5: 19000000
+     person[taxpayer].w2[job].box6: 275500
+-    f1040.digital_assets: true
++    f1040.digital_got: true
++    f1040.digital_disposed: false
+     s1.digital_income: true
+     s1.digital_amount: 2000000
+     f8960.unsupported: false
+diff --git a/interview/2025/coverage/sales.yaml b/interview/2025/coverage/sales.yaml
+index 710cdd2..71d2567 100644
+--- a/interview/2025/coverage/sales.yaml
++++ b/interview/2025/coverage/sales.yaml
+@@ -221,8 +221,8 @@ rows:
+     design: MAP 2.9, sales.box (digital asset boxes G to L); end restated by lane x1-digital (gate sales.digital retired)
+     situation: A person lists a sale of crypto reported on a Form 1099-DA.
+     answers:
+-      f1040.digital_assets: true
+-      s1.digital_income: false
++      f1040.digital_got: false
++      f1040.digital_disposed: true
+       $sales: [a]
+       sales[a].box: G
+       sd.route_each: false
+@@ -239,8 +239,8 @@ rows:
+     design: x1-digital, sales.box L (a digital asset swap with no Form 1099-DA)
+     situation: A person swapped one coin, held two years, for another on a platform that sent no Form 1099-DA.
+     answers:
+-      f1040.digital_assets: true
+-      s1.digital_income: false
++      f1040.digital_got: false
++      f1040.digital_disposed: true
+       $sales: [a]
+       sales[a].box: L
+       sd.route_each: false
+@@ -257,8 +257,8 @@ rows:
+     design: x1-digital, sales.box H (a Form 1099-DA without basis)
+     situation: A person sold a coin held six months; the exchange's Form 1099-DA shows the proceeds but no basis.
+     answers:
+-      f1040.digital_assets: true
+-      s1.digital_income: false
++      f1040.digital_got: false
++      f1040.digital_disposed: true
+       $sales: [a]
+       sales[a].box: H
+       sd.route_each: false
+@@ -275,8 +275,8 @@ rows:
+     design: x1-digital, sales.bad_code widened to boxes I and L
+     situation: A person with no Form 1099-DA for a coin sale says the basis on the statement is wrong.
+     answers:
+-      f1040.digital_assets: true
+-      s1.digital_income: false
++      f1040.digital_got: false
++      f1040.digital_disposed: true
+       $sales: [a]
+       sales[a].box: I
+       sd.route_each: false
+@@ -292,8 +292,8 @@ rows:
+     design: x1-digital, sales.bad_code (code E for digital asset transaction costs stays refused; amb.2025.digital_transaction_costs)
+     situation: A person paid network fees on a coin sale that the Form 1099-DA leaves out.
+     answers:
+-      f1040.digital_assets: true
+-      s1.digital_income: false
++      f1040.digital_got: false
++      f1040.digital_disposed: true
+       $sales: [a]
+       sales[a].box: G
+       sd.route_each: false
+@@ -309,8 +309,8 @@ rows:
+     design: x1-digital, sales.special (an NFT of a collectible; amb.2025.nft_collectible)
+     situation: A person sold an NFT of a painting, held two years, on a marketplace that sent no Form 1099-DA.
+     answers:
+-      f1040.digital_assets: true
+-      s1.digital_income: false
++      f1040.digital_got: false
++      f1040.digital_disposed: true
+       $sales: [a]
+       sales[a].box: L
+       sales[a].special: true
+@@ -323,7 +323,8 @@ rows:
+     design: x1-digital, f1040.digital_conflict (entry check)
+     situation: A person answers No to the digital asset question, then lists a coin sale from a Form 1099-DA.
+     answers:
+-      f1040.digital_assets: false
++      f1040.digital_got: false
++      f1040.digital_disposed: false
+       $sales: [a]
+       sales[a].box: H
+       sd.route_each: false
+diff --git a/interview/2025/personas/17_crypto_investor.yaml b/interview/2025/personas/17_crypto_investor.yaml
+index 5d2d8a5..29dfb3f 100644
+--- a/interview/2025/personas/17_crypto_investor.yaml
++++ b/interview/2025/personas/17_crypto_investor.yaml
+@@ -16,7 +16,8 @@ answers:
+   s1.nqdc_pension: false
+   scope.artist_official: false
+   scope.excess_deferral: false
+-  f1040.digital_assets: true
++  f1040.digital_got: true
++  f1040.digital_disposed: true
+   s1.digital_income: true
+   s1.digital_amount: 41250
+   $sales: [eth, btc, sol_swap]
+diff --git a/interview/2025/personas/18_refused_nft_art.yaml b/interview/2025/personas/18_refused_nft_art.yaml
+index e7314ec..59b9a28 100644
+--- a/interview/2025/personas/18_refused_nft_art.yaml
++++ b/interview/2025/personas/18_refused_nft_art.yaml
+@@ -16,8 +16,8 @@ answers:
+   s1.nqdc_pension: false
+   scope.artist_official: false
+   scope.excess_deferral: false
+-  f1040.digital_assets: true
+-  s1.digital_income: false
++  f1040.digital_got: false
++  f1040.digital_disposed: true
+   $sales: [nft]
+   sd.route_each: false
+   sales[nft].box: L
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index b38eea6..d38b10c 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -57,6 +57,8 @@ bank:
+     heading: "Does any of these apply to a canceled debt?"
+   - id: cod_how
+     heading: "Does any of these apply to a canceled debt?"
++  - id: digital
++    heading: In 2025, did you (or, on a joint return, your spouse) do either of these with crypto or another digital asset?
+   - id: interest_dividends
+     heading: "In 2025, did you (or, on a joint return, your spouse) have either of these?"
+   - id: sales_rare
+@@ -4007,22 +4009,32 @@ bank:
+     help: "The insurer sends Form 1099-LTC. Count payments the policy sent straight to a nursing home or care agency. Payments that only repaid care costs are usually not taxed; payments at a set daily or monthly rate may be."
+     prompt: In 2025, were you (or, on a joint return, your spouse) paid by a long-term care insurance policy, or paid part
+       of a life insurance death benefit early?
+-  - input: f1040.digital_assets
++  - input: f1040.digital_got
+     order: 159
+     seq: 1
+-    help: "Yes: paid in crypto, staking or mining rewards, or new coins from a fork or airdrop. No: buying with dollars, holding, getting it as a gift or inheritance, or moving it between your own wallets."
++    group: digital
++    tick: Got some as pay, a reward or new coins
++    help: "Yes: paid in crypto, staking or mining rewards, or new coins from a fork or airdrop. No: buying it with dollars, or getting it as a gift or inheritance."
+     prompt: In 2025, did you (or, on a joint return, your spouse) get crypto or another digital asset as pay, a reward or new
+-      coins, or sell, trade, spend or give any away?
+-  - input: s1.digital_income
++      coins?
++  - input: f1040.digital_disposed
+     order: 159
+     seq: 2
++    group: digital
++    tick: Sold, traded, spent or gave some away
++    help: "Yes: selling it, swapping it for another coin, paying for something with it, or giving it away. No: only holding it, or moving it between your own wallets."
++    prompt: In 2025, did you (or, on a joint return, your spouse) sell, trade, spend or give away crypto or another digital
++      asset?
++  - input: s1.digital_income
++    order: 159
++    seq: 3
+     help: Selling or trading crypto is asked with your sales. Crypto paid as wages is on your W-2, and crypto received in a
+       business goes with that business. A gift of crypto from a person is not counted.
+     prompt: Did you (or, on a joint return, your spouse) receive any crypto from staking, from mining that is not a
+       business, from a fork (a coin split in two), or from an airdrop?
+   - input: s1.digital_amount
+     order: 159
+-    seq: 3
++    seq: 4
+     help: Use what it was worth on the day it was received. A gift or an inheritance of crypto is not income.
+     prompt: What was all of it worth, in dollars, when received?
+   - input: $oi8z

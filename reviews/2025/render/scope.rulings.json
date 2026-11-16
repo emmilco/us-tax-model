@@ -121,6 +121,16 @@
    "subject_key": "12d58a26705d3441a86aaf95ddf2565ca1bc3323fa14aef9380d0a1c6f4af806"
   },
   {
+   "printed": "passive_if_business_before",
+   "restated": "Choose — [helper \"In any year before 2025, did you (or, on a joint return, your spouse) own a business, a farm, a rental property, or a share of a partnership or an S corporation?\" = true → helper \"In 2025, did you (or, on a joint return, your spouse) have income or a loss from, or sell your share of, a business that you owned but did not help run (a 'passive activity')?\"] [helper \"In any year before 2025, did you (or, on a joint return, your spouse) own a business, a farm, a rental property, or a share of a partnership or an S corporation?\" = false → helper \"Year parameter household.no (false)\"]",
+   "model": "The gate asks about passive activity only if a business was owned before 2025. Form 8582 says passive activities include 'Trade or business activities in which you did not materially participate for the tax year,' with no prior-year ownership condition, so a business first owned in 2025 without material participation (for example on Schedule C) would never be screened.",
+   "ruling": "Ruling: scope; the reviewer is right that f8582's passive activities carry no prior-year ownership condition, but each activity begun in 2025 is screened where it is entered: a Schedule C business in which the filer did not materially participate is refused by sc.screened (sc.passive false; i1040sc p. 4, Line G, the seven tests), a farm or a K-1 by scope.schedule1 (scope.farm, scope.k1), and a rental of real property is now computed with its passive loss limit (Schedule E with Form 8582, this merge: f8582, rental.active). The gated question catches what those do not: a passive activity owned before 2025 with prior-year unallowed losses or a 2025 disposition, the case its wording (no longer 'or rental') names. As in the landing render ruling, now with rentals computed rather than refused. Project stands.",
+   "context": "c5bedb25171a8ee366af0c5a22c1bf074e40a8287a6985ac36c3736e0d5318c0",
+   "date": "2026-11-15",
+   "run": "158bfdc4d799812221b50240d18e9c4e5642f179dd9974917380ff44c359ccb8",
+   "subject_key": "5ff30c5834fd4f3e07bbeaf3d38da50d713db7ee20c75728f90d46f12d01f764"
+  },
+  {
    "printed": "pay_no_w2",
    "restated": "Input — In 2025, did you (or, on a joint return, your spouse) have wages, tips or strike benefits that are not on a W-2?",
    "model": "Line 1c must include 'any allocated tips shown in box 8 on your Form(s) W-2'. Those tips do appear on a W-2, so a filer with them would answer No to 'tips … not on a W-2', and the refusal would not fire.",

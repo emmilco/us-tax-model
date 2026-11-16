@@ -1,0 +1,94 @@
+# Coverage rows: situations the interview is known to handle, checked by walking the built interview
+# (engine/src/interview-coverage.ts; interview/README.md, "Coverage rows"). No model is called.
+#
+# Married filing separately. The rows of the opening and household part (status, marriage, community property, when
+# the spouses lived together) are lane mfs-l1's; the deduction, credit and dependent rows are added by their lanes.
+tax_year: 2025
+part: Married filing separately
+profile: full
+sets:
+  separate:
+    says: One person on the return, married at the end of 2025, who files apart from their husband or wife and did not
+      live in a community property state.
+    answers:
+      $person: [taxpayer]
+      f1040.status: mfs
+      household.married_dec31: true
+      household.community_property: false
+      sa.spouse_itemizes: false
+      sa.spouse_extra: false
+rows:
+  - id: mfs.community_property
+    design: scout-mfs 1.2 (community property state, refused)
+    situation: A married person filing apart from their husband or wife lived in Texas in 2025, and is stopped at the
+      community property question.
+    answers:
+      $person: [taxpayer]
+      f1040.status: mfs
+      household.married_dec31: true
+      household.community_property: true
+    expect:
+      refused: household.mfs_community_property
+  - id: mfs.not_married
+    design: scout-mfs 4 (filing separately, not married, no death)
+    situation: A person who picks the line for a married person filing apart says they were not married at the end of
+      2025 and no husband or wife died in 2025.
+    answers:
+      $person: [taxpayer]
+      f1040.status: mfs
+      household.married_dec31: false
+      household.spouse_died_this_year: false
+    expect:
+      refused: household.filing_status_conflict
+  - id: mfs.spouse_died_2025
+    design: scout-mfs 4 (filing separately, spouse died in 2025)
+    situation: A person whose husband or wife died in 2025 files a separate return for themselves.
+    answers:
+      $person: [taxpayer]
+      f1040.status: mfs
+      household.married_dec31: false
+      household.spouse_died_this_year: true
+      household.community_property: false
+      sa.spouse_itemizes: false
+      sa.spouse_extra: false
+    expect:
+      proceeds:
+        f1040.status: mfs
+        household.spouse_died_this_year: true
+  - id: mfs.together_no_living_question
+    design: scout-mfs 4 (the filer with nothing that reads when the spouses lived together)
+    situation: A married person filing apart, with wages only, is not asked when their husband or wife lived with them.
+    uses: [separate]
+    answers: {}
+    expect:
+      proceeds:
+        f1040.status: mfs
+      not_asked: [household.mfs_living, eic.same_home]
+  - id: mfs.ssb_asks_living
+    design: scout-mfs 4 (social security benefits on a separate return)
+    situation: A married person filing apart who got social security benefits is asked when their husband or wife lived
+      with them.
+    uses: [separate]
+    answers:
+      ssb.any: true
+      ssb.benefits: 2000000
+    expect:
+      asks: household.mfs_living
+  - id: mfs.ssb_apart_all_year
+    design: scout-mfs 4 (social security benefits, lived apart all year)
+    situation: A married person filing apart who got social security benefits and did not live with their husband or wife
+      at any time in 2025 goes on to the rest of the return.
+    uses: [separate]
+    answers:
+      ssb.any: true
+      ssb.benefits: 2000000
+      f1040.tax_exempt_interest: 0
+      ssb.repaid_more: false
+      ssb.ira_covered: false
+      ssb.prior_year_pay: false
+      ssb.terror_disability: false
+      household.mfs_living: apart_all_year
+    expect:
+      proceeds:
+        f1040.status: mfs
+        household.mfs_living: apart_all_year

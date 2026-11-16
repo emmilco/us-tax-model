@@ -346,15 +346,15 @@
 - **Authored helper label:** Lived with you in the United States for more than half of 2025?
 - **Encoded (Bool):** Input — Did this person live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025?
 
-  If you were on extended active military duty outside the United States, your main home is considered to be in the United States during that duty.
+  If you (or, on a joint return, your spouse) were on extended active military duty outside the United States (duty ordered for an indefinite period or for more than 90 days), your main home is considered to be in the United States during that duty.
 
   Temporary absences for school, vacation, business, medical care, military service or juvenile detention count as time lived with you; time a child presumed kidnapped was missing because of the kidnapping does not.
 
   A child born or who died in 2025 counts if your home was the child's home for more than half the time the child was alive.
 
   A child you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if your main home was the child's main home for more than half the time since the adoption or placement.
-- Expr: `{"op":"input","source":"Did this person live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025?\n\nIf you were on extended active military duty outside the United States, your main home is considered to be in the United States during that duty.\n\nTemporary absences for school, vacation, business, medical care, military service or juvenile detention count as time lived with you; time a child presumed kidnapped was missing because of the kidnapping does not.\n\nA child born or who died in 2025 counts if your home was the child's home for more than half the time the child was alive.\n\nA child you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if your main home was the child's main home for more than half the time since the adoption or placement."}`
-- Cite: [i1040gi] p. 41, Step 3, "Who lived with you in the United States for more than half of 2025"; p. 43, Exception to time lived with you; p. 44, Members of the military; p. 45, United States (2025; printed date 2026-02-25; sha256 482e9c48)
+- Expr: `{"op":"input","source":"Did this person live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025?\n\nIf you (or, on a joint return, your spouse) were on extended active military duty outside the United States (duty ordered for an indefinite period or for more than 90 days), your main home is considered to be in the United States during that duty.\n\nTemporary absences for school, vacation, business, medical care, military service or juvenile detention count as time lived with you; time a child presumed kidnapped was missing because of the kidnapping does not.\n\nA child born or who died in 2025 counts if your home was the child's home for more than half the time the child was alive.\n\nA child you adopted, who was lawfully placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if your main home was the child's main home for more than half the time since the adoption or placement."}`
+- Cite: [i1040gi] p. 41, Step 3, "Who lived with you in the United States for more than half of 2025"; p. 43, Exception to time lived with you; p. 44, Members of the military, "Extended active duty is military duty ordered for an indefinite period or for a period of more than 90 days."; p. 45, United States (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.eic_ssn`
 
@@ -483,7 +483,7 @@
 ## (helper) — `dependent.filer_not_dependent`
 
 - **Authored helper label:** You (and your spouse if filing jointly) cannot be claimed as a dependent
-- **Encoded (Bool):** sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false
+- **Encoded (Bool):** sa helper "Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false
 - Expr: `{"eq":["sa.dependent",{"const":false}],"op":"test"}`
 - Cite: [i1040gi] p. 18, Step 2, questions 1 and 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -504,16 +504,30 @@
 ## (helper) — `dependent.qr_household_member`
 
 - **Authored helper label:** A household member: lived with you all year, or a relative of your spouse on a joint return
-- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' and helper "On a joint return, related to your spouse in one of the Step 4 ways" = true or helper "Lived with you all of 2025 as a member of your household: Yes for a person who lived with you for all of 2025, asked for anyone else" = true)
-- Expr: `{"any":[{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["dependent.spouse_relative",{"const":true}],"op":"test"}],"op":"test"},{"eq":["dependent.household_all_year",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "A relative of your spouse, on a joint return" = true → helper "A relative of your spouse, on a joint return"] [helper "A relative of your spouse, on a joint return" = false → helper "Lived with you all of 2025 as a member of your household: Yes for a person who lived with you for all of 2025, asked for anyone else"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.spouse_relative_joint",{"const":true}],"op":"test"},"then":"dependent.spouse_relative_joint"},{"guard":{"eq":["dependent.spouse_relative_joint",{"const":false}],"op":"test"},"then":"dependent.household_all_year"}],"op":"choose"}`
 - Cite: [i1040gi] p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.qr_other_relation`
 
 - **Authored helper label:** A descendant of a sibling or another person: lived with you all year and the relationship did not violate local law, or a relative of your spouse on a joint return
-- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' and helper "On a joint return, related to your spouse in one of the Step 4 ways" = true or helper "Lived with you all of 2025 as a member of your household: Yes for a person who lived with you for all of 2025, asked for anyone else" = true and helper "Your relationship with this person did not violate local law" = true)
-- Expr: `{"any":[{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["dependent.spouse_relative",{"const":true}],"op":"test"}],"op":"test"},{"all":[{"eq":["dependent.household_all_year",{"const":true}],"op":"test"},{"eq":["dependent.lawful",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "A relative of your spouse, on a joint return" = true → helper "A relative of your spouse, on a joint return"] [helper "A relative of your spouse, on a joint return" = false → helper "Lived with you all year as a member of your household, and the relationship did not violate local law"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.spouse_relative_joint",{"const":true}],"op":"test"},"then":"dependent.spouse_relative_joint"},{"guard":{"eq":["dependent.spouse_relative_joint",{"const":false}],"op":"test"},"then":"dependent.qr_other_lawful"}],"op":"choose"}`
 - Cite: [i1040gi] p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qr_other_lawful`
+
+- **Authored helper label:** Lived with you all year as a member of your household, and the relationship did not violate local law
+- **Encoded (Bool):** Choose — [helper "Lived with you all of 2025 as a member of your household: Yes for a person who lived with you for all of 2025, asked for anyone else" = true → helper "Your relationship with this person did not violate local law"] [helper "Lived with you all of 2025 as a member of your household: Yes for a person who lived with you for all of 2025, asked for anyone else" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.household_all_year",{"const":true}],"op":"test"},"then":"dependent.lawful"},{"guard":{"eq":["dependent.household_all_year",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 19, Step 4, "Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn’t violate local law" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.spouse_relative_joint`
+
+- **Authored helper label:** A relative of your spouse, on a joint return
+- **Encoded (Bool):** f1040 line Filing Status = 'mfj' and helper "On a joint return, related to your spouse in one of the Step 4 ways" = true
+- Expr: `{"all":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"eq":["dependent.spouse_relative",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [p501] p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
 ## (helper) — `dependent.qr_relationship`
 
@@ -574,9 +588,16 @@
 ## (gate) — `dependent.income_exception`
 
 - **Authored helper label:** Permanently and totally disabled with gross income at or over the limit
-- **Encoded (Bool):** helper "Permanently and totally disabled?" = true and helper "Gross income under $5,200" = false
-- Expr: `{"all":[{"eq":["dependent.disabled",{"const":true}],"op":"test"},{"eq":["dependent.qr_income",{"const":false}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Permanently and totally disabled?" = true → helper "Gross income at or over $5,200"] [helper "Permanently and totally disabled?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.disabled",{"const":true}],"op":"test"},"then":"dependent.qr_income_fails"},{"guard":{"eq":["dependent.disabled",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 19, Step 4, "If the person was permanently and totally disabled, see Exception to gross income test" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.qr_income_fails`
+
+- **Authored helper label:** Gross income at or over $5,200
+- **Encoded (Bool):** helper "Gross income under $5,200" = false
+- Expr: `{"eq":["dependent.qr_income",{"const":false}],"op":"test"}`
+- Cite: [i1040gi] p. 19, Step 4, "Who had gross income of less than $5,200 in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `dependent.qr_kidnapped`
 
@@ -800,8 +821,8 @@
 ## (gate) — `dependent.eic_tiebreak`
 
 - **Authored helper label:** The qualifying child of another person who is also your qualifying child for the EIC
-- **Encoded (Bool):** Choose — [helper "Meets the conditions to be the qualifying child of another person?" = true → helper "EIC qualifying child tests: relationship, age, joint return and residency in the United States, each asked only when the ones before it pass"] [helper "Meets the conditions to be the qualifying child of another person?" = false → helper "Year parameter household.no (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["dependent.other_claimant",{"const":true}],"op":"test"},"then":"dependent.eic_child_tests"},{"guard":{"eq":["dependent.other_claimant",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- **Encoded (Bool):** Choose — [helper "Meets the conditions to be the qualifying child of another person?" = true → helper "With another person who can claim this person: the EIC tie-breaker gate, after the case of a husband or wife on a separate return who is the only other person and will not claim the child"] [helper "Meets the conditions to be the qualifying child of another person?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.other_claimant",{"const":true}],"op":"test"},"then":"dependent.eic_tiebreak_unsettled"},{"guard":{"eq":["dependent.other_claimant",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 44, Qualifying child of more than one person, "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `dependent.kidnap_eic_kidnapped`
@@ -1490,8 +1511,8 @@
 ## (gate) — `dependent.qc_tiebreak_claimant`
 
 - **Authored helper label:** The tie-breaker gate for a person who meets your relationship and age tests
-- **Encoded (Bool):** Choose — [helper "Meets the conditions to be the qualifying child of another person?" = true → helper "With another person who can claim this person: that person is a taxpayer, or this person is also your qualifying child"] [helper "Meets the conditions to be the qualifying child of another person?" = false → helper "Year parameter household.no (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["dependent.other_claimant",{"const":true}],"op":"test"},"then":"dependent.tiebreak_other"},{"guard":{"eq":["dependent.other_claimant",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- **Encoded (Bool):** Choose — [helper "Meets the conditions to be the qualifying child of another person?" = true → helper "With another person who can claim this person: the tie-breaker gate, after the case of a husband or wife on a separate return who is the only other person and will not claim the child"] [helper "Meets the conditions to be the qualifying child of another person?" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.other_claimant",{"const":true}],"op":"test"},"then":"dependent.tiebreak_unsettled"},{"guard":{"eq":["dependent.other_claimant",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
 - Cite: [p501] p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
 
 ## (gate) — `dependent.qc_tiebreak_not_child`
@@ -1598,3 +1619,92 @@
 - **Encoded (Bool):** Choose — [helper "Aged 18 or under at the end of 2025" = true → helper "The tie-breaker gate for a person who cannot be your qualifying child: the qualifying child of another person who is a taxpayer"] [helper "Aged 18 or under at the end of 2025" = false → helper "The tie-breaker gate for a person who cannot be your qualifying child: the qualifying child of another person who is a taxpayer"]
 - Expr: `{"alternatives":[{"guard":{"eq":["dependent.under_19_kidnap",{"const":true}],"op":"test"},"then":"dependent.qc_tiebreak_not_child"},{"guard":{"eq":["dependent.under_19_kidnap",{"const":false}],"op":"test"},"then":"dependent.qc_tiebreak_not_child"}],"op":"choose"}`
 - Cite: [p501] p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.other_only_spouse`
+
+- **Authored helper label:** On a separate return, your husband or wife is the only other person this person could be the qualifying child of?
+- **Encoded (Bool):** Input — Is your husband or wife the only relative, besides you, who lived with this child for more than half of 2025 and could claim them?
+- Interpretation: amb.2025.mfs_spouse_qc
+- Expr: `{"op":"input","source":"Is your husband or wife the only relative, besides you, who lived with this child for more than half of 2025 and could claim them?"}`
+- Cite: [i1040gi] p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025, see Qualifying child of more than one person, later." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `dependent.other_only_spouse_if_mfs`
+
+- **Authored helper label:** Whether your husband or wife is the only other person this person could be the qualifying child of, asked only on a separate return (false on any other return)
+- **Encoded (Bool):** Choose — [household helper "Filing status married filing separately" = true → helper "On a separate return, your husband or wife is the only other person this person could be the qualifying child of?"] [household helper "Filing status married filing separately" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.mfs",{"const":true}],"op":"test"},"then":"dependent.other_only_spouse"},{"guard":{"eq":["household.mfs",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025, see Qualifying child of more than one person, later." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `dependent.spouse_claims`
+
+- **Authored helper label:** Your husband or wife will claim this child as a qualifying child on their own 2025 return?
+- **Encoded (Bool):** Input — Will your husband or wife claim this child on their own 2025 return?
+- Interpretation: amb.2025.mfs_spouse_qc
+- Expr: `{"op":"input","source":"Will your husband or wife claim this child on their own 2025 return?"}`
+- Cite: [p501] p. 15, Tiebreaker rules, "but both parents claim the child as a qualifying child, the IRS will treat the child as the qualifying child of the parent with whom the child lived for the longer period of time during the year"; p. 17, "Subject to these tiebreaker rules, you and the other person may be able to choose which of you claims the child as a qualifying child." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (gate) — `dependent.spouse_claims_if_only_spouse`
+
+- **Authored helper label:** Whether your husband or wife will claim this child, asked only when they are the only other person the child could be the qualifying child of on a separate return (false otherwise)
+- **Encoded (Bool):** Choose — [helper "Whether your husband or wife is the only other person this person could be the qualifying child of, asked only on a separate return (false on any other return)" = true → helper "Your husband or wife will claim this child as a qualifying child on their own 2025 return?"] [helper "Whether your husband or wife is the only other person this person could be the qualifying child of, asked only on a separate return (false on any other return)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.other_only_spouse_if_mfs",{"const":true}],"op":"test"},"then":"dependent.spouse_claims"},{"guard":{"eq":["dependent.other_only_spouse_if_mfs",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [p501] p. 17, "Subject to these tiebreaker rules, you and the other person may be able to choose which of you claims the child as a qualifying child." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.filer_parent`
+
+- **Authored helper label:** You are this child's parent by birth or adoption (not only a stepparent or foster parent)?
+- **Encoded (Bool):** Input — Are you this child's parent by birth or by adoption?
+- Expr: `{"op":"input","source":"Are you this child's parent by birth or by adoption?"}`
+- Cite: [p501] p. 15, Tiebreaker rules, "For purposes of these tiebreaker rules, the term “parent” means a biological or adoptive parent of an individual. It does not include a stepparent or foster parent unless that person has adopted the individual." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (gate) — `dependent.filer_parent_if_child`
+
+- **Authored helper label:** Whether you are this child's parent by birth or adoption, asked only of a person you listed as your child (false for any other relationship)
+- **Encoded (Bool):** Choose — [helper "Relationship to you" = 'child' → helper "You are this child's parent by birth or adoption (not only a stepparent or foster parent)?"] [helper "Relationship to you" = 'sibling' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'sibling_descendant' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'parent' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'parent_relative' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'in_law' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'household_member' → helper "Year parameter household.no (false)"] [helper "Relationship to you" = 'other' → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.relationship",{"const":"child"}],"op":"test"},"then":"dependent.filer_parent"},{"guard":{"eq":["dependent.relationship",{"const":"sibling"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"sibling_descendant"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"parent"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"parent_relative"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"in_law"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"household_member"}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.relationship",{"const":"other"}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [p501] p. 15, Tiebreaker rules, "For purposes of these tiebreaker rules, the term “parent” means a biological or adoptive parent of an individual." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.spouse_settles`
+
+- **Authored helper label:** On a separate return: your husband or wife is the only other person this child could be the qualifying child of, will not claim the child, and you are the child's parent, so no tie-breaker arises
+- **Encoded (Bool):** Choose — [helper "Whether your husband or wife is the only other person this person could be the qualifying child of, asked only on a separate return (false on any other return)" = true → helper "With your husband or wife the only other person: they will not claim the child, and you are the child's parent"] [helper "Whether your husband or wife is the only other person this person could be the qualifying child of, asked only on a separate return (false on any other return)" = false → helper "Year parameter household.no (false)"]
+- Interpretation: amb.2025.mfs_spouse_qc
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.other_only_spouse_if_mfs",{"const":true}],"op":"test"},"then":"dependent.spouse_settles_unclaimed"},{"guard":{"eq":["dependent.other_only_spouse_if_mfs",{"const":false}],"op":"test"},"then":"dependent.no"}],"op":"choose"}`
+- Cite: [p501] p. 17, Example 6—separated parents, "You and your spouse will file separate returns. Your spouse agrees to let you treat your child as a qualifying child. This means, if your spouse doesn’t claim your child as a qualifying child, you can claim this child as a qualifying child" (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (helper) — `dependent.spouse_settles_unclaimed`
+
+- **Authored helper label:** With your husband or wife the only other person: they will not claim the child, and you are the child's parent
+- **Encoded (Bool):** Choose — [helper "Whether your husband or wife will claim this child, asked only when they are the only other person the child could be the qualifying child of on a separate return (false otherwise)" = true → helper "Year parameter household.no (false)"] [helper "Whether your husband or wife will claim this child, asked only when they are the only other person the child could be the qualifying child of on a separate return (false otherwise)" = false → helper "Whether you are this child's parent by birth or adoption, asked only of a person you listed as your child (false for any other relationship)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.spouse_claims_if_only_spouse",{"const":true}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.spouse_claims_if_only_spouse",{"const":false}],"op":"test"},"then":"dependent.filer_parent_if_child"}],"op":"choose"}`
+- Cite: [i1040gi] p. 21, "If only one of the persons is the child’s parent, the child is treated as the qualifying child of the parent." and "If a parent can claim the child as a qualifying child but no parent does so claim the child, the child is treated as the qualifying child of the person who had the highest AGI for 2025, but only if that person’s AGI is higher than the highest AGI of any parent of the child who can claim the child." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `dependent.tiebreak_unsettled`
+
+- **Authored helper label:** With another person who can claim this person: the tie-breaker gate, after the case of a husband or wife on a separate return who is the only other person and will not claim the child
+- **Encoded (Bool):** Choose — [helper "On a separate return: your husband or wife is the only other person this child could be the qualifying child of, will not claim the child, and you are the child's parent, so no tie-breaker arises" = true → helper "With your husband or wife settled as not claiming: this person is not your qualifying child but is the qualifying child of another person who is a taxpayer"] [helper "On a separate return: your husband or wife is the only other person this child could be the qualifying child of, will not claim the child, and you are the child's parent, so no tie-breaker arises" = false → helper "The tie-breaker gate when the case of your husband or wife does not settle it: true when they will claim the child, otherwise the general test"]
+- Interpretation: amb.2025.mfs_spouse_qc
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.spouse_settles",{"const":true}],"op":"test"},"then":"dependent.tiebreak_settled"},{"guard":{"eq":["dependent.spouse_settles",{"const":false}],"op":"test"},"then":"dependent.tiebreak_spouse_or_other"}],"op":"choose"}`
+- Cite: [p501] p. 17, "Subject to these tiebreaker rules, you and the other person may be able to choose which of you claims the child as a qualifying child." (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (gate) — `dependent.tiebreak_settled`
+
+- **Authored helper label:** With your husband or wife settled as not claiming: this person is not your qualifying child but is the qualifying child of another person who is a taxpayer
+- **Encoded (Bool):** Choose — [helper "Qualifying child tests (Step 1): relationship, age, support, joint return and residency, each asked only when the ones before it pass" = true → helper "Year parameter household.no (false)"] [helper "Qualifying child tests (Step 1): relationship, age, support, joint return and residency, each asked only when the ones before it pass" = false → helper "Some other person this person is a qualifying child of is a taxpayer"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.qc_tests",{"const":true}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.qc_tests",{"const":false}],"op":"test"},"then":"dependent.other_is_taxpayer"}],"op":"choose"}`
+- Cite: [i1040gi] p. 19, Step 4, "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `dependent.tiebreak_spouse_or_other`
+
+- **Authored helper label:** The tie-breaker gate when the case of your husband or wife does not settle it: true when they will claim the child, otherwise the general test
+- **Encoded (Bool):** Choose — [helper "Whether your husband or wife will claim this child, asked only when they are the only other person the child could be the qualifying child of on a separate return (false otherwise)" = true → helper "Whether your husband or wife will claim this child, asked only when they are the only other person the child could be the qualifying child of on a separate return (false otherwise)"] [helper "Whether your husband or wife will claim this child, asked only when they are the only other person the child could be the qualifying child of on a separate return (false otherwise)" = false → helper "With another person who can claim this person: that person is a taxpayer, or this person is also your qualifying child"]
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.spouse_claims_if_only_spouse",{"const":true}],"op":"test"},"then":"dependent.spouse_claims_if_only_spouse"},{"guard":{"eq":["dependent.spouse_claims_if_only_spouse",{"const":false}],"op":"test"},"then":"dependent.tiebreak_other"}],"op":"choose"}`
+- Cite: [p501] p. 15, Tiebreaker rules, "but both parents claim the child as a qualifying child, the IRS will treat the child as the qualifying child of the parent with whom the child lived for the longer period of time during the year" (2025 returns; PDF created 2026-02-04; sha256 288b62a4)
+
+## (gate) — `dependent.eic_tiebreak_unsettled`
+
+- **Authored helper label:** With another person who can claim this person: the EIC tie-breaker gate, after the case of a husband or wife on a separate return who is the only other person and will not claim the child
+- **Encoded (Bool):** Choose — [helper "On a separate return: your husband or wife is the only other person this child could be the qualifying child of, will not claim the child, and you are the child's parent, so no tie-breaker arises" = true → helper "Year parameter household.no (false)"] [helper "On a separate return: your husband or wife is the only other person this child could be the qualifying child of, will not claim the child, and you are the child's parent, so no tie-breaker arises" = false → helper "EIC qualifying child tests: relationship, age, joint return and residency in the United States, each asked only when the ones before it pass"]
+- Interpretation: amb.2025.mfs_spouse_qc
+- Expr: `{"alternatives":[{"guard":{"eq":["dependent.spouse_settles",{"const":true}],"op":"test"},"then":"dependent.no"},{"guard":{"eq":["dependent.spouse_settles",{"const":false}],"op":"test"},"then":"dependent.eic_child_tests"}],"op":"choose"}`
+- Cite: [i1040gi] p. 44, Qualifying child of more than one person, "If you and any other person can claim the child as a qualifying child, the following rules apply." (2025; printed date 2026-02-25; sha256 482e9c48)

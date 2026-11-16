@@ -241,10 +241,11 @@
 ## (helper) — `eic.step2_other`
 
 - **Authored helper label:** Step 2, question 4. No Schedule E, rental of personal property, Form 8814 or passive activity
-- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than the ones this tool computes (true when any of the Schedule 1 screening questions is answered Yes)" = false and scope helper "An additional Form 1040 line 16 tax or filing outside this tool (true when any of the line 16 screening questions is answered Yes)" = false
+- **Encoded (Bool):** scope helper "Any income or adjustment requiring Schedule 1 other than the ones this tool computes (true when any of the Schedule 1 screening questions is answered Yes)" = false and scope helper "An additional Form 1040 line 16 tax or filing outside this tool (true when any of the line 16 screening questions is answered Yes)" = false and sche helper "Schedule E is filed (a rental reported or a royalty listed)" = false
 - **Refusal:** when scope.schedule1 is true, cannot complete Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4, "Yes. Use Worksheet 1 ... in Pub. 596" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when sche.any is true, cannot complete Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4, "You are filing Schedule E" (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when scope.other_line16 is true, cannot complete Form 8814 (EIC, Step 2, question 4). Reporting a child's interest and dividends on Form 8814 is outside this tool. Cite: [i1040gi] p. 40, Step 2, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"all":[{"eq":["scope.schedule1",{"const":false}],"op":"test"},{"eq":["scope.other_line16",{"const":false}],"op":"test"}],"op":"test"}`
+- Expr: `{"all":[{"eq":["scope.schedule1",{"const":false}],"op":"test"},{"eq":["scope.other_line16",{"const":false}],"op":"test"},{"eq":["sche.any",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 40, Step 2, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.same_home`
@@ -253,6 +254,21 @@
 - **Encoded (Bool):** Input — Did you and your spouse have the same principal residence for the last 6 months of 2025?
 - Expr: `{"op":"input","source":"Did you and your spouse have the same principal residence for the last 6 months of 2025?"}`
 - Cite: [i1040gi] p. 41, Step 3, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.mfs_same_home`
+
+- **Authored helper label:** Married filing separately: your spouse lived with you at some time in the last 6 months of 2025 (the answer to Step 3, question 4, from when you lived together)
+- **Encoded (Bool):** household helper "Married filing separately, and your spouse did not live with you at any time in the last 6 months of 2025" = false
+- Interpretation: amb.2025.mfs_lived_apart
+- Expr: `{"eq":["household.mfs_apart_last6",{"const":false}],"op":"test"}`
+- Cite: [i1040gi] p. 41, Step 3, question 4, "Did you and your spouse have the same principal residence for the last 6 months of 2025?"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `eic.same_principal_home`
+
+- **Authored helper label:** Step 3, question 4: you and your spouse had the same principal residence for the last 6 months of 2025 (on a separate return, from when you lived together; otherwise asked)
+- **Encoded (Bool):** Choose — [household helper "Filing status married filing separately" = true → helper "Married filing separately: your spouse lived with you at some time in the last 6 months of 2025 (the answer to Step 3, question 4, from when you lived together)"] [household helper "Filing status married filing separately" = false → helper "Did you and your spouse have the same principal residence for the last 6 months of 2025?"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.mfs",{"const":true}],"op":"test"},"then":"eic.mfs_same_home"},{"guard":{"eq":["household.mfs",{"const":false}],"op":"test"},"then":"eic.same_home"}],"op":"choose"}`
+- Cite: [i1040gi] p. 41, Step 3, question 4, "Did you and your spouse have the same principal residence for the last 6 months of 2025?" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.legally_separated`
 
@@ -264,8 +280,8 @@
 ## (helper) — `eic.step3_married`
 
 - **Authored helper label:** Step 3, questions 3 to 5: not a married filer filing separately or as head of household, or one who lived apart from the spouse for the last 6 months of 2025 or is legally separated and lived apart at the end of 2025
-- **Encoded (Bool):** (helper "A married filer whose filing status is married filing separately or head of household" = false or helper "Did you and your spouse have the same principal residence for the last 6 months of 2025?" = false or helper "Are you legally separated under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?" = true)
-- Expr: `{"any":[{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.same_home",{"const":false}],"op":"test"},{"eq":["eic.legally_separated",{"const":true}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** (helper "A married filer whose filing status is married filing separately or head of household" = false or helper "Step 3, question 4: you and your spouse had the same principal residence for the last 6 months of 2025 (on a separate return, from when you lived together; otherwise asked)" = false or helper "Are you legally separated under a written separation agreement or a decree of separate maintenance, and did you live apart from your spouse at the end of 2025?" = true)
+- Expr: `{"any":[{"eq":["eic.married_rules",{"const":false}],"op":"test"},{"eq":["eic.same_principal_home",{"const":false}],"op":"test"},{"eq":["eic.legally_separated",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 41, Step 3, question 3 ("No. Skip questions 4 and 5"), question 4 ("No. Skip question 5"), question 5 ("No. STOP") (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.status_mfj`
@@ -313,7 +329,7 @@
 ## (helper) — `eic.step4_dependent`
 
 - **Authored helper label:** Step 4, questions 3 and 4: filing jointly, or not a qualifying child or dependent of another person
-- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' or helper "Whether you could be a qualifying child of another person, asked only when you lived for more than half of 2025 with a relative whose qualifying child you could be (false otherwise)" = false and sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false)
+- **Encoded (Bool):** (f1040 line Filing Status = 'mfj' or helper "Whether you could be a qualifying child of another person, asked only when you lived for more than half of 2025 with a relative whose qualifying child you could be (false otherwise)" = false and sa helper "Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false)
 - Expr: `{"any":[{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},{"all":[{"eq":["eic.qc_of_another_if_lived",{"const":false}],"op":"test"},{"eq":["sa.dependent",{"const":false}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960 and before January 2, 2001) (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -321,7 +337,6 @@
 
 - **Authored helper label:** Step 4: not a married filer filing separately or as head of household, aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person
 - **Encoded (Bool):** Choose — [helper "A married filer whose filing status is married filing separately or head of household" = true → helper "Year parameter household.no (false)"] [helper "A married filer whose filing status is married filing separately or head of household" = false → helper "Step 4 for a filer outside the married rules: aged 25 to 64, main home in the United States, and not a qualifying child or dependent of another person"]
-- **Refusal:** when sa.dependent is true, cannot complete Dependent of another person or dual-status alien (EIC, Step 4, question 6). A filer who can be claimed as a dependent, or a dual-status alien, is outside this tool. Cite: [i1040gi] p. 42, Step 4, question 6 (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["eic.married_rules",{"const":true}],"op":"test"},"then":"eic.no"},{"guard":{"eq":["eic.married_rules",{"const":false}],"op":"test"},"then":"eic.step4_age"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31, 1960 and before January 2, 2001) (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -350,12 +365,11 @@
 
 ## (Step 5, 2) — `eic.step5_line2`
 
-- **Authored helper label:** Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless chosen as earned income; zero in this tool
-- **Encoded (NonNegDollars):** Enter the amount from helper "No amount".
-- **Refusal:** when scope.other_income is true, cannot complete Medicaid waiver payments (EIC, Step 5, line 2). Medicaid waiver payments are outside this tool. Cite: [i1040gi] p. 42, Step 5, worksheet line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Enter the Medicaid waiver payment amounts excluded from income on Schedule 1, line 8s, unless you choose to include these amounts in earned income, in which case enter -0-
+- **Encoded (NonNegDollars):** Add person.mw_not_earned over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
 - **Shown on the values sheet only when:** Step 5 is reached (Steps 1 and 2 passed and Step 3 or 4 sends you to Step 5) (`eic.reached_step5`)
-- Expr: `{"from":"eic.zero","op":"copy"}`
-- Cite: [i1040gi] p. 42, Step 5, worksheet line 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Expr: `{"collection":"person","field":"person.mw_not_earned","op":"sum_over"}`
+- Cite: [i1040gi] p. 42, Step 5, worksheet line 2, "Enter the Medicaid waiver payment amounts excluded from income on Schedule 1, line 8s, unless you choose to include these amounts in earned income, in which case enter -0-", "If you and your spouse both received Medicaid waiver payments during the year, you and your spouse can make different choices" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (Step 5, 3) — `eic.step5_line3`
 

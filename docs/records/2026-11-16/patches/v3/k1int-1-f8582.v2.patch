@@ -1,0 +1,1369 @@
+diff --git a/forms/2025/f8582.yaml b/forms/2025/f8582.yaml
+index d92a39e..340e300 100644
+--- a/forms/2025/f8582.yaml
++++ b/forms/2025/f8582.yaml
+@@ -3,9 +3,9 @@ form:
+   kind: form
+   title: Form 8582 — Passive Activity Loss Limitations
+   tax_year: 2025
+-  note: Parts I to III for the return, from the rental entries' Part IV to VIII columns. The only passive activities this
+-    tool computes are the rentals listed (Part IV with active participation, Part V without); other passive activities are
+-    refused (scope.passive). Shown only when required (f8582.required).
++  note: Parts I to III for the return, from the Part IV to VIII columns of the rental entries and of the partnership and
++    S corporation Schedules K-1 (one activity per box 1, 2 and 3). Other passive activities are refused (scope.passive).
++    Shown only when required (f8582.required).
+   lines:
+   - id: f8582.zero
+     printed: (helper)
+@@ -46,8 +46,10 @@ form:
+     label: 'Part IV, column (a) total: net income'
+     type: NonNegDollars
+     expr:
+-      op: copy
+-      from: f8582.line1a_rental
++      op: sum
++      of:
++      - f8582.line1a_rental
++      - f8582.line1a_k1
+     cite:
+       doc: i8582
+       locator: p. 4, Part IV
+@@ -76,8 +78,10 @@ form:
+     label: 'Part V, column (a) total: net income'
+     type: NonNegDollars
+     expr:
+-      op: copy
+-      from: f8582.line2a_rental
++      op: sum
++      of:
++      - f8582.line2a_rental
++      - f8582.line2a_k1
+     cite:
+       doc: i8582
+       locator: p. 4, Part V
+@@ -102,8 +106,10 @@ form:
+     label: 'Part IV, column (b) total: net loss'
+     type: NonNegDollars
+     expr:
+-      op: copy
+-      from: f8582.line1b_rental
++      op: sum
++      of:
++      - f8582.line1b_rental
++      - f8582.line1b_k1
+     cite:
+       doc: i8582
+       locator: p. 4, Part IV
+@@ -128,8 +134,10 @@ form:
+     label: 'Part V, column (b) total: net loss'
+     type: NonNegDollars
+     expr:
+-      op: copy
+-      from: f8582.line2b_rental
++      op: sum
++      of:
++      - f8582.line2b_rental
++      - f8582.line2b_k1
+     cite:
+       doc: i8582
+       locator: p. 4, Part V
+@@ -154,8 +162,10 @@ form:
+     label: 'Part IV, column (c) total: prior years unallowed losses'
+     type: NonNegDollars
+     expr:
+-      op: copy
+-      from: f8582.line1c_rental
++      op: sum
++      of:
++      - f8582.line1c_rental
++      - f8582.line1c_k1
+     cite:
+       doc: i8582
+       locator: p. 4, Part IV
+@@ -180,11 +190,101 @@ form:
+     label: 'Part V, column (c) total: prior years unallowed losses'
+     type: NonNegDollars
+     expr:
+-      op: copy
+-      from: f8582.line2c_rental
++      op: sum
++      of:
++      - f8582.line2c_rental
++      - f8582.line2c_k1
+     cite:
+       doc: i8582
+       locator: p. 4, Part V
++  - id: f8582.line1a_k1
++    printed: (helper)
++    label: 'Part IV, column (a): the activities of the partnership and S corporation Schedules K-1'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_p4_income
++    cite:
++      doc: i8582
++      locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++  - id: f8582.line1b_k1
++    printed: (helper)
++    label: 'Part IV, column (b): the activities of the partnership and S corporation Schedules K-1'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_p4_loss
++    cite:
++      doc: i8582
++      locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++  - id: f8582.line1c_k1
++    printed: (helper)
++    label: 'Part IV, column (c): the activities of the partnership and S corporation Schedules K-1'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_p4_prior
++    cite:
++      doc: i8582
++      locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++  - id: f8582.line2a_k1
++    printed: (helper)
++    label: 'Part V, column (a): the activities of the partnership and S corporation Schedules K-1'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_p5_income
++    cite:
++      doc: i8582
++      locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++  - id: f8582.line2b_k1
++    printed: (helper)
++    label: 'Part V, column (b): the activities of the partnership and S corporation Schedules K-1'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_p5_loss
++    cite:
++      doc: i8582
++      locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++  - id: f8582.line2c_k1
++    printed: (helper)
++    label: 'Part V, column (c): the activities of the partnership and S corporation Schedules K-1'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_p5_prior
++    cite:
++      doc: i8582
++      locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++  - id: f8582.p6_total_k1
++    printed: (helper)
++    label: 'Part VI, column (a): the activities of the partnership and S corporation Schedules K-1'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_p6_loss
++    cite:
++      doc: i8582
++      locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++  - id: f8582.p7_total_k1
++    printed: (helper)
++    label: 'Part VII, column (a): the activities of the partnership and S corporation Schedules K-1'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_p7a
++    cite:
++      doc: i8582
++      locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
+   - id: f8582.line1a
+     printed: 1a
+     label: Activities with net income (enter the amount from Part IV, column (a))
+@@ -538,8 +638,10 @@ form:
+     label: Part VI, column (a) total
+     type: NonNegDollars
+     expr:
+-      op: copy
+-      from: f8582.p6_total_rental
++      op: sum
++      of:
++      - f8582.p6_total_rental
++      - f8582.p6_total_k1
+     cite:
+       doc: i8582
+       locator: p. 12, Part VI, "by the total of all the losses in column (a)"
+@@ -560,8 +662,10 @@ form:
+     label: Part VII, column (a) total
+     type: NonNegDollars
+     expr:
+-      op: copy
+-      from: f8582.p7_total_rental
++      op: sum
++      of:
++      - f8582.p7_total_rental
++      - f8582.p7_total_k1
+     cite:
+       doc: i8582
+       locator: p. 12, Part VII—Allocation of Unallowed Losses
+diff --git a/forms/2025/k1p.yaml b/forms/2025/k1p.yaml
+index 3e5132e..d10c1b3 100644
+--- a/forms/2025/k1p.yaml
++++ b/forms/2025/k1p.yaml
+@@ -2042,7 +2042,6 @@ form:
+       from: k1p.b1_loss_sum
+       take: k1p.b1_net_income
+     cite: *id038
+-    display: The activity's overall loss, which Form 8582 Part VII column (a) takes for a Part V activity.
+   - id: k1p.b2_loss_sum
+     printed: (helper)
+     label: 'Box 2 activity: net loss plus prior years unallowed loss'
+@@ -2081,7 +2080,6 @@ form:
+       from: k1p.b3_loss_sum
+       take: k1p.b3_net_income
+     cite: *id038
+-    display: The activity's overall loss, which Form 8582 Part VII column (a) takes for a Part V activity.
+   - id: k1p.p4_income
+     printed: IV (a)
+     label: 'Part IV column (a): box 2 net income with active participation'
+@@ -2408,6 +2406,349 @@ form:
+       from: k1p.box14a_if_any
+       take: k1p.zero
+     cite: *id010
++  - id: k1p.b2_p6_on
++    printed: (helper)
++    label: 'Part VI applies to the box 2 activity: an overall loss in Part IV and an amount on line 9'
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1p.p6_loss
++        - const: 0
++      - op: test
++        gt:
++        - f8582.line9
++        - const: 0
++    cite:
++      doc: i8582
++      locator: p. 12, Part VI, "Use Part VI to allocate the special allowance on Part II, line 9"
++  - id: k1p.b2_p6c_share
++    printed: (helper)
++    label: 'Part VI: line 9 times the box 2 activity ratio'
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: f8582.line9
++      part: k1p.p6_loss
++      whole: f8582.p6_total
++      places: 6
++    cite:
++      doc: i8582
++      locator: p. 12, Part VI, "Divide each of the individual losses shown in column (a) by the total of all the losses in
++        column (a)"
++    ambiguity: amb.2025.f8582_ratio_places
++  - id: k1p.b2_p6c
++    printed: VI (c)
++    label: 'Part VI: special allowance of the box 2 activity'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1p.b2_p6_on
++          - const: true
++        then: k1p.b2_p6c_share
++      - guard:
++          op: test
++          eq:
++          - k1p.b2_p6_on
++          - const: false
++        then: k1p.zero
++    cite:
++      doc: i8582
++      locator: p. 12, Part VI, "Multiply each ratio in column (b) by the amount on Part II, line 9"
++  - id: k1p.b1_p7a
++    printed: VII (a)
++    label: 'Part VII: loss of the box 1 activity (Part VI column (d), or Part IV or V column (e))'
++    type: NonNegDollars
++    expr:
++      op: copy
++      from: k1p.b1_overall_loss
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1p.b1_p7_on
++    printed: (helper)
++    label: 'Part VII applies to the box 1 activity: a loss in column (a) and an unallowed amount on line C'
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1p.b1_p7a
++        - const: 0
++      - op: test
++        gt:
++        - f8582.p7_C
++        - const: 0
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1p.b1_p7c_share
++    printed: (helper)
++    label: 'Part VII: line C times the box 1 activity ratio'
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: f8582.p7_C
++      part: k1p.b1_p7a
++      whole: f8582.p7_total
++      places: 6
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Subtract line B from line A"
++    ambiguity: amb.2025.f8582_ratio_places
++  - id: k1p.b1_p7c
++    printed: VII (c)
++    label: 'Part VII: unallowed loss of the box 1 activity'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1p.b1_p7_on
++          - const: true
++        then: k1p.b1_p7c_share
++      - guard:
++          op: test
++          eq:
++          - k1p.b1_p7_on
++          - const: false
++        then: k1p.zero
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Multiply each ratio in column (b) by the amount on line C above"
++  - id: k1p.b1_allowed
++    printed: VIII (c)
++    label: 'Part VIII: loss allowed, box 1 activity'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1p.b1_loss_sum
++      take: k1p.b1_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Subtract column (b) from column (a)"
++  - id: k1p.b1_carryforward
++    printed: VIII (b)
++    label: Unallowed loss of the box 1 activity carried to 2026
++    type: NonNegDollars
++    display: 'Keep this amount: it is the box 1 loss held back for this Schedule K-1, entered next year.'
++    expr:
++      op: copy
++      from: k1p.b1_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Keep a record of these amounts so the losses can be used to figure your PAL
++        next year"
++  - id: k1p.b2_p7a
++    printed: VII (a)
++    label: 'Part VII: loss of the box 2 activity (Part VI column (d), or Part IV or V column (e))'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1p.b2_overall_loss
++      take: k1p.b2_p6c
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1p.b2_p7_on
++    printed: (helper)
++    label: 'Part VII applies to the box 2 activity: a loss in column (a) and an unallowed amount on line C'
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1p.b2_p7a
++        - const: 0
++      - op: test
++        gt:
++        - f8582.p7_C
++        - const: 0
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1p.b2_p7c_share
++    printed: (helper)
++    label: 'Part VII: line C times the box 2 activity ratio'
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: f8582.p7_C
++      part: k1p.b2_p7a
++      whole: f8582.p7_total
++      places: 6
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Subtract line B from line A"
++    ambiguity: amb.2025.f8582_ratio_places
++  - id: k1p.b2_p7c
++    printed: VII (c)
++    label: 'Part VII: unallowed loss of the box 2 activity'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1p.b2_p7_on
++          - const: true
++        then: k1p.b2_p7c_share
++      - guard:
++          op: test
++          eq:
++          - k1p.b2_p7_on
++          - const: false
++        then: k1p.zero
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Multiply each ratio in column (b) by the amount on line C above"
++  - id: k1p.b2_allowed
++    printed: VIII (c)
++    label: 'Part VIII: loss allowed, box 2 activity'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1p.b2_loss_sum
++      take: k1p.b2_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Subtract column (b) from column (a)"
++  - id: k1p.b2_carryforward
++    printed: VIII (b)
++    label: Unallowed loss of the box 2 activity carried to 2026
++    type: NonNegDollars
++    display: 'Keep this amount: it is the box 2 loss held back for this Schedule K-1, entered next year.'
++    expr:
++      op: copy
++      from: k1p.b2_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Keep a record of these amounts so the losses can be used to figure your PAL
++        next year"
++  - id: k1p.b3_p7a
++    printed: VII (a)
++    label: 'Part VII: loss of the box 3 activity (Part VI column (d), or Part IV or V column (e))'
++    type: NonNegDollars
++    expr:
++      op: copy
++      from: k1p.b3_overall_loss
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1p.b3_p7_on
++    printed: (helper)
++    label: 'Part VII applies to the box 3 activity: a loss in column (a) and an unallowed amount on line C'
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1p.b3_p7a
++        - const: 0
++      - op: test
++        gt:
++        - f8582.p7_C
++        - const: 0
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1p.b3_p7c_share
++    printed: (helper)
++    label: 'Part VII: line C times the box 3 activity ratio'
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: f8582.p7_C
++      part: k1p.b3_p7a
++      whole: f8582.p7_total
++      places: 6
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Subtract line B from line A"
++    ambiguity: amb.2025.f8582_ratio_places
++  - id: k1p.b3_p7c
++    printed: VII (c)
++    label: 'Part VII: unallowed loss of the box 3 activity'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1p.b3_p7_on
++          - const: true
++        then: k1p.b3_p7c_share
++      - guard:
++          op: test
++          eq:
++          - k1p.b3_p7_on
++          - const: false
++        then: k1p.zero
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Multiply each ratio in column (b) by the amount on line C above"
++  - id: k1p.b3_allowed
++    printed: VIII (c)
++    label: 'Part VIII: loss allowed, box 3 activity'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1p.b3_loss_sum
++      take: k1p.b3_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Subtract column (b) from column (a)"
++  - id: k1p.b3_carryforward
++    printed: VIII (b)
++    label: Unallowed loss of the box 3 activity carried to 2026
++    type: NonNegDollars
++    display: 'Keep this amount: it is the box 3 loss held back for this Schedule K-1, entered next year.'
++    expr:
++      op: copy
++      from: k1p.b3_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Keep a record of these amounts so the losses can be used to figure your PAL
++        next year"
++  - id: k1p.p7a
++    printed: (helper)
++    label: 'Part VII column (a) of the activities of this K-1'
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - k1p.b1_p7a
++      - k1p.b2_p7a
++      - k1p.b3_p7a
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1p.col_g
++    printed: 28 (g)
++    label: 'Passive loss allowed: Schedule E line 28 column (g) (as a positive amount)'
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - k1p.b1_allowed
++      - k1p.b2_allowed
++      - k1p.b3_allowed
++    cite:
++      doc: i1040se
++      locator: p. 10, Line 28, Column (g), "enter in column (g) the loss allowed"
+   - id: k1p.screened
+     printed: (gate)
+     label: This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)
+diff --git a/forms/2025/k1s.yaml b/forms/2025/k1s.yaml
+index e63e6dc..6b178ea 100644
+--- a/forms/2025/k1s.yaml
++++ b/forms/2025/k1s.yaml
+@@ -2631,6 +2631,506 @@ form:
+       remedy: When a loss is partly carried forward by the basis limitation, only the allowed part of the qualified business
+         loss counts this year; working out that part is outside this tool.
+       cite: *id036
++  - id: k1s.b1_loss_sum
++    printed: (helper)
++    label: 'Box 1 passive activity: net loss after basis plus prior years unallowed loss'
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - k1s.p1_loss
++      - k1s.p1_prior_passive
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "enter the net loss plus the prior-year unallowed loss for the activity"
++  - id: k1s.b1_overall_loss
++    printed: (e)
++    label: 'Box 1 passive activity: overall loss, Form 8582 column (e)'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1s.b1_loss_sum
++      take: k1s.p1_income
++    cite:
++      doc: i8582
++      locator: p. 10, Columns (d) and (e), "Combine income and losses in columns (a) through (c) for each activity"
++  - id: k1s.b2_loss_sum
++    printed: (helper)
++    label: 'Box 2 passive activity: net loss after basis plus prior years unallowed loss'
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - k1s.p2_loss
++      - k1s.b2_prior_if_any
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "enter the net loss plus the prior-year unallowed loss for the activity"
++  - id: k1s.b2_overall_loss
++    printed: (e)
++    label: 'Box 2 passive activity: overall loss, Form 8582 column (e)'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1s.b2_loss_sum
++      take: k1s.p2_income
++    cite:
++      doc: i8582
++      locator: p. 10, Columns (d) and (e), "Combine income and losses in columns (a) through (c) for each activity"
++  - id: k1s.b3_loss_sum
++    printed: (helper)
++    label: 'Box 3 passive activity: net loss after basis plus prior years unallowed loss'
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - k1s.p3_loss
++      - k1s.b3_prior_if_any
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "enter the net loss plus the prior-year unallowed loss for the activity"
++  - id: k1s.b3_overall_loss
++    printed: (e)
++    label: 'Box 3 passive activity: overall loss, Form 8582 column (e)'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1s.b3_loss_sum
++      take: k1s.p3_income
++    cite:
++      doc: i8582
++      locator: p. 10, Columns (d) and (e), "Combine income and losses in columns (a) through (c) for each activity"
++  - id: k1s.p6_loss_raw
++    printed: (helper)
++    label: 'Part VI column (a): box 2 overall loss with active participation'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1s.part4
++          - const: true
++        then: k1s.b2_overall_loss
++      - guard:
++          op: test
++          eq:
++          - k1s.part4
++          - const: false
++        then: k1s.zero
++    cite:
++      doc: i8582
++      locator: p. 12, Part VI, "Enter the overall loss from column (e) of Part IV for each activity"
++  - id: k1s.p6_loss
++    printed: VI (a)
++    label: 'Part VI column (a): box 2 overall loss with active participation'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1s.ok
++          - const: true
++        then: k1s.p6_loss_raw
++      - guard:
++          op: test
++          eq:
++          - k1s.ok
++          - const: false
++        then: k1s.zero
++    cite:
++      doc: i8582
++      locator: p. 12, Part VI, "Enter the overall loss from column (e) of Part IV for each activity"
++  - id: k1s.b2_p6_on
++    printed: (helper)
++    label: 'Part VI applies to the box 2 activity: an overall loss in Part IV and an amount on line 9'
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1s.p6_loss
++        - const: 0
++      - op: test
++        gt:
++        - f8582.line9
++        - const: 0
++    cite:
++      doc: i8582
++      locator: p. 12, Part VI, "Use Part VI to allocate the special allowance on Part II, line 9"
++  - id: k1s.b2_p6c_share
++    printed: (helper)
++    label: 'Part VI: line 9 times the box 2 activity ratio'
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: f8582.line9
++      part: k1s.p6_loss
++      whole: f8582.p6_total
++      places: 6
++    cite:
++      doc: i8582
++      locator: p. 12, Part VI, "Divide each of the individual losses shown in column (a) by the total of all the losses in
++        column (a)"
++    ambiguity: amb.2025.f8582_ratio_places
++  - id: k1s.b2_p6c
++    printed: VI (c)
++    label: 'Part VI: special allowance of the box 2 activity'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1s.b2_p6_on
++          - const: true
++        then: k1s.b2_p6c_share
++      - guard:
++          op: test
++          eq:
++          - k1s.b2_p6_on
++          - const: false
++        then: k1s.zero
++    cite:
++      doc: i8582
++      locator: p. 12, Part VI, "Multiply each ratio in column (b) by the amount on Part II, line 9"
++  - id: k1s.b1_p7a
++    printed: VII (a)
++    label: 'Part VII: loss of the box 1 activity (Part VI column (d), or Part IV or V column (e))'
++    type: NonNegDollars
++    expr:
++      op: copy
++      from: k1s.b1_overall_loss
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1s.b1_p7_on
++    printed: (helper)
++    label: 'Part VII applies to the box 1 activity: a loss in column (a) and an unallowed amount on line C'
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1s.b1_p7a
++        - const: 0
++      - op: test
++        gt:
++        - f8582.p7_C
++        - const: 0
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1s.b1_p7c_share
++    printed: (helper)
++    label: 'Part VII: line C times the box 1 activity ratio'
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: f8582.p7_C
++      part: k1s.b1_p7a
++      whole: f8582.p7_total
++      places: 6
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Subtract line B from line A"
++    ambiguity: amb.2025.f8582_ratio_places
++  - id: k1s.b1_p7c
++    printed: VII (c)
++    label: 'Part VII: unallowed loss of the box 1 activity'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1s.b1_p7_on
++          - const: true
++        then: k1s.b1_p7c_share
++      - guard:
++          op: test
++          eq:
++          - k1s.b1_p7_on
++          - const: false
++        then: k1s.zero
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Multiply each ratio in column (b) by the amount on line C above"
++  - id: k1s.b1_allowed
++    printed: VIII (c)
++    label: 'Part VIII: loss allowed, box 1 activity'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1s.b1_loss_sum
++      take: k1s.b1_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Subtract column (b) from column (a)"
++  - id: k1s.b1_carryforward
++    printed: VIII (b)
++    label: Unallowed loss of the box 1 activity carried to 2026
++    type: NonNegDollars
++    display: 'Keep this amount: it is the box 1 loss held back for this Schedule K-1, entered next year.'
++    expr:
++      op: copy
++      from: k1s.b1_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Keep a record of these amounts so the losses can be used to figure your PAL
++        next year"
++  - id: k1s.b2_p7a
++    printed: VII (a)
++    label: 'Part VII: loss of the box 2 activity (Part VI column (d), or Part IV or V column (e))'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1s.b2_overall_loss
++      take: k1s.b2_p6c
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1s.b2_p7_on
++    printed: (helper)
++    label: 'Part VII applies to the box 2 activity: a loss in column (a) and an unallowed amount on line C'
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1s.b2_p7a
++        - const: 0
++      - op: test
++        gt:
++        - f8582.p7_C
++        - const: 0
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1s.b2_p7c_share
++    printed: (helper)
++    label: 'Part VII: line C times the box 2 activity ratio'
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: f8582.p7_C
++      part: k1s.b2_p7a
++      whole: f8582.p7_total
++      places: 6
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Subtract line B from line A"
++    ambiguity: amb.2025.f8582_ratio_places
++  - id: k1s.b2_p7c
++    printed: VII (c)
++    label: 'Part VII: unallowed loss of the box 2 activity'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1s.b2_p7_on
++          - const: true
++        then: k1s.b2_p7c_share
++      - guard:
++          op: test
++          eq:
++          - k1s.b2_p7_on
++          - const: false
++        then: k1s.zero
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Multiply each ratio in column (b) by the amount on line C above"
++  - id: k1s.b2_allowed
++    printed: VIII (c)
++    label: 'Part VIII: loss allowed, box 2 activity'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1s.b2_loss_sum
++      take: k1s.b2_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Subtract column (b) from column (a)"
++  - id: k1s.b2_carryforward
++    printed: VIII (b)
++    label: Unallowed loss of the box 2 activity carried to 2026
++    type: NonNegDollars
++    display: 'Keep this amount: it is the box 2 loss held back for this Schedule K-1, entered next year.'
++    expr:
++      op: copy
++      from: k1s.b2_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Keep a record of these amounts so the losses can be used to figure your PAL
++        next year"
++  - id: k1s.b3_p7a
++    printed: VII (a)
++    label: 'Part VII: loss of the box 3 activity (Part VI column (d), or Part IV or V column (e))'
++    type: NonNegDollars
++    expr:
++      op: copy
++      from: k1s.b3_overall_loss
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1s.b3_p7_on
++    printed: (helper)
++    label: 'Part VII applies to the box 3 activity: a loss in column (a) and an unallowed amount on line C'
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        gt:
++        - k1s.b3_p7a
++        - const: 0
++      - op: test
++        gt:
++        - f8582.p7_C
++        - const: 0
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1s.b3_p7c_share
++    printed: (helper)
++    label: 'Part VII: line C times the box 3 activity ratio'
++    type: NonNegDollars
++    expr:
++      op: prorate
++      amount: f8582.p7_C
++      part: k1s.b3_p7a
++      whole: f8582.p7_total
++      places: 6
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Subtract line B from line A"
++    ambiguity: amb.2025.f8582_ratio_places
++  - id: k1s.b3_p7c
++    printed: VII (c)
++    label: 'Part VII: unallowed loss of the box 3 activity'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1s.b3_p7_on
++          - const: true
++        then: k1s.b3_p7c_share
++      - guard:
++          op: test
++          eq:
++          - k1s.b3_p7_on
++          - const: false
++        then: k1s.zero
++    cite:
++      doc: i8582
++      locator: p. 13, Column (c), "Multiply each ratio in column (b) by the amount on line C above"
++  - id: k1s.b3_allowed
++    printed: VIII (c)
++    label: 'Part VIII: loss allowed, box 3 activity'
++    type: NonNegDollars
++    expr:
++      op: subtract_floor0
++      from: k1s.b3_loss_sum
++      take: k1s.b3_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Subtract column (b) from column (a)"
++  - id: k1s.b3_carryforward
++    printed: VIII (b)
++    label: Unallowed loss of the box 3 activity carried to 2026
++    type: NonNegDollars
++    display: 'Keep this amount: it is the box 3 loss held back for this Schedule K-1, entered next year.'
++    expr:
++      op: copy
++      from: k1s.b3_p7c
++    cite:
++      doc: i8582
++      locator: p. 13, Part VIII—Allowed Losses, "Keep a record of these amounts so the losses can be used to figure your PAL
++        next year"
++  - id: k1s.p7a_raw
++    printed: (helper)
++    label: 'Part VII column (a) of the activities of this K-1'
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - k1s.b1_p7a
++      - k1s.b2_p7a
++      - k1s.b3_p7a
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1s.col_g_raw
++    printed: (helper)
++    label: 'Passive loss allowed: Schedule E line 28 column (g) (as a positive amount)'
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - k1s.b1_allowed
++      - k1s.b2_allowed
++      - k1s.b3_allowed
++    cite:
++      doc: i1040se
++      locator: p. 10, Line 28, Column (g), "enter in column (g) the loss allowed"
++  - id: k1s.p7a
++    printed: (helper)
++    label: 'Part VII column (a) of the activities of this K-1'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1s.ok
++          - const: true
++        then: k1s.p7a_raw
++      - guard:
++          op: test
++          eq:
++          - k1s.ok
++          - const: false
++        then: k1s.zero
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
++  - id: k1s.col_g
++    printed: 28 (g)
++    label: 'Passive loss allowed: Schedule E line 28 column (g) (as a positive amount)'
++    type: NonNegDollars
++    expr:
++      op: choose
++      alternatives:
++      - guard:
++          op: test
++          eq:
++          - k1s.ok
++          - const: true
++        then: k1s.col_g_raw
++      - guard:
++          op: test
++          eq:
++          - k1s.ok
++          - const: false
++        then: k1s.zero
++    cite:
++      doc: i8582
++      locator: p. 12, Part VII—Allocation of Unallowed Losses
+   - id: k1s.one
+     printed: (helper)
+     label: One Schedule K-1
+diff --git a/forms/2025/person.yaml b/forms/2025/person.yaml
+index 7ab75ac..8f4d593 100644
+--- a/forms/2025/person.yaml
++++ b/forms/2025/person.yaml
+@@ -7553,7 +7553,6 @@ form:
+         field: k1p.p4_income
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_p4_loss
+       printed: (helper)
+       type: NonNegDollars
+@@ -7564,7 +7563,6 @@ form:
+         field: k1p.p4_loss
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_p4_prior
+       printed: (helper)
+       type: NonNegDollars
+@@ -7575,7 +7573,6 @@ form:
+         field: k1p.p4_prior
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_p5_income
+       printed: (helper)
+       type: NonNegDollars
+@@ -7586,7 +7583,6 @@ form:
+         field: k1p.p5_income
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_p5_loss
+       printed: (helper)
+       type: NonNegDollars
+@@ -7597,7 +7593,6 @@ form:
+         field: k1p.p5_loss
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_p5_prior
+       printed: (helper)
+       type: NonNegDollars
+@@ -7608,7 +7603,6 @@ form:
+         field: k1p.p5_prior
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_p6_loss
+       printed: (helper)
+       type: NonNegDollars
+@@ -7619,7 +7613,6 @@ form:
+         field: k1p.p6_loss
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_prior
+       printed: (helper)
+       type: NonNegDollars
+@@ -7846,6 +7839,27 @@ form:
+             - const: true
+       cite: *id002
+       display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
++    - id: person.k1p_total_p7a
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part VII column (a), partnership K-1s
++      expr:
++        op: sum_over
++        collection: k1p
++        field: k1p.p7a
++        where: *id001
++      cite: *id002
++    - id: person.k1p_total_col_g
++      printed: (helper)
++      type: NonNegDollars
++      label: Schedule E line 28 column (g), all partnership K-1s (as a positive amount)
++      expr:
++        op: sum_over
++        collection: k1p
++        field: k1p.col_g
++        where: *id001
++      cite: *id002
++      display: The partnership K-1 total that Schedule E Part II reads for this person.
+   # --- end k1p sums ---
+   # --- x2-k1s: per-person totals of the Schedules K-1 (Form 1120-S) ---
+     - id: person.k1s_total_interest
+@@ -8026,7 +8040,6 @@ form:
+         doc: i8582
+         locator: p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities
+           must include the income or loss from those activities in Part IV"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_p4_loss
+       printed: (helper)
+       label: Form 8582 Part IV column (b) total of the S corporation box 2 activities with active participation
+@@ -8039,7 +8052,6 @@ form:
+         doc: i8582
+         locator: p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities
+           must include the income or loss from those activities in Part IV"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_p4_prior
+       printed: (helper)
+       label: Form 8582 Part IV column (c) total of the S corporation box 2 activities with active participation
+@@ -8052,7 +8064,6 @@ form:
+         doc: i8582
+         locator: p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities
+           must include the income or loss from those activities in Part IV"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_p5_income
+       printed: (helper)
+       label: Form 8582 Part V column (a) total of the S corporation passive activities
+@@ -8064,7 +8075,6 @@ form:
+       cite:
+         doc: i8582
+         locator: p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_p5_loss
+       printed: (helper)
+       label: Form 8582 Part V column (b) total of the S corporation passive activities
+@@ -8076,7 +8086,6 @@ form:
+       cite:
+         doc: i8582
+         locator: p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_p5_prior
+       printed: (helper)
+       label: Form 8582 Part V column (c) total of the S corporation passive activities
+@@ -8088,7 +8097,6 @@ form:
+       cite:
+         doc: i8582
+         locator: p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_qbi
+       printed: (helper)
+       label: Qualified business income (loss) from Schedules K-1 (Form 1120-S), box 17, code V, before the passive activity
+@@ -8121,7 +8129,139 @@ form:
+         locator: p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business
+           activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28"
+       display: Read by the return-integration lane (whether Schedule E Part II is filed); shown until then.
++    - id: person.k1s_total_p6_loss
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part VI column (a) total of the S corporation box 2 activities with active participation
++      expr:
++        op: sum_over
++        collection: k1s
++        field: k1s.p6_loss
++      cite: 
++        doc: i8582
++        locator: p. 12, Part VII—Allocation of Unallowed Losses
++    - id: person.k1s_total_p7a
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part VII column (a) total of the S corporation passive activities
++      expr:
++        op: sum_over
++        collection: k1s
++        field: k1s.p7a
++      cite: 
++        doc: i8582
++        locator: p. 12, Part VII—Allocation of Unallowed Losses
++    - id: person.k1s_total_col_g
++      printed: (helper)
++      type: NonNegDollars
++      label: 'Schedule E line 28, column (g) total of the S corporation rows: passive loss allowed, as a positive amount'
++      expr:
++        op: sum_over
++        collection: k1s
++        field: k1s.col_g
++      cite: 
++        doc: i8582
++        locator: p. 12, Part VII—Allocation of Unallowed Losses
++      display: Read by Schedule E Part II; shown until then.
+   # --- end x2-k1s ---
++  # --- K-1 integration: partnership and S corporation totals together ---
++    - id: person.k1_p4_income
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part IV column (a), all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_p4_income
++        - person.k1s_total_p4_income
++      cite:
++        doc: i8582
++        locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++    - id: person.k1_p4_loss
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part IV column (b), all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_p4_loss
++        - person.k1s_total_p4_loss
++      cite:
++        doc: i8582
++        locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++    - id: person.k1_p4_prior
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part IV column (c), all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_p4_prior
++        - person.k1s_total_p4_prior
++      cite:
++        doc: i8582
++        locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++    - id: person.k1_p5_income
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part V column (a), all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_p5_income
++        - person.k1s_total_p5_income
++      cite:
++        doc: i8582
++        locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++    - id: person.k1_p5_loss
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part V column (b), all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_p5_loss
++        - person.k1s_total_p5_loss
++      cite:
++        doc: i8582
++        locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++    - id: person.k1_p5_prior
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part V column (c), all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_p5_prior
++        - person.k1s_total_p5_prior
++      cite:
++        doc: i8582
++        locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++    - id: person.k1_p6_loss
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part VI column (a), all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_p6_loss
++        - person.k1s_total_p6_loss
++      cite:
++        doc: i8582
++        locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++    - id: person.k1_p7a
++      printed: (helper)
++      type: NonNegDollars
++      label: Form 8582 Part VII column (a), all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_p7a
++        - person.k1s_total_p7a
++      cite:
++        doc: i8582
++        locator: p. 9, Part IV and Part V, "Use Part V for all other passive activities"
++  # --- end K-1 integration ---
+   collection:
+     cite:
+       doc: f1040

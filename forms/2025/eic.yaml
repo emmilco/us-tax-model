@@ -652,6 +652,10 @@ form:
             eq:
               - scope.other_line16
               - const: false
+          - op: test
+            eq:
+              - sche.any
+              - const: false
       cite:
         doc: i1040gi
         locator: p. 40, Step 2, question 4
@@ -662,6 +666,12 @@ form:
           cite:
             doc: i1040gi
             locator: p. 40, Step 2, question 4, "Yes. Use Worksheet 1 ... in Pub. 596"
+        - when: sche.any
+          form: Pub. 596, Worksheet 1 (EIC, Step 2, question 4)
+          remedy: Schedule E, rental of personal property and passive activity income are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: p. 40, Step 2, question 4, "You are filing Schedule E"
         - when: scope.other_line16
           form: Form 8814 (EIC, Step 2, question 4)
           remedy: Reporting a child's interest and dividends on Form 8814 is outside this tool.
@@ -680,6 +690,43 @@ form:
       cite:
         doc: i1040gi
         locator: p. 41, Step 3, question 4
+    - id: eic.mfs_same_home
+      printed: (helper)
+      type: Bool
+      label: 'Married filing separately: your spouse lived with you at some time in the last 6 months of 2025 (the answer
+        to Step 3, question 4, from when you lived together)'
+      expr:
+        op: test
+        eq:
+        - household.mfs_apart_last6
+        - const: false
+      cite:
+        doc: i1040gi
+        locator: 'p. 41, Step 3, question 4, "Did you and your spouse have the same principal residence for the last 6 months of 2025?"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025"'
+      ambiguity: amb.2025.mfs_lived_apart
+    - id: eic.same_principal_home
+      printed: (helper)
+      type: Bool
+      label: 'Step 3, question 4: you and your spouse had the same principal residence for the last 6 months of 2025 (on a
+        separate return, from when you lived together; otherwise asked)'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.mfs
+            - const: true
+          then: eic.mfs_same_home
+        - guard:
+            op: test
+            eq:
+            - household.mfs
+            - const: false
+          then: eic.same_home
+      cite:
+        doc: i1040gi
+        locator: 'p. 41, Step 3, question 4, "Did you and your spouse have the same principal residence for the last 6 months of 2025?"'
     - id: eic.legally_separated
       printed: (helper)
       type: Bool
@@ -704,7 +751,7 @@ form:
           - const: false
         - op: test
           eq:
-          - eic.same_home
+          - eic.same_principal_home
           - const: false
         - op: test
           eq:
@@ -897,13 +944,6 @@ form:
         doc: i1040gi
         locator: pp. 41–42, Step 4, questions 1 to 6 (question 2 "at least age 25 but under age 65", born after December 31,
           1960 and before January 2, 2001)
-      refuses:
-        - when: sa.dependent
-          form: Dependent of another person or dual-status alien (EIC, Step 4, question 6)
-          remedy: A filer who can be claimed as a dependent, or a dual-status alien, is outside this tool.
-          cite:
-            doc: i1040gi
-            locator: p. 42, Step 4, question 6
     - id: eic.step34
       printed: (helper)
       type: Bool
@@ -970,20 +1010,14 @@ form:
       printed: (Step 5, 2)
       shown_when: eic.reached_step5
       type: NonNegDollars
-      label: Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless chosen as earned income; zero in this tool
+      label: Enter the Medicaid waiver payment amounts excluded from income on Schedule 1, line 8s, unless you choose to include these amounts in earned income, in which case enter -0-
       expr:
-        op: copy
-        from: eic.zero
+        op: sum_over
+        collection: person
+        field: person.mw_not_earned
       cite:
         doc: i1040gi
-        locator: p. 42, Step 5, worksheet line 2
-      refuses:
-        - when: scope.other_income
-          form: Medicaid waiver payments (EIC, Step 5, line 2)
-          remedy: Medicaid waiver payments are outside this tool.
-          cite:
-            doc: i1040gi
-            locator: p. 42, Step 5, worksheet line 2
+        locator: 'p. 42, Step 5, worksheet line 2, "Enter the Medicaid waiver payment amounts excluded from income on Schedule 1, line 8s, unless you choose to include these amounts in earned income, in which case enter -0-", "If you and your spouse both received Medicaid waiver payments during the year, you and your spouse can make different choices"'
     - id: eic.step5_line3
       printed: (Step 5, 3)
       shown_when: eic.reached_step5

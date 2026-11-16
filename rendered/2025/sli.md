@@ -24,6 +24,13 @@
 - Expr: `{"op":"input","source":"Did you (or, on a joint return, your spouse) pay interest on a student loan in 2025?"}`
 - Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `sli.any_if_not_mfs`
+
+- **Authored helper label:** You (or, on a joint return, your spouse) paid interest on a student loan in 2025, asked only when the filing status is not married filing separately (no otherwise, since that status cannot take the deduction)
+- **Encoded (Bool):** Choose — [household helper "Filing status married filing separately" = false → helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025"] [household helper "Filing status married filing separately" = true → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.mfs",{"const":false}],"op":"test"},"then":"sli.any"},{"guard":{"eq":["household.mfs",{"const":true}],"op":"test"},"then":"sli.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, "Your filing status is any status except married filing separately" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `sli.interest`
 
 - **Authored helper label:** Total interest you paid in 2025 on student loans
@@ -34,8 +41,8 @@
 ## (gate) — `sli.interest_if_any`
 
 - **Authored helper label:** Total interest paid in 2025 on student loans, asked only when interest was paid on a student loan (zero otherwise)
-- **Encoded (NonNegDollars):** Choose — [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = true → helper "Total interest you paid in 2025 on student loans"] [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = false → helper "Year parameter sales.zero"]
-- Expr: `{"alternatives":[{"guard":{"eq":["sli.any",{"const":true}],"op":"test"},"then":"sli.interest"},{"guard":{"eq":["sli.any",{"const":false}],"op":"test"},"then":"sli.zero"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025, asked only when the filing status is not married filing separately (no otherwise, since that status cannot take the deduction)" = true → helper "Total interest you paid in 2025 on student loans"] [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025, asked only when the filing status is not married filing separately (no otherwise, since that status cannot take the deduction)" = false → helper "Year parameter sales.zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sli.any_if_not_mfs",{"const":true}],"op":"test"},"then":"sli.interest"},{"guard":{"eq":["sli.any_if_not_mfs",{"const":false}],"op":"test"},"then":"sli.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sli.unqualified_any`
@@ -52,8 +59,8 @@
 ## (gate) — `sli.unqualified_any_if_any`
 
 - **Authored helper label:** Whether any of the interest was on a loan that is not a qualified student loan, asked only when interest was paid on a student loan (false otherwise)
-- **Encoded (Bool):** Choose — [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = true → helper "Any of that interest was on a loan that is not a qualified student loan"] [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = false → helper "Year parameter household.no (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["sli.any",{"const":true}],"op":"test"},"then":"sli.unqualified_any"},{"guard":{"eq":["sli.any",{"const":false}],"op":"test"},"then":"sli.no"}],"op":"choose"}`
+- **Encoded (Bool):** Choose — [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025, asked only when the filing status is not married filing separately (no otherwise, since that status cannot take the deduction)" = true → helper "Any of that interest was on a loan that is not a qualified student loan"] [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025, asked only when the filing status is not married filing separately (no otherwise, since that status cannot take the deduction)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sli.any_if_not_mfs",{"const":true}],"op":"test"},"then":"sli.unqualified_any"},{"guard":{"eq":["sli.any_if_not_mfs",{"const":false}],"op":"test"},"then":"sli.no"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sli.unqualified`
@@ -80,8 +87,8 @@
 ## (gate) — `sli.assisted_any_if_any`
 
 - **Authored helper label:** Whether any of the interest was paid from tax-free qualified tuition program earnings or through tax-free loan repayment assistance, asked only when interest was paid on a student loan (false otherwise)
-- **Encoded (Bool):** Choose — [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = true → helper "Any of that interest was paid from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance"] [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025" = false → helper "Year parameter household.no (false)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["sli.any",{"const":true}],"op":"test"},"then":"sli.assisted_any"},{"guard":{"eq":["sli.any",{"const":false}],"op":"test"},"then":"sli.no"}],"op":"choose"}`
+- **Encoded (Bool):** Choose — [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025, asked only when the filing status is not married filing separately (no otherwise, since that status cannot take the deduction)" = true → helper "Any of that interest was paid from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance"] [helper "You (or, on a joint return, your spouse) paid interest on a student loan in 2025, asked only when the filing status is not married filing separately (no otherwise, since that status cannot take the deduction)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sli.any_if_not_mfs",{"const":true}],"op":"test"},"then":"sli.assisted_any"},{"guard":{"eq":["sli.any_if_not_mfs",{"const":false}],"op":"test"},"then":"sli.no"}],"op":"choose"}`
 - Cite: [i1040gi] p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs" and "The National Health Service Corps (NHSC) Loan Repayment Program" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sli.assisted`

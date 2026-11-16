@@ -1,0 +1,25 @@
+{
+ "kind": "render",
+ "form": "f8919firm",
+ "family": "claude",
+ "base": "2eaac1cfc5245732844f372edd511722de577bd15375e6148f6d8f571a0df316",
+ "lines": [
+  {
+   "key": "1(c)",
+   "record": "2eaac1cfc5245732844f372edd511722de577bd15375e6148f6d8f571a0df316",
+   "status": "MATCH",
+   "subject_key": "e063f024ab042ca6c23247bc5da7cf20aa6142d485117c1f9d4e3234b3f18eb2"
+  },
+  {
+   "key": "1(f)",
+   "record": "2eaac1cfc5245732844f372edd511722de577bd15375e6148f6d8f571a0df316",
+   "status": "MATCH",
+   "subject_key": "a1f9c864c5648b3e914069af37042185c2fbbb8260ddae300e8cfe924ec94ea7"
+  }
+ ],
+ "subjects": {
+  "1(c)": "973985ad462e174df2dc5c80f94c791ff806fb1727d9ef447ecd65269123c596",
+  "1(f)": "b4f15700639be49acc8bba6b2d8c9443c340a808e8c6dc1d2dbd272fdd04ef7c"
+ },
+ "__rest__": "b36eb667d3065dfa5dd6abd544dcb667a04d42d9d00a7e47c6c3b2b21dffdd18"
+}

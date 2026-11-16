@@ -6,7 +6,7 @@
  "head_rows": {
   "lines judged": "34",
   "match / mismatch / unclear / missing": "34 / 0 / 0 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -71,9 +71,9 @@
   },
   {
    "key": "(screen) (person.se_screen)",
-   "record": "4bd743e27eb9e0b1df9bd71ce3b7f7e26f9208f298328eb7f722ce5e9f42f08e",
+   "record": "400b9acaba7be3904e4fbdb9e22f29bb0010dfa7c76f14e3e223b3e4434d0aa9",
    "status": "MATCH",
-   "subject_key": "d522cc3dbbf355a1644bed31bd7ff003d60145092f1371e47679ba0ab5cdcf87"
+   "subject_key": "573e82d716821dbe9d1ee44398ce998d5e6799bdf169aed6c380b1b3137a7f7d"
   },
   {
    "key": "(screen) (person.plan_screen)",
@@ -83,15 +83,15 @@
   },
   {
    "key": "Step 1",
-   "record": "94fb39f475177db650c3890beac86e8f01aae8efca361781c3c7f1762ab3d09b",
+   "record": "400b9acaba7be3904e4fbdb9e22f29bb0010dfa7c76f14e3e223b3e4434d0aa9",
    "status": "MATCH",
-   "subject_key": "ee0572d290a29e3f5b43e148166166b97c41823620ba61c45c94a6fd2717031c"
+   "subject_key": "86f9f07409847c79ec6a1df103a4c6bb5ed5387c845b2c967ae9b480754afb8f"
   },
   {
    "key": "Step 2",
-   "record": "94fb39f475177db650c3890beac86e8f01aae8efca361781c3c7f1762ab3d09b",
+   "record": "400b9acaba7be3904e4fbdb9e22f29bb0010dfa7c76f14e3e223b3e4434d0aa9",
    "status": "MATCH",
-   "subject_key": "ac88a0e8022e71edc1236d97a98cb4c7c19dc20f95ef1f4846489ca679c33e4a"
+   "subject_key": "e52d0109505417971f8beb1c540f02d4f43dd9003ae1c61ab9567ca75cfe99b3"
   },
   {
    "key": "Step 3",
@@ -225,10 +225,10 @@
   "excess": "2ec6c73ca182e811cf7259d5a2359870a6b4847c23b1a1213dd210cceb89c0f9",
   "zero": "56a11e09deb0116e1f3c128f1752c8b174532238c961ae27a9a708421219f121",
   "credit": "04f651e17bd41d95113216306e28f5303f80898e3ef2041e1a151adc423b3e75",
-  "(screen) (person.se_screen)": "b117049b2d5c553634ae6c5ee8d0619cf62c008db8ea56a0cfd25844c808caa2",
+  "(screen) (person.se_screen)": "27163805caaa1da62e4048475aa5df0beda1a938cadbbbbdb73a81873a076958",
   "(screen) (person.plan_screen)": "38f69c2c0baa07363222d9cc81878f09702bfaea462c3ade9da751a2f6bfed34",
-  "Step 1": "9a63b7bc12f91304fcd57aa6cef8f4d75b4b07eddef0cb3f4d6773aeebed6ac5",
-  "Step 2": "8a18d100f200bc70d034cbf4e29245bcf815153428d2933fad45c1aa19ef4d49",
+  "Step 1": "9114a17fa54dfe8eb5dbc14763c392f44813aec6cf65053b4cb95b081d1ccd0f",
+  "Step 2": "5d4fa203460e6b634c9e8baeb8ebd4b394b5ad7369e532f21c650ffe98fcaa9e",
   "Step 3": "6dc9e181cefa05af31b1d01d394d867ff43f957d419f78037ca796695fe1f2fa",
   "Step 5": "e00f89f146804b9f4194bc873efd88c70e6260f55aa15c548921892b6bdd3c0d",
   "Step 6": "5c109917e19c8a33451ba0d9c242848d4f96a7a3812418f2d5d77536f94746a0",

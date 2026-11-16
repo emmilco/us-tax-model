@@ -3,6 +3,10 @@
  "form": "f8959",
  "family": "claude",
  "base": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
+ "head_rows": {
+  "match / mismatch / unclear / missing": "23 / 1 / 0 / 0",
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+ },
  "lines": [
   {
    "key": "1",
@@ -12,17 +16,15 @@
   },
   {
    "key": "2",
-   "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; refusal located elsewhere. f8959 line 2, \"Unreported tips from Form 4137, line 6\". Form 4137 is filed for tips not reported to the employer or allocated tips (i1040gi p. 112, Line 5). Unreported tips are not on a W-2 and are asked by scope.pay_no_w2 (\"wages, tips or strike benefits that are not on a W-2?\"), which refuses Form 1040 line 8 through scope.other_income; allocated tips (W-2 box 8) by s2.w2_marks, which refuses Schedule 2 through s2.other. The redraft moved these words out of f8959.unsupported to those askers (docs/provisional/MAP.md 2.5). No completed return has a Form 4137 amount, so line 2 is $0 on every computed return. Project stands.",
-   "subject_key": "e7192396b8410e6cd97a1db0fcdf762ebdb02179e4db3cfa1cdfde7a1932386c"
+   "record": "6db53a98ad15cc06a7806770d64cdb9441f2251bd14fb20e568e27948582a192",
+   "status": "MATCH",
+   "subject_key": "445c5dd014f1d6586c74462c8048b987c58d8f5b3d7ff7cb0a0d10d1169d1648"
   },
   {
    "key": "3",
-   "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
-   "status": "MISMATCH",
-   "ruling": "Ruling: scope; refusal located elsewhere. f8959 line 3, \"Wages from Form 8919, line 6\". Form 8919 wages are pay from an employer who treated the worker as a contractor, so not on a W-2; scope.pay_no_w2 (\"wages, tips or strike benefits that are not on a W-2?\") asks it of everyone and refuses Form 1040 line 8 through scope.other_income (MAP 2.5). No completed return has a Form 8919 amount; line 3 is $0 on every computed return. Project stands.",
-   "subject_key": "8633e0d5df70216f407929894cbe142aaab109cf6bccb6133bc2299768a6745e"
+   "record": "6db53a98ad15cc06a7806770d64cdb9441f2251bd14fb20e568e27948582a192",
+   "status": "MATCH",
+   "subject_key": "2f564d00169315138bacdb442f5d551794bd9b42dde6f5a76ee50ba1e54509d2"
   },
   {
    "key": "8",
@@ -44,9 +46,9 @@
   },
   {
    "key": "4",
-   "record": "e132b0d08f446a79d2799f6ce824537637edd76743b1c640be5d63c14d21e495",
+   "record": "6db53a98ad15cc06a7806770d64cdb9441f2251bd14fb20e568e27948582a192",
    "status": "MATCH",
-   "subject_key": "e45596240754af1fe26ccf0df39e683e0692fc6594c2d3542a668552b1e277d6"
+   "subject_key": "ad75b46594910604c9551ccf4f4ce9f4c19d93d1d6a68beec78b0a4ebfd97dc1"
   },
   {
    "key": "5",
@@ -154,12 +156,12 @@
  ],
  "subjects": {
   "1": "37f69ed7930673f8f907395fc1f2058ee1cf5b31ff761397b3e40607f135c11e",
-  "2": "822e3ff2afb51c307dbd7f0e73b1fc6635fa85d5fe00dfb0a7ab6d10dff61948",
-  "3": "a0e00b4667de692ac841f0bed59e52641d8d0f20a9917b8ee078ca98cc9e187e",
+  "2": "4bd4b650d379bbc8efa35653cf8fcba9494a454ffc6943d0803fae25a5d1ef5f",
+  "3": "879e17712425dd7d0685e6d61005515dec6c7e0f09c023ea08bfa6b577521e1a",
   "8": "0db2eb6f83a07bbb6e696f09df4f1544e1b69bb39bb95045a66ab0c72f2cf598",
   "14": "4fa146658dc58a2eb7dc36a2c3baaf3031e846a71a1b5e941fdd92d3e684c812",
   "23": "8699f0f61851e718cb6821bb6fc949ff2d89e7986be3cca92e6c6121b142535a",
-  "4": "380ccda443c8c640f64a81025f3d421cad35394f4c0878d07dc0ba791d893783",
+  "4": "d072aca18bd569335e666a3d2d92586aa5bdd383d22c0baedc70b1e6a40c02b8",
   "5": "c3d3bdebc03b5471defee98a89b3c0eee8578c4146430c47f1bab17fbd07942c",
   "6": "142822ff8d95c4d77569f328e4bc3d74b5d1f4aa4ef4543d3917a6b41c494886",
   "7": "ca9455d2bf15a5ac6189abb34590d1e1e7b0dc6d134cea28ffff4dfa446788cc",

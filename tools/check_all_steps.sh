@@ -6,13 +6,14 @@
 # Compile first: review tools and every build consumer import engine/dist. Then
 # build and render, beside only the engine self-check and the Lean build: canonical/
 # and rendered/ are read by the log, review and source-coverage checks. The other
-# steps run in three waves; the steps of a wave run side by side, each writing its
+# steps run in four waves; the steps of a wave run side by side, each writing its
 # output to its own log, printed in the order below when the wave ends. No two steps
 # of a wave write the same file, and none reads what another of its wave writes:
 # wave 1 checks the sources, logs and the build's data and runs the tools' self-tests
 # (tools/self_tests.py, one step per group), wave 2 runs the evaluator checks, wave 3
 # writes the evidence report, which reads reports/<year>/engine_differential.json that
-# engine_differential (wave 2) rewrites, and the stage review packets.
+# engine_differential (wave 2) rewrites, and the stage review packets, and wave 4 checks
+# the figures the entry documents quote from the reports the earlier waves write.
 # Nothing checks these rules; a new step must be placed by them. A failing step fails
 # the run after its wave. So does a step that exits 0 without a line tools/step_output.py
 # requires of it: the line of each self-test the step runs inside itself, which would
@@ -42,12 +43,20 @@
 # as tools/release.sh does). docs runs docs_steps: compile, the build without
 # render, and the checks that read the bookkeeping paths of tools/docs_paths.txt (tools/tier_paths.py
 # lists every reader of them).
+#
+# --print-steps lists the tier's steps instead of running them, in the order declared, one per line: the step's
+# name, a tab, and its command quoted for eval (printf %q; a command that is a function of this script, such as
+# build_and_render, is printed by its name). For a New York step the year skips, the line is its name,
+# "skip" and the reason, tab-separated. Nothing is run and no times file is written (a printed command's times
+# file is /dev/null). tools/release_prep.sh runs its steps from this list, so a step's command is declared here only.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 tier=full
+print_steps=0
 args=()
 while [ "$#" -gt 0 ]; do
   case "$1" in
+    --print-steps) print_steps=1; shift ;;
     --tier) tier="${2:-}"; shift; [ "$#" -gt 0 ] && shift ;;
     --tier=*) tier="${1#--tier=}"; shift ;;
     *) args+=("$1"); shift ;;
@@ -66,7 +75,7 @@ case "$ny_rc" in
   *) echo "check-all: tools/jurisdiction.py --ny-status failed" >&2; exit 2 ;;
 esac
 slow_steps=" lean_build mutate engine_differential compare ny_compare ny_mutate interview_length "
-docs_steps=" compile build check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree "
+docs_steps=" compile build check_bug_inventory bug_status check_agent_runs check_docs_conventions siblings_check bookkeeping_self_tests coverage_tree doc_figures "
 case "$tier" in
   full|fast|docs) ;;
   *) echo "check-all: unknown tier '$tier' (full, fast or docs)" >&2; exit 2 ;;
@@ -82,8 +91,6 @@ in_tier() {
 }
 node=(node engine/dist/main.js)
 times="$(git rev-parse --git-path check-all-times)"
-: > "$times"
-logs="$(mktemp -d)"
 run_t0=$(date +%s)
 # finish: on exit, however the run ends, record the run's time and print the summary of the times.
 finish() {
@@ -92,7 +99,13 @@ finish() {
   python3 tools/check_times.py "$times" || true
   rm -rf "$logs"
 }
-trap finish EXIT
+if [ "$print_steps" = 0 ]; then
+  : > "$times"
+  logs="$(mktemp -d)"
+  trap finish EXIT
+else
+  times=/dev/null  # the printed commands that take a times file (self_tests.py --times) write nowhere
+fi
 names=()
 pids=()
 skipped=()
@@ -176,7 +189,21 @@ review_packets() {
     "${node[@]}" review-stage5 "$@"
 }
 
-if [ -n "$ny_skip" ]; then
+if [ "$print_steps" = 1 ]; then
+  # --print-steps: step() prints the line of its command instead of starting it; wave() waits for nothing.
+  step() {
+    local name="$1"; shift
+    in_tier "$name" || return 0
+    if [ -n "$ny_skip" ] && [[ "$name" == ny_* ]]; then
+      printf '%s\tskip\t%s\n' "$name" "$ny_skip"
+      return 0
+    fi
+    printf '%s\t' "$name"
+    printf ' %q' "$@"
+    printf '\n'
+  }
+  wave() { :; }
+elif [ -n "$ny_skip" ]; then
   echo "check-all: New York steps skipped for $year: $ny_skip"
 fi
 step compile npm run compile --silent
@@ -198,6 +225,7 @@ jstep fetch_sources "--jurisdiction ny" python3 tools/fetch_sources.py
 jstep check_extraction "--jurisdiction ny" python3 tools/check_extraction.py
 step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
 step check_ptc_tables python3 tools/extract_ptc_tables.py --check "$@"
+step check_realty_tables python3 tools/extract_realty_tables.py --check "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
 step check_printed_tables python3 tools/extract_printed_tables.py --check "$@"
 step check_layouts python3 tools/layouts.py --check "$@"
@@ -232,6 +260,9 @@ step twins python3 tools/check_twins.py "$@"
 jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py
 # No id of either jurisdiction's build carries a year, but for the ids listed in tools/year_ids.json (spec 4.3).
 step year_ids python3 tools/check_year_ids.py "$@"
+# No old id of tools/year_free_names.json is left in the fixtures (defaults included), coverage rows, personas or the
+# triage witnesses of the rulings, in any form, the collection-indexed `doc[entry].name` included (tools/rename_ids.py).
+jstep renamed_ids "--jurisdiction ny" python3 tools/rename_ids.py check
 # The prepared operations of the next tax year (changes/<year+1>/) still apply to this year's forms, question bank and
 # profiles: no line gone or renamed, no expected text changed, no collision, reference or gate broken, evidence printed.
 jstep year_changes "--jurisdiction ny" python3 tools/year_changes.py --check
@@ -282,6 +313,10 @@ fi
 step evidence "${node[@]}" evidence ${evidence_args[@]+"${evidence_args[@]}"} "$@"
 step review_packets review_packets "$@"
 wave wave3
-if [ "${#skipped[@]}" -gt 0 ]; then
+# The generated figures of the handoff, README.md and docs/TRUST.md (tools/doc_figures.py), after the waves that
+# rewrite the reports they quote.
+step doc_figures python3 tools/doc_figures.py --check
+wave wave4
+if [ "$print_steps" = 0 ] && [ "${#skipped[@]}" -gt 0 ]; then
   echo "check-all: ${#skipped[@]} New York steps skipped for $year (${skipped[*]}): $ny_skip"
 fi

@@ -4,15 +4,15 @@
  "family": "claude",
  "base": "7d74f0e3064f755a76d15839a999abd92d5111e00d37241b0883880a8844cf23",
  "head_rows": {
-  "agree / disagree / missing": "22 / 3 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "21 / 4 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "cda14f54817bc7e94357a66d5d4b6872c358bc67e5a0e5854c56b821d59eb8b4"
+   "subject_key": "c783cdb141f6afafb4e432b2add9ec5cb0016b7dc21c0bb8d6d742acf61cffe1"
   },
   {
    "key": "2",
@@ -22,63 +22,64 @@
   },
   {
    "key": "3",
-   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "16660f58533a5aae8cb423ce63148b8ee169fba6b96a488b557b1a117359bc33"
+   "subject_key": "42e32bf3b5e5ca384b7e20d1c20509b5033af2e98c3c0ed15e491a5bcb39b0b4"
   },
   {
    "key": "4a",
-   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
-   "status": "AGREE",
-   "subject_key": "2bdaede958c603f1360e89c64d55ce9a7bb1f9955f6b1f98768cce3e4af97eba"
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the project's line 4a (s1.line5) and the reply's (s1.line3 + s1.line5) differ only by Schedule 1 line 3, business income. i8960 p. 8, Line 4a, has Schedule 1 lines 3, 5 and 6 entered, and line 4b then adjusts out 'income or loss from a trade or business that's not a passive activity' (the section 162 nonpassive business), so for an active Schedule C or farm business lines 4a and 4b net to zero on lines 3 and 6 and line 4c equals the project's. Any other business or pass-through income (passive business, K-1) is refused through f8960.unsupported ('annuity, business or pass-through income', refusing 'when Form 8960 is required') on every line 4a through 8 reads. Triage 2,523/3,008 agree; 485 differ, all with s1.line3 nonzero and the gate answered No; the completed witnesses checked (stage14.asset.hy_5yr, Schedule C $50,000; stage5.return.refund_f8960_refund_unused, AGI $130,000) file no Form 8960 (f8960.used: AGI not over the $200,000 threshold), so line 4a is not on the return. The reply's own note says business income is refused, then adds line 3 anyway.",
+   "subject_key": "fc8b6dec8f4b22587d0f2d2a2ec7268129fef1b3c3d9db9816348df977c8d2ba"
   },
   {
    "key": "4b",
-   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "4396208aadb8b0175e0596a13a2ebb25373a9cbae821df0e992801faa85d1e53"
+   "subject_key": "b08a3257a4800b91753518995a6accbd3615ec2ba0f6a205e60bc27904b0d509"
   },
   {
    "key": "5b",
-   "record": "62553fde379c83991b1a80fff41dd71da9480899108bf753b5c7203e550e669c",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "04a28ebcce57204b5a7059518fbc60d567a6cfa5471eb994f84ea8b1e2beeed2"
+   "subject_key": "a25825d99af4713b1d7233bc8a1906394f13b4822a47c89cdb09b6a8b076c45f"
   },
   {
    "key": "5c",
-   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "9c692aeb2a6fdc26294abbb3460853129814bed67217174519073767bf4c36b1"
+   "subject_key": "145e9a4cd234802b20f2e18ed5fe7ba70826d8cae4d5b9cc80964704cb983135"
   },
   {
    "key": "6",
-   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "668c2bb132833de767e5bd785a86e7f314d031456ffb0e4398c65e1a02d77d04"
+   "subject_key": "cd14d188d8ffecf2a7e31b049734ff3df5ceb3279b9df58ccc4068c764d38de5"
   },
   {
    "key": "7",
-   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "8837140ecd5bf5f00d650b148f0c8d45d68b7687b69ed9c296be353af47b9e70"
+   "subject_key": "8229fb859987293ee535ee1cd2a20835c4446a108916eb7ef18b2473331c76f1"
   },
   {
    "key": "9c",
-   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "5f8def1e77744f53f390ad24438f96a465cba08106640f90076fc22b0f276f8b"
+   "subject_key": "16f9abedfa0d5ab1fda17de44580e73a7fdbca76f899057f91178bbda181b8df"
   },
   {
    "key": "10",
-   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "199e81adaa2ea826cd25fd6fbca1b62996b612218fa6b37cfdd80a58f6616dde"
+   "subject_key": "ae945244132c1882d34cb5ec64897033c702ffebcd527590f732190f4c720dca"
   },
   {
    "key": "4c",
-   "record": "7d74f0e3064f755a76d15839a999abd92d5111e00d37241b0883880a8844cf23",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "5db9762a7dfedc3599191ad3f93c0ec43dc1089de628101cceaf23ed893ea376"
+   "subject_key": "136e7534b71e29c27037cdceb35e5488f604a1a5bb6874ab7976dc7c99965402"
   },
   {
    "key": "5a",
@@ -94,9 +95,9 @@
   },
   {
    "key": "8",
-   "record": "7d74f0e3064f755a76d15839a999abd92d5111e00d37241b0883880a8844cf23",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "AGREE",
-   "subject_key": "861bd5ce860ac83de642061ca64780bfd45539fdf86d827244b43e15e918cca1"
+   "subject_key": "aa7e794b83ca85ba28bdb1ff619ce2a92a678eeecd14908a0947c4f553398e96"
   },
   {
    "key": "9a",
@@ -131,10 +132,10 @@
   },
   {
    "key": "13",
-   "record": "a0e86cd3a372b31c0e5bda4279747d8329641c7f717a5f23913e4ea90aeab0cb",
+   "record": "457c1504da9f7184107bd6ed8472c933170ac8f6729ac831d63c0dfb992dbb9e",
    "status": "DISAGREE",
    "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f8960.line13: \"f8960.f8960.line13: reference 'f1040.line11' does not resolve\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
-   "subject_key": "e6f749044e60424def1690d5a7e5af227e6faa847166fc3a147d32bc06231749"
+   "subject_key": "a7db6d700df0d5f7bf48be9235d96d1024b63162bbb9bbe46a39a3d7fca4c2a4"
   },
   {
    "key": "14",
@@ -163,27 +164,27 @@
   }
  ],
  "subjects": {
-  "1": "66a9764c56f96421d7176c181879811c6991942d2229a0d2ec69dda3641f52a2",
+  "1": "a25ab6a1c30764845632c66618abceb46e89d805f42576ec438ccb5f624bd083",
   "2": "817b512bc405f0ae99c10891f8e593c7336b4333b6182ad13bc465e61406dc13",
-  "3": "97077b9d013a2951e784241af0266d70c0ba4a40d57b3eb1706575c81faae81a",
-  "4a": "b84f31b6c90c9c7104176cb3a8be203856b113420b862e69c987d321df026dba",
-  "4b": "f50d45d4e157921dbe56fb4dd7ad12ba49dc6a5725f7c16f97c29e154efcdd0d",
-  "5b": "2beb24456b740acb0131ce46384b9c09325143d6d88e480cf0ffa0fea15f6405",
-  "5c": "6ce2815c316315d6b3a2a7aab2ff4b41565394790e0002669c14f715f82f38b5",
-  "6": "7e6e153a1ee874ac83755d0a24e3674e969eddb0f4ef09a9b70e35128dfb7a8e",
-  "7": "b3c720466bbb1e3d4454e8568086d2395bf7bf7885d7ec1fec47ee2742d1e856",
-  "9c": "1c80765f865960559c6d52ef4152f38c22fbb3e6cf53d53367718b9a1999a0cc",
-  "10": "652108580572752a29b6f9778941bc899c82617d010e9e41b50cad18db3adcb1",
-  "4c": "a263469cfb30ee61a1ece4858f66b4a9a00802d9e0d614c6fd77f1f47b172c19",
+  "3": "9efc47563b5e745ad0a62260eb83256f5a1aa39aa0f5682b5dbc358c76bd7604",
+  "4a": "34af9d91c0f63de8f58de62192aca5fcbea109a92b0b6cddf30bb27afaf3900e",
+  "4b": "770b0aad45fefae79d4d4a8cab25c8155d5797b038a0c7aeba74816020613f40",
+  "5b": "c99832f6ebcc21317c54a8ca30b02324a224bc3dd154bb3a216c7c73b38a9391",
+  "5c": "976b194d49f703347bb27c703df3b0a9f506900fc1b3d644c90d12f0a373c28d",
+  "6": "410047364e479bf737a23c19db998ba25be6067f5a2d5bee15a91e3d42203737",
+  "7": "cf5a19c0a4094091e79cd786167a2ef76d2b70b0f749ba16405cb33c79cc5024",
+  "9c": "d04a16673b9a668fc443a48ec30f1d5035cce68f8bfa8efd5d3d952bf236ee02",
+  "10": "5c306012eb290e7af3608514d6adbe5430635ea56e1df317a9ac15e639983e8c",
+  "4c": "b62e6f07a9dac2d8f0844e0ba7db4d81c1b3b579d85d202f51f50437c34667a2",
   "5a": "29b4f3ad55d0d7d7cf3ab45efee63a23f3486b66775355bbb9df229dc3bbefcb",
   "5d": "53cceec991a8ff8ef484ba58beb7f6ab24818fbfcb93eee01c238dfb96e5e5d8",
-  "8": "b404b8e4f9aaa953a796144ada3075836d8c84dc73f8293acdde368499865379",
+  "8": "1ef45898ddfcdf60ca791ba0371324b2e16884270ccceebdf80971b340c980c4",
   "9a": "d040a56b0381fdbce96cac94988ebb1bf93851d68a88ddd8cc10da9a2ddf5259",
   "9b": "300a10b9f5954a1b3e2b81458bba2dd5302ac2909a08382f668897f44212cff1",
   "9d": "cf25d42c1cccd3ca79bd0d94acee13f1db7a2b9d2a883d6417bf2d8f5780e8ec",
   "11": "a06b2c0e925a8c9c46d9939cf9bad63274525c0a0768a5f824a3df0616d5b9e3",
   "12": "877684a14759abdc6d34399c6ad2307ffefc6a5451887bbbe028912559676bc8",
-  "13": "2e8c4c78077b760c9a1a7fc8859281cf2b521b2dfeb132c512f79fefdf6615c3",
+  "13": "bc12541cad72993bb5237ad755b05b46f18bd5805374ad1436a8350e7ef4dca7",
   "14": "49b709d36cb619de8a00bfb88ecc6f53fa8cc50461868ee8c9adacb5815b9fc0",
   "15": "9734c7aaabf22158ca298cc36e38c0ceea2eb5f4ca1994017daa39e7c4d64ab1",
   "16": "9c95245ace043cb960caf2614f0e135ba6e89ab758879e6b81f635bb8cd137c1",
@@ -193,14 +194,16 @@
  "foreign": {
   "1": "37553ac0dd1921e4f151ad8b0243b815ea0001b6d76125dd79dfc42b5cec69dd",
   "3": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "4a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "4a": "7c13655df9a0eaf5f4620e10f95fa8a4aaf61e72471df33e0b20f7a109ba69bc",
   "4b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "5b": "06462e1c34c174727c7f63f47b5c42418c3a8ce65d74b28a28ea63b12d2bf558",
   "5c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "6": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
-  "7": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "7": "5cdf761159dcbd6f4bf4177e8f66863fd3fe85a2f93ab5d136971bffbdbe73e0",
   "9c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "10": "6157b5bd4813ad38a88c7d94a7388df017cd8c3a856fc20d901c4f663a36df0f",
+  "4c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "8": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "9b": "c99e78a5918933ad29e72bbcf1b26f4185149795019223f99783988c5cab1d87",
   "13": "6638ccb6b97e627056d0787f5e6391d59a37aab66c48d44960cf59124922852a"
  }

@@ -6444,6 +6444,326 @@
           "value": true
         }
       }
+    },
+    {
+      "id": "dep.marketplace_refused",
+      "covers": [
+        "f8962.dependent_filer"
+      ],
+      "evidence": "synthetic refusal regression",
+      "evidence_note": "i8962 p. 3, Who Can Take the PTC, \"2. No one can claim you as a dependent for the year.\" A claimable filer who enters a Form 1095-A is refused at f8962.dependent_filer. Refusal text recorded from the evaluator.",
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2004,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 2000000,
+        "person[taxpayer].w2[a].box5": 2000000,
+        "person[taxpayer].w2[a].box6": 124000,
+        "$f1095a": [
+          "form_1"
+        ],
+        "f1095a[form_1].mo_a": 30000,
+        "f1095a[form_1].mo_b": 40000,
+        "f1095a[form_1].c_total": 120000
+      },
+      "expect": {
+        "f8962.line24": {
+          "kind": "refusal",
+          "gate": "f8962.dependent_filer",
+          "form": "Form 8962 for a filer someone else can claim as a dependent",
+          "remedy": "Someone whom another person can claim as a dependent cannot take the premium tax credit. If that person claims you, they file Form 8962 for your coverage and you do not, so leave out your Form 1095-A. Otherwise this tool does not prepare Form 8962 for you.",
+          "cite": {
+            "doc": "i8962",
+            "locator": "p. 3, Who Can Take the PTC, \"2. No one can claim you as a dependent for the year.\"; p. 3, \"the person who claims you will\", \"You do not need to file Form 8962.\"",
+            "revision": "2025",
+            "snapshot": "f4ac86ada178e8aaaf98124b3450cad0cd5d84f7b16bcadd2dd47910e07bf9a2",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mfs.f8962.not_applicable",
+      "covers": [
+        "f8962",
+        "f1095a",
+        "s2"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l3, predicted by hand from the archived f8962 and i8962 (pp. 7, 18) before the evaluator was run, on the facts of stage18.blind.p1 (wages $40,000; one Form 1095-A, every month premium $500, SLCSP $450, advance payments $3,500 for the year) filed as married filing separately with no exception. Not an applicable taxpayer (i8962 p. 7, Married filing separately): lines 1 to 5 completed (tax family 1; household income 40,000; poverty line 15,060; line 5 265), line 24 zero (amb.2025.ptc_not_applicable), line 25 3,500, line 27 3,500; Table 5 at 200 to less than 300, the column for filing statuses other than single, $1,950 = line 28; line 29 the smaller, 1,950, to Schedule 2 line 1a.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box3": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "$f1095a": [
+          "form_1"
+        ],
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 50000,
+        "f1095a[form_1].mo_b": 45000,
+        "f1095a[form_1].c_total": 350000
+      },
+      "expect": {
+        "f8962.line_a": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.line1": {
+          "kind": "count",
+          "value": 1
+        },
+        "f8962.line3": {
+          "kind": "money",
+          "cents": 4000000
+        },
+        "f8962.line5": {
+          "kind": "count",
+          "value": 265
+        },
+        "f8962.line24": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8962.line25": {
+          "kind": "money",
+          "cents": 350000
+        },
+        "f8962.line27": {
+          "kind": "money",
+          "cents": 350000
+        },
+        "f8962.line28": {
+          "kind": "money",
+          "cents": 195000
+        },
+        "f8962.line29": {
+          "kind": "money",
+          "cents": 195000
+        },
+        "s2.line1a": {
+          "kind": "money",
+          "cents": 195000
+        }
+      }
+    },
+    {
+      "id": "mfs.f8962.exception",
+      "covers": [
+        "f8962",
+        "f1095a",
+        "s3"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l3, predicted by hand before running: mfs.f8962.not_applicable with Exception 2 (living apart when filing, unable to file jointly as a victim of domestic abuse), not used for 2022 to 2024, so line A is checked and the filer is applicable (i8962 p. 7). As stage18.blind.p1: line 7 .0460; line 8a 1,840; line 11 (a) 6,000, (b) 5,400, (c) 1,840, (d) 3,560, (e) 3,560, (f) 3,500; line 24 3,560; line 25 3,500; line 26 60 to Schedule 3 line 9.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box3": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "$f1095a": [
+          "form_1"
+        ],
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 50000,
+        "f1095a[form_1].mo_b": 45000,
+        "f1095a[form_1].c_total": 350000,
+        "f8962.mfs_exception": true,
+        "f8962.mfs_three_years": false
+      },
+      "expect": {
+        "f8962.line_a": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.line7": {
+          "kind": "rate",
+          "num": 460,
+          "den": 10000
+        },
+        "f8962.line8a": {
+          "kind": "money",
+          "cents": 184000
+        },
+        "f8962.line11e": {
+          "kind": "money",
+          "cents": 356000
+        },
+        "f8962.line24": {
+          "kind": "money",
+          "cents": 356000
+        },
+        "f8962.line26": {
+          "kind": "money",
+          "cents": 6000
+        },
+        "s3.line9": {
+          "kind": "money",
+          "cents": 6000
+        }
+      }
+    },
+    {
+      "id": "mfs.f8962.three_year_limit",
+      "covers": [
+        "f8962",
+        "s2"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l3, predicted by hand before running: mfs.f8962.exception, but the exception was used for each of 2022, 2023 and 2024, so it cannot be used for 2025 (i8962 p. 7, 3-year limit): line A is not checked and the values are those of mfs.f8962.not_applicable (line 24 zero, line 29 1,950).",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 4000000,
+        "person[taxpayer].w2[emp_a].box3": 4000000,
+        "person[taxpayer].w2[emp_a].box4": 248000,
+        "person[taxpayer].w2[emp_a].box5": 4000000,
+        "person[taxpayer].w2[emp_a].box6": 58000,
+        "$f1095a": [
+          "form_1"
+        ],
+        "f1095a[form_1].same_months": true,
+        "f1095a[form_1].mo_a": 50000,
+        "f1095a[form_1].mo_b": 45000,
+        "f1095a[form_1].c_total": 350000,
+        "f8962.mfs_exception": true,
+        "f8962.mfs_three_years": true
+      },
+      "expect": {
+        "f8962.line_a": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.line24": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8962.line29": {
+          "kind": "money",
+          "cents": 195000
+        },
+        "s2.line1a": {
+          "kind": "money",
+          "cents": 195000
+        }
+      }
+    },
+    {
+      "id": "mexist.f8962.dependent_filer.no_allocation",
+      "covers": [
+        "f8962"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of dep.marketplace_refused: a filer someone else can claim as a dependent who enters a Form 1095-A, no shared policy and no 2025 divorce or separation while on the same plan. Line 9 asks whether you are allocating policy amounts or using the alternative calculation for year of marriage (i8962 p. 12): no policy is shared and no divorce occurred, so allocation is not required (f8962.alloc false) and line 9 is No. Line 25 is refused like line 24: \"No one can claim you as a dependent for the year\" (i8962 p. 3, Who Can Take the PTC, item 2).",
+      "inputs": {
+        "sa.dependent": true,
+        "person[taxpayer].birth_year": 2004,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 2000000,
+        "person[taxpayer].w2[a].box5": 2000000,
+        "person[taxpayer].w2[a].box6": 124000,
+        "$f1095a": [
+          "form_1"
+        ],
+        "f1095a[form_1].mo_a": 30000,
+        "f1095a[form_1].mo_b": 40000,
+        "f1095a[form_1].c_total": 120000
+      },
+      "expect": {
+        "f8962.alloc": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.line9": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.line25": {
+          "kind": "refusal",
+          "gate": "f8962.dependent_filer",
+          "form": "Form 8962 for a filer someone else can claim as a dependent",
+          "remedy": "Someone whom another person can claim as a dependent cannot take the premium tax credit. If that person claims you, they file Form 8962 for your coverage and you do not, so leave out your Form 1095-A. Otherwise this tool does not prepare Form 8962 for you.",
+          "cite": {
+            "doc": "i8962",
+            "locator": "p. 3, Who Can Take the PTC, \"2. No one can claim you as a dependent for the year.\"; p. 3, \"the person who claims you will\", \"You do not need to file Form 8962.\"",
+            "revision": "2025",
+            "snapshot": "f4ac86ada178e8aaaf98124b3450cad0cd5d84f7b16bcadd2dd47910e07bf9a2",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mint.f8962.show_applicable.no_1095a",
+      "covers": [
+        "f8962"
+      ],
+      "evidence": "synthetic regression, hand-predicted from the archived form before evaluation",
+      "evidence_note": "The inputs of x1sche.f2.small_loss_exception (single, wages $50,000, a small rental loss; AGI $49,786.80) with no Form 1095-A and no Marketplace coverage. i8962 p. 3, Who Must File: Form 8962 is filed if you are taking the PTC or APTC was paid; with no Form 1095-A neither applies, so nothing is reported on Form 8962 lines 7, 8a and 8b (their display condition f8962.show_applicable is false), there is no excess advance credit to repay (Schedule 2 line 1a $0) and no net premium tax credit (Schedule 3 line 9 $0). The household's income test alone (applicable taxpayer) does not put lines 7 to 8b on the form.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1350000,
+        "rental[a].has_mortgage": true,
+        "rental[a].amt12": 800000,
+        "rental[a].has_insurance": true,
+        "rental[a].amt9": 40000,
+        "rental[a].has_taxes": true,
+        "rental[a].amt16": 50000,
+        "rental[a].has_repairs": true,
+        "rental[a].amt14": 25000,
+        "rental[a].has_utilities": true,
+        "rental[a].amt17": 20000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m2",
+        "rental[a].rprop[b].year": "y2020",
+        "rental[a].rprop[b].basis": 12000000
+      },
+      "expect": {
+        "f8962.show_applicable": {
+          "kind": "bool",
+          "value": false
+        },
+        "s2.line1a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line9": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

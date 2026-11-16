@@ -100,7 +100,7 @@
 
 - **IRS:** Qualified tips reported on Form 4137, column 1(c), for this employer
 - **Encoded (NonNegDollars):** Enter $0 (sales.zero).
-- **Refusal:** when s2.other is true, cannot complete Form 4137 (Social Security and Medicare Tax on Unreported Tip Income). Tips reported on Form 4137 are outside this tool. Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (c), and p. 103, method 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when person.f4137_filed is true, cannot complete The deduction for qualified tips included on Form 4137 (worksheet column (c)). This tool prepares Form 4137 but does not figure the part of its tips that is qualified tips for the deduction. Claim the deduction for tips without this tool, or answer that you do not want the deduction for tips. Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (c), and p. 103, method 4 (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"op":"param","ref":"sales.zero"}`
 - Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (c) (2025; printed date 2026-02-25; sha256 482e9c48)
 

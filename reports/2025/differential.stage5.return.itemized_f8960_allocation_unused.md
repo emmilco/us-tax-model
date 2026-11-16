@@ -35,7 +35,6 @@ Screening questions (answer No unless noted): Schedule 1 income, Schedule 1-A de
 | ftc.all_passive | yes |
 | ftc.statements | yes |
 | ftc.eligible | yes |
-| ftc.elect | yes |
 
 ## Read back (record each line the calculators show)
 

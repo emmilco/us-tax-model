@@ -1,0 +1,485 @@
+{
+ "kind": "transcription",
+ "form": "f1116",
+ "rulings": [
+  {
+   "printed": "10",
+   "project_expr_sha256": "286c32bc8aad9c08d677607d0fe795270c0a11ee15d61701f5ab08ca878e17e6",
+   "second_expr_sha256": "b1a82d22baee46d8b9ab9c508de583c5a79d01a2ec272b9a0f0878056d0c8602",
+   "ruling": "Ruling: representation; the reply enters Schedule B line 3 column (xiv) without the project's gate on ftc.carryover_if_asked (a carryover claimed). Where no carryover is claimed the $f1116sbyr roster is never asked and line 3 is empty, so the project's 0 is the value; the reply's only differences are candidate-unknown (86 completed, roster not confirmed) and 19 candidate-refuses on refused returns. Form 1116 line 10: 'Enter the sum of any carryover of foreign taxes (from Schedule B, line 3, column (xiv)) plus any carrybacks'.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "5c0a286e33d21aa1e738dbbfc4d7bc66887333d0dae457772512db19b0030b5e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@f1116",
+     "fixture:classm.f8889.5.deepseek@f1116",
+     "fixture:classm.f4952.3.deepseek@f1116",
+     "fixture:classm.f4952.4.deepseek@f1116",
+     "fixture:classm.f8960.2.deepseek@f1116",
+     "fixture:classm.dependent.1.deepseek@f1116",
+     "fixture:f1116.screen_redetermination@f1116",
+     "generated:20261026.1@f1116",
+     "generated:20261026.46@f1116",
+     "generated:20261026.68@f1116",
+     "generated:20261026.120@f1116",
+     "generated:20261026.122@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14",
+   "project_expr_sha256": "863f4ea74a8efda883bc94576e077c69ca98d7626537fb6406e235dcd9f2b1e1",
+   "second_expr_sha256": "61d12f191c287bdf070c2da13111902dbad9098b6a02effc7e1323207a231982",
+   "ruling": "Ruling: model error; the reply subtracts line 13. Form 1116 line 14: 'Combine lines 11, 12, and 13'; line 12 is printed in parentheses (a reduction) and line 13 (taxes reclassified under high tax kickout) is combined as entered, so line 14 = line 11 - line 12 + line 13, the project's. Line 13 is zero on the returns prepared (high-taxed income refused, f1116.high_taxed); the triage differences are candidate-unknown only (the reply reads f1116.redetermination and f1116.reduction unasked), 44 completed.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "aa6ce938d59e9ff7ad553eec58c9692034d9a11c724810c2dcd73b89a26a0faf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:f1116.c3_htko_over@f1116",
+     "fixture:f1116.screen_redetermination@f1116",
+     "fixture:f1116.screen_reduction@f1116",
+     "generated:20261026.1@f1116",
+     "generated:20261026.8@f1116",
+     "generated:20261026.11@f1116",
+     "partial:stage14.asset.hy_5yr-f1116.redetermination@f1116",
+     "partial:stage14.asset.hy_5yr-f1116.reduction@f1116",
+     "partial:stage14.asset.bonus_100-f1116.redetermination@f1116",
+     "partial:stage14.asset.bonus_100-f1116.reduction@f1116",
+     "partial:stage14.asset.prior_7yr-f1116.redetermination@f1116",
+     "partial:stage14.asset.prior_7yr-f1116.reduction@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "6022b387ec184f756d1a4ab8ef86291dd053a5382e4447900721a5faf19dce0e",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "2e739f126701e38ce88944cb6e19f5264b6b6c618d6f6d20126268e0aad5cf1d",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "17",
+   "project_expr_sha256": "dc2fa0667753adeb35c96ff04b4d5cd081d364d5a613f8c004bde623849743e8",
+   "second_expr_sha256": "b9f900f0ac0251e6817a6cf695294a2a2d20d84d7e052a03f09e3e059b6ac5ba",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "980232e1f7aee40bfa592bb6123adff8490bc80753b1921297d1ea42d5604ed4",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "18",
+   "project_expr_sha256": "1a161102b8c9c9f091f0fd4c0c3d04b1e9f33c8e9f19bda409583f787993f36d",
+   "second_expr_sha256": "ab7f0b9edee0b53b4424ddaf69a44d249db0b93589cdfeefe672de6734c24b00",
+   "ruling": "Ruling: model error; the reply's value is unknown on every return (1,032 completed candidate-unknown: its h_line18_ws branch for the Worksheet for Line 18, refused here by f1116.adjust, yields no value). Its shown_when (line 17 above zero) follows Form 1116 line 17, '(If the result is zero or less, skip line 18 and enter -0- on line 19.)': the project shows line 18 there; filed as a low finding on display only (BUG-0912), the value stays needed by f1116.us_loss.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "ec7a24ad8d5a7db717f2d9f132e585ea7bc78fd1ce8cce9407f1d424e9dc68a5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116",
+     "fixture:stage14.asset.refuse_qip_2017@f1116",
+     "fixture:stage14.asset.refuse_ads_past_gds@f1116",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f1116",
+     "fixture:stage14.asset.refuse_class@f1116",
+     "fixture:stage14.asset.refuse_listed_low@f1116",
+     "fixture:stage14.asset.refuse_s179_over@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "21",
+   "project_expr_sha256": "d83a11c4eb17e83c10439be0dfcce31f9735e0cbc2751aebf161732931a00e8e",
+   "second_expr_sha256": "5047046bdf9125ec798cafa0c48cf3e09684dad6f5b94f547e6d617ed068f29d",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "40ade998d5e44b373c25eef1fe260cedb6a193c7fe75f272bc7074954a340431",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "23",
+   "project_expr_sha256": "2c045d27f7d5d44747cf2f9c32ef3f0619a4b5c760deaf5a6134dfc055e28648",
+   "second_expr_sha256": "1b07032e4c7eb5c65b3b1e540b358b10d335c14e81fb5cd2ec263617b4366e76",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "fa1a5a2656c80639ff10a3f29fc4a66f2e1f2994b84301b426412540c338f29c",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "24",
+   "project_expr_sha256": "1201e17c79fd095998df42ac25949bab8c86ebb1899e67779d599eea1db0e363",
+   "second_expr_sha256": "b72d8911bc6d61eb307b5b73f4cbb8b3bb10c257797fb1b5d76141b32a019c03",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "f3907d17b7fa513353bc256ebde077b4db594f225a157e5934bec2394f4de433",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "27",
+   "project_expr_sha256": "bb97bbbd929034b875aa402b95cf6cd05c2411070c65c60596a29f3694303ef9",
+   "second_expr_sha256": "7dbd6647734eaca689ff43d14dbeee68808cc8908163fb5104a24c2441e44990",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "814e44a41613d513c3fa8204cba52c0b7f852dbe254a2706395d96f0125251f0",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "32",
+   "project_expr_sha256": "94f0c0b9e2eac4f05a73fc333e909bea7b03792beeca4dbcff7616fe903c90ce",
+   "second_expr_sha256": "89f6712fc4b43affd666f96f4c97d4e7106a14ac530531dc6a0f34bfdfcaca19",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "811dda71f6003e31458073745064682f9dbe0d0e63b78156e5855e86f7316c44",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "33",
+   "project_expr_sha256": "6d30ec18eb9ff4348476d8dd58dea1044d719eaf308b12eb364de11cb1f9cd07",
+   "second_expr_sha256": "a5d3af8aadc8296abd7c3852c28c29f7bfe24fef2d4737b00de44ee8ccbd34a8",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "6d18cc5bc302526c40d0daa55f941891a2cea78a987b31e5a635d08176967a61",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "35",
+   "project_expr_sha256": "9b5d249321fd7fbf8976a2a2abcc4bc93258e53440b37bca358089906f9623a2",
+   "second_expr_sha256": "2b84d4fa0424944e9c5ba999cdbecaeed1aa1b2285f990e619495b29c6e75d04",
+   "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f1116.line16: \"model changed a published result type\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "668a9c71c38094e300296d1e500b99eabc7c96b1f9985d0c684d4be0509f2286",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3a",
+   "project_expr_sha256": "8edd2273e73ce85986fbc724f6180da9ab3760a00a877c70d4d63f4f4eabf05a",
+   "second_expr_sha256": "53205cdc606de58be218d0d71a94777f33cd20a5af7cdf676984aad6c6a06eac",
+   "ruling": "Ruling: representation; the reply puts Schedule A lines 5b and 5c on line 3a where the project puts line 5e. They differ only where line 5a (state or local income tax) is above zero, and such a return is refused on line 35 by f1116.itemized_unread (p514 p. 27, 'State income taxes ... are definitely related and allocable to the gross income on which the taxes are imposed'); with line 5a zero, line 5e is lines 5b and 5c capped, the reply's value. Triage 1,911/2,073 agree; completed: 53 value, every witness a return with line 5a above zero off the Form 1116 path (stage4.salt.below $40,000 v. $0, stage20.blind.r9 $9,000 v. $0).",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "e7cb3502c05e9b4688d2ed1829168d571268b708f40074aa8ce476021036bb4b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage8.hoh.parent.died_not_half@f1116",
+     "fixture:audit.dependent.claimed_no_tin@f1116",
+     "fixture:audit.dependent.hoh_test1_no_tin@f1116",
+     "fixture:stage8.mut.parent_no_tin_nonresident@f1116",
+     "fixture:stage8.mut.parent_lives_with_you_mexico_resident@f1116",
+     "fixture:stage8.mut.hoh_child_months_unanswered_absence@f1116",
+     "fixture:stage15.mut.dc_parent_part_year_born_died_unanswered@f1116",
+     "fixture:stage9.eic.mut.classm_f8995a_2_line2_zero@f1116",
+     "fixture:stage21.f1.where_kidnapped_withheld_eic@f1116",
+     "fixture:f1116.c4_state_income_tax@f1116",
+     "fixture:stage20.blind.r9@f1116",
+     "fixture:stage4.niit.allocated@f1116",
+     "fixture:stage4.additional_taxes.combined@f1116",
+     "fixture:stage18.mut.classm_f8962_4_nov_start@f1116",
+     "fixture:stage8.mut.mfj_married_unanswered_line1a@f1116",
+     "fixture:stage21.f1.where_kidnapped_withheld_hoh@f1116",
+     "fixture:stage21.t068.orphan_with_wages_refused@f1116",
+     "partial:stage8.mut.hoh_child_months_unanswered_absence-f1116.foreign_gain@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3e",
+   "project_expr_sha256": "81d661d0d0d51823bb3437f355d4393b5b6f3f937d18e96ad8acad4a3b3efc30",
+   "second_expr_sha256": "812471ee2109d26a20acdf9263abfa5a3ace61b03073446601fd7534c3d2a999",
+   "ruling": "Ruling: interface gap; i1116 p. 17, Lines 3d and 3e: gross income \"means the total of your gross receipts (reduced by cost of goods sold), total capital and ordinary gains (before subtracting any losses), and all other income\". The log records complete input context: fail; the line-scoped request (f1116.lines-a0e3f14dd0cd) carried no computed income line of Form 1040 or Schedule 1 (no f1040.line1z, 2b, 3b, 4b, 5b, 6b, s1.line1, 2a, 7, 9, sd.line13), and the reply says so in its note and sums only Schedule B lines 4 and 6 and positive gains. Taxable interest and ordinary dividends are the same on both sides (f1040.line2b, 3b vs sb.line4, 6). The project adds wages, IRA, pension, annuity and social security amounts, Schedule 1 business, alimony, unemployment and other income and Schedule D line 13, as the source requires; Schedule E rents and royalties, which line 3e would also need, are refused on this path (f1116.rental, on line 35), and Schedule C by f1116.business. Triage executable-triage-v2: 602/2,914 agree; 2,014 value (1,075 completed, e.g. classm.f1040.1.deepseek: project $32,936.00 from wages, reply $0.00), 165 project-refuses, 133 project-unknown, all on refused or incomplete returns. Project right; no change. The incomplete request is a review-tool gap (catalog for a line-scoped f1116 request), reported to the coordinator.",
+   "context": "f2c2a7f04c479e466f8a7433912bcbe571d414deb8b036a55fc1e300bda7914d",
+   "date": "2026-11-15",
+   "run": "0c47fb0012ff5dacca0da8d09c993e221567f8d07f7cc39c5dd150bc6818d948",
+   "subject_key": "d3c6c55490ac673c75a23b4c81c4d178a39f705ca974e8455917280a2a92cce1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f1116",
+     "fixture:classm.f2441.2.deepseek@f1116",
+     "fixture:classm.f2441.3.deepseek@f1116",
+     "fixture:classm.f2441.4.deepseek@f1116",
+     "fixture:classm.f2441.5.deepseek@f1116",
+     "fixture:classm.f2441.6.deepseek@f1116",
+     "fixture:classm.f8889.1.deepseek@f1116",
+     "fixture:classm.dependent.3.deepseek@f1116",
+     "fixture:classm.dependent.4.deepseek@f1116",
+     "fixture:classm.dependent.5.deepseek@f1116",
+     "fixture:classm.asset.1@f1116",
+     "fixture:classm.asset.2@f1116",
+     "fixture:classm.asset.3@f1116",
+     "fixture:classm.asset.4@f1116",
+     "fixture:classm.carloan.1@f1116",
+     "fixture:classm.f2441.3@f1116",
+     "fixture:classm.f4952.1@f1116",
+     "fixture:classm.f4952.3@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3e",
+   "project_expr_sha256": "81d661d0d0d51823bb3437f355d4393b5b6f3f937d18e96ad8acad4a3b3efc30",
+   "second_expr_sha256": "f35cc2bfe64f8c4c5e0ad5a0ee06a94b8f5f0697f3222c3fb53906af4d96c875",
+   "ruling": "Ruling: model error; the reply enters Form 1040 line 9 (total income, net of losses and deductions). i1116 p. 17, Lines 3d and 3e: 'gross income means the total of your gross receipts (reduced by cost of goods sold), total capital and ordinary gains (before subtracting any losses), and all other income (before subtracting any deductions)'; the reply's own note concedes netted amounts. Triage 1,478/2,073 agree; completed: 232 value (e.g. stage14.asset.hy_5yr: $0 v. $49,400, Schedule C income, refused on this path by f1116.business). Integration note (lane request, not a finding here): Schedule E rents and royalties must join line 3e once x1-sche lands.",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "074876fe5543dcdb44820554996fe9498583e590ee6e4a29ec80db668fe104b7",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f1116",
+     "fixture:stage14.asset.mq_7yr@f1116",
+     "fixture:stage14.asset.mq_mixed@f1116",
+     "fixture:stage14.asset.mq_not@f1116",
+     "fixture:stage14.asset.bonus_100@f1116",
+     "fixture:stage14.asset.bonus_40_before@f1116",
+     "fixture:stage14.asset.refuse_qip_2017@f1116",
+     "fixture:stage14.asset.refuse_ads_past_gds@f1116",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f1116",
+     "fixture:stage14.asset.refuse_class@f1116",
+     "fixture:stage14.asset.refuse_listed_low@f1116",
+     "fixture:stage14.asset.refuse_s179_over@f1116",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f1116",
+     "fixture:classm.f4952.3.deepseek@f1116",
+     "fixture:classm.f4952.4.deepseek@f1116",
+     "fixture:classm.f8960.2.deepseek@f1116",
+     "fixture:classm.person.1.deepseek@f1116",
+     "fixture:classm.asset.2@f1116",
+     "fixture:classm.asset.3@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "f1116.hmi_applies",
+   "project_expr_sha256": "96af6fd6ff6dd51928f6ea297ea3687705d21e91f5b48480eae6692a7d79f4ee",
+   "second_expr_sha256": "fd05543e2ebd1fd860d3d04d9e42e095fedf803e1a1c65e5347e313a8b774fbb",
+   "ruling": "Ruling: model error; the reply tests only gross foreign source income over $5,000 and drops the itemizing condition. i1116 p. 18, Line 4a: 'Otherwise, deductible home mortgage interest including points is apportioned using a gross income method': only an itemizer has deductible home mortgage interest. Triage 1,504/2,073 agree; completed: 6 value (the f1116 fixtures c1, c3, c7, c9, c10, standard-deduction filers: project false, reply true), 9 candidate-unknown (reply reads the $f1116col roster unasked).",
+   "context": "203c1329e2751c69c5f50411eda4841f8625fb2dcb44c39e28e22b42695c7ed0",
+   "date": "2026-11-15",
+   "run": "7b03a4c8789b8238d6dd0e3ecb69c9eb36d502fce4ce6bc7012a18f8d54513d9",
+   "subject_key": "32cd447c8d779c60dbcf0a6f2ca18f0624ad87fdeb4b06e6546e463796fb8a2d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f1116",
+     "fixture:stage14.asset.refuse_ads_past_gds@f1116",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f1116",
+     "fixture:stage14.asset.refuse_class@f1116",
+     "fixture:stage14.asset.refuse_listed_low@f1116",
+     "fixture:stage14.asset.refuse_s179_over@f1116",
+     "fixture:f1116.c3_htko_at_limit@f1116",
+     "fixture:f1116.c3_htko_over@f1116",
+     "fixture:f1116.c3_two_groups@f1116",
+     "fixture:f1116.c1_income_over@f1116",
+     "fixture:f1116.c1_income_at@f1116",
+     "fixture:f1116.c6_adjust_ceiling@f1116",
+     "generated:20261026.9@f1116",
+     "generated:20261026.12@f1116",
+     "generated:20261026.69@f1116",
+     "generated:20261026.117@f1116",
+     "generated:20261026.123@f1116",
+     "generated:20261026.124@f1116"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

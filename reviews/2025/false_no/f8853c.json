@@ -1,0 +1,417 @@
+{
+ "form": "f8853c",
+ "reviews": {
+  "gate:f8853c.has_line17": {
+   "subject_sha": "2105f92fb0fc15dc9c6d48420ff49b3e905383dda47bf809176066bb8e58eae1",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "4",
+       "who": "A policyholder receives fixed daily or monthly benefits under a contract that is not a qualified LTC contract. The insurer's Form 1099-LTC has the \"Qualified contract\" box in box 4 checked anyway, or the contract was issued before 1997 and was later changed materially, so it lost grandfathered status while the issuer kept checking the box.",
+       "why_no": "The question asks only whether box 4 is left unchecked on the form. The box is checked, so the truthful answer is no, even though the contract is not qualified.",
+       "line": "f8853c.nonqualified_if_periodic (and through it line 18, which then wrongly equals line 17)",
+       "irs_text": "i8853 (2025) p. 8: a qualified contract issued before January 1, 1997 is one that \"met state law requirements ... and hasn't been changed materially\"; f8853 (2025) p. 2, line 17 Caution: \"Don’t use lines 18 through 26 to figure the taxable amount of benefits paid under an LTC insurance contract that isn’t a qualified LTC insurance contract\"",
+       "severity": "high",
+       "fix": "Ask about the contract, not the form: \"Was any of these payments made under a contract that is not a qualified long-term care insurance contract? Box 4 of Form 1099-LTC usually shows this, but a contract issued before 1997 that was materially changed later, or a contract the insurer says doesn't meet section 7702B, is not qualified even if the box is checked.\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A filer receives fixed periodic LTC benefits under a nonqualified contract, but the Form 1099-LTC leaves the \"Per diem\" box in box 3 unchecked, the payments came with no Form 1099-LTC at all (for example, from a foreign insurer), or the form shows \"Reimbursed amount\" by mistake.",
+       "why_no": "The parent helper for line 17 follows the form's per diem box, so the filer answers no to \"payments were made at a set rate.\" Line 17 becomes 0, the gate is false, and the nonqualified-contract question is never asked. The refusal or Schedule 1 reporting that the line 17 Caution requires is lost.",
+       "line": "f8853c.nonqualified_if_periodic",
+       "irs_text": "i8853 (2025) p. 8: \"Per diem payments are payments of a fixed amount made on a periodic basis without regard to actual expenses incurred. Box 3 of Form 1099-LTC should indicate whether payments were per diem payments.\"",
+       "severity": "medium",
+       "fix": "Ask the parent as a fact: \"Did you receive any long-term care benefits paid as a fixed amount per day, week, or month, regardless of your actual costs, whether or not a Form 1099-LTC checks the Per diem box?\" Also ask about nonqualified contracts for any LTC benefit, not only when line 17 is more than zero."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "Spouses file jointly, and the spouse is the policyholder of a nonqualified LTC contract paying per diem benefits for a parent or for the spouse.",
+       "why_no": "If the line 17 helper or the box 4 question is worded as \"you received\" or \"your forms,\" the filer answers for themselves only. Line 17 and the gated question then cover only the filer's own Section C.",
+       "line": "f8853c.nonqualified_if_periodic",
+       "irs_text": "i8853 (2025) p. 8: \"The policyholder is required to report the income, even if payment is assigned to a third party or parties.\" f8853 (2025) p. 2: \"If more than one Section C is attached, check here\"",
+       "severity": "medium",
+       "fix": "Ask per policyholder and per insured: \"Did you or your spouse, as policyholder, receive ...\", and repeat the box 4 question for each Section C."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose per diem forms include accelerated death benefits paid periodically under a life insurance policy for a chronically ill insured. Those forms leave box 4 unchecked because the payer is not an LTC contract.",
+       "why_no": "The question does not say which forms \"those forms\" means, so the filer counts the life insurance form. They answer yes, the interview ends, and the line 19 path is wrongly refused. A filer who instead excludes these forms may also wonder whether the question applies to them at all.",
+       "line": "f8853c.nonqualified_if_periodic",
+       "irs_text": "i8853 (2025) p. 8: \"Accelerated death benefits paid with respect to an insured individual who is chronically ill are generally excludable from your gross income to the same extent as they would be under a qualified LTC insurance contract.\" Line 19: \"These amounts are generally shown in box 2 of Form 1099-LTC.\"",
+       "severity": "medium",
+       "fix": "Limit the question to forms with an amount in box 1 that came from a long-term care insurance contract. In the help, say that box 4 is left blank on accelerated death benefit forms and that this does not count."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer reading the help \"Box 4 of Form 1099-LTC is checked 'Qualified contract' for most policies.\"",
+       "why_no": "The help suggests the answer is usually no and invites a filer to answer from that assumption without looking at the box or the contract.",
+       "line": "f8853c.nonqualified_if_periodic",
+       "irs_text": "f8853 (2025) p. 2, line 18: \"Enter the part of the amount on line 17 that is from qualified LTC insurance contracts\"",
+       "severity": "low",
+       "fix": "Replace the help with: \"Check box 4 on each form, and your policy documents, before answering.\""
+      }
+     ],
+     "prompt_sha": "1e3928bb3f58175642b2c56c3e6f950ba6bd4f1c51e79e1e7d5bd290a0d2d800",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.102616,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8853c.has_line17.2105f92fb0fc.1.response.txt"
+    }
+   ],
+   "condition": "f8853c.has_line17",
+   "lines": [
+    "f8853c.nonqualified_if_periodic"
+   ],
+   "inputs": [
+    "f8853c.nonqualified"
+   ],
+   "used": [
+    {
+     "doc": "f8853",
+     "revision": "2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "d776562b3e85e1d899cf0f09f8e833a1a91ae35e2c98740c4dd1759c700778d2",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8853 (2025), line 17, Caution, \"Don’t use lines 18 through 26 to figure the taxable amount of benefits paid under an LTC insurance contract that isn’t a qualified LTC insurance contract\"",
+      "Form 8853 (2025), line 18, \"Enter the part of the amount on line 17 that is from qualified LTC insurance contracts\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "6c1a4ef14ca4a6008b1e7a408729ab5110b60b30f8ff903fee4c87de59a4b396"
+    },
+    {
+     "doc": "i8853",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "6074ac664af92fa38a4d4b7c50950ff2f8dbb34477c29c91ce6a29e893806080",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Qualified LTC Insurance Contract, \"A qualified LTC insurance contract is a contract issued\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "dfd7bb2df8aabc47fa4ec6dc8862db5788ab74a2174fcdf7c72fb2c666fbc1d0"
+    }
+   ]
+  },
+  "gate:f8853c.has_line24": {
+   "subject_sha": "ea6a0b4a3973a52e11ed66ddcdd5f58902093d2856a69725f48b500bfacb862c",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A policyholder whose only reimbursements came from an LTC contract issued in 1994. The contract was modified in 2003 to raise its reimbursement amounts. Following the caution on line 24, they enter 0 on line 24 for all of those reimbursements.",
+       "why_no": "The line 24 caution says 'Generally, don't include ... under a contract issued before August 1, 1996'. The filer applies the general rule, misses the exception for contracts modified after July 31, 1996, and enters 0. Line 24 is then zero, so the gate is false and the pre-1996 question that would end the interview is never asked.",
+       "line": "f8853c.pre1996_if_reimbursed",
+       "irs_text": "i8853 p. 9, Line 24: \"However, you must include reimbursements if the contract was exchanged or modified after July 31, 1996, to increase per diem payments or reimbursements.\"",
+       "severity": "medium",
+       "fix": "Ask the pre-1996 question whenever line 20 is more than zero, not only when line 24 is more than zero. Ask it about the facts, before the filer applies the exclusion: 'Did you or anyone receive, or do you expect to receive, reimbursements for the insured's LTC services under a contract issued before August 1, 1996, including one later exchanged or modified?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "An insured whose pre-1996 policy will reimburse December 2025 care costs in early 2026. The filer included that expected amount on line 24, as the instructions direct ('received or expect to receive').",
+       "why_no": "The question 'Was any of that paid back under a policy...' is in the past tense. An amount only expected was not 'paid back' in 2025, so no is the truthful answer.",
+       "line": "f8853c.pre1996_if_reimbursed",
+       "irs_text": "i8853 p. 9, Line 24: \"Enter the reimbursements you received or expect to receive through insurance or otherwise\"; \"Generally, don't include on line 24 reimbursements ... under a contract issued before August 1, 1996\"",
+       "severity": "high",
+       "fix": "Reword to: 'Was any of that amount received, or expected to be received, under a policy or contract issued before August 1, 1996?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer whose LTC contract was issued in 1993 and exchanged in 2001 for a new policy with the same benefits. The new policy shows a 2001 issue date.",
+       "why_no": "They read 'a policy issued before August 1, 1996' as the date on their current policy, 2001, and answer no. The reimbursements may still come under the pre-1996 rule, because the exchange did not increase benefits, so they may belong off line 24.",
+       "line": "f8853c.pre1996_if_reimbursed",
+       "irs_text": "i8853 p. 9, Line 24: \"you must include reimbursements if the contract was exchanged or modified after July 31, 1996, to increase per diem payments or reimbursements\"",
+       "severity": "medium",
+       "fix": "Add to the question: 'Count a policy that replaced or modified one first issued before August 1, 1996, and a certificate under a group contract issued before that date.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "Any filer with a pre-1996 contract who is unsure whether the rule applies to them.",
+       "why_no": "The only help shown, 'A Yes ends the interview here', gives no guidance on the question and makes a borderline filer lean toward no.",
+       "line": "f8853c.pre1996_if_reimbursed",
+       "irs_text": "f8853 (2025) p. 2, line 24 Caution: \"If you received any reimbursements from LTC contracts issued before August 1, 1996, see instructions.\"",
+       "severity": "low",
+       "fix": "Replace the help with text explaining the pre-1996 rule and the modification exception. Answer yes if unsure; the tool cannot figure this case."
+      }
+     ],
+     "prompt_sha": "a62676a25b9eefa707e96af36ac55af6c27a2e8126ce67afd1575c3318d0f4d9",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.08415600000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8853c.has_line24.35d0daeec8d9.1.response.txt"
+    }
+   ],
+   "condition": "f8853c.has_line24",
+   "lines": [
+    "f8853c.pre1996_if_reimbursed"
+   ],
+   "inputs": [
+    "f8853c.pre1996"
+   ],
+   "used": [
+    {
+     "doc": "f8853",
+     "revision": "2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "d776562b3e85e1d899cf0f09f8e833a1a91ae35e2c98740c4dd1759c700778d2",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8853 (2025), line 24, \"Reimbursements for qualified LTC services provided for the insured during the LTC period\"",
+      "Form 8853 (2025), line 24, Caution, \"If you received any reimbursements from LTC contracts issued before August 1, 1996, see instructions\"; , Line 24, \"Generally, don’t include on line 24 reimbursements for qualified LTC services you received under a contract issued before August 1, 1996\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "6c1a4ef14ca4a6008b1e7a408729ab5110b60b30f8ff903fee4c87de59a4b396"
+    },
+    {
+     "doc": "i8853",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "6074ac664af92fa38a4d4b7c50950ff2f8dbb34477c29c91ce6a29e893806080",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Line 24, \"However, you must include reimbursements if the contract was exchanged or modified after July 31, 1996, to increase per diem payments or reimbursements\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "dfd7bb2df8aabc47fa4ec6dc8862db5788ab74a2174fcdf7c72fb2c666fbc1d0"
+    }
+   ],
+   "carried": {
+    "by": "rename",
+    "map": {
+     "f8853c.pre1996": "f8853c.contract_before_ltc_date",
+     "f8853c.pre1996_if_reimbursed": "f8853c.contract_before_ltc_date_if_reimbursed"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "35d0daeec8d99e972e2f77dd893a960d7839604885c0a948b517d09f0d17a2eb"
+   }
+  },
+  "gate:f8853c.has_periodic": {
+   "subject_sha": "4cb278bc9c19c5e7f2170d9ed90248c96e2dd8a848ddffd872d9eec20279f978",
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A policyholder receives fixed daily or monthly benefits under a qualified LTC contract, but the insurer's Form 1099-LTC leaves the box 3 'Per diem' box unchecked, or the payments came on no form at all. Line 17 is built only from Forms 1099-LTC with that box checked, so lines 17, 18 and 20 come out zero.",
+       "why_no": "The gate is computed rather than asked. It inherits line 17's reliance on the per diem box. The instructions say only that box 3 'should indicate' per diem, so a missing check makes line 20 zero even though the payments were periodic.",
+       "line": "f8853c.line22_if_periodic, f8853c.line24_if_periodic (and the multiple-payee and rate-change refusals)",
+       "irs_text": "i8853 p. 8, Per Diem Payments: 'payments of a fixed amount made on a periodic basis without regard to actual expenses incurred. Box 3 of Form 1099-LTC should indicate whether payments were per diem payments.'",
+       "severity": "low",
+       "fix": "Upstream of the gate, ask whether any LTC benefits were paid at a fixed rate regardless of actual costs, with or without a checked per diem box. Route a yes into line 17/18 so line 20, and with it the gate, reflects the fact rather than the form."
+      }
+     ],
+     "prompt_sha": "084d2cabf661991439232bdd63ccb107fc2a43a484a5ba2203a9ab2be967dee2",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.082896,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8853c.has_periodic.4cb278bc9c19.1.response.txt"
+    }
+   ],
+   "condition": "f8853c.has_periodic",
+   "lines": [
+    "f8853c.line22_if_periodic",
+    "f8853c.line24_if_periodic",
+    "f8853c.others_paid_if_periodic",
+    "f8853c.rate_changed_if_periodic"
+   ],
+   "inputs": [
+    "f8853c.line22",
+    "f8853c.line24",
+    "f8853c.others_paid",
+    "f8853c.rate_changed"
+   ],
+   "used": [
+    {
+     "doc": "i8853",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "6074ac664af92fa38a4d4b7c50950ff2f8dbb34477c29c91ce6a29e893806080",
+     "pages": [
+      8,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Filing Requirements for Section C, \"Complete all of Section C\"",
+      "p. 9, Line 22, \"Qualified LTC services are necessary diagnostic, preventive, therapeutic, curing, treating, mitigating, and rehabilitative services, and maintenance or personal care services required to treat a chronically ill individual under a plan of care prescribed by a licensed health care practitioner\"",
+      "p. 9, Line 24, \"Enter the reimbursements you received or expect to receive through insurance or otherwise for qualified LTC services provided for the insured for LTC periods in 2025\"",
+      "p. 9, Method 2—Equal Payment Rate, \"your LTC period is the period during which the insurance company uses the same payment rate to compute your benefits\"",
+      "p. 9, Method 2—Equal Payment Rate, \"your LTC period is the period during which the insurance company uses the same payment rate to compute your benefits\" and \"you have two LTC periods if the insurance contract computes payments at a rate\"; p. 8, Line 18, \"If you have more than one LTC period, you must separately calculate the taxable amount of the payments received during each LTC period\"",
+      "p. 9, Multiple Payees, \"attach a statement duplicating lines 18 through 26\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "dfd7bb2df8aabc47fa4ec6dc8862db5788ab74a2174fcdf7c72fb2c666fbc1d0"
+    },
+    {
+     "doc": "f8853",
+     "revision": "2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "d776562b3e85e1d899cf0f09f8e833a1a91ae35e2c98740c4dd1759c700778d2",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8853 (2025), line 15, \"In 2025, did anyone other than you receive payments on a per diem or other periodic basis under a qualified LTC insurance contract covering the insured\"; , Line 15, \"Special rules apply in determining the taxable payments if other individuals received per diem payments under a qualified LTC insurance contract\"",
+      "Form 8853 (2025), line 22, \"Costs incurred for qualified LTC services provided for the insured during the LTC period\"",
+      "Form 8853 (2025), line 24, \"Reimbursements for qualified LTC services provided for the insured during the LTC period\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "6c1a4ef14ca4a6008b1e7a408729ab5110b60b30f8ff903fee4c87de59a4b396"
+    }
+   ]
+  },
+  "gate:f8853c.periodic": {
+   "subject_sha": "b04a5f85da77e8057508106b2d2ac60ea2d98e48352782fc4959c59bb7e82c40",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "An LTC policyholder whose contract pays a fixed benefit per week, per quarter, or as a fixed annual amount, regardless of actual care costs.",
+       "why_no": "The gate asks about 'a set amount per day or month'. A fixed weekly, quarterly, or annual benefit is truthfully not per day or per month, so the filer answers No even though the payments are periodic and unrelated to cost.",
+       "line": "f8853c.line17_if_periodic",
+       "irs_text": "f8853 (2025) p.2 line 17: 'Gross LTC payments received on a per diem or other periodic basis'; i8853 p.8: 'payments of a fixed amount made on a periodic basis without regard to actual expenses incurred'",
+       "severity": "high",
+       "fix": "Ask: 'Were any payments a fixed amount for each day, week, month, or other period, whatever the care actually cost?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An insured covered by an 'indemnity' LTC policy that pays a fixed daily benefit, such as $200, for each day care is received, whatever the bill was.",
+       "why_no": "The payments are triggered only by care received, so the filer sees them as repaying care costs. The help says 'Payments that only repaid care costs are not taxed: answer No'.",
+       "line": "f8853c.line17_if_periodic",
+       "irs_text": "i8853 p.8: 'Per diem payments are payments of a fixed amount made on a periodic basis without regard to actual expenses incurred.'",
+       "severity": "medium",
+       "fix": "Say in the help that a fixed amount per day of care counts as Yes even when paid only for days with care. Answer No only if each payment equaled actual bills submitted."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A filer receiving fixed periodic benefits whose Form 1099-LTC has box 3 blank or wrongly marked 'Reimbursed amount', or who received no Form 1099-LTC at all.",
+       "why_no": "The gate and help point to box 3 ('Per diem' checked in box 3). The filer follows the form, not the fact, and answers No.",
+       "line": "f8853c.line17_if_periodic",
+       "irs_text": "i8853 p.8: 'Box 3 of Form 1099-LTC should indicate whether payments were per diem payments' (should, not must; the definition is factual)",
+       "severity": "medium",
+       "fix": "Ask about the fact first: were payments a fixed amount regardless of cost? Mention box 3 only as a usual indicator, and add 'even if box 3 is blank, marked otherwise, or no form arrived'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A policyholder who received accelerated death benefits from a life insurance policy, reported in box 2, while the insured was chronically ill but not terminally ill, and who had no LTC insurance payments.",
+       "why_no": "The gate's wording ('whatever the care cost', box 3 per diem) and help describe LTC insurance payments only. Life insurance benefits do not read as 'payments at a set amount... whatever the care cost', and a life insurer's form may not check box 3.",
+       "line": "f8853c.line19_if_periodic",
+       "irs_text": "i8853 p.8 Line 19: 'Enter the total accelerated death benefits you received with respect to the insured... generally shown in box 2 of Form 1099-LTC. Include only amounts you received while the insured was a chronically ill individual.'",
+       "severity": "medium",
+       "fix": "Add a separate gate question: 'Did you receive accelerated death benefits from a life insurance policy (box 2 of Form 1099-LTC) while this person was chronically ill but not certified terminally ill?'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A policyholder who received a single lump-sum accelerated death benefit, or proceeds from selling the policy in a viatical settlement, while the insured was chronically ill but not terminally ill.",
+       "why_no": "A one-time payment is truthfully not 'at a set amount per day or month', so the filer answers No. Line 19 instructions direct entering 'the total accelerated death benefits', and the definition includes viatical settlement proceeds.",
+       "line": "f8853c.line19_if_periodic",
+       "irs_text": "i8853 p.8: 'amounts paid as accelerated death benefits under a life insurance contract or for the sale or assignment of any portion of the death benefit as part of a viatical settlement... chronically ill are generally excludable... to the same extent as... a qualified LTC insurance contract'; Line 19: 'Enter the total accelerated death benefits you received'",
+       "severity": "medium",
+       "fix": "Gate line 19 on any accelerated death benefit or viatical settlement received while the insured was chronically ill, whether paid periodically or in one sum. Classify the payment after a broad Yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "An insured who received per diem LTC payments early in 2025 and was certified terminally ill later in 2025, so the current payments are excluded.",
+       "why_no": "The filer reads the question in light of the insured's current status, or thinks all benefits are untaxed because the insured is terminally ill, and answers No.",
+       "line": "f8853c.line19_if_periodic",
+       "irs_text": "i8853 p.8 Line 19: 'If the insured was redesignated from chronically ill to terminally ill in 2025, only include on line 19 payments received before the insured was certified as terminally ill.'",
+       "severity": "low",
+       "fix": "Add 'at any time in 2025, including before a terminal-illness certification'."
+      }
+     ],
+     "prompt_sha": "f0e99a925fbadc403d0bacc39440cb55dc03d652b15c3f6bb2f4152cb2d2a983",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.10488800000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_f8853c.periodic.b04a5f85da77.1.response.txt"
+    }
+   ],
+   "condition": "f8853c.periodic",
+   "lines": [
+    "f8853c.line17_if_periodic",
+    "f8853c.line19_if_periodic"
+   ],
+   "inputs": [
+    "f8853c.line17",
+    "f8853c.line19"
+   ],
+   "used": [
+    {
+     "doc": "i8853",
+     "revision": "2025 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "6074ac664af92fa38a4d4b7c50950ff2f8dbb34477c29c91ce6a29e893806080",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 19, \"Enter the total accelerated death benefits you received with respect to the insured listed on line 14a. These amounts are generally shown in box 2 of Form 1099-LTC\" and \"Don’t include amounts you received while the insured was a terminally ill individual\"",
+      "p. 8, Per Diem Payments, \"Per diem payments are payments of a fixed amount made on a periodic basis without regard to actual expenses incurred\"",
+      "p. 8, Per Diem Payments, \"Per diem payments are payments of a fixed amount made on a periodic basis without regard to actual expenses incurred. Box 3 of Form 1099-LTC should indicate whether payments were per diem payments\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "dfd7bb2df8aabc47fa4ec6dc8862db5788ab74a2174fcdf7c72fb2c666fbc1d0"
+    },
+    {
+     "doc": "f8853",
+     "revision": "2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+     "text_sha256": "d776562b3e85e1d899cf0f09f8e833a1a91ae35e2c98740c4dd1759c700778d2",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Form 8853 (2025), line 17, \"Gross LTC payments received on a per diem or other periodic basis. Enter the total of the amounts from box 1 of all Forms 1099-LTC you received with respect to the insured on which the “Per diem” box in box 3 is checked\"",
+      "Form 8853 (2025), line 19, \"Accelerated death benefits received on a per diem or other periodic basis\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "6c1a4ef14ca4a6008b1e7a408729ab5110b60b30f8ff903fee4c87de59a4b396"
+    }
+   ]
+  }
+ }
+}

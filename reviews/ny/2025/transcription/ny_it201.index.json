@@ -5,16 +5,16 @@
  "base": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
  "head_rows": {
   "printed lines compared": "168",
-  "agree / disagree / missing": "86 / 82 / 0",
-  "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
+  "agree / disagree / missing": "85 / 83 / 0",
+  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "C",
-   "record": "5b4b6656d5b9d9a3b6e772d68e427cf2187402f258225f7742a4317dafcf7464",
+   "record": "7d418ad615aaa4cde2942b75c63fd0a26b06848a847e60b43ed7a17e72598bba",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; the reply asks the New York item C question on every return; the project asks it only after a federal No (ny_it201.item_c_if_not_federal) and takes Yes when sa.dependent is Yes. A federal Yes refuses the federal return (sa.deduction refuses when sa.dependent: \"A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice\"), and a refused federal return is a refused New York return, so on every return the tool completes item C is the New York question, as the reply has it (owner decision B8; IT-201-I p. 5, Item C, \"If you can be claimed as a dependent on another taxpayer's federal return, you must mark an X in the Yes box. You must mark the Yes box even if the other taxpayer did not claim you\"). Triage: all 182 differing witnesses are on refused returns; none on a completed or incomplete one.",
-   "subject_key": "8a22bf4c39dfff5cd45e869318bc0d0854136002dc6248107f42145e80adf6e1"
+   "ruling": "Ruling: representation; the reply always asks New York's item C question; the project takes a federal Yes to sa.dependent and asks the New York question only after a federal No (ny_it201.item_c_if_not_federal). A federal Yes ('Can someone claim you or your spouse as a dependent', which excludes a claimant who need not file) implies New York's broader Yes ('If you can be claimed as a dependent on another taxpayer's federal return, you must mark an X in the Yes box', IT-201-I p. 5, Item C; 'even if the other taxpayer did not claim you'), so the two agree whenever the filer answers consistently. Triage b7f692226401: 2,845/2,883 agree; 6 value differences, all on refused returns, and 32 candidate-unknown, every one because the interview does not ask ny_it201.ask.item_c after a federal Yes. Owner decision B8; amb.ny.2025.item_c.",
+   "subject_key": "147f087729fcc459637c1b521aab9888143d68b10cf60c3843d2959ba4ce163a"
   },
   {
    "key": "H (count)",
@@ -126,10 +126,10 @@
   },
   {
    "key": "16",
-   "record": "b2c94054709303395be6a0870f531ac6271a34c8d676eb738524a4af2bc6cdf0",
+   "record": "7d418ad615aaa4cde2942b75c63fd0a26b06848a847e60b43ed7a17e72598bba",
    "status": "DISAGREE",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies s1.line9 in cents. Same reference otherwise.",
-   "subject_key": "176ae6aed62d64bba02a3a99ef9836e65aaa526211e0fc993b369872689272f9"
+   "ruling": "Ruling: model error; the reply copies federal Schedule 1 line 8z alone, the project Schedule 1 line 9 (total other income). IT-201-I p. 7, Step 3, Lines 1 through 19: 'Be sure to enter your total other income on line 16 and your total federal adjustments to income on line 18. Write each type of income ... in the Identify areas on lines 16 and 18.' Triage b7f692226401: 2,754/2,883 agree; 73 value (58 on completed returns), e.g. classm.s1.1 project $5,000, reply $0; classm.s1.3 project -$20,000, reply $0. The reply's own note says it had no instructions for line 16; the project is right.",
+   "subject_key": "e7a27134e69406307da9f3ca1a1ebf29bd9d448ca3160383c90faa1a457cb86c"
   },
   {
    "key": "17",
@@ -189,9 +189,10 @@
   },
   {
    "key": "25",
-   "record": "5b4b6656d5b9d9a3b6e772d68e427cf2187402f258225f7742a4317dafcf7464",
-   "status": "AGREE",
-   "subject_key": "05e54dc66881c15f43db0031252ae9628cef1a02aa6feb86e99f8b9f513e4825"
+   "record": "7d418ad615aaa4cde2942b75c63fd0a26b06848a847e60b43ed7a17e72598bba",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.line25, owner decision B1. The form says 'Taxable refunds, credits, or offsets of state and local income taxes (from line 4)', while the 2025 instructions (IT-201-I p. 8, Line 25) describe only an inflation refund check included in federal AGI; the project refuses either case (ny_it201.gate.line25: line 4 more than zero or the inflation check) and enters 0 otherwise, where line 4 is 0. The reply copies line 4 and refuses on the inflation check. On returns both complete the value is the same (0). Triage b7f692226401: 4 completed returns where the project refuses on gate.line25 and the reply enters line 4 (the registered choice), 6 candidate-unknown (ny_it201.ask.inflation_check is asked only with other income), the rest on refused returns.",
+   "subject_key": "3d98fdbf80ad148d0960f24252f1f3fb8a1198af91a0afa4a75c8590541d09a3"
   },
   {
    "key": "26",
@@ -978,15 +979,15 @@
   },
   {
    "key": "72",
-   "record": "5b4b6656d5b9d9a3b6e772d68e427cf2187402f258225f7742a4317dafcf7464",
+   "record": "7d418ad615aaa4cde2942b75c63fd0a26b06848a847e60b43ed7a17e72598bba",
    "status": "AGREE",
-   "subject_key": "0b5bd03a4c434e5238623b6fbdca788f69381ed74a2c0b49bac9d903775f33e4"
+   "subject_key": "877245ce6a74acf14e516cb028cba13f67db2c9aa0be65bc43f5e9feccec1a55"
   },
   {
    "key": "73",
-   "record": "5b4b6656d5b9d9a3b6e772d68e427cf2187402f258225f7742a4317dafcf7464",
+   "record": "7d418ad615aaa4cde2942b75c63fd0a26b06848a847e60b43ed7a17e72598bba",
    "status": "AGREE",
-   "subject_key": "45e02aebdfb0a88b156f0f8f162ac86a49fb1bccabb0c6443c0154b41c3d02cb"
+   "subject_key": "a995a6234059a5efa4d5af5bb4c965731b58f1243b1b6ef5fdb00c64004ca473"
   },
   {
    "key": "74",
@@ -1272,7 +1273,7 @@
  },
  "__rest__": "9b8e1400e9ed29bae97a2ef3b82bfebd260de441d31e5edaee1d2a9cc93e1284",
  "foreign": {
-  "C": "11f518bc30b93a3d91568c24f3daa43306cab135628b8fc69322590a21015a57",
+  "C": "14cca99aa72aa523c5d5912659bba0839dac5821b69b4a3a7467689e89f4979d",
   "H (count)": "5bbcc5d1caf027b187fc89eccf2bb910be795eed1cb2b810c6c8fc805bec0cdf",
   "1": "520600a1cbf370aa4ccffad4c3a9a34e958602621c1e39496c072a63e2a44ba0",
   "2": "37553ac0dd1921e4f151ad8b0243b815ea0001b6d76125dd79dfc42b5cec69dd",
@@ -1289,7 +1290,7 @@
   "13": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "14": "096009a19b5ac466d447ac37369ae95778eab9caf54d79a809755fcf0f70a887",
   "15": "43f56340cb28bacf1d63358e7e8e4bf5bfc4a2f2429661c0847274bac424b2a9",
-  "16": "ea3d5bae5b27cb4a21fe8c7d93c83a78d8a5e22e8a2f49e3da279d5febe64c8b",
+  "16": "8443dbeb6aa83ef657979612f13fd1dae5afcad9bfee7703bebace5f243ff8bd",
   "17": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "18": "e0436ca291374ee6b9ca824a57b73cdc61e0895908ace373530866803bfe056d",
   "19": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -1299,7 +1300,7 @@
   "22": "c6306af89a702c1f79f369ceab08dd77bf21d89d813b04b43f9d02952eca56fe",
   "23": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "24": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "25": "ea3d5bae5b27cb4a21fe8c7d93c83a78d8a5e22e8a2f49e3da279d5febe64c8b",
+  "25": "8443dbeb6aa83ef657979612f13fd1dae5afcad9bfee7703bebace5f243ff8bd",
   "26": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "27": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "28": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -1421,8 +1422,8 @@
   "70": "dcd9172040fa80b96b5cfdea5d56ff709411c35bd1952db1164291b1e4a20b1b",
   "70a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "71": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "72": "6a47eac24a0ac52f3573617e0d43652d934d46948e88de3068075c7941458b31",
-  "73": "62ff77201ab47cd5d7cbc279afebf062b4e6e22116ffaf78edf745c2640b913a",
+  "72": "80dde41a8f6eba9e6321754019f53efc81460eecd517ba33f00b462eec7f887e",
+  "73": "c69381883bcf20fec2fc4d1d81d038bbf53efbf7d293b012db56e9b1414ee332",
   "74": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "75": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "76": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",

@@ -1,0 +1,367 @@
+diff --git a/forms/2025/person.yaml b/forms/2025/person.yaml
+index e56802c..35ad79a 100644
+--- a/forms/2025/person.yaml
++++ b/forms/2025/person.yaml
+@@ -582,10 +582,10 @@ form:
+       printed: (helper)
+       type: Bool
+       gated_by: person.died_before_65
+-      label: Is this the final return of a person who died in 2025 before reaching age 65?
++      label: Did this person die in 2025 before reaching age 65?
+       expr:
+         op: input
+-        source: Is this the final return of a person who died in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
++        source: Did this person die in 2025 before reaching age 65? (A person reaches age 65 on the day before the 65th birthday.)
+       cite:
+         doc: i1040gi
+         locator: p. 110, Schedule 1-A, Part V, "Death of a taxpayer in 2025"
+@@ -1442,7 +1442,8 @@ form:
+       label: Wages you received as a household employee that were not reported on Form(s) W-2
+       expr:
+         op: input
+-        source: How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
++        source: How much were you paid in 2025 as a household employee, for work in or around a household's home or for its
++          members, by households that did not give a W-2 for it? Zero if none.
+       cite:
+         doc: i1040gi
+         locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on
+@@ -7099,10 +7100,10 @@ form:
+     - id: person.x_edu_account
+       printed: (helper)
+       type: Bool
+-      label: "A 529 plan, Coverdell ESA or ABLE account of this person had contributions or distributions in 2025"
++      label: "This person had, or was the beneficiary of, a 529 plan, Coverdell ESA or ABLE account at any time in 2025, or a Coverdell ESA with contributions for 2025 made by April 15, 2026"
+       expr:
+         op: input
+-        source: "In 2025, was money put into or taken out of a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account that is yours or is held for you?"
++        source: "At any time in 2025, did you have a qualified tuition program (529 plan), a Coverdell ESA or an ABLE account, or was one held for you; or was money put into a Coverdell ESA for you for 2025 by April 15, 2026?"
+       cite:
+         doc: f5329
+         locator: 'p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from
+diff --git a/forms/2025/s1.yaml b/forms/2025/s1.yaml
+index 3736a3c..2b7ded4 100644
+--- a/forms/2025/s1.yaml
++++ b/forms/2025/s1.yaml
+@@ -1711,12 +1711,13 @@ form:
+   - id: s1.nol_not_married
+     printed: (gate)
+     gated_by: s1.nol_not_married_if_joint
+-    label: Were the two of you not married to each other in a year the loss came from, or in a year since?
++    label: Were the two of you not married to each other in a year the loss came from or was carried back to, or in a year
++      since?
+     type: Bool
+     expr:
+       op: input
+-      source: Were you and your spouse not married to each other in the year any of the loss arose, or in any year from then
+-        to 2025?
++      source: Were you and your spouse not married to each other in a year any of the loss arose or was carried back to, or in
++        any year from then to 2025?
+     cite:
+       doc: i172
+       locator: 'p. 3, Change in Marital Status, "If you and your spouse were not married to each other in all years involved in
+@@ -1748,11 +1749,12 @@ form:
+   - id: s1.nol_was_joint
+     printed: (gate)
+     gated_by: s1.nol_was_joint_if_separate
+-    label: Was a joint return filed for a year the loss came from, or for a year since?
++    label: Was a joint return filed for a year the loss came from or was carried back to, or for a year since?
+     type: Bool
+     expr:
+       op: input
+-      source: Did you file a joint return for the year any of the loss arose, or for any year from then to 2024?
++      source: Did you file a joint return for a year any of the loss arose or was carried back to, or for any year from then
++        to 2024?
+     cite:
+       doc: i172
+       locator: 'p. 3, Joint to separate returns, "If you and your spouse file separate returns for a tax year, but filed a joint
+diff --git a/forms/2025/scope.yaml b/forms/2025/scope.yaml
+index 6fcf60a..214985f 100644
+--- a/forms/2025/scope.yaml
++++ b/forms/2025/scope.yaml
+@@ -96,10 +96,10 @@ form:
+     - id: scope.armed_forces
+       printed: (helper)
+       type: Bool
+-      label: "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?"
++      label: "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces (the Coast Guard included), the reserves or the National Guard?"
+       expr:
+         op: input
+-        source: "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces, the reserves or the National Guard?"
++        source: "Since the start of 2022, did you (or, on a joint return, your spouse) serve in the U.S. armed forces (the Coast Guard included), the reserves or the National Guard?"
+       cite:
+         doc: f1040
+         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+@@ -390,10 +390,10 @@ form:
+     - id: scope.rental
+       printed: (helper)
+       type: Bool
+-      label: "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?"
++      label: "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, such as a house, a room, land, a vehicle or equipment, or receive royalties?"
+       expr:
+         op: input
+-        source: "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own, such as a house, a room, land, a vehicle or equipment, or receive royalties?"
++        source: "In 2025, did you (or, on a joint return, your spouse) rent out, or offer for rent, anything you own or lease, such as a house, a room, land, a vehicle or equipment, or receive royalties?"
+       cite:
+         doc: f1040
+         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+@@ -464,10 +464,10 @@ form:
+       printed: (helper)
+       type: Bool
+       gated_by: scope.household_pay_if_pay
+-      label: "In 2025, were you (or, on a joint return, your spouse) paid for work in someone else's home, for example as a nanny, carer or housekeeper, by a household that gave you no W-2?"
++      label: "In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?"
+       expr:
+         op: input
+-        source: "In 2025, were you (or, on a joint return, your spouse) paid for work in someone else's home, for example as a nanny, carer or housekeeper, by a household that gave you no W-2?"
++        source: "In 2025, were you (or, on a joint return, your spouse) paid as a household employee, for work in or around a household's home or for its members (for example as a nanny, carer, housekeeper, gardener or private driver, even in a home you share), by a household that gave you no W-2?"
+       cite:
+         doc: i1040gi
+         locator: 'p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"'
+@@ -638,10 +638,10 @@ form:
+     - id: scope.religious_work
+       printed: (helper)
+       type: Bool
+-      label: "In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?"
++      label: "In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or paid in any form (money, housing or offerings), by anyone, for work as clergy of any title (a minister, priest, rabbi or imam) or as a member of a religious order?"
+       expr:
+         op: input
+-        source: "In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)?"
++        source: "In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or paid in any form (money, housing or offerings), by anyone, for work as clergy of any title (a minister, priest, rabbi or imam) or as a member of a religious order?"
+       cite:
+         doc: f1040
+         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+@@ -1271,7 +1271,7 @@ form:
+               - const: true
+       cite:
+         doc: i1040gi
+-        locator: 'p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2"; p. 24, Line 1c, "Enter the total of your tip income that was not reported on Form 1040, line 1a"; p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)"; p. 24, Line 1d, "Enter your taxable Medicaid waiver payments that were not reported on"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)"'
++        locator: 'p. 8, "Most nonresident aliens and dual-status aliens have different filing requirements and may have to file Form 1040-NR"; p. 23, Chapter 11 Bankruptcy Cases, "If you are a debtor in a chapter 11 bankruptcy case, income taxable to the bankruptcy estate"; p. 95, Line 20, "Don’t include any repayments of qualified reservist distributions"; p. 24, Line 1f, "Employer-provided adoption benefits should be shown in box 12 of your Form(s) W-2 with code T"; p. 24, Line 1e, "Dependent care benefits should be shown in box 10 of your Form(s) W-2"; i2441 p. 5, Line 12, "include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; i2441 p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 24, Line 1h, "If the total amount you (or your spouse if filing jointly) deferred for 2025 under all plans was more than $23,500"; p. 25, Missing or Incorrect Form W-2?, "Even if you don’t get a Form W-2, you must still report your earnings"; i8915f p. 2, Purpose of Form, "If you were adversely affected by a qualified 2021 or later disaster, use Form 8915-F to report"; i8582 p. 1, Purpose of Form, "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)"'
+     - id: scope.other_line16
+       printed: (helper)
+       type: Bool
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index b73e2db..8add1da 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -1796,7 +1796,8 @@ bank:
+     order: 113
+     seq: 3
+     group: "about_you"
+-    tick: "In the U.S. armed forces, reserves or National Guard since January 2022"
++    tick: "In the armed forces, Coast Guard, reserves or National Guard since 2022"
++    help: "Count a spouse who has died if you moved in 2025 under military orders after the death."
+   - input: scope.reservist_expenses
+     order: 113
+     seq: 13
+@@ -1831,8 +1832,8 @@ bank:
+     order: 130
+     seq: 1
+     group: "own_income"
+-    tick: "Anything you own rented out or offered for rent, or royalties"
+-    help: "A house, an apartment, a room, land or a vacation home counts, even for a few days."
++    tick: "Anything you own or lease rented or offered for rent, or royalties"
++    help: "A house, an apartment, a room, land or a vacation home counts, even for a few days; so does a car or equipment, even one you lease and rent on to others."
+   - input: scope.k1
+     order: 130
+     seq: 2
+@@ -1861,9 +1862,9 @@ bank:
+     order: 146
+     seq: 20
+     group: "pay_kinds"
+-    tick: "Pay for work in someone's home, with no W-2"
+-    help: "Such as a nanny, carer, cleaner or gardener paid by a household. A household that pays you less than $2,800 in a year need not give you a W-2."
+-    prompt: "In 2025, were you (or, on a joint return, your spouse) paid by a household for work in its home, with no W-2?"
++    tick: "Pay from a household for home, garden or driving work, no W-2"
++    help: "Such as a nanny, carer, cleaner, gardener or private driver, even in a home you share. A household that pays you less than $2,800 in a year need not give you a W-2."
++    prompt: "In 2025, were you (or, on a joint return, your spouse) paid by a household, with no W-2, for work in or around its home or for its members?"
+   - input: scope.contractor_pay
+     order: 146
+     seq: 21
+@@ -1894,7 +1895,7 @@ bank:
+   - input: person.household_wages
+     order: 147
+     seq: 1
+-    help: "Add up the pay from every household that gave no W-2 for it. Pay on a W-2 is entered with the W-2s."
++    help: "Add up the pay from every household that gave no W-2 for it, for work in or around its home or for its members. Pay on a W-2 is entered with the W-2s."
+   - input: $f8919firm
+     order: 147
+     seq: 2
+@@ -1931,8 +1932,8 @@ bank:
+   - input: f4137row.col_c
+     order: 148
+     seq: 2
+-    help: Include tips customers paid by card, tips from other workers, and tips you did report. Tips reported in January 2026
+-      for December 2025 count in 2026, not here.
++    help: Include card tips, tips from other workers, and tips you reported. Tips for December 2025 reported to the employer
++      in January 2026 belong to 2026; tips for December 2024 reported in January 2025 belong here.
+     prompt: How much did you get in cash and card tips at this employer in 2025, in all?
+   - input: f4137row.col_d
+     order: 148
+@@ -1976,8 +1977,8 @@ bank:
+     order: 146
+     seq: 3
+     group: "other_pay"
+-    tick: "Pay for work for a church or religious body, or as clergy"
+-    help: "Count work for a school, hospital or charity that a church controls, work as a chaplain, and work as a Christian Science practitioner."
++    tick: "Pay for church work, or as clergy or religious order member"
++    help: "Count work for a school, hospital or charity that a church controls, work as a chaplain or Christian Science practitioner, pay in housing or offerings, and fees from families for weddings or funerals."
+   - input: scope.clergy
+     order: 146
+     seq: 10
+@@ -2100,15 +2101,15 @@ bank:
+     order: 258
+     seq: 13
+     group: nol_facts
+-    tick: You two were not married to each other when it arose
+-    help: A Yes ends the interview here.
+-    prompt: "Were you and your spouse not married to each other in a year the loss arose, or in any year since?"
++    tick: Not married to each other in one or more of its years
++    help: Its years are each year it arose or was carried back to, and every year since. A Yes ends the interview here.
++    prompt: "Were you and your spouse not married to each other in a year the loss arose or was carried back to, or in any year since?"
+   - input: s1.nol_was_joint
+     order: 258
+     seq: 14
+     group: nol_facts
+-    tick: A joint return was filed for a year it arose, or since
+-    help: A Yes ends the interview here.
++    tick: A joint return was filed for any of its years
++    help: Its years are each year it arose or was carried back to, and every year since. A Yes ends the interview here.
+   - input: scope.passive
+     order: 258
+     seq: 3
+@@ -3420,15 +3421,15 @@ bank:
+     seq: 3
+     group: accounts
+     tick: A 529 plan, Coverdell or ABLE account (yours or held for you)
+-    help: Answer Yes whether the account is yours or is held for you. A Form 1099-Q or Form 1099-QA sent to you for 2025 means
+-      Yes.
++    help: Answer Yes whether the account is yours or is held for you, and for money put into a Coverdell for 2025 by April 15,
++      2026. A Form 1099-Q or Form 1099-QA sent to you for 2025 means Yes.
+     prompt: For this person (you, or your spouse on a joint return) — At any time in 2025, did you have a 529 plan, a Coverdell
+       education savings account or an ABLE account, or was one held for you?
+   - input: person.x_edu_taxable
+     order: 180
+     seq: 26
+-    help: Money used for the costs the account is meant for is not taxable. A return with this is outside what this tool prepares;
+-      a Yes ends the interview here.
++    help: Costs also used for an education credit, or paid by a tax-free scholarship, do not count as costs it paid. A Coverdell
++      left at age 30 or at death counts as paid out. A Yes ends the interview here.
+     prompt: 'For this person (you, or your spouse on a joint return) — Was any money that came out of the account in 2025 taxable:
+       more than the education costs, or for an ABLE account the disability costs, that it paid for?'
+   - input: person.x_edu_excess
+@@ -3781,10 +3782,10 @@ bank:
+     seq: 1
+     group: "money_b"
+     tick: "Alimony paid or received since the start of 2023"
+-    help: Child support and a division of property are not alimony. Payments between the two people on a joint return do
+-      not count.
++    help: Child support and a division of property are not alimony. Count payments made for the other person, such as
++      their rent or tuition paid to a landlord or school. Payments between the two people on a joint return do not count.
+     prompt: 'Since the start of 2023, did you (or, on a joint return, your spouse) pay or receive alimony: support paid
+-      to a husband or wife after a divorce or separation?'
++      to or for a husband or wife after a divorce or separation?'
+   - input: s1.nqdc_pension
+     order: 145
+     seq: 2
+@@ -3809,15 +3810,17 @@ bank:
+     order: 161
+     seq: 4
+     group: "money_b"
+-    tick: "Pay in 2025 for work done while in a jail or prison"
++    tick: "Pay in 2025 for work done as an inmate, including work release"
+     help: "A Yes ends the interview here."
+-    prompt: In 2025, were you (or, on a joint return, your spouse) paid for work done while in a jail or prison?
++    prompt: In 2025, were you (or, on a joint return, your spouse) paid for work done while an inmate of a jail, prison or
++      other correctional facility, including work release?
+   - input: s1.uc_any
+     order: 160
+     seq: 1
+     group: "money_a"
+     tick: "Unemployment benefits"
+-    help: The state sends Form 1099-G for them.
++    help: Count all benefits paid for you in 2025, including back pay for earlier weeks and amounts withheld, taken for a
++      debt or later paid back. The state sends Form 1099-G, often only online.
+     prompt: In 2025, did you (or, on a joint return, your spouse) get unemployment benefits?
+   - input: s1.gambling_winnings
+     order: 160
+@@ -3830,7 +3833,8 @@ bank:
+     order: 160
+     seq: 14
+     help: "A Yes ends the interview here."
+-    prompt: Is gambling your (or, on a joint return, your spouse's) business, the way a living is made?
++    prompt: Do you (or, on a joint return, your spouse) gamble as a business, regularly and steadily to make money,
++      even part time beside a job?
+   - input: s1.prizes
+     order: 160
+     seq: 15
+@@ -3848,9 +3852,11 @@ bank:
+     order: 160
+     seq: 3
+     group: "money_a"
+-    tick: "A scholarship, a fellowship or a grant for study"
+-    help: Count Pell grants and other grants, paid to you or straight to the school.
+-    prompt: In 2025, did you (or, on a joint return, your spouse) get a scholarship, a fellowship or a grant for study?
++    tick: "Scholarship, fellowship or grant for study or research, not on a W-2"
++    help: Count Pell grants and other grants paid to you or straight to the school, and fellowship stipends or living
++      allowances paid to you, whether or not you were a student.
++    prompt: In 2025, did you (or, on a joint return, your spouse) get a scholarship, a fellowship or a grant, for study or
++      research, not on a W-2?
+   - input: s1.scholarship_taxable
+     order: 160
+     seq: 17
+@@ -3863,8 +3869,9 @@ bank:
+     order: 160
+     seq: 4
+     group: "money_a"
+-    tick: "Pay for serving on a jury"
+-    prompt: In 2025, were you (or, on a joint return, your spouse) paid for serving on a jury?
++    tick: "Jury duty pay, even if not chosen or given to an employer"
++    help: Count pay for days you reported for jury selection, and pay you handed over to your employer.
++    prompt: In 2025, did you (or, on a joint return, your spouse) get jury duty pay, even for days you were not chosen?
+   - input: s1.jury_pay
+     order: 160
+     seq: 18
+@@ -3875,6 +3882,8 @@ bank:
+     seq: 5
+     group: "money_a"
+     tick: "An Alaska Permanent Fund dividend"
++    help: Answer Yes even if all of it was taken for a debt or, at your request, sent to a charity or a college savings
++      account; it is still your income.
+     prompt: In 2025, did you (or, on a joint return, your spouse) get an Alaska Permanent Fund dividend?
+   - input: s1.alaska_dividend
+     order: 160
+@@ -3954,6 +3963,8 @@ bank:
+   - input: oi8z.amount
+     order: 294
+     seq: 3
++    help: For damages or a settlement, count the whole taxable part, including any share your lawyer kept, and leave out
++      damages paid for medical care of emotional distress.
+     prompt: How much of it is income for 2025?
+   - input: oi8z.injury
+     order: 294
+@@ -4152,12 +4163,15 @@ bank:
+   - input: s1.alimony_received
+     order: 161
+     seq: 11
+-    help: Give 0 if you received none.
++    help: Count cash payments only, including those paid to others for you, such as your rent. Leave out child support,
++      property, your own share of community income, and payments to keep up or use the payer's property. Give 0 if none.
+     prompt: How much alimony did you (or, on a joint return, your spouse) receive in 2025 under that agreement?
+   - input: s1.alimony_paid
+     order: 161
+     seq: 12
+-    help: Give 0 if you paid none.
++    help: Count cash payments only, including those paid to others for the other person, such as their rent. Leave out
++      child support, property, their share of community income, and payments to keep up or use your own property. Give 0
++      if none.
+     prompt: How much alimony did you (or, on a joint return, your spouse) pay in 2025 under that agreement?
+   - input: s1.alimony_unsupported
+     order: 161
+@@ -4353,6 +4367,7 @@ bank:
+     seq: 2
+     group: "work_kind"
+     tick: "K–12 teacher, counselor, principal or aide for 900 hours or more"
++    help: "Count the hours of a whole school year that falls partly in 2025 (2024-25 or 2025-26), not only those in 2025, at every K-12 school you worked in."
+     prompt: For this person (you, or your spouse on a joint return) — In 2025, did you work in a school, from kindergarten
+       through grade 12, as a teacher, instructor, counselor, principal or aide, for at least 900 hours during a school year?
+   - input: $f8889

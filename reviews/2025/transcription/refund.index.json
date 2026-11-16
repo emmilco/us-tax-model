@@ -4,8 +4,9 @@
  "family": "claude",
  "base": "c8673bc47f41e6d171f22a0cd1cdcda83767994b2cefe36b68655bdd418f365d",
  "head_rows": {
-  "agree / disagree / missing": "6 / 5 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
+  "printed lines compared": "13",
+  "agree / disagree / missing": "7 / 6 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,11 +16,24 @@
    "subject_key": "fdd22daa5246e93bfe31c4bc27bf3b5b0b493b151337b2889c9386476c395285"
   },
   {
-   "key": "refund.taxable",
-   "record": "db9c397b6830a60d2ab59c4c984c01be0e265b754ddbd4be89429ce3a2059791",
+   "key": "refund.joint",
+   "record": "ddf2afc36753088467462e8ffcbcd711c1f01ec1feb0c430f6b3020aa95eea7a",
+   "status": "AGREE",
+   "subject_key": "6485fa64fdc369947afd89d2df5d5e43530c3deae96bf81d416ba41b35b96673"
+  },
+  {
+   "key": "refund.received_if_worksheet",
+   "record": "ddf2afc36753088467462e8ffcbcd711c1f01ec1feb0c430f6b3020aa95eea7a",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; both give zero unless the worksheet applies and line 9 otherwise (i1040gi p. 88, Line 1, \"None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes\"); the project also asks, on a joint return, whether the refunds are of both spouses' 2024 tax on separate 2024 returns (amb.2025.refund_two_returns, refused or zero) and refuses box 8 and the Pub. 525 exceptions 1 and 5 on this line. Triage pass 0e1ac073bd9b: 2,611/3,291 agree, no value differs; 100 project-unknown on completed returns are returns with no refund (refund.box8 or refund.two_returns unasked; s1.line1 reads refund.taxable only when refund.has), the rest unknowns or refusals on incomplete or refused returns, 9 candidate-unknown. As the landing round.",
-   "subject_key": "f8f9b37dd0f06fe0676f1fcca4817b4b85d0232b1c2182c36d7338b831384e80"
+   "ruling": "Ruling: representation; executable triage 2,974/3,633 agree, 614 project-unknown, 45 candidate-unknown, no value differs (completed: 190 project-unknown, 1 candidate-unknown). The reply's zero branch tests refund.any, the project's refund.worksheet does not; every witness is a return with refund.any false where the project leaves refund.itemized or refund.two_returns unasked, and no reader reaches the line on such a return (refund.received is gated by it; refund.line1 and rec read it only on the refund path). i1040gi p. 88, Line 1: 'None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes' - both expressions give that zero where it applies.",
+   "subject_key": "df8e26c62fc54ca8d49196c2ad5e9bde6a7a48af62aa8a3544cc7ae98c58fa70"
+  },
+  {
+   "key": "refund.taxable",
+   "record": "ddf2afc36753088467462e8ffcbcd711c1f01ec1feb0c430f6b3020aa95eea7a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; executable triage 3,274/3,633 agree; 186 project-unknown, 165 candidate-unknown, 5 project-refuses, 3 value (completed: 3 value). The three value witnesses are the Pub. 525 Worksheet 2 fixtures rec.ex31_allocation (project $300, reply $500), rec.salt_cap_partial (project $666.67, reply $0) and rec.allocation_rounding (project $200, reply $800). The reply always takes the i1040gi worksheet line 9 and drops the recovery path; i1040gi p. 88: 'See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet ... if ... You received a refund other than an income tax refund, such as a general sales tax or real property tax refund'. rec.ex31_allocation reproduces Pub. 525 Example 31 (line A 20%, line B $300 to Schedule 1 line 1), which the project's switch to rec.to_line1 gives. The unknowns are the same rec-path inputs read on returns that do not reach them.",
+   "subject_key": "3e602157d53a91aabebd0d5469d46bb161bf08c9db53e719ac4307b443c022f7"
   },
   {
    "key": "1",
@@ -99,7 +113,9 @@
  ],
  "subjects": {
   "refund.has": "ebb17fa1c64c2c2b8479d241a3f3598583e92775f8ab0c8a5ba8730277223403",
-  "refund.taxable": "88987d787080e406d25b6bf00f38733f2e60c5ed3d72ceb9579ec783caaf0142",
+  "refund.joint": "a4b43d7cd0014f72cbb54ce1e888f8cbb81368ce4392d877aeba47db355eccaa",
+  "refund.received_if_worksheet": "50dcd0bc5bf1cefd86f4d4f31f5a5596c33ff335fe18de3fc4e0dd51a677987d",
+  "refund.taxable": "66d68e61915a218f7acf52915fed634f3cf60f75cc7439093a25fc5e01de815c",
   "1": "9cfda671b758ad1c1411bc3bc52f567abf583bafdc8b0cf5b159aae42cc81caf",
   "2": "5d1fcd89d106a50a99c5c224d43fccb3989f6c037038842467a57092badbf562",
   "3": "dee0b86519f8bb9ddf2c825b78358413221b68d930a03e98e7344a8d18bf6ede",
@@ -113,7 +129,9 @@
  "__rest__": "9a12945506dcc91b7709e71f5f54423e182739ad982dde223b33e1168f0e0716",
  "foreign": {
   "refund.has": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "refund.taxable": "4bba81d0dead492774605a5b1c00f9d801d4cfcef3ac6fd3635016ae4a7889dd",
+  "refund.joint": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
+  "refund.received_if_worksheet": "4bba81d0dead492774605a5b1c00f9d801d4cfcef3ac6fd3635016ae4a7889dd",
+  "refund.taxable": "7277612b92621583a9d77dbccc9c6c61f178e58efa53fe2e5a22ac21eb7271ae",
   "1": "4bba81d0dead492774605a5b1c00f9d801d4cfcef3ac6fd3635016ae4a7889dd"
  }
 }

@@ -1,0 +1,462 @@
+{
+ "kind": "transcription",
+ "form": "f1116sb",
+ "family": "claude",
+ "base": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+ "lines": [
+  {
+   "key": "f1116sb.changed_if_carry",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply reads the input unconditionally where the project asks it only when a carryover is claimed (ftc.carryover_if_asked), giving 'no' otherwise; the only differences are candidate-unknown (8 incomplete, 38 refused returns, input unasked), none on a completed return. Source: i1116sb, line 2 adjustments (refused, Schedule B line 2).",
+   "subject_key": "982d24941c13f8d509be4b489850b398b76a0c104d789feedfbb1293c1025bde"
+  },
+  {
+   "key": "f1116sb.split_if_carry",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the reply reads the input unconditionally where the project asks it only when a carryover is claimed (ftc.carryover_if_asked), giving 'no' otherwise; the only differences are candidate-unknown (8 incomplete, 38 refused returns, input unasked), none on a completed return. Source: Pub. 514 p. 39, carryover from a joint-return year divided between spouses (refused).",
+   "subject_key": "61b13ca906bdc8cb4c49d47d6969e26272c25c2549743c3756e7b6b5623a1f81"
+  },
+  {
+   "key": "f1116sb.carryback",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the project asks f1116sb.prior_year only when line 6 (an excess generated) is above zero and takes prior_none otherwise; the reply reads the input with the same line 6 test inside its condition. Same refusal where both evaluate; differences are project-unknown (64 completed, 67 incomplete, 79 refused: returns off the Form 1116 path whose line 6 is not figured) and 2 candidate-refuses on already refused returns. i1116sb p. 2 and D1 (no carryback; a 2024 year with room refuses).",
+   "subject_key": "077bf787bcb9e22374edb519f49ca59e187c99039f0141f7a9afe2fb1e81a672"
+  },
+  {
+   "key": "1 (i)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "4eac573ef0f1c8e0ba7d4a6696efb5ad2104006e8f428930171ccc323671eb45"
+  },
+  {
+   "key": "1 (ii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "45505940e1a526eb3a8c2c930dc839fab745d41b63da016210802b3d1e61aa7e"
+  },
+  {
+   "key": "1 (iii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "31cd1954450e94ef8d8990986d8d48b93841e49a58d8e4ba3d236460fc3288c8"
+  },
+  {
+   "key": "1 (iv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "aaf7aec7ad9953e32d89f36240837140643b37bd552b853a6f7412534d05a495"
+  },
+  {
+   "key": "1 (v)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "450e1ca21d95f0105bb40f929a5bda668139f394fdbc24c86a5b6a4cf5e091a0"
+  },
+  {
+   "key": "1 (vi)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "e4614ececa8232d1bb414d985aa5558cc54123fc7419a5daec77bd33384babe2"
+  },
+  {
+   "key": "1 (ix)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "dbb6010131f3641ba940fd417d0847bf9f9b33b421d329d47bd48a4d3d3ae22a"
+  },
+  {
+   "key": "1 (x)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "23f70603f05fc64c3d7aa17d93ab99a0266fb1a96df48ed39f048439d06216cc"
+  },
+  {
+   "key": "1 (xi)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "834c4bb0d4815dc42e0e6998077fc2ebfeff8544a59499cf46d1a4dfa88c988c"
+  },
+  {
+   "key": "1 (xii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "f75c9a038bc1c7d1b83936d0e1a495e8b1987a0609e44a45c0277656666a20d0"
+  },
+  {
+   "key": "3 (i)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "95900474c1dffc9c8dcf038efa7b790c82d606c8ef9737a45c30f8b543a33c88"
+  },
+  {
+   "key": "3 (ii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "c758b0ba24ae3a46a3752695a3c35e8b49488d9755e9311ccd8034b53f2d60f2"
+  },
+  {
+   "key": "3 (iii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "0a888ac2f7b38e366413b9cecff5b1d7cfeb894d2550aaf3f33c727eb8c35faa"
+  },
+  {
+   "key": "3 (iv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "e2cb476beeb552908ce72f5f9e99f26d8b59f0228e1f2e45f9028404a436aa11"
+  },
+  {
+   "key": "3 (v)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "06f034d647532f93a1c6d6feafc44713dca39cd373826687e1109f2459944de2"
+  },
+  {
+   "key": "3 (vi)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "ba7ad4e44cae73174e16478e85c85bc15ce55caa558f449db07ee8556341ff4c"
+  },
+  {
+   "key": "3 (ix)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "7a535489471337e2bac904852f8d81ae16bc0977d68c085197ee4001d8f5ab22"
+  },
+  {
+   "key": "3 (x)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "ed01dd2e8744dfc1f7e5a38186d6cbc8310b8e0271c5d7870128481ae59230e4"
+  },
+  {
+   "key": "3 (xi)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "941b14fac90e28a51c2f35029f238c998aad2b6f18f74a52afb635261e83d3e4"
+  },
+  {
+   "key": "3 (xii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "3f38127c92553dcfe62f71b3f065e00529a776cdf3ddbccb6815d540d057f3a0"
+  },
+  {
+   "key": "4 (i)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "a61fce0e869349ae7a33ce77895403abcbe46068f746a113f2dc30190da11aac"
+  },
+  {
+   "key": "4 (ii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "f628a6d767ff923ea01e73334eb431c1477062379530415ce9f6a5351bca1b28"
+  },
+  {
+   "key": "4 (iii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "b03caf5507f1803c7ff98adf18951f18a60bfa19f640efbc352ccc3b6c4f84e1"
+  },
+  {
+   "key": "4 (iv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "74244309a1576c131cdac4a5f093736f31987ee43427b11bf7ee6489ff934b5c"
+  },
+  {
+   "key": "4 (v)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "179860f3f32ae871818f0fe9e5d5cde0272510b70cf2cb60152bac6651685ea5"
+  },
+  {
+   "key": "4 (vi)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "a59d11414c74f7c9a4c2c19d51db32c1f0d27baf6fd3e08615e4949bd703bc66"
+  },
+  {
+   "key": "4 (ix)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "7211b8d732eb2f9da6cda3528ef881f21435054a2726e0710556d23185d4c2f8"
+  },
+  {
+   "key": "4 (x)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "175bbaef5aef892cac7a5d3dc9d60517530473cd4ef720f50fa44b675d36a384"
+  },
+  {
+   "key": "4 (xi)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "b8537943201bafb2273360c0b7e58386015b2055c21e02994b44aa868a9f84e9"
+  },
+  {
+   "key": "4 (xii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "beaf8194674093d89b824709874a1e728972f3b504c9302883fa78aa220570fd"
+  },
+  {
+   "key": "5 (i), (vii), (viii) and (xiv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "f4d0976c642e169743239bd1e01ea94e1a669d6822e9100d137bc87fc306e0f2"
+  },
+  {
+   "key": "6 (xiii) and (xiv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "f327bafe8ce0f6cc28a2360ed583dba8dd3256f5db51fa419c960ea8c179a6d8"
+  },
+  {
+   "key": "7 (xiii) and (xiv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; both enter 0 (no carryback, D1: a return whose 2024 limit had room is refused by f1116sb.carryback); the reply's shown_when on line 6 above zero hides a zero, and is unknown where line 6 is not figured (64 completed candidate-unknown, off the Form 1116 path), 711 candidate-refuses on refused returns.",
+   "subject_key": "ac5f904c6770a0c72719b8f95a1569c4b53c2ed76de2378ae0d8a5f4c8aae547"
+  },
+  {
+   "key": "8 (ii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "cdabcf9d7f7c9ce8fa6fefa739a1b3bc8c948e88cae3ca1fb6241e7f4cec7656"
+  },
+  {
+   "key": "8 (iii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "42999f034e3ff6e218fc3a946979daa43acf437c0283a1f1030a09a57cd9b8bb"
+  },
+  {
+   "key": "8 (iv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "4cdcd91830344b124e12f8c6db852834eccbf7e579074c31f64a9412464db00b"
+  },
+  {
+   "key": "8 (v)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "52dbd239cb885cc5de1c5e009e0dee203f0fc82fca85ebe51deed18524f1d5e6"
+  },
+  {
+   "key": "8 (vi)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "74494e2364378fb3623ec0faef054ba30dc05e585399549d394af50bb8e6b70c"
+  },
+  {
+   "key": "8 (ix)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "579fe21c911cb61d38d6b10af73bb3d48fedfda2642215e788da3b2dc49f2b64"
+  },
+  {
+   "key": "8 (x)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "20a8f8cb264f29c66619842e28646d3028273b9335b893364907465c2f08b938"
+  },
+  {
+   "key": "8 (xi)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "430f2b52f7d2aba6c66e8993c1a1d4578bba15bb7e92d17c98114dc78c57ae67"
+  },
+  {
+   "key": "8 (xii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "4501b82c7d205038864472ae30e75024df8919d2116078aa6564e8329651cc6b"
+  },
+  {
+   "key": "8 (xiii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "03e41d8e3aac1c1168a8937dd106f22411533e029ecd7c98d17c64568f1e97b4"
+  },
+  {
+   "key": "1 (vii) and (viii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "4d84b43b75c91404d7840118f60dffd9f9d21e85ab7a1b0d36702a596429e6ca"
+  },
+  {
+   "key": "1 (xiv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "0270906891c1c267be878c2a1f699de01c824592fe27b4e50a93e48bd96bb7fb"
+  },
+  {
+   "key": "3 (vii) and (viii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "8c428ce562529eb85e806277d82510c980bb6fee6d69f1301ebd32878c4450ff"
+  },
+  {
+   "key": "3 (xiv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "5d5a251052da176ee8ec2e6925f7d5893bfd199e28e0d5352e3372d10c15dfa6"
+  },
+  {
+   "key": "4 (vii) and (viii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "b7293508a2798f930ff7432cca63ee34c84e14b59ea41ff9fe3aed8d9f5c0f27"
+  },
+  {
+   "key": "4 (xiv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value as the project; the reply adds a shown_when (an excess limitation, or for line 6 an excess, above zero) that hides a zero the project shows. Triage 2,028/2,030 agree; the 2 differences are candidate-refuses on returns already refused. i1116sb p. 2, line 4: the carryover used 'up to the excess limitation', oldest year first.",
+   "subject_key": "8e926668cedbd16163f4cf2d98508ade5f656e60ed1c5aeb6c2c3b2a64843e92"
+  },
+  {
+   "key": "8 (vii) and (viii)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "38f0907ffed4f9ec8a51447987b1d30b9855c539b15ecc499cf0e7bcecef946d"
+  },
+  {
+   "key": "8 (xiv)",
+   "record": "79bf2a87e6f038e6b03cf81365e8e63aa526e070a726070cb8d7fbc741e74614",
+   "status": "AGREE",
+   "subject_key": "5626250a134e830b6123e701abbe2dc51497b0dacc314e01aa4bb9f6ca67a5a8"
+  }
+ ],
+ "subjects": {
+  "f1116sb.changed_if_carry": "7e888e0b617c916b86ac55b573c4ef0301bbea54ea31361fcdfe1b9b55affc57",
+  "f1116sb.split_if_carry": "1d0a71bed341f88c88ff13349a18e12de6ff112511b2b3d4827202184380f659",
+  "f1116sb.carryback": "a12a93bc1b4a40cc8ffa926cb7b17b1128cb40985c300fb72ab1fa38a6d12696",
+  "1 (i)": "6e79ef68f02d5a3a8ddfa388a0230cc5d740df29a63640f7f5fdfb04fedea9e6",
+  "1 (ii)": "9cba85e4d465ff9da9d00a284240519181a1579a6b0f4476a93b8b06ce5da854",
+  "1 (iii)": "c402c2a579499b244da974ff03bf21df72b54df9522347f913ac93de761cd07d",
+  "1 (iv)": "6e8ecbef326f6b18f6018aa62704ad663dbc9df6a564ebe6f2f1ab84021142ac",
+  "1 (v)": "a37a5086d6d44001f2b2b2535cfb531287bea9e324a59904472faf56dab27663",
+  "1 (vi)": "97ee782338cbd9415f7cb902184605972e11cb9006c36f6073cd47a94d6f756e",
+  "1 (ix)": "e7909bf497041b82ae60da551fda65f4437f84eb4f8737f364fbf147863dce7b",
+  "1 (x)": "496d52c2e98821c015822417e68afe7662609078aaecb42b6baff8c97dba2a8b",
+  "1 (xi)": "48fc42f1cae39b67da93c81b011ee499b74b033e2a2e893baae635399e02efa6",
+  "1 (xii)": "b421ae5f5d541cf79e0e6788681dda9c52016802540c4da3a33c2f9469fe35ee",
+  "3 (i)": "240cfa5b9599f376939522b7750db7bdde5ee9bfa67730422354832fd24d4ece",
+  "3 (ii)": "733795bfe5c5a2a8f114781b82b8078e54485b726b35cc5d0358949bc76708ea",
+  "3 (iii)": "b8ee5f7b7030c254064f422370330ad1b49f9d2004064757862ad9c0181af50f",
+  "3 (iv)": "db90e362fa1e98dafaaa1408dbacb1155656c3401fe207f8b90e9e29c23cf426",
+  "3 (v)": "3cbfd3d62255e9f37fbd54a4a43294e14cb7ed2ab2572f0a9b799f563eb60d48",
+  "3 (vi)": "0370c93887ca9b1d5eb024581e9d7a5a27d0c2f0daa1c0d92accfeb67f2b5c25",
+  "3 (ix)": "a4c33ead3bc02859dc4a6d09e01fb60df1f1b9bf74d889d338f020d9e6219595",
+  "3 (x)": "dd634c20978dceff13d3f8e8a871ed1a63f85bdaf626401e8987f1c4b908c811",
+  "3 (xi)": "8c9bd34c29a79697135c776f3da14033c17187267f6ec866c23c4757a1d5d660",
+  "3 (xii)": "77d42c8928d6e934015d039ce638c182800c5a28c4b900523ffaf345549770e0",
+  "4 (i)": "027ac50abd572529ef9839668fe6a119e831e98ed4aac992fc594387a309f2f4",
+  "4 (ii)": "a7f22d3666d63a246afcc99a25f002581f6794d061e4c86e64ace52922f56cc1",
+  "4 (iii)": "4e0c3860b4e89b260b8d3e2aec963e689121d5964f560ee9c394dc79857b3e8d",
+  "4 (iv)": "229fad9b7be77b6430763bcc2637269d98c1eb23071178cc3d7abeaf073f2e97",
+  "4 (v)": "308474a14ccf2b621ebb5665053fbb97008ada069ddd5733700630b349bb16d1",
+  "4 (vi)": "3cba3ae08b50d7c9b6742fb9c28533477f992bb5563667a57b2f436a7f2d1f5a",
+  "4 (ix)": "43797050567d2a10cec31ddfa00f93b71f7a71faebdba32ace259556d0023526",
+  "4 (x)": "39aea3af39ddb616465cc2f92516a22e61cd4f6f8ba185e6e8b5eea4a95738ba",
+  "4 (xi)": "be783845da5dff706eb2ba89053a52bc6350912c8d90c90cadce86da5257d010",
+  "4 (xii)": "b5104101018b7a11141a7a9c5514019724c4076b316836fb7d12bf03435b8f50",
+  "5 (i), (vii), (viii) and (xiv)": "4fae58837012f700c2e01de9ab2a998fcd56ce3315c0aaf85446bd2be2e22604",
+  "6 (xiii) and (xiv)": "fdf43d8d18490785d67ce3dd817b75fba94e92e630a8c59778a8cf1b02639232",
+  "7 (xiii) and (xiv)": "95dfaf3731d864db4a8d9954ef4d662c6a8c200b258ee05d751f0abae5e15665",
+  "8 (ii)": "66d42c461aac71b6df284bd3d0862eb165815c35340f52696fe5480bcf3dc1f6",
+  "8 (iii)": "8e974a1638e004a072bd1c5e838e32f6a301b372d68cafac9b4c654da4cde302",
+  "8 (iv)": "b685ff860c862b40c8410feaa52cb757437463fee4afe706684f8e3edaf0bae4",
+  "8 (v)": "3757f94825e98f1a6e2625508391d69fd43dc51bf9bf47a87e727e3ea59466fe",
+  "8 (vi)": "659ebaceca1907734061af2865516c071ad7688e350b44a5f25a6fa52fd82ee8",
+  "8 (ix)": "5f6d38d14e026b6e169f6a02360b125c3e8fced50c8a285e1c08ad5e55eea734",
+  "8 (x)": "baf843e71ede980c515ea3b9a8d1d3451f36a0fe6c4bf50937a33494893be825",
+  "8 (xi)": "4ebf09d4654fc6d891500befe5823b6b2404ba2fe7d88e3a8073e5ceaa05f70f",
+  "8 (xii)": "6047a1b8ca7a13daf3d70b03c33e2131d2dfdf9751a261bcb346a316dd4bf73c",
+  "8 (xiii)": "0664e4f4edc7ed699623d3f6ddc8b020223568680244dc8af419a77d9b2871bc",
+  "1 (vii) and (viii)": "829e417cda71ce945057e1bbad5254499af199ee9358460e6d3f5e607c4126ab",
+  "1 (xiv)": "12425dd948c110a96fca67e789b94972e2a19cf71ddeac4c266018072a18123a",
+  "3 (vii) and (viii)": "399376eebca5f6fdccd12be50c5a4306b56be30d5d76376a6c95f1acbbc31e64",
+  "3 (xiv)": "1ca9cf94a2a5ef0025835eb42e788b2e5ab7328c910592a42009b36a996370a2",
+  "4 (vii) and (viii)": "4c793c5c8122628c2d61276d622e3252cfc0090eb65a822a56a44c4ff074c5ec",
+  "4 (xiv)": "3860f7aa013b3b43b75726e4d19395a4e00bca871c6acefc963334d19ef9e4a5",
+  "8 (vii) and (viii)": "92e24dc033c339a1ad99e6157c2ac2209b5b37417f113c44647a06b51880e81b",
+  "8 (xiv)": "9e2ab12205aae2d368b84dd860c30845a753c6f24473d40f519d23fb603680d6"
+ },
+ "__rest__": "a538f68406380cabf54e2907d98ce5d9247fd5a89c0c7dfff6899f9aacd0c7f8",
+ "foreign": {
+  "f1116sb.changed_if_carry": "0f725f0873152f844adbe740f8b91bb43b3a1339b84abdb6e9cf42ec86009796",
+  "f1116sb.split_if_carry": "0f725f0873152f844adbe740f8b91bb43b3a1339b84abdb6e9cf42ec86009796",
+  "f1116sb.carryback": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "1 (i)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
+  "1 (ii)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
+  "1 (iii)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
+  "1 (iv)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
+  "1 (v)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
+  "1 (vi)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
+  "1 (ix)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
+  "1 (x)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
+  "1 (xi)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
+  "1 (xii)": "66cf531cf8dbec89f439580ca2368ca0c5db8a37d825ce7908b88400e4a66f95",
+  "3 (i)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (ii)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (iii)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (iv)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (v)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (vi)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (ix)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (x)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (xi)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (xii)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "4 (i)": "8f21e726273750cebe69d35096085c6d6e1d55e82f09d6ea9bcff38425db172d",
+  "4 (ii)": "8f21e726273750cebe69d35096085c6d6e1d55e82f09d6ea9bcff38425db172d",
+  "4 (iii)": "8f21e726273750cebe69d35096085c6d6e1d55e82f09d6ea9bcff38425db172d",
+  "4 (iv)": "8f21e726273750cebe69d35096085c6d6e1d55e82f09d6ea9bcff38425db172d",
+  "4 (v)": "8f21e726273750cebe69d35096085c6d6e1d55e82f09d6ea9bcff38425db172d",
+  "4 (vi)": "8f21e726273750cebe69d35096085c6d6e1d55e82f09d6ea9bcff38425db172d",
+  "4 (ix)": "8f21e726273750cebe69d35096085c6d6e1d55e82f09d6ea9bcff38425db172d",
+  "4 (x)": "8f21e726273750cebe69d35096085c6d6e1d55e82f09d6ea9bcff38425db172d",
+  "4 (xi)": "8f21e726273750cebe69d35096085c6d6e1d55e82f09d6ea9bcff38425db172d",
+  "4 (xii)": "8f21e726273750cebe69d35096085c6d6e1d55e82f09d6ea9bcff38425db172d",
+  "5 (i), (vii), (viii) and (xiv)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "6 (xiii) and (xiv)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "7 (xiii) and (xiv)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8 (ii)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "8 (iii)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "8 (iv)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "8 (v)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "8 (vi)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "8 (ix)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "8 (x)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "8 (xi)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "8 (xii)": "b71df27fc89a872e798cdbebf16fca0d19f1818d2df785a7ab400bc7bfb7f886",
+  "8 (xiii)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "1 (vii) and (viii)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "1 (xiv)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (vii) and (viii)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "3 (xiv)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "4 (vii) and (viii)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "4 (xiv)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "8 (vii) and (viii)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "8 (xiv)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

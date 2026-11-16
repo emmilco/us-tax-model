@@ -1,9 +1,163 @@
 {
  "form": "household",
  "reviews": {
+  "gate:household.all_tin": {
+   "subject_sha": "98df39a862f1d794f53daf9a98e8c23bc938ad75abcca85d7dbdd47b7ea69f33",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer, or the spouse on a joint return, is a new resident or newly work-authorized immigrant who has applied for an SSN, not an ITIN, and has no number yet. The SSN will be issued before the due date of the 2025 return, including an extension to October 15, 2026.",
+       "why_no": "The helper asks whether each person has an SSN or ITIN, or has applied for an ITIN. A pending SSN application is not in that list, so the person truthfully answers no. The present-tense 'have' also ignores the IRS test, which is whether the number is issued by the due date including extensions.",
+       "line": "person.edu_aoc_tin (and dependent.edu_aoc_tin)",
+       "irs_text": "i8863 p. 3, Student qualifications: \"5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).\"",
+       "severity": "medium",
+       "fix": "Ask: 'Do you (and your spouse, if filing jointly) have an SSN or ITIN, or will one be issued by the due date of your return, including extensions? Count a pending SSN application or a pending ITIN application (Form W-7).' Alternatively, ask again at filing time, when the number has been issued."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer or spouse holds an SSN card marked 'Not valid for employment' or 'Valid for work only with DHS authorization'. This is common for some visa holders and for people who got an SSN only for benefits.",
+       "why_no": "The text right above the cited sentence on i1040gi p. 17 says a 'valid SSN... must be valid for employment.' A filer who reads the gate in that context may decide that their restricted SSN does not count and answer no.",
+       "line": "person.edu_aoc_tin (and dependent.edu_aoc_tin)",
+       "irs_text": "i8863 p. 3: \"5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).\" Any SSN is a TIN; the employment-validity rule applies only to the CTC.",
+       "severity": "medium",
+       "fix": "Add help text: 'Any SSN counts here, including one marked not valid for employment or valid only with DHS authorization. Do not use the child tax credit test.' Cite i8863 rather than the CTC/ODC tip."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer or spouse has an ITIN that expired, for example from non-use in three consecutive years, and has not yet filed a renewal Form W-7.",
+       "why_no": "The filer reads 'have an ITIN' as having a currently valid one and answers no. They also do not treat a renewal as 'applied for an ITIN', so they never file the renewal that would keep the credit.",
+       "line": "person.edu_aoc_tin (and dependent.edu_aoc_tin)",
+       "irs_text": "i8863 p. 3: \"Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).\"",
+       "severity": "low",
+       "fix": "Add help text: 'An expired ITIN counts if you renew it (Form W-7 renewal) with or before this return. Answer yes if you have renewed it or are renewing it.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer who reaches the education credit section. The gate's citation and wording come from the credit for other dependents, not from the AOC rule.",
+       "why_no": "A filer who sees the gate framed around claiming the credit for other dependents may decide it does not apply to them, since they have no dependents, and answer no or skip it. The AOC line then becomes false.",
+       "line": "person.edu_aoc_tin",
+       "irs_text": "i8863 p. 3: \"5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).\"",
+       "severity": "low",
+       "fix": "Cite i8863 p. 3 requirement 5 for this gate, and word it with no reference to dependents or the CTC/ODC."
+      }
+     ],
+     "prompt_sha": "9c8d821dfcaba7a654fcd573aa5a2a8c419e56e55dc1ff829b7547482b7bd007",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.09631600000000001,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_household.all_tin.98df39a862f1.1.response.txt"
+    }
+   ],
+   "condition": "household.all_tin",
+   "lines": [
+    "dependent.edu_aoc_tin",
+    "person.edu_aoc_tin"
+   ],
+   "inputs": [
+    "dependent.edu_ein",
+    "person.edu_ein"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Before you begin, \"If you want to claim the credit for other dependents, you, and your spouse if filing jointly, must have either an SSN or ITIN\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      3,
+      4
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 3, Student qualifications, \"5. Filers and students must have been issued a TIN by the due date of their 2025 return (including extensions).\"",
+      "p. 4, Student qualifications, \"7. You must provide the educational institution’s employer identification number (EIN) on your Form 8863.\""
+     ],
+     "cols_pages": [
+      3,
+      4
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
   "gate:household.claims_8862_credit": {
-   "subject_sha": "b494e1f4194e473918ba06868d2269cacbefe031c1de55f445795b80cf5eb998",
-   "grandfathered": true,
+   "subject_sha": "46ce227672dcd239a2c9aa5fbb78a3b96478ca284f846178ae6998ae01701f88",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A filer with no income tax liability in 2019 claimed only the additional child tax credit (the refundable part). An IRS examination found the child did not live with them for more than half the year and disallowed it. In 2025 they claim the CTC/ACTC again.",
+       "why_no": "The question names only 'a child tax credit, a credit for other dependents or an earned income credit', and the help says 'the other credits for 2016 or later'. The additional child tax credit, a separately named credit, is never mentioned. A filer who reads their old notice literally ('additional child tax credit disallowed') truthfully answers No.",
+       "line": "household.credit_disallowed_if_claimed",
+       "irs_text": "i1040gi p. 39: \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced\"; i1040s8812 p. 2: \"If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced...\"",
+       "severity": "high",
+       "fix": "Name every credit: 'Has the IRS ever reduced or refused an earned income credit (1997 or later), or a child tax credit, additional child tax credit (refundable child credit) or credit for other dependents (2016 or later)...'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer whose earlier EIC or CTC was cut after the IRS sent a letter asking for proof that a child qualified (residency or relationship). The filer thinks of it as an IRS correction of a mistake on their return.",
+       "why_no": "The carve-out 'for any reason other than a math or clerical error' asks the filer to classify the IRS action. A filer who believes the change was 'just a mistake on the form' answers No, confident enough that 'If you are not sure, answer Yes' does not prompt them.",
+       "line": "household.credit_disallowed_if_claimed",
+       "irs_text": "i1040gi p. 43: \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error.\"",
+       "severity": "medium",
+       "fix": "Ask facts first: 'Did the IRS ever reduce or deny one of these credits?' If Yes, follow up: 'Was the only reason an arithmetic error, or a missing or mismatched SSN shown on a math-error notice, with no request for documents and no audit?' Treat any other case as Yes."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A filer whose prior-year EIC or CTC was refunded in full but later reversed in an audit, for example a Form 4549 they signed in agreement. They repaid the credit with a balance-due notice.",
+       "why_no": "'Reduced or refused a ... credit that you claimed' reads like a denial at filing time. A filer who got the refund, then agreed to an adjustment and paid it back, may not see that as the IRS refusing the credit, especially since they 'agreed'.",
+       "line": "household.credit_disallowed_if_claimed",
+       "irs_text": "i1040gi p. 43: \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error.\"",
+       "severity": "medium",
+       "fix": "Add to help: 'Include a credit you received and later had to repay, or agreed to give up, after an IRS audit or letter, and any case where the IRS told you that you can't claim these credits for 2 or 10 years.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "On a joint return, a spouse who is now in a 2- or 10-year disallowance period from an earlier return the spouse filed alone. The other spouse answers the interview.",
+       "why_no": "The question says 'you (or, on a joint return, your spouse) claimed', but the help does not mention disallowance periods. The answering spouse may not know about the other spouse's earlier audit.",
+       "line": "household.credit_disallowed_if_claimed",
+       "irs_text": "i1040gi p. 43: \"don't file Form 8862 or take the credit for the: • 2 years after ... reckless or intentional disregard ... • 10 years after ... fraud\"; i1040gi p. 39: \"you won't be allowed to take either credit or the additional child tax credit for 2 years ... for 10 years\"",
+       "severity": "low",
+       "fix": "Add to help: 'Ask your spouse. Include any IRS notice to either of you, on any earlier return, saying a credit was disallowed or that you can't claim it for 2 or 10 years.'"
+      }
+     ],
+     "prompt_sha": "f116c601b8f6d76427895e1feef3fe10f7b313ad62a4578ffe24a88ef8845b4d",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.127524,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_household.claims_8862_credit.46ce227672dc.1.response.txt"
+    }
+   ],
    "condition": "household.claims_8862_credit",
    "lines": [
     "household.credit_disallowed_if_claimed"
@@ -46,38 +200,359 @@
      ],
      "cols_sha256": "e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45"
     }
-   ],
+   ]
+  },
+  "gate:household.marriage_possible": {
+   "subject_sha": "44658d9ba1e1b6dd389aeabbe56da996af4e2b6ada598315d24f0dee86c948f4",
    "samples": [
     {
-     "verdict": "UNCLEAR",
+     "verdict": "FALSE_NO",
      "findings": [
       {
        "kind": "UNCLEAR",
-       "pattern": "5",
-       "who": "A filer who qualifies for the earned income credit and answers Yes at Step 6 to have the IRS figure it. They enter \"EIC\" on the dotted line next to line 27a, and their EIC for a prior year was disallowed after an audit.",
-       "why_no": "The computed helper counts the EIC as claimed only when Worksheet A line 6 or Worksheet B line 11 is more than zero. A filer who has the IRS figure the credit never completes either worksheet, so the computed condition is false, unless the tool fills in the worksheet anyway. The disallowance question is then never asked, and the return asks for the EIC without Form 8862.",
-       "line": "household.credit_disallowed_if_claimed",
-       "irs_text": "i1040gi p. 43, Credit figured by the IRS: \"If your EIC for a year after 1996 was reduced or disallowed, see Form 8862, who must file, later.\"; p. 43: \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\"",
+       "pattern": "8",
+       "who": "A filer in Texas who has lived with a partner as husband and wife without a ceremony or license, which makes them common-law married under Texas law, and who chose single or head of household.",
+       "why_no": "\"Have you ever been married?\" reads to most people as a wedding or a marriage license. A common-law spouse who never had either answers No. The only help that mentions common-law marriage is attached to the gated December 31 question, which this filer never sees.",
+       "line": "household.married (and household.cp_married_if_ever_married, since Texas is a community property state)",
+       "irs_text": "p501 p. 6, Considered married: \"You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.\"",
        "severity": "medium",
-       "fix": "Make the gate also true when the filer asks the IRS to figure the EIC (Step 6 answer Yes, or \"EIC\" entered next to line 27a). A broader option is to make it true whenever Steps 1 to 5 are passed, whether or not a worksheet amount is computed."
+       "fix": "Ask: \"Have you ever been married, including a common-law marriage (living together as spouses in a state that recognizes it), or a marriage entered into abroad or under tribal law?\" Show the common-law help with the gate itself."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A registered domestic partner in California, Nevada or Washington who has never married and files single or head of household.",
+       "why_no": "They truthfully answer No to \"Have you ever been married?\" The gated help says \"A registered domestic partnership or civil union is not a marriage,\" which confirms the No. So the community property question, and the refusal a Yes would trigger, never comes up.",
+       "line": "household.cp_married_if_ever_married (the refusal it leads to: Form 8958 splitting of community income is not supported)",
+       "irs_text": "i1040gi p. 23, Nevada, Washington, and California domestic partners: \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555.\"",
+       "severity": "high",
+       "fix": "Add a question that does not depend on the marriage gate: \"Were you a registered domestic partner in California, Nevada or Washington at any time in 2025?\" A Yes ends the interview, the same as the community property Yes."
       },
       {
        "kind": "UNCLEAR",
        "pattern": "other",
-       "who": "A filer whose EIC helper fails Steps 1 to 5, or whose credit would be computed as zero, only because an input was entered wrongly. The filer still intends to claim the credit, and on paper would attach Form 8862.",
-       "why_no": "The gate is computed rather than asked, so the disallowance question is never shown when the tool's own figure is zero. This is correct when the credit really is zero, because nothing is claimed and Form 8862 does not apply.",
-       "line": "household.credit_disallowed_if_claimed",
-       "irs_text": "i1040s8812 p. 2: \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\"",
+       "who": "A filer whose 2025 marriage in a community property state such as California was annulled before the end of 2025, and who now files single.",
+       "why_no": "An annulment decree holds that \"no valid marriage ever existed,\" so the filer answers \"never married.\" State law can still treat property earned during a putative marriage as quasi-community property, which needs the Form 8958 or Pub. 555 analysis.",
+       "line": "household.cp_married_if_ever_married",
+       "irs_text": "p501 p. 6, Annulled marriages: \"you are considered unmarried even if you filed joint returns for earlier years\"; i1040gi p. 23: \"you must usually follow state law to determine what is community income and what is separate income.\"",
        "severity": "low",
-       "fix": "No change is needed for correctness, because no credit means no Form 8862. Optionally, state in the help that the question appears only once a credit amount is computed."
+       "fix": "Add to the gate help: \"Count a marriage that was later annulled.\" In the community property help, say that an annulled marriage in a listed state may still require Form 8958."
       }
      ],
-     "prompt_sha": "8b227daceb9910ca136e808dd3c866a7c4c04b4ce9a3b389b980655930ea1148",
-     "model": "claude-opus-5-5",
-     "cost": 0.086388,
-     "date": "2026-11-07",
+     "prompt_sha": "7df5fa2c9a5f19cc92afa275b862a0b6340b536a203b7d84f088cb4d255177ba",
      "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
-     "response": ".transcription/false_no/gate_household.claims_8862_credit.response.txt"
+     "model": "claude-opus-5-5",
+     "cost": 0.109184,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_household.marriage_possible.44658d9ba1e1.1.response.txt"
+    }
+   ],
+   "condition": "household.marriage_possible",
+   "lines": [
+    "household.cp_married_if_ever_married",
+    "household.married",
+    "household.spouse_died_this_year_if_ever_married"
+   ],
+   "inputs": [
+    "household.cp_married",
+    "household.married_dec31",
+    "household.spouse_died_this_year"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      13,
+      23,
+      41
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Filing Status, Single, \"You were never married\"",
+      "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555.\"",
+      "p. 41, Step 3, question 3, and Step 4, question 1, \"Are you a married taxpayer whose filing status is married filing separately or head of household?\"; , Line 3, rule 6, \"If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year\"; , Marital Status, \"State law governs whether you are married or legally separated under a divorce or separate maintenance decree.\"; , Definition of marriage, \"Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship\"; , Considered married, \"You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.\"; , Divorce and remarriage, \"you and your spouse must file as married individuals in both years.\"; , Annulled marriages, \"you are considered unmarried even if you filed joint returns for earlier years.\""
+     ],
+     "cols_pages": [
+      13,
+      23,
+      41
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      6
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\""
+     ],
+     "cols_pages": [
+      6
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    },
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      4
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    }
+   ]
+  },
+  "gate:household.married": {
+   "subject_sha": "5e0ce06feab0ab021fe8d6ed5b617547de5699c709a430c52c29dd84440888b7",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer whose husband or wife died in 2025 and who did not remarry. They choose single or head of household because they have no spouse at year end.",
+       "why_no": "\"Were you married at the end of 2025?\" is literally false for them, since the spouse was dead on December 31, so they truthfully answer No. The tool then treats them as unmarried and never applies the considered-unmarried test, which would refuse single or head of household status.",
+       "line": "household.considered_unmarried_if_married",
+       "irs_text": "p501 p. 6, Spouse died during the year: \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"",
+       "severity": "high",
+       "fix": "Ask \"On December 31, 2025, were you married, or did your husband or wife die during 2025 (and you did not remarry)? If your spouse died in 2025, answer Yes.\" Alternatively, add a separate gate question \"Did your husband or wife die in 2025?\" that also sets married to true."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer living in a common law marriage recognized where they live or where it began, with no ceremony or license. They file as head of household with a child.",
+       "why_no": "They do not think of themselves as \"married\" and may also say they have \"never been married\", so they answer No to both the possibility helper and the question. The tool never asks whether they are considered unmarried.",
+       "line": "household.considered_unmarried_if_married",
+       "irs_text": "p501 p. 6, Considered married: \"You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.\"",
+       "severity": "medium",
+       "fix": "Add to the question or its help: \"Count a common law marriage recognized in the state where you live or where it began.\" Ask the possibility helper the same way."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who is separated from their spouse but has no decree of divorce or separate maintenance, only an informal or written separation agreement. They live apart and file as single or head of household.",
+       "why_no": "Separated people commonly describe themselves as \"not married\" or \"separated, not married\", so they answer No. The tool then skips the live-apart tests, which they may fail, for example by not keeping up the child's home for more than half the year.",
+       "line": "household.considered_unmarried_if_married",
+       "irs_text": "p501 p. 6, Considered married: \"You are married and living apart but not legally separated under a decree of divorce or separate maintenance.\"",
+       "severity": "medium",
+       "fix": "Add help: \"Answer Yes if you were separated but had no final decree of divorce or separate maintenance by December 31, 2025, even if you lived apart or have a separation agreement.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose divorce was granted only by an interlocutory (not final) decree at the end of 2025. They consider themselves divorced.",
+       "why_no": "They read \"married\" as excluding a pending or granted-but-not-final divorce, so they answer No.",
+       "line": "household.considered_unmarried_if_married",
+       "irs_text": "i1040gi p. 13, Single: \"But if, at the end of 2025, your divorce wasn't final (an interlocutory decree), you are considered married and can't check the box.\"; p501 p. 6: \"You are separated under an interlocutory (not final) decree of divorce.\"",
+       "severity": "medium",
+       "fix": "Add help: \"If your divorce was not final on December 31, 2025 (an interlocutory decree), answer Yes.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A couple who divorced in 2025 solely to file as unmarried and who remarry each other in 2026.",
+       "why_no": "They hold a final divorce decree at year end and truthfully answer No.",
+       "line": "household.considered_unmarried_if_married",
+       "irs_text": "p501 p. 6, Divorce and remarriage: \"you and your spouse must file as married individuals in both years.\"",
+       "severity": "low",
+       "fix": "Add help: \"If you divorced in 2025 only to file as unmarried and remarried (or plan to remarry) the same person in 2026, answer Yes.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer married abroad or under tribal law, or married in a state other than the one where they now live, who doubts that the marriage counts in the United States.",
+       "why_no": "They assume a foreign, tribal, or out-of-state marriage is not recognized where they live and answer No.",
+       "line": "household.considered_unmarried_if_married",
+       "irs_text": "p501 p. 6, Definition of marriage: \"recognized for federal tax purposes if the marriage is recognized by the state or territory of the United States in which the marriage is entered into, regardless of legal residence.\"",
+       "severity": "low",
+       "fix": "Add help: \"A marriage entered into in any U.S. state, or abroad or under tribal law where at least one state would recognize it, counts wherever you now live.\""
+      }
+     ],
+     "prompt_sha": "b3a8a881674d81a8a3871b74d08f4a504b469214b2a497a28217a21f4addabe5",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.15626800000000002,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_household.married.5e0ce06feab0.1.response.txt"
+    }
+   ],
+   "condition": "household.married",
+   "lines": [
+    "household.considered_unmarried_if_married"
+   ],
+   "inputs": [
+    "household.considered_unmarried"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      13,
+      14,
+      15,
+      41
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Head of Household, \"You are considered unmarried for this purpose if any of the following applies\" through \"the election to treat the alien spouse as a resident alien is not made\"; p. 15, Married persons who live apart, \"Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply\" through \"under the rule for Children of divorced or separated parents\"; p. 14, Exception to time lived with you, \"Temporary absences by you or the other person for special circumstances\"; p. 15, Exception to time lived with you, \"If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive\" through \"for more than half the time since the person was adopted or placed with you in 2025\"; , Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"; , Considered Unmarried, \"Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later.\"; , Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\"",
+      "p. 14, Head of Household, \"You are considered unmarried for this purpose if any of the following applies\" through \"the election to treat the alien spouse as a resident alien is not made\"; p. 15, Married persons who live apart, \"Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply\" through \"under the rule for Children of divorced or separated parents\"; p. 14, Exception to time lived with you, \"Temporary absences by you or the other person for special circumstances\"; p. 15, Exception to time lived with you, \"If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive\" through \"for more than half the time since the person was adopted or placed with you in 2025\"; , Spouse died during the year, \"If your spouse died during the year, you are considered married for the whole year for filing status purposes.\"; , Considered Unmarried, \"Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later.\"; , Temporary absences, \"It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence.\"; i1040gi p. 13, Nonresident aliens and dual-status aliens, \"This choice remains in effect in subsequent years until terminated\"",
+      "p. 41, Step 3, question 3, and Step 4, question 1, \"Are you a married taxpayer whose filing status is married filing separately or head of household?\"; , Line 3, rule 6, \"If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year\"; , Marital Status, \"State law governs whether you are married or legally separated under a divorce or separate maintenance decree.\"; , Definition of marriage, \"Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship\"; , Considered married, \"You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began.\"; , Divorce and remarriage, \"you and your spouse must file as married individuals in both years.\"; , Annulled marriages, \"you are considered unmarried even if you filed joint returns for earlier years.\""
+     ],
+     "cols_pages": [
+      13,
+      14,
+      15,
+      41
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i8889",
+     "revision": "2025",
+     "text_sha256": "bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c",
+     "pages": [
+      4
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      4
+     ],
+     "cols_sha256": "533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      6,
+      8,
+      9
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      6,
+      8
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "gate:household.mfs": {
+   "subject_sha": "3ebed3af05460b20e5a51b42a047c0d05649a0223a79ac7b930eb5e4f4d2c508",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A married filer who lived apart from their spouse from July through December 2025, kept up a home for their child, and files as head of household under 'Married persons who live apart'.",
+       "why_no": "The gate checks the filing status box, so it is false for anyone who chose head of household rather than married filing separately. The line then defaults to together_late, 'so that neither lived-apart test is met'. The last-6-months test that head of household eligibility needs therefore fails, and the living-apart question is never asked.",
+       "line": "household.mfs_living_if_mfs",
+       "irs_text": "i1040gi p. 14: 'You are married but lived apart from your spouse for the last 6 months of 2025 and you meet the other rules under Married persons who live apart'; p. 15: 'You lived apart from your spouse for the last 6 months of 2025 ... You file a separate return from your spouse.'",
+       "severity": "high",
+       "fix": "Gate on 'married at the end of 2025 and not filing a joint return' (MFS or HOH), not on the MFS box. Or ask the living-apart question before filing status is settled and feed it to both the line 6d test and the head of household test."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A married filer who lived apart from their spouse and files head of household. Their child lived with both spouses during the year, so the spouse (the child's other parent) could also claim the child.",
+       "why_no": "The gate is false because the status is not MFS, so the line is false. The IRS exclusion covers only a spouse 'if filing jointly', so on this separate head of household return the spouse is 'any other person'. The constant false gives no record of whether the spouse is that person, so the tie-breaker rules may be applied wrongly or skipped.",
+       "line": "dependent.other_only_spouse_if_mfs",
+       "irs_text": "i1040gi p. 17, Step 1: 'If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025, see Qualifying child of more than one person.'",
+       "severity": "medium",
+       "fix": "Ask the question on every return that is not a joint return where the filer is married at the end of 2025, including head of household under the lived-apart rule. Or state downstream that on a non-joint return the spouse counts as another person."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A married filer filing separately whose spouse is the child's other parent and the only other person who lived with the child for more than half of 2025.",
+       "why_no": "The help says 'Answer No if ... another parent of the child also lived with the child'. The filer reads their spouse as 'another parent' and answers no, which may end the interview, even though the spouse is exactly the person the question asks about.",
+       "line": "dependent.other_only_spouse_if_mfs",
+       "irs_text": "i1040gi p. 17, Step 1: 'qualifying child of any other person (other than your spouse if filing jointly) ... see Qualifying child of more than one person.'",
+       "severity": "medium",
+       "fix": "Change the help to 'Answer No if anyone other than your husband or wife, such as a grandparent, aunt, uncle, or grown brother or sister, also lived with the child ...'. Remove 'another parent', or say 'a parent other than your husband or wife'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A married filer filing separately where no one besides the filer could claim the child: the spouse did not live with the child, and no other relative did.",
+       "why_no": "The question asks whether the spouse is 'the only relative, besides you, who ... could claim them'. If nobody else could, the filer truthfully answers no, and the help warns that 'A No may end the interview here'. That is a refusal the IRS text does not support.",
+       "line": "dependent.other_only_spouse_if_mfs",
+       "irs_text": "i1040gi p. 17, Step 1: the tie-breaker applies only 'If the child meets the conditions to be a qualifying child of any other person'.",
+       "severity": "medium",
+       "fix": "First ask 'Could anyone besides you claim this child?' Then ask whether that person is only your husband or wife. Give 'no one else' as its own answer that does not end the interview."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A married filer filing separately who receives social security benefits and lived with their spouse during 2025, but whose spouse was often away for work. The filer does not count those periods as living together.",
+       "why_no": "The help applies the head of household temporary-absence rule to the line 6d and worksheet test ('lived with your spouse at any time'). The answer options also split the year at July. A filer whose only time together was brief may pick apart_all_year and get the $25,000 base instead of the 85% rule.",
+       "line": "household.mfs_living_if_mfs",
+       "irs_text": "i1040gi p. 32, worksheet line 8: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85%'",
+       "severity": "low",
+       "fix": "Make the apart_all_year answer read 'We did not live together at any time in 2025, not even for a day'. Keep the temporary-absence help, and tie it to both tests explicitly."
+      }
+     ],
+     "prompt_sha": "58debe05e1724987afe015a974739c6e997c875fdbc185b0bdb17a30b1016169",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.121508,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_household.mfs.3ebed3af0546.1.response.txt"
+    }
+   ],
+   "condition": "household.mfs",
+   "lines": [
+    "dependent.other_only_spouse_if_mfs",
+    "household.mfs_living_if_mfs"
+   ],
+   "inputs": [
+    "dependent.other_only_spouse",
+    "household.mfs_living"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      14,
+      15,
+      17,
+      31,
+      32
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 14, Married Filing Separately, \"Check the “Married filing separately” box in the Filing Status section on page 1 of Form 1040 or 1040-SR if you are married at the end of 2025 and file a separate return\"",
+      "p. 15, Married persons who live apart, \"You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home\"; p. 32, Social Security Benefits Worksheet, line 8, \"Married filing separately and you lived with your spouse at any time in 2025\"; p. 31, Line 6d, \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d\"",
+      "p. 17, Step 1, \"If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025, see Qualifying child of more than one person, later.\"",
+      "p. 31, Line 6d, \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d\"; p. 15, Married persons who live apart, \"You lived apart from your spouse for the last 6 months of 2025\""
+     ],
+     "cols_pages": [
+      14,
+      15,
+      17,
+      31
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
     }
    ]
   }

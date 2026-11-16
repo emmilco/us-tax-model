@@ -128,3 +128,40 @@ Lane b1-adj-a (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in th
 | claude | render | 16 | scope | MISMATCH; casualty, claim of right, disaster loss | i1040sca p. 11, Line 16 list | sd.casualty, sd.business_property, s3.repaid_income and sa.unsupported refuse them, as earlier rounds. |
 
 Counts: claude transcription: representation 4; claude render: scope 4. Findings: none. No line left open.
+
+## Goal-1 coverage-expansion round (2026-11-15)
+
+Lane xadj-b (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the xint worktree (coverage-expansion merge). Open lines of the Claude transcription log (line-scoped pass 8d1c7332dffb). Full ruling text is in the logs and sidecars; rulings files `/tmp/xadj/b/<form>.transcription.json`, applied with rule.py. The second review family is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | sa.itemizes | representation | triage 8d1c7332dffb: no value difference | i1040gi pp. 33-34 | Same three conditions; unasked inputs and one-sided refusals only. |
+| claude | transcription | sa.deduction | representation | triage: no value difference | i1040gi p. 33, Line 12e | As sa.itemizes. |
+| claude | transcription | sa.mfs_spouse_itemizes | representation | triage: 4,082/4,083 agree | i1040gi p. 34, Exception 2 | Same Boolean. |
+| claude | transcription | 16 | representation | triage: no value difference | i1040sca p. 11, Other Itemized Deductions | Gambling losses limited to winnings in both. |
+| claude | transcription | 2 (sa.dep_line2) | finding (medium) | source footnote; triage has no dependent with line 8u | i1040gi p. 35, worksheet footnote | Earned income leaves out line 8u, now computed. BUG-0767. |
+| claude | transcription | 3 (sa.dep_line3) | representation | triage: no value difference (display only) | i1040gi p. 35, line 3 | Same value; the reply shows it only for a dependent. |
+| claude | transcription | 4a | representation | triage: no value difference | i1040gi p. 35, line 4a | As line 3. |
+| claude | transcription | 4b | representation | triage: 3,845/4,083 agree, no value difference | i1040gi p. 35, line 4b | Same count. |
+| claude | transcription | 4c | representation | triage: no value difference | i1040gi p. 35, line 4c | As line 3. |
+
+Counts: claude transcription: representation 8, finding 1 (medium).
+
+Findings: BUG-0767 (medium). No line left open.
+
+## Goal-1 coverage-expansion round (2026-11-15), render
+
+Lane xadj-b (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the xint worktree (coverage-expansion merge). Open lines of the Claude render log (line-scoped pass 93a84847a227). Full ruling text is in the logs and sidecars; rulings files `/tmp/xadj/b/<form>.render.json`, applied with rule.py. The second review family is dormant and not ruled.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | 2 (sa.line2) | ambiguity | MISMATCH | f1040sa line 2 | amb.2025.sa_medical_negative_agi. |
+| claude | render | 6 | finding (low) | MISMATCH; ftc.taxes, sa.foreign_tax_deduct_if_tax | p514 p. 3, Exceptions for foreign taxes not allowed as a credit | Non-creditable but deductible foreign taxes neither computed nor refused. BUG-0768. |
+| claude | render | 15 | scope | MISMATCH; sd.casualty, sd.other_forms | i1040sca p. 11, Line 15 | Casualty refused before Schedule A. |
+| claude | render | 16 | scope | MISMATCH; sd.other_forms, s3.repaid_income, sa.unsupported | i1040sca p. 11, Line 16 | Other listed items refused. |
+| claude | render | 2 (sa.dep_line2) | finding (medium) | MISMATCH | i1040gi p. 35, worksheet footnote | Line 8u omitted (6 and 8t still refused). BUG-0767. |
+| claude | render | 4b | scope | MISMATCH; sa.mfs_spouse_extra on sa.standard | i1040gi p. 33, Line 12d | Spouse boxes on a separate return refused. |
+
+Counts: claude render: ambiguity 1, finding 2 (medium 1, low 1), scope 3.
+
+Findings: BUG-0767 (medium), BUG-0768 (low). No line left open.

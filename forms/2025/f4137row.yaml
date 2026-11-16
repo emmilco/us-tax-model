@@ -1,0 +1,36 @@
+form:
+  id: f4137row
+  kind: form
+  title: Form 4137, line 1 — one row per employer to whom this person was required to but did not report all tips
+  tax_year: 2025
+  note: One entry per employer. Columns (c) and (d) are asked; columns (a) and (b) name the employer and change no amount.
+  lines:
+  - id: f4137row.col_c
+    printed: 1(c)
+    label: Total cash and charge tips you received (including unreported tips)
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Total cash and charge tips you received in 2025 while working for this employer, including the tips you
+        reported and the tips you did not report
+    cite:
+      doc: f4137
+      locator: 'p. 2, Columns (c) and (d), "Include all cash and charge tips you received", "Tips you didn’t report at all",
+        "Include these tips in column (c)"'
+  - id: f4137row.col_d
+    printed: 1(d)
+    label: Total cash and charge tips you reported to your employer
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Total cash and charge tips you reported to this employer for 2025
+    cite:
+      doc: f4137
+      locator: 'p. 2, Columns (c) and (d), "Total tips you reported to your employer timely", "Total tips you reported to your
+        employer late"'
+  collection:
+    parent: person
+    cite:
+      doc: f4137
+      locator: 'p. 2, Line 1, "Complete a separate row for each employer", "The line 2 and line 3 amounts on that Form 4137
+        should be the combined totals of all your Forms 4137 and attached statements"'

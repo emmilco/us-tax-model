@@ -3,6 +3,31 @@
  "form": "f1040",
  "rulings": [
   {
+   "printed": "12b",
+   "project_expr_sha256": "f00fac728f0a44219568c3d7645debae6411982e92ac224e99e3433b989624df",
+   "second_expr_sha256": "b79b1e9ed3c1ed504edd5ad67caa4165a1ac44bbe59c3cb5807a930209bb9a71",
+   "ruling": "Ruling: representation; both put the spouse-itemizes answer (sa.spouse_itemizes) on line 12b only on a separate return: the project's choose (mfs -> input, else sa.no false) and the reply's all(status = mfs, spouse_itemizes) are the same Boolean (i1040gi p. 33, Line 12b; p. 34, Exception 2). Triage d366a5e05a41: 3,191/3,215 agree, no value difference; the 24 differences are project-unknown on returns that never answer f1040.status (14 incomplete, 10 refused), where the reply's conjunction short-circuits to false.",
+   "context": "5fd2e4025f04e9245f81e05d11bfa66d515ad0950487bdd4256e5faff69bfdd0",
+   "date": "2026-11-15",
+   "run": "c4d720a075091243aa4a6f9e3f94acd186e5765aeb0b5be9440cc24eecd237b3",
+   "subject_key": "2b4f9622e94162488d943f8430459434d79b2376d32321a8132376953e34cb8a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage21.choose.eic_limit_status_unanswered@f1040",
+     "partial:stage14.asset.hy_5yr-f1040.status@f1040",
+     "partial:stage14.asset.bonus_100-f1040.status@f1040",
+     "partial:stage14.asset.prior_7yr-f1040.status@f1040",
+     "partial:stage14.asset.qip-f1040.status@f1040",
+     "partial:stage14.asset.done-f1040.status@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "16",
    "project_expr_sha256": "53f123071b6be372fee82df2e194abb08eb02be5243eba6c18e32a015a37805f",
    "second_expr_sha256": "222fd5cd971e50f18888110e7a13345eeaf9e2d0e23e10fd44375a8eeddb7bbf",
@@ -40,6 +65,74 @@
      "fixture:classm.sli.1@f1040",
      "fixture:classm.ssb.1@f1040",
      "fixture:stage9.eic.refuse.other_income@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "9e2cade2b1ff2eb7d96740bd471c58e13c0525cc09eb02b9884656a50679195f",
+   "second_expr_sha256": "5235df7be37b1e5de7c77d6da641fc3cffc275e31118f5a078834c49a312c6ee",
+   "ruling": "Ruling: representation; the reply's tax on taxable income follows the same Tax Table / Tax Computation Worksheet / Qualified Dividends and Capital Gain Tax Worksheet / Schedule D Tax Worksheet selection as the project (i1040gi pp. 36-38, Line 16) and adds nothing for Forms 8814, 4972, 8615 and the other listed taxes, which the project refuses (scope.other_lines). Triage d366a5e05a41: 3,016/3,215 agree with no value difference: 150 candidate-unknown (the reply reads f1040.line3a as an unanswered input), 19 candidate-refuses and 30 project-refuses (a refusal reached on one side only, on returns refused either way). Equivalent wherever both compute.",
+   "context": "5fd2e4025f04e9245f81e05d11bfa66d515ad0950487bdd4256e5faff69bfdd0",
+   "date": "2026-11-15",
+   "run": "c4d720a075091243aa4a6f9e3f94acd186e5765aeb0b5be9440cc24eecd237b3",
+   "subject_key": "cfed1f337cc15620041aed0a74575b5cfe4baf2c2532a407579d0c5a75e0d5f6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.clcw_next_year.3.deepseek@f1040",
+     "fixture:classm.asset.1@f1040",
+     "fixture:classm.asset.2@f1040",
+     "fixture:classm.f2441.1@f1040",
+     "fixture:classm.f2441.2@f1040",
+     "fixture:classm.f2441.4@f1040",
+     "fixture:classm.f2441.5@f1040",
+     "fixture:classm.f2441.6@f1040",
+     "fixture:classm.f2441.7@f1040",
+     "fixture:classm.f4952.2@f1040",
+     "fixture:classm.f4952.3@f1040",
+     "fixture:classm.f8959.2@f1040",
+     "fixture:classm.f8960.2@f1040",
+     "fixture:classm.s179.3@f1040",
+     "fixture:stage9.eic.refuse.form8814@f1040",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f1040",
+     "fixture:stage13.refuse.joint_without_spouse@f1040",
+     "fixture:stage13.refuse.single_with_spouse@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "9e2cade2b1ff2eb7d96740bd471c58e13c0525cc09eb02b9884656a50679195f",
+   "second_expr_sha256": "c6474c1578b13d4c781d81590abf1a5407814cab7fa667e023c465c3a67fa66b",
+   "ruling": "Ruling: representation; line-scoped rerun (pass 0416e96b1303, its foreign interfaces changed). Executable triage 2,983/3,201 agree; no value difference on any return; 215 candidate-unknown (175 on completed returns; every witness 'no input supplied for f1040.line3a': the reply reads qualified dividends directly, the project its parent-gated form), 3 project-refuses, all on returns refused by scope.other_line16 (Forms 8814, 4972, 8615, 8621 or 8978, section 962, education credit recapture) or f4952.unsupported. The reply's own note leaves Form 4972 unrefused; the project refuses it at scope.other_line16, which is right under i1040gi p. 34, Line 16, 'Tax from Form 4972 (relating to lump-sum distributions)'. Worksheet selection the same (Tax Table, Tax Computation Worksheet, Schedule D Tax Worksheet, QDCG worksheet). Same ruling as the earlier rounds (adjudication/f1040.md).",
+   "context": "7f31e240a140b31e830a162acf094c2b1ba1a585ec01eb93791b52dffdd0a5e7",
+   "date": "2026-11-15",
+   "run": "c7feb53239bbc53c68a6ac181e8a54539a9f09775f529adaa0b1161fa33d7b68",
+   "subject_key": "4d52db60e434578045b39d2b6383971ce3caa9b0850c5887ccb02ad625b88bab",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2@f1040",
+     "fixture:classm.f2441.3@f1040",
+     "fixture:classm.f2441.4@f1040",
+     "fixture:classm.f2441.5@f1040",
+     "fixture:classm.f2441.6@f1040",
+     "fixture:classm.f2441.7@f1040",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@f1040",
+     "fixture:stage16.cleanup.refuse.f1040_line16@f1040",
+     "fixture:t264.f4952.unsupported_with_interest@f1040"
     ],
     "policy": "executable-triage-v2"
    }
@@ -491,6 +584,60 @@
      "generated:20261026.131@f1040",
      "generated:20261026.192@f1040",
      "generated:20261026.213@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6d",
+   "project_expr_sha256": "3e14d331cec309d49e48d6dbfaf8d0318f3c4b59cd1af105d51928dcf82dcd13",
+   "second_expr_sha256": "576c0df96f7198f45b7c86bd965159af0645e799ab1fa9187698a0cc6d6f7652",
+   "ruling": "Ruling: ambiguity; amb.2025.mfs_lived_apart_boxes (coordinator decision under the owner's delegation, lane mfs-l1). i1040gi p. 31, Line 6d: \"If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d. If you don't check the box on line 6d, you may get a math error notice from the IRS.\" The instruction sits under Lines 6a-6d (social security benefits); the project checks the box only on a return with benefits (ssb.has_benefits), the reply on every separate return lived apart all year. Triage d366a5e05a41: 3,175/3,215 agree; the 3 value differences are exactly that case (MFS, apart all year, ssb.has_benefits false: project false, reply true); the other 37 are the reply's unknown status on returns that never answer it (29 incomplete, 8 refused). The chosen reading stands.",
+   "context": "5fd2e4025f04e9245f81e05d11bfa66d515ad0950487bdd4256e5faff69bfdd0",
+   "date": "2026-11-15",
+   "run": "c4d720a075091243aa4a6f9e3f94acd186e5765aeb0b5be9440cc24eecd237b3",
+   "subject_key": "9a01ef3c8bf3eb92f52ac6e965d7add406ac5387ab0d64dad693a36e932eb643",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage21.choose.eic_limit_status_unanswered@f1040",
+     "fixture:mfs.ira.apart_not_covered@f1040",
+     "fixture:mfs.ira.apart_covered@f1040",
+     "fixture:mutation.t2.eic.mfs_child_line5_skip@f1040",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f1040",
+     "partial:stage14.asset.hy_5yr-f1040.status@f1040",
+     "partial:stage14.asset.bonus_100-f1040.status@f1040",
+     "partial:stage14.asset.prior_7yr-f1040.status@f1040",
+     "partial:stage14.asset.qip-f1040.status@f1040"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7a",
+   "project_expr_sha256": "a3cbd69d792374e62d167fb70f7a64a910706880011598be77cbb9f85ade3d20",
+   "second_expr_sha256": "06a0d0fbe836c6baeb315ab5ee88fcdc07848cbc7f4cff327d7865c8af0359f0",
+   "ruling": "Ruling: representation; the reply rebuilds Schedule D's carry to line 7a (line 16 gain or zero, line 21 limited loss, Exception 1 capital gain distributions) where the project copies sd.to1040 (f1040sd p. 2, Part III, lines 16 and 21: \"If line 16 is a gain, enter the amount from line 16 on Form 1040 ... line 7a\"; \"If line 16 is a loss, enter here and on Form 1040 ... line 7a, the smaller of\"). Triage d366a5e05a41: 3,186/3,215 agree; in scope 3,045/3,045 agree; all 29 differences are project-refuses (returns the project refuses on a distribution or Schedule D gate the reply does not read). Equivalent wherever the project computes.",
+   "context": "5fd2e4025f04e9245f81e05d11bfa66d515ad0950487bdd4256e5faff69bfdd0",
+   "date": "2026-11-15",
+   "run": "c4d720a075091243aa4a6f9e3f94acd186e5765aeb0b5be9440cc24eecd237b3",
+   "subject_key": "74657cd4640130466d3fbb931a66f0edfec0e7344844c9a6c84473c110b8b1aa",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage4.refuse.div.section1202@f1040",
+     "fixture:stage4.refuse.div.amt@f1040",
+     "fixture:stage4.refuse.div.special@f1040",
+     "fixture:stage4.refuse.div.components@f1040",
+     "fixture:stage4.refuse.div.basis@f1040",
+     "fixture:f1040.refuse.digital_conflict@f1040"
     ],
     "policy": "executable-triage-v2"
    }

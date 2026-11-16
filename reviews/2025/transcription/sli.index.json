@@ -5,22 +5,22 @@
  "base": "bdbeef3757c4e223ce5e32d0d91808fe871c289d47cc7c1c34ac9553a3929c02",
  "head_rows": {
   "agree / disagree / missing": "3 / 6 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-14); see Line-scoped reviews"
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "sli.deduction",
-   "record": "86275f5d1a86468c78b4bdb735886b783ca5a2c9836eff9b187ddd1f5fda3262",
+   "record": "7f79185008aff6b592f45f2002b0a83bb5a8792fe4ecd4f31709df44e6ac9079",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 98, Schedule 1, line 21: \"You can take this deduction only if all of the following apply\", including \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.\" The reply drops that condition, saying no supplied input states it, but the request's person collection carried person.sav_claimed (\"Are you claimed as a dependent on someone else's 2025 tax return?\"), which the project counts in sli.claimed_count. Completed stage11.sli.claimed (project $0, reply $1,200) and stage11.sli.spouse_claimed (project $0, reply $2,497.50). executable triage (.transcription/triage/2025/sli.json, executable-triage-v2): 2,063 of 2,726 agree; 6 value (3 completed), 155 candidate-unknown (20 completed: the reply reads the loan answers without sli.any), 492 candidate-refuses (refused returns, upstream refusals through line 9), 10 project-unknown. Project stands.",
-   "subject_key": "b70ced23c7aa7846fdc017e549809534cfd00741553fbeb7b1509891494fcb31"
+   "ruling": "Ruling: model error; the reply leaves out the dependent condition. i1040gi p. 98, Schedule 1, line 21: you can take the deduction only if \"You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"; the project tests it with sli.claimed_count (person.sav_claimed) in sli.eligible, and the reply's own note says it did not encode it. Triage 6e21762b3daa: 2,478/3,116 agree; all 8 value differences are returns where the filer or the spouse is claimed on another return (person.sav_claimed true: classm.sli.3, dep.sli_claimed_no_deduction, stage11.sli.claimed, stage11.sli.spouse_claimed, stage16.sd.line17_no_skips_19 and three mutation cases), where the project's 0 is right; the other 630 are candidate-refuses (522) and candidate-unknown (108) on refused or incomplete returns. The separate-return zero is the same in both.",
+   "subject_key": "507850c76d6bffa1bf761f6c9e142bb547f76932b946ac10139e0bb35d6bbd76"
   },
   {
    "key": "1",
-   "record": "86275f5d1a86468c78b4bdb735886b783ca5a2c9836eff9b187ddd1f5fda3262",
+   "record": "7f79185008aff6b592f45f2002b0a83bb5a8792fe4ecd4f31709df44e6ac9079",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 1: \"Enter the total interest you paid in 2025 on qualified student loans ... Don't enter more than $2,500\"; p. 98, \"Don't include any amount paid from a distribution of earnings made from a qualified tuition program\". Both take the interest less the unqualified and the assisted amounts, floored at zero, capped at $2,500 (subtracting the two in turn with a zero floor equals subtracting their sum), and both refuse on sa.excluded_income. The project asks sli.unqualified_any and sli.assisted_any only after sli.any; the reply reads them directly. executable triage (.transcription/triage/2025/sli.json, executable-triage-v2): 2,643 of 2,726 agree; 83 candidate-unknown (20 completed, e.g. classm.eic.1: no student loan, project $0), no value difference. Project stands.",
-   "subject_key": "e79602d59ab600ebc29b31c14b94a9617a62961436f9cbe09b81a2335c3959e8"
+   "ruling": "Ruling: representation; the worksheet's line 1 (interest paid less unqualified and assisted parts, at most $2,500; i1040gi p. 98, Student Loan Interest Deduction Worksheet, line 1) is the same in both on every return the interview reaches. The project asks sli.any only on a return that is not married filing separately (sli.any_if_not_mfs; the deduction is not allowed on a separate return), the reply reads it on every return. Triage 6e21762b3daa: 3,021/3,116 agree; the 29 value differences are all separate returns (classm.tcw.4, .9, .15, classm.clcw_next_year.3, classm.retirement.4.deepseek, mutation.t2.f8962_months_r4 and others) whose fixtures still carry an sli.any answer the interview no longer asks; the deduction is 0 on them in both; the rest are 40 project-refuses (Pub. 970 exception), 13 project-unknown, 13 candidate-unknown.",
+   "subject_key": "4f2d5e1b415f4f259862676c196f8b897e1d16df2bafc3d2c2d2ddb57397c90e"
   },
   {
    "key": "2",
@@ -70,8 +70,8 @@
   }
  ],
  "subjects": {
-  "sli.deduction": "878041143334e579ad7551742ab6d352559c38022113236e201d83a09693b1c3",
-  "1": "6cc7caf3ae6a0a8c4c559f1a456d9f7649204f7c61c19079faf3a3eb27b4ca9b",
+  "sli.deduction": "5d1703a83517b96ebf64e59d54d1513d995e3180e874256e1b1759e97cc7fb22",
+  "1": "c1987ca474efa927dbf037ca125fc6a1c03ecde88b734ce39c61f983f9953b13",
   "2": "03b76842d0b2c01ed25446bb350441f94e4e87fe6f19ca18a3ea8ee9d0f06a4d",
   "3": "3a2f5cd698d5de7f0de48e3a76ddcbbd07c2f0b49b90c745ef539cc95ad9986d",
   "4": "7525f5f108db9d3ec62d4c245aeea6b7186ca4e6c389a61b6e16750c48e330f2",
@@ -82,7 +82,7 @@
  },
  "__rest__": "cdbf85c374e333f356e978a01b3319b841c43b9a1e74b210b748829916056fb7",
  "foreign": {
-  "sli.deduction": "84fa026db1b24146bbd852cff15a811bdf6727359efc6de7bb24ee8cb94d783c",
-  "1": "b5d39970c65924eeb9c9cc256d48e49b6b9a3ba9f69ce87ba05e7f1296aad57d"
+  "sli.deduction": "385f206b6b7a949df44736035f94e5ed70d62e1b7d5a9a9e66b69f02827714d9",
+  "1": "1387204e0b9dfd4af8ac8facf54f367d312ccb0575d09a0c69ff44e82aa1cc10"
  }
 }

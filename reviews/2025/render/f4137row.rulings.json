@@ -1,0 +1,17 @@
+{
+ "kind": "render",
+ "form": "f4137row",
+ "rulings": [
+  {
+   "printed": "1(c)",
+   "restated": "Input — Total cash and charge tips you received in 2025 while working for this employer, including the tips you reported and the tips you did not report",
+   "model": "The restatement covers tips 'received in 2025', but the instructions assign timely-reported tips to the year of the report: tips earned in December 2025 and reported by January 12, 2026 go 'on your 2026 Form 4137, line 1, columns (c) and (d)'. By the same rule, December 2024 tips reported timely in January 2025 belong on the 2025 form. Only late-reported and unreported tips follow the year 'earned and received.'",
+   "ruling": "Ruling: finding; Form 4137 p. 2, Columns (c) and (d): 'Tips reported timely are included in gross income of the employee for the month and year in which the report is made.' The line's source asks for tips 'received in 2025'; the bank help moves December 2025 tips reported in January 2026 to 2026 but does not bring in December 2024 tips reported timely in January 2025, which column (d) (W-2 box 7) includes, so line 4 can be understated (BUG-0915).",
+   "context": "e5bc8b33ed8cf5b0aad4bfd8db60bd066ed35989a071b010cff98ac509b20868",
+   "date": "2026-11-15",
+   "run": "b91f83a76c9fc18542fa4345554a3147e4dc927547f43badd403186157da27b2",
+   "severity": "low",
+   "subject_key": "f2b8d0b7f5cf92abb10f0f34fc13a8052eb8591d9af2f5a6a4bcdf06e22e2ce5"
+  }
+ ]
+}

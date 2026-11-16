@@ -28,6 +28,20 @@ sets:
     answers:
       dependent[kid].other_claimant: false
       dependent[kid].parents_apart: false
+  mfs_one_listed:
+    says: One person on a married-filing-separately return, married at the end of 2025, who lists one person as a child.
+    answers:
+      $person: [taxpayer]
+      f1040.status: mfs
+      household.married_dec31: true
+      $dependent: [kid]
+  spouse_lives_with_child:
+    says: The young child also lived with the filer's husband or wife for more than half of 2025; the child has no money of their own, has never married, and the parents are not apart.
+    answers:
+      dependent[kid].other_claimant: true
+      dependent[kid].parents_apart: false
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
 rows:
   - id: dependents.ordinary_child
     design: lane 2a, the ordinary child (N4)
@@ -267,3 +281,61 @@ rows:
       dependent[kid].disabled: false
     expect:
       asks: dependent[kid].qr_all_year
+  - id: dependents.mfs_spouse_not_claiming
+    design: lane mfs-l4, decision D3 (amb.2025.mfs_spouse_qc)
+    situation: On a separate return, a parent whose child is also the qualifying child of only the husband or wife, who will not claim the child, keeps the child with no tie-breaker question.
+    uses: [mfs_one_listed, young_child, spouse_lives_with_child]
+    answers:
+      dependent[kid].other_only_spouse: true
+      dependent[kid].spouse_claims: false
+      dependent[kid].filer_parent: true
+    expect:
+      asks: dependent[kid].citizen_ssn
+      not_asked:
+        - dependent[kid].other_nontaxpayer
+  - id: dependents.mfs_spouse_claims
+    design: lane mfs-l4, decision D3; dependent.qc_tiebreak
+    situation: On a separate return, a child whom the husband or wife will also claim is refused at the tie-breaker rules, on that answer.
+    uses: [mfs_one_listed, young_child, spouse_lives_with_child]
+    answers:
+      dependent[kid].other_only_spouse: true
+      dependent[kid].spouse_claims: true
+    expect:
+      refused: dependent[kid].qc_tiebreak
+      not_asked:
+        - dependent[kid].filer_parent
+        - dependent[kid].other_nontaxpayer
+  - id: dependents.mfs_not_parent
+    design: lane mfs-l4, decision D3; dependent.qc_tiebreak
+    situation: On a separate return, a stepparent whose husband or wife, the child's only other claimant, will not claim the child is still refused at the tie-breaker rules (the higher-AGI rule for a non-parent).
+    uses: [mfs_one_listed, young_child, spouse_lives_with_child]
+    answers:
+      dependent[kid].other_only_spouse: true
+      dependent[kid].spouse_claims: false
+      dependent[kid].filer_parent: false
+    expect:
+      refused: dependent[kid].qc_tiebreak
+  - id: dependents.mfs_other_relative_too
+    design: lane mfs-l4, decision D3; dependent.qc_tiebreak
+    situation: On a separate return, a child who also lived over half the year with a grandparent is still refused at the tie-breaker rules, without the questions about the husband or wife's claim.
+    uses: [mfs_one_listed, young_child, spouse_lives_with_child]
+    answers:
+      dependent[kid].other_only_spouse: false
+    expect:
+      refused: dependent[kid].qc_tiebreak
+      not_asked:
+        - dependent[kid].spouse_claims
+        - dependent[kid].filer_parent
+  - id: dependents.single_no_spouse_questions
+    design: lane mfs-l4, decision D3 (other statuses unchanged)
+    situation: On a single return, a child another relative could claim is refused at the tie-breaker rules without any question about a husband or wife.
+    uses: [one_listed, young_child]
+    answers:
+      dependent[kid].other_claimant: true
+      dependent[kid].parents_apart: false
+      dependent[kid].ever_married: false
+      dependent[kid].own_money: false
+    expect:
+      refused: dependent[kid].qc_tiebreak
+      not_asked:
+        - dependent[kid].other_only_spouse

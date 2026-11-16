@@ -2,18 +2,21 @@
  "kind": "transcription",
  "form": "se",
  "family": "claude",
- "base": "218de1467c895e1d8789c490c4e8fa1707393c2217fa0f885cac8bf82a3362bb",
+ "base": "3ee16db8d7a3af958941fb01af216f30d5c438f7cbc2959eea5870fb851ad9ed",
  "lines": [
   {
    "key": "line13",
-   "record": "218de1467c895e1d8789c490c4e8fa1707393c2217fa0f885cac8bf82a3362bb",
+   "record": "3ee16db8d7a3af958941fb01af216f30d5c438f7cbc2959eea5870fb851ad9ed",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; f1040sse (2025) p.1 line4a multiplies line3 by92.35% only when line3 is positive, otherwise copying line3. The project floors line3 at zero inside that positive branch; the returned transcription multiplies the signed Dollars line directly in that branch. The floor cannot bind when the guard is true. Both retain the same $400 STOP on line4c, zero for the screened farm/optional/church/Form4137/Form8919 regimes, the wage-base floor on line9, the same line10/11 rates, and 50% of line12 on line13. This fresh reply passes the schema/reference/type checks; the archived conflicting-id reply is not repaired or reused.",
-   "subject_key": "513a3d159bc45453b0bb96daeb13dbc421f2081ba6b747191afd955243438bf7"
+   "ruling": "Ruling: representation; equivalent. Both expressions read the same inputs (line2, line8a, line8b, line8c, the new Form 4137 and Form 8919 lines included in line 8d) and the same parameters (se.floor, se.rate_9235, se.wage_base, se.rate_124, se.rate_029, se.rate_50); the reply writes line 4a as line 2 x 92.35% without the project's floor at zero inside the branch guarded by line 2 > 0, where the floor never binds (Schedule SE (2025) lines 4a, 8a-8d, 9, 10-13). Triage 478/480 agree; the 2 differences are project-unknown on refused returns (the person's Form 8919 roster unconfirmed) against the reply's line hidden by its own shown-when se.h_owes: no value differs.",
+   "subject_key": "60b1e4c9f0f82e3b9a06b018db5e1c083a4981bb8e577b2de7e5a9d1c625a65d"
   }
  ],
  "subjects": {
-  "line13": "4c17bb5ce32845c5ef6bfc8f3bfce76bc472081a0ed9df8a05b35eb64c177158"
+  "line13": "b0a68aad7083444b3dd8fa8424f4a24644774a0b976490e7da732ff71581b356"
  },
- "__rest__": "2fcc27079d66d7d1e57c61912db88d50ec4a5c94226e88fc5faef18b50cf56c9"
+ "__rest__": "aedd805f5e669afa4782f1bb24e5e9db494fdfb25c9eae6e1f1060346eaf6f38",
+ "foreign": {
+  "line13": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+ }
 }

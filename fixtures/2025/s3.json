@@ -656,7 +656,7 @@
         "f1040.line31"
       ],
       "evidence": "synthetic-regression",
-      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values. Stage 13: married filing separately stays refused, now through s3.mfs.",
+      "evidence_note": "Agent arithmetic from archived i1040gi p. 117; pending independent human hand-work, NOT class B or official IRS expected values. Lane mfs-l1 (scout D2, married filing separately computed): no Form W-2, so no excess social security credit: Schedule 3 lines 11 and 15 and Form 1040 line 31 are $0, as ss.mfj (predicted by hand before recording).",
       "inputs": {
         "f1040.status": "mfs",
         "scope.noncitizen": false,
@@ -666,104 +666,23 @@
         "scope.artist_official": false,
         "scope.foreign_shares": false,
         "scope.business_before": false,
-        "scope.reservist_expenses": null,
-        "scope.military_move": null,
-        "scope.rental": null,
-        "scope.k1": null,
-        "scope.farm": null,
-        "scope.clergy": null,
-        "scope.church_exempt_wages": null,
-        "scope.w2_marks": null,
-        "scope.performer_expenses": null,
-        "scope.recovery": null,
-        "scope.archer_msa": null,
-        "scope.se_plan_other": null,
-        "scope.reforestation": null,
-        "scope.attorney_fees": null,
-        "scope.nol": null,
-        "scope.f8615": null,
-        "scope.f8814": null,
-        "scope.education_recapture": null,
-        "scope.income_averaging": null,
-        "scope.pfic": null,
-        "scope.cfc": null,
-        "scope.f8978": null,
-        "div.any": false,
-        "sd.sold_other": null,
-        "sd.sec1256": null,
-        "sd.condemned": null,
-        "sd.small_business_stock": null,
-        "sd.trader_election": null,
-        "sd.casualty": null,
-        "sa.excluded_income": null,
-        "scope.nonresident": null,
-        "scope.chapter11": null,
-        "scope.reservist_repaid": null,
-        "scope.adoption_benefits": null,
-        "scope.pay_no_w2": null,
-        "scope.medicaid_waiver": null,
-        "scope.care_benefits_other": null,
-        "scope.disaster_distribution": null,
-        "scope.excess_deferral": null,
-        "scope.passive": null,
-        "f1040.tax_exempt_interest": null,
-        "eic.same_home": null,
-        "eic.legally_separated": null,
-        "eic.qc_of_another": null,
-        "sa.dependent": null,
-        "s8812.combat_pay": null,
-        "f1040.line25b": null,
-        "f1040.line25c_other": null,
-        "f8959.territory_w2": null,
-        "f1040.line26": null,
-        "s1a.tips": null,
-        "s1a.overtime": null,
-        "s1a.carloan": null,
-        "person[taxpayer].birth_year": null,
-        "sd.carryover": null,
-        "s179.prior_form": null,
-        "s179.carryover": null,
-        "s2.options_any": false
+        "s2.options_any": false,
+        "household.married_dec31": true,
+        "household.community_property": false,
+        "div.any": false
       },
       "expect": {
         "s3.line11": {
-          "kind": "refusal",
-          "gate": "s3.mfs",
-          "form": "Married filing separately",
-          "remedy": "The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married filing jointly is supported.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 14, Married Filing Separately",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s3.line15": {
-          "kind": "refusal",
-          "gate": "s3.mfs",
-          "form": "Married filing separately",
-          "remedy": "The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married filing jointly is supported.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 14, Married Filing Separately",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "f1040.line31": {
-          "kind": "refusal",
-          "gate": "s3.mfs",
-          "form": "Married filing separately",
-          "remedy": "The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married filing jointly is supported.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "p. 14, Married Filing Separately",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         }
       }
     },
@@ -2461,7 +2380,7 @@
         "s3:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: foreign tax paid in an earlier year and its credit carried to 2025, with no foreign tax in 2025: the foreign tax credit line refuses (Form 1116), and Schedule 3 lines 1 and 8 through it. Line 7 is $0.",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: foreign tax paid in an earlier year and its credit carried to 2025, with no foreign tax in 2025: the foreign tax credit line refuses (Form 1116), and Schedule 3 lines 1 and 8 through it. Line 7 is $0. Integration XINT (coordinator's fix): the carryover refusal is told at ftc.credit only; the Schedule 3 other-credit chain no longer reads ftc.carryover_no_tax, so s3.other_credit is false.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -2480,27 +2399,18 @@
       },
       "expect": {
         "scope.ready": {
-          "kind": "refusal",
-          "gate": "ftc.carryover_if_asked",
-          "form": "Form 1116",
-          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
-          "cite": {
-            "doc": "i1116",
-            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
-            "revision": "2025; printed date 2025-12-23",
-            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
-            "tax_year": 2025
-          }
-        },
-        "s3.other_credit": {
           "kind": "bool",
           "value": true
         },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
         "ftc.credit": {
           "kind": "refusal",
-          "gate": "ftc.carryover_if_asked",
-          "form": "Form 1116",
-          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "gate": "ftc.carryover_no_tax",
+          "form": "Form 1116 (a carryover with no foreign tax in 2025)",
+          "remedy": "A foreign tax credit carried from another year, with no foreign tax paid in 2025, is figured on Form 1116 from the year's foreign income, which this tool does not ask for without foreign tax.",
           "cite": {
             "doc": "i1116",
             "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
@@ -2511,9 +2421,9 @@
         },
         "s3.line1": {
           "kind": "refusal",
-          "gate": "ftc.carryover_if_asked",
-          "form": "Form 1116",
-          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "gate": "ftc.carryover_no_tax",
+          "form": "Form 1116 (a carryover with no foreign tax in 2025)",
+          "remedy": "A foreign tax credit carried from another year, with no foreign tax paid in 2025, is figured on Form 1116 from the year's foreign income, which this tool does not ask for without foreign tax.",
           "cite": {
             "doc": "i1116",
             "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
@@ -2524,9 +2434,9 @@
         },
         "s3.line8": {
           "kind": "refusal",
-          "gate": "ftc.carryover_if_asked",
-          "form": "Form 1116",
-          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "gate": "ftc.carryover_no_tax",
+          "form": "Form 1116 (a carryover with no foreign tax in 2025)",
+          "remedy": "A foreign tax credit carried from another year, with no foreign tax paid in 2025, is figured on Form 1116 from the year's foreign income, which this tool does not ask for without foreign tax.",
           "cite": {
             "doc": "i1116",
             "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
@@ -3365,7 +3275,7 @@
         "s3:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no foreign tax, territory income or foreign company, but a 2024 return with other forms (a Form 1116 among them) and a foreign tax credit carried to 2025: the carryover question is asked because of the 2024 return, and the foreign tax credit line refuses (Form 1116).",
+      "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no foreign tax, territory income or foreign company, but a 2024 return with other forms (a Form 1116 among them) and a foreign tax credit carried to 2025: the carryover question is asked because of the 2024 return, and the foreign tax credit line refuses (Form 1116). Integration XINT (coordinator's fix): the carryover refusal is told at ftc.credit only; the Schedule 3 other-credit chain no longer reads ftc.carryover_no_tax, so s3.other_credit is false.",
       "inputs": {
         "$w2@person[taxpayer]": [
           "emp_a"
@@ -3384,27 +3294,18 @@
       },
       "expect": {
         "scope.ready": {
-          "kind": "refusal",
-          "gate": "ftc.carryover_if_asked",
-          "form": "Form 1116",
-          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
-          "cite": {
-            "doc": "i1116",
-            "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
-            "revision": "2025; printed date 2025-12-23",
-            "snapshot": "6998cf8cd04b659b60ccf0b3a3ffaa507cc1dbdb31da40850f38a599dc39e0b1",
-            "tax_year": 2025
-          }
-        },
-        "s3.other_credit": {
           "kind": "bool",
           "value": true
         },
+        "s3.other_credit": {
+          "kind": "bool",
+          "value": false
+        },
         "ftc.credit": {
           "kind": "refusal",
-          "gate": "ftc.carryover_if_asked",
-          "form": "Form 1116",
-          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "gate": "ftc.carryover_no_tax",
+          "form": "Form 1116 (a carryover with no foreign tax in 2025)",
+          "remedy": "A foreign tax credit carried from another year, with no foreign tax paid in 2025, is figured on Form 1116 from the year's foreign income, which this tool does not ask for without foreign tax.",
           "cite": {
             "doc": "i1116",
             "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
@@ -3415,9 +3316,9 @@
         },
         "s3.line1": {
           "kind": "refusal",
-          "gate": "ftc.carryover_if_asked",
-          "form": "Form 1116",
-          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "gate": "ftc.carryover_no_tax",
+          "form": "Form 1116 (a carryover with no foreign tax in 2025)",
+          "remedy": "A foreign tax credit carried from another year, with no foreign tax paid in 2025, is figured on Form 1116 from the year's foreign income, which this tool does not ask for without foreign tax.",
           "cite": {
             "doc": "i1116",
             "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
@@ -3428,9 +3329,9 @@
         },
         "s3.line8": {
           "kind": "refusal",
-          "gate": "ftc.carryover_if_asked",
-          "form": "Form 1116",
-          "remedy": "A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.",
+          "gate": "ftc.carryover_no_tax",
+          "form": "Form 1116 (a carryover with no foreign tax in 2025)",
+          "remedy": "A foreign tax credit carried from another year, with no foreign tax paid in 2025, is figured on Form 1116 from the year's foreign income, which this tool does not ask for without foreign tax.",
           "cite": {
             "doc": "i1116",
             "locator": "p. 19, Line 10, \"Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025\"",
@@ -3813,6 +3714,41 @@
         "scope.ready": {
           "kind": "bool",
           "value": true
+        }
+      }
+    },
+    {
+      "id": "ss.mfs.two_jobs",
+      "covers": [
+        "s3.line11"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Lane mfs-l1, predicted before evaluating from i1040gi p. 117, Line 11: as ss.multi (two employers, each $100,000 of social security wages and $6,200 withheld) on a married filing separately return: the taxpayer's own excess, 12,400 - 10,918.20 = $1,481.80.",
+      "inputs": {
+        "f1040.status": "mfs",
+        "household.married_dec31": true,
+        "household.community_property": false,
+        "$w2@person[taxpayer]": [
+          "a",
+          "b"
+        ],
+        "person[taxpayer].w2[a].box3": 10000000,
+        "person[taxpayer].w2[a].box4": 620000,
+        "person[taxpayer].w2[b].box3": 10000000,
+        "person[taxpayer].w2[b].box4": 620000
+      },
+      "expect": {
+        "s3.line11": {
+          "kind": "money",
+          "cents": 148180
+        },
+        "s3.line15": {
+          "kind": "money",
+          "cents": 148180
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 148180
         }
       }
     },

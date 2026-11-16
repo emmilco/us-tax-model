@@ -1,0 +1,66 @@
+name: 19_rental_house
+who: A single person, 45, with one job (one Form W-2, $60,000 of wages) who rents out a house she has owned since 2020 to
+  a tenant all year, with a bank mortgage, property tax, insurance and a repair.
+end: complete
+answers:
+  $person:
+  - taxpayer
+  f1040.status: single
+  person[taxpayer].birth_year: 1980
+  $w2@person[taxpayer]:
+  - acme
+  person[taxpayer].w2[acme].box1: 6000000
+  person[taxpayer].w2[acme].box2: 600000
+  person[taxpayer].w2[acme].box4: 372000
+  person[taxpayer].w2[acme].box5: 6000000
+  person[taxpayer].w2[acme].box6: 87000
+  scope.w2_marks: false
+  s2.w2_marks: false
+  s1.nqdc_pension: false
+  scope.artist_official: false
+  scope.excess_deferral: false
+  scope.rental: true
+  scope.rent_personal: false
+  $rental:
+  - house
+  rental[house].kind: sfr
+  rental[house].days_fair: 365
+  rental[house].personal_any: false
+  rental[house].short_stays: false
+  rental[house].services: false
+  rental[house].under_tenth: false
+  rental[house].not_for_profit: false
+  rental[house].depletion: false
+  rental[house].part_home: false
+  rental[house].active: true
+  rental[house].rents: 1800000
+  rental[house].has_mortgage: true
+  rental[house].has_taxes: true
+  rental[house].has_insurance: true
+  rental[house].has_repairs: true
+  rental[house].amt9: 120000
+  rental[house].amt12: 600000
+  rental[house].amt14: 80000
+  rental[house].amt16: 240000
+  rental[house].prior_any: false
+  $rprop@rental[house]:
+  - bldg
+  rental[house].rprop[bldg].kind: residential
+  rental[house].rprop[bldg].month: m2
+  rental[house].rprop[bldg].year: y2020
+  rental[house].rprop[bldg].basis: 16000000
+  rental[house].rprop[bldg].screen: false
+  $royalty: []
+  sche.re_pro: false
+  sche.grouped: false
+  sche.qbi_business: false
+  rental[house].has_other_interest: false
+  rental[house].has_management: false
+  rental[house].has_commissions: false
+  rental[house].has_cleaning: false
+  rental[house].has_utilities: false
+  rental[house].has_supplies: false
+  rental[house].has_advertising: false
+  rental[house].has_legal: false
+  rental[house].has_other: false
+  rental[house].vehicle: false

@@ -1,0 +1,979 @@
+diff --git a/ambiguities/2025.yaml b/ambiguities/2025.yaml
+index 9756299..94bfdfc 100644
+--- a/ambiguities/2025.yaml
++++ b/ambiguities/2025.yaml
+@@ -2060,6 +2060,19 @@ register:
+         locator: p. 3, "If a loss or deduction is partially suspended, only the portion of the allowed loss or deduction
+           attributable to QBI must be considered"
+       status: K-1 integration draft (nightplan round 4), for the owner's ruling.
++    - id: amb.2025.k1_collectibles_loss
++      text_at_issue: The 28% Rate Gain Worksheet line 4 asks for "any collectibles gain reported to you on ... Schedule K-1", while
++        the K-1 instructions send box 9b (Form 1065) and box 8b (Form 1120-S) "gain or loss" to line 4.
++      readings:
++        - Enter the K-1 amount on line 4 with its sign (a loss reduces line 7).
++        - Refuse a K-1 collectibles loss.
++      chosen: Enter it with its sign.
++      reason: Both K-1 instructions send the loss to line 4; line 7 combines lines 1 to 6 and floors the result at zero.
++      cite:
++        doc: i1120ssk
++        locator: p. 7, Box 8b. Collectibles (28%) Gain (Loss), "report collectibles gain or loss on line 4 of the 28% Rate Gain
++          Worksheet"
++      status: K-1 integration draft (nightplan round 4), for the owner's ruling.
+     - id: amb.2025.mfs_spouse_qc
+       text_at_issue: 'On a separate return the husband or wife is "any other person" for Step 1 (i1040gi p. 17, "a qualifying
+         child of any other person (other than your spouse if filing jointly)"), so a child who lived with both is the
+diff --git a/forms/2025/f1040.yaml b/forms/2025/f1040.yaml
+index 03e8e31..3acd83c 100644
+--- a/forms/2025/f1040.yaml
++++ b/forms/2025/f1040.yaml
+@@ -228,6 +228,28 @@ form:
+         doc: i1040gi
+         locator: Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" (Form 1099-INT box 8, Form
+           1099-OID boxes 2 and 11, net of amortized bond premium and acquisition premium)
++    - id: f1040.k1_taxexempt
++      printed: (helper)
++      label: Tax-exempt interest from partnership and S corporation Schedules K-1
++      type: NonNegDollars
++      expr:
++        op: sum_over
++        collection: person
++        field: person.k1_taxexempt_int
++      cite:
++        doc: i1120ssk
++        locator: p. 15, Code A. Tax-exempt interest income, "Individual shareholders include this amount on Form 1040 or 1040-SR, line 2a"
++    - id: f1040.k1_backup_wh
++      printed: (helper)
++      label: Backup withholding from partnership and S corporation Schedules K-1
++      type: NonNegDollars
++      expr:
++        op: sum_over
++        collection: person
++        field: person.k1_backup_wh
++      cite:
++        doc: i1040gi
++        locator: p. 39, Line 25c—Other Forms, "Federal income tax withheld that is shown on a Schedule K-1"
+     - id: f1040.line2a
+       printed: 2a
+       label: Tax-exempt interest
+@@ -237,6 +259,7 @@ form:
+         of:
+           - f1040.tax_exempt_interest
+           - div.box12_if_dividends
++          - f1040.k1_taxexempt
+       cite:
+         doc: i1040gi
+         locator: Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" and "Also include on line 2a any
+@@ -966,6 +989,7 @@ form:
+         of:
+           - f1040.line25c_other_if_withheld_other
+           - f8959.line24
++          - f1040.k1_backup_wh
+       cite:
+         doc: i1040gi
+         locator: p. 39, Line 25c—Other Forms, "Additional Medicare Tax you had withheld. Include the amount shown on Form 8959,
+diff --git a/forms/2025/f8960.yaml b/forms/2025/f8960.yaml
+index 7232c25..9b3a6b8 100644
+--- a/forms/2025/f8960.yaml
++++ b/forms/2025/f8960.yaml
+@@ -210,16 +210,28 @@ form:
+             doc: i8960
+             locator: pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund
+               worksheet
++    - id: f8960.k1_nonpassive
++      printed: (helper)
++      label: Nonpassive trade or business income less loss on Schedule E line 28 (columns (k) less (i))
++      type: Dollars
++      expr:
++        op: sum_over
++        collection: person
++        field: person.k1_nonpassive
++      cite:
++        doc: i8960
++        locator: p. 8, Line 4b
+     - id: f8960.line4b
+       printed: 4b
+-      type: NonNegDollars
+-      label: Amount from f8960.zero
++      type: Dollars
++      label: Adjustment for net income or loss derived in the ordinary course of a non-section 1411 trade or business
+       expr:
+-        op: copy
++        op: subtract
+         from: f8960.zero
++        take: f8960.k1_nonpassive
+       cite:
+-        doc: f8960
+-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
++        doc: i8960
++        locator: p. 8, Line 4b, "Adjustment for net income or loss derived in the ordinary course of a non-section 1411 trade or business"
+       refuses:
+         - when: f8960.unsupported
+           form: Form 8960 additional adjustments
+diff --git a/forms/2025/g28.yaml b/forms/2025/g28.yaml
+index 1b075fb..5adfbd1 100644
+--- a/forms/2025/g28.yaml
++++ b/forms/2025/g28.yaml
+@@ -62,14 +62,28 @@ form:
+       cite:
+         doc: i1040sd
+         locator: p. 11, "Enter your long-term capital loss carryovers from Schedule D, line 14"
++    - id: g28.k1
++      printed: (helper)
++      label: Collectibles (28%) gain or loss from partnership and S corporation Schedules K-1
++      type: Dollars
++      expr:
++        op: sum_over
++        collection: person
++        field: person.k1_collectibles
++      cite:
++        doc: i1120ssk
++        locator: p. 7, Box 8b. Collectibles (28%) Gain (Loss), "report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet"
+     - id: g28.line4
+       printed: "4"
+       shown_when: g28.reached
+-      type: NonNegDollars
++      type: Dollars
+       label: "Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust"
+       expr:
+-        op: copy
+-        from: div.box2d_if_capital_gain
++        op: sum
++        of:
++        - div.box2d_if_capital_gain
++        - g28.k1
++      ambiguity: amb.2025.k1_collectibles_loss
+       cite:
+         doc: i1040sd
+         locator: p. 11, 28% Rate Gain Worksheet, lines 1–7
+diff --git a/forms/2025/person.yaml b/forms/2025/person.yaml
+index 69035f0..ce78e21 100644
+--- a/forms/2025/person.yaml
++++ b/forms/2025/person.yaml
+@@ -2320,6 +2320,18 @@ form:
+       cite:
+         doc: i1040sse
+         locator: pp. 1-5
++    - id: person.k1_se_any
++      printed: (gate)
++      label: A partnership K-1 shows self-employment earnings (box 14, code A)
++      type: Bool
++      expr:
++        op: test
++        ne:
++        - person.k1p_total_se_earnings
++        - const: 0
++      cite:
++        doc: f1040sse
++        locator: Schedule SE (2025), line 2
+     - id: person.se_line2
+       printed: (helper)
+       label: Schedule SE line 2 for this person
+@@ -2331,6 +2343,13 @@ form:
+         doc: f1040sse
+         locator: Schedule SE (2025), line 2, "Net profit or (loss) from Schedule C, line 31"
+       refuses:
++      - when: person.k1_se_any
++        form: Schedule SE line 2 with partnership self-employment earnings (Schedule K-1 box 14, code A)
++        remedy: Self-employment earnings from a partnership are outside this tool.
++        cite:
++          doc: f1040sse
++          locator: Schedule SE (2025), line 2, "Net profit or (loss) from Schedule C, line 31; and Schedule K-1 (Form 1065),
++            box 14, code A (other than farming)"
+       - when: person.se_screened
+         form: Schedule SE items outside this tool (church employee income, clergy, Forms 4361 and 4029, partnership and other
+           self-employment income, farm income, optional methods, chapter 11, community income, exempt income, Forms 4137 and 8919)
+@@ -7522,7 +7541,6 @@ form:
+       cite: &id002
+         doc: i1065sk1
+         locator: p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E"
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_nonpassive_income
+       printed: (helper)
+       type: NonNegDollars
+@@ -7533,7 +7551,6 @@ form:
+         field: k1p.col_k
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_nonpassive_loss
+       printed: (helper)
+       type: NonNegDollars
+@@ -7544,7 +7561,6 @@ form:
+         field: k1p.col_i
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_nonpassive
+       printed: (helper)
+       type: Dollars
+@@ -7555,7 +7571,6 @@ form:
+         field: k1p.nonpassive_net
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_p4_income
+       printed: (helper)
+       type: NonNegDollars
+@@ -7647,7 +7662,6 @@ form:
+         field: k1p.box5_if_any
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_ord_div
+       printed: (helper)
+       type: NonNegDollars
+@@ -7658,7 +7672,6 @@ form:
+         field: k1p.box6a_if_any
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_qual_div
+       printed: (helper)
+       type: NonNegDollars
+@@ -7680,7 +7693,6 @@ form:
+         field: k1p.box8_if_any
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_lt_gain
+       printed: (helper)
+       type: Dollars
+@@ -7691,7 +7703,6 @@ form:
+         field: k1p.box9a_if_any
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_collectibles
+       printed: (helper)
+       type: Dollars
+@@ -7702,7 +7713,6 @@ form:
+         field: k1p.box9b_if_any
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_unrecap_1250
+       printed: (helper)
+       type: NonNegDollars
+@@ -7713,7 +7723,6 @@ form:
+         field: k1p.box9c_if_any
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_se_earnings
+       printed: (helper)
+       type: Dollars
+@@ -7724,7 +7733,6 @@ form:
+         field: k1p.box14a_if_any
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_se_pos
+       printed: (helper)
+       type: NonNegDollars
+@@ -7745,7 +7753,6 @@ form:
+         field: k1p.box15o_if_any
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_taxexempt_int
+       printed: (helper)
+       type: NonNegDollars
+@@ -7756,7 +7763,6 @@ form:
+         field: k1p.box18a_if_any
+         where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_total_qbi_stmt
+       printed: (helper)
+       type: Dollars
+@@ -7796,7 +7802,6 @@ form:
+             - k1p.sche_row
+             - const: true
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II, Form 8582 and the Form 1040 lines read for this person.
+     - id: person.k1p_count_passive_loss
+       printed: (helper)
+       type: Count
+@@ -7871,7 +7876,6 @@ form:
+         field: k1p.col_g
+       where: *id001
+       cite: *id002
+-      display: The partnership K-1 total that Schedule E Part II reads for this person.
+     - id: person.k1p_total_ebl_loss
+       printed: (helper)
+       type: NonNegDollars
+@@ -7905,7 +7909,6 @@ form:
+       cite:
+         doc: i1120ssk
+         locator: p. 7, Box 4. Interest Income, "Report interest income on Form 1040 or 1040-SR, line 2b"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_ord_div
+       printed: (helper)
+       label: Ordinary dividends from Schedules K-1 (Form 1120-S), box 5a
+@@ -7917,7 +7920,6 @@ form:
+       cite:
+         doc: i1120ssk
+         locator: p. 7, Box 5a. Ordinary Dividends, "Report ordinary dividends on Form 1040 or 1040-SR, line 3b"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_qual_div
+       printed: (helper)
+       label: Qualified dividends from Schedules K-1 (Form 1120-S), box 5b
+@@ -7942,7 +7944,6 @@ form:
+         doc: i1120ssk
+         locator: p. 7, Box 7. Net Short-Term Capital Gain (Loss), "report the net short-term capital gain (loss) on Schedule
+           D (Form 1040), Capital Gains and Losses, line 5"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_lt_gain
+       printed: (helper)
+       label: Net long-term capital gain (loss) from Schedules K-1 (Form 1120-S), box 8a
+@@ -7955,7 +7956,6 @@ form:
+         doc: i1120ssk
+         locator: p. 7, Box 8a. Net Long-Term Capital Gain (Loss), "report the net long-term capital gain (loss) on Schedule
+           D (Form 1040), line 12"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_collectibles
+       printed: (helper)
+       label: Collectibles (28%) gain (loss) from Schedules K-1 (Form 1120-S), box 8b
+@@ -7968,7 +7968,6 @@ form:
+         doc: i1120ssk
+         locator: p. 7, Box 8b. Collectibles (28%) Gain (Loss), "report collectibles gain or loss on line 4 of the 28% Rate
+           Gain Worksheet"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_unrecap_1250
+       printed: (helper)
+       label: Unrecaptured section 1250 gain from Schedules K-1 (Form 1120-S), box 8c
+@@ -7981,7 +7980,6 @@ form:
+         doc: i1120ssk
+         locator: p. 7, Box 8c. Unrecaptured Section 1250 Gain, "Report unrecaptured section 1250 gain from the sale or exchange
+           of the corporation’s business assets on line 5"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_backup_wh
+       printed: (helper)
+       label: Backup withholding from Schedules K-1 (Form 1120-S), box 13, code O
+@@ -7994,7 +7992,6 @@ form:
+         doc: i1120ssk
+         locator: p. 13, Code O. Backup withholding, "Include this amount in the total you enter on Form 1040 or 1040-SR, line
+           25c"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_taxexempt_int
+       printed: (helper)
+       label: Tax-exempt interest from Schedules K-1 (Form 1120-S), box 16, code A
+@@ -8007,7 +8004,6 @@ form:
+         doc: i1120ssk
+         locator: p. 15, Code A. Tax-exempt interest income, "Individual shareholders include this amount on Form 1040 or 1040-SR,
+           line 2a"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_passive_income
+       printed: (helper)
+       label: 'Schedule E line 28, column (h) total of the S corporation rows: passive income'
+@@ -8020,7 +8016,6 @@ form:
+         doc: i1120ssk
+         locator: p. 6, Box 1. Ordinary Business Income (Loss), "If income is reported in box 1, report the income in column
+           (h) of Schedule E (Form 1040), line 28"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_nonpassive_loss
+       printed: (helper)
+       label: 'Schedule E line 28, column (i) total of the S corporation rows: nonpassive loss allowed, as a positive amount'
+@@ -8033,7 +8028,6 @@ form:
+         doc: i1120ssk
+         locator: p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business
+           activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_nonpassive_income
+       printed: (helper)
+       label: 'Schedule E line 28, column (k) total of the S corporation rows: nonpassive income'
+@@ -8046,7 +8040,6 @@ form:
+         doc: i1120ssk
+         locator: p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business
+           activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_nonpassive
+       printed: (helper)
+       label: Nonpassive trade or business income (loss) after basis from Schedules K-1 (Form 1120-S), box 1
+@@ -8059,7 +8052,6 @@ form:
+         doc: i1120ssk
+         locator: p. 5, Effect of determination, "Income (loss), deductions, and credits from an activity are nonpassive if
+           you determine that"
+-      display: Read by the return-integration lane (Schedules B, D and E, Forms 1040, 8582, 8960 and 8995); shown until then.
+     - id: person.k1s_total_p4_income
+       printed: (helper)
+       label: Form 8582 Part IV column (a) total of the S corporation box 2 activities with active participation
+@@ -8159,7 +8151,6 @@ form:
+         doc: i1120ssk
+         locator: p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business
+           activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28"
+-      display: Read by the return-integration lane (whether Schedule E Part II is filed); shown until then.
+     - id: person.k1s_total_p6_loss
+       printed: (helper)
+       type: NonNegDollars
+@@ -8193,7 +8184,6 @@ form:
+       cite: 
+         doc: i8582
+         locator: p. 12, Part VII—Allocation of Unallowed Losses
+-      display: Read by Schedule E Part II; shown until then.
+     - id: person.k1s_total_ebl_loss
+       printed: (helper)
+       type: NonNegDollars
+@@ -8340,6 +8330,174 @@ form:
+         doc: i8995
+         locator: p. 2, Determining Your Qualified Business Income, "deductible part of self-employment tax"
+       ambiguity: amb.2025.qbi_attribution
++    - id: person.k1_col_h
++      printed: (helper)
++      type: NonNegDollars
++      label: Schedule E line 28 column (h), all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_passive_income
++        - person.k1s_total_passive_income
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_col_g
++      printed: (helper)
++      type: NonNegDollars
++      label: Schedule E line 28 column (g), all K-1s of this person (positive)
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_col_g
++        - person.k1s_total_col_g
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_col_i
++      printed: (helper)
++      type: NonNegDollars
++      label: Schedule E line 28 column (i), all K-1s of this person (positive)
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_nonpassive_loss
++        - person.k1s_total_nonpassive_loss
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_col_k
++      printed: (helper)
++      type: NonNegDollars
++      label: Schedule E line 28 column (k), all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_nonpassive_income
++        - person.k1s_total_nonpassive_income
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_nonpassive
++      printed: (helper)
++      type: Dollars
++      label: Nonpassive income less nonpassive loss, all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_nonpassive
++        - person.k1s_total_nonpassive
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_interest
++      printed: (helper)
++      type: NonNegDollars
++      label: Interest from all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_interest
++        - person.k1s_total_interest
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_ord_div
++      printed: (helper)
++      type: NonNegDollars
++      label: Ordinary dividends from all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_ord_div
++        - person.k1s_total_ord_div
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_st_gain
++      printed: (helper)
++      type: Dollars
++      label: Net short-term capital gain or loss from all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_st_gain
++        - person.k1s_total_st_gain
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_lt_gain
++      printed: (helper)
++      type: Dollars
++      label: Net long-term capital gain or loss from all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_lt_gain
++        - person.k1s_total_lt_gain
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_collectibles
++      printed: (helper)
++      type: Dollars
++      label: Collectibles (28%) gain or loss from all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_collectibles
++        - person.k1s_total_collectibles
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_unrecap_1250
++      printed: (helper)
++      type: NonNegDollars
++      label: Unrecaptured section 1250 gain from all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_unrecap_1250
++        - person.k1s_total_unrecap_1250
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_backup_wh
++      printed: (helper)
++      type: NonNegDollars
++      label: Backup withholding from all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_backup_wh
++        - person.k1s_total_backup_wh
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_taxexempt_int
++      printed: (helper)
++      type: NonNegDollars
++      label: Tax-exempt interest from all K-1s of this person
++      expr:
++        op: sum
++        of:
++        - person.k1p_total_taxexempt_int
++        - person.k1s_total_taxexempt_int
++      cite:
++        doc: i1040se
++        locator: p. 9, Part II, "report items from each partnership’s Schedule K-1 on a separate line 28"
++    - id: person.k1_count_sche
++      printed: (helper)
++      type: Count
++      label: Number of partnership and S corporation K-1s with a row on Schedule E line 28
++      expr:
++        op: sum
++        of:
++        - person.k1p_count_sche
++        - person.k1s_count_sche
++      cite:
++        doc: i1040se
++        locator: p. 10, Line 28
+   # --- end K-1 integration ---
+   collection:
+     cite:
+diff --git a/forms/2025/s1.yaml b/forms/2025/s1.yaml
+index b9ccff3..70f6c00 100644
+--- a/forms/2025/s1.yaml
++++ b/forms/2025/s1.yaml
+@@ -1875,13 +1875,13 @@ form:
+       - guard:
+           op: test
+           eq:
+-          - scope.rental
++          - sche.filed
+           - const: true
+         then: sche.line41
+       - guard:
+           op: test
+           eq:
+-          - scope.rental
++          - sche.filed
+           - const: false
+         then: s1.zero_ebl
+     cite:
+diff --git a/forms/2025/sb.yaml b/forms/2025/sb.yaml
+index a1a123d..a724aa8 100644
+--- a/forms/2025/sb.yaml
++++ b/forms/2025/sb.yaml
+@@ -253,14 +253,48 @@ form:
+       cite:
+         doc: i1040sb
+         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+-    - id: sb.line2
+-      printed: "2"
++    - id: sb.interest_forms
++      printed: (helper)
++      label: Taxable interest from the interest entries
+       type: NonNegDollars
+-      label: Total taxable interest from all payers
+       expr:
+         op: sum_over
+         collection: interest
+         field: interest.amount
++      cite:
++        doc: i1040sb
++        locator: pp. 1–3
++    - id: sb.k1_interest
++      printed: (helper)
++      label: Interest from partnership and S corporation Schedules K-1
++      type: NonNegDollars
++      expr:
++        op: sum_over
++        collection: person
++        field: person.k1_interest
++      cite:
++        doc: i1065sk1
++        locator: p. 15, Box 5. Interest Income, "Report interest income on Form 1040 or 1040-SR, line 2b"
++    - id: sb.k1_ord_div
++      printed: (helper)
++      label: Ordinary dividends from partnership and S corporation Schedules K-1
++      type: NonNegDollars
++      expr:
++        op: sum_over
++        collection: person
++        field: person.k1_ord_div
++      cite:
++        doc: i1120ssk
++        locator: p. 7, Box 5a. Ordinary Dividends, "Report ordinary dividends on Form 1040 or 1040-SR, line 3b"
++    - id: sb.line2
++      printed: "2"
++      type: NonNegDollars
++      label: Total taxable interest from all payers
++      expr:
++        op: sum
++        of:
++        - sb.interest_forms
++        - sb.k1_interest
+       cite:
+         doc: i1040sb
+         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+@@ -358,10 +392,12 @@ form:
+     - id: sb.line6
+       printed: "6"
+       type: NonNegDollars
+-      label: Amount from sb.ordinary_dividends_if_dividends
++      label: Ordinary dividends from the payers and the Schedules K-1
+       expr:
+-        op: copy
+-        from: sb.ordinary_dividends_if_dividends
++        op: sum
++        of:
++        - sb.ordinary_dividends_if_dividends
++        - sb.k1_ord_div
+       cite:
+         doc: i1040sb
+         locator: pp. 1–3, interest, dividends and foreign accounts/trusts
+diff --git a/forms/2025/sche.yaml b/forms/2025/sche.yaml
+index f3d2ce2..e62c084 100644
+--- a/forms/2025/sche.yaml
++++ b/forms/2025/sche.yaml
+@@ -247,17 +247,121 @@ form:
+         doc: i8995
+         locator: p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated
+           as a trade or business for purposes of the QBI deduction"
++  - id: sche.line29a_h
++    printed: '29a (h)'
++    label: 'Totals, line 29a, column (h): passive income'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_col_h
++    cite:
++      doc: f1040se
++      locator: Schedule E (2025), line 29a, column (h)
++  - id: sche.line29a_k
++    printed: '29a (k)'
++    label: 'Totals, line 29a, column (k): nonpassive income'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_col_k
++    cite:
++      doc: f1040se
++      locator: Schedule E (2025), line 29a, column (k)
++  - id: sche.line29b_g
++    printed: '29b (g)'
++    label: 'Totals, line 29b, column (g): passive loss allowed (as a positive amount)'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_col_g
++    cite:
++      doc: f1040se
++      locator: Schedule E (2025), line 29b, column (g)
++  - id: sche.line29b_i
++    printed: '29b (i)'
++    label: 'Totals, line 29b, column (i): nonpassive loss allowed (as a positive amount)'
++    type: NonNegDollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_col_i
++    cite:
++      doc: f1040se
++      locator: Schedule E (2025), line 29b, column (i)
++  - id: sche.zero
++    printed: (helper)
++    label: Zero
++    type: NonNegDollars
++    expr:
++      op: param
++      ref: sales.zero
++    cite:
++      doc: f1040se
++      locator: Schedule E (2025), line 31
++  - id: sche.line30
++    printed: '30'
++    label: Add columns (h) and (k) of line 29a
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - sche.line29a_h
++      - sche.line29a_k
++    cite:
++      doc: f1040se
++      locator: Schedule E (2025), line 30
++  - id: sche.line31_abs
++    printed: (helper)
++    label: Columns (g), (i) and (j) of line 29b, as a positive amount (column (j), section 179, is refused)
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - sche.line29b_g
++      - sche.line29b_i
++    cite:
++      doc: f1040se
++      locator: Schedule E (2025), line 31
++  - id: sche.line31
++    printed: '31'
++    label: Add columns (g), (i), and (j) of line 29b
++    type: Dollars
++    expr:
++      op: subtract
++      from: sche.zero
++      take: sche.line31_abs
++    cite:
++      doc: f1040se
++      locator: Schedule E (2025), line 31
++  - id: sche.line32
++    printed: '32'
++    label: Total partnership and S corporation income or (loss). Combine lines 30 and 31
++    type: Dollars
++    expr:
++      op: sum
++      of:
++      - sche.line30
++      - sche.line31
++    cite:
++      doc: f1040se
++      locator: Schedule E (2025), line 32
+   - id: sche.line41
+     printed: '41'
+     label: Total income or (loss). Combine lines 26, 32, 37, 39, and 40
+     type: Dollars
+     expr:
+-      op: copy
+-      from: sche.line26
++      op: sum
++      of:
++      - sche.line26
++      - sche.line32
+     cite:
+       doc: f1040se
+       locator: Schedule E (2025), line 41
+-    note: Parts II to IV and line 40 are refused (scope.k1, scope.farm).
++    note: Part II holds the partnership and S corporation Schedules K-1; Part III (estates and trusts), Part IV and line 40
++      are refused (scope.k1e, scope.farm).
+   - id: sche.loss_prelimit
+     printed: (helper)
+     label: Rental net losses and royalty losses on line 21, before the passive activity limit (positive)
+@@ -297,7 +401,19 @@ form:
+       locator: p. 1, Reminders
+   - id: sche.nonpassive_net
+     printed: (helper)
+-    label: Royalty income or loss (not passive), for modified adjusted gross income on Form 8582
++    label: Royalty income or loss and K-1 nonpassive income or loss, for modified adjusted gross income on Form 8582
++    type: Dollars
++    expr:
++      op: sum
++      of:
++      - sche.roy_net
++      - sche.k1_nonpassive
++    cite:
++      doc: i8582
++      locator: p. 11, Line 6, "Include in modified adjusted gross income any portfolio income"
++  - id: sche.roy_net
++    printed: (helper)
++    label: Royalty income or loss (not passive)
+     type: Dollars
+     expr:
+       op: sum_over
+@@ -306,6 +422,28 @@ form:
+     cite:
+       doc: i8582
+       locator: p. 11, Line 6, "Include in modified adjusted gross income any portfolio income"
++  - id: sche.k1_nonpassive
++    printed: (helper)
++    label: Nonpassive income less nonpassive loss of the Schedules K-1 (columns (k) less (i))
++    type: Dollars
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_nonpassive
++    cite:
++      doc: i8582
++      locator: p. 11, Line 6, "combine all the amounts used to figure adjusted gross income"
++  - id: sche.k1_rows
++    printed: (helper)
++    label: Number of Schedule K-1 rows on line 28
++    type: Count
++    expr:
++      op: sum_over
++      collection: person
++      field: person.k1_count_sche
++    cite:
++      doc: i1040se
++      locator: p. 10, Line 28
+   - id: sche.count
+     printed: (helper)
+     label: Number of reported rental and royalty properties
+@@ -356,7 +494,45 @@ form:
+       locator: p. 5, Line 1a
+   - id: sche.any
+     printed: (gate)
+-    label: Schedule E is filed (a rental reported or a royalty listed)
++    label: Schedule E is filed (a rental reported, a royalty listed, or a Schedule K-1 row on line 28)
++    type: Bool
++    expr:
++      op: test
++      any:
++      - op: test
++        eq:
++        - sche.any_rental
++        - const: true
++      - op: test
++        gt:
++        - sche.k1_rows
++        - const: 0
++          type: Count
++    cite:
++      doc: i1040gi
++      locator: p. 40, Step 2, "You are filing Schedule E"
++  - id: sche.filed
++    printed: (helper)
++    label: Schedule E applies (rentals or royalties asked about, or a Schedule K-1 row on line 28)
++    type: Bool
++    expr:
++      op: test
++      any:
++      - op: test
++        eq:
++        - scope.rental
++        - const: true
++      - op: test
++        gt:
++        - sche.k1_rows
++        - const: 0
++          type: Count
++    cite:
++      doc: f1040s1
++      locator: Schedule 1 (2025), line 5
++  - id: sche.any_rental
++    printed: (helper)
++    label: A rental is reported or a royalty listed
+     type: Bool
+     expr:
+       op: choose
+diff --git a/forms/2025/sd.yaml b/forms/2025/sd.yaml
+index 12feab6..79a1814 100644
+--- a/forms/2025/sd.yaml
++++ b/forms/2025/sd.yaml
+@@ -1637,11 +1637,12 @@ form:
+             locator: Schedule D (2025), Parts I–III
+     - id: sd.line5
+       printed: "5"
+-      label: "Line 5: zero only after unsupported source/carryover screening"
++      label: "Net short-term gain or (loss) from partnerships and S corporations from Schedule(s) K-1"
+       type: Dollars
+       expr:
+-        op: copy
+-        from: sd.zero
++        op: sum_over
++        collection: person
++        field: person.k1_st_gain
+       cite:
+         doc: f1040sd
+         locator: 'Schedule D (2025), line 5, "Net short-term gain or (loss) from partnerships, S corporations, estates,
+@@ -1718,11 +1719,12 @@ form:
+             locator: Schedule D (2025), Parts I–III
+     - id: sd.line12
+       printed: "12"
+-      label: "Line 12: zero only after unsupported source/carryover screening"
++      label: "Net long-term gain or (loss) from partnerships and S corporations from Schedule(s) K-1"
+       type: Dollars
+       expr:
+-        op: copy
+-        from: sd.zero
++        op: sum_over
++        collection: person
++        field: person.k1_lt_gain
+       cite:
+         doc: f1040sd
+         locator: 'Schedule D (2025), line 12, "Net long-term gain or (loss) from partnerships, S corporations, estates,
+diff --git a/forms/2025/u1250.yaml b/forms/2025/u1250.yaml
+index 46247d0..8a943bd 100644
+--- a/forms/2025/u1250.yaml
++++ b/forms/2025/u1250.yaml
+@@ -63,14 +63,27 @@ form:
+       cite:
+         doc: i1040sd
+         locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18
++    - id: u1250.k1
++      printed: (helper)
++      label: Unrecaptured section 1250 gain from partnership and S corporation Schedules K-1
++      type: NonNegDollars
++      expr:
++        op: sum_over
++        collection: person
++        field: person.k1_unrecap_1250
++      cite:
++        doc: i1120ssk
++        locator: p. 7, Box 8c. Unrecaptured Section 1250 Gain
+     - id: u1250.line5
+       printed: "5"
+       shown_when: u1250.reached
+       type: NonNegDollars
+       label: "Enter the total of any amounts reported to you on a Schedule K-1 from a partnership or an S corporation as “unrecaptured section 1250 gain”"
+       expr:
+-        op: copy
+-        from: div.screen
++        op: sum
++        of:
++        - div.screen
++        - u1250.k1
+       cite:
+         doc: i1040sd
+         locator: p. 13, Unrecaptured Section 1250 Gain Worksheet, lines 1–18

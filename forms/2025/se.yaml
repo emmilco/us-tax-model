@@ -10,6 +10,8 @@ def:
   parameters:
   - line2
   - line8a
+  - line8b
+  - line8c
   lines:
   - id: line2
     printed: '2'
@@ -32,6 +34,26 @@ def:
     cite:
       doc: f1040sse
       locator: Schedule SE (2025), line 8a
+  - id: line8b
+    printed: 8b
+    label: Unreported tips subject to social security tax from Form 4137, line 10
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Bound by the calling line (this person's Form 4137, line 10).
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 8b
+  - id: line8c
+    printed: 8c
+    label: Wages subject to social security tax from Form 8919, line 10
+    type: NonNegDollars
+    expr:
+      op: input
+      source: Bound by the calling line (this person's Form 8919, line 10).
+    cite:
+      doc: f1040sse
+      locator: Schedule SE (2025), line 8c
   - id: zero
     printed: (helper)
     label: Zero
@@ -41,7 +63,7 @@ def:
       ref: sales.zero
     cite:
       doc: f1040sse
-      locator: Schedule SE (2025), lines 1a, 1b, 4b, 5a, 8b and 8c (zero under the screen of this person)
+      locator: Schedule SE (2025), lines 1a, 1b, 4b and 5a (zero under the screen of this person)
   - id: line3
     printed: '3'
     label: Combine lines 1a, 1b, and 2
@@ -233,11 +255,14 @@ def:
     label: Add lines 8a, 8b, and 8c
     type: NonNegDollars
     expr:
-      op: copy
-      from: line8a
+      op: sum
+      of:
+      - line8a
+      - line8b
+      - line8c
     cite:
       doc: f1040sse
-      locator: Schedule SE (2025), line 8d (lines 8b and 8c, Forms 4137 and 8919, are refused)
+      locator: Schedule SE (2025), line 8d
   - id: line9
     printed: '9'
     label: Subtract line 8d from line 7. If zero or less, enter -0-

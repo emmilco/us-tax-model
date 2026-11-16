@@ -1,0 +1,443 @@
+diff --git a/tools/README.md b/tools/README.md
+index 29be45b..d4271ab 100644
+--- a/tools/README.md
++++ b/tools/README.md
+@@ -531,7 +531,10 @@ listed by check-all, not failed. `--release` of the completeness, screen and fal
+ `check_questions.py` lists due questions (a count on the console, the list in `reports/<year>/question_currency.md`)
+ and fails on unruled samples and orphans; its `--release` mode joins the release gate once the first full pass is
+ ruled (owner decision 2026-11-10). A question's subject is its line, interview wording and help, and its direct
+-readers' lines and English (`question_review.subject`); a screen's subject leaves out the help its prompt shows. A record marked `grandfathered` holds one review made before
++readers' lines and English (`question_review.subject`); a screen's subject holds its question as the interview shows it
++(`screen_review.question_text`: the prompt, and for a box of a tick-box group the group's heading and the box's label),
++so a rewording makes the screen due, and leaves out the help its prompt shows. A screen record marked `subject_migrated`
++(`migrate_screen_subjects.py`) is current on samples shown the form's own question text until its next change or sample. A record marked `grandfathered` holds one review made before
+ sampling and satisfies the milestone until its subject changes. Runs are guarded: samples beyond the milestone need
+ `--force-rerun REASON`, and an estimate above the owner's $3.00 gate needs `--approve-cost` (`spend.py`, shared with
+ `rerun_all.py`).
+@@ -876,4 +879,5 @@ that year's table from its archived source, and the check-all step named beside
+ | `extraction/page_review.py` | Local HTML pages of each archived page beside the project's reading of it, for a person to judge |
+ | `transcription/question_review.py` | The question review (section "Sampled completeness, screen, false-no and question reviews"); also prices every question's prompt without a call (`--measure`) and lists which existing reviews judge each input's wording (`--coverage`) |
+ | `transcription/migrate_line_subjects.py` | Rewrites transcription logs' line-subject tables (`transcription/README.md`; tested by `test_review_tools.py`) |
++| `transcription/migrate_screen_subjects.py` | Moves screen review records current on the form's question text to the subject with the interview's wording, with their rulings (section "Sampled completeness, screen, false-no and question reviews"; tested by `test_review_tools.py`) |
+ | `../ui/test_browser.mjs` | Browser smoke test of the web UI (the interview page and the vetting page), against a separately launched headless Chrome |
+diff --git a/tools/transcription/check_screens.py b/tools/transcription/check_screens.py
+index b088edc..f92381f 100644
+--- a/tools/transcription/check_screens.py
++++ b/tools/transcription/check_screens.py
+@@ -4,8 +4,8 @@
+ 
+ Every scope screen (a yes/no input that lines name as a refusal gate) and every choose-guard gate (gates.py, keyed
+ `gate:<condition>`) has a record in reviews/<year>/screens/screen_review.json holding the samples run against one
+-subject. A screen's subject is the prompt screen_review.py would send without the gate condition and without the
+-system prompt (screen_subject); a gate's is gates.subject (the condition's wording and line, each gate line and gated
++subject. A screen's subject is the prompt screen_review.py would send without the gate condition, the help and the
++system prompt (screen_subject: the question as the interview shows it, the gated lines and their pages); a gate's is gates.subject (the condition's wording and line, each gate line and gated
+ input with their English and wording, citations included).
+ 
+ - A unit whose subject differs from its record's (or that has none) is `due`: listed, not failed. It is reviewed
+@@ -16,6 +16,9 @@ input with their English and wording, citations included).
+   unit and subject carries that ruling. Unruled samples fail check-all.
+ - A sample whose verdict did not parse is listed and does not count toward the milestone.
+ - `orphan`: a recorded gate review whose gate no longer exists (fails).
++- A screen record marked `subject_migrated` (migrate_screen_subjects.py) holds samples that were shown the form's own
++  question text, not the interview's wording; it is current until its subject next changes, and the mark goes at its
++  next sample. They are counted, not failed.
+ 
+ `--release` is the release gate (tools/release_reviews.sh): it also fails on every due unit and every unit short of the
+ milestone's samples, and writes no report. Findings that existed when the check was introduced form the baseline
+@@ -57,6 +60,7 @@ def findings():
+     reviewed = read_records(str(RECORD))
+     out, shas = [], {}
+     waiting = pending.listed("screens")
++    migrated = 0
+     for screen in sorted(waiting & set(reviewed)):
+         out.append({"kind": "pending", "line": screen, "form": lines[screen][0] if screen in lines else "?", "subject": "-",
+                     "detail": f"reviewed but still listed as pending; remove it from {pending.name()}"})
+@@ -66,8 +70,12 @@ def findings():
+             print(f"  pending: {screen}: never reviewed (listed in {pending.name()})")
+             continue
+         shas[screen] = sha
++        migrated += bool(reviewed.get(screen, {}).get("subject_migrated") and reviewed[screen].get("subject_sha") == sha)
+         out += unit_findings(screen, lines[screen][0], sha, reviewed.get(screen),
+                              "question, gated lines or their citations changed since its samples")
++    if migrated:
++        print(f"  {migrated} screen(s) current on samples shown the form's question text, not the interview's "
++              "(subject_migrated); each is sampled on the interview's wording at its next change")
+     gf, gshas = gate_findings(lines, reviewed)
+     return out + gf, {**shas, **gshas}
+ 
+diff --git a/tools/transcription/gates.py b/tools/transcription/gates.py
+index ea791b3..b70143f 100644
+--- a/tools/transcription/gates.py
++++ b/tools/transcription/gates.py
+@@ -98,6 +98,36 @@ def wording(line):
+     return {"prompt": (line.get("expr") or {}).get("source", ""), "help": ""}
+ 
+ 
++_TICKS = None
++
++
++def ticks():
++    """{input template: {"heading", "tick"}} for the questions the interview shows as a box of a tick-box group: the
++    group's heading and the label beside the box (ui/app.ts renderGroup), from the built profiles as `questions`."""
++    global _TICKS
++    if _TICKS is None:
++        _TICKS = {}
++        for name in ("interview-full.json", "interview-ny.json"):
++            path = os.path.join(ROOT, "canonical", str(Y), name)
++            if os.path.exists(path):
++                with open(path, encoding="utf-8") as f:
++                    profile = json.load(f)
++                headings = {g["id"]: g["heading"] for g in profile.get("groups", [])}
++                for q in profile["questions"]:
++                    if q.get("group") in headings:
++                        _TICKS[q["input"]] = {"heading": headings[q["group"]], "tick": q.get("tick") or q["prompt"].split("\n", 1)[0]}
++                    else:
++                        _TICKS.pop(q["input"], None)
++    return _TICKS
++
++
++def shown(line):
++    """What a filer sees of an input's question: `wording` with "asked" (whether a profile asks it) and, for a box of a
++    tick-box group, "heading" and "tick". The gate subjects use `wording` alone, so they do not depend on this."""
++    asked = line["id"] in questions()
++    return {**wording(line), "asked": asked, **(ticks().get(line["id"], {}) if asked else {})}
++
++
+ def subject(unit, lines, english):
+     """The unit's subject hash: what its reviews judge (see the module docstring). `english(doc, line id)` gives a
+     line's rendered English."""
+diff --git a/tools/transcription/migrate_screen_subjects.py b/tools/transcription/migrate_screen_subjects.py
+new file mode 100644
+index 0000000..e702767
+--- /dev/null
++++ b/tools/transcription/migrate_screen_subjects.py
+@@ -0,0 +1,109 @@
++#!/usr/bin/env python3
++# SPDX-License-Identifier: Apache-2.0
++"""Move each screen review that is current on the form's own question text to the subject that shows the interview's
++wording (screen_review.question_text), so the change of subject definition makes no screen due. No model call;
++idempotent.
++
++    migrate_screen_subjects.py [--jurisdiction ny] [--dry-run]
++
++A screen's record moves only when its subject is the hash of the prompt with the line's own question text (expr.source)
++where the interview's wording now stands, all else as screen_subject computes it: its samples judged the current
++gated lines, pages and question text. The record gets the new subject and `subject_migrated` (the subject it had); its
++samples, and its per-sample rulings and baseline entries on the old subject, move with it. A record on any other
++subject is left as it is: it is due, and its next sample is run on the interview's wording. Gate records are not
++touched (their subjects already hold the interview's wording, gates.subject).
++
++The samples of a moved record were shown the form's question text, not what the filer reads; check_screens.py counts
++such records, and each is sampled on the interview's wording at its next change.
++"""
++import argparse
++import datetime
++import hashlib
++import json
++import os
++import sys
++
++HERE = os.path.dirname(os.path.abspath(__file__))
++sys.path.insert(0, HERE)
++sys.path.insert(0, os.path.dirname(HERE))
++import jurisdiction  # noqa: E402,F401  (--jurisdiction ny: reviews/ny/<year>/screens/)
++import screen_review as S  # noqa: E402
++import samples  # noqa: E402
++import baseline_check  # noqa: E402
++
++
++def source_subject(screen, gated, lines, mani):
++    """The screen's subject with the line's own question text in place of the interview's wording."""
++    source = (lines[screen][1].get("expr") or {}).get("source", "")
++    prompt, _ = S.prompt_for(screen, gated, lines, mani, with_gate=False, question=source)
++    return hashlib.sha256(prompt.encode()).hexdigest()
++
++
++def plan(lines, mani, records):
++    """{screen: (old subject, new subject)} of the records to move, and {screen: why} of those left."""
++    moves, left = {}, {}
++    for screen, gated in S.screens(lines).items():
++        rec = records.get(screen)
++        new = S.screen_subject(screen, gated, lines, mani)
++        if not rec:
++            left[screen] = "never reviewed"
++        elif rec.get("subject_sha") == new:
++            left[screen] = "already on the interview's wording"
++        elif rec.get("subject_sha") == source_subject(screen, gated, lines, mani):
++            moves[screen] = (rec["subject_sha"], new)
++        else:
++            left[screen] = "due: its record is on another subject"
++    return moves, left
++
++
++def apply(moves, rows, rulings, today):
++    """Rewrite the records (rows of screen_review.json) and the rulings file's data in place; the counts moved."""
++    n = {"records": 0, "rulings": 0, "baseline": 0}
++    for r in rows:
++        if r.get("screen") in moves:
++            old, new = moves[r["screen"]]
++            r["subject_sha"] = new
++            r["subject_migrated"] = {"from": old, "date": today}
++            n["records"] += 1
++    for key, ruling in (rulings.get("rulings") or {}).items():
++        unit = samples.unit_of(key) if key.startswith("unruled:") else None
++        if unit in moves and isinstance(ruling, dict) and ruling.get("subject_sha") == moves[unit][0]:
++            ruling["subject_sha"] = moves[unit][1]
++            n["rulings"] += 1
++    baseline = rulings.get("baseline") or {}
++    for key, h in list(baseline.items()):
++        unit = samples.unit_of(key) if key.startswith("unruled:") else None
++        if unit in moves and h == baseline_check.subject_hash({"subject": moves[unit][0]}, {}):
++            baseline[key] = baseline_check.subject_hash({"subject": moves[unit][1]}, {})
++            n["baseline"] += 1
++    return n
++
++
++def main():
++    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
++    ap.add_argument("--dry-run", action="store_true", help="report what would move; write nothing")
++    a = ap.parse_args()
++    import build_fresh
++    build_fresh.require(rendered=True)  # the subjects hold the built interview's wording and the rendered English
++    record_path = os.path.join(S.OUT, "screen_review.json")
++    rulings_path = os.path.join(S.OUT, "rulings.json")
++    S.read_records(record_path)  # refuses a file in the single-review format
++    rows = json.load(open(record_path, encoding="utf-8")) if os.path.exists(record_path) else []
++    rulings = json.load(open(rulings_path, encoding="utf-8")) if os.path.exists(rulings_path) else {}
++    moves, left = plan(S.load_lines(), S.manifest(), {r["screen"]: r for r in rows})
++    for screen, why in sorted(left.items()):
++        print(f"  left: {screen}: {why}")
++    n = apply(moves, rows, rulings, datetime.date.today().isoformat())
++    print(f"{n['records']} record(s) moved to the interview's wording, {n['rulings']} ruling(s) and "
++          f"{n['baseline']} baseline entr(ies) with them; {len(left)} left" + (" (dry run: nothing written)" if a.dry_run else ""))
++    if a.dry_run or not moves:
++        return
++    with open(record_path, "w", encoding="utf-8") as f:
++        f.write(json.dumps(rows, indent=1, ensure_ascii=False) + "\n")
++    if rulings:
++        with open(rulings_path, "w", encoding="utf-8") as f:
++            f.write(json.dumps(rulings, indent=1) + "\n")
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/tools/transcription/screen_review.py b/tools/transcription/screen_review.py
+index 6ee5031..856d099 100644
+--- a/tools/transcription/screen_review.py
++++ b/tools/transcription/screen_review.py
+@@ -6,8 +6,10 @@ A screen is a yes/no input that one or more lines name as a refusal gate: answer
+ lines refuse with a citation; answered no, they are computed (usually with the source the screen
+ covers pinned to zero). A screen worded narrower than those lines lets an unsupported case through
+ as a zero; one worded wider refuses cases the tool computes. The review gives the model the
+-screen's question and the help the interview shows with it, each gated line with its encoded English (from rendered/) and its refusal text,
+-and the archived pages those lines cite, and asks for every case the wording misses or sweeps in.
++screen's question as the interview shows it (its prompt, or for a box of a tick-box group the group's heading and the
++box's label with the prompt behind it; question_text) and the help shown with it, each gated line with its encoded
++English (from rendered/) and its refusal text, and the archived pages those lines cite, and asks for every case the
++wording misses or sweeps in. An input no interview profile asks is shown with its line's own question text, marked so.
+ 
+ A choose-guard gate (gates.py: an input marked `gated_by` and its gate line) is reviewed the same way, keyed
+ `gate:<condition>`: the condition's wording (the question the filer answers, or the computed condition) and every gate
+@@ -19,8 +21,9 @@ current while its subject (gates.subject: wording and gated lines, not the promp
+     screen_review.py [--screens a,b] [--gates-only] [--samples K] [--force-rerun REASON] [--approve-cost DOLLARS]
+                      [--dry-run] [--jobs 6] [--model M]
+ 
+-Sampled standing review (samples.py): a unit's subject is its question, the gated lines' English and refusals and
+-the pages they cite (screen_subject; gates.subject for a gate), without the system prompt. A run gives each selected
++Sampled standing review (samples.py): a unit's subject is its question as the interview shows it (help aside), the
++gated lines' English and refusals and the pages they cite (screen_subject; gates.subject for a gate), without the
++system prompt, so a change to the interview's wording of a screen makes it due. A run gives each selected
+ unit the samples its current subject still needs this milestone, merged into reviews/<year>/screens/screen_review.json;
+ samples beyond it need --force-rerun REASON, and a run estimated above the owner's gate needs --approve-cost
+ (spend.py). Between releases a unit whose subject changed is due, not failed (tools/transcription/check_screens.py);
+@@ -119,7 +122,24 @@ def help_note(help_text):
+     return f"Help shown with it: {indent_rest(help_text, '  ')}\n" if help_text else ""
+ 
+ 
+-def build_prompt(screen, sline, gated, excerpt, gate="", help_text=""):
++def question_text(sline):
++    """The screening question as the filer sees it (gates.shown), as the prompt gives it after "Input `<id>`: ". A box
++    of a tick-box group is shown as the group's heading and the box's label, which every filer reads, and the prompt
++    the box's "What this asks" opens."""
++    s = gates.shown(sline)
++    if not s["asked"]:
++        return (indent_rest(s["prompt"], "  ")
++                + "\n(No interview profile asks this input; this is the form's own question text.)")
++    if "tick" not in s:
++        return indent_rest(s["prompt"], "  ")
++    return ("a box on a tick-box screen. The filer ticks it for YES, and leaves it unticked or chooses \"None of "
++            "these\" for NO.\n"
++            f"  Screen heading: {indent_rest(s['heading'], '    ')}\n"
++            f"  Label beside the box: {indent_rest(s['tick'], '    ')}\n"
++            f"  Question shown under the box's \"What this asks\": {indent_rest(s['prompt'], '    ')}")
++
++
++def build_prompt(screen, sline, gated, excerpt, question, gate="", help_text=""):
+     items = []
+     for doc, l, r in gated:
+         items.append(f"""- Line `{l['id']}` (document {doc}, printed {l['printed']}): {indent_rest(l['label'], "    ")}
+@@ -137,7 +157,7 @@ situation the tool does compute correctly.
+ 
+ # The screening question
+ 
+-Input `{screen}`: {sline['expr']['source']}
++Input `{screen}`: {question}
+ {help_note(help_text)}{gate_note(gate)}
+ # Lines that refuse when the answer is yes
+ 
+@@ -242,22 +262,25 @@ def gate_prompt_for(unit, lines, mani):
+     return build_gate_prompt(unit, lines, excerpt), used
+ 
+ 
+-def prompt_for(screen, gated, lines, mani, with_gate=True):
+-    """The review prompt of one screen and the pages it gives. The prompt shows the help the interview gives with
+-    the question (gates.wording) and, for a gated screen, its gate condition; `with_gate=False` is the prompt without
+-    either, which is the screen's review subject (screen_subject)."""
++def prompt_for(screen, gated, lines, mani, with_gate=True, question=None):
++    """The review prompt of one screen and the pages it gives. The prompt shows the question as the filer sees it
++    (`question`, by default question_text), the help the interview gives with it (gates.wording) and, for a gated
++    screen, its gate condition; `with_gate=False` is the prompt without the help and the gate, which is the screen's
++    review subject (screen_subject)."""
+     if screen.startswith("gate:"):
+         return gate_prompt_for(gated, lines, mani)
+     sdoc, sline = lines[screen]
+     pseudo = {"id": screen, "lines": [sline] + [l for _, l, _ in gated] + [{"cite": r["cite"], "expr": {}} for _, _, r in gated]}
+     excerpt, used = excerpt_for(pseudo, mani)
+-    return build_prompt(screen, sline, gated, excerpt, screen_gate(screen, lines) if with_gate else "",
++    return build_prompt(screen, sline, gated, excerpt, question_text(sline) if question is None else question,
++                        screen_gate(screen, lines) if with_gate else "",
+                         gates.wording(sline)["help"] if with_gate else ""), used
+ 
+ 
+ def screen_subject(screen, gated, lines, mani):
+     """The hash a screen's review is current against: the prompt without the gate condition and without the help, so
+-    gating a screen's input changes it only through the wording or gated lines it already depended on. The gate
++    gating a screen's input changes it only through the wording or gated lines it already depended on. The wording is
++    the interview's (question_text): its prompt, and for a tick-box member the group's heading and the box's label. The gate
+     condition is the subject of the gate's own review (gate:<condition>). The help is in the subject of the question
+     review (question_review.py), which judges every question with its help; here it is reviewer context, so a change to
+     the help alone does not make a screen due and reaches its review at the screen's next sample."""
+@@ -299,7 +322,7 @@ def run_one(screen, gated, lines, mani, model, dry, from_response, k=None, subje
+                 "date": datetime.date.today().isoformat(), "system_sha": SYSTEM_SHA,
+                 "response": os.path.relpath(response, ROOT), **_reason()}
+     sline = lines[screen][1]
+-    return {"screen": screen, "question": sline["expr"]["source"], "lines": [l["id"] for _, l, _ in gated],
++    return {"screen": screen, "question": question_text(sline), "lines": [l["id"] for _, l, _ in gated],
+             "verdict": str(doc.get("verdict", "UNPARSED")), "findings": doc.get("findings") or [],
+             "prompt_sha": hashlib.sha256(prompt.encode()).hexdigest(), "subject_sha": screen_subject(screen, gated, lines, mani),
+             "used": used, "cost": meta.get("cost_usd") or 0, "model": ", ".join(meta.get("model_reported", [])),
+@@ -414,6 +437,7 @@ def main():
+         for j, flat in sorted([r for r in results if r[0]["form"] == key], key=lambda r: r[0]["k"]):
+             unit, smp = as_sample(flat)
+             rec.update({k: v for k, v in unit.items() if k != "subject_sha"})
++            rec.pop("subject_migrated", None)  # now sampled on the wording the interview shows
+             rec["samples"].append(smp)
+     json.dump(sorted(records.values(), key=lambda r: r["screen"]), open(path, "w"), indent=1, ensure_ascii=False)
+     done = [as_sample(f)[1] for _, f in results]
+diff --git a/tools/transcription/test_review_tools.py b/tools/transcription/test_review_tools.py
+index 20b866a..01ed130 100644
+--- a/tools/transcription/test_review_tools.py
++++ b/tools/transcription/test_review_tools.py
+@@ -3284,6 +3284,8 @@ import screen_review as SR  # noqa: E402
+ import check_screens as CS  # noqa: E402
+ import false_no_review as FN  # noqa: E402
+ import check_false_no as CFN  # noqa: E402
++import migrate_screen_subjects as MS  # noqa: E402
++import baseline_check  # noqa: E402
+ 
+ 
+ def _gate_lines(condition_prompt="Did you or your spouse receive any dividends?"):
+@@ -3501,6 +3503,7 @@ class GatedScreens(unittest.TestCase):
+         stack = contextlib.ExitStack()
+         self.addCleanup(stack.close)
+         stack.enter_context(patch.object(G, "_QUESTIONS", {}))
++        stack.enter_context(patch.object(G, "_TICKS", {}))
+         stack.enter_context(patch.object(SR, "encoded_english", ENGLISH))
+         stack.enter_context(patch.object(SR, "excerpt_for", return_value=("ARCHIVED PAGES", [])))
+ 
+@@ -3531,7 +3534,8 @@ class GatedScreens(unittest.TestCase):
+     def test_the_prompt_shows_the_help_and_the_subject_ignores_it(self):
+         plain = _screen_lines(False)
+         gated = SR.screens(plain)["div.pr"]
+-        before = SR.screen_subject("div.pr", gated, plain, {})
++        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Outside scope?", "help": ""}}):
++            before = SR.screen_subject("div.pr", gated, plain, {})
+         with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Outside scope?", "help": "Count foreign accounts too."}}):
+             prompt, _ = SR.prompt_for("div.pr", gated, plain, {})
+             self.assertIn("Help shown with it: Count foreign accounts too.", prompt)
+@@ -3556,6 +3560,74 @@ class GatedScreens(unittest.TestCase):
+             self.assertEqual([f["kind"] for f in CS.findings()[0] if f["line"] == "div.pr"], ["due"])
+ 
+ 
++class ScreenWording(unittest.TestCase):
++    """A screen's prompt and subject hold the question as the interview shows it (screen_review.question_text)."""
++
++    def setUp(self):
++        stack = contextlib.ExitStack()
++        self.addCleanup(stack.close)
++        stack.enter_context(patch.object(G, "_QUESTIONS", {}))
++        stack.enter_context(patch.object(G, "_TICKS", {}))
++        stack.enter_context(patch.object(SR, "encoded_english", ENGLISH))
++        stack.enter_context(patch.object(SR, "excerpt_for", return_value=("ARCHIVED PAGES", [])))
++        self.lines = _screen_lines(False)
++        self.gated = SR.screens(self.lines)["div.pr"]
++
++    def subject(self):
++        return SR.screen_subject("div.pr", self.gated, self.lines, {})
++
++    def prompt(self):
++        return SR.prompt_for("div.pr", self.gated, self.lines, {})[0]
++
++    def test_the_prompt_shows_the_interview_prompt_and_a_rewording_makes_the_screen_due(self):
++        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Did you have income from abroad?", "help": ""}}):
++            self.assertIn("Input `div.pr`: Did you have income from abroad?", self.prompt())
++            self.assertNotIn("Outside scope?", self.prompt())
++            first = self.subject()
++        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Did you have income from outside the US?", "help": ""}}):
++            self.assertNotEqual(self.subject(), first)
++
++    def test_a_tick_box_screen_shows_its_heading_and_label_and_both_are_in_the_subject(self):
++        asked = {"div.pr": {"prompt": "Did you have income from abroad?", "help": ""}}
++        box = {"heading": "Do any of these apply to you?", "tick": "Income from abroad"}
++        with patch.object(G, "_QUESTIONS", asked), patch.object(G, "_TICKS", {"div.pr": box}):
++            prompt, first = self.prompt(), self.subject()
++            self.assertIn("Screen heading: Do any of these apply to you?", prompt)
++            self.assertIn("Label beside the box: Income from abroad", prompt)
++            self.assertIn("Did you have income from abroad?", prompt)
++        for changed in ({**box, "tick": "Foreign income"}, {**box, "heading": "Does any of these apply?"}):
++            with patch.object(G, "_QUESTIONS", asked), patch.object(G, "_TICKS", {"div.pr": changed}):
++                self.assertNotEqual(self.subject(), first)
++
++    def test_an_input_no_profile_asks_shows_the_form_text_and_says_so(self):
++        self.assertIn("Input `div.pr`: Outside scope?\n(No interview profile asks this input", self.prompt())
++
++    def test_the_migration_moves_a_record_current_on_the_form_text_with_its_rulings(self):
++        old = MS.source_subject("div.pr", self.gated, self.lines, {})
++        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Did you have income from abroad?", "help": ""}}):
++            new = self.subject()
++            self.assertNotEqual(new, old)
++            rows = [{"screen": "div.pr", "subject_sha": old, "samples": [{"verdict": "WIDE"}]},
++                    {"screen": "div.other", "subject_sha": "x", "samples": []}]
++            rulings = {"rulings": {"unruled:div.pr#1": {"subject_sha": old}, "unruled:gate:div.any#1": {"subject_sha": old}},
++                       "baseline": {"unruled:div.pr#1": baseline_check.subject_hash({"subject": old}, {})}}
++            moves, left = MS.plan(self.lines, {}, {r["screen"]: r for r in rows})
++            self.assertEqual(moves, {"div.pr": (old, new)})
++            self.assertEqual(MS.apply(moves, rows, rulings, "2026-01-01"), {"records": 1, "rulings": 1, "baseline": 1})
++            self.assertEqual(rows[0]["subject_sha"], new)
++            self.assertEqual(rows[0]["subject_migrated"], {"from": old, "date": "2026-01-01"})
++            self.assertEqual(rulings["rulings"]["unruled:div.pr#1"]["subject_sha"], new)
++            self.assertEqual(rulings["rulings"]["unruled:gate:div.any#1"]["subject_sha"], old)
++            self.assertEqual(rulings["baseline"]["unruled:div.pr#1"], baseline_check.subject_hash({"subject": new}, {}))
++            self.assertEqual(MS.plan(self.lines, {}, {r["screen"]: r for r in rows})[0], {})
++
++    def test_the_migration_leaves_a_record_on_another_subject_due(self):
++        with patch.object(G, "_QUESTIONS", {"div.pr": {"prompt": "Did you have income from abroad?", "help": ""}}):
++            moves, left = MS.plan(self.lines, {}, {"div.pr": {"screen": "div.pr", "subject_sha": "f" * 64, "samples": []}})
++        self.assertEqual(moves, {})
++        self.assertIn("due", left["div.pr"])
++
++
+ class StructuredTextOneLineTests(unittest.TestCase):
+     """Where a question or label shares a line with what follows it, structured text keeps its items and nesting."""
+     STRUCTURED = "Does any of these apply?\n\nIncluding:\n- a\n  - c\n  - d\n- b\n\nIf none, answer no."

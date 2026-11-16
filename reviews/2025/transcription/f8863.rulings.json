@@ -42,6 +42,45 @@
   },
   {
    "printed": "(CLW 1)",
+   "project_expr_sha256": "8288d30eccf09f384c6bad73767beaf25994c1e6adeabcbe9408625d5182ad8c",
+   "second_expr_sha256": "b9a83d4d7e47fdb52efd063a253d7719e426f42bcdef5abeaad50ce5c2142ac4",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,860/2,930 agree; kinds {\"candidate-refuses\": 8, \"candidate-unknown\": 39, \"project-refuses\": 23}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "8237f5fe7277f0c414be17e3760c4df70a4318c5e344cb19787c9145dae05905",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8960.3.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.sa.1.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.dependent.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "generated:20261026.111@f8863",
+     "generated:20261026.165@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.206@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 1)",
    "project_expr_sha256": "b63582f7718e6540720ecef0d67f96695c3501082413e4be032bf8405bf3616e",
    "second_expr_sha256": "b9a83d4d7e47fdb52efd063a253d7719e426f42bcdef5abeaad50ce5c2142ac4",
    "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 1,868/2,587 agree; 508 candidate-refuses, 198 candidate-unknown, 12 project-unknown, 1 project-refuses; completed: 1 candidate-refuses. Pass 573118875700 (2026-11-15, line-scoped) records \"complete input context: fail\"; the reply's note says the interface holds no return-level fact for i8863 p. 3 item 1 (\"You’re claimed as a dependent on another person’s tax return\"), and its raw never reads person.sav_claimed, which the project's f8863.eligible counts. Completed witness stage19.mut.claimed_filer_llc: the project hides the form (the filer is claimed). The reply computes and refuses the daughter's lifetime learning credit on its applied-for-TIN rule. Other differences are upstream refusals on refused or incomplete returns.",
@@ -234,6 +273,47 @@
    }
   },
   {
+   "printed": "(CLW 2)",
+   "project_expr_sha256": "d8fd9b70af5050176c6b67fd6d7b9471277d5c87266cbbed041a6d1ec0a4b1c7",
+   "second_expr_sha256": "f7efb332c17534e23f9a8e536d4cab677ad8fcc639d3089aa7037085b6829398",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. On stage19.mut.aoc_line4_zero_ban the reply refuses on f8863.ban although no American opportunity credit is claimed (line 4 is zero); the project asks the ban only for a credit claimed. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,294/2,930 agree; kinds {\"candidate-refuses\": 8, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 604, \"project-refuses\": 23}; on completed returns {\"candidate-refuses\": 1, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 173}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "a7529b243e21d7963d20f9a5873f8f7521b88c431c3a910f7d0cd60dd36dcbab",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:stage19.mut.aoc_line4_zero_ban@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863",
+     "generated:20261026.111@f8863",
+     "generated:20261026.165@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.206@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "(CLW 3)",
    "project_expr_sha256": "478d064fa6428d288e07d35daa3f34f7953f8895bda3e38834522c03aa8f42f3",
    "second_expr_sha256": "edf2ab1c3c3b898bc69fc36648c1660008584860c386f5f5292cc8d9694e359b",
@@ -270,6 +350,47 @@
      "generated:20261026.466@f8863",
      "partial:classm.clcw.4.deepseek-f8863.paid@f8863",
      "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 3)",
+   "project_expr_sha256": "83115e7bfb1cd0b71575f8bbb6af5f92bd4d482451cbff940e54eadbb8592507",
+   "second_expr_sha256": "edf2ab1c3c3b898bc69fc36648c1660008584860c386f5f5292cc8d9694e359b",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. On stage19.mut.aoc_line4_zero_ban the reply refuses on f8863.ban although no American opportunity credit is claimed (line 4 is zero); the project asks the ban only for a credit claimed. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,293/2,930 agree; kinds {\"candidate-refuses\": 9, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 604, \"project-refuses\": 23}; on completed returns {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 173}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "0930d76a743fe0312c27e83c02ef41369d68ad5c26b5aa198baa5ccd8a8746a4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:stage19.mut.aoc_line4_zero_ban@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863",
+     "generated:20261026.111@f8863",
+     "generated:20261026.165@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -445,6 +566,52 @@
   },
   {
    "printed": "(CLW 4)",
+   "project_expr_sha256": "8664d1162e18a48df1f1bc4b1a708ef5db5c9693570eb430565eb344783e344b",
+   "second_expr_sha256": "86a14dbe8f6107816c7992fc219c250d6df46698d4cbcd73f10018e800a95835",
+   "ruling": "Ruling: representation; The reply reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 512/2,930 agree; kinds {\"candidate-refuses\": 897, \"candidate-shows-skipped\": 1131, \"candidate-unknown\": 378, \"project-unknown\": 12}; on completed returns {\"candidate-shows-skipped\": 995}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "32ad1a774feec3294c53fcf21a0ae7401c1818411aff582873d019258171071c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f8863",
+     "fixture:stage14.asset.mq_7yr@f8863",
+     "fixture:stage14.asset.mq_mixed@f8863",
+     "fixture:stage14.asset.mq_not@f8863",
+     "fixture:stage14.asset.bonus_100@f8863",
+     "fixture:stage14.asset.bonus_40_before@f8863",
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f4952.1.deepseek@f8863",
+     "partial:stage14.asset.hy_5yr-f8863.paid@f8863",
+     "partial:stage14.asset.bonus_100-f8863.paid@f8863",
+     "partial:stage14.asset.prior_7yr-f8863.paid@f8863",
+     "partial:stage14.asset.qip-f8863.paid@f8863",
+     "partial:stage14.asset.done-f8863.paid@f8863",
+     "partial:stage14.asset.prior_179_bonus-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 4)",
    "project_expr_sha256": "a9b51f8dbb83f1c776c46b080c19062c07a3347b427a648703c13aa36f6e4590",
    "second_expr_sha256": "86a14dbe8f6107816c7992fc219c250d6df46698d4cbcd73f10018e800a95835",
    "ruling": "Ruling: model error and interface gap; i8863 p. 8, Credit Limit Worksheet, \"4. Enter the amount from Form 1040 or 1040-SR, line 18\"; f8863 p. 1, line 4, \"If zero or less, stop; you can’t take any education credit\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 307 agree; 835 candidate-shows-skipped, 665 candidate-refuses, 286 candidate-unknown, 27 project-unknown (on completed returns: 237 candidate-shows-skipped). The reply has no shown_when, so it shows Form 1040 line 18 after the line 4 stop (classm.f1040.2 type: line 4 $0) — a defect of the reply — and on returns that do not file Form 8863 (interface gap, as lines 2 to 4). Values agree where the project shows the line. Project stands.",
@@ -542,11 +709,11 @@
    "printed": "(CLW 5)",
    "project_expr_sha256": "51e5745a48f8dd7a31a4fbd93ba3f91ae8aecebbe4ac97405691296c917f4ea8",
    "second_expr_sha256": "591e6b17dc2434a0e8c5014405cf8f785c0429ee8521044831220628f802634c",
-   "ruling": "Ruling: interface gap. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,278/2,587 agree; 133 candidate-refuses, 60 project-unknown, 49 project-refuses, 34 candidate-unknown, 33 candidate-shows-skipped; completed: 29 candidate-shows-skipped. The reply's note: \"the supplied catalog provides only Schedule 3, line 1. It provides no line ids for Schedule 3, lines 2, 6d and 6l.\" The pass records \"complete input context: fail\". The project sums s3.line1 and s3.line2. 6d and 6l are refused by scope.credits, as the label says. Completed differences are candidate-shows-skipped (no form).",
-   "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
+   "ruling": "Ruling: representation; The reply reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,587/2,930 agree; kinds {\"candidate-refuses\": 130, \"candidate-shows-skipped\": 69, \"candidate-unknown\": 64, \"project-refuses\": 41, \"project-unknown\": 39}; on completed returns {\"candidate-shows-skipped\": 61}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
    "date": "2026-11-15",
-   "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
-   "subject_key": "3cf8ef71996d9b22aa2511668e426786326aa7434e9efd55c1429fa5e8b01dc6",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "cb065e564c4488de33a626c6a27bbb4ccfd63f8e329aceb4b5387098f22f3707",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -561,7 +728,6 @@
      "fixture:classm.f8889.2.deepseek@f8863",
      "fixture:classm.f8889.3.deepseek@f8863",
      "fixture:classm.f8889.5.deepseek@f8863",
-     "fixture:classm.f8960.3.deepseek@f8863",
      "fixture:classm.clcw.4.deepseek@f8863",
      "fixture:classm.clcw_next_year.3.deepseek@f8863",
      "fixture:classm.dependent.1.deepseek@f8863",
@@ -572,21 +738,22 @@
      "fixture:classm.f1040.6.deepseek@f8863",
      "fixture:classm.eic.7.deepseek@f8863",
      "fixture:classm.retirement.4.deepseek@f8863",
+     "fixture:classm.retirement.5.deepseek@f8863",
      "fixture:classm.f5329.3.deepseek@f8863",
-     "fixture:classm.sa.1.deepseek@f8863",
      "fixture:classm.sa.2.deepseek@f8863",
-     "fixture:classm.dependent.5.deepseek@f8863",
+     "fixture:classm.sa.6.deepseek@f8863",
      "fixture:classm.asset.1@f8863",
-     "fixture:classm.asset.2@f8863",
-     "fixture:classm.s1.2@f8863",
-     "fixture:classm.se.2@f8863",
-     "fixture:classm.ssb.3@f8863",
-     "fixture:classm.f8962.2@f8863",
-     "fixture:classm.f1095a.1@f8863",
-     "fixture:classm.gift.1@f8863",
-     "fixture:audit.dependent.listed_not_dependent_no_tin@f8863",
-     "fixture:t091.absence.other_tests_unchanged@f8863",
-     "fixture:stage8.mut.hoh_child_months_unanswered_absence@f8863"
+     "fixture:classm.f4562.1@f8863",
+     "fixture:classm.f8960.2@f8863",
+     "fixture:classm.s2.1@f8863",
+     "fixture:classm.s3.1@f8863",
+     "fixture:classm.sc.1@f8863",
+     "fixture:classm.scveh.4@f8863",
+     "fixture:classm.dependent.4@f8863",
+     "fixture:classm.eic.5@f8863",
+     "fixture:classm.clcw_next_year.1@f8863",
+     "fixture:classm.sa.4@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -646,6 +813,54 @@
    "date": "2026-11-15",
    "run": "d9a6637f75aa39a448bf6fed4fdc81316e268ac7f9921f3ac25a142ebfd707ca",
    "subject_key": "08a73adf5aced25d9bc38604f61b36b26aaccb0801e2bbc1d2dcf3225047c1dc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f8863",
+     "fixture:stage14.asset.mq_7yr@f8863",
+     "fixture:stage14.asset.mq_mixed@f8863",
+     "fixture:stage14.asset.mq_not@f8863",
+     "fixture:stage14.asset.bonus_100@f8863",
+     "fixture:stage14.asset.bonus_40_before@f8863",
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f4952.1.deepseek@f8863",
+     "fixture:stage19.refuse.other_credits@f8863",
+     "partial:stage14.asset.hy_5yr-f8863.paid@f8863",
+     "partial:stage14.asset.bonus_100-f8863.paid@f8863",
+     "partial:stage14.asset.prior_7yr-f8863.paid@f8863",
+     "partial:stage14.asset.qip-f8863.paid@f8863",
+     "partial:stage14.asset.done-f8863.paid@f8863",
+     "partial:stage14.asset.prior_179_bonus-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 6)",
+   "project_expr_sha256": "b10454ff3179115a4c1b7d91c5fac08be214ca049bb23d8cc8b3ab707e9a5e53",
+   "second_expr_sha256": "7f3af86d255e3a1220af6de545fc6b62be33dc114d38abcbe137efe768be95a9",
+   "ruling": "Ruling: representation; The reply reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 511/2,930 agree; kinds {\"candidate-refuses\": 897, \"candidate-shows-skipped\": 1131, \"candidate-unknown\": 378, \"project-refuses\": 1, \"project-unknown\": 12}; on completed returns {\"candidate-shows-skipped\": 995}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "7b11790f80d8f060fa964a8cb12d050879081efadd914ddf107f8bbf9002bf54",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -770,6 +985,42 @@
   },
   {
    "printed": "(CLW 7)",
+   "project_expr_sha256": "2503745c6e49d7cfa1dbc6f397384d873f0ef5ce0e1ab49db96a482384faef04",
+   "second_expr_sha256": "f5500cd9d1344cf1c6f7664cab7be50242a4eedeaffc0a09c8c102af9832a3fa",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. On stage19.mut.aoc_line4_zero_ban the reply refuses on f8863.ban although no American opportunity credit is claimed (line 4 is zero); the project asks the ban only for a credit claimed. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 1,433/2,930 agree; kinds {\"candidate-refuses\": 900, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 595, \"project-refuses\": 1}; on completed returns {\"candidate-refuses\": 2, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 173}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "b22514b9644d3b167fbecd1ed46d13b2de7175ea86f216d029f39814be11ee0e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:stage19.refuse.other_credits@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(CLW 7)",
    "project_expr_sha256": "a5c94226258aaff505f6772c1a4943232205d9d09dfc40de4aef82652cdb694f",
    "second_expr_sha256": "d6a0c8f1384a72f6f90ed2a39332a443d31a9c599e85c938153e07f143261ddc",
    "ruling": "Ruling: model error (+ scope); i8863 p. 8, Credit Limit Worksheet, \"7. Enter the smaller of line 3 or line 6 here and on Form 8863, line 19\". Same smaller-of; through worksheet line 3 it inherits the f8863.ban need of line 1 (i8863 p. 1, Form 8862 may be required: \"you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit\") and the missing dependent bar of line 10. executable-triage-v2 (`.transcription/triage/2025/f8863.json`, pass 896c5547154c, regenerated this round; 1,702 fixtures, 500 generated returns seed 20261026, 59 partial records from 40 bases; 2,261 comparisons; every completed-return witness listed by a scratch rerun with the witness cap lifted): 1,209 of 2,261 agree; 734 candidate-refuses, 317 candidate-unknown, 1 value; on completed returns 168 candidate-unknown (167 on f8863.ban, 1 classm.person.20) and 2 candidate-refuses (stage19.mut.aoc_line4_zero_ban, stage19.mut.claimed_filer_llc), all where the project hides the worksheet or completes the return without them. Refused returns: whole-return screens reached through Form 1040 line 18 and line 11b; the value is generated 415, MFS (the MFS returns are refused for the whole return by scope.ready on s3.mfs (forms/2025/scope.yaml, i1040gi p. 14, Married Filing Separately)). Gate wave (BUG-0471): the project's line reads the rewritten f8863.eligible (a choose on f8863.paid, then f8863.none_claimed), the HEAD `all` in its operand order; every Form 8863 line evaluates the same in HEAD and the working tree on all completed fixtures and the 500 generated returns. Project stands.",
@@ -834,6 +1085,45 @@
      "fixture:classm.f4952.1.deepseek@f8863",
      "fixture:stage19.refuse.other_credits@f8863",
      "generated:20261026.352@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1",
+   "project_expr_sha256": "04a509706a4caa87dd5ffd70cae6a25d4105757ebef318b729ce27abb9c96dae",
+   "second_expr_sha256": "17ef8b9e06b6f76c20d8b510e934d04bf6cd4540106bcb57f1cc081d0d0d68ac",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. On stage19.mut.aoc_line4_zero_ban the reply refuses on f8863.ban although no American opportunity credit is claimed (line 4 is zero); the project asks the ban only for a credit claimed. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,325/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-shows-skipped\": 8, \"candidate-unknown\": 592, \"project-unknown\": 1}; on completed returns {\"candidate-refuses\": 1, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 173}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "87e1ed92c653a75090fc163b63c4ed5ea7aa8ed707daef661935509e0c3da739",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@f8863",
+     "fixture:classm.f2441.2.deepseek@f8863",
+     "fixture:classm.f2441.3.deepseek@f8863",
+     "fixture:classm.f2441.4.deepseek@f8863",
+     "fixture:classm.f2441.5.deepseek@f8863",
+     "fixture:classm.f2441.6.deepseek@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.refuse.ban@f8863",
+     "fixture:stage19.mut.aoc_line4_zero_ban@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863",
+     "generated:20261026.11@f8863",
+     "generated:20261026.69@f8863",
+     "generated:20261026.165@f8863",
+     "generated:20261026.187@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.323@f8863",
+     "generated:20261026.332@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1136,6 +1426,86 @@
    "subject_key": "9fc31c9caf52e742ec8ecfb0bf648957074b7551105136fb5475385610f6d6ba"
   },
   {
+   "printed": "10",
+   "project_expr_sha256": "f30ef567567581ce0c7bb1fd306d4beb34fdad740eb3408a69ea7e136bc04302",
+   "second_expr_sha256": "aa464f8dd383130dfb8257c63183a758f11d0bb078647088241f9a8966b88431",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,885/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-unknown\": 16, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "03822a7e434fd94ffe7b71dd0289f2c44f8c03b9079c8b4bbf3e5f61944f28bf",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "11",
+   "project_expr_sha256": "c5a97f29eefc3f3d1c862cc830d59b93ace7dab2b9d0263936ae6c2ad9acf434",
+   "second_expr_sha256": "80dfbbc7ab530887e30308c546fe0915279ac7c75253f7b0d8e1fe38ca79526e",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,885/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-unknown\": 16, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "71d9e73212926540e3dc1ad0b1a7c46765efc26882445747e9a0002e3e8355c4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "11",
    "project_expr_sha256": "c91bc51a3e44d2ba490d64aaf8d052490be8179d8f2ec64d74da3f5b68fcf811",
    "second_expr_sha256": "80dfbbc7ab530887e30308c546fe0915279ac7c75253f7b0d8e1fe38ca79526e",
@@ -1252,6 +1622,46 @@
      "fixture:classm.sa.1@f8863",
      "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
      "fixture:stage19.refuse.period_over_person@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "12",
+   "project_expr_sha256": "bca4fd032676772e728a0330164e441a47f9ba9c48fda0361a4049abe1647604",
+   "second_expr_sha256": "ecf00b8e05c4ecdef9851b1660e071e1dd410a6030ae1a90e778605700a42097",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,885/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-unknown\": 16, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "c108bf263db66bcb19c5a725e13a1896002196b9bcd4e67b6b945105c1bdfe99",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1422,6 +1832,46 @@
    }
   },
   {
+   "printed": "13",
+   "project_expr_sha256": "bc4ac916b6acc529cd6fe595d4be2be6c8a428135d211da86ceeddeeb2e5c4d2",
+   "second_expr_sha256": "5d056166eb86eb2bb4268a7bae20e8cd8d4704975201eb7ed450b873d3b94182",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,885/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-unknown\": 16, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "9bfa06099b4e10599a78114ac379f2671ae66b6fddbabc55e753e8498b1f7079",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "14",
    "project_expr_sha256": "279d38b82d5b34e2f295a5fd5e31ec35c9dc1238f99f836b28aace5b648d8fa9",
    "second_expr_sha256": "3914cb0f61d37a2ab83f4518527698e2aeaad4413179246e9fb66b1733a351b4",
@@ -1563,6 +2013,46 @@
    }
   },
   {
+   "printed": "14",
+   "project_expr_sha256": "a1d7fd8abddd71973e6342dc8fa7c11c949d8c18e0e5af41bf1a6f41bd6fe683",
+   "second_expr_sha256": "c02f52f78f7685a2b9669e0b426700e9afdb187ede892324a233f2ef29800ff3",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,885/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-unknown\": 16, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "755e97ba742526aadde44bdb1cc120fc2527716151f56087de63e24c092a8a35",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "15",
    "project_expr_sha256": "49bb3819db035b357bc732035bbfd825b3101d3af9c393a7a69cda17c98779f7",
    "second_expr_sha256": "332af672563cce3fff3ed454a687f92e4bebbfc0189e806b84892e1908afe315",
@@ -1646,6 +2136,46 @@
      "fixture:classm.sa.1@f8863",
      "fixture:mutation.m4.scveh.smr_first_year_not_always@f8863",
      "fixture:stage19.refuse.period_over_person@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "15",
+   "project_expr_sha256": "e53beb39b0b30d17eeeb919f8a2c155345279657a72538a777b6c57315568be0",
+   "second_expr_sha256": "850995039de34f1c2fd47a15b4b34a15299100367bace58cab4bd1ee0b2de0a3",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,885/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-unknown\": 16, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "f6fa925f4ff88bfe22155aaea904870137cfcfb46428918f4fe9db01f4ba3f76",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1764,6 +2294,86 @@
      "fixture:classm.scveh.4@f8863",
      "fixture:classm.dependent.1@f8863",
      "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "479e6e4c1e483880ff0b432dd24750291a73ff39b343986f78b988a77382c871",
+   "second_expr_sha256": "8a14c930fb1f4e5ef96e62e3ee1e01c9d399c43eb8b0a93c8f8689cbba596a4a",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,885/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-unknown\": 16, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "b84423e7af91e1b9c26d49fba13f423177dec7710a1bfdcabff986b6296f8de8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "18",
+   "project_expr_sha256": "22c27056ca52510c28785f444beb15b7654ead23bc77a8823b1188c7f8965512",
+   "second_expr_sha256": "206544406d29468dbdf3ac1fa3b733dd85ec82c04a19684b56cebcdff6ba49e2",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,885/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-unknown\": 16, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-unknown\": 1}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "7109ca08754911a7799040d522440c8b8f2b22d0f0d8abcc7f234ace86f20f8c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1920,6 +2530,48 @@
      "generated:20261026.354@f8863",
      "generated:20261026.430@f8863",
      "partial:classm.f1095a.1.deepseek-f8863.paid@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "19",
+   "project_expr_sha256": "f8495c09b4e338903c3581235d970f1ed3f444be453742bf0efe02e827d19faf",
+   "second_expr_sha256": "7862b3aa358c9d3a681d855258c0d05643fbc6d31dceda560d30cf0cc84f582a",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,878/2,930 agree; kinds {\"candidate-refuses\": 4, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 21, \"project-refuses\": 24, \"project-unknown\": 2}; on completed returns {\"candidate-refuses\": 1, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 4}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "3b05e28ae50e8495a91c4e0c9743ef6f5dce29381a2c7093696f21ef6c4eb908",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.s3.4@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2104,6 +2756,38 @@
    }
   },
   {
+   "printed": "2",
+   "project_expr_sha256": "94a67a7ea75a364933915e4b7cdd235566664e8f996d2fc81c139cf495f43b8c",
+   "second_expr_sha256": "dd5e5eaa7a064f27bb829d6bb70477102014675ed8281e3f69f09d48cc037c64",
+   "ruling": "Ruling: representation; The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 137/2,930 agree; kinds {\"candidate-shows-skipped\": 2723, \"project-unknown\": 70}; on completed returns {\"candidate-shows-skipped\": 1317}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "899f6e845e2ccc60000fa6477414806b2736807b8b3c46739b0f89d6c53a528d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-shows-skipped",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f8863",
+     "fixture:stage14.asset.mq_7yr@f8863",
+     "fixture:stage14.asset.mq_mixed@f8863",
+     "fixture:stage14.asset.mq_not@f8863",
+     "fixture:stage14.asset.bonus_100@f8863",
+     "fixture:stage14.asset.bonus_40_before@f8863",
+     "fixture:classm.f8889.1.deepseek@f8863",
+     "fixture:classm.f8889.3.deepseek@f8863",
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "3",
    "project_expr_sha256": "38d8d2c7063675eca97e4b69098ce97d83d5c305595920738adf86c9c6454986",
    "second_expr_sha256": "903ec5dee406c0b21e10327413e6133076604a12816fb0865fc16c60abf6a078",
@@ -2197,6 +2881,52 @@
   },
   {
    "printed": "3",
+   "project_expr_sha256": "796d2ec90d747424f3f900d96542ce03c3f623dbe09e160cf824e1f8349057ba",
+   "second_expr_sha256": "903ec5dee406c0b21e10327413e6133076604a12816fb0865fc16c60abf6a078",
+   "ruling": "Ruling: representation; The reply reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 273/2,930 agree; kinds {\"candidate-refuses\": 564, \"candidate-shows-skipped\": 1922, \"candidate-unknown\": 130, \"project-unknown\": 41}; on completed returns {\"candidate-shows-skipped\": 1211}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "6955aeb709a81574183730ede47d0a75a7b07b6a22a223d8bf316d0ae47cf183",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f8863",
+     "fixture:stage14.asset.mq_7yr@f8863",
+     "fixture:stage14.asset.mq_mixed@f8863",
+     "fixture:stage14.asset.mq_not@f8863",
+     "fixture:stage14.asset.bonus_100@f8863",
+     "fixture:stage14.asset.bonus_40_before@f8863",
+     "fixture:stage14.asset.refuse_qip_2017@f8863",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8863",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8863",
+     "fixture:stage14.asset.refuse_class@f8863",
+     "fixture:stage14.asset.refuse_listed_low@f8863",
+     "fixture:stage14.asset.refuse_s179_over@f8863",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8863",
+     "fixture:classm.f8889.2.deepseek@f8863",
+     "fixture:classm.f8889.5.deepseek@f8863",
+     "fixture:classm.person.1.deepseek@f8863",
+     "fixture:classm.sa.2.deepseek@f8863",
+     "fixture:classm.sa.6.deepseek@f8863",
+     "fixture:classm.asset.3@f8863",
+     "fixture:classm.carloan.3@f8863",
+     "fixture:classm.f2441.3@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3",
    "project_expr_sha256": "cc02b712f405450f9b651c10af5bc362eda061298137859c14ee26ddefa7df45",
    "second_expr_sha256": "903ec5dee406c0b21e10327413e6133076604a12816fb0865fc16c60abf6a078",
    "ruling": "Ruling: interface gap (+ scope); f8863 p. 1, line 3: \"Enter the amount from Form 1040 or 1040-SR, line 11b\". executable-triage-v2 (`reviews/2025/transcription/triage/f8863.json`, written by triage.py this round; 1,565 fixtures, 500 generated returns seed 20261026, 55 partial records from 40 bases; 2,120 comparisons): 126 agree; 1,457 candidate-shows-skipped, 429 candidate-refuses, 55 candidate-unknown, 53 project-unknown (on completed returns: 336 candidate-shows-skipped). The reply has no shown_when, so it shows the line on returns that do not file Form 8863 at all (no qualified expenses paid, or a person claimed as a dependent), where the project hides lines 1 to 4 on f8863.eligible; the source has no skip instruction for these lines, and the whole-form condition is the project's visibility, not a printed STOP: interface gap, as the earlier rounds ruled for f8962's whole-form visibility. The candidate-refuses are returns refused elsewhere that the reply reaches by reading Form 1040 line 11b on every return. Project stands.",
@@ -2235,6 +2965,37 @@
      "fixture:mutation.t2.single_no_edu_no_spouse_col@f8863",
      "fixture:mutation.t2.f8889.all_year_dec_unanswered@f8863",
      "fixture:mutation.t2.scveh.mq_prior_car_q4@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "4",
+   "project_expr_sha256": "06fed05829127944aaf96e535d4e903ac203143a7ab0a36cdb0872a86fc63902",
+   "second_expr_sha256": "4ce0712cf63a41540b981ddca79662482333ae24065c003b49b811dd61cc8a0e",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,920/2,930 agree; kinds {\"candidate-refuses\": 3, \"candidate-shows-skipped\": 5, \"project-unknown\": 2}; on completed returns {\"candidate-shows-skipped\": 4}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "711e9201b3369055eef72dc199bdbc663d0ff358bd7e5654e72a585d8322225c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:stage19.f8863.claimed_person_answer@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2410,6 +3171,92 @@
      "fixture:classm.scveh.4@f8863",
      "fixture:classm.dependent.1@f8863",
      "fixture:mutation.t2.sd.line7a_gain_no_status@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5",
+   "project_expr_sha256": "eddd0ad3ec0ccfcc064645dc83573f15c947d367e22fee0546bdacacdda0bf29",
+   "second_expr_sha256": "377ddaf757da8e7d5e62d6c16f56a59249d96cb53fd506f9c8c86af8b3a8988c",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,883/2,930 agree; kinds {\"candidate-refuses\": 3, \"candidate-shows-skipped\": 5, \"candidate-unknown\": 14, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-shows-skipped\": 4}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "4c38e8a27a4ab7c5cfb5c9e631713c65af5ac71c45640ace5a4ef32e01d3e9a0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:classm.sa.3@f8863",
+     "fixture:classm.sa.7@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:stage19.f8863.claimed_person_answer@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7",
+   "project_expr_sha256": "845eadcd1fd6c66f8c19b7421ae42dc42ea9bf64e1991d600296fba08501f33c",
+   "second_expr_sha256": "8e49feb7ebe99acb843e3a7268608d352c7074031b90ee1058d2ba327924ec04",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,879/2,930 agree; kinds {\"candidate-refuses\": 3, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 22, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-shows-skipped\": 1, \"candidate-unknown\": 4}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "3e7813d453645ee663cfe3374bcf616eb8ddb8f68415e49734c8de212eaf18c0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.s3.4@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2658,6 +3505,45 @@
   {
    "printed": "7 (box)",
    "project_expr_sha256": "83b547966256c582b1fdff9077512a527759808c76aef5b3773d052eda24a7e4",
+   "second_expr_sha256": "23a93612dff184ede119c67af8251f79b2d692d2511baa59b7dba02a25f80c05",
+   "ruling": "Ruling: representation; The reply reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,884/2,930 agree; kinds {\"candidate-refuses\": 3, \"candidate-unknown\": 18, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-unknown\": 1}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "585056e07f7e83425c97dbb9359a308f5337e94c9d6bb36239e5fe20a447d834",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:classm.tcw.14@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "7 (box)",
+   "project_expr_sha256": "83b547966256c582b1fdff9077512a527759808c76aef5b3773d052eda24a7e4",
    "second_expr_sha256": "f25c6f3386ec372181eae84aed2cac1c3dac457fa2a1a42787aedc0e8fbe77ed",
    "ruling": "Ruling: model error. Triage .transcription/triage/2025/f8863.json (log sha matches): 2,520/2,587 agree; 26 project-unknown, 18 project-refuses, 14 candidate-unknown, 9 candidate-refuses; completed: 1 candidate-refuses, 1 candidate-unknown. Completed witnesses: stage19.mut.aoc_line4_zero_ban (candidate refuses on f8863.ban, project hidden) and classm.f1040.2 (candidate unknown on f8863.ban), as line 1. Where present, stage19.mut.claimed_filer_llc is the claimed-filer gap (interface gap, see f8863.eligible). The other records fall on refused or incomplete returns.",
    "context": "3ef1f68f4e001e33ba1420bd407045a1dca1cd36e404df86e942865a8c500d18",
@@ -2788,6 +3674,50 @@
    }
   },
   {
+   "printed": "8",
+   "project_expr_sha256": "dcab4e043c2692e1502079e5d5ae6d10ee4bbd7f4498baaf97ed9ebe565010df",
+   "second_expr_sha256": "4efa15dc2586955ad6c42595cfdf4f9a77298a272dae0ced7fb5f8a718020bce",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,876/2,930 agree; kinds {\"candidate-refuses\": 6, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 22, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-shows-skipped\": 1, \"candidate-unknown\": 4}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "f2421788b9dd448413b0f085f60da5b7c42f622bff0416250efdf08b66c2c938",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.s3.4@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.111@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.206@f8863",
+     "generated:20261026.332@f8863",
+     "generated:20261026.337@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "9",
    "project_expr_sha256": "08e59f2ee717a2293054ee787781771e7543ad9e4411953b84c6fb53b59d729e",
    "second_expr_sha256": "73888db15ba18cab8d418d7967d09ea32a5bdf1a4dfc4da2001e4ef90e7a356d",
@@ -2874,6 +3804,47 @@
    }
   },
   {
+   "printed": "9",
+   "project_expr_sha256": "7998efca189e38c52f07be58c1ab17b127113983e0abd7239a0e62587d6e8529",
+   "second_expr_sha256": "73888db15ba18cab8d418d7967d09ea32a5bdf1a4dfc4da2001e4ef90e7a356d",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). This line inherits that omission through f8863.eligible. The reply also reads f8863.ban (asked only when an American opportunity credit is claimed, f8863.ban_refused; i8863 p. 1, Form 8862 \"may be required\" for a credit claimed after a denial) and the person and dependent education inputs (asked only on an eligible return) where the interview does not ask them, so it is unknown there (e.g. classm.f2441.1): representation. The project leaves the line blank on a return that can claim no education credit (no Form 8863 is filed: no expenses, married filing separately, or claimed as a dependent); the reply prints its value there. Where the project prints the line the values agree. Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,879/2,930 agree; kinds {\"candidate-refuses\": 3, \"candidate-shows-skipped\": 1, \"candidate-unknown\": 22, \"project-refuses\": 23, \"project-unknown\": 2}; on completed returns {\"candidate-shows-skipped\": 1, \"candidate-unknown\": 4}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "4b53e7a4db3d4011a4f530da10334cc0e9147e6bdb40aaa0eff55831ca3ca04b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-shows-skipped",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.dependent.1.deepseek@f8863",
+     "fixture:classm.dependent.2.deepseek@f8863",
+     "fixture:classm.dependent.3.deepseek@f8863",
+     "fixture:classm.dependent.4.deepseek@f8863",
+     "fixture:classm.f8863.4.deepseek@f8863",
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.asset.1@f8863",
+     "fixture:classm.asset.2@f8863",
+     "fixture:classm.f8960.1@f8863",
+     "fixture:classm.s3.4@f8863",
+     "fixture:classm.tcw.3@f8863",
+     "fixture:classm.tcw.13@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863",
+     "generated:20261026.200@f8863",
+     "generated:20261026.332@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "f8863.eligible",
    "project_expr_sha256": "8ab977d1d4270ec132eb95481dc914b2ca4e27860b370a62fac0cc839f488b91",
    "second_expr_sha256": "cafa479ad3784bfb5a141d2c236e0b82fc5e5f9cada0e53964e8c527786b9e9f",
@@ -2916,6 +3887,34 @@
    "ruling": "Ruling: model error; i8863 p. 3, Who cannot claim a credit: \"You cannot claim an education credit on a 2025 tax return if any of the following apply. 1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return. 2. Your filing status is married filing separately.\" Triage executable-triage-v2 (`../triage/f8863.json`; 1,374 fixtures, 500 generated returns seed 20261026, 58 partial records; 1,932 comparisons; every completed-return difference inspected with the 6-witness cap lifted, T-083): 1,917 of 1,932 agree; 12 value (1 on a completed return), 3 project-unknown. The candidate tests paid expenses and status not mfs and drops the dependent bar (its note: \"'Claimed as a dependent on another person's return' is not encoded\"). Completed witness: stage19.mut.claimed_filer_llc (sli.claimed yes) project no, candidate yes, so the candidate gives a claimed filer a lifetime learning credit (line 10 $12,200.00). The other 11 values are mfs generated returns (63, 115, 128, 132, 144, 219, 302, 318, 322, 378, 379; project yes, candidate no). The mfs differences are on returns refused for the whole return by scope.ready on s3.mfs (\"Married filing separately\", i1040gi p. 14), so the project's mfs value is never filed (scope). The 3 project-unknown are partial records withholding f8863.paid on refused returns (representation). Project stands.",
    "context": "2e5abc8be94d39f7203a9add22734ea56f86d8e174536a07abdb8e9e3ab13c21",
    "subject_key": "b46e5b54fa393ccb4da1caf2d0728400fed7c853f2bbf4ba21aca1bed0b538c8"
+  },
+  {
+   "printed": "f8863.eligible",
+   "project_expr_sha256": "f27f508e3ff9bff980e02133e318ec28b410600d4514883cecdee6b598d281f2",
+   "second_expr_sha256": "c27d1ecd23af1698f7c9faaddc8f08bf96980e267a7d5e58b780f0053d3e607f",
+   "ruling": "Ruling: model error; i8863 p. 2, Who cannot claim a credit, item 1: \"You're claimed as a dependent on another person's tax return, such as your parent's return.\" The reply's f8863.eligible tests only f8863.paid and not married filing separately and leaves out item 1 (the project's f8863.eligible_figured requires no person.sav_claimed), so on a completed return of a filer someone else claims it figures a credit where the project has none (dep.edu_claimed_no_credit: reply line 1 $2,500.00 and Credit Limit Worksheet line 7 $328.00, project blank; also classm.person.21, stage19.mut.claimed_filer_llc, stage19.f8863.claimed_person_answer). Project-refuses and project-unknown cases are on refused or incomplete returns (another form's refusal, or no filing status given). Triage executable-triage-v2 (reply 404414e494d8): 2,920/2,930 agree; kinds {\"project-unknown\": 2, \"value\": 8}; on completed returns {\"value\": 4}. Project right under the source; no change.",
+   "context": "fe5d0e680556a7d51e25e5162c6178201fed86a56981ecfdbe97135dba008158",
+   "date": "2026-11-15",
+   "run": "3ac443c0ea5b7eead5916ecd92f9d453f372f72cb3e0e30761b973d9093c91b7",
+   "subject_key": "65834cf4f88cf9adfbb3f2de40ba7eb2837e700b5fd8c73a46c3b93239d79882",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.sa.5.deepseek@f8863",
+     "fixture:classm.person.21@f8863",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8863",
+     "fixture:stage19.mut.claimed_filer_llc@f8863",
+     "fixture:stage19.f8863.claimed_person_answer@f8863",
+     "fixture:dep.edu_claimed_no_credit@f8863",
+     "fixture:mutation.t2.sd.line7a_gain_no_status@f8863",
+     "generated:20261026.184@f8863"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "f8863.eligible",

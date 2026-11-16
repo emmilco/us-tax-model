@@ -369,7 +369,8 @@
         "person[taxpayer].w2[a].box1": 10000000,
         "s1a.tips": null,
         "s1a.overtime": null,
-        "s1a.carloan": null
+        "s1a.carloan": null,
+        "household.married_dec31": true
       },
       "expect": {
         "f8959.line6": {
@@ -403,7 +404,8 @@
         "person[taxpayer].w2[a].box1": 10000000,
         "s1a.tips": null,
         "s1a.overtime": null,
-        "s1a.carloan": null
+        "s1a.carloan": null,
+        "household.married_dec31": true
       },
       "expect": {
         "f8959.line6": {
@@ -433,7 +435,8 @@
         "person[taxpayer].w2[a].box1": 10000000,
         "s1a.tips": null,
         "s1a.overtime": null,
-        "s1a.carloan": null
+        "s1a.carloan": null,
+        "household.married_dec31": true
       },
       "expect": {
         "f8959.line6": {
@@ -713,7 +716,8 @@
         "person[taxpayer].w2[a].box2": null,
         "f1040.line25b": null,
         "f1040.line25c_other": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8959.line18": {
@@ -992,7 +996,8 @@
         "person[taxpayer].sc[b].line1": 1000000,
         "person[taxpayer].se_screen": true,
         "f2441.benefits": null,
-        "s179.prior_form": null, "s179.carryover": null,
+        "s179.prior_form": null,
+        "s179.carryover": null,
         "f2441.care": null,
         "f5695.condo": null,
         "person[taxpayer].ira_owner": true,
@@ -1016,6 +1021,75 @@
         "f8959.line16": {
           "kind": "money",
           "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mexist.f8959.line4.f4137_tips",
+      "covers": [
+        "f8959"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of x2pay.f4137.w9_government: W-2 box 5 $28,000; Form 4137 line 6 = $9,000 - $4,000 - $300 = $4,700; no Form 8919. Form 8959 line 1 $28,000, line 2 (Form 4137 line 6) $4,700, line 3 $0, line 4 (add lines 1 through 3) $32,700 (f8959 p. 1, lines 1-4).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 400000,
+        "person[taxpayer].f4137_under20": 30000,
+        "person[taxpayer].tips_gov": true
+      },
+      "expect": {
+        "f8959.line2": {
+          "kind": "money",
+          "cents": 470000
+        },
+        "f8959.line4": {
+          "kind": "money",
+          "cents": 3270000
+        }
+      }
+    },
+    {
+      "id": "mexist.f8959.line4.f8919_wages",
+      "covers": [
+        "f8959"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of x2pay.f8919.w3: W-2 box 5 $170,000 and Form 8919 wages of $10,000 from one firm. Form 8959 line 1 $170,000, line 2 $0, line 3 (Form 8919 line 6) $10,000, line 4 $180,000 (f8959 p. 1, lines 1-4).",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "job"
+        ],
+        "person[taxpayer].w2[job].box1": 17000000,
+        "person[taxpayer].w2[job].box3": 17000000,
+        "person[taxpayer].w2[job].box5": 17000000,
+        "scope.pay_no_w2": true,
+        "scope.contractor_pay": true,
+        "$f8919firm@person[taxpayer]": [
+          "firm"
+        ],
+        "person[taxpayer].f8919firm[firm].reason": "h",
+        "person[taxpayer].f8919firm[firm].wages": 1000000
+      },
+      "expect": {
+        "f8959.line3": {
+          "kind": "money",
+          "cents": 1000000
+        },
+        "f8959.line4": {
+          "kind": "money",
+          "cents": 18000000
         }
       }
     }

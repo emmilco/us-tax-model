@@ -98,7 +98,7 @@ def assign_pending(inventory, pending_dir):
         return
     new, mapping = rule.assign(text, pending)
     cwd = inventory.parent
-    cited = git("grep", "-I", "-l", "-E", rule.PLACEHOLDER_ERE, cwd=cwd).stdout.split()
+    cited = git("grep", "-I", "-l", "-E", rule.PLACEHOLDER_ERE, "--", ".", rule.RECORDS_PATHSPEC, cwd=cwd).stdout.split()
     for rel in cited:
         f = cwd / rel
         if f.resolve() == inventory.resolve() or f.parent.resolve() == pending_dir.resolve():

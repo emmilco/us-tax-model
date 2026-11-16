@@ -1,0 +1,156 @@
+form:
+  id: f8919
+  kind: form
+  title: Form 8919 — Uncollected Social Security and Medicare Tax on Wages, lines 6 to 13, one per person
+  tax_year: 2025
+  note: Lines 6 to 13 of one person's Form 8919, from that person's firms (collection f8919firm, lines 1 to 5). Shown only
+    for a person with wages on line 6. Railroad retirement (RRTA) compensation on line 8 is refused (person.rrta).
+  collection:
+    parent: person
+    implicit: form
+    cite:
+      doc: f8919
+      locator: 'p. 1, "Name of person who must file this form. If married, complete a separate Form 8919 for each spouse
+        who must file this form"'
+  lines:
+  - id: f8919.files
+    printed: (helper)
+    label: Form 8919 is prepared for this person (line 6 is more than zero)
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f8919.line6
+      - param: sales.zero
+    cite:
+      doc: f8919
+      locator: 'p. 1, Who must file, "You must file Form 8919 if all of the following apply"'
+  - id: f8919.line6
+    printed: '6'
+    label: Total wages. Combine lines 1 through 5 in column (f). Enter here and on Form 1040, 1040-SR, or 1040-NR, line 1g
+    shown_when: f8919.files
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: person.f8919_wages
+    cite:
+      doc: f8919
+      locator: 'p. 1, line 6, "Total wages. Combine lines 1 through 5 in column (f). Enter here and on Form 1040, 1040-SR, or"'
+  - id: f8919.line7
+    printed: '7'
+    label: Maximum amount of wages subject to social security tax
+    shown_when: f8919.files
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: se.wage_base
+    cite:
+      doc: f8919
+      locator: 'p. 1, line 7, "Maximum amount of wages subject to social security tax", "$176,100"'
+  - id: f8919.line8
+    printed: '8'
+    label: Total social security wages and social security tips (total of boxes 3 and 7 on Form(s) W-2), railroad retirement
+      (RRTA) compensation (subject to the 6.2% rate), and unreported tips subject to social security tax from Form 4137,
+      line 10
+    shown_when: f8919.files
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - person.wages
+      - person.f4137_line10
+    cite:
+      doc: f8919
+      locator: 'p. 1, line 8, "Total social security wages and social security tips (total of boxes 3 and 7 on", "unreported
+        tips subject to social security tax from Form 4137, line"'
+    refuses:
+    - when: person.rrta
+      form: Form 8919 with railroad retirement (RRTA) compensation
+      remedy: Form 8919 line 8 adds railroad retirement (RRTA) compensation to the social security wages, and this tool
+        does not take railroad compensation.
+      cite:
+        doc: f8919
+        locator: 'p. 2, Line 8, "For railroad retirement (RRTA) compensation, don’t include an amount greater than $176,100"'
+  - id: f8919.line9
+    printed: '9'
+    label: Subtract line 8 from line 7. If line 8 is more than line 7, enter -0- here and on line 10
+    shown_when: f8919.files
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f8919.line7
+      take: f8919.line8
+    cite:
+      doc: f8919
+      locator: 'p. 1, line 9, "Subtract line 8 from line 7. If line 8 is more than line 7, enter -0- here and on line 10"'
+  - id: f8919.line10
+    printed: '10'
+    label: Wages subject to social security tax. Enter the smaller of line 6 or line 9
+    shown_when: f8919.files
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f8919.line6
+      - f8919.line9
+    cite:
+      doc: f8919
+      locator: 'p. 1, line 10, "Wages subject to social security tax. Enter the smaller of line 6 or line 9"'
+  - id: f8919.rate_062
+    printed: (helper)
+    label: 0.062 (social security tax rate)
+    type: Rate
+    expr:
+      op: param
+      ref: f8919.rate_062
+    cite:
+      doc: f8919
+      locator: 'p. 1, Multiply line 10 by 0.062, "Multiply line 10 by 0.062 (social security tax rate)"'
+  - id: f8919.line11
+    printed: '11'
+    label: Multiply line 10 by 0.062 (social security tax rate)
+    shown_when: f8919.files
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8919.line10
+      rate: f8919.rate_062
+    cite:
+      doc: f8919
+      locator: 'p. 1, Multiply line 10 by 0.062, "Multiply line 10 by 0.062 (social security tax rate)"'
+  - id: f8919.rate_0145
+    printed: (helper)
+    label: 0.0145 (Medicare tax rate)
+    type: Rate
+    expr:
+      op: param
+      ref: f8919.rate_0145
+    cite:
+      doc: f8919
+      locator: 'p. 1, Multiply line 6 by 0.0145, "Multiply line 6 by 0.0145 (Medicare tax rate)"'
+  - id: f8919.line12
+    printed: '12'
+    label: Multiply line 6 by 0.0145 (Medicare tax rate)
+    shown_when: f8919.files
+    type: NonNegDollars
+    expr:
+      op: multiply_rate
+      amount: f8919.line6
+      rate: f8919.rate_0145
+    cite:
+      doc: f8919
+      locator: 'p. 1, Multiply line 6 by 0.0145, "Multiply line 6 by 0.0145 (Medicare tax rate)"'
+  - id: f8919.line13
+    printed: '13'
+    label: Add lines 11 and 12. Enter here. Include as tax on your annual tax return (Schedule 2 (Form 1040), line 6)
+    shown_when: f8919.files
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f8919.line11
+      - f8919.line12
+    cite:
+      doc: f8919
+      locator: 'p. 1, Add lines 11 and 12, "Add lines 11 and 12. Enter here. Include as tax on your annual tax return (Schedule 2 (Form
+        1040), line 6"'

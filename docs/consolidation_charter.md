@@ -130,9 +130,10 @@ Proposed. Each is a phase 1 cleanup item, not a rewrite:
 ## 7. Year rollover
 
 Source: `docs/2026-11-09_ty2026_rollover_measurement.md`. No year has actually been rolled over. TY2026 is preparation
-on IRS drafts (`d6017626`) plus a 10-27 rehearsal (`713a5662`); `years.json` is still `[2025]`.
+on IRS drafts (`d6017626`, a 10-27 rehearsal `713a5662`, and the operations, staged parameters and tables of the
+2026 preparation lanes, `docs/ty2026/ADOPTION.md`); `years.json` lists 2025 alone (`adopted`, `ny_adopted`).
 
-What a rollover costs today:
+What a rollover cost when measured (11-09):
 - **Missed changes.** 49 of 135 changes (36%) are found only by reading the drafts, because `year_diff` cannot see new
   lines.
 - **Parameters.** 45 of 273 are filled mechanically.
@@ -155,6 +156,15 @@ The rollover procedure, which phase 1 builds:
 4. **No year literals in ids or text** (30 input ids and 93 ambiguity ids carry one today). The engine is already clean.
 5. **New York gets the same year handling** as federal: four New York tools hard-code 2025.
 6. **Both cost ledgers record year and jurisdiction,** so the next rollover can be measured.
+
+State on 2026-11-15: each of the six is built. Year changes are operations in `changes/<year>/`, checked by the
+check-all step `year_changes` (item 1); parameters are proposed by `tools/propose_params.py` and page layouts read
+from `tools/layouts/<year>.json` (item 2); `tools/transcription/year_carry.py` carries review verdicts and rulings
+sidecars across a year (item 3); the 2025 year-id list of `tools/year_ids.json` is empty; the 93 ambiguity ids keep
+`amb.2025.*`, which `check_year_ids.py` treats as the edition of the register that recorded the entry, not a year
+to roll (item 4); the year tools take
+`--jurisdiction ny`, and `years.json` lists New York's adopted years apart (`ny_adopted`; item 5); both ledgers
+refuse a row without year and jurisdiction (item 6). Not yet measured on a real adoption.
 
 ## 8. Phase 1 scope
 

@@ -430,6 +430,366 @@
 - Expr: `{"collection":"w2","field":"w2.box2","op":"sum_over"}`
 - Cite: [f1040] p. 2, Payments and Refundable Credits, line 25a, "Federal income tax withheld from:", "Form(s) W-2" (2025; created 2025-09-05; sha256 3d31c226)
 
+## (helper) — `person.f8919_firms`
+
+- **Authored helper label:** Total of column (f) of this person's firms (Form 8919, lines 1 to 5)
+- **Encoded (NonNegDollars):** Add f8919firm.wages over every confirmed f8919firm entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8919firm","field":"f8919firm.wages","op":"sum_over"}`
+- Cite: [f8919] p. 1, line 6, "Total wages. Combine lines 1 through 5 in column (f)" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)
+
+## (helper) — `person.f8919_wages`
+
+- **Authored helper label:** This person's Form 8919 line 6 (the column (f) wages of the firms listed; zero for a person not paid by such a firm)
+- **Encoded (NonNegDollars):** Choose — [scope helper "Wages from a firm that treated the worker as an independent contractor (Form 8919) (asked only after a Yes to pay not on a W-2; otherwise no)" = true → helper "Total of column (f) of this person's firms (Form 8919, lines 1 to 5)"] [scope helper "Wages from a firm that treated the worker as an independent contractor (Form 8919) (asked only after a Yes to pay not on a W-2; otherwise no)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.contractor_pay_if_pay",{"const":true}],"op":"test"},"then":"person.f8919_firms"},{"guard":{"eq":["scope.contractor_pay_if_pay",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f8919] p. 1, line 6, "Total wages. Combine lines 1 through 5 in column (f)" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)
+
+## (helper) — `person.f8919_any`
+
+- **Authored helper label:** This person has wages on Form 8919 (line 6 more than zero)
+- **Encoded (Bool):** helper "This person's Form 8919 line 6 (the column (f) wages of the firms listed; zero for a person not paid by such a firm)" > $0 (sales.zero)
+- Expr: `{"gt":["person.f8919_wages",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [f8919] p. 1, Who must file, "You must file Form 8919 if all of the following apply" (2025; created 2025-10-22 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 84102b12)
+
+## (helper) — `person.f8919_line10_figured`
+
+- **Authored helper label:** This person's Form 8919 line 10 (wages subject to social security tax)
+- **Encoded (NonNegDollars):** Add f8919.line10 over every confirmed f8919 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8919","field":"f8919.line10","op":"sum_over"}`
+- Cite: [f1040sse] Schedule SE (2025), line 8c, "Wages subject to social security tax from Form 8919, line 10" (2025; created 2025-05-07; sha256 05bc2b3e)
+
+## (helper) — `person.f8919_line10`
+
+- **Authored helper label:** This person's Form 8919 line 10 (wages subject to social security tax) (only when Form 8919 is filed; zero otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "This person has wages on Form 8919 (line 6 more than zero)" = true → helper "This person's Form 8919 line 10 (wages subject to social security tax)"] [helper "This person has wages on Form 8919 (line 6 more than zero)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.f8919_any",{"const":true}],"op":"test"},"then":"person.f8919_line10_figured"},{"guard":{"eq":["person.f8919_any",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f1040sse] Schedule SE (2025), line 8c, "Wages subject to social security tax from Form 8919, line 10" (2025; created 2025-05-07; sha256 05bc2b3e)
+
+## (helper) — `person.f8919_tax_figured`
+
+- **Authored helper label:** This person's Form 8919 line 13 (uncollected social security and Medicare tax on wages)
+- **Encoded (NonNegDollars):** Add f8919.line13 over every confirmed f8919 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f8919","field":"f8919.line13","op":"sum_over"}`
+- Cite: [f1040s2] Schedule 2 (2025), line 6, "Uncollected social security and Medicare tax on wages. Attach Form 8919" (2025; created 2025-05-08; sha256 64d867b6)
+
+## (helper) — `person.f8919_tax`
+
+- **Authored helper label:** This person's Form 8919 line 13 (uncollected social security and Medicare tax on wages) (only when Form 8919 is filed; zero otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "This person has wages on Form 8919 (line 6 more than zero)" = true → helper "This person's Form 8919 line 13 (uncollected social security and Medicare tax on wages)"] [helper "This person has wages on Form 8919 (line 6 more than zero)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.f8919_any",{"const":true}],"op":"test"},"then":"person.f8919_tax_figured"},{"guard":{"eq":["person.f8919_any",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f1040s2] Schedule 2 (2025), line 6, "Uncollected social security and Medicare tax on wages. Attach Form 8919" (2025; created 2025-05-08; sha256 64d867b6)
+
+## (helper) — `person.f4137_rows_c`
+
+- **Authored helper label:** Total of column (c) of this person's employer rows (Form 4137, line 1)
+- **Encoded (NonNegDollars):** Add f4137row.col_c over every confirmed f4137row entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f4137row","field":"f4137row.col_c","op":"sum_over"}`
+- Cite: [f4137] p. 1, line 2, "Total cash and charge tips you received in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (helper) — `person.f4137_col_c`
+
+- **Authored helper label:** This person's Form 4137 line 2 (the column (c) tips of the employers listed; zero for a person with no unreported tips)
+- **Encoded (NonNegDollars):** Choose — [scope helper "Tips not reported in full to an employer, or noncash tips (Form 4137 and line 1c) (asked only after a Yes to pay not on a W-2; otherwise no)" = true → helper "Total of column (c) of this person's employer rows (Form 4137, line 1)"] [scope helper "Tips not reported in full to an employer, or noncash tips (Form 4137 and line 1c) (asked only after a Yes to pay not on a W-2; otherwise no)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.tips_unreported_if_pay",{"const":true}],"op":"test"},"then":"person.f4137_rows_c"},{"guard":{"eq":["scope.tips_unreported_if_pay",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f4137] p. 1, line 2, "Total cash and charge tips you received in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (helper) — `person.f4137_rows_d`
+
+- **Authored helper label:** Total of column (d) of this person's employer rows (Form 4137, line 1)
+- **Encoded (NonNegDollars):** Add f4137row.col_d over every confirmed f4137row entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f4137row","field":"f4137row.col_d","op":"sum_over"}`
+- Cite: [f4137] p. 1, line 3, "Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (helper) — `person.f4137_col_d`
+
+- **Authored helper label:** This person's Form 4137 line 3 (the column (d) tips of the employers listed; zero for a person with no unreported tips)
+- **Encoded (NonNegDollars):** Choose — [scope helper "Tips not reported in full to an employer, or noncash tips (Form 4137 and line 1c) (asked only after a Yes to pay not on a W-2; otherwise no)" = true → helper "Total of column (d) of this person's employer rows (Form 4137, line 1)"] [scope helper "Tips not reported in full to an employer, or noncash tips (Form 4137 and line 1c) (asked only after a Yes to pay not on a W-2; otherwise no)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.tips_unreported_if_pay",{"const":true}],"op":"test"},"then":"person.f4137_rows_d"},{"guard":{"eq":["scope.tips_unreported_if_pay",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f4137] p. 1, line 3, "Total cash and charge tips you reported to your employer(s) in 2025. Add the amounts from line 1" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (helper) — `person.f4137_under20`
+
+- **Authored helper label:** Cash and charge tips you received but did not report to your employer because the total was less than $20 in a calendar month
+- **Encoded (NonNegDollars):** Input — Of the cash and charge tips you did not report, how much did you not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none.
+- Expr: `{"op":"input","source":"Of the cash and charge tips you did not report, how much did you not have to report because the tips at one job came to less than $20 in a calendar month? Zero if none."}`
+- Cite: [f4137] p. 2, Line 5, "Enter only the tips you weren’t required to report to your employer because the total received was less than $20 in a calendar month"; p. 2, Tips you must report to your employer, "the $20 rule applies separately to the tips you received while working for each employer" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (gate) — `person.f4137_under20_if_rows`
+
+- **Authored helper label:** Form 4137 line 5 (asked only of a person with an employer row on Form 4137; otherwise zero)
+- **Encoded (NonNegDollars):** Choose — [helper "This person has tips on Form 4137 (line 2 more than zero)" = true → helper "Cash and charge tips you received but did not report to your employer because the total was less than $20 in a calendar month"] [helper "This person has tips on Form 4137 (line 2 more than zero)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.f4137_filed",{"const":true}],"op":"test"},"then":"person.f4137_under20"},{"guard":{"eq":["person.f4137_filed",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f4137] p. 2, Line 5, "Enter only the tips you weren’t required to report to your employer because the total received was less than $20 in a calendar month" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (helper) — `person.tips_gov`
+
+- **Authored helper label:** Did you receive any of these unreported tips for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?
+- **Encoded (Bool):** Input — Did you receive any of these unreported tips for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?
+- Expr: `{"op":"input","source":"Did you receive any of these unreported tips for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?"}`
+- Cite: [f4137] p. 2, Line 10, "If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (gate) — `person.tips_gov_if_rows`
+
+- **Authored helper label:** Unreported tips received as a government employee whose pay was subject only to the 1.45% Medicare tax (asked only of a person with an employer row on Form 4137; otherwise no)
+- **Encoded (Bool):** Choose — [helper "This person has tips on Form 4137 (line 2 more than zero)" = true → helper "Did you receive any of these unreported tips for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?"] [helper "This person has tips on Form 4137 (line 2 more than zero)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.f4137_filed",{"const":true}],"op":"test"},"then":"person.tips_gov"},{"guard":{"eq":["person.f4137_filed",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [f4137] p. 2, Line 10, "If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (helper) — `person.tips_noncash`
+
+- **Authored helper label:** The value of noncash tips you received, such as tickets, passes, or other items of value
+- **Encoded (NonNegDollars):** Input — What was the value of the tips you received in 2025 that were not money, such as tickets, passes or other items of value? Zero if none.
+- Expr: `{"op":"input","source":"What was the value of the tips you received in 2025 that were not money, such as tickets, passes or other items of value? Zero if none."}`
+- Cite: [i1040gi] p. 24, Line 1c, "Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value. Although you don’t report these noncash tips to your employer, you must report them on line 1c" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.tips_noncash_if_unreported`
+
+- **Authored helper label:** Noncash tips (asked only when unreported or noncash tips are reported for the return; otherwise zero)
+- **Encoded (NonNegDollars):** Choose — [scope helper "Tips not reported in full to an employer, or noncash tips (Form 4137 and line 1c) (asked only after a Yes to pay not on a W-2; otherwise no)" = true → helper "The value of noncash tips you received, such as tickets, passes, or other items of value"] [scope helper "Tips not reported in full to an employer, or noncash tips (Form 4137 and line 1c) (asked only after a Yes to pay not on a W-2; otherwise no)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.tips_unreported_if_pay",{"const":true}],"op":"test"},"then":"person.tips_noncash"},{"guard":{"eq":["scope.tips_unreported_if_pay",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 24, Line 1c, "Also, include the value of any noncash tips you received, such as tickets, passes, or other items of value" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.f4137_line4`
+
+- **Authored helper label:** This person's Form 4137 line 4 (unreported cash and charge tips)
+- **Encoded (NonNegDollars):** Add f4137.line4 over every confirmed f4137 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f4137","field":"f4137.line4","op":"sum_over"}`
+- Cite: [f4137] p. 1, line 4, "Subtract line 3 from line 2. Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (helper) — `person.f4137_line6_figured`
+
+- **Authored helper label:** This person's Form 4137 line 6 (unreported tips subject to Medicare tax)
+- **Encoded (NonNegDollars):** Add f4137.line6 over every confirmed f4137 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f4137","field":"f4137.line6","op":"sum_over"}`
+- Cite: [f4137] p. 2, Line 6, "Enter this amount on Form 8959, line 2, if you’re required to file that form" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (helper) — `person.f4137_line6`
+
+- **Authored helper label:** This person's Form 4137 line 6 (unreported tips subject to Medicare tax) (only when Form 4137 is filed; zero otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "This person has tips on Form 4137 (line 2 more than zero)" = true → helper "This person's Form 4137 line 6 (unreported tips subject to Medicare tax)"] [helper "This person has tips on Form 4137 (line 2 more than zero)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.f4137_filed",{"const":true}],"op":"test"},"then":"person.f4137_line6_figured"},{"guard":{"eq":["person.f4137_filed",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f4137] p. 2, Line 6, "Enter this amount on Form 8959, line 2, if you’re required to file that form" (2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision); sha256 f2f7a822)
+
+## (helper) — `person.f4137_line10_figured`
+
+- **Authored helper label:** This person's Form 4137 line 10 (unreported tips subject to social security tax)
+- **Encoded (NonNegDollars):** Add f4137.line10 over every confirmed f4137 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f4137","field":"f4137.line10","op":"sum_over"}`
+- Cite: [f1040sse] Schedule SE (2025), line 8b, "Unreported tips subject to social security tax from Form 4137, line 10" (2025; created 2025-05-07; sha256 05bc2b3e)
+
+## (helper) — `person.f4137_line10`
+
+- **Authored helper label:** This person's Form 4137 line 10 (unreported tips subject to social security tax) (only when Form 4137 is filed; zero otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "This person has tips on Form 4137 (line 2 more than zero)" = true → helper "This person's Form 4137 line 10 (unreported tips subject to social security tax)"] [helper "This person has tips on Form 4137 (line 2 more than zero)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.f4137_filed",{"const":true}],"op":"test"},"then":"person.f4137_line10_figured"},{"guard":{"eq":["person.f4137_filed",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f1040sse] Schedule SE (2025), line 8b, "Unreported tips subject to social security tax from Form 4137, line 10" (2025; created 2025-05-07; sha256 05bc2b3e)
+
+## (helper) — `person.f4137_tax_figured`
+
+- **Authored helper label:** This person's Form 4137 line 13 (social security and Medicare tax on unreported tips)
+- **Encoded (NonNegDollars):** Add f4137.line13 over every confirmed f4137 entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"f4137","field":"f4137.line13","op":"sum_over"}`
+- Cite: [f1040s2] Schedule 2 (2025), line 5, "Social security and Medicare tax on unreported tip income. Attach Form 4137" (2025; created 2025-05-08; sha256 64d867b6)
+
+## (helper) — `person.f4137_tax`
+
+- **Authored helper label:** This person's Form 4137 line 13 (social security and Medicare tax on unreported tips) (only when Form 4137 is filed; zero otherwise)
+- **Encoded (NonNegDollars):** Choose — [helper "This person has tips on Form 4137 (line 2 more than zero)" = true → helper "This person's Form 4137 line 13 (social security and Medicare tax on unreported tips)"] [helper "This person has tips on Form 4137 (line 2 more than zero)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.f4137_filed",{"const":true}],"op":"test"},"then":"person.f4137_tax_figured"},{"guard":{"eq":["person.f4137_filed",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [f1040s2] Schedule 2 (2025), line 5, "Social security and Medicare tax on unreported tip income. Attach Form 4137" (2025; created 2025-05-08; sha256 64d867b6)
+
+## (helper) — `person.line1c`
+
+- **Authored helper label:** This person's tip income not reported on line 1a (Form 4137 line 4 and noncash tips)
+- **Encoded (NonNegDollars):** Add helper "This person's Form 4137 line 4 (unreported cash and charge tips)" and helper "Noncash tips (asked only when unreported or noncash tips are reported for the return; otherwise zero)".
+- Expr: `{"of":["person.f4137_line4","person.tips_noncash_if_unreported"],"op":"sum"}`
+- Cite: [i1040gi] p. 24, Line 1c, "This should include any tip income you didn’t report to your employer", "Also, include the value of any noncash tips you received" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.f4137_filed`
+
+- **Authored helper label:** This person has tips on Form 4137 (line 2 more than zero)
+- **Encoded (Bool):** helper "This person's Form 4137 line 2 (the column (c) tips of the employers listed; zero for a person with no unreported tips)" > $0 (sales.zero)
+- Expr: `{"gt":["person.f4137_col_c",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (c) (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.household_wages`
+
+- **Authored helper label:** Wages you received as a household employee that were not reported on Form(s) W-2
+- **Encoded (NonNegDollars):** Input — How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none.
+- Expr: `{"op":"input","source":"How much were you paid in 2025 for work in someone else's home by households that did not give a W-2 for it? Zero if none."}`
+- Cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2", "An employer isn’t required to provide a Form W-2 to you if they paid you wages of less than $2,800 in 2025" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.household_wages_if_pay`
+
+- **Authored helper label:** Household employee wages not on a W-2 (asked only when such wages are reported for the return; otherwise zero)
+- **Encoded (NonNegDollars):** Choose — [scope helper "Wages as a household employee not reported on a W-2 (asked only after a Yes to pay not on a W-2; otherwise no)" = true → helper "Wages you received as a household employee that were not reported on Form(s) W-2"] [scope helper "Wages as a household employee not reported on a W-2 (asked only after a Yes to pay not on a W-2; otherwise no)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.household_pay_if_pay",{"const":true}],"op":"test"},"then":"person.household_wages"},{"guard":{"eq":["scope.household_pay_if_pay",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 24, Line 1b, "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.strike`
+
+- **Authored helper label:** Strike or lockout benefits you received (other than bona fide gifts)
+- **Encoded (NonNegDollars):** Input — How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none.
+- Expr: `{"op":"input","source":"How much did you get in 2025 in strike or lockout benefits from a union? Leave out true gifts. Zero if none."}`
+- Cite: [i1040gi] p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout benefits (other than bona fide gifts)" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.strike_if_pay`
+
+- **Authored helper label:** Strike or lockout benefits (asked only when such benefits are reported for the return; otherwise zero)
+- **Encoded (NonNegDollars):** Choose — [scope helper "Strike or lockout benefits (asked only after a Yes to pay not on a W-2; otherwise no)" = true → helper "Strike or lockout benefits you received (other than bona fide gifts)"] [scope helper "Strike or lockout benefits (asked only after a Yes to pay not on a W-2; otherwise no)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.strike_pay_if_pay",{"const":true}],"op":"test"},"then":"person.strike"},{"guard":{"eq":["scope.strike_pay_if_pay",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 24, Line 1h, "Strike or lockout benefits (other than bona fide gifts)" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_box1`
+
+- **Authored helper label:** Nontaxable Medicaid waiver payments reported in box 1 of Form(s) W-2
+- **Encoded (NonNegDollars):** Input — How much of the Medicaid pay you received in 2025 for caring for someone who lived with you in your home appears in box 1 of your W-2s? Zero if none.
+- Expr: `{"op":"input","source":"How much of the Medicaid pay you received in 2025 for caring for someone who lived with you in your home appears in box 1 of your W-2s? Zero if none."}`
+- Cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.mw_box1_if_mw`
+
+- **Authored helper label:** Medicaid waiver payments in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)
+- **Encoded (NonNegDollars):** Choose — [scope helper "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?" = true → helper "Nontaxable Medicaid waiver payments reported in box 1 of Form(s) W-2"] [scope helper "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.medicaid_waiver",{"const":true}],"op":"test"},"then":"person.mw_box1"},{"guard":{"eq":["scope.medicaid_waiver",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_not_box1`
+
+- **Authored helper label:** Nontaxable Medicaid waiver payments not reported in box 1 of a Form W-2
+- **Encoded (NonNegDollars):** Input — How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none.
+- Expr: `{"op":"input","source":"How much of that Medicaid pay is not in box 1 of a W-2: shown only in box 12 with code II, on a Form 1099-MISC or 1099-NEC, or on no form? Zero if none."}`
+- Cite: [i1040gi] p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2"; p. 92, Line 8s, "Your nontaxable Medicaid waiver payments should be reported to you on Form(s) W-2 in box 12, Code II" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.mw_not_box1_if_mw`
+
+- **Authored helper label:** Medicaid waiver payments not in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)
+- **Encoded (NonNegDollars):** Choose — [scope helper "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?" = true → helper "Nontaxable Medicaid waiver payments not reported in box 1 of a Form W-2"] [scope helper "In 2025, did a state Medicaid program pay you (or, on a joint return, your spouse) to care for someone who lives in your home?" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["scope.medicaid_waiver",{"const":true}],"op":"test"},"then":"person.mw_not_box1"},{"guard":{"eq":["scope.medicaid_waiver",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_has_not_box1`
+
+- **Authored helper label:** Medicaid waiver payments not in W-2 box 1 are more than zero
+- **Encoded (Bool):** helper "Medicaid waiver payments not in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)" > $0 (sales.zero)
+- Expr: `{"gt":["person.mw_not_box1_if_mw",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040gi] p. 24, Line 1d, "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_1099`
+
+- **Authored helper label:** Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC
+- **Encoded (NonNegDollars):** Input — How much of that was reported on a Form 1099-MISC or 1099-NEC? Zero if none.
+- Expr: `{"op":"input","source":"How much of that was reported on a Form 1099-MISC or 1099-NEC? Zero if none."}`
+- Cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.mw_1099_if_not_box1`
+
+- **Authored helper label:** Medicaid waiver payments on Form 1099-MISC or 1099-NEC (asked only when some payments are not in W-2 box 1; otherwise zero)
+- **Encoded (NonNegDollars):** Choose — [helper "Medicaid waiver payments not in W-2 box 1 are more than zero" = true → helper "Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC"] [helper "Medicaid waiver payments not in W-2 box 1 are more than zero" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.mw_has_not_box1",{"const":true}],"op":"test"},"then":"person.mw_1099"},{"guard":{"eq":["person.mw_has_not_box1",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_has_1099`
+
+- **Authored helper label:** Medicaid waiver payments on Form 1099-MISC or 1099-NEC are more than zero
+- **Encoded (Bool):** helper "Medicaid waiver payments on Form 1099-MISC or 1099-NEC (asked only when some payments are not in W-2 box 1; otherwise zero)" > $0 (sales.zero)
+- Expr: `{"gt":["person.mw_1099_if_not_box1",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.mw_1099_over`
+
+- **Authored helper label:** The Medicaid waiver payments on Form 1099 are more than the payments not in W-2 box 1
+- **Encoded (Bool):** helper "Medicaid waiver payments on Form 1099-MISC or 1099-NEC (asked only when some payments are not in W-2 box 1; otherwise zero)" > helper "Medicaid waiver payments not in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)"
+- Expr: `{"gt":["person.mw_1099_if_not_box1","person.mw_not_box1_if_mw"],"op":"test"}`
+- Cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_business`
+
+- **Authored helper label:** Do you run a business of providing home care services, as a sole proprietor?
+- **Encoded (Bool):** Input — Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?
+- Expr: `{"op":"input","source":"Do you run a business of your own that provides home care, with this pay reported on a business schedule (Schedule C)?"}`
+- Cite: [i1040gi] p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.mw_business_if_1099`
+
+- **Authored helper label:** A home-care business of your own (asked only with Medicaid waiver payments on Form 1099; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Medicaid waiver payments on Form 1099-MISC or 1099-NEC are more than zero" = true → helper "Do you run a business of providing home care services, as a sole proprietor?"] [helper "Medicaid waiver payments on Form 1099-MISC or 1099-NEC are more than zero" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.mw_has_1099",{"const":true}],"op":"test"},"then":"person.mw_business"},{"guard":{"eq":["person.mw_has_1099",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_total`
+
+- **Authored helper label:** This person's Medicaid waiver payments (in W-2 box 1 and not in box 1)
+- **Encoded (NonNegDollars):** Add helper "Medicaid waiver payments in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)" and helper "Medicaid waiver payments not in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)".
+- Expr: `{"of":["person.mw_box1_if_mw","person.mw_not_box1_if_mw"],"op":"sum"}`
+- Cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_paid`
+
+- **Authored helper label:** This person had Medicaid waiver payments
+- **Encoded (Bool):** helper "This person's Medicaid waiver payments (in W-2 box 1 and not in box 1)" > $0 (sales.zero)
+- Expr: `{"gt":["person.mw_total",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040gi] p. 92, Line 8s, "Nontaxable amount of Medicaid waiver payments included on Form 1040, line 1a or 1d", "If nontaxable payments were reported to you in box 1 of Form(s) W-2, report the amount on Form 1040 or 1040-SR, line 1a" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_earned`
+
+- **Authored helper label:** Do you choose to include your nontaxable Medicaid waiver payments in earned income for purposes of claiming a credit or other tax benefit?
+- **Encoded (Bool):** Input — Do you choose to count this Medicaid pay as earned income? It is not taxed either way; counting it can raise credits such as the earned income credit.
+- Expr: `{"op":"input","source":"Do you choose to count this Medicaid pay as earned income? It is not taxed either way; counting it can raise credits such as the earned income credit."}`
+- Cite: [i1040gi] p. 24, Line 1d, "if you choose to include nontaxable payments in earned income for purposes of claiming a credit or other tax benefit", "If you and your spouse both received nontaxable Medicaid waiver payments during the year, you and your spouse can make different choices about including payments in earned income" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `person.mw_earned_if_paid`
+
+- **Authored helper label:** The choice to count Medicaid waiver payments as earned income (asked only of a person with such payments; otherwise no)
+- **Encoded (Bool):** Choose — [helper "This person had Medicaid waiver payments" = true → helper "Do you choose to include your nontaxable Medicaid waiver payments in earned income for purposes of claiming a credit or other tax benefit?"] [helper "This person had Medicaid waiver payments" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.mw_paid",{"const":true}],"op":"test"},"then":"person.mw_earned"},{"guard":{"eq":["person.mw_paid",{"const":false}],"op":"test"},"then":"person.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 24, Line 1d, "if you choose to include nontaxable payments in earned income for purposes of claiming a credit or other tax benefit", "If you and your spouse both received nontaxable Medicaid waiver payments during the year, you and your spouse can make different choices about including payments in earned income" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_other`
+
+- **Authored helper label:** Medicaid waiver payments not in W-2 box 1 and not on Form 1099 (shown only in box 12 with code II, or on no form)
+- **Encoded (NonNegDollars):** Subtract helper "Medicaid waiver payments on Form 1099-MISC or 1099-NEC (asked only when some payments are not in W-2 box 1; otherwise zero)" from helper "Medicaid waiver payments not in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)". If zero or less, enter -0-.
+- Expr: `{"from":"person.mw_not_box1_if_mw","op":"subtract_floor0","take":"person.mw_1099_if_not_box1"}`
+- Cite: [i1040gi] p. 92, Line 8s, "If you did not receive a Form W-2 for nontaxable payments, or you received nontaxable payments that you didn’t report on line 1a, and choose to include nontaxable amounts in earned income for purposes of claiming a credit or other tax benefit, report the amount on Form 1040 or 1040-SR, line 1d" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_other_1d`
+
+- **Authored helper label:** Medicaid waiver payments not in W-2 box 1 or on Form 1099 that go on line 1d (only when chosen as earned income; otherwise zero)
+- **Encoded (NonNegDollars):** Choose — [helper "The choice to count Medicaid waiver payments as earned income (asked only of a person with such payments; otherwise no)" = true → helper "Medicaid waiver payments not in W-2 box 1 and not on Form 1099 (shown only in box 12 with code II, or on no form)"] [helper "The choice to count Medicaid waiver payments as earned income (asked only of a person with such payments; otherwise no)" = false → line zero]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.mw_earned_if_paid",{"const":true}],"op":"test"},"then":"person.mw_other"},{"guard":{"eq":["person.mw_earned_if_paid",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Cite: [i1040gi] p. 92, Line 8s, "and choose to include nontaxable amounts in earned income for purposes of claiming a credit or other tax benefit, report the amount on Form 1040 or 1040-SR, line 1d" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.line1d`
+
+- **Authored helper label:** This person's Medicaid waiver payments on Form 1040 line 1d
+- **Encoded (NonNegDollars):** Add helper "Medicaid waiver payments on Form 1099-MISC or 1099-NEC (asked only when some payments are not in W-2 box 1; otherwise zero)" and helper "Medicaid waiver payments not in W-2 box 1 or on Form 1099 that go on line 1d (only when chosen as earned income; otherwise zero)".
+- **Refusal:** when person.mw_1099_over is true, cannot complete Medicaid waiver payments on Form 1099 more than the payments not in W-2 box 1. The Medicaid pay reported on Form 1099-MISC or 1099-NEC is part of the pay not in box 1 of a W-2, so it cannot be more. Check the two amounts. Cite: [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Refusal:** when person.mw_business_if_1099 is true, cannot complete Medicaid waiver payments in a home-care business (Schedule C). A sole proprietor in a business of providing home care services reports these payments as the Schedule C instructions say; this tool does not prepare that. Cite: [i1040gi] p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Interpretation: amb.2025.mw_all_nontaxable
+- Expr: `{"of":["person.mw_1099_if_not_box1","person.mw_other_1d"],"op":"sum"}`
+- Cite: [i1040gi] p. 24, Line 1d, "enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC", "Also enter the total of your taxable and nontaxable Medicaid waiver payments that were not reported on Form(s) W-2, or not reported in box 1 of Form(s) W-2, if you choose to include nontaxable payments in earned income" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.line8s`
+
+- **Authored helper label:** This person's nontaxable Medicaid waiver payments included on Form 1040 line 1a or 1d (Schedule 1 line 8s)
+- **Encoded (NonNegDollars):** Add helper "Medicaid waiver payments in W-2 box 1 (asked only when Medicaid waiver payments are reported for the return; otherwise zero)" and helper "This person's Medicaid waiver payments on Form 1040 line 1d".
+- Expr: `{"of":["person.mw_box1_if_mw","person.line1d"],"op":"sum"}`
+- Cite: [i1040gi] p. 92, Line 8s, "Then, on line 8s, enter the total amount of the nontaxable payments reported on Form 1040 or 1040-SR, line 1a or 1d" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.mw_not_earned`
+
+- **Authored helper label:** This person's Medicaid waiver payments on Schedule 1 line 8s not chosen as earned income
+- **Encoded (NonNegDollars):** Choose — [helper "The choice to count Medicaid waiver payments as earned income (asked only of a person with such payments; otherwise no)" = true → line zero] [helper "The choice to count Medicaid waiver payments as earned income (asked only of a person with such payments; otherwise no)" = false → helper "This person's nontaxable Medicaid waiver payments included on Form 1040 line 1a or 1d (Schedule 1 line 8s)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["person.mw_earned_if_paid",{"const":true}],"op":"test"},"then":"person.zero"},{"guard":{"eq":["person.mw_earned_if_paid",{"const":false}],"op":"test"},"then":"person.line8s"}],"op":"choose"}`
+- Cite: [i1040gi] p. 42, Step 5, "Enter the Medicaid waiver payment amounts excluded from income on Schedule 1, line 8s, unless you choose to include these amounts in earned income, in which case enter -0-" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.earned_not_w2`
+
+- **Authored helper label:** This person's pay on Form 1040 lines 1b, 1c, 1d, 1g and 1h (wages, tips and other earned income not in W-2 box 1)
+- **Encoded (NonNegDollars):** Add helper "Household employee wages not on a W-2 (asked only when such wages are reported for the return; otherwise zero)", helper "This person's tip income not reported on line 1a (Form 4137 line 4 and noncash tips)", helper "This person's Medicaid waiver payments on Form 1040 line 1d", helper "This person's Form 8919 line 6 (the column (f) wages of the firms listed; zero for a person not paid by such a firm)", and helper "This person's other earned income on Form 1040 line 1h (strike or lockout benefits and disability pensions paid before the minimum retirement age)".
+- Expr: `{"of":["person.household_wages_if_pay","person.line1c","person.line1d","person.f8919_wages","person.line1h"],"op":"sum"}`
+- Cite: [i2441] p. 4, Lines 4 and 5, "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z" (2025; sha256 86f0669e)
+
 ## (helper) — `person.ira_amount_a`
 
 - **Authored helper label:** IRA distributions on this person's Forms 1099-R (line 4a amounts)
@@ -454,16 +814,30 @@
 ## (helper) — `person.plan_amount_a`
 
 - **Authored helper label:** Pension and annuity distributions on this person's Forms 1099-R (line 5a amounts)
-- **Encoded (NonNegDollars):** Add retirement.amount_a over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = false, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"retirement","field":"retirement.amount_a","op":"sum_over","where":{"eq":["retirement.is_ira",{"const":false}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add retirement.amount_a over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = false and helper "A disability pension paid wholly before the minimum retirement age: its taxable amount is wages on Form 1040, line 1h, not a pension on lines 5a and 5b" = false, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.amount_a","op":"sum_over","where":{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"eq":["retirement.dis_wages",{"const":false}],"op":"test"}],"op":"test"}}`
 - Cite: [i1040gi] pp. 28-30, Lines 5a and 5b (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.plan_taxable`
 
 - **Authored helper label:** Taxable pension and annuity distributions on this person's Forms 1099-R (line 5b amounts)
-- **Encoded (NonNegDollars):** Add retirement.taxable over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = false, within the current person when parent-bound. An unanswered roster is unknown.
-- Expr: `{"collection":"retirement","field":"retirement.taxable","op":"sum_over","where":{"eq":["retirement.is_ira",{"const":false}],"op":"test"}}`
+- **Encoded (NonNegDollars):** Add retirement.taxable over every confirmed retirement entry for which helper "IRA distribution (lines 4a and 4b)" = false and helper "A disability pension paid wholly before the minimum retirement age: its taxable amount is wages on Form 1040, line 1h, not a pension on lines 5a and 5b" = false, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.taxable","op":"sum_over","where":{"all":[{"eq":["retirement.is_ira",{"const":false}],"op":"test"},{"eq":["retirement.dis_wages",{"const":false}],"op":"test"}],"op":"test"}}`
 - Cite: [i1040gi] pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts on Form 1040 or 1040-SR, line 5b' (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.dis_wages`
+
+- **Authored helper label:** Taxable disability pensions on this person's Forms 1099-R paid before the minimum retirement age (line 1h amounts)
+- **Encoded (NonNegDollars):** Add retirement.taxable over every confirmed retirement entry for which helper "A disability pension paid wholly before the minimum retirement age: its taxable amount is wages on Form 1040, line 1h, not a pension on lines 5a and 5b" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"retirement","field":"retirement.taxable","op":"sum_over","where":{"eq":["retirement.dis_wages",{"const":true}],"op":"test"}}`
+- Cite: [i1040gi] p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer"; p575 p. 6, Disability Pensions, "You must report your taxable disability payments as wages on Form 1040, 1040-SR, or 1040-NR, line 1h, until you reach minimum retirement age" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.line1h`
+
+- **Authored helper label:** This person's other earned income on Form 1040 line 1h (strike or lockout benefits and disability pensions paid before the minimum retirement age)
+- **Encoded (NonNegDollars):** Add helper "Strike or lockout benefits (asked only when such benefits are reported for the return; otherwise zero)" and helper "Taxable disability pensions on this person's Forms 1099-R paid before the minimum retirement age (line 1h amounts)".
+- Expr: `{"of":["person.strike_if_pay","person.dis_wages"],"op":"sum"}`
+- Cite: [i1040gi] p. 24, Line 1h, "The following types of income must be included in the total on line 1h", "Strike or lockout benefits (other than bona fide gifts)"; p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.plan_rollovers`
 
@@ -622,9 +996,8 @@
   - a chapter 11 bankruptcy case
   - community income on a separate return
   - self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government
-  - tips reported on Form 4137 or wages on Form 8919
-- Expr: `{"op":"input","source":"Does any of these apply to this person?\n\n- church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)\n- being a minister, a member of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029\n- net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C (such as director's fees, fiduciary fees, or fees as a fee-basis state or local government employee)\n- farm income (Schedule F) or Conservation Reserve Program payments\n- electing an optional method (Schedule SE Part II)\n- a chapter 11 bankruptcy case\n- community income on a separate return\n- self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government\n- tips reported on Form 4137 or wages on Form 8919"}`
-- Cite: [i1040sse] pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II; f1040sse lines 1a, 1b, 5a, 8b and 8c; p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes." (2025; sha256 ea9e3120)
+- Expr: `{"op":"input","source":"Does any of these apply to this person?\n\n- church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)\n- being a minister, a member of a religious order or a Christian Science practitioner, or having an approved Form 4361 or Form 4029\n- net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C (such as director's fees, fiduciary fees, or fees as a fee-basis state or local government employee)\n- farm income (Schedule F) or Conservation Reserve Program payments\n- electing an optional method (Schedule SE Part II)\n- a chapter 11 bankruptcy case\n- community income on a separate return\n- self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government"}`
+- Cite: [i1040sse] pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II; f1040sse lines 1a, 1b and 5a; p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes." (2025; sha256 ea9e3120)
 
 ## (gate) — `person.se_screened`
 
@@ -644,33 +1017,33 @@
 ## (helper) — `person.se_line6`
 
 - **Authored helper label:** Schedule SE line 6 for this person
-- **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line6" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person" and line8a = line wages] [helper "This person has at least one Schedule C" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line6" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person", line8a = line wages, line8b = helper "This person's Form 4137 line 10 (unreported tips subject to social security tax) (only when Form 4137 is filed; zero otherwise)", and line8c = helper "This person's Form 8919 line 10 (wages subject to social security tax) (only when Form 8919 is filed; zero otherwise)"] [helper "This person has at least one Schedule C" = false → line zero]
 - **Refusal:** when person.se_rrta is true, cannot complete Schedule SE with railroad retirement (tier 1) compensation. Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions. Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
-- Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages"},"def":"se","line":"line6"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages","line8b":"person.f4137_line10","line8c":"person.f8919_line10"},"def":"se","line":"line6"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f1040sse] Schedule SE (2025), line 6, "Add lines 4c and 5b"; i8959 p. 3, Line 8, "Enter your self-employment income from Schedule SE (Form 1040), Part I, line 6" (2025; created 2025-05-07; sha256 05bc2b3e)
 
 ## (helper) — `person.se_line12`
 
 - **Authored helper label:** Schedule SE line 12 (self-employment tax) for this person
-- **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line12" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person" and line8a = line wages] [helper "This person has at least one Schedule C" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line12" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person", line8a = line wages, line8b = helper "This person's Form 4137 line 10 (unreported tips subject to social security tax) (only when Form 4137 is filed; zero otherwise)", and line8c = helper "This person's Form 8919 line 10 (wages subject to social security tax) (only when Form 8919 is filed; zero otherwise)"] [helper "This person has at least one Schedule C" = false → line zero]
 - **Refusal:** when person.se_rrta is true, cannot complete Schedule SE with railroad retirement (tier 1) compensation. Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions. Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
-- Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages"},"def":"se","line":"line12"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages","line8b":"person.f4137_line10","line8c":"person.f8919_line10"},"def":"se","line":"line12"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f1040sse] Schedule SE (2025), line 12, "Enter here and on Schedule 2 (Form 1040), line 4" (2025; created 2025-05-07; sha256 05bc2b3e)
 
 ## (helper) — `person.se_line13`
 
 - **Authored helper label:** Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
-- **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line13" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person" and line8a = line wages] [helper "This person has at least one Schedule C" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line13" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person", line8a = line wages, line8b = helper "This person's Form 4137 line 10 (unreported tips subject to social security tax) (only when Form 4137 is filed; zero otherwise)", and line8c = helper "This person's Form 8919 line 10 (wages subject to social security tax) (only when Form 8919 is filed; zero otherwise)"] [helper "This person has at least one Schedule C" = false → line zero]
 - **Refusal:** when person.se_rrta is true, cannot complete Schedule SE with railroad retirement (tier 1) compensation. Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions. Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
-- Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages"},"def":"se","line":"line13"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages","line8b":"person.f4137_line10","line8c":"person.f8919_line10"},"def":"se","line":"line13"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f1040sse] Schedule SE (2025), line 13, "Enter here and on Schedule 1 (Form 1040), line 15" (2025; created 2025-05-07; sha256 05bc2b3e)
 
 ## (helper) — `person.se_line4c`
 
 - **Authored helper label:** Schedule SE line 4c for this person
-- **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line4c" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person" and line8a = line wages] [helper "This person has at least one Schedule C" = false → line zero]
+- **Encoded (NonNegDollars):** Choose — [helper "This person has at least one Schedule C" = true → "line4c" of Schedule SE (Form 1040) — Self-Employment Tax, one per person with line2 = helper "Schedule SE line 2 for this person", line8a = line wages, line8b = helper "This person's Form 4137 line 10 (unreported tips subject to social security tax) (only when Form 4137 is filed; zero otherwise)", and line8c = helper "This person's Form 8919 line 10 (wages subject to social security tax) (only when Form 8919 is filed; zero otherwise)"] [helper "This person has at least one Schedule C" = false → line zero]
 - **Refusal:** when person.se_rrta is true, cannot complete Schedule SE with railroad retirement (tier 1) compensation. Schedule SE line 8a adds railroad retirement (tier 1) compensation to the social security wages, and this tool does not take railroad compensation. Prepare Schedule SE with the railroad retirement instructions. Cite: [f1040sse] Schedule SE (2025), line 8a, "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) and railroad retirement (tier 1) compensation" (2025; created 2025-05-07; sha256 05bc2b3e)
-- Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages"},"def":"se","line":"line4c"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["person.has_sc",{"const":true}],"op":"test"},"then":{"bind":{"line2":"person.se_line2","line8a":"person.wages","line8b":"person.f4137_line10","line8c":"person.f8919_line10"},"def":"se","line":"line4c"}},{"guard":{"eq":["person.has_sc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
 - Cite: [f1040sse] Schedule SE (2025), line 4c, "Combine lines 4a and 4b. If less than $400, stop; you don’t owe self-employment tax" (2025; created 2025-05-07; sha256 05bc2b3e)
 
 ## (helper) — `person.plan`
@@ -1229,16 +1602,16 @@
 ## (helper) — `person.dc_earned`
 
 - **Authored helper label:** This person's earned income for Form 2441 lines 4 and 5: Form W-2 box 1, the person's share of line 1e, and Schedule SE line 3 less the deduction on Schedule 1 line 15 (or the Schedule C profit or loss when no Schedule SE is filed)
-- **Encoded (Dollars):** Add helper "Total W-2 box 1 for this person", helper "This person's share of Form 1040 line 1e (taxable dependent care benefits) in Form 2441 earned income", and helper "Worksheet B, Parts 1 and 2, for this person".
+- **Encoded (Dollars):** Add helper "Total W-2 box 1 for this person", helper "This person's pay on Form 1040 lines 1b, 1c, 1d, 1g and 1h (wages, tips and other earned income not in W-2 box 1)", helper "This person's share of Form 1040 line 1e (taxable dependent care benefits) in Form 2441 earned income", and helper "Worksheet B, Parts 1 and 2, for this person".
 - Interpretation: amb.2025.dc_line1e_attribution
-- Expr: `{"of":["person.box1","person.dc_1e","person.eic_se"],"op":"sum"}`
+- Expr: `{"of":["person.box1","person.earned_not_w2","person.dc_1e","person.eic_se"],"op":"sum"}`
 - Cite: [i2441] p. 4, Lines 4 and 5, "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z" and "The amount shown on Schedule SE (Form 1040), line 3, minus any deduction you claim on Schedule 1 (Form 1040), line 15"; p503 p. 11, Self-employment earnings, "Include your self-employment earnings in earned income, even if they are less than $400 and you didn't file Schedule SE (Form 1040)" (2025; sha256 86f0669e)
 
 ## (helper) — `person.dc_earned_b`
 
 - **Authored helper label:** This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without line 1e (the taxable benefits of line 12; when a line 13 grace-period amount could make part of line 1e earned income and change the excluded benefits, Form 2441 line 25 refuses)
-- **Encoded (Dollars):** Add helper "Total W-2 box 1 for this person" and helper "Worksheet B, Parts 1 and 2, for this person".
-- Expr: `{"of":["person.box1","person.eic_se"],"op":"sum"}`
+- **Encoded (Dollars):** Add helper "Total W-2 box 1 for this person", helper "This person's pay on Form 1040 lines 1b, 1c, 1d, 1g and 1h (wages, tips and other earned income not in W-2 box 1)", and helper "Worksheet B, Parts 1 and 2, for this person".
+- Expr: `{"of":["person.box1","person.earned_not_w2","person.eic_se"],"op":"sum"}`
 - Cite: [i2441] p. 5, Line 18, "Earned income for figuring the amount of dependent care benefits you are able to exclude or deduct from your income is determined in the same way as earned income for figuring the credit is determined" and "for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12" (2025; sha256 86f0669e)
 
 ## (helper) — `person.sav_born`
@@ -1265,7 +1638,7 @@
 ## (helper) — `person.sav_ineligible`
 
 - **Authored helper label:** Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question is asked only if someone can claim you or your spouse as a dependent)
-- **Encoded (Bool):** (helper "Born before January 2, 2008" = false or helper "Were you a student in 2025 (during any part of 5 calendar months, enrolled as a full-time student at a school, or taking a full-time, on-farm training course given by a school or a state, county, or local government agency)?" = true or sa helper "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = true and helper "Are you claimed as a dependent on someone else's 2025 tax return?" = true)
+- **Encoded (Bool):** (helper "Born before January 2, 2008" = false or helper "Were you a student in 2025 (during any part of 5 calendar months, enrolled as a full-time student at a school, or taking a full-time, on-farm training course given by a school or a state, county, or local government agency)?" = true or sa helper "Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = true and helper "Are you claimed as a dependent on someone else's 2025 tax return?" = true)
 - Expr: `{"any":[{"eq":["person.sav_born",{"const":false}],"op":"test"},{"eq":["person.sav_student",{"const":true}],"op":"test"},{"all":[{"eq":["sa.dependent",{"const":true}],"op":"test"},{"eq":["person.sav_claimed",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [f8880] p. 2, Who Can Take This Credit, "The person(s) who made the qualified contribution or elective deferral (a) was born after January 1, 2008; (b) is claimed as a dependent on someone else’s 2025 tax return; or (c) was a student" (2025; created 2025-11-04; sha256 ba2b2877)
 
@@ -1592,12 +1965,26 @@
 - Expr: `{"all":[{"eq":["ira.joint",{"const":true}],"op":"test"},{"eq":["person.ira_cov",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "But if you checked “No” on either line 1a or 1b, enter $246,000 for the person who wasn’t covered by a plan" (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `person.ira_line2_status`
+## (helper) — `person.ira_line2_table`
 
-- **Authored helper label:** The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse)
+- **Authored helper label:** The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse; $10,000 if married filing separately)
 - **Encoded (NonNegDollars):** Enter single $89,000; mfj $146,000; mfs $10,000; hoh $89,000; qss $146,000 (ira.line2).
 - Expr: `{"op":"param","ref":"ira.line2"}`
-- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Enter the amount shown below that applies to you" (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Enter the amount shown below that applies to you" and "Married filing separately and you lived with your spouse at any time in 2025, enter $10,000" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.ira_line2_apart`
+
+- **Authored helper label:** $89,000 (married filing separately and lived apart from your spouse for all of 2025)
+- **Encoded (NonNegDollars):** Enter $89,000 (ira.line2_apart).
+- Expr: `{"op":"param","ref":"ira.line2_apart"}`
+- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Single, head of household, or married filing separately and you lived apart from your spouse for all of 2025, enter $89,000" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.ira_line2_status`
+
+- **Authored helper label:** The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse; married filing separately, $89,000 if you lived apart from your spouse for all of 2025 and $10,000 otherwise)
+- **Encoded (NonNegDollars):** Choose — [household helper "Married filing separately, and you lived apart from your spouse for all of 2025" = true → helper "$89,000 (married filing separately and lived apart from your spouse for all of 2025)"] [household helper "Married filing separately, and you lived apart from your spouse for all of 2025" = false → helper "The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse; $10,000 if married filing separately)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.mfs_apart_all_year",{"const":true}],"op":"test"},"then":"person.ira_line2_apart"},{"guard":{"eq":["household.mfs_apart_all_year",{"const":false}],"op":"test"},"then":"person.ira_line2_table"}],"op":"choose"}`
+- Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Single, head of household, or married filing separately and you lived apart from your spouse for all of 2025, enter $89,000" and "Married filing separately and you lived with your spouse at any time in 2025, enter $10,000" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.ira_line2_nc`
 
@@ -1609,7 +1996,7 @@
 ## (helper) — `person.ira_line2`
 
 - **Authored helper label:** Worksheet line 2 for this person's column
-- **Encoded (NonNegDollars):** Choose — [helper "Married filing jointly and this person was not covered by a retirement plan" = true → helper "$246,000"] [helper "Married filing jointly and this person was not covered by a retirement plan" = false → helper "The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse)"]
+- **Encoded (NonNegDollars):** Choose — [helper "Married filing jointly and this person was not covered by a retirement plan" = true → helper "$246,000"] [helper "Married filing jointly and this person was not covered by a retirement plan" = false → helper "The line 2 amount for the filing status ($89,000; $146,000 if married filing jointly or qualifying surviving spouse; married filing separately, $89,000 if you lived apart from your spouse for all of 2025 and $10,000 otherwise)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.ira_not_covered_joint",{"const":true}],"op":"test"},"then":"person.ira_line2_nc"},{"guard":{"eq":["person.ira_not_covered_joint",{"const":false}],"op":"test"},"then":"person.ira_line2_status"}],"op":"choose"}`
 - Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "Married filing jointly, enter $146,000 in both columns. But if you checked “No” on either line 1a or 1b, enter $246,000 for the person who wasn’t covered by a plan" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -1750,7 +2137,7 @@
 ## (helper) — `person.ira_line7`
 
 - **Authored helper label:** Worksheet line 7 for this person's column
-- **Encoded (NonNegDollars):** Choose — [ira helper "You (or, on a joint return, your spouse) were covered by a retirement plan (Yes on line 1a or 1b)" = true → helper "Line 7 when someone is covered by a retirement plan (lines 2 through 6 completed)"] [ira helper "You (or, on a joint return, your spouse) were covered by a retirement plan (Yes on line 1a or 1b)" = false → helper "The applicable amount for this person ($7,000 if under age 50 at the end of 2025; $8,000 if age 50 or older)"]
+- **Encoded (NonNegDollars):** Choose — [ira helper "You (or, on a joint return, your spouse) were covered by a retirement plan, or, married filing separately, are considered covered through your spouse (Yes on line 1a or 1b)" = true → helper "Line 7 when someone is covered by a retirement plan (lines 2 through 6 completed)"] [ira helper "You (or, on a joint return, your spouse) were covered by a retirement plan, or, married filing separately, are considered covered through your spouse (Yes on line 1a or 1b)" = false → helper "The applicable amount for this person ($7,000 if under age 50 at the end of 2025; $8,000 if age 50 or older)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["ira.anyone_covered",{"const":true}],"op":"test"},"then":"person.ira_line7_figured"},{"guard":{"eq":["ira.anyone_covered",{"const":false}],"op":"test"},"then":"person.ira_limit"}],"op":"choose"}`
 - Cite: [i1040gi] p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, "If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6, enter the applicable amount below on line 7a (and line 7b, if applicable), and go to line 8" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -2743,3 +3130,353 @@
 - **Encoded (Bool):** Choose — [helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' → helper "Year parameter household.no (false)"] [helper "Whose entry is this, yours or your spouse's?" = 'spouse' → helper "Born before January 2, 1961, and has a valid SSN"]
 - Expr: `{"alternatives":[{"guard":{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},"then":"person.no"},{"guard":{"eq":["person.role",{"const":"spouse"}],"op":"test"},"then":"person.senior_work_ssn"}],"op":"choose"}`
 - Cite: [i1040gi] p. 110, Schedule 1-A, Part V, "Fill out Schedule 1-A, Part V, only if" and "If you are married filing jointly, the spouse who is claiming the enhanced deduction for seniors must have a valid SSN" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `person.k1p_total_passive_income`
+
+- **Authored helper label:** Schedule E line 28 column (h), all partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.col_h over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.col_h","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_nonpassive_income`
+
+- **Authored helper label:** Schedule E line 28 column (k), all partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.col_k over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.col_k","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_nonpassive_loss`
+
+- **Authored helper label:** Schedule E line 28 column (i), all partnership K-1s (as a positive amount)
+- **Encoded (NonNegDollars):** Add k1p.col_i over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.col_i","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_nonpassive`
+
+- **Authored helper label:** Nonpassive income less nonpassive loss, all partnership K-1s
+- **Encoded (Dollars):** Add k1p.nonpassive_net over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.nonpassive_net","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_p4_income`
+
+- **Authored helper label:** Form 8582 Part IV column (a), partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.p4_income over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.p4_income","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_p4_loss`
+
+- **Authored helper label:** Form 8582 Part IV column (b), partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.p4_loss over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.p4_loss","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_p4_prior`
+
+- **Authored helper label:** Form 8582 Part IV column (c), partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.p4_prior over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.p4_prior","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_p5_income`
+
+- **Authored helper label:** Form 8582 Part V column (a), partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.p5_income over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.p5_income","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_p5_loss`
+
+- **Authored helper label:** Form 8582 Part V column (b), partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.p5_loss over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.p5_loss","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_p5_prior`
+
+- **Authored helper label:** Form 8582 Part V column (c), partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.p5_prior over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.p5_prior","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_p6_loss`
+
+- **Authored helper label:** Form 8582 Part VI column (a), partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.p6_loss over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.p6_loss","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_prior`
+
+- **Authored helper label:** Prior years unallowed losses, partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.prior_total over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.prior_total","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_interest`
+
+- **Authored helper label:** Interest income (K-1 box 5), all partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.box5_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box5_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_ord_div`
+
+- **Authored helper label:** Ordinary dividends (K-1 box 6a), all partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.box6a_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box6a_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_qual_div`
+
+- **Authored helper label:** Qualified dividends (K-1 box 6b), all partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.box6b_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box6b_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_st_gain`
+
+- **Authored helper label:** Net short-term capital gain or loss (K-1 box 8), all partnership K-1s
+- **Encoded (Dollars):** Add k1p.box8_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box8_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_lt_gain`
+
+- **Authored helper label:** Net long-term capital gain or loss (K-1 box 9a), all partnership K-1s
+- **Encoded (Dollars):** Add k1p.box9a_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box9a_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_collectibles`
+
+- **Authored helper label:** Collectibles (28%) gain or loss (K-1 box 9b), all partnership K-1s
+- **Encoded (Dollars):** Add k1p.box9b_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box9b_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_unrecap_1250`
+
+- **Authored helper label:** Unrecaptured section 1250 gain (K-1 box 9c), all partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.box9c_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box9c_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_se_earnings`
+
+- **Authored helper label:** Net earnings from self-employment (K-1 box 14, code A), all partnership K-1s
+- **Encoded (Dollars):** Add k1p.box14a_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box14a_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_se_pos`
+
+- **Authored helper label:** Positive net earnings from self-employment (K-1 box 14, code A), all partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.se_pos over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.se_pos","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_backup_wh`
+
+- **Authored helper label:** Backup withholding (K-1 box 15, code O), all partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.box15o_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box15o_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_taxexempt_int`
+
+- **Authored helper label:** Tax-exempt interest (K-1 box 18, code A), all partnership K-1s
+- **Encoded (NonNegDollars):** Add k1p.box18a_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box18a_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_total_qbi_stmt`
+
+- **Authored helper label:** QBI or loss from the section 199A statements (K-1 box 20, code Z), all partnership K-1s
+- **Encoded (Dollars):** Add k1p.box20z_if_any over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.box20z_if_any","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_count`
+
+- **Authored helper label:** Number of partnership K-1s
+- **Encoded (Count):** Add k1p.one over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.one","op":"sum_over","where":{"eq":["k1p.screened",{"const":true}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_count_sche`
+
+- **Authored helper label:** Number of partnership K-1s with a row on Schedule E line 28
+- **Encoded (Count):** Add k1p.one over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true and helper "The K-1 puts a row on Schedule E line 28 (an amount in box 1, 2, 3 or 4a, or a held-back loss)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.one","op":"sum_over","where":{"all":[{"eq":["k1p.screened",{"const":true}],"op":"test"},{"eq":["k1p.sche_row",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_count_passive_loss`
+
+- **Authored helper label:** Number of partnership K-1s with a passive net loss or held-back loss
+- **Encoded (Count):** Add k1p.one over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true and helper "A passive activity of this K-1 has a net loss or a prior years unallowed loss" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.one","op":"sum_over","where":{"all":[{"eq":["k1p.screened",{"const":true}],"op":"test"},{"eq":["k1p.passive_loss",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_count_inv`
+
+- **Authored helper label:** Number of partnership K-1s with box 20, code A or B
+- **Encoded (Count):** Add k1p.one over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true and helper "Box 20 shows code A or B: investment income or expenses" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.one","op":"sum_over","where":{"all":[{"eq":["k1p.screened",{"const":true}],"op":"test"},{"eq":["k1p.has_b20ab",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1p_count_general`
+
+- **Authored helper label:** Number of partnership K-1s held as a general partner
+- **Encoded (Count):** Add k1p.one over every confirmed k1p entry for which helper "This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)" = true and helper "General partner or LLC member-manager (item G)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1p","field":"k1p.one","op":"sum_over","where":{"all":[{"eq":["k1p.screened",{"const":true}],"op":"test"},{"eq":["k1p.general",{"const":true}],"op":"test"}],"op":"test"}}`
+- Cite: [i1065sk1] p. 14, Codes, "report items from each partnership’s Schedule K-1 on a separate line 28 of Schedule E" (2025; sha256 659063e0)
+
+## (helper) — `person.k1s_total_interest`
+
+- **Authored helper label:** Interest income from Schedules K-1 (Form 1120-S), box 4
+- **Encoded (NonNegDollars):** Add k1s.int over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.int","op":"sum_over"}`
+- Cite: [i1120ssk] p. 7, Box 4. Interest Income, "Report interest income on Form 1040 or 1040-SR, line 2b" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_ord_div`
+
+- **Authored helper label:** Ordinary dividends from Schedules K-1 (Form 1120-S), box 5a
+- **Encoded (NonNegDollars):** Add k1s.ord_div over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.ord_div","op":"sum_over"}`
+- Cite: [i1120ssk] p. 7, Box 5a. Ordinary Dividends, "Report ordinary dividends on Form 1040 or 1040-SR, line 3b" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_qual_div`
+
+- **Authored helper label:** Qualified dividends from Schedules K-1 (Form 1120-S), box 5b
+- **Encoded (NonNegDollars):** Add k1s.qual_div over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.qual_div","op":"sum_over"}`
+- Cite: [i1120ssk] p. 7, Box 5b. Qualified Dividends, "Report any qualified dividends on Form 1040 or 1040-SR, line 3a" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_st_gain`
+
+- **Authored helper label:** Net short-term capital gain (loss) from Schedules K-1 (Form 1120-S), box 7
+- **Encoded (Dollars):** Add k1s.st over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.st","op":"sum_over"}`
+- Cite: [i1120ssk] p. 7, Box 7. Net Short-Term Capital Gain (Loss), "report the net short-term capital gain (loss) on Schedule D (Form 1040), Capital Gains and Losses, line 5" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_lt_gain`
+
+- **Authored helper label:** Net long-term capital gain (loss) from Schedules K-1 (Form 1120-S), box 8a
+- **Encoded (Dollars):** Add k1s.lt over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.lt","op":"sum_over"}`
+- Cite: [i1120ssk] p. 7, Box 8a. Net Long-Term Capital Gain (Loss), "report the net long-term capital gain (loss) on Schedule D (Form 1040), line 12" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_collectibles`
+
+- **Authored helper label:** Collectibles (28%) gain (loss) from Schedules K-1 (Form 1120-S), box 8b
+- **Encoded (Dollars):** Add k1s.g28 over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.g28","op":"sum_over"}`
+- Cite: [i1120ssk] p. 7, Box 8b. Collectibles (28%) Gain (Loss), "report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_unrecap_1250`
+
+- **Authored helper label:** Unrecaptured section 1250 gain from Schedules K-1 (Form 1120-S), box 8c
+- **Encoded (NonNegDollars):** Add k1s.u1250 over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.u1250","op":"sum_over"}`
+- Cite: [i1120ssk] p. 7, Box 8c. Unrecaptured Section 1250 Gain, "Report unrecaptured section 1250 gain from the sale or exchange of the corporation’s business assets on line 5" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_backup_wh`
+
+- **Authored helper label:** Backup withholding from Schedules K-1 (Form 1120-S), box 13, code O
+- **Encoded (NonNegDollars):** Add k1s.backup over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.backup","op":"sum_over"}`
+- Cite: [i1120ssk] p. 13, Code O. Backup withholding, "Include this amount in the total you enter on Form 1040 or 1040-SR, line 25c" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_taxexempt_int`
+
+- **Authored helper label:** Tax-exempt interest from Schedules K-1 (Form 1120-S), box 16, code A
+- **Encoded (NonNegDollars):** Add k1s.taxexempt over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.taxexempt","op":"sum_over"}`
+- Cite: [i1120ssk] p. 15, Code A. Tax-exempt interest income, "Individual shareholders include this amount on Form 1040 or 1040-SR, line 2a" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_passive_income`
+
+- **Authored helper label:** Schedule E line 28, column (h) total of the S corporation rows: passive income
+- **Encoded (NonNegDollars):** Add k1s.col_h over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.col_h","op":"sum_over"}`
+- Cite: [i1120ssk] p. 6, Box 1. Ordinary Business Income (Loss), "If income is reported in box 1, report the income in column (h) of Schedule E (Form 1040), line 28" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_nonpassive_loss`
+
+- **Authored helper label:** Schedule E line 28, column (i) total of the S corporation rows: nonpassive loss allowed, as a positive amount
+- **Encoded (NonNegDollars):** Add k1s.col_i over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.col_i","op":"sum_over"}`
+- Cite: [i1120ssk] p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_nonpassive_income`
+
+- **Authored helper label:** Schedule E line 28, column (k) total of the S corporation rows: nonpassive income
+- **Encoded (NonNegDollars):** Add k1s.col_k over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.col_k","op":"sum_over"}`
+- Cite: [i1120ssk] p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_nonpassive`
+
+- **Authored helper label:** Nonpassive trade or business income (loss) after basis from Schedules K-1 (Form 1120-S), box 1
+- **Encoded (Dollars):** Add k1s.nonpassive over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.nonpassive","op":"sum_over"}`
+- Cite: [i1120ssk] p. 5, Effect of determination, "Income (loss), deductions, and credits from an activity are nonpassive if you determine that" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_total_p4_income`
+
+- **Authored helper label:** Form 8582 Part IV column (a) total of the S corporation box 2 activities with active participation
+- **Encoded (NonNegDollars):** Add k1s.p4_income over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.p4_income","op":"sum_over"}`
+- Cite: [i8582] p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV" (2025; sha256 76787e11)
+
+## (helper) — `person.k1s_total_p4_loss`
+
+- **Authored helper label:** Form 8582 Part IV column (b) total of the S corporation box 2 activities with active participation
+- **Encoded (NonNegDollars):** Add k1s.p4_loss over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.p4_loss","op":"sum_over"}`
+- Cite: [i8582] p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV" (2025; sha256 76787e11)
+
+## (helper) — `person.k1s_total_p4_prior`
+
+- **Authored helper label:** Form 8582 Part IV column (c) total of the S corporation box 2 activities with active participation
+- **Encoded (NonNegDollars):** Add k1s.p4_prior over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.p4_prior","op":"sum_over"}`
+- Cite: [i8582] p. 10, Part IV, "Individuals and qualifying estates who actively participated in rental real estate activities must include the income or loss from those activities in Part IV" (2025; sha256 76787e11)
+
+## (helper) — `person.k1s_total_p5_income`
+
+- **Authored helper label:** Form 8582 Part V column (a) total of the S corporation passive activities
+- **Encoded (NonNegDollars):** Add k1s.p5_income over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.p5_income","op":"sum_over"}`
+- Cite: [i8582] p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c" (2025; sha256 76787e11)
+
+## (helper) — `person.k1s_total_p5_loss`
+
+- **Authored helper label:** Form 8582 Part V column (b) total of the S corporation passive activities
+- **Encoded (NonNegDollars):** Add k1s.p5_loss over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.p5_loss","op":"sum_over"}`
+- Cite: [i8582] p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c" (2025; sha256 76787e11)
+
+## (helper) — `person.k1s_total_p5_prior`
+
+- **Authored helper label:** Form 8582 Part V column (c) total of the S corporation passive activities
+- **Encoded (NonNegDollars):** Add k1s.p5_prior over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.p5_prior","op":"sum_over"}`
+- Cite: [i8582] p. 10, Part V, "Use Part V to figure the amounts to enter on Part I, lines 2a through 2c" (2025; sha256 76787e11)
+
+## (helper) — `person.k1s_total_qbi`
+
+- **Authored helper label:** Qualified business income (loss) from Schedules K-1 (Form 1120-S), box 17, code V, before the passive activity limitation
+- **Encoded (Dollars):** Add k1s.qbi over every confirmed k1s entry, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.qbi","op":"sum_over"}`
+- Cite: [i1120ssk] p. 17, Code V. Section 199A information, "The S corporation will provide the information you need to figure your deduction" (2025; sha256 fb6194da)
+
+## (helper) — `person.k1s_count_sche`
+
+- **Authored helper label:** Number of Schedules K-1 (Form 1120-S) with an amount in box 1, 2 or 3 (a row on Schedule E, line 28)
+- **Encoded (Count):** Add k1s.one over every confirmed k1s entry for which helper "Box 1, 2 or 3 of this K-1 shows an amount (a row on Schedule E, line 28)" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"k1s","field":"k1s.one","op":"sum_over","where":{"eq":["k1s.sche_any",{"const":true}],"op":"test"}}`
+- Cite: [i1120ssk] p. 6, Box 1. Ordinary Business Income (Loss), "Report box 1 income (loss) from corporate trade or business activities in which you materially participated in column (i) or (k) of Schedule E (Form 1040), line 28" (2025; sha256 fb6194da)

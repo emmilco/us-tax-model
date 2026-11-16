@@ -1,0 +1,47 @@
+{
+ "kind": "render",
+ "form": "rprop",
+ "family": "claude",
+ "base": "48871b646aab131e52767f031f27bbec77b3f226b32ca8846b22abd94aef34e3",
+ "lines": [
+  {
+   "key": "(a)",
+   "record": "48871b646aab131e52767f031f27bbec77b3f226b32ca8846b22abd94aef34e3",
+   "status": "MATCH",
+   "subject_key": "ec58e6838379a04f8f73b487c715ef45ef485a755c34523778898a7fcd3d148d"
+  },
+  {
+   "key": "(b) (rprop.month)",
+   "record": "48871b646aab131e52767f031f27bbec77b3f226b32ca8846b22abd94aef34e3",
+   "status": "MATCH",
+   "subject_key": "b84d24dc2622577ae6eba3f2c8eed6fedba3c331e17e0c833dd779d8eb5456cc"
+  },
+  {
+   "key": "(b) (rprop.year)",
+   "record": "48871b646aab131e52767f031f27bbec77b3f226b32ca8846b22abd94aef34e3",
+   "status": "MATCH",
+   "subject_key": "0be47222d6d543d8e0b91e95334d4141dd2c97a9bc62b92bc3c00a7fa0114c67"
+  },
+  {
+   "key": "(c)",
+   "record": "48871b646aab131e52767f031f27bbec77b3f226b32ca8846b22abd94aef34e3",
+   "status": "MISMATCH",
+   "ruling": "Ruling: representation; the business-use division of a rental with personal use is made on Schedule E line 18 by days (rental.div18; i1040se p. 6, Line 18, and p527 p. 25, Dividing Expenses), not in column (c); renting part of a home the filer lives in now refuses (rental.part_home, i1040se p. 6, Renting out part of your home), and a basis reduced by a credit or deduction refuses at rprop.screen, as the review notes. 'Your share' is the ownership share. The converted-home rule (smaller of fair market value and adjusted basis) is p527's Property Changed to Rental Use and the exclusion of land is i4562 p. 10, Column (c); the cited i1040se page does not print them but they are right.",
+   "subject_key": "15041613aedb2f6102c385d9ac0e17204aa3c291ffe1fcbd0d47ded9ffb7b4cd"
+  },
+  {
+   "key": "(g)",
+   "record": "48871b646aab131e52767f031f27bbec77b3f226b32ca8846b22abd94aef34e3",
+   "status": "MATCH",
+   "subject_key": "cacf660a07d85179a3eca26b4f117b97ec5819a4d74891ee6ac01b673101a58b"
+  }
+ ],
+ "subjects": {
+  "(a)": "6194bce631073eace24ba248e1ea48a062d6208b5f9daf082640b671af50e8c0",
+  "(b) (rprop.month)": "0e6157a6eab1d7dfcd7a1e40e8ab023f153d5d8eb65a3a4fc826068a028f8c71",
+  "(b) (rprop.year)": "f8d91cb0764171724b00ad14e7729fa66803f22d3fd328e849f712a2e8e593bc",
+  "(c)": "4423f3f3ff303893fedfa94dc148d625512f1390003e4035b33bfb0e9e0d1f64",
+  "(g)": "c833e3eb3c8ac4b3cc4cdb6fceb75c4fc9b49bcf56812044298b5c6aed710457"
+ },
+ "__rest__": "4dcdacd2d019b55ab0d46a7fe398a3e419d8c77b238bacc1190f4258bd4ddb4d"
+}

@@ -281,6 +281,8 @@ def main():
         expect(sub("x.a_2025 and x.a_2025_if_y and y.x.a_2025 and x.a_2025. and p[q].a_2025 and x[k].a_2025")
                == "x.a_now and x.a_2025_if_y and y.x.a_2025 and x.a_now. and p[q].a_2025 and x[k].a_now",
                "substitution: whole ids and the collection form only")
+        expect(sub("p[q].x[k].a_2025 and y.x[k].a_2025") == "p[q].x[k].a_now and y.x[k].a_2025",
+               "substitution: the collection form as a step of a path, not after a dotted id")
         root, before = os.path.join(work, "tree"), os.path.join(work, "before")
         build(root)
         before_state = inside(root, "setup")

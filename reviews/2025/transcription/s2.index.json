@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
  "head_rows": {
-  "printed lines compared": "14",
-  "agree / disagree / missing": "11 / 3 / 0",
-  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+  "printed lines compared": "17",
+  "agree / disagree / missing": "14 / 3 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -37,10 +37,10 @@
   },
   {
    "key": "2",
-   "record": "642f5afe182398b66ac0b8aea8760ced96f7077a42b43e535de6bca49de7d983",
+   "record": "78711551cece2a9b3a3c4d4b199dd675f15a9f329e74443ee3bd7f99400a853a",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; f1040s2 line 2 and i6251 Who Must File. The project does not figure the alternative minimum tax: line 2 is $0 and refuses (Form 6251) when the computed screen s2.amt may be true (docs/2026-11-15_amt_computed_screen.md); the reply computes Form 6251 inline with its own refusals. Triage (pass fbc614250ee5): 2,411/2,922 agree; no value difference; completed: 55 candidate-unknown (the reply reads s2.amt_business and s2.amt_boat, asked only under their parents) and 28 candidate-refuses (the reply's own scope, e.g. the AMT foreign tax credit, s2.h_has_ftc); the rest on incomplete or refused records. The screen itself is not ruled here.",
-   "subject_key": "be756246f94b9543e0d1e09a325c48ad05f26a687c2d6cb6a204920be0e7ff16"
+   "ruling": "Ruling: scope; the project refuses alternative minimum tax through the computed screen s2.amt (Form 6251 refusal on line 2; this round adds the Schedule 1 line 8a net operating loss deduction, Form 6251 line 2e, to its line 4 estimate, s2.amt_l4_sum) and enters zero otherwise; the reply figures Form 6251 itself with its own refusals. Triage (pass 4d367142f549) 2,550/3,238 agree with no value difference anywhere: on completed returns 208 candidate-unknown (the reply reads Form 6251 inputs the interview does not ask, e.g. s2.amt_boat) and 2 candidate-refuses; the rest are on refused or incomplete records (171 project-refuses at s2.amt). f1040s2 line 2; i6251 Who Must File. As in the Goal-1 round.",
+   "subject_key": "9f7c27c5f93dfd58ff133c9b030cff664a4e1cb548d6eaab743880f1ccc0ceb5"
   },
   {
    "key": "3",
@@ -53,6 +53,24 @@
    "record": "7c01a1e82c42ba14dc46e11dd58c71a56efad926934e0bb27ba0fc2c084732dd",
    "status": "AGREE",
    "subject_key": "78681fc25fe9c762a6fbaf433a17b7fc533043157f7a5e0112ef7b0d3ee2d5a5"
+  },
+  {
+   "key": "5",
+   "record": "78711551cece2a9b3a3c4d4b199dd675f15a9f329e74443ee3bd7f99400a853a",
+   "status": "AGREE",
+   "subject_key": "a0413373e9966463db119fd4930e699a9f4dfbefb81fa80b7fa674bf24700b10"
+  },
+  {
+   "key": "6",
+   "record": "78711551cece2a9b3a3c4d4b199dd675f15a9f329e74443ee3bd7f99400a853a",
+   "status": "AGREE",
+   "subject_key": "47264cbf0ed51b9ac6109818ec22a36efd88cc54ba8cc35feeaf81c89b91fd69"
+  },
+  {
+   "key": "7",
+   "record": "78711551cece2a9b3a3c4d4b199dd675f15a9f329e74443ee3bd7f99400a853a",
+   "status": "AGREE",
+   "subject_key": "b871e804435f6e63a491ceac79ae8d56169876cfe20c59fa20d373e81a7a5dd8"
   },
   {
    "key": "8",
@@ -92,9 +110,9 @@
   },
   {
    "key": "21",
-   "record": "642f5afe182398b66ac0b8aea8760ced96f7077a42b43e535de6bca49de7d983",
+   "record": "78711551cece2a9b3a3c4d4b199dd675f15a9f329e74443ee3bd7f99400a853a",
    "status": "AGREE",
-   "subject_key": "bf57557fe2d7d5793c0b49ccdbbe3c8fe36ef5003973814b9875800d97372e6d"
+   "subject_key": "aaa390a3cfd6b99fa62a50dc23a53a91b34aadf822a0a02d628c6ac0f27d0a72"
   }
  ],
  "subjects": {
@@ -102,23 +120,29 @@
   "s2.line8_file": "deb8be263885897cf5058b90185a21cfbad1938e3b0c9298cb84098d5a29294d",
   "1a": "45c38ce8fdfae6506bcf62fdeee06baaffe971d62e9f9cdb5cbb53c45888473b",
   "1z": "acdd300bc19203a1c6f82e0ae7fa541b71afe7546f9a6992bda1cf1c27853811",
-  "2": "64fecb91514bae5b1752d318f6d3dcc3281e016a099d809ccf1fb38e4189973f",
+  "2": "9ad8ea8833d99e8420ae4019a963e3eb5d5c3f05ec65bec7d91ea48107c0d94f",
   "3": "7ab9b1b03d4566d66f61819570d3d1f50e8cef92e15293d3637f871dfcc2e150",
   "4": "953ef54c0b1d62d61d6b53201beb0d3ad1e1265d162735865c2ae696027a420c",
+  "5": "6bd6e5be7ca48e5b0d354c7a7975c3d59856c6de1ab596825db1f7b0c0d6dfb0",
+  "6": "3b56f936a2186bd5b54492d3e99e4daf321deca190f3566638e742687331577d",
+  "7": "7164b98408db148acb0ef074c6bd1e88cc9762d6d2a54c88615224a49d98d9f4",
   "8": "7355e8cb8c3b54d4f15ff1dde8c8942afb9116cf25c38c82aa861eb1becf57f1",
   "8 (box)": "5de2b5104f546bd8692ed681b83939a3c8a4346164cf927662e2d0cc42eb95a8",
   "11": "94fed3df7408c90ad14eb46920279e55243992b0a2d252e4009cfe635586e260",
   "12": "8815af92f32d42a0845b67cc205b1f75b926aa1f211865b195398d8c43314de6",
   "17c": "a0773b09a661c82935a41d37eac6c5d2fc11bd478506d923f364a2385b9616d7",
   "18": "70b979917d928776213d250602da518e7d7b607beb59522fca084ad3286f5069",
-  "21": "2f7e70fabc0b88c8cae62da795447419b5ded112b99d3b47a916523d02bee2ce"
+  "21": "d73996c0569ab0f6d830592a9322a2886f77c234c8829b2cebbf5d03965e06f0"
  },
  "__rest__": "afebc9cd3ed3e50a0f1f9e9d83cb49dd824e77c8da32f20b0c141d045a8c0355",
  "foreign": {
   "s2.other": "6f2f86896e47652538c236b09bafbc66489ff2838ddfdbded44cc80c1a5592db",
   "1z": "6f2f86896e47652538c236b09bafbc66489ff2838ddfdbded44cc80c1a5592db",
-  "2": "045c1eea82dddb8b0ed6b3c5813352dabcb086c596dc3ab1fe2318872671d318",
+  "2": "8b0e8fe60ef24abc62cca3fb8cd81f07b9b951a7d87222394465a77b210022d9",
   "3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "5": "cd35aebd2a8b869daeb60aaf1dec8855c88d4feae9e81366508b9f396e5e9d42",
+  "6": "e6901d0a1d64fd79f936339dd644932cafe3d09f2213f4d3b5d604b809e5949e",
+  "7": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "21": "6f2f86896e47652538c236b09bafbc66489ff2838ddfdbded44cc80c1a5592db"
  }
 }

@@ -1,0 +1,169 @@
+{
+ "form": "ssb",
+ "reviews": {
+  "gate:ssb.any": {
+   "subject_sha": "8689ecbea6a8dfff4f4ee69dc114708271916faa926c3478612d31c73311a98b",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A retiree, or the spouse on a joint return, got no benefits in 2025 but repaid in 2025 an overpayment of benefits received in an earlier year. Form SSA-1099 shows box 3 of 0, box 4 with the repayment, and a negative box 5.",
+       "why_no": "\"Did you ... get social security benefits ... in 2025?\" is truthfully no. Nothing was received in 2025; the only event was a repayment.",
+       "line": "ssb.benefits_if_any (net benefits, a negative box 5). The excess-repayment deduction or credit that depends on it is also lost.",
+       "irs_text": "\"Box 4 will show the amount of any benefits you repaid in 2025 ... if your total repayments in 2025 exceed your total benefits received in 2025 by more than $3,000, you may be able to take an itemized deduction or a credit for part of the excess repayments if they were for benefits you included in income in an earlier year.\" (i1040gi 2025 p. 31, Lines 6a and 6b, Exception)",
+       "severity": "high",
+       "fix": "Gate on the form, not on receipt: \"Did you (or, on a joint return, your spouse) get a Form SSA-1099 or RRB-1099 for 2025, or receive or repay any social security or railroad retirement (tier 1) benefits in 2025?\" Then allow a negative box 5 and route excess repayments to Pub. 915."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A Medicare beneficiary whose whole monthly benefit went to Part B/D premiums, an overpayment recovery, or a federal debt offset or garnishment, so no deposit arrived in 2025.",
+       "why_no": "\"get social security benefits\" reads as money deposited to them. They never \"got\" anything because it was all withheld.",
+       "line": "ssb.benefits_if_any",
+       "irs_text": "\"You should receive a Form SSA-1099 showing in box 3 the total social security benefits paid to you.\" Worksheet line 1: \"Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099.\" (i1040gi 2025 pp. 31-32)",
+       "severity": "medium",
+       "fix": "Add help text: \"Answer yes even if your benefits were withheld for Medicare premiums, withheld to repay an overpayment, or offset for a debt, so you received no payment. Answer yes if you received any Form SSA-1099 or RRB-1099.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A filer or spouse who received Social Security Disability Insurance (SSDI), survivor, spousal, or child-in-care benefits, or tier 1 railroad benefits, and thinks of \"social security\" as their own retirement benefit.",
+       "why_no": "\"social security benefits\" is read as retirement benefits only. SSDI is perceived as \"disability\" and survivor benefits as a widow's payment.",
+       "line": "ssb.benefits_if_any",
+       "irs_text": "\"Disability payments ... (including Social Security Disability Insurance (SSDI) payments)\" are discussed under Lines 6a and 6b Social Security Benefits. The example says SSDI \"You must report the remaining $12,000 on line 6a.\" (i1040gi 2025 p. 31)",
+       "severity": "medium",
+       "fix": "Help text: \"Includes retirement, disability (SSDI), survivor, and spouse benefits, and railroad retirement tier 1 benefits; does not include SSI.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A U.S. resident who receives Canadian CPP/OAS or German social security benefits that a tax treaty treats as U.S. social security benefits, with no Form SSA-1099 or RRB-1099.",
+       "why_no": "The question says \"Form SSA-1099 or Form RRB-1099 reports them\", and the filer has neither form.",
+       "line": "ssb.benefits_if_any",
+       "irs_text": "The excerpt only covers \"Lines 6a and 6b Social Security Benefits\" (i1040gi 2025 p. 31). The treaty rule is in Pub. 915, which is not excerpted, so this finding is not confirmed by the text given.",
+       "severity": "medium",
+       "fix": "Add: \"Also answer yes if you received Canadian or German social security benefits that a treaty treats as U.S. social security (see Pub. 915).\" Then ask for those amounts separately, because there is no box 5."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A filer who received in 2025 a retroactive lump-sum award covering benefits for 2023-2024.",
+       "why_no": "They may read \"benefits ... in 2025\" as benefits for 2025 and leave out back pay for earlier years.",
+       "line": "ssb.benefits_if_any",
+       "irs_text": "\"If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year, you may be able to reduce the taxable amount with the lump-sum election.\" (i1040gi 2025 p. 31, Line 6c)",
+       "severity": "low",
+       "fix": "Help text: \"Include benefits paid to you in 2025 even if they were for an earlier year (back pay).\""
+      }
+     ],
+     "prompt_sha": "5dd52f79a9197ae942f1c61ad0dabccb702198f9f09651e64fb9d46eaa668136",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.09754399999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_ssb.any.8689ecbea6a8.1.response.txt"
+    }
+   ],
+   "condition": "ssb.any",
+   "lines": [
+    "ssb.benefits_if_any"
+   ],
+   "inputs": [
+    "ssb.benefits"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      31,
+      32
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 32, Social Security Benefits Worksheet, line 1; p. 31, Lines 6a and 6b"
+     ],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:ssb.prior_year_pay": {
+   "subject_sha": "21422af9bc9d5caca6bd2148da5daf5a0abfc69b6eca4ec6dd5209af48a81fa5",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A retired railroad worker, or that worker's spouse on a joint return, receives tier 1 railroad retirement benefits on Form RRB-1099 and no Form SSA-1099. The 2025 payments include a retroactive amount for 2023 or 2024.",
+       "why_no": "The question says 'The Form SSA-1099 says so in its description of the amount in box 3.' The filer has no SSA-1099, may not think of tier 1 railroad benefits as social security, and answers no. The RRB-1099 shows prior-year amounts in its own boxes, which the question never mentions.",
+       "line": "ssb.lump_sum (missed refusal; the lump-sum election that could lower taxable benefits is silently forgone)",
+       "irs_text": "i1040gi p. 31, Lines 6a and 6b: 'If you received railroad retirement benefits treated as social security, you should receive a Form RRB-1099.' Line 6c: 'If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year, you may be able to reduce the taxable amount with the lump-sum election.'",
+       "severity": "medium",
+       "fix": "Did the 2025 social security or tier 1 railroad retirement benefits paid to you (or, on a joint return, your spouse) include a payment for an earlier year? Form SSA-1099 shows this in the description of the box 3 amount. Form RRB-1099 shows it as amounts paid in 2025 for earlier years."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "An SSDI claimant was approved in 2025 with back pay to 2023. SSA paid part of the back pay directly to the claimant's attorney as fees and withheld part to offset SSI already received. The claimant got only a small check or none.",
+       "why_no": "The question asks whether benefits 'paid to you' included a payment for an earlier year. The filer reads 'paid to you' as money they actually received and answers no, even though the withheld and redirected amounts count as benefits paid to them.",
+       "line": "ssb.lump_sum (missed refusal)",
+       "irs_text": "i1040gi p. 31, Line 6c: 'they include a lump-sum benefit payment that was for an earlier year, you may be able to reduce the taxable amount with the lump-sum election.' Also p. 31: 'Form SSA-1099 showing in box 3 the total social security benefits paid to you.'",
+       "severity": "low",
+       "fix": "Add to the help: 'Count back pay for earlier years even if part of it went to an attorney or was withheld to repay SSI or an overpayment.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A disability award was decided and paid in 2025. It covers months in 2024 and 2025 and is paid as one retroactive lump sum.",
+       "why_no": "The filer thinks of the award as a 2025 payment because it was decided and paid in 2025. They do not read the help's pointer to the box 3 description and answer that nothing was 'for an earlier year.'",
+       "line": "ssb.lump_sum (missed refusal)",
+       "irs_text": "i1040gi p. 32, Social Security Benefits Worksheet TIP: 'If any of your benefits are taxable for 2025 and they include a lump-sum benefit payment that was for an earlier year, you may be able to reduce the taxable amount.'",
+       "severity": "low",
+       "fix": "Name the common case in the question: 'This includes back pay from a disability or retirement award that covers months before 2025.'"
+      }
+     ],
+     "prompt_sha": "348d576f470c085c2afc0a7ee1c6fad594a0196f6fdb257097c404110366fb62",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.093124,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_ssb.prior_year_pay.21422af9bc9d.1.response.txt"
+    }
+   ],
+   "condition": "ssb.prior_year_pay",
+   "lines": [
+    "ssb.lump_sum"
+   ],
+   "inputs": [
+    "ssb.lump_elect"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      31,
+      32
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 31, Line 6c; p. 32, Social Security Benefits Worksheet, TIP"
+     ],
+     "cols_pages": [
+      31
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  }
+ }
+}

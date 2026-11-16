@@ -1,0 +1,22 @@
+{
+ "kind": "transcription",
+ "form": "f1116col",
+ "rulings": [
+  {
+   "printed": "3g",
+   "project_expr_sha256": "d3438ff349ddd92b0d0c35302db294bf4d0b9096e60d1c5ba59f38354e620cca",
+   "second_expr_sha256": "c9c84500d47949bb579d51f21bb009303f14e605e49b0ba5e4e1240b923ff70c",
+   "ruling": "Ruling: representation; equivalent on executable triage (82/82 in scope agree: 37 fixtures, 45 partial records); the reply omits the project's guard for line 3e of zero or less, which only avoids a division by zero (i1116 p. 18, Line 3f: line 3d divided by line 3e, 'round off the result to at least four decimal places').",
+   "context": "99657cda62074754c31799382eaa707b81f970c7e5a00ed18ac6e2ab8daa4003",
+   "date": "2026-11-15",
+   "run": "f27d984eaac02b2e56fbbaaca787378fb17da5f06ed0a046b57c1bac2448bc4b",
+   "subject_key": "de0e75904e8c3f239c03246d2dd5eba6694bbad472e0e9d8ce489126ec5483e2",
+   "triage": {
+    "verdict": "agrees on sample",
+    "kinds": [],
+    "witnesses": [],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

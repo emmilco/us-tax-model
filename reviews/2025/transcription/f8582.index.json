@@ -1,0 +1,193 @@
+{
+ "kind": "transcription",
+ "form": "f8582",
+ "family": "claude",
+ "base": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+ "lines": [
+  {
+   "key": "1a",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "subject_key": "d74fc76302d75e8e92865683d599326b5a25ddc7cbed473fb68ea8ef3be97648"
+  },
+  {
+   "key": "1b",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "subject_key": "a1ec8302805168c04347d02816704f84d87154dd51c26e12e7a16bbaf72c47be"
+  },
+  {
+   "key": "1c",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; differs only as candidate-unknown on classm.sche.2, where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed); no value differs and no shown/hidden difference.",
+   "subject_key": "8b1c7ba71c82bcab8822a44276b0c3a44468a42193b99615db080f3095031f58"
+  },
+  {
+   "key": "1d",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "subject_key": "29e13aa9db959e586e55850c7cfc0580d2275284667bac82029cce0d56b78433"
+  },
+  {
+   "key": "2a",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "subject_key": "313a97d2e28fed6a27d8c184942acd3c0d445e8fb4843cd4e0c749f717c3ee82"
+  },
+  {
+   "key": "2b",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; differs only as candidate-unknown on classm.sche.2, where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed); no value differs and no shown/hidden difference.",
+   "subject_key": "80a1a742dfadc220c2a3851f63957be47b69a93683f643475eb1abc58f61b195"
+  },
+  {
+   "key": "2c",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; differs only as candidate-unknown on classm.sche.2, where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed); no value differs and no shown/hidden difference.",
+   "subject_key": "ef2913733da5a4e7e2186156081b5eea1dce2306157c271f9446dc800d38720d"
+  },
+  {
+   "key": "2d",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "subject_key": "2d12646f03e3c8df6e0c6221042e2886714f54847774008a7477a60ce15aa92a"
+  },
+  {
+   "key": "3",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); it also refuses on sche.re_pro/sche.grouped on the line, which the project refuses before (sche, x1sche.r5.re_pro is a refused return either way); unknowns as where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right. Line 4: MFS is refused for every return (s3.mfs), so the MFS-lived-with-spouse caution never applies.",
+   "subject_key": "3c991b4d73ac8fe8b6fd58769f16d92bd8ad8b9f43e9d527317768f578035ef8"
+  },
+  {
+   "key": "4",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); it also refuses on sche.re_pro/sche.grouped on the line, which the project refuses before (sche, x1sche.r5.re_pro is a refused return either way); unknowns as where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right. Line 4: MFS is refused for every return (s3.mfs), so the MFS-lived-with-spouse caution never applies.",
+   "subject_key": "003f82acecb927caf0519703511cec03604b7d7f68b3d33ec212cc41de265fc4"
+  },
+  {
+   "key": "5",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); and it hides line 5 on x1sche.f10.part5, where the project correctly shows $150,000 (Part II applies there).",
+   "subject_key": "cc9f7b32fe0e397e76d17e2dab76d2f6f5f929bb372b26df37331918cb4a6517"
+  },
+  {
+   "key": "6",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; on x1sche.f7.royalty_magi the reply leaves the royalty (2,400) out of modified AGI (98,600 vs the project's 101,000), but i8582 p. 11, Line 6: 'Include in modified adjusted gross income any portfolio income and expenses that are clearly and directly allocable to portfolio income' (royalties are portfolio income); it also reads person.plan, unanswered on classm.f8582.2, and hides line 6 on a Part II return (x1sche.f10.part5) and shows it under the filing exception.",
+   "subject_key": "71bce56a1fc6aceef83693946a801330b9c114f6eb915033b93585a823a705fd"
+  },
+  {
+   "key": "7",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; inherits line 6's exclusion of royalty income from modified AGI (x1sche.f7.royalty_magi: line 7 51,400 vs 49,000; i8582 p. 11, Line 6, 'Include ... any portfolio income'), hides the line on a Part II return and refuses where the project computes. The project-unknown witnesses are generated returns with no rental (scope.rental false), where Form 8582 is not filed and the $royalty roster is not asked: nothing on those completed returns reads the line.",
+   "subject_key": "215407a9917ed710e1ef6c38f11687f0805006cd11e77ed597468cf913bf524f"
+  },
+  {
+   "key": "8",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; inherits line 6's exclusion of royalty income from modified AGI (x1sche.f7.royalty_magi: line 7 51,400 vs 49,000; i8582 p. 11, Line 6, 'Include ... any portfolio income'), hides the line on a Part II return and refuses where the project computes. The project-unknown witnesses are generated returns with no rental (scope.rental false), where Form 8582 is not filed and the $royalty roster is not asked: nothing on those completed returns reads the line.",
+   "subject_key": "36c47799fb3d5ccab5f7bc4c7d11ecef204d517e805c2a40b7abd4e01c950cbd"
+  },
+  {
+   "key": "9",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); it also refuses on sche.re_pro/sche.grouped on the line, which the project refuses before (sche, x1sche.r5.re_pro is a refused return either way); unknowns as where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right. Line 4: MFS is refused for every return (s3.mfs), so the MFS-lived-with-spouse caution never applies.",
+   "subject_key": "9de0a60939175904ad2d27f8ebc1afd25dd812291b33b24f41cd8df713513c10"
+  },
+  {
+   "key": "10",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply declares no shown_when, so it shows the line on returns where the filing exception holds and the project hides Form 8582 (f8582.required; i8582 p. 1, Who Must File, and the exception for rental real estate with active participation); otherwise it differs only as unknown where the reply reads rental.active (or another entry answer) on a home rented fewer than 15 days, which the project leaves out of every Schedule E and Form 8582 total and so never asks (i1040se p. 3: a dwelling unit used as a home and rented fewer than 15 days is not reported); the project is right; the project-refuses kinds fall only on returns refused elsewhere (rental roster unconfirmed). No value differs on a completed return.",
+   "subject_key": "91f455de48afa914d93bcb953a971e1c719763aa04f63351eb97512e75312e19"
+  },
+  {
+   "key": "11",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply refuses line 11 on completed returns the project computes (through its own line 9 refusals on sche.re_pro/sche.grouped and an unasked input) and shows it under the filing exception (f8582.required); no value differs where both compute.",
+   "subject_key": "d6717f39ba118faad6586e1015e49b6e44e935f565f21ee765131be13e5424a9"
+  },
+  {
+   "key": "VI (a) total",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; the reply's total refuses on 416 inputs (16 on completed returns) and hides the total on x1sche.f5.prior_loss_absorbed where the project shows 2,000 (i8582 Part VI, column (a): 'Enter the overall loss from column (e) of Part IV for each activity').",
+   "subject_key": "97864ff7508a4111d9b061b29b4058a06f26ebbed448102517a83c701ccf2edf"
+  },
+  {
+   "key": "VII (a) total",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; differs only as unknown on 3 class M fixtures where the reply's entry line reads person.plan (through its line 6), an input those returns do not answer; the values agree on 1,942 of 1,945 inputs.",
+   "subject_key": "a30e346389281951821b9ce0c7d019c3dea7932e6cd93e645510a87f94b0a6ba"
+  },
+  {
+   "key": "VII worksheet C",
+   "record": "96c80de2338fb75952749d470c64827069691347eca15a2c278a642bbff8db7c",
+   "status": "DISAGREE",
+   "ruling": "Ruling: model error; unknown on class M fixtures through its line 9 (person.plan); the project-unknown witnesses are incomplete or refused returns (unanswered filing status, unanswered listed-property answer) where both sides are unknown underneath and the reply hides the line. No value differs.",
+   "subject_key": "5bf591bc46c9b8ed03fc1e9f822f0ed16fa1adf7f849238816eee695854d4794"
+  }
+ ],
+ "subjects": {
+  "1a": "b8f873ca5b560d457628f1cd28dfc71c96f9987f009af808336e69620338b376",
+  "1b": "5bd36bb404b5acb9f000775d85b44af6b07d28678d9c2252ff9949ec3451d03f",
+  "1c": "3308e3a59e1048a4cab57bbff1f9754df7a9bee59ab6a8f44e80c76ed704e16e",
+  "1d": "f000346e504356b3a789c968463a889c071aa177ee24ac10021719d89ba32ea0",
+  "2a": "0e691461b4235152dbda950077424875552de378448e8d1b985044cabae168c7",
+  "2b": "607a2d492b0791114ce9abe71dc9402e43e15e3d1e34f8721b5f4d26e9f45cd9",
+  "2c": "7d84d2d713146fc94fea17fa2eb01dd45485ad0befc9b4219c044670488b551f",
+  "2d": "8d90dcf15bb3c7d2bbbdd592058aaf4562788fd6b52370c1df86b51f3d5242b5",
+  "3": "8ba86752414097b93982f55ccedfeb2d207214a3d8fa846f466affde4a4846de",
+  "4": "764f2b3945ec0bb50a36e4bbf81e5678bebb92656e14e48cd0bb99e7efcce548",
+  "5": "28fa4e849d39870f088d3ce9f1c2d09da16e6a121f229d0086532730933d27b5",
+  "6": "f6d175462dec004e6650e994c31a2cea87af53c5d900ec59f68644c47ac3a353",
+  "7": "189c014d28f3d3c6a3af92b9ed1629f24b644f0fe236561c83abe6050e961843",
+  "8": "c5469e41b50f821b03b92a89100369a19e30070f3b435b47e8bb373aa4474234",
+  "9": "ec943832ac3160e97cd7bf9b511018c2af3912fc51437e84e2134a9c2e302042",
+  "10": "0cf6f47e478895b24f9d3ea13c93962fb3747e926c89c0a4453b2e4f2753cbbd",
+  "11": "119ed862c59b385926f1cbd978cfb9ba25cf23e1267e2c44c0f7766e76a49360",
+  "VI (a) total": "191c9e11890162f3cf83e2832bfdb366465a3d584444b2310339bb341af13019",
+  "VII (a) total": "68caec96574a3bc9e01a46284695a0da12b471269eb39c21683eace7f4f293ec",
+  "VII worksheet C": "b63d4cbfd352dcbb13aa11bc2e581511335aba7f1543d21540fe3b80d90cc6b7"
+ },
+ "__rest__": "50c697d45d2d161e175d84d1d897ad2ab4c6298bf7f4f319084992a970ceea89",
+ "foreign": {
+  "1a": "19299db09146e2898252f3c1324fd80a09b16a8481579773d794d0cf53b29344",
+  "1b": "f204b0856bc4629bb022909b8456077154e85602215c9b339319c60a530c66f7",
+  "1c": "f204b0856bc4629bb022909b8456077154e85602215c9b339319c60a530c66f7",
+  "1d": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
+  "2a": "19299db09146e2898252f3c1324fd80a09b16a8481579773d794d0cf53b29344",
+  "2b": "f204b0856bc4629bb022909b8456077154e85602215c9b339319c60a530c66f7",
+  "2c": "f204b0856bc4629bb022909b8456077154e85602215c9b339319c60a530c66f7",
+  "2d": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
+  "3": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
+  "4": "f204b0856bc4629bb022909b8456077154e85602215c9b339319c60a530c66f7",
+  "5": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
+  "6": "aacd74ff507e279467ff8727afc68f63fd8eded87bacf63ff4893c81c1bb93c4",
+  "7": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
+  "8": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
+  "9": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
+  "10": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
+  "11": "6c05acccd13a22434f5b5b8b0d67c53b64fa64b860890e6ecd9bc68f89d5da82",
+  "VI (a) total": "e5fd6ae0e2bb009e2d0dbbf9881388cbc388bb6fff0fc2d1160362c0d763087b",
+  "VII (a) total": "ed387e000d2483b2d8d4a66a00d480acfcb534be2fcd32e75737dfaeef06af9c",
+  "VII worksheet C": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325"
+ }
+}

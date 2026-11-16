@@ -1,0 +1,332 @@
+diff --git a/engine/src/fixture-inputs.ts b/engine/src/fixture-inputs.ts
+index e7f84ad..a874303 100644
+--- a/engine/src/fixture-inputs.ts
++++ b/engine/src/fixture-inputs.ts
+@@ -427,9 +427,10 @@ export function checkedCases(): CheckedCase[] {
+ }
+ 
+ /** A fixture case as its file states it; `walk` names the interview profile whose path the case is (the build's
+- * interview path checks and interview-rules walk it). */
++ * interview path checks and interview-rules walk it); `closed_gate` lists the inputs it states, with a value other
++ * than their default, under a gate it closes, to show that the gate discards them (fixtures.ts, closedGateInputs). */
+ export type WalkProfile = "full";
+-export interface StatedCase { id: string; walk?: WalkProfile; covers: string[]; evidence: string; evidence_note?: string; inputs: Record<string, unknown>; expect?: Record<string, unknown> }
++export interface StatedCase { id: string; walk?: WalkProfile; covers: string[]; evidence: string; evidence_note?: string; closed_gate?: string[]; inputs: Record<string, unknown>; expect?: Record<string, unknown> }
+ 
+ /** The case files of a fixtures directory: every .json file in it except the defaults table. */
+ export function caseFiles(dir: string): string[] {
+diff --git a/engine/src/fixtures.ts b/engine/src/fixtures.ts
+index 97d2fcc..0955648 100644
+--- a/engine/src/fixtures.ts
++++ b/engine/src/fixtures.ts
+@@ -3,7 +3,8 @@
+ // test-data defaults (fixture-inputs.ts).
+ //
+ // `test-fixtures` runs every case THROUGH THE COMMAND-LINE PROGRAM and
+-// compares. `coverage` reports which case takes each choose-guard.
++// compares. `coverage` reports which case takes each choose-guard, and fails on an input a case states with a value
++// other than its default under a gate the case closes, unless the case lists it in `closed_gate` (closedGateInputs).
+ 
+ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+ import { isDeepStrictEqual } from "node:util";
+@@ -14,10 +15,10 @@ import { loadCanonical } from "./canonical.js";
+ import { branchKeys, templateKey } from "./branches.js";
+ import { allTargets, evaluate } from "./eval.js";
+ import { differentialClassC } from "./differential.js";
+-import type { FormDoc, Inputs, Line, LineRef } from "./types.js";
+-import type { Value } from "./eval.js";
++import type { CanonicalData, Expr, FormDoc, Inputs, Line, LineRef } from "./types.js";
++import type { Derivation, Value } from "./eval.js";
+ import { NY_MODE, YEAR, YEAR_ARGS, reportName, reportPath, yearPath } from "./year.js";
+-import { loadFixtureCases } from "./fixture-inputs.js";
++import { checkedCases, defaultTable, loadFixtureCases, resolveParams, takesDefaults, type DefaultTable } from "./fixture-inputs.js";
+ export { caseFiles, loadFixtureCases, walkedCases } from "./fixture-inputs.js";
+ import { mapPool, run } from "./pool.js";
+ 
+@@ -31,10 +32,49 @@ export interface FixtureCase {
+   covers: string[];
+   evidence: string;
+   evidence_note?: string;
++  /** Inputs the case states under a gate it closes, to show the gate discards them (closedGateInputs). */
++  closed_gate?: string[];
+   inputs: Inputs;
+   expect?: Record<string, Value>;
+ }
+ 
++/** Each gate line (gates.ts) with the document it is in, the input it gates, and the alternatives that take the
++ * input; any other alternative is the gate's else. */
++export type GateInputs = Map<string, { doc: string; input: string; open: Set<number> }>;
++
++export function gateInputs(data: CanonicalData): GateInputs {
++  const out: GateInputs = new Map();
++  for (const doc of data.forms) for (const l of doc.lines) {
++    if (!l.gated_by) continue;
++    const gate = doc.lines.find((g) => g.id === l.gated_by);
++    if (gate?.expr.op !== "choose") continue;
++    const alts = (gate.expr as Extract<Expr, { op: "choose" }>).alternatives;
++    out.set(gate.id, { doc: doc.id, input: l.id, open: new Set(alts.flatMap((a, i) => a.then === l.id ? [i] : [])) });
++  }
++  return out;
++}
++
++/** The inputs a case states (`stated`, before defaults) with a value other than their default in `table` that their
++ * gate does not read, because in the case's evaluation (`derivations`) the gate took its else alternative. Each is
++ * the input's key, the gate line's key and the default. An input whose gate was not decided is not counted. */
++export function closedGateInputs(gates: GateInputs, stated: Record<string, unknown>, table: DefaultTable,
++                                 derivations: Iterable<Derivation>): { key: string; gate: string; dflt: unknown }[] {
++  const out: { key: string; gate: string; dflt: unknown }[] = [];
++  for (const der of derivations) {
++    if (der.op !== "choose" || der.takenGuardIndex === undefined || der.line.includes("|")) continue;
++    const id = templateKey(der.line);
++    const g = gates.get(id);
++    if (!g || g.open.has(der.takenGuardIndex)) continue;
++    // The gate and its input are lines of one document, so they share the entry prefix of a collection's key.
++    const key = der.line.slice(0, der.line.length - (id.length - g.doc.length)) + g.input.slice(g.doc.length);
++    const v = stated[key];
++    const dflt = table.get(g.input)?.value;
++    if (v === undefined || v === null || JSON.stringify(v) === JSON.stringify(dflt)) continue;
++    out.push({ key, gate: der.line, dflt });
++  }
++  return out;
++}
++
+ export interface FixtureFile {
+   tax_year: number;
+   cases: FixtureCase[];
+@@ -348,6 +388,14 @@ export function coverageReport(): void {
+   const branches = new Map<string, Set<string>>();
+   const evidence = new Map<string, Set<string>>();
+   const mark = (key: string, c: FixtureCase) => { const set=branches.get(key)??new Set();set.add(c.id);branches.set(key,set); };
++  // The inputs each case states, before defaults, for the closed-gate check; cases that take no defaults are not read.
++  const j = NY_MODE ? "ny" : "federal";
++  const stated = new Map(checkedCases().filter((s) => s.j === j && takesDefaults(s.file))
++    .map((s) => [s.id, resolveParams(s.inputs, data.params, s.id) as Record<string, unknown>]));
++  const gates = gateInputs(data);
++  const table = defaultTable(j);
++  const closedProblems: string[] = [];
++  let closedListed = 0;
+ 
+   for (const c of file.cases) {
+     const result = evaluate(data, c.inputs, allTargets(data, c.inputs));
+@@ -358,6 +406,17 @@ export function coverageReport(): void {
+       for (const key of b.sides) mark(key, c);
+       for (const key of b.guards) taken.set(key, [...(taken.get(key) ?? []), c.id]);
+     }
++    const s = stated.get(c.id);
++    const listed = new Set(c.closed_gate ?? []);
++    if (!s) {
++      if (listed.size) closedProblems.push(`${c.id}: closed_gate is read only on a case that takes the defaults`);
++      continue;
++    }
++    for (const { key, gate, dflt } of closedGateInputs(gates, s, table, result.derivations.values())) {
++      if (listed.delete(key)) { closedListed++; continue; }
++      closedProblems.push(`${c.id}: states ${key} = ${JSON.stringify(s[key])} (default ${JSON.stringify(dflt)}), but its gate ${gate} takes its else alternative, so the answer is not read. State the answers that open the gate, leave the input out, or, if the case shows that the gate discards the answer, list ${key} in the case's closed_gate.`);
++    }
++    for (const key of listed) closedProblems.push(`${c.id}: closed_gate lists ${key}, which the case does not state with a value other than its default under a closed gate; remove it from the list`);
+   }
+ 
+   // Enumerate all choose lines statically for non-def documents; def-internal
+@@ -450,6 +509,12 @@ export function coverageReport(): void {
+   writeFileSync(outPath, out.join("\n"));
+   console.log(`coverage: ${taken.size} guards observed; ${uncovered} guards unobserved`);
+   console.log(`report: ${reportName("coverage.md")}`);
++  console.log(`coverage: ${closedListed} stated inputs under a closed gate, each listed in its case's closed_gate`);
++  if (closedProblems.length) {
++    for (const p of closedProblems) console.error(p);
++    console.error(`coverage: FAILED - ${closedProblems.length} closed-gate problems in the fixtures (above)`);
++    process.exitCode = 1;
++  }
+ }
+ 
+ /** Review packet: fixture expectations remain candidate answers, not class B. */
+diff --git a/fixtures/2025/f1040.json b/fixtures/2025/f1040.json
+index b1eb328..fa40ab8 100644
+--- a/fixtures/2025/f1040.json
++++ b/fixtures/2025/f1040.json
+@@ -2143,6 +2143,9 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Stage 11, predicted by hand from the printed instructions before recording: Qualified expenses $450 but not an eligible educator (fewer than 900 hours): line 11 $0.",
++      "closed_gate": [
++        "person[taxpayer].educator_expenses"
++      ],
+       "inputs": {
+         "$w2@person[taxpayer]": [
+           "emp_a"
+diff --git a/fixtures/2025/f8889.json b/fixtures/2025/f8889.json
+index 142f26e..dd401c5 100644
+--- a/fixtures/2025/f8889.json
++++ b/fixtures/2025/f8889.json
+@@ -4235,6 +4235,9 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: married with family HDHP coverage as an eligible individual all year: the question about the husband's or wife's family plan is asked only of a person whose own plan covered only them; an answer given to it is not read. Line 3 $8,550.",
++      "closed_gate": [
++        "person[taxpayer].f8889[hsa].spouse_family"
++      ],
+       "inputs": {
+         "f1040.status": "mfj",
+         "$person": [
+@@ -4289,6 +4292,9 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: married, self-only HDHP all year, the three conditions not met in every month (9 eligible months, none on December 1): the month counts decide, and the question about the husband's or wife's family plan is not asked. Line 3 $3,225.",
++      "closed_gate": [
++        "person[taxpayer].f8889[hsa].spouse_family"
++      ],
+       "inputs": {
+         "f1040.status": "mfj",
+         "$person": [
+@@ -4347,6 +4353,9 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign, predicted by hand from the printed instructions before recording: married, self-only HDHP all year with the three conditions met, covered by a general-purpose health FSA all year: no eligible month, and the question about the husband's or wife's family plan is not asked. Line 3 $0, line 13 $0.",
++      "closed_gate": [
++        "person[taxpayer].f8889[hsa].spouse_family"
++      ],
+       "inputs": {
+         "f1040.status": "mfj",
+         "$person": [
+@@ -5115,6 +5124,9 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Integration B1 of the goal-1 round, predicted by hand before running: stage11.hsa.family_all_year_answer (single by default, once married and not married at the end of 2025, family HDHP coverage all year) with the former spouse's family coverage answered Yes. That question is asked only with self-only coverage (f8889.ask_former_spouse_family is No for family coverage): with family coverage the family limit is already the person's own, so the answer is not read and the values are those of the base case, line 3 $9,550 and line 13 $9,000.",
++      "closed_gate": [
++        "person[taxpayer].f8889[hsa].former_spouse_family"
++      ],
+       "inputs": {
+         "$f8889@person[taxpayer]": [
+           "hsa"
+diff --git a/fixtures/2025/rec.json b/fixtures/2025/rec.json
+index ce8e1ba..afe47d2 100644
+--- a/fixtures/2025/rec.json
++++ b/fixtures/2025/rec.json
+@@ -527,6 +527,10 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "The standard deduction was taken for 2024; a $300 property tax refund in 2025 is not income (\"don’t include any of the recovery amount in your income\"). Worksheet 2 is not used; line 8z is zero and the amount is not asked.",
++      "closed_gate": [
++        "rec.has_property_tax",
++        "rec.property_tax"
++      ],
+       "inputs": {
+         "$w2@person[taxpayer]": [
+           "e0"
+diff --git a/fixtures/2025/s1.json b/fixtures/2025/s1.json
+index d8f21c4..6a3dc61 100644
+--- a/fixtures/2025/s1.json
++++ b/fixtures/2025/s1.json
+@@ -117,6 +117,9 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Stage 13, predicted by hand from the archived instructions before recording: you are an eligible educator with $250 of expenses; your spouse paid $500 but is not an eligible educator: line 11 $250.",
++      "closed_gate": [
++        "person[spouse].educator_expenses"
++      ],
+       "inputs": {
+         "f1040.status": "mfj",
+         "$person": [
+@@ -1174,6 +1177,10 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "A No to the digital asset question: the income question beneath it is not read (its answer stated Yes here to show it), and line 8v is zero.",
++      "closed_gate": [
++        "s1.digital_income",
++        "s1.digital_amount"
++      ],
+       "inputs": {
+         "f1040.digital_assets": false,
+         "s1.digital_income": true,
+diff --git a/fixtures/2025/s3.json b/fixtures/2025/s3.json
+index 70a76ff..2056c2c 100644
+--- a/fixtures/2025/s3.json
++++ b/fixtures/2025/s3.json
+@@ -1371,6 +1371,9 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: an adoption paid for and final in 2024: its credit belonged to the 2024 return, so nothing is refused; the U.S. child question is not asked, and a Yes given to it is not read.",
++      "closed_gate": [
++        "s3.adoption_us"
++      ],
+       "inputs": {
+         "$w2@person[taxpayer]": [
+           "emp_a"
+@@ -1424,6 +1427,11 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no adoption and no adoption costs since the start of 2024: none of the three questions beneath is asked, and a Yes given to each is not read.",
++      "closed_gate": [
++        "s3.adoption",
++        "s3.adoption_earlier",
++        "s3.adoption_us"
++      ],
+       "inputs": {
+         "$w2@person[taxpayer]": [
+           "emp_a"
+@@ -1998,6 +2006,9 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a vehicle received in 2025 that was leased, or bought after September 30, 2025: no credit exists (i8936 p. 1, What's New; p. 2, lessee), so the wish question is not asked, a Yes given to it is not read, and nothing is refused.",
++      "closed_gate": [
++        "s3.ev_credit"
++      ],
+       "inputs": {
+         "$w2@person[taxpayer]": [
+           "emp_a"
+@@ -2166,6 +2177,12 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no vehicle and no equipment in 2025: none of the four questions beneath is asked, and a Yes given to each is not read.",
++      "closed_gate": [
++        "s3.ev_dealer",
++        "s3.ev_bought",
++        "s3.ev_credit",
++        "s3.ev_equipment"
++      ],
+       "inputs": {
+         "$w2@person[taxpayer]": [
+           "emp_a"
+@@ -2342,6 +2359,9 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no farmland sold: the election question is not asked, and a Yes given to it is not read.",
++      "closed_gate": [
++        "s3.farmland_deferral"
++      ],
+       "inputs": {
+         "$w2@person[taxpayer]": [
+           "emp_a"
+@@ -2758,6 +2778,12 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no foreign tax, territory income or foreign company: none of the four questions beneath is asked, and a Yes given to each is not read.",
++      "closed_gate": [
++        "ftc.carryover",
++        "s3.section960c",
++        "s3.section965",
++        "s3.virgin_islands"
++      ],
+       "inputs": {
+         "$w2@person[taxpayer]": [
+           "emp_a"
+@@ -2939,6 +2965,9 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: no kerosene used at home: the credit question is not asked, and a Yes given to it is not read.",
++      "closed_gate": [
++        "s3.kerosene_credit"
++      ],
+       "inputs": {
+         "$w2@person[taxpayer]": [
+           "emp_a"
+@@ -3402,6 +3431,10 @@
+       ],
+       "evidence": "synthetic regression (not class B)",
+       "evidence_note": "Interview redesign (credits), predicted from the question tree before recording: a 2024 return of Form 1040 and its schedules alone: the two questions beneath are not asked, and a Yes given to each is not read.",
++      "closed_gate": [
++        "s3.prior_amt",
++        "s3.prior_forms"
++      ],
+       "inputs": {
+         "$w2@person[taxpayer]": [
+           "emp_a"

@@ -1,0 +1,335 @@
+{
+ "form": "sli",
+ "reviews": {
+  "gate:sli.any_if_not_mfs": {
+   "subject_sha": "e69c80ca57cda5542e85d14678f7d8494c47b95a785ade09b89b3d06051d46a6",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who paid 2025 interest on a general-purpose bank or credit-union personal loan that they used only to pay their own tuition and fees. It is a signature or consolidation loan, not one marketed as a student loan, and no Form 1098-E came.",
+       "why_no": "The gate asks about interest on 'a student loan'. The filer takes that to mean a product labeled as a student loan (federal Direct, Sallie Mae, and the like), not an ordinary personal loan.",
+       "line": "sli.interest_if_any",
+       "irs_text": "i1040gi p. 98, Qualified student loan: 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students. 1. Yourself or your spouse.'",
+       "severity": "medium",
+       "fix": "Ask: 'Did you (or, on a joint return, your spouse) pay interest in 2025 on any loan taken out to pay college or vocational school costs? This includes personal loans, refinanced loans and loans for a dependent, not only loans called student loans.' Then let sli.unqualified_any screen out mixed-use and related-party loans."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A parent who borrowed in their own name to pay a dependent child's college costs, such as a Parent PLUS loan or a private parent loan, and paid interest on it in 2025.",
+       "why_no": "The parent reads 'paid interest on a student loan' as a loan made to a student. They think of this as the child's college debt, or as a parent loan, not as their own student loan.",
+       "line": "sli.interest_if_any",
+       "irs_text": "i1040gi pp. 98–99, Qualified student loan: 'any loan you took out to pay the qualified higher education expenses for ... 2. Any person who was your dependent when the loan was taken out.'",
+       "severity": "medium",
+       "fix": "Add to the gate or its help: 'Count a loan you took out for your spouse or for someone who was your dependent, such as a Parent PLUS loan.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A homeowner who drew on a home equity line of credit or home equity loan in a past year only to pay a dependent's tuition, and paid interest on it in 2025.",
+       "why_no": "The filer thinks of the debt as a mortgage or home equity loan, not as a 'student loan'. The gate gives no sign that the purpose of a loan, not its label, decides the question.",
+       "line": "sli.interest_if_any",
+       "irs_text": "i1040gi p. 98: 'A qualified student loan is any loan you took out to pay the qualified higher education expenses' for the eligible students listed.",
+       "severity": "medium",
+       "fix": "Same as the first finding: define the gate by what the loan was used for ('any loan used only to pay school costs'), and state in help that a loan's name or security does not decide it."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A borrower who was in forbearance or deferment and whose unpaid interest was capitalized into principal. In 2025 they made payments that the servicer's statement shows mostly as principal, and the Form 1098-E box 1 amount is small or zero.",
+       "why_no": "The filer reads 'paid interest' literally. They believe their 2025 payments went to principal, so they answer no.",
+       "line": "sli.interest_if_any",
+       "irs_text": "i1040gi p. 99, worksheet line 1: 'Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21).' The capitalized-interest rule is in Pub. 970, which is cited but not reproduced here.",
+       "severity": "low",
+       "fix": "Add help to the gate: 'Count any 2025 payment on a school loan, even if your statement shows it as principal; we will ask for the interest amount next.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A student who is legally obligated on their own qualified student loan, where a parent or other relative (not an employer) made the 2025 payments directly to the servicer.",
+       "why_no": "The gate's verb is 'paid', and the student did not personally make the payments.",
+       "line": "sli.interest_if_any",
+       "irs_text": "i1040gi p. 98: 'You paid interest in 2025 on a qualified student loan'. The rule that treats payment by a third party as paid by the borrower is in Pub. 970, which is cited but not reproduced here.",
+       "severity": "low",
+       "fix": "Ask: 'Was interest paid in 2025, by you or by anyone else other than an employer, on a school loan you (or your spouse) owe?'"
+      }
+     ],
+     "prompt_sha": "5d901d8f185d064069c738c5073f7b39f9f2a55aadec543aa2e26e49db9d49eb",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.111204,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sli.any_if_not_mfs.e69c80ca57cd.1.response.txt"
+    }
+   ],
+   "condition": "sli.any_if_not_mfs",
+   "lines": [
+    "sli.assisted_any_if_any",
+    "sli.interest_if_any",
+    "sli.unqualified_any_if_any"
+   ],
+   "inputs": [
+    "sli.assisted_any",
+    "sli.interest",
+    "sli.unqualified_any"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      98,
+      99
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 98, Schedule 1, line 21, \"Your filing status is any status except married filing separately\"",
+      "p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; , Student loan repayment assistance, \"You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs\" and \"The National Health Service Corps (NHSC) Loan Repayment Program\"",
+      "p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan'",
+      "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses"
+     ],
+     "cols_pages": [
+      98
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p4681",
+     "revision": "2025",
+     "text_sha256": "c280f0029d95f9f4186840c73600efd2af4bd3370a86a31fb4f2a9391887b2b6",
+     "pages": [
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "21875d96efa2d4d7885584db3cf06d5830154aeff1eaf3370efad4fab5cc3a17"
+    }
+   ]
+  },
+  "gate:sli.assisted_any_if_any": {
+   "subject_sha": "ee708701e39e97b6beb375ce271be4fa1265fac723d2964e0777e16eefa71bd1",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A physician or nurse in the NHSC Loan Repayment Program, or a qualifying state health-professional loan repayment program, gets the repayment money in their own account. They then pay their loan servicer, interest included, from that account.",
+       "why_no": "The helper asks whether interest was 'paid ... through tax-free student loan repayment assistance'. The filer made every payment personally, so they read the payments as their own, not as made through the program.",
+       "line": "sli.assisted_if_some",
+       "irs_text": "p4681 p. 5: 'Student loan repayments made to you are tax free if you received them for ... The National Health Service Corps (NHSC) Loan Repayment Program' and 'You can't deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.'",
+       "severity": "medium",
+       "fix": "Ask by fact, not by payment route: 'Did you (or your spouse) receive money in 2025, paid to you or to your lender, from the National Health Service Corps Loan Repayment Program, a state education loan repayment program under the Public Health Service Act, or another state loan repayment or forgiveness program for health services in underserved or shortage areas?' Then ask how much of the interest those funds covered."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A health professional in a state rural or underserved-area loan repayment program who doesn't know whether the program's payments are excluded from income. The program may name itself without mentioning health shortage areas, or the filer may assume all forgiveness is taxable.",
+       "why_no": "The word 'tax-free' makes the filer classify the program. A filer who believes or guesses the assistance is taxable, or who doesn't see it described as tax-free, answers no.",
+       "line": "sli.assisted_if_some",
+       "irs_text": "p4681 p. 5: 'Any other state loan repayment or loan forgiveness program that is intended to provide for the increased availability of health services in underserved or health professional shortage areas (as determined by such state).'",
+       "severity": "medium",
+       "fix": "Drop 'tax-free' from the filer-facing question. Ask whether any student loan payments were made by or through a loan repayment or forgiveness program, naming the NHSC and state health-service programs. Have the tool or the help text decide which programs qualify."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A student-borrower whose parent or grandparent owns a 529 plan, and the owner took a distribution and paid part of the borrower's 2025 student loan interest with it. The borrower took no distribution of their own.",
+       "why_no": "The borrower doesn't think of the payment as theirs: 'my parents' 529 paid it, I didn't take a distribution.' They read the question as asking about their own plan or their own payment.",
+       "line": "sli.assisted_if_some",
+       "irs_text": "i1040gi p. 98, line 21: 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP) after 2018 to the extent the earnings are treated as tax free because they were used to pay student loan interest.'",
+       "severity": "medium",
+       "fix": "Say 'from any 529 plan or other qualified tuition program, whoever owns the account (for example, a parent's plan)'. Add help text saying that payments made for you count."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who took a 529 distribution, reported on Form 1099-Q, to pay down student loans. They know the distribution came from the plan but think of it as the money in their account, not as 'earnings'.",
+       "why_no": "'Paid from tax-free qualified tuition program earnings' reads like a narrow investment-gains concept. A filer who sees 'distribution' or 'withdrawal' on their 1099-Q, not 'earnings', or who thinks they used contributions, answers no.",
+       "line": "sli.assisted_if_some",
+       "irs_text": "i1040gi p. 98, line 21: 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP) after 2018 to the extent the earnings are treated as tax free because they were used to pay student loan interest.'",
+       "severity": "medium",
+       "fix": "Ask broadly first: 'Was any of the student loan interest paid with money withdrawn from a 529 plan or other qualified tuition program (Form 1099-Q)?' Then work out the earnings share from the 1099-Q basis and earnings boxes, or ask for it."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A loan repayment program participant whose program money for 2025 interest arrives in a different year. For example, they paid interest during 2025 and the program reimbursed them in early 2026, or a lump sum received in 2024 was applied to 2025 payments.",
+       "why_no": "The filer links 'paid ... through assistance' to when the assistance arrived. They see no assistance received in 2025 that matches their 2025 payments, so they answer no.",
+       "line": "sli.assisted_if_some",
+       "irs_text": "p4681 p. 5: 'You can't deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.'",
+       "severity": "low",
+       "fix": "Make the question about the 2025 interest payments however funded, for example: 'Was any of the interest you paid in 2025 funded by such a program, whether the program paid you before or after you paid the loan?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A joint filer whose spouse's student loan interest was paid partly through NHSC assistance or the spouse's 529 distribution. The filer answering knows only their own loan.",
+       "why_no": "The parent helper says 'You (or, on a joint return, your spouse)', but the child helper says only 'Any of that interest'. A filer who answers about their own loan says no.",
+       "line": "sli.assisted_if_some",
+       "irs_text": "p4681 p. 5: 'You can't deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.'",
+       "severity": "low",
+       "fix": "Repeat the spouse in the child question: 'Was any of the interest you or your spouse paid ...'"
+      }
+     ],
+     "prompt_sha": "ec4040d6173edc29d51795b60a50a8b4d352e83bb3904631f5900d1603a20b9f",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.117724,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sli.assisted_any_if_any.ee708701e39e.1.response.txt"
+    }
+   ],
+   "condition": "sli.assisted_any_if_any",
+   "lines": [
+    "sli.assisted_if_some"
+   ],
+   "inputs": [
+    "sli.assisted"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      98
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 98, Schedule 1, line 21, 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; , Student loan repayment assistance, \"You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs\" and \"The National Health Service Corps (NHSC) Loan Repayment Program\""
+     ],
+     "cols_pages": [
+      98
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p4681",
+     "revision": "2025",
+     "text_sha256": "c280f0029d95f9f4186840c73600efd2af4bd3370a86a31fb4f2a9391887b2b6",
+     "pages": [
+      5
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "21875d96efa2d4d7885584db3cf06d5830154aeff1eaf3370efad4fab5cc3a17"
+    }
+   ]
+  },
+  "gate:sli.unqualified_any_if_any": {
+   "subject_sha": "b2df206acba61f515e40cc6baf524bb1a81d69ac9a71a7c0213edc248793faa4",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "7",
+       "who": "A parent pays the interest on a loan their child took out for the child's own tuition. The parent is not the borrower and is not legally obligated on the loan. The child has a Form 1098-E with the parent's payments on it.",
+       "why_no": "The loan is a federal student loan used only for tuition, so the parent truthfully says it is a qualified student loan. The gate never asks whose loan it is. The definition 'any loan you took out' makes it not qualified for the payer.",
+       "line": "sli.unqualified_if_some",
+       "irs_text": "i1040gi p. 98: 'A qualified student loan is any loan you took out to pay the qualified higher education expenses...'",
+       "severity": "high",
+       "fix": "Before the classification question, ask: 'Did you (or your spouse) take out the loan and are you legally obligated to pay it?' Treat interest you paid on someone else's loan as not on a qualified student loan."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A borrower spent part of a private student loan's refunded excess on a car or rent beyond the cost of attendance. Or a borrower refinanced student loans together with credit-card debt or took cash out in the refinance.",
+       "why_no": "The lender calls it a student loan and sends Form 1098-E, so the filer reads 'not a qualified student loan' as not applying. The filer doesn't see that any non-education use of the proceeds disqualifies the whole loan.",
+       "line": "sli.unqualified_if_some",
+       "irs_text": "i1040gi p. 99: 'a loan isn't a qualified student loan if (a) any of the proceeds were used for other purposes'",
+       "severity": "high",
+       "fix": "Ask for the facts the filer can check: 'Was any part of the loan's money used for something other than tuition, fees, room and board, books, supplies and similar school costs? This includes a refinance or consolidation that included other debt or cash out.'"
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A loan paid for a student who was not one of the listed people. Examples: a niece or a friend's child; the filer's own child who had gross income of $5,200 or more (the exemption amount) the year the loan was taken out; a person who filed a joint return; or a loan taken out while the filer could be claimed as someone else's dependent.",
+       "why_no": "The help names only (a) other-use proceeds and (b) related-person or employer-plan lenders. A filer reads those two as the whole rule and says no. The student-eligibility and dependency limits in the definition are not visible.",
+       "line": "sli.unqualified_if_some",
+       "irs_text": "i1040gi pp. 98–99: 'for any of the following individuals who were eligible students. 1. Yourself or your spouse. 2. Any person who was your dependent when the loan was taken out. 3. Any person you could have claimed as a dependent ... except that: a. ... joint return; b. ... gross income ... $5,200 for 2025; or c. You ... could be claimed as a dependent'",
+       "severity": "high",
+       "fix": "Ask: 'Was every loan taken out only for yourself, your spouse, or someone who was your dependent (or could have been) when the loan was taken out?' Add follow-ups for the joint-return, gross-income and you-were-a-dependent exceptions."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A parent's child is a dependent in 2025, but was not a dependent when the loan was taken out years earlier. For example, the child was independent then and had too much income.",
+       "why_no": "The filer applies today's dependency status instead of the status 'when the loan was taken out', and answers that the loan was for a dependent.",
+       "line": "sli.unqualified_if_some",
+       "irs_text": "i1040gi p. 99: 'Any person who was your dependent when the loan was taken out'; 'for the year the loan was taken out'",
+       "severity": "medium",
+       "fix": "State the time frame in the question: 'when the loan was taken out (not in 2025)'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A student attended a program that was not an eligible educational institution, for example some foreign schools or a non-degree course. Or the student was not enrolled at least half-time in a degree, certificate or similar program. Or the loan paid for costs above the expenses net of scholarships.",
+       "why_no": "The filer sees 'student loan' and tuition use, and takes 'qualified higher education expenses' to mean any schooling costs.",
+       "line": "sli.unqualified_if_some",
+       "irs_text": "i1040gi p. 99: 'The expenses must be for education in a degree, certificate, or similar program at an eligible educational institution'; p. 98: 'individuals who were eligible students'",
+       "severity": "medium",
+       "fix": "Add a fact question: 'Was the school a college, university or eligible vocational school, and was the student in a degree or certificate program?' Note in help that amounts beyond the cost of attendance net of scholarships disqualify the loan."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer borrowed for tuition from a grandparent, a sibling, or a company controlled by the family, with written interest terms.",
+       "why_no": "'Related person' is a legal term. The filer may think it means only a parent, or may not see a business entity as a related person.",
+       "line": "sli.unqualified_if_some",
+       "irs_text": "i1040gi p. 99: '(b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan'",
+       "severity": "low",
+       "fix": "Spell it out in help: a related person includes a spouse, siblings, parents, grandparents, children, grandchildren, and businesses controlled by family. Also mention loans the lender funded from a 401(k) or other plan loan."
+      }
+     ],
+     "prompt_sha": "da3e060f1bfeaa71510bda4059b9dcef5daadd36a970c6139a871dc766037c6a",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.107292,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sli.unqualified_any_if_any.b2df206acba6.1.response.txt"
+    }
+   ],
+   "condition": "sli.unqualified_any_if_any",
+   "lines": [
+    "sli.unqualified_if_some"
+   ],
+   "inputs": [
+    "sli.unqualified"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      98,
+      99
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses"
+     ],
+     "cols_pages": [
+      98
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  }
+ }
+}

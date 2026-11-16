@@ -2868,7 +2868,7 @@ class LineScopedReviews(unittest.TestCase):
         before = T.subjects.current_foreign("sa", T.Y)
         with self.reworded("person.blind", "Were you blind? (reworded)"):
             after = T.subjects.current_foreign("sa", T.Y)
-        self.assertEqual(sorted(k for k in before if before[k] != after[k]), ["sa.deduction", "sa.itemizes"])
+        self.assertEqual(sorted(k for k in before if before[k] != after[k]), ["4b", "sa.deduction", "sa.itemizes"])
         # A log of the reader records the rows; the rewording stales those lines, and --lines auto takes them.
         old = self.base_log()
         rows = T.subjects.recorded_foreign(old)
@@ -3136,7 +3136,7 @@ class ScopedCatalog(unittest.TestCase):
             self.assertEqual(input_context.assess(assessed, [], T.model_type_context(), prompt)["missing"], [], fid)
             if fid == "sales":
                 self.assertNotIn("person", after)
-                self.assertIn("f1040.status", T.listed_lines(fid, "f1040", after))
+                self.assertIn("f1040.status", T.catalog_lines(fid, after))   # whole (a shared page) or narrowed
                 self.assertIn("sales.e", prompt)                  # the reviewed collection's fields are all listed
                 whole = T.build_prompt(doc, excerpt, {}, T.catalog_lines(fid, before), None, T.collection_notes(fid, before), scope=scope)
                 self.assertLess(len(prompt), 0.75 * len(whole))

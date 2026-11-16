@@ -5,7 +5,8 @@ form:
   tax_year: 2025
   note: Part III is on each student's person or dependent entry (lines 23 to 31), with the worksheet arithmetic in the aqee
     definition. A Form 8862 claim or a ban, an academic period whose assistance exceeds its own expenses, and excluded foreign
-    or possession income are refused; married filing separately and nonresident aliens are refused for the whole return.
+    or possession income are refused; nonresident aliens are refused for the whole return. Married filing separately takes no
+    education credit (f8863.eligible is false, and no education question is asked).
   lines:
   - id: f8863.paid
     printed: (gate)
@@ -62,9 +63,9 @@ form:
       doc: i8863
       locator: p. 3, Who cannot claim a credit, "1. You’re claimed as a dependent on another person’s tax return, such as your
         parent’s return."
-  - id: f8863.eligible
+  - id: f8863.eligible_figured
     printed: (helper)
-    label: 'An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as
+    label: 'On a return not filed as married filing separately: expenses paid, and neither you nor your spouse is claimed as
       a dependent'
     type: Bool
     expr:
@@ -86,6 +87,31 @@ form:
       doc: i8863
       locator: p. 3, Who cannot claim a credit, "1. You’re claimed as a dependent on another person’s tax return, such as
         your parent’s return."
+  - id: f8863.eligible
+    printed: (helper)
+    label: 'An education credit can be claimed on this return: not married filing separately, expenses paid, and neither
+      you nor your spouse is claimed as a dependent'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - household.mfs
+          - const: true
+        then: f8863.no
+      - guard:
+          op: test
+          eq:
+          - household.mfs
+          - const: false
+        then: f8863.eligible_figured
+    cite:
+      doc: i8863
+      locator: p. 3, Who cannot claim a credit, "You cannot claim an education credit on a 2025 tax return if any of the
+        following apply." and "2. Your filing status is married filing separately."
+    note: The status is read first, so a married filing separately return never reaches f8863.paid.
   - id: f8863.aoc_person
     printed: (helper)
     label: Part III line 30 of you and your spouse

@@ -1,0 +1,39 @@
+{
+ "kind": "render",
+ "form": "royalty",
+ "rulings": [
+  {
+   "printed": "10",
+   "restated": "Choose — [helper \"Any expenses for this royalty\" = true → helper \"Legal and other professional fees paid in 2025\"] [helper \"Any expenses for this royalty\" = false → helper \"Zero\"]",
+   "model": "The helper takes all legal and professional fees for the property and does not exclude capitalized ones. The IRS says 'Do not deduct legal fees paid or incurred to defend or protect title to property, to recover property, or to develop or improve property. Instead, you must capitalize these fees.' The gate to zero when there are no expenses is consistent.",
+   "ruling": "Ruling: finding; royalty.amt10 asks all legal and professional fees, but i1040se Line 10: 'Do not deduct legal fees paid or incurred to defend or protect title to property, to recover property, or to develop or improve property. Instead, you must capitalize these fees.' (BUG-0922)",
+   "context": "6b08f1e51ed93fbc1d11cd82376c7161cea61f7f5f853528a7687b5dfaf6398f",
+   "date": "2026-11-15",
+   "run": "985bcd12fb53c0038cc4c501fa568c7014f31376a69d819011f5ca588f2fd502",
+   "severity": "low",
+   "subject_key": "51ef46d23d9243ce98e4e41115bb84d716f077e5c64976ccfa3aee3599ef8c0e"
+  },
+  {
+   "printed": "19",
+   "restated": "Choose — [helper \"Any expenses for this royalty\" = true → helper \"Other paid in 2025\"] [helper \"Any expenses for this royalty\" = false → helper \"Zero\"]",
+   "model": "Line 19 is 'Other (list)' for expenses not reported on lines 5–18. The helper takes any 'other costs of it (not depletion)', which can include amounts that belong on other lines. It also includes non-deductible items the IRS excludes: 'Do not deduct the value of your own labor or amounts paid for capital investments or capital improvements.'",
+   "ruling": "Ruling: finding; royalty.amt19 asks 'Other costs of it (not depletion)' without i1040se's exclusion 'Do not deduct the value of your own labor or amounts paid for capital investments or capital improvements' (BUG-0922). Folding expenses of lines 5 to 18 other than 10 and 16 into line 19 is representation (line 21 unchanged).",
+   "context": "6b08f1e51ed93fbc1d11cd82376c7161cea61f7f5f853528a7687b5dfaf6398f",
+   "date": "2026-11-15",
+   "run": "985bcd12fb53c0038cc4c501fa568c7014f31376a69d819011f5ca588f2fd502",
+   "severity": "low",
+   "subject_key": "ecc31922a4d1e27ee0f6a62c593b73597b10d1328733d92271af2efc4878ff4e"
+  },
+  {
+   "printed": "4",
+   "restated": "Input — Royalties received from it in 2025 (Form 1099-MISC box 2, or the amount you were paid), your share",
+   "model": "The restatement allows 'the amount you were paid', which can be the net payment after withholding. The IRS says 'Enter on line 4 the gross amount of royalty income, even if state or local taxes were withheld from oil or gas payments you received. Include taxes withheld by the producer on line 16.'",
+   "ruling": "Ruling: finding; the question allows 'the amount you were paid', which for an oil or gas royalty with producer-withheld taxes is the net payment, but i1040se Line 4 says 'Enter on line 4 the gross amount of royalty income, even if state or local taxes were withheld ... Include taxes withheld by the producer on line 16'; with royalty.amt16 asking those taxes too, they are deducted twice (BUG-0921).",
+   "context": "6b08f1e51ed93fbc1d11cd82376c7161cea61f7f5f853528a7687b5dfaf6398f",
+   "date": "2026-11-15",
+   "run": "985bcd12fb53c0038cc4c501fa568c7014f31376a69d819011f5ca588f2fd502",
+   "severity": "medium",
+   "subject_key": "7f70a243b4e972561ab2cc850b6359bbbc247dca40b67b55963f70f6cc12a474"
+  }
+ ]
+}

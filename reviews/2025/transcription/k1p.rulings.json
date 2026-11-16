@@ -1,0 +1,874 @@
+{
+ "kind": "transcription",
+ "form": "k1p",
+ "rulings": [
+  {
+   "printed": "(e) (k1p.b1_overall_loss)",
+   "project_expr_sha256": "69562764a06aa9ed52ce12c39d6da01fb547e639f73a590e4481ae36c2c15f0e",
+   "second_expr_sha256": "2b87f33b5cf32de4f0738200aeb7dce8bd11c696eb3e2c50688f197e52581858",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 437/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 64 candidate-refuses, 11 candidate-unknown, 10 project-unknown, 1 value. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "2570b89ba69f743786f3f8fa974ce219962c85636428430d4925e0623cee0858",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_basis@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_former_passive@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].trader@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].five_of_ten@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].t6@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].basis_short@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].box3@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(e) (k1p.b2_overall_loss)",
+   "project_expr_sha256": "bb279e3d5834d01d8bb03d717e82067b3308398657c15bd40537d75e56631a30",
+   "second_expr_sha256": "ecfcb21169cdce7d283466a53b12ebd720d4e985757440c813617996fc38de52",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 497/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 1 candidate-refuses, 11 candidate-unknown, 14 project-unknown. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "d9d8556e3d8bb4ad87b8f9e6ebc852a82097900b4b0c89e7ef2194f70d1a1e57",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_at_risk@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].decisions@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].tenth@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "(e) (k1p.b3_overall_loss)",
+   "project_expr_sha256": "5b557a19a267f029e72d57f1b35cd635f2fee028ee592855dfe5a31676d3768e",
+   "second_expr_sha256": "ecac29cc7077c15f4b16476b6c1432c3735b6f099e12a7bbfa9bb9c2a779ebad",
+   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 509/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 14 project-unknown.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "fde95a6d242454b23c5d16b90750983251bf6cfaa46e996f4b96fdb956a13874",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "28 (h)",
+   "project_expr_sha256": "7ff083594ca50b434a33501588a66d369a84ac130c4834be1dcd450f16fa78fd",
+   "second_expr_sha256": "183523905b79bc885d778c2e2587e415c3f4d597a43a9917bf39925dd6265981",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 495/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 22 candidate-unknown, 3 project-unknown, 3 value. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "8e35f0cdeed127c7bb57ee7d52c2cb1f6a69f0767a49b23416ea4d7358ba5c23",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_test4@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.refuse_former_passive@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].box1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].ptp@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].r_b2223@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].box1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "28 (i)",
+   "project_expr_sha256": "dc670b8d9b8a02106b1a1a1a302c0ea5d53e41ae9487de0dceb1f63b590e9160",
+   "second_expr_sha256": "f636905f5cbaca3358d27bafcaf0137c847bd3b53d4db1be8962f51c18103ad3",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 428/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 70 candidate-refuses, 23 candidate-unknown, 2 project-unknown. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "4a0241df1b9456d839291d302d2de989083a7e4f5d3b045b859f01ec9ebe3b84",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_basis@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_at_risk@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].ptp@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].r_b2223@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].ptp@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "28 (k)",
+   "project_expr_sha256": "3111a42e362eab804333c02a335a160a90f9920fa21a41a51847f96813d20145",
+   "second_expr_sha256": "cffe0313531957f804e96f035fb110d5acaa555f8d576267d7c7ce16ac562006",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 426/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 68 candidate-refuses, 24 candidate-unknown, 2 project-unknown, 3 value. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "c39ae0854137fce3546547db8a5f9853dde0e9f0b4ff12427af009dcf2428084",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_basis@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_at_risk@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_test4@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.refuse_former_passive@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].ptp@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].r_b2223@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].ptp@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV (a)",
+   "project_expr_sha256": "e62af676cd26518e716dd83d85163d683e23d5a18753f574cf9ff109dc47bfe5",
+   "second_expr_sha256": "d4bae0b720fcdb4f79b967212098cdfabc400ccaea9c4b24219669ee0c3423d1",
+   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 517/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 4 candidate-unknown, 2 project-unknown.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "42821eb42bf909ff48b74676d969d77a7f1f25f41ee26dc482a7eec7275d621b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV (b)",
+   "project_expr_sha256": "a73b06d4de627422cca730a933d83d64d917242a9109f50af5d589b0f1dd6f04",
+   "second_expr_sha256": "8edc2a4590560cc02ca476b322326076418be9adae7524373bbda28d20ca0f5b",
+   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 517/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 4 candidate-unknown, 2 project-unknown.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "253cfeb404fea2de569896330c877fc0751836ec50c3f45bec85c4c41238275d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV (c)",
+   "project_expr_sha256": "81b07fdd3caa8bb1ad8458049711b9c11cb831e9e3de0e9a4407ae7aa6053e44",
+   "second_expr_sha256": "6ba96e09ccb771dfefe6e005fc50bf66455f1f5750b82ba281bda00545118435",
+   "ruling": "Ruling: scope; the reply puts a box 2 prior-year loss in Part IV only with active participation in both years and in Part V otherwise ('Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year', i8582). The project puts it in Part IV on current active participation and refuses the one case where the two readings part, active now but not when the loss arose (k1p.prior_not_active_if, on k1p.screened); every value witness is x2k1p.refuse_prior_not_active. triage 451/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 1 candidate-unknown, 7 project-unknown, 64 value.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "cfe0c8b90043c91466cdedb2574eb0a6633544d5b4ec03b1701b351df966dd99",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_prior_not_active@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].prior_b2_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].prior_not_active@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].box1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV/V (a)",
+   "project_expr_sha256": "3fedc418121954da3213065e787bcecefaecd5bc19ad57df634ce0e1ab53a87d",
+   "second_expr_sha256": "56cee9d349980aed63393ef1407090bf1f1c00f8f76a9966b7771336323a0327",
+   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 518/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 5 candidate-unknown.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "dfd0e977c13d8a4439af74943cd9d425a7ee53cd40af5f44342bbdeb29e2e805",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].prior_b2_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "IV/V (b)",
+   "project_expr_sha256": "14803d5c970d115f6b647344f6988e4414a4746e9e33d76f793a96a11a428618",
+   "second_expr_sha256": "3460f98ee998dcb32da957e75e09d5c7efa5640ec6c71bf4f3b383d6c75d5b5b",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 517/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 1 candidate-refuses, 5 candidate-unknown. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "304140be58cc5b2d2bef85696b32e42df9d06b2ce29c4c13c284a63747f42e9e",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_at_risk@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].prior_b2_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (a) (k1p.b1_net_income)",
+   "project_expr_sha256": "686fdec07a7b0c7a78a530e0afc23da76354f487181316d0931bd36b2a904538",
+   "second_expr_sha256": "ec0db7a67c599bf7531a2f46e2e1515980bc641a0b62e3d2f02c1a8089811dea",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 506/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 2 candidate-hides-shown, 11 candidate-unknown, 3 project-unknown, 1 value. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "3c55844943d27278e2b9b3e970dd7e0720a4f346449ee733a2b36e426d80efe2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_test4@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.refuse_former_passive@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].trader@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].five_of_ten@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].t6@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (a) (k1p.b3_net_income)",
+   "project_expr_sha256": "a4014577aee77f957614c73b906ec6c312b68877a317225781083fa52ecdb1b2",
+   "second_expr_sha256": "3295531c961bda82a845ac36899b57a42f73862dd365702d4f8e66a53c42060c",
+   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 521/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 2 candidate-unknown.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "c53e981c2b22307399ce93add44c33b570e01593cf4f9bc3fc78223293bcc8b9",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].prior_b3_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].prior_b3_any@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (a) (k1p.p5_income)",
+   "project_expr_sha256": "a502b7d34a5cc295d2c67153f05c2c23f1f72988792054296ea35c1f5f921d03",
+   "second_expr_sha256": "f021589ce1b2c62a32456a2e0e84d46bd5ca736e8f46b441f0887e82120d223b",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 500/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 2 candidate-hides-shown, 16 candidate-unknown, 4 project-unknown, 1 value. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "0bb2ae130b3b6dadc2f286c9a20ef6dff12dfc95383e467170a5234dbd25757d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-hides-shown",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_test4@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.refuse_former_passive@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].trader@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].five_of_ten@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].t6@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (b) (k1p.b1_net_loss)",
+   "project_expr_sha256": "f146bc497c55f180ac48f7e354cedf39620ed1895aa7174ced93a75793e429bb",
+   "second_expr_sha256": "57b2cdcc5704d7c77ad6513d469759ad0ecab0e39903f3783b1051a4df9a3937",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 445/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 64 candidate-refuses, 12 candidate-unknown, 2 project-unknown. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "469eeafb4f2b74114630e68e0d1ca4fffb0ebcec6e4ec3c13db0378783daa4e5",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_basis@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].trader@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].five_of_ten@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].t6@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].basis_short@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].box3@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (b) (k1p.b3_net_loss)",
+   "project_expr_sha256": "2b90b8729645c427901c745aeb5ee59dc39025fe0e4aa7ff889a57851856f4a3",
+   "second_expr_sha256": "6aa16a7527ee0ec532b58b4dc933fe9090599d082299a4cf02ce0c89dee897c4",
+   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 521/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 2 candidate-unknown.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "45e1ad9742193268fc46727feab17a86f922c95a5e404bc8441d4b852c8566de",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].prior_b3_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].prior_b3_any@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (b) (k1p.p5_loss)",
+   "project_expr_sha256": "e7ee94a6de2a5c3f334d4d89600a3307381778c01817780c37ab3235a8b2f88b",
+   "second_expr_sha256": "f6414189e8cc53352f4016b802d7ddd7ddfcc24ba4116a01b21430dd77214151",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 438/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 65 candidate-refuses, 17 candidate-unknown, 3 project-unknown. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "db0b4f2e45610c626fd787798d1abb27ffedbac6343ec2216c0cf16e19b9a0bd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_basis@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_at_risk@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].trader@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].five_of_ten@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].t6@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].basis_short@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "V (c)",
+   "project_expr_sha256": "64e8b9d9aed7c33f40ec87c6269d6d253bb715b4dfd4b40c6f329169f00ab871",
+   "second_expr_sha256": "b7620ee2a96d203ac2720d4b6e404c1dc88dea38901a15ca8e42e62fc764faa5",
+   "ruling": "Ruling: scope; the reply puts a box 2 prior-year loss in Part IV only with active participation in both years and in Part V otherwise ('Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year', i8582). The project puts it in Part IV on current active participation and refuses the one case where the two readings part, active now but not when the loss arose (k1p.prior_not_active_if, on k1p.screened); every value witness is x2k1p.refuse_prior_not_active. triage 440/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 15 candidate-unknown, 6 project-unknown, 62 value.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "cd04a6cb853b0c68ccb028d9520cf4386e5ddd7212e6eb866f9b05017be96781",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_prior_not_active@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].work@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b3@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].general@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].box1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b3@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "VI (a)",
+   "project_expr_sha256": "2a43b4b217a8392c55b4e61e3a5d6d7a7b48406c1490b0db6891753a7ab58c85",
+   "second_expr_sha256": "6274e296a4ce17036d5b4c9ac8ba88f87075a25b3b88c1e0fca0978517e30f93",
+   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 512/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 5 candidate-unknown, 6 project-unknown.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "d6dc5865e1c8c474aff608a3413641d10527862b673b23c822633d075230f91c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].has_b2@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].prior_b2_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].prior_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].prior_not_active@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1p.box9b_if_any",
+   "project_expr_sha256": "56fd3a07003b438003f076912c6470da6897ab09bdd020e25e05750771dd38c9",
+   "second_expr_sha256": "85c68b918003e55f5c9667645f263b20cc6050e6d14da88332ebfeed7658dfaf",
+   "ruling": "Ruling: representation; equivalent under the interview's gate. The reply gates box 9b on k1p.has_b9bc alone; the project asks k1p.has_b9bc only when box 9a shows an amount (k1p.has_b9bc_if_9a: the 9b and 9c amounts are parts of the box 9a net long-term gain, i1065sk1 p. 16, Box 9a/9b/9c). Triage: 520/534 agree; the 14 differences are 7 candidate-unknown and 7 project-unknown on partial records, none a value. The line's change this round (Dollars, a loss allowed, BUG-0911) is not disputed: the reply also passes box 9b through signed.",
+   "context": "83b1ffbfe3b33a12e940a96e01349bacf2affbf6e24311516abc671d230827e5",
+   "date": "2026-11-15",
+   "run": "f192b7b75ca93b01432ef0041c3060260436719702156df02f83c61e7ffdc9a8",
+   "subject_key": "bc3d1959845b37f529837b694fd265e3097055cadc0c054ca2eb51d90d8d90a1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b9a@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b9bc@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b9a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b9bc@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk11_limited_box1_income-person[taxpayer].k1p[fund].has_b9a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk11_limited_box1_income-person[taxpayer].k1p[fund].has_b9bc@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.limited_worked_passive-person[taxpayer].k1p[fund].has_b9a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.limited_worked_passive-person[taxpayer].k1p[fund].has_b9bc@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_box10-person[taxpayer].k1p[fund].has_b9a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_box10-person[taxpayer].k1p[fund].has_b9bc@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_trader-person[taxpayer].k1p[fund].has_b9a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_trader-person[taxpayer].k1p[fund].has_b9bc@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1p.box9c_if_any",
+   "project_expr_sha256": "ccd16c00ab4dc12ee3000407c83a3986d83cf38004a5a3e2fbb73052728a63c4",
+   "second_expr_sha256": "83a67e29f4dbfaafe6fdbdb7ebb0f1499284cc03ac04f0607a5c9b7a81d4ee29",
+   "ruling": "Ruling: representation; equivalent under the interview's gate, as for k1p.box9b_if_any: the reply drops the box 9a gate on k1p.has_b9bc (k1p.has_b9bc_if_9a). Triage: 520/534 agree; 7 candidate-unknown, 7 project-unknown on partial records, no value difference. The reply's note on statement-reported unrecaptured gain (sale of an interest, or from an estate, trust, RIC or REIT) falls on k1p.r_disposed and k1p.r_b20, both refused, as it says.",
+   "context": "83b1ffbfe3b33a12e940a96e01349bacf2affbf6e24311516abc671d230827e5",
+   "date": "2026-11-15",
+   "run": "f192b7b75ca93b01432ef0041c3060260436719702156df02f83c61e7ffdc9a8",
+   "subject_key": "333beb29b7c4406d2c3734c7ce5fabb0bbcfe08111ce0992ebf82703a2d94e19",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b9a@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b9bc@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b9a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b9bc@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk11_limited_box1_income-person[taxpayer].k1p[fund].has_b9a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk11_limited_box1_income-person[taxpayer].k1p[fund].has_b9bc@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.limited_worked_passive-person[taxpayer].k1p[fund].has_b9a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.limited_worked_passive-person[taxpayer].k1p[fund].has_b9bc@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_box10-person[taxpayer].k1p[fund].has_b9a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_box10-person[taxpayer].k1p[fund].has_b9bc@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_trader-person[taxpayer].k1p[fund].has_b9a@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_trader-person[taxpayer].k1p[fund].has_b9bc@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1p.nonpassive_net",
+   "project_expr_sha256": "47adf26ffd54d61d385649ee2a8f3d7388496b9fc8af2d7c7ab74d004be00657",
+   "second_expr_sha256": "9e31a70b3feb9a90e976d0d3b470842d950e49077f588137d0c6188b901ce3b7",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 357/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 139 candidate-refuses, 22 candidate-unknown, 2 project-unknown, 3 value. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "1f0573a3df03ba5aa941305f26a99f0fd2b7c72e432d1f4dc37dc648e97e8585",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_ptp@person[taxpayer].k1p[mlp]",
+     "fixture:x2k1p.refuse_multi@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_basis@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_at_risk@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_test4@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.refuse_former_passive@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].ptp@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].r_b2223@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].ptp@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].r_b2223@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].ptp@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].r_b2223@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_multi-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_multi-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1p.passive_loss",
+   "project_expr_sha256": "d75331346be43caa1af85a13b2a400c43fd0204d7d1c04c5091b7b573d0ee618",
+   "second_expr_sha256": "629e2183f0122468e1988ebbd3bf6c082bddc2eeff916c14d885bcb2620683ae",
+   "ruling": "Ruling: scope; every value difference and candidate refusal falls on an entry the project refuses on k1p.screened, which every person sum filters on (witness bases x2k1p.refuse_ptp, refuse_multi, refuse_basis, refuse_at_risk, refuse_trader, refuse_test4, refuse_former_passive, refuse_prior_not_active): the reply refuses on the line itself (its h_loss_gate = basis_short or not_at_risk with a loss, ptp, r_b2223) or computes a value for a case the project refuses (trader, test 4, former passive: 'Chosen reading: report that income in column (h)'). triage 349/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 139 candidate-refuses, 27 candidate-unknown, 7 project-unknown, 1 value. Basis and at-risk first: i1065sk1 p. 3 'the basis limitations, the at-risk limitations, the passive activity limitations'; the project refuses both (basis_short_if_loss, not_at_risk_if_loss).",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "7bd481fdb5de3faeea842e2c78f0e50e42a222a60f50a85ff48628c18d7a573d",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.refuse_ptp@person[taxpayer].k1p[mlp]",
+     "fixture:x2k1p.refuse_multi@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_basis@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_at_risk@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_former_passive@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].box1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].ptp@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].r_b2223@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].decisions@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].tenth@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].work@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_multi-person[taxpayer].k1p[fund].general@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_multi-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1p.prior_total",
+   "project_expr_sha256": "3d850fda96597dbcf5bcb5803ce94a19bc4aca74395f7707c6b41cd570a3fc2f",
+   "second_expr_sha256": "0b294e8b3ab6e3ad862c80c59842f68f66b9d2c9fe9f4cb962a77e30a6b1012f",
+   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 510/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 13 project-unknown.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "f0dbc1067ed244de5b96233fcf84be13aaee198e321284cc1466f74deed06375",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.loss_material_with_gp-person[taxpayer].k1p[llc].prior_any@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1p.sche_row",
+   "project_expr_sha256": "38a6e2b9555ebce263d47d6c2dd42444dccb3d92800c4e469b9eb747dbc6de0b",
+   "second_expr_sha256": "dcb73aed122d108a08302b3a94c19d665dbbc7767dc49691714c781592993657",
+   "ruling": "Ruling: representation; equivalent on every fully answered input; the differences are unknowns on partial records only, because the reply reads its gate inputs without the interview's parent questions (or the project reads a parent the reply skips), so each side is unknown where the other has the answer it needs. triage 517/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 1 candidate-unknown, 5 project-unknown.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "501c8e7de909b343c801eecbce50278f7fde1c996d7003c91052345d311e6156",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].box1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk3d_rental_income_active-person[taxpayer].k1p[fund].box2@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.prior_box1_partly_used-person[taxpayer].k1p[fund].has_b1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_multi-person[taxpayer].k1p[fund].prior_any@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_basis-person[taxpayer].k1p[fund].box1@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.refuse_prior_not_active-person[taxpayer].k1p[fund].has_b2@person[taxpayer].k1p[fund]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1p.screened",
+   "project_expr_sha256": "8514593afc86b029ddc172da57d286d63b0f769b6abfed8c63f7cc368e848875",
+   "second_expr_sha256": "4fc4e648bb5500897d7b2cd22763c5062e047be34530f086fcfa4aebeb6cc878",
+   "ruling": "Ruling: interface gap; the reply inverts the interface. k1p.screened is true by construction and carries the K-1's refusals (the refusal list of forms/2025/k1p.yaml, each `when:` a gate such as k1p.not_at_risk_if_loss); every person.k1p_* sum filters on it, so a refused K-1 refuses the return. The reply builds a predicate that is true when a refusal applies, the opposite of the label 'passed every screen', and omits the trader, tests 4/6/7 and former-passive refusals. Triage: 109/534 agree; 171 project-refuses, 71 project-unknown, 183 value (the inversion). Same reading as the first-round ruling of this line.",
+   "context": "83b1ffbfe3b33a12e940a96e01349bacf2affbf6e24311516abc671d230827e5",
+   "date": "2026-11-15",
+   "run": "f192b7b75ca93b01432ef0041c3060260436719702156df02f83c61e7ffdc9a8",
+   "subject_key": "4f7139cb1479fd938a45491f1b8d332fc597891962397652730781213b986b03",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.fk2_general_material@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.fk3_limited_rental_loss@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3b_general_active@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3c_general_under_tenth@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3d_rental_income_active@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk7_portfolio_only@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_ptp@person[taxpayer].k1p[mlp]",
+     "fixture:x2k1p.refuse_box10@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_multi@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_disposed@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_dist_over@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].box1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].work@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b14a@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].box14a@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "k1p.screened",
+   "project_expr_sha256": "8514593afc86b029ddc172da57d286d63b0f769b6abfed8c63f7cc368e848875",
+   "second_expr_sha256": "72f44688c59a45f97932309a5aeec068fda4c29feef8a809b793d277eb287046",
+   "ruling": "Ruling: model error; the line is 'This Schedule K-1 passed every screen (true; the refusals of a K-1 are told here)', true on a supported K-1 with the refusals declared on it; the reply defines the inverse ('This Schedule K-1 has items the tool does not support'), false on every supported K-1 (186 value differences, e.g. x2k1p.fk2_general_material, fk7_portfolio_only), and omits the trader, tests 4/6/7, former passive, prior_not_active and se_loss_not_material screens. Not a project defect: the project's refusals are its declared scope (form note). triage 87/523 agree (26 fixtures, 497 partial records; no generated return reaches k1p while scope.k1 refuses K-1 filers); differing: 157 project-refuses, 93 project-unknown, 186 value.",
+   "context": "3fe789f40b7aefb0fa9cc8bc3e3275ae758127bb1ed4211c04ec806c1dfb0621",
+   "date": "2026-11-15",
+   "run": "4e475f6944d8bb2cdbfb85cceb6f5c383289d793079f75a349fb5b279971c578",
+   "subject_key": "35d77422fb883d0baa21fa04bda679188461a43bd78d40365dc807aedbbc02c6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:x2k1p.fk2_general_material@person[taxpayer].k1p[llc]",
+     "fixture:x2k1p.fk3_limited_rental_loss@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3b_general_active@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3c_general_under_tenth@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk3d_rental_income_active@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.fk7_portfolio_only@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_ptp@person[taxpayer].k1p[mlp]",
+     "fixture:x2k1p.refuse_box10@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_multi@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_disposed@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_dist_over@person[taxpayer].k1p[fund]",
+     "fixture:x2k1p.refuse_trader@person[taxpayer].k1p[fund]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].box1@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].work@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].hours500@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].has_b14a@person[taxpayer].k1p[llc]",
+     "partial:x2k1p.fk2_general_material-person[taxpayer].k1p[llc].box14a@person[taxpayer].k1p[llc]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

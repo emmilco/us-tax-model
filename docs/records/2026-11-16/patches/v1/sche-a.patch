@@ -1,0 +1,731 @@
+diff --git a/fixtures/2025/rental.json b/fixtures/2025/rental.json
+index 0424ecb..cb458b4 100644
+--- a/fixtures/2025/rental.json
++++ b/fixtures/2025/rental.json
+@@ -1764,6 +1764,408 @@
+           "cents": 727600
+         }
+       }
++    },
++    {
++      "id": "xsa.f8582_mfs_together_late",
++      "covers": [
++        "rental",
++        "sche",
++        "f8582",
++        "s1"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Hand-predicted from i8582 (BUG-0836): the rental of x1sche.f2.small_loss_exception (line 21 -$213.20) on a married-filing-separately return, spouses lived together from July to December. i8582 p. 10, Part II caution: not eligible for the special allowance, do not complete Part II, so line 4 and line 9 are $0; p. 1, the exception needs the spouses to have lived apart all year, so it fails and Form 8582 is required. Line 10 (passive income) $0, line 11 $0; Part VII line C = 213.20 - 0 = 213.20, all unallowed; line 22 $0, carried to 2026 $213.20; AGI = wages $50,000.",
++      "inputs": {
++        "scope.rental": true,
++        "$w2@person[taxpayer]": [
++          "a"
++        ],
++        "person[taxpayer].w2[a].box1": 5000000,
++        "person[taxpayer].w2[a].box3": 5000000,
++        "person[taxpayer].w2[a].box5": 5000000,
++        "$rental": [
++          "a"
++        ],
++        "rental[a].kind": "sfr",
++        "rental[a].rents": 1350000,
++        "rental[a].has_mortgage": true,
++        "rental[a].amt12": 800000,
++        "rental[a].has_insurance": true,
++        "rental[a].amt9": 40000,
++        "rental[a].has_taxes": true,
++        "rental[a].amt16": 50000,
++        "rental[a].has_repairs": true,
++        "rental[a].amt14": 25000,
++        "rental[a].has_utilities": true,
++        "rental[a].amt17": 20000,
++        "$rprop@rental[a]": [
++          "b"
++        ],
++        "rental[a].rprop[b].kind": "residential",
++        "rental[a].rprop[b].month": "m2",
++        "rental[a].rprop[b].year": "y2020",
++        "rental[a].rprop[b].basis": 12000000,
++        "f1040.status": "mfs",
++        "household.mfs_living": "together_late"
++      },
++      "expect": {
++        "f8582.exception": {
++          "kind": "bool",
++          "value": false
++        },
++        "f8582.required": {
++          "kind": "bool",
++          "value": true
++        },
++        "f8582.line4": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8582.line9": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8582.p7_C": {
++          "kind": "money",
++          "cents": 21320
++        },
++        "rental[a].line21": {
++          "kind": "money",
++          "cents": -21320
++        },
++        "rental[a].line22": {
++          "kind": "money",
++          "cents": 0
++        },
++        "rental[a].carryforward": {
++          "kind": "money",
++          "cents": 21320
++        },
++        "s1.line5": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f1040.line11a": {
++          "kind": "money",
++          "cents": 5000000
++        }
++      }
++    },
++    {
++      "id": "xsa.f8582_mfs_apart_last6",
++      "covers": [
++        "rental",
++        "sche",
++        "f8582",
++        "s1"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Hand-predicted from i8582 (BUG-0836): the rental of x1sche.f2.small_loss_exception (line 21 -$213.20) on a married-filing-separately return, spouses lived together only before July (still 'at any time during the year'). i8582 p. 10, Part II caution: not eligible for the special allowance, do not complete Part II, so line 4 and line 9 are $0; p. 1, the exception needs the spouses to have lived apart all year, so it fails and Form 8582 is required. Line 10 (passive income) $0, line 11 $0; Part VII line C = 213.20 - 0 = 213.20, all unallowed; line 22 $0, carried to 2026 $213.20; AGI = wages $50,000.",
++      "inputs": {
++        "scope.rental": true,
++        "$w2@person[taxpayer]": [
++          "a"
++        ],
++        "person[taxpayer].w2[a].box1": 5000000,
++        "person[taxpayer].w2[a].box3": 5000000,
++        "person[taxpayer].w2[a].box5": 5000000,
++        "$rental": [
++          "a"
++        ],
++        "rental[a].kind": "sfr",
++        "rental[a].rents": 1350000,
++        "rental[a].has_mortgage": true,
++        "rental[a].amt12": 800000,
++        "rental[a].has_insurance": true,
++        "rental[a].amt9": 40000,
++        "rental[a].has_taxes": true,
++        "rental[a].amt16": 50000,
++        "rental[a].has_repairs": true,
++        "rental[a].amt14": 25000,
++        "rental[a].has_utilities": true,
++        "rental[a].amt17": 20000,
++        "$rprop@rental[a]": [
++          "b"
++        ],
++        "rental[a].rprop[b].kind": "residential",
++        "rental[a].rprop[b].month": "m2",
++        "rental[a].rprop[b].year": "y2020",
++        "rental[a].rprop[b].basis": 12000000,
++        "f1040.status": "mfs",
++        "household.mfs_living": "apart_last6"
++      },
++      "expect": {
++        "f8582.exception": {
++          "kind": "bool",
++          "value": false
++        },
++        "f8582.required": {
++          "kind": "bool",
++          "value": true
++        },
++        "f8582.line4": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8582.line9": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8582.p7_C": {
++          "kind": "money",
++          "cents": 21320
++        },
++        "rental[a].line21": {
++          "kind": "money",
++          "cents": -21320
++        },
++        "rental[a].line22": {
++          "kind": "money",
++          "cents": 0
++        },
++        "rental[a].carryforward": {
++          "kind": "money",
++          "cents": 21320
++        },
++        "s1.line5": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f1040.line11a": {
++          "kind": "money",
++          "cents": 5000000
++        }
++      }
++    },
++    {
++      "id": "xsa.f8582_mfs_apart_all_year",
++      "covers": [
++        "rental",
++        "sche",
++        "f8582",
++        "s1"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Hand-predicted from i8582 (BUG-0836): the same rental on a married-filing-separately return, spouses apart all year. The exception holds with the separate-return limits (p. 1: loss $213.20 not more than $12,500; MAGI $50,000 not more than $50,000), so Form 8582 is not required. Part II as computed: line 4 213.20, line 5 $75,000, line 7 75,000 - 50,000 = 25,000, line 8 the smaller of 12,500 and $12,500 = 12,500, line 9 213.20; line 22 -213.20; AGI 49,786.80.",
++      "inputs": {
++        "scope.rental": true,
++        "$w2@person[taxpayer]": [
++          "a"
++        ],
++        "person[taxpayer].w2[a].box1": 5000000,
++        "person[taxpayer].w2[a].box3": 5000000,
++        "person[taxpayer].w2[a].box5": 5000000,
++        "$rental": [
++          "a"
++        ],
++        "rental[a].kind": "sfr",
++        "rental[a].rents": 1350000,
++        "rental[a].has_mortgage": true,
++        "rental[a].amt12": 800000,
++        "rental[a].has_insurance": true,
++        "rental[a].amt9": 40000,
++        "rental[a].has_taxes": true,
++        "rental[a].amt16": 50000,
++        "rental[a].has_repairs": true,
++        "rental[a].amt14": 25000,
++        "rental[a].has_utilities": true,
++        "rental[a].amt17": 20000,
++        "$rprop@rental[a]": [
++          "b"
++        ],
++        "rental[a].rprop[b].kind": "residential",
++        "rental[a].rprop[b].month": "m2",
++        "rental[a].rprop[b].year": "y2020",
++        "rental[a].rprop[b].basis": 12000000,
++        "f1040.status": "mfs",
++        "household.mfs_living": "apart_all_year"
++      },
++      "expect": {
++        "f8582.exception": {
++          "kind": "bool",
++          "value": true
++        },
++        "f8582.required": {
++          "kind": "bool",
++          "value": false
++        },
++        "f8582.line5": {
++          "kind": "money",
++          "cents": 7500000
++        },
++        "f8582.line8": {
++          "kind": "money",
++          "cents": 1250000
++        },
++        "f8582.line9": {
++          "kind": "money",
++          "cents": 21320
++        },
++        "rental[a].line22": {
++          "kind": "money",
++          "cents": -21320
++        },
++        "f1040.line11a": {
++          "kind": "money",
++          "cents": 4978680
++        }
++      }
++    },
++    {
++      "id": "xsa.converted_home_june",
++      "covers": [
++        "rental",
++        "rprop",
++        "rf4562",
++        "sche",
++        "f8582",
++        "s1"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Hand-predicted (BUG-0775): the filer's home until May 31, 2025, rented from June 1 (214 days at a fair rent; the main-home days are not personal-use days, p527 p. 27). Following the amount questions' help, each yearly cost is entered for June to December only (p527 p. 22, Property Changed to Rental Use: seven-twelfths): mortgage interest 8,000 x 7/12 = 4,666.67, insurance 400 x 7/12 = 233.33, tax 500 x 7/12 = 291.67; repairs 250 and utilities 200 paid while rented. No personal-use days, so no further division: lines 9, 12 and 16 are the amounts entered. Building $120,000 placed in service June 2025, p946 Table A-6 month 6, 1.970% = $2,364.00. Expenses 5,641.67 + 2,364.00 = 8,005.67; line 21 = 7,000 - 8,005.67 = -1,005.67. Form 8582 exception (active, loss under $25,000, MAGI $50,000): line 22 -1,005.67; AGI 48,994.33.",
++      "inputs": {
++        "scope.rental": true,
++        "$w2@person[taxpayer]": [
++          "a"
++        ],
++        "person[taxpayer].w2[a].box1": 5000000,
++        "person[taxpayer].w2[a].box3": 5000000,
++        "person[taxpayer].w2[a].box5": 5000000,
++        "$rental": [
++          "a"
++        ],
++        "rental[a].kind": "sfr",
++        "rental[a].days_fair": 214,
++        "rental[a].personal_any": false,
++        "rental[a].rents": 700000,
++        "rental[a].has_mortgage": true,
++        "rental[a].amt12": 466667,
++        "rental[a].has_insurance": true,
++        "rental[a].amt9": 23333,
++        "rental[a].has_taxes": true,
++        "rental[a].amt16": 29167,
++        "rental[a].has_repairs": true,
++        "rental[a].amt14": 25000,
++        "rental[a].has_utilities": true,
++        "rental[a].amt17": 20000,
++        "$rprop@rental[a]": [
++          "b"
++        ],
++        "rental[a].rprop[b].kind": "residential",
++        "rental[a].rprop[b].month": "m6",
++        "rental[a].rprop[b].year": "y2025",
++        "rental[a].rprop[b].basis": 12000000
++      },
++      "expect": {
++        "rental[a].line9": {
++          "kind": "money",
++          "cents": 23333
++        },
++        "rental[a].line12": {
++          "kind": "money",
++          "cents": 466667
++        },
++        "rental[a].line16": {
++          "kind": "money",
++          "cents": 29167
++        },
++        "rental[a].line18": {
++          "kind": "money",
++          "cents": 236400
++        },
++        "rental[a].line21": {
++          "kind": "money",
++          "cents": -100567
++        },
++        "rental[a].line22": {
++          "kind": "money",
++          "cents": -100567
++        },
++        "f1040.line11a": {
++          "kind": "money",
++          "cents": 4899433
++        }
++      }
++    },
++    {
++      "id": "xsa.tenant_paid_repair",
++      "covers": [
++        "rental",
++        "sche",
++        "s1"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Hand-predicted (BUG-0789): rent $11,400 received plus a $600 repair the tenant paid in place of rent; both are rent (p527, Expenses paid by tenant), so rents are $12,000, and the repair is ticked and entered as a cost (\"Did you, or a tenant for you, pay ...\"). Line 14 $600; line 21 = 12,000 - 600 = 11,400; AGI 50,000 + 11,400 = 61,400.",
++      "inputs": {
++        "scope.rental": true,
++        "$w2@person[taxpayer]": [
++          "a"
++        ],
++        "person[taxpayer].w2[a].box1": 5000000,
++        "person[taxpayer].w2[a].box3": 5000000,
++        "person[taxpayer].w2[a].box5": 5000000,
++        "$rental": [
++          "a"
++        ],
++        "rental[a].kind": "sfr",
++        "rental[a].rents": 1200000,
++        "rental[a].has_repairs": true,
++        "rental[a].amt14": 60000
++      },
++      "expect": {
++        "rental[a].line14": {
++          "kind": "money",
++          "cents": 60000
++        },
++        "rental[a].line21": {
++          "kind": "money",
++          "cents": 1140000
++        },
++        "f1040.line11a": {
++          "kind": "money",
++          "cents": 6140000
++        }
++      }
++    },
++    {
++      "id": "xsa.royalty_tax_withheld",
++      "covers": [
++        "royalty",
++        "sche",
++        "s1"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "Hand-predicted (BUG-0890): an oil royalty of $10,000 gross, from which the producer withheld $500 severance tax (i1040se p. 6, Line 4: gross on line 4, the tax withheld on line 16). The filer answers Yes to the costs question (\"or did the payer take any out of your payments\"): line 4 $10,000, line 16 $500, line 20 $500, line 21 $9,500; AGI 50,000 + 9,500 = 59,500.",
++      "inputs": {
++        "scope.rental": true,
++        "$w2@person[taxpayer]": [
++          "a"
++        ],
++        "person[taxpayer].w2[a].box1": 5000000,
++        "person[taxpayer].w2[a].box3": 5000000,
++        "person[taxpayer].w2[a].box5": 5000000,
++        "$rental": [],
++        "$royalty": [
++          "r"
++        ],
++        "royalty[r].line4": 1000000,
++        "royalty[r].expenses_any": true,
++        "royalty[r].amt16": 50000
++      },
++      "expect": {
++        "royalty[r].line16": {
++          "kind": "money",
++          "cents": 50000
++        },
++        "royalty[r].line21": {
++          "kind": "money",
++          "cents": 950000
++        },
++        "f1040.line11a": {
++          "kind": "money",
++          "cents": 5950000
++        }
++      }
+     }
+   ]
+ }
+diff --git a/forms/2025/asset.yaml b/forms/2025/asset.yaml
+index 9cfbe86..2443f78 100644
+--- a/forms/2025/asset.yaml
++++ b/forms/2025/asset.yaml
+@@ -1068,14 +1068,16 @@ form:
+     type: Bool
+     expr:
+       op: input
+-      source: 'Is this listed property: property used for entertainment or recreation (such as photographic, phonographic,
+-        communication or video recording equipment) that is not used exclusively in your business or at your regular business
+-        establishment, or a computer placed in service before 2018 that is not used exclusively at your regular business establishment?
++      source: 'Is this listed property: a boat or other property used for transportation; property used for entertainment
++        or recreation (such as photographic, phonographic, communication or video recording equipment) that is not used
++        exclusively in your business or at your regular business establishment; or a computer placed in service before 2018
++        that is not used exclusively at your regular business establishment?
+         A part of your home is your regular business establishment only if that part meets the requirements for deducting
+         expenses for the business use of a home.'
+     cite:
+       doc: i4562
+-      locator: p. 3, Listed Property and its Exceptions, "a portion of the taxpayer’s home is treated as a regular business
++      locator: p. 3, Listed Property, "Any other property used for transportation if the nature of the property lends itself
++        to personal use", and its Exceptions, "a portion of the taxpayer’s home is treated as a regular business
+         establishment only if that portion meets the requirements for deducting expenses attributable to the business use
+         of a home"; p. 13, Part V
+   - id: asset.half
+diff --git a/forms/2025/f8582.yaml b/forms/2025/f8582.yaml
+index d92a39e..7d6ae7f 100644
+--- a/forms/2025/f8582.yaml
++++ b/forms/2025/f8582.yaml
+@@ -331,9 +331,29 @@ form:
+     cite:
+       doc: i8582
+       locator: p. 11, Line 4
++  - id: f8582.mfs_together
++    printed: (helper)
++    label: Married filing separately, and you lived with your spouse at some time in 2025
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        eq:
++        - household.mfs
++        - const: true
++      - op: test
++        eq:
++        - household.mfs_apart_all_year
++        - const: false
++    cite:
++      doc: i8582
++      locator: 'p. 10, Part II, "Caution: If your filing status is married filing separately and you lived with your spouse
++        at any time during the year, you are not eligible for the special allowances in Part II. Do not complete Part II"'
+   - id: f8582.part2
+     printed: (helper)
+-    label: 'Part II applies: line 3 is a loss and line 1d is a loss'
++    label: 'Part II applies: line 3 is a loss and line 1d is a loss, and you are not married filing separately having lived
++      with your spouse at some time in 2025'
+     type: Bool
+     expr:
+       op: test
+@@ -346,13 +366,36 @@ form:
+         lt:
+         - f8582.line3
+         - const: 0
++      - op: test
++        eq:
++        - f8582.mfs_together
++        - const: false
+     cite:
+       doc: f8582
+-      locator: 'Form 8582 (2025), line 3, "If line 3 is a loss and: • Line 1d is a loss, go to Part II"'
++      locator: 'Form 8582 (2025), line 3, "If line 3 is a loss and: • Line 1d is a loss, go to Part II"; i8582 p. 10, Part II,
++        "Do not complete Part II. Instead, go to Part III of Form 8582"'
++  - id: f8582.part2_shown
++    printed: (gate)
++    label: Part II is shown (Form 8582 is required, and the married-filing-separately caution does not apply)
++    type: Bool
++    expr:
++      op: test
++      all:
++      - op: test
++        eq:
++        - f8582.required
++        - const: true
++      - op: test
++        eq:
++        - f8582.mfs_together
++        - const: false
++    cite:
++      doc: i8582
++      locator: 'p. 10, Part II, "Do not complete Part II"'
+   - id: f8582.line4
+     printed: '4'
+     label: Enter the smaller of the loss on line 1d or the loss on line 3
+-    shown_when: f8582.required
++    shown_when: f8582.part2_shown
+     type: NonNegDollars
+     expr:
+       op: choose
+@@ -375,7 +418,7 @@ form:
+   - id: f8582.line5
+     printed: '5'
+     label: Enter $150,000. If married filing separately, see instructions
+-    shown_when: f8582.required
++    shown_when: f8582.part2_shown
+     type: NonNegDollars
+     expr:
+       op: param
+@@ -425,7 +468,7 @@ form:
+   - id: f8582.line6
+     printed: '6'
+     label: Enter modified adjusted gross income, but not less than zero
+-    shown_when: f8582.required
++    shown_when: f8582.part2_shown
+     type: NonNegDollars
+     expr:
+       op: subtract_floor0
+@@ -438,7 +481,7 @@ form:
+   - id: f8582.line7
+     printed: '7'
+     label: Subtract line 6 from line 5
+-    shown_when: f8582.required
++    shown_when: f8582.part2_shown
+     type: NonNegDollars
+     expr:
+       op: subtract_floor0
+@@ -472,7 +515,7 @@ form:
+   - id: f8582.line8
+     printed: '8'
+     label: Multiply line 7 by 50% (0.50). Do not enter more than $25,000
+-    shown_when: f8582.required
++    shown_when: f8582.part2_shown
+     type: NonNegDollars
+     expr:
+       op: smaller_of
+@@ -485,7 +528,7 @@ form:
+   - id: f8582.line9
+     printed: '9'
+     label: Enter the smaller of line 4 or line 8
+-    shown_when: f8582.required
++    shown_when: f8582.part2_shown
+     type: NonNegDollars
+     expr:
+       op: smaller_of
+@@ -579,7 +622,7 @@ form:
+   - id: f8582.exception
+     printed: (gate)
+     label: 'The filing exception holds: active participation only, no prior unallowed loss, total loss $25,000 or less, MAGI
+-      $100,000 or less'
++      $100,000 or less, and, if married filing separately, you lived apart from your spouse all year'
+     type: Bool
+     expr:
+       op: test
+@@ -604,9 +647,14 @@ form:
+         le:
+         - f8582.line6
+         - param: f8582.exception_magi
++      - op: test
++        eq:
++        - f8582.mfs_together
++        - const: false
+     cite:
+       doc: i8582
+-      locator: p. 1, Exception, "Your total loss from the rental real estate activities wasn’t more than $25,000"
++      locator: p. 1, Exception, "Your total loss from the rental real estate activities wasn’t more than $25,000"; "If you’re
++        married filing separately, you lived apart from your spouse all year"
+     ambiguity: amb.2025.f8582_shown
+   - id: f8582.deductions
+     printed: (helper)
+diff --git a/forms/2025/rental.yaml b/forms/2025/rental.yaml
+index c831a6c..54202ef 100644
+--- a/forms/2025/rental.yaml
++++ b/forms/2025/rental.yaml
+@@ -1295,7 +1295,7 @@ form:
+     gated_by: rental.amt17_if_any
+     expr:
+       op: input
+-      source: Utilities you paid, paid in 2025
++      source: Utilities for it, paid in 2025 by you or by a tenant in place of rent
+     cite: *id014
+   - id: rental.amt17_if_any
+     printed: (gate)
+@@ -1953,11 +1953,12 @@ form:
+     gated_by: rental.not_at_risk_if_loss
+     expr:
+       op: input
+-      source: Is any of the money you put into it borrowed on a loan you are not personally liable for, other than a loan
+-        from a bank or other lender in the business of lending (for example, a loan from the seller)?
++      source: Was any money you put into it borrowed without personal liability from anyone but a bank or other regular
++        lender, protected from loss by a guarantee or stop-loss agreement, or lent by someone with a stake in it?
+     cite:
+       doc: i1040se
+-      locator: p. 2, At-Risk Rules
++      locator: p. 2, At-Risk Rules, "In most cases, you are not at risk for amounts such as the following", and Qualified
++        nonrecourse financing
+   - id: rental.not_at_risk_if_loss
+     printed: (gate)
+     label: Asked only when the property has a loss (false otherwise)
+diff --git a/forms/2025/royalty.yaml b/forms/2025/royalty.yaml
+index a92356a..2da5b0e 100644
+--- a/forms/2025/royalty.yaml
++++ b/forms/2025/royalty.yaml
+@@ -64,7 +64,8 @@ form:
+     type: Bool
+     expr:
+       op: input
+-      source: Did you pay any costs for it, such as fees, taxes or production costs?
++      source: Did you pay any costs for it, or did the payer take any out of your payments (such as fees, severance or
++        production taxes, or production costs)?
+     cite:
+       doc: i1040se
+       locator: p. 6, General Instructions for Lines 5 Through 21
+@@ -137,7 +138,7 @@ form:
+     gated_by: royalty.line19
+     expr:
+       op: input
+-      source: Other costs of it (not depletion), paid in 2025; zero if none
++      source: Other costs of it (not depletion), paid in 2025 or taken out of your payments; zero if none
+     cite: &id003
+       doc: i1040se
+       locator: p. 6, Line 19
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 681ceac..87acb62 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -160,11 +160,11 @@ bank:
+   - id: rental_rare
+     heading: "Is any of these true of this rental?"
+   - id: rental_costs_a
+-    heading: "Did you pay any of these for this rental in 2025?"
++    heading: "Did you, or a tenant for you, pay any of these for this rental in 2025?"
+   - id: rental_costs_b
+-    heading: "Did you pay any of these for it in 2025?"
++    heading: "Did you, or a tenant for you, pay any of these for it in 2025?"
+   - id: rental_costs_c
+-    heading: "And did you pay either of these for it?"
++    heading: "And did you, or a tenant for you, pay either of these for it?"
+   - id: royalty_rare
+     heading: "Is either of these true of this royalty?"
+   - id: rental_return
+@@ -2068,12 +2068,12 @@ bank:
+     seq: 2
+     group: before_2025
+     tick: A loss still being carried into 2025 (a 'net operating loss')
+-    help: "A loss bigger than that year's income, carried forward on an earlier return. It can come from a business, or from a disaster or theft with no business."
++    help: "A loss bigger than that year's income, not yet used up, from a business, farm, rental or K-1 share, or a disaster; or a business loss held back by the yearly limit (Form 461). Passive losses held back on Form 8582 are not."
+   - input: s1.nol_amount
+     order: 258
+     seq: 10
+     help: Your records from the year of the loss, or your Form 172, show it. Give what is still unused, after what earlier
+-      returns used.
++      returns used. Leave out losses held back on Form 8582 or by basis or at-risk limits.
+     prompt: How much of that loss is still unused and carried into 2025?
+   - input: s1.nol_before_limit_date
+     order: 258
+@@ -5603,8 +5603,8 @@ bank:
+   - input: asset.listed
+     order: 257
+     seq: 12
+-    prompt: For this property — Is it equipment of a kind used for entertainment or recreation (such as a camera, or sound
+-      or video recording equipment) that is not used only in your business or at your regular place of business? Also
++    prompt: For this property — Is it a boat, or something used for entertainment or recreation (such as a camera, or sound,
++      video or communication equipment) that is not used only in your business or at your regular place of business? Also
+       answer Yes for a computer you began using before 2018 that is not used only at your regular place of business.
+     help: A part of your home is your regular business establishment only if that part meets the requirements for
+       deducting expenses for the business use of a home.
+@@ -6978,7 +6978,8 @@ bank:
+   - input: rental.rents
+     order: 130
+     seq: 25
+-    help: Form 1099-MISC box 1 may show it. Include a security deposit you kept and repairs a tenant paid for in place of rent.
++    help: Form 1099-MISC box 1 may show it. Include a security deposit you kept, and repairs or bills a tenant paid for you
++      in place of rent; enter those again below as costs.
+   - input: rental.has_mortgage
+     order: 130
+     seq: 26
+@@ -7062,6 +7063,7 @@ bank:
+   - input: rental.amt9
+     order: 130
+     seq: 43
++    help: If it was your home for part of 2025, enter only the part for the time it was rented or offered for rent.
+   - input: rental.amt10
+     order: 130
+     seq: 44
+@@ -7071,10 +7073,12 @@ bank:
+   - input: rental.amt12
+     order: 130
+     seq: 46
+-    help: Only the interest on this property, your share. Leave this mortgage out of your home mortgage interest.
++    help: Only the interest on this property, your share. If it was your home for part of 2025, enter only the part for the
++      time it was rented or offered for rent. Leave what you enter here out of your home mortgage interest.
+   - input: rental.amt13
+     order: 130
+     seq: 47
++    help: If it was your home for part of 2025, enter only the part for the time it was rented or offered for rent.
+   - input: rental.amt14
+     order: 130
+     seq: 48
+@@ -7085,7 +7089,8 @@ bank:
+   - input: rental.amt16
+     order: 130
+     seq: 50
+-    help: Leave these taxes out of the taxes you deduct for your own home.
++    help: If it was your home for part of 2025, enter only the part for the time it was rented or offered for rent. Leave
++      what you enter here out of the taxes you deduct for your home.
+   - input: rental.amt17
+     order: 130
+     seq: 51
+@@ -7189,7 +7194,8 @@ bank:
+   - input: rental.not_at_risk
+     order: 130
+     seq: 62
+-    help: A Yes ends the interview here.
++    help: A mortgage from a bank, a government or another regular lender is at risk. A loan from the seller, a co-owner, or a
++      relative of either is a Yes. A Yes ends the interview here.
+   - input: $royalty
+     order: 130
+     seq: 71

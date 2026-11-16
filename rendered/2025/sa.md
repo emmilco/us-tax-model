@@ -6,7 +6,7 @@
 ## (helper) — `sa.unsupported`
 
 - **Authored helper label:** A Schedule A item this tool does not compute: mortgage interest or points not on Form 1098 or subject to the debt or use limits; the sales-tax election; a foreign tax deduction; or a deduction from the Schedule A line 16 list other than gambling losses
-- **Encoded (Bool):** (helper "Asked only where it can apply (sa.mortgage_unreported)" = true or helper "Asked only where it can apply (sa.mortgage_over_limit)" = true or helper "Asked only where it can apply (sa.mortgage_other_use)" = true or helper "Do you elect to deduct state and local general sales taxes instead of state and local income taxes?" = true or helper "Asked only where it can apply (sa.foreign_tax_deduct)" = true or helper "Do you (or, on a joint return, your spouse) have a deduction for federal estate tax on income in respect of a decedent?" = true or helper "Do you (or, on a joint return, your spouse) have a deduction for amortizable bond premium (for example, a bond premium carryforward, or premium on bonds acquired before October 23, 1986)?" = true or helper "Do you (or, on a joint return, your spouse) have an ordinary loss attributable to a contingent payment debt instrument or an inflation-indexed debt instrument (for example, a Treasury Inflation-Protected Security)?" = true or helper "Is there an unrecovered investment in a pension to deduct (the after-tax contributions of a person who died before recovering them)?" = true or helper "Do you (or, on a joint return, your spouse) have impairment-related work expenses of a disabled person?" = true)
+- **Encoded (Bool):** (helper "Asked only where it can apply (sa.mortgage_unreported)" = true or helper "The home mortgage debt is over the limit for the filing status ($750,000 or $1,000,000; $375,000 or $500,000 if married filing separately) or over the home's value (no when no mortgage interest was paid)" = true or helper "Asked only where it can apply (sa.mortgage_other_use)" = true or helper "Do you elect to deduct state and local general sales taxes instead of state and local income taxes?" = true or helper "Asked only where it can apply (sa.foreign_tax_deduct)" = true or helper "Do you (or, on a joint return, your spouse) have a deduction for federal estate tax on income in respect of a decedent?" = true or helper "Do you (or, on a joint return, your spouse) have a deduction for amortizable bond premium (for example, a bond premium carryforward, or premium on bonds acquired before October 23, 1986)?" = true or helper "Do you (or, on a joint return, your spouse) have an ordinary loss attributable to a contingent payment debt instrument or an inflation-indexed debt instrument (for example, a Treasury Inflation-Protected Security)?" = true or helper "Is there an unrecovered investment in a pension to deduct (the after-tax contributions of a person who died before recovering them)?" = true or helper "Do you (or, on a joint return, your spouse) have impairment-related work expenses of a disabled person?" = true)
 - Expr: `{"any":[{"eq":["sa.mortgage_unreported_if_home",{"const":true}],"op":"test"},{"eq":["sa.mortgage_over_limit_if_interest",{"const":true}],"op":"test"},{"eq":["sa.mortgage_other_use_if_interest",{"const":true}],"op":"test"},{"eq":["sa.sales_tax_wish",{"const":true}],"op":"test"},{"eq":["sa.foreign_tax_deduct_if_tax",{"const":true}],"op":"test"},{"eq":["sa.estate_tax_income",{"const":true}],"op":"test"},{"eq":["sa.bond_premium",{"const":true}],"op":"test"},{"eq":["sa.debt_instrument_loss",{"const":true}],"op":"test"},{"eq":["sa.pension_unrecovered",{"const":true}],"op":"test"},{"eq":["sa.impairment_work",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040sca] p. 8, Limits on home mortgage interest, "Your deduction for home mortgage interest is subject to a number of limits"; p. 8, Line 8b, "If you paid home mortgage interest to a recipient who didn’t provide you a Form 1098, report your deductible mortgage interest on line 8b"; p. 3, Line 5a, "You can elect to deduct state and local general sales taxes instead of state and local income taxes"; p. 7, Other Taxes, "Include on this line income taxes you paid to a foreign country"; pp. 11–12, Other Itemized Deductions, "Only the expenses listed next can be deducted on line 16" (2025; printed date 2025-12-08; sha256 b0999b12)
 
@@ -79,9 +79,9 @@
 
 ## (helper) — `sa.dependent`
 
-- **Authored helper label:** Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
-- **Encoded (Bool):** Input — Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
-- Expr: `{"op":"input","source":"Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)"}`
+- **Authored helper label:** Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
+- **Encoded (Bool):** Input — Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
+- Expr: `{"op":"input","source":"Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
 ## (helper) — `sa.spouse_extra`
@@ -89,14 +89,21 @@
 - **Authored helper label:** Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?
 - **Encoded (Bool):** Input — Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?
 - Expr: `{"op":"input","source":"Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- Cite: [i1040gi] p. 33, Line 12d, "you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return"; p. 34, Exception 2—Spouse itemizes on a separate return, "your standard deduction is zero, even if you were born before January 2, 1961, or were blind" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `sa.mfs_spouse_extra`
 
-- **Authored helper label:** Married filing separately and claiming age or blindness boxes for your spouse
-- **Encoded (Bool):** Choose — [helper "Married filing separately" = true → helper "Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?"] [helper "Married filing separately" = false → helper "Year parameter sa.no (no)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["sa.mfs",{"const":true}],"op":"test"},"then":"sa.spouse_extra"},{"guard":{"eq":["sa.mfs",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
-- Cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return" (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Authored helper label:** Married filing separately and claiming age or blindness boxes for your spouse (asked only when the spouse is not itemizing on a separate return; otherwise no)
+- **Encoded (Bool):** Choose — [helper "Married filing separately with a spouse who is not itemizing deductions on a separate return" = true → helper "Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?"] [helper "Married filing separately with a spouse who is not itemizing deductions on a separate return" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.mfs_spouse_not_itemizing",{"const":true}],"op":"test"},"then":"sa.spouse_extra"},{"guard":{"eq":["sa.mfs_spouse_not_itemizing",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return"; p. 34, Exception 2—Spouse itemizes on a separate return, "your standard deduction is zero, even if you were born before January 2, 1961, or were blind" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sa.mfs_spouse_not_itemizing`
+
+- **Authored helper label:** Married filing separately with a spouse who is not itemizing deductions on a separate return
+- **Encoded (Bool):** helper "Married filing separately" = true and helper "MFS with spouse itemizing" = false
+- Expr: `{"all":[{"eq":["sa.mfs",{"const":true}],"op":"test"},{"eq":["sa.mfs_spouse_itemizes",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 34, Exception 2—Spouse itemizes on a separate return, "your standard deduction is zero, even if you were born before January 2, 1961, or were blind" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.age65_count`
 
@@ -114,10 +121,11 @@
 
 ## (helper) — `sa.spouse_itemizes`
 
-- **Authored helper label:** Married filing separately with a spouse who itemizes?
-- **Encoded (Bool):** Input — Married filing separately with a spouse who itemizes?
-- Expr: `{"op":"input","source":"Married filing separately with a spouse who itemizes?"}`
-- Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
+- **Authored helper label:** Is your husband or wife itemizing deductions on their own 2025 return, instead of taking the standard deduction?
+- **Encoded (Bool):** Input — Is your husband or wife itemizing deductions on their own 2025 return, instead of taking the standard deduction?
+- Interpretation: amb.2025.sa_mfs_spouse_itemizes
+- Expr: `{"op":"input","source":"Is your husband or wife itemizing deductions on their own 2025 return, instead of taking the standard deduction?"}`
+- Cite: [i1040gi] p. 33, Line 12b, "If your filing status is married filing separately and your spouse itemizes deductions on their return, check the box on line 12b"; p. 14, Married Filing Separately, "You also can’t take the standard deduction if your spouse itemizes deductions"; p. 34, Exception 2—Spouse itemizes on a separate return, "If you checked the box on line 12b, your standard deduction is zero" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.elect_itemize`
 
@@ -428,12 +436,48 @@
 - Expr: `{"op":"input","source":"Is your home mortgage interest limited because the mortgage debt is more than $750,000 (more than $1,000,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?"}`
 - Cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; sha256 c14acf34)
 
-## (gate) — `sa.mortgage_over_limit_if_interest`
+## (helper) — `sa.mortgage_interest_not_mfs`
 
-- **Authored helper label:** Asked only where it can apply (sa.mortgage_over_limit)
-- **Encoded (Bool):** Choose — [helper "Home mortgage interest is entered on line 8a" = true → helper "Is your home mortgage interest limited because the mortgage debt is more than $750,000 (more than $1,000,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?"] [helper "Home mortgage interest is entered on line 8a" = false → helper "Year parameter sa.no (no)"]
-- Expr: `{"alternatives":[{"guard":{"eq":["sa.has_mortgage_interest",{"const":true}],"op":"test"},"then":"sa.mortgage_over_limit"},{"guard":{"eq":["sa.has_mortgage_interest",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- **Authored helper label:** Home mortgage interest paid, on a return that is not married filing separately
+- **Encoded (Bool):** helper "Home mortgage interest is entered on line 8a" = true and helper "Married filing separately" = false
+- Expr: `{"all":[{"eq":["sa.has_mortgage_interest",{"const":true}],"op":"test"},{"eq":["sa.mfs",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i1040sca] p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.mortgage_interest_mfs`
+
+- **Authored helper label:** Home mortgage interest paid, on a married filing separately return
+- **Encoded (Bool):** helper "Home mortgage interest is entered on line 8a" = true and helper "Married filing separately" = true
+- Expr: `{"all":[{"eq":["sa.has_mortgage_interest",{"const":true}],"op":"test"},{"eq":["sa.mfs",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040sca] p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (gate) — `sa.mortgage_over_limit_if_joint_limits`
+
+- **Authored helper label:** The home mortgage debt is over the $750,000 or $1,000,000 limit or the home's value, asked only where mortgage interest was paid on a return that is not married filing separately (otherwise no)
+- **Encoded (Bool):** Choose — [helper "Home mortgage interest paid, on a return that is not married filing separately" = true → helper "Is your home mortgage interest limited because the mortgage debt is more than $750,000 (more than $1,000,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?"] [helper "Home mortgage interest paid, on a return that is not married filing separately" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.mortgage_interest_not_mfs",{"const":true}],"op":"test"},"then":"sa.mortgage_over_limit"},{"guard":{"eq":["sa.mortgage_interest_not_mfs",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
 - Cite: [i1040sca] p. 8, Limits on home mortgage interest, "you can only deduct home mortgage interest on up to $1,000,000", "deduct home mortgage interest on up to $750,000", "If the total amount of all mortgages is more than the fair market value of the home" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.mortgage_over_limit_mfs`
+
+- **Authored helper label:** Is your home mortgage interest limited because the mortgage debt is more than $375,000 (more than $500,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?
+- **Encoded (Bool):** Input — Is your home mortgage interest limited because the mortgage debt is more than $375,000 (more than $500,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?
+- Interpretation: amb.2025.sa_mfs_mortgage_limit
+- Expr: `{"op":"input","source":"Is your home mortgage interest limited because the mortgage debt is more than $375,000 (more than $500,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?"}`
+- Cite: [i1040sca] p. 8, Limits on home mortgage interest, "you can only deduct home mortgage interest on up to $1,000,000 ($500,000 if you are married filing separately) of that debt", "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt", "If the total amount of all mortgages is more than the fair market value of the home" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (gate) — `sa.mortgage_over_limit_mfs_if_mfs`
+
+- **Authored helper label:** The home mortgage debt is over the $375,000 or $500,000 limit or the home's value, asked only where mortgage interest was paid on a married filing separately return (otherwise no)
+- **Encoded (Bool):** Choose — [helper "Home mortgage interest paid, on a married filing separately return" = true → helper "Is your home mortgage interest limited because the mortgage debt is more than $375,000 (more than $500,000 where it was all taken out on or before December 15, 2017), or because the mortgages together are more than the fair market value of the home?"] [helper "Home mortgage interest paid, on a married filing separately return" = false → helper "Year parameter sa.no (no)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.mortgage_interest_mfs",{"const":true}],"op":"test"},"then":"sa.mortgage_over_limit_mfs"},{"guard":{"eq":["sa.mortgage_interest_mfs",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
+- Cite: [i1040sca] p. 8, Limits on home mortgage interest, "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt" (2025; printed date 2025-12-08; sha256 b0999b12)
+
+## (helper) — `sa.mortgage_over_limit_if_interest`
+
+- **Authored helper label:** The home mortgage debt is over the limit for the filing status ($750,000 or $1,000,000; $375,000 or $500,000 if married filing separately) or over the home's value (no when no mortgage interest was paid)
+- **Encoded (Bool):** (helper "The home mortgage debt is over the $750,000 or $1,000,000 limit or the home's value, asked only where mortgage interest was paid on a return that is not married filing separately (otherwise no)" = true or helper "The home mortgage debt is over the $375,000 or $500,000 limit or the home's value, asked only where mortgage interest was paid on a married filing separately return (otherwise no)" = true)
+- Expr: `{"any":[{"eq":["sa.mortgage_over_limit_if_joint_limits",{"const":true}],"op":"test"},{"eq":["sa.mortgage_over_limit_mfs_if_mfs",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040sca] p. 8, Limits on home mortgage interest, "you can only deduct home mortgage interest on up to $1,000,000 ($500,000 if you are married filing separately) of that debt", "deduct home mortgage interest on up to $750,000 ($375,000 if you are married filing separately) of that debt", "If the total amount of all mortgages is more than the fair market value of the home" (2025; printed date 2025-12-08; sha256 b0999b12)
 
 ## (helper) — `sa.mortgage_other_use`
 
@@ -549,7 +593,7 @@
 ## 3 — `sa.line3`
 
 - **IRS:** Multiply sa.line2 by sa.medical_rate
-- **Encoded (NonNegDollars):** Multiply line 2 by 75/1000 (sa.medical_rate).
+- **Encoded (NonNegDollars):** Multiply line 2 (sa.line2) by 75/1000 (sa.medical_rate).
 - Interpretation: amb.2025.multiplication_subcent
 - Expr: `{"amount":"sa.line2","op":"multiply_rate","rate":{"param":"sa.medical_rate"}}`
 - Cite: [f1040sa] p. 1, Medical and Dental Expenses, line 3, "Multiply line 2 by 7.5% (0.075)" (2025; created 2025-11-20; sha256 c14acf34)
@@ -557,7 +601,7 @@
 ## 4 — `sa.line4`
 
 - **IRS:** Subtract sa.line3 from sa.line1_if_medical; if zero or less, enter zero
-- **Encoded (NonNegDollars):** Subtract line 3 from line 1. If zero or less, enter -0-.
+- **Encoded (NonNegDollars):** Subtract line 3 (sa.line3) from line 1. If zero or less, enter -0-.
 - Expr: `{"from":"sa.line1_if_medical","op":"subtract_floor0","take":"sa.line3"}`
 - Cite: [f1040sa] p. 1, Medical and Dental Expenses, line 4, "Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-" (2025; created 2025-11-20; sha256 c14acf34)
 
@@ -841,13 +885,100 @@
 - Expr: `{"of":["sa.standardbase","sa.extra_age65","sa.extra_blind"],"op":"sum"}`
 - Cite: [f1040sa] i1040gi pp. 34–35, Line 12e Standard Deduction or Itemized Deductions, "Exception 4—Born before January 2, 1961, or blind", "Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind", "If born before January 2, 1961, or blind, multiply the number on line 1 by $1,600 ($2,000 if single or head of household)" (2025; created 2025-11-20; sha256 c14acf34)
 
+## (helper) — `sa.dep_earned_sum`
+
+- **Authored helper label:** Earned income for the Standard Deduction Worksheet for Dependents, before Schedule 1 line 15 (Form 1040 line 1z and Schedule 1 lines 3 and 8r)
+- **Encoded (Dollars):** Add f1040 line 1z, s1 line 3, and s1 line 8r.
+- Interpretation: amb.2025.sa_dep_earned
+- Expr: `{"of":["f1040.line1z","s1.line3","s1.line8r"],"op":"sum"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, "Generally, your earned income is the total of the amount(s) you reported on Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sa.dep_earned`
+
+- **Authored helper label:** Earned income for the Standard Deduction Worksheet for Dependents (zero if none)
+- **Encoded (NonNegDollars):** Subtract s1 line 15 from helper "Earned income for the Standard Deduction Worksheet for Dependents, before Schedule 1 line 15 (Form 1040 line 1z and Schedule 1 lines 3 and 8r)". If zero or less, enter -0-.
+- Interpretation: amb.2025.sa_dep_earned
+- Expr: `{"from":"sa.dep_earned_sum","op":"subtract_floor0","take":"s1.line15"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, "Generally, your earned income is the total of the amount(s) you reported on Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15"; p501 p. 26, Table 8, line 1, "Enter your earned income (defined below). If none, enter -0-." (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sa.dep_add`
+
+- **Authored helper label:** Year parameter sa.dep_add ($450)
+- **Encoded (NonNegDollars):** Enter $450 (sa.dep_add).
+- Expr: `{"op":"param","ref":"sa.dep_add"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 2, "Yes. Add $450 to your earned income. Enter the total" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sa.dep_plus`
+
+- **Authored helper label:** Earned income plus $450
+- **Encoded (NonNegDollars):** Add helper "Earned income for the Standard Deduction Worksheet for Dependents (zero if none)" and helper "Year parameter sa.dep_add ($450)".
+- Expr: `{"of":["sa.dep_earned","sa.dep_add"],"op":"sum"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 2, "Yes. Add $450 to your earned income. Enter the total" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sa.dep_min`
+
+- **Authored helper label:** Year parameter sa.dep_min ($1,350)
+- **Encoded (NonNegDollars):** Enter $1,350 (sa.dep_min).
+- Expr: `{"op":"param","ref":"sa.dep_min"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 2, "No. Enter $1,350" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## 2 — `sa.dep_line2`
+
+- **IRS:** Is your earned income more than $900? Yes: add $450 to your earned income and enter the total. No: enter $1,350
+- **Encoded (NonNegDollars):** Enter the larger of helper "Earned income plus $450" or helper "Year parameter sa.dep_min ($1,350)".
+- Expr: `{"of":["sa.dep_plus","sa.dep_min"],"op":"larger_of"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 2, "Is your earned income* more than $900?", "Yes. Add $450 to your earned income. Enter the total", "No. Enter $1,350"; p501 p. 24, Standard Deduction for Dependents, "generally limited to the greater of: 1. $1,350, or 2. The individual's earned income for the year plus $450" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## 3 — `sa.dep_line3`
+
+- **IRS:** Enter the amount shown for your filing status: single or married filing separately, $15,750; married filing jointly, $31,500; head of household, $23,625
+- **Encoded (NonNegDollars):** Enter the amount from helper "Year parameter sa.standard_base".
+- Expr: `{"from":"sa.standardbase","op":"copy"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3, "Enter the amount shown below for your filing status" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## 4a — `sa.dep_line4a`
+
+- **IRS:** Enter the smaller of line 2 or line 3
+- **Encoded (NonNegDollars):** Enter the smaller of line 2 (sa.dep_line2) or line 3 (sa.dep_line3).
+- Expr: `{"of":["sa.dep_line2","sa.dep_line3"],"op":"smaller_of"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 4a, "Enter the smaller of line 2 or line 3" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## 4b — `sa.dep_line4b`
+
+- **IRS:** If born before January 2, 1961, or blind, multiply the number on line 1 by $1,600 ($2,000 if single or head of household)
+- **Encoded (NonNegDollars):** Add helper "Additional standard deduction for each box checked for age" and helper "Additional standard deduction for each box checked for blindness".
+- Expr: `{"of":["sa.extra_age65","sa.extra_blind"],"op":"sum"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 4b, "If born before January 2, 1961, or blind, multiply the number on line 1 by $1,600 ($2,000 if single or head of household)" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## 4c — `sa.dep_line4c`
+
+- **IRS:** Add lines 4a and 4b. Enter the total here and on Form 1040 or 1040-SR, line 12e
+- **Encoded (NonNegDollars):** Add line 4a and line 4b.
+- Expr: `{"of":["sa.dep_line4a","sa.dep_line4b"],"op":"sum"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 4c, "Add lines 4a and 4b. Enter the total here and on Form 1040 or 1040-SR, line 12e" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (gate) — `sa.dep_qss`
+
+- **Authored helper label:** Someone can claim you as a dependent and your filing status is qualifying surviving spouse
+- **Encoded (Bool):** helper "Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = true and f1040 line Filing Status = 'qss'
+- Interpretation: amb.2025.sa_dep_qss
+- Expr: `{"all":[{"eq":["sa.dependent",{"const":true}],"op":"test"},{"eq":["f1040.status",{"const":"qss"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3, "Enter the amount shown below for your filing status" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `sa.standard_amount`
+
+- **Authored helper label:** Standard deduction before a spouse's itemizing on a separate return is applied (the Standard Deduction Worksheet for Dependents when someone can claim you, or your spouse if filing jointly, as a dependent)
+- **Encoded (NonNegDollars):** Choose — [helper "Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = true → line 4c] [helper "Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)" = false → helper "Add sa.standardbase, sa.extra_age65, sa.extra_blind"]
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.dependent",{"const":true}],"op":"test"},"then":"sa.dep_line4c"},{"guard":{"eq":["sa.dependent",{"const":false}],"op":"test"},"then":"sa.standardraw"}],"op":"choose"}`
+- Cite: [i1040gi] p. 34, Line 12e, "Exception 1—Dependent. Line 12a. If you checked a box on line 12a, use the Standard Deduction Worksheet for Dependents to figure your standard deduction" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## (helper) — `sa.standard`
 
 - **Authored helper label:** Standard deduction, zero when MFS spouse itemizes
-- **Encoded (NonNegDollars):** Choose — [helper "MFS with spouse itemizing" = true → helper "Year parameter sales.zero"] [helper "MFS with spouse itemizing" = false → helper "Add sa.standardbase, sa.extra_age65, sa.extra_blind"]
-- **Refusal:** when sa.dependent is true, cannot complete Standard Deduction Worksheet for Dependents / dual-status rules. Dependent and dual-status standard deductions are outside this resident nondependent slice. Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (NonNegDollars):** Choose — [helper "MFS with spouse itemizing" = true → helper "Year parameter sales.zero"] [helper "MFS with spouse itemizing" = false → helper "Standard deduction before a spouse's itemizing on a separate return is applied (the Standard Deduction Worksheet for Dependents when someone can claim you, or your spouse if filing jointly, as a dependent)"]
+- **Refusal:** when sa.dep_qss is true, cannot complete Standard Deduction Worksheet for Dependents, line 3, for a qualifying surviving spouse. The Standard Deduction Worksheet for Dependents gives no amount for a qualifying surviving spouse whom someone else can claim as a dependent, so this tool does not figure that standard deduction. Cite: [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3, "Enter the amount shown below for your filing status" (2025; printed date 2026-02-25; sha256 482e9c48)
 - **Refusal:** when sa.mfs_spouse_extra is true, cannot complete Standard Deduction Chart spouse boxes on a separate return. Checking age or blindness boxes for your spouse on a married filing separately return is outside this tool. Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
-- Expr: `{"alternatives":[{"guard":{"eq":["sa.mfs_spouse_itemizes",{"const":true}],"op":"test"},"then":"sa.zero"},{"guard":{"eq":["sa.mfs_spouse_itemizes",{"const":false}],"op":"test"},"then":"sa.standardraw"}],"op":"choose"}`
+- Expr: `{"alternatives":[{"guard":{"eq":["sa.mfs_spouse_itemizes",{"const":true}],"op":"test"},"then":"sa.zero"},{"guard":{"eq":["sa.mfs_spouse_itemizes",{"const":false}],"op":"test"},"then":"sa.standard_amount"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.itemizes`
@@ -861,13 +992,12 @@
 
 - **Authored helper label:** Deduction selected for Form 1040 line 12e
 - **Encoded (NonNegDollars):** Choose — [helper "Itemize if elected, required, or itemized total exceeds standard" = true → line 17] [helper "Itemize if elected, required, or itemized total exceeds standard" = false → helper "Standard deduction, zero when MFS spouse itemizes"]
-- **Refusal:** when sa.dependent is true, cannot complete A return for a dependent or dual-status alien. A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized. Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.itemizes",{"const":true}],"op":"test"},"then":"sa.line17"},{"guard":{"eq":["sa.itemizes",{"const":false}],"op":"test"},"then":"sa.standard"}],"op":"choose"}`
 - Cite: [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sa.mfs_spouse_itemizes`
 
 - **Authored helper label:** MFS with spouse itemizing
-- **Encoded (Bool):** Choose — [helper "Married filing separately" = true → helper "Married filing separately with a spouse who itemizes?"] [helper "Married filing separately" = false → helper "Year parameter sa.no (no)"]
+- **Encoded (Bool):** Choose — [helper "Married filing separately" = true → helper "Is your husband or wife itemizing deductions on their own 2025 return, instead of taking the standard deduction?"] [helper "Married filing separately" = false → helper "Year parameter sa.no (no)"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sa.mfs",{"const":true}],"op":"test"},"then":"sa.spouse_itemizes"},{"guard":{"eq":["sa.mfs",{"const":false}],"op":"test"},"then":"sa.no"}],"op":"choose"}`
-- Cite: [i1040gi] p. 34, Line 12e, Exception 2 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 34, Exception 2—Spouse itemizes on a separate return, "If you checked the box on line 12b, your standard deduction is zero" (2025; printed date 2026-02-25; sha256 482e9c48)

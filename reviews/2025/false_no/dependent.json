@@ -1,0 +1,556 @@
+{
+ "form": "dependent",
+ "reviews": {
+  "gate:dependent.edu_has_adj": {
+   "subject_sha": "22d5d0d9a6aeddb84b13c67a46fec8650926a5792d7682fe0a84e0a1ecf57bf7",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A parent pays $3,000 in 2025 for a student's fall 2025 term and receives a $5,000 Pell grant for that term. Worksheet line 4 for that period is zero.",
+       "why_no": "The gate is labeled 'Adjusted qualified education expenses (worksheet line 3) above zero', but on the IRS worksheet adjusted qualified education expenses are line 4. Line 3 is total adjustments. If the gate is built, or later maintained, by its label, line 4 is zero exactly when adjustments meet or exceed expenses. The gate is then false and the refusal question is never asked.",
+       "line": "dependent.edu_over_if_adj",
+       "irs_text": "i8863 p. 9 worksheet: '3. Total adjustments (add lines 2a, 2b, and 2c)' and '4. Adjusted qualified education expenses. Subtract line 3 from line 1. If zero or less, enter -0-'",
+       "severity": "medium",
+       "fix": "Rename the gate 'Total adjustments (worksheet line 3, lines 2a+2b+2c) above zero'. Never compute it from line 4. Test it with a period whose adjustments exceed its expenses and confirm the question is asked."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A student's spring term tuition of $4,000 is paid in 2025. It is covered by $2,500 of tax-free employer educational assistance, $1,000 of VA education benefits and a $1,000 refund after a dropped class.",
+       "why_no": "'Tax-free help' reads as scholarships or grants. The filer does not count employer-provided assistance or veterans' benefits as 'help'. Counting only the refund, the filer finds no excess and answers no.",
+       "line": "dependent.edu_over_if_adj",
+       "irs_text": "i8863 p. 4: 'reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period.' i8863 p. 9 worksheet lines 2a-2c",
+       "severity": "medium",
+       "fix": "List the kinds of tax-free assistance in the help: the tax-free part of scholarships and fellowships including Pell grants, tax-free employer-provided educational assistance, veterans' educational assistance, and any other tax-free payment for the education other than a gift or inheritance. State that refunds include refunds after a dropped course or a withdrawal."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "1",
+       "who": "A student pays winter quarter tuition in December 2025 for a quarter starting in January 2026. A scholarship for that quarter arrives in February 2026, before filing, and exceeds the tuition.",
+       "why_no": "The filer reads 'school term ... in 2025' as a term held in 2025. The winter 2026 quarter is not one, so the filer answers no, although that quarter is treated as beginning in 2025.",
+       "line": "dependent.edu_over_if_adj",
+       "irs_text": "i8863 p. 9: 'If any qualified education expenses for the student were paid in 2025 for an academic period beginning in the first 3 months of 2026, treat that academic period as if it began in 2025.'",
+       "severity": "medium",
+       "fix": "Add to the help: 'Include a term that begins in January, February or March 2026 if you paid for it in 2025.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A student has two terms in 2025. Grants for the fall term exceed fall tuition, while spring tuition is far larger than spring aid.",
+       "why_no": "The help says to answer by the term alone only when there is one term. With two terms, the filer nets the whole year, sees total payments above total aid, and answers no.",
+       "line": "dependent.edu_over_if_adj",
+       "irs_text": "i8863 p. 9: 'Complete a separate worksheet for each student for each academic period'",
+       "severity": "medium",
+       "fix": "Reword the help: 'Look at each term separately. Do not combine terms, even if total payments for the year exceed total help.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A lifetime learning credit student buys required textbooks at an outside bookstore. Scholarships exceed tuition plus fees paid to the school, but not tuition plus fees plus the books.",
+       "why_no": "'Course materials' invites adding books bought anywhere. For the lifetime learning credit, books count only if they must be paid to the institution. Adding them raises the expense total above the aid, and the filer answers no.",
+       "line": "dependent.edu_over_if_adj",
+       "irs_text": "i8863 p. 4: 'Lifetime learning credit: Qualified education expenses include amounts paid for books, supplies, and equipment only if required to be paid to the institution as a condition of enrollment or attendance.'",
+       "severity": "low",
+       "fix": "Add to the help: 'For the lifetime learning credit, count books and supplies only if they had to be paid to the school.'"
+      }
+     ],
+     "prompt_sha": "428a4da8f89795f3bd5ed1e7dc95af1c983412bc0d15a801e621bddfbbb5c4ee",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.085208,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_dependent.edu_has_adj.22d5d0d9a6ae.1.response.txt"
+    }
+   ],
+   "condition": "dependent.edu_has_adj",
+   "lines": [
+    "dependent.edu_over_if_adj"
+   ],
+   "inputs": [
+    "dependent.edu_over"
+   ],
+   "used": [
+    {
+     "doc": "i8863",
+     "revision": "2025",
+     "text_sha256": "71d45c0b03b4521697e7f4fd52bbcc489d7dac6a3645b6d36f514ae5992e2e4d",
+     "pages": [
+      4,
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 4, Tax-free educational assistance, \"For tax-free educational assistance received in 2025, reduce the qualified education expenses for each academic period by the amount of tax-free educational assistance allocable to that academic period.\"",
+      "p. 9, Adjusted Qualified Education Expenses Worksheet, \"Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025.\""
+     ],
+     "cols_pages": [
+      4,
+      9
+     ],
+     "cols_sha256": "6d486b4afb1f1647b7b99243cde905cf9def6b2813e5ed0bcb9925329c1e8a2b"
+    }
+   ]
+  },
+  "gate:dependent.ever_married": {
+   "subject_sha": "796ac901d60ff9bfa6dd9d7d9fa640b8f1f399a4fe2a49c4de7ae237c0f48793",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A 22-year-old student the filer supports lives in a state that recognizes common-law marriage, such as Colorado or Texas (informal marriage). They and their partner meet the state's requirements, never had a ceremony or license, and file a 2025 joint return with the partner that is not only a refund claim.",
+       "why_no": "Without a ceremony, license or certificate, the filer, and often the couple, read \"Has this person ever been married?\" as no. The help \"Count a marriage that has since ended\" says nothing about informal or common-law marriages.",
+       "line": "dependent.joint_return_if_ever_married (forced false, so the bar on claiming a married person who files jointly is never applied)",
+       "irs_text": "i1040gi p. 21, Married person: \"If the person is married and files a joint return, you can't claim that person as your dependent.\"",
+       "severity": "medium",
+       "fix": "Add to the help: \"Count a common-law marriage recognized by the state where it began, a marriage performed in another country, and a marriage to someone who has since died or divorced this person.\" Better, drop the gate and ask every dependent the joint-return question directly; it is one question, and a never-married person simply answers no."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer claims an adult child, grandchild, or other relative who married during 2025 or earlier, for example abroad or without telling the family, and who files a 2025 joint return with the spouse to get the full refundable credits, not only to recover withholding.",
+       "why_no": "The filer answers about another person's private life from their own knowledge. Believing the person is single, they truthfully say no to \"Has this person ever been married?\" The tool never asks whether a joint return includes this person, which is the fact the filer could confirm by asking the person.",
+       "line": "dependent.joint_return_if_ever_married (forced false, so the refusal of the dependency claim is missed)",
+       "irs_text": "i1040gi p. 17, Step 1: \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund of withheld income tax or estimated tax paid\"; p. 21: \"If the person is married and files a joint return, you can't claim that person as your dependent.\"",
+       "severity": "medium",
+       "fix": "Ask the fact directly and without a gate: \"Will this person be included on any 2025 joint tax return (with a spouse), other than one filed only to get back withheld or estimated tax? If you're not sure, check with them.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A filer whose dependent's marriage was in a religious or tribal ceremony, or was annulled after 2025 but valid at the end of 2025, and who joined a 2025 joint return.",
+       "why_no": "\"Count a marriage that has since ended\" does not say whether an annulment, which declares the marriage never valid, counts. The filer may also think a ceremony that was never civilly registered is not a \"marriage\" for this question, even where state law treats it as one.",
+       "line": "dependent.joint_return_if_ever_married",
+       "irs_text": "i1040gi p. 21, Married person: \"If the person is married and files a joint return, you can't claim that person as your dependent.\"",
+       "severity": "low",
+       "fix": "Make the help say what to count, or remove the gate as above so the joint-return question decides on its own."
+      }
+     ],
+     "prompt_sha": "26293f1c8de154cb851e5561c6ecbc4356369c0a169cbfde2f7a737f5bdf5583",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.073264,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_dependent.ever_married.796ac901d60f.1.response.txt"
+    }
+   ],
+   "condition": "dependent.ever_married",
+   "lines": [
+    "dependent.joint_return_if_ever_married"
+   ],
+   "inputs": [
+    "dependent.joint_return"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17,
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund\"; p. 21, Married person, \"If the person is married and files a joint return, you can’t claim that person as your dependent.\"",
+      "p. 21, Married person, \"If the person is married and files a joint return, you can’t claim that person as your dependent.\""
+     ],
+     "cols_pages": [
+      17,
+      21
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:dependent.lived_all_year": {
+   "subject_sha": "7e48e2fadcf3a3b7341e85563bd5eb16686e046ddb26c8811be0dde4e841789b",
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A parent whose child disappeared for a few days or weeks in 2025 and was thought at the time to be a runaway or lost, then came home. Only later, possibly after 2025, did police presume an abduction by a stranger. The child is a non-relative or other household member whose dependency rests on living with the filer all year.",
+       "why_no": "The gate's help says to answer No only 'for a child who was missing because of a kidnapping'. The filer did not think of the episode as a kidnapping when it happened, or does not know of the later presumption. They also read the help's list of absences (vacation, hospital) as covering a short time away. So they answer Yes to 'live with you for all of 2025'. The gated question's own help ('Answer Yes even if the authorities first presumed the kidnapping after 2025') is never shown to them.",
+       "line": "dependent.kidnapped_if_part_year",
+       "irs_text": "p501 p. 18, Kidnapped child: 'You can treat a child as your qualifying relative even if the child has been kidnapped ... 1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family.'",
+       "severity": "low",
+       "fix": "Change the gate help to: 'If the child was missing at any time in 2025, even briefly, answer No, including when the police presumed a kidnapping only later or the child has since come home.'"
+      }
+     ],
+     "prompt_sha": "2d01e9857b42aa77619826e17034f7b8dd0f3ffe1fb781d829261d255a4b26b7",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.101028,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_dependent.lived_all_year.7e48e2fadcf3.1.response.txt"
+    }
+   ],
+   "condition": "dependent.lived_all_year",
+   "lines": [
+    "dependent.kidnapped_if_part_year"
+   ],
+   "inputs": [
+    "dependent.kidnapped"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17,
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"Who lived with you for more than half of 2025\"; p. 21, Exception to time lived with you (\"the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025\"; \"Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025\"); , Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\"",
+      "p. 21, Kidnapped child, \"If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a family member, you may be able to take the child into account\"; , Kidnapped child, \"1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family.\", \"2. In the year the kidnapping occurred, the child lived with you for more than half of the part of the year before the date of the kidnapping.\" and \"3. In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return.\"; , \"This treatment applies for all years until the earlier of\"; , Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped\""
+     ],
+     "cols_pages": [
+      17,
+      21
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      13,
+      18
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 13, Kidnapped child, \"You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true.\" (time the child was missing is not time lived with you, so a person who lived with you for all of 2025 was not missing in 2025)"
+     ],
+     "cols_pages": [
+      13,
+      18
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "gate:dependent.other_only_spouse_if_mfs": {
+   "subject_sha": "5461970579cd8481220b4fff137712b8a2aedcf634ff509ae8c584dfc31f1b29",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A married filer files separately. The child lived with the filer, the spouse (the child's other parent) and the filer's mother all year. The child is a qualifying child of both the spouse and the grandparent.",
+       "why_no": "The gate asks whether the spouse is the 'only other person' the child could be the qualifying child of. Because the grandparent also qualifies, the truthful answer is no. The tool then never asks whether the spouse will claim the child, even though the spouse is still a competing claimant.",
+       "line": "dependent.spouse_claims_if_only_spouse",
+       "irs_text": "p501 p. 15: \"If the parents don't file a joint return together but both parents claim the child as a qualifying child, the IRS will treat the child as the qualifying child of the parent with whom the child lived for the longer period of time during the year.\"",
+       "severity": "high",
+       "fix": "Gate on 'Is your husband or wife one of the people this child could be the qualifying child of (whether or not anyone else could be)?' Ask about the spouse's claim whenever that is yes. Handle the other persons in a separate question."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A married filer files separately and has custody. The spouse is the noncustodial parent and lived apart from the child for most of the year. The filer signed Form 8332, or a pre-2009 decree applies, so the spouse can claim the child under the divorced or separated parents rule.",
+       "why_no": "The child did not live with the spouse for more than half the year. So the filer truthfully says the child could not be the spouse's 'qualifying child'. Under the release, though, the spouse can still claim the child as a dependent and take the child tax credit.",
+       "line": "dependent.spouse_claims_if_only_spouse",
+       "irs_text": "p501 p. 17: \"If a child is treated as the qualifying child of the noncustodial parent under the rules ... for children of divorced or separated parents (or parents who live apart), only the noncustodial parent can claim the child as a dependent and claim the child tax credit, additional child tax credit, or credit for other dependents for the child.\"",
+       "severity": "high",
+       "fix": "Before the qualifying-child gate, ask: 'Have you signed Form 8332 or a similar release, or does a decree let your husband or wife claim this child?' Route a yes to the spouse-claims question, or to its own refusal."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A married filer files separately. The spouse moved out in August, and the child lived with each parent for more than half the year, as in p501 Example 6.",
+       "why_no": "The filer cannot apply the residency, support, age and joint return tests to the spouse. Because the spouse moved out, the filer assumes the child is 'my' qualifying child only and answers no.",
+       "line": "dependent.spouse_claims_if_only_spouse",
+       "irs_text": "p501 p. 17, Example 6: \"Your child is a qualifying child of both you and your spouse because your child lived with each of you for more than half the year\"; Example 7: \"only your spouse will be allowed to treat your child as a qualifying child.\"",
+       "severity": "medium",
+       "fix": "Ask facts the filer can check: 'Did this child live with your husband or wife for more than half of 2025 (time living with you both counts)?' Derive qualifying-child status from that answer instead of asking for the classification."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A married filer files separately. The child is the filer's own child and the spouse's stepchild, and the child lived with both of them all year.",
+       "why_no": "The filer reads 'could be the qualifying child of' as meaning the child's parent. They do not count a stepparent, so they answer no. The tiebreaker definition of 'parent', which excludes stepparents, reinforces that reading. But a stepchild still meets the relationship test for a qualifying child.",
+       "line": "dependent.spouse_claims_if_only_spouse",
+       "irs_text": "i1040gi p. 17, Step 1: \"A qualifying child is your... Son, daughter, stepchild, foster child...\"; p501 p. 15: \"generally only one person can actually treat the child as a qualifying child\"",
+       "severity": "medium",
+       "fix": "Add help text: 'Count your husband or wife even if they are the child's stepparent or foster parent, or related as a sibling or other relative, if the child lived with them for more than half the year.'"
+      }
+     ],
+     "prompt_sha": "6e71eacd211b61a1f3892aeaab4045fe5194712d1659378bfc33ba8f9513b65e",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.104096,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_dependent.other_only_spouse_if_mfs.5461970579cd.1.response.txt"
+    }
+   ],
+   "condition": "dependent.other_only_spouse_if_mfs",
+   "lines": [
+    "dependent.spouse_claims_if_only_spouse"
+   ],
+   "inputs": [
+    "dependent.spouse_claims"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 17, Step 1, \"If the child meets the conditions to be a qualifying child of any other person (other than your spouse if filing jointly) for 2025, see Qualifying child of more than one person, later.\""
+     ],
+     "cols_pages": [
+      17
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      15,
+      17
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Tiebreaker rules, \"but both parents claim the child as a qualifying child, the IRS will treat the child as the qualifying child of the parent with whom the child lived for the longer period of time during the year\"; p. 17, \"Subject to these tiebreaker rules, you and the other person may be able to choose which of you claims the child as a qualifying child.\"",
+      "p. 17, \"Subject to these tiebreaker rules, you and the other person may be able to choose which of you claims the child as a qualifying child.\""
+     ],
+     "cols_pages": [
+      15,
+      17
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  },
+  "gate:dependent.ptc_files": {
+   "subject_sha": "6cc9ddd0f7c8c6652d8f9a33927b10b63aea245fd160424bd6eea8eace059b7e",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "6",
+       "who": "A married dependent under 65 and not blind. Their spouse files a separate return and itemizes deductions. The dependent has $600 of wages and $200 of interest.",
+       "why_no": "The question lists only more than $1,350 of income not from work or more than $15,750 of pay. The help gives only the combined rule and says the limits are for a single dependent. Nothing mentions the $5 rule for a married dependent, so a truthful answer is no.",
+       "line": "dependent.ptc_magi_counted",
+       "irs_text": "i1040gi (2025) p. 10, Chart B, Married dependents: \"Your gross income was at least $5 and your spouse files a separate return and itemizes deductions.\"; i8962 p. 8, Line 2b: \"dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"",
+       "severity": "high",
+       "fix": "Add to the gate: \"or is this dependent married, with a spouse who files a separate return and itemizes deductions, and had at least $5 of income?\" Better, ask for the dependent's earned income, unearned income, marital status, age 65 or older and blindness, and compute the Chart B test."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "8",
+       "who": "A dependent under 65 and not blind with $15,000 of wages and $1,000 of interest. Gross income is $16,000, which is more than $15,300 plus $450. Another example is a dependent with $500 of pay and $1,000 of interest, whose $1,500 is more than $1,350.",
+       "why_no": "The question offers only two separate tests, more than $1,350 not from work or more than $15,750 of pay, and the dependent fails both. The combined rule appears only in the help. A filer who answers from the question's words truthfully says no.",
+       "line": "dependent.ptc_magi_counted",
+       "irs_text": "i1040gi (2025) p. 10, Chart B: \"Your gross income was more than the larger of— $1,350, or Your earned income (up to $15,300) plus $450.\"",
+       "severity": "medium",
+       "fix": "Move the combined test into the question itself, or ask for the two amounts and compute the test."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A dependent college student whose scholarship exceeds tuition. In 2025, $16,500 of it, used for room and board, is taxable, and the student has no wages.",
+       "why_no": "\"Pay\" does not suggest a scholarship, and the grant is not interest or dividends. The filer finds neither test met and answers no. Chart B counts taxable scholarships as earned income.",
+       "line": "dependent.ptc_magi_counted",
+       "irs_text": "i1040gi (2025) p. 10, Chart B: \"Earned income includes salaries, wages, tips, professional fees, and taxable scholarship and fellowship grants.\"",
+       "severity": "medium",
+       "fix": "Say \"pay (wages, tips, professional fees and taxable scholarship or fellowship grants)\", and list the Chart B unearned items: capital gain distributions, unemployment compensation, taxable social security, pensions, annuities and trust distributions."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "5",
+       "who": "A child under 19 or a full-time student under 24 with $3,000 of interest and dividends. The parents elect on Form 8814 to report it, so the child files no return. Form 8814, line 4, is more than $1,350.",
+       "why_no": "With the election made, the child does not \"have to file a tax return\", so the parent answers no. The gated question also asks for amounts \"from their own return\", which does not exist.",
+       "line": "dependent.ptc_magi_counted",
+       "irs_text": "i8962 (2025) p. 8, Line 2b, Form 8814: \"If you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.\"",
+       "severity": "high",
+       "fix": "Ask separately whether the filer reports this child's interest and dividends on Form 8814. If so, and line 4 is more than $1,350, take Form 8814 lines 1b, 4 and 5 and the child's nontaxable social security for Worksheet 1-2, whatever the answer to the filing question."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A dependent teenager with $4,000 of net earnings from self-employment, for example lawn mowing or freelance work, and no other income. The dependent must file because net self-employment earnings are $400 or more.",
+       "why_no": "$4,000 is below $15,750 of \"pay\", and the filer may not count self-employment profit as \"pay\" at all. The question presents its income tests as the whole rule, so the filer answers no.",
+       "line": "dependent.ptc_magi_counted",
+       "irs_text": "i8962 (2025) p. 8, Line 2b: \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\" (The Chart B text quoted covers only unearned, earned and gross income. Whether the self-employment filing rule counts as an income threshold is not settled by the quoted text.)",
+       "severity": "medium",
+       "fix": "Ask whether the dependent had $400 or more of net self-employment earnings or $108.28 or more of church employee income, and decide whether the instructions treat these as an income filing threshold. If they do, include them in the gate."
+      }
+     ],
+     "prompt_sha": "14f447c0084e4bf403ba8fcb9900ee2e3bb3623d185a4c57d334d37ecc873bc8",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.10266,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_dependent.ptc_files.6cc9ddd0f7c8.1.response.txt"
+    }
+   ],
+   "condition": "dependent.ptc_files",
+   "lines": [
+    "dependent.ptc_magi_counted"
+   ],
+   "inputs": [
+    "dependent.ptc_magi"
+   ],
+   "used": [
+    {
+     "doc": "i8962",
+     "revision": "2025",
+     "text_sha256": "6b2be38425bc1a8b3073bfec01f18b7042e21187f37eec114ba185878be59976",
+     "pages": [
+      8
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\"",
+      "p. 8, Line 2b, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\", \"Do not include the modified AGI of dependents who are filing a tax return only to claim a refund of tax withheld or estimated tax.\"; , Chart B—For Children and Other Dependents, \"Your unearned income was over $1,350.\"",
+      "p. 8, Worksheet 1-2, \"Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold.\""
+     ],
+     "cols_pages": [
+      8
+     ],
+     "cols_sha256": "11c5be397953d0f6bf8303148ac17e51c68c3cfed87cf2dc2de8a4173be5f309"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      10
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:dependent.relationship": {
+   "subject_sha": "c5b33816c102d05743b95301b04bb2e3943c7047ed23815476b9afa56a3cd33b",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A married couple files jointly. The child is the wife's biological child and the husband's stepchild, and the husband is the one entering the dependents.",
+       "why_no": "The help for relationship tells him to answer for himself, so he picks child (stepchild). The gated question asks 'Are you this child's parent', and its help says 'A stepparent ... who has not adopted the child answers No.' He truthfully answers No, which may end the interview, although his spouse on the same joint return is the biological parent.",
+       "line": "dependent.filer_parent_if_child",
+       "irs_text": "i1040gi p. 21: 'If the parents file a joint return together and can claim the child as a qualifying child, the child is treated as the qualifying child of the parents.' p501 p. 19: 'If you file a joint return, the person can be related to either you or your spouse.'",
+       "severity": "high",
+       "fix": "Ask 'Are you or your spouse (if filing jointly) this child's parent by birth or by adoption?' In the help, say that on a joint return a stepparent answers Yes when the spouse is the child's parent by birth or adoption."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "An aunt, uncle, older sibling or other relative has legally adopted a niece, nephew or younger sibling, as in a kinship adoption after a parent died or lost custody.",
+       "why_no": "The relationship question and its help give no rule for adoption. The filer gives the blood relationship (sibling, or sibling's child) instead of child, so the gated question is never asked and the line is false. The IRS treats an adopted child as the filer's own child.",
+       "line": "dependent.filer_parent_if_child",
+       "irs_text": "i1040gi p. 20: 'Adopted child. An adopted child is always treated as your own child.' p501 p. 19: '(A legally adopted child is considered your child.)'",
+       "severity": "medium",
+       "fix": "Add to the relationship help: 'If you adopted this person, or the person was lawfully placed with you for adoption, choose child, even if they are also your niece, nephew, brother, sister or grandchild by birth.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer whose child was lawfully placed with them for legal adoption by an agency or court, but the adoption was not final by the end of 2025.",
+       "why_no": "The question says 'by adoption', and the help names a 'foster parent ... who has not adopted the child' as answering No. A filer whose adoption is still pending reads that as meaning they have not adopted yet and answers No. The IRS counts a child lawfully placed for adoption as an adopted child.",
+       "line": "dependent.filer_parent_if_child",
+       "irs_text": "i1040gi p. 20: 'An adopted child includes a child lawfully placed with you for legal adoption.' p501 p. 19: 'The term \"adopted child\" includes a child who was lawfully placed with you for legal adoption.'",
+       "severity": "medium",
+       "fix": "Add to the gated help: 'Answer Yes if the child was lawfully placed with you for legal adoption, even if the adoption is not yet final.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A biological parent whose child was born of a relationship that broke local law, such as a bigamous marriage or a relationship with someone married to another person.",
+       "why_no": "The help says 'Choose the last answer if your relationship with the person broke local law.' The parent reads 'relationship' as the relationship the child came from and picks the last answer (other) instead of child. The gated question is then skipped.",
+       "line": "dependent.filer_parent_if_child",
+       "irs_text": "p501 p. 19: 'Local law violated. A person doesn't meet this test if at any time during the year the relationship between you and that person violates local law.' i1040gi p. 21: 'the term \"parent\" means a biological or adoptive parent of an individual.'",
+       "severity": "low",
+       "fix": "Reword the help: 'Choose the last answer only for a person who is not related to you and whose relationship with you (for example, living together) broke local law. Your own child, stepchild or foster child is always child.'"
+      }
+     ],
+     "prompt_sha": "55571ab214c3fca45a4b6b59d024a5c6fdffb18f71273c2035870b8969f62f86",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.138068,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_dependent.relationship.c5b33816c102.1.response.txt"
+    }
+   ],
+   "condition": "dependent.relationship",
+   "lines": [
+    "dependent.filer_parent_if_child"
+   ],
+   "inputs": [
+    "dependent.filer_parent"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      17,
+      19,
+      20,
+      21
+     ],
+     "how": "cited pages",
+     "locators": [
+      "pp. 17 and 19, Steps 1 and 4, \"A qualifying child is your...\" and \"A qualifying relative is your...\"; p. 20, Adopted child, \"An adopted child includes a child lawfully placed with you for legal adoption\"; p. 21, Foster child, \"A foster child is any child placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction\"; , Relatives who don't have to live with you, \"Your father, mother, grandparent, or other direct ancestor, but not foster parent\"; , Member of Household or Relationship Test, \"If at any time during the year the person was your spouse, that person can’t be your qualifying relative.\"; , \"Any of these relationships that were established by marriage aren’t ended by death or divorce.\""
+     ],
+     "cols_pages": [
+      17,
+      19,
+      20,
+      21
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p501",
+     "revision": "2025 returns; PDF created 2026-02-04",
+     "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+     "pages": [
+      15,
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Tiebreaker rules, \"For purposes of these tiebreaker rules, the term “parent” means a biological or adoptive parent of an individual. It does not include a stepparent or foster parent unless that person has adopted the individual.\"",
+      "p. 15, Tiebreaker rules, \"For purposes of these tiebreaker rules, the term “parent” means a biological or adoptive parent of an individual.\""
+     ],
+     "cols_pages": [
+      15,
+      19
+     ],
+     "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
+    }
+   ]
+  }
+ }
+}

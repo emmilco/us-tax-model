@@ -14,69 +14,54 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 191 of the 198 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 289 of the 305 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
-The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
+The estimate puts coverage at 85.9% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **241 refusal gates**: 198 tax situations the tool does not prepare, grouped by topic below, and 43 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **353 refusal gates**: 305 tax situations the tool does not prepare, grouped by topic below, and 48 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
-- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (47)
-- [Household and dependents](#household-and-dependents) (19)
+- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (67)
+- [Household and dependents](#household-and-dependents) (20)
 - [Interest and dividends](#interest-and-dividends) (4)
-- [Sales and capital gains](#sales-and-capital-gains) (6)
+- [Sales and capital gains](#sales-and-capital-gains) (5)
 - [Retirement distributions](#retirement-distributions) (7)
 - [Social Security](#social-security) (3)
 - [Self-employment](#self-employment) (30)
-- [State and local tax refunds](#state-and-local-tax-refunds) (5)
-- [Other income and alimony](#other-income-and-alimony) (8)
+- [State and local tax refunds](#state-and-local-tax-refunds) (9)
+- [Other income and alimony](#other-income-and-alimony) (35)
 - [IRA contributions](#ira-contributions) (12)
 - [Health savings accounts](#health-savings-accounts) (12)
 - [Itemized deductions](#itemized-deductions) (8)
-- [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (6)
-- [Earned income credit](#earned-income-credit) (2)
-- [Child and dependent care](#child-and-dependent-care) (10)
+- [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (8)
+- [Earned income credit](#earned-income-credit) (3)
+- [Child and dependent care](#child-and-dependent-care) (11)
 - [Education credits](#education-credits) (5)
 - [Home energy credits](#home-energy-credits) (7)
-- [Premium tax credit](#premium-tax-credit) (7)
-- [Entry checks](#entry-checks) (43)
+- [Premium tax credit](#premium-tax-credit) (8)
+- [Partnership and S corporation Schedules K-1](#partnership-and-s-corporation-schedules-k-1) (51)
+- [Entry checks](#entry-checks) (48)
 
 ### Filing status, residency, wages, accounts and other taxes
 
 *Filing status and residency*
 
-- **`s3.mfs`**: Are you filing as married filing separately?
-  - *The data asks or tests:* Married filing separately (`test`)
-  - *Stops the return as:* Married filing separately
-  - *Not covered:* Form 2441 for married filing separately (line A; lines 19 and 21). A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported.
-    *Source:* [i2441] p. 2, Married Persons Filing Separately, "Generally, married persons must file a joint return to claim the credit"
-  - *Not covered:* Married filing separately. The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together and the credits a separate return cannot take) are outside this tool. Married filing jointly is supported.
-    *Source:* [i1040gi] p. 14, Married Filing Separately
-  - *Refused at:* `f2441.line11`, `f2441.line26`, `s3.line11`, `scope.ready_credits`
-  - *Share of returns (coverage estimate):* Married filing separately, 2.6%
-- **`scope.other_income`**: Were you or your spouse a nonresident alien for any part of 2025, or do you have income such as wages not on a Form W-2, Medicaid waiver payments or passive-activity income?
+- **`scope.other_income`**: Were you or your spouse a nonresident alien for any part of 2025, or do you have income such as wages from an employer that sent no Form W-2 or passive-activity income?
   - *The data asks or tests:* Nonresident alien status, or other income or return treatment outside this tool (true when any of the other-income screening questions is answered Yes) (`test`)
   - *Stops the return as:* Nonresident or dual-status returns, and income outside the kinds the tool supports
   - *Not covered:* Nonresident aliens (EIC, Step 1, question 4). Nonresident and dual-status treatment is outside this tool.
     *Source:* [i1040gi] p. 40, Step 1, question 4; p. 44, Nonresident aliens
-  - *Not covered:* Medicaid waiver payments (EIC, Step 5, line 2). Medicaid waiver payments are outside this tool.
-    *Source:* [i1040gi] p. 42, Step 5, worksheet line 2
   - *Not covered:* Form 1040 additional income/return forms. Prepare the required unsupported income or return treatment.
     *Source:* [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
-  - *Refused at:* `eic.step1_resident`, `eic.step5_line2`, `f1040.line8`, `scope.ready_other_income`
+  - *Refused at:* `eic.step1_resident`, `f1040.line8`, `scope.ready_other_income`
   - *Share of returns (coverage estimate):* Wages or tips not on Form W-2, dependent care benefits, other earned income, 0.8%
-- **`sa.dependent`**: Can someone claim you or your spouse as a dependent, or are you a dual-status alien?
-  - *The data asks or tests:* Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.) (`input`)
-  - *Stops the return as:* A filer who can be claimed as a dependent, or a dual-status alien
-  - *Not covered:* Dependent of another person or dual-status alien (EIC, Step 4, question 6). A filer who can be claimed as a dependent, or a dual-status alien, is outside this tool.
-    *Source:* [i1040gi] p. 42, Step 4, question 6
-  - *Not covered:* Standard Deduction Worksheet for Dependents / dual-status rules. Dependent and dual-status standard deductions are outside this resident nondependent slice.
-    *Source:* [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart
-  - *Not covered:* A return for a dependent or dual-status alien. A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.
-    *Source:* [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart
-  - *Refused at:* `eic.step4`, `sa.standard`, `sa.deduction`
-  - *Share of returns (coverage estimate):* Returns of filers who can be claimed as a dependent (SOI Table 1.7 dependent returns), 4.7%
+- **`sa.dep_qss`**: Can someone claim you as a dependent, and is your filing status qualifying surviving spouse?
+  - *The data asks or tests:* Someone can claim you as a dependent and your filing status is qualifying surviving spouse (`test`)
+  - *Stops the return as:* A qualifying surviving spouse whom someone else can claim as a dependent
+  - *Not covered:* Standard Deduction Worksheet for Dependents, line 3, for a qualifying surviving spouse. The Standard Deduction Worksheet for Dependents gives no amount for a qualifying surviving spouse whom someone else can claim as a dependent, so this tool does not figure that standard deduction.
+    *Source:* [i1040gi] p. 35, Standard Deduction Worksheet for Dependents—Line 12e, line 3, "Enter the amount shown below for your filing status"
+  - *Refused at:* `sa.standard`
 - **`household.filer_under16`**: Were you, or your spouse on a joint return, under 16 at the end of 2025?
   - *The data asks or tests:* You, or your spouse if filing jointly, were under age 16 at the end of 2025 (`test`)
   - *Not covered:* A filer under age 16 at the end of 2025. A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool. The archived instructions state no such rule; this is an entry check the owner decided on, recorded in the ambiguity register (amb.2025.filer_under_16).
@@ -143,7 +128,7 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Schedule 1 adjustments (Social Security Benefits Worksheet, line 6). Schedule 1 adjustments on lines 12, 14 and 23 are outside this tool.
     *Source:* [i1040gi] p. 32, Social Security Benefits Worksheet, line 6
   - *Refused at:* `eic.step2_other`, `eic.step5_line1`, `eic.clergy`, `f1040.line8`, `f1040.line10`, `s1a.line5_calc`, `s1a.line14b_calc`, `s8812.eiw_3`, `s8812.eiw_4`, `scope.ready_schedule1`, `ssb.line6`
-  - *Share of returns (coverage estimate):* Rental and royalty income or loss, 5.9%; Other income (Schedule 1 line 8z and similar), 4.8%; Partnership or S corporation income or loss, 3.5%; Farm income or loss, 1.1%; Sales of business property (Form 4797), 1.1%; Net operating loss deduction, 0.6%; Estate or trust income or loss, 0.4%
+  - *Share of returns (coverage estimate):* Other income (Schedule 1 line 8z and similar), 4.8%; Partnership or S corporation income or loss, 3.5%; Farm income or loss, 1.1%; Sales of business property (Form 4797), 1.1%; Net operating loss deduction, 0.6%; Estate or trust income or loss, 0.4%
 - **`qbi.unsupported`**: Do you have qualified business income beyond your Schedule C businesses and section 199A dividends (a partnership, publicly traded partnership, REIT carryforward or cooperative)?
   - *The data asks or tests:* Any of these: a prior-year REIT or PTP loss carryforward; losses or deductions suspended in an earlier year by another provision and allowed this year; being a patron of any agricultural or horticultural cooperative, specified or not. Qualified business income or loss, or PTP income or loss, other than section 199A dividends and the Schedule C businesses is refused by the scope questions on Schedule E, Schedule K-1 and Schedule F income (`test`)
   - *Not covered:* Forms 8995 / 8995-A business or PTP path. Only section 199A dividend income without loss carryovers is supported.
@@ -152,11 +137,15 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
 - **`person.rrta`**: Do you have railroad retirement (RRTA) compensation on a wage statement, or did you file Form CT-2?
   - *The data asks or tests:* Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or did you file Form CT-2 as an employee representative? (`input`)
   - *Stops the return as:* Railroad retirement (RRTA) compensation
+  - *Not covered:* Form 4137 with railroad retirement (RRTA) compensation. Form 4137 line 8 adds railroad retirement (RRTA) compensation to the social security wages, and tips for work covered by the Railroad Retirement Tax Act are not reported on Form 4137; this tool does not take railroad compensation.
+    *Source:* [f4137] p. 2, Employees subject to the Railroad Retirement Tax Act, "Don’t use Form 4137 to report tips received for work covered by the Railroad Retirement Tax Act"
+  - *Not covered:* Form 8919 with railroad retirement (RRTA) compensation. Form 8919 line 8 adds railroad retirement (RRTA) compensation to the social security wages, and this tool does not take railroad compensation.
+    *Source:* [f8919] p. 2, Line 8, "For railroad retirement (RRTA) compensation, don’t include an amount greater than $176,100"
   - *Not covered:* Schedule 3 line 11 (RRTA path). This stage handles Social Security only. Use the railroad retirement instructions; excess Tier 2 tax uses Form 843 rather than Form 1040.
     *Source:* [i1040gi] p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld
   - *Not covered:* Form 8959 RRTA computation. RRTA compensation is outside the supported wage-only path.
     *Source:* [f8959] Form 8959 (2025), lines 1–24; i8959 pp. 1–3
-  - *Refused at:* `person.credit`, `person.medicare5`, `person.medicare6`
+  - *Refused at:* `f4137.line8`, `f8919.line8`, `person.credit`, `person.medicare5`, `person.medicare6`
 - **`person.over`**: Did one employer withhold more than the Social Security maximum, so a refund must be claimed on Form 843?
   - *The data asks or tests:* Any employer withheld more than the limit (`test`)
   - *Not covered:* Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved.
@@ -224,16 +213,118 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Form 5471. You may have to file Form 5471 for a foreign corporation; this tool does not prepare it.
     *Source:* [i1040sb] p. 2, Part II. Ordinary Dividends, TIP, "You may have to file Form 5471 if, in 2025, you were an officer or director of a foreign corporation", "You may also have to file Form 5471 if, in 2025, you owned 10% or more of the total (a) value of a foreign corporation’s stock, or (b) combined voting power of all classes of a foreign corporation’s stock with voting rights"
   - *Refused at:* `sb.line2`, `sb.line3`, `sb.line6`
-- **`ftc.needs1116`**: Do you have foreign tax that needs Form 1116 (over the small-amount limit, not all passive income, or not all reported on a payee statement)?
-  - *The data asks or tests:* Fails a condition of the election (`test`)
-  - *Not covered:* Form 1116. The small-tax election is unavailable or not chosen. Form 1116 is deferred, not dropped; prepare it separately.
-    *Source:* [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; p. 25, Line 20, regular tax
-  - *Refused at:* `ftc.credit`
-- **`ftc.carryover_if_asked`**: Do you want to use a foreign tax credit left over from an earlier year?
-  - *The data asks or tests:* Whether a foreign tax credit carried from another year is claimed, asked only of a filer who has paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules (false otherwise) (`choose`)
-  - *Not covered:* Form 1116. A foreign tax credit carried from another year is claimed on Form 1116, which this tool does not prepare.
+- **`f1116.other_category`**: Is some of your foreign income not investment income (passive category), such as pay for work abroad?
+  - *The data asks or tests:* Some foreign income is not passive category income (it needs its own Form 1116 and the Part IV summary) (`test`)
+  - *Not covered:* Form 1116 (another category of income). Foreign income that is not passive (such as pay for work abroad or a business abroad) needs its own Form 1116 for its category and the Part IV summary, which this tool does not prepare.
+    *Source:* [i1116] p. 11, Lines 1a and 1b, "If you received dividends (passive category income) and wages (general category income) from foreign sources, you must complete two Forms 1116."
+  - *Refused at:* `f1116.line35`
+- **`f1116.not_on_statement`**: Did you pay foreign tax directly, or was it not reported in U.S. dollars on a statement?
+  - *The data asks or tests:* Some foreign income or tax was not reported on a payee statement in U.S. dollars (foreign-currency columns and conversion) (`test`)
+  - *Not covered:* Form 1116, Part II (foreign currency). Foreign tax paid directly to another country, or not reported on a statement in U.S. dollars, is entered in the foreign currency and converted, which this tool does not prepare.
+    *Source:* [i1116] p. 18, Part II, "Generally, you must enter in Part II the amount of foreign taxes, in both the foreign currency denomination(s) and as converted into U.S. dollars, that relate to the category of income checked above Part I."
+  - *Refused at:* `f1116.line35`
+- **`f1116.not_creditable`**: Is some of the foreign tax entered not creditable?
+  - *The data asks or tests:* The foreign tax entered is not all creditable after the required reductions (`test`)
+  - *Not covered:* Form 1116. Foreign tax that is not all creditable after the required reductions must be sorted out before Form 1116 is prepared; this tool does not determine it.
+    *Source:* [i1116] p. 18, Part II, "See General Instructions, earlier, for descriptions of foreign taxes that are eligible for the foreign tax credit and for foreign taxes that aren’t eligible for the foreign tax credit."
+  - *Refused at:* `f1116.line35`
+- **`f1116.business`**: With foreign tax over the election limit, does the return have a Schedule C business?
+  - *The data asks or tests:* The return has a Schedule C, whose gross receipts line 3e would need (`test`)
+  - *Not covered:* Form 1116, line 3e (gross receipts). With a Schedule C business, gross income from all sources counts the business's gross receipts; this tool does not yet carry them to Form 1116.
+    *Source:* [i1116] p. 17, Lines 3d and 3e, "gross income means the total of your gross receipts (reduced by cost of goods sold), total capital and ordinary gains (before subtracting any losses), and all other income (before subtracting any deductions)"
+  - *Refused at:* `f1116.line35`
+- **`f1116.rental`**: With foreign tax over the election limit, does the return have a Schedule E rental or royalty?
+  - *The data asks or tests:* The return has a Schedule E rental or royalty, whose gross rents and royalties line 3e would need (`test`)
+  - *Not covered:* Form 1116, line 3e (gross rents and royalties). With a Schedule E rental or royalty, gross income from all sources counts the gross rents and royalties (and the asset method counts interest of a passive activity); this tool does not yet carry them to Form 1116.
+    *Source:* [i1116] p. 17, Lines 3d and 3e, "gross income means the total of your gross receipts (reduced by cost of goods sold), total capital and ordinary gains (before subtracting any losses), and all other income (before subtracting any deductions)"
+  - *Refused at:* `f1116.line35`
+- **`f1116.foreign_gain`**: Did you have a foreign-source capital gain or loss?
+  - *The data asks or tests:* Did you have a capital gain or loss from sources outside the United States (including a foreign-source capital gain distribution)? (`input`)
+  - *Not covered:* Form 1116, Worksheets A and B. A foreign-source capital gain or loss must be adjusted on the worksheets in the Form 1116 instructions, which this tool does not prepare.
+    *Source:* [i1116] p. 9, Foreign Qualified Dividends and Capital Gains (Losses), "If you have foreign source qualified dividends or foreign source capital gains (including any foreign source capital gain distributions) or losses, you may be required to make certain adjustments to those amounts before taking them into account on line 1a (gross income) or line 5 (losses)."
+  - *Refused at:* `f1116.line35`
+- **`f1116.redetermination`**: Was foreign tax of an earlier year refunded or changed?
+  - *The data asks or tests:* Was foreign tax of an earlier year refunded or changed in 2025 (a foreign tax redetermination)? (`input`)
+  - *Not covered:* Schedule C (Form 1116). A change in foreign tax of an earlier year is reported on Schedule C (Form 1116), which this tool does not prepare.
+    *Source:* [i1116] p. 2, "Use Schedule C (Form 1116) to report foreign tax redeterminations that occurred in the current tax year and that relate to prior tax years."
+  - *Refused at:* `f1116.line35`
+- **`f1116.reduction`**: Must the foreign taxes be reduced (Form 1116 line 12)?
+  - *The data asks or tests:* Must the foreign taxes be reduced on Form 1116 line 12 (income excluded on Form 2555 or 4563 or exempt Puerto Rico income, foreign oil and gas or mineral income, failure to file Form 5471 or 8865, an international boycott, or a foreign tax credit splitting event)? (`input`)
+  - *Not covered:* Form 1116, line 12. A reduction of foreign taxes on line 12 is not figured by this tool.
+    *Source:* [i1116] p. 19, Line 12, "You may have to reduce the foreign taxes you paid or accrued by the following items."
+  - *Refused at:* `f1116.line35`
+- **`f1116.loss_accounts`**: Does an earlier Form 1116 leave a loss account to recapture?
+  - *The data asks or tests:* Does an earlier Form 1116 leave an overall foreign loss, separate limitation loss or overall domestic loss account still to recapture? (`input`)
+  - *Not covered:* Form 1116, line 16. Recapturing a foreign or domestic loss account on line 16 is not figured by this tool.
+    *Source:* [i1116] p. 20, Line 16, "You are required to increase or decrease the amount on line 15 by the following adjustments."
+  - *Refused at:* `f1116.line35`
+- **`f1116.itemized_unread`**: Do you itemize with state or local income tax?
+  - *The data asks or tests:* Itemized deductions include state or local income tax (Schedule A line 5a), whose part related to foreign income Pub. 514 allocates by the income the state taxes (`test`)
+  - *Not covered:* Form 1116, line 2 (state and local income tax). The part of state or local income tax related to foreign income depends on the income the state taxes, which this tool does not ask.
+    *Source:* [p514] p. 27, State income taxes, "If the total income taxed by the state is greater than the amount of U.S. source income for federal tax purposes, then the state tax is allocable to both U.S. source and foreign source income."
+  - *Refused at:* `f1116.line35`
+- **`f1116.asset_method`**: With over $5,000 of foreign income, do you deduct investment, student loan or car loan interest?
+  - *The data asks or tests:* Interest expense other than home mortgage interest (investment, student loan or car loan interest) must be apportioned by the asset method (`test`)
+  - *Not covered:* Form 1116, line 4b (asset method). With gross foreign income over $5,000, investment, student loan or car loan interest is apportioned by the value of your assets, which this tool does not figure.
+    *Source:* [i1116] p. 18, Line 4b, "Otherwise, each type of interest expense is apportioned separately using an"
+  - *Refused at:* `f1116.line35`
+- **`f1116.adjust`**: Must your foreign qualified dividends be adjusted (Worksheet for Line 18)?
+  - *The data asks or tests:* Foreign qualified dividends and line 18 must be adjusted (the Worksheet for Line 18) (`test`)
+  - *Not covered:* Form 1116, Worksheet for Line 18. Your qualified dividends must be adjusted on line 1a and the Worksheet for Line 18, which this tool does not prepare.
+    *Source:* [i1116] p. 23, Line 18, "If you have qualified dividends or capital gains, you may be required to make adjustments to those qualified dividends and gains before you take those amounts into account on line 18 as described next."
+  - *Refused at:* `f1116.line35`
+- **`f1116.high_taxed`**: Is the foreign tax of a withholding group more than 37% of its income after deductions?
+  - *The data asks or tests:* The foreign tax of a withholding group (15 percent or greater, or less than 15 percent) is more than 37 percent of the group's income after deductions, so that income is high-taxed income reclassified on line 13 (`test`)
+  - *Not covered:* Form 1116, line 13 (high-taxed income). Passive income whose foreign tax is more than 37 percent of it after deductions is high-taxed income, moved to the general category on line 13 and a second Form 1116, which this tool does not prepare.
+    *Source:* [cfr-26-1-904-4] p. 3, (c) High-taxed income, "If, after application of this paragraph (c), income that would otherwise be passive income is determined to be high-taxed income, the income is treated as general category income"
+  - *Refused at:* `f1116.line35`
+- **`f1116.us_loss`**: Is there a net loss from U.S. sources?
+  - *The data asks or tests:* Line 15 is more than line 18, a net loss from U.S. sources to allocate on line 16 (`test`)
+  - *Not covered:* Form 1116, line 16 (U.S. loss). A net loss from U.S. sources is allocated on line 16, which this tool does not figure.
+    *Source:* [i1116] p. 21, "If you have a net loss from U.S. sources, proportionately allocate that loss among the separate categories of your foreign income."
+  - *Refused at:* `f1116.line35`
+- **`f1116sb.changed_if_carry`**: Has the foreign tax carried from 2024 changed since that return was filed?
+  - *The data asks or tests:* The foreign tax carried from 2024 has changed since that return was filed, asked only when a carryover is claimed (false otherwise) (`choose`)
+  - *Not covered:* Schedule B (Form 1116), line 2. A change to the foreign tax carried from 2024 since that return was filed is an adjustment on line 2 of Schedule B (Form 1116), which this tool does not figure.
+    *Source:* [i1116sb] p. 1, Line 2. Adjustments to line 1, "Report on lines 2a, 2b, 2c, 2d, etc., any adjustments resulting from events that occurred between the filing of your prior year tax return and the filing of your current year tax return."
+  - *Refused at:* `f1116.line35`
+- **`f1116sb.split_if_carry`**: Is foreign tax carried from a joint return into a return that is not joint with the same spouse?
+  - *The data asks or tests:* Foreign tax is carried from a joint return of an earlier year that this return does not continue, asked only when a carryover is claimed (false otherwise) (`choose`)
+  - *Not covered:* Schedule B (Form 1116) (allocation between spouses). Foreign tax carried from a joint return into a return that is not joint with the same spouse is divided between the spouses, which this tool does not figure.
+    *Source:* [p514] p. 39, Allocations Between Spouses, "You may have to allocate an unused foreign tax or excess limit for a tax year in which you and your spouse filed a joint return."
+  - *Refused at:* `f1116.line35`
+- **`f1116sb.carryback`**: With a carryover generated, did 2024 have room under its passive limit, so it is carried back first?
+  - *The data asks or tests:* The carryover generated is first carried back to 2024, which had room under its limit (Form 1116 line 24 less than line 23) or foreign income with no credit taken (`test`)
+  - *Not covered:* Schedule B (Form 1116), line 7 (carryback to 2024). Foreign tax above this year's limit is carried back first to 2024 when that year had room under its limit, on an amended 2024 return, which this tool does not prepare.
+    *Source:* [p514] p. 37, Carryback and Carryover, "You are considered to have paid this unused foreign tax first in 2024 (the first preceding tax year) up to the excess limit in that year"
+  - *Refused at:* `f1116.line35`
+- **`ftc.carryover_no_tax`**: Is foreign tax carried into 2025 with no foreign tax paid in 2025?
+  - *The data asks or tests:* A foreign tax credit carried from another year is claimed, with no foreign tax paid in 2025 (`test`)
+  - *Not covered:* Form 1116 (a carryover with no foreign tax in 2025). A foreign tax credit carried from another year, with no foreign tax paid in 2025, is figured on Form 1116 from the year's foreign income, which this tool does not ask for without foreign tax.
     *Source:* [i1116] p. 19, Line 10, "Enter the unused foreign taxes in the separate category from another tax year that are eligible to be carried forward to or back to 2025"
-  - *Refused at:* `ftc.credit`, `scope.ready_credits`
+  - *Refused at:* `ftc.credit`
+- **`person.tips_gov_if_rows`**: Were unreported tips received for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax?
+  - *The data asks or tests:* Unreported tips received as a government employee whose pay was subject only to the 1.45% Medicare tax (asked only of a person with an employer row on Form 4137; otherwise no) (`choose`)
+  - *Stops the return as:* Form 4137 with government-employee tips
+  - *Not covered:* Form 4137, line 10, tips received as a government employee whose pay was subject only to the 1.45% Medicare tax. The tips received for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax are taken out of line 6 for the comparison with line 9 on line 10; this tool does not prepare Form 4137 with such tips.
+    *Source:* [f4137] p. 2, Line 10, "If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax"
+  - *Refused at:* `f4137.line10`
+- **`person.mw_business_if_1099`**: Were Medicaid waiver payments received in a home-care business of your own (Schedule C)?
+  - *The data asks or tests:* A home-care business of your own (asked only with Medicaid waiver payments on Form 1099; otherwise no) (`choose`)
+  - *Stops the return as:* Medicaid waiver payments in a home-care business
+  - *Not covered:* Medicaid waiver payments in a home-care business (Schedule C). A sole proprietor in a business of providing home care services reports these payments as the Schedule C instructions say; this tool does not prepare that.
+    *Source:* [i1040gi] p. 24, Line 1d, "If you are a sole proprietor in a business of providing home care services, see the Schedule C instructions for how to report these amounts"
+  - *Refused at:* `person.line1d`
+- **`person.mw_1099_over`**: Are the Medicaid waiver payments on Form 1099 more than the payments not in W-2 box 1?
+  - *The data asks or tests:* The Medicaid waiver payments on Form 1099 are more than the payments not in W-2 box 1 (`test`)
+  - *Not covered:* Medicaid waiver payments on Form 1099 more than the payments not in W-2 box 1. The Medicaid pay reported on Form 1099-MISC or 1099-NEC is part of the pay not in box 1 of a W-2, so it cannot be more. Check the two amounts.
+    *Source:* [i1040gi] p. 24, Line 1d, "If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC"
+  - *Refused at:* `person.line1d`
+- **`f4137.line5_over`**: Are the tips under $20 a month that were not reported more than all the unreported tips (Form 4137 line 5 more than line 4)?
+  - *The data asks or tests:* Line 5 is more than line 4 (tips under $20 a month that were not reported cannot be more than the unreported tips) (`test`)
+  - *Not covered:* Form 4137, line 5 more than line 4. The tips under $20 a month that you did not report (line 5) are more than all the tips you did not report (line 4). Check the amounts of tips received and reported for each employer.
+    *Source:* [f4137] p. 1, line 6, "Unreported tips subject to Medicare tax. Subtract line 5 from line 4"
+  - *Refused at:* `f4137.line6`
 
 *Taxes and credits*
 
@@ -257,20 +348,15 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
     - household employment taxes
     - the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III)
     - uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)
-    - tax on unreported tips (Form 4137)
     - interest on deferred tax
 
     Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts. (`test`)
   - *Stops the return as:* Other Schedule 2 taxes
-  - *Not covered:* Form 4137 (Social Security and Medicare Tax on Unreported Tip Income). Tips reported on Form 4137 are outside this tool.
-    *Source:* [i1040gi] p. 101, Schedule 1-A, Part II, "If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137"; p. 104, line 4b
   - *Not covered:* Schedule 2 additional source forms. Prepare the other required tax forms; this slice supports only Schedule SE and Forms 8959 and 8960.
     *Source:* [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21
   - *Not covered:* Schedule 8812 line 22 (Schedule 2, lines 5, 6 and 13). Other Schedule 2 taxes are outside this tool.
     *Source:* [f1040s8812] Schedule 8812 (2025), line 22
-  - *Not covered:* Form 4137 (Social Security and Medicare Tax on Unreported Tip Income). Tips reported on Form 4137 are outside this tool.
-    *Source:* [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (c), and p. 103, method 4
-  - *Refused at:* `s1a.line4b_calc`, `s2.line1z`, `s2.line21`, `s8812.line22`, `tipjob.col_c`
+  - *Refused at:* `s2.line1z`, `s2.line21`, `s8812.line22`
   - *Share of returns (coverage estimate):* Household employment, uncollected tip taxes, homebuyer credit repayment, 0.4%
 - **`scope.other_line16`**: Do you have an extra line 16 tax or filing, such as the tax on a child's unearned income (Form 8615), Form 8814, Form 4972 or an education credit recapture?
   - *The data asks or tests:* An additional Form 1040 line 16 tax or filing outside this tool (true when any of the line 16 screening questions is answered Yes) (`test`)
@@ -288,36 +374,43 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Form 8839 (adoption credit). An adoption that became final in 2025, or adoption costs paid in 2025, can give the adoption credit (Form 8839, with its refundable part on Form 1040 line 30), which this tool does not prepare.
     *Source:* [i8839] p. 1, Purpose of Form, "You may be able to take this credit in 2025 if any of the following statements are true"
   - *Refused at:* `f1040.line30`, `s3.line7`, `scope.ready_credits`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.adoption_us_if_earlier`**: In 2024, did you pay costs toward adopting a U.S. child, where the adoption was not final by the end of 2024?
   - *The data asks or tests:* Whether the child of an adoption paid toward in 2024 and not final at the end of 2024 was a U.S. child, asked only with such payments (false without them) (`choose`)
   - *Not covered:* Form 8839 (adoption credit). Costs paid in 2024 toward adopting a U.S. child, where the adoption was not final at the end of 2024, are credited on the 2025 return (Form 8839), which this tool does not prepare.
     *Source:* [i8839] p. 1, Purpose of Form, "2024 and the adoption wasn’t final at the end of 2024"; p. 3, Domestic Adoption, "the year after the year of the payment"
   - *Refused at:* `f1040.line30`, `s3.line7`, `scope.ready_credits`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.credit_bond`**: In 2025, did a bond you own, or a fund, give you a federal tax credit?
   - *The data asks or tests:* For 2025, were you (or, on a joint return, your spouse) allowed a credit as the holder of a tax credit bond (a clean renewable energy bond, new clean renewable energy bond, qualified energy conservation bond, qualified zone academy bond, qualified school construction bond or build America bond), held by you or a nominee or through a fund or other pass-through entity, whether or not reported on Form 1097-BTC? (`input`)
   - *Not covered:* Form 8912 (credit to holders of tax credit bonds). A tax credit from a bond, or one a fund passes on (Form 1097-BTC), is claimed on Form 8912, which this tool does not prepare.
     *Source:* [i8912] p. 1, Who Can Claim the Credits, "can claim the credit by filing Form 8912 for each tax year in which it holds the bond on a credit allowance date"; p. 2, Line 1, "This amount is the total bond credits reported to you on Form(s) 1097-BTC"
   - *Refused at:* `s3.line7`, `scope.ready_credits`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.elderly_credit_if_asked`**: Is someone on the return 65 or older, or retired on permanent and total disability, and do you want the credit for the elderly or the disabled (Schedule R)?
   - *The data asks or tests:* Whether the credit for the elderly or the disabled is wanted, asked only when someone on the return is 65 or older or retired on permanent and total disability (false otherwise) (`choose`)
   - *Not covered:* Schedule R (credit for the elderly or the disabled). The credit for the elderly or the disabled (Schedule R) is outside this tool. To go on without the credit, answer No to that question.
     *Source:* [i1040sr] p. 1, Qualified Individual, "You are a qualified individual for this credit if you are a U.S. citizen or resident alien"
   - *Refused at:* `s3.line7`, `scope.ready_credits`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.ev_dealer_if_ev`**: Did a dealer give you the clean vehicle credit for a vehicle you got in 2025?
   - *The data asks or tests:* Whether a dealer took the clean vehicle credit off the price, asked only with a clean vehicle or home refueling property in 2025 (false without one) (`choose`)
   - *Not covered:* Form 8936 (clean vehicle credits). A dealer took the clean vehicle credit off the price, so Form 8936 and its Schedule A must be filed with this return; this tool does not prepare them.
     *Source:* [i8936] p. 1, Purpose of Form, "You must file Form 8936 and Schedule A (Form 8936) if you purchased a new or used clean vehicle from a registered dealer and reduced the amount you paid at the time of sale by transferring the credit to the dealer"
   - *Refused at:* `s3.line7`, `scope.ready_credits`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.ev_credit_if_bought`**: Do you want a clean vehicle credit for a vehicle you bought by September 30, 2025 and received in 2025?
   - *The data asks or tests:* Whether a clean vehicle credit is wanted on this return, asked only for a vehicle bought and acquired before October 1, 2025 (false otherwise) (`choose`)
   - *Not covered:* Form 8936 (clean vehicle credits). This tool does not prepare the clean vehicle credits (Form 8936). To go on without the credit, answer No to that question.
     *Source:* [i8936] p. 1, Purpose of Form, "to figure the following credits for clean vehicles you placed in service during your tax year"
   - *Refused at:* `s3.line7`, `scope.ready_credits`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.ev_equipment_if_ev`**: Do you want the credit for home charging or fueling equipment installed in 2025 (Form 8911)?
   - *The data asks or tests:* Whether the refueling property credit is wanted on this return, asked only with a clean vehicle or home refueling property in 2025 (false without one) (`choose`)
   - *Not covered:* Form 8911 (alternative fuel vehicle refueling property credit). This tool does not prepare the credit for vehicle charging or fueling equipment (Form 8911). To go on without the credit, answer No to that question.
     *Source:* [i8911] p. 1, Purpose of Form, "to figure your credit for alternative fuel vehicle refueling property you placed in service during your tax year"
   - *Refused at:* `s3.line7`, `scope.ready_credits`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.farmland_deferral_if_sold`**: Did you sell farmland in 2025 and choose to pay the tax on the gain in installments (Form 1062)?
   - *The data asks or tests:* Whether the election to defer the tax on a sale of qualified farmland was made, asked only with a sale of farmland in 2025 (false without one) (`choose`)
   - *Not covered:* Form 1062 (Schedule 3 line 13z). The election to pay the tax on a sale of farmland in installments (Form 1062) is reported on Schedule 3 line 13z, which this tool does not prepare.
@@ -348,16 +441,19 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Form 8396 (mortgage interest credit). A mortgage credit certificate gives the mortgage interest credit (Form 8396), which also reduces the home mortgage interest deducted on Schedule A; this tool does not prepare it.
     *Source:* [f8396] p. 2, Who Can Claim the Credit, "You can claim the credit only if you were issued a qualified Mortgage Credit Certificate (MCC) by a state or local governmental unit or agency"; p. 2, Line 3, "you must reduce the amount of home mortgage interest you would otherwise deduct on Schedule A by the amount on Form 8396, line 3"
   - *Refused at:* `s3.line7`, `scope.ready_credits`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.prior_amt_if_forms`**: Does your 2024 federal return show alternative minimum tax?
   - *The data asks or tests:* A 2024 alternative minimum tax liability with an item other than an exclusion item, which can give a credit for 2025 on Form 8801 (false when the 2024 return has no form besides Form 1040 and its schedules, no such liability, or only exclusion items) (`copy`)
   - *Not covered:* Form 8801 (credit for prior year minimum tax). Alternative minimum tax on your 2024 return can give a credit for 2025 (Form 8801), which this tool does not prepare.
     *Source:* [i8801] p. 1, Who Should File, "An AMT liability and adjustments or preferences other than exclusion items"
   - *Refused at:* `s3.line7`, `scope.ready_credits`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.prior_forms_if_forms`**: Does your 2024 federal return include Form 1116, 3800, 8396, 8801, 8582-CR, 8839, 8859 or 8912?
   - *The data asks or tests:* Whether the 2024 return includes a form that can carry a credit into 2025, asked only when the 2024 return includes a form besides Form 1040 and its schedules (false otherwise) (`choose`)
   - *Not covered:* Credit carried from an earlier year (Form 3800, 8396, 8801, 8834, 8839, 8859 or 8912). A credit carried over from an earlier year is outside this tool.
     *Source:* [i3800] p. 3, Carryback and Carryforward of Unused Credit, "unused general business credits may be carried back 1 year and carried forward 20 years"; f8396 p. 2, Part II—Mortgage Interest Credit Carryforward to 2026, "you may have an unused credit to carry forward to the next 3 tax years"; i8801 p. 1, Who Should File, "A credit carryforward to 2025 (on 2024 Form 8801, line 26)"; f8834 p. 2, Line 1, "Enter the qualified electric vehicle passive activity credits allowed for your current tax year from Form 8582-CR"; i8839 p. 1, Purpose of Form, "You have a carryforward of an adoption credit from 2024"; f8859 p. 1, Purpose of Form, "to claim a carryforward of the District of Columbia first-time homebuyer credit from 2024"; i8912 p. 3, Line 12, "you may carry the unused portion of the credit to the next tax year"
   - *Refused at:* `s3.line7`, `scope.ready_credits`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.repaid_income`**: In 2025, did you pay back more than $3,000 that you had reported as income in an earlier year?
   - *The data asks or tests:* In 2025, did you (or, on a joint return, your spouse) repay more than $3,000 in total that you had included in income in an earlier year because it appeared you had an unrestricted right to it? (`input`)
   - *Not covered:* Repayment of income of an earlier year (Schedule 3 line 13b or Schedule A line 16). A repayment of more than $3,000 of income reported in an earlier year gives a choice between a deduction and a credit (Schedule 3 line 13b), which this tool does not figure.
@@ -380,7 +476,7 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
 - **`f8960.unsupported`**: Do you have net investment income or adjustments the tool does not take for the Net Investment Income Tax: annuities, rentals, royalties, a business or pass-through, CFC or PFIC holdings, a section 1411 net operating loss, excluded savings bond interest, or another Form 8960 adjustment?
   - *The data asks or tests:* Do you (or, on a joint return, your spouse) have any of the following?
 
-    - annuity, rental, royalty, business or pass-through income
+    - annuity, business or pass-through income
     - a CFC or PFIC holding
     - a section 911 exclusion
     - a disposition adjustment (Form 8960 line 5b or 5c), for example:
@@ -401,6 +497,11 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Form 8960 Deduction Recoveries Worksheet / Schedule 1. A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope.
     *Source:* [i8960] pp. 14–15, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet
   - *Refused at:* `f8960.line1`, `f8960.line3`, `f8960.line4a`, `f8960.line4b`, `f8960.line5b`, `f8960.line5c`, `f8960.line6`, `f8960.line7`, `f8960.line9c`, `f8960.line10`, `f8960.line13`
+- **`f8960.digital_nii`**: Do you owe the Net Investment Income Tax and have income received in digital assets from staking, mining or a hard fork (Schedule 1 line 8v)?
+  - *The data asks or tests:* Digital assets received as ordinary income (Schedule 1 line 8v) on a return whose modified adjusted gross income is over the threshold (`test`)
+  - *Not covered:* Form 8960, digital asset income. Digital assets received as ordinary income (Schedule 1 line 8v) on a return whose modified adjusted gross income is over the net investment income tax threshold may be net investment income; whether this income is is outside this tool.
+    *Source:* [i8960] p. 1, Reminders, Digital assets
+  - *Refused at:* `f8960.line7`
 - **`f8960.carryforward_adj`**: Do you have a capital loss carryover with a 2024 Form 8960 worksheet line 2(i) amount, and income over the threshold?
   - *The data asks or tests:* A capital loss carryover with a 2024 Net Gains and Losses Worksheet line 2(i) amount, on a return whose modified adjusted gross income is over the threshold (`test`)
   - *Not covered:* Form 8960 Net Gains and Losses Worksheet lines 2(h) and 2(i). The adjustment of a capital loss carryforward for losses excluded from net investment income (the prior year's worksheet line 2(i)) is outside this tool.
@@ -414,6 +515,13 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Community income on a married head of household return in a community property state (Form 8958; Pub. 555). A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
     *Source:* [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555"
   - *Refused at:* `household.hoh_eligible`
+- **`household.mfs_community_property`**: Are you married, filing separately, and did you live in a community property state at any time in 2025?
+  - *The data asks or tests:* Married filing separately, and you lived in a community property state at some time in 2025 (`choose`)
+  - *Stops the return as:* Married filing separately in a community property state (Form 8958)
+  - *Not covered:* Community income on a married filing separately return (Form 8958; Pub. 555). A married person who files a separate return and lived in a community property state may have to report half of the community income of both spouses under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
+    *Source:* [i1040gi] p. 14, Married Filing Separately, "Different rules apply to people in community property states; see Pub. 555"; p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."
+  - *Refused at:* `f1040.line1a`
+  - *Share of returns (coverage estimate):* Married filing separately, 2.6%
 - **`household.ctc_disallowed_claim`**: Claiming the child tax credit or credit for other dependents after an earlier credit was reduced or disallowed, or in a disallowance period (Form 8862)?
   - *The data asks or tests:* Schedule 8812 line 8 is more than line 11 (a child tax credit or credit for other dependents is figured) and an earlier credit was reduced or disallowed (or a disallowance period applies) (`test`)
   - *Not covered:* Form 8862 and the CTC, ACTC and ODC disallowance period (Form 8862 may be required). Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.
@@ -504,7 +612,7 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
     *Source:* [p501] p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true."
   - *Refused at:* `dependent.qualifying_relative`
 - **`dependent.income_exception`**: Does a permanently and totally disabled relative have gross income of $5,200 or more (the sheltered workshop exception)?
-  - *The data asks or tests:* Permanently and totally disabled with gross income at or over the limit (`test`)
+  - *The data asks or tests:* Permanently and totally disabled with gross income at or over the limit (`choose`)
   - *Not covered:* Exception to gross income test. The sheltered-workshop exception to the gross income test for a disabled person is outside this tool.
     *Source:* [i1040gi] pp. 19–20, Exception to gross income test
   - *Refused at:* `dependent.qualifying_relative`
@@ -534,16 +642,12 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
 
 ### Sales and capital gains
 
-- **`sales.digital`**: Did you sell or exchange digital assets (Form 8949 boxes G to L)?
-  - *The data asks or tests:* Digital asset box G–L (`test`)
-  - *Not covered:* Form 8949 digital asset boxes G–L. Digital asset transactions are outside this tool; prepare the applicable digital-asset part.
-    *Source:* [f8949] Parts I and II, boxes G–L
-  - *Refused at:* `sales.one`
-- **`sales.special`**: Did you sell collectibles, qualified small business stock (section 1202), or depreciable real property?
+- **`sales.special`**: Did you sell collectibles (including an NFT of a collectible), qualified small business stock (section 1202), or depreciable real property?
   - *The data asks or tests:* Does any of the following apply to this sale?
 
     Does this sale involve:
     - collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)
+    - a non-fungible token (NFT) whose underlying asset is a collectible, such as an NFT that represents ownership of a work of art or a gem
     - qualified small business stock with a section 1202 exclusion
     - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
     - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
@@ -555,7 +659,7 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
     *Source:* [i1040sd] pp. 11–12, lines 18 and 19
   - *Refused at:* `sales.one`
 - **`sales.bad_code`**: Does a sale need an adjustment code other than W (wash sale) or B (basis correction on a basis-reported sale)?
-  - *The data asks or tests:* Unsupported adjustment or code B without a broker basis report (`test`)
+  - *The data asks or tests:* Unsupported adjustment, or code B on a sale with no Form 1099-B or Form 1099-DA (box C, F, I or L) (`test`)
   - *Not covered:* Form 8949 adjustment instructions. Only applicable B and W adjustments are supported. Review the required code and prepare the unsupported adjustment.
     *Source:* [i8949] pp. 7–11, columns (e) through (h), codes B and W
   - *Refused at:* `sales.one`
@@ -645,6 +749,7 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Form 3800 (general business credit). Business credits (Form 3800) are outside this tool.
     *Source:* [i1040gi] p. 116, Lines 6a Through 6z, "See Form 3800 or Pub. 334"
   - *Refused at:* `sc.line1`
+  - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`s3.business_credit_any`**: Does a business on the return claim a general business credit (Form 3800)? On Schedule 3 its credit goes on line 6a and its elective payment amount on line 13c.
   - *The data asks or tests:* A business on the return claims a general business credit (Form 3800), whose credit belongs on line 6a and whose elective payment amount on line 13c (`test`)
   - *Stops the return as:* Form 3800 (general business credit)
@@ -815,14 +920,19 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Refused at:* `refund.taxable`
 - **`refund.exc_tax`**: For 2024, did you owe the alternative minimum tax, have unused credits, pay no tax because of the 0% capital gain rate, or get a refund larger than your income-tax deduction less the sales tax you could have deducted?
   - *The data asks or tests:* For 2024: did you owe alternative minimum tax; were you unable to use the full amount of credits you were entitled to because the total credits were more than the amount on your 2024 Form 1040 or 1040-SR, line 18; did you have taxable income on your 2024 Form 1040 or 1040-SR, line 15, but no tax on line 16 because of the 0% tax rate on net capital gain and qualified dividends; or is your 2024 state and local income tax refund more than your 2024 state and local income tax deduction minus the amount you could have deducted as your 2024 state and local general sales taxes? (`input`)
+  - *Stops the return as:* A 2024 return with the alternative minimum tax, unused credits, the 0% capital gain rate or a refund over the deduction (Pub. 525 Worksheet 2)
+  - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Unused tax credits, Subject to AMT, Capital gains). Your 2024 alternative minimum tax, unused credits, 0% capital gain rate or sales tax choice means the 2024 tax is refigured to find how much of what was paid back is taxable; that is outside this tool.
+    *Source:* [p525] p. 27, Worksheet 2, "If you were subject to the AMT or your tax credits reduced your tax to zero, see Unused tax credits and Subject to AMT under Itemized Deduction Recoveries"; p. 25, Capital gains, "you’ll have to refigure your tax for the earlier year to determine if the recovery must be included in your income"
   - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). Your 2024 alternative minimum tax, unused credits, 0% capital gain rate or sales tax choice means the refund is figured with Pub. 525 instead of the Form 1040 worksheet; that is outside this tool.
     *Source:* [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 3, 4, 6 and 7
-  - *Refused at:* `refund.line1`
+  - *Refused at:* `rec.line11`, `refund.line1`
 - **`refund.exc_who`**: For 2024, could someone claim you as a dependent, did you file Form 1040-NR, or did the refund come from a joint state return with someone you are not filing with now?
   - *The data asks or tests:* Could you be claimed as a dependent by someone else in 2024; were you a nonresident alien filing Form 1040-NR for 2024; or did you receive any of these refunds because of a jointly filed state or local income tax return when you are not filing a joint 2025 Form 1040 or 1040-SR with the same person? (`input`)
+  - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A 2024 return on which you could be claimed as a dependent, a 2024 Form 1040-NR, or a refund from a joint state or local return with someone you are not filing jointly with for 2025 changes the 2024 standard deduction or the refund to count; that is outside this tool.
+    *Source:* [p525] p. 25, Itemized Deduction Recoveries, "You could be claimed as a dependent by someone else in 2024" and "You received a refund because of a jointly filed state or local income tax return"; p. 25, Nonresident aliens, "you can’t claim the standard deduction"
   - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A 2024 return on which you could be claimed as a dependent, a 2024 Form 1040-NR, or a refund from a joint state or local return with someone you are not filing jointly with for 2025 is figured with Pub. 525 instead of the Form 1040 worksheet; that is outside this tool.
     *Source:* [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 8 and 9; p525 p. 24, Itemized Deduction Recoveries, "if you’re a nonresident alien"
-  - *Refused at:* `refund.line1`
+  - *Refused at:* `rec.line11`, `refund.line1`
 - **`refund.not_prior_year`**: Is a state or local refund for a year other than 2024, or did you pay some of your 2024 state income tax in 2025?
   - *The data asks or tests:* A refund is for a tax year other than 2024 (box 3 of Form 1099-G), or you paid any of your 2024 state or local income tax in 2025 or before 2024 (`test`)
   - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A refund for a tax year other than 2024, or a refund when any of your 2024 state or local income tax was paid in 2025 (a last estimated payment, a payment with an extension, or a balance due) or before 2024, is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool.
@@ -833,9 +943,124 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). Refunds of 2024 tax of both of you, when each filed a separate 2024 return and either of you itemized and deducted state and local income taxes, are tested against each 2024 return in turn, and the Form 1040 worksheet takes one; that is outside this tool.
     *Source:* [i1040gi] p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, "But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d"; p525 p. 24, Itemized Deduction Recoveries, "how to determine the amount to include in your income from a recovery of an amount deducted in an earlier year as an itemized deduction"
   - *Refused at:* `refund.taxable`
+- **`rec.before_prior_year_if_any`**: Was any money paid back to you in 2025 for something you paid or deducted in a year before 2024?
+  - *The data asks or tests:* A recovery for something paid or deducted before 2024, asked only after a Yes to the question on money paid back (no otherwise) (`choose`)
+  - *Not covered:* Pub. 525, Worksheet 2 (a recovery for an earlier year). Money paid back for something paid or deducted before 2024 is figured on a separate worksheet with that year's return; that is outside this tool.
+    *Source:* [p525] p. 27, Worksheet 2, "If you recovered amounts from more than 1 year, such as a state income tax refund from 2024 and a casualty loss reimbursement from 2023, complete a separate worksheet for each year"
+  - *Refused at:* `rec.to_line8z`
+- **`rec.nonitemized_if_any`**: Was any money paid back to you in 2025 for a deduction taken without itemizing, or for a credit?
+  - *The data asks or tests:* A recovery of a deduction taken without itemizing or of a credit, asked only after a Yes to the question on money paid back (no otherwise) (`choose`)
+  - *Not covered:* Pub. 525, Nonitemized Deduction Recoveries and Amounts Recovered for Credits. Money paid back for a deduction taken without itemizing (such as a bad debt) or for an item on which a credit was claimed is outside this tool.
+    *Source:* [p525] p. 28, Nonitemized Deduction Recoveries, "If you recover an amount that you deducted in an earlier year when you were figuring your AGI, you must generally include the full amount"; p. 28, Amounts Recovered for Credits
+  - *Refused at:* `rec.to_line8z`
+- **`rec.sales_tax_if_any`**: Was any money paid back to you in 2025 a refund of state or local general sales tax?
+  - *The data asks or tests:* A refund of general sales tax, asked only after a Yes to the question on money paid back (no otherwise) (`choose`)
+  - *Not covered:* Pub. 525, Worksheet 2, line 2 (a refund of general sales tax). A refund of general sales tax is limited by the sales tax and income tax you could have deducted for 2024; that is outside this tool.
+    *Source:* [p525] p. 27, Worksheet 2, footnote 2, "don’t enter more than the excess of your sales tax deduction over your state and local income tax you could have deducted"
+  - *Refused at:* `rec.to_line8z`
+- **`rec.two_returns_if_joint`**: On a joint return, were the amounts paid back for deductions on two separate 2024 returns?
+  - *The data asks or tests:* Amounts for deductions on two 2024 returns, asked only on a joint 2025 return after a Yes to the question on money paid back (no otherwise) (`choose`)
+  - *Not covered:* Pub. 525, Worksheet 2 (deductions on two 2024 returns). Amounts paid back for deductions on two 2024 returns, one for each of you, are tested against each 2024 return in turn; that is outside this tool.
+    *Source:* [p525] p. 27, Worksheet 2, "Use information from your tax return for the year the expense was deducted"
+  - *Refused at:* `rec.to_line8z`
 
 ### Other income and alimony
 
+- **`rental.self_rental`**: Is the property rented to a business you or your spouse run, or of another kind?
+  - *The data asks or tests:* Self-rental (type 7) or other property (type 8) (`test`)
+  - *Not covered:* Schedule E, Part I, property type 7 or 8 (self-rental or other). Property rented to a business you or your spouse run, and property of another type, are outside this tool.
+    *Source:* [i1040se] p. 5, Self-rental
+  - *Refused at:* `rental.line21_full`
+- **`rental.stay7_if_short`**: Was the average stay 7 days or less?
+  - *The data asks or tests:* Average stay of 7 days or less, asked only when stays averaged 30 days or less (false otherwise) (`choose`)
+  - *Not covered:* Schedule C or Schedule E with Form 8582 (not a rental activity: average stay of 7 days or less). A rental whose average stay is 7 days or less is not a rental activity under the passive activity rules and is outside this tool.
+    *Source:* [i8582] p. 3, Exceptions, "Figure the average period of customer use for a class of property by dividing the total number of days in all rental periods by the number of rentals"
+  - *Refused at:* `rental.line21_full`
+- **`rental.services`**: Did you provide renters services such as cleaning during stays or meals (Schedule C)?
+  - *The data asks or tests:* Significant services provided to renters (Schedule C) (`input`)
+  - *Not covered:* Schedule C (rental with significant services). A rental where you provide significant services, such as maid service, is reported on Schedule C; this tool does not prepare it.
+    *Source:* [i1040se] p. 5, Line 3, "If you provided significant services to the renter"
+  - *Refused at:* `rental.line21_full`
+- **`rental.under_tenth`**: Did you own less than a tenth of the rental?
+  - *The data asks or tests:* Less than 10% owned (with the spouse) (`input`)
+  - *Not covered:* Form 8582, Part V (ownership of less than 10%). A rental you own less than 10% of is outside this tool.
+    *Source:* [i8582] p. 4, Active participation, "in the activity was less than 10% (by value) of all interests in the activity"
+  - *Refused at:* `rental.line21_full`
+- **`rental.not_for_profit`**: Was the property rented not to make a profit?
+  - *The data asks or tests:* Not rented to make a profit (`input`)
+  - *Not covered:* Not rented for profit (Schedule 1, line 8l and Schedule A). Property not rented for profit is reported differently and is outside this tool.
+    *Source:* [p527] p. 17, Not Rented for Profit
+  - *Refused at:* `rental.line21_full`
+- **`rental.depletion`**: Do you claim depletion for the rental?
+  - *The data asks or tests:* Depletion claimed (`input`)
+  - *Not covered:* Schedule E, line 18 (depletion). Depletion is outside this tool.
+    *Source:* [i1040se] p. 6, Line 18, "Depletion"
+  - *Refused at:* `rental.line21_full`
+- **`rental.part_home`**: Is the rental part of a home or building you live in, such as a room?
+  - *The data asks or tests:* Part of a property the filer also lives in (`input`)
+  - *Not covered:* Schedule E, Part I (rental of part of a property you also live in). Renting out part of a home or building you also live in, such as a room, is outside this tool.
+    *Source:* [i1040se] p. 6, Renting out part of your home
+  - *Refused at:* `rental.line21_full`
+- **`rental.vehicle`**: Do you have car, truck or travel costs for the rental?
+  - *The data asks or tests:* Car, truck or travel expenses for the rental (line 6) (`input`)
+  - *Not covered:* Schedule E, line 6 (auto and travel). Car, truck and travel expenses of a rental are outside this tool.
+    *Source:* [i1040se] p. 4, Line 6
+  - *Refused at:* `rental.line21_full`
+- **`rental.ws51`**: Was the rental used as a home (personal use over the greater of 14 days or 10% of rental days) and rented 15 days or more?
+  - *The data asks or tests:* Used as a home and rented 15 days or more (Worksheet 5-1) (`test`)
+  - *Not covered:* Pub. 527, Worksheet 5-1 (dwelling unit used as a home). A home you also lived in or used for more than the greater of 14 days or 10% of the days rented, and rented 15 days or more, is outside this tool.
+    *Source:* [p527] p. 28, Used as a home and rented 15 days or more
+  - *Refused at:* `rental.line21_full`
+- **`rental.prior_not_active_if_both`**: Did a held-back loss come from a year without active participation?
+  - *The data asks or tests:* Asked only of an actively managed rental with a held-back loss (false otherwise) (`choose`)
+  - *Not covered:* Form 8582, Part IV and Part V (prior-year loss from a year without active participation). A held-back loss from a year in which you did not actively participate is outside this tool.
+    *Source:* [i8582] p. 4, Part IV
+  - *Refused at:* `rental.prior_loss`
+- **`rental.not_at_risk_if_loss`**: Does the rental have a loss with an investment not at risk (Form 6198)?
+  - *The data asks or tests:* Asked only when the property has a loss (false otherwise) (`choose`)
+  - *Not covered:* Form 6198 (at-risk limits). A rental loss with an amount not at risk is outside this tool.
+    *Source:* [i1040se] p. 2, At-Risk Rules
+  - *Refused at:* `rental.line22`
+- **`rprop.personal`**: Is depreciable property of the rental something other than a building, such as an appliance or a fence?
+  - *The data asks or tests:* Personal property or a land improvement in a rental (`test`)
+  - *Not covered:* Form 4562 (personal property or land improvements in a rental). Appliances, carpet, furniture, fences and other property that is not a building are outside this tool.
+    *Source:* [i4562] p. 9, Lines 19a Through 19j
+  - *Refused at:* `rprop.dep`
+- **`rprop.screen`**: Is a building of the rental depreciated another way, disposed of, or with a changed basis?
+  - *The data asks or tests:* Depreciation of this property outside the tables this tool uses (`input`)
+  - *Not covered:* Form 4562 (real property outside the mid-month tables). Real property depreciated another way, with a changed basis, disposed of, qualified improvement property, property with a credit or deduction for part of its cost, or cooperative stock is outside this tool.
+    *Source:* [i4562] p. 11, Column (f)—Method
+  - *Refused at:* `rprop.dep`
+- **`rprop.early_nonres`**: Is nonresidential real property placed in service before 1994 depreciated?
+  - *The data asks or tests:* Nonresidential real property placed in service before 1994 (31.5-year) (`test`)
+  - *Not covered:* Form 4562 (nonresidential real property placed in service before 1994). Nonresidential real property placed in service before 1994 is outside this tool.
+    *Source:* [p946] p. 74, Table A-7, "Straight Line—31.5 Years"
+  - *Refused at:* `rprop.dep`
+- **`royalty.business`**: Did a royalty come from your own self-employed creative work or a working interest?
+  - *The data asks or tests:* Royalty from the filer's own work as a self-employed writer, artist or inventor, or from a working interest (`input`)
+  - *Not covered:* Schedule C (royalties from your own trade or business). Royalties from your own work as a self-employed writer, artist or inventor, or from a working interest, are reported on Schedule C; this tool does not prepare them on Schedule E.
+    *Source:* [i1040se] p. 6, Line 4, "If you are in business as a self-employed writer, inventor, artist, etc., report your royalty income and expenses on Schedule C"
+  - *Refused at:* `royalty.line21`
+- **`royalty.depletion`**: Do you claim depletion for a royalty?
+  - *The data asks or tests:* Depletion claimed (`input`)
+  - *Not covered:* Schedule E, line 18 (depletion). Depletion is outside this tool.
+    *Source:* [i1040se] p. 6, Line 18, "Depletion"
+  - *Refused at:* `royalty.line21`
+- **`sche.re_pro`**: Did you work over 750 hours, and most of your work time, in real estate?
+  - *The data asks or tests:* Real estate professional (`input`)
+  - *Not covered:* Schedule E, line 43 (real estate professional). A real estate professional's rentals are outside this tool.
+    *Source:* [i1040se] p. 3, Real estate professionals
+  - *Refused at:* `sche.line26`
+- **`sche.grouped`**: Do you treat two or more rentals as one activity?
+  - *The data asks or tests:* Rentals grouped as one activity (`input`)
+  - *Not covered:* Form 8582 (activities grouped). Rentals treated as one activity are outside this tool.
+    *Source:* [i8582] p. 1, Grouping of Activities
+  - *Refused at:* `sche.line26`
+- **`sche.qbi_business`**: Do you treat a rental as a business for the qualified business income deduction?
+  - *The data asks or tests:* A rental treated as a trade or business (`input`)
+  - *Not covered:* Form 8995 (rental real estate as a trade or business). A rental treated as a trade or business is outside this tool.
+    *Source:* [i8995] p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated as a trade or business for purposes of the QBI deduction"
+  - *Refused at:* `sche.line26`
 - **`s1.alimony_unsupported`**: Is alimony paid under more than one agreement or to more than one person, subject to recapture, or partly child support?
   - *The data asks or tests:* Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement, or paid to more than one person; a recapture of alimony; or payments of which part is not alimony (child support, including an amount reduced on a contingency relating to a child; payments for a home either of you owns; or a part that must continue after the recipient's death)? (`input`)
   - *Not covered:* Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504). Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.
@@ -875,6 +1100,46 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *The data asks or tests:* The item is a recovery of an amount deducted in an earlier year (`test`)
   - *Not covered:* Pub. 525, Recoveries (Schedule 1, line 8z). Figuring the taxable part of a recovery of an amount deducted in an earlier year is outside this tool.
     *Source:* [i1040gi] p. 92, Line 8z, "See Recoveries in Pub. 525 for details on how to figure the amount to report"
+  - *Refused at:* `oi8z.taxable`
+- **`s1.nol_before_limit_date_if_nol`**: Did any of a net operating loss carried into 2025 arise in a tax year that began before 2018?
+  - *The data asks or tests:* A loss from a year before 2018, asked only with a loss carried into 2025 (no otherwise) (`choose`)
+  - *Not covered:* Form 172, NOL deduction limitation (a loss from a year before 2018). A net operating loss from a tax year that began before 2018 is deducted ahead of the limit on later losses; that is outside this tool.
+    *Source:* [i172] p. 1, NOL deduction limitation, "cannot exceed the sum of: (1) the NOLs carried to the year from tax years beginning before January 1, 2018"
+  - *Refused at:* `s1.line8a`
+- **`s1.nol_ebl_if_nol`**: Did any of a net operating loss carried into 2025 come from an excess business loss (Form 461)?
+  - *The data asks or tests:* A loss from an excess business loss, asked only with a loss carried into 2025 (no otherwise) (`choose`)
+  - *Not covered:* Form 172 and Form 8995 (a loss carried from an excess business loss). A net operating loss from an excess business loss is taken into the qualified business income of the year it is deducted; that is outside this tool.
+    *Source:* [i8995] p. 3, "Instead, qualified losses and deductions are taken into account in the tax year they’re included in calculating your taxable income"
+  - *Refused at:* `s1.line8a`
+- **`s1.nol_marital`**: Must a net operating loss carried into 2025 be divided between spouses (a change in marriage or in filing jointly since the loss)?
+  - *The data asks or tests:* The loss carried into 2025 must be divided between spouses (a change in marriage or in filing jointly since the loss) (`test`)
+  - *Not covered:* Form 172, Change in Marital Status. A net operating loss from a year when you were not married to your spouse of 2025, or when you filed jointly and now file alone, must be divided between the spouses; that is outside this tool.
+    *Source:* [i172] p. 3, Change in Marital Status, "only the spouse who had the loss can take the NOL deduction"; p. 3, Joint to separate returns, "figure each of your carryovers separately"
+  - *Refused at:* `s1.line8a`
+- **`f8853c.nonqualified_if_periodic`**: Were long-term care per diem payments made under a contract that is not a qualified long-term care insurance contract?
+  - *The data asks or tests:* A contract that is not qualified, asked only when line 17 is more than zero (no otherwise) (`choose`)
+  - *Not covered:* Form 8853, Section C, line 17 (a contract that is not a qualified LTC insurance contract). Payments at a set rate under a contract that is not a qualified long-term care insurance contract are taxable only to the extent they are not excludable, figured outside Form 8853; that is outside this tool.
+    *Source:* [f8853] Form 8853 (2025), line 17, Caution, "Don’t use lines 18 through 26 to figure the taxable amount of benefits paid under an LTC insurance contract that isn’t a qualified LTC insurance contract"
+  - *Refused at:* `f8853c.line26`
+- **`f8853c.others_paid_if_periodic`**: Did anyone else receive per diem long-term care payments for the same insured person?
+  - *The data asks or tests:* Payments to others for the same insured, asked only when line 20 is more than zero (no otherwise) (`choose`)
+  - *Not covered:* Form 8853, Section C, Multiple Payees. When someone else also received payments at a set rate for the same insured person, the $420-a-day limit is figured for everyone together on an attached statement; that is outside this tool.
+    *Source:* [i8853] p. 9, Multiple Payees, "attach a statement duplicating lines 18 through 26"
+  - *Refused at:* `f8853c.line26`
+- **`f8853c.rate_changed_if_periodic`**: Did the rate of per diem long-term care payments change during 2025, or another contract start or stop paying?
+  - *The data asks or tests:* A change in the payment rate, asked only when line 20 is more than zero (no otherwise) (`choose`)
+  - *Not covered:* Form 8853, Section C (more than one LTC period). Payments at more than one rate in 2025 make more than one long-term care period, each figured on its own Section C; that is outside this tool.
+    *Source:* [i8853] p. 8, Line 18, "If you have more than one LTC period, you must separately calculate the taxable amount of the payments received during each LTC period"
+  - *Refused at:* `f8853c.line26`
+- **`f8853c.contract_before_ltc_date_if_reimbursed`**: Were long-term care reimbursements received under a contract issued before August 1, 1996?
+  - *The data asks or tests:* Reimbursements under a contract issued before August 1, 1996, asked only when line 24 is more than zero (no otherwise) (`choose`)
+  - *Not covered:* Form 8853, line 24 (reimbursements under a contract issued before August 1, 1996). Reimbursements under a long-term care contract issued before August 1, 1996, are generally left off line 24 unless the contract was later changed; that is outside this tool.
+    *Source:* [i8853] p. 9, Line 24, "Generally, don’t include on line 24 reimbursements for qualified LTC services you received under a contract issued before August 1, 1996"
+  - *Refused at:* `f8853c.line25`
+- **`oi8z.injury_if_damages`**: Were damages or a settlement reported as other income paid on account of a personal physical injury or sickness?
+  - *The data asks or tests:* Damages paid on account of a physical injury or sickness, asked only for the kind taxable_damages (no otherwise) (`choose`)
+  - *Not covered:* Pub. 525, Court awards and damages (Schedule 1, line 8z). Damages or a settlement paid in a case about a physical injury or physical sickness are split between the compensatory part, which is not income, and any punitive damages, which are; that is outside this tool.
+    *Source:* [p525] p. 32, Court awards and damages, "Punitive damages in most cases. It doesn’t matter if they relate to a physical injury or physical sickness"
   - *Refused at:* `oi8z.taxable`
 
 ### IRA contributions
@@ -1000,9 +1265,9 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
     *Source:* [i8889] p. 8, Excess Employer Contributions, "Excess employer contributions are the excess, if any, of your employer's contributions over your limitation on line 8."
   - *Refused at:* `f8889.line13_figured`
 - **`f8889.mfs`**: Do you have an HSA on a married filing separately return?
-  - *The data asks or tests:* Married filing separately (`test`)
-  - *Not covered:* Form 8889 on a married filing separately return. Married filing separately is outside this tool; the HSA rules for spouses are supported on a joint return.
-    *Source:* [i1040gi] p. 14, Married Filing Separately
+  - *The data asks or tests:* Married filing separately, with family HDHP coverage at any time during 2025, and a spouse with an HSA of their own (`test`)
+  - *Not covered:* Form 8889 line 6 on a married filing separately return, with a spouse who has an HSA. When you had family coverage and your husband or wife has an HSA of their own, the family contribution limit is divided between you (equally unless you both agree otherwise), and this tool figures that division only on a joint return.
+    *Source:* [i8889] p. 7, Line 6, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules to figure the amount on line 6"
   - *Refused at:* `f8889.line13_figured`
 
 ### Itemized deductions
@@ -1052,7 +1317,7 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
     *Source:* [f4952] pp. 1, 3–4, Investment Interest Expense Deduction
   - *Refused at:* `f4952.line2`, `f4952.election_checked`, `f4952.line5`, `f4952.required_test`
 - **`sa.mfs_spouse_extra`**: On a married filing separately return, are you checking age or blindness boxes for your spouse?
-  - *The data asks or tests:* Married filing separately and claiming age or blindness boxes for your spouse (`choose`)
+  - *The data asks or tests:* Married filing separately and claiming age or blindness boxes for your spouse (asked only when the spouse is not itemizing on a separate return; otherwise no) (`choose`)
   - *Not covered:* Standard Deduction Chart spouse boxes on a separate return. Checking age or blindness boxes for your spouse on a married filing separately return is outside this tool.
     *Source:* [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart
   - *Refused at:* `sa.standard`
@@ -1071,6 +1336,17 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Schedule 1-A, lines 5 and 14b (qualified tips received in a trade or business, or qualified overtime reported on Form 1099-NEC or 1099-MISC, with Schedule C). Qualified tips received in a trade or business and qualified overtime reported on Form 1099-NEC or 1099-MISC are outside this tool.
     *Source:* [i1040gi] p. 108, Schedule 1-A, line 14b, "Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3"; p. 106, "Fill out Schedule 1-A, Part III, only if"
   - *Refused at:* `s1a.line5_calc`, `s1a.line13`, `s1a.line14b_calc`, `s1a.line21`
+- **`s1a.f4137`**: Do you claim the deduction for qualified tips and have tips on Form 4137?
+  - *The data asks or tests:* Someone on the return has tips on Form 4137 (`test`)
+  - *Stops the return as:* The tips deduction with Form 4137 tips
+  - *Not covered:* The deduction for qualified tips included on Form 4137 (Schedule 1-A, line 4b). This tool prepares Form 4137 but does not figure the part of its tips that is qualified tips for the deduction. Claim the deduction for tips without this tool, or answer that you do not want the deduction for tips.
+    *Source:* [i1040gi] p. 101, Schedule 1-A, Part II, "If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137"; p. 104, line 4b
+  - *Refused at:* `s1a.line4b_calc`
+- **`person.f4137_filed`**: Do you claim the deduction for qualified tips from more than one employer and have tips on Form 4137?
+  - *The data asks or tests:* This person has tips on Form 4137 (line 2 more than zero) (`test`)
+  - *Not covered:* The deduction for qualified tips included on Form 4137 (worksheet column (c)). This tool prepares Form 4137 but does not figure the part of its tips that is qualified tips for the deduction. Claim the deduction for tips without this tool, or answer that you do not want the deduction for tips.
+    *Source:* [i1040gi] p. 104, Qualified Tips From More Than One Employer Worksheet, column (c), and p. 103, method 4
+  - *Refused at:* `tipjob.col_c`
 - **`tipjob.mixed`**: Are only some of one employer's tips qualified tips?
   - *The data asks or tests:* Some of this employer's tips are not qualified tips (`test`)
   - *Not covered:* Qualified tips from an employer where some tips were not qualified tips. Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool.
@@ -1099,6 +1375,11 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
 
 ### Earned income credit
 
+- **`sche.any`**: Are you filing Schedule E (rental real estate or royalties) with the earned income credit (Pub. 596 Worksheet 1)?
+  - *The data asks or tests:* Schedule E is filed (a rental reported or a royalty listed) (`choose`)
+  - *Not covered:* Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool.
+    *Source:* [i1040gi] p. 40, Step 2, question 4, "You are filing Schedule E"
+  - *Refused at:* `eic.step2_other`
 - **`eic.died_this_year`**: For the earned income credit: did your spouse die in 2025, or is this return for someone who died in 2025?
   - *The data asks or tests:* Spouse died in 2025, or a return for someone who died in 2025? (`input`)
   - *Not covered:* EIC age test after a death in 2025 (Pub. 596). When your spouse died in 2025 or the return is for someone who died in 2025, the EIC age test is answered under Pub. 596, which this tool does not apply.
@@ -1162,6 +1443,11 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Form 2441, lines 18 to 20, with a grace-period amount on line 13 and taxable benefits. You used a grace-period amount carried over from 2024 (line 13), part of your benefits is taxable, and your earned income is what limits your excluded benefits. For lines 18 and 19 the instructions leave out of earned income only the benefits shown on line 12; they do not say how much of the taxable benefits on line 26 comes from line 13 rather than line 12, and that decides lines 18 to 20 and how much is excluded. This tool does not figure that case.
     *Source:* [i2441] p. 5, Line 18, "however, for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12"; p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"
   - *Refused at:* `f2441.line25`
+- **`f2441.mfs_spouse_deemed_if_married`**: On a separate return, was your husband or wife a full-time student or unable to care for themselves?
+  - *The data asks or tests:* A separate return's spouse who was a student or disabled: asked only on a married filing separately return not considered unmarried (false otherwise) (`choose`)
+  - *Not covered:* Deemed earned income of a student or disabled spouse on a separate return (Form 2441, line 19). Your husband's or wife's earned income on line 19 is considered to be at least $250 or $500 a month for each month they were a full-time student or not able to care for themselves, which this tool does not figure.
+    *Source:* [i2441] p. 4, If You or Your Spouse Was a Student or Disabled, "Their earned income for each month is considered to be at least $250 ($500 if you had two or more qualifying persons at any time during 2025)"
+  - *Refused at:* `f2441.line19`
 
 ### Education credits
 
@@ -1256,6 +1542,11 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
   - *Not covered:* Form 8962 Part V, Alternative Calculation for Year of Marriage. A 2025 marriage with Marketplace coverage before the first full month of marriage needs the year-of-marriage rules (Part V and Pub. 974), which this tool does not prepare.
     *Source:* [i8962] p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?"
   - *Refused at:* `f8962.line24`, `f8962.line25`
+- **`f8962.dependent_filer`**: Can someone claim you (or your spouse) as a dependent, with a Form 1095-A entered?
+  - *The data asks or tests:* Someone can claim you (or, on a joint return, your spouse) as a dependent, and a Form 1095-A is entered (`test`)
+  - *Not covered:* Form 8962 for a filer someone else can claim as a dependent. Someone whom another person can claim as a dependent cannot take the premium tax credit. If that person claims you, they file Form 8962 for your coverage and you do not, so leave out your Form 1095-A. Otherwise this tool does not prepare Form 8962 for you.
+    *Source:* [i8962] p. 3, Who Can Take the PTC, "2. No one can claim you as a dependent for the year."; p. 3, "the person who claims you will", "You do not need to file Form 8962."
+  - *Refused at:* `f8962.line24`, `f8962.line25`
 - **`f8962.alien_branch`**: Is a lawfully present alien with household income below 100% of the poverty line enrolled in Marketplace coverage?
   - *The data asks or tests:* A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception (`choose`)
   - *Not covered:* Form 8962 for a lawfully present alien below 100% of the federal poverty line. A lawfully present alien not eligible for Medicaid because of immigration status, with household income below 100% of the poverty line, can be an applicable taxpayer, which this tool does not prepare.
@@ -1267,12 +1558,280 @@ The data holds **241 refusal gates**: 198 tax situations the tool does not prepa
     *Source:* [i8962] p. 8, Line 4, Table 1-1, "If your family size was more than 8 people"
   - *Refused at:* `f8962.line4`
 
+### Partnership and S corporation Schedules K-1
+
+- **`k1s.multi`**: Is box 18 or 19 of an S corporation Schedule K-1 checked (more than one activity)?
+  - *The data asks or tests:* Box 18 or box 19 is checked (more than one activity for at-risk or passive activity purposes) (`input`)
+  - *Not covered:* Schedule K-1 (Form 1120-S) with more than one activity (box 18 or 19). A corporation with more than one activity reports each on an attached statement, and each activity's income and losses are limited separately; that is outside this tool.
+    *Source:* [i1120ssk] p. 19, Box 19. More Than One Activity for Passive Activity Purposes, "Use the information in the attached statement to correctly determine your passive activity limitations"
+  - *Refused at:* `k1s.ok`
+- **`k1s.disposed`**: Did you sell, give away or have redeemed any S corporation stock?
+  - *The data asks or tests:* Sold or otherwise disposed of stock of the corporation in 2025, or had stock redeemed (`input`)
+  - *Not covered:* Form 7203 for a disposition of S corporation stock, and Form 8949. A sale or other disposition of S corporation stock, or a redemption, needs the stock basis at the date of sale (two Forms 7203) and the gain or loss on Form 8949; that is outside this tool.
+    *Source:* [i7203] p. 3, Line 13, "If a portion of your stock is redeemed, sold, or otherwise disposed of during the year, attach two"
+  - *Refused at:* `k1s.ok`
+- **`k1s.box6`**: Does an S corporation K-1 show royalties (box 6)?
+  - *The data asks or tests:* Box 6 (royalties) shows an amount (`input`)
+  - *Not covered:* Schedule E (Form 1040), line 4 (royalties from a Schedule K-1). Royalties from an S corporation are reported on Schedule E line 4, which this tool does not prepare for a Schedule K-1.
+    *Source:* [i1120ssk] p. 7, Box 6. Royalties, "Report royalties on Schedule E (Form 1040), line 4"
+  - *Refused at:* `k1s.ok`
+- **`k1s.box8_stmt_if_any`**: Does box 8c of an S corporation K-1 refer to a statement of other types of section 1250 gain?
+  - *The data asks or tests:* Box 8c statement, asked only when box 8a, 8b or 8c shows an amount (false otherwise) (`choose`)
+  - *Not covered:* Unrecaptured section 1250 gain from an attached statement. Unrecaptured section 1250 gain of the other two types is reported from the corporation's statement on other lines of the worksheet; that is outside this tool.
+    *Source:* [i1120ssk] p. 7, Box 8c. Unrecaptured Section 1250 Gain, "If it reports the other two types of unrecaptured gain, it will provide an attached statement that shows the amount for each type of unrecaptured section 1250 gain"
+  - *Refused at:* `k1s.ok`
+- **`k1s.box9`**: Does an S corporation K-1 show a section 1231 gain or loss (box 9)?
+  - *The data asks or tests:* Box 9 (net section 1231 gain (loss)) shows an amount (`input`)
+  - *Not covered:* Form 4797 (net section 1231 gain or loss from a Schedule K-1). Section 1231 gain or loss is reported on Form 4797, which this tool does not prepare.
+    *Source:* [i1120ssk] p. 7, Box 9. Net Section 1231 Gain (Loss), "The amount in box 9 is generally passive if it is from a"
+  - *Refused at:* `k1s.ok`
+- **`k1s.box10`**: Does an S corporation K-1 show other income or loss (box 10)?
+  - *The data asks or tests:* Box 10 (other income (loss)) shows an amount (`input`)
+  - *Not covered:* Schedule K-1 (Form 1120-S), box 10 (other income (loss)). The items of box 10 go to forms and lines this tool does not prepare.
+    *Source:* [i1120ssk] p. 8, Box 10. Other Income (Loss), "Losses reported in box 10 may be limited"
+  - *Refused at:* `k1s.ok`
+- **`k1s.box11_12`**: Does an S corporation K-1 show a section 179 or other deduction (boxes 11, 12)?
+  - *The data asks or tests:* Box 11 (section 179 deduction) or box 12 (other deductions) shows an amount (`input`)
+  - *Not covered:* Schedule K-1 (Form 1120-S), boxes 11 and 12 (section 179 and other deductions). Section 179 and the other deductions of box 12 are limited and reported on forms this tool does not prepare.
+    *Source:* [i1120ssk] p. 9, Box 12. Other Deductions, "Deductions reported in box 12 may be limited"
+  - *Refused at:* `k1s.ok`
+- **`k1s.box13_other`**: Does an S corporation K-1 show a credit other than backup withholding (box 13)?
+  - *The data asks or tests:* Box 13 shows a code other than O (credits) (`input`)
+  - *Not covered:* Credits from a Schedule K-1 (Form 1120-S), box 13 (Form 3800, Form 8582-CR). The credits of box 13, other than backup withholding, are figured on forms this tool does not prepare.
+    *Source:* [i1120ssk] p. 12, Box 13. Credits, "If you have credits that are passive activity credits to you, you must complete Form 8582-CR in addition to the credit forms identified below"
+  - *Refused at:* `k1s.ok`
+- **`k1s.box14`**: Is a Schedule K-3 attached to an S corporation K-1 (box 14)?
+  - *The data asks or tests:* Box 14 is checked (Schedule K-3 attached) (`input`)
+  - *Not covered:* Schedule K-3 (Form 1120-S) (international items). Items of international tax relevance reported on Schedule K-3 are outside this tool.
+    *Source:* [i1120ssk] p. 14, Box 14. International Transactions, "If the S corporation checked the box, see the attached Schedule K-3 with respect to items of international tax relevance"
+  - *Refused at:* `k1s.ok`
+- **`k1s.box15`**: Does an S corporation K-1 show alternative minimum tax items (box 15)?
+  - *The data asks or tests:* Box 15 (alternative minimum tax (AMT) items) shows an amount (`input`)
+  - *Not covered:* Form 6251 (alternative minimum tax items from a Schedule K-1). Alternative minimum tax items are figured on Form 6251, which this tool does not prepare.
+    *Source:* [i1120ssk] p. 14, Box 15. Alternative Minimum Tax (AMT) Items, "See List of Codes, later"
+  - *Refused at:* `k1s.ok`
+- **`k1s.box16ef_if_16`**: Does an S corporation K-1 show a loan repayment or foreign taxes (box 16, codes E, F)?
+  - *The data asks or tests:* Box 16 code E or F, asked only when box 16 shows an amount (false otherwise) (`choose`)
+  - *Not covered:* Form 7203 Part II (loan repayments) or Form 1116 (foreign taxes from a Schedule K-1). A repayment of a loan you made to the corporation, and foreign taxes it paid, are figured on forms this tool does not prepare.
+    *Source:* [i1120ssk] p. 15, Code E. Repayment of loans from shareholders, "the repayments must be allocated in part to a return of your basis in the loan and in part to the receipt of income"
+  - *Refused at:* `k1s.ok`
+- **`k1s.box17_other_if_17`**: Does an S corporation K-1 show box 17 codes other than A, B, V or AC?
+  - *The data asks or tests:* Box 17 other codes, asked only when box 17 shows an amount (false otherwise) (`choose`)
+  - *Not covered:* Schedule K-1 (Form 1120-S), box 17 (other information). The codes of box 17 other than A, B, V and AC go to forms this tool does not prepare.
+    *Source:* [i1120ssk] p. 15, Box 17. Other Information, "Code A. Investment income. Report this amount on Form 4952, line 4a"; p. 18, Code AC. Gross receipts for section 448(c), "Use the gross receipts amount to figure the business interest expense you can deduct, if applicable"
+  - *Refused at:* `k1s.ok`
+- **`k1s.v_other_if_any`**: Does an S corporation's section 199A statement show REIT dividends or PTP income?
+  - *The data asks or tests:* Section 199A dividends or PTP income on the statement, asked only when box 17 shows code V (false otherwise) (`choose`)
+  - *Not covered:* Form 8995, lines 6 to 9 (section 199A dividends and qualified PTP income). Section 199A dividends and qualified PTP income from an S corporation are outside this tool.
+    *Source:* [i1120ssk] p. 17, Code V. Section 199A information, "Section 199A dividends. The amount reported reflects your pro rata share of the S corporation’s net section 199A dividends"
+  - *Refused at:* `k1s.ok`
+- **`k1s.mp_other_if_ask`**: Is material participation in an S corporation's business met only by tests 2, 4 or 7?
+  - *The data asks or tests:* Other tests, asked only when you worked in it and no test of 1, 3, 5 or 6 is met (false otherwise) (`choose`)
+  - *Not covered:* Schedule E (Form 1040), Part II, with material participation by test 2, 4 or 7. Material participation by these tests is outside this tool.
+    *Source:* [i1120ssk] p. 4, Individuals, "Your participation in the activity for the tax year constituted substantially all the participation in the activity of all individuals"; "The activity was a significant participation activity for the tax year, and you participated in all significant participation activities (including activities outside the corporation) during the year for more than 500 hours"
+  - *Refused at:* `k1s.ok`
+- **`k1s.former_passive`**: Is there a prior-year passive loss of an S corporation business you now materially participate in?
+  - *The data asks or tests:* A prior-year unallowed passive loss of the box 1 activity, which is not passive this year (`test`)
+  - *Not covered:* Form 8582 (prior-year unallowed loss of an activity that is not passive this year). A prior-year unallowed loss of an activity in which you now materially participate is allowed under special rules that are outside this tool.
+    *Source:* [i8582] p. 10, Column (c), "Enter the prior-year unallowed losses for each activity"
+  - *Refused at:* `k1s.ok`
+- **`k1s.basis_carry`**: Is an S corporation loss carried from an earlier year by the basis limitation?
+  - *The data asks or tests:* Losses or deductions from this corporation not allowed in an earlier year because of the basis limitation (`input`)
+  - *Not covered:* Form 7203, Part III, column (b), and Schedule E (Form 1040), line 27. A loss or deduction carried from an earlier year by the basis limitation is outside this tool.
+    *Source:* [i7203] p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "Column (b). Enter any loss or deduction items disallowed due to basis limitations in prior years that were carried forward"
+  - *Refused at:* `k1s.ok`
+- **`k1s.risk_carry`**: Is an S corporation loss carried from an earlier year by the at-risk rules (Form 6198)?
+  - *The data asks or tests:* A loss from this corporation not allowed in an earlier year because of the at-risk limitation (`input`)
+  - *Not covered:* Form 6198 (At-Risk Limitations). A loss carried from an earlier year by the at-risk limitation is figured on Form 6198, which this tool does not prepare.
+    *Source:* [i1120ssk] p. 3, At-Risk Limitations, "Any loss from a section 465 activity not allowed for this tax year will be treated as a deduction allocable to the activity in the next tax year"
+  - *Refused at:* `k1s.ok`
+- **`k1s.not_at_risk_if_loss`**: Is any of your S corporation investment not at risk, with a loss (Form 6198)?
+  - *The data asks or tests:* Not at risk, asked only when a box shows a loss (false otherwise) (`choose`)
+  - *Not covered:* Form 6198 (At-Risk Limitations). A loss with amounts not at risk is figured on Form 6198, which this tool does not prepare.
+    *Source:* [i1120ssk] p. 3, At-Risk Limitations, "you will have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity"
+  - *Refused at:* `k1s.ok`
+- **`k1s.qbi_cut`**: Is an S corporation QBI loss partly suspended by the basis limitation?
+  - *The data asks or tests:* A qualified business loss on a K-1 whose losses are partly carried to 2026 by the basis limitation (`test`)
+  - *Not covered:* Form 8995 with a qualified business loss limited by stock basis. When a loss is partly carried forward by the basis limitation, only the allowed part of the qualified business loss counts this year; working out that part is outside this tool.
+    *Source:* [i1120ssk] p. 17, Code V. Section 199A information, "When determining QBI or qualified PTP income, you must include only those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable income for the tax year"
+  - *Refused at:* `k1s.qbi`
+- **`f7203.election_if_req`**: Is a Regulations section 1.1367-1(g) election in effect for an S corporation (Form 7203)?
+  - *The data asks or tests:* The election, asked only when Form 7203 is required (false otherwise) (`choose`)
+  - *Not covered:* Form 7203 with a Regulations section 1.1367-1(g) election. With the election, nondeductible expenses are moved to line 13 and carried over under special rules; that is outside this tool.
+    *Source:* [i7203] p. 3, Line 6, "Leave lines 8a, 8b, and 8c blank if you made an election under Regulations section 1.1367-1(g)"
+  - *Refused at:* `f7203.one`
+- **`f7203.loans_if_req`**: Have you lent money to an S corporation (Form 7203 Part II)?
+  - *The data asks or tests:* Loans to the corporation, asked only when Form 7203 is required (false otherwise) (`choose`)
+  - *Not covered:* Form 7203, Part II (shareholder debt basis). A shareholder who has lent money to the corporation figures debt basis in Part II of Form 7203, which this tool does not prepare.
+    *Source:* [i7203] p. 3, Part II. Shareholder Debt Basis, "You must complete this section if you have personally loaned money to the corporation"
+  - *Refused at:* `f7203.one`
+- **`f7203.dist_over`**: Were S corporation distributions more than your stock basis?
+  - *The data asks or tests:* Line 6 is larger than line 5 (a distribution above stock basis) (`test`)
+  - *Not covered:* Form 8949 and Schedule D (a distribution above stock basis). A distribution larger than your stock basis is a capital gain reported on Form 8949, which this tool does not prepare for this case.
+    *Source:* [i7203] p. 3, Line 6, "If the amount of the distribution is more than the stock basis before distributions, report the excess amount as a capital gain on Form 8949, Sales and Other Dispositions of Capital Assets, and Schedule D"
+  - *Refused at:* `f7203.one`
+- **`f7203.cap_limited`**: Is an S corporation capital loss limited by your stock basis?
+  - *The data asks or tests:* Part of the net capital loss (line 38) is carried forward by the basis limitation (`test`)
+  - *Not covered:* Form 7203, Part III, line 38 (a capital loss limited by stock basis). When part of a capital loss is held back by the basis limitation, splitting the allowed part between short-term and long-term gain or loss is outside this tool.
+    *Source:* [i7203] p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "Loss and deductions in excess of basis are suspended and carried forward indefinitely and the character of the loss and deduction items is retained"
+  - *Refused at:* `f7203.one`
+- **`k1p.ptp`**: Is the Schedule K-1 from a publicly traded partnership (item D checked)?
+  - *The data asks or tests:* Publicly traded partnership (item D checked) (`input`)
+  - *Not covered:* Publicly traded partnership (Schedule K-1 item D). A Schedule K-1 from a publicly traded partnership is outside this tool.
+    *Source:* [i1065sk1] p. 10, Publicly traded partnerships (PTPs), "Don’t report passive income, gains, or losses from a PTP on Form 8582"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b4b`**: Does a partnership K-1 show guaranteed payments for capital (box 4b)?
+  - *The data asks or tests:* Box 4b shows an amount: guaranteed payments for capital (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 4b (guaranteed payments for capital). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 15, Box 4b. Guaranteed Payments for Capital, "These are guaranteed payments other than for services"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b7`**: Does a partnership K-1 show royalties (box 7)?
+  - *The data asks or tests:* Box 7 shows an amount: royalties (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 7 (royalties on Schedule E, line 4). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 15, Box 7. Royalties, "Report royalties on Schedule E (Form 1040), line 4"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b10`**: Does a partnership K-1 show a net section 1231 gain or loss (box 10)?
+  - *The data asks or tests:* Box 10 shows an amount: net section 1231 gain (loss) (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 10 (Form 4797). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 16, Box 10. Net Section 1231 Gain (Loss), "report it in column (g) of Form 4797, line 2"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b11`**: Does a partnership K-1 show other income or loss (box 11)?
+  - *The data asks or tests:* Box 11 shows an amount: other income (loss) (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 11 (other income or loss). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 16, Box 11. Other Income (Loss), "Code A. Other portfolio income (loss)"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b12`**: Does a partnership K-1 show a section 179 deduction (box 12)?
+  - *The data asks or tests:* Box 12 shows an amount: section 179 deduction (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 12 (section 179 deduction, Form 4562). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 18, Box 12. Section 179 Deduction, "to complete Part I of Form 4562"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b13`**: Does a partnership K-1 show other deductions with a code other than AE (box 13)?
+  - *The data asks or tests:* Box 13 shows an amount with a code other than AE (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 13 (other deductions). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 18, Box 13. Other Deductions, "Codes A through G"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b14bc`**: Does a partnership K-1 show box 14 code B or C (farm or nonfarm optional methods)?
+  - *The data asks or tests:* Box 14 shows an amount with code B or C (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 14, codes B and C (optional methods of Schedule SE). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 22, Code B. Gross farming or fishing income, "Also use this amount to figure net earnings from self-employment under the farm optional method"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b15`**: Does a partnership K-1 show credits other than backup withholding (box 15)?
+  - *The data asks or tests:* Box 15 shows an amount with a code other than O (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 15 (credits; Form 8582-CR, Form 3800). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 22, Box 15. Credits, "you must complete Form 8582-CR"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b16`**: Is a Schedule K-3 attached to a partnership K-1 (box 16)?
+  - *The data asks or tests:* Box 16 is checked: Schedule K-3 is attached (`input`)
+  - *Not covered:* Schedule K-3 (international items). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 24, Box 16. International Transactions, "If the partnership checked the box, see the attached Schedule K-3"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b17`**: Does a partnership K-1 show alternative minimum tax items (box 17)?
+  - *The data asks or tests:* Box 17 shows an amount: alternative minimum tax items (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 17 (Form 6251). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 24, Box 17. Alternative Minimum Tax (AMT) Items, "to prepare your Form 6251"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b20`**: Does a partnership K-1 show box 20 codes other than A, B, N, Z or AG?
+  - *The data asks or tests:* Box 20 shows a code other than A, B, N, Z or AG (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 20, other information. A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 29, Code Z. Section 199A information, "The partnership will provide the information you need to figure your deduction"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b21`**: Does a partnership K-1 show foreign taxes (box 21)?
+  - *The data asks or tests:* Box 21 shows an amount: foreign taxes paid or accrued (`input`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 21 (foreign taxes; Form 1116). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 32, Box 21. Foreign Taxes Paid or Accrued, "Foreign taxes paid or accrued reduce a partner’s basis"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_b2223`**: Does a partnership K-1 report more than one activity (box 22 or 23)?
+  - *The data asks or tests:* Box 22 or box 23 is checked: more than one activity (`input`)
+  - *Not covered:* A partnership with more than one activity (boxes 22 and 23). A Schedule K-1 with this item is outside this tool.
+    *Source:* [i1065sk1] p. 9, Material participation, "If the partnership had more than one activity, it’ll attach a statement to your Schedule K-1 that identifies each activity"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_foreign`**: Is the partnership a foreign partnership?
+  - *The data asks or tests:* The partnership is a foreign partnership (`input`)
+  - *Not covered:* Schedule E, line 28, column (c) (foreign partnership; Form 8865). A Schedule K-1 from a foreign partnership is outside this tool.
+    *Source:* [i1040se] p. 9, Foreign Partnerships, "you may have to file Form 8865"
+  - *Refused at:* `k1p.screened`
+- **`k1p.r_disposed`**: Did you sell or give up any of your share of a partnership in 2025?
+  - *The data asks or tests:* You sold or gave up any of your share in 2025 (`input`)
+  - *Not covered:* Sale or other disposition of a partnership interest (Form 8949, section 751). A sale or other disposition of a partnership interest is outside this tool.
+    *Source:* [i1065sk1] p. 2, Sale or Exchange of Partnership Interest, "Generally, a partner who sells or exchanges a partnership interest"
+  - *Refused at:* `k1p.screened`
+- **`k1p.b19_other_if_any`**: Did a partnership distribute property other than money to you (box 19, other codes)?
+  - *The data asks or tests:* Asked only when box 19 shows an amount (false otherwise) (`choose`)
+  - *Not covered:* Schedule K-1 (Form 1065) box 19, codes other than A (distributions of property). A distribution of property other than money is outside this tool.
+    *Source:* [i1065sk1] p. 25, Box 19. Distributions, "Code A. Cash and marketable securities other than for services"
+  - *Refused at:* `k1p.screened`
+- **`k1p.dist_over_if_any`**: Did you take money out of a partnership above your basis in it?
+  - *The data asks or tests:* Asked only when box 19 shows an amount (false otherwise) (`choose`)
+  - *Not covered:* Gain on a distribution above basis (Form 8949). Money taken out of a partnership above your basis is outside this tool.
+    *Source:* [i1065sk1] p. 25, Box 19. Distributions, "exceed the adjusted basis of your partnership interest immediately before the distribution, the excess is treated as gain from the sale or exchange of your partnership interest"
+  - *Refused at:* `k1p.screened`
+- **`k1p.z_other_if_z`**: Does a partnership's section 199A statement show section 199A dividends or cooperative items?
+  - *The data asks or tests:* Asked only when box 20 shows code Z (false otherwise) (`choose`)
+  - *Not covered:* Section 199A dividends or cooperative items from a partnership (Form 8995-A). Section 199A dividends or cooperative items from a partnership are outside this tool.
+    *Source:* [i1065sk1] p. 30, Section 199A dividends, "The amount reported reflects your distributive share of the partnership’s net section 199A dividends"
+  - *Refused at:* `k1p.screened`
+- **`k1p.trader_if_b1`**: Is the partnership's business trading investments for its owners?
+  - *The data asks or tests:* Asked only when box 1 shows an amount (false otherwise) (`choose`)
+  - *Not covered:* A partnership trading investments for its owners (nonpassive trading activity). A partnership that trades investments for its owners is outside this tool.
+    *Source:* [i1065sk1] p. 11, Special rules for certain other activities, "Trading personal property for the account of owners of interests in the activity"
+  - *Refused at:* `k1p.screened`
+- **`k1p.t6_if_asked`**: Did you materially participate in a partnership business only by the personal service test?
+  - *The data asks or tests:* Asked only when tests 1, 2, 3 and 5 are not met (false otherwise) (`choose`)
+  - *Not covered:* Material participation by test 6 (personal service activity). Material participation by the personal service test is outside this tool.
+    *Source:* [i1065sk1] p. 9, Individuals (other than limited partners), "The activity was a personal service activity and you materially participated in the activity for any 3 tax years"
+  - *Refused at:* `k1p.screened`
+- **`k1p.t4_if_gp`**: Did you materially participate in a partnership business only by the significant participation test?
+  - *The data asks or tests:* Asked only of a general partner who met none of tests 1, 2, 3 and 5 (false otherwise) (`choose`)
+  - *Not covered:* Material participation by test 4 (significant participation activities). Material participation by the significant participation test is outside this tool.
+    *Source:* [i1065sk1] p. 9, Individuals (other than limited partners), "The activity was a significant participation activity for the tax year"
+  - *Refused at:* `k1p.screened`
+- **`k1p.t7_if_gp`**: Did you materially participate in a partnership business only by the facts and circumstances test?
+  - *The data asks or tests:* Asked only of a general partner who met none of tests 1, 2, 3 and 5 (false otherwise) (`choose`)
+  - *Not covered:* Material participation by test 7 (facts and circumstances). Material participation by the facts and circumstances test is outside this tool.
+    *Source:* [i1065sk1] p. 9, Individuals (other than limited partners), "Based on all the facts and circumstances, you participated in the activity on a regular, continuous, and substantial basis during the tax year"
+  - *Refused at:* `k1p.screened`
+- **`k1p.basis_short_if_loss`**: Were your losses from a partnership more than your basis in it?
+  - *The data asks or tests:* Asked only when the K-1 shows a loss (false otherwise) (`choose`)
+  - *Not covered:* Partnership losses above basis (basis limitation). Losses from a partnership above your basis in it are outside this tool.
+    *Source:* [i1065sk1] p. 3, Basis Limitations, "a partner may only claim their share of a partnership loss (including a capital loss) to the extent it doesn’t exceed their adjusted basis in the partnership"
+  - *Refused at:* `k1p.screened`
+- **`k1p.not_at_risk_if_loss`**: Is any of your investment in a partnership with a loss not at risk?
+  - *The data asks or tests:* Asked only when the K-1 shows a loss (false otherwise) (`choose`)
+  - *Not covered:* Form 6198 (at-risk limitations). A partnership loss with an amount not at risk is outside this tool.
+    *Source:* [i1065sk1] p. 8, At-Risk Limitations, "you’ll have to complete Form 6198, At-Risk Limitations, to figure your allowable loss for the activity"
+  - *Refused at:* `k1p.screened`
+- **`k1p.se_loss_not_material`**: Does a partnership K-1 show a self-employment loss from a business you did not materially participate in?
+  - *The data asks or tests:* A self-employment loss (box 14, code A) without material participation in box 1 (`test`)
+  - *Not covered:* Schedule K-1 box 14, code A loss without material participation. A self-employment loss from a partnership business you did not materially participate in is outside this tool.
+    *Source:* [i1065sk1] p. 22, Code A. Net earnings (loss) from self-employment, "If the amount in this box is a loss, enter only the deductible amount on Schedule SE"
+  - *Refused at:* `k1p.screened`
+- **`k1p.former_passive`**: Do you have a held-back loss from a partnership business you now materially participate in?
+  - *The data asks or tests:* A held-back loss from a business (box 1) the partner now materially participates in (`test`)
+  - *Not covered:* Form 8582, former passive activity (held-back loss from a business you now materially participate in). A held-back loss from a business you now materially participate in is outside this tool.
+    *Source:* [i8582] p. 8, Former Passive Activities, "A prior-year unallowed loss from a former passive activity is allowed to the extent of current year income from the activity"
+  - *Refused at:* `k1p.screened`
+- **`k1p.prior_not_active_if`**: Did a held-back partnership rental loss arise in a year without active participation?
+  - *The data asks or tests:* Asked only of a held-back rental loss with active participation (false otherwise) (`choose`)
+  - *Not covered:* Form 8582, Part IV (prior-year loss from a year without active participation). A held-back rental loss from a year without active participation is outside this tool.
+    *Source:* [i8582] p. 10, Part IV, "Don’t enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year"
+  - *Refused at:* `k1p.screened`
+
 ## Entry checks
 
 These refuse a return when entered figures contradict each other, or when an entry cannot stand under the instructions as given. Correcting the entry, as each remedy says, clears the refusal.
 
 #### Filing status, residency, wages, accounts and other taxes
 
+- **`f1116.tax_mismatch`**
+  - *The data asks or tests:* The foreign tax of the columns (line 8) differs from the foreign tax entered for the credit (`test`)
+  - *Not covered:* Form 1116, Part II. The foreign tax entered for each source must add up to the foreign tax entered for the year; correct one or the other.
+    *Source:* [f1116] p. 1, Part II, line 8, "Add lines A through C, column (u). Enter the total here and on line 9, page 2"
+  - *Refused at:* `f1116.line35`
+- **`f1116.income_over`**
+  - *The data asks or tests:* The foreign dividends or interest of the columns are more than the ordinary dividends or taxable interest on Form 1040 lines 3b and 2b, of which they are parts (`test`)
+  - *Not covered:* Form 1116, line 1a. Foreign dividends or interest cannot be more than the dividends or interest reported in all; correct the amounts entered.
+    *Source:* [i1116] p. 11, Lines 1a and 1b, "Include income in the category checked above Part I that is taxable by the United States and is from sources within the country entered on line i"
+  - *Refused at:* `f1116.line35`
 - **`w2.box10_bad`**
   - *The data asks or tests:* The part of box 10 reported in box 1 is more than box 10 (`test`)
   - *Not covered:* Form W-2 box 10 amounts. The part of box 10 reported as wages in box 1 cannot be more than box 10. Check the amounts with your employer.
@@ -1352,6 +1911,11 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *Not covered:* Form 8949, column (g), code W. The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column (d), after any code B correction). Check the amount against your Form 1099-B and your records.
     *Source:* [i8949] p. 10, code W, "enter the amount of the nondeductible loss as a positive number in column (g)"
   - *Refused at:* `sales.w`
+- **`f1040.digital_conflict`**
+  - *The data asks or tests:* A No to the digital asset question on a return that lists a sale with a digital asset box (G to L) (`test`)
+  - *Not covered:* Form 1040, Digital Assets question. A sale entered under box G, H, I, J, K or L of Form 8949 is a sale of a digital asset, which needs a Yes to the digital asset question. Answer Yes, or correct the box of the sale.
+    *Source:* [i1040gi] p. 16, How To Report Digital Asset Transactions, "If, in 2025, you disposed of any digital asset, which you held as a capital asset, through a sale, trade, exchange, payment, or other transfer, check “Yes” and use Form 8949 to calculate your capital gain or loss"
+  - *Refused at:* `f1040.line7a`
 - **`sd.screen`**
   - *The data asks or tests:* Transaction screening dependency (`test`)
   - *Not covered:* Schedule D. Resolve transaction screening before calculating totals.
@@ -1421,6 +1985,11 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *Not covered:* State and Local Income Tax Refund Worksheet, line 2 (2024 Schedule A lines 5d and 5e). The amount on 2024 Schedule A line 5e cannot be more than line 5d, since line 5e is the smaller of line 5d and the limit. Check both amounts against your 2024 Schedule A.
     *Source:* [i1040sca] p. 7, Line 5e, "enter the smaller of line 5d or $40,000 ($20,000 if married filing separately)"
   - *Refused at:* `refund.line2`
+- **`rec.nol_negative`**
+  - *The data asks or tests:* Negative 2024 taxable income while a net operating loss is carried into 2025 (`test`)
+  - *Not covered:* Pub. 525, Worksheet 2, line 10, and Form 172 (a net operating loss carryover). Negative 2024 taxable income while a net operating loss is carried into 2025 must be adjusted for the carryover under the Instructions for Form 172; that is outside this tool.
+    *Source:* [p525] p. 27, Worksheet 2, footnote 4, "Taxable income will have to be adjusted for any net operating loss carryover"
+  - *Refused at:* `rec.line11`
 
 #### Other income and alimony
 
@@ -1429,6 +1998,11 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *Not covered:* Schedule 1, line 24a (more than the jury duty pay received). The jury duty pay given to your employer cannot be more than the jury duty pay reported on line 8h; correct the two amounts.
     *Source:* [i1040gi] p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer"
   - *Refused at:* `s1.line24a`
+- **`s1.nol_limit`**
+  - *The data asks or tests:* The 80% limit on the net operating loss deduction may apply (the loss is more than four times taxable income after deducting it) (`choose`)
+  - *Not covered:* Form 172, NOL deduction limitation (the 80% limit). Your net operating loss carried into 2025 is more than four times your taxable income after deducting it, so the limit of 80% of taxable income figured without the deduction may apply; figuring the limit and the loss carried to 2026 is outside this tool.
+    *Source:* [i172] p. 2, "Only NOLs arising after 2017 and carried forward to a year after 2020 are subject to the 80%-of-taxable-income limit"
+  - *Refused at:* `f1040.line15`
 
 #### Health savings accounts
 

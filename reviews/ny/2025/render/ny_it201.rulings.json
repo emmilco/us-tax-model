@@ -63,6 +63,28 @@
    "subject_key": "123ce07ce04e905a19ef0bfbe96a0fa704f3000318a7fa0c8d51c2be9acf9baf"
   },
   {
+   "printed": "40",
+   "restated": "Choose — [line C = true → helper \"Zero\"] [line C = false → column (40)]",
+   "model": "The married-filing-separately refusal only fires when the filer's own line 19 is $32,000 or less, but table 3 uses federal AGI \"total from both returns\", and Note 2 says the amount \"could be 0 or a negative amount\". A spouse's negative AGI can bring the total within the credit rows while the program enters $0 without refusing.",
+   "ruling": "Ruling: finding; the same defect as BUG-0762 (low), already recorded on line 48 and its sibling line 40: IT-201-I web edition, New York State household credit table 3 (filing status 3), 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'This amount could be 0 or a negative amount.' The refusal ny_it201.gate.hh_state_mfs tests only this return's line 19 against $32,000, so a spouse's negative AGI can leave a credit the tool enters as $0 without refusing. The reply is right; no new bug (BUG-0762)",
+   "context": "38b93375818be4685a2955332d79f886c33d39c322c67545718f6c95b195ebbd",
+   "date": "2026-11-15",
+   "run": "1b9a9ba41e73dbdc614a86693be1e684c013a06d8067a073c41b38e6972ec307",
+   "severity": "low",
+   "subject_key": "728802c64b422e21448c3f7d1b71d85e28f88df6a7e625269547f54c0699e67e"
+  },
+  {
+   "printed": "48",
+   "restated": "Choose — [line C = true → helper \"Zero\"] [line C = false → column (48)]",
+   "model": "The credit is for \"NYC residents only\", but the restatement allows it whatever the filer's city residence. Also, the married-filing-separately refusal tests only the filer's own line 19 against $22,500, while table 6 uses federal AGI \"total from both returns\", which can be lower.",
+   "ruling": "Ruling: finding; two points. (1) City residence: scope; the form is for a full-year New York City resident only: ny_it201.gate.part_year_city ('Not a New York City resident for all of 2025', ny_it201.ask.city_resident No) refuses every other filer at line 50 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'), and a part-year resident is refused there too, so Table 2 is never reached. (2) Married filing separately: the reply is right, and it is BUG-0762 (low), already recorded: IT-201-I web edition, New York City household credit table 6, 'federal adjusted gross income (see Note 4) total from both returns'; Note 2, 'could be 0 or a negative amount'; ny_it201.gate.hh_city_mfs tests only this return's line 19 against $22,500. No new bug (BUG-0762)",
+   "context": "38b93375818be4685a2955332d79f886c33d39c322c67545718f6c95b195ebbd",
+   "date": "2026-11-15",
+   "run": "1b9a9ba41e73dbdc614a86693be1e684c013a06d8067a073c41b38e6972ec307",
+   "severity": "low",
+   "subject_key": "9fcac1380a57d6a01ed672c923b4faf5cc31ccc369f247b7d2b6cb55cb1d6a09"
+  },
+  {
    "printed": "48",
    "restated": "Choose — [line C = true → helper \"Zero\"] [line C = false → column (48)]",
    "model": "The item C Yes case gives zero ('you do not qualify for this credit'), and tables 4 and 5 are used otherwise, which is right. But for married filing separately, table 6 is keyed to 'federal adjusted gross income ... total from both returns'. The refusal gate tests only this return's line 19 against $22,500. If the spouse has a loss, the total from both returns can fall within the credit rows while this return's AGI does not. The program then enters $0 where a table 6 credit is allowed.",
@@ -104,6 +126,26 @@
    "subject_key": "766a46aee9b4cb64d8103118f8cae20ea624894dd079bd4dc37aac3375d87d79"
   },
   {
+   "printed": "69",
+   "restated": "Choose — [helper \"Item C No and income of $250,000 or less\" = true → column (69) (ny_it201.stc_fixed_amount)] [helper \"Item C No and income of $250,000 or less\" = false → helper \"No school tax credit\"]",
+   "model": "The instructions say \"If you are not a New York City resident or part-year resident, you do not qualify to claim this credit.\" The restatement gives the Table 1 amount to any filer with item C No and income of $250,000 or less, with no city-residence condition. It also does not handle part-year residents (Table 2).",
+   "ruling": "Ruling: scope; IT-201-I pp. 20–21, Line 69, 'If you are not a New York City resident or part-year resident, you do not qualify to claim this credit.' The restatement has no residence condition because the form is for a full-year New York City resident only: ny_it201.gate.part_year_city ('Not a New York City resident for all of 2025', ny_it201.ask.city_resident No) refuses every other filer at line 50 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only'), and a part-year resident is refused there too, so Table 2 is never reached.",
+   "context": "38b93375818be4685a2955332d79f886c33d39c322c67545718f6c95b195ebbd",
+   "date": "2026-11-15",
+   "run": "1b9a9ba41e73dbdc614a86693be1e684c013a06d8067a073c41b38e6972ec307",
+   "subject_key": "2888eb5b16a0a387813c7ec84695c907fc14d8b282e875cf6a18e4f7302daf25"
+  },
+  {
+   "printed": "69a",
+   "restated": "Choose — [line C = true → helper \"No school tax credit\"] [line C = false → column (69a) (ny_it201.stc_rr)]",
+   "model": "The instructions say \"If you are not a New York City resident or part-year resident, you do not qualify to claim this credit.\" The restatement computes the credit for any filer with item C No, from line 47, with no city-residence condition.",
+   "ruling": "Ruling: scope; IT-201-I pp. 20–21, Line 69a, 'If you are not a New York City resident or part-year resident, you do not qualify to claim this credit.' The restatement has no residence condition because the form is for a full-year New York City resident only: ny_it201.gate.part_year_city ('Not a New York City resident for all of 2025', ny_it201.ask.city_resident No) refuses every other filer at line 50 (Form IT-360.1; 'This tool computes the New York City resident tax for a full-year City resident only').",
+   "context": "38b93375818be4685a2955332d79f886c33d39c322c67545718f6c95b195ebbd",
+   "date": "2026-11-15",
+   "run": "1b9a9ba41e73dbdc614a86693be1e684c013a06d8067a073c41b38e6972ec307",
+   "subject_key": "e52236dac47dbdc77f094ebf3f09f1b96a54b2b3fc9e73a6aec68508f3ee6f21"
+  },
+  {
    "printed": "8",
    "restated": "Enter $0 (ny.zero).",
    "model": "The form asks for 'Other gains or losses (submit a copy of federal Form 4797)'. The program always enters $0, and no refusal names Form 4797 gains. Only the line 19 check against federal AGI would catch a nonzero amount.",
@@ -122,6 +164,16 @@
    "date": "2026-11-14",
    "run": "b797429ae3081c1fa5381ee40aa1c3fe80966ff9c6f643c14c0c54b5cc55d9c6",
    "subject_key": "f837e6cef95003d451812215bb46cb32ddba07edf003bd7ac992fb04fc9b9559"
+  },
+  {
+   "printed": "C",
+   "restated": "(sa helper \"Can someone claim you or your spouse as a dependent for 2025? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)\" = true or helper \"The New York item C question, asked only after a federal No; otherwise no\" = true)",
+   "model": "Item C asks only \"Can you be claimed as a dependent on another taxpayer's federal return?\", and the restatement answers Yes whenever the federal question about \"you or your spouse\" is Yes. On a joint return where only the spouse can be claimed it marks Yes, and the New York text does not say how item C treats a spouse.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.item_c. IT-201-I p. 5, Item C: 'If you can be claimed as a dependent on another taxpayer's federal return, you must mark an X in the Yes box.' The project marks item C Yes on a federal Yes to sa.dependent ('Can someone claim you or your spouse as a dependent'), else asks New York's own question. The reply's case, a joint return where only the spouse can be claimed (possible only where the joint return is filed just to claim a refund), is one New York's text does not settle: item C speaks of 'you', and neither the form nor the instructions say how a joint return treats a spouse who can be claimed. The registered ambiguity covers how item C relates to the federal answer; this spouse facet belongs with it (noted for the owner's list). The earlier round's premise that a federal Yes refuses the federal return no longer holds (the Standard Deduction Worksheet for Dependents is computed, sa.standard_amount), so this is ruled on the text, not on scope.",
+   "context": "38b93375818be4685a2955332d79f886c33d39c322c67545718f6c95b195ebbd",
+   "date": "2026-11-15",
+   "run": "1b9a9ba41e73dbdc614a86693be1e684c013a06d8067a073c41b38e6972ec307",
+   "subject_key": "f89f92e08cd3b934add1662cfa0066d828c59639ef029f05169545137082e3af"
   }
  ]
 }

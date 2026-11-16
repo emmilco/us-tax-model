@@ -28,13 +28,14 @@ export interface Umbrella {
 
 /** The candidates measured, by the design's names: those the formal model does not already hold. The interview has its
  * own parents for the foreign items of Schedule B, the payments other than W-2 withholding, the carryovers, the
- * educator expenses and student loan interest, so those candidates are not measured; nor are the Schedule 2 items it
+ * educator expenses, student loan interest and the digital asset income of Schedule 1 line 8v (asked beneath
+ * the digital asset question of Form 1040), so those candidates are not measured; nor are the Schedule 2 items it
  * asks beneath a parent of their own (the W-2 marks) or derives (line 16 and the Form 5329 screens). */
 export const UMBRELLAS: Umbrella[] = [
   { id: "s1.line8_any", label: "Any income for Schedule 1 line 8 (lines 8a to 8z)",
-    covers: ["s1.winnings_any", "s1.cod_any", "s1.alaska_any", "s1.jury_any", "s1.hobby_any", "s1.scholarship_any", "s1.ltc_payout", "s1.inmate_wages", "s1.digital_income", "$oi8z"] },
+    covers: ["s1.winnings_any", "s1.cod_any", "s1.alaska_any", "s1.jury_any", "s1.hobby_any", "s1.scholarship_any", "s1.ltc_payout", "s1.inmate_wages", "$oi8z"] },
   { id: "s1.part1_other_any", label: "Unemployment compensation or any income for Schedule 1 line 8",
-    covers: ["s1.uc_any", "s1.winnings_any", "s1.cod_any", "s1.alaska_any", "s1.jury_any", "s1.hobby_any", "s1.scholarship_any", "s1.ltc_payout", "s1.inmate_wages", "s1.digital_income", "$oi8z"] },
+    covers: ["s1.uc_any", "s1.winnings_any", "s1.cod_any", "s1.alaska_any", "s1.jury_any", "s1.hobby_any", "s1.scholarship_any", "s1.ltc_payout", "s1.inmate_wages", "$oi8z"] },
   { id: "f2441.any", label: "Child and dependent care expenses or benefits (Form 2441)",
     covers: ["f2441.care", "f2441.benefits"] },
   { id: "s2.other_taxes_any", label: "Additional taxes this tool does not figure (merged Schedule 2 screens)",

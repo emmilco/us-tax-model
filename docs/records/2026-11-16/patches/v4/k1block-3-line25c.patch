@@ -1,0 +1,67 @@
+diff --git a/forms/2025/f1040.yaml b/forms/2025/f1040.yaml
+index f667167..80e6817 100644
+--- a/forms/2025/f1040.yaml
++++ b/forms/2025/f1040.yaml
+@@ -941,8 +941,8 @@ form:
+       expr:
+         op: input
+         source: Was federal income tax withheld in 2025 from any payment to you (or, on a joint return, your spouse) other
+-          than wages reported on a Form W-2 (tax shown on a Form 1099, SSA-1099, RRB-1099 or W-2G, on a Schedule K-1, or on
+-          Form 1042-S, 8805 or 8288-A)?
++          than wages reported on a Form W-2 (tax shown on a Form 1099, SSA-1099, RRB-1099 or W-2G, or on Form 1042-S, 8805
++          or 8288-A)?
+       cite:
+         doc: i1040gi
+         locator: p. 39, Line 25b, "This should be shown in box 4 of Form 1099, box 6, of Form SSA-1099, or box 10 of Form RRB-1099"; p. 39, Line 25c—Other Forms, "Federal income tax withheld on your Form(s) W-2G"
+@@ -982,20 +982,21 @@ form:
+         locator: p. 39, Line 25b, "This should be shown in box 4 of Form 1099, box 6, of Form SSA-1099, or box 10 of Form RRB-1099"
+     - id: f1040.line25c_other
+       printed: (helper)
+-      label: Federal income tax withheld on Forms W-2G, Schedules K-1 and Forms 1042-S, 8805 and 8288-A
++      label: Federal income tax withheld on Forms W-2G, 1042-S, 8805 and 8288-A
+       type: NonNegDollars
+       gated_by: f1040.line25c_other_if_withheld_other
+       expr:
+         op: input
+-        source: Federal income tax withheld shown on your (or, on a joint return, your spouse's) Forms W-2G (box 4), Schedules
+-          K-1, and Forms 1042-S, 8805 and 8288-A (supplied total; not Additional Medicare Tax, which Form 8959 figures)
++        source: Federal income tax withheld shown on your (or, on a joint return, your spouse's) Forms W-2G (box 4), 1042-S,
++          8805 and 8288-A (supplied total; not Additional Medicare Tax, which Form 8959 figures, and not backup withholding
++          on a Schedule K-1, which is entered with the K-1)
+       cite:
+         doc: i1040gi
+         locator: p. 39, Line 25c—Other Forms, "Federal income tax withheld on your Form(s) W-2G"; "Federal income tax withheld
+           that is shown on a Schedule K-1"; "Tax withheld that is shown on Form 1042-S, Form 8805, or Form 8288-A"
+     - id: f1040.line25c_other_if_withheld_other
+       printed: (helper)
+-      label: 'Federal income tax withheld on Forms W-2G, Schedules K-1 and Forms 1042-S, 8805 and 8288-A, when tax was withheld from a payment other than wages; zero otherwise'
++      label: 'Federal income tax withheld on Forms W-2G, 1042-S, 8805 and 8288-A, when tax was withheld from a payment other than wages; zero otherwise'
+       type: NonNegDollars
+       expr:
+         op: choose
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index dd7fb18..ca11eed 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -685,7 +685,7 @@ bank:
+     seq: 1
+     group: paid_already
+     tick: Tax taken out of a pension, social security or other money
+-    help: "Box 4 of a Form 1099 or W-2G, box 6 of an SSA-1099 or box 10 of an RRB-1099. Tax withheld on a Schedule K-1 or Form 1042-S, 8805 or 8288-A counts too, even with no money paid to you. If unsure, answer Yes."
++    help: "Box 4 of a Form 1099 or W-2G, box 6 of an SSA-1099, box 10 of an RRB-1099. Tax withheld on Form 1042-S, 8805 or 8288-A counts, even with nothing paid to you. If unsure, answer Yes."
+     prompt: In 2025, was federal income tax taken out of money paid to you (or, on a joint return, your spouse) other
+       than wages, such as a pension, social security, unemployment or gambling winnings?
+   - input: f1040.line3a
+@@ -2365,9 +2365,9 @@ bank:
+     order: 300
+     seq: 4
+     prompt: How much federal income tax was taken out of gambling winnings (box 4 of Form W-2G), or is shown as withheld
+-      on a Schedule K-1 or on Form 1042-S, 8805 or 8288-A?
+-    help: Leave out Additional Medicare Tax, which is figured from your W-2. If you have none of these papers, the
+-      amount is zero.
++      on Form 1042-S, 8805 or 8288-A?
++    help: Leave out Additional Medicare Tax, which is figured from your W-2, and backup withholding on a Schedule K-1,
++      which you entered with the K-1. If you have none of these papers, the amount is zero.
+   - input: f1040.estimated_any
+     order: 300
+     seq: 2

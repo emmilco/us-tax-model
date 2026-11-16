@@ -6,8 +6,9 @@ form:
   note: Prepared when there is a Form 1095-A. Parts IV and V (allocation, year of marriage), other minimum essential coverage
     and the coverage-family rules that go with it, coverage of someone not lawfully present, a VOID or replaced Form 1095-A,
     coverage that began after the first day of a month, a refunded premium, QSEHRA and individual coverage HRAs, unpaid
-    premiums, advance payments for someone in no tax family, and a covered month with zero in column (b) are refused;
-    married filing separately is refused for the whole return.
+    premiums, advance payments for someone in no tax family, and a covered month with zero in column (b) are refused.
+    Married filing separately takes the PTC only with line A (Exception 2); otherwise the filer is not an applicable taxpayer
+    and repays the advance payments up to the Table 5 limit.
   lines:
   - id: f8962.zero
     printed: (helper)
@@ -44,6 +45,25 @@ form:
     cite:
       doc: i8962
       locator: p. 3, Who Must File, "You are taking the PTC."
+  - id: f8962.dependent_filer
+    printed: (gate)
+    label: Someone can claim you (or, on a joint return, your spouse) as a dependent, and a Form 1095-A is entered
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - sa.dependent
+        - const: true
+      - op: test
+        eq:
+        - f8962.any
+        - const: true
+    cite: &dep_cite
+      doc: i8962
+      locator: p. 3, Who Can Take the PTC, "2. No one can claim you as a dependent for the year."; p. 3, "the person who claims you will",
+        "You do not need to file Form 8962."
   - id: f8962.shared_policy
     printed: (gate)
     label: A Marketplace policy covered someone in your tax family and also someone who is not in it
@@ -51,7 +71,7 @@ form:
     expr:
       op: input
       source: In 2025, did any Marketplace plan cover both a person on this return and a person who is not on it, such as a
-        former spouse or a child someone else claims?
+        former spouse, your husband or wife if you file separately, or a child someone else claims?
     cite: &alloc_cite
       doc: i8962
       locator: p. 12, Allocating policy amounts, "The policy covered at least one individual in your tax family and at least
@@ -146,6 +166,147 @@ form:
       doc: i8962
       locator: p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month
         of marriage?"
+  - id: f8962.mfs_ask
+    printed: (helper)
+    label: Married filing separately with a Form 1095-A (the line A questions are asked)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - household.mfs
+        - const: true
+      - op: test
+        eq:
+        - f8962.any
+        - const: true
+    cite:
+      doc: i8962
+      locator: 'p. 7, Victims of domestic abuse or spousal abandonment, "Check the box on line A, above Part I of Form 8962,
+        if you are filing as married filing separately, are a victim of domestic abuse or spousal abandonment, and qualify
+        for Exception 2 under Married taxpayers, earlier"'
+  - id: f8962.mfs_exception
+    printed: (helper)
+    gated_by: f8962.mfs_exception_if_mfs
+    label: Living apart from your spouse when you file, and unable to file a joint return because you are a victim of domestic
+      abuse or spousal abandonment
+    type: Bool
+    expr:
+      op: input
+      source: Are you living apart from your husband or wife at the time you file your 2025 return, and unable to file a joint
+        return because you are a victim of domestic abuse (physical, psychological, sexual or emotional abuse, including
+        efforts to control, isolate, humiliate or intimidate you) or of spousal abandonment (after reasonable effort you
+        cannot find your husband or wife)?
+    cite:
+      doc: i8962
+      locator: 'p. 7, Exception 2—victim of domestic abuse or spousal abandonment, "You are living apart from your spouse at
+        the time you file your 2025 tax return." and "You are unable to file a joint return because you are a victim of
+        domestic abuse (described next) or spousal abandonment (described later)."; p. 7, Domestic abuse, "Domestic abuse
+        includes physical, psychological, sexual, or emotional abuse, including efforts to control, isolate, humiliate, and
+        intimidate"; p. 7, Spousal abandonment, "the taxpayer is unable to locate their spouse after reasonable diligence"'
+  - id: f8962.mfs_exception_if_mfs
+    printed: (helper)
+    label: 'The domestic abuse or abandonment exception: asked only on a married filing separately return with a Form 1095-A
+      (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.mfs_ask
+          - const: true
+        then: f8962.mfs_exception
+      - guard:
+          op: test
+          eq:
+          - f8962.mfs_ask
+          - const: false
+        then: f8962.no
+    cite:
+      doc: i8962
+      locator: 'p. 7, Married taxpayers, "If Exception 2 applies, you are treated as married but can take the PTC with the
+        filing status of married filing separately"'
+  - id: f8962.mfs_three_years
+    printed: (helper)
+    gated_by: f8962.mfs_three_years_if_exception
+    label: Exception 2 used to claim the PTC on the returns for 2022, 2023 and 2024
+    type: Bool
+    expr:
+      op: input
+      source: Did you take the premium tax credit on a separate return as a victim of domestic abuse or spousal abandonment
+        (checking line A of Form 8962) for each of 2022, 2023 and 2024?
+    cite:
+      doc: i8962
+      locator: 'p. 7, 3-year limit for Exception 2, "You cannot claim the PTC using this exception for more than 3 consecutive
+        years. For example, if you used this exception to claim the PTC on your tax returns for 2022, 2023, and 2024, you"'
+  - id: f8962.mfs_three_years_if_exception
+    printed: (helper)
+    label: 'The 3-year limit for Exception 2: asked only when the exception otherwise applies (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.mfs_exception_if_mfs
+          - const: true
+        then: f8962.mfs_three_years
+      - guard:
+          op: test
+          eq:
+          - f8962.mfs_exception_if_mfs
+          - const: false
+        then: f8962.no
+    cite:
+      doc: i8962
+      locator: 'p. 7, Exception 2—victim of domestic abuse or spousal abandonment, "You do not meet the 3-year limit for
+        Exception 2, described below."'
+  - id: f8962.line_a
+    printed: A
+    label: You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception.
+      See instructions. If you qualify, check the box
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.mfs_exception_if_mfs
+        - const: true
+      - op: test
+        eq:
+        - f8962.mfs_three_years_if_exception
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 7, Victims of domestic abuse or spousal abandonment, "Check the box on line A, above Part I of Form 8962,
+        if you are filing as married filing separately, are a victim of domestic abuse or spousal abandonment, and qualify
+        for Exception 2 under Married taxpayers, earlier"'
+    note: False for every other filing status, and on a separate return without a Form 1095-A.
+  - id: f8962.mfs_barred
+    printed: (helper)
+    label: Married filing separately without the line A exception, so not an applicable taxpayer
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - household.mfs
+        - const: true
+      - op: test
+        eq:
+        - f8962.line_a
+        - const: false
+    cite:
+      doc: i8962
+      locator: 'p. 7, Married filing separately, "If you file as married filing separately and are not a victim of domestic
+        abuse or spousal abandonment (see Exception 2 under Married taxpayers, earlier), then you are not an applicable
+        taxpayer and you cannot take the PTC"'
   - id: f8962.other_coverage
     printed: (gate)
     label: In a month of Marketplace coverage, someone in the tax family may have been eligible for other minimum essential
@@ -841,9 +1002,9 @@ form:
         dependents)"; p. 3, Tax family, "Your spouse if filing jointly and your spouse can’t be claimed as a dependent on
         someone else’s 2025 tax return"; p. 9, "You, with intentional or reckless disregard
         for the facts, provided incorrect information to a Marketplace for the year of coverage."
-  - id: f8962.applicable
+  - id: f8962.applicable_figured
     printed: (helper)
-    label: You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
+    label: Line 5 at least 100, or the Marketplace estimate exception
     type: Bool
     expr:
       op: choose
@@ -865,6 +1026,30 @@ form:
       locator: p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p.
         9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal
         poverty line for your family size for 2025."
+  - id: f8962.applicable
+    printed: (helper)
+    label: You are an applicable taxpayer (not married filing separately without line A; line 5 at least 100, or the
+      Marketplace estimate exception)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.mfs_barred
+          - const: true
+        then: f8962.no
+      - guard:
+          op: test
+          eq:
+          - f8962.mfs_barred
+          - const: false
+        then: f8962.applicable_figured
+    cite:
+      doc: i8962
+      locator: p. 7, Married filing separately, "then you are not an applicable taxpayer and you cannot take the PTC"; p. 6,
+        Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"
     ambiguity: amb.2025.ptc_not_applicable
   - id: f8962.show_applicable
     printed: (helper)
@@ -922,6 +1107,29 @@ form:
       doc: i8962
       locator: p. 9, Alien lawfully present in the United States, "Certain aliens with household income below 100% of the federal
         poverty line are not eligible for Medicaid because of their immigration status."
+  - id: f8962.alien_not_barred
+    printed: (helper)
+    label: Household income below 100% of the poverty line and the lawfully present alien exception, on a return not
+      barred as married filing separately
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8962.mfs_barred
+          - const: true
+        then: f8962.no
+      - guard:
+          op: test
+          eq:
+          - f8962.mfs_barred
+          - const: false
+        then: f8962.alien_from_income
+    cite:
+      doc: i8962
+      locator: p. 7, Married filing separately, "then you are not an applicable taxpayer and you cannot take the PTC"
   - id: f8962.alien_branch
     printed: (gate)
     label: A Form 1095-A, household income below 100% of the poverty line and the lawfully present alien exception
@@ -934,7 +1142,7 @@ form:
           eq:
           - f8962.any
           - const: true
-        then: f8962.alien_from_income
+        then: f8962.alien_not_barred
       - guard:
           op: test
           eq:
@@ -2748,6 +2956,12 @@ form:
         column (e), and enter the total here"; i8962 p. 17, Line 24
     ambiguity: amb.2025.ptc_not_applicable
     refuses: &id003
+    - when: f8962.dependent_filer
+      form: Form 8962 for a filer someone else can claim as a dependent
+      remedy: Someone whom another person can claim as a dependent cannot take the premium tax credit. If that person
+        claims you, they file Form 8962 for your coverage and you do not, so leave out your Form 1095-A. Otherwise this
+        tool does not prepare Form 8962 for you.
+      cite: *dep_cite
     - when: f8962.alloc
       form: Form 8962 Part IV, Allocation of Policy Amounts
       remedy: A policy shared with another tax family, and a divorce or separation in 2025, need an allocation of the policy

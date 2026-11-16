@@ -1,0 +1,94 @@
+{
+  "tax_year": 2025,
+  "cases": [
+    {
+      "id": "mrental.rprop.form4562_needed",
+      "covers": [
+        "rprop",
+        "rental",
+        "rf4562"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mrental), predicted by hand from the archived sources before running the evaluator. i1040se (2025) p. 7, line 18: Form 4562 is attached only if the property was placed in service in 2025 (among the other cases this tool refuses). a: house placed February 2020, Pub. 946 Table A-6 year 6 3.636%: 160,000 x 3.636% = 5,817.60; nothing placed in 2025, so no Form 4562. b: improvement placed June 2025, Table A-6 year 1 1.970%: 20,000 x 1.970% = 394.00; Form 4562 needed. c: a $1.00 improvement placed December 2025, Table A-6 year 1 0.152%: 1.00 x 0.152% = 0.00152, which is $0.00 to the cent; placed in service in 2025, so Form 4562 is needed even with no depreciation this year.",
+      "inputs": {
+        "scope.rental": true,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 5000000,
+        "person[taxpayer].w2[a].box3": 5000000,
+        "person[taxpayer].w2[a].box5": 5000000,
+        "$rental": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rental[a].kind": "sfr",
+        "rental[a].rents": 1800000,
+        "$rprop@rental[a]": [
+          "b"
+        ],
+        "rental[a].rprop[b].kind": "residential",
+        "rental[a].rprop[b].month": "m2",
+        "rental[a].rprop[b].year": "y2020",
+        "rental[a].rprop[b].basis": 16000000,
+        "rental[b].kind": "sfr",
+        "rental[b].rents": 1800000,
+        "$rprop@rental[b]": [
+          "c"
+        ],
+        "rental[b].rprop[c].kind": "residential",
+        "rental[b].rprop[c].month": "m6",
+        "rental[b].rprop[c].year": "y2025",
+        "rental[b].rprop[c].basis": 2000000,
+        "rental[c].kind": "sfr",
+        "rental[c].rents": 100000,
+        "$rprop@rental[c]": [
+          "d"
+        ],
+        "rental[c].rprop[d].kind": "residential",
+        "rental[c].rprop[d].month": "m12",
+        "rental[c].rprop[d].year": "y2025",
+        "rental[c].rprop[d].basis": 100
+      },
+      "expect": {
+        "rental[a].rprop[b].dep": {
+          "kind": "money",
+          "cents": 581760
+        },
+        "rental[b].rprop[c].dep": {
+          "kind": "money",
+          "cents": 39400
+        },
+        "rental[c].rprop[d].dep": {
+          "kind": "money",
+          "cents": 0
+        },
+        "rental[a].needs_4562": {
+          "kind": "bool",
+          "value": false
+        },
+        "rental[b].needs_4562": {
+          "kind": "bool",
+          "value": true
+        },
+        "rental[c].needs_4562": {
+          "kind": "bool",
+          "value": true
+        },
+        "rental[a].rf4562[form].needed": {
+          "kind": "bool",
+          "value": false
+        },
+        "rental[b].rf4562[form].needed": {
+          "kind": "bool",
+          "value": true
+        },
+        "rental[c].rf4562[form].needed": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    }
+  ]
+}

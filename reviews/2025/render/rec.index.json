@@ -1,0 +1,168 @@
+{
+ "kind": "render",
+ "form": "rec",
+ "family": "claude",
+ "base": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+ "lines": [
+  {
+   "key": "2a:1",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "UNCLEAR",
+   "ruling": "Ruling: ambiguity; amb.2025.refund_two_returns (i1040gi p. 90 tests a refund against one 2024 return): on a joint 2025 return with refunds of both spouses' tax on separate 2024 returns the chosen reading takes none as taxable when neither return itemized state and local income taxes, and refuses otherwise. The zero the reviewer flags is that registered reading.",
+   "subject_key": "155dd00a3e96b8c0714b99b86861a2a5ca11c44af5c1f145e2275f13ef659811"
+  },
+  {
+   "key": "2a:2",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "eb1d0fdb6c07e1e9374035b099db5c641f3d228197b967c5c5f85c3be00a71f3"
+  },
+  {
+   "key": "2a:6",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "2da8e5f8476f9ca8c2c7f092a0198395d3c3f0711dc8805e72c8b83ac40f2031"
+  },
+  {
+   "key": "2a:3",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "40553d710a8f4e8ac4aa53af828384c52f81567a24a5d3c34ca3d1a4e2f53be4"
+  },
+  {
+   "key": "2a:4",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "d7d61ad095900b5cd3179b6b5dad9dac6d044ee4b3a20f6261975ae9352d3248"
+  },
+  {
+   "key": "2a:5",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "df6a485deedd5a88a21dcd6f6e7ac9d4ba00a7797245f6b0758eba1510cf5947"
+  },
+  {
+   "key": "2a:7",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "8249f203693fcc857693f7c14953e311cbd6b06f9e2abeae765cfd3207e5b191"
+  },
+  {
+   "key": "2a:8",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "c2ac7468fe6018d848c5ccb3a7906dc769728e8b0591b1e4ee5a251ae12fb202"
+  },
+  {
+   "key": "1a",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "2a5d0db89cca5e9504b142402dcc85c995b6485c3e6a4fcb5aabdabde2d923c2"
+  },
+  {
+   "key": "1b",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "3dc2625c440064d63bd15281e200eb5a374efdfdd192deb9ff8e42bc5f614ed6"
+  },
+  {
+   "key": "2",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; a recovered general sales tax deduction (p525 footnote 2, 'If you deducted state and local general sales taxes and received a refund of those taxes, include the amount on line 2') is refused (rec.sales_tax_if_any, form note: 'of general sales tax ... refused'), so no completed return drops one.",
+   "subject_key": "cd04a70a7a2da56413765b026b48a56df45dea9725679693ac74b16296367227"
+  },
+  {
+   "key": "3",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "a1c57294878a08f81687ffdfbb7b0f5653039a71170d1bba5fd0003baa52f478"
+  },
+  {
+   "key": "4",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "d7e473d4b89e9d5c418d58d296c89d4f2cf1e02a240d0ddaaf856dac53c22a16"
+  },
+  {
+   "key": "5",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MISMATCH",
+   "ruling": "Ruling: ambiguity; amb.2025.rec_line5 (p525 p. 27, line 5, 'Enter any amount previously refunded to you'): chosen reading zero for 2024 deductions recovered in 2025, since an amount refunded during 2024 reduced the 2024 deduction itself; recoveries for years before 2024 are refused (rec.not_2024_if_any).",
+   "subject_key": "06eaecc8591877c30d17bd0f5a316e95f665b4117b3d32ae6cfff6c959237531"
+  },
+  {
+   "key": "6",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "d365c4f9175ee8b7f7eeb85649b14e19d41f93b99eb96cebd576534c2e711306"
+  },
+  {
+   "key": "7",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "703f54eb9d739f4266b3c5e4c2c34588f21e6726c285b862dc58488232aca3a0"
+  },
+  {
+   "key": "8",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "5fa69bdd698de26c370d6de7e7c10435ee300a636e2519e1fa1694275ec4bc7f"
+  },
+  {
+   "key": "9",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "7587489d14e1cb4dbbd065bc57726f2758a380450c22cf2ddb33ff1a37e68460"
+  },
+  {
+   "key": "10",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "996c4fd340ec44eed811f7188c18c82e37ca5a7cfae4acac30e0eddfae4d5dd8"
+  },
+  {
+   "key": "11",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "5ae504e6c3d8017a43cb2b05a23309a51a3f873a1b4803133ffe15b7db6fc2e0"
+  },
+  {
+   "key": "B",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "8602c1aa4954517e6596f24e45616a22908504814ee08c28b7b1a31eb0599849"
+  },
+  {
+   "key": "C",
+   "record": "c5d76b5651977b4c39cbd617b8016097d642a9b497910cb3195037ef12e27b59",
+   "status": "MATCH",
+   "subject_key": "e1f9a746358bbb0d797e8fc488ca95835f2c098a85f42b5449d879cec6595d15"
+  }
+ ],
+ "subjects": {
+  "2a:1": "f3a90f3c165fc9ffb9ada38f676517898d72b98895279b5dfc4299ca6efe60f3",
+  "2a:2": "5d161e3705bed873d08e46543e80c4b2dc33b37cee17f2536c676ab1db59bfe5",
+  "2a:6": "142c8ff123e342b691f277f44d1d57e09fb4f8d6f7742ab4f4b25a5b58c3ae7b",
+  "2a:3": "b69325e9e4efae3a42e0662e567b0a1bc9e7f8c1964edf03efbbf31a76e2d08a",
+  "2a:4": "203156299f79eaf70cd3be9fff45a3367d483825953b075dd463c7cb19b1d211",
+  "2a:5": "9538acdfed73661e141715618a0ce441670136a5428c821d4b824aa9b848b68b",
+  "2a:7": "636c687e7c1a5b56a6c7e8abb81175991d45e227dfde4969095806c3dc3d3e75",
+  "2a:8": "0db4afa4b40b9c3066c75a666db40fb23442ff018de8800e85d7b8822ae773c3",
+  "1a": "d204edf4888f960a6d0839b9a6822f8eddcbc08ac49540e38f7759fd74f7262e",
+  "1b": "41e1ce4eac6aa5e2663df043e1ddc2c34a0718ea561d3201fd72f2ff5b99de34",
+  "2": "ccbdd65a438ba1b99c7ab4638e8c322de0517723dae3aad48c4e5ff2c6d5bd1b",
+  "3": "998872651a88ed23d08247bce603fdcb7705f804305cbe20c6e86c6c205f3c15",
+  "4": "619a6df00c908d320044652fd0f9aca6d84c4058f50231f313117cd67af03861",
+  "5": "10d9319980bdb6a96bf262bfe4df9cf0620ff82a36c3c425d4ce1cd489d677fa",
+  "6": "8ef0407b4e969cc57d7e3fcf4c5f0c7ef9aedb75fd63ceb175e07405e29ed946",
+  "7": "72137223fc7287b72cf9a16d4bb6db8b1fe9e02a68fde31772fb15d68f600caa",
+  "8": "74627eb1e89fa8c3e6622e70e7a3b2e6c25f21ac60f84f629e0594232d38e2b1",
+  "9": "b320afc1865de00099431a7b4bf2050c419aa93f7a52447222bfb354643ab782",
+  "10": "db8738028d51f62926f77949ba5e68703864d7048a7570decbac0d6aa0470e26",
+  "11": "21277a7f2324fee640d01b29fa021a016f687d438c94a258994a44a3365d0860",
+  "B": "8f493a120b15466dbf50e18c078e1e2e44466baf255d722d650db38e19a42e8c",
+  "C": "e139ce8c293117f001f7bf810bd215736c574592f564f6c549a1c187cf1c9fff"
+ },
+ "__rest__": "6bf17265613b23d92d7798263939eda1898dc7f84e4b34b160129aa03b127fe1"
+}

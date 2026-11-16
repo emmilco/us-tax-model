@@ -1,0 +1,106 @@
+{
+ "form": "royalty",
+ "reviews": {
+  "gate:royalty.expenses_any": {
+   "subject_sha": "803dc9de136ae97a5d43ef2061d526ec265b0096f20bcc45c4783cbd07e2b182",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "An owner of an oil or gas royalty interest whose producer withheld severance, production or state taxes from the royalty checks. The owner never wrote a check for any tax.",
+       "why_no": "The gate asks 'Did you pay any costs'. The producer took the tax out before paying, so the owner truthfully says they paid nothing. Only the gated question mentions 'including any the payer withheld', and the owner never sees it.",
+       "line": "royalty.line16",
+       "irs_text": "i1040se p. 6, Line 4: \"Enter on line 4 the gross amount of royalty income, even if state or local taxes were withheld from oil or gas payments you received. Include taxes withheld by the producer on line 16.\"",
+       "severity": "high",
+       "fix": "Ask in the gate: 'For this royalty, did you or your spouse pay any costs, or did the payer or operator withhold or deduct any taxes, fees or other charges from your royalty payments (check your royalty statement or Form 1099-MISC)?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A mineral royalty owner whose operator statement nets out post-production deductions such as gathering, compression, transportation or marketing charges. The owner reports the gross amount from the Form 1099-MISC.",
+       "why_no": "The owner sees these as reductions of the check, not as costs 'you paid'. The gate's example 'production costs' suggests money the owner spent, not charges the operator deducted.",
+       "line": "royalty.line19",
+       "irs_text": "i1040se p. 7, Line 19: \"Enter on line 19 any ordinary and necessary expenses not listed on lines 5 through 18.\"; p. 6: \"Enter on line 4 the gross amount of royalty income\"",
+       "severity": "medium",
+       "fix": "Broaden the gate to cover amounts deducted or withheld from royalty payments, as in the fix above. State in the help that gross reporting on line 4 means netted charges go on the expense lines."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer with copyright, patent or NIL royalties who paid a preparer for the whole return, or paid for tax advice that partly concerned the royalty.",
+       "why_no": "The filer does not think of the return preparation fee as a cost 'for this royalty'. The gate's examples (fees, taxes, production costs) read as costs of the property itself.",
+       "line": "royalty.line10",
+       "irs_text": "i1040se p. 6, Line 10: \"Include on line 10 fees for tax advice and the preparation of tax forms related to your rental real estate or royalty properties.\"",
+       "severity": "medium",
+       "fix": "Add to the gate or its help: 'including the part of tax preparation or tax advice fees that relates to this royalty'."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "3",
+       "who": "A married couple filing jointly whose royalty is held jointly or by the spouse. The spouse paid the agent, attorney, county mineral tax or patent maintenance fees.",
+       "why_no": "The gate says 'Did you pay'. The filer answering the interview truthfully did not pay these costs.",
+       "line": "royalty.line10, royalty.line16, royalty.line19",
+       "irs_text": "i1040se p. 6, General Instructions for Lines 5 Through 21: \"Enter your rental and royalty expenses for each property in the appropriate column. You can deduct all ordinary and necessary expenses, such as taxes, ...\"",
+       "severity": "high",
+       "fix": "Ask 'Did you or your spouse pay, or have deducted from your payments, any costs for this royalty ...'."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A copyright, NIL or patent royalty owner whose licensing agent, collecting society or platform keeps an administration or collection fee before paying the owner.",
+       "why_no": "The fee is netted from the payment, and the owner never paid it directly. The gate's word 'paid' and its oil-flavored example 'production costs' suggest the gate does not apply.",
+       "line": "royalty.line19",
+       "irs_text": "i1040se p. 7, Line 19: \"Enter on line 19 any ordinary and necessary expenses not listed on lines 5 through 18.\"",
+       "severity": "medium",
+       "fix": "Use the broadened gate wording above, covering amounts kept or deducted by a payer, agent or operator."
+      }
+     ],
+     "prompt_sha": "95991c9aa586579aa00efcbbe23f0d5701865e3483c8f9ca18f54b55f2a76671",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.083488,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_royalty.expenses_any.803dc9de136a.1.response.txt"
+    }
+   ],
+   "condition": "royalty.expenses_any",
+   "lines": [
+    "royalty.line10",
+    "royalty.line16",
+    "royalty.line19"
+   ],
+   "inputs": [
+    "royalty.amt10",
+    "royalty.amt16",
+    "royalty.amt19"
+   ],
+   "used": [
+    {
+     "doc": "i1040se",
+     "revision": "2025",
+     "text_sha256": "3dc51debb6cc8744c7e7f3296b8d6e1d9e8aad4538aac12f85ad0f532defe705",
+     "pages": [
+      6,
+      7
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 6, General Instructions for Lines 5 Through 21",
+      "p. 6, Line 10",
+      "p. 6, Line 16",
+      "p. 6, Line 19",
+      "p. 7, Line 19, \"Enter on line 19 any ordinary and necessary expenses not listed on lines 5 through 18\""
+     ],
+     "cols_pages": [
+      6,
+      7
+     ],
+     "cols_sha256": "26a1350f359a7001f1bfdcd3e9d5f4c6721f46208e81d8645149bc972cf9e78a"
+    }
+   ]
+  }
+ }
+}

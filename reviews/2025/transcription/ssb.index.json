@@ -4,9 +4,9 @@
  "family": "claude",
  "base": "0aa1f08e60389455d6c3c7d69036cebc2452f8ec5d75a8a5c0d7b772dd24a030",
  "head_rows": {
-  "printed lines compared": "20",
-  "agree / disagree / missing": "6 / 14 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-14); see Line-scoped reviews"
+  "printed lines compared": "21",
+  "agree / disagree / missing": "6 / 15 / 0",
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -15,6 +15,13 @@
    "status": "DISAGREE",
    "ruling": "Ruling: representation; i1040gi p. 31, Line 6c: \"If you elect to use the lump-sum election method for your benefits, check the box on line 6c\". Both are true when the benefits include a payment for an earlier year (ssb.prior_year_pay) and the filer elects the method (ssb.lump_elect); the reply also requires ssb.any. The project's only reader is the refusal on worksheet line 2, which is figured only for a filer with benefits, and the interview asks ssb.prior_year_pay in the group \"Is any of these true of the social security benefits?\" after ssb.any. executable triage (.transcription/triage/2025/ssb.json, executable-triage-v2): 2,324 of 2,773 agree; 6 value, all on refused mutation records with ssb.any false but ssb.prior_year_pay and ssb.lump_elect true (e.g. mutation.t2.mfj_no_overtime_part3), which the interview does not produce; 443 project-unknown (16 completed) where ssb.prior_year_pay was not supplied. No completed-return value difference. Project stands.",
    "subject_key": "41f0c984f3531f6c6c22cc50f567103f84271300d2068f0ef5d52fb79637d659"
+  },
+  {
+   "key": "ssb.lived_apart",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3053 values compared, none different or missing: 2376 on 2376 fixture cases, 500 on 500 generated returns seed 20261026, 177 on 177 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "d2b96a1e9b83d8e3ca005f05b533c4c41a900d7e8b7d34da01c8f3d20eaa254e"
   },
   {
    "key": "ssb.has_benefits",
@@ -68,84 +75,85 @@
   },
   {
    "key": "8",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply's amounts are the project's ($32,000 joint; $25,000 single, head of household, qualifying surviving spouse or separate living apart; zero for separate living together) and its display condition (not stopped at line 7, not separate living together) is the project's ssb.show8_9 (lines 8 to 15 not skipped and line 7 above zero), the round-2 display fix (A2, SSB-L1). The earlier model error (the $25,000 shown for a separate filer living together) is gone. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "ea1a0befdab29cb1b84054fd8334998fb538c49cdda77ef88dbb48c89d747cf3"
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "subject_key": "612431d07ce2176a7e2dba902db3dc2c7456e528de0fb3df2982179235c39ad7"
   },
   {
    "key": "9",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply shows line 9 only when line 6 is less than line 5 and line 8 less than line 7; the project shows it under ssb.show8_9, so on the line 9 No branch the project shows $0 where the reply hides the line. Both values are $0 there and no nonzero amount is shown past a STOP (the owner's rule); line 7 above zero is the same test as line 6 less than line 5. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "b93e56aefaa54a11bf868f8db07e1531e3b90521ebb3edf97d3d817636b39918"
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "subject_key": "e0d27409b6cba0612f88fa47706fec6427b8d8c71e8f5494037553d743e9898b"
   },
   {
    "key": "10",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply's value is the project's and its display condition (not separate living together, line 6 less than line 5, line 8 less than line 7) is the project's ssb.show10_15 (ssb.show8_9 and line 9 above zero): line 7 above zero is line 6 less than line 5, line 9 above zero is line 8 less than line 7. This is the round-2 display fix (A2, SSB-L1); the refresh round's low finding (amounts shown after the line 9 STOP) is resolved. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "b1df0b35acacf38c2f8abb2ac3d17bbada829788af819426caf1130d870a8170"
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "subject_key": "53422563cf9777083f813189ac8219ac32cd038bff07515394ba080d6d768755"
   },
   {
    "key": "11",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply's value is the project's and its display condition (not separate living together, line 6 less than line 5, line 8 less than line 7) is the project's ssb.show10_15 (ssb.show8_9 and line 9 above zero): line 7 above zero is line 6 less than line 5, line 9 above zero is line 8 less than line 7. This is the round-2 display fix (A2, SSB-L1); the refresh round's low finding (amounts shown after the line 9 STOP) is resolved. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "8bc7ff21f1db6e85336d4d29f394826157ab9f6901eb997ed0950b80f120c9cb"
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "subject_key": "f755b2a9171511abe60910790b62d6adccf077bf4967c752d5a809de52b47deb"
   },
   {
    "key": "12",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply's value is the project's and its display condition (not separate living together, line 6 less than line 5, line 8 less than line 7) is the project's ssb.show10_15 (ssb.show8_9 and line 9 above zero): line 7 above zero is line 6 less than line 5, line 9 above zero is line 8 less than line 7. This is the round-2 display fix (A2, SSB-L1); the refresh round's low finding (amounts shown after the line 9 STOP) is resolved. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "288ea2cea04d77c477133f3ed3c67128408090be9c0e7ae8e4c21cc1a7d61d41"
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "subject_key": "355f84e85924953024f1adf7703164192af3eb6c5562e914f6cd786da80ce759"
   },
   {
    "key": "13",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply's value is the project's and its display condition (not separate living together, line 6 less than line 5, line 8 less than line 7) is the project's ssb.show10_15 (ssb.show8_9 and line 9 above zero): line 7 above zero is line 6 less than line 5, line 9 above zero is line 8 less than line 7. This is the round-2 display fix (A2, SSB-L1); the refresh round's low finding (amounts shown after the line 9 STOP) is resolved. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "5ad80d63a4d6bfe7b99315b10d7d553bb3f730ab3341bed6369811dbf00339a5"
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "subject_key": "3540bfd46fd97d2970462b0920910b1bb3ea8d9c43c3cbdb39abb5b18ee1d856"
   },
   {
    "key": "14",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply's value is the project's and its display condition (not separate living together, line 6 less than line 5, line 8 less than line 7) is the project's ssb.show10_15 (ssb.show8_9 and line 9 above zero): line 7 above zero is line 6 less than line 5, line 9 above zero is line 8 less than line 7. This is the round-2 display fix (A2, SSB-L1); the refresh round's low finding (amounts shown after the line 9 STOP) is resolved. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "3ca00308bb1b126325bfc000db5f60a34cb086f5861270678a29027ec0f6aa0e"
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "subject_key": "0162fb186cb626e68fe9ef381c6501714f065a7b948a110209cc6c1fadb6ea5a"
   },
   {
    "key": "15",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply's value is the project's and its display condition (not separate living together, line 6 less than line 5, line 8 less than line 7) is the project's ssb.show10_15 (ssb.show8_9 and line 9 above zero): line 7 above zero is line 6 less than line 5, line 9 above zero is line 8 less than line 7. This is the round-2 display fix (A2, SSB-L1); the refresh round's low finding (amounts shown after the line 9 STOP) is resolved. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "6b8796cf197b486f736dedb9ce72a5e1029f5cd59ec4863bf5290b3705a67f59"
+   "ruling": "Ruling: representation; executable triage 2,993/3,053 agree; 60 candidate-refuses, all on returns the project refuses too, no value differs, nothing completed. The witnesses are separate returns of a filer who lived with the spouse, where the project hides lines 8 through 15, as i1040gi Social Security Benefits Worksheet line 8 says: 'Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16', and the reply's chain carries a refusal of the same return; on every return that completes, including the MFS fixtures that now derive ssb.lived_apart from household.mfs_apart_all_year, both give the same line.",
+   "subject_key": "a5f6b4e45da4e8c44fa2c6ddb30f159ca659663cb72d00483c52996dcaace94c"
   },
   {
    "key": "16",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". Value as the project; the reply shows the line when (line 6 less than line 5 and line 8 less than line 7, not separate living together) or (separate living together and line 6 less than line 5), the project's ssb.show16_18 (line 7 above zero, and line 9 above zero or married separately living together). The refresh round's SSB-L1 low (line 17 shown after a STOP) is fixed by ssb.show16_18 and the reply agrees. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "cac74b22333dac9695da4b142be61627535473821cfee55dddec215611ca271d"
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3053 values compared, none different or missing: 2376 on 2376 fixture cases, 500 on 500 generated returns seed 20261026, 177 on 177 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "68f972e8620246e3dac08e71a98f86aae0882460acf86ff0d79fbdfa3bf93f72"
   },
   {
    "key": "17",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". Value as the project; the reply shows the line when (line 6 less than line 5 and line 8 less than line 7, not separate living together) or (separate living together and line 6 less than line 5), the project's ssb.show16_18 (line 7 above zero, and line 9 above zero or married separately living together). The refresh round's SSB-L1 low (line 17 shown after a STOP) is fixed by ssb.show16_18 and the reply agrees. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "f28c76adf15287c4d7e1e88e9e951a5fa2096b08b2227ab2304a6e42ecf766a9"
+   "ruling": "Ruling: representation; equivalent on executable triage, ruled mechanically: the project's line and the reply's agree on every input triage ran (3053 values compared, none different or missing: 2376 on 2376 fixture cases, 500 on 500 generated returns seed 20261026, 177 on 177 partial records; policy executable-triage-v2). No agent read the source; one in 10 such disagreements is held for adjudication instead.",
+   "subject_key": "5394522b10c28a784c7fca32e849069f885440bef20dfd25bae62e346c58287c"
   },
   {
    "key": "18",
-   "record": "2aa50610bc33d2bb70d9ae699d0641063a4959b9371a844f185a3a2f12cdec27",
+   "record": "4d349bd2eac7f56eb6b5a268008940c7a57c54a5ac9fda0240daf58d9a8b1c6e",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 32, worksheet lines 7 and 9: \"No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b.\" (STOP); line 8: \"Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16\". The reply enters zero on the two STOP branches and the smaller of lines 16 and 17 otherwise; the project enters zero when line 1 is zero and the smaller otherwise. On a STOP branch lines 9 to 16 are zero (line 7 or line 9 is zero), so the smaller is zero too, and with no benefits line 17 is zero; the values are the same on every supported return. Both refuse on ssb.lump_sum and ssb.pub915. Married filing separately is refused for the return (scope, s3.mfs), so the married-separately branches differ only on refused returns.",
-   "subject_key": "bd281db7f6b0058fcc0c85ad641d641c4d4336073a2d00ff88ae3b7504364087"
+   "ruling": "Ruling: representation; executable triage 2,960/3,053 agree; 93 candidate-unknown, no value differs (completed: 14 candidate-unknown). Same smaller-of line 16 or 17; the reply reads ssb.lump_elect, which the interview does not ask on these returns, so it is unknown where the project computes. i1040gi Social Security Benefits Worksheet line 18.",
+   "subject_key": "f5d37b1c642dc8762726f67ac150993166f5fa445d7438d3f61a2244a6813cd2"
   }
  ],
  "subjects": {
   "ssb.lump_sum": "afebd3626bdfee2a2d4a5b88e7e9935987232b7815042b6c6e53efd3cfa56f85",
+  "ssb.lived_apart": "420de99ed4162707ebe07036c5b897b028e230503b6481f0f6148db66fe5838d",
   "ssb.has_benefits": "93481a8c549c4df9d5ce12871063ca88c64c3091e445ec5c540a5cecdd71d515",
   "1": "7ccd6d5d9f180d66b5cbd7600b94e66d898d3b1d0b57e3329fbe18674c621d7a",
   "2": "874eaa16f20af2f22c031b34556c2ffa8d6d3318319e7361ea599068f4319bc3",
@@ -154,33 +162,34 @@
   "5": "3e4a2531fb2be20399d6f85aba35256f4eca403025eb075ec52e40d16a4e1c80",
   "6": "deef4de6a4fd25a945cf3bb74ce0fc578c5e58a3c5210654fb0dd898ab3cacdc",
   "7": "e59f41f1df031a58a03a97e996219fd4851157b0c87f3affa2facb6e5a6d158c",
-  "8": "07bd8d386352cb80119681401d350cadf1e8702210b7b1eae3783510c18edaf0",
-  "9": "a1397e2d3a2d1417aabe2c15e3acf1eded91578a4dac7e7083f2d8703f67ab84",
-  "10": "bf089b8baa1a5eab694945a6842b1102675a6cc4dcf302431bc60d5ef95f403a",
-  "11": "837116c091ede57b6e1a4c3219f9ecfe1d6c60bb2af8fc84100a07dc8dd626c8",
-  "12": "dd2ce693f367b125bb1a8e984aeca4ae5f90dd5c94ea5f0661c865d02f33749b",
-  "13": "b6305733ed989d29dbf805295e74fb2d5893ac48131b5de372488c910c6d9ec5",
-  "14": "54eaa7d1fa6b7a4015d4aab54b93a21eb8e96e307ae1c58951bbaa959171ea96",
-  "15": "447d8b45e08fc9c639a34804ef26dfafab56aa2ddd15bbf0b8f720dff325792d",
-  "16": "a5eefa5809260ba328f3bd31fdfed11347fa431cff136ca1a473b43e6e69693c",
-  "17": "73c01263ad0ade3d851f94d83baa381a2e2b90609fdad1c53b5c0169bbeb69b3",
-  "18": "35cccd5d4989fa7e6594636cd1ad40729702d27805e1f6d2e4fd2d9a95afb556"
+  "8": "b99cf45f79bfe1a999412ea6d2cf4719087426d3f570265f568bcfb3bb38cc84",
+  "9": "970a5375095423125d5cb269e6b8b0f5d33e416ad4ea66a17d0a8cd32dd1771b",
+  "10": "079b4caf750c0e8b70d6f9e72267bedd57fcf1294127e36db3f05b7f1332a723",
+  "11": "bd7ca78481d3993cb2aaaa3393c8fe10be9b12a2a5757d359ed18ea99874ea82",
+  "12": "60607af8e2aaa6fb74c6d139d47c9890cae859dca45613684cbaa10a97af86e3",
+  "13": "77e3dac75e8c9eed976a49c1d1b1ff333a1d53fd19e34e63b7d0d65c0f71b366",
+  "14": "3ae6dc99e9f0f9b093ff7a8907666aca2f74cad4d2b60e1ec6850c2182452f9e",
+  "15": "e3e3a31a3213758d44cb4dabad0a04f99e218b5b4bf1badbe9cba024464aeb49",
+  "16": "01d202733aca71f15492d6d7a217dbfb496c619542bf181456094938cd86bdde",
+  "17": "95033eed37caf334421a4366246d35db32ef59ca2db236d8026e0e0bf80f8979",
+  "18": "a25d5e83e8092f87272468a6850e603bdd41f37c2d75a51da4333912a1b27ac2"
  },
  "__rest__": "f27ed8c32596d66063a07d65a0895977e0afa69acc647b72c1b05da4f85fa713",
  "foreign": {
   "ssb.lump_sum": "8e58164f5796377a873627a87019e0ea9a7a6b2de3ac9e347c69b89a3a2d132e",
+  "ssb.lived_apart": "1c54068139225028c04433c21575b92b859c1277ae1b079de518811a895c1222",
   "1": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "2": "8e58164f5796377a873627a87019e0ea9a7a6b2de3ac9e347c69b89a3a2d132e",
-  "8": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
-  "9": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
-  "10": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
-  "11": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
-  "12": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
-  "13": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
-  "14": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
-  "15": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
-  "16": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
-  "17": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411",
-  "18": "ad8e00727a9a39754a9c3e95d414cca1d549dfbefe2fa2bdbdc509bb3fbcc411"
+  "8": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
+  "9": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
+  "10": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
+  "11": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
+  "12": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
+  "13": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
+  "14": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
+  "15": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
+  "16": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
+  "17": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d",
+  "18": "18bbb1ece597ef27bf7a05442b567f5d53f77b27be5f0b7f1f66f59b5c840f0d"
  }
 }

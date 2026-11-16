@@ -18,6 +18,66 @@
   "operands:s2.line21": {
    "reason": "Lines 7, 9, 10, 13, 14, 15, 16 and 19 (tax on unreported tips and Form 8919 wages, household employment taxes, first-time homebuyer credit repayment, uncollected social security and Medicare tax, interest on installment sales and deferred tax, low-income housing credit recapture, section 965) are not prepared: any such amount answers yes to s2.other (\"Any amount on Schedule 2 other than\" self-employment tax, Additional Medicare Tax, Net Investment Income Tax and the Form 8889 line 17b additional tax), which this line refuses, so on every return the tool completes they are zero.",
    "refusal": "s2.other"
+  },
+  "operands:f1040.line1c": {
+   "reason": "Not arithmetic over line 1a: the instruction names line 1a only to describe the tips this line takes (those not reported there). The line is the sum over the filer and spouse of person.line1c, each person's unreported tips from Form 4137 line 4, which the line's citation also quotes (\"Include as income on Form 1040, 1040-SR, or 1040-NR, line 1c\")."
+  },
+  "operands:f1116.line32": {
+   "reason": "Lines 25, 26 and 28 through 31 are the credits for categories of income other than passive (section 951A, foreign branch, general, section 901(j), income re-sourced by treaty, lump-sum distributions), each from its own Form 1116. The tool prepares one Form 1116 for the passive category (line 27) and refuses any other category by f1116.other_category on f1116.line35, so on every return it completes those lines are empty and line 27 is the whole sum. The refusal is declared on line 35, which reads this one."
+  },
+  "operands:f1116col.line6": {
+   "reason": "Lines 2, 4b and 5 are zero on every return the tool completes. Line 2 (deductions definitely related to the foreign income: \"business expenses\" of foreign business income and \"state and local income taxes related to foreign source income\", i1116 p. 17) is refused by f1116.business, f1116.rental and f1116.itemized_unread; line 4b (other interest expense apportioned by the asset method) by f1116.asset_method, and below the $5,000 of gross foreign income in f1116.foreign_over i1116 p. 18 lets all interest expense be allocated to U.S. source income; line 5 (losses from foreign sources) by f1116.foreign_gain, f1116.business and f1116.rental, since the passive dividends and interest of the 1099 statements carry no loss. All are declared on f1116.line35, not on this line."
+  },
+  "operands:f1116sb.l3_i": {
+   "reason": "Line 2 (adjustments to the carryover from the prior year) is empty on every return the tool completes: a change to the foreign tax carried from 2024 is refused by f1116sb.changed_if_carry on f1116.line35, so line 3 is line 1 of the column. The refusal is declared on line 35, not on this line."
+  },
+  "operands:f1116sb.l3_ii": {
+   "reason": "Line 2 (adjustments to the carryover from the prior year) is empty on every return the tool completes: a change to the foreign tax carried from 2024 is refused by f1116sb.changed_if_carry on f1116.line35, so line 3 is line 1 of the column. The refusal is declared on line 35, not on this line."
+  },
+  "operands:f1116sb.l3_iii": {
+   "reason": "Line 2 (adjustments to the carryover from the prior year) is empty on every return the tool completes: a change to the foreign tax carried from 2024 is refused by f1116sb.changed_if_carry on f1116.line35, so line 3 is line 1 of the column. The refusal is declared on line 35, not on this line."
+  },
+  "operands:f1116sb.l3_iv": {
+   "reason": "Line 2 (adjustments to the carryover from the prior year) is empty on every return the tool completes: a change to the foreign tax carried from 2024 is refused by f1116sb.changed_if_carry on f1116.line35, so line 3 is line 1 of the column. The refusal is declared on line 35, not on this line."
+  },
+  "operands:f1116sb.l3_v": {
+   "reason": "Line 2 (adjustments to the carryover from the prior year) is empty on every return the tool completes: a change to the foreign tax carried from 2024 is refused by f1116sb.changed_if_carry on f1116.line35, so line 3 is line 1 of the column. The refusal is declared on line 35, not on this line."
+  },
+  "operands:f1116sb.l3_x": {
+   "reason": "Line 2 (adjustments to the carryover from the prior year) is empty on every return the tool completes: a change to the foreign tax carried from 2024 is refused by f1116sb.changed_if_carry on f1116.line35, so line 3 is line 1 of the column. The refusal is declared on line 35, not on this line."
+  },
+  "operands:f1116sb.l8_ii": {
+   "reason": "For a preceding-year column other than (i), line 4 is the carryover used, entered as a negative (f1116sb.l4_ii, zero less f1116sb.used_ii), which this line subtracts directly as f1116sb.used_ii; line 5 is completed only in column (i) (i1116sb p. 2, Line 5, \"For the 10th preceding tax year (column (i)), combine lines 3 and 4\"), and lines 6 and 7 (carryover generated in the current year and its carryback) only in column (xiii). So lines 3 and 4 are the whole combination; the floor at zero is never reached, since f1116sb.used_ii is at most line 3."
+  },
+  "operands:f1116sb.l8_iii": {
+   "reason": "For a preceding-year column other than (i), line 4 is the carryover used, entered as a negative (f1116sb.l4_iii, zero less f1116sb.used_iii), which this line subtracts directly as f1116sb.used_iii; line 5 is completed only in column (i) (i1116sb p. 2, Line 5, \"For the 10th preceding tax year (column (i)), combine lines 3 and 4\"), and lines 6 and 7 (carryover generated in the current year and its carryback) only in column (xiii). So lines 3 and 4 are the whole combination; the floor at zero is never reached, since f1116sb.used_iii is at most line 3."
+  },
+  "operands:f1116sb.l8_iv": {
+   "reason": "For a preceding-year column other than (i), line 4 is the carryover used, entered as a negative (f1116sb.l4_iv, zero less f1116sb.used_iv), which this line subtracts directly as f1116sb.used_iv; line 5 is completed only in column (i) (i1116sb p. 2, Line 5, \"For the 10th preceding tax year (column (i)), combine lines 3 and 4\"), and lines 6 and 7 (carryover generated in the current year and its carryback) only in column (xiii). So lines 3 and 4 are the whole combination; the floor at zero is never reached, since f1116sb.used_iv is at most line 3."
+  },
+  "operands:f1116sb.l8_v": {
+   "reason": "For a preceding-year column other than (i), line 4 is the carryover used, entered as a negative (f1116sb.l4_v, zero less f1116sb.used_v), which this line subtracts directly as f1116sb.used_v; line 5 is completed only in column (i) (i1116sb p. 2, Line 5, \"For the 10th preceding tax year (column (i)), combine lines 3 and 4\"), and lines 6 and 7 (carryover generated in the current year and its carryback) only in column (xiii). So lines 3 and 4 are the whole combination; the floor at zero is never reached, since f1116sb.used_v is at most line 3."
+  },
+  "operands:f1116sb.l8_x": {
+   "reason": "For a preceding-year column other than (i), line 4 is the carryover used, entered as a negative (f1116sb.l4_x, zero less f1116sb.used_x), which this line subtracts directly as f1116sb.used_x; line 5 is completed only in column (i) (i1116sb p. 2, Line 5, \"For the 10th preceding tax year (column (i)), combine lines 3 and 4\"), and lines 6 and 7 (carryover generated in the current year and its carryback) only in column (xiii). So lines 3 and 4 are the whole combination; the floor at zero is never reached, since f1116sb.used_x is at most line 3."
+  },
+  "operands:rental.line21": {
+   "reason": "Line 3 is rental.line3, which is rental.rents for a reported property and zero for an excluded one (rented fewer than 15 days, rental.excluded). This line makes the same choice: zero for an excluded property, otherwise rental.line21_full, rental.rents less rental.line20. On every property it equals line 3 less line 20; the resolver does not follow the shared guard."
+  },
+  "operands:sche.line23a": {
+   "reason": "Total of line 3 for all rental properties: sche.rents, the sum over the rental collection of rental.line3 for every reported property (an excluded property reports no rents). The line is the total of that line over the Schedule E properties, as a sum over the collection (rental); the resolver checks same-form operands and does not read a collection sum as the per-property line it totals."
+  },
+  "operands:sche.line23b": {
+   "reason": "Total of line 4 for all royalty properties: the sum over the royalty collection of royalty.line4. The line is the total of that line over the Schedule E properties, as a sum over the collection (royalty); the resolver checks same-form operands and does not read a collection sum as the per-property line it totals."
+  },
+  "operands:sche.line23c": {
+   "reason": "Total of line 12 for all properties: the sum over the rental collection of rental.line12 for every reported property; a royalty property is entered with expenses on lines 10, 16 and 19 only (royalty.line20) and has no line 12 amount. The line is the total of that line over the Schedule E properties, as a sum over the collection (rental); the resolver checks same-form operands and does not read a collection sum as the per-property line it totals."
+  },
+  "operands:sche.line23d": {
+   "reason": "Total of line 18 for all properties: the sum over the rental collection of rental.line18 for every reported property; royalty depletion (line 18) is refused by royalty.depletion, so no royalty property has a line 18 amount. The line is the total of that line over the Schedule E properties, as a sum over the collection (rental); the resolver checks same-form operands and does not read a collection sum as the per-property line it totals."
+  },
+  "operands:sche.line23e": {
+   "reason": "Total of line 20 for all properties: sche.rent_exp (the sum of rental.line20 over reported rental properties) plus sche.roy_exp (the sum of royalty.line20 over royalty properties). The line is the total of that line over the Schedule E properties, as a sum over the collection (rental and royalty); the resolver checks same-form operands and does not read a collection sum as the per-property line it totals."
   }
  },
  "baseline": {
@@ -26,7 +86,6 @@
   "operands:f8962.line2a": "a2da5f5282aa8e4b",
   "operands:ira.line4": "a1f3e3eaa104c4c9",
   "operands:line3": "c01c5e2b469719ff",
-  "operands:line8d": "7a864155ac3fe5af",
   "operands:s1.line1": "37a7e8c504529720",
   "operands:s1.line10": "d8e615b6e4828517",
   "operands:s1.line20": "a0209c7364cc8f73",

@@ -1,0 +1,787 @@
+form:
+  id: f7203
+  kind: form
+  title: Form 7203, S Corporation Shareholder Stock and Debt Basis Limitations (Parts I and III), one per S corporation
+  tax_year: 2025
+  note: 'One Form 7203 per Schedule K-1 (Form 1120-S), figured when the K-1 has a loss or a distribution (box 16, code D).
+    Part I (stock basis) and Part III lines 35 to 38 (losses allowed by stock basis, pro rata) are computed from the K-1''s
+    entered boxes. Part II (debt basis: loans from the shareholder), the Regulations section 1.1367-1(g) election, a distribution
+    above stock basis, carryovers from earlier years (column (b), refused on the K-1) and a capital loss limited by basis
+    are refused. Lines 39 to 46 have no amount: the boxes that would fill them are refused on the K-1.'
+  lines:
+  - id: f7203.zero
+    printed: (helper)
+    label: Year parameter sales.zero
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sales.zero
+    cite:
+      doc: f7203
+      locator: p. 1, Part I, "Shareholder Stock Basis"
+  - id: f7203.no
+    printed: (helper)
+    label: Year parameter s3.no (false)
+    type: Bool
+    expr:
+      op: param
+      ref: s3.no
+    cite: &id001
+      doc: i7203
+      locator: p. 1, Who Must File, "Are claiming a deduction for their share of an aggregate loss from an S corporation";
+        "Received a non-dividend distribution from an S corporation"
+  - id: f7203.required
+    printed: (gate)
+    label: 'Form 7203 is required for this corporation: a loss or deduction item, or a non-dividend distribution'
+    type: Bool
+    expr:
+      op: copy
+      from: k1s.f7203_required
+    cite: *id001
+  - id: f7203.election
+    printed: E
+    label: A Regulations section 1.1367-1(g) election is in effect for this S corporation
+    type: Bool
+    gated_by: f7203.election_if_req
+    expr:
+      op: input
+      source: Have you elected to reduce your basis in this corporation by losses before nondeductible expenses (the election
+        of Regulations section 1.1367-1(g))?
+    cite: &id002
+      doc: i7203
+      locator: p. 2, Item E, "Check the box to indicate if you have a Regulations section 1.1367-1(g) election in effect during
+        the tax year for this S corporation"
+  - id: f7203.election_if_req
+    printed: (gate)
+    label: The election, asked only when Form 7203 is required (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f7203.required
+          - const: true
+        then: f7203.election
+      - guard:
+          op: test
+          eq:
+          - f7203.required
+          - const: false
+        then: f7203.no
+    cite: *id002
+  - id: f7203.loans
+    printed: Part II
+    label: You have loaned money to the corporation (shareholder debt basis, Part II)
+    type: Bool
+    gated_by: f7203.loans_if_req
+    expr:
+      op: input
+      source: Have you lent money to this corporation that it had not fully repaid at the start of 2025, or did you lend it
+        money in 2025? Item I of the K-1 shows such loans.
+    cite: &id003
+      doc: i7203
+      locator: p. 3, Part II. Shareholder Debt Basis, "You must complete this section if you have personally loaned money
+        to the corporation"
+  - id: f7203.loans_if_req
+    printed: (gate)
+    label: Loans to the corporation, asked only when Form 7203 is required (false otherwise)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f7203.required
+          - const: true
+        then: f7203.loans
+      - guard:
+          op: test
+          eq:
+          - f7203.required
+          - const: false
+        then: f7203.no
+    cite: *id003
+  - id: f7203.line1
+    printed: '1'
+    label: Stock basis at the beginning of the corporation's tax year
+    type: NonNegDollars
+    gated_by: f7203.line1_if_req
+    expr:
+      op: input
+      source: What was your basis in this corporation's stock at the start of 2025? It is line 15 of your 2024 Form 7203.
+    cite: &id004
+      doc: i7203
+      locator: p. 2, Line 1, "Enter your basis in the stock of the S corporation at the beginning of the corporation’s tax
+        year. Unless this is your initial year owning stock in the S corporation, this amount should be the same as your ending
+        stock basis from the prior tax year"
+  - id: f7203.line1_if_req
+    printed: (gate)
+    label: Line 1, asked only when Form 7203 is required (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f7203.required
+          - const: true
+        then: f7203.line1
+      - guard:
+          op: test
+          eq:
+          - f7203.required
+          - const: false
+        then: f7203.zero
+    cite: *id004
+  - id: f7203.line2
+    printed: '2'
+    label: Basis from any capital contributions made or additional stock acquired during the tax year
+    type: NonNegDollars
+    gated_by: f7203.line2_if_req
+    expr:
+      op: input
+      source: In 2025, how much did you put into this corporation as money or property, or pay for more of its shares? Do
+        not count loans. Enter 0 if none.
+    cite: &id005
+      doc: i7203
+      locator: p. 2, Line 2, "Enter any additional contributions to the capital of the S corporation or any additional acquisitions
+        of stock. Don’t include any loans to the S corporation"
+  - id: f7203.line2_if_req
+    printed: (gate)
+    label: Line 2, asked only when Form 7203 is required (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f7203.required
+          - const: true
+        then: f7203.line2
+      - guard:
+          op: test
+          eq:
+          - f7203.required
+          - const: false
+        then: f7203.zero
+    cite: *id005
+  - id: f7203.l3a
+    printed: 3a
+    label: Ordinary business income (enter losses in Part III)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1s.gain1
+    cite: &id006
+      doc: i7203
+      locator: p. 2, Line 3, "Enter on lines 3a through 3m all separately figured and non-separately figured items of income
+        from Schedule K-1 (Form 1120-S)"; "Enter only positive amounts from Schedule K-1 (Form 1120-S) on line 3"
+  - id: f7203.l3b
+    printed: 3b
+    label: Net rental real estate income (enter losses in Part III)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1s.gain2
+    cite: *id006
+  - id: f7203.l3c
+    printed: 3c
+    label: Other net rental income (enter losses in Part III)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1s.gain3
+    cite: *id006
+  - id: f7203.l3d
+    printed: 3d
+    label: Interest income
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1s.box4_if_any
+    cite: *id006
+  - id: f7203.l3e
+    printed: 3e
+    label: Ordinary dividends
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1s.box5a_if_any
+    cite: *id006
+  - id: f7203.l3f
+    printed: 3f
+    label: Royalties (box 6 is refused, so zero)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f7203.zero
+    cite: *id006
+  - id: f7203.l3g
+    printed: 3g
+    label: 'Net capital gains (enter losses in Part III): the gains of boxes 7 and 8a'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1s.gain7
+      - k1s.gain8
+    cite: *id006
+    ambiguity: amb.2025.f7203_capital_lines
+  - id: f7203.l3h
+    printed: 3h
+    label: Net section 1231 gain (box 9 is refused, so zero)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f7203.zero
+    cite: *id006
+  - id: f7203.l3i
+    printed: 3i
+    label: Other income (box 10 is refused, so zero)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f7203.zero
+    cite: *id006
+  - id: f7203.l3j
+    printed: 3j
+    label: Excess depletion adjustment (box 15 is refused, so zero)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f7203.zero
+    cite:
+      doc: i7203
+      locator: p. 3, Line 3j, "Enter the amount by which your cumulative depletion deduction exceeds your proportionate share
+        of basis in the property subject to depletion"
+  - id: f7203.l3k
+    printed: 3k
+    label: Tax-exempt income (box 16, codes A and B)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1s.box16a_if_any
+      - k1s.box16b_if_any
+    cite:
+      doc: i7203
+      locator: p. 3, Line 3k, "Enter the sum of the amounts from Schedule K-1 (Form 1120-S), box 16, codes A and B"
+  - id: f7203.l3l
+    printed: 3l
+    label: Recapture of business credits (box 17 recapture codes are refused, so zero)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f7203.zero
+    cite: *id006
+  - id: f7203.l3m
+    printed: 3m
+    label: Other items that increase stock basis (none are entered, so zero)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f7203.zero
+    cite: *id006
+  - id: f7203.line4
+    printed: '4'
+    label: Add lines 3a through 3m
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f7203.l3a
+      - f7203.l3b
+      - f7203.l3c
+      - f7203.l3d
+      - f7203.l3e
+      - f7203.l3f
+      - f7203.l3g
+      - f7203.l3h
+      - f7203.l3i
+      - f7203.l3j
+      - f7203.l3k
+      - f7203.l3l
+      - f7203.l3m
+    cite:
+      doc: f7203
+      locator: p. 1, Part I, "Add lines 3a through 3m"
+  - id: f7203.line5
+    printed: '5'
+    label: Stock basis before distributions. Add lines 1, 2, and 4
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f7203.line1_if_req
+      - f7203.line2_if_req
+      - f7203.line4
+    cite:
+      doc: f7203
+      locator: p. 1, Part I, "Stock basis before distributions. Add lines 1, 2, and 4"
+  - id: f7203.line6
+    printed: '6'
+    label: Distributions (excluding dividend distributions)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1s.box16d_if_any
+    cite:
+      doc: i7203
+      locator: p. 3, Line 6, "Enter the distributions reported on Schedule K-1 (Form 1120-S), box 16, code D"
+  - id: f7203.dist_over
+    printed: (gate)
+    label: Line 6 is larger than line 5 (a distribution above stock basis)
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f7203.line6
+      - f7203.line5
+    cite: &id010
+      doc: i7203
+      locator: p. 3, Line 6, "If the amount of the distribution is more than the stock basis before distributions, report
+        the excess amount as a capital gain on Form 8949, Sales and Other Dispositions of Capital Assets, and Schedule D"
+  - id: f7203.line7
+    printed: '7'
+    label: Stock basis after distributions. Subtract line 6 from line 5. If the result is zero or less, enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f7203.line5
+      take: f7203.line6
+    cite:
+      doc: f7203
+      locator: p. 1, Part I, "Stock basis after distributions. Subtract line 6 from line 5"
+  - id: f7203.l8a
+    printed: 8a
+    label: Nondeductible expenses (box 16, code C)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1s.box16c_if_any
+    cite:
+      doc: i7203
+      locator: p. 3, Line 8a, "Enter the amount from Schedule K-1 (Form 1120-S), box 16, code C"
+  - id: f7203.l8b
+    printed: 8b
+    label: Depletion for oil and gas (box 17 code R is refused, so zero)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f7203.zero
+    cite:
+      doc: i7203
+      locator: p. 3, Line 8b, "Enter the amount of oil and gas depletion claimed on your personal return up to your proportionate
+        share of basis in the property subject to depletion"
+  - id: f7203.l8c
+    printed: 8c
+    label: Business credits (sections 50(c)(1) and (5)) (box 13 credits are refused, so zero)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f7203.zero
+    cite:
+      doc: i7203
+      locator: p. 3, Line 8c, "Certain credits require the reduction of both an S corporation's assets as well as the shareholder's
+        stock basis"
+  - id: f7203.line9
+    printed: '9'
+    label: Add lines 8a through 8c
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f7203.l8a
+      - f7203.l8b
+      - f7203.l8c
+    cite:
+      doc: f7203
+      locator: p. 1, Part I, "Add lines 8a through 8c"
+  - id: f7203.line10
+    printed: '10'
+    label: Stock basis before loss and deduction items. Subtract line 9 from line 7. If the result is zero or less, enter
+      -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f7203.line7
+      take: f7203.line9
+    cite:
+      doc: f7203
+      locator: p. 1, Part I, "Stock basis before loss and deduction items. Subtract line 9 from line 7"
+  - id: f7203.a35
+    printed: 35 (a)
+    label: Ordinary business loss, current year (box 1 loss)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1s.loss1
+    cite: &id007
+      doc: i7203
+      locator: p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "Column (a). Enter the loss and deduction amounts
+        for each item as reported on your Schedule K-1 (Form 1120-S)"
+  - id: f7203.a36
+    printed: 36 (a)
+    label: Net rental real estate loss, current year (box 2 loss)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1s.loss2
+    cite: *id007
+  - id: f7203.a37
+    printed: 37 (a)
+    label: Other net rental loss, current year (box 3 loss)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: k1s.loss3
+    cite: *id007
+  - id: f7203.a38
+    printed: 38 (a)
+    label: Net capital loss, current year (the losses of boxes 7 and 8a)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - k1s.loss7
+      - k1s.loss8
+    cite: *id007
+    ambiguity: amb.2025.f7203_capital_lines
+  - id: f7203.a47
+    printed: 47 (a)
+    label: Total loss, column (a). Add lines 35 through 46
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f7203.a35
+      - f7203.a36
+      - f7203.a37
+      - f7203.a38
+    cite:
+      doc: f7203
+      locator: p. 2, Part III, "Total loss. Add lines 35 through 46 for each"
+  - id: f7203.has_loss
+    printed: (helper)
+    label: Line 47, column (a), is more than zero
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f7203.a47
+      - const: 0
+    cite: *id007
+  - id: f7203.c35_p
+    printed: (helper)
+    label: Line 35, column (a) times line 10 divided by line 47, column (a), the ratio rounded to six places and at most 1
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: f7203.a35
+      part: f7203.line10
+      whole: f7203.a47
+      places: 6
+    cite: &id008
+      doc: i7203
+      locator: p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "If stock basis, as reported on line 10, is
+        less than the sum of column (a) and column (b), line 47, enter the pro rata amount on the corresponding line in column
+        (c)"; "If stock basis, as reported on line 10, is greater than the sum of column (a) and column (b), line 47, enter
+        the sum of each line for column (a) plus column (b) in column (c)"
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.c35
+    printed: 35 (c)
+    label: 'Ordinary business loss: allowable loss from stock basis'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f7203.has_loss
+          - const: true
+        then: f7203.c35_p
+      - guard:
+          op: test
+          eq:
+          - f7203.has_loss
+          - const: false
+        then: f7203.zero
+    cite: *id008
+  - id: f7203.c36_p
+    printed: (helper)
+    label: Line 36, column (a) times line 10 divided by line 47, column (a), the ratio rounded to six places and at most 1
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: f7203.a36
+      part: f7203.line10
+      whole: f7203.a47
+      places: 6
+    cite: *id008
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.c36
+    printed: 36 (c)
+    label: 'Net rental real estate loss: allowable loss from stock basis'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f7203.has_loss
+          - const: true
+        then: f7203.c36_p
+      - guard:
+          op: test
+          eq:
+          - f7203.has_loss
+          - const: false
+        then: f7203.zero
+    cite: *id008
+  - id: f7203.c37_p
+    printed: (helper)
+    label: Line 37, column (a) times line 10 divided by line 47, column (a), the ratio rounded to six places and at most 1
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: f7203.a37
+      part: f7203.line10
+      whole: f7203.a47
+      places: 6
+    cite: *id008
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.c37
+    printed: 37 (c)
+    label: 'Other net rental loss: allowable loss from stock basis'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f7203.has_loss
+          - const: true
+        then: f7203.c37_p
+      - guard:
+          op: test
+          eq:
+          - f7203.has_loss
+          - const: false
+        then: f7203.zero
+    cite: *id008
+  - id: f7203.c38_p
+    printed: (helper)
+    label: Line 38, column (a) times line 10 divided by line 47, column (a), the ratio rounded to six places and at most 1
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: f7203.a38
+      part: f7203.line10
+      whole: f7203.a47
+      places: 6
+    cite: *id008
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.c38
+    printed: 38 (c)
+    label: 'Net capital loss: allowable loss from stock basis'
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f7203.has_loss
+          - const: true
+        then: f7203.c38_p
+      - guard:
+          op: test
+          eq:
+          - f7203.has_loss
+          - const: false
+        then: f7203.zero
+    cite: *id008
+  - id: f7203.c47
+    printed: 47 (c)
+    label: Total loss, column (c). Add lines 35 through 46
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f7203.c35
+      - f7203.c36
+      - f7203.c37
+      - f7203.c38
+    cite: *id008
+  - id: f7203.line11
+    printed: '11'
+    label: Allowable loss and deduction items. Enter the amount from line 47, column (c) (not more than line 10)
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of:
+      - f7203.c47
+      - f7203.line10
+    cite:
+      doc: i7203
+      locator: p. 3, Line 11, "Enter the total from line 47, column (c). This amount can’t exceed the amount"
+    ambiguity: amb.2025.f7203_prorata_places
+  - id: f7203.line12
+    printed: '12'
+    label: 'Debt basis restoration (no loans: Part II is refused, so zero)'
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f7203.zero
+    cite:
+      doc: i7203
+      locator: p. 3, Line 12, "Use Part II to figure the debt basis restoration, if any"
+  - id: f7203.line13
+    printed: '13'
+    label: Other items that decrease stock basis (a sale or redemption of stock is refused, so zero)
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: f7203.zero
+    cite:
+      doc: i7203
+      locator: p. 3, Line 13, "Enter any other decreases to stock basis not accounted for on the lines above"
+  - id: f7203.line14
+    printed: '14'
+    label: Add lines 11, 12, and 13
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f7203.line11
+      - f7203.line12
+      - f7203.line13
+    cite:
+      doc: f7203
+      locator: p. 1, Part I, "Add lines 11, 12, and 13"
+  - id: f7203.line15
+    printed: '15'
+    label: Stock basis at the end of the corporation's tax year. Subtract line 14 from line 10. If the result is zero or less,
+      enter -0-
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f7203.line10
+      take: f7203.line14
+    cite:
+      doc: f7203
+      locator: p. 1, Part I, "Stock basis at the end of the corporation’s tax year. Subtract line 14 from line 10"
+    display: The stock basis carried to the 2026 Form 7203, line 1.
+  - id: f7203.e35
+    printed: 35 (e)
+    label: 'Line 35: carryover amount (column (a) minus column (c))'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f7203.a35
+      take: f7203.c35
+    cite: &id009
+      doc: i7203
+      locator: p. 5, Column (e), "If the sum of column (a) plus column (b) exceeds the sum of column (c) plus column (d),
+        enter the"
+  - id: f7203.e36
+    printed: 36 (e)
+    label: 'Line 36: carryover amount (column (a) minus column (c))'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f7203.a36
+      take: f7203.c36
+    cite: *id009
+  - id: f7203.e37
+    printed: 37 (e)
+    label: 'Line 37: carryover amount (column (a) minus column (c))'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f7203.a37
+      take: f7203.c37
+    cite: *id009
+  - id: f7203.e38
+    printed: 38 (e)
+    label: 'Line 38: carryover amount (column (a) minus column (c))'
+    type: NonNegDollars
+    expr:
+      op: subtract_floor0
+      from: f7203.a38
+      take: f7203.c38
+    cite: *id009
+  - id: f7203.e47
+    printed: 47 (e)
+    label: 'Total loss, column (e): carryover to 2026'
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - f7203.e35
+      - f7203.e36
+      - f7203.e37
+      - f7203.e38
+    cite: *id009
+  - id: f7203.cap_limited
+    printed: (gate)
+    label: Part of the net capital loss (line 38) is carried forward by the basis limitation
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - f7203.e38
+      - const: 0
+    cite: &id011
+      doc: i7203
+      locator: p. 4, Part III. Shareholder Allowable Loss and Deduction Items, "Loss and deductions in excess of basis are
+        suspended and carried forward indefinitely and the character of the loss and deduction items is retained"
+  - id: f7203.one
+    printed: (helper)
+    label: One Form 7203, screened
+    type: Count
+    expr:
+      op: param
+      ref: ss.one
+    cite:
+      doc: i7203
+      locator: p. 1, Purpose of Form, "Use Form 7203 to figure potential limitations of your share of the S corporation's
+        deductions, credits, and other items that can be deducted on your return"
+    refuses:
+    - when: f7203.election_if_req
+      form: Form 7203 with a Regulations section 1.1367-1(g) election
+      remedy: With the election, nondeductible expenses are moved to line 13 and carried over under special rules; that is
+        outside this tool.
+      cite:
+        doc: i7203
+        locator: p. 3, Line 6, "Leave lines 8a, 8b, and 8c blank if you made an election under Regulations section 1.1367-1(g)"
+    - when: f7203.loans_if_req
+      form: Form 7203, Part II (shareholder debt basis)
+      remedy: A shareholder who has lent money to the corporation figures debt basis in Part II of Form 7203, which this tool
+        does not prepare.
+      cite: *id003
+    - when: f7203.dist_over
+      form: Form 8949 and Schedule D (a distribution above stock basis)
+      remedy: A distribution larger than your stock basis is a capital gain reported on Form 8949, which this tool does not
+        prepare for this case.
+      cite: *id010
+    - when: f7203.cap_limited
+      form: Form 7203, Part III, line 38 (a capital loss limited by stock basis)
+      remedy: When part of a capital loss is held back by the basis limitation, splitting the allowed part between short-term
+        and long-term gain or loss is outside this tool.
+      cite: *id011
+  collection:
+    parent: k1s
+    implicit: form
+    cite:
+      doc: i7203
+      locator: p. 2, Name of Shareholder, "If you are married filing jointly and you received a Schedule K-1 (Form 1120-S)
+        for you and your spouse, complete a separate Form 7203 for each spouse"

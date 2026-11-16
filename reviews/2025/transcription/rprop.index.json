@@ -1,0 +1,66 @@
+{
+ "kind": "transcription",
+ "form": "rprop",
+ "family": "claude",
+ "base": "29cf1035310bf2a9c4c07fcc8cc16d9bdeae086cb10e09861198262962224649",
+ "head_rows": {
+  "line-scoped reviews": "1 (latest 2026-11-15); see Line-scoped reviews"
+ },
+ "lines": [
+  {
+   "key": "rprop.placed_this_year",
+   "record": "29cf1035310bf2a9c4c07fcc8cc16d9bdeae086cb10e09861198262962224649",
+   "status": "AGREE",
+   "subject_key": "9603d8eb9f5ce7132af380f96ad3a4e0651f443401c55675f6d9d8c623b37397",
+   "section": "rprop.placed_2025",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rprop.placed_2025": "rprop.placed_this_year"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "a197affd4c81bebd52d7d8069bd2374b891e07d53d0b2e9e407fc4fe3d88b457",
+    "keys": {
+     "rprop.placed_2025": "rprop.placed_this_year"
+    }
+   }
+  },
+  {
+   "key": "rprop.placed_this_year_cent",
+   "record": "29cf1035310bf2a9c4c07fcc8cc16d9bdeae086cb10e09861198262962224649",
+   "status": "AGREE",
+   "subject_key": "8372af1377717fa90349b053f7a065e7731ebb0185ca5fe2d394d479b947bd40",
+   "section": "rprop.is_2025",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "rprop.is_2025": "rprop.placed_this_year_cent",
+     "rprop.placed_2025": "rprop.placed_this_year"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "c416ae42fe11c1c55b4f78f91d8d9f4baa36b2e25e0ac2b1a3491282909512b8",
+    "keys": {
+     "rprop.is_2025": "rprop.placed_this_year_cent"
+    }
+   }
+  },
+  {
+   "key": "(g)",
+   "record": "8056c6ce78db0cdc504f22c0279d1f13599e8ad157e201ba57e7efb912cbbbcc",
+   "status": "DISAGREE",
+   "ruling": "Ruling: scope; triage .transcription/triage/2025/rprop.json: all 66 in-scope values agree; the 2 differences are returns the project refuses (project refuses 2: personal property at rprop.personal, nonresidential property placed in service before 1994 at rprop.early_nonres; rprop note), which the reply depreciates (5-year half-year property, ACRS). Within scope both multiply column (c) by the Table A-6 / A-7a rate (p946 p. 73).",
+   "subject_key": "65c90c43bd1416a3672ca4c32732faa6947530082b744c93510b6d0ad76a9aeb"
+  }
+ ],
+ "subjects": {
+  "rprop.placed_this_year": "26db829a53d0959062cda93cac672fa2c664df0826a6366bc4c2bc7080b1e3e5",
+  "rprop.placed_this_year_cent": "44941b3619573f97c8a25080d44b041cf859869ebb7ebc3a63d9216efc575066",
+  "(g)": "d2457f88229f2fb62864dee9cfe413b628e38528b4c6f12ed90151f1bb2a5e0a"
+ },
+ "__rest__": "04074d1bd28d0960353d4983f0f9a29b2cebb3d8a61264d2b28fe23f6f9b12a1",
+ "foreign": {
+  "rprop.placed_this_year": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "rprop.placed_this_year_cent": "68787f773dedfc5ef2b8e0b57fe388cef703a1d0588398bd5573013b1570ea6b",
+  "(g)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

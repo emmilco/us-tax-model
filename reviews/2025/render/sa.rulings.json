@@ -79,6 +79,16 @@
   {
    "printed": "15",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Line 15 reads 'Casualty and theft loss(es) from a federally declared disaster ... Attach Form 4684 and enter the amount from line 18 of that form.' The program enters $0, and no refusal covers a casualty or theft loss.",
+   "ruling": "Ruling: scope; i1040sca p. 11, Line 15, \"Complete and attach Form 4684 to figure the amount of your loss\". A casualty or theft is refused before Schedule A: sd.casualty (asked of every filer) feeds sd.other_forms, refused on Schedule D and from Form 1040 line 7a on, so line 15 is $0 on every computed return; the line's citation names that refusal (fix of BUG-0639). Same ruling as the earlier round (2026-11-14); checked on the current forms.",
+   "context": "b13f7321dd73f0bfd114fa4c96861a71d9824ae7e2d5466b42762c227acc6ac5",
+   "date": "2026-11-15",
+   "run": "a5961ac39a521fbd2e9884a613f19c06e72a3bc73dc776410b29ebb25f85edd7",
+   "subject_key": "f7a57d36bf818e1c3fdfd3e3be011610575e5f0b94571fbd31971391941b2a58"
+  },
+  {
+   "printed": "15",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "Line 15 says 'Casualty and theft loss(es) from a federally declared disaster ... Attach Form 4684 and enter the amount from line 18 of that form.' The program always enters $0, and none of its refusals (charity, sa.unsupported, excluded income) covers a federally declared disaster casualty loss.",
    "ruling": "Ruling: scope; i1040sca p. 11, Line 15, 'Complete and attach Form 4684 to figure the amount of your loss'. A casualty or theft is refused before Schedule A: sd.casualty (asked of every filer, 'was your ... property damaged, destroyed or stolen, leaving a loss that insurance did not cover') feeds sd.other_forms, refused on sd.count (fixture mutation.json, gate sd.other_forms). The line's citation now names that refusal (fix for BUG-0639); the reviewer read only the refusals listed on the line.",
    "context": "fdc61669fae4f40410800c3bae27383ca623e4687d6e30960cf1300b89bfd941",
@@ -128,6 +138,16 @@
    "subject_key": "7fbdc6559dc519aee18928ee5022c206655589c7c4546930557cbc9945050dfc"
   },
   {
+   "printed": "16",
+   "restated": "Choose — [s1 helper \"Any gambling winnings\" = true → helper \"Gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b\"] [s1 helper \"Any gambling winnings\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The gambling loss limit is right, but the line 16 list also includes 'Casualty and theft losses of income-producing property ... from Form 4684, lines 32 and 38b, or Form 4797, line 18a', 'Deduction for repayment of amounts under a claim of right if over $3,000', and a net qualified disaster loss from Form 4684, line 15. No refusal covers these items.",
+   "ruling": "Ruling: scope; i1040sca p. 11, Line 16 list. The gambling limit matches, as the model says. Casualty and theft losses of income-producing property (Form 4684 lines 32 and 38b, Form 4797 line 18a) and a net qualified disaster loss (Form 4684 line 15) are refused through sd.casualty and sd.business_property into sd.other_forms; the claim-of-right repayment over $3,000 by s3.repaid_income (Schedule 3 and scope refusals); the other listed items by sa.unsupported. Same ruling as the earlier round (2026-11-14); gates checked on the current forms.",
+   "context": "b13f7321dd73f0bfd114fa4c96861a71d9824ae7e2d5466b42762c227acc6ac5",
+   "date": "2026-11-15",
+   "run": "a5961ac39a521fbd2e9884a613f19c06e72a3bc73dc776410b29ebb25f85edd7",
+   "subject_key": "b2f5b1ef09b2226f1a8eb2da29468ceb56ea880dcab5b222a1cfeb6ecd4f0c7f"
+  },
+  {
    "printed": "2",
    "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
    "model": "The form says \"Enter amount from Form 1040 or 1040-SR, line 11b\" with no floor at zero. The helper floors AGI at zero, which changes lines 2 through 4 when line 11b is negative.",
@@ -149,6 +169,37 @@
    "ruling": "Ruling: ambiguity (amb.2025.sa_medical_negative_agi); the project floors AGI at zero for the 7.5% limit, the recorded reading.",
    "context": "4f0afc31f5e7c09b96e3c409455b65e0b153be2082f2ca99682b1a5e17d08ddb",
    "subject_key": "114e34423ec0342658fc789d0dfc1a901704a7f89c24f8dad1bbb363eb8be55e"
+  },
+  {
+   "printed": "2 (sa.dep_line2)",
+   "restated": "Enter the larger of helper \"Earned income plus $450\" or helper \"Year parameter sa.dep_min ($1,350)\".",
+   "model": "The larger-of structure equals the worksheet's test of earned income over $900. But the worksheet defines earned income as 'Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15'. The helper leaves out Schedule 1 lines 6, 8t and 8u.",
+   "ruling": "Ruling: finding; medium; the model is right in part: the worksheet's earned income is \"Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15\" (i1040gi p. 35, Standard Deduction Worksheet for Dependents) and sa.dep_earned_sum leaves out 6, 8t and 8u. Lines 6 (Schedule F, scope.farm in scope.schedule1) and 8t (s1.nqdc_pension_if_w2 in s1.line8_other) are still refused, so they are zero on every computed return (amb.2025.sa_dep_earned). Line 8u is not: lane x2-s1o made it computed, so a dependent filer with wages earned while an inmate has line 2 too small. (BUG-0767)",
+   "context": "b13f7321dd73f0bfd114fa4c96861a71d9824ae7e2d5466b42762c227acc6ac5",
+   "date": "2026-11-15",
+   "run": "a5961ac39a521fbd2e9884a613f19c06e72a3bc73dc776410b29ebb25f85edd7",
+   "severity": "medium",
+   "subject_key": "94633624678def09ff60a3accf89d5a0743bc50ebe5445d97aced85ed78bc377"
+  },
+  {
+   "printed": "2 (sa.line2)",
+   "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
+   "model": "The form says 'Enter amount from Form 1040 or 1040-SR, line 11b' with no floor. The restatement floors adjusted gross income at zero, so it prints a different value when line 11b is negative.",
+   "ruling": "Ruling: ambiguity; amb.2025.sa_medical_negative_agi: the project floors adjusted gross income at zero for the 7.5% medical limit (a negative line 2 would raise line 4 above the expenses), the recorded reading; same ruling as the earlier rounds. f1040sa line 2, \"Enter amount from Form 1040 or 1040-SR, line 11b\".",
+   "context": "b13f7321dd73f0bfd114fa4c96861a71d9824ae7e2d5466b42762c227acc6ac5",
+   "date": "2026-11-15",
+   "run": "a5961ac39a521fbd2e9884a613f19c06e72a3bc73dc776410b29ebb25f85edd7",
+   "subject_key": "8ab36294f63d783dc455aafaa0822dbfe693f04f0923badc38189c1167fc72b6"
+  },
+  {
+   "printed": "4b",
+   "restated": "Add helper \"Additional standard deduction for each box checked for age\" and helper \"Additional standard deduction for each box checked for blindness\".",
+   "model": "The per-box amounts match '$1,600 ($2,000 if single or head of household)'. But the box count is limited to 'your spouse if filing jointly', while the 1040 instructions say 'If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind ... you can check the appropriate box(es) on line 12d if your spouse had no income, isn't filing a return, and can't be claimed as a dependent'.",
+   "ruling": "Ruling: scope; the model says the count of boxes omits a spouse's boxes on a married filing separately return when the spouse had no income, files no return and can't be claimed (i1040gi p. 33, Line 12d). That case is refused: sa.mfs_spouse_extra (\"Married filing separately and claiming age or blindness boxes for your spouse\", asked when the spouse is not itemizing) refuses on sa.standard, which reads this worksheet (\"Standard Deduction Chart spouse boxes on a separate return\"). On every computed return the boxes are the filer's and, on a joint return, the spouse's.",
+   "context": "b13f7321dd73f0bfd114fa4c96861a71d9824ae7e2d5466b42762c227acc6ac5",
+   "date": "2026-11-15",
+   "run": "a5961ac39a521fbd2e9884a613f19c06e72a3bc73dc776410b29ebb25f85edd7",
+   "subject_key": "1056874c581d86b7ba124c36baf1b7c246923b7d4b845bce47772ecaa4878a2a"
   },
   {
    "printed": "5a",
@@ -190,6 +241,17 @@
    "date": "2026-11-14",
    "run": "e4f763a4e71087ab6a9c3f7087c7265e9933c768b9f102da1807003a36fde4c3",
    "subject_key": "df0c4c365dcd6b0605ba88e970ae9518958157efc842b0a7d56c948d46ea3564"
+  },
+  {
+   "printed": "6",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The line 6 instructions say 'Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions.' The program forces $0, and no refusal covers GST on income distributions. The foreign-tax refusal is asked only when creditable foreign taxes are positive, so deductible but non-creditable foreign taxes are not covered either.",
+   "ruling": "Ruling: finding; low; the model is right that deductible foreign taxes that are not creditable are neither computed nor refused. p514 p. 3, Exceptions for foreign taxes not allowed as a credit: \"Even if you claim a credit for other foreign taxes, you can deduct any foreign tax that is not allowed as a credit if you did any of the following\", including \"You paid withholding tax on dividends from foreign corporations whose stock you did not hold for the required period of time\". ftc.taxes asks only creditable taxes and sa.foreign_tax_deduct is asked only when they are positive (ftc.has_tax), so line 6 is $0 for such a filer with no refusal. The GST part of the model's reason stays refused: GST on income distributions reaches the filer through a Schedule K-1 (Form 1041), and scope.k1 (estates and trusts included) still refuses through scope.schedule1 (checked on the current forms). (BUG-0768)",
+   "context": "b13f7321dd73f0bfd114fa4c96861a71d9824ae7e2d5466b42762c227acc6ac5",
+   "date": "2026-11-15",
+   "run": "a5961ac39a521fbd2e9884a613f19c06e72a3bc73dc776410b29ebb25f85edd7",
+   "severity": "low",
+   "subject_key": "a286bc32c4e489c887d39128bf8c9743224148bbf138d83b01f8de5f704362fd"
   },
   {
    "printed": "6",

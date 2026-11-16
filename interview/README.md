@@ -154,9 +154,9 @@ Its API:
 
 | Route | Does |
 |---|---|
-| `GET /api/returns` | the return logs in the directory, the scope sentence, the notices, `docTitles` (document id to printed title) and `docDesignations` (document id to printed designation, for the documents that have one), both from the year's source catalogs |
+| `GET /api/returns` | the tax year served (`tax_year`, which the page's heading and title show), the return logs in the directory, the scope sentence, the notices, `docTitles` (document id to printed title) and `docDesignations` (document id to printed designation, for the documents that have one), both from the year's source catalogs |
 | `POST /api/returns` `{name}` | starts a log (profile `ny`); an existing name is refused |
-| `GET /api/returns/:name` | the state: the CLI's fields, `pending` with each input's `type` (and enum `values`) and `forms` (the catalogued forms its question names: `designation`, `id`, `title`, `purpose`), `group` (the tick-box screen the first pending question is shown in, or null: `id`, `heading` as shown, `frame`, and `members`, the questions shown as its boxes, each as a pending question is served, with its label `tick`), `refusalFinal`, the structured `sheets` (federal and New York), the `answered` questions, the `entryLabels` (entry path to label) and the lines the last answer `changed` |
+| `GET /api/returns/:name` | the state: the return's `tax_year`, the CLI's fields, `pending` with each input's `type` (and enum `values`) and `forms` (the catalogued forms its question names: `designation`, `id`, `title`, `purpose`), `group` (the tick-box screen the first pending question is shown in, or null: `id`, `heading` as shown, `frame`, and `members`, the questions shown as its boxes, each as a pending question is served, with its label `tick`), `refusalFinal`, the structured `sheets` (federal and New York), the `answered` questions, the `entryLabels` (entry path to label) and the lines the last answer `changed` |
 | `POST /api/returns/:name/answer` `{input, value[, labels]}` | appends the answer and returns the new state, or 400 with the reason |
 | `POST /api/returns/:name/answers` `{answers: [{input, value}, …]}` | the answers of the tick-box screen the state offers (`group`): exactly one for each box, each `true` or `false`. Appends one event per box, in the order given, in one write, and returns the new state; 400 with the reason, and nothing appended, when any is rejected |
 | `GET /api/vetting` | the vetting page's cards, each with its record and whether it is stale, the records of questions no longer asked, the counts and the verdict file's path ("Vetting the questions") |
@@ -617,7 +617,8 @@ any question that was already waiting and has an earlier order number than the o
 an opened question is given the group's order number; within it, other questions may come
 first); and that the same answers given one at a time end the return the same
 way. `tick-groups --self-test` plants each refused declaration, and a group asked of each
-person on the built interview. `docs/provisional/lanes/tick.md` says what makes a good group.
+person on the built interview. What makes a good group is section 3.6 of `docs/2026-11-13_interview_construction_protocol.md`; the tick lane's
+note (`docs/provisional/lanes/tick.md`) records how the groups were first chosen.
 
 A long question is written as structured text (`engine/src/text.ts`): a line's `label`, an input's
 `source`, a `note`, and a bank `prompt` or `help` may hold line breaks, and then only a small Markdown
@@ -811,5 +812,5 @@ A tick-box screen is one step: the walk answers its boxes together, as the page 
 heading and the labels with the boxes ticked, and counts the heading's and the labels' words
 once in place of the members' own prompts (which the page keeps behind "What this asks"). The
 totals and `SUMMARY.md` give the steps (screens) beside the questions.
-`docs/provisional/walks/before/` holds the walks of the interview before the provisional redraft; a file there is
+`docs/provisional/walks/before/` holds the walks of the interview before the redraft of 2026-11-12/13; a file there is
 never overwritten. `draft-walk --self-test` (check-all, `tools/self_tests.py`) plants each failure on the built interview.

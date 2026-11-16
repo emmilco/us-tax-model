@@ -4,15 +4,16 @@
  "family": "claude",
  "base": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
  "head_rows": {
-  "match / mismatch / unclear / missing": "25 / 4 / 0 / 0",
-  "line-scoped reviews": "5 (latest 2026-11-15); see Line-scoped reviews"
+  "lines judged": "36",
+  "match / mismatch / unclear / missing": "30 / 6 / 0 / 0",
+  "line-scoped reviews": "7 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
    "status": "MATCH",
-   "subject_key": "1039f440fce27cbe813649990df4dd54d0ef9352be65320d98ee64231bb4b84b"
+   "subject_key": "34192f9e30b4b633877c7d66e2ac82e3f49a2621599c5abf08e7054b7efcfc35"
   },
   {
    "key": "7",
@@ -34,9 +35,28 @@
   },
   {
    "key": "3",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
    "status": "MATCH",
-   "subject_key": "c54336bc1dea0694f355a57ecea5c5bca9cf309b8c7806ac725b4d7de1380b34"
+   "subject_key": "3a1d838d8e89b044e2763de6aca52ae818eefa02e31a896fbc0299c8d4ae952e"
+  },
+  {
+   "key": "8k",
+   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
+   "status": "MATCH",
+   "subject_key": "1036b27d2f0679248bb5c7e90e102e38e43dfbd3c62d28c447bbd432d5202cec"
+  },
+  {
+   "key": "8e",
+   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the model says line 8e adds only Form 8853 line 26 (Section C) and leaves out lines 8 and 12 (Archer MSA and Medicare Advantage MSA distributions; i1040gi p. 91, Line 8e, \"Enter the total of the amounts from Form 8853, lines 8, 12, and 26\"). Sections A and B are refused: scope.archer_msa (\"did you (or, on a joint return, your spouse) put money into, or take money out of, an Archer MSA or a Medicare Advantage MSA\") is a disjunct of scope.schedule1, which refuses Form 1040 line 8 and every line after it; the line's own cite says so (\"Sections A and B, are refused by scope.archer_msa\"). Within scope lines 8 and 12 are zero.",
+   "subject_key": "4d66bb53fba366d22f93a376c504bc274bf994ce73512dd256f02248ecbad1c8"
+  },
+  {
+   "key": "8v",
+   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
+   "status": "MATCH",
+   "subject_key": "82951d0a15890761acf72959e06177f491d18d823e509a654366e96f02e4a58f"
   },
   {
    "key": "8b",
@@ -76,9 +96,9 @@
   },
   {
    "key": "8z",
-   "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
+   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
    "status": "MATCH",
-   "subject_key": "b2e46e96a051b8f3bff4ece13f2dbe800294d5087d659089abd40cc20bb8b540"
+   "subject_key": "e99959c12e5a89f18ecf061d6eaa222ec87b3beabd370f71afb4684d4244cabd"
   },
   {
    "key": "2a",
@@ -99,18 +119,54 @@
    "subject_key": "100a59ff3933a60db034a9f1389477c63a2d96920f38d7a97cfbeae39aba9488"
   },
   {
-   "key": "9",
-   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
+   "key": "8a",
+   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
    "status": "MISMATCH",
-   "ruling": "Ruling: finding; f1040s1 line 9, \"Add lines 8a through 8z\". The value is right: each item not summed refuses the return elsewhere (8a scope.nol and 8l scope.rental through scope.schedule1 at Form 1040 line 8; 8d sa.excluded_income on Schedule A lines 6, 15, 16, read by sa.itemizes; 8n, 8o scope.cfc through scope.other_line16; 8p the excess business loss refusal on line 3; 8q person.x_edu_taxable through person.x_other on Form 5329; 8s scope.medicaid_waiver through scope.other_income), so 8a, 8d, 8l, 8n to 8q and 8s are not silently dropped, as the reply says. But the line's citation says those lines \"are refused by s1.line8_other\", which since the redraft tests only 8e, 8k, 8m and 8t to 8v: the line names the wrong screen. Low (BUG-0637).",
-   "subject_key": "c8f250768e2169dbc51e004758e4bd5c10cc92226ab074fa0cb14bf2f41c314d"
+   "ruling": "Ruling: scope; the model says the 80% limit on post-2017 NOLs (i172 p. 2, \"80% of the excess (if any) of taxable income computed without regard to deductions for NOLs, or Qualified Business Income (QBI), or section 250 deductions\") is never applied. It is not applied as arithmetic: the return is refused at Form 1040 line 15 whenever the limit may bind (f1040.line15 refuses when s1.nol_limit, the sufficiency test N > 4T of amb.2025.s1_nol_limit_test, owner decision D3), so every computed return has a deduction the limit does not reduce. The restatement shows line 8a alone, without the line 15 refusal.",
+   "subject_key": "8ea977181433daf5f1f8a135c6d132406d7cba4cb52454c6d42494324194ed15",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1.nol_pre2018": "s1.nol_before_limit_date",
+     "s1.nol_pre2018_if_nol": "s1.nol_before_limit_date_if_nol"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "2833267f41abbf49c46528874008a3524e5de6982364582e6dfb99e6a229a254"
+   }
+  },
+  {
+   "key": "8s",
+   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
+   "status": "MATCH",
+   "subject_key": "bb57d2e3044d84564e62b63e2ac8b3b9569f78077729635878cf7c6c55b41dcd"
+  },
+  {
+   "key": "9",
+   "record": "e72a2ad6a335bb022500e9d5c6680bec5b4cc2ebeacecb56691ab922400c83a1",
+   "status": "MISMATCH",
+   "ruling": "Ruling: scope; the restatement leaves out lines 8d, 8l, 8n, 8o, 8p and 8q, as the model says, but each of them refuses the return at another gate, which the line's citation names: 8d by sa.excluded_income (Form 2555 or 4563, Puerto Rico exclusion), 8l by scope.rental through scope.schedule1, 8n and 8o by scope.cfc (read through scope.cfc_if_foreign_shares in the scope gate), 8p by the excess business loss refusal of s1.line3 (s1.ebl), and 8q by person.x_other (Form 5329, ABLE account). 8m, 8t and 8u are refused by s1.line8_other (s1.olympic_if_winnings, s1.nqdc_pension_if_w2, s1.inmate_wages; line 8u's refusal restored by the revert). So no filer with an amount on those lines is computed; the line 9 total is right on every return the tool completes (f1040s1 line 9, 'Add lines 8a through 8z'). Same ruling as the earlier round (adjudication/s1.md, render line 9, scope).",
+   "subject_key": "f406814aa2b3fed12439e41cc6b8085216a603784f00773b78b9b8d887418d73",
+   "carried": {
+    "by": "rename",
+    "map": {
+     "s1.nol_pre2018_if_nol": "s1.nol_before_limit_date_if_nol"
+    },
+    "from": "3767f931e67b17d0ac18af2bf99c8e23b2559ef8",
+    "was": "b15dc249102a34ed364876970d83a27961ed9a9c9decb5a36810055eadf6eed3"
+   }
+  },
+  {
+   "key": "5",
+   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
+   "status": "MATCH",
+   "subject_key": "642bbc341044252c6028b35589f25a106ee9efbecd48edfeaf4ce851244d33fd"
   },
   {
    "key": "10",
-   "record": "f79ea644030bc9087b5f19e191de636222879f163d827f06c10ab0b64224b338",
+   "record": "e72a2ad6a335bb022500e9d5c6680bec5b4cc2ebeacecb56691ab922400c83a1",
    "status": "MISMATCH",
-   "ruling": "Ruling: finding; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". The value is right: line 4 (Form 4797) is refused by sd.business_property_if_sold through sd.other_forms on Schedule D, lines 5 and 6 by scope.rental, scope.k1 and scope.farm through scope.schedule1 at Form 1040 line 8 (which copies this line), so within scope they are zero. But the citation puts lines 4 to 6 at \"scope.schedule1 and the line 8 screen\", and Form 4797 no longer refuses there (MAP 2.7). Low (BUG-0637).",
-   "subject_key": "f3a58a590dd2e3302f12cf0628ca857c76d3aee814f8f8f995c76d5e1a3f47d0"
+   "ruling": "Ruling: scope; the helper s1.line10_ex5 adds lines 1, 2a, 3, 7 and 9, and line 10 adds line 5, so lines 4 and 6 are left out, as the model says. Both refuse the return elsewhere, as the line's citation names: line 4 (Other gains or losses, Form 4797) by sd.other_forms on Schedule D, line 6 (farm income, Schedule F) by scope.schedule1 at Form 1040 line 8 (scope.farm). The line 10 total is therefore right on every completed return (f1040s1 line 10, 'Combine lines 1 through 7 and 9'). The helper's label names lines 4 and 6 although it does not add them; a reader is not misled into a wrong amount, because a filer with either line is refused. Same ruling as the earlier round (adjudication/s1.md, render line 10, scope).",
+   "subject_key": "822c89361482da3dad119f399328d3144aa058a0038723f653a5805a06420aee"
   },
   {
    "key": "11",
@@ -161,6 +217,12 @@
    "subject_key": "857735354b7a4fc1e16b4a6d9cf7126c89539f58044795b9b401b68ebc4169d3"
   },
   {
+   "key": "20 (box)",
+   "record": "d05f9c63923717330ae790a0fc9f9a99551f9a9150eca99904842b1daf07b6b6",
+   "status": "MATCH",
+   "subject_key": "d497d3f614e1b72ae0d233ca29c01f479b4281ab7081d785376aa09f47b0cced"
+  },
+  {
    "key": "21",
    "record": "27725650c0df77c1fc317562f0446563a4ccaf57e18fed4cedc5523bc3321c45",
    "status": "MATCH",
@@ -188,23 +250,29 @@
   }
  ],
  "subjects": {
-  "1": "3cf027355da75e3c1f9ff97b91bfd36372ca9ab6e610480bc31bdbad6d856ef1",
+  "1": "58670c8bb3557b518db28d15c0575db7bd18c807075f888cec9d91e0522cd172",
   "7": "0aa7e18fa41397e9c171ffac098cfbea679e107ade4d0789644fb7a869935a82",
   "7 (box)": "09b7c34093b1ada499b0dd9b024a5725401b1b3c053bf7a088ca9b4b4fe0fa61",
   "7 (amount repaid)": "684c11973a74fbcaca801a35d11dedc198af1f3f9c8045e0b24173854c36a5a6",
-  "3": "bc3ec168d14d2a8cd64d175e37c7e910d8a5af268c316d775da646c4dd01ddcd",
+  "3": "3e424d4e592de39a050c1bdc07c4723850d0241f0a5a6696530c098732016f55",
+  "8k": "4b1bc2070e2ddc3d294b19420152080039bb88a7fd12df1a0dbd51c6d383aead",
+  "8e": "d5cd00ae0c81f94ed4c7013603e0261f9210b3899839ac562b445ad9bf9336a8",
+  "8v": "62d41387353c01fbba21287dc1ff7fe1482afd692a7994a185ffcb6e00376860",
   "8b": "cc86673029995e183bbe1b99c0d9fab9a8e94421f7f4fa29ed2b1dcaeedb9ec8",
   "8g": "1565127f4954ac0df1c1dd4dfc11ed29f439a77d206ac1cab6b259c676adb9b3",
   "8h": "80b6c80b9281d97b3e5ed1441f830a5cd8349c82557cb07fc2b4d9d68b7781c5",
   "8i": "a6573e9820a655fac65854a14fbd99a59c5c65e5bfeaada666cabba577c5c80e",
   "8j": "9080f3ad8698c5cdcb124d73834ba1fc736d2d01d330936ab03035c1048f70c0",
   "8r": "25bb17eeabc46e59f3b84ce777b6fbabe4bee372eebd99c2a6ae5e24ce3822e9",
-  "8z": "716e4f6692a25b41948e6fdbe805ecff692e5452aeffbfaba8b32f5e0f42e407",
+  "8z": "d34ab5762ec738a0b3d8021fd20bdfdd4830d80fd7572c3a0a373cee4e0a25a8",
   "2a": "978f6fd9d84dccac3569cc51b677eb4899a483919ee31adc82908e98379c6d53",
   "8c": "a683b5e3a96931b8975920a5a908da75b5cf7b9741566a302efee18ae43a2b06",
   "8f": "61cd1ea00f9720c8fa0491e4eabe0184235cd502525725831f06f21d546abb4a",
-  "9": "f63675713ebbe490de727504c380bd62e5779b9a012f6f06d741f26697986829",
-  "10": "53fd48a2eea5f64b3a98f9a3829d6ee7aed1923efaa45a35c874183e146f740d",
+  "8a": "2432bc9f89da09af9462fcf8549f08c9ec3322d6fc8bdeaf616d7eb5788a613f",
+  "8s": "0c94351cf75aec1a858c09699d1d65a754072228774a78b3179d6fce37a0be19",
+  "9": "643e9ab07699d048abd15c9a3bf998b00858c85f8491cec4dbe072f89090712d",
+  "5": "b937bcccb37f5c3779ca579d5520cd5de4e2868b7fd53f8b105829eb048d36ea",
+  "10": "2442f878aee1fabaa2fda3f4f0187dba6de72c09279e974d27c5883801878306",
   "11": "444b97633e80dc22f7362c42b60b247a91d3290a3d4917b7429f07dec9ebf99d",
   "13": "d28511b7f2c281e110c89fdb0b05daddf7fd81c5cd68febefceddfd95320e99c",
   "15": "2862a9af51da579f2eeae0fca7a1e5fd656c4e385c5dde00e4cedea04abf6f88",
@@ -213,6 +281,7 @@
   "18": "68468ce4276ba46f7520091bb4beb4cca084d19d6b0ceb9bbba6fc637e9593ac",
   "19a": "c81ab15d94daae0e64cbd97bece5b206e3b2fb73c5b19bb72e144eb8bdd82098",
   "20": "f5fe786e81fd42f622503e89aab81fb0d7d0dd71d81f7ef1bb4a2c0c276a41cc",
+  "20 (box)": "5448b54aa9210d86e4f19632555613078ee065822ffe193de3ae622b98520c0a",
   "21": "6a9e1286ec5d1c79200191fa27ea65aad3e34c1557b4f969476844c8c2b25dbf",
   "24a": "31369b1b105228b8c5f133e8c3fd9b294c8ffc28346a0687a317919714dc1274",
   "25": "c3cc27cbf052acae70854b6056de1f9f7c2bfa9717211b348d2fafede9c896e0",

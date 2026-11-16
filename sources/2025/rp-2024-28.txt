@@ -1,0 +1,1128 @@
+Part III
+
+
+Administrative, Procedural, and Miscellaneous
+
+
+
+26 CFR 1.1012: GUIDANCE FOR TAXPAYERS TO ALLOCATE BASIS IN DIGITAL
+ASSETS TO WALLETS OR ACCOUNTS AS OF JANUARY 1, 2025
+(Also: Part I, §§ 1012, 6045, 1.1012-1, 1.6045-1)
+
+
+
+
+Rev. Proc. 2024-28
+
+
+
+SECTION 1. PURPOSE
+
+    This revenue procedure provides a safe harbor under § 1012(c)(1) of the Internal
+
+Revenue Code (Code) 1 on which taxpayers may rely to allocate unused basis of digital
+
+assets to digital assets held within each wallet or account of the taxpayer as of January
+
+1, 2025.
+
+SECTION 2. BACKGROUND
+
+    On October 9, 2019, the Internal Revenue Service (IRS) posted Virtual Currency
+
+FAQs (“FAQs”) on https://www.irs.gov 2 explaining how existing tax principles apply to
+
+virtual currency, including cryptocurrency, held by taxpayers as capital assets. FAQs 39-
+
+
+1
+  Unless otherwise specified, all “section” or “§” references are to sections of the Internal Revenue Code
+or the Income Tax Regulations (26 CFR part 1).
+2
+  Since October 9, 2019, the FAQs have been revised and renumbered. References to FAQ numbers in
+this revenue procedure are to the numbering in the version of the FAQs as of June 6, 2024.
+40 explain that a taxpayer may choose the units of virtual currency deemed to be sold,
+
+exchanged, or otherwise disposed of if the taxpayer can specifically identify which unit
+
+or units are involved in the transaction and is able to substantiate the basis of those
+
+units either by documenting the specific unit’s unique identifier or by records of the units
+
+held within a single account, wallet, or address showing:
+
+       (1) the date and time each unit was acquired;
+
+       (2) the taxpayer’s basis and the fair market value of each unit at the time it was
+           acquired;
+
+       (3) the date and time each unit was sold, exchanged, or otherwise disposed of;
+           and
+
+       (4) the fair market value of each unit when it was sold, exchanged, or disposed
+           of, and the amount of money or the value of property received for each unit.
+
+   FAQ 41 further explains that if a taxpayer does not identify specific units of virtual
+
+currency as the units sold, exchanged, or otherwise disposed of, then the units are
+
+deemed to have been sold in chronological order beginning with the earliest unit the
+
+taxpayer purchased or acquired; that is, on a first in, first out (FIFO) basis.
+
+   Section 1012(c)(1) requires that in the case of the sale, exchange, or other
+
+disposition of a specified security on or after the applicable date for that security, the
+
+conventions prescribed by the regulations must be applied on an account-by-account
+
+basis. Section 1012(c)(3) defines, for purposes of this section, the terms “specified
+
+security” and “applicable date” by incorporating the definitions for these terms in
+
+section 6045(g)(3). Section 80603 of the Infrastructure Investment and Jobs Act, Pub. L.
+
+No. 117-58, 135 Stat. 429, 1339 (2021) expanded the definition of a specified security to
+
+include digital assets with an applicable date of January 1, 2023.
+
+
+
+
+                                              2
+   Section 6045(g)(3)(D) generally defines a digital asset, for purposes of information
+
+reporting by brokers, as any digital representation of value which is recorded on a
+
+cryptographically secured distributed ledger or any similar technology as specified by
+
+the Secretary.
+
+   On August 29, 2023, the Department of the Treasury and the IRS published in the
+
+Federal Register (88 FR 59576) proposed regulations (REG-122793-19) (2023
+
+proposed regulations) under sections 6045, 1001, and 1012, among others. The 2023
+
+proposed regulations, in part, clarified the statutory requirements for determining and
+
+identifying the cost basis of digital assets. Consistent with section 1012(c)(2), the
+
+proposed regulations would have required basis determination on an account-by-
+
+account basis.
+
+   For units left in the custody of a broker, proposed § 1.1012-1(j)(3)(ii) provided that
+
+the taxpayer can make an adequate identification of the units sold, disposed of, or
+
+transferred, if the taxpayer specifies to the broker, no later than the date and time of
+
+such disposition, the particular units of the digital asset to be disposed of by reference
+
+to any identifier (such as purchase date and time or purchase price paid for the units)
+
+that the broker designates as sufficiently specific to allow it to determine the basis and
+
+holding period of those units. For units left in the custody of a broker for which the
+
+taxpayer does not specifically identify the units to be sold, disposed of, or transferred,
+
+proposed § 1.1012-1(j)(3)(i) provided that the determination of which units are disposed
+
+of for purposes of determining the basis and holding period of such units is made in
+
+order of time from the earliest units of that same digital asset acquired in the taxpayer’s
+
+account with the broker.
+
+
+
+                                             3
+   For units not held in the custody of a broker, such as in an unhosted wallet,
+
+proposed § 1.1012-1(j)(1) provided that if a taxpayer sells, disposes of, or transfers less
+
+than all the units of the same digital asset held within a single wallet or account, the
+
+determination of which units are disposed of for purposes of determining basis and
+
+holding period is made by a specific identification of the units of the particular digital
+
+asset in the wallet or account that the taxpayer intends to sell, dispose of, or transfer.
+
+Proposed § 1.1012-1(j)(2) provided that a specific identification of the units of a digital
+
+asset sold, disposed of, or transferred is made if, no later than the date and time of sale,
+
+disposition, or transfer, the taxpayer identifies on its books and records the particular
+
+units to be disposed of by reference to any identifier, such as purchase date and time or
+
+the purchase price for the unit, that is sufficient to identify the basis and holding period
+
+of the units sold, disposed of, or transferred. A specific identification could be made only
+
+if adequate records are maintained for all units of a specific digital asset held in a single
+
+wallet or account to establish that a unit is removed from the wallet or account for
+
+purposes of subsequent transactions. For units not held in the custody of a broker and
+
+for which a taxpayer does not specifically identify the units to be sold, disposed of, or
+
+transferred, the determination of which units in the wallet or account are disposed of is
+
+made in order of time from the earliest purchase date of the units of that same digital
+
+asset.
+
+   In response to the 2023 proposed regulations, some comments addressed the need
+
+for transitional guidance, stating that many taxpayers have interpreted FAQs 39-41 as
+
+permitting, or at least not prohibiting, specific identification of units or application of the
+
+FIFO rule based on a so-called universal or multi-wallet approach because the FAQs do
+
+
+
+                                               4
+not explicitly limit the specific identification or FIFO rule to units held within a single
+
+account, wallet, or address, and noting that the rules of proposed § 1.1012-1(j) would
+
+apply differently from the basis identification rules adopted by those taxpayers based on
+
+their reading of FAQs 39-41. The comments expressed the view that transitioning from
+
+the universal or multi-wallet approach to the single wallet or account-based rules in the
+
+2023 proposed regulations, if adopted in the final regulations, could lead to ongoing
+
+discrepancies between a taxpayer’s basis records and the basis reported to the
+
+taxpayer by brokers on Forms 1099-DA, Digital Asset Proceeds From Broker
+
+Transactions, and that these discrepancies could be further exacerbated by the
+
+limitations of current basis-tracking software.
+
+   On June 28, 2024, final regulations (T.D. 10000) were filed with the Federal Register
+
+(XX FR XXXXX) (2024 final regulations). The 2024 final regulations adopted the 2023
+
+proposed regulations with certain modifications in response to comments and public
+
+hearing testimony. Section 1.1012-1(h) and (j) of the 2024 final regulations will apply to
+
+all acquisitions and dispositions of digital assets on or after January 1, 2025. This
+
+revenue procedure is being issued contemporaneously with the 2024 final regulations to
+
+assist taxpayers who may have specifically identified units or applied the FIFO rule
+
+based on a universal or multi-wallet approach in transitioning to the rules in § 1.1012-
+
+1(j) of the 2024 final regulations, which apply the specific identification or FIFO rules to
+
+units held within a single wallet or account. Subject to the requirements set forth below,
+
+this revenue procedure generally permits taxpayers to rely on any reasonable allocation
+
+of units of unused basis to a wallet or account that holds the same number of remaining
+
+digital asset units based on the taxpayer’s records of such unused basis and remaining
+
+
+
+                                               5
+units. The allocation must be a reasonable allocation within the meaning of section 5.02
+
+of this revenue procedure and must be made as of January 1, 2025; however, the
+
+taxpayer may identify the method of allocation and may comply with the requirements
+
+set forth in section 4.02 of this revenue procedure at a later date to the extent permitted
+
+by section 5.02(4) or 5.02(5)(b) of this revenue procedure.
+
+SECTION 3. DEFINITIONS
+
+   Except as otherwise provided, the following definitions apply solely for purposes of
+
+this revenue procedure:
+
+   .01 Digital asset. A “digital asset” has the meaning provided in § 1.6045-1(a)(19) of
+
+the 2024 final regulations other than digital assets not required to be reported as digital
+
+assets pursuant to § 1.6045-1(c)(8)(ii), (iii) and (iv) of the 2024 final regulations.
+
+   .02 Basis. “Basis” has the meaning provided in section 1012.
+
+   .03 Original basis. “Original basis” means the taxpayer’s cost of the digital asset unit
+
+as provided in section 1012 as adjusted by section 1016; if the digital asset unit is
+
+substituted basis property within the meaning of section 7701(a)(42), the taxpayer’s
+
+substituted basis, as defined in section 1016(b); if the digital asset is acquired by gift,
+
+the basis determined under section 1015; or, if the digital asset is acquired from a
+
+decedent, the fair market value of the digital asset at the date of death, unless the
+
+alternative valuation date is elected within the meaning of section 1014. When a
+
+taxpayer receives digital asset units that constitute gross income under section 61, the
+
+taxpayer’s basis in the digital asset units received is generally determined by reference
+
+to the amount includable in gross income. See generally § 1.61-2(d)(2)(i). The
+
+acquisition date of a digital asset unit must remain with the original basis of that unit.
+
+
+
+                                               6
+   .04 Acquisition date. The “acquisition date” of a digital asset unit is the date on which
+
+the taxpayer acquires, including by purchase, gift, reward, or airdrop, or from a
+
+decedent, the unit of the digital asset. If the acquisition is the result of a gift or the death
+
+of a decedent, the “acquisition date” is determined under section 1223. The acquisition
+
+date of a unit of unused basis is the acquisition date of the digital asset unit to which the
+
+unit of unused basis was originally attached.
+
+   .05 Pre-2025 transaction. A “pre-2025 transaction” means the sale, disposition, or
+
+transfer by the taxpayer of a digital asset unit in a transaction completed before January
+
+1, 2025.
+
+   .06 Unhosted wallet. An “unhosted wallet” has the same meaning as in § 1.6045-
+
+1(a)(25)(iii) of the 2024 final regulations.
+
+   .07 Remaining digital asset units. A “remaining digital asset unit” refers to a digital
+
+asset unit that a taxpayer:
+
+       (1) acquires or receives in a transfer before January 1, 2025, and
+
+       (2) holds in the taxpayer’s wallet or account as of January 1, 2025.
+
+   .08 Previously identified and used basis. “Previously identified and used basis”
+
+means the original basis (along with the associated acquisition date) of a digital asset
+
+unit that was identified and attached to a digital asset unit that was sold, disposed of, or
+
+transferred by the taxpayer in a pre-2025 transaction. Thus, for example, previously
+
+identified and used basis is reflected in both (1) a digital asset unit purchased for $10 on
+
+January 1, 2024, and then sold by the taxpayer before January 1, 2025, treating $10 as
+
+the unit’s basis and January 1, 2024, as its acquisition date, and (2) a digital asset unit
+
+purchased for $15 on January 30, 2024, and then sold by the taxpayer before January
+
+
+
+                                               7
+1, 2025, treating $10 (from another unit) as the unit’s basis and January 1, 2024 (from
+
+the other unit), as its acquisition date. In both of these cases, the $10 basis is previously
+
+identified and used basis.
+
+   .09 Unit of unused basis. “Unit of unused basis” refers to the original, per unit basis
+
+of a digital asset unit other than any unit of previously identified and used basis.
+
+Accordingly, all units of digital asset basis held by the taxpayer as of January 1, 2025,
+
+are treated as units of unused basis for purposes of this revenue procedure, even if the
+
+taxpayer is able to factually attribute some units of basis to specific units of digital
+
+assets.
+
+   .10 As of January 1, 2025. “As of January 1, 2025” means immediately after the
+
+close of the taxpayer’s day on December 31, 2024.
+
+   .11 Transfer. “Transfer ” means the conveyance, other than a sale or disposition, of
+
+digital asset units by one taxpayer to another taxpayer, including a completed gift,
+
+donation, contribution, or distribution of digital asset units.
+
+   .12 Taxpayer. “Taxpayer” means any person described in section 7701(a)(1) but
+
+does not include an entity disregarded as an entity separate from its owner under
+
+§ 301.7701-3. Any remaining digital assets or units of unused basis held by a
+
+disregarded entity are treated as held by its owner.
+
+SECTION 4. SCOPE
+
+   .01 In General.
+
+       (1) The safe harbor described in section 5.01 of this revenue procedure is
+
+           available only to a taxpayer who holds remaining digital asset units and has
+
+           units of unused basis as of January 1, 2025.
+
+
+
+                                               8
+(2) The taxpayer may not apply the safe harbor described in this revenue
+
+   procedure to any digital assets acquired by or transferred to the taxpayer on
+
+   or after January 1, 2025. Section 1.1012-1(j) of the 2024 final regulations
+
+   generally applies to digital assets acquired by or transferred to a taxpayer on
+
+   or after January 1, 2025.
+
+(3) The safe harbor described in this revenue procedure does not apply to any
+
+   allocation of units of unused basis the amount or the availability of which is
+
+   under consideration before any court of the United States; before the IRS
+
+   Independent Office of Appeals; or subject to an examination by the IRS, about
+
+   which the IRS first contacts the taxpayer prior to January 1, 2025; unless, in
+
+   each case, a final determination has been made with respect to the amount or
+
+   the availability of such basis before the date the specific unit allocation or
+
+   global allocation must be completed pursuant to section 5.02(4) or 5.02(5)(b)
+
+   of this revenue procedure, respectively.
+
+(4) The taxpayer may apply the safe harbor described in this revenue procedure
+
+   to one or more types of digital assets held by the taxpayer prior to January 1,
+
+   2025, separately with respect to each such type of digital asset. For example,
+
+   Bitcoin is one type of digital asset, and Ether is another type of digital asset.
+
+(5) The safe harbor described in section 5.01 of this revenue procedure is
+
+   available only to a taxpayer who satisfies the requirements of section 4.02 of
+
+   this revenue procedure. The failure to meet all the requirements with respect
+
+   to one type of digital asset, however, does not impact the taxpayer’s ability to
+
+
+
+
+                                      9
+          apply the safe harbor with respect to any other type of digital asset for which
+
+          the taxpayer is able to satisfy the requirements.
+
+   .02 Requirements.
+
+       (1) Each remaining digital asset unit must be a capital asset in the hands of the
+
+          taxpayer. See section 1221.
+
+       (2) Each unit of unused basis must have been originally attached to a digital
+
+          asset unit that was a capital asset in the hands of a taxpayer.
+
+       (3) The digital asset unit from which the unused basis is derived and the
+
+          remaining digital asset unit must be the same type of digital asset.
+
+       (4) The taxpayer must be able to identify and maintain records sufficient to show
+
+          the total number of remaining digital asset units in each of the wallets or
+
+          accounts held by the taxpayer.
+
+       (5) The taxpayer must be able to identify and maintain records sufficient to show
+
+          the number of units of unused basis, the original cost basis of each such unit
+
+          of unused basis, and the acquisition date of the digital asset unit to which the
+
+          unused basis was originally attached.
+
+       (6) A taxpayer must treat any allocation under this revenue procedure as
+
+          irrevocable for all purposes of section 1012.
+
+SECTION 5. SNAPSHOT AS OF JANUARY 1, 2025, AND SAFE HARBOR SCOPE
+
+   .01 Safe harbor. The taxpayer may make any reasonable allocation as of January 1,
+
+2025, of units of unused basis to a wallet or account that holds the same number of
+
+remaining digital asset units with respect to any type of digital asset for which the
+
+
+
+
+                                             10
+taxpayer is relying on this revenue procedure, provided the taxpayer satisfies the
+
+requirements of section 4.02 of this revenue procedure.
+
+   .02 Reasonable Allocation. To make a reasonable allocation within the meaning of
+
+section 5.01 of this revenue procedure, the taxpayer must comply with the requirements
+
+set forth in sections 5.02(1) through 5.02(7) of this revenue procedure.
+
+      (1) The taxpayer must identify the remaining digital asset units and maintain
+
+          records sufficient to show the units of unused basis within the meaning of
+
+          sections 4.02(4) and 4.02(5) of this revenue procedure, respectively, by the
+
+          applicable date set forth in section 5.02(4) or 5.02(5) of this revenue
+
+          procedure.
+
+      (2) The taxpayer must complete the allocations of all units of unused basis to the
+
+          same number of remaining digital asset units within all wallets or accounts
+
+          held by the taxpayer by the applicable date set forth in section 5.02(4) or
+
+          5.02(5) of this revenue procedure. A taxpayer may make such allocations on
+
+          a specific unit basis or on a global basis.
+
+          (a) Specific unit allocation. A taxpayer may make an allocation of specifically
+
+             identified units of unused basis (specific unit allocation), by reference to
+
+             characteristics that distinguish those units from other units of unused
+
+             basis, to either a pool of remaining digital assets units within each wallet
+
+             or account or, if the taxpayer is able to identify each remaining digital
+
+             asset within each wallet or account, to the specific units of remaining
+
+             digital assets within each wallet or account. A specific unit allocation is
+
+             complete on the date that the taxpayer’s books and records first record the
+
+
+
+                                            11
+   specific characteristics of the units of unused basis allocated to each pool
+
+   of digital assets in the taxpayer’s wallets or accounts on a wallet-by-wallet
+
+   or account-by-account basis, or, if the taxpayer is able to identify each
+
+   remaining digital asset within each wallet or account, to the specific units
+
+   of remaining digital assets within each wallet or account.
+
+(b) Global allocation. A taxpayer may, alternatively, make an allocation based
+
+   on a rule prescribing the manner by which units of unused basis will be
+
+   ordered and then allocated to a pool of remaining digital assets units
+
+   within each wallet or account (global allocation). A global allocation must
+
+   identify and order all units of unused basis by reference to characteristics
+
+   that distinguish those units from all other units of unused basis and must
+
+   allocate those ordered identified units to a pool of remaining digital asset
+
+   units in each of the taxpayer’s wallets or accounts on a prescribed basis
+
+   set forth in the rule. For example, a global allocation might identify those
+
+   units of unused basis that have the earliest or latest acquisition dates and,
+
+   for each of those dates, the highest or lowest amounts of unused basis,
+
+   and allocate such units successively to wallet A, wallet B, and wallet C. An
+
+   allocation that permits the taxpayer to exercise discretion on or after
+
+   January 1, 2025, with respect to how units of unused basis are allocated
+
+   to remaining digital asset units or to the taxpayer’s wallets or accounts is
+
+   not a global allocation within the meaning of this revenue procedure. A
+
+   global allocation is complete on the date that the taxpayer’s books and
+
+   records first record the specific characteristics of the units of unused basis
+
+
+
+                                 12
+       allocated to each pool of digital assets in the taxpayer’s wallets or
+
+       accounts on a wallet-by-wallet or account-by-account basis.
+
+(3) Until such time as the taxpayer has completed the allocations as set forth in
+
+   section 5.02(4) or 5.02(5)(b) of this revenue procedure, the taxpayer must
+
+   separately account for any acquisitions or transfers to the taxpayer of digital
+
+   asset units on or after January 1, 2025, held within the same wallet or
+
+   account as remaining digital asset units and units of unused basis.
+
+(4) A taxpayer making a specific unit allocation must satisfy the requirements set
+
+   forth in section 5.02(1) of this revenue procedure and complete the specific
+
+   unit allocations described in section 5.02(2)(a) of this revenue procedure
+
+   before the earlier of:
+
+   (a) The date and time of the first sale, disposition, or transfer by the taxpayer
+
+       of the same type of digital asset completed on or after January 1, 2025, or
+
+   (b) Either:
+
+       (i) The due date (including by extension) of the taxpayer’s Federal income
+
+          tax return or Form 1065, U.S. Return of Partnership Income, for the
+
+          taxable year that includes January 1, 2025 (the 2025 return); or
+
+       (ii) If the taxpayer is not otherwise required to file a 2025 return, the last
+
+          date for filing the 2025 return (without extensions) of the type of return
+
+          that would be applicable to the taxpayer if the taxpayer were required
+
+          to file a 2025 return.
+
+(5) A taxpayer making a global allocation described in section 5.02(2)(b) of this
+
+   revenue procedure:
+
+
+
+                                      13
+(a) Must describe the global allocation method in the taxpayer’s books and
+
+   records before January 1, 2025;
+
+(b) Must satisfy the requirements set forth in sections 5.02(1) of this revenue
+
+   procedure and complete the allocations of all units of unused basis to the
+
+   pools of remaining digital asset units within each of the taxpayer’s wallets
+
+   or accounts before the later of the dates set forth in section 5.02(4)(a) and
+
+   (b) of this revenue procedure, as applicable; and
+
+(c) Must comply with the following rules with respect to sales, dispositions or
+
+   transfers of any remaining digital assets units on or after January 1, 2025.
+
+   If such sale, disposition or transfer occurs after the taxpayer has
+
+   completed the global allocation, the taxpayer is permitted to identify the
+
+   units sold, disposed of, or transferred under § 1.1012-1(j)(2) of the 2024
+
+   final regulations (specific identification of digital asset units held in an
+
+   unhosted wallet) or § 1.1012-1(j)(3)(ii) of the 2024 final regulations
+
+   (adequate identification of units held in the custody of a broker). If such
+
+   sale, disposition or transfer occurs before the taxpayer has completed the
+
+   global allocation, the taxpayer may make a specific identification (or
+
+   adequate identification) of any remaining digital asset units that are sold,
+
+   disposed of, or transferred only by using a standing order or instruction
+
+   communicated to the taxpayer’s broker or a standing instruction recorded
+
+   in the taxpayer’s books and records. This standing order must be applied
+
+   to select any remaining digital asset units sold, disposed of, or transferred
+
+   after the global allocation is complete. Any other type of specific
+
+
+
+                                   14
+              identification by the taxpayer will not be treated as sufficient to identify any
+
+              remaining digital asset units sold, disposed of, or transferred under §
+
+              1.1012-1(j)(2) of the 2024 final regulations (specific identification of digital
+
+              asset units held in an unhosted wallet) or § 1.1012-1(j)(3)(ii) of the 2024
+
+              final regulations (adequate identification of units held in the custody of a
+
+              broker) before the date that the taxpayer has completed the allocation of
+
+              units of unused basis to the pools of remaining digital asset units within
+
+              each of the taxpayer’s wallets or accounts.
+
+       (6) The determination of whether a taxpayer’s allocations to wallets or accounts
+
+          is reasonable with respect to one type of digital asset held by the taxpayer
+
+          prior to January 1, 2025, does not impact whether the taxpayer’s allocations
+
+          to other wallets or accounts is reasonable with respect to another type of
+
+          digital asset held by the taxpayer prior to January 1, 2025.
+
+       (7) Any allocation of previously identified and used basis to digital assets held by
+
+          the taxpayer as of January 1, 2025, does not constitute a reasonable
+
+          allocation.
+
+   .03 Failure to Comply. If a taxpayer makes a reasonable allocation described in
+
+section 5.02 of this revenue procedure but fails to comply with the requirements of
+
+section 4.02 of this revenue procedure, the taxpayer cannot rely on the safe harbor set
+
+forth in this revenue procedure, and such failure may result in the assessment of
+
+additional tax, penalties, and interest.
+
+
+
+
+                                             15
+   .04 Not applicable to determining amount of basis. This safe harbor does not apply
+
+to the taxpayer’s calculation of the amount of unused basis, which must be
+
+substantiated separately by the taxpayer pursuant to section 6001.
+
+SECTION 6. EXAMPLES
+
+   The following examples illustrate the application of this revenue procedure to a
+
+single type of digital asset (referred to as digital asset DE). For purposes of these
+
+examples, no transaction fees are paid or incurred to effect the purchase or sale of any
+
+of the digital asset units, and neither the number of remaining digital asset units nor the
+
+units of unused basis is under consideration before any court of the United States or the
+
+IRS Independent Office of Appeals, or subject to an examination by the IRS.
+
+   .01 Example 1.
+
+       (1) Facts. B, an individual and calendar year taxpayer, holds in B’s unhosted
+
+          wallet (“XYZ Wallet”) 10 units of digital asset DE that B acquired for $1 per
+
+          unit on July 1, 2019. B holds in a second unhosted wallet (“GHI Wallet”) 20
+
+          units of digital asset DE acquired on September 1, 2020, for $5 per unit. On
+
+          December 1, 2024, B sells all 30 units of digital asset DE in a transaction
+
+          completed before January 1, 2025.
+
+       (2) Analysis. Neither the 10 units of digital asset DE acquired on July 1, 2019, nor
+
+          the 20 units of digital asset DE acquired on September 1, 2020, are remaining
+
+          digital asset units within the meaning of section 3.07 of this revenue
+
+          procedure, because B does not hold any digital asset units of DE as of
+
+          January 1, 2025. Accordingly, B may not make allocations described in
+
+
+
+
+                                            16
+      section 5.02 of this revenue procedure to determine the basis of the units
+
+      from either lot.
+
+.02 Example 2.
+
+   (1) Facts. The facts are the same as in Example 1 except that B sells only six
+
+      units from B’s XYZ Wallet on December 1, 2024, and B maintain records
+
+      sufficient to show that B specifically identified and attached the original basis
+
+      of six units from the 20 units acquired on September 1, 2020, in B’s GHI
+
+      Wallet as the six units sold. As of January 1, 2025, B has 24 remaining digital
+
+      asset units and 24 units of unused basis.
+
+   (2) Analysis.
+
+      (a) B’s sale of six units from B’s XYZ wallet on December 1, 2024, is a pre-
+
+          2025 transaction with previously identified and used basis of $30 (6 units
+
+          each with a per unit basis of $5). As of January 1, 2025, B has 24 units of
+
+          unused basis (consisting of 10 units of unused basis in the amount of $1
+
+          per unit with an acquisition date of July 1, 2019, originally from B’s XYZ
+
+          Wallet, and 14 units of unused basis in the amount of $5 per unit with an
+
+          acquisition date of September 1, 2020, originally from B’s GHI Wallet). B
+
+          also has 24 remaining digital asset units (consisting of four DE remaining
+
+          digital asset units in B’s XYZ Wallet and 20 remaining digital asset units in
+
+          B’s GHI Wallet).
+
+      (b) B may use the safe harbor described in section 5.02 of this revenue
+
+          procedure to make a reasonable allocation of B’s 24 units of unused basis
+
+          to the pool of remaining digital asset units in B’s XYZ and GHI Wallets as
+
+
+
+                                        17
+         of January 1, 2025, provided that B maintains records sufficient to show
+
+         the units of unused basis and completes the allocations by the dates set
+
+         forth in sections 5.02(4) (specific unit allocation) or 5.02(5)(b) (global
+
+         allocation) of this revenue procedure, as applicable.
+
+.03 Example 3.
+
+   (1) Facts. The facts are the same as in Example 2. In addition, on March 1, 2025,
+
+      B sells two units from B’s XYZ Wallet. Before B’s sale of those two units from
+
+      B’s XYZ Wallet on March 1, 2025, B identifies and maintains records sufficient
+
+      to show that B has four remaining digital asset units in B’s XYZ Wallet and 20
+
+      remaining digital asset units in B’s GHI Wallet. B’s records also show that B
+
+      has 10 units of unused basis in the amount of $1 per unit with an acquisition
+
+      date of July 1, 2019, and 14 units of unused basis in the amount of $5 per unit
+
+      with an acquisition date of September 1, 2020. Also, before B’s sale of the
+
+      two units from B’s XYZ wallet, B makes a specific unit allocation, of two units
+
+      of unused basis in the amount of $1 per unit and an acquisition date of July 1,
+
+      2019, and two units of unused basis in the amount of $5 per unit and an
+
+      acquisition date of September 1, 2020, to the pool of four remaining digital
+
+      asset units held in B’s XYZ Wallet. B allocates the remainder of the eight units
+
+      of unused basis (in the amount of $1 per unit and an acquisition date of July
+
+      1, 2019), and the 12 units of unused basis (in the amount of $5 per unit and
+
+      an acquisition date of September 1, 2020) to the pool of 20 remaining digital
+
+      asset units held in B’s GHI Wallet. Prior to B’s sale of the two units from B’s
+
+      XYZ Wallet, B specifically identifies in B’s books and records that one of the
+
+
+
+                                        18
+   units sold was from one unit of unused basis in the amount of $1 per unit with
+
+   an acquisition date of July 1, 2019, and the other unit sold was from one unit
+
+   of unused basis in the amount of $5 per unit with an acquisition date of
+
+   September 1, 2020.
+
+(2) Analysis.
+
+   (a) B made a specific unit allocation as described in section 5.02(2)(a) of this
+
+       revenue procedure.
+
+   (b) B’s specific unit allocation is reasonable within the meaning of section
+
+       5.02 of this revenue procedure for the following reasons:
+
+       (i) B identified and maintained records sufficient to show the number of
+
+          remaining digital asset units in B’s XYZ and GHI Wallets as required by
+
+          section 5.02(1) of this revenue procedure.
+
+       (ii) B identified and maintained records sufficient to show the number of
+
+          units of unused basis, the amount of each such unit, and the
+
+          acquisition date of the digital asset unit to which the unit of unused
+
+          basis was originally attached as required by section 5.02(1) of this
+
+          revenue procedure.
+
+       (iii) B’s allocation of units of unused basis to the XYZ and GHI Wallets was
+
+          made by reference to the original, per unit basis and acquisition date of
+
+          the digital asset unit to which the unit of unused basis was originally
+
+          attached. This reference is to characteristics that distinguish those
+
+          units of unused basis from B’s other units of unused basis. B’s specific
+
+          unit allocations were completed before March 1, 2025, which is the
+
+
+
+                                     19
+             date and time of the taxpayer’s first sale of the digital asset units
+
+             completed on or after January 1, 2025, as required by section
+
+             5.02(4)(a) of this revenue procedure.
+
+         (iv) B did not allocate any previously identified and used basis to the
+
+             remaining digital asset units.
+
+      (c) B’s identification of the two units sold on March 1, 2025, is a specific
+
+         identification under § 1.1012-1(j)(2) of the 2024 final regulations.
+
+.04 Example 4.
+
+   (1) Facts. The facts are the same as in Example 3, except B does not make a
+
+      specific unit allocation. Instead, before January 1, 2025, B describes an
+
+      ordering rule in B’s books and records, which identifies and orders the units of
+
+      unused basis in a manner that is based first on the highest basis units and
+
+      second (if there are multiple units with the same basis) on the units with the
+
+      earliest acquisition dates. B’s ordering rule also directs that these ordered
+
+      units of unused basis will be allocated first to the remaining digital asset units
+
+      in B’s XYZ Wallet and then to the remaining digital asset units in B’s GHI
+
+      Wallet. Additionally, B identifies and maintains records sufficient to show B’s
+
+      24 remaining digital asset units and B’s 24 units of unused basis as of
+
+      January 1, 2025, respectively, before April 15, 2026, which is the due date for
+
+      filing B’s Federal income tax return for B’s 2025 taxable year. B also
+
+      completes the allocations of units of unused basis to remaining digital assets
+
+      after March 1, 2025, but before April 15, 2026, such that B’s books and
+
+      records record the specific characteristics of the units of unused basis
+
+
+
+                                        20
+   allocated to each pool of digital assets in B’s wallets or accounts on a wallet-
+
+   by-wallet or account-by-account basis. Finally, instead of selling the two units
+
+   from B’s XYZ Wallet, B sells the two units from B’s GHI Wallet. Prior to B’s
+
+   sale of the two units from B’s GHI Wallet, B specifically identifies in B’s books
+
+   and records that one of the units sold was from one unit of unused basis in
+
+   the amount of $1 per unit with an acquisition date of July 1, 2019, and the
+
+   other unit sold was from one unit of unused basis in the amount of $5 per unit
+
+   with an acquisition date of September 1, 2020.
+
+(2) Analysis.
+
+   (a) B’s ordering rule is a global allocation as described in section 5.02(2)(b) of
+
+       this revenue procedure. This global allocation when completed results in:
+
+       four of the 14 units of unused basis with the highest basis (the units with a
+
+       basis in the amount of $5 per unit) have been allocated to the pool of
+
+       remaining digital asset units held in B’s XYZ Wallet and 10 units of unused
+
+       basis (the units with a basis in the amount of $5 per unit) and 10 units of
+
+       unused basis (the units with basis in the amount of $1 per unit) have been
+
+       allocated to the pool of remaining digital asset units held in B’s GHI Wallet.
+
+   (b) B’s global allocation as described in section 5.02(2)(b) of this revenue
+
+       procedure is reasonable within the meaning of section 5.02 of this revenue
+
+       procedure for the following reasons:
+
+       (i) B identified and maintained records sufficient to show the number of
+
+          remaining digital asset units in B’s XYZ and GHI Wallets as required by
+
+          section 5.02(1) of this revenue procedure.
+
+
+
+                                     21
+   (ii) B identified and maintained records sufficient to show the number of
+
+      units of unused basis, the amount of each such unit, and the
+
+      acquisition date of the digital asset unit to which the unused basis was
+
+      originally attached as required by section 5.02(1) of this revenue
+
+      procedure.
+
+   (iii) B’s global allocation applies a rule that identifies and orders the units
+
+      of unused basis by reference first to the highest basis units and second
+
+      to the units with the earliest acquisition dates. These characteristics
+
+      are sufficient to distinguish each of the units from the other units of
+
+      unused basis. B’s global allocation then allocates the ordered units of
+
+      unused basis to a pool of remaining digital asset units in each of B’s
+
+      XYZ and GHI Wallets on a prescribed basis. B’s global allocation does
+
+      not permit B to exercise discretion on or after January 1, 2025, with
+
+      respect to how the units of unused basis are allocated to B’s remaining
+
+      digital assets or to its XYZ and GHI Wallets.
+
+   (iv) B described the global allocation method in B’s books and records
+
+      before January 1, 2025.
+
+   (v) B did not allocate any previously identified and used basis to the
+
+      remaining digital asset units.
+
+(c) Under section 5.02(5)(c) of this revenue procedure, a global allocation
+
+   must be completed before a taxpayer is permitted to make a specific
+
+   identification of units sold on or after January 1, 2025, other than by
+
+   reference to a standing order or instruction. B did not complete its global
+
+
+
+                                   22
+             allocation prior to March 1, 2025. Additionally, B’s identification of the units
+
+             sold on March 1, 2025, was based on the amount (and acquisition date) of
+
+             specific units of unused basis before the global allocation was complete,
+
+             and the identification was not a standing instruction. Therefore, B’s
+
+             specific identification of the units sold on March 1, 2025, will not be treated
+
+             as sufficient to identify the units sold within the meaning of § 1.1012-1(j)(2)
+
+             of the 2024 final regulations. Instead, under § 1.1012-1(j)(1) of the 2024
+
+             final regulations, B must treat the units with the earliest acquisition dates
+
+             within B’s GHI Wallet as sold. Accordingly, the two units that B must treat
+
+             as sold are the two units with unused basis in the amount of $1 per unit
+
+             with acquisition dates of July 1, 2019.
+
+   .05 Example 5.
+
+      (1) Facts. The facts are the same as in Example 4, except instead of selling two
+
+          digital asset units on March 1, 2025, B transfers those two units to a family
+
+          member, C, as a completed gift.
+
+      (2) Analysis. The analysis set forth in Example 4 remains the same. Accordingly,
+
+          the 2 units transferred by B to C on March 1, 2025, are the two units with
+
+          unused basis in the amount of $1 per unit with acquisition dates of July 1,
+
+          2019.
+
+SECTION 7. EFFECTIVE DATE
+
+   This revenue procedure is effective June 28, 2024, the date this revenue procedure
+
+was released to the public.
+
+SECTION 8. DRAFTING INFORMATION
+
+
+
+                                            23
+   The principal author of this revenue procedure is the Office of Associate Chief
+
+Counsel (Income Tax and Accounting). For further information regarding this revenue
+
+procedure, contact the Office of the Associate Chief Counsel (Income Tax and
+
+Accounting) at (202) 317-5436 (not a toll free number).
+
+
+
+
+                                           24
+

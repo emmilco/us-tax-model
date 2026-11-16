@@ -1,0 +1,162 @@
+{
+ "form": "ira",
+ "reviews": {
+  "gate:ira.has_deduction": {
+   "subject_sha": "6e63251169dcfb054ef48de548216eeafe8d2346d17a3abb9a157a43bf97427f",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A high-income single filer, or a married couple, not covered by any workplace retirement plan makes a $7,000 traditional IRA contribution for 2025 as the first step of a 'backdoor Roth' and converts it in 2026. Because neither spouse is covered by a plan, the tool computes the full $7,000 as deductible, but the filer means to report it as a nondeductible contribution on Form 8606 to create basis.",
+       "why_no": "The filer sees the contribution as nondeductible by nature and does not think of it as choosing to 'deduct less than the most the rules allow.' The help, 'Almost everyone answers No,' confirms that reading. The filer also may wrongly believe the income limits already make it nondeductible, so 'the most the rules allow' seems to be zero.",
+       "line": "ira.less_gate (refusal missed; Schedule 1 line 20 takes the full deduction and Form 8606 basis is understated, which makes the later conversion taxable against the filer's intent)",
+       "irs_text": "p590a p. 16: 'When you file, you can even designate otherwise deductible contributions as nondeductible contributions'; i1040gi p. 98, line 12: 'Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)'",
+       "severity": "medium",
+       "fix": "Ask about the fact the filer knows: 'Do you (or your spouse, on a joint return) want to report any of your 2025 traditional IRA contributions as nondeductible on Form 8606, for example to build basis for a Roth conversion (\"backdoor Roth\")? The tool found that $X of your contributions could be deducted.' Show the computed deductible amount so the filer can compare it with their intent."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer who wants to treat part of a deductible contribution as nondeductible, for example to keep basis for future distributions or a conversion, but who wants to finish the return with this tool.",
+       "why_no": "The help says 'A Yes ends the interview here. To go on with the full deduction, answer No.' and 'Almost everyone answers No.' This tells the filer that No is how to continue, so a filer whose truthful answer is Yes answers No to avoid being refused.",
+       "line": "ira.less_gate (refusal missed; full deduction taken against the filer's election)",
+       "irs_text": "p590a p. 16: 'You don't have to designate a contribution as nondeductible until you file your tax return. When you file, you can even designate otherwise deductible contributions as nondeductible contributions.'",
+       "severity": "medium",
+       "fix": "Remove 'Almost everyone answers No' and 'To go on with the full deduction, answer No.' State neutrally: 'If Yes, this tool cannot prepare your return, because the election requires Form 8606. Answering No means the tool will deduct the full $X and you will have no nondeductible basis for these contributions.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "On a joint return, the person answering has no intent to change their own deduction, but their spouse plans to designate the spouse's own deductible IRA contribution as nondeductible (line 12b).",
+       "why_no": "The question begins 'Do you want...'. The person at the keyboard answers for their own wishes and reads the parenthetical about the spouse's contributions as covering the spouse's IRA only if the answerer wants the change.",
+       "line": "ira.less_gate",
+       "irs_text": "p590a p. 16: 'If you were married and both you and your spouse contributed to an IRA, figure your deduction and your spouse's deduction separately'; i1040gi p. 98, line 12: 'you can deduct a smaller amount and treat the rest as a nondeductible contribution'",
+       "severity": "low",
+       "fix": "Ask: 'Do you or your spouse want to treat any part of either of your traditional IRA contributions as nondeductible?'"
+      }
+     ],
+     "prompt_sha": "18d7c8f4db40551ba4dced978a4351f9752afdc6e6ee82e1afde33ddc377a03a",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.086288,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_ira.has_deduction.6e63251169dc.1.response.txt"
+    }
+   ],
+   "condition": "ira.has_deduction",
+   "lines": [
+    "ira.less_gate"
+   ],
+   "inputs": [
+    "ira.deduct_less"
+   ],
+   "used": [
+    {
+     "doc": "p590a",
+     "revision": "2025",
+     "text_sha256": "be942a345a01a8f875a2a625b400d7760221e1a55a2c85dca5ab75826e6c801a",
+     "pages": [
+      16
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 16, Form 8606, \"When you file, you can even designate otherwise deductible contributions as nondeductible contributions\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b"
+    },
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      98
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 98, IRA Deduction Worksheet—Continued, line 12, \"Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)\""
+     ],
+     "cols_pages": [
+      98
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:ira.mfs_cov_matters": {
+   "subject_sha": "2dbf7204b958314240129f6081106cf3b267ab011539e3fc733a2b5629d529ae",
+   "samples": [
+    {
+     "verdict": "UNCLEAR",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A married-filing-separately filer, not covered by a plan, who lived with the spouse part of 2025. The spouse is self-employed with no Form W-2 and has a solo 401(k), Keogh/defined-benefit plan, or SEP for the business.",
+       "why_no": "The question says 'retirement plan at work', which reads as an employer's plan. The help points to box 13 of a Form W-2, which the spouse never got. A filer whose spouse 'works for themselves' answers no.",
+       "line": "ira.mfs_spouse_covered_if_asked",
+       "irs_text": "i1040gi p. 96: 'covered by a retirement plan (qualified pension, profit-sharing (including 401(k)), annuity, SEP, SIMPLE, etc.) at work or through self-employment'; 'You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan.'",
+       "severity": "medium",
+       "fix": "Ask: 'Was your husband or wife covered by a retirement plan in 2025, either at a job or through their own business (for example a solo 401(k), Keogh, SEP or SIMPLE)?' Add to the help: 'Self-employed people with no Form W-2 count if their business had such a plan.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "An MFS filer whose spouse was an active participant in an employer pension in 2025, but whose spouse's W-2 box 13 'Retirement plan' was left unchecked in error, or who cannot see the spouse's W-2.",
+       "why_no": "The help says that if the spouse was covered, the box 'should be ticked'. A filer who sees an unticked box, or has heard the box is the test, answers no.",
+       "line": "ira.mfs_spouse_covered_if_asked",
+       "irs_text": "i1040gi p. 96: 'If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025.'",
+       "severity": "low",
+       "fix": "Make clear that the fact controls, not the form: 'Answer yes if your spouse took part in such a plan, even if box 13 is not ticked or you have not seen their W-2.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "An MFS filer whose spouse was covered by a plan the help does not name: a federal employee in FERS/TSP, a member of the uniformed services, a state or local government employee with a governmental pension, or a participant in a profit-sharing or annuity plan.",
+       "why_no": "The help lists 'a pension, a 401(k) or 403(b), or a SEP or SIMPLE IRA'. A filer may read that list as complete and not recognize TSP, military retirement, or a profit-sharing plan as a 'retirement plan at work'.",
+       "line": "ira.mfs_spouse_covered_if_asked",
+       "irs_text": "i1040gi p. 96: 'qualified pension, profit-sharing (including 401(k)), annuity, SEP, SIMPLE, etc.'",
+       "severity": "low",
+       "fix": "Widen the help: 'This includes any employer pension or savings plan, such as a 401(k), 403(b), the federal Thrift Savings Plan, military or government pensions, profit-sharing or annuity plans, and SEP or SIMPLE IRAs, even if your spouse put nothing in or was not vested.'"
+      }
+     ],
+     "prompt_sha": "82d26644ac6db630174ba0cb4827bba5bfa3a1424f6305d09644842c22b6053b",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.06540399999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_ira.mfs_cov_matters.2dbf7204b958.1.response.txt"
+    }
+   ],
+   "condition": "ira.mfs_cov_matters",
+   "lines": [
+    "ira.mfs_spouse_covered_if_asked"
+   ],
+   "inputs": [
+    "ira.mfs_spouse_covered"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      96
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 96, Married persons filing separately, \"If you weren’t covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025\"",
+      "p. 96, Married persons filing separately, \"If you weren’t covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025\"; p. 96, Were You Covered by a Retirement Plan?, \"profit-sharing (including 401(k)), annuity, SEP, SIMPLE, etc.) at work or through self-employment\""
+     ],
+     "cols_pages": [
+      96
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  }
+ }
+}

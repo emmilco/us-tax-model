@@ -1,0 +1,55 @@
+# The 2025 year of recovery of real property placed in service in each earlier calendar year, for a calendar-year filer
+# (year 1 is the year placed in service). Written by hand; each row is 2025 less the year placed in service, plus 1.
+# Property placed in service before 1987 is given year 40, past the end of Tables A-6 and A-7a (fully depreciated).
+table:
+  id: realty_recovery_year
+  kind: keyed
+  title: "Year of recovery in 2025 of real property, by year placed in service"
+  tax_year: 2025
+  cite:
+    doc: p946
+    locator: "p. 39, Using the MACRS Percentage Tables; the example of residential rental property placed in service on July 2, 2023, sold March 2, 2025"
+  keys:
+    - { name: placed, type: Enum(realty_year) }
+  cell: Count
+  rows:
+    - { keys: [y2025], value: 1 }
+    - { keys: [y2024], value: 2 }
+    - { keys: [y2023], value: 3 }
+    - { keys: [y2022], value: 4 }
+    - { keys: [y2021], value: 5 }
+    - { keys: [y2020], value: 6 }
+    - { keys: [y2019], value: 7 }
+    - { keys: [y2018], value: 8 }
+    - { keys: [y2017], value: 9 }
+    - { keys: [y2016], value: 10 }
+    - { keys: [y2015], value: 11 }
+    - { keys: [y2014], value: 12 }
+    - { keys: [y2013], value: 13 }
+    - { keys: [y2012], value: 14 }
+    - { keys: [y2011], value: 15 }
+    - { keys: [y2010], value: 16 }
+    - { keys: [y2009], value: 17 }
+    - { keys: [y2008], value: 18 }
+    - { keys: [y2007], value: 19 }
+    - { keys: [y2006], value: 20 }
+    - { keys: [y2005], value: 21 }
+    - { keys: [y2004], value: 22 }
+    - { keys: [y2003], value: 23 }
+    - { keys: [y2002], value: 24 }
+    - { keys: [y2001], value: 25 }
+    - { keys: [y2000], value: 26 }
+    - { keys: [y1999], value: 27 }
+    - { keys: [y1998], value: 28 }
+    - { keys: [y1997], value: 29 }
+    - { keys: [y1996], value: 30 }
+    - { keys: [y1995], value: 31 }
+    - { keys: [y1994], value: 32 }
+    - { keys: [y1993], value: 33 }
+    - { keys: [y1992], value: 34 }
+    - { keys: [y1991], value: 35 }
+    - { keys: [y1990], value: 36 }
+    - { keys: [y1989], value: 37 }
+    - { keys: [y1988], value: 38 }
+    - { keys: [y1987], value: 39 }
+    - { keys: [before1987], value: 40 }

@@ -28,7 +28,7 @@ The Stage 0 check found Node v24.11.1, npm 11.6.2, Lean 4.29.1 through elan,
 Lake 5.0.0 (the installed Lean build), and pdftotext 26.01.0. Python 3 and curl
 are also present. No installation was needed. Elan's remote `stable` query
 failed in the sandbox but the installed Lean toolchain ran successfully.
-No project toolchain is pinned yet; engine/proof configuration belongs to Stage 1.
+The Lean toolchain has since been pinned (`lean/lean-toolchain`, v4.29.1); Node is not pinned.
 
 ## Commit guard
 
@@ -189,7 +189,35 @@ the snapshot's version.
 `tools/check_all_bg.sh --wait --tier full`, and when the run is green it commits the
 reports the run rewrote (if any, with `tools/commit_tested.sh`; `-F <file>` gives the
 message) and puts the annotated tag `r<YYYY>.<MM>.<DD>.<n>` on the tested commit. It
-pushes the tag only with `--push`. A red run tags nothing.
+pushes the tag only with `--push`. A red run tags nothing. A full run made in release mode
+(`CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify tools/check_all_bg.sh --wait --tier full`, from any worktree;
+only a run in its snapshot worktree counts) adds
+its green tree to a release list (`tools/green.sh`); when the tip's tree is in that list,
+`tools/release.sh` still checks the sampled reviews but does not run the suite again, and tags the
+tip. So the full check that lets a commit onto `main` can also be the release's run.
+
+`tools/release_prep.sh [--fail-fast]` is the recommended first step of a release: run it on the candidate tree as
+soon as its content is final, before the release-mode full check. A defect the full check would report only when
+its wave ends (about 13 minutes for wave 1, longer for wave 2) shows here in minutes. It runs:
+
+1. `tools/release_reviews.sh`, which builds and renders the tree and then runs every release check of the sampled
+   reviews (completeness, screens, false-no; both jurisdictions), each separately, so one run lists every due item
+   (the reviews to run while the rest proceeds). A failed build stops the run there (`release_reviews.sh` exits 2).
+2. The check-all steps of its `PREP_STEPS`, one after another, cheapest first: `check_bug_inventory`, `bug_status`,
+   `check_agent_runs`, `doc_figures`, `limits`, `consumers`, `renamed_ids`, `year_changes`, `citations`,
+   `check_extraction`, `check_logs` (each with its `ny_` step), `bookkeeping_self_tests`, `test_fixtures` and
+   `ny_test_fixtures`,
+   `coverage`, `interview_rules` and `self_tests`. Each runs the command `tools/check_all_steps.sh --print-steps
+   --tier full` declares for it, so the two cannot drift; a listed name the steps script does not declare stops the
+   run (exit 2). A step that exits 0 without a line `tools/step_output.py` requires of it fails, as in check-all.
+
+Every step runs, unless `--fail-fast` stops at the first failure. Each step's output goes to
+`<git dir>/release-prep/<step>.log`; a failing step's output is printed. It ends with each step's status and time
+and one line, `release-prep: PASS` (exit 0) or `release-prep: FAIL: <steps>` (exit 1). It rewrites no report but
+those its steps write in check-all (`coverage.md`); the reports only the later waves or a release rewrite are left
+as they are, so `doc_figures` checks against the committed reports. A pass does not mean the full check will pass.
+It takes one of the check-all slots. `tools/test_release_prep.sh` (check-all `self_tests`) runs it in a temporary
+repository with stub tools.
 
 A run for a year other than the default passes or fails as usual but writes no
 marker.
@@ -282,6 +310,17 @@ rewording every question, label and line citation leaves every pinned argument h
 and changing any one premise line's type or premise parameter's value un-pins it) and
 `retargetSelfTest` (an argument is not taken by a mutant that now reads another line).
 
+One structural rule explains survivors on unobserved lines (`unobservedLine`): the mutated line is a `(helper)` of a
+form with no refusal gate, and it and every line that names it, transitively (in an expression, a collection filter, a
+refusal gate, a display condition or a gate), are such helpers, none reading a definition instance and none named by an
+interview target, an interview file of the year (federal or New York) or the product's code (evaluator, values sheet,
+interview, server, client). Such a mutant changes only those helpers' own values. Any other marker, a `display`
+mark (a helper kept to be shown on the values sheet), a refusal anywhere on the chain, or a definition line counts as
+observed. The rule is computed from the data on every run, so it lapses
+for a chain once an observed line reads it; mutation.md lists these survivors in their own section with the chain ends
+(helpers nothing reads, candidates for cleanup), and `unobservedLineSelfTest` plants each way of being observed on a
+synthetic chain and checks that the rule then does not apply.
+
 `tools/hooks/pre-commit` refuses any commit whose tree is not exactly a tree a green
 run of the tier the commit needs tested (a marker, or one of the recorded green
 trees): no green run, a run of too low a tier, a tree changed since the run, or a
@@ -293,6 +332,11 @@ whose commit's tree is not full-green. Enable both once per clone:
     git config core.hooksPath tools/hooks
 
 `--no-verify` bypasses either hook; that is a deliberate act, not a routine.
+
+**No ceremonial reruns (owner rule, 2026-11-15; advisory, no tool enforces it).** A check is rerun only where the
+tree changed in what that check verifies. The commit guard still requires a green record of the exact tree, so where
+a rerun would be purely ceremonial (the tree differs from a green one only in what no check reads) the owner decides
+whether to commit with `--no-verify`, as on 2026-11-15 for three commits.
 
 ## Review rerun guards
 
@@ -386,6 +430,29 @@ name a directory holding the tree before the rename. Without `--write` it only r
   rest on the earlier sample). It takes several minutes on the whole tree (it computes every subject twice).
 - Self-test: `tools/transcription/test_rename_carry.py` (a small tree of its own; check-all `self_tests`).
 
+### Renaming the ids in the data, and checking that none is left
+
+The data that names lines and inputs by path is renamed with `tools/rename_ids.py`, which uses the same
+substitution as the carry above:
+
+    python3 tools/rename_ids.py apply [--map MAP.json] [FILE...]   (and again with --jurisdiction ny)
+    python3 tools/rename_ids.py check [--map MAP.json]
+
+The map is `tools/year_free_names.json` unless `--map` names another (either shape above). An old id is
+renamed, and found by `check`, in three forms: the whole id (`f8853c.pre1996`, not inside a longer id); the
+collection-indexed form, alone or as a step of a path (`f8853c[p0].pre1996`, `person[taxpayer].f8853c[c].pre1996`);
+and a renamed document's name wherever it stands as a name (`$clcw26`, `clcw26[x]`). It covers, for the year and
+jurisdiction: every `.json` under `fixtures/<year>/` (`defaults.json` included), except the lines of the fields
+`id`, `description` and `evidence_note`; every line of `interview/<year>/coverage/` and `interview/<year>/personas/`;
+and, in the default family's rulings sidecars, the witnesses of each triage stamp (their input and instance, not the
+case id), so that a ruling's stamp still matches the triage that `carry.py` compares it with. Ruling texts and keys
+are not touched. `apply` also rewrites whole each FILE given (the forms, the question bank and other files the
+rename names). A collection-indexed id whose rename moves it to another document is not rewritten; `check` reports
+it. The order of a rename: rename the definitions and the files that name them, `rename_ids.py apply` (both
+jurisdictions), build and render, `rename_carry.py --write`, then test-fixtures and coverage at once. `check` runs in
+check-all for both jurisdictions (steps `renamed_ids`, `ny_renamed_ids`) and fails on any old id of
+`year_free_names.json` left in those places. Tests: `tools/test_rename_ids.py` (check-all `self_tests`).
+
 ## EIC Table
 
 `python3 tools/extract_eic_table.py` reads the 2025 Earned Income Credit Table
@@ -394,7 +461,7 @@ name a directory holding the tree before the rename. Without `--write` it only r
 refuses to write unless the rows tile $1 to $68,700 in $50 steps and every
 starred cell's footnote (read from the page text, matched by order) fits the row
 and the column. `node engine/dist/main.js conjecture` checks every cell against
-the credit formula built from Rev. Proc. 2024-40 section 3.06(1); see
+the credit formula built from Rev. Proc. 2024-40 section 2.06(1); see
 `reports/2025/eic_table_conjecture.md`.
 
 ## New York years
@@ -733,7 +800,8 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   their checks (their prompts and subjects quote each line's rendered English). The comparison is by content
   (`node engine/dist/main.js render --check`, which renders in memory and writes nothing; about half a second for
   both jurisdictions), and the refusal names the files that differ and the command that regenerates them. The
-  transcription review reads the form's YAML, class M builds the canonical data and its jobs itself, and the
+  transcription review reads the form's YAML, class M builds the canonical data (when `build_fresh.py` finds it
+  stale) and its jobs itself, and the
   completeness review reads `canonical/`; none of them reads `rendered/`.
 - **Bug inventory and pending entries** (`tools/check_bug_inventory.py`, step `check_bug_inventory`; `--merge`
   from pre-commit). The rule a branch follows: a branch that runs alongside others does not write
@@ -753,6 +821,10 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   the same way: written as pending entries on the branch (one `--pending` call each, in the order they are
   to be numbered), numbered together by one `--assign`. A single session on main may still append directly
   with `new_bug.py` (no `--pending`).
+  Placeholders in `docs/records/` (records kept verbatim) are neither checked nor rewritten by `--assign`.
+  A fix proposed and not made (owner decision 2026-11-15) is labelled `- **Proposed fix:**`, with
+  `- **Proposed fix lines:**` for the lines it would change; `- **Fix:**` means a fix that was made, and
+  `tools/siblings.py --check` requires such an entry to have `- **Fix lines:**` and `- **Siblings checked:**`.
   What the checks hold: on every tree, the inventory extends HEAD's byte for byte with ids gapless from
   BUG-0001; every pending file is one well-formed entry under its own name; every pending file committed at
   HEAD is present and unchanged; every placeholder in a tracked file names a pending file. On a merge
@@ -777,6 +849,13 @@ the to-year less the year placed in service, plus 1, after checking every from-y
   keeps it current, since the report lists pending entries last, in the order `--assign` numbers them.
 - **Docs conventions** (`tools/check_docs_conventions.py`, docs tier): docs/ files are dated unless living, and
   HANDOFF-NEXT-SESSION.md keeps two entries.
+- **Generated figures** (`tools/doc_figures.py`, step `doc_figures`, docs tier, in the last wave): the State figures of
+  HANDOFF-NEXT-SESSION.md and the headline figures of README.md and docs/TRUST.md (bug inventory, task register,
+  scoreboard, filer coverage, citations, `opaque` count, ambiguity register) are written between
+  `<!-- figures:NAME -->` and `<!-- /figures:NAME -->` from the registers and reports that hold them; prose stays
+  outside the markers. `--check` names each stale block; run the tool to rewrite them. The last release is the newest
+  `r*` tag reachable from HEAD, so the first commit after a release refreshes the block. `--self-test`
+  (`doc_figures_self_test`) plants a stale block, a missing marker and a release tagged after its commit.
 - **Year-free ids** (`tools/check_year_ids.py`, step `year_ids`; spec 4.3): reads every document, line, parameter,
   enum and table id of the year's canonical build, both jurisdictions, and fails on an id that carries a year unless
   `tools/year_ids.json` lists it for that tax year. An id carries a year when it holds four digits from 1900 to 2099
@@ -838,9 +917,11 @@ that year's table from its archived source, and the check-all step named beside 
 |---|---|
 | `extract_tax_table.py` | The Tax Table from `i1040gi.pdf` into `tables/<year>/tax_table.yaml` (yearly) |
 | `extract_macrs_tables.py` | The MACRS tables of Pub. 946 into `tables/<year>/macrs_gds.yaml` (yearly; checked by `check_macrs_tables.py`) |
+| `extract_realty_tables.py` | Tables A-6 and A-7a of Pub. 946 (mid-month straight line, real property) into `tables/<year>/macrs_mm.yaml` (yearly; `--check` in check-all compares a fresh extraction and checks every month column totals 100%) |
 | `extract_class_lives.py` | Pub. 946 Appendix B into `tables/<year>/class_lives.yaml` and its enum file (yearly) |
 | `extract_eic_table.py` | The EIC Table (section above) |
 | `extract_printed_tables.py --write` | The small printed tables of a year (section "Printed tables"; `--check` is in check-all) |
+| `merge_classm.py BASE THEIRS OURS OUT` | Three-way merge of `fixtures/<year>/classm.json` by case id when integrating lanes (coverage expansion protocol 8.4); `--self-test` runs in the bookkeeping group |
 | `propose_params.py` | A year's parameter values read from its archived documents at the places the prior year's citations name (section "Proposing a year's parameters") |
 | `engines/ny_policyengine.py` | The New York differential against PolicyEngine-US, under the engines interpreter (`engines/setup.sh`) |
 | `coverage/estimate.py` | The coverage estimate (spec 2.4), under the engines interpreter with the microdata `coverage/fetch_microdata.sh` downloads once |

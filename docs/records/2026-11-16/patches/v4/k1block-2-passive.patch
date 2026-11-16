@@ -1,0 +1,59 @@
+diff --git a/forms/2025/scope.yaml b/forms/2025/scope.yaml
+index 331ad75..c1ebc4c 100644
+--- a/forms/2025/scope.yaml
++++ b/forms/2025/scope.yaml
+@@ -1112,10 +1112,10 @@ form:
+       printed: (helper)
+       type: Bool
+       gated_by: scope.passive_if_business_before
+-      label: "In 2025, did you (or, on a joint return, your spouse) have income or a loss from, or sell your share of, a business that you owned but did not help run (a 'passive activity')?"
++      label: "In 2025, did you (or, on a joint return, your spouse) have income or a loss from, or sell, a business you owned but did not help run and that sent you no Schedule K-1 (a 'passive activity')?"
+       expr:
+         op: input
+-        source: "In 2025, did you (or, on a joint return, your spouse) have income or a loss from, or sell your share of, a business that you owned but did not help run (a 'passive activity')?"
++        source: "In 2025, did you (or, on a joint return, your spouse) have income or a loss from, or sell, a business you owned but did not help run and that sent you no Schedule K-1 (a 'passive activity')?"
+       cite:
+         doc: f1040
+         locator: "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31"
+diff --git a/interview/2025/coverage/scope.yaml b/interview/2025/coverage/scope.yaml
+index 15f0b07..c66bc4f 100644
+--- a/interview/2025/coverage/scope.yaml
++++ b/interview/2025/coverage/scope.yaml
+@@ -473,7 +473,7 @@ rows:
+     proceeds: {"person[taxpayer].strike": 300000}
+ - id: scope.passive
+   design: "MAP 2.2 item 7"
+-  situation: "A person who owned a rental before 2025 sold her share of a business she did not help run."
++  situation: "A person who owned a rental before 2025 sold a business she owned but did not help run, which sent her no Schedule K-1."
+   answers:
+     "scope.business_before": true
+     "scope.passive": true
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 51ecb18..dd7fb18 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -2202,7 +2202,7 @@ bank:
+   - input: scope.passive
+     order: 258
+     seq: 3
+-    help: "Count a loss held back in an earlier year from such a business, or from a rental you no longer had in 2025. Rentals you had in 2025 are asked about later. A Yes ends the interview here: this tool cannot prepare a return with it."
++    help: "A partnership or S corporation that sent you a Schedule K-1 is asked about with the K-1. Count a loss held back in an earlier year from a business or rental you no longer had in 2025. A Yes ends the interview here."
+   - input: scope.f8978
+     order: 258
+     seq: 4
+diff --git a/reviews/2025/consumers.json b/reviews/2025/consumers.json
+index 3fb75fd..fb2e21c 100644
+--- a/reviews/2025/consumers.json
++++ b/reviews/2025/consumers.json
+@@ -2277,9 +2277,9 @@
+   },
+   "consumer:scope.passive@i8582:p1": {
+    "verdict": "same",
+-   "question_phrase": "did you (or, on a joint return, your spouse) have income or a loss from, or sell your share of, a business or rental that you owned but did not help run (a 'passive activity')",
++   "question_phrase": "did you (or, on a joint return, your spouse) have income or a loss from, or sell, a business you owned but did not help run and that sent you no Schedule K-1 (a 'passive activity')",
+    "source_phrase": "Form 8582 is used by noncorporate taxpayers to figure the amount of any passive activity loss (PAL)",
+-   "reason": "The question asks for a passive activity, the page's subject; it now names the spouse, and its help counts a loss held back in an earlier year (the page's prior year unallowed losses)."
++   "reason": "The question asks for a passive activity, the page's subject, other than one reported on a partnership or S corporation Schedule K-1, whose passive items Form 8582 now takes from the K-1 entries; its help counts a loss held back in an earlier year (the page's prior year unallowed losses)."
+   },
+   "consumer:scope.pfic@i1040gi:p114": {
+    "verdict": "same",

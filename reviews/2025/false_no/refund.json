@@ -1,0 +1,265 @@
+{
+ "form": "refund",
+ "reviews": {
+  "gate:refund.joint": {
+   "subject_sha": "0da2ade1efeadaaa664aa377c9117b95a1fcbc6f44d1ff1b5d9bf2b098d95087",
+   "samples": [
+    {
+     "verdict": "SOUND",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A widow or widower filing 2025 as qualifying surviving spouse or single. The spouse died in 2024 and filed a separate 2024 return, and the survivor received the deceased spouse's 2024 state income tax refund in 2025 along with their own.",
+       "why_no": "The gate is computed from filing status ('mfj'), so no question is asked. The tool then assumes any refund on a non-joint 2025 return comes from a single 2024 return, but this filer received refunds from two separate 2024 returns.",
+       "line": "refund.two_returns_if_joint",
+       "irs_text": "i1040gi p. 90, worksheet line 1: \"But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\" (the worksheet tests one 2024 return); p. 89 item 9 sends cross-return cases to Pub. 525",
+       "severity": "low",
+       "fix": "Usually the decedent's refund is income in respect of a decedent rather than the survivor's own recovery, so this is an edge case. Either add a non-joint prompt, 'Did you receive a state or local income tax refund for anyone else's 2024 return (for example, a spouse who died)?', and route a yes to Pub. 525 / IRD handling, or state this exclusion in the help text."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Any filer, or any reviewer auditing the tool's citations.",
+       "why_no": "The gate is labeled 'Married filing jointly for 2025' but cites p. 89 item 9, which is about filers who are not filing a joint 2025 return with the same person. The citation supports a different condition (the Pub. 525 exception), not this gate. The computed condition is still correct for its purpose: it only decides whether there can be a 'both of you' on the 2025 return.",
+       "line": "refund.two_returns_if_joint",
+       "irs_text": "i1040gi p. 89, item 9: \"You received a refund because of a jointly filed state or local income tax return, but you aren't filing a joint 2025 Form 1040 or 1040-SR with the same person\"",
+       "severity": "low",
+       "fix": "Cite the filing status line of the 2025 Form 1040 for the gate. Keep item 9 for the separate exception that sends a filer to Pub. 525 (a 2024 joint state return paired with a non-joint, or different-spouse, 2025 return)."
+      }
+     ],
+     "prompt_sha": "db53d3680ea20087aa8db11a03e13086fab5d852fe06ab7d20c7ee7fffd3e5d2",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.062284000000000006,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_refund.joint.0da2ade1efea.1.response.txt"
+    }
+   ],
+   "condition": "refund.joint",
+   "lines": [
+    "refund.two_returns_if_joint"
+   ],
+   "inputs": [
+    "refund.two_returns"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      89,
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 89, Line 1, \"9. You received a refund because of a jointly filed state or local income tax return, but you aren’t filing a joint 2025 Form 1040 or 1040-SR with the same person\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 1, \"But don’t enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\", and line 4, \"Enter your total itemized deductions from your 2024 Schedule A, line 17\" (the worksheet tests a refund against one 2024 return)",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 5, \"Enter the amount shown below for the filing status claimed on your 2024 Form 1040 or 1040-SR\""
+     ],
+     "cols_pages": [
+      89
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:refund.two_returns_if_joint": {
+   "subject_sha": "dd7487de16e34f278cda69d9d53b8bce3578689fcfba65eeed6da3a8f1bebaf8",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "Before marrying, each spouse filed a 2024 return and itemized state income tax. In 2024 one of them paid a 2023 state balance or 2023 amended-return tax, and that state tax was refunded in 2025.",
+       "why_no": "The gate asks whether the refunds were 'for 2024 tax'. A refund of 2023 tax paid in 2024 is truthfully not for 2024 tax, so they answer no.",
+       "line": "refund.two_itemized_if_two",
+       "irs_text": "i1040gi p. 88, Line 1: \"If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet\"",
+       "severity": "high",
+       "fix": "Key the gate to the year paid and deducted, not the tax year: \"Were these refunds of state or local income tax that either of you paid in 2024 (for any tax year), where each of you filed your own 2024 federal return?\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "In 2024 one spouse filed a joint return with a former spouse (divorced late in 2024 or after) or with a deceased spouse, and itemized state income tax. The other spouse filed single. Both received 2025 state refunds of 2024 tax.",
+       "why_no": "The examples given are 'before you married, or as married filing separately'. A joint return with someone else does not read as 'your own 2024 federal return', so they answer no.",
+       "line": "refund.two_itemized_if_two",
+       "irs_text": "i1040gi p. 90, worksheet line 5: \"Enter the amount shown below for the filing status claimed on your 2024 Form 1040 or 1040-SR\". Each 2024 return has its own Schedule A, line 17, and its own filing status.",
+       "severity": "medium",
+       "fix": "Ask whether the refunds trace to more than one 2024 federal return, and list the cases: \"…including a joint 2024 return either of you filed with a former or deceased spouse.\""
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "Each spouse filed a separate 2024 return and itemized state income tax. One spouse got a check. The other spouse's state overpayment was applied to 2025 estimated tax, or offset against a debt.",
+       "why_no": "The second spouse had no 'refund' in hand, so the couple reads 'refunds ... of both of you' as false and answers no.",
+       "line": "refund.two_itemized_if_two",
+       "irs_text": "i1040gi p. 88, Line 1: \"If you chose to apply part or all of the refund to your 2025 estimated state or local income tax, the amount applied is treated as received in 2025.\" Heading: \"Taxable Refunds, Credits, or Offsets\"",
+       "severity": "medium",
+       "fix": "Say \"refunds, credits applied to 2025 estimated tax, or offsets\" in the gate."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "Spouses who filed separate 2024 returns where only one spouse's return shows the state tax refunded, but the refund was a joint state refund split across both separate federal returns. Example: a joint state return with separate federal MFS returns, each itemizing their share.",
+       "why_no": "They see one refund, not refunds 'of both of you', and answer no.",
+       "line": "refund.two_itemized_if_two",
+       "irs_text": "i1040gi p. 90, worksheet line 1: \"But don't enter more than the amount of your state and local income taxes shown on your 2024 Schedule A, line 5d\". Each separate return's Schedule A caps its share.",
+       "severity": "medium",
+       "fix": "Gate on whether the state tax refunded was deducted on more than one 2024 federal return, whether there was one refund or more. Example: \"Was any of this refunded tax deducted on a 2024 federal return other than the one return the refund will be tested against?\""
+      }
+     ],
+     "prompt_sha": "68bee86a0ca0bafce54a4a8a06ea23d3295f0ac4132c824a7ac856e250e79d36",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.105808,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_refund.two_returns_if_joint.dd7487de16e3.1.response.txt"
+    }
+   ],
+   "condition": "refund.two_returns_if_joint",
+   "lines": [
+    "refund.two_itemized_if_two"
+   ],
+   "inputs": [
+    "refund.two_itemized"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      88,
+      90
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 88, Line 1, \"If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet in these instructions to see if any of your refund is taxable\"",
+      "p. 88, Line 1, \"None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn’t itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes\"",
+      "p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 5, \"Enter the amount shown below for the filing status claimed on your 2024 Form 1040 or 1040-SR\""
+     ],
+     "cols_pages": [
+      88
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    }
+   ]
+  },
+  "gate:refund.worksheet": {
+   "subject_sha": "5819442f5b6dacd9aef5ea2a4c46f9395f907eb00db56d105d9e65ed6f49760f",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A filer itemized for 2023 and deducted state income tax, but took the standard deduction for 2024. In 2025 they received a refund of 2023 state income tax, for example after an amended 2023 state return or a state audit adjustment.",
+       "why_no": "The gate asks only whether they itemized and deducted state and local income taxes for 2024. That is truthfully no, so the refund question is never asked.",
+       "line": "refund.received_if_worksheet",
+       "irs_text": "i1040gi p. 88, Line 1: \"If you received a refund, credit, or offset of state or local income taxes in 2025, you may be required to report this amount\"; the worksheet covers only a refund \"for a tax you paid in 2024\", with \"Exception. See Itemized Deduction Recoveries in Pub. 525 instead\" for other cases. The TIP ties taxability to \"the year you paid the tax\", not to 2024.",
+       "severity": "high",
+       "fix": "Ask about refunds received in 2025 first, with no gate. Then ask, for each refund, which tax year it was for (Form 1099-G box 3) and whether the filer itemized and deducted income taxes in that year. Send refunds for years other than 2024 to a Pub. 525 recovery computation rather than to zero."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "other",
+       "who": "A married couple files jointly for 2025 but filed separate 2024 returns. One spouse itemized on the 2024 return and deducted state income tax, and both received state refunds in 2025.",
+       "why_no": "refund.two_returns is true, so the computed gate is forced to no. The gated line becomes zero even though the refund of the itemizing spouse's 2024 tax is taxable.",
+       "line": "refund.received_if_worksheet",
+       "irs_text": "i1040gi p. 88, Line 1: \"Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet\". The exception changes the method of computing the taxable amount; it does not make the refund nontaxable.",
+       "severity": "high",
+       "fix": "When refund.two_returns is true, keep asking for the refund amount and route it to a Pub. 525 itemized deduction recovery computation, separated by spouse. Do not treat the line as zero."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "3",
+       "who": "A couple married in 2025 and filing jointly. Only the spouse filed a 2024 return that itemized and deducted state income tax, and that spouse received a 2025 state refund. The person answering the tool took the standard deduction or did not file for 2024.",
+       "why_no": "The question is worded as \"You itemized deductions for 2024\". The answerer reads \"you\" as themselves and answers no.",
+       "line": "refund.received_if_worksheet",
+       "irs_text": "f1099g p. 5, Box 2: \"It may be taxable to you if you deducted the state or local income tax paid on Schedule A (Form 1040)\"; i1040gi p. 88, Line 1: \"Report any taxable refund you received even if you didn't receive Form 1099-G.\"",
+       "severity": "medium",
+       "fix": "On a joint return, word it as \"Did you or your spouse itemize deductions on any 2024 return (joint or separate) and deduct state or local income taxes?\" and then identify whose refund it is."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "7",
+       "who": "A filer itemized for 2024 and claimed state and local taxes on Schedule A line 5. They do not remember whether line 5a used income taxes or general sales taxes, or they think of the deduction as \"SALT\" or \"the $10,000 cap\" rather than as income taxes.",
+       "why_no": "\"Deducted state and local income taxes\" is a classification the filer may not recognize. They answer no, believing they deducted \"state and local taxes capped at $10,000\" or property taxes.",
+       "line": "refund.received_if_worksheet",
+       "irs_text": "i1040gi p. 88, Line 1 TIP: \"None of your refund is taxable if, in the year you paid the tax, you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes.\" Income taxes are the default unless the sales-tax election was made.",
+       "severity": "medium",
+       "fix": "Ask \"Did you itemize on your 2024 return (Schedule A)?\" and then \"Was the box on 2024 Schedule A line 5a checked (general sales taxes)?\" Treat the income-tax case as the default, so only a checked box or no itemizing leads to no."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A filer itemized for 2024. Their entire state overpayment was applied to 2025 estimated tax, or was offset against a debt or a charitable checkoff, so no check arrived.",
+       "why_no": "The gate wording centers on \"the refund\" and its worksheet. A filer who got no money may treat the worksheet as irrelevant and answer no where the gate's wording invites it, for example if the gate is presented as \"Did you get a state refund for 2024 that you deducted?\"",
+       "line": "refund.received_if_worksheet",
+       "irs_text": "i1040gi p. 88, Line 1: \"If you chose to apply part or all of the refund to your 2025 estimated state or local income tax, the amount applied is treated as received in 2025\"; f1099g p. 5, Box 2: \"Even if you did not receive the amount shown, for example, because (a) it was credited to your state or local estimated tax, (b) it was offset against federal or state debts ... it is still taxable if it was deducted.\"",
+       "severity": "low",
+       "fix": "In the gate's help, state that refunds credited to 2025 estimated tax, offset against debts or donated still count, and that the itemizing question is about the 2024 return regardless of whether money was received."
+      }
+     ],
+     "prompt_sha": "b08a49cea08b728ecabafab397673c65a5c2452cf2544ea309b0be549645fa0a",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.11356,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_refund.worksheet.5819442f5b6d.1.response.txt"
+    }
+   ],
+   "condition": "refund.worksheet",
+   "lines": [
+    "refund.received_if_worksheet"
+   ],
+   "inputs": [
+    "refund.received"
+   ],
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      88
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 88, Line 1, \"If the refund was for a tax you paid in 2024 and you deducted state and local income taxes on your 2024 Schedule A, use the State and Local Income Tax Refund Worksheet\"",
+      "p. 88, Line 1, \"If you received a refund, credit, or offset of state or local income taxes in 2025\"",
+      "p. 88, Line 1, \"If you received a refund, credit, or offset of state or local income taxes in 2025, you may be required to report this amount\", \"Report any taxable refund you received even if you didn’t receive Form 1099-G\" and \"If you chose to apply part or all of the refund to your 2025 estimated state or local income tax, the amount applied is treated as received in 2025\"; , Instructions for Recipient, \"Box 2. Shows refunds, credits, or offsets of state or local income tax you received\""
+     ],
+     "cols_pages": [
+      88
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "f1099g",
+     "revision": "Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026)",
+     "text_sha256": "c3505294585e00ec5e957f73aa97dee32ad4b6916cd3eb48fef7f3c79f123270",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "how": "whole document",
+     "locators": [],
+     "cols_pages": [
+      5
+     ],
+     "cols_sha256": "49cc781de5cf6d881cc347361880de4b4b20fca0f13397bc94c94e84a20cff6d"
+    }
+   ]
+  }
+ }
+}

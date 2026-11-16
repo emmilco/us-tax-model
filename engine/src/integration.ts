@@ -231,9 +231,13 @@ export async function integrationChecks(): Promise<void> {
       assert.match(state.question.entry,/^one of: "mfs" \(Married, and filing apart[^"]*\), "qss" \([^"]*\), "hoh" \([^"]*\), "single" \(None of these: I was not married \(single\)\); null asks for help$/);
       assert.ok(!(spouseQuestion in state.values)&&!pendingKeys(state).some(k=>k.includes("person[spouse]")));
       assert.ok(state.pending.every((q:any)=>q.frame===undefined&&!q.prompt.startsWith("About you")&&!q.prompt.includes("For this person (you")),"one person on the return: no per-person frame");
-      // Married filing separately is refused at once, with what the filer can do.
+      // Married filing separately in a community property state is refused, with what the filer can do.
       state=await answer("f1040.status","mfs");
-      assert.equal(state.status,"refused");assert.equal(state.refusal.form,"Married filing separately");
+      assert.notEqual(state.status,"refused","married filing separately alone is not refused");
+      state=await answer("household.married_dec31",true);
+      state=await answer("household.community_property",true);
+      assert.equal(state.status,"refused");assert.equal(state.refusal.gate,"household.mfs_community_property");
+      assert.match(state.refusal.form,/^Community income on a married filing separately return/);
       assert.match(state.refusalNote,/go back to “Who is this tax return for\?” and choose “Me and my husband or wife, together on one return”/);
       state=await answer("f1040.status","hoh");
       assert.equal(state.refusalNote,null);assert.equal(state.question.withheld,undefined);

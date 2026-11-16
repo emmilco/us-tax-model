@@ -87,5 +87,17 @@
   "pdfkit": {
    "1": "PDFKit reads four bare '0' characters (two lines '0 0', with no other text) that poppler does not; no printed word is involved"
   }
+ },
+ "p4801": {
+  "pdfkit": {
+   "1": "SOI statistics, archived as scout evidence and read by no form, interview or tool; poppler drops words PDFKit reads on this page (BUG-0927)",
+   "2": "SOI statistics, archived as scout evidence and read by no form, interview or tool; poppler drops words PDFKit reads on this page (BUG-0927)",
+   "6": "SOI statistics, archived as scout evidence and read by no form, interview or tool; poppler drops words PDFKit reads on this page (BUG-0927)"
+  }
+ },
+ "p915": {
+  "pdfkit": {
+   "23": "An SSA contact block, never cited (Pub. 915 is cited only as a whole); poppler drops it (BUG-0927)"
+  }
  }
 }

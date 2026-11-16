@@ -1,0 +1,143 @@
+tax_year: 2025
+part: Married filing separately, deductions and adjustments
+profile: full
+sets:
+  mfs_filer:
+    says: A married person filing a separate return, who lives outside the community property states and was married at the
+      end of 2025.
+    answers:
+      f1040.status: mfs
+      household.community_property: false
+      household.married_dec31: true
+      sa.spouse_itemizes: false
+      sa.spouse_extra: false
+rows:
+  - id: mfs_ded.spouse_itemizes
+    design: scout-mfs.md 4, question 5 (the spouse itemizes; line 12b and a zero standard deduction)
+    situation: A separate filer whose husband or wife itemizes on their own return.
+    uses: [mfs_filer]
+    answers:
+      sa.spouse_itemizes: true
+    expect:
+      proceeds:
+        sa.spouse_itemizes: true
+      not_asked: [sa.spouse_extra]
+  - id: mfs_ded.spouse_extra
+    design: scout-mfs.md 1.2 (spouse's age or blindness boxes on a separate return stay refused, decision D4)
+    situation: A separate filer whose husband or wife, born in 1955, had no income and files no return.
+    uses: [mfs_filer]
+    answers:
+      sa.spouse_itemizes: false
+      sa.spouse_extra: true
+    expect:
+      refused: sa.mfs_spouse_extra
+  - id: mfs_ded.mortgage_over_limit
+    design: scout-mfs.md 4, question 6 (the $375,000 and $500,000 limits on a separate return)
+    situation: A separate filer with $30,000 of mortgage interest on Form 1098 owes $400,000 on the home.
+    uses: [mfs_filer]
+    answers:
+      sa.home_owner: true
+      sa.mortgage_unreported: false
+      sa.mortgage_interest: 3000000
+      sa.mortgage_other_use: false
+      s3.mcc: false
+      s2.mortgage_subsidy: false
+      sa.line5b: 0
+      sa.property_tax_other_any: false
+      sa.mortgage_over_limit_mfs: true
+    expect:
+      refused: sa.unsupported
+  - id: mfs_ded.mortgage_under_limit
+    design: scout-mfs.md 4, question 6 (the joint-return limit question is not asked on a separate return)
+    situation: A separate filer with $12,000 of mortgage interest on Form 1098 owes $300,000 on the home.
+    uses: [mfs_filer]
+    answers:
+      sa.home_owner: true
+      sa.mortgage_unreported: false
+      sa.mortgage_interest: 1200000
+      sa.mortgage_over_limit_mfs: false
+      sa.mortgage_other_use: false
+      s3.mcc: false
+      s2.mortgage_subsidy: false
+      sa.line5b: 0
+      sa.property_tax_other_any: false
+    expect:
+      proceeds:
+        sa.mortgage_over_limit_mfs: false
+      not_asked: [sa.mortgage_over_limit]
+  - id: mfs_ded.no_student_loan_question
+    design: scout-mfs.md 4 (gated off on a separate return, N8; i1040gi p. 98)
+    situation: A separate filer who pays student loan interest; the return cannot take the deduction.
+    uses: [mfs_filer]
+    answers: {}
+    expect:
+      proceeds:
+        f1040.status: mfs
+      not_asked: [sli.any]
+  - id: mfs_ded.ira_spouse_covered
+    design: scout-mfs.md 4, question 7 (considered covered through the spouse unless apart all year)
+    situation: A separate filer living with their husband or wife, not covered by a plan at work, put $7,000 in a traditional
+      IRA.
+    uses: [mfs_filer]
+    answers:
+      person[taxpayer].ira_owner: true
+      $w2@person[taxpayer]: [acme]
+      person[taxpayer].w2[acme].box1: 5000000
+      person[taxpayer].w2[acme].box2: 500000
+      person[taxpayer].w2[acme].box4: 310000
+      person[taxpayer].w2[acme].box5: 5000000
+      person[taxpayer].w2[acme].box6: 72500
+      scope.w2_marks: false
+      s2.w2_marks: false
+      s1.nqdc_pension: false
+      scope.artist_official: false
+      scope.excess_deferral: false
+      person[taxpayer].sav_trad: true
+      person[taxpayer].ira_trad: 700000
+      person[taxpayer].ira_work_plan: false
+      person[taxpayer].sav_roth: 0
+      person[taxpayer].ira_extra_left: false
+      person[taxpayer].ira_recharacterized: false
+      person[taxpayer].x_ira_prior_excess: false
+      s8812.combat_pay: false
+      ira.deferred_comp: false
+      ira.fellowship: false
+      ira.care_payments: false
+      household.mfs_living: together_late
+    expect:
+      asks: ira.mfs_spouse_covered
+  - id: mfs_ded.ira_apart
+    design: scout-mfs.md 4, question 7 (a filer who lived apart all year is not asked about the spouse's plan)
+    situation: A separate filer who lived apart from their husband or wife all year, not covered by a plan at work, put
+      $7,000 in a traditional IRA.
+    uses: [mfs_filer]
+    answers:
+      person[taxpayer].ira_owner: true
+      $w2@person[taxpayer]: [acme]
+      person[taxpayer].w2[acme].box1: 5000000
+      person[taxpayer].w2[acme].box2: 500000
+      person[taxpayer].w2[acme].box4: 310000
+      person[taxpayer].w2[acme].box5: 5000000
+      person[taxpayer].w2[acme].box6: 72500
+      scope.w2_marks: false
+      s2.w2_marks: false
+      s1.nqdc_pension: false
+      scope.artist_official: false
+      scope.excess_deferral: false
+      person[taxpayer].sav_trad: true
+      person[taxpayer].ira_trad: 700000
+      person[taxpayer].ira_work_plan: false
+      person[taxpayer].sav_roth: 0
+      person[taxpayer].ira_extra_left: false
+      person[taxpayer].ira_recharacterized: false
+      person[taxpayer].x_ira_prior_excess: false
+      s8812.combat_pay: false
+      ira.deferred_comp: false
+      ira.fellowship: false
+      ira.care_payments: false
+      household.mfs_living: apart_all_year
+      ira.deduct_less: false
+    expect:
+      proceeds:
+        household.mfs_living: apart_all_year
+      not_asked: [ira.mfs_spouse_covered]

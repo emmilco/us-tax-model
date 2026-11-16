@@ -6,7 +6,7 @@
  "head_rows": {
   "printed lines compared": "20",
   "agree / disagree / missing": "2 / 18 / 0",
-  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
+  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
@@ -23,31 +23,31 @@
   },
   {
    "key": "eic.eligible",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-42, Steps 1-5. The reply lists household.eic_disallowed_claim in eic.eligible's refuses, but that gate reads household.eic_claimed, which reads eic.eligible: a cycle (triage --explain stage14.asset.hy_5yr: eic.eligible > household.eic_disallowed_claim > household.eic_claimed > eic.eligible), so the line is unknown (825 completed candidate-unknown; every sampled one is this cycle). It also reads the line as also passing the Worksheet A line 2 / B line 7 STOP (its note (1)), false on 12 completed returns that pass Steps 1-5 with no table credit. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,117 agree; completed: 825 candidate-unknown (cycle), 12 value.",
-   "subject_key": "b2769600ed60ac9c0ca643f58d3ef0ee78e820e0768c0555d95706c8a62977e4"
+   "ruling": "Ruling: model error; triage 2,550/3,000 agree; 221 value, 110 project-unknown, 102 candidate-unknown, 15 candidate-refuses, 2 project-refuses; on completed returns: 172 value, 53 candidate-unknown. Read as 'can take the credit' (adds the worksheet zero STOP): false on filers whose credit is zero; the credit agrees on those returns. As the Landing round. Its helper eic.h_age_count also cites person.born_after_1960, which does not exist (triage error). i1040gi pp. 40-42.",
+   "subject_key": "d2ab1ce2fe9337564f96355b662ad9e610b7295f1644a12103f9e3bf070754b2"
   },
   {
    "key": "eic.credit",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-48. Guarded by the reply's eic.eligible, it inherits that line's cycle (household.eic_disallowed_claim > household.eic_claimed > eic.eligible) and is unknown on 825 completed returns. Where it evaluates, no value differs. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,188 agree; completed: 825 candidate-unknown.",
-   "subject_key": "17268f94b0b108f46bcc5f1be0993d57239095071264f39b012c808fc3ac0f65"
+   "ruling": "Ruling: model error; triage 2,760/3,000 agree; 100 candidate-unknown, 95 project-unknown, 29 project-refuses, 12 candidate-refuses, 4 value; on completed returns: 53 candidate-unknown, 2 value. On a separate return the reply answers Step 3 question 4 from the eic.same_home input, which the interview no longer asks of a married filer filing separately; the project reads it from household.mfs_living (eic.same_principal_home, amb.2025.mfs_lived_apart). On stage9.mut.eic_mfs_child_same_home and stage15.refuse.f2441.mfs_benefits (MFS, spouse lived with the filer in the last 6 months, not legally separated) the reply passes question 4 and allows the credit; i1040gi p. 41, Step 3, question 4 (\"Did you and your spouse have the same principal residence for the last 6 months of 2025?\" Yes) and question 5 (\"No. STOP. You can't take the credit\"); the project's $0 is right. The completed-return unknowns are the reply's ungated reads (scope.passive, dependent.kidnapped).",
+   "subject_key": "a1592555ceb82aede8f4ae7b583fa516bde79264f8fe2e9bdc40b5d2e5db0963"
   },
   {
    "key": "eic.check_27c",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; i1040gi p. 43, Line 27c. No value difference. Completed: 30 candidate-unknown; every sampled completed witness is the reply's refusal on scope.nonresident read raw (the project asks it only under scope.nonresident_if_noncitizen); the rest are raw reads of gated dependent questions (kidnapped, us_half, joint_return) and refusal placement on incomplete or refused records. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 2,378 agree.",
-   "subject_key": "c08b9061d6f02ce4539a1ab90027a0dedf6a38279d7a802ec9ab2f7725a60d74"
+   "ruling": "Ruling: representation; triage 2,762/3,000 agree; 118 candidate-unknown, 98 project-unknown, 11 candidate-refuses, 11 project-refuses; on completed returns: 50 candidate-unknown. No value differs on a completed return; the differences are refusal placement and ungated reads. i1040gi p. 43, Line 27c. As the Goal-1 round.",
+   "subject_key": "83e53d31424b5285252ee959f7b3791b5af99a6c5883ee5f50c36b1bc1df9336"
   },
   {
    "key": "eic.separated_box",
-   "record": "6b79af1556f4e1570d03ec9e0fc2667b260db8cc1264c960c206d89de6ee9c07",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040gi p. 41, Step 3, questions 3 to 6 (amb.2025.separated_spouses_box). No completed-return difference; the differences are refusals and unknowns on refused records only. Triage executable-triage-v2 (`.transcription/triage/2025/eic.json`, pass 3f7b5a85aafa; 1,986 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,567 of 2,606 agree; on completed returns: none.",
-   "subject_key": "fbd5d4c48635cb6474281d1d31f03bf2d8b31a13a16b1aad891fb7021ac3d7f9"
+   "ruling": "Ruling: model error; triage 2,948/3,000 agree; 27 candidate-unknown, 11 candidate-refuses, 8 project-refuses, 4 value, 2 project-unknown; on completed returns: 2 value, 1 candidate-unknown. On a separate return the reply answers Step 3 question 4 from the eic.same_home input, which the interview no longer asks of a married filer filing separately; the project reads it from household.mfs_living (eic.same_principal_home, amb.2025.mfs_lived_apart). On stage9.mut.eic_mfs_child_same_home and stage15.refuse.f2441.mfs_benefits (MFS, spouse lived with the filer in the last 6 months, not legally separated) the reply passes question 4 and allows the credit; i1040gi p. 41, Step 3, question 4 (\"Did you and your spouse have the same principal residence for the last 6 months of 2025?\" Yes) and question 5 (\"No. STOP. You can't take the credit\"); the project's $0 is right. The same two returns check the box in the reply; the project leaves it blank (the filer fails question 4/5, not the special rule).",
+   "subject_key": "6b9b67230a4d05fae97bdc28b0e08244034d9b7a959cb98ded34922e3c2177f8"
   },
   {
    "key": "eic.clergy",
@@ -58,136 +58,136 @@
   },
   {
    "key": "(Step 5, 1)",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-42 (Step 5 is reached only through Steps 1-4). The reply has no shown_when and shows Form 1040 line 1z on returns that STOP earlier; the project hides it with eic.reached_step5. As in the landing round. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 705 agree; completed: 657 candidate-shows-skipped.",
-   "subject_key": "cfcf0976a3858b46b0b7f83161866ef6082325714f74a68387e3c8fc063b3ee3"
+   "ruling": "Ruling: model error; triage 864/3,000 agree; 1461 candidate-shows-skipped, 549 project-refuses, 126 project-unknown; on completed returns: 893 candidate-shows-skipped. No shown_when: shown on returns that STOP in Steps 1-4. The reply's worksheet shown_when tests no Step 1-4 STOP, as the Landing and Goal-1 rounds ruled (i1040gi pp. 40-42, 46-48).",
+   "subject_key": "fdf57cffdf636994efa5a9b7474c15b77c08e61016e4f88c416923ee2e642832"
   },
   {
    "key": "(Step 5, 2)",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: scope; i1040gi p. 42, Step 5 line 2 (Medicaid waiver). $0 on both sides, refused through scope.medicaid_waiver; no completed difference. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,863 agree; 550 project-refuses, 236 project-unknown on refused or incomplete records.",
-   "subject_key": "e194a5b96b31372122f633fdd4c9b714271ed917466688c43a1fa8a4f875ad28"
+   "ruling": "Ruling: scope; triage 2,233/3,000 agree; 581 project-refuses, 186 project-unknown; on completed returns: none. Nothing completed differs; the differences are the project's refusals and unknowns on records the reply evaluates. i1040gi p. 42, line 2. As the earlier rounds.",
+   "subject_key": "196fc969a70e0910fb8155cda489f9e7e7ff9f0190bac4a6b1047a162ad80ca2"
   },
   {
    "key": "(Step 5, 3)",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-42. As (Step 5, 1): no shown_when; the Step 5 subtotal shown on returns that STOP before Step 5. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 715 agree; completed: 657 candidate-shows-skipped.",
-   "subject_key": "c3d9c00a424bd32f96284fc604e7e38c599f9e738b90463ab654d65ed3e764e2"
+   "ruling": "Ruling: model error; triage 864/3,000 agree; 1461 candidate-shows-skipped, 549 project-refuses, 126 project-unknown; on completed returns: 893 candidate-shows-skipped. No shown_when: shown on returns that STOP in Steps 1-4. The reply's worksheet shown_when tests no Step 1-4 STOP, as the Landing and Goal-1 rounds ruled (i1040gi pp. 40-42, 46-48).",
+   "subject_key": "0dd106c88d502fcccc89d2de93c777d24a5862cee8d8500a98b6ba7006b7e68a"
   },
   {
    "key": "(Step 5, 4)",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 42, Step 5 line 4. The reply has no shown_when and refuses or needs s8812.combat_pay on completed returns that never reach Step 5 (stage5.return.refund_combat_pay_no_children; classm.f5695.2), where the project hides the line. As in the landing round. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,823 agree; completed: 17 candidate-unknown, 2 candidate-refuses.",
-   "subject_key": "dcd3f16dce25362ece1b0fd91229748b418c121c1e1fed74d1fb609d40007c65"
+   "ruling": "Ruling: model error; triage 2,064/3,000 agree; 568 project-refuses, 196 candidate-unknown, 166 project-unknown, 6 candidate-refuses; on completed returns: 115 candidate-unknown, 2 candidate-refuses. Combat pay read or refused on returns that never reach Step 5. i1040gi p. 42, line 4. As the Goal-1 round.",
+   "subject_key": "b4b0b353e9c01f821d1d236dd30b7e089b46128d84c65a22d74118659b39b17a"
   },
   {
    "key": "(Step 5, 5)",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi pp. 40-42. As (Step 5, 1), plus the combat-pay refusal of (Step 5, 4). Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 783 agree; completed: 641 candidate-shows-skipped, 17 candidate-unknown, 2 candidate-refuses.",
-   "subject_key": "c3711b9fa5738d6aaeb51e1c085f73b353702089c7a6c529192c5a1d0b2661b1"
+   "ruling": "Ruling: model error; triage 872/3,000 agree; 1279 candidate-shows-skipped, 536 project-refuses, 196 candidate-unknown, 111 project-unknown, 6 candidate-refuses; on completed returns: 784 candidate-shows-skipped, 115 candidate-unknown, 2 candidate-refuses. As (Step 5, 1) and (Step 5, 4). The reply's worksheet shown_when tests no Step 1-4 STOP, as the Landing and Goal-1 rounds ruled (i1040gi pp. 40-42, 46-48).",
+   "subject_key": "9c2ce18d9b148c7c2c3f702e2feccd46da9ea0c4c44de746265ec7f6c656c9c0"
   },
   {
    "key": "4b",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 47, Worksheet B, reached through Step 5. The reply's shown_when (any Schedule C) has no Steps 1-4 test, so line 4b shows on Schedule C returns that STOP earlier (stage14.asset fixtures). Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,945 agree; completed: 132 candidate-shows-skipped, 1 candidate-unknown (scope.w2_marks read raw).",
-   "subject_key": "055fb112333566c0a31a95769bb5e97b308cf454e5d1a7a138d35e8026380e22"
+   "ruling": "Ruling: model error; triage 2,951/3,000 agree; 15 candidate-unknown, 14 candidate-refuses, 10 project-refuses, 10 project-unknown; on completed returns: 5 candidate-unknown. The completed-return unknowns are the reply's ungated reads; it shows Worksheet B for a Schedule C filer with no Steps 1-4 test. i1040gi pp. 47-48. As the Goal-1 round.",
+   "subject_key": "532297dc0ad1e7e0684ea792c6c1ef33916e5a3b009971917013b9efcabf494f"
   },
   {
    "key": "6 (eic.wsb_6)",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 48, Worksheet B line 6. As 4b. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,953 agree; completed: 130 candidate-shows-skipped, 1 candidate-unknown.",
-   "subject_key": "5188e57320561baeaa42b04e36433b3c6e4362a04b910d6700b5878d7ea00d51"
+   "ruling": "Ruling: model error; triage 2,951/3,000 agree; 18 project-unknown, 14 candidate-refuses, 10 project-refuses, 7 candidate-unknown; on completed returns: 1 candidate-unknown. The completed-return unknowns are the reply's ungated reads; it shows Worksheet B for a Schedule C filer with no Steps 1-4 test. i1040gi pp. 47-48. As the Goal-1 round.",
+   "subject_key": "f8dbfd12962f60132159a5d70187f0b4816f02ea1f28b8344a4efe4da4169fde"
   },
   {
    "key": "1",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A line 1. The reply's shown_when (no Schedule C) has no Steps 1-4 test: line 1 shows on returns that STOP earlier (stage20.blind.r1, classm.f2441.1). The 15 hides-shown are layout (the project's line 1 also carries Worksheet B line 6 on Schedule C returns). Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 822 agree; completed: 626 candidate-shows-skipped, 15 candidate-hides-shown, 16 candidate-unknown, 2 candidate-refuses.",
-   "subject_key": "a7f876636fb36e2161316e52b04a9202f4bdc8fa52a8dbc595c7a119f17955ba"
+   "ruling": "Ruling: model error; triage 2,723/3,000 agree; 132 project-unknown, 96 candidate-unknown, 21 candidate-hides-shown, 14 candidate-refuses, 10 project-refuses, 4 candidate-shows-skipped; on completed returns: 44 candidate-unknown, 16 candidate-hides-shown, 2 candidate-shows-skipped. The reply's worksheet shown_when tests no Step 1-4 STOP, as the Landing and Goal-1 rounds ruled (i1040gi pp. 40-42, 46-48). The two candidate-shows-skipped returns are the MFS cases above (the reply's question 4, see eic.credit); hides-shown differences are the Worksheet A/B layout.",
+   "subject_key": "6d04827637f075f938466d2b3881e874b745bf333572156726c79e62e0a4d05f"
   },
   {
    "key": "2",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A line 2. As 1: a table credit shown on returns that STOP at Step 4 (stage9.eic.no_child.over65, $308; stage9.eic.investment_income, $1,369). Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,796 agree; completed: 20 candidate-shows-skipped, 15 candidate-hides-shown (layout), 17 candidate-unknown, 2 candidate-refuses.",
-   "subject_key": "d219b6472eae881a7ba1b0093f877dc47665b71c980f82b7e7e0bf06ecf55f68"
+   "ruling": "Ruling: model error; triage 2,723/3,000 agree; 132 project-unknown, 96 candidate-unknown, 21 candidate-hides-shown, 14 candidate-refuses, 10 project-refuses, 4 candidate-shows-skipped; on completed returns: 44 candidate-unknown, 16 candidate-hides-shown, 2 candidate-shows-skipped. The reply's worksheet shown_when tests no Step 1-4 STOP, as the Landing and Goal-1 rounds ruled (i1040gi pp. 40-42, 46-48). The two candidate-shows-skipped returns are the MFS cases above (the reply's question 4, see eic.credit); hides-shown differences are the Worksheet A/B layout.",
+   "subject_key": "f6e6956d7154f49e912eef51a4dbfb3c41f23e3e0c420f764e1bb51cc8290741"
   },
   {
    "key": "3",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A lines 2-3 (\"If line 2 is zero, STOP\"). As 1: Form 1040 line 11b shown on returns that STOP before Worksheet A or at line 2; the project hides it with eic.show3. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,059 agree; completed: 707 candidate-shows-skipped, 13 candidate-hides-shown (layout).",
-   "subject_key": "d1f640252ff6f960b413fe528678f207dc332c53377d05012ffd0a007da0d0e7"
+   "ruling": "Ruling: model error; triage 2,793/3,000 agree; 108 project-unknown, 54 candidate-unknown, 17 candidate-hides-shown, 14 candidate-refuses, 10 project-refuses, 4 candidate-shows-skipped; on completed returns: 20 candidate-unknown, 13 candidate-hides-shown, 2 candidate-shows-skipped. The reply's worksheet shown_when tests no Step 1-4 STOP, as the Landing and Goal-1 rounds ruled (i1040gi pp. 40-42, 46-48). The two candidate-shows-skipped returns are the MFS cases above (the reply's question 4, see eic.credit); hides-shown differences are the Worksheet A/B layout.",
+   "subject_key": "1f2941fe0030f6f1d8352d2620735d6f2231fa080a1a377c5251bbcf2ad0f389"
   },
   {
    "key": "4",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A line 4. As 3. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 1,558 agree; completed: 402 candidate-shows-skipped, 12 candidate-hides-shown, 16 candidate-unknown, 2 candidate-refuses.",
-   "subject_key": "3899225d6b52ae9117fb3ff8e25b1d3933c0fdef28b1c0353a6e7e01c2b2f7eb"
+   "ruling": "Ruling: model error; triage 2,800/3,000 agree; 108 project-unknown, 54 candidate-unknown, 14 candidate-refuses, 13 candidate-hides-shown, 10 project-refuses, 1 candidate-shows-skipped; on completed returns: 20 candidate-unknown, 12 candidate-hides-shown, 1 candidate-shows-skipped. The reply's worksheet shown_when tests no Step 1-4 STOP, as the Landing and Goal-1 rounds ruled (i1040gi pp. 40-42, 46-48). The candidate-shows-skipped return is an MFS case above (stage15.refuse.f2441.mfs_benefits) (the reply's question 4, see eic.credit); hides-shown differences are the Worksheet A/B layout.",
+   "subject_key": "167d1f6d7c9901b0c1170ea62b376d1080381c222c2442a95e67c075d5a9812b"
   },
   {
    "key": "5",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A lines 4-5. The reply's eic.h_show5 has no Steps 1-4 test: line 5 shows on returns that STOP earlier (audit.eic.filer_without_eic_ssn, $3,261 for a filer who STOPs at Step 1 question 2). Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 2,250 agree; completed: 9 candidate-shows-skipped, 15 candidate-unknown, 2 candidate-refuses.",
-   "subject_key": "08c5430148fa7578cff7da814aba287660daadcb0fdbe4b1f9837fcabf747e57"
+   "ruling": "Ruling: model error; triage 2,858/3,000 agree; 96 project-unknown, 23 candidate-unknown, 11 candidate-refuses, 10 project-refuses, 2 candidate-shows-skipped; on completed returns: 7 candidate-unknown, 1 candidate-shows-skipped. The reply's worksheet shown_when tests no Step 1-4 STOP, as the Landing and Goal-1 rounds ruled (i1040gi pp. 40-42, 46-48). The candidate-shows-skipped return is an MFS case above (stage9.mut.eic_mfs_child_same_home) (the reply's question 4, see eic.credit); hides-shown differences are the Worksheet A/B layout.",
+   "subject_key": "01fe7194b13d2efb61a63a9ff7287805b36f58c513bc94f1e5bf30964d1eddaa"
   },
   {
    "key": "6 (eic.line6)",
-   "record": "9e64b305a0782045c0a7e5f2c2f9acb2ceb87fc0241e413e725165cfb7153e4f",
+   "record": "789d33fd1b50d1fdec2ccbf8cc31b24fb35532429d8ad5bae95cf2be0d5a885f",
    "status": "DISAGREE",
-   "ruling": "Ruling: model error; i1040gi p. 46, Worksheet A line 6. As 2: the credit line shown on returns that STOP at Step 4 (stage9.eic.no_child.over65, $308); Form 1040 line 27a (eic.credit) is guarded separately. Triage (.transcription/triage/2025/eic.json, pass 72610e26e3ba; 2,649 comparisons): 2,220 agree; completed: 15 candidate-shows-skipped, 15 candidate-hides-shown (layout), 17 candidate-unknown, 2 candidate-refuses.",
-   "subject_key": "dee9157c2d0dcbb387f579e7377368f33afe99f00b26012b22381338da3d0af1"
+   "ruling": "Ruling: model error; triage 2,757/3,000 agree; 140 project-unknown, 54 candidate-unknown, 21 candidate-hides-shown, 14 candidate-refuses, 10 project-refuses, 4 candidate-shows-skipped; on completed returns: 20 candidate-unknown, 16 candidate-hides-shown, 2 candidate-shows-skipped. The reply's worksheet shown_when tests no Step 1-4 STOP, as the Landing and Goal-1 rounds ruled (i1040gi pp. 40-42, 46-48). The two candidate-shows-skipped returns are the MFS cases above (the reply's question 4, see eic.credit); hides-shown differences are the Worksheet A/B layout.",
+   "subject_key": "5f378f2791d5b6c16cec189eed8f0431d5adb299f3d11da95062d2c6a1dbe092"
   }
  ],
  "subjects": {
   "eic.zero": "52aee938642df0c53e51498dcf7f0375a2dca1b221662a37474feb9a2f92e2d9",
   "eic.self_employed": "055a0cb5a33e1ca077a25b4066e576b957fe3ecfb88e31430139c9058cc2f751",
-  "eic.eligible": "57b943dc524ff722b5b371d4628abab321539c49d73710085344dbac5e91b179",
-  "eic.credit": "bf219bf74155912bc7bd490679e72905812d71b2015b8bb62b11be169c9cbb29",
-  "eic.check_27c": "c06f79f2dcf0f00bc441b708300918d1b859ea618fd93cefc5184b2552dfcf16",
-  "eic.separated_box": "7489adf12d40e64ac56d36357cf01676f46f19d9645e4985f33c4571471b5c3a",
+  "eic.eligible": "e0e04eecc7256b54e32070a4b3e0c0a1494bf668c79993c6304b10aa4a43e38b",
+  "eic.credit": "3c2d7365db6c77b6f94b27f7a83870233b657fd672738525ead25b92f6f297ca",
+  "eic.check_27c": "14e1da6d02cda083f48dd89832b29fee898d6171323e0a13ed58844afe3a347e",
+  "eic.separated_box": "ae9e40b3b5cfbc9ce64c076049860ba2dbb9479b3c05fff082bdbf396421c099",
   "eic.clergy": "c34466ce2b1c242bf5bb418b6b0d77070c8e920d6c8754944817940261a62022",
-  "(Step 5, 1)": "a007424acb444cdbed629e412c459c5783322660bd0da23481a436b3e202369d",
-  "(Step 5, 2)": "88f70787a51e33e02959280ca6a2e326acb4a3552310be1f98c7c500a0233628",
-  "(Step 5, 3)": "4922fbe5b251eedf5d3a9b4a0e676a31e221ebcb1936534069bc4453bfd07c68",
-  "(Step 5, 4)": "7ba221ffa8c740d1e24aadba0333c987267e0f441f63274ff398169dd6a976b5",
-  "(Step 5, 5)": "21c50d77b40cd0edd770db3db505751d9858293bb63a178b04145a7401e57162",
-  "4b": "363e2d05d02aacf023830b49584e2070c04b1803fc4c764bdb836cf977ac8b0d",
-  "6 (eic.wsb_6)": "58ba14ccd006d5ddb84af71a6932ef325cbec568164243fbd1c19947a5ea2607",
-  "1": "75e10fd7c29b98ce5cca035657e55c15e19948f0ad1fc30ca279f34a025829e4",
-  "2": "dc25f2fcdd094b526e410ebde31cda54e1f357868c44ff82f1f2064d6edab61c",
-  "3": "ff0df0a9603754bf9f469adb8f30c1f217b61c374b236562be45674a2a187829",
-  "4": "4dba51d3dbaa091e324fed56559cf878317223cd057976a33541878d28bb8f62",
-  "5": "dad78b69ae207c074eb8b2c89fc3fab163ccde974c89aa01b0125bbf35034e6a",
-  "6 (eic.line6)": "28f295f8b27fdc90f2a2c8cfec5d8e64122767c928db69f4809b4c78dd0c4e51"
+  "(Step 5, 1)": "34495d73dcadb16f15d30e7ecba7c9c23e5e754dae46973fc38c16c77a70e9bd",
+  "(Step 5, 2)": "9d0047049c1787fb2f5c536ddf047476cb501072d4e393ec54cebdb25abd27b0",
+  "(Step 5, 3)": "c8b990c2b335f2d52ad3bfe4ff2c8ba08eb8f7bc61791dfda80d86849088861f",
+  "(Step 5, 4)": "1bf451c3eb57fb8553bd82ac75f58358d9a4ea17f2d623ec6d7195b26f615b2c",
+  "(Step 5, 5)": "464948fda2bf7c6d9c890c894d00cdb5a5b028b1497939ab3c1c28c8c9208a62",
+  "4b": "65f2c23718896de7e8fe62e0a308d04adf8e1ed0d3148cda1916b5e18925fe73",
+  "6 (eic.wsb_6)": "fb36c49fecaf1e50803d2fc9c5e350cf467f815c6819f3c5496cf3ff994fb53e",
+  "1": "53c6fc0a170564dbb5f8bda0df4267d845ff75225cae456bf2a45da8e743cb08",
+  "2": "494b1ec7ddc8c69a8d561556a6e85204457b8adf442ec39aff30e97374a55e96",
+  "3": "4fad671880cfd2c812ef538034497be1eab6f78030719b64e346de948460d4a2",
+  "4": "7bb3a0c5c2672a77b4c0a284565f5683dbb684ba62cf9af98b4c097894c71fcc",
+  "5": "a594be0c1fb8acff8b2fc5908d2166e4c950c407a4fef4187e8079cf7b63c648",
+  "6 (eic.line6)": "65ff42d0211de78e948f9d15efbb4c251e22d0075a45a396e3750d352754c177"
  },
  "__rest__": "0cb74bdc4a8e058e063ada8c81e332a05cd9947874f874edab33db08a9fe38c7",
  "foreign": {
-  "eic.eligible": "c26ce8264d170c242671d79a1c4dca0bf57f715ae85fb58f2660cbea969e596a",
-  "eic.credit": "1e26424d287943cc4027f8d11aa2240fd4ce0e08e832a8d01dccd0449f76db61",
-  "eic.check_27c": "c26ce8264d170c242671d79a1c4dca0bf57f715ae85fb58f2660cbea969e596a",
-  "eic.separated_box": "2350c91a32ce213451d667f5da2084c9c37e97b082062f41c0d9d31cbcd2b4ad",
-  "(Step 5, 1)": "880747eba31613990f464c9085adb317dd6af0c194db1a98bdd60287bfe48f8f",
-  "(Step 5, 2)": "479584590f2b5952f648867ac424cb858de53639a5a4604768880a9dc0af0af1",
-  "(Step 5, 3)": "479584590f2b5952f648867ac424cb858de53639a5a4604768880a9dc0af0af1",
-  "(Step 5, 4)": "d4729c3eb25d0e36500b5cd973ca7084e954ea270e429b0fb815818cc4760a07",
-  "(Step 5, 5)": "479584590f2b5952f648867ac424cb858de53639a5a4604768880a9dc0af0af1",
-  "4b": "f0ba02bf5d4ab967e33e68a4835c49da00539fae3bc6d55a293a2d6119ba1735",
-  "6 (eic.wsb_6)": "c26ce8264d170c242671d79a1c4dca0bf57f715ae85fb58f2660cbea969e596a",
-  "1": "c26ce8264d170c242671d79a1c4dca0bf57f715ae85fb58f2660cbea969e596a",
-  "2": "c26ce8264d170c242671d79a1c4dca0bf57f715ae85fb58f2660cbea969e596a",
-  "3": "c26ce8264d170c242671d79a1c4dca0bf57f715ae85fb58f2660cbea969e596a",
-  "4": "c26ce8264d170c242671d79a1c4dca0bf57f715ae85fb58f2660cbea969e596a",
-  "5": "c26ce8264d170c242671d79a1c4dca0bf57f715ae85fb58f2660cbea969e596a",
-  "6 (eic.line6)": "c26ce8264d170c242671d79a1c4dca0bf57f715ae85fb58f2660cbea969e596a"
+  "eic.eligible": "1fef686a68ffdb8dc5a2c7064e09b1bf8cb08f016e7c2c1e479c23c609f65da9",
+  "eic.credit": "44fdff4d28d8e5115286956c0c5fe0d133aa36a55ae76a6e0c46bc812c1ddece",
+  "eic.check_27c": "1fef686a68ffdb8dc5a2c7064e09b1bf8cb08f016e7c2c1e479c23c609f65da9",
+  "eic.separated_box": "58ddf4583a8dc5c3e41ee95def7a506d72bbe61a94de234c00ce0451017b9824",
+  "(Step 5, 1)": "9e289a29ea4458110d3b62be5fa1cc55b75f7c76f2d35a4061a1c4d836884a77",
+  "(Step 5, 2)": "1519b8537b48fa0c25abe311c10fbea6903959e490e21ef19b34e4af00393437",
+  "(Step 5, 3)": "2aa75fce903974035a7eaede9551f2b147af3dbbbc57a2a5d5b4381b0fc70370",
+  "(Step 5, 4)": "b5537dd8fe3970d27fe7447f25891656deae06f2b4565a20c234bf2461bd5e01",
+  "(Step 5, 5)": "2aa75fce903974035a7eaede9551f2b147af3dbbbc57a2a5d5b4381b0fc70370",
+  "4b": "4906c35be9974bedc7288215933e39841f3f32610c4914f8c341c2fcfa554716",
+  "6 (eic.wsb_6)": "1fef686a68ffdb8dc5a2c7064e09b1bf8cb08f016e7c2c1e479c23c609f65da9",
+  "1": "1fef686a68ffdb8dc5a2c7064e09b1bf8cb08f016e7c2c1e479c23c609f65da9",
+  "2": "1fef686a68ffdb8dc5a2c7064e09b1bf8cb08f016e7c2c1e479c23c609f65da9",
+  "3": "1fef686a68ffdb8dc5a2c7064e09b1bf8cb08f016e7c2c1e479c23c609f65da9",
+  "4": "1fef686a68ffdb8dc5a2c7064e09b1bf8cb08f016e7c2c1e479c23c609f65da9",
+  "5": "1fef686a68ffdb8dc5a2c7064e09b1bf8cb08f016e7c2c1e479c23c609f65da9",
+  "6 (eic.line6)": "1fef686a68ffdb8dc5a2c7064e09b1bf8cb08f016e7c2c1e479c23c609f65da9"
  }
 }

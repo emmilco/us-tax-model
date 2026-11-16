@@ -1,0 +1,680 @@
+diff --git a/tools/README.md b/tools/README.md
+index 7ee2ccd..1cc4295 100644
+--- a/tools/README.md
++++ b/tools/README.md
+@@ -204,8 +204,9 @@ its wave ends (about 13 minutes for wave 1, longer for wave 2) shows here in min
+    reviews (completeness, screens, false-no; both jurisdictions), each separately, so one run lists every due item
+    (the reviews to run while the rest proceeds). A failed build stops the run there (`release_reviews.sh` exits 2).
+ 2. The check-all steps of its `PREP_STEPS`, one after another, cheapest first: `check_bug_inventory`, `bug_status`,
+-   `check_agent_runs`, `doc_figures`, `limits`, `consumers`, `year_changes`, `citations`, `check_extraction`,
+-   `check_logs` (each with its `ny_` step), `bookkeeping_self_tests`, `test_fixtures` and `ny_test_fixtures`,
++   `check_agent_runs`, `doc_figures`, `limits`, `consumers`, `renamed_ids`, `year_changes`, `citations`,
++   `check_extraction`, `check_logs` (each with its `ny_` step), `bookkeeping_self_tests`, `test_fixtures` and
++   `ny_test_fixtures`,
+    `coverage`, `interview_rules` and `self_tests`. Each runs the command `tools/check_all_steps.sh --print-steps
+    --tier full` declares for it, so the two cannot drift; a listed name the steps script does not declare stops the
+    run (exit 2). A step that exits 0 without a line `tools/step_output.py` requires of it fails, as in check-all.
+@@ -418,6 +419,29 @@ name a directory holding the tree before the rename. Without `--write` it only r
+   rest on the earlier sample). It takes several minutes on the whole tree (it computes every subject twice).
+ - Self-test: `tools/transcription/test_rename_carry.py` (a small tree of its own; check-all `self_tests`).
+ 
++### Renaming the ids in the data, and checking that none is left
++
++The data that names lines and inputs by path is renamed with `tools/rename_ids.py`, which uses the same
++substitution as the carry above:
++
++    python3 tools/rename_ids.py apply [--map MAP.json] [FILE...]   (and again with --jurisdiction ny)
++    python3 tools/rename_ids.py check [--map MAP.json]
++
++The map is `tools/year_free_names.json` unless `--map` names another (either shape above). An old id is
++renamed, and found by `check`, in three forms: the whole id (`f8853c.pre1996`, not inside a longer id); the
++collection-indexed form, alone or as a step of a path (`f8853c[p0].pre1996`, `person[taxpayer].f8853c[c].pre1996`);
++and a renamed document's name wherever it stands as a name (`$clcw26`, `clcw26[x]`). It covers, for the year and
++jurisdiction: every `.json` under `fixtures/<year>/` (`defaults.json` included), except the lines of the fields
++`id`, `description` and `evidence_note`; every line of `interview/<year>/coverage/` and `interview/<year>/personas/`;
++and, in the default family's rulings sidecars, the witnesses of each triage stamp (their input and instance, not the
++case id), so that a ruling's stamp still matches the triage that `carry.py` compares it with. Ruling texts and keys
++are not touched. `apply` also rewrites whole each FILE given (the forms, the question bank and other files the
++rename names). A collection-indexed id whose rename moves it to another document is not rewritten; `check` reports
++it. The order of a rename: rename the definitions and the files that name them, `rename_ids.py apply` (both
++jurisdictions), build and render, `rename_carry.py --write`, then test-fixtures and coverage at once. `check` runs in
++check-all for both jurisdictions (steps `renamed_ids`, `ny_renamed_ids`) and fails on any old id of
++`year_free_names.json` left in those places. Tests: `tools/test_rename_ids.py` (check-all `self_tests`).
++
+ ## EIC Table
+ 
+ `python3 tools/extract_eic_table.py` reads the 2025 Earned Income Credit Table
+diff --git a/tools/check_all_steps.sh b/tools/check_all_steps.sh
+index bf56072..635f9dc 100755
+--- a/tools/check_all_steps.sh
++++ b/tools/check_all_steps.sh
+@@ -260,6 +260,9 @@ step twins python3 tools/check_twins.py "$@"
+ jstep completeness "--jurisdiction ny" python3 tools/transcription/check_completeness.py
+ # No id of either jurisdiction's build carries a year, but for the ids listed in tools/year_ids.json (spec 4.3).
+ step year_ids python3 tools/check_year_ids.py "$@"
++# No old id of tools/year_free_names.json is left in the fixtures (defaults included), coverage rows, personas or the
++# triage witnesses of the rulings, in any form, the collection-indexed `doc[entry].name` included (tools/rename_ids.py).
++jstep renamed_ids "--jurisdiction ny" python3 tools/rename_ids.py check
+ # The prepared operations of the next tax year (changes/<year+1>/) still apply to this year's forms, question bank and
+ # profiles: no line gone or renamed, no expected text changed, no collision, reference or gate broken, evidence printed.
+ jstep year_changes "--jurisdiction ny" python3 tools/year_changes.py --check
+diff --git a/tools/release_prep.sh b/tools/release_prep.sh
+index 6c1eef3..bdff8c0 100755
+--- a/tools/release_prep.sh
++++ b/tools/release_prep.sh
+@@ -28,8 +28,8 @@ cd "$(git rev-parse --show-toplevel)"
+ 
+ # Cheapest first, from the recorded check-all times; the release reviews run before all of them.
+ PREP_STEPS="check_bug_inventory bug_status check_agent_runs doc_figures limits ny_limits consumers ny_consumers
+-  year_changes ny_year_changes citations ny_citations check_extraction ny_check_extraction check_logs ny_check_logs
+-  bookkeeping_self_tests ny_test_fixtures test_fixtures coverage interview_rules self_tests"
++  renamed_ids ny_renamed_ids year_changes ny_year_changes citations ny_citations check_extraction ny_check_extraction
++  check_logs ny_check_logs bookkeeping_self_tests ny_test_fixtures test_fixtures coverage interview_rules self_tests"
+ 
+ fail_fast=0
+ orig=("$@")
+diff --git a/tools/rename_ids.py b/tools/rename_ids.py
+new file mode 100755
+index 0000000..10f89e9
+--- /dev/null
++++ b/tools/rename_ids.py
+@@ -0,0 +1,301 @@
++#!/usr/bin/env python3
++"""Rename ids in the data that names lines and inputs by path, and check that no old id is left there.
++
++    rename_ids.py apply [--map MAP] [FILE...] [--year N] [--jurisdiction ny]
++    rename_ids.py check [--map MAP] [--year N] [--jurisdiction ny]
++    rename_ids.py --self-test                (tools/test_rename_ids.py)
++
++MAP is tools/year_free_names.json unless given: {"renames": {old: {"to": new, "kind": ...}}}, where kind
++"document" renames a document; or the map of tools/transcription/rename_carry.py, {old: new} or
++{"renames": [{"old": ..., "new": ...}]}.
++
++An id is named in three forms, and each is renamed and checked:
++- whole: `doc.local`, not inside a longer id (`x.doc.local`, `doc.local_more` and `doc.local.more` are other
++  ids); a sentence's full stop may follow;
++- collection-indexed: `doc[entry].local`, alone or as a step of a path (`person[taxpayer].doc[entry].local`);
++  rewritten where the document keeps its name, and reported by check where it does not;
++- a renamed document's name, wherever it stands as a whole name or a path step: `$doc`, `doc[entry]`,
++  `doc.local`, `$x@doc[entry]`.
++
++The places, for the jurisdiction and year (places()):
++- fixtures/<year>/, every .json below it (defaults.json included): every line but those of the fields `id`,
++  `description` and `evidence_note` (case labels and review records);
++- interview/<year>/coverage/ and interview/<year>/personas/, every .yaml line;
++- the rulings sidecars of the default review family (reviews/<year>/{transcription,render,classm}/<form>.rulings.json):
++  the witnesses of each ruling's triage stamp only, in their input and instance parts (a witness is
++  `<kind>:<case id>@<instance>` or `partial:<case id>-<withheld input>@<instance>`; a case id holds no `-`). The
++  ruling texts and keys stay as the reviewer saw them; tools/transcription/rename_carry.py re-keys what it proves.
++
++apply rewrites the places, and each FILE given whole, and lists the files it changed. check lists every old id
++left in the places, by file and line (or ruling and witness), and exits 1 when there is one. check-all runs check
++with the default map for both jurisdictions (the steps renamed_ids and ny_renamed_ids).
++"""
++import json
++import re
++import sys
++from pathlib import Path
++
++ROOT = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(ROOT / "tools"))
++sys.path.insert(0, str(ROOT / "tools" / "transcription"))
++
++from taxyear import Y  # noqa: E402
++import jurisdiction  # noqa: E402
++
++DEFAULT_MAP = ROOT / "tools" / "year_free_names.json"
++ID = r"[A-Za-z0-9_]"
++# Where a name starts: not inside a longer id, or as a path step after an entry (`].`).
++LEAD = r"(?:(?<=\]\.)|(?<![A-Za-z0-9_.]))"
++ENTRY = r"(\[[^\]\s]*\])"
++SKIP_FIELDS = ("id", "description", "evidence_note")
++SKIP_LINE = re.compile(r'^\s*"(?:' + "|".join(SKIP_FIELDS) + r')":')
++KINDS = ("transcription", "render", "classm")
++
++
++def load_map(path=None):
++    """({old line id: new line id}, {old document: new document}) of a map file."""
++    path = Path(path or DEFAULT_MAP)
++    data = json.loads(path.read_text(encoding="utf-8"))
++    renames = data.get("renames", data) if isinstance(data, dict) else None
++    if isinstance(renames, list):
++        renames = {r["old"]: r["new"] for r in renames}
++    if not isinstance(renames, dict):
++        raise SystemExit(f"{path}: not a rename map")
++    lines, documents = {}, {}
++    for old, v in renames.items():
++        if isinstance(v, dict) and isinstance(v.get("to"), str):
++            (documents if v.get("kind") == "document" else lines)[old] = v["to"]
++        elif isinstance(v, str):
++            lines[old] = v
++        else:
++            raise SystemExit(f"{path}: the entry {old!r} names no new id")
++    return lines, documents
++
++
++def _alts(names):
++    return "|".join(map(re.escape, sorted(names, key=len, reverse=True)))
++
++
++def _by_doc(mapping):
++    """{doc: {local: new local}} of the renames that keep the document, and {doc: {local}} of every old id."""
++    keep, every = {}, {}
++    for old, new in mapping.items():
++        doc, _, local = old.partition(".")
++        ndoc, _, nlocal = new.partition(".")
++        if not local:
++            continue
++        every.setdefault(doc, set()).add(local)
++        if doc == ndoc and nlocal:
++            keep.setdefault(doc, {})[local] = nlocal
++    return keep, every
++
++
++def substituter(mapping, documents=None):
++    """A function renaming, in a text, each line id of `mapping` (old -> new) in the whole and the
++    collection-indexed forms, and each document of `documents` (old -> new) as a whole name."""
++    documents = documents or {}
++    subs = []
++    keep, _ = _by_doc(mapping)
++    for doc, locals_ in sorted(keep.items()):
++        rx = re.compile(LEAD + "(" + re.escape(doc) + ")" + ENTRY + r"\.(" + _alts(locals_) + ")(?!" + ID + ")")
++        subs.append((rx, lambda m, l=locals_: m.group(1) + m.group(2) + "." + l[m.group(3)]))
++    if mapping:
++        whole = re.compile(r"(?<![A-Za-z0-9_.])(" + _alts(mapping) + r")(?!" + ID + r"|\." + ID + ")")
++        subs.append((whole, lambda m: mapping[m.group(1)]))
++    if documents:
++        rx = re.compile(LEAD + "(" + _alts(documents) + ")(?!" + ID + ")")
++        subs.append((rx, lambda m: documents[m.group(1)]))
++
++    def sub(text):
++        for rx, rep in subs:
++            text = rx.sub(rep, text)
++        return text
++    return sub
++
++
++def finder(mapping, documents=None):
++    """A function listing the old ids a text names, in any of the three forms (the collection-indexed form also
++    where the rename moves the document)."""
++    documents = documents or {}
++    rxs = []
++    _, every = _by_doc(mapping)
++    for doc, locals_ in sorted(every.items()):
++        rxs.append((re.compile(LEAD + "(" + re.escape(doc) + ")" + ENTRY + r"\.(" + _alts(locals_) + ")(?!" + ID + ")"),
++                    lambda m: m.group(1) + "." + m.group(3)))
++    if mapping:
++        rxs.append((re.compile(r"(?<![A-Za-z0-9_.])(" + _alts(mapping) + r")(?!" + ID + r"|\." + ID + ")"),
++                    lambda m: m.group(1)))
++    if documents:
++        rxs.append((re.compile(LEAD + "(" + _alts(documents) + ")(?!" + ID + ")"), lambda m: m.group(1)))
++
++    def find(text):
++        return sorted({name(m) for rx, name in rxs for m in rx.finditer(text)})
++    return find
++
++
++# ---------------------------------------------------------------- the places
++
++def places(root=None, ny=None, year=None):
++    """[(path, kind)] of the files the rename covers, kind "fixture", "rows" or "rulings" (module doc)."""
++    import families
++    ny = jurisdiction.NY if ny is None else ny
++    year = str(Y if year is None else year)
++
++    def ypath(top, *rest):
++        if root is None:
++            return jurisdiction.ypath(top, year, *rest) if ny == jurisdiction.NY else \
++                (ROOT / top / ("ny" if ny else "") / year).joinpath(*rest)
++        return (Path(root) / top / ("ny" if ny else "") / year).joinpath(*rest)
++
++    out = []
++    fixtures = ypath("fixtures")
++    if fixtures.is_dir():
++        out += [(p, "fixture") for p in sorted(fixtures.rglob("*.json"))]
++    for sub in ("coverage", "personas"):
++        d = ypath("interview", sub)
++        if d.is_dir():
++            out += [(p, "rows") for p in sorted(d.rglob("*")) if p.suffix in (".yaml", ".yml")]
++    for kind in KINDS:
++        d = ypath("reviews", kind)
++        if d.is_dir():
++            for p in sorted(d.glob("*.rulings.json")):
++                if families.split_stem(p.name[:-len(".rulings.json")])[1] == families.DEFAULT:
++                    out.append((p, "rulings"))
++    return out
++
++
++def witness_parts(w):
++    """(prefix kept as it is, [parts that name ids]) of a triage witness (rulings.witness_id)."""
++    kind, colon, rest = w.partition(":")
++    name, at, instance = rest.rpartition("@")
++    if not colon or not at:
++        return None
++    if kind == "partial":
++        base, dash, withheld = name.partition("-")
++        if dash:
++            return f"{kind}:{base}-", [withheld, instance]
++    return f"{kind}:{name}", [instance]
++
++
++def _witness(w, sub):
++    parts = witness_parts(w)
++    if parts is None:
++        return w
++    head, (*names, instance) = parts
++    return head + "".join(sub(n) for n in names) + "@" + sub(instance)
++
++
++def _witnesses(text):
++    """[(ruling index, witness)] of a rulings sidecar's text."""
++    try:
++        data = json.loads(text)
++    except ValueError:
++        return []
++    rows = data.get("rulings", []) if isinstance(data, dict) else []
++    out = []
++    for i, r in enumerate(rows if isinstance(rows, list) else []):
++        triage = r.get("triage") if isinstance(r, dict) else None
++        if isinstance(triage, dict):
++            out += [(i, w) for w in triage.get("witnesses") or [] if isinstance(w, str)]
++    return out
++
++
++def rewrite(text, kind, sub):
++    """The text of a place with the rename applied (module doc: what each kind leaves alone)."""
++    if kind == "rulings":
++        for _, w in _witnesses(text):
++            new = _witness(w, sub)
++            if new != w:
++                text = text.replace(json.dumps(w, ensure_ascii=False), json.dumps(new, ensure_ascii=False))
++        return text
++    if kind == "fixture":
++        return "".join(line if SKIP_LINE.match(line) else sub(line) for line in text.splitlines(keepends=True))
++    return sub(text)
++
++
++def left(text, kind, find):
++    """[(where, [old ids])] of the old ids a place still names."""
++    out = []
++    if kind == "rulings":
++        for i, w in _witnesses(text):
++            parts = witness_parts(w)
++            found = find(" ".join(parts[1])) if parts else []
++            if found:
++                out.append((f"ruling {i} witness {w}", found))
++        return out
++    for n, line in enumerate(text.splitlines(), 1):
++        if kind == "fixture" and SKIP_LINE.match(line):
++            continue
++        found = find(line)
++        if found:
++            out.append((f"line {n}", found))
++    return out
++
++
++def apply(mapping, documents, files=(), root=None, ny=None, year=None):
++    """Rewrite the places and `files`; the paths changed."""
++    sub = substituter(mapping, documents)
++    changed = []
++    for path, kind in places(root, ny, year) + [(Path(f), "file") for f in files]:
++        text = path.read_text(encoding="utf-8")
++        new = rewrite(text, kind, sub)
++        if new != text:
++            path.write_text(new, encoding="utf-8")
++            changed.append(path)
++    return changed
++
++
++def check(mapping, documents, root=None, ny=None, year=None):
++    """[(path, where, [old ids])] of every old id left in the places."""
++    find = finder(mapping, documents)
++    out = []
++    for path, kind in places(root, ny, year):
++        out += [(path, where, ids) for where, ids in left(path.read_text(encoding="utf-8"), kind, find)]
++    return out
++
++
++def _rel(path):
++    try:
++        return str(Path(path).resolve().relative_to(ROOT))
++    except ValueError:
++        return str(path)
++
++
++def main(argv):
++    if argv == ["--self-test"]:
++        import test_rename_ids
++        return test_rename_ids.main()
++    if not argv or argv[0] not in ("apply", "check"):
++        sys.exit(__doc__)
++    command, rest, map_path, files = argv[0], argv[1:], None, []
++    while rest:
++        if rest[0] == "--map" and len(rest) > 1:
++            map_path, rest = rest[1], rest[2:]
++        elif rest[0].startswith("-"):
++            sys.exit(f"rename_ids: unknown option {rest[0]}\n{__doc__}")
++        else:
++            files.append(rest.pop(0))
++    mapping, documents = load_map(map_path)
++    if command == "apply":
++        changed = apply(mapping, documents, files)
++        print(f"rename_ids: {len(changed)} file(s) changed")
++        for p in changed:
++            print("  " + _rel(p))
++        return 0
++    if files:
++        sys.exit("rename_ids: check takes no files; it reads the places the module doc lists")
++    found = check(mapping, documents)
++    n = len(places())
++    where = f"{len(mapping)} ids and {len(documents)} documents renamed, {n} files"
++    if found:
++        print(f"rename_ids: old ids left ({where}); rename them with `python3 tools/rename_ids.py apply`, or by "
++              "hand where the document moved:")
++        for path, at, ids in found:
++            print(f"  {_rel(path)}: {at}: {', '.join(ids)}")
++        return 1
++    print(f"rename_ids: no old id left ({where})")
++    return 0
++
++
++if __name__ == "__main__":
++    sys.exit(main(sys.argv[1:]))
+diff --git a/tools/self_tests.py b/tools/self_tests.py
+index 9b59495..17b014f 100755
+--- a/tools/self_tests.py
++++ b/tools/self_tests.py
+@@ -57,6 +57,7 @@ TESTS = [
+     ("step_output_self_test", "code", False, ["python3", "tools/step_output.py", "--self-test"]),
+     ("year_carry_self_test", "code", False, ["python3", "tools/transcription/year_carry.py", "--self-test"]),
+     ("rename_carry_self_test", "code", False, ["python3", "tools/transcription/test_rename_carry.py"]),
++    ("rename_ids_self_test", "code", False, ["python3", "tools/test_rename_ids.py"]),
+     ("citations_self_test", "code", True, ["python3", "tools/citations.py", "--self-test"]),
+     ("year_diff_self_test", "code", True, ["python3", "tools/year_diff.py", "--self-test"]),
+     ("propose_params_self_test", "code", False, ["python3", "tools/propose_params.py", "--self-test"]),
+diff --git a/tools/test_release_prep.sh b/tools/test_release_prep.sh
+index bb072dd..8592721 100755
+--- a/tools/test_release_prep.sh
++++ b/tools/test_release_prep.sh
+@@ -67,6 +67,7 @@ has "$tmp/out" "release-prep: PASS"
+ for call in "npm run -s compile" "node engine/dist/main.js render --ny" \
+     "tools/transcription/check_completeness.py --release --jurisdiction ny" "tools/transcription/check_false_no.py --release" \
+     "tools/check_bug_inventory.py" "tools/bug_status.py --check" "tools/check_agent_runs.py" "tools/doc_figures.py --check" \
++    "tools/rename_ids.py check --jurisdiction ny" \
+     "tools/check_limits.py --jurisdiction ny" "tools/check_consumers.py" "tools/year_changes.py --check --jurisdiction ny" \
+     "tools/citations.py --strict --jurisdiction ny" "tools/check_extraction.py" "tools/transcription/check_logs.py --jurisdiction ny" \
+     "tools/self_tests.py --group bookkeeping --times /dev/null" "tools/self_tests.py --group code --times /dev/null" \
+@@ -79,7 +80,7 @@ for call in "mutate" "interview-length" "evidence" "review-stage" "tools/engines
+ done
+ has "$tmp/out" "== release_reviews: PASS ("
+ has "$tmp/out" "== test_fixtures: PASS ("
+-[ "$(grep -c '^  PASS ' "$tmp/out" || true)" = 23 ] || fail "expected 23 steps listed as PASS (the reviews and 22 steps)"
++[ "$(grep -c '^  PASS ' "$tmp/out" || true)" = 25 ] || fail "expected 25 steps listed as PASS (the reviews and 24 steps)"
+ first="$(grep -n 'tools/check_bug_inventory.py' "$CALLS" | head -1 | cut -d: -f1)"
+ last_review="$(grep -n 'check_false_no.py --release --jurisdiction ny' "$CALLS" | head -1 | cut -d: -f1)"
+ [ "${first:-0}" -gt "${last_review:-0}" ] || fail "the steps ran before the release reviews ended"
+diff --git a/tools/test_rename_ids.py b/tools/test_rename_ids.py
+new file mode 100755
+index 0000000..f5cf45f
+--- /dev/null
++++ b/tools/test_rename_ids.py
+@@ -0,0 +1,190 @@
++#!/usr/bin/env python3
++"""Unit tests of tools/rename_ids.py: the three forms of an id, renamed and found; and apply and check on a small
++tree of their own (fixtures with defaults, coverage rows, personas, rulings sidecars of two families, New York)."""
++import json
++import sys
++import tempfile
++import unittest
++from pathlib import Path
++
++sys.path.insert(0, str(Path(__file__).resolve().parent))
++sys.path.insert(0, str(Path(__file__).resolve().parent / "transcription"))
++import rename_ids as R  # noqa: E402
++
++MAP = {"f8853c.pre1996": "f8853c.contract_before_ltc_date",
++       "f8853c.pre1996_if_reimbursed": "f8853c.contract_before_ltc_date_if_reimbursed",
++       "rec.not_2024": "rec.before_prior_year",
++       "a.moved_2025": "b.moved_now"}
++DOCS = {"clcw26": "clcw_next_year"}
++
++
++class Forms(unittest.TestCase):
++    def setUp(self):
++        self.sub = R.substituter(MAP, DOCS)
++        self.find = R.finder(MAP, DOCS)
++
++    def test_whole(self):
++        self.assertEqual(self.sub("f8853c.pre1996 and rec.not_2024."),
++                         "f8853c.contract_before_ltc_date and rec.before_prior_year.")
++        for other in ("f8853c.pre1996x", "x.f8853c.pre1996", "f8853c.pre1996.more", "classm.f8853c.pre1996"):
++            self.assertEqual(self.sub(other), other, other)
++            self.assertEqual(self.find(other), [], other)
++
++    def test_collection_indexed(self):
++        # the miss of 2026-11-16: a fixture key and a refusal's gate, written with a collection index
++        self.assertEqual(self.sub('"f8853c[p0].pre1996": true, "gate": "f8853c[p0].pre1996_if_reimbursed"'),
++                         '"f8853c[p0].contract_before_ltc_date": true, '
++                         '"gate": "f8853c[p0].contract_before_ltc_date_if_reimbursed"')
++        self.assertEqual(self.sub("f8853c[*].pre1996 f8853c[].pre1996"),
++                         "f8853c[*].contract_before_ltc_date f8853c[].contract_before_ltc_date")
++
++    def test_path_step(self):
++        self.assertEqual(self.sub("person[taxpayer].f8853c[c1].pre1996: true"),
++                         "person[taxpayer].f8853c[c1].contract_before_ltc_date: true")
++        self.assertEqual(self.sub("x.f8853c[c1].pre1996"), "x.f8853c[c1].pre1996")  # a dotted id, not a path step
++        self.assertEqual(self.sub("other[c1].pre1996"), "other[c1].pre1996")  # another document's local name
++
++    def test_document(self):
++        self.assertEqual(self.sub("$clcw26 clcw26.line1 $x@clcw26[a] person[t].clcw26[a].line1"),
++                         "$clcw_next_year clcw_next_year.line1 $x@clcw_next_year[a] person[t].clcw_next_year[a].line1")
++        for other in ("clcw26x", "xclcw26", "a.clcw26"):
++            self.assertEqual(self.sub(other), other, other)
++
++    def test_moved_document_is_found_not_rewritten(self):
++        self.assertEqual(self.sub("a[k].moved_2025"), "a[k].moved_2025")
++        self.assertEqual(self.find("a[k].moved_2025"), ["a.moved_2025"])
++        self.assertEqual(self.sub("a.moved_2025"), "b.moved_now")
++
++    def test_find_every_form(self):
++        self.assertEqual(self.find("f8853c[p0].pre1996 rec.not_2024 person[t].f8853c[q].pre1996_if_reimbursed $clcw26"),
++                         ["clcw26", "f8853c.pre1996", "f8853c.pre1996_if_reimbursed", "rec.not_2024"])
++        text = "f8853c[p0].pre1996 rec.not_2024 person[t].f8853c[q].pre1996_if_reimbursed $clcw26 clcw26[x]"
++        self.assertEqual(self.find(self.sub(text)), [])
++
++    def test_witness(self):
++        w = "partial:x2s1o.f8853c.adb-f8853c[p0].pre1996@f8853c[p0]"
++        self.assertEqual(R._witness(w, self.sub),
++                         "partial:x2s1o.f8853c.adb-f8853c[p0].contract_before_ltc_date@f8853c[p0]")
++        # a case id is a label: kept, and not reported
++        w = "fixture:classm.clcw26.2@clcw26"
++        self.assertEqual(R._witness(w, self.sub), "fixture:classm.clcw26.2@clcw_next_year")
++        self.assertEqual(R._witness("fixture:classm.clcw26.2@x", self.sub), "fixture:classm.clcw26.2@x")
++
++    def test_load_map(self):
++        with tempfile.TemporaryDirectory() as d:
++            p = Path(d) / "m.json"
++            p.write_text(json.dumps({"description": ["x"], "renames": {
++                "clcw26": {"to": "clcw_next_year", "kind": "document"},
++                "rec.not_2024": {"to": "rec.before_prior_year", "kind": "input"}}}))
++            self.assertEqual(R.load_map(p), ({"rec.not_2024": "rec.before_prior_year"}, {"clcw26": "clcw_next_year"}))
++            p.write_text(json.dumps({"rec.not_2024": "rec.before_prior_year"}))
++            self.assertEqual(R.load_map(p), ({"rec.not_2024": "rec.before_prior_year"}, {}))
++            p.write_text(json.dumps({"renames": [{"old": "rec.not_2024", "new": "rec.before_prior_year"}]}))
++            self.assertEqual(R.load_map(p), ({"rec.not_2024": "rec.before_prior_year"}, {}))
++
++
++FIXTURE = """{
++  "cases": [
++    {
++      "id": "x2s1o.f8853c.pre1996",
++      "description": "names f8853c.pre1996 in prose",
++      "evidence_note": "the reviewer saw f8853c[p0].pre1996",
++      "inputs": {
++        "f8853c[p0].pre1996": true,
++        "rec.not_2024": false
++      },
++      "expect": {"f8853c[p0].line25": {"kind": "refusal", "gate": "f8853c[p0].pre1996_if_reimbursed"}}
++    }
++  ]
++}
++"""
++DEFAULTS = '{\n  "defaults": [\n    {"input": "f8853c[*].pre1996", "value": false}\n  ]\n}\n'
++ROWS = "rows:\n  - id: ltc\n    answers:\n      person[taxpayer].f8853c[c].pre1996: true\n"
++PERSONA = "answers:\n  f8853c[p0].pre1996: false\n  rec.not_2024: true\n"
++
++
++def rulings(witness, text):
++    return json.dumps({"kind": "transcription", "form": "f8853c", "rulings": [
++        {"printed": "25", "ruling": text, "triage": {"verdict": "differs", "kinds": [], "witnesses": [witness],
++                                                       "policy": "p"}}]}, indent=1, ensure_ascii=False) + "\n"
++
++
++class Tree(unittest.TestCase):
++    def setUp(self):
++        self.dir = tempfile.TemporaryDirectory()
++        r = self.root = Path(self.dir.name)
++        files = {
++            "fixtures/2025/f8853c.json": FIXTURE,
++            "fixtures/2025/defaults.json": DEFAULTS,
++            "fixtures/ny/2025/it201.json": '{"inputs": {"rec.not_2024": true}}\n',
++            "interview/2025/coverage/ltc.yaml": ROWS,
++            "interview/2025/personas/01_ltc.yaml": PERSONA,
++            "reviews/2025/transcription/f8853c.rulings.json":
++                rulings("partial:x2s1o.f8853c.adb-f8853c[p0].pre1996@f8853c[p0]", "the reply reads f8853c.pre1996"),
++            "reviews/2025/transcription/f8853c.deepseek.rulings.json":
++                rulings("partial:x2s1o.f8853c.adb-f8853c[p0].pre1996@f8853c[p0]", "historical"),
++            "forms/2025/f8853c.yaml": "lines:\n  - id: f8853c.pre1996\n",
++        }
++        for rel, text in files.items():
++            (r / rel).parent.mkdir(parents=True, exist_ok=True)
++            (r / rel).write_text(text, encoding="utf-8")
++        self.files = files
++
++    def tearDown(self):
++        self.dir.cleanup()
++
++    def text(self, rel):
++        return (self.root / rel).read_text(encoding="utf-8")
++
++    def test_check_apply_check(self):
++        found = R.check(MAP, DOCS, root=self.root, ny=False, year=2025)
++        where = sorted({p.relative_to(self.root).as_posix() for p, _, _ in found})
++        self.assertEqual(where, ["fixtures/2025/defaults.json", "fixtures/2025/f8853c.json",
++                                 "interview/2025/coverage/ltc.yaml", "interview/2025/personas/01_ltc.yaml",
++                                 "reviews/2025/transcription/f8853c.rulings.json"])
++        changed = R.apply(MAP, DOCS, root=self.root, ny=False, year=2025)
++        self.assertEqual(len(changed), 5)
++        self.assertEqual(R.check(MAP, DOCS, root=self.root, ny=False, year=2025), [])
++        fixture = self.text("fixtures/2025/f8853c.json")
++        self.assertIn('"f8853c[p0].contract_before_ltc_date": true', fixture)
++        self.assertIn('"gate": "f8853c[p0].contract_before_ltc_date_if_reimbursed"', fixture)
++        self.assertIn('"rec.before_prior_year": false', fixture)
++        for kept in ('"id": "x2s1o.f8853c.pre1996"', "names f8853c.pre1996 in prose", "saw f8853c[p0].pre1996"):
++            self.assertIn(kept, fixture)
++        self.assertIn("f8853c[*].contract_before_ltc_date", self.text("fixtures/2025/defaults.json"))
++        self.assertIn("person[taxpayer].f8853c[c].contract_before_ltc_date: true", self.text("interview/2025/coverage/ltc.yaml"))
++        side = json.loads(self.text("reviews/2025/transcription/f8853c.rulings.json"))["rulings"][0]
++        self.assertEqual(side["triage"]["witnesses"], ["partial:x2s1o.f8853c.adb-f8853c[p0].contract_before_ltc_date@f8853c[p0]"])
++        self.assertEqual(side["ruling"], "the reply reads f8853c.pre1996")
++        for rel in ("reviews/2025/transcription/f8853c.deepseek.rulings.json", "forms/2025/f8853c.yaml",
++                    "fixtures/ny/2025/it201.json"):
++            self.assertEqual(self.text(rel), self.files[rel], rel)
++        self.assertEqual(R.apply(MAP, DOCS, root=self.root, ny=False, year=2025), [])
++
++    def test_new_york(self):
++        found = R.check(MAP, DOCS, root=self.root, ny=True, year=2025)
++        self.assertEqual([(p.name, ids) for p, _, ids in found], [("it201.json", ["rec.not_2024"])])
++        R.apply(MAP, DOCS, root=self.root, ny=True, year=2025)
++        self.assertEqual(R.check(MAP, DOCS, root=self.root, ny=True, year=2025), [])
++        self.assertEqual(self.text("fixtures/2025/f8853c.json"), FIXTURE)
++
++    def test_files_given(self):
++        R.apply(MAP, DOCS, [str(self.root / "forms/2025/f8853c.yaml")], root=self.root, ny=False, year=2025)
++        self.assertIn("f8853c.contract_before_ltc_date", self.text("forms/2025/f8853c.yaml"))
++
++    def test_moved_document_reported(self):
++        (self.root / "fixtures/2025/a.json").write_text('{"a[k].moved_2025": 1}\n', encoding="utf-8")
++        R.apply(MAP, DOCS, root=self.root, ny=False, year=2025)
++        found = R.check(MAP, DOCS, root=self.root, ny=False, year=2025)
++        self.assertEqual([(p.name, ids) for p, _, ids in found], [("a.json", ["a.moved_2025"])])
++
++
++def main():
++    result = unittest.TextTestRunner(verbosity=1).run(unittest.defaultTestLoader.loadTestsFromModule(sys.modules[__name__]))
++    ok = result.wasSuccessful()
++    print(f"rename ids self-test: {'ok' if ok else 'FAILED'} ({result.testsRun} tests)")
++    return 0 if ok else 1
++
++
++if __name__ == "__main__":
++    sys.exit(main())
+diff --git a/tools/tier_paths.py b/tools/tier_paths.py
+index e792f0f..25b725c 100755
+--- a/tools/tier_paths.py
++++ b/tools/tier_paths.py
+@@ -121,6 +121,7 @@ WALKERS = {
+     ("tools/transcription/rename_carry.py", "--name-only"): "the ls-tree listing above",
+     ("tools/transcription/rename_carry.py", '"archive"'): "git archive of the --from revision into a scratch directory; run by hand",
+     ("tools/transcription/test_rename_carry.py", "os.walk("): "walks reviews/ of a temporary tree of its own",
++    ("tools/rename_ids.py", ".rglob("): "the files of fixtures/<year>, interview/<year>/coverage and interview/<year>/personas only",
+     ("tools/archive_text.py", 'glob("tools/**'): "its self-test scans tools/**/*.py",
+     ("tools/check_all.sh", "--name-only"): "the run's guard: paths changed during the run, not an input of a step",
+     ("tools/commit_tested.sh", "--name-only"): "commits a tested tree; not a check-all step",
+diff --git a/tools/transcription/rename_carry.py b/tools/transcription/rename_carry.py
+index d295122..be78ff3 100644
+--- a/tools/transcription/rename_carry.py
++++ b/tools/transcription/rename_carry.py
+@@ -13,7 +13,7 @@ The proof for a unit has two parts.
+ A. The subject its review recorded equals the subject the current tree gives once each new id is put back to its
+    old id. The current tree is copied (copy-on-write) to a scratch tree; there every new id is replaced by its
+    old id, as a whole id, in forms/, rendered/, canonical/, interview/ and ambiguities/ (also in the collection
+-   form `doc[entry].name`); and every subject is computed in both trees by the review tools' own code
++   form `doc[entry].name`, alone or as a step of a path); and every subject is computed in both trees by the review tools' own code
+    (subjects.py, question_review, screen_review, gates, completeness_review). So the review judged exactly what
+    the tree holds now, but for the names.
+ B. For transcription, render and class M, the line's year-carry parts (year_carry.parts: its subject with the
+@@ -80,25 +80,11 @@ ID = r"[A-Za-z0-9_]"
+ 
+ def substituter(mapping):
+     """A function replacing each id of `mapping` by its value, as a whole id: not inside a longer id
+-    (`a.b_if_c`, `x.a.b`), but followed by a sentence's full stop; and in the collection form `doc[entry].name`."""
+-    if not mapping:
+-        return lambda text: text
+-    ids = sorted(mapping, key=len, reverse=True)
+-    whole = re.compile(r"(?<![A-Za-z0-9_.])(" + "|".join(map(re.escape, ids)) + r")(?!" + ID + r"|\." + ID + ")")
+-    local = {}
+-    for old, new in mapping.items():
+-        doc, _, name = old.partition(".")
+-        ndoc, _, nname = new.partition(".")
+-        if doc == ndoc:
+-            local[(doc, name)] = nname
+-    inst = re.compile(r"(?<![A-Za-z0-9_.])(" + ID + r"+)(\[[^\]\s]*\])\.(" + ID + r"+)(?!" + ID + ")")
+-
+-    def sub(text):
+-        text = whole.sub(lambda m: mapping[m.group(1)], text)
+-        if local:
+-            text = inst.sub(lambda m: m.group(1) + m.group(2) + "." + local.get((m.group(1), m.group(3)), m.group(3)), text)
+-        return text
+-    return sub
++    (`a.b_if_c`, `x.a.b`), but followed by a sentence's full stop; and in the collection form `doc[entry].name`,
++    alone or as a step of a path (`p[q].doc[entry].name`). The rename itself uses the same function
++    (tools/rename_ids.py)."""
++    import rename_ids
++    return rename_ids.substituter(mapping)
+ 
+ 
+ # ---------------------------------------------------------------- the map
+diff --git a/tools/transcription/test_rename_carry.py b/tools/transcription/test_rename_carry.py
+index 0e83580..ce685bb 100644
+--- a/tools/transcription/test_rename_carry.py
++++ b/tools/transcription/test_rename_carry.py
+@@ -281,6 +281,8 @@ def main():
+         expect(sub("x.a_2025 and x.a_2025_if_y and y.x.a_2025 and x.a_2025. and p[q].a_2025 and x[k].a_2025")
+                == "x.a_now and x.a_2025_if_y and y.x.a_2025 and x.a_now. and p[q].a_2025 and x[k].a_now",
+                "substitution: whole ids and the collection form only")
++        expect(sub("p[q].x[k].a_2025 and y.x[k].a_2025") == "p[q].x[k].a_now and y.x[k].a_2025",
++               "substitution: the collection form as a step of a path, not after a dotted id")
+         root, before = os.path.join(work, "tree"), os.path.join(work, "before")
+         build(root)
+         before_state = inside(root, "setup")

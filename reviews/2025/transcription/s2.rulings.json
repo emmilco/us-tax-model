@@ -42,6 +42,52 @@
   {
    "printed": "2",
    "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "355002e3065b62bc3f4b29a975a2bc79b027449997daf04b895bd0e0f9a94d14",
+   "ruling": "Ruling: scope; the project refuses alternative minimum tax through the computed screen s2.amt (Form 6251 refusal on line 2; this round adds the Schedule 1 line 8a net operating loss deduction, Form 6251 line 2e, to its line 4 estimate, s2.amt_l4_sum) and enters zero otherwise; the reply figures Form 6251 itself with its own refusals. Triage (pass 4d367142f549) 2,550/3,238 agree with no value difference anywhere: on completed returns 208 candidate-unknown (the reply reads Form 6251 inputs the interview does not ask, e.g. s2.amt_boat) and 2 candidate-refuses; the rest are on refused or incomplete records (171 project-refuses at s2.amt). f1040s2 line 2; i6251 Who Must File. As in the Goal-1 round.",
+   "context": "8468a22a3316098267b24d32f4b411dd071e5feec18ce824f8d1cf43e01cb298",
+   "date": "2026-11-15",
+   "run": "91dd75282373b1e12767ec8e2cc9a60229fe476ec6cc5f0a75ef6884a23207e1",
+   "subject_key": "12f3609a5d53bd11aea80eca3c69725429fb6db8db1f303f5ae3531c73ecc548",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@s2",
+     "fixture:classm.f2441.4.deepseek@s2",
+     "fixture:classm.f2441.5.deepseek@s2",
+     "fixture:classm.w2.1.deepseek@s2",
+     "fixture:classm.f8889.1.deepseek@s2",
+     "fixture:classm.f8889.3.deepseek@s2",
+     "fixture:classm.f8889.5.deepseek@s2",
+     "fixture:classm.f4952.4.deepseek@s2",
+     "fixture:classm.g28.2.deepseek@s2",
+     "fixture:classm.s2.1.deepseek@s2",
+     "fixture:classm.s2.2.deepseek@s2",
+     "fixture:classm.s2.3.deepseek@s2",
+     "fixture:stage9.eic.mut.classm_f8995a_2_line2_zero@s2",
+     "fixture:stage18.refuse.allocation@s2",
+     "fixture:stage18.refuse.other_coverage@s2",
+     "fixture:stage18.refuse.other_mec_enrolled@s2",
+     "fixture:stage18.refuse.void_1095a@s2",
+     "fixture:stage18.refuse.premium_adjust@s2",
+     "fixture:stage18.refuse.year_of_marriage@s2",
+     "fixture:stage14.s179.refuse_orphan@s2",
+     "fixture:sales.loss.mfs.0@s2",
+     "partial:stage14.asset.hy_5yr-s2.iso_vested@s2",
+     "partial:stage14.asset.bonus_100-s2.iso_vested@s2",
+     "partial:stage14.asset.prior_7yr-s2.iso_vested@s2"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2",
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
    "second_expr_sha256": "86d6a5c2f4a993017e735d49b7969d300974e39bd7559aa0b3663fce018ca1cc",
    "ruling": "Ruling: scope; f1040s2 line 2 and i6251 Who Must File. The project does not figure the alternative minimum tax: line 2 is $0 and refuses (Form 6251) when the computed screen s2.amt may be true (docs/2026-11-15_amt_computed_screen.md); the reply computes Form 6251 inline with its own refusals. Triage (pass fbc614250ee5): 2,411/2,922 agree; no value difference; completed: 55 candidate-unknown (the reply reads s2.amt_business and s2.amt_boat, asked only under their parents) and 28 candidate-refuses (the reply's own scope, e.g. the AMT foreign tax credit, s2.h_has_ftc); the rest on incomplete or refused records. The screen itself is not ruled here.",
    "context": "e7f6edb0bce47ea58ef489f1e5d009e45447c7050ff90044d3e1767ffd8018ed",

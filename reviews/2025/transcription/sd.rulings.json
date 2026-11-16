@@ -4,6 +4,38 @@
  "rulings": [
   {
    "printed": "10(d)",
+   "project_expr_sha256": "2ab02207a379b5f66d689bc089e9de35fcfb78429d34883a0ea7ac4248326a9a",
+   "second_expr_sha256": "352dc021ea6446642a35451d7b42a31ccdc99a549e29c15c1fccb976fe6d3d81",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box F/L entries; the project adds the condition that the entry is on the detail route (Form 8949). Box F/L entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (F/L) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "3441bbe2b289ecc57e09dd82b3d3e9a2e1886ed82c4ff9bc9af37b94b9d1732a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "10(d)",
    "project_expr_sha256": "55607dc30782701aeb61de291be1306aeeee80f5ef8359782b77a65f0bacfea2",
    "second_expr_sha256": "352dc021ea6446642a35451d7b42a31ccdc99a549e29c15c1fccb976fe6d3d81",
    "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (d). The reply adds the digital-asset box L to box F; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
@@ -163,6 +195,38 @@
      "fixture:classm.f8889.2@sd",
      "fixture:classm.gift.1@sd",
      "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "10(e)",
+   "project_expr_sha256": "941cfe797b62d955faffb37b07ac1f4231914759da635c5cf35ddb26eb07ccbd",
+   "second_expr_sha256": "8013ad74d9aa88118e1496d2634f966bf893dbad1ae6419f68ca38a5b79bf0bc",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box F/L entries; the project adds the condition that the entry is on the detail route (Form 8949). Box F/L entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (F/L) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "9679cf9956ac03fe16b5b4d72280b7b01b79b5331d97c3c03326167f16876a54",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
     ],
     "policy": "executable-triage-v2"
    }
@@ -371,6 +435,38 @@
   },
   {
    "printed": "10(g)",
+   "project_expr_sha256": "551e9e7d8c390b4c65597e72621b5252082da474f021c73e9d3993456c9d1a18",
+   "second_expr_sha256": "2b584b38beb27052fcd7d6a1aef1102badd819eccd5c6f7a433bb47428963eeb",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box F/L entries; the project adds the condition that the entry is on the detail route (Form 8949). Box F/L entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (F/L) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "d61cfbc27f71c55b91906f18e594a2fb564fa5d8786c48a49d25988a6cbd06d3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "10(g)",
    "project_expr_sha256": "6e4602a8109f2c7c26b3623afb9ddb88b5686ee30487e88c00e3b91874ea06f8",
    "second_expr_sha256": "2b584b38beb27052fcd7d6a1aef1102badd819eccd5c6f7a433bb47428963eeb",
    "ruling": "Ruling: scope; f1040sd p. 1, line 10, column (g). The reply adds the digital-asset box L to box F; the project sums box F behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,553 of 2,959 agree; 130 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 276 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
@@ -479,6 +575,38 @@
      "fixture:classm.f8889.2@sd",
      "fixture:classm.gift.1@sd",
      "fixture:stage21.f1.special_withheld@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "10(h)",
+   "project_expr_sha256": "ee4cc034ed5293945223c2623d54b8d1e2c2b3d31cda48b62af55b975318bc3b",
+   "second_expr_sha256": "c38aaba4da5a5b17d81d29ffc51b53684a9a8c3063e4c904180ae82c0df3c5ba",
+   "ruling": "Ruling: representation; equivalent: the reply's line 10 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 10, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "c882cb4dc339a5ff0d691a151ff00f6ae7e2c8d9c4d67ad303c420560dd4d8f0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
     ],
     "policy": "executable-triage-v2"
    }
@@ -658,6 +786,70 @@
    "subject_key": "bfe047e2a27f4f45c5afd20d01f127878b398106ac95642e48ab5272cbd44886"
   },
   {
+   "printed": "1a(d)",
+   "project_expr_sha256": "b0eec19cde4bc2a5d595ade51bf4aca1b65894c64e236eb5afe0721c62e74480",
+   "second_expr_sha256": "87821a414205f4030ff343095081294cefa6bb092d583c5e719706593da2b319",
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "03d26339b7740ed261cacf9ee982355db25f54f4b11a035f8d567d8ab66015d8",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1a(e)",
+   "project_expr_sha256": "a897543c78c10304cbb4bd529c35e588ad9306c3f68309c6cbb7d8002bc2740b",
+   "second_expr_sha256": "6802d1c61f2f28593caa39123fef673693c8c9e5fd731647b221d21ac91809ea",
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "93c8737176a35c72da78c4b1fc662c8ac11ba757b3bebca238761cf5aa4a6ba6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "1a(e)",
    "project_expr_sha256": "dc426a35ef9d1e9926de4430ed94870655f767c44942e1941cf3625f8ad26473",
    "second_expr_sha256": "02237e727562b7ca2df62fefd3043cd8c637a4caf5ac65a1bee8e2d060fdc3cd",
@@ -742,6 +934,38 @@
      "fixture:classm.f8889.2@sd",
      "fixture:classm.gift.1@sd",
      "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1a(g)",
+   "project_expr_sha256": "98956a9375b21e56ffd44554b9e1e690e1cdfc9a8ea34525cf13637558cb7561",
+   "second_expr_sha256": "09fba24ad395cf8e81b4f0917b3ef48ae61675c785c9f8d543911ea4535c33bc",
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "14c34f3f25beee3faca504cd9d875a18a12515f60d4fa549e2655dabbc530437",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
     ],
     "policy": "executable-triage-v2"
    }
@@ -968,6 +1192,38 @@
    "ruling": "Ruling: scope; f1040sd p. 1, line 1a: \"Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\". The candidate sums column (h) over boxes A, B, C, G, H and I on the aggregate route with no screening; the project sums box A on the aggregate route and gates the total on sd.screen (sd.count), which refuses through sales.one on digital-asset boxes G–L (sales.digital, cited f8949 Parts I and II, boxes G–L), on special sales, unsupported codes and invalid aggregate use (sales.bad_aggregate, cited i1040sd p. 10), and through sd.other_forms and sd.carryover. Its added boxes B and C on the aggregate route are entries whose basis was not reported, which i1040sd p. 11, Example 2: \"basis wasn’t reported to the IRS. Don’t report this transaction on line 1a or line 8a\"; the project refuses such entries by sales.bad_aggregate, so they reach no total. Triage executable-triage-v1 (triage/sd.json): 1,540 of 1,703 comparisons agree and no value differs; the 83 project-refuses are those cited gates (classm.asset.2, a box J sale; classm.f8889.4.deepseek; generated returns with digital, bad_aggregate, bad_code or special sales; sd.other_forms and sd.carryover answered yes), and the 80 project-unknown are partial records withholding the screen answers sd.other_forms or sd.carryover (40 each, e.g. classm.f2441.1.deepseek less sd.other_forms), which the project asks before any total. The digital boxes the text names are out of scope, not omitted; widening the filter is recorded as T-003. Project stands.",
    "context": "4befb59ab85087e512610802778c4e4f67ac6dab0dc483d54bbabc05b818d927",
    "subject_key": "e9bfd1df320eb6014a9ce386f0331d905f042484a4f8e22c00a9dcf3a08964e6"
+  },
+  {
+   "printed": "1a(h)",
+   "project_expr_sha256": "ae0f54eb133d485cc99e899c176fb65c918c69b64b48138d83fdd94938e184e9",
+   "second_expr_sha256": "c0bf33f47568e8cab1262d4bec4509faa48c629bbe955276eea811a9ec8bf6a7",
+   "ruling": "Ruling: representation; equivalent: the reply's line 1a (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 1a, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "845a4a690769873ed05e609c91c32282ac98ee02b27d8c94f30e28aa93151c33",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "1b(d)",
@@ -1370,6 +1626,38 @@
   },
   {
    "printed": "1b(h)",
+   "project_expr_sha256": "1012a904b1354bbb4bd4cd524f452969c1223a288a794f0a5c5a955777de37e2",
+   "second_expr_sha256": "0b0fcedfefa644bba425a8ffc14c569452421faaf7e67f9e4054a5cc58bb7e10",
+   "ruling": "Ruling: representation; equivalent: the reply's line 1b (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 1b, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "180b700c1ca659ca828d2be0901281345647d21c3168785b8bb10c331c333826",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1b(h)",
    "project_expr_sha256": "15a5a29bd62edd0f08e61f4b1d0f2bd1701c9b89d677629ae722a86895e269c7",
    "second_expr_sha256": "0b0fcedfefa644bba425a8ffc14c569452421faaf7e67f9e4054a5cc58bb7e10",
    "ruling": "Ruling: scope; f1040sd p. 1, line 1b, column (h). The candidate adds the digital-asset boxes (G–L) to box A on the detail route without the Schedule D screen; the project sums box A behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes and invalid aggregate use, and sd.other_forms. executable-triage-v2 (`reviews/2025/transcription/triage/sd.json`; 1,495 fixtures, 500 generated returns seed 20261026, 120 partial records): 2,025 of 2,115 comparisons agree; 50 project-refuses, 40 project-unknown (by return: {\"incomplete\": {\"project-unknown\": 31}, \"refused\": {\"project-refuses\": 50, \"project-unknown\": 9}}). Project refusals: sd.other_forms 18, sales[s1].digital 17, sales[s2].digital 7, sales[a].digital 6, sales[s3].digital 2; project-unknown: sd.other_forms 40 (partial records withholding the screen the interview asks before any total). No value differs, so no completed return differs; no refusal is the new sales.wash_bad gate. Same expression and the same reading as Stage 20 (scope). Scratch uncapped re-run (/tmp/adj-bklg-income/full/) gives the same counts. Project stands. (carried over from reviews/2025/transcription/sd.index.json at 26f283ec, review of 2026-11-03)",
@@ -1478,6 +1766,38 @@
      "fixture:classm.f8889.2@sd",
      "fixture:classm.gift.1@sd",
      "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2(d)",
+   "project_expr_sha256": "32fc7803f1701fcdbe48be2dffb9888e860ff04766a97d14fe12f7a81af32a83",
+   "second_expr_sha256": "a891e4a943f2baae63b9209bc4938e695dce655a587a07d12070eef8ff826c34",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box B/H entries; the project adds the condition that the entry is on the detail route (Form 8949). Box B/H entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (B/H) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "1aeb782540733cdbb7847c78f5b9b944db9bd050a823e688933c2669dc851b2b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
     ],
     "policy": "executable-triage-v2"
    }
@@ -1717,6 +2037,70 @@
    }
   },
   {
+   "printed": "2(e)",
+   "project_expr_sha256": "ff22c628cf8439d12dd4f3af4fc4b859cac8f4be041f605cb9aba8d6335a9efa",
+   "second_expr_sha256": "1259784dbbbe8c9f426da8e35181171519ac56df70aeeeeb01b3256ee5d8cb0c",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box B/H entries; the project adds the condition that the entry is on the detail route (Form 8949). Box B/H entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (B/H) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "ec49fc608207ca5410d6f4fc44cc1002aceb66603ff9d42400a767fe055afe0f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2(g)",
+   "project_expr_sha256": "440f2005c2b09ac0d74620c87da1fd8c550271bcc764acc8425bd4b0643fd20c",
+   "second_expr_sha256": "2dac89af0a1a773c9ccdc9c03bde013ec7539bbcfc8e5d1a3286e297b1903104",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box B/H entries; the project adds the condition that the entry is on the detail route (Form 8949). Box B/H entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (B/H) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "e78952f9236ebf806845b7205fb3caaeb9aadf8aee07f1f1721dd2e10ca9890f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "2(g)",
    "project_expr_sha256": "703211959966643b98a8bf9193e7d446b6e993acdadf64dea7665c15757cd7ff",
    "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
@@ -1930,6 +2314,38 @@
    "ruling": "Ruling: scope; f1040sd p. 1, line 2: \"Totals for all transactions reported on Form(s) 8949 with Box B or Box H checked\". The candidate sums column (h) over boxes B and H on the detail route with no screening; the project sums box B on the detail route and gates the total on sd.screen (sd.count), which refuses through sales.one on digital-asset boxes G–L (sales.digital, cited f8949 Parts I and II, boxes G–L), on special sales, unsupported codes and invalid aggregate use (sales.bad_aggregate, cited i1040sd p. 10), and through sd.other_forms and sd.carryover. Triage executable-triage-v1 (triage/sd.json): 1,540 of 1,703 comparisons agree and no value differs; the 83 project-refuses are those cited gates (classm.asset.2, a box J sale; classm.f8889.4.deepseek; generated returns with digital, bad_aggregate, bad_code or special sales; sd.other_forms and sd.carryover answered yes), and the 80 project-unknown are partial records withholding the screen answers sd.other_forms or sd.carryover (40 each, e.g. classm.f2441.1.deepseek less sd.other_forms), which the project asks before any total. The digital boxes the text names are out of scope, not omitted; widening the filter is recorded as T-003. Project stands.",
    "context": "4befb59ab85087e512610802778c4e4f67ac6dab0dc483d54bbabc05b818d927",
    "subject_key": "acebdcc6313e3f366500260fffe47a359f21da03bd380272e7d50909e4821c06"
+  },
+  {
+   "printed": "2(h)",
+   "project_expr_sha256": "e4da69ae56b9fe984d0173263f4b4ad750e41835949fc68c41e88fd2efaa4e06",
+   "second_expr_sha256": "8ee159ffe599c8d53406f8d6e67cc4f90a1b86b5d3dc17999c8b715220974ab2",
+   "ruling": "Ruling: representation; equivalent: the reply's line 2 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 2, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "c9a507412c044823d4202014673ee5359066da1a25f25b8bb76d2e9d10d6a7ed",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "20",
@@ -2170,6 +2586,38 @@
    }
   },
   {
+   "printed": "3(d)",
+   "project_expr_sha256": "e4142da9192b6f7d4ddff25319e8e83aa5d1f04dbee4337318a185f8e03588be",
+   "second_expr_sha256": "e9d3882a8a8d80834e81fbdc69eafa8639eb8e0776e79b2eea4858d99423c077",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box C/I entries; the project adds the condition that the entry is on the detail route (Form 8949). Box C/I entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (C/I) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "94c3a1aa05e98a7c4589b7b8412667ac4caac3d521270d123fe5cc5eb7efc112",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "3(e)",
    "project_expr_sha256": "362361bb87a2bc2efd079bb4312256cabfca6241cee7fdf5a85f19054ab37f87",
    "second_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
@@ -2298,6 +2746,38 @@
      "fixture:classm.f8889.2@sd",
      "fixture:classm.gift.1@sd",
      "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3(e)",
+   "project_expr_sha256": "c898bac7ce9cc2f6aa8541fdd3f405512b81a0584d6a3c7d8fe00d0483a82510",
+   "second_expr_sha256": "41a2c695b537fef5e5a9167ca457a66f61c3a994d8f0941a17a45a71ee61cdd4",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box C/I entries; the project adds the condition that the entry is on the detail route (Form 8949). Box C/I entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (C/I) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "fc678b2c5ce0bbc844480aea5b0791fbc051cd738097435647b845181054f88c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2434,6 +2914,38 @@
    }
   },
   {
+   "printed": "3(g)",
+   "project_expr_sha256": "ec4a1ce755539c661c0cf1c40ccc06a22bc8002c850cb1d269b24181f343a565",
+   "second_expr_sha256": "fc2fe6b7e06e3b6cb61bdd216617f8b0ae73b204613cdaa23fd8c90af831586d",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box C/I entries; the project adds the condition that the entry is on the detail route (Form 8949). Box C/I entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (C/I) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "e629826cae18cb52d47c6a959144c67eed94034208b704dcf639acfbdc38cdc1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "3(h)",
    "project_expr_sha256": "12e7d4c9dfde8762172018c8541cebf1cec3ad1eec51095b868f2c0328600473",
    "second_expr_sha256": "3c31aed5f8e099b634b39206cf62b7110e24e33991b94bdd8b4c9fa97dc8193a",
@@ -2461,6 +2973,38 @@
      "fixture:classm.f8889.2@sd",
      "fixture:classm.gift.1@sd",
      "fixture:stage21.f1.special_withheld@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "3(h)",
+   "project_expr_sha256": "1978c7f9b8d0a7b9e00879bf626bf5f0047cff81cc60f86576d54d0c08d0796e",
+   "second_expr_sha256": "3c31aed5f8e099b634b39206cf62b7110e24e33991b94bdd8b4c9fa97dc8193a",
+   "ruling": "Ruling: representation; equivalent: the reply's line 3 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 3, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "7f1ccc6667e9fc8b207c3cc9a9c7ef4ea84cf2725662973e03b6fa89217210c3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2560,6 +3104,38 @@
    "ruling": "Ruling: scope; f1040sd p. 1, line 7: \"Net short-term capital gain or (loss). Combine lines 1a through 6 in column (h)\". The candidate subtracts its positive line 6; the project adds its negative line 6 (T-004, owner's sign decision): the same sum. Triage executable-triage-v2 (triage/sd.json; 1,159 fixtures, 500 generated returns seed 20261026, 120 partial records): 1,739 of 1,779 comparisons agree; 40 project-refuses (by return: {\"refused\": {\"project-refuses\": 40}}); every in-scope comparison agrees (1,704 of 1,704), including every return with a short-term carryover. The 40 project-refuses are sales.one's cited gates (sales.digital: classm.asset.2, stage14.sep.step1_other_se_income, sales.refuse.digital.G/H/I/J, candidate $4,000) and sd.other_forms. Project stands.",
    "context": "80f1a3739f83f60d88f9ed4e7b245de4f0ba9fdc78b8d70c2aa4e541a2c261e1",
    "subject_key": "dbea5d017dab988d351f61cc290494acd1efea1cea6ece7aca4bb29b939e6f9a"
+  },
+  {
+   "printed": "8a(d)",
+   "project_expr_sha256": "10239d830248b8888f01d63467b1d2a9176ce1de97fd3c66bd5753e669077101",
+   "second_expr_sha256": "a066cd46a58808660800956e2c35013ceeae9eb06030b33c6b10d805d5af355f",
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "93d5454f4b83e49cf87873e605bceebf478493a8b96ea4b58974a4c3b705eea2",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "8a(d)",
@@ -2678,6 +3254,38 @@
      "fixture:classm.f8889.2@sd",
      "fixture:classm.gift.1@sd",
      "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8a(e)",
+   "project_expr_sha256": "39bdf093e24122a12850326bd1cad31e18801549d5ea4190ab4c800b07e02123",
+   "second_expr_sha256": "6336edaea504d4751c0c1f771b8a2a85699342ad6a4f59bb8f93042115d8ad42",
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "ec137c2aabcf49e787be948e415550a17df2506e570ceafaa29dd77a95c32781",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2822,6 +3430,38 @@
    "subject_key": "641525928e9c54743962e3c87b4defd4e0f3750d8eff2131b6ce1c53e14a8f00"
   },
   {
+   "printed": "8a(g)",
+   "project_expr_sha256": "ae473e63debe0f65eaa47044184b865b263f5eae48e9cd2259b3e7d9d26191a2",
+   "second_expr_sha256": "c2ddf7627fb3a3ada7dd33e03ec36bc7bcdd4b06456119f830ef4a001d783ed8",
+   "ruling": "Ruling: representation; the value is the project's (the column total of box A/G or D/J entries on the aggregate route; i1040sd p. 10, Lines 1a and 8a, as this merge paired A with G and D with J: i8949 p. 3, Box A or Box G). The reply only adds a shown_when (the line shown when at least one entry is totaled there); the project shows the line with its total, zero when none, which is the same amount. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "f6078455d4254bcda919bc0b2c8f7689b8baa35accc4e885f75a2a6ee9c91a86",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "8a(h)",
    "project_expr_sha256": "ade143d8776bd1f305cdfb7392f53bb011fbf1b2fc1bddb13c1f744a13bd7f6c",
    "second_expr_sha256": "54f22589dc828f6f40a693f11918ae681fbfe81f68cb19bcc386053749061d80",
@@ -2929,6 +3569,38 @@
    "ruling": "Ruling: scope; f1040sd p. 1, line 8a: \"Totals for all long-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\". The candidate sums column (h) over boxes D, E, F, J, K and L on the aggregate route with no screening; the project sums box D on the aggregate route and gates the total on sd.screen (sd.count), which refuses through sales.one on digital-asset boxes G–L (sales.digital, cited f8949 Parts I and II, boxes G–L), on special sales, unsupported codes and invalid aggregate use (sales.bad_aggregate, cited i1040sd p. 10), and through sd.other_forms and sd.carryover. Its added boxes E and F on the aggregate route are entries whose basis was not reported, which i1040sd p. 11, Example 2: \"basis wasn’t reported to the IRS. Don’t report this transaction on line 1a or line 8a\"; the project refuses such entries by sales.bad_aggregate, so they reach no total. Triage executable-triage-v1 (triage/sd.json): 1,540 of 1,703 comparisons agree and no value differs; the 83 project-refuses are those cited gates (classm.asset.2, a box J sale; classm.f8889.4.deepseek; generated returns with digital, bad_aggregate, bad_code or special sales; sd.other_forms and sd.carryover answered yes), and the 80 project-unknown are partial records withholding the screen answers sd.other_forms or sd.carryover (40 each, e.g. classm.f2441.1.deepseek less sd.other_forms), which the project asks before any total. The digital boxes the text names are out of scope, not omitted; widening the filter is recorded as T-003. Project stands.",
    "context": "4befb59ab85087e512610802778c4e4f67ac6dab0dc483d54bbabc05b818d927",
    "subject_key": "4c0fbd8da8432045427cf7f915be624761a573663d2c9d77794e97b427396243"
+  },
+  {
+   "printed": "8a(h)",
+   "project_expr_sha256": "cce91c30756d6342e9db22d676d2840841dffa1b1be60a0a691cdd1d230853fc",
+   "second_expr_sha256": "54f22589dc828f6f40a693f11918ae681fbfe81f68cb19bcc386053749061d80",
+   "ruling": "Ruling: representation; equivalent: the reply's line 8a (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 8a, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "7e16198b8cb33fbfd7ce81499aabc37c4208016d972f3f0ffce5bfe0d12028cc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "8a(h)",
@@ -3413,6 +4085,38 @@
   },
   {
    "printed": "8b(h)",
+   "project_expr_sha256": "39184d7c65da596fea6ceb2ac66eb4c566af0f907bac4bec4b9f3380f4b8da0f",
+   "second_expr_sha256": "50c22449b13dba4c0f6d4a0b4d26e0f73bb2c832739ca5dfa7d8550ac4b78ef0",
+   "ruling": "Ruling: representation; equivalent: the reply's line 8b (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 8b, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "a436f1631e0a42fac718ebdd3055bfd992caadebb97d219137c438b726da3acd",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8b(h)",
    "project_expr_sha256": "9f30fc850b1d160e05387e7e3b86121db711ff323227d85fd0daba1f61da0b53",
    "second_expr_sha256": "50c22449b13dba4c0f6d4a0b4d26e0f73bb2c832739ca5dfa7d8550ac4b78ef0",
    "ruling": "Ruling: scope; f1040sd p. 1, line 8b, column (h). The reply adds the digital-asset box J to box D; the project sums box D behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). Column (h) is the reply's (d) less (e) plus (g) of the same boxes. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,628 of 2,959 agree; 109 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 222 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
@@ -3577,6 +4281,38 @@
    }
   },
   {
+   "printed": "9(d)",
+   "project_expr_sha256": "c1b8237178269d21c1e2683bb9c5d2a8ed60d3829390206fbbd458d3cd907d0b",
+   "second_expr_sha256": "3ffe7f4731231434c3c92fba3133ed24826e1967cd714dad870c94ae882306c9",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (d) of the box E/K entries; the project adds the condition that the entry is on the detail route (Form 8949). Box E/K entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (E/K) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "0e3bdb525d44adc86442b033333c81357654ff88583111d689d64a6b2daba243",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "9(e)",
    "project_expr_sha256": "5c5e480741fc0ab820edd999c236a0460b06e90bfd61879ecf63b33d428928d1",
    "second_expr_sha256": "43b1229a31fb190c8010b6758e4f15424dcd5620348f6d7679f0765564982550",
@@ -3604,6 +4340,38 @@
      "fixture:classm.f8889.2@sd",
      "fixture:classm.gift.1@sd",
      "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9(e)",
+   "project_expr_sha256": "5d73a081a923c4575df8a9dba33370b279f7646a418454254063e4ee87287c2a",
+   "second_expr_sha256": "43b1229a31fb190c8010b6758e4f15424dcd5620348f6d7679f0765564982550",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (e) of the box E/K entries; the project adds the condition that the entry is on the detail route (Form 8949). Box E/K entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (E/K) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "a12e2fd0196d63c5e767a0fd37f5fc96a572dab2ed0d3738ca4ba4e386630e02",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
     ],
     "policy": "executable-triage-v2"
    }
@@ -3812,6 +4580,38 @@
   },
   {
    "printed": "9(g)",
+   "project_expr_sha256": "2f691ba5962f11bf720ad5519df6c24f30388be97110cd69bebdc5ea7a80aabd",
+   "second_expr_sha256": "0c5393f4b9d6d813713bcebbac0e18b139103f6210e67eb4322ef5c33a8a0dd6",
+   "ruling": "Ruling: representation; equivalent on every computed return: the reply totals column (g) of the box E/K entries; the project adds the condition that the entry is on the detail route (Form 8949). Box E/K entries cannot be aggregated: an entry routed to the Schedule D totals whose basis was not reported (sales.covered false) is refused at sales.one (sales.bad_aggregate through sales.aggregate_fails; i1040sd p. 10, Lines 1a and 8a, totals only for transactions for which basis was reported), so the condition is true wherever the return is computed. The digital-asset pairing (E/K) is this merge's change (i8949 p. 3). Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "a5f6f9fed63e53bdb628fc8dd1b64fc9aa20f242dc3cbe024d63e4a65e68c2c6",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9(g)",
    "project_expr_sha256": "6bc66557f4f5598c4dddcbf1af73608057615eff3f8c4259c32836a1fd7445bd",
    "second_expr_sha256": "0c5393f4b9d6d813713bcebbac0e18b139103f6210e67eb4322ef5c33a8a0dd6",
    "ruling": "Ruling: scope; f1040sd p. 1, line 9, column (g). The reply adds the digital-asset box K to box E; the project sums box E behind sd.screen (sd.count through sales.one), which refuses digital-asset sales (sales.digital, f8949 Parts I and II, boxes G–L; widening is T-003), special sales, unsupported codes, invalid aggregate use and sd.other_forms (now also the new sd.qof box, BUG-0451). The reply drops the project's route test (sales.route_if_chosen = detail); an aggregate entry in that box is refused by sales.bad_aggregate (aggregate needs box A or D and code none), so the test changes nothing within scope. executable-triage-v2 (`.transcription/triage/2025/sd.json`, pass 847822bf2d2b; 2,028 fixtures, 500 generated returns seed 20261026, 431 partial records): 2,498 of 2,959 agree; 145 project-refuses (the cited screens, e.g. sd.other_forms on classm.clcw.1), 316 project-unknown (partial and refused records withholding the screen answers the interview asks before any total, e.g. div.any behind sd.f2439_if_dividends); no value differs and no candidate-only difference. Same expression and reading as the landing round (scope). Project stands.",
@@ -3891,6 +4691,38 @@
    "date": "2026-11-09",
    "run": "fa66a9821920b81b28065e3bd1666bffe533c0a23fd1f121a0a91a3d70fb5acd",
    "subject_key": "c16c4205c6e410d9e002a5f5c91a43cbca0e01d28478a838f4ddf4f374c33651"
+  },
+  {
+   "printed": "9(h)",
+   "project_expr_sha256": "a08c17e2d38fa0f0c08af4b5d75ed150314a90ce2f0d7993fda9c7f146d97dd9",
+   "second_expr_sha256": "db34ac1e40b166cade5700ad59ad49a9e31badf42652d07d998c99c35556cb4e",
+   "ruling": "Ruling: representation; equivalent: the reply's line 9 (g) + ((d) - (e)) is the project's sum of column (h) over the same entries, since each entry's sales.h is its proceeds less column (e) plus column (g) (sales.h = sales.before_adjustment + sales.g) and sums are linear; Schedule D (2025) line 9, column (h), \"Subtract column (e) from column (d) and combine the result with column (g)\". Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "67109a23cf121ead1d876e6db696f83c69d4194ff354d00ea3b7829db4043fec",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.3.deepseek@sd",
+     "fixture:classm.f8889.4.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.dependent.2.deepseek@sd",
+     "fixture:classm.s179.1@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:classm.gift.1@sd",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:mutation.t2.person.simple_nonelective_excess@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "9(h)",
@@ -4111,6 +4943,51 @@
    "ruling": "Ruling: interface gap; the rule that decides when Schedule D is required is i1040gi p. 31, Line 7a, Exception 1: \"You don't have to file Form 8949 or Schedule D if ... 1. You have no capital losses, and your only capital gains are capital gain distributions from Form(s) 1099-DIV, box 2a ...; and 2. None of the Form(s) 1099-DIV ... have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain).\" That page was not given (i1040gi p. 38 only), and the candidate's note says \"The supplied text does not state when Schedule D must be filed\"; it treats capital gain distributions as never requiring Schedule D, which the given p. 38 permits (\"If you don’t have to file Schedule D and you received capital gain distributions, be sure you checked the box on Form 1040 or 1040-SR, line 7b\") but which p. 31 contradicts for boxes 2b and 2d. Triage executable-triage-v2 (triage/sd.json; 1,094 fixtures, 500 generated returns seed 20261026, 120 partial records): 1,556 of 1,714 agree; all 45 value differences are returns without sales whose sd.line18 or sd.line19 is positive (box 2d or 2b; project true, candidate false): classm.f8889.1.deepseek and classm.f8889.1 (completed), classm.sdtw.3, classm.tcw.12, stage4.sdtw.special_rates, generated 35, 150 and 164 (completed). The source supports the project. The 52 project-refuses are sd.count's screens sd.other_forms (17) and sd.carryover (13), where the candidate answers true, and Form 1099-DIV gates (div.bad_components 9, div.section1202 4, div.unsupported 4, div.amt 3, div.bad_special 2): scope. The 61 project-unknown withhold sd.other_forms (21), sd.carryover (21), sd.distributions (18) or div.box2c (1): scope. After BUG-0149, sd.filed reads lines 18 and 19 that are zero when line 17 is No; with no sales, lines 15 and 16 equal line 13 (box 2a), which div.bad_special keeps at least as large as box 2b or 2d, so line 17 is Yes whenever those boxes are positive and the fix changes no sd.filed value (no witness has line 17 No). Project stands; a fresh review needs i1040gi p. 31.",
    "context": "b663b11d3e6a291c4343e639a6922320819f7887cc2f34c43f1fe75c56769f57",
    "subject_key": "98e9eb46e1fdcb5a1536c82255e3330511cc60de910803e244c6565a3411c7d0"
+  },
+  {
+   "printed": "sd.filed",
+   "project_expr_sha256": "ffbc489522648a6244aae53ae66aae75fc6c07068dda2e2f71d70690f431ba14",
+   "second_expr_sha256": "466d803407644cedcc0f143a4920225271e58218844c72b36d03e0c6bb3cb87c",
+   "ruling": "Ruling: model error; i1040gi p. 31, Line 7a, Exception 1: \"You don't have to file Form 8949 or Schedule D if you aren't deferring any capital gain by investing in a qualified opportunity fund and both of the following apply. You have no capital losses, and your only capital gains are capital gain distributions from Form(s) 1099-DIV, box 2a ...; and None of the Form(s) 1099-DIV ... have an amount in box 2b ..., box 2c ..., or box 2d\". The project files Schedule D for any sale, any 1099-DIV box 2b or 2d amount (this merge's change, read from div.box2b_if_capital_gain and div.box2d_if_capital_gain) or a capital loss carryover (sd.line6 or sd.line14 below zero); box 2c is screened by div.section1202. The reply drops the box 2b and 2d tests (its note says its interface had no input for them, so a return whose only items are box 2b or 2d distributions would wrongly skip Schedule D), files on a Yes to sd.carryover even when the carryover worksheet leaves no loss (then there is no capital loss and Exception 1 can apply), and adds sd.qof, which the project refuses (sd other forms refusal, i1040sd p. 1, Form 8997), so it never differs on a computed return; lines 4, 5, 11 and 12 are zero after screening on both sides. Triage did not evaluate this reply (pass da3c033dcfd8: invalid_lines sd.filed, 4, 5, 11, 12, the reply's references to sd.other_forms do not resolve), so the ruling rests on the two expressions and the source. Project stands.",
+   "context": "5c8f4b5c7026fe305773ccf1bf1d8dc9b09af4567156cc8e22e9b439bcdbc088",
+   "date": "2026-11-15",
+   "run": "617450d1d7ffd627b36be0f9671f1a6b8f78deed46c8b71707dd19fca38ecb43",
+   "subject_key": "03d2241b7611fe461b693e29e1073fccbda6e863c6946559b0314fdd32560249",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.1.deepseek@sd",
+     "fixture:classm.f8889.5.deepseek@sd",
+     "fixture:classm.clcw.1.deepseek@sd",
+     "fixture:classm.eic.2.deepseek@sd",
+     "fixture:classm.dependent.5.deepseek@sd",
+     "fixture:classm.carloan.3@sd",
+     "fixture:classm.qdcg.2@sd",
+     "fixture:classm.s1.2@sd",
+     "fixture:classm.s1.9@sd",
+     "fixture:classm.s2.2@sd",
+     "fixture:classm.clcw.1@sd",
+     "fixture:mutation.t2.s3.one_employer@sd",
+     "fixture:stage20.refuse.other_forms_with_carryover@sd",
+     "fixture:sd.reg.qof_held@sd",
+     "generated:20261026.7@sd",
+     "partial:classm.w2.1.deepseek-sd.distributions@sd",
+     "partial:classm.f4952.4.deepseek-sd.distributions@sd",
+     "partial:classm.sd.3.deepseek-sd.sold_other@sd",
+     "partial:classm.dependent.4.deepseek-sd.route_each@sd",
+     "partial:classm.f1040.2.deepseek-sd.route_each@sd",
+     "partial:classm.f8863.2.deepseek-sd.route_each@sd",
+     "partial:classm.retirement.4.deepseek-sd.route_each@sd",
+     "partial:classm.sa.4.deepseek-sd.route_each@sd"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "sd.filing4952",

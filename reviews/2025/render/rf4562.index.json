@@ -1,0 +1,42 @@
+{
+ "kind": "render",
+ "form": "rf4562",
+ "family": "claude",
+ "base": "175ca0cc175067177f4fa63a2cc323c7e7dd7faef7106719da7a92aa2557bfd7",
+ "lines": [
+  {
+   "key": "17",
+   "record": "175ca0cc175067177f4fa63a2cc323c7e7dd7faef7106719da7a92aa2557bfd7",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i4562 Column (c): 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property'. The column (g) amount is the rate times rprop.basis with neither step: personal-use days are prorated only on Schedule E line 18, a rental of part of the home is neither limited nor refused, and allocable credits are not subtracted (BUG-0920).",
+   "subject_key": "c94f7915d5086330cca42fda10a5ad790bf2da0c09f2cff9ff708eb4823d2e4f"
+  },
+  {
+   "key": "19i(g)",
+   "record": "175ca0cc175067177f4fa63a2cc323c7e7dd7faef7106719da7a92aa2557bfd7",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i4562 Column (c): 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property'. The column (g) amount is the rate times rprop.basis with neither step: personal-use days are prorated only on Schedule E line 18, a rental of part of the home is neither limited nor refused, and allocable credits are not subtracted (BUG-0920).",
+   "subject_key": "befa34b4ba1eddefebdf8e276cfc69ac3be240e3dda9b77508ec754934aacbac"
+  },
+  {
+   "key": "19j(g)",
+   "record": "175ca0cc175067177f4fa63a2cc323c7e7dd7faef7106719da7a92aa2557bfd7",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; i4562 Column (c): 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property'. The column (g) amount is the rate times rprop.basis with neither step: personal-use days are prorated only on Schedule E line 18, a rental of part of the home is neither limited nor refused, and allocable credits are not subtracted (BUG-0920).",
+   "subject_key": "74586714a02bf53295994a188fee5ac787849796163144051f8ac37d701ce3a3"
+  },
+  {
+   "key": "22",
+   "record": "175ca0cc175067177f4fa63a2cc323c7e7dd7faef7106719da7a92aa2557bfd7",
+   "status": "MATCH",
+   "subject_key": "3b91bb5d8771f3882a22bc503e96ca2532c064bc2c1c81934a54c12363037d83"
+  }
+ ],
+ "subjects": {
+  "17": "f8840b7cb1622fb4c4912129b24ce523342d09b83978268a1869a54c161af62a",
+  "19i(g)": "52563bb9529bf1c9a3038036c7a89654b12efb0393354ebc7cf0b048fbfe0e23",
+  "19j(g)": "c49d6e9370205b780591c32a335ab32159e419de5d50fd5c0cf290b5c542e033",
+  "22": "ef0fa6fbb2c07f8f64e51ddeac2524f81939815d171eca9b8211283726f7aa72"
+ },
+ "__rest__": "9bc7366088ffa5996508d192c0e50dc5a3447d02093fc3ba7c89282193e4c259"
+}

@@ -15,10 +15,25 @@
    "project_expr_sha256": "8226bf0bdc81e1373428f18139c0fa0e26bd9954d28b8a726957a54dd7b68fa2",
    "second_expr_sha256": "808011687bd92948b28dc5379545ff8a59d3374c4ad8fc1f5b10d0f40c9e1416",
    "ruling": "Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (f8960.line13: \"f8960.f8960.line13: reference 'f1040.line11' does not resolve\"), so the line was not executed. This adjudicates the declaration, not the tax reading.",
-   "context": "023ecd5dcf908c992fc3b675856dc8ebf37c8454c4f6829b83e370c071da9cfa",
-   "date": "2026-11-10",
-   "run": "d972db1033d0e3fdb183bcded413e2022f50ede718c953552ec6e44ae630c905",
-   "subject_key": "6fdd40e8a2bc7608c46b3d5eb8b311fe735a3c67ec21c63ea84c5a27de393054"
+   "context": "69be4f46a86f35d38868ab4ef50fb01ad1c3e6d21034242f8d9e42c6d4790abe",
+   "date": "2026-11-15",
+   "run": "c195b6b2829ea5103f699b3cb6770ceee3a2788fb51ac5ac16ff309ebff11e42",
+   "subject_key": "f2f9360c1508b06e51e280565427538f109a5b5c2d687f3e286d3b90ddaf4805",
+   "triage": {
+    "verdict": "candidate invalid",
+    "kinds": [
+     "candidate-invalid"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f8960",
+     "fixture:stage14.asset.mq_7yr@f8960",
+     "fixture:stage14.asset.mq_mixed@f8960",
+     "fixture:stage14.asset.mq_not@f8960",
+     "fixture:stage14.asset.bonus_100@f8960",
+     "fixture:stage14.asset.bonus_40_before@f8960"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "13",
@@ -73,6 +88,59 @@
    "ruling": "Ruling: scope; Form 8960 (2025) p. 1, line 2, \"Ordinary dividends (see instructions)\". Form 1040 line 3b copies Schedule B line 6, the project's reference, so the amounts are the same on every return. The differences are the candidate's own declaration of f8960.unsupported on line 2 (its note: section 404(k) ESOP dividends \"are screened by f8960.unsupported\"), where the project reads that screen on line 1 and the later lines: candidate-refuses on stage4.refuse.8960.unsupported, .simultaneous and classm.w2.1, and candidate-unknown with it withheld (classm.asset.2, classm.sales.1); every witness is a refused or incomplete return. The PENDING-3 wording of the screen matches i8960 p. 7, Line 2: \"If line 2 includes dividends from employer securities held in an employee stock ownership plan (ESOP) that are deductible under section 404(k) ... include those amounts as negative modifications on line 7\". No value difference. Triage executable-triage-v2 (`reviews/2025/transcription/triage/f8960.json`; 1,495 fixtures, 500 generated returns seed 20261026, 133 partial records from 40 bases; 2,128 comparisons): 1,915 agree; differences 17 candidate-refuses, 196 candidate-unknown; on completed returns no difference. Project stands.",
    "context": "32b050af8bbfbc88eab692774904517c9ebb1e802ae5d29bb8b62f4b6023a36d",
    "subject_key": "624c1d62e6d75a7c90ee2c4122d0f56fb5f6a672b1479bfa12549cbdffdbdd88"
+  },
+  {
+   "printed": "4a",
+   "project_expr_sha256": "e8ee279ac02d85d84ac66887c40ecbc94aca1835c2d53117c14ce42e198cb3d5",
+   "second_expr_sha256": "d3084fe6b33056f89e9b55021613afb233b10c7f355d28282c5d3dabaa30ebc5",
+   "ruling": "Ruling: representation; the project's line 4a (s1.line5) and the reply's (s1.line3 + s1.line5) differ only by Schedule 1 line 3, business income. i8960 p. 8, Line 4a, has Schedule 1 lines 3, 5 and 6 entered, and line 4b then adjusts out 'income or loss from a trade or business that's not a passive activity' (the section 162 nonpassive business), so for an active Schedule C or farm business lines 4a and 4b net to zero on lines 3 and 6 and line 4c equals the project's. Any other business or pass-through income (passive business, K-1) is refused through f8960.unsupported ('annuity, business or pass-through income', refusing 'when Form 8960 is required') on every line 4a through 8 reads. Triage 2,523/3,008 agree; 485 differ, all with s1.line3 nonzero and the gate answered No; the completed witnesses checked (stage14.asset.hy_5yr, Schedule C $50,000; stage5.return.refund_f8960_refund_unused, AGI $130,000) file no Form 8960 (f8960.used: AGI not over the $200,000 threshold), so line 4a is not on the return. The reply's own note says business income is refused, then adds line 3 anyway.",
+   "context": "69be4f46a86f35d38868ab4ef50fb01ad1c3e6d21034242f8d9e42c6d4790abe",
+   "date": "2026-11-15",
+   "run": "c195b6b2829ea5103f699b3cb6770ceee3a2788fb51ac5ac16ff309ebff11e42",
+   "subject_key": "8b283288280fe9737fe93781dd243e75fca56610fa6710831f66e8298baea6e4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage14.asset.hy_5yr@f8960",
+     "fixture:stage14.asset.mq_7yr@f8960",
+     "fixture:stage14.asset.mq_mixed@f8960",
+     "fixture:stage14.asset.mq_not@f8960",
+     "fixture:stage14.asset.bonus_100@f8960",
+     "fixture:stage14.asset.bonus_40_before@f8960",
+     "fixture:stage14.asset.refuse_qip_2017@f8960",
+     "fixture:stage14.asset.refuse_ads_past_gds@f8960",
+     "fixture:stage14.asset.refuse_listed_low_past_gds@f8960",
+     "fixture:stage14.asset.refuse_class@f8960",
+     "fixture:stage14.asset.refuse_listed_low@f8960",
+     "fixture:stage14.asset.refuse_s179_over@f8960",
+     "fixture:stage14.mut.asset_2025_listed_unanswered@f8960",
+     "fixture:classm.w2.1.deepseek@f8960",
+     "fixture:classm.f5695.8.deepseek@f8960",
+     "fixture:stage21.choose.eic_limit_status_unanswered@f8960",
+     "fixture:stage4.refuse.8960.refund@f8960",
+     "fixture:mutation.t2.no_carloan_part4@f8960",
+     "fixture:mutation.t2.no_5695_part1_s3_5a@f8960",
+     "fixture:mutation.t2.hoh_s1a_tips_ot@f8960",
+     "fixture:mutation.t2.s1a.line21_magi_first@f8960",
+     "fixture:mutation.t2.scveh.mq_prior_car_q4@f8960",
+     "fixture:mutation.t2.scveh.mq_2025_car_q2@f8960",
+     "fixture:mutation.t3.roth_excess_screen@f8960",
+     "partial:stage14.asset.hy_5yr-f8960.refund@f8960",
+     "partial:stage14.asset.bonus_100-f8960.refund@f8960",
+     "partial:stage14.asset.prior_7yr-f8960.refund@f8960",
+     "partial:stage14.asset.qip-f8960.refund@f8960",
+     "partial:stage14.asset.done-f8960.refund@f8960",
+     "partial:stage14.asset.prior_179_bonus-f8960.refund@f8960"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "9b",

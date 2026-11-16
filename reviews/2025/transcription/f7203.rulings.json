@@ -1,0 +1,550 @@
+{
+ "kind": "transcription",
+ "form": "f7203",
+ "rulings": [
+  {
+   "printed": "11",
+   "project_expr_sha256": "1bc4969e233e3fb17fbe9588735f2c89b3314e308efc208f61bd9261d4f7679a",
+   "second_expr_sha256": "0f7f0edad9eb88fb808028a0e8706f0a54040f5b17da2944eaf74116cdd4b6cc",
+   "ruling": "Ruling: ambiguity; 14/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 8 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "16ebc980b2ff6f56f6c27cdd26cf664657956e84ad60b5c727a0d45659c12539",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:k1s.loss_over_basis_ratio_rounding@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "12",
+   "project_expr_sha256": "b16766589c75d0bdfed71b5b1922cab41bdf9521d17e2f0441dab71abfcd5bf5",
+   "second_expr_sha256": "b30b658a0a64f6df5e4fb9a418626d06558e7e3e5659addd9ff26f2011147106",
+   "ruling": "Ruling: representation; 9/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 14 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "01c2e9de0fb74e42bd6b3c244fd0550056d1b816d45c6c07f49d98fedb5627c0",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "13",
+   "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
+   "second_expr_sha256": "21e0ec3094437d2b18f69cf24a597ede4c6a676547f8b4b2b4875eb968cf60fc",
+   "ruling": "Ruling: representation; 11/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 12 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "85f9c34e72542ccbb0d54c8fcbda0e57902e7a1e927dc9634eae9a4d28f2e193",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "14",
+   "project_expr_sha256": "631ee6d22095c8d123edb91d42fc0ce6387298fc96198f741806c7ce1af2bfbc",
+   "second_expr_sha256": "4bbc93cd714a5478fc1170d495333cf3915867d6b368928d0180ae2c86be4871",
+   "ruling": "Ruling: ambiguity; 12/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "4ffd92a7073764c90cda732ded9e519611f625edd2edc3816b8a588467eaec5a",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:k1s.loss_over_basis_ratio_rounding@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "35 (c)",
+   "project_expr_sha256": "8ea0486d8da47f796dbbc3b0f9ce16b9364abf31b7329cdbcad7434ddf919cc5",
+   "second_expr_sha256": "38e4b6bf3f8f99061a6dca6dd22e75807b46758fc9d4d3e8ebe1e4e8602801c3",
+   "ruling": "Ruling: ambiguity; 12/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "f77ef004e363958d5f959d11d99648048dcbdb4855e98de518fcf554dd2bf169",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:k1s.loss_over_basis_ratio_rounding@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "35 (e)",
+   "project_expr_sha256": "428e36508a05b636a13a6ee5dba3d3af8d37cba512de279d2260594be5d0d692",
+   "second_expr_sha256": "d4449fffb818bcd614790e22f84a5926dc087fc3b0feb58f3d1ae1b6a0ee2951",
+   "ruling": "Ruling: ambiguity; 10/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 3 candidate-refuses, 11 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "51cfd45c138f407887aa7fcba555b2001c18a63d0b7f0230ea4c6b668e4a7d15",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:k1s.loss_over_basis_ratio_rounding@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "36 (c)",
+   "project_expr_sha256": "934635a7393e0696695d63a497f10cfacdc1472c66adabca612c3fe4597a51ea",
+   "second_expr_sha256": "74e05f5bcf0bf49087708aeb2ca34e0a281606ac3d38695f51c20cb7562689e9",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "29a72329866e0025441c4f69af903de8dd69bc47abc0c8676f0d006c5d50579f",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "36 (e)",
+   "project_expr_sha256": "92fb058a51e9f9f34e34ca66ff9164039787cb5a55855eb493f699af2404576c",
+   "second_expr_sha256": "87b3922512dbc0545ea17e6c92879f05b7d6fd6a5482b7fee3805d55f328acbb",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "22d3745263c3aac73593b80e2799a914e2f8ed52a9ec20c740a8355a72289742",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "37 (c)",
+   "project_expr_sha256": "0ebecd22909aa90e35d81f44c431d6511eef494c9af048225e0558e8a85d05fa",
+   "second_expr_sha256": "e825fa671b6ab11b87d39f9838c7103a402e2231532d5ceb3f4b8e798935b9fb",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "eca567faeb94cd4d3c5a656c8705f63501e0a031ccdeb6609d8156d87978f368",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "37 (e)",
+   "project_expr_sha256": "dd0beea0758be03cdd068e14652e51a93ab8993127712c1c28dd93d1266f7632",
+   "second_expr_sha256": "dd6bf6010669af8ad2409097e731853dba10b15ed0156c785bb8697bad93c05d",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "ad6232aa96f0239d6887b5efcd6a2f35f75322dde371a7aec5937c641171917c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "38 (c)",
+   "project_expr_sha256": "65208f37f8ef02480730b1e71abb48c83cc2a2e407425975e8f14fde991b485e",
+   "second_expr_sha256": "c1c8c08e3f8d7f774bb53197bb984f45765688ba9b0a9435856b6b6ba44dabe5",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "0c9e7166614ad3f858035539130ada1ea51b87cd9ecde650ab3d85a3338042cb",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "38 (e)",
+   "project_expr_sha256": "23ba4a741e30f1811b156de10d751ac47d8db7041fd827524d9db63173aadff1",
+   "second_expr_sha256": "020d56e206d982ac56c109e63d026812d06bfe788e5a106888a4f756eba826f4",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "4d9bb3244369df9fd48d9b2312b09cc40ff8014c198c5bf0671a6a17175c2a8b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "47 (c)",
+   "project_expr_sha256": "32b6ddd2fc2f1638436544f0b364e3d6780f88058de8df2141b7f05e131465b1",
+   "second_expr_sha256": "9ecab7746c668253be7762b46c7fc412fe8ca063a138eb20533d39781ec082e8",
+   "ruling": "Ruling: ambiguity; 12/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "cf9eda9ea467a7c41b9dfc11b0780521bb117f744d4df02e7566a8047e053ab4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:k1s.loss_over_basis_ratio_rounding@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "47 (e)",
+   "project_expr_sha256": "70207af532319afd596138bde3025358b7a9aada61d32d9d7de141391812bf53",
+   "second_expr_sha256": "89fb70d8b4a9de0532383309cfdd9a897893cafb50d83e4577005994d7ec4360",
+   "ruling": "Ruling: ambiguity; 9/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 13 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "5d7a3b5a3eddbd8267a296061b762f290fedb907b8a009e09f70b80580a54730",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:k1s.loss_over_basis_ratio_rounding@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_loans@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "5",
+   "project_expr_sha256": "02d06ae231d35eeb670065729d50b1703147d08df3e4a24b805b026672bf1b00",
+   "second_expr_sha256": "80022e6cb6cef2262ea0695097694d21aa1e30dfacfef3ac7677df451f64cf74",
+   "ruling": "Ruling: representation; 18/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 1 candidate-refuses, 6 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "55e2f6432d668df92cf382ed6556f92fc7c8218f3573a79a1c72fc8c8e617ed3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8a",
+   "project_expr_sha256": "db72930af8d85d931816806cb574a3c52bfa5b853a3ff4b3fe4eb263e95be171",
+   "second_expr_sha256": "b935d7bc177ef2cd023cf159ef0099973b7927b8d6fded6b6c40c81da0898a15",
+   "ruling": "Ruling: representation; 11/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 12 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "29bb097941830a809c3c4c17fb12e1a85061ed1fb967b4b2e56aed767193e1c4",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8b",
+   "project_expr_sha256": "b16766589c75d0bdfed71b5b1922cab41bdf9521d17e2f0441dab71abfcd5bf5",
+   "second_expr_sha256": "e36701c163fb954c321bf87194c2ddc2bc54f4bfec8382ef027e41df2dab1401",
+   "ruling": "Ruling: representation; 11/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 12 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "62a24fa483501c70936dc5c0f12082ad8c981676dba6168761a50f3fa998ff75",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "8c",
+   "project_expr_sha256": "b16766589c75d0bdfed71b5b1922cab41bdf9521d17e2f0441dab71abfcd5bf5",
+   "second_expr_sha256": "e36701c163fb954c321bf87194c2ddc2bc54f4bfec8382ef027e41df2dab1401",
+   "ruling": "Ruling: representation; 11/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 12 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "c7461153f08801a5f624766d40a5e65c6606e030336003d12e3457ddbf6108b3",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "9",
+   "project_expr_sha256": "e5bd62765fac68970d9d98cbda3488919c72f6cf035e4cfc2789f12e95ec0372",
+   "second_expr_sha256": "4a4f2ab15fed92fada55cf72d2f4b08189911dea062aaf8d3b58f3820280c726",
+   "ruling": "Ruling: representation; 11/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 12 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "context": "d2c83437dc0180b4fdb27dc9ada4b0fdce4f184e5d0759d1caf65f3087ed0a62",
+   "date": "2026-11-15",
+   "run": "4b808ceb852897c0a9eab07cc79fa65409701d46c74e600cfc34dcdcc9d9f5a3",
+   "subject_key": "8cf7914ceb7bcb0e8ebe8b94512bd1510a48221e058e9dee2b511de3c5f92f70",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown"
+    ],
+    "witnesses": [
+     "fixture:k1s.passive_investor_portfolio@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_earlier_years@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.material_by_most_hours@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.rental_not_active@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_multi@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_box15@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_mp_other@person[taxpayer].k1s[acme].f7203[form]",
+     "fixture:k1s.refuse_dist_over_basis@person[taxpayer].k1s[acme].f7203[form]"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  }
+ ]
+}

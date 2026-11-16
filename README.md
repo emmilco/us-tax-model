@@ -152,9 +152,9 @@ forms are wrong about the law, so is this.
 The instructions are sometimes silent, ambiguous, or in tension with themselves. Does "wages" for the
 excess Social Security credit mean W-2 box 1, or boxes 3 and 7? When multiplying by a rate yields a
 fraction of a cent, which way does it round? Every such question is an entry in
-[`ambiguities/2025.yaml`](ambiguities/2025.yaml), 91 so far, recording the text at issue, the
+[`ambiguities/2025.yaml`](ambiguities/2025.yaml), <!-- figures:readme-ambiguities -->149 so far<!-- /figures:readme-ambiguities -->, recording the text at issue, the
 candidate readings, the reading chosen and the reason. When an entry is linked to a line that touches
-your return, the values sheet shows the reading chosen; 79 of the 91 entries are linked that way so far.
+your return, the values sheet shows the reading chosen; <!-- figures:readme-ambiguities-linked -->144 of the 149 entries are linked that way; each of the others says why it stands unlinked<!-- /figures:readme-ambiguities-linked -->.
 
 ### Where the scope runs out
 
@@ -169,17 +169,17 @@ the instruction that requires it.
 
 | | The tool handles | The tool can't handle |
 |---|---|---|
-| **Filing status** | ✓ Single, married filing jointly, head of household or qualifying surviving spouse | ✗ Married filing separately: 2.6% of returns<br>✗ A return for someone who can be claimed as a dependent, such as a student or a teenager with a job: 4.7% of returns |
+| **Filing status** | ✓ Single, married filing jointly, married filing separately, head of household or qualifying surviving spouse, including a return for someone who can be claimed as a dependent, such as a student or a teenager with a job | ✗ Married filing separately in a community property state: 2.6% of returns |
 | **Wages** | ✓ Wages and tips on Form W-2 | ✗ Wages or tips not on a Form W-2, and other earned income: 0.8% of returns |
-| **Investments** | ✓ Interest, dividends, and sales of stocks, bonds and funds | ✗ Crypto and other digital assets: not measured |
+| **Investments** | ✓ Interest, dividends, and sales of stocks, bonds, funds, and crypto and other digital assets | — |
 | **Retirement** | ✓ Pensions, annuities, IRA and 401(k) distributions, Social Security and unemployment compensation | — |
-| **Business and property** | ✓ A sole proprietorship or freelance work (Schedule C) | ✗ Rental or royalty income: 5.9% of returns<br>✗ A partnership, S corporation, estate or trust (Schedule K-1): about 3.9% of returns<br>✗ Farm income: 1.1% of returns<br>✗ Sales of business property (Form 4797): 1.1% of returns<br>✗ A net operating loss carried from another year: 0.6% of returns |
+| **Business and property** | ✓ A sole proprietorship or freelance work (Schedule C), and rental and royalty income (Schedule E) | ✗ A partnership, S corporation, estate or trust (Schedule K-1): about 3.9% of returns<br>✗ Farm income: 1.1% of returns<br>✗ Sales of business property (Form 4797): 1.1% of returns<br>✗ A net operating loss carried from another year: 0.6% of returns |
 | **Other income** | ✓ State tax refunds, alimony, gambling winnings, prizes, canceled debt and jury duty pay | ✗ Other income the tool does not list: up to 4.8% of returns |
 | **Deductions** | ✓ The standard deduction or itemized deductions, and the 2025 deductions for tips, overtime, car loan interest and seniors | — |
 | **Credits** | ✓ The child tax credit, the earned income credit, and the child and dependent care, education, saver's, home energy and premium tax credits | ✗ Other credits, such as the adoption, clean vehicle, elderly or disabled, or business credits: 0.9% of returns |
 | **Foreign** | ✓ Foreign tax on investment income, within the small-amount election | ✗ Foreign accounts or assets that require an FBAR or Form 8938: not measured |
 
-Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 198 situations the tool refuses, and says exactly what this table leaves out.
+Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 305 situations the tool refuses, and says exactly what this table leaves out.
 <!-- coverage-tree:end -->
 
 ### Exact arithmetic
@@ -236,9 +236,11 @@ question comes back marked as needing help, with its help text, and the answer n
 zero. Answers live
 in an append-only log, and the whole return is recomputed from it on every change.
 
-**What it earns.** The build walks the interview. For the full return it walks the Stage 5 whole-return test
+**What it earns.** The build walks the interview. For the full return it walks the 11 whole-return test
 cases, which is representative, not exhaustive. Each walk must end in a complete set of forms or a cited
-refusal, and must give the same values with the answers given in reverse order.
+refusal, and must give the same values with the answers given in reverse order. Beyond the build,
+check-all walks about 640 coverage rows, each a situation stated as the answers a filer gives and the
+end the interview must come to.
 
 **Where it stops.** At the wording. A question that asks for the wrong figure gets correct arithmetic
 on the wrong number, and no arithmetic check can see it, because tests supply their answers directly.
@@ -247,8 +249,8 @@ That is not a hypothetical worry: a review of the first 210 recorded bugs
 questions and screens that diverge from the source to be the largest single class of value-changing
 defects, 26 of 68. Two model reviews now stand guard. Every scope screen has been reviewed against the
 lines it gates, with all findings ruled. A review of each form's instructions for rules nothing
-encodes has covered 3 forms so far; the rest wait in a baseline to be worked off. The check suite fails
-when either review goes stale or a finding is left unruled. A question's wording is still, in the end,
+encodes has covered every form. Both reviews are sampled once per release: the check suite lists a form
+whose review is out of date, and a release fails while one is, or while a finding is left unruled. A question's wording is still, in the end,
 a reading of the page (layer 5).
 
 ### 2. The values sheet
@@ -260,8 +262,8 @@ prepared, and the instruction behind it.
 
 **What it earns.** Every number traces to a cited place on an archived IRS page, pinned by content hash,
 usually with the governing sentence quoted. A
-citation checker verifies every quote and locator against the archived text: 3,306 anchors and 2,731
-quotes, with no finding left unruled.
+citation checker verifies every quote and locator against the archived text: <!-- figures:readme-citations -->7,410 anchors and 8,124 quotes<!-- /figures:readme-citations -->,
+with no finding left unruled.
 
 **Where it stops.** A citation proves that a line points at a page. It does not prove that the line
 computes what the page says.
@@ -313,7 +315,7 @@ The build fills in each citation's document revision and content hash from the s
 are no user-defined functions, loops, variables, strings or recursion: the data is a list of
 lines like this one, plus year parameters, pinned tables (the Tax Table is stored cell by cell), refusal
 gates and the ambiguity register. The one escape hatch, `opaque`, a host-language function, is counted
-and published: 0 of 2,951 lines use it.
+and published: <!-- figures:readme-opaque -->0 of 5,890 lines use it<!-- /figures:readme-opaque -->.
 
 Two tools work this layer. The **checker** fails the build unless every reference resolves, the line
 graph has no cycles, every expression type-checks (cents, rates, counts and booleans never mix), every
@@ -352,21 +354,20 @@ encoding.
   to a stated cause, and no difference is unexplained today.
 
 Each model runs with no repository access and no network. The transcription and render reviews run
-under two model families, Claude and DeepSeek, on every form; the second family's hand-work covers fewer
-forms so far. Every disagreement must be ruled against the page, with the deciding quote, and the logs
+under the Claude model family. A second family, DeepSeek, reviewed every form and did hand-work for fewer;
+its reviews are now inactive by the owner's decision, and its logs and hand-work cases are kept. Every disagreement must be ruled against the page, with the deciding quote, and the logs
 are committed under [`reviews/2025/`](reviews/2025/).
 
 **What it earns.** For each line, the evidence report
 ([`reports/2025/evidence.md`](reports/2025/evidence.md)) lists which kinds of independent evidence back
 it. It opens with the **scoreboard**: the share of computed lines with at least one assertion from
 outside the Claude model family. Claude wrote most of the encoding, so a Claude reviewer is the reader
-most likely to share its misreadings; the scoreboard counts only evidence from somewhere else. As of
-2026-10-31 it reads **554 of 1,911 (29.0%)**: 435 lines backed by DeepSeek's hand-work (counting lines
-credited through exact copies of a worked line) and 220 by an outside engine, with overlap.
+most likely to share its misreadings; the scoreboard counts only evidence from somewhere else.
+<!-- figures:readme-scoreboard -->In the report committed with this page it reads **561 of 3,883 (14.4%)**: 448 lines backed by second-family hand-work (counting lines credited through exact copies of a worked line) and 223 by an outside engine, with overlap.<!-- /figures:readme-scoreboard -->
 
-**Where it stops.** Two models reading the same English can share a misreading. The second family has
-reviewed every form, but only 71 of 149 paired reviews qualify so far; the rest await rulings, are
-stale, or exceed the per-form limit on model error. The engines were written by other people, but some
+**Where it stops.** Two models reading the same English can share a misreading. The second family
+reviewed every form, but only 64 of 136 paired reviews qualified when it was last compared; the rest
+awaited rulings, were stale, or exceeded the per-form limit on model error. The engines were written by other people, but some
 of their inputs reach them through the project's adapters, and they mostly reach summary lines
 (adjusted gross income, taxable income, tax); OpenTaxSolver and UsTaxes reach more of the worksheet
 steps. And no human line-by-line reading is claimed: the
@@ -388,19 +389,19 @@ Around the stack sit tests of whether the tests are any good.
   arithmetic ("Add lines 1 through 3") must match the line's operands, a limit sentence ("can't be more
   than") must be tied to the line that enforces it, and four more of the kind. Findings that predate a
   check are held in a baseline and come due when the line they concern changes.
-- **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (263 at the
-  last commit) with how it was caught, its root cause, and *why the existing checks missed it*. It is
+- **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (<!-- figures:readme-bugs -->932 so far<!-- /figures:readme-bugs -->)
+  with how it was caught, its root cause, and *why the existing checks missed it*. It is
   append-only; the suite fails if its committed history changes.
 - **The commit guard.** A git hook, enabled per clone, refuses any commit whose tree is not exactly a
   tree a green run of the suite tested. Only releases carry the full guarantee: a release is a tag
   `r<year>.<month>.<day>.<n>` (the newest is the latest release), and its tree passed the whole suite.
   A commit on `main` between releases passed the fast tier, which skips mutation testing, the
   comparisons with the independent evaluators (the engine differential and the Lean evaluator) and the
-  test of the human-review tooling; its
+  interview length report; its
   mutation and evaluator reports, and the engine column of its evidence report, can date from the last
   release, and the evidence report names that release. A commit that changes only bookkeeping files (the
   task and bug registers, handoffs, `docs/`) passed the checks that read them. A commit that changes the
-  mutation tool, the evaluators or the human-review tooling needs the full suite even on `main`.
+  mutation tool, the evaluators or the engine differential needs the full suite even on `main`.
 
 **What it earns.** The tests are sensitive to what they claim to test, the defect record is public and
 append-only, and each miss is meant to become a new check. **Where it stops:** a suite catches what it
@@ -424,7 +425,8 @@ npm run check-all
 ## Where the project is
 
 **Can I do my taxes with it?** Not comfortably, yet. The interview runs end to end today for an
-estimated 78% of returns, but it is a command-line program that speaks JSON, its forms are 2025's while
+estimated 78% of returns, but it is a command-line program that speaks JSON (with a plain local web page
+over it, `serve`), its forms are 2025's while
 the first return it is meant to prepare for real is 2026's, and its independent verification is still
 climbing.
 
@@ -433,15 +435,22 @@ counting a return only when nothing on it is refused ([`reports/2025/filer_cover
 The estimate starts from IRS Statistics of Income counts and uses household microdata, reweighted to those
 counts, for the overlaps between situations. Treat it as an ordering and a rough measure, not a
 certified share: most refusal gates have no IRS count to measure them by (180 of the 188 refusal gates
-in the forms), so the true figure is lower by their share. Every gate, measured or not, is
+in the forms when the estimate was last run, 2026-11-01; the forms now hold 234, 193 of them situations
+refused), so the true figure is lower by their share. Every gate, measured or not, is
 in the [coverage decision tree](docs/COVERAGE.md). A 2026-11-01 correction counts filers who can be
 claimed as a dependent (4.7% of returns, SOI Table 1.7) as refused; the earlier estimate had counted
 them as covered, so the first 80% goal is not yet reached.
 
-**Now: hardening.** The measured coverage is just below the first coverage goal of 80%. The approved
-plan keeps verification ahead of coverage expansion; the first expansion step, Schedule E, would bring
-the estimate to about 84%. The work is the source-coverage checks and standing reviews above, the fixes
-they turn up, and raising the scoreboard.
+**Now: consolidation and the interview.** The measured coverage is just below the first coverage goal of
+80%. The order of work ([`docs/consolidation_charter.md`](docs/consolidation_charter.md)) puts one
+architecture with its process rules enforced by tools, and an interview an ordinary person can answer
+correctly, ahead of coverage expansion; the first expansion step, Schedule E, would bring the estimate to
+about 84%. Tax year 2026 is prepared alongside, on the IRS's drafts. Coverage expansion began on 2026-11-15
+([`docs/2026-11-15_coverage_expansion_protocol.md`](docs/2026-11-15_coverage_expansion_protocol.md)). The areas
+added that day pass the mechanical interview checks (coverage rows, tick-box groups, interview rules, wording), but
+have not had the owner's walk or the written judgment record the interview construction protocol requires; until
+then they are not at the standard of the redrafted interview. Parts of steps 1 to 4 below were added that day;
+[`docs/COVERAGE.md`](docs/COVERAGE.md) lists what each still refuses.
 
 **Next, in order of the coverage each adds:**
 
@@ -454,12 +463,15 @@ they turn up, and raising the scoreboard.
    1116, which the estimate does not measure.
 
 **Tax year 2026 is the target**: the first return the tool is meant to prepare for real. The tooling for
-adopting a new year has been rehearsed on the IRS's posted drafts. When the final forms appear, expected
-in early 2027, the year is adopted as a reviewed diff and every construction reruns. Drafts can never
-back a release.
+adopting a new year has been rehearsed on the IRS's posted drafts, and the year's changes are prepared from
+them as operations on the 2025 forms (`changes/2026/`), checked on every commit. When the final forms
+appear, expected December 2026 to January 2027, the operations are checked against them, the year is adopted,
+and the reviews rerun on the lines that changed ([`docs/ty2026/ADOPTION.md`](docs/ty2026/ADOPTION.md)).
+Drafts can never back a release.
 
-**Not yet:** a graphical interface, filling official PDFs, state returns (New York first, once federal
-coverage is done), and a lawyer's review of the project's legal position.
+**Not yet:** a finished graphical interface, filling official PDFs, state returns beyond New York's Form
+IT-201 for a full-year New York City resident (tax year 2025, held at its current scope), and a lawyer's
+review of the project's legal position.
 
 ## Running it
 

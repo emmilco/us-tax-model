@@ -203,6 +203,45 @@
   },
   {
    "printed": "1a",
+   "project_expr_sha256": "e4afb4a15eb69967a76473bcc9d3c5981cca4487b98aa1449c9e934681e92389",
+   "second_expr_sha256": "f79eb39b0dd3345ddfd26bae02b53f8e02682d62945ec8d5faf0e1cbd107afdb",
+   "ruling": "Ruling: representation; executable triage 2,329/2,999 agree; 592 candidate-unknown, 68 value, 10 project-unknown (completed: 6 candidate-unknown, 6 value; value pairs all project No, reply Yes). A display line: the project answers line 1a only when the worksheet is used (a traditional contribution); every value witness has none (e.g. classm.person.3, a SIMPLE plan with person.ira_owner false; triage explain of the 6a witnesses shows ira.any_trad false). With a contribution both read the same coverage, including the separate-return rule 'considered covered by a plan unless you lived apart from your spouse for all of 2025' (i1040gi p. 96). Unknowns: the reply reads person.ira_work_plan unasked.",
+   "context": "b7eeb9ab74215af148833feea0a19b6ff6845c7486aa7cb3e84cc1af2c09bb4e",
+   "date": "2026-11-15",
+   "run": "12e85541d837b4d0e72cfbcce43591bd044661686fd9b69b546c2af031640aa6",
+   "subject_key": "e06e9400bd51699cefea0a26e6b79b219b1526531b8ec7adb198ebd118b2d0da",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@ira",
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f2441.3.deepseek@ira",
+     "fixture:classm.f2441.4.deepseek@ira",
+     "fixture:classm.f2441.5.deepseek@ira",
+     "fixture:classm.f2441.6.deepseek@ira",
+     "fixture:classm.sd.2.deepseek@ira",
+     "fixture:classm.clcw.4.deepseek@ira",
+     "fixture:classm.dependent.3.deepseek@ira",
+     "fixture:classm.s1.12@ira",
+     "fixture:classm.person.3@ira",
+     "fixture:classm.person.6@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage16.cleanup.refuse.f2441_line24@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:t264.f4952.unsupported_with_interest@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "1a",
    "project_expr_sha256": "f65391a59e5cbda0240ab625299f6a3fa774ed7e18254d96866354b5564198a3",
    "second_expr_sha256": "8a215b485f2abbe8d68eeee34ded7bfc02034460defd96c1c43300dae9db00b4",
    "ruling": "Ruling: representation; i1040gi p. 97, line 1: \"Were you covered by a retirement plan (see Were You Covered by a Retirement Plan)?\" and \"If married filing jointly, was your spouse covered by a retirement plan?\"; i1040gi p. 95, Line 20: \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.\" The project shows line 1a Yes only when traditional contributions make the worksheet apply, and the deduction reads person.ira_cov, not this line. Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 530 of 1640 comparisons agree; 938 candidate-unknown, 172 value. All 172 value records have no traditional contributions (project No, candidate Yes; classm.f5695.1, classm.ira.1, classm.f8880.1), many also with person.plan supplied without a Schedule C. Of the 938 candidate-unknown records, 920 are no-contribution returns where coverage is not asked, 17 are contributing returns needing person.plan without a Schedule C (person.plan (the self-employed person’s own SEP or SIMPLE) is read by the project only with that person’s Schedule C (person.ira_se_plan, amb.2025.ira_covered); without a Schedule C the interview never asks it and the answer is necessarily none, since other self-employment (Schedules E and F, partnerships) is refused by scope.schedule1), and ss.person.separation lacks a role. On contributing returns the answers agree; on a return with no traditional IRA contributions the worksheet is not used and no amount reads the line. Project stands.",
@@ -313,6 +352,45 @@
   },
   {
    "printed": "2a",
+   "project_expr_sha256": "53beb4de343d4980295b89f80b0869cc652d2120ab033b9e4bbfc81b124297ae",
+   "second_expr_sha256": "c9caa688dba2306887c86e96099673137986a07f77d1001bdbc97d07d49865a7",
+   "ruling": "Ruling: representation; executable triage 2,329/2,999 agree; 592 candidate-unknown, 68 value, 10 project-unknown (value pairs all project $0, reply $89,000 or $146,000). Display line: the project shows zero when lines 2 through 6 are skipped (ira.lines2to6 false); every value witness has no traditional contribution (triage explain of stage14.sep.basic: ira.any_trad false). The reply's own note says the amount is computed but not shown in that case. i1040gi p. 97, IRA Deduction Worksheet, 'skip lines 2 through 6'.",
+   "context": "b7eeb9ab74215af148833feea0a19b6ff6845c7486aa7cb3e84cc1af2c09bb4e",
+   "date": "2026-11-15",
+   "run": "12e85541d837b4d0e72cfbcce43591bd044661686fd9b69b546c2af031640aa6",
+   "subject_key": "57ac7236ca24a7a1c41f089fac1edf2a3f6b749f459d9d78c4abe177b1ecc7ae",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@ira",
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f2441.3.deepseek@ira",
+     "fixture:classm.f2441.4.deepseek@ira",
+     "fixture:classm.f2441.5.deepseek@ira",
+     "fixture:classm.f2441.6.deepseek@ira",
+     "fixture:classm.sd.2.deepseek@ira",
+     "fixture:classm.clcw.4.deepseek@ira",
+     "fixture:classm.dependent.3.deepseek@ira",
+     "fixture:classm.s1.12@ira",
+     "fixture:classm.person.3@ira",
+     "fixture:classm.person.6@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage16.cleanup.refuse.f2441_line24@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:t264.f4952.unsupported_with_interest@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "2a",
    "project_expr_sha256": "562439bfc227cce1a6218a55998b6766ebab03ff9fdbed657adfd555039dea59",
    "second_expr_sha256": "7215c36ed8baa5c8a2b9d96d30cee114a830c2f368b70a106cd89572b595f96d",
    "ruling": "Ruling: representation; project retained. Both take the column's line 2 from person.ira_line2. The project shows zero when lines 2 through 6 are skipped (no one covered, or no traditional contributions), as the worksheet says: i1040gi p. 97, \"If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6\"; the second shows the amount on a skipped line. Line 6 reads person.ira_line2 directly and line 7 reads line 6 only when someone is covered (person.ira_line7), so no later value differs. A separate return is refused (scope.ready, s3.mfs), so the married-filing-separately amounts and rules are not reached.",
@@ -360,6 +438,91 @@
      "fixture:stage16.cleanup.refuse.f4952_unsupported@ira"
     ],
     "policy": "executable-triage-v1"
+   }
+  },
+  {
+   "printed": "2b",
+   "project_expr_sha256": "f2bc7b83b69fe4c47731a40b65dddfd601b8748eb78ebf323e2e3bd1302c9870",
+   "second_expr_sha256": "f243793cb40b064ba4221b2dbc7d7c126f66363b95ecd2ffb9992f402730a76f",
+   "ruling": "Ruling: representation; executable triage 2,882/2,999 agree; 97 candidate-unknown, 11 project-unknown, 9 value (value pairs all project $0, reply $246,000, e.g. stage21.f1.lower_bound_still_decides, ira.any_trad false). Display line, zero when lines 2 through 6 are skipped; the reply computes the not-covered amount regardless (its note: 'computed but unused'). i1040gi p. 97, line 2, 'Married filing jointly, enter $146,000 in both columns' with the $246,000 not-covered amount.",
+   "context": "b7eeb9ab74215af148833feea0a19b6ff6845c7486aa7cb3e84cc1af2c09bb4e",
+   "date": "2026-11-15",
+   "run": "12e85541d837b4d0e72cfbcce43591bd044661686fd9b69b546c2af031640aa6",
+   "subject_key": "946b822a1b47a9b21143451f1ce12d7cfccbbf87a03581c4749fac89d538f6d1",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f8889.2.deepseek@ira",
+     "fixture:classm.f8889.3.deepseek@ira",
+     "fixture:classm.f8889.4.deepseek@ira",
+     "fixture:classm.f4952.2.deepseek@ira",
+     "fixture:classm.dependent.2.deepseek@ira",
+     "fixture:classm.f8880.2.deepseek@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage16.cleanup.refuse.f2441_line24@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:stage21.f1.lower_bound_still_decides@ira",
+     "generated:20261026.73@ira",
+     "generated:20261026.103@ira",
+     "generated:20261026.150@ira",
+     "generated:20261026.154@ira",
+     "generated:20261026.222@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "6a",
+   "project_expr_sha256": "2eb4d6af7c46eb080666be52b5a81bd9d807c63f0f16a5dd06d78213c30b3696",
+   "second_expr_sha256": "06c8d022a2ec3d435237dde550655e12ecab44ecd198e27b94622cc6eded3fd6",
+   "ruling": "Ruling: representation; executable triage 2,338/2,999 agree; 593 candidate-unknown, 46 candidate-refuses, 12 value, 10 project-unknown (value pairs all project $0, reply positive). Display line, zero when lines 2 through 6 are skipped; triage explain of stage14.sep.basic (witness 21): ira.lines2to6 false through ira.any_trad false. The reply subtracts regardless of the skip. i1040gi p. 97, line 6.",
+   "context": "b7eeb9ab74215af148833feea0a19b6ff6845c7486aa7cb3e84cc1af2c09bb4e",
+   "date": "2026-11-15",
+   "run": "12e85541d837b4d0e72cfbcce43591bd044661686fd9b69b546c2af031640aa6",
+   "subject_key": "6072f7521c3f1e1c62ce55b0853a52c9d5172db67e1c3b8dc173eaecaa1418fa",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@ira",
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f2441.3.deepseek@ira",
+     "fixture:classm.f2441.4.deepseek@ira",
+     "fixture:classm.f2441.5.deepseek@ira",
+     "fixture:classm.f2441.6.deepseek@ira",
+     "fixture:classm.clcw.4.deepseek@ira",
+     "fixture:classm.dependent.3.deepseek@ira",
+     "fixture:classm.s1.12@ira",
+     "fixture:classm.person.3@ira",
+     "fixture:classm.person.6@ira",
+     "fixture:classm.clcw.4@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage16.cleanup.refuse.f2441_line24@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:t264.f4952.unsupported_with_interest@ira",
+     "fixture:mutation.t2.no_carloan_part4@ira",
+     "fixture:mutation.t2.f8880.sep_line2@ira",
+     "fixture:mutation.t2.s1a.line21_magi_first@ira",
+     "fixture:stage14.sep.basic@ira",
+     "fixture:stage14.sep.worksheet_shown@ira",
+     "fixture:stage14.simple.match_age50@ira"
+    ],
+    "policy": "executable-triage-v2"
    }
   },
   {
@@ -412,6 +575,47 @@
    "second_expr_sha256": "d30aa00c2076d01968b624df4fe16f1959c8e44ec3b543cdf7e819532cc86b5e",
    "ruling": "Ruling: representation; project retained. As line 6a, for the spouse's column; the second's joint-return condition is met by the roster (the project has a spouse entry only on a joint return (household.roster_bad refuses any other roster: \"only when married filing jointly, one person with the role spouse\")). i1040gi p. 97, line 6, \"Subtract line 5 from line 2 in each column\".",
    "subject_key": "85243fc8e70eac2be4ab32ba989e7c5a1904d58ec50eb98e196bb08a708ce640"
+  },
+  {
+   "printed": "6b",
+   "project_expr_sha256": "860ad4957365c9af946120cf1f09c2e1fd59892540c65aacd57ac93dd6b83eed",
+   "second_expr_sha256": "a0864c7f7a69a5648a41117b0e1bd871b8d3294ed3a9416722386ba8bc423e9c",
+   "ruling": "Ruling: representation; executable triage 2,882/2,999 agree; 97 candidate-unknown, 11 project-unknown, 8 candidate-refuses, 1 value (value pair project $0, reply $71,339). Display line, zero when lines 2 through 6 are skipped (no traditional contribution), as 6a; the reply subtracts regardless. i1040gi p. 97, line 6, 'Subtract line 5 from line 2 in each column'.",
+   "context": "b7eeb9ab74215af148833feea0a19b6ff6845c7486aa7cb3e84cc1af2c09bb4e",
+   "date": "2026-11-15",
+   "run": "12e85541d837b4d0e72cfbcce43591bd044661686fd9b69b546c2af031640aa6",
+   "subject_key": "48c3b8093baefc7b59a4ad06cbae2401460b5485758e01222c8f732468cca1fc",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f8889.2.deepseek@ira",
+     "fixture:classm.f8889.3.deepseek@ira",
+     "fixture:classm.f8889.4.deepseek@ira",
+     "fixture:classm.f4952.2.deepseek@ira",
+     "fixture:classm.dependent.2.deepseek@ira",
+     "fixture:classm.f8880.2.deepseek@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage16.cleanup.refuse.f2441_line24@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:stage21.f1.lower_bound_still_decides@ira",
+     "generated:20261026.73@ira",
+     "generated:20261026.103@ira",
+     "generated:20261026.150@ira",
+     "generated:20261026.154@ira",
+     "generated:20261026.222@ira",
+     "generated:20261026.293@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "6b",
@@ -619,11 +823,82 @@
    }
   },
   {
+   "printed": "ira.any_trad",
+   "project_expr_sha256": "277228401b29c467b4292f3f79d57094c4abbcd5af26b0af082a7e3eb7a17195",
+   "second_expr_sha256": "fb94cd8cd08bbfa9cf6092bdf0f25a8cf7d0805d1adafe82bb50573eb446c529",
+   "ruling": "Ruling: representation; executable triage 2,430/2,999 agree; 559 candidate-unknown, 10 project-unknown, no value differs (completed: 6 candidate-unknown). Same test (traditional contributions above zero); the reply sums person.ira_trad without its parent person.ira_owner, so it is unknown where the interview never asks the amount. i1040gi p. 95, Line 20.",
+   "context": "b7eeb9ab74215af148833feea0a19b6ff6845c7486aa7cb3e84cc1af2c09bb4e",
+   "date": "2026-11-15",
+   "run": "12e85541d837b4d0e72cfbcce43591bd044661686fd9b69b546c2af031640aa6",
+   "subject_key": "4fac4a92e0eb59fe25394fde12c2e17db27850d3d1a8057c40ca3dcc99b17c14",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@ira",
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f2441.3.deepseek@ira",
+     "fixture:classm.f2441.4.deepseek@ira",
+     "fixture:classm.f2441.5.deepseek@ira",
+     "fixture:classm.f2441.6.deepseek@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage16.cleanup.refuse.f2441_line24@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:t264.f4952.unsupported_with_interest@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
    "printed": "ira.anyone_covered",
    "project_expr_sha256": "0ded38586cb1f5552a5b10cfdaa3d55606d0b597200921fb95182f5e09624985",
    "second_expr_sha256": "78854639fc2246544b50ba7733b154b3194bee5a3e7f3679bbc3287bc2992bbe",
    "ruling": "Ruling: representation; project retained. Both test whether you or, on a joint return, your spouse was covered (lines 1a and 1b, each person's person.ira_cov). The second's lines 1a and 1b also require a traditional IRA contribution, which the project tests beside this helper wherever it is read (ira.lines2to6, ira.cov_gate, ira.excl_gate; person.ira_line7 reaches a value only through ira.line7a and person.ira_deduction, both zero without contributions), so no value differs. i1040gi p. 97, IRA Deduction Worksheet, \"If you checked “No” on line 1a (and “No” on line 1b if married filing jointly), skip lines 2 through 6\". The second's ira.special stop is the project's ira.special_gate, which refuses person.ira_line11 and so lines 12 and 20.",
    "subject_key": "f80a1b89689cef526cf8974aed17e747b201d70bc60301ba17f57c188244415d"
+  },
+  {
+   "printed": "ira.anyone_covered",
+   "project_expr_sha256": "d36000d9a304feb06e31c753ed282dd77d1ab6339197ad09d48c6dacd1d07a36",
+   "second_expr_sha256": "8babbfa21815adaf51865579a330bd0bf92df67a55f97bea637a8406bfe1c769",
+   "ruling": "Ruling: representation; executable triage 2,940/2,999 agree; 40 candidate-unknown, 10 project-unknown, 9 value (completed: 1 value; 2 completed witnesses in total). Every value witness is project true, reply false on a return with no traditional contribution: the reply reads worksheet lines 1a/1b, which are No without a contribution, while the project tests coverage itself. Both readers (ira.lines2to6, ira.cov_gate) also require ira.any_trad, so no value downstream differs. On a separate return both take the spouse's coverage through the same lived-apart rule (i1040gi p. 96, Married persons filing separately).",
+   "context": "b7eeb9ab74215af148833feea0a19b6ff6845c7486aa7cb3e84cc1af2c09bb4e",
+   "date": "2026-11-15",
+   "run": "12e85541d837b4d0e72cfbcce43591bd044661686fd9b69b546c2af031640aa6",
+   "subject_key": "29a2c005cc60e69a3071b15378ffa45daf0b7658c792144cc65a4301d1adbb8c",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.g28.2.deepseek@ira",
+     "fixture:classm.clcw_next_year.3.deepseek@ira",
+     "fixture:classm.f1095a.1.deepseek@ira",
+     "fixture:classm.eic.2.deepseek@ira",
+     "fixture:classm.eic.8.deepseek@ira",
+     "fixture:classm.retirement.2.deepseek@ira",
+     "fixture:classm.retirement.4.deepseek@ira",
+     "fixture:classm.g28.2@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage16.cleanup.refuse.f2441_line24@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:t264.f4952.unsupported_with_interest@ira",
+     "fixture:mutation.t2.f8880.simple_line2@ira",
+     "generated:20261026.121@ira",
+     "generated:20261026.141@ira",
+     "generated:20261026.315@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
   },
   {
    "printed": "ira.anyone_covered",
@@ -820,6 +1095,38 @@
   },
   {
    "printed": "ira.cov_gate",
+   "project_expr_sha256": "cddaeaaad97760c161044f17fd7bcfd1cd6f3f1f28b7693435473f444198536e",
+   "second_expr_sha256": "e38c56e44520ca31eaaa79651e0e73e9618b4c9dc7b5525f38c700b8675efbb1",
+   "ruling": "Ruling: model error; executable triage 2,418/2,999 agree; 559 candidate-unknown, 22 value (completed: 6 candidate-unknown, 6 value). The reply drops the social security condition of the label ('Social security benefits, traditional IRA contributions for 2025, and you or your spouse covered'): it is true on classm.person.2, stage16.ira.i1 and i2 (ssb.any false). The deciding source is the exception of i1040gi p. 31, Lines 6a and 6b, which concerns the benefits worksheet only; a filer with no benefits is not sent to Pub. 590-A by it.",
+   "context": "b7eeb9ab74215af148833feea0a19b6ff6845c7486aa7cb3e84cc1af2c09bb4e",
+   "date": "2026-11-15",
+   "run": "12e85541d837b4d0e72cfbcce43591bd044661686fd9b69b546c2af031640aa6",
+   "subject_key": "45266bc508be6da10bad0391ecf9ae39d23e50a5232a211e0f64c5f959d698ec",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@ira",
+     "fixture:classm.f2441.2.deepseek@ira",
+     "fixture:classm.f2441.3.deepseek@ira",
+     "fixture:classm.f2441.4.deepseek@ira",
+     "fixture:classm.f2441.5.deepseek@ira",
+     "fixture:classm.f2441.6.deepseek@ira",
+     "fixture:classm.ira.2@ira",
+     "fixture:classm.person.2@ira",
+     "fixture:stage16.ira.i1@ira",
+     "fixture:stage16.ira.i2@ira",
+     "fixture:stage16.ira.i3@ira",
+     "fixture:stage16.ira.i4@ira"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "ira.cov_gate",
    "project_expr_sha256": "f4ecbd86c683d2c62b5ab5b1677bdbcd32515a78e8fd12befb57a45b911f6e8f",
    "second_expr_sha256": "f934c8b0b702356d85c3f9fe4ace0f5b64af57fee5b1a17398e2579d18d3253c",
    "ruling": "Ruling: representation; i1040gi p. 31, Lines 6a and 6b, Exception: \"You made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan at work or through self-employment. Instead, use the worksheets in Pub. 590-A\". Triage executable-triage-v1 (triage/ira.json; 1,083 fixtures, 500 generated returns seed 20261026, 57 partial records): 1617 of 1640 comparisons agree; 23 candidate-unknown. 22 of the 23 candidate-unknown records answer No to person.sav_trad and supply no amount (classm.dcprov.1, classm.retirement.4, stage10.ss.top): person.ira_trad is the amount question the interview asks only after Yes on person.sav_trad; the candidate reads it without that question, so on a return answered No the amount is not supplied, although it is necessarily zero; with that zero the candidate's conjunction is false like the project's, whatever the coverage answer. The 23rd (stage16.ira.i10) is person.plan on a return without a Schedule C (person.plan (the self-employed person’s own SEP or SIMPLE) is read by the project only with that person’s Schedule C (person.ira_se_plan, amb.2025.ira_covered); without a Schedule C the interview never asks it and the answer is necessarily none, since other self-employment (Schedules E and F, partnerships) is refused by scope.schedule1). The gate agrees on every reachable return; project stands.",
@@ -869,6 +1176,41 @@
      "generated:20261026.46@ira"
     ],
     "policy": "executable-triage-v1"
+   }
+  },
+  {
+   "printed": "ira.excl_gate",
+   "project_expr_sha256": "ecfa31ab2ef7aeb1b8d306b190b2ff4d0903a65e14c523c56f22382afb6d399b",
+   "second_expr_sha256": "d7484438d1eb9c1a69776a2e0226f1c7c85ea76ba3411e60dd6fc44119476286",
+   "ruling": "Ruling: model error; executable triage 2,978/2,999 agree; 12 candidate-unknown, 7 project-unknown, 2 value (refused returns only). The reply encodes a different exclusion, the joint traditional-and-Roth one (i1040gi p. 95, Line 20, 'If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don't use the IRA Deduction Worksheet'), which the project carries in its own gate ira.both_kinds. This gate's label and cite are the excluded-income rule: i1040gi p. 96, 'If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A'.",
+   "context": "b7eeb9ab74215af148833feea0a19b6ff6845c7486aa7cb3e84cc1af2c09bb4e",
+   "date": "2026-11-15",
+   "run": "12e85541d837b4d0e72cfbcce43591bd044661686fd9b69b546c2af031640aa6",
+   "subject_key": "d76e0fbeac356dfefa6996dea08ce219e253b5f73415b426be56884c0e969971",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f8889.2.deepseek@ira",
+     "fixture:classm.f8880.3.deepseek@ira",
+     "fixture:classm.f8880.3@ira",
+     "fixture:classm.ira.3@ira",
+     "fixture:classm.s2.1@ira",
+     "fixture:classm.s3.1@ira",
+     "fixture:classm.sb.3@ira",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@ira",
+     "fixture:stage16.cleanup.refuse.f1040_line16@ira",
+     "fixture:stage16.cleanup.refuse.scope_credits@ira",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@ira",
+     "fixture:t264.f4952.unsupported_with_interest@ira",
+     "fixture:stage16.refuse.ira.both_kinds@ira",
+     "fixture:stage16.refuse.ira.excluded_income@ira"
+    ],
+    "policy": "executable-triage-v2"
    }
   },
   {

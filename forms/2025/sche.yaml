@@ -1,0 +1,378 @@
+form:
+  id: sche
+  kind: form
+  title: Schedule E, Part I — totals (rental real estate and royalties)
+  tax_year: 2025
+  note: 'Totals of Schedule E Part I over the rental and royalty entries; line 41 is line 26 (Parts II to IV are refused).
+    Refused: a real estate professional, rentals grouped as one activity, and a rental treated as a trade or business.'
+  lines:
+  - id: sche.no
+    printed: (helper)
+    label: No (false)
+    type: Bool
+    expr:
+      op: param
+      ref: household.no
+    cite:
+      doc: i1040se
+      locator: p. 1, Line 26
+  - id: sche.re_pro
+    printed: (helper)
+    label: Real estate professional
+    type: Bool
+    expr:
+      op: input
+      source: Did you (or your spouse) work more than 750 hours in 2025 in real estate businesses, and more than half of all
+        your work time?
+    cite:
+      doc: i1040se
+      locator: p. 3, Real estate professionals
+  - id: sche.grouped
+    printed: (helper)
+    label: Rentals grouped as one activity
+    type: Bool
+    expr:
+      op: input
+      source: Do you treat two or more of your rentals as one activity?
+    cite:
+      doc: i8582
+      locator: p. 1, Grouping of Activities
+  - id: sche.qbi_business
+    printed: (helper)
+    label: A rental treated as a trade or business
+    type: Bool
+    expr:
+      op: input
+      source: Do you treat a rental as a business for the qualified business income deduction (for example, 250 hours or more
+        a year of rental services, with separate books)?
+    cite:
+      doc: i8995
+      locator: p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated
+        as a trade or business for purposes of the QBI deduction"
+  - id: sche.rents
+    printed: (helper)
+    label: Rents of all reported rental properties
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.line3
+      where: &id001
+        op: test
+        eq:
+        - rental.reported
+        - const: true
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 23a, "Total of all amounts reported on line 3 for all rental properties"
+  - id: sche.line23a
+    printed: 23a
+    label: Total of all amounts reported on line 3 for all rental properties
+    type: NonNegDollars
+    expr:
+      op: copy
+      from: sche.rents
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 23a
+  - id: sche.line23b
+    printed: 23b
+    label: Total of all amounts reported on line 4 for all royalty properties
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: royalty
+      field: royalty.line4
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 23b
+  - id: sche.line23c
+    printed: 23c
+    label: Total of all amounts reported on line 12 for all properties
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.line12
+      where: *id001
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 23c
+  - id: sche.line23d
+    printed: 23d
+    label: Total of all amounts reported on line 18 for all properties
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.line18
+      where: *id001
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 23d
+  - id: sche.rent_exp
+    printed: (helper)
+    label: Line 20 of all reported rental properties
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.line20
+      where: *id001
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 23e, "Total of all amounts reported on line 20 for all properties"
+  - id: sche.roy_exp
+    printed: (helper)
+    label: Line 20 of all royalty properties
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: royalty
+      field: royalty.line20
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 23e
+  - id: sche.line23e
+    printed: 23e
+    label: Total of all amounts reported on line 20 for all properties
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sche.rent_exp
+      - sche.roy_exp
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 23e
+  - id: sche.rent_income
+    printed: (helper)
+    label: Positive line 21 of rental properties
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.net_income
+      where: *id001
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 24, "Add positive amounts shown on line 21"
+  - id: sche.roy_income
+    printed: (helper)
+    label: Positive line 21 of royalty properties
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: royalty
+      field: royalty.income
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 24, "Add positive amounts shown on line 21"
+  - id: sche.line24
+    printed: '24'
+    label: Income. Add positive amounts shown on line 21. Do not include any losses
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sche.rent_income
+      - sche.roy_income
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 24
+  - id: sche.rent_loss
+    printed: (helper)
+    label: Line 22 of rental properties
+    type: Dollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.line22
+      where: *id001
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 25, "rental real estate losses from line 22"
+  - id: sche.roy_loss
+    printed: (helper)
+    label: Royalty losses from line 21
+    type: Dollars
+    expr:
+      op: sum_over
+      collection: royalty
+      field: royalty.loss
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 25
+  - id: sche.line25
+    printed: '25'
+    label: Losses. Add royalty losses from line 21 and rental real estate losses from line 22
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - sche.rent_loss
+      - sche.roy_loss
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 25
+  - id: sche.line26
+    printed: '26'
+    label: Total rental real estate and royalty income or (loss). Combine lines 24 and 25
+    type: Dollars
+    expr:
+      op: sum
+      of:
+      - sche.line24
+      - sche.line25
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 26
+    refuses:
+    - when: sche.re_pro
+      form: Schedule E, line 43 (real estate professional)
+      remedy: A real estate professional's rentals are outside this tool.
+      cite:
+        doc: i1040se
+        locator: p. 3, Real estate professionals
+    - when: sche.grouped
+      form: Form 8582 (activities grouped)
+      remedy: Rentals treated as one activity are outside this tool.
+      cite:
+        doc: i8582
+        locator: p. 1, Grouping of Activities
+    - when: sche.qbi_business
+      form: Form 8995 (rental real estate as a trade or business)
+      remedy: A rental treated as a trade or business is outside this tool.
+      cite:
+        doc: i8995
+        locator: p. 1, Trade or business, "provides a safe harbor under which a rental real estate enterprise will be treated
+          as a trade or business for purposes of the QBI deduction"
+  - id: sche.line41
+    printed: '41'
+    label: Total income or (loss). Combine lines 26, 32, 37, 39, and 40
+    type: Dollars
+    expr:
+      op: copy
+      from: sche.line26
+    cite:
+      doc: f1040se
+      locator: Schedule E (2025), line 41
+    note: Parts II to IV and line 40 are refused (scope.k1, scope.farm).
+  - id: sche.loss_prelimit
+    printed: (helper)
+    label: Rental net losses and royalty losses on line 21, before the passive activity limit (positive)
+    type: NonNegDollars
+    expr:
+      op: sum
+      of:
+      - sche.rent_netloss
+      - sche.roy_lossabs
+    cite:
+      doc: i1040se
+      locator: p. 1, Reminders, "If you report a loss on line 26, 32, 37, or 39 of your Schedule E (Form 1040), you may be
+        subject to a business loss limitation"
+    ambiguity: amb.2025.s1_ebl_rental
+  - id: sche.rent_netloss
+    printed: (helper)
+    label: Rental net losses on line 21 (positive)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.net_loss
+      where: *id001
+    cite:
+      doc: i1040se
+      locator: p. 1, Reminders
+  - id: sche.roy_lossabs
+    printed: (helper)
+    label: Royalty losses on line 21 (positive)
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: royalty
+      field: royalty.loss_abs
+    cite:
+      doc: i1040se
+      locator: p. 1, Reminders
+  - id: sche.nonpassive_net
+    printed: (helper)
+    label: Royalty income or loss (not passive), for modified adjusted gross income on Form 8582
+    type: Dollars
+    expr:
+      op: sum_over
+      collection: royalty
+      field: royalty.line21
+    cite:
+      doc: i8582
+      locator: p. 11, Line 6, "Include in modified adjusted gross income any portfolio income"
+  - id: sche.count
+    printed: (helper)
+    label: Number of reported rental and royalty properties
+    type: Count
+    expr:
+      op: sum
+      of:
+      - sche.rental_count
+      - sche.royalty_count
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 1a
+  - id: sche.rental_count
+    printed: (helper)
+    label: Number of reported rental properties
+    type: Count
+    expr:
+      op: sum_over
+      collection: rental
+      field: rental.one
+      where: *id001
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 1a
+  - id: sche.royalty_count
+    printed: (helper)
+    label: Number of royalty properties
+    type: Count
+    expr:
+      op: sum_over
+      collection: royalty
+      field: royalty.one
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 1a
+  - id: sche.any_listed
+    printed: (helper)
+    label: A rental is reported, or a royalty is listed
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - sche.count
+      - const: 0
+        type: Count
+    cite:
+      doc: i1040se
+      locator: p. 5, Line 1a
+  - id: sche.any
+    printed: (gate)
+    label: Schedule E is filed (a rental reported or a royalty listed)
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - scope.rental
+          - const: true
+        then: sche.any_listed
+      - guard:
+          op: test
+          eq:
+          - scope.rental
+          - const: false
+        then: sche.no
+    cite:
+      doc: i1040gi
+      locator: p. 40, Step 2, "You are filing Schedule E"

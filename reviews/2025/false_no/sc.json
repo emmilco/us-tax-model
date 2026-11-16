@@ -1,0 +1,389 @@
+{
+ "form": "sc",
+ "reviews": {
+  "gate:sc.employees": {
+   "subject_sha": "15efe7346beee8f6a8bb36cba48fa89f38dd6840a74d1e8d3cca4c26b7a19df4",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A cash-method sole proprietor whose only employee quit in December 2024. In January 2025 the business paid that employee's final paycheck for December work, plus accrued vacation pay.",
+       "why_no": "\"Did this business have employees in 2025\" reads as having someone on staff during 2025. Nobody worked for the business in 2025, so the filer truthfully answers no, although the help's words \"people it paid wages to\" describe this 2025 payment.",
+       "line": "sc.line26_if_employees",
+       "irs_text": "i1040sc p. 10, Line 26: \"Enter the total salaries and wages for the tax year\"",
+       "severity": "high",
+       "fix": "Ask about payments made, not headcount: \"In 2025, did this business pay wages, salary, severance, back pay or benefits to anyone who is or was its employee, including final paychecks for work done in 2024?\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A business that closed its staff positions in 2024 but in 2025 paid a former employee severance, or back pay under a wage-claim settlement.",
+       "why_no": "The filer had no employees in 2025, only a former employee. The gate's present-year wording leads to a truthful no.",
+       "line": "sc.line26_if_employees",
+       "irs_text": "i1040sc p. 10, Line 26: \"Enter the total salaries and wages for the tax year\"",
+       "severity": "high",
+       "fix": "Use a broader gate that covers payments in 2025 to current or former employees, as above."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A sole proprietor with no current staff who in 2025 kept paying health premiums (COBRA subsidy or retiree coverage) or group-term life premiums for former employees.",
+       "why_no": "No one was employed in 2025, so the filer truthfully answers no. The benefit payments continued anyway.",
+       "line": "sc.line14_if_employees",
+       "irs_text": "i1040sc p. 7, Line 14: \"Deduct contributions to employee benefit programs ... Examples are accident and health plans, group-term life insurance, and dependent care assistance programs.\"",
+       "severity": "high",
+       "fix": "Make the gate also ask: \"or pay in 2025 for benefits or retirement plan contributions for current or former employees?\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "1",
+       "who": "A business with no employees in 2025 that in 2025 made a pension or profit-sharing contribution for former employees, for example a corrective contribution or one owed under the plan, deductible in 2025.",
+       "why_no": "The filer truthfully had no employees in 2025.",
+       "line": "sc.line19_if_employees",
+       "irs_text": "i1040sc p. 8, Line 19: \"Enter your deduction for the contributions you made for the benefit of your employees to a pension, profit-sharing, or annuity plan (including SEP, SIMPLE, and SARSEP plans ...)\"",
+       "severity": "medium",
+       "fix": "Gate line 19 on \"Did this business contribute to a retirement plan for anyone other than you in 2025, including former employees?\""
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "5",
+       "who": "A sole proprietor with no employees who funds a dependent care assistance program for themselves as a self-employed person.",
+       "why_no": "The help says \"You are not an employee of your own business\", so the filer truthfully answers no. The line 14 question's help (\"Not for yourself\") would also exclude this amount.",
+       "line": "sc.line14_if_employees",
+       "irs_text": "i1040sc p. 7, Line 14: \"If you made contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III, to figure your deductible contributions to that program.\"",
+       "severity": "medium",
+       "fix": "Ask separately, regardless of employees: \"Did you contribute for yourself to a dependent care assistance program?\" Route the Form 2441-figured amount to line 14, and change the line 14 help so it excludes only self health and group-term life."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "4",
+       "who": "A business whose workers are co-employed through a professional employer organization (PEO). The PEO issues the W-2s and bills the business one invoice covering wages, benefits and 401(k) contributions.",
+       "why_no": "The filer pays the PEO, not the people, and reads \"people it paid wages to\" as excluding workers on someone else's payroll. They answer no and enter the invoice elsewhere, or drop the benefits and retirement portions.",
+       "line": "sc.line26_if_employees, sc.line14_if_employees, sc.line19_if_employees",
+       "irs_text": "i1040sc p. 10, Line 26: \"Enter the total salaries and wages for the tax year\"; i1040sc p. 7, Line 14 (employee benefit programs)",
+       "severity": "medium",
+       "fix": "Add to the help: \"Count workers paid through a payroll service or PEO, even if the PEO issues their W-2s. A temp agency's own staff are not your employees.\""
+      }
+     ],
+     "prompt_sha": "1290d464d89c6f6179a31ebf70b8d7599fc673c02871a5822012bbdba613574d",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.127912,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sc.employees.15efe7346bee.1.response.txt"
+    }
+   ],
+   "condition": "sc.employees",
+   "lines": [
+    "sc.line14_if_employees",
+    "sc.line19_if_employees",
+    "sc.line26_if_employees"
+   ],
+   "inputs": [
+    "sc.line14",
+    "sc.line19",
+    "sc.line26"
+   ],
+   "used": [
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), lines 14, 19 and 26"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      7,
+      8,
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 26, \"Enter the total salaries and wages for the tax year\" and \"If you provided taxable fringe benefits to your employees, such as personal use of a car, do not deduct as wages the amount applicable to depreciation and other expenses claimed elsewhere\"",
+      "p. 8, Line 19",
+      "pp. 7-8, Line 14"
+     ],
+     "cols_pages": [
+      7,
+      8,
+      10
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "gate:sc.goods": {
+   "subject_sha": "fdcc6c45df6a4d3d308aa328394233461d02eeaac8badce7dfd6ec72cf88b7b1",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "A new 2025 business bought or made goods to sell. All of them were destroyed by fire or flood, stolen, spoiled, or thrown away as unsellable before any sale. It had nothing on hand at the start or end of the year.",
+       "why_no": "The gate asks only whether the business 'sell[s] goods' or 'hold[s] goods for sale at the start or end of the year'. This filer sold nothing and held nothing on either date, so a truthful answer is No. The words 'bought or made' only describe goods that were sold, so the purchases themselves never trigger the gate.",
+       "line": "sc.line36_if_goods (also sc.line37_if_goods, sc.line38_if_goods, sc.line39_if_goods)",
+       "irs_text": "f1040sc p. 2, line 36: 'Purchases less cost of items withdrawn for personal use'; i1040sc p. 15: 'if you engaged in a trade or business in which the production, purchase, or sale of merchandise was an income-producing factor, you must take inventories into account'",
+       "severity": "high",
+       "fix": "Make buying or producing goods a trigger by itself: 'Did this business buy, make, or produce goods or materials to sell in 2025 (even if they were never sold, or were lost, destroyed, stolen, or discarded), sell any goods, or have goods or materials on hand at the start or end of the year?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "A maker or builder whose products take a long time to finish, such as a furniture maker, boat builder, or distiller aging spirits. It paid for labor and materials in 2025, finished and sold nothing, and at year end held raw materials and unfinished work.",
+       "why_no": "The filer reads 'goods for sale' as finished products ready to sell. Half-built items and raw stock are not yet 'for sale', so the filer answers No. The help counts 'materials that become part of what you sell' as goods, but it says nothing about unfinished work.",
+       "line": "sc.line41_if_goods (also sc.line37_if_goods, sc.line38_if_goods)",
+       "irs_text": "f1040sc p. 2, line 37: 'Cost of labor'; line 38: 'Materials and supplies'; line 41: 'Inventory at end of year'; i1040sc p. 15: 'production ... of merchandise was an income-producing factor, you must take inventories into account at the beginning and end of your tax year'",
+       "severity": "medium",
+       "fix": "Add to the gate or its help: 'Count raw materials and unfinished products you are making to sell, even if nothing was finished or sold in 2025.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A service business that bills customers for parts or products it buys, such as a plumber, electrician, auto mechanic, salon selling hair products, or caterer. It keeps a stock of parts or retail items.",
+       "why_no": "The filer thinks of the business as selling services, not 'goods'. Parts installed on a job or supplies used up seem like costs of the work, not goods the business sold, so the filer answers No.",
+       "line": "sc.line35_if_goods (also sc.line36_if_goods, sc.line41_if_goods)",
+       "irs_text": "i1040sc p. 15: 'In most cases, if you engaged in a trade or business in which the production, purchase, or sale of merchandise was an income-producing factor, you must take inventories into account at the beginning and end of your tax year.'",
+       "severity": "medium",
+       "fix": "Add to the help: 'Answer Yes if you charge customers for parts, materials, or products, even when you mainly sell a service, or if you keep a stock of such items.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A seller whose own unsold goods were out on consignment in a shop at year end, or were bought and in transit to the business on December 31. It made no other sales that year.",
+       "why_no": "The filer reads 'hold goods' as having them physically in hand. The goods were in someone else's shop or on a truck, so the filer answers No.",
+       "line": "sc.line41_if_goods",
+       "irs_text": "f1040sc p. 2, line 41: 'Inventory at end of year'",
+       "severity": "low",
+       "fix": "Ask 'own goods for sale' rather than 'hold', and add to the help: 'including goods held by others for you, such as on consignment, or bought and still in transit'."
+      }
+     ],
+     "prompt_sha": "d37bbda2e88de20e25154b3e2c5798fff99371d6665b8e5fc2b1ef49ee030e99",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.11022799999999999,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sc.goods.fdcc6c45df6a.1.response.txt"
+    }
+   ],
+   "condition": "sc.goods",
+   "lines": [
+    "sc.line35_if_goods",
+    "sc.line36_if_goods",
+    "sc.line37_if_goods",
+    "sc.line38_if_goods",
+    "sc.line39_if_goods",
+    "sc.line41_if_goods"
+   ],
+   "inputs": [
+    "sc.line35",
+    "sc.line36",
+    "sc.line37",
+    "sc.line38",
+    "sc.line39",
+    "sc.line41"
+   ],
+   "used": [
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), Part III, Cost of Goods Sold, lines 35 to 42",
+      "Schedule C (2025), line 36",
+      "Schedule C (2025), line 37",
+      "Schedule C (2025), line 38",
+      "Schedule C (2025), line 39",
+      "Schedule C (2025), line 41",
+      "p. 2, Cost of Goods Sold, line 36, \"Purchases less cost of items withdrawn for personal use\"; , Part III. Cost of Goods Sold, \"you must take inventories into account at the beginning and end of your tax year\"",
+      "p. 2, Cost of Goods Sold, line 37, \"Cost of labor. Do not include any amounts paid to yourself\"; , Part III. Cost of Goods Sold, \"you must take inventories into account at the beginning and end of your tax year\"",
+      "p. 2, Cost of Goods Sold, line 38, \"Materials and supplies\"; , Part III. Cost of Goods Sold, \"you must take inventories into account at the beginning and end of your tax year\"",
+      "p. 2, Cost of Goods Sold, line 39, \"Other costs\"; , Part III. Cost of Goods Sold, \"you must take inventories into account at the beginning and end of your tax year\"",
+      "p. 2, Cost of Goods Sold, line 41, \"Inventory at end of year\"; , Part III. Cost of Goods Sold, \"you must take inventories into account at the beginning and end of your tax year\""
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Line 35",
+      "p. 15, Lines 33 and 35"
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    }
+   ]
+  },
+  "gate:sc.travel_meals": {
+   "subject_sha": "07243aa4068a56280684bd5935e50e1076f315e0b9d3a11dab91e18d88110438",
+   "samples": [
+    {
+     "verdict": "FALSE_NO",
+     "findings": [
+      {
+       "kind": "UNCLEAR",
+       "pattern": "6",
+       "who": "An owner-operator interstate truck driver who sleeps in the truck's sleeper berth, so pays for no hotel, and reports fuel and truck costs on line 9. They buy their own meals on the road while on duty under DOT hours-of-service limits.",
+       "why_no": "No lodging or fare was paid, so 'pay for overnight travel' reads as no. The help's examples (client meals, employee food, daycare, promotional food) suggest that the driver's own road meals are personal food, not 'meals' the business paid for.",
+       "line": "sc.meals_80_if_travel_meals",
+       "irs_text": "i1040sc p. 10, Amount of deduction: 'for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80% for business meals consumed during or incident to any period of duty for which those limits are in effect ... Interstate truck operators who are under DOT regulations.'",
+       "severity": "medium",
+       "fix": "Name the filer's own meals in the gate and its help: 'In 2025, did you, a spouse working in this business, or an employee travel away from home overnight for this business (even if you slept in your truck or stayed for free), or did the business pay for any meals, food or drink, including your own meals on such trips?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "A sole proprietor who drove their own car to a multi-day client job or conference (car costs on line 9) and stayed with a friend at no cost. They paid for their own meals with a personal card.",
+       "why_no": "They paid nothing for 'overnight travel', and they see their own food as personal spending rather than something 'this business' paid for. The help lists only client, employee, daycare and promotional food.",
+       "line": "sc.meals_50_if_travel_meals",
+       "irs_text": "i1040sc p. 9, Line 24b: 'This includes expenses for meals while traveling away from home for business'; Standard meal allowance: 'Instead of deducting the actual cost of your meals while traveling away from home, you can use the standard meal allowance for your daily meals and incidental expenses.'",
+       "severity": "medium",
+       "fix": "Ask about the trip itself rather than payment for it: 'Did you or anyone working for this business stay away from home overnight on business in 2025, however the travel was paid for?' State in the help that your own meals on such trips count, even if paid personally."
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "2",
+       "who": "A business owner who traveled overnight for business where lodging was free and all meals were provided, but who had small incidental costs and kept no records of them.",
+       "why_no": "The gate asks what the business 'pay[s] for'. With no hotel, fare or meal bills, they answer no to both overnight travel and meals.",
+       "line": "sc.line24a_if_travel_meals",
+       "irs_text": "i1040sc p. 9, Line 24a: 'Instead of keeping records of your actual incidental expenses, you can use an optional method for deducting incidental expenses only if you did not pay or incur meal expenses on a day you were traveling away from your tax home. The amount of the deduction is $5 a day.'",
+       "severity": "medium",
+       "fix": "Gate on the fact of overnight business travel, not on payment. In the 24a question, offer the $5-a-day incidental method for travel days with no meal expense."
+      },
+      {
+       "kind": "FALSE_NO",
+       "pattern": "2",
+       "who": "An accrual-method business (Schedule C line F box 2) that incurred hotel, airfare or client-meal costs in late 2025 and paid the bills in January 2026, with no other travel or meal payments in 2025.",
+       "why_no": "Read literally, 'In 2025, did this business pay for' is a truthful no. The expenses were incurred in 2025 but paid in 2026.",
+       "line": "sc.line24a_if_travel_meals",
+       "irs_text": "i1040sc p. 9, Line 24a: 'Enter your expenses for lodging and transportation connected with overnight travel for business'; the same page refers to meal expenses you 'pay or incur'.",
+       "severity": "medium",
+       "fix": "Use 'pay or owe (incur)' or 'have expenses for': 'In 2025, did this business have any expenses (paid or owed) for overnight travel, or for meals, food or drink?'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "8",
+       "who": "An employer that paid employees a fixed per diem or travel allowance under an accountable plan for overnight business trips, instead of booking the hotels and meals itself.",
+       "why_no": "The owner sees the payments as reimbursements or allowances to staff, not as the business paying 'for overnight travel' or 'for meals'.",
+       "line": "sc.meals_50_if_travel_meals",
+       "irs_text": "i1040sc p. 9, Line 24a: 'These rules apply to both employers and employees'; p. 10: 'In most cases, you can deduct only 50% of your business meal expenses, including meals incurred while away from home on business.'",
+       "severity": "medium",
+       "fix": "Add to the help: 'Count travel and meal allowances, per diems, or reimbursements you paid to employees for business trips.'"
+      },
+      {
+       "kind": "UNCLEAR",
+       "pattern": "other",
+       "who": "A sole proprietor with no separate business account who paid for client meals or business trips from household money.",
+       "why_no": "'Did this business pay' reads as payments from a business account or card. Personal-account payments seem not to count.",
+       "line": "sc.meals_50_if_travel_meals",
+       "irs_text": "i1040sc p. 9, Line 24b: 'You can deduct a percentage of the actual cost of a meal if ... The meal expense was an ordinary and necessary expense in carrying on your trade or business.'",
+       "severity": "low",
+       "fix": "Say 'did you (or this business) pay, from any account, for ...'."
+      }
+     ],
+     "prompt_sha": "eabc52d90b14c00aaf4bab86c4bf5b35054910c38d42b02fbfe5efd1e26a0f11",
+     "system_sha": "b4c469b3fc4a3db583b7958f8460c453eb4e63fa5f23e2ab5eedc930fe1423ad",
+     "model": "claude-opus-5-5",
+     "cost": 0.151172,
+     "date": "2026-11-15",
+     "response": ".transcription/false_no/gate_sc.travel_meals.07243aa4068a.1.response.txt"
+    }
+   ],
+   "condition": "sc.travel_meals",
+   "lines": [
+    "sc.line24a_if_travel_meals",
+    "sc.meals_100_if_travel_meals",
+    "sc.meals_50_if_travel_meals",
+    "sc.meals_80_if_travel_meals"
+   ],
+   "inputs": [
+    "sc.line24a",
+    "sc.meals_100",
+    "sc.meals_50",
+    "sc.meals_80"
+   ],
+   "used": [
+    {
+     "doc": "f1040sc",
+     "revision": "2025; created 2025-04-03",
+     "text_sha256": "ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022",
+     "pages": [
+      1,
+      2
+     ],
+     "how": "whole document",
+     "locators": [
+      "Schedule C (2025), lines 24a and 24b"
+     ],
+     "cols_pages": [],
+     "cols_sha256": "44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376"
+    },
+    {
+     "doc": "i1040sc",
+     "revision": "2025",
+     "text_sha256": "dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a",
+     "pages": [
+      9,
+      10
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 10, Line 24b, Amount of deduction, \"However, you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages subject to withholding. You can also fully deduct meals and incidentals provided to a nonemployee to the extent the expenses are includible in the gross income of that person and reported on Form 1099-NEC\" and Daycare providers, \"If you receive reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement\"; , Meals, \"You can deduct as a business expense 100% of the actual cost of food consumed by your daycare recipients\"",
+      "p. 10, Line 24b, Amount of deduction, \"for individuals subject to the Department of Transportation (DOT) hours of service limits, the percentage is increased to 80% for business meals consumed during or incident to any period of duty for which those limits are in effect\"",
+      "p. 9, Line 24a, \"you can use an optional method for deducting incidental expenses only if you did not pay or incur meal expenses on a day you were traveling away from your tax home\", \"The amount of the deduction is $5 a day\", \"They do not include expenses for laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls\" and \"You cannot use this method on any day that you use the standard meal allowance\", \"You can’t deduct expenses paid or incurred in connection with employment away from home if that period of employment exceeds 1 year\", \"you cannot deduct travel expenses for your spouse, your dependent, or any other individual unless\" and \"held outside the North American area unless\"; p. 9, Line 24b, \"you can use the standard meal allowance for your daily meals and incidental expenses\"",
+      "pp. 9–10, Line 24b, Business meal expenses (\"You can deduct a percentage of the actual cost of a meal if the following conditions are met\"), Standard meal allowance, Amount of deduction (\"including meals incurred while away from home on business\"); p. 9, Line 24a, \"Do not include entertainment expenses on this line\""
+     ],
+     "cols_pages": [
+      9,
+      10
+     ],
+     "cols_sha256": "616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918"
+    },
+    {
+     "doc": "p587",
+     "revision": "For use in preparing 2025 returns",
+     "text_sha256": "d501035e2d3d8b211e3c20f990b136d71a3cbb49a5ba726428291dd6e212cbf5",
+     "pages": [
+      13
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      13
+     ],
+     "cols_sha256": "8b9767f8d8128829c4920ebd1bcb38cefe6bb38547f1debc59b652956a77a512"
+    }
+   ]
+  }
+ }
+}

@@ -5,35 +5,33 @@
  "base": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
  "head_rows": {
   "lines judged": "25",
-  "match / mismatch / unclear / missing": "20 / 4 / 1 / 0",
-  "line-scoped reviews": "2 (latest 2026-11-15); see Line-scoped reviews"
+  "match / mismatch / unclear / missing": "22 / 2 / 1 / 0",
+  "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1a",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the worksheet's married-filing-separately rule (i1040gi p. 97, \"If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025\") is never needed; on the statuses the tool completes, line 1a is the filer's own coverage, as the line asks.",
-   "subject_key": "8276809036ddba191c2aefecbb92f91d88d40ec35a702808b89c15a7fea62b53"
+   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
+   "status": "MATCH",
+   "subject_key": "31670d9c2dcde80c4878a078c28732fcb9b6ac00e33c6dd47aa7d6ee58bd4134"
   },
   {
    "key": "1b",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
    "status": "MATCH",
-   "subject_key": "23f85e268fa5ee392ce37d47402ed55db3fc3ef96a452ab9b7b22a8f63d43a7b"
+   "subject_key": "5974ba484ddccd06534b201b6191069f51fda93d12da3b911fcf6f0668094188"
   },
   {
    "key": "2a",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
-   "status": "MISMATCH",
-   "ruling": "Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the $89,000 amount for a married filer who lived apart all year and the $10,000 amount (i1040gi p. 97, line 2) are never read; the single, head of household, qualifying surviving spouse and joint amounts agree, as the model says.",
-   "subject_key": "8fcfd51ffd5afc7c85f9f539159a10cd798f4c2b650159e2442897502f440e64"
+   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
+   "status": "MATCH",
+   "subject_key": "ec63d5913097c524f9059cd16674dae27f6b80299ca98867bbe4f2db0d6c5352"
   },
   {
    "key": "2b",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
    "status": "MATCH",
-   "subject_key": "65044c4f04d8e8eee485dc882bf55eb603c6dc50b56ab49d8cf85bda18534b50"
+   "subject_key": "ed8e37647c2981ac6a739193293ec3a22049061eff864bb95e05240626bd2e05"
   },
   {
    "key": "3",
@@ -56,27 +54,27 @@
   },
   {
    "key": "6a",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
    "status": "MATCH",
-   "subject_key": "48df40f5a07a91a19d3ef8249f9ea40fe6a66c5bb6ccee83e0f3ee6fd2916387"
+   "subject_key": "4cdfdc7a8c8595b4e07ac30d7f762eacdb2cf32daa87624d18b6c25b04a27962"
   },
   {
    "key": "6b",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
    "status": "MATCH",
-   "subject_key": "e6c275ada21e98c4d82d8503917d5a55a58452b7e482f9bbab9d1261f7a12127"
+   "subject_key": "79e045ce563d61ca98cc8a58415fe85d4751400c90cf19b3d5e9db3ea6734802"
   },
   {
    "key": "7a",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
    "status": "MATCH",
-   "subject_key": "b99a72574b4a25d8a1aeaf7432b42b54f7b00dd64cfa721a7f21d1863b6a1fe0"
+   "subject_key": "35a396471292619cf835547beca126292cfc7a9715753bf9e2cb15dd7628a5e5"
   },
   {
    "key": "7b",
-   "record": "784b037447a91b97a42faacd8b81f162f040fd1dccbc031e678411e7c8ee6a3e",
+   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
    "status": "MATCH",
-   "subject_key": "d7fd317ee47e07db9c2a1c703b704ac30cbccbfcfa6123684133e34d913afcb1"
+   "subject_key": "f13a129186db500f0622527a038ffb084943b932c83f8cb436e3b07fcb7b54b9"
   },
   {
    "key": "8",
@@ -148,15 +146,15 @@
   },
   {
    "key": "12a",
-   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
+   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
    "status": "MATCH",
-   "subject_key": "3b72b8a60cde737c72e2db7432d3e2f098ca7bbb1cb2172b56d16954611994c1"
+   "subject_key": "b17ee9eb5bdc302ca1546b2b17932b51d4d069d7bde09f1a5c8b32c79bf6d0e4"
   },
   {
    "key": "12b",
-   "record": "b992f872595a7931aceda6429756da6142efbc7c030a23d93e833cb83ea3c224",
+   "record": "32c45d901cf745f7b80057eba7182108cc5dd49b426cc17609676b4311be8a0f",
    "status": "MATCH",
-   "subject_key": "3899eae3f0bdab830cd30a1d72219dc39ebca7e8e17b63deac7fffe241833b4a"
+   "subject_key": "82cd6f96dd7bf9e658c57ac2f287f1159acf9c309b5ffbb70c4f2593c4223797"
   },
   {
    "key": "(screen) (ira.deduct_less)",
@@ -166,17 +164,17 @@
   }
  ],
  "subjects": {
-  "1a": "1cfc286e0f8e5ad804c2e241f9e884687dbb96ed1294b68fd6a51a84de68b217",
-  "1b": "8680dcedbcb5d7e3f0ce1ce2f6e022139db2a705896e290d5e6775f91cfdffcb",
-  "2a": "680416c5fb226f5cc5d612158ba11bb3855722c82eed93f57aa893aa52f2552e",
-  "2b": "45b1070edb368a4a9446f35a2a95ea81b6e4cb4387935b1d0a61294be70ea12a",
+  "1a": "d52c3823f904c9e3d68162521b25051a2f617b741b14360e94c11629b7a74fbc",
+  "1b": "6a303833c86e1ef283e6c39a417bce9ca96729023baacfe498f3b486a6da1edd",
+  "2a": "e89a5fe0d51ac103af9ad1b500fdaf425dd1f95de70c2468c4861a0a030365cc",
+  "2b": "46f8f7e212eca0e9f0289df6d7d4e0aa6ede37ccd891b88cb730adc5943b95c5",
   "3": "2ae533443a50912ddf36d6a919292c72f911e67fe0db49398e6dfc3e9034f5a7",
   "4": "1734267ceae5e3af5c803c8f09c7c49e60275058ef677561a2a463c3004df91b",
   "5": "414d0113ac0a79055cd09a841d3c44747f4d19519872b3b080b40166cb84e63e",
-  "6a": "f38f6f17e123410e69b208625041b63091c7ff649911aed6a2a1fb5a7067de53",
-  "6b": "ef888fbc44eac6c0e1c680955dec0b9fdbcec536814c59453724875cfe9743bf",
-  "7a": "5611e4f688c5cfc398a563b3ac5cd4337d39555d6570f0f5251a18558635c132",
-  "7b": "677ce5d7fc28005c50cd2219b0e22a8be3b7cd9fd167d3cf7428bfd2ea544579",
+  "6a": "306f17993652e3713ca90d6de586f37208bc0980d444516a0dde89ffc4b6498f",
+  "6b": "73dda74fa6da544aae01eb0a5a00ddeb87f9002476fc1e01d28c6543e4cfaa24",
+  "7a": "5ef4420feeae35636a75d3df7713ff900926f8c0fb77cb7884fbe4ae49f4566b",
+  "7b": "ffd23f6844274e80b0d17c6909490896ea198db88d82a2ee074c22f886b836b2",
   "8": "2e002c5b49a6bf59c74f34b532a35e1831b29e53251b2a1cb9feaac8621bdfee",
   "9": "e0c88b07f9e834cac611e12d20a888d42803b075c71f81601be2737a1b1696e1",
   "10": "05a8fb8f9ed2403f2f49ca8c5c2a96c9a0429a65574de08177339869980e4a03",
@@ -188,8 +186,8 @@
   "(screen) (ira.se_capital)": "dae8086074c34029941c504a1fbf3e1a570ac6f3bf29c842880ce83e0c215a47",
   "11a": "a2330bb4d0b76c1402650572ba3345913bbd9dba1bf36d7449b40468656bde1e",
   "11b": "2cce555dc6a35cf66f1b1f9a4f067486f524dda968590ad3a62e4bb147027e48",
-  "12a": "cdcd64cc7795c9c21ee415704df67801a4d45354947520b07c6c208190cb53c5",
-  "12b": "d2729ee8124d278a88af0bd2ef840910025fb7a42a72c9d132512f59596959f1",
+  "12a": "eca4a50deea67d79f92e29e6bd5f83d57361ce4bad3d93d0f6b161f0cabddc4d",
+  "12b": "6023fbbe1de773903ed31f5584b3a32af1a65ebce7391aca0965ff927680246a",
   "(screen) (ira.deduct_less)": "b4240e555b0ceac4d5954d9f838e2de758a9b775e15598e46e6cec0f3a36258f"
  },
  "__rest__": "17123d13dc65bd705a2a042799aea875ab0ac42f5ea45f1e031b5a4f0e7383c6"

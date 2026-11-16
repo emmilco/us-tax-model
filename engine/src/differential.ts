@@ -82,7 +82,6 @@ function entrySheet(data: ReturnType<typeof loadCanonical>, c: CaseFixture, expe
     ["ftc.all_passive", c.inputs["ftc.all_passive"]],
     ["ftc.statements", c.inputs["ftc.statements"]],
     ["ftc.eligible", c.inputs["ftc.eligible"]],
-    ["ftc.elect", c.inputs["ftc.elect"]],
   ];
   for (const [k, v] of boolRows) if (v === true) out.push(`| ${k} | yes |`);
   out.push("", "## Read back (record each line the calculators show)", "", "| line | description |", "| --- | --- |");

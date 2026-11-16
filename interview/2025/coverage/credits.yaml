@@ -10,7 +10,8 @@ sets:
 rows:
 - id: credits.form1116
   design: C.2 row 1 (foreign tax credit needing Form 1116)
-  situation: A person paid $500 of foreign tax in 2025, more than the amount that can be claimed without Form 1116.
+  situation: A person paid $500 of foreign tax in 2025, more than the amount that can be claimed without Form 1116, on
+    income that was not all passive (Form 1116 is prepared for passive income only).
   answers:
     s3.foreign_any: true
     s3.section960c: false
@@ -18,8 +19,9 @@ rows:
     s3.virgin_islands: false
     ftc.taxes: 50000
     ftc.carryover: false
+    ftc.all_passive: false
   expect:
-    refused: ftc.needs1116
+    refused: f1116.other_category
 - id: credits.business_credit
   design: C.2 row 2a (business credit of a business on this return)
   situation: A person runs a business that claims a business tax credit.
@@ -407,7 +409,7 @@ rows:
     s3.virgin_islands: false
     ftc.taxes: 0
   expect:
-    refused: ftc.carryover_if_asked
+    refused: ftc.carryover_no_tax
 - id: credits.gap.foreign_tax_carryover_form
   design: owner decision (Form 1116 in the 2024 return leads to the carryover question, and refuses only with a carryover)
   situation: A person never thought of having paid tax abroad, but the 2024 return includes Form 1116 and a foreign tax credit is carried into 2025.
@@ -416,7 +418,7 @@ rows:
     s3.prior_other_forms: true
     ftc.carryover: true
   expect:
-    refused: ftc.carryover_if_asked
+    refused: ftc.carryover_no_tax
 - id: credits.form1116_nothing_carried
   design: owner decision (nobody is refused for having filed Form 1116 in 2024)
   situation: A person's 2024 return includes Form 1116 and nothing is carried into 2025; the return goes on.

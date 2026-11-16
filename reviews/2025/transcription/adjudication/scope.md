@@ -144,3 +144,25 @@ match 71, mismatch 1, unclear 1. Both ruled; no finding.
 | claude | render | reforestation | scope | UNCLEAR: the seven-year window is not in Schedule 1's text | i4562 (2025) p. 18, Qualified forestation and reforestation costs (section 194), "over an 84-month period" | The window follows the 84-month amortization; the question screens out Schedule 1 line 24d |
 
 Counts: 2 ruled (refusal located elsewhere 1, scope 1); 0 findings.
+
+## Goal-1 coverage-expansion round (2026-11-15)
+
+Lane xadj-f (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the coverage-expansion merge worktree (xint). Claude transcription log, line-scoped pass 4be1d7385eb3 (scope.household_pay_if_pay, contractor_pay_if_pay, tips_unreported_if_pay, strike_pay_if_pay, schedule1, other_income); triage `.transcription/triage/2025/scope.json` (executable-triage-v2, 4,499 comparisons per line). Rulings file `/tmp/xadj/f/scope.transcription.json`. What changed (lane notes x2-paynow2, x1-sche, x2-s1o): the four pay gates are new; scope.schedule1 takes scope.rent_personal_if_rental in place of scope.rental and drops scope.recovery and scope.nol (now computed); scope.other_income takes scope.wages_no_form_if_pay in place of scope.pay_no_w2 and scope.medicaid_waiver (now computed).
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | scope.household_pay_if_pay, contractor_pay_if_pay, tips_unreported_if_pay, strike_pay_if_pay | representation | 4,483/4,499 agree each; 16 project-unknown on incomplete/refused partial records (gate unanswered); no value difference | i1040gi p. 24, Lines 1b, 1c, 1h; f8919 p. 1 | A conjunction with scope.pay_no_w2 is the gated choose. |
+| claude | transcription | scope.schedule1 | model error | 4,134/4,499; 48 value, all refused returns (project true, reply false: the reply's operands are a subset of the project's); 279 project-unknown; 38 candidate-unknown (27 completed) | i1040se p. 1; i1040sf p. 2; i1040sse p. 1; i1040gi p. 25 | Fourth time: leaves personal-property rental, K-1, farm, clergy/church, W-2 marks and other plans out of the screen. Agrees with the project in leaving NOL and recoveries out. |
+| claude | transcription | scope.other_income | model error | 4,207/4,499; 34 value, all refused returns; 212 project-unknown; 46 candidate-unknown (34 completed: scope.excess_deferral read without its W-2 gate) | i1040gi p. 8, p. 23, p. 95 Line 20; i2441 p. 5; i8915f p. 2; i8582 p. 1 | Leaves out nonresident status, chapter 11, reservist repayments, benefits, disaster distributions, passive losses. Agrees in leaving the newly computed pay out. |
+
+Counts: claude transcription: representation 4, model error 2. Findings: BUG-0771 (low; found while checking scope.other_income, not a review disagreement): the cite of scope.other_income still quotes i1040gi p. 24 Lines 1b, 1c, 1d and 1h for pay the tool now computes. No line left open.
+
+## Goal-1 coverage-expansion round (2026-11-15), render
+
+Claude render log, line-scoped (the changed pay, rental and Schedule 1 lines): match 19, mismatch 1. Rulings file `/tmp/xadj/f/scope.render.json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | render | passive_if_business_before | scope | MISMATCH: a business first owned in 2025 without material participation is not screened | i1040sc p. 4, Line G (sc.screened on sc.passive false); scope.schedule1 (scope.farm, scope.k1); f8582 | Each activity begun in 2025 is screened where entered, and rentals are now computed with Form 8582; the gated question covers prior-year passive activities. |
+
+Counts: render scope 1; no finding.

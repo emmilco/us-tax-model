@@ -191,3 +191,20 @@ Lane b1-adj-a (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in th
 | claude | render | 12 | scope | As line 5 | f1040sd line 12 | As line 5. |
 
 Counts: claude transcription: scope 32, representation 1, model error 1; claude render: scope 2. Findings: none. No line left open. Class M (sd) not ruled in this section: its rerun was held by the coordinator.
+
+## Goal-1 coverage-expansion round (2026-11-15)
+
+Lane xadj-f (claude-opus-5-5, judgment, tax year 2025, jurisdiction us), in the coverage-expansion merge worktree (xint). Claude transcription log, line-scoped pass da3c033dcfd8 (sd.filed and the 32 transaction-line totals, now pairing A/G, B/H, C/I, D/J, E/K, F/L; sd.filed now testing 1099-DIV boxes 2b and 2d: x1-digital D6). Triage did not evaluate this reply: its declarations of sd.filed and lines 4, 5, 11 and 12 reference sd.other_forms, which does not resolve (invalid_lines), so carry ruled nothing and every ruling here rests on the two expressions and the source. Rulings file `/tmp/xadj/f/sd.transcription.json`. Render log, line-scoped: match 34, mismatch 0.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | sd.filed | model error | expressions (no triage) | i1040gi p. 31, Line 7a, Exception 1 | The reply drops the box 2b/2d tests (its note: no input), files on a carryover Yes that leaves no loss, and adds sd.qof (refused by the project). |
+| claude | transcription | 1a(d), 1a(e), 1a(g), 8a(d), 8a(e), 8a(g) | representation | values identical; the reply adds a shown_when | i1040sd p. 10, Lines 1a and 8a | The same total; display only. |
+| claude | transcription | 1a(h), 1b(h), 2(h), 3(h), 8a(h), 8b(h), 9(h), 10(h) | representation | reply (g) + (d) - (e) of the line; project the sum of sales.h | Schedule D (2025), column (h) | Linear: sales.h = (d) - (e) + (g) per entry. |
+| claude | transcription | 2, 3, 9, 10 (d), (e), (g) | representation | the reply drops the detail-route condition | i1040sd p. 10; sales.bad_aggregate | Box B/H, C/I, E/K, F/L entries routed to the totals are refused at sales.one, so the condition holds on every computed return. |
+
+Counts: claude transcription: model error 1, representation 26; render: all match. Findings: none. No line left open.
+
+## Goal-1 coverage-expansion round (2026-11-15), class M
+
+Lane xadj-f. Claude class M log (whole): agree 126, disagree 0, skipped 12. Nothing to rule.

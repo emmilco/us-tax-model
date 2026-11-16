@@ -1,0 +1,26 @@
+{
+ "kind": "render",
+ "form": "f4137row",
+ "family": "claude",
+ "base": "3b0d8000c9a554918de6f2469247e43378475a35a939d5e7d519f9f451fa7e02",
+ "lines": [
+  {
+   "key": "1(c)",
+   "record": "3b0d8000c9a554918de6f2469247e43378475a35a939d5e7d519f9f451fa7e02",
+   "status": "MISMATCH",
+   "ruling": "Ruling: finding; Form 4137 p. 2, Columns (c) and (d): 'Tips reported timely are included in gross income of the employee for the month and year in which the report is made.' The line's source asks for tips 'received in 2025'; the bank help moves December 2025 tips reported in January 2026 to 2026 but does not bring in December 2024 tips reported timely in January 2025, which column (d) (W-2 box 7) includes, so line 4 can be understated (BUG-0915).",
+   "subject_key": "15ba484a08435fe7e59acceca1d563815aef581cec2da334a10825c3bb6c6b33"
+  },
+  {
+   "key": "1(d)",
+   "record": "3b0d8000c9a554918de6f2469247e43378475a35a939d5e7d519f9f451fa7e02",
+   "status": "MATCH",
+   "subject_key": "20ae04a961d3b906281e3f7ad548205a9aef0cf62bd8499db2165515ab85fb7c"
+  }
+ ],
+ "subjects": {
+  "1(c)": "9e0b22fd77ed15da9bd31e86582ea998feb5defc1ca6b9c677e47d903b3f916e",
+  "1(d)": "dcf85171b6c672ab25391790e9c7a85786f5c1e4bbcfca6fd230ce7b2e93a558"
+ },
+ "__rest__": "9014cf7c7aa2f1ac408c4f925d5a2454ef90aac18bf9349f391c1950140dd5e1"
+}

@@ -1,0 +1,531 @@
+diff --git a/fixtures/2025/k1int.json b/fixtures/2025/k1int.json
+new file mode 100644
+index 0000000..2078f33
+--- /dev/null
++++ b/fixtures/2025/k1int.json
+@@ -0,0 +1,525 @@
++{
++  "tax_year": 2025,
++  "cases": [
++    {
++      "id": "k1int.p5_suspended",
++      "covers": [
++        "k1p",
++        "f8582"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 integration draft (nightplan round 4), predicted by hand before any run. Limited partner, box 2 loss $12,000 (Part V, as x2k1p.fk3); no passive income: line 3 -12,000, line 9 0, worksheet line C 12,000; the one activity takes all of it (ratio 1), so column (c) 12,000 and nothing allowed.",
++      "inputs": {
++        "$k1p@person[taxpayer]": [
++          "fund"
++        ],
++        "person[taxpayer].k1p[fund].has_b2": true,
++        "person[taxpayer].k1p[fund].box2": -1200000
++      },
++      "expect": {
++        "person[taxpayer].k1p[fund].b2_p7a": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "person[taxpayer].k1p[fund].b2_p7c": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "person[taxpayer].k1p[fund].b2_allowed": {
++          "kind": "money",
++          "cents": 0
++        },
++        "person[taxpayer].k1p[fund].b2_carryforward": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "person[taxpayer].k1p[fund].col_g": {
++          "kind": "money",
++          "cents": 0
++        },
++        "person[taxpayer].k1p_total_p7a": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "f8582.line2b": {
++          "kind": "money",
++          "cents": -1200000
++        },
++        "f8582.line3": {
++          "kind": "money",
++          "cents": -1200000
++        },
++        "f8582.line9": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8582.p7_C": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "f8582.required": {
++          "kind": "bool",
++          "value": true
++        }
++      }
++    },
++    {
++      "id": "k1int.p4_allowance",
++      "covers": [
++        "k1p",
++        "f8582"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 integration draft (nightplan round 4), predicted by hand before any run. General partner with active participation, box 2 loss $12,000 (Part IV, as x2k1p.fk3b); no other income, so MAGI 0 (assumes the defaults give no income), line 8 $25,000, line 4 12,000, line 9 12,000; Part VI gives the activity all of line 9 and nothing is held back. The filing exception holds (loss under $25,000, MAGI under $100,000).",
++      "inputs": {
++        "$k1p@person[taxpayer]": [
++          "fund"
++        ],
++        "person[taxpayer].k1p[fund].has_b2": true,
++        "person[taxpayer].k1p[fund].box2": -1200000,
++        "person[taxpayer].k1p[fund].general": true,
++        "person[taxpayer].k1p[fund].decisions": true,
++        "person[taxpayer].k1p[fund].tenth": true
++      },
++      "expect": {
++        "f8582.line1b": {
++          "kind": "money",
++          "cents": -1200000
++        },
++        "f8582.line4": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "f8582.line8": {
++          "kind": "money",
++          "cents": 2500000
++        },
++        "f8582.line9": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "f8582.p6_total": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "person[taxpayer].k1p[fund].b2_p6c": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "person[taxpayer].k1p[fund].b2_p7a": {
++          "kind": "money",
++          "cents": 0
++        },
++        "person[taxpayer].k1p[fund].b2_allowed": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "person[taxpayer].k1p[fund].col_g": {
++          "kind": "money",
++          "cents": 1200000
++        },
++        "f8582.p7_C": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8582.required": {
++          "kind": "bool",
++          "value": false
++        }
++      }
++    },
++    {
++      "id": "k1int.passive_qbi_prorate",
++      "covers": [
++        "k1p",
++        "f8582",
++        "person",
++        "qbi"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 integration draft (nightplan round 4), predicted by hand before any run. Limited partner with no 2025 work: box 1 loss $10,000 is passive; a second K-1 has box 3 income $4,000. Line 3 = 4,000 - 10,000 = -6,000; line C 6,000; box 1 activity column (a) 10,000 (ratio 1), column (c) 6,000, allowed 4,000. QBI (i8995 p. 3 ratio): 10,000 x 4,000 / 10,000 = 4,000 allowed, so QBI -4,000 (was -10,000 as stated). BUG-0842 QBI half.",
++      "inputs": {
++        "$k1p@person[taxpayer]": [
++          "fund",
++          "rent"
++        ],
++        "person[taxpayer].k1p[fund].has_b1": true,
++        "person[taxpayer].k1p[fund].box1": -1000000,
++        "person[taxpayer].k1p[fund].has_b20z": true,
++        "person[taxpayer].k1p[fund].box20z": -1000000,
++        "person[taxpayer].k1p[rent].has_b3": true,
++        "person[taxpayer].k1p[rent].box3": 400000
++      },
++      "expect": {
++        "f8582.line2a": {
++          "kind": "money",
++          "cents": 400000
++        },
++        "f8582.line2b": {
++          "kind": "money",
++          "cents": -1000000
++        },
++        "f8582.line3": {
++          "kind": "money",
++          "cents": -600000
++        },
++        "f8582.p7_C": {
++          "kind": "money",
++          "cents": 600000
++        },
++        "person[taxpayer].k1p[fund].b1_p7c": {
++          "kind": "money",
++          "cents": 600000
++        },
++        "person[taxpayer].k1p[fund].b1_allowed": {
++          "kind": "money",
++          "cents": 400000
++        },
++        "person[taxpayer].k1p[fund].col_g": {
++          "kind": "money",
++          "cents": 400000
++        },
++        "person[taxpayer].k1p[fund].qbi_limited": {
++          "kind": "bool",
++          "value": true
++        },
++        "person[taxpayer].k1p[fund].qbi_loss_allowed": {
++          "kind": "money",
++          "cents": 400000
++        },
++        "person[taxpayer].k1p[fund].qbi": {
++          "kind": "money",
++          "cents": -400000
++        },
++        "person[taxpayer].k1p[rent].qbi": {
++          "kind": "money",
++          "cents": 0
++        },
++        "person[taxpayer].k1p_total_qbi": {
++          "kind": "money",
++          "cents": -400000
++        },
++        "person[taxpayer].qbi": {
++          "kind": "money",
++          "cents": -400000
++        }
++      }
++    },
++    {
++      "id": "k1int.prior_release_refuses",
++      "covers": [
++        "k1p",
++        "f8582"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 integration draft (nightplan round 4), predicted by hand before any run. Box 1 income $5,000, prior-year unallowed box 1 loss $8,000, box 20 code Z $5,000: overall loss 3,000, line 3 -3,000, line C 3,000, column (c) 3,000, allowed 8,000 - 3,000 = 5,000, all of it from the earlier year's loss. Its QBI share needs the earlier years' tracking: refused.",
++      "inputs": {
++        "$k1p@person[taxpayer]": [
++          "fund"
++        ],
++        "person[taxpayer].k1p[fund].has_b1": true,
++        "person[taxpayer].k1p[fund].box1": 500000,
++        "person[taxpayer].k1p[fund].prior_any": true,
++        "person[taxpayer].k1p[fund].prior_b1_any": true,
++        "person[taxpayer].k1p[fund].prior_b1": 800000,
++        "person[taxpayer].k1p[fund].has_b20z": true,
++        "person[taxpayer].k1p[fund].box20z": 500000
++      },
++      "expect": {
++        "person[taxpayer].k1p[fund].b1_allowed": {
++          "kind": "money",
++          "cents": 500000
++        },
++        "person[taxpayer].k1p[fund].b1_carryforward": {
++          "kind": "money",
++          "cents": 300000
++        },
++        "f8582.p7_C": {
++          "kind": "money",
++          "cents": 300000
++        },
++        "person[taxpayer].k1p_total_qbi": {
++          "kind": "refusal",
++          "gate": "person[taxpayer].k1p[fund].qbi_release",
++          "form": "Form 8995-A Schedule C (prior-year suspended loss allowed this year)",
++          "remedy": "A partnership loss held back in an earlier year and allowed this year changes qualified business income in a way this tool does not figure.",
++          "cite": {
++            "doc": "i8995",
++            "locator": "p. 3, \"When losses or deductions previously suspended by other Code provisions are allowed in calculating taxable income\"",
++            "revision": "2025; printed date 2026-01-26",
++            "snapshot": "875843baead68f6fa9aa7c3f6f27d6c1f37cb971ac334bcf414acdb4c1487684",
++            "tax_year": 2025
++          }
++        }
++      }
++    },
++    {
++      "id": "k1int.ebl_k1p_refuses",
++      "covers": [
++        "k1p",
++        "s1"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 integration draft (nightplan round 4), predicted by hand before any run. Materially participating partner (test 1), box 1 loss $400,000, single: the loss counted for the excess business loss screen is 400,000 > $313,000, so Schedule 1 line 3 refuses at s1.ebl (BUG-0842 EBL half). Before the patch s1.ebl_total was 0.",
++      "inputs": {
++        "$k1p@person[taxpayer]": [
++          "llc"
++        ],
++        "person[taxpayer].k1p[llc].has_b1": true,
++        "person[taxpayer].k1p[llc].box1": -40000000,
++        "person[taxpayer].k1p[llc].work": true,
++        "person[taxpayer].k1p[llc].hours500": true
++      },
++      "expect": {
++        "person[taxpayer].k1p[llc].col_i": {
++          "kind": "money",
++          "cents": 40000000
++        },
++        "person[taxpayer].k1p[llc].ebl_loss": {
++          "kind": "money",
++          "cents": 40000000
++        },
++        "s1.ebl_k1_abs": {
++          "kind": "money",
++          "cents": 40000000
++        },
++        "s1.ebl_total": {
++          "kind": "money",
++          "cents": -40000000
++        },
++        "s1.ebl": {
++          "kind": "bool",
++          "value": true
++        },
++        "s1.line3": {
++          "kind": "refusal",
++          "gate": "s1.ebl",
++          "form": "Form 461 (Limitation on Business Losses)",
++          "remedy": "A Schedule C loss above the excess business loss threshold is outside this tool.",
++          "cite": {
++            "doc": "i1040sc",
++            "locator": "p. 1, Reminders, Excess business loss limitation; rp-2024-40 section 2.32",
++            "revision": "2025",
++            "snapshot": "b5536db91498a450572e37078d7d5ee8fdc400e385d4fee3a26c230a33e399b6",
++            "tax_year": 2025
++          }
++        }
++      }
++    },
++    {
++      "id": "k1int.ebl_k1s_under",
++      "covers": [
++        "k1s",
++        "s1"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 integration draft (nightplan round 4), predicted by hand before any run. S corporation owner (test 1), box 1 loss $300,000 within basis $500,000: allowed 300,000; counted 300,000 <= $313,000, so no refusal (BUG-0885); s1.ebl_total -300,000.",
++      "inputs": {
++        "$k1s@person[taxpayer]": [
++          "acme"
++        ],
++        "$f7203@person[taxpayer].k1s[acme]": [
++          "form"
++        ],
++        "person[taxpayer].k1s[acme].box1_any": true,
++        "person[taxpayer].k1s[acme].box1": -30000000,
++        "person[taxpayer].k1s[acme].work": true,
++        "person[taxpayer].k1s[acme].hours500": true,
++        "person[taxpayer].k1s[acme].f7203[form].line1": 50000000,
++        "person[taxpayer].k1s[acme].f7203[form].line2": 0
++      },
++      "expect": {
++        "person[taxpayer].k1s[acme].col_i": {
++          "kind": "money",
++          "cents": 30000000
++        },
++        "person[taxpayer].k1s[acme].ebl_loss": {
++          "kind": "money",
++          "cents": 30000000
++        },
++        "s1.ebl_total": {
++          "kind": "money",
++          "cents": -30000000
++        },
++        "s1.ebl": {
++          "kind": "bool",
++          "value": false
++        }
++      }
++    },
++    {
++      "id": "k1int.k1s_qbi_passive",
++      "covers": [
++        "k1s",
++        "f8582"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 integration draft (nightplan round 4), predicted by hand before any run. S corporation investor (no work), box 1 loss $10,000 within basis $20,000, code V -$10,000, no passive income: line C 10,000, the activity's column (c) 10,000, allowed 0; QBI 10,000 x 0 / 10,000 = 0 (was -10,000).",
++      "inputs": {
++        "$k1s@person[taxpayer]": [
++          "acme"
++        ],
++        "$f7203@person[taxpayer].k1s[acme]": [
++          "form"
++        ],
++        "person[taxpayer].k1s[acme].box1_any": true,
++        "person[taxpayer].k1s[acme].box1": -1000000,
++        "person[taxpayer].k1s[acme].box17_any": true,
++        "person[taxpayer].k1s[acme].box17v_any": true,
++        "person[taxpayer].k1s[acme].qbi_stmt": -1000000,
++        "person[taxpayer].k1s[acme].f7203[form].line1": 2000000,
++        "person[taxpayer].k1s[acme].f7203[form].line2": 0
++      },
++      "expect": {
++        "person[taxpayer].k1s[acme].b1_overall_loss": {
++          "kind": "money",
++          "cents": 1000000
++        },
++        "person[taxpayer].k1s[acme].b1_p7c": {
++          "kind": "money",
++          "cents": 1000000
++        },
++        "person[taxpayer].k1s[acme].b1_allowed": {
++          "kind": "money",
++          "cents": 0
++        },
++        "person[taxpayer].k1s[acme].b1_carryforward": {
++          "kind": "money",
++          "cents": 1000000
++        },
++        "person[taxpayer].k1s[acme].col_g": {
++          "kind": "money",
++          "cents": 0
++        },
++        "person[taxpayer].k1s[acme].qbi_limited": {
++          "kind": "bool",
++          "value": true
++        },
++        "person[taxpayer].k1s[acme].qbi": {
++          "kind": "money",
++          "cents": 0
++        },
++        "f8582.p7_C": {
++          "kind": "money",
++          "cents": 1000000
++        }
++      }
++    },
++    {
++      "id": "k1int.sche_part2",
++      "covers": [
++        "k1p",
++        "sche",
++        "s1",
++        "sb",
++        "f8960"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 integration draft (nightplan round 4), predicted by hand before any run. Two partnership K-1s: an LLC with box 1 income $20,000 materially participated (column (k)) and box 5 interest $300; a limited partnership with box 2 loss $12,000 fully held back (as k1int.p5_suspended). Schedule E line 29a (k) 20,000, line 29b (g) 0, line 32 20,000, line 41 20,000, Schedule 1 line 5 20,000; Schedule B line 2 $300; Form 8960 line 4b -20,000 (nonpassive trade or business income removed).",
++      "inputs": {
++        "$k1p@person[taxpayer]": [
++          "llc",
++          "fund"
++        ],
++        "person[taxpayer].k1p[llc].has_b1": true,
++        "person[taxpayer].k1p[llc].box1": 2000000,
++        "person[taxpayer].k1p[llc].work": true,
++        "person[taxpayer].k1p[llc].hours500": true,
++        "person[taxpayer].k1p[llc].has_b5": true,
++        "person[taxpayer].k1p[llc].box5": 30000,
++        "person[taxpayer].k1p[fund].has_b2": true,
++        "person[taxpayer].k1p[fund].box2": -1200000
++      },
++      "expect": {
++        "sche.line29a_k": {
++          "kind": "money",
++          "cents": 2000000
++        },
++        "sche.line29a_h": {
++          "kind": "money",
++          "cents": 0
++        },
++        "sche.line29b_g": {
++          "kind": "money",
++          "cents": 0
++        },
++        "sche.line29b_i": {
++          "kind": "money",
++          "cents": 0
++        },
++        "sche.line30": {
++          "kind": "money",
++          "cents": 2000000
++        },
++        "sche.line31": {
++          "kind": "money",
++          "cents": 0
++        },
++        "sche.line32": {
++          "kind": "money",
++          "cents": 2000000
++        },
++        "sche.line41": {
++          "kind": "money",
++          "cents": 2000000
++        },
++        "sche.any": {
++          "kind": "bool",
++          "value": true
++        },
++        "s1.line5": {
++          "kind": "money",
++          "cents": 2000000
++        },
++        "sb.line2": {
++          "kind": "money",
++          "cents": 30000
++        },
++        "f8960.line4b": {
++          "kind": "money",
++          "cents": -2000000
++        },
++        "f8582.p7_C": {
++          "kind": "money",
++          "cents": 1200000
++        }
++      }
++    },
++    {
++      "id": "k1int.se_14a_refuses",
++      "covers": [
++        "k1p",
++        "person"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 integration draft (nightplan round 4), predicted by hand before any run. General partner with box 14 code A $20,000: Schedule SE line 2 does not take it yet, so it refuses at person.k1_se_any (interim, until the self-employment wiring).",
++      "inputs": {
++        "$k1p@person[taxpayer]": [
++          "llc"
++        ],
++        "person[taxpayer].k1p[llc].general": true,
++        "person[taxpayer].k1p[llc].has_b1": true,
++        "person[taxpayer].k1p[llc].box1": 2000000,
++        "person[taxpayer].k1p[llc].work": true,
++        "person[taxpayer].k1p[llc].hours500": true,
++        "person[taxpayer].k1p[llc].has_b14a": true,
++        "person[taxpayer].k1p[llc].box14a": 2000000
++      },
++      "expect": {
++        "person[taxpayer].se_line2": {
++          "kind": "refusal",
++          "gate": "person[taxpayer].k1_se_any",
++          "form": "Schedule SE line 2 with partnership self-employment earnings (Schedule K-1 box 14, code A)",
++          "remedy": "Self-employment earnings from a partnership are outside this tool.",
++          "cite": {
++            "doc": "f1040sse",
++            "locator": "Schedule SE (2025), line 2, \"Net profit or (loss) from Schedule C, line 31; and Schedule K-1 (Form 1065), box 14, code A (other than farming)\"",
++            "revision": "2025; created 2025-05-07",
++            "snapshot": "05bc2b3e1dfca65d8c6fc6d652af4fa3736e953c6575d6e9f82590484677d347",
++            "tax_year": 2025
++          }
++        }
++      }
++    }
++  ]
++}

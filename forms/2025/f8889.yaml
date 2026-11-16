@@ -3,14 +3,15 @@ form:
   kind: form
   title: Form 8889 — Health Savings Accounts (Parts I and II)
   tax_year: 2025
-  note: Part I for one person, with the spouse rules of lines 6 and 7 on a joint return, with the Line 3 Limitation Chart and Worksheet and the last-month rule; Part II
+  note: Part I for one person, with the spouse rules of lines 6 and 7 on a joint return (and on a separate return whose
+    spouse has no HSA), with the Line 3 Limitation Chart and Worksheet and the last-month rule; Part II
     (distributions), with the additional 20% tax on the part not excepted. A surviving spouse's HSA inherited before 2025 is
     prepared as the spouse's own. Each of these is refused by its own question, namely the Form 8889 of a
     person who died in 2025, any other inherited HSA with a death in 2025 or money received from it in 2025, contributions
     for 2025 to or a distribution in 2025 from an Archer MSA, a qualified HSA funding distribution, a withdrawal of excess
     contributions, a testing period (Part III) failed other than by becoming disabled, a then-spouse's family coverage in a
-    marriage that ended during 2025, a Form 1099-SA distribution code other than 1 or 3, a repaid mistaken
-    distribution and a deemed distribution.
+    marriage that ended during 2025, a separate return with family coverage whose spouse has an HSA, a Form 1099-SA
+    distribution code other than 1 or 3, a repaid mistaken distribution and a deemed distribution.
   lines:
   - id: f8889.one
     printed: (helper)
@@ -260,18 +261,77 @@ form:
         they will be treated as if they had not been contributed if"; p. 8, Line 14b, "Also include any excess contributions
         (and the earnings on those excess contributions) included on line 14a that were withdrawn by the due date, including
         extensions, of your return"'
+  - id: f8889.mfs_ask
+    printed: (helper)
+    label: Married filing separately and treated as having family HDHP coverage at any time during 2025 (the spouse's HSA
+      is asked)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - household.mfs
+        - const: true
+      - op: test
+        eq:
+        - f8889.married_family
+        - const: true
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025,
+        use the following rules to figure the amount on line 6"'
+  - id: f8889.mfs_spouse_hsa
+    printed: (helper)
+    gated_by: f8889.mfs_spouse_hsa_if_asked
+    label: Your spouse (on a separate return) had an HSA of their own for 2025
+    type: Bool
+    expr:
+      op: input
+      source: Did your husband or wife have an HSA of their own for 2025 (an HSA in their name, whether or not anything was
+        put into it)?
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025,
+        use the following rules to figure the amount on line 6" and "divide the amount on line 5 equally between you and your
+        spouse, unless you both agree on a different allocation"'
+  - id: f8889.mfs_spouse_hsa_if_asked
+    printed: (helper)
+    label: 'A separate return''s spouse had an HSA: asked only on a married filing separately return with family coverage
+      at any time during 2025 (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f8889.mfs_ask
+          - const: true
+        then: f8889.mfs_spouse_hsa
+      - guard:
+          op: test
+          eq:
+          - f8889.mfs_ask
+          - const: false
+        then: f8889.no
+    cite:
+      doc: i8889
+      locator: 'p. 7, Line 6, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025"'
   - id: f8889.mfs
     printed: (gate)
-    label: 'Married filing separately'
+    label: 'Married filing separately, with family HDHP coverage at any time during 2025, and a spouse with an HSA of their
+      own'
     type: Bool
     expr:
       op: test
       eq:
-      - f1040.status
-      - const: mfs
+      - f8889.mfs_spouse_hsa_if_asked
+      - const: true
     cite:
-      doc: i1040gi
-      locator: 'p. 14, Married Filing Separately'
+      doc: i8889
+      locator: 'p. 7, Line 6, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025,
+        use the following rules to figure the amount on line 6"'
   - id: f8889.coverage_year
     printed: (helper)
     label: 'HDHP coverage on the first day of every month of 2025: self-only in all twelve, family in all twelve, or
@@ -2646,11 +2706,14 @@ form:
         Part II, line 13'
     refuses:
     - when: f8889.mfs
-      form: Form 8889 on a married filing separately return
-      remedy: Married filing separately is outside this tool; the HSA rules for spouses are supported on a joint return.
+      form: Form 8889 line 6 on a married filing separately return, with a spouse who has an HSA
+      remedy: When you had family coverage and your husband or wife has an HSA of their own, the family contribution limit
+        is divided between you (equally unless you both agree otherwise), and this tool figures that division only on a
+        joint return.
       cite:
-        doc: i1040gi
-        locator: p. 14, Married Filing Separately
+        doc: i8889
+        locator: 'p. 7, Line 6, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during
+          2025, use the following rules to figure the amount on line 6"'
     - when: f8889.ira_transfer
       form: Form 8889 line 10 (a qualified HSA funding distribution)
       remedy: A transfer from an IRA to an HSA (a qualified HSA funding distribution) is outside this tool. It reduces the

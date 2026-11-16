@@ -27,7 +27,10 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **ny_it201att** layout vs reading order: 2 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **ny_it201i** layout vs reading order: 41 pages, identical characters (4 page(s) differ only in word spacing)
-    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (26 such occurrences; 64 words poppler reads that PDFKit skips)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (26 such occurrences; 64 words poppler reads that PDFKit skips), 3 page(s) excepted
+        - p. 34 accepted: ['1', '1', '1', '1', 'enter', 'enter', 'enter', 'enter'] — Tax computation worksheet page: PDFKit reads the worksheet's cell text 'enter ... 1' four times where poppler does not; these worksheets are read from the web edition ny_it201i-html, whose text holds every word of the page (the HTML check passes)
+        - p. 36 accepted: ['1', '1', '1', '1', 'enter', 'enter', 'enter', 'enter'] — Tax computation worksheet page: PDFKit reads the worksheet's cell text 'enter ... 1' four times where poppler does not; these worksheets are read from the web edition ny_it201i-html, whose text holds every word of the page (the HTML check passes)
+        - p. 38 accepted: ['1', '1', '1', '1', 'enter', 'enter', 'enter', 'enter'] — Tax computation worksheet page: PDFKit reads the worksheet's cell text 'enter ... 1' four times where poppler does not; these worksheets are read from the web edition ny_it201i-html, whose text holds every word of the page (the HTML check passes)
     - HTML snapshot `ny_it201i-html`: every word of every page occurs in the HTML text, 6 page(s) excepted
         - p. 25 accepted: ['dollars', 'john', 'maple', 'pl', 'sa', 'smith'] — Sample check illustration (line 83, direct deposit: JOHN SMITH, 999 Maple Street, Someplace, the rotated word 'Sample', Dollars); the HTML publication carries it as an image, so its text is not in the snapshot
         - p. 35 accepted: ['agi'] — Running heading 'Tax computation – New York AGI of more than $107,650 (continued)' on a continuation page of the tax computation worksheets; the HTML publication prints the section once, without the continuation heading
@@ -38,7 +41,10 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **ny_it203** layout vs reading order: 4 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **ny_it203i** layout vs reading order: 47 pages, identical characters (4 page(s) differ only in word spacing)
-    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (27 such occurrences; 17 words poppler reads that PDFKit skips)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (27 such occurrences; 17 words poppler reads that PDFKit skips), 3 page(s) excepted
+        - p. 41 accepted: ['1', '1', '1', '1', 'enter', 'enter', 'enter', 'enter'] — Tax computation worksheet page: poppler reads each worksheet's line number run on to its first word ('1Enter') where PDFKit reads '1' and 'Enter' separately, four times; the same characters, no text lost
+        - p. 43 accepted: ['1', '1', '1', '1', 'enter', 'enter', 'enter', 'enter'] — Tax computation worksheet page: poppler reads each worksheet's line number run on to its first word ('1Enter') where PDFKit reads '1' and 'Enter' separately, four times; the same characters, no text lost
+        - p. 45 accepted: ['1', '1', '1', '1', 'enter', 'enter', 'enter', 'enter'] — Tax computation worksheet page: poppler reads each worksheet's line number run on to its first word ('1Enter') where PDFKit reads '1' and 'Enter' separately, four times; the same characters, no text lost
 - **ny_it209** layout vs reading order: 4 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **ny_it209i** layout vs reading order: 10 pages, identical characters
@@ -58,7 +64,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **ny_it227** layout vs reading order: 2 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **ny_it230** layout vs reading order: 2 pages, identical characters
-    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (6 such occurrences; 0 words poppler reads that PDFKit skips)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (6 such occurrences; 0 words poppler reads that PDFKit skips), 1 page(s) excepted
+        - p. 2 accepted: ['distribution', 'lump', 'of', 'recipients', 'sum', 'worksheetmultiple'] — Multiple recipients of lump-sum distribution worksheet: PDFKit reads the worksheet's heading twice (run together, 'worksheetMultiple'), poppler once; the only words poppler lacks are the repeated heading
 - **ny_it230i** layout vs reading order: 4 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **ny_it270i** layout vs reading order: 1 pages, identical characters
@@ -72,7 +79,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **ny_it360_1i** layout vs reading order: 9 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **ny_it370** layout vs reading order: 2 pages, identical characters (1 page(s) differ only in word spacing)
-    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (4 such occurrences; 2 words poppler reads that PDFKit skips)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (4 such occurrences; 2 words poppler reads that PDFKit skips), 1 page(s) excepted
+        - p. 1 accepted: ['0', '0', '0', '0'] — PDFKit reads four bare '0' characters (two lines '0 0', with no other text) that poppler does not; no printed word is involved
 - **ny_it370i** layout vs reading order: 3 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)
 - **ny_st141** layout vs reading order: 4 pages, identical characters

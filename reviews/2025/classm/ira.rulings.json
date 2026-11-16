@@ -34,27 +34,36 @@
    "printed": "1b",
    "project": "no",
    "model": "yes",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. No one on this joint return made traditional IRA contributions for 2025 (lines 11a and 11b $0.00, on which the model agrees), so the worksheet figures no deduction (i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"). The project's printed line 1b answers Yes only on a return with traditional contributions (ira.any_trad); it is shown on the values sheet and nothing reads it, the deduction reading each person's coverage (person.ira_cov, Yes for the spouse here). The model answered from the spouse's coverage. Lines 6, 7 and 12 are $0.00 in both. No change to the data.",
+   "ruling": "Ruling: model error; classm.ira.2 is a joint return with no traditional IRA contribution (person.ira_owner false for both; branch ira.any_trad:false), the spouse covered through a SEP. The IRA Deduction Worksheet is used only for traditional contributions (i1040gi p. 95, Line 20, 'If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction'); the project's display lines 1a through 6 then read No and zero (ira.lines2to6 false) and lines 11 and 12 are $0, as the model's are. The model filled the worksheet as if it were used (1b Yes); its value is not evidence for the line as defined.",
    "drop": true,
-   "subject_key": "89ab1e9cfbcfb980494084b56a679c2459a5e78f144d4081c5776bf12d23f469"
+   "context": "7d7a3acc4ad3d96a279a2369a8108adbd195ff5eaa511e0a81ece00d0f3e0126",
+   "date": "2026-11-15",
+   "run": "b07bc7780bf191d207a1574c8ddc27c626671a0e9d824a8f1c231f073b92b80a",
+   "subject_key": "fedc6fdc94306e9915eff8a8c45a92de7339fb577f4d9cdffcbf024d987676c4"
   },
   {
    "case": "classm.ira.2",
    "printed": "2a",
    "project": "$0.00",
    "model": "$246,000.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. No one on this joint return made traditional IRA contributions for 2025 (lines 11a and 11b $0.00, on which the model agrees; i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"), and the project shows lines 2 through 6 only when there are traditional contributions and someone is covered (ira.lines2to6), $0.00 otherwise. The model worked the line as if contributions had been made ($246,000 for the person not covered, p. 97, line 2, \"But if you checked 'No' on either line 1a or 1b, enter $246,000 for the person who wasn't covered by a plan\"). Line 6a is $0.00 in both (line 5, $384,470.80, is not less than line 2), as are lines 7a and 12a. No change to the data.",
+   "ruling": "Ruling: model error; classm.ira.2 is a joint return with no traditional IRA contribution (person.ira_owner false for both; branch ira.any_trad:false), the spouse covered through a SEP. The IRA Deduction Worksheet is used only for traditional contributions (i1040gi p. 95, Line 20, 'If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction'); the project's display lines 1a through 6 then read No and zero (ira.lines2to6 false) and lines 11 and 12 are $0, as the model's are. The model filled the worksheet as if it were used (2a $246,000); its value is not evidence for the line as defined.",
    "drop": true,
-   "subject_key": "589991aeb94b64f998b6583ce6049f4c0166d8fbcfc9c7348abfd27405e90cca"
+   "context": "7d7a3acc4ad3d96a279a2369a8108adbd195ff5eaa511e0a81ece00d0f3e0126",
+   "date": "2026-11-15",
+   "run": "b07bc7780bf191d207a1574c8ddc27c626671a0e9d824a8f1c231f073b92b80a",
+   "subject_key": "57ac7236ca24a7a1c41f089fac1edf2a3f6b749f459d9d78c4abe177b1ecc7ae"
   },
   {
    "case": "classm.ira.2",
    "printed": "2b",
    "project": "$0.00",
    "model": "$146,000.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. No one on this joint return made traditional IRA contributions for 2025 (lines 11a and 11b $0.00, on which the model agrees; i1040gi p. 95, Line 20, \"If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction\"), and the project shows lines 2 through 6 only when there are traditional contributions and someone is covered (ira.lines2to6), $0.00 otherwise. The model worked the line as if contributions had been made ($146,000, p. 97, line 2, \"Married filing jointly, enter $146,000 in both columns\"). Line 6b is $0.00 in both (line 5, $384,470.80, is not less than line 2), as are lines 7b and 12b. No change to the data.",
+   "ruling": "Ruling: model error; classm.ira.2 is a joint return with no traditional IRA contribution (person.ira_owner false for both; branch ira.any_trad:false), the spouse covered through a SEP. The IRA Deduction Worksheet is used only for traditional contributions (i1040gi p. 95, Line 20, 'If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction'); the project's display lines 1a through 6 then read No and zero (ira.lines2to6 false) and lines 11 and 12 are $0, as the model's are. The model filled the worksheet as if it were used (2b $146,000); its value is not evidence for the line as defined.",
    "drop": true,
-   "subject_key": "af49830e65418454e4082550983fe8899f57486296cab94259cc1cf423527920"
+   "context": "7d7a3acc4ad3d96a279a2369a8108adbd195ff5eaa511e0a81ece00d0f3e0126",
+   "date": "2026-11-15",
+   "run": "b07bc7780bf191d207a1574c8ddc27c626671a0e9d824a8f1c231f073b92b80a",
+   "subject_key": "946b822a1b47a9b21143451f1ce12d7cfccbbf87a03581c4749fac89d538f6d1"
   },
   {
    "case": "classm.ira.3",

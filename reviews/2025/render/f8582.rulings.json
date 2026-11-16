@@ -1,0 +1,26 @@
+{
+ "kind": "render",
+ "form": "f8582",
+ "rulings": [
+  {
+   "printed": "4",
+   "restated": "Choose — [helper \"Part II applies: line 3 is a loss and line 1d is a loss\" = true → helper \"The smaller of the loss on line 1d or the loss on line 3\"] [helper \"Part II applies: line 3 is a loss and line 1d is a loss\" = false → helper \"Zero\"]",
+   "model": "The form says 'If your filing status is married filing separately and you lived with your spouse at any time during the year, do not complete Part II. Instead, go to line 10.' The restatement's gate (line 3 and line 1d both losses) has no such exclusion and no refusal names this case, so a married-filing-separately filer who lived with the spouse would get a nonzero line 4.",
+   "ruling": "Ruling: scope; married filing separately is refused for every return (scope, s3.mfs, 'Married filing separately': 'The rules for a married filing separately return (among them a spouse who itemizes, the Social Security base for spouses who lived together ...) are outside'), so the caution 'If your filing status is married filing separately and you lived with your spouse ... do not complete Part II' never applies to a completed return.",
+   "context": "46e4b812cf3c2c9727efd28912c15c6ce248eafa7c69fc17902f037f57cca70b",
+   "date": "2026-11-15",
+   "run": "38b1513dd01e824953df8dad585a0dbdc68c6c062cbb0d24addc69ed19870d2f",
+   "subject_key": "6295dd30f303bd158a8a1d11aaa2fc7956840fc3749f92ac35b92358e9961010"
+  },
+  {
+   "printed": "6",
+   "restated": "Subtract helper \"Adjustments for modified adjusted gross income: Schedule 1 line 26 less lines 15, 20 and 21\" from helper \"Income for modified adjusted gross income: Form 1040 lines 1z to 5b and 7a, Schedule 1 additional income other than line 5, and royalty income or loss\". If zero or less, enter -0-.",
+   "model": "The instructions say not to take into account 'Deductible contributions to traditional individual retirement accounts (IRAs) and section 501(c)(18) pension plans'. The restatement subtracts all of Schedule 1 line 25, which includes line 24f ('Contributions to section 501(c)(18)(D) pension plans'), so those contributions still reduce modified adjusted gross income.",
+   "ruling": "Ruling: scope; s1.line25 is a copy of s1.line24a only (Schedule 1 lines 24b to 24z, 24f included, are outside the tool and refused at Form 1040 line 10 by scope.schedule1), so no section 501(c)(18)(D) contribution can reach f8582.magi_adj.",
+   "context": "46e4b812cf3c2c9727efd28912c15c6ce248eafa7c69fc17902f037f57cca70b",
+   "date": "2026-11-15",
+   "run": "38b1513dd01e824953df8dad585a0dbdc68c6c062cbb0d24addc69ed19870d2f",
+   "subject_key": "e874f71cb7ffcd11e7da8a6d2b1a44093ba36ad25b18300fc860ebcee42d9e18"
+  }
+ ]
+}

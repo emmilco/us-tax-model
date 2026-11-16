@@ -5,9 +5,9 @@ form:
   tax_year: 2025
   note: The worksheet in the Form 1040 instructions, for a 2025 refund of 2024 state or local income tax deducted on the
     2024 Schedule A. None of a refund is taxable when you did not itemize in 2024 or deducted general sales taxes instead of
-    income taxes. The Pub. 525 exceptions, Form 1099-G box 8, other recoveries, and on a joint return refunds of both
-    spouses' tax on separate 2024 returns either of which itemized with income taxes are refused (Pub. 525 Worksheet 2 is
-    not encoded).
+    income taxes. When other 2024 itemized deductions were also paid back, the taxable refund comes from Pub. 525
+    Worksheet 2 (form rec). The other Pub. 525 exceptions, Form 1099-G box 8, and on a joint return refunds of both
+    spouses' tax on separate 2024 returns either of which itemized with income taxes are refused.
   lines:
   - id: refund.zero
     printed: (helper)
@@ -1044,9 +1044,10 @@ form:
       locator: p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 9, "Taxable part of your refund.
         Enter the smaller of line 3 or line 8 here and on Schedule 1, line 1"; line 3, "No. STOP None of your refund is
         taxable"
-  - id: refund.taxable
+  - id: refund.taxable_1040
     printed: (helper)
-    label: Taxable part of your refund (zero when you did not itemize for 2024 or deducted general sales taxes)
+    label: Taxable part of your refund by the Form 1040 worksheet (zero when you did not itemize for 2024 or deducted general
+      sales taxes)
     type: NonNegDollars
     expr:
       op: choose
@@ -1068,6 +1069,32 @@ form:
       locator: p. 88, Line 1, "None of your refund is taxable if, in the year you paid the tax, ... you either (a) didn’t itemize
         deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes"
     ambiguity: amb.2025.refund_not_itemized
+  - id: refund.taxable
+    printed: (helper)
+    label: Taxable part of your refund (from Pub. 525 Worksheet 2, line B, when other 2024 itemized deductions were also paid
+      back; otherwise from the Form 1040 worksheet)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - rec.path
+          - const: true
+        then: rec.to_line1
+      - guard:
+          op: test
+          eq:
+          - rec.path
+          - const: false
+        then: refund.taxable_1040
+    cite:
+      doc: p525
+      locator: p. 24, Itemized Deduction Recoveries, "You can’t use the State and Local Income Tax Refund Worksheet—Schedule 1,
+        Line 1, and must use this discussion if" and statement 2, "You received a refund other than an income tax refund,
+        such as a general sales tax or real property tax refund"; p. 25, Allocating the included part, "you must allocate the
+        taxable recoveries between the state income tax refund you report on Schedule 1"
     refuses:
     - when: refund.box8
       form: Form 1099-G box 8 (a refund of a tax on trade or business income, Schedule C or F)

@@ -609,6 +609,90 @@ form:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
         Safety Officers, Simplified Method'
+  - id: retirement.dis_all_early
+    printed: (helper)
+    label: 'Were you younger than that age when each payment of 2025 on this form was made?'
+    type: Bool
+    gated_by: retirement.dis_all_early_if_early
+    expr:
+      op: input
+      source: 'Were you younger than that age when each payment of 2025 on this form was made?'
+    cite:
+      doc: i1040gi
+      locator: 'p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your
+        employer", "Disability pensions received after you reach minimum retirement age and other payments shown on Form 1099-R
+        (other than payments from an IRA) are reported on lines 5a and 5b"'
+  - id: retirement.dis_all_early_if_early
+    printed: (gate)
+    label: 'All of 2025''s payments made before the minimum retirement age. Asked only with a disability pension paid before
+      that age (false otherwise)'
+    type: Bool
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - retirement.dis_early_if_disability
+          - const: true
+        then: retirement.dis_all_early
+      - guard:
+          op: test
+          eq:
+          - retirement.dis_early_if_disability
+          - const: false
+        then: retirement.no
+    cite:
+      doc: i1040gi
+      locator: 'p. 25, "Disability pensions received after you reach minimum retirement age and other payments shown on Form
+        1099-R (other than payments from an IRA) are reported on lines 5a and 5b"'
+  - id: retirement.dis_wages
+    printed: (helper)
+    label: 'A disability pension paid wholly before the minimum retirement age: its taxable amount is wages on Form 1040,
+      line 1h, not a pension on lines 5a and 5b'
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - retirement.dis_all_early_if_early
+      - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your
+        employer"'
+  - id: retirement.dis_split
+    printed: (gate)
+    label: 'A disability pension paid partly before and partly after the minimum retirement age in 2025, or paid before that
+      age with after-tax cost in the plan'
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        all:
+        - op: test
+          eq:
+          - retirement.dis_early_if_disability
+          - const: true
+        - op: test
+          eq:
+          - retirement.dis_all_early_if_early
+          - const: false
+      - op: test
+        all:
+        - op: test
+          eq:
+          - retirement.dis_wages
+          - const: true
+        - op: test
+          eq:
+          - retirement.annuity_if_cost
+          - const: true
+    cite:
+      doc: i1040gi
+      locator: 'p. 25, "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your
+        employer", "Disability pensions received after you reach minimum retirement age and other payments shown on Form 1099-R
+        (other than payments from an IRA) are reported on lines 5a and 5b"'
   - id: retirement.dis_terror
     printed: (helper)
     label: 'Did the disability result from a terrorist attack?'
@@ -1190,7 +1274,7 @@ form:
         - const: true
       - op: test
         eq:
-        - retirement.dis_early_if_disability
+        - retirement.dis_split
         - const: true
       - op: test
         eq:
@@ -1509,6 +1593,10 @@ form:
         - op: test
           eq:
           - retirement.is_ira
+          - const: false
+        - op: test
+          eq:
+          - retirement.dis_wages
           - const: false
       - op: test
         all:

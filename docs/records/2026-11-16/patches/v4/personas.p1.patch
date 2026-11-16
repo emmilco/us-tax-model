@@ -1,0 +1,275 @@
+diff --git a/interview/2025/personas/23_ltc_per_diem_mother.yaml b/interview/2025/personas/23_ltc_per_diem_mother.yaml
+new file mode 100644
+index 00000000..79f9d04e
+--- /dev/null
++++ b/interview/2025/personas/23_ltc_per_diem_mother.yaml
+@@ -0,0 +1,22 @@
++# Predicted end (hand-derived, Form 8853 Section C; unverified until draft-walk and a values run):
++#   f8853c[mom]: line17 $90,000, line20 $90,000, line21 $84,000 (420 x 200), line22 $76,000, line23 $84,000,
++#   line24 $8,000, line25 $76,000, line26 $14,000. Schedule 1 line 8e $14,000.
++#   AGI $66,000; standard deduction $15,750; taxable income $50,250; tax $5,975 (Tax Table, +/- $1).
++name: 23_ltc_per_diem_mother
++who: A single person, 56, with one job (one Form W-2, $52,000 of wages) who owns a long-term care policy on her mother; it paid her $450 a day for the 200 days of 2025 her mother spent in a nursing home that cost $76,000, of which Medicare paid $8,000.
++extends: 01_single_w2
++end: complete
++answers:
++  person[taxpayer].birth_year: 1969
++  s1.ltc_payout: true
++  $f8853c: [mom]
++  f8853c[mom].periodic: true
++  f8853c[mom].line17: 9000000
++  f8853c[mom].nonqualified: false
++  f8853c[mom].line19: 0
++  f8853c[mom].others_paid: false
++  f8853c[mom].rate_changed: false
++  f8853c[mom].days: 200
++  f8853c[mom].line22: 7600000
++  f8853c[mom].line24: 800000
++  f8853c[mom].contract_before_ltc_date: false
+diff --git a/interview/2025/personas/24_household_pay_babysitter.yaml b/interview/2025/personas/24_household_pay_babysitter.yaml
+new file mode 100644
+index 00000000..bd3f0f56
+--- /dev/null
++++ b/interview/2025/personas/24_household_pay_babysitter.yaml
+@@ -0,0 +1,15 @@
++# Predicted end (hand-derived; unverified until draft-walk and a values run):
++#   person[taxpayer].household_wages $4,900 to Form 1040 line 1b; line 1z $56,900; no Schedule SE, no Form 4137 or 8919.
++#   AGI $56,900; standard deduction $15,750; taxable income $41,150; tax $4,703 (Tax Table, +/- $1).
++name: 24_household_pay_babysitter
++who: A single person, 31, with one job (one Form W-2, $52,000 of wages) who also babysat for two families in 2025, paid $2,300 by one and $2,600 by the other, neither of which gave a W-2.
++extends: 01_single_w2
++end: complete
++answers:
++  scope.pay_no_w2: true
++  scope.household_pay: true
++  scope.contractor_pay: false
++  scope.tips_unreported: false
++  scope.strike_pay: false
++  scope.wages_no_form: false
++  person[taxpayer].household_wages: 490000
+diff --git a/interview/2025/personas/25_refused_mfs_spouse_california.yaml b/interview/2025/personas/25_refused_mfs_spouse_california.yaml
+new file mode 100644
+index 00000000..68fd7004
+--- /dev/null
++++ b/interview/2025/personas/25_refused_mfs_spouse_california.yaml
+@@ -0,0 +1,11 @@
++# Predicted end: refused at household.mfs_community_property, told at household.spouse_cp_domicile (its help says a Yes
++# ends the interview). Mirrors coverage row mfs.spouse_cp_domicile.
++name: 25_refused_mfs_spouse_california
++who: A married person in New York who files apart from her husband; she has never lived in a community property state, but he works in Los Angeles and his permanent home is California, so half of his pay may be hers under California law.
++end: { refused: household.mfs_community_property }
++answers:
++  $person: [taxpayer]
++  f1040.status: mfs
++  household.married_dec31: true
++  household.community_property: false
++  household.spouse_cp_domicile: true
+diff --git a/interview/2025/personas/26_mfs_spouse_itemizes.yaml b/interview/2025/personas/26_mfs_spouse_itemizes.yaml
+new file mode 100644
+index 00000000..98ed65c3
+--- /dev/null
++++ b/interview/2025/personas/26_mfs_spouse_itemizes.yaml
+@@ -0,0 +1,32 @@
++# Predicted end (hand-derived; unverified until draft-walk and a values run):
++#   Form 1040 line 12b checked (spouse itemizes): standard deduction $0, so Schedule A is used.
++#   Schedule A line 5a $2,849, 5d $2,849, 5e $2,849 (MFS cap $20,000 not reached); line 11 $1,200; line 17 $4,049.
++#   AGI $70,000; taxable income $65,951; tax $9,429 (Tax Table, MFS, +/- $1); withholding $7,000; owed $2,429.
++name: 26_mfs_spouse_itemizes
++who: A married man, 47, in Pennsylvania, who lives with his wife but files apart because she itemizes her large medical bills on her own return; he has one job (one Form W-2, $70,000 of wages), paid $2,849 of state and local income tax and gave $1,200 in cash to charity, and rents his home.
++end: complete
++answers:
++  $person: [taxpayer]
++  f1040.status: mfs
++  household.married_dec31: true
++  household.community_property: false
++  household.spouse_cp_domicile: false
++  person[taxpayer].birth_year: 1978
++  $w2@person[taxpayer]: [plant]
++  person[taxpayer].w2[plant].box1: 7000000
++  person[taxpayer].w2[plant].box2: 700000
++  person[taxpayer].w2[plant].box4: 434000
++  person[taxpayer].w2[plant].box5: 7000000
++  person[taxpayer].w2[plant].box6: 101500
++  scope.w2_marks: false
++  s2.w2_marks: false
++  s1.nqdc_pension: false
++  scope.artist_official: false
++  scope.excess_deferral: false
++  sa.state_tax_any: true
++  sa.gifts: true
++  sa.line5a: 284900
++  sa.charity_limited: false
++  sa.line11: 120000
++  $gift: []
++  sa.spouse_itemizes: true
+diff --git a/interview/2025/personas/27_dependent_student_interest.yaml b/interview/2025/personas/27_dependent_student_interest.yaml
+new file mode 100644
+index 00000000..1c72ec6f
+--- /dev/null
++++ b/interview/2025/personas/27_dependent_student_interest.yaml
+@@ -0,0 +1,20 @@
++# Predicted end (hand-derived; unverified until draft-walk and a values run):
++#   Unearned income $2,100, under $2,700, so no Form 8615. Schedule B Part I $2,100 (over $1,500).
++#   Dependent's standard deduction: larger of $1,350 or earned income $6,000 + $450 = $6,450 (not over $15,750).
++#   AGI $8,100; taxable income $1,650; tax $166 (Tax Table, +/- $1); withholding $120; owed $46. No earned income credit.
++name: 27_dependent_student_interest
++who: A single student, 19, whom the parents claim as a dependent, with one summer job (one Form W-2, $6,000 of wages) and $2,100 of interest on a certificate of deposit her grandparents opened for her.
++extends: 20_dependent_student
++end: complete
++answers:
++  $interest: [bank]
++  interest[bank].amount: 210000
++  interest[bank].penalty: 0
++  sb.nominee: false
++  sb.bonds_any: false
++  ftc.taxes: 0
++  person[taxpayer].sav_claimed: false
++  person[taxpayer].sav_student: false
++  person[taxpayer].sav_voluntary: 0
++  person[taxpayer].sav_able: false
++  person[taxpayer].w2[diner].box12_any: false
+diff --git a/interview/2025/personas/28_refused_dependent_kiddie_tax.yaml b/interview/2025/personas/28_refused_dependent_kiddie_tax.yaml
+new file mode 100644
+index 00000000..9cf8ae3c
+--- /dev/null
++++ b/interview/2025/personas/28_refused_dependent_kiddie_tax.yaml
+@@ -0,0 +1,12 @@
++# Predicted end: refused at scope.other_line16, told at scope.f8615 (Form 8615, tax on a child's unearned income, is
++# not prepared). Mirrors coverage row scope.f8615. The answers stop at the refusal; later answers would be stale.
++name: 28_refused_dependent_kiddie_tax
++who: A full-time student, 20, whom the parents support and claim as a dependent, with $3,000 from a summer job and $4,000 of dividends from shares her grandparents gave her.
++end: { refused: scope.other_line16 }
++answers:
++  $person: [taxpayer]
++  f1040.status: single
++  person[taxpayer].birth_year: 2005
++  sa.dependent: true
++  scope.unearned_2700: true
++  scope.f8615: true
+diff --git a/interview/2025/personas/29_foreign_tax_carryover.yaml b/interview/2025/personas/29_foreign_tax_carryover.yaml
+new file mode 100644
+index 00000000..775b9f1d
+--- /dev/null
++++ b/interview/2025/personas/29_foreign_tax_carryover.yaml
+@@ -0,0 +1,29 @@
++# Predicted end (hand-derived; unverified until draft-walk and a values run; cents rounding may move a figure by $1):
++#   Form 1116 (passive): line 1a $4,000; line 3a $15,750; line 3e $96,000; line 3g about $657 (ratio 0.0417);
++#   line 7 and 15 about $3,343; line 8 and 9 $360; line 10 $100 (Schedule B (Form 1116), 2024 column);
++#   line 14 $460; line 18 $80,250; line 20 $12,225; line 21 about $510 (ratio 0.0417); line 24, 33, 35 $460.
++#   Adjustment exception applies (foreign dividends under $20,000; QDCG line 5 $75,250 under $197,300). No carryover left.
++#   AGI $96,000; taxable income $80,250; tax $12,225 (QDCG worksheet: $11,475 on $75,250 plus $750 on $5,000);
++#   Schedule 3 line 1 $460; tax after credits $11,765; withholding $11,000; owed $765.
++name: 29_foreign_tax_carryover
++who: A single person, 52, with one job (one Form W-2, $90,000 of wages) and an international index fund whose Form 1099-DIV shows $6,000 of dividends ($5,000 qualified) and $360 of foreign tax, $4,000 of it foreign source; her 2024 Form 1116 carried $100 of unused foreign tax into 2025.
++extends: 14_investor_international_fund
++end: complete
++answers:
++  person[taxpayer].birth_year: 1973
++  person[taxpayer].w2[employer].box1: 9000000
++  person[taxpayer].w2[employer].box2: 1100000
++  person[taxpayer].w2[employer].box4: 558000
++  person[taxpayer].w2[employer].box5: 9000000
++  person[taxpayer].w2[employer].box6: 130500
++  sb.ordinary_dividends: 600000
++  f1040.line3a: 500000
++  ftc.carryover: true
++  ftc.taxes: 36000
++  f1116col[funds].div_income: 400000
++  f1116col[funds].tax_div: 36000
++  f1116sb.changed: false
++  f1116sb.split: false
++  $f1116sbyr: [y2024]
++  f1116sbyr[y2024].year: p1
++  f1116sbyr[y2024].amount: 10000
+diff --git a/interview/2025/personas/30_crypto_staking_airdrop.yaml b/interview/2025/personas/30_crypto_staking_airdrop.yaml
+new file mode 100644
+index 00000000..414edde3
+--- /dev/null
++++ b/interview/2025/personas/30_crypto_staking_airdrop.yaml
+@@ -0,0 +1,19 @@
++# Predicted end (hand-derived; unverified until draft-walk and a values run):
++#   Schedule 1 line 8v $800 ($300 staking + $500 airdrop, at their value when received).
++#   Form 8949 box H: proceeds $800, basis $500 (the value when received), short-term gain $300; Schedule D line 7 $300.
++#   AGI $53,100; standard deduction $15,750; taxable income $37,350; tax $4,247 (Tax Table, +/- $1).
++name: 30_crypto_staking_airdrop
++who: A single person, 31, with one job (one Form W-2, $52,000 of wages) who received $300 of coins from staking and an airdrop of tokens worth $500 when they arrived, and later sold all the airdropped tokens for $800 on an exchange that sent a Form 1099-DA without basis.
++extends: 01_single_w2
++end: complete
++answers:
++  f1040.digital_assets: true
++  s1.digital_income: true
++  s1.digital_amount: 80000
++  $sales: [airdrop]
++  sd.route_each: false
++  sales[airdrop].box: H
++  sales[airdrop].special: false
++  sales[airdrop].code: none
++  sales[airdrop].proceeds: 80000
++  sales[airdrop].correct_basis: 50000
+diff --git a/interview/2025/personas/31_rental_cabin_personal_use.yaml b/interview/2025/personas/31_rental_cabin_personal_use.yaml
+new file mode 100644
+index 00000000..8a257803
+--- /dev/null
++++ b/interview/2025/personas/31_rental_cabin_personal_use.yaml
+@@ -0,0 +1,61 @@
++# Predicted end (hand-derived; unverified until draft-walk and a values run; cents may differ by $0.01):
++#   Not used as a home: 14 personal days is not more than the larger of 14 or 10% of 180. Expenses divided by
++#   180 / 194 = 0.927835. Line 3 $19,500; line 9 $1,113.40; line 12 $5,567.01; line 16 $2,783.51; line 17 $1,670.10;
++#   line 18 $6,747.22 (MACRS $7,272 = $200,000 x 3.636%, year 5); line 20 $17,881.24; line 21 $1,618.76 income.
++#   No Form 8582 limit (income). AGI about $53,619; taxable income about $37,869; tax $4,307 (Tax Table, +/- $1).
++name: 31_rental_cabin_personal_use
++who: A single person, 31, with one job (one Form W-2, $52,000 of wages) who owns a lake cabin bought in July 2021, rented it by the month for 180 days of 2025 for $19,500, and stayed there herself for 14 days.
++extends: 01_single_w2
++end: complete
++answers:
++  scope.rental: true
++  scope.rent_personal: false
++  $rental: [cabin]
++  rental[cabin].kind: vacation
++  rental[cabin].days_fair: 180
++  rental[cabin].personal_any: true
++  rental[cabin].days_personal: 14
++  rental[cabin].days_overlap: 0
++  rental[cabin].short_stays: true
++  rental[cabin].stay7: false
++  rental[cabin].services: false
++  rental[cabin].under_tenth: false
++  rental[cabin].not_for_profit: false
++  rental[cabin].depletion: false
++  rental[cabin].part_home: false
++  rental[cabin].active: true
++  rental[cabin].rents: 1950000
++  rental[cabin].has_mortgage: true
++  rental[cabin].has_taxes: true
++  rental[cabin].has_insurance: true
++  rental[cabin].has_utilities: true
++  rental[cabin].has_repairs: false
++  rental[cabin].has_other_interest: false
++  rental[cabin].has_management: false
++  rental[cabin].has_commissions: false
++  rental[cabin].has_cleaning: false
++  rental[cabin].has_supplies: false
++  rental[cabin].has_advertising: false
++  rental[cabin].has_legal: false
++  rental[cabin].has_other: false
++  rental[cabin].vehicle: false
++  rental[cabin].amt9: 120000
++  rental[cabin].amt12: 600000
++  rental[cabin].amt16: 300000
++  rental[cabin].amt17: 180000
++  rental[cabin].prior_any: false
++  $rprop@rental[cabin]: [cabin_bldg]
++  rental[cabin].rprop[cabin_bldg].kind: residential
++  rental[cabin].rprop[cabin_bldg].month: m7
++  rental[cabin].rprop[cabin_bldg].year: y2021
++  rental[cabin].rprop[cabin_bldg].basis: 20000000
++  rental[cabin].rprop[cabin_bldg].disposed: false
++  rental[cabin].rprop[cabin_bldg].fast: false
++  rental[cabin].rprop[cabin_bldg].ads: false
++  rental[cabin].rprop[cabin_bldg].basis_changed: false
++  rental[cabin].rprop[cabin_bldg].credit: false
++  rental[cabin].rprop[cabin_bldg].coop: false
++  $royalty: []
++  sche.re_pro: false
++  sche.grouped: false
++  sche.qbi_business: false

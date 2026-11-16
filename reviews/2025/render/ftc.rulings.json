@@ -28,6 +28,16 @@
    "subject_key": "bd93eb3a7191de0332d9b71246977d6f00bc7bd637b46617ea90f2e687b93b35"
   },
   {
+   "printed": "elect",
+   "restated": "Choose — [helper \"Whether a foreign tax credit carried from another year is claimed, asked only of a filer who has paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules (false otherwise)\" = true → helper \"Year parameter ftc.no (false)\"] [helper \"Whether a foreign tax credit carried from another year is claimed, asked only of a filer who has paid income tax to a foreign country or a U.S. territory, had territory income or owned part of a foreign corporation, or whose 2024 return includes a form besides Form 1040 and its schedules (false otherwise)\" = false → helper \"Year parameter ftc.yes (true)\"]",
+   "model": "The IRS makes the election optional ('You may be able to claim ... By making this election') and says that if made, 'You can't carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies'. The program elects automatically whenever the conditions are met. This forfeits any 2025 excess that Form 1116 would carry back or forward. The restatement's 'never less' reasoning covers only the current-year credit.",
+   "ruling": "Ruling: ambiguity; amb.2025.f1116_carryover_election and coordinator decision D3 (docs/provisional/DECISIONS.md, X1-F1116: the election made whenever its conditions are met). i1116 pp. 1-2: with the election \"You can't carry over to or from any other year any foreign taxes\". The model reads the election as the filer's choice and notes that electing forfeits any excess of foreign tax over the regular tax that Form 1116 would carry forward. The recorded reading and D3 make the election whenever available; on this tool's Form 1116 path any such excess refuses (f1116.carryover_out, coordinator decision D1), so a No could only refuse the return. The English states what the project does. Raised for the owner in the report: whether to refuse instead of electing when ftc.taxes exceeds ftc.regular_tax, which keeps the carryforward the election forfeits.",
+   "context": "73131a85704aeefe43452b59b5e5ed4218acd28887518daf0b3e5153a8fbad0c",
+   "date": "2026-11-15",
+   "run": "2ef3c5ecaee7ece1a2f61b74a6165d216e0c2372cd42ec96d6a52ddb0dc4244d",
+   "subject_key": "373345881b4142c273913bfdfb1043e5369bf6f0c32bfaede5905ea762f0fd0c"
+  },
+  {
    "printed": "limited",
    "restated": "Enter the smaller of helper \"Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise\" or helper \"Regular tax for the limit (Form 1040 line 16 plus Schedule 2 line 1z)\".",
    "model": "The election says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax' and refers to line 20 for regular tax. Line 20 says 'Enter the total of Form 1040... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972'. The restatement adds line 16 and line 1z without subtracting Form 4972 tax, and no refusal excludes that case.",
@@ -61,6 +71,27 @@
    "model": "The text says to enter 'the smaller of (a) your total foreign tax, or (b) your regular tax. See the instructions for line 20, later, for how to figure your regular tax.' Those line 20 instructions are not provided, so it cannot be confirmed that Form 1040 line 16 equals 'regular tax' for this purpose.",
    "ruling": "Ruling: representation; project retained. Regular tax for the election is \"your total U.S. income tax against which the credit is allowed (regular tax liability, as defined in section 26(b)(1))\", excluding the net investment income tax (i1116 p. 25, line 20), which on the return in this slice is Form 1040 line 16: the additional line-16 taxes are refused by `scope.other_line16` and the net investment income and additional Medicare taxes sit on Schedule 2, after line 16. No change to the data.",
    "subject_key": "1164621abfa5261aaef8ca1d65520198d56a36f3d03dd58ffc5ea10acbc88563"
+  },
+  {
+   "printed": "needs1116",
+   "restated": "helper \"Positive foreign taxes\" = true and (helper \"Total creditable foreign taxes after required reductions, when you or your spouse owned shares or received a Form 1099-DIV, were paid taxable interest, or ever paid income tax to another country; zero otherwise\" > helper \"Year parameter ftc.limit\" or helper \"Whether all foreign-source gross income was passive category income, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or helper \"Whether all foreign income and taxes were reported on qualified payee statements, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or helper \"Whether the creditability, holding-period, related-payment and reduction rules are met, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false or helper \"Whether the election without Form 1116 is made, asked only with foreign tax (false without foreign tax, where neither the election nor Form 1116 applies)\" = false)",
+   "model": "It matches the three i1116 conditions, including tax 'more than $300 ($600 ...)' failing the test. However, the Schedule 3 instructions also require '4. You aren't filing Form 4563 or excluding income from sources within Puerto Rico'. The program does not check this, and i1116's condition list does not mention it, so the text given does not settle which list governs.",
+   "ruling": "Ruling: finding; medium; i1040gi (2025), Schedule 3, line 1, condition 4 for the credit without Form 1116: \"You aren't filing Form 4563 or excluding income from sources within Puerto Rico.\" The rendered conditions match i1116's three, which do not repeat it, and ftc.needs1116 does not test it; sa.excluded_income (asked of every filer) refuses only on Schedule A, Schedule 1-A, sli and other credits, not on ftc, so a Form 4563 filer or Puerto Rico excluder with foreign tax of $300 or less ($600 joint) gets the election credit (BUG-0769). Fix: add sa.excluded_income = true to ftc.needs1116's failed conditions, sending the return to Form 1116, where f1116.reduction refuses.",
+   "context": "73131a85704aeefe43452b59b5e5ed4218acd28887518daf0b3e5153a8fbad0c",
+   "date": "2026-11-15",
+   "run": "2ef3c5ecaee7ece1a2f61b74a6165d216e0c2372cd42ec96d6a52ddb0dc4244d",
+   "severity": "medium",
+   "subject_key": "6e47feb11b87df8cd345ce397ae5d00d0af7443e69639412470b331cf27fa807"
+  },
+  {
+   "printed": "regular_tax",
+   "restated": "Add f1040 line 16 and s2 line 1z.",
+   "model": "For the election, the IRS defines regular tax by the line 20 instructions: 'the total of Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.' The restatement omits the Form 4972 subtraction, and no refusal covers it.",
+   "ruling": "Ruling: scope; i1116 p. 25, Line 20: regular tax is Form 1040 line 16 plus Schedule 2 line 1z \"less any tax included on line 16 from Form 4972\". Form 4972 tax is refused at Form 1040 line 16 (scope.other_line16), so nothing is subtracted on a computed return. Same as the landing and goal-1 rulings on line limited.",
+   "context": "73131a85704aeefe43452b59b5e5ed4218acd28887518daf0b3e5153a8fbad0c",
+   "date": "2026-11-15",
+   "run": "2ef3c5ecaee7ece1a2f61b74a6165d216e0c2372cd42ec96d6a52ddb0dc4244d",
+   "subject_key": "2ec5014a32c061ccf05525016fa951864861290dea1a86448314950e577f9cfb"
   },
   {
    "printed": "regular_tax",

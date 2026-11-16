@@ -573,6 +573,41 @@
   },
   {
    "printed": "s3.other_credit",
+   "project_expr_sha256": "1612fe3cde5f415dc109bb0fa254c9277713eb48718fdbc1e22bdb22fc5ae22d",
+   "second_expr_sha256": "cfe1cc7737d3ce086322cdde6a1b60aaf6d4496219a8c7538878797d71b8da46",
+   "ruling": "Ruling: representation; the reply flattens the screen into a test over every follow-up answer without the gate each is asked under (its own note: 'The follow-up questions are tested only under the gating question they follow' is not what its expression does for s3.elderly_credit and s3.mcc). Triage (pass 5aba9c3e392b) 2,848/3,524 agree; completed returns: 2 value differences, both fixtures whose follow-up answer stands outside its gate (redesign.credits.elderly_not_asked: s3.elderly_credit true where the elderly/disabled question is not asked; redesign.credits.mcc_not_asked: s3.mcc read without the mortgage-interest gate), and 197 candidate-unknown where the reply reads a follow-up input the interview does not ask; the rest are on incomplete or refused records. This round's change (s3.other_credit_9, the Form 1116 carryover link, removed; ftc.carryover_no_tax refuses at ftc.credit instead) is not where the two differ. The same pattern was ruled representation in the landing and Goal-1 rounds (i1040gi Lines 6a-6z; f8396 p. 2, Line 1).",
+   "context": "8c54466eb9e3d5a938e191685d1a863a3cab014821cc9be0e75ee13c5eb3f053",
+   "date": "2026-11-15",
+   "run": "26d8aeb525bb6eeca11ccadd5b46db165303596cc1f3b6fcf7a1af2699317b99",
+   "subject_key": "16c3973f7acbdd158908325bb5cf40ccbf772821d0c6e4b4f0d8e7b39da47c0b",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "candidate-unknown",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:classm.f2441.1.deepseek@s3",
+     "fixture:classm.f2441.2.deepseek@s3",
+     "fixture:classm.f2441.3.deepseek@s3",
+     "fixture:classm.f2441.4.deepseek@s3",
+     "fixture:classm.f2441.5.deepseek@s3",
+     "fixture:classm.f2441.6.deepseek@s3",
+     "fixture:stage9.eic.refuse.f1040_line16.separated_spouses@s3",
+     "fixture:stage16.cleanup.refuse.f1040_line16@s3",
+     "fixture:stage16.cleanup.refuse.f4952_unsupported@s3",
+     "fixture:redesign.hsa.testing_kept_age_unanswered@s3",
+     "fixture:stage16.cleanup.refuse.retirement.special_first@s3",
+     "fixture:ss.single.over@s3",
+     "fixture:redesign.credits.elderly_not_asked@s3",
+     "fixture:redesign.credits.mcc_not_asked@s3"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "s3.other_credit",
    "project_expr_sha256": "39f2c83c4417a0ec47545862fd791cdc9677fc92f89dc56c47376f0e80bb551c",
    "second_expr_sha256": "2d83eccba78d0267762472eebac0ab5df831f42cb1e899a7b77cfd77e46bc58e",
    "ruling": "Ruling: representation; the project's gate (label: \"A credit or payment of Schedule 3 this tool does not prepare\") covers credits and payments; the reply's covers lines 6a to 6z only and refuses the payment and other items at its own lines 12 and 14 (Form 4136 kerosene, sections 965 and 960(c), Form 8689, Form 1062, claim of right) and the foreign tax carryover at line 1 (ftc.needs1116). Triage (pass fc3ac0eb0f5d): 2,813/3,089 agree; 9 value differences, all on refused returns and all project true / reply false on items the reply refuses elsewhere (e.g. ss.other.components: kerosene; redesign.credits.refuse.section965, .section960c, .virgin_islands, .farmland, .ftc_carryover); the rest project- or candidate-unknown on unasked gates (6 candidate-unknown on completed returns). The return-level refusal is the same.",

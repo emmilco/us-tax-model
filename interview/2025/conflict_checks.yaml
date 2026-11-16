@@ -18,6 +18,9 @@ conflicts:
     The loss entered for 2024 Schedule D line 21 does not fit the other 2024 Schedule D amounts entered: it cannot be a
     larger loss than $3,000 or than the line 16 loss, nor a smaller loss than the line 16 loss or $1,500, whichever is
     less.
+  f1040.digital_conflict: >-
+    The answer to "did you receive, sell, trade, spend or give away crypto or another digital asset?" is No, but a sale
+    is entered under box G, H, I, J, K or L, the boxes for digital assets. Answer Yes, or correct the box of the sale.
   div.bad_special: >-
     Form 1099-DIV boxes 2b, 2c and 2d are parts of the total capital gain distributions in box 2a, but the amounts
     entered for them are more than box 2a.
@@ -91,3 +94,9 @@ conflicts:
     The elective deferrals entered for Form W-2 box 12, code G are more than the code G amount.
   ny_it201.gate.line79_over: >-
     The amount to apply to 2026 estimated tax (Form IT-201 line 79) is more than the overpayment on line 77.
+  f1116.tax_mismatch: >-
+    The foreign tax entered for the sources of foreign income does not add up to the foreign tax entered for 2025 (box 7
+    of Forms 1099-DIV, box 6 of Forms 1099-INT and any other foreign income tax). Correct the amounts so they agree.
+  f1116.income_over: >-
+    The foreign dividends or foreign interest entered for the sources of foreign income are more than the ordinary
+    dividends or taxable interest entered in all, of which they are parts. Correct the amounts.

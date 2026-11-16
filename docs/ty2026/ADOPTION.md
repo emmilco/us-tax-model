@@ -2,18 +2,20 @@
 
 Written 2026-11-04 on branch `ty2026/prep` (`docs/ty2026/2026-11-04_ty2026_cloud_brief.md`, steps 1 to 6). The
 adoption itself (TASKS.md T-011) runs when the IRS publishes the final 2026 documents, expected December 2026 to
-January 2027. Everything prepared here is a proposal: `main`, `years.json` (`[2025]`) and the 2025 encoding are
-unchanged.
+January 2027. Nothing is adopted: `years.json` lists 2025 alone (`adopted` and `ny_adopted`). The preparation is
+kept outside the build: the definition changes as operations in `changes/2026/` (checked against the 2025 forms on
+every check-all run), and the parameters and tables staged in `research/ty2026/`. The tables below were brought up
+to date on 2026-11-15, after the 2026 preparation lanes (`docs/provisional/lanes/ty26-*.md`; plan `ty26-plan.md`).
 
 ## What is ready
 
 | Step | Output | State |
 |---|---|---|
-| 1 | `sources/2026/` (91 documents, 55 IRS drafts), `tools/sources/2026.json`, `reports/2026/archive_refresh_2026-11-04.md` | archive verified (`python3 tools/fetch_sources.py --year 2026`) |
+| 1 | `sources/2026/` (96 documents, 57 IRS drafts), `tools/sources/2026.json`, `reports/2026/archive_refresh_2026-11-04.md` and the refresh of 2026-11-14 (`archive_refresh_2026-11-14.md`: three finals, two reposted drafts, five new drafts) | archive verified (`python3 tools/fetch_sources.py --year 2026`) |
 | 2 | `reports/2026/year_diff_from_2025.{md,html}`; `reports/2026/worklist_split.md` and `research/ty2026/worklist.json` (`research/ty2026/split_worklist.py`) | 2,236 worklist items: 426 of kind (a), 1,810 of kind (b) as the script splits them; counting the 16 items of C-PEOP-23 and C-PEOP-24 as kind (b) (owner decision 2026-11-04), 410 of kind (a) and 1,826 of kind (b) |
 | 3 | `research/ty2026/changes.md` (135 entries, with C-LAW-01 and C-LAW-02 and the statute read) and `changes.verification.md` (2 high, 11 medium, 7 low; all applied) | 808 quotes checked by `research/ty2026/check_quotes.py`, 0 not printed |
-| 4 | `research/ty2026/params-2026.proposed.yaml` (`build_params.py`, `check_params.py`) | 2025 parameters: 92 values from final sources, 70 from drafts, 108 with no 2026 source, and `sc.mileage_rate` retired; 3 new 2026 parameters from final sources (`sc.mileage_rate_h1`, `sc.mileage_rate_h2`, `sa.gift_floor_rate`) |
-| 5 | `research/ty2026/forms-proposed/` (Form 1040, Schedule A, Form W-2, new Schedule 3-A, the Schedule C vehicle lines; README) and `research/ty2026/fixtures-proposed/2026-predicted.json` (22 cases) | structural build test passed in a scratch copy (re-run 2026-11-04 after the owner's decisions); not wired in |
+| 4 | `research/ty2026/params-2026.proposed.yaml` (`build_params.py`, `check_params.py`), merged with the mechanical proposal `reports/2026/params_proposal_from_2025.{md,yaml}` (`tools/propose_params.py`); the staged tables `research/ty2026/tables-2026/` (`dc_rate`, `ltc_limit`, `savers_rate`, `rate_schedule`) | 307 values: 123 from final sources, 75 from drafts, 14 derived (the `age.*` years of birth, `moves_with_year`), 95 with no 2026 source; 12 of them new in 2026 (every parameter the operations read that 2025 lacks); 15 retired (`sc.mileage_rate`, `sc.bonus_rate_40`, `ptc.repay_*`, ten `f5695.*`) |
+| 5 | `changes/2026/` (130 entries, 1,256 operations, carrying out 90 of the change map's entries; `changes/2026/README.md`), from the proposals of `research/ty2026/forms-proposed/` (Form 1040, Schedule A, Form W-2, new Schedule 3-A, the Schedule C vehicle lines) and the change map; `research/ty2026/fixtures-proposed/2026-predicted.json` (22 cases) | `python3 tools/year_changes.py --check`: all apply to the 2025 forms; 122 of the 130 entries rest on drafts |
 
 ## Order of work when the final documents publish
 
@@ -26,43 +28,49 @@ unchanged.
 2. **Rerun the year diff** against the finals: `python3 tools/year_diff.py --from 2025 --to 2026`, then
    `python3 research/ty2026/split_worklist.py`. Kind (b) items whose document has now posted become kind (a); read
    each one the way `changes.md` was written.
-3. **Verify every draft-sourced item against the final** (the list below): the change map entries, the 70 draft
-   parameters, the proposed definitions and the draft-sourced fixture cases. Run
+3. **Verify every draft-sourced item against the final** (the list below): the change map entries, the 75 draft
+   parameters, the operations (an entry is marked `verified: final` once checked; `year_changes.py --check` notes
+   each entry whose documents are all final) and the draft-sourced fixture cases. Run
    `python3 research/ty2026/check_quotes.py` and `python3 research/ty2026/check_params.py` after refetching: a quote
-   that is no longer printed on its page is the first sign a draft changed. Then fill the 108 parameters with no
+   that is no longer printed on its page is the first sign a draft changed. Then fill the 95 parameters with no
    source from the final instructions (`build_params.py`, the `V` table). `python3 tools/propose_params.py --from 2025
    --to 2026 --write --compare research/ty2026/params-2026.proposed.yaml` reads every 2025 parameter at its cited
    place in the 2026 archive and lists, beside the hand-made proposal, what it found, what changed and what it
    could not place (`reports/2026/params_proposal_from_2025.md`); rerun it after the finals are archived.
-4. **Adopt the definitions**: `python3 tools/year_diff.py --from 2025 --to 2026 --adopt` (copies the 2025 definitions
-   and rulings to 2026 and relocates pages); then apply the proposed parameters
-   (`params-2026.proposed.yaml` → `params/2026.yaml`, in the `params/2025.yaml` format: drop `source`, `note`,
-   `new_in_2026`, `unsourced` and `retired`, and remove the retired `sc.mileage_rate`) and the proposed definitions (`research/ty2026/forms-proposed/*.diff`, then the other sections of the
-   change map in the order of the next section).
-   **Since 2026-11-14** the proposed definitions are operations in `changes/2026/`, checked against the 2025 forms
-   in check-all and applied by `--adopt` itself (`docs/2026-11-14_year_change_operations.md`); the other sections of
-   the change map are to be written there as operations, not as diffs. `--adopt` refuses while `s2.line20`, which
-   Schedule 3-A awaits, has no operation adding it (C-SCHED-10). Work the citation check (`tools/citations.py --strict --year 2026`)
-   and `reports/2026/relocation_from_2025.md` until `node engine/dist/main.js build --year 2026` passes.
-5. **New inputs and their ripple** (fixtures, interview bank and profiles, `engine/src/generate.ts`,
-   `tools/engines/generate_cases.py`, `tools/transcription/input_contracts/`), one owner per input
-   (`handoffs/HANDOFF-HARDENING-1.md`).
+4. **Adopt the definitions**: `python3 tools/year_diff.py --from 2025 --to 2026 --adopt`. It copies the 2025
+   definitions to 2026, relocates their pages, applies the operations of `changes/2026/` (refusing if one does not
+   apply; `docs/2026-11-14_year_change_operations.md`), extends the year-valued enums (`placed_year`) and
+   `recovery_year`, carries the review files adoption keeps (citation rulings, the source-coverage rulings and
+   baselines, `input_quotes`, `twins.json`, the input and adapter contract banks), and lists the year literals of
+   the copy and the year-shared references to removed ids (`reports/2026/year_literals_from_2025.json`,
+   `shared_refs_from_2025.{json,md}`) for the adoption to judge (tools/README.md, "Year changes as operations").
+   Then apply the proposed parameters (`params-2026.proposed.yaml` → `params/2026.yaml`, in the `params/2025.yaml`
+   format: drop `source`, `note`, `new_in_2026`, `unsourced` and `retired`, and remove the retired parameters) and
+   the staged tables. Work the citation check (`tools/citations.py --strict --year 2026`) and
+   `reports/2026/relocation_from_2025.md` until `node engine/dist/main.js build --year 2026` passes.
+5. **New inputs and their ripple.** Each new input's test-data default is in its `add_question` and is written to
+   `fixtures/2026/defaults.json` by `fixtures_year.py`, and the contract banks are carried by `--adopt`; the rest of
+   the ripple (`engine/src/generate.ts`, `tools/engines/generate_cases.py`, the contract banks' cases for the new
+   inputs) has one owner per input (`handoffs/HANDOFF-HARDENING-1.md`).
 6. **Fixtures**: `python3 tools/fixtures_year.py --from 2025 --to 2026` (spec 6.7); add the cases of
    `fixtures-proposed/2026-predicted.json` as full fixtures (every input answered), each re-checked against the final.
    The 2026 tables (Tax Table, EIC tables, Form 8962 tables, Pub. 946 tables, auto limits, `ltc_limit`,
    `simple_catchup`, `savers_rate`, `dc_rate`) need re-extraction from the finals.
    `python3 tools/extract_printed_tables.py --write --year 2026` writes `dc_rate`, `ltc_limit`, `savers_rate`,
-   `rate_schedule` and the automobile limits from the archive (on the drafts it writes the first four; the 2026
-   `dc_rate` has a column for joint returns and one for the other statuses, so Form 2441 line 8 must read it by
-   filing status). `simple_catchup` is still written by hand (tools/README.md, "Printed tables").
+   `rate_schedule` and the automobile limits from the archive (on the drafts it writes the first four, staged with
+   `--out research/ty2026/tables-2026`; the automobile limits wait for the 2026 Pub. 946; the 2026
+   `dc_rate` has a column for joint returns and one for the other statuses, which the Form 2441 operations read by
+   filing status). `simple_catchup` is still written by hand (tools/README.md, "Printed tables"). Place the page
+   layouts with `python3 tools/layouts.py --propose --from 2025 --to 2026` (on the drafts none of the six can be
+   placed: they wait for i1040gi, i8962 and Pub. 946).
 7. **Reviews of changed forms only** (CLAUDE.md, inference cost): transcription, render and class M for the forms whose
-   content changed; completeness and screen reviews for those forms; adjudicate only those. Make the completeness
-   prompt year-aware first (T-230). Which lines changed is decided by `tools/transcription/year_carry.py --year 2026
+   content changed; completeness and screen reviews for those forms; adjudicate only those. Which lines changed is decided by `tools/transcription/year_carry.py --year 2026
    --from <the 2025 tree> --write` (tools/transcription/README.md, "Carrying reviews across a tax year"): it carries
    the 2025 verdicts of unchanged lines into the 2026 indexes, and `--lines auto` then reviews the rest. Before that,
    check_logs must read a carried record's source snapshot rows against the 2025 manifest (not yet built). A rehearsal
    on this preparation copy is in `research/ty2026/review_carry_rehearsal.md`.
-8. **`years.json`**: add 2026 only when every 2026 source is final and the 2026 build and fixtures pass.
+8. **`years.json`**: add 2026 to `adopted` only when every 2026 source is final and the 2026 build and fixtures pass;
+   `ny_adopted` gains 2026 only with New York's own adoption (below).
 9. **check-all** on the owner's machine (`tools/check_all.sh --year 2026`), then commit with the hook.
 
 ## New York
@@ -70,10 +78,19 @@ unchanged.
 New York publishes its 2026 forms after the IRS; nothing for New York 2026 is archived or prepared. The New York
 tools take `--year` and refuse a year with no New York data (`tools/README.md`, "New York years"). The order of work
 the day New York publishes, after the federal adoption (New York reads federal lines), and what a rehearsal on the
-2025 documents showed, are in `docs/ny/2026-11-14_ny_year_handling.md`, sections 3 and 6. Until New York 2026 is
-adopted, a check-all run for 2026 fails its New York steps (that note, section 5, D1).
+2025 documents showed, are in `docs/ny/2026-11-14_ny_year_handling.md`, sections 3 and 6. Federal 2026 can be
+adopted first: for a year `years.json` does not list in `ny_adopted`, check-all skips every New York step, naming it
+and the reason, and the build skips the conflict checks that name a New York gate (tools/README.md, "New York
+years").
 
 ## Definition changes in the order to do them (from `changes.md`)
+
+The order of 2026-11-04. The definition changes are now written as operations for 90 entries
+(`changes/2026/README.md`, column "Written"). Of the rest, all but three change no definition (parameters, year
+literals, page moves, no change, not encoded) or wait for a document. Three were classified as wording changes and
+have no operation: C-PRI-11 (its lines cite only i1040gi; line 14 is a definition change left for a later lane),
+C-PRI-29 (nothing stale; both `docs/provisional/lanes/ty26-w1.md`) and C-SCHED-36 (Form 4952, assigned to no
+lane).
 
 Priority forms first (proposals drafted in `forms-proposed/`): C-PRI-01 to -08 (Form 1040: line 12f, 13a/13b, 24a–24c
 and Form 1062, 32a–32c and Schedule 3-A, the ACTC box), C-PRI-13 to -18 (Schedule A: SALT amounts, line 8d, the
@@ -96,7 +113,7 @@ remaining wording-only entries last.
   those resting on the final Schedule C, Schedule SE and its instructions, Form 4952, Form 1095-A, the 1099-R and W-2
   instructions, Rev. Procs. 2025-32, 2025-19, 2025-25 and 2026-15, Notices 2025-67 and 2026-10, IRB 2026-29 and
   Public Law 119-21). The corrections in `changes.verification.md` apply first.
-- **Parameters**: the 70 with `source: draft` in `params-2026.proposed.yaml` (from Schedules 1-A, 8812, A, D, Forms
+- **Parameters**: the 75 with `source: draft` in `params-2026.proposed.yaml` (the 70 first staged came from Schedules 1-A, 8812, A, D, Forms
   8863, 2441, 8959, 8995, 8880, 5329, 8962, 8889 and the instructions for 8889, 1040-SC, 8606, 2441, 8960, 1116, 1095-A,
   5329, and Pub. 590-B). Also the Tax Computation Worksheet rows taken from the rate tables (confirm against the
   worksheet), the EIC limits taken from Rev. Proc. 2025-32 (confirm against the Form 1040 instructions' EIC steps), and
@@ -104,9 +121,10 @@ remaining wording-only entries last.
   in Rev. Proc. 2025-32 (C-SCHED-30; confirmed by the final Rev. Proc. p. 22, so not a draft error). The dependent
   care exclusion: the final W-2 instructions (p. 19) still print "$5,000 exclusion" against the Form 2441 draft's
   $7,500 (C-CRED-11).
-- **Proposed definitions**: all of `forms-proposed/` (Form 1040 and Schedule 3-A rest on drafts; Schedule A on a
-  draft and the statute; the W-2 codes on the final instructions; the mileage split on final guidance, with its
-  layout from the draft Schedule C instructions).
+- **Operations**: the 122 entries of `changes/2026/` marked `verified: draft`, among them those from
+  `forms-proposed/` (Form 1040 and Schedule 3-A rest on drafts; Schedule A on a draft and the statute; the W-2
+  codes on the final instructions; the mileage split on final guidance, with its layout from the draft Schedule C
+  instructions).
 - **Statute-sourced rules** (decisions 2 and 6): the 0.5% charitable floor (C-PRI-15; `sa.gift_floor`,
   `amb.2026.gift_floor_base`) against the 2026 Schedule A instructions' Charitable Contribution Limitation Worksheet;
   C-LAW-01 (hazardous duty areas) and C-LAW-02 (AMT) against the 2026 Form 1040 instructions; and every entry the statute
@@ -121,7 +139,9 @@ The 2026 Instructions for Form 1040 (`i1040gi`: 937 kind (b) items and 60 parame
 8962; Publications 334, 463, 501, 502, 504, 525, 526, 527, 550, 560, 561, 587, 590-A, 925, 946, 969, 970, 974; the HTML
 editions of the instructions; final regulations on car loan interest (`fr-2025-24154` was proposed); 2026 guidance on
 overtime methods (the 2025 `n-25-69`); the U.S. Code 2025 edition (not on GovInfo on 2026-11-04). Full list:
-`reports/2026/archive_refresh_2026-11-04.md` section 7.
+`reports/2026/archive_refresh_2026-11-04.md` section 7. Since archived as drafts (refresh of 2026-11-14): the
+instructions for Form 8962 and Form 8582, and Publications 525, 590-A and 925; none of the gating documents
+(i1040gi, i1040sca, i1040sd, i8949, i8995a, i4562, Publications 463, 501, 526, 560, 946, 970) had posted.
 
 ## Questions for the owner, and the owner's decisions (2026-11-04)
 

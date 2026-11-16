@@ -1572,7 +1572,7 @@ form:
         locator: 'p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"'
     - id: household.joint_unmarried
       printed: (helper)
-      label: Filing jointly, not married at the end of 2025, and no spouse who died in 2025
+      label: Not married at the end of 2025, and no spouse who died in 2025 (read for a joint or a separate return)
       type: Bool
       expr:
         op: choose
@@ -1632,7 +1632,7 @@ form:
             eq:
             - f1040.status
             - const: mfs
-          then: household.no
+          then: household.joint_unmarried
         - guard:
             op: test
             eq:
@@ -1647,4 +1647,149 @@ form:
           then: household.no
       cite:
         doc: i1040gi
-        locator: 'p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."'
+        locator: 'p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."; p. 14, Married Filing Separately, "if you are married at the end of 2025 and file a separate return"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."'
+    - id: household.mfs
+      printed: (helper)
+      type: Bool
+      label: Filing status married filing separately
+      expr:
+        op: test
+        eq:
+        - f1040.status
+        - const: mfs
+      cite:
+        doc: i1040gi
+        locator: 'p. 14, Married Filing Separately, "Check the “Married filing separately” box in the Filing Status section on page 1 of Form 1040 or 1040-SR if you are married at the end of 2025 and file a separate return"'
+    - id: household.mfs_spouse_notice
+      printed: (helper)
+      type: Bool
+      label: 'Notice: on a married filing separately return, enter your spouse''s name in the entry space beside the box,
+        and your spouse''s SSN or ITIN in the space for the spouse''s SSN ("NRA" if your spouse has none and needs none)'
+      expr:
+        op: copy
+        from: household.mfs
+      cite:
+        doc: i1040gi
+        locator: 'p. 14, Married Filing Separately, "Enter your spouse’s name in the entry space. Be sure to enter your spouse’s SSN or ITIN in the space for spouse’s SSN on Form 1040 or 1040-SR. If your spouse doesn’t have and isn’t required to have an SSN or ITIN, enter “NRA” in the entry space."'
+    - id: household.mfs_living
+      printed: (helper)
+      gated_by: household.mfs_living_if_mfs
+      type: Enum(mfs_living)
+      label: 'Married filing separately: when you lived with your spouse in 2025 (together_late: at some time from July
+        through December; apart_last6: only before July; apart_all_year: not at any time)'
+      expr:
+        op: input
+        source: 'Married filing separately: did you live with your spouse at any time in 2025? together_late if you lived
+          together at some time from July 1 through December 31, 2025; apart_last6 if you lived together only before
+          July 1, 2025; apart_all_year if you did not live together at any time in 2025. A temporary absence for special
+          circumstances, such as business, medical care, school or military service, counts as time lived together.'
+      cite:
+        doc: i1040gi
+        locator: 'p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025. Temporary absences for special circumstances, such as for business, medical care, school, or military service, count as time lived in the home"; p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025"; p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"'
+      ambiguity: amb.2025.mfs_lived_apart
+    - id: household.mfs_living_else
+      printed: (helper)
+      type: Enum(mfs_living)
+      label: Year parameter household.mfs_living_else (together_late)
+      expr:
+        op: param
+        ref: household.mfs_living_else
+      cite:
+        doc: i1040gi
+        locator: 'p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025"'
+    - id: household.mfs_living_if_mfs
+      printed: (helper)
+      type: Enum(mfs_living)
+      label: 'When you lived with your spouse in 2025, asked only on a married filing separately return (together_late
+        otherwise, so that neither lived-apart test is met)'
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - household.mfs
+            - const: true
+          then: household.mfs_living
+        - guard:
+            op: test
+            eq:
+            - household.mfs
+            - const: false
+          then: household.mfs_living_else
+      cite:
+        doc: i1040gi
+        locator: 'p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"; p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025"'
+    - id: household.mfs_apart_all_year
+      printed: (helper)
+      type: Bool
+      label: Married filing separately, and you lived apart from your spouse for all of 2025
+      expr:
+        op: test
+        eq:
+        - household.mfs_living_if_mfs
+        - const: apart_all_year
+      cite:
+        doc: i1040gi
+        locator: 'p. 31, Line 6d, "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 6d"; p. 97, IRA Deduction Worksheet—Schedule 1, Line 20, line 2, "married filing separately and you lived apart from your spouse for all of 2025, enter $89,000"'
+      ambiguity: amb.2025.mfs_lived_apart
+    - id: household.mfs_apart_last6
+      printed: (helper)
+      type: Bool
+      label: Married filing separately, and your spouse did not live with you at any time in the last 6 months of 2025
+      expr:
+        op: test
+        any:
+        - op: test
+          eq:
+          - household.mfs_living_if_mfs
+          - const: apart_last6
+        - op: test
+          eq:
+          - household.mfs_living_if_mfs
+          - const: apart_all_year
+      cite:
+        doc: i1040gi
+        locator: 'p. 15, Married persons who live apart, "You lived apart from your spouse for the last 6 months of 2025"; p. 44, Special rule for separated spouses, "You lived apart from your spouse for the last 6 months of 2025"'
+      ambiguity: amb.2025.mfs_lived_apart
+    - id: household.mfs_community_property
+      printed: (gate)
+      type: Bool
+      label: Married filing separately, and you lived in a community property state at some time in 2025
+      expr:
+        op: choose
+        alternatives:
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: single
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfj
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: mfs
+          then: household.community_property
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: hoh
+          then: household.no
+        - guard:
+            op: test
+            eq:
+            - f1040.status
+            - const: qss
+          then: household.no
+      cite:
+        doc: i1040gi
+        locator: 'p. 14, Married Filing Separately, "Different rules apply to people in community property states; see Pub. 555"; p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income"'
+      ambiguity: amb.2025.mfs_community_property

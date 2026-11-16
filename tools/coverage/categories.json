@@ -59,7 +59,7 @@
    "id": "mfs",
    "group": "married",
    "gates": [
-    "s3.mfs"
+    "household.mfs_community_property"
    ],
    "label": "Married filing separately",
    "micro": {
@@ -253,10 +253,9 @@
   {
    "id": "rental_royalty",
    "group": "schedule_e",
-   "gates": [
-    "scope.schedule1"
-   ],
-   "label": "Rental and royalty income or loss",
+   "gates": [],
+   "refused": false,
+   "label": "Rental and royalty income or loss (supported since lane x1-sche; its remaining refusals are unmeasured gates)",
    "micro": {
     "nonzero": [
      "rental_income"
@@ -746,10 +745,9 @@
   {
    "id": "dependent_filer",
    "group": "dependent_filer",
-   "gates": [
-    "sa.dependent"
-   ],
-   "label": "Returns of filers who can be claimed as a dependent (SOI Table 1.7 dependent returns)",
+   "gates": [],
+   "refused": false,
+   "label": "Returns of filers who can be claimed as a dependent (SOI Table 1.7 dependent returns; supported since lane x2-dep; its remaining refusals are unmeasured gates)",
    "irs": {
     "combine": "sum",
     "cells": [

@@ -1,0 +1,219 @@
+tax_year: 2025
+part: Schedules K-1 from estates and trusts
+profile: full
+sets:
+  one_heir:
+    says: One person with one Schedule K-1 (Form 1041), whose boxes 9 to 12 are blank.
+    answers:
+      scope.k1: true
+      $k1e@person[taxpayer]:
+      - e1
+      person[taxpayer].k1e[e1].box9_any: false
+      person[taxpayer].k1e[e1].box10_any: false
+      person[taxpayer].k1e[e1].box11_any: false
+      person[taxpayer].k1e[e1].box12_any: false
+rows:
+- id: k1e.portfolio_heir
+  design: scout-k1 FK8 (estate K-1, portfolio items)
+  situation: An heir's Schedule K-1 from an estate shows interest, dividends and a long-term capital gain.
+  uses:
+  - one_heir
+  answers:
+    person[taxpayer].k1e[e1].interest_any: true
+    person[taxpayer].k1e[e1].dividends_any: true
+    person[taxpayer].k1e[e1].gains_any: true
+    person[taxpayer].k1e[e1].other_any: false
+    person[taxpayer].k1e[e1].business_any: false
+    person[taxpayer].k1e[e1].codes_any: false
+    person[taxpayer].k1e[e1].box1: 40000
+    person[taxpayer].k1e[e1].box2a: 60000
+    person[taxpayer].k1e[e1].box2b: 50000
+    person[taxpayer].k1e[e1].box3: 0
+    person[taxpayer].k1e[e1].box4a: 500000
+    person[taxpayer].k1e[e1].box4b: 0
+    person[taxpayer].k1e[e1].box4c: 0
+  expect:
+    proceeds:
+      person[taxpayer].k1e[e1].box4a: 500000
+    not_asked:
+    - person[taxpayer].k1e[e1].material
+    - person[taxpayer].k1e[e1].box13a
+- id: k1e.trust_business_passive
+  design: scout-k1 FK9 (trust K-1, box 5 and box 6, no participation)
+  situation: A trust's beneficiary gets a Schedule K-1 with royalties in box 5 and business income in box 6 from a business
+    she never worked in.
+  uses:
+  - one_heir
+  answers:
+    person[taxpayer].k1e[e1].interest_any: false
+    person[taxpayer].k1e[e1].dividends_any: false
+    person[taxpayer].k1e[e1].gains_any: false
+    person[taxpayer].k1e[e1].other_any: true
+    person[taxpayer].k1e[e1].business_any: true
+    person[taxpayer].k1e[e1].codes_any: false
+    person[taxpayer].k1e[e1].box5: 300000
+    person[taxpayer].k1e[e1].box6: 200000
+    person[taxpayer].k1e[e1].box7: 0
+    person[taxpayer].k1e[e1].box8: 0
+    person[taxpayer].k1e[e1].material: false
+  expect:
+    proceeds:
+      person[taxpayer].k1e[e1].material: false
+- id: k1e.codes_estimated_tax
+  design: scout-k1 K13 (box 13 code A, box 14 codes A and I)
+  situation: A trust credits its estimated tax payment to the beneficiary and reports tax-exempt interest and qualified business
+    income on the K-1.
+  uses:
+  - one_heir
+  answers:
+    person[taxpayer].k1e[e1].interest_any: false
+    person[taxpayer].k1e[e1].dividends_any: false
+    person[taxpayer].k1e[e1].gains_any: false
+    person[taxpayer].k1e[e1].other_any: false
+    person[taxpayer].k1e[e1].business_any: true
+    person[taxpayer].k1e[e1].codes_any: true
+    person[taxpayer].k1e[e1].box6: 400000
+    person[taxpayer].k1e[e1].box7: 0
+    person[taxpayer].k1e[e1].box8: 0
+    person[taxpayer].k1e[e1].material: false
+    person[taxpayer].k1e[e1].c13a_any: true
+    person[taxpayer].k1e[e1].c13b_any: false
+    person[taxpayer].k1e[e1].c14a_any: true
+    person[taxpayer].k1e[e1].c14h_any: false
+    person[taxpayer].k1e[e1].c14i_any: true
+    person[taxpayer].k1e[e1].other_codes: false
+    person[taxpayer].k1e[e1].box13a: 100000
+    person[taxpayer].k1e[e1].box14a: 20000
+    person[taxpayer].k1e[e1].qbi_stmt: 400000
+    person[taxpayer].k1e[e1].reit_stmt: 0
+    person[taxpayer].k1e[e1].qbi_other: false
+  expect:
+    proceeds:
+      person[taxpayer].k1e[e1].box13a: 100000
+- id: k1e.box9
+  design: scout-k1 R-K23 (box 9)
+  situation: A trust's K-1 passes depreciation through to the beneficiary in box 9.
+  answers:
+    scope.k1: true
+    $k1e@person[taxpayer]:
+    - e1
+    person[taxpayer].k1e[e1].box9_any: true
+  expect:
+    refused: person[taxpayer].k1e[e1].box9_any
+- id: k1e.box10
+  design: scout-k1 R-K23 (box 10)
+  situation: An heir who received income the person who died had earned is given an estate tax deduction in box 10.
+  answers:
+    scope.k1: true
+    $k1e@person[taxpayer]:
+    - e1
+    person[taxpayer].k1e[e1].box9_any: false
+    person[taxpayer].k1e[e1].box10_any: true
+  expect:
+    refused: person[taxpayer].k1e[e1].box10_any
+- id: k1e.box11_final_year
+  design: scout-k1 R-K23 (box 11, final year)
+  situation: The last Schedule K-1 of a closed estate shows excess deductions in box 11.
+  answers:
+    scope.k1: true
+    $k1e@person[taxpayer]:
+    - e1
+    person[taxpayer].k1e[e1].box9_any: false
+    person[taxpayer].k1e[e1].box10_any: false
+    person[taxpayer].k1e[e1].box11_any: true
+  expect:
+    refused: person[taxpayer].k1e[e1].box11_any
+- id: k1e.box12_amt
+  design: scout-k1 R-K14 (box 12)
+  situation: A trust's K-1 shows an alternative minimum tax adjustment in box 12.
+  answers:
+    scope.k1: true
+    $k1e@person[taxpayer]:
+    - e1
+    person[taxpayer].k1e[e1].box9_any: false
+    person[taxpayer].k1e[e1].box10_any: false
+    person[taxpayer].k1e[e1].box11_any: false
+    person[taxpayer].k1e[e1].box12_any: true
+  expect:
+    refused: person[taxpayer].k1e[e1].box12_any
+- id: k1e.rental_loss
+  design: scout-k1 R-K23 (a loss in boxes 6 to 8)
+  situation: A trust's K-1 shows a rental real estate loss in box 7.
+  uses:
+  - one_heir
+  answers:
+    person[taxpayer].k1e[e1].interest_any: false
+    person[taxpayer].k1e[e1].dividends_any: false
+    person[taxpayer].k1e[e1].gains_any: false
+    person[taxpayer].k1e[e1].other_any: false
+    person[taxpayer].k1e[e1].business_any: true
+    person[taxpayer].k1e[e1].codes_any: false
+    person[taxpayer].k1e[e1].box6: 0
+    person[taxpayer].k1e[e1].box7: -100000
+  expect:
+    refused: person[taxpayer].k1e[e1].loss
+- id: k1e.foreign_taxes
+  design: scout-k1 R-K3 (box 14 code B) and R-K23 (other codes)
+  situation: A trust's K-1 shows foreign taxes paid, box 14 code B.
+  uses:
+  - one_heir
+  answers:
+    person[taxpayer].k1e[e1].interest_any: false
+    person[taxpayer].k1e[e1].dividends_any: false
+    person[taxpayer].k1e[e1].gains_any: false
+    person[taxpayer].k1e[e1].other_any: false
+    person[taxpayer].k1e[e1].business_any: false
+    person[taxpayer].k1e[e1].codes_any: true
+    person[taxpayer].k1e[e1].c13a_any: false
+    person[taxpayer].k1e[e1].c13b_any: false
+    person[taxpayer].k1e[e1].c14a_any: false
+    person[taxpayer].k1e[e1].c14h_any: false
+    person[taxpayer].k1e[e1].c14i_any: false
+    person[taxpayer].k1e[e1].other_codes: true
+  expect:
+    refused: person[taxpayer].k1e[e1].other_codes_if_codes
+- id: k1e.nii_negative
+  design: lane x2-k1e (box 14 code H negative)
+  situation: A trust's K-1 lowers the beneficiary's net investment income with a negative code H adjustment.
+  uses:
+  - one_heir
+  answers:
+    person[taxpayer].k1e[e1].interest_any: true
+    person[taxpayer].k1e[e1].dividends_any: false
+    person[taxpayer].k1e[e1].gains_any: false
+    person[taxpayer].k1e[e1].other_any: false
+    person[taxpayer].k1e[e1].business_any: false
+    person[taxpayer].k1e[e1].codes_any: true
+    person[taxpayer].k1e[e1].box1: 50000
+    person[taxpayer].k1e[e1].c13a_any: false
+    person[taxpayer].k1e[e1].c13b_any: false
+    person[taxpayer].k1e[e1].c14a_any: false
+    person[taxpayer].k1e[e1].c14h_any: true
+    person[taxpayer].k1e[e1].c14i_any: false
+    person[taxpayer].k1e[e1].other_codes: false
+    person[taxpayer].k1e[e1].box14h: -20000
+  expect:
+    refused: person[taxpayer].k1e[e1].h_negative
+- id: k1e.qbi_ptp
+  design: lane x2-k1e (box 14 code I with PTP income)
+  situation: A trust's section 199A statement reports income from a publicly traded partnership.
+  uses:
+  - one_heir
+  answers:
+    person[taxpayer].k1e[e1].interest_any: false
+    person[taxpayer].k1e[e1].dividends_any: false
+    person[taxpayer].k1e[e1].gains_any: false
+    person[taxpayer].k1e[e1].other_any: false
+    person[taxpayer].k1e[e1].business_any: false
+    person[taxpayer].k1e[e1].codes_any: true
+    person[taxpayer].k1e[e1].c13a_any: false
+    person[taxpayer].k1e[e1].c13b_any: false
+    person[taxpayer].k1e[e1].c14a_any: false
+    person[taxpayer].k1e[e1].c14h_any: false
+    person[taxpayer].k1e[e1].c14i_any: true
+    person[taxpayer].k1e[e1].other_codes: false
+    person[taxpayer].k1e[e1].qbi_stmt: 0
+    person[taxpayer].k1e[e1].reit_stmt: 0
+    person[taxpayer].k1e[e1].qbi_other: true
+  expect:
+    refused: person[taxpayer].k1e[e1].qbi_other_if_14i

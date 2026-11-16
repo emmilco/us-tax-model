@@ -1,0 +1,19 @@
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index cf4ce47..de5ce23 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -3928,10 +3928,10 @@ bank:
+     order: 159
+     seq: 1
+     help: 'Yes: paid in crypto, staking or mining rewards, new coins from a fork or airdrop, or selling, swapping, spending
+-      or giving it away. No: buying it with dollars, holding it, getting it as a gift, or moving it between your own
+-      wallets.'
+-    prompt: In 2025, did you (or, on a joint return, your spouse) get crypto or another digital asset as pay or a reward, or
+-      sell, trade, spend or give any away?
++      or giving it away. No: buying it with dollars, holding it, getting it as a gift or an inheritance, or moving it
++      between your own wallets.'
++    prompt: In 2025, did you (or, on a joint return, your spouse) get crypto or another digital asset as pay, a reward or new
++      coins, or sell, trade, spend or give any away?
+   - input: s1.digital_income
+     order: 159
+     seq: 2

@@ -1,0 +1,656 @@
+2026
+Instructions for Form
+1099-DA
+Digital Asset Proceeds From Broker Transactions
+Section references are to the Internal Revenue Code            broker has effected for customers after 2025 of digital
+unless otherwise noted.                                        assets that are noncovered securities, the broker is not
+                                                               required to report basis information. However, the broker
+Future Developments                                            may voluntarily report this information and will not be
+For the latest information about developments related to       subject to penalties under section 6721 or 6722 for failure
+Form 1099-DA and its instructions, such as legislation         to report or furnish the information correctly if the broker
+enacted after they were published, go to IRS.gov/              checks box 9 to indicate that the digital assets are
+Form1099DA.                                                    noncovered securities.
+  For further guidance, taxpayers may refer to Treasury        Brokers. A broker includes any person who, in the
+Decision 10000, published July 9, 2024.                        ordinary course of a trade or business, stands ready to
+   You can get Pub. 1099, General Instructions for Certain     effect sales of digital assets to be made by others.
+Information Returns at IRS.gov/1099GeneralInstructions.           You are considered a broker with respect to sales of
+                                                               digital assets if:
+Reminders                                                      • You are a person that regularly offers to redeem digital
+In addition to these specific instructions, you should also    assets that were created or issued by you, or
+use the current Pub. 1099. Those general instructions          • You effect dispositions of customers’ digital assets as
+include information about the following topics.                an agent, a dealer, or digital asset middleman.
+• Who must file.                                                  Generally, only a U.S. digital asset broker is required to
+• When and where to file.                                      report on Form 1099-DA. A U.S. digital asset broker is a
+• Electronic reporting.                                        U.S. person (other than a foreign branch or office of such
+• Corrected and void returns.                                  person), or a U.S. branch described in Regulations
+• Statements to recipients.                                    section 1.1441-1(b)(2)(iv) that is treated as a U.S. person
+• Taxpayer identification numbers (TINs).                      (excluding a territory financial institution) that effects sales
+• Backup withholding.                                          of digital assets on behalf of others. See Regulations
+• Penalties.                                                   section 1.6045-1(g)(4)(i)(A). See Widely held fixed
+• Other general topics.                                        investment trusts (WHFITs), later, for rules specific to
+Online fillable copies. To ease statement furnishing           WHFIT reporting.
+requirements, Copies B, 1, and 2 are fillable online in a      Closing transactions. In the case of a digital asset that
+PDF format available at IRS.gov/Form1099DA. You can            is also an option, regulated futures contract, securities
+complete these copies online for furnishing statements to      futures contract, or forward contract, a sale includes any
+recipients and for retaining in your own files.                closing transaction. A closing transaction is a lapse,
+                                                               expiration, settlement, abandonment, or other termination
+General Instructions                                           of a position (which includes a right or an obligation under
+                                                               a forward contract, a regulated futures contract, a
+2026 and beyond—Mandatory reporting of gross pro-              securities futures contract, or an option).
+ceeds for all digital assets, mandatory reporting of
+                                                               Covered security. For purposes of Form 1099-DA, a
+basis information for digital assets that are covered
+                                                               covered security is a digital asset acquired after 2025 for
+securities, and voluntary reporting of basis informa-
+                                                               cash, stored-value cards, different digital assets, or any
+tion for digital assets that are noncovered securities.
+                                                               property or services the disposition of which the broker is
+For each sale a broker has effected for customers after
+                                                               required to report in an account for which the broker
+2025 of digital assets, the broker must complete Form
+                                                               provided custodial services. A digital asset is a covered
+1099-DA, as described in For sales effected after 2025.
+                                                               security only if it was acquired in an account for which the
+   For sales of digital assets that are qualifying             broker provided custodial services and was held in that
+stablecoins or specified nonfungible tokens (NFTs) a           account until the broker effects the disposition of the
+broker has effected for customers after 2025, and for          digital asset. Acquiring a digital asset includes granting an
+which a broker is using the Optional reporting methods,        option and entering into a forward contract.
+the broker is not required to report basis and certain other
+information.                                                   Digital asset. A digital asset is any digital representation
+                                                               of value that is recorded on a cryptographically secured
+   For sales a broker has effected for customers after         distributed ledger (such as a blockchain or any similar
+2025 of digital assets that are covered securities, the        technology) without regard to whether each individual
+broker is required to report basis information. For sales a
+                                Instructions for Form 1099-DA (2026) Catalog Number 73597W
+Feb 18, 2026                  Department of the Treasury Internal Revenue Service www.irs.gov
+transaction involving that digital asset is actually recorded     • The digital asset uses an effective stabilization
+on that distributed ledger, and that is not cash (that is, U.S.   mechanism. See Regulations section 1.6045-1(d)(10)(ii)
+dollars or any convertible foreign currency issued by a           (B); and
+government or central bank). See Qualifying stablecoin            • The digital asset is generally accepted as payment by
+and Specified NFT, later, for a description of digital assets     persons other than the issuer. See Regulations sections
+that are qualifying stablecoins or specified NFTs.                1.6045-1(d)(10)(ii)(A) through (C).
+Digital asset middleman. You are a digital asset                    Designated sale of qualifying stablecoin. A
+middleman if:                                                     designated sale of a qualifying stablecoin is any sale of a
+• You accept or process digital assets as payment for             qualifying stablecoin other than a sale of a qualifying
+stock, commodities, regulated futures contracts, securities       stablecoin in exchange for different digital assets that are
+futures contracts, forwards contracts, foreign currency           not qualifying stablecoins. In addition, a designated sale
+contracts, debt instruments, options, or securities futures       of a qualifying stablecoin includes any sale of a qualifying
+contracts;                                                        stablecoin that provides for the delivery of a qualifying
+• You are a real estate reporting person with actual              stablecoin pursuant to the settlement of any executory
+knowledge or ordinarily would know that digital assets            contract that would be treated as a designated sale of the
+were used by the real estate buyer to make payment;               qualifying digital asset if the contract had not been
+• You accept digital assets as payment for broker                 executory.
+services;                                                         Sale. A sale of digital assets effected by a broker on
+• You own or operate one or more digital asset kiosks; or         behalf of another person includes:
+• You are a processor of digital asset payments, provided         • The disposition of digital assets in exchange for cash,
+you have actual knowledge or ordinarily would know the            stored-value cards, different digital assets, or services
+nature of the transaction and the gross proceeds                  provided by the broker;
+therefrom.                                                        • The disposition of digital assets to pay for securities,
+   You are not a digital asset middleman if:                      commodities, options, regulated futures contracts,
+• You are solely engaged in providing proof-of-work or            securities futures contracts, or forward contracts acquired
+proof-of-stake distributed ledger validation services,            through the broker;
+without providing other functions or services, or                 • The delivery of digital assets pursuant to the settlement
+• You only provide hardware or software (by sale, license,        of a forward contract, option, regulated futures contract,
+or otherwise) that permits users to control private keys to       any similar instrument, or any other executory contract
+access digital assets on a distributed ledger, without            which would be described in the previous bullet if the
+providing other functions or services.                            contract had not been executory;
+  Processor of digital asset payments. A processor of             • For brokers that are real estate reporting persons, the
+digital asset payments is a broker who regularly facilitates      disposition of digital assets in exchange for real property
+payments from one party to a second party by receiving            and services; and
+digital assets from the first party and paying those digital      • For brokers that are processors of digital asset
+assets, cash, or different digital assets to a second party,      payments, the payment of a digital asset by one party to a
+provided the transaction is not otherwise a sale under            processor of digital asset payments in return for the
+Regulations sections 1.6045-1(a)(9)(ii)(A) through (C).           payment of that digital asset, cash, or a different digital
+                                                                  asset to a second party (PDAP sale). See De minimis rule
+Noncovered security. For purposes of Form 1099-DA,                for PDAP sales, later.
+a noncovered security is any digital asset that is not a
+covered security. The following digital assets are                Specified NFT. A digital asset is a specified NFT if the
+noncovered securities.                                            digital asset is indivisible, unique, and does not directly (or
+• Any digital asset that the broker did not provide               indirectly) provide the holder with an interest in certain
+custodial services for when it was acquired.                      excluded property. See Regulations section 1.6045-1(d)
+• A digital asset that was acquired before 2026.                  (10)(iv).
+• A digital asset that was transferred in to the broker           De minimis rules for certain sales. A broker is not
+providing custodial services.                                     required to report sales of digital assets on Form 1099-DA
+• A digital asset that, when acquired, would not be               if the sales fall within the following de minimis exceptions.
+subject to reporting on Form 1099-DA when later sold                  De minimis rule for PDAP sales. A broker that is a
+because it was acquired by an exempt recipient, as                processor of digital asset payments is not required to
+defined in Regulations section 1.6045-1(c)(3)(i), or by a         report PDAP sales effected for a customer if those PDAP
+person that is considered to be an exempt foreign person          sales are less than or equal to $600 for the year. However,
+under Regulations sections 1.6045-1(g)(1) and (4).                if a customer's PDAP sales exceed $600 for the year, all of
+• A digital asset for which reporting is required by              that customer's sales must be reported. In determining if
+Regulations section 1.6045-1(g)(4)(vi)(E) (certain                the $600 de minimis threshold has been met, the broker
+securities owned by a foreign intermediary or flow-through        should not include any sales that are excluded from
+entity).                                                          reporting under the optional reporting methods for
+Qualifying stablecoin. A digital asset is a qualifying            qualifying stablecoins or for specified NFTs. Accordingly, a
+stablecoin if it meets three conditions:                          broker that is a processor of digital asset payments may
+• The digital asset is designed to track on a one-to-one          apply the optional reporting rules for qualifying stablecoins
+basis a single convertible currency issued by a                   and for specified NFTs first, and then determine whether
+government or central bank (including the U.S. dollar);
+
+2                                                                                        Instructions for Form 1099-DA (2026)
+the remaining PDAP sales exceed the $600 de minimis              • Noncovered securities if you check box 9 when
+threshold. See Regulations section 1.6045-1(d)(2)(i)(C).         reporting their sale. If you choose to not check box 9,
+  De minimis rule for qualifying stablecoin sales. A             report the sale as a sale of a covered security.
+broker reporting under the optional reporting method for         • First sales by a creator or minter if you report sales of
+qualifying stablecoins is not required to report designated      specified NFTs using the optional reporting method for
+sales of qualifying stablecoins if the customer's aggregate      specified NFTs.
+gross proceeds (after reduction for the allocable digital        Optional reporting methods. A broker reporting sales
+asset transaction costs) from all designated sales of            of qualifying stablecoins using the optional reporting
+qualifying stablecoins effected by that broker do not            method for qualifying stablecoins is not required to report
+exceed $10,000 for the year. See Regulations section             non-designated sales of qualifying stablecoins. In
+1.6045-1(d)(10)(i).                                              addition, if a broker is using the optional reporting method
+  De minimis rule for specified NFTs. A broker                   for designated sales of qualifying stablecoins and the
+reporting sales of specified NFTs using the optional             customer's aggregate gross proceeds from all designated
+reporting method for specified NFTs is not required to           sales of qualifying stablecoins effected by that broker
+report sales of specified NFTs if the customer's aggregate       exceed the $10,000 de minimis rule for the year, the
+gross proceeds (after reduction for the allocable digital        broker must report a customer’s aggregate designated
+asset transaction costs) from all sales of specified NFTs        sale transactions for each type of qualifying stablecoin on
+do not exceed $600 for the year. See Regulations section         a separate Form 1099-DA. See De minimis rule for
+1.6045-1(d)(10)(iii)(B).                                         qualifying stablecoin sales, earlier. For example, if the
+General Reporting                                                broker effects designated sales of Qualifying Stablecoin A
+                                                                 and Qualifying Stablecoin B for a customer and the
+Amounts to report. Generally, report all amounts                 aggregate gross proceeds of those sales exceed $10,000,
+attributable to a sale of digital assets you effect as a         the broker must report the customer's designated sales of
+broker on Form 1099-DA. However, a broker is not                 Qualifying Stablecoin A on one Form 1099-DA and the
+required to report amounts attributable to a sale of digital     customer's designated sales of Qualifying Stablecoin B on
+assets if an applicable de minimis rule applies. If a de         a separate Form 1099-DA.
+minimis rule does not apply, all amounts attributable to the         If a broker is using the optional reporting method for
+sale must be reported in accordance with the applicable          sales of specified NFTs and the $600 de minimis rule for
+reporting rules. For de minimis rules applicable to              such sales does not apply, the broker must report all of a
+processors of digital asset payments, qualifying                 customer's specified NFT transactions together on a
+stablecoins, and specified NFTs, see De minimis rules for        single Form 1099-DA. See De minimis rule for specified
+certain sales, earlier.                                          NFTs, earlier.
+   For brokers using an optional method for reporting                A broker reporting sales of specified NFTs using the
+sales of qualifying stablecoins and specified NFTs, see          optional reporting method for specified NFTs may report
+Optional reporting methods, later.                               all of a customer's specified NFT transactions together on
+    Generally, you should report each transaction on a           a single Form 1099-DA, unless the broker is reporting both
+separate Form 1099-DA. However, in the case of a                 gross proceeds attributable to first sales by a creator or
+disposition of digital assets in exchange for services           minter and gross proceeds attributable to specified NFT
+provided by the broker (broker fee), the broker may              sales that are not first sales.
+combine the reporting of the transaction to pay for broker           A broker reporting sales of specified NFTs using the
+fees with the underlying transaction for which the broker        optional reporting method for specified NFTs is required to
+fee was charged if the broker fee is paid using the digital      file two Forms 1099-DA if it is reporting aggregate gross
+asset disposed in the underlying transaction. For example,       proceeds attributable to first sales by a creator or minter
+if a broker effects on behalf of a customer the sale of 1 unit   and aggregate gross proceeds attributable to specified
+of Digital Asset A for ten units of Digital Asset B (charging    NFT sales that are not first sales. File one Form 1099-DA
+0.1 units of Digital Asset A for the broker's services), the     to report the specified NFT sales attributable to first sales
+broker may file one Form 1099-DA to report the                   and file another Form 1099-DA to report specified NFT
+customer's sale of 1.1 units of Digital Asset A. The broker      sales that are not attributable to first sales.
+may not combine the reporting of a transaction to pay for
+broker fees with the underlying transaction for which the            A broker reporting sales using an optional method is
+broker fee was charged if the broker fee is paid in a digital    not required to report acquisition dates or basis amounts,
+asset other than the digital asset disposed in the               even if the digital assets are covered securities.
+underlying transaction.                                              A broker reporting sales of digital assets using an
+                                                                 optional method for reporting sales of qualifying
+How many transactions to report on each form.                    stablecoins or specified NFTs must complete all
+Report each transaction on a separate Form 1099-DA.              unnumbered boxes on Form 1099-DA except the CUSIP
+How many forms to file for each transaction. Report              (Committee on Uniform Security Identification
+sales of each of the following types of digital assets on a      Procedures) number box, which may be left blank if there
+separate Form 1099-DA, even if all four types were sold in       is no applicable number. Additionally,
+a single transaction.                                            • A broker reporting sales of qualifying stablecoins using
+• Covered securities (defined earlier) with short-term gain      the optional reporting method for qualifying stablecoins
+or loss.                                                         may leave boxes 1d, 1e, 1g, 1h, 1i, 2, 3a, 3b, 5, 6, 8, 9,
+• Covered securities with long-term gain or loss.                12a, and 12b blank.
+
+Instructions for Form 1099-DA (2026)                                                                                           3
+• A broker reporting sales of specified NFTs using the          covered security. If you check box 9 for a sale of a digital
+optional reporting method of specified NFTs may leave           asset that is a noncovered security, you do not have to
+boxes 1d, 1e, 1g, 1h, 1i, 2, 3a, 3b, 5, 6, 8, 9, 12a, and 12b   complete boxes 1d, 1g, 1h, 1i, and 6, and you do not have
+blank.                                                          to check box 2.
+• For sales of qualifying stablecoins reported using the        • If you check box 9 and choose to complete boxes 1d,
+optional reporting method for qualifying stablecoins, enter     1g, 1h (if applicable), 1i (if applicable), 2, and 6 for a
+the total gross proceeds for all designated sales of the        noncovered security voluntarily, you are not subject to
+qualifying stablecoin reported on this form in box 1f.          penalties under section 6721 or 6722 for failure to report
+• For reporting sales of specified NFTs that are not            or furnish this information correctly. If you do not check
+attributable to first sales using the optional reporting        box 9, you are subject to penalties under sections 6721
+method, enter the total aggregate gross proceeds from all       and 6722 for failure to report or furnish the information in
+sales of the specified NFTs, other than the amount of           boxes 1d, 1g, 1h (if applicable), 1i (if applicable), 2, and 6
+aggregate gross proceeds attributable to first sales by a       correctly even if you are reporting the sale of a
+creator or minter, in box 1f.                                   noncovered security.
+• For reporting sales of specified NFTs that are                   Example for reporting of sales effected after 2025.
+attributable to first sales by a creator or minter using the    You are a broker that provides custodial services. Using
+optional reporting method for specified NFTs, enter the         your services, customer Bill bought units of digital asset
+total aggregate gross proceeds from these first sales in        ABC in April 2022, April 2026, and August 2026. The
+box 11c and leave box 1f blank.                                 digital asset ABC units bought in 2026 are covered
+Substitute statements. Brokers that use substitute              securities. The digital asset ABC units bought in April
+statements may be able to report customer transactions          2022 are noncovered securities. In June 2027, Bill sells all
+(digital asset sales (Form 1099-DA), securities sales           of the digital asset ABC units in a single transaction. Even
+(Form 1099-B, Proceeds From Broker and Barter                   though the digital asset ABC units were sold in a single
+Exchange Transactions), interest earned (Forms                  transaction, report the sale on three separate 2027 Forms
+1099-INT, Interest Income, and 1099-OID, Original Issue         1099-DA: one for digital asset ABC units bought in August
+Discount), dividends (Form 1099-DIV, Dividends and              2026 with short-term gain or loss, one for digital asset
+Distributions), and foreign taxes paid (Forms 1099-DIV          ABC units bought in April 2026 with long-term gain or loss,
+and 1099-INT)) for the year on a single substitute              and a third for the digital asset ABC units bought in April
+statement. For details, see Pub. 1179, General Rules and        2022 (the noncovered securities). For the April 2022 units,
+Specifications for Substitute Forms 1096, 1098, 1099,           if you voluntarily report the basis information (that is, the
+5498, and Certain Other Information Returns, at IRS.gov/        information in boxes 1d, 1g, 1h (if applicable), 1i (if
+Pub1179, which provides the rules for substitute forms.         applicable), 2, and 6) of the noncovered securities and
+                                                                check box 9, you will not be subject to penalties under
+Information Required on the Form                                section 6721 or 6722 for failing to report or furnish this
+                                                                information correctly. Alternatively, if you voluntarily report
+1099-DA                                                         the basis information of the units bought in April 2022, you
+For sales effected after 2025. For sales of digital             may report the entire sale on only two separate 2027
+assets you effect as a broker for customers after 2025,         Forms 1099-DA by combining the report of the
+you must complete all unnumbered boxes on Form                  noncovered securities bought in April 2022 with the report
+1099-DA except the CUSIP number box, which may be left          of the covered securities bought in April 2026 (reporting
+blank if there is no applicable number. Additionally:           long-term gain or loss). If you combine this reporting,
+• Boxes 1a, 1b, and 1c must be completed.                       however, you may not check box 9, and you will be subject
+• Box 1e must be completed, except when you are                 to penalties under sections 6721 and 6722 for failure to
+reporting using an optional reporting method.                   report basis correctly even if you are reporting the sale of
+• Box 1f must be completed, except when box 11c is              a noncovered security.
+completed.                                                      Widely held fixed investment trusts (WHFITs). Report
+• Boxes 3b, 4, 5, 7, 8, 9, 14, 15, and 16 are completed         a disposition of digital assets held by the WHFIT. For
+only if applicable.                                             digital asset sales, trustees and middlemen must report
+• If the digital assets were sold because of the exercise of    the amount of non-pro rata partial principal payments (as
+an option, complete box 3a.                                     defined in Regulations section 1.671-5(b)(13)) and trust
+• If the digital asset(s) sold, exchanged, or otherwise         sales proceeds (as defined in Regulations section
+disposed of were transferred to a broker providing              1.671-5(b)(21)) attributable to a trust interest holder (TIH)
+custodial services, provide the number of units sold that       for the calendar year on Form 1099-DA or Form 1099-B.
+had been transferred to the broker in box 12a and the date
+                                                                   Report a disposition of an interest held by a TIH in a
+of transfer-in in box 12b.
+                                                                WHFIT, including a redemption of an interest held by a
+• If the digital asset sold, exchanged, or otherwise            TIH in a WHFIT, on Form 1099-B. If a WHFIT sells digital
+disposed of is a covered security and is not reported using
+                                                                assets in connection with a trust interest redemption, file
+an optional method, boxes 1d, 1g, 2, and 6 must be
+                                                                only one Form 1099 with respect to the redemption.
+completed, and boxes 1h and 1i must be completed if
+applicable.                                                        To determine the amount of each item of proceeds to
+• If the digital asset sold, exchanged, or otherwise            be reported on Form 1099-DA, see, generally, Regulations
+disposed of is a noncovered security, you may check             section 1.671-5. If the trustee provides WHFIT information
+box 9. Do not check box 9 if reporting the sale of a            using the safe harbor rules in Regulations section
+
+4                                                                                      Instructions for Form 1099-DA (2026)
+1.671-5(f)(1), the trustee or middleman must determine           the reporting for both, do not combine other transactions
+the amounts reported on Forms 1099 under Regulations             the customer may have had during the year with the
+section 1.671-5(f)(2).                                           reporting of the acquisition of control or change in capital
+   Check box 9 and leave boxes 1d, 1g, 1h, 1i, 2, and 6          structure. Also, in box 1g, report the total basis of the
+blank if:                                                        customer's digital assets. Do not enter an amount in
+• You are a broker reporting the sale of a digital asset         box 1g that is greater than the amount entered in box 1f.
+held by a WHFIT to the WHFIT trustee, or                         Foreign currency. If the purchase amount or sales
+• You are a trustee or middleman of a WHFIT reporting            proceeds are paid in foreign currency, you must report the
+non-pro rata partial principal payments and trust sale           amount of foreign currency in U.S. dollars. Generally, you
+proceeds for digital asset transactions to a TIH.                must determine the reportable amount (other than
+   Requirement to furnish a tax information statement            amounts representing accrued interest or original issue
+to TIH. A tax information statement that includes the            discount) as of the date you receive, credit, or make the
+information provided to the IRS on Form 1099-DA, as well         payment, whichever applies, at the spot rate or by
+as additional information identified in Regulations section      following a reasonable spot rate convention, such as a
+1.671-5(e), must be provided to TIHs. The written tax            month-end spot rate or a monthly average spot rate. When
+information statement furnished to the TIH for 2026 is due       reporting the purchase or sale of a digital asset traded on
+on or before March 15, 2027. The amount of an item of a          an established securities market in a foreign currency, you
+trust expense that is attributable to a TIH must be included     must determine the U.S. dollar amounts to be reported
+on the tax information statement provided to the TIH and         (other than amounts representing accrued interest or
+is not required to be included in box 5 on the Form              original interest discount) as the settlement date, at the
+1099-DIV. See Regulations section 1.671-5(e) for a               spot rate or by following a reasonable spot rate
+complete list of the items of information that must be           convention. See Regulations section 1.6045-1(d)(8).
+included in the statement to the TIH.                                Generally, payments of foreign currency amounts
+Acquisition of control or substantial change in capi-            representing accrued interest or original issue discount
+tal structure. File Form 1099-DA for each customer who           must be translated using the average rate for the interest
+received cash, stock, or other property from a corporation       accrual period, although certain customers may elect to
+that you know, or have reason to know based on readily           translate such amounts using the spot rate on the last day
+available information, must recognize gain under section         of the interest accrual period. See Regulations sections
+367(a) from the transfer of a digital asset that is also stock   1.988-2(b)(2) and 1.6045-1(n)(4)(v).
+to a foreign corporation in an acquisition of control or         Coordination with other broker reporting require-
+substantial change in capital structure reportable on Form       ments. If you have effected a sale of a digital asset that
+8806, Information Return for Acquisition of Control or           is also a security for which the Form 1099-B would be
+Substantial Change in Capital Structure. For more                required (dual classification asset), you should generally
+information, see Form 8806.                                      file Form 1099-DA and not Form 1099-B. There are three
+    Readily available information includes information from      exceptions to the requirement to report a sale of a dual
+a clearing organization, such as the Depository Trust            classification asset on a Form 1099-DA. See Regulations
+Company (DTC), or from information published on                  section 1.6045-1(c)(8).
+IRS.gov.                                                             1. For transactions involving dual classification assets
+    You are not required to file a second Form 1099-DA for       that constitute section 1256 contracts, including regulated
+a customer who received only cash for a digital asset that       futures contracts or section 1256 option contracts on
+is also stock transferred in an acquisition of control if you    digital assets, you should report the section 1256 contract
+report the cash as proceeds from a sale on another Form          transactions on an aggregate basis on Form 1099-B. In
+1099-DA. You are also not required to file Form 1099-DA          this case, you may either report all section 1256 contracts
+for a customer who is an exempt recipient (under                 on an aggregate basis on a single Form 1099-B or you
+Regulations section 1.6045-1(c)(3)(i) or 1.6043-4(b)(5)).        may use a separate Form 1099-B for each type of
+For a list of exempt recipients, see the Instructions for        contract. For more information, see the Instructions for
+Form 1099-CAP, Changes in Corporate Control and                  Form 1099-B. However, in the event delivery of the
+Capital Structure.                                               underlying digital asset is made with respect to a section
+    Enter in box 1f the aggregate amount of cash and the         1256 contract, which includes a regulated futures
+fair market value (FMV) of any digital assets, services, and     contract, a section 1256 option contract, or a section 1256
+other property received in exchange for digital assets held      foreign currency contract, report the delivery of the
+in your custody.                                                 underlying digital asset as a sale on Form 1099-DA.
+    In box 1b, show the name of the digital asset you held           2. For transactions involving dual classification assets
+that was exchanged.                                              that are digital assets solely because their sales are
+                                                                 cleared or settled on a limited-access regulated network,
+    Leave the other numbered boxes and the CUSIP
+                                                                 as described in Regulations section 1.6045-1(c)(8)(iii)(B),
+number box blank unless you are required to file a Form
+                                                                 you should file Form 1099-B and not Form 1099-DA. If the
+1099-DA to report proceeds you paid to the customer from
+                                                                 limited-access regulated network ceases to meet the
+the acquisition of control or substantial change in capital
+                                                                 requirements described in Regulations section
+structure and you choose to file and furnish one Form
+                                                                 1.6045-1(c)(8)(iii)(B), you may continue to file Form
+1099-DA for amounts reported under both Regulations
+                                                                 1099-B for transactions effected during the calendar year
+sections 1.6045-1 and 1.6045-3. If you choose to combine
+
+Instructions for Form 1099-DA (2026)                                                                                            5
+in which the limited-access regulated network ceases to          unless the sales are pursuant to a section 1256(g)(2)
+meet the requirements.                                           foreign currency contract or a regulated futures contract
+    3. For transactions involving dual classification assets     that requires delivery of that foreign currency.
+that are shares in money market funds, you should not file           5. Sales for exempt foreign persons, as defined in
+Form 1099-DA and you are not required to file, but may           Regulations section 1.6045-1(g)(4).
+file, Form 1099-B.                                                   6. Grants or purchases of options, purchases due to
+   Dual classification assets that are tokenized                 exercises of call options, or entering into contracts that
+securities. For transactions involving dual classification       require delivery of personal property or an interest therein.
+assets that are tokenized securities, you should file Form           7. Until the Treasury Department and IRS issue further
+1099-DA and not Form 1099-B. A tokenized security is a           guidance, Notice 2024-57 provides that brokers do not
+dual classification asset that provides the holder with an       have to file information returns on digital asset sales in the
+interest in another asset that is a security that is otherwise   following transactions:
+subject to reporting on Form 1099-B. Additionally, a                 a. Wrapping and unwrapping transactions;
+tokenized security is an asset, the offer and sale of which
+                                                                     b. Liquidity provider transactions;
+is registered with the U.S. Securities and Exchange
+Commission, other than as an asset treated as a security             c. Staking transactions;
+for securities law purposes solely as an investment                  d. Transactions described by digital asset market
+contract. See Regulations section 1.6045-1(c)(8)(i)(D).          participants as lending of digital assets;
+For transactions involving a tokenized security, enter the           e. Transactions described by digital asset market
+CUSIP number of the security or other applicable                 participants as short sales of digital assets; and
+identifying number; report the amount of accrued market
+discount, if applicable, in box 1h; report the loss                  f. Notional principal contract transactions.
+disallowed due to a wash sale, if applicable, in box 1i; and,       This reporting exception does not apply to rewards or
+if applicable, compute the average basis method if the           other compensation earned by participants in these
+customer elects that method or you choose the average            transactions.
+basis method as your default method and the customer
+does not give you any other instructions.                        Identifying a corporation. For sales of digital assets
+                                                                 that are covered securities (defined earlier) that were
+Rewards and staking payments. Do not report rewards
+                                                                 acquired after 2011, you cannot rely on Regulations
+and staking payments on Form 1099-DA.
+                                                                 section 1.6049-4(c)(1)(ii)(A) to tell whether a customer is a
+Partnership sale. Form 8308, Report of a Sale or                 corporation. However, for sales of all digital assets, you
+Exchange of Certain Partnership Interests, does not have         can treat a customer as an exempt recipient if one of the
+to be filed if, under section 6045, a return is required to be   following statements is true.
+filed by a broker on Form 1099-DA for the transfer of a              1. The name of the customer contains the term
+digital asset that represents the partnership interest.          “insurance company,” “indemnity company,” “reinsurance
+Exceptions. Brokers are not required to, but may, file           company,” or “assurance company.”
+Form 1099-DA for the following.                                      2. The name of the customer indicates it is an entity
+    1. Sales for exempt recipients, including the following.     listed as a corporation under Regulations section
+    a. Charitable organizations.                                 301.7701-2(b)(8)(i).
+    b. IRAs.                                                         3. You receive a properly completed exemption
+                                                                 certificate on Form W-9, Request for Taxpayer
+    c. Archer MSAs and health savings accounts (HSAs).           Identification Number and Certification, that shows the
+    d. The United States or any state or a political             customer is not an S corporation.
+subdivision of the United States or any state.                       4. You receive a Form W-8, Certificate of Foreign
+    e. Corporations. However, see Identifying a                  Status, described in Regulations section 1.1441-1(e)(2)(i)
+corporation, later, for instructions about how to know           that includes a certification that the person whose name is
+whether a customer is a corporation for this purpose. Also,      on the form is a foreign corporation.
+you must file Form 1099-DA for the sale of a covered
+security (defined earlier) by an S corporation if the S          Identifying a U.S. digital asset broker. For sales of
+corporation acquired the covered security after 2012.            digital assets, you can treat a customer as an exempt
+    f. U.S. digital asset brokers. However, see Identifying      recipient if you receive a properly completed exemption
+a U.S. digital asset broker, later, for instructions about how   certification on Form W-9 that shows the customer is a
+to know whether a customer is a digital asset broker for         U.S. digital asset broker. Until the Form W-9 includes the
+this purpose.                                                    appropriate exemption certification, see Notice 2024-56
+                                                                 for information regarding how a U.S. digital asset broker
+    2. Sales initiated by financial institutions or by dealers   can document that another broker is a U.S. digital asset
+in securities.                                                   broker.
+    3. Sales by custodians and trustees, provided the sale
+                                                                 Exemption certificate. A broker may require an exempt
+is reported on a properly filed Form 1041, U.S. Income Tax
+                                                                 recipient to file a properly completed Form W-9 or similar
+Return for Estates and Trusts.
+                                                                 form. A broker may treat an exempt recipient that fails to
+    4. Sales of digital assets that constitute foreign
+currency issued by a foreign government or central bank
+
+6                                                                                       Instructions for Form 1099-DA (2026)
+do so as a recipient that is not exempt. See part J in the         Box 1a. Code for Digital Asset
+current Pub. 1099.                                                 Enter the nine alphanumeric characters of the digital token
+                                                                   identifier issued by the Digital Token Identifier Foundation
+Statements to Recipients
+                                                                   (DTIF). See https://dtif.org/registry-search. If the digital
+If you are required to file Form 1099-DA, you must provide         asset is not registered with DTIF, enter “999999999”.
+a statement to the recipient. For more information about
+the requirement to furnish a statement to the recipient, see          If you are reporting sales using the optional reporting
+part M in the current Pub. 1099.                                   method for qualifying stablecoins, enter the digital token
+                                                                   identifier for the qualifying stablecoin.
+Specific Instructions                                                If you are reporting sales using the optional reporting
+                                                                   method for specified NFTs, enter “999999999”.
+Truncating recipient's taxpayer identification number
+(TIN) on payee statements. Pursuant to Regulations                 Box 1b. Name of Digital Asset
+section 301.6109-4, all filers of this form may truncate a         Enter the full name of the digital asset for which the
+recipient’s TIN (social security number (SSN), individual          amounts are being reported. If you entered a DTIF digital
+taxpayer identification number (ITIN), adoption taxpayer           token identifier in box 1a, enter the name that matches the
+identification number (ATIN), or employer identification           DTIF registration.
+number (EIN)) on payee statements. Truncation is not
+allowed on any documents the filer files with the IRS. A              If you are reporting sales of qualifying stablecoins using
+filer's TIN may not be truncated on any form. See part J in        the optional reporting method for qualifying stablecoins,
+the current Pub. 1099.                                             enter the name of the qualifying stablecoin.
+                                                                     If you are reporting sales of specified NFTs using the
+Country                                                            optional reporting method for specified NFTs, enter
+For a list of country codes, go to IRS.gov/CountryCodes.           “Specified NFTs”.
+Account Number                                                     Box 1c. Number of Units
+The account number is required if you have multiple                Enter the number of digital asset units sold, exchanged, or
+accounts for a recipient for whom you are filing more than         otherwise disposed of in the transaction to 18 decimal
+one Form 1099-DA. Additionally, the IRS encourages you             places.
+to designate an account number for all Forms 1099-DA
+that you file. See part L in the current Pub. 1099. The               If you are reporting sales of qualifying stablecoins using
+account number requested here is the number assigned               the optional reporting method for qualifying stablecoins,
+by the broker to a customer, not the customer's wallet             enter the aggregate number of qualifying stablecoin units.
+address.                                                             If you are reporting sales of specified NFTs using the
+                                                                   optional reporting method for specified NFTs, enter the
+CUSIP Number                                                       aggregate number of specified NFT units.
+For transactional reporting by brokers of a tokenized
+security under Regulations section 1.6045-1(c)(8)(i)(D)(1),        Box 1d. Date Acquired
+enter the CUSIP number or other applicable identifying             Enter the acquisition date of the digital asset sold in
+number of the digital asset.                                       MM/DD/YYYY format. For example, if the acquisition date
+                                                                   is May 24, 2026, enter 05/24/2026. Leave this box blank if:
+Applicable Checkbox on Form 8949                                   • The digital assets sold were acquired on a variety of
+Use this box to enter a one-letter code from the following         dates,
+list that will assist the recipient in reporting the transaction   • You check box 9 and you do not know the acquisition
+on Form 8949 and/or Schedule D (Form 1040).                        date or you choose to not complete box 1d, or
+   Code G. This code indicates a short-term transaction            • You are reporting sales of qualifying stablecoins or
+for which the cost or other basis is being reported to the         specified NFTs using an optional reporting method.
+IRS.
+   Code H. This code indicates a short-term transaction            Box 1e. Date Sold or Disposed
+for which the cost or other basis is not being reported to         Enter the date of the digital asset sale in MM/DD/YYYY
+the IRS.                                                           format.
+   Code J. This code indicates a long-term transaction               If you are reporting sales of qualifying stablecoins or
+for which the cost or other basis is being reported to the         specified NFTs using an optional reporting method, you
+IRS.                                                               may leave box 1e blank.
+   Code K. This code indicates a long-term transaction
+for which the cost or other basis is not being reported to         Box 1f. Proceeds
+the IRS.                                                           Enter the gross proceeds from the sale of digital assets.
+   Code Y. Use this code to report a transaction if you            Show a loss, such as one from a closing transaction on a
+cannot determine whether the recipient should check box            written option or forward contract, as a negative amount
+H or box K on Form 8949 because the holding period is              by enclosing it in parentheses. Total proceeds may include
+unknown.                                                           cash, the value of services, digital assets, or other
+                                                                   property received in exchange for the disposed digital
+                                                                   assets.
+
+Instructions for Form 1099-DA (2026)                                                                                            7
+   You must reduce the proceeds by digital asset                   customer-provided acquisition information into account for
+transaction costs, including transaction fees,                     that purpose, treat digital assets transferred into the
+commissions, and transfer taxes related to the sale.               customer's account as acquired as of the date and time of
+                                                                   the transfer.
+  For digital assets sold because of the exercise of an
+option granted or acquired before 2014, you may, but are              Under current law, brokers may use customer-provided
+not required to, take into account option premiums in              acquisition information solely for lot-selection purposes
+determining gross proceeds if that is consistent with your         and not for reporting basis or acquisition dates.
+books. For digital assets sold because of the exercise of          Average basis method. The average basis method is
+an option granted after 2013 or for the treatment of an            only available for digital assets that are also a tokenized
+option granted or acquired after 2013, see Regulations             security. The security has to be one for which the average
+section 1.6045-1(m) for details.                                   basis method is permitted under section 1012(c) or (d).
+   If you reduce gross proceeds by option premiums,
+check “Net proceeds” in box 3a. Otherwise, check “Gross            Box 1h. Accrued Market Discount
+proceeds” in box 3a.                                               For digital assets that are covered securities and also debt
+                                                                   instruments for federal income tax purposes, enter the
+   For reporting sales of specified NFTs using the optional        amount of accrued market discount in box 1h.
+reporting method, if you are reporting aggregate gross
+proceeds attributable to first sales by a creator or minter        Box 1i. Wash Sale Loss Disallowed
+and aggregate gross proceeds attributable to specified
+NFT sales that are not first sales, file two Forms 1099-DA.        Wash sales. Losses from wash sales of tokenized
+File one Form 1099-DA to report the specified NFT sales            securities must be reported. See Regulations section
+attributable to first sales, and file another Form 1099-DA to      1.6045-1(c)(8)(i)(D). For such tokenized securities treated
+report specified NFT sales that are not attributable to first      as stock or securities under section 1091, if both the sale
+sales. In addition, for sales of specified NFTs attributable       and purchase transactions occur in the same account with
+to first sales by a creator or minter, report those sales in       respect to such tokenized securities with the same CUSIP
+box 11c and leave box 1f blank.                                    number, you must report the amount of the disallowed loss
+                                                                   under section 1091 in box 1i. However, you are permitted,
+Box 1g. Cost or Other Basis                                        but are not required, to report in box 1i any other loss for a
+Enter the adjusted basis of any digital asset sold unless          tokenized security that is disallowed under section 1091.
+the digital asset is not a covered security and you check          For example, you may report a disallowed loss under
+box 9 and choose not to complete box 1g. If you check              section 1091 in box 1i even though a digital asset that is
+box 9 and are not reporting basis, leave box 1g blank.             also a stock or security is sold in one account and
+Enter -0- in box 1g only if the digital asset sold actually        repurchased in a different account. Increase the adjusted
+had a basis of zero.                                               basis of the acquired digital asset by the amount of the
+                                                                   disallowed loss reported in box 1i.
+   In the case of an exchange of digital assets, the digital          You also do not have to apply the wash sale rules if:
+asset transaction costs paid by the taxpayer to effect the
+exchange are allocable generally to the disposition of the
+                                                                   • The purchased digital asset is transferred to another
+                                                                   account before the wash sale,
+transferred digital assets for purposes of determining
+basis. In the case of a sale of digital assets in exchange
+                                                                   • The purchased digital asset was purchased in another
+                                                                   account and later transferred into the account from which
+for other digital assets differing materially in kind or extent,   the digital asset was sold,
+for which the acquired digital assets are withheld to pay
+the digital asset transaction costs to effect the original
+                                                                   • The digital assets are treated as held in separate
+                                                                   accounts, or
+transaction, the total digital asset transaction costs paid
+by the taxpayer to effect both the original transaction and
+                                                                   • The customer has notified you in writing (including in an
+                                                                   electronic format) that the customer has made a valid and
+any dispositions of digital assets to pay such costs are           timely mark-to-market election under section 475 and
+allocable exclusively to the original transaction. See             identified the account from which tokenized securities
+Regulations sections 1.1001-7 and 1.1012-1(h)(2)(ii)(C).           were sold as containing only securities subject to the
+  If you are reporting sales of qualifying stablecoins or          election.
+specified NFTs using an optional reporting method, you                For more details, see Regulations section 1.6045-1(d)
+may leave box 1g blank.                                            (6)(iii).
+Identification of digital assets. If the customer has                 Example. In September 2026, your customer Alex buys
+acquired digital assets on different dates or at different         for $1,000 100 units of digital asset ABC that is a
+prices and sells less than the entire position in the digital      tokenized security treated as stock or securities under
+assets, report the sale according to the customer's                section 1091. In October 2026, Alex sells the 100 units for
+adequate and timely identification of the digital assets to        $600. Within 30 days of the sale, Alex buys 75 units of
+be sold. If no identification is provided at or prior to the       digital asset ABC with the same CUSIP number in the
+time of the sale, you generally must first report the sale of      same account. Since Alex’s loss is $400 ($1,000 minus
+the earliest units of the digital asset purchased by the           $600), but the loss on 75 units is disallowed, Alex’s
+customer. You may take into account customer-provided              disallowed loss is $300. Report the $600 gross proceeds
+acquisition information, described in Regulations section          from the sale in box 1f, $1,000 basis in box 1g, and $300
+1.6045-1(d)(2)(ii)(B)(4), for purposes of determining when         wash sale loss disallowed in box 1i. The $300 disallowed
+a customer purchased a digital asset. If you do not take
+
+8                                                                                         Instructions for Form 1099-DA (2026)
+loss is added to Alex’s basis in the newly purchased 75         Except as provided below, in addition to checking the
+units.                                                        applicable short-term or long-term box, you are required to
+                                                              check the “Ordinary” checkbox if all or a portion of the
+Box 2. Check if Basis Reported to IRS                         gain or loss may be ordinary. You may not report both
+Check this box if:                                            short-term and long-term gain or loss on the same Form
+• You are not checking box 9, or                              1099-DA.
+• You are checking box 9 but are reporting basis to the
+IRS in box 1g anyway.                                            For transactions that are denominated in a currency
+                                                              other than the U.S. dollar, brokers must check the
+   Do not check this box if you are reporting sales of        "Ordinary" checkbox because these transactions may be
+qualifying stablecoins or specified NFTs using an optional    section 988 transactions to the customer. Because a
+reporting method.                                             customer may make an election to treat gains and losses
+                                                              on certain section 988 transactions as capital, the broker
+Box 3a. Reported to IRS                                       must also check the short-term or long-term box to
+See Box 1f. Proceeds, earlier.                                indicate whether any portion of the gain or loss may be
+                                                              short-term or long-term.
+Box 3b. Check if Proceeds Are From a Qualified
+Opportunity Fund (QOF)                                           You are not required to consider other transactions,
+Check the “QOF” box if you are reporting a disposition of     elections, or events occurring outside the account when
+an interest in a QOF.                                         determining whether the gain or loss on the sale is
+                                                              short-term or long-term.
+Box 4. Federal Income Tax Withheld
+                                                              Box 7. Check if Only Cash Proceeds Were Paid
+Enter backup withholding. For example, persons who
+have not furnished their TIN to you in the manner required    in the Transaction
+are subject to withholding on certain amounts required to     Check this box if only cash (that is, U.S. dollars or any
+be reported on this form. This is called backup               convertible foreign currency issued by a government or
+withholding. For more information on backup withholding,      central bank) proceeds were paid in the transaction.
+including the rate, see part N in the current Pub. 1099 and
+go to IRS.gov/Form1099DA. For information on                     Check this box even if you have combined the reporting
+transitional relief from backup withholding, see Notice       of an underlying transaction with the report of the
+2025-33.                                                      transaction to pay broker fees, as described in General
+                                                              Reporting, earlier.
+   Use Form W-9 to request the TIN of the recipient. For
+foreign recipients, request the recipient instead complete    Box 8. Check if Broker Relied on
+the appropriate Form W-8. See the Instructions for the        Customer-Provided Acquisition Information
+Requester of Forms W-8BEN, W-8BEN-E, W-8ECI,                  Check this box if you receive or previously received
+W-8EXP, and W-8IMY and Regulations section                    customer-provided acquisition information to identify
+1.6045-1(g)(4) for when a broker may treat a customer as      which digital assets of a type were sold, exchanged, or
+an exempt foreign person.                                     otherwise disposed of, even if the customer-provided
+Box 5. Check if Loss Is Not Allowed Based on                  acquisition information was not used for the particular
+                                                              digital asset lot reported on this form. If the customer
+Amount in 1f                                                  previously sold, exchanged, or otherwise disposed of all
+See Acquisition of control or substantial change in capital   the digital assets for which they provided that
+structure, earlier.                                           customer-provided acquisition information, you do not
+                                                              need to check this box.
+Box 6. Gain or Loss
+If the digital assets sold, exchanged, or otherwise           Box 9. Check if Digital Asset Is a Noncovered
+disposed of are covered securities, or if they are            Security
+noncovered securities and you check box 9 but choose to       You may check this box if reporting the sale of a
+complete box 6, determine whether the gain or loss is         noncovered security. Do not check this box if reporting the
+short-term or long-term under section 1222, and whether       sale of a covered security.
+any portion of the gain or loss is ordinary. In making the
+determination, you must do the following.                        If you check this box, you do not have to complete
+• Apply the normal rules for property acquired from a         boxes 1d, 1g, 1h, 1i, and 6, and you do not have to check
+decedent to the digital assets.                               box 2. If you check box 9 and choose to complete boxes
+• Apply the normal rules for property acquired as a gift to   1d, 1g, 1h (if applicable), 1i (if applicable), 2, and 6 for a
+the digital assets.                                           noncovered security voluntarily, you are not subject to
+• If a customer acquired digital assets that are stock or     penalties under sections 6721 and 6722 for failure to
+securities that caused a loss from a sale of other digital    report or furnish the information correctly. For returns filed
+assets that are stock or securities to be nondeductible       for sales after 2025, you are subject to penalties under
+under section 1091, use the rules in section 1223(3) to       section 6721 and 6722 for failure to report or furnish the
+determine the holding period of the acquired digital          information in boxes 1d, 1g, 1h (if applicable), 1i (if
+assets.                                                       applicable), 2, and 6 correctly if you do not check box 9
+                                                              even if you are reporting the sale of a noncovered security.
+
+Instructions for Form 1099-DA (2026)                                                                                       9
+   Do not check this box if you are reporting sales of           Box 12b. Transfer-in Date
+qualifying stablecoins or specified NFTs using an optional       If digital assets were transferred into a custodial account,
+reporting method.                                                enter the date of such transfer-in in MM/DD/YYYY format.
+                                                                 Leave this box blank if the digital assets were transferred
+Box 10. Reserved
+                                                                 in on a variety of dates.
+Reserved for future use.
+                                                                   If you are reporting sales of qualifying stablecoins or
+Box 11a. Reason Digital Asset Is Eligible for an                 specified NFTs using an optional reporting method, you
+Optional Reporting Method                                        may leave box 12b blank.
+If you are reporting sales of a digital asset eligible for an    Box 13. Reserved
+optional reporting method, check the appropriate box, if
+applicable, to indicate which type of digital asset is being     Reserved for future use.
+reported. If you check “Qualifying stablecoins,” you must
+                                                                 Boxes 14 Through 16. State Information
+complete box 11b. If you check “Specified NFTs,” you
+must complete box 11b and, if applicable, box 11c. If you        These boxes may be used by filers who participate in the
+do not check one of these boxes, you do not have to              Combined Federal/State Filing Program and/or who are
+complete boxes 11b or 11c.                                       required to file paper copies of this form with a state tax
+                                                                 department. See Pub. 1220, Specifications for Electronic
+Box 11b. Number of Transactions                                  Filing of Form 1097, 1098, 1099, 3921, 3922, 5498, and
+If you are using the optional reporting method for reporting     W-2G, for more information regarding the Combined
+the designated sales of qualifying stablecoins or specified      Federal/State Filing Program. These boxes are provided
+NFTs, enter the number of transactions reported on this          for your convenience only and need not be completed for
+form.                                                            the IRS. Use the state information boxes to report
+                                                                 payments for up to two states. Keep the information for
+Box 11c. Proceeds From a Primary Sale                            each state separated by the dash line. If you withheld
+If you are reporting the sale of specified NFTs, enter the       state income tax on this payment, you may enter it in
+aggregate gross proceeds attributable to first sales by a        box 16. In box 14, enter the abbreviated name of the state.
+creator or minter. Do not enter the aggregate gross              In box 15, enter the filer's state identification number. The
+proceeds attributable to the first sales by a creator or         state number is the filer's identification number assigned
+minter in box 1f.                                                by the individual state.
+                                                                    If a state tax department requires that you send them a
+Box 12a. Number of Units Transferred in                          paper copy of this form, use Copy 1 to provide information
+If you are reporting the sale of digital asset units that were   to the state tax department. Give Copy 2 to the recipient
+transferred into a custodial account, enter the number of        for use in filing the recipient's state income tax return.
+units to 18 decimal places.
+    If you are reporting sales of qualifying stablecoins or
+specified NFTs using an optional reporting method, you
+may leave box 12a blank.
+
+
+
+
+10                                                                                     Instructions for Form 1099-DA (2026)
+

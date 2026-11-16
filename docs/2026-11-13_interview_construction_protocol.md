@@ -313,6 +313,22 @@ agent's judgment. No tick-box screen was looked at in a browser by an agent. The
 `main`, extending the interview means meeting this bar **and** the project's full process (project `CLAUDE.md`, the
 consolidation charter), with reviews run on what changed.
 
+**Measures not built (owner decisions).**
+
+- **No computed cost of the question graph** (owner decision; recorded 2026-11-15). The frame of 1.1 is applied by
+  judgment (section 2), not by a total computed over the graph. The design choices are rarely close; the inputs a
+  total would need (each answer's cost, each situation's share; `interview/2025/gate_frequencies.yaml` holds many
+  shares as judgments) are too soft to settle a close call; and a computed total would become the target in place
+  of the effort it stands for. The owner's ratings of each answer's cost on the vetting page
+  (`docs/2026-11-12_question_walk_notes.md`, "What the frame needs") remain the planned measurement. Revisit a
+  computed cost when a restructuring arises that the rules of 1.1 and section 2 leave open, or as a regression check
+  once most questions carry the owner's ratings.
+- **No model reader test** (owner, 2026-11-11; `docs/2026-11-11_interview_redesign_intent.md`, decision 6). A model
+  playing invented personas answered 96 percent of 510 questions correctly and none wrongly: it passed the interview
+  the owner found unanswerable, since it knows tax vocabulary whatever the persona says and does not feel length,
+  order or repetition. The owner judged a model pretending to be a poor reader neither a realistic task nor a
+  meaningful signal. The coverage rows (3.7) and the owner's own walk take its place.
+
 ---
 
 ## 7. Extending coverage: the checklist

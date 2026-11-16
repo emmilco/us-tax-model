@@ -1101,6 +1101,45 @@
   {
    "printed": "16",
    "project_expr_sha256": "61a87788fc72b9bddbc6183c1da55753c6afb34a4260ddc017a0f4a77df22dbd",
+   "second_expr_sha256": "1be7ee1529d5ff3e0499ec092298c738bbaaa23b54068de4b3e8f2f6f17d1c41",
+   "ruling": "Ruling: model error; the reply copies federal Schedule 1 line 8z alone, the project Schedule 1 line 9 (total other income). IT-201-I p. 7, Step 3, Lines 1 through 19: 'Be sure to enter your total other income on line 16 and your total federal adjustments to income on line 18. Write each type of income ... in the Identify areas on lines 16 and 18.' Triage b7f692226401: 2,754/2,883 agree; 73 value (58 on completed returns), e.g. classm.s1.1 project $5,000, reply $0; classm.s1.3 project -$20,000, reply $0. The reply's own note says it had no instructions for line 16; the project is right.",
+   "context": "0eface9c6853719025e37ee02a6c0d87730e09d263527c027fbde4eb85ae8b6b",
+   "date": "2026-11-15",
+   "run": "9bd9843fe6a1c9fb1320a14ec8521c3ea808fe575d12c3c64b9c6f4ed1d63191",
+   "subject_key": "f07bdcf87399d2a177255a1930f8827979bfdaae28b876a407622262204aa899",
+   "triage": {
+    "verdict": "differs",
+    "kinds": [
+     "project-refuses",
+     "project-unknown",
+     "value"
+    ],
+    "witnesses": [
+     "fixture:stage12.car.mixed_sc_interest_prorated@ny_it201",
+     "fixture:classm.dependent.1.deepseek@ny_it201",
+     "fixture:classm.dependent.2.deepseek@ny_it201",
+     "fixture:classm.dependent.3.deepseek@ny_it201",
+     "fixture:classm.dependent.5.deepseek@ny_it201",
+     "fixture:classm.asset.1@ny_it201",
+     "fixture:classm.asset.3@ny_it201",
+     "fixture:classm.s1.1@ny_it201",
+     "fixture:classm.s1.3@ny_it201",
+     "fixture:classm.s1.4@ny_it201",
+     "fixture:classm.s1.6@ny_it201",
+     "fixture:classm.s1.7@ny_it201",
+     "fixture:classm.s1.9@ny_it201",
+     "fixture:stage20.refuse.excluded_canceled_debt@ny_it201",
+     "fixture:x2s1o.f8853c.refuse.others_paid@ny_it201",
+     "fixture:x2s1o.f8853c.refuse.rate_changed@ny_it201",
+     "fixture:x2s1o.f8853c.refuse.nonqualified@ny_it201",
+     "fixture:x2s1o.f8853c.refuse.pre1996@ny_it201"
+    ],
+    "policy": "executable-triage-v2"
+   }
+  },
+  {
+   "printed": "16",
+   "project_expr_sha256": "61a87788fc72b9bddbc6183c1da55753c6afb34a4260ddc017a0f4a77df22dbd",
    "second_expr_sha256": "76c4c2182c1291af3defb23491cd7ef3f346022655af331957a6e41b639d9883",
    "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds each federal amount half-up to the dollar as it is entered on lines 1 to 18; the reply copies s1.line9 in cents. Same reference otherwise.",
    "context": "c81d86a5be048bb9e8df1e1ec97c51b1cba8ffb0b3d49ee1167d741cada0dfb5",
@@ -1177,23 +1216,40 @@
    "printed": "25",
    "project_expr_sha256": "09f8f57b07ff12e63ecb997ebb356bdbe8069505c11b4080b91079d0a1eb2f36",
    "second_expr_sha256": "85fd6660a3de034cd321ac0a4334c95f5b295ecc63f59468864994a9655bac55",
-   "ruling": "Ruling: ambiguity; amb.ny.2025.line25 (owner decision B1): the form labels line 25 \"(from line 4)\" but IT-201-I p. 8 says only \"If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.\" The project refuses (ny_it201.gate.line25) when line 4 is more than zero or an inflation check was included, and is zero otherwise; wherever it is not refused the reply's line 4 is also zero.",
-   "context": "c81d86a5be048bb9e8df1e1ec97c51b1cba8ffb0b3d49ee1167d741cada0dfb5",
-   "date": "2026-11-04",
-   "run": "176175cec16c2f18e46cba63d86caf553a78b332cb12d6ff476637e8e81161bb",
-   "subject_key": "2014fbad245606f93cb485e44ff5bd97e26ca9252f4625685010750aaffb38a7",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.line25, owner decision B1. The form says 'Taxable refunds, credits, or offsets of state and local income taxes (from line 4)', while the 2025 instructions (IT-201-I p. 8, Line 25) describe only an inflation refund check included in federal AGI; the project refuses either case (ny_it201.gate.line25: line 4 more than zero or the inflation check) and enters 0 otherwise, where line 4 is 0. The reply copies line 4 and refuses on the inflation check. On returns both complete the value is the same (0). Triage b7f692226401: 4 completed returns where the project refuses on gate.line25 and the reply enters line 4 (the registered choice), 6 candidate-unknown (ny_it201.ask.inflation_check is asked only with other income), the rest on refused returns.",
+   "context": "0eface9c6853719025e37ee02a6c0d87730e09d263527c027fbde4eb85ae8b6b",
+   "date": "2026-11-15",
+   "run": "9bd9843fe6a1c9fb1320a14ec8521c3ea808fe575d12c3c64b9c6f4ed1d63191",
+   "subject_key": "47c1ba6a13a9140d01ffe4ddd2aa46875b64c855db39999f1cf21645f8572d7c",
    "triage": {
     "verdict": "differs",
     "kinds": [
-     "project-refuses"
+     "candidate-refuses",
+     "candidate-unknown",
+     "project-refuses",
+     "project-unknown"
     ],
     "witnesses": [
-     "fixture:mutation.t2.refund.mfs_box@ny_it201",
-     "fixture:mutation.t2.refund.qss_box@ny_it201",
-     "fixture:mutation.t2.refund.single_blind@ny_it201",
-     "fixture:stage16.refund.f3@ny_it201",
-     "fixture:stage16.refund.f5@ny_it201",
-     "fixture:stage16.refund.f6@ny_it201"
+     "fixture:stage14.asset.hy_5yr@ny_it201",
+     "fixture:stage14.asset.mq_7yr@ny_it201",
+     "fixture:stage14.asset.mq_mixed@ny_it201",
+     "fixture:stage14.asset.mq_not@ny_it201",
+     "fixture:stage14.asset.bonus_100@ny_it201",
+     "fixture:stage14.asset.bonus_40_before@ny_it201",
+     "fixture:stage12.car.mixed_sc_interest_prorated@ny_it201",
+     "fixture:classm.asset.2@ny_it201",
+     "fixture:classm.refund.1@ny_it201",
+     "fixture:classm.refund.3@ny_it201",
+     "fixture:classm.refund.5@ny_it201",
+     "fixture:classm.refund.7@ny_it201",
+     "generated:20261026.26@ny_it201",
+     "generated:20261026.85@ny_it201",
+     "generated:20261026.116@ny_it201",
+     "generated:20261026.119@ny_it201",
+     "generated:20261026.165@ny_it201",
+     "generated:20261026.184@ny_it201",
+     "generated:20261026.192@ny_it201",
+     "generated:20261026.317@ny_it201"
     ],
     "policy": "executable-triage-v2"
    }
@@ -2100,11 +2156,11 @@
    "printed": "C",
    "project_expr_sha256": "f5903e57bb11561e03060f01e96722ebfa8eefe96e93a647ff604e415f04a943",
    "second_expr_sha256": "2ddb9664a78aba095aec7f638603f4b2a941de1e2b46c3e1fa544faddc141dab",
-   "ruling": "Ruling: representation; the reply asks the New York item C question on every return; the project asks it only after a federal No (ny_it201.item_c_if_not_federal) and takes Yes when sa.dependent is Yes. A federal Yes refuses the federal return (sa.deduction refuses when sa.dependent: \"A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice\"), and a refused federal return is a refused New York return, so on every return the tool completes item C is the New York question, as the reply has it (owner decision B8; IT-201-I p. 5, Item C, \"If you can be claimed as a dependent on another taxpayer's federal return, you must mark an X in the Yes box. You must mark the Yes box even if the other taxpayer did not claim you\"). Triage: all 182 differing witnesses are on refused returns; none on a completed or incomplete one.",
-   "context": "a58224f191cef95c82e465b600ba65cd3cb7147c39d90e305815de6f5000f0db",
-   "date": "2026-11-14",
-   "run": "eb3fc991784c7e3d50fd008cd630cf6f34bdcfcd34f2f2b6a5640beaefb59ec4",
-   "subject_key": "5f96cc262d96c8a36d1bebb6908ad63f67c084ee9ac7f49e53a2eb226b06135b",
+   "ruling": "Ruling: representation; the reply always asks New York's item C question; the project takes a federal Yes to sa.dependent and asks the New York question only after a federal No (ny_it201.item_c_if_not_federal). A federal Yes ('Can someone claim you or your spouse as a dependent', which excludes a claimant who need not file) implies New York's broader Yes ('If you can be claimed as a dependent on another taxpayer's federal return, you must mark an X in the Yes box', IT-201-I p. 5, Item C; 'even if the other taxpayer did not claim you'), so the two agree whenever the filer answers consistently. Triage b7f692226401: 2,845/2,883 agree; 6 value differences, all on refused returns, and 32 candidate-unknown, every one because the interview does not ask ny_it201.ask.item_c after a federal Yes. Owner decision B8; amb.ny.2025.item_c.",
+   "context": "0eface9c6853719025e37ee02a6c0d87730e09d263527c027fbde4eb85ae8b6b",
+   "date": "2026-11-15",
+   "run": "9bd9843fe6a1c9fb1320a14ec8521c3ea808fe575d12c3c64b9c6f4ed1d63191",
+   "subject_key": "005285859cf78af7d2cc72a95902df516e0fbbe2eab3193d6f0bfdc068be273c",
    "triage": {
     "verdict": "differs",
     "kinds": [
@@ -2116,14 +2172,14 @@
      "fixture:classm.f4952.3.deepseek@ny_it201",
      "fixture:classm.clcw.3.deepseek@ny_it201",
      "fixture:classm.sa.5.deepseek@ny_it201",
-     "fixture:classm.sli.4@ny_it201",
-     "fixture:classm.ssb.5@ny_it201",
-     "generated:20261026.26@ny_it201",
-     "generated:20261026.48@ny_it201",
-     "generated:20261026.120@ny_it201",
-     "generated:20261026.128@ny_it201",
-     "generated:20261026.142@ny_it201",
-     "generated:20261026.184@ny_it201"
+     "fixture:classm.tipjob.1@ny_it201",
+     "fixture:classm.clcw.3@ny_it201",
+     "generated:20261026.119@ny_it201",
+     "generated:20261026.121@ny_it201",
+     "generated:20261026.362@ny_it201",
+     "generated:20261026.419@ny_it201",
+     "generated:20261026.441@ny_it201",
+     "generated:20261026.499@ny_it201"
     ],
     "policy": "executable-triage-v2"
    }

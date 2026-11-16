@@ -13,7 +13,7 @@ The proof for a unit has two parts.
 A. The subject its review recorded equals the subject the current tree gives once each new id is put back to its
    old id. The current tree is copied (copy-on-write) to a scratch tree; there every new id is replaced by its
    old id, as a whole id, in forms/, rendered/, canonical/, interview/ and ambiguities/ (also in the collection
-   form `doc[entry].name`); and every subject is computed in both trees by the review tools' own code
+   form `doc[entry].name`, alone or as a step of a path); and every subject is computed in both trees by the review tools' own code
    (subjects.py, question_review, screen_review, gates, completeness_review). So the review judged exactly what
    the tree holds now, but for the names.
 B. For transcription, render and class M, the line's year-carry parts (year_carry.parts: its subject with the
@@ -80,25 +80,11 @@ ID = r"[A-Za-z0-9_]"
 
 def substituter(mapping):
     """A function replacing each id of `mapping` by its value, as a whole id: not inside a longer id
-    (`a.b_if_c`, `x.a.b`), but followed by a sentence's full stop; and in the collection form `doc[entry].name`."""
-    if not mapping:
-        return lambda text: text
-    ids = sorted(mapping, key=len, reverse=True)
-    whole = re.compile(r"(?<![A-Za-z0-9_.])(" + "|".join(map(re.escape, ids)) + r")(?!" + ID + r"|\." + ID + ")")
-    local = {}
-    for old, new in mapping.items():
-        doc, _, name = old.partition(".")
-        ndoc, _, nname = new.partition(".")
-        if doc == ndoc:
-            local[(doc, name)] = nname
-    inst = re.compile(r"(?<![A-Za-z0-9_.])(" + ID + r"+)(\[[^\]\s]*\])\.(" + ID + r"+)(?!" + ID + ")")
-
-    def sub(text):
-        text = whole.sub(lambda m: mapping[m.group(1)], text)
-        if local:
-            text = inst.sub(lambda m: m.group(1) + m.group(2) + "." + local.get((m.group(1), m.group(3)), m.group(3)), text)
-        return text
-    return sub
+    (`a.b_if_c`, `x.a.b`), but followed by a sentence's full stop; and in the collection form `doc[entry].name`,
+    alone or as a step of a path (`p[q].doc[entry].name`). The rename itself uses the same function
+    (tools/rename_ids.py)."""
+    import rename_ids
+    return rename_ids.substituter(mapping)
 
 
 # ---------------------------------------------------------------- the map

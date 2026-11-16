@@ -311,7 +311,8 @@
         "person[taxpayer].w2[a].box1": 12300000,
         "s1a.tips": null,
         "s1a.overtime": null,
-        "s1a.carloan": null
+        "s1a.carloan": null,
+        "household.married_dec31": true
       },
       "expect": {
         "f8960.line17": {
@@ -339,7 +340,8 @@
         "person[taxpayer].w2[a].box1": 12400000,
         "s1a.tips": null,
         "s1a.overtime": null,
-        "s1a.carloan": null
+        "s1a.carloan": null,
+        "household.married_dec31": true
       },
       "expect": {
         "f8960.line17": {
@@ -403,7 +405,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8960.line17": {
@@ -583,7 +586,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8960.line17": {
@@ -798,7 +802,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8960.line17": {
@@ -835,7 +840,8 @@
         "f1040.line25b": null,
         "f1040.line25c_other": null,
         "f1040.line26": null,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8960.line17": {
@@ -1230,7 +1236,8 @@
         "clcw.prior_sd7": -1000000,
         "clcw.prior_sd21": 300000,
         "f8960.prior_2i": true,
-        "s179.prior_form": null, "s179.carryover": null
+        "s179.prior_form": null,
+        "s179.carryover": null
       },
       "expect": {
         "f8960.line5b": {
@@ -1307,6 +1314,95 @@
         "f1040.line7a": {
           "kind": "money",
           "cents": -300000
+        }
+      }
+    },
+    {
+      "id": "mexist.f8960.line5d.no_gains",
+      "covers": [
+        "f8960"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of stage9.eic.refuse.other_income.schedule1_unanswered: wages $4,000, no capital gains or dispositions. Form 8960 line 5a (Form 1040 line 7a) $0, lines 5b and 5c $0, line 5d (combine lines 5a through 5c) $0 (f8960 p. 1).",
+      "inputs": {
+        "scope.noncitizen": true,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": false,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.nonresident": true,
+        "scope.chapter11": false,
+        "scope.reservist_repaid": false,
+        "scope.adoption_benefits": false,
+        "scope.pay_no_w2": false,
+        "scope.medicaid_waiver": false,
+        "scope.care_benefits_other": false,
+        "scope.disaster_distribution": false,
+        "scope.excess_deferral": false,
+        "scope.passive": false,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "scope.reservist_expenses": null,
+        "scope.military_move": null,
+        "scope.rental": null,
+        "scope.k1": null,
+        "scope.farm": null,
+        "scope.clergy": null,
+        "scope.church_exempt_wages": null,
+        "scope.w2_marks": null,
+        "scope.performer_expenses": null,
+        "scope.recovery": null,
+        "scope.archer_msa": null,
+        "scope.se_plan_other": null,
+        "scope.reforestation": null,
+        "scope.attorney_fees": null,
+        "scope.nol": null,
+        "s179.prior_form": null,
+        "s179.carryover": null
+      },
+      "expect": {
+        "f8960.line5d": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
+    },
+    {
+      "id": "mexist.f8960.line9c.digital_nii",
+      "covers": [
+        "f8960"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of s1.refuse.digital_nii: wages $190,000 and $20,000 of digital assets received as ordinary income. No miscellaneous investment expenses, so Form 8960 line 9c is $0, line 9d (add lines 9a, 9b and 9c) $0 with no investment interest or allocated state tax, and line 11 (lines 9d and 10) $0 (f8960 p. 1). The digital asset income question refuses line 7, not line 9c.",
+      "inputs": {
+        "f1040.digital_assets": true,
+        "s1.digital_income": true,
+        "s1.digital_amount": 2000000,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box1": 19000000,
+        "person[taxpayer].w2[a].box5": 19000000,
+        "person[taxpayer].w2[a].box6": 275500
+      },
+      "expect": {
+        "f8960.line9c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8960.line9d": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f8960.line11": {
+          "kind": "money",
+          "cents": 0
         }
       }
     }

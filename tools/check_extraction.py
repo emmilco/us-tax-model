@@ -19,7 +19,10 @@ For every archived PDF, per page:
                                reads that PDFKit lacks are counted only: PDFKit skips
                                icon labels and gives up on some pages entirely. A line
                                label poppler reads as one token ("14a") and PDFKit as two
-                               ("14", "a") counts as the same text.
+                               ("14", "a") counts as the same text. A page over the
+                               tolerance listed in tools/extraction/exceptions.json under
+                               the check "pdfkit" is printed as accepted, with its reason,
+                               and does not fail.
   3. PDF vs HTML               Where the IRS also publishes the document as HTML and the
                                archive holds that snapshot, every word of a page's
                                reading-order text occurs in the HTML text, bar the page furniture in tools/extraction/furniture.txt,
@@ -185,7 +188,7 @@ def check_pdfkit(entry, layout, lines):
     if len(pk) != len(layout):
         lines.append(f"    - PDFKit: {len(pk)} pages against {len(layout)} — FAIL")
         return 1
-    bad, extra, skipped, blind = [], 0, 0, []
+    bad, accepted, extra, skipped, blind = [], [], 0, 0, []
     for i, (a, b) in enumerate(zip(layout, pk), 1):
         ca, cb = Counter(tokens(a)), Counter(tokens(b))
         only_pk = cb - ca
@@ -209,16 +212,30 @@ def check_pdfkit(entry, layout, lines):
         extra += sum(only_pk.values()); skipped += sum((ca - cb).values())
         if sum(cb.values()) < PDFKIT_BLIND_SHARE * sum(ca.values()):
             blind.append(i)
-        if sum(only_pk.values()) > PDFKIT_PAGE_TOLERANCE and not excepted(entry["id"], "pdfkit", i):
+        verdict = pdfkit_page_verdict(entry["id"], i, only_pk)
+        if verdict == "fail":
             bad.append((i, sorted(only_pk.elements())[:8], sum(only_pk.values())))
+        elif verdict != "ok":
+            accepted.append((i, sorted(only_pk.elements())[:8], verdict))
     blind_note = f"; PDFKit blind on page(s) {blind}" if blind else ""
     if bad:
         lines.append(f"    - PDFKit: {len(bad)} page(s) where PDFKit reads more than {PDFKIT_PAGE_TOLERANCE} words poppler lacks — FAIL{blind_note}")
         for i, b, d in bad[:5]:
             lines.append(f"        - p. {i} ({d}): only PDFKit {b}")
-        return 1
-    lines.append(f"    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance ({extra} such occurrences; {skipped} words poppler reads that PDFKit skips{blind_note})")
-    return 0
+    else:
+        lines.append(f"    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance ({extra} such occurrences; {skipped} words poppler reads that PDFKit skips{blind_note})"
+                     + (f", {len(accepted)} page(s) excepted" if accepted else ""))
+    for i, b, why in accepted:
+        lines.append(f"        - p. {i} accepted: {b} — {why}")
+    return 1 if bad else 0
+
+
+def pdfkit_page_verdict(doc_id, page, only_pk, excepted_of=None):
+    """"ok" for a page within the tolerance; for one over it, the reason of its exceptions.json
+    entry (check "pdfkit"), under which it is accepted, or "fail"."""
+    if sum(only_pk.values()) <= PDFKIT_PAGE_TOLERANCE:
+        return "ok"
+    return (excepted_of or excepted)(doc_id, "pdfkit", page) or "fail"
 
 
 def check_html(entry, twin, lines):
@@ -278,7 +295,15 @@ def self_test():
     print("extraction self-test, PDFKit skip rule: "
           + ("runs with Swift, required on macOS, skipped visibly elsewhere" if skip_ok else "WRONG"))
     gutter_ok = narrow_gutter_self_test()
-    return 0 if ok and skip_ok and gutter_ok else 1
+    over = Counter({w: 1 for w in ("words", "only", "pdfkit", "reads", "here")})
+    table = {"doc": {"pdfkit": {"2": "a page nothing reads"}}}
+    look = lambda d, c, p: table.get(d, {}).get(c, {}).get(str(p))
+    except_ok = (pdfkit_page_verdict("doc", 2, over, look) == "a page nothing reads"
+                 and pdfkit_page_verdict("doc", 3, over, look) == "fail"
+                 and pdfkit_page_verdict("doc", 3, Counter({"one": 1}), look) == "ok")
+    print("extraction self-test, PDFKit exceptions: "
+          + ("an excepted page over the tolerance is accepted, another fails" if except_ok else "WRONG"))
+    return 0 if ok and skip_ok and gutter_ok and except_ok else 1
 
 
 def narrow_gutter_self_test():

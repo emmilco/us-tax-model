@@ -1,0 +1,36 @@
+{
+ "kind": "render",
+ "form": "rec",
+ "rulings": [
+  {
+   "printed": "2",
+   "restated": "Add helper \"Mortgage interest refunded (zero without one)\", helper \"Medical reimbursements counted, not more than the 2024 medical deduction\", and helper \"Other refunds counted, not more than the 2024 deduction for them\".",
+   "model": "Footnote 2 says \"If you deducted state and local general sales taxes and received a refund of those taxes, include the amount on line 2\", capped at the excess over income tax. The program's line 2 adds only mortgage interest, medical and an 'other' category that excludes sales tax, so a sales tax refund is dropped. No refusal names that case.",
+   "ruling": "Ruling: scope; a recovered general sales tax deduction (p525 footnote 2, 'If you deducted state and local general sales taxes and received a refund of those taxes, include the amount on line 2') is refused (rec.sales_tax_if_any, form note: 'of general sales tax ... refused'), so no completed return drops one.",
+   "context": "d40d00832d84debdd3e678cc15d990197460530cf8c166197909b4757a14fb71",
+   "date": "2026-11-15",
+   "run": "f7b7499e79d0c8c219716e0f05c958892ee5fb46e0899de6280710c1fc091268",
+   "subject_key": "77710933ff3edb1ffe56828990d23dc38b031fd891895b2b978f68977de5aaf5"
+  },
+  {
+   "printed": "2a:1",
+   "restated": "Choose — [refund helper \"Any state or local income tax refund received in 2025\" = false → helper \"Year parameter sales.zero\"] [refund helper \"Any state or local income tax refund received in 2025\" = true → refund helper \"State or local income tax refunds, credits or offsets received in 2025 (zero when you did not itemize deductions for 2024 or deducted general sales taxes, since none of the refund is then taxable)\"]",
+   "model": "Worksheet 2a line 1 says only \"Enter the income tax refund from Form(s) 1099-G (or similar statement)\". Zero is right when you didn't itemize or deducted sales taxes, but the program also enters zero when the refunds were of both spouses' tax on separate 2024 returns. The text doesn't cover that case, and no refusal names it as excluded.",
+   "ruling": "Ruling: ambiguity; amb.2025.refund_two_returns (i1040gi p. 90 tests a refund against one 2024 return): on a joint 2025 return with refunds of both spouses' tax on separate 2024 returns the chosen reading takes none as taxable when neither return itemized state and local income taxes, and refuses otherwise. The zero the reviewer flags is that registered reading.",
+   "context": "d40d00832d84debdd3e678cc15d990197460530cf8c166197909b4757a14fb71",
+   "date": "2026-11-15",
+   "run": "f7b7499e79d0c8c219716e0f05c958892ee5fb46e0899de6280710c1fc091268",
+   "subject_key": "acaf137e4ca2846e35b6db65222aa0d8b1903ce0ad19a6b9e1a9a2cf73d4c162"
+  },
+  {
+   "printed": "5",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "The IRS line reads \"Enter any amount previously refunded to you (don't enter an amount from line 1a, 1b, or 2)\". The program always enters $0 and has no refusal for earlier refunds.",
+   "ruling": "Ruling: ambiguity; amb.2025.rec_line5 (p525 p. 27, line 5, 'Enter any amount previously refunded to you'): chosen reading zero for 2024 deductions recovered in 2025, since an amount refunded during 2024 reduced the 2024 deduction itself; recoveries for years before 2024 are refused (rec.not_2024_if_any).",
+   "context": "d40d00832d84debdd3e678cc15d990197460530cf8c166197909b4757a14fb71",
+   "date": "2026-11-15",
+   "run": "f7b7499e79d0c8c219716e0f05c958892ee5fb46e0899de6280710c1fc091268",
+   "subject_key": "70b39e48f8f6396aebe1b8bb38bbe41fb40620de0ea547d73d13df728ec6e66b"
+  }
+ ]
+}

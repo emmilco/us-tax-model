@@ -1,0 +1,35 @@
+changes:
+  tax_year: 2026
+  form: f1116
+  entries:
+  - change: C-X1-F1116-01
+    evidence:
+    - doc: i1116
+      page: 26
+      quote: Increase the result by the amount from Schedule 1-A (Form 1040), line 43, and enter the result.
+    - doc: i1116
+      page: 2
+      quote: The enhanced deduction for seniors reported on Schedule 1-A (Form 1040), line 43, must be removed from taxable
+    verified: draft
+    note: 'Schedule 1-A is renumbered for 2026 (C-SCHED-01): the senior deduction added back on line 18 is line 43. The id
+      s1a.line37 is kept (its 2026 printed number is set by changes/2026/s1a.yaml), so only the wording changes here. The
+      adjustment exception ceilings ($403,550 MFJ and QSS, $201,775 single and MFS, $201,750 HOH, 2026 i1116 p. 11) are
+      year parameters, proposed by propose_params.py, not operations. The other page locators wait for the 2026 Form
+      1116, which is not archived, and are set when it is (Part II moves to page 2). Schedule B (Form 1116) and its
+      forms f1116sb and f1116sbyr need no operation: the archived revision (Rev. December 2022) is the one in use, its
+      columns are named by position (10th to 1st preceding year), and the years in the labels and value labels (2015 to
+      2024, the 2024 schedule, into 2025) move with the tax year. The high-tax rate f1116.high_tax_rate (37 percent,
+      the highest rate of section 1) and f1116.withholding_split (15 percent, Reg. 1.904-4(c)(3)) are year parameters for
+      propose_params.py; the 2026 rate is 37 percent under the 2025 legislation, to confirm from the 2026 rate schedule.'
+    operations:
+    - set:
+        line: f1116.line18_raw
+        field: label
+        from: The sum of (i) Form 1040 line 11b minus line 14 and (ii) Schedule 1-A line 37
+        to: Form 1040 line 11b minus line 14, increased by Schedule 1-A line 43
+    - set:
+        line: f1116.line18
+        field: label
+        from: Individuals, the sum of (i) Form 1040 line 11b minus line 14 and (ii) Schedule 1-A line 37; zero if zero or
+          less
+        to: Individuals, Form 1040 line 11b minus line 14, increased by Schedule 1-A line 43; zero if zero or less

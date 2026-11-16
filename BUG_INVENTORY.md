@@ -9586,3 +9586,1729 @@ Note on `ss.hoh` (`fixtures/2025/s3.json`): the T-269 draft said a truthful `hou
 - **Proposed fix:** Choose s2.amt_l7 on the form's own condition (f1040.line3a_if_ordinary > 0, or Schedule D not filed with distributions > 0, or sd.line17), not on f1040.gate.qdcg_applies; then the two mutants named above are killed by a zero-taxable-income return like the example (s2.amt_tmt_over false, s2.amt_l7 $0). Check that Part III's inputs (qdcg.line4, qdcg.line5) are defined when taxable income is zero (in the example they are: line 13 $15,000, line 20 $0).
 - **Related survivor:** operand.s2.s2.amt_l16.amt_l15 (line 16 reading s2.amt_l15_sdtw, the smaller of lines 13 + 14 and Schedule D Tax Worksheet line 10, in place of line 15) is left with this entry. Where the Schedule D Tax Worksheet applies the two are the same line. Where it does not, they differ only if worksheet line 10 is below the Qualified Dividends and Capital Gain Tax Worksheet line 4, which needs a Form 4952 line 4g election (an election with taxable income above zero makes the Schedule D Tax Worksheet apply, f1040.gate.sdtw), so in this encoding only with zero taxable income, where line 7 does not read Part III (this entry). That is an analysis of the expressions, not a proof checked by the sampled check; with the fix above, a zero-taxable-income return with qualified dividends and a line 4g election should kill it.
 - **Tags:** over-refusal, mutation
+
+## BUG-0765 — The remedy for a filer widowed in 2025 still says a separate return is not supported
+
+- **Date:** 2026-11-15.
+- **Caught by:** lane mfs-l1 (claude-opus-5-5, judgment), bringing married filing separately into scope.
+- **Source:** i1040gi p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025"; p501 p. 6, Spouse died during the year, "you are considered married for the whole year for filing status purposes".
+- **Symptom:** The refusal household.widowed_this_year on f1040.line12e tells a single or head of household filer whose spouse died in 2025 to file jointly "or a separate return, which this tool does not support". With married filing separately computed, the separate return is supported; the remedy is now wrong advice. Not changed by the lane because the remedy text is part of the expected refusal of a household.json fixture (an expected value).
+- **Where:** forms/2025/f1040.yaml f1040.line12e, refusal entry household.widowed_this_year (remedy); fixtures/2025/household.json, the case expecting that refusal.
+- **Proposed fix:** Remedy: "file a joint return with your deceased spouse (married filing jointly), or a separate return (married filing separately)."; restate the fixture's expected remedy text with it (a wording change, approved with the scout's D2).
+- **Tags:** wording, household, married filing separately, low
+
+## BUG-0766 — Inmate wages reported in W-2 box 1 are not kept off Form 1040 line 1a now that Schedule 1 line 8u is computed
+
+- **Caught by:** render review of f1040 line 1a (claude-opus-5-5), adjudicated in lane xadj-b, 2026-11-15.
+- **Source:** i1040gi (2025) p. 23, Line 1a: "If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a." p596 (2025), Earnings while an inmate: "Amounts received for services performed while an inmate in a penal institution aren't earned income when figuring the EIC."
+- **Symptom:** Lane x2-s1o removed s1.inmate_wages from the s1.line8_other refusal and computes Schedule 1 line 8u from s1.inmate_amount. The earlier line 1a render rulings accepted the box 1 sum only because inmate wages were refused there. Now neither s1.inmate_wages / s1.inmate_amount nor the W-2 box 1 entry says what to do when the inmate pay is on a Form W-2: a filer who enters the W-2 and answers Yes with the amount counts the pay twice (line 1a and line 8u, overstating income); a filer who enters only the W-2 puts it on line 1a, where it is EIC earned income (f1040.line1z feeds eic), which p596 excludes.
+- **Where:** forms/2025/s1.yaml s1.inmate_wages and s1.inmate_amount (input source text); interview/2025/questions.yaml entries s1.inmate_wages (161/4) and s1.inmate_amount (161/27); f1040.line1a (person.box1 sum, no carve-out).
+- **Proposed fix:** Either (a) refuse inmate pay reported on a Form W-2: add a question beneath s1.inmate_wages, "Was any of that pay shown on a Form W-2?", and refuse on Yes at f1040.line1a (form: Wages earned while an inmate reported on Form W-2; remedy: report them on Schedule 1 line 8u, not line 1a, without this tool; cite i1040gi p. 23, Line 1a); or (b) compute it: ask that W-2 portion and subtract it from line 1a (f1040.line1a = sum of person.box1 minus the inmate pay in box 1, floored at 0) while s1.inmate_amount includes it, with help on s1.inmate_amount: "Include pay shown on a Form W-2 for this work." Then re-review f1040 1a, 1z and s1 8u and the EIC earned income readers.
+- **Fix:** the premise removed at integration XINT (coordinator decision): lane x2-s1o's computing of Schedule 1 line 8u is reverted, so inmate pay refuses again at s1.line8_other (as before the coverage expansion) and is never counted on line 8u; the W-2 part is no longer a question. Computing line 8u with the W-2 part asked is TASKS T-336 (the proposed fix above applies there).
+- **Fix lines:** s1.line8_other, s1.line9 (8u operand removed), s1.inmate_amount and s1.line8u (removed)
+- **Siblings checked:** s1.inmate_wages (the question; help restored: a Yes ends the interview), f1040.line1a (box 1 sum; unchanged: inmate pay refuses before it matters), s1.olympic_if_winnings (the other line 8 refusal on the same page; unchanged), ny_it201.has_other_income and ny_it201.has_other_payments (read line 9; unchanged).
+- **Severity:** medium
+- **Tags:** form change, coverage expansion, f1040, s1, eic
+
+## BUG-0767 — Standard Deduction Worksheet for Dependents leaves out Schedule 1 line 8u now that line 8u is computed
+
+- **Caught by:** transcription review of sa line 2 (sa.dep_line2) (claude-opus-5-5), adjudicated in lane xadj-b, 2026-11-15.
+- **Source:** i1040gi (2025) p. 35, Standard Deduction Worksheet for Dependents, footnote: "Generally, your earned income is the total of the amount(s) you reported on Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15."
+- **Symptom:** sa.dep_earned_sum adds only f1040.line1z, s1.line3 and s1.line8r. amb.2025.sa_dep_earned justified leaving out lines 6, 8t and 8u because they "are refused before this worksheet is reached"; lane x2-s1o removed s1.inmate_wages from the s1.line8_other refusal and now computes s1.line8u, so a dependent filer with wages earned while an inmate gets earned income understated on worksheet line 2 and a standard deduction too small (by up to the line 8u amount, capped by line 3), overstating tax. Lines 6 and 8t stay refused. No fixture or generated return has a dependent with line 8u, so triage showed no value witness; the reply (pass 8d1c7332dffb) includes s1.line8u.
+- **Where:** forms/2025/sa.yaml sa.dep_earned_sum (and its label); ambiguities/2025.yaml amb.2025.sa_dep_earned (chosen text).
+- **Proposed fix:** sa.dep_earned_sum: expr sum of [f1040.line1z, s1.line3, s1.line8r, s1.line8u]; label "... (Form 1040 line 1z and Schedule 1 lines 3, 8r and 8u)". amb.2025.sa_dep_earned chosen: "Lines 6 and 8t are refused before this worksheet is reached (Schedule F, and Schedule 1 line 8t through s1.line8_other), so lines 1z, 3, 8r, 8u and 15 enter it." Add a dependent-filer fixture with line 8u. Re-review sa (transcription, class M) and the eic readers of earned income are unaffected (EIC reads line 1z; p596 excludes inmate pay).
+- **Fix:** resolved by the same revert (integration XINT): line 8u refuses again at s1.line8_other before the dependent worksheet is reached, so amb.2025.sa_dep_earned's reason (lines 6, 8t and 8u are refused) holds and sa.dep_earned_sum is right as it is. Adding line 8u to the worksheet is part of TASKS T-336.
+- **Fix lines:** s1.line8_other (8u refused again)
+- **Siblings checked:** sa.dep_earned_sum (unchanged; its reason holds again), sa.dep_earned (unchanged), s1.line9 (no 8u operand).
+- **Severity:** medium
+- **Tags:** form change, coverage expansion, sa, s1
+
+## BUG-0768 — Schedule A line 6 drops deductible foreign taxes that are not allowed as a credit
+
+- **Caught by:** render review of sa line 6 (claude-opus-5-5), adjudicated in lane xadj-b, 2026-11-15.
+- **Source:** p514 (2025) p. 3, Exceptions for foreign taxes not allowed as a credit: "Even if you claim a credit for other foreign taxes, you can deduct any foreign tax that is not allowed as a credit if you did any of the following." ... "You paid withholding tax on dividends from foreign corporations whose stock you did not hold for the required period of time"; i1040sca p. 7, Line 6, "Include on this line income taxes you paid to a foreign country".
+- **Symptom:** sa.line6 is always 0. ftc.taxes asks only creditable foreign taxes (its source leaves out tax withheld on a dividend from stock held fewer than 16 days within the 31-day period, i1116 p. 3 item 5), and sa.foreign_tax_deduct (refused through sa.unsupported) is asked only when those creditable taxes are positive (sa.foreign_tax_deduct_if_tax on ftc.has_tax). An itemizer with withholding tax that fails the holding period (or the other p514 exceptions) gets no deduction and no refusal, so taxable income is overstated by that amount. Rare and usually small; the return is otherwise valid.
+- **Where:** forms/2025/sa.yaml sa.line6, sa.foreign_tax_deduct_if_tax; forms/2025/ftc.yaml ftc.taxes (source text).
+- **Proposed fix:** Refuse rather than drop: add an input sa.foreign_tax_noncreditable ("Was any foreign tax withheld that you left out of the creditable foreign taxes because you did not hold the stock or property long enough, or because of related payments?"), asked beneath ftc.asked on an itemizing return, and add it to sa.unsupported (form: Schedule A line 6, foreign taxes not allowed as a credit; remedy: deduct them on Schedule A line 6 without this tool; cite p514 p. 3, Exceptions for foreign taxes not allowed as a credit). Computing it (sa.line6 = that amount when itemizing) is the alternative.
+- **Severity:** low
+- **Tags:** form change, sa, ftc
+
+## BUG-0769 — ftc election allowed with Form 4563 or excluded Puerto Rico income
+
+- **Caught by:** render review of ftc (claude-opus-5-5; line needs1116, UNCLEAR), adjudicated in lane xadj-d, 2026-11-15.
+- **Source:** i1040gi (2025), Schedule 3, line 1, conditions for claiming the credit without Form 1116: "4. You aren't filing Form 4563 or excluding income from sources within Puerto Rico." (sources/2025/i1040gi.txt; i1116 pp. 1-2 does not repeat the condition.)
+- **Symptom:** ftc.needs1116 tests the amount limit, passive income, payee statements and eligibility, but not condition 4. A filer who answers Yes to sa.excluded_income (the unconditional "about you" tick: income earned abroad, in Puerto Rico or in American Samoa left out of the return) and has foreign tax of $300 or less ($600 joint) on Forms 1099 gets the election credit (ftc.credit = smaller of the tax and the regular tax) where the source denies the election. sa.excluded_income refuses only on Schedule A, Schedule 1-A, the student loan interest deduction and other credits (eic, f2441, f8863, f8880, f8962, s8812), not on ftc, so the return completes with a credit claimed without the required Form 1116 and its line 12 reduction.
+- **Where:** forms/2025/ftc.yaml, ftc.needs1116 (the `any` list of failed conditions).
+- **Proposed fix:** Add `op: test, eq: [sa.excluded_income, const: true]` to the `any` list of ftc.needs1116, citing i1040gi Schedule 3 line 1, condition 4. The return then takes the Form 1116 path, where f1116.reduction (income excluded on Form 2555 or 4563 or exempt Puerto Rico income) asks and refuses. Restate any fixture that reaches the election with sa.excluded_income true (expected: refused on the Form 1116 path).
+- **Fix:** ftc.needs1116's any-list gains sa.excluded_income = true, citing i1040gi p. 115 (Schedule 3 line 1, condition 4): a filer with Form 4563 or excluded Puerto Rico income takes the Form 1116 path, where f1116.reduction refuses. Fixture f1116.excluded_income_small_tax (foreign tax $250, excluded income: refused at f1116.reduction), predicted before the run (integration XINT).
+- **Fix lines:** ftc.needs1116
+- **Siblings checked:** ftc.credit_tax (reads it; chooses the Form 1116 credit: unchanged), ftc.elect, ftc.limit, ftc.all_passive, ftc.statements, ftc.eligible (the other election conditions; unchanged), f1116.reduction (the refusal the path reaches; unchanged).
+- **Severity:** medium
+- **Tags:** form change, ftc
+
+## BUG-0770 — f8962 columns (a) and (b) shown for a separate filer without Exception 2
+
+- **Caught by:** render review of f8962 (claude-opus-5-5; lines 11(a), 11(b), 12(a) to 23(b), MISMATCH), adjudicated in lane xadj-d, 2026-11-15.
+- **Source:** i8962 (2025), Line 11 and Lines 12 Through 23: "If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f)."
+- **Symptom:** Since married filing separately is computed (MFS lane L3), a separate filer without the line A exception (f8962.mfs_barred) is not an applicable taxpayer and repays the advance payments. Columns (c) to (e) are hidden for such a filer (f8962.show_annual_calc, f8962.show_<month>_calc require f8962.applicable), but columns (a) and (b) are shown (f8962.show_annual, f8962.show_<month>), so the prepared Form 8962 lists enrollment and benchmark premiums the form says to skip. No amount changes: line 24 is zero and lines 25 to 29 use column (f).
+- **Where:** forms/2025/f8962.yaml, shown_when of f8962.line11a, line11b and line12a/12b to line23a/23b.
+- **Proposed fix:** Add helpers that hide columns (a) and (b) when f8962.mfs_barred is true (e.g. f8962.show_annual_ab = show_annual and not mfs_barred, and the monthly equivalents), and use them as the shown_when of those 26 lines. Keep them shown for a filer below 100% of the poverty line, for whom the instructions say only "skip lines 7 and 8, and go to line 9".
+- **Severity:** low
+- **Tags:** form change, f8962, mfs
+
+## BUG-0771 — scope.other_income cites the lines 1b, 1c, 1d and 1h quotes of pay this tool now computes
+
+- **Caught by:** adjudication of the scope transcription review (claude-opus-5-5), lane xadj-f, 2026-11-15.
+- **Source:** i1040gi (2025) p. 24, Lines 1b, 1c, 1d and 1h: household wages, unreported tips, Medicaid waiver payments and strike benefits are entered on those lines (Form 4137, Form 8919 and the pay-not-on-a-W-2 lines this tool now figures).
+- **Symptom:** scope.other_income's cite still quotes p. 24 Line 1b (household wages), Line 1c (unreported tips), Line 1h (strike or lockout benefits) and Line 1d (Medicaid waiver payments) as grounds for refusing the return, but its any-list no longer refuses them: x2-paynow2 replaced the operands scope.pay_no_w2 and scope.medicaid_waiver by scope.wages_no_form_if_pay (wages from an employer that sent no W-2). A reader of the cite (or a reviewer) is told the screen refuses pay it computes; the value is unaffected.
+- **Where:** forms/2025/scope.yaml, scope.other_income, cite.locator.
+- **Proposed fix:** Drop the four quotes p. 24, Line 1b "Enter the total of your wages received as a household employee...", Line 1c "Enter the total of your tip income...", Line 1h "Strike or lockout benefits (other than bona fide gifts)" and Line 1d "Enter your taxable Medicaid waiver payments..." from the locator, and cite in their place the i1040gi passage on wages received with no Form W-2 that scope.wages_no_form refuses (the same passage scope.wages_no_form cites).
+- **Severity:** low
+- **Tags:** citation, scope
+
+## BUG-0772 — rental personal-use days: the main-home exclusion omits a shorter rental ended by a sale
+
+- **Date:** 2026-11-15
+- **Caught by:** render review of rental (claude-opus-5-5) after the BUG-0918 fix, adjudicated in lane xfix (claude-opus-5-5, judgment).
+- **Source:** i1040se p. 4, Line 2: do not count as personal use 'Any days you used the unit as your main home before or after renting it or offering it for rent, if you rented or tried to rent it for at least 12 consecutive months (or for a period of less than 12 consecutive months at the end of which you sold or exchanged it).'
+- **Symptom:** rental.days_personal tells the filer to leave out main-home days only around a rental of 12 months or more in a row. A former home rented for less than 12 months and then sold or exchanged keeps its main-home days as personal use, which can fail the home test (refused at rental.ws51) or divide expenses on too few rental days. A sale in 2025 of a listed building already refuses at rprop.screen; the gap is a sale or exchange after 2025 that ends the period, or a rental with no listed building.
+- **Where:** forms/2025/rental.yaml rental.days_personal (source); interview/2025/questions.yaml help of rental.personal_any.
+- **Proposed fix:** Add to the source: '..., for 12 months or more in a row, or for less if it was then sold or exchanged'; and the same words in the rental.personal_any help.
+- **Severity:** low
+- **Tags:** form change, question change, rental
+
+## BUG-0773 — k1p at-risk screen omits money borrowed from a person with an interest in the activity
+
+- **Caught by:** sibling check of BUG-0914 (k1s.not_at_risk), lane xfix (claude-opus-5-5), 2026-11-15.
+- **Source:** i1065sk1 p. 8, At-Risk Limitations: generally you aren't at risk for "Amounts borrowed for use in the activity from a person who has an interest in the activity, other than as a creditor, or who is related, under section 465(b)(3), to a person (other than you) having such an interest."
+- **Symptom:** k1p.not_at_risk asked only about nonrecourse loans and guarantees or stop-loss agreements; a partner whose money in the partnership was borrowed from another partner (or someone related to one) answered No, and the at-risk refusal (Form 6198) did not fire, so a loss Form 6198 may limit was allowed.
+- **Where:** forms/2025/k1p.yaml, k1p.not_at_risk (input source text); its interview help.
+- **Fix:** k1p.not_at_risk now asks "Was any of what you have in it borrowed on a loan you are not personally liable for (other than a qualified real estate loan), covered by a guarantee or stop-loss agreement, or borrowed from another partner or someone related to one?"; help: "A partner who put in their own cash, or is liable for the partnership's loans, is at risk; so is money borrowed from a bank or other outside lender that you must repay. A Yes ends the interview here." The refusal (k1p.not_at_risk_if_loss, Form 6198) is unchanged; fixture x2k1p.refuse_at_risk still refuses.
+- **Fix lines:** k1p.not_at_risk
+- **Siblings checked:** k1p.not_at_risk_if_loss (the gate; unchanged), k1p.screened (carries the refusal; unchanged)
+- **Regression predictions:** none; the input's answer for every fixture is unchanged.
+- **Severity:** medium
+- **Tags:** question wording, k1p, fixed
+
+## BUG-0774 — ftc election denied to a Form 2555 filer who meets its conditions
+
+- **Caught by:** new-consumer check (consumer:sa.excluded_income@i1040gi:p115), ruled "same" in integration XINT and confirmed by the coordinator, 2026-11-15.
+- **Source:** i1040gi (2025) p. 115, Schedule 3, line 1, condition 4 of the election to claim the credit without Form 1116: "You aren’t filing Form 4563 or excluding income from sources within Puerto Rico." i1116 (2025) p. 2, of the election: "You are still required to reduce the taxes available for credit by any amount you would have entered on line 12 of Form 1116." Condition 4 names Form 4563 and Puerto Rico income only; Form 2555 bars the election only through the line 12 reduction.
+- **Symptom:** ftc.needs1116 reads sa.excluded_income, which also covers Form 2555. A Form 2555 filer who owes no line 12 reduction (no foreign tax on the excluded income) and meets the election's conditions is sent to Form 1116 instead of the election. The Form 1116 credit, with its limitation, is lawful but may be slightly smaller than the election credit (the smaller of the tax and the regular tax). No refusal is wrong and no amount is overstated.
+- **Where:** forms/2025/ftc.yaml, ftc.needs1116 (the `any` list entry sa.excluded_income = true); sa.excluded_income (forms/2025/sa.yaml) is read unchanged by its other consumers.
+- **Proposed fix:** a narrower input asking only about Form 4563 and income excluded as a bona fide resident of Puerto Rico, read by ftc.needs1116 in place of sa.excluded_income for condition 4. A Form 2555 filer then reaches the election unless a line 12 reduction is owed, which the election path would have to ask (f1116.reduction or an equivalent question) before electing.
+- **Relation:** the owner's open question D3 (docs/provisional/lanes/scout-form-1116.md, item D3: retire ftc.elect and elect automatically when the election is available) rests on the election credit never being less than the Form 1116 credit. If D3 is adopted, this entry is the case in which the tool fails to elect where the election is available, so the fix belongs with D3's implementation.
+- **Severity:** low
+- **Tags:** form change, ftc, question
+
+## BUG-0775 — rental: a home converted to a rental in 2025 deducts the whole year's expenses, because main-home days are left out of the expense division
+
+- **Caught by:** sampled release review (completeness rental#1.3) of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L2), 2026-11-15
+- **Source:** p527 p. 27, Days used as a main home before or after renting, "However, this special rule doesn't apply when dividing expenses between rental and personal use. See Property Changed to Rental Use in chapter 4"; p527 p. 22, Property Changed to Rental Use, "You can deduct as rental expenses only the part of the expense that is for the part of the year the property was used or held for rental purposes" (example: rented from June 1, seven-twelfths of yearly expenses such as taxes and insurance).
+- **Symptom:** Since the BUG-0918 wording fix, rental.days_personal (and the rental.personal_any help) tell the filer to leave out days the unit was the main home before or after a rental of 12 months or more. That one answer feeds both the home test and the expense division (rental.total_c and every rental.div* line), and the cost questions ask the whole amount paid in 2025 (rental.amt12: Form 1098 box 1, with help "Leave this mortgage out of your home mortgage interest"). Witness: x1sche.f2.small_loss_exception with rental[a].days_fair 214 and personal_any false (lived in it January to May, rented from June 1 under a lease): lines 9, 12 and 16 are $400, $8,000 and $500, the full year's costs. Counting the 151 main-home days as personal gives $234.52, $4,690.41 and $293.15. A home converted to a rental in 2025 deducts the personal months' insurance, taxes, mortgage interest and other yearly costs as rental expenses (and the mortgage help steers the personal months' interest away from Schedule A).
+- **Where:** forms/2025/rental.yaml rental.days_personal (source), the rental.amt* sources (yearly costs); interview/2025/questions.yaml help of rental.personal_any and rental.amt12.
+- **Proposed fix:** Simplest: tell the filer, in the cost questions (or a frame shown before them) and in the rental.amt12 help, to enter only the part of yearly costs for the time in 2025 it was rented or offered for rent when it was their home for part of the year (the rest of mortgage interest and property tax may go on Schedule A). Alternative: a new input for the main-home days in 2025 added to the division's total days (rental.total_c) but not to the home test; note p527 divides converted property by the part of the year held for rent, not by days of use, so the wording route matches the source better. Add a fixture for a June 1 conversion.
+- **Severity:** medium
+- **Tags:** rental, question change, amount, regression of BUG-0918
+
+## BUG-0776 — rental cost questions do not exclude capitalized legal fees and capital purchases
+
+- **Caught by:** sampled release review (completeness rental#1.5, rental#1.8) of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L2), 2026-11-15; also sampled screen and false-no reviews gate:rental.has_legal#1 (claude-opus-5-5), adjudicated in lane xrel (fork biz, L5), 2026-11-15
+- **Source:** i1040se p. 6, Lines 5 Through 21, "Do not deduct the value of your own labor or amounts paid for capital investments or capital improvements"; Line 10, "Do not deduct legal fees paid or incurred to defend or protect title to property, to recover property, or to develop or improve property. Instead, you must capitalize these fees and add them to the property's basis."
+- **Symptom:** rental.amt10 asks "Legal fees and other professional fees, such as tax preparation for the rental, paid in 2025"; rental.amt19 "Other costs of renting it (not depreciation), paid in 2025"; rental.amt7 "Cleaning and maintenance (not repairs)". None excludes title-defense, recovery or development legal fees, or capital purchases (only rental.amt14 has help naming improvements). A filer who paid such fees, or bought an appliance or a fence for the rental, deducts them in one year. Own labor is not a gap (every question asks an amount paid).
+- **Where:** forms/2025/rental.yaml rental.amt10, rental.amt19 (and rental.amt7) sources or their help in interview/2025/questions.yaml. Rental sibling of BUG-0922 (royalty.amt10/amt19); the two may be merged. Overlaps BUG-TBD-L5-4 (rental.amt10 capitalized legal fees); the fork should file one entry covering amt10, amt19 and amt7.
+- **Proposed fix:** Help on rental.amt10: "Not fees to defend or protect your title, recover the property, or develop or improve it: those are added to its cost." Help on rental.amt19 (and amt7): "Not something that lasts more than a year, such as an appliance, furniture or an improvement, and not the value of your own work." Also: Add to rental.amt10 or its help: 'not fees to defend or protect title, recover the property, or develop or improve it (those are added to its cost)'; fix together with BUG-0922.
+- **Severity:** low
+- **Tags:** rental, interview wording, amount
+
+## BUG-0777 — rental mortgage interest is not allocated by the use of the loan proceeds
+
+- **Caught by:** sampled release review (completeness rental#1.6) of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L2), 2026-11-15
+- **Source:** i1040se p. 6, Lines 12 and 13, "In most cases, to determine the interest expense allocable to your rental activities, you must have records to show how the proceeds of each debt were used"; "In general, you allocate interest on a loan the same way you allocate the loan proceeds."
+- **Symptom:** rental.amt12 asks "Mortgage interest on it shown on Form 1098 (box 1), your share" (help "Only the interest on this property, your share"). A filer who took cash out in a refinance of the rental and spent it personally deducts all the interest on line 12. (A home equity loan used for the rental is refused by sa.mortgage_other_use, so it is not part of this entry.)
+- **Where:** forms/2025/rental.yaml rental.amt12 and rental.amt13 (sources); interview/2025/questions.yaml help of rental.amt12.
+- **Proposed fix:** Help on rental.amt12: "Leave out the interest on any part of the loan used for something else, such as cash taken out in a refinance and spent on other things."
+- **Severity:** low
+- **Tags:** rental, interview wording, amount
+
+## BUG-0778 — rental: a Worksheet 5-1 carryover from an earlier year is neither asked nor refused
+
+- **Caught by:** sampled release review (completeness rental#1.10) of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L2), 2026-11-15
+- **Source:** p527 p. 28, Limit on deductions, "The excess expenses that can't be used to offset income from other sources are carried forward to the next year and treated as rental expenses for the same property"; "This limitation will apply to expenses carried forward to another year even if you don't use the property as your home for that subsequent year."
+- **Symptom:** rental.ws51 refuses only a 2025 home use. rental.prior_any asks about a loss "held back (not deducted)" with help "Look for Form 8582 in your 2024 return", which points away from a Worksheet 5-1 carryover. A vacation home used personally in 2024 with expenses carried over, and only rented in 2025, is computed without the carryover (or, if the filer enters it as prior_amt, through Form 8582 without the Worksheet 5-1 limit).
+- **Where:** forms/2025/rental.yaml (new input or a tick in the rental_rare group; refusal at rental.line21_full beside rental.ws51); interview/2025/questions.yaml help of rental.prior_any.
+- **Proposed fix:** Add a tick to the rental_rare group, "Expenses of it were carried over from an earlier year's Worksheet 5-1 (a home you also used)", refusing with the Worksheet 5-1 remedy; and add to the rental.prior_any help that a carryover from Worksheet 5-1 is not such a loss.
+- **Severity:** low
+- **Tags:** rental, question change, refusal
+
+## BUG-0779 — rental: Form 8582 exceptions 3 to 6 (incidental rentals, business-hours use) and dealer property are not screened
+
+- **Caught by:** sampled release review (completeness rental#1.2) of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L2), 2026-11-15
+- **Source:** i8582 p. 3, Exceptions: "Extraordinary personal services were provided...", "Rental of the property is incidental to a nonrental activity", "The rental of property is incidental to an activity of holding property for investment if the main purpose of holding the property is to realize a gain from its appreciation and the gross rental income is less than 2% of the smaller of the unadjusted basis or the fair market value (FMV) of the property"; p. 4, "You customarily make the rental property available during defined business hours for nonexclusive use by various customers", "If an activity meets any of the five exceptions listed above, it's not a rental activity"; i1040se p. 6, rentals of real estate held for sale as a real estate dealer go on Schedule C.
+- **Symptom:** Only exception 1 (average stay, rental.stay7_if_short), significant services (rental.services) and not-for-profit are screened. Land held for appreciation and rented for less than 2% of its value (a farm or hunting lease on investment land), property rented during set business hours to many customers, and a dealer's property held for sale are computed as a Schedule E rental activity through Form 8582 Parts IV to VIII: a loss can be held back above the phase-out where the rules make the activity nonpassive. Recorded as left open in docs/provisional/lanes/x1-sche.md section 11 item 4; no bug entry existed.
+- **Where:** forms/2025/rental.yaml (a new tick in the rental_rare group, refusing at rental.line21_full); interview/2025/questions.yaml.
+- **Proposed fix:** Add a tick: "It is land or a building held mainly to sell at a gain and rented for less than 2% of its cost or value, it is rented during set business hours to many customers (such as storage or parking), or you hold it for sale to customers as a real estate dealer" with a refusal naming i8582 p. 3, Exceptions, and i1040se p. 6.
+- **Severity:** low
+- **Tags:** rental, refusal, passive
+
+## BUG-0780 — sc.special names the lease inclusion amount only by its official term
+
+- **Caught by:** completeness review, xrel biz (unruled:scveh#1.1), adjudication lane L3
+- **Source:** i1040sc p. 8, Line 20a, "if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount"; p463 (2025), Inclusion Amounts, "The inclusion amount applies to each tax year that you lease the vehicle if the fair market value (FMV) ... when the lease began was more than the amounts shown in the following tables" ($62,000 for a lease that began in 2025); p946 p. 59
+- **Symptom:** The only refusal of a lease with an inclusion amount is the sc.special item "leased property has an “inclusion amount”" (interview/2025/questions.yaml, sc.special). The term is not explained (norm N6: ask in the person's words; the official name may follow a plain description). A filer leasing a car, truck or van for business for 30 days or more with a value above the threshold, who does not know the term, answers No; scveh.lease_business then puts the full business share of the lease payments on Schedule C line 20a with no inclusion reduction, overstating the deduction (small for a car just above the threshold, larger for an expensive one).
+- **Where:** sc.special (interview prompt and form label/source)
+- **Proposed fix:** Wording only: replace the item with a plain description, e.g. "you lease a car, truck or van for 30 days or more that was worth more than $62,000 when the lease began (less for a lease that began before 2025; see Pub. 463), or you lease other listed property whose business use is 50% or less (an 'inclusion amount')". No expression change; rerun the sc question review at the change.
+- **Severity:** low
+- **Tags:** wording, screen, scveh, lease, inclusion amount
+
+## BUG-0781 — Rental at-risk question reaches only nonrecourse loans from non-lenders
+
+- **Caught by:** sampled release reviews of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L4), 2026-11-15: screen rental.not_at_risk#1 (findings 0, 2, 4); false-no gate:rental.has_loss#1 (findings 1 to 6); also sampled release review (completeness rental#1.9) of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L2), 2026-11-15
+- **Source:** i1040se p. 2, At-Risk Rules: not at risk are nonrecourse loans, amounts "protected against loss by a guarantee, stop-loss agreement, or other similar arrangement", and "Amounts borrowed for use in the activity from a person who has an interest in the activity (other than as a creditor) or who is related under section 465(b)(3)(C)"; a qualified person "cannot be: Related to you (unless ... commercially reasonable ...), The seller ..., A person who receives a fee due to your investment". i6198 p. 1, Who Must File and Amounts Not at Risk 1 ("to acquire property used in the activity").
+- **Symptom:** rental.not_at_risk asks only "Is any of the money you put into it borrowed on a loan you are not personally liable for, other than a loan from a bank or other lender in the business of lending". A rental loss with money protected by a guarantee or stop-loss, a loan (even recourse) from a co-owner or a relative of one, a nonrecourse loan from a related or fee-receiving lender, property taken subject to a private nonrecourse mortgage, or the spouse's own nonrecourse note gives No, and the loss is computed where Form 6198 would limit it. Rare for a directly held rental. Also not reached: a Form 6198 carryover in a later profit year (the question is gated on rental.has_loss).
+- **Where:** forms/2025/rental.yaml rental.not_at_risk (source, label); interview help of rental.not_at_risk
+- **Proposed fix:** Wording: "Is any of its cost or of your (or your spouse's) investment in it (a) financed by a loan neither of you is personally liable for, including a mortgage you took it subject to, other than from a government or an unrelated bank or lender in the business of lending that is not the seller and earns no fee from your investment; (b) borrowed from a co-owner or someone related to one; or (c) protected against loss by a guarantee, stop-loss or similar agreement (insurance aside)?" Optionally add to rental.prior_any help: a loss limited by Form 6198 in an earlier year is outside this tool (or a tick that refuses). Also: Source: "Is any of the money you put into it borrowed on a loan you are not personally liable for (other than a loan secured by the property from a bank or other lender in the business of lending that is not related to you, did not sell it to you and is not paid a fee for your investment), protected by a guarantee or stop-loss agreement, or borrowed from someone else who owns part of it or is related to such a person?"
+- **Severity:** low
+- **Tags:** rental, at-risk, question wording
+
+## BUG-0782 — Part-of-property refusal misses a part the filer uses otherwise or lived in earlier in 2025
+
+- **Caught by:** sampled release reviews of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L4), 2026-11-15: screen rental.part_home#1 (findings 0, 1)
+- **Source:** i1040se p. 6, Renting out part of your home: "If you rent out only part of your home or other property, deduct the part of your expenses that applies to the rented part."
+- **Symptom:** rental.part_home (added for BUG-0920) asks "Is it part of a property you also live in". A filer renting half a building whose other half is their own office or storage, or a room of a home they lived in earlier in 2025 or use part-time, answers No, and the expense questions ("Property tax and other taxes on it", "Utilities you paid") take whole-building amounts.
+- **Where:** forms/2025/rental.yaml rental.part_home (source, label); tick in interview group rental_rare
+- **Proposed fix:** Wording: "Is it part of a property you live in, lived in during 2025, or use yourself (for example a room in your home, one unit of a building you live in, or half of a building whose other half you use as your office or storage)?"; tick "It is part of a home or building you live in (or lived in during 2025) or otherwise use yourself".
+- **Severity:** low
+- **Tags:** rental, question wording, follow-up of BUG-0920
+
+## BUG-0783 — Rental 10% ownership test: no 'at any time' in 2025, and not asked for the year a held-back loss arose
+
+- **Caught by:** sampled release reviews of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L4), 2026-11-15: screens rental.under_tenth#1 (finding 1), rental.prior_not_active#1 (finding 0); false-no gate:rental.prior_and_active#1 (finding 0)
+- **Source:** i8582 p. 4: "You aren't considered to actively participate in a rental real estate activity if at any time during the tax year your interest (including your spouse's interest) in the activity was less than 10% (by value) of all interests in the activity."; p. 10: "Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year."
+- **Symptom:** rental.under_tenth asks "Did you (with your spouse) own less than a tenth of it?" with no time frame, so a filer under 10% for part of 2025 answers No and the loss goes to Part IV with the special allowance. rental.prior_not_active asks only whether the filer helped make decisions in the year the held-back loss arose, so a loss from a year of under-10% ownership is put in Part IV column (c) in place of Part V.
+- **Where:** forms/2025/rental.yaml rental.under_tenth, rental.prior_not_active (source, label); interview tick of rental.under_tenth
+- **Proposed fix:** rental.under_tenth: "At any time in 2025, did you (with your spouse) own less than a tenth of it, by value?" rental.prior_not_active: "Did any of that held-back loss come from a year when neither you nor your spouse helped make decisions for it, or when the two of you owned less than a tenth of it at any time?"
+- **Severity:** low
+- **Tags:** rental, f8582, active participation, question wording
+
+## BUG-0784 — Rental services question can be answered No when a manager provides the services
+
+- **Caught by:** sampled release reviews of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L4), 2026-11-15: screen rental.services#1 (finding 2)
+- **Source:** i1040se p. 5, Line 3: "If you provided significant services to the renter, such as maid service, report the rental activity on Schedule C, not on Schedule E."
+- **Symptom:** rental.services asks "Did you provide services for renters, such as cleaning during their stay, changing linen or meals?" (tick "You gave renters services ..."). An owner whose management company or staff provides maid service or meals can read it as personal performance and answer No; the rental is computed on Schedule E in place of the Schedule C refusal.
+- **Where:** forms/2025/rental.yaml rental.services (source); interview tick of rental.services
+- **Proposed fix:** Source and tick: "Did you, or a manager or staff for you, provide services for renters, such as cleaning during their stay, changing linen or meals?" Optional help: "Heat, light, trash collection, cleaning shared areas and repairs do not count." (also removes the over-refusal of screen finding 0).
+- **Severity:** low
+- **Tags:** rental, Schedule C, question wording
+
+## BUG-0785 — Held-back rental loss question omits the spouse's separate earlier return and a grouped activity
+
+- **Caught by:** sampled release reviews of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L4), 2026-11-15: screen gate:rental.prior_any#1 (finding 0); false-no gate:rental.prior_any#1 (findings 0, 4)
+- **Source:** i8582 p. 10, Part IV, Column (c): "Enter the prior-year unallowed losses for each activity. You find these amounts in Part VII, column (c), of your 2024 Form 8582."
+- **Symptom:** rental.prior_any asks "Was a loss from this rental held back (not deducted) on your 2024 return or an earlier one?" (help "Look for Form 8582 in your 2024 return"). On a joint 2025 return, a rental the spouse brought in with a carryover on the spouse's own pre-marriage or separate return can be answered No; and a filer whose 2024 Part VII shows one figure for several rentals grouped as one activity cannot find this property and answers No. The carryover is dropped (the filer loses a deduction).
+- **Where:** forms/2025/rental.yaml rental.prior_any (source); interview help of rental.prior_any
+- **Proposed fix:** Source: "Was a loss from this rental held back (not deducted) on a 2024 or earlier return of yours or your spouse's, including a separate or pre-marriage return?" Help adds: "If it was reported with other rentals as one activity on Form 8582, answer Yes and enter its share of that activity's held-back loss."
+- **Severity:** low
+- **Tags:** rental, f8582, carryover, question wording
+
+## BUG-0786 — rental expenses ask only what was paid in 2025; an accrual-method landlord's expenses incurred for 2025 are not asked
+
+- **Caught by:** sampled false-no reviews gate:rental.has_advertising#1, has_cleaning#1, has_management#1 (claude-opus-5-5), adjudicated in lane xrel (fork biz, L5), 2026-11-15
+- **Source:** Pub. 527 (2025) p. 4, When To Deduct: 'You generally deduct your rental expenses in the year you pay them. If you use the accrual method, see Pub. 538 for more information.'
+- **Symptom:** No question asks a rental's accounting method and none refuses accrual; every rental expense amount (rental.amt5 to amt19) and the rental_costs headings say 'paid in 2025'. An accrual-method landlord gives cash payments, not 2025 expenses (and cash rents). The Schedule E counterpart of BUG-0524.
+- **Where:** forms/2025/rental.yaml (rental expense inputs); interview/2025/questions.yaml rental_costs_a/b/c headings
+- **Proposed fix:** Add a rental_rare tick 'You keep its books on the accrual method' that refuses (simplest, as accrual is rare for individual landlords), or ask the method and word the amounts 'paid in 2025 (or, on the accrual method, incurred in 2025)'.
+- **Severity:** low
+- **Tags:** interview wording, rental, scope
+
+## BUG-0787 — rental insurance: the 2025 part of a premium prepaid in an earlier year is excluded by the gate and the amount question
+
+- **Caught by:** sampled screen and false-no reviews gate:rental.has_insurance#1 (claude-opus-5-5), adjudicated in lane xrel (fork biz, L5), 2026-11-15
+- **Source:** Pub. 527 (2025) p. 5, Insurance premiums paid in advance: 'If you pay an insurance premium for more than 1 year in advance, you can't deduct the total premium in the year you pay it. For each year of coverage, you can deduct only the part of the premium payment that applies to that year.'
+- **Symptom:** The Insurance tick sits under 'Did you pay any of these for this rental in 2025?' and rental.amt9 asks 'Insurance on it (the part for 2025), paid in 2025'. A landlord who paid a multi-year premium in 2024 answers No (or enters only 2025 payments), and the 2025 part of that premium is left off line 9.
+- **Where:** forms/2025/rental.yaml rental.amt9 (source); interview/2025/questions.yaml rental.has_insurance (tick/help), rental.amt9 (help)
+- **Proposed fix:** rental.amt9: 'Insurance on it for 2025: the part of premiums for 2025 coverage, whether paid in 2025 or paid earlier for more than one year'; tick help on rental.has_insurance: 'Count a premium paid in an earlier year that covers part of 2025.'
+- **Severity:** low
+- **Tags:** interview wording, form change, rental
+
+## BUG-0788 — rental citations name Line 8, Line 9 (and Line 15) instructions that i1040se does not have
+
+- **Caught by:** sampled screen and false-no reviews gate:rental.has_insurance#1, gate:rental.has_commissions#1 (claude-opus-5-5), adjudicated in lane xrel (fork biz, L5), 2026-11-15; also screen and false-no reviews of gate:rental.has_supplies (claude-opus-5-5), adjudicated in xrel biz lane L6, 2026-11-15
+- **Source:** i1040se (2025): the line headings under Lines 5 Through 21 are Line 6, 10, 12 and 13, 14, 17, 18, 19 and 21 (p. 6-7); p. 1 is general instructions, p. 10 holds lines 27-28 and Part III, p. 11 Parts IV-V.
+- **Symptom:** rental.has_commissions, rental.amt8, rental.amt8_if_any cite 'p. 1, Line 8'; rental.has_insurance, rental.amt9, rental.amt9_if_any cite 'p. 10, Line 9'; the screens sample of has_supplies reports 'p. 11, Line 15' likewise. Reviewers given those pages find no rule and report the scope unverifiable.
+- **Where:** forms/2025/rental.yaml cite locators of lines 8, 9 (and 15) and their gates
+- **Proposed fix:** Cite 'p. 6, General Instructions for Lines 5 Through 21' as lines 5, 7 and 11 do (and Pub. 527 p. 4-5 where a rule is used, e.g. prepaid insurance); verify with tools/citations.py. Also: Citation: i1040se p. 6, General Instructions for Lines 5 Through 21 (as rental.has_taxes). Check royalty.yaml's line 15 citation for the same error. No value changes.
+- **Severity:** low
+- **Tags:** citation, rental
+
+## BUG-0789 — Rental expenses a tenant paid are counted in rent but not asked as expenses
+
+- **Caught by:** false-no reviews of gate:rental.has_repairs, has_taxes, has_utilities (claude-opus-5-5), adjudicated in xrel biz lane L6, 2026-11-15
+- **Source:** p527, Rental Income, Expenses paid by tenant: "If your tenant pays any of your expenses, those payments are rental income. Because you must include this amount in income, you can also deduct the expenses if they are deductible rental expenses." Example 1: "You can deduct the utility payment made by your tenant as a rental expense."
+- **Symptom:** rental.rents asks rent "including advance rent and expenses a tenant paid for you" and its help names "repairs a tenant paid for in place of rent". The expense ticks are asked under "Did you pay any of these for this rental in 2025?" / "for it in 2025?"; a filer whose tenant paid a repair, a utility bill or the property tax (net lease) answers No, the amount is rental.zero, and the expense is taxed as rent but not deducted. Rental income is overstated by the amount.
+- **Where:** interview/2025/questions.yaml headings rental_costs_a, rental_costs_b, rental_costs_c (or help on rental.rents); forms/2025/rental.yaml rental.amt5..amt19 sources ("paid in 2025")
+- **Proposed fix:** Wording: headings "Did you, or a tenant for you, pay any of these for this rental in 2025?" (and for it), and add to rental.rents help "... and enter what the tenant paid below as an expense"; amount sources "paid in 2025 (by you, or by a tenant in place of rent)". No value or gate change.
+- **Severity:** medium
+- **Tags:** wording, rental, false-no
+
+## BUG-0790 — asset.listed: the redraft prompt narrows listed entertainment property to camera and recording "equipment", so a boat or communication equipment used 50% or less is depreciated instead of refused
+
+- **Caught by:** sampled release reviews (screen gate:asset.listed#1 finding 5; false-no gate:asset.listed#1 finding 1) of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L7), 2026-11-15
+- **Source:** i4562 p. 3, Listed Property, "Any property used for entertainment or recreational purposes (such as photographic, phonographic, communication, and video recording equipment)"; exception 1, "Photographic, phonographic, communication, or video equipment used exclusively in a taxpayer's trade or business or at the taxpayer's regular business establishment".
+- **Symptom:** The interview prompt for asset.listed (interview/2025/questions.yaml) asks "Is it equipment of a kind used for entertainment or recreation (such as a camera, or sound or video recording equipment) that is not used only in your business or at your regular place of business?". The encoded input in forms/2025/asset.yaml still says "property used for entertainment or recreation (such as photographic, phonographic, communication or video recording equipment)". A filer with a boat used partly for charters or client entertainment (class 00.28, within the tool; a boat is not ticked as a vehicle) or with communication equipment truthfully answers No, so asset.listed_low and asset.qbu_low_if_listed never refuse. Witness (engine eval, asset fixture stage14.asset.hy_5yr changed to class c00_28, cost $100,000, placed 2025, pct 40): listed = No gives $4,000 on Schedule C line 13 (GDS 200% DB on 40% basis); listed = Yes refuses (listed property used 50% or less, ADS).
+- **Where:** interview/2025/questions.yaml, asset.listed prompt
+- **Proposed fix:** Restore the source's terms in the prompt: "Is it property of a kind used for entertainment or recreation (such as photographic, phonographic, communication or video recording equipment, or a boat) that is not used only in your business or at your regular place of business?"; keep the computer sentence. Rerun the asset.listed question review at the change.
+- **Severity:** medium
+- **Tags:** interview-wording; redraft; listed-property; caught-by-adjudication
+
+## BUG-0791 — asset.industry asks about the business, so item-defined property (reuse and recycling equipment, a gas gathering line, transmission property, a race track) owned outside the named businesses skips the asset.industry_item refusal
+
+- **Caught by:** sampled release reviews (screen gate:asset.industry#1 findings 1 and 2; false-no gate:asset.industry#1 findings 1, 2 and 4) of family biz (claude-opus-5-5), adjudicated in lane xrel (fork biz, sub-lane L7), 2026-11-15
+- **Source:** i4562 p. 6, "Qualified reuse and recycling property includes any machinery and equipment ... that is used exclusively to collect, distribute, or recycle qualified reuse and recyclable materials"; i4562 p. 7, it does not include "any property to which section 168(g) or (k) applies"; p946, Qualified Reuse and Recycling Property, "Unless you elect out, you must take a 50% special depreciation allowance for qualified reuse and recycling property"; p946 p. 31, "Any natural gas gathering line placed in service after April 11, 2005, is treated as 7-year property, and electric transmission property ... used in the transmission at 69 or more kilovolts ... 15-year property" and "Motorsports entertainment complex. This is a racing track facility permanently situated on land that hosts one or more racing events ... open to the public for the price of admission."
+- **Symptom:** The interview tick for asset.industry (group "Is it any of these?") reads "Used in a utility, energy, recycling, rent-to-own, racetrack or loan-financed dealer business"; asset.industry_item, whose Yes refuses through asset.screen, is asked only after that tick. These categories are defined by the item and its use, not the owner's line of business. A manufacturer's baler used only to recycle its own scrap, a landowner's gas gathering line, or a fairground's paid-admission race track leaves the tick blank, and the asset is computed under its Appendix B class. For reuse and recycling property in a class elected out of the section 168(k) allowance (asset.bonus_choice = none), the tool gives no allowance where section 168(m) requires 50% unless elected out; for gathering and transmission lines the figure depends on the class the filer picks. Energy property is not affected: asset.class offers Table B-2 D, E and F, mapped to outside.
+- **Where:** interview/2025/questions.yaml asset.industry tick; forms/2025/asset.yaml asset.industry (input) and asset.industry_item_if_industry
+- **Proposed fix:** Word the tick by the item as well as the business: "Used only to collect, distribute or recycle reusable or recyclable materials, or a gas gathering or distribution line, an electric transmission line or substation, or a race track open to paying spectators; or used in a utility, energy, rent-to-own or loan-financed dealer business". Alternatively ask asset.industry_item of every asset and drop the industry gate. Rerun the asset screen and false-no reviews of the gate at the change.
+- **Severity:** low
+- **Tags:** interview-wording; gate; hierarchy-leak; caught-by-adjudication
+
+## BUG-0792 — The earlier-year low-use question does not prorate the business use of the year a vehicle was converted from personal use
+
+- **Caught by:** false-no review of gate:scveh.placed_this_year (xrel biz, L8), finding 3
+- **Source:** i4562 (2025) p. 14, Column (c), 'If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business ... Multiply that percentage by the number of months ... and divide the result by 12'; p463 p. 26, 'Your business use for the year is 40% (80% (0.80) x 6/12)'; i4562 p. 14, Column (f), 'used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period'
+- **Symptom:** A vehicle converted from personal to business use in mid-year 2019 to 2024 (for example July, 80% of later miles for business, 40% for the year) is answered No at scveh.prior_low_use (tick 'Half or less of its use was for business', no help), so it is not refused by scveh.screen and its 2025 depreciation follows the accelerated MACRS table instead of ADS straight line (overstatement). BUG-0072 refused only a 2025 conversion.
+- **Where:** forms/2025/scveh.yaml (scveh.prior_low_use); interview/2025/questions.yaml (scveh.prior_low_use help)
+- **Proposed fix:** Add help to scveh.prior_low_use: 'For the year you started using it in the business, count the months before that as no business use: multiply the business share of the later miles by the number of business months and divide by 12.' Or add a screen term: converted from personal use in an earlier year with that year's prorated use 50% or less.
+- **Severity:** low
+- **Tags:** render-wording; overstatement; caught-by-review
+
+## BUG-0793 — EIC: the lived-with-relative screen omits stepbrothers, stepsisters and step or foster relatives of an older generation, so the qualifying-child-of-another question is skipped
+
+- **Caught by:** completeness review eic#1.1, screen review gate:eic.lived_with_relative#1 (findings 0, 1) and false-no review gate:eic.lived_with_relative#1 (findings 0 to 3), claude-opus-5-5; adjudicated in lane xrel (family cred), 2026-11-15.
+- **Source:** i1040gi p. 41, Step 3, Qualifying Child: "Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them (for example, your grandchild, niece, or nephew)"; TIP: "If the child didn't live with you for more than half of 2025 because of a temporary absence, birth, death ... see Exception to time lived with you".
+- **Symptom:** eic.lived_with_relative asks whether the filer lived more than half of 2025 with a "parent, grandparent, brother, sister, aunt or uncle, or a foster parent"; its help adds stepparents, half siblings, great-grandparents and great-aunts and great-uncles. Stepbrothers and stepsisters, step-grandparents, step-aunts and step-uncles (a stepsibling of a parent) and foster grandparents are not named, so a filer who lived only with one of them answers No; eic.qc_of_another_if_lived is then false, Step 3 question 6 and Step 4 question 5 are never asked, and the EIC can be allowed to a filer who is another person's qualifying child. The help also covers only the filer's own temporary absence, not the relative's, or the birth or death exception.
+- **Where:** forms/2025/eic.yaml eic.lived_with_relative (source); interview/2025/questions.yaml help of eic.lived_with_relative.
+- **Proposed fix:** Name the rule from the filer's side: any person of whom the filer is a child, stepchild, foster child, sibling, half or step sibling, or a descendant of one (so parents, stepparents, foster parents, grandparents and great-grandparents including step and foster ones, older brothers and sisters including half and step, aunts, uncles, great-aunts and great-uncles including step ones); say that time either of you was temporarily away counts as time together, and that a person born or who died in 2025 counts if you lived together more than half the time they were alive. Keep 'If you are not sure, answer Yes.'
+- **Severity:** medium
+- **Tags:** question-incomplete; eic; caught-by-completeness-review; caught-by-screen-review
+
+## BUG-0794 — Form 5695 line 18a does not exclude components that give structural support or a finished surface
+
+- **Caught by:** completeness review f5695#1.4, claude-opus-5-5; adjudicated in lane xrel (family cred), 2026-11-15.
+- **Source:** i5695 p. 5, Lines 18a and 18b, Caution: "A component isn't specifically and primarily designed to reduce the heat loss or gain of your home if it provides structural support or a finished surface (such as drywall or siding) or its principal purpose is to serve any function unrelated to the reduction of heat loss or gain."
+- **Symptom:** f5695.line18a's source and its interview help say only "made mainly to cut heat loss or gain that meet the energy code (IECC) standard". A filer who bought insulated siding or insulated drywall panels counts their cost on line 18a, and line 18b gives 30% of it (up to $1,200) though the component does not qualify.
+- **Where:** forms/2025/f5695.yaml f5695.line18a (source); interview/2025/questions.yaml help of f5695.line18a.
+- **Proposed fix:** Add to the help (and the source): leave out anything that also gives structural support or a finished surface, such as insulated siding or drywall, and anything whose main purpose is not to cut heat loss or gain; cite the i5695 p. 5 Caution.
+- **Severity:** low
+- **Tags:** question-incomplete; f5695; caught-by-completeness-review
+
+## BUG-0795 — Income excluded under a tax treaty is neither asked nor refused, so it stays in wages, AGI and earned income (Schedule 8812 line 18a)
+
+- **Caught by:** completeness review s8812#1.1, claude-opus-5-5; adjudicated in lane xrel (family cred), 2026-11-15.
+- **Source:** i1040s8812 p. 3, Line 18a: "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a.".
+- **Symptom:** No line, screen or refusal in forms/2025 or interview/2025 mentions a tax treaty (searched: 'treaty', '8833'). A resident alien whose W-2 box 1 includes wages exempt under a treaty has them taxed and counted as earned income for Schedule 8812 line 18a (and the EIC and Form 2441). The earlier ruling that s1.line8_other refuses treaty income no longer holds: s1.line8_other now reads only the nonqualified deferred compensation and Olympic screens.
+- **Where:** forms/2025/scope.yaml (no treaty screen); forms/2025/s1.yaml s1.line8_other.
+- **Proposed fix:** Add a scope screen item: income on this return that a tax treaty exempts (a treaty-based position, Form 8833, or wages exempt under a treaty), and refuse the return on Yes as other excluded income is refused; cite i1040s8812 p. 3 and the Form 1040 instructions.
+- **Severity:** low
+- **Tags:** screen-missing; scope; s8812; caught-by-completeness-review
+
+## BUG-0796 — Form 5695 redrafted opening question and kind ticks drop the construction and reconstruction timing rule, the condominium or cooperative share and the enabling-property consecutive-year choice; line 21a asks only about a home you live in now
+
+- **Caught by:** screen and false-no reviews of gate:f5695.any, solar_if_any, solar_water_if_any, wind_if_any, geothermal_if_any, line5a_if_any, insulation_if_any, doors_if_any, windows_if_any, panel_if_any, audit_if_any, heat_pump_if_any, hp_water_heater_if_any, central_ac_if_any, water_heater_if_any, furnace_if_any, biomass_if_any, part2_any, line17b and line21a, claude-opus-5-5; adjudicated in lane xrel (family cred), 2026-11-15.
+- **Source:** i5695 p. 1, Costs: "costs are treated as being paid when the original installation of the item is completed, or, in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed home begins. For purposes of the residential clean energy credit only, costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins"; p. 2, Association or cooperative costs: "you are treated as having paid your proportionate share of any costs of such association or corporation"; p. 6, Lines 25a Through 25e: "if the enabling property was installed in 2024 and the enabled property was installed in 2025, then you may choose to treat both as being installed in 2025"; p. 3, Section B: "installed on or in connection with a home that you used during 2025 located in the United States".
+- **Symptom:** The interview redraft put every Form 5695 kind behind f5695.any (tick 'Had solar, insulation, windows, doors or heating equipment installed at home' under 'And in 2025, did you (or, on a joint return, your spouse) do any of these?') whose help says 'It counts for 2025 if the installation was finished in 2025, whenever it was paid for', and kind ticks read in that 2025 frame. (1) Property installed in 2024 in a home being built (Part I) or rebuilt (both parts) and first used in 2025 is answered No and the credit is lost; this undoes the BUG-0552 fix of BUG-0580 (f5695.construction_later states the rule but is reached only after a Yes). (2) A condominium owner or cooperative tenant-stockholder whose association paid for the work installed nothing personally and answers No; f5695.condo and line 32b are reached only after a Yes; this undoes the BUG-0553 fix. (3) A panel or circuit upgrade installed in one year and its enabled item in the other: the 2024 item is not ticked, so the consecutive-year choice stated only in f5695.line25a's help is lost. (4) f5695.line21a asks 'installed at a home in the United States that you live in?' in the present tense; a filer who used the home in 2025 and has since sold it or moved (or a decedent's return) answers No and Section B is not claimed.
+- **Where:** interview/2025/questions.yaml f5695.any (help) and the energy_* tick groups; f5695.line21a prompt; forms/2025/f5695.yaml f5695.any, f5695.line21a.
+- **Proposed fix:** In f5695.any's help, replace the installation-only rule with: it counts for 2025 if the installation was finished in 2025, or if it was put in a home being built or rebuilt that you first lived in during 2025; include your share of what a condominium association or housing cooperative paid for work on the building; a panel or wiring upgrade and the item it serves put in in 2024 and 2025 may both count for 2025. Word f5695.line21a as 'a home in the United States that you lived in during 2025' (i5695 p. 3). Re-check the screen and false-no samples of the kind gates after the change.
+- **Severity:** medium
+- **Tags:** question-incomplete; regression; f5695; interview-redraft; caught-by-screen-review; caught-by-false-no-review
+
+## BUG-0797 — Form 8863 ban question's help tells a filer whose ban has run out to answer No, though the earlier denial still requires Form 8862
+
+- **Caught by:** false-no review gate:f8863.aoc_claimed#1 (findings 0 to 2), claude-opus-5-5; adjudicated in lane xrel (family cred), 2026-11-15.
+- **Source:** i8863 p. 1, Form 8862 may be required: "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862 ... to your tax return for the next tax year for which you claim the credit"; p. 3, Caution: "Don't claim the American opportunity credit for 2 years after there was a final determination ...".
+- **Symptom:** f8863.ban's interview help says 'Answer No if, after that, you filed Form 8862 with a later year's return and the credit was then allowed, or if a bar has run out'. A filer whose credit was denied with a 2-year ban that has ended, and who has not claimed the credit since, follows the help and answers No; f8863.ban_refused does not fire and the return claims the credit without Form 8862 (the form source states the rule correctly; the help does not). The help also does not say the later Form 8862 must have been for the American opportunity credit. Open: the prompt asks only about a credit 'you claimed'; whether a spouse's earlier denial requires Form 8862 on a joint return was not checked against i8862.
+- **Where:** interview/2025/questions.yaml help of f8863.ban.
+- **Proposed fix:** Help: 'Answer No only if, after the denial, you filed Form 8862 for this credit with a later year's return and the credit was allowed. The end of a 2-year or 10-year ban does not by itself remove the need for Form 8862.' Check i8862 for a spouse's earlier denial on a joint return and, if it applies, add '(or, on a joint return, your spouse)'.
+- **Severity:** medium
+- **Tags:** question-wrong; f8863; interview-redraft; caught-by-false-no-review
+
+## BUG-0798 — Form 8962 lawfully present alien question says 'immigrant', and the married-filing-separately abuse exception's help lists only some forms of abuse
+
+- **Caught by:** false-no reviews gate:f8962.income_100#1 (findings 1, 3) and gate:f8962.mfs_ask#1 (findings 2, 3), claude-opus-5-5; adjudicated in lane xrel (family cred), 2026-11-15.
+- **Source:** i8962 p. 9, Alien lawfully present in the United States: "Certain aliens with household income below 100% of the federal poverty line are not eligible for Medicaid because of their immigration status."; i8962 p. 7: "Domestic abuse includes physical, psychological, sexual, or emotional abuse, including efforts to control, isolate, humiliate, and intimidate, or to undermine the victim's ability to reason independently" and "Depending on the facts and circumstances, abuse of an individual's child or other family member living in the household may constitute abuse of the individual."
+- **Symptom:** (1) f8962.alien_below asks whether someone covered was 'a lawfully present immigrant who could not get Medicaid because of their immigration status'. A nonimmigrant visa holder (H-1B, F-1) or TPS holder is lawfully present but not an 'immigrant' in the legal sense, so a filer who knows the term answers No; the return is then figured as not an applicable taxpayer instead of being refused. The question also does not say that any month of 2025 counts. (2) f8962.mfs_exception's help defines abuse as 'physical, sexual or emotional abuse, and efforts to control, isolate or frighten you' and does not name psychological abuse, humiliation, intimidation or undermining the victim's reasoning, nor abuse of a child or family member in the household; such a victim answers No and the separate return gets no PTC.
+- **Where:** interview/2025/questions.yaml f8962.alien_below (prompt) and f8962.mfs_exception (help); forms/2025/f8962.yaml sources.
+- **Proposed fix:** (1) 'a noncitizen lawfully present in the United States (for example a green card, work or student visa holder) who could not get Medicaid in any month of 2025 because of their immigration status'. (2) Use the i8962 p. 7 list in full and add 'Abuse of your child or another family member living with you can count as abuse of you.'
+- **Severity:** low
+- **Tags:** question-narrow; f8962; caught-by-false-no-review
+
+## BUG-0799 — Form 2441 benefits gate omits a spouse's own business, a partnership's program and care of a disabled spouse; the separate-return spouse-earnings question says zero 'if they had a loss'
+
+- **Caught by:** screen review gate:f2441.benefits#1 (finding 0) and false-no reviews gate:f2441.benefits#1 (findings 0, 1, 4) and gate:f2441.mfs_married#1 (findings 1, 2), claude-opus-5-5; adjudicated in lane xrel (family cred), 2026-11-15.
+- **Source:** i2441 p. 1, Dependent Care Benefits: "Benefits you received as a partner should be shown in box 13 of your Schedule K-1 (Form 1065) with code O"; p. 5, Line 12: "If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership"; p. 1, Qualifying Person(s): "Your disabled spouse who wasn't physically or mentally able to care for themselves"; p. 4, Lines 4 and 5: "You must reduce your earned income by any loss from self-employment."
+- **Symptom:** (1) f2441.benefits asks whether 'your (or, on a joint return, your spouse's) employer, or your own business' helped pay 'for the care of a child or dependent', with the help 'Box 10 of a W-2 shows it'. A joint filer whose spouse's sole proprietorship paid, a partner whose firm's program paid (K-1 box 13 code O, no W-2), or a filer whose benefits paid for care of a disabled spouse (not a 'child or dependent') can answer No; scope.care_benefits_other, which refuses benefits outside box 10, is then never asked and the benefits are left out of Part III. (2) f2441.mfs_spouse_earned asks the spouse's wages and net self-employment earnings, 'Zero if none, or if they had a loss'; a filer whose spouse had wages and a smaller business loss can enter zero, which zeroes line 19 and the exclusion. Its help ('unless you lived apart ... and kept up a home') restates only part of the line A tests, after the tool has found them not met.
+- **Where:** interview/2025/questions.yaml f2441.benefits (prompt, help), f2441.mfs_spouse_earned (prompt, help).
+- **Proposed fix:** (1) 'did an employer of yours (or, on a joint return, of your spouse's), or a business or partnership either of you owns or is a partner in, help pay for the care of a child, a dependent or a spouse not able to care for themselves?'; help: box 10 of a W-2 or box 13 code O of a Schedule K-1 shows it. (2) 'Add their wages and net self-employment earnings, less any self-employment loss; enter zero only if the total is zero or less'; drop the 'unless' clause from the help.
+- **Severity:** low
+- **Tags:** question-narrow; f2441; interview-redraft; caught-by-screen-review; caught-by-false-no-review
+
+## BUG-0800 — Screen and false-no prompts for a computed gate whose gated question is asked when the gate is false state the gate's polarity backwards
+
+- **Caught by:** screen review gate:f8962.income_100#1 and false-no review gate:f8962.income_100#1, claude-opus-5-5 (both read the gate as inverted); adjudicated in lane xrel (family cred), 2026-11-15.
+- **Source:** .transcription/screens/gate_f8962.income_100.prompt.txt: 'A condition the tool computes (line f8962.income_100 ...): Household income at least 100% ...' and 'When the condition holds: Choose — [... = false → f8962.alien_below] ... Otherwise: false, and the question below is not asked.'
+- **Symptom:** f8962.alien_from_income asks f8962.alien_below when f8962.income_100 is false (fixture stage18.refuse.alien_below_100 refuses such a return). The prompt builder names income_100 as the gate and says the question is asked when it holds and not asked otherwise, which is the reverse. Two reviewers reported an inverted gate (a false defect at high severity); every gate reached through a guard '= false' branch gets the same framing.
+- **Where:** tools/transcription/screen_review.py and false_no_review.py (gate condition text for choose guards).
+- **Proposed fix:** When the gated input sits under a guard 'gate = false', state the condition as its negation ('Household income below 100% ...', or 'the condition does not hold'), or present the guarded branch's own condition.
+- **Severity:** low
+- **Tags:** tool; review-prompt; caught-by-adjudication
+
+## BUG-0801 — Schedule A line 1 omits the medical costs of a person who would be a dependent but for the filer being claimable as a dependent
+
+- **Caught by:** sampled completeness review sa#1.1 (xrel, 2026-11-15)
+- **Source:** i1040sca p. 2, Whose medical and dental expenses can you include, "Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return"
+- **Symptom:** sa.line1 lists yourself, your spouse, dependents, a child of divorced or separated parents and a person who would be a dependent but for $5,200 of gross income or a joint return. A filer who is claimable by someone else (so claims no dependents) and pays the medical bills of, for example, their own child is told by the list to leave those costs out; line 1 is understated.
+- **Where:** forms/2025/sa.yaml sa.line1 (source); interview/2025/questions.yaml sa.line1 prompt
+- **Proposed fix:** Add the fourth category to the sa.line1 list and the interview prompt: a person who would be your dependent except that you (or, on a joint return, your spouse) can be claimed as a dependent on someone else's 2025 return. Wording only.
+- **Severity:** low
+- **Tags:** schedule-a, medical, completeness, wording
+
+## BUG-0802 — Schedule A line 6 generation-skipping tax on income distributions is neither asked nor refused
+
+- **Caught by:** sampled completeness review sa#1.2 (xrel, 2026-11-15)
+- **Source:** i1040sca p. 7, Line 6, "Include on this line income taxes you paid to a foreign country and generation-skipping tax (GST) imposed on certain income distributions"
+- **Symptom:** sa.line6 is zero; sa.unsupported refuses a foreign tax deduction (sa.foreign_tax_deduct) but no question names the GST deduction (the BUG-0005 wording is no longer in any question). A beneficiary who paid GST on an income distribution loses the deduction silently.
+- **Where:** forms/2025/sa.yaml sa.unsupported, sa.line6; interview/2025/questions.yaml
+- **Proposed fix:** Ask one short question (or add GST to an existing Schedule A rare-items question) about generation-skipping tax paid on an income distribution from a trust, and add it to sa.unsupported so a Yes refuses.
+- **Severity:** low
+- **Tags:** schedule-a, refusal, completeness
+
+## BUG-0803 — Schedule A line 11 does not leave out gifts to foreign organizations
+
+- **Caught by:** sampled completeness review sa#1.4 (xrel, 2026-11-15)
+- **Source:** i1040sca p. 10, Amounts You Can't Deduct, "Gifts to foreign organizations. However, you may be able to deduct gifts to certain U.S. organizations that transfer funds to foreign charities and certain Canadian, Israeli, and Mexican charities"
+- **Symptom:** sa.gifts help defines charities without the U.S. requirement, and the sa.line11 prompt and help (leave out political gifts, raffle tickets, tuition, club dues, gifts to people, ...) do not leave out a gift made directly to a foreign church or charity. Such a gift is deducted on line 11; the deduction is overstated.
+- **Where:** interview/2025/questions.yaml sa.line11 (help), sa.gifts (help); forms/2025/sa.yaml sa.line11 (source); gift.deduction for property gifts
+- **Proposed fix:** Add to the sa.line11 leave-out list (and gift.deduction): gifts made directly to a charity organized abroad, except the Canadian, Israeli and Mexican charities the treaties allow (or refuse those). A gift through a U.S. charity that sends funds abroad still counts. Wording only.
+- **Severity:** medium
+- **Tags:** schedule-a, charity, completeness, wording
+
+## BUG-0804 — Line 8z taxable damages: amount question gives no rule for the emotional-distress medical-care exclusion, pre-1995 awards or attorney fees
+
+- **Caught by:** sampled completeness review oi8z#1.1 (xrel, 2026-11-15)
+- **Source:** p525 p. 32, Court awards and damages: "except for any damages you receive for medical care due to that emotional distress"; "If you receive damages under a written binding agreement, court decree, or mediation award that was in effect (or issued on or before) September 13, 1995, don't include in income any of those damages received on account of personal injuries or sickness"; included in income: "Attorney fees and costs (including contingent fees) where the underlying recovery is included in gross income"
+- **Symptom:** For kind taxable_damages with no physical injury (oi8z.injury No), oi8z.amount asks only 'How much of it is income for 2025?' with no help. A filer may enter the full award including the excludable medical-care part for emotional distress, or enter the award net of a contingent attorney fee (which belongs in income). The pre-1995 agreement exclusion is not mentioned.
+- **Where:** interview/2025/questions.yaml oi8z.amount (help when kind is taxable_damages), oi8z.injury
+- **Proposed fix:** Give oi8z.amount help for taxable damages: include the whole award, with any part your attorney kept; leave out the part paid for medical care of emotional distress. Refuse an award under an agreement, decree or award in effect on or before September 13, 1995 (rare), or name it in the oi8z.injury help.
+- **Severity:** low
+- **Tags:** schedule-1, line-8z, damages, completeness, wording
+
+## BUG-0805 — Schedule A: the other-use question asks 'improving' where the rule is 'substantially improve'
+
+- **Caught by:** release screen review gate:sa.has_mortgage_interest#1 finding 2 and false-no review gate:sa.has_mortgage_interest#1 finding 2, xrel lane (inc family), 2026-11-15
+- **Source:** i1040sca p. 8, Line 8, 'you didn't use all of your home mortgage proceeds from those loans to buy, build, or substantially improve your home'; Limits, 'used to buy, build, or substantially improve the home securing the loan'
+- **Symptom:** The interview prompt of sa.mortgage_other_use asks 'Was any of the money borrowed against your home used for something other than buying, building or improving it', and the help names only buying or building. A filer who spent home-equity money on repairs, upkeep or furnishings truthfully answers No; the refusal for limited interest is missed and the interest is deducted in full on line 8a.
+- **Where:** interview/2025/questions.yaml input sa.mortgage_other_use (prompt and help); the line source in forms/2025/sa.yaml already says 'substantially improve'
+- **Proposed fix:** Prompt: 'Was any of the money borrowed against your home used for something other than buying, building or substantially improving it (an addition or renovation that adds to its value, not repairs or furniture), such as paying off other debts?' Help: name repairs and furnishings as other uses.
+- **Severity:** medium
+- **Tags:** false-no, wording, schedule A, mortgage
+
+## BUG-0806 — Tips deduction: tipjob.listed reads as 'is all of the work on the list', so a mixed-occupation employee answers No
+
+- **Caught by:** release screen review gate:tipjob.listed#1 finding 0 and false-no review gate:tipjob.listed#1 finding 0, xrel lane (inc family), 2026-11-15
+- **Source:** i1040gi p. 103, 'If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list ... are considered qualified tips'
+- **Symptom:** tipjob.listed asks 'Is the work you got these tips for on the IRS list ...?' and the help says 'If the work is not on it, tips from this employer cannot be deducted'. An employee with tips from one employer for a listed and an unlisted job can answer No; tipjob.amount is then zero, the qualified tips are dropped from the deduction, and the mixed-tips refusal (tipjob.other_work) is never asked.
+- **Where:** forms/2025/tipjob.yaml tipjob.listed (source); interview/2025/questions.yaml tipjob.listed (help)
+- **Proposed fix:** Source: 'Did you get any of these tips for work on the IRS list of jobs that customarily get tips? ...'; help: 'If none of the work you got tips for is on it, tips from this employer cannot be deducted ...'. tipjob.other_work then catches the mixed case.
+- **Severity:** medium
+- **Tags:** false-no, wording, tips deduction
+
+## BUG-0807 — Schedule A: a home bought on a land contract is not named as owned, so line 5b and the seller-financed interest refusal can be skipped
+
+- **Caught by:** release false-no review gate:sa.home_asked#1 finding 2, xrel lane (inc family), 2026-11-15
+- **Source:** i1040sca p. 9, Line 8b, 'If you paid home mortgage interest to the person from whom you bought the home and that person didn't provide you a Form 1098'; p. 6, Line 5b, 'real estate you own'
+- **Symptom:** A buyer under a land contract or contract for deed, whose seller keeps title, may answer No to sa.home_owner and to sa.home_other ('a mortgage for a home that is in someone else's name'). sa.home_asked is then false: line 5b is zero and sa.mortgage_unreported is never asked, so the refusal for seller-financed interest is missed and the property tax deduction is dropped. Understated deduction; rare.
+- **Where:** interview/2025/questions.yaml sa.home_owner (help)
+- **Proposed fix:** Add to the sa.home_owner help: 'Count a home you are buying on a land contract or contract for deed, even if the seller still holds the deed.'
+- **Severity:** low
+- **Tags:** false-no, wording, schedule A
+
+## BUG-0808 — The winnings gate asks what was won in 2025, not what was received: lottery installments, sales of lottery rights and late-paid prizes are missed
+
+- **Caught by:** release screen and false-no reviews, gate:s1.winnings_any#1 (screen findings 0 to 3; false-no findings 0 to 7) and gate:s1.has_gambling#1 (false-no finding 4), xrel lane (inc family, L1), 2026-11-15
+- **Source:** p525 p. 33, Installment payments, 'if you win a state lottery prize payable in installments, you must include in your gross income the annual payments and any amounts you receive designated as interest on the unpaid installments'; i1040gi p. 91, Line 8b, 'a lump-sum payment from the sale of a right to receive future lottery payments'; p525 p. 35, Prize points, 'taxable in the year they're paid or made available to you'; p525 p. 35, Pulitzer, Nobel, and similar prizes; i1040gi p. 91, Line 8m
+- **Symptom:** s1.winnings_any asks 'In 2025, did you (or, on a joint return, your spouse) win money or a prize: from gambling, a lottery, a raffle, a contest or an award?'. A filer receiving a 2025 installment of an earlier lottery win, a lump sum for selling future lottery payments, USOPC prize money for the 2024 Games, or a 2024 prize delivered in 2025 truthfully answers No, and lines 8b, 8i (and the 8m refusal) are zero. The help also leaves out a losing year's gross winnings, recognition awards, prize points and sweepstakes.
+- **Where:** interview/2025/questions.yaml s1.winnings_any (prompt, help, tick); forms/2025/s1.yaml s1.winnings_any source; s1.gambling_winnings help
+- **Proposed fix:** Key the gate to receipt: 'In 2025, did you (or, on a joint return, your spouse) receive winnings, a prize or an award: from gambling, a lottery, a raffle, a sweepstakes, a contest or drawing, or in recognition of your work?' Help: 'Count it whenever it was won, including a yearly lottery installment and money for selling future lottery payments; count winnings even if you lost more than you won; count prize points you could use.' s1.gambling_winnings help adds lottery installments and the sale of future payments.
+- **Severity:** medium
+- **Tags:** false-no, screen, wording, schedule-1
+
+## BUG-0809 — The professional-gambler screen asks whether gambling is 'the way a living is made', narrower than a trade or business
+
+- **Caught by:** release screen reviews, s1.gambling_pro#1 finding 1 and gate:s1.has_gambling#1 finding 3, xrel lane (inc family, L1), 2026-11-15
+- **Source:** p525 p. 33, 'Engaging in gambling activities as a trade or business is considered self-employment. If you're in the trade or business of gambling, use Schedule C (Form 1040).'
+- **Symptom:** The interview asks s1.gambling_pro as 'Is gambling your (or, on a joint return, your spouse's) business, the way a living is made?'. A filer who gambles regularly and continuously for income as a side business beside a job truthfully answers No; the winnings stay on line 8b and the Schedule C refusal (and SE tax) is missed. The form-line source says 'in the trade or business of gambling (a professional gambler)', so the screen review did not see the asked wording.
+- **Where:** interview/2025/questions.yaml s1.gambling_pro prompt
+- **Proposed fix:** Ask: 'Do you (or, on a joint return, your spouse) gamble as a business: regularly and steadily to earn income, even part time beside a job? Fantasy sports and poker count as gambling.'
+- **Severity:** low
+- **Tags:** screen, wording, schedule-1
+
+## BUG-0810 — The canceled-debt screen as asked drops student loans, gifts, seller price reductions, stockholder debts and most Form 982 exclusions
+
+- **Caught by:** check of the asked wording while ruling s1.cod_unsupported#1 (release screen review), xrel lane (inc family, L1), 2026-11-15
+- **Source:** p4681 p. 3, General Rules, 'There are several exceptions and exclusions that may result in part or all of a canceled debt being nontaxable'; p4681 p. 4, Exceptions (student loans, gifts, purchase price reduction); p4681 p. 6, Exclusions
+- **Symptom:** forms/2025/s1.yaml s1.cod_unsupported lists seven items, including 'it was a student loan, was canceled as a gift or inheritance, was a reduction of the price of property you bought from the seller, or was owed to a corporation in which you hold stock' and 'otherwise excluded from income (Form 982, for example qualified principal residence indebtedness)'. The interview prompt asks only 'you were bankrupt, or owed more than everything you owned; it was a business, rental or farm debt; a home or other property was taken back or given up; it included interest you could have deducted; you were not personally liable; or you owed it with someone not on this return'. A forgiven student loan (excluded through 2025), a canceled debt that was a gift, or a principal-residence workout without foreclosure answers No and is taxed on line 8c. The screen review is shown the form-line source, not the asked prompt.
+- **Where:** interview/2025/questions.yaml s1.cod_unsupported prompt
+- **Proposed fix:** Add to the prompt: 'it was a student loan; it was forgiven as a gift or inheritance; it was a price cut from the seller of something you bought; it was owed to a company you own shares in; or it was on your main home's mortgage'. Then rerun the screen review on the asked wording.
+- **Severity:** medium
+- **Tags:** screen, wording, redraft, schedule-1
+
+## BUG-0811 — Alimony wording: the gate leaves out payments for the spouse and unallocated support, and the amount questions lost 'cash payments only' and the non-alimony parts
+
+- **Caught by:** release screen and false-no reviews, gate:s1.alimony_any#1 (screen finding 0; false-no findings 0, 1) and s1.alimony_unsupported#1 (finding 2), xrel lane (inc family, L1), 2026-11-15
+- **Source:** i1040gi p. 95, Line 19a, 'payments to or for your spouse or former spouse'; p504 p. 13, Payments not alimony, 'Noncash property settlements, Payments that are your spouse's part of community income ..., Payments to keep up the payer's property, or Use of the payer's property'
+- **Symptom:** s1.alimony_any defines alimony as 'support paid to a husband or wife after a divorce or separation' with help naming only child support and property division; a payer whose decree sends payments to a landlord or lender, or a party to unallocated family support, may answer No. s1.alimony_received and s1.alimony_paid ask 'How much alimony did you ... receive/pay ...?' with 'Give 0 if none', without the 'cash payments only' and the exclusions BUG-0240 had put in them ('cash payments only' survives in the form-line source; the exclusions in neither).
+- **Where:** interview/2025/questions.yaml s1.alimony_any (prompt, help), s1.alimony_received and s1.alimony_paid (help)
+- **Proposed fix:** Gate: 'pay or receive alimony or separate maintenance: support paid to or for a husband or wife after a divorce or separation, including payments to a landlord, lender or school for them'. Help: 'Child support fixed by the agreement and a division of property are not alimony; a combined family-support payment not split by the agreement may be.' Amount help: 'Count cash payments only; leave out child support, your spouse's share of community income, and payments to keep up or use the payer's own property.'
+- **Severity:** low
+- **Tags:** false-no, screen, wording, redraft, schedule-1
+
+## BUG-0812 — Net operating loss questions miss a joint carryback year, and scope.nol does not name an excess business loss carried forward
+
+- **Caught by:** release false-no reviews, gate:s1.nol_separate#1 (findings 0, 2) and gate:s1.nol_joint#1 (finding 1), xrel lane (inc family, L1), 2026-11-15
+- **Source:** i172 p. 3, Change in Marital Status, 'all years involved in figuring NOL carrybacks and carryovers', and Joint to separate returns, 'filed a joint return for any or all of the tax years involved in figuring the NOL carryover'; i172 p. 4, Excess Business Loss, 'Excess business losses that are disallowed are treated as an NOL carryover to the following tax year'
+- **Symptom:** s1.nol_was_joint and s1.nol_not_married ask about 'the year any of the loss arose, or any year from then to 2024/2025'; a farming loss carried back to an earlier joint year and then forward is a truthful No and the carryover is not divided. scope.nol (tick 'A loss still being carried into 2025 (a net operating loss)', help 'A loss bigger than that year's income ...') does not name a loss held back by the Form 461 limit, so such a filer may answer No and lose the deduction.
+- **Where:** interview/2025/questions.yaml s1.nol_was_joint, s1.nol_not_married (tick), scope.nol (help); forms/2025/s1.yaml sources of the two marital inputs
+- **Proposed fix:** Marital ticks: 'A joint return was filed for a year it arose, a year it was carried back to, or since' and 'You two were not married to each other in a year it arose or was carried back to, or since'. scope.nol help adds: 'It includes a business loss held back by the yearly limit on excess business losses (Form 461).'
+- **Severity:** low
+- **Tags:** false-no, wording, schedule-1
+
+## BUG-0813 — The unemployment gate's help points to the form, not the payment
+
+- **Caught by:** release false-no review, gate:s1.uc_any#1 (findings 0, 2, 3, 4), xrel lane (inc family, L1), 2026-11-15
+- **Source:** i1040gi p. 89, Line 7, 'the total unemployment compensation paid to you in 2025', 'your state may issue an electronic Form 1099-G instead of it being mailed to you', and 'If you received an overpayment ... subtract the amount you repaid'
+- **Symptom:** s1.uc_any's only help is 'The state sends Form 1099-G for them.' A filer with no form in the mail (posted online), with benefits offset or intercepted, paid back benefits for 2024 weeks in 2025, or who repaid an overpayment in 2025 may answer No, and line 7 is zero.
+- **Where:** interview/2025/questions.yaml s1.uc_any help
+- **Proposed fix:** Help: 'Count all benefits paid for you in 2025, including back pay for earlier weeks and amounts withheld, offset or later paid back. The state sends Form 1099-G, often only online.'
+- **Severity:** low
+- **Tags:** false-no, wording, schedule-1
+
+## BUG-0814 — The Alaska dividend gate has no help: a garnished or redirected dividend reads as not received
+
+- **Caught by:** release false-no review, gate:s1.alaska_any#1 (findings 1, 2), xrel lane (inc family, L1), 2026-11-15
+- **Source:** p525 p. 31, Alaska Permanent Fund dividend, 'If you received a payment from Alaska's mineral income fund (Alaska Permanent Fund dividend), report it as income on Schedule 1 (Form 1040), line 8g'
+- **Symptom:** s1.alaska_any asks 'In 2025, did you (or, on a joint return, your spouse) get an Alaska Permanent Fund dividend?' with no help. A filer whose dividend was garnished or levied in full, or directed in full to Pick.Click.Give or an Alaska 529 account, may answer No, and line 8g is zero.
+- **Where:** interview/2025/questions.yaml s1.alaska_any (help)
+- **Proposed fix:** Help: 'Answer Yes even if all of it was garnished, taken for a debt, or sent to a charity or college savings account at your request; it is still your income.'
+- **Severity:** low
+- **Tags:** false-no, wording, schedule-1
+
+## BUG-0815 — Schedule A: the other-state-tax gate does not name a prior-year refund applied to 2025, or withholding from income other than a pension, unemployment or winnings
+
+- **Caught by:** screen and false-no reviews of gate sa.state_tax_other_any (xrel inc, claude-opus-5-5)
+- **Source:** i1040sca p. 3, Line 5a, 'including any part of a prior year refund that you chose to have credited to your 2025 state or local income taxes'; 'Forms W-2G, 1099-G, 1099-R, 1099-MISC, and 1099-NEC may also show state and local income taxes withheld'
+- **Symptom:** A filer whose only 2025 estimated tax is a 2024 state overpayment applied to 2025, or whose only other withholding is on a 1099-NEC, 1099-MISC or IRA 1099-R, can answer the gate No; sa.state_tax_other_if_any is zero and line 5a is understated. The gated sa.state_tax_other lists both amounts, but only behind the gate.
+- **Where:** interview/2025/questions.yaml sa.state_tax_other_any (prompt and help); forms/2025/sa.yaml sa.state_tax_other_any source
+- **Proposed fix:** Prompt: '... pay state or local income tax in another way, such as estimated payments (including an earlier year's refund you had applied to 2025) or a payment with a state return, or pay into a state disability or family leave fund?' Help: 'Count state tax taken out of any payment other than wages: a pension or IRA (1099-R), unemployment (1099-G), winnings (W-2G), or fees on a 1099-NEC or 1099-MISC; tax paid with an extension or after a state notice; tax a partnership or S corporation paid for you; ...' (rest as now).
+- **Severity:** medium
+- **Tags:** schedule-a; gate; wording; false-no
+
+## BUG-0816 — Schedule A: the personal property tax gate's help says a weight-based fee does not count, missing the value-based part of a mixed fee
+
+- **Caught by:** screen and false-no reviews of gate sa.personal_property_tax_any (xrel inc, claude-opus-5-5)
+- **Source:** i1040sca p. 6, Line 5c, 'Part of the fee was based on the car's value and part was based on its weight. You can deduct only the part of the fee that was based on the car's value.'
+- **Symptom:** The gate help 'A flat fee, or one based on weight, does not count' leads a filer with a registration fee based partly on value and partly on weight to answer No; the value-based part is dropped from line 5c. The split is explained only in sa.line5c's help, behind the gate.
+- **Where:** interview/2025/questions.yaml sa.personal_property_tax_any help
+- **Proposed fix:** Help: 'Some states and towns charge it with the yearly registration of a car. If any part of the yearly charge depends on the value, answer Yes, even if other parts are flat or based on weight; you will count only the value-based part. A U.S. territory's tax counts too.'
+- **Severity:** low
+- **Tags:** schedule-a; gate; wording; false-no
+
+## BUG-0817 — Schedule A: a filer with 2025 gifts and an earlier year's carryover is led to answer sa.charity_limited No
+
+- **Caught by:** false-no review of gate sa.gifts (xrel inc, claude-opus-5-5), finding 1
+- **Source:** i1040sca p. 11, Line 13, 'You may have contributions that you couldn't deduct in an earlier year because they exceeded the limits ... you have 5 years to use contributions that were limited in an earlier year.'
+- **Symptom:** When sa.gifts is Yes the carryover is asked only inside sa.charity_limited: 'Were your gifts to charity so large that the law limits what you can deduct for 2025, or is any of them carried over from an earlier year? (A limit can apply only when the year's gifts are more than 20% of your income.)' 'Any of them' reads as the 2025 gifts, and the parenthetical denies a limit when the year's gifts are small. A No drops line 13 without the refusal. sa.gift_carryover's plain wording is asked only when sa.gifts is No.
+- **Where:** forms/2025/sa.yaml sa.gift_carryover_if_no_gifts, sa.charity_limited; interview/2025/questions.yaml sa.charity_limited
+- **Proposed fix:** Ask sa.gift_carryover of every filer (drop the sa.gifts=false guard; refuse line 13 on it) and remove the carryover clause from sa.charity_limited, or reword sa.charity_limited: 'Were your 2025 gifts to charity so large that the law limits what you can deduct (this can happen only when they are more than 20% of your income)? Or do you have a gift from an earlier year that was too large to deduct in full then, with the rest carried over?'
+- **Severity:** medium
+- **Tags:** schedule-a; screen; wording; false-no; charity
+
+## BUG-0818 — Charitable property: gift.deduction's wording omits the reductions for capital gain property and the rule on the right to use property
+
+- **Caught by:** false-no review of gate sa.gifts (finding 2) and screen review of sa.charity_limited (finding 3) (xrel inc, claude-opus-5-5)
+- **Source:** i1040sca p. 10, Limit on the amount you can deduct, item 3, 'You gave gifts of property that increased in value or gave gifts of the use of property' (see Pub. 526); p526, 'The property (other than qualified appreciated stock) is contributed to certain private nonoperating foundations', 'Is put to an unrelated use', 'A contribution of the right to use property ... isn't deductible.'
+- **Symptom:** gift.deduction asks 'usually what the things would have sold for when you gave them', with help covering only property held a year or less or that would give ordinary income. Capital gain property given to a private nonoperating foundation (other than qualified appreciated stock), or tangible personal property put to an unrelated use, is entered at value instead of reduced; a gift of the use of property is not excluded. Line 12 is overstated. The form source's 'after required valuation/basis reductions' did not reach the interview wording.
+- **Where:** interview/2025/questions.yaml gift.deduction (help); possibly gift.special
+- **Proposed fix:** Add to gift.special: 'it went to a private foundation that is not an operating foundation (unless it is publicly traded stock)', 'it is art or other tangible property the charity will not use for its charitable purpose', 'you gave only the use of the property'; or state the reductions in gift.deduction's help.
+- **Severity:** low
+- **Tags:** charity; wording; overstatement
+
+## BUG-0819 — Schedule A: medical costs an estate pays after death for the decedent's final return are not reached by the medical gate
+
+- **Caught by:** false-no review of gate sa.medical_asked (xrel inc, claude-opus-5-5), finding 2
+- **Source:** i1040sca p. 1, 'Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return'; p502, Whose Medical Expenses Can You Include, Decedent, 'paid within the 1-year period beginning with the day after the date of death'
+- **Symptom:** sa.medical_any asks costs 'you (or ... your spouse) paid in 2025'; an estate's payment in 2026 for 2025 care is truthfully No, and sa.medical_premiums is No for bills. sa.line1's help names the estate rule but is behind the gate. Line 1 is dropped on a final return.
+- **Where:** interview/2025/questions.yaml sa.medical_any help
+- **Proposed fix:** Add to sa.medical_any's help: 'For the final return of a person who died in 2025, count medical costs their estate paid within a year after the death.'
+- **Severity:** low
+- **Tags:** schedule-a; gate; wording; false-no; decedent
+
+## BUG-0820 — Schedule A: sa.spouse_extra's wording omits the definition of blind and a spouse who died after 65, in a three-part conjunction
+
+- **Caught by:** false-no review of gate sa.mfs_spouse_not_itemizing (xrel inc, claude-opus-5-5), findings 1 to 3
+- **Source:** i1040gi p. 33, Line 12d; Blindness, 'You can't see better than 20/200 in your better eye ... or Your field of vision is 20 degrees or less'; Death of spouse in 2025, 'Your spouse is considered age 65 at the time of death.'
+- **Symptom:** 'Did your husband or wife have no income in 2025, and are they filing no 2025 return, and were they born before January 2, 1961, or blind at the end of 2025?' A filer whose separated spouse meets the 20/200 test, or who died in 2025 after 65, or who misreads 'are they filing no 2025 return', answers No; the spouse's line 12d boxes are left off (no refusal) and the standard deduction is understated.
+- **Where:** interview/2025/questions.yaml sa.spouse_extra
+- **Proposed fix:** Reword: 'Was your husband or wife born before January 2, 1961, or blind at the end of 2025 (including unable to see better than 20/200 in the better eye with glasses, or a field of vision of 20 degrees or less)? Answer only if they had no income in 2025 and no 2025 return is filed for them. A spouse who died in 2025 counts if they reached 65 before death.'
+- **Severity:** low
+- **Tags:** schedule-a; mfs; wording; false-no
+
+## BUG-0821 — s2.lookback asks only about a long-term contract finished in 2025; look-back interest for a contract adjusted in 2025 is missed
+
+- **Caught by:** xrel screen and false-no reviews of gate s1.has_sc (2025, subject 2dd8d5b9d4cc): screen finding 6, false-no finding 7; adjudicated by lane xrel-inc
+- **Source:** i6251 (2025) p. 7, Line 2p: "you may owe or be entitled to a refund of interest for the tax year the contract is completed or adjusted. For details, see Form 8697"; f1040s2 (2025) line 17n
+- **Symptom:** A Schedule C filer whose long-term contract was completed before 2025 but whose contract price or costs were adjusted in 2025 truthfully answers No to 'Did you ... finish a contract in 2025 that ran over more than one tax year', so the Form 8697 look-back interest (Schedule 2 line 17n) is not refused and is dropped.
+- **Where:** forms/2025/s2.yaml s2.lookback (input wording and the helper label of s2.lookback_if_business); interview/2025/questions.yaml entry for s2.lookback
+- **Proposed fix:** Reword the question: 'Did you (or, on a joint return, your spouse) finish in 2025, or have the price or costs changed in 2025 on, a contract that ran over more than one tax year with its income reported as the work went on?' Keep the Form 8866 sentence in the help.
+- **Severity:** low
+- **Tags:** s2, screen, false-no, wording, xrel
+
+## BUG-0822 — s1.hobby_any asks whether the filer 'made money' from a hobby; a hobby that lost money, or paid in kind, reads as No and its receipts are dropped from line 8j
+
+- **Caught by:** xrel screen and false-no reviews of s1.hobby_any (2025, subject 5bf22f50d936): screen findings 0 and 3, false-no findings 0 and 1; adjudicated by lane xrel-inc
+- **Source:** p525 (2025) p. 31, Activity not for profit: "You must include on your return income from an activity, even if you don't expect to make a profit from that activity ... Enter this income on Schedule 1 (Form 1040), line 8j"
+- **Symptom:** The gate asks 'did you ... make money from a hobby or pastime that is not run as a business?'. 'Make money' is commonly read as coming out ahead; a filer whose hobby receipts were below its costs (or who was paid in goods or digital assets) answers No, and line 8j drops gross receipts that the amount question's own help ('the costs of a hobby are not subtracted') says to include.
+- **Where:** interview/2025/questions.yaml prompt and tick of s1.hobby_any (and the forms/2025/s1.yaml label of the input if it is regenerated from the prompt)
+- **Proposed fix:** Prompt: 'In 2025, did you (or, on a joint return, your spouse) receive any money, goods or other payment from a hobby or pastime that is not run as a business, even if it cost you more than it brought in?' Tick: 'Anything received from a hobby or pastime not run as a business'. In s1.hobby_income help add: 'Include the fair market value of goods or services received.'
+- **Severity:** medium
+- **Tags:** s1, line 8j, gate wording, false-no, screen, xrel
+
+## BUG-0823 — s1.inmate_wages asks about work done 'while in a jail or prison'; an inmate on work release or in another correctional facility can answer No
+
+- **Caught by:** xrel screen and false-no reviews of s1.inmate_wages (2025, subject 5d9c62405e56): screen findings 0 and 1, false-no findings 0, 1 and 3; adjudicated by lane xrel-inc
+- **Source:** i1040gi (2025) p. 92, Line 8u: "Enter the amount that you received for services performed while an inmate in a penal institution. You may receive Form(s) W-2 or Form(s) 1099."; p. 23, Line 1a: "If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a"; p596 (2025): "Amounts received for services performed while an inmate in a penal institution aren't earned income when figuring the EIC."
+- **Symptom:** The test is the filer's status (an inmate of a penal institution), but the gate asks about work 'done while in a jail or prison'. An inmate paid for work-release work outside the facility, or held in a correctional camp, detention or reentry center, can truthfully answer No: pay on a Form 1099 is then dropped, and pay on a W-2 stays on line 1a, where it counts as earned income for the EIC.
+- **Where:** interview/2025/questions.yaml prompt and tick of s1.inmate_wages; help of s1.inmate_amount
+- **Proposed fix:** Prompt: 'In 2025, were you (or, on a joint return, your spouse) paid for work done while serving time as an inmate, in a jail, prison or other correctional facility, including work release?' Help of s1.inmate_amount: 'Count pay credited to an inmate or trust account and amounts taken out for fees, fines or restitution.' Coordinate with BUG-0893 (W-2 box 1 counted twice).
+- **Severity:** low
+- **Tags:** s1, line 8u, gate wording, EIC, false-no, screen, xrel
+
+## BUG-0824 — s1.jury_any asks whether the filer was 'paid for serving on a jury'; a juror paid for days in the jury pool but never seated can answer No
+
+- **Caught by:** xrel screen and false-no reviews of s1.jury_any (2025, subject 40848e3eabfb): screen finding 0, false-no findings 0 and 2; adjudicated by lane xrel-inc
+- **Source:** i1040gi (2025) p. 91, Line 8h: "Enter any jury duty pay and see the instructions for line 24a"; p525 (2025) p. 34: "Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h."
+- **Symptom:** Line 8h takes any jury duty pay, including the attendance fee for days spent in the jury pool. A filer dismissed during selection was never 'serving on a jury' and can answer No, dropping the fees. The gate also does not say that pay signed over to an employer counts (only the amount question s1.jury_pay does).
+- **Where:** interview/2025/questions.yaml prompt and tick of s1.jury_any
+- **Proposed fix:** Prompt: 'In 2025, did you (or, on a joint return, your spouse) get any pay for jury duty, including days you reported for jury selection and were not chosen, and pay you gave to your employer?' Tick: 'Pay for jury duty, even if you were not chosen or gave it to an employer'.
+- **Severity:** low
+- **Tags:** s1, line 8h, gate wording, false-no, screen, xrel
+
+## BUG-0825 — s1.scholarship_any asks about 'a scholarship, a fellowship or a grant for study'; a research fellowship or a stipend paid to the filer can read as No
+
+- **Caught by:** xrel screen and false-no reviews of s1.scholarship_any (2025, subject 199aa4d69673): screen finding 0, false-no findings 0 and 1; adjudicated by lane xrel-inc
+- **Source:** i1040gi (2025) p. 92, Line 8r: "Enter the amount of scholarship and fellowship grants not reported on Form W-2. However, if you were a degree candidate, include on line 8r only the amounts you used for expenses other than tuition and course-related expenses. For example, amounts used for room, board, and travel must be reported on line 8r"
+- **Symptom:** The trailing 'for study' can be read as qualifying all three nouns, and the help names only Pell grants and grants paid to the school. A postdoctoral researcher with a research fellowship, or a graduate student paid a monthly stipend from a fellowship or training grant with no W-2, can answer No; line 8r then drops the whole fellowship or the room-and-board part.
+- **Where:** interview/2025/questions.yaml prompt, tick and help of s1.scholarship_any
+- **Proposed fix:** Prompt: 'In 2025, did you (or, on a joint return, your spouse) get a scholarship, fellowship or grant, for study or research, that is not on a W-2?' Help: 'Count Pell grants and other grants paid to you or straight to the school, and fellowship stipends or living allowances paid to you, whether or not you were a student.'
+- **Severity:** low
+- **Tags:** s1, line 8r, gate wording, false-no, screen, xrel
+
+## BUG-0826 — s2.options_any asks only about stock options 'from an employer'; options exercised by a director, contractor, heir or former spouse never reach line 8k
+
+- **Caught by:** xrel screen and false-no reviews of s1.stock_options_if_options (2025, subject 47d3149cdfbc): screen finding 0, false-no findings 1, 2 and 3; adjudicated by lane xrel-inc
+- **Source:** i1040gi (2025) p. 91, Line 8k: "Enter any income from the exercise of stock options not otherwise reported on Form 1040 or 1040-SR, line 1h."
+- **Symptom:** Line 8k takes any income from the exercise of stock options. The parent gate s2.options_any asks 'did you ... use stock options from an employer to buy shares, or sell shares bought that way?'. A filer who exercised options inherited from a deceased employee, or received in a divorce, truthfully answers No (no employer of theirs granted them), and line 8k drops the income reported on a Form 1099-MISC. A nonemployee director may also answer No, though that income is usually Schedule C income.
+- **Where:** interview/2025/questions.yaml prompt and help of s2.options_any (forms/2025/s2.yaml label of the input)
+- **Proposed fix:** Prompt: 'In 2025, did you (or, on a joint return, your spouse) use stock options given for work, by an employer or a company you served, to buy shares, or sell shares bought that way? Count options you inherited or received in a divorce.' Keep the ESPP and restricted-stock help.
+- **Severity:** low
+- **Tags:** s1, s2, line 8k, gate wording, false-no, screen, xrel
+
+## BUG-0827 — A foreign tax carryover into 2025 through a 2024 deduction or no-Form-1116 election year is entered as filed, not reduced
+
+- **Caught by:** sampled completeness review of f1116sb (claim f1116sb#1.1, claude-opus-5-5), adjudicated in lane xrel (fork inv), 2026-11-15.
+- **Source:** i1116 p. 19, Line 10, "You can't carry a credit back to a tax year for which you claimed a deduction, rather than a credit ... However, you must reduce the amount of any carryback or carryforward by the amount that you would have used had you chosen to claim a credit rather than a deduction in that year"; p514 p. 38 (the same rule, and "The carryback-carryforward period isn't extended" for an election year).
+- **Symptom:** f1116sb line 1 takes each year's carryover as line 8 of the 2024 Schedule B (f1116sbyr.amount; ftc.carryover help: "your 2024 Schedule B (Form 1116) shows it on line 8"). A filer who deducted foreign tax in 2024, or used the election to claim the credit without Form 1116, filed no 2024 Schedule B, so the carryover from 2023 or earlier is entered from an older Schedule B without the reduction for what a 2024 credit would have used (deduction year) and without moving each column one year on (election year). f1116sb.prior_year, which asks how 2024 treated foreign tax, is asked only when a 2025 carryover is generated (f1116sb.prior_year_if_excess), not when one is brought in, and f1116sb.changed names carrybacks, redeterminations and audits only. The credit (Form 1116 line 10 and line 35) can be overstated.
+- **Where:** forms/2025/f1116sb.yaml (f1116sb.prior_year_if_excess, f1116sb.changed), forms/2025/f1116sbyr.yaml (f1116sbyr.amount), interview/2025/questions.yaml (ftc.carryover, $f1116sbyr help).
+- **Proposed fix:** Ask f1116sb.prior_year also when a carryover is claimed (ftc.carryover_if_asked), and refuse on f1116.line35 when a carryover is claimed and 2024 was a deduction year or an election year (the answers "the tax deducted or no credit taken" and "a credit without Form 1116"); or name both in the f1116sb.changed question so a Yes refuses.
+- **Severity:** low
+- **Tags:** completeness; question-incomplete; f1116sb; open
+
+## BUG-0828 — A joint return made under a section 6013(g) election figures the NIIT on combined income, without the NIIT election or its checkbox
+
+- **Caught by:** sampled completeness review of f8960 (claim f8960#1.2, claude-opus-5-5), adjudicated in lane xrel (fork inv), 2026-11-15.
+- **Source:** i8960 p. 7, Line 1 checkbox, "If you're making the section 6013(g) or 6013(h) election ... check the corresponding checkbox"; i8960 p. 4, Filing separately with nonresident spouse for NIIT purposes, "If you made a section 6013(g) or 6013(h) election to file a joint return for regular income tax purposes, but don't elect to apply the joint return election for NIIT purposes, then, for NIIT purposes, you'll be treated under the default method as married filing separately ... uses the applicable threshold for married filing separately ($125,000)".
+- **Symptom:** Form 8960 has no item for the Part I election checkboxes and no question about the election, and f8960.yaml names no nonresident spouse. The only screen is scope.nonresident ("were you (or, on a joint return, your spouse) a nonresident alien, that is, neither a U.S. citizen nor a U.S. resident for tax?"); a spouse treated as a resident under a section 6013(g) election can truthfully answer No (household.yaml already speaks of "an election to treat your spouse as a resident alien"). The tool then figures the NIIT on the couple's combined NII and MAGI with the $250,000 threshold, which is right only if the NIIT election is made; without it the citizen spouse's own NII and MAGI and the $125,000 threshold apply. A section 6013(h) couple (a spouse nonresident for part of 2025) answers Yes and is refused. Not executed; read from the lines.
+- **Where:** forms/2025/f8960.yaml (f8960.unsupported, line 1 to line 17); forms/2025/scope.yaml (scope.nonresident).
+- **Proposed fix:** Say in scope.nonresident's help that a spouse treated as a resident under a section 6013(g) election counts as a nonresident alien here (a Yes refuses), or add a question to f8960.unsupported: "Is your spouse a nonresident alien you chose to treat as a U.S. resident (section 6013(g))?" with a refusal on Form 8960.
+- **Severity:** low
+- **Tags:** completeness; question-incomplete; f8960; open
+
+## BUG-0829 — The basis and holding-period questions omit a gifted digital asset without the donor's records and the unstated-interest reduction
+
+- **Caught by:** sampled completeness review of sales (claims sales#1.3 and sales#1.4, claude-opus-5-5), adjudicated in lane xrel (fork inv), 2026-11-15.
+- **Source:** p550 p. 60, Basis of digital assets received as a gift, "If you do not have any documentation to substantiate the donor's basis, then your basis is zero"; p550 p. 82, Holding period of digital assets received as a gift, "if you do not have documentation substantiating that person's holding period, then your holding period begins the day after you receive the gift"; p550 p. 59, Unstated interest, "the basis of your property is your stated purchase price, minus the amount considered to be unstated interest".
+- **Symptom:** (1) sales.correct_basis gives the gift rules ("generally the donor's adjusted basis") and says nothing of a gifted digital asset whose donor's basis the filer cannot document, whose basis is zero; the interview prompt says "If it was a gift, usually what the giver paid". (2) sales.box's guidance says a gift with the donor's basis takes the donor's holding period, without the digital-asset exception, so such a sale can be classed long-term when it is short-term. (3) sales.correct_basis does not reduce the basis of property bought on a time-payment plan with little or no interest by the unstated interest. Each overstates basis or misclasses the term, so the gain or its rate can be understated. Not executed; read from the questions.
+- **Where:** forms/2025/sales.yaml (sales.correct_basis, sales.box); interview/2025/questions.yaml (sales.correct_basis, sales.box).
+- **Proposed fix:** Add to sales.correct_basis's gift bullet "for a digital asset received as a gift, zero if you have no record of the giver's basis" and a bullet "for property bought on a time-payment plan charging little or no interest, the stated price less the unstated interest (Pub. 537)"; add to sales.box's gift bullet "for a digital asset without a record of the giver's holding period, from the day after you received it".
+- **Severity:** low
+- **Tags:** completeness; question-incomplete; sales; open
+
+## BUG-0830 — The less-common-boxes question excludes distributions received without a Form 1099-DIV and a share of a form in another name, which the boxes it opens count
+
+- **Caught by:** sampled false-no reviews of the gates div.other_boxes_if_dividends, div.has_return_of_capital, div.capital_gain_boxes, div.ordinary_boxes and div.any (claude-opus-5-5), adjudicated in lane xrel (fork inv), 2026-11-15.
+- **Source:** f1099div p. 5, Box 3, "Any amount received in excess of your basis is taxable to you as capital gain"; Boxes 9 and 10, "Show cash and noncash liquidation distributions"; Nominees, "If this form includes amounts belonging to another person, you are considered a nominee recipient"; i1040gi p. 26, "if you received dividends not reported on Form 1099-DIV".
+- **Symptom:** div.other_boxes asks "Look at your (or, on a joint return, your spouse's) Forms 1099-DIV for 2025. Does any of them show an amount in box 2b, 2c, 2d, 2e, 2f, 3, 9, 10 or 13?" and its help says "If you have no Form 1099-DIV, answer No." The box questions it opens (div.box2b to div.box13) say "Include your share of amounts paid in someone else's name, and any amount received without a form." A shareholder of a closely held or foreign corporation that paid a return of capital above basis or a liquidating distribution without a form, or a co-owner whose share of a box 2b or 2d amount is on a form in another person's name, answers No, so the box 3 basis refusal (div.basis_reconciled), the liquidation boxes and the 25% and 28% rate amounts are never reached. The redraft also shortened div.any to "own shares of a company or a fund outside a retirement account, or get a Form 1099-DIV", dropping the earlier words on distributions received without a form, which earlier rulings relied on. Not executed; read from the questions.
+- **Where:** forms/2025/div.yaml (div.other_boxes, div.any); interview/2025/questions.yaml (div.other_boxes help).
+- **Proposed fix:** Reword div.other_boxes to ask whether any Form 1099-DIV (including one in another person's name that includes your share), or any distribution received without a form, shows or includes a return of capital, a liquidation distribution, or an amount in boxes 2b to 2f or 13; replace the help "If you have no Form 1099-DIV, answer No" with "A distribution without a form counts: answer for what a Form 1099-DIV would show".
+- **Severity:** medium
+- **Tags:** false-no; question-narrow; div; open
+
+## BUG-0831 — The foreign-connection gate questions are narrower than the Schedule B, Form 8938, Form 3520 and Form 5471 questions they open
+
+- **Caught by:** sampled screen and false-no reviews of the gates sb.foreign_any, sb.foreign_company_any and sb.foreign_trust_any (claude-opus-5-5), adjudicated in lane xrel (fork inv), 2026-11-15.
+- **Source:** fincen114 p. 5, Financial Interest, a corporation, partnership or trust in which the United States person owns more than 50 percent; i8938 p. 8, "If you are the owner of a disregarded entity, you have an interest in any specified foreign financial assets owned by the disregarded entity" and the same for a grantor trust; cfr-26-301-7701-7 p. 4, Control, "with no other person having the power to veto any of the substantial decisions"; i1040sb p. 3, Line 8, "a loan of cash or marketable securities is generally considered to be a distribution" and "grantor of, or transferor to, a foreign trust"; i1040sb p. 2, Form 5471, "10% or more of the total (a) value ... or (b) combined voting power".
+- **Symptom:** The gated questions (sb.line7a, sb.fbar_required, sb.form8938, sb.line8, sb.form5471) and their help are wider than the gate questions that open them, and the help that widens them is shown only after a Yes. (1) sb.account_any and sb.asset_any ask what "you" had or owned; an account of a U.S. company, partnership or trust the filer owns more than half of, and assets held by a disregarded LLC or a grantor trust, are named only in sb.line7a's help or nowhere. (2) sb.trust_any ("anything to do with a trust ... outside the United States or has a trustee abroad, as the person who set it up, gave to it, or may receive from it") misses a trust that is foreign by the control test (a foreign protector's veto), a sale or loan to the trust, a loan or free use received from it, receipt through an intermediary, and a connection that ended in 2025 (present tense); sb.line8 names all of these. (3) sb.company_any ("an owner, alone or with your family, of 10% or more of one") does not name voting power, shares held through entities or options, or a company in a U.S. territory, which sb.form5471's prompt and help count. A truthful No skips a refusal (FBAR, Form 8938, Form 3520, Form 5471) and the line 7a and line 8 answers. Not executed; read from the questions.
+- **Where:** forms/2025/sb.yaml (sb.account_any, sb.asset_any, sb.trust_any, sb.company_any); interview/2025/questions.yaml (their help).
+- **Proposed fix:** Carry the gated questions' widening words into the gates: in sb.account_any's help, "count an account of a company, partnership or trust you own more than half of"; in sb.asset_any's help, "count what a single-member LLC or a living trust of yours holds"; reword sb.trust_any to "In 2025, did you have any tie to a trust or foundation that may be foreign (one abroad, with a trustee abroad, or in which anyone abroad can veto decisions): set it up, gave, sold or lent to it, or received anything from it, directly or through someone else?"; in sb.company_any say "10% or more of its value or votes, counting shares held through entities or options" and "a company organized in a U.S. territory counts".
+- **Severity:** low
+- **Tags:** screen; false-no; question-narrow; sb; open
+
+## BUG-0832 — The bond question's help excludes certificates of deposit, and the nominee question speaks only of joint returns
+
+- **Caught by:** sampled false-no reviews of the gates sb.has_income and sb.bonds_any_if_income, and the screen of sb.bonds_any_if_income (claude-opus-5-5), adjudicated in lane xrel (fork inv), 2026-11-15.
+- **Source:** i1040sb p. 2, "When you buy bonds between interest payment dates and pay accrued interest to the seller ... 'Accrued Interest'", "If you are reporting OID in an amount less than the amount shown in box 1 or box 8 of Form 1099-OID ... 'OID Adjustment'", "Amortizable bond premium ... 'ABP Adjustment'"; i1040sb p. 1, Nominees, "If you received a Form 1099-INT that includes interest you received as a nominee (that is, in your name, but the interest actually belongs to someone else) ... 'Nominee Distribution'".
+- **Symptom:** (1) sb.bonds_any's help says "Interest from a bank account, a certificate of deposit or a fund is not what this asks about", so a holder of a brokered or long-term certificate of deposit with bought accrued interest, bond premium (Form 1099-INT box 11 or 13), market discount (box 10) or a Form 1099-OID acquisition premium answers No and never reaches sb.bond_special, whose list names these. (2) Separate returns are now prepared. sb.nominee asks "for example to the other owner of a joint account who is not your spouse" and its help says "Interest and dividends on an account you own with your spouse are all yours on a joint return"; a filer married filing separately whose Form 1099-INT for a joint account with the spouse is in the filer's SSN can read the spouse's share as theirs and answer No. Each misstates taxable interest by the adjustment. Not executed; read from the questions.
+- **Where:** forms/2025/sb.yaml (sb.bonds_any, sb.nominee); interview/2025/questions.yaml (their help).
+- **Proposed fix:** In sb.bonds_any's help, keep the exclusion for an ordinary bank account or fund but say "a certificate of deposit bought through a broker, or one with a Form 1099-OID, counts"; in sb.nominee's help, add "On a separate return, your spouse's share of a joint account counts as someone else's."
+- **Severity:** low
+- **Tags:** false-no; question-narrow; sb; mfs; open
+
+## BUG-0833 — Investment interest: the line 1 question says to leave out home-loan interest, and the carryforward is asked only from a 2024 Form 4952
+
+- **Caught by:** sampled false-no reviews of the gates f4952.has_interest and f4952.carryover_if_interest (claude-opus-5-5), adjudicated in lane xrel (fork inv), 2026-11-15.
+- **Source:** f4952 p. 3, Line 1, "Investment interest expense is interest paid or accrued on a loan or part of a loan that is allocable to property held for investment" and Allocation of Interest Expense, "If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest"; f4952 p. 3, Who Must File, "You don't have any carryover of disallowed investment interest expense from 2024"; f4952 p. 1, line 2.
+- **Symptom:** (1) The interview prompt of f4952.line1 says "Leave out interest on a home loan". The form's own source excludes only "qualified residence interest", and f4952.has_interest's form source counts "a home equity loan, personal or family loan or credit card used that way, even if you received a Form 1098"; interest on a home equity loan whose proceeds bought investments is investment interest, and the prompt drops it, losing the deduction. (2) f4952.carryover asks whether "a 2024 Form 4952 ... show[s] an amount on line 7". A filer who carried interest from 2023, took the standard deduction in 2024 and filed no 2024 Form 4952, or who should have filed one and did not, still has a carryforward into 2025 and truthfully answers No; line 2 is zero and the deduction is lost. Not executed; read from the questions.
+- **Where:** interview/2025/questions.yaml (f4952.line1 prompt, f4952.carryover prompt); forms/2025/f4952.yaml (f4952.carryover).
+- **Proposed fix:** (1) Replace "Leave out interest on a home loan" with "Leave out interest on a loan used to buy, build or improve your home; interest on a home equity loan whose money went into investments counts." (2) Ask for the investment interest disallowed and not yet deducted, from the latest Form 4952 filed (line 7) or, if none was filed for 2024, the amount a correct 2024 Form 4952 would have shown.
+- **Severity:** medium
+- **Tags:** false-no; question-narrow; f4952; open
+
+## BUG-0834 — Form 1116 screens tied to an earlier Form 1116 or its estimate miss a loss account without one, and a carryover created by a smaller carryback
+
+- **Caught by:** sampled screen reviews of f1116.loss_accounts and f1116sb.changed and false-no reviews of the gates ftc.carryover_if_asked and f1116sb.generated (claude-opus-5-5), adjudicated in lane xrel (fork inv), 2026-11-15.
+- **Source:** i1116 p. 21, Line 16, item 4, "If you had an overall foreign loss in a prior year that offset U.S. source income, a part of your foreign income ... is recharacterized as U.S. source income in each following tax year"; i1116sb p. 2, Line 2a, "the difference between any estimated carryback amount you may have used on your prior year carryover schedule ... and the actual carryback amount" and Lines 2c, 2d, 2e, "Any other adjustments needed to properly reflect the total carryover amount"; p514 p. 38, Married Couples, "on the basis of your combined income".
+- **Symptom:** (1) f1116.loss_accounts asks whether "an earlier Form 1116 ... leave[s] a foreign or U.S. loss account still to recapture" and its help says an earlier Form 1116 shows it; a foreign loss of a year with no Form 1116 (no creditable tax, the election, or a deduction year) that offset U.S. income is a truthful No, and line 16 recapture is skipped. (2) A 2024 Schedule B whose line 7 estimated that all the excess would be carried back shows no carryforward on line 8; if the actual carryback was smaller the difference is a 2025 carryover (line 2a), but the filer answers No to ftc.carryover and the change question is never asked; a carryback made with no estimate, and a correction of an error in the 2024 line 8, are not named in f1116sb.changed either. (3) f1116sb.prior_year asks how "your (or, on a joint return, your spouse's) 2024 return" treated foreign tax, in the singular; a 2025 joint couple who filed separately for 2024 may answer for one return only, and a carryback into the other spouse's 2024 room is missed. Not executed; read from the questions.
+- **Where:** forms/2025/f1116.yaml (f1116.loss_accounts); forms/2025/f1116sb.yaml (f1116sb.changed, f1116sb.prior_year); forms/2025/ftc.yaml (ftc.carryover); interview/2025/questions.yaml (their help).
+- **Proposed fix:** (1) Reword f1116.loss_accounts to ask whether a foreign loss of any earlier year (with or without a Form 1116 that year) reduced U.S. or other-category income and is not yet recaptured. (2) Add to ftc.carryover's help "Answer Yes too if your 2024 Schedule B estimated a carryback that turned out smaller", and to f1116sb.changed "a carryback made without an estimate, or a correction of an error in line 8". (3) In f1116sb.prior_year's help, say that on a 2025 joint return after separate 2024 returns, any 2024 return with room counts (answer the room answer, which refuses).
+- **Severity:** low
+- **Tags:** screen; false-no; question-narrow; f1116; f1116sb; open
+
+## BUG-0835 — The sale gate does not name oil, gas or mineral property, which the Form 4797 question it opens names
+
+- **Caught by:** sampled screen and false-no reviews of the gate sd.sold_other (claude-opus-5-5), adjudicated in lane xrel (fork inv), 2026-11-15.
+- **Source:** i1040sd p. 1, "Use Form 4797 to report the following. 1. The sale or exchange of: ... c. Oil, gas, geothermal, or other mineral property".
+- **Symptom:** sd.sold_other asks "did you ... sell or trade real estate or business property?" and its help defines business property as "anything you used in a business or rented out, such as equipment, a vehicle or a building". A filer who sold an oil, gas or mineral royalty interest held as an investment need not read it as real estate or business property and answers No; sd.business_property, which names "oil, gas or mineral property" and refuses (Form 4797), is never asked, and the sale is entered among the Form 8949 sales as a capital gain with no depletion recapture. Not executed; read from the questions.
+- **Where:** forms/2025/sd.yaml (sd.sold_other); interview/2025/questions.yaml (sd.sold_other help).
+- **Proposed fix:** Add to sd.sold_other "real estate, business property, or an oil, gas or mineral interest (including a royalty)", or say so in its help.
+- **Severity:** low
+- **Tags:** screen; false-no; question-narrow; sd; open
+
+## BUG-0836 — Form 8582: a married-filing-separately filer who lived with the spouse gets the rental special allowance and the filing exception
+
+- **Caught by:** sampled release reviews (completeness f8582#1.3, #1.4, #1.5) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i8582 p. 10, Part II, "Caution: If your filing status is married filing separately and you lived with your spouse at any time during the year, you are not eligible for the special allowances in Part II. Do not complete Part II"; p. 4, "The special allowance isn't available if you were married, are filing a separate return for the year, and lived with your spouse at any time during the year"; p. 1, Exception, "If you're married filing separately, you lived apart from your spouse all year".
+- **Symptom:** Married filing separately is now in scope. f8582.exception tests the status-dependent $12,500 loss and $50,000 MAGI limits but not living apart, and f8582.line5 and f8582.max8 take the mfs values ($75,000, $12,500) whatever household.mfs_living says. Witness: rental case x1sche.f2.small_loss_exception with f1040.status mfs, household.married_dec31 true, household.mfs_living together_late: f8582.exception true, f8582.line8 $12,500, f8582.line9 $213.20, sche.line26 -$213.20 (the loss is deducted). The rules allow nothing: Part II is not completed (line 9 zero) and the exception does not apply, so the whole rental loss should be held back unless there is passive income.
+- **Where:** forms/2025/f8582.yaml: f8582.exception, f8582.line5, f8582.max8 (or f8582.line9); household.mfs_living is the existing input.
+- **Proposed fix:** Add a helper f8582.mfs_together (f1040.status mfs and household.mfs_living not apart_all_year). Make f8582.exception false when it holds, and make line 9 (the special allowance) zero when it holds; keep the mfs parameters for the lived-apart case. Add fixtures for together_late, apart_last6 and apart_all_year.
+- **Severity:** medium
+- **Tags:** f8582, mfs, amount
+
+## BUG-0837 — k1p: tests 5 and 6 are never asked of a partner who did no work in the business in 2025
+
+- **Caught by:** sampled release reviews (screens gate:k1p.ask_five, false-no gate:k1p.ask_five, gate:k1p.has_b1, gate:k1p.ask_other) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i1065sk1 p. 9, test 5, "You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year"; test 6, "for any 3 tax years (whether or not consecutive) preceding the tax year"; Limited partners, "you must meet item 1, 5, or 6 above".
+- **Symptom:** k1p.ask_five requires k1p.under500, which requires k1p.work_if_b1 true, so a partner who answers No to k1p.work (a retired partner, or a limited partner who no longer works in it) is never asked k1p.five_of_ten or k1p.t6. Tests 5 and 6 need no current-year work. Witness: fixture x2k1p.test5_five_of_ten with k1p.work false: k1p.material false, col_h $40,000, col_k $0 (base case: material true, col_k $40,000). Box 1 income is treated as passive and a loss is held back on Form 8582. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/k1p.yaml: k1p.ask_five (and k1p.ask_other through it).
+- **Proposed fix:** Gate the test 5 question on box 1 shown and tests 1 to 3 not met, without requiring work in 2025: ask_five = has_b1 and not hours500_if_work and not most_hours_if_gp and not nearly_all_if_asked. k1p.t6 then follows through ask_other. Add a fixture of a retired partner meeting test 5.
+- **Severity:** medium
+- **Tags:** k1p, gate, material participation
+
+## BUG-0838 — k1p: the participation questions count the spouse only on a joint return
+
+- **Caught by:** sampled release reviews (screens and false-no of gate:k1p.work_if_b1, gate:k1p.gp_under500, gate:k1p.ask_other_gp, gate:k1p.decisions_if_asked, gate:k1p.ask_five) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i8582 p. 5, "Participation by your spouse during the tax year in an activity you own may be counted as your participation in the activity even if your spouse didn't own an interest in the activity and whether or not you and your spouse file a joint return for the tax year"; i1065sk1 p. 9, "any work that you or your spouse does in connection with an activity held through a partnership ... is counted toward material participation".
+- **Symptom:** Married filing separately is now in scope, but k1p.work, k1p.most_hours, k1p.nearly_all, k1p.decisions and k1p.tenth say "(or, on a joint return, your spouse)", and k1p.hours500's help "on a joint return, your spouse's hours". A partner filing separately whose spouse did the work answers No and the activity is treated as passive. k1p.five_of_ten, k1p.t6, k1p.t4 and k1p.t7 name only "you". (The ownership share in the 10% test includes the spouse's interest on any return.) Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/k1p.yaml (input sources of k1p.work, most_hours, nearly_all, five_of_ten, t6, t4, t7, decisions, tenth); interview/2025/questions.yaml help of k1p.hours500. The same wording is in k1s (k1s.work, hours500, most_hours, active, tenth): check there.
+- **Proposed fix:** Replace "(or, on a joint return, your spouse)" by "(or your husband or wife, whether or not you file jointly)" in the participation and active-participation questions, and add the spouse to the test 4 to 7 questions.
+- **Severity:** medium
+- **Tags:** k1p, k1s, question wording, mfs
+
+## BUG-0839 — k1p: a fiscal-year partnership is not asked about, and the participation questions use calendar 2025
+
+- **Caught by:** sampled release reviews (completeness k1p#1.8; screens k1p.t7, k1p.t4, gate:k1p.work_if_b1; false-no gate:k1p.gp_under500, gate:k1p.work_if_b1, gate:k1p.ask_other_gp, gate:k1p.ask_nearly_all) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i1065sk1 p. 13, "If you file your tax return on a calendar-year basis, but your partnership files a return for a fiscal year, report the amounts on your tax return for the year in which the partnership's fiscal year ends"; p. 9, "All determinations of material participation are based on your participation during the partnership's tax year".
+- **Symptom:** No question asks the partnership's tax year (top of the K-1). A K-1 for a fiscal year ending in 2026 can be entered on the 2025 return, and every hours question (k1p.work, hours500, most_hours, nearly_all, t4, t7) asks about calendar 2025, so a fiscal-year partner can answer by the wrong period. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/k1p.yaml ($k1p entry questions; participation inputs).
+- **Proposed fix:** Ask on each K-1 whether the partnership's tax year shown at the top ends in 2025 (a No is not this year's K-1), and either refuse a fiscal-year K-1 or word the participation questions "in the partnership's tax year shown at the top of the K-1".
+- **Severity:** low
+- **Tags:** k1p, question wording
+
+## BUG-0840 — k1p.t6 lists eight service fields and omits any other business in which capital is not a material income-producing factor
+
+- **Caught by:** sampled release reviews (screens k1p.t6; false-no gate:k1p.ask_other) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i1065sk1 p. 9, "A personal service activity involves the performance of personal services in the field of health, law, engineering, architecture, accounting, actuarial science, performing arts, or consulting, or any other trade or business in which capital isn't a material income-producing factor".
+- **Symptom:** k1p.t6 asks "Is it a business of services in health, law, engineering, architecture, accounting, actuarial science, performing arts or consulting, ..."; a partner in another personal service business (for example an insurance agency or investment advisory firm) who meets test 6 answers No, is not refused, and the activity is treated as passive. Same omission as BUG-0913 on k1s. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/k1p.yaml, k1p.t6 (input source).
+- **Proposed fix:** Add "or any other business of services in which capital (equipment, inventory) is not a material source of income" to the question.
+- **Severity:** low
+- **Tags:** k1p, question wording, material participation
+
+## BUG-0841 — k1p: no screen for the partner's own Schedule E items (unreimbursed partnership expenses, interest to buy the interest, basis or at-risk carryovers, the prior-year fuel credit)
+
+- **Caught by:** sampled release reviews (completeness k1p#1.1, #1.2, #1.3; screens k1p.basis_short; false-no gate:k1p.any_loss) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i1040se p. 9, "You can deduct unreimbursed ordinary and necessary expenses you paid on behalf of the partnership if you were required to pay these expenses under the partnership agreement"; p. 10, interest allocated to the interest "on a separate line of your Schedule E, Part II"; p. 10, "Enter your total prior-year unallowed losses that are now deductible on a separate line in column (i) of line 28"; i1065sk1 p. 13, losses "that weren't deductible ... because of certain limitations, such as the basis limitations or the at-risk limitations"; p. 22, Code A, reduce box 14 A by "unreimbursed partnership expenses claimed"; i1040se p. 9, fuel credit claimed on the 2024 return "enter as income in column (h) or column (k)".
+- **Symptom:** k1s has refusing screens for a basis carryover (k1s.basis_carry) and an at-risk carryover (k1s.risk_carry); k1p has neither, and k1p.basis_short asks only about 2025 losses. No k1p question asks about unreimbursed partnership expenses (so box 14 A also goes to Schedule SE unreduced), interest on a loan used to buy the interest, or a fuel tax credit from the partnership claimed in 2024. The scout listed these as refusals (scout-k1 R-K5); they were not encoded. A partner with any of them gets a return without them. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/k1p.yaml (k1p.screened refusals).
+- **Proposed fix:** Add a refusing tick group on each K-1 like k1s_prior: a loss held back on an earlier return by the basis limit; by the at-risk rules (Form 6198); expenses of the partnership you paid yourself under the partnership agreement; interest on money borrowed to buy or put into the interest; a 2024 fuel tax credit from the partnership. Each Yes refuses at k1p.screened.
+- **Severity:** medium
+- **Tags:** k1p, refusal, screen
+
+## BUG-0842 — K-1 integration: the excess business loss limit and the QBI share of a suspended loss are not applied to partnership amounts
+
+- **Caught by:** sampled release reviews (completeness k1p#1.1, k1p#1.7) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i1040se p. 9, "If you report a loss on Schedule E from a partnership or S corporation engaged in a trade or business, use Form 461 to figure your excess business loss"; i1065sk1 p. 30, "you must include only those items that are qualified items of income, gain, deduction, and loss included or allowed in determining taxable income for the tax year"; i8995 p. 3, suspended losses "are not included in your QBI for the year".
+- **Symptom:** s1.ebl_total sums only Schedules C and the Schedule E Part I rental losses; no K-1 loss enters it. k1p.box20z_if_any is the code Z QBI as stated; nothing scales it by the allowed share of a box 1 loss held back on Form 8582. Both are listed for the integration lane in the k1p wiring contract (k1p.qbi by prorate, D-K7; EBL = col_i + b1_allowed) but are not encoded. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/s1.yaml s1.ebl_total; forms/2025/k1p.yaml (k1p.qbi, to be written); person.k1p_total_qbi_stmt.
+- **Proposed fix:** When wiring the K-1 totals: add the box 1 trade or business losses allowed (col_i plus the allowed passive box 1 loss) to s1.ebl_total, and compute k1p.qbi as the wiring contract states before person.qbi reads it. Do not lift scope.k1 until both are in.
+- **Severity:** medium
+- **Tags:** k1p, integration, amount
+
+## BUG-0843 — k1p: a real estate professional's or personal-use rental in box 2 is treated as passive
+
+- **Caught by:** sampled release reviews (completeness k1p#1.6; screens gate:k1p.work_if_b1) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i1065sk1 p. 14, "the income (loss) in box 2 isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity"; p. 11, "The rental of a dwelling unit any partner used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value".
+- **Symptom:** sche.re_pro is read only by sche.line26 (Schedule E Part I). Witness: fixture x2k1p.fk3_limited_rental_loss with sche.re_pro true: sche.line26 holds the refusal but f1040.line24 is computed ($0) and the box 2 loss stays in Part V (k1p.p5_loss $12,000). No k1p question or refusal covers a real estate professional or a partner's personal use of a rented dwelling. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/k1p.yaml (box 2 routing); forms/2025/sche.yaml sche.re_pro.
+- **Proposed fix:** Make a K-1 with a box 2 amount read sche.re_pro (refusing as on Schedule E Part I), and add a refusing tick for a dwelling unit used personally by a partner more than the greater of 14 days or 10% of the rental days.
+- **Severity:** medium
+- **Tags:** k1p, refusal, passive
+
+## BUG-0844 — k1p: box 1 nonpassive exceptions not screened (oil or gas working interest held as general partner; significant participation income)
+
+- **Caught by:** sampled release reviews (completeness k1p#1.4) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i1065sk1 p. 8, nonpassive activities, "Working interests in oil or gas wells if you were a general partner"; p. 11, net income subject to recharacterization under Temporary Regulations section 1.469-2T(f), "report such amounts according to the Instructions for Form 8582".
+- **Symptom:** Box 1 is passive unless tests 1, 2, 3 or 5 are met (k1p.material) or the partnership trades (k1p.trader refuses). A general partner's box 1 from an oil or gas working interest is nonpassive whatever the participation, and is not asked; a general partner with more than 100 hours who answers No to test 4 has net income from a significant participation activity that is recharacterized as nonpassive, and nothing handles it. (Retired or disabled farmers are refused through scope.farm.) Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/k1p.yaml (k1p.material, k1p.screened).
+- **Proposed fix:** Add a refusing tick on the box 1 questions: an oil or gas working interest held as a general partner. For significant participation: refuse when a general partner worked more than 100 hours, met no test, and box 1 is income (or route it per i8582 Worksheet 6).
+- **Severity:** low
+- **Tags:** k1p, refusal, passive
+
+## BUG-0845 — k1p basis, distribution and at-risk questions: lows in the basis definition and the at-risk cases
+
+- **Caught by:** sampled release reviews (screens k1p.basis_short, k1p.dist_over, k1p.b19_other, k1p.r_disposed, k1p.not_at_risk; false-no gate:k1p.any_loss, gate:k1p.has_b19) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i1065sk1 p. 3, basis worksheet (liabilities decrease on line 9a; nondeductible expenses, code C of box 18, decrease basis; tax-exempt income, codes A and B, increase it); p. 25, Box 19 Code A, cash and marketable securities, and "doesn't include deemed distributions of money under section 752(b)"; p. 8, not at risk: "Nonrecourse loans used to finance the activity", "protected against loss by a guarantee, a stop-loss agreement, or other similar arrangement", "Amounts borrowed for use in the activity from a person who has an interest in the activity, other than as a creditor".
+- **Symptom:** The one-line basis definition in k1p.basis_short and k1p.dist_over help ("what you put in, plus your share of its income and debts, less losses and money taken out") omits nondeductible expenses, tax-exempt income and a fall in the share of liabilities (a deemed distribution that can exceed basis), and k1p.dist_over's "money you took out" does not name marketable securities. k1p.not_at_risk does not reach the partner's share of the partnership's own nonrecourse loans (item K1, other than qualified nonrecourse financing), "other similar arrangement", or a lender with a non-creditor interest who is not a partner. Each lets a filer answer No where Form 6198 or a gain applies. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/k1p.yaml k1p.basis_short, k1p.dist_over, k1p.not_at_risk; interview help of the same.
+- **Proposed fix:** Basis help: "... plus your share of its income (taxable and tax-exempt) and debts, less losses, nondeductible expenses, money and marketable securities taken out, and any fall in your share of its debts." dist_over: "money or marketable securities, including a fall in your share of its debts (item K)". not_at_risk: add "or does item K1 show nonrecourse liabilities (other than qualified nonrecourse financing) and your loss is more than what you put in plus your share of recourse liabilities", "or a similar arrangement", "or from anyone else with an interest in the business".
+- **Severity:** low
+- **Tags:** k1p, question wording
+
+## BUG-0846 — k1p box questions: lows (STMT entries, K-3 received on request, territory partnerships, box 9b or 9c with box 9a blank, cooperative items on code Z)
+
+- **Caught by:** sampled release reviews (screens k1p.r_b11, r_b13, r_b15, r_b16, r_b17, r_b20, r_foreign, k1p.z_other, gate:k1p.has_b9a, gate:k1p.has_b9bc_if_9a; false-no gate:k1p.has_b5, has_b6a, has_b8, has_b9a, has_b9bc_if_9a, has_b14a, has_b15o, has_b18a, has_b19, has_b20z) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i1065sk1 p. 14, "For those informational items that can't be reported as a single dollar amount, the partnership will enter an asterisk (*) in the left column and enter 'STMT' in the dollar amount entry space"; p. 24, Box 16, the partner "won't receive Schedule K-3 from the partnership unless the partner requests the schedule"; p. 16, Box 9b, collectibles gain to the 28% Rate Gain Worksheet; p. 30, patrons of a specified cooperative "must use Form 8995-A" and the section 199A(g) deduction.
+- **Symptom:** The tick questions ask whether a box "show[s] an amount"; a box holding a code with * and STMT can be answered No and its statement amounts (refused boxes 11, 13, 15, 17, or computed boxes 5, 6a, 8, 9a, 18 A) are dropped. k1p.r_b16 asks only whether box 16 is checked (a K-3 obtained on request is missed). k1p.r_foreign does not say a partnership organized in a U.S. territory is foreign. k1p.has_b9bc is asked only when box 9a shows an amount, so a collectibles gain in box 9b with box 9a netting to zero is dropped, and a box 9c STMT is named outside the tool only in help, with no refusal. k1p.z_other asks about "payments from a farm or garden cooperative", missing a section 199A(g) deduction or patron status shown without a payment. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/k1p.yaml tick inputs; k1p.has_b9bc_if_9a; k1p.box9c; k1p.z_other; interview help of the box groups.
+- **Proposed fix:** Help on each box group: "A box that shows a code with STMT or * counts: use the amount on the statement." r_b16: "or did you get a Schedule K-3 from it". r_foreign help: "A partnership organized in Puerto Rico or another U.S. territory is foreign." Ask has_b9bc whenever box 9a or any long-term item is shown (or on every K-1 with box 8 to 9a), and add a refusing input for box 9c STMT. z_other: "... or anything about an agricultural or horticultural (farm or garden) cooperative, such as a section 199A(g) deduction or patron items".
+- **Severity:** low
+- **Tags:** k1p, question wording, gate
+
+## BUG-0847 — k1p item G and active participation: non-manager LLC members, limited partners holding a general interest, and the earlier-year tests (owner review)
+
+- **Caught by:** sampled release reviews (screens gate:k1p.ask_active, decisions_if_asked, gp_under500, ask_other_gp, ask_nearly_all, k1p.prior_not_active, gate:k1p.has_activity, gate:k1p.prior_any_if_activity, prior_b1/b2/b3_any_if; false-no of the same gates) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i1065sk1 p. 9, "If you're an individual (either a general partner or a limited partner who owned a general partnership interest at all times during the tax year)"; p. 11, "Limited partners can't actively participate" and "at any time during the tax year, your interest ... was less than 10%"; i8582 p. 10, Part IV column (c), "Enter the prior-year unallowed losses for each activity".
+- **Symptom:** k1p.general (item G first box) decides which tests apply: a member of an LLC who is not a manager (item G "Limited partner or other LLC member") is treated as a limited partner (tests 1, 5, 6 only; no active participation), and a limited partner who also held a general interest all year is not asked tests 2, 3, 4 or 7. k1p.prior_not_active asks whether in the loss year the filer "did not help make decisions ... or owned less than a tenth" without "at any time" and without the limited-partner bar. The held-back loss of a K-1 whose boxes 1 to 3 are blank is not asked (amb.2025.k1p_prior_with_activity, coordinator's decision open to the owner's review): its carryover is dropped (understated deduction). All understate deductions except prior_not_active, which can put a loss in Part IV that belongs in Part V. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/k1p.yaml k1p.general, k1p.prior_not_active, k1p.prior_any_if_activity; ambiguities/2025.yaml amb.2025.k1p_material_tests, amb.2025.k1p_prior_with_activity.
+- **Proposed fix:** Owner decision on the LLC-member reading (item G is not decisive for a non-manager LLC member) and on asking the held-back loss on every K-1. Wording: k1p.general help "Answer Yes also if you held a general partner interest all year"; prior_not_active "... or owned less than a tenth of it at any time that year, or held it as a limited partner?".
+- **Severity:** low
+- **Tags:** k1p, owner decision, question wording
+
+## BUG-0848 — Form 7203 questions: lows (line 2 property and compensation stock, payments under a guarantee, open-account advances, an election made with this return)
+
+- **Caught by:** sampled release reviews (completeness f7203#1.4, #1.5; screens f7203.loans, f7203.election) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i7203 p. 2, Line 2, section 351 contributions: "the carryover basis of assets transferred to the corporation, less the liabilities assumed", "see section 357(c)"; "The basis for stock received as compensation is the FMV on the date the compensation is included in income"; p. 2-3, guaranteed loans "aren't part of a shareholder's loan basis except to the extent the shareholder makes a payment on the loan"; p. 3, open account debt; p. 2, the election is made by "a statement to your timely filed original or amended return".
+- **Symptom:** f7203.line2's question asks how much money or property the filer put in, and its help covers bought, inherited and gifted shares, but not property contributed (adjusted basis less liabilities assumed, with a section 357(c) gain) or stock received for services (its value included in income): basis is misstated. f7203.loans help says "Loans you guaranteed or co-signed for the corporation are not meant" without the exception for payments made under the guarantee, and "lent money" with the pointer to item I can miss open-account advances, so debt basis is left out (Part II is refused only on a Yes). f7203.election's help "You would have attached a statement to an earlier return" leaves out an election made with the 2025 return. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1p_* totals.
+- **Where:** forms/2025/f7203.yaml f7203.line2, f7203.loans, f7203.election; interview/2025/questions.yaml help of the same.
+- **Proposed fix:** line2 help: add "Property you put in: its basis to you, less any debt of yours the corporation took on (if that debt is more, that is outside this tool). Shares received for work: the value you reported as income." loans: "Count payments you made on a corporate loan you guaranteed, and money you advanced to it without a note." election help: "made on an earlier return or with this 2025 return".
+- **Severity:** low
+- **Tags:** f7203, question wording
+
+## BUG-0849 — qbi.prior_form: a carryforward from a Form 8995 earlier than 2024 is dropped
+
+- **Caught by:** sampled release reviews (screens gate:qbi.prior_form; false-no gate:qbi.prior_form) of family k1p (claude-opus-5-5), adjudicated in lane xrel (fork k1p), 2026-11-15.
+- **Source:** i8995 p. 5, Line 16, "This amount will offset QBI in later tax years regardless of whether the trade(s) or business(es) that generated the loss is still in existence"; Line 17, "This amount must be carried forward to next year".
+- **Symptom:** qbi.prior_form asks only whether the 2024 return includes Form 8995 or 8995-A, and its help says "If there was no 2024 return, or it has neither form, the answer is No". A filer whose 2023 Form 8995 showed a line 16 (or line 17) carryforward and who filed no Form 8995 for 2024 answers No: the line 16 carryforward is not subtracted from QBI, and a line 17 REIT/PTP loss carryforward is not refused.
+- **Where:** forms/2025/qbi.yaml qbi.prior_form; interview help.
+- **Proposed fix:** Ask whether the latest return with Form 8995 or 8995-A (2024 or earlier) shows a carryforward on line 16 or 17 not used since, and take that amount; or refuse when such a carryforward is from a year before 2024.
+- **Severity:** low
+- **Tags:** qbi, question wording
+
+## BUG-0850 — The New York pension gate reads only IT-201 lines 9 and 10, so a government disability pension reported as wages (Form 1040 line 1h) never reaches the line 26 subtraction
+
+- **Caught by:** sampled release reviews: screen gate:ny_it201.has_pension_income#1 (findings 0, 1), false-no gate:ny_it201.has_pension_income#1 (finding 0) and gate:ny_it201.gov_said_no#1 (finding 0); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it201i p. 9, Line 26: "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"
+- **Symptom:** Disability pensions paid before the minimum retirement age are now supported federally and go to Form 1040 line 1h (retirement.dis_wages), so they reach IT-201 line 1, not lines 9 or 10. ny_it201.has_pension_income is line 9 > 0 or line 10 > 0, so the government pension questions (ny_it201.ask.gov_pension, ask.gov_pension_other) are never asked and line 26 is 0. Evaluated (/tmp/xrel/ny/dis_inputs.json, a full-year City resident with a disability_3 Form 1099-R of $18,000 wholly before the minimum retirement age): f1040.line1h $18,000, ny_it201.line9 and line10 $0, has_pension_income false, gov_pension_if_income false, line26 $0, no refusal. A New York City police or fire disability pension, or a federal one, is then taxed by New York; the tool overstates New York tax without a refusal. The note on has_pension_income (pension income only on lines 4b and 5b) predates the line 1h support.
+- **Where:** forms/ny/2025/ny_it201.yaml ny_it201.has_pension_income (read by ny_it201.gov_pension_if_income and the gov_said_no chain)
+- **Proposed fix:** Make has_pension_income also true when any person's disability-pension wages are positive (person.dis_wages > 0 for any person); update its note; add a fixture with a government disability pension that refuses at line 26. Optionally name a U.S. territory and the District of Columbia in the gov_pension prompt (they are in its label but not in the shown prompt).
+- **Severity:** medium
+- **Tags:** new-york; gate; hierarchy-leak; caught-by-adjudication
+
+## BUG-0851 — The New York 529 ownership question is in the present tense, so an owner who closed or moved a New York account to another state's plan in 2025 skips the line 22 addition
+
+- **Caught by:** sampled release reviews: screen gate:ny_it201.has_edu_account#1 (finding 2) and gate:ny_it201.ny_529_if_account#1 (finding 2); false-no gate:ny_it201.has_edu_account#1 (findings 1, 3) and gate:ny_it201.ny_529_if_account#1 (findings 0, 4, 5); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it201i p. 8, Line 22: nonqualified withdrawals include "the transfer to another state's program" and credentialing expenses qualify only "on or after July 4, 2025"; p. 10, Line 30: "During 2025, did you, as an account owner, make contributions to or a withdrawal from one or more tuition savings accounts established under New York's 529 college savings program?"
+- **Symptom:** ny_it201.ask.ny_529 asks 'Is any 529 account you (or, on a joint return, your spouse) own part of New York's own 529 college savings program?'. An owner who rolled the whole New York account to another state's plan, or emptied and closed it, during 2025 owns none at filing and answers No; ny_it201.gate.line22 and gate.line30 are then false. A rollover to another state's plan is not taxable federally, so nothing refuses it there, and the line 22 recapture of earlier New York deductions is silently left out (New York tax understated). The federal gate (person.x_edu_account, 'At any time in 2025') does not have this problem. Lows on the same path: the help names only 'the New York 529 College Savings Program', which an owner of the Advisor-Guided plan may not read as New York's; ask.529_nonqualified counts 'career training' as qualified without the July 4, 2025 start date or the eligible-institution condition.
+- **Where:** forms/ny/2025/ny_it201.yaml ny_it201.ask.ny_529 (source); interview/ny/2025/questions.yaml ny_it201.ask.ny_529 (help) and ny_it201.ask.529_nonqualified (prompt)
+- **Proposed fix:** Ask 'At any time in 2025, did you (or, on a joint return, your spouse) own an account in New York's 529 college savings program (the Direct Plan or the Advisor-Guided Plan), including one closed or moved to another state's plan during 2025?'; in 529_nonqualified count 'career training (credentialing) costs paid before July 4, 2025, or to a provider that is not an eligible educational institution' as nonqualified. Rerun the screen and false-no reviews of both gates at the change.
+- **Severity:** medium
+- **Tags:** new-york; question-wording; tense; caught-by-adjudication
+
+## BUG-0852 — SCRA residence elections are not asked of a civilian spouse filing separately, nor of Public Health Service or NOAA officers
+
+- **Caught by:** sampled release reviews: completeness ny_it201#1.4; false-no gate:scope.armed_forces#1 (findings 0, 2); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it201i-html, Filing information for military servicemembers and their spouses: "for any tax year of the marriage, a servicemember and their spouse may elect to use, for purposes of taxation, any of the following ... the residence or domicile of the servicemember; the residence or domicile of the spouse; the permanent duty station of the servicemember"; Item G, Codes M7 to M9 (civilian spouse elections); ny_it201i p. 30: "Special rules under the SCRA apply to members of the military and their spouses for determining residency."
+- **Symptom:** The military residence rules are refused through ny_it201.ask.active_duty, reached only when scope.armed_forces is Yes, and that question asks about 'you (or, on a joint return, your spouse)'. Separate returns are now supported, so a civilian spouse filing separately whose spouse was on active duty, living in New York City under the servicemember's orders while domiciled elsewhere, answers No, then Yes to living in the City all year, and gets a resident Form IT-201 where an M7 to M9 election would make them a nonresident (all New York tax at stake). An officer of the Public Health Service or NOAA Corps (SCRA servicemembers, not 'armed forces') is in the same position. On a joint return the servicemember's own active duty refuses, so the gap is the separate return.
+- **Where:** interview/2025/questions.yaml scope.armed_forces (prompt) as New York reads it; forms/ny/2025/ny_it201.yaml ny_it201.active_duty_if_armed_forces, ny_it201.ask.active_duty
+- **Proposed fix:** Add a New York question at order 1000 asked on every return: 'In 2025, were you (or your husband or wife, whether or not you file jointly) on active duty in the U.S. armed forces, the Public Health Service or the NOAA Corps?', refusing line 1 with the item G M4 to M9 codes; or widen ny_it201.active_duty_if_armed_forces to ask when household.married_dec31 is true. Coast Guard wording is BUG-0902.
+- **Severity:** low
+- **Tags:** new-york; residency; mfs; gate; caught-by-completeness-review
+
+## BUG-0853 — New York estimated-tax questions: the gate leaves out estate or trust allocations and City payments; the late-installment question can be read to exclude a skipped installment or a spouse's payments
+
+- **Caught by:** sampled release reviews: screen gate:ny_it201.ask.est_any#1 (findings 0, 1); false-no gate:ny_it201.ask.est_any#1 (findings 0, 1, 2) and gate:ny_it201.estimated_payments_positive#1 (findings 2, 3); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it201i-html, Line 75, Beneficiaries of an estate or trust: "If you are a beneficiary of an estate or trust and are claiming your portion of any payment of estimated taxes allocated to you by the estate or trust, include your amount on line 75"; ny_it201i p. 22, Line 75: "your 2025 estimated tax payments for New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax"; p. 23, Line 81: "if you underpaid your estimated tax liability for any payment period"
+- **Symptom:** ny_it201.ask.est_any asks whether 'you (or, on a joint return, your spouse) pay New York income tax for 2025 ahead of time'; its help names estimated payments, a 2024 refund and an extension payment. Estimated tax allocated by an estate or trust (paid by the fiduciary) and payments thought of as City, Yonkers or MCTMT tax are named only in the help of the gated amount question, which a No never reaches; line 75 is then understated and New York tax overstated. ny_it201.ask.est_late ('Was any of your 2025 New York estimated payments made late, or smaller than a quarter...') can be answered No by a filer who skipped an installment (no payment to be late or small) or whose spouse made the short payment; line 81's refusal (gate.estimated_penalty) is then missed when the year's total met the safe harbor. Low: the penalty is assessed by the Department in any case.
+- **Where:** forms/ny/2025/ny_it201.yaml ny_it201.ask.est_any, ny_it201.ask.est_late (sources); interview/ny/2025/questions.yaml (help)
+- **Proposed fix:** est_any: 'Apart from tax taken out of pay, was any New York State, City, Yonkers or MCTMT tax for 2025 paid ahead of time by you or your spouse, or allocated to you by an estate or trust, or did you have a 2024 New York refund applied to 2025?'. est_late: 'Was any 2025 New York estimated installment (yours or your spouse's) skipped, paid late, or smaller than a quarter of what was due for the year?'.
+- **Severity:** low
+- **Tags:** new-york; question-wording; caught-by-adjudication
+
+## BUG-0854 — The New York use-tax question asks only about the filer's own purchases and goods
+
+- **Caught by:** sampled release reviews: screen gate:ny_it201.ask.owes_use_tax#1 (finding 0); false-no gate:ny_it201.ask.owes_use_tax#1 (findings 0, 3, 4); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it201i p. 18, Line 59: "You owe sales or compensating use tax if you: purchased an item or service subject to tax that is delivered to you in New York State without payment of New York State and local tax to the seller" and "An unpaid sales or use tax liability commonly occurs if you made purchases ... on an Indian reservation (except for purchases subject to Oneida Nation taxes)"
+- **Symptom:** The bank prompt of ny_it201.ask.owes_use_tax reads 'In 2025, did you buy anything taxable in New York without paying New York sales tax on it (for example online, by mail, or in another state)?'. The source of the input names the spouse, but the prompt shown does not; on a joint return a filer whose spouse made the purchases answers No, and line 59 is 0 (understated). 'Buy anything' can also be read as goods only (a taxable service such as out-of-state repair or storage), and the examples omit reservation purchases.
+- **Where:** interview/ny/2025/questions.yaml ny_it201.ask.owes_use_tax (prompt)
+- **Proposed fix:** Prompt: 'In 2025, did you (or, on a joint return, your spouse) buy anything, or pay for any service, that is taxable in New York without paying New York sales tax on it (for example online, by mail, in another state or on an Indian reservation)? Leave out a vehicle or boat whose tax you pay at the DMV.'
+- **Severity:** low
+- **Tags:** new-york; question-wording; missing-spouse; caught-by-adjudication
+
+## BUG-0855 — The New York special accrual question asks about income earned in one year and paid in the other, not income fixed in an earlier year and reported in 2025
+
+- **Caught by:** sampled release reviews: screen ny_it201.ask.special_accrual#1 (finding 1) and gate:ny_it201.moved#1 (finding 3); false-no gate:ny_it201.moved#1 (findings 3, 4); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it201i-html, Special accruals: "non-New York source income that was fixed and determinable in a tax year prior to 2025, but you are reporting that income for federal income tax purposes in tax year 2025; or income that was fixed and determinable in tax year 2025, but you will be reporting that income for federal income tax purposes in a tax year after 2025"
+- **Symptom:** ny_it201.ask.special_accrual (asked after a move into the City on January 1, 2025 or out on January 1, 2026) asks 'Was any of your (or, on a joint return, your spouse's) income earned in one year but paid in the other, such as a bonus earned in 2025 and paid in 2026?'. A filer who moved in with deferred compensation or an installment-sale gain fixed in 2022 or 2023 and reported in 2025 reads 'the other' year as 2024 or 2026, or a sale gain as not 'earned', and answers No; the IT-225 A-115/S-129 refusal is missed and the accrual is taxed by the wrong period. The input's source (label) is precise; the bank prompt is narrower.
+- **Where:** interview/ny/2025/questions.yaml ny_it201.ask.special_accrual (prompt, help)
+- **Proposed fix:** Prompt: 'Do you (or, on a joint return, your spouse) have income that became fixed in one year and is reported on your federal return in another, such as a bonus earned in 2025 and paid in 2026, or deferred pay or an installment-sale gain from before 2025 reported in 2025?'
+- **Severity:** low
+- **Tags:** new-york; question-wording; caught-by-adjudication
+
+## BUG-0856 — The New York real property credit question leaves out furnishings, the subsidized part of rent and the spouse, and asks about property owned now
+
+- **Caught by:** sampled release reviews: screen gate:ny_it201.low_income#1 (findings 0, 1, 3); false-no gate:ny_it201.low_income#1 (findings 0 to 5); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it214i p. 1: "The average monthly rent you or your spouse (if married filing jointly) paid was $450 or less, not counting charges for heat, gas, electricity, furnishings, or board" and "The current market value of all real property you owned ... was $85,000 or less"; p. 2, Line 11: "do not include any subsidized part of your rental charge"; Line 12: adjusted rent after "heat, gas, electricity, furnishings, and board"
+- **Symptom:** ny_it201.ask.real_property_credit (bank prompt 'Was your rent $450 a month or less (not counting heat, gas, electricity or meals), or is all the real estate you own worth $85,000 or less?'), asked when federal AGI is $18,000 or less, omits furnishings from the charges left out, does not say only the tenant's own (unsubsidized) share counts, names neither the spouse's rent nor the spouse's property, and asks what is owned now. A qualifying filer (furnished room, Section 8 tenant, house titled to the spouse, a house sold late in 2025, a cooperative apartment) can answer No, and the refundable line 67 credit is dropped without a refusal.
+- **Where:** interview/ny/2025/questions.yaml ny_it201.ask.real_property_credit (prompt, help)
+- **Proposed fix:** Prompt: 'In 2025, was the rent you (or, on a joint return, your spouse) paid yourselves $450 a month or less on average, not counting any part paid by a subsidy or charges for heat, gas, electricity, furnishings or meals; or was all the real estate either of you owned in 2025 (including a cooperative apartment) worth $85,000 or less?'
+- **Severity:** low
+- **Tags:** new-york; question-wording; missing-spouse; caught-by-adjudication
+
+## BUG-0857 — The New York out-of-state bond gate reads federal line 2a, which is net of amortized premium, so a premium bond's gross interest can skip line 20
+
+- **Caught by:** sampled release reviews: screen gate:ny_it201.has_tax_exempt#1 (findings 0, 1, 2); false-no gate:ny_it201.has_tax_exempt#1 (findings 0, 1, 4); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it201i p. 7, Line 20: "For purposes of this addition, bond premium amortization is not allowed as a direct offset to interest income" and "If you sold a bond between interest dates, include the amount of interest you received during the year plus the accrued interest amount"
+- **Symptom:** ny_it201.has_tax_exempt is f1040.line2a > 0, and f1040.tax_exempt_interest asks for Form 1099-INT box 8 'net of amortized bond premium and acquisition premium'. Out-of-state bonds whose amortized premium equals or exceeds the coupon give line 2a = 0, so ny_it201.ask.out_of_state_bond_interest is never asked and the line 20 addition (gross interest) is dropped; New York tax understated. Rare. Also low: a fund named for New York whose statement shows a share from other states' bonds may be answered No under the help ('Bonds of New York State ... count as No').
+- **Where:** forms/ny/2025/ny_it201.yaml ny_it201.has_tax_exempt; interview/ny/2025/questions.yaml ny_it201.ask.out_of_state_bond_interest (help)
+- **Proposed fix:** The tool keeps only the net amount (one input, f1040.tax_exempt_interest), so either ask the line 20 question whenever the return has any interest or dividends (line 2 or 3 not zero, as ny_it201.has_line28_income does), or add a federal yes/no on tax-exempt bond premium and ask when it is Yes; add to the help 'Count the part of a New York fund's dividends that its year-end statement shows as from other states' bonds.'
+- **Severity:** low
+- **Tags:** new-york; gate; caught-by-adjudication
+
+## BUG-0858 — The New York U.S.-obligation interest question lists only Treasuries and savings bonds, and its group heading omits the spouse
+
+- **Caught by:** sampled release reviews: false-no gate:ny_it201.has_line28_income#1 (findings 0, 1) and gate:ny_it201.has_tax_exempt#1 (finding 3); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it201i p. 9, Line 28: "Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?"
+- **Symptom:** The input's source asks about 'U.S. government bonds or other U.S. government obligations (for example Treasury bills, notes or bonds, or U.S. savings bonds)', but the bank tick and prompt shown read 'U.S. Treasury bills, notes or bonds, U.S. savings bonds, or a fund that holds them'. A holder of other federal obligations whose interest New York subtracts reads the list as complete and answers No; the line 28 refusal is missed and New York tax overstated. The group heading 'Did any of your interest or dividends come from these?' (ny_interest, also over Build America Bonds and other states' bonds) does not name the spouse, though the sources do.
+- **Where:** interview/ny/2025/questions.yaml group ny_interest (heading), ny_it201.ask.us_obligation_interest (tick, prompt)
+- **Proposed fix:** Heading: 'Did any of your (or, on a joint return, your spouse's) interest or dividends come from these?'; tick and prompt: 'U.S. Treasury bills, notes or bonds, U.S. savings bonds, other bonds or notes of the U.S. government or its agencies, or a fund that holds them'.
+- **Severity:** low
+- **Tags:** new-york; question-wording; list-read-as-complete; caught-by-adjudication
+
+## BUG-0859 — The New York inflation-check gate reads only Schedule 1 line 9, so a check entered as a state income tax refund (line 1) is never asked about
+
+- **Caught by:** sampled release reviews: screen gate:ny_it201.has_other_income#1 (findings 0, 1, 2); false-no gate:ny_it201.has_other_income#1 (findings 0 to 3); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it201i p. 8, Line 25: "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25."
+- **Symptom:** ny_it201.has_other_income is s1.line9 not zero. The federal refund question (refund.any, 'did you ... get a refund of state or local income tax?') can draw a Yes for a New York 'inflation refund check', so the check may reach federal AGI through Schedule 1 line 1, not line 9; ny_it201.ask.inflation_check (which refuses on Yes) is then never asked, and line 25 is left out (New York tax overstated). The gated prompt 'Was any of the other income you reported ...' names neither line 1 nor the spouse; and line 9 can net to zero (a line 8a net operating loss against line 8z items). Low.
+- **Where:** forms/ny/2025/ny_it201.yaml ny_it201.has_other_income; interview/ny/2025/questions.yaml ny_it201.ask.inflation_check (prompt)
+- **Proposed fix:** Gate on s1.line1 > 0 or any Schedule 1 line 8 item present (not the net line 9); prompt: 'Did you (or, on a joint return, your spouse) include a New York State inflation refund check anywhere in the income on your federal return, for example as a state refund or as other income?'
+- **Severity:** low
+- **Tags:** new-york; gate; caught-by-adjudication
+
+## BUG-0860 — The New York public-job question asks about work in 2025 in New York, not a 2025 Form W-2 from a New York public employer
+
+- **Caught by:** sampled release reviews: false-no gate:scope.has_w2#1 (findings 0, 1, 2); adjudicated in lane xrel (fork ny, claude-opus-5-5, judgment), 2026-11-15
+- **Source:** ny_it201i p. 8, Line 21: "Are you a public employee of New York State or its local governments? ... If Yes, enter the amount of 414(h) retirement contributions, if shown on any federal Form W-2"
+- **Symptom:** ny_it201.ask.public_job: 'In 2025, did you (or, on a joint return, your spouse) work for the government in New York, including a public school or college or the MTA?'. A retiree paid contract arrears on a 2025 Form W-2 with 414(h) contributions did not work in 2025; a New York public employee working remotely from outside the State reads 'in New York' as a place; a worker at a public benefit corporation (NYC Health + Hospitals, a fire district, a public library) may not see it in the help's list. Each answers No and the line 21 addition is dropped (New York tax understated). Rare.
+- **Where:** forms/ny/2025/ny_it201.yaml ny_it201.ask.public_job (source); interview/ny/2025/questions.yaml (help)
+- **Proposed fix:** Prompt: 'Did you (or, on a joint return, your spouse) get a 2025 Form W-2 from New York State or a New York local government or public employer, including a public school or college, the MTA, a public hospital or library, or a fire district?'
+- **Severity:** low
+- **Tags:** new-york; question-wording; caught-by-adjudication
+
+## BUG-0861 — dependent.ptc_files states only the single under-65 non-blind income tests
+
+- **Caught by:** release screen and false-no review, gate:dependent.ptc_files#1 (screen finding 3; false-no findings 2 and 4), xrel lane
+- **Source:** i8962 p. 8, Line 2b, 'Only include your dependents who are required to file an income tax return because their income meets the income tax return filing threshold'; i1040gi p. 10, Chart B, 'Earned income includes salaries, wages, tips, professional fees, and taxable scholarship and fellowship grants' and the higher limits for a dependent 65 or older or blind ('Your unearned income was over $3,350')
+- **Symptom:** The question asks for more than $1,350 not from work or more than $15,750 of pay, and the help says the limits are for a single dependent under 65 who is not blind. A dependent whose only income is a taxable scholarship above the limit is not counted as having pay, so the filer answers No and the dependent's modified AGI is left out of household income (PTC overstated). A dependent 65 or older or blind is given no limit at all; a filer who applies the stated limits answers Yes and the modified AGI is counted though the dependent need not file (PTC understated). Whether net self-employment earnings of $400 or more count as meeting the income filing threshold is not settled by the cited text and is not asked.
+- **Where:** forms/2025/dependent.yaml dependent.ptc_files (question and help in interview/2025/questions.yaml); consumer dependent.ptc_magi_counted, f8962 line 2b
+- **Proposed fix:** Name taxable scholarship and fellowship grants as pay in the question; state the 65-or-older and blind limits in the help (or ask age 65 and blindness and the two amounts and compute Chart B); decide from the source whether the self-employment rule is an income filing threshold for line 2b and ask it if so.
+- **Severity:** medium
+- **Tags:** ptc; dependent-filing-threshold; wording; xrel
+
+## BUG-0862 — household.credit_disallowed omits the additional child tax credit and credits reversed after an audit
+
+- **Caught by:** release false-no review, gate:household.claims_8862_credit#1 (findings 0, 1 and 2), xrel lane
+- **Source:** i1040gi p. 39, 'if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced'; i1040gi p. 43, 'You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error'
+- **Symptom:** The question names 'a child tax credit, a credit for other dependents or an earned income credit' and the help no longer says that a reduction by notice, letter, audit or court decision, or a credit repaid after an agreed audit, counts. A filer whose notice says 'additional child tax credit disallowed', or who repaid a credit after signing an audit report, can truthfully answer No; the return then claims the credit without Form 8862 instead of refusing. The math-or-clerical-error carve-out also asks the filer to classify the IRS action.
+- **Where:** forms/2025/household.yaml household.credit_disallowed (interview/2025/questions.yaml prompt and help)
+- **Proposed fix:** Name the additional child tax credit in the question; restore to the help that a credit reduced or taken back after an IRS letter asking for proof, an audit (including one agreed to and repaid) or a court decision counts, and that only an arithmetic or missing-SSN math-error notice is excluded.
+- **Severity:** medium
+- **Tags:** 8862; wording; redraft-regression; xrel
+
+## BUG-0863 — Interview help for the marriage questions dropped the federal marriage definitions
+
+- **Caught by:** release screen and false-no reviews, gate:household.married#1 (screen finding 1; false-no findings 1, 2 and 5) and gate:dependent.ever_married#1 (false-no findings 0 and 2), xrel lane
+- **Source:** p501 p. 6, Considered married, 'You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began' and 'You are married and living apart but not legally separated under a decree of divorce or separate maintenance'; p501 p. 6, Definition of marriage (a marriage entered into under foreign or tribal law recognized by a state)
+- **Symptom:** The line sources of household.married_dec31 and dependent.ever_married carry the definitions BUG-0280 added (common-law, foreign or tribal marriage, living apart does not end a marriage), but the interview help shown to the filer does not: married_dec31's help names only nonfinal and final decrees, and dependent.ever_married's help says only 'Count a marriage that has since ended'. A common-law spouse, or a filer separated without a decree, can answer No: the considered-unmarried test for head of household is skipped (household), or a common-law married dependent on a joint return is not refused (dependent). household.ever_married's help does name common-law marriage, so the household case is reached mainly when the two answers disagree.
+- **Where:** interview/2025/questions.yaml help for household.married_dec31 and dependent.ever_married (forms/2025/household.yaml, dependent.yaml sources)
+- **Proposed fix:** Add to married_dec31's help: 'Count a common-law marriage recognized where you live or where it began, and a marriage made abroad or under tribal law that a U.S. state would recognize. Living apart, even under a separation agreement, does not end a marriage.' Add the common-law and foreign/tribal sentence to dependent.ever_married's help.
+- **Severity:** low
+- **Tags:** marriage-definition; wording; redraft-regression; xrel
+
+## BUG-0864 — dependent.other_only_spouse help tells the filer to answer No when another parent of the child lived with the child
+
+- **Caught by:** release false-no review, gate:household.mfs#1 (finding 2), xrel lane
+- **Source:** p501 p. 17, Example 6, 'You and your spouse will file separate returns. Your spouse agrees to let you treat your child as a qualifying child. This means, if your spouse doesn't claim your child as a qualifying child, you can claim this child as a qualifying child'
+- **Symptom:** On a separate return the question asks whether the husband or wife is the only relative, besides the filer, who lived with the child more than half of 2025 and could claim them; the help says 'Answer No if a grandparent, aunt, uncle, grown brother or sister, or another parent of the child also lived with the child'. The husband or wife is usually the child's other parent, so a filer following the help answers No and is refused at the tie-breaker gate (dependent.qc_tiebreak) in the Example 6 case the tool supports. Refusal only; no wrong amount.
+- **Where:** interview/2025/questions.yaml help for dependent.other_only_spouse (forms/2025/dependent.yaml)
+- **Proposed fix:** Say 'a parent of the child other than you and your husband or wife' in place of 'another parent of the child'.
+- **Severity:** low
+- **Tags:** mfs; wording; over-refusal; xrel
+
+## BUG-0865 — Form 5329 screen lines cite Parts II and IX only, and person.x_edu_account's label and source disagree with its question
+
+- **Caught by:** release screen and false-no reviews, gate:person.has_hsa#1 (screen finding 1; false-no finding 2) and gate:person.x_edu_account#1 (screen finding 2; false-no finding 5), xrel lane
+- **Source:** f5329 (2025) p. 2, Part V, "Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329"; Part VII, "or you had an amount on line 49 of your 2024 Form 5329"; Part VIII (ABLE excess)
+- **Symptom:** Every person.x_* screen line (person.x_other, person.x_edu_account, person.x_edu_taxable(_if_account), person.x_edu_excess(_if_account), person.x_archer_excess, person.x_ira_prior_excess(_if_ira_owner), person.has_hsa, person.x_hsa_prior_excess(_if_hsa), person.rmd_age) carries one shared locator quoting f5329 Part II and Part IX. The HSA, Coverdell and ABLE excess lines rest on Parts V, VII and VIII, which are not cited, so a reviewer cannot check the gates against their text. Separately, person.x_edu_account's label and input source read 'had contributions or distributions in 2025' / 'was money put into or taken out of', while the interview asks 'At any time in 2025, did you have a 529 plan, a Coverdell ESA or an ABLE account, or was one held for you?'; reviewers read the narrower label as the gate. No value changes.
+- **Where:** forms/2025/person.yaml (person.x_* cite locators; person.x_edu_account label and expr.source)
+- **Proposed fix:** Give each x_* line the locator of its own Part (Part III/IV for IRA excess, V for Coverdell, VI for Archer MSA, VII for HSA, VIII for ABLE, IX for RMD, II for taxable education/ABLE distributions); make person.x_edu_account's label and source match the interview question (held at any time in 2025).
+- **Severity:** low
+- **Tags:** citation; wording; no-value-change; caught-by-screen-review
+
+## BUG-0866 — Education and ABLE account questions miss a for-2025 Coverdell contribution made in 2026, a deemed distribution, credit-coordinated 529 costs and a former ABLE beneficiary
+
+- **Caught by:** release screen and false-no reviews, gate:person.x_edu_account#1 (screen finding 1; false-no findings 0, 2 and 3) and person.sav_able#1 (screen finding 2), xrel lane
+- **Source:** f5329 p. 2, Part V (contributions to Coverdell ESAs for 2025, which may be made through the due date); i5329 Part VIII, "Any net income distributed from the excess contribution to the ABLE account is includible in the gross income of the contributor"; p970 (Coverdell balance treated as distributed at age 30 or death; QTP/Coverdell qualified expenses reduced by expenses used for the American opportunity or lifetime learning credit and by tax-free assistance); f8880 p. 2, Line 4, ABLE distributions received after 2022
+- **Symptom:** (1) person.x_edu_account asks 'At any time in 2025, did you have ... a Coverdell ESA', so a beneficiary of a Coverdell opened January to April 15, 2026 with an excess contribution for 2025 answers No and the 6% tax is missed. (2) person.x_edu_taxable asks whether money that 'came out of the account in 2025' was taxable; a balance treated as distributed at age 30 or death with no payment reads as No. (3) Its help says 'Money used for the costs the account is meant for is not taxable', with no word that costs also used for an education credit or covered by tax-free scholarships do not count, so a partly taxable 529 distribution reads as No. (4) A contributor (not the beneficiary) who received the net income on a returned ABLE excess is never asked. (5) person.sav_able's question asks 'Is an ABLE account held for you', present tense, so a former beneficiary with a 2023 or 2024 ABLE distribution answers No and Form 8880 line 4 is understated. All rare; each understates tax or overstates the saver's credit.
+- **Where:** interview/2025/questions.yaml and forms/2025/person.yaml: person.x_edu_account, person.x_edu_taxable (help), person.sav_able
+- **Proposed fix:** x_edu_account: 'At any time in 2025, or for 2025 through April 15, 2026, ...'; x_edu_taxable help: count a balance treated as paid out at 30 or at death, and say that costs used for an education credit or paid by tax-free help do not count as costs the account paid; add the ABLE excess contributor to the x_edu_account help ('or you put money into someone else's ABLE account that was returned to you'); sav_able: 'Has an ABLE account been held for you ...'.
+- **Severity:** low
+- **Tags:** wording; scope-screen-narrower-than-line; amount-affecting; caught-by-screen-review
+
+## BUG-0867 — No day-before-the-birthday rule for a January 1 birth in dependent.age and the open-year age questions
+
+- **Caught by:** release false-no reviews, gate:person.birth_cut_year#1 (findings 0 and 2), gate:person.age50_open_year#1 (finding 0), gate:person.age55_open_year#1 (finding 2), gate:person.simple_open_year#1 (finding 2), xrel lane
+- **Source:** i1040gi (PDF pp. 8 and 36, the Form 8814 and Form 8615 paragraphs), "A child born on January 1, 2008, is considered to be age 18 at the end of 2025; a child born on January 1, 2007, is considered to be age 19 at the end of 2025; and a child born on January 1, 2002, is considered to be age 24 at the end of 2025"; p501 p. 23, the day-before rule for age 65
+- **Symptom:** person.born_jan1 states the rule ('a person born on January 1 counts as a year older on the December 31 before') but is asked only of a filer or spouse born in 1961, 2001, 2002, 2007 or 2008. dependent.age asks 'How old was this person at the end of 2025?' with no such rule, so a child born January 1, 2007 enters 18 and passes the EIC and dependent under-19 tests the instructions say the child fails (likewise January 1, 2002 for under 24, and January 1, 2009 for the child tax credit's under 17). The open-year questions person.age50_at_year_end, person.age55_at_year_end and person.simple_age_at_year_end, which exist only for a January 1 birth in 1976, 1971, 1966 or 1962, give no rule, so the person they are for answers by ordinary counting (amb.2025.ira_age50 chose asking; the question can still state the convention).
+- **Where:** interview/2025/questions.yaml: dependent.age, person.age50_at_year_end, person.age55_at_year_end, person.simple_age_at_year_end
+- **Proposed fix:** Add to each help the sentence person.born_jan1 already uses: 'A person born on January 1 counts as a year older on the December 31 before (born January 1, 2007: enter 19).' Alternatively ask dependents' birth year and a January 1 question as for filers.
+- **Severity:** low
+- **Tags:** wording; eligibility; amount-affecting; caught-by-false-no-review
+
+## BUG-0868 — The eligible educator question does not say which school year's 900 hours count
+
+- **Caught by:** release screen and false-no reviews, gate:person.eligible_educator#1 (screen findings 0 and 1; false-no findings 0 and 1), xrel lane
+- **Source:** i1040gi p. 93, Schedule 1 line 11, "If you were an eligible educator in 2025 ... An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year"
+- **Symptom:** The question opens 'In 2025, did you work in a school ... for at least 900 hours during a school year?' and has no help. A teacher who worked the 2024-25 school year and left in June 2025, or who started in August 2025, can count only the hours inside calendar 2025, answer No, and lose up to $300 on Schedule 1 line 11 (person.educator_expenses_if_educator).
+- **Where:** interview/2025/questions.yaml, person.eligible_educator
+- **Proposed fix:** Add help: 'Count the hours of a whole school year that falls partly in 2025 (2024-25 or 2025-26), not only the hours in 2025; count hours at every K-12 school you worked in, including an online school.'
+- **Severity:** low
+- **Tags:** wording; amount-affecting; caught-by-screen-review
+
+## BUG-0869 — person.edu_over says 'course materials' without the lifetime learning credit limit and counts terms 'in the year'
+
+- **Caught by:** release false-no review, gate:person.edu_has_adj#1 (findings 1 and 2), xrel lane
+- **Source:** i8863 p. 4, "Lifetime learning credit: Qualified education expenses include amounts paid for books, supplies, and equipment only if required to be paid to the institution"; i8863 p. 9, "If any qualified education expenses for the student were paid in 2025 for an academic period beginning in the first 3 months of 2026, treat that academic period as if it began in 2025"
+- **Symptom:** The line's source states the materials rule per credit, but the interview asks whether tax-free help and refunds 'came to more than what was paid in 2025 for that term's tuition, required fees and course materials', so a lifetime learning credit student adds books bought elsewhere and answers No for a term whose help exceeds its qualifying costs. Its help, 'With one term in the year, answer by that term alone', can be read as calendar 2025, leaving out a January to March 2026 term paid in 2025 (person.edu_line24's help says that term counts). A No skips the refusal of person.edu_over_refused.
+- **Where:** interview/2025/questions.yaml, person.edu_over (sibling dependent.edu_over, checked by its own family)
+- **Proposed fix:** Prompt: '... tuition, required fees and course materials (for the lifetime learning credit, only materials that had to be bought from the school)'; help: 'A term that begins January to March 2026 and was paid for in 2025 counts as a 2025 term. With only one such term, answer by that term alone.'
+- **Severity:** low
+- **Tags:** wording; amount-affecting; caught-by-false-no-review
+
+## BUG-0870 — The missed-RMD question names only a yearly minimum, so an inherited account's 5-year or 10-year deadline and a first-year April 1 distribution read as No
+
+- **Caught by:** release false-no review, gate:person.rmd_possible#1 (findings 0, 1 and 5), xrel lane
+- **Source:** i5329 p. 9, "The additional tax is 25% of the excess accumulation, which is the difference between the amount that was required to be distributed and the amount that was actually distributed. The tax is due for the tax year that includes the last day by which the minimum required distribution must be taken"; f5329 p. 3, Part IX
+- **Symptom:** person.rmd_missed asks 'Did you take less than the required yearly minimum out of a retirement account by its deadline', with help 'usually must take a minimum amount out each year'. (1) A beneficiary whose inherited account had to be emptied by December 31, 2025 under the 5-year rule (or a 10-year deadline) had no 'yearly minimum' and answers No; the excise tax on the whole remaining balance is missed. (2) A person born in 1951 who missed the first distribution (for 2024, due April 1, 2025) but took the 2025 one reads 'the required yearly minimum' as 2025's. (3) The gate person.rmd_possible opens only for a person born in 1952 or earlier or one who inherited an account, so an alternate payee holding a QDRO share whose participant is past the required beginning date is never asked (rare).
+- **Where:** interview/2025/questions.yaml, person.rmd_missed; forms/2025/person.yaml, person.rmd_possible
+- **Proposed fix:** Prompt: 'Was any amount you were required to take out of a retirement account by a deadline in 2025 not taken in full by that deadline (a yearly minimum, a first-year distribution due April 1, 2025, or emptying an inherited account by its 5-year or 10-year deadline), even if you made it up later?'; widen person.inherited_account's help to 'or received a share of someone else's account under a divorce order (QDRO)'.
+- **Severity:** medium
+- **Tags:** wording; scope-screen-narrower-than-line; amount-affecting; caught-by-false-no-review
+
+## BUG-0871 — retirement.ira_basis asks only about the filer's own undeducted contributions, so basis from an after-tax plan rollover, a divorce transfer or a decedent reads as No
+
+- **Caught by:** release false-no review, gate:person.ira_files_8606#1 (findings 2, 3 and 4), xrel lane
+- **Source:** i8606 (2025) p. 2, Who Must File, "You received distributions from a traditional IRA in 2025 and your basis in these IRAs is more than zero", "You received a distribution from an inherited traditional IRA that has a basis", and "You or your spouse transferred all or part of their traditional IRA in 2025 to the other spouse under a divorce or separation agreement where the transfer resulted in a change in the basis"; p. 9, Line 2, "You rolled over any nontaxable portion of your qualified retirement plan to a traditional IRA that wasn't previously reported on Form 8606, line 2"
+- **Symptom:** A traditional IRA distribution or conversion with basis is refused through retirement.ira_basis ('Have you ever put money into a traditional IRA that you did not deduct on a tax return?'; help 'If any of your earlier tax returns includes Form 8606, answer Yes'), since person.ira_files_8606 opens Form 8606 only for a 2025 nondeductible contribution. A filer whose basis came from after-tax money rolled from a work plan, from a spouse's IRA in a divorce, or from an inherited IRA with the decedent's basis made no undeducted contribution and answers No; the whole distribution is taxed on line 4b. The error overstates tax.
+- **Where:** forms/2025/retirement.yaml and interview/2025/questions.yaml, retirement.ira_basis
+- **Proposed fix:** Ask: 'Does any traditional IRA this money came from hold money that was never deducted or taxed: your own nondeductible contributions, after-tax money rolled over from a work plan, or basis that came with an IRA from a spouse in a divorce or from someone who died?' Keep the Form 8606 help.
+- **Severity:** low
+- **Tags:** wording; amount-affecting; caught-by-false-no-review
+
+## BUG-0872 — person.died_at_64 asks whether 'this is the final return' of a person who died, which a surviving spouse on a joint return may read as No
+
+- **Caught by:** release false-no review, gate:person.turned_65_this_year#1 (finding 1), xrel lane
+- **Source:** i1040gi p. 33, Line 12d, Death of spouse in 2025, "If your spouse was born before January 2, 1961, but died in 2025 before reaching age 65, don't check the box"; p. 110, Part V, "If a taxpayer was born before January 2, 1961, but died in 2025 before reaching age 65, then the taxpayer doesn't qualify for the enhanced deduction for seniors"
+- **Symptom:** For a spouse born in 1960 (or January 1, 1961) who died in 2025 before the 65th birthday, the question 'Is this the final return of a person who died in 2025 before reaching age 65?' is asked of the spouse's record. A surviving spouse filing jointly may take 'final return' to mean a separate return filed by an executor and answer No; the spouse's age box ($1,600 or $2,000 of standard deduction) and the $6,000 senior deduction are then allowed wrongly. Rare.
+- **Where:** forms/2025/person.yaml and interview/2025/questions.yaml, person.died_at_64
+- **Proposed fix:** Ask about the person, not the return: 'Did this person die in 2025 before reaching age 65? (A person reaches 65 on the day before the 65th birthday.)'
+- **Severity:** low
+- **Tags:** wording; amount-affecting; caught-by-false-no-review
+
+## BUG-0873 — f8853c: the reimbursement, pre-1996 and others-paid questions are narrower than their lines; the set-rate question names only day or month
+
+- **Caught by:** release false-no review, gate:f8853c.has_periodic#1 (findings 0, 2, 3, 4), gate:f8853c.has_line24#1 (findings 1, 2), gate:f8853c.periodic#1 (finding 0), xrel lane (ret family)
+- **Source:** i8853 p. 9, Line 24, 'Enter the reimbursements you received or expect to receive through insurance or otherwise for qualified LTC services provided for the insured'; f8853 line 15, 'did anyone other than you receive payments on a per diem or other periodic basis under a qualified LTC insurance contract covering the insured or receive accelerated death benefits under a life insurance policy covering the insured?'; i8853 p. 8, Per Diem Payments, 'payments of a fixed amount made on a periodic basis'; i8853 p. 9, Line 24 Caution, 'you must include reimbursements if the contract was exchanged or modified after July 31, 1996, to increase per diem payments or reimbursements'
+- **Symptom:** The interview asks 'How much of those care costs was paid back to you, by insurance or otherwise?' while line 24 (and the encoding) takes reimbursements received or expected, through insurance or otherwise. A reimbursement paid straight to the nursing home (an assigned benefit, Medicaid or the VA) or due in 2026 for 2025 care reads as not 'paid back to you' and is left off line 24, so line 25 is too large and line 26 too small (taxable per diem understated). The same past tense in f8853c.pre1996 ('Was any of that paid back under a policy issued before August 1, 1996?') misses an expected pre-1996 reimbursement and its refusal. f8853c.others_paid asks whether anyone else was 'paid at a set rate', while line 15 also names any accelerated death benefit to another person, so a lump-sum benefit to a sibling is answered No and the Multiple Payees refusal is not reached. f8853c.periodic says 'a set amount per day or month' while the encoding says 'per day, week or month' and the definition is any fixed periodic amount; a weekly or quarterly benefit may be answered No (box 3's Per diem mark, named in the question, limits this).
+- **Where:** interview/2025/questions.yaml prompts and help of f8853c.line24, f8853c.pre1996, f8853c.others_paid and f8853c.periodic (forms/2025/f8853c.yaml unchanged)
+- **Proposed fix:** line24: 'How much of those care costs was, or will be, repaid or covered by insurance or anyone else, including Medicaid or the VA and amounts paid straight to the care provider? Leave out the set-rate payments.' pre1996: 'Was any of that amount received, or due, under a policy first issued before August 1, 1996 (count one later exchanged or changed)?' others_paid: '... also paid at a set rate under a long-term care policy on this person, or paid any accelerated death benefit from a life insurance policy on this person?' periodic: 'a set amount per day, week, month or other period'.
+- **Severity:** medium
+- **Tags:** interview; Form 8853; false no; wording; xrel
+
+## BUG-0874 — f8889: the then-spouse question reads as coverage at the end of the marriage and skips a person remarried by year end; the separate-return spouse-HSA question is in the present tense
+
+- **Caught by:** release false-no review, gate:f8889.ask_former_spouse_family#1 (findings 0, 2, 3) and gate:f8889.mfs_ask#1 (finding 0), xrel lane (ret family)
+- **Source:** i8889 p. 4, How To Complete Part I, 'if you and your spouse are both eligible individuals and either of you has an HDHP with family coverage, you both are treated as having only the family coverage plan' (month by month); p. 7, Line 6, 'Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025'
+- **Symptom:** (1) f8889.former_spouse_family is encoded as family coverage of the then-spouse 'in a month of the marriage', but the interview asks 'Did a marriage of yours end during 2025 ... while the other person had a high-deductible plan covering more than one person?', which reads as coverage when it ended; a then-spouse whose family plan became self-only before the divorce is answered No and the refusal (BUG-0677) is not reached. Legal separation under a decree is not named. (2) The question is gated on not being married at the end of 2025, so a person divorced or widowed during 2025 and remarried by December 31 is asked only about the current spouse (f8889.spouse_family); the earlier marriage's family months are counted self-only. Both understate the line 3 limit. (3) f8889.mfs_spouse_hsa is encoded 'Did your husband or wife have an HSA of their own for 2025', but the interview asks 'Does your husband or wife have ...?'; a spouse whose HSA took 2025 contributions and was closed or rolled over before filing is answered No, the separate-return refusal is missed and this return takes the whole family limit on line 6.
+- **Where:** interview/2025/questions.yaml prompts of f8889.former_spouse_family and f8889.mfs_spouse_hsa; forms/2025/f8889.yaml f8889.fsf_possible (the not-married-at-year-end condition)
+- **Proposed fix:** former_spouse_family: 'During 2025, before a marriage of yours ended (by divorce, a decree of separate maintenance or death), did the other person have a high-deductible plan covering more than one person in any month?'; ask it also of a person married at the end of 2025 whose household answers allow an earlier 2025 marriage, or state the limit in the refusal notes. mfs_spouse_hsa: 'Did your husband or wife have an HSA of their own at any time in 2025, or was anything put into one for 2025, even if it is now closed?'
+- **Severity:** low
+- **Tags:** interview; Form 8889; false no; wording; xrel
+
+## BUG-0875 — retirement: the beneficiary questions name an employee who died before retiring, not a former employee or a death before the annuity starting date
+
+- **Caught by:** release screen review, gate:retirement.plan_death#1 (findings 0 and 1), xrel lane (ret family)
+- **Source:** i1040gi p. 29, Simplified Method Worksheet, Before you begin, 'If you are the beneficiary of a deceased employee or former employee who died before August 21, 1996, include any death benefit exclusion that you are entitled to (up to $5,000)'; i1040gi p. 30, 'If you are the survivor of a retiree, use the retiree's age on their annuity starting date ... If you are the beneficiary of an employee who died, see Pub. 575.'
+- **Symptom:** retirement.death_exclusion asks 'Did the employee die before August 21, 1996 ...?'; a beneficiary of a retiree or other former employee who died before that date can answer No, and the death benefit exclusion (cost on line 2 of the Simplified Method Worksheet) is neither applied nor refused, so the taxable amount is overstated. retirement.ben_before_retire asks 'Did the person who died do so before starting to draw this pension (before retiring)?'; for a person who had retired but died before the annuity starting date of a deferred pension the parenthetical points to No while the main clause points to Yes, and a No skips the refusal for an employee's beneficiary.
+- **Where:** interview/2025/questions.yaml and forms/2025/retirement.yaml, retirement.death_exclusion and retirement.ben_before_retire
+- **Proposed fix:** death_exclusion: 'Did the person who earned this pension (an employee or former employee, a retiree included) die before August 21, 1996?'. ben_before_retire: 'Did the person who died do so before this pension's payments to them began (its annuity starting date), even if they had already stopped working?'
+- **Severity:** low
+- **Tags:** interview; pensions; wording; xrel
+
+## BUG-0876 — sli.any: a loan not called a student loan but used only for school costs may be answered No
+
+- **Caught by:** release screen review, gate:sli.any_if_not_mfs#1 (finding 0), xrel lane (ret family)
+- **Source:** i1040gi p. 98, Line 21, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students.'
+- **Symptom:** The tick 'Paid interest on a student loan' and its help ('If you are not sure whether a loan counts, answer Yes') turn on the loan's name. A filer who paid interest on a personal loan or line of credit used only for tuition, fees, room and board or books is not unsure and answers No, so lines 1 and 9 of the Student Loan Interest Deduction Worksheet drop deductible interest (deduction understated).
+- **Where:** interview/2025/questions.yaml help of sli.any
+- **Proposed fix:** Add to the help: 'A loan counts by what it paid for, not by its name: a personal loan or credit line used only to pay college costs counts too.'
+- **Severity:** low
+- **Tags:** interview; student loan interest; wording; xrel
+
+## BUG-0877 — f8889 lows: a 2% S corporation shareholder's HSA contributions are left off line 2; line 15 lists long-term care premiums without the age-based limit and omits the establishment date of a rollover-funded HSA
+
+- **Caught by:** sampled release completeness review of f8889 (claude-opus-5-5), claims f8889#1.2 and f8889#1.3, adjudicated in lane xrel (fork ret, claude-opus-5-5, judgment), 2026-11-15.
+- **Source:** p969 p. 8, 'Contributions by an S corporation to a 2% shareholder-employee's HSA for services rendered are treated as guaranteed payments and are deductible by the S corporation and includible in the shareholder-employee's gross income. The shareholder-employee can deduct the contribution made to the shareholder-employee's HSA.'; p969 p. 9, 'The premiums for long-term care insurance (item (1)) that you can treat as qualified medical expenses are subject to limits based on age and are adjusted annually.'; p969 p. 8, 'An HSA that is funded by amounts rolled over from an Archer MSA or another HSA is established on the date the prior account was established.'
+- **Symptom:** (1) f8889.line2's help says to leave out what the employer put in and counts only deposits by you or anyone other than your employer; an S corporation's contribution for a 2% shareholder-employee is in W-2 box 1, not box 12 code W, and is deductible on line 2, so the filer omits it (or enters it on line 9) and loses the deduction while the amount stays in wages. Schedule K-1 (Form 1120-S) is now in scope (k1s), so such a filer is no longer refused elsewhere. A partner's HSA contribution by the partnership (guaranteed payment) is the same case. (2) f8889.medical counts long-term care insurance premiums in full; only the age-based eligible amount is a qualified medical expense, so line 15 can be overstated and line 16 understated. (3) f8889.medical says costs must date from after you opened the HSA, without saying that an HSA funded by a rollover from another HSA or an Archer MSA is treated as opened when the earlier account was, so a filer may exclude qualifying costs and overstate line 16.
+- **Where:** interview/2025/questions.yaml help of f8889.line2 and f8889.medical; forms/2025/f8889.yaml f8889.line2 and f8889.medical source text
+- **Proposed fix:** f8889.line2 help: add 'If you own more than 2% of an S corporation and it put money into your HSA as part of your pay (in box 1 of your W-2, not next to W in box 12), or a partnership did so for you as a partner, count that here.' f8889.medical: after 'long-term care insurance' add '(no more than the limit for your age: $480 if 40 or under, $900 if 41 to 50, $1,800 if 51 to 60, $4,810 if 61 to 70, $6,020 if 71 or over; the 2025 limits are listed in p502, Long-Term Care, at sources/2025/p502.txt lines 696-702)'; and add 'An HSA funded by a rollover from another HSA or an Archer MSA counts as opened when that earlier account was.' Then rerun the f8889 reviews.
+- **Severity:** low
+- **Tags:** completeness; f8889; wording; xrel
+
+## BUG-0878 — retirement: the disability question does not ask whether the plan provides for disability retirement; the code 4 question does not catch a surviving spouse who treats an inherited IRA as their own
+
+- **Caught by:** sampled release completeness review of retirement (claude-opus-5-5), claims retirement#1.1 and retirement#1.3, adjudicated in lane xrel (fork ret, claude-opus-5-5, judgment), 2026-11-15.
+- **Source:** i1040gi p. 30, 'If you receive payments from a retirement or profit-sharing plan that does not provide for disability retirement, do not treat those payments as disability payments. The payments must be reported as a pension or annuity.'; p590b p. 5, 'You will be considered to have chosen to treat the IRA as your own if: Contributions (including rollover contributions) are made to the inherited IRA, or You don't take the required minimum distribution for a year as a beneficiary of the IRA.'
+- **Symptom:** (1) retirement.disability asks only 'Do you get this pension because you became disabled?'. A filer who left work because of a disability but is paid from a plan with no disability-retirement provision answers Yes; before the minimum retirement age the amount then goes to Form 1040 line 1h as wages (retirement.dis_wages) instead of lines 5a and 5b, which changes earned income (EIC) though not the total taxed. (2) retirement.not_beneficiary asks only whether a code 4 distribution was received some other way than as a beneficiary. A surviving spouse who elected, or is deemed (by contributing to the inherited IRA or missing a beneficiary RMD), to treat the IRA as their own answers No; a code 4 distribution to that spouse under age 59 1/2 is then treated as a distribution due to death and escapes the 10% additional tax on Form 5329 line 4.
+- **Where:** forms/2025/retirement.yaml retirement.disability and retirement.not_beneficiary source text; interview/2025/questions.yaml prompts/help of the same inputs
+- **Proposed fix:** retirement.disability: 'Do you get this pension because you became disabled, under a plan that provides for disability retirement?', help 'Payments from a plan with no disability retirement provision are a pension, not disability pay; answer No.' retirement.not_beneficiary: 'Code 4 is for money paid to the beneficiary of a person who has died. Did you get this money some other way, or are you the surviving spouse and have you made the IRA your own (by choosing to, by putting money into it, or by not taking a required minimum distribution from it as a beneficiary)?'
+- **Severity:** low
+- **Tags:** completeness; retirement; wording; xrel
+
+## BUG-0879 — ssb.any: a person who repaid benefits in 2025 but received none answers No, and the repayment refusal (ssb.repaid_more) is never asked
+
+- **Caught by:** release false-no review, gate:ssb.any#1 (finding 0), xrel lane (ret family); an interview-coverage probe row with ssb.any false completed the return without asking ssb.repaid_more
+- **Source:** i1040gi p. 31, Lines 6a and 6b, Exception, 'Box 4 will show the amount of any benefits you repaid in 2025 ... if your total repayments in 2025 exceed your total benefits received in 2025 by more than $3,000, you may be able to take an itemized deduction or a credit for part of the excess repayments'
+- **Symptom:** ssb.any asks whether the person got benefits in 2025. A person whose Form SSA-1099 shows box 3 zero and a repayment in box 4 truthfully answers No; ssb.repaid_more ('is box 4 more than box 3') is then not asked and the Pub. 915 refusal (ssb.pub915) is missed. The return shows no benefits and drops the excess-repayment deduction or credit (tax overstated, never understated).
+- **Where:** interview/2025/questions.yaml (ssb.any has no prompt of its own; the encoded source is shown) and forms/2025/ssb.yaml ssb.any
+- **Proposed fix:** Ask 'Did you (or, on a joint return, your spouse) get a Form SSA-1099 or RRB-1099 for 2025 (benefits paid, or benefits you repaid)?'; or ask ssb.repaid_more of everyone with a form.
+- **Severity:** low
+- **Tags:** interview; social security; false no; xrel
+
+## BUG-0880 — retirement.ira_basis: a beneficiary of an inherited traditional IRA with the decedent's basis, or a person whose IRA basis came from rolled-over after-tax plan money, answers No and the distribution is taxed in full
+
+- **Caught by:** release false-no review, gate:retirement.is_trad#1 (findings 1 and 2), xrel lane (ret family); the same point as completeness claim retirement#1.2
+- **Source:** p590b p. 6, 'If you inherit a traditional IRA from a person who had basis in the IRA because of nondeductible contributions, that basis remains with the IRA'; i1040gi p. 27, Exception 2(1), 'see Form 8606 and its instructions to figure the amount to enter on line 4b'
+- **Symptom:** The tick 'You once put money into a traditional IRA without deducting it' (help: 'If any of your earlier tax returns includes Form 8606, answer Yes') asks only about the person's own contributions. A beneficiary of a parent's traditional IRA with nondeductible basis never contributed and never filed Form 8606, answers No, and line 4b takes the whole distribution (the nontaxable part is taxed). After-tax plan money rolled into a traditional IRA (Form 1099-R box 5 of the earlier rollover) is basis too and is not read as an undeducted contribution. person.inherited_account only gates the minimum-distribution question; it refuses nothing.
+- **Where:** interview/2025/questions.yaml retirement.ira_basis tick and help; forms/2025/retirement.yaml retirement.ira_basis
+- **Proposed fix:** Tick: 'This IRA, or another traditional IRA of yours, holds money that was never deducted: your own undeducted contributions, after-tax money rolled in from a workplace plan, or, for an inherited IRA, undeducted contributions of the person who died (a Form 8606 on their returns or yours shows it)'. Refuse on Yes as now.
+- **Duplicate of:** BUG-0871 (the same retirement.ira_basis false-no defect; this entry came from the ret family's false-no review, the other from the people family). Fixed together with it.
+- **Severity:** medium
+- **Tags:** interview; IRA; Form 8606; false no; xrel
+
+## BUG-0881 — Retirement and IRA wording lows: the disability tick is in the present tense; the rollover question omits the 120-day first-home recontribution; the separate-return spouse-coverage question says 'at work'; the student-loan question does not ask about the school or program
+
+- **Caught by:** release false-no review, xrel lane (ret family): gate:retirement.disability_if_plan#1 (finding 1), gate:retirement.dis_early_if_disability#1 (finding 1), gate:retirement.rollover_any#1 (finding 5), gate:ira.mfs_cov_matters#1 (finding 0), gate:sli.unqualified_any_if_any#1 (finding 4)
+- **Source:** i1040gi p. 28, 'Disability pensions received before you reach the minimum retirement age set by your employer' (line 1h); p590b p. 28, first home, 'you could generally contribute the amount of the distribution to an IRA within 120 days ... treated as a rollover contribution'; i1040gi p. 96, covered 'at work or through self-employment' and 'You are also covered by a plan if you were self-employed and had a SEP, SIMPLE, or qualified retirement plan'; i1040gi p. 99, 'The expenses must be for education in a degree, certificate, or similar program at an eligible educational institution'
+- **Symptom:** (1) The tick 'You get this pension because you became disabled' is present tense; a disability pension paid before the minimum retirement age that stopped or was relabelled during 2025 is ticked No and reported on lines 5a/5b instead of line 1h (earned income for the EIC and IRA compensation understated). (2) The encoded line retirement.rollover_if_any takes a first-home recontribution within 120 days, but its question says 'within 60 days' and the help 'A later deposit counts only under an IRS waiver', so such a recontribution is left out (tax overstated). (3) ira.mfs_spouse_covered asks 'covered by a retirement plan at work'; a self-employed spouse with a solo 401(k), Keogh or SEP and no Form W-2 may be answered No, and a married-filing-separately filer who lived with the spouse gets the full deduction instead of the $0-$10,000 phase-out. (4) sli.unqualified_any lists related lenders, other uses and non-dependents but not a program or school that is not a degree or certificate program at an eligible educational institution (the help only defines school costs), so interest on such a loan is deducted.
+- **Where:** interview/2025/questions.yaml: retirement.disability tick, retirement.rollover prompt and help, ira.mfs_spouse_covered prompt and help, sli.unqualified_any list
+- **Proposed fix:** (1) 'Some of these payments were paid because you became disabled'. (2) Rollover prompt: 'within 60 days of receiving it, or within 120 days for a first-home withdrawal whose purchase was cancelled or delayed'. (3) 'Was your husband or wife covered by a retirement plan in 2025, at a job or through their own business (a solo 401(k), Keogh, SEP or SIMPLE)?'. (4) Add a list item: 'a loan for a school or program that is not a college, university or vocational school eligible for federal student aid, or not a degree or certificate program'.
+- **Severity:** low
+- **Tags:** interview; pensions; IRA; student loan interest; wording; xrel
+
+## BUG-0882 — k1s: box 2 and box 3 are always passive (real estate professional, a dwelling used personally by a shareholder, trading)
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: completeness k1s#1.1, k1s#1.4; screens gate:k1s.work_if_b1, gate:k1s.under500, gate:k1s.past_ask, gate:k1s.other_ask; false-no gate:k1s.box1_any, gate:k1s.other_ask, gate:k1s.under500, gate:k1s.work_if_b1.
+- **Source:** i1120ssk p. 6, Box 2, "the income (loss) in box 2 isn't from a passive activity if you were a real estate professional (defined earlier) and you materially participated in the activity"; p. 4, "You must determine if you materially participated ... (b) if you were a real estate professional (defined earlier), in each rental real estate activity held through the corporation"; p. 5, treat as nonpassive "The rental of a dwelling unit any shareholder used for personal purposes during the year for more than the greater of 14 days or 10% of the number of days that the residence was rented at fair rental value" and "Trading personal property for the account of owners of interests in the activity".
+- **Symptom:** k1s.p2_loss/p2_income and p3_loss/p3_income are passive whatever the facts; the participation questions (k1s.work_if_b1 and those after it) are asked only when box 1 shows an amount. sche.re_pro is read only by sche.line26 (Schedule E Part I), so a real estate professional who materially participates in a rental held through the S corporation has the box 2 loss sent through Form 8582 (held back) instead of column (i). No question or refusal covers a dwelling used personally by a shareholder or a trading activity (box 3 or box 1). Same pattern as BUG-0843 on k1p. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1s_* totals.
+- **Where:** forms/2025/k1s.yaml (box 2 and box 3 routing: k1s.p2_*, k1s.p3_*, k1s.part4); forms/2025/sche.yaml sche.re_pro.
+- **Proposed fix:** Refuse a K-1 with a box 2 amount when sche.re_pro is Yes (as on Schedule E Part I), and add a refusing tick on boxes 2 and 3: a dwelling unit used personally by a shareholder more than the greater of 14 days or 10% of the fair rental days, or a trading activity. Fix it with BUG-0843.
+- **Severity:** medium
+- **Tags:** k1s, passive activity, latent
+
+## BUG-0883 — k1s: a held-back box 2 loss goes to Form 8582 Part V when box 2 is blank, the loss year's active participation is not asked, and prior-year passive credits are not screened
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: completeness k1s#1.3; screens gate:k1s.active_if_b2, gate:k1s.box2_any, k1s.box13_other; false-no gate:k1s.active_if_b2, gate:k1s.box2_any.
+- **Source:** i8582 p. 10, Part IV column (c), "Don't enter a prior-year unallowed loss in column (c) of Part IV unless you actively participated in the activity in both the year the loss arose and the current tax year"; i1120ssk p. 5, "If you have an overall loss (the excess of deductions and losses, including any prior-year unallowed loss, over income)" and the special allowance "up to $25,000 of the loss (or credit equivalent to a $25,000 deduction)"; p. 6, prior-year losses, deductions or credits "that weren't deductible or usable because of certain limitations".
+- **Symptom:** k1s.active_if_b2 is false whenever box 2 is blank, so k1s.part4 is false and a held-back box 2 loss (k1s.b2_prior_if_any) goes to Part V (k1s.p5_b2_prior): an actively participating shareholder loses the special allowance for it. When box 2 shows an amount, k1s.p4_prior_raw puts the held-back loss in Part IV on this year's active participation alone; nothing asks about the year the loss arose (rental.prior_not_active does this for Schedule E rentals). k1s.prior_any asks only about losses: a passive credit carried from 2024 (Form 8582-CR) on a K-1 whose box 13 shows only code O passes unscreened. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1s_* totals.
+- **Where:** forms/2025/k1s.yaml k1s.active_if_b2, k1s.part4, k1s.p4_prior_raw, k1s.prior_any.
+- **Proposed fix:** Ask k1s.active when box 2 shows an amount or a box 2 loss was held back; add k1s.prior_not_active (refusing, as rental.prior_not_active) when a held-back box 2 loss meets active participation; add a refusing tick to the k1s_prior group for a passive credit held back on the 2024 Form 8582-CR.
+- **Severity:** low
+- **Tags:** k1s, Form 8582, latent
+
+## BUG-0884 — k1s: a fiscal-year S corporation is not asked about, and the participation and disposition questions use calendar 2025
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: completeness k1s#1.6; screens k1s.disposed, gate:k1s.box1_any, gate:k1s.other_ask, gate:k1s.under500, gate:k1s.work_if_b1; false-no gate:k1s.other_ask, gate:k1s.past_ask, gate:k1s.under500, gate:k1s.work_if_b1.
+- **Source:** i1120ssk p. 6, "If you file your tax return on a calendar-year basis, but the corporation files a return for a fiscal year, report the amounts on your tax return for the year in which the corporation's fiscal year ends"; p. 4, "All determinations of material participation are based on your participation during the corporation's tax year".
+- **Symptom:** No question asks the corporation's tax year (top of the K-1). A K-1 for a fiscal year ending in 2026 can be entered on the 2025 return, and k1s.work, hours500, most_hours, mp_other and disposed ask about calendar 2025, so a shareholder of a fiscal-year corporation (section 444 year, or a 52-53 week year) answers by the wrong period. S corporations mostly use the calendar year (section 1378), so the case is uncommon. Same pattern as BUG-0839 on k1p. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1s_* totals.
+- **Where:** forms/2025/k1s.yaml ($k1s entry questions; participation inputs; k1s.disposed).
+- **Proposed fix:** Ask on each K-1 whether the corporation's tax year shown at the top ends in 2025 and is the calendar year; refuse a fiscal-year K-1 (or word the participation and disposition questions as 'during the corporation's tax year shown on the K-1'). Fix with BUG-0839.
+- **Severity:** low
+- **Tags:** k1s, question wording, latent
+
+## BUG-0885 — k1s: S corporation losses are not in the excess business loss limit (Form 461)
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: completeness k1s#1.7.
+- **Source:** i1120ssk p. 6, "Losses attributable to your trade or business may be limited, pursuant to section 461(l)"; p. 9, the limitations apply in order: "the basis limitations, the at-risk limitations, the passive activity limitations, and the excess business loss limitations"; i1040se p. 9, a loss on Schedule E from an S corporation engaged in a trade or business uses Form 461.
+- **Symptom:** s1.ebl_total is s1.ebl_sc plus s1.ebl_sche (Schedules C and Schedule E Part I); k1s.col_i (the nonpassive box 1 loss allowed by basis) and the passive box 1 loss allowed on Form 8582 enter no excess business loss total, and no k1s refusal covers a loss above the threshold. Same pattern as BUG-0842 on k1p. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1s_* totals.
+- **Where:** forms/2025/s1.yaml s1.ebl_total; forms/2025/k1s.yaml k1s.col_i; the person.k1s_* totals to be wired.
+- **Proposed fix:** When wiring the K-1 totals, add the allowed box 1 trade or business losses of each K-1 (k1s.col_i plus the allowed passive box 1 loss) to s1.ebl_total, with BUG-0842; until then the integration lane keeps scope.k1 refusing.
+- **Severity:** medium
+- **Tags:** k1s, excess business loss, latent
+
+## BUG-0886 — k1s: the participation questions count the spouse only on a joint return
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: screens gate:k1s.under500; false-no gate:k1s.past_ask, gate:k1s.other_ask.
+- **Source:** i1120ssk p. 4, "Generally, any work that you or your spouse does in connection with an activity held through an S corporation (where you own your stock at the time the work is done) is counted toward material participation"; i8582 p. 5, spouse participation counts "whether or not you and your spouse file a joint return for the tax year"; i1120ssk p. 5, "your interest (including your spouse's interest)".
+- **Symptom:** Married filing separately is now in scope, but k1s.work, hours500, most_hours, past_years, active and tenth say '(or, on a joint return, your spouse)' and mp_other names only 'you'. A shareholder filing separately whose spouse did the work answers No: box 1 becomes passive and a box 2 loss loses Part IV. Same pattern as BUG-0838 on k1p. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1s_* totals.
+- **Where:** forms/2025/k1s.yaml (input sources of k1s.work, k1s.hours500, k1s.most_hours, k1s.past_years, k1s.mp_other, k1s.active, k1s.tenth).
+- **Proposed fix:** Say '(or your spouse, whether or not you file jointly)' in each participation question and its help, as BUG-0838 proposes for k1p.
+- **Severity:** medium
+- **Tags:** k1s, married filing separately, question wording, latent
+
+## BUG-0887 — k1s box questions: a code shown with * and STMT can be answered as no amount, and a Schedule K-3 received on request is missed
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: screens k1s.box10, k1s.box11_12, k1s.box14, k1s.box15, gate:k1s.box17_any, gate:k1s.box17v_any_if_17, gate:k1s.box1_any, gate:k1s.box8_any; false-no gate:k1s.box13o_any, gate:k1s.box16_any, gate:k1s.box16a/b/c/d_any_if_16, gate:k1s.box17_any, gate:k1s.box17v_any_if_17, gate:k1s.box2_any, gate:k1s.box8_any.
+- **Source:** i1120ssk p. 6, "For those informational items that can't be reported as a single dollar amount, the corporation will enter an asterisk in the left column and enter 'STMT' in the dollar amount entry space"; p. 17, Code V, "The S corporation will provide the information you need to figure your deduction"; p. 14, Box 14, a shareholder who did not get box 14 checked receives a Schedule K-3 only on request.
+- **Symptom:** The box ticks ask whether a box 'show[s] an amount' (k1s.box10, box11_12, box15, box16_any, box17_any, box1_any to box5_any, box8_any) or 'show[s] code ...'; a box printed with a code and * STMT, or left blank with the items on a continuation statement, can truthfully be answered No. Refused items (boxes 10 to 12, 15, 17 other codes) then pass, and computed items (box 8c, 13 code O, 16 codes A to D, 17 code V QBI) are dropped. Code V is commonly reported by statement, so the QBI of the K-1 is lost. k1s.box14 asks only whether box 14 is checked: a K-3 obtained on request is not caught. Same pattern as BUG-0846 on k1p. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1s_* totals.
+- **Where:** forms/2025/k1s.yaml box tick inputs; interview/2025/questions.yaml help of the k1s_box_a/b/c, k1s_box16 and k1s_box17 groups.
+- **Proposed fix:** Word each tick as 'shows an amount, a code, or STMT (an amount on an attached statement)' and add one help line: 'Count a box that shows a code with * or STMT, or whose items are on a statement the corporation attached.' k1s.box14: 'Is box 14 checked, or did you receive a Schedule K-3 for 2025 from the corporation?'
+- **Severity:** low
+- **Tags:** k1s, question wording, latent
+
+## BUG-0888 — k1s.not_at_risk: property, capital contributions, a stop-loss on the filer's own money, and a lender with an interest in the activity who is not an owner are not caught
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: screens k1s.not_at_risk, gate:k1s.has_loss; false-no gate:k1s.has_loss.
+- **Source:** i1120ssk p. 3, not at risk: "The basis of your stock in the corporation or the basis of your loans to the corporation if the cash or other property used to purchase the stock or make the loans was from a source (a) covered by nonrecourse indebtedness ...; (b) protected against loss by a guarantee, stop-loss agreement, or other similar arrangement; or (c) that is covered by indebtedness from a person who has an interest in the activity or from a person related to a person (except you) having such an interest, other than a creditor"; "Any cash or property contributed to a corporate activity, or your interest in the corporate activity, that is (a) covered by nonrecourse indebtedness ...; (b) protected against loss by a guarantee, stop-loss agreement, or other similar arrangement; or (c) ...".
+- **Symptom:** k1s.not_at_risk asks only whether the filer paid for shares or loans 'with money borrowed' on protected terms or from another owner or someone related to one. A shareholder who paid with property subject to nonrecourse debt, contributed capital without new shares on such terms, holds shares under a stop-loss or buy-back agreement while using their own money, or borrowed from a person with an interest in the activity who is not an owner answers No, and the Form 6198 refusal does not fire. Same pattern as BUG-0845 on k1p. Latent while scope.k1 refuses every K-1 (scope.schedule1); it becomes reachable when the K-1 integration lane wires the person.k1s_* totals.
+- **Where:** forms/2025/k1s.yaml k1s.not_at_risk (input source); interview help.
+- **Proposed fix:** Ask: 'Is any money or property you put into this corporation (for shares, loans or as a contribution) protected from loss (a loan you are not personally liable for, a guarantee, a stop-loss or buy-back agreement), or borrowed from anyone with an interest in the corporation's business other than as a lender, or someone related to them?'
+- **Severity:** low
+- **Tags:** k1s, at-risk, question wording, latent
+
+## BUG-0889 — royalty: no screen for an at-risk loss, capital-gain royalties (patent transfer, coal or iron ore), business royalties beyond the four named trades (NIL, other creators, mineral operating interests), depreciation, or car and travel costs
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: completeness royalty#1.1, #1.2, #1.3, #1.5; screens royalty.business, royalty.depletion.
+- **Source:** i1040se p. 3, "In most cases, you must complete Form 6198 to figure your loss if you have: A loss from an activity carried on as a trade or business or for the production of income, and Amounts in the activity for which you are not at risk", "The activity of holding mineral property does not qualify for this exception"; p. 6, "You may be able to treat amounts received as 'royalties' for the transfer of a patent or amounts received on the disposal of coal and iron ore as the sale of a capital asset"; p. 6, Line 4, "Report on line 4 royalties from oil, gas, or mineral properties (not including operating interests)", "If you are in business as a self-employed writer, inventor, artist, etc.", "If your NIL income is derived from business activities such as sponsorship deals or service income, report your income and expenses on Schedule C"; p. 6, auto and travel expenses (50% of meals, standard mileage rate, Form 4562 Part V); f1040se line 18 'Depreciation expense or depletion'.
+- **Symptom:** royalty.line21 passes a loss to sche.line25 with no at-risk question (rental has rental.not_at_risk; royalty has none). Nothing asks or refuses a patent-transfer or coal and iron ore royalty that is a sale of a capital asset. royalty.business names only 'a self-employed writer, artist, musician or inventor, or ... an oil or gas working interest', so a photographer, software developer, NIL sponsorship or service income, or a hard-rock or coal operating interest answers No and stays on Schedule E (no self-employment tax). royalty.amt19 'Other costs' takes car and travel costs without the 50% meals limit or the standard-mileage and Form 4562 Part V rules (rental refuses these at rental.vehicle), and royalty line 18 has no place for depreciation of a purchased copyright or patent. Royalty losses and these royalty kinds are uncommon.
+- **Where:** forms/2025/royalty.yaml royalty.business (source), royalty.line21 (refusals); interview help.
+- **Proposed fix:** royalty.business: 'Did it come from your own business or services (as a self-employed writer, artist, musician, inventor or other creator, or name, image and likeness income from sponsorships or services), or from an operating (working) interest in oil, gas or other minerals?'. Add refusing ticks to royalty_rare: 'It is from selling a patent, or from coal or iron ore you disposed of', 'Car, truck or travel costs for it', 'You depreciate something for it (such as a purchased copyright or patent)'; and refuse a royalty loss when money put in is not at risk (as rental.not_at_risk).
+- **Severity:** low
+- **Tags:** royalty, question wording
+
+## BUG-0890 — royalty.expenses_any: taxes the payer withheld are answered No, so line 16 is zero against a gross line 4
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: screens gate:royalty.expenses_any; false-no gate:royalty.expenses_any.
+- **Source:** i1040se p. 6, Line 4, "Enter on line 4 the gross amount of royalty income, even if state or local taxes were withheld from oil or gas payments you received. Include taxes withheld by the producer on line 16."
+- **Symptom:** royalty.line4 now asks for royalties 'before any taxes the payer withheld' (gross), and royalty.amt16 asks for taxes 'including any the payer withheld', but amt16 is asked only when royalty.expenses_any ('Did you pay any costs for it, such as fees, taxes or production costs?') is Yes. An oil or gas royalty owner whose producer withheld severance tax and who paid nothing else answers No: royalty.line16 is royalty.zero and line 21 overstates the royalty by the withheld tax. Costs the payer took out of a gross-reported payment (post-production charges, an agent's commission) are missed the same way. Live (Schedule E Part I royalties are in scope).
+- **Where:** forms/2025/royalty.yaml royalty.expenses_any (input source).
+- **Proposed fix:** Ask: 'Did you pay any costs for it, or did the payer take any out of your payments (such as fees, severance or production taxes, or production costs)?'
+- **Severity:** medium
+- **Tags:** royalty, question wording
+
+## BUG-0891 — rprop: a building acquired in a like-kind exchange or involuntary conversion is depreciated from its own placed-in-service date
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: completeness rprop#1.2; screens rprop.screen.
+- **Source:** i4562 p. 9, "Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted. Use the same depreciation method and convention that was used for the exchanged or involuntarily converted property. Treat any excess basis as newly placed in service property."
+- **Symptom:** rprop.screen does not name property acquired in a like-kind exchange or involuntary conversion. A 2025 exchange of real estate is refused through sd.like_kind, but a rental building received in an earlier year's exchange is depreciated by rprop.rate from its own month and year placed in service and its whole basis, so the carryover basis gets the wrong recovery year and rate.
+- **Where:** forms/2025/rprop.yaml rprop.screen (input source list).
+- **Proposed fix:** Add to rprop.screen: '- you got it in a trade for other property (a like-kind exchange) or to replace property destroyed, stolen or taken (an involuntary conversion)'.
+- **Severity:** low
+- **Tags:** rprop, question wording
+
+## BUG-0892 — sche.re_pro: the question does not say which work counts as a real estate business
+
+- **Caught by:** sampled release reviews of family sche (claude-opus-5-5), adjudicated in lane xrel (fork sche), 2026-11-15: screens sche.re_pro.
+- **Source:** i1040se p. 3, Real estate professionals, "A real property trade or business is any real property development, redevelopment, construction, reconstruction, acquisition, conversion, rental, operation, management, leasing, or brokerage trade or business"; "Services you performed as an employee are not treated as performed in a real property trade or business unless you owned more than 5% of the stock".
+- **Symptom:** sche.re_pro asks 'Did you (or your spouse) work more than 750 hours in 2025 in real estate businesses, and more than half of all your work time?' with help 'A Yes ends the interview here.' A builder or contractor, or a landlord who manages his own rentals full time, can answer No: the rentals are computed as passive and a loss is held back on Form 8582 where it may be nonpassive. (A Yes from an employee without a 5% share only refuses, which is safe.)
+- **Where:** interview/2025/questions.yaml help of sche.re_pro (or the input source in forms/2025/sche.yaml).
+- **Proposed fix:** Help: 'Real estate businesses include building, developing, buying, renting out, managing, leasing or brokering real estate, including running your own rentals. Work as an employee counts only if you own more than 5% of your employer.'
+- **Severity:** low
+- **Tags:** sche, question wording
+
+## BUG-0893 — Wages earned while an inmate that are in W-2 box 1 are counted twice, on line 1a and on Schedule 1 line 8u
+
+- **Caught by:** sampled release completeness review, f1040#1.1 and scope#1.1 (claude-opus-5-5), adjudicated in lane xrel (wide family), 2026-11-15.
+- **Source:** i1040gi p. 23, Line 1a, Inmate wages: "If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a."
+- **Symptom:** f1040.line1a sums every w2.box1 with no question that removes inmate wages, and s1.inmate_wages / s1.inmate_amount ('In 2025, were you ... paid for work done while in a jail or prison?' / 'How much were you ... paid for that work in 2025?') adds the same amount on s1.line8u. Executed on a copy of scope.ch11.wage_only_debtor (chapter 11 answered No) with s1.inmate_wages true and s1.inmate_amount $5,000: f1040.line1a stays $215,300 and s1.line8u is $5,000, so line 9 is $220,300; if the $5,000 was in box 1 of the W-2 it is taxed twice.
+- **Where:** forms/2025/s1.yaml s1.inmate_amount (and its question in interview/2025/questions.yaml); forms/2025/f1040.yaml f1040.line1a.
+- **Proposed fix:** Ask, after s1.inmate_amount, how much of it is in box 1 of a W-2 entered here, and subtract that part from line 1a (a helper on f1040.line1a), or refuse when any of it is in W-2 box 1; at least say in the help of s1.inmate_amount that W-2 wages for this work are entered here and not with the W-2.
+- **Severity:** low
+- **Tags:** completeness, wording, line 1a
+
+## BUG-0894 — On a separate return, the estimated tax question does not say how to divide joint estimated payments
+
+- **Caught by:** sampled release completeness review, f1040#1.6 (claude-opus-5-5), adjudicated in lane xrel (wide family), 2026-11-15.
+- **Source:** i1040gi p. 39, Line 26: "If you and your spouse paid joint estimated tax but are now filing separate income tax returns, you can divide the amount paid in any way you choose as long as you both agree. If you can't agree, you must divide the payments in proportion to each spouse's individual tax as shown on your separate returns for 2025."
+- **Symptom:** Separate returns are now supported, but f1040.line26 is a supplied total whose question ('How much estimated tax did you (or, on a joint return, your spouse) pay for 2025 in all, counting any 2024 refund applied to 2025?') and help ('On a joint return add what each of you paid, even if you paid separately') address only a joint return. A separate filer who made joint estimated payments with the spouse is not told to enter only an agreed share, or the share in proportion to each spouse's separate tax, and can enter the whole joint payment, overstating line 26 and the refund.
+- **Where:** interview/2025/questions.yaml, input f1040.line26 (prompt and help); forms/2025/f1040.yaml f1040.line26.
+- **Proposed fix:** On a separate return, add to the help (or a separate-return variant of the prompt): 'If you and your spouse made joint estimated payments, enter only your share: any split you both agree on, or, if you do not agree, the part in proportion to each of your separate 2025 taxes.' Alternatively refuse a separate return with joint estimated payments if the proportional split is not to be computed.
+- **Severity:** low
+- **Tags:** completeness, wording, married filing separately
+
+## BUG-0895 — The state refund worksheet is used for a filer who was a dual-status alien for 2024 and so had no standard deduction
+
+- **Caught by:** sampled release completeness review, refund#1.1, and screen review refund.exc_who#1 finding 1 (claude-opus-5-5), adjudicated in lane xrel (wide family), 2026-11-15.
+- **Source:** p525 p. 24, "You can't use the State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, and must use this discussion if you're a nonresident alien"; p. 25, Standard deduction limit, "Only your itemized deductions that are more than your standard deduction are subject to the recovery rule (unless you're required to itemize your deductions)"; i1040gi p. 33-34, a dual-status alien's standard deduction is zero.
+- **Symptom:** refund.exc_who refuses only 'a nonresident alien filing Form 1040-NR for 2024'. A filer who was a nonresident for part of 2024 and filed a 2024 Form 1040 as a dual-status return (resident at the end of 2024) answers No, and refund.line5 to line7 subtract a 2024 standard deduction the filer could not claim, understating the taxable refund. scope.nonresident asks only about 2025.
+- **Where:** forms/2025/refund.yaml refund.exc_who (source) and its question in interview/2025/questions.yaml.
+- **Proposed fix:** Add a limb to refund.exc_who: 'you were a nonresident alien for any part of 2024 (a dual-status year), whichever form you filed'; the same Pub. 525 route then applies.
+- **Severity:** low
+- **Tags:** completeness, screen, wording
+
+## BUG-0896 — Digital asset questions: staking or fork coins credited while only holding read as a No, and airdrops are not named for line 8v
+
+- **Caught by:** release screen and false-no reviews, gate:f1040.digital_assets#1 (screen finding 0; false-no findings 0, 1, 3), xrel lane (wide family), 2026-11-15.
+- **Source:** i1040gi p. 16, check Yes if you 'Received new digital assets as a result of mining, staking, and similar activities' or 'Received digital assets as a result of a hard fork'; p. 92, Line 8v, 'If, in 2025, you received ordinary income in connection with digital assets that isn't reported elsewhere on your return (for example, digital assets, such as income from forks, staking, or mining'.
+- **Symptom:** The gate help says 'Buying crypto with dollars and holding it ... is a No' and gives as Yes only being paid, swapping and spending, so a holder whose exchange credited staking rewards or forked coins can answer No and s1.digital_income_if_assets (line 8v) is never asked. The gated question s1.digital_income lists only staking, non-business mining and forks as a closed list, so an airdrop or similar reward is answered No.
+- **Where:** interview/2025/questions.yaml inputs f1040.digital_assets (help) and s1.digital_income (prompt); forms/2025/s1.yaml s1.digital_income source.
+- **Proposed fix:** Gate help: 'Holding is a No only if nothing new was added to your account: staking or earn rewards, coins from a fork and tokens dropped into your wallet (an airdrop) are a Yes even if you did nothing.' Gated question: 'receive any crypto from staking, from mining that is not a business, from a fork (a coin split in two), from an airdrop, or from a similar activity?'
+- **Severity:** medium
+- **Tags:** screen, false-no, wording
+
+## BUG-0897 — Estimated tax gate misses an amended-return overpayment and joint payments sent by a spouse or former spouse
+
+- **Caught by:** release screen and false-no reviews, gate:f1040.estimated_any#1 (screen findings 0, 1, 2; false-no findings 0 to 4), xrel lane (wide family), 2026-11-15.
+- **Source:** i1040gi p. 39, Line 26, 'Include any overpayment that you applied to your 2025 estimated tax from your 2024 return or an amended return'; 'If you got divorced in 2025 and you made joint estimated tax payments with your former spouse, enter your former spouse's SSN'; 'If you and your spouse paid joint estimated tax but are now filing separate income tax returns, you can divide the amount paid'.
+- **Symptom:** f1040.estimated_any asks 'Did you (or, on a joint return, your spouse) send the IRS estimated tax payments for 2025, or have a 2024 refund applied to your 2025 tax?' with help 'ones you send yourself during the year'. A filer whose only credit is an overpayment applied from an amended return, a divorced filer whose former spouse sent joint payments, and a separate filer whose spouse sent joint payments can each truthfully answer No, and line 26 is zero. A filer who applied a 2024 overpayment and got no check may not call it a refund; a fourth-quarter payment made in January 2026 is not 'during the year'.
+- **Where:** interview/2025/questions.yaml input f1040.estimated_any (prompt and help); forms/2025/f1040.yaml f1040.estimated_any.
+- **Proposed fix:** Prompt: 'Were estimated tax payments made for 2025 by you, your spouse, or jointly with a spouse or former spouse (whoever sent them), or was an overpayment from your 2024 return or an amended return applied to your 2025 tax?' Help: count payments made by mail, online or card, including the one due in January 2026. The share to enter on a separate or post-divorce return is BUG-0894.
+- **Severity:** medium
+- **Tags:** screen, false-no, wording
+
+## BUG-0898 — Other withholding gate help does not name Forms 8805 and 8288-A
+
+- **Caught by:** release screen and false-no reviews, gate:f1040.withheld_other_any#1 (screen findings 0, 1; false-no findings 0, 1), xrel lane (wide family), 2026-11-15.
+- **Source:** i1040gi p. 39, Line 25c, 'Tax withheld that is shown on Form 1042-S, Form 8805, or Form 8288-A.'
+- **Symptom:** f1040.withheld_other_any asks about tax 'taken out of money paid to you' and its help names Form 1099, W-2G, SSA-1099, RRB-1099, Schedule K-1 and Form 1042-S, but not Form 8805 (partnership section 1446 tax, often with no cash paid) or Form 8288-A (FIRPTA tax withheld from a sale). A filer with only that withholding can answer No and line 25c is zero; the gated question f1040.line25c_other does name both forms.
+- **Where:** interview/2025/questions.yaml input f1040.withheld_other_any (help).
+- **Proposed fix:** Help: 'Tax withheld on a Schedule K-1 or on Form 1042-S, 8805 or 8288-A counts too, even if no money was paid to you.'
+- **Severity:** low
+- **Tags:** screen, false-no, wording
+
+## BUG-0899 — Recoveries on a joint return: the 2024 itemizing question does not say whose return when only the spouse itemized on a separate 2024 return
+
+- **Caught by:** release false-no reviews, gate:rec.has_medical_if_path#1, gate:rec.has_mortgage_if_path#1, gate:rec.has_property_tax_if_path#1, gate:rec.has_other_if_path#1, gate:rec.path#1 and gate:rec.joint_any#1 (finding 0 of each, and the related findings listed in the xrel-wide adjudication) and screen rec.two_returns#1 (finding 0), xrel lane (wide family), 2026-11-15.
+- **Source:** p525 p. 25, 'If you recover any itemized deduction that you claimed in an earlier year, you must generally include the full amount of the recovery in your income in the year you receive it'; p. 27, Worksheet 2, 'Use information from your tax return for the year the expense was deducted.'
+- **Symptom:** On a joint 2025 return of a couple who filed separate 2024 returns, where only the spouse itemized and only the spouse got money back, rec.two_returns is answered No as its help says ('Answer No if only one of you got money back'), and rec.path then reads refund.itemized, 'Did you itemize deductions on your 2024 federal return?'. On the recovery path nothing says that the question is about the return of the spouse who got the money back (refund.two_returns has that help, but only for a state refund), so the answering filer says No and the recovery questions are never asked; the taxable recovery is dropped. A related case: one spouse's recovery is of a deduction on their own separate 2024 return and the other spouse's only recovery is a state income tax refund for their own separate return; rec.two_returns' help ('Answer No if only one of you got money back') reads as No, refund.two_returns is also No, and the two refunds are figured on one Worksheet 2 (refund.taxable from rec) against one 2024 return.
+- **Where:** interview/2025/questions.yaml inputs rec.two_returns (help) and refund.itemized (prompt or help).
+- **Proposed fix:** Add to rec.two_returns the help refund.two_returns has: 'If only one of you got money back, answer No; the questions that follow are then about that person's own 2024 return.' On a joint return word refund.itemized 'Did you (or, if only your spouse got money back, your spouse) itemize deductions on that 2024 federal return?' In rec.two_returns, count a state or local income tax refund of the other spouse's separate 2024 return as money paid back.
+- **Severity:** medium
+- **Tags:** false-no, wording, joint return
+
+## BUG-0900 — AMT mortgage interest question: its help rules out a house or condominium used on a transient basis
+
+- **Caught by:** release false-no review, gate:s2.amt_boat_ask#1 (findings 0 to 3), xrel lane (wide family), 2026-11-15.
+- **Source:** i6251 p. 8, Line 3, 'If you deducted home mortgage interest on Schedule A for a dwelling that isn't a principal residence (within the meaning of section 121) or qualified dwelling for AMT, include that deducted interest on line 3. A qualified dwelling for AMT is a house, apartment, condominium, or mobile home not used on a transient basis.' and 'A qualified dwelling for AMT doesn't include house boats and recreational vehicles.'
+- **Symptom:** s2.amt_boat asks only about 'a boat, a motor home or another recreational vehicle that was not your main home' and its help says 'A house, an apartment, a condominium or a mobile home is not one of these.' A second home, condominium or timeshare used on a transient basis (short-term or rental-pool use) is not a qualified dwelling, so its interest is a line 3 adjustment, but the filer answers No and the Form 6251 refusal is missed. A travel trailer or camper called a 'mobile home', and a boat that was the main home for only part of the year, are lesser readings of the same wording.
+- **Where:** interview/2025/questions.yaml input s2.amt_boat (prompt and help); forms/2025/s2.yaml s2.amt_boat source.
+- **Proposed fix:** Prompt: 'Is any of the mortgage interest you deduct for a home that was not your main home and was a boat, motor home, camper, travel trailer or other recreational vehicle, or a house, apartment, condominium, mobile home or timeshare used on a transient basis (such as short-term or rental-pool rental)?' Help: 'A mobile home here is a manufactured home set up as a dwelling; any towable or drivable RV counts. If it was your main home for only part of the year, answer Yes.'
+- **Severity:** medium
+- **Tags:** false-no, wording, AMT
+
+## BUG-0901 — Household employee gate: a nanny paid through a payroll service or registry, a private driver, and January pay for 2024 work read as a No
+
+- **Caught by:** release false-no review, gate:s2.household_help#1 (findings 0 to 3), xrel lane (wide family), 2026-11-15.
+- **Source:** f1040s2 line 9, 'Household employment taxes. Attach Schedule H'; Schedule H counts cash wages paid in 2025 to a household employee (household work includes private drivers; i1040sh, not archived).
+- **Symptom:** s2.household_help asks 'did you ... pay anyone to work in or around your home, such as a nanny, a carer, a housekeeper or a gardener?' with help 'Count anyone you paid yourself, whatever the amount. Do not count a company you hired'. A family whose nanny is paid through a payroll service, or whose aide was found through a registry that passes on the pay, can read the help as a No; a private driver works away from the home; wages paid in January 2025 for 2024 work read as not 'to work' in 2025. Each skips s2.household_employee and its Schedule H refusal.
+- **Where:** interview/2025/questions.yaml inputs s2.household_help (prompt and help).
+- **Proposed fix:** Help: 'Count a worker you direct even if a payroll service, agency or registry handles the pay; do not count a business that supplies and directs its own staff, such as a cleaning company or daycare center. Count a private driver or other household worker who works away from the home, and pay made in 2025 for work done in 2024.'
+- **Severity:** medium
+- **Tags:** false-no, wording
+
+## BUG-0902 — Armed forces gate: a surviving spouse moving under orders after a member's death, and Coast Guard members
+
+- **Caught by:** release false-no review, gate:scope.armed_forces#1 (findings 0, 1), xrel lane (wide family), 2026-11-15.
+- **Source:** i1040gi p. 93, Line 14, moving expenses of a member of the Armed Forces on active duty, 'see Form 3903' (Form 3903 extends the move of a member who dies, deserts or is imprisoned to the spouse and dependents; not archived); 10 U.S.C. 101 counts the Coast Guard among the armed forces.
+- **Symptom:** scope.armed_forces asks whether 'you (or, on a joint return, your spouse)' served since 2022. A surviving spouse filing as qualifying surviving spouse or single who moved under orders after the member died answers No, so scope.military_move and its refusal are never reached and the deduction is silently not considered. A Coast Guard member may not read 'U.S. armed forces' as including the Coast Guard.
+- **Where:** interview/2025/questions.yaml input scope.armed_forces (prompt, help).
+- **Proposed fix:** Prompt: 'Since the start of 2022, did you or your spouse (including a spouse who has died) serve in the U.S. armed forces (including the Coast Guard), the reserves or the National Guard?'
+- **Severity:** low
+- **Tags:** false-no, wording
+
+## BUG-0903 — Household pay question: a driver or groundskeeper, and a live-in carer in a home the worker shares, read as a No
+
+- **Caught by:** release screen and false-no reviews, gate:scope.household_pay_if_pay#1 (screen finding 0; false-no findings 0, 2), xrel lane (wide family), 2026-11-15.
+- **Source:** i1040gi p. 24, Line 1b, 'Enter the total of your wages received as a household employee that was not reported on Form(s) W-2'.
+- **Symptom:** scope.household_pay asks whether the filer was 'paid for work in someone else's home, for example as a nanny, carer or housekeeper, by a household that gave you no W-2'. A private driver, or a gardener or caretaker working around the grounds, can answer No (the help names a gardener; the prompt does not), and an adult child paid by a parent as live-in carer in the home they share may not read it as 'someone else's home'. person.household_wages (line 1b) is then not asked.
+- **Where:** interview/2025/questions.yaml input scope.household_pay (prompt, help) and person.household_wages (prompt).
+- **Proposed fix:** Prompt: 'were you (or, on a joint return, your spouse) paid by a household, with no W-2, for work in or around its home or for its members, such as a nanny, carer, housekeeper, gardener or private driver, including a home you live in?'
+- **Severity:** low
+- **Tags:** screen, false-no, wording
+
+## BUG-0904 — Medicaid waiver gate asks whether a state program paid the filer, missing pay that runs through an agency or fiscal agent
+
+- **Caught by:** release screen and false-no reviews, gate:scope.medicaid_waiver#1 (screen findings 0, 1; false-no findings 0, 1), xrel lane (wide family), 2026-11-15.
+- **Source:** i1040gi p. 92, Line 8s, 'Certain Medicaid waiver payments you received for caring for someone living in your home with you may be nontaxable. Your nontaxable Medicaid waiver payments should be reported to you on Form(s) W-2 in box 12, Code II.'
+- **Symptom:** scope.medicaid_waiver asks 'did a state Medicaid program pay you ... to care for someone who lives in your home?'. Waiver pay usually comes through a home-care agency, managed-care plan or fiscal intermediary that issues the W-2, so a caregiver can truthfully answer No; the code II test that a filer can check on the W-2 appears only in the gated question's help. The present tense 'lives' can exclude a person who has since died or moved. The exclusion (lines 1a/1d/8s) is then not applied.
+- **Where:** interview/2025/questions.yaml input scope.medicaid_waiver (prompt and help).
+- **Proposed fix:** Prompt: 'In 2025, were you (or, on a joint return, your spouse) paid under a Medicaid waiver program, directly or through an agency, plan or fiscal agent, to care for someone who lived in your home with you? Answer Yes also if any W-2 shows code II in box 12.'
+- **Severity:** medium
+- **Tags:** screen, false-no, wording
+
+## BUG-0905 — Foreign shares gate: options or warrants, foreign-incorporated stock or ADRs bought in the U.S., foreign ETFs, and holdings through an estate or foreign pension
+
+- **Caught by:** release screen and false-no reviews, gate:scope.foreign_shares#1 (screen findings 0, 1, 2; false-no findings 0 to 3), xrel lane (wide family), 2026-11-15.
+- **Source:** i1040gi p. 34, Line 16, 'Any tax from Form 8621, line 16e, relating to a section 1291 fund'; p. 114, Line 17p, 'Enter any interest amount from Form 8621, line 16f, relating to distributions from, and dispositions of, stock of a section 1291 fund'.
+- **Symptom:** scope.foreign_shares asks 'did you ... own shares of a company or a fund set up outside the United States, other than through a U.S. mutual fund or ETF?' with help 'Count shares held for you by a partnership, a trust or another company you own.' A holder of warrants or options on a foreign SPAC or fund (treated as stock for section 1291), of U.S.-listed stock or ADRs of a company incorporated abroad, of a foreign-domiciled ETF (reading 'U.S.' as modifying only 'mutual fund'), or of foreign fund units through an estate or a foreign pension or insurance wrapper can answer No, so the PFIC and CFC questions and their refusals are skipped.
+- **Where:** interview/2025/questions.yaml input scope.foreign_shares (prompt and help).
+- **Proposed fix:** Prompt: 'In 2025, did you ... own, at any time, shares or units of a company or fund set up outside the United States, or options or warrants to buy them, other than through a mutual fund or ETF set up in the United States?' Help: 'Count stock or ADRs traded on a U.S. exchange if the company is incorporated abroad (for example in the Cayman Islands, Bermuda or Ireland), foreign ETFs, and shares held for you by a partnership, trust, estate, foreign pension or insurance policy.'
+- **Severity:** medium
+- **Tags:** screen, false-no, wording, PFIC
+
+## BUG-0906 — Pay-not-on-a-W-2 gate: lockout benefits, strike funds that are not a union, noncash or small tips, and wages from an employer that issues no W-2
+
+- **Caught by:** release screen and false-no reviews, gate:scope.pay_no_w2#1 (false-no findings 0 to 6), gate:scope.strike_pay_if_pay#1 (screen findings 0, 1; false-no findings 0, 1), gate:scope.tips_unreported_if_pay#1 (findings 0, 1), xrel lane (wide family), 2026-11-15.
+- **Source:** i1040gi p. 24, Line 1h, 'Strike or lockout benefits (other than bona fide gifts)'; Line 1c, 'include the value of any noncash tips you received, such as tickets, passes, or other items of value. Although you don't report these noncash tips to your employer, you must report them on line 1c'; p. 25, 'Even if you don't get a Form W-2, you must still report your earnings'; f8919 reason code H.
+- **Symptom:** scope.pay_no_w2 asks 'did you ... have wages, tips or strike benefits that are not on a W-2?' with help naming home work, unreported tips and misclassification. A locked-out worker with union lockout benefits, a striker paid by a strike fund that is not a union (scope.strike_pay and person.strike say 'from a union'), a tipped employee who reported all cash tips but got tickets or passes, an employee with under $20 a month of tips not required to be reported, an employee of a foreign employer or international organization that issues no W-2, and a worker whose W-2 firm also paid employee pay on a Form 1099 (Form 8919 code H) can each answer No; lines 1c, 1g and 1h and the related refusals are then not reached.
+- **Where:** interview/2025/questions.yaml inputs scope.pay_no_w2 (prompt, help), scope.strike_pay and person.strike (prompts), scope.tips_unreported, scope.contractor_pay (prompts).
+- **Proposed fix:** Prompt: 'wages, tips, or strike or lockout benefits that are not on a W-2?' Help: 'Such as pay for work in someone's home, tips you did not report to your employer for any reason (including small amounts) and tips that were not money, such as tickets or passes (never on a W-2), pay from an employer that gave no W-2 (including a foreign employer), or employee pay a firm reported on a Form 1099.' Drop 'from a union' from the strike questions ('from a union, a strike fund or anyone else').
+- **Severity:** medium
+- **Tags:** screen, false-no, wording
+
+## BUG-0907 — Net operating loss gate: a disallowed excess business loss, a first-year carryforward, and rental or K-1 losses read as a No
+
+- **Caught by:** release screen and false-no reviews, gate:scope.nol#1 (screen findings 0, 1; false-no findings 0, 1, 2), xrel lane (wide family), 2026-11-15.
+- **Source:** i172 p. 4, 'Excess business losses that are disallowed are treated as an NOL carryover to the following tax year'; p. 1, an NOL from a trade or business, work as an employee, a federally declared disaster, or rental property; p. 2, 'Start by carrying the NOL to the first tax year after the NOL year.'
+- **Symptom:** scope.nol's help says 'A loss bigger than that year's income, carried forward on an earlier return. It can come from a business, or from a disaster or theft with no business.' A filer whose 2024 business loss was limited on Form 461 while total income stayed positive, a filer with a 2024 NOL not yet carried on any return, and one whose loss came from rentals or a K-1 can answer No; s1.nol_amount is then zero and the s1.nol_ebl refusal is missed.
+- **Where:** interview/2025/questions.yaml input scope.nol (help).
+- **Proposed fix:** Help: 'A loss bigger than that year's income that is carried into 2025, including a 2024 loss not yet used on any return and a business loss limited on Form 461 (an excess business loss), whatever its source: a business or farm (including a K-1 share), rentals, or a federally declared disaster.'
+- **Severity:** medium
+- **Tags:** screen, false-no, wording
+
+## BUG-0908 — Recovery gate help: the standard-deduction test is tied to 2024 rather than to the year of the deduction, and nonitemized, credit and sales tax recoveries are not given as examples
+
+- **Caught by:** release screen and false-no reviews, gate:scope.recovery#1 (screen finding 0; false-no findings 0, 5, 6), xrel lane (wide family), 2026-11-15.
+- **Source:** p525 p. 24, 'If you didn't itemize deductions for the year for which you received the recovery of an expense that was deductible only if you itemized, don't include any of the recovery amount'; 'You may also have recoveries of nonitemized deductions (such as payments on previously deducted bad debts)'; p. 24, Example 27 (a sales tax refund on a returned item).
+- **Symptom:** scope.recovery's help says 'If you took the standard deduction for 2024, money back for something you could deduct only by itemizing is not income: answer No.' A filer who itemized for 2023 and recovers a 2023 itemized deduction follows it and answers No, so rec.not_2024 and its refusal are never reached. The help's examples are all itemized deductions, so a recovered bad debt or business expense, a rebate on a credited item, or a refund of sales tax on a returned purchase may not be read as a Yes, and rec.nonitemized and rec.sales_tax are skipped.
+- **Where:** interview/2025/questions.yaml input scope.recovery (help).
+- **Proposed fix:** Help: 'If you took the standard deduction for the year you deducted it, money back for something you could deduct only by itemizing is not income. Count also a repaid bad debt or refunded business expense you deducted, a rebate on something you took a credit for, and a refund of sales tax you deducted.'
+- **Severity:** low
+- **Tags:** screen, false-no, wording
+
+## BUG-0909 — Religious work gate does not name members of a religious order, pay in housing or offerings, or officiants paid by families
+
+- **Caught by:** release screen and false-no reviews, gate:scope.religious_work#1 (screen finding 0; false-no findings 1, 2, 3), xrel lane (wide family), 2026-11-15.
+- **Source:** i1040sse p. 1, 'you must pay SE tax on salaries and other income for services you performed as a minister, member of a religious order who hasn't taken a vow of poverty, or Christian Science practitioner'; 'include ... The rental value of a home or an allowance for a home furnished to you'.
+- **Symptom:** scope.religious_work asks whether the filer was 'paid for work by a church or other religious body, or for work as clergy (a minister, priest, rabbi or imam)'. A member of a religious order paid by an outside employer, a minister paid mainly in housing or offerings, and an officiant with another title paid by families can answer No, and scope.clergy (which names order members) and its refusal are skipped.
+- **Where:** interview/2025/questions.yaml input scope.religious_work (prompt, help).
+- **Proposed fix:** Prompt: 'In 2025, were you (or, on a joint return, your spouse) paid for work by a church or other religious body, or paid in any form (money, housing, offerings) for work as clergy of any title or as a member of a religious order, whoever paid you?'
+- **Severity:** low
+- **Tags:** screen, false-no, wording
+
+## BUG-0910 — Rental gate asks about renting out 'anything you own', missing property the filer leases and sublets
+
+- **Caught by:** release screen and false-no reviews, gate:scope.rental#1 (screen finding 0; false-no finding 0), xrel lane (wide family), 2026-11-15.
+- **Source:** i1040se p. 5, Personal property, 'Do not use Schedule E to report income and expenses from the rental of personal property, such as equipment or vehicles.'
+- **Symptom:** scope.rental asks 'did you ... rent out, or offer for rent, anything you own'. A filer who leases a car or equipment and rents it on to others (for example on a car-sharing app) answers No, and scope.rent_personal and its refusal are skipped.
+- **Where:** interview/2025/questions.yaml input scope.rental (prompt).
+- **Proposed fix:** Prompt: 'rent out, or offer for rent, anything you own or lease, such as a house, a room, land, a vehicle or equipment, or receive royalties?'
+- **Severity:** low
+- **Tags:** screen, false-no, wording
+
+## BUG-0911 — k1p box 9b collectibles gain cannot take a loss
+
+- **Caught by:** render review of k1p (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** i1065sk1 p. 16, Box 9b. Collectibles (28%) Gain (Loss): "Report collectibles gain or loss on line 4 of the 28% Rate Gain Worksheet".
+- **Symptom:** k1p.box9b is NonNegDollars, asked as "collectibles (28%) gain (0 if the box is blank)"; no refusal catches a loss in box 9b, so a partner with a box 9b loss cannot enter it and is led to enter 0, overstating the 28% rate gain.
+- **Where:** forms/2025/k1p.yaml, k1p.box9b (and its reader person.k1p_total_* sum of k1p.box9b_if_any).
+- **Fix:** Either make k1p.box9b Dollars (signed) with the question "... gain or loss (a loss as a negative amount; 0 if blank)" and check the 28% Rate Gain Worksheet line 4 reader takes a signed amount, or refuse a box 9b loss on k1p.screened. Check the S corporation analogue (k1s box 8b) the same way.
+- **Severity:** medium
+- **Fix:** signed, not refused (lane xfix). k1p.box9b and its gate k1p.box9b_if_any are Dollars; the question reads "The amount in box 9b, collectibles (28%) gain or loss (a loss as a negative number; 0 if the box is blank)", label "Collectibles (28%) gain (loss)"; k1p.has_b9bc reads "box 9b (collectibles 28% gain or loss)"; person.k1p_total_collectibles is Dollars ("gain or loss"). The source routes the amount, gain or loss, to line 4 of the 28% Rate Gain Worksheet (i1065sk1 p. 16), and k1s box 8b is already signed the same way, so signing keeps every computed value right where a refusal would refuse a supported case. Nothing in this tree reads the total yet; the wiring note (docs/provisional/lanes/x2-k1p_work/k1-wiring-k1p.md) now states that g28.line4 must take a signed sum (as it must for k1s). Fixture x2k1p.collectibles_loss (box 9a -$2,000, 9b -$1,500) predicts person.k1p_total_collectibles -$1,500.
+- **Fix lines:** k1p.box9b, k1p.box9b_if_any, k1p.has_b9bc, person.k1p_total_collectibles
+- **Siblings checked:** k1p.has_b9bc_if_9a (gate on box 9a; unchanged), k1p.box9c and k1p.box9c_if_any (unrecaptured section 1250 gain is a gain only; unchanged), person.k1p_total_unrecap_1250 and person.k1p_total_lt_gain (same anchor; their types follow their own boxes); the S corporation analogue, box 8b, is signed already (worktree x2-k1s)
+- **Regression predictions:** x2k1p.gains_withholding unchanged (positive box 9b); new x2k1p.collectibles_loss passes.
+- **Tags:** form change, k1p, fixed
+
+## BUG-0912 — f1116 line 18 shown when line 17 is zero or less
+
+- **Caught by:** transcription review of f1116 (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** Form 1116 (2025), line 17: "(If the result is zero or less, skip line 18 and enter -0- on line 19.)"
+- **Symptom:** f1116.line18 has no shown_when, so the prepared Form 1116 shows an amount on line 18 when line 17 is zero or less, where the form says to skip it. The credit is unaffected (line 19 is 0 then; f1116.us_loss still reads the line's value).
+- **Where:** forms/2025/f1116.yaml, f1116.line18.
+- **Proposed fix:** Add shown_when: f1116.line17 > 0 (a helper Bool test gt [f1116.line17, f1116.zero]) to f1116.line18, keeping its value for f1116.us_loss.
+- **Severity:** low
+- **Tags:** form change, f1116
+
+## BUG-0913 — k1s test 5/6 question narrows earlier-year material participation to 500 hours
+
+- **Caught by:** render review of k1s (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** i1120ssk p. 4, Individuals, test 5: "You materially participated in the activity for any 5 tax years (whether or not consecutive) during the 10 tax years that immediately precede the tax year"; test 6: "The activity was a personal service activity and you materially participated in the activity for any 3 tax years ... A personal service activity involves the performance of personal services in the field of health, law, engineering, architecture, accounting, actuarial science, performing arts, or consulting, or any other trade or business in which capital isn't a material income-producing factor."
+- **Symptom:** k1s.past_years asks "take part in running it, for more than 500 hours a year, in at least 5 of the 10 years before 2025 (or any 3 earlier years, if it provides professional services)". An earlier year counts if the shareholder materially participated by any of the seven tests (for example more than 100 hours and not less than anyone else), not only by 500 hours, and the personal service activity is wider than "professional services". A shareholder who qualifies by another test answers No and box 1 is treated as passive (a loss limited by Form 8582, income passive).
+- **Where:** forms/2025/k1s.yaml, k1s.past_years (input source text); interview question for it.
+- **Fix:** Reword as k1p.five_of_ten does: "In at least 5 of the 10 years before 2025, did you materially participate in this business (for example, more than 500 hours that year, or more than 100 hours and at least as many as anyone else)? If it is a personal service business (health, law, engineering, architecture, accounting, actuarial science, performing arts, consulting, or any other business in which capital is not a major source of income), any 3 earlier years count."
+- **Severity:** medium
+- **Fix:** lane xfix. k1s.past_years now asks, as k1p.five_of_ten does: "In at least 5 of the years 2015 to 2024 (or any 3 earlier years, if it is a personal service business), did you (or, on a joint return, your spouse) materially participate in this business (its income or loss was nonpassive on your return)?" Help: "A personal service business is one in health, law, engineering, architecture, accounting, actuarial science, performing arts or consulting, or any other business in which capital is not a major source of income. A year counts if you met any test of material participation in it; your earlier returns show it (the business's income or loss was in column (i) or (k) of Schedule E, not (g) or (h))." The 500-hour narrowing and "professional services" are gone; tests 5 and 6 stay one question (a Yes is material participation, as before).
+- **Fix lines:** k1s.past_years
+- **Siblings checked:** k1s.past_years_if_ask (gate; unchanged), k1s.past_ask (when it is asked; unchanged), k1s.other_ask and k1s.mp_other (asked after a No; unchanged), k1s.material (reads the gate; unchanged)
+- **Regression predictions:** none; the input's answer for every fixture is unchanged.
+- **Tags:** question wording, k1s, fixed
+
+## BUG-0914 — k1s at-risk screen omits borrowing from a person with an interest in the activity
+
+- **Caught by:** render review of k1s (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** i1120ssk p. 3, At-Risk Limitations: you aren't at risk for stock or loan basis if the cash or property was from a source "(a) covered by nonrecourse indebtedness ...; (b) protected against loss by a guarantee, stop-loss agreement, or other similar arrangement; or (c) that is covered by indebtedness from a person who has an interest in the activity or from a person related to a person (except you) having such an interest, other than a creditor", and likewise for cash or property contributed to the activity.
+- **Symptom:** k1s.not_at_risk asks only about money borrowed "on terms that protect you from loss, such as a loan you are not personally liable for or one someone guarantees for you"; a shareholder who bought the stock or made the loans with money borrowed from another shareholder (or a person related to one) answers No, and the at-risk refusal (Form 6198) does not fire, so a loss is allowed that Form 6198 may limit.
+- **Where:** forms/2025/k1s.yaml, k1s.not_at_risk (input source text).
+- **Fix:** Add case (c): "Did you pay for your shares, or for loans to the corporation, with money (or property) borrowed on terms that protect you from loss (a loan you are not personally liable for, or one someone guarantees for you), or borrowed from another owner of the corporation or someone related to one?" Check k1p.not_at_risk for the same omission.
+- **Severity:** medium
+- **Fix:** lane xfix. k1s.not_at_risk now asks "Did you pay for your shares, or for loans to the corporation, with money borrowed on terms that protect you from loss (a loan you are not personally liable for, or one someone guarantees for you), or borrowed from another owner of the corporation or someone related to one?"; label adds "borrowed from an owner"; help: "A loan from a bank or other outside lender that you must repay yourself is not meant. ...". The Form 6198 refusal (k1s.not_at_risk_if_loss) is unchanged. The same omission in k1p.not_at_risk is fixed in worktree x2-k1p as BUG-0772.
+- **Fix lines:** k1s.not_at_risk
+- **Siblings checked:** k1s.not_at_risk_if_loss (gate; unchanged), k1s.has_loss (when it is asked; unchanged), k1s.ok (carries the refusal; unchanged), k1s.risk_carry (an earlier at-risk carryover; refuses separately, unchanged)
+- **Regression predictions:** none; the input's answer for every fixture is unchanged.
+- **Tags:** question wording, k1s, fixed
+
+## BUG-0915 — f4137row column (c) question leaves out December 2024 tips reported timely in January 2025
+
+- **Caught by:** render review of f4137row (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** Form 4137 (2025) p. 2, Columns (c) and (d): "Total tips you reported to your employer timely. Tips reported timely are included in gross income of the employee for the month and year in which the report is made." with the example that December 2025 tips reported by January 12, 2026 go on the 2026 Form 4137.
+- **Symptom:** f4137row.col_c's source asks for tips "you received in 2025"; the bank help (questions.yaml, f4137row.col_c) moves December 2025 tips reported in January 2026 to 2026, but says nothing of December 2024 tips reported timely in January 2025, which belong in 2025 column (c). col_d's help points at W-2 box 7, which includes them, so a filer who follows the prompt can enter column (d) above the matching column (c) and understate line 4 (unreported tips) by those tips (line 4 floors at zero, amb.2025.f4137_reported_over_received).
+- **Where:** forms/2025/f4137row.yaml f4137row.col_c (input source); interview/2025/questions.yaml help of f4137row.col_c.
+- **Proposed fix:** Restate the source: "Total cash and charge tips you received while working for this employer that count in 2025: tips received in 2025 (reported or not), except tips you reported on time in January 2026, plus tips from December 2024 that you reported on time in January 2025"; add to the help: "Tips from December 2024 that you reported to this employer in January 2025 count here."
+- **Severity:** low
+- **Tags:** interview, f4137row
+
+## BUG-0916 — f8853c line 22 question narrows the definition of qualified LTC services
+
+- **Caught by:** render review of f8853c (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** i8853 (2025) p. 9, Line 22: "Qualified LTC services are necessary diagnostic, preventive, therapeutic, curing, treating, mitigating, and rehabilitative services, and maintenance or personal care services required to treat a chronically ill individual under a plan of care prescribed by a licensed health care practitioner."
+- **Symptom:** The question for f8853c.line22 lists "necessary diagnostic, preventive, therapeutic, treating and rehabilitative services, and maintenance or personal care, under a plan of care": it drops "curing" and "mitigating" and "required to treat a chronically ill individual". A filer can leave out costs of curing or mitigating services, understating line 22 and so line 23 when costs exceed $420 a day, which overstates the taxable payments on line 26.
+- **Where:** forms/2025/f8853c.yaml, f8853c.line22 (input source text).
+- **Proposed fix:** Source text: "The costs incurred for qualified long-term care services provided for this person during the days of the LTC period: necessary diagnostic, preventive, therapeutic, curing, treating, mitigating and rehabilitative services, and maintenance or personal care services, required to treat a chronically ill person under a plan of care prescribed by a licensed health care practitioner; zero if none".
+- **Severity:** low
+- **Tags:** form change, wording, f8853c
+
+## BUG-0917 — f8853c line 25 floors the per diem limitation at zero without a registered reading
+
+- **Caught by:** render review of f8853c (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** f8853 (2025) line 25: "Per diem limitation. Subtract line 24 from line 23" (no zero floor); line 26: "Taxable payments. Subtract line 25 from line 20. If zero or less, enter -0-."
+- **Symptom:** f8853c.line25 is subtract_floor0 ("If zero or less, enter -0-" in its rendering), a reading the printed line 25 does not state, and no ambiguity entry records it. The two differ only when reimbursements (line 24) exceed line 23: the project then makes line 26 equal line 20, the printed form makes it larger than the payments received.
+- **Where:** forms/2025/f8853c.yaml, f8853c.line25; ambiguities/2025.yaml (no entry).
+- **Proposed fix:** Register amb.2025.f8853c_line25_floor (readings: printed subtraction, which can make line 26 exceed line 20; floored at zero, so the taxable payments never exceed the payments) with the chosen reading and its reason, and cite it from f8853c.line25; or refuse line 24 more than line 23 as inconsistent figures.
+- **Severity:** low
+- **Tags:** ambiguity register, f8853c
+
+## BUG-0918 — rental personal-use days omit the days the source excludes
+
+- **Caught by:** render review of rental (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** i1040se p. 4, Line 2: personal use includes "Anyone under an agreement that lets you use some other unit"; "Do not count as personal use: Any day you spent working substantially full time repairing and maintaining the unit ...; or Any days you used the unit as your main home before or after renting it or offering it for rent, if you rented or tried to rent it for at least 12 consecutive months".
+- **Symptom:** rental.days_personal asks "How many days in 2025 was it used that way (by you, your family or another owner, or by anyone staying free or below a fair rent)?" and neither it nor rental.personal_any says which days do not count. An owner who lived in a home before converting it to a 12-month rental (a common case) or who spent days repairing it counts those days as personal use: the unit then fails the home test (refused at rental.ws51) or its expenses are divided on too few rental days. A reciprocal-use arrangement is not named either.
+- **Where:** forms/2025/rental.yaml rental.days_personal (source) and interview/2025/questions.yaml help of rental.personal_any / rental.days_personal.
+- **Proposed fix (review):** see the adjudication of lane xrev-new.
+- **Fix:** wording, lane xfix (claude-opus-5-5, judgment), 2026-11-15. `rental.days_personal`'s source now names a home swap and says to leave out days spent mostly repairing the unit and days it was the filer's main home before or after a rental (or offer to rent) of 12 months or more in a row (i1040se p. 4, Line 2); `rental.personal_any`'s source names a home swap, and its help lists the same days as not personal use; `rental.days_personal` gets a one-line help glossing a swap. Left open: the shorter rental ended by a sale or exchange (low, BUG-0772), found by the re-review.
+- **Fix lines:** `rental.personal_any`, `rental.days_personal`
+- **Siblings checked:** `rental.days_overlap` (counts a subset of the personal days; unchanged), `rental.days_fair` (fair-rent days; unchanged), `rental.home`, `rental.ws51`, `rental.div10`, `rental.div11`, `rental.div12`, `rental.div13`, `rental.div14`, `rental.div15`, `rental.div16`, `rental.div17`, `rental.div18`, `rental.div19`, `rental.div5`, `rental.div7`, `rental.div8`, `rental.div9` (readers; no value change for the same facts). Also generated by the sibling tool (readers of the changed lines; the fix changes wording or adds a refusal before them, so none of their values moves): `rental.home_pers10`, `rental.home_pers10_if_any`, `rental.line10`, `rental.line11`, `rental.line12`, `rental.line13`, `rental.line14`, `rental.line15`, `rental.line16`, `rental.line17`, `rental.line18`, `rental.line19`, `rental.line5`, `rental.line7`, `rental.line8`, `rental.line9`, `rental.overlap_c`, `rental.personal_c`, `rental.personal_raw`.
+- **Regression predictions:** wording; no value changes.
+- **Severity:** medium
+- **Tags:** form change, question change, rental
+
+## BUG-0919 — rprop does not refuse qualified improvement property
+
+- **Caught by:** render review of rprop (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** i4562 p. 9, 15-year property: "Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017"; p946 (qualified improvement property excludes enlargements, elevators or escalators, internal structural framework). The design scout (scout-schedule-e.md R10 and the rprop.screen row) lists QIP among the cases rprop.screen refuses.
+- **Symptom:** rprop.kind classes every improvement to a non-home building as nonresidential and depreciates it over 39 years by Table A-7a; rprop.screen does not name qualified improvement property, so an interior improvement to a commercial rental placed in service after 2017 (15-year property) gets the 39-year rate and its depreciation is understated.
+- **Where:** forms/2025/rprop.yaml rprop.screen (source list).
+- **Proposed fix (review):** see the adjudication of lane xrev-new.
+- **Fix:** wording, lane xfix (claude-opus-5-5, judgment), 2026-11-15. `rprop.screen` adds an item for qualified improvement property (an improvement to the inside of a nonresidential building, made after the building was first placed in service and placed in service in 2018 or later, not an enlargement, elevator or escalator, or internal structural framework; i4562 p. 9, 15-year property); a Yes refuses at the existing `rprop.screen` refusal on `rprop.dep`, whose remedy and the form note now name it. Fixture `xfix.r11.qip_screen`.
+- **Fix lines:** `rprop.screen`, `rprop.dep` (refusal remedy)
+- **Siblings checked:** `rprop.kind` (nonresidential choice; unchanged), `rprop.early_nonres` (other nonresidential refusal; unchanged), the vehicle and asset screens of Schedule C (not real property; not affected).
+- **Regression predictions:** refusal of a newly screened case only; no value changes for unscreened entries.
+- **Severity:** medium
+- **Tags:** form change, rprop
+
+## BUG-0920 — rental of part of a home: expenses and basis not limited to the rented part
+
+- **Caught by:** render reviews of rprop (c) and rf4562 lines 17, 19i(g), 19j(g) (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** i1040se p. 6: "Renting out part of your home. If you rent out only part of your home or other property, deduct the part of your expenses that applies to the rented part."; i4562 p. 10, Column (c): "multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property".
+- **Symptom:** The $rental prompt invites "a room", but no expense, mortgage or basis question tells the filer to enter only the rented part, and the mortgage-interest help says "Leave this mortgage out of your home mortgage interest"; rprop.basis asks "what you paid for the building or improvement". A filer renting a room of the home they live in is led to enter whole-home expenses and basis, overstating deductions and depreciation. Credits or deductions allocable to the property (disabled access credit, barrier-removal deduction) are not subtracted from basis nor screened. Personal-use days are prorated on Schedule E line 18, but Form 4562 column (g) (rf4562 17, 19i, 19j) shows the unprorated amount.
+- **Where:** forms/2025/rental.yaml amount sources (rental.amt*, mortgage), forms/2025/rprop.yaml rprop.basis and rprop.screen; interview help of the mortgage question; forms/2025/rf4562.yaml.
+- **Proposed fix (review):** see the adjudication of lane xrev-new.
+- **Fix:** refusal, lane xfix (claude-opus-5-5, judgment), 2026-11-15, the simplest correct fix as directed. New input `rental.part_home` ("Is it part of a property you also live in, such as a room in your home or one unit of a building you live in?", a tick in the rental_rare screen) refuses at `rental.line21` (i1040se p. 6, Renting out part of your home), so no whole-home expense or basis is entered for a rented part. `rprop.screen` adds "you took a credit or deduction for part of its cost (for example the disabled access credit or the deduction for removing barriers)" (i4562 p. 10, Column (c)). Left as is: Form 4562 column (g) of `rf4562` stays before the personal-use division, as that form's note states, with the divided amount on Schedule E line 18 (not changed here; the integrator may record it separately if wanted). Fixture `xfix.r10.part_home`; default false; coverage row `rental.part_home`.
+- **Fix lines:** `rental.part_home`, `rental.line21` (refusal), `rprop.screen`, `rprop.dep` (refusal remedy)
+- **Siblings checked:** `rental.amt12` help (mortgage; with part-home rentals refused it no longer misleads), `rprop.basis` (whole building now only when the filer does not live in it), `rf4562.line17/19i/19j` (column (g) before division; unchanged, see above). Also generated by the sibling tool (readers of the changed lines; the fix changes wording or adds a refusal before them, so none of their values moves): `rental.line21_full`, `rental.line3`, `rental.reported`, `rental.ws51`.
+- **Regression predictions:** a rental of part of the filer's home now refuses; no value changes otherwise.
+- **Severity:** medium
+- **Tags:** form change, question change, rental, rprop, rf4562
+
+## BUG-0921 — royalty line 4 question invites the net payment after withheld taxes
+
+- **Caught by:** render review of royalty (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** i1040se, Line 4: "Enter on line 4 the gross amount of royalty income, even if state or local taxes were withheld from oil or gas payments you received. Include taxes withheld by the producer on line 16."
+- **Symptom:** royalty.line4 asks "Royalties received from it in 2025 (Form 1099-MISC box 2, or the amount you were paid), your share". A royalty owner whose producer withheld severance taxes is led to enter the net amount paid, and royalty.amt16 ("Taxes on it, such as severance or production taxes, paid in 2025") then takes the withheld taxes again: the taxes are deducted twice and line 21 is understated.
+- **Where:** forms/2025/royalty.yaml, royalty.line4 (input source; bank prompt if one overrides it).
+- **Proposed fix (review):** see the adjudication of lane xrev-new.
+- **Fix:** wording, lane xfix (claude-opus-5-5, judgment), 2026-11-15. `royalty.line4` now asks "Royalties from it in 2025 before any taxes the payer withheld (Form 1099-MISC box 2), your share" (i1040se Line 4, gross amount); `royalty.amt16` asks taxes paid in 2025 "including any the payer withheld" (i1040se Line 4, "Include taxes withheld by the producer on line 16").
+- **Fix lines:** `royalty.line4`, `royalty.amt16`
+- **Siblings checked:** `royalty.amt10`, `royalty.amt19` (capitalized-cost wording is BUG-0922, low, not changed here), `rental.rents` (rents question; no withholding). Also generated by the sibling tool (readers of the changed lines; the fix changes wording or adds a refusal before them, so none of their values moves): `royalty.line16`, `royalty.line21`, `sche.line23b`.
+- **Regression predictions:** wording; no value changes.
+- **Severity:** medium
+- **Tags:** form change, interview wording, royalty
+
+## BUG-0922 — royalty expense questions do not exclude capitalized costs
+
+- **Caught by:** render review of royalty (claude-opus-5-5), adjudicated in lane xrev-new, 2026-11-15.
+- **Source:** i1040se, Lines 5 Through 21: "Do not deduct the value of your own labor or amounts paid for capital investments or capital improvements"; Line 10: "Do not deduct legal fees paid or incurred to defend or protect title to property, to recover property, or to develop or improve property. Instead, you must capitalize these fees."
+- **Symptom:** royalty.amt10 asks "Legal and other professional fees for it, paid in 2025" and royalty.amt19 "Other costs of it (not depletion), paid in 2025"; neither excludes capitalized fees, capital investments or improvements, or the value of one's own labor, so a filer with such costs deducts them.
+- **Where:** forms/2025/royalty.yaml, royalty.amt10 and royalty.amt19 (input sources).
+- **Proposed fix:** Add the exclusions to the questions or their help: amt10 "... not fees to defend or protect title, recover the property, or develop or improve it"; amt19 "... not your own labor and not capital investments or improvements".
+- **Severity:** low
+- **Tags:** form change, interview wording, royalty
+
+## BUG-0923 — f8853c: the entry question and line 17 do not say that the policyholder reports per diem payments assigned to a care provider
+
+- **Caught by:** sampled release completeness review f8853c#1.1 (claude-opus-5-5), adjudicated in lane xrr (fork rcred), 2026-11-16.
+- **Source:** i8853 p. 8, Definitions, Policyholder, "The policyholder is required to report the income, even if payment is assigned to a third party or parties. In the case of a group contract, the certificate holder is considered to be the policyholder."
+- **Symptom:** The entry question s1.ltc_payout asks "were you (or, on a joint return, your spouse) paid by a long-term care insurance policy", and the interview prompt of f8853c.line17 asks "How much long-term care insurance was paid at a set rate? Add box 1 of those forms." Neither says that per diem payments assigned and paid straight to a nursing home or home care agency are still the policyholder's. A policyholder whose benefits went to the provider can answer No at s1.ltc_payout, so Section C is never reached and line 17 is left at zero. The amount changes only where the per diem exceeds both $420 a day for the LTC period and the care costs (line 23) less reimbursements, so line 26 is rarely affected; where it is, the taxable payments on Schedule 1 line 8e are understated.
+- **Where:** interview/2025/questions.yaml: help of s1.ltc_payout and of f8853c.line17 (forms/2025/f8853c.yaml unchanged: line 17 already follows box 1 of Form 1099-LTC).
+- **Proposed fix:** s1.ltc_payout help: add "Count payments the policy made straight to a nursing home or care agency for you, and any Form 1099-LTC sent to you as the policyholder." f8853c.line17 help: add "Include payments assigned and paid to a care provider; box 1 shows them."
+- **Severity:** low
+- **Tags:** interview; Form 8853; wording; false no; xrr
+
+## BUG-0924 — sa.excluded_income: the help steers a filer excluding 2024 foreign pay received in 2025 to answer No
+
+- **Caught by:** sampled screen review of sa.excluded_income (claude-opus-5-5, subject 8ed816d1e4fe), adjudicated in lane xrr (fork rinc), 2026-11-16.
+- **Source:** i2555 p. 3, Income earned in prior year, "Foreign earned income received in 2025 for services you performed in 2024 can be excluded from your 2025 gross income if, and to the extent, the income would have been excludable if you had received it in 2024"; i1040gi p. 40 (EIC, Form 2555 filers stop); f1040s8812 line 2b.
+- **Symptom:** The interview prompt asks 'In 2025, did you (or, on a joint return, your spouse) live or work abroad, in Puerto Rico or in American Samoa, and leave the income you earned there out of this return?' and the help says 'If you lived in the 50 states all year, the answer is No.' A filer who lived in the United States all of 2025 but received in 2025 pay for work done abroad in 2024 (a deferred bonus) can still exclude it on a 2025 Form 2555, yet is told to answer No. If the pay is entered as shown on the W-2, the return is computed correctly without the elective exclusion, so the filer silently forgoes it; if the filer leaves the amount out on their own, the Form 2555 add-backs (Schedule 8812 line 2b, Schedule 1-A, Form 8863, the SALT worksheet) are zero and the EIC is allowed when Form 2555 bars it. The help also names only the 50 states, not the District of Columbia (wording only; the prompt itself excludes DC). Not executed; read from the question and the source.
+- **Where:** interview/2025/questions.yaml, input sa.excluded_income (prompt and help); forms/2025/sa.yaml sa.excluded_income (label).
+- **Proposed fix:** Widen the prompt to cover a 2025 Form 2555 for pay earned abroad in an earlier year, for example: '... and leave the income you earned there out of this return, or leave out pay you received in 2025 for work done abroad in 2024?'; change the help's first sentence to 'If you lived in the 50 states or the District of Columbia all of 2025 and leave out no pay for work done abroad in 2024, the answer is No.'; rerun the screen review of sa.excluded_income.
+- **Severity:** low
+- **Tags:** screen; wording; schedule-a; form-2555; open
+
+## BUG-0925 — rental interest questions take prepaid interest and points in the year paid
+
+- **Caught by:** sampled release rerun (completeness rental#1.6) of family rsche (claude-opus-5-5), adjudicated in lane xrr (fork rsche), 2026-11-16.
+- **Source:** i1040se p. 7, Lines 12 and 13: "Do not deduct prepaid interest when you paid it. You can deduct it only in the year to which it is properly allocable."; "Points, including loan origination fees, charged only for the use of money must be deducted over the life of the loan."
+- **Symptom:** rental.amt12 asks "Mortgage interest on it shown on Form 1098 (box 1), your share, paid in 2025" and rental.amt13 "Other interest on loans for it (no Form 1098 in your name), paid in 2025"; neither excludes interest prepaid for a later year nor says that points or loan origination fees are spread over the loan, and nothing asks for the year's share of points paid earlier. A filer who paid points on a purchase or refinance of the rental and enters them as other interest deducts them in one year; a filer who leaves them out never deducts the yearly share. Interest paid beyond the Form 1098 amount on the same loan has no stated place either (amt13 is for loans without a Form 1098).
+- **Where:** forms/2025/rental.yaml rental.amt12, rental.amt13 (sources); interview/2025/questions.yaml help of rental.amt12 and rental.amt13.
+- **Proposed fix:** Help on rental.amt13 (and rental.amt12): "Leave out interest paid ahead for 2026 or later. Points or loan fees paid to get the loan are not deducted all at once: include only this year's share, spread evenly over the life of the loan (including the share of points paid in an earlier year)."
+- **Severity:** low
+- **Tags:** rental, interview wording, amount
+
+## BUG-0926 — rental personal-use days: a co-owner renting under a shared equity financing agreement is counted as personal use
+
+- **Caught by:** sampled release rerun (completeness rental#1.5) of family rsche (claude-opus-5-5), adjudicated in lane xrr (fork rsche), 2026-11-16.
+- **Source:** p527 p. 26, What is a day of personal use?: "You or any other person who owns an interest in it, unless you rent it to another owner as their main home under a shared equity financing agreement (defined later)."
+- **Symptom:** rental.personal_any asks whether "you, your family or another owner" used it, and its help lists as not personal use only family renting at a fair rent as their main home, repair days and main-home days around a 12-month rental. A co-owner who rents the unit as their main home under a shared equity financing agreement is counted as personal use: the unit can fail the home test (refused at rental.ws51) or have its expenses divided on too few rental days (rental.total_c and the rental.div* lines). Rare.
+- **Where:** forms/2025/rental.yaml rental.personal_any and rental.days_personal (sources); interview/2025/questions.yaml help of rental.personal_any.
+- **Proposed fix:** Add to the rental.personal_any help, after the family clause: "or another owner renting it as their main home at a fair rent under a shared equity financing agreement".
+- **Severity:** low
+- **Tags:** rental, interview wording, amount
+
+## BUG-0927 — Archived text of p4801 pp. 1, 2 and 6 and p915 p. 23 drops words PDFKit reads
+
+- **Caught by:** check_extraction (PDFKit against poppler) in the release-mode full check of integration XINT, 2026-11-16.
+- **Source:** sources/2025/p4801.pdf pp. 1, 2 and 6 (SOI statistics: 4, 143 and 32 words only PDFKit reads, mostly form numbers and years; PDFKit blind from p. 15) and sources/2025/p915.pdf p. 23 (34 words, an SSA contact block).
+- **Symptom:** The archived poppler text of these pages lacks words the PDF carries. Nothing reads them now: p4801 is cited only as evidence in scout records and read by no form, interview or tool, and p915 is cited only as Pub. 915, never p. 23. The pages are accepted under the check "pdfkit" in tools/extraction/exceptions.json.
+- **Where:** sources/2025/p4801.txt, sources/2025/p915.txt; tools/extraction/exceptions.json (pdfkit entries).
+- **Proposed fix:** Re-extract the pages (or re-check them against the PDF) before any citation of them, then remove the exceptions.
+- **Severity:** low
+- **Tags:** sources, extraction
+
+## BUG-0928 — The evaluator accepts a hand-listed roster for an implicit collection (Form 7203 under each S corporation K-1); it should be an input error (open)
+
+- **Caught by:** lane mk1s and lane mint (claude-opus-5-5), mutation survivors operand.k1s.k1s.col_h.zero.then1, col_i and col_k, 2026-11-16.
+- **Symptom:** f7203 is an implicit collection (collection: {parent: k1s, implicit: form}); with no roster given, eval.ts rosterOf makes it exactly [form], and build.ts makes it a build error for any interview to ask $f7203, so the interview cannot produce any other roster. The evaluator nevertheless accepts an input that lists the roster by hand. With the roster [] or [form, w9], k1s.f7203_n (the sum of f7203.one, the parameter ss.one, 1, over the roster) is 0 or 2, k1s.ok is false, and k1s.col_h, k1s.col_i and k1s.col_k take their ok = false alternative. A probe over the 28 fixture cases with a K-1 (S corporation) entry found: roster [] changes col_i (classm.k1s.1, $0 against $80,000 under a mutant); roster [form, w9] changes all three (col_k classm.k1s.3, col_i classm.k1s.1, col_h classm.k1s.5). As given, and with answers withheld (rates 0.1, 0.25, 0.5, six seeds each), no difference. So the three mutants survive only because an input the interview cannot produce is still accepted, and they cannot be killed by a valid fixture nor argued equivalent on every input.
+- **Where:** engine/src/eval.ts rosterOf (implicit collections); forms/2025/k1s.yaml k1s.f7203_n, k1s.ok, k1s.col_h, k1s.col_i, k1s.col_k, and k1s.p5_income (its ok = false alternative, read by the person total person.k1s_total_p5_income; the mutant operand.k1s.k1s.p5_income.zero.then1 survives for the same reason). The same exposure holds for Form 8919 under each person (implicit roster [form]): person.f8919_line10_figured sums f8919.line10 over the roster, and with a hand-listed roster of [] or two entries it differs from person.f8919_wages where the implicit roster cannot, so the mutant operand.person.person.f8919_line10.f8919_line10_figured.then0 survives for the same reason (lane mint fork C analysis; an argument holding on the implicit roster is drafted in the lane notes).
+- **Proposed fix:** Reject, as an input error, any input that lists a roster for an implicit collection other than its single implicit key; the three ok = false alternatives then become unreachable and can be argued equivalent or removed. Alternatively remove the f7203_n eq 1 test (i7203 p. 2, Item C allows more than one Form 7203 for a partial stock sale or redemption, which the model already sends to the k1s.disposed refusal).
+- **Severity:** low
+- **Tags:** evaluator, input validation, k1s, f7203, mutation
+
+## BUG-0929 — Form 7203 column (c) can exceed line 10 when the pro rata ratio rounds up, so the allowed K-1 loss exceeds stock basis
+
+- **Caught by:** lane mk1 (claude-opus-5-5), mutation-family work on f7203.line14, 2026-11-16.
+- **Source:** i7203 p. 4, Part III, Column (c): "enter the pro rata amount on the corresponding line in column (c). The total allocation amount reported in column (c), line 47, can't exceed the amount reported on line 10."
+- **Symptom:** Box 1 loss $30,000 (materially participated), beginning stock basis $20,000: line 10 $20,000, line 47 (a) $30,000. f7203.c35_p rounds the ratio 20,000/30,000 half-up to 0.666667, so f7203.c35 and f7203.c47 are $20,000.01, more than line 10; f7203.e35 is $9,999.99. k1s.allowed1 reads column (c), so k1s.col_i (Schedule E line 28 column (i)) is $20,000.01: a loss one cent above stock basis is allowed. f7203.line11 is capped at line 10 ($20,000), but no K-1 line reads line 11. amb.2025.f7203_prorata_places chose the six-place ratio on the reasoning that the line 11 cap satisfies the instruction; the instruction caps the column (c) total, which is what the K-1 reads.
+- **Where:** forms/2025/f7203.yaml f7203.c35_p to f7203.c38_p, f7203.c35 to f7203.c38, f7203.c47, f7203.e35 to f7203.e38; forms/2025/k1s.yaml k1s.allowed1 to k1s.allowed3, k1s.basis_carry_out.
+- **Proposed fix:** Keep column (c) within line 10: give the rounding remainder to one line (the second reading of amb.2025.f7203_prorata_places), or round the ratio down; then column (e) is column (a) less column (c) exactly. Re-rule the ambiguity. The fixture mk1.k1s.f7203_loss_over_basis_line14 asserts lines 10, 11, 14 and 15 only, whose values are right under either reading.
+- **Severity:** low
+- **Tags:** f7203, k1s, rounding, latent
+
+## BUG-0930 — A disabled-person refusal gate read the disability answer after the gross income test had already settled it, so the interview could report a return complete with that question still open
+
+- **Caught by:** interview-rules (release-mode check-all, run 9ddb71b6-20261116-011852), completion check: full: generated.375 in a random answering order.
+- **Source:** i1040gi p. 19, Step 4, gross income test, and pp. 19-20, Exception to gross income test.
+- **Symptom:** reported complete while dependent[dep_c].disabled was reachable and unanswered. Replayed (seed 211225): the last answer, household.credit_disallowed = false, completed the return; dep_c (a household member of 15 with gross income of 2 cents) had dependent.disabled unknown and dependent.income_exception already false.
+- **Where:** forms/2025/dependent.yaml, dependent.income_exception: all[disabled = true, qr_income = false]. The test read disabled first; with disabled unanswered it went on to qr_income, which (true) decided the test, leaving disabled read and unknown. The line is unchanged by the coverage expansion; the witness is new because the generated sample moved.
+- **Fix:** dependent.income_exception rewritten as a choose on dependent.disabled (true: the new helper dependent.qr_income_fails, qr_income = false; false: dependent.no). Same value on every known input; the disability answer is read first, as before, and the income test only after a Yes, so a pending disability answer holds the gate. Pinned by fixture xleak.income_exception.disabled_unanswered (fixtures/2025/dependent.json): income_exception unknown awaiting dependent[member].disabled, where the old line gave false. dependent.gross_income is no longer reached out of bank order (it was reached through this line), so its entry is removed from order_dependent_reach in tools/interview_rules_baseline.json, as interview-rules asks.
+- **Fix lines:** dependent.income_exception, dependent.qr_income_fails (new)
+- **Siblings checked:** dependent.qr_household_member and dependent.qr_other_relation (same family, fixed under the companion entry); the other readers of dependent.disabled (qc_age_younger, qc_age_19, qc_age_student) are chooses and do not leak; dependent.qualifying_relative is a choose on dependent.qr_relationship alone and reads income_exception only as a refusal condition, so it cannot settle on a partly read conjunction.
+- **Severity:** low: no value changes; a question could be left unasked on a return reported complete in an order other than the bank's.
+- **Tags:** interview, completion, conjunction leak, review debt: dependent render and class M for the changed lines
+
+## BUG-0931 — The relationship tests for a household member and for another person read the spouse-relative answer even when living with you all year had decided them, so the interview could report a return complete with that question open
+
+- **Caught by:** interview-rules (release-mode check-all, run 9ddb71b6-20261116-011852), completion check: ny: ny.generated.431 in a random answering order.
+- **Source:** i1040gi p. 19, Step 4 (a relative listed, or any other person who lived with you all year); p501 p. 19, Joint return.
+- **Symptom:** reported complete while dependent[dep_b].spouse_relative was reachable and unanswered. Replayed (seed 111254): on a joint return, dep_b (a household member of 16 who lived with the couple all year) had dependent.qr_household_member true from household_all_year while spouse_relative, its first operand, was still unknown; the last answer, qbi.coop_patron = false, completed the return.
+- **Where:** forms/2025/dependent.yaml, dependent.qr_household_member: any[all[status = mfj, spouse_relative = true], household_all_year = true], and dependent.qr_other_relation: any[the same spouse test, all[household_all_year, lawful]]. With spouse_relative unanswered the any went on to the household operand, which decided it. The lines are unchanged by the coverage expansion; the witness is new because the generated sample moved.
+- **Fix:** Both lines rewritten as chooses on a new helper dependent.spouse_relative_joint (all[status = mfj, spouse_relative = true], the original first operand): true gives true; false gives dependent.household_all_year (qr_household_member) or the new helper dependent.qr_other_lawful (choose on household_all_year: true gives lawful, false gives no) (qr_other_relation). Same value on every known input and the same read order as before, so the bank-order walks ask the same questions (ny.generated.431: 266 answers before and after); a pending spouse answer now holds the line. A first version that asked household_all_year first (sparing joint filers a moot question) changed the expected value of stage8.mut.mfj_spouse_relative_all_year_unanswered and was withdrawn (experiment_log.md). Pinned by fixtures xleak.spouse_relative.household_member_all_year_unanswered and xleak.spouse_relative.other_all_year_lawful_unanswered: each line unknown awaiting spouse_relative, where the old lines gave true. dependent.lawful is no longer reached out of bank order (it was reached through dependent.qr_other_relation), so its entry is removed from order_dependent_reach in tools/interview_rules_baseline.json, as interview-rules asks; dependent.spouse_relative's entry there stays (still reached out of bank order elsewhere).
+- **Fix lines:** dependent.qr_household_member, dependent.qr_other_relation, dependent.spouse_relative_joint (new), dependent.qr_other_lawful (new)
+- **Siblings checked:** dependent.qr_other_relation (fixed, not witnessed); dependent.income_exception (companion entry); dependent.qr_listed_relative reads only dependent.relationship, always answered first; dependent.qr_relationship, the reader of both fixed lines, is a choose whose every guard tests dependent.relationship alone, so it has no conjunction to leak.
+- **Severity:** low: no value changes on a complete return; a question could be left unasked on a return reported complete in an order other than the bank's.
+- **Tags:** interview, completion, conjunction leak, review debt: dependent render and class M for the changed lines; owner/coordinator: asking household_all_year before spouse_relative would remove a moot question for joint filers, at the cost of the expected value of one mutation fixture
+
+## BUG-0932 — The education credit worksheet always reduces 2025 expenses by assistance and refunds, with no way to apply the reduction to 2026 payments instead (open)
+
+- **Caught by:** sampled completeness review of dependent (claude-opus-5-5), claim dependent#1.2, ruled by the integration lane xint, 2026-11-16.
+- **Source:** i8863 p. 6, Tip: "If you paid qualified education expenses in both 2025 and 2026 for an academic period that begins in the first 3 months of 2026 and you receive tax-free educational assistance or a refund, as described above, you may choose to reduce the qualified education expenses you paid in 2026 instead of reducing the qualified education expenses you paid in 2025."
+- **Symptom:** The Adjusted Qualified Education Expenses Worksheet lines 2a to 2c (dependent.edu_a_this_year, edu_a_next_year, edu_refunds; the same in person.yaml) always subtract the assistance and refunds allocable to the period from the 2025 expenses. A filer who paid for a period beginning in January to March 2026 in both years cannot take the choice the tip allows, so the 2025 credit can be lower than the filer may claim. The value the tool computes is the default treatment, not a wrong one.
+- **Where:** forms/2025/dependent.yaml dependent.edu_a_this_year, dependent.edu_a_next_year, dependent.edu_refunds, dependent.edu_adj_sum; forms/2025/person.yaml, the same lines for the filers.
+- **Proposed fix:** Ask, only when assistance or a refund is entered for a period beginning in the first 3 months of 2026 that was also paid for in 2026, whether the filer chooses to reduce the 2026 payments instead, and take the reduction off line 2 accordingly; or refuse that case with the tip as the remedy.
+- **Severity:** low
+- **Tags:** dependent, person, f8863, completeness, election

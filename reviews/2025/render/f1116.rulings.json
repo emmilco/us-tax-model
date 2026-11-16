@@ -1,0 +1,26 @@
+{
+ "kind": "render",
+ "form": "f1116",
+ "rulings": [
+  {
+   "printed": "21",
+   "restated": "Choose — [helper \"Line 18 is more than zero (line 19 is figured)\" = true → helper \"Divide line 17 by line 18, rounded to four decimal places, not more than 1 and not less than 0 (line 19); multiply line 20 by the result\"] [helper \"Line 18 is more than zero (line 19 is figured)\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Line 19 follows the IRS conditions: zero when line 18 is zero, '1' when line 17 is more than line 18, and zero when line 17 is zero or less. But the program rounds the ratio to four decimal places, and the line 19 text ('Divide line 17 by line 18') gives no rounding precision; only line 3f states four-place rounding. Whether this rounding is allowed cannot be judged from the text.",
+   "ruling": "Ruling: ambiguity; the four-place rounding of line 19 is the register's chosen reading amb.2025.f1116_ratio_places ('Round lines 3f, the worksheet's line 3 and line 19 half-up to four decimal places'); i1116 p. 25, Line 19, 'Divide line 17 by line 18', states no precision, as the reviewer says.",
+   "context": "0a3f42a6f1880657ff2b0050378332f5649a799fff111702cf1809662270c88d",
+   "date": "2026-11-15",
+   "run": "c3ed6bf4dd4bff754f614cca62a977cdf2282e4a75794e171dc77c36840fe14f",
+   "subject_key": "aa0f49135f8ceb244bbb8657b017f7e7ba3d4e2cf65a767cf9681a2ebea94783"
+  },
+  {
+   "printed": "22",
+   "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
+   "model": "Always zero, but no refusal or gate names the case the instructions describe: an excess limitation account under section 960(c) from prior section 951(a) inclusions, with a later distribution of previously taxed earnings. The text gives no way to confirm that this case is outside the returns prepared.",
+   "ruling": "Ruling: scope; section 960(c) excess limitation accounts arise only from section 951(a) inclusions of a controlled foreign corporation, which are refused (scope, Schedule 1 lines 8n/8o, i1040gi p. 91), and the section 960(c) credit itself is refused at s3.section960c_if_foreign ('Schedule 3 line 13z (section 960(c) credit)'), so line 22 is zero on every return prepared.",
+   "context": "0a3f42a6f1880657ff2b0050378332f5649a799fff111702cf1809662270c88d",
+   "date": "2026-11-15",
+   "run": "c3ed6bf4dd4bff754f614cca62a977cdf2282e4a75794e171dc77c36840fe14f",
+   "subject_key": "0fe4fb16a8b06bf262a7d283d2f0234eb333df3d852c132a221d31f5499bcc32"
+  }
+ ]
+}

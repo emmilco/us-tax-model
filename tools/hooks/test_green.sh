@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Self-test for tools/green.sh and tools/hooks/pre-commit, in a temporary repository:
 # concurrent record_green calls must not lose entries in any tier's list; a tier's
-# record implies the lower tiers' and not the higher; and pre-commit accepts a staged
+# record implies the lower tiers' and not the higher; the release list is read by no tier, and
+# release_mode needs both release variables; and pre-commit accepts a staged
 # tree only when it is green in the tier the commit needs (tools/tier_paths.py). Then
 # the path rule's own self-test on this repository (tools/tier_paths.py --self-test).
 set -euo pipefail
@@ -41,6 +42,16 @@ for t in full fast docs; do rm -f "$(trees_of "$t")"; done
 echo marker > "$(marker_of fast)"
 is_tier_green fast marker && ! is_green marker || fail "the fast marker is not read as the fast record only"
 rm -f "$(marker_of fast)"
+
+# The release list is its own: a release-listed tree is no tier's green tree, and no tier's tree is release-listed.
+record_green rel1 release; record_green full2 full
+is_release_green rel1 || fail "a release-listed tree is not read as release-green"
+! is_release_green full2 || fail "a full-green tree passed as release-green"
+for t in full fast docs; do ! is_tier_green "$t" rel1 || fail "a release-listed tree passed as $t-green"; done
+rm -f "$(trees_of release)" "$(trees_of full)"
+( CHECK_ALL_RELEASE=1 ENGINE_CACHE=verify; export CHECK_ALL_RELEASE ENGINE_CACHE; release_mode ) || fail "release_mode is false with both variables set"
+( unset ENGINE_CACHE; CHECK_ALL_RELEASE=1; export CHECK_ALL_RELEASE; ! release_mode ) || fail "release_mode is true without ENGINE_CACHE=verify"
+( unset CHECK_ALL_RELEASE; ENGINE_CACHE=verify; export ENGINE_CACHE; ! release_mode ) || fail "release_mode is true without CHECK_ALL_RELEASE=1"
 
 # pre-commit. The base commit carries the path lists the next commit is judged by.
 mkdir -p docs engine/src src

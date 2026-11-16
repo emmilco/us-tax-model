@@ -77,7 +77,7 @@ const pct = fc.integer({ min: 0, max: 100 });
 // Bool inputs whose usual value is not "false, rarely true".
 const BOOL_TRUE_PERCENT: Record<string, number> = {
   "div.basis_reconciled": 95,
-  "ftc.all_passive": 90, "ftc.statements": 90, "ftc.eligible": 90, "ftc.elect": 90,
+  "ftc.all_passive": 90, "ftc.statements": 90, "ftc.eligible": 90,
   "sa.elect_itemize": 10,
   "person[taxpayer].eic_age25": 85, "eic.us_home": 95,
   "s1a.tips": 20, "s1a.overtime": 20, "s1a.carloan": 15, "person[taxpayer].died_before_65": 2,

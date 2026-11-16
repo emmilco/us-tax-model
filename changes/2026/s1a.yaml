@@ -27,13 +27,13 @@ changes:
     operations:
     - set_form:
         field: note
-        from: For a single, head of household, qualifying surviving spouse or married filing jointly return (married filing
-          separately is refused through s3.mfs). Tips and overtime as an employee only, by the methods the instructions give
+        from: For any filing status; a married filing separately return takes no deduction on lines 13, 21 and 36a (tips,
+          overtime, enhanced senior), as the instructions require. Tips and overtime as an employee only, by the methods the instructions give
           for 2025; tips or overtime in a trade or business, Form 4137, and excluded Puerto Rico income or Forms 2555 and
           4563 are refused. Lines 11, 19 and 28 (a whole number of $1,000 units) are kept as that many thousands of dollars;
           lines 12, 20 and 29 multiply them by $100 or $200 per thousand.
-        to: For a single, head of household, qualifying surviving spouse or married filing jointly return (married filing
-          separately is refused through s3.mfs). Tips and overtime as an employee only, by the methods the 2025 instructions
+        to: For any filing status; a married filing separately return takes no deduction on lines 15, 27 and 42a (tips,
+          overtime, enhanced senior), as the instructions require. Tips and overtime as an employee only, by the methods the 2025 instructions
           give; tips or overtime in a trade or business, Form 4137, and excluded Puerto Rico income or Forms 2555 and 4563
           are refused. Lines 13, 25 and 34 (a whole number of $1,000 units) are kept as that many thousands of dollars; lines
           14, 26 and 35 multiply them by $100 or $200 per thousand.

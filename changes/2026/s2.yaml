@@ -178,13 +178,14 @@ changes:
     - set:
         line: s2.line21
         field: label
-        from: Add s2.line4, s2.line8, s2.line11, s2.line12, s2.line18
+        from: Add s2.line4, s2.line7, s2.line8, s2.line11, s2.line12, s2.line18
         to: Add lines 15 and 20. These are your total additional taxes
     - set:
         line: s2.line21
         field: expr.of
         from:
         - s2.line4
+        - s2.line7
         - s2.line8
         - s2.line11
         - s2.line12

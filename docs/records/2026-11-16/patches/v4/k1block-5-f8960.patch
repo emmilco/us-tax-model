@@ -1,0 +1,51 @@
+diff --git a/forms/2025/f8960.yaml b/forms/2025/f8960.yaml
+index 9b3a6b8..ffa6594 100644
+--- a/forms/2025/f8960.yaml
++++ b/forms/2025/f8960.yaml
+@@ -13,7 +13,7 @@ form:
+       label: |-
+         Do you (or, on a joint return, your spouse) have any of the following?
+ 
+-        - annuity, business or pass-through income
++        - annuity income, or business income other than from a partnership or S corporation Schedule K-1
+         - a CFC or PFIC holding
+         - a section 911 exclusion
+         - a disposition adjustment (Form 8960 line 5b or 5c), for example:
+@@ -31,7 +31,7 @@ form:
+         source: |-
+           Do you (or, on a joint return, your spouse) have any of the following?
+ 
+-          - annuity, business or pass-through income
++          - annuity income, or business income other than from a partnership or S corporation Schedule K-1
+           - a CFC or PFIC holding
+           - a section 911 exclusion
+           - a disposition adjustment (Form 8960 line 5b or 5c), for example:
+diff --git a/reviews/2025/consumers.json b/reviews/2025/consumers.json
+index fb2e21c..b81f078 100644
+--- a/reviews/2025/consumers.json
++++ b/reviews/2025/consumers.json
+@@ -2865,9 +2865,9 @@
+   },
+   "consumer:f8960.unsupported@i8960:p8": {
+    "verdict": "same",
+-   "question_phrase": "annuity, business or pass-through income",
++   "question_phrase": "annuity income, or business income other than from a partnership or S corporation Schedule K-1",
+    "source_phrase": "Line 4a, Schedule 1 (Form 1040), lines 3, 5 and 6",
+-   "reason": "Line 4a copies Schedule 1 line 5 only; the business and pass-through amounts of lines 3 and 6 that p. 8 also names are exactly what the screen's Yes refuses, so the screen covers the rest of the line."
++   "reason": "Line 4a copies Schedule 1 line 5, which now carries partnership and S corporation K-1 income, and line 4b takes out its nonpassive part; the business amounts of lines 3 and 6 that p. 8 also names are exactly what the screen's Yes refuses, so the screen covers the rest of the line."
+   },
+   "consumer:f8960.refund@i8960:p8": {
+    "verdict": "same",
+diff --git a/tools/coverage/tree.json b/tools/coverage/tree.json
+index 0873078..2350ca3 100644
+--- a/tools/coverage/tree.json
++++ b/tools/coverage/tree.json
+@@ -99,7 +99,7 @@
+   {"gate": "s3.prior_forms_if_forms", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Does your 2024 federal return include Form 1116, 3800, 8396, 8801, 8582-CR, 8839, 8859 or 8912?"},
+   {"gate": "s3.repaid_income", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "In 2025, did you pay back more than $3,000 that you had reported as income in an earlier year?"},
+   {"gate": "s3.other_credit", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Is any of the credits, payments or carryovers above present? The credit limit worksheets of the tool's own credits then cannot be completed.", "stop": "A credit limit worksheet line that adds credits this tool does not prepare"},
+-  {"gate": "f8960.unsupported", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Do you have net investment income or adjustments the tool does not take for the Net Investment Income Tax: annuities, rentals, royalties, a business or pass-through, CFC or PFIC holdings, a section 1411 net operating loss, excluded savings bond interest, or another Form 8960 adjustment?"},
++  {"gate": "f8960.unsupported", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Do you have net investment income or adjustments the tool does not take for the Net Investment Income Tax: annuities, business income other than from a partnership or S corporation Schedule K-1, CFC or PFIC holdings, a section 1411 net operating loss, excluded savings bond interest, or another Form 8960 adjustment?"},
+   {"gate": "f8960.refund", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Did you recover in 2025 an amount deducted on an earlier Form 8960 (for example a state income tax refund)?"},
+   {"gate": "f8960.digital_nii", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Do you owe the Net Investment Income Tax and have income received in digital assets from staking, mining or a hard fork (Schedule 1 line 8v)?"},
+   {"gate": "f8960.carryforward_adj", "topic": "everyone", "part": "taxes", "kind": "situation", "question": "Do you have a capital loss carryover with a 2024 Form 8960 worksheet line 2(i) amount, and income over the threshold?"},

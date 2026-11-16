@@ -37,10 +37,32 @@
   {
    "printed": "11(a)",
    "restated": "Add f1095a.line33a over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "It is reported whenever line 11 is used, including for a married filing separately filer without Exception 2. The IRS says: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\"",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "965514a3ba8947cc1c26b1d847a8d267dc77573bdfba307f2ac2eac8fea503d9"
+  },
+  {
+   "printed": "11(a)",
+   "restated": "Add f1095a.line33a over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The total is right when the column applies, but no gate or refusal handles this case. IRS: 'If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).'",
    "ruling": "Ruling: scope; screen s3.mfs (root S1 of Stage 18; the shared cause of the 65 married-filing-separately sections of this log, 11(a) to 11(e) and 12(a) to 23(e), stated in full here). f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" The reviewer says the columns have no filing-status gate. No married filing separately return is completed: scope.ready refuses on s3.mfs (forms/2025/s3.yaml, scope.yaml; i1040gi p. 14, \"Married Filing Separately\"), Exception 2 included, as the owner's decision D1 keeps, and the form note says married filing separately is refused for the whole return. On every return computed the filing status is not married filing separately, so columns (a) to (e) are completed as the restatement says; the reviewer finds the amounts themselves right. Re-checked this round on stage18.married_in_2025_single (a completed fixture; line 24 $3,560) with one answer changed by the adjudicator (constructed variants, not fixtures): f1040.status mfs refuses scope.ready and Form 1040 line 37 with gate s3.mfs; sa.dependent true refuses Form 1040 lines 12e, 16 and 37 with gate sa.dependent; scope.other_line16 true refuses scope.ready and lines 16 and 37 with gate scope.other_line16. The fixes of this round (BUG-0237, BUG-0238, rewording the f8962.alloc and f8962.other questions; BUG-0219, the qualifying surviving spouse test) do not touch s3.mfs or these columns.",
    "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807",
    "subject_key": "23403d7a969b4b33ad1142e241cde18e6bb7c4919cf3c1e6103dec3d93050bf4"
+  },
+  {
+   "printed": "11(b)",
+   "restated": "Add f1095a.line33b over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "It is reported whenever line 11 is used, including for a married filing separately filer without Exception 2. The IRS says to \"skip columns (a) through (e), and complete only column (f)\" in that case.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "ac0cb43faefb44050d89667d337f0d2dec40c260a1e5229223a4500d67ed6e6a"
   },
   {
    "printed": "11(b)",
@@ -91,6 +113,17 @@
    "subject_key": "ab155c3c567d0bcea7c011f3f4313cdf2d9499ad93033a1c3d4bb693b638ad20"
   },
   {
+   "printed": "12(a)",
+   "restated": "Add f1095a.a_jan over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "There is no applicable-taxpayer gate, so a married filing separately filer without Exception 2 gets column (a). The IRS says such a filer should \"skip columns (a) through (e), and complete only column (f).\"",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "0b4a7e12257cee2c9545e2f6baee9243737b27f4455fc73d5b6e0eedab0d2693"
+  },
+  {
    "printed": "12(b)",
    "restated": "Add f1095a.b_jan over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The column-B 'counted' helper is undefined in the glossary. The different-state rule ('add together the amounts from column B of Forms 1095-A from each state') cannot be confirmed.",
@@ -105,6 +138,17 @@
    "ruling": "Ruling: scope; screen s3.mfs (root S1, stated in full at 11(a)). January, column (b), applicable SLCSP premium: the reviewer's only point is the married filing separately rule, f8962 p. 1, item A, \"You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception\"; i8962 p. 15, Line 11, and p. 16, Lines 12 Through 23, \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" No married filing separately return is completed (scope.ready refuses on s3.mfs; re-checked this round on a constructed variant of stage18.married_in_2025_single); the applicable SLCSP premium itself is accepted by the reviewer.",
    "context": "287d48d7000dbe2a40587d4a158765cda253d190858df18dbb5fa2429571c807",
    "subject_key": "72b2401415b25519ff217f723bd2d5167a6930d2790952d78a8413e0a84237dd"
+  },
+  {
+   "printed": "12(b)",
+   "restated": "Add f1095a.b_jan over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "There is no applicable-taxpayer gate, so column (b) is reported for a married filing separately filer without Exception 2. The IRS says to \"skip columns (a) through (e), and complete only column (f).\"",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "157791ae22b13c78b4f9ea0a3e73607e0c3b6a927d8f5bdd5f825cb770a5af1f"
   },
   {
    "printed": "12(c)",
@@ -139,6 +183,17 @@
    "subject_key": "dd63028461314ba4713ad690bd4e4e9a74aeff46b2b15a9f645c94ec85e6938f"
   },
   {
+   "printed": "13(a)",
+   "restated": "Add f1095a.a_feb over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): it is reported for a married filing separately filer without Exception 2, against the IRS instruction to \"skip columns (a) through (e), and complete only column (f).\"",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "516a8cb5b47e184a2f2670278fe38c152a89f35077074cf0b5d51e7bec91c5f6"
+  },
+  {
    "printed": "13(b)",
    "restated": "Add f1095a.b_feb over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -153,6 +208,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "89222e64a98a56c9dc7f81e462cd352c497ff384dcc3c638901a46a8b6eccf49"
+  },
+  {
+   "printed": "13(b)",
+   "restated": "Add f1095a.b_feb over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): it is reported for a married filing separately filer without Exception 2, against the IRS instruction to \"skip columns (a) through (e)\".",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "24660f2a571cc20b76c352ac05b0e915b0cd60e3b8323f73d79270ea482d5d16"
   },
   {
    "printed": "13(c)",
@@ -187,6 +253,17 @@
    "subject_key": "aba432a3034c67a75e94bf6a354959b476a318fa254677a394ea3e957757aa02"
   },
   {
+   "printed": "14(a)",
+   "restated": "Add f1095a.a_mar over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "1bd0bd1f016917f1729c026f81207ebe2042b2ce8844b4b10e895fa73e82ca62"
+  },
+  {
    "printed": "14(b)",
    "restated": "Add f1095a.b_mar over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -201,6 +278,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "5fdacfe2c83e2e7a1cda1a0c297141347111a2b22a306422d6bd84fd003e550e"
+  },
+  {
+   "printed": "14(b)",
+   "restated": "Add f1095a.b_mar over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "091ac2f4aa44b05cf2a06afc6d77eb5455cd18330fc20c3c85c60fcba88dcf21"
   },
   {
    "printed": "14(c)",
@@ -235,6 +323,17 @@
    "subject_key": "a1dc596c6a22a65b07ac3d8ebf98801e33ea4ba96334a519de0ad7ab1a40f7db"
   },
   {
+   "printed": "15(a)",
+   "restated": "Add f1095a.a_apr over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "a28e708cdca52e3fe26a2002dc8160c822465482a10a3ac3cedd752b7c5919a0"
+  },
+  {
    "printed": "15(b)",
    "restated": "Add f1095a.b_apr over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -249,6 +348,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "124c09fe2ea503289b1fa22fee03375f0cd4649cea674b77217ef4ed2d4fc48d"
+  },
+  {
+   "printed": "15(b)",
+   "restated": "Add f1095a.b_apr over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "36dd57f83d646ff0c0b243d62269ab982f67d292f8c5a75831fba2149ec3950f"
   },
   {
    "printed": "15(c)",
@@ -283,6 +393,17 @@
    "subject_key": "136faa1a453cea8fc31e3a0058b44ae8ff04fec3840b5a74c2cfae53bdb9614c"
   },
   {
+   "printed": "16(a)",
+   "restated": "Add f1095a.a_may over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "e4618dfbc82933433c1b9ce818c3fc8489125ff960d1df24736825d0b850ce80"
+  },
+  {
    "printed": "16(b)",
    "restated": "Add f1095a.b_may over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -297,6 +418,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "004a17e9b8e853a8c5d1b64d3d816a25164d1f28de8e7551aa9d6acaca8f2d8e"
+  },
+  {
+   "printed": "16(b)",
+   "restated": "Add f1095a.b_may over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "f4b2bb6d6b6c93bc6cb710d1792600db159e7136b240261fa8ed6e619d34f124"
   },
   {
    "printed": "16(c)",
@@ -331,6 +463,17 @@
    "subject_key": "bc9cb3f59ba47ff793a4e14795466ecc35659f97fc74c98e0881630603db34f3"
   },
   {
+   "printed": "17(a)",
+   "restated": "Add f1095a.a_jun over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "20ff944bbab99e6121838e231d1d6d7a995e387f51ea53db21a897dfd6ad0e67"
+  },
+  {
    "printed": "17(b)",
    "restated": "Add f1095a.b_jun over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -345,6 +488,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "a4dc4b83fb284fe6db59634b5365aaebd4c8dcd8ddb3b6a5486d7bcd193ed1ae"
+  },
+  {
+   "printed": "17(b)",
+   "restated": "Add f1095a.b_jun over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "1dc40a48cbcf11201a77e77395e76995baad5e117d9497d9c9a1e10d3d5e7e9f"
   },
   {
    "printed": "17(c)",
@@ -379,6 +533,17 @@
    "subject_key": "84051f26aff577bff125eed5f44029b27566e576e684f8beb20362c9c0b7c5bc"
   },
   {
+   "printed": "18(a)",
+   "restated": "Add f1095a.a_jul over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "9ca8dd1877e72b6cab4e3ddc014380b6c224d18df4823404021d6a614792b31e"
+  },
+  {
    "printed": "18(b)",
    "restated": "Add f1095a.b_jul over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -393,6 +558,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "64f9a13abbbcfc1b2b2cddc78cae77c92db5c39e5636442e3ef19c5cb4c28c33"
+  },
+  {
+   "printed": "18(b)",
+   "restated": "Add f1095a.b_jul over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "bc8c9cad9277d29ca3362daa16ad65c937073023a35a61fed73aa0e26a5b194e"
   },
   {
    "printed": "18(c)",
@@ -427,6 +603,17 @@
    "subject_key": "7f549020b29dd28ef2a259aa807c6a4b18e577474347744ce38993e48b3dbd57"
   },
   {
+   "printed": "19(a)",
+   "restated": "Add f1095a.a_aug over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "d7b27fc8000c54dce783b26ec4868a1fb80cc30ad4ee936ea8ec106ec1e97bac"
+  },
+  {
    "printed": "19(b)",
    "restated": "Add f1095a.b_aug over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -441,6 +628,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "7386ce8c52f9a6b5f711315369f5b86fac47dfc40c611ef0fdc8f31f78ccdb44"
+  },
+  {
+   "printed": "19(b)",
+   "restated": "Add f1095a.b_aug over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "6b4c34394cad19af6a18557f55c6e2305ed86a4f85dfcb072090c45d8633ae53"
   },
   {
    "printed": "19(c)",
@@ -475,6 +673,17 @@
    "subject_key": "1d8fc7d76ddf6ef59392d0eb2b8deecb703f0b26cf1bc29aab4e6d1d8ea715d9"
   },
   {
+   "printed": "20(a)",
+   "restated": "Add f1095a.a_sep over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "9faff521a864b2dd3cf157d672b481c4ec158d5ffb6598c0dec8a131ee8822bf"
+  },
+  {
    "printed": "20(b)",
    "restated": "Add f1095a.b_sep over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -489,6 +698,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "0b738cbbd67388a83dd7be29cdcd97d1d471d3e09a509278b1a1979d78a792f1"
+  },
+  {
+   "printed": "20(b)",
+   "restated": "Add f1095a.b_sep over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "02b28b72cff8844f5cf80251a86300beb3cfe100e28b078643c53744bcba5643"
   },
   {
    "printed": "20(c)",
@@ -523,6 +743,17 @@
    "subject_key": "0c6452ce230e831342bb2859f45067628c1ebe572b4d0dd564dd5f681f05a763"
   },
   {
+   "printed": "21(a)",
+   "restated": "Add f1095a.a_oct over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "d7d6e3754b236c3da27917753eb42b5b32451802988bfb73cb136a9d812ee23a"
+  },
+  {
    "printed": "21(b)",
    "restated": "Add f1095a.b_oct over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -537,6 +768,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "14212795ae265f2e364edf82ff55ddefa7fae38c1fb031a28ad4bc21e26c07fd"
+  },
+  {
+   "printed": "21(b)",
+   "restated": "Add f1095a.b_oct over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "8d8f16ad733aae034731568def052fa488d587b8da7a103f33ffa43902c27387"
   },
   {
    "printed": "21(c)",
@@ -571,6 +813,17 @@
    "subject_key": "1ca03babe774dad93b1f947657bac692aa312abee8e4e00635f6699858862846"
   },
   {
+   "printed": "22(a)",
+   "restated": "Add f1095a.a_nov over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "f92dbd27f8db51aa596c689ef89a791a088625d95e3ab51b4e859e861481d098"
+  },
+  {
    "printed": "22(b)",
    "restated": "Add f1095a.b_nov over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -585,6 +838,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "6977502f869412e9239da42fede192a47b1608cd41c52100c7a54ec39a5175d0"
+  },
+  {
+   "printed": "22(b)",
+   "restated": "Add f1095a.b_nov over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "474698cdeca05368dddf383aeb91dbc7a93ebe47a1caf5fd9bdea5bc323caf6a"
   },
   {
    "printed": "22(c)",
@@ -619,6 +883,17 @@
    "subject_key": "336a078d421150a80c8f56b04b639790ef16a82d3701358b4554a5c566c9e90c"
   },
   {
+   "printed": "23(a)",
+   "restated": "Add f1095a.a_dec over every confirmed f1095a entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(a): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (a) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "dc4b17457830c749552f680bdb813c7b16b916996ee75c1f058919431c994dcd"
+  },
+  {
    "printed": "23(b)",
    "restated": "Add f1095a.b_dec over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Same married-filing-separately omission as 12(b): the IRS says to 'skip columns (a) through (e), and complete only column (f)'.",
@@ -633,6 +908,17 @@
    "ruling": "Ruling: representation; the glossary omits the helper that selects counted forms, but its rule is in the project: forms from different states are added and a same-state overlap is refused by f8962.two_counted (i8962 p. 15, Column (b)). The reviewer could not see it, so this is an objection to the glossary, not to the line.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec",
    "subject_key": "e8f6812918795af883685d67a8215be530ea1ada459984d6742532d50651484d"
+  },
+  {
+   "printed": "23(b)",
+   "restated": "Add f1095a.b_dec over every confirmed f1095a entry for which helper \"This form's column B is counted (the only form, or counted under the one-form-a-month rule)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "This line has the same defect as 12(b): the IRS says to \"skip columns (a) through (e)\" for a married filing separately filer without Exception 2.",
+   "ruling": "Ruling: finding; low; i8962 (2025), Line 11 and Lines 12 Through 23: \"If you are using filing status married filing separately and Exception 2, earlier, does not apply to you, skip columns (a) through (e), and complete only column (f).\" Columns (c) to (e) are hidden for such a filer (shown_when requires f8962.applicable); column (b) of this line is shown for a separate filer without the line A exception (f8962.mfs_barred), now that married filing separately is computed. No amount changes (line 24 is zero; lines 25 to 29 use column (f)). BUG-0770.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "severity": "low",
+   "subject_key": "acd0df29d784e2c7789c226fc6ed85ae4f9117751013b49a66ef11f4dd864dae"
   },
   {
    "printed": "23(c)",
@@ -799,6 +1085,16 @@
    "subject_key": "7e856f764330ed988f94e445ed7bd8cdc423139cfe5301e8a16c0e2cd1ed3cc7"
   },
   {
+   "printed": "28",
+   "restated": "Choose — [line 5 ≥ 0 (a count) and line 5 < 200 (a count) → helper \"Table 5 limitation, line 5 below 200\"] [line 5 ≥ 200 (a count) and line 5 < 300 (a count) → helper \"Table 5 limitation, line 5 below 300\"] [line 5 ≥ 300 (a count) and line 5 < 400 (a count) → helper \"Table 5 limitation, line 5 below 400\"] [line 5 ≥ 400 (a count) → line 27]",
+   "model": "The Table 5 amounts match, but there is no handling or refusal for the self-employed case. The IRS says: \"If you are self-employed and are claiming the self-employed health insurance deduction, see Self-Employed Health Insurance Deduction and PTC in Pub. 974 for the amount to enter on line 28.\"",
+   "ruling": "Ruling: scope; i8962, Line 28 (a self-employed filer claiming the self-employed health insurance deduction takes the line 28 amount from Pub. 974). The self-employed health insurance deduction with the premium tax credit is refused in Schedule C (sc.yaml: \"Self-employed health insurance with the premium tax credit (Pub. 974)\"), so line 28 is never reached in that case. The Table 5 amounts match (the model agrees).",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "subject_key": "a483a3188380ec5d4b8b97f34019c32cf0713e6b468e4a5faeb75000e6ba8900"
+  },
+  {
    "printed": "2b",
    "restated": "Add dependent.ptc_magi_counted over every confirmed dependent entry for which helper \"Your dependent\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "Dependents required to file are summed, but the restatement omits the Form 8814 rule: 'If you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.'",
@@ -813,6 +1109,16 @@
    "ruling": "Ruling: scope; screen scope.other_line16 (root S3 of round 1). i8962 p. 8, Line 2b, \"Form 8814. If you are filing Form 8814, Parents’ Election To Report Child’s Interest and Dividends, and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of ...\". The omitted rule concerns a child's income reported on the parent's return, which is Form 8814. scope.other_line16 (\"Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax) ...\") refuses every such return at scope.ready and at f1040.line16 (forms/2025/scope.yaml, f1040.yaml), and D1 keeps Form 8814 refused. The rest of the restatement (dependents required to file because of their income, through dependent.ptc_magi_counted, D7(b)) matches the line, as the reviewer says. Re-checked for round 3: unchanged by f8962.filing (line 2b stays on f8962.any). Re-checked this round: scope.other_line16 is still a refusal of scope.ready (forms/2025/scope.yaml).",
    "context": "68ea7e261b6ddd60d491a370f5604e9636c98e21babac3b609c03bb6ba81fa86",
    "subject_key": "4394a91617b2851628d568249daa96f16faa026b6505a3cb6daf406b498a02cf"
+  },
+  {
+   "printed": "2b",
+   "restated": "Add dependent.ptc_magi_counted over every confirmed dependent entry for which helper \"Your dependent\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "It counts only dependents who must file because of income, and omits the Form 8814 case with no refusal. The IRS says: \"If you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.\"",
+   "ruling": "Ruling: scope; i8962, Worksheet 1-2 (a child's Form 8814 income above $1,350 adds to household income). Form 8814 is refused on the return at Form 1040 line 16 (scope.other_line16, whose refusal names Forms 8814 and 4972), so no computed return has the Form 8814 case.",
+   "context": "4fe60ce8e4f981a2c1e2e2614ec5a8c4208ef813e0b84db92f3d61f3f9e15688",
+   "date": "2026-11-15",
+   "run": "54a71a309c94108906488d5b5aca9e371b867667428bd992bd9ef1facaf36ed5",
+   "subject_key": "57362ec798d87aee20ef45d38a807ebc3f4d32e57b553ef319a357698a413286"
   },
   {
    "printed": "2b",

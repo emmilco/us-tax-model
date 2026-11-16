@@ -4,8 +4,8 @@
  "family": "claude",
  "base": "df1e8eb5b36b5cd459a5275254aff4535d5fbd710d888ac8f204b2f6fce59b2d",
  "head_rows": {
-  "printed lines compared": "29",
-  "agree / disagree / missing": "20 / 9 / 0",
+  "printed lines compared": "35",
+  "agree / disagree / missing": "20 / 15 / 0",
   "line-scoped reviews": "4 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
@@ -31,17 +31,24 @@
   },
   {
    "key": "sa.itemizes",
-   "record": "7fa54d079c0df7c0412fd0ec6bffd8591d38c8fc3799e53adc1c7ca577acbab5",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every compared value: f1040 line 12e and i1040sca, Line 18 (elect to itemize when itemized deductions are less than the standard deduction; a married filing separately spouse who itemizes requires itemizing). The reply restructures the standard-deduction comparison (an mfs spouse who itemizes gives a $0 standard deduction; the additional amounts counted per person by birth year); triage executable-triage-v2 (`.transcription/triage/2025/sa.json`, pass a9e1a8c8fc0e; 2,028 fixtures, 500 generated returns, partial records): 3,276 of 3,757 agree and no value differs. 443 candidate-unknown come from the reply reading inputs the interview gates: sa.gambling_losses without s1 winnings (line 16) and s3.mcc without mortgage interest (its mortgage credit check, line 8a); 17 candidate-refuses are refusals the project places on other lines (s3.mcc_if_interest at Schedule 3 line 7, s3.repaid_income at line 14, sb.fbar_required_if_foreign, asset screens: redesign.credits.refuse.mcc and .repaid_income refuse the return in both); 21 project-refuses are the project's own screens on records the reply leaves unknown. Project stands.",
-   "subject_key": "d5bc9c480e493543f8d6a4ae47f0d7e7060c6858a25df635df1505cfff9a51b8"
+   "ruling": "Ruling: representation; the reply's three conditions (line 18 election, a separate return whose spouse itemizes, itemized total over the standard deduction; tie to the standard deduction) are the project's (i1040gi p. 33, Line 12e; p. 34, Exception 2; f1040sa line 18). The reply reads sa.spouse_itemizes outside the separate-return gate and reaches each Schedule A amount directly. Triage 8d1c7332dffb: 3,228/4,083 agree with no value difference: 702 candidate-unknown (inputs such as sa.gambling_losses and sa.home_other that the interview did not ask), 115 candidate-refuses and 22 project-refuses (a refusal reached on one side only, on refused or incomplete returns), 16 project-unknown (sa.excluded_income unanswered on incomplete returns).",
+   "subject_key": "f3db38485edc4ff9325f87ac9bd4a3a3d4d5bf2423f65c7c9cf659274ddeb8bc"
   },
   {
    "key": "sa.deduction",
-   "record": "7fa54d079c0df7c0412fd0ec6bffd8591d38c8fc3799e53adc1c7ca577acbab5",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent on every compared value; same reading as sa.itemizes (f1040 line 12e; i1040sca, Line 18). Triage executable-triage-v2 (pass a9e1a8c8fc0e): 3,263 of 3,757 agree and no value differs; 464 candidate-unknown (sa.gambling_losses read without winnings, s3.mcc without interest, e.g. classm.f2441.1.deepseek, project $23,625.00), 11 candidate-refuses (refusals the project places elsewhere: s3.mcc_if_interest, s3.repaid_income, f8889 and asset screens), 19 project-refuses (the project's screens). Project stands.",
-   "subject_key": "d4d04411005996475ec19a2668f1546066e7aae24e5cbcac9be77663ba2ae36d"
+   "ruling": "Ruling: representation; the deduction for Form 1040 line 12e is Schedule A line 17 when itemizing and the standard deduction (including the dependents worksheet) otherwise in both (i1040gi p. 33, Line 12e). Triage 8d1c7332dffb: 3,201/4,083 agree with no value difference: 728 candidate-unknown, 116 candidate-refuses, 22 project-refuses, 16 project-unknown, from the same unasked inputs and one-sided refusals as sa.itemizes. Separately, the worksheet's earned income omits Schedule 1 line 8u (BUG-0767, ruled on line 2 (sa.dep_line2)); no return in triage exercises it.",
+   "subject_key": "4d2be937fc176225547b94b5d820cfa47acc3cea057bf7b3e9dbe92a9da67bb6"
+  },
+  {
+   "key": "sa.mfs_spouse_itemizes",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the project's choose (mfs -> sa.spouse_itemizes, else sa.no false) is the reply's all(status = mfs, spouse_itemizes) (i1040gi p. 34, Exception 2). Triage 8d1c7332dffb: 4,082/4,083 agree; the one difference is project-unknown on a refused return that never answers f1040.status.",
+   "subject_key": "1039044d7da9f2d998558ab9db499d2f54dc1ba3f2c4ce4d41a61d712e5ff219"
   },
   {
    "key": "1",
@@ -84,16 +91,16 @@
    "subject_key": "144a8802f8f3677b5591e4e6efd244366ae0a09b559e20a2816bde1aaed0bca8"
   },
   {
-   "key": "2",
-   "record": "df1e8eb5b36b5cd459a5275254aff4535d5fbd710d888ac8f204b2f6fce59b2d",
+   "key": "2 (sa.line2)",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "AGREE",
-   "subject_key": "493c3931b5456988459df87ee86edb60a5f57f5bb740c6b3c85cf2e50cc4ea44"
+   "subject_key": "84a2ae2f44671d6d281239ddb83d230ad89444ee43c0666b6823d72d125f4d77"
   },
   {
-   "key": "3",
-   "record": "df1e8eb5b36b5cd459a5275254aff4535d5fbd710d888ac8f204b2f6fce59b2d",
+   "key": "3 (sa.line3)",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "AGREE",
-   "subject_key": "93e76ac9966891656a27dad6bb7b79ccc17c7c9a297a5862789acb11a3802c3b"
+   "subject_key": "94ca669d333eed32dd456d9150fbb4a6175321fa24cceed7fb3039640d367505"
   },
   {
    "key": "4",
@@ -115,40 +122,40 @@
   },
   {
    "key": "6",
-   "record": "c836e31e8ca6d6848058032870ec77585cc7d5d09d8f8ac856be5f985b0bb3d8",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "AGREE",
-   "subject_key": "87cd8d6a9e5f0db934e6a6a9751851e3603728d8184da226717c557211483efa"
+   "subject_key": "2df54ce63c956b7b8d3d6bc6378f5d68eef855f11884e419b9d7e5b1c0465511"
   },
   {
    "key": "8b",
-   "record": "c836e31e8ca6d6848058032870ec77585cc7d5d09d8f8ac856be5f985b0bb3d8",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "AGREE",
-   "subject_key": "d8fac2d69ffc584265ae21275416e6a1bdede08e78d4132068ad70c69e70c08d"
+   "subject_key": "62b3c53701b6319b75ff88233c4a1e577c2d0fb20c15bdbc9a80bd01898542b9"
   },
   {
    "key": "8c",
-   "record": "c836e31e8ca6d6848058032870ec77585cc7d5d09d8f8ac856be5f985b0bb3d8",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "AGREE",
-   "subject_key": "add8969157c6a95cb16ee0bb9fef17b5a2e5e5ee8c823009e6f21c955bc34283"
+   "subject_key": "6a941e1ebb70d4bca30f9cd87e067d23f400279d587c741eecdef545e49a0c93"
   },
   {
    "key": "13",
-   "record": "c836e31e8ca6d6848058032870ec77585cc7d5d09d8f8ac856be5f985b0bb3d8",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "AGREE",
-   "subject_key": "08702fe4a6fd23e8b50705b4e2468be8dc92dd22b20df0dd21e7a7e83affc579"
+   "subject_key": "d93a55ab5a9d4f3be9c3e341af65b0c30997db1eeed5880a7646e7953c77296d"
   },
   {
    "key": "15",
-   "record": "c836e31e8ca6d6848058032870ec77585cc7d5d09d8f8ac856be5f985b0bb3d8",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "AGREE",
-   "subject_key": "3775cd5216ab22de9283ee3252867ac5d95468d07e635a0b5a37a13183d6e843"
+   "subject_key": "e7efb36b0d46b243b54fa798293647622c4fbe06a784d185153d9b2f5ec28bf6"
   },
   {
    "key": "16",
-   "record": "7fa54d079c0df7c0412fd0ec6bffd8591d38c8fc3799e53adc1c7ca577acbab5",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "DISAGREE",
-   "ruling": "Ruling: representation; equivalent: i1040sca p. 11, Line 16, gambling losses 'but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b'. The reply's smaller_of(sa.gambling_losses, s1.line8b) is the project's value when winnings are above $0; with no winnings line 8b is $0 and both give $0, but the reply reads sa.gambling_losses, which the interview asks only after a gambling-winnings Yes. Triage executable-triage-v2 (pass a9e1a8c8fc0e): 2,738 of 3,757 agree and no value differs; 793 candidate-unknown (sa.gambling_losses not asked, e.g. classm.f2441.1.deepseek), 1 candidate-refuses (redesign.credits.refuse.repaid_income: refused at s3.repaid_income in both), 68 project-refuses and 157 project-unknown (the project's Schedule A screens sa.unsupported, sa.excluded_income, sa.charity_limited_if_gifts, and records withholding them). The other line 16 items the note names are refused through sa.unsupported, sd.casualty and s3.repaid_income (ruled on the render log). Project stands.",
-   "subject_key": "377ef1a2484e5d74c5cafcc232359e4d395172d6af38d83308eb8f79f4744266"
+   "ruling": "Ruling: representation; both limit gambling losses to gambling winnings (i1040sca p. 11, Other Itemized Deductions, \"Gambling losses ... but only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b\"); the project asks the losses only beneath its winnings question, the reply reads sa.gambling_losses and s1.line8b directly and declares refusals for the other listed items, which the project refuses through sa.unsupported. Triage 8d1c7332dffb: 3,033/4,083 agree with no value difference: 836 candidate-unknown (sa.gambling_losses unasked), 136 project-unknown, 64 project-refuses, 14 candidate-refuses.",
+   "subject_key": "bdfb9d3e4f154cc3811f8e2e988fa638d46284ffea33090228702ebd87710a5a"
   },
   {
    "key": "7",
@@ -176,9 +183,9 @@
   },
   {
    "key": "12",
-   "record": "c836e31e8ca6d6848058032870ec77585cc7d5d09d8f8ac856be5f985b0bb3d8",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "AGREE",
-   "subject_key": "bc0a883ec0aa929b379cf5dedd6a6482580d66617d0da5561f5ec7ca5ad8b608"
+   "subject_key": "6dda122d8823dfc05f36354fa41993ecf902ac51b9d2c9cca36b6ee2ed0065b6"
   },
   {
    "key": "14",
@@ -188,64 +195,113 @@
   },
   {
    "key": "17",
-   "record": "c836e31e8ca6d6848058032870ec77585cc7d5d09d8f8ac856be5f985b0bb3d8",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
    "status": "AGREE",
-   "subject_key": "948875a26fd7337870c08b57e9001eaccd518f355d1c23e6c5204381f95dc057"
+   "subject_key": "4b444aa3e7742db1c4d116199237da935ce63543ab56b722bf34cb01287c6e0d"
+  },
+  {
+   "key": "2 (sa.dep_line2)",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
+   "status": "DISAGREE",
+   "ruling": "Ruling: finding; medium; the reply adds Schedule 1 line 8u to earned income and the project does not. i1040gi p. 35, Standard Deduction Worksheet for Dependents, footnote: \"Generally, your earned income is the total of the amount(s) you reported on Form 1040 or 1040-SR, line 1z, and Schedule 1, lines 3, 6, 8r, 8t, and 8u minus the amount, if any, on Schedule 1, line 15.\" amb.2025.sa_dep_earned left 8u out because it was refused upstream; lane x2-s1o now computes s1.line8u, so a dependent filer with inmate wages gets too small a line 2. The reply's 'more than $900' branch equals the project's larger_of(earned + $450, $1,350) (amb.2025.sa_dep_earned). Triage 8d1c7332dffb shows no value difference (no dependent filer with line 8u in fixtures or generated returns): 3,521 candidate-hides-shown (the reply shows the worksheet only when sa.dependent), 309 project-refuses, 136 project-unknown, 36 candidate-unknown. (BUG-0767)",
+   "subject_key": "608a593792c4ab8e6e14da619feaa5ba46d9ee486bd73714ec3e6e7a7b05ec69"
+  },
+  {
+   "key": "3 (sa.dep_line3)",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; same value (sa.standard_base, the line 3 amounts by filing status; i1040gi p. 35, worksheet line 3). The reply shows the line only when sa.dependent; the project figures the worksheet on every return and reads it (sa.standard) only for a filer someone can claim. Triage 8d1c7332dffb: 65/4,083 agree with no value difference: 3,959 candidate-hides-shown, 57 candidate-unknown, 2 project-unknown (status not supplied).",
+   "subject_key": "e1fac5c20cd738b76fff60bdf41d880111e5cb05114f55635af9beeb0e9521fa"
+  },
+  {
+   "key": "4a",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; smaller of lines 2 and 3 in both (i1040gi p. 35, worksheet line 4a); the reply only shows it when sa.dependent, the project figures it always and reads it only for a dependent filer. Triage 8d1c7332dffb: no value difference (3,521 candidate-hides-shown, 309 project-refuses, 136 project-unknown, 36 candidate-unknown). Line 2's earned income omission is ruled on line 2 (BUG-0767).",
+   "subject_key": "1bf5b2f076012b958bd4060a88c953839750e6f84e52a5d56a5da920435e9507"
+  },
+  {
+   "key": "4b",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; the age 65 and blindness boxes times $2,000 (single, head of household) or $1,600 counted over the people on the return in both (i1040gi p. 35, worksheet line 4b; p. 33, Line 12d); the reply splits the count by role and shows the line only when sa.dependent. Triage 8d1c7332dffb: 3,845/4,083 agree with no value difference: 173 candidate-hides-shown, 49 project-unknown (person.blind unanswered on incomplete or refused returns), 16 candidate-unknown.",
+   "subject_key": "f175b095353eeb90a944f8a4dd1c7b36ead8e88ae6e3720f93f9528ad3cb7909"
+  },
+  {
+   "key": "4c",
+   "record": "293ed9d62a1cee14617a3740308cb5686169dfc7e43ad4ec3bbfdcc1a1b83c65",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; lines 4a plus 4b in both (i1040gi p. 35, worksheet line 4c); the reply shows it only when sa.dependent and at least one box. Triage 8d1c7332dffb: 53/4,083 agree with no value difference: 3,526 candidate-hides-shown, 311 project-refuses, 180 project-unknown, 13 candidate-unknown.",
+   "subject_key": "62b0f26bebe5b8562d4f4ab5ca43a9abfd05151ed4afe61d772c5757f1218219"
   }
  ],
  "subjects": {
   "sa.age65": "768f14dd86250bfb0df776167739722ee3b518315715c3b6282afb7074c8541b",
   "sa.agi": "7ac40a0d224f103b5668b2d9b355ac1ecb9b68c3d5235bd8ae09b20888315bc8",
   "sa.home_asked": "eb6a1053925958f7475e0ff4f85f3756be7cc44d809aac2158af603028439c1e",
-  "sa.itemizes": "9cf7d1c7ef74b205910070529604d92699a437c1a01c027f548da574b38ca58b",
-  "sa.deduction": "9362bbee6fe2f9e4cc5e9e45126ac90599ff6cc2d129bf67c06fc83ac466a5c9",
+  "sa.itemizes": "9cacc4822331cd8634b93293f7663534ce5e36eab56b4723b181552ef7c4cccd",
+  "sa.deduction": "2034f42e21efe1a53f511925d4dfc1e8fd20d7a2213daea2337e08876ffa4927",
+  "sa.mfs_spouse_itemizes": "5e58e8e56fc8bba413fa4722e1b031f8b6aff3a5a260b525f12c39e36f1b8a43",
   "1": "6af4a0f0e37ef756da7453af49644fc4ea76d27b82b283dd0b349bf5a1b68152",
   "5a": "6af90a76e5d7e457dd7adea0bb919b9806a921f2d8b531105636f3c9b4e0e0fd",
   "5b": "ef1d0e093770f8d89583f0a9c95a7d4eff01e7880774e723fc8cfbcba22b7b5d",
   "5c": "299d30680db43a236a6ad8191c87fc4cbb3bdbbc79a0c49fcf7c138a03014016",
   "8a": "125b7869c745d46a5427c1827ae80b8eb3c67673a5645cb0a5a43c65bfb4b174",
   "11": "90734fde7c3df1aad2dc85e2fe5a0a16b046db47ce03150e2146502ca4f9fdc5",
-  "2": "6ed9e8826b6917afade8428ad8ba0ef06fdbb723500482b53bce904f69e95014",
-  "3": "4606a9bdca74892e9959452bafe144fe3a9c24d25b48c83ee961469221a4b4c3",
+  "2 (sa.line2)": "6ed9e8826b6917afade8428ad8ba0ef06fdbb723500482b53bce904f69e95014",
+  "3 (sa.line3)": "4606a9bdca74892e9959452bafe144fe3a9c24d25b48c83ee961469221a4b4c3",
   "4": "e9b7517b9f7833c2e462420a42ca3c19aa8262a2a117a7c5f5e37d329a145988",
   "5d": "c34cedc9a41efb5b3c441383a78fb012ce878fc05348c560ac921b0484f591ce",
   "5e": "0762d68e00b9d72f8d0f0038205ed4ce3626ba29164c5743fb3d673cc4d286ef",
-  "6": "3824c86c2dc39b43fea193999186d9fc54965f75585d4cb8da62272a10af8324",
-  "8b": "80e9006511dd0150495c5ada5e1d289c6eb5ebf767e6a77d58b25b7015c034e8",
-  "8c": "6d3f3c3bc95851030967e037125e0b35e71d2ede79ee279f137c9a82c7933bf1",
-  "13": "9c3d1b17c46efabac26af82b3dddddb2dffbc875626203ab6d094beab2445ff3",
-  "15": "85951ee860b508458301a79a32994b84044790f6a41956ef08ed831ec3b5d26e",
-  "16": "9421cd2aa8750eba36b006009d9674c1d8227b4ab0db8081fed5997b223107d1",
+  "6": "6da89dfabc718de36c5a705a023a2da7da0587a819eacc40702d43f5d03dd1dd",
+  "8b": "c5a5db7ab1ea1ddf9b8c8b5ff378c659f03a25a80df06d150b1cb4dd49245d3c",
+  "8c": "2a81627ea22c955e2ba4de32af7dc202a3872df872a64feb26fd78611a50b3c3",
+  "13": "5261def6449fe3f60834099b2d139f48bd0df23e7d6e6f76f826680274427f20",
+  "15": "f4339d80d53213c7a08105e37b3b48b7ec5e21bc6eb18e97b356ec46a3c024a0",
+  "16": "632840af41f06cb13a43e41026420aad5860fdd15aba59095f74a0b80516b8ac",
   "7": "f01dc441865ba4d227e6810328f38376b883f341b25679842cfe8a31fbf9aee0",
   "8e": "071a09a146b961bd36890e32be2ec4297f5915da1cc043f46279a262029f7cd9",
   "9": "6afefd4a342b5f5749c93d7aab8c5b7494cd95445e619cb164a79b29df97b69b",
   "10": "320b71964696452137d0967c5995c1f6bc29fe3f800b4d8feff670ecdcf79f8a",
-  "12": "236b0ace094cb4a7a4313e989aa49b3a8fd49e14e24eec75169b4b2f5d24c0f4",
+  "12": "a233bc997a8bf07b43c69b9478c967c9a118d21515a84f1b07afa2af7e2f0547",
   "14": "d6f3486eacb02f6ccf83c804d55d314bc5451cf021becb040590566561e4e551",
-  "17": "0b3319621d836e4bd64a78468079d973664ef2538196f3fe7ef9107e8a3fc1b1"
+  "17": "ff85221798e52ac0ea2d4d31a0d8d91bcccae2d16d016958fbc582092a398920",
+  "2 (sa.dep_line2)": "bcc19a6fd6a8a047266ead83965e647215b0d9d5c655a688cc38af8efed2c395",
+  "3 (sa.dep_line3)": "e231aed3dd3366b2e5ca372df0b4b0ce9bb1befd6411797624115f67310a6f86",
+  "4a": "4db16a947eb5d5a857e3da8d52e4312c17f99c3c30e538779a0a00f3f6eb4798",
+  "4b": "11a5c6e333e54e87d00ad2ba4f661a27d979b613741701eb4eaab78878dadd4b",
+  "4c": "31475adbb32b46de2f1dc2fa5a7ca64cc06af72da0735794467249cacc9553a8"
  },
  "__rest__": "4ab44412ed063c2bc602f385d7b58b759dbf415cd3a4e78f694db4b2cde08b0a",
  "foreign": {
   "sa.home_asked": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "sa.itemizes": "9968d84f10dffe3128b9d95850464a95edf67471477002365d0359afe44fb508",
   "sa.deduction": "9968d84f10dffe3128b9d95850464a95edf67471477002365d0359afe44fb508",
+  "sa.mfs_spouse_itemizes": "9dd1ec1bd082157ef6a4a29c8730c41da35d3de158f69a8a51d1ee491c6115b0",
   "1": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "5a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "5b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "5c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "8a": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
   "11": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "2 (sa.line2)": "60899b90086c206d40f636d0d43f3b72be9eca0c87058ced6baca5390a522f79",
+  "3 (sa.line3)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "4": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "5d": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "6": "db67e768ac70681df069f9f448b3cd4954f601e87dabf56fa2d5ab61004c4183",
-  "8b": "db67e768ac70681df069f9f448b3cd4954f601e87dabf56fa2d5ab61004c4183",
-  "8c": "db67e768ac70681df069f9f448b3cd4954f601e87dabf56fa2d5ab61004c4183",
-  "13": "db67e768ac70681df069f9f448b3cd4954f601e87dabf56fa2d5ab61004c4183",
-  "15": "db67e768ac70681df069f9f448b3cd4954f601e87dabf56fa2d5ab61004c4183",
-  "16": "eae09584e3d724e681329dc2a28a1332cbc576ccb1131e41c66ca009644ee204",
+  "6": "92b781f7cbbc4c4ed1b715584705a36f1b9f7a515fe3b8f4a7b49fee0718a5d2",
+  "8b": "92b781f7cbbc4c4ed1b715584705a36f1b9f7a515fe3b8f4a7b49fee0718a5d2",
+  "8c": "92b781f7cbbc4c4ed1b715584705a36f1b9f7a515fe3b8f4a7b49fee0718a5d2",
+  "13": "92b781f7cbbc4c4ed1b715584705a36f1b9f7a515fe3b8f4a7b49fee0718a5d2",
+  "15": "92b781f7cbbc4c4ed1b715584705a36f1b9f7a515fe3b8f4a7b49fee0718a5d2",
+  "16": "4fda72d29638ee07350c4a4f7adbdb92eaacf0d8a0d5694ed91aab41a0ade68b",
   "8e": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "12": "dc4d34ad06829e62990ea798b77f72f60f1d5ed6e39997ed8344980828d8d144",
+  "12": "2f423d7bedda125ce967673be39091c29705d42a3e0849076ed3886ff3f09b01",
   "14": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "17": "a238a0d1d409f0ef722be6669c05a8dbdd8298a66a5bc620967a5666bce386f3"
+  "17": "1ead79f21f7d85a1bdcbd0aae582e8ea50939c3d7f8ea5e885d045c906b80984",
+  "2 (sa.dep_line2)": "d065e94849c3743c816f88a51f9eb834956c7d1fc73e47674d6dc15d9fb08b49",
+  "3 (sa.dep_line3)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "4a": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "4b": "ea6075c36798f069a3673cafc63b8190194c899770ae9ca871764f232d1116da",
+  "4c": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
  }
 }

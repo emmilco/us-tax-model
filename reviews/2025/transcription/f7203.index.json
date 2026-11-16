@@ -1,0 +1,376 @@
+{
+ "kind": "transcription",
+ "form": "f7203",
+ "family": "claude",
+ "base": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+ "lines": [
+  {
+   "key": "f7203.one",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "6c8cfd537ada791ab3b5f413159cb9abb190949496a40cb43d5fcc3ccd76e640"
+  },
+  {
+   "key": "3a",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "158d10e7de205afc6b4bf64746a318e232fb1e0109250e2aec58bd7ad43629c9"
+  },
+  {
+   "key": "3b",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "e5e4dffb0e902ce0ede1f6d63ff7a7caf35bbbc542d005270d72028e23135dcc"
+  },
+  {
+   "key": "3c",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "a6640fc4a6c1230edfca31fb2c30be15b589240236f035bf3b431e2586aaf860"
+  },
+  {
+   "key": "3d",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "417a984ae7c994ca9731d4d30bb01d4eab814af943899c01e7009300a846d74b"
+  },
+  {
+   "key": "3e",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "a203249300ec061d317c1034f3a8d03b4e0f4a9ab562f2c3be3d03bc9b981a53"
+  },
+  {
+   "key": "3f",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "db876f85a3a0f1312b1632f943afd25e4bebb60dbe386c9efd7b6f8f273e9497"
+  },
+  {
+   "key": "3g",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "c3bc2175fb19ef949696425c1d78c127749e579687e2c41ac9f99923efcee754"
+  },
+  {
+   "key": "3h",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "eeb9bcac6e58c3b9e07e93de046d5c426fd622597a013a819c8ad8c38bd24058"
+  },
+  {
+   "key": "3i",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "da872411637a52d00f8832f47cf13e4e49c729239de6499820f59009dc60c860"
+  },
+  {
+   "key": "3j",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "071a78cb100f7af1f1ac02ee188cae02451cbbee53ab5cbadc26842e7a0dd406"
+  },
+  {
+   "key": "3k",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "d3e6422feb23eff2dbdfe035c56bccdee76f1415fc603608d51ab572b00b30d6"
+  },
+  {
+   "key": "3l",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "7d3da159e74347f7bb0a7a853c46e50efc40511e84213d974857d563b14ba3db"
+  },
+  {
+   "key": "3m",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "d0c979115b31b6070e8877f67e3188e3d25c2edd1b5f3376fc7bd4ad44be56cd"
+  },
+  {
+   "key": "4",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "6ad968c19ba6d47ea92fc77afdb686e760096997e53a28da83de12afbbde3752"
+  },
+  {
+   "key": "5",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 18/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 1 candidate-refuses, 6 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "d40256c1f45e24d5e092955972005e8a20e405c505bcbef04c34d6b0d1b8fc53"
+  },
+  {
+   "key": "6",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "98ca8e27e1747d9ea2fd40e46164f91a4866282cbd081ce2b03a9b765d933122"
+  },
+  {
+   "key": "7",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "c9c4d8285fbf8fa99a5ae5984cb494ec33a44d646d9982861ceaaaec5a4c858d"
+  },
+  {
+   "key": "8a",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 11/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 12 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "4968f4ad35e9f62bb21c7e0f17afe59f9acc59fd3aba69cac3668417c665754d"
+  },
+  {
+   "key": "8b",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 11/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 12 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "4bc23cf371c4d4c44b5c166999ee387d977931fb2991261dc1bb965111cb8a1c"
+  },
+  {
+   "key": "8c",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 11/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 12 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "224b17c333c1c42c4d7fc8c816dffda7912b170ee5ffc21bc0429b6ac876b62d"
+  },
+  {
+   "key": "9",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 11/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 12 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "e98caa9473e22c7e11a59efd883286864c1bf11dc491dac4d2bcb22fa3e9380b"
+  },
+  {
+   "key": "10",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "00d5bc23cdf3fc3fe47eff50177796ae1ead0e22816a90822ee3b51ffe98947d"
+  },
+  {
+   "key": "35 (a)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "db84da99bad9abfeaa74b2f5e8df677a9f5cb4c7fff9a1ca98352d4720615ab4"
+  },
+  {
+   "key": "36 (a)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "a06680cd82fccfb4358bf5bb630877ca99373fae89550fd9abba20c3043fcee3"
+  },
+  {
+   "key": "37 (a)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "4e19e3b424de95eed99d84ee2224ccaf7b4e1532e20867974831cb68606926ba"
+  },
+  {
+   "key": "38 (a)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "a87419a9dbcf0852fdc8a4f104d41f1096fbd91f4fa7899220665d465ec51a52"
+  },
+  {
+   "key": "47 (a)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "4a5637a1d188c9f6d389bc2f5ba9260bbc15520768f636b28ef308b71cfe8666"
+  },
+  {
+   "key": "35 (c)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; 12/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "29f6044806bc76fbf83b9ab617f36e51638957e5331140ec6a81d75e2668c4e9"
+  },
+  {
+   "key": "36 (c)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "5448b15c7791fb50bba28681bb1fc192f9ddb4d2ad7d0bd72f818bb606e454ad"
+  },
+  {
+   "key": "37 (c)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "2100abf745ec932c25e45f3279768b7ef1354b8536e5b97fa1ce6d13f54b7c08"
+  },
+  {
+   "key": "38 (c)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "7263ea1be48530d8a842069467214b6c380f846611d00780909e315028d7f3c9"
+  },
+  {
+   "key": "47 (c)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; 12/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "57d34c19e3d1844096e9144b8969af0c4eacfb1b98c298737a24c205b9a2bef4"
+  },
+  {
+   "key": "11",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; 14/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 8 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "f41940a93231b4f96d3238adb3c03b11339904aac096f81a8c2ffdf71f2ac305"
+  },
+  {
+   "key": "12",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 9/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 14 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "19c61276f9edb28d810a9fe43125ee44ffbdb4b5f4b67f53352926b5b040c2f9"
+  },
+  {
+   "key": "13",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 11/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 12 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "31d2d6b06dd1c11a3ce625014eae5b9d4246c339678702fc7b653920f3d5957c"
+  },
+  {
+   "key": "14",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; 12/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "f9a870df8220c1fa180c6e4582a831863d4bfe1cf349f41f84efe3be2ab04dbc"
+  },
+  {
+   "key": "15",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "AGREE",
+   "subject_key": "df84473d8932fe9c2d422ed70b18299e90ea76d07f01896d189c1631698ecfef"
+  },
+  {
+   "key": "35 (e)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; 10/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 3 candidate-refuses, 11 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "96a4eaad89298fb0c281619cd08f833fd0afd1d380f7babe51d89e124357400e"
+  },
+  {
+   "key": "36 (e)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "b0fd6811a88fdbc1db9b6e3e02ed1c835496a7c7d4f4ecc3f9c9034a6bbeebc2"
+  },
+  {
+   "key": "37 (e)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "d1f1ba73a990ceef6324ed458ec5026d0212e3e68067056b634f5cf0eba2946d"
+  },
+  {
+   "key": "38 (e)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: representation; 13/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 10 candidate-unknown; no value differs. candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "8445849b3919ee60d3ca80ac5054b7b2abbf0cde5e243257ba22122004fadcbb"
+  },
+  {
+   "key": "47 (e)",
+   "record": "fca9ba7de67c1348edcafe9215c06a98f35f169aea6493903b35f79350459c5a",
+   "status": "DISAGREE",
+   "ruling": "Ruling: ambiguity; 9/25 agree on executable triage (f7203.json; only k1s fixtures reach a Form 7203); differs: 2 candidate-refuses, 13 candidate-unknown, 1 value. The one value difference, fixture k1s.loss_over_basis_ratio_rounding (stock basis $10,000 against losses of $30,000), is a cent of rounding: the reply keeps the ratio 10,000/30,000 exact, the project rounds it to six places and caps line 11 at line 10, the reading chosen in amb.2025.f7203_prorata_places; the source asks only for 'the pro rata amount' and does not say how to round. Otherwise: candidate-refuses: the reply refuses at the Form 7203 line on fixtures the project refuses on k1s.ok (k1s.refuse_box15, refuse_dist_over_basis, refuse_loans), so both refuse the return; candidate-unknown: the reply asks line 1 (beginning stock basis) or another answer on K-1s for which the project figures no Form 7203 (no loss and no distribution, i7203 p. 1 'Form 7203 is filed by S corporation shareholders who: Are claiming a deduction for their share of an aggregate loss ... Received a non-dividend distribution').",
+   "subject_key": "3f95df8ca1c7dd718c3465d1f42b0b7d0e285fdd26477d992c0f210a1186a3f4"
+  }
+ ],
+ "subjects": {
+  "f7203.one": "9bd8e52993ec274f0b80c18a8ef8b787d2d9147eed3a39ef74506cf60a0e1b61",
+  "3a": "fc8c9a6f277bff048cfb84a75d99dbb0003399dfaab1b6fcbc3e84237820b434",
+  "3b": "e8adeacd25240a7b09637de9d6d23a93e8c3e1a5435edc5053342030070e05e7",
+  "3c": "50face15efa0440469832e81732a4468f73385756dd456d5162c9c47ddb92581",
+  "3d": "6593c4f9193db7861bd98c8904126f25f8d46b2fb94191b818fbc6306358912d",
+  "3e": "104825f3d492759c771ce3cc2256aea003142f5c8487e4ad2fc35e73f830e95d",
+  "3f": "f855222a8b32c0f58f72349fa9a485a0a9b41c62cb78521f7fd9ac269ce8bb16",
+  "3g": "c1c999cc032873b9a13458a0a2be81c9caca246454fdde207e89aa11b32dff10",
+  "3h": "c2f85fbf06b8fb633e8b2acde615c56caa68f4d4c19827c4763161d0987179ca",
+  "3i": "3bd52f6d6fc696ba6512b5e87dddc72d782f892263be0dce145e00d1060f25bc",
+  "3j": "a345cb49626b775c6a4085b7c926a7dd25565b5565cbf2695907e3d8d3d02dc0",
+  "3k": "dc0d464530efe52f3ad292821977573bbb0f9bd0b33842193190bff9a7161003",
+  "3l": "a53723d601f0667a1c6cc8ad5f5bd1fe935eaecffa2aca1d58d5e20f86a71399",
+  "3m": "48c2b68356d25473002cf672a3b9da52825fc4a4d4203eb0463bc8f270656d74",
+  "4": "94d09d3d33bb2b2c11ec1f5ead202c1d2b42848ec4a90671de70ab0e37b1b2c1",
+  "5": "7a82da26d7835ae8c7743364f39e3278d10c147504b1fc3c0e78dd97a6827676",
+  "6": "34d4dfe6bc84a5f4caea5d6d997e27a348a59d54404b4b5465938e4f1bb7771c",
+  "7": "e5821bd39505d32185b6ffc79d97a0714407fc8637525f8ad23cd24a107cd564",
+  "8a": "982b0a46ec8b84fd2fdd63f88895db5a11084fbb6d82b6517b64462300f10d9e",
+  "8b": "aaf021c1e4c2922863b42b233e82e1e41e69ee580fbfd67dd34bb461d3c5b42e",
+  "8c": "22db8e6618a3725d439c1e9606b9e5973edf4d89a02dd22aae920fb357ea5713",
+  "9": "eb3b6f462898e16b18ff9fb94c21794b935f84803ccae2dfae4724544e9c19fb",
+  "10": "2a4917bf5173d946c796e205606029b168d25cc59efce61a5c4b56c4e4868e5e",
+  "35 (a)": "c6dade54e236d11efe69fe6e5bc5da56106574988712ea2e8ee93d56049419ec",
+  "36 (a)": "f6c1ce9664a1f55931b14bbfd7f798f713c00e1f36cdee1b30544280ac9bc6d2",
+  "37 (a)": "e21d56bd938b384519f433c32e9fe3eda54e966562706e63b4f5af51fe35b984",
+  "38 (a)": "d8d9d76eae8ff46512198cf61d097f81935007145e03417859f5f90739676eff",
+  "47 (a)": "6ea89c9cb7124e41e7fa92c7c76f4c665bf616b5ea6a57d5e115025f0a05476e",
+  "35 (c)": "86e73ba1c2be8a850e4194b32133d79cf6f45806266cb2276b4465a3945c6dc5",
+  "36 (c)": "2a9ec0b1c57c722603d4dfc2f71ad00f07ad50f744c96e695411d3dffbd2031a",
+  "37 (c)": "f15fe2dcb1f780384996aec4a9d9b5fd992d944b29d8a7fa850e7a4ad395b584",
+  "38 (c)": "e9c9887837938001da567c0c76b7731c212ed8b5437d54b4204fa140284f23ae",
+  "47 (c)": "2be2d097666dde7636ef0080cb92376c8f860ce9d752e50eb3a15ddc86b51a9f",
+  "11": "4095006f0b29a9239fb2bab272a4d869d8d915489700e1c3059d4adc603ee25b",
+  "12": "917d18be76f54e677e9ded575131162bdec993dfb3f6751ba062dfa92032a61a",
+  "13": "79d75ccc0afda6c2f6d81ab7a374bb8db8d32a0788bb26c9311234e6c39765b9",
+  "14": "95aa8ce5de286da50a47394bff3b03d0f5ab7a2c991c1e1d7a2ab8595d6c5ec8",
+  "15": "598b19e532084afa39ced61ccdc20b132a7b7f354c3061097b9bebffd72cd9a2",
+  "35 (e)": "91c5ef1e3e2202644ee93009763194282f2dc42d3324110654b5b1dfa580a009",
+  "36 (e)": "e3af41d32308c0998a79f543d717b2ae90529ae0a5a703c12b5818f5d685e238",
+  "37 (e)": "e8d9ccb17697f5d636affcd9954b58ce394736b470f083b47889a544a254f07c",
+  "38 (e)": "3d66836fb32861dc5370771f2ec980a6e9bd6152e725d02e4fcd2e98943b0504",
+  "47 (e)": "e983724607c62af70c909b37c91b9c27e553c26c948342255e87abf900213266"
+ },
+ "__rest__": "124746bf8e19d151bd08ac8ec6655681f10f443ac4d9daffe08e3c4668956b21",
+ "foreign": {
+  "f7203.one": "48e7c7676ddd24dc01c3273e87b67513731fed0bc1613c49d52750199a0d0f5a",
+  "3a": "14c8fe674fd339e0bc5a4c9369831e60bd968969792072086a1339c06ec835c0",
+  "3b": "47a75085a552a437ead4a513f5aaec95b68b4e59b28e11e72a1f7cf51e0b1bd5",
+  "3c": "8220334f75e83aff64845633232c36676b4e3cc89208f7853e190114b121a123",
+  "3d": "54aecd1d7800b625fe6b3f74e3a0418ae0b64c46806d9e61caf4c74cc567cea5",
+  "3e": "7d4ccda0bf343b336226199a94c381ebac994e7508d90a82da254577b6422493",
+  "3f": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "3g": "fe50733fa305257ba310f96435e3dc0fe8fb5141b81c76215f71463757866a30",
+  "3h": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "3i": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "3j": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "3k": "ab87303edf5c44fb15709a55239bd361647d1ef1d78201dc074dc1530b6f191b",
+  "3l": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "3m": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "4": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "5": "c5009a6662394ca5e9359fd8ac91ddab00cd48454e4710d5142fae3275aad5a1",
+  "6": "32e3aa0416246f5d20c2cd21e052e5ae5a68c75ca2ac96b335eccd054acb0b03",
+  "7": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "8a": "5872e84f85713d36ddc979e48e60afd674b7b755b16136bfae9c9da1469a3e94",
+  "8b": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "8c": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "9": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "10": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "35 (a)": "f0e084932bc28759f4b3562d163fdb91ae2f9f29dc6563c09cbe9d425d5c328e",
+  "36 (a)": "244c2f94938c2dfa1497b2fe23372f3518af70f7da836ce53b4f8c50a93dd18a",
+  "37 (a)": "5f5d4e1b167a9b608c9bb8da3004beb23c099790ca9f6093d9ff4d187d0dc6cd",
+  "38 (a)": "430a0ee54f0692b254f7fb7e4c0f8ab1d2009b4630993527aa4688c5b0b280d6",
+  "47 (a)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "35 (c)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "36 (c)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "37 (c)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "38 (c)": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "47 (c)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "11": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "12": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "13": "24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325",
+  "14": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "15": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "35 (e)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "36 (e)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "37 (e)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "38 (e)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "47 (e)": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ }
+}

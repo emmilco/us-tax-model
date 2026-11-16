@@ -1,0 +1,73 @@
+diff --git a/fixtures/2025/k1block.json b/fixtures/2025/k1block.json
+index f1149d7..012d774 100644
+--- a/fixtures/2025/k1block.json
++++ b/fixtures/2025/k1block.json
+@@ -183,6 +183,46 @@
+           "value": true
+         }
+       }
++    },
++    {
++      "id": "k1block.f8582_k1_income_breaks_exception",
++      "covers": [
++        "f8582"
++      ],
++      "evidence": "synthetic regression (not class B)",
++      "evidence_note": "K-1 readiness units (nightplan round 5, lane D1-k1block), predicted by hand before any run. k1int.p4_allowance's general partner (box 2 loss $12,000 with active participation) plus a limited partner's box 1 income $5,000 (passive, Part V): line 1b -12,000, line 2a 5,000; Part V income means the rental losses were not the only passive activity, so the filing exception fails (it held without the second K-1) and the form is required (a net loss is a deduction).",
++      "inputs": {
++        "scope.k1": true,
++        "$k1p@person[taxpayer]": [
++          "fund",
++          "lp"
++        ],
++        "person[taxpayer].k1p[fund].has_b2": true,
++        "person[taxpayer].k1p[fund].box2": -1200000,
++        "person[taxpayer].k1p[fund].general": true,
++        "person[taxpayer].k1p[fund].decisions": true,
++        "person[taxpayer].k1p[fund].tenth": true,
++        "person[taxpayer].k1p[lp].has_b1": true,
++        "person[taxpayer].k1p[lp].box1": 500000
++      },
++      "expect": {
++        "f8582.line1b": {
++          "kind": "money",
++          "cents": -1200000
++        },
++        "f8582.line2a_k1": {
++          "kind": "money",
++          "cents": 500000
++        },
++        "f8582.exception": {
++          "kind": "bool",
++          "value": false
++        },
++        "f8582.required": {
++          "kind": "bool",
++          "value": true
++        }
++      }
+     }
+   ]
+ }
+diff --git a/forms/2025/f8582.yaml b/forms/2025/f8582.yaml
+index 0d9930b..f9b1dc6 100644
+--- a/forms/2025/f8582.yaml
++++ b/forms/2025/f8582.yaml
+@@ -725,12 +725,16 @@ form:
+       locator: p. 13, Column (c), "Enter as a positive amount Part I, line 3, of Form 8582", "Subtract line B from line A"
+   - id: f8582.exception
+     printed: (gate)
+-    label: 'The filing exception holds: active participation only, no prior unallowed loss, total loss $25,000 or less, MAGI
++    label: 'The filing exception holds: active participation only (no K-1 passive income in Part V), no prior unallowed loss, total loss $25,000 or less, MAGI
+       $100,000 or less, and, if married filing separately, you lived apart from your spouse all year'
+     type: Bool
+     expr:
+       op: test
+       all:
++      - op: test
++        le:
++        - f8582.line2a_k1
++        - const: 0
+       - op: test
+         le:
+         - f8582.p5b

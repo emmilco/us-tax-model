@@ -1,0 +1,83 @@
+diff --git a/forms/2025/sa.yaml b/forms/2025/sa.yaml
+index 2c576d6..4b97f27 100644
+--- a/forms/2025/sa.yaml
++++ b/forms/2025/sa.yaml
+@@ -1231,14 +1231,15 @@ form:
+ 
+           Count only what you paid above the value of any benefit you received in return, and only gifts for which you keep a bank record or a written record from the charity (and, for a gift of $250 or more, the charity's written acknowledgment).
+ 
+-          Leave out: the part of a gift for which you received a state or local tax credit; political contributions; raffle, bingo or lottery tickets; tuition; dues to clubs, lodges or similar groups; payments for the right to buy college athletic tickets; gifts to individuals or to groups run for profit or to lobby; travel away from home with a significant element of personal pleasure; the value of your time; and amounts repaid to you.
++          Leave out: the part of a gift for which you received a state or local tax credit; political contributions; raffle, bingo or lottery tickets; tuition; dues to clubs, lodges or similar groups; payments for the right to buy college athletic tickets; gifts to individuals or to groups run for profit or to lobby; gifts to foreign organizations (a gift to a U.S. organization that transfers funds to a foreign charity is not left out); travel away from home with a significant element of personal pleasure; the value of your time; and amounts repaid to you.
+       cite:
+         doc: i1040sca
+         locator: 'p. 9, Amounts You Can Deduct, "Contributions can be in cash, property, or out-of-pocket expenses you paid to
+           do volunteer work", "14 cents a mile", "But don''t deduct any amounts that were repaid to you", Gifts from which you
+           benefit, "you can generally only deduct the amount that is more than the value of the benefit", Gifts of $250 or
+           more; p. 10, Amounts You Can''t Deduct, "Political contributions", "Cost of raffle, bingo, or lottery tickets",
+-          "Cost of tuition", "Value of your time or services"; Line 11, "Enter on line 11 the total value of gifts you made in
++          "Cost of tuition", "Value of your time or services", "Gifts to foreign organizations. However, you may be able to
++          deduct gifts to certain U.S. organizations that transfer funds to foreign charities"; Line 11, "Enter on line 11 the total value of gifts you made in
+           cash or by check (including out-of-pocket expenses)", Recordkeeping, "you must maintain as a record of the
+           contribution a bank record (such as a canceled check or credit card statement) or a written record from the
+           charity"'
+diff --git a/interview/2025/questions.yaml b/interview/2025/questions.yaml
+index 681ceac..5ae32e7 100644
+--- a/interview/2025/questions.yaml
++++ b/interview/2025/questions.yaml
+@@ -867,7 +867,8 @@ bank:
+   - input: $gift
+     order: 200
+     seq: 42
+-    help: Group similar things across all the charities you gave to. Leave the list empty if you gave only money.
++    help: Group similar things across all the charities you gave to. Leave out things given straight to a charity abroad.
++      Leave the list empty if you gave only money.
+     prompt: List the kinds of things, other than money, that you gave to charity in 2025, one entry per kind, for example “clothing”
+       or “shares of stock”.
+   - input: gift.deduction
+@@ -1364,10 +1365,10 @@ bank:
+   - input: sa.mortgage_other_use
+     order: 200
+     seq: 23
+-    help: A loan used only to buy or build the home, or a refinancing for no more than was still owed on such a loan, is a No.
+-      A return whose mortgage interest is limited is outside what this tool prepares; a Yes ends the interview here.
+-    prompt: Was any of the money borrowed against your home used for something other than buying, building or improving it,
+-      such as paying off other debts?
++    help: An improvement adds to the home's value, makes it last longer or adapts it to new uses; repairs such as repainting
++      are other uses. Refinancing for no more than was still owed is a No. A Yes ends the interview here.
++    prompt: Was any of the money borrowed against your home used for something other than buying, building or substantially
++      improving it, such as paying off other debts?
+   - input: sa.elect_itemize
+     order: 200
+     seq: 80
+@@ -1547,11 +1548,12 @@ bank:
+     seq: 3
+     group: paid_2025
+     tick: Paid other state or local income tax, or a state disability fund
+-    help: 'Count state tax taken out of a pension, unemployment pay or winnings; a state unemployment or workers'' compensation
+-      fund taken from pay (box 14 or 19 of a W-2: SDI, SUI, FLI); income tax of a U.S. territory; and a state tax credit for a
+-      gift to charity that you applied to your tax.'
+-    prompt: In 2025, did you (or, on a joint return, your spouse) pay state or local income tax in another way, such as estimated
+-      payments or a payment with a state return, or pay into a state disability or family leave fund?
++    help: 'Count tax taken out of a pension, IRA, unemployment pay, winnings, 1099-NEC or 1099-MISC; a state disability,
++      unemployment or family leave fund from pay (SDI, SUI, FLI); U.S. territory income tax; a state tax credit for a charity
++      gift, applied to your tax.'
++    prompt: In 2025, did you (or, on a joint return, your spouse) pay state or local income tax another way, such as estimated
++      payments made in 2025 (or a past refund applied to 2025) or with a state return, or pay into a state disability,
++      unemployment or family leave fund?
+   - input: sa.line5c
+     order: 200
+     seq: 32
+@@ -1595,9 +1597,10 @@ bank:
+     order: 200
+     seq: 41
+     help: For a payment that got you something back, such as a dinner, count only what you paid above its value. Leave out
+-      tuition, club dues, gifts to people, money paid back to you, and a gift's part that earned a state tax credit. Count
+-      only gifts you have a bank record or receipt for.
+-    prompt: 'How much money did you (or, on a joint return, your spouse) give to charity in 2025: cash, checks, card payments
++      tuition, club dues, gifts to people, money paid back to you, and a gift's part that earned a state tax credit. A U.S.
++      charity that sends money abroad counts; a charity abroad does not. Count only gifts you have a bank record or receipt
++      for.
++    prompt: 'How much money did you (or, on a joint return, your spouse) give to U.S. charities in 2025: cash, checks, card payments
+       and payroll deductions? Add what you spent out of pocket as a volunteer, such as mileage, parking and supplies. Leave
+       out political gifts and raffle tickets.'
+   - input: $sales

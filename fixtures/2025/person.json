@@ -1139,6 +1139,7 @@
           "s2"
         ],
         "sales[s1].box": "J",
+        "f1040.digital_assets": true,
         "$dependent": [
           "dep_a"
         ],
@@ -1868,6 +1869,220 @@
         "s1a.spouse_senior_count": {
           "kind": "count",
           "value": 0
+        }
+      }
+    },
+    {
+      "id": "mexist.person.earned_not_w2.mw_in_box1",
+      "covers": [
+        "person",
+        "f2441"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of stage9.eic.refuse.other_income: single, one W-2 with box 1 $4,000, all of it Medicaid waiver payments in box 1 not chosen as earned income; no other pay, no tips, no Form 8919 wages, no household wages, no self-employment. Form 2441 earned income is \"the amount shown on Form 1040 ... line 1z\" (i2441 p. 4, Line 4, item 1): line 1z is the $4,000 of line 1a (the exclusion is taken on Schedule 1 line 8s, not on line 1a), so line 4 is $4,000 and line 5 (not filing jointly: the amount from line 4) is $4,000. Lines 18 and 19 are figured the same way without line 1e (i2441 p. 5, Lines 18 and 19), $4,000 each. The Medicaid waiver amount not chosen as earned income for the EIC is not subtracted for Form 2441.",
+      "inputs": {
+        "scope.noncitizen": false,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": false,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.nonresident": false,
+        "scope.chapter11": false,
+        "scope.reservist_repaid": false,
+        "scope.adoption_benefits": false,
+        "scope.pay_no_w2": false,
+        "scope.medicaid_waiver": true,
+        "scope.care_benefits_other": false,
+        "scope.disaster_distribution": false,
+        "scope.excess_deferral": false,
+        "scope.passive": false,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].mw_box1": 400000
+      },
+      "expect": {
+        "f2441.line4": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f2441.line5": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f2441.line18": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f2441.line19": {
+          "kind": "money",
+          "cents": 400000
+        }
+      }
+    },
+    {
+      "id": "mexist.person.dc_earned.se_only",
+      "covers": [
+        "person",
+        "f2441"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of stage14.asset.hy_5yr: single, no wages, Schedule C gross receipts $50,000 and one $3,000 5-year asset (computer, 100% business) placed in service in 2025 under the half-year convention with no special allowance. Depreciation 20.00% (p946 Table A-1, year 1) = $600, net profit $49,400 = Schedule SE line 3. Line 4a $49,400 x 92.35% = $45,620.90 (whole dollars $45,621); SE tax $45,621 x 15.3% = $6,980.01 ($6,980); deductible half (Schedule 1 line 15) $3,490. Form 2441 earned income is Schedule SE line 3 minus the Schedule 1 line 15 deduction (i2441 p. 4, Line 4, item 2): $49,400 - $3,490 = $45,910 on line 4, and line 5 (not filing jointly) $45,910.",
+      "inputs": {
+        "$sc@person[taxpayer]": [
+          "desk"
+        ],
+        "person[taxpayer].sc[desk].line1": 5000000,
+        "$asset@person[taxpayer].sc[desk]": [
+          "pc"
+        ],
+        "person[taxpayer].sc[desk].asset[pc].class": "c00_12",
+        "person[taxpayer].sc[desk].asset[pc].placed": "y2025",
+        "person[taxpayer].sc[desk].asset[pc].cost": 300000,
+        "person[taxpayer].sc[desk].asset[pc].pct": 100,
+        "person[taxpayer].sc[desk].asset[pc].bonus_choice": "none"
+      },
+      "expect": {
+        "f2441.line4": {
+          "kind": "money",
+          "cents": 4591000
+        },
+        "f2441.line5": {
+          "kind": "money",
+          "cents": 4591000
+        }
+      }
+    },
+    {
+      "id": "mexist.person.f4137_line10.gov_tips",
+      "covers": [
+        "person",
+        "f8919",
+        "f4137"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of x2pay.f4137.w9_government: cash and charge tips $9,000 received, $4,000 reported, $300 under $20 a month, tips received as a government employee subject only to the 1.45% Medicare tax. Form 4137 line 10 for such tips is refused (f4137 p. 2, Line 10, \"If line 6 includes tips you received for work you did as a federal, state, or local government employee ...\"). Form 8919 line 8 adds Form 4137 line 10 to the social security wages and tips (f8919 p. 1, line 8), so it carries the same refusal; it is not line 6 ($4,700) of Form 4137.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2400000,
+        "person[taxpayer].w2[diner].box7": 400000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].f4137row[diner].col_c": 900000,
+        "person[taxpayer].f4137row[diner].col_d": 400000,
+        "person[taxpayer].f4137_under20": 30000,
+        "person[taxpayer].tips_gov": true
+      },
+      "expect": {
+        "person[taxpayer].f8919[form].line8": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].tips_gov_if_rows",
+          "form": "Form 4137, line 10, tips received as a government employee whose pay was subject only to the 1.45% Medicare tax",
+          "remedy": "The tips received for work as a federal, state or local government employee whose pay was subject only to the 1.45% Medicare tax are taken out of line 6 for the comparison with line 9 on line 10; this tool does not prepare Form 4137 with such tips.",
+          "cite": {
+            "doc": "f4137",
+            "locator": "p. 2, Line 10, \"If line 6 includes tips you received for work you did as a federal, state, or local government employee and your pay was subject only to the 1.45% Medicare tax\"",
+            "revision": "2025; created 2025-03-27 (the revision for tax year 2025, archived from irs-prior after irs.gov posted a later revision)",
+            "snapshot": "f2f7a8220e10c98e1aa0fee4bdb83a8ece8c2c97449208b2a8f9be0189bcb438",
+            "tax_year": 2025
+          }
+        }
+      }
+    },
+    {
+      "id": "mexist.person.f4137_filed.noncash_only",
+      "covers": [
+        "person",
+        "f4137"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of x2pay.f4137.noncash_only: W-2 wages $28,000 and $150 of noncash tips only (reported on Form 1040 line 1c), no cash or charge tips. Form 4137 is filed for unreported cash and charge tips (f4137 p. 1, \"Who must file: You must file Form 4137 if you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer\"; noncash tips are not reported on it), so Form 4137 is not prepared for this person (person.f4137_filed false), although line 1c is $150.",
+      "inputs": {
+        "$w2@person[taxpayer]": [
+          "diner"
+        ],
+        "person[taxpayer].w2[diner].box1": 2800000,
+        "person[taxpayer].w2[diner].box3": 2800000,
+        "person[taxpayer].w2[diner].box5": 2800000,
+        "scope.pay_no_w2": true,
+        "scope.tips_unreported": true,
+        "$f4137row@person[taxpayer]": [],
+        "person[taxpayer].tips_noncash": 15000
+      },
+      "expect": {
+        "person[taxpayer].f4137_filed": {
+          "kind": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "mexist.person.line1d.mw_1099_over",
+      "covers": [
+        "person",
+        "f1040"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of stage9.eic.refuse.other_income with Medicaid waiver payments of $1,000 not in W-2 box 1, of which the answer says $2,000 was reported on Form 1099-MISC or 1099-NEC. The Form 1099 amount is part of the payments not in box 1 (\"enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC\", i1040gi p. 24, Line 1d), so it cannot be more than them: line 1d refuses the inconsistent answer (refusal recorded from the evaluator).",
+      "inputs": {
+        "scope.noncitizen": false,
+        "scope.armed_forces": false,
+        "scope.unearned_2700": false,
+        "scope.religious_work": false,
+        "scope.artist_official": false,
+        "scope.foreign_shares": false,
+        "scope.business_before": false,
+        "scope.nonresident": false,
+        "scope.chapter11": false,
+        "scope.reservist_repaid": false,
+        "scope.adoption_benefits": false,
+        "scope.pay_no_w2": false,
+        "scope.medicaid_waiver": true,
+        "scope.care_benefits_other": false,
+        "scope.disaster_distribution": false,
+        "scope.excess_deferral": false,
+        "scope.passive": false,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 400000,
+        "person[taxpayer].w2[emp_a].box5": 400000,
+        "person[taxpayer].w2[emp_a].box6": 5800,
+        "s179.prior_form": null,
+        "s179.carryover": null,
+        "person[taxpayer].mw_box1": 400000,
+        "person[taxpayer].mw_not_box1": 100000,
+        "person[taxpayer].mw_1099": 200000,
+        "person[taxpayer].mw_business": false,
+        "person[taxpayer].mw_earned": false
+      },
+      "expect": {
+        "f1040.line1d": {
+          "kind": "refusal",
+          "gate": "person[taxpayer].mw_1099_over",
+          "form": "Medicaid waiver payments on Form 1099 more than the payments not in W-2 box 1",
+          "remedy": "The Medicaid pay reported on Form 1099-MISC or 1099-NEC is part of the pay not in box 1 of a W-2, so it cannot be more. Check the two amounts.",
+          "cite": {
+            "doc": "i1040gi",
+            "locator": "p. 24, Line 1d, \"If you do not have a separate trade or business of providing these services, enter on Form 1040, line 1d, your Medicaid waiver payments reported on Form 1099-MISC or Form 1099-NEC\"",
+            "revision": "2025; printed date 2026-02-25",
+            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
+            "tax_year": 2025
+          }
         }
       }
     }

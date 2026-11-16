@@ -4,15 +4,15 @@
  "family": "claude",
  "base": "e1a44a2536d3bae51af91657a5fda0a49f87f8e2b19343053288fc148bda4edd",
  "head_rows": {
-  "match / mismatch / unclear / missing": "13 / 1 / 0 / 0",
+  "match / mismatch / unclear / missing": "14 / 0 / 0 / 0",
   "line-scoped reviews": "3 (latest 2026-11-15); see Line-scoped reviews"
  },
  "lines": [
   {
    "key": "1",
-   "record": "b0bae8f3e755484076b3c5f3d471210669f72f1f452ba66af35a8c8156ee33b1",
+   "record": "ac1a70d952f63c6fbd2e59f5e2d3e2d6559c60c37090c2028da5de180b23b0c2",
    "status": "MATCH",
-   "subject_key": "86aec1aa81f07d2e75d2554bfadcd1165fa318e5fe3999cd45390a50c59a49be"
+   "subject_key": "0cc1883801790998477d92b7ae4bc26e64eae6447ae56e211daaf1dec96a2564"
   },
   {
    "key": "2",
@@ -22,9 +22,9 @@
   },
   {
    "key": "3",
-   "record": "e1a44a2536d3bae51af91657a5fda0a49f87f8e2b19343053288fc148bda4edd",
+   "record": "ac1a70d952f63c6fbd2e59f5e2d3e2d6559c60c37090c2028da5de180b23b0c2",
    "status": "MATCH",
-   "subject_key": "e2a76de977b9c8b38fc9ea353744dc101d2c11e4997ed87e579fdd48b6a6b901"
+   "subject_key": "e87c1cbab7a9b4be619697435c258f4658e4394b53b863118afb99d47df486d5"
   },
   {
    "key": "4",
@@ -34,9 +34,9 @@
   },
   {
    "key": "5a",
-   "record": "0d25dd6193b6e9a0d6467bbeb544dbf1ddbb77f81f5a529bc40cd59d2566896f",
+   "record": "ac1a70d952f63c6fbd2e59f5e2d3e2d6559c60c37090c2028da5de180b23b0c2",
    "status": "MATCH",
-   "subject_key": "3ad2925ea7b94463a8b7d87693df31920aeb72b69d82423396c685fb34154052"
+   "subject_key": "a028b80e5f04a671f9ac759a4cf222115d9fe1ad237828d860e71183ee1520d5"
   },
   {
    "key": "5b",
@@ -46,16 +46,15 @@
   },
   {
    "key": "7",
-   "record": "0d25dd6193b6e9a0d6467bbeb544dbf1ddbb77f81f5a529bc40cd59d2566896f",
-   "status": "MISMATCH",
-   "ruling": "Ruling: finding; the reviewer is right that no refusal on line 7 names Form 8978 (f1040s3 line 6l, \"Amount on Form 8978, line 14\"); the return is refused at Form 1040 line 16 through scope.other_line16 (scope.f8978_if_business_before), so no value is wrong, but the line's refusal list and note (\"each situation that gives one is refused here\") omit line 6l. BUG-0620 item 6 (closed by BUG-0733) did not cover it. (BUG-0761)",
-   "subject_key": "b419e9a0a9188cc2edea4fef15e6acd486d655b769b848730156a5692960fd5c"
+   "record": "ac1a70d952f63c6fbd2e59f5e2d3e2d6559c60c37090c2028da5de180b23b0c2",
+   "status": "MATCH",
+   "subject_key": "fb348ad8c98276f75973ea1c55ed92094748ac9a748cb80d9ef86b09dfeb4ff4"
   },
   {
    "key": "8",
-   "record": "0d25dd6193b6e9a0d6467bbeb544dbf1ddbb77f81f5a529bc40cd59d2566896f",
+   "record": "ac1a70d952f63c6fbd2e59f5e2d3e2d6559c60c37090c2028da5de180b23b0c2",
    "status": "MATCH",
-   "subject_key": "ad54c9410e9059fac71b4f79fa453bdb5980c4cd7eab9d6926a4cc39b2e5a60d"
+   "subject_key": "1386991bc8f2f04437a9d25b101094a8b09391a10b2fed9a8cdab3c5f8626dbf"
   },
   {
    "key": "9",
@@ -71,9 +70,9 @@
   },
   {
    "key": "11",
-   "record": "e1a44a2536d3bae51af91657a5fda0a49f87f8e2b19343053288fc148bda4edd",
+   "record": "ac1a70d952f63c6fbd2e59f5e2d3e2d6559c60c37090c2028da5de180b23b0c2",
    "status": "MATCH",
-   "subject_key": "f013b290e2685fc5121ca3f939b4207294a90d6b0c61b4c3b95ca2807d934773"
+   "subject_key": "ec95a5ed7382b6dd28fff6fdf32416bb391b76c3e55cf326494803b12859ce0b"
   },
   {
    "key": "12",
@@ -89,26 +88,26 @@
   },
   {
    "key": "15",
-   "record": "0d25dd6193b6e9a0d6467bbeb544dbf1ddbb77f81f5a529bc40cd59d2566896f",
+   "record": "ac1a70d952f63c6fbd2e59f5e2d3e2d6559c60c37090c2028da5de180b23b0c2",
    "status": "MATCH",
-   "subject_key": "16a56c182f876ea818f9485af7a8dc53802d501fc4d9c63ebec9e2729d2518bb"
+   "subject_key": "2d31eb146ff85fefe839be4242e3fb9373e1ecc9acd8006a0f52b89d1b2d8c6e"
   }
  ],
  "subjects": {
-  "1": "ef6ea127069359ba52b993eaf568b6e039b2dba1358150e41fcbab3932dee919",
+  "1": "a5e274f19202c40be4d727ae4afa90e79e01bff7c3efcd12cbcce25b18c64961",
   "2": "c6c1a986f392158e972b3d3c504a77f107b56ffccb86a08d2a3da67af9d74b37",
-  "3": "56a99ba96761c8684a9a02abb9be7b20e5dc55509f54fb7056bd6497647c170d",
+  "3": "68bd298d42034a3cc1d366d7a95806b0e66daffb01e3ab08d0f782a9059c359b",
   "4": "e5524e535715293c1d2815fe688423294c14e6dfb2295db127d82169eca12162",
-  "5a": "74c24b35ca399bf2d48a3c7da5e044edc0efe0cac88caf744d38b4d5f9ec86e6",
+  "5a": "2ebeed6cc11ffec354aaa181b08e645e5039762f73c7df9a78759d619a7eeff3",
   "5b": "ac14661f2f1cbfd4236321b755fd3569967b952233b308360ddd6b2aca0b9abd",
-  "7": "8f01022347073d9276f67b5f37a18c4f54ce64bdc2931e2bf3d480c6ff8aa453",
-  "8": "7d9debb2cc19c8c13bd845601134b4e4b331843915e4dadfeb42448879f0d6bc",
+  "7": "b85e3951c140532dc72ffade9969dbd0458935d65ef6e3a5e21e4547d058614b",
+  "8": "71e5e4ac75bd0fdd9e522af392f0fa1094e874d3ab97ab5f639535e775ab6780",
   "9": "26c3895c47ea7bcc8d11f9f873c430fa59e41ba5e05cd1f204526673ccb2e823",
   "10": "aecbee88b43d622e6b0866d81c7655a1c544ff5c8552eb15bd3f94f525ce0dc1",
-  "11": "03eaa13bfa979a1356fd0bf0ca3bcf3467a54375cfd41232c56dc6ecb6ff1b01",
+  "11": "e3405482407f52f0396184668d7807285fc9f0d04f988ac932488f4c067dd0e1",
   "12": "07a06d52d42bf5d31810015b6249564d1419021fcd31992d6fcf71cc06ae029f",
   "14": "698f15ce35c69c173e8c9374de615062777be30978363213b2082ebc47bcf88a",
-  "15": "7c6724d7566ed2922b0702d4187c8da136fc456d0152f93fcb3f64e2c388381f"
+  "15": "0404b1a09f408dd8af103431e746f259720cdc75d839dab0605ef3754705403d"
  },
  "__rest__": "4f4915bf092b42c942f2ca21caeb7e45842950ff4b4c9638c16a365751d795e1"
 }

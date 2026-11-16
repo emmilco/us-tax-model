@@ -1271,6 +1271,116 @@
           }
         }
       }
+    },
+    {
+      "id": "mexist.f4952.exception.filing_4952",
+      "covers": [
+        "f4952",
+        "sd"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "Mutation fixture (lane mexist), expected values predicted by hand from the archived sources before running the evaluator. Inputs of stage21.f1.aggregate_eligible_withheld: investment interest expense $2,520, ordinary dividends $235,761 all qualified, no taxable interest, so Form 4952 line 4c (line 4a less qualified dividends on line 4b) is $0. The filing exception requires investment income from interest and ordinary dividends (less qualified dividends) to be more than the investment interest expense (f4952 p. 1, \"Exception\"); $0 is not more than $2,520, so Form 4952 is filed, and Schedule D line 20 (\"Are lines 18 and 19 both zero or blank and are you not filing Form 4952?\") is No (false) whatever lines 18 and 19 are.",
+      "inputs": {
+        "div.any": true,
+        "f1040.status": "mfj",
+        "f1040.line3a": 23576100,
+        "f4952.has_interest": true,
+        "f4952.line1": 252000,
+        "f4952.line4g": 912800,
+        "f5695.any": true,
+        "f5695.insulation": true,
+        "ftc.taxes": 19500,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "household.married_dec31": true,
+        "qbi.dividends": 3536400,
+        "s1a.overtime": true,
+        "s1a.carloan": true,
+        "sa.medical_any": true,
+        "sa.line1": 1643600,
+        "sa.state_tax_any": true,
+        "sa.line5a": 2870200,
+        "sa.home_owner": true,
+        "sa.line5b": 1197500,
+        "sb.ordinary_dividends": 23576100,
+        "sli.interest": 284400,
+        "sli.any": true,
+        "person[taxpayer].sav_claimed": true,
+        "person[taxpayer].f8889[hsa].coverage_year": "changed",
+        "$person": [
+          "taxpayer",
+          "spouse"
+        ],
+        "$f8889@person[taxpayer]": [
+          "hsa"
+        ],
+        "$w2@person[taxpayer]": [
+          "emp_a",
+          "emp_b"
+        ],
+        "$sales": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "sales[s1].box": "B",
+        "sales[s1].code": "W",
+        "sales[s2].route": "aggregate",
+        "sales[s3].box": "F",
+        "$w2@person[spouse]": [
+          "emp_a"
+        ],
+        "person[spouse].w2[emp_a].box1": 1412300,
+        "person[spouse].w2[emp_a].box2": 98900,
+        "person[spouse].w2[emp_a].box3": 1412300,
+        "person[spouse].w2[emp_a].box4": 87600,
+        "person[spouse].w2[emp_a].box5": 1412300,
+        "person[spouse].w2[emp_a].box6": 20500,
+        "$sc@person[spouse]": [
+          "biz_a"
+        ],
+        "person[spouse].sc[biz_a].employees": true,
+        "person[spouse].sc[biz_a].travel_meals": true,
+        "person[spouse].sc[biz_a].line1": 16108000,
+        "person[spouse].sc[biz_a].line14": 1287000,
+        "person[spouse].sc[biz_a].line16b": 2711900,
+        "person[spouse].sc[biz_a].line21": 529300,
+        "person[spouse].sc[biz_a].meals_50": 830800,
+        "person[spouse].sc[biz_a].meals_80": 2196400,
+        "person[spouse].sc[biz_a].meals_100": 2933500,
+        "$scveh@person[spouse].sc[biz_a]": [
+          "car_1"
+        ],
+        "person[spouse].sc[biz_a].scveh[car_1].miles_business": 14752,
+        "person[spouse].sc[biz_a].scveh[car_1].smr_always": true,
+        "person[spouse].sc[biz_a].scveh[car_1].smr_first": false,
+        "person[spouse].sc[biz_a].scveh[car_1].fleet": false,
+        "$asset@person[spouse].sc[biz_a]": [
+          "item_1",
+          "item_2"
+        ],
+        "person[spouse].sc[biz_a].asset[item_1].class": "c40_54",
+        "person[spouse].sc[biz_a].asset[item_1].placed": "y2025",
+        "person[spouse].sc[biz_a].asset[item_1].cost": 4610000,
+        "person[spouse].sc[biz_a].asset[item_1].pct": 100,
+        "person[spouse].sc[biz_a].asset[item_1].quarter": "q4",
+        "person[spouse].sc[biz_a].asset[item_1].bonus_choice": "none",
+        "person[spouse].sc[biz_a].asset[item_2].class": "c22_3",
+        "person[spouse].sc[biz_a].asset[item_2].placed": "y2017",
+        "person[spouse].sc[biz_a].asset[item_2].pct": 100,
+        "sales[s2].aggregate_eligible": null
+      },
+      "expect": {
+        "f4952.line3": {
+          "kind": "money",
+          "cents": 252000
+        },
+        "sd.line20": {
+          "kind": "bool",
+          "value": false
+        }
+      }
     }
   ]
 }

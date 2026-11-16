@@ -133,12 +133,12 @@
    "printed": "1",
    "project": "$1,500.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer is claimed as a dependent on someone else's return (person[taxpayer].sav_claimed yes) and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model wrote the bar into worksheet line 1, and the project figures every worksheet line as printed and applies the bar in sli.eligible (sli.claimed_count 1), so sli.deduction, which Schedule 1 line 21 copies, is $0.00 (engine eval of the case: sli.eligible false, sli.allowed $0.00, s1.line21 $0.00), as the model's line 9. The project's line 1 is the interest $2,000.00 less $500.00 not qualified, $1,500.00, under $2,500 (p. 99, line 1); the model's own work gives the same figure 'otherwise'. As the earlier ruling on classm.sli.2. Lines 2 to 6 agree.",
+   "ruling": "Ruling: representation (dependent bar applied after the worksheet, drop); the case's filer is claimed as a dependent on someone else's return, and i1040gi p. 98, Schedule 1, line 21, allows the deduction only if 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's return'. The model wrote that bar into the worksheet line (line 1, project $1,500.00, model $0.00); the project fills the p. 99 worksheet from the interest paid ($2,000 less $500 nonqualified = $1,500 on line 1, line 7 ratio 0.182) and applies the bar in sli.eligible (false) and sli.allowed (zero), so the deduction (sli.deduction, Schedule 1, line 21) is $0.00 on both sides (case branches sli.eligible:false, sli.allowed#1). Same ruling as the earlier class M round on this case (adjudication/sli.md); carry refused only because sli.yaml gained the MFS gate sli.any_if_not_mfs, which this non-MFS case does not take (sli.any_if_not_mfs:true). The model's 0 is not evidence of the worksheet line's value, so it is dropped from the fixture.",
    "drop": true,
-   "context": "c6af01cb52716e585cfb3deab3bd0b93c4489020f57863823b5fe122063f5363",
-   "date": "2026-11-14",
-   "run": "8e08f547b2f121e324b6e2b136abcd566881d7132cb64a276a55888fc6526abc",
-   "subject_key": "ca36bbfa89fdb73110b5a6b9b86c8c69835da7b95a6db5346ff204e08f8cc40d"
+   "context": "f6925a113464b490515663c231050ca4cafe3d6e31f71f3f5216cb2c8b8c4d88",
+   "date": "2026-11-15",
+   "run": "e70b9c746692591a0e8ff6c77058862eeb204c3058f740753fd113005a501930",
+   "subject_key": "a27c84374f47634a33597a1119e28bec6cdc9cb65bb7e0f112306a985c1e086e"
   },
   {
    "case": "classm.sli.3",
@@ -172,24 +172,24 @@
    "printed": "8",
    "project": "$273.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer is claimed as a dependent on someone else's return (person[taxpayer].sav_claimed yes) and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model wrote the bar into worksheet line 1, and the project figures every worksheet line as printed and applies the bar in sli.eligible (sli.claimed_count 1), so sli.deduction, which Schedule 1 line 21 copies, is $0.00 (engine eval of the case: sli.eligible false, sli.allowed $0.00, s1.line21 $0.00), as the model's line 9. The project's line 8 is $1,500.00 x 0.182 ($2,733.00 / $15,000.00 to three places, amb.2025.sli_ratio_places) = $273.00; the model multiplied its zero line 1. As the earlier ruling on classm.sli.2. Lines 2 to 6 agree.",
+   "ruling": "Ruling: representation (dependent bar applied after the worksheet, drop); the case's filer is claimed as a dependent on someone else's return, and i1040gi p. 98, Schedule 1, line 21, allows the deduction only if 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's return'. The model wrote that bar into the worksheet line (line 8 follows from its line 1, project $273.00, model $0.00); the project fills the p. 99 worksheet from the interest paid ($2,000 less $500 nonqualified = $1,500 on line 1, line 7 ratio 0.182) and applies the bar in sli.eligible (false) and sli.allowed (zero), so the deduction (sli.deduction, Schedule 1, line 21) is $0.00 on both sides (case branches sli.eligible:false, sli.allowed#1). Same ruling as the earlier class M round on this case (adjudication/sli.md); carry refused only because sli.yaml gained the MFS gate sli.any_if_not_mfs, which this non-MFS case does not take (sli.any_if_not_mfs:true). The model's 0 is not evidence of the worksheet line's value, so it is dropped from the fixture.",
    "drop": true,
-   "context": "c6af01cb52716e585cfb3deab3bd0b93c4489020f57863823b5fe122063f5363",
-   "date": "2026-11-14",
-   "run": "8e08f547b2f121e324b6e2b136abcd566881d7132cb64a276a55888fc6526abc",
-   "subject_key": "0d0b5d18731a17ae709cb30fc48ed99a9bce02c1eeafc459dff7040a61af88b0"
+   "context": "f6925a113464b490515663c231050ca4cafe3d6e31f71f3f5216cb2c8b8c4d88",
+   "date": "2026-11-15",
+   "run": "e70b9c746692591a0e8ff6c77058862eeb204c3058f740753fd113005a501930",
+   "subject_key": "7bce7709485b0d94415a4bfddfbd2eff576417d6ee5b014576df5112619554ec"
   },
   {
    "case": "classm.sli.3",
    "printed": "9",
    "project": "$1,227.00",
    "model": "$0.00",
-   "ruling": "Ruling: representation; project retained; model value dropped from the fixture. The filer is claimed as a dependent on someone else's return (person[taxpayer].sav_claimed yes) and cannot take the deduction (i1040gi p. 98, Line 21, \"You can take this deduction only if all of the following apply ... You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return\"); the model wrote the bar into worksheet line 1, and the project figures every worksheet line as printed and applies the bar in sli.eligible (sli.claimed_count 1), so sli.deduction, which Schedule 1 line 21 copies, is $0.00 (engine eval of the case: sli.eligible false, sli.allowed $0.00, s1.line21 $0.00), as the model's line 9. The project's line 9 is $1,500.00 less $273.00 = $1,227.00; the amount carried to Schedule 1 line 21 is sli.deduction, $0.00. As the earlier ruling on classm.sli.2. Lines 2 to 6 agree.",
+   "ruling": "Ruling: representation (dependent bar applied after the worksheet, drop); the case's filer is claimed as a dependent on someone else's return, and i1040gi p. 98, Schedule 1, line 21, allows the deduction only if 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's return'. The model wrote that bar into the worksheet line (line 9 follows from its line 1, project $1,227.00, model $0.00); the project fills the p. 99 worksheet from the interest paid ($2,000 less $500 nonqualified = $1,500 on line 1, line 7 ratio 0.182) and applies the bar in sli.eligible (false) and sli.allowed (zero), so the deduction (sli.deduction, Schedule 1, line 21) is $0.00 on both sides (case branches sli.eligible:false, sli.allowed#1). Same ruling as the earlier class M round on this case (adjudication/sli.md); carry refused only because sli.yaml gained the MFS gate sli.any_if_not_mfs, which this non-MFS case does not take (sli.any_if_not_mfs:true). The model's 0 is not evidence of the worksheet line's value, so it is dropped from the fixture.",
    "drop": true,
-   "context": "c6af01cb52716e585cfb3deab3bd0b93c4489020f57863823b5fe122063f5363",
-   "date": "2026-11-14",
-   "run": "8e08f547b2f121e324b6e2b136abcd566881d7132cb64a276a55888fc6526abc",
-   "subject_key": "c603e5ebb416e05558df4052273cb4dfe0e6092adb5d613e14ef84ce25cb2f24"
+   "context": "f6925a113464b490515663c231050ca4cafe3d6e31f71f3f5216cb2c8b8c4d88",
+   "date": "2026-11-15",
+   "run": "e70b9c746692591a0e8ff6c77058862eeb204c3058f740753fd113005a501930",
+   "subject_key": "d757673d1ba79c6f6cf0452a179b5b27c07780e91ec58bf468061c8c13a0b87a"
   },
   {
    "case": "classm.sli.4",
