@@ -430,7 +430,7 @@ over it, `serve`), its forms are 2025's while
 the first return it is meant to prepare for real is 2026's, and its independent verification is still
 climbing.
 
-**Coverage.** The tool fully covers an estimated **78.4% of individual returns** (range 76.9% to 85.7%),
+**Coverage.** The tool fully covers an estimated **85.9% of individual returns** (range 85.4% to 89.5%),
 counting a return only when nothing on it is refused ([`reports/2025/filer_coverage.md`](reports/2025/filer_coverage.md)).
 The estimate starts from IRS Statistics of Income counts and uses household microdata, reweighted to those
 counts, for the overlaps between situations. Treat it as an ordering and a rough measure, not a
