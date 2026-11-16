@@ -3710,6 +3710,84 @@ class ReviewStore(unittest.TestCase):
             self.assertIn("foreign interfaces", S.index_state("transcription", "x", "2025", {**index, "foreign": {"1": "e"}}, "v", True))
             self.assertIsNone(S.index_state("transcription", "x", "2025", {**index, "__rest__": "q"}, "w", False))  # reviewed whole, unchanged
 
+    # A subtree both sides repeat, above SHARED_MIN_CHARS, holding a smaller repeated subtree of its own.
+    BIG = {"guard": {"test": "all", "args": [{"line": "1"}, {"input": "x.coverage_changed_during_the_year"}]},
+           "then": {"param": "x.limit_for_family_coverage"}}
+
+    def side(self, n):
+        return json.dumps({"op": "max", "args": [self.BIG, {"const": n}, self.BIG]}, sort_keys=True, ensure_ascii=False)
+
+    def shared_log(self, ruling="Ruling: open"):
+        return self.log(ruling).replace('{"const": 1}\n', self.side(1) + "\n").replace('{"const": 2}\n', self.side(2) + "\n")
+
+    def test_a_large_record_stores_repeated_subtrees_once_and_reads_back_as_written(self):
+        text = self.shared_log()
+        with patch.object(self.store, "SHARED_MIN_BYTES", 0):
+            rulings.write_log("transcription", "x", text)
+        self.assertEqual(rulings.read_log("transcription", "x"), text)
+        (stored,) = self.records().values()
+        self.assertIn("<!-- part shared -->", stored)
+        self.assertNotIn(json.dumps(self.BIG, sort_keys=True, ensure_ascii=False), stored)
+        self.assertEqual(len(re.findall(r'\{"\$shared": "[0-9a-f]{16}"\}', stored)), 5)  # 4 uses of BIG, 1 of its guard
+        # the ruling key is the sha256 of the text as written, read back expanded
+        (key, ruling), = rulings.log_sections("transcription", rulings.read_log("transcription", "x"))
+        self.assertEqual(rulings.stored_key("transcription", key),
+                         rulings.stored_key("transcription", ("2", self.side(1), self.side(2))))
+        ruled = self.shared_log("Ruling: scope; same amount")
+        with patch.object(self.store, "SHARED_MIN_BYTES", 0):
+            rulings.write_log("transcription", "x", ruled)
+        self.assertEqual(rulings.read_log("transcription", "x"), ruled)
+        self.assertEqual(list(self.records().values()), [stored])  # a ruling still changes only the index
+        self.assertEqual(self.store.check(), 0)
+
+    def test_a_record_stored_unshared_is_read_and_kept_as_it_is(self):
+        text = self.shared_log()
+        rulings.write_log("transcription", "x", text)  # below SHARED_MIN_BYTES: stored as written
+        (name, stored), = self.records().items()
+        self.assertNotIn("<!-- part shared -->", stored)
+        ident, parts = self.store.parse_record(stored)
+        with patch.object(self.store, "SHARED_MIN_BYTES", 0):
+            self.assertEqual(self.store.write_record(ident, list(parts.items())), name[:-3])  # the same parts: accepted
+            self.assertEqual(self.records(), {name: stored})  # and not rewritten
+            with self.assertRaisesRegex(ValueError, "never rewritten"):
+                self.store.write_record(ident, [(n, t + "x") for n, t in parts.items()])
+            self.assertEqual(self.store.share(), 1)  # reported, not written
+            self.assertEqual(self.records(), {name: stored})
+            self.store.share(write=True)
+        self.assertIn("<!-- part shared -->", self.records()[name])
+        self.assertEqual(rulings.read_log("transcription", "x"), text)
+        self.assertEqual(self.store.check(), 0)
+
+    def test_text_that_could_be_read_as_a_reference_is_stored_unshared(self):
+        held = self.shared_log().replace("Status: **DISAGREE**", 'Status: **DISAGREE**\n{"$shared": "0123456789abcdef"}')
+        noncanonical = self.shared_log().replace(self.side(1), json.dumps(json.loads(self.side(1)), sort_keys=True, separators=(",", ":")))
+        ident = {"kind": "transcription", "form": "x", "family": families.DEFAULT, "scope": "whole", "subjects": {}}
+        for text in (held, noncanonical):
+            with self.subTest(held=text is held), patch.object(self.store, "SHARED_MIN_BYTES", 0):
+                p = self.store.parse("transcription", text)
+                parts = [("section " + k, s) for k, s in p["sections"]]
+                shared = self.store._share(parts)
+                if text is held:
+                    self.assertIs(shared, parts)
+                else:  # the non-canonical side is kept as written; the other side's repeats are still shared
+                    self.assertIn(("section 1", parts[0][1]), shared)
+                    self.assertEqual(self.store._unshare(dict(shared)), dict(parts))
+                    self.assertIn(json.dumps(self.BIG, sort_keys=True, separators=(",", ":")), dict(shared)["section 2"])
+                self.assertEqual(self.store.parse_record(self.store._compose("0" * 64, ident, shared))[1], dict(parts))
+
+    def test_a_shared_part_naming_a_later_or_missing_subtree_is_refused(self):
+        ident = {"kind": "transcription", "form": "x", "family": families.DEFAULT, "scope": "whole", "subjects": {}}
+        ref = lambda s: '{"$shared": "' + s + '"}'
+        for shared in (f"{'a' * 16} [{ref('b' * 16)}]\n{'b' * 16} 1", f"{'a' * 16} [{ref('a' * 16)}]", f"{'a' * 16} 1\n{'a' * 16} 2"):
+            content = self.store._compose("0" * 64, ident, [("section 2", f"```json\n{ref('a' * 16)}\n```"), ("shared", shared)])
+            with self.subTest(shared=shared), self.assertRaises(ValueError):
+                self.store.parse_record(content)
+        content = self.store._compose("0" * 64, ident, [("section 2", f"```json\n{ref('c' * 16)}\n```"), ("shared", f"{'a' * 16} 1")])
+        with self.assertRaisesRegex(ValueError, "does not hold"):
+            self.store.parse_record(content)
+        with self.assertRaisesRegex(ValueError, "reserved"):
+            self.store.write_record(ident, [("shared", "x")])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -157,7 +157,12 @@ not committed: tools read it with `rulings.read_log` and write it with `rulings.
 (which stores what is new and checks the view reproduces the log byte for byte), and
 `python3 tools/transcription/review_store.py render [--kind K] [--form F]` writes the readable
 views to `.transcription/logs/<year>/<kind>/<stem>.md` (git-ignored; a writer refreshes its
-own). `review_store.py check` verifies every index's records.
+own). `review_store.py check` verifies every index's records. A record over 1 MiB stores each JSON
+subtree its sections repeat once, in a `shared` part, with `{"$shared": "<id>"}` in its place; reading
+a record expands them, so the sections, the view and every ruling and carry key computed on them are as
+the tool wrote them, and a record stored before (no `shared` part) is read as it is.
+`review_store.py share [--write]` stores a large unshared record in that form, after verifying it reads
+back the same.
 
 `rulings.py`, `rule.py` (`--family deepseek`) and `check_logs.py` address a log
 by (kind, form, family); the Claude family is implied when none is named. The
